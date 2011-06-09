@@ -1,0 +1,281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4BDE39F139C06CE003DBBD5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BDE39E139C06CE003DBBD5 /* UIKit.framework */; };
+		A4BDE3A1139C06CE003DBBD5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BDE3A0139C06CE003DBBD5 /* Foundation.framework */; };
+		A4BDE3A3139C06CE003DBBD5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BDE3A2139C06CE003DBBD5 /* CoreGraphics.framework */; };
+		A4BDE3A9139C06CE003DBBD5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4BDE3A7139C06CE003DBBD5 /* InfoPlist.strings */; };
+		A4BDE3AC139C06CF003DBBD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDE3AB139C06CF003DBBD5 /* main.m */; };
+		A4BDE3AF139C06CF003DBBD5 /* LayerDepthAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDE3AE139C06CF003DBBD5 /* LayerDepthAppDelegate.m */; };
+		A4BDE3B2139C06CF003DBBD5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4BDE3B0139C06CF003DBBD5 /* MainWindow.xib */; };
+		A4BDE3B9139C0744003DBBD5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BDE3B8139C0744003DBBD5 /* QuartzCore.framework */; };
+		A4BDE3BE139C075C003DBBD5 /* CompassLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDE3BB139C075C003DBBD5 /* CompassLayer.m */; };
+		A4BDE3BF139C075C003DBBD5 /* CompassView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDE3BD139C075C003DBBD5 /* CompassView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4BDE39A139C06CE003DBBD5 /* p350layerDepth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p350layerDepth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4BDE39E139C06CE003DBBD5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4BDE3A0139C06CE003DBBD5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4BDE3A2139C06CE003DBBD5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4BDE3A6139C06CE003DBBD5 /* p350layerDepth-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p350layerDepth-Info.plist"; sourceTree = "<group>"; };
+		A4BDE3A8139C06CE003DBBD5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4BDE3AA139C06CF003DBBD5 /* p350layerDepth-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p350layerDepth-Prefix.pch"; sourceTree = "<group>"; };
+		A4BDE3AB139C06CF003DBBD5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4BDE3AD139C06CF003DBBD5 /* LayerDepthAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayerDepthAppDelegate.h; sourceTree = "<group>"; };
+		A4BDE3AE139C06CF003DBBD5 /* LayerDepthAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayerDepthAppDelegate.m; sourceTree = "<group>"; };
+		A4BDE3B1139C06CF003DBBD5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4BDE3B8139C0744003DBBD5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A4BDE3BA139C075C003DBBD5 /* CompassLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompassLayer.h; sourceTree = "<group>"; };
+		A4BDE3BB139C075C003DBBD5 /* CompassLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompassLayer.m; sourceTree = "<group>"; };
+		A4BDE3BC139C075C003DBBD5 /* CompassView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompassView.h; sourceTree = "<group>"; };
+		A4BDE3BD139C075C003DBBD5 /* CompassView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompassView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4BDE397139C06CE003DBBD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4BDE3B9139C0744003DBBD5 /* QuartzCore.framework in Frameworks */,
+				A4BDE39F139C06CE003DBBD5 /* UIKit.framework in Frameworks */,
+				A4BDE3A1139C06CE003DBBD5 /* Foundation.framework in Frameworks */,
+				A4BDE3A3139C06CE003DBBD5 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4BDE38F139C06CE003DBBD5 = {
+			isa = PBXGroup;
+			children = (
+				A4BDE3A4139C06CE003DBBD5 /* p350layerDepth */,
+				A4BDE39D139C06CE003DBBD5 /* Frameworks */,
+				A4BDE39B139C06CE003DBBD5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4BDE39B139C06CE003DBBD5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4BDE39A139C06CE003DBBD5 /* p350layerDepth.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4BDE39D139C06CE003DBBD5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4BDE3B8139C0744003DBBD5 /* QuartzCore.framework */,
+				A4BDE39E139C06CE003DBBD5 /* UIKit.framework */,
+				A4BDE3A0139C06CE003DBBD5 /* Foundation.framework */,
+				A4BDE3A2139C06CE003DBBD5 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4BDE3A4139C06CE003DBBD5 /* p350layerDepth */ = {
+			isa = PBXGroup;
+			children = (
+				A4BDE3BA139C075C003DBBD5 /* CompassLayer.h */,
+				A4BDE3BB139C075C003DBBD5 /* CompassLayer.m */,
+				A4BDE3BC139C075C003DBBD5 /* CompassView.h */,
+				A4BDE3BD139C075C003DBBD5 /* CompassView.m */,
+				A4BDE3AD139C06CF003DBBD5 /* LayerDepthAppDelegate.h */,
+				A4BDE3AE139C06CF003DBBD5 /* LayerDepthAppDelegate.m */,
+				A4BDE3B0139C06CF003DBBD5 /* MainWindow.xib */,
+				A4BDE3A5139C06CE003DBBD5 /* Supporting Files */,
+			);
+			path = p350layerDepth;
+			sourceTree = "<group>";
+		};
+		A4BDE3A5139C06CE003DBBD5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4BDE3A6139C06CE003DBBD5 /* p350layerDepth-Info.plist */,
+				A4BDE3A7139C06CE003DBBD5 /* InfoPlist.strings */,
+				A4BDE3AA139C06CF003DBBD5 /* p350layerDepth-Prefix.pch */,
+				A4BDE3AB139C06CF003DBBD5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4BDE399139C06CE003DBBD5 /* p350layerDepth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4BDE3B5139C06CF003DBBD5 /* Build configuration list for PBXNativeTarget "p350layerDepth" */;
+			buildPhases = (
+				A4BDE396139C06CE003DBBD5 /* Sources */,
+				A4BDE397139C06CE003DBBD5 /* Frameworks */,
+				A4BDE398139C06CE003DBBD5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p350layerDepth;
+			productName = p350layerDepth;
+			productReference = A4BDE39A139C06CE003DBBD5 /* p350layerDepth.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4BDE391139C06CE003DBBD5 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4BDE394139C06CE003DBBD5 /* Build configuration list for PBXProject "p350layerDepth" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4BDE38F139C06CE003DBBD5;
+			productRefGroup = A4BDE39B139C06CE003DBBD5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4BDE399139C06CE003DBBD5 /* p350layerDepth */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4BDE398139C06CE003DBBD5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4BDE3A9139C06CE003DBBD5 /* InfoPlist.strings in Resources */,
+				A4BDE3B2139C06CF003DBBD5 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4BDE396139C06CE003DBBD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4BDE3AC139C06CF003DBBD5 /* main.m in Sources */,
+				A4BDE3AF139C06CF003DBBD5 /* LayerDepthAppDelegate.m in Sources */,
+				A4BDE3BE139C075C003DBBD5 /* CompassLayer.m in Sources */,
+				A4BDE3BF139C075C003DBBD5 /* CompassView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4BDE3A7139C06CE003DBBD5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4BDE3A8139C06CE003DBBD5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4BDE3B0139C06CF003DBBD5 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4BDE3B1139C06CF003DBBD5 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4BDE3B3139C06CF003DBBD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4BDE3B4139C06CF003DBBD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4BDE3B6139C06CF003DBBD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p350layerDepth/p350layerDepth-Prefix.pch";
+				INFOPLIST_FILE = "p350layerDepth/p350layerDepth-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4BDE3B7139C06CF003DBBD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p350layerDepth/p350layerDepth-Prefix.pch";
+				INFOPLIST_FILE = "p350layerDepth/p350layerDepth-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4BDE394139C06CE003DBBD5 /* Build configuration list for PBXProject "p350layerDepth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4BDE3B3139C06CF003DBBD5 /* Debug */,
+				A4BDE3B4139C06CF003DBBD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4BDE3B5139C06CF003DBBD5 /* Build configuration list for PBXNativeTarget "p350layerDepth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4BDE3B6139C06CF003DBBD5 /* Debug */,
+				A4BDE3B7139C06CF003DBBD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4BDE391139C06CE003DBBD5 /* Project object */;
+}

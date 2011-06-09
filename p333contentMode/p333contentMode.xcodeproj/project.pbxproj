@@ -1,0 +1,271 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4B96E83139AFE250098AA00 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B96E82139AFE250098AA00 /* UIKit.framework */; };
+		A4B96E85139AFE250098AA00 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B96E84139AFE250098AA00 /* Foundation.framework */; };
+		A4B96E87139AFE250098AA00 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B96E86139AFE250098AA00 /* CoreGraphics.framework */; };
+		A4B96E8D139AFE250098AA00 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4B96E8B139AFE250098AA00 /* InfoPlist.strings */; };
+		A4B96E90139AFE250098AA00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B96E8F139AFE250098AA00 /* main.m */; };
+		A4B96E93139AFE250098AA00 /* ContentModeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B96E92139AFE250098AA00 /* ContentModeAppDelegate.m */; };
+		A4B96E96139AFE250098AA00 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4B96E94139AFE250098AA00 /* MainWindow.xib */; };
+		A4B96E9E139AFE960098AA00 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B96E9D139AFE960098AA00 /* MyView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4B96E7E139AFE250098AA00 /* p333contentMode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p333contentMode.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4B96E82139AFE250098AA00 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4B96E84139AFE250098AA00 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4B96E86139AFE250098AA00 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4B96E8A139AFE250098AA00 /* p333contentMode-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p333contentMode-Info.plist"; sourceTree = "<group>"; };
+		A4B96E8C139AFE250098AA00 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4B96E8E139AFE250098AA00 /* p333contentMode-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p333contentMode-Prefix.pch"; sourceTree = "<group>"; };
+		A4B96E8F139AFE250098AA00 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4B96E91139AFE250098AA00 /* ContentModeAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentModeAppDelegate.h; sourceTree = "<group>"; };
+		A4B96E92139AFE250098AA00 /* ContentModeAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentModeAppDelegate.m; sourceTree = "<group>"; };
+		A4B96E95139AFE250098AA00 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4B96E9C139AFE960098AA00 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
+		A4B96E9D139AFE960098AA00 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4B96E7B139AFE250098AA00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4B96E83139AFE250098AA00 /* UIKit.framework in Frameworks */,
+				A4B96E85139AFE250098AA00 /* Foundation.framework in Frameworks */,
+				A4B96E87139AFE250098AA00 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4B96E73139AFE250098AA00 = {
+			isa = PBXGroup;
+			children = (
+				A4B96E88139AFE250098AA00 /* p333contentMode */,
+				A4B96E81139AFE250098AA00 /* Frameworks */,
+				A4B96E7F139AFE250098AA00 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4B96E7F139AFE250098AA00 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4B96E7E139AFE250098AA00 /* p333contentMode.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4B96E81139AFE250098AA00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4B96E82139AFE250098AA00 /* UIKit.framework */,
+				A4B96E84139AFE250098AA00 /* Foundation.framework */,
+				A4B96E86139AFE250098AA00 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4B96E88139AFE250098AA00 /* p333contentMode */ = {
+			isa = PBXGroup;
+			children = (
+				A4B96E9C139AFE960098AA00 /* MyView.h */,
+				A4B96E9D139AFE960098AA00 /* MyView.m */,
+				A4B96E91139AFE250098AA00 /* ContentModeAppDelegate.h */,
+				A4B96E92139AFE250098AA00 /* ContentModeAppDelegate.m */,
+				A4B96E94139AFE250098AA00 /* MainWindow.xib */,
+				A4B96E89139AFE250098AA00 /* Supporting Files */,
+			);
+			path = p333contentMode;
+			sourceTree = "<group>";
+		};
+		A4B96E89139AFE250098AA00 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4B96E8A139AFE250098AA00 /* p333contentMode-Info.plist */,
+				A4B96E8B139AFE250098AA00 /* InfoPlist.strings */,
+				A4B96E8E139AFE250098AA00 /* p333contentMode-Prefix.pch */,
+				A4B96E8F139AFE250098AA00 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4B96E7D139AFE250098AA00 /* p333contentMode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4B96E99139AFE250098AA00 /* Build configuration list for PBXNativeTarget "p333contentMode" */;
+			buildPhases = (
+				A4B96E7A139AFE250098AA00 /* Sources */,
+				A4B96E7B139AFE250098AA00 /* Frameworks */,
+				A4B96E7C139AFE250098AA00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p333contentMode;
+			productName = p333contentMode;
+			productReference = A4B96E7E139AFE250098AA00 /* p333contentMode.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4B96E75139AFE250098AA00 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4B96E78139AFE250098AA00 /* Build configuration list for PBXProject "p333contentMode" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4B96E73139AFE250098AA00;
+			productRefGroup = A4B96E7F139AFE250098AA00 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4B96E7D139AFE250098AA00 /* p333contentMode */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4B96E7C139AFE250098AA00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4B96E8D139AFE250098AA00 /* InfoPlist.strings in Resources */,
+				A4B96E96139AFE250098AA00 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4B96E7A139AFE250098AA00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4B96E90139AFE250098AA00 /* main.m in Sources */,
+				A4B96E93139AFE250098AA00 /* ContentModeAppDelegate.m in Sources */,
+				A4B96E9E139AFE960098AA00 /* MyView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4B96E8B139AFE250098AA00 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4B96E8C139AFE250098AA00 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4B96E94139AFE250098AA00 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4B96E95139AFE250098AA00 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4B96E97139AFE250098AA00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4B96E98139AFE250098AA00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4B96E9A139AFE250098AA00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p333contentMode/p333contentMode-Prefix.pch";
+				INFOPLIST_FILE = "p333contentMode/p333contentMode-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4B96E9B139AFE250098AA00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p333contentMode/p333contentMode-Prefix.pch";
+				INFOPLIST_FILE = "p333contentMode/p333contentMode-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4B96E78139AFE250098AA00 /* Build configuration list for PBXProject "p333contentMode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4B96E97139AFE250098AA00 /* Debug */,
+				A4B96E98139AFE250098AA00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4B96E99139AFE250098AA00 /* Build configuration list for PBXNativeTarget "p333contentMode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4B96E9A139AFE250098AA00 /* Debug */,
+				A4B96E9B139AFE250098AA00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4B96E75139AFE250098AA00 /* Project object */;
+}

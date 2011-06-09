@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4F7EE0B13A0450B00054289 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F7EE0A13A0450B00054289 /* UIKit.framework */; };
+		A4F7EE0D13A0450B00054289 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F7EE0C13A0450B00054289 /* Foundation.framework */; };
+		A4F7EE0F13A0450B00054289 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F7EE0E13A0450B00054289 /* CoreGraphics.framework */; };
+		A4F7EE1513A0450B00054289 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4F7EE1313A0450B00054289 /* InfoPlist.strings */; };
+		A4F7EE1813A0450B00054289 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F7EE1713A0450B00054289 /* main.m */; };
+		A4F7EE1B13A0450B00054289 /* ModalViewInResponseToRotationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F7EE1A13A0450B00054289 /* ModalViewInResponseToRotationAppDelegate.m */; };
+		A4F7EE1E13A0450B00054289 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F7EE1C13A0450B00054289 /* MainWindow.xib */; };
+		A4F7EE2113A0450B00054289 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F7EE2013A0450B00054289 /* RootViewController.m */; };
+		A4F7EE2413A0450B00054289 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F7EE2213A0450B00054289 /* RootView.xib */; };
+		A4F7EE2D13A0466100054289 /* LandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F7EE2B13A0466100054289 /* LandscapeViewController.m */; };
+		A4F7EE2E13A0466100054289 /* LandscapeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4F7EE2C13A0466100054289 /* LandscapeView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4F7EE0613A0450B00054289 /* p460modalViewInResponseToRotation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p460modalViewInResponseToRotation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4F7EE0A13A0450B00054289 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4F7EE0C13A0450B00054289 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4F7EE0E13A0450B00054289 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4F7EE1213A0450B00054289 /* p460modalViewInResponseToRotation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p460modalViewInResponseToRotation-Info.plist"; sourceTree = "<group>"; };
+		A4F7EE1413A0450B00054289 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4F7EE1613A0450B00054289 /* p460modalViewInResponseToRotation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p460modalViewInResponseToRotation-Prefix.pch"; sourceTree = "<group>"; };
+		A4F7EE1713A0450B00054289 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4F7EE1913A0450B00054289 /* ModalViewInResponseToRotationAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModalViewInResponseToRotationAppDelegate.h; sourceTree = "<group>"; };
+		A4F7EE1A13A0450B00054289 /* ModalViewInResponseToRotationAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModalViewInResponseToRotationAppDelegate.m; sourceTree = "<group>"; };
+		A4F7EE1D13A0450B00054289 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4F7EE1F13A0450B00054289 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A4F7EE2013A0450B00054289 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A4F7EE2313A0450B00054289 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+		A4F7EE2A13A0466100054289 /* LandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeViewController.h; sourceTree = "<group>"; };
+		A4F7EE2B13A0466100054289 /* LandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeViewController.m; sourceTree = "<group>"; };
+		A4F7EE2C13A0466100054289 /* LandscapeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandscapeView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4F7EE0313A0450B00054289 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4F7EE0B13A0450B00054289 /* UIKit.framework in Frameworks */,
+				A4F7EE0D13A0450B00054289 /* Foundation.framework in Frameworks */,
+				A4F7EE0F13A0450B00054289 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4F7EDFB13A0450B00054289 = {
+			isa = PBXGroup;
+			children = (
+				A4F7EE1013A0450B00054289 /* p460modalViewInResponseToRotation */,
+				A4F7EE0913A0450B00054289 /* Frameworks */,
+				A4F7EE0713A0450B00054289 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4F7EE0713A0450B00054289 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4F7EE0613A0450B00054289 /* p460modalViewInResponseToRotation.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4F7EE0913A0450B00054289 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4F7EE0A13A0450B00054289 /* UIKit.framework */,
+				A4F7EE0C13A0450B00054289 /* Foundation.framework */,
+				A4F7EE0E13A0450B00054289 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4F7EE1013A0450B00054289 /* p460modalViewInResponseToRotation */ = {
+			isa = PBXGroup;
+			children = (
+				A4F7EE1913A0450B00054289 /* ModalViewInResponseToRotationAppDelegate.h */,
+				A4F7EE1A13A0450B00054289 /* ModalViewInResponseToRotationAppDelegate.m */,
+				A4F7EE1C13A0450B00054289 /* MainWindow.xib */,
+				A4F7EE1F13A0450B00054289 /* RootViewController.h */,
+				A4F7EE2013A0450B00054289 /* RootViewController.m */,
+				A4F7EE2213A0450B00054289 /* RootView.xib */,
+				A4F7EE2A13A0466100054289 /* LandscapeViewController.h */,
+				A4F7EE2B13A0466100054289 /* LandscapeViewController.m */,
+				A4F7EE2C13A0466100054289 /* LandscapeView.xib */,
+				A4F7EE1113A0450B00054289 /* Supporting Files */,
+			);
+			path = p460modalViewInResponseToRotation;
+			sourceTree = "<group>";
+		};
+		A4F7EE1113A0450B00054289 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4F7EE1213A0450B00054289 /* p460modalViewInResponseToRotation-Info.plist */,
+				A4F7EE1313A0450B00054289 /* InfoPlist.strings */,
+				A4F7EE1613A0450B00054289 /* p460modalViewInResponseToRotation-Prefix.pch */,
+				A4F7EE1713A0450B00054289 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4F7EE0513A0450B00054289 /* p460modalViewInResponseToRotation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4F7EE2713A0450B00054289 /* Build configuration list for PBXNativeTarget "p460modalViewInResponseToRotation" */;
+			buildPhases = (
+				A4F7EE0213A0450B00054289 /* Sources */,
+				A4F7EE0313A0450B00054289 /* Frameworks */,
+				A4F7EE0413A0450B00054289 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p460modalViewInResponseToRotation;
+			productName = p460modalViewInResponseToRotation;
+			productReference = A4F7EE0613A0450B00054289 /* p460modalViewInResponseToRotation.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4F7EDFD13A0450B00054289 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4F7EE0013A0450B00054289 /* Build configuration list for PBXProject "p460modalViewInResponseToRotation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4F7EDFB13A0450B00054289;
+			productRefGroup = A4F7EE0713A0450B00054289 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4F7EE0513A0450B00054289 /* p460modalViewInResponseToRotation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4F7EE0413A0450B00054289 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4F7EE1513A0450B00054289 /* InfoPlist.strings in Resources */,
+				A4F7EE1E13A0450B00054289 /* MainWindow.xib in Resources */,
+				A4F7EE2413A0450B00054289 /* RootView.xib in Resources */,
+				A4F7EE2E13A0466100054289 /* LandscapeView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4F7EE0213A0450B00054289 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4F7EE1813A0450B00054289 /* main.m in Sources */,
+				A4F7EE1B13A0450B00054289 /* ModalViewInResponseToRotationAppDelegate.m in Sources */,
+				A4F7EE2113A0450B00054289 /* RootViewController.m in Sources */,
+				A4F7EE2D13A0466100054289 /* LandscapeViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4F7EE1313A0450B00054289 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4F7EE1413A0450B00054289 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4F7EE1C13A0450B00054289 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4F7EE1D13A0450B00054289 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A4F7EE2213A0450B00054289 /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4F7EE2313A0450B00054289 /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4F7EE2513A0450B00054289 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4F7EE2613A0450B00054289 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4F7EE2813A0450B00054289 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p460modalViewInResponseToRotation/p460modalViewInResponseToRotation-Prefix.pch";
+				INFOPLIST_FILE = "p460modalViewInResponseToRotation/p460modalViewInResponseToRotation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4F7EE2913A0450B00054289 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p460modalViewInResponseToRotation/p460modalViewInResponseToRotation-Prefix.pch";
+				INFOPLIST_FILE = "p460modalViewInResponseToRotation/p460modalViewInResponseToRotation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4F7EE0013A0450B00054289 /* Build configuration list for PBXProject "p460modalViewInResponseToRotation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4F7EE2513A0450B00054289 /* Debug */,
+				A4F7EE2613A0450B00054289 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4F7EE2713A0450B00054289 /* Build configuration list for PBXNativeTarget "p460modalViewInResponseToRotation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4F7EE2813A0450B00054289 /* Debug */,
+				A4F7EE2913A0450B00054289 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4F7EDFD13A0450B00054289 /* Project object */;
+}

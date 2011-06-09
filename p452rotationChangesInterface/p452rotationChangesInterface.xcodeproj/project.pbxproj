@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4D354AC139FF78300A3263E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4D354AB139FF78300A3263E /* UIKit.framework */; };
+		A4D354AE139FF78300A3263E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4D354AD139FF78300A3263E /* Foundation.framework */; };
+		A4D354B0139FF78300A3263E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4D354AF139FF78300A3263E /* CoreGraphics.framework */; };
+		A4D354B6139FF78300A3263E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4D354B4139FF78300A3263E /* InfoPlist.strings */; };
+		A4D354B9139FF78300A3263E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D354B8139FF78300A3263E /* main.m */; };
+		A4D354BC139FF78300A3263E /* RotationChangesInterfaceAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D354BB139FF78300A3263E /* RotationChangesInterfaceAppDelegate.m */; };
+		A4D354BF139FF78300A3263E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D354BD139FF78300A3263E /* MainWindow.xib */; };
+		A4D354C2139FF78300A3263E /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D354C1139FF78300A3263E /* RootViewController.m */; };
+		A4D354C5139FF78300A3263E /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D354C3139FF78300A3263E /* RootView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4D354A7139FF78300A3263E /* p452rotationChangesInterface.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p452rotationChangesInterface.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4D354AB139FF78300A3263E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4D354AD139FF78300A3263E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4D354AF139FF78300A3263E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4D354B3139FF78300A3263E /* p452rotationChangesInterface-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p452rotationChangesInterface-Info.plist"; sourceTree = "<group>"; };
+		A4D354B5139FF78300A3263E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4D354B7139FF78300A3263E /* p452rotationChangesInterface-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p452rotationChangesInterface-Prefix.pch"; sourceTree = "<group>"; };
+		A4D354B8139FF78300A3263E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4D354BA139FF78300A3263E /* RotationChangesInterfaceAppDelegate.h */ = {isa = PBXFileReference; path = RotationChangesInterfaceAppDelegate.h; sourceTree = "<group>"; };
+		A4D354BB139FF78300A3263E /* RotationChangesInterfaceAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RotationChangesInterfaceAppDelegate.m; sourceTree = "<group>"; };
+		A4D354BE139FF78300A3263E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4D354C0139FF78300A3263E /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		A4D354C1139FF78300A3263E /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A4D354C4139FF78300A3263E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4D354A4139FF78300A3263E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4D354AC139FF78300A3263E /* UIKit.framework in Frameworks */,
+				A4D354AE139FF78300A3263E /* Foundation.framework in Frameworks */,
+				A4D354B0139FF78300A3263E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4D3549C139FF78300A3263E = {
+			isa = PBXGroup;
+			children = (
+				A4D354B1139FF78300A3263E /* p452rotationChangesInterface */,
+				A4D354AA139FF78300A3263E /* Frameworks */,
+				A4D354A8139FF78300A3263E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4D354A8139FF78300A3263E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4D354A7139FF78300A3263E /* p452rotationChangesInterface.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4D354AA139FF78300A3263E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4D354AB139FF78300A3263E /* UIKit.framework */,
+				A4D354AD139FF78300A3263E /* Foundation.framework */,
+				A4D354AF139FF78300A3263E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4D354B1139FF78300A3263E /* p452rotationChangesInterface */ = {
+			isa = PBXGroup;
+			children = (
+				A4D354BA139FF78300A3263E /* RotationChangesInterfaceAppDelegate.h */,
+				A4D354BB139FF78300A3263E /* RotationChangesInterfaceAppDelegate.m */,
+				A4D354BD139FF78300A3263E /* MainWindow.xib */,
+				A4D354C0139FF78300A3263E /* RootViewController.h */,
+				A4D354C1139FF78300A3263E /* RootViewController.m */,
+				A4D354C3139FF78300A3263E /* RootView.xib */,
+				A4D354B2139FF78300A3263E /* Supporting Files */,
+			);
+			path = p452rotationChangesInterface;
+			sourceTree = "<group>";
+		};
+		A4D354B2139FF78300A3263E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4D354B3139FF78300A3263E /* p452rotationChangesInterface-Info.plist */,
+				A4D354B4139FF78300A3263E /* InfoPlist.strings */,
+				A4D354B7139FF78300A3263E /* p452rotationChangesInterface-Prefix.pch */,
+				A4D354B8139FF78300A3263E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4D354A6139FF78300A3263E /* p452rotationChangesInterface */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4D354C8139FF78300A3263E /* Build configuration list for PBXNativeTarget "p452rotationChangesInterface" */;
+			buildPhases = (
+				A4D354A3139FF78300A3263E /* Sources */,
+				A4D354A4139FF78300A3263E /* Frameworks */,
+				A4D354A5139FF78300A3263E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p452rotationChangesInterface;
+			productName = p452rotationChangesInterface;
+			productReference = A4D354A7139FF78300A3263E /* p452rotationChangesInterface.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4D3549E139FF78300A3263E /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4D354A1139FF78300A3263E /* Build configuration list for PBXProject "p452rotationChangesInterface" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4D3549C139FF78300A3263E;
+			productRefGroup = A4D354A8139FF78300A3263E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4D354A6139FF78300A3263E /* p452rotationChangesInterface */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4D354A5139FF78300A3263E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4D354B6139FF78300A3263E /* InfoPlist.strings in Resources */,
+				A4D354BF139FF78300A3263E /* MainWindow.xib in Resources */,
+				A4D354C5139FF78300A3263E /* RootView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4D354A3139FF78300A3263E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4D354B9139FF78300A3263E /* main.m in Sources */,
+				A4D354BC139FF78300A3263E /* RotationChangesInterfaceAppDelegate.m in Sources */,
+				A4D354C2139FF78300A3263E /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4D354B4139FF78300A3263E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4D354B5139FF78300A3263E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4D354BD139FF78300A3263E /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4D354BE139FF78300A3263E /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A4D354C3139FF78300A3263E /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4D354C4139FF78300A3263E /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4D354C6139FF78300A3263E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4D354C7139FF78300A3263E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4D354C9139FF78300A3263E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p452rotationChangesInterface/p452rotationChangesInterface-Prefix.pch";
+				INFOPLIST_FILE = "p452rotationChangesInterface/p452rotationChangesInterface-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4D354CA139FF78300A3263E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p452rotationChangesInterface/p452rotationChangesInterface-Prefix.pch";
+				INFOPLIST_FILE = "p452rotationChangesInterface/p452rotationChangesInterface-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4D354A1139FF78300A3263E /* Build configuration list for PBXProject "p452rotationChangesInterface" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4D354C6139FF78300A3263E /* Debug */,
+				A4D354C7139FF78300A3263E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4D354C8139FF78300A3263E /* Build configuration list for PBXNativeTarget "p452rotationChangesInterface" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4D354C9139FF78300A3263E /* Debug */,
+				A4D354CA139FF78300A3263E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4D3549E139FF78300A3263E /* Project object */;
+}

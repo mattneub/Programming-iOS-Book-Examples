@@ -1,0 +1,281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4D0E4C5139E8F0C003FEB2C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4D0E4C4139E8F0C003FEB2C /* UIKit.framework */; };
+		A4D0E4C7139E8F0C003FEB2C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4D0E4C6139E8F0C003FEB2C /* Foundation.framework */; };
+		A4D0E4C9139E8F0C003FEB2C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4D0E4C8139E8F0C003FEB2C /* CoreGraphics.framework */; };
+		A4D0E4CF139E8F0C003FEB2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4D0E4CD139E8F0C003FEB2C /* InfoPlist.strings */; };
+		A4D0E4D2139E8F0C003FEB2C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D0E4D1139E8F0C003FEB2C /* main.m */; };
+		A4D0E4D5139E8F0C003FEB2C /* CompassTappableAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D0E4D4139E8F0C003FEB2C /* CompassTappableAppDelegate.m */; };
+		A4D0E4D8139E8F0C003FEB2C /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D0E4D6139E8F0C003FEB2C /* MainWindow.xib */; };
+		A4D0E4E2139E8FB1003FEB2C /* CompassLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D0E4DF139E8FB1003FEB2C /* CompassLayer.m */; };
+		A4D0E4E3139E8FB1003FEB2C /* CompassView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D0E4E1139E8FB1003FEB2C /* CompassView.m */; };
+		A4D0E4E5139E9041003FEB2C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4D0E4E4139E9041003FEB2C /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4D0E4C0139E8F0C003FEB2C /* p424compassTappable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p424compassTappable.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4D0E4C4139E8F0C003FEB2C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4D0E4C6139E8F0C003FEB2C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4D0E4C8139E8F0C003FEB2C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4D0E4CC139E8F0C003FEB2C /* p424compassTappable-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p424compassTappable-Info.plist"; sourceTree = "<group>"; };
+		A4D0E4CE139E8F0C003FEB2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4D0E4D0139E8F0C003FEB2C /* p424compassTappable-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p424compassTappable-Prefix.pch"; sourceTree = "<group>"; };
+		A4D0E4D1139E8F0C003FEB2C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4D0E4D3139E8F0C003FEB2C /* CompassTappableAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompassTappableAppDelegate.h; sourceTree = "<group>"; };
+		A4D0E4D4139E8F0C003FEB2C /* CompassTappableAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompassTappableAppDelegate.m; sourceTree = "<group>"; };
+		A4D0E4D7139E8F0C003FEB2C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4D0E4DE139E8FB1003FEB2C /* CompassLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompassLayer.h; sourceTree = "<group>"; };
+		A4D0E4DF139E8FB1003FEB2C /* CompassLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompassLayer.m; sourceTree = "<group>"; };
+		A4D0E4E0139E8FB1003FEB2C /* CompassView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompassView.h; sourceTree = "<group>"; };
+		A4D0E4E1139E8FB1003FEB2C /* CompassView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompassView.m; sourceTree = "<group>"; };
+		A4D0E4E4139E9041003FEB2C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4D0E4BD139E8F0C003FEB2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4D0E4E5139E9041003FEB2C /* QuartzCore.framework in Frameworks */,
+				A4D0E4C5139E8F0C003FEB2C /* UIKit.framework in Frameworks */,
+				A4D0E4C7139E8F0C003FEB2C /* Foundation.framework in Frameworks */,
+				A4D0E4C9139E8F0C003FEB2C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4D0E4B5139E8F0C003FEB2C = {
+			isa = PBXGroup;
+			children = (
+				A4D0E4CA139E8F0C003FEB2C /* p424compassTappable */,
+				A4D0E4C3139E8F0C003FEB2C /* Frameworks */,
+				A4D0E4C1139E8F0C003FEB2C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4D0E4C1139E8F0C003FEB2C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4D0E4C0139E8F0C003FEB2C /* p424compassTappable.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4D0E4C3139E8F0C003FEB2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4D0E4E4139E9041003FEB2C /* QuartzCore.framework */,
+				A4D0E4C4139E8F0C003FEB2C /* UIKit.framework */,
+				A4D0E4C6139E8F0C003FEB2C /* Foundation.framework */,
+				A4D0E4C8139E8F0C003FEB2C /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4D0E4CA139E8F0C003FEB2C /* p424compassTappable */ = {
+			isa = PBXGroup;
+			children = (
+				A4D0E4DE139E8FB1003FEB2C /* CompassLayer.h */,
+				A4D0E4DF139E8FB1003FEB2C /* CompassLayer.m */,
+				A4D0E4E0139E8FB1003FEB2C /* CompassView.h */,
+				A4D0E4E1139E8FB1003FEB2C /* CompassView.m */,
+				A4D0E4D3139E8F0C003FEB2C /* CompassTappableAppDelegate.h */,
+				A4D0E4D4139E8F0C003FEB2C /* CompassTappableAppDelegate.m */,
+				A4D0E4D6139E8F0C003FEB2C /* MainWindow.xib */,
+				A4D0E4CB139E8F0C003FEB2C /* Supporting Files */,
+			);
+			path = p424compassTappable;
+			sourceTree = "<group>";
+		};
+		A4D0E4CB139E8F0C003FEB2C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4D0E4CC139E8F0C003FEB2C /* p424compassTappable-Info.plist */,
+				A4D0E4CD139E8F0C003FEB2C /* InfoPlist.strings */,
+				A4D0E4D0139E8F0C003FEB2C /* p424compassTappable-Prefix.pch */,
+				A4D0E4D1139E8F0C003FEB2C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4D0E4BF139E8F0C003FEB2C /* p424compassTappable */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4D0E4DB139E8F0C003FEB2C /* Build configuration list for PBXNativeTarget "p424compassTappable" */;
+			buildPhases = (
+				A4D0E4BC139E8F0C003FEB2C /* Sources */,
+				A4D0E4BD139E8F0C003FEB2C /* Frameworks */,
+				A4D0E4BE139E8F0C003FEB2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p424compassTappable;
+			productName = p424compassTappable;
+			productReference = A4D0E4C0139E8F0C003FEB2C /* p424compassTappable.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4D0E4B7139E8F0C003FEB2C /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4D0E4BA139E8F0C003FEB2C /* Build configuration list for PBXProject "p424compassTappable" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4D0E4B5139E8F0C003FEB2C;
+			productRefGroup = A4D0E4C1139E8F0C003FEB2C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4D0E4BF139E8F0C003FEB2C /* p424compassTappable */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4D0E4BE139E8F0C003FEB2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4D0E4CF139E8F0C003FEB2C /* InfoPlist.strings in Resources */,
+				A4D0E4D8139E8F0C003FEB2C /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4D0E4BC139E8F0C003FEB2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4D0E4D2139E8F0C003FEB2C /* main.m in Sources */,
+				A4D0E4D5139E8F0C003FEB2C /* CompassTappableAppDelegate.m in Sources */,
+				A4D0E4E2139E8FB1003FEB2C /* CompassLayer.m in Sources */,
+				A4D0E4E3139E8FB1003FEB2C /* CompassView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4D0E4CD139E8F0C003FEB2C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4D0E4CE139E8F0C003FEB2C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4D0E4D6139E8F0C003FEB2C /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4D0E4D7139E8F0C003FEB2C /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4D0E4D9139E8F0C003FEB2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4D0E4DA139E8F0C003FEB2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4D0E4DC139E8F0C003FEB2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p424compassTappable/p424compassTappable-Prefix.pch";
+				INFOPLIST_FILE = "p424compassTappable/p424compassTappable-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4D0E4DD139E8F0C003FEB2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p424compassTappable/p424compassTappable-Prefix.pch";
+				INFOPLIST_FILE = "p424compassTappable/p424compassTappable-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4D0E4BA139E8F0C003FEB2C /* Build configuration list for PBXProject "p424compassTappable" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4D0E4D9139E8F0C003FEB2C /* Debug */,
+				A4D0E4DA139E8F0C003FEB2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4D0E4DB139E8F0C003FEB2C /* Build configuration list for PBXNativeTarget "p424compassTappable" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4D0E4DC139E8F0C003FEB2C /* Debug */,
+				A4D0E4DD139E8F0C003FEB2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4D0E4B7139E8F0C003FEB2C /* Project object */;
+}

@@ -1,0 +1,281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4BDE3D0139C0C6E003DBBD5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BDE3CF139C0C6E003DBBD5 /* UIKit.framework */; };
+		A4BDE3D2139C0C6E003DBBD5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BDE3D1139C0C6E003DBBD5 /* Foundation.framework */; };
+		A4BDE3D4139C0C6E003DBBD5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BDE3D3139C0C6E003DBBD5 /* CoreGraphics.framework */; };
+		A4BDE3DA139C0C6E003DBBD5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4BDE3D8139C0C6E003DBBD5 /* InfoPlist.strings */; };
+		A4BDE3DD139C0C6E003DBBD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDE3DC139C0C6E003DBBD5 /* main.m */; };
+		A4BDE3E0139C0C6E003DBBD5 /* TransformLayerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDE3DF139C0C6E003DBBD5 /* TransformLayerAppDelegate.m */; };
+		A4BDE3E3139C0C6E003DBBD5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4BDE3E1139C0C6E003DBBD5 /* MainWindow.xib */; };
+		A4BDE3EA139C0CBE003DBBD5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BDE3E9139C0CBE003DBBD5 /* QuartzCore.framework */; };
+		A4BDE3EF139C0CD5003DBBD5 /* CompassLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDE3EC139C0CD5003DBBD5 /* CompassLayer.m */; };
+		A4BDE3F0139C0CD5003DBBD5 /* CompassView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDE3EE139C0CD5003DBBD5 /* CompassView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4BDE3CB139C0C6E003DBBD5 /* p351transformLayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p351transformLayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4BDE3CF139C0C6E003DBBD5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4BDE3D1139C0C6E003DBBD5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4BDE3D3139C0C6E003DBBD5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4BDE3D7139C0C6E003DBBD5 /* p351transformLayer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p351transformLayer-Info.plist"; sourceTree = "<group>"; };
+		A4BDE3D9139C0C6E003DBBD5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4BDE3DB139C0C6E003DBBD5 /* p351transformLayer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p351transformLayer-Prefix.pch"; sourceTree = "<group>"; };
+		A4BDE3DC139C0C6E003DBBD5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4BDE3DE139C0C6E003DBBD5 /* TransformLayerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransformLayerAppDelegate.h; sourceTree = "<group>"; };
+		A4BDE3DF139C0C6E003DBBD5 /* TransformLayerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransformLayerAppDelegate.m; sourceTree = "<group>"; };
+		A4BDE3E2139C0C6E003DBBD5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4BDE3E9139C0CBE003DBBD5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A4BDE3EB139C0CD5003DBBD5 /* CompassLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompassLayer.h; sourceTree = "<group>"; };
+		A4BDE3EC139C0CD5003DBBD5 /* CompassLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompassLayer.m; sourceTree = "<group>"; };
+		A4BDE3ED139C0CD5003DBBD5 /* CompassView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompassView.h; sourceTree = "<group>"; };
+		A4BDE3EE139C0CD5003DBBD5 /* CompassView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompassView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4BDE3C8139C0C6E003DBBD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4BDE3EA139C0CBE003DBBD5 /* QuartzCore.framework in Frameworks */,
+				A4BDE3D0139C0C6E003DBBD5 /* UIKit.framework in Frameworks */,
+				A4BDE3D2139C0C6E003DBBD5 /* Foundation.framework in Frameworks */,
+				A4BDE3D4139C0C6E003DBBD5 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4BDE3C0139C0C6E003DBBD5 = {
+			isa = PBXGroup;
+			children = (
+				A4BDE3D5139C0C6E003DBBD5 /* p351transformLayer */,
+				A4BDE3CE139C0C6E003DBBD5 /* Frameworks */,
+				A4BDE3CC139C0C6E003DBBD5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4BDE3CC139C0C6E003DBBD5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4BDE3CB139C0C6E003DBBD5 /* p351transformLayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4BDE3CE139C0C6E003DBBD5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4BDE3E9139C0CBE003DBBD5 /* QuartzCore.framework */,
+				A4BDE3CF139C0C6E003DBBD5 /* UIKit.framework */,
+				A4BDE3D1139C0C6E003DBBD5 /* Foundation.framework */,
+				A4BDE3D3139C0C6E003DBBD5 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4BDE3D5139C0C6E003DBBD5 /* p351transformLayer */ = {
+			isa = PBXGroup;
+			children = (
+				A4BDE3EB139C0CD5003DBBD5 /* CompassLayer.h */,
+				A4BDE3EC139C0CD5003DBBD5 /* CompassLayer.m */,
+				A4BDE3ED139C0CD5003DBBD5 /* CompassView.h */,
+				A4BDE3EE139C0CD5003DBBD5 /* CompassView.m */,
+				A4BDE3DE139C0C6E003DBBD5 /* TransformLayerAppDelegate.h */,
+				A4BDE3DF139C0C6E003DBBD5 /* TransformLayerAppDelegate.m */,
+				A4BDE3E1139C0C6E003DBBD5 /* MainWindow.xib */,
+				A4BDE3D6139C0C6E003DBBD5 /* Supporting Files */,
+			);
+			path = p351transformLayer;
+			sourceTree = "<group>";
+		};
+		A4BDE3D6139C0C6E003DBBD5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4BDE3D7139C0C6E003DBBD5 /* p351transformLayer-Info.plist */,
+				A4BDE3D8139C0C6E003DBBD5 /* InfoPlist.strings */,
+				A4BDE3DB139C0C6E003DBBD5 /* p351transformLayer-Prefix.pch */,
+				A4BDE3DC139C0C6E003DBBD5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4BDE3CA139C0C6E003DBBD5 /* p351transformLayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4BDE3E6139C0C6E003DBBD5 /* Build configuration list for PBXNativeTarget "p351transformLayer" */;
+			buildPhases = (
+				A4BDE3C7139C0C6E003DBBD5 /* Sources */,
+				A4BDE3C8139C0C6E003DBBD5 /* Frameworks */,
+				A4BDE3C9139C0C6E003DBBD5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p351transformLayer;
+			productName = p351transformLayer;
+			productReference = A4BDE3CB139C0C6E003DBBD5 /* p351transformLayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4BDE3C2139C0C6E003DBBD5 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4BDE3C5139C0C6E003DBBD5 /* Build configuration list for PBXProject "p351transformLayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4BDE3C0139C0C6E003DBBD5;
+			productRefGroup = A4BDE3CC139C0C6E003DBBD5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4BDE3CA139C0C6E003DBBD5 /* p351transformLayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4BDE3C9139C0C6E003DBBD5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4BDE3DA139C0C6E003DBBD5 /* InfoPlist.strings in Resources */,
+				A4BDE3E3139C0C6E003DBBD5 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4BDE3C7139C0C6E003DBBD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4BDE3DD139C0C6E003DBBD5 /* main.m in Sources */,
+				A4BDE3E0139C0C6E003DBBD5 /* TransformLayerAppDelegate.m in Sources */,
+				A4BDE3EF139C0CD5003DBBD5 /* CompassLayer.m in Sources */,
+				A4BDE3F0139C0CD5003DBBD5 /* CompassView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4BDE3D8139C0C6E003DBBD5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4BDE3D9139C0C6E003DBBD5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4BDE3E1139C0C6E003DBBD5 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4BDE3E2139C0C6E003DBBD5 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4BDE3E4139C0C6E003DBBD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4BDE3E5139C0C6E003DBBD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4BDE3E7139C0C6E003DBBD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p351transformLayer/p351transformLayer-Prefix.pch";
+				INFOPLIST_FILE = "p351transformLayer/p351transformLayer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4BDE3E8139C0C6E003DBBD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p351transformLayer/p351transformLayer-Prefix.pch";
+				INFOPLIST_FILE = "p351transformLayer/p351transformLayer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4BDE3C5139C0C6E003DBBD5 /* Build configuration list for PBXProject "p351transformLayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4BDE3E4139C0C6E003DBBD5 /* Debug */,
+				A4BDE3E5139C0C6E003DBBD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4BDE3E6139C0C6E003DBBD5 /* Build configuration list for PBXNativeTarget "p351transformLayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4BDE3E7139C0C6E003DBBD5 /* Debug */,
+				A4BDE3E8139C0C6E003DBBD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4BDE3C2139C0C6E003DBBD5 /* Project object */;
+}

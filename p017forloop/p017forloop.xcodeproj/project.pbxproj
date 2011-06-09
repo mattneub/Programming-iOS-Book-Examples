@@ -1,0 +1,197 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4400065137DAC4C0059372A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A4400064137DAC4C0059372A /* main.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A440005E137DAC4C0059372A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A4400060137DAC4C0059372A /* p017forloop */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = p017forloop; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4400064137DAC4C0059372A /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A440005D137DAC4C0059372A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4400055137DAC4C0059372A = {
+			isa = PBXGroup;
+			children = (
+				A4400063137DAC4C0059372A /* p017forloop */,
+				A4400061137DAC4C0059372A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4400061137DAC4C0059372A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4400060137DAC4C0059372A /* p017forloop */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4400063137DAC4C0059372A /* p017forloop */ = {
+			isa = PBXGroup;
+			children = (
+				A4400064137DAC4C0059372A /* main.c */,
+			);
+			path = p017forloop;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A440005F137DAC4C0059372A /* p017forloop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4400069137DAC4C0059372A /* Build configuration list for PBXNativeTarget "p017forloop" */;
+			buildPhases = (
+				A440005C137DAC4C0059372A /* Sources */,
+				A440005D137DAC4C0059372A /* Frameworks */,
+				A440005E137DAC4C0059372A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p017forloop;
+			productName = p017forloop;
+			productReference = A4400060137DAC4C0059372A /* p017forloop */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4400057137DAC4C0059372A /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A440005A137DAC4C0059372A /* Build configuration list for PBXProject "p017forloop" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4400055137DAC4C0059372A;
+			productRefGroup = A4400061137DAC4C0059372A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A440005F137DAC4C0059372A /* p017forloop */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A440005C137DAC4C0059372A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4400065137DAC4C0059372A /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A4400067137DAC4C0059372A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A4400068137DAC4C0059372A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A440006A137DAC4C0059372A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A440006B137DAC4C0059372A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A440005A137DAC4C0059372A /* Build configuration list for PBXProject "p017forloop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4400067137DAC4C0059372A /* Debug */,
+				A4400068137DAC4C0059372A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4400069137DAC4C0059372A /* Build configuration list for PBXNativeTarget "p017forloop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A440006A137DAC4C0059372A /* Debug */,
+				A440006B137DAC4C0059372A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4400057137DAC4C0059372A /* Project object */;
+}

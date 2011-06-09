@@ -1,0 +1,275 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4D353E9139FD0B800A3263E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4D353E8139FD0B800A3263E /* UIKit.framework */; };
+		A4D353EB139FD0B800A3263E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4D353EA139FD0B800A3263E /* Foundation.framework */; };
+		A4D353ED139FD0B800A3263E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4D353EC139FD0B800A3263E /* CoreGraphics.framework */; };
+		A4D353F3139FD0B800A3263E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4D353F1139FD0B800A3263E /* InfoPlist.strings */; };
+		A4D353F6139FD0B800A3263E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D353F5139FD0B800A3263E /* main.m */; };
+		A4D353FC139FD0B800A3263E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D353FA139FD0B800A3263E /* MainWindow.xib */; };
+		A4D35406139FD0EB00A3263E /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D35403139FD0EB00A3263E /* RootViewController.m */; };
+		A4D35407139FD0EB00A3263E /* ManualViewControllerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D35405139FD0EB00A3263E /* ManualViewControllerAppDelegate.m */; };
+		A4D35409139FD6A700A3263E /* MyNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D35408139FD6A700A3263E /* MyNib.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4D353E4139FD0B800A3263E /* p440manualViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p440manualViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4D353E8139FD0B800A3263E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4D353EA139FD0B800A3263E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4D353EC139FD0B800A3263E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4D353F0139FD0B800A3263E /* p440manualViewController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p440manualViewController-Info.plist"; sourceTree = "<group>"; };
+		A4D353F2139FD0B800A3263E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4D353F4139FD0B800A3263E /* p440manualViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p440manualViewController-Prefix.pch"; sourceTree = "<group>"; };
+		A4D353F5139FD0B800A3263E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4D353FB139FD0B800A3263E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4D35402139FD0EB00A3263E /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A4D35403139FD0EB00A3263E /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A4D35404139FD0EB00A3263E /* ManualViewControllerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualViewControllerAppDelegate.h; sourceTree = "<group>"; };
+		A4D35405139FD0EB00A3263E /* ManualViewControllerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualViewControllerAppDelegate.m; sourceTree = "<group>"; };
+		A4D35408139FD6A700A3263E /* MyNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNib.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4D353E1139FD0B800A3263E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4D353E9139FD0B800A3263E /* UIKit.framework in Frameworks */,
+				A4D353EB139FD0B800A3263E /* Foundation.framework in Frameworks */,
+				A4D353ED139FD0B800A3263E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4D353D9139FD0B800A3263E = {
+			isa = PBXGroup;
+			children = (
+				A4D353EE139FD0B800A3263E /* p440manualViewController */,
+				A4D353E7139FD0B800A3263E /* Frameworks */,
+				A4D353E5139FD0B800A3263E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4D353E5139FD0B800A3263E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4D353E4139FD0B800A3263E /* p440manualViewController.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4D353E7139FD0B800A3263E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4D353E8139FD0B800A3263E /* UIKit.framework */,
+				A4D353EA139FD0B800A3263E /* Foundation.framework */,
+				A4D353EC139FD0B800A3263E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4D353EE139FD0B800A3263E /* p440manualViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4D35402139FD0EB00A3263E /* RootViewController.h */,
+				A4D35403139FD0EB00A3263E /* RootViewController.m */,
+				A4D35404139FD0EB00A3263E /* ManualViewControllerAppDelegate.h */,
+				A4D35405139FD0EB00A3263E /* ManualViewControllerAppDelegate.m */,
+				A4D35408139FD6A700A3263E /* MyNib.xib */,
+				A4D353FA139FD0B800A3263E /* MainWindow.xib */,
+				A4D353EF139FD0B800A3263E /* Supporting Files */,
+			);
+			path = p440manualViewController;
+			sourceTree = "<group>";
+		};
+		A4D353EF139FD0B800A3263E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4D353F0139FD0B800A3263E /* p440manualViewController-Info.plist */,
+				A4D353F1139FD0B800A3263E /* InfoPlist.strings */,
+				A4D353F4139FD0B800A3263E /* p440manualViewController-Prefix.pch */,
+				A4D353F5139FD0B800A3263E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4D353E3139FD0B800A3263E /* p440manualViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4D353FF139FD0B800A3263E /* Build configuration list for PBXNativeTarget "p440manualViewController" */;
+			buildPhases = (
+				A4D353E0139FD0B800A3263E /* Sources */,
+				A4D353E1139FD0B800A3263E /* Frameworks */,
+				A4D353E2139FD0B800A3263E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p440manualViewController;
+			productName = p440manualViewController;
+			productReference = A4D353E4139FD0B800A3263E /* p440manualViewController.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4D353DB139FD0B800A3263E /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4D353DE139FD0B800A3263E /* Build configuration list for PBXProject "p440manualViewController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4D353D9139FD0B800A3263E;
+			productRefGroup = A4D353E5139FD0B800A3263E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4D353E3139FD0B800A3263E /* p440manualViewController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4D353E2139FD0B800A3263E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4D353F3139FD0B800A3263E /* InfoPlist.strings in Resources */,
+				A4D353FC139FD0B800A3263E /* MainWindow.xib in Resources */,
+				A4D35409139FD6A700A3263E /* MyNib.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4D353E0139FD0B800A3263E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4D353F6139FD0B800A3263E /* main.m in Sources */,
+				A4D35406139FD0EB00A3263E /* RootViewController.m in Sources */,
+				A4D35407139FD0EB00A3263E /* ManualViewControllerAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4D353F1139FD0B800A3263E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4D353F2139FD0B800A3263E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4D353FA139FD0B800A3263E /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4D353FB139FD0B800A3263E /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4D353FD139FD0B800A3263E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4D353FE139FD0B800A3263E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4D35400139FD0B800A3263E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p440manualViewController/p440manualViewController-Prefix.pch";
+				INFOPLIST_FILE = "p440manualViewController/p440manualViewController-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4D35401139FD0B800A3263E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p440manualViewController/p440manualViewController-Prefix.pch";
+				INFOPLIST_FILE = "p440manualViewController/p440manualViewController-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4D353DE139FD0B800A3263E /* Build configuration list for PBXProject "p440manualViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4D353FD139FD0B800A3263E /* Debug */,
+				A4D353FE139FD0B800A3263E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4D353FF139FD0B800A3263E /* Build configuration list for PBXNativeTarget "p440manualViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4D35400139FD0B800A3263E /* Debug */,
+				A4D35401139FD0B800A3263E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4D353DB139FD0B800A3263E /* Project object */;
+}

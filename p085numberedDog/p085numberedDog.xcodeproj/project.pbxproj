@@ -1,0 +1,271 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4DB13841382F0B70035D33E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DB13831382F0B70035D33E /* UIKit.framework */; };
+		A4DB13861382F0B70035D33E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DB13851382F0B70035D33E /* Foundation.framework */; };
+		A4DB13881382F0B70035D33E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DB13871382F0B70035D33E /* CoreGraphics.framework */; };
+		A4DB138E1382F0B70035D33E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4DB138C1382F0B70035D33E /* InfoPlist.strings */; };
+		A4DB13911382F0B70035D33E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DB13901382F0B70035D33E /* main.m */; };
+		A4DB13941382F0B70035D33E /* NumberedDogAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DB13931382F0B70035D33E /* NumberedDogAppDelegate.m */; };
+		A4DB13971382F0B70035D33E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4DB13951382F0B70035D33E /* MainWindow.xib */; };
+		A4DB139F1382F0E50035D33E /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DB139E1382F0E50035D33E /* Dog.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4DB137F1382F0B70035D33E /* p085numberedDog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p085numberedDog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4DB13831382F0B70035D33E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4DB13851382F0B70035D33E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4DB13871382F0B70035D33E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4DB138B1382F0B70035D33E /* p085numberedDog-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p085numberedDog-Info.plist"; sourceTree = "<group>"; };
+		A4DB138D1382F0B70035D33E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4DB138F1382F0B70035D33E /* p085numberedDog-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p085numberedDog-Prefix.pch"; sourceTree = "<group>"; };
+		A4DB13901382F0B70035D33E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4DB13921382F0B70035D33E /* NumberedDogAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NumberedDogAppDelegate.h; sourceTree = "<group>"; };
+		A4DB13931382F0B70035D33E /* NumberedDogAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumberedDogAppDelegate.m; sourceTree = "<group>"; };
+		A4DB13961382F0B70035D33E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4DB139D1382F0E50035D33E /* Dog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dog.h; sourceTree = "<group>"; };
+		A4DB139E1382F0E50035D33E /* Dog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dog.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4DB137C1382F0B70035D33E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4DB13841382F0B70035D33E /* UIKit.framework in Frameworks */,
+				A4DB13861382F0B70035D33E /* Foundation.framework in Frameworks */,
+				A4DB13881382F0B70035D33E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4DB13741382F0B70035D33E = {
+			isa = PBXGroup;
+			children = (
+				A4DB13891382F0B70035D33E /* p085numberedDog */,
+				A4DB13821382F0B70035D33E /* Frameworks */,
+				A4DB13801382F0B70035D33E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4DB13801382F0B70035D33E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4DB137F1382F0B70035D33E /* p085numberedDog.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4DB13821382F0B70035D33E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4DB13831382F0B70035D33E /* UIKit.framework */,
+				A4DB13851382F0B70035D33E /* Foundation.framework */,
+				A4DB13871382F0B70035D33E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4DB13891382F0B70035D33E /* p085numberedDog */ = {
+			isa = PBXGroup;
+			children = (
+				A4DB139D1382F0E50035D33E /* Dog.h */,
+				A4DB139E1382F0E50035D33E /* Dog.m */,
+				A4DB13921382F0B70035D33E /* NumberedDogAppDelegate.h */,
+				A4DB13931382F0B70035D33E /* NumberedDogAppDelegate.m */,
+				A4DB13951382F0B70035D33E /* MainWindow.xib */,
+				A4DB138A1382F0B70035D33E /* Supporting Files */,
+			);
+			path = p085numberedDog;
+			sourceTree = "<group>";
+		};
+		A4DB138A1382F0B70035D33E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4DB138B1382F0B70035D33E /* p085numberedDog-Info.plist */,
+				A4DB138C1382F0B70035D33E /* InfoPlist.strings */,
+				A4DB138F1382F0B70035D33E /* p085numberedDog-Prefix.pch */,
+				A4DB13901382F0B70035D33E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4DB137E1382F0B70035D33E /* p085numberedDog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4DB139A1382F0B70035D33E /* Build configuration list for PBXNativeTarget "p085numberedDog" */;
+			buildPhases = (
+				A4DB137B1382F0B70035D33E /* Sources */,
+				A4DB137C1382F0B70035D33E /* Frameworks */,
+				A4DB137D1382F0B70035D33E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p085numberedDog;
+			productName = p085numberedDog;
+			productReference = A4DB137F1382F0B70035D33E /* p085numberedDog.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4DB13761382F0B70035D33E /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4DB13791382F0B70035D33E /* Build configuration list for PBXProject "p085numberedDog" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4DB13741382F0B70035D33E;
+			productRefGroup = A4DB13801382F0B70035D33E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4DB137E1382F0B70035D33E /* p085numberedDog */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4DB137D1382F0B70035D33E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4DB138E1382F0B70035D33E /* InfoPlist.strings in Resources */,
+				A4DB13971382F0B70035D33E /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4DB137B1382F0B70035D33E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4DB13911382F0B70035D33E /* main.m in Sources */,
+				A4DB13941382F0B70035D33E /* NumberedDogAppDelegate.m in Sources */,
+				A4DB139F1382F0E50035D33E /* Dog.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4DB138C1382F0B70035D33E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4DB138D1382F0B70035D33E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4DB13951382F0B70035D33E /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4DB13961382F0B70035D33E /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4DB13981382F0B70035D33E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4DB13991382F0B70035D33E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4DB139B1382F0B70035D33E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p085numberedDog/p085numberedDog-Prefix.pch";
+				INFOPLIST_FILE = "p085numberedDog/p085numberedDog-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4DB139C1382F0B70035D33E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p085numberedDog/p085numberedDog-Prefix.pch";
+				INFOPLIST_FILE = "p085numberedDog/p085numberedDog-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4DB13791382F0B70035D33E /* Build configuration list for PBXProject "p085numberedDog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4DB13981382F0B70035D33E /* Debug */,
+				A4DB13991382F0B70035D33E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4DB139A1382F0B70035D33E /* Build configuration list for PBXNativeTarget "p085numberedDog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4DB139B1382F0B70035D33E /* Debug */,
+				A4DB139C1382F0B70035D33E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4DB13761382F0B70035D33E /* Project object */;
+}

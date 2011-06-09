@@ -1,0 +1,273 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4FBAD16139C6861002A9A2D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FBAD15139C6861002A9A2D /* UIKit.framework */; };
+		A4FBAD18139C6861002A9A2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FBAD17139C6861002A9A2D /* Foundation.framework */; };
+		A4FBAD1A139C6861002A9A2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FBAD19139C6861002A9A2D /* CoreGraphics.framework */; };
+		A4FBAD20139C6861002A9A2D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4FBAD1E139C6861002A9A2D /* InfoPlist.strings */; };
+		A4FBAD23139C6861002A9A2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FBAD22139C6861002A9A2D /* main.m */; };
+		A4FBAD26139C6861002A9A2D /* ImageViewAnimationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FBAD25139C6861002A9A2D /* ImageViewAnimationAppDelegate.m */; };
+		A4FBAD29139C6862002A9A2D /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FBAD27139C6862002A9A2D /* MainWindow.xib */; };
+		A4FBAD39139C6979002A9A2D /* Mars.png in Resources */ = {isa = PBXBuildFile; fileRef = A4FBAD37139C6979002A9A2D /* Mars.png */; };
+		A4FBAD3A139C6979002A9A2D /* Mars@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4FBAD38139C6979002A9A2D /* Mars@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4FBAD11139C6861002A9A2D /* p361imageViewAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p361imageViewAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FBAD15139C6861002A9A2D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4FBAD17139C6861002A9A2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4FBAD19139C6861002A9A2D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4FBAD1D139C6861002A9A2D /* p361imageViewAnimation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p361imageViewAnimation-Info.plist"; sourceTree = "<group>"; };
+		A4FBAD1F139C6861002A9A2D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4FBAD21139C6861002A9A2D /* p361imageViewAnimation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p361imageViewAnimation-Prefix.pch"; sourceTree = "<group>"; };
+		A4FBAD22139C6861002A9A2D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4FBAD24139C6861002A9A2D /* ImageViewAnimationAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageViewAnimationAppDelegate.h; sourceTree = "<group>"; };
+		A4FBAD25139C6861002A9A2D /* ImageViewAnimationAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageViewAnimationAppDelegate.m; sourceTree = "<group>"; };
+		A4FBAD28139C6862002A9A2D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4FBAD37139C6979002A9A2D /* Mars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mars.png; sourceTree = "<group>"; };
+		A4FBAD38139C6979002A9A2D /* Mars@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mars@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4FBAD0E139C6861002A9A2D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FBAD16139C6861002A9A2D /* UIKit.framework in Frameworks */,
+				A4FBAD18139C6861002A9A2D /* Foundation.framework in Frameworks */,
+				A4FBAD1A139C6861002A9A2D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4FBAD06139C6861002A9A2D = {
+			isa = PBXGroup;
+			children = (
+				A4FBAD1B139C6861002A9A2D /* p361imageViewAnimation */,
+				A4FBAD14139C6861002A9A2D /* Frameworks */,
+				A4FBAD12139C6861002A9A2D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4FBAD12139C6861002A9A2D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4FBAD11139C6861002A9A2D /* p361imageViewAnimation.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4FBAD14139C6861002A9A2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4FBAD15139C6861002A9A2D /* UIKit.framework */,
+				A4FBAD17139C6861002A9A2D /* Foundation.framework */,
+				A4FBAD19139C6861002A9A2D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4FBAD1B139C6861002A9A2D /* p361imageViewAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				A4FBAD24139C6861002A9A2D /* ImageViewAnimationAppDelegate.h */,
+				A4FBAD25139C6861002A9A2D /* ImageViewAnimationAppDelegate.m */,
+				A4FBAD27139C6862002A9A2D /* MainWindow.xib */,
+				A4FBAD1C139C6861002A9A2D /* Supporting Files */,
+			);
+			path = p361imageViewAnimation;
+			sourceTree = "<group>";
+		};
+		A4FBAD1C139C6861002A9A2D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4FBAD37139C6979002A9A2D /* Mars.png */,
+				A4FBAD38139C6979002A9A2D /* Mars@2x.png */,
+				A4FBAD1D139C6861002A9A2D /* p361imageViewAnimation-Info.plist */,
+				A4FBAD1E139C6861002A9A2D /* InfoPlist.strings */,
+				A4FBAD21139C6861002A9A2D /* p361imageViewAnimation-Prefix.pch */,
+				A4FBAD22139C6861002A9A2D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4FBAD10139C6861002A9A2D /* p361imageViewAnimation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4FBAD2C139C6862002A9A2D /* Build configuration list for PBXNativeTarget "p361imageViewAnimation" */;
+			buildPhases = (
+				A4FBAD0D139C6861002A9A2D /* Sources */,
+				A4FBAD0E139C6861002A9A2D /* Frameworks */,
+				A4FBAD0F139C6861002A9A2D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p361imageViewAnimation;
+			productName = p361imageViewAnimation;
+			productReference = A4FBAD11139C6861002A9A2D /* p361imageViewAnimation.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4FBAD08139C6861002A9A2D /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4FBAD0B139C6861002A9A2D /* Build configuration list for PBXProject "p361imageViewAnimation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4FBAD06139C6861002A9A2D;
+			productRefGroup = A4FBAD12139C6861002A9A2D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4FBAD10139C6861002A9A2D /* p361imageViewAnimation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4FBAD0F139C6861002A9A2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FBAD20139C6861002A9A2D /* InfoPlist.strings in Resources */,
+				A4FBAD29139C6862002A9A2D /* MainWindow.xib in Resources */,
+				A4FBAD39139C6979002A9A2D /* Mars.png in Resources */,
+				A4FBAD3A139C6979002A9A2D /* Mars@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4FBAD0D139C6861002A9A2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FBAD23139C6861002A9A2D /* main.m in Sources */,
+				A4FBAD26139C6861002A9A2D /* ImageViewAnimationAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4FBAD1E139C6861002A9A2D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4FBAD1F139C6861002A9A2D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4FBAD27139C6862002A9A2D /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4FBAD28139C6862002A9A2D /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4FBAD2A139C6862002A9A2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4FBAD2B139C6862002A9A2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4FBAD2D139C6862002A9A2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p361imageViewAnimation/p361imageViewAnimation-Prefix.pch";
+				INFOPLIST_FILE = "p361imageViewAnimation/p361imageViewAnimation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4FBAD2E139C6862002A9A2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p361imageViewAnimation/p361imageViewAnimation-Prefix.pch";
+				INFOPLIST_FILE = "p361imageViewAnimation/p361imageViewAnimation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4FBAD0B139C6861002A9A2D /* Build configuration list for PBXProject "p361imageViewAnimation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4FBAD2A139C6862002A9A2D /* Debug */,
+				A4FBAD2B139C6862002A9A2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4FBAD2C139C6862002A9A2D /* Build configuration list for PBXNativeTarget "p361imageViewAnimation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4FBAD2D139C6862002A9A2D /* Debug */,
+				A4FBAD2E139C6862002A9A2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4FBAD08139C6861002A9A2D /* Project object */;
+}
