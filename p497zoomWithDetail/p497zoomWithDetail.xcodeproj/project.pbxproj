@@ -1,0 +1,281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4C5A5D913A51A8200BE0AD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C5A5D813A51A8200BE0AD4 /* UIKit.framework */; };
+		A4C5A5DB13A51A8200BE0AD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C5A5DA13A51A8200BE0AD4 /* Foundation.framework */; };
+		A4C5A5DD13A51A8200BE0AD4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C5A5DC13A51A8200BE0AD4 /* CoreGraphics.framework */; };
+		A4C5A5E313A51A8200BE0AD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4C5A5E113A51A8200BE0AD4 /* InfoPlist.strings */; };
+		A4C5A5E613A51A8200BE0AD4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5E513A51A8200BE0AD4 /* main.m */; };
+		A4C5A5E913A51A8200BE0AD4 /* ZoomWithDetailAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5E813A51A8200BE0AD4 /* ZoomWithDetailAppDelegate.m */; };
+		A4C5A5EC13A51A8200BE0AD4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4C5A5EA13A51A8200BE0AD4 /* MainWindow.xib */; };
+		A4C5A5EF13A51A8200BE0AD4 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5EE13A51A8200BE0AD4 /* RootViewController.m */; };
+		A4C5A5F913A51AC000BE0AD4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C5A5F813A51AC000BE0AD4 /* QuartzCore.framework */; };
+		A4C5A5FC13A51B2C00BE0AD4 /* TiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5FB13A51B2C00BE0AD4 /* TiledView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4C5A5D413A51A8200BE0AD4 /* p497zoomWithDetail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p497zoomWithDetail.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4C5A5D813A51A8200BE0AD4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4C5A5DA13A51A8200BE0AD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4C5A5DC13A51A8200BE0AD4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4C5A5E013A51A8200BE0AD4 /* p497zoomWithDetail-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p497zoomWithDetail-Info.plist"; sourceTree = "<group>"; };
+		A4C5A5E213A51A8200BE0AD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4C5A5E413A51A8200BE0AD4 /* p497zoomWithDetail-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p497zoomWithDetail-Prefix.pch"; sourceTree = "<group>"; };
+		A4C5A5E513A51A8200BE0AD4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4C5A5E713A51A8200BE0AD4 /* ZoomWithDetailAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoomWithDetailAppDelegate.h; sourceTree = "<group>"; };
+		A4C5A5E813A51A8200BE0AD4 /* ZoomWithDetailAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomWithDetailAppDelegate.m; sourceTree = "<group>"; };
+		A4C5A5EB13A51A8200BE0AD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4C5A5ED13A51A8200BE0AD4 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A4C5A5EE13A51A8200BE0AD4 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A4C5A5F813A51AC000BE0AD4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A4C5A5FA13A51B2C00BE0AD4 /* TiledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiledView.h; sourceTree = "<group>"; };
+		A4C5A5FB13A51B2C00BE0AD4 /* TiledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiledView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4C5A5D113A51A8200BE0AD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4C5A5F913A51AC000BE0AD4 /* QuartzCore.framework in Frameworks */,
+				A4C5A5D913A51A8200BE0AD4 /* UIKit.framework in Frameworks */,
+				A4C5A5DB13A51A8200BE0AD4 /* Foundation.framework in Frameworks */,
+				A4C5A5DD13A51A8200BE0AD4 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4C5A5C913A51A8100BE0AD4 = {
+			isa = PBXGroup;
+			children = (
+				A4C5A5DE13A51A8200BE0AD4 /* p497zoomWithDetail */,
+				A4C5A5D713A51A8200BE0AD4 /* Frameworks */,
+				A4C5A5D513A51A8200BE0AD4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4C5A5D513A51A8200BE0AD4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4C5A5D413A51A8200BE0AD4 /* p497zoomWithDetail.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4C5A5D713A51A8200BE0AD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4C5A5F813A51AC000BE0AD4 /* QuartzCore.framework */,
+				A4C5A5D813A51A8200BE0AD4 /* UIKit.framework */,
+				A4C5A5DA13A51A8200BE0AD4 /* Foundation.framework */,
+				A4C5A5DC13A51A8200BE0AD4 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4C5A5DE13A51A8200BE0AD4 /* p497zoomWithDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A4C5A5E713A51A8200BE0AD4 /* ZoomWithDetailAppDelegate.h */,
+				A4C5A5E813A51A8200BE0AD4 /* ZoomWithDetailAppDelegate.m */,
+				A4C5A5EA13A51A8200BE0AD4 /* MainWindow.xib */,
+				A4C5A5ED13A51A8200BE0AD4 /* RootViewController.h */,
+				A4C5A5EE13A51A8200BE0AD4 /* RootViewController.m */,
+				A4C5A5FA13A51B2C00BE0AD4 /* TiledView.h */,
+				A4C5A5FB13A51B2C00BE0AD4 /* TiledView.m */,
+				A4C5A5DF13A51A8200BE0AD4 /* Supporting Files */,
+			);
+			path = p497zoomWithDetail;
+			sourceTree = "<group>";
+		};
+		A4C5A5DF13A51A8200BE0AD4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4C5A5E013A51A8200BE0AD4 /* p497zoomWithDetail-Info.plist */,
+				A4C5A5E113A51A8200BE0AD4 /* InfoPlist.strings */,
+				A4C5A5E413A51A8200BE0AD4 /* p497zoomWithDetail-Prefix.pch */,
+				A4C5A5E513A51A8200BE0AD4 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4C5A5D313A51A8200BE0AD4 /* p497zoomWithDetail */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4C5A5F513A51A8200BE0AD4 /* Build configuration list for PBXNativeTarget "p497zoomWithDetail" */;
+			buildPhases = (
+				A4C5A5D013A51A8200BE0AD4 /* Sources */,
+				A4C5A5D113A51A8200BE0AD4 /* Frameworks */,
+				A4C5A5D213A51A8200BE0AD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p497zoomWithDetail;
+			productName = p497zoomWithDetail;
+			productReference = A4C5A5D413A51A8200BE0AD4 /* p497zoomWithDetail.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4C5A5CB13A51A8100BE0AD4 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4C5A5CE13A51A8100BE0AD4 /* Build configuration list for PBXProject "p497zoomWithDetail" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4C5A5C913A51A8100BE0AD4;
+			productRefGroup = A4C5A5D513A51A8200BE0AD4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4C5A5D313A51A8200BE0AD4 /* p497zoomWithDetail */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4C5A5D213A51A8200BE0AD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4C5A5E313A51A8200BE0AD4 /* InfoPlist.strings in Resources */,
+				A4C5A5EC13A51A8200BE0AD4 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4C5A5D013A51A8200BE0AD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4C5A5E613A51A8200BE0AD4 /* main.m in Sources */,
+				A4C5A5E913A51A8200BE0AD4 /* ZoomWithDetailAppDelegate.m in Sources */,
+				A4C5A5EF13A51A8200BE0AD4 /* RootViewController.m in Sources */,
+				A4C5A5FC13A51B2C00BE0AD4 /* TiledView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4C5A5E113A51A8200BE0AD4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4C5A5E213A51A8200BE0AD4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4C5A5EA13A51A8200BE0AD4 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4C5A5EB13A51A8200BE0AD4 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4C5A5F313A51A8200BE0AD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4C5A5F413A51A8200BE0AD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4C5A5F613A51A8200BE0AD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p497zoomWithDetail/p497zoomWithDetail-Prefix.pch";
+				INFOPLIST_FILE = "p497zoomWithDetail/p497zoomWithDetail-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4C5A5F713A51A8200BE0AD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p497zoomWithDetail/p497zoomWithDetail-Prefix.pch";
+				INFOPLIST_FILE = "p497zoomWithDetail/p497zoomWithDetail-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4C5A5CE13A51A8100BE0AD4 /* Build configuration list for PBXProject "p497zoomWithDetail" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4C5A5F313A51A8200BE0AD4 /* Debug */,
+				A4C5A5F413A51A8200BE0AD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4C5A5F513A51A8200BE0AD4 /* Build configuration list for PBXNativeTarget "p497zoomWithDetail" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4C5A5F613A51A8200BE0AD4 /* Debug */,
+				A4C5A5F713A51A8200BE0AD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4C5A5CB13A51A8100BE0AD4 /* Project object */;
+}
