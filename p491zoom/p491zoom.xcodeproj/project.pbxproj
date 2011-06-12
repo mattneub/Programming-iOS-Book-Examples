@@ -1,0 +1,272 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4E7646E13A4287D000851D3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7646D13A4287D000851D3 /* UIKit.framework */; };
+		A4E7647013A4287D000851D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7646F13A4287D000851D3 /* Foundation.framework */; };
+		A4E7647213A4287D000851D3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7647113A4287D000851D3 /* CoreGraphics.framework */; };
+		A4E7647813A4287D000851D3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4E7647613A4287D000851D3 /* InfoPlist.strings */; };
+		A4E7647B13A4287D000851D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7647A13A4287D000851D3 /* main.m */; };
+		A4E7647E13A4287D000851D3 /* ZoomAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7647D13A4287D000851D3 /* ZoomAppDelegate.m */; };
+		A4E7648113A4287D000851D3 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E7647F13A4287D000851D3 /* MainWindow.xib */; };
+		A4E7648413A4287D000851D3 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7648313A4287D000851D3 /* RootViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4E7646913A4287D000851D3 /* p491zoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p491zoom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4E7646D13A4287D000851D3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4E7646F13A4287D000851D3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4E7647113A4287D000851D3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4E7647513A4287D000851D3 /* p491zoom-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p491zoom-Info.plist"; sourceTree = "<group>"; };
+		A4E7647713A4287D000851D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4E7647913A4287D000851D3 /* p491zoom-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p491zoom-Prefix.pch"; sourceTree = "<group>"; };
+		A4E7647A13A4287D000851D3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4E7647C13A4287D000851D3 /* ZoomAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoomAppDelegate.h; sourceTree = "<group>"; };
+		A4E7647D13A4287D000851D3 /* ZoomAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoomAppDelegate.m; sourceTree = "<group>"; };
+		A4E7648013A4287D000851D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4E7648213A4287D000851D3 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A4E7648313A4287D000851D3 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4E7646613A4287D000851D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E7646E13A4287D000851D3 /* UIKit.framework in Frameworks */,
+				A4E7647013A4287D000851D3 /* Foundation.framework in Frameworks */,
+				A4E7647213A4287D000851D3 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4E7645E13A4287C000851D3 = {
+			isa = PBXGroup;
+			children = (
+				A4E7647313A4287D000851D3 /* p491zoom */,
+				A4E7646C13A4287D000851D3 /* Frameworks */,
+				A4E7646A13A4287D000851D3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4E7646A13A4287D000851D3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4E7646913A4287D000851D3 /* p491zoom.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4E7646C13A4287D000851D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4E7646D13A4287D000851D3 /* UIKit.framework */,
+				A4E7646F13A4287D000851D3 /* Foundation.framework */,
+				A4E7647113A4287D000851D3 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4E7647313A4287D000851D3 /* p491zoom */ = {
+			isa = PBXGroup;
+			children = (
+				A4E7647C13A4287D000851D3 /* ZoomAppDelegate.h */,
+				A4E7647D13A4287D000851D3 /* ZoomAppDelegate.m */,
+				A4E7647F13A4287D000851D3 /* MainWindow.xib */,
+				A4E7648213A4287D000851D3 /* RootViewController.h */,
+				A4E7648313A4287D000851D3 /* RootViewController.m */,
+				A4E7647413A4287D000851D3 /* Supporting Files */,
+			);
+			path = p491zoom;
+			sourceTree = "<group>";
+		};
+		A4E7647413A4287D000851D3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4E7647513A4287D000851D3 /* p491zoom-Info.plist */,
+				A4E7647613A4287D000851D3 /* InfoPlist.strings */,
+				A4E7647913A4287D000851D3 /* p491zoom-Prefix.pch */,
+				A4E7647A13A4287D000851D3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4E7646813A4287D000851D3 /* p491zoom */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4E7648A13A4287E000851D3 /* Build configuration list for PBXNativeTarget "p491zoom" */;
+			buildPhases = (
+				A4E7646513A4287D000851D3 /* Sources */,
+				A4E7646613A4287D000851D3 /* Frameworks */,
+				A4E7646713A4287D000851D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p491zoom;
+			productName = p491zoom;
+			productReference = A4E7646913A4287D000851D3 /* p491zoom.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4E7646013A4287C000851D3 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4E7646313A4287D000851D3 /* Build configuration list for PBXProject "p491zoom" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4E7645E13A4287C000851D3;
+			productRefGroup = A4E7646A13A4287D000851D3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4E7646813A4287D000851D3 /* p491zoom */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4E7646713A4287D000851D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E7647813A4287D000851D3 /* InfoPlist.strings in Resources */,
+				A4E7648113A4287D000851D3 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4E7646513A4287D000851D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E7647B13A4287D000851D3 /* main.m in Sources */,
+				A4E7647E13A4287D000851D3 /* ZoomAppDelegate.m in Sources */,
+				A4E7648413A4287D000851D3 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4E7647613A4287D000851D3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4E7647713A4287D000851D3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4E7647F13A4287D000851D3 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4E7648013A4287D000851D3 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4E7648813A4287E000851D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4E7648913A4287E000851D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4E7648B13A4287E000851D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p491zoom/p491zoom-Prefix.pch";
+				INFOPLIST_FILE = "p491zoom/p491zoom-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4E7648C13A4287E000851D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p491zoom/p491zoom-Prefix.pch";
+				INFOPLIST_FILE = "p491zoom/p491zoom-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4E7646313A4287D000851D3 /* Build configuration list for PBXProject "p491zoom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4E7648813A4287E000851D3 /* Debug */,
+				A4E7648913A4287E000851D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4E7648A13A4287E000851D3 /* Build configuration list for PBXNativeTarget "p491zoom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4E7648B13A4287E000851D3 /* Debug */,
+				A4E7648C13A4287E000851D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4E7646013A4287C000851D3 /* Project object */;
+}
