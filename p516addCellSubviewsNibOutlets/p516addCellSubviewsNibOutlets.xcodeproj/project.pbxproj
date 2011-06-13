@@ -1,0 +1,301 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A48F1BB613A6776700B1304F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48F1BB513A6776700B1304F /* UIKit.framework */; };
+		A48F1BB813A6776700B1304F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48F1BB713A6776700B1304F /* Foundation.framework */; };
+		A48F1BBA13A6776700B1304F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48F1BB913A6776700B1304F /* CoreGraphics.framework */; };
+		A48F1BC013A6776700B1304F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A48F1BBE13A6776700B1304F /* InfoPlist.strings */; };
+		A48F1BC313A6776700B1304F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A48F1BC213A6776700B1304F /* main.m */; };
+		A48F1BC613A6776700B1304F /* AddCellSubviewsNibOutletsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A48F1BC513A6776700B1304F /* AddCellSubviewsNibOutletsAppDelegate.m */; };
+		A48F1BC913A6776800B1304F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A48F1BC713A6776800B1304F /* MainWindow.xib */; };
+		A48F1BCC13A6776800B1304F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A48F1BCB13A6776800B1304F /* RootViewController.m */; };
+		A48F1BCF13A6776800B1304F /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A48F1BCD13A6776800B1304F /* RootView.xib */; };
+		A48F1BD613A677E000B1304F /* moi.png in Resources */ = {isa = PBXBuildFile; fileRef = A48F1BD513A677E000B1304F /* moi.png */; };
+		A48F1BD813A6782100B1304F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48F1BD713A6782100B1304F /* QuartzCore.framework */; };
+		A48F1BDB13A6785900B1304F /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A48F1BDA13A6785900B1304F /* MyCell.m */; };
+		A48F1BDD13A6792800B1304F /* MyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A48F1BDC13A6792800B1304F /* MyCell.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A48F1BB113A6776700B1304F /* p516addCellSubviewsNibOutlets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p516addCellSubviewsNibOutlets.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A48F1BB513A6776700B1304F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A48F1BB713A6776700B1304F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A48F1BB913A6776700B1304F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A48F1BBD13A6776700B1304F /* p516addCellSubviewsNibOutlets-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p516addCellSubviewsNibOutlets-Info.plist"; sourceTree = "<group>"; };
+		A48F1BBF13A6776700B1304F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A48F1BC113A6776700B1304F /* p516addCellSubviewsNibOutlets-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p516addCellSubviewsNibOutlets-Prefix.pch"; sourceTree = "<group>"; };
+		A48F1BC213A6776700B1304F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A48F1BC413A6776700B1304F /* AddCellSubviewsNibOutletsAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddCellSubviewsNibOutletsAppDelegate.h; sourceTree = "<group>"; };
+		A48F1BC513A6776700B1304F /* AddCellSubviewsNibOutletsAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddCellSubviewsNibOutletsAppDelegate.m; sourceTree = "<group>"; };
+		A48F1BC813A6776800B1304F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A48F1BCA13A6776800B1304F /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A48F1BCB13A6776800B1304F /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A48F1BCE13A6776800B1304F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+		A48F1BD513A677E000B1304F /* moi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moi.png; sourceTree = "<group>"; };
+		A48F1BD713A6782100B1304F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A48F1BD913A6785900B1304F /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
+		A48F1BDA13A6785900B1304F /* MyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
+		A48F1BDC13A6792800B1304F /* MyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCell.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A48F1BAE13A6776700B1304F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A48F1BD813A6782100B1304F /* QuartzCore.framework in Frameworks */,
+				A48F1BB613A6776700B1304F /* UIKit.framework in Frameworks */,
+				A48F1BB813A6776700B1304F /* Foundation.framework in Frameworks */,
+				A48F1BBA13A6776700B1304F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A48F1BA613A6776700B1304F = {
+			isa = PBXGroup;
+			children = (
+				A48F1BBB13A6776700B1304F /* p516addCellSubviewsNibOutlets */,
+				A48F1BB413A6776700B1304F /* Frameworks */,
+				A48F1BB213A6776700B1304F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A48F1BB213A6776700B1304F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A48F1BB113A6776700B1304F /* p516addCellSubviewsNibOutlets.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A48F1BB413A6776700B1304F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A48F1BD713A6782100B1304F /* QuartzCore.framework */,
+				A48F1BB513A6776700B1304F /* UIKit.framework */,
+				A48F1BB713A6776700B1304F /* Foundation.framework */,
+				A48F1BB913A6776700B1304F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A48F1BBB13A6776700B1304F /* p516addCellSubviewsNibOutlets */ = {
+			isa = PBXGroup;
+			children = (
+				A48F1BC413A6776700B1304F /* AddCellSubviewsNibOutletsAppDelegate.h */,
+				A48F1BC513A6776700B1304F /* AddCellSubviewsNibOutletsAppDelegate.m */,
+				A48F1BC713A6776800B1304F /* MainWindow.xib */,
+				A48F1BCA13A6776800B1304F /* RootViewController.h */,
+				A48F1BCB13A6776800B1304F /* RootViewController.m */,
+				A48F1BCD13A6776800B1304F /* RootView.xib */,
+				A48F1BD913A6785900B1304F /* MyCell.h */,
+				A48F1BDA13A6785900B1304F /* MyCell.m */,
+				A48F1BDC13A6792800B1304F /* MyCell.xib */,
+				A48F1BBC13A6776700B1304F /* Supporting Files */,
+			);
+			path = p516addCellSubviewsNibOutlets;
+			sourceTree = "<group>";
+		};
+		A48F1BBC13A6776700B1304F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A48F1BD513A677E000B1304F /* moi.png */,
+				A48F1BBD13A6776700B1304F /* p516addCellSubviewsNibOutlets-Info.plist */,
+				A48F1BBE13A6776700B1304F /* InfoPlist.strings */,
+				A48F1BC113A6776700B1304F /* p516addCellSubviewsNibOutlets-Prefix.pch */,
+				A48F1BC213A6776700B1304F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A48F1BB013A6776700B1304F /* p516addCellSubviewsNibOutlets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A48F1BD213A6776800B1304F /* Build configuration list for PBXNativeTarget "p516addCellSubviewsNibOutlets" */;
+			buildPhases = (
+				A48F1BAD13A6776700B1304F /* Sources */,
+				A48F1BAE13A6776700B1304F /* Frameworks */,
+				A48F1BAF13A6776700B1304F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p516addCellSubviewsNibOutlets;
+			productName = p516addCellSubviewsNibOutlets;
+			productReference = A48F1BB113A6776700B1304F /* p516addCellSubviewsNibOutlets.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A48F1BA813A6776700B1304F /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A48F1BAB13A6776700B1304F /* Build configuration list for PBXProject "p516addCellSubviewsNibOutlets" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A48F1BA613A6776700B1304F;
+			productRefGroup = A48F1BB213A6776700B1304F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A48F1BB013A6776700B1304F /* p516addCellSubviewsNibOutlets */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A48F1BAF13A6776700B1304F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A48F1BC013A6776700B1304F /* InfoPlist.strings in Resources */,
+				A48F1BC913A6776800B1304F /* MainWindow.xib in Resources */,
+				A48F1BCF13A6776800B1304F /* RootView.xib in Resources */,
+				A48F1BD613A677E000B1304F /* moi.png in Resources */,
+				A48F1BDD13A6792800B1304F /* MyCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A48F1BAD13A6776700B1304F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A48F1BC313A6776700B1304F /* main.m in Sources */,
+				A48F1BC613A6776700B1304F /* AddCellSubviewsNibOutletsAppDelegate.m in Sources */,
+				A48F1BCC13A6776800B1304F /* RootViewController.m in Sources */,
+				A48F1BDB13A6785900B1304F /* MyCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A48F1BBE13A6776700B1304F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A48F1BBF13A6776700B1304F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A48F1BC713A6776800B1304F /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A48F1BC813A6776800B1304F /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A48F1BCD13A6776800B1304F /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A48F1BCE13A6776800B1304F /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A48F1BD013A6776800B1304F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A48F1BD113A6776800B1304F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A48F1BD313A6776800B1304F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p516addCellSubviewsNibOutlets/p516addCellSubviewsNibOutlets-Prefix.pch";
+				INFOPLIST_FILE = "p516addCellSubviewsNibOutlets/p516addCellSubviewsNibOutlets-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A48F1BD413A6776800B1304F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p516addCellSubviewsNibOutlets/p516addCellSubviewsNibOutlets-Prefix.pch";
+				INFOPLIST_FILE = "p516addCellSubviewsNibOutlets/p516addCellSubviewsNibOutlets-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A48F1BAB13A6776700B1304F /* Build configuration list for PBXProject "p516addCellSubviewsNibOutlets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A48F1BD013A6776800B1304F /* Debug */,
+				A48F1BD113A6776800B1304F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A48F1BD213A6776800B1304F /* Build configuration list for PBXNativeTarget "p516addCellSubviewsNibOutlets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A48F1BD313A6776800B1304F /* Debug */,
+				A48F1BD413A6776800B1304F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A48F1BA813A6776700B1304F /* Project object */;
+}

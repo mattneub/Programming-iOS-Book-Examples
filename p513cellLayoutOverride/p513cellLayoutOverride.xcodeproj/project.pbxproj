@@ -1,0 +1,297 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4E266A213A665A200B99652 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E266A113A665A200B99652 /* UIKit.framework */; };
+		A4E266A413A665A200B99652 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E266A313A665A200B99652 /* Foundation.framework */; };
+		A4E266A613A665A200B99652 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E266A513A665A200B99652 /* CoreGraphics.framework */; };
+		A4E266AC13A665A200B99652 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4E266AA13A665A200B99652 /* InfoPlist.strings */; };
+		A4E266AF13A665A200B99652 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E266AE13A665A200B99652 /* main.m */; };
+		A4E266B213A665A200B99652 /* CellLayoutOverrideAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E266B113A665A200B99652 /* CellLayoutOverrideAppDelegate.m */; };
+		A4E266B513A665A200B99652 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E266B313A665A200B99652 /* MainWindow.xib */; };
+		A4E266B813A665A200B99652 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E266B713A665A200B99652 /* RootViewController.m */; };
+		A4E266BB13A665A200B99652 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E266B913A665A200B99652 /* RootView.xib */; };
+		A4E266C213A665D600B99652 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E266C113A665D600B99652 /* QuartzCore.framework */; };
+		A4E266C413A6667600B99652 /* moi.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E266C313A6667600B99652 /* moi.png */; };
+		A4E266C713A6673000B99652 /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E266C613A6673000B99652 /* MyCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4E2669D13A665A200B99652 /* p513cellLayoutOverride.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p513cellLayoutOverride.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4E266A113A665A200B99652 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4E266A313A665A200B99652 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4E266A513A665A200B99652 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4E266A913A665A200B99652 /* p513cellLayoutOverride-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p513cellLayoutOverride-Info.plist"; sourceTree = "<group>"; };
+		A4E266AB13A665A200B99652 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4E266AD13A665A200B99652 /* p513cellLayoutOverride-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p513cellLayoutOverride-Prefix.pch"; sourceTree = "<group>"; };
+		A4E266AE13A665A200B99652 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4E266B013A665A200B99652 /* CellLayoutOverrideAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellLayoutOverrideAppDelegate.h; sourceTree = "<group>"; };
+		A4E266B113A665A200B99652 /* CellLayoutOverrideAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CellLayoutOverrideAppDelegate.m; sourceTree = "<group>"; };
+		A4E266B413A665A200B99652 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4E266B613A665A200B99652 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A4E266B713A665A200B99652 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A4E266BA13A665A200B99652 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+		A4E266C113A665D600B99652 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A4E266C313A6667600B99652 /* moi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moi.png; sourceTree = "<group>"; };
+		A4E266C513A6673000B99652 /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
+		A4E266C613A6673000B99652 /* MyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4E2669A13A665A200B99652 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E266C213A665D600B99652 /* QuartzCore.framework in Frameworks */,
+				A4E266A213A665A200B99652 /* UIKit.framework in Frameworks */,
+				A4E266A413A665A200B99652 /* Foundation.framework in Frameworks */,
+				A4E266A613A665A200B99652 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4E2669213A665A200B99652 = {
+			isa = PBXGroup;
+			children = (
+				A4E266A713A665A200B99652 /* p513cellLayoutOverride */,
+				A4E266A013A665A200B99652 /* Frameworks */,
+				A4E2669E13A665A200B99652 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4E2669E13A665A200B99652 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4E2669D13A665A200B99652 /* p513cellLayoutOverride.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4E266A013A665A200B99652 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4E266C113A665D600B99652 /* QuartzCore.framework */,
+				A4E266A113A665A200B99652 /* UIKit.framework */,
+				A4E266A313A665A200B99652 /* Foundation.framework */,
+				A4E266A513A665A200B99652 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4E266A713A665A200B99652 /* p513cellLayoutOverride */ = {
+			isa = PBXGroup;
+			children = (
+				A4E266B013A665A200B99652 /* CellLayoutOverrideAppDelegate.h */,
+				A4E266B113A665A200B99652 /* CellLayoutOverrideAppDelegate.m */,
+				A4E266B313A665A200B99652 /* MainWindow.xib */,
+				A4E266B613A665A200B99652 /* RootViewController.h */,
+				A4E266B713A665A200B99652 /* RootViewController.m */,
+				A4E266B913A665A200B99652 /* RootView.xib */,
+				A4E266C513A6673000B99652 /* MyCell.h */,
+				A4E266C613A6673000B99652 /* MyCell.m */,
+				A4E266A813A665A200B99652 /* Supporting Files */,
+			);
+			path = p513cellLayoutOverride;
+			sourceTree = "<group>";
+		};
+		A4E266A813A665A200B99652 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4E266C313A6667600B99652 /* moi.png */,
+				A4E266A913A665A200B99652 /* p513cellLayoutOverride-Info.plist */,
+				A4E266AA13A665A200B99652 /* InfoPlist.strings */,
+				A4E266AD13A665A200B99652 /* p513cellLayoutOverride-Prefix.pch */,
+				A4E266AE13A665A200B99652 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4E2669C13A665A200B99652 /* p513cellLayoutOverride */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4E266BE13A665A200B99652 /* Build configuration list for PBXNativeTarget "p513cellLayoutOverride" */;
+			buildPhases = (
+				A4E2669913A665A200B99652 /* Sources */,
+				A4E2669A13A665A200B99652 /* Frameworks */,
+				A4E2669B13A665A200B99652 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p513cellLayoutOverride;
+			productName = p513cellLayoutOverride;
+			productReference = A4E2669D13A665A200B99652 /* p513cellLayoutOverride.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4E2669413A665A200B99652 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4E2669713A665A200B99652 /* Build configuration list for PBXProject "p513cellLayoutOverride" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4E2669213A665A200B99652;
+			productRefGroup = A4E2669E13A665A200B99652 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4E2669C13A665A200B99652 /* p513cellLayoutOverride */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4E2669B13A665A200B99652 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E266AC13A665A200B99652 /* InfoPlist.strings in Resources */,
+				A4E266B513A665A200B99652 /* MainWindow.xib in Resources */,
+				A4E266BB13A665A200B99652 /* RootView.xib in Resources */,
+				A4E266C413A6667600B99652 /* moi.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4E2669913A665A200B99652 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E266AF13A665A200B99652 /* main.m in Sources */,
+				A4E266B213A665A200B99652 /* CellLayoutOverrideAppDelegate.m in Sources */,
+				A4E266B813A665A200B99652 /* RootViewController.m in Sources */,
+				A4E266C713A6673000B99652 /* MyCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4E266AA13A665A200B99652 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4E266AB13A665A200B99652 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4E266B313A665A200B99652 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4E266B413A665A200B99652 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A4E266B913A665A200B99652 /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4E266BA13A665A200B99652 /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4E266BC13A665A200B99652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4E266BD13A665A200B99652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4E266BF13A665A200B99652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p513cellLayoutOverride/p513cellLayoutOverride-Prefix.pch";
+				INFOPLIST_FILE = "p513cellLayoutOverride/p513cellLayoutOverride-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4E266C013A665A200B99652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p513cellLayoutOverride/p513cellLayoutOverride-Prefix.pch";
+				INFOPLIST_FILE = "p513cellLayoutOverride/p513cellLayoutOverride-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4E2669713A665A200B99652 /* Build configuration list for PBXProject "p513cellLayoutOverride" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4E266BC13A665A200B99652 /* Debug */,
+				A4E266BD13A665A200B99652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4E266BE13A665A200B99652 /* Build configuration list for PBXNativeTarget "p513cellLayoutOverride" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4E266BF13A665A200B99652 /* Debug */,
+				A4E266C013A665A200B99652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4E2669413A665A200B99652 /* Project object */;
+}

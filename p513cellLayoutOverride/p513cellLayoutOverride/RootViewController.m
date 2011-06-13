@@ -1,10 +1,9 @@
 
-
 #import "RootViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MyCell.h"
 
 @implementation RootViewController
-
 
 // Customize the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -23,16 +22,16 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+        cell = [[[MyCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                        reuseIdentifier:CellIdentifier] autorelease];
     }
-
+    
     cell.textLabel.text = @"The author of this book, who would rather be out dirt biking";
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
     cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.textLabel.numberOfLines = 2;
     cell.textLabel.textColor = [UIColor whiteColor];
-
+    
     // shrink apparent size of image
     UIImage* im = [UIImage imageNamed:@"moi.png"];
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(35,35), YES, 0.0);
@@ -44,10 +43,6 @@
     
     return cell;
 }
-
-// figure 21-3
-// in the book, I cut the valueForKey: test scaffolding here
-// my idea is that we really only need to do this stuff for cells that aren't being reused
 
 - (void)tableView:(UITableView *)tableView 
   willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,12 +60,10 @@
         lay.cornerRadius = 5;
         cell.backgroundView = v;
         [v release];
-        // try commenting out this next line to see the "punch a hole" problem
         cell.textLabel.backgroundColor = [UIColor clearColor];
         [cell.layer setValue:@"done" forKey:@"done"];
     }
 }
-
 
 - (void)dealloc
 {

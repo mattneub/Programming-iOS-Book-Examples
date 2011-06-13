@@ -4,9 +4,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 @implementation RootViewController
+@synthesize tvc;
 
-
-// Customize the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -17,37 +16,32 @@
     return 20;
 }
 
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView 
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = 
+    [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                       reuseIdentifier:CellIdentifier] autorelease];
+        [[NSBundle mainBundle] loadNibNamed:@"MyCell" owner:self options:nil];
+        cell = self.tvc;
     }
-
-    cell.textLabel.text = @"The author of this book, who would rather be out dirt biking";
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
-    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.textLabel.numberOfLines = 2;
-    cell.textLabel.textColor = [UIColor whiteColor];
-
-    // shrink apparent size of image
+    UILabel* lab = (UILabel*)[cell viewWithTag: 2];
+    // ... set up lab here ...
+    // notice how much less of this there now is, because it's mostly done in the nib
+    lab.text = @"The author of this book, who would rather be out dirt biking";
+    
+    UIImageView* iv = (UIImageView*)[cell viewWithTag: 1];
+    // ... set up iv here ...
     UIImage* im = [UIImage imageNamed:@"moi.png"];
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(35,35), YES, 0.0);
     [im drawInRect:CGRectMake(0,0,35,35)];
     UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    cell.imageView.image = im2;
-    cell.imageView.contentMode = UIViewContentModeCenter;
-    
+    iv.image = im2;
+    iv.contentMode = UIViewContentModeCenter;
+
     return cell;
 }
-
-// figure 21-3
-// in the book, I cut the valueForKey: test scaffolding here
-// my idea is that we really only need to do this stuff for cells that aren't being reused
 
 - (void)tableView:(UITableView *)tableView 
   willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,11 +59,10 @@
         lay.cornerRadius = 5;
         cell.backgroundView = v;
         [v release];
-        // try commenting out this next line to see the "punch a hole" problem
-        cell.textLabel.backgroundColor = [UIColor clearColor];
         [cell.layer setValue:@"done" forKey:@"done"];
     }
 }
+
 
 
 - (void)dealloc
