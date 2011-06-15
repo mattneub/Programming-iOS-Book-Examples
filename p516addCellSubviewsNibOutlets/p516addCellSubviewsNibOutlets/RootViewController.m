@@ -97,6 +97,23 @@
     }
 }
 
+// p. 529, mess with selection behavior
+
+- (NSIndexPath*) tableView:(UITableView*)tv 
+  willSelectRowAtIndexPath:(NSIndexPath*)ip {
+    if ([tv cellForRowAtIndexPath:ip].selected) {
+        [tv deselectRowAtIndexPath:ip animated:NO];
+        return nil;
+    }
+    return ip;
+}
+
+- (NSIndexPath*) tableView:(UITableView*)tv 
+willDeselectRowAtIndexPath:(NSIndexPath*)ip {
+    return nil;
+}
+
+
 - (void)dealloc
 {
     [titles release];

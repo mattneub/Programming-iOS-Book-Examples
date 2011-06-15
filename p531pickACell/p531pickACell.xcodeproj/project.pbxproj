@@ -1,0 +1,271 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4AC378413A9168E00CF53D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4AC378313A9168E00CF53D1 /* UIKit.framework */; };
+		A4AC378613A9168E00CF53D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4AC378513A9168E00CF53D1 /* Foundation.framework */; };
+		A4AC378813A9168E00CF53D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4AC378713A9168E00CF53D1 /* CoreGraphics.framework */; };
+		A4AC378E13A9168F00CF53D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4AC378C13A9168E00CF53D1 /* InfoPlist.strings */; };
+		A4AC379113A9168F00CF53D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC379013A9168F00CF53D1 /* main.m */; };
+		A4AC379413A9168F00CF53D1 /* PickACellAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC379313A9168F00CF53D1 /* PickACellAppDelegate.m */; };
+		A4AC379713A9168F00CF53D1 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AC379513A9168F00CF53D1 /* MainWindow.xib */; };
+		A4AC379A13A9168F00CF53D1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC379913A9168F00CF53D1 /* RootViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4AC377F13A9168E00CF53D1 /* p531pickACell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p531pickACell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4AC378313A9168E00CF53D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4AC378513A9168E00CF53D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4AC378713A9168E00CF53D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4AC378B13A9168E00CF53D1 /* p531pickACell-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p531pickACell-Info.plist"; sourceTree = "<group>"; };
+		A4AC378D13A9168E00CF53D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4AC378F13A9168F00CF53D1 /* p531pickACell-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p531pickACell-Prefix.pch"; sourceTree = "<group>"; };
+		A4AC379013A9168F00CF53D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4AC379213A9168F00CF53D1 /* PickACellAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickACellAppDelegate.h; sourceTree = "<group>"; };
+		A4AC379313A9168F00CF53D1 /* PickACellAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickACellAppDelegate.m; sourceTree = "<group>"; };
+		A4AC379613A9168F00CF53D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4AC379813A9168F00CF53D1 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A4AC379913A9168F00CF53D1 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4AC377C13A9168E00CF53D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4AC378413A9168E00CF53D1 /* UIKit.framework in Frameworks */,
+				A4AC378613A9168E00CF53D1 /* Foundation.framework in Frameworks */,
+				A4AC378813A9168E00CF53D1 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4AC377413A9168E00CF53D1 = {
+			isa = PBXGroup;
+			children = (
+				A4AC378913A9168E00CF53D1 /* p531pickACell */,
+				A4AC378213A9168E00CF53D1 /* Frameworks */,
+				A4AC378013A9168E00CF53D1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4AC378013A9168E00CF53D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4AC377F13A9168E00CF53D1 /* p531pickACell.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4AC378213A9168E00CF53D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4AC378313A9168E00CF53D1 /* UIKit.framework */,
+				A4AC378513A9168E00CF53D1 /* Foundation.framework */,
+				A4AC378713A9168E00CF53D1 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4AC378913A9168E00CF53D1 /* p531pickACell */ = {
+			isa = PBXGroup;
+			children = (
+				A4AC379213A9168F00CF53D1 /* PickACellAppDelegate.h */,
+				A4AC379313A9168F00CF53D1 /* PickACellAppDelegate.m */,
+				A4AC379513A9168F00CF53D1 /* MainWindow.xib */,
+				A4AC379813A9168F00CF53D1 /* RootViewController.h */,
+				A4AC379913A9168F00CF53D1 /* RootViewController.m */,
+				A4AC378A13A9168E00CF53D1 /* Supporting Files */,
+			);
+			path = p531pickACell;
+			sourceTree = "<group>";
+		};
+		A4AC378A13A9168E00CF53D1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4AC378B13A9168E00CF53D1 /* p531pickACell-Info.plist */,
+				A4AC378C13A9168E00CF53D1 /* InfoPlist.strings */,
+				A4AC378F13A9168F00CF53D1 /* p531pickACell-Prefix.pch */,
+				A4AC379013A9168F00CF53D1 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4AC377E13A9168E00CF53D1 /* p531pickACell */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4AC37A013A9168F00CF53D1 /* Build configuration list for PBXNativeTarget "p531pickACell" */;
+			buildPhases = (
+				A4AC377B13A9168E00CF53D1 /* Sources */,
+				A4AC377C13A9168E00CF53D1 /* Frameworks */,
+				A4AC377D13A9168E00CF53D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p531pickACell;
+			productName = p531pickACell;
+			productReference = A4AC377F13A9168E00CF53D1 /* p531pickACell.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4AC377613A9168E00CF53D1 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4AC377913A9168E00CF53D1 /* Build configuration list for PBXProject "p531pickACell" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4AC377413A9168E00CF53D1;
+			productRefGroup = A4AC378013A9168E00CF53D1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4AC377E13A9168E00CF53D1 /* p531pickACell */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4AC377D13A9168E00CF53D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4AC378E13A9168F00CF53D1 /* InfoPlist.strings in Resources */,
+				A4AC379713A9168F00CF53D1 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4AC377B13A9168E00CF53D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4AC379113A9168F00CF53D1 /* main.m in Sources */,
+				A4AC379413A9168F00CF53D1 /* PickACellAppDelegate.m in Sources */,
+				A4AC379A13A9168F00CF53D1 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4AC378C13A9168E00CF53D1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4AC378D13A9168E00CF53D1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4AC379513A9168F00CF53D1 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4AC379613A9168F00CF53D1 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4AC379E13A9168F00CF53D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4AC379F13A9168F00CF53D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4AC37A113A9168F00CF53D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p531pickACell/p531pickACell-Prefix.pch";
+				INFOPLIST_FILE = "p531pickACell/p531pickACell-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4AC37A213A9168F00CF53D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p531pickACell/p531pickACell-Prefix.pch";
+				INFOPLIST_FILE = "p531pickACell/p531pickACell-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4AC377913A9168E00CF53D1 /* Build configuration list for PBXProject "p531pickACell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4AC379E13A9168F00CF53D1 /* Debug */,
+				A4AC379F13A9168F00CF53D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4AC37A013A9168F00CF53D1 /* Build configuration list for PBXNativeTarget "p531pickACell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4AC37A113A9168F00CF53D1 /* Debug */,
+				A4AC37A213A9168F00CF53D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4AC377613A9168E00CF53D1 /* Project object */;
+}
