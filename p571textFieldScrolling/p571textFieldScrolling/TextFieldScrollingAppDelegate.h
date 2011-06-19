@@ -12,4 +12,6 @@
 
 @property (nonatomic, retain) IBOutlet RootViewController *viewController;
 
+@property (nonatomic, retain) NSDictionary* states;
+
 @end

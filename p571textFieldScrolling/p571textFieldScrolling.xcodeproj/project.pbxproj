@@ -17,6 +17,7 @@
 		A4196DCC13AD95A20061561E /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4196DCA13AD95A20061561E /* RootViewController.m */; };
 		A4196DCD13AD95A20061561E /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4196DCB13AD95A20061561E /* RootView.xib */; };
 		A4C5204913AD9CA00031EE82 /* MyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C5204813AD9CA00031EE82 /* MyTextField.m */; };
+		A4EE1E8613AE636800E14F69 /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = A4EE1E8513AE636800E14F69 /* states.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A4196DCB13AD95A20061561E /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
 		A4C5204713AD9CA00031EE82 /* MyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTextField.h; sourceTree = "<group>"; };
 		A4C5204813AD9CA00031EE82 /* MyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTextField.m; sourceTree = "<group>"; };
+		A4EE1E8513AE636800E14F69 /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 		A4196DB013AD95560061561E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A4EE1E8513AE636800E14F69 /* states.txt */,
 				A4196DB113AD95560061561E /* p571textFieldScrolling-Info.plist */,
 				A4196DB213AD95560061561E /* InfoPlist.strings */,
 				A4196DB513AD95560061561E /* p571textFieldScrolling-Prefix.pch */,
@@ -156,6 +159,7 @@
 				A4196DB413AD95560061561E /* InfoPlist.strings in Resources */,
 				A4196DBD13AD95570061561E /* MainWindow.xib in Resources */,
 				A4196DCD13AD95A20061561E /* RootView.xib in Resources */,
+				A4EE1E8613AE636800E14F69 /* states.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
