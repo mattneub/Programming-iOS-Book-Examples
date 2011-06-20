@@ -1,0 +1,298 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4FB2CE013AFA831003DC322 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FB2CDF13AFA831003DC322 /* UIKit.framework */; };
+		A4FB2CE213AFA831003DC322 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FB2CE113AFA831003DC322 /* Foundation.framework */; };
+		A4FB2CE413AFA831003DC322 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FB2CE313AFA831003DC322 /* CoreGraphics.framework */; };
+		A4FB2CEA13AFA831003DC322 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4FB2CE813AFA831003DC322 /* InfoPlist.strings */; };
+		A4FB2CED13AFA831003DC322 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FB2CEC13AFA831003DC322 /* main.m */; };
+		A4FB2CF013AFA831003DC322 /* StyledText1AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FB2CEF13AFA831003DC322 /* StyledText1AppDelegate.m */; };
+		A4FB2CF313AFA831003DC322 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FB2CF113AFA831003DC322 /* MainWindow.xib */; };
+		A4FB2CF613AFA831003DC322 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FB2CF513AFA831003DC322 /* RootViewController.m */; };
+		A4FB2CF913AFA831003DC322 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FB2CF713AFA831003DC322 /* RootView.xib */; };
+		A4FB2D0813AFA8BE003DC322 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FB2D0713AFA8BE003DC322 /* QuartzCore.framework */; };
+		A4FB2D0C13AFA8EA003DC322 /* StyledText.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FB2D0B13AFA8EA003DC322 /* StyledText.m */; };
+		A4FB2D0E13AFAA41003DC322 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FB2D0D13AFAA41003DC322 /* CoreText.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4FB2CDB13AFA831003DC322 /* p579styledText1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p579styledText1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FB2CDF13AFA831003DC322 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4FB2CE113AFA831003DC322 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4FB2CE313AFA831003DC322 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4FB2CE713AFA831003DC322 /* p579styledText1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p579styledText1-Info.plist"; sourceTree = "<group>"; };
+		A4FB2CE913AFA831003DC322 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4FB2CEB13AFA831003DC322 /* p579styledText1-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p579styledText1-Prefix.pch"; sourceTree = "<group>"; };
+		A4FB2CEC13AFA831003DC322 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4FB2CEE13AFA831003DC322 /* StyledText1AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StyledText1AppDelegate.h; sourceTree = "<group>"; };
+		A4FB2CEF13AFA831003DC322 /* StyledText1AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StyledText1AppDelegate.m; sourceTree = "<group>"; };
+		A4FB2CF213AFA831003DC322 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4FB2CF413AFA831003DC322 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A4FB2CF513AFA831003DC322 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A4FB2CF813AFA831003DC322 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+		A4FB2D0713AFA8BE003DC322 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A4FB2D0A13AFA8EA003DC322 /* StyledText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledText.h; sourceTree = "<group>"; };
+		A4FB2D0B13AFA8EA003DC322 /* StyledText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledText.m; sourceTree = "<group>"; };
+		A4FB2D0D13AFAA41003DC322 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4FB2CD813AFA831003DC322 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FB2D0E13AFAA41003DC322 /* CoreText.framework in Frameworks */,
+				A4FB2D0813AFA8BE003DC322 /* QuartzCore.framework in Frameworks */,
+				A4FB2CE013AFA831003DC322 /* UIKit.framework in Frameworks */,
+				A4FB2CE213AFA831003DC322 /* Foundation.framework in Frameworks */,
+				A4FB2CE413AFA831003DC322 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4FB2CD013AFA831003DC322 = {
+			isa = PBXGroup;
+			children = (
+				A4FB2CE513AFA831003DC322 /* p579styledText1 */,
+				A4FB2CDE13AFA831003DC322 /* Frameworks */,
+				A4FB2CDC13AFA831003DC322 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4FB2CDC13AFA831003DC322 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4FB2CDB13AFA831003DC322 /* p579styledText1.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4FB2CDE13AFA831003DC322 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4FB2D0D13AFAA41003DC322 /* CoreText.framework */,
+				A4FB2D0713AFA8BE003DC322 /* QuartzCore.framework */,
+				A4FB2CDF13AFA831003DC322 /* UIKit.framework */,
+				A4FB2CE113AFA831003DC322 /* Foundation.framework */,
+				A4FB2CE313AFA831003DC322 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4FB2CE513AFA831003DC322 /* p579styledText1 */ = {
+			isa = PBXGroup;
+			children = (
+				A4FB2CEE13AFA831003DC322 /* StyledText1AppDelegate.h */,
+				A4FB2CEF13AFA831003DC322 /* StyledText1AppDelegate.m */,
+				A4FB2CF113AFA831003DC322 /* MainWindow.xib */,
+				A4FB2CF413AFA831003DC322 /* RootViewController.h */,
+				A4FB2CF513AFA831003DC322 /* RootViewController.m */,
+				A4FB2CF713AFA831003DC322 /* RootView.xib */,
+				A4FB2D0A13AFA8EA003DC322 /* StyledText.h */,
+				A4FB2D0B13AFA8EA003DC322 /* StyledText.m */,
+				A4FB2CE613AFA831003DC322 /* Supporting Files */,
+			);
+			path = p579styledText1;
+			sourceTree = "<group>";
+		};
+		A4FB2CE613AFA831003DC322 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4FB2CE713AFA831003DC322 /* p579styledText1-Info.plist */,
+				A4FB2CE813AFA831003DC322 /* InfoPlist.strings */,
+				A4FB2CEB13AFA831003DC322 /* p579styledText1-Prefix.pch */,
+				A4FB2CEC13AFA831003DC322 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4FB2CDA13AFA831003DC322 /* p579styledText1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4FB2CFC13AFA831003DC322 /* Build configuration list for PBXNativeTarget "p579styledText1" */;
+			buildPhases = (
+				A4FB2CD713AFA831003DC322 /* Sources */,
+				A4FB2CD813AFA831003DC322 /* Frameworks */,
+				A4FB2CD913AFA831003DC322 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p579styledText1;
+			productName = p579styledText1;
+			productReference = A4FB2CDB13AFA831003DC322 /* p579styledText1.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4FB2CD213AFA831003DC322 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4FB2CD513AFA831003DC322 /* Build configuration list for PBXProject "p579styledText1" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4FB2CD013AFA831003DC322;
+			productRefGroup = A4FB2CDC13AFA831003DC322 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4FB2CDA13AFA831003DC322 /* p579styledText1 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4FB2CD913AFA831003DC322 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FB2CEA13AFA831003DC322 /* InfoPlist.strings in Resources */,
+				A4FB2CF313AFA831003DC322 /* MainWindow.xib in Resources */,
+				A4FB2CF913AFA831003DC322 /* RootView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4FB2CD713AFA831003DC322 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FB2CED13AFA831003DC322 /* main.m in Sources */,
+				A4FB2CF013AFA831003DC322 /* StyledText1AppDelegate.m in Sources */,
+				A4FB2CF613AFA831003DC322 /* RootViewController.m in Sources */,
+				A4FB2D0C13AFA8EA003DC322 /* StyledText.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4FB2CE813AFA831003DC322 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4FB2CE913AFA831003DC322 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4FB2CF113AFA831003DC322 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4FB2CF213AFA831003DC322 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A4FB2CF713AFA831003DC322 /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4FB2CF813AFA831003DC322 /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4FB2CFA13AFA831003DC322 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4FB2CFB13AFA831003DC322 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4FB2CFD13AFA831003DC322 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p579styledText1/p579styledText1-Prefix.pch";
+				INFOPLIST_FILE = "p579styledText1/p579styledText1-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4FB2CFE13AFA831003DC322 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p579styledText1/p579styledText1-Prefix.pch";
+				INFOPLIST_FILE = "p579styledText1/p579styledText1-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4FB2CD513AFA831003DC322 /* Build configuration list for PBXProject "p579styledText1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4FB2CFA13AFA831003DC322 /* Debug */,
+				A4FB2CFB13AFA831003DC322 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4FB2CFC13AFA831003DC322 /* Build configuration list for PBXNativeTarget "p579styledText1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4FB2CFD13AFA831003DC322 /* Debug */,
+				A4FB2CFE13AFA831003DC322 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4FB2CD213AFA831003DC322 /* Project object */;
+}
