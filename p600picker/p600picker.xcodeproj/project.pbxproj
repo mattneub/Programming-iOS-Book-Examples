@@ -1,0 +1,288 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4BA7FD013B1127100D4576F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BA7FCF13B1127100D4576F /* UIKit.framework */; };
+		A4BA7FD213B1127100D4576F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BA7FD113B1127100D4576F /* Foundation.framework */; };
+		A4BA7FD413B1127100D4576F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BA7FD313B1127100D4576F /* CoreGraphics.framework */; };
+		A4BA7FDA13B1127100D4576F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4BA7FD813B1127100D4576F /* InfoPlist.strings */; };
+		A4BA7FDD13B1127100D4576F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BA7FDC13B1127100D4576F /* main.m */; };
+		A4BA7FE013B1127100D4576F /* PickerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BA7FDF13B1127100D4576F /* PickerAppDelegate.m */; };
+		A4BA7FE313B1127100D4576F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4BA7FE113B1127100D4576F /* MainWindow.xib */; };
+		A4BA7FE613B1127100D4576F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BA7FE513B1127100D4576F /* RootViewController.m */; };
+		A4BA7FE913B1127100D4576F /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4BA7FE713B1127100D4576F /* RootView.xib */; };
+		A4BA800013B1130800D4576F /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = A4BA7FFF13B1130800D4576F /* states.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4BA7FCB13B1127100D4576F /* p600picker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p600picker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4BA7FCF13B1127100D4576F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4BA7FD113B1127100D4576F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4BA7FD313B1127100D4576F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4BA7FD713B1127100D4576F /* p600picker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p600picker-Info.plist"; sourceTree = "<group>"; };
+		A4BA7FD913B1127100D4576F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4BA7FDB13B1127100D4576F /* p600picker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p600picker-Prefix.pch"; sourceTree = "<group>"; };
+		A4BA7FDC13B1127100D4576F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4BA7FDE13B1127100D4576F /* PickerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerAppDelegate.h; sourceTree = "<group>"; };
+		A4BA7FDF13B1127100D4576F /* PickerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerAppDelegate.m; sourceTree = "<group>"; };
+		A4BA7FE213B1127100D4576F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4BA7FE413B1127100D4576F /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A4BA7FE513B1127100D4576F /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A4BA7FE813B1127100D4576F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+		A4BA7FFF13B1130800D4576F /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4BA7FC813B1127100D4576F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4BA7FD013B1127100D4576F /* UIKit.framework in Frameworks */,
+				A4BA7FD213B1127100D4576F /* Foundation.framework in Frameworks */,
+				A4BA7FD413B1127100D4576F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4BA7FC013B1127100D4576F = {
+			isa = PBXGroup;
+			children = (
+				A4BA7FD513B1127100D4576F /* p600picker */,
+				A4BA7FCE13B1127100D4576F /* Frameworks */,
+				A4BA7FCC13B1127100D4576F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4BA7FCC13B1127100D4576F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA7FCB13B1127100D4576F /* p600picker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4BA7FCE13B1127100D4576F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA7FCF13B1127100D4576F /* UIKit.framework */,
+				A4BA7FD113B1127100D4576F /* Foundation.framework */,
+				A4BA7FD313B1127100D4576F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4BA7FD513B1127100D4576F /* p600picker */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA7FDE13B1127100D4576F /* PickerAppDelegate.h */,
+				A4BA7FDF13B1127100D4576F /* PickerAppDelegate.m */,
+				A4BA7FE113B1127100D4576F /* MainWindow.xib */,
+				A4BA7FE413B1127100D4576F /* RootViewController.h */,
+				A4BA7FE513B1127100D4576F /* RootViewController.m */,
+				A4BA7FE713B1127100D4576F /* RootView.xib */,
+				A4BA7FD613B1127100D4576F /* Supporting Files */,
+			);
+			path = p600picker;
+			sourceTree = "<group>";
+		};
+		A4BA7FD613B1127100D4576F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA7FFF13B1130800D4576F /* states.txt */,
+				A4BA7FD713B1127100D4576F /* p600picker-Info.plist */,
+				A4BA7FD813B1127100D4576F /* InfoPlist.strings */,
+				A4BA7FDB13B1127100D4576F /* p600picker-Prefix.pch */,
+				A4BA7FDC13B1127100D4576F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4BA7FCA13B1127100D4576F /* p600picker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4BA7FEC13B1127100D4576F /* Build configuration list for PBXNativeTarget "p600picker" */;
+			buildPhases = (
+				A4BA7FC713B1127100D4576F /* Sources */,
+				A4BA7FC813B1127100D4576F /* Frameworks */,
+				A4BA7FC913B1127100D4576F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p600picker;
+			productName = p600picker;
+			productReference = A4BA7FCB13B1127100D4576F /* p600picker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4BA7FC213B1127100D4576F /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4BA7FC513B1127100D4576F /* Build configuration list for PBXProject "p600picker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4BA7FC013B1127100D4576F;
+			productRefGroup = A4BA7FCC13B1127100D4576F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4BA7FCA13B1127100D4576F /* p600picker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4BA7FC913B1127100D4576F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4BA7FDA13B1127100D4576F /* InfoPlist.strings in Resources */,
+				A4BA7FE313B1127100D4576F /* MainWindow.xib in Resources */,
+				A4BA7FE913B1127100D4576F /* RootView.xib in Resources */,
+				A4BA800013B1130800D4576F /* states.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4BA7FC713B1127100D4576F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4BA7FDD13B1127100D4576F /* main.m in Sources */,
+				A4BA7FE013B1127100D4576F /* PickerAppDelegate.m in Sources */,
+				A4BA7FE613B1127100D4576F /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4BA7FD813B1127100D4576F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4BA7FD913B1127100D4576F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4BA7FE113B1127100D4576F /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4BA7FE213B1127100D4576F /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A4BA7FE713B1127100D4576F /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4BA7FE813B1127100D4576F /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4BA7FEA13B1127100D4576F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4BA7FEB13B1127100D4576F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4BA7FED13B1127100D4576F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p600picker/p600picker-Prefix.pch";
+				INFOPLIST_FILE = "p600picker/p600picker-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4BA7FEE13B1127100D4576F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p600picker/p600picker-Prefix.pch";
+				INFOPLIST_FILE = "p600picker/p600picker-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4BA7FC513B1127100D4576F /* Build configuration list for PBXProject "p600picker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4BA7FEA13B1127100D4576F /* Debug */,
+				A4BA7FEB13B1127100D4576F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4BA7FEC13B1127100D4576F /* Build configuration list for PBXNativeTarget "p600picker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4BA7FED13B1127100D4576F /* Debug */,
+				A4BA7FEE13B1127100D4576F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4BA7FC213B1127100D4576F /* Project object */;
+}
