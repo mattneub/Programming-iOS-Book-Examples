@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A41AF5D113B2369D00F84804 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41AF5D013B2369D00F84804 /* UIKit.framework */; };
+		A41AF5D313B2369D00F84804 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41AF5D213B2369D00F84804 /* Foundation.framework */; };
+		A41AF5D513B2369D00F84804 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41AF5D413B2369D00F84804 /* CoreGraphics.framework */; };
+		A41AF5DB13B2369D00F84804 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A41AF5D913B2369D00F84804 /* InfoPlist.strings */; };
+		A41AF5DE13B2369D00F84804 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A41AF5DD13B2369D00F84804 /* main.m */; };
+		A41AF5E113B2369D00F84804 /* ButtonAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A41AF5E013B2369D00F84804 /* ButtonAppDelegate.m */; };
+		A41AF5E413B2369D00F84804 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41AF5E213B2369D00F84804 /* MainWindow.xib */; };
+		A41AF5E713B2369D00F84804 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A41AF5E613B2369D00F84804 /* RootViewController.m */; };
+		A41AF5EA13B2369D00F84804 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41AF5E813B2369D00F84804 /* RootView.xib */; };
+		A41AF5F213B237C200F84804 /* MyShrinkingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A41AF5F113B237C200F84804 /* MyShrinkingButton.m */; };
+		A41AF5FC13B2387400F84804 /* coin2.png in Resources */ = {isa = PBXBuildFile; fileRef = A41AF5FB13B2387400F84804 /* coin2.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A41AF5CC13B2369D00F84804 /* p617button.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p617button.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A41AF5D013B2369D00F84804 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A41AF5D213B2369D00F84804 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A41AF5D413B2369D00F84804 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A41AF5D813B2369D00F84804 /* p617button-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p617button-Info.plist"; sourceTree = "<group>"; };
+		A41AF5DA13B2369D00F84804 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A41AF5DC13B2369D00F84804 /* p617button-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p617button-Prefix.pch"; sourceTree = "<group>"; };
+		A41AF5DD13B2369D00F84804 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A41AF5DF13B2369D00F84804 /* ButtonAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonAppDelegate.h; sourceTree = "<group>"; };
+		A41AF5E013B2369D00F84804 /* ButtonAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonAppDelegate.m; sourceTree = "<group>"; };
+		A41AF5E313B2369D00F84804 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A41AF5E513B2369D00F84804 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A41AF5E613B2369D00F84804 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A41AF5E913B2369D00F84804 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+		A41AF5F013B237C200F84804 /* MyShrinkingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyShrinkingButton.h; sourceTree = "<group>"; };
+		A41AF5F113B237C200F84804 /* MyShrinkingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyShrinkingButton.m; sourceTree = "<group>"; };
+		A41AF5FB13B2387400F84804 /* coin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin2.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A41AF5C913B2369D00F84804 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A41AF5D113B2369D00F84804 /* UIKit.framework in Frameworks */,
+				A41AF5D313B2369D00F84804 /* Foundation.framework in Frameworks */,
+				A41AF5D513B2369D00F84804 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A41AF5C113B2369D00F84804 = {
+			isa = PBXGroup;
+			children = (
+				A41AF5D613B2369D00F84804 /* p617button */,
+				A41AF5CF13B2369D00F84804 /* Frameworks */,
+				A41AF5CD13B2369D00F84804 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A41AF5CD13B2369D00F84804 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A41AF5CC13B2369D00F84804 /* p617button.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A41AF5CF13B2369D00F84804 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A41AF5D013B2369D00F84804 /* UIKit.framework */,
+				A41AF5D213B2369D00F84804 /* Foundation.framework */,
+				A41AF5D413B2369D00F84804 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A41AF5D613B2369D00F84804 /* p617button */ = {
+			isa = PBXGroup;
+			children = (
+				A41AF5DF13B2369D00F84804 /* ButtonAppDelegate.h */,
+				A41AF5E013B2369D00F84804 /* ButtonAppDelegate.m */,
+				A41AF5E213B2369D00F84804 /* MainWindow.xib */,
+				A41AF5E513B2369D00F84804 /* RootViewController.h */,
+				A41AF5E613B2369D00F84804 /* RootViewController.m */,
+				A41AF5E813B2369D00F84804 /* RootView.xib */,
+				A41AF5F013B237C200F84804 /* MyShrinkingButton.h */,
+				A41AF5F113B237C200F84804 /* MyShrinkingButton.m */,
+				A41AF5D713B2369D00F84804 /* Supporting Files */,
+			);
+			path = p617button;
+			sourceTree = "<group>";
+		};
+		A41AF5D713B2369D00F84804 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A41AF5FB13B2387400F84804 /* coin2.png */,
+				A41AF5D813B2369D00F84804 /* p617button-Info.plist */,
+				A41AF5D913B2369D00F84804 /* InfoPlist.strings */,
+				A41AF5DC13B2369D00F84804 /* p617button-Prefix.pch */,
+				A41AF5DD13B2369D00F84804 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A41AF5CB13B2369D00F84804 /* p617button */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A41AF5ED13B2369D00F84804 /* Build configuration list for PBXNativeTarget "p617button" */;
+			buildPhases = (
+				A41AF5C813B2369D00F84804 /* Sources */,
+				A41AF5C913B2369D00F84804 /* Frameworks */,
+				A41AF5CA13B2369D00F84804 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p617button;
+			productName = p617button;
+			productReference = A41AF5CC13B2369D00F84804 /* p617button.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A41AF5C313B2369D00F84804 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A41AF5C613B2369D00F84804 /* Build configuration list for PBXProject "p617button" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A41AF5C113B2369D00F84804;
+			productRefGroup = A41AF5CD13B2369D00F84804 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A41AF5CB13B2369D00F84804 /* p617button */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A41AF5CA13B2369D00F84804 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A41AF5DB13B2369D00F84804 /* InfoPlist.strings in Resources */,
+				A41AF5E413B2369D00F84804 /* MainWindow.xib in Resources */,
+				A41AF5EA13B2369D00F84804 /* RootView.xib in Resources */,
+				A41AF5FC13B2387400F84804 /* coin2.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A41AF5C813B2369D00F84804 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A41AF5DE13B2369D00F84804 /* main.m in Sources */,
+				A41AF5E113B2369D00F84804 /* ButtonAppDelegate.m in Sources */,
+				A41AF5E713B2369D00F84804 /* RootViewController.m in Sources */,
+				A41AF5F213B237C200F84804 /* MyShrinkingButton.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A41AF5D913B2369D00F84804 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A41AF5DA13B2369D00F84804 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A41AF5E213B2369D00F84804 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A41AF5E313B2369D00F84804 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A41AF5E813B2369D00F84804 /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A41AF5E913B2369D00F84804 /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A41AF5EB13B2369D00F84804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A41AF5EC13B2369D00F84804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A41AF5EE13B2369D00F84804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p617button/p617button-Prefix.pch";
+				INFOPLIST_FILE = "p617button/p617button-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A41AF5EF13B2369D00F84804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p617button/p617button-Prefix.pch";
+				INFOPLIST_FILE = "p617button/p617button-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A41AF5C613B2369D00F84804 /* Build configuration list for PBXProject "p617button" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A41AF5EB13B2369D00F84804 /* Debug */,
+				A41AF5EC13B2369D00F84804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A41AF5ED13B2369D00F84804 /* Build configuration list for PBXNativeTarget "p617button" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A41AF5EE13B2369D00F84804 /* Debug */,
+				A41AF5EF13B2369D00F84804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A41AF5C313B2369D00F84804 /* Project object */;
+}
