@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A40EBF8213B392E800634132 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40EBF8113B392E800634132 /* UIKit.framework */; };
+		A40EBF8413B392E900634132 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40EBF8313B392E900634132 /* Foundation.framework */; };
+		A40EBF8613B392E900634132 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40EBF8513B392E900634132 /* CoreGraphics.framework */; };
+		A40EBF8C13B392E900634132 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A40EBF8A13B392E900634132 /* InfoPlist.strings */; };
+		A40EBF8F13B392E900634132 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A40EBF8E13B392E900634132 /* main.m */; };
+		A40EBF9213B392E900634132 /* DialogsOniPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A40EBF9113B392E900634132 /* DialogsOniPhoneAppDelegate.m */; };
+		A40EBF9513B392E900634132 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A40EBF9313B392E900634132 /* MainWindow.xib */; };
+		A40EBF9813B392E900634132 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A40EBF9713B392E900634132 /* RootViewController.m */; };
+		A40EBF9B13B392E900634132 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A40EBF9913B392E900634132 /* RootViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A40EBF7D13B392E800634132 /* p360dialogsOniPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p360dialogsOniPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A40EBF8113B392E800634132 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A40EBF8313B392E900634132 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A40EBF8513B392E900634132 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A40EBF8913B392E900634132 /* p360dialogsOniPhone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p360dialogsOniPhone-Info.plist"; sourceTree = "<group>"; };
+		A40EBF8B13B392E900634132 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A40EBF8D13B392E900634132 /* p360dialogsOniPhone-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p360dialogsOniPhone-Prefix.pch"; sourceTree = "<group>"; };
+		A40EBF8E13B392E900634132 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A40EBF9013B392E900634132 /* DialogsOniPhoneAppDelegate.h */ = {isa = PBXFileReference; path = DialogsOniPhoneAppDelegate.h; sourceTree = "<group>"; };
+		A40EBF9113B392E900634132 /* DialogsOniPhoneAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DialogsOniPhoneAppDelegate.m; sourceTree = "<group>"; };
+		A40EBF9413B392E900634132 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A40EBF9613B392E900634132 /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		A40EBF9713B392E900634132 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A40EBF9A13B392E900634132 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A40EBF7A13B392E800634132 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A40EBF8213B392E800634132 /* UIKit.framework in Frameworks */,
+				A40EBF8413B392E900634132 /* Foundation.framework in Frameworks */,
+				A40EBF8613B392E900634132 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A40EBF7213B392E800634132 = {
+			isa = PBXGroup;
+			children = (
+				A40EBF8713B392E900634132 /* p360dialogsOniPhone */,
+				A40EBF8013B392E800634132 /* Frameworks */,
+				A40EBF7E13B392E800634132 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A40EBF7E13B392E800634132 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A40EBF7D13B392E800634132 /* p360dialogsOniPhone.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A40EBF8013B392E800634132 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A40EBF8113B392E800634132 /* UIKit.framework */,
+				A40EBF8313B392E900634132 /* Foundation.framework */,
+				A40EBF8513B392E900634132 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A40EBF8713B392E900634132 /* p360dialogsOniPhone */ = {
+			isa = PBXGroup;
+			children = (
+				A40EBF9013B392E900634132 /* DialogsOniPhoneAppDelegate.h */,
+				A40EBF9113B392E900634132 /* DialogsOniPhoneAppDelegate.m */,
+				A40EBF9313B392E900634132 /* MainWindow.xib */,
+				A40EBF9613B392E900634132 /* RootViewController.h */,
+				A40EBF9713B392E900634132 /* RootViewController.m */,
+				A40EBF9913B392E900634132 /* RootViewController.xib */,
+				A40EBF8813B392E900634132 /* Supporting Files */,
+			);
+			path = p360dialogsOniPhone;
+			sourceTree = "<group>";
+		};
+		A40EBF8813B392E900634132 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A40EBF8913B392E900634132 /* p360dialogsOniPhone-Info.plist */,
+				A40EBF8A13B392E900634132 /* InfoPlist.strings */,
+				A40EBF8D13B392E900634132 /* p360dialogsOniPhone-Prefix.pch */,
+				A40EBF8E13B392E900634132 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A40EBF7C13B392E800634132 /* p360dialogsOniPhone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A40EBF9E13B392E900634132 /* Build configuration list for PBXNativeTarget "p360dialogsOniPhone" */;
+			buildPhases = (
+				A40EBF7913B392E800634132 /* Sources */,
+				A40EBF7A13B392E800634132 /* Frameworks */,
+				A40EBF7B13B392E800634132 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p360dialogsOniPhone;
+			productName = p360dialogsOniPhone;
+			productReference = A40EBF7D13B392E800634132 /* p360dialogsOniPhone.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A40EBF7413B392E800634132 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A40EBF7713B392E800634132 /* Build configuration list for PBXProject "p360dialogsOniPhone" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A40EBF7213B392E800634132;
+			productRefGroup = A40EBF7E13B392E800634132 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A40EBF7C13B392E800634132 /* p360dialogsOniPhone */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A40EBF7B13B392E800634132 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A40EBF8C13B392E900634132 /* InfoPlist.strings in Resources */,
+				A40EBF9513B392E900634132 /* MainWindow.xib in Resources */,
+				A40EBF9B13B392E900634132 /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A40EBF7913B392E800634132 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A40EBF8F13B392E900634132 /* main.m in Sources */,
+				A40EBF9213B392E900634132 /* DialogsOniPhoneAppDelegate.m in Sources */,
+				A40EBF9813B392E900634132 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A40EBF8A13B392E900634132 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A40EBF8B13B392E900634132 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A40EBF9313B392E900634132 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A40EBF9413B392E900634132 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A40EBF9913B392E900634132 /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A40EBF9A13B392E900634132 /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A40EBF9C13B392E900634132 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A40EBF9D13B392E900634132 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A40EBF9F13B392E900634132 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p360dialogsOniPhone/p360dialogsOniPhone-Prefix.pch";
+				INFOPLIST_FILE = "p360dialogsOniPhone/p360dialogsOniPhone-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A40EBFA013B392E900634132 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p360dialogsOniPhone/p360dialogsOniPhone-Prefix.pch";
+				INFOPLIST_FILE = "p360dialogsOniPhone/p360dialogsOniPhone-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A40EBF7713B392E800634132 /* Build configuration list for PBXProject "p360dialogsOniPhone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A40EBF9C13B392E900634132 /* Debug */,
+				A40EBF9D13B392E900634132 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A40EBF9E13B392E900634132 /* Build configuration list for PBXNativeTarget "p360dialogsOniPhone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A40EBF9F13B392E900634132 /* Debug */,
+				A40EBFA013B392E900634132 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A40EBF7413B392E800634132 /* Project object */;
+}
