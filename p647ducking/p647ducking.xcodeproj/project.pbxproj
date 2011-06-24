@@ -1,0 +1,301 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4965D3013B4EBF000F92BD6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4965D2F13B4EBF000F92BD6 /* UIKit.framework */; };
+		A4965D3213B4EBF000F92BD6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4965D3113B4EBF000F92BD6 /* Foundation.framework */; };
+		A4965D3413B4EBF000F92BD6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4965D3313B4EBF000F92BD6 /* CoreGraphics.framework */; };
+		A4965D3A13B4EBF000F92BD6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4965D3813B4EBF000F92BD6 /* InfoPlist.strings */; };
+		A4965D3D13B4EBF000F92BD6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4965D3C13B4EBF000F92BD6 /* main.m */; };
+		A4965D4013B4EBF000F92BD6 /* DuckingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4965D3F13B4EBF000F92BD6 /* DuckingAppDelegate.m */; };
+		A4965D4313B4EBF000F92BD6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4965D4113B4EBF000F92BD6 /* MainWindow.xib */; };
+		A4965D4613B4EBF000F92BD6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4965D4513B4EBF000F92BD6 /* RootViewController.m */; };
+		A4965D4913B4EBF000F92BD6 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4965D4713B4EBF000F92BD6 /* RootView.xib */; };
+		A4965D5113B4EC4A00F92BD6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4965D4F13B4EC4A00F92BD6 /* AudioToolbox.framework */; };
+		A4965D5213B4EC4A00F92BD6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4965D5013B4EC4A00F92BD6 /* AVFoundation.framework */; };
+		A4965D5513B4EEAF00F92BD6 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = A4965D5413B4EEAF00F92BD6 /* Player.m */; };
+		A4965D5F13B4F09B00F92BD6 /* test.aif in Resources */ = {isa = PBXBuildFile; fileRef = A4965D5E13B4F09B00F92BD6 /* test.aif */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4965D2B13B4EBEF00F92BD6 /* p647ducking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p647ducking.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4965D2F13B4EBF000F92BD6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4965D3113B4EBF000F92BD6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4965D3313B4EBF000F92BD6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4965D3713B4EBF000F92BD6 /* p647ducking-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p647ducking-Info.plist"; sourceTree = "<group>"; };
+		A4965D3913B4EBF000F92BD6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4965D3B13B4EBF000F92BD6 /* p647ducking-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p647ducking-Prefix.pch"; sourceTree = "<group>"; };
+		A4965D3C13B4EBF000F92BD6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4965D3E13B4EBF000F92BD6 /* DuckingAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DuckingAppDelegate.h; sourceTree = "<group>"; };
+		A4965D3F13B4EBF000F92BD6 /* DuckingAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DuckingAppDelegate.m; sourceTree = "<group>"; };
+		A4965D4213B4EBF000F92BD6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4965D4413B4EBF000F92BD6 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A4965D4513B4EBF000F92BD6 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A4965D4813B4EBF000F92BD6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+		A4965D4F13B4EC4A00F92BD6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A4965D5013B4EC4A00F92BD6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A4965D5313B4EEAE00F92BD6 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		A4965D5413B4EEAF00F92BD6 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		A4965D5E13B4F09B00F92BD6 /* test.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.aif; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4965D2813B4EBEF00F92BD6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4965D5113B4EC4A00F92BD6 /* AudioToolbox.framework in Frameworks */,
+				A4965D5213B4EC4A00F92BD6 /* AVFoundation.framework in Frameworks */,
+				A4965D3013B4EBF000F92BD6 /* UIKit.framework in Frameworks */,
+				A4965D3213B4EBF000F92BD6 /* Foundation.framework in Frameworks */,
+				A4965D3413B4EBF000F92BD6 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4965D2013B4EBEF00F92BD6 = {
+			isa = PBXGroup;
+			children = (
+				A4965D3513B4EBF000F92BD6 /* p647ducking */,
+				A4965D2E13B4EBF000F92BD6 /* Frameworks */,
+				A4965D2C13B4EBEF00F92BD6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4965D2C13B4EBEF00F92BD6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4965D2B13B4EBEF00F92BD6 /* p647ducking.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4965D2E13B4EBF000F92BD6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4965D4F13B4EC4A00F92BD6 /* AudioToolbox.framework */,
+				A4965D5013B4EC4A00F92BD6 /* AVFoundation.framework */,
+				A4965D2F13B4EBF000F92BD6 /* UIKit.framework */,
+				A4965D3113B4EBF000F92BD6 /* Foundation.framework */,
+				A4965D3313B4EBF000F92BD6 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4965D3513B4EBF000F92BD6 /* p647ducking */ = {
+			isa = PBXGroup;
+			children = (
+				A4965D3E13B4EBF000F92BD6 /* DuckingAppDelegate.h */,
+				A4965D3F13B4EBF000F92BD6 /* DuckingAppDelegate.m */,
+				A4965D4113B4EBF000F92BD6 /* MainWindow.xib */,
+				A4965D4413B4EBF000F92BD6 /* RootViewController.h */,
+				A4965D4513B4EBF000F92BD6 /* RootViewController.m */,
+				A4965D4713B4EBF000F92BD6 /* RootView.xib */,
+				A4965D5313B4EEAE00F92BD6 /* Player.h */,
+				A4965D5413B4EEAF00F92BD6 /* Player.m */,
+				A4965D3613B4EBF000F92BD6 /* Supporting Files */,
+			);
+			path = p647ducking;
+			sourceTree = "<group>";
+		};
+		A4965D3613B4EBF000F92BD6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4965D5E13B4F09B00F92BD6 /* test.aif */,
+				A4965D3713B4EBF000F92BD6 /* p647ducking-Info.plist */,
+				A4965D3813B4EBF000F92BD6 /* InfoPlist.strings */,
+				A4965D3B13B4EBF000F92BD6 /* p647ducking-Prefix.pch */,
+				A4965D3C13B4EBF000F92BD6 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4965D2A13B4EBEF00F92BD6 /* p647ducking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4965D4C13B4EBF000F92BD6 /* Build configuration list for PBXNativeTarget "p647ducking" */;
+			buildPhases = (
+				A4965D2713B4EBEF00F92BD6 /* Sources */,
+				A4965D2813B4EBEF00F92BD6 /* Frameworks */,
+				A4965D2913B4EBEF00F92BD6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p647ducking;
+			productName = p647ducking;
+			productReference = A4965D2B13B4EBEF00F92BD6 /* p647ducking.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4965D2213B4EBEF00F92BD6 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4965D2513B4EBEF00F92BD6 /* Build configuration list for PBXProject "p647ducking" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4965D2013B4EBEF00F92BD6;
+			productRefGroup = A4965D2C13B4EBEF00F92BD6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4965D2A13B4EBEF00F92BD6 /* p647ducking */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4965D2913B4EBEF00F92BD6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4965D3A13B4EBF000F92BD6 /* InfoPlist.strings in Resources */,
+				A4965D4313B4EBF000F92BD6 /* MainWindow.xib in Resources */,
+				A4965D4913B4EBF000F92BD6 /* RootView.xib in Resources */,
+				A4965D5F13B4F09B00F92BD6 /* test.aif in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4965D2713B4EBEF00F92BD6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4965D3D13B4EBF000F92BD6 /* main.m in Sources */,
+				A4965D4013B4EBF000F92BD6 /* DuckingAppDelegate.m in Sources */,
+				A4965D4613B4EBF000F92BD6 /* RootViewController.m in Sources */,
+				A4965D5513B4EEAF00F92BD6 /* Player.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4965D3813B4EBF000F92BD6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4965D3913B4EBF000F92BD6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4965D4113B4EBF000F92BD6 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4965D4213B4EBF000F92BD6 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A4965D4713B4EBF000F92BD6 /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4965D4813B4EBF000F92BD6 /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4965D4A13B4EBF000F92BD6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4965D4B13B4EBF000F92BD6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4965D4D13B4EBF000F92BD6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p647ducking/p647ducking-Prefix.pch";
+				INFOPLIST_FILE = "p647ducking/p647ducking-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4965D4E13B4EBF000F92BD6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p647ducking/p647ducking-Prefix.pch";
+				INFOPLIST_FILE = "p647ducking/p647ducking-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4965D2513B4EBEF00F92BD6 /* Build configuration list for PBXProject "p647ducking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4965D4A13B4EBF000F92BD6 /* Debug */,
+				A4965D4B13B4EBF000F92BD6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4965D4C13B4EBF000F92BD6 /* Build configuration list for PBXNativeTarget "p647ducking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4965D4D13B4EBF000F92BD6 /* Debug */,
+				A4965D4E13B4EBF000F92BD6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4965D2213B4EBEF00F92BD6 /* Project object */;
+}
