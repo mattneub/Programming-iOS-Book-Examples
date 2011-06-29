@@ -1,0 +1,314 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4DE4DDE13BB930B0031F605 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DE4DDD13BB930B0031F605 /* UIKit.framework */; };
+		A4DE4DE013BB930B0031F605 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DE4DDF13BB930B0031F605 /* Foundation.framework */; };
+		A4DE4DE213BB930B0031F605 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DE4DE113BB930B0031F605 /* CoreGraphics.framework */; };
+		A4DE4DE813BB930B0031F605 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4DE4DE613BB930B0031F605 /* InfoPlist.strings */; };
+		A4DE4DEB13BB930B0031F605 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DE4DEA13BB930B0031F605 /* main.m */; };
+		A4DE4DEE13BB930B0031F605 /* MapAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DE4DED13BB930B0031F605 /* MapAppDelegate.m */; };
+		A4DE4DF113BB930B0031F605 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4DE4DEF13BB930B0031F605 /* MainWindow.xib */; };
+		A4DE4DF413BB930B0031F605 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DE4DF313BB930B0031F605 /* RootViewController.m */; };
+		A4DE4DF713BB930B0031F605 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4DE4DF513BB930B0031F605 /* RootView.xib */; };
+		A4DE4DFE13BB93720031F605 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DE4DFD13BB93710031F605 /* MapKit.framework */; };
+		A4DE4E0813BB94940031F605 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DE4E0713BB94940031F605 /* CoreLocation.framework */; };
+		A4DE4E0B13BB96E00031F605 /* clipartdirtbike.gif in Resources */ = {isa = PBXBuildFile; fileRef = A4DE4E0A13BB96E00031F605 /* clipartdirtbike.gif */; };
+		A4DE4E0E13BB99F70031F605 /* MyAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DE4E0D13BB99F70031F605 /* MyAnnotationView.m */; };
+		A4DE4E1113BB9AAA0031F605 /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DE4E1013BB9AAA0031F605 /* MyAnnotation.m */; };
+		A4DE4E1413BBA1F30031F605 /* MyOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DE4E1313BBA1F30031F605 /* MyOverlay.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4DE4DD913BB930B0031F605 /* p707map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p707map.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4DE4DDD13BB930B0031F605 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4DE4DDF13BB930B0031F605 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4DE4DE113BB930B0031F605 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4DE4DE513BB930B0031F605 /* p707map-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p707map-Info.plist"; sourceTree = "<group>"; };
+		A4DE4DE713BB930B0031F605 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4DE4DE913BB930B0031F605 /* p707map-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p707map-Prefix.pch"; sourceTree = "<group>"; };
+		A4DE4DEA13BB930B0031F605 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4DE4DEC13BB930B0031F605 /* MapAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapAppDelegate.h; sourceTree = "<group>"; };
+		A4DE4DED13BB930B0031F605 /* MapAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapAppDelegate.m; sourceTree = "<group>"; };
+		A4DE4DF013BB930B0031F605 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4DE4DF213BB930B0031F605 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A4DE4DF313BB930B0031F605 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A4DE4DF613BB930B0031F605 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+		A4DE4DFD13BB93710031F605 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A4DE4E0713BB94940031F605 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A4DE4E0A13BB96E00031F605 /* clipartdirtbike.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = clipartdirtbike.gif; sourceTree = "<group>"; };
+		A4DE4E0C13BB99F70031F605 /* MyAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnnotationView.h; sourceTree = "<group>"; };
+		A4DE4E0D13BB99F70031F605 /* MyAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnnotationView.m; sourceTree = "<group>"; };
+		A4DE4E0F13BB9AAA0031F605 /* MyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnnotation.h; sourceTree = "<group>"; };
+		A4DE4E1013BB9AAA0031F605 /* MyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
+		A4DE4E1213BBA1F30031F605 /* MyOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOverlay.h; sourceTree = "<group>"; };
+		A4DE4E1313BBA1F30031F605 /* MyOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOverlay.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4DE4DD613BB930B0031F605 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4DE4E0813BB94940031F605 /* CoreLocation.framework in Frameworks */,
+				A4DE4DFE13BB93720031F605 /* MapKit.framework in Frameworks */,
+				A4DE4DDE13BB930B0031F605 /* UIKit.framework in Frameworks */,
+				A4DE4DE013BB930B0031F605 /* Foundation.framework in Frameworks */,
+				A4DE4DE213BB930B0031F605 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4DE4DCE13BB930B0031F605 = {
+			isa = PBXGroup;
+			children = (
+				A4DE4DE313BB930B0031F605 /* p707map */,
+				A4DE4DDC13BB930B0031F605 /* Frameworks */,
+				A4DE4DDA13BB930B0031F605 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4DE4DDA13BB930B0031F605 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4DE4DD913BB930B0031F605 /* p707map.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4DE4DDC13BB930B0031F605 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4DE4E0713BB94940031F605 /* CoreLocation.framework */,
+				A4DE4DFD13BB93710031F605 /* MapKit.framework */,
+				A4DE4DDD13BB930B0031F605 /* UIKit.framework */,
+				A4DE4DDF13BB930B0031F605 /* Foundation.framework */,
+				A4DE4DE113BB930B0031F605 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4DE4DE313BB930B0031F605 /* p707map */ = {
+			isa = PBXGroup;
+			children = (
+				A4DE4DEC13BB930B0031F605 /* MapAppDelegate.h */,
+				A4DE4DED13BB930B0031F605 /* MapAppDelegate.m */,
+				A4DE4DEF13BB930B0031F605 /* MainWindow.xib */,
+				A4DE4DF213BB930B0031F605 /* RootViewController.h */,
+				A4DE4DF313BB930B0031F605 /* RootViewController.m */,
+				A4DE4DF513BB930B0031F605 /* RootView.xib */,
+				A4DE4E0C13BB99F70031F605 /* MyAnnotationView.h */,
+				A4DE4E0D13BB99F70031F605 /* MyAnnotationView.m */,
+				A4DE4E0F13BB9AAA0031F605 /* MyAnnotation.h */,
+				A4DE4E1013BB9AAA0031F605 /* MyAnnotation.m */,
+				A4DE4E1213BBA1F30031F605 /* MyOverlay.h */,
+				A4DE4E1313BBA1F30031F605 /* MyOverlay.m */,
+				A4DE4DE413BB930B0031F605 /* Supporting Files */,
+			);
+			path = p707map;
+			sourceTree = "<group>";
+		};
+		A4DE4DE413BB930B0031F605 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4DE4E0A13BB96E00031F605 /* clipartdirtbike.gif */,
+				A4DE4DE513BB930B0031F605 /* p707map-Info.plist */,
+				A4DE4DE613BB930B0031F605 /* InfoPlist.strings */,
+				A4DE4DE913BB930B0031F605 /* p707map-Prefix.pch */,
+				A4DE4DEA13BB930B0031F605 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4DE4DD813BB930B0031F605 /* p707map */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4DE4DFA13BB930B0031F605 /* Build configuration list for PBXNativeTarget "p707map" */;
+			buildPhases = (
+				A4DE4DD513BB930B0031F605 /* Sources */,
+				A4DE4DD613BB930B0031F605 /* Frameworks */,
+				A4DE4DD713BB930B0031F605 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p707map;
+			productName = p707map;
+			productReference = A4DE4DD913BB930B0031F605 /* p707map.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4DE4DD013BB930B0031F605 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4DE4DD313BB930B0031F605 /* Build configuration list for PBXProject "p707map" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4DE4DCE13BB930B0031F605;
+			productRefGroup = A4DE4DDA13BB930B0031F605 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4DE4DD813BB930B0031F605 /* p707map */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4DE4DD713BB930B0031F605 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4DE4DE813BB930B0031F605 /* InfoPlist.strings in Resources */,
+				A4DE4DF113BB930B0031F605 /* MainWindow.xib in Resources */,
+				A4DE4DF713BB930B0031F605 /* RootView.xib in Resources */,
+				A4DE4E0B13BB96E00031F605 /* clipartdirtbike.gif in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4DE4DD513BB930B0031F605 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4DE4DEB13BB930B0031F605 /* main.m in Sources */,
+				A4DE4DEE13BB930B0031F605 /* MapAppDelegate.m in Sources */,
+				A4DE4DF413BB930B0031F605 /* RootViewController.m in Sources */,
+				A4DE4E0E13BB99F70031F605 /* MyAnnotationView.m in Sources */,
+				A4DE4E1113BB9AAA0031F605 /* MyAnnotation.m in Sources */,
+				A4DE4E1413BBA1F30031F605 /* MyOverlay.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4DE4DE613BB930B0031F605 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4DE4DE713BB930B0031F605 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4DE4DEF13BB930B0031F605 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4DE4DF013BB930B0031F605 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A4DE4DF513BB930B0031F605 /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4DE4DF613BB930B0031F605 /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4DE4DF813BB930B0031F605 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4DE4DF913BB930B0031F605 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4DE4DFB13BB930B0031F605 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p707map/p707map-Prefix.pch";
+				INFOPLIST_FILE = "p707map/p707map-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4DE4DFC13BB930B0031F605 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p707map/p707map-Prefix.pch";
+				INFOPLIST_FILE = "p707map/p707map-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4DE4DD313BB930B0031F605 /* Build configuration list for PBXProject "p707map" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4DE4DF813BB930B0031F605 /* Debug */,
+				A4DE4DF913BB930B0031F605 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4DE4DFA13BB930B0031F605 /* Build configuration list for PBXNativeTarget "p707map" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4DE4DFB13BB930B0031F605 /* Debug */,
+				A4DE4DFC13BB930B0031F605 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4DE4DD013BB930B0031F605 /* Project object */;
+}
