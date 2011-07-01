@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A448AD2613BE26EC00F646A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A448AD2513BE26EC00F646A6 /* UIKit.framework */; };
+		A448AD2813BE26EC00F646A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A448AD2713BE26EC00F646A6 /* Foundation.framework */; };
+		A448AD2A13BE26EC00F646A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A448AD2913BE26EC00F646A6 /* CoreGraphics.framework */; };
+		A448AD3013BE26EC00F646A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A448AD2E13BE26EC00F646A6 /* InfoPlist.strings */; };
+		A448AD3313BE26EC00F646A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A448AD3213BE26EC00F646A6 /* main.m */; };
+		A448AD3613BE26EC00F646A6 /* SmackMeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A448AD3513BE26EC00F646A6 /* SmackMeAppDelegate.m */; };
+		A448AD3913BE26ED00F646A6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A448AD3713BE26ED00F646A6 /* MainWindow.xib */; };
+		A448AD3C13BE26ED00F646A6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A448AD3B13BE26ED00F646A6 /* RootViewController.m */; };
+		A448AD3F13BE26ED00F646A6 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A448AD3D13BE26ED00F646A6 /* RootView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A448AD2113BE26EC00F646A6 /* p723smackMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p723smackMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A448AD2513BE26EC00F646A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A448AD2713BE26EC00F646A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A448AD2913BE26EC00F646A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A448AD2D13BE26EC00F646A6 /* p723smackMe-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p723smackMe-Info.plist"; sourceTree = "<group>"; };
+		A448AD2F13BE26EC00F646A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A448AD3113BE26EC00F646A6 /* p723smackMe-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p723smackMe-Prefix.pch"; sourceTree = "<group>"; };
+		A448AD3213BE26EC00F646A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A448AD3413BE26EC00F646A6 /* SmackMeAppDelegate.h */ = {isa = PBXFileReference; path = SmackMeAppDelegate.h; sourceTree = "<group>"; };
+		A448AD3513BE26EC00F646A6 /* SmackMeAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmackMeAppDelegate.m; sourceTree = "<group>"; };
+		A448AD3813BE26ED00F646A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A448AD3A13BE26ED00F646A6 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A448AD3B13BE26ED00F646A6 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A448AD3E13BE26ED00F646A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A448AD1E13BE26EC00F646A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A448AD2613BE26EC00F646A6 /* UIKit.framework in Frameworks */,
+				A448AD2813BE26EC00F646A6 /* Foundation.framework in Frameworks */,
+				A448AD2A13BE26EC00F646A6 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A448AD1613BE26EC00F646A6 = {
+			isa = PBXGroup;
+			children = (
+				A448AD2B13BE26EC00F646A6 /* p723smackMe */,
+				A448AD2413BE26EC00F646A6 /* Frameworks */,
+				A448AD2213BE26EC00F646A6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A448AD2213BE26EC00F646A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A448AD2113BE26EC00F646A6 /* p723smackMe.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A448AD2413BE26EC00F646A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A448AD2513BE26EC00F646A6 /* UIKit.framework */,
+				A448AD2713BE26EC00F646A6 /* Foundation.framework */,
+				A448AD2913BE26EC00F646A6 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A448AD2B13BE26EC00F646A6 /* p723smackMe */ = {
+			isa = PBXGroup;
+			children = (
+				A448AD3413BE26EC00F646A6 /* SmackMeAppDelegate.h */,
+				A448AD3513BE26EC00F646A6 /* SmackMeAppDelegate.m */,
+				A448AD3713BE26ED00F646A6 /* MainWindow.xib */,
+				A448AD3A13BE26ED00F646A6 /* RootViewController.h */,
+				A448AD3B13BE26ED00F646A6 /* RootViewController.m */,
+				A448AD3D13BE26ED00F646A6 /* RootView.xib */,
+				A448AD2C13BE26EC00F646A6 /* Supporting Files */,
+			);
+			path = p723smackMe;
+			sourceTree = "<group>";
+		};
+		A448AD2C13BE26EC00F646A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A448AD2D13BE26EC00F646A6 /* p723smackMe-Info.plist */,
+				A448AD2E13BE26EC00F646A6 /* InfoPlist.strings */,
+				A448AD3113BE26EC00F646A6 /* p723smackMe-Prefix.pch */,
+				A448AD3213BE26EC00F646A6 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A448AD2013BE26EC00F646A6 /* p723smackMe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A448AD4213BE26ED00F646A6 /* Build configuration list for PBXNativeTarget "p723smackMe" */;
+			buildPhases = (
+				A448AD1D13BE26EC00F646A6 /* Sources */,
+				A448AD1E13BE26EC00F646A6 /* Frameworks */,
+				A448AD1F13BE26EC00F646A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p723smackMe;
+			productName = p723smackMe;
+			productReference = A448AD2113BE26EC00F646A6 /* p723smackMe.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A448AD1813BE26EC00F646A6 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A448AD1B13BE26EC00F646A6 /* Build configuration list for PBXProject "p723smackMe" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A448AD1613BE26EC00F646A6;
+			productRefGroup = A448AD2213BE26EC00F646A6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A448AD2013BE26EC00F646A6 /* p723smackMe */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A448AD1F13BE26EC00F646A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A448AD3013BE26EC00F646A6 /* InfoPlist.strings in Resources */,
+				A448AD3913BE26ED00F646A6 /* MainWindow.xib in Resources */,
+				A448AD3F13BE26ED00F646A6 /* RootView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A448AD1D13BE26EC00F646A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A448AD3313BE26EC00F646A6 /* main.m in Sources */,
+				A448AD3613BE26EC00F646A6 /* SmackMeAppDelegate.m in Sources */,
+				A448AD3C13BE26ED00F646A6 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A448AD2E13BE26EC00F646A6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A448AD2F13BE26EC00F646A6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A448AD3713BE26ED00F646A6 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A448AD3813BE26ED00F646A6 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A448AD3D13BE26ED00F646A6 /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A448AD3E13BE26ED00F646A6 /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A448AD4013BE26ED00F646A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A448AD4113BE26ED00F646A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A448AD4313BE26ED00F646A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p723smackMe/p723smackMe-Prefix.pch";
+				INFOPLIST_FILE = "p723smackMe/p723smackMe-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A448AD4413BE26ED00F646A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p723smackMe/p723smackMe-Prefix.pch";
+				INFOPLIST_FILE = "p723smackMe/p723smackMe-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A448AD1B13BE26EC00F646A6 /* Build configuration list for PBXProject "p723smackMe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A448AD4013BE26ED00F646A6 /* Debug */,
+				A448AD4113BE26ED00F646A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A448AD4213BE26ED00F646A6 /* Build configuration list for PBXNativeTarget "p723smackMe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A448AD4313BE26ED00F646A6 /* Debug */,
+				A448AD4413BE26ED00F646A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A448AD1813BE26EC00F646A6 /* Project object */;
+}

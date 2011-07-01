@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A448ACF513BE238C00F646A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A448ACF413BE238C00F646A6 /* UIKit.framework */; };
+		A448ACF713BE238C00F646A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A448ACF613BE238C00F646A6 /* Foundation.framework */; };
+		A448ACF913BE238C00F646A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A448ACF813BE238C00F646A6 /* CoreGraphics.framework */; };
+		A448ACFF13BE238C00F646A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A448ACFD13BE238C00F646A6 /* InfoPlist.strings */; };
+		A448AD0213BE238C00F646A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A448AD0113BE238C00F646A6 /* main.m */; };
+		A448AD0513BE238C00F646A6 /* LyingDownAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A448AD0413BE238C00F646A6 /* LyingDownAppDelegate.m */; };
+		A448AD0813BE238D00F646A6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A448AD0613BE238D00F646A6 /* MainWindow.xib */; };
+		A448AD0B13BE238D00F646A6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A448AD0A13BE238D00F646A6 /* RootViewController.m */; };
+		A448AD0E13BE238D00F646A6 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A448AD0C13BE238D00F646A6 /* RootView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A448ACF013BE238C00F646A6 /* p723lyingDown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p723lyingDown.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A448ACF413BE238C00F646A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A448ACF613BE238C00F646A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A448ACF813BE238C00F646A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A448ACFC13BE238C00F646A6 /* p723lyingDown-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p723lyingDown-Info.plist"; sourceTree = "<group>"; };
+		A448ACFE13BE238C00F646A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A448AD0013BE238C00F646A6 /* p723lyingDown-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p723lyingDown-Prefix.pch"; sourceTree = "<group>"; };
+		A448AD0113BE238C00F646A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A448AD0313BE238C00F646A6 /* LyingDownAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LyingDownAppDelegate.h; sourceTree = "<group>"; };
+		A448AD0413BE238C00F646A6 /* LyingDownAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LyingDownAppDelegate.m; sourceTree = "<group>"; };
+		A448AD0713BE238D00F646A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A448AD0913BE238D00F646A6 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A448AD0A13BE238D00F646A6 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A448AD0D13BE238D00F646A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A448ACED13BE238C00F646A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A448ACF513BE238C00F646A6 /* UIKit.framework in Frameworks */,
+				A448ACF713BE238C00F646A6 /* Foundation.framework in Frameworks */,
+				A448ACF913BE238C00F646A6 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A448ACE513BE238C00F646A6 = {
+			isa = PBXGroup;
+			children = (
+				A448ACFA13BE238C00F646A6 /* p723lyingDown */,
+				A448ACF313BE238C00F646A6 /* Frameworks */,
+				A448ACF113BE238C00F646A6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A448ACF113BE238C00F646A6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A448ACF013BE238C00F646A6 /* p723lyingDown.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A448ACF313BE238C00F646A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A448ACF413BE238C00F646A6 /* UIKit.framework */,
+				A448ACF613BE238C00F646A6 /* Foundation.framework */,
+				A448ACF813BE238C00F646A6 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A448ACFA13BE238C00F646A6 /* p723lyingDown */ = {
+			isa = PBXGroup;
+			children = (
+				A448AD0313BE238C00F646A6 /* LyingDownAppDelegate.h */,
+				A448AD0413BE238C00F646A6 /* LyingDownAppDelegate.m */,
+				A448AD0613BE238D00F646A6 /* MainWindow.xib */,
+				A448AD0913BE238D00F646A6 /* RootViewController.h */,
+				A448AD0A13BE238D00F646A6 /* RootViewController.m */,
+				A448AD0C13BE238D00F646A6 /* RootView.xib */,
+				A448ACFB13BE238C00F646A6 /* Supporting Files */,
+			);
+			path = p723lyingDown;
+			sourceTree = "<group>";
+		};
+		A448ACFB13BE238C00F646A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A448ACFC13BE238C00F646A6 /* p723lyingDown-Info.plist */,
+				A448ACFD13BE238C00F646A6 /* InfoPlist.strings */,
+				A448AD0013BE238C00F646A6 /* p723lyingDown-Prefix.pch */,
+				A448AD0113BE238C00F646A6 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A448ACEF13BE238C00F646A6 /* p723lyingDown */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A448AD1113BE238D00F646A6 /* Build configuration list for PBXNativeTarget "p723lyingDown" */;
+			buildPhases = (
+				A448ACEC13BE238C00F646A6 /* Sources */,
+				A448ACED13BE238C00F646A6 /* Frameworks */,
+				A448ACEE13BE238C00F646A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p723lyingDown;
+			productName = p723lyingDown;
+			productReference = A448ACF013BE238C00F646A6 /* p723lyingDown.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A448ACE713BE238C00F646A6 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A448ACEA13BE238C00F646A6 /* Build configuration list for PBXProject "p723lyingDown" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A448ACE513BE238C00F646A6;
+			productRefGroup = A448ACF113BE238C00F646A6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A448ACEF13BE238C00F646A6 /* p723lyingDown */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A448ACEE13BE238C00F646A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A448ACFF13BE238C00F646A6 /* InfoPlist.strings in Resources */,
+				A448AD0813BE238D00F646A6 /* MainWindow.xib in Resources */,
+				A448AD0E13BE238D00F646A6 /* RootView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A448ACEC13BE238C00F646A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A448AD0213BE238C00F646A6 /* main.m in Sources */,
+				A448AD0513BE238C00F646A6 /* LyingDownAppDelegate.m in Sources */,
+				A448AD0B13BE238D00F646A6 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A448ACFD13BE238C00F646A6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A448ACFE13BE238C00F646A6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A448AD0613BE238D00F646A6 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A448AD0713BE238D00F646A6 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A448AD0C13BE238D00F646A6 /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A448AD0D13BE238D00F646A6 /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A448AD0F13BE238D00F646A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A448AD1013BE238D00F646A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A448AD1213BE238D00F646A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p723lyingDown/p723lyingDown-Prefix.pch";
+				INFOPLIST_FILE = "p723lyingDown/p723lyingDown-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A448AD1313BE238D00F646A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p723lyingDown/p723lyingDown-Prefix.pch";
+				INFOPLIST_FILE = "p723lyingDown/p723lyingDown-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A448ACEA13BE238C00F646A6 /* Build configuration list for PBXProject "p723lyingDown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A448AD0F13BE238D00F646A6 /* Debug */,
+				A448AD1013BE238D00F646A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A448AD1113BE238D00F646A6 /* Build configuration list for PBXNativeTarget "p723lyingDown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A448AD1213BE238D00F646A6 /* Debug */,
+				A448AD1313BE238D00F646A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A448ACE713BE238C00F646A6 /* Project object */;
+}
