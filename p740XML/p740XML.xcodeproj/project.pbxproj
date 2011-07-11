@@ -1,0 +1,320 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4A269B613CB634A00FD5621 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A269B513CB634A00FD5621 /* UIKit.framework */; };
+		A4A269B813CB634A00FD5621 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A269B713CB634A00FD5621 /* Foundation.framework */; };
+		A4A269BA13CB634A00FD5621 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A269B913CB634A00FD5621 /* CoreGraphics.framework */; };
+		A4A269C013CB634A00FD5621 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4A269BE13CB634A00FD5621 /* InfoPlist.strings */; };
+		A4A269C313CB634A00FD5621 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A269C213CB634A00FD5621 /* main.m */; };
+		A4A269C613CB634A00FD5621 /* XMLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A269C513CB634A00FD5621 /* XMLAppDelegate.m */; };
+		A4A269C913CB634A00FD5621 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4A269C713CB634A00FD5621 /* MainWindow.xib */; };
+		A4A269CC13CB634A00FD5621 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A269CB13CB634A00FD5621 /* RootViewController.m */; };
+		A4A269CF13CB634A00FD5621 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4A269CD13CB634A00FD5621 /* RootView.xib */; };
+		A4A269DE13CB641000FD5621 /* folks.xml in Resources */ = {isa = PBXBuildFile; fileRef = A4A269DD13CB641000FD5621 /* folks.xml */; };
+		A4A269E713CB644500FD5621 /* MyXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A269E213CB644500FD5621 /* MyXMLParserDelegate.m */; };
+		A4A269E813CB644500FD5621 /* MyPeopleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A269E413CB644500FD5621 /* MyPeopleParser.m */; };
+		A4A269E913CB644500FD5621 /* MyPersonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A269E613CB644500FD5621 /* MyPersonParser.m */; };
+		A4A269EC13CB647B00FD5621 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A269EB13CB647B00FD5621 /* Person.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4A269B113CB634A00FD5621 /* p740XML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p740XML.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4A269B513CB634A00FD5621 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4A269B713CB634A00FD5621 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4A269B913CB634A00FD5621 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4A269BD13CB634A00FD5621 /* p740XML-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p740XML-Info.plist"; sourceTree = "<group>"; };
+		A4A269BF13CB634A00FD5621 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4A269C113CB634A00FD5621 /* p740XML-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p740XML-Prefix.pch"; sourceTree = "<group>"; };
+		A4A269C213CB634A00FD5621 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4A269C413CB634A00FD5621 /* XMLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMLAppDelegate.h; sourceTree = "<group>"; };
+		A4A269C513CB634A00FD5621 /* XMLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XMLAppDelegate.m; sourceTree = "<group>"; };
+		A4A269C813CB634A00FD5621 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4A269CA13CB634A00FD5621 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A4A269CB13CB634A00FD5621 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A4A269CE13CB634A00FD5621 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+		A4A269DD13CB641000FD5621 /* folks.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = folks.xml; sourceTree = "<group>"; };
+		A4A269E113CB644500FD5621 /* MyXMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyXMLParserDelegate.h; sourceTree = "<group>"; };
+		A4A269E213CB644500FD5621 /* MyXMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyXMLParserDelegate.m; sourceTree = "<group>"; };
+		A4A269E313CB644500FD5621 /* MyPeopleParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPeopleParser.h; sourceTree = "<group>"; };
+		A4A269E413CB644500FD5621 /* MyPeopleParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPeopleParser.m; sourceTree = "<group>"; };
+		A4A269E513CB644500FD5621 /* MyPersonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPersonParser.h; sourceTree = "<group>"; };
+		A4A269E613CB644500FD5621 /* MyPersonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPersonParser.m; sourceTree = "<group>"; };
+		A4A269EA13CB647B00FD5621 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		A4A269EB13CB647B00FD5621 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4A269AE13CB634A00FD5621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4A269B613CB634A00FD5621 /* UIKit.framework in Frameworks */,
+				A4A269B813CB634A00FD5621 /* Foundation.framework in Frameworks */,
+				A4A269BA13CB634A00FD5621 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4A269A613CB634A00FD5621 = {
+			isa = PBXGroup;
+			children = (
+				A4A269BB13CB634A00FD5621 /* p740XML */,
+				A4A269B413CB634A00FD5621 /* Frameworks */,
+				A4A269B213CB634A00FD5621 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4A269B213CB634A00FD5621 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4A269B113CB634A00FD5621 /* p740XML.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4A269B413CB634A00FD5621 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4A269B513CB634A00FD5621 /* UIKit.framework */,
+				A4A269B713CB634A00FD5621 /* Foundation.framework */,
+				A4A269B913CB634A00FD5621 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4A269BB13CB634A00FD5621 /* p740XML */ = {
+			isa = PBXGroup;
+			children = (
+				A4A269E013CB642300FD5621 /* XMLParsing */,
+				A4A269C413CB634A00FD5621 /* XMLAppDelegate.h */,
+				A4A269C513CB634A00FD5621 /* XMLAppDelegate.m */,
+				A4A269C713CB634A00FD5621 /* MainWindow.xib */,
+				A4A269CA13CB634A00FD5621 /* RootViewController.h */,
+				A4A269CB13CB634A00FD5621 /* RootViewController.m */,
+				A4A269CD13CB634A00FD5621 /* RootView.xib */,
+				A4A269EA13CB647B00FD5621 /* Person.h */,
+				A4A269EB13CB647B00FD5621 /* Person.m */,
+				A4A269BC13CB634A00FD5621 /* Supporting Files */,
+			);
+			path = p740XML;
+			sourceTree = "<group>";
+		};
+		A4A269BC13CB634A00FD5621 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4A269DD13CB641000FD5621 /* folks.xml */,
+				A4A269BD13CB634A00FD5621 /* p740XML-Info.plist */,
+				A4A269BE13CB634A00FD5621 /* InfoPlist.strings */,
+				A4A269C113CB634A00FD5621 /* p740XML-Prefix.pch */,
+				A4A269C213CB634A00FD5621 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4A269E013CB642300FD5621 /* XMLParsing */ = {
+			isa = PBXGroup;
+			children = (
+				A4A269E113CB644500FD5621 /* MyXMLParserDelegate.h */,
+				A4A269E213CB644500FD5621 /* MyXMLParserDelegate.m */,
+				A4A269E313CB644500FD5621 /* MyPeopleParser.h */,
+				A4A269E413CB644500FD5621 /* MyPeopleParser.m */,
+				A4A269E513CB644500FD5621 /* MyPersonParser.h */,
+				A4A269E613CB644500FD5621 /* MyPersonParser.m */,
+			);
+			name = XMLParsing;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4A269B013CB634A00FD5621 /* p740XML */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4A269D213CB634A00FD5621 /* Build configuration list for PBXNativeTarget "p740XML" */;
+			buildPhases = (
+				A4A269AD13CB634A00FD5621 /* Sources */,
+				A4A269AE13CB634A00FD5621 /* Frameworks */,
+				A4A269AF13CB634A00FD5621 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p740XML;
+			productName = p740XML;
+			productReference = A4A269B113CB634A00FD5621 /* p740XML.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4A269A813CB634A00FD5621 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4A269AB13CB634A00FD5621 /* Build configuration list for PBXProject "p740XML" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4A269A613CB634A00FD5621;
+			productRefGroup = A4A269B213CB634A00FD5621 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4A269B013CB634A00FD5621 /* p740XML */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4A269AF13CB634A00FD5621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4A269C013CB634A00FD5621 /* InfoPlist.strings in Resources */,
+				A4A269C913CB634A00FD5621 /* MainWindow.xib in Resources */,
+				A4A269CF13CB634A00FD5621 /* RootView.xib in Resources */,
+				A4A269DE13CB641000FD5621 /* folks.xml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4A269AD13CB634A00FD5621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4A269C313CB634A00FD5621 /* main.m in Sources */,
+				A4A269C613CB634A00FD5621 /* XMLAppDelegate.m in Sources */,
+				A4A269CC13CB634A00FD5621 /* RootViewController.m in Sources */,
+				A4A269E713CB644500FD5621 /* MyXMLParserDelegate.m in Sources */,
+				A4A269E813CB644500FD5621 /* MyPeopleParser.m in Sources */,
+				A4A269E913CB644500FD5621 /* MyPersonParser.m in Sources */,
+				A4A269EC13CB647B00FD5621 /* Person.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4A269BE13CB634A00FD5621 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4A269BF13CB634A00FD5621 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4A269C713CB634A00FD5621 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4A269C813CB634A00FD5621 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A4A269CD13CB634A00FD5621 /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4A269CE13CB634A00FD5621 /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4A269D013CB634A00FD5621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4A269D113CB634A00FD5621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4A269D313CB634A00FD5621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p740XML/p740XML-Prefix.pch";
+				INFOPLIST_FILE = "p740XML/p740XML-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4A269D413CB634A00FD5621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p740XML/p740XML-Prefix.pch";
+				INFOPLIST_FILE = "p740XML/p740XML-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4A269AB13CB634A00FD5621 /* Build configuration list for PBXProject "p740XML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4A269D013CB634A00FD5621 /* Debug */,
+				A4A269D113CB634A00FD5621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4A269D213CB634A00FD5621 /* Build configuration list for PBXNativeTarget "p740XML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4A269D313CB634A00FD5621 /* Debug */,
+				A4A269D413CB634A00FD5621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4A269A813CB634A00FD5621 /* Project object */;
+}

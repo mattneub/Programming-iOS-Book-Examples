@@ -1,0 +1,314 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4A269FD13CB6A7500FD5621 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A269FC13CB6A7500FD5621 /* UIKit.framework */; };
+		A4A269FF13CB6A7500FD5621 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A269FE13CB6A7500FD5621 /* Foundation.framework */; };
+		A4A26A0113CB6A7500FD5621 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A26A0013CB6A7500FD5621 /* CoreGraphics.framework */; };
+		A4A26A0713CB6A7500FD5621 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4A26A0513CB6A7500FD5621 /* InfoPlist.strings */; };
+		A4A26A0A13CB6A7500FD5621 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A26A0913CB6A7500FD5621 /* main.m */; };
+		A4A26A0D13CB6A7500FD5621 /* SQLiteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A26A0C13CB6A7500FD5621 /* SQLiteAppDelegate.m */; };
+		A4A26A1013CB6A7500FD5621 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4A26A0E13CB6A7500FD5621 /* MainWindow.xib */; };
+		A4A26A1313CB6A7500FD5621 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A26A1213CB6A7500FD5621 /* RootViewController.m */; };
+		A4A26A1613CB6A7500FD5621 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4A26A1413CB6A7500FD5621 /* RootView.xib */; };
+		A4A26A2C13CB6C3F00FD5621 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A26A2713CB6C3F00FD5621 /* FMDatabase.m */; };
+		A4A26A2D13CB6C3F00FD5621 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A26A2913CB6C3F00FD5621 /* FMDatabaseAdditions.m */; };
+		A4A26A2E13CB6C3F00FD5621 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A26A2B13CB6C3F00FD5621 /* FMResultSet.m */; };
+		A4A26A3013CB6C6400FD5621 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A26A2F13CB6C6400FD5621 /* libsqlite3.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4A269F813CB6A7500FD5621 /* p746SQLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p746SQLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4A269FC13CB6A7500FD5621 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4A269FE13CB6A7500FD5621 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4A26A0013CB6A7500FD5621 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4A26A0413CB6A7500FD5621 /* p746SQLite-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p746SQLite-Info.plist"; sourceTree = "<group>"; };
+		A4A26A0613CB6A7500FD5621 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4A26A0813CB6A7500FD5621 /* p746SQLite-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p746SQLite-Prefix.pch"; sourceTree = "<group>"; };
+		A4A26A0913CB6A7500FD5621 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4A26A0B13CB6A7500FD5621 /* SQLiteAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SQLiteAppDelegate.h; sourceTree = "<group>"; };
+		A4A26A0C13CB6A7500FD5621 /* SQLiteAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SQLiteAppDelegate.m; sourceTree = "<group>"; };
+		A4A26A0F13CB6A7500FD5621 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4A26A1113CB6A7500FD5621 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A4A26A1213CB6A7500FD5621 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A4A26A1513CB6A7500FD5621 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+		A4A26A2613CB6C3F00FD5621 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		A4A26A2713CB6C3F00FD5621 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		A4A26A2813CB6C3F00FD5621 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		A4A26A2913CB6C3F00FD5621 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		A4A26A2A13CB6C3F00FD5621 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		A4A26A2B13CB6C3F00FD5621 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		A4A26A2F13CB6C6400FD5621 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4A269F513CB6A7500FD5621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4A26A3013CB6C6400FD5621 /* libsqlite3.dylib in Frameworks */,
+				A4A269FD13CB6A7500FD5621 /* UIKit.framework in Frameworks */,
+				A4A269FF13CB6A7500FD5621 /* Foundation.framework in Frameworks */,
+				A4A26A0113CB6A7500FD5621 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4A269ED13CB6A7500FD5621 = {
+			isa = PBXGroup;
+			children = (
+				A4A26A0213CB6A7500FD5621 /* p746SQLite */,
+				A4A269FB13CB6A7500FD5621 /* Frameworks */,
+				A4A269F913CB6A7500FD5621 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4A269F913CB6A7500FD5621 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4A269F813CB6A7500FD5621 /* p746SQLite.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4A269FB13CB6A7500FD5621 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4A26A2F13CB6C6400FD5621 /* libsqlite3.dylib */,
+				A4A269FC13CB6A7500FD5621 /* UIKit.framework */,
+				A4A269FE13CB6A7500FD5621 /* Foundation.framework */,
+				A4A26A0013CB6A7500FD5621 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4A26A0213CB6A7500FD5621 /* p746SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				A4A26A2413CB6C0600FD5621 /* fmdb */,
+				A4A26A0B13CB6A7500FD5621 /* SQLiteAppDelegate.h */,
+				A4A26A0C13CB6A7500FD5621 /* SQLiteAppDelegate.m */,
+				A4A26A0E13CB6A7500FD5621 /* MainWindow.xib */,
+				A4A26A1113CB6A7500FD5621 /* RootViewController.h */,
+				A4A26A1213CB6A7500FD5621 /* RootViewController.m */,
+				A4A26A1413CB6A7500FD5621 /* RootView.xib */,
+				A4A26A0313CB6A7500FD5621 /* Supporting Files */,
+			);
+			path = p746SQLite;
+			sourceTree = "<group>";
+		};
+		A4A26A0313CB6A7500FD5621 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4A26A0413CB6A7500FD5621 /* p746SQLite-Info.plist */,
+				A4A26A0513CB6A7500FD5621 /* InfoPlist.strings */,
+				A4A26A0813CB6A7500FD5621 /* p746SQLite-Prefix.pch */,
+				A4A26A0913CB6A7500FD5621 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4A26A2413CB6C0600FD5621 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				A4A26A2613CB6C3F00FD5621 /* FMDatabase.h */,
+				A4A26A2713CB6C3F00FD5621 /* FMDatabase.m */,
+				A4A26A2813CB6C3F00FD5621 /* FMDatabaseAdditions.h */,
+				A4A26A2913CB6C3F00FD5621 /* FMDatabaseAdditions.m */,
+				A4A26A2A13CB6C3F00FD5621 /* FMResultSet.h */,
+				A4A26A2B13CB6C3F00FD5621 /* FMResultSet.m */,
+			);
+			name = fmdb;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4A269F713CB6A7500FD5621 /* p746SQLite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4A26A1913CB6A7500FD5621 /* Build configuration list for PBXNativeTarget "p746SQLite" */;
+			buildPhases = (
+				A4A269F413CB6A7500FD5621 /* Sources */,
+				A4A269F513CB6A7500FD5621 /* Frameworks */,
+				A4A269F613CB6A7500FD5621 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p746SQLite;
+			productName = p746SQLite;
+			productReference = A4A269F813CB6A7500FD5621 /* p746SQLite.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4A269EF13CB6A7500FD5621 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4A269F213CB6A7500FD5621 /* Build configuration list for PBXProject "p746SQLite" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4A269ED13CB6A7500FD5621;
+			productRefGroup = A4A269F913CB6A7500FD5621 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4A269F713CB6A7500FD5621 /* p746SQLite */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4A269F613CB6A7500FD5621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4A26A0713CB6A7500FD5621 /* InfoPlist.strings in Resources */,
+				A4A26A1013CB6A7500FD5621 /* MainWindow.xib in Resources */,
+				A4A26A1613CB6A7500FD5621 /* RootView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4A269F413CB6A7500FD5621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4A26A0A13CB6A7500FD5621 /* main.m in Sources */,
+				A4A26A0D13CB6A7500FD5621 /* SQLiteAppDelegate.m in Sources */,
+				A4A26A1313CB6A7500FD5621 /* RootViewController.m in Sources */,
+				A4A26A2C13CB6C3F00FD5621 /* FMDatabase.m in Sources */,
+				A4A26A2D13CB6C3F00FD5621 /* FMDatabaseAdditions.m in Sources */,
+				A4A26A2E13CB6C3F00FD5621 /* FMResultSet.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4A26A0513CB6A7500FD5621 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4A26A0613CB6A7500FD5621 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4A26A0E13CB6A7500FD5621 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4A26A0F13CB6A7500FD5621 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A4A26A1413CB6A7500FD5621 /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4A26A1513CB6A7500FD5621 /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4A26A1713CB6A7500FD5621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4A26A1813CB6A7500FD5621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4A26A1A13CB6A7500FD5621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p746SQLite/p746SQLite-Prefix.pch";
+				INFOPLIST_FILE = "p746SQLite/p746SQLite-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4A26A1B13CB6A7500FD5621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p746SQLite/p746SQLite-Prefix.pch";
+				INFOPLIST_FILE = "p746SQLite/p746SQLite-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4A269F213CB6A7500FD5621 /* Build configuration list for PBXProject "p746SQLite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4A26A1713CB6A7500FD5621 /* Debug */,
+				A4A26A1813CB6A7500FD5621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4A26A1913CB6A7500FD5621 /* Build configuration list for PBXNativeTarget "p746SQLite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4A26A1A13CB6A7500FD5621 /* Debug */,
+				A4A26A1B13CB6A7500FD5621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4A269EF13CB6A7500FD5621 /* Project object */;
+}
