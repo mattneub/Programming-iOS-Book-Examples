@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A49ED0A513D9DAC400432BF3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49ED0A413D9DAC400432BF3 /* UIKit.framework */; };
+		A49ED0A713D9DAC400432BF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49ED0A613D9DAC400432BF3 /* Foundation.framework */; };
+		A49ED0A913D9DAC400432BF3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49ED0A813D9DAC400432BF3 /* CoreGraphics.framework */; };
+		A49ED0AF13D9DAC400432BF3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A49ED0AD13D9DAC400432BF3 /* InfoPlist.strings */; };
+		A49ED0B213D9DAC400432BF3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A49ED0B113D9DAC400432BF3 /* main.m */; };
+		A49ED0B513D9DAC400432BF3 /* BonjourAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A49ED0B413D9DAC400432BF3 /* BonjourAppDelegate.m */; };
+		A49ED0B813D9DAC400432BF3 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49ED0B613D9DAC400432BF3 /* MainWindow.xib */; };
+		A49ED0BB13D9DAC400432BF3 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A49ED0BA13D9DAC400432BF3 /* RootViewController.m */; };
+		A49ED0BE13D9DAC400432BF3 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49ED0BC13D9DAC400432BF3 /* RootView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A49ED0A013D9DAC400432BF3 /* p757bonjour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p757bonjour.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A49ED0A413D9DAC400432BF3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A49ED0A613D9DAC400432BF3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A49ED0A813D9DAC400432BF3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A49ED0AC13D9DAC400432BF3 /* p757bonjour-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p757bonjour-Info.plist"; sourceTree = "<group>"; };
+		A49ED0AE13D9DAC400432BF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A49ED0B013D9DAC400432BF3 /* p757bonjour-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p757bonjour-Prefix.pch"; sourceTree = "<group>"; };
+		A49ED0B113D9DAC400432BF3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A49ED0B313D9DAC400432BF3 /* BonjourAppDelegate.h */ = {isa = PBXFileReference; path = BonjourAppDelegate.h; sourceTree = "<group>"; };
+		A49ED0B413D9DAC400432BF3 /* BonjourAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BonjourAppDelegate.m; sourceTree = "<group>"; };
+		A49ED0B713D9DAC400432BF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A49ED0B913D9DAC400432BF3 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A49ED0BA13D9DAC400432BF3 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A49ED0BD13D9DAC400432BF3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A49ED09D13D9DAC400432BF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A49ED0A513D9DAC400432BF3 /* UIKit.framework in Frameworks */,
+				A49ED0A713D9DAC400432BF3 /* Foundation.framework in Frameworks */,
+				A49ED0A913D9DAC400432BF3 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A49ED09513D9DAC400432BF3 = {
+			isa = PBXGroup;
+			children = (
+				A49ED0AA13D9DAC400432BF3 /* p757bonjour */,
+				A49ED0A313D9DAC400432BF3 /* Frameworks */,
+				A49ED0A113D9DAC400432BF3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A49ED0A113D9DAC400432BF3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A49ED0A013D9DAC400432BF3 /* p757bonjour.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A49ED0A313D9DAC400432BF3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A49ED0A413D9DAC400432BF3 /* UIKit.framework */,
+				A49ED0A613D9DAC400432BF3 /* Foundation.framework */,
+				A49ED0A813D9DAC400432BF3 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A49ED0AA13D9DAC400432BF3 /* p757bonjour */ = {
+			isa = PBXGroup;
+			children = (
+				A49ED0B313D9DAC400432BF3 /* BonjourAppDelegate.h */,
+				A49ED0B413D9DAC400432BF3 /* BonjourAppDelegate.m */,
+				A49ED0B613D9DAC400432BF3 /* MainWindow.xib */,
+				A49ED0B913D9DAC400432BF3 /* RootViewController.h */,
+				A49ED0BA13D9DAC400432BF3 /* RootViewController.m */,
+				A49ED0BC13D9DAC400432BF3 /* RootView.xib */,
+				A49ED0AB13D9DAC400432BF3 /* Supporting Files */,
+			);
+			path = p757bonjour;
+			sourceTree = "<group>";
+		};
+		A49ED0AB13D9DAC400432BF3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A49ED0AC13D9DAC400432BF3 /* p757bonjour-Info.plist */,
+				A49ED0AD13D9DAC400432BF3 /* InfoPlist.strings */,
+				A49ED0B013D9DAC400432BF3 /* p757bonjour-Prefix.pch */,
+				A49ED0B113D9DAC400432BF3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A49ED09F13D9DAC400432BF3 /* p757bonjour */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A49ED0C113D9DAC400432BF3 /* Build configuration list for PBXNativeTarget "p757bonjour" */;
+			buildPhases = (
+				A49ED09C13D9DAC400432BF3 /* Sources */,
+				A49ED09D13D9DAC400432BF3 /* Frameworks */,
+				A49ED09E13D9DAC400432BF3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p757bonjour;
+			productName = p757bonjour;
+			productReference = A49ED0A013D9DAC400432BF3 /* p757bonjour.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A49ED09713D9DAC400432BF3 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A49ED09A13D9DAC400432BF3 /* Build configuration list for PBXProject "p757bonjour" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A49ED09513D9DAC400432BF3;
+			productRefGroup = A49ED0A113D9DAC400432BF3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A49ED09F13D9DAC400432BF3 /* p757bonjour */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A49ED09E13D9DAC400432BF3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A49ED0AF13D9DAC400432BF3 /* InfoPlist.strings in Resources */,
+				A49ED0B813D9DAC400432BF3 /* MainWindow.xib in Resources */,
+				A49ED0BE13D9DAC400432BF3 /* RootView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A49ED09C13D9DAC400432BF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A49ED0B213D9DAC400432BF3 /* main.m in Sources */,
+				A49ED0B513D9DAC400432BF3 /* BonjourAppDelegate.m in Sources */,
+				A49ED0BB13D9DAC400432BF3 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A49ED0AD13D9DAC400432BF3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A49ED0AE13D9DAC400432BF3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A49ED0B613D9DAC400432BF3 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A49ED0B713D9DAC400432BF3 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A49ED0BC13D9DAC400432BF3 /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A49ED0BD13D9DAC400432BF3 /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A49ED0BF13D9DAC400432BF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A49ED0C013D9DAC400432BF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A49ED0C213D9DAC400432BF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p757bonjour/p757bonjour-Prefix.pch";
+				INFOPLIST_FILE = "p757bonjour/p757bonjour-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A49ED0C313D9DAC400432BF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p757bonjour/p757bonjour-Prefix.pch";
+				INFOPLIST_FILE = "p757bonjour/p757bonjour-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A49ED09A13D9DAC400432BF3 /* Build configuration list for PBXProject "p757bonjour" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A49ED0BF13D9DAC400432BF3 /* Debug */,
+				A49ED0C013D9DAC400432BF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A49ED0C113D9DAC400432BF3 /* Build configuration list for PBXNativeTarget "p757bonjour" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A49ED0C213D9DAC400432BF3 /* Debug */,
+				A49ED0C313D9DAC400432BF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A49ED09713D9DAC400432BF3 /* Project object */;
+}
