@@ -1,0 +1,289 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4FBA8B013D9E2D100E439CB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FBA8AF13D9E2D100E439CB /* UIKit.framework */; };
+		A4FBA8B213D9E2D100E439CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FBA8B113D9E2D100E439CB /* Foundation.framework */; };
+		A4FBA8B413D9E2D200E439CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FBA8B313D9E2D200E439CB /* CoreGraphics.framework */; };
+		A4FBA8BA13D9E2D200E439CB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4FBA8B813D9E2D200E439CB /* InfoPlist.strings */; };
+		A4FBA8BD13D9E2D200E439CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FBA8BC13D9E2D200E439CB /* main.m */; };
+		A4FBA8C013D9E2D200E439CB /* MandelbrotNoThreadingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FBA8BF13D9E2D200E439CB /* MandelbrotNoThreadingAppDelegate.m */; };
+		A4FBA8C313D9E2D200E439CB /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FBA8C113D9E2D200E439CB /* MainWindow.xib */; };
+		A4FBA8C613D9E2D200E439CB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FBA8C513D9E2D200E439CB /* RootViewController.m */; };
+		A4FBA8C913D9E2D200E439CB /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FBA8C713D9E2D200E439CB /* RootView.xib */; };
+		A4FBA8D113D9E35A00E439CB /* MyMandelbrotView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FBA8D013D9E35A00E439CB /* MyMandelbrotView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4FBA8AB13D9E2D100E439CB /* p765mandelbrotNoThreading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p765mandelbrotNoThreading.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FBA8AF13D9E2D100E439CB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4FBA8B113D9E2D100E439CB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4FBA8B313D9E2D200E439CB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4FBA8B713D9E2D200E439CB /* p765mandelbrotNoThreading-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p765mandelbrotNoThreading-Info.plist"; sourceTree = "<group>"; };
+		A4FBA8B913D9E2D200E439CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4FBA8BB13D9E2D200E439CB /* p765mandelbrotNoThreading-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p765mandelbrotNoThreading-Prefix.pch"; sourceTree = "<group>"; };
+		A4FBA8BC13D9E2D200E439CB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4FBA8BE13D9E2D200E439CB /* MandelbrotNoThreadingAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MandelbrotNoThreadingAppDelegate.h; sourceTree = "<group>"; };
+		A4FBA8BF13D9E2D200E439CB /* MandelbrotNoThreadingAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MandelbrotNoThreadingAppDelegate.m; sourceTree = "<group>"; };
+		A4FBA8C213D9E2D200E439CB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A4FBA8C413D9E2D200E439CB /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A4FBA8C513D9E2D200E439CB /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A4FBA8C813D9E2D200E439CB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootView.xib; sourceTree = "<group>"; };
+		A4FBA8CF13D9E35A00E439CB /* MyMandelbrotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMandelbrotView.h; sourceTree = "<group>"; };
+		A4FBA8D013D9E35A00E439CB /* MyMandelbrotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMandelbrotView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4FBA8A813D9E2D100E439CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FBA8B013D9E2D100E439CB /* UIKit.framework in Frameworks */,
+				A4FBA8B213D9E2D100E439CB /* Foundation.framework in Frameworks */,
+				A4FBA8B413D9E2D200E439CB /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4FBA8A013D9E2D100E439CB = {
+			isa = PBXGroup;
+			children = (
+				A4FBA8B513D9E2D200E439CB /* p765mandelbrotNoThreading */,
+				A4FBA8AE13D9E2D100E439CB /* Frameworks */,
+				A4FBA8AC13D9E2D100E439CB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4FBA8AC13D9E2D100E439CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4FBA8AB13D9E2D100E439CB /* p765mandelbrotNoThreading.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4FBA8AE13D9E2D100E439CB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4FBA8AF13D9E2D100E439CB /* UIKit.framework */,
+				A4FBA8B113D9E2D100E439CB /* Foundation.framework */,
+				A4FBA8B313D9E2D200E439CB /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4FBA8B513D9E2D200E439CB /* p765mandelbrotNoThreading */ = {
+			isa = PBXGroup;
+			children = (
+				A4FBA8BE13D9E2D200E439CB /* MandelbrotNoThreadingAppDelegate.h */,
+				A4FBA8BF13D9E2D200E439CB /* MandelbrotNoThreadingAppDelegate.m */,
+				A4FBA8C113D9E2D200E439CB /* MainWindow.xib */,
+				A4FBA8C413D9E2D200E439CB /* RootViewController.h */,
+				A4FBA8C513D9E2D200E439CB /* RootViewController.m */,
+				A4FBA8C713D9E2D200E439CB /* RootView.xib */,
+				A4FBA8CF13D9E35A00E439CB /* MyMandelbrotView.h */,
+				A4FBA8D013D9E35A00E439CB /* MyMandelbrotView.m */,
+				A4FBA8B613D9E2D200E439CB /* Supporting Files */,
+			);
+			path = p765mandelbrotNoThreading;
+			sourceTree = "<group>";
+		};
+		A4FBA8B613D9E2D200E439CB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4FBA8B713D9E2D200E439CB /* p765mandelbrotNoThreading-Info.plist */,
+				A4FBA8B813D9E2D200E439CB /* InfoPlist.strings */,
+				A4FBA8BB13D9E2D200E439CB /* p765mandelbrotNoThreading-Prefix.pch */,
+				A4FBA8BC13D9E2D200E439CB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4FBA8AA13D9E2D100E439CB /* p765mandelbrotNoThreading */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4FBA8CC13D9E2D200E439CB /* Build configuration list for PBXNativeTarget "p765mandelbrotNoThreading" */;
+			buildPhases = (
+				A4FBA8A713D9E2D100E439CB /* Sources */,
+				A4FBA8A813D9E2D100E439CB /* Frameworks */,
+				A4FBA8A913D9E2D100E439CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p765mandelbrotNoThreading;
+			productName = p765mandelbrotNoThreading;
+			productReference = A4FBA8AB13D9E2D100E439CB /* p765mandelbrotNoThreading.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4FBA8A213D9E2D100E439CB /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A4FBA8A513D9E2D100E439CB /* Build configuration list for PBXProject "p765mandelbrotNoThreading" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4FBA8A013D9E2D100E439CB;
+			productRefGroup = A4FBA8AC13D9E2D100E439CB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4FBA8AA13D9E2D100E439CB /* p765mandelbrotNoThreading */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4FBA8A913D9E2D100E439CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FBA8BA13D9E2D200E439CB /* InfoPlist.strings in Resources */,
+				A4FBA8C313D9E2D200E439CB /* MainWindow.xib in Resources */,
+				A4FBA8C913D9E2D200E439CB /* RootView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4FBA8A713D9E2D100E439CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FBA8BD13D9E2D200E439CB /* main.m in Sources */,
+				A4FBA8C013D9E2D200E439CB /* MandelbrotNoThreadingAppDelegate.m in Sources */,
+				A4FBA8C613D9E2D200E439CB /* RootViewController.m in Sources */,
+				A4FBA8D113D9E35A00E439CB /* MyMandelbrotView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4FBA8B813D9E2D200E439CB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4FBA8B913D9E2D200E439CB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4FBA8C113D9E2D200E439CB /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4FBA8C213D9E2D200E439CB /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		A4FBA8C713D9E2D200E439CB /* RootView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4FBA8C813D9E2D200E439CB /* en */,
+			);
+			name = RootView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4FBA8CA13D9E2D200E439CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4FBA8CB13D9E2D200E439CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		A4FBA8CD13D9E2D200E439CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p765mandelbrotNoThreading/p765mandelbrotNoThreading-Prefix.pch";
+				INFOPLIST_FILE = "p765mandelbrotNoThreading/p765mandelbrotNoThreading-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4FBA8CE13D9E2D200E439CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p765mandelbrotNoThreading/p765mandelbrotNoThreading-Prefix.pch";
+				INFOPLIST_FILE = "p765mandelbrotNoThreading/p765mandelbrotNoThreading-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4FBA8A513D9E2D100E439CB /* Build configuration list for PBXProject "p765mandelbrotNoThreading" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4FBA8CA13D9E2D200E439CB /* Debug */,
+				A4FBA8CB13D9E2D200E439CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4FBA8CC13D9E2D200E439CB /* Build configuration list for PBXNativeTarget "p765mandelbrotNoThreading" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4FBA8CD13D9E2D200E439CB /* Debug */,
+				A4FBA8CE13D9E2D200E439CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4FBA8A213D9E2D100E439CB /* Project object */;
+}
