@@ -29,6 +29,11 @@
 
 - (void) drawThatPuppy {
     CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+    // see p. 775; to test, increase MANDELBROT_STEPS and suspend while still calculating
+    UIBackgroundTaskIdentifier bti = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler: 
+     ^{
+         [[UIApplication sharedApplication] endBackgroundTask:bti];
+     }];
     dispatch_async(draw_queue, ^{ 
         CGContextRef bitmap = [self makeBitmapContext: self.bounds.size];
         [self drawAtCenter: center zoom: 1 context:bitmap];
@@ -37,6 +42,7 @@
                 CGContextRelease(self->bitmapContext);
             self->bitmapContext = bitmap;
             [self setNeedsDisplay];
+            [[UIApplication sharedApplication] endBackgroundTask:bti];
         });
     });
 }
