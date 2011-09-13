@@ -20,5 +20,7 @@ You may use this code in your own projects. What you may not do is pass off my e
 
 If you find any issues with this code, please let me know or supply a patch.
 
+NOTE ON PAGINATION: I realize that the page numbers in the folder names are not useful for those with the Kindle or ePUB editions, but they do keep the examples sorted in order, and they correspond to the pagination of the printed and PDF. Ñ In September 2011 we released a Second Printing with improved screen shot sizes and incorporating corrections for all errata; this caused the printed and PDF versions to repaginate. Therefore, most folder names will now start with *two* page numbers, the first printing followed by the second printing. (At this time I'm in the process of renaming the folders.)
+
 Matt Neuburg
 
