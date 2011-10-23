@@ -1,0 +1,200 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A48CC72D1380409400306502 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A48CC72C1380409400306502 /* main.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A48CC7261380409400306502 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A48CC7281380409400306502 /* p029static */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = p029static; sourceTree = BUILT_PRODUCTS_DIR; };
+		A48CC72C1380409400306502 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A48CC7251380409400306502 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A48CC71D1380409400306502 = {
+			isa = PBXGroup;
+			children = (
+				A48CC72B1380409400306502 /* p029static */,
+				A48CC7291380409400306502 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A48CC7291380409400306502 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A48CC7281380409400306502 /* p029static */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A48CC72B1380409400306502 /* p029static */ = {
+			isa = PBXGroup;
+			children = (
+				A48CC72C1380409400306502 /* main.c */,
+			);
+			path = p029static;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A48CC7271380409400306502 /* p029static */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A48CC7311380409400306502 /* Build configuration list for PBXNativeTarget "p029static" */;
+			buildPhases = (
+				A48CC7241380409400306502 /* Sources */,
+				A48CC7251380409400306502 /* Frameworks */,
+				A48CC7261380409400306502 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p029static;
+			productName = p029static;
+			productReference = A48CC7281380409400306502 /* p029static */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A48CC71F1380409400306502 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A48CC7221380409400306502 /* Build configuration list for PBXProject "p029static" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A48CC71D1380409400306502;
+			productRefGroup = A48CC7291380409400306502 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A48CC7271380409400306502 /* p029static */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A48CC7241380409400306502 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A48CC72D1380409400306502 /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A48CC72F1380409400306502 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A48CC7301380409400306502 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A48CC7321380409400306502 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A48CC7331380409400306502 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A48CC7221380409400306502 /* Build configuration list for PBXProject "p029static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A48CC72F1380409400306502 /* Debug */,
+				A48CC7301380409400306502 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A48CC7311380409400306502 /* Build configuration list for PBXNativeTarget "p029static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A48CC7321380409400306502 /* Debug */,
+				A48CC7331380409400306502 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A48CC71F1380409400306502 /* Project object */;
+}
