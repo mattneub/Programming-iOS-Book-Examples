@@ -1,0 +1,273 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4FAAB8C1454EEAF00F409F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FAAB8B1454EEAF00F409F5 /* UIKit.framework */; };
+		A4FAAB8E1454EEAF00F409F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FAAB8D1454EEAF00F409F5 /* Foundation.framework */; };
+		A4FAAB901454EEAF00F409F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FAAB8F1454EEAF00F409F5 /* CoreGraphics.framework */; };
+		A4FAAB961454EEAF00F409F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4FAAB941454EEAF00F409F5 /* InfoPlist.strings */; };
+		A4FAAB981454EEAF00F409F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FAAB971454EEAF00F409F5 /* main.m */; };
+		A4FAAB9C1454EEAF00F409F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FAAB9B1454EEAF00F409F5 /* AppDelegate.m */; };
+		A4FAABA41454EEEA00F409F5 /* MyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FAABA31454EEEA00F409F5 /* MyClass.m */; };
+		A4FAABA61454EF0000F409F5 /* MyNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FAABA51454EF0000F409F5 /* MyNib.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4FAAB871454EEAF00F409F5 /* p139p144outlet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p139p144outlet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FAAB8B1454EEAF00F409F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4FAAB8D1454EEAF00F409F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4FAAB8F1454EEAF00F409F5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4FAAB931454EEAF00F409F5 /* p139p144outlet-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p139p144outlet-Info.plist"; sourceTree = "<group>"; };
+		A4FAAB951454EEAF00F409F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4FAAB971454EEAF00F409F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4FAAB991454EEAF00F409F5 /* p139p144outlet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p139p144outlet-Prefix.pch"; sourceTree = "<group>"; };
+		A4FAAB9A1454EEAF00F409F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A4FAAB9B1454EEAF00F409F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A4FAABA21454EEEA00F409F5 /* MyClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClass.h; sourceTree = "<group>"; };
+		A4FAABA31454EEEA00F409F5 /* MyClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClass.m; sourceTree = "<group>"; };
+		A4FAABA51454EF0000F409F5 /* MyNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNib.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4FAAB841454EEAF00F409F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FAAB8C1454EEAF00F409F5 /* UIKit.framework in Frameworks */,
+				A4FAAB8E1454EEAF00F409F5 /* Foundation.framework in Frameworks */,
+				A4FAAB901454EEAF00F409F5 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4FAAB7C1454EEAF00F409F5 = {
+			isa = PBXGroup;
+			children = (
+				A4FAAB911454EEAF00F409F5 /* p139p144outlet */,
+				A4FAAB8A1454EEAF00F409F5 /* Frameworks */,
+				A4FAAB881454EEAF00F409F5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4FAAB881454EEAF00F409F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4FAAB871454EEAF00F409F5 /* p139p144outlet.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4FAAB8A1454EEAF00F409F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4FAAB8B1454EEAF00F409F5 /* UIKit.framework */,
+				A4FAAB8D1454EEAF00F409F5 /* Foundation.framework */,
+				A4FAAB8F1454EEAF00F409F5 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4FAAB911454EEAF00F409F5 /* p139p144outlet */ = {
+			isa = PBXGroup;
+			children = (
+				A4FAABA21454EEEA00F409F5 /* MyClass.h */,
+				A4FAABA31454EEEA00F409F5 /* MyClass.m */,
+				A4FAABA51454EF0000F409F5 /* MyNib.xib */,
+				A4FAAB9A1454EEAF00F409F5 /* AppDelegate.h */,
+				A4FAAB9B1454EEAF00F409F5 /* AppDelegate.m */,
+				A4FAAB921454EEAF00F409F5 /* Supporting Files */,
+			);
+			path = p139p144outlet;
+			sourceTree = "<group>";
+		};
+		A4FAAB921454EEAF00F409F5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4FAAB931454EEAF00F409F5 /* p139p144outlet-Info.plist */,
+				A4FAAB941454EEAF00F409F5 /* InfoPlist.strings */,
+				A4FAAB971454EEAF00F409F5 /* main.m */,
+				A4FAAB991454EEAF00F409F5 /* p139p144outlet-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4FAAB861454EEAF00F409F5 /* p139p144outlet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4FAAB9F1454EEAF00F409F5 /* Build configuration list for PBXNativeTarget "p139p144outlet" */;
+			buildPhases = (
+				A4FAAB831454EEAF00F409F5 /* Sources */,
+				A4FAAB841454EEAF00F409F5 /* Frameworks */,
+				A4FAAB851454EEAF00F409F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p139p144outlet;
+			productName = p139p144outlet;
+			productReference = A4FAAB871454EEAF00F409F5 /* p139p144outlet.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4FAAB7E1454EEAF00F409F5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A4FAAB811454EEAF00F409F5 /* Build configuration list for PBXProject "p139p144outlet" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4FAAB7C1454EEAF00F409F5;
+			productRefGroup = A4FAAB881454EEAF00F409F5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4FAAB861454EEAF00F409F5 /* p139p144outlet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4FAAB851454EEAF00F409F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FAAB961454EEAF00F409F5 /* InfoPlist.strings in Resources */,
+				A4FAABA61454EF0000F409F5 /* MyNib.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4FAAB831454EEAF00F409F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FAAB981454EEAF00F409F5 /* main.m in Sources */,
+				A4FAAB9C1454EEAF00F409F5 /* AppDelegate.m in Sources */,
+				A4FAABA41454EEEA00F409F5 /* MyClass.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4FAAB941454EEAF00F409F5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4FAAB951454EEAF00F409F5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4FAAB9D1454EEAF00F409F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4FAAB9E1454EEAF00F409F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4FAABA01454EEAF00F409F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p139p144outlet/p139p144outlet-Prefix.pch";
+				INFOPLIST_FILE = "p139p144outlet/p139p144outlet-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4FAABA11454EEAF00F409F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p139p144outlet/p139p144outlet-Prefix.pch";
+				INFOPLIST_FILE = "p139p144outlet/p139p144outlet-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4FAAB811454EEAF00F409F5 /* Build configuration list for PBXProject "p139p144outlet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4FAAB9D1454EEAF00F409F5 /* Debug */,
+				A4FAAB9E1454EEAF00F409F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4FAAB9F1454EEAF00F409F5 /* Build configuration list for PBXNativeTarget "p139p144outlet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4FAABA01454EEAF00F409F5 /* Debug */,
+				A4FAABA11454EEAF00F409F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4FAAB7E1454EEAF00F409F5 /* Project object */;
+}

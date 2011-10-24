@@ -1,0 +1,279 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4FAAC251454FB8E00F409F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FAAC241454FB8E00F409F5 /* UIKit.framework */; };
+		A4FAAC271454FB8E00F409F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FAAC261454FB8E00F409F5 /* Foundation.framework */; };
+		A4FAAC291454FB8E00F409F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FAAC281454FB8E00F409F5 /* CoreGraphics.framework */; };
+		A4FAAC2F1454FB8E00F409F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4FAAC2D1454FB8E00F409F5 /* InfoPlist.strings */; };
+		A4FAAC311454FB8E00F409F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FAAC301454FB8E00F409F5 /* main.m */; };
+		A4FAAC351454FB8E00F409F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FAAC341454FB8E00F409F5 /* AppDelegate.m */; };
+		A4FAAC3E1454FBB700F409F5 /* MyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FAAC3C1454FBB700F409F5 /* MyClass.m */; };
+		A4FAAC3F1454FBB700F409F5 /* MyNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FAAC3D1454FBB700F409F5 /* MyNib.xib */; };
+		A4FAAC421454FCA800F409F5 /* MyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FAAC411454FCA700F409F5 /* MyLabel.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4FAAC201454FB8E00F409F5 /* p146p151awakeFromNib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p146p151awakeFromNib.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FAAC241454FB8E00F409F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4FAAC261454FB8E00F409F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4FAAC281454FB8E00F409F5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4FAAC2C1454FB8E00F409F5 /* p146p151awakeFromNib-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p146p151awakeFromNib-Info.plist"; sourceTree = "<group>"; };
+		A4FAAC2E1454FB8E00F409F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4FAAC301454FB8E00F409F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4FAAC321454FB8E00F409F5 /* p146p151awakeFromNib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p146p151awakeFromNib-Prefix.pch"; sourceTree = "<group>"; };
+		A4FAAC331454FB8E00F409F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A4FAAC341454FB8E00F409F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A4FAAC3B1454FBB700F409F5 /* MyClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClass.h; sourceTree = "<group>"; };
+		A4FAAC3C1454FBB700F409F5 /* MyClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClass.m; sourceTree = "<group>"; };
+		A4FAAC3D1454FBB700F409F5 /* MyNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNib.xib; sourceTree = "<group>"; };
+		A4FAAC401454FCA700F409F5 /* MyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLabel.h; sourceTree = "<group>"; };
+		A4FAAC411454FCA700F409F5 /* MyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLabel.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4FAAC1D1454FB8E00F409F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FAAC251454FB8E00F409F5 /* UIKit.framework in Frameworks */,
+				A4FAAC271454FB8E00F409F5 /* Foundation.framework in Frameworks */,
+				A4FAAC291454FB8E00F409F5 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4FAAC151454FB8E00F409F5 = {
+			isa = PBXGroup;
+			children = (
+				A4FAAC2A1454FB8E00F409F5 /* p146p151awakeFromNib */,
+				A4FAAC231454FB8E00F409F5 /* Frameworks */,
+				A4FAAC211454FB8E00F409F5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4FAAC211454FB8E00F409F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4FAAC201454FB8E00F409F5 /* p146p151awakeFromNib.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4FAAC231454FB8E00F409F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4FAAC241454FB8E00F409F5 /* UIKit.framework */,
+				A4FAAC261454FB8E00F409F5 /* Foundation.framework */,
+				A4FAAC281454FB8E00F409F5 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4FAAC2A1454FB8E00F409F5 /* p146p151awakeFromNib */ = {
+			isa = PBXGroup;
+			children = (
+				A4FAAC401454FCA700F409F5 /* MyLabel.h */,
+				A4FAAC411454FCA700F409F5 /* MyLabel.m */,
+				A4FAAC3B1454FBB700F409F5 /* MyClass.h */,
+				A4FAAC3C1454FBB700F409F5 /* MyClass.m */,
+				A4FAAC3D1454FBB700F409F5 /* MyNib.xib */,
+				A4FAAC331454FB8E00F409F5 /* AppDelegate.h */,
+				A4FAAC341454FB8E00F409F5 /* AppDelegate.m */,
+				A4FAAC2B1454FB8E00F409F5 /* Supporting Files */,
+			);
+			path = p146p151awakeFromNib;
+			sourceTree = "<group>";
+		};
+		A4FAAC2B1454FB8E00F409F5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4FAAC2C1454FB8E00F409F5 /* p146p151awakeFromNib-Info.plist */,
+				A4FAAC2D1454FB8E00F409F5 /* InfoPlist.strings */,
+				A4FAAC301454FB8E00F409F5 /* main.m */,
+				A4FAAC321454FB8E00F409F5 /* p146p151awakeFromNib-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4FAAC1F1454FB8E00F409F5 /* p146p151awakeFromNib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4FAAC381454FB8E00F409F5 /* Build configuration list for PBXNativeTarget "p146p151awakeFromNib" */;
+			buildPhases = (
+				A4FAAC1C1454FB8E00F409F5 /* Sources */,
+				A4FAAC1D1454FB8E00F409F5 /* Frameworks */,
+				A4FAAC1E1454FB8E00F409F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p146p151awakeFromNib;
+			productName = p146p151awakeFromNib;
+			productReference = A4FAAC201454FB8E00F409F5 /* p146p151awakeFromNib.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4FAAC171454FB8E00F409F5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A4FAAC1A1454FB8E00F409F5 /* Build configuration list for PBXProject "p146p151awakeFromNib" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4FAAC151454FB8E00F409F5;
+			productRefGroup = A4FAAC211454FB8E00F409F5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4FAAC1F1454FB8E00F409F5 /* p146p151awakeFromNib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4FAAC1E1454FB8E00F409F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FAAC2F1454FB8E00F409F5 /* InfoPlist.strings in Resources */,
+				A4FAAC3F1454FBB700F409F5 /* MyNib.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4FAAC1C1454FB8E00F409F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4FAAC311454FB8E00F409F5 /* main.m in Sources */,
+				A4FAAC351454FB8E00F409F5 /* AppDelegate.m in Sources */,
+				A4FAAC3E1454FBB700F409F5 /* MyClass.m in Sources */,
+				A4FAAC421454FCA800F409F5 /* MyLabel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4FAAC2D1454FB8E00F409F5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4FAAC2E1454FB8E00F409F5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4FAAC361454FB8E00F409F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4FAAC371454FB8E00F409F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4FAAC391454FB8E00F409F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p146p151awakeFromNib/p146p151awakeFromNib-Prefix.pch";
+				INFOPLIST_FILE = "p146p151awakeFromNib/p146p151awakeFromNib-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4FAAC3A1454FB8E00F409F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p146p151awakeFromNib/p146p151awakeFromNib-Prefix.pch";
+				INFOPLIST_FILE = "p146p151awakeFromNib/p146p151awakeFromNib-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4FAAC1A1454FB8E00F409F5 /* Build configuration list for PBXProject "p146p151awakeFromNib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4FAAC361454FB8E00F409F5 /* Debug */,
+				A4FAAC371454FB8E00F409F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4FAAC381454FB8E00F409F5 /* Build configuration list for PBXNativeTarget "p146p151awakeFromNib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4FAAC391454FB8E00F409F5 /* Debug */,
+				A4FAAC3A1454FB8E00F409F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4FAAC171454FB8E00F409F5 /* Project object */;
+}
