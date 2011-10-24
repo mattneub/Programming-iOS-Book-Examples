@@ -1,7 +1,7 @@
 
 
 #import "AppDelegate.h"
-#import "Dog.h"
+#import "StringCategories.h"
 
 @implementation AppDelegate
 
@@ -10,15 +10,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    Dog* fido = [[Dog alloc] initWithNumber:42];
-    int n = [fido number];
-    NSLog(@"sure enough, n is now %i!", n);
+    NSLog(@"%@", [@"Hello" basePictureName]);
+    // proving that we've effectively added a method to NSString
 
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [UIViewController new]; // silence new annoying runtime warning
     [self.window makeKeyAndVisible];
     return YES;
 }

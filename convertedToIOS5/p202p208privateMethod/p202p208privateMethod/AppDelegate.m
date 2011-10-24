@@ -1,7 +1,7 @@
 
 
 #import "AppDelegate.h"
-#import "Dog.h"
+#import "MyClass.h"
 
 @implementation AppDelegate
 
@@ -10,15 +10,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    Dog* fido = [[Dog alloc] initWithNumber:42];
-    int n = [fido number];
-    NSLog(@"sure enough, n is now %i!", n);
+    
+    MyClass* m = [[MyClass alloc] init];
+    NSLog(@"%@", [m publicMethod]);
+    
+    // NSLog(@"%@", [m myMethod]); // uncomment; compiler complains
+                                // (this is new in LLVM 3.0; previously the compiler just warned)
 
+    
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [UIViewController new]; // silence new annoying runtime warning
+    self.window.rootViewController = [[UIViewController alloc] init];
     [self.window makeKeyAndVisible];
     return YES;
 }
