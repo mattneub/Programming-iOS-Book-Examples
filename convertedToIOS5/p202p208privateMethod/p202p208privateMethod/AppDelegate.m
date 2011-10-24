@@ -15,7 +15,7 @@
     NSLog(@"%@", [m publicMethod]);
     
     // NSLog(@"%@", [m myMethod]); // uncomment; compiler complains
-                                // (this is new in LLVM 3.0; previously the compiler just warned)
+                                // (this is an ARC behavior; without ARC the compiler just warns)
 
     
     
