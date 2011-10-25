@@ -12,7 +12,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     MyClass1* objectA = [[MyClass1 alloc] init];
-    MyClass1* objectB = [[MyClass2 alloc] init];
+    MyClass2* objectB = [[MyClass2 alloc] init];
     
     [objectA addObserver:objectB 
               forKeyPath:@"theData" options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld 
