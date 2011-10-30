@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A443E003145CCDF0001CCB80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A443E002145CCDF0001CCB80 /* UIKit.framework */; };
+		A443E005145CCDF0001CCB80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A443E004145CCDF0001CCB80 /* Foundation.framework */; };
+		A443E007145CCDF0001CCB80 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A443E006145CCDF0001CCB80 /* CoreGraphics.framework */; };
+		A443E00D145CCDF0001CCB80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A443E00B145CCDF0001CCB80 /* InfoPlist.strings */; };
+		A443E00F145CCDF0001CCB80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A443E00E145CCDF0001CCB80 /* main.m */; };
+		A443E013145CCDF0001CCB80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A443E012145CCDF0001CCB80 /* AppDelegate.m */; };
+		A443E016145CCDF0001CCB80 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A443E015145CCDF0001CCB80 /* ViewController.m */; };
+		A443E019145CCDF0001CCB80 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A443E017145CCDF0001CCB80 /* ViewController.xib */; };
+		A443E021145CCE30001CCB80 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A443E020145CCE30001CCB80 /* MyView.m */; };
+		A443E024145CCE52001CCB80 /* Mars.png in Resources */ = {isa = PBXBuildFile; fileRef = A443E022145CCE52001CCB80 /* Mars.png */; };
+		A443E025145CCE52001CCB80 /* Saturn.gif in Resources */ = {isa = PBXBuildFile; fileRef = A443E023145CCE52001CCB80 /* Saturn.gif */; };
+		A443E027145CD097001CCB80 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A443E026145CD097001CCB80 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A443DFFE145CCDF0001CCB80 /* p367p377transition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p367p377transition.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A443E002145CCDF0001CCB80 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A443E004145CCDF0001CCB80 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A443E006145CCDF0001CCB80 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A443E00A145CCDF0001CCB80 /* p367p377transition-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p367p377transition-Info.plist"; sourceTree = "<group>"; };
+		A443E00C145CCDF0001CCB80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A443E00E145CCDF0001CCB80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A443E010145CCDF0001CCB80 /* p367p377transition-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p367p377transition-Prefix.pch"; sourceTree = "<group>"; };
+		A443E011145CCDF0001CCB80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A443E012145CCDF0001CCB80 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A443E014145CCDF0001CCB80 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A443E015145CCDF0001CCB80 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A443E018145CCDF0001CCB80 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		A443E01F145CCE30001CCB80 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
+		A443E020145CCE30001CCB80 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
+		A443E022145CCE52001CCB80 /* Mars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mars.png; sourceTree = "<group>"; };
+		A443E023145CCE52001CCB80 /* Saturn.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Saturn.gif; sourceTree = "<group>"; };
+		A443E026145CD097001CCB80 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A443DFFB145CCDF0001CCB80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A443E027145CD097001CCB80 /* QuartzCore.framework in Frameworks */,
+				A443E003145CCDF0001CCB80 /* UIKit.framework in Frameworks */,
+				A443E005145CCDF0001CCB80 /* Foundation.framework in Frameworks */,
+				A443E007145CCDF0001CCB80 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A443DFF3145CCDF0001CCB80 = {
+			isa = PBXGroup;
+			children = (
+				A443E008145CCDF0001CCB80 /* p367p377transition */,
+				A443E001145CCDF0001CCB80 /* Frameworks */,
+				A443DFFF145CCDF0001CCB80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A443DFFF145CCDF0001CCB80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A443DFFE145CCDF0001CCB80 /* p367p377transition.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A443E001145CCDF0001CCB80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A443E026145CD097001CCB80 /* QuartzCore.framework */,
+				A443E002145CCDF0001CCB80 /* UIKit.framework */,
+				A443E004145CCDF0001CCB80 /* Foundation.framework */,
+				A443E006145CCDF0001CCB80 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A443E008145CCDF0001CCB80 /* p367p377transition */ = {
+			isa = PBXGroup;
+			children = (
+				A443E01F145CCE30001CCB80 /* MyView.h */,
+				A443E020145CCE30001CCB80 /* MyView.m */,
+				A443E011145CCDF0001CCB80 /* AppDelegate.h */,
+				A443E012145CCDF0001CCB80 /* AppDelegate.m */,
+				A443E014145CCDF0001CCB80 /* ViewController.h */,
+				A443E015145CCDF0001CCB80 /* ViewController.m */,
+				A443E017145CCDF0001CCB80 /* ViewController.xib */,
+				A443E009145CCDF0001CCB80 /* Supporting Files */,
+			);
+			path = p367p377transition;
+			sourceTree = "<group>";
+		};
+		A443E009145CCDF0001CCB80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A443E022145CCE52001CCB80 /* Mars.png */,
+				A443E023145CCE52001CCB80 /* Saturn.gif */,
+				A443E00A145CCDF0001CCB80 /* p367p377transition-Info.plist */,
+				A443E00B145CCDF0001CCB80 /* InfoPlist.strings */,
+				A443E00E145CCDF0001CCB80 /* main.m */,
+				A443E010145CCDF0001CCB80 /* p367p377transition-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A443DFFD145CCDF0001CCB80 /* p367p377transition */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A443E01C145CCDF0001CCB80 /* Build configuration list for PBXNativeTarget "p367p377transition" */;
+			buildPhases = (
+				A443DFFA145CCDF0001CCB80 /* Sources */,
+				A443DFFB145CCDF0001CCB80 /* Frameworks */,
+				A443DFFC145CCDF0001CCB80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p367p377transition;
+			productName = p367p377transition;
+			productReference = A443DFFE145CCDF0001CCB80 /* p367p377transition.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A443DFF5145CCDF0001CCB80 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A443DFF8145CCDF0001CCB80 /* Build configuration list for PBXProject "p367p377transition" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A443DFF3145CCDF0001CCB80;
+			productRefGroup = A443DFFF145CCDF0001CCB80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A443DFFD145CCDF0001CCB80 /* p367p377transition */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A443DFFC145CCDF0001CCB80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A443E00D145CCDF0001CCB80 /* InfoPlist.strings in Resources */,
+				A443E019145CCDF0001CCB80 /* ViewController.xib in Resources */,
+				A443E024145CCE52001CCB80 /* Mars.png in Resources */,
+				A443E025145CCE52001CCB80 /* Saturn.gif in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A443DFFA145CCDF0001CCB80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A443E00F145CCDF0001CCB80 /* main.m in Sources */,
+				A443E013145CCDF0001CCB80 /* AppDelegate.m in Sources */,
+				A443E016145CCDF0001CCB80 /* ViewController.m in Sources */,
+				A443E021145CCE30001CCB80 /* MyView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A443E00B145CCDF0001CCB80 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A443E00C145CCDF0001CCB80 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A443E017145CCDF0001CCB80 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A443E018145CCDF0001CCB80 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A443E01A145CCDF0001CCB80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A443E01B145CCDF0001CCB80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A443E01D145CCDF0001CCB80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p367p377transition/p367p377transition-Prefix.pch";
+				INFOPLIST_FILE = "p367p377transition/p367p377transition-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A443E01E145CCDF0001CCB80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p367p377transition/p367p377transition-Prefix.pch";
+				INFOPLIST_FILE = "p367p377transition/p367p377transition-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A443DFF8145CCDF0001CCB80 /* Build configuration list for PBXProject "p367p377transition" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A443E01A145CCDF0001CCB80 /* Debug */,
+				A443E01B145CCDF0001CCB80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A443E01C145CCDF0001CCB80 /* Build configuration list for PBXNativeTarget "p367p377transition" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A443E01D145CCDF0001CCB80 /* Debug */,
+				A443E01E145CCDF0001CCB80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A443DFF5145CCDF0001CCB80 /* Project object */;
+}
