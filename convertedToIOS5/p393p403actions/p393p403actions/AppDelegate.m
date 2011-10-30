@@ -8,7 +8,7 @@
 
 @synthesize window = _window;
 
-#define which 4 // try also "2" and "3" and "4"
+#define which 1 // try also "2" and "3" and "4"
 
 - (void) animate {
     switch (which) {
