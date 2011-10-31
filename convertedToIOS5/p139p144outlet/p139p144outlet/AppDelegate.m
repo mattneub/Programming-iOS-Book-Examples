@@ -22,6 +22,7 @@
     UILabel* lab = [mc valueForKey: @"theLabel"]; 
     [self.window addSubview: lab]; 
     lab.center = CGPointMake(100,100);
+    lab.frame = CGRectIntegral(lab.frame); // added to prevent fuzzies
     
     // Now, you could argue that MyClass isn't really needed:
     // we could just as well have used AppDelegate itself (self) as MyNib's owner

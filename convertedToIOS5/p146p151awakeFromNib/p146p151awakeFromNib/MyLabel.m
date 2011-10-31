@@ -24,6 +24,7 @@
 - (void) awakeFromNib { 
     [super awakeFromNib]; 
     self.text = [NSString stringWithFormat: @"The answer is %i", self->num];
+    [self sizeToFit]; // added to prevent shrinkage
 }
 
 @end
