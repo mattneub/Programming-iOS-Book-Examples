@@ -77,10 +77,7 @@
     [layer addAnimation: t forKey: nil];
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [self performSelector:@selector(animate) withObject:nil afterDelay:1.0];
+- (void) viewDidLoad {
     CALayer* layer = [CALayer layer];
     layer.frame = v2.layer.bounds;
     [v2.layer addSublayer:layer];
@@ -88,11 +85,17 @@
     layer.contentsGravity = kCAGravityCenter;
     v2.layer.masksToBounds = YES; // try making this NO to see what difference it makes
     v2.layer.borderWidth = 2;
-
+    
     // added the following, to confirm that user touch interactions are still disabled by default
     // on a view undergoing a block-based view animation - yes, they are
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     [v addGestureRecognizer:tap];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self performSelector:@selector(animate) withObject:nil afterDelay:1.0];
 }
 
 -(void) tap:(id)dummy {
