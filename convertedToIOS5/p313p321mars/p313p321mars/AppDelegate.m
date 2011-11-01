@@ -19,6 +19,7 @@ CGImageRef flip (CGImageRef im) {
 
 #define which 1 // substitute "2" thru "9" for other examples
                 // added case "10" to illustrate use of a CIFilter!
+                // added case "11" to illustrate image tiling!
 
 // try all examples with both single-resolution and double-resolution device
 // the double-resolution Mars image has "2" in it so you can see when it is being used
@@ -96,6 +97,17 @@ CGImageRef flip (CGImageRef im) {
             UIImageView* iv = [[UIImageView alloc] initWithImage:mars2];
             [self.window addSubview: iv];
             iv.center = self.window.center;
+            break;
+        }
+        case 11: {
+            // new example: iOS 5 has efficient tiling!
+            // (by "efficient" I mean that this takes basically no more memory than the original image)
+            
+            UIImage* mars = [UIImage imageNamed:@"Mars.png"];
+            UIImage* marsTiled = [mars resizableImageWithCapInsets:UIEdgeInsetsZero];
+            UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(20,25,mars.size.width*2,mars.size.height*4)];
+            iv.image = marsTiled;
+            [self.window addSubview:iv];
             break;
         }
         case 3: 
