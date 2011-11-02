@@ -31,7 +31,6 @@
 		A49501EB145885A8008EF035 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A49501F2145885D1008EF035 /* Mars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mars.png; sourceTree = "<group>"; };
 		A49501F3145885D1008EF035 /* Mars@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mars@2x.png"; sourceTree = "<group>"; };
-		A49501F614588BF3008EF035 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A49501F814588C2D008EF035 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -71,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				A49501F814588C2D008EF035 /* CoreImage.framework */,
-				A49501F614588BF3008EF035 /* QuartzCore.framework */,
 				A49501DB145885A8008EF035 /* UIKit.framework */,
 				A49501DD145885A8008EF035 /* Foundation.framework */,
 				A49501DF145885A8008EF035 /* CoreGraphics.framework */,
@@ -270,6 +268,7 @@
 				A49501F1145885A8008EF035 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

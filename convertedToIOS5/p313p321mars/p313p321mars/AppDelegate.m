@@ -20,6 +20,7 @@ CGImageRef flip (CGImageRef im) {
 #define which 1 // substitute "2" thru "9" for other examples
                 // added case "10" to illustrate use of a CIFilter!
                 // added case "11" to illustrate image tiling!
+                // added case "12" to illustrate image stretching
 
 // try all examples with both single-resolution and double-resolution device
 // the double-resolution Mars image has "2" in it so you can see when it is being used
@@ -105,6 +106,18 @@ CGImageRef flip (CGImageRef im) {
             
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
             UIImage* marsTiled = [mars resizableImageWithCapInsets:UIEdgeInsetsZero];
+            UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(20,25,mars.size.width*2,mars.size.height*4)];
+            iv.image = marsTiled;
+            [self.window addSubview:iv];
+            break;
+        }
+        case 12: {
+            // new example, stretching
+            // not really new, but uses new iOS 5 method rather than old method
+            UIImage* mars = [UIImage imageNamed:@"Mars.png"];
+            CGFloat capw = mars.size.width / 2.0 - 1;
+            CGFloat caph = mars.size.height / 2.0 - 1;
+            UIImage* marsTiled = [mars resizableImageWithCapInsets:UIEdgeInsetsMake(capw, caph, capw, caph)];
             UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(20,25,mars.size.width*2,mars.size.height*4)];
             iv.image = marsTiled;
             [self.window addSubview:iv];
