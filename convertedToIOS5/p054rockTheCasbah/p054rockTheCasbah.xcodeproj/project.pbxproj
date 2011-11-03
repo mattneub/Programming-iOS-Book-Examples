@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4C15A66146238250064A993 /* MyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C15A65146238250064A993 /* MyClass.m */; };
 		A4FAA89814546BA900F409F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FAA89714546BA900F409F5 /* UIKit.framework */; };
 		A4FAA89A14546BA900F409F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FAA89914546BA900F409F5 /* Foundation.framework */; };
 		A4FAA89C14546BA900F409F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FAA89B14546BA900F409F5 /* CoreGraphics.framework */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A4C15A64146238250064A993 /* MyClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClass.h; sourceTree = "<group>"; };
+		A4C15A65146238250064A993 /* MyClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClass.m; sourceTree = "<group>"; };
 		A4FAA89314546BA900F409F5 /* p054rockTheCasbah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p054rockTheCasbah.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4FAA89714546BA900F409F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A4FAA89914546BA900F409F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -72,6 +75,8 @@
 		A4FAA89D14546BA900F409F5 /* p054rockTheCasbah */ = {
 			isa = PBXGroup;
 			children = (
+				A4C15A64146238250064A993 /* MyClass.h */,
+				A4C15A65146238250064A993 /* MyClass.m */,
 				A4FAA8A614546BA900F409F5 /* AppDelegate.h */,
 				A4FAA8A714546BA900F409F5 /* AppDelegate.m */,
 				A4FAA89E14546BA900F409F5 /* Supporting Files */,
@@ -153,6 +158,7 @@
 			files = (
 				A4FAA8A414546BA900F409F5 /* main.m in Sources */,
 				A4FAA8A814546BA900F409F5 /* AppDelegate.m in Sources */,
+				A4C15A66146238250064A993 /* MyClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +262,7 @@
 				A4FAA8AD14546BA900F409F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
