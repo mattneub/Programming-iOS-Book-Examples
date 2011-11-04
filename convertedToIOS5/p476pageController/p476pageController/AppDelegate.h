@@ -2,12 +2,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class ViewController;
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UIPageViewControllerDataSource>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) ViewController *viewController;
+@property (nonatomic, strong) UIPageViewController* pvc;
+@property (nonatomic, strong) NSArray* pep;
 
 @end
