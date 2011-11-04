@@ -15,6 +15,7 @@
 		A419B900145F749300740828 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A419B8FF145F749300740828 /* AppDelegate.m */; };
 		A419B903145F749300740828 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A419B901145F749300740828 /* MainStoryboard.storyboard */; };
 		A419B906145F749300740828 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A419B905145F749300740828 /* ViewController.m */; };
+		A4A1DCF0146458230011A9BB /* MyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A1DCEF146458230011A9BB /* MyClass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		A419B902145F749300740828 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		A419B904145F749300740828 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A419B905145F749300740828 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A4A1DCEE146458230011A9BB /* MyClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClass.h; sourceTree = "<group>"; };
+		A4A1DCEF146458230011A9BB /* MyClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 				A419B901145F749300740828 /* MainStoryboard.storyboard */,
 				A419B904145F749300740828 /* ViewController.h */,
 				A419B905145F749300740828 /* ViewController.m */,
+				A4A1DCEE146458230011A9BB /* MyClass.h */,
+				A4A1DCEF146458230011A9BB /* MyClass.m */,
 				A419B8F6145F749300740828 /* Supporting Files */,
 			);
 			path = p444p454viewControllerViaStoryboard;
@@ -163,6 +168,7 @@
 				A419B8FC145F749300740828 /* main.m in Sources */,
 				A419B900145F749300740828 /* AppDelegate.m in Sources */,
 				A419B906145F749300740828 /* ViewController.m in Sources */,
+				A4A1DCF0146458230011A9BB /* MyClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +280,7 @@
 				A419B90B145F749300740828 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
