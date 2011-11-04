@@ -26,7 +26,7 @@
     [v addGestureRecognizer:p];
     [v addGestureRecognizer:lp];
     self.longPresser = lp;
-    p.delegate = (id)self; // this use of id cast is new under ARC
+    p.delegate = self;
 
 
 }
