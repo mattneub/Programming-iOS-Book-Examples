@@ -6,7 +6,7 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize pvc = _pvc, pep = _pep;
+@synthesize pep = _pep;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -17,22 +17,22 @@
     self.pep = [NSArray arrayWithObjects: @"Manny", @"Moe", @"Jack", nil];
     
     // make a page view controller
-    self.pvc = [[UIPageViewController alloc] 
-                initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl
-                navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal 
-                options:nil];
+    UIPageViewController* pvc = [[UIPageViewController alloc] 
+                                 initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl
+                                 navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal 
+                                 options:nil];
     
     // give it an initial page
     Pep* page = [[Pep alloc] initWithPepBoy:[self.pep objectAtIndex:0]];
-    [self.pvc setViewControllers:[NSArray arrayWithObject:page]
+    [pvc setViewControllers:[NSArray arrayWithObject:page]
                        direction:UIPageViewControllerNavigationDirectionForward
                         animated:NO completion:NULL];
     
     // give it a data source
-    self.pvc.dataSource = self;
+    pvc.dataSource = self;
     
     // stick it in the window
-    self.window.rootViewController = self.pvc;
+    self.window.rootViewController = pvc;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
