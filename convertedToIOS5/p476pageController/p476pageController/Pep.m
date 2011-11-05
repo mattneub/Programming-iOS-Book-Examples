@@ -7,8 +7,8 @@
 
 // given a Pep boy's name, we display his name and picture
 
-- (id) initWithPepBoy: (NSString*) inputboy {
-    self = [super init];
+- (id) initWithPepBoy: (NSString*) inputboy nib: (NSString*) nib bundle: (NSBundle*) bundle {
+    self = [self initWithNibName:nib bundle:bundle];
     if (self) {
         self.boy = inputboy;
     }

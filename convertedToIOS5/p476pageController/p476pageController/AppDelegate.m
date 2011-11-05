@@ -23,7 +23,7 @@
                                  options:nil];
     
     // give it an initial page
-    Pep* page = [[Pep alloc] initWithPepBoy:[self.pep objectAtIndex:0]];
+    Pep* page = [[Pep alloc] initWithPepBoy:[self.pep objectAtIndex:0] nib: nil bundle: nil];
     [pvc setViewControllers:[NSArray arrayWithObject:page]
                        direction:UIPageViewControllerNavigationDirectionForward
                         animated:NO completion:NULL];
@@ -47,7 +47,7 @@
     ix++;
     if (ix >= [self.pep count])
         return nil;
-    return [[Pep alloc] initWithPepBoy:[self.pep objectAtIndex:ix]];
+    return [[Pep alloc] initWithPepBoy:[self.pep objectAtIndex:ix] nib: nil bundle: nil];
 }
 
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
@@ -55,7 +55,7 @@
     NSUInteger ix = [self.pep indexOfObject:boy];
     if (ix == 0)
         return nil;
-    return [[Pep alloc] initWithPepBoy:[self.pep objectAtIndex:--ix]];
+    return [[Pep alloc] initWithPepBoy:[self.pep objectAtIndex:--ix] nib: nil bundle: nil];
 }
 
 
