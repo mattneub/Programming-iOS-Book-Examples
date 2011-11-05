@@ -1,11 +1,12 @@
 
 
 #import "ViewController.h"
-#import "PanelViewController.h"
-#import "FlipViewController.h"
+#import "FirstViewController.h"
+#import "SecondViewController.h"
 
 @implementation ViewController {
     int cur;
+    NSMutableArray* swappers;
 }
 @synthesize panel;
 
@@ -17,37 +18,50 @@
 
 #pragma mark - View lifecycle
 
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self -> swappers = [NSMutableArray array];
+        [self->swappers addObject: [[FirstViewController alloc] init]];
+        [self->swappers addObject: [[SecondViewController alloc] init]];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    PanelViewController* pvc = [[PanelViewController alloc] init];
-    [self addChildViewController:pvc];
-    pvc.view.frame = self.panel.bounds;
-    [self.panel addSubview: pvc.view];
-    [pvc didMoveToParentViewController:self];
-    // willMove is sent automatically by add, but we must send didMove
-    
-    FlipViewController* flip = [[FlipViewController alloc] init];
-    [self addChildViewController: flip];
-    [flip didMoveToParentViewController:self];
-    // willMove is sent automatically by add, but we must send didMove
-
+    UIViewController* vc = [self->swappers objectAtIndex: cur];
+    [self addChildViewController:vc]; // "will" called for us
+    vc.view.frame = self.panel.bounds;
+    [self.panel addSubview: vc.view];
+    // note: when we call add, we must call "did" afterwards
+    [vc didMoveToParentViewController:self];
+        
 }
 
 - (IBAction)doFlip:(id)sender {
-    UIViewController* fromvc = [self.childViewControllers objectAtIndex:cur];
+    UIViewController* fromvc = [self->swappers objectAtIndex:cur];
     cur = (cur == 0) ? 1 : 0;
-    UIViewController* tovc = [self.childViewControllers objectAtIndex:cur];
+    UIViewController* tovc = [self->swappers objectAtIndex:cur];
     tovc.view.frame = self.panel.bounds;
-
-    // note: if you call transition, do not call willMove, but do call didMove in the completion
+    
+    // must have both as children before we can transition between them
+    [self addChildViewController:tovc]; // "will" called for us
+    // note: when we call remove, we must call "will" (with nil) beforehand
+    [fromvc willMoveToParentViewController:nil];
+    
     [self transitionFromViewController:fromvc
                       toViewController:tovc
                               duration:0.4
                                options:UIViewAnimationOptionTransitionFlipFromLeft
                             animations:nil
-                            completion:nil];
+                            completion:^(BOOL done){
+                                // note: when we call add, we must call "did" afterwards
+                                [tovc didMoveToParentViewController:self];
+                                [fromvc removeFromParentViewController]; // "did" called for us
+                            }];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

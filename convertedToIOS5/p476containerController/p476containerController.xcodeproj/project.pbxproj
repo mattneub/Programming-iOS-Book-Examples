@@ -15,10 +15,10 @@
 		A42442F51464BEDF00A84C7F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A42442F41464BEDF00A84C7F /* AppDelegate.m */; };
 		A42442F81464BEDF00A84C7F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A42442F71464BEDF00A84C7F /* ViewController.m */; };
 		A42442FB1464BEDF00A84C7F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A42442F91464BEDF00A84C7F /* ViewController.xib */; };
-		A42443041464BFDB00A84C7F /* PanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A42443021464BFDB00A84C7F /* PanelViewController.m */; };
-		A42443051464BFDB00A84C7F /* PanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A42443031464BFDB00A84C7F /* PanelView.xib */; };
-		A42443091464C2B200A84C7F /* FlipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A42443071464C2B200A84C7F /* FlipViewController.m */; };
-		A424430A1464C2B200A84C7F /* FlipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A42443081464C2B200A84C7F /* FlipView.xib */; };
+		A42443041464BFDB00A84C7F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A42443021464BFDB00A84C7F /* FirstViewController.m */; };
+		A42443051464BFDB00A84C7F /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A42443031464BFDB00A84C7F /* FirstView.xib */; };
+		A42443091464C2B200A84C7F /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A42443071464C2B200A84C7F /* SecondViewController.m */; };
+		A424430A1464C2B200A84C7F /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A42443081464C2B200A84C7F /* SecondView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,12 +35,12 @@
 		A42442F61464BEDF00A84C7F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A42442F71464BEDF00A84C7F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A42442FA1464BEDF00A84C7F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		A42443011464BFDB00A84C7F /* PanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelViewController.h; sourceTree = "<group>"; };
-		A42443021464BFDB00A84C7F /* PanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelViewController.m; sourceTree = "<group>"; };
-		A42443031464BFDB00A84C7F /* PanelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PanelView.xib; sourceTree = "<group>"; };
-		A42443061464C2B200A84C7F /* FlipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipViewController.h; sourceTree = "<group>"; };
-		A42443071464C2B200A84C7F /* FlipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipViewController.m; sourceTree = "<group>"; };
-		A42443081464C2B200A84C7F /* FlipView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlipView.xib; sourceTree = "<group>"; };
+		A42443011464BFDB00A84C7F /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		A42443021464BFDB00A84C7F /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		A42443031464BFDB00A84C7F /* FirstView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstView.xib; sourceTree = "<group>"; };
+		A42443061464C2B200A84C7F /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		A42443071464C2B200A84C7F /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		A42443081464C2B200A84C7F /* SecondView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,12 +92,12 @@
 				A42442F61464BEDF00A84C7F /* ViewController.h */,
 				A42442F71464BEDF00A84C7F /* ViewController.m */,
 				A42442F91464BEDF00A84C7F /* ViewController.xib */,
-				A42443011464BFDB00A84C7F /* PanelViewController.h */,
-				A42443021464BFDB00A84C7F /* PanelViewController.m */,
-				A42443031464BFDB00A84C7F /* PanelView.xib */,
-				A42443061464C2B200A84C7F /* FlipViewController.h */,
-				A42443071464C2B200A84C7F /* FlipViewController.m */,
-				A42443081464C2B200A84C7F /* FlipView.xib */,
+				A42443011464BFDB00A84C7F /* FirstViewController.h */,
+				A42443021464BFDB00A84C7F /* FirstViewController.m */,
+				A42443031464BFDB00A84C7F /* FirstView.xib */,
+				A42443061464C2B200A84C7F /* SecondViewController.h */,
+				A42443071464C2B200A84C7F /* SecondViewController.m */,
+				A42443081464C2B200A84C7F /* SecondView.xib */,
 				A42442EB1464BEDF00A84C7F /* Supporting Files */,
 			);
 			path = p476containerController;
@@ -166,8 +166,8 @@
 			files = (
 				A42442EF1464BEDF00A84C7F /* InfoPlist.strings in Resources */,
 				A42442FB1464BEDF00A84C7F /* ViewController.xib in Resources */,
-				A42443051464BFDB00A84C7F /* PanelView.xib in Resources */,
-				A424430A1464C2B200A84C7F /* FlipView.xib in Resources */,
+				A42443051464BFDB00A84C7F /* FirstView.xib in Resources */,
+				A424430A1464C2B200A84C7F /* SecondView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,8 +181,8 @@
 				A42442F11464BEDF00A84C7F /* main.m in Sources */,
 				A42442F51464BEDF00A84C7F /* AppDelegate.m in Sources */,
 				A42442F81464BEDF00A84C7F /* ViewController.m in Sources */,
-				A42443041464BFDB00A84C7F /* PanelViewController.m in Sources */,
-				A42443091464C2B200A84C7F /* FlipViewController.m in Sources */,
+				A42443041464BFDB00A84C7F /* FirstViewController.m in Sources */,
+				A42443091464C2B200A84C7F /* SecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +294,7 @@
 				A42443001464BEDF00A84C7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
