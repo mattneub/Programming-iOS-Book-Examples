@@ -17,10 +17,12 @@
     
     // showing that key-value coding also works
     // note that this corrects an error in the book (also corrected in second printing)
-    NSString* s = @"number";
-    [fido setValue: [NSNumber numberWithInt:4242] forKey: s];
-    NSNumber* nn = [fido valueForKey: s];
-    NSLog(@"sure enough, nn is now %@!", nn);
+    NSNumber* num = [NSNumber numberWithInt:4242];
+    [fido setValue: num forKey: @"number"];
+    num = [fido valueForKey: @"number"];
+    n = [num intValue];
+
+    NSLog(@"sure enough, n is now %i!", n);
 
     // no memory management needed
     
