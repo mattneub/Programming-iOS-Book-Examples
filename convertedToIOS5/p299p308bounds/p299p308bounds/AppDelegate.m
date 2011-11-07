@@ -17,6 +17,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = [UIViewController new];
     
     switch (which) {
         case 1: 
@@ -26,7 +27,7 @@
             v1.backgroundColor = [UIColor colorWithRed:1 green:.4 blue:1 alpha:1];
             UIView* v2 = [[UIView alloc] initWithFrame:CGRectInset(v1.bounds, 10, 10)];
             v2.backgroundColor = [UIColor colorWithRed:.5 green:1 blue:0 alpha:1];
-            [self.window addSubview: v1];
+            [self.window.rootViewController.view addSubview: v1];
             [v1 addSubview: v2];
             break;
         }
@@ -37,7 +38,7 @@
             v1.backgroundColor = [UIColor colorWithRed:1 green:.4 blue:1 alpha:1];
             UIView* v2 = [[UIView alloc] initWithFrame:CGRectInset(v1.bounds, 10, 10)];
             v2.backgroundColor = [UIColor colorWithRed:.5 green:1 blue:0 alpha:1];
-            [self.window addSubview: v1];
+            [self.window.rootViewController.view addSubview: v1];
             [v1 addSubview: v2];
             CGRect f = v2.bounds;
             f.size.height += 20;
@@ -52,7 +53,7 @@
             v1.backgroundColor = [UIColor colorWithRed:1 green:.4 blue:1 alpha:1];
             UIView* v2 = [[UIView alloc] initWithFrame:CGRectInset(v1.bounds, 10, 10)];
             v2.backgroundColor = [UIColor colorWithRed:.5 green:1 blue:0 alpha:1];
-            [self.window addSubview: v1];
+            [self.window.rootViewController.view addSubview: v1];
             [v1 addSubview: v2];
             CGRect f = v1.bounds;
             f.origin.x += 10;

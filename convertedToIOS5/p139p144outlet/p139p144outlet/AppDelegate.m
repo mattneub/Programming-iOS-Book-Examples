@@ -10,7 +10,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+    self.window.rootViewController = [[UIViewController alloc] init]; // silence annoying warning
     
     // Override point for customization after application launch.
     
@@ -20,7 +20,7 @@
     MyClass* mc = [[MyClass alloc] init]; 
     [[NSBundle mainBundle] loadNibNamed:@"MyNib" owner:mc options:nil]; 
     UILabel* lab = [mc valueForKey: @"theLabel"]; 
-    [self.window addSubview: lab]; 
+    [self.window.rootViewController.view addSubview: lab]; // NB
     lab.center = CGPointMake(100,100);
     lab.frame = CGRectIntegral(lab.frame); // added to prevent fuzzies
     

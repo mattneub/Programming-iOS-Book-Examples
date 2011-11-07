@@ -21,6 +21,7 @@
     // uncomment this to test that we crash in debug build if we try to make a dog with pure init
     // (note that asserts are turned off by default in release build)
     // unfortunately NSAssert behavior in iOS 5 is poor: the reason string is never logged!
+    // (appears to be a Snow Leopard Xcode bug; works okay on Lion)
     // Dog* nameless = [[Dog alloc] init];
 
     

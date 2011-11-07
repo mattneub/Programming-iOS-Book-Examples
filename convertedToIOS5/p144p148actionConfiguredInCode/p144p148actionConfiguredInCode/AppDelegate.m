@@ -9,6 +9,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = [[UIViewController alloc] init]; //
     
     // Override point for customization after application launch.
     
@@ -16,7 +17,7 @@
     UIButton* b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [b setTitle:@"Howdy!" forState:UIControlStateNormal];
     [b setFrame: CGRectMake(100,100,100,35)];
-    [self.window addSubview:b];
+    [self.window.rootViewController.view addSubview:b];
     [b addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
 
     

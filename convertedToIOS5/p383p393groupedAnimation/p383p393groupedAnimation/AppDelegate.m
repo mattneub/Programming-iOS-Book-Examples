@@ -62,11 +62,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = [UIViewController new];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
     self.view = [[UIView alloc] initWithFrame:CGRectMake(254,28,56,38)];
-    [self.window addSubview: self.view];
+    [self.window.rootViewController.view addSubview: self.view];
     self.view.layer.contents = (id)[[UIImage imageNamed:@"boat.gif"] CGImage];
     self.view.layer.contentsGravity = kCAGravityResizeAspectFill;
     [self performSelector:@selector(animate) withObject:nil afterDelay:1.0];

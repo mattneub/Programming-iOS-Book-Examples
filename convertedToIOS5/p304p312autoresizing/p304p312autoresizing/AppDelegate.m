@@ -9,7 +9,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+    self.window.rootViewController = [UIViewController new];
     
     // figure 14-6
     UIView* v1 = [[UIView alloc] initWithFrame:CGRectMake(100, 111, 132, 194)];
@@ -20,7 +20,7 @@
                                                           v1.bounds.size.height-20, 
                                                           20, 20)];
     v3.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
-    [self.window addSubview: v1];
+    [self.window.rootViewController.view addSubview: v1];
     [v1 addSubview: v2];
     [v1 addSubview: v3];
     

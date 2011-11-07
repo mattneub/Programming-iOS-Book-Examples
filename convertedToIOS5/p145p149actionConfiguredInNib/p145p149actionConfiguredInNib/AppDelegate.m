@@ -13,7 +13,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+    self.window.rootViewController = [[UIViewController alloc] init]; //
     
     // Override point for customization after application launch.
     
@@ -23,7 +23,7 @@
     // we there is also an action in the nib from the button to our buttonPressed:
     
     [[NSBundle mainBundle] loadNibNamed:@"MyNib" owner:self options:nil]; 
-    [self.window addSubview: self->theButton]; 
+    [self.window.rootViewController.view addSubview: self->theButton]; //
     self->theButton.center = CGPointMake(100,100);
     
     

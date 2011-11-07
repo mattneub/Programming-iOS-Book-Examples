@@ -10,7 +10,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    
+    self.window.rootViewController = [UIViewController new];
     
     UIButton* b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     // we can assign a UIButton to a UIView because a UIButton *is* a UIView
@@ -22,7 +22,7 @@
     [b setFrame: CGRectMake(100,100,100,35)];
 
     // just to prove that it all worked, I'll put the button into the interface
-    [self.window addSubview:b];
+    [self.window.rootViewController.view addSubview:b];
 
     
     

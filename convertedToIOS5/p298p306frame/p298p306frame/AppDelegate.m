@@ -9,7 +9,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+    self.window.rootViewController = [UIViewController new];
     
     
     // generate figure 14-1
@@ -19,9 +19,9 @@
     v2.backgroundColor = [UIColor colorWithRed:.5 green:1 blue:0 alpha:1];
     UIView* v3 = [[UIView alloc] initWithFrame:CGRectMake(43, 197, 160, 230)];
     v3.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
-    [self.window addSubview: v1];
+    [self.window.rootViewController.view addSubview: v1];
     [v1 addSubview: v2];
-    [self.window addSubview: v3];
+    [self.window.rootViewController.view addSubview: v3];
     
     
     

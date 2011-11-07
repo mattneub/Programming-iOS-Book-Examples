@@ -30,7 +30,7 @@ CGImageRef flip (CGImageRef im) {
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+    self.window.rootViewController = [UIViewController new];
     
     
     
@@ -38,7 +38,7 @@ CGImageRef flip (CGImageRef im) {
         case 1:
         {
             UIImageView* iv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Mars.png"]];
-            [self.window addSubview: iv];
+            [self.window.rootViewController.view addSubview: iv];
             iv.center = self.window.center;
             break;
         }
@@ -54,7 +54,7 @@ CGImageRef flip (CGImageRef im) {
             UIGraphicsEndImageContext();
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
-            [self.window addSubview: iv];
+            [self.window.rootViewController.view addSubview: iv];
             iv.center = self.window.center;
             break;
         }
@@ -96,7 +96,7 @@ CGImageRef flip (CGImageRef im) {
             CGImageRelease(chim);
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:mars2];
-            [self.window addSubview: iv];
+            [self.window.rootViewController.view addSubview: iv];
             iv.center = self.window.center;
             break;
         }
@@ -108,7 +108,7 @@ CGImageRef flip (CGImageRef im) {
             UIImage* marsTiled = [mars resizableImageWithCapInsets:UIEdgeInsetsZero];
             UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(20,25,mars.size.width*2,mars.size.height*4)];
             iv.image = marsTiled;
-            [self.window addSubview:iv];
+            [self.window.rootViewController.view addSubview:iv];
             break;
         }
         case 12: {
@@ -120,7 +120,7 @@ CGImageRef flip (CGImageRef im) {
             UIImage* marsTiled = [mars resizableImageWithCapInsets:UIEdgeInsetsMake(capw, caph, capw, caph)];
             UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(20,25,mars.size.width*2,mars.size.height*4)];
             iv.image = marsTiled;
-            [self.window addSubview:iv];
+            [self.window.rootViewController.view addSubview:iv];
             break;
         }
         case 3: 
@@ -136,7 +136,7 @@ CGImageRef flip (CGImageRef im) {
             UIGraphicsEndImageContext();
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
-            [self.window addSubview: iv];
+            [self.window.rootViewController.view addSubview: iv];
             iv.center = self.window.center;
             break;
         }
@@ -151,7 +151,7 @@ CGImageRef flip (CGImageRef im) {
             UIGraphicsEndImageContext();
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
-            [self.window addSubview: iv];
+            [self.window.rootViewController.view addSubview: iv];
             iv.center = self.window.center;
             break;
         }
@@ -176,7 +176,7 @@ CGImageRef flip (CGImageRef im) {
             CGImageRelease(marsLeft); CGImageRelease(marsRight);
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
-            [self.window addSubview: iv];
+            [self.window.rootViewController.view addSubview: iv];
             iv.center = self.window.center;
             break;
         }
@@ -200,7 +200,7 @@ CGImageRef flip (CGImageRef im) {
             CGImageRelease(marsLeft); CGImageRelease(marsRight);
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
-            [self.window addSubview: iv];
+            [self.window.rootViewController.view addSubview: iv];
             iv.center = self.window.center;
             break;
         }
@@ -224,7 +224,7 @@ CGImageRef flip (CGImageRef im) {
             CGImageRelease(marsLeft); CGImageRelease(marsRight);
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
-            [self.window addSubview: iv];
+            [self.window.rootViewController.view addSubview: iv];
             iv.center = self.window.center;
             break;
         }
@@ -254,7 +254,7 @@ CGImageRef flip (CGImageRef im) {
             CGImageRelease(marsLeft); CGImageRelease(marsRight);
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
-            [self.window addSubview: iv];
+            [self.window.rootViewController.view addSubview: iv];
             iv.center = self.window.center;
             break;
         }
@@ -286,7 +286,7 @@ CGImageRef flip (CGImageRef im) {
             CGImageRelease(marsLeft); CGImageRelease(marsRight);
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
-            [self.window addSubview: iv];
+            [self.window.rootViewController.view addSubview: iv];
             iv.center = self.window.center;
             break;
             

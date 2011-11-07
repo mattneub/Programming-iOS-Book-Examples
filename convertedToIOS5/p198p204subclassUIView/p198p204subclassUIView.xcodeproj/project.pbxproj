@@ -13,8 +13,7 @@
 		A4CBFFC51455C47E00231381 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4CBFFC31455C47E00231381 /* InfoPlist.strings */; };
 		A4CBFFC71455C47E00231381 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4CBFFC61455C47E00231381 /* main.m */; };
 		A4CBFFCB1455C47E00231381 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4CBFFCA1455C47E00231381 /* AppDelegate.m */; };
-		A4CBFFCE1455C47E00231381 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4CBFFCD1455C47E00231381 /* ViewController.m */; };
-		A4CBFFD11455C47E00231381 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4CBFFCF1455C47E00231381 /* ViewController.xib */; };
+		A4CBFFD11455C47E00231381 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4CBFFCF1455C47E00231381 /* View.xib */; };
 		A4CBFFDB1455C4C600231381 /* MyHorizLine.m in Sources */ = {isa = PBXBuildFile; fileRef = A4CBFFD81455C4C600231381 /* MyHorizLine.m */; };
 		A4CBFFDC1455C4C600231381 /* MyBoundedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4CBFFDA1455C4C600231381 /* MyBoundedLabel.m */; };
 /* End PBXBuildFile section */
@@ -30,9 +29,7 @@
 		A4CBFFC81455C47E00231381 /* p198p204subclassUIView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p198p204subclassUIView-Prefix.pch"; sourceTree = "<group>"; };
 		A4CBFFC91455C47E00231381 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A4CBFFCA1455C47E00231381 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A4CBFFCC1455C47E00231381 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A4CBFFCD1455C47E00231381 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A4CBFFD01455C47E00231381 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		A4CBFFD01455C47E00231381 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/View.xib; sourceTree = "<group>"; };
 		A4CBFFD71455C4C600231381 /* MyHorizLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHorizLine.h; sourceTree = "<group>"; };
 		A4CBFFD81455C4C600231381 /* MyHorizLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHorizLine.m; sourceTree = "<group>"; };
 		A4CBFFD91455C4C600231381 /* MyBoundedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBoundedLabel.h; sourceTree = "<group>"; };
@@ -89,9 +86,7 @@
 				A4CBFFDA1455C4C600231381 /* MyBoundedLabel.m */,
 				A4CBFFC91455C47E00231381 /* AppDelegate.h */,
 				A4CBFFCA1455C47E00231381 /* AppDelegate.m */,
-				A4CBFFCC1455C47E00231381 /* ViewController.h */,
-				A4CBFFCD1455C47E00231381 /* ViewController.m */,
-				A4CBFFCF1455C47E00231381 /* ViewController.xib */,
+				A4CBFFCF1455C47E00231381 /* View.xib */,
 				A4CBFFC11455C47E00231381 /* Supporting Files */,
 			);
 			path = p198p204subclassUIView;
@@ -159,7 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4CBFFC51455C47E00231381 /* InfoPlist.strings in Resources */,
-				A4CBFFD11455C47E00231381 /* ViewController.xib in Resources */,
+				A4CBFFD11455C47E00231381 /* View.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,7 +167,6 @@
 			files = (
 				A4CBFFC71455C47E00231381 /* main.m in Sources */,
 				A4CBFFCB1455C47E00231381 /* AppDelegate.m in Sources */,
-				A4CBFFCE1455C47E00231381 /* ViewController.m in Sources */,
 				A4CBFFDB1455C4C600231381 /* MyHorizLine.m in Sources */,
 				A4CBFFDC1455C4C600231381 /* MyBoundedLabel.m in Sources */,
 			);
@@ -189,12 +183,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		A4CBFFCF1455C47E00231381 /* ViewController.xib */ = {
+		A4CBFFCF1455C47E00231381 /* View.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A4CBFFD01455C47E00231381 /* en */,
 			);
-			name = ViewController.xib;
+			name = View.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -286,6 +280,7 @@
 				A4CBFFD61455C47E00231381 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -10,9 +10,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = [UIViewController new];
     
     CompassView* v = [[CompassView alloc] initWithFrame:CGRectMake(42,56,240,240)];
-    [self.window addSubview:v];
+    [self.window.rootViewController.view addSubview:v];
     
     
     // Override point for customization after application launch.

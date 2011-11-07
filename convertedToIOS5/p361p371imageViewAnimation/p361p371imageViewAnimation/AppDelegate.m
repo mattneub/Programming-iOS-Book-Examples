@@ -9,6 +9,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = [UIViewController new];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -27,7 +28,7 @@
             UIGraphicsEndImageContext();
             NSArray* arr = [NSArray arrayWithObjects: mars, empty, mars, empty, mars, nil];
             UIImageView* iv = [[UIImageView alloc] initWithFrame:CGRectMake(56, 63, 208, 208)];
-            [self.window addSubview: iv];
+            [self.window.rootViewController.view addSubview: iv];
             iv.animationImages = arr;
             iv.animationDuration = 2;
             iv.animationRepeatCount = 1;
@@ -49,7 +50,7 @@
             UIImage* im = [UIImage animatedImageWithImages:arr duration:2];
             UIImageView* iv = [[UIImageView alloc] initWithFrame:CGRectMake(56, 63, 208, 208)];
             iv.image = im;
-            [self.window addSubview: iv];
+            [self.window.rootViewController.view addSubview: iv];
             break;
         }
         case 3: {
@@ -73,7 +74,7 @@
             [b setImage:im forState:UIControlStateNormal];
             b.center = CGPointMake(100,100);
             [b sizeToFit];
-            [self.window addSubview:b];
+            [self.window.rootViewController.view addSubview:b];
         }
     }
     

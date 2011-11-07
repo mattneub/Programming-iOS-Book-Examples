@@ -10,12 +10,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+    self.window.rootViewController = [UIViewController new];
     
     MyView* mv = [[MyView alloc] initWithFrame: 
                   CGRectMake(0, 0, self.window.bounds.size.width - 50, 150)];
     mv.center = self.window.center;
-    [self.window addSubview: mv];
+    [self.window.rootViewController.view addSubview: mv];
     mv.opaque = NO;
 
     

@@ -4,17 +4,20 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MyLayer.h"
 
-@implementation AppDelegate
+@implementation AppDelegate {
+    CALayer* lay;
+}
 
 @synthesize window = _window;
 
 #define which 1 // try also "2" and "3" and "4"
 
 - (void) animate {
+    
     switch (which) {
         case 1:
         {
-            CALayer* layer = [self.window.layer.sublayers lastObject];
+            CALayer* layer = self->lay;
             CGPoint newP = CGPointMake(200,300);
             [CATransaction setValue: [NSValue valueWithCGPoint: newP] forKey: @"newP"];
             [CATransaction setAnimationDuration:1.5];
@@ -24,7 +27,7 @@
         }
         case 2:
         {
-            CALayer* layer = [self.window.layer.sublayers lastObject];
+            CALayer* layer = self->lay;
             layer.contents =  (id)[[UIImage imageNamed:@"Saturn.gif"] CGImage];
             // the layer subclass (MyLayer) will turn this into a push transition
             break;
@@ -36,12 +39,12 @@
             layer.frame = CGRectMake(200,50,40,40);
             layer.contents = (id)[[UIImage imageNamed:@"Saturn.gif"] CGImage];
             layer.delegate = self;
-            [self.window.layer addSublayer:layer]; // the delegate will "pop" the layer as it appears
+            [self.window.rootViewController.view.layer addSublayer:layer]; // the delegate will "pop" the layer as it appears
             break;
         }
         case 4:
         {
-            CALayer* layer = [self.window.layer.sublayers lastObject];
+            CALayer* layer = self->lay;
             [CATransaction setCompletionBlock: ^{
                 [layer removeFromSuperlayer];
             }];
@@ -84,7 +87,7 @@
         CABasicAnimation* anim2 = 
         [CABasicAnimation animationWithKeyPath:@"transform"];
         anim2.toValue = [NSValue valueWithCATransform3D:
-                         CATransform3DScale(layer.transform, 1.1, 1.1, 1.0)];
+                         CATransform3DScale(layer.transform, 1.2, 1.2, 1.0)];
         anim2.autoreverses = YES;
         anim2.duration = 0.1;
         CAAnimationGroup* group = [CAAnimationGroup animation];
@@ -115,15 +118,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = [UIViewController new];
     // Override point for customization after application launch.
-    [CATransaction setDisableActions:YES];
     CALayer* layer = [MyLayer layer];
+    [CATransaction setDisableActions:YES];
+    [CATransaction setCompletionBlock:^{
+        layer.delegate = self; // moved here to prevent pop animation on startup
+                               // not quite sure why setDisableActions:YES fails to prevent it
+    }];
     layer.frame = CGRectMake(50,50,40,40);
     //layer.backgroundColor = [[UIColor redColor] CGColor];
     layer.contents = (id)[[UIImage imageNamed:@"Mars.png"] CGImage];
-    [self.window.layer addSublayer:layer];
-    layer.delegate = self;
-    
+    [self.window.rootViewController.view.layer addSublayer:layer];
+    self->lay = layer;
     
     [self performSelector:@selector(animate) withObject:self afterDelay:1];
 
