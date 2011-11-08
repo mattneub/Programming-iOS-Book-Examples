@@ -26,6 +26,7 @@ void drawStripes (void *info, CGContextRef con) {
 
 
 #define which 1 // substitute "2" thru "9" to see other examples
+                // added "10" to use transparencyLayer
 
 - (void)drawRect:(CGRect)rect {
     switch (which) {
@@ -413,6 +414,90 @@ void drawStripes (void *info, CGContextRef con) {
                 CGContextTranslateCTM(con, -20, -100);
                 [im drawAtPoint:CGPointMake(0,0)];
             }
+            break;
+        }
+        case 10: { // new for second edition, not in original book
+            // same as case 9, with transparency layer before we draw the shadowed material
+            // hard to see the difference, but the fact is that case 9 hides a subtle bug:
+            // the arrows are able to cast shadows on one another, whereas what we want
+            // is for all the arrows to be drawn and to cast a single shadow collectively
+            
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(40,100), NO, 0.0);
+            CGContextRef con = UIGraphicsGetCurrentContext();
+            CGContextSaveGState(con);
+            // draw the arrow into the image context
+            // draw it at (0,0)! adjust all x-values by subtracting 80
+            // punch triangular hole in context clipping region
+            CGContextMoveToPoint(con, 10, 100);
+            CGContextAddLineToPoint(con, 20, 90);
+            CGContextAddLineToPoint(con, 30, 100);
+            CGContextClosePath(con);
+            CGContextAddRect(con, CGContextGetClipBoundingBox(con));
+            CGContextEOClip(con);
+            
+            // draw the vertical line, add its shape to the clipping region
+            CGContextMoveToPoint(con, 20, 100);
+            CGContextAddLineToPoint(con, 20, 19);
+            CGContextSetLineWidth(con, 20);
+            CGContextReplacePathWithStrokedPath(con);
+            CGContextClip(con);
+            
+            // draw the gradient
+            CGFloat locs[3] = { 0.0, 0.5, 1.0 };
+            CGFloat colors[12] = {
+                0.3,0.3,0.3,0.8, // starting color, transparent gray
+                0.0,0.0,0.0,1.0, // intermediate color, black
+                0.3,0.3,0.3,0.8 // ending color, transparent gray
+            };
+            CGColorSpaceRef sp = CGColorSpaceCreateDeviceGray();
+            CGGradientRef grad = CGGradientCreateWithColorComponents (sp, colors, locs, 3);
+            CGContextDrawLinearGradient (con, grad, CGPointMake(9,0), CGPointMake(31,0), 0);
+            CGColorSpaceRelease(sp);
+            CGGradientRelease(grad);
+            
+            CGContextRestoreGState(con); // done clipping
+            
+            // draw the patterned triangle, the point of the arrow
+            CGColorSpaceRef sp2 = CGColorSpaceCreatePattern(NULL);
+            CGContextSetFillColorSpace (con, sp2);
+            CGColorSpaceRelease (sp2);
+            CGPatternCallbacks callback = {
+                0, &drawStripes, NULL
+            };
+            CGAffineTransform tr = CGAffineTransformIdentity;
+            CGPatternRef patt = CGPatternCreate(NULL,
+                                                CGRectMake(0,0,4,4),
+                                                tr,
+                                                4, 4, 
+                                                kCGPatternTilingConstantSpacingMinimalDistortion,
+                                                true,
+                                                &callback);
+            CGFloat alph = 1.0;
+            CGContextSetFillPattern(con, patt, &alph);
+            CGPatternRelease(patt);
+            CGContextMoveToPoint(con, 0, 25);
+            CGContextAddLineToPoint(con, 20, 0);
+            CGContextAddLineToPoint(con, 40, 25);
+            CGContextFillPath(con);
+            
+            UIImage* im = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            
+            con = UIGraphicsGetCurrentContext();
+            
+            CGContextSetShadow(con, CGSizeMake(7, 7), 12);
+            
+            CGContextBeginTransparencyLayer(con, NULL);
+            
+            [im drawAtPoint:CGPointMake(0,0)];
+            for (int i=0; i<3; i++) {
+                CGContextTranslateCTM(con, 20, 100);
+                CGContextRotateCTM(con, 30 * M_PI/180.0);
+                CGContextTranslateCTM(con, -20, -100);
+                [im drawAtPoint:CGPointMake(0,0)];
+            }
+            
+            CGContextEndTransparencyLayer(con);
             break;
         }
     }
