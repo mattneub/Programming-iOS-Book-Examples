@@ -12,19 +12,22 @@
  This was very easy to manufacture by modifying our sectioned "states" example slightly.
  */
 
+/*
+ Also added example of new iOS 5 table cell menu display
+ */
+
 #import "RootViewController.h"
 
 @interface RootViewController () 
 @property (nonatomic, strong) UISearchDisplayController* sbc;
 @property (nonatomic, strong) NSArray* states;
-@property (nonatomic, strong) NSArray* filteredStates;
 @property (nonatomic, strong) NSMutableArray* sectionNames;
 @property (nonatomic, strong) NSMutableArray* sectionData;
 @property (nonatomic, strong) NSMutableSet* hiddenSections; // keep track of which are hidden
 @end
 
 @implementation RootViewController
-@synthesize sbc, states, filteredStates, sectionNames, sectionData, hiddenSections;
+@synthesize sbc, states, sectionNames, sectionData, hiddenSections;
 
 -(void) createData { // not in nib any more so can't use awakeFromNib for this
     self.hiddenSections = [NSMutableSet set]; // initialize
@@ -65,6 +68,11 @@
     UIGraphicsEndImageContext();
     UIImageView* iv = [[UIImageView alloc] initWithImage:[lin2 resizableImageWithCapInsets:UIEdgeInsetsZero]];
     [self.tableView setBackgroundView:iv];
+    
+    // play with menu
+    // failed experiment!
+    UIMenuItem* item = [[UIMenuItem alloc] initWithTitle:@"Capital" action:@selector(capital:)];
+    [[UIMenuController sharedMenuController] setMenuItems: [NSArray arrayWithObject:item]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -117,6 +125,9 @@
     [[sectionData objectAtIndex: [indexPath section]] 
      objectAtIndex: [indexPath row]];
     cell.textLabel.text = s;
+    // comment out these next two lines and see how it affects what happens during menu display
+    cell.textLabel.highlightedTextColor = cell.textLabel.textColor; // prevent white during menu
+    cell.selectedBackgroundView = [[UIView alloc] init]; // trick to prevent blue during menu display
     return cell;
 }
 
@@ -152,5 +163,29 @@
         [self.tableView endUpdates];
     }
 }
+
+// ======= appended example of table cell menus; user must hold down on cell to summon
+// note: must implement all three delegate methods, or messages are never sent
+
+- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    // as far as I can tell, only copy:, cut:, and paste: are eligible for display
+    // this is a real pity: if true, you can't use your own menu items (I tried and failed)
+    return (action == @selector(copy:));
+}
+
+- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender 
+{
+    NSString* s = [[self.sectionData objectAtIndex: indexPath.section] objectAtIndex: indexPath.row]; 
+    if (action == @selector(copy:))
+        NSLog(@"in real life, we'd now copy %@ somehow", s);
+}
+
+
 
 @end
