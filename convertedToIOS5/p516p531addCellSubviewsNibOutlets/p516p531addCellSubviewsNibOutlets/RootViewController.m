@@ -1,10 +1,23 @@
 
 
 #import "RootViewController.h"
+#import "MyCell.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation RootViewController
 @synthesize tvc;
+
+static NSString *CellIdentifier = @"Cell";
+
+// this is obviously a much better place to call registerNib - once and done
+
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        [self.tableView registerNib:[UINib nibWithNibName:@"MyCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
+    }
+    return self;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -16,38 +29,16 @@
     return 20;
 }
 
-#define which 1 // try 2 to use iOS 5 new automatic cell nib loading
+// same as second version of p 515 example
+// except now we have outlets so we can refer to the cell's subviews using names instead of numbers
+// of course this works just the same if the table and cell come from a storyboard
+// all very nice and neat
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
     
-    switch (which) {
-        case 1: break;
-            // note! this is not where we'd usually do this!
-            // I'm just doing it here to make it easy to switch with "which"
-            // see p516 example where I do it properly in initWithNibName
-        case 2: [tableView registerNib:[UINib nibWithNibName:@"MyCell2" bundle:nil] forCellReuseIdentifier:CellIdentifier];
-            // note that the MyCell2 nib is identical to MyCell...
-            // except that it has no outlet! an outlet will crash us,
-            // because the nib's owner will be an NSObject without a matching ivar
-    }
-
-    UITableViewCell *cell = 
-    [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
+    MyCell* cell = (MyCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        NSLog(@"here"); // under case 2, this code never runs!
-        
-        // load nib with efficient caching (this was new in iOS 4)
-        UINib* theCellNib = [UINib nibWithNibName:@"MyCell" bundle:nil];
-        [theCellNib instantiateWithOwner:self options:nil];
-        cell = self.tvc;
-        self.tvc = nil;
-        
-    }
-    
     // moved to here, but with a test so we don't do it for already configured cells
     if (!cell.backgroundView) {
         UIView* v = [[UIView alloc] initWithFrame:cell.frame];
@@ -64,12 +55,12 @@
         cell.backgroundView = v;
     }
     
-    UILabel* lab = (UILabel*)[cell viewWithTag: 2];
+    UILabel* lab = cell.label; // name instead of number
     // ... set up lab here ...
     // notice how much less of this there now is, because it's mostly done in the nib
     lab.text = @"The author of this book, who would rather be out dirt biking";
     
-    UIImageView* iv = (UIImageView*)[cell viewWithTag: 1];
+    UIImageView* iv = cell.imageView; // name instead of number
     // ... set up iv here ...
     UIImage* im = [UIImage imageNamed:@"moi.png"];
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(36,36), YES, 0.0);
