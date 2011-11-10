@@ -1,0 +1,277 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4832264146B56C30061637E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4832263146B56C30061637E /* UIKit.framework */; };
+		A4832266146B56C30061637E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4832265146B56C30061637E /* Foundation.framework */; };
+		A4832268146B56C30061637E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4832267146B56C30061637E /* CoreGraphics.framework */; };
+		A483226E146B56C30061637E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A483226C146B56C30061637E /* InfoPlist.strings */; };
+		A4832270146B56C30061637E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A483226F146B56C30061637E /* main.m */; };
+		A4832274146B56C30061637E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4832273146B56C30061637E /* AppDelegate.m */; };
+		A483227D146B56E10061637E /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A483227B146B56E10061637E /* RootViewController.m */; };
+		A483227E146B56E10061637E /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A483227C146B56E10061637E /* RootView.xib */; };
+		A4832280146B56EA0061637E /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = A483227F146B56EA0061637E /* states.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A483225F146B56C30061637E /* p542p556deleteTableRows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p542p556deleteTableRows.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4832263146B56C30061637E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4832265146B56C30061637E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4832267146B56C30061637E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A483226B146B56C30061637E /* p542p556deleteTableRows-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p542p556deleteTableRows-Info.plist"; sourceTree = "<group>"; };
+		A483226D146B56C30061637E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A483226F146B56C30061637E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4832271146B56C30061637E /* p542p556deleteTableRows-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p542p556deleteTableRows-Prefix.pch"; sourceTree = "<group>"; };
+		A4832272146B56C30061637E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A4832273146B56C30061637E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A483227A146B56E10061637E /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A483227B146B56E10061637E /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A483227C146B56E10061637E /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
+		A483227F146B56EA0061637E /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A483225C146B56C30061637E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4832264146B56C30061637E /* UIKit.framework in Frameworks */,
+				A4832266146B56C30061637E /* Foundation.framework in Frameworks */,
+				A4832268146B56C30061637E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4832254146B56C30061637E = {
+			isa = PBXGroup;
+			children = (
+				A4832269146B56C30061637E /* p542p556deleteTableRows */,
+				A4832262146B56C30061637E /* Frameworks */,
+				A4832260146B56C30061637E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4832260146B56C30061637E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A483225F146B56C30061637E /* p542p556deleteTableRows.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4832262146B56C30061637E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4832263146B56C30061637E /* UIKit.framework */,
+				A4832265146B56C30061637E /* Foundation.framework */,
+				A4832267146B56C30061637E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4832269146B56C30061637E /* p542p556deleteTableRows */ = {
+			isa = PBXGroup;
+			children = (
+				A4832272146B56C30061637E /* AppDelegate.h */,
+				A4832273146B56C30061637E /* AppDelegate.m */,
+				A483227A146B56E10061637E /* RootViewController.h */,
+				A483227B146B56E10061637E /* RootViewController.m */,
+				A483227C146B56E10061637E /* RootView.xib */,
+				A483226A146B56C30061637E /* Supporting Files */,
+			);
+			path = p542p556deleteTableRows;
+			sourceTree = "<group>";
+		};
+		A483226A146B56C30061637E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A483227F146B56EA0061637E /* states.txt */,
+				A483226B146B56C30061637E /* p542p556deleteTableRows-Info.plist */,
+				A483226C146B56C30061637E /* InfoPlist.strings */,
+				A483226F146B56C30061637E /* main.m */,
+				A4832271146B56C30061637E /* p542p556deleteTableRows-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A483225E146B56C30061637E /* p542p556deleteTableRows */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4832277146B56C30061637E /* Build configuration list for PBXNativeTarget "p542p556deleteTableRows" */;
+			buildPhases = (
+				A483225B146B56C30061637E /* Sources */,
+				A483225C146B56C30061637E /* Frameworks */,
+				A483225D146B56C30061637E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p542p556deleteTableRows;
+			productName = p542p556deleteTableRows;
+			productReference = A483225F146B56C30061637E /* p542p556deleteTableRows.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4832256146B56C30061637E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A4832259146B56C30061637E /* Build configuration list for PBXProject "p542p556deleteTableRows" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4832254146B56C30061637E;
+			productRefGroup = A4832260146B56C30061637E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A483225E146B56C30061637E /* p542p556deleteTableRows */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A483225D146B56C30061637E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A483226E146B56C30061637E /* InfoPlist.strings in Resources */,
+				A483227E146B56E10061637E /* RootView.xib in Resources */,
+				A4832280146B56EA0061637E /* states.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A483225B146B56C30061637E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4832270146B56C30061637E /* main.m in Sources */,
+				A4832274146B56C30061637E /* AppDelegate.m in Sources */,
+				A483227D146B56E10061637E /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A483226C146B56C30061637E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A483226D146B56C30061637E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4832275146B56C30061637E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4832276146B56C30061637E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4832278146B56C30061637E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p542p556deleteTableRows/p542p556deleteTableRows-Prefix.pch";
+				INFOPLIST_FILE = "p542p556deleteTableRows/p542p556deleteTableRows-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4832279146B56C30061637E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p542p556deleteTableRows/p542p556deleteTableRows-Prefix.pch";
+				INFOPLIST_FILE = "p542p556deleteTableRows/p542p556deleteTableRows-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4832259146B56C30061637E /* Build configuration list for PBXProject "p542p556deleteTableRows" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4832275146B56C30061637E /* Debug */,
+				A4832276146B56C30061637E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4832277146B56C30061637E /* Build configuration list for PBXNativeTarget "p542p556deleteTableRows" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4832278146B56C30061637E /* Debug */,
+				A4832279146B56C30061637E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4832256146B56C30061637E /* Project object */;
+}
