@@ -1,5 +1,6 @@
 
 #import "MyPopoverBackgroundView.h"
+#import <QuartzCore/QuartzCore.h>
 
 // inherits:
 // @property (nonatomic, readwrite) UIPopoverArrowDirection arrowDirection
@@ -22,8 +23,6 @@
 #define ARBASE 20
 #define ARHEIGHT 20
 
-// dude, where's my shadow???? documentation claims I'll be given one, but it isn't happening
-// looks like a bug to me...
 
 - (void)drawRect:(CGRect)rect
 {
@@ -58,6 +57,14 @@
     CGRect real;
     CGRectDivide(rect, &trash, &real, ARHEIGHT, CGRectMinYEdge);
     [lin drawInRect:real];
+    
+    // dude, where's my shadow???? documentation claims I'll be given one, but it isn't happening
+    // looks like a bug to me...
+    // anyway I've added these lines to provide one
+    self.layer.shadowPath = CGPathCreateWithRect(real, NULL);
+    self.layer.shadowColor = [UIColor grayColor].CGColor;
+    self.layer.shadowRadius = 20;
+    self.layer.shadowOpacity = 0.4;
     
 }
 
