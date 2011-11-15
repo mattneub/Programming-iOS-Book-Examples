@@ -13,6 +13,10 @@
     
     // Override point for customization after application launch.
     
+    // This example has been removed from the book, as muddying the discussion
+    // (Only the addTarget: line remains in the book)
+    // However, it's nice to include it here just to prove it works
+    
     // we create the button in code and configure its action in code
     UIButton* b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [b setTitle:@"Howdy!" forState:UIControlStateNormal];
