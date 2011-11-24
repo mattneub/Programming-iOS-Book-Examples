@@ -8,7 +8,14 @@
  If dealloc is never called, you're leaking.
  */
 
-#define which 1 // and try 2 for one correct answer, and 3 for another
+#define which 1 // and try 2 for one answer, and 3 for another
+
+// however, if all you have is individual observers kept in individual ivars,
+// the easiest solution is to declare your ivar __weak
+// this works because the notification center retains the observer until it is removed
+
+// yet another solution, if you *do* have a collection of observers, is to wrap each one
+// using NSValue valueWithNonretainedObject: (and extract with nonretainedObjectValue later)
 
 @implementation FlipsideViewController {
     id observer;
@@ -25,7 +32,7 @@
                                                                          object:nil queue:nil 
                                                                      usingBlock:^(NSNotification *note) 
             {
-                [self description]; // the mere mention of self, explicit or implicit, causes the leak
+                [self description]; // the mere mention of self, explicit or implicit, potentially causes the leak
             }];
 
             break;
@@ -47,6 +54,7 @@
 
 - (IBAction)done:(id)sender
 {
+    NSLog(@"%@", observer);
     [[NSNotificationCenter defaultCenter] removeObserver:observer];
     switch (which) {
         case 1: case 3: break;
