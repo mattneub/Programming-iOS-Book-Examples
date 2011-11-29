@@ -11,7 +11,7 @@
 #import "VC2.h"
 
 @implementation VC2 {
-    NSTimer* timer; // can be weak, but there's no point - that's not the problem
+    NSTimer* timer;
 }
 
 - (void)viewDidLoad
@@ -33,7 +33,6 @@
     [super viewWillDisappear:animated];
     if ([self isMovingFromParentViewController]) {
         [self->timer invalidate];
-        self->timer = nil;
     }
 }
 

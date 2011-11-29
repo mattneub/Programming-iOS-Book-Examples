@@ -14,7 +14,8 @@
     // access via key path
     NSLog(@"theData.name:\n%@", [myObject valueForKeyPath:@"theData.name"]);
     // access via facade
-    NSLog(@"pepBoys:\n%@", [myObject valueForKey: @"pepBoys"]);
+    id proxy = [myObject valueForKey: @"pepBoys"];
+    NSLog(@"pepBoys (%@):\n%@", [proxy class], proxy);
     // access via facade & key path
     NSLog(@"pepBoys.name:\n%@", [myObject valueForKeyPath:@"pepBoys.name"]);
     // mutable access via facade
