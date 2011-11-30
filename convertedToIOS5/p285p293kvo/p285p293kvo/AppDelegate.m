@@ -14,7 +14,7 @@
     MyClass1* objectA = [[MyClass1 alloc] init];
     MyClass2* objectB = [[MyClass2 alloc] init];    
     // register for KVO
-    [objectA addObserver:objectB forKeyPath:@"value" options:0 context:nil];
+    [objectA addObserver:objectB forKeyPath:@"value" options:0 context:NULL];
     // change the value in a KVO compliant way
     objectA.value = @"Hello, world!";
     

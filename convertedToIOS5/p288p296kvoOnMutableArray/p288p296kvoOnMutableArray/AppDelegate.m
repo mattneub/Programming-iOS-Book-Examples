@@ -16,7 +16,7 @@
     
     [objectA addObserver:objectB 
               forKeyPath:@"theData" options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld 
-                 context:nil];
+                 context:NULL];
     [objectA.theData removeObjectAtIndex:0]; // notification is triggered
     
     
