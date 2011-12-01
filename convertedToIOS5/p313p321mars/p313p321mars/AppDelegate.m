@@ -106,7 +106,7 @@ CGImageRef flip (CGImageRef im) {
             
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
             UIImage* marsTiled = [mars resizableImageWithCapInsets:UIEdgeInsetsZero];
-            UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(20,25,mars.size.width*2,mars.size.height*4)];
+            UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(20,5,mars.size.width*2,mars.size.height*4)];
             iv.image = marsTiled;
             [self.window.rootViewController.view addSubview:iv];
             break;
@@ -118,7 +118,7 @@ CGImageRef flip (CGImageRef im) {
             CGFloat capw = mars.size.width / 2.0 - 1;
             CGFloat caph = mars.size.height / 2.0 - 1;
             UIImage* marsTiled = [mars resizableImageWithCapInsets:UIEdgeInsetsMake(caph, capw, caph, capw)];
-            UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(20,25,mars.size.width*2,mars.size.height*4)];
+            UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(20,5,mars.size.width*2,mars.size.height*1.5)];
             iv.image = marsTiled;
             [self.window.rootViewController.view addSubview:iv];
             break;
