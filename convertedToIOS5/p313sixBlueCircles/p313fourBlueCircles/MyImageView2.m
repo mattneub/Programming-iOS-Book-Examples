@@ -5,7 +5,7 @@
 
 - (void) awakeFromNib {
     [super awakeFromNib];
-    UIGraphicsBeginImageContext(CGSizeMake(100,100));
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(100,100), NO, 0);
     CGContextRef con = UIGraphicsGetCurrentContext();
     CGContextAddEllipseInRect(con, CGRectMake(0,0,100,100));
     CGContextSetFillColorWithColor(con, [UIColor blueColor].CGColor);

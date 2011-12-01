@@ -6,7 +6,7 @@
 
 - (void) awakeFromNib {
     [super awakeFromNib];
-    UIGraphicsBeginImageContext(CGSizeMake(100,100));
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(100,100), NO, 0);
     UIBezierPath* p = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0,0,100,100)];
     [[UIColor blueColor] setFill];
     [p fill];

@@ -3,8 +3,6 @@
 
 @implementation MyView1
 
-// current context, UIKit
-
 - (void) drawRect: (CGRect) rect {
     UIBezierPath* p = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0,0,100,100)];
     [[UIColor blueColor] setFill];
