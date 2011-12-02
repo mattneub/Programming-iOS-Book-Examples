@@ -14,7 +14,7 @@
 		A4C6C2B514888B09006901D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C6C2B414888B09006901D5 /* main.m */; };
 		A4C6C2B914888B09006901D5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C6C2B814888B09006901D5 /* AppDelegate.m */; };
 		A4C6C2C014888B18006901D5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C6C2BF14888B18006901D5 /* CoreImage.framework */; };
-		A4C6C2C214888B42006901D5 /* moi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A4C6C2C114888B42006901D5 /* moi.jpg */; };
+		A4EF539D148948F200D4996F /* moi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A4EF539C148948F200D4996F /* moi.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		A4C6C2B714888B09006901D5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A4C6C2B814888B09006901D5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A4C6C2BF14888B18006901D5 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		A4C6C2C114888B42006901D5 /* moi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = moi.jpg; path = ../../moi.jpg; sourceTree = "<group>"; };
+		A4EF539C148948F200D4996F /* moi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moi.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +88,7 @@
 		A4C6C2AF14888B09006901D5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A4C6C2C114888B42006901D5 /* moi.jpg */,
+				A4EF539C148948F200D4996F /* moi.jpg */,
 				A4C6C2B014888B09006901D5 /* p334filters-Info.plist */,
 				A4C6C2B114888B09006901D5 /* InfoPlist.strings */,
 				A4C6C2B414888B09006901D5 /* main.m */,
@@ -148,7 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4C6C2B314888B09006901D5 /* InfoPlist.strings in Resources */,
-				A4C6C2C214888B42006901D5 /* moi.jpg in Resources */,
+				A4EF539D148948F200D4996F /* moi.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +264,7 @@
 				A4C6C2BE14888B09006901D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
