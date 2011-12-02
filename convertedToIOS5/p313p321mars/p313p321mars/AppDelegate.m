@@ -8,7 +8,7 @@
 
 CGImageRef flip (CGImageRef im) {
     CGSize sz = CGSizeMake(CGImageGetWidth(im), CGImageGetHeight(im));
-    UIGraphicsBeginImageContext(sz);
+    UIGraphicsBeginImageContextWithOptions(sz, NO, 0);
     CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, sz.width, sz.height), im);
     CGImageRef result = [UIGraphicsGetImageFromCurrentImageContext() CGImage];
     UIGraphicsEndImageContext();
@@ -17,7 +17,7 @@ CGImageRef flip (CGImageRef im) {
 
 
 
-#define which 1 // substitute "2" thru "9" for other examples
+#define which 10 // substitute "2" thru "9" for other examples
                 // added case "10" to illustrate use of a CIFilter!
                 // added case "11" to illustrate image tiling!
                 // added case "12" to illustrate image stretching
@@ -47,7 +47,7 @@ CGImageRef flip (CGImageRef im) {
             // figure 15-1
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
             CGSize sz = [mars size];
-            UIGraphicsBeginImageContextWithOptions(CGSizeMake(sz.width*2, sz.height), NO, 0.0);
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(sz.width*2, sz.height), NO, 0);
             [mars drawAtPoint:CGPointMake(0,0)];
             [mars drawAtPoint:CGPointMake(sz.width,0)];
             UIImage* im = UIGraphicsGetImageFromCurrentImageContext();
@@ -60,6 +60,9 @@ CGImageRef flip (CGImageRef im) {
         }
         case 10: 
         {
+            //NSLog(@"%@", [CIFilter filterNamesInCategories:nil]);
+            //NSLog(@"%@", [[CIFilter filterWithName: @"CIVignette"] attributes]);
+            
             // new example: iOS 5 has CIFilters!
             
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
@@ -128,7 +131,7 @@ CGImageRef flip (CGImageRef im) {
             // figure 15-2
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
             CGSize sz = [mars size];
-            UIGraphicsBeginImageContextWithOptions(CGSizeMake(sz.width*2, sz.height*2), NO, 0.0);
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(sz.width*2, sz.height*2), NO, 0);
             [mars drawInRect:CGRectMake(0,0,sz.width*2,sz.height*2)];
             [mars drawInRect:CGRectMake(sz.width/2.0, sz.height/2.0, sz.width, sz.height) 
                    blendMode:kCGBlendModeMultiply alpha:1.0];
@@ -145,7 +148,7 @@ CGImageRef flip (CGImageRef im) {
             // figure 15-3
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
             CGSize sz = [mars size];
-            UIGraphicsBeginImageContextWithOptions(CGSizeMake(sz.width/2.0, sz.height), NO, 0.0);
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(sz.width/2.0, sz.height), NO, 0);
             [mars drawAtPoint:CGPointMake(-sz.width/2.0, 0)];
             UIImage* im = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
@@ -167,7 +170,7 @@ CGImageRef flip (CGImageRef im) {
             CGImageRef marsRight = CGImageCreateWithImageInRect([mars CGImage], 
                                                                 CGRectMake(sz.width/2.0,0,sz.width/2.0,sz.height));
             // draw each CGImage into an image context
-            UIGraphicsBeginImageContext(CGSizeMake(sz.width*1.5, sz.height));
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(sz.width*1.5, sz.height), NO, 0);
             CGContextRef con = UIGraphicsGetCurrentContext();
             CGContextDrawImage(con, CGRectMake(0,0,sz.width/2.0,sz.height), marsLeft);
             CGContextDrawImage(con, CGRectMake(sz.width,0,sz.width/2.0,sz.height), marsRight);
@@ -191,7 +194,7 @@ CGImageRef flip (CGImageRef im) {
             CGImageRef marsRight = CGImageCreateWithImageInRect([mars CGImage], 
                                                                 CGRectMake(sz.width/2.0,0,sz.width/2.0,sz.height));
             // draw each CGImage into an image context
-            UIGraphicsBeginImageContext(CGSizeMake(sz.width*1.5, sz.height));
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(sz.width*1.5, sz.height), NO, 0);
             CGContextRef con = UIGraphicsGetCurrentContext();
             CGContextDrawImage(con, CGRectMake(0,0,sz.width/2.0,sz.height), flip(marsLeft));
             CGContextDrawImage(con, CGRectMake(sz.width,0,sz.width/2.0,sz.height), flip(marsRight));
@@ -215,7 +218,7 @@ CGImageRef flip (CGImageRef im) {
             CGImageRef marsRight = CGImageCreateWithImageInRect([mars CGImage], 
                                                                 CGRectMake(sz.width/2.0,0,sz.width/2.0,sz.height));
             // draw each CGImage into an image context
-            UIGraphicsBeginImageContext(CGSizeMake(sz.width*1.5, sz.height));
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(sz.width*1.5, sz.height), NO, 0);
             // CGContextRef con = UIGraphicsGetCurrentContext();
             [[UIImage imageWithCGImage:marsLeft] drawAtPoint:CGPointMake(0,0)];
             [[UIImage imageWithCGImage:marsRight] drawAtPoint:CGPointMake(sz.width,0)];
@@ -242,7 +245,7 @@ CGImageRef flip (CGImageRef im) {
                                                                 CGRectMake(szCG.width/2.0,0,szCG.width/2.0,szCG.height));
             // Use double-resolution graphics context if possible
             UIGraphicsBeginImageContextWithOptions(
-                                                   CGSizeMake(sz.width*1.5, sz.height), NO, 0.0);
+                                                   CGSizeMake(sz.width*1.5, sz.height), NO, 0);
             // The rest is as before, calling flip() to compensate for flipping
             CGContextRef con = UIGraphicsGetCurrentContext();
             CGContextDrawImage(
@@ -272,7 +275,7 @@ CGImageRef flip (CGImageRef im) {
                                                                 CGRectMake(szCG.width/2.0,0,szCG.width/2.0,szCG.height));
             // Use double-resolution graphics context if possible
             UIGraphicsBeginImageContextWithOptions(
-                                                   CGSizeMake(sz.width*1.5, sz.height), NO, 0.0);
+                                                   CGSizeMake(sz.width*1.5, sz.height), NO, 0);
             [[UIImage imageWithCGImage:marsLeft 
                                  scale:[mars scale] 
                            orientation:UIImageOrientationUp] 

@@ -7,14 +7,16 @@
 
 @implementation MyView
 
+/*
 CGImageRef flip (CGImageRef im) {
     CGSize sz = CGSizeMake(CGImageGetWidth(im), CGImageGetHeight(im));
-    UIGraphicsBeginImageContext(sz);
+    UIGraphicsBeginImageContextWithOptions(sz, NO, 0);
     CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, sz.width, sz.height), im);
     CGImageRef result = [UIGraphicsGetImageFromCurrentImageContext() CGImage];
     UIGraphicsEndImageContext();
     return result;
 }
+ */
 
 void drawStripes (void *info, CGContextRef con) {
     // assume 4 x 4 cell
@@ -33,6 +35,7 @@ void drawStripes (void *info, CGContextRef con) {
         case 1:
         {
             // same as split mars earlier, only now we're drawing in drawRect instead of making a UIImage
+            
             CGRect b = self.bounds;
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
             CGSize sz = [mars size];
@@ -42,14 +45,16 @@ void drawStripes (void *info, CGContextRef con) {
                                                                CGRectMake(0,0,szCG.width/2.0,szCG.height));
             CGImageRef marsRight = CGImageCreateWithImageInRect(marsCG, 
                                                                 CGRectMake(szCG.width/2.0,0,szCG.width/2.0,szCG.height));
-            CGContextRef con = UIGraphicsGetCurrentContext();
-            CGContextDrawImage(con, 
-                               CGRectMake(0,0,sz.width/2.0,sz.height), 
-                               flip(marsLeft));
-            CGContextDrawImage(con, 
-                               CGRectMake(b.size.width-sz.width/2.0, 0, sz.width/2.0, sz.height), 
-                               flip(marsRight));
+            [[UIImage imageWithCGImage:marsLeft 
+                                 scale:[mars scale] 
+                           orientation:UIImageOrientationUp] 
+             drawAtPoint:CGPointMake(0,0)];
+            [[UIImage imageWithCGImage:marsRight 
+                                 scale:[mars scale] 
+                           orientation:UIImageOrientationUp] 
+             drawAtPoint:CGPointMake(b.size.width-sz.width/2.0,0)];
             CGImageRelease(marsLeft); CGImageRelease(marsRight);
+            
             break;
         }
         case 2:
@@ -316,7 +321,7 @@ void drawStripes (void *info, CGContextRef con) {
         }
         case 8:
         {
-            // same as case 1, using a CTM instead of the flip utility
+            // same as case 1, using a CTM
             CGRect b = self.bounds;
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
             CGSize sz = [mars size];

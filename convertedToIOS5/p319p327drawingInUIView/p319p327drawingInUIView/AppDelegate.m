@@ -17,6 +17,7 @@
     mv.center = self.window.center;
     [self.window.rootViewController.view addSubview: mv];
     mv.opaque = NO;
+    //mv.backgroundColor = [UIColor clearColor];
 
     
     // Override point for customization after application launch.
