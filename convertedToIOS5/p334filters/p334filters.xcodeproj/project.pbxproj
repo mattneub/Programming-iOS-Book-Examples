@@ -50,7 +50,6 @@
 		A4C6C29914888B09006901D5 = {
 			isa = PBXGroup;
 			children = (
-				A4C6C2BF14888B18006901D5 /* CoreImage.framework */,
 				A4C6C2AE14888B09006901D5 /* p334filters */,
 				A4C6C2A714888B09006901D5 /* Frameworks */,
 				A4C6C2A514888B09006901D5 /* Products */,
@@ -68,6 +67,7 @@
 		A4C6C2A714888B09006901D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A4C6C2BF14888B18006901D5 /* CoreImage.framework */,
 				A4C6C2A814888B09006901D5 /* UIKit.framework */,
 				A4C6C2AA14888B09006901D5 /* Foundation.framework */,
 				A4C6C2AC14888B09006901D5 /* CoreGraphics.framework */,

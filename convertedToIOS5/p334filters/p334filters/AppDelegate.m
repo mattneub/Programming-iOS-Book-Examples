@@ -42,8 +42,8 @@
             UIGraphicsBeginImageContextWithOptions(moi.size, YES, 0);
             CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
             CFArrayRef arr = (__bridge CFArrayRef)[NSArray arrayWithObjects:
-                                                   (__bridge id)[UIColor whiteColor].CGColor,
-                                                   (__bridge id)[UIColor blackColor].CGColor,
+                                                   (id)[UIColor whiteColor].CGColor,
+                                                   [UIColor blackColor].CGColor,
                                                    nil];
             CGFloat locs[] = {0, .9};
             CGGradientRef grad = CGGradientCreateWithColors(space, arr, locs);
