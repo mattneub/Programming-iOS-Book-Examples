@@ -96,12 +96,23 @@
 - (IBAction)contentsRect:(id)sender {
     [CATransaction setDisableActions:YES]; // explained in next chapter
     CGRect r = layer.contentsRect;
-    if (CGRectEqualToRect(r, CGRectMake(0,0,1,1)))
+    if (CGRectEqualToRect(r, CGRectMake(0,0,1,1))) {
         layer.contentsRect = CGRectMake(0,0,.5,.5);
+        // this is interesting if the content touches the edge to start with
+        // layer.contentsRect = CGRectMake(-.2, -.2, 1.2, 1.2);
+    }
     else
         layer.contentsRect = CGRectMake(0,0,1,1);
     [self makeCopy];
+}
 
+- (IBAction)contentsGravity:(id)sender {
+    [CATransaction setDisableActions:YES]; // explained in next chapter
+    if ([layer.contentsGravity isEqual: kCAGravityCenter])
+        layer.contentsGravity = kCAGravityResize;
+    else
+        layer.contentsGravity = kCAGravityCenter;
+    [self makeCopy];
 }
 
 @end
