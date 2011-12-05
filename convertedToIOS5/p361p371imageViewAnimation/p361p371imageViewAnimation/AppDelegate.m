@@ -23,7 +23,7 @@
     switch (which) {
         case 1: {
             UIImage* mars = [UIImage imageNamed: @"mars.png"];
-            UIGraphicsBeginImageContext(mars.size);
+            UIGraphicsBeginImageContextWithOptions(mars.size, NO, 0);
             UIImage* empty = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
             NSArray* arr = [NSArray arrayWithObjects: mars, empty, mars, empty, mars, nil];
@@ -43,7 +43,7 @@
             // not just in an image view
             // but I'm using an image view to illustrate anyway
             UIImage* mars = [UIImage imageNamed: @"mars.png"];
-            UIGraphicsBeginImageContext(mars.size);
+            UIGraphicsBeginImageContextWithOptions(mars.size, NO, 0);
             UIImage* empty = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
             NSArray* arr = [NSArray arrayWithObjects: mars, empty, mars, empty, mars, empty, nil];
@@ -59,7 +59,7 @@
             NSMutableArray* arr = [NSMutableArray array];
             float w = 18;
             for (int i = 0; i < 6; i++) {
-                UIGraphicsBeginImageContext(CGSizeMake(w,w));
+                UIGraphicsBeginImageContextWithOptions(CGSizeMake(w,w), NO, 0);
                 CGContextRef con = UIGraphicsGetCurrentContext();
                 CGContextSetFillColorWithColor(con, [UIColor redColor].CGColor);
                 CGContextAddEllipseInRect(con, CGRectMake(0+i,0+i,w-i*2,w-i*2));
@@ -75,6 +75,7 @@
             b.center = CGPointMake(100,100);
             [b sizeToFit];
             [self.window.rootViewController.view addSubview:b];
+            break;
         }
     }
     

@@ -5,7 +5,7 @@
 
 - (CALayer*) maskOfSize:(CGSize)sz roundingCorners:(CGFloat)rad {
     CGRect r = (CGRect){CGPointZero, sz};
-    UIGraphicsBeginImageContext(r.size);
+    UIGraphicsBeginImageContextWithOptions(r.size, NO, 0);
     CGContextRef con = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(con, [UIColor colorWithWhite:0 alpha:0].CGColor);
     CGContextFillRect(con, r);
