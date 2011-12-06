@@ -10,46 +10,66 @@
 
 @synthesize window = _window;
 
-#define which 1 // try also "2" and "3" and "4"
+#define which 1 // try also "2" thru "5"
 
 - (void) animate {
     
     switch (which) {
-        case 1:
-        {
+        case 1: {
             CALayer* layer = self->lay;
+            
+            // put a "position" entry into the layer's actions dictionary
+            CABasicAnimation* ba = [CABasicAnimation animation];
+            ba.duration = 5;
+            layer.actions = [NSDictionary dictionaryWithObject: ba forKey: @"position"];
+            layer.delegate = nil; // use actions dictionary, not delegate
+
+            // use implicit property animation
             CGPoint newP = CGPointMake(200,300);
-            [CATransaction setValue: [NSValue valueWithCGPoint: newP] forKey: @"newP"];
             [CATransaction setAnimationDuration:1.5];
-            layer.position = newP; // the delegate will waggle the layer into place
+            layer.position = newP; 
+            // the animation "ba" will be used, with its 5-second duration
             
             break;
         }
         case 2:
         {
             CALayer* layer = self->lay;
+            CGPoint newP = CGPointMake(200,300);
+            [CATransaction setValue: [NSValue valueWithCGPoint: newP] forKey: @"newP"];
+            [CATransaction setAnimationDuration:1.5];
+            layer.position = newP; 
+            // the delegate will waggle the layer into place
+            
+            break;
+        }
+        case 3:
+        {
+            CALayer* layer = self->lay;
             layer.contents =  (id)[[UIImage imageNamed:@"Saturn.gif"] CGImage];
             // the layer subclass (MyLayer) will turn this into a push transition
             break;
         }
-        case 3:
+        case 4:
         {
             // p 394
             CALayer* layer = [CALayer layer];
             layer.frame = CGRectMake(200,50,40,40);
             layer.contents = (id)[[UIImage imageNamed:@"Saturn.gif"] CGImage];
             layer.delegate = self;
-            [self.window.rootViewController.view.layer addSublayer:layer]; // the delegate will "pop" the layer as it appears
+            [self.window.rootViewController.view.layer addSublayer:layer]; 
+            // the delegate will "pop" the layer as it appears
             break;
         }
-        case 4:
+        case 5:
         {
             CALayer* layer = self->lay;
             [CATransaction setCompletionBlock: ^{
                 [layer removeFromSuperlayer];
             }];
             [CATransaction setValue:@"" forKey:@"byebye"];
-            layer.opacity = 0; // the delegate will "shrink" the layer as it disappears
+            layer.opacity = 0; 
+            // the delegate will "shrink" the layer as it disappears
             break;
         }
     }
@@ -129,6 +149,7 @@
     layer.frame = CGRectMake(50,50,40,40);
     //layer.backgroundColor = [[UIColor redColor] CGColor];
     layer.contents = (id)[[UIImage imageNamed:@"Mars.png"] CGImage];
+    
     [self.window.rootViewController.view.layer addSublayer:layer];
     self->lay = layer;
     
