@@ -4,7 +4,7 @@
 
 
 @implementation CompassLayer
-@synthesize theArrow;
+@synthesize arrow = _arrow;
 
 - (void) setup {
     NSLog(@"setup");
@@ -72,7 +72,7 @@
     // uncomment next line (only) for Figure 16-10, layer mask
     // [self performSelector:@selector(mask:) withObject:arrow];
     
-    self.theArrow = arrow;
+    self.arrow = arrow;
 
 }
 

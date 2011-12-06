@@ -5,6 +5,6 @@
 
 @interface CompassLayer : CALayer {
 }
-@property (nonatomic, strong) CALayer* theArrow;
+@property (nonatomic, strong) CALayer* arrow;
 
 @end

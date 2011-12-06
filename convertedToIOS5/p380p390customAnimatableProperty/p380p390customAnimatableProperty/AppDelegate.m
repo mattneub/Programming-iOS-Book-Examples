@@ -27,8 +27,14 @@
     self.v.opaque = NO;
     self.v.backgroundColor = [UIColor clearColor];
     [self.window.rootViewController.view addSubview: self.v];
+    UIButton* b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [b setTitle:@"Animate" forState:UIControlStateNormal];
+    [b sizeToFit];
+    b.center = CGPointMake(self.window.center.x,300);
+    b.frame = CGRectIntegral(b.frame);
+    [b addTarget:self action:@selector(animate) forControlEvents:UIControlEventTouchUpInside];
+    [self.window.rootViewController.view addSubview:b];
     [self.window makeKeyAndVisible];
-    [self performSelector:@selector(animate) withObject:nil afterDelay:1.0];
     return YES;
 }
 

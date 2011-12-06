@@ -13,12 +13,12 @@
 }
 
 
-- (void) drawInContext:(CGContextRef)ctx {
+- (void) drawInContext:(CGContextRef)con {
     CGRect r = CGRectInset(self.bounds, 20, 20);
-    CGContextSetFillColorWithColor(ctx, [[UIColor colorWithWhite:.5 alpha:.5] CGColor]);
-    CGContextFillRect(ctx, r);
-    CGContextSetLineWidth(ctx, self.thickness);
-    CGContextStrokeRect(ctx, r);
+    CGContextSetFillColorWithColor(con, [UIColor redColor].CGColor);
+    CGContextFillRect(con, r);
+    CGContextSetLineWidth(con, self.thickness);
+    CGContextStrokeRect(con, r);
 }
 
 
