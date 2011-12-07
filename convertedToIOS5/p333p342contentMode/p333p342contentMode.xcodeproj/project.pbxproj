@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A44D3D46148FDAE700B07A83 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44D3D45148FDAE700B07A83 /* QuartzCore.framework */; };
 		A495023F1459C771008EF035 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A495023E1459C771008EF035 /* UIKit.framework */; };
 		A49502411459C771008EF035 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49502401459C771008EF035 /* Foundation.framework */; };
 		A49502431459C771008EF035 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49502421459C771008EF035 /* CoreGraphics.framework */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A44D3D45148FDAE700B07A83 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A495023A1459C771008EF035 /* p333p342contentMode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p333p342contentMode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A495023E1459C771008EF035 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A49502401459C771008EF035 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -36,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A44D3D46148FDAE700B07A83 /* QuartzCore.framework in Frameworks */,
 				A495023F1459C771008EF035 /* UIKit.framework in Frameworks */,
 				A49502411459C771008EF035 /* Foundation.framework in Frameworks */,
 				A49502431459C771008EF035 /* CoreGraphics.framework in Frameworks */,
@@ -48,6 +51,7 @@
 		A495022F1459C771008EF035 = {
 			isa = PBXGroup;
 			children = (
+				A44D3D45148FDAE700B07A83 /* QuartzCore.framework */,
 				A49502441459C771008EF035 /* p333p342contentMode */,
 				A495023D1459C771008EF035 /* Frameworks */,
 				A495023B1459C771008EF035 /* Products */,
@@ -262,6 +266,7 @@
 				A49502541459C771008EF035 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
