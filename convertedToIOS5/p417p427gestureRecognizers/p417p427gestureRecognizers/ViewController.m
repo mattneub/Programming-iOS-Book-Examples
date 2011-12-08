@@ -4,6 +4,10 @@
 #import "HorizPanGestureRecognizer.h"
 #import "VertPanGestureRecognizer.h"
 
+@interface ViewController ()
+@property (nonatomic, strong) IBOutlet UIView* v;
+@end
+
 @implementation ViewController
 @synthesize v; // our tappable draggable subview
 

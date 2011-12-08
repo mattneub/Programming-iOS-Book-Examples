@@ -2,8 +2,5 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HorizPanGestureRecognizer : UIPanGestureRecognizer {
-    CGPoint origLoc;
-}
-
+@interface HorizPanGestureRecognizer : UIPanGestureRecognizer 
 @end

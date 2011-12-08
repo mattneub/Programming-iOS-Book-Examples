@@ -2,8 +2,5 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VertPanGestureRecognizer : UIPanGestureRecognizer {
-    CGPoint origLoc;
-}
-
+@interface VertPanGestureRecognizer : UIPanGestureRecognizer
 @end

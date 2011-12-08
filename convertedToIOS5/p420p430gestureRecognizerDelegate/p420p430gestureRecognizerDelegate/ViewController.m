@@ -43,7 +43,8 @@
         anim.autoreverses = YES;
         [lp.view.layer addAnimation:anim forKey:nil];
     }
-    if (lp.state == UIGestureRecognizerStateEnded) {
+    if (lp.state == UIGestureRecognizerStateEnded || 
+        lp.state == UIGestureRecognizerStateCancelled) {
         [lp.view.layer removeAllAnimations];
     }
 }

@@ -3,7 +3,10 @@
 #import <UIKit/UIGestureRecognizerSubclass.h>
 
 
-@implementation VertPanGestureRecognizer
+@implementation VertPanGestureRecognizer {
+    CGPoint origLoc;
+}
+
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     self->origLoc = [[touches anyObject] locationInView:self.view.superview];
