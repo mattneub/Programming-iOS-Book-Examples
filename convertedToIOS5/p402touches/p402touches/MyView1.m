@@ -3,15 +3,11 @@
 #import "MyView1.h"
 
 @implementation MyView1 {
-    CGPoint p;
-    CGPoint origC;
     BOOL decided;
     BOOL horiz;
 }
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    self->p = [[touches anyObject] locationInView: self.superview];
-    self->origC = self.center;
     self->decided = NO;
 }
 
@@ -26,16 +22,15 @@
         self->horiz = (deltaX >= deltaY);
     }
     CGPoint loc = [[touches anyObject] locationInView: self.superview];
-    CGFloat deltaX = loc.x - self->p.x;
-    CGFloat deltaY = loc.y - self->p.y;
+    CGPoint oldP = [[touches anyObject] previousLocationInView: self.superview];
+    CGFloat deltaX = loc.x - oldP.x;
+    CGFloat deltaY = loc.y - oldP.y;
     CGPoint c = self.center;
     if (self->horiz)
-        c.x = self->origC.x + deltaX;
+        c.x += deltaX;
     else
-        c.y = self->origC.y + deltaY;
+        c.y += deltaY;
     self.center = c;
-    self->p = [[touches anyObject] locationInView: self.superview];
-    self->origC = self.center;
 }
 
 

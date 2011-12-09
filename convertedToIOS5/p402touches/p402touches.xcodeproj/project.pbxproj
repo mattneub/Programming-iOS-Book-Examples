@@ -18,6 +18,7 @@
 		A41DA6FD149137B300867532 /* MyView1.m in Sources */ = {isa = PBXBuildFile; fileRef = A41DA6FC149137B300867532 /* MyView1.m */; };
 		A41DA700149138D200867532 /* MyView2.m in Sources */ = {isa = PBXBuildFile; fileRef = A41DA6FF149138D200867532 /* MyView2.m */; };
 		A41DA7031491397600867532 /* MyView3.m in Sources */ = {isa = PBXBuildFile; fileRef = A41DA7021491397600867532 /* MyView3.m */; };
+		A4E6CD4D1492894400B888FA /* MyView0.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E6CD4C1492894400B888FA /* MyView0.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		A41DA6FF149138D200867532 /* MyView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView2.m; sourceTree = "<group>"; };
 		A41DA7011491397600867532 /* MyView3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView3.h; sourceTree = "<group>"; };
 		A41DA7021491397600867532 /* MyView3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView3.m; sourceTree = "<group>"; };
+		A4E6CD4B1492894400B888FA /* MyView0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView0.h; sourceTree = "<group>"; };
+		A4E6CD4C1492894400B888FA /* MyView0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView0.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,8 @@
 				A41DA6EE1491377500867532 /* AppDelegate.m */,
 				A41DA6F01491377500867532 /* ViewController.h */,
 				A41DA6F11491377500867532 /* ViewController.m */,
+				A4E6CD4B1492894400B888FA /* MyView0.h */,
+				A4E6CD4C1492894400B888FA /* MyView0.m */,
 				A41DA6F31491377600867532 /* ViewController.xib */,
 				A41DA6FB149137B300867532 /* MyView1.h */,
 				A41DA6FC149137B300867532 /* MyView1.m */,
@@ -181,6 +186,7 @@
 				A41DA6FD149137B300867532 /* MyView1.m in Sources */,
 				A41DA700149138D200867532 /* MyView2.m in Sources */,
 				A41DA7031491397600867532 /* MyView3.m in Sources */,
+				A4E6CD4D1492894400B888FA /* MyView0.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +298,7 @@
 				A41DA6FA1491377600867532 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
