@@ -5,7 +5,7 @@
 
 @interface CompassLayer : CALayer {
 }
-@property (nonatomic, assign) CALayer* theArrow;
+@property (nonatomic, assign) CALayer* arrow;
 - (void) rotateArrow;
 
 @end

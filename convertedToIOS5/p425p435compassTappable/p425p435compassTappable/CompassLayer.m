@@ -4,7 +4,7 @@
 
 
 @implementation CompassLayer
-@synthesize theArrow;
+@synthesize arrow=_arrow;
 
 - (void) setup {
     NSLog(@"setup");
@@ -65,7 +65,7 @@
     [self addSublayer:arrow];
     [arrow setNeedsDisplay];
     
-    self.theArrow = arrow;
+    self.arrow = arrow;
 
 }
 
@@ -126,10 +126,10 @@ void drawStripes (void *info, CGContextRef con) {
 
 - (CALayer*) hitTest:(CGPoint)p {
     CALayer* lay = [super hitTest: p];
-    if (lay == self.theArrow) {
+    if (lay == self.arrow) {
         // could override hit-test behavior here
         // for example, here we artificially restrict touchability to roughly the shaft/point area
-        CGPoint pt = [self.theArrow convertPoint:p fromLayer:self.superlayer];
+        CGPoint pt = [self.arrow convertPoint:p fromLayer:self.superlayer];
         CGMutablePathRef path = CGPathCreateMutable();
         CGPathAddRect(path, NULL, CGRectMake(10,20,20,80));
         CGPathMoveToPoint(path, NULL, 0, 25);
@@ -158,8 +158,8 @@ void drawStripes (void *info, CGContextRef con) {
     // capture current value, set final value
     CGFloat rot = M_PI/4.0;
     [CATransaction setDisableActions:YES];
-    CGFloat current = [[self.theArrow valueForKeyPath:@"transform.rotation.z"] floatValue];
-    [self.theArrow setValue: [NSNumber numberWithFloat: current + rot] 
+    CGFloat current = [[self.arrow valueForKeyPath:@"transform.rotation.z"] floatValue];
+    [self.arrow setValue: [NSNumber numberWithFloat: current + rot] 
               forKeyPath:@"transform.rotation.z"];
     // first animation (rotate and clunk) ===============
     CABasicAnimation* anim1 = [CABasicAnimation animationWithKeyPath:@"transform"];
@@ -189,7 +189,7 @@ void drawStripes (void *info, CGContextRef con) {
     CAAnimationGroup* group = [CAAnimationGroup animation];
     group.animations = [NSArray arrayWithObjects: anim1, anim2, nil];
     group.duration = anim1.duration + anim2.duration;
-    [self.theArrow addAnimation:group forKey:nil];
+    [self.arrow addAnimation:group forKey:nil];
 }
 
 

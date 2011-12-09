@@ -24,7 +24,7 @@
     // self is the CompassView
     CGPoint p = [t locationOfTouch: 0 inView: self.superview];
     CALayer* hit = [self.layer hitTest:p];
-    if (hit == ((CompassLayer*)self.layer).theArrow) {
+    if (hit == ((CompassLayer*)self.layer).arrow) {
         [(CompassLayer*)self.layer rotateArrow];
     }
 }

@@ -17,7 +17,6 @@
     NSLog(@"tapped the %@ view", self.backgroundColor);
 }
 
-// this example is not in the book, but it probably should be
 // normally, you can't touch a subview's region outside its superview
 // but you can *see* a subview outside its superview if the superview doesn't clip to bounds,
 // so why shouldn't you be able to touch it?
