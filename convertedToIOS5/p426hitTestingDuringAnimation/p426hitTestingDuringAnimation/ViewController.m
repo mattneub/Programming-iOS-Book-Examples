@@ -16,12 +16,14 @@
 }
 
 - (IBAction)tapme:(id)sender {
-    NSLog(@"you tapped Tap me");
+    NSLog(@"tap! (the button's action method)");
 }
 
-#define which 1 // try 2, 3
+#define which 1 // try 2, 3; no diff, just proving it's the same for all ways of animating
 
 // run the app, tap Start, tap the button in motion, watch the log
+// shows how you can tap on an animated button using hit-test munging...
+// but the button "swallows the touch" so you have to use some other means to get it to respond
 
 - (IBAction)start:(id)sender {
     NSLog(@"you tapped Start");
