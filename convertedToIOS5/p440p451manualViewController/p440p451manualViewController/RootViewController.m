@@ -35,6 +35,7 @@
         case 2:
         {
             // construct view partially in code, fetch some of it from a nib
+            // in the 2nd edition of the book, skipped this example
             UIView* v = [[UIView alloc] initWithFrame: [[UIScreen mainScreen] applicationFrame]];
             v.backgroundColor = [UIColor yellowColor];
             [[NSBundle mainBundle] loadNibNamed: @"MyNib" owner:self options:nil];
@@ -63,6 +64,7 @@
         {
             // p 445: no need for us to alloc-init the view and assign it to self.view;
             // if we do nothing in loadView, it's done for us
+            // in the 2nd edition of the book, skipped this example
             self.view.backgroundColor = [UIColor redColor];
             [[NSBundle mainBundle] loadNibNamed: @"MyNib" owner:self options:nil];
             self.theLabel.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));

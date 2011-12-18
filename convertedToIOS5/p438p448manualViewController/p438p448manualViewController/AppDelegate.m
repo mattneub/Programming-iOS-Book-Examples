@@ -8,6 +8,8 @@
 @synthesize window = _window;
 @synthesize rvc;
 
+// this is how it was done before iOS 4; this example won't be in the 2nd edition of the book
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

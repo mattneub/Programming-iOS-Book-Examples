@@ -8,7 +8,7 @@
     IBOutlet UIViewController* vc;
 }
 
-#define which 2 // try also "2"
+#define which 1 // try also "2"
 
 @synthesize window = _window;
 
