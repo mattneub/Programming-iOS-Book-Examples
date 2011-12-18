@@ -8,14 +8,14 @@
 
 #pragma mark - View lifecycle
 
-#define which 3 // try also "2" and "3"
+#define which 1 // try also "2" and "3"
 
 - (void) loadView {
     switch (which) {
         case 1:
         {
             // construct view entirely in code
-            UIView* v = [[UIView alloc] initWithFrame: [[UIScreen mainScreen] applicationFrame]];
+            UIView* v = [[UIView alloc] init];
             v.backgroundColor = [UIColor greenColor];
             self.view = v;
             UILabel* label = [[UILabel alloc] init];
