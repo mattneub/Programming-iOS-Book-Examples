@@ -8,7 +8,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)io
 {
     // Return YES for supported orientations
-    return UIInterfaceOrientationIsPortrait(io);
+    return io == UIInterfaceOrientationPortrait;
 }
 
 // cute hack to completely replace one interface with another on rotation, using a modal view
@@ -26,13 +26,13 @@
 - (void) screenRotated: (id) notif {
     NSUInteger rot = [[UIDevice currentDevice] orientation];
     if (UIDeviceOrientationIsLandscape(rot) && !self.presentedViewController) {
-        NSLog(@"one");
+//        NSLog(@"one");
         [[UIApplication sharedApplication] setStatusBarOrientation:rot animated:YES];
         LandscapeViewController *c = [[LandscapeViewController alloc] init];
         c.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:c animated:YES completion:nil];
-    } else if (UIDeviceOrientationIsPortrait(rot) && self.presentedViewController) {
-        NSLog(@"two %i", rot);
+    } else if (rot==UIDeviceOrientationPortrait && self.presentedViewController) {
+//        NSLog(@"two %i", rot);
         [[UIApplication sharedApplication] setStatusBarOrientation:rot animated:YES];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
