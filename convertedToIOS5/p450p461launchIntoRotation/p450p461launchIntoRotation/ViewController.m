@@ -53,7 +53,7 @@
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     switch (which) {
         case 1:
-        case2: {
+        case 2: {
             break;
         }
         case 3: {
