@@ -14,11 +14,12 @@
 		A4C85B1E1465971200650CA8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C85B1D1465971200650CA8 /* main.m */; };
 		A4C85B221465971200650CA8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C85B211465971200650CA8 /* AppDelegate.m */; };
 		A4C85B251465971200650CA8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C85B241465971200650CA8 /* ViewController.m */; };
-		A4C85B281465971200650CA8 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4C85B261465971200650CA8 /* ViewController.xib */; };
+		A4C85B281465971200650CA8 /* ViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4C85B261465971200650CA8 /* ViewController~ipad.xib */; };
 		A4C85B311465986F00650CA8 /* PanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C85B2F1465986F00650CA8 /* PanelViewController.m */; };
 		A4C85B321465986F00650CA8 /* PanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4C85B301465986F00650CA8 /* PanelViewController.xib */; };
 		A4C85B3614659BA600650CA8 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C85B3414659BA600650CA8 /* ModalViewController.m */; };
 		A4C85B3714659BA600650CA8 /* ModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4C85B3514659BA600650CA8 /* ModalViewController.xib */; };
+		A4D396D014A02D800066D9E9 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D396D214A02D800066D9E9 /* ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,13 +35,14 @@
 		A4C85B211465971200650CA8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A4C85B231465971200650CA8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A4C85B241465971200650CA8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A4C85B271465971200650CA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		A4C85B271465971200650CA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/ViewController~ipad.xib"; sourceTree = "<group>"; };
 		A4C85B2E1465986F00650CA8 /* PanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelViewController.h; sourceTree = "<group>"; };
 		A4C85B2F1465986F00650CA8 /* PanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelViewController.m; sourceTree = "<group>"; };
 		A4C85B301465986F00650CA8 /* PanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PanelViewController.xib; sourceTree = "<group>"; };
 		A4C85B3314659BA600650CA8 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
 		A4C85B3414659BA600650CA8 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
 		A4C85B3514659BA600650CA8 /* ModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModalViewController.xib; sourceTree = "<group>"; };
+		A4D396D114A02D800066D9E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +93,8 @@
 				A4C85B211465971200650CA8 /* AppDelegate.m */,
 				A4C85B231465971200650CA8 /* ViewController.h */,
 				A4C85B241465971200650CA8 /* ViewController.m */,
-				A4C85B261465971200650CA8 /* ViewController.xib */,
+				A4D396D214A02D800066D9E9 /* ViewController.xib */,
+				A4C85B261465971200650CA8 /* ViewController~ipad.xib */,
 				A4C85B2E1465986F00650CA8 /* PanelViewController.h */,
 				A4C85B2F1465986F00650CA8 /* PanelViewController.m */,
 				A4C85B301465986F00650CA8 /* PanelViewController.xib */,
@@ -165,9 +168,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4C85B1C1465971200650CA8 /* InfoPlist.strings in Resources */,
-				A4C85B281465971200650CA8 /* ViewController.xib in Resources */,
+				A4C85B281465971200650CA8 /* ViewController~ipad.xib in Resources */,
 				A4C85B321465986F00650CA8 /* PanelViewController.xib in Resources */,
 				A4C85B3714659BA600650CA8 /* ModalViewController.xib in Resources */,
+				A4D396D014A02D800066D9E9 /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,10 +201,18 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		A4C85B261465971200650CA8 /* ViewController.xib */ = {
+		A4C85B261465971200650CA8 /* ViewController~ipad.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A4C85B271465971200650CA8 /* en */,
+			);
+			name = "ViewController~ipad.xib";
+			sourceTree = "<group>";
+		};
+		A4D396D214A02D800066D9E9 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4D396D114A02D800066D9E9 /* en */,
 			);
 			name = ViewController.xib;
 			sourceTree = "<group>";
@@ -262,6 +274,7 @@
 				GCC_PREFIX_HEADER = "p476containerController2/p476containerController2-Prefix.pch";
 				INFOPLIST_FILE = "p476containerController2/p476containerController2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -273,6 +286,7 @@
 				GCC_PREFIX_HEADER = "p476containerController2/p476containerController2-Prefix.pch";
 				INFOPLIST_FILE = "p476containerController2/p476containerController2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -296,6 +310,7 @@
 				A4C85B2D1465971200650CA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
