@@ -41,11 +41,10 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUILabel" id="736006154">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">301</int>
-						<string key="NSFrame">{{134, 155}, {52, 21}}</string>
+						<int key="NSvFlags">293</int>
+						<string key="NSFrame">{{134, 94}, {52, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -77,11 +76,8 @@
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="736006154"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MQA</bytes>
-					<object class="NSColorSpace" key="NSCustomColorSpace">
-						<int key="NSID">2</int>
-					</object>
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MSAwLjk2MjgyNTQ3MjEgMC40NDg3MTMyNDU0AA</bytes>
 				</object>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -170,7 +166,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">4</int>
+			<int key="maxID">6</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

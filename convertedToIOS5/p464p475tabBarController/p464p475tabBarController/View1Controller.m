@@ -1,7 +1,7 @@
 
 
 #import "View1Controller.h"
-
+#import "ExtraViewController.h"
 
 @implementation View1Controller
 
@@ -19,6 +19,15 @@
         self.tabBarItem.image = [UIImage imageNamed:@"key.png"];
     }
     return self;
+}
+
+- (IBAction)doPresent:(id)sender {
+    UIViewController* vc = [ExtraViewController new];
+    self.definesPresentationContext = YES;
+    self.providesPresentationContextTransitionStyle = YES;
+    self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    vc.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end
