@@ -8,6 +8,8 @@
 - (IBAction)doModal1:(id)sender {
     // You couldn't do *this* little trick before iOS 5! Wow!
     self.definesPresentationContext = YES;
+    self.providesPresentationContextTransitionStyle = YES;
+    self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     ModalViewController* m = [[ModalViewController alloc] init];
     [self presentViewController:m animated:YES completion:nil];
     
