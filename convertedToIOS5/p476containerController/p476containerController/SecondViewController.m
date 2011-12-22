@@ -10,7 +10,6 @@
 
 - (void) didMoveToParentViewController:(UIViewController *)parent {
     NSLog(@"%@ did", self);
-    self.definesPresentationContext = YES;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
