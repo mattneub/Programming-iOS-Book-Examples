@@ -18,7 +18,7 @@
     TiledView* content = [[TiledView alloc] initWithFrame:f];
     content.tag = 999;
     CATiledLayer* lay = (CATiledLayer*)content.layer;
-    [lay setTileSize: f.size];
+    lay.tileSize = f.size;
     lay.levelsOfDetail = 2;
     lay.levelsOfDetailBias = 1;
     [self.view addSubview:content];
