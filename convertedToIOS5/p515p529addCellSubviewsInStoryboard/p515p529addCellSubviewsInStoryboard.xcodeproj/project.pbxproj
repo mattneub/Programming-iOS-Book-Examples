@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A42C917414A941C60038A9A1 /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A42C917314A941C60038A9A1 /* MyCell.m */; };
+		A42C917714A942A60038A9A1 /* linen.png in Resources */ = {isa = PBXBuildFile; fileRef = A42C917614A942A60038A9A1 /* linen.png */; };
 		A49A6D0D146A1395007F5A7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49A6D0C146A1395007F5A7C /* UIKit.framework */; };
 		A49A6D0F146A1395007F5A7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49A6D0E146A1395007F5A7C /* Foundation.framework */; };
 		A49A6D11146A1395007F5A7C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49A6D10146A1395007F5A7C /* CoreGraphics.framework */; };
@@ -20,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A42C917214A941C60038A9A1 /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
+		A42C917314A941C60038A9A1 /* MyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
+		A42C917614A942A60038A9A1 /* linen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linen.png; sourceTree = "<group>"; };
 		A49A6D08146A1395007F5A7C /* p515p529addCellSubviewsInStoryboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p515p529addCellSubviewsInStoryboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A49A6D0C146A1395007F5A7C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A49A6D0E146A1395007F5A7C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -88,6 +93,8 @@
 				A49A6D1E146A1395007F5A7C /* MainStoryboard.storyboard */,
 				A49A6D21146A1395007F5A7C /* ViewController.h */,
 				A49A6D22146A1395007F5A7C /* ViewController.m */,
+				A42C917214A941C60038A9A1 /* MyCell.h */,
+				A42C917314A941C60038A9A1 /* MyCell.m */,
 				A49A6D13146A1395007F5A7C /* Supporting Files */,
 			);
 			path = p515p529addCellSubviewsInStoryboard;
@@ -96,6 +103,7 @@
 		A49A6D13146A1395007F5A7C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A42C917614A942A60038A9A1 /* linen.png */,
 				A49A6D2F146A16FA007F5A7C /* moi.png */,
 				A49A6D14146A1395007F5A7C /* p515p529addCellSubviewsInStoryboard-Info.plist */,
 				A49A6D15146A1395007F5A7C /* InfoPlist.strings */,
@@ -158,6 +166,7 @@
 				A49A6D17146A1395007F5A7C /* InfoPlist.strings in Resources */,
 				A49A6D20146A1395007F5A7C /* MainStoryboard.storyboard in Resources */,
 				A49A6D30146A16FA007F5A7C /* moi.png in Resources */,
+				A42C917714A942A60038A9A1 /* linen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +180,7 @@
 				A49A6D19146A1395007F5A7C /* main.m in Sources */,
 				A49A6D1D146A1395007F5A7C /* AppDelegate.m in Sources */,
 				A49A6D23146A1395007F5A7C /* ViewController.m in Sources */,
+				A42C917414A941C60038A9A1 /* MyCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +292,7 @@
 				A49A6D28146A1395007F5A7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
