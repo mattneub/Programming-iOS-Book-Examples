@@ -17,6 +17,7 @@
 		A431EC91146AF4AE00724BFB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A431EC8E146AF4AE00724BFB /* RootViewController.m */; };
 		A431EC92146AF4AE00724BFB /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A431EC8F146AF4AE00724BFB /* RootView.xib */; };
 		A431EC97146B039E00724BFB /* lin.png in Resources */ = {isa = PBXBuildFile; fileRef = A431EC96146B039E00724BFB /* lin.png */; };
+		A4EBDB6814AB8161006F17C3 /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4EBDB6714AB8161006F17C3 /* MyCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		A431EC8E146AF4AE00724BFB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		A431EC8F146AF4AE00724BFB /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
 		A431EC96146B039E00724BFB /* lin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lin.png; sourceTree = "<group>"; };
+		A4EBDB6614AB8161006F17C3 /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
+		A4EBDB6714AB8161006F17C3 /* MyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				A431EC8D146AF4AE00724BFB /* RootViewController.h */,
 				A431EC8E146AF4AE00724BFB /* RootViewController.m */,
 				A431EC8F146AF4AE00724BFB /* RootView.xib */,
+				A4EBDB6614AB8161006F17C3 /* MyCell.h */,
+				A4EBDB6714AB8161006F17C3 /* MyCell.m */,
 				A431EC79146AF46600724BFB /* Supporting Files */,
 			);
 			path = p547dynamicTableContent;
@@ -171,6 +176,7 @@
 				A431EC7F146AF46600724BFB /* main.m in Sources */,
 				A431EC90146AF4AE00724BFB /* AppDelegate.m in Sources */,
 				A431EC91146AF4AE00724BFB /* RootViewController.m in Sources */,
+				A4EBDB6814AB8161006F17C3 /* MyCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +280,7 @@
 				A431EC88146AF46600724BFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

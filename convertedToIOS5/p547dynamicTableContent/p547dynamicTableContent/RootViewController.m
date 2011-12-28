@@ -17,6 +17,7 @@
  */
 
 #import "RootViewController.h"
+#import "MyCell.h"
 
 @interface RootViewController () 
 @property (nonatomic, strong) UISearchDisplayController* sbc;
@@ -24,10 +25,11 @@
 @property (nonatomic, strong) NSMutableArray* sectionNames;
 @property (nonatomic, strong) NSMutableArray* sectionData;
 @property (nonatomic, strong) NSMutableSet* hiddenSections; // keep track of which are hidden
+@property (nonatomic) BOOL aboutToShowMenu;
 @end
 
 @implementation RootViewController
-@synthesize sbc, states, sectionNames, sectionData, hiddenSections;
+@synthesize sbc, states, sectionNames, sectionData, hiddenSections, aboutToShowMenu;
 
 -(void) createData { // not in nib any more so can't use awakeFromNib for this
     self.hiddenSections = [NSMutableSet set]; // initialize
@@ -68,11 +70,6 @@
     UIGraphicsEndImageContext();
     UIImageView* iv = [[UIImageView alloc] initWithImage:[lin2 resizableImageWithCapInsets:UIEdgeInsetsZero]];
     [self.tableView setBackgroundView:iv];
-    
-    // play with menu
-    // failed experiment!
-    UIMenuItem* item = [[UIMenuItem alloc] initWithTitle:@"Capital" action:@selector(capital:)];
-    [[UIMenuController sharedMenuController] setMenuItems: [NSArray arrayWithObject:item]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -117,7 +114,7 @@
     UITableViewCell *cell = 
     [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] 
+        cell = [[MyCell alloc] 
                 initWithStyle:UITableViewCellStyleDefault 
                 reuseIdentifier:CellIdentifier];
     }
@@ -169,6 +166,14 @@
 
 - (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    // play with menu
+//    // failed experiment!
+//    UIMenuItem* item = [[UIMenuItem alloc] initWithTitle:@"Capital" action:@selector(capital:)];
+//    [[UIMenuController sharedMenuController] setMenuItems: [NSArray arrayWithObject:item]];
+    
+    // another experiment - trying to track menu-display state
+    self.aboutToShowMenu = YES;
+    
     return YES;
 }
 
@@ -176,6 +181,12 @@
 {
     // as far as I can tell, only copy:, cut:, and paste: are eligible for display
     // this is a real pity: if true, you can't use your own menu items (I tried and failed)
+//    NSLog(@"%@", NSStringFromSelector(action));
+//    return (action == @selector(capital:));
+    
+    // another experiment
+    self.aboutToShowMenu = NO;
+    
     return (action == @selector(copy:));
 }
 
