@@ -127,7 +127,7 @@
     cell.textLabel.text = s;
     // comment out these next two lines and see how it affects what happens during menu display
     cell.textLabel.highlightedTextColor = cell.textLabel.textColor; // prevent white during menu
-    cell.selectedBackgroundView = [[UIView alloc] init]; // trick to prevent blue during menu display
+    // cell.selectedBackgroundView = [[UIView alloc] init]; // trick to prevent blue during menu display
     return cell;
 }
 
@@ -182,8 +182,9 @@
 - (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender 
 {
     NSString* s = [[self.sectionData objectAtIndex: indexPath.section] objectAtIndex: indexPath.row]; 
-    if (action == @selector(copy:))
+    if (action == @selector(copy:)) {
         NSLog(@"in real life, we'd now copy %@ somehow", s);
+    }
 }
 
 
