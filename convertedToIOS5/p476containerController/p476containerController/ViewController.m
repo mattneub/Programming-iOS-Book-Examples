@@ -42,6 +42,7 @@
 }
 
 - (IBAction)doFlip:(id)sender {
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     UIViewController* fromvc = [self->swappers objectAtIndex:cur];
     cur = (cur == 0) ? 1 : 0;
     UIViewController* tovc = [self->swappers objectAtIndex:cur];
@@ -61,6 +62,7 @@
                                 // note: when we call add, we must call "did" afterwards
                                 [tovc didMoveToParentViewController:self];
                                 [fromvc removeFromParentViewController]; // "did" called for us
+                                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
                             }];
 }
 
