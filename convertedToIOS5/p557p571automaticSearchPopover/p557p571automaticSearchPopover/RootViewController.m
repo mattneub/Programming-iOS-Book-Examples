@@ -59,4 +59,11 @@
     [self filterData];
 }
 
+- (void)searchDisplayController:(UISearchDisplayController *)controller didShowSearchResultsTableView:(UITableView *)tableView
+{
+    // NSLog(@"%@", controller);
+    // you could get a reference to the controller's _popoverController at this point...
+    // but such an app presumably wouldn't get past the App Store review process
+}
+
 @end
