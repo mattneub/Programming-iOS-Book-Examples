@@ -5,6 +5,5 @@
 @interface RootViewController : UIViewController 
 <UIPopoverControllerDelegate, UINavigationControllerDelegate> 
 
-@property (nonatomic, strong) UIPopoverController* currentPop;
 
 @end

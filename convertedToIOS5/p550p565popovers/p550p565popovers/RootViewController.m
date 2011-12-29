@@ -4,26 +4,27 @@
 #import "Popover1View1.h"
 #import "MyPopoverBackgroundView.h"
 
+@interface RootViewController ()
+@property (nonatomic, strong) UIPopoverController* currentPop;
+@end
+
 @implementation RootViewController {
     NSInteger oldChoice;
 }
 
 @synthesize currentPop;
 
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                 selector:@selector(backgrounding:) 
-                                                     name:UIApplicationDidEnterBackgroundNotification
-                                                   object:nil];
-    }
-    return self;
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(backgrounding:) 
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
 }
 
-
-- (void)dealloc // notifications can still require use of dealloc under ARC, but no call to super
-{
+- (void) viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -49,6 +50,7 @@
     // [iOS 5] bug still present in iOS 5
     nav.delegate = self;
     self.currentPop = pop;
+    pop.popoverLayoutMargins = UIEdgeInsetsMake(0,100,100,100);
     [pop presentPopoverFromBarButtonItem:sender 
                 permittedArrowDirections:UIPopoverArrowDirectionAny 
                                 animated:YES];
@@ -111,8 +113,17 @@
     UIViewController* vc = [[UIViewController alloc] init];
     vc.view.frame = CGRectMake(0,0,300,300);
     vc.view.backgroundColor = [UIColor greenColor];
+    vc.contentSizeForViewInPopover = CGSizeMake(300,300);
+    UILabel* label = [[UILabel alloc] init];
+    label.text = @"I am a very silly popover!";
+    [label sizeToFit];
+    label.center = CGPointMake(150,150);
+    label.frame = CGRectIntegral(label.frame);
+    [vc.view addSubview: label];
+    UITapGestureRecognizer* t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+    [vc.view addGestureRecognizer:t];
     UIPopoverController* pop = [[UIPopoverController alloc] initWithContentViewController:vc];
-    pop.popoverContentSize = vc.view.frame.size;
+    // pop.popoverContentSize = vc.view.frame.size;
     // new iOS 5 feature: we can force the popover further from the edge of the screen
     // silly example: just a little extra space at this popover's right
     pop.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 40);
@@ -126,6 +137,37 @@
     pop.delegate = self;
 }
 
+// test modality of presented view controller inside popover
+
+- (void) tapped: (UIGestureRecognizer*) g {
+    UIViewController* vc = [[UIViewController alloc] init];
+    vc.view.frame = CGRectMake(0,0,300,300);
+    vc.view.backgroundColor = [UIColor whiteColor];
+    vc.contentSizeForViewInPopover = vc.view.frame.size;
+    vc.modalPresentationStyle = UIModalPresentationCurrentContext;
+    vc.modalInPopover = NO; // no result; it gets set again later to YES
+    UIButton* b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [b setTitle:@"Done" forState:UIControlStateNormal];
+    [b sizeToFit];
+    b.center = CGPointMake(150,150);
+    b.frame = CGRectIntegral(b.frame);
+    b.autoresizingMask = UIViewAutoresizingNone;
+    [b addTarget:self action:@selector(done:) forControlEvents:UIControlEventTouchUpInside]; 
+    [vc.view addSubview:b];
+    // uncomment next line if you'd like to crash
+    // vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    UIViewController* presenter = (UIViewController*)[g.view nextResponder];
+    [presenter presentViewController:vc animated:YES completion:nil];
+    // uncomment next line and we'll be non-modal, but you shouldn't
+    // vc.modalInPopover = NO;
+}
+
+- (void) done: (UIButton*) sender {
+    UIResponder* r = sender;
+    while (![r isKindOfClass: [UIViewController class]])
+        r = [r nextResponder];
+    [(UIViewController*)r dismissViewControllerAnimated:YES completion:nil];
+}
 
 // I'd rather not have popovers showing thru rotation
 // this dismissal counts as a cancel
