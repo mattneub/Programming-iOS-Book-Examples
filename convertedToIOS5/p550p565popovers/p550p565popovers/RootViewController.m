@@ -50,7 +50,7 @@
     // [iOS 5] bug still present in iOS 5
     nav.delegate = self;
     self.currentPop = pop;
-    pop.popoverLayoutMargins = UIEdgeInsetsMake(0,100,100,100);
+    //pop.popoverLayoutMargins = UIEdgeInsetsMake(0,100,100,100);
     [pop presentPopoverFromBarButtonItem:sender 
                 permittedArrowDirections:UIPopoverArrowDirectionAny 
                                 animated:YES];
