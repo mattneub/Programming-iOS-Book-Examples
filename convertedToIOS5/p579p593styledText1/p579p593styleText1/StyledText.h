@@ -4,10 +4,8 @@
 
 @class CATextLayer;
 
-@interface StyledText : UIView {
-    
-}
+@interface StyledText : UIView
+
 @property (nonatomic, copy) NSAttributedString* text;
-@property (nonatomic, assign) CATextLayer* textLayer;
 
 @end

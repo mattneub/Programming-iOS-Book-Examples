@@ -4,6 +4,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CoreText/CoreText.h>
 
+@interface StyledText ()
+@property (nonatomic, assign) CATextLayer* textLayer;
+@end
+
 @implementation StyledText
 @synthesize text, textLayer;
 
