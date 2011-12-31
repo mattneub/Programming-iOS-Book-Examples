@@ -6,22 +6,18 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0" />
 <!-- scale images down to fit -->
-	<style type="text/css">
-      p.inflow_image {
-        text-align:center;
-      }
-      div.indented_image {
-        text-align:center;
-      }
-	  img {
-		max-width:%ipx; 
-		height:auto
-	  }
-	</style>
-<!-- preload alt image -->
-<script type="text/javascript" language="javascript">
-(new Image()).src='tb_iphone_listen_pressed_02.png'; 
-</script>
+<style type="text/css">
+p.inflow_image {
+text-align:center;
+}
+div.indented_image {
+text-align:center;
+}
+img {
+max-width:%ipx; 
+height:auto
+}
+</style>
 <title>no title</title>
 </head>
 <body style="font-size:%ipx; font-family:Georgia; margin:1px %ipx">

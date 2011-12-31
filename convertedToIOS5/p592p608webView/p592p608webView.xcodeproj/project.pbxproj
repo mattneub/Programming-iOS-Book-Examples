@@ -18,6 +18,7 @@
 		A418DFD414AEA7EB006B6550 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A418DFD114AEA7EB006B6550 /* WebViewController.m */; };
 		A418DFD714AEA7F5006B6550 /* htmlTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = A418DFD514AEA7F5006B6550 /* htmlTemplate.txt */; };
 		A418DFD814AEA7F5006B6550 /* htmlbody.txt in Resources */ = {isa = PBXBuildFile; fileRef = A418DFD614AEA7F5006B6550 /* htmlbody.txt */; };
+		A4AFB84F14AFBD5F00A3850A /* listen.png in Resources */ = {isa = PBXBuildFile; fileRef = A4AFB84E14AFBD5F00A3850A /* listen.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		A418DFD114AEA7EB006B6550 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		A418DFD514AEA7F5006B6550 /* htmlTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = htmlTemplate.txt; sourceTree = "<group>"; };
 		A418DFD614AEA7F5006B6550 /* htmlbody.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = htmlbody.txt; sourceTree = "<group>"; };
+		A4AFB84E14AFBD5F00A3850A /* listen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listen.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				A418DFD514AEA7F5006B6550 /* htmlTemplate.txt */,
 				A418DFD614AEA7F5006B6550 /* htmlbody.txt */,
+				A4AFB84E14AFBD5F00A3850A /* listen.png */,
 				A418DFBE14AEA7C4006B6550 /* p592p608webView-Info.plist */,
 				A418DFBF14AEA7C4006B6550 /* InfoPlist.strings */,
 				A418DFC214AEA7C4006B6550 /* main.m */,
@@ -163,6 +166,7 @@
 				A418DFD314AEA7EB006B6550 /* RootViewController.xib in Resources */,
 				A418DFD714AEA7F5006B6550 /* htmlTemplate.txt in Resources */,
 				A418DFD814AEA7F5006B6550 /* htmlbody.txt in Resources */,
+				A4AFB84F14AFBD5F00A3850A /* listen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +284,7 @@
 				A418DFCC14AEA7C4006B6550 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
