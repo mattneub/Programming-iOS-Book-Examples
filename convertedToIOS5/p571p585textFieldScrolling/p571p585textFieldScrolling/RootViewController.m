@@ -2,7 +2,7 @@
 
 #import "RootViewController.h"
 #import "MyTextField.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 @interface RootViewController ()
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
@@ -68,12 +68,11 @@
 
 - (void) keyboardHide: (NSNotification*) n {
     [self.scrollView setContentOffset:self->oldOffset animated:YES];
-    [self performSelector:@selector(restoreInsets) withObject:nil afterDelay:0.4];
-}
-
-- (void) restoreInsets {
-    self.scrollView.scrollIndicatorInsets = self->oldIndicatorInset;
-    self.scrollView.contentInset = self->oldContentInset;  
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        self.scrollView.scrollIndicatorInsets = self->oldIndicatorInset;
+        self.scrollView.contentInset = self->oldContentInset;  
+    });
 }
 
 // this next bit could perhaps use a little work to prevent the automatic scrolling
@@ -83,6 +82,16 @@
         UITextField* nextField = [(MyTextField*)self.fr nextField];
         [nextField becomeFirstResponder];
     }
+}
+
+// new example
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSString* lc = [string lowercaseString];
+    if ([string isEqualToString:lc])
+        return YES;
+    textField.text = [textField.text stringByReplacingCharactersInRange:range withString:lc];
+    return NO;
 }
 
 
