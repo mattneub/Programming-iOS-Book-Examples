@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4DE37D614B10F5C00F90342 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DE37D514B10F5C00F90342 /* UIKit.framework */; };
+		A4DE37D814B10F5C00F90342 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DE37D714B10F5C00F90342 /* Foundation.framework */; };
+		A4DE37DA14B10F5C00F90342 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4DE37D914B10F5C00F90342 /* CoreGraphics.framework */; };
+		A4DE37E014B10F5C00F90342 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4DE37DE14B10F5C00F90342 /* InfoPlist.strings */; };
+		A4DE37E214B10F5C00F90342 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DE37E114B10F5C00F90342 /* main.m */; };
+		A4DE37E614B10F5C00F90342 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DE37E514B10F5C00F90342 /* AppDelegate.m */; };
+		A4DE37F114B10F8A00F90342 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DE37ED14B10F8A00F90342 /* RootViewController.m */; };
+		A4DE37F214B10F8A00F90342 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4DE37EE14B10F8A00F90342 /* RootView.xib */; };
+		A4DE37F314B10F8A00F90342 /* MyKnob.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DE37F014B10F8A00F90342 /* MyKnob.m */; };
+		A4DE37F514B10F9100F90342 /* knob.png in Resources */ = {isa = PBXBuildFile; fileRef = A4DE37F414B10F9100F90342 /* knob.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4DE37D114B10F5C00F90342 /* p618p635knob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p618p635knob.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4DE37D514B10F5C00F90342 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4DE37D714B10F5C00F90342 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4DE37D914B10F5C00F90342 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4DE37DD14B10F5C00F90342 /* p618p635knob-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p618p635knob-Info.plist"; sourceTree = "<group>"; };
+		A4DE37DF14B10F5C00F90342 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4DE37E114B10F5C00F90342 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4DE37E314B10F5C00F90342 /* p618p635knob-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p618p635knob-Prefix.pch"; sourceTree = "<group>"; };
+		A4DE37E414B10F5C00F90342 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A4DE37E514B10F5C00F90342 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A4DE37EC14B10F8A00F90342 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A4DE37ED14B10F8A00F90342 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A4DE37EE14B10F8A00F90342 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
+		A4DE37EF14B10F8A00F90342 /* MyKnob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyKnob.h; sourceTree = "<group>"; };
+		A4DE37F014B10F8A00F90342 /* MyKnob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyKnob.m; sourceTree = "<group>"; };
+		A4DE37F414B10F9100F90342 /* knob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knob.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4DE37CE14B10F5C00F90342 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4DE37D614B10F5C00F90342 /* UIKit.framework in Frameworks */,
+				A4DE37D814B10F5C00F90342 /* Foundation.framework in Frameworks */,
+				A4DE37DA14B10F5C00F90342 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4DE37C614B10F5C00F90342 = {
+			isa = PBXGroup;
+			children = (
+				A4DE37DB14B10F5C00F90342 /* p618p635knob */,
+				A4DE37D414B10F5C00F90342 /* Frameworks */,
+				A4DE37D214B10F5C00F90342 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4DE37D214B10F5C00F90342 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4DE37D114B10F5C00F90342 /* p618p635knob.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4DE37D414B10F5C00F90342 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4DE37D514B10F5C00F90342 /* UIKit.framework */,
+				A4DE37D714B10F5C00F90342 /* Foundation.framework */,
+				A4DE37D914B10F5C00F90342 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4DE37DB14B10F5C00F90342 /* p618p635knob */ = {
+			isa = PBXGroup;
+			children = (
+				A4DE37E414B10F5C00F90342 /* AppDelegate.h */,
+				A4DE37E514B10F5C00F90342 /* AppDelegate.m */,
+				A4DE37EC14B10F8A00F90342 /* RootViewController.h */,
+				A4DE37ED14B10F8A00F90342 /* RootViewController.m */,
+				A4DE37EE14B10F8A00F90342 /* RootView.xib */,
+				A4DE37EF14B10F8A00F90342 /* MyKnob.h */,
+				A4DE37F014B10F8A00F90342 /* MyKnob.m */,
+				A4DE37DC14B10F5C00F90342 /* Supporting Files */,
+			);
+			path = p618p635knob;
+			sourceTree = "<group>";
+		};
+		A4DE37DC14B10F5C00F90342 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4DE37F414B10F9100F90342 /* knob.png */,
+				A4DE37DD14B10F5C00F90342 /* p618p635knob-Info.plist */,
+				A4DE37DE14B10F5C00F90342 /* InfoPlist.strings */,
+				A4DE37E114B10F5C00F90342 /* main.m */,
+				A4DE37E314B10F5C00F90342 /* p618p635knob-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4DE37D014B10F5C00F90342 /* p618p635knob */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4DE37E914B10F5C00F90342 /* Build configuration list for PBXNativeTarget "p618p635knob" */;
+			buildPhases = (
+				A4DE37CD14B10F5C00F90342 /* Sources */,
+				A4DE37CE14B10F5C00F90342 /* Frameworks */,
+				A4DE37CF14B10F5C00F90342 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p618p635knob;
+			productName = p618p635knob;
+			productReference = A4DE37D114B10F5C00F90342 /* p618p635knob.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4DE37C814B10F5C00F90342 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A4DE37CB14B10F5C00F90342 /* Build configuration list for PBXProject "p618p635knob" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4DE37C614B10F5C00F90342;
+			productRefGroup = A4DE37D214B10F5C00F90342 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4DE37D014B10F5C00F90342 /* p618p635knob */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4DE37CF14B10F5C00F90342 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4DE37E014B10F5C00F90342 /* InfoPlist.strings in Resources */,
+				A4DE37F214B10F8A00F90342 /* RootView.xib in Resources */,
+				A4DE37F514B10F9100F90342 /* knob.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4DE37CD14B10F5C00F90342 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4DE37E214B10F5C00F90342 /* main.m in Sources */,
+				A4DE37E614B10F5C00F90342 /* AppDelegate.m in Sources */,
+				A4DE37F114B10F8A00F90342 /* RootViewController.m in Sources */,
+				A4DE37F314B10F8A00F90342 /* MyKnob.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4DE37DE14B10F5C00F90342 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4DE37DF14B10F5C00F90342 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4DE37E714B10F5C00F90342 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4DE37E814B10F5C00F90342 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4DE37EA14B10F5C00F90342 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p618p635knob/p618p635knob-Prefix.pch";
+				INFOPLIST_FILE = "p618p635knob/p618p635knob-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4DE37EB14B10F5C00F90342 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p618p635knob/p618p635knob-Prefix.pch";
+				INFOPLIST_FILE = "p618p635knob/p618p635knob-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4DE37CB14B10F5C00F90342 /* Build configuration list for PBXProject "p618p635knob" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4DE37E714B10F5C00F90342 /* Debug */,
+				A4DE37E814B10F5C00F90342 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4DE37E914B10F5C00F90342 /* Build configuration list for PBXNativeTarget "p618p635knob" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4DE37EA14B10F5C00F90342 /* Debug */,
+				A4DE37EB14B10F5C00F90342 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4DE37C814B10F5C00F90342 /* Project object */;
+}
