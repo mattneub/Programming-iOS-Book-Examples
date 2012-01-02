@@ -10,21 +10,6 @@
 {
     [super viewDidLoad];
     self.title = @"Start";
-    return;
-    
-    // just playing
-    UIActivityIndicatorView* v = 
-    [[UIActivityIndicatorView alloc] 
-     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    v.center = 
-    CGPointMake(self.view.bounds.size.width/2.0, self.view.bounds.size.height/2.0);
-    v.frame = CGRectIntegral(v.frame);
-    v.color = [UIColor yellowColor];
-    v.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.4];
-    v.layer.cornerRadius = 10;
-    v.tag = 1001;
-    [self.view addSubview:v];
-    [v startAnimating];
 
 }
 
