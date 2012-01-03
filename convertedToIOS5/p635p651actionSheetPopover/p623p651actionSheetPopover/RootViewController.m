@@ -36,5 +36,4 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex {
     NSLog(@"pressed %i", buttonIndex);
 }
 
-
 @end
