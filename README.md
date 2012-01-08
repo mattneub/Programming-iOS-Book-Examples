@@ -2,11 +2,11 @@ This is the downloadable code for my book, "Programming iOS 4: Fundamentals of i
 
 For more information about the book:
 
-http://oreilly.com/catalog/9781449397296/
+<http://oreilly.com/catalog/9781449397296/>
 
 Please see also my Web site:
 
-http://www.tidbits.com/matt
+<http://www.tidbits.com/matt>
 
 The idea is that if you have the paper edition of the book, you shouldn't have to enter code examples by hand to try them out. And if you have an electronic edition of the book, copying and pasting the code and creating the surrounding Xcode project could be tricky.
 
@@ -24,7 +24,7 @@ NOTE ON PAGINATION: I realize that the page numbers in the folder names are not 
 
 NOTE ON SCREENSHOTS: The screenshots for the first printing are often too small to see comfortably. I tried but failed to prevent this (it is at last corrected in the second printing). To help with this issue, the full-resolution original screenshots are included here as well.
 
-NOTE ON iOS 5: I thought it might be instructional for readers, even without the book yet having been revised for iOS 5 and Xcode 4.2, at least to have new versions of the example code. So I've started converting them. The new versions are being put in the folder called convertedToIOS5. There are some interesting differences wrought by LLVM 3.0 and ARC (not to mention the new project templates). Also I'm trying to illustrate new iOS 5 features, in approximately the places where I'd be disussing them in a new edition. Selected chapters from the revision draft text, discussing iOS 5, will be available at http://www.apeth.com/iOSBook/ (mixed in with the selected chapters from the iOS 4 edition). Currently these include chapters 1, 3, 5, 6, 7, 9, 12, 15, 17, and 19. You might need to force a browser refresh to see the new versions of these chapters.
+NOTE ON iOS 5: I thought it might be instructional for readers, even without the book yet having been revised for iOS 5 and Xcode 4.2, at least to have new versions of the example code. So I've started converting them. The new versions are being put in the folder called convertedToIOS5. There are some interesting differences wrought by LLVM 3.0 and ARC (not to mention the new project templates). Also I'm trying to illustrate new iOS 5 features, in approximately the places where I'd be disussing them in a new edition. Selected chapters from the revision draft text, discussing iOS 5, will be available at <http://www.apeth.com/iOSBook/> (mixed in with the selected chapters from the iOS 4 edition). Currently these include chapters 1, 3, 5, 6, 7, 9, 12, 15, 17, and 19. You might need to force a browser refresh to see the new versions of these chapters.
 
 Progress report: The first 750 pages of the book have been revised for iOS 5. This edition will probably run to 1000 pages, so we're about 3/4 done.
 
