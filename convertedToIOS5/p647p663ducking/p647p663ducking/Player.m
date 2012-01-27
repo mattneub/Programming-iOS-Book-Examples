@@ -31,9 +31,19 @@
 
 // unnecessary to implement audioPlayerEndInterruption delegate method...
 // ... merely to reactivate audio session after interrupt; happens automatically
-// also, automatically resumes after interruption!
+// also, automatically resumes after interruption?
 // not sure when that started: not in iOS 4.0, I'm pretty sure,
 // and the book is unaware of it (p. 650)
+
+
+-(void)audioPlayerBeginInterruption:(AVAudioPlayer *)player {
+    NSLog(@"audio player interrupted");
+}
+
+-(void)audioPlayerEndInterruption:(AVAudioPlayer *)player withFlags:(NSUInteger)flags {
+    NSLog(@"audio player flags: %i", flags);
+}
+ 
 
 
 @end

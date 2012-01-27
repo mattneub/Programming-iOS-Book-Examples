@@ -35,15 +35,13 @@
 // then Forever even plays when we are in the background
 
 - (IBAction)doButton:(id)sender {
+
     // make sure Player object exists
     if (!self.player) {
         Player* p = [[Player alloc] init];
         self.player = p;
     }
     
-    UInt32 duck = 1;
-    AudioSessionSetProperty(kAudioSessionProperty_OtherMixableAudioShouldDuck, 
-                            sizeof(duck), &duck);
     
     NSString* path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"aif"];
     if ([[(UIButton*)sender currentTitle] isEqualToString:@"Forever"]) {
@@ -52,6 +50,21 @@
         self.player.forever = YES;
     }
     else {
+        // example works better if there is some background audio already playing
+        UInt32 oth;
+        UInt32 sz_oth = sizeof(oth);
+        AudioSessionGetProperty(kAudioSessionProperty_OtherAudioIsPlaying, &sz_oth, &oth);
+        if (!oth) {
+            UIAlertView* v = [[UIAlertView alloc] initWithTitle:@"Pointless" message:@"You won't get the point of the example unless some other audio is already playing!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [v show];
+            return;
+        }
+
+        UInt32 duck = 1;
+        AudioSessionSetProperty(kAudioSessionProperty_OtherMixableAudioShouldDuck, 
+                                sizeof(duck), &duck);
+
+        
         [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient error: NULL];
         self.player.forever = NO;
     }
