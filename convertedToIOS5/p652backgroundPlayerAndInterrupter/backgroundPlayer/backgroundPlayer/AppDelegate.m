@@ -60,6 +60,7 @@
 
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    [[AVAudioSession sharedInstance] setDelegate: self];
     NSLog(@"in %@", NSStringFromSelector(_cmd));
     
 }
@@ -67,6 +68,14 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 
+    NSLog(@"in %@", NSStringFromSelector(_cmd));
+}
+
+- (void)beginInterruption {
+    NSLog(@"in %@", NSStringFromSelector(_cmd));
+}
+
+-(void)endInterruptionWithFlags:(NSUInteger)flags {
     NSLog(@"in %@", NSStringFromSelector(_cmd));
 }
 

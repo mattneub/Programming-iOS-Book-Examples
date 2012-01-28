@@ -28,6 +28,8 @@
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
     
+//    player.enableRate = YES;
+//    player.rate = 1.2; // cool new iOS 5 feature, may as well play with it
 	[player setDelegate: self];
 	[player prepareToPlay];
 	BOOL ok = [player play];
@@ -48,6 +50,7 @@
 
 - (void)audioPlayerEndInterruption:(AVAudioPlayer *)p withFlags:(NSUInteger) flags {
     NSLog(@"audio player interruption ended with flags %i", flags);
+
     if (flags & AVAudioSessionInterruptionFlags_ShouldResume) {
         // but this is just a test, always try to resume
     }
