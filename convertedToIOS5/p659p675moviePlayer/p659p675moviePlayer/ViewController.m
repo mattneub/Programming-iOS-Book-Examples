@@ -5,27 +5,29 @@
 
 @interface ViewController()
 @property (nonatomic, strong) MPMoviePlayerController* mpc;
+@property (nonatomic, strong) UIPopoverController* currentPop;
 @end
 
 @implementation ViewController
-@synthesize mpc;
+@synthesize mpc, currentPop;
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#define which 2 // try also 2
+#define which 1 // try also 2
 
 - (void)setUpMPC
 {
     NSURL* m = [[NSBundle mainBundle] URLForResource:@"movie2" withExtension:@"m4v"];
+    //m = [[NSBundle mainBundle] URLForResource:@"wilhelm" withExtension:@"aiff"];
     MPMoviePlayerController* mp = [[MPMoviePlayerController alloc] initWithContentURL:m];
     self.mpc = mp; // retain policy
     self.mpc.shouldAutoplay = NO;
-    self.mpc.view.frame = CGRectMake(10, 10, 300, 230);
+    [self.mpc prepareToPlay]; // new requirement in iOS 5
+    self.mpc.view.frame = CGRectMake(10, 10, 300, 250); // play with height
     self.mpc.backgroundView.backgroundColor = [UIColor redColor];
-    [self.mpc prepareToPlay];
     switch (which) {
         case 1:
         {
@@ -61,20 +63,16 @@
     f.size.height *= ratio;
     self.mpc.view.bounds = f;
     [self.view addSubview:self.mpc.view];
-    [self.mpc prepareToPlay];
+    //[self.mpc setFullscreen:YES animated:YES];
 }
 
 - (IBAction)doButton:(id)sender {
     NSURL* m = [[NSBundle mainBundle] URLForResource:@"movie2" withExtension:@"m4v"];
     MPMoviePlayerViewController* mpvc = 
     [[MPMoviePlayerViewController alloc] initWithContentURL: m];
-    [self presentModalViewController:mpvc animated:YES];
+//    [self presentViewController:mpvc animated:YES completion:nil];
+    [self presentMoviePlayerViewControllerAnimated:mpvc];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(vcFinished:) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
-}
-
-- (void) startOverOnMPC {
-    [self.mpc.view removeFromSuperview];
-    [self setUpMPC];
 }
 
 - (void) vcFinished: (id) dummy {
@@ -83,8 +81,8 @@
     // try commenting this out and you'll see what the problem is:
     // There Can Be Only One
     // so after our MPMoviePlayerViewController, our MPMoviePlayerController's view is busted
-    // to prevent that, we rip its view out of the interface and start over
-    [self startOverOnMPC];
+    // to prevent that, we call prepareToPlay
+    [self.mpc prepareToPlay];
 }
 
 // note: must run on device; no video editing in simulator
@@ -99,16 +97,25 @@
     UIVideoEditorController* vc = [[UIVideoEditorController alloc] init];
     vc.delegate = self;
     vc.videoPath = path;
-    [self presentModalViewController:vc animated:YES];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        // this is for demonstration only: the interface is *still* broken on iPad
+        UIPopoverController* pop = [[UIPopoverController alloc] initWithContentViewController:vc];
+        self.currentPop = pop;
+        [pop presentPopoverFromRect:[sender bounds] inView:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
+    }
+    else {
+        [self presentViewController:vc animated:YES completion:nil];
+    }
 }
 
 -(void)videoEditorControllerDidCancel:(UIVideoEditorController *)editor {
-    [self dismissModalViewControllerAnimated:YES];
-    // same issue as above, but also must add delay
-    [self performSelector:@selector(startOverOnMPC) withObject:self afterDelay:0.5];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.mpc prepareToPlay];
+    }];
 }
 
 -(void)videoEditorController:(UIVideoEditorController *)editor didSaveEditedVideoToPath:(NSString *)editedVideoPath {
+    NSLog(@"%@", editedVideoPath);
     if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(editedVideoPath))
         UISaveVideoAtPathToSavedPhotosAlbum(editedVideoPath, self, 
                                             @selector(video:savedWithError:ci:), 
@@ -118,17 +125,17 @@
 }
 
 -(void)video:(NSString*)path savedWithError:(NSError*)err ci:(void*)ci {
-    [self dismissModalViewControllerAnimated:YES];
-    // same issue as above, but also must add delay
-    [self performSelector:@selector(startOverOnMPC) withObject:self afterDelay:0.5];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.mpc prepareToPlay];
+    }];
 }
 
 -(void)videoEditorController:(UIVideoEditorController *)editor didFailWithError:(NSError *)error {
     NSString* s = [error localizedDescription];
     NSLog(@"error: %@", s);
-    [self dismissModalViewControllerAnimated:YES];
-    // same issue as above, but also must add delay
-    [self performSelector:@selector(startOverOnMPC) withObject:self afterDelay:0.5];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.mpc prepareToPlay];
+    }];
 }
 
 

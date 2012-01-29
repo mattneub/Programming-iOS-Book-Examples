@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A40EE96C14D5A3DC0042E7E0 /* wilhelm.aiff in Resources */ = {isa = PBXBuildFile; fileRef = A40EE96B14D5A3DC0042E7E0 /* wilhelm.aiff */; };
 		A41E470514D454C3004813DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41E470414D454C3004813DB /* UIKit.framework */; };
 		A41E470714D454C3004813DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41E470614D454C3004813DB /* Foundation.framework */; };
 		A41E470914D454C3004813DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41E470814D454C3004813DB /* CoreGraphics.framework */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A40EE96B14D5A3DC0042E7E0 /* wilhelm.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = wilhelm.aiff; sourceTree = "<group>"; };
 		A41E470014D454C3004813DB /* p659p675moviePlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p659p675moviePlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A41E470414D454C3004813DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A41E470614D454C3004813DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -89,6 +91,7 @@
 				A41E471714D454C4004813DB /* ViewController.m */,
 				A41E471914D454C4004813DB /* ViewController.xib */,
 				A41E472114D454F7004813DB /* movie2.m4v */,
+				A40EE96B14D5A3DC0042E7E0 /* wilhelm.aiff */,
 				A41E470B14D454C3004813DB /* Supporting Files */,
 			);
 			path = p659p675moviePlayer;
@@ -158,6 +161,7 @@
 				A41E470F14D454C3004813DB /* InfoPlist.strings in Resources */,
 				A41E471B14D454C4004813DB /* ViewController.xib in Resources */,
 				A41E472214D454F7004813DB /* movie2.m4v in Resources */,
+				A40EE96C14D5A3DC0042E7E0 /* wilhelm.aiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,7 +251,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p659p675moviePlayer/p659p675moviePlayer-Prefix.pch";
 				INFOPLIST_FILE = "p659p675moviePlayer/p659p675moviePlayer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -258,7 +264,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p659p675moviePlayer/p659p675moviePlayer-Prefix.pch";
 				INFOPLIST_FILE = "p659p675moviePlayer/p659p675moviePlayer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -282,6 +290,7 @@
 				A41E472014D454C4004813DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
