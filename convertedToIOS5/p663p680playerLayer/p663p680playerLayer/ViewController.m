@@ -21,8 +21,6 @@
     
     AVPlayerItem* item = p.currentItem;
     AVAsset* asset = [item asset];
-    // use of blocks here not in book example (because threading is treated later)
-    // but launch looks better this way
     [asset loadValuesAsynchronouslyForKeys:[NSArray arrayWithObject:@"tracks"] 
                          completionHandler:^(void) {
                              dispatch_async(dispatch_get_main_queue(), ^{
