@@ -17,6 +17,8 @@
 - (void) presentPicker: (id) sender {
     MPMediaPickerController* picker = 
     [[MPMediaPickerController alloc] init];
+    // code works just as well if you uncomment next line
+    // picker.allowsPickingMultipleItems = YES;
     picker.delegate = self;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
         [self presentViewController:picker animated:YES completion:nil];
