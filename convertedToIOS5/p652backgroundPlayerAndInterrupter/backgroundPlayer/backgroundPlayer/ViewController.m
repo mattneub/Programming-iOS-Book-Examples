@@ -2,6 +2,7 @@
 
 #import "ViewController.h"
 #import "Player.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface ViewController()
 @property (nonatomic, strong) Player* player;
@@ -14,6 +15,14 @@
     // start playing from beginning
     NSString* path = [[NSBundle mainBundle] pathForResource:@"aboutTiagol" ofType:@"m4a"];
     [self.player play:path];
+    
+    // new iOS 5 feature
+    // this info shows up in the locked screen and below the "multimedia" buttons
+    MPNowPlayingInfoCenter* mpic = [MPNowPlayingInfoCenter defaultCenter];
+    mpic.nowPlayingInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                           @"Matt Neuburg", MPMediaItemPropertyArtist,
+                           @"About Tiagol", MPMediaItemPropertyTitle, nil];
+    
 }
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event {
