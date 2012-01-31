@@ -17,6 +17,7 @@
 		A478B3E714D79CE20089A58A /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A478B3E514D79CE20089A58A /* ViewController.xib */; };
 		A478B3EA14D79CE20089A58A /* ViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A478B3E814D79CE20089A58A /* ViewController~ipad.xib */; };
 		A478B3F514D79EF70089A58A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A478B3F414D79EF70089A58A /* MediaPlayer.framework */; };
+		A4F1301014D85CE000952762 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F1300F14D85CE000952762 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		A478B3E614D79CE20089A58A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		A478B3E914D79CE20089A58A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/ViewController~ipad.xib"; sourceTree = "<group>"; };
 		A478B3F414D79EF70089A58A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		A4F1300F14D85CE000952762 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4F1301014D85CE000952762 /* AVFoundation.framework in Frameworks */,
 				A478B3F514D79EF70089A58A /* MediaPlayer.framework in Frameworks */,
 				A478B3D114D79CE20089A58A /* UIKit.framework in Frameworks */,
 				A478B3D314D79CE20089A58A /* Foundation.framework in Frameworks */,
@@ -55,6 +58,7 @@
 		A478B3C114D79CE20089A58A = {
 			isa = PBXGroup;
 			children = (
+				A4F1300F14D85CE000952762 /* AVFoundation.framework */,
 				A478B3F414D79EF70089A58A /* MediaPlayer.framework */,
 				A478B3D614D79CE20089A58A /* p676p692mediaPicker */,
 				A478B3CF14D79CE20089A58A /* Frameworks */,

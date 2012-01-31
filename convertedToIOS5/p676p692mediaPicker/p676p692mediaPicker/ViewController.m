@@ -1,6 +1,7 @@
 
 
 #import "ViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController ()
 @property (nonatomic, strong) UIPopoverController* currentPop;
@@ -45,6 +46,9 @@
     [player setQueueWithItemCollection:mediaItemCollection];
     [player play];
     [self dismissPicker: mediaPicker];
+    // these next lines don't help accomplish anything useful, just testing
+//    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+//    [[AVAudioSession sharedInstance] setActive:YES error:nil];
 }
 
 - (void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker {
@@ -56,5 +60,23 @@
     [self presentPicker: sender];
 }
 
+// the following doesn't work; in fact, the results are rather messy
+
+/*
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+}
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+    ;
+}
+ 
+ */
 
 @end
