@@ -51,13 +51,13 @@
                 [self performSelector:@selector(showMovie:) withObject:url];
         }];
     else {
-        [currentPop dismissPopoverAnimated:NO]; // if YES, we hit the Only One rule
+        [currentPop dismissPopoverAnimated:YES]; // or try NO if you hit the Only One rule
         [self performSelector:@selector(showMovie:) withObject:url];
     }
 }
 
 -(void)showMovie:(NSURL*)url {
-    self.currentPop = nil;
+    self.currentPop = nil; // There Can Be Only One
     MPMoviePlayerController* mp = [[MPMoviePlayerController alloc] initWithContentURL:url];
     self.mpc = mp;
     self.mpc.view.frame = self.redView.bounds;
@@ -85,6 +85,7 @@
 }
 
 -(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    self.currentPop = nil;
     [self.mpc prepareToPlay];
 }
 
