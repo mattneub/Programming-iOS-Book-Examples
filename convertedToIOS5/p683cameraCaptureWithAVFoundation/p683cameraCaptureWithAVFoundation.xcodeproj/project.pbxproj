@@ -278,6 +278,7 @@
 				A49987F014DA09E90029A312 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
