@@ -37,18 +37,8 @@
 }
 
 - (IBAction)doSnap:(id)sender {
-    // find AVCaptureConnection; copied from Apple's code
-    AVCaptureConnection *vc = nil;
-    for (AVCaptureConnection *con in self.snapper.connections) {
-        for (AVCaptureInputPort *port in [con inputPorts]) {
-            if ([[port mediaType] isEqual:AVMediaTypeVideo] ) {
-                vc = con;
-                break;
-            }
-        }
-        if (vc)
-            break;
-    }
+    // find AVCaptureConnection
+    AVCaptureConnection *vc = [self.snapper connectionWithMediaType:AVMediaTypeVideo];
     // deal with image when it arrives
     typedef void(^MyBufBlock)(CMSampleBufferRef, NSError*);
     MyBufBlock h = ^(CMSampleBufferRef buf, NSError *err) {

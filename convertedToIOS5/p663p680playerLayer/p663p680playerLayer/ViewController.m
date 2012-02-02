@@ -50,23 +50,15 @@
     NSURL* m = [[NSBundle mainBundle] URLForResource:@"movie2" withExtension:@"m4v"];
         
     AVURLAsset* asset = [AVURLAsset URLAssetWithURL:m options:nil];
-    [asset loadValuesAsynchronouslyForKeys:[NSArray arrayWithObject:@"tracks"] 
-                         completionHandler:^(void) 
-     {
-         NSLog(@"asset is ready");
-         AVPlayerItem* item = [AVPlayerItem playerItemWithAsset:asset];
-         AVPlayer* p = [AVPlayer playerWithPlayerItem:item];
-         self.player = p;
-         AVPlayerLayer* lay = [AVPlayerLayer playerLayerWithPlayer:p];
-         self.playerlayer = lay;
-         
-         dispatch_async(dispatch_get_main_queue(), ^{
-             NSLog(@"adding player layer to interface");
-             lay.frame = CGRectMake(10,10,300,200);
-             [self.view.layer addSublayer:lay];
-             [lay addObserver:self forKeyPath:@"readyForDisplay" options:0 context:NULL];
-         });
-     }];
+    AVPlayerItem* item = [AVPlayerItem playerItemWithAsset:asset];
+    AVPlayer* p = [AVPlayer playerWithPlayerItem:item];
+    self.player = p;
+    AVPlayerLayer* lay = [AVPlayerLayer playerLayerWithPlayer:p];
+    self.playerlayer = lay;
+    NSLog(@"adding player layer to interface");
+    lay.frame = CGRectMake(10,10,300,200);
+    [self.view.layer addSublayer:lay];
+    [lay addObserver:self forKeyPath:@"readyForDisplay" options:0 context:NULL];
 }
 
 - (IBAction)doButton:(id)sender {

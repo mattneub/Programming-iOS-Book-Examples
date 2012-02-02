@@ -61,7 +61,6 @@
 		A4196FC214D366D800D827A7 = {
 			isa = PBXGroup;
 			children = (
-				A4196FF814D36ACF00D827A7 /* AVFoundation.framework */,
 				A4196FD714D366D900D827A7 /* backgroundPlayer */,
 				A4196FD014D366D900D827A7 /* Frameworks */,
 				A4196FCE14D366D900D827A7 /* Products */,
@@ -79,6 +78,7 @@
 		A4196FD014D366D900D827A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A4196FF814D36ACF00D827A7 /* AVFoundation.framework */,
 				A4163B3614D74F7100C249DD /* MediaPlayer.framework */,
 				A4196FD114D366D900D827A7 /* UIKit.framework */,
 				A4196FD314D366D900D827A7 /* Foundation.framework */,
