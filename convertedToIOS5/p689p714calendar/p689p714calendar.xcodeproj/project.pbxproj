@@ -15,6 +15,8 @@
 		A48B087914DC46940068931B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A48B087814DC46940068931B /* AppDelegate.m */; };
 		A48B087C14DC46940068931B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A48B087B14DC46940068931B /* ViewController.m */; };
 		A48B087F14DC46940068931B /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A48B087D14DC46940068931B /* ViewController.xib */; };
+		A48B088B14DC5C970068931B /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48B088914DC5C970068931B /* EventKit.framework */; };
+		A48B088C14DC5C970068931B /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48B088A14DC5C970068931B /* EventKitUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		A48B087A14DC46940068931B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A48B087B14DC46940068931B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A48B087E14DC46940068931B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		A48B088914DC5C970068931B /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		A48B088A14DC5C970068931B /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A48B088B14DC5C970068931B /* EventKit.framework in Frameworks */,
+				A48B088C14DC5C970068931B /* EventKitUI.framework in Frameworks */,
 				A48B086914DC46940068931B /* UIKit.framework in Frameworks */,
 				A48B086B14DC46940068931B /* Foundation.framework in Frameworks */,
 				A48B086D14DC46940068931B /* CoreGraphics.framework in Frameworks */,
@@ -67,6 +73,8 @@
 		A48B086714DC46940068931B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A48B088914DC5C970068931B /* EventKit.framework */,
+				A48B088A14DC5C970068931B /* EventKitUI.framework */,
 				A48B086814DC46940068931B /* UIKit.framework */,
 				A48B086A14DC46940068931B /* Foundation.framework */,
 				A48B086C14DC46940068931B /* CoreGraphics.framework */,
@@ -274,6 +282,7 @@
 				A48B088414DC46940068931B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

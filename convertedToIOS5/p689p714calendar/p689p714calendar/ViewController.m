@@ -1,6 +1,7 @@
 
 
 #import "ViewController.h"
+#import <EventKit/EventKit.h>
 
 @interface ViewController ()
 @property (nonatomic, strong) UIPopoverController* currentPop;
@@ -33,7 +34,7 @@
     EKEventStore* database = [[EKEventStore alloc] init];
     EKEvent* taxes = [EKEvent eventWithEventStore:database];
     taxes.title = @"[Testing] Estimated tax payment due";
-    taxes.recurrenceRule = recur;
+    [taxes addRecurrenceRule: recur];
     NSCalendar* greg = 
     [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents* comp = [[NSDateComponents alloc] init];
