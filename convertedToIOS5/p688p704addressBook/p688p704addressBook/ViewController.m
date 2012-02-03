@@ -34,7 +34,7 @@
     for (CFIndex ix = 0; ix < ABMultiValueGetCount(emails); ix++) {
         CFStringRef label = ABMultiValueCopyLabelAtIndex(emails, ix);
         CFStringRef value = ABMultiValueCopyValueAtIndex(emails, ix);
-        NSLog(@"I have a %@ address: %@", (__bridge NSString*)label, (__bridge NSString*)value);
+        NSLog(@"I have a %@ address: %@", label, value);
         CFRelease(label);
         CFRelease(value);
     }
