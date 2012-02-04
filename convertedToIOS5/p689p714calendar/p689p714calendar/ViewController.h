@@ -6,6 +6,6 @@
 
 
 
-@interface ViewController : UIViewController <EKEventViewDelegate>
+@interface ViewController : UIViewController <EKEventViewDelegate, EKEventEditViewDelegate, UINavigationControllerDelegate>
 
 @end
