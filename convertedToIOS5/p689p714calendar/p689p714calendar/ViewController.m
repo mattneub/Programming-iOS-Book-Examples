@@ -269,6 +269,7 @@
             if (cal)
                 [self.database removeCalendar:cal commit:YES error:nil];
         }
+        self.calsToDelete = nil;
     }
     if (self.currentPop && self.currentPop.popoverVisible) {
         [self.currentPop dismissPopoverAnimated:YES];
