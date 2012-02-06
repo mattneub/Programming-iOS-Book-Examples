@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A437A2AA14E0377000F235CA /* MyOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A437A2A914E0377000F235CA /* MyOverlayView.m */; };
 		A471359314DEF1B7004FB7CB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A471359214DEF1B7004FB7CB /* UIKit.framework */; };
 		A471359514DEF1B7004FB7CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A471359414DEF1B7004FB7CB /* Foundation.framework */; };
 		A471359714DEF1B7004FB7CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A471359614DEF1B7004FB7CB /* CoreGraphics.framework */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A437A2A814E0377000F235CA /* MyOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOverlayView.h; sourceTree = "<group>"; };
+		A437A2A914E0377000F235CA /* MyOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOverlayView.m; sourceTree = "<group>"; };
 		A471358E14DEF1B7004FB7CB /* p707p723map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p707p723map.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A471359214DEF1B7004FB7CB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A471359414DEF1B7004FB7CB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -107,6 +110,8 @@
 				A47135B414DEF217004FB7CB /* MyAnnotation.m */,
 				A47135B514DEF217004FB7CB /* MyOverlay.h */,
 				A47135B614DEF217004FB7CB /* MyOverlay.m */,
+				A437A2A814E0377000F235CA /* MyOverlayView.h */,
+				A437A2A914E0377000F235CA /* MyOverlayView.m */,
 				A471359914DEF1B7004FB7CB /* Supporting Files */,
 			);
 			path = p707p723map;
@@ -193,6 +198,7 @@
 				A47135B714DEF217004FB7CB /* MyAnnotationView.m in Sources */,
 				A47135B814DEF217004FB7CB /* MyAnnotation.m in Sources */,
 				A47135B914DEF217004FB7CB /* MyOverlay.m in Sources */,
+				A437A2AA14E0377000F235CA /* MyOverlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +310,7 @@
 				A47135AE14DEF1B7004FB7CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -4,6 +4,7 @@
 #import "MyAnnotation.h"
 #import "MyAnnotationView.h"
 #import "MyOverlay.h"
+#import "MyOverlayView.h"
 
 @interface ViewController()
 @property (nonatomic, strong) IBOutlet MKMapView* map;
@@ -25,7 +26,7 @@
     NSLog(@"mapRect:\n%@", MKStringFromMapRect(mapView.visibleMapRect));
 }
 
-#define which 8 // try 2, 3, 4, 5, 6, 7, 8
+#define which 1 // try 2, 3, 4, 5, 6, 7, 8, 9
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear: animated];
@@ -149,7 +150,7 @@
             self.map.hidden = NO;
             break;
         }
-        case 8: // nicer overly, figure 34-5
+        case 8: // nicer overlay, figure 34-5
         {
             self.map.delegate = self;
             CLLocationCoordinate2D loc = CLLocationCoordinate2DMake(34.923964,-120.219558);
@@ -206,7 +207,43 @@
             
             self.map.hidden = NO;
             break;
+        }
+        case 9: // custom overlay view
+        {
+            self.map.delegate = self;
+            CLLocationCoordinate2D loc = CLLocationCoordinate2DMake(34.923964,-120.219558);
+            MKCoordinateRegion reg = MKCoordinateRegionMakeWithDistance(loc, 1000, 1000);
+            self.map.region = reg;
+            MyAnnotation* ann = [[MyAnnotation alloc] initWithLocation:loc];
+            ann.title = @"Park here";
+            ann.subtitle = @"Fun awaits down the road!";
+            [self.map addAnnotation:ann];
+
             
+            // start with our position and derive a nice unit for drawing
+            loc = self.map.region.center;
+            CGFloat lat = loc.latitude;
+            CLLocationDistance metersPerPoint = MKMetersPerMapPointAtLatitude(lat);
+            MKMapPoint c = MKMapPointForCoordinate(loc);
+            CGFloat unit = 75.0/metersPerPoint;
+            // size and position the overlay bounds on the earth
+            CGSize sz = CGSizeMake(4*unit, 4*unit);
+            MKMapRect mr = MKMapRectMake(c.x + 2*unit, c.y - 4.5*unit, sz.width, sz.height);
+            
+            MyOverlay* over = [[MyOverlay alloc] initWithRect:mr];
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                // add the overlay to the map
+                [self.map addOverlay:over];
+                
+                MKPointAnnotation* annot = [[MKPointAnnotation alloc] init];
+                annot.coordinate = over.coordinate;
+                annot.title = @"This way!";
+                [self.map addAnnotation:annot];
+            });
+            
+            self.map.hidden = NO;
+            break;
         }
     }
 }
@@ -226,9 +263,8 @@
                                                         reuseIdentifier:ident];
                     ((MKPinAnnotationView*)v).pinColor = MKPinAnnotationColorGreen;
                     v.canShowCallout = YES;
-                } else {
-                    v.annotation = annotation;
-                }
+                } 
+                v.annotation = annotation;
                 ((MKPinAnnotationView*)v).animatesDrop = YES;
             }
             return v;
@@ -250,9 +286,8 @@
                     v.bounds = f;
                     v.centerOffset = CGPointMake(0,-20);
                     v.canShowCallout = YES;
-                } else {
-                    v.annotation = annotation;
                 }
+                v.annotation = annotation;
             }
             return v;
             break;
@@ -267,9 +302,8 @@
                     v = [[MyAnnotationView alloc] initWithAnnotation:annotation 
                                                      reuseIdentifier:ident];
                     v.canShowCallout = YES;
-                } else {
-                    v.annotation = annotation;
                 }
+                v.annotation = annotation;
             }
             return v;
             break;
@@ -277,6 +311,7 @@
         case 6: // use custom MKAnnotation too
         case 7:
         case 8:
+        case 9:
         {
             MKAnnotationView* v = nil;
             if ([annotation isKindOfClass:[MyAnnotation class]]) { // much better test
@@ -286,9 +321,8 @@
                     v = [[MyAnnotationView alloc] initWithAnnotation:annotation 
                                                      reuseIdentifier:ident];
                     v.canShowCallout = YES;
-                } else {
-                    v.annotation = annotation;
                 }
+                v.annotation = annotation;
             }
             return v;
             break;
@@ -322,6 +356,15 @@
                 vv.strokeColor = [UIColor blackColor];
                 vv.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.2];
                 vv.lineWidth = 2;
+            }
+            return v;
+            break;
+        }
+        case 9:
+        {
+            MKOverlayView* v = nil;
+            if ([overlay isKindOfClass: [MyOverlay class]]) {
+                v = [[MyOverlayView alloc] initWithOverlay: overlay angle: -M_PI/3.5];
             }
             return v;
             break;
