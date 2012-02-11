@@ -26,7 +26,7 @@
     self.motman.showsDeviceMovementDisplay = YES;
     self.motman.deviceMotionUpdateInterval = 1.0 / 30.0;
     [self.motman startDeviceMotionUpdatesUsingReferenceFrame:f];
-    NSTimeInterval t = self.motman.accelerometerUpdateInterval * 10;
+    NSTimeInterval t = self.motman.deviceMotionUpdateInterval * 10;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:t target:self selector:@selector(pollAttitude:) userInfo:nil repeats:YES];
 }
 
