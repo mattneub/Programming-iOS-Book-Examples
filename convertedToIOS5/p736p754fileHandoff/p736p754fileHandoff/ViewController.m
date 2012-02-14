@@ -75,7 +75,7 @@
     // show preview interface
     QLPreviewController* preview = [[QLPreviewController alloc] init];
     preview.dataSource = self;
-    [self presentModalViewController:preview animated:YES];
+    [self presentViewController:preview animated:YES completion:nil];
 }
 
 - (NSInteger) numberOfPreviewItemsInPreviewController: 
