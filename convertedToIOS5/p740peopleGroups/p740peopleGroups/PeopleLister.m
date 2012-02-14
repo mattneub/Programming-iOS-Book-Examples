@@ -52,7 +52,7 @@
 }
 
 - (void) docChanged: (id) sender {
-    // could be a lot more sophisticated about this
+    // need to be a lot more sophisticated about this
     NSLog(@"state: %i", self.doc.documentState);
     if (self.doc.documentState == UIDocumentStateNormal) {
         [self.tableView endEditing:YES];
