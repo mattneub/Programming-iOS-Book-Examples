@@ -3,9 +3,8 @@
 #import <Foundation/Foundation.h>
 
 
-@interface MyXMLParserDelegate : NSObject <NSXMLParserDelegate> {
+@interface MyXMLParserDelegate : NSObject <NSXMLParserDelegate> 
 
-}
 @property (nonatomic, strong) NSMutableString* text;
 @property (nonatomic, weak) MyXMLParserDelegate* parent;
 @property (nonatomic, strong) MyXMLParserDelegate* child;

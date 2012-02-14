@@ -4,9 +4,8 @@
 #import "MyXMLParserDelegate.h"
 @class Person;
 
-@interface MyPersonParser : MyXMLParserDelegate {
+@interface MyPersonParser : MyXMLParserDelegate 
 
-}
 @property (nonatomic, strong) Person* person;
 
 @end
