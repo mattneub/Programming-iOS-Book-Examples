@@ -36,7 +36,7 @@
         [q setMaxConcurrentOperationCount:1];
         self.queue = q; // retain policy
     }
-    NSOperation* op = 
+    MyMandelbrotOperation* op = 
     [[MyMandelbrotOperation alloc] initWithSize:self.bounds.size 
                                          center:center zoom:1];
     [[NSNotificationCenter defaultCenter] addObserver:self 
