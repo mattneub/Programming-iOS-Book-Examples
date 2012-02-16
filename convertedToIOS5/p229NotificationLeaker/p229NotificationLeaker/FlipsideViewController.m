@@ -56,6 +56,7 @@
 
 - (IBAction)done:(id)sender
 {
+    NSLog(@"observer %@", observer); // prove that observer is valid
     [[NSNotificationCenter defaultCenter] removeObserver:observer];
     switch (which) {
         case 1: case 3: break;
