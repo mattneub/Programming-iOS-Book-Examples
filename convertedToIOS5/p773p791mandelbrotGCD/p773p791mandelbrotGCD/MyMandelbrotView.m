@@ -4,7 +4,7 @@
 
 @interface MyMandelbrotView ()
 - (void)drawAtCenter:(CGPoint)center zoom:(CGFloat)zoom context:(CGContextRef)c;
-- (CGContextRef)makeBitmapContext:(CGSize)size;
+- (CGContextRef)makeBitmapContext:(CGSize)size CF_RETURNS_RETAINED; // quiet the Analyzer
 @end
 
 // best to run on device, because we want a slow processor in order to see the delay
