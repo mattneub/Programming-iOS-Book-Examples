@@ -1,1 +1,0 @@
-The book has now been revised for iOS 5 and Xcode 4.2; these are the complete code examples, as revised. For the new version of the book, see <http://shop.oreilly.com/product/0636920023562.do>. Selected chapters from the revision draft text are also available at <http://www.apeth.com/iOSBook/>.
