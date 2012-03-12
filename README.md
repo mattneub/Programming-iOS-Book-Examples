@@ -1,5 +1,5 @@
 
-This is the downloadable code for my book, "Programming iOS 5: Fundamentals of iPhone, iPad, and iPod touch Development," published by O'Reilly in March 2012. It is the second edition of the book whose previous incarnation was "Programming iOS 4".
+This is the downloadable code for my book, "Programming iOS 5: Fundamentals of iPhone, iPad, and iPod touch Development," published by O'Reilly in March 2012. It is the second edition of the book whose previous incarnation was "Programming iOS 4". (The example code from the first edition has been moved off into the folder called "iOS4bookExamples".)
 
 * For more information about the book: <http://shop.oreilly.com/product/0636920023562.do>
 
@@ -19,7 +19,7 @@ You may use this code in your own projects. What you may not do is pass off my e
 
 If you find any issues with this code, please let me know or supply a patch.
 
-NOTE ON PAGINATION: I realize that the page numbers used in the folder names are not useful for those with the Kindle or ePUB editions, but they do keep the examples sorted in order, and they correspond to the pagination of the printed and PDF editions. The project names, inside the folders, are inherited from the old pagination (from the first and second printings of the first edition); but that's of no importance, as you can just ignore those names.
+NOTE ON PAGINATION: The projects are each in folders whose name starts with the chapter and page roughly corresponding to the position of that code in the actual book. I realize that the page numbers used in the folder names are not useful for those with the Kindle or ePUB editions, but they do keep the examples sorted in order, and they correspond to the pagination of the printed and PDF editions. The project names, inside the folders, will probably look like nonsense to you, as those names are inherited from the old pagination (from the first and second printings of the first edition); but that's of no importance, as you can just ignore those names. Perhaps I'll eventually get around to fixing them.
 
 NOTE ON SCREENSHOTS: The full-resolution original screenshots from the book are included here as well.
 

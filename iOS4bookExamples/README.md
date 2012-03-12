@@ -24,7 +24,7 @@ NOTE ON PAGINATION: I realize that the page numbers in the folder names are not 
 
 NOTE ON SCREENSHOTS: The screenshots for the first printing are often too small to see comfortably. I tried but failed to prevent this (it is at last corrected in the second printing). To help with this issue, the full-resolution original screenshots are included here as well.
 
-NOTE ON iOS 5: The book has now been revised for iOS 5 and Xcode 4.2; for the new version of the book, see <http://shop.oreilly.com/product/0636920023562.do>. Selected chapters from the revision draft text are also available at <http://www.apeth.com/iOSBook/>. The new versions of the code examples, as revised for iOS 5, are here in the folder called _convertedToIOS5_.
+NOTE ON iOS 5: The book has now been revised for iOS 5 and Xcode 4.2; for the new version of the book, see <http://shop.oreilly.com/product/0636920023562.do>. Selected chapters from the revision draft text are also available at <http://www.apeth.com/iOSBook/>. The new versions of the code examples, as revised for iOS 5, are at the top level of this repository.
 
 Matt Neuburg
 
