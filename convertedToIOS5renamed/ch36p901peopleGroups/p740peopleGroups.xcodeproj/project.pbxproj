@@ -1,0 +1,304 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4493C7A14E965BC003C5D97 /* DocumentLister.m in Sources */ = {isa = PBXBuildFile; fileRef = A4493C7914E965BC003C5D97 /* DocumentLister.m */; };
+		A4E507ED14E8A74700640812 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E507EC14E8A74700640812 /* UIKit.framework */; };
+		A4E507EF14E8A74700640812 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E507EE14E8A74700640812 /* Foundation.framework */; };
+		A4E507F114E8A74700640812 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E507F014E8A74700640812 /* CoreGraphics.framework */; };
+		A4E507F714E8A74700640812 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4E507F514E8A74700640812 /* InfoPlist.strings */; };
+		A4E507F914E8A74700640812 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E507F814E8A74700640812 /* main.m */; };
+		A4E507FD14E8A74700640812 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E507FC14E8A74700640812 /* AppDelegate.m */; };
+		A4E5080014E8A74700640812 /* PeopleLister.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E507FF14E8A74700640812 /* PeopleLister.m */; };
+		A4E5080314E8A74700640812 /* PeopleLister.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E5080114E8A74700640812 /* PeopleLister.xib */; };
+		A4E5080F14E8A75F00640812 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E5080E14E8A75F00640812 /* Person.m */; };
+		A4E5081414E8A93E00640812 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E5081314E8A93E00640812 /* PersonCell.xib */; };
+		A4E5081714E8CBFD00640812 /* PeopleDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E5081614E8CBFD00640812 /* PeopleDocument.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4493C7814E965BC003C5D97 /* DocumentLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentLister.h; sourceTree = "<group>"; };
+		A4493C7914E965BC003C5D97 /* DocumentLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentLister.m; sourceTree = "<group>"; };
+		A4E507E814E8A74700640812 /* p740peopleGroups.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p740peopleGroups.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4E507EC14E8A74700640812 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4E507EE14E8A74700640812 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4E507F014E8A74700640812 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4E507F414E8A74700640812 /* p740peopleGroups-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p740peopleGroups-Info.plist"; sourceTree = "<group>"; };
+		A4E507F614E8A74700640812 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4E507F814E8A74700640812 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4E507FA14E8A74700640812 /* p740peopleGroups-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p740peopleGroups-Prefix.pch"; sourceTree = "<group>"; };
+		A4E507FB14E8A74700640812 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A4E507FC14E8A74700640812 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A4E507FE14E8A74700640812 /* PeopleLister.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeopleLister.h; sourceTree = "<group>"; };
+		A4E507FF14E8A74700640812 /* PeopleLister.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeopleLister.m; sourceTree = "<group>"; };
+		A4E5080214E8A74700640812 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PeopleLister.xib; sourceTree = "<group>"; };
+		A4E5080D14E8A75F00640812 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		A4E5080E14E8A75F00640812 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		A4E5081314E8A93E00640812 /* PersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
+		A4E5081514E8CBFD00640812 /* PeopleDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleDocument.h; sourceTree = "<group>"; };
+		A4E5081614E8CBFD00640812 /* PeopleDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleDocument.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4E507E514E8A74700640812 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E507ED14E8A74700640812 /* UIKit.framework in Frameworks */,
+				A4E507EF14E8A74700640812 /* Foundation.framework in Frameworks */,
+				A4E507F114E8A74700640812 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4E507DD14E8A74700640812 = {
+			isa = PBXGroup;
+			children = (
+				A4E507F214E8A74700640812 /* p740peopleGroups */,
+				A4E507EB14E8A74700640812 /* Frameworks */,
+				A4E507E914E8A74700640812 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4E507E914E8A74700640812 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4E507E814E8A74700640812 /* p740peopleGroups.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4E507EB14E8A74700640812 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4E507EC14E8A74700640812 /* UIKit.framework */,
+				A4E507EE14E8A74700640812 /* Foundation.framework */,
+				A4E507F014E8A74700640812 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4E507F214E8A74700640812 /* p740peopleGroups */ = {
+			isa = PBXGroup;
+			children = (
+				A4E507FB14E8A74700640812 /* AppDelegate.h */,
+				A4E507FC14E8A74700640812 /* AppDelegate.m */,
+				A4493C7814E965BC003C5D97 /* DocumentLister.h */,
+				A4493C7914E965BC003C5D97 /* DocumentLister.m */,
+				A4E507FE14E8A74700640812 /* PeopleLister.h */,
+				A4E507FF14E8A74700640812 /* PeopleLister.m */,
+				A4E5080114E8A74700640812 /* PeopleLister.xib */,
+				A4E5080D14E8A75F00640812 /* Person.h */,
+				A4E5080E14E8A75F00640812 /* Person.m */,
+				A4E5081314E8A93E00640812 /* PersonCell.xib */,
+				A4E5081514E8CBFD00640812 /* PeopleDocument.h */,
+				A4E5081614E8CBFD00640812 /* PeopleDocument.m */,
+				A4E507F314E8A74700640812 /* Supporting Files */,
+			);
+			path = p740peopleGroups;
+			sourceTree = "<group>";
+		};
+		A4E507F314E8A74700640812 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4E507F414E8A74700640812 /* p740peopleGroups-Info.plist */,
+				A4E507F514E8A74700640812 /* InfoPlist.strings */,
+				A4E507F814E8A74700640812 /* main.m */,
+				A4E507FA14E8A74700640812 /* p740peopleGroups-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4E507E714E8A74700640812 /* p740peopleGroups */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4E5080614E8A74700640812 /* Build configuration list for PBXNativeTarget "p740peopleGroups" */;
+			buildPhases = (
+				A4E507E414E8A74700640812 /* Sources */,
+				A4E507E514E8A74700640812 /* Frameworks */,
+				A4E507E614E8A74700640812 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p740peopleGroups;
+			productName = p740peopleGroups;
+			productReference = A4E507E814E8A74700640812 /* p740peopleGroups.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4E507DF14E8A74700640812 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A4E507E214E8A74700640812 /* Build configuration list for PBXProject "p740peopleGroups" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4E507DD14E8A74700640812;
+			productRefGroup = A4E507E914E8A74700640812 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4E507E714E8A74700640812 /* p740peopleGroups */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4E507E614E8A74700640812 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E507F714E8A74700640812 /* InfoPlist.strings in Resources */,
+				A4E5080314E8A74700640812 /* PeopleLister.xib in Resources */,
+				A4E5081414E8A93E00640812 /* PersonCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4E507E414E8A74700640812 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E507F914E8A74700640812 /* main.m in Sources */,
+				A4E507FD14E8A74700640812 /* AppDelegate.m in Sources */,
+				A4E5080014E8A74700640812 /* PeopleLister.m in Sources */,
+				A4E5080F14E8A75F00640812 /* Person.m in Sources */,
+				A4E5081714E8CBFD00640812 /* PeopleDocument.m in Sources */,
+				A4493C7A14E965BC003C5D97 /* DocumentLister.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4E507F514E8A74700640812 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4E507F614E8A74700640812 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4E5080114E8A74700640812 /* PeopleLister.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4E5080214E8A74700640812 /* en */,
+			);
+			name = PeopleLister.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4E5080414E8A74700640812 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4E5080514E8A74700640812 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4E5080714E8A74700640812 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p740peopleGroups/p740peopleGroups-Prefix.pch";
+				INFOPLIST_FILE = "p740peopleGroups/p740peopleGroups-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4E5080814E8A74700640812 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p740peopleGroups/p740peopleGroups-Prefix.pch";
+				INFOPLIST_FILE = "p740peopleGroups/p740peopleGroups-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4E507E214E8A74700640812 /* Build configuration list for PBXProject "p740peopleGroups" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4E5080414E8A74700640812 /* Debug */,
+				A4E5080514E8A74700640812 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4E5080614E8A74700640812 /* Build configuration list for PBXNativeTarget "p740peopleGroups" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4E5080714E8A74700640812 /* Debug */,
+				A4E5080814E8A74700640812 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4E507DF14E8A74700640812 /* Project object */;
+}

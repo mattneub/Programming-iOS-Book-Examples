@@ -1,0 +1,5 @@
+1	ChapterOnePictureOne
+2	ChapterTwoPictureOne
+2	ChapterTwoPictureTwo
+1	ChapterOnePictureTwo
+2	ChapterTwoPictureThree

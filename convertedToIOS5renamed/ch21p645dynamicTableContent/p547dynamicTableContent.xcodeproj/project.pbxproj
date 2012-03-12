@@ -1,0 +1,288 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A431EC73146AF46600724BFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A431EC72146AF46600724BFB /* UIKit.framework */; };
+		A431EC75146AF46600724BFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A431EC74146AF46600724BFB /* Foundation.framework */; };
+		A431EC77146AF46600724BFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A431EC76146AF46600724BFB /* CoreGraphics.framework */; };
+		A431EC7D146AF46600724BFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A431EC7B146AF46600724BFB /* InfoPlist.strings */; };
+		A431EC7F146AF46600724BFB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A431EC7E146AF46600724BFB /* main.m */; };
+		A431EC8A146AF4A100724BFB /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = A431EC89146AF4A100724BFB /* states.txt */; };
+		A431EC90146AF4AE00724BFB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A431EC8C146AF4AE00724BFB /* AppDelegate.m */; };
+		A431EC91146AF4AE00724BFB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A431EC8E146AF4AE00724BFB /* RootViewController.m */; };
+		A431EC92146AF4AE00724BFB /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A431EC8F146AF4AE00724BFB /* RootView.xib */; };
+		A431EC97146B039E00724BFB /* lin.png in Resources */ = {isa = PBXBuildFile; fileRef = A431EC96146B039E00724BFB /* lin.png */; };
+		A4EBDB6814AB8161006F17C3 /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4EBDB6714AB8161006F17C3 /* MyCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A431EC6E146AF46600724BFB /* p547dynamicTableContent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p547dynamicTableContent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A431EC72146AF46600724BFB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A431EC74146AF46600724BFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A431EC76146AF46600724BFB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A431EC7A146AF46600724BFB /* p547dynamicTableContent-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p547dynamicTableContent-Info.plist"; sourceTree = "<group>"; };
+		A431EC7C146AF46600724BFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A431EC7E146AF46600724BFB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A431EC80146AF46600724BFB /* p547dynamicTableContent-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p547dynamicTableContent-Prefix.pch"; sourceTree = "<group>"; };
+		A431EC89146AF4A100724BFB /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
+		A431EC8B146AF4AE00724BFB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A431EC8C146AF4AE00724BFB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A431EC8D146AF4AE00724BFB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A431EC8E146AF4AE00724BFB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A431EC8F146AF4AE00724BFB /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
+		A431EC96146B039E00724BFB /* lin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lin.png; sourceTree = "<group>"; };
+		A4EBDB6614AB8161006F17C3 /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
+		A4EBDB6714AB8161006F17C3 /* MyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A431EC6B146AF46600724BFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A431EC73146AF46600724BFB /* UIKit.framework in Frameworks */,
+				A431EC75146AF46600724BFB /* Foundation.framework in Frameworks */,
+				A431EC77146AF46600724BFB /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A431EC63146AF46600724BFB = {
+			isa = PBXGroup;
+			children = (
+				A431EC78146AF46600724BFB /* p547dynamicTableContent */,
+				A431EC71146AF46600724BFB /* Frameworks */,
+				A431EC6F146AF46600724BFB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A431EC6F146AF46600724BFB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A431EC6E146AF46600724BFB /* p547dynamicTableContent.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A431EC71146AF46600724BFB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A431EC72146AF46600724BFB /* UIKit.framework */,
+				A431EC74146AF46600724BFB /* Foundation.framework */,
+				A431EC76146AF46600724BFB /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A431EC78146AF46600724BFB /* p547dynamicTableContent */ = {
+			isa = PBXGroup;
+			children = (
+				A431EC8B146AF4AE00724BFB /* AppDelegate.h */,
+				A431EC8C146AF4AE00724BFB /* AppDelegate.m */,
+				A431EC8D146AF4AE00724BFB /* RootViewController.h */,
+				A431EC8E146AF4AE00724BFB /* RootViewController.m */,
+				A431EC8F146AF4AE00724BFB /* RootView.xib */,
+				A4EBDB6614AB8161006F17C3 /* MyCell.h */,
+				A4EBDB6714AB8161006F17C3 /* MyCell.m */,
+				A431EC79146AF46600724BFB /* Supporting Files */,
+			);
+			path = p547dynamicTableContent;
+			sourceTree = "<group>";
+		};
+		A431EC79146AF46600724BFB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A431EC96146B039E00724BFB /* lin.png */,
+				A431EC89146AF4A100724BFB /* states.txt */,
+				A431EC7A146AF46600724BFB /* p547dynamicTableContent-Info.plist */,
+				A431EC7B146AF46600724BFB /* InfoPlist.strings */,
+				A431EC7E146AF46600724BFB /* main.m */,
+				A431EC80146AF46600724BFB /* p547dynamicTableContent-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A431EC6D146AF46600724BFB /* p547dynamicTableContent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A431EC86146AF46600724BFB /* Build configuration list for PBXNativeTarget "p547dynamicTableContent" */;
+			buildPhases = (
+				A431EC6A146AF46600724BFB /* Sources */,
+				A431EC6B146AF46600724BFB /* Frameworks */,
+				A431EC6C146AF46600724BFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p547dynamicTableContent;
+			productName = p547dynamicTableContent;
+			productReference = A431EC6E146AF46600724BFB /* p547dynamicTableContent.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A431EC65146AF46600724BFB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A431EC68146AF46600724BFB /* Build configuration list for PBXProject "p547dynamicTableContent" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A431EC63146AF46600724BFB;
+			productRefGroup = A431EC6F146AF46600724BFB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A431EC6D146AF46600724BFB /* p547dynamicTableContent */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A431EC6C146AF46600724BFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A431EC7D146AF46600724BFB /* InfoPlist.strings in Resources */,
+				A431EC8A146AF4A100724BFB /* states.txt in Resources */,
+				A431EC92146AF4AE00724BFB /* RootView.xib in Resources */,
+				A431EC97146B039E00724BFB /* lin.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A431EC6A146AF46600724BFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A431EC7F146AF46600724BFB /* main.m in Sources */,
+				A431EC90146AF4AE00724BFB /* AppDelegate.m in Sources */,
+				A431EC91146AF4AE00724BFB /* RootViewController.m in Sources */,
+				A4EBDB6814AB8161006F17C3 /* MyCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A431EC7B146AF46600724BFB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A431EC7C146AF46600724BFB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A431EC84146AF46600724BFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A431EC85146AF46600724BFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A431EC87146AF46600724BFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p547dynamicTableContent/p547dynamicTableContent-Prefix.pch";
+				INFOPLIST_FILE = "p547dynamicTableContent/p547dynamicTableContent-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A431EC88146AF46600724BFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p547dynamicTableContent/p547dynamicTableContent-Prefix.pch";
+				INFOPLIST_FILE = "p547dynamicTableContent/p547dynamicTableContent-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A431EC68146AF46600724BFB /* Build configuration list for PBXProject "p547dynamicTableContent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A431EC84146AF46600724BFB /* Debug */,
+				A431EC85146AF46600724BFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A431EC86146AF46600724BFB /* Build configuration list for PBXNativeTarget "p547dynamicTableContent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A431EC87146AF46600724BFB /* Debug */,
+				A431EC88146AF46600724BFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A431EC65146AF46600724BFB /* Project object */;
+}

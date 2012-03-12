@@ -1,0 +1,287 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4936AE514EC195700CCE9E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4936AE414EC195700CCE9E8 /* UIKit.framework */; };
+		A4936AE714EC195700CCE9E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4936AE614EC195700CCE9E8 /* Foundation.framework */; };
+		A4936AE914EC195700CCE9E8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4936AE814EC195700CCE9E8 /* CoreGraphics.framework */; };
+		A4936AEF14EC195700CCE9E8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4936AED14EC195700CCE9E8 /* InfoPlist.strings */; };
+		A4936AF114EC195700CCE9E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4936AF014EC195700CCE9E8 /* main.m */; };
+		A4936AF514EC195700CCE9E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4936AF414EC195700CCE9E8 /* AppDelegate.m */; };
+		A4936AF814EC195700CCE9E8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4936AF714EC195700CCE9E8 /* ViewController.m */; };
+		A4936AFB14EC195700CCE9E8 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4936AF914EC195700CCE9E8 /* ViewController.xib */; };
+		A4936B0314EC19AA00CCE9E8 /* MyMandelbrotView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4936B0214EC19AA00CCE9E8 /* MyMandelbrotView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4936AE014EC195700CCE9E8 /* p765p783mandelbrotNoThreading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p765p783mandelbrotNoThreading.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4936AE414EC195700CCE9E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4936AE614EC195700CCE9E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4936AE814EC195700CCE9E8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4936AEC14EC195700CCE9E8 /* p765p783mandelbrotNoThreading-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p765p783mandelbrotNoThreading-Info.plist"; sourceTree = "<group>"; };
+		A4936AEE14EC195700CCE9E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4936AF014EC195700CCE9E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4936AF214EC195700CCE9E8 /* p765p783mandelbrotNoThreading-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p765p783mandelbrotNoThreading-Prefix.pch"; sourceTree = "<group>"; };
+		A4936AF314EC195700CCE9E8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A4936AF414EC195700CCE9E8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A4936AF614EC195700CCE9E8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A4936AF714EC195700CCE9E8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A4936AFA14EC195700CCE9E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		A4936B0114EC19AA00CCE9E8 /* MyMandelbrotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMandelbrotView.h; sourceTree = "<group>"; };
+		A4936B0214EC19AA00CCE9E8 /* MyMandelbrotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMandelbrotView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4936ADD14EC195700CCE9E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4936AE514EC195700CCE9E8 /* UIKit.framework in Frameworks */,
+				A4936AE714EC195700CCE9E8 /* Foundation.framework in Frameworks */,
+				A4936AE914EC195700CCE9E8 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4936AD514EC195700CCE9E8 = {
+			isa = PBXGroup;
+			children = (
+				A4936AEA14EC195700CCE9E8 /* p765p783mandelbrotNoThreading */,
+				A4936AE314EC195700CCE9E8 /* Frameworks */,
+				A4936AE114EC195700CCE9E8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4936AE114EC195700CCE9E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4936AE014EC195700CCE9E8 /* p765p783mandelbrotNoThreading.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4936AE314EC195700CCE9E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4936AE414EC195700CCE9E8 /* UIKit.framework */,
+				A4936AE614EC195700CCE9E8 /* Foundation.framework */,
+				A4936AE814EC195700CCE9E8 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4936AEA14EC195700CCE9E8 /* p765p783mandelbrotNoThreading */ = {
+			isa = PBXGroup;
+			children = (
+				A4936AF314EC195700CCE9E8 /* AppDelegate.h */,
+				A4936AF414EC195700CCE9E8 /* AppDelegate.m */,
+				A4936AF614EC195700CCE9E8 /* ViewController.h */,
+				A4936AF714EC195700CCE9E8 /* ViewController.m */,
+				A4936AF914EC195700CCE9E8 /* ViewController.xib */,
+				A4936B0114EC19AA00CCE9E8 /* MyMandelbrotView.h */,
+				A4936B0214EC19AA00CCE9E8 /* MyMandelbrotView.m */,
+				A4936AEB14EC195700CCE9E8 /* Supporting Files */,
+			);
+			path = p765p783mandelbrotNoThreading;
+			sourceTree = "<group>";
+		};
+		A4936AEB14EC195700CCE9E8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4936AEC14EC195700CCE9E8 /* p765p783mandelbrotNoThreading-Info.plist */,
+				A4936AED14EC195700CCE9E8 /* InfoPlist.strings */,
+				A4936AF014EC195700CCE9E8 /* main.m */,
+				A4936AF214EC195700CCE9E8 /* p765p783mandelbrotNoThreading-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4936ADF14EC195700CCE9E8 /* p765p783mandelbrotNoThreading */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4936AFE14EC195700CCE9E8 /* Build configuration list for PBXNativeTarget "p765p783mandelbrotNoThreading" */;
+			buildPhases = (
+				A4936ADC14EC195700CCE9E8 /* Sources */,
+				A4936ADD14EC195700CCE9E8 /* Frameworks */,
+				A4936ADE14EC195700CCE9E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p765p783mandelbrotNoThreading;
+			productName = p765p783mandelbrotNoThreading;
+			productReference = A4936AE014EC195700CCE9E8 /* p765p783mandelbrotNoThreading.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4936AD714EC195700CCE9E8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A4936ADA14EC195700CCE9E8 /* Build configuration list for PBXProject "p765p783mandelbrotNoThreading" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4936AD514EC195700CCE9E8;
+			productRefGroup = A4936AE114EC195700CCE9E8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4936ADF14EC195700CCE9E8 /* p765p783mandelbrotNoThreading */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4936ADE14EC195700CCE9E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4936AEF14EC195700CCE9E8 /* InfoPlist.strings in Resources */,
+				A4936AFB14EC195700CCE9E8 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4936ADC14EC195700CCE9E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4936AF114EC195700CCE9E8 /* main.m in Sources */,
+				A4936AF514EC195700CCE9E8 /* AppDelegate.m in Sources */,
+				A4936AF814EC195700CCE9E8 /* ViewController.m in Sources */,
+				A4936B0314EC19AA00CCE9E8 /* MyMandelbrotView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4936AED14EC195700CCE9E8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4936AEE14EC195700CCE9E8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4936AF914EC195700CCE9E8 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4936AFA14EC195700CCE9E8 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4936AFC14EC195700CCE9E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4936AFD14EC195700CCE9E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4936AFF14EC195700CCE9E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p765p783mandelbrotNoThreading/p765p783mandelbrotNoThreading-Prefix.pch";
+				INFOPLIST_FILE = "p765p783mandelbrotNoThreading/p765p783mandelbrotNoThreading-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4936B0014EC195700CCE9E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p765p783mandelbrotNoThreading/p765p783mandelbrotNoThreading-Prefix.pch";
+				INFOPLIST_FILE = "p765p783mandelbrotNoThreading/p765p783mandelbrotNoThreading-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4936ADA14EC195700CCE9E8 /* Build configuration list for PBXProject "p765p783mandelbrotNoThreading" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4936AFC14EC195700CCE9E8 /* Debug */,
+				A4936AFD14EC195700CCE9E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4936AFE14EC195700CCE9E8 /* Build configuration list for PBXNativeTarget "p765p783mandelbrotNoThreading" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4936AFF14EC195700CCE9E8 /* Debug */,
+				A4936B0014EC195700CCE9E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4936AD714EC195700CCE9E8 /* Project object */;
+}
