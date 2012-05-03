@@ -10,7 +10,7 @@
     CGPoint origC;
 }
 
-@synthesize v, longPresser;
+@synthesize v=_v, longPresser;
 
 
 - (void)viewDidLoad
@@ -23,8 +23,8 @@
                                         initWithTarget:self
                                         action:@selector(longPress:)];
     lp.numberOfTapsRequired = 1;
-    [v addGestureRecognizer:p];
-    [v addGestureRecognizer:lp];
+    [self.v addGestureRecognizer:p];
+    [self.v addGestureRecognizer:lp];
     self.longPresser = lp;
     p.delegate = self;
 
@@ -53,7 +53,7 @@
     UIView* vv = p.view;
     if (p.state == UIGestureRecognizerStateBegan)
         self->origC = vv.center;
-    CGPoint delta = [p translationInView: v.superview];
+    CGPoint delta = [p translationInView: vv.superview];
     CGPoint c = self->origC;
     c.x += delta.x; c.y += delta.y;
     vv.center = c;
