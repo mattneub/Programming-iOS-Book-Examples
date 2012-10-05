@@ -1,0 +1,279 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A44FC99D145B100600121CB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44FC99C145B100600121CB6 /* UIKit.framework */; };
+		A44FC99F145B100600121CB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44FC99E145B100600121CB6 /* Foundation.framework */; };
+		A44FC9A1145B100600121CB6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44FC9A0145B100600121CB6 /* CoreGraphics.framework */; };
+		A44FC9A7145B100600121CB6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A44FC9A5145B100600121CB6 /* InfoPlist.strings */; };
+		A44FC9A9145B100600121CB6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A44FC9A8145B100600121CB6 /* main.m */; };
+		A44FC9AD145B100600121CB6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A44FC9AC145B100600121CB6 /* AppDelegate.m */; };
+		A44FC9B7145B104100121CB6 /* CompassLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A44FC9B4145B104100121CB6 /* CompassLayer.m */; };
+		A44FC9B8145B104100121CB6 /* CompassView.m in Sources */ = {isa = PBXBuildFile; fileRef = A44FC9B6145B104100121CB6 /* CompassView.m */; };
+		A44FC9BA145B109000121CB6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44FC9B9145B109000121CB6 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A44FC998145B100600121CB6 /* p351p362transformLayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p351p362transformLayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A44FC99C145B100600121CB6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A44FC99E145B100600121CB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A44FC9A0145B100600121CB6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A44FC9A4145B100600121CB6 /* p351p362transformLayer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p351p362transformLayer-Info.plist"; sourceTree = "<group>"; };
+		A44FC9A6145B100600121CB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A44FC9A8145B100600121CB6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A44FC9AA145B100600121CB6 /* p351p362transformLayer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p351p362transformLayer-Prefix.pch"; sourceTree = "<group>"; };
+		A44FC9AB145B100600121CB6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A44FC9AC145B100600121CB6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A44FC9B3145B104100121CB6 /* CompassLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompassLayer.h; sourceTree = "<group>"; };
+		A44FC9B4145B104100121CB6 /* CompassLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompassLayer.m; sourceTree = "<group>"; };
+		A44FC9B5145B104100121CB6 /* CompassView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompassView.h; sourceTree = "<group>"; };
+		A44FC9B6145B104100121CB6 /* CompassView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompassView.m; sourceTree = "<group>"; };
+		A44FC9B9145B109000121CB6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A44FC995145B100600121CB6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A44FC9BA145B109000121CB6 /* QuartzCore.framework in Frameworks */,
+				A44FC99D145B100600121CB6 /* UIKit.framework in Frameworks */,
+				A44FC99F145B100600121CB6 /* Foundation.framework in Frameworks */,
+				A44FC9A1145B100600121CB6 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A44FC98D145B100600121CB6 = {
+			isa = PBXGroup;
+			children = (
+				A44FC9A2145B100600121CB6 /* p351p362transformLayer */,
+				A44FC99B145B100600121CB6 /* Frameworks */,
+				A44FC999145B100600121CB6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A44FC999145B100600121CB6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A44FC998145B100600121CB6 /* p351p362transformLayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A44FC99B145B100600121CB6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A44FC9B9145B109000121CB6 /* QuartzCore.framework */,
+				A44FC99C145B100600121CB6 /* UIKit.framework */,
+				A44FC99E145B100600121CB6 /* Foundation.framework */,
+				A44FC9A0145B100600121CB6 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A44FC9A2145B100600121CB6 /* p351p362transformLayer */ = {
+			isa = PBXGroup;
+			children = (
+				A44FC9B3145B104100121CB6 /* CompassLayer.h */,
+				A44FC9B4145B104100121CB6 /* CompassLayer.m */,
+				A44FC9B5145B104100121CB6 /* CompassView.h */,
+				A44FC9B6145B104100121CB6 /* CompassView.m */,
+				A44FC9AB145B100600121CB6 /* AppDelegate.h */,
+				A44FC9AC145B100600121CB6 /* AppDelegate.m */,
+				A44FC9A3145B100600121CB6 /* Supporting Files */,
+			);
+			path = p351p362transformLayer;
+			sourceTree = "<group>";
+		};
+		A44FC9A3145B100600121CB6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A44FC9A4145B100600121CB6 /* p351p362transformLayer-Info.plist */,
+				A44FC9A5145B100600121CB6 /* InfoPlist.strings */,
+				A44FC9A8145B100600121CB6 /* main.m */,
+				A44FC9AA145B100600121CB6 /* p351p362transformLayer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A44FC997145B100600121CB6 /* p351p362transformLayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A44FC9B0145B100600121CB6 /* Build configuration list for PBXNativeTarget "p351p362transformLayer" */;
+			buildPhases = (
+				A44FC994145B100600121CB6 /* Sources */,
+				A44FC995145B100600121CB6 /* Frameworks */,
+				A44FC996145B100600121CB6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p351p362transformLayer;
+			productName = p351p362transformLayer;
+			productReference = A44FC998145B100600121CB6 /* p351p362transformLayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A44FC98F145B100600121CB6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A44FC992145B100600121CB6 /* Build configuration list for PBXProject "p351p362transformLayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A44FC98D145B100600121CB6;
+			productRefGroup = A44FC999145B100600121CB6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A44FC997145B100600121CB6 /* p351p362transformLayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A44FC996145B100600121CB6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A44FC9A7145B100600121CB6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A44FC994145B100600121CB6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A44FC9A9145B100600121CB6 /* main.m in Sources */,
+				A44FC9AD145B100600121CB6 /* AppDelegate.m in Sources */,
+				A44FC9B7145B104100121CB6 /* CompassLayer.m in Sources */,
+				A44FC9B8145B104100121CB6 /* CompassView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A44FC9A5145B100600121CB6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A44FC9A6145B100600121CB6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A44FC9AE145B100600121CB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A44FC9AF145B100600121CB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A44FC9B1145B100600121CB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p351p362transformLayer/p351p362transformLayer-Prefix.pch";
+				INFOPLIST_FILE = "p351p362transformLayer/p351p362transformLayer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A44FC9B2145B100600121CB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p351p362transformLayer/p351p362transformLayer-Prefix.pch";
+				INFOPLIST_FILE = "p351p362transformLayer/p351p362transformLayer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A44FC992145B100600121CB6 /* Build configuration list for PBXProject "p351p362transformLayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A44FC9AE145B100600121CB6 /* Debug */,
+				A44FC9AF145B100600121CB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A44FC9B0145B100600121CB6 /* Build configuration list for PBXNativeTarget "p351p362transformLayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A44FC9B1145B100600121CB6 /* Debug */,
+				A44FC9B2145B100600121CB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A44FC98F145B100600121CB6 /* Project object */;
+}

@@ -1,0 +1,288 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4CBFFBB1455C47E00231381 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4CBFFBA1455C47E00231381 /* UIKit.framework */; };
+		A4CBFFBD1455C47E00231381 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4CBFFBC1455C47E00231381 /* Foundation.framework */; };
+		A4CBFFBF1455C47E00231381 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4CBFFBE1455C47E00231381 /* CoreGraphics.framework */; };
+		A4CBFFC51455C47E00231381 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4CBFFC31455C47E00231381 /* InfoPlist.strings */; };
+		A4CBFFC71455C47E00231381 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4CBFFC61455C47E00231381 /* main.m */; };
+		A4CBFFCB1455C47E00231381 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4CBFFCA1455C47E00231381 /* AppDelegate.m */; };
+		A4CBFFD11455C47E00231381 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4CBFFCF1455C47E00231381 /* View.xib */; };
+		A4CBFFDB1455C4C600231381 /* MyHorizLine.m in Sources */ = {isa = PBXBuildFile; fileRef = A4CBFFD81455C4C600231381 /* MyHorizLine.m */; };
+		A4CBFFDC1455C4C600231381 /* MyBoundedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4CBFFDA1455C4C600231381 /* MyBoundedLabel.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4CBFFB61455C47E00231381 /* p198p204subclassUIView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p198p204subclassUIView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4CBFFBA1455C47E00231381 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4CBFFBC1455C47E00231381 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4CBFFBE1455C47E00231381 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4CBFFC21455C47E00231381 /* p198p204subclassUIView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p198p204subclassUIView-Info.plist"; sourceTree = "<group>"; };
+		A4CBFFC41455C47E00231381 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4CBFFC61455C47E00231381 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4CBFFC81455C47E00231381 /* p198p204subclassUIView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p198p204subclassUIView-Prefix.pch"; sourceTree = "<group>"; };
+		A4CBFFC91455C47E00231381 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A4CBFFCA1455C47E00231381 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A4CBFFD01455C47E00231381 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/View.xib; sourceTree = "<group>"; };
+		A4CBFFD71455C4C600231381 /* MyHorizLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHorizLine.h; sourceTree = "<group>"; };
+		A4CBFFD81455C4C600231381 /* MyHorizLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHorizLine.m; sourceTree = "<group>"; };
+		A4CBFFD91455C4C600231381 /* MyBoundedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBoundedLabel.h; sourceTree = "<group>"; };
+		A4CBFFDA1455C4C600231381 /* MyBoundedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBoundedLabel.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4CBFFB31455C47E00231381 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4CBFFBB1455C47E00231381 /* UIKit.framework in Frameworks */,
+				A4CBFFBD1455C47E00231381 /* Foundation.framework in Frameworks */,
+				A4CBFFBF1455C47E00231381 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4CBFFAB1455C47E00231381 = {
+			isa = PBXGroup;
+			children = (
+				A4CBFFC01455C47E00231381 /* p198p204subclassUIView */,
+				A4CBFFB91455C47E00231381 /* Frameworks */,
+				A4CBFFB71455C47E00231381 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4CBFFB71455C47E00231381 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4CBFFB61455C47E00231381 /* p198p204subclassUIView.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4CBFFB91455C47E00231381 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4CBFFBA1455C47E00231381 /* UIKit.framework */,
+				A4CBFFBC1455C47E00231381 /* Foundation.framework */,
+				A4CBFFBE1455C47E00231381 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4CBFFC01455C47E00231381 /* p198p204subclassUIView */ = {
+			isa = PBXGroup;
+			children = (
+				A4CBFFD71455C4C600231381 /* MyHorizLine.h */,
+				A4CBFFD81455C4C600231381 /* MyHorizLine.m */,
+				A4CBFFD91455C4C600231381 /* MyBoundedLabel.h */,
+				A4CBFFDA1455C4C600231381 /* MyBoundedLabel.m */,
+				A4CBFFC91455C47E00231381 /* AppDelegate.h */,
+				A4CBFFCA1455C47E00231381 /* AppDelegate.m */,
+				A4CBFFCF1455C47E00231381 /* View.xib */,
+				A4CBFFC11455C47E00231381 /* Supporting Files */,
+			);
+			path = p198p204subclassUIView;
+			sourceTree = "<group>";
+		};
+		A4CBFFC11455C47E00231381 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4CBFFC21455C47E00231381 /* p198p204subclassUIView-Info.plist */,
+				A4CBFFC31455C47E00231381 /* InfoPlist.strings */,
+				A4CBFFC61455C47E00231381 /* main.m */,
+				A4CBFFC81455C47E00231381 /* p198p204subclassUIView-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4CBFFB51455C47E00231381 /* p198p204subclassUIView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4CBFFD41455C47E00231381 /* Build configuration list for PBXNativeTarget "p198p204subclassUIView" */;
+			buildPhases = (
+				A4CBFFB21455C47E00231381 /* Sources */,
+				A4CBFFB31455C47E00231381 /* Frameworks */,
+				A4CBFFB41455C47E00231381 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p198p204subclassUIView;
+			productName = p198p204subclassUIView;
+			productReference = A4CBFFB61455C47E00231381 /* p198p204subclassUIView.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4CBFFAD1455C47E00231381 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A4CBFFB01455C47E00231381 /* Build configuration list for PBXProject "p198p204subclassUIView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4CBFFAB1455C47E00231381;
+			productRefGroup = A4CBFFB71455C47E00231381 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4CBFFB51455C47E00231381 /* p198p204subclassUIView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4CBFFB41455C47E00231381 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4CBFFC51455C47E00231381 /* InfoPlist.strings in Resources */,
+				A4CBFFD11455C47E00231381 /* View.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4CBFFB21455C47E00231381 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4CBFFC71455C47E00231381 /* main.m in Sources */,
+				A4CBFFCB1455C47E00231381 /* AppDelegate.m in Sources */,
+				A4CBFFDB1455C4C600231381 /* MyHorizLine.m in Sources */,
+				A4CBFFDC1455C4C600231381 /* MyBoundedLabel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4CBFFC31455C47E00231381 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4CBFFC41455C47E00231381 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A4CBFFCF1455C47E00231381 /* View.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4CBFFD01455C47E00231381 /* en */,
+			);
+			name = View.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4CBFFD21455C47E00231381 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4CBFFD31455C47E00231381 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4CBFFD51455C47E00231381 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p198p204subclassUIView/p198p204subclassUIView-Prefix.pch";
+				INFOPLIST_FILE = "p198p204subclassUIView/p198p204subclassUIView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4CBFFD61455C47E00231381 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p198p204subclassUIView/p198p204subclassUIView-Prefix.pch";
+				INFOPLIST_FILE = "p198p204subclassUIView/p198p204subclassUIView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4CBFFB01455C47E00231381 /* Build configuration list for PBXProject "p198p204subclassUIView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4CBFFD21455C47E00231381 /* Debug */,
+				A4CBFFD31455C47E00231381 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4CBFFD41455C47E00231381 /* Build configuration list for PBXNativeTarget "p198p204subclassUIView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4CBFFD51455C47E00231381 /* Debug */,
+				A4CBFFD61455C47E00231381 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4CBFFAD1455C47E00231381 /* Project object */;
+}

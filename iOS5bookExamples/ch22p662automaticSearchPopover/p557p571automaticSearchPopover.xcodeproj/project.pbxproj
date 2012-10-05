@@ -1,0 +1,279 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4310775146ECE81008EAF21 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4310774146ECE81008EAF21 /* UIKit.framework */; };
+		A4310777146ECE81008EAF21 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4310776146ECE81008EAF21 /* Foundation.framework */; };
+		A4310779146ECE81008EAF21 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4310778146ECE81008EAF21 /* CoreGraphics.framework */; };
+		A431077F146ECE81008EAF21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A431077D146ECE81008EAF21 /* InfoPlist.strings */; };
+		A4310781146ECE81008EAF21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4310780146ECE81008EAF21 /* main.m */; };
+		A4310785146ECE81008EAF21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4310784146ECE81008EAF21 /* AppDelegate.m */; };
+		A431078E146ED565008EAF21 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A431078C146ED564008EAF21 /* RootViewController.m */; };
+		A431078F146ED565008EAF21 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A431078D146ED565008EAF21 /* RootView.xib */; };
+		A4310791146ED573008EAF21 /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = A4310790146ED573008EAF21 /* states.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4310770146ECE81008EAF21 /* p557p571automaticSearchPopover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p557p571automaticSearchPopover.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4310774146ECE81008EAF21 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4310776146ECE81008EAF21 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4310778146ECE81008EAF21 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A431077C146ECE81008EAF21 /* p557p571automaticSearchPopover-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p557p571automaticSearchPopover-Info.plist"; sourceTree = "<group>"; };
+		A431077E146ECE81008EAF21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4310780146ECE81008EAF21 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4310782146ECE81008EAF21 /* p557p571automaticSearchPopover-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p557p571automaticSearchPopover-Prefix.pch"; sourceTree = "<group>"; };
+		A4310783146ECE81008EAF21 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A4310784146ECE81008EAF21 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A431078B146ED564008EAF21 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A431078C146ED564008EAF21 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A431078D146ED565008EAF21 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
+		A4310790146ED573008EAF21 /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A431076D146ECE81008EAF21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4310775146ECE81008EAF21 /* UIKit.framework in Frameworks */,
+				A4310777146ECE81008EAF21 /* Foundation.framework in Frameworks */,
+				A4310779146ECE81008EAF21 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4310765146ECE80008EAF21 = {
+			isa = PBXGroup;
+			children = (
+				A431077A146ECE81008EAF21 /* p557p571automaticSearchPopover */,
+				A4310773146ECE81008EAF21 /* Frameworks */,
+				A4310771146ECE81008EAF21 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4310771146ECE81008EAF21 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4310770146ECE81008EAF21 /* p557p571automaticSearchPopover.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4310773146ECE81008EAF21 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4310774146ECE81008EAF21 /* UIKit.framework */,
+				A4310776146ECE81008EAF21 /* Foundation.framework */,
+				A4310778146ECE81008EAF21 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A431077A146ECE81008EAF21 /* p557p571automaticSearchPopover */ = {
+			isa = PBXGroup;
+			children = (
+				A4310783146ECE81008EAF21 /* AppDelegate.h */,
+				A4310784146ECE81008EAF21 /* AppDelegate.m */,
+				A431078B146ED564008EAF21 /* RootViewController.h */,
+				A431078C146ED564008EAF21 /* RootViewController.m */,
+				A431078D146ED565008EAF21 /* RootView.xib */,
+				A431077B146ECE81008EAF21 /* Supporting Files */,
+			);
+			path = p557p571automaticSearchPopover;
+			sourceTree = "<group>";
+		};
+		A431077B146ECE81008EAF21 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4310790146ED573008EAF21 /* states.txt */,
+				A431077C146ECE81008EAF21 /* p557p571automaticSearchPopover-Info.plist */,
+				A431077D146ECE81008EAF21 /* InfoPlist.strings */,
+				A4310780146ECE81008EAF21 /* main.m */,
+				A4310782146ECE81008EAF21 /* p557p571automaticSearchPopover-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A431076F146ECE81008EAF21 /* p557p571automaticSearchPopover */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4310788146ECE81008EAF21 /* Build configuration list for PBXNativeTarget "p557p571automaticSearchPopover" */;
+			buildPhases = (
+				A431076C146ECE81008EAF21 /* Sources */,
+				A431076D146ECE81008EAF21 /* Frameworks */,
+				A431076E146ECE81008EAF21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p557p571automaticSearchPopover;
+			productName = p557p571automaticSearchPopover;
+			productReference = A4310770146ECE81008EAF21 /* p557p571automaticSearchPopover.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4310767146ECE80008EAF21 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A431076A146ECE80008EAF21 /* Build configuration list for PBXProject "p557p571automaticSearchPopover" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4310765146ECE80008EAF21;
+			productRefGroup = A4310771146ECE81008EAF21 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A431076F146ECE81008EAF21 /* p557p571automaticSearchPopover */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A431076E146ECE81008EAF21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A431077F146ECE81008EAF21 /* InfoPlist.strings in Resources */,
+				A431078F146ED565008EAF21 /* RootView.xib in Resources */,
+				A4310791146ED573008EAF21 /* states.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A431076C146ECE81008EAF21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4310781146ECE81008EAF21 /* main.m in Sources */,
+				A4310785146ECE81008EAF21 /* AppDelegate.m in Sources */,
+				A431078E146ED565008EAF21 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A431077D146ECE81008EAF21 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A431077E146ECE81008EAF21 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4310786146ECE81008EAF21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		A4310787146ECE81008EAF21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4310789146ECE81008EAF21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p557p571automaticSearchPopover/p557p571automaticSearchPopover-Prefix.pch";
+				INFOPLIST_FILE = "p557p571automaticSearchPopover/p557p571automaticSearchPopover-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A431078A146ECE81008EAF21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p557p571automaticSearchPopover/p557p571automaticSearchPopover-Prefix.pch";
+				INFOPLIST_FILE = "p557p571automaticSearchPopover/p557p571automaticSearchPopover-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A431076A146ECE80008EAF21 /* Build configuration list for PBXProject "p557p571automaticSearchPopover" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4310786146ECE81008EAF21 /* Debug */,
+				A4310787146ECE81008EAF21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4310788146ECE81008EAF21 /* Build configuration list for PBXNativeTarget "p557p571automaticSearchPopover" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4310789146ECE81008EAF21 /* Debug */,
+				A431078A146ECE81008EAF21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4310767146ECE80008EAF21 /* Project object */;
+}

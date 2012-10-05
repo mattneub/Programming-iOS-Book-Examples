@@ -1,0 +1,269 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A45F93A51456141000491FB8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45F93A41456141000491FB8 /* UIKit.framework */; };
+		A45F93A71456141000491FB8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45F93A61456141000491FB8 /* Foundation.framework */; };
+		A45F93A91456141000491FB8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45F93A81456141000491FB8 /* CoreGraphics.framework */; };
+		A45F93AF1456141000491FB8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A45F93AD1456141000491FB8 /* InfoPlist.strings */; };
+		A45F93B11456141000491FB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A45F93B01456141000491FB8 /* main.m */; };
+		A45F93B51456141000491FB8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A45F93B41456141000491FB8 /* AppDelegate.m */; };
+		A45F93BD1456143800491FB8 /* MyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A45F93BC1456143800491FB8 /* MyClass.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A45F93A01456141000491FB8 /* p252p258keyPaths.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p252p258keyPaths.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A45F93A41456141000491FB8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A45F93A61456141000491FB8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A45F93A81456141000491FB8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A45F93AC1456141000491FB8 /* p252p258keyPaths-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p252p258keyPaths-Info.plist"; sourceTree = "<group>"; };
+		A45F93AE1456141000491FB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A45F93B01456141000491FB8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A45F93B21456141000491FB8 /* p252p258keyPaths-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p252p258keyPaths-Prefix.pch"; sourceTree = "<group>"; };
+		A45F93B31456141000491FB8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A45F93B41456141000491FB8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A45F93BB1456143800491FB8 /* MyClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClass.h; sourceTree = "<group>"; };
+		A45F93BC1456143800491FB8 /* MyClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClass.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A45F939D1456141000491FB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A45F93A51456141000491FB8 /* UIKit.framework in Frameworks */,
+				A45F93A71456141000491FB8 /* Foundation.framework in Frameworks */,
+				A45F93A91456141000491FB8 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A45F93951456141000491FB8 = {
+			isa = PBXGroup;
+			children = (
+				A45F93AA1456141000491FB8 /* p252p258keyPaths */,
+				A45F93A31456141000491FB8 /* Frameworks */,
+				A45F93A11456141000491FB8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A45F93A11456141000491FB8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A45F93A01456141000491FB8 /* p252p258keyPaths.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A45F93A31456141000491FB8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A45F93A41456141000491FB8 /* UIKit.framework */,
+				A45F93A61456141000491FB8 /* Foundation.framework */,
+				A45F93A81456141000491FB8 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A45F93AA1456141000491FB8 /* p252p258keyPaths */ = {
+			isa = PBXGroup;
+			children = (
+				A45F93BB1456143800491FB8 /* MyClass.h */,
+				A45F93BC1456143800491FB8 /* MyClass.m */,
+				A45F93B31456141000491FB8 /* AppDelegate.h */,
+				A45F93B41456141000491FB8 /* AppDelegate.m */,
+				A45F93AB1456141000491FB8 /* Supporting Files */,
+			);
+			path = p252p258keyPaths;
+			sourceTree = "<group>";
+		};
+		A45F93AB1456141000491FB8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A45F93AC1456141000491FB8 /* p252p258keyPaths-Info.plist */,
+				A45F93AD1456141000491FB8 /* InfoPlist.strings */,
+				A45F93B01456141000491FB8 /* main.m */,
+				A45F93B21456141000491FB8 /* p252p258keyPaths-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A45F939F1456141000491FB8 /* p252p258keyPaths */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A45F93B81456141000491FB8 /* Build configuration list for PBXNativeTarget "p252p258keyPaths" */;
+			buildPhases = (
+				A45F939C1456141000491FB8 /* Sources */,
+				A45F939D1456141000491FB8 /* Frameworks */,
+				A45F939E1456141000491FB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p252p258keyPaths;
+			productName = p252p258keyPaths;
+			productReference = A45F93A01456141000491FB8 /* p252p258keyPaths.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A45F93971456141000491FB8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A45F939A1456141000491FB8 /* Build configuration list for PBXProject "p252p258keyPaths" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A45F93951456141000491FB8;
+			productRefGroup = A45F93A11456141000491FB8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A45F939F1456141000491FB8 /* p252p258keyPaths */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A45F939E1456141000491FB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A45F93AF1456141000491FB8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A45F939C1456141000491FB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A45F93B11456141000491FB8 /* main.m in Sources */,
+				A45F93B51456141000491FB8 /* AppDelegate.m in Sources */,
+				A45F93BD1456143800491FB8 /* MyClass.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A45F93AD1456141000491FB8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A45F93AE1456141000491FB8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A45F93B61456141000491FB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A45F93B71456141000491FB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A45F93B91456141000491FB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p252p258keyPaths/p252p258keyPaths-Prefix.pch";
+				INFOPLIST_FILE = "p252p258keyPaths/p252p258keyPaths-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A45F93BA1456141000491FB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p252p258keyPaths/p252p258keyPaths-Prefix.pch";
+				INFOPLIST_FILE = "p252p258keyPaths/p252p258keyPaths-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A45F939A1456141000491FB8 /* Build configuration list for PBXProject "p252p258keyPaths" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A45F93B61456141000491FB8 /* Debug */,
+				A45F93B71456141000491FB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A45F93B81456141000491FB8 /* Build configuration list for PBXNativeTarget "p252p258keyPaths" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A45F93B91456141000491FB8 /* Debug */,
+				A45F93BA1456141000491FB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A45F93971456141000491FB8 /* Project object */;
+}

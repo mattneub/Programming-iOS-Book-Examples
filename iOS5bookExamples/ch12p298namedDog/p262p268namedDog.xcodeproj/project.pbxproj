@@ -1,0 +1,269 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A45F93D214561CBC00491FB8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45F93D114561CBC00491FB8 /* UIKit.framework */; };
+		A45F93D414561CBC00491FB8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45F93D314561CBC00491FB8 /* Foundation.framework */; };
+		A45F93D614561CBC00491FB8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45F93D514561CBC00491FB8 /* CoreGraphics.framework */; };
+		A45F93DC14561CBC00491FB8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A45F93DA14561CBC00491FB8 /* InfoPlist.strings */; };
+		A45F93DE14561CBC00491FB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A45F93DD14561CBC00491FB8 /* main.m */; };
+		A45F93E214561CBC00491FB8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A45F93E114561CBC00491FB8 /* AppDelegate.m */; };
+		A45F93EA14561CFA00491FB8 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = A45F93E914561CFA00491FB8 /* Dog.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A45F93CD14561CBC00491FB8 /* p262p268namedDog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p262p268namedDog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A45F93D114561CBC00491FB8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A45F93D314561CBC00491FB8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A45F93D514561CBC00491FB8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A45F93D914561CBC00491FB8 /* p262p268namedDog-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p262p268namedDog-Info.plist"; sourceTree = "<group>"; };
+		A45F93DB14561CBC00491FB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A45F93DD14561CBC00491FB8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A45F93DF14561CBC00491FB8 /* p262p268namedDog-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p262p268namedDog-Prefix.pch"; sourceTree = "<group>"; };
+		A45F93E014561CBC00491FB8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A45F93E114561CBC00491FB8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A45F93E814561CFA00491FB8 /* Dog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dog.h; sourceTree = "<group>"; };
+		A45F93E914561CFA00491FB8 /* Dog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dog.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A45F93CA14561CBC00491FB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A45F93D214561CBC00491FB8 /* UIKit.framework in Frameworks */,
+				A45F93D414561CBC00491FB8 /* Foundation.framework in Frameworks */,
+				A45F93D614561CBC00491FB8 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A45F93C214561CBC00491FB8 = {
+			isa = PBXGroup;
+			children = (
+				A45F93D714561CBC00491FB8 /* p262p268namedDog */,
+				A45F93D014561CBC00491FB8 /* Frameworks */,
+				A45F93CE14561CBC00491FB8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A45F93CE14561CBC00491FB8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A45F93CD14561CBC00491FB8 /* p262p268namedDog.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A45F93D014561CBC00491FB8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A45F93D114561CBC00491FB8 /* UIKit.framework */,
+				A45F93D314561CBC00491FB8 /* Foundation.framework */,
+				A45F93D514561CBC00491FB8 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A45F93D714561CBC00491FB8 /* p262p268namedDog */ = {
+			isa = PBXGroup;
+			children = (
+				A45F93E814561CFA00491FB8 /* Dog.h */,
+				A45F93E914561CFA00491FB8 /* Dog.m */,
+				A45F93E014561CBC00491FB8 /* AppDelegate.h */,
+				A45F93E114561CBC00491FB8 /* AppDelegate.m */,
+				A45F93D814561CBC00491FB8 /* Supporting Files */,
+			);
+			path = p262p268namedDog;
+			sourceTree = "<group>";
+		};
+		A45F93D814561CBC00491FB8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A45F93D914561CBC00491FB8 /* p262p268namedDog-Info.plist */,
+				A45F93DA14561CBC00491FB8 /* InfoPlist.strings */,
+				A45F93DD14561CBC00491FB8 /* main.m */,
+				A45F93DF14561CBC00491FB8 /* p262p268namedDog-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A45F93CC14561CBC00491FB8 /* p262p268namedDog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A45F93E514561CBC00491FB8 /* Build configuration list for PBXNativeTarget "p262p268namedDog" */;
+			buildPhases = (
+				A45F93C914561CBC00491FB8 /* Sources */,
+				A45F93CA14561CBC00491FB8 /* Frameworks */,
+				A45F93CB14561CBC00491FB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p262p268namedDog;
+			productName = p262p268namedDog;
+			productReference = A45F93CD14561CBC00491FB8 /* p262p268namedDog.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A45F93C414561CBC00491FB8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A45F93C714561CBC00491FB8 /* Build configuration list for PBXProject "p262p268namedDog" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A45F93C214561CBC00491FB8;
+			productRefGroup = A45F93CE14561CBC00491FB8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A45F93CC14561CBC00491FB8 /* p262p268namedDog */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A45F93CB14561CBC00491FB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A45F93DC14561CBC00491FB8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A45F93C914561CBC00491FB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A45F93DE14561CBC00491FB8 /* main.m in Sources */,
+				A45F93E214561CBC00491FB8 /* AppDelegate.m in Sources */,
+				A45F93EA14561CFA00491FB8 /* Dog.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A45F93DA14561CBC00491FB8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A45F93DB14561CBC00491FB8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A45F93E314561CBC00491FB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A45F93E414561CBC00491FB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A45F93E614561CBC00491FB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p262p268namedDog/p262p268namedDog-Prefix.pch";
+				INFOPLIST_FILE = "p262p268namedDog/p262p268namedDog-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A45F93E714561CBC00491FB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p262p268namedDog/p262p268namedDog-Prefix.pch";
+				INFOPLIST_FILE = "p262p268namedDog/p262p268namedDog-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A45F93C714561CBC00491FB8 /* Build configuration list for PBXProject "p262p268namedDog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A45F93E314561CBC00491FB8 /* Debug */,
+				A45F93E414561CBC00491FB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A45F93E514561CBC00491FB8 /* Build configuration list for PBXNativeTarget "p262p268namedDog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A45F93E614561CBC00491FB8 /* Debug */,
+				A45F93E714561CBC00491FB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A45F93C414561CBC00491FB8 /* Project object */;
+}

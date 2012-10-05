@@ -1,0 +1,291 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A49A960C149199B700FC5520 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49A960B149199B700FC5520 /* UIKit.framework */; };
+		A49A960E149199B700FC5520 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49A960D149199B700FC5520 /* Foundation.framework */; };
+		A49A9610149199B700FC5520 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49A960F149199B700FC5520 /* CoreGraphics.framework */; };
+		A49A9616149199B700FC5520 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A49A9614149199B700FC5520 /* InfoPlist.strings */; };
+		A49A9618149199B700FC5520 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A9617149199B700FC5520 /* main.m */; };
+		A49A961C149199B700FC5520 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A961B149199B700FC5520 /* AppDelegate.m */; };
+		A49A961F149199B700FC5520 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A961E149199B700FC5520 /* ViewController.m */; };
+		A49A9622149199B700FC5520 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49A9620149199B700FC5520 /* ViewController.xib */; };
+		A49A962A14919A0600FC5520 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A962914919A0500FC5520 /* MyView.m */; };
+		A49A962C14919AF500FC5520 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49A962B14919AF500FC5520 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A49A9607149199B700FC5520 /* p426hitTestingDistortedLayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p426hitTestingDistortedLayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A49A960B149199B700FC5520 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A49A960D149199B700FC5520 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A49A960F149199B700FC5520 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A49A9613149199B700FC5520 /* p426hitTestingDistortedLayer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p426hitTestingDistortedLayer-Info.plist"; sourceTree = "<group>"; };
+		A49A9615149199B700FC5520 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A49A9617149199B700FC5520 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A49A9619149199B700FC5520 /* p426hitTestingDistortedLayer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p426hitTestingDistortedLayer-Prefix.pch"; sourceTree = "<group>"; };
+		A49A961A149199B700FC5520 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A49A961B149199B700FC5520 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A49A961D149199B700FC5520 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A49A961E149199B700FC5520 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A49A9621149199B700FC5520 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		A49A962814919A0500FC5520 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
+		A49A962914919A0500FC5520 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
+		A49A962B14919AF500FC5520 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A49A9604149199B700FC5520 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A49A962C14919AF500FC5520 /* QuartzCore.framework in Frameworks */,
+				A49A960C149199B700FC5520 /* UIKit.framework in Frameworks */,
+				A49A960E149199B700FC5520 /* Foundation.framework in Frameworks */,
+				A49A9610149199B700FC5520 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A49A95FC149199B600FC5520 = {
+			isa = PBXGroup;
+			children = (
+				A49A962B14919AF500FC5520 /* QuartzCore.framework */,
+				A49A9611149199B700FC5520 /* p426hitTestingDistortedLayer */,
+				A49A960A149199B700FC5520 /* Frameworks */,
+				A49A9608149199B700FC5520 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A49A9608149199B700FC5520 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A49A9607149199B700FC5520 /* p426hitTestingDistortedLayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A49A960A149199B700FC5520 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A49A960B149199B700FC5520 /* UIKit.framework */,
+				A49A960D149199B700FC5520 /* Foundation.framework */,
+				A49A960F149199B700FC5520 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A49A9611149199B700FC5520 /* p426hitTestingDistortedLayer */ = {
+			isa = PBXGroup;
+			children = (
+				A49A961A149199B700FC5520 /* AppDelegate.h */,
+				A49A961B149199B700FC5520 /* AppDelegate.m */,
+				A49A961D149199B700FC5520 /* ViewController.h */,
+				A49A961E149199B700FC5520 /* ViewController.m */,
+				A49A9620149199B700FC5520 /* ViewController.xib */,
+				A49A962814919A0500FC5520 /* MyView.h */,
+				A49A962914919A0500FC5520 /* MyView.m */,
+				A49A9612149199B700FC5520 /* Supporting Files */,
+			);
+			path = p426hitTestingDistortedLayer;
+			sourceTree = "<group>";
+		};
+		A49A9612149199B700FC5520 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A49A9613149199B700FC5520 /* p426hitTestingDistortedLayer-Info.plist */,
+				A49A9614149199B700FC5520 /* InfoPlist.strings */,
+				A49A9617149199B700FC5520 /* main.m */,
+				A49A9619149199B700FC5520 /* p426hitTestingDistortedLayer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A49A9606149199B700FC5520 /* p426hitTestingDistortedLayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A49A9625149199B700FC5520 /* Build configuration list for PBXNativeTarget "p426hitTestingDistortedLayer" */;
+			buildPhases = (
+				A49A9603149199B700FC5520 /* Sources */,
+				A49A9604149199B700FC5520 /* Frameworks */,
+				A49A9605149199B700FC5520 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p426hitTestingDistortedLayer;
+			productName = p426hitTestingDistortedLayer;
+			productReference = A49A9607149199B700FC5520 /* p426hitTestingDistortedLayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A49A95FE149199B600FC5520 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A49A9601149199B600FC5520 /* Build configuration list for PBXProject "p426hitTestingDistortedLayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A49A95FC149199B600FC5520;
+			productRefGroup = A49A9608149199B700FC5520 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A49A9606149199B700FC5520 /* p426hitTestingDistortedLayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A49A9605149199B700FC5520 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A49A9616149199B700FC5520 /* InfoPlist.strings in Resources */,
+				A49A9622149199B700FC5520 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A49A9603149199B700FC5520 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A49A9618149199B700FC5520 /* main.m in Sources */,
+				A49A961C149199B700FC5520 /* AppDelegate.m in Sources */,
+				A49A961F149199B700FC5520 /* ViewController.m in Sources */,
+				A49A962A14919A0600FC5520 /* MyView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A49A9614149199B700FC5520 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A49A9615149199B700FC5520 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A49A9620149199B700FC5520 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A49A9621149199B700FC5520 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A49A9623149199B700FC5520 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A49A9624149199B700FC5520 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A49A9626149199B700FC5520 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p426hitTestingDistortedLayer/p426hitTestingDistortedLayer-Prefix.pch";
+				INFOPLIST_FILE = "p426hitTestingDistortedLayer/p426hitTestingDistortedLayer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A49A9627149199B700FC5520 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p426hitTestingDistortedLayer/p426hitTestingDistortedLayer-Prefix.pch";
+				INFOPLIST_FILE = "p426hitTestingDistortedLayer/p426hitTestingDistortedLayer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A49A9601149199B600FC5520 /* Build configuration list for PBXProject "p426hitTestingDistortedLayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A49A9623149199B700FC5520 /* Debug */,
+				A49A9624149199B700FC5520 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A49A9625149199B700FC5520 /* Build configuration list for PBXNativeTarget "p426hitTestingDistortedLayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A49A9626149199B700FC5520 /* Debug */,
+				A49A9627149199B700FC5520 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A49A95FE149199B600FC5520 /* Project object */;
+}

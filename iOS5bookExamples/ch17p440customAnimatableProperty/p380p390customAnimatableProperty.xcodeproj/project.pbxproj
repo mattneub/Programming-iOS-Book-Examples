@@ -1,0 +1,279 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A443E03C145CD756001CCB80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A443E03B145CD756001CCB80 /* UIKit.framework */; };
+		A443E03E145CD756001CCB80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A443E03D145CD756001CCB80 /* Foundation.framework */; };
+		A443E040145CD756001CCB80 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A443E03F145CD756001CCB80 /* CoreGraphics.framework */; };
+		A443E046145CD756001CCB80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A443E044145CD756001CCB80 /* InfoPlist.strings */; };
+		A443E048145CD756001CCB80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A443E047145CD756001CCB80 /* main.m */; };
+		A443E04C145CD756001CCB80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A443E04B145CD756001CCB80 /* AppDelegate.m */; };
+		A443E056145CD78E001CCB80 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A443E053145CD78E001CCB80 /* MyView.m */; };
+		A443E057145CD78E001CCB80 /* MyLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A443E055145CD78E001CCB80 /* MyLayer.m */; };
+		A443E059145CD86A001CCB80 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A443E058145CD86A001CCB80 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A443E037145CD756001CCB80 /* p380p390customAnimatableProperty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p380p390customAnimatableProperty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A443E03B145CD756001CCB80 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A443E03D145CD756001CCB80 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A443E03F145CD756001CCB80 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A443E043145CD756001CCB80 /* p380p390customAnimatableProperty-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p380p390customAnimatableProperty-Info.plist"; sourceTree = "<group>"; };
+		A443E045145CD756001CCB80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A443E047145CD756001CCB80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A443E049145CD756001CCB80 /* p380p390customAnimatableProperty-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p380p390customAnimatableProperty-Prefix.pch"; sourceTree = "<group>"; };
+		A443E04A145CD756001CCB80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A443E04B145CD756001CCB80 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A443E052145CD78E001CCB80 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
+		A443E053145CD78E001CCB80 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
+		A443E054145CD78E001CCB80 /* MyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLayer.h; sourceTree = "<group>"; };
+		A443E055145CD78E001CCB80 /* MyLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLayer.m; sourceTree = "<group>"; };
+		A443E058145CD86A001CCB80 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A443E034145CD756001CCB80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A443E059145CD86A001CCB80 /* QuartzCore.framework in Frameworks */,
+				A443E03C145CD756001CCB80 /* UIKit.framework in Frameworks */,
+				A443E03E145CD756001CCB80 /* Foundation.framework in Frameworks */,
+				A443E040145CD756001CCB80 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A443E02C145CD756001CCB80 = {
+			isa = PBXGroup;
+			children = (
+				A443E041145CD756001CCB80 /* p380p390customAnimatableProperty */,
+				A443E03A145CD756001CCB80 /* Frameworks */,
+				A443E038145CD756001CCB80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A443E038145CD756001CCB80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A443E037145CD756001CCB80 /* p380p390customAnimatableProperty.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A443E03A145CD756001CCB80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A443E058145CD86A001CCB80 /* QuartzCore.framework */,
+				A443E03B145CD756001CCB80 /* UIKit.framework */,
+				A443E03D145CD756001CCB80 /* Foundation.framework */,
+				A443E03F145CD756001CCB80 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A443E041145CD756001CCB80 /* p380p390customAnimatableProperty */ = {
+			isa = PBXGroup;
+			children = (
+				A443E052145CD78E001CCB80 /* MyView.h */,
+				A443E053145CD78E001CCB80 /* MyView.m */,
+				A443E054145CD78E001CCB80 /* MyLayer.h */,
+				A443E055145CD78E001CCB80 /* MyLayer.m */,
+				A443E04A145CD756001CCB80 /* AppDelegate.h */,
+				A443E04B145CD756001CCB80 /* AppDelegate.m */,
+				A443E042145CD756001CCB80 /* Supporting Files */,
+			);
+			path = p380p390customAnimatableProperty;
+			sourceTree = "<group>";
+		};
+		A443E042145CD756001CCB80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A443E043145CD756001CCB80 /* p380p390customAnimatableProperty-Info.plist */,
+				A443E044145CD756001CCB80 /* InfoPlist.strings */,
+				A443E047145CD756001CCB80 /* main.m */,
+				A443E049145CD756001CCB80 /* p380p390customAnimatableProperty-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A443E036145CD756001CCB80 /* p380p390customAnimatableProperty */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A443E04F145CD756001CCB80 /* Build configuration list for PBXNativeTarget "p380p390customAnimatableProperty" */;
+			buildPhases = (
+				A443E033145CD756001CCB80 /* Sources */,
+				A443E034145CD756001CCB80 /* Frameworks */,
+				A443E035145CD756001CCB80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p380p390customAnimatableProperty;
+			productName = p380p390customAnimatableProperty;
+			productReference = A443E037145CD756001CCB80 /* p380p390customAnimatableProperty.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A443E02E145CD756001CCB80 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A443E031145CD756001CCB80 /* Build configuration list for PBXProject "p380p390customAnimatableProperty" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A443E02C145CD756001CCB80;
+			productRefGroup = A443E038145CD756001CCB80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A443E036145CD756001CCB80 /* p380p390customAnimatableProperty */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A443E035145CD756001CCB80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A443E046145CD756001CCB80 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A443E033145CD756001CCB80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A443E048145CD756001CCB80 /* main.m in Sources */,
+				A443E04C145CD756001CCB80 /* AppDelegate.m in Sources */,
+				A443E056145CD78E001CCB80 /* MyView.m in Sources */,
+				A443E057145CD78E001CCB80 /* MyLayer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A443E044145CD756001CCB80 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A443E045145CD756001CCB80 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A443E04D145CD756001CCB80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A443E04E145CD756001CCB80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A443E050145CD756001CCB80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p380p390customAnimatableProperty/p380p390customAnimatableProperty-Prefix.pch";
+				INFOPLIST_FILE = "p380p390customAnimatableProperty/p380p390customAnimatableProperty-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A443E051145CD756001CCB80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "p380p390customAnimatableProperty/p380p390customAnimatableProperty-Prefix.pch";
+				INFOPLIST_FILE = "p380p390customAnimatableProperty/p380p390customAnimatableProperty-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A443E031145CD756001CCB80 /* Build configuration list for PBXProject "p380p390customAnimatableProperty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A443E04D145CD756001CCB80 /* Debug */,
+				A443E04E145CD756001CCB80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A443E04F145CD756001CCB80 /* Build configuration list for PBXNativeTarget "p380p390customAnimatableProperty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A443E050145CD756001CCB80 /* Debug */,
+				A443E051145CD756001CCB80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A443E02E145CD756001CCB80 /* Project object */;
+}
