@@ -6,8 +6,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-
 - (UIWindow*) window {
     UIWindow* w = self->_window;
     if (!w) {

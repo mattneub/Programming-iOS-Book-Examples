@@ -6,7 +6,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -37,7 +36,7 @@
             v2.backgroundColor = [UIColor colorWithRed:.5 green:1 blue:0 alpha:1];
             [self.window.rootViewController.view addSubview: v1];
             [v1 addSubview: v2];
-            
+
             v1.transform = CGAffineTransformMakeScale(1.8, 1);
             
             break;

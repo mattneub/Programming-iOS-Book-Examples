@@ -221,6 +221,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p304p312autoresizing/p304p312autoresizing-Prefix.pch";
 				INFOPLIST_FILE = "p304p312autoresizing/p304p312autoresizing-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -232,6 +233,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p304p312autoresizing/p304p312autoresizing-Prefix.pch";
 				INFOPLIST_FILE = "p304p312autoresizing/p304p312autoresizing-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -256,6 +258,7 @@
 				A495019D14588200008EF035 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

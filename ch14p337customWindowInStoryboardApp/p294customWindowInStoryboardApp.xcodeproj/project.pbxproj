@@ -23,10 +23,10 @@
 		A44251DA14866CD400EF3F37 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A44251DC14866CD400EF3F37 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A44251DE14866CD400EF3F37 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A44251E214866CD400EF3F37 /* p294customWindowInStoryboardApp-Info.plist */ = {isa = PBXFileReference; path = "p294customWindowInStoryboardApp-Info.plist"; sourceTree = "<group>"; };
+		A44251E214866CD400EF3F37 /* p294customWindowInStoryboardApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p294customWindowInStoryboardApp-Info.plist"; sourceTree = "<group>"; };
 		A44251E414866CD400EF3F37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A44251E614866CD400EF3F37 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A44251E814866CD400EF3F37 /* p294customWindowInStoryboardApp-Prefix.pch */ = {isa = PBXFileReference; path = "p294customWindowInStoryboardApp-Prefix.pch"; sourceTree = "<group>"; };
+		A44251E814866CD400EF3F37 /* p294customWindowInStoryboardApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p294customWindowInStoryboardApp-Prefix.pch"; sourceTree = "<group>"; };
 		A44251E914866CD400EF3F37 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A44251EA14866CD400EF3F37 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A44251ED14866CD400EF3F37 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -245,6 +245,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestingStoryboard/p294customWindowInStoryboardApp-Prefix.pch";
 				INFOPLIST_FILE = "TestingStoryboard/p294customWindowInStoryboardApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p294customWindowInStoryboardApp;
 				WRAPPER_EXTENSION = app;
 			};
@@ -256,6 +257,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestingStoryboard/p294customWindowInStoryboardApp-Prefix.pch";
 				INFOPLIST_FILE = "TestingStoryboard/p294customWindowInStoryboardApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p294customWindowInStoryboardApp;
 				WRAPPER_EXTENSION = app;
 			};
@@ -280,6 +282,7 @@
 				A44251F614866CD400EF3F37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
