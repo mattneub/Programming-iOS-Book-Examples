@@ -4,36 +4,32 @@
 
 
 @implementation MyClass
-@synthesize theData;
+
+// completely rewritten to use new literals and subscripting
 
 - (id)init {
     self = [super init];
     if (self) {
         NSMutableArray* marr = [NSMutableArray array];
-        NSDictionary* d = nil;
-        d = [NSDictionary dictionaryWithObjectsAndKeys:
-             @"Manny",
-             @"name",
-             @"The one with glasses.",
-             @"description",
-             nil];
+        NSDictionary* d;
+        d = @{
+             @"name" : @"Manny",
+             @"description" : @"The one with glasses."
+        };
         [marr addObject:d];
-        d = [NSDictionary dictionaryWithObjectsAndKeys:
-             @"Moe",
-             @"name",
-             @"Looks a little like Governor Dewey.",
-             @"description",
-             nil];
+        d = @{
+             @"name" : @"Moe",
+             @"description" : @"Looks a little like Governor Dewey."
+        };
         [marr addObject:d];
-        d = [NSDictionary dictionaryWithObjectsAndKeys:
-             @"Jack",
-             @"name",
-             @"The one without a mustache.",
-             @"description",
-             nil];
+        d = @{
+             @"name" : @"Jack",
+             @"description" : @"The one without a mustache."
+        };
         [marr addObject:d];
         NSLog(@"initializing data:\n%@",marr);
-        self->theData = marr; // isn't ARC fun?
+        self->_theData = marr; // and ARC retains
+        // note that autosynthesized accessor means autosynthesized variable name as underscore
     }
     return self;
 }
@@ -41,15 +37,15 @@
 // KVC facade
 
 - (NSUInteger) countOfPepBoys { 
-    return [self.theData count];
+    return self.theData.count;
 }
 
 - (id) objectInPepBoysAtIndex: (NSUInteger) ix { 
-    return [self.theData objectAtIndex: ix];
+    return self.theData[ix];
 }
 
 - (void) insertObject: (id) val inPepBoysAtIndex: (NSUInteger) ix { 
-    [self.theData insertObject:val atIndex:ix];
+    self.theData[ix] = val;
 }
 
 - (void) removeObjectFromPepBoysAtIndex: (NSUInteger) ix { 

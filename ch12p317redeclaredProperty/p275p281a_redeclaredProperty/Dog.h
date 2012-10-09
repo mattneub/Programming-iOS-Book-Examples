@@ -3,8 +3,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface Dog : NSObject {
-}
+@interface Dog : NSObject
 
 - (id) initWithName: (NSString*) s;
 - (void) dummy;

@@ -5,8 +5,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize mainViewController = _mainViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

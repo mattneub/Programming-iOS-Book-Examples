@@ -227,6 +227,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p090p092numberedDogWithInitializer/p090p092numberedDogWithInitializer-Prefix.pch";
 				INFOPLIST_FILE = "p090p092numberedDogWithInitializer/p090p092numberedDogWithInitializer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -238,6 +239,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p090p092numberedDogWithInitializer/p090p092numberedDogWithInitializer-Prefix.pch";
 				INFOPLIST_FILE = "p090p092numberedDogWithInitializer/p090p092numberedDogWithInitializer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -262,6 +264,7 @@
 				A4FAAAE41454BDD600F409F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -4,36 +4,29 @@
 
 
 @implementation MyClass1
-@synthesize theData;
 
 - (id)init {
     self = [super init];
     if (self) {
         NSMutableArray* marr = [NSMutableArray array];
-        NSDictionary* d = nil;
-        d = [NSDictionary dictionaryWithObjectsAndKeys:
-             @"Manny",
-             @"name",
-             @"The one with glasses.",
-             @"description",
-             nil];
+        NSDictionary* d;
+        d = @{
+            @"name" : @"Manny",
+            @"description" : @"The one with glasses."
+        };
         [marr addObject:d];
-        d = [NSDictionary dictionaryWithObjectsAndKeys:
-             @"Moe",
-             @"name",
-             @"Looks a little like Governor Dewey.",
-             @"description",
-             nil];
+        d = @{
+            @"name" : @"Moe",
+            @"description" : @"Looks a little like Governor Dewey."
+        };
         [marr addObject:d];
-        d = [NSDictionary dictionaryWithObjectsAndKeys:
-             @"Jack",
-             @"name",
-             @"The one without a mustache.",
-             @"description",
-             nil];
+        d = @{
+            @"name" : @"Jack",
+            @"description" : @"The one without a mustache."
+        };
         [marr addObject:d];
         NSLog(@"%@",marr);
-        self->theData = marr; 
+        self->_theData = marr;
     }
     return self;
 }
@@ -43,19 +36,19 @@
 }
 
 - (NSUInteger) countOfTheData {
-    return [self->theData count];
+    return self->_theData.count;
 }
 
 - (id) objectInTheDataAtIndex: (NSUInteger) ix {
-    return [self->theData objectAtIndex: ix];
+    return self->_theData[ix];
 }
 
 - (void) insertObject: (id) val inTheDataAtIndex: (NSUInteger) ix {
-    [self->theData insertObject:val atIndex:ix];
+    self->_theData[ix] = val;
 }
 
 - (void) removeObjectFromTheDataAtIndex: (NSUInteger) ix {
-    [self->theData removeObjectAtIndex: ix];
+    [self->_theData removeObjectAtIndex: ix];
 }
 
 

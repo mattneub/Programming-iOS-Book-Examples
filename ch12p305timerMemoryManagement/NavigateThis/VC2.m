@@ -29,12 +29,16 @@
 // comment this out and you'll discover that you've created a memory leak:
 // this VC2 instance and everything depending on it is never deallocated
 
+///*
+
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     if ([self isMovingFromParentViewController]) {
         [self->timer invalidate];
     }
 }
+ 
+// */
 
 - (void)dealloc {
     [self->timer invalidate]; // this will probably do nothing;

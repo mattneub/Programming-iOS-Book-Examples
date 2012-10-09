@@ -4,15 +4,17 @@
 
 
 @implementation Dog
-@synthesize name;
 
 // complete memory management of an ivar, synthesized accessors
 // this example is not exactly in the book, but it makes a nice follow-on from the previous example
+// really should add it now, as it is useful to illustrate authosynthesis formally
+
+// autosynthesis, ivar is called _name
 
 - (id) initWithName: (NSString*) s { 
     self = [super init]; 
     if (self) {
-        self->name = [s copy];
+        self->_name = [s copy];
     }
     return self;
 }

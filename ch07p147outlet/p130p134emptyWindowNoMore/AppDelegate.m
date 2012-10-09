@@ -7,10 +7,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize viewController = _viewController;
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -27,8 +23,12 @@
     [[NSBundle mainBundle] loadNibNamed:@"MyNib" owner:mc options:nil];
     UILabel* lab = [mc valueForKey: @"theLabel"];
     [self.window.rootViewController.view addSubview: lab]; //
+    
     lab.center = CGPointMake(100,100);
-    lab.frame = CGRectIntegral(lab.frame); //
+    lab.frame = CGRectIntegral(lab.frame);
+    
+    // the above is fine for now; no constraints will magically be added
+    // NSLog(@"%@", lab.constraints); // empty array
 
     // Now, you could argue that MyClass isn't really needed:
     // we could just as well have used AppDelegate itself (self) as MyNib's owner

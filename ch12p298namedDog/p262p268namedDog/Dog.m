@@ -12,14 +12,15 @@
 // however, it is still useful for showing init, and what hand-written accessors might look like
 
 {
-    NSString* name; // strong by default
+    NSString* _name; // strong by default
+    // NB: rewrote ivar name with underscore, to match new convention
 }
 
 
 - (id) initWithName: (NSString*) s { 
     self = [super init]; 
     if (self) {
-        self->name = [s copy];
+        self->_name = [s copy]; //
     }
     return self;
 }
@@ -30,12 +31,12 @@
 }
 
 - (NSString*) name {
-    return self->name;
+    return self->_name; //
 }
 
 //- (void) setName: (NSString*) s {
-//    if (self->name != s) {
-//        self->name = [s copy];
+//    if (self->_name != s) {
+//        self->_name = [s copy];
 //    }
 //}
 

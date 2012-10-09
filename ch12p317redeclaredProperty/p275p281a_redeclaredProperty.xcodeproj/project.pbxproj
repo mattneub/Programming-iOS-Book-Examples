@@ -227,6 +227,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p275p281a_redeclaredProperty/p275p281a_redeclaredProperty-Prefix.pch";
 				INFOPLIST_FILE = "p275p281a_redeclaredProperty/p275p281a_redeclaredProperty-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -238,6 +239,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p275p281a_redeclaredProperty/p275p281a_redeclaredProperty-Prefix.pch";
 				INFOPLIST_FILE = "p275p281a_redeclaredProperty/p275p281a_redeclaredProperty-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -262,6 +264,7 @@
 				A498F2FA14572F8100599F24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -233,6 +233,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p288p296kvoOnMutableArray/p288p296kvoOnMutableArray-Prefix.pch";
 				INFOPLIST_FILE = "p288p296kvoOnMutableArray/p288p296kvoOnMutableArray-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -244,6 +245,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p288p296kvoOnMutableArray/p288p296kvoOnMutableArray-Prefix.pch";
 				INFOPLIST_FILE = "p288p296kvoOnMutableArray/p288p296kvoOnMutableArray-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -268,6 +270,7 @@
 				A4724A881457402B00A9C7C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

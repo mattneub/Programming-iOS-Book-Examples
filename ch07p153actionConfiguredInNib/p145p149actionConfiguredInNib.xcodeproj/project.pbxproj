@@ -27,10 +27,10 @@
 		A4FAAAFB1454E1B700F409F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A4FAAAFD1454E1B700F409F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A4FAAAFF1454E1B700F409F5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A4FAAB031454E1B700F409F5 /* p145p149actionConfiguredInNib-Info.plist */ = {isa = PBXFileReference; path = "p145p149actionConfiguredInNib-Info.plist"; sourceTree = "<group>"; };
+		A4FAAB031454E1B700F409F5 /* p145p149actionConfiguredInNib-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p145p149actionConfiguredInNib-Info.plist"; sourceTree = "<group>"; };
 		A4FAAB051454E1B700F409F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A4FAAB071454E1B700F409F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A4FAAB091454E1B700F409F5 /* p145p149actionConfiguredInNib-Prefix.pch */ = {isa = PBXFileReference; path = "p145p149actionConfiguredInNib-Prefix.pch"; sourceTree = "<group>"; };
+		A4FAAB091454E1B700F409F5 /* p145p149actionConfiguredInNib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p145p149actionConfiguredInNib-Prefix.pch"; sourceTree = "<group>"; };
 		A4FAAB0A1454E1B700F409F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A4FAAB0B1454E1B700F409F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A4FAAB0D1454E1B700F409F5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -250,6 +250,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p130p134emptyWindowNoMore/p145p149actionConfiguredInNib-Prefix.pch";
 				INFOPLIST_FILE = "p130p134emptyWindowNoMore/p145p149actionConfiguredInNib-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p145p149actionConfiguredInNib;
 				WRAPPER_EXTENSION = app;
 			};
@@ -261,6 +262,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p130p134emptyWindowNoMore/p145p149actionConfiguredInNib-Prefix.pch";
 				INFOPLIST_FILE = "p130p134emptyWindowNoMore/p145p149actionConfiguredInNib-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p145p149actionConfiguredInNib;
 				WRAPPER_EXTENSION = app;
 			};

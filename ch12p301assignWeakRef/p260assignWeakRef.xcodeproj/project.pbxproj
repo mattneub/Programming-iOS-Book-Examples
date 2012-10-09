@@ -21,10 +21,10 @@
 		A48B18AE1482952D00DD7830 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A48B18B01482952D00DD7830 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A48B18B21482952D00DD7830 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A48B18B61482952D00DD7830 /* p260assignWeakRef-Info.plist */ = {isa = PBXFileReference; path = "p260assignWeakRef-Info.plist"; sourceTree = "<group>"; };
+		A48B18B61482952D00DD7830 /* p260assignWeakRef-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p260assignWeakRef-Info.plist"; sourceTree = "<group>"; };
 		A48B18B81482952D00DD7830 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A48B18BA1482952D00DD7830 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A48B18BC1482952D00DD7830 /* p260assignWeakRef-Prefix.pch */ = {isa = PBXFileReference; path = "p260assignWeakRef-Prefix.pch"; sourceTree = "<group>"; };
+		A48B18BC1482952D00DD7830 /* p260assignWeakRef-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p260assignWeakRef-Prefix.pch"; sourceTree = "<group>"; };
 		A48B18BD1482952D00DD7830 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A48B18BE1482952D00DD7830 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A48B18C51482981400DD7830 /* MyClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClass.h; sourceTree = "<group>"; };
@@ -227,6 +227,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AssignWeakRef/p260assignWeakRef-Prefix.pch";
 				INFOPLIST_FILE = "AssignWeakRef/p260assignWeakRef-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p260assignWeakRef;
 				WRAPPER_EXTENSION = app;
 			};
@@ -238,6 +239,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AssignWeakRef/p260assignWeakRef-Prefix.pch";
 				INFOPLIST_FILE = "AssignWeakRef/p260assignWeakRef-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p260assignWeakRef;
 				WRAPPER_EXTENSION = app;
 			};

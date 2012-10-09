@@ -22,10 +22,10 @@
 		A42225C314797C7E00E6432E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A42225C514797C7E00E6432E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A42225C714797C7E00E6432E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A42225CB14797C7E00E6432E /* p260timerMemoryManagement-Info.plist */ = {isa = PBXFileReference; path = "p260timerMemoryManagement-Info.plist"; sourceTree = "<group>"; };
+		A42225CB14797C7E00E6432E /* p260timerMemoryManagement-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p260timerMemoryManagement-Info.plist"; sourceTree = "<group>"; };
 		A42225CD14797C7E00E6432E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A42225CF14797C7E00E6432E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A42225D114797C7E00E6432E /* p260timerMemoryManagement-Prefix.pch */ = {isa = PBXFileReference; path = "p260timerMemoryManagement-Prefix.pch"; sourceTree = "<group>"; };
+		A42225D114797C7E00E6432E /* p260timerMemoryManagement-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p260timerMemoryManagement-Prefix.pch"; sourceTree = "<group>"; };
 		A42225D214797C7E00E6432E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A42225D314797C7E00E6432E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A42225DA14797CA100E6432E /* VC1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VC1.h; sourceTree = "<group>"; };
@@ -233,6 +233,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NavigateThis/p260timerMemoryManagement-Prefix.pch";
 				INFOPLIST_FILE = "NavigateThis/p260timerMemoryManagement-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p260timerMemoryManagement;
 				WRAPPER_EXTENSION = app;
 			};
@@ -244,6 +245,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NavigateThis/p260timerMemoryManagement-Prefix.pch";
 				INFOPLIST_FILE = "NavigateThis/p260timerMemoryManagement-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p260timerMemoryManagement;
 				WRAPPER_EXTENSION = app;
 			};

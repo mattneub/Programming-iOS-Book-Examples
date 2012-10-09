@@ -10,8 +10,6 @@
     id obj;
 }
 
-@synthesize window = _window;
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -28,7 +26,9 @@
     m.delegate = obj;
     self->thing = m;
     
-    NSLog(@"Nav Controller delegate: %@", thing.delegate);
+    // added another log and numbers, to show when the log messages occur
+    NSLog(@"MyClass delegate (1): %@", thing.delegate); // 
+    NSLog(@"Nav Controller delegate (1): %@", thing.delegate); //
     
     [self performSelector:@selector(havoc) withObject:nil afterDelay:1.0];
     
@@ -39,9 +39,9 @@
     // let slip the dogs of war
     self->obj = nil; // releases obj - now what is nav.delegate pointing to?
     
-    NSLog(@"MyClass delegate: %@", thing.delegate); // perfectly safe, __weak ref is nilified
+    NSLog(@"MyClass delegate (2): %@", thing.delegate); // perfectly safe, __weak ref is nilified
     
-    NSLog(@"Nav Controller delegate: %@", ((UINavigationController*)self.window.rootViewController).delegate); // if you're lucky it might print something!
+    NSLog(@"Nav Controller delegate (2): %@", ((UINavigationController*)self.window.rootViewController).delegate); // if you're lucky it might print something!
     // or more likely it will just crash, or maybe print and *then* crash
 }
 

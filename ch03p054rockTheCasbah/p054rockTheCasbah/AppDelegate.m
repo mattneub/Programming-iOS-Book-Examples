@@ -5,8 +5,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-
 /*
 - (NSString*) rockTheCasbah {
     return @"Hello";

@@ -239,6 +239,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p130p134emptyWindowNoMore/p130p134emptyWindowNoMore-Prefix.pch";
 				INFOPLIST_FILE = "p130p134emptyWindowNoMore/p130p134emptyWindowNoMore-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -250,6 +251,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p130p134emptyWindowNoMore/p130p134emptyWindowNoMore-Prefix.pch";
 				INFOPLIST_FILE = "p130p134emptyWindowNoMore/p130p134emptyWindowNoMore-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -274,6 +276,7 @@
 				A4FAAB171454E1B700F409F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -16,14 +16,13 @@
 @end
 
 @implementation Dog
-@synthesize name;
-@synthesize zork;
 
+// autosynthesis, our ivars are called _name and _zork
 
 - (id) initWithName: (NSString*) s { 
     self = [super init]; 
     if (self) {
-        self->name = [s copy];
+        self->_name = [s copy];
     }
     return self;
 }
@@ -34,16 +33,12 @@
 }
 
 - (void) dummy {
-    // just to prove that this compiles okay
     // we can get and set both name and zork
-    // actually in this revision I added logging, and an actual call to this method
-    id dummy; // just something to assign to, to quiet the compiler (new LLVM / ARC complaint?)
+    // better logging
     self.name = @"Zampabalooie";
-    dummy = self.name;
+    NSLog(@"Dog can set its own name, name is now %@", self.name);
     self.zork = @"test";
-    NSLog(@"%@", dummy);
-    dummy = self.zork;
-    NSLog(@"%@", dummy);
+    NSLog(@"Dog can set and get private zork property, zork is now %@", self.zork);
 }
 
 

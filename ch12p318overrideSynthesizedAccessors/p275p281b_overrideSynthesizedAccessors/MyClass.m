@@ -9,10 +9,10 @@
 
 @implementation MyClass
 
-@synthesize myIvarAlias=myIvar;
+@synthesize myIvarAlias=_myIvar;
 
-// myIvarAlias is a private property name; it is backed by the ivar myIvar
-// getter and setter for myIvar pass thru synthesized accessors for myIvarAlias
+// myIvarAlias is a private property name; it is backed by the ivar _myIvar
+// getter and setter for _myIvar pass thru synthesized accessors for myIvarAlias
 // since we are writing them explicitly, they can also do other stuff
 // thus we can take advantage of synthesized yummy goodness while adding functionality
 

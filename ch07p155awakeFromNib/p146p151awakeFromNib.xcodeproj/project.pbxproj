@@ -256,6 +256,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p130p134emptyWindowNoMore/p146p151awakeFromNib-Prefix.pch";
 				INFOPLIST_FILE = "p130p134emptyWindowNoMore/p146p151awakeFromNib-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p146p151awakeFromNib;
 				WRAPPER_EXTENSION = app;
 			};
@@ -267,6 +268,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p130p134emptyWindowNoMore/p146p151awakeFromNib-Prefix.pch";
 				INFOPLIST_FILE = "p130p134emptyWindowNoMore/p146p151awakeFromNib-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p146p151awakeFromNib;
 				WRAPPER_EXTENSION = app;
 			};

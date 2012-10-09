@@ -227,6 +227,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p200p206category/p200p206category-Prefix.pch";
 				INFOPLIST_FILE = "p200p206category/p200p206category-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -238,6 +239,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p200p206category/p200p206category-Prefix.pch";
 				INFOPLIST_FILE = "p200p206category/p200p206category-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -253,6 +255,7 @@
 				A4CB00061455C8CF00231381 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A4CBFFE61455C8CF00231381 /* Build configuration list for PBXProject "p200p206category" */ = {
 			isa = XCConfigurationList;

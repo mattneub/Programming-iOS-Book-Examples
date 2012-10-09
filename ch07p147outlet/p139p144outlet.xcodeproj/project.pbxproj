@@ -250,6 +250,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p130p134emptyWindowNoMore/p139p144outlet-Prefix.pch";
 				INFOPLIST_FILE = "p130p134emptyWindowNoMore/p139p144outlet-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p139p144outlet;
 				WRAPPER_EXTENSION = app;
 			};
@@ -261,6 +262,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p130p134emptyWindowNoMore/p139p144outlet-Prefix.pch";
 				INFOPLIST_FILE = "p130p134emptyWindowNoMore/p139p144outlet-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p139p144outlet;
 				WRAPPER_EXTENSION = app;
 			};

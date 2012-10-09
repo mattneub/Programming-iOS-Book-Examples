@@ -8,7 +8,7 @@
  If dealloc is never called, you're leaking.
  */
 
-#define which 1 // and try 2 for one answer, and 3 for another
+#define which 1 // and try 2 for one solution, and 3 for another
 
 // however, if all you have is individual observers kept in individual ivars,
 // the easiest solution is to declare your observer ivar __weak
@@ -18,10 +18,8 @@
 // using NSValue valueWithNonretainedObject: (and extract with nonretainedObjectValue later)
 
 @implementation FlipsideViewController {
-    id observer;
+    /* __weak */ id observer;
 }
-
-@synthesize delegate = _delegate;
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

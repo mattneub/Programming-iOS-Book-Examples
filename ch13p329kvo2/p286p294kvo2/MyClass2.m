@@ -11,7 +11,7 @@
                         context:(void *)context {
     id newValue = [change objectForKey: NSKeyValueChangeNewKey];
     id oldValue = [change objectForKey: NSKeyValueChangeOldKey];
-    NSLog(@"The key path %@ changed from %@ to %@", keyPath, oldValue, newValue);
+    NSLog(@"The key path \"%@\" changed from %@ to %@", keyPath, oldValue, newValue);
 }
 
 @end
