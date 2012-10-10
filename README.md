@@ -9,6 +9,8 @@ Changes include:
 
 * Use autosynthesis of properties.
 
-* In one of the view examples I show how to use constraints (instead of frame) to position and size subviews.
+* Use constraints (instead of frame) to position and size subviews, whenever this is relational.
+
+* Illustrate some newly available CIFilters.
 
 Matt Neuburg

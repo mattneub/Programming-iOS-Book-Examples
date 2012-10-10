@@ -4,7 +4,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
 
 CGImageRef flip (CGImageRef im) {
     CGSize sz = CGSizeMake(CGImageGetWidth(im), CGImageGetHeight(im));
@@ -17,10 +16,12 @@ CGImageRef flip (CGImageRef im) {
 
 
 
-#define which 10 // substitute "2" thru "9" for other examples
-                // added case "10" to illustrate use of a CIFilter!
-                // added case "11" to illustrate image tiling!
-                // added case "12" to illustrate image stretching
+#define which 1
+// substitute "2" thru "9" for other examples
+// iOS 5:
+// added case "10" to illustrate use of a CIFilter
+// added case "11" to illustrate image tiling
+// added case "12" to illustrate image stretching
 
 // try all examples with both single-resolution and double-resolution device
 // the double-resolution Mars image has "2" in it so you can see when it is being used
@@ -60,10 +61,110 @@ CGImageRef flip (CGImageRef im) {
         }
         case 10: 
         {
-            //NSLog(@"%@", [CIFilter filterNamesInCategories:nil]);
-            //NSLog(@"%@", [[CIFilter filterWithName: @"CIVignette"] attributes]);
             
-            // new example: iOS 5 has CIFilters!
+            // NSLog(@"%@", [CIFilter filterNamesInCategories:nil]);
+            // iOS 6 adds *many* more filters than iOS 5 had; the complete list is:
+            
+            /*
+             CIAdditionCompositing,
+             CIAffineClamp,
+             CIAffineTile,
+             CIAffineTransform,
+             CIBarsSwipeTransition,
+             CIBlendWithMask,
+             CIBloom,
+             CIBumpDistortion,
+             CIBumpDistortionLinear,
+             CICheckerboardGenerator,
+             CICircleSplashDistortion,
+             CICircularScreen,
+             CIColorBlendMode,
+             CIColorBurnBlendMode,
+             CIColorControls,
+             CIColorCube,
+             CIColorDodgeBlendMode,
+             CIColorInvert,
+             CIColorMap,
+             CIColorMatrix,
+             CIColorMonochrome,
+             CIColorPosterize,
+             CIConstantColorGenerator,
+             CICopyMachineTransition,
+             CICrop,
+             CIDarkenBlendMode,
+             CIDifferenceBlendMode,
+             CIDisintegrateWithMaskTransition,
+             CIDissolveTransition,
+             CIDotScreen,
+             CIEightfoldReflectedTile,
+             CIExclusionBlendMode,
+             CIExposureAdjust,
+             CIFalseColor,
+             CIFlashTransition,
+             CIFourfoldReflectedTile,
+             CIFourfoldRotatedTile,
+             CIFourfoldTranslatedTile,
+             CIGammaAdjust,
+             CIGaussianBlur,
+             CIGaussianGradient,
+             CIGlideReflectedTile,
+             CIGloom,
+             CIHardLightBlendMode,
+             CIHatchedScreen,
+             CIHighlightShadowAdjust,
+             CIHoleDistortion,
+             CIHueAdjust,
+             CIHueBlendMode,
+             CILanczosScaleTransform,
+             CILightenBlendMode,
+             CILightTunnel,
+             CILinearGradient,
+             CILineScreen,
+             CILuminosityBlendMode,
+             CIMaskToAlpha,
+             CIMaximumComponent,
+             CIMaximumCompositing,
+             CIMinimumComponent,
+             CIMinimumCompositing,
+             CIModTransition,
+             CIMultiplyBlendMode,
+             CIMultiplyCompositing,
+             CIOverlayBlendMode,
+             CIPerspectiveTile,
+             CIPerspectiveTransform,
+             CIPerspectiveTransformWithExtent,
+             CIPinchDistortion,
+             CIPixellate,
+             CIRadialGradient,
+             CIRandomGenerator,
+             CISaturationBlendMode,
+             CIScreenBlendMode,
+             CISepiaTone,
+             CISharpenLuminance,
+             CISixfoldReflectedTile,
+             CISixfoldRotatedTile,
+             CISmoothLinearGradient,
+             CISoftLightBlendMode,
+             CISourceAtopCompositing,
+             CISourceInCompositing,
+             CISourceOutCompositing,
+             CISourceOverCompositing,
+             CIStarShineGenerator,
+             CIStraightenFilter,
+             CIStripesGenerator,
+             CISwipeTransition,
+             CITemperatureAndTint,
+             CIToneCurve,
+             CITriangleKaleidoscope,
+             CITwelvefoldReflectedTile,
+             CITwirlDistortion,
+             CIUnsharpMask,
+             CIVibrance,
+             CIVignette,
+             CIVortexDistortion,
+             CIWhitePointAdjust
+*/
+
             
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
             CIImage* marsci = [[CIImage alloc] initWithCGImage:mars.CGImage];
@@ -104,7 +205,7 @@ CGImageRef flip (CGImageRef im) {
             break;
         }
         case 11: {
-            // new example: iOS 5 has efficient tiling!
+            // iOS 5 has efficient tiling
             // (by "efficient" I mean that this takes basically no more memory than the original image)
             
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
@@ -115,8 +216,8 @@ CGImageRef flip (CGImageRef im) {
             break;
         }
         case 12: {
-            // new example, stretching
-            // not really new, but uses new iOS 5 method rather than old method
+            // stretching
+            // uses new iOS 5 method rather than old method
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
             CGFloat capw = mars.size.width / 2.0 - 1;
             CGFloat caph = mars.size.height / 2.0 - 1;

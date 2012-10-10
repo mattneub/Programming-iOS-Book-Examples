@@ -6,7 +6,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
 
 - (void) resize: (id) dummy {
     UIView* mv = [self.window viewWithTag:111];

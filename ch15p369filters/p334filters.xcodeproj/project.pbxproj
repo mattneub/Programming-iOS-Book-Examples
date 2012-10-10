@@ -15,6 +15,7 @@
 		A4C6C2B914888B09006901D5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C6C2B814888B09006901D5 /* AppDelegate.m */; };
 		A4C6C2C014888B18006901D5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C6C2BF14888B18006901D5 /* CoreImage.framework */; };
 		A4EF539D148948F200D4996F /* moi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A4EF539C148948F200D4996F /* moi.jpg */; };
+		C9E913301625DE59004AA964 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E9132F1625DE59004AA964 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		A4C6C2B814888B09006901D5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A4C6C2BF14888B18006901D5 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		A4EF539C148948F200D4996F /* moi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moi.jpg; sourceTree = "<group>"; };
+		C9E9132F1625DE59004AA964 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9E913301625DE59004AA964 /* QuartzCore.framework in Frameworks */,
 				A4C6C2C014888B18006901D5 /* CoreImage.framework in Frameworks */,
 				A4C6C2A914888B09006901D5 /* UIKit.framework in Frameworks */,
 				A4C6C2AB14888B09006901D5 /* Foundation.framework in Frameworks */,
@@ -67,6 +70,7 @@
 		A4C6C2A714888B09006901D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9E9132F1625DE59004AA964 /* QuartzCore.framework */,
 				A4C6C2BF14888B18006901D5 /* CoreImage.framework */,
 				A4C6C2A814888B09006901D5 /* UIKit.framework */,
 				A4C6C2AA14888B09006901D5 /* Foundation.framework */,
@@ -229,6 +233,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p334filters/p334filters-Prefix.pch";
 				INFOPLIST_FILE = "p334filters/p334filters-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -240,6 +245,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p334filters/p334filters-Prefix.pch";
 				INFOPLIST_FILE = "p334filters/p334filters-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
