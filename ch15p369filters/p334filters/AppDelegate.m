@@ -118,17 +118,17 @@
         case 2: {
             UIGraphicsBeginImageContextWithOptions(moi.size, YES, 0);
             CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
-            CFArrayRef arr = (__bridge CFArrayRef)[NSArray arrayWithObjects:
-                                                   (id)[UIColor whiteColor].CGColor,
-                                                   [UIColor blackColor].CGColor,
-                                                   nil];
+            CFArrayRef arr = (__bridge CFArrayRef)@[
+                (id)[UIColor whiteColor].CGColor,
+                (id)([UIColor blackColor].CGColor)
+            ];
             CGFloat locs[] = {0, .9};
             CGGradientRef grad = CGGradientCreateWithColors(space, arr, locs);
             CGColorSpaceRelease(space);
-            CGContextDrawRadialGradient(UIGraphicsGetCurrentContext(), grad, 
+            CGContextDrawRadialGradient(UIGraphicsGetCurrentContext(), grad,
                                         CGPointMake(moi.size.width/2.0, moi.size.height/2.0),
-                                        0, 
-                                        CGPointMake(moi.size.width/2.0, moi.size.height/2.0), 
+                                        0,
+                                        CGPointMake(moi.size.width/2.0, moi.size.height/2.0),
                                         moi.size.width/2.0,
                                         kCGGradientDrawsBeforeStartLocation);
             CGGradientRelease(grad);

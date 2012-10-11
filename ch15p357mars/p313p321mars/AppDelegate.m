@@ -173,7 +173,7 @@ CGImageRef flip (CGImageRef im) {
             CIFilter* check = [CIFilter filterWithName:@"CICheckerboardGenerator"
                                          keysAndValues:
                                @"inputWidth",
-                               [NSNumber numberWithFloat:marsci.extent.size.width/2.0],
+                               @(marsci.extent.size.width/2.0),
                                @"inputCenter",
                                [CIVector vectorWithX:0 Y:0],
                                nil];
@@ -183,7 +183,7 @@ CGImageRef flip (CGImageRef im) {
                              kCIInputImageKey,
                              marsci,
                              @"inputAngle",
-                             [NSNumber numberWithFloat: 1.0],
+                             @1.0f,
                              nil];
             // combine the two using blend
             CIFilter* comp = [CIFilter filterWithName:@"CIDifferenceBlendMode"

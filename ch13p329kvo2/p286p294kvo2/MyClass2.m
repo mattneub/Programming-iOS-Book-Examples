@@ -9,8 +9,8 @@
                        ofObject:(id)object 
                          change:(NSDictionary *)change
                         context:(void *)context {
-    id newValue = [change objectForKey: NSKeyValueChangeNewKey];
-    id oldValue = [change objectForKey: NSKeyValueChangeOldKey];
+    id newValue = change[NSKeyValueChangeNewKey];
+    id oldValue = change[NSKeyValueChangeOldKey];
     NSLog(@"The key path \"%@\" changed from %@ to %@", keyPath, oldValue, newValue);
 }
 

@@ -7,12 +7,6 @@
 @implementation AppDelegate
 
 
-- (void) resize: (id) dummy {
-    UIView* mv = [self.window viewWithTag:111];
-    CGRect f = mv.bounds;
-    f.size.height *= 2;
-    mv.bounds = f;
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -25,7 +19,6 @@
     MyView* mv = [MyView new];
     [self.window.rootViewController.view addSubview: mv];
     mv.opaque = NO;
-    mv.tag = 111; // so I can get a reference to this view later
     
     mv.translatesAutoresizingMaskIntoConstraints = NO;
     NSArray* cons;
@@ -50,10 +43,17 @@
            multiplier:1 constant:0];
     [mv.superview addConstraint:con];
 
+    void (^resize) (void) = ^{
+        CGRect f = mv.bounds;
+        f.size.height *= 2;
+        mv.bounds = f;
+    };
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), resize);
 
-    [self performSelector:@selector(resize:) withObject:nil afterDelay:1];
     // NOTE: this is another way of doing the same thing, i.e. wait until after redraw moment
-    // [CATransaction setCompletionBlock:^{[self resize:nil];}];
+    // [CATransaction setCompletionBlock:resize];
     
     // NOTE: another way to see the effect would be to rotate the interface, thus changing our width
     
