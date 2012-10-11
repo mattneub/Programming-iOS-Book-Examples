@@ -42,6 +42,7 @@
     
     // the gradient
     CAGradientLayer* g = [[CAGradientLayer alloc] init];
+    g.contentsScale = [UIScreen mainScreen].scale;
     g.frame = master.bounds;
     g.colors = @[(id)[[UIColor blackColor] CGColor],
                 (id)[[UIColor redColor] CGColor]];
@@ -51,6 +52,7 @@
     
     // the circle
     CAShapeLayer* circle = [[CAShapeLayer alloc] init];
+    circle.contentsScale = [UIScreen mainScreen].scale;
     circle.lineWidth = 2.0;
     circle.fillColor = 
     [[UIColor colorWithRed:0.9 green:0.95 blue:0.93 alpha:0.9] CGColor];
@@ -69,6 +71,7 @@
     NSArray* pts = @[@"N", @"E", @"S", @"W"];
     for (int i = 0; i < 4; i++) {
         CATextLayer* t = [[CATextLayer alloc] init];
+        t.contentsScale = [UIScreen mainScreen].scale;
         t.string = pts[i];
         t.bounds = CGRectMake(0,0,40,40);
         t.position = CGPointMake(CGRectGetMidX(circle.bounds), 
@@ -83,6 +86,7 @@
 
     // the arrow
     CALayer* arrow = [[CALayer alloc] init];
+    arrow.contentsScale = [UIScreen mainScreen].scale;
     arrow.bounds = CGRectMake(0, 0, 40, 100);
     arrow.position = CGPointMake(CGRectGetMidX(self.bounds), 
                                  CGRectGetMidY(self.bounds));
@@ -98,6 +102,7 @@
 
     // "peg" sticking into the arrow and the circle
     CAShapeLayer* line = [[CAShapeLayer alloc] init];
+    line.contentsScale = [UIScreen mainScreen].scale; // probably pointless
     line.bounds = CGRectMake(0,0,3.5,50);
     CGMutablePathRef p2 = CGPathCreateMutable();
     CGPathAddRect(p2, NULL, line.bounds);

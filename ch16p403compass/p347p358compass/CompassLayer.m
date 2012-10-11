@@ -2,6 +2,9 @@
 
 #import "CompassLayer.h"
 
+@interface CompassLayer()
+@property (nonatomic, strong) CALayer* arrow;
+@end
 
 @implementation CompassLayer
 
@@ -12,6 +15,8 @@
     
     // the gradient
     CAGradientLayer* g = [[CAGradientLayer alloc] init];
+    // new, should have been doing this all along
+    g.contentsScale = [UIScreen mainScreen].scale;
     g.frame = self.bounds;
     g.colors = @[(id)[[UIColor blackColor] CGColor],
                 (id)[[UIColor redColor] CGColor]];
@@ -21,6 +26,7 @@
     
     // the circle
     CAShapeLayer* circle = [[CAShapeLayer alloc] init];
+    circle.contentsScale = [UIScreen mainScreen].scale; // new
     circle.lineWidth = 2.0;
     circle.fillColor = [[UIColor colorWithRed:0.9 green:0.95 blue:0.93 alpha:0.9] CGColor];
     circle.strokeColor = [[UIColor grayColor] CGColor];
@@ -36,6 +42,9 @@
     NSArray* pts = @[@"N", @"E", @"S", @"W"];
     for (int i = 0; i < 4; i++) {
         CATextLayer* t = [[CATextLayer alloc] init];
+        // new and makes a huge difference
+        // should have been doing this all along
+        t.contentsScale = [UIScreen mainScreen].scale;
         t.string = pts[i];
         // new: make bounds height taller, as drawing of letter is now truncated at bottom otherwise
         // THIS IS A NEW ISSUE! I don't know why iOS 6 is drawing the text on a different baseline
@@ -53,6 +62,9 @@
     
     // the arrow
     CALayer* arrow = [[CALayer alloc] init];
+    // new and makes a huge difference
+    // should have been doing this all along
+    arrow.contentsScale = [UIScreen mainScreen].scale;
     arrow.bounds = CGRectMake(0, 0, 40, 100);
     arrow.position = CGPointMake(CGRectGetMidX(self.bounds), 
                                  CGRectGetMidY(self.bounds));
