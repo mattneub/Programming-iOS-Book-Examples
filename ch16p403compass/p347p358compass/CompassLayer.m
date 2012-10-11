@@ -4,7 +4,6 @@
 
 
 @implementation CompassLayer
-@synthesize arrow = _arrow;
 
 - (void) setup {
     NSLog(@"setup");
@@ -14,21 +13,16 @@
     // the gradient
     CAGradientLayer* g = [[CAGradientLayer alloc] init];
     g.frame = self.bounds;
-    g.colors = [NSArray arrayWithObjects:
-                (id)[[UIColor blackColor] CGColor],
-                [[UIColor redColor] CGColor],
-                nil];
-    g.locations = [NSArray arrayWithObjects:
-                   [NSNumber numberWithFloat: 0.0],
-                   [NSNumber numberWithFloat: 1.0],
-                   nil];
+    g.colors = @[(id)[[UIColor blackColor] CGColor],
+                (id)[[UIColor redColor] CGColor]];
+    g.locations = @[@0.0f,
+                   @1.0f];
     [self addSublayer:g];
     
     // the circle
     CAShapeLayer* circle = [[CAShapeLayer alloc] init];
     circle.lineWidth = 2.0;
-    circle.fillColor = 
-    [[UIColor colorWithRed:0.9 green:0.95 blue:0.93 alpha:0.9] CGColor];
+    circle.fillColor = [[UIColor colorWithRed:0.9 green:0.95 blue:0.93 alpha:0.9] CGColor];
     circle.strokeColor = [[UIColor grayColor] CGColor];
     CGMutablePathRef p = CGPathCreateMutable();
     CGPathAddEllipseInRect(p, NULL, CGRectInset(self.bounds, 3, 3));
@@ -39,14 +33,17 @@
                                   CGRectGetMidY(self.bounds));
     
     // the four cardinal points
-    NSArray* pts = [NSArray arrayWithObjects: @"N", @"E", @"S", @"W", nil];
+    NSArray* pts = @[@"N", @"E", @"S", @"W"];
     for (int i = 0; i < 4; i++) {
         CATextLayer* t = [[CATextLayer alloc] init];
-        t.string = [pts objectAtIndex: i];
-        t.bounds = CGRectMake(0,0,40,30);
+        t.string = pts[i];
+        // new: make bounds height taller, as drawing of letter is now truncated at bottom otherwise
+        // THIS IS A NEW ISSUE! I don't know why iOS 6 is drawing the text on a different baseline
+        t.bounds = CGRectMake(0,0,40,40);
         t.position = CGPointMake(CGRectGetMidX(circle.bounds), 
                                  CGRectGetMidY(circle.bounds));
-        CGFloat vert = (CGRectGetMidY(circle.bounds) - 5) / CGRectGetHeight(t.bounds);
+        // new: and since the text is lower, we can put the vertical position higher
+        CGFloat vert = CGRectGetMidY(circle.bounds) / CGRectGetHeight(t.bounds);
         t.anchorPoint = CGPointMake(0.5, vert);
         t.alignmentMode = kCAAlignmentCenter;
         t.foregroundColor = [[UIColor blackColor] CGColor]; 

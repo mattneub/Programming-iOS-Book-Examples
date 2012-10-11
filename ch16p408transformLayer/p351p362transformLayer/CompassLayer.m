@@ -43,14 +43,10 @@
     // the gradient
     CAGradientLayer* g = [[CAGradientLayer alloc] init];
     g.frame = master.bounds;
-    g.colors = [NSArray arrayWithObjects:
-                (id)[[UIColor blackColor] CGColor],
-                [[UIColor redColor] CGColor],
-                nil];
-    g.locations = [NSArray arrayWithObjects:
-                   [NSNumber numberWithFloat: 0.0],
-                   [NSNumber numberWithFloat: 1.0],
-                   nil];
+    g.colors = @[(id)[[UIColor blackColor] CGColor],
+                (id)[[UIColor redColor] CGColor]];
+    g.locations = @[@0.0f,
+                   @1.0f];
     [master addSublayer:g];
     
     // the circle
@@ -70,14 +66,14 @@
     circle.shadowOpacity = 0.4;
 
     // the four cardinal points
-    NSArray* pts = [NSArray arrayWithObjects: @"N", @"E", @"S", @"W", nil];
+    NSArray* pts = @[@"N", @"E", @"S", @"W"];
     for (int i = 0; i < 4; i++) {
         CATextLayer* t = [[CATextLayer alloc] init];
-        t.string = [pts objectAtIndex: i];
-        t.bounds = CGRectMake(0,0,40,30);
+        t.string = pts[i];
+        t.bounds = CGRectMake(0,0,40,40);
         t.position = CGPointMake(CGRectGetMidX(circle.bounds), 
                                  CGRectGetMidY(circle.bounds));
-        CGFloat vert = (CGRectGetMidY(circle.bounds) - 5) / CGRectGetHeight(t.bounds);
+        CGFloat vert = CGRectGetMidY(circle.bounds) / CGRectGetHeight(t.bounds);
         t.anchorPoint = CGPointMake(0.5, vert);
         t.alignmentMode = kCAAlignmentCenter;
         t.foregroundColor = [[UIColor blackColor] CGColor]; 
@@ -111,8 +107,8 @@
     line.anchorPoint = CGPointMake(0.5,0.5);
     line.position = CGPointMake(CGRectGetMidX(master.bounds), CGRectGetMidY(master.bounds));
     [master addSublayer: line];
-    [line setValue:[NSNumber numberWithFloat: M_PI/2] forKeyPath:@"transform.rotation.x"];
-    [line setValue:[NSNumber numberWithFloat: M_PI/2] forKeyPath:@"transform.rotation.z"];
+    [line setValue:@(M_PI/2) forKeyPath:@"transform.rotation.x"];
+    [line setValue:@(M_PI/2) forKeyPath:@"transform.rotation.z"];
     
     // interesting to play around with these numbers a little
     circle.zPosition = 10;

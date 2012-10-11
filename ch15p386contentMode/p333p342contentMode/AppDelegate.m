@@ -55,7 +55,10 @@
     // NOTE: this is another way of doing the same thing, i.e. wait until after redraw moment
     // [CATransaction setCompletionBlock:resize];
     
-    // NOTE: another way to see the effect would be to rotate the interface, thus changing our width
+    // NOTE: another way to see the effect could be to rotate the interface, thus changing our width
+    // (if we have appropriate autoresizing or, as here, constraints)
+    // this was always true (autoresizing is a bounds change and does not of itself cause redraw)
+    // but it didn't occur to me in earlier editions to point this out
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

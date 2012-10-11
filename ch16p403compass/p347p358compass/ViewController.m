@@ -4,8 +4,11 @@
 #import "CompassLayer.h"
 #import "CompassView.h"
 
+@interface ViewController ()
+@property (nonatomic, strong) IBOutlet CompassView* compass;
+@end
+
 @implementation ViewController
-@synthesize compass;
 
 #define which 1 // try "2" thru "9" for other examples
 
@@ -99,8 +102,8 @@
             anim.autoreverses = YES;
             anim.additive = YES;
             anim.valueFunction = [CAValueFunction functionWithName:kCAValueFunctionRotateZ];
-            anim.fromValue = [NSNumber numberWithFloat:M_PI/40];
-            anim.toValue = [NSNumber numberWithFloat:-M_PI/40];
+            anim.fromValue = @(M_PI/40);
+            anim.toValue = @(-M_PI/40);
             [c.arrow addAnimation:anim forKey:nil];
             break;
         }
@@ -108,12 +111,12 @@
         {
             // p. 379
             NSMutableArray* values = [NSMutableArray array];
-            [values addObject: [NSNumber numberWithFloat:0]];
+            [values addObject: @0.0f];
             int direction = 1;
             for (int i = 20; i < 60; i += 5, direction *= -1) { // reverse direction each time
-                [values addObject: [NSNumber numberWithFloat: direction*M_PI/(float)i]];
+                [values addObject: @(direction*M_PI/(float)i)];
             }
-            [values addObject: [NSNumber numberWithFloat:0]];
+            [values addObject: @0.0f];
             CAKeyframeAnimation* anim = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             anim.values = values;
             anim.additive = YES;
@@ -128,7 +131,7 @@
             CGFloat rot = M_PI/4.0;
             [CATransaction setDisableActions:YES];
             CGFloat current = [[c.arrow valueForKeyPath:@"transform.rotation.z"] floatValue];
-            [c.arrow setValue: [NSNumber numberWithFloat: current + rot] 
+            [c.arrow setValue: @(current + rot) 
                       forKeyPath:@"transform.rotation.z"];
             // first animation (rotate and clunk) ===============
             CABasicAnimation* anim1 = [CABasicAnimation animationWithKeyPath:@"transform"];
@@ -136,17 +139,17 @@
             CAMediaTimingFunction* clunk = 
             [CAMediaTimingFunction functionWithControlPoints:.9 :.1 :.7 :.9];
             anim1.timingFunction = clunk;
-            anim1.fromValue = [NSNumber numberWithFloat: current];
-            anim1.toValue = [NSNumber numberWithFloat: current + rot];
+            anim1.fromValue = @(current);
+            anim1.toValue = @(current + rot);
             anim1.valueFunction = [CAValueFunction functionWithName:kCAValueFunctionRotateZ];
             // second animation (waggle) ========================
             NSMutableArray* values = [NSMutableArray array];
-            [values addObject: [NSNumber numberWithFloat:0]];
+            [values addObject: @0.0f];
             int direction = 1;
             for (int i = 20; i < 60; i += 5, direction *= -1) { // reverse direction each time
-                [values addObject: [NSNumber numberWithFloat: direction*M_PI/(float)i]];
+                [values addObject: @(direction*M_PI/(float)i)];
             }
-            [values addObject: [NSNumber numberWithFloat:0]];
+            [values addObject: @0.0f];
             CAKeyframeAnimation* anim2 = 
             [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             anim2.values = values;
@@ -156,7 +159,7 @@
             anim2.valueFunction = [CAValueFunction functionWithName:kCAValueFunctionRotateZ];
             // group ============================================
             CAAnimationGroup* group = [CAAnimationGroup animation];
-            group.animations = [NSArray arrayWithObjects: anim1, anim2, nil];
+            group.animations = @[anim1, anim2];
             group.duration = anim1.duration + anim2.duration;
             [c.arrow addAnimation:group forKey:nil];
             break;

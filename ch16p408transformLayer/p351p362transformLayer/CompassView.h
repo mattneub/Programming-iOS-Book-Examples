@@ -3,8 +3,5 @@
 #import <UIKit/UIKit.h>
 
 
-@interface CompassView : UIView {
-    
-}
-
+@interface CompassView : UIView
 @end
