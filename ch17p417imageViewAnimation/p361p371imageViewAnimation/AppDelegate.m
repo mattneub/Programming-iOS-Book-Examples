@@ -4,7 +4,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -19,6 +18,9 @@
 
 #define which 1 // try 2 and 3 for animated image, new feature in iOS 5
 
+// also, for a related kind of image-based animation, see ch15p369filters example
+// iOS 6 now has CIFilter transitions, which create the frames of an animation for you
+
 - (void) animate {
     switch (which) {
         case 1: {
@@ -26,7 +28,7 @@
             UIGraphicsBeginImageContextWithOptions(mars.size, NO, 0);
             UIImage* empty = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
-            NSArray* arr = [NSArray arrayWithObjects: mars, empty, mars, empty, mars, nil];
+            NSArray* arr = @[mars, empty, mars, empty, mars];
             UIImageView* iv = [[UIImageView alloc] initWithFrame:CGRectMake(56, 63, 208, 208)];
             [self.window.rootViewController.view addSubview: iv];
             iv.animationImages = arr;
@@ -46,7 +48,7 @@
             UIGraphicsBeginImageContextWithOptions(mars.size, NO, 0);
             UIImage* empty = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
-            NSArray* arr = [NSArray arrayWithObjects: mars, empty, mars, empty, mars, empty, nil];
+            NSArray* arr = @[mars, empty, mars, empty, mars, empty];
             UIImage* im = [UIImage animatedImageWithImages:arr duration:2];
             UIImageView* iv = [[UIImageView alloc] initWithFrame:CGRectMake(56, 63, 208, 208)];
             iv.image = im;
