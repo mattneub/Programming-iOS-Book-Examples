@@ -3,9 +3,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface MyView : UIView {
-    BOOL reverse;
-}
+@interface MyView : UIView
 
 @property (nonatomic, assign) BOOL reverse;
 

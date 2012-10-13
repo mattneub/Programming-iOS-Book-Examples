@@ -8,8 +8,6 @@
     CALayer* lay;
 }
 
-@synthesize window = _window;
-
 #define which 1 // try also "2" thru "5"
 
 - (void) animate {
@@ -21,7 +19,7 @@
             // put a "position" entry into the layer's actions dictionary
             CABasicAnimation* ba = [CABasicAnimation animation];
             ba.duration = 5;
-            layer.actions = [NSDictionary dictionaryWithObject: ba forKey: @"position"];
+            layer.actions = @{@"position": ba};
             layer.delegate = nil; // use actions dictionary, not delegate
 
             // use implicit property animation
@@ -90,20 +88,18 @@
         CGPoint p2 = CGPointMake(oldP.x + r*2*cos(theta-wag), 
                                  oldP.y + r*2*sin(theta-wag));
         CAKeyframeAnimation* anim = [CAKeyframeAnimation animation];
-        anim.values = [NSArray arrayWithObjects:
-                       [NSValue valueWithCGPoint:oldP],
+        anim.values = @[[NSValue valueWithCGPoint:oldP],
                        [NSValue valueWithCGPoint:p1],
                        [NSValue valueWithCGPoint:p2],
-                       [NSValue valueWithCGPoint:newP],
-                       nil];
+                       [NSValue valueWithCGPoint:newP]];
         anim.calculationMode = kCAAnimationCubic;
         return anim;
     }
     if ([key isEqualToString:kCAOnOrderIn]) {
         CABasicAnimation* anim1 = 
         [CABasicAnimation animationWithKeyPath:@"opacity"];
-        anim1.fromValue = [NSNumber numberWithFloat: 0.0];
-        anim1.toValue = [NSNumber numberWithFloat: layer.opacity];
+        anim1.fromValue = @0.0f;
+        anim1.toValue = @(layer.opacity);
         CABasicAnimation* anim2 = 
         [CABasicAnimation animationWithKeyPath:@"transform"];
         anim2.toValue = [NSValue valueWithCATransform3D:
@@ -111,7 +107,7 @@
         anim2.autoreverses = YES;
         anim2.duration = 0.1;
         CAAnimationGroup* group = [CAAnimationGroup animation];
-        group.animations = [NSArray arrayWithObjects: anim1, anim2, nil];
+        group.animations = @[anim1, anim2];
         group.duration = 0.2;
         return group;
     }
@@ -119,14 +115,14 @@
         if ([CATransaction valueForKey:@"byebye"]) {
             CABasicAnimation* anim1 = 
             [CABasicAnimation animationWithKeyPath:@"opacity"];
-            anim1.fromValue = [NSNumber numberWithFloat: layer.opacity];
-            anim1.toValue = [NSNumber numberWithFloat: 0.0];
+            anim1.fromValue = @(layer.opacity);
+            anim1.toValue = @0.0f;
             CABasicAnimation* anim2 = 
             [CABasicAnimation animationWithKeyPath:@"transform"];
             anim2.toValue = [NSValue valueWithCATransform3D:
                              CATransform3DScale(layer.transform, 0.1, 0.1, 1.0)];
             CAAnimationGroup* group = [CAAnimationGroup animation];
-            group.animations = [NSArray arrayWithObjects: anim1, anim2, nil];
+            group.animations = @[anim1, anim2];
             group.duration = 0.2;
             return group;
         }

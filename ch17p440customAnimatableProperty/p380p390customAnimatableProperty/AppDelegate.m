@@ -3,10 +3,13 @@
 #import "MyView.h"
 #import <QuartzCore/QuartzCore.h>
 
+@interface AppDelegate ()
+@property (strong, nonatomic) MyView *v;
+@end
+
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize v;
 
 - (void) animate {
     CALayer* lay = self.v.layer;

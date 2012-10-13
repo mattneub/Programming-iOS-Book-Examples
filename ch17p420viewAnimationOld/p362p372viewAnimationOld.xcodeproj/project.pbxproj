@@ -221,6 +221,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p362p372viewAnimationOld/p362p372viewAnimationOld-Prefix.pch";
 				INFOPLIST_FILE = "p362p372viewAnimationOld/p362p372viewAnimationOld-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -232,6 +233,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p362p372viewAnimationOld/p362p372viewAnimationOld-Prefix.pch";
 				INFOPLIST_FILE = "p362p372viewAnimationOld/p362p372viewAnimationOld-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -256,6 +258,7 @@
 				A443DFEE145CC8AD001CCB80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

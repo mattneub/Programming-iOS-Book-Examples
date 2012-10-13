@@ -5,9 +5,8 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
 
-#define which 1
+#define which 4
 // try 2, 3, 4
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -54,8 +53,8 @@
             cell.name = @"circle";
             
             CABasicAnimation* ba = [CABasicAnimation animationWithKeyPath:@"emitterCells.circle.greenSpeed"];
-            ba.fromValue = [NSNumber numberWithFloat:-1];
-            ba.toValue = [NSNumber numberWithFloat:3];
+            ba.fromValue = @-1.0f;
+            ba.toValue = @3.0f;
             ba.duration = 4;
             ba.autoreverses = YES;
             ba.repeatCount = HUGE_VALF;
@@ -80,15 +79,15 @@
             cell.name = @"circle";
             
             CABasicAnimation* ba = [CABasicAnimation animationWithKeyPath:@"emitterCells.circle.greenSpeed"];
-            ba.fromValue = [NSNumber numberWithFloat:-1];
-            ba.toValue = [NSNumber numberWithFloat:3];
+            ba.fromValue = @-1.0f;
+            ba.toValue = @3.0f;
             ba.duration = 4;
             ba.autoreverses = YES;
             ba.repeatCount = HUGE_VALF;
             [emit addAnimation:ba forKey:nil];
 
             CAEmitterCell* cell2 = [CAEmitterCell emitterCell];
-            cell.emitterCells = [NSArray arrayWithObject: cell2];
+            cell.emitterCells = @[cell2];
             cell2.contents = (id)im.CGImage;
             cell2.emissionRange = M_PI;
             cell2.birthRate = 200;
@@ -112,7 +111,7 @@
             cell.emissionLongitude = 3*M_PI/4;
         }
     }
-    emit.emitterCells = [NSArray arrayWithObject:cell];
+    emit.emitterCells = @[cell];
     [self.window.rootViewController.view.layer addSublayer:emit];
 
     

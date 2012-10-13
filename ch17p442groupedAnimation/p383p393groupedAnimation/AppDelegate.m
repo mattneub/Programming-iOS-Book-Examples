@@ -3,10 +3,12 @@
 #import "AppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 
+@interface AppDelegate ()
+@property (strong, nonatomic) UIView *view;
+@end
+
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize view;
 
 - (void) animate {
     CGFloat h = 200;
@@ -26,24 +28,20 @@
     CAKeyframeAnimation* anim1 = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     anim1.path = path;
     anim1.calculationMode = kCAAnimationPaced;
-    NSArray* revs = [NSArray arrayWithObjects:
-                     [NSNumber numberWithFloat:0],
-                     [NSNumber numberWithFloat:M_PI],
-                     [NSNumber numberWithFloat:0],
-                     [NSNumber numberWithFloat:M_PI],
-                     nil];
+    NSArray* revs = @[@0.0f,
+                     @M_PI,
+                     @0.0f,
+                     @M_PI];
     CAKeyframeAnimation* anim2 = 
     [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     anim2.values = revs;
     anim2.valueFunction = [CAValueFunction functionWithName:kCAValueFunctionRotateY];
     anim2.calculationMode = kCAAnimationDiscrete;
-    NSArray* pitches = [NSArray arrayWithObjects:
-                        [NSNumber numberWithFloat:0],
-                        [NSNumber numberWithFloat:M_PI/60.0],
-                        [NSNumber numberWithFloat:0],
-                        [NSNumber numberWithFloat:-M_PI/60.0],
-                        [NSNumber numberWithFloat:0],
-                        nil];
+    NSArray* pitches = @[@0.0f,
+                        @(M_PI/60.0),
+                        @0.0f,
+                        @(-M_PI/60.0),
+                        @0.0f];
     CAKeyframeAnimation* anim3 = 
     [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     anim3.values = pitches;
@@ -52,11 +50,11 @@
     anim3.additive = YES;
     anim3.valueFunction = [CAValueFunction functionWithName:kCAValueFunctionRotateZ];
     CAAnimationGroup* group = [CAAnimationGroup animation];
-    group.animations = [NSArray arrayWithObjects: anim1, anim2, anim3, nil];
+    group.animations = @[anim1, anim2, anim3];
     group.duration = 8;
-    [view.layer addAnimation:group forKey:nil];
+    [_view.layer addAnimation:group forKey:nil];
     [CATransaction setDisableActions:YES];
-    view.layer.position = next;
+    _view.layer.position = next;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

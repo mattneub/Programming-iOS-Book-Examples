@@ -2,8 +2,12 @@
 
 #import "MyLayer.h"
 
+@interface MyLayer ()
+@property (nonatomic, assign) CGFloat thickness;
+@end
 
 @implementation MyLayer
+
 @dynamic thickness;
 
 + (BOOL) needsDisplayForKey:(NSString *)key {

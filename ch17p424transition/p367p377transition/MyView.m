@@ -5,14 +5,10 @@
 
 @implementation MyView
 
-@synthesize reverse;
-
-
-
 - (void)drawRect:(CGRect)rect {
     CGRect f = CGRectInset(self.bounds, 10, 10);
     CGContextRef con = UIGraphicsGetCurrentContext();
-    if (reverse)
+    if (self.reverse)
         CGContextStrokeEllipseInRect(con, f);
     else
         CGContextStrokeRect(con, f);

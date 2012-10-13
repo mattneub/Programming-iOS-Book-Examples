@@ -2,22 +2,25 @@
 
 #import "AppDelegate.h"
 
-@implementation AppDelegate
+@interface AppDelegate ()
+@property (strong, nonatomic) UIView* v;
+@property (strong, nonatomic) UIButton* button;
+@end
 
-@synthesize button, v, window = _window;
+@implementation AppDelegate
 
 static CGPoint pOrig;
 
 - (void) animate {
-    CGPoint p = v.center;
+    CGPoint p = _v.center;
     pOrig = p;
     p.x += 100;
     void (^anim) (void) = ^{
-        self.button.enabled = YES;
-        v.center = p;
+        _button.enabled = YES;
+        _v.center = p;
     };
     void (^after) (BOOL) = ^(BOOL f) {
-        v.center = pOrig;
+        _v.center = pOrig;
     };
     NSUInteger opts = UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat;
     [UIView animateWithDuration:1 delay:0 options:opts 
@@ -26,13 +29,12 @@ static CGPoint pOrig;
 
 - (void) cancel {
     void (^anim) (void) = ^{
-        self.button.enabled = NO;
-        v.center = pOrig;
+        _button.enabled = NO;
+        _v.center = pOrig;
     };
     NSUInteger opts = UIViewAnimationOptionBeginFromCurrentState;
     [UIView animateWithDuration:.1 delay:0 options:opts 
                      animations:anim completion:nil];
-
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -42,8 +44,8 @@ static CGPoint pOrig;
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     self.v = [[UIView alloc] initWithFrame:CGRectMake(58,255,204,204)];
-    v.backgroundColor = [UIColor redColor];
-    [self.window.rootViewController.view addSubview: v];
+    _v.backgroundColor = [UIColor redColor];
+    [self.window.rootViewController.view addSubview: _v];
     UIButton* b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [b setTitle:@"Cancel" forState:UIControlStateNormal];
     [b sizeToFit];
@@ -51,7 +53,7 @@ static CGPoint pOrig;
     b.frame = CGRectIntegral(b.frame);
     b.enabled = NO;
     [b addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
-    self.button = b;
+    _button = b;
     [self.window.rootViewController.view addSubview:b];
     [self.window makeKeyAndVisible];
     [self performSelector:@selector(animate) withObject:nil afterDelay:1.0];

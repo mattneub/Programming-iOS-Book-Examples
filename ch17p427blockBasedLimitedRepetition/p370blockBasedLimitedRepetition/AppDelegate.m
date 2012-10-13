@@ -2,22 +2,24 @@
 
 #import "AppDelegate.h"
 
-@implementation AppDelegate
+@interface AppDelegate ()
+@property (strong, nonatomic) UIView* v;
+@end
 
-@synthesize v, window = _window;
+@implementation AppDelegate
 
 // repeat animation a finite number of times by recursing
 // should be safe if the number of times is small
 
 - (void) animate: (int) count {
-    CGPoint p = v.center;
+    CGPoint p = _v.center;
     CGPoint pOrig = p;
     p.x += 100;
     void (^anim) (void) = ^{
-        v.center = p;
+        _v.center = p;
     };
     void (^after) (BOOL) = ^(BOOL f) {
-        v.center = pOrig;
+        _v.center = pOrig;
         if (count)
             [self animate: count-1];
     };
@@ -33,11 +35,10 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     self.v = [[UIView alloc] initWithFrame:CGRectMake(58,255,204,204)];
-    v.backgroundColor = [UIColor redColor];
-    [self.window.rootViewController.view addSubview: v];
+    _v.backgroundColor = [UIColor redColor];
+    [self.window.rootViewController.view addSubview: _v];
     [self.window makeKeyAndVisible];
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self animate:2]; // i.e. three times
     });

@@ -48,6 +48,7 @@
         t.string = pts[i];
         // new: make bounds height taller, as drawing of letter is now truncated at bottom otherwise
         // THIS IS A NEW ISSUE! I don't know why iOS 6 is drawing the text on a different baseline
+        // this will make backward compatibility really difficult
         t.bounds = CGRectMake(0,0,40,40);
         t.position = CGPointMake(CGRectGetMidX(circle.bounds), 
                                  CGRectGetMidY(circle.bounds));

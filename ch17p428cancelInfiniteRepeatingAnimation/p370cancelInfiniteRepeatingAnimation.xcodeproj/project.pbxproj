@@ -221,6 +221,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p370cancelInfiniteRepeatingAnimation/p370cancelInfiniteRepeatingAnimation-Prefix.pch";
 				INFOPLIST_FILE = "p370cancelInfiniteRepeatingAnimation/p370cancelInfiniteRepeatingAnimation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -232,6 +233,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p370cancelInfiniteRepeatingAnimation/p370cancelInfiniteRepeatingAnimation-Prefix.pch";
 				INFOPLIST_FILE = "p370cancelInfiniteRepeatingAnimation/p370cancelInfiniteRepeatingAnimation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -256,6 +258,7 @@
 				A4B9A339148DCF0E0055CCF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
