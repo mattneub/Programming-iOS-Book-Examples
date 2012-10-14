@@ -13,6 +13,8 @@ Changes include:
 
 * Illustrate some newly available CIFilters.
 
+* Illustrate new UIView/UIGestureRecognizer interaction.
+
 New examples:
 
 * Further illustrate use of constraints (ch 14), esp. in company with animation (ch 17).

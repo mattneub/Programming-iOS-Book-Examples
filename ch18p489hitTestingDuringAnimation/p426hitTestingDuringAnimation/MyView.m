@@ -14,6 +14,8 @@
     UITapGestureRecognizer* t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     [self->v addGestureRecognizer:t];
     t.cancelsTouchesInView = NO;
+    // uncomment next line to see how button, even if tappable, "swallows the touch" while animating
+    //[self->v removeGestureRecognizer:t];
 }
 
 - (void) tap: (UIGestureRecognizer*) g {
