@@ -5,9 +5,7 @@
 #import "MyView.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation MyView {
-}
-
+@implementation MyView
 
 -(void)awakeFromNib {
     CALayer* lay = [CALayer layer];

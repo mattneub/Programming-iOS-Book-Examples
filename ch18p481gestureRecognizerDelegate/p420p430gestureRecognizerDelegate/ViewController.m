@@ -4,14 +4,16 @@
 
 // the user must perform a tap-and-a-half (tap and hold) to “get the view’s attention,” which we will indicate by a pulsing animation on the view; then (and only then) the user can drag the view
 
+@interface ViewController ()
+@property (nonatomic, strong) IBOutlet UIView* v;
+@property (nonatomic, strong) UILongPressGestureRecognizer* longPresser;
+@end
+
 @implementation ViewController
 
 {
     CGPoint origC;
 }
-
-@synthesize v=_v, longPresser;
-
 
 - (void)viewDidLoad
 {
@@ -60,6 +62,7 @@
 }
 
 - (BOOL) gestureRecognizerShouldBegin: (UIGestureRecognizer*) g {
+    // g is the UIPanGestureRecognizer
     if (self.longPresser.state == UIGestureRecognizerStatePossible || 
         self.longPresser.state == UIGestureRecognizerStateFailed)
         return NO;

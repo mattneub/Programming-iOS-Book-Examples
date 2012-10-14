@@ -6,8 +6,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize viewController = _viewController;
 
 // tap a planet
 
@@ -39,7 +37,7 @@
         [UIView animateWithDuration:0.2 
                               delay:0 
                             options:UIViewAnimationOptionAutoreverse 
-                         animations:^(void) {
+                         animations:^{
                              v.transform = CGAffineTransformMakeScale(1.1, 1.1);
                          } completion:^ (BOOL b) {
                              v.transform = CGAffineTransformIdentity;

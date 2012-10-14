@@ -251,6 +251,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p417p427gestureRecognizers/p417p427gestureRecognizers-Prefix.pch";
 				INFOPLIST_FILE = "p417p427gestureRecognizers/p417p427gestureRecognizers-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -262,6 +263,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p417p427gestureRecognizers/p417p427gestureRecognizers-Prefix.pch";
 				INFOPLIST_FILE = "p417p427gestureRecognizers/p417p427gestureRecognizers-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -286,6 +288,7 @@
 				A4C00AA7145E09E800B4357E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

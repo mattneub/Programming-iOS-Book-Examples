@@ -9,14 +9,15 @@
 // so for the sake of completeness here's the example again without the delegate
 // and without the second gesture recognizer
 
+@interface ViewController ()
+@property (nonatomic, strong) IBOutlet UIView* v;
+@end
+
 @implementation ViewController
 
 {
     CGPoint origOffset;
 }
-
-@synthesize v, longPresser;
-
 
 - (void)viewDidLoad
 {
@@ -25,8 +26,7 @@
                                         initWithTarget:self
                                         action:@selector(longPress:)];
     lp.numberOfTapsRequired = 1;
-    [v addGestureRecognizer:lp];
-    self.longPresser = lp;
+    [self.v addGestureRecognizer:lp];
 
 }
 
@@ -42,6 +42,8 @@
         anim.repeatCount = HUGE_VALF;
         anim.autoreverses = YES;
         [vv.layer addAnimation:anim forKey:nil];
+        // oddly, UILongPressGestureRecognizer lacks translationInView:,
+        // so we have to keep track of the whole movement ourselves
         self->origOffset = CGPointMake(CGRectGetMidX(vv.bounds) - [lp locationInView:vv].x,
                                        CGRectGetMidY(vv.bounds) - [lp locationInView:vv].y);
     }

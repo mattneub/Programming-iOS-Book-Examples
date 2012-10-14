@@ -93,9 +93,9 @@
 				A41DA6EE1491377500867532 /* AppDelegate.m */,
 				A41DA6F01491377500867532 /* ViewController.h */,
 				A41DA6F11491377500867532 /* ViewController.m */,
+				A41DA6F31491377600867532 /* ViewController.xib */,
 				A4E6CD4B1492894400B888FA /* MyView0.h */,
 				A4E6CD4C1492894400B888FA /* MyView0.m */,
-				A41DA6F31491377600867532 /* ViewController.xib */,
 				A41DA6FB149137B300867532 /* MyView1.h */,
 				A41DA6FC149137B300867532 /* MyView1.m */,
 				A41DA6FE149138D200867532 /* MyView2.h */,
@@ -263,6 +263,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p402touches/p402touches-Prefix.pch";
 				INFOPLIST_FILE = "p402touches/p402touches-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -274,6 +275,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p402touches/p402touches-Prefix.pch";
 				INFOPLIST_FILE = "p402touches/p402touches-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

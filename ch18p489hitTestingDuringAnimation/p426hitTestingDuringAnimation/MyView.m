@@ -7,10 +7,12 @@
     IBOutlet UIView* v;
 }
 
+// the top-level (root) view is a MyView
+
 - (void) awakeFromNib {
     [super awakeFromNib];
     UITapGestureRecognizer* t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-    [v addGestureRecognizer:t];
+    [self->v addGestureRecognizer:t];
     t.cancelsTouchesInView = NO;
 }
 
@@ -22,12 +24,12 @@
     // comment out this next line to use our munged hit-testing
     // return [super hitTest:point withEvent:event];
     // v is the animated subview
-    CALayer* lay = [v.layer presentationLayer];
+    CALayer* lay = [self->v.layer presentationLayer];
     CALayer* hitLayer = [lay hitTest: point];
     if (hitLayer == lay || hitLayer.superlayer == lay)
-        return v;
+        return self->v;
     UIView* hitView = [super hitTest:point withEvent:event];
-    if (hitView == v)
+    if (hitView == self->v)
         return self;
     return hitView;
 }

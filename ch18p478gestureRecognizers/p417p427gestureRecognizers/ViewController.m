@@ -5,11 +5,10 @@
 #import "VertPanGestureRecognizer.h"
 
 @interface ViewController ()
-@property (nonatomic, strong) IBOutlet UIView* v;
+@property (nonatomic, weak) IBOutlet UIView* v;
 @end
 
 @implementation ViewController
-@synthesize v; // our tappable draggable subview
 
 #define which 1 // try also 2
 
@@ -22,13 +21,13 @@
                                   initWithTarget:self 
                                   action:@selector(doubleTap)];
     t2.numberOfTapsRequired = 2;
-    [v addGestureRecognizer:t2];
+    [self.v addGestureRecognizer:t2];
     
     UITapGestureRecognizer* t1 = [[UITapGestureRecognizer alloc] 
                                   initWithTarget:self 
                                   action:@selector(singleTap)];
     [t1 requireGestureRecognizerToFail:t2];
-    [v addGestureRecognizer:t1];
+    [self.v addGestureRecognizer:t1];
     
     switch (which) {
         case 1:
@@ -36,7 +35,7 @@
             UIPanGestureRecognizer* p = [[UIPanGestureRecognizer alloc] 
                                          initWithTarget:self 
                                          action:@selector(dragging:)];
-            [v addGestureRecognizer:p];
+            [self.v addGestureRecognizer:p];
             
             break;
         }
@@ -46,12 +45,12 @@
             UIPanGestureRecognizer* p = [[HorizPanGestureRecognizer alloc] 
                                          initWithTarget:self 
                                          action:@selector(dragging:)];
-            [v addGestureRecognizer:p];
+            [self.v addGestureRecognizer:p];
 
             UIPanGestureRecognizer* p2 = [[VertPanGestureRecognizer alloc] 
                                           initWithTarget:self 
                                           action:@selector(dragging:)];
-            [v addGestureRecognizer:p2];
+            [self.v addGestureRecognizer:p2];
             
             break;
         }

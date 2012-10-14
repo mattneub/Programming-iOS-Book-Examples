@@ -249,7 +249,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p426hitTestingDuringAnimation/p426hitTestingDuringAnimation-Prefix.pch";
 				INFOPLIST_FILE = "p426hitTestingDuringAnimation/p426hitTestingDuringAnimation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -261,7 +261,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p426hitTestingDuringAnimation/p426hitTestingDuringAnimation-Prefix.pch";
 				INFOPLIST_FILE = "p426hitTestingDuringAnimation/p426hitTestingDuringAnimation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -286,6 +286,7 @@
 				A49FE40C1492D36A00845610 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

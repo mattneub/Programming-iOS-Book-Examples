@@ -3,8 +3,11 @@
 #import "CompassLayer.h"
 
 
+@interface CompassLayer ()
+@property (nonatomic, strong) CALayer* arrow;
+@end
+
 @implementation CompassLayer
-@synthesize arrow=_arrow;
 
 - (void) setup {
     NSLog(@"setup");
@@ -13,19 +16,17 @@
     
     // the gradient
     CAGradientLayer* g = [[CAGradientLayer alloc] init];
+    g.contentsScale = [UIScreen mainScreen].scale;
     g.frame = self.bounds;
-    g.colors = [NSArray arrayWithObjects:
-                (id)[[UIColor blackColor] CGColor],
-                [[UIColor redColor] CGColor],
-                nil];
-    g.locations = [NSArray arrayWithObjects:
-                   [NSNumber numberWithFloat: 0.0],
-                   [NSNumber numberWithFloat: 1.0],
-                   nil];
+    g.colors = @[(id)[[UIColor blackColor] CGColor],
+                (id)[[UIColor redColor] CGColor]];
+    g.locations = @[@0.0f,
+                   @1.0f];
     [self addSublayer:g];
     
     // the circle
     CAShapeLayer* circle = [[CAShapeLayer alloc] init];
+    circle.contentsScale = [UIScreen mainScreen].scale;
     circle.lineWidth = 2.0;
     circle.fillColor = 
     [[UIColor colorWithRed:0.9 green:0.95 blue:0.93 alpha:0.9] CGColor];
@@ -39,14 +40,15 @@
                                   CGRectGetMidY(self.bounds));
     
     // the four cardinal points
-    NSArray* pts = [NSArray arrayWithObjects: @"N", @"E", @"S", @"W", nil];
+    NSArray* pts = @[@"N", @"E", @"S", @"W"];
     for (int i = 0; i < 4; i++) {
         CATextLayer* t = [[CATextLayer alloc] init];
-        t.string = [pts objectAtIndex: i];
-        t.bounds = CGRectMake(0,0,40,30);
+        t.contentsScale = [UIScreen mainScreen].scale;
+        t.string = pts[i];
+        t.bounds = CGRectMake(0,0,40,40);
         t.position = CGPointMake(CGRectGetMidX(circle.bounds), 
                                  CGRectGetMidY(circle.bounds));
-        CGFloat vert = (CGRectGetMidY(circle.bounds) - 5) / CGRectGetHeight(t.bounds);
+        CGFloat vert = CGRectGetMidY(circle.bounds) / CGRectGetHeight(t.bounds);
         t.anchorPoint = CGPointMake(0.5, vert);
         t.alignmentMode = kCAAlignmentCenter;
         t.foregroundColor = [[UIColor blackColor] CGColor]; 
@@ -56,6 +58,7 @@
     
     // the arrow
     CALayer* arrow = [[CALayer alloc] init];
+    arrow.contentsScale = [UIScreen mainScreen].scale;
     arrow.bounds = CGRectMake(0, 0, 40, 100);
     arrow.position = CGPointMake(CGRectGetMidX(self.bounds), 
                                  CGRectGetMidY(self.bounds));
@@ -159,7 +162,7 @@ void drawStripes (void *info, CGContextRef con) {
     CGFloat rot = M_PI/4.0;
     [CATransaction setDisableActions:YES];
     CGFloat current = [[self.arrow valueForKeyPath:@"transform.rotation.z"] floatValue];
-    [self.arrow setValue: [NSNumber numberWithFloat: current + rot] 
+    [self.arrow setValue: @(current + rot) 
               forKeyPath:@"transform.rotation.z"];
     // first animation (rotate and clunk) ===============
     CABasicAnimation* anim1 = [CABasicAnimation animationWithKeyPath:@"transform"];
@@ -167,17 +170,17 @@ void drawStripes (void *info, CGContextRef con) {
     CAMediaTimingFunction* clunk = 
     [CAMediaTimingFunction functionWithControlPoints:.9 :.1 :.7 :.9];
     anim1.timingFunction = clunk;
-    anim1.fromValue = [NSNumber numberWithFloat: current];
-    anim1.toValue = [NSNumber numberWithFloat: current + rot];
+    anim1.fromValue = @(current);
+    anim1.toValue = @(current + rot);
     anim1.valueFunction = [CAValueFunction functionWithName:kCAValueFunctionRotateZ];
     // second animation (waggle) ========================
     NSMutableArray* values = [NSMutableArray array];
-    [values addObject: [NSNumber numberWithFloat:0]];
+    [values addObject: @0.0f];
     int direction = 1;
     for (int i = 20; i < 60; i += 5, direction *= -1) { // reverse direction each time
-        [values addObject: [NSNumber numberWithFloat: direction*M_PI/(float)i]];
+        [values addObject: @(direction*M_PI/(float)i)];
     }
-    [values addObject: [NSNumber numberWithFloat:0]];
+    [values addObject: @0.0f];
     CAKeyframeAnimation* anim2 = 
     [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     anim2.values = values;
@@ -187,7 +190,7 @@ void drawStripes (void *info, CGContextRef con) {
     anim2.valueFunction = [CAValueFunction functionWithName:kCAValueFunctionRotateZ];
     // group ============================================
     CAAnimationGroup* group = [CAAnimationGroup animation];
-    group.animations = [NSArray arrayWithObjects: anim1, anim2, nil];
+    group.animations = @[anim1, anim2];
     group.duration = anim1.duration + anim2.duration;
     [self.arrow addAnimation:group forKey:nil];
 }
