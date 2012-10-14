@@ -12,7 +12,7 @@
 }
 
 /*
- By chance, this project raises a whole bunch of issues I don't want to get to yet in the book.
+ By chance, this project raises issues I don't want to get to yet in the book.
  
  (1)
  
@@ -33,23 +33,7 @@
  It's quite tricky to specify consistent layout for our two views;
  in the end I specified both centered, one above the other.
  
- (3)
- 
- Autolayout also breaks my bounded label, because autolayout does a kind of
- automatic size-to-fit (unless you explicitly prevent it).
- But when we size to fit our bounded label, we use the text size as a guide.
- Since drawTextInRect intends to draw the text in a smaller space than that,
- that space is now *too* small! The text is truncated.
- The solution is override intrinsicContentSize to compensate, as below.
- 
- The outcome is that our label looks good and we are rotatable.
- 
  */
-
--(CGSize)intrinsicContentSize {
-    CGSize sz = [super intrinsicContentSize];
-    return (CGSize){sz.width + 10, sz.height + 10};
-}
 
 
 @end
