@@ -239,6 +239,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p452p463rotationChangesInterface/p452p463rotationChangesInterface-Prefix.pch";
 				INFOPLIST_FILE = "p452p463rotationChangesInterface/p452p463rotationChangesInterface-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -250,6 +251,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p452p463rotationChangesInterface/p452p463rotationChangesInterface-Prefix.pch";
 				INFOPLIST_FILE = "p452p463rotationChangesInterface/p452p463rotationChangesInterface-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -274,6 +276,7 @@
 				A4BCE1A01460595D0053A1E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

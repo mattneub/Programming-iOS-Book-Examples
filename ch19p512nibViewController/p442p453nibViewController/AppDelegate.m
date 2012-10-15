@@ -5,7 +5,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
 
 #define which 1 // but "2" also works because same-named nib is found automatically
 

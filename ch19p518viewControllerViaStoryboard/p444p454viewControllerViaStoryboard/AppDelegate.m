@@ -4,13 +4,11 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     
-    // New in iOS 5: storyboards
     // Nothing here! No window, no view controller, no nib, no nothing
     // Everything happens through the automatic loading of the storyboard
     // (see the target, and the Info.plist where UIMainStoryboardFile is set)

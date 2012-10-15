@@ -245,6 +245,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p444p454viewControllerViaStoryboard/p444p454viewControllerViaStoryboard-Prefix.pch";
 				INFOPLIST_FILE = "p444p454viewControllerViaStoryboard/p444p454viewControllerViaStoryboard-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -256,6 +257,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p444p454viewControllerViaStoryboard/p444p454viewControllerViaStoryboard-Prefix.pch";
 				INFOPLIST_FILE = "p444p454viewControllerViaStoryboard/p444p454viewControllerViaStoryboard-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
