@@ -17,13 +17,14 @@
  (1)
  
  In iOS 6, the rules for autorotation have completely changed.
- shouldAutorotateToInterfaceOrientation: is deprecated, and is consulted only if implemented.
- In a generic UIViewController it is not implemented...
- and so the default (portrait only) is not applied.
+ shouldAutorotateToInterfaceOrientation: is completely ignored!
  Instead, we start by treating the application's declaration in the plist
  as ruling not merely launch preference but rotation generally.
  Thus, because I happened to turn on landscape for the application,
  this interface now autorotates, even though the UIViewController is generic.
+ 
+ To put it another way, previously I was using a generic UIViewController to help
+ guarantee that we would be portrait-only, but that no longer works.
  
  (2)
  
