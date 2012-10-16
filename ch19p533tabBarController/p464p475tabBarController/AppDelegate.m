@@ -7,8 +7,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -17,7 +15,7 @@
     UITabBarController* tbc = [[UITabBarController alloc] init];
     View1Controller* v1c = [[View1Controller alloc] init];
     View2Controller* v2c = [[View2Controller alloc] init];
-    [tbc setViewControllers:[NSArray arrayWithObjects:v1c, v2c, nil] animated:NO];
+    [tbc setViewControllers:@[v1c, v2c] animated:NO]; //
         
     self.window.rootViewController = tbc;
     // easy to make tab bar controller interface via code
@@ -29,7 +27,7 @@
     [self.window makeKeyAndVisible];
 
     // comment out the next line if you want to play with new iOS 5 color customizations
-    // return YES;
+    return YES;
     
     // new iOS 5 feature! color color everywhere
     [tbc.tabBar setTintColor:[UIColor redColor]]; 
@@ -50,17 +48,12 @@
     // could do this with each tabBarItem individually...
     // but can also do it universally by passing thru appearance proxy
     [[UITabBarItem appearance] setTitleTextAttributes: 
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor blackColor],
-      UITextAttributeTextColor,
+     @{UITextAttributeTextColor: [UIColor blackColor],
       // NB UIOffset and its NSValue wrapper are new in iOS 5
       // instead of misusing CGSize or CGPoint to represent an offset value pair
-      [NSValue valueWithUIOffset:UIOffsetMake(2,2)],
-      UITextAttributeTextShadowOffset,
+      UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(2,2)],
       // you won't see any shadow unless you set the color
-      [UIColor colorWithWhite:.2 alpha:.4],
-      UITextAttributeTextShadowColor,
-      nil]
+      UITextAttributeTextShadowColor: [UIColor colorWithWhite:.2 alpha:.4]}
                                              forState:UIControlStateNormal];
 
     

@@ -3,8 +3,6 @@
 #import <UIKit/UIKit.h>
 
 
-@interface View1Controller : UIViewController {
-    
-}
+@interface View1Controller : UIViewController 
 
 @end

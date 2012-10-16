@@ -25,7 +25,7 @@
 		A42C608C14A036BA00485D97 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A42C608E14A036BA00485D97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A42C609014A036BA00485D97 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A42C609414A036BA00485D97 /* p454presentedViewController-Info.plist */ = {isa = PBXFileReference; path = "p454presentedViewController-Info.plist"; sourceTree = "<group>"; };
+		A42C609414A036BA00485D97 /* p454presentedViewController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p454presentedViewController-Info.plist"; sourceTree = "<group>"; };
 		A42C609614A036BA00485D97 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A42C609814A036BA00485D97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A42C609A14A036BA00485D97 /* p454presentedViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p454presentedViewController-Prefix.pch"; sourceTree = "<group>"; };
@@ -264,6 +264,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p424presentedViewController/p454presentedViewController-Prefix.pch";
 				INFOPLIST_FILE = "p424presentedViewController/p454presentedViewController-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = p454presentedViewController;
 				WRAPPER_EXTENSION = app;
 			};
@@ -275,6 +276,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p424presentedViewController/p454presentedViewController-Prefix.pch";
 				INFOPLIST_FILE = "p424presentedViewController/p454presentedViewController-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = p454presentedViewController;
 				WRAPPER_EXTENSION = app;
 			};

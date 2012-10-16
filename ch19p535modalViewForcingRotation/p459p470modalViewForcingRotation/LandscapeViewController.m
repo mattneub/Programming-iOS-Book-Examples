@@ -4,24 +4,19 @@
 
 @implementation LandscapeViewController
 
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    }
+    return self;
+}
 
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)io
-{
-    // Return YES for supported orientations
-    // return UIInterfaceOrientationIsLandscape(io);
-    return io == UIInterfaceOrientationLandscapeRight;
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscape;
 }
 
 - (IBAction)doRotate:(id)sender {
-    // note that on iOS "parent" no longer means "modal presenter"; it is nil
-    // the presenter is the presentingViewController
-    // we should not really think of modal views as modal any more;
-    // it's just a matter of view-swapping
-    
-    // [self dismissModalViewControllerAnimated:NO]; // percolates up to parent; try also YES
-    // the above is legal in iOS 5, but there is a new more generalized way to present modally
-    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self dismissViewControllerAnimated:NO completion:nil];
     // this percolates up so that the correct view controller is dismissed
     // however, as the book explains, in the more general case...
@@ -37,6 +32,12 @@
     // since it also says self.modalTransitionStyle = UIModalTransitionStyleCoverVertical,
     // that's the style that is used
     
+    // but then change NO to YES in ViewController.m and get another surprise
+    // we still use dissolve when we present the LandscapeViewController;
+    // coverVertical is used only when dismissing
+    // this seems like a bug, but it sure has been around a long time
+    // more likely we're just not supposed to do this sort of thing on iPhone
+        
 }
 
 @end

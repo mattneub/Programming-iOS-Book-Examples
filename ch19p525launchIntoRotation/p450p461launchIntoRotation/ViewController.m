@@ -4,11 +4,14 @@
 
 @implementation ViewController
 
-#define which 4 // and "2" and "3" for the correct way; now "4" does it with constraints
+#define which 1 // and "2" and "3" for the correct way;
+                // however, there's an argument that "4" is now even better
+                // (use updateViewConstraints to initiate layout)
+                // finally, "5" does it with constraints alone
 
 /* The big change here is that the rotation callbacks are no longer called on rotational launch.
  viewDidLoad is still too early, though (we have not yet rotated).
- The solution is now to use viewWillLayoutSubviews.
+ The solution is now to use viewWillLayoutSubviews or updateViewConstraints.
  Or use constraints, so that layout will work right through rotation!
  */
 
@@ -30,11 +33,18 @@
                        withObject:nil afterDelay:0.0];
             break;
         }
-        case 3: // works, probably the right way
+        case 3: // works, probably a right way
         {
             break;
         }
-        case 4: // best way if you can do it
+        case 4: // works, probably an even righter way
+        {
+            [self.view setNeedsUpdateConstraints]; // so that updateViewConstraints will be called
+            // not very well documented, but it looks as if calling this once
+            // causes us to get rotation-related updateViewConstraints ever after
+            break;
+        }
+        case 5: // best way if you can do it, just set it and forget it
         {
             UIView* square = [[UIView alloc] init];
             square.backgroundColor = [UIColor blackColor];
@@ -79,6 +89,7 @@
         return;
     done = YES;
     // the static BOOL flag makes sure the following is performed exactly once
+    NSLog(@"finish initializing");
     UIView* square = [[UIView alloc] initWithFrame:CGRectMake(0,0,10,10)];
     square.backgroundColor = [UIColor blackColor];
     square.center = CGPointMake(CGRectGetMidX(self.view.bounds),5);
@@ -111,13 +122,37 @@
             break;
         }
         case 3: {
-            [self finishInitializingView]; // nailed it
+            [self finishInitializingView];
             break;
         }
         case 4: {
             break;
         }
+        case 5: {
+            break;
+        }
     }
+}
+
+-(void)updateViewConstraints {
+    NSLog(@"updateviewconstraints");
+    switch (which) {
+        case 1:
+        case 2: {
+            break;
+        }
+        case 3: {
+            break;
+        }
+        case 4: {
+            [self finishInitializingView];
+            break;
+        }
+        case 5: {
+            break;
+        }
+    }
+    [super updateViewConstraints];
 }
 
 

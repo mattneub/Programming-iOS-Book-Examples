@@ -4,11 +4,17 @@
 
 @interface ViewController()
 @property (nonatomic, strong) UIView* blackRect;
+@property (nonatomic, strong) NSArray* blackRectConstraintsOnscreen;
+@property (nonatomic, strong) NSArray* blackRectConstraintsOffscreen;
+
 @end
 
 @implementation ViewController
 
-#define which 2 // try "2" for layout-and-constraints way
+#define which 1 // try "2" for layout-and-constraints way
+  // but I think "3" is most elegant and appropriate
+  // takes a lot of preparation, but expresses what we're doing with most elegance and clarity:
+  // namely, we're swapping constraints in and out
 
 #if which==1
 
@@ -104,6 +110,62 @@
          and its removal from the superview has eliminated the constraints that affected it.
          */
     }
+}
+
+#endif
+
+#if which==3
+
+-(void)viewDidLoad {
+    UIView* br = [UIView new];
+    br.translatesAutoresizingMaskIntoConstraints = NO;
+    br.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:br];
+    [self.view setNeedsUpdateConstraints];
+    // and also prepare two sets of constraints
+    NSMutableArray* marrOn = [NSMutableArray array];
+    NSMutableArray* marrOff = [NSMutableArray array];
+    
+    NSArray* cons;
+    cons = [NSLayoutConstraint
+            constraintsWithVisualFormat:@"V:|-0-[br]-0-|"
+            options:0 metrics:nil views:@{@"br":br}];
+    [marrOn addObjectsFromArray:cons];
+    [marrOff addObjectsFromArray:cons];
+    
+    NSLayoutConstraint* con =
+     [NSLayoutConstraint
+      constraintWithItem:br attribute:NSLayoutAttributeWidth
+      relatedBy:NSLayoutRelationEqual
+      toItem:self.view attribute:NSLayoutAttributeWidth
+      multiplier:1.0/3.0 constant:0];
+    [marrOn addObject:con];
+    [marrOff addObject:con];
+    
+    cons = [NSLayoutConstraint
+            constraintsWithVisualFormat:@"H:|-0-[br]"
+            options:0 metrics:nil views:@{@"br":br}];
+    [marrOn addObjectsFromArray:cons];
+    con = [NSLayoutConstraint
+           constraintWithItem:br attribute:NSLayoutAttributeRight
+           relatedBy:NSLayoutRelationEqual
+           toItem:self.view attribute:NSLayoutAttributeLeft
+           multiplier:1 constant:0];
+    [marrOff addObject:con];
+    
+    self.blackRectConstraintsOnscreen = [marrOn copy];
+    self.blackRectConstraintsOffscreen = [marrOff copy];
+}
+
+-(void)updateViewConstraints {
+    NSLog(@"updateviewconstraints %i", self.interfaceOrientation);
+    [self.view removeConstraints:self.blackRectConstraintsOnscreen];
+    [self.view removeConstraints:self.blackRectConstraintsOffscreen];
+    if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation))
+        [self.view addConstraints:self.blackRectConstraintsOnscreen];
+    else
+        [self.view addConstraints:self.blackRectConstraintsOffscreen];
+    [super updateViewConstraints];
 }
 
 #endif
