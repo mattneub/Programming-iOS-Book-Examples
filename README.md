@@ -19,4 +19,8 @@ New examples:
 
 * Further illustrate use of constraints (ch 14), esp. in company with animation (ch 17).
 
+* Show gesture recognizers in nib (ch 18).
+
+
+
 Matt Neuburg
