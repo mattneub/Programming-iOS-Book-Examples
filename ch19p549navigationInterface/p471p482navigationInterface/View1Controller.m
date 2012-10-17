@@ -6,11 +6,6 @@
 
 @implementation View1Controller
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -25,7 +20,7 @@
         UIBarButtonItem* b2 = [[UIBarButtonItem alloc] 
                               initWithImage:[UIImage imageNamed:@"files.png"]
                               style:UIBarButtonItemStyleBordered target:nil action:nil];
-        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: b, b2, nil];
+        self.navigationItem.rightBarButtonItems = @[b, b2];
         
         
         // uncomment these lines and see what happens (see p. 470)

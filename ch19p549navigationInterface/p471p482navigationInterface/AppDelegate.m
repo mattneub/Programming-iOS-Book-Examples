@@ -3,10 +3,10 @@
 #import "AppDelegate.h"
 #import "View1Controller.h"
 #import "View2Controller.h"
+#import "MyNavigationController.h"
 
 @implementation AppDelegate
 
-@synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -15,7 +15,7 @@
     
     
     View1Controller* v1c = [[View1Controller alloc] init];
-    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:v1c];
+    UINavigationController* nav = [[MyNavigationController alloc] initWithRootViewController:v1c];
         
     self.window.rootViewController = nav;
     self.window.backgroundColor = [UIColor whiteColor];
@@ -27,19 +27,15 @@
     // Comment out next line and away we go
     return YES;
     
-    nav.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                             [UIColor redColor],
-                                             UITextAttributeTextColor,
-                                             [UIFont fontWithName:@"Bradley Hand" size:30],
-                                             UITextAttributeFont,
-                                             nil];
+    nav.navigationBar.titleTextAttributes = @{UITextAttributeTextColor: [UIColor redColor],
+                                             UITextAttributeFont: [UIFont fontWithName:@"Bradley Hand" size:30]};
     // adjust upwards (notice that negative is up)
     [nav.navigationBar setTitleVerticalPositionAdjustment:-5.0 forBarMetrics:UIBarMetricsDefault];
     // the purpose of the "bar metrics" is that you might want something different...
     // in landscape on the phone, where the bar is narrower
     nav.navigationBar.tintColor = [UIColor orangeColor];
 
-    // we'll use the appearance proxy to set tab bar item features throughout the app
+    // we'll use the appearance proxy to set bar item features throughout the app
     // note: appearance is an id, so if you get a method name wrong, you don't find out...
     // ...until the app crashes
     [[UIBarButtonItem appearance]
@@ -47,10 +43,7 @@
 
 
     [[UIBarButtonItem appearance] setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor blackColor],
-      UITextAttributeTextColor,
-      nil] 
+     @{UITextAttributeTextColor: [UIColor blackColor]} 
                                                 forState:UIControlStateNormal];
     
     UIImage* im = [UIImage imageNamed:@"linen.png"];

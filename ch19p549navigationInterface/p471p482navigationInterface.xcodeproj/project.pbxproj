@@ -20,6 +20,7 @@
 		A46534791462E93E007CD76D /* key.png in Resources */ = {isa = PBXBuildFile; fileRef = A46534771462E93E007CD76D /* key.png */; };
 		A465347A1462E93E007CD76D /* files.png in Resources */ = {isa = PBXBuildFile; fileRef = A46534781462E93E007CD76D /* files.png */; };
 		A46534821462F2CC007CD76D /* linen.png in Resources */ = {isa = PBXBuildFile; fileRef = A46534811462F2CC007CD76D /* linen.png */; };
+		C9D6E89C162DC3CF0003DB00 /* MyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D6E89B162DC3CF0003DB00 /* MyNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,8 @@
 		A46534771462E93E007CD76D /* key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = key.png; sourceTree = "<group>"; };
 		A46534781462E93E007CD76D /* files.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = files.png; sourceTree = "<group>"; };
 		A46534811462F2CC007CD76D /* linen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linen.png; sourceTree = "<group>"; };
+		C9D6E89A162DC3CF0003DB00 /* MyNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavigationController.h; sourceTree = "<group>"; };
+		C9D6E89B162DC3CF0003DB00 /* MyNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,8 @@
 			children = (
 				A46534651462E7FE007CD76D /* AppDelegate.h */,
 				A46534661462E7FE007CD76D /* AppDelegate.m */,
+				C9D6E89A162DC3CF0003DB00 /* MyNavigationController.h */,
+				C9D6E89B162DC3CF0003DB00 /* MyNavigationController.m */,
 				A465346D1462E931007CD76D /* View1Controller.h */,
 				A465346E1462E931007CD76D /* View1Controller.m */,
 				A465346F1462E931007CD76D /* View1.xib */,
@@ -185,6 +190,7 @@
 				A46534671462E7FE007CD76D /* AppDelegate.m in Sources */,
 				A46534731462E931007CD76D /* View1Controller.m in Sources */,
 				A46534751462E931007CD76D /* View2Controller.m in Sources */,
+				C9D6E89C162DC3CF0003DB00 /* MyNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +259,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p471p482navigationInterface/p471p482navigationInterface-Prefix.pch";
 				INFOPLIST_FILE = "p471p482navigationInterface/p471p482navigationInterface-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -264,6 +271,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p471p482navigationInterface/p471p482navigationInterface-Prefix.pch";
 				INFOPLIST_FILE = "p471p482navigationInterface/p471p482navigationInterface-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -288,6 +296,7 @@
 				A465346C1462E7FE007CD76D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

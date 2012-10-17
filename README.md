@@ -15,12 +15,14 @@ Changes include:
 
 * Illustrate new UIView/UIGestureRecognizer interaction.
 
+* Illustrate new rotation rules, including new structure of launch-into-rotation.
+
 New examples:
 
 * Further illustrate use of constraints (ch 14), esp. in company with animation (ch 17).
 
 * Show gesture recognizers in nib (ch 18).
 
-
+* Show new rotation/orientation rules (ch 19).
 
 Matt Neuburg
