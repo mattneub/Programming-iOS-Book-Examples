@@ -24,9 +24,5 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return YES;
-}
 
 @end

@@ -2,13 +2,14 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-@property (nonatomic, retain) NSData* myBigDataAlias;
+@property (nonatomic, strong) NSData* myBigDataAlias;
+@property (nonatomic, strong) NSData* myBigData;
 @end
 
 
 @implementation ViewController
 
-@synthesize myBigDataAlias = myBigData;
+@synthesize myBigDataAlias = _myBigData;
 
 
 - (IBAction)doButton:(id)sender {
@@ -22,10 +23,10 @@
 }
 
 - (NSData*) myBigData {
-    NSFileManager* fm = [[NSFileManager alloc] init];
-    NSString* f = [NSTemporaryDirectory() stringByAppendingPathComponent:@"myBigData"];
-    BOOL fExists = [fm fileExistsAtPath:f];
     if (!self.myBigDataAlias) {
+        NSFileManager* fm = [[NSFileManager alloc] init];
+        NSString* f = [NSTemporaryDirectory() stringByAppendingPathComponent:@"myBigData"];
+        BOOL fExists = [fm fileExistsAtPath:f];
         if (fExists) {
             NSData* data = [NSData dataWithContentsOfFile:f];
             NSLog(@"loading big data from disk");
@@ -42,10 +43,10 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    if (self->myBigData) {
+    if (self->_myBigData) {
         NSLog(@"unloading big data");
         NSString* f = [NSTemporaryDirectory() stringByAppendingPathComponent:@"myBigData"];
-        [myBigData writeToFile:f atomically:NO];
+        [_myBigData writeToFile:f atomically:NO];
         self.myBigData = nil;
     }
 }
@@ -61,30 +62,9 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-// note, new in iOS 5 there is also a viewWillUnload callback
-// at this time, the view is still valid
-// Apple suggests that you might remove views as observers at this point
-// (I think this makes sense especially because you could use weak outlets...
-// ...and so there will be no need to nilify sibviews manually in viewDidUnload,
-// as ARC will miraculously do it for you)
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
+// note, new in iOS 6 viewWillUnload and viewDidUnload are dead letters
+// views are no longer purged! this turns out to have been a mistake all along
+// (the *backing store* is purged but that's another story)
 
 
 @end

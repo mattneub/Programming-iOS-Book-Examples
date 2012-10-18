@@ -2,15 +2,19 @@
 
 #import "Pep.h"
 
+@interface Pep ()
+@property (nonatomic, weak) IBOutlet UILabel* name;
+@property (nonatomic, weak) IBOutlet UIImageView* pic;
+@end
+
 @implementation Pep
-@synthesize name, pic, boy;
 
 // given a Pep boy's name, we display his name and picture
 
 - (id) initWithPepBoy: (NSString*) inputboy nib: (NSString*) nib bundle: (NSBundle*) bundle {
     self = [self initWithNibName:nib bundle:bundle];
     if (self) {
-        self.boy = inputboy;
+        self->_boy = [inputboy copy];
     }
     return self;
 }
@@ -23,9 +27,5 @@
                 [NSString stringWithFormat: @"%@.jpg", [self.boy lowercaseString]]];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
-}
 
 @end

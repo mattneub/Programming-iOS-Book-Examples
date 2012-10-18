@@ -3,18 +3,18 @@
 #import "AppDelegate.h"
 #import "Pep.h"
 
+@interface AppDelegate ()
+@property (nonatomic, strong) NSArray* pep;
+@end
+
 @implementation AppDelegate
-
-@synthesize window = _window;
-@synthesize pep = _pep;
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    self.pep = [NSArray arrayWithObjects: @"Manny", @"Moe", @"Jack", nil];
+    self.pep = @[@"Manny", @"Moe", @"Jack"];
     
     // make a page view controller
     UIPageViewController* pvc = [[UIPageViewController alloc] 
@@ -23,8 +23,8 @@
                                  options:nil];
     
     // give it an initial page
-    Pep* page = [[Pep alloc] initWithPepBoy:[self.pep objectAtIndex:0] nib: nil bundle: nil];
-    [pvc setViewControllers:[NSArray arrayWithObject:page]
+    Pep* page = [[Pep alloc] initWithPepBoy:(self.pep)[0] nib: nil bundle: nil];
+    [pvc setViewControllers:@[page]
                        direction:UIPageViewControllerNavigationDirectionForward
                         animated:NO completion:NULL];
     
@@ -47,7 +47,7 @@
     ix++;
     if (ix >= [self.pep count])
         return nil;
-    return [[Pep alloc] initWithPepBoy:[self.pep objectAtIndex:ix] nib: nil bundle: nil];
+    return [[Pep alloc] initWithPepBoy:(self.pep)[ix] nib: nil bundle: nil];
 }
 
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
@@ -55,7 +55,7 @@
     NSUInteger ix = [self.pep indexOfObject:boy];
     if (ix == 0)
         return nil;
-    return [[Pep alloc] initWithPepBoy:[self.pep objectAtIndex:--ix] nib: nil bundle: nil];
+    return [[Pep alloc] initWithPepBoy:(self.pep)[--ix] nib: nil bundle: nil];
 }
 
 

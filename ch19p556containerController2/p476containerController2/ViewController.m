@@ -3,30 +3,28 @@
 #import "ViewController.h"
 #import "PanelViewController.h"
 
-@implementation ViewController
-@synthesize panel;
+@interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIView *panel;
+@end
+
+@implementation ViewController {
+    BOOL _viewInitializationDone;
+}
 
 
 #pragma mark - View lifecycle
 
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear: animated];
-    static BOOL done = NO;
-    if (!done) {
-        done = YES;
+- (void) viewWillLayoutSubviews {
+    if (!_viewInitializationDone) {
+        _viewInitializationDone = YES;
         PanelViewController* pvc = [[PanelViewController alloc] init];
         [self addChildViewController:pvc];
-        [pvc didMoveToParentViewController:self];
         [self.panel addSubview:pvc.view];
         pvc.view.frame = self.panel.bounds;
         pvc.view.autoresizingMask = (UIViewAutoresizingFlexibleHeight | 
                                      UIViewAutoresizingFlexibleWidth);
+        [pvc didMoveToParentViewController:self];
     }
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
 }
 
 @end
