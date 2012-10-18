@@ -5,6 +5,7 @@
 
 @implementation CompassLayer{
     CALayer* rotationLayer;
+    BOOL _didSetup;
 }
 
 
@@ -149,9 +150,8 @@ void drawStripes (void *info, CGContextRef con) {
 
 
 - (void) layoutSublayers {
-    static BOOL didSetup = NO;
-    if (!didSetup) {
-        didSetup = YES;
+    if (!_didSetup) {
+        _didSetup = YES;
         [self setup];
         [self performSelector:@selector(doRotate) withObject:nil afterDelay:1.0];
     }

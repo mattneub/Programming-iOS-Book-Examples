@@ -2,7 +2,9 @@
 
 #import "ViewController.h"
 
-@implementation ViewController
+@implementation ViewController {
+    BOOL _viewInitializationDone;
+}
 
 #define which 1 // and "2" and "3" for the correct way;
                 // however, there's an argument that "4" is now even better
@@ -83,12 +85,9 @@
 }
 
 - (void) finishInitializingView {
-    // static BOOL flag
-    static BOOL done = NO;
-    if (done)
+    if (_viewInitializationDone)
         return;
-    done = YES;
-    // the static BOOL flag makes sure the following is performed exactly once
+    _viewInitializationDone = YES;
     NSLog(@"finish initializing");
     UIView* square = [[UIView alloc] initWithFrame:CGRectMake(0,0,10,10)];
     square.backgroundColor = [UIColor blackColor];

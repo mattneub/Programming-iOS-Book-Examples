@@ -7,20 +7,20 @@
 @property (strong, nonatomic) UIButton* button;
 @end
 
-@implementation AppDelegate
-
-static CGPoint pOrig;
+@implementation AppDelegate {
+    CGPoint _pOrig;
+}
 
 - (void) animate {
     CGPoint p = _v.center;
-    pOrig = p;
+    _pOrig = p;
     p.x += 100;
     void (^anim) (void) = ^{
         _button.enabled = YES;
         _v.center = p;
     };
     void (^after) (BOOL) = ^(BOOL f) {
-        _v.center = pOrig;
+        _v.center = _pOrig;
     };
     NSUInteger opts = UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat;
     [UIView animateWithDuration:1 delay:0 options:opts 
@@ -30,7 +30,7 @@ static CGPoint pOrig;
 - (void) cancel {
     void (^anim) (void) = ^{
         _button.enabled = NO;
-        _v.center = pOrig;
+        _v.center = _pOrig;
     };
     NSUInteger opts = UIViewAnimationOptionBeginFromCurrentState;
     [UIView animateWithDuration:.1 delay:0 options:opts 

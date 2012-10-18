@@ -7,7 +7,9 @@
 @property (nonatomic, strong) CALayer* arrow;
 @end
 
-@implementation CompassLayer
+@implementation CompassLayer {
+    BOOL _didSetup;
+}
 
 - (void) setup {
     NSLog(@"setup");
@@ -149,9 +151,8 @@ void drawStripes (void *info, CGContextRef con) {
 
 
 - (void) layoutSublayers {
-    static BOOL didSetup = NO;
-    if (!didSetup) {
-        didSetup = YES;
+    if (!_didSetup) {
+        _didSetup = YES;
         [self setup];
     }
 }

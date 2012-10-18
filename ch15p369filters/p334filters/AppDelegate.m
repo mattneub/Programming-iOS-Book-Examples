@@ -7,6 +7,7 @@
     __weak CADisplayLink* _link; // for example 5
     CIFilter* _tran; // for example 5
     CGRect moiextent; // for example 5, get extent in advance
+    double _frame;
     
     UIImageView* iv;
 
@@ -15,7 +16,7 @@
 }
 
 
-#define which 1 // or 2 for non-Core Image
+#define which 5 // or 2 for non-Core Image
 // new in iOS 6! see 3 (mask), 4 (tile)
 // iOS 6 can now also do transition filters; should try to illustrate this in the animations chapter
 // try 5 to see it
@@ -152,18 +153,19 @@
 }
 
 - (void) nextFrame: (CADisplayLink*) sender {
-    static double frame = 0.0;
 
-    [_tran setValue:@(frame) forKey:@"inputTime"];
+
+    [_tran setValue:@(_frame) forKey:@"inputTime"];
     CGImageRef moi3 = [self->con createCGImage:_tran.outputImage
                                 fromRect:moiextent];
     self->iv.image = [UIImage imageWithCGImage:moi3];
     CGImageRelease(moi3);
     
-    frame += sender.duration;
+    _frame += sender.duration;
     
-    if (frame > 1.05 + sender.duration) { // play safe
+    if (_frame > 1.05 + sender.duration) { // play safe
         [sender invalidate];
+        _frame = 0.0;
     }
     
     // NSLog(@"here %f", frame);
