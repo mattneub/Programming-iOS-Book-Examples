@@ -51,13 +51,11 @@
     }
 }
 
-#pragma mark - View lifecycle
-
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // this is not really big data, but let's pretend it is
-        self.myBigData = [@"howdy" dataUsingEncoding:NSUTF8StringEncoding];
+        self->_myBigData = [@"howdy" dataUsingEncoding:NSUTF8StringEncoding];
     }
     return self;
 }
