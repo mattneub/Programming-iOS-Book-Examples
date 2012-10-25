@@ -17,12 +17,14 @@ Changes include:
 
 * Illustrate new rotation rules, including new structure of launch-into-rotation.
 
-New examples:
+New examples include:
 
 * Further illustrate use of constraints (ch 14), esp. in company with animation (ch 17).
 
 * Show gesture recognizers in nib (ch 18).
 
 * Show new rotation/orientation rules (ch 19).
+
+* Show new state save-and-restore (ch 19).
 
 Matt Neuburg
