@@ -19,7 +19,6 @@
 		A4FE1659146494ED0073F9A2 /* manny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A4FE1656146494ED0073F9A2 /* manny.jpg */; };
 		A4FE165A146494ED0073F9A2 /* moe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A4FE1657146494ED0073F9A2 /* moe.jpg */; };
 		C9ED84021639E4B400E47EBF /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9ED84011639E4B400E47EBF /* RootViewController.m */; };
-		C9ED8405163A2C4100E47EBF /* MyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9ED8404163A2C4100E47EBF /* MyPageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,8 +40,6 @@
 		A4FE1657146494ED0073F9A2 /* moe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moe.jpg; sourceTree = "<group>"; };
 		C9ED84001639E4B400E47EBF /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		C9ED84011639E4B400E47EBF /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		C9ED8403163A2C4100E47EBF /* MyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPageViewController.h; sourceTree = "<group>"; };
-		C9ED8404163A2C4100E47EBF /* MyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +90,6 @@
 				A4FE16451464949E0073F9A2 /* AppDelegate.m */,
 				C9ED84001639E4B400E47EBF /* RootViewController.h */,
 				C9ED84011639E4B400E47EBF /* RootViewController.m */,
-				C9ED8403163A2C4100E47EBF /* MyPageViewController.h */,
-				C9ED8404163A2C4100E47EBF /* MyPageViewController.m */,
 				A4FE1650146494E40073F9A2 /* Pep.h */,
 				A4FE1651146494E40073F9A2 /* Pep.m */,
 				A4FE1652146494E40073F9A2 /* Pep.xib */,
@@ -187,7 +182,6 @@
 				A4FE16461464949E0073F9A2 /* AppDelegate.m in Sources */,
 				A4FE1653146494E40073F9A2 /* Pep.m in Sources */,
 				C9ED84021639E4B400E47EBF /* RootViewController.m in Sources */,
-				C9ED8405163A2C4100E47EBF /* MyPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

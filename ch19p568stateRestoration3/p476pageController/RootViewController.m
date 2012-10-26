@@ -2,7 +2,6 @@
 
 #import "RootViewController.h"
 #import "Pep.h"
-#import "MyPageViewController.h"
 
 @interface RootViewController ()
 @property (nonatomic, strong) NSArray* pep;
@@ -12,14 +11,25 @@
 
 /*
  We are not a built-in parent view controller type, so the runtime knows nothing about our children.
- So we have to tell it! We do this by encoding a reference to the child view controller.
+ It won't automatically follow the chain down to the self-restoring Pep object.
+ So we have to tell it about the next object in the chain!
+ We do this by encoding a reference to that object.
  */
 
 - (void)encodeRestorableStateWithCoder:(NSCoder *)coder {
     NSLog(@"rvc encode");
-    [coder encodeObject:self.childViewControllers[0] forKey:@"pvc"];
+    UIPageViewController* pvc = self.childViewControllers[0];
+    Pep* pep = pvc.viewControllers[0];
+    [coder encodeObject:pep forKey:@"pep"];
     [super encodeRestorableStateWithCoder:coder];
 }
+
+/*
+ In this case, however, we do not decode it. We *could*, but in fact we don't need it.
+ The Pep object will restore its own state. We only encoded this reference in order to
+ get the runtime to walk the chain down to the Pep instance and do save-and-restore on it.
+ */
+ 
 
 -(void)decodeRestorableStateWithCoder:(NSCoder *)coder {
     NSLog(@"rvc decode");
@@ -32,6 +42,7 @@
     if (self) {
         NSLog(@"rvc init");
         self.restorationIdentifier = @"root"; // provide an identifier
+        // but no need for a restoration class
     }
     return self;
 }
@@ -45,7 +56,7 @@
     self.pep = @[@"Manny", @"Moe", @"Jack"];
     
     // make a page view controller
-    MyPageViewController* pvc = [[MyPageViewController alloc]
+    UIPageViewController* pvc = [[UIPageViewController alloc]
                                  initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl
                                  navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                  options:nil];
