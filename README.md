@@ -27,4 +27,6 @@ New examples include:
 
 * Show new state save-and-restore (ch 19).
 
+* Show new storyboard features: container controller, Exit (unwind)
+
 Matt Neuburg
