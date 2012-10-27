@@ -20,4 +20,13 @@
         self.outputString = [self.inputString uppercaseString];
 }
 
+// we don't use this for anything, but it's here to show that it's called
+// before the unwind action is called
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"returnFromAlternate"]) {
+        NSLog(@"preparing for unwind segue");
+    }
+}
+
 @end
