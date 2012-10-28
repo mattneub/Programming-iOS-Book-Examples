@@ -2,6 +2,9 @@
 
 #import "RootViewController.h"
 
+@interface RootViewController () <UIGestureRecognizerDelegate>
+@end
+
 @implementation RootViewController 
 
 // variant on the preceding example: not in the book, uses a feature new in iOS 5
@@ -120,10 +123,5 @@
     }
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 @end

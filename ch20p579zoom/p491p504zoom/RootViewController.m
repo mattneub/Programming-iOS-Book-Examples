@@ -2,6 +2,9 @@
 
 #import "RootViewController.h"
 
+@interface RootViewController() <UIScrollViewDelegate>
+@end
+
 @implementation RootViewController
 
 
@@ -37,10 +40,5 @@
     return [scrollView viewWithTag:999];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 @end

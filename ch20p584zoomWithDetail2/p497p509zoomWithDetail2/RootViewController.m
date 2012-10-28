@@ -4,6 +4,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MyView.h"
 
+@interface RootViewController () <UIScrollViewDelegate>
+@end
+
 @implementation RootViewController
 
 - (void)loadView {
@@ -35,10 +38,5 @@
         view.contentScaleFactor = scale * [UIScreen mainScreen].scale;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 @end

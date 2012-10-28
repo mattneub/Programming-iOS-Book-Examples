@@ -3,8 +3,11 @@
 #import "RootViewController.h"
 #import "MyScrollView.h"
 
+@interface RootViewController () <UIScrollViewDelegate>
+@end
+
 @implementation RootViewController {
-    BOOL oldBounces;
+    BOOL _oldBounces;
 }
 
 
@@ -38,13 +41,15 @@
     
 }
 
-- (void) scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view {
-    self->oldBounces = scrollView.bounces;
+- (void) scrollViewWillBeginZooming:(UIScrollView *)scrollView
+                           withView:(UIView *)view {
+    self->_oldBounces = scrollView.bounces;
     scrollView.bounces = NO; // again, you can comment this out, but I like the result better
 }
 
-- (void) scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
-    scrollView.bounces = self->oldBounces;
+- (void) scrollViewDidEndZooming:(UIScrollView *)scrollView
+                        withView:(UIView *)view atScale:(float)scale {
+    scrollView.bounces = self->_oldBounces;
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
@@ -65,14 +70,6 @@
         [sv setZoomScale:sv.maximumZoomScale animated:YES];
     else
         [sv setZoomScale:sv.minimumZoomScale animated:YES];
-}
-
-
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end

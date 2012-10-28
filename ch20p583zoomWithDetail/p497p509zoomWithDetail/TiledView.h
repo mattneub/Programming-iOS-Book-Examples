@@ -3,8 +3,6 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TiledView : UIView {
-    
-}
+@interface TiledView : UIView
 
 @end

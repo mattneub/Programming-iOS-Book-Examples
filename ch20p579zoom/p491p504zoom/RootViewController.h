@@ -2,8 +2,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UIViewController <UIScrollViewDelegate> {
-    
-}
-
+@interface RootViewController : UIViewController 
 @end

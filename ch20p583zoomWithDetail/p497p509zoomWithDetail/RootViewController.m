@@ -4,6 +4,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "TiledView.h"
 
+@interface RootViewController () <UIScrollViewDelegate>
+@end
+
 @implementation RootViewController
 
 // for best results, zoom with lines 14 and 15 showing, so you can see the tiling change
@@ -14,7 +17,7 @@
     UIScrollView* sv = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     self.view = sv;
     
-    CGRect f = CGRectMake(0,0,self.view.bounds.size.width,940);
+    CGRect f = CGRectMake(0,0,self.view.bounds.size.width,self.view.bounds.size.height * 2);
     TiledView* content = [[TiledView alloc] initWithFrame:f];
     content.tag = 999;
     CATiledLayer* lay = (CATiledLayer*)content.layer;
@@ -32,10 +35,15 @@
         case 2:
         {
             if ([[UIScreen mainScreen] scale] > 1.0) {
-                f.size.width *= 4;
-                f.size.height *= 4;
-                lay.tileSize = f.size;
-                lay.levelsOfDetailBias = 2;
+                NSLog(@"%@", NSStringFromCGRect(f));
+                // these lines were always just wrong, it appears
+                // perhaps this is because contentsscale now compensates for us
+                // also I saw a weird behavior where drawRect picked a much smaller size
+                //f.size.width *= 4.0;
+                //f.size.height *= 4.0;
+                //lay.tileSize = f.size;
+                lay.levelsOfDetailBias = 3; // 2 wasn't enough to trigger retile on zoom
+                NSLog(@"%@", NSStringFromCGRect(f));
             }
             break;
         }
@@ -46,10 +54,5 @@
     return [scrollView viewWithTag:999];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 @end

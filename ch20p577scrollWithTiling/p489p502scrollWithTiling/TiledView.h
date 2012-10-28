@@ -4,9 +4,6 @@
 
 #define TILESIZE 256
 
-@interface TiledView : UIView {
-    
-
-}
+@interface TiledView : UIView
 
 @end

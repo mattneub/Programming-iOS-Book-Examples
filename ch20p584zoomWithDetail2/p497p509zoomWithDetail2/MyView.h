@@ -3,8 +3,5 @@
 #import <UIKit/UIKit.h>
 
 
-@interface MyView : UIView {
-    
-}
-
+@interface MyView : UIView 
 @end

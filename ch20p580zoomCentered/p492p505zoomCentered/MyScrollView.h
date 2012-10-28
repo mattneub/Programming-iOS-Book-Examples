@@ -3,8 +3,6 @@
 #import <Foundation/Foundation.h>
 
 
-@interface MyScrollView : UIScrollView {
-    
-}
+@interface MyScrollView : UIScrollView
 
 @end
