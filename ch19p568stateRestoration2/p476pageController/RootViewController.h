@@ -2,6 +2,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UIViewController <UIViewControllerRestoration>
+@interface RootViewController : UIViewController 
 
 @end

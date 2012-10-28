@@ -2,7 +2,7 @@
 
 #import "FlipsideViewController.h"
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate>
+@interface MainViewController : UIViewController 
 
 - (IBAction)showInfo:(id)sender;
 

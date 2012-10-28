@@ -9,7 +9,7 @@
 // so for the sake of completeness here's the example again without the delegate
 // and without the second gesture recognizer
 
-@interface ViewController ()
+@interface ViewController () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) IBOutlet UIView* v;
 @end
 

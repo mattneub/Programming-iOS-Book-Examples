@@ -3,7 +3,7 @@
 #import "RootViewController.h"
 #import "Pep.h"
 
-@interface RootViewController ()
+@interface RootViewController () <UIPageViewControllerDataSource>
 @property (nonatomic, strong) NSArray* pep;
 @end
 

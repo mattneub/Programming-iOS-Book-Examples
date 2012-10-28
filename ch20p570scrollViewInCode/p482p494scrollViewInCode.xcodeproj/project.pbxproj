@@ -227,6 +227,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p482p494scrollViewInCode/p482p494scrollViewInCode-Prefix.pch";
 				INFOPLIST_FILE = "p482p494scrollViewInCode/p482p494scrollViewInCode-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -238,6 +239,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p482p494scrollViewInCode/p482p494scrollViewInCode-Prefix.pch";
 				INFOPLIST_FILE = "p482p494scrollViewInCode/p482p494scrollViewInCode-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -2,6 +2,10 @@
 
 #import "MainViewController.h"
 
+@interface MainViewController() <FlipsideViewControllerDelegate>
+@end
+
+
 @implementation MainViewController
 
 

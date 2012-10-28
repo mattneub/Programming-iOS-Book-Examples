@@ -4,7 +4,7 @@
 
 // the user must perform a tap-and-a-half (tap and hold) to “get the view’s attention,” which we will indicate by a pulsing animation on the view; then (and only then) the user can drag the view
 
-@interface ViewController ()
+@interface ViewController () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) IBOutlet UIView* v;
 @property (nonatomic, strong) UILongPressGestureRecognizer* longPresser;
 @end

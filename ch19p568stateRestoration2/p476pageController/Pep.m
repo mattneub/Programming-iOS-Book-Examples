@@ -2,7 +2,7 @@
 
 #import "Pep.h"
 
-@interface Pep ()
+@interface Pep () <UIViewControllerRestoration>
 @property (nonatomic, weak) IBOutlet UILabel* name;
 @property (nonatomic, weak) IBOutlet UIImageView* pic;
 @end

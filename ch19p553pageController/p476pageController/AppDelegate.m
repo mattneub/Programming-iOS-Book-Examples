@@ -3,7 +3,7 @@
 #import "AppDelegate.h"
 #import "Pep.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <UIPageViewControllerDataSource>
 @property (nonatomic, strong) NSArray* pep;
 @end
 

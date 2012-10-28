@@ -1,7 +1,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface ViewController : UIViewController 
 
 
 @end

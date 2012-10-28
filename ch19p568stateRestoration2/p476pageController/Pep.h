@@ -1,7 +1,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Pep : UIViewController <UIViewControllerRestoration>
+@interface Pep : UIViewController 
 
 - (id) initWithPepBoy: (NSString*) boy nib: (NSString*) nib bundle: (NSBundle*) bundle;
 
