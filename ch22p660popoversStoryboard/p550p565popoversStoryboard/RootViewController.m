@@ -4,16 +4,13 @@
 #import "Popover1View1.h"
 #import "MyPopoverBackgroundView.h"
 
-@interface RootViewController ()
+@interface RootViewController () <UIPopoverControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) UIPopoverController* currentPop;
 @end
 
 @implementation RootViewController {
-    NSInteger oldChoice;
+    NSInteger _oldChoice;
 }
-
-@synthesize currentPop;
-
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -28,27 +25,22 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ToPopover1"]) {
         UIStoryboardPopoverSegue* seg = (id)segue;
         UIPopoverController* pop = seg.popoverController;
         UINavigationController* nav = segue.destinationViewController;
-        UIViewController* vc = [nav.childViewControllers objectAtIndex:0];
+        UIViewController* vc = nav.childViewControllers[0];
         nav.delegate = self;
         self.currentPop = pop;
-        vc.title = @"Back";
-        vc.navigationItem.titleView = [[UIView alloc] init];
+        vc.title = @"Back"; // can't find a way to change Back button title successfully in storyboard
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, .001);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             pop.passthroughViews = nil;
         });
-        self->oldChoice = [[NSUserDefaults standardUserDefaults] integerForKey:@"choice"];
+        self->_oldChoice = [[NSUserDefaults standardUserDefaults] integerForKey:@"choice"];
         pop.delegate = self;
+        // sheesh
         vc.navigationItem.leftBarButtonItem.target = self;
         vc.navigationItem.leftBarButtonItem.action = @selector(savePop1:);
         vc.navigationItem.rightBarButtonItem.target = self;
@@ -84,7 +76,7 @@
     // dismiss popover and revert choice
     [self.currentPop dismissPopoverAnimated:YES];
     self.currentPop = nil;
-    [[NSUserDefaults standardUserDefaults] setInteger:self->oldChoice forKey:@"choice"];
+    [[NSUserDefaults standardUserDefaults] setInteger:self->_oldChoice forKey:@"choice"];
 }
 
 - (void) savePop1: (id) sender {
@@ -103,7 +95,7 @@
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)pc { 
     if ([pc.contentViewController isKindOfClass: [UINavigationController class]])
-        [[NSUserDefaults standardUserDefaults] setInteger:self->oldChoice forKey:@"choice"];
+        [[NSUserDefaults standardUserDefaults] setInteger:self->_oldChoice forKey:@"choice"];
     self.currentPop = nil;
 }
 
@@ -113,20 +105,13 @@
     [(UIViewController*)[g.view nextResponder] performSegueWithIdentifier:@"ToPresentedView" sender:self];
 }
 
-- (void) done: (UIButton*) sender {
-    UIResponder* r = sender;
-    while (![r isKindOfClass: [UIViewController class]])
-        r = [r nextResponder];
-    [(UIViewController*)r dismissViewControllerAnimated:YES completion:nil];
-}
-
 // I'd rather not have popovers showing thru rotation
 // this dismissal counts as a cancel
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     UIPopoverController* pc = self.currentPop;
     if (pc) {
         if ([pc.contentViewController isKindOfClass: [UINavigationController class]])
-            [[NSUserDefaults standardUserDefaults] setInteger:self->oldChoice forKey:@"choice"];
+            [[NSUserDefaults standardUserDefaults] setInteger:self->_oldChoice forKey:@"choice"];
         [pc dismissPopoverAnimated:NO];
         self.currentPop = nil; // wrong in previous version
     }
@@ -138,7 +123,7 @@
     UIPopoverController* pc = self.currentPop;
     if (pc) {
         if ([pc.contentViewController isKindOfClass: [UINavigationController class]])
-            [[NSUserDefaults standardUserDefaults] setInteger:self->oldChoice forKey:@"choice"];
+            [[NSUserDefaults standardUserDefaults] setInteger:self->_oldChoice forKey:@"choice"];
         [pc dismissPopoverAnimated:NO];
         self.currentPop = nil; // wrong in previous version
     }

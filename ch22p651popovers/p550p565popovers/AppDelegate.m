@@ -4,7 +4,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -15,10 +14,7 @@
     
     // create default defaults
     [[NSUserDefaults standardUserDefaults] registerDefaults:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber numberWithInt:0],
-      @"choice",
-      nil]];
+     @{@"choice": @0}];
     
     // let's do some annoying iOS 5 playing with appearance
     // note how we can use appearanceWhenContainedIn to differentiate cases

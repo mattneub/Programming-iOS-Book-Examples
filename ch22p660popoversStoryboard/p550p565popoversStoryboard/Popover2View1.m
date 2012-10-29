@@ -3,17 +3,11 @@
 
 @implementation Popover2View1
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UIButton* b = (UIButton*)[[(UIViewController*)segue.destinationViewController view] 
-                              viewWithTag:1];
-    [b addTarget:sender action:@selector(done:) forControlEvents:UIControlEventTouchUpInside]; 
+// take advantage of new unwinding feature
+
+-(IBAction)unwind:(UIStoryboardSegue*)segue {
+    // nothing to do
 }
 
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return YES;
-}
 
 @end

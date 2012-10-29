@@ -4,16 +4,13 @@
 #import "Popover1View1.h"
 #import "MyPopoverBackgroundView.h"
 
-@interface RootViewController ()
+@interface RootViewController () <UIPopoverControllerDelegate, UINavigationControllerDelegate> 
 @property (nonatomic, strong) UIPopoverController* currentPop;
 @end
 
 @implementation RootViewController {
-    NSInteger oldChoice;
+    NSInteger _oldChoice;
 }
-
-@synthesize currentPop;
-
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -26,11 +23,6 @@
 - (void) viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
 }
 
 - (IBAction)doPopover1:(id)sender {
@@ -48,9 +40,10 @@
     UIPopoverController* pop = [[UIPopoverController alloc] initWithContentViewController:nav];
     // comment out next line and you'll see the bug when navigating back and forth between different sized content views
     // [iOS 5] bug still present in iOS 5
+    // [iOS 6] bug still present in iOS 6
     nav.delegate = self;
     self.currentPop = pop;
-    //pop.popoverLayoutMargins = UIEdgeInsetsMake(0,100,100,100);
+    // pop.popoverLayoutMargins = UIEdgeInsetsMake(0,100,100,100);
     [pop presentPopoverFromBarButtonItem:sender 
                 permittedArrowDirections:UIPopoverArrowDirectionAny 
                                 animated:YES];
@@ -65,7 +58,7 @@
     pop.passthroughViews = nil;
     // this is a popover where the user can make changes but then cancel them
     // thus we need to preserve the current values in case we have to revert (cancel) later
-    self->oldChoice = [[NSUserDefaults standardUserDefaults] integerForKey:@"choice"];
+    self->_oldChoice = [[NSUserDefaults standardUserDefaults] integerForKey:@"choice"];
     // make ourselves delegate so we learn when popover is dismissed
     pop.delegate = self;
 }
@@ -83,7 +76,7 @@
     // dismiss popover and revert choice
     [self.currentPop dismissPopoverAnimated:YES];
     self.currentPop = nil;
-    [[NSUserDefaults standardUserDefaults] setInteger:self->oldChoice forKey:@"choice"];
+    [[NSUserDefaults standardUserDefaults] setInteger:self->_oldChoice forKey:@"choice"];
 }
 
 - (void) savePop1: (id) sender {
@@ -102,7 +95,7 @@
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)pc { 
     if ([pc.contentViewController isKindOfClass: [UINavigationController class]])
-        [[NSUserDefaults standardUserDefaults] setInteger:self->oldChoice forKey:@"choice"];
+        [[NSUserDefaults standardUserDefaults] setInteger:self->_oldChoice forKey:@"choice"];
     self.currentPop = nil;
 }
 
@@ -154,7 +147,7 @@
     b.autoresizingMask = UIViewAutoresizingNone;
     [b addTarget:self action:@selector(done:) forControlEvents:UIControlEventTouchUpInside]; 
     [vc.view addSubview:b];
-    // uncomment next line if you'd like to crash
+    // uncomment next line if you'd like to crash; only coverVertical is legal
     // vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     UIViewController* presenter = (UIViewController*)[g.view nextResponder];
     [presenter presentViewController:vc animated:YES completion:nil];
@@ -171,11 +164,12 @@
 
 // I'd rather not have popovers showing thru rotation
 // this dismissal counts as a cancel
+// this is optional; I don't think popovers staying thru rotation is bad
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     UIPopoverController* pc = self.currentPop;
     if (pc) {
         if ([pc.contentViewController isKindOfClass: [UINavigationController class]])
-            [[NSUserDefaults standardUserDefaults] setInteger:self->oldChoice forKey:@"choice"];
+            [[NSUserDefaults standardUserDefaults] setInteger:self->_oldChoice forKey:@"choice"];
         [pc dismissPopoverAnimated:NO];
         self.currentPop = nil; // wrong in previous version
     }
@@ -187,7 +181,7 @@
     UIPopoverController* pc = self.currentPop;
     if (pc) {
         if ([pc.contentViewController isKindOfClass: [UINavigationController class]])
-            [[NSUserDefaults standardUserDefaults] setInteger:self->oldChoice forKey:@"choice"];
+            [[NSUserDefaults standardUserDefaults] setInteger:self->_oldChoice forKey:@"choice"];
         [pc dismissPopoverAnimated:NO];
         self.currentPop = nil; // wrong in previous version
     }

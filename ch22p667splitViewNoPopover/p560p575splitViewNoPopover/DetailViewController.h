@@ -2,7 +2,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
+@interface DetailViewController : UIViewController 
 
 @property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 

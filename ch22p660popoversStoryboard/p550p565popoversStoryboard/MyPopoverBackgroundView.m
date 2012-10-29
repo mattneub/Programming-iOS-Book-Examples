@@ -1,16 +1,24 @@
 
 #import "MyPopoverBackgroundView.h"
-#import <QuartzCore/QuartzCore.h>
+//#import <QuartzCore/QuartzCore.h>
 
 // inherits:
 // @property (nonatomic, readwrite) UIPopoverArrowDirection arrowDirection
 // @property (nonatomic, readwrite) CGFloat arrowOffset
+
 
 @implementation MyPopoverBackgroundView {
     CGFloat arrOff;
     UIPopoverArrowDirection arrDir;
 }
 @dynamic arrowDirection, arrowOffset;
+
+// new iOS 6 feature
+// very subtle! causes slight shadow *inside* the frame (esp. at top)
+
++(BOOL)wantsDefaultContentAppearance {
+    return YES; // try NO to see the difference; you have to look hard
+}
 
 - (id) initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -26,7 +34,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
-
+    
     // WARNING: this code is sort of a cheat:
     // I should be checking self.arrowDirection and changing what I do depending on that...
     // but instead I am just *assuming* that the arrowDirection is UIPopoverArrowDirectionUp
@@ -65,14 +73,17 @@
     CGRectDivide(rect, &arrow, &body, ARHEIGHT, CGRectMinYEdge);
     [lin drawInRect:body];
     
+    
     // dude, where's my shadow???? documentation claims I'll be given one, but it isn't happening
     // looks like a bug to me...
     // anyway I've added these lines to provide one
-    self.layer.shadowPath = CGPathCreateWithRect(body, NULL);
-    self.layer.shadowColor = [UIColor grayColor].CGColor;
-    self.layer.shadowRadius = 20;
-    self.layer.shadowOpacity = 0.4;
-    
+    // iOS 6: looks like this bug is fixed; we can delete these lines
+    /*
+     self.layer.shadowPath = CGPathCreateWithRect(body, NULL);
+     self.layer.shadowColor = [UIColor grayColor].CGColor;
+     self.layer.shadowRadius = 20;
+     self.layer.shadowOpacity = 0.4;
+     */
 }
 
 +(UIEdgeInsets)contentViewInsets {

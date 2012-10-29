@@ -2,7 +2,6 @@
 #import "Popover1View1.h"
 #import "Popover1View2.h"
 
-
 @implementation Popover1View1
 
 
@@ -14,14 +13,10 @@
     [super viewDidLoad];
     // as far as I can tell, this has to be determined experimentally
     self.contentSizeForViewInPopover = CGSizeMake(320,180);
+    // may as well use new iOS 6 dequeuing system
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
 }
 
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 #pragma mark - Table view data source
 
@@ -43,12 +38,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+    // may as well use new iOS 6 dequeuing system
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"
+                                                            forIndexPath:indexPath];
+
     NSUInteger section = indexPath.section;
     NSUInteger row = indexPath.row;
     int choice = [[NSUserDefaults standardUserDefaults] integerForKey:@"choice"];

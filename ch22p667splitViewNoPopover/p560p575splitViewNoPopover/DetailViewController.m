@@ -5,14 +5,12 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MySplitViewController.h"
 
-@interface DetailViewController ()
+@interface DetailViewController () <UISplitViewControllerDelegate>
 @property (nonatomic, strong) UIBarButtonItem* btn;
 @property (nonatomic, strong) UIViewController* nav;
 @end
 
 @implementation DetailViewController 
-@synthesize detailDescriptionLabel = _detailDescriptionLabel;
-@synthesize btn, nav;
 
 #pragma mark - Managing the detail item
 
@@ -34,12 +32,6 @@
     UIBarButtonItem* b = [[UIBarButtonItem alloc] initWithTitle:@"Master" style:UIBarButtonItemStyleBordered target:self action:@selector(doMasterButton:)];
     self.btn = b;
     [self.navigationItem setLeftBarButtonItem:self.btn animated:NO];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return YES;
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)io 

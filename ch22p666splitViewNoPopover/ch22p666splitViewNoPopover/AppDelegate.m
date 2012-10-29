@@ -3,11 +3,12 @@
 #import "AppDelegate.h"
 
 #import "MasterViewController.h"
+
 #import "DetailViewController.h"
-#import "MySplitViewController.h"
 
 @implementation AppDelegate
 
+// purely template code
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -19,14 +20,17 @@
 
     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
     UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-    
+
     masterViewController.detailViewController = detailViewController;
 
-    self.splitViewController = [[MySplitViewController alloc] init];
-    self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailNavigationController, nil];
+    self.splitViewController = [[UISplitViewController alloc] init];
+    self.splitViewController.delegate = detailViewController;
+    self.splitViewController.viewControllers = @[masterNavigationController, detailNavigationController];
+    
     self.window.rootViewController = self.splitViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }
+
 
 @end

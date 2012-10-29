@@ -27,8 +27,6 @@
 @end
 
 @implementation MySplitViewController
-@synthesize viewControllers=_viewControllers;
-@synthesize vc1, vc2;
 
 - (BOOL) automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers {
     return YES;
@@ -88,12 +86,6 @@
     [v addSubview: rounder2];
 }
 
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return YES;
-}
 
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)io duration:(NSTimeInterval)d 
 {

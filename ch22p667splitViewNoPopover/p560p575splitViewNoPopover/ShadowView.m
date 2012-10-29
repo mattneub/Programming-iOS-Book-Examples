@@ -4,10 +4,9 @@
 #import "ShadowView.h"
 
 @implementation ShadowView
-@synthesize showsShadow;
 
 - (void) setShowsShadow: (BOOL) val {
-    self->showsShadow = val;
+    self->_showsShadow = val;
     [self setNeedsDisplay];
 }
 

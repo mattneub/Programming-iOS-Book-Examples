@@ -6,7 +6,6 @@
 
 @implementation MasterViewController
 
-@synthesize detailViewController = _detailViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -17,14 +16,6 @@
     return self;
 }
 							
-#pragma mark - View lifecycle
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return YES;
-}
-
 // Customize the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
