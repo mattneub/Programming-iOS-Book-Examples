@@ -19,14 +19,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A426A97114A82FB700E7FDDA /* p511cellBackgroundLayering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p511cellBackgroundLayering.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A426A97114A82FB700E7FDDA /* p648collectionViewCellBackgroundLayering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p648collectionViewCellBackgroundLayering.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A426A97514A82FB700E7FDDA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A426A97714A82FB700E7FDDA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A426A97914A82FB700E7FDDA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A426A97D14A82FB700E7FDDA /* p511cellBackgroundLayering-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p511cellBackgroundLayering-Info.plist"; sourceTree = "<group>"; };
+		A426A97D14A82FB700E7FDDA /* p648collectionViewCellBackgroundLayering-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p648collectionViewCellBackgroundLayering-Info.plist"; sourceTree = "<group>"; };
 		A426A97F14A82FB700E7FDDA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A426A98114A82FB700E7FDDA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A426A98314A82FB700E7FDDA /* p511cellBackgroundLayering-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p511cellBackgroundLayering-Prefix.pch"; sourceTree = "<group>"; };
+		A426A98314A82FB700E7FDDA /* p648collectionViewCellBackgroundLayering-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p648collectionViewCellBackgroundLayering-Prefix.pch"; sourceTree = "<group>"; };
 		A426A98414A82FB700E7FDDA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A426A98514A82FB700E7FDDA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A426A98C14A82FCB00E7FDDA /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		A426A97214A82FB700E7FDDA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A426A97114A82FB700E7FDDA /* p511cellBackgroundLayering.app */,
+				A426A97114A82FB700E7FDDA /* p648collectionViewCellBackgroundLayering.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,10 +93,10 @@
 		A426A97C14A82FB700E7FDDA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A426A97D14A82FB700E7FDDA /* p511cellBackgroundLayering-Info.plist */,
+				A426A97D14A82FB700E7FDDA /* p648collectionViewCellBackgroundLayering-Info.plist */,
 				A426A97E14A82FB700E7FDDA /* InfoPlist.strings */,
 				A426A98114A82FB700E7FDDA /* main.m */,
-				A426A98314A82FB700E7FDDA /* p511cellBackgroundLayering-Prefix.pch */,
+				A426A98314A82FB700E7FDDA /* p648collectionViewCellBackgroundLayering-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -104,9 +104,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A426A97014A82FB700E7FDDA /* p511cellBackgroundLayering */ = {
+		A426A97014A82FB700E7FDDA /* p648collectionViewCellBackgroundLayering */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A426A98914A82FB700E7FDDA /* Build configuration list for PBXNativeTarget "p511cellBackgroundLayering" */;
+			buildConfigurationList = A426A98914A82FB700E7FDDA /* Build configuration list for PBXNativeTarget "p648collectionViewCellBackgroundLayering" */;
 			buildPhases = (
 				A426A96D14A82FB700E7FDDA /* Sources */,
 				A426A96E14A82FB700E7FDDA /* Frameworks */,
@@ -116,9 +116,9 @@
 			);
 			dependencies = (
 			);
-			name = p511cellBackgroundLayering;
+			name = p648collectionViewCellBackgroundLayering;
 			productName = p511cellBackgroundLayering;
-			productReference = A426A97114A82FB700E7FDDA /* p511cellBackgroundLayering.app */;
+			productReference = A426A97114A82FB700E7FDDA /* p648collectionViewCellBackgroundLayering.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -129,7 +129,7 @@
 			attributes = {
 				LastUpgradeCheck = 0420;
 			};
-			buildConfigurationList = A426A96B14A82FB700E7FDDA /* Build configuration list for PBXProject "p511cellBackgroundLayering" */;
+			buildConfigurationList = A426A96B14A82FB700E7FDDA /* Build configuration list for PBXProject "p648collectionViewCellBackgroundLayering" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -141,7 +141,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A426A97014A82FB700E7FDDA /* p511cellBackgroundLayering */,
+				A426A97014A82FB700E7FDDA /* p648collectionViewCellBackgroundLayering */,
 			);
 		};
 /* End PBXProject section */
@@ -233,10 +233,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "p511cellBackgroundLayering/p511cellBackgroundLayering-Prefix.pch";
-				INFOPLIST_FILE = "p511cellBackgroundLayering/p511cellBackgroundLayering-Info.plist";
+				GCC_PREFIX_HEADER = "p511cellBackgroundLayering/p648collectionViewCellBackgroundLayering-Prefix.pch";
+				INFOPLIST_FILE = "p511cellBackgroundLayering/p648collectionViewCellBackgroundLayering-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = p648collectionViewCellBackgroundLayering;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -245,10 +245,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "p511cellBackgroundLayering/p511cellBackgroundLayering-Prefix.pch";
-				INFOPLIST_FILE = "p511cellBackgroundLayering/p511cellBackgroundLayering-Info.plist";
+				GCC_PREFIX_HEADER = "p511cellBackgroundLayering/p648collectionViewCellBackgroundLayering-Prefix.pch";
+				INFOPLIST_FILE = "p511cellBackgroundLayering/p648collectionViewCellBackgroundLayering-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = p648collectionViewCellBackgroundLayering;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -256,7 +256,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A426A96B14A82FB700E7FDDA /* Build configuration list for PBXProject "p511cellBackgroundLayering" */ = {
+		A426A96B14A82FB700E7FDDA /* Build configuration list for PBXProject "p648collectionViewCellBackgroundLayering" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A426A98714A82FB700E7FDDA /* Debug */,
@@ -265,7 +265,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A426A98914A82FB700E7FDDA /* Build configuration list for PBXNativeTarget "p511cellBackgroundLayering" */ = {
+		A426A98914A82FB700E7FDDA /* Build configuration list for PBXNativeTarget "p648collectionViewCellBackgroundLayering" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A426A98A14A82FB700E7FDDA /* Debug */,
