@@ -28,13 +28,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return 100; // to prove efficiency, we'll make a "big" table
 }
-
-// same as previous example
-// except now we have outlets so we can refer to the cell's subviews using names instead of numbers
-// of course this works just the same if the table and cell come from a storyboard
-// all very nice and neat
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -56,17 +51,19 @@
         v2.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         // or you could do the same thing with constraints, but there is no need
         cell.backgroundView = v;
+        
+        // we will log to see how many cell objects are really being created
+        NSLog(@"creating a new cell"); // only about a dozen cells are created...
     }
     
-    UILabel* lab = cell.theLabel; // name instead of number
-    // ... set up lab here ...
-    // notice how much less of this there now is, because it's mostly done in the nib
-    lab.text = @"The author of this book, who would rather be out dirt biking";
+    UILabel* lab = cell.theLabel;
+    // okay, this is the really interesting part!
+    lab.text = [NSString stringWithFormat:@"This is row %i of section %i",
+                indexPath.row, indexPath.section];
+    // ... the table looks like it consists of 100 individual rows
     
-    // interesting change: in the prev editions I was using the property name "imageView"
-    // this overlapped with existing name but gave us no problem
-    // now it does :) so had to change the name
-    UIImageView* iv = cell.theImageView; // name instead of number
+    
+    UIImageView* iv = cell.theImageView;
     // ... set up iv here ...
     UIImage* im = [UIImage imageNamed:@"moi.png"];
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(36,36), YES, 0.0);
