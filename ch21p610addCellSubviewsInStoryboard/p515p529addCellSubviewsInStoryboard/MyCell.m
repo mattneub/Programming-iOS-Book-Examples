@@ -4,6 +4,4 @@
 
 @implementation MyCell
 
-@synthesize theLabel, theImageView;
-
 @end

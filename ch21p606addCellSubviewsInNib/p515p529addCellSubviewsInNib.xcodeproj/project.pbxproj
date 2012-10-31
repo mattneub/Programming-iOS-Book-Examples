@@ -15,10 +15,9 @@
 		A49A6CE1146A08CC007F5A7C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A6CE0146A08CC007F5A7C /* AppDelegate.m */; };
 		A49A6CEB146A08F2007F5A7C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A6CE8146A08F2007F5A7C /* RootViewController.m */; };
 		A49A6CEC146A08F2007F5A7C /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49A6CE9146A08F2007F5A7C /* RootView.xib */; };
-		A49A6CED146A08F2007F5A7C /* MyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49A6CEA146A08F2007F5A7C /* MyCell.xib */; };
 		A49A6CEF146A08FD007F5A7C /* moi.png in Resources */ = {isa = PBXBuildFile; fileRef = A49A6CEE146A08FD007F5A7C /* moi.png */; };
 		A49A6CF1146A090B007F5A7C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49A6CF0146A090B007F5A7C /* QuartzCore.framework */; };
-		A49A6CF7146A1171007F5A7C /* MyCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49A6CF6146A1171007F5A7C /* MyCell2.xib */; };
+		A49A6CF7146A1171007F5A7C /* MyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49A6CF6146A1171007F5A7C /* MyCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +25,7 @@
 		A49A6CD0146A08CC007F5A7C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A49A6CD2146A08CC007F5A7C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A49A6CD4146A08CC007F5A7C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A49A6CD8146A08CC007F5A7C /* p515p529addCellSubviewsInNib-Info.plist */ = {isa = PBXFileReference; path = "p515p529addCellSubviewsInNib-Info.plist"; sourceTree = "<group>"; };
+		A49A6CD8146A08CC007F5A7C /* p515p529addCellSubviewsInNib-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p515p529addCellSubviewsInNib-Info.plist"; sourceTree = "<group>"; };
 		A49A6CDA146A08CC007F5A7C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A49A6CDC146A08CC007F5A7C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A49A6CDE146A08CC007F5A7C /* p515addCellSubviewsInNib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p515addCellSubviewsInNib-Prefix.pch"; sourceTree = "<group>"; };
@@ -35,10 +34,9 @@
 		A49A6CE7146A08F2007F5A7C /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		A49A6CE8146A08F2007F5A7C /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		A49A6CE9146A08F2007F5A7C /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
-		A49A6CEA146A08F2007F5A7C /* MyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCell.xib; sourceTree = "<group>"; };
 		A49A6CEE146A08FD007F5A7C /* moi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moi.png; sourceTree = "<group>"; };
 		A49A6CF0146A090B007F5A7C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		A49A6CF6146A1171007F5A7C /* MyCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCell2.xib; sourceTree = "<group>"; };
+		A49A6CF6146A1171007F5A7C /* MyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +90,7 @@
 				A49A6CE7146A08F2007F5A7C /* RootViewController.h */,
 				A49A6CE8146A08F2007F5A7C /* RootViewController.m */,
 				A49A6CE9146A08F2007F5A7C /* RootView.xib */,
-				A49A6CEA146A08F2007F5A7C /* MyCell.xib */,
-				A49A6CF6146A1171007F5A7C /* MyCell2.xib */,
+				A49A6CF6146A1171007F5A7C /* MyCell.xib */,
 				A49A6CD7146A08CC007F5A7C /* Supporting Files */,
 			);
 			name = p515p529addCellSubviewsInNib;
@@ -164,9 +161,8 @@
 			files = (
 				A49A6CDB146A08CC007F5A7C /* InfoPlist.strings in Resources */,
 				A49A6CEC146A08F2007F5A7C /* RootView.xib in Resources */,
-				A49A6CED146A08F2007F5A7C /* MyCell.xib in Resources */,
 				A49A6CEF146A08FD007F5A7C /* moi.png in Resources */,
-				A49A6CF7146A1171007F5A7C /* MyCell2.xib in Resources */,
+				A49A6CF7146A1171007F5A7C /* MyCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +244,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p515addCellSubviewsInNib/p515addCellSubviewsInNib-Prefix.pch";
 				INFOPLIST_FILE = "p515addCellSubviewsInNib/p515p529addCellSubviewsInNib-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p515p529addCellSubviewsInNib;
 				WRAPPER_EXTENSION = app;
 			};
@@ -259,6 +256,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p515addCellSubviewsInNib/p515addCellSubviewsInNib-Prefix.pch";
 				INFOPLIST_FILE = "p515addCellSubviewsInNib/p515p529addCellSubviewsInNib-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p515p529addCellSubviewsInNib;
 				WRAPPER_EXTENSION = app;
 			};

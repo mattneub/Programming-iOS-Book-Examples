@@ -4,7 +4,31 @@
 #import "MyCell.h"
 #import <QuartzCore/QuartzCore.h>
 
+@interface GradientView:UIView
+@end
+@implementation GradientView
++(Class)layerClass {
+    return [CAGradientLayer class];
+}
+@end
+
 @implementation RootViewController
+
+#define which 1 // try 2 for cell layout override in cell class
+
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    switch (which) {
+        case 1: {
+            [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+            break;
+        }
+        case 2: {
+            [self.tableView registerClass:[MyCell class] forCellReuseIdentifier:@"Cell"];
+            break;
+        }
+    }
+}
 
 
 // Customize the number of sections in the table view.
@@ -18,53 +42,48 @@
     return 20;
 }
 
-#define which 1 // try 2 for cell layout override in cell class
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        switch (which) {
-            case 1:
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                              reuseIdentifier:CellIdentifier]; // no autorelease
-                break;
-            case 2:
-                cell = [[MyCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                     reuseIdentifier:CellIdentifier]; // no autorelease
-                break;
-        }
-        
-        // stuff that is in common for all cells can go here
-        // no need to do this in willDisplayCell
-        // (not sure when that got fixed, probably iOS 4; 
-        // but anyhow I'm now ignoring pre-iOS 4.2 systems and their quirks)
-        
-        UIView* v = [[UIView alloc] initWithFrame:cell.frame];
+    UITableViewCell *cell =
+    [tableView dequeueReusableCellWithIdentifier:@"Cell"
+                                    forIndexPath:indexPath];
+    // cell is never nil, so we need another test for whether we've done common config
+    if (cell.backgroundView == nil) {
+                
+        UIView* v = [[UIView alloc] init];
         v.backgroundColor = [UIColor blackColor];
-        CAGradientLayer* lay = [CAGradientLayer layer];
-        lay.colors = [NSArray arrayWithObjects: 
-                      (id)[UIColor colorWithWhite:0.6 alpha:1].CGColor, 
-                      [UIColor colorWithWhite:0.4 alpha:1].CGColor, nil];
-        lay.frame = v.layer.bounds;
-        [v.layer addSublayer:lay];
+        
+        // I've changed the way I draw this gradient with rounded corners,
+        // and here's why: I'd like to reduce my dependence on fixed frames
+        // but if I use a sublayer as I was doing before, I must declare a fixed frame
+        // because layers in iOS lack a constraints/autoresizing system
+        // but *views* don't lack such a system
+        // so instead of a sublayer I'm making a subview of the backgroundView
+        // I've declared the entire GradientView class in this class's interface file
+        // that's a useful trick for one-shot simple classes
+        
+        UIView* v2 = [[GradientView alloc] init];
+        CAGradientLayer* lay = (CAGradientLayer*)v2.layer;
+        lay.colors = @[(id)[UIColor colorWithWhite:0.6 alpha:1].CGColor,
+        (id)([UIColor colorWithWhite:0.4 alpha:1].CGColor)];
         lay.borderWidth = 1;
         lay.borderColor = [UIColor blackColor].CGColor;
         lay.cornerRadius = 5;
+        [v addSubview:v2];
+        
+        v2.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        // or you could do the same thing with constraints, but there is no need
         cell.backgroundView = v;
         
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
-        cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+        cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping; // UILineBreakModeWordWrap deprecated
         cell.textLabel.numberOfLines = 2;
         cell.textLabel.textColor = [UIColor whiteColor];
         
         // comment out next line to see hole punch problem
-        // I'm ignoring pre-iOS 4...
-        // ...so we can now keep this line here rather than postponing to willDisplayCell
         cell.textLabel.backgroundColor = [UIColor clearColor];
-        
 
     }
 

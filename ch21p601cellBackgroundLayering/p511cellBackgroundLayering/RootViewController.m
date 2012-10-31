@@ -33,17 +33,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // okay, I need to say something about the modern dequeue system
+    // in iOS 6, if you register a class beforehand,
+    // dequeue works like the new dequeue...:forIndexPath: -
+    // namely, it never returns nil
+    // however, I'm going to switch exclusively to the forIndexPath: version
+    // why? because it has one huge advantage: if you call it *without* registering beforehand,
+    // it crashes with a nice log message
     UITableViewCell *cell = 
     [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     // used to have a cell == nil test here
     // but with the modern dequeue system, the cell is never nil
     // so we need another way to know if we've initially configured this cell
     if (!cell.backgroundView) {
-        UIImageView* v = [[UIImageView alloc] initWithFrame:cell.bounds];
+        UIImageView* v = [[UIImageView alloc] init]; // no need to set frame
         v.contentMode = UIViewContentModeScaleToFill;
         v.image = [UIImage imageNamed:@"linen.png"];
         cell.backgroundView = v;
-        UIView* v2 = [[UIView alloc] initWithFrame:cell.bounds];
+        UIView* v2 = [[UIView alloc] init]; // no need to set frame
         v2.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.1];
         cell.selectedBackgroundView = v2;
         cell.textLabel.backgroundColor = [UIColor clearColor];

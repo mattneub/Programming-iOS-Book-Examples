@@ -4,7 +4,7 @@
 
 @interface MyCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UILabel* label;
-@property (nonatomic, strong) IBOutlet UIImageView* imageView;
+@property (nonatomic, weak) IBOutlet UILabel* label;
+@property (nonatomic, weak) IBOutlet UIImageView* iv;
 
 @end

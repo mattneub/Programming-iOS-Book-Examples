@@ -5,6 +5,10 @@
 
 @implementation MyCell
 
+// unchanged from iOS 5
+// I find that if you're going to manipulate the position of the default subviews...
+// it is easiest to continue using direct frame manipulation, not constraints
+
 - (void) layoutSubviews {
     [super layoutSubviews];
     CGRect cvb = self.contentView.bounds;

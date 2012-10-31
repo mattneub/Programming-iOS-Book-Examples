@@ -1,7 +1,6 @@
 
 
 #import "ViewController.h"
-#import <QuartzCore/QuartzCore.h>
 #import "MyCell.h"
 
 @implementation ViewController
@@ -19,13 +18,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
     
     // this next line is all we have to do to obtain a cell!
     // the prototype cell is pre-registered
     // if there's nothing in the reuse queue...
     // the storyboard retrieves the prototype cell and hands it to us as needed
-    MyCell *cell = (MyCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MyCell *cell = (MyCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell"
+                                                            forIndexPath:indexPath];
     
     cell.theLabel.text = @"The author of this book, who would rather be out dirt biking";
     
