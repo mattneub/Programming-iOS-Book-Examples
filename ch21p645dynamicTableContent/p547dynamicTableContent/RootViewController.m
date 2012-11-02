@@ -20,39 +20,34 @@
 #import "MyCell.h"
 
 @interface RootViewController () 
-@property (nonatomic, strong) UISearchDisplayController* sbc;
 @property (nonatomic, strong) NSArray* states;
 @property (nonatomic, strong) NSMutableArray* sectionNames;
 @property (nonatomic, strong) NSMutableArray* sectionData;
 @property (nonatomic, strong) NSMutableSet* hiddenSections; // keep track of which are hidden
 @property (nonatomic) BOOL aboutToShowMenu;
+@property (nonatomic, strong) UIImageView* interestingImageView;
 @end
 
 @implementation RootViewController
-@synthesize sbc, states, sectionNames, sectionData, hiddenSections, aboutToShowMenu;
 
--(void) createData { // not in nib any more so can't use awakeFromNib for this
+-(void) createData { 
     self.hiddenSections = [NSMutableSet set]; // initialize
     
     NSString* s = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"states" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil];
     self.states = [s componentsSeparatedByString:@"\n"];
     
-    // compare p 523, sections
     self.sectionNames = [NSMutableArray array];
     self.sectionData = [NSMutableArray array];
     NSString* previous = @"";
     for (NSString* aState in self.states) {
-        // get the first letter
         NSString* c = [aState substringToIndex:1];
-        // only add a letter to sectionNames when it's a different letter
         if (![c isEqualToString: previous]) {
             previous = c;
-            [sectionNames addObject: [c uppercaseString]];
-            // and in that case, also add a new array to our array of arrays
+            [self.sectionNames addObject: [c uppercaseString]];
             NSMutableArray* oneSection = [NSMutableArray array];
-            [sectionData addObject: oneSection];
+            [self.sectionData addObject: oneSection];
         }
-        [[sectionData lastObject] addObject: aState];
+        [[self.sectionData lastObject] addObject: aState];
     }
 }
 
@@ -62,6 +57,10 @@
     [self createData];
     self.navigationItem.title = @"States";
     
+    [self.tableView registerClass:[MyCell class] forCellReuseIdentifier:@"Cell"];
+    [self.tableView
+     registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"Header"];
+    
     // make interesting background
     UIImage* lin = [UIImage imageNamed: @"lin.png"];
     UIGraphicsBeginImageContext(CGSizeMake(40,40));
@@ -69,63 +68,72 @@
     UIImage* lin2 = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     UIImageView* iv = [[UIImageView alloc] initWithImage:[lin2 resizableImageWithCapInsets:UIEdgeInsetsZero]];
+    self.interestingImageView = iv;
+    
     [self.tableView setBackgroundView:iv];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [sectionNames count];
+    return [self.sectionNames count];
 }
 
-#define HHEIGHT 30
-
-// instead of just text string, return a double-clickable label for the section headers
+// instead of just text string, return a double-clickable view for the section headers
 - (UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UILabel* lab = [[UILabel alloc] 
-                    initWithFrame:CGRectMake(0,0,tableView.bounds.size.width, HHEIGHT)];
-    lab.text = [NSString stringWithFormat:@"   %@", [sectionNames objectAtIndex: section]];
-    lab.backgroundColor = [UIColor grayColor];
-    lab.textColor = [UIColor whiteColor];
-    lab.shadowColor = [UIColor blackColor];
-    lab.shadowOffset = CGSizeMake(1,1);
-    lab.userInteractionEnabled = YES;
-    UITapGestureRecognizer* t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-    t.numberOfTapsRequired = 2;
-    [lab addGestureRecognizer:t];
-    return lab;
+    UITableViewHeaderFooterView* v =
+    [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"Header"];
+    UILabel* lab = v.textLabel;
+
+    if (![v.tintColor isEqual: [UIColor darkGrayColor]]) {
+        NSLog(@"creating a new header view");
+        v.tintColor = [UIColor darkGrayColor];
+
+        UITapGestureRecognizer* t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+        t.numberOfTapsRequired = 2;
+        [v addGestureRecognizer:t];
+        v.userInteractionEnabled = YES;
+
+        lab.textColor = [UIColor whiteColor];
+        lab.shadowColor = [UIColor blackColor];
+        lab.shadowOffset = CGSizeMake(1,1);
+    }
+    lab.text = [NSString stringWithFormat:@"   %@", (self.sectionNames)[section]];
+    return v;
 }
 
-// must provide height for header views
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return HHEIGHT;
+    return 30;
 }
 
 // check whether hidden or not; easy since it's all or none as to what rows are showing
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section {
-    if ([self.hiddenSections containsObject:[NSNumber numberWithUnsignedInteger:section]])
+    if ([self.hiddenSections containsObject:@(section)])
         return 0;
-    return [[sectionData objectAtIndex: section] count];
+    return [(self.sectionData)[section] count];
 }
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = 
-    [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[MyCell alloc] 
-                initWithStyle:UITableViewCellStyleDefault 
-                reuseIdentifier:CellIdentifier];
-    }
+    [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     NSString* s = 
-    [[sectionData objectAtIndex: [indexPath section]] 
-     objectAtIndex: [indexPath row]];
+    (self.sectionData)[[indexPath section]][[indexPath row]];
     cell.textLabel.text = s;
+    
+    // give cell a background view, to cover animation on collapse
+    UIImageView* iv = [[UIImageView alloc] initWithImage: self.interestingImageView.image];
+    cell.backgroundView = iv;
+    
     // comment out these next two lines and see how it affects what happens during menu display
     cell.textLabel.highlightedTextColor = cell.textLabel.textColor; // prevent white during menu
-    // cell.selectedBackgroundView = [[UIView alloc] init]; // trick to prevent blue during menu display
+    cell.selectedBackgroundView = [[UIView alloc] init]; // trick to prevent blue during menu display
     return cell;
+}
+
+-(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"here"); // failed experiment: called, but not heeded!
+    return NO;
 }
 
 // and here's what to do when the user double-clicks a header
@@ -133,8 +141,8 @@
     UILabel* lab = (UILabel*)g.view;
     NSString* s = [lab.text substringFromIndex:3];
     NSUInteger sec = [self.sectionNames indexOfObject:s];
-    NSUInteger ct = [(NSArray*)[self.sectionData objectAtIndex:sec] count];
-    NSNumber* secnum = [NSNumber numberWithUnsignedInteger:sec];
+    NSUInteger ct = [(NSArray*)(self.sectionData)[sec] count];
+    NSNumber* secnum = @(sec);
     
     if ([self.hiddenSections containsObject:secnum]) {
         [self.hiddenSections removeObject:secnum];
@@ -181,7 +189,7 @@
 {
     // as far as I can tell, only copy:, cut:, and paste: are eligible for display
     // this is a real pity: if true, you can't use your own menu items (I tried and failed)
-//    NSLog(@"%@", NSStringFromSelector(action));
+//    NSLog(@"%@ %i", NSStringFromSelector(action), action == @selector(capital:));
 //    return (action == @selector(capital:));
     
     // another experiment
@@ -192,7 +200,7 @@
 
 - (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender 
 {
-    NSString* s = [[self.sectionData objectAtIndex: indexPath.section] objectAtIndex: indexPath.row]; 
+    NSString* s = (self.sectionData)[indexPath.section][indexPath.row]; 
     if (action == @selector(copy:)) {
         NSLog(@"in real life, we'd now copy %@ somehow", s);
     }

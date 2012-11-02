@@ -241,6 +241,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p543p557editInsertAndRearrangeRows/p543p557editInsertAndRearrangeRows-Prefix.pch";
 				INFOPLIST_FILE = "p543p557editInsertAndRearrangeRows/p543p557editInsertAndRearrangeRows-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -252,6 +253,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p543p557editInsertAndRearrangeRows/p543p557editInsertAndRearrangeRows-Prefix.pch";
 				INFOPLIST_FILE = "p543p557editInsertAndRearrangeRows/p543p557editInsertAndRearrangeRows-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -276,6 +278,7 @@
 				A48322AA146B65850061637E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

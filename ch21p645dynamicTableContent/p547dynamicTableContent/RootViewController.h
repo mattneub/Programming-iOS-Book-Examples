@@ -2,8 +2,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate> {
-
-}
-
+@interface RootViewController : UITableViewController  
 @end

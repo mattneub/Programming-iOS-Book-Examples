@@ -235,6 +235,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p542p556deleteTableRows/p542p556deleteTableRows-Prefix.pch";
 				INFOPLIST_FILE = "p542p556deleteTableRows/p542p556deleteTableRows-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -246,6 +247,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p542p556deleteTableRows/p542p556deleteTableRows-Prefix.pch";
 				INFOPLIST_FILE = "p542p556deleteTableRows/p542p556deleteTableRows-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -270,6 +272,7 @@
 				A4832279146B56C30061637E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

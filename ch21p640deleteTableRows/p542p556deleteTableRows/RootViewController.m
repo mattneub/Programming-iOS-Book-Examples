@@ -8,32 +8,29 @@
 @end
 
 @implementation RootViewController
-@synthesize sectionData, sectionNames;
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
+    // whole editability thing springs to life
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     NSString* s = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"states" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil];
     NSArray* states = [s componentsSeparatedByString:@"\n"];
     
-    // compare p 523, sections
     self.sectionNames = [NSMutableArray array];
     self.sectionData = [NSMutableArray array];
     NSString* previous = @"";
     for (NSString* aState in states) {
-        // get the first letter
         NSString* c = [aState substringToIndex:1];
-        // only add a letter to sectionNames when it's a different letter
         if (![c isEqualToString: previous]) {
             previous = c;
-            [sectionNames addObject: [c uppercaseString]];
-            // and in that case, also add a new array to our array of arrays
+            [self.sectionNames addObject: [c uppercaseString]];
             NSMutableArray* oneSection = [NSMutableArray array];
-            [sectionData addObject: oneSection];
+            [self.sectionData addObject: oneSection];
         }
-        [[sectionData lastObject] addObject: aState];
+        [[self.sectionData lastObject] addObject: aState];
     }
 }
 
@@ -41,36 +38,30 @@
 // Customize the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [sectionNames count];
+    return [self.sectionNames count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView 
 titleForHeaderInSection:(NSInteger)section {
-    return [sectionNames objectAtIndex: section];
+    return (self.sectionNames)[section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[sectionData objectAtIndex: section] count];
+    return [(self.sectionData)[section] count];
 }
 
 -(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return sectionNames;
+    return self.sectionNames;
 }
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-
+{    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"
+                                                            forIndexPath:indexPath];
     NSString* s = 
-    [[sectionData objectAtIndex: [indexPath section]] 
-     objectAtIndex: [indexPath row]];
+    (self.sectionData)[[indexPath section]][[indexPath row]];
     cell.textLabel.text = s;
     return cell;
 }
@@ -88,17 +79,17 @@ titleForHeaderInSection:(NSInteger)section {
 - (void)tableView:(UITableView *)tableView 
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle 
 forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [[self.sectionData objectAtIndex: indexPath.section] 
+    [(self.sectionData)[indexPath.section] 
      removeObjectAtIndex:indexPath.row];
-    if ([[self.sectionData objectAtIndex: indexPath.section] count] == 0) {
+    if ([(self.sectionData)[indexPath.section] count] == 0) {
         [self.sectionData removeObjectAtIndex: indexPath.section];
         [self.sectionNames removeObjectAtIndex: indexPath.section];
         [tableView deleteSections:[NSIndexSet indexSetWithIndex: indexPath.section] 
-                 withRowAnimation:UITableViewRowAnimationLeft];
+                 withRowAnimation:UITableViewRowAnimationAutomatic];
         [tableView reloadSectionIndexTitles]; // whoa! in iOS 5 this works! (previously was a no-op)
     } else {
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
-                         withRowAnimation:UITableViewRowAnimationLeft];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] 
+                         withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 

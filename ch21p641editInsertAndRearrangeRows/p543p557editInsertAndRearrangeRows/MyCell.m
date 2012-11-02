@@ -3,7 +3,6 @@
 
 
 @implementation MyCell
-@synthesize textField;
 
 
 - (void) didTransitionToState:(UITableViewCellStateMask)state {

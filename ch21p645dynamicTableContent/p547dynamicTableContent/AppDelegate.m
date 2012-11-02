@@ -4,13 +4,12 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    RootViewController* rvc = [[RootViewController alloc] initWithNibName:@"RootView" bundle:nil];
+    RootViewController* rvc = [RootViewController new];
     UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController: rvc];
     self.window.rootViewController = nc;
     self.window.backgroundColor = [UIColor whiteColor];

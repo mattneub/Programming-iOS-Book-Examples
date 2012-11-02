@@ -71,6 +71,10 @@
         NSLog(@"creating new header view"); // this will prove we're reusing views
         // it works; we're creating only about 6 views
         h.tintColor = [UIColor redColor]; // this will prove we're using these reusable views
+        // this next line actually overrides the tinting we just set
+        // delete "contentView" to get a deprecation message!
+        // you are not supposed to set the backgroundColor directly
+        h.contentView.backgroundColor = [UIColor redColor];
         // so, let's have a little fun: add image view to header
         UIImageView* v = [[UIImageView alloc] init];
         v.tag = 1;

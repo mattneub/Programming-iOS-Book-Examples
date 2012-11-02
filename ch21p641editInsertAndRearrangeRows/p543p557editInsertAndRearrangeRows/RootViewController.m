@@ -3,18 +3,12 @@
 #import "RootViewController.h"
 #import "MyCell.h"
 
-@interface RootViewController ()
+@interface RootViewController () <UITextFieldDelegate>
 @property (nonatomic, copy) NSString* name;
 @property (nonatomic, strong) NSMutableArray* numbers;
 @end
 
 @implementation RootViewController
-@synthesize name, numbers;
-
-#pragma mark -
-#pragma mark View lifecycle
-
-static NSString *CellIdentifier = @"Cell";
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -23,8 +17,9 @@ static NSString *CellIdentifier = @"Cell";
     self.name = @"Matt Neuburg";
     self.numbers = [NSMutableArray arrayWithObject:@"(123) 456-7890"];
     self.tableView.allowsSelection = NO;
-    // new iOS 5 way
-    [self.tableView registerNib:[UINib nibWithNibName:@"MyCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
+
+    [self.tableView registerNib:[UINib nibWithNibName:@"MyCell" bundle:nil]
+         forCellReuseIdentifier:@"Cell"];
 }
 
 // Customize the number of sections in the table view.
@@ -42,14 +37,13 @@ static NSString *CellIdentifier = @"Cell";
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    // cell is auto-loaded as needed thanks to previous registerNib call
-    MyCell* cell = (MyCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MyCell* cell = (MyCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell"
+                                                            forIndexPath:indexPath];
     
-	// Configure the cell.
     if (indexPath.section == 0)
         cell.textField.text = self.name;
     if (indexPath.section == 1) {
-        cell.textField.text = [self.numbers objectAtIndex: indexPath.row];
+        cell.textField.text = (self.numbers)[indexPath.row];
         cell.textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     }
     cell.textField.delegate = self;
@@ -89,12 +83,12 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
         [tableView beginUpdates];
         // animation automatic new in iOS 5
         [tableView insertRowsAtIndexPaths:
-         [NSArray arrayWithObject: [NSIndexPath indexPathForRow: ct-1 inSection:1]]
+         @[[NSIndexPath indexPathForRow: ct-1 inSection:1]]
                          withRowAnimation:UITableViewRowAnimationAutomatic];
         // at the time I wrote the book, this next bit of code had to be delayed
         // but now the problem is fixed, and we can just go ahead
         [self.tableView reloadRowsAtIndexPaths:
-         [NSArray arrayWithObject:[NSIndexPath indexPathForRow:ct-2 inSection:1]] 
+         @[[NSIndexPath indexPathForRow:ct-2 inSection:1]] 
                               withRowAnimation:UITableViewRowAnimationAutomatic];
         [tableView endUpdates];
         // crucial that this next bit be *outside* the update block
@@ -105,7 +99,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.numbers removeObjectAtIndex:indexPath.row];
         [tableView beginUpdates]; // added; use of update block makes animations work together
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject: indexPath] withRowAnimation:UITableViewRowAnimationAutomatic]; // new in iOS 5
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic]; // new in iOS 5
         [tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic]; // added, to deal with rearrange handle
         [tableView endUpdates];
     }
@@ -126,13 +120,13 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     // update data model to match
     NSIndexPath* ip = [self.tableView indexPathForCell:cell];
     if (ip.section == 1)
-        [self.numbers replaceObjectAtIndex:ip.row withObject:cell.textField.text];
+        (self.numbers)[ip.row] = cell.textField.text;
     else if (ip.section == 0)
         self.name = cell.textField.text;
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    NSString* s = [self.numbers objectAtIndex: fromIndexPath.row];
+    NSString* s = (self.numbers)[fromIndexPath.row];
     [self.numbers removeObjectAtIndex: fromIndexPath.row];
     [self.numbers insertObject:s atIndex: toIndexPath.row];
     [tableView reloadData]; // to get plus and minus buttons to redraw themselves

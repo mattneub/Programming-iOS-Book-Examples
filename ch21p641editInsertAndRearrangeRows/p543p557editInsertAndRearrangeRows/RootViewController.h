@@ -2,6 +2,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UITableViewController <UITextFieldDelegate> 
+@interface RootViewController : UITableViewController  
 
 @end
