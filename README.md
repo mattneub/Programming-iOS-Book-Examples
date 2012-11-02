@@ -17,6 +17,8 @@ Changes include:
 
 * Illustrate new rotation rules, including new structure of launch-into-rotation.
 
+* For table views, use exclusively new register-and-dequeue architecture.
+
 New examples include:
 
 * Further illustrate use of constraints (ch 14), esp. in company with animation (ch 17).
@@ -27,6 +29,8 @@ New examples include:
 
 * Show new state save-and-restore (ch 19).
 
-* Show new storyboard features: container controller, Exit (unwind)
+* Show new storyboard features: container controller, Exit (unwind).
+
+* Show collection views.
 
 Matt Neuburg
