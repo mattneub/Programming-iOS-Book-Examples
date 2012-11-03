@@ -49,45 +49,14 @@
 }
 
 - (CGFloat) cellHeightForLabelString:(NSString*)s {
-    // looks elaborate, but it has a huge advantage:
-    // it uses the autolayout mechanism to generate the cell height
+    // use the autolayout mechanism to generate the cell height
     NSArray* objs = [[UINib nibWithNibName:@"Cell" bundle:nil]
                      instantiateWithOwner:nil options:nil];
     Cell* cell = objs[0];
     UILabel* lab = cell.lab;
     lab.text = s; // and we don't need to know the font or anything else about the label
-    
-    // cells are weird so we're going to remove the entire inside of the cell
-    // so that we are inside a normal view instead
-    UIView* v = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,0)];
-    NSArray* cellConstraints = cell.constraints; // must grab constraints before removing label...
-    [lab removeFromSuperview]; // ...since label removal will destroy constraints involving it
-    [v addSubview: lab];
-    
-    // now we're going to translate all cell constraints involving cell...
-    // into constraints involving v
-    NSMutableArray* cons = [NSMutableArray array];
-    for (NSLayoutConstraint* c in cellConstraints) {
-        id fi = c.firstItem;
-        if (fi == cell) fi = v;
-        id si = c.secondItem;
-        if (si == cell) si = v;
-        [cons addObject:
-         [NSLayoutConstraint constraintWithItem:fi
-                                      attribute:c.firstAttribute
-                                      relatedBy:c.relation
-                                         toItem:si
-                                      attribute:c.secondAttribute
-                                     multiplier:c.multiplier
-                                       constant:c.constant]];
-    }
-    
-    
-    // at last we're ready to exercise the autolayout system!
-    [v addConstraints: cons];
     [lab sizeToFit];
-    //[v layoutIfNeeded];
-    return [v systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
+    return [cell systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
