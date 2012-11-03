@@ -6,9 +6,13 @@
 @interface RootViewController () <UITableViewDataSource>
 @property (nonatomic, copy) NSArray* trivia;
 @property (nonatomic, copy) NSArray* heights;
+@property (nonatomic, strong) Cell* practiceCell;
 @end
 
 @implementation RootViewController
+
+// 1 was the old way: build dimensions by emulating ultimate layout mathematically
+// 2 is new way: just make the cell and let autolayout generate dimensions
 
 #define which 2
 
@@ -48,13 +52,22 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"Cell" bundle:nil] forCellReuseIdentifier:@"Cell"];
 }
 
-- (CGFloat) cellHeightForLabelString:(NSString*)s {
-    // use the autolayout mechanism to generate the cell height
+- (Cell*) practiceCell {
+    // load cell from nib in order to do prelayout, but only once
+    if (self->_practiceCell) return self->_practiceCell;
     NSArray* objs = [[UINib nibWithNibName:@"Cell" bundle:nil]
                      instantiateWithOwner:nil options:nil];
     Cell* cell = objs[0];
+    self->_practiceCell = cell;
+    return cell;
+}
+
+- (CGFloat) cellHeightForLabelString:(NSString*)s {
+    // use the autolayout mechanism to generate the cell height
+    // NSLog(@"here");
+    Cell* cell = self.practiceCell;
     UILabel* lab = cell.lab;
-    lab.text = s; // and we don't need to know the font or anything else about the label
+    lab.text = s; // no need to know font, constraints, or anything else about label
     [lab sizeToFit];
     return [cell systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
 }
