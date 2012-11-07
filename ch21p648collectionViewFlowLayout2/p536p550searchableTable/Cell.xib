@@ -57,7 +57,10 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAxIDAuMTQyNjM5ODc1NAA</bytes>
 								</object>
-								<nil key="IBUIHighlightedColor"/>
+								<object class="NSColor" key="IBUIHighlightedColor">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
+								</object>
 								<object class="NSColor" key="IBUIShadowColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC42MDQ4NzQzMjA3IDAuMzAyNDg2NzY4OCAwIDAuODMAA</bytes>
@@ -82,7 +85,6 @@
 						<string key="NSFrameSize">{226, 65}</string>
 						<reference key="NSSuperview" ref="648042369"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>

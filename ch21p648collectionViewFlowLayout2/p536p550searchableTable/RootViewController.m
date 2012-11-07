@@ -51,9 +51,14 @@ Expand on the previous example to look decent, be more efficient
     [super viewDidLoad];
     
     UIBarButtonItem* b = [[UIBarButtonItem alloc] initWithTitle:@"Switch" style:UIBarButtonItemStylePlain target:self action:@selector(doSwitch:)];
+    self.navigationItem.leftBarButtonItem = b;
+    
+    b = [[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStylePlain target:self action:@selector(doDelete:)];
     self.navigationItem.rightBarButtonItem = b;
+
     
     self.collectionView.backgroundColor = [UIColor whiteColor]; // *
+    self.collectionView.allowsMultipleSelection = YES; // *
     
     // register cells
     [self.collectionView registerNib:[UINib nibWithNibName:@"Cell" bundle:nil] forCellWithReuseIdentifier:@"Cell"];
@@ -118,12 +123,31 @@ Expand on the previous example to look decent, be more efficient
     }
     cell.lab.text = (self.sectionData)[[indexPath section]][[indexPath row]];
     NSString* stateName = cell.lab.text;
+    
+    // flag in background! very cute
     stateName = [stateName lowercaseString];
     stateName = [stateName stringByReplacingOccurrencesOfString:@" " withString:@""];
     stateName = [NSString stringWithFormat:@"flag_%@.gif", stateName];
     UIImage* im = [UIImage imageNamed: stateName];
     UIImageView* iv = [[UIImageView alloc] initWithImage:im];
     cell.backgroundView = iv;
+    
+    // checkmark in top left corner when selected
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(cell.bounds.size.width, cell.bounds.size.height), NO, 0);
+    CGContextRef con = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(con, [[UIColor redColor] colorWithAlphaComponent:0.1].CGColor);
+    CGContextFillRect(con, cell.bounds);
+    NSAttributedString* check2 = [[NSAttributedString alloc] initWithString:@"\u2714" attributes:@{
+                                                        NSFontAttributeName: [UIFont fontWithName:@"ZapfDingbatsITC" size:24],
+                                             NSForegroundColorAttributeName: [UIColor greenColor]
+                                  }];
+    CGContextScaleCTM(con, 1.1, 1);
+    [check2 drawAtPoint:CGPointMake(0,0)];
+    im = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    iv = [[UIImageView alloc] initWithImage:im];
+    iv.contentMode = UIViewContentModeTopLeft; // do not stretch with cell, like flag
+    cell.selectedBackgroundView = iv;
 
     return cell;
 }
@@ -139,6 +163,11 @@ Expand on the previous example to look decent, be more efficient
     return [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
 }
 
+// selection
+// we get automatic highlighting of whatever can be highlighted (i.e. our UILabel)
+// we get automatic overlay of the selectedBackgroundView
+
+
 // =====================
 
 // can just change layouts on the fly! with built-in animation!!!
@@ -152,6 +181,51 @@ Expand on the previous example to look decent, be more efficient
     [self setUpFlowLayout:newLayout];
     [self.collectionView setCollectionViewLayout:newLayout animated:YES];
     //self.collectionView.contentOffset = oldOffset;
+}
+
+// =====================
+
+- (void) doDelete:(id)sender {
+    // delete selected
+    NSArray* arr = [self.collectionView indexPathsForSelectedItems];
+    if (!arr || ![arr count])
+        return;
+    // first update the model
+    // not so easy! we don't get magical renumbering as we go
+    // solution: form a dictionary of indexsets
+    NSMutableIndexSet* empties = [NSMutableIndexSet indexSet];
+    NSMutableDictionary* d = [NSMutableDictionary dictionary];
+    for (NSIndexPath* ip in arr) {
+        NSMutableIndexSet* set = d[@(ip.section)];
+        if (!set) {
+            d[@(ip.section)] = [NSMutableIndexSet indexSet];
+            set = d[@(ip.section)];
+        }
+        [set addIndex:ip.row];
+    }
+    // now we can deal with each section in turn and delete all its selected items at once
+    for (NSNumber* n in [d allKeys]) {
+        NSMutableArray* marr = self.sectionData[[n integerValue]];
+        [marr removeObjectsAtIndexes:d[n]];
+        // also keep track of indexes of any sections that were emptied by doing that
+        if (![marr count])
+            [empties addIndex: [n integerValue]];
+    }
+    
+    // finally, request the deletion from the view; notice the slick automatic animation
+    [self.collectionView performBatchUpdates:^{ // so that we can proceed after completion
+        [self.collectionView deleteItemsAtIndexPaths:arr];
+    } completion:^(BOOL finished) {
+        // now we are left with some possibly empty sections
+        // if so, proceed to delete those as well (from both arrays at once)
+        // this isn't the only way to solve the empty sections problem...
+        // but it's fun to watch!
+        if ([empties count]) {
+            [self.sectionNames removeObjectsAtIndexes:empties];
+            [self.sectionData removeObjectsAtIndexes:empties];
+            [self.collectionView deleteSections:empties];
+        }
+    }];
 }
 
 @end
