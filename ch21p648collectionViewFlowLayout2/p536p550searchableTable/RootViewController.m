@@ -228,4 +228,21 @@ Expand on the previous example to look decent, be more efficient
     }];
 }
 
+// =========== menu ===========
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
+    // failed experiment
+//    UIMenuItem* mi = [[UIMenuItem alloc] initWithTitle:@"Capital" action:@selector(capital:)];
+//    [[UIMenuController sharedMenuController] setMenuItems:@[mi]];
+    return YES;
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
+    return YES;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
+    // in real life, would do something here
+}
+
 @end
