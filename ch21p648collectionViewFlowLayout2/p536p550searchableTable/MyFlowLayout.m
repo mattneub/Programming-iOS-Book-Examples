@@ -4,10 +4,9 @@
 
 @implementation MyFlowLayout
 
-// uncomment these lines to see how to left-justify every "line" of the layout
+// how to left-justify every "line" of the layout
 // looks much nicer, in my humble opinion
 
-/*
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSArray* arr = [super layoutAttributesForElementsInRect:rect];
@@ -40,6 +39,5 @@
     return atts;
 }
  
- */
 
 @end

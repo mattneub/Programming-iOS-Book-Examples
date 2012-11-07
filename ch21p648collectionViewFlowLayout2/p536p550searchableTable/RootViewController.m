@@ -3,6 +3,7 @@
 #import "RootViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Cell.h"
+#import "MyFlowLayout.h"
 
 @interface RootViewController ()
 
@@ -40,9 +41,17 @@ Expand on the previous example to look decent, be more efficient
     }
 }
 
+- (void) setUpFlowLayout: (UICollectionViewFlowLayout*) flow {
+    flow.headerReferenceSize = CGSizeMake(50,50); // * larger - we will place label within this
+    flow.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10); // *
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIBarButtonItem* b = [[UIBarButtonItem alloc] initWithTitle:@"Switch" style:UIBarButtonItemStylePlain target:self action:@selector(doSwitch:)];
+    self.navigationItem.rightBarButtonItem = b;
     
     self.collectionView.backgroundColor = [UIColor whiteColor]; // *
     
@@ -59,8 +68,7 @@ Expand on the previous example to look decent, be more efficient
     // if you don't do something about header size...
     // ...you won't see any headers
     UICollectionViewFlowLayout* flow = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
-    flow.headerReferenceSize = CGSizeMake(50,50); // * larger - we will place label within this
-    flow.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10); // *
+    [self setUpFlowLayout:flow];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -128,9 +136,22 @@ Expand on the previous example to look decent, be more efficient
     NSArray* arr = [[UINib nibWithNibName:@"Cell" bundle:nil] instantiateWithOwner:nil options:nil];
     Cell* cell = arr[0];
     cell.lab.text = (self.sectionData)[[indexPath section]][[indexPath row]];
-    //[cell layoutIfNeeded];
-    //return cell.bounds.size;
     return [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+}
+
+// =====================
+
+// can just change layouts on the fly! with built-in animation!!!
+
+- (void) doSwitch:(id)sender {
+    //CGPoint oldOffset = self.collectionView.contentOffset;
+    UICollectionViewFlowLayout* oldLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    UICollectionViewFlowLayout* newLayout;
+    newLayout = [oldLayout isKindOfClass:[MyFlowLayout class]] ?
+    [UICollectionViewFlowLayout new] : [MyFlowLayout new];
+    [self setUpFlowLayout:newLayout];
+    [self.collectionView setCollectionViewLayout:newLayout animated:YES];
+    //self.collectionView.contentOffset = oldOffset;
 }
 
 @end

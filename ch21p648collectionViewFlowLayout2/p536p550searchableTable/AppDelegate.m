@@ -1,7 +1,6 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
-#import "MyFlowLayout.h"
 
 @implementation AppDelegate
 
@@ -14,7 +13,7 @@
     // Since we are creating our view implicitly as part of UICollectionViewController...
     // ...we must tell the controller what layout to use
     RootViewController* rvc = [[RootViewController alloc]
-                               initWithCollectionViewLayout:[MyFlowLayout new]];
+                               initWithCollectionViewLayout:[UICollectionViewFlowLayout new]];
     
     UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController: rvc];
     self.window.rootViewController = nc;
