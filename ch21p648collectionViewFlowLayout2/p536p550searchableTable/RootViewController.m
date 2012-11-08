@@ -135,18 +135,24 @@ Expand on the previous example to look decent, be more efficient
     // checkmark in top left corner when selected
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(cell.bounds.size.width, cell.bounds.size.height), NO, 0);
     CGContextRef con = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(con, [[UIColor redColor] colorWithAlphaComponent:0.1].CGColor);
-    CGContextFillRect(con, cell.bounds);
-    NSAttributedString* check2 = [[NSAttributedString alloc] initWithString:@"\u2714" attributes:@{
-                                                        NSFontAttributeName: [UIFont fontWithName:@"ZapfDingbatsITC" size:24],
-                                             NSForegroundColorAttributeName: [UIColor greenColor]
-                                  }];
+    // sort of jumping ahead here, I'm going to use the new attributed string features of iOS 6
+    NSShadow* shadow = [NSShadow new];
+    shadow.shadowColor = [UIColor darkGrayColor];
+    shadow.shadowOffset = CGSizeMake(2,2);
+    shadow.shadowBlurRadius = 4;
+    NSAttributedString* check2 =
+    [[NSAttributedString alloc] initWithString:@"\u2714" attributes:@{
+                           NSFontAttributeName: [UIFont fontWithName:@"ZapfDingbatsITC" size:24],
+                NSForegroundColorAttributeName: [UIColor greenColor],
+                    NSStrokeColorAttributeName: [UIColor redColor],
+                    NSStrokeWidthAttributeName: @-4,
+                         NSShadowAttributeName: shadow
+     }];
     CGContextScaleCTM(con, 1.1, 1);
-    [check2 drawAtPoint:CGPointMake(0,0)];
+    [check2 drawAtPoint:CGPointMake(2,0)];
     im = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     iv = [[UIImageView alloc] initWithImage:im];
-    iv.contentMode = UIViewContentModeTopLeft; // do not stretch with cell, like flag
     cell.selectedBackgroundView = iv;
 
     return cell;
