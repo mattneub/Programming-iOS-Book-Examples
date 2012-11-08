@@ -121,7 +121,7 @@ Expand on the previous example to look decent, be more efficient
         cell.layer.cornerRadius = 8;
         cell.layer.borderWidth = 2;
     }
-    cell.lab.text = (self.sectionData)[[indexPath section]][[indexPath row]];
+    cell.lab.text = (self.sectionData)[indexPath.section][indexPath.row];
     NSString* stateName = cell.lab.text;
     
     // flag in background! very cute
@@ -165,7 +165,7 @@ Expand on the previous example to look decent, be more efficient
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSArray* arr = [[UINib nibWithNibName:@"Cell" bundle:nil] instantiateWithOwner:nil options:nil];
     Cell* cell = arr[0];
-    cell.lab.text = (self.sectionData)[[indexPath section]][[indexPath row]];
+    cell.lab.text = (self.sectionData)[indexPath.section][indexPath.row];
     return [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
 }
 
@@ -207,7 +207,7 @@ Expand on the previous example to look decent, be more efficient
             d[@(ip.section)] = [NSMutableIndexSet indexSet];
             set = d[@(ip.section)];
         }
-        [set addIndex:ip.row];
+        [set addIndex:ip.item];
     }
     // now we can deal with each section in turn and delete all its selected items at once
     for (NSNumber* n in [d allKeys]) {

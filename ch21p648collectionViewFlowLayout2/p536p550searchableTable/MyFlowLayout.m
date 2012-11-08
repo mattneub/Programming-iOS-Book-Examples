@@ -23,11 +23,11 @@
     UICollectionViewLayoutAttributes* atts =
     [super layoutAttributesForItemAtIndexPath:indexPath];
     
-    if (indexPath.row == 0) // degenerate case 1
+    if (indexPath.item == 0) // degenerate case 1
         return atts;
     
     NSIndexPath* ipPrev =
-    [NSIndexPath indexPathForRow:indexPath.row-1 inSection:indexPath.section];
+    [NSIndexPath indexPathForItem:indexPath.item-1 inSection:indexPath.section];
     
     CGRect fPrev = [self layoutAttributesForItemAtIndexPath:ipPrev].frame;
     CGFloat rightPrev = fPrev.origin.x + fPrev.size.width + 10;

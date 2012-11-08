@@ -95,7 +95,7 @@
         [cell.contentView addSubview:[[UILabel alloc] initWithFrame:CGRectMake(0,0,30,30)]];
     }
     UILabel* lab = (UILabel*)cell.contentView.subviews[0];
-    lab.text = (self.sectionData)[[indexPath section]][[indexPath row]];
+    lab.text = (self.sectionData)[indexPath.section][indexPath.item]; // "item" synonym for "row"
     [lab sizeToFit];
     return cell;
 }
@@ -107,7 +107,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     // note horrible duplication of code here
     UILabel* lab = [[UILabel alloc] initWithFrame:CGRectMake(0,0,30,30)];
-    lab.text = (self.sectionData)[[indexPath section]][[indexPath row]];
+    lab.text = (self.sectionData)[indexPath.section][indexPath.item];
     [lab sizeToFit];
     return lab.bounds.size;
 }
