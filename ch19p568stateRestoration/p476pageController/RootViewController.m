@@ -51,6 +51,17 @@
     return self;
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    NSLog(@"root view will appear");
+    [super viewWillAppear:animated];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    NSLog(@"root view did appear");
+    [super viewDidAppear:animated];
+}
+
+
 - (IBAction)doButton:(id)sender {
     NSInteger tag = [(UIButton*)sender tag];
     NSString* whichPep = self.pep[tag-1];
