@@ -15,25 +15,22 @@
 		A470889414AE67F40066DE3C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A470889314AE67F40066DE3C /* AppDelegate.m */; };
 		A470889714AE67F40066DE3C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A470889614AE67F40066DE3C /* ViewController.m */; };
 		A470889A14AE67F40066DE3C /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A470889814AE67F40066DE3C /* ViewController.xib */; };
-		A47088A214AE68350066DE3C /* MySelfResizingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A47088A114AE68350066DE3C /* MySelfResizingLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A470887F14AE67F40066DE3C /* p565p579selfSizingLabel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p565p579selfSizingLabel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A470887F14AE67F40066DE3C /* p565p579selfSizingLabel2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p565p579selfSizingLabel2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A470888314AE67F40066DE3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A470888514AE67F40066DE3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A470888714AE67F40066DE3C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A470888B14AE67F40066DE3C /* p565p579selfSizingLabel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p565p579selfSizingLabel-Info.plist"; sourceTree = "<group>"; };
+		A470888B14AE67F40066DE3C /* p565p579selfSizingLabel2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p565p579selfSizingLabel2-Info.plist"; sourceTree = "<group>"; };
 		A470888D14AE67F40066DE3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A470888F14AE67F40066DE3C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A470889114AE67F40066DE3C /* p565p579selfSizingLabel-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p565p579selfSizingLabel-Prefix.pch"; sourceTree = "<group>"; };
+		A470889114AE67F40066DE3C /* p565p579selfSizingLabel2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p565p579selfSizingLabel2-Prefix.pch"; sourceTree = "<group>"; };
 		A470889214AE67F40066DE3C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A470889314AE67F40066DE3C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A470889514AE67F40066DE3C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A470889614AE67F40066DE3C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A470889914AE67F40066DE3C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		A47088A014AE68350066DE3C /* MySelfResizingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySelfResizingLabel.h; sourceTree = "<group>"; };
-		A47088A114AE68350066DE3C /* MySelfResizingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySelfResizingLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +59,7 @@
 		A470888014AE67F40066DE3C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A470887F14AE67F40066DE3C /* p565p579selfSizingLabel.app */,
+				A470887F14AE67F40066DE3C /* p565p579selfSizingLabel2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,8 +82,6 @@
 				A470889514AE67F40066DE3C /* ViewController.h */,
 				A470889614AE67F40066DE3C /* ViewController.m */,
 				A470889814AE67F40066DE3C /* ViewController.xib */,
-				A47088A014AE68350066DE3C /* MySelfResizingLabel.h */,
-				A47088A114AE68350066DE3C /* MySelfResizingLabel.m */,
 				A470888A14AE67F40066DE3C /* Supporting Files */,
 			);
 			path = p565p579selfSizingLabel;
@@ -95,10 +90,10 @@
 		A470888A14AE67F40066DE3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A470888B14AE67F40066DE3C /* p565p579selfSizingLabel-Info.plist */,
+				A470888B14AE67F40066DE3C /* p565p579selfSizingLabel2-Info.plist */,
 				A470888C14AE67F40066DE3C /* InfoPlist.strings */,
 				A470888F14AE67F40066DE3C /* main.m */,
-				A470889114AE67F40066DE3C /* p565p579selfSizingLabel-Prefix.pch */,
+				A470889114AE67F40066DE3C /* p565p579selfSizingLabel2-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -106,9 +101,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A470887E14AE67F40066DE3C /* p565p579selfSizingLabel */ = {
+		A470887E14AE67F40066DE3C /* p565p579selfSizingLabel2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A470889D14AE67F40066DE3C /* Build configuration list for PBXNativeTarget "p565p579selfSizingLabel" */;
+			buildConfigurationList = A470889D14AE67F40066DE3C /* Build configuration list for PBXNativeTarget "p565p579selfSizingLabel2" */;
 			buildPhases = (
 				A470887B14AE67F40066DE3C /* Sources */,
 				A470887C14AE67F40066DE3C /* Frameworks */,
@@ -118,9 +113,9 @@
 			);
 			dependencies = (
 			);
-			name = p565p579selfSizingLabel;
+			name = p565p579selfSizingLabel2;
 			productName = p565p579selfSizingLabel;
-			productReference = A470887F14AE67F40066DE3C /* p565p579selfSizingLabel.app */;
+			productReference = A470887F14AE67F40066DE3C /* p565p579selfSizingLabel2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -131,7 +126,7 @@
 			attributes = {
 				LastUpgradeCheck = 0420;
 			};
-			buildConfigurationList = A470887914AE67F40066DE3C /* Build configuration list for PBXProject "p565p579selfSizingLabel" */;
+			buildConfigurationList = A470887914AE67F40066DE3C /* Build configuration list for PBXProject "p565p579selfSizingLabel2" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -143,7 +138,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A470887E14AE67F40066DE3C /* p565p579selfSizingLabel */,
+				A470887E14AE67F40066DE3C /* p565p579selfSizingLabel2 */,
 			);
 		};
 /* End PBXProject section */
@@ -168,7 +163,6 @@
 				A470889014AE67F40066DE3C /* main.m in Sources */,
 				A470889414AE67F40066DE3C /* AppDelegate.m in Sources */,
 				A470889714AE67F40066DE3C /* ViewController.m in Sources */,
-				A47088A214AE68350066DE3C /* MySelfResizingLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,10 +237,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "p565p579selfSizingLabel/p565p579selfSizingLabel-Prefix.pch";
-				INFOPLIST_FILE = "p565p579selfSizingLabel/p565p579selfSizingLabel-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "p565p579selfSizingLabel/p565p579selfSizingLabel2-Prefix.pch";
+				INFOPLIST_FILE = "p565p579selfSizingLabel/p565p579selfSizingLabel2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = p565p579selfSizingLabel2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -255,10 +249,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "p565p579selfSizingLabel/p565p579selfSizingLabel-Prefix.pch";
-				INFOPLIST_FILE = "p565p579selfSizingLabel/p565p579selfSizingLabel-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "p565p579selfSizingLabel/p565p579selfSizingLabel2-Prefix.pch";
+				INFOPLIST_FILE = "p565p579selfSizingLabel/p565p579selfSizingLabel2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = p565p579selfSizingLabel2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -266,7 +260,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A470887914AE67F40066DE3C /* Build configuration list for PBXProject "p565p579selfSizingLabel" */ = {
+		A470887914AE67F40066DE3C /* Build configuration list for PBXProject "p565p579selfSizingLabel2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A470889B14AE67F40066DE3C /* Debug */,
@@ -275,7 +269,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A470889D14AE67F40066DE3C /* Build configuration list for PBXNativeTarget "p565p579selfSizingLabel" */ = {
+		A470889D14AE67F40066DE3C /* Build configuration list for PBXNativeTarget "p565p579selfSizingLabel2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A470889E14AE67F40066DE3C /* Debug */,

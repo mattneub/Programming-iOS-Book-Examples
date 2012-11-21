@@ -2,8 +2,5 @@
 #import <Foundation/Foundation.h>
 
 
-@interface MySelfResizingLabel : UILabel {
-    
-}
-
+@interface MySelfResizingLabel : UILabel 
 @end
