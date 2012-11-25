@@ -4,6 +4,9 @@
 #import "MyTextField.h"
 
 @interface RootViewController () <UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *scrollViewBottomConstraint;
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) UIView* fr;
 @property (nonatomic, strong) IBOutlet UIView *buttonView;
@@ -11,14 +14,13 @@
 
 
 @implementation RootViewController {
-    CGPoint oldOffset;
-    UIEdgeInsets oldContentInset;
-    UIEdgeInsets oldIndicatorInset;
+    CGFloat oldTopConstant;
+    CGFloat oldBottomConstant;
+    CGFloat oldScrollViewBottomConstant;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // self.scrollView.contentSize = self.scrollView.bounds.size;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardShow:)
                                                  name:UIKeyboardWillShowNotification
@@ -27,6 +29,7 @@
                                              selector:@selector(keyboardHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    // look, Ma, no contentSize!
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)tf {
@@ -35,25 +38,23 @@
 }
 
 - (void) keyboardShow: (NSNotification*) n {
-    self->oldContentInset = self.scrollView.contentInset;
-    self->oldIndicatorInset = self.scrollView.scrollIndicatorInsets;
-    self->oldOffset = self.scrollView.contentOffset;
+    self->oldTopConstant = self.topConstraint.constant;
+    self->oldBottomConstant = self.bottomConstraint.constant;
+    self->oldScrollViewBottomConstant = self.scrollViewBottomConstraint.constant;
+    
+    self.scrollView.bounces = YES;
     NSDictionary* d = [n userInfo];
     CGRect r = [d[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     r = [self.scrollView convertRect:r fromView:nil];
-    CGRect f = self.fr.frame;
-    CGFloat y = 
-    CGRectGetMaxY(f) + r.size.height - self.scrollView.bounds.size.height + 5;
-    if (r.origin.y < CGRectGetMaxY(f))
-        [self.scrollView setContentOffset:CGPointMake(0, y) animated:YES];
-    UIEdgeInsets insets;
-    insets = self.scrollView.contentInset;
-    insets.bottom = r.size.height;
-    self.scrollView.contentInset = insets;
-    insets = self.scrollView.scrollIndicatorInsets;
-    insets.bottom = r.size.height;
-    self.scrollView.scrollIndicatorInsets = insets;
-    self.scrollView.bounces = YES;
+    CGFloat duration = [d[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    
+    [UIView animateWithDuration:duration animations:^{
+        self.topConstraint.constant = 30;
+        self.bottomConstraint.constant = 50;
+        self.scrollViewBottomConstraint.constant = -r.size.height;
+        [self.view layoutIfNeeded];
+    }];
+    
 }
 
 // These text fields dismiss the keyboard automatically
@@ -65,17 +66,20 @@
 //}
 
 - (void) keyboardHide: (NSNotification*) n {
-    [self.scrollView setContentOffset:self->oldOffset animated:YES];
     self.scrollView.bounces = NO;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        self.scrollView.scrollIndicatorInsets = self->oldIndicatorInset;
-        self.scrollView.contentInset = self->oldContentInset;  
-    });
+    NSDictionary* d = [n userInfo];
+    CGFloat duration = [d[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    
+    [UIView animateWithDuration:duration animations:^{
+        self.topConstraint.constant = self->oldTopConstant;
+        self.bottomConstraint.constant = self->oldBottomConstant;
+        self.scrollViewBottomConstraint.constant = self->oldScrollViewBottomConstant;
+        [self.view layoutIfNeeded];
+    }];
+
 }
 
-// this next bit could perhaps use a little work to prevent the automatic scrolling
-// but it illustrates use of an accessory view which is the point (p. 572)
+// illustrates use of an accessory view (p. 572)
 - (IBAction)doNextField:(id)sender {
     if ([self.fr isKindOfClass: [MyTextField class]]) {
         UITextField* nextField = [(MyTextField*)self.fr nextField];
@@ -83,7 +87,7 @@
     }
 }
 
-// new example
+// example of filtering user input
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSString* lc = [string lowercaseString];
