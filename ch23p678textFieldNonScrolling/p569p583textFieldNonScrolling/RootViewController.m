@@ -10,7 +10,6 @@
 @implementation RootViewController {
     CGPoint oldOffset;
 }
-@synthesize scrollView, fr;
 
 
 - (void)viewDidLoad {
