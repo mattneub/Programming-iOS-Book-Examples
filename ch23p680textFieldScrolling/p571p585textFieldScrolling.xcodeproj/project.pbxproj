@@ -17,7 +17,6 @@
 		A470891314AE8D690066DE3C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A470890F14AE8D690066DE3C /* RootViewController.m */; };
 		A470891414AE8D6A0066DE3C /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A470891014AE8D690066DE3C /* RootView.xib */; };
 		A470891514AE8D6A0066DE3C /* MyTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A470891214AE8D690066DE3C /* MyTextField.m */; };
-		A4AFB83414AF74B500A3850A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4AFB83314AF74B500A3850A /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +36,6 @@
 		A470891014AE8D690066DE3C /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
 		A470891114AE8D690066DE3C /* MyTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTextField.h; sourceTree = "<group>"; };
 		A470891214AE8D690066DE3C /* MyTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTextField.m; sourceTree = "<group>"; };
-		A4AFB83314AF74B500A3850A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +43,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4AFB83414AF74B500A3850A /* QuartzCore.framework in Frameworks */,
 				A47088F014AE8D220066DE3C /* UIKit.framework in Frameworks */,
 				A47088F214AE8D220066DE3C /* Foundation.framework in Frameworks */,
 				A47088F414AE8D220066DE3C /* CoreGraphics.framework in Frameworks */,
@@ -58,7 +55,6 @@
 		A47088E014AE8D220066DE3C = {
 			isa = PBXGroup;
 			children = (
-				A4AFB83314AF74B500A3850A /* QuartzCore.framework */,
 				A47088F514AE8D220066DE3C /* p571p585textFieldScrolling */,
 				A47088EE14AE8D220066DE3C /* Frameworks */,
 				A47088EC14AE8D220066DE3C /* Products */,
@@ -245,6 +241,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p571p585textFieldScrolling/p571p585textFieldScrolling-Prefix.pch";
 				INFOPLIST_FILE = "p571p585textFieldScrolling/p571p585textFieldScrolling-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -256,6 +253,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p571p585textFieldScrolling/p571p585textFieldScrolling-Prefix.pch";
 				INFOPLIST_FILE = "p571p585textFieldScrolling/p571p585textFieldScrolling-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

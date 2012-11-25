@@ -55,7 +55,7 @@
     NSLog(@"show");
     self->oldOffset = self.scrollView.contentOffset;
     NSDictionary* d = [n userInfo];
-    CGRect r = [[d objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect r = [d[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     r = [self.scrollView convertRect:r fromView:nil];
     CGRect f = self.fr.frame;
     CGFloat y = 
@@ -75,7 +75,7 @@
 }
 
 - (void) keyboardMove: (NSNotification*) n {
-    NSLog(@"move to %@", [[n userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey]);
+    NSLog(@"move to %@", [n userInfo][UIKeyboardFrameEndUserInfoKey]);
     // we could use this to detect whether the keyboard is hiding us
     // but we don't have to, because if we didn't get "show" ...
     // ... the user can move the keyboard if it's in the way

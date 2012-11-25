@@ -6,9 +6,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize viewController = _viewController;
-@synthesize states;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -17,17 +14,17 @@
     UIMenuItem *mi = [[UIMenuItem alloc] initWithTitle:@"Expand" 
                                                 action:@selector(expand:)];
     UIMenuController *mc = [UIMenuController sharedMenuController];
-    mc.menuItems = [NSArray arrayWithObject:mi];
+    mc.menuItems = @[mi];
     
     NSString* s = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"states" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil];
     NSArray* arr = [s componentsSeparatedByString:@"\n"];
     NSMutableDictionary* md = [NSMutableDictionary dictionary];
     for (NSString* line in arr) {
         NSArray* both = [line componentsSeparatedByString:@"\t"];
-        [md setObject:[both objectAtIndex:0] forKey:[both objectAtIndex:1]];
+        md[both[1]] = both[0];
     }
     self.states = [md copy];
-    NSLog(@"%@", self.states);
+    // NSLog(@"%@", self.states);
 
     
     

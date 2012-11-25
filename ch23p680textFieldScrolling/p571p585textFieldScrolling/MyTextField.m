@@ -21,12 +21,14 @@
     
     AppDelegate* del = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     NSDictionary* states = del.states;
-    NSString* state = [states objectForKey:[s uppercaseString]];
+    NSString* state = states[[s uppercaseString]];
     if (state)
         s = state;
     
     self.text = s;
 }
+
+// ????
 
 - (void) copy: (id) sender {
     [super copy: sender];
@@ -36,7 +38,7 @@
     
     AppDelegate* del = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     NSDictionary* states = del.states;
-    NSString* state = [states objectForKey:[s uppercaseString]];
+    NSString* state = states[[s uppercaseString]];
     if (state)
         s = state;
 

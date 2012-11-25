@@ -2,9 +2,8 @@
 
 #import "RootViewController.h"
 #import "MyTextField.h"
-#import <QuartzCore/QuartzCore.h>
 
-@interface RootViewController ()
+@interface RootViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) UIView* fr;
 @property (nonatomic, strong) IBOutlet UIView *buttonView;
@@ -16,12 +15,10 @@
     UIEdgeInsets oldContentInset;
     UIEdgeInsets oldIndicatorInset;
 }
-@synthesize buttonView;
-@synthesize scrollView, fr;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.scrollView.contentSize = self.scrollView.bounds.size;
+    // self.scrollView.contentSize = self.scrollView.bounds.size;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardShow:)
                                                  name:UIKeyboardWillShowNotification
@@ -42,7 +39,7 @@
     self->oldIndicatorInset = self.scrollView.scrollIndicatorInsets;
     self->oldOffset = self.scrollView.contentOffset;
     NSDictionary* d = [n userInfo];
-    CGRect r = [[d objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect r = [d[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     r = [self.scrollView convertRect:r fromView:nil];
     CGRect f = self.fr.frame;
     CGFloat y = 
@@ -56,6 +53,7 @@
     insets = self.scrollView.scrollIndicatorInsets;
     insets.bottom = r.size.height;
     self.scrollView.scrollIndicatorInsets = insets;
+    self.scrollView.bounces = YES;
 }
 
 // These text fields dismiss the keyboard automatically
@@ -68,6 +66,7 @@
 
 - (void) keyboardHide: (NSNotification*) n {
     [self.scrollView setContentOffset:self->oldOffset animated:YES];
+    self.scrollView.bounces = NO;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         self.scrollView.scrollIndicatorInsets = self->oldIndicatorInset;
