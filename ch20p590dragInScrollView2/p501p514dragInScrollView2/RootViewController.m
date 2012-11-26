@@ -3,6 +3,7 @@
 #import "RootViewController.h"
 
 @interface RootViewController () <UIGestureRecognizerDelegate>
+@property (nonatomic, strong) UIScrollView* sv;
 @end
 
 @implementation RootViewController 
@@ -12,13 +13,29 @@
 // the user can summon the flag with a swipe to the right
 // demonstrates that we can now interact with the scroll view's built-in gesture recognizers
 
--(void) loadView {
-    UIScrollView* sv = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-    self.view = sv;
+-(void) viewDidLoad {
+    [super viewDidLoad];
+    UIScrollView* sv = [UIScrollView new];
+    self.sv = sv;
+    [self.view addSubview:sv];
+    sv.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[sv]|"
+                                             options:0 metrics:nil views:@{@"sv":sv}]];
+    [self.view addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[sv]|"
+                                             options:0 metrics:nil views:@{@"sv":sv}]];
     
     UIImageView* imv = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"map.jpg"]];
     [sv addSubview:imv];
-    sv.contentSize = imv.bounds.size;
+    imv.translatesAutoresizingMaskIntoConstraints = NO;
+    // constraints here mean "content view is the size of the image view"
+    [self.view addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imv]|"
+                                             options:0 metrics:nil views:@{@"imv":imv}]];
+    [self.view addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[imv]|"
+                                             options:0 metrics:nil views:@{@"imv":imv}]];
     
     UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swiped:)];
     [sv addGestureRecognizer:swipe];
@@ -38,7 +55,7 @@
         [flag addGestureRecognizer:pan];
         flag.userInteractionEnabled = YES;
         
-        UIScrollView* sv = (UIScrollView*)self.view;
+        UIScrollView* sv = self.sv;
         CGPoint p = sv.contentOffset;
         CGRect f = flag.frame;
         f.origin = p;
@@ -46,16 +63,15 @@
         flag.frame = f;
         
         [sv addSubview: flag];
-        
-        [UIView beginAnimations:nil context:NULL];
-        f.origin.x = p.x;
-        flag.frame = f;
-        [UIView commitAnimations];
-        
         // thanks for the flag, now stop operating altogether
         g.enabled = NO;
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            CGRect f = flag.frame;
+            f.origin.x = p.x;
+            flag.frame = f;
+        }];
     }
-    
 }
 
 - (void) dragging: (UIPanGestureRecognizer*) p {
@@ -72,7 +88,7 @@
     if (p.state == UIGestureRecognizerStateChanged) {
         CGPoint loc = [p locationInView:self.view.superview];
         CGRect f = self.view.frame;
-        UIScrollView* sv = (UIScrollView*)self.view;
+        UIScrollView* sv = self.sv;
         CGPoint off = sv.contentOffset;
         CGSize sz = sv.contentSize;
         CGPoint c = v.center;

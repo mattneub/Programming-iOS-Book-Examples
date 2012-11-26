@@ -62,7 +62,7 @@
             for (NSLayoutConstraint* con in self.verticalConstraints) {
                 con.constant = -y;
             }
-            [self.view layoutSubviews];
+            [self.view layoutIfNeeded];
         }];
     }
 }
@@ -79,7 +79,7 @@
         for (NSLayoutConstraint* con in self.verticalConstraints) {
             con.constant = 0;
         }
-        [self.view layoutSubviews];
+        [self.view layoutIfNeeded];
     }];
 }
 

@@ -10,14 +10,32 @@
 
 
 -(void) viewDidLoad {
+    // great opportunity to illustrate setting up a scroll view by constraints alone
+    
     [super viewDidLoad];
-    UIScrollView* sv = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    UIScrollView* sv = [UIScrollView new];
     self.sv = sv;
     [self.view addSubview:sv];
+    sv.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[sv]|"
+                                             options:0 metrics:nil views:@{@"sv":sv}]];
+    [self.view addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[sv]|"
+                                             options:0 metrics:nil views:@{@"sv":sv}]];
     
     UIImageView* imv = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"map.jpg"]];
     [sv addSubview:imv];
-    sv.contentSize = imv.bounds.size;
+    imv.translatesAutoresizingMaskIntoConstraints = NO;
+    // constraints here mean "content view is the size of the image view"
+    [self.view addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imv]|"
+                                             options:0 metrics:nil views:@{@"imv":imv}]];
+    [self.view addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[imv]|"
+                                             options:0 metrics:nil views:@{@"imv":imv}]];
+
+    
     UIImageView* flag = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"redflag.png"]];
     [sv addSubview: flag];
     UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] 
