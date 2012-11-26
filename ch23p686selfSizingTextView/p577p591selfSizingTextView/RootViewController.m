@@ -3,18 +3,15 @@
 #import "RootViewController.h"
 
 @interface RootViewController()
-@property (nonatomic, strong) IBOutlet UITextView *tv;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
+@property (nonatomic, weak) IBOutlet UITextView *tv;
 @end
 
 @implementation RootViewController
-@synthesize tv;
-
 
 - (void) adjust {
     CGSize sz = self.tv.contentSize;
-    CGRect f = self.tv.frame;
-    f.size = sz;
-    self.tv.frame = f;
+    self.heightConstraint.constant = sz.height;
 }
 
 - (void)textViewDidChange:(UITextView *)textView {

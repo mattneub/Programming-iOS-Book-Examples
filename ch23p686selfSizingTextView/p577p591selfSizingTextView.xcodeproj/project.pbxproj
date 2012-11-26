@@ -231,6 +231,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p577p591selfSizingTextView/p577p591selfSizingTextView-Prefix.pch";
 				INFOPLIST_FILE = "p577p591selfSizingTextView/p577p591selfSizingTextView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -242,6 +243,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p577p591selfSizingTextView/p577p591selfSizingTextView-Prefix.pch";
 				INFOPLIST_FILE = "p577p591selfSizingTextView/p577p591selfSizingTextView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -266,6 +268,7 @@
 				A470893F14AE8FDF0066DE3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
