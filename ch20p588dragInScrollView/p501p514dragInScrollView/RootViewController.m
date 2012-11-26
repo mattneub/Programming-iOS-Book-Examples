@@ -2,12 +2,18 @@
 
 #import "RootViewController.h"
 
+@interface RootViewController()
+@property (nonatomic, strong) UIScrollView* sv;
+@end
+
 @implementation RootViewController
 
 
--(void) loadView {
-    UIScrollView* sv = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-    self.view = sv;
+-(void) viewDidLoad {
+    [super viewDidLoad];
+    UIScrollView* sv = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    self.sv = sv;
+    [self.view addSubview:sv];
     
     UIImageView* imv = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"map.jpg"]];
     [sv addSubview:imv];
@@ -19,6 +25,21 @@
                                    action:@selector(dragging:)];
     [flag addGestureRecognizer:pan];
     flag.userInteractionEnabled = YES;
+    
+    /*
+     Illustrate new scroll view feature available thanks to constraints:
+     it's easy to make a scroll view subview whose position doesn't scroll -
+     just constrain it to something *outside* the scroll view
+     */
+    
+    UIImageView* iv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"smiley.png"]];
+    iv.translatesAutoresizingMaskIntoConstraints = NO;
+    [sv addSubview:iv];
+    [self.view addConstraint:
+     [NSLayoutConstraint constraintWithItem:iv attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:-5]];
+    [self.view addConstraint:
+     [NSLayoutConstraint constraintWithItem:iv attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:5]];
+    
 }
 
 - (void) dragging: (UIPanGestureRecognizer*) p {
@@ -35,7 +56,7 @@
     if (p.state == UIGestureRecognizerStateChanged) {
         CGPoint loc = [p locationInView:self.view.superview];
         CGRect f = self.view.frame;
-        UIScrollView* sv = (UIScrollView*)self.view;
+        UIScrollView* sv = self.sv;
         CGPoint off = sv.contentOffset;
         CGSize sz = sv.contentSize;
         CGPoint c = v.center;
