@@ -18,7 +18,6 @@
     [self addGestureRecognizer:tap];
 }
 
-// more ARC
 
 - (void) appendLinesAndBoundsOfFrame:(CTFrameRef)f context:(CGContextRef)ctx{
     CGAffineTransform t1 = 
@@ -32,7 +31,7 @@
     CGPoint origins[[lines count]];
     CTFrameGetLineOrigins(f, CFRangeMake(0,0), origins);
     for (int i = 0; i < [lines count]; i++) {
-        CTLineRef aLine = (__bridge CTLineRef)[lines objectAtIndex:i];
+        CTLineRef aLine = (__bridge CTLineRef)lines[i];
         CGRect b = CTLineGetImageBounds((CTLineRef)aLine, ctx);
         // the line origin plus the image bounds size is the bounds we want
         CGRect b2 = { origins[i], b.size };
@@ -86,7 +85,7 @@
 - (void) tapped: (UITapGestureRecognizer*) tap {
     CGPoint loc = [tap locationInView:self];
     for (int i = 0; i < [self.theBounds count]; i++) {
-        CGRect rect = [[self.theBounds objectAtIndex: i] CGRectValue];
+        CGRect rect = [(self.theBounds)[i] CGRectValue];
         if (CGRectContainsPoint(rect, loc)) {
             // draw rectangle for feedback
             CALayer* lay = [CALayer layer];
@@ -96,7 +95,7 @@
             [lay performSelector:@selector(removeFromSuperlayer) 
                       withObject:nil afterDelay:0.3];
             // fetch the drawn string tapped on
-            CTLineRef theLine = (__bridge CTLineRef)[self.theLines objectAtIndex:i];
+            CTLineRef theLine = (__bridge CTLineRef)(self.theLines)[i];
             CFRange range = CTLineGetStringRange(theLine);
             CFStringRef s = CFStringCreateWithSubstring(
                                                         NULL, (__bridge CFStringRef)[self.text string], range);
