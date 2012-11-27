@@ -14,8 +14,7 @@
 
 }
 
-#define which 1
-// and 2
+#define which 1 // and 2
 
 - (IBAction)doButton:(id)sender {
     switch (which) {
@@ -26,7 +25,7 @@
                 _v.center = p;
             } completion:^(BOOL b){
                 // if we do not do something like this...
-                // then when we rotate we will revert to our original position
+                // then when we rotate, layout happens, and we will revert to our original position
                 NSArray* cons = self.view.constraints;
                 NSIndexSet* ixx =
                 [cons indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
@@ -39,7 +38,7 @@
             break;
         }
         case 2: {
-            // however, there's another way: just set the constraint *as* the animation!
+            // however, there's a better way: just set the constraint *as* the animation!
             // the constraint is not an animatable property, so just set it
             NSArray* cons = self.view.constraints;
             NSIndexSet* ixx =

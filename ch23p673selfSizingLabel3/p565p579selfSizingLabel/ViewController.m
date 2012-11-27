@@ -26,7 +26,7 @@
 
 // this is the tricky part! there is a two-pass layout operation
 // we must adjust the desired layout width and ask for layout again
-// comment this out and you'll see the problem: the label doesn't lengthen as it narrow
+// comment this out and you'll see the problem: the label doesn't lengthen as it narrows
 
 -(void)viewDidLayoutSubviews {
 //    NSLog(@"here");
