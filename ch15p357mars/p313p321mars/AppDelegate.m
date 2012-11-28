@@ -221,7 +221,10 @@ CGImageRef flip (CGImageRef im) {
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
             CGFloat capw = mars.size.width / 2.0 - 1;
             CGFloat caph = mars.size.height / 2.0 - 1;
-            UIImage* marsTiled = [mars resizableImageWithCapInsets:UIEdgeInsetsMake(caph, capw, caph, capw)];
+            // new iOS 6 feature, can explicitly specify stretch
+            // not needed here because default is to stretch if inset leaves just one pixel
+            // but may as well use it
+            UIImage* marsTiled = [mars resizableImageWithCapInsets:UIEdgeInsetsMake(caph, capw, caph, capw) resizingMode:UIImageResizingModeStretch];
             UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(20,5,mars.size.width*2,mars.size.height*1.5)];
             iv.image = marsTiled;
             [self.window.rootViewController.view addSubview:iv];

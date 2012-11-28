@@ -3,8 +3,5 @@
 #import <UIKit/UIKit.h>
 
 
-@interface MyTableViewCell : UITableViewCell {
-    
-}
-
+@interface MyTableViewCell : UITableViewCell 
 @end

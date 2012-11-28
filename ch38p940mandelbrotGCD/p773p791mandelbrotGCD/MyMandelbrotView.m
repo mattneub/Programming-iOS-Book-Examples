@@ -141,6 +141,8 @@ BOOL isInMandelbrotSet(float re, float im)
     if (bitmapContext)
         CGContextRelease(bitmapContext);
     dispatch_release(draw_queue);
+    // NOTE TO SELF! on iOS 6, this is not necessary and I expect the compiler to flag it
+    // this is a big change, actually; see <os/object.h>
 }
 
 

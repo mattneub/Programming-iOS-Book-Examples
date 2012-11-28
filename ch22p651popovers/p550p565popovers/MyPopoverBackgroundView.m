@@ -42,7 +42,7 @@
     UIImage* linOrig = [UIImage imageNamed: @"linen.png"];
     CGFloat capw = linOrig.size.width / 2.0 - 1;
     CGFloat caph = linOrig.size.height / 2.0 - 1;
-    UIImage* lin = [linOrig resizableImageWithCapInsets:UIEdgeInsetsMake(caph, capw, caph, capw)];
+    UIImage* lin = [linOrig resizableImageWithCapInsets:UIEdgeInsetsMake(caph, capw, caph, capw) resizingMode:UIImageResizingModeTile];
     
     // draw the arrow
     // I'm just going to make a triangle filled with our linen background...

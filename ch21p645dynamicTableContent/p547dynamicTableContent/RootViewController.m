@@ -67,7 +67,7 @@
     [lin drawAtPoint:CGPointMake(-(lin.size.width - 40) / 2.0, -(lin.size.height - 40) / 2.0)];
     UIImage* lin2 = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    UIImageView* iv = [[UIImageView alloc] initWithImage:[lin2 resizableImageWithCapInsets:UIEdgeInsetsZero]];
+    UIImageView* iv = [[UIImageView alloc] initWithImage:[lin2 resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile]];
     self.interestingImageView = iv;
     
     [self.tableView setBackgroundView:iv];

@@ -9,9 +9,6 @@
 @end
 
 @implementation RootViewController 
-@synthesize prog3;
-@synthesize prog2;
-@synthesize prog;
 
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -35,19 +32,21 @@
     UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext();
     CGPathRelease(p);
     UIGraphicsEndImageContext();
-    im = [im resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)];
-    im2 = [im2 resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)];
-    prog3.trackImage = im;
-    prog3.progressImage = im2;
+    im = [im resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)
+                            resizingMode:UIImageResizingModeStretch];
+    im2 = [im2 resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)
+                              resizingMode:UIImageResizingModeStretch];
+    self.prog3.trackImage = im;
+    self.prog3.progressImage = im2;
 }
 
 -(void)inc:(NSTimer*)t {
-    CGFloat val = prog.value;
+    CGFloat val = self.prog.value;
     val += 0.1;
-    prog.value = val;
-    prog2.progress = val;
-    prog3.progress = val;
-    [prog setNeedsDisplay];
+    self.prog.value = val;
+    self.prog2.progress = val;
+    self.prog3.progress = val;
+    [self.prog setNeedsDisplay];
     if (val >= 1.0)
         [t invalidate];
 }

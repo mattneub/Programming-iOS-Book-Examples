@@ -7,7 +7,6 @@
 @end
 
 @implementation RootViewController
-@synthesize dp;
 
 
 -(void)viewDidLoad {
@@ -19,11 +18,11 @@
     [dc setDay:1];
     NSCalendar* c = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDate* d = [c dateFromComponents:dc];
-    dp.minimumDate = d;
-    dp.date = d;
+    self.dp.minimumDate = d;
+    self.dp.date = d;
     [dc setYear:1955];
     d = [c dateFromComponents:dc];
-    dp.maximumDate = d;
+    self.dp.maximumDate = d;
 
 }
 

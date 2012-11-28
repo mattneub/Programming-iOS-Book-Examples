@@ -10,7 +10,7 @@
 {
     [super viewDidLoad];
     self.title = @"Start";
-
+    [self.tableView registerClass:[MyTableViewCell class] forCellReuseIdentifier:@"Cell"];
 }
 
 // Customize the number of sections in the table view.
@@ -27,12 +27,8 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[MyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     cell.textLabel.text = @"Let's go";
     return cell;
 }
@@ -44,7 +40,7 @@
 }
 
 - (void) gogogo: (id) dummy {
-    UIViewController *detailViewController = [[UIViewController alloc] init];
+    UIViewController *detailViewController = [UIViewController new];
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 

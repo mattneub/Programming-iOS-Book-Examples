@@ -70,9 +70,11 @@
     // rotate the app to see the problem here:
     // if we don't make a resizable image, the whole image will be tiled
     // our image is not particularly tilable in that way, so we make it tile its middle instead
+    // note use of new iOS feature to specify tiling (the default, actually)
     [tbc.tabBar setBackgroundImage:
-     [UIGraphicsGetImageFromCurrentImageContext() resizableImageWithCapInsets:
-      UIEdgeInsetsMake(0, sz2.width/2.0-20, 0, sz2.width/2.0-20)]];
+     [UIGraphicsGetImageFromCurrentImageContext()
+      resizableImageWithCapInsets: UIEdgeInsetsMake(0, sz2.width/2.0-20, 0, sz2.width/2.0-20)
+      resizingMode: UIImageResizingModeTile]];
     UIGraphicsEndImageContext();
     
     // in the actual book, however, I think I'd postpone discussion of all this to the Controls chapter

@@ -52,7 +52,7 @@
     [im drawInRect:(CGRect){CGPointZero, sz}];
     UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    im2 = [im2 resizableImageWithCapInsets:UIEdgeInsetsMake(9, 9, 9, 9)];
+    im2 = [im2 resizableImageWithCapInsets:UIEdgeInsetsMake(9, 9, 9, 9) resizingMode:UIImageResizingModeTile];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:im2 forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 
     return YES;
