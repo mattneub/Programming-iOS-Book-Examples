@@ -2,12 +2,11 @@
 
 #import "WebViewController.h"
 
-@interface WebViewController ()
+@interface WebViewController () <UIWebViewDelegate>
 @property (nonatomic, strong) UIActivityIndicatorView* activity;
 @end
 
 @implementation WebViewController
-@synthesize activity;
 
 - (void)dealloc
 {
@@ -18,7 +17,7 @@
 
 - (void)loadView
 {
-    UIWebView* wv = [[UIWebView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    UIWebView* wv = [UIWebView new];
     wv.backgroundColor = [UIColor blackColor];
     self.view = wv;
     wv.delegate = self;
@@ -31,8 +30,13 @@
     act.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.5];
     self.activity = act;
     [wv addSubview:act];
+    act.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraint:
+     [NSLayoutConstraint constraintWithItem:act attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:wv attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+    [self.view addConstraint:
+     [NSLayoutConstraint constraintWithItem:act attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:wv attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
     
-    NSLog(@"%@", wv.scrollView.gestureRecognizers);
+    // NSLog(@"%@", wv.scrollView.gestureRecognizers);
 }
 
 - (void) swipe: (id) dummy {
@@ -52,17 +56,17 @@
      [[NSBundle mainBundle] pathForResource:@"htmlTemplate" ofType:@"txt"]
                               encoding: NSUTF8StringEncoding error:&err];
     // error-checking omitted
-    NSString* s = [NSString stringWithFormat: template,
-                   300, // -> what was I thinking???? fixed now
-                   18,
-                   10,
-                   @"http://tidbits.com/article/12228",
-                   @"Lion Details Revealed with Shipping Date and Price", 
-                   @"<img src=\"listen.png\" onclick=\"document.location='play:me'\">",
-                   @"TidBITS Staff",
-                   @"Mon, 06 Jun 2011 13:00:39 PDT",
-                   ss
-                   ];
+    NSString* s = template;
+    s = [s stringByReplacingOccurrencesOfString:@"<maximagewidth>" withString:@"80%"];
+    s = [s stringByReplacingOccurrencesOfString:@"<fontsize>" withString:@"18"];
+    s = [s stringByReplacingOccurrencesOfString:@"<margin>" withString:@"10"];
+    s = [s stringByReplacingOccurrencesOfString:@"<guid>" withString:@"http://tidbits.com/article/12228"];
+    s = [s stringByReplacingOccurrencesOfString:@"<ourtitle>" withString:@"Lion Details Revealed with Shipping Date and Price"];
+    s = [s stringByReplacingOccurrencesOfString:@"<playbutton>" withString:@"<img src=\"listen.png\" onclick=\"document.location='play:me'\">"];
+    s = [s stringByReplacingOccurrencesOfString:@"<author>" withString:@"TidBITS Staff"];
+    s = [s stringByReplacingOccurrencesOfString:@"<date>" withString:@"Mon, 06 Jun 2011 13:00:39 PDT"];
+    s = [s stringByReplacingOccurrencesOfString:@"<content>" withString:ss];
+
     [(UIWebView*)self.view loadHTMLString:s baseURL:base];
 }
 
@@ -81,8 +85,6 @@
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)wv {
-    self.activity.center = 
-    CGPointMake(CGRectGetMidX(wv.bounds), CGRectGetMidY(wv.bounds));
     [self.activity startAnimating];
 }
 
@@ -123,9 +125,5 @@
     return YES;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
 
 @end

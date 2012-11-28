@@ -14,11 +14,11 @@
 		A418DFC314AEA7C4006B6550 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A418DFC214AEA7C4006B6550 /* main.m */; };
 		A418DFC714AEA7C4006B6550 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A418DFC614AEA7C4006B6550 /* AppDelegate.m */; };
 		A418DFD214AEA7EB006B6550 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A418DFCE14AEA7EB006B6550 /* RootViewController.m */; };
-		A418DFD314AEA7EB006B6550 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A418DFCF14AEA7EB006B6550 /* RootViewController.xib */; };
 		A418DFD414AEA7EB006B6550 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A418DFD114AEA7EB006B6550 /* WebViewController.m */; };
 		A418DFD714AEA7F5006B6550 /* htmlTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = A418DFD514AEA7F5006B6550 /* htmlTemplate.txt */; };
 		A418DFD814AEA7F5006B6550 /* htmlbody.txt in Resources */ = {isa = PBXBuildFile; fileRef = A418DFD614AEA7F5006B6550 /* htmlbody.txt */; };
 		A4AFB84F14AFBD5F00A3850A /* listen.png in Resources */ = {isa = PBXBuildFile; fileRef = A4AFB84E14AFBD5F00A3850A /* listen.png */; };
+		C9CDCA661665A8B5001DE4B9 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A418DFCF14AEA7EB006B6550 /* RootViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,10 +163,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A418DFC114AEA7C4006B6550 /* InfoPlist.strings in Resources */,
-				A418DFD314AEA7EB006B6550 /* RootViewController.xib in Resources */,
 				A418DFD714AEA7F5006B6550 /* htmlTemplate.txt in Resources */,
 				A418DFD814AEA7F5006B6550 /* htmlbody.txt in Resources */,
 				A4AFB84F14AFBD5F00A3850A /* listen.png in Resources */,
+				C9CDCA661665A8B5001DE4B9 /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +249,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p592p608webView/p592p608webView-Prefix.pch";
 				INFOPLIST_FILE = "p592p608webView/p592p608webView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -260,6 +261,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p592p608webView/p592p608webView-Prefix.pch";
 				INFOPLIST_FILE = "p592p608webView/p592p608webView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
