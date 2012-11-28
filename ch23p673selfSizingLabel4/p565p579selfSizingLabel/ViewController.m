@@ -12,41 +12,23 @@
 @implementation ViewController 
 
 /*
- how to change a label's *superview's* width and get autolayout using its intrinsic size
- 
- I'm having great trouble doing this; there seems to be a two-cycle layout for labels,
- and I can't seem to get automatic layout of the label to take account of the frame change
- on the same cycle
- 
- So my only solution is to use code to force the label's layout width to take account of the
- superview change
- 
- This works visibly but is really not sustainable
- 
+ how to change a label's *superview's* width and get autolayout using the label's intrinsic size
  */
 
 - (IBAction)doButton:(id)sender {
     self.innerViewWidth.constant -= 10;
-    self.theLabel.preferredMaxLayoutWidth -= 10;
 }
 
-// this solution from stackover does NOT work
-// everything seems to be happening one layout cycle too late
-// http://stackoverflow.com/questions/13149733/ios-autolayout-issue-with-uilabels-in-a-resizing-parent-view
+// see http://stackoverflow.com/questions/13149733/ios-autolayout-issue-with-uilabels-in-a-resizing-parent-view
+// the code there didn't work properly, but it did give me this idea
 
-/*
- 
-- (void)viewWillLayoutSubviews
-{
-    [self.theLabel setPreferredMaxLayoutWidth:0.];
+- (void)viewDidLayoutSubviews {
+    // wait until *after* constraint-based layout has finished
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // that way, the label's width is correct when this code executes
+        self.theLabel.preferredMaxLayoutWidth = self.theLabel.bounds.size.width;
+    });
 }
 
-- (void)viewDidLayoutSubviews
-{
-    [self.theLabel setPreferredMaxLayoutWidth: self.innerView.bounds.size.width - 21];
-    [self.view layoutSubviews];
-}
-
-*/
 
 @end
