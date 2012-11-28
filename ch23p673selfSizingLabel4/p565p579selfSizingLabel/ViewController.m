@@ -27,9 +27,26 @@
 
 - (IBAction)doButton:(id)sender {
     self.innerViewWidth.constant -= 10;
-    self.theLabel.preferredMaxLayoutWidth -=10;
+    self.theLabel.preferredMaxLayoutWidth -= 10;
 }
 
+// this solution from stackover does NOT work
+// everything seems to be happening one layout cycle too late
+// http://stackoverflow.com/questions/13149733/ios-autolayout-issue-with-uilabels-in-a-resizing-parent-view
 
+/*
+ 
+- (void)viewWillLayoutSubviews
+{
+    [self.theLabel setPreferredMaxLayoutWidth:0.];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [self.theLabel setPreferredMaxLayoutWidth: self.innerView.bounds.size.width - 21];
+    [self.view layoutSubviews];
+}
+
+*/
 
 @end
