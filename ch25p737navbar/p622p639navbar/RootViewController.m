@@ -36,9 +36,34 @@
  You can provide your own shadowImage if you are customizing the background image
  */
 
-/*
- Another new role of the nav bar in iOS 6 is that its color affects the status bar color on iPhone
- */
+- (IBAction)doButton:(id)sender {
+    // let's test the shadow image
+    // we need a custom background image
+    UIImage* lin = [UIImage imageNamed:@"lin.png"];
+    // you can't just show any old image, because the *whole* image will appear...
+    // unless you clip to bounds - but if you clip to bounds you get no shadow!
+    // so you must size the image first
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(30,44), NO, 0);
+    // height can be 44 or less; width can be anything; runtime will tile for us
+    [lin drawAtPoint:CGPointMake(-50,-50)];
+    UIImage* im = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [self.nav setBackgroundImage:im forBarMetrics:UIBarMetricsDefault];
+    // we get default shadow automatically
+    
+    // notice that on iOS 6 we automatically get color change of the status bar on iPhone only
+    
+    return; // comment out this line to get custom shadow
+    
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(1,3), NO, 0);
+    // you want this to be small, tilable, and transparent
+    [lin drawAtPoint:CGPointMake(-47,-47) blendMode:kCGBlendModeCopy alpha:0.4];
+    UIImage* sh = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [self.nav setShadowImage:sh];
+
+}
+
 
 
 @end
