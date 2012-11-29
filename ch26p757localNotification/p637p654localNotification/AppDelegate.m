@@ -5,15 +5,12 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    id notification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    id notification = launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];
     if (notification) {
         [self performSelector:@selector(doAlert:) withObject:notification afterDelay:0.5];
     }
-
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.

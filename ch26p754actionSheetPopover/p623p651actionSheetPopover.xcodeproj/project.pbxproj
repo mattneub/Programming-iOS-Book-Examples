@@ -233,6 +233,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p623p651actionSheetPopover/p623p651actionSheetPopover-Prefix.pch";
 				INFOPLIST_FILE = "p623p651actionSheetPopover/p623p651actionSheetPopover-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -244,6 +245,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p623p651actionSheetPopover/p623p651actionSheetPopover-Prefix.pch";
 				INFOPLIST_FILE = "p623p651actionSheetPopover/p623p651actionSheetPopover-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -268,6 +270,7 @@
 				A487870514B2452800B29A1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -2,7 +2,7 @@
 
 #import "RootViewController.h"
 
-@interface RootViewController ()
+@interface RootViewController () <UIAlertViewDelegate, UIActionSheetDelegate, UITextFieldDelegate>
 @property (nonatomic, copy) NSString* alertString;
 @end
 

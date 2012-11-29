@@ -2,13 +2,12 @@
 
 #import "RootViewController.h"
 
-@interface RootViewController ()
-@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
+@interface RootViewController () <UIActionSheetDelegate>
+@property (nonatomic, weak) IBOutlet UIToolbar *toolbar;
 @end
 
 
 @implementation RootViewController
-@synthesize toolbar;
 
 
 - (IBAction)doOtherThing:(id)sender {
