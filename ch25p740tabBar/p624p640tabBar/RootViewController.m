@@ -3,12 +3,11 @@
 #import "RootViewController.h"
 
 @interface RootViewController ()
-@property (nonatomic, strong) IBOutlet UITabBar *tb;
+@property (nonatomic, weak) IBOutlet UITabBar *tb;
 @property (nonatomic, copy) NSArray* items;
 @end
 
 @implementation RootViewController
-@synthesize tb, items;
 
 
 - (void)viewDidLoad {
@@ -24,7 +23,7 @@
     [arr addObjectsFromArray: [self.items subarrayWithRange:NSMakeRange(0,4)]];
     UITabBarItem* tbi = [[UITabBarItem alloc] initWithTabBarSystemItem:0 tag:0];
     [arr addObject: tbi]; // More button
-    tb.items = arr; // tb is the UITabBar
+    self.tb.items = arr; // self.tb is the UITabBar
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {

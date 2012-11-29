@@ -2,11 +2,10 @@
 #import "RootViewController.h"
 
 @interface RootViewController ()
-@property (nonatomic, retain) IBOutlet UINavigationBar *nav;
+@property (nonatomic, weak) IBOutlet UINavigationBar *nav;
 @end
 
 @implementation RootViewController
-@synthesize nav;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -15,7 +14,7 @@
                                                           style:UIBarButtonItemStyleBordered 
                                                          target:self action:@selector(pushNext:)];
     ni.rightBarButtonItem = b;
-    nav.items = [NSArray arrayWithObject: ni]; // nav is the UINavigationBar
+    self.nav.items = @[ni]; // self.nav is the UINavigationBar
 }
 
 - (void) pushNext: (id) sender {
@@ -28,8 +27,18 @@
                                                              target:self action:@selector(pushNext:)];
         ni.rightBarButtonItem = b;
     }
-    [nav pushNavigationItem:ni animated:YES];
+    [self.nav pushNavigationItem:ni animated:YES];
 }
+
+/*
+ Also, in the running app, notice the subtle shadow at the bottom in iOS 6
+ This is present provided we do not clip to bounds
+ You can provide your own shadowImage if you are customizing the background image
+ */
+
+/*
+ Another new role of the nav bar in iOS 6 is that its color affects the status bar color on iPhone
+ */
 
 
 @end

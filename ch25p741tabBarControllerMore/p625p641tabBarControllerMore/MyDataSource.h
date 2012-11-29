@@ -2,9 +2,6 @@
 
 #import <Foundation/Foundation.h>
 
-
-@interface MyDataSource : NSObject <UITableViewDataSource> {
-
-}
+@interface MyDataSource : NSObject <UITableViewDataSource>
 @property (nonatomic, retain) NSObject <UITableViewDataSource> *originalDataSource;
 @end

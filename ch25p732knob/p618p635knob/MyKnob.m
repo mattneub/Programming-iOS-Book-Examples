@@ -4,9 +4,8 @@
 
 
 @implementation MyKnob {
-    CGFloat initialAngle;
+    CGFloat _initialAngle;
 }
-@synthesize angle, continuous;
 
 static CGFloat pToA (UITouch* touch, UIView* self) {
     CGPoint loc = [touch locationInView: self];
@@ -15,29 +14,29 @@ static CGFloat pToA (UITouch* touch, UIView* self) {
 } 
 
 - (BOOL) beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
-    self->initialAngle = pToA(touch, self);
+    self->_initialAngle = pToA(touch, self);
     return YES;
 }
 
 - (BOOL) continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     CGFloat ang = pToA(touch, self);
-    ang -= self->initialAngle;
-    CGFloat absoluteAngle = self->angle + ang;
+    ang -= self->_initialAngle;
+    CGFloat absoluteAngle = self.angle + ang;
     if (absoluteAngle < 0) {
         self.transform = CGAffineTransformIdentity;
-        self->angle = 0;
+        self->_angle = 0;
         [self sendActionsForControlEvents:UIControlEventValueChanged];
         return NO;
     } 
     if (absoluteAngle > 5) {
         self.transform = CGAffineTransformMakeRotation(5);
-        self->angle = 5;
+        self->_angle = 5;
         [self sendActionsForControlEvents:UIControlEventValueChanged];
         return NO;
     }
     self.transform = CGAffineTransformRotate(self.transform, ang);
-    self->angle = absoluteAngle;
-    if (self->continuous)
+    self->_angle = absoluteAngle;
+    if (self.continuous)
         [self sendActionsForControlEvents:UIControlEventValueChanged];
     return YES;
 }
@@ -57,7 +56,7 @@ static CGFloat pToA (UITouch* touch, UIView* self) {
     if (ang > 5)
         ang = 5;
     self.transform = CGAffineTransformMakeRotation(ang);
-    self->angle = ang;
+    self->_angle = ang;
 }
 
 @end

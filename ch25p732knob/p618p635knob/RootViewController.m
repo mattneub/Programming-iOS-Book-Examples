@@ -4,11 +4,10 @@
 #import "MyKnob.h"
 
 @interface RootViewController ()
-@property (nonatomic, retain) IBOutlet MyKnob *knob;
+@property (nonatomic, weak) IBOutlet MyKnob *knob;
 @end
 
 @implementation RootViewController
-@synthesize knob;
 
 - (IBAction)doKnob:(id)sender {
     NSLog(@"knob angle is %f", ((MyKnob*)sender).angle);

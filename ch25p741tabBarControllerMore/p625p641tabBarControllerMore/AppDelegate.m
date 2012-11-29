@@ -10,8 +10,6 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window, tabBarController, myDataSource;
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -20,23 +18,22 @@
     
     self.tabBarController = [UITabBarController new];
                         
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:
+    self.tabBarController.viewControllers = @[[UIViewController new],
                                              [UIViewController new],
                                              [UIViewController new],
                                              [UIViewController new],
                                              [UIViewController new],
-                                             [UIViewController new],
-                                             [UIViewController new],
-                                             nil];
-    NSArray* arr = [NSArray arrayWithObjects: @"First", @"Second", @"Third", @"Fourth", @"Fifth", @"Sixth", nil];
+                                             [UIViewController new]];
+    NSArray* arr = @[@"First", @"Second", @"Third", @"Fourth", @"Fifth", @"Sixth"];
     for (int i = 0; i < 6; i++)
-        [[[self.tabBarController.viewControllers objectAtIndex: i] tabBarItem] setTitle: [arr objectAtIndex:i]];
+        [[(self.tabBarController.viewControllers)[i] tabBarItem] setTitle: arr[i]];
     self.window.rootViewController = self.tabBarController;
     
     
     // comment out what follows to see what difference this customization makes
+//    /*
     UINavigationController* more = self.tabBarController.moreNavigationController;
-    UIViewController* list = [more.viewControllers objectAtIndex:0];
+    UIViewController* list = (more.viewControllers)[0];
     list.title = @"";
     UIBarButtonItem* b = [[UIBarButtonItem alloc] init];
     b.title = @"Back";
@@ -47,7 +44,7 @@
     self.myDataSource = mds; // retain policy
     self.myDataSource.originalDataSource = tv.dataSource;
     tv.dataSource = self.myDataSource;
-    
+//    */
     
     
     self.window.backgroundColor = [UIColor whiteColor];

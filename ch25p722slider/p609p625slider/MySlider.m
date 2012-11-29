@@ -11,7 +11,7 @@
     [self addGestureRecognizer:t];
     [self setThumbImage:[UIImage imageNamed:@"moneybag1.png"] forState:UIControlStateNormal];
     UIImage* coin = [UIImage imageNamed: @"coin2.png"];
-    UIImage* coinEnd = [coin resizableImageWithCapInsets:UIEdgeInsetsMake(0,7,0,7)];
+    UIImage* coinEnd = [coin resizableImageWithCapInsets:UIEdgeInsetsMake(0,7,0,7) resizingMode:UIImageResizingModeStretch];
     [self setMinimumTrackImage:coinEnd forState:UIControlStateNormal];
     [self setMaximumTrackImage:coinEnd forState:UIControlStateNormal];
 
