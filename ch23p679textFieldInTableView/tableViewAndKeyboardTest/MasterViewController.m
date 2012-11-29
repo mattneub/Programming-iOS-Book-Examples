@@ -31,6 +31,12 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    // logging reveals how this trick is performed:
+    // the UITableViewController has changed the contentInset and scrollIndicatorInsets
+    NSLog(@"%@", NSStringFromCGRect(self.tableView.frame));
+    NSLog(@"%@", NSStringFromUIEdgeInsets(self.tableView.contentInset));
+    NSLog(@"%@", NSStringFromUIEdgeInsets(self.tableView.scrollIndicatorInsets));
+    
     [textField endEditing:YES];
     return NO;
 }
