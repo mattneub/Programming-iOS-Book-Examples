@@ -2,6 +2,8 @@
 
 #import "Player.h"
 
+@interface Player () <AVAudioPlayerDelegate>
+@end
 
 @implementation Player
 @synthesize player, forever;

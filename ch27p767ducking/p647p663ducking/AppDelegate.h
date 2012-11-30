@@ -1,12 +1,11 @@
 
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
 
 
 @class ViewController;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, AVAudioSessionDelegate>
+@interface AppDelegate : UIResponder 
 
 @property (strong, nonatomic) UIWindow *window;
 

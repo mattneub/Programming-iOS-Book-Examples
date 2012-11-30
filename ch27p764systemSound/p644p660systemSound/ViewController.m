@@ -14,7 +14,7 @@ void SoundFinished (SystemSoundID snd, void* context) {
     NSURL* sndurl = [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"aif"];
     SystemSoundID snd;
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)sndurl, &snd);
-    AudioServicesAddSystemSoundCompletion(snd, NULL, NULL, &SoundFinished, NULL);
+    AudioServicesAddSystemSoundCompletion(snd, NULL, NULL, SoundFinished, NULL);
     AudioServicesPlaySystemSound(snd);
 }
 

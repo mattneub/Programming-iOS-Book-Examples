@@ -9,7 +9,6 @@
 @end
 
 @implementation ViewController
-@synthesize player;
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -51,32 +50,34 @@
     }
     else {
         // example works better if there is some background audio already playing
-        UInt32 oth;
-        UInt32 sz_oth = sizeof(oth);
-        AudioSessionGetProperty(kAudioSessionProperty_OtherAudioIsPlaying, &sz_oth, &oth);
+        // new in iOS 6, we now have (gasp) audio session properties!
+        BOOL oth = ((AVAudioSession*)[AVAudioSession sharedInstance]).otherAudioPlaying;
         if (!oth) {
             UIAlertView* v = [[UIAlertView alloc] initWithTitle:@"Pointless" message:@"You won't get the point of the example unless some other audio is already playing!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [v show];
             return;
         }
-
-        UInt32 duck = 1;
-        AudioSessionSetProperty(kAudioSessionProperty_OtherMixableAudioShouldDuck, 
-                                sizeof(duck), &duck);
-
-        
-        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient error: NULL];
+        // new call in iOS 6
+        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient
+                                         withOptions: AVAudioSessionCategoryOptionDuckOthers
+                                               error: NULL];
         self.player.forever = NO;
     }
     [self.player play:path];
 }
 
 - (void) unduck: (id) dummy {
-    UInt32 duck = 0;
-    AudioSessionSetProperty(kAudioSessionProperty_OtherMixableAudioShouldDuck, 
-                            sizeof(duck), &duck);
-    AudioSessionSetActive(false);
-    AudioSessionSetActive(true);
+//    UInt32 duck = 0;
+//    AudioSessionSetProperty(kAudioSessionProperty_OtherMixableAudioShouldDuck, 
+//                            sizeof(duck), &duck);
+//    AudioSessionSetActive(false);
+//    AudioSessionSetActive(true);
+    [[AVAudioSession sharedInstance] setActive:NO error:NULL];
+    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient
+                                     withOptions: 0
+                                           error: NULL];
+    [[AVAudioSession sharedInstance] setActive:YES error:NULL];
+
 }
 
 // =========== respond to remote controls
