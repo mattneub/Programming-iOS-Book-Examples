@@ -9,13 +9,14 @@
 @end
 
 @implementation ViewController
-@synthesize player, playerlayer, synchlayer;
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"readyForDisplay"]) {
         AVPlayerLayer* lay = (AVPlayerLayer*) object;
         if (lay.readyForDisplay) {
-            NSLog(@"on main thread? %i", dispatch_get_current_queue() == dispatch_get_main_queue());
+            // now deprecated, and rightly so; turns out this was always wrong on my part
+            // NSLog(@"on main thread? %i", dispatch_get_current_queue() == dispatch_get_main_queue());
+            NSLog(@"on main thread? %i", [NSThread isMainThread]);
             NSLog(@"ready for display, adding synchronized layer");
             [lay removeObserver:self forKeyPath:@"readyForDisplay"];
             AVPlayerItem* item = self.player.currentItem;

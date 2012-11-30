@@ -5,28 +5,39 @@
 #import <AVFoundation/AVFoundation.h>
 #import "MyMoviePlayerViewController.h"
 
-@interface ViewController()
+@interface ViewController() <UINavigationControllerDelegate, UIVideoEditorControllerDelegate>
+
 @property (nonatomic, strong) MPMoviePlayerController* mpc;
 @property (nonatomic, strong) UIPopoverController* currentPop;
 @end
 
-@implementation ViewController
-@synthesize mpc, currentPop;
+@implementation ViewController {
+    BOOL _didInitialLayout;
+}
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#define which 1 // try also 2
+#define which 2 // try also 2
 
 // just testing, pay no attention to this
 - (void) stateChanged: (id) n {
+    NSLog(@"%@", @"state changed");
     NSLog(@"%@", [[AVAudioSession sharedInstance] category]);
     if (self.mpc.playbackState == MPMoviePlaybackStatePlaying)
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     else
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategorySoloAmbient error:nil];
+}
+
+// launch into rotation on iOS 6
+-(void)viewDidLayoutSubviews {
+    if (!_didInitialLayout) {
+        _didInitialLayout = YES;
+        [self setUpMPC];
+    }
 }
 
 - (void)setUpMPC
@@ -52,25 +63,21 @@
         }
         case 2:
         {
-            [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                     selector:@selector(finishSetup:) 
-                                                         name:MPMovieNaturalSizeAvailableNotification 
+            // NB in iOS 6 MPMovieNaturalSizeAvailableNotification is not sent!
+            // we are using this new notification instead
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(finishSetup:)
+                                                         name:MPMoviePlayerReadyForDisplayDidChangeNotification
                                                        object:self.mpc];
             break;
         }
     }
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    static BOOL done = NO;
-    if (!done) {
-        done = YES;
-        [self setUpMPC];
-    }
-}
 
 - (void) finishSetup: (id) n {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMovieNaturalSizeAvailableNotification object:self.mpc];
+    NSLog(@"%@", @"here2");
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerReadyForDisplayDidChangeNotification object:self.mpc];
     CGRect f = self.mpc.view.bounds;
     f.size = self.mpc.naturalSize;
     // make width 300, keep ratio
@@ -114,7 +121,11 @@
     vc.delegate = self;
     vc.videoPath = path;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    // if (0) {
         // this is for demonstration only: the interface is *still* broken on iPad
+        // says Choose Video etc.
+        // but if you try to present the view controller full screen,
+        // you get a crash 'On iPad, UIVideoEditorController must be presented via UIPopoverController'
         UIPopoverController* pop = [[UIPopoverController alloc] initWithContentViewController:vc];
         self.currentPop = pop;
         [pop presentPopoverFromRect:[sender bounds] inView:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
@@ -126,12 +137,18 @@
 
 -(void)videoEditorControllerDidCancel:(UIVideoEditorController *)editor {
     [self dismissViewControllerAnimated:YES completion:^{
-        [self.mpc prepareToPlay];
+        NSLog(@"%@", @"editor cancelled");
+        // hmm, in iOS 6 this next line is insufficient; our player remains broken
+        // [self.mpc prepareToPlay];
+        // let's try postponing for one cycle
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.mpc prepareToPlay]; // yep, that fixed it
+        });
     }];
 }
 
 -(void)videoEditorController:(UIVideoEditorController *)editor didSaveEditedVideoToPath:(NSString *)editedVideoPath {
-    NSLog(@"%@", editedVideoPath);
+    NSLog(@"saving to %@", editedVideoPath);
     if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(editedVideoPath))
         UISaveVideoAtPathToSavedPhotosAlbum(editedVideoPath, self, 
                                             @selector(video:savedWithError:ci:), 
@@ -141,8 +158,18 @@
 }
 
 -(void)video:(NSString*)path savedWithError:(NSError*)err ci:(void*)ci {
+    NSLog(@"did save %@", err);
+    /*
+     Important in iOS 6 to check for error, because user can deny access
+     to Photos library
+     If that's the case, we will get error like this:
+     Error Domain=ALAssetsLibraryErrorDomain Code=-3310 "Data unavailable" UserInfo=0x1d8355d0 {NSLocalizedRecoverySuggestion=Launch the Photos application, NSUnderlyingError=0x1d83d470 "Data unavailable", NSLocalizedDescription=Data unavailable}
+
+     */
     [self dismissViewControllerAnimated:YES completion:^{
-        [self.mpc prepareToPlay];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.mpc prepareToPlay]; // iOS 6 change
+        });
     }];
 }
 
@@ -150,15 +177,13 @@
     NSString* s = [error localizedDescription];
     NSLog(@"error: %@", s);
     [self dismissViewControllerAnimated:YES completion:^{
-        [self.mpc prepareToPlay];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.mpc prepareToPlay]; // iOS 6 change
+        });
     }];
 }
 
 
--(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)io {
-    //return YES;
-    return io == UIInterfaceOrientationLandscapeRight;
-}
 
 
 
