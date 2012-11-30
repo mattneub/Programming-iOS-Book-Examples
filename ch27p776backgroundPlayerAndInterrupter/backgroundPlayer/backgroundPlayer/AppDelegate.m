@@ -5,14 +5,24 @@
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
+@interface AppDelegate () <UIApplicationDelegate>
+@end
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize viewController = _viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:AVAudioSessionInterruptionNotification
+     object:nil queue:nil
+     usingBlock:^(NSNotification *note) {
+         int which = [note.userInfo[AVAudioSessionInterruptionTypeKey] intValue];
+         NSLog(@"interruption %@:\n%@", which ? @"began" : @"ended", note.userInfo);
+     }];
+
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
@@ -60,7 +70,6 @@
 
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
-    [[AVAudioSession sharedInstance] setDelegate: self];
     NSLog(@"in %@", NSStringFromSelector(_cmd));
     
 }
@@ -71,13 +80,6 @@
     NSLog(@"in %@", NSStringFromSelector(_cmd));
 }
 
-- (void)beginInterruption {
-    NSLog(@"in %@", NSStringFromSelector(_cmd));
-}
-
--(void)endInterruptionWithFlags:(NSUInteger)flags {
-    NSLog(@"in %@", NSStringFromSelector(_cmd));
-}
 
 
 

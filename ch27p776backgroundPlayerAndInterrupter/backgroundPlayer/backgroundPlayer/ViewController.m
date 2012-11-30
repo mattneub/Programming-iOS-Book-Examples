@@ -3,13 +3,14 @@
 #import "ViewController.h"
 #import "Player.h"
 #import <MediaPlayer/MediaPlayer.h>
+#include <AVFoundation/AVFoundation.h>
+
 
 @interface ViewController()
 @property (nonatomic, strong) Player* player;
 @end
 
 @implementation ViewController
-@synthesize player;
 
 - (IBAction) doButton: (id) sender {
     // start playing from beginning

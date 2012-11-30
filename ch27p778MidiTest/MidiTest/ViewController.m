@@ -21,7 +21,7 @@
     
     Float64 graphSampleRate = 44100.0;
     
-    [mySession setPreferredHardwareSampleRate: graphSampleRate error: nil];
+    [mySession setPreferredSampleRate: graphSampleRate error: nil]; // changed, iOS 6 deprecation
     [mySession setActive: YES error:nil];
 
     

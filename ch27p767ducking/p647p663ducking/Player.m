@@ -42,10 +42,14 @@
     NSLog(@"audio player interrupted");
 }
 
--(void)audioPlayerEndInterruption:(AVAudioPlayer *)player withFlags:(NSUInteger)flags {
+// deprecated in iOS 6, replaced with what follows
+//-(void)audioPlayerEndInterruption:(AVAudioPlayer *)player withFlags:(NSUInteger)flags {
+//    NSLog(@"audio player flags: %i", flags);
+//}
+
+-(void)audioPlayerEndInterruption:(AVAudioPlayer *)player withOptions:(NSUInteger)flags {
     NSLog(@"audio player flags: %i", flags);
 }
- 
 
 
 @end

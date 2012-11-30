@@ -8,11 +8,26 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize viewController = _viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
+    
+    // iOS 6 uses notifications instead of delegate
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:AVAudioSessionInterruptionNotification
+     object:nil queue:nil
+     usingBlock:^(NSNotification *note) {
+         int which = [note.userInfo[AVAudioSessionInterruptionTypeKey] intValue];
+         NSLog(@"interruption %@:\n%@", which ? @"began" : @"ended", note.userInfo);
+         if (!which) {
+             // interruption ended, let's reactivate
+             [[AVAudioSession sharedInstance] setActive: YES error: nil];
+         }
+     }];
+
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
@@ -24,20 +39,10 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     NSLog(@"interrupter did become active");
 
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
     [[AVAudioSession sharedInstance] setActive: YES error: nil];
 
-    [[AVAudioSession sharedInstance] setDelegate: self];
 }
 
-- (void)beginInterruption {
-    NSLog(@"interrupter begin being interrupted");
-}
-
-- (void)endInterruption { // in case we have to handle audio session interruption
-    NSLog(@"interrupter ended being interrupted");
-    [[AVAudioSession sharedInstance] setActive: YES error: nil];
-}
 
 
 @end

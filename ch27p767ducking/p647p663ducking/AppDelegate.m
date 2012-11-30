@@ -33,9 +33,8 @@
      addObserverForName:AVAudioSessionInterruptionNotification
      object:nil queue:nil
      usingBlock:^(NSNotification *note) {
-         NSLog(@"interruption %@", note.userInfo);
          int which = [note.userInfo[AVAudioSessionInterruptionTypeKey] intValue];
-         NSLog(@"interruption %@", which ? @"began" : @"ended");
+         NSLog(@"interruption %@:\n%@", which ? @"began" : @"ended", note.userInfo);
      }];
 
     
