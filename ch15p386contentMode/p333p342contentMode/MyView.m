@@ -57,7 +57,7 @@ void drawStripes (void *info, CGContextRef con) {
     CGContextSetFillColorSpace (con, sp2);
     CGColorSpaceRelease (sp2);
     CGPatternCallbacks callback = {
-        0, &drawStripes, NULL
+        0, drawStripes, NULL
     };
     CGAffineTransform tr = CGAffineTransformIdentity;
     CGPatternRef patt = CGPatternCreate(NULL,
