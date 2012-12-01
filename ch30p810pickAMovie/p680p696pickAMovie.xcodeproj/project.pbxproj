@@ -261,6 +261,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p680p696pickAMovie/p680p696pickAMovie-Prefix.pch";
 				INFOPLIST_FILE = "p680p696pickAMovie/p680p696pickAMovie-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -272,6 +273,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p680p696pickAMovie/p680p696pickAMovie-Prefix.pch";
 				INFOPLIST_FILE = "p680p696pickAMovie/p680p696pickAMovie-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -296,6 +298,7 @@
 				A4F1305414D99D8100952762 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
