@@ -4,24 +4,22 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface ViewController ()
-@property (nonatomic, retain) NSTimer* timer;
-@property (nonatomic, retain) MPMediaItemCollection* q;
+@property (nonatomic, strong) NSTimer* timer;
+@property (nonatomic, strong) MPMediaItemCollection* q;
+@property (nonatomic, weak) IBOutlet UIProgressView *p;
+@property (nonatomic, weak) IBOutlet UILabel *label;
 @end
 
-@implementation ViewController {
-    IBOutlet __weak UIProgressView *p;
-    IBOutlet __weak UILabel *label;
-}
-
-@synthesize timer, q;
-
+@implementation ViewController
 
 - (IBAction)doAllAlbumTitles:(id)sender {
     MPMediaQuery* query = [MPMediaQuery albumsQuery];
     NSArray* result = [query collections];
     // prove we've performed the query, by logging the album titles
+    // unfortunately, on my machine, calling representativeItem causes nasty log messages
+    // so I've switched to using the first song of the album as representative
     for (MPMediaItemCollection* album in result)
-        NSLog(@"%@", [[album representativeItem] 
+        NSLog(@"%@", [album.items[0]
                       valueForProperty:MPMediaItemPropertyAlbumTitle]);
 }
 
@@ -34,11 +32,11 @@
     [query addFilterPredicate:hasSonata];
     NSArray* result = [query collections];
     for (MPMediaItemCollection* album in result) 
-        NSLog(@"%@", [[album representativeItem] 
+        NSLog(@"%@", [album.items[0]
                       valueForProperty:MPMediaItemPropertyAlbumTitle]);
     // titles of songs in first album
     result = [query collections];
-    MPMediaItemCollection* album = [result objectAtIndex: 0];
+    MPMediaItemCollection* album = result[0];
     for (MPMediaItem* song in album.items)
         NSLog(@"%@", [song valueForProperty:MPMediaItemPropertyTitle]);
     
@@ -80,13 +78,14 @@
 }
 
 - (void) changed: (NSNotification*) n {
+    // NSLog(@"%@", @"changed");
     MPMusicPlayerController* player = 
     [MPMusicPlayerController applicationMusicPlayer];
     if ([n object] == player) { // just playing safe
         NSString* title = 
         [player.nowPlayingItem valueForProperty:MPMediaItemPropertyTitle];
         NSUInteger ix = player.indexOfNowPlayingItem; // new in iOS 5
-        [self->label setText: [NSString stringWithFormat:@"%i of %i: %@",
+        [self.label setText: [NSString stringWithFormat:@"%i of %i: %@",
                                ix+1, [self.q count], title]];
     }
     
@@ -98,17 +97,16 @@
     MPMusicPlayerController* mp = [MPMusicPlayerController applicationMusicPlayer];
     if ([mp playbackState] == MPMusicPlaybackStatePlaying || 
         [mp playbackState] == MPMusicPlaybackStatePaused) {
-        p.hidden = NO;
+        self.p.hidden = NO;
         MPMediaItem* item = mp.nowPlayingItem;
         NSTimeInterval current = mp.currentPlaybackTime;
         NSTimeInterval total = 
         [[item valueForProperty:MPMediaItemPropertyPlaybackDuration] doubleValue];
-        p.progress = current / total;
+        self.p.progress = current / total;
     } else {
-        p.hidden = YES;
+        self.p.hidden = YES;
     }
 }
-
 
 
 @end

@@ -3,12 +3,11 @@
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface ViewController ()
+@interface ViewController () <MPMediaPickerControllerDelegate>
 @property (nonatomic, strong) UIPopoverController* currentPop;
 @end
 
 @implementation ViewController
-@synthesize currentPop;
 
 // run on device
 // this is also an example of a universal app
@@ -23,9 +22,10 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
         [self presentViewController:picker animated:YES completion:nil];
     else {
+        // does also work great as a presented controller; uncomment next two lines and see
 //        [self presentViewController:picker animated:YES completion:nil];
 //        return;
-        UIPopoverController* pop = 
+        UIPopoverController* pop =
         [[UIPopoverController alloc] initWithContentViewController:picker];
         self.currentPop = pop;
         [pop presentPopoverFromBarButtonItem:sender

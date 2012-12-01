@@ -6,17 +6,18 @@
 
 
 @interface ViewController ()
-@property (nonatomic, retain) NSTimer* timer;
-@property (nonatomic, retain) MPMediaItemCollection* q;
-@property (nonatomic, retain) AVQueuePlayer* qp;
-@property (nonatomic, retain) NSMutableArray* assets;
+@property (nonatomic, strong) NSTimer* timer;
+@property (nonatomic, strong) MPMediaItemCollection* q;
+@property (nonatomic, strong) AVQueuePlayer* qp;
+@property (nonatomic, strong) NSMutableArray* assets;
+@property (nonatomic, weak) IBOutlet UIProgressView *p;
+@property (nonatomic, weak) IBOutlet UILabel *label;
+
 @end
 
 @implementation ViewController {
-    IBOutlet __weak UIProgressView *p;
-    IBOutlet __weak UILabel *label;
-    int curnum;
-    int total;
+    int _curnum;
+    int _total;
 }
 
 @synthesize timer, q, qp, assets=_assets;
@@ -41,8 +42,8 @@
         [self.assets addObject:pi];
     }
     
-    self->curnum = 0;
-    self->total = [self.assets count];
+    self->_curnum = 0;
+    self->_total = [self.assets count];
     
     self.qp = [AVQueuePlayer queuePlayerWithItems:[self.assets objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,3)]]];
     [self.assets removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,3)]];
@@ -67,17 +68,17 @@
     arr = [AVMetadataItem metadataItemsFromArray:arr 
                                          withKey:AVMetadataCommonKeyTitle 
                                         keySpace:AVMetadataKeySpaceCommon];
-    AVMetadataItem* met = [arr objectAtIndex:0];
-    [met loadValuesAsynchronouslyForKeys:[NSArray arrayWithObject:@"value"] completionHandler:^{
+    AVMetadataItem* met = arr[0];
+    [met loadValuesAsynchronouslyForKeys:@[@"value"] completionHandler:^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            self->label.text = [NSString stringWithFormat:@"%i of %i: %@",
-                                ++self->curnum, self->total, [met valueForKey:@"value"]];
-            [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:[NSDictionary dictionaryWithObject:[met valueForKey:@"value"] forKey:MPMediaItemPropertyTitle]];
+            self.label.text = [NSString stringWithFormat:@"%i of %i: %@",
+                                ++self->_curnum, self->_total, [met valueForKey:@"value"]];
+            [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:@{MPMediaItemPropertyTitle: [met valueForKey:@"value"]}];
         });
     }];
     if (![self.assets count])
         return;
-    AVPlayerItem* newItem = [self.assets objectAtIndex:0];
+    AVPlayerItem* newItem = (self.assets)[0];
     [self.qp insertItem:newItem afterItem:[self.qp.items lastObject]];
     [self.assets removeObjectAtIndex:0];
     
@@ -86,13 +87,13 @@
 
 - (void) timerFired: (id) dummy {
     if (self.qp.rate < 0.01)
-        p.hidden = YES;
+        self.p.hidden = YES;
     else {
-        p.hidden = NO;
+        self.p.hidden = NO;
         AVPlayerItem* item = self.qp.currentItem;
         CMTime cur = self.qp.currentTime;
         CMTime dur = item.duration;
-        p.progress = CMTimeGetSeconds(cur)/CMTimeGetSeconds(dur);
+        self.p.progress = CMTimeGetSeconds(cur)/CMTimeGetSeconds(dur);
     }
 }
 

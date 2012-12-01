@@ -4,6 +4,6 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 
-@interface ViewController : UIViewController <MPMediaPickerControllerDelegate>
+@interface ViewController : UIViewController 
 
 @end
