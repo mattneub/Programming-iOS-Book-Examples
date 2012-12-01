@@ -12,6 +12,7 @@
 @property (nonatomic, strong) NSMutableArray* assets;
 @property (nonatomic, weak) IBOutlet UIProgressView *p;
 @property (nonatomic, weak) IBOutlet UILabel *label;
+@property (nonatomic, weak) IBOutlet MPVolumeView *vv;
 
 @end
 
@@ -20,7 +21,37 @@
     int _total;
 }
 
-@synthesize timer, q, qp, assets=_assets;
+- (void) viewDidLoad {
+    [super viewDidLoad];
+    // nice opportunity to add a volume view controller, MPVolumeView (added in nib)
+    // in iOS 6 this has a customizable appearance
+    // (alternatively, can show volume alert with MPVolumeSettingsAlertShow
+    // but it isn't customizable)
+    // larger, solid colored track parts; larger thumb based on original thumb
+    CGSize sz = CGSizeMake(20,20);
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(sz.height,sz.height), NO, 0);
+    [[UIColor blackColor] setFill];
+    [[UIBezierPath bezierPathWithOvalInRect:CGRectMake(0,0,sz.height,sz.height)] fill];
+    UIImage* im1 = UIGraphicsGetImageFromCurrentImageContext();
+    [[UIColor redColor] setFill];
+    [[UIBezierPath bezierPathWithOvalInRect:CGRectMake(0,0,sz.height,sz.height)] fill];
+    UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [self.vv setMinimumVolumeSliderImage:[im1 resizableImageWithCapInsets:UIEdgeInsetsMake(9,9,9,9) resizingMode:UIImageResizingModeStretch] forState:UIControlStateNormal];
+    [self.vv setMaximumVolumeSliderImage:[im2 resizableImageWithCapInsets:UIEdgeInsetsMake(9,9,9,9) resizingMode:UIImageResizingModeStretch] forState:UIControlStateNormal];
+    
+    UIImage* thumb = [self.vv volumeThumbImageForState:UIControlStateNormal];
+    sz = thumb.size;
+    sz.width +=10; sz.height += 10;
+    UIGraphicsBeginImageContextWithOptions(sz, NO, 0);
+    [thumb drawInRect:CGRectMake(0,0,sz.width,sz.height)];
+    UIImage* im3 = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [self.vv setVolumeThumbImage:im3 forState:UIControlStateNormal];
+
+}
 
 - (IBAction)doPlayAllShortSongs:(id)sender {
     MPMediaQuery* query = [MPMediaQuery songsQuery];
