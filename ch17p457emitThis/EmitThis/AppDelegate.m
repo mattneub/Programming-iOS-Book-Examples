@@ -109,6 +109,16 @@
             emit.emitterShape = kCAEmitterLayerLine;
             emit.emitterMode = kCAEmitterLayerOutline;
             cell.emissionLongitude = 3*M_PI/4;
+            
+            // new addition: might also be fun to animation position of source back and forth
+            CABasicAnimation* ba = [CABasicAnimation animationWithKeyPath:@"emitterPosition"];
+            ba.fromValue = [NSValue valueWithCGPoint:CGPointMake(30,100)];
+            ba.toValue = [NSValue valueWithCGPoint:CGPointMake(200,100)];
+            ba.duration = 6;
+            ba.autoreverses = YES;
+            ba.repeatCount = HUGE_VALF;
+            [emit addAnimation:ba forKey:nil];
+
         }
     }
     emit.emitterCells = @[cell];
