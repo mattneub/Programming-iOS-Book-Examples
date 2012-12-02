@@ -4,10 +4,13 @@
 #import "SecondViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@implementation ViewController {
-    __weak IBOutlet UIImageView *iv;
-    UIImagePickerController* p;
-}
+@interface ViewController () <UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@property (nonatomic, weak) IBOutlet UIImageView *iv;
+@property (nonatomic, strong) UIImagePickerController* p;
+
+@end
+
+@implementation ViewController
 
 - (IBAction)doTake:(id)sender {
     BOOL ok = [UIImagePickerController isSourceTypeAvailable:
@@ -24,7 +27,7 @@
     }
     UIImagePickerController* picker = [UIImagePickerController new];
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    picker.mediaTypes = [NSArray arrayWithObject:(NSString*)kUTTypeImage];
+    picker.mediaTypes = @[(NSString*)kUTTypeImage];
     picker.delegate = self;
     
     picker.showsCameraControls = NO;
@@ -37,7 +40,7 @@
     picker.cameraOverlayView = v;
     
     [self presentViewController:picker animated:YES completion:nil];
-    self->p = picker;
+    self.p = picker;
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
@@ -46,7 +49,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker 
 didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    UIImage* im = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage* im = info[UIImagePickerControllerOriginalImage];
     if (!im)
         return;
     SecondViewController* svc = [[SecondViewController alloc] initWithNibName:nil bundle:nil image:im];
@@ -54,7 +57,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 - (void) tap: (id) g {
-    [self->p takePicture];
+    [self.p takePicture];
 }
 
 - (void)navigationController:(UINavigationController *)nc 
@@ -76,7 +79,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                                           style:UIBarButtonItemStyleBordered 
                                                          target:self 
                                                          action:@selector(doCancel:)];
-    [nc.topViewController setToolbarItems:[NSArray arrayWithObject:b]];
+    [nc.topViewController setToolbarItems:@[b]];
     nc.topViewController.title = @"Retake";
 }
 
@@ -86,7 +89,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 - (void) doUse: (UIImage*) im {
     if (im)
-        self->iv.image = im;
+        self.iv.image = im;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

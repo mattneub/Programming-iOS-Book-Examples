@@ -3,10 +3,15 @@
 #import "SecondViewController.h"
 #import "ViewController.h"
 
-@implementation SecondViewController {
-    UIImage* image;
-    __weak IBOutlet UIImageView* iv;
-}
+@interface SecondViewController ()
+
+@property (nonatomic, strong) UIImage* image;
+@property (nonatomic, weak) IBOutlet UIImageView* iv;
+
+
+@end
+
+@implementation SecondViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil image:(UIImage*)im
 {
@@ -14,7 +19,7 @@
     if (self) {
         self.title = @"Decide";
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Use" style:UIBarButtonItemStyleBordered target:self action:@selector(doUse:)];
-        self->image = im;
+        self->_image = im;
     }
     return self;
 }
@@ -22,7 +27,7 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear: animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    self->iv.image = image;
+    self.iv.image = self.image;
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -32,7 +37,7 @@
 
 - (void) doUse: (id) sender {
     ViewController* vc = (id)self.presentingViewController;
-    [vc doUse: self->image];
+    [vc doUse: self.image];
 }
 
 

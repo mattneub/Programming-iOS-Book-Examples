@@ -3,6 +3,7 @@
 #import "ViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 
 @interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverControllerDelegate>
@@ -33,6 +34,14 @@
  */
 
 - (IBAction)doPick:(id)sender {
+    // new iOS 6 feature: we can learn what our authorization status is...
+    // ...but to do so, we must use ALAssetsLibrary
+    ALAuthorizationStatus stat = [ALAssetsLibrary authorizationStatus];
+    if (stat == ALAuthorizationStatusDenied) {
+        NSLog(@"%@", @"No access");
+        // return; // in this example, we can proceed anyway
+    }
+    
     UIImagePickerControllerSourceType type = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     BOOL ok = [UIImagePickerController isSourceTypeAvailable:type];
     if (!ok) {

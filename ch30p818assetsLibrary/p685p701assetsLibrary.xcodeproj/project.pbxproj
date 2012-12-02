@@ -243,6 +243,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p685p701assetsLibrary/p685p701assetsLibrary-Prefix.pch";
 				INFOPLIST_FILE = "p685p701assetsLibrary/p685p701assetsLibrary-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -254,6 +255,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p685p701assetsLibrary/p685p701assetsLibrary-Prefix.pch";
 				INFOPLIST_FILE = "p685p701assetsLibrary/p685p701assetsLibrary-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -278,6 +280,7 @@
 				A48FBC6D14DAEA1200473C98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

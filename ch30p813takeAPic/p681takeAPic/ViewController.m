@@ -3,10 +3,13 @@
 #import "ViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@implementation ViewController {
-    __weak IBOutlet UIImageView *iv;
-    UIImagePickerController* p;
-}
+@interface ViewController () <UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@property (nonatomic, weak) IBOutlet UIImageView *iv;
+@property (nonatomic, strong) UIImagePickerController* p;
+
+@end
+
+@implementation ViewController
 
 - (IBAction)doTake:(id)sender {
     BOOL ok = [UIImagePickerController isSourceTypeAvailable:
@@ -23,21 +26,23 @@
     }
     UIImagePickerController* picker = [UIImagePickerController new];
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    picker.mediaTypes = [NSArray arrayWithObject:(NSString*)kUTTypeImage];
+    picker.mediaTypes = @[(NSString*)kUTTypeImage];
     picker.delegate = self;
-//    picker.showsCameraControls = NO;
-//    CGRect f = self.view.window.bounds;
-//    CGFloat h = 53;
-//    UIView* v = [[UIView alloc] initWithFrame:f];
-//    UIView* v2 = [[UIView alloc] initWithFrame:CGRectMake(0,f.size.height-h,f.size.width,h)];
-//    v2.backgroundColor = [UIColor redColor];
-//    [v addSubview: v2];
-//    UITapGestureRecognizer* t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-//    t.numberOfTapsRequired = 2;
-//    [v addGestureRecognizer:t];
-//    picker.cameraOverlayView = v;
+    /*
+    picker.showsCameraControls = NO;
+    CGRect f = self.view.window.bounds;
+    CGFloat h = 53;
+    UIView* v = [[UIView alloc] initWithFrame:f];
+    UIView* v2 = [[UIView alloc] initWithFrame:CGRectMake(0,f.size.height-h,f.size.width,h)];
+    v2.backgroundColor = [UIColor redColor];
+    [v addSubview: v2];
+    UITapGestureRecognizer* t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    t.numberOfTapsRequired = 2;
+    [v addGestureRecognizer:t];
+    picker.cameraOverlayView = v;
+     */
     [self presentViewController:picker animated:YES completion:nil];
-    self->p = picker;
+    self.p = picker;
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
@@ -46,14 +51,14 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker 
 didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    UIImage* im = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage* im = info[UIImagePickerControllerOriginalImage];
     if (im)
-        self->iv.image = im;
+        self.iv.image = im;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) tap: (id) g {
-    [self->p takePicture];
+    [self.p takePicture];
 }
 
 

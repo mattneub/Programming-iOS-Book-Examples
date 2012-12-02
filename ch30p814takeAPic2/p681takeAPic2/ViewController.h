@@ -2,6 +2,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface ViewController : UIViewController
 - (void) doUse: (UIImage*) im;
 @end
