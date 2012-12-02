@@ -28,6 +28,7 @@
     // (alternatively, can show volume alert with MPVolumeSettingsAlertShow
     // but it isn't customizable)
     // larger, solid colored track parts; larger thumb based on original thumb
+    // NB MPVolumeView works only on device!
     CGSize sz = CGSizeMake(20,20);
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(sz.height,sz.height), NO, 0);
     [[UIColor blackColor] setFill];
@@ -82,7 +83,7 @@
                                                    
     [self.qp addObserver:self forKeyPath:@"currentItem" options:0 context:NULL];
     [self.qp play];
-    [self performSelector:@selector(changed)];
+    [self changed];
     
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     

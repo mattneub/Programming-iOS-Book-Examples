@@ -43,15 +43,15 @@
 
     NSLog(@"in %@", NSStringFromSelector(_cmd));
     NSLog(@"state while entering background: %i", [application applicationState]);
-    
-    // [self performSelector:@selector(notify) withObject:nil afterDelay:5];
+    return; // comment out to test immediate presentation of notification by background app
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        UILocalNotification* ln = [[UILocalNotification alloc] init];
+        ln.alertBody = @"Testing";
+        [[UIApplication sharedApplication] presentLocalNotificationNow:ln];
+    });
 }
 
-- (void) notify {
-    UILocalNotification* ln = [[UILocalNotification alloc] init];
-    ln.alertBody = @"Testing";
-    [[UIApplication sharedApplication] presentLocalNotificationNow:ln];
-}
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     NSLog(@"got local notification reading %@", notification.alertBody);

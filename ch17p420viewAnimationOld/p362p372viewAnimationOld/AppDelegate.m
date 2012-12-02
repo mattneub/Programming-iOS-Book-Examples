@@ -119,7 +119,10 @@
     _v.backgroundColor = [UIColor redColor];
     [self.window.rootViewController.view addSubview: _v];
     [self.window makeKeyAndVisible];
-    [self performSelector:@selector(animate) withObject:nil afterDelay:1.0];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self animate];
+    });
 
     return YES;
 }

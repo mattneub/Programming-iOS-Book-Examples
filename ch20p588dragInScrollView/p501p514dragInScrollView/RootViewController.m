@@ -57,7 +57,6 @@
      [NSLayoutConstraint constraintWithItem:iv attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:-5]];
     [self.view addConstraint:
      [NSLayoutConstraint constraintWithItem:iv attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:5]];
-    
 }
 
 - (void) dragging: (UIPanGestureRecognizer*) p {
@@ -86,7 +85,7 @@
                 sv.contentOffset = off;
                 c.x += 5;
                 v.center = c;
-                [self performSelector:@selector(dragging:) withObject:p afterDelay:0.2];
+                [self keepDragging:p];
             }
         }
         // to the left
@@ -97,7 +96,7 @@
                 sv.contentOffset = off;
                 c.x -= 5;
                 v.center = c;
-                [self performSelector:@selector(dragging:) withObject:p afterDelay:0.2];
+                [self keepDragging:p];
             }
         }
         // to the bottom
@@ -108,7 +107,7 @@
                 sv.contentOffset = off;
                 c.y += 5;
                 v.center = c;
-                [self performSelector:@selector(dragging:) withObject:p afterDelay:0.2];
+                [self keepDragging:p];
             }
         }
         // to the top
@@ -119,10 +118,18 @@
                 sv.contentOffset = off;
                 c.y -= 5;
                 v.center = c;
-                [self performSelector:@selector(dragging:) withObject:p afterDelay:0.2];
+                [self keepDragging:p];
             }
         }
     }
+}
+
+- (void) keepDragging: (UIPanGestureRecognizer*) p {
+    // the delay here, combined with the change in offset, determines the speed of autoscrolling
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self dragging: p];
+    });
 }
 
 

@@ -92,8 +92,10 @@
             lay.frame = CGRectInset(rect, -5, -5);
             lay.borderWidth = 2;
             [self.layer addSublayer: lay];
-            [lay performSelector:@selector(removeFromSuperlayer) 
-                      withObject:nil afterDelay:0.3];
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [lay removeFromSuperlayer];
+            });
             // fetch the drawn string tapped on
             CTLineRef theLine = (__bridge CTLineRef)(self.theLines)[i];
             CFRange range = CTLineGetStringRange(theLine);

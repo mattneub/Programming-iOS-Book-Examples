@@ -9,7 +9,10 @@
 {
     id notification = launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];
     if (notification) {
-        [self performSelector:@selector(doAlert:) withObject:notification afterDelay:0.5];
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self doAlert: notification];
+        });
     }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

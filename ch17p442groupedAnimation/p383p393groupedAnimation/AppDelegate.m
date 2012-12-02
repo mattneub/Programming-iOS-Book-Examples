@@ -68,8 +68,11 @@
     [self.window.rootViewController.view addSubview: self.view];
     self.view.layer.contents = (id)[[UIImage imageNamed:@"boat.gif"] CGImage];
     self.view.layer.contentsGravity = kCAGravityResizeAspectFill;
-    [self performSelector:@selector(animate) withObject:nil afterDelay:1.0];
-
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self animate];
+    });
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

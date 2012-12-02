@@ -12,11 +12,13 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    [self performSelector:@selector(animate) withObject:nil afterDelay:1.0];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self animate];
+    });
     return YES;
 }
 
-#define which 1 // try 2 and 3 for animated image, new feature in iOS 5
+#define which 2 // try 2 and 3 for animated image, new feature in iOS 5
 
 // also, for a related kind of image-based animation, see ch15p369filters example
 // iOS 6 now has CIFilter transitions, which create the frames of an animation for you

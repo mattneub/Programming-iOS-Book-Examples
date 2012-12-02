@@ -30,19 +30,18 @@
     NSLog(@"MyClass delegate (1): %@", thing.delegate); // 
     NSLog(@"Nav Controller delegate (1): %@", thing.delegate); //
     
-    [self performSelector:@selector(havoc) withObject:nil afterDelay:1.0];
+    // get off this transaction, give autorelease pool a chance to drain
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // cry havoc, and let slip the dogs of war
+        self->obj = nil; // releases obj - now what is nav.delegate pointing to?
+        
+        NSLog(@"MyClass delegate (2): %@", thing.delegate); // perfectly safe, __weak ref is nilified
+        
+        NSLog(@"Nav Controller delegate (2): %@", ((UINavigationController*)self.window.rootViewController).delegate); // if you're lucky it might print something!
+        // or more likely it will just crash, or maybe print and *then* crash
+    });
     
     return YES;
-}
-
-- (void) havoc {
-    // let slip the dogs of war
-    self->obj = nil; // releases obj - now what is nav.delegate pointing to?
-    
-    NSLog(@"MyClass delegate (2): %@", thing.delegate); // perfectly safe, __weak ref is nilified
-    
-    NSLog(@"Nav Controller delegate (2): %@", ((UINavigationController*)self.window.rootViewController).delegate); // if you're lucky it might print something!
-    // or more likely it will just crash, or maybe print and *then* crash
 }
 
 

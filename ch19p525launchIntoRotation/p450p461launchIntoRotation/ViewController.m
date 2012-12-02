@@ -31,8 +31,9 @@
         }
         case 2: // works, but probably not the right thing to do
         {
-            [self performSelector:@selector(finishViewDidLoad) 
-                       withObject:nil afterDelay:0.0];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self finishViewDidLoad];
+            });
             break;
         }
         case 3: // works, probably a right way
