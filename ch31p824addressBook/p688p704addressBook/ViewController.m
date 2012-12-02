@@ -2,16 +2,67 @@
 
 #import "ViewController.h"
 #import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
 
-@implementation ViewController
+@interface ViewController () <ABPeoplePickerNavigationControllerDelegate, ABNewPersonViewControllerDelegate>
+
+@end
+
+@implementation ViewController {
+    BOOL _authDone;
+}
 
 // run all examples on device
 
 // modify this example so you'll actually get some results! look in console for results
 
+/*
+ Well, *this* turned out to be a complete blowout; this code is useless, and
+ as far as I can tell, ABAddressBookRequestAccessWithCompletion is useless.
+ Here's why:
+ (1) if this is a brand new app, there is no need to call ABAddressBookRequestAccessWithCompletion
+ because authorization will be requested automatically anyway when we attempt access
+ (2) if the user has denied access, ABAddressBookRequestAccessWithCompletion is a no-op!
+ There is no way to make the dialog appear.
+ */
+
+/*
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (!_authDone) {
+        _authDone = YES;
+        ABAuthorizationStatus stat = ABAddressBookGetAuthorizationStatus();
+        NSLog(@"status is %ld", stat);
+        if (stat != kABAuthorizationStatusAuthorized && stat != kABAuthorizationStatusRestricted) {
+            NSLog(@"%@", @"about to create book");
+            ABAddressBookRef adbk = ABAddressBookCreateWithOptions(NULL, NULL);
+            NSLog(@"%@", @"about to request access");
+            ABAddressBookRequestAccessWithCompletion(adbk, nil);
+        }
+    }
+}
+ */
+
 - (IBAction)doButton:(id)sender {
-    ABAddressBookRef adbk = ABAddressBookCreate();
+    // new iOS 6 feature: we can be refused access to address book
+    // can check access beforehand
+    ABAuthorizationStatus stat = ABAddressBookGetAuthorizationStatus();
+    if (stat==kABAuthorizationStatusDenied) {
+        NSLog(@"%@", @"no access");
+        return;
+    }
+    
+    // iOS 6 change: use "withOptions", not the plain vanilla Create
+    // we can get a NULL result and an error if, say, we have no access
+    // (there are not, in fact, any options to pass at the moment)
+    CFErrorRef err = NULL;
+    ABAddressBookRef adbk = ABAddressBookCreateWithOptions(NULL, &err);
+    if (NULL == adbk) {
+        NSLog(@"error: %@", err);
+        return;
+    }
+    
     ABRecordRef moi = NULL;
     CFArrayRef matts = ABAddressBookCopyPeopleWithName(adbk, (CFStringRef)@"Matt");
     // might be multiple matts, but let's find the one with last name Neuburg
@@ -46,7 +97,18 @@
 // look in Contacts app afterwards to see that Snidely now exists
 
 - (IBAction)doButton2:(id)sender {
-    ABAddressBookRef adbk = ABAddressBookCreate();
+    ABAuthorizationStatus stat = ABAddressBookGetAuthorizationStatus();
+    if (stat==kABAuthorizationStatusDenied) {
+        NSLog(@"%@", @"no access");
+        return;
+    }
+    CFErrorRef err = NULL;
+    ABAddressBookRef adbk = ABAddressBookCreateWithOptions(NULL, &err);
+    if (NULL == adbk) {
+        NSLog(@"error: %@", err);
+        return;
+    }
+    
     ABRecordRef snidely = ABPersonCreate();
     ABRecordSetValue(snidely, kABPersonFirstNameProperty, @"Snidely", NULL);
     ABRecordSetValue(snidely, kABPersonLastNameProperty, @"Whiplash", NULL);
@@ -105,7 +167,19 @@
 
 -(void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person {
     if (NULL != person) {
-        ABAddressBookRef adbk = ABAddressBookCreate();
+        ABAuthorizationStatus stat = ABAddressBookGetAuthorizationStatus();
+        if (stat==kABAuthorizationStatusDenied) {
+            NSLog(@"%@", @"no access");
+            return;
+        }
+        CFErrorRef err = NULL;
+        ABAddressBookRef adbk = ABAddressBookCreateWithOptions(NULL, &err);
+        if (NULL == adbk) {
+            NSLog(@"error: %@", err);
+            return;
+        }
+        
+        // if we do not delete the person, the person will stay in the contacts database automatically!
         ABAddressBookRemoveRecord(adbk, person, NULL);
         ABAddressBookSave(adbk, NULL);
         CFStringRef name = ABRecordCopyCompositeName(person);
