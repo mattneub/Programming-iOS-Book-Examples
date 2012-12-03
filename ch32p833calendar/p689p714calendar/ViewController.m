@@ -2,8 +2,9 @@
 
 #import "ViewController.h"
 #import <EventKit/EventKit.h>
+#import <EventKitUI/EventKitUI.h>
 
-@interface ViewController ()
+@interface ViewController () <EKEventViewDelegate, EKEventEditViewDelegate, UINavigationControllerDelegate, EKCalendarChooserDelegate, UIActionSheetDelegate>
 @property (nonatomic, strong) UIPopoverController* currentPop;
 @property (atomic, copy) NSString* napid;
 @property (nonatomic, strong) EKEventStore* database;
@@ -11,27 +12,69 @@
 @end
 
 @implementation ViewController
-@synthesize currentPop, napid, database=_database, calsToDelete;
+
+/*
+ new in iOS 6, calendar database is the home of both event calendars and reminder calendars
+ hence all these examples specify events explicitly
+ */
+
+/*
+ also new in iOS 6: authorization
+ in these examples, we just give up if we know we've been denied authorization
+ */
+
+/*
+ WARNING: I don't know if this is a bug or not, but if your device
+uses iCloud, gmail, or similar calendar synching, you have no local calendar.
+ However, these examples use the local calendar
+ because I am reluctant to risk damaging your iCloud calendar.
+ So these example won't work on your device unless you turn off
+ every form of wireless calendar synching.
+ */
 
 // run on device
 
-- (void) viewDidLoad {
-    [super viewDidLoad];
-    if (!self.database)
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (!self.database) {
         self.database = [EKEventStore new];
+        // no access or authorization involved here
+        // however, we are going to need authorization to proceed
+        EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent];
+        if (status == EKAuthorizationStatusNotDetermined)
+            // completion block cannot be nil!
+            [self.database requestAccessToEntityType:EKEntityTypeEvent
+                                          completion:^(BOOL granted, NSError *error)
+             {
+                 NSLog(@"%i", granted);
+             }];
+    }
 }
 
 // look in Calendar app afterwards to find your new events
 
 - (IBAction)createCalendar:(id)sender {
-    EKSource* src;
+    EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent];
+    if (status == EKAuthorizationStatusDenied) {
+        NSLog(@"%@", @"no access");
+        return;
+    }
+    // obtain local source
+    EKSource* src = nil;
     for (src in self.database.sources)
         if (src.sourceType == EKSourceTypeLocal)
             break;
-    EKCalendar* cal = [EKCalendar calendarWithEventStore:self.database];
+    if (!src) {
+        NSLog(@"%@", @"failed to find local source");
+        return;
+    }
+    
+    // new iOS 6 way of asking for calendar
+    EKCalendar* cal = [EKCalendar calendarForEntityType:EKEntityTypeEvent
+                                             eventStore:self.database];
     cal.source = src;
     cal.title = @"CoolCal";
-    // ready to save the new calendar into the database
+    // ready to save the new calendar into the database!
     NSError* err;
     BOOL ok;
     ok = [self.database saveCalendar:cal commit:YES error:&err];
@@ -39,20 +82,25 @@
         NSLog(@"save calendar %@", err.localizedDescription);
         return;
     }
+    NSLog(@"%@", @"no errors");
 }
 
 - (IBAction)createSimpleEvent:(id) sender {
-    EKCalendar* cal;
-    for (cal in self.database.calendars) // (should be using identifier)
+    EKCalendar* cal = nil;
+    NSArray* calendars = [self.database calendarsForEntityType:EKEntityTypeEvent];
+    NSLog(@"%@", calendars);
+    for (cal in calendars) // (should be using identifier)
         if ([cal.title isEqualToString: @"CoolCal"])
             break;
-    if (!cal)
-        return; // failed to find our calendar
+    if (!cal) {
+        NSLog(@"%@", @"failed to find calendar");
+        return;
+    }
     
     NSCalendar* greg = 
         [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents* comp = [[NSDateComponents alloc] init];
-    comp.year = 2012;
+    comp.year = 2013;
     comp.month = 8;
     comp.day = 10;
     comp.hour = 15;
@@ -69,28 +117,33 @@
     NSError* err;
     BOOL ok = [self.database saveEvent:ev span:EKSpanThisEvent commit:YES error:&err];
     if (!ok) {
-        NSLog(@"save event %@", err.localizedDescription);
+        NSLog(@"save simple event %@", err.localizedDescription);
         return;
     }
+    NSLog(@"%@", @"no errors");
 }
 
 - (IBAction) createRecurringEvent:(id) sender {
-    EKCalendar* cal;
-    for (cal in self.database.calendars) // (should be using identifier)
+    EKCalendar* cal = nil;
+    NSArray* calendars = [self.database calendarsForEntityType:EKEntityTypeEvent];
+    NSLog(@"%@", calendars);
+    for (cal in calendars) // (should be using identifier)
         if ([cal.title isEqualToString: @"CoolCal"])
             break;
-    if (!cal)
-        return; // failed to find our calendar
-        
+    if (!cal) {
+        NSLog(@"%@", @"failed to find calendar");
+        return;
+    }
+    
     EKRecurrenceDayOfWeek* everySunday = [EKRecurrenceDayOfWeek dayOfWeek:1];
-    NSNumber* january = [NSNumber numberWithInt: 1];
+    NSNumber* january = @1;
     EKRecurrenceRule* recur = 
     [[EKRecurrenceRule alloc] 
      initRecurrenceWithFrequency:EKRecurrenceFrequencyYearly // every year
      interval:2 // no, every *two* years
-     daysOfTheWeek:[NSArray arrayWithObject: everySunday]
+     daysOfTheWeek:@[everySunday]
      daysOfTheMonth:nil
-     monthsOfTheYear:[NSArray arrayWithObject: january]
+     monthsOfTheYear:@[january]
      weeksOfTheYear:nil 
      daysOfTheYear:nil 
      setPositions: nil
@@ -116,21 +169,26 @@
     NSError* err;
     BOOL ok = [self.database saveEvent:ev span:EKSpanFutureEvents commit:YES error:&err];
     if (!ok) {
-        NSLog(@"save event %@", err.localizedDescription);
+        NSLog(@"save recurring event %@", err.localizedDescription);
         return;
     }
+    NSLog(@"%@", @"no errors");
 }
-    
+
 // modify example so you'll get some results
 // look in console for results
 
 - (IBAction)searchByRange:(id)sender {
-    EKCalendar* cal;
-    for (cal in self.database.calendars) // (should be using identifier)
+    EKCalendar* cal = nil;
+    NSArray* calendars = [self.database calendarsForEntityType:EKEntityTypeEvent];
+    NSLog(@"%@", calendars);
+    for (cal in calendars) // (should be using identifier)
         if ([cal.title isEqualToString: @"CoolCal"])
             break;
-    if (!cal)
-        return; // failed to find our calendar
+    if (!cal) {
+        NSLog(@"%@", @"failed to find calendar");
+        return;
+    }
 
     NSDate* d1 = [NSDate date];
     // how to do calendrical arithmetic: I got this wrong in the 1st edn.
@@ -141,7 +199,7 @@
     NSDate* d2 = [greg dateByAddingComponents:comp toDate:d1 options:0];
     NSPredicate* pred = 
         [self.database predicateForEventsWithStartDate:d1 endDate:d2 
-                                        calendars:[NSArray arrayWithObject:cal]];
+                                        calendars:@[cal]];
     NSMutableArray* marr = [NSMutableArray array];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [self.database enumerateEventsMatchingPredicate:pred usingBlock:
@@ -190,6 +248,9 @@
     }
 }
 
+// like the photo interface, if there is no access
+// this interface will appear with a lock icon and the user must cancel
+
 - (IBAction)editEvent:(id)sender {
     EKEventEditViewController* evc = [EKEventEditViewController new];
     evc.eventStore = self.database;
@@ -205,7 +266,8 @@
     }
 }
 
--(void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action {
+-(void)eventEditViewController:(EKEventEditViewController *)controller
+         didCompleteWithAction:(EKEventEditViewAction)action {
     NSLog(@"%@", controller.event);
     if (self.currentPop && self.currentPop.popoverVisible) {
         [self.currentPop dismissPopoverAnimated:YES];
@@ -214,8 +276,14 @@
         [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+// this one too
+
 - (IBAction)deleteCalendar:(id)sender {
-    EKCalendarChooser* choo = [[EKCalendarChooser alloc] initWithSelectionStyle:EKCalendarChooserSelectionStyleSingle displayStyle:EKCalendarChooserDisplayAllCalendars eventStore:self.database];
+    EKCalendarChooser* choo =
+    [[EKCalendarChooser alloc]
+     initWithSelectionStyle:EKCalendarChooserSelectionStyleSingle
+     displayStyle:EKCalendarChooserDisplayAllCalendars
+     eventStore:self.database];
     choo.showsDoneButton = YES;
     choo.showsCancelButton = YES;
     choo.delegate = self;
