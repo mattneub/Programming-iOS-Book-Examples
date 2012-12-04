@@ -18,37 +18,53 @@
 // modify this example so you'll actually get some results! look in console for results
 
 /*
- Well, *this* turned out to be a complete blowout; this code is useless, and
- as far as I can tell, ABAddressBookRequestAccessWithCompletion is useless.
+ As far as I can tell, ABAddressBookRequestAccessWithCompletion is useless.
  Here's why:
  (1) if this is a brand new app, there is no need to call ABAddressBookRequestAccessWithCompletion
  because authorization will be requested automatically anyway when we attempt access
  (2) if the user has denied access, ABAddressBookRequestAccessWithCompletion is a no-op!
  There is no way to make the dialog appear.
+ (3) if all we want is to know whether we have access, ABAddressBookGetAuthorizationStatus tells us
  */
 
 /*
+ To test after the first time, Settings > General > Reset > Reset Location & Privacy
+ Otherwise, the system somehow remembers the app even if you delete it
+ */
+
+/*
+ NOTE Look in the info.plist to see the privacy message that will appear...
+ ...as the second sentence of the alert
+ */
+
+/*
+ Final note: if the user switches away from your app and changes a previously denied status
+ to approve, your app is crashed in the background - deliberately - forcing it to start from scratch
+ next time the user launches it
+ Be prepared for this!
+ */
+
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if (!_authDone) {
         _authDone = YES;
-        ABAuthorizationStatus stat = ABAddressBookGetAuthorizationStatus();
-        NSLog(@"status is %ld", stat);
-        if (stat != kABAuthorizationStatusAuthorized && stat != kABAuthorizationStatusRestricted) {
-            NSLog(@"%@", @"about to create book");
+        ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
+        if (status == kABAuthorizationStatusNotDetermined) {
             ABAddressBookRef adbk = ABAddressBookCreateWithOptions(NULL, NULL);
-            NSLog(@"%@", @"about to request access");
-            ABAddressBookRequestAccessWithCompletion(adbk, nil);
+            ABAddressBookRequestAccessWithCompletion(adbk,
+                                                     ^(bool granted,
+                                                       CFErrorRef error) {
+                NSLog(@"%i", granted);
+            });
         }
     }
 }
- */
 
 - (IBAction)doButton:(id)sender {
     // new iOS 6 feature: we can be refused access to address book
     // can check access beforehand
     ABAuthorizationStatus stat = ABAddressBookGetAuthorizationStatus();
-    if (stat==kABAuthorizationStatusDenied) {
+    if (stat==kABAuthorizationStatusDenied || stat==kABAuthorizationStatusRestricted) {
         NSLog(@"%@", @"no access");
         return;
     }
@@ -98,7 +114,7 @@
 
 - (IBAction)doButton2:(id)sender {
     ABAuthorizationStatus stat = ABAddressBookGetAuthorizationStatus();
-    if (stat==kABAuthorizationStatusDenied) {
+    if (stat==kABAuthorizationStatusDenied || stat==kABAuthorizationStatusRestricted) {
         NSLog(@"%@", @"no access");
         return;
     }
@@ -168,7 +184,7 @@
 -(void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person {
     if (NULL != person) {
         ABAuthorizationStatus stat = ABAddressBookGetAuthorizationStatus();
-        if (stat==kABAuthorizationStatusDenied) {
+        if (stat==kABAuthorizationStatusDenied || stat==kABAuthorizationStatusRestricted) {
             NSLog(@"%@", @"no access");
             return;
         }

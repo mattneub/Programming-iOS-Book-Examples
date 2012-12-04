@@ -28,7 +28,7 @@
  Thus you can check at the top of each enumeration to make sure it's still safe to proceed.
 
  However, in reality I have not found a way to trigger this notification.
- My test here never logs.
+ My test here *never* logs.
  */
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -74,7 +74,11 @@
     };
     // and here we go with the actual enumeration!
     // new iOS 6 feature: we can check for access before we start
-    if ([ALAssetsLibrary authorizationStatus] == ALAuthorizationStatusDenied) {
+    // however, we don't really *have* to do this, since, if access is denied...
+    // ... we'll get an error in good order when we attempt access
+    // (as shown in doTest below)
+    ALAuthorizationStatus stat = [ALAssetsLibrary authorizationStatus];
+    if (stat == ALAuthorizationStatusDenied || stat == ALAuthorizationStatusRestricted) {
         // in real life, we could put up interface asking for access
         NSLog(@"%@", @"No access");
         return;
@@ -104,7 +108,7 @@
     ALAssetsLibrary* library = [[ALAssetsLibrary alloc] init];
     
     // we can add an album! and if we added it, we can write to it
-    // but we cannot delete it, and we cannot delete a photo from it or any other album
+    // but we cannot delete it, and we cannot delete a photo from it or any other album, weird
     /*
      Here's an interesting thing: when you run this code, enumerateWithGroups happens
      *before* the group is created! This is because group creation is asynchronous;

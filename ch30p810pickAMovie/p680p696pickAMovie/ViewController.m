@@ -20,7 +20,7 @@
 // ...can use the p659moviePlayer example to set that up (edit embedded video and save it)
 
 /*
- New iOS 6 feature: privacy settings on the photo album
+ New iOS 6 feature: privacy settings on the photo album are separated from location privacy settings
  The *first* time, the user is asked for access when the picker appears
  If the user has denied access, then the *next* time,
  the picker contains the lock icon and message.
@@ -31,13 +31,20 @@
 /*
  Unfortunately, if the user does what the message suggests (switch to Settings and give permission),
  the app crashes in the background! I don't see how to prevent this, and have reported it as a bug.
+ However, it is probably not a bug.
  */
+
+/*
+ New iOS 6 feature here: Info.plist contains a key you can use to appear in the alert message
+ */
+
+
 
 - (IBAction)doPick:(id)sender {
     // new iOS 6 feature: we can learn what our authorization status is...
     // ...but to do so, we must use ALAssetsLibrary
     ALAuthorizationStatus stat = [ALAssetsLibrary authorizationStatus];
-    if (stat == ALAuthorizationStatusDenied) {
+    if (stat == ALAuthorizationStatusDenied || stat == ALAuthorizationStatusRestricted) {
         NSLog(@"%@", @"No access");
         // return; // in this example, we can proceed anyway
     }

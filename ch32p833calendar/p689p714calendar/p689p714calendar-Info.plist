@@ -34,5 +34,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This app wants to create calendars and events, and to let you delete calendars.</string>
 </dict>
 </plist>

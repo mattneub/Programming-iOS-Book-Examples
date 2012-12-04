@@ -28,7 +28,7 @@
 uses iCloud, gmail, or similar calendar synching, you have no local calendar.
  However, these examples use the local calendar
  because I am reluctant to risk damaging your iCloud calendar.
- So these example won't work on your device unless you turn off
+ So these examples won't work on your device unless you turn off
  every form of wireless calendar synching.
  */
 
@@ -55,7 +55,7 @@ uses iCloud, gmail, or similar calendar synching, you have no local calendar.
 
 - (IBAction)createCalendar:(id)sender {
     EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent];
-    if (status == EKAuthorizationStatusDenied) {
+    if (status == EKAuthorizationStatusDenied || status == EKAuthorizationStatusRestricted) {
         NSLog(@"%@", @"no access");
         return;
     }
@@ -86,6 +86,12 @@ uses iCloud, gmail, or similar calendar synching, you have no local calendar.
 }
 
 - (IBAction)createSimpleEvent:(id) sender {
+    EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent];
+    if (status == EKAuthorizationStatusDenied || status == EKAuthorizationStatusRestricted) {
+        NSLog(@"%@", @"no access");
+        return;
+    }
+    
     EKCalendar* cal = nil;
     NSArray* calendars = [self.database calendarsForEntityType:EKEntityTypeEvent];
     NSLog(@"%@", calendars);
@@ -114,6 +120,11 @@ uses iCloud, gmail, or similar calendar synching, you have no local calendar.
     ev.calendar = cal;
     ev.startDate = d1;
     ev.endDate = d2;
+    
+    // we can also easily add an alarm; I failed to illustrate this in the previous editions of the book
+    EKAlarm* alarm = [EKAlarm alarmWithRelativeOffset:-3600]; // one hour before
+    [ev addAlarm:alarm];
+    
     NSError* err;
     BOOL ok = [self.database saveEvent:ev span:EKSpanThisEvent commit:YES error:&err];
     if (!ok) {
@@ -124,6 +135,12 @@ uses iCloud, gmail, or similar calendar synching, you have no local calendar.
 }
 
 - (IBAction) createRecurringEvent:(id) sender {
+    EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent];
+    if (status == EKAuthorizationStatusDenied || status == EKAuthorizationStatusRestricted) {
+        NSLog(@"%@", @"no access");
+        return;
+    }
+    
     EKCalendar* cal = nil;
     NSArray* calendars = [self.database calendarsForEntityType:EKEntityTypeEvent];
     NSLog(@"%@", calendars);
@@ -179,6 +196,12 @@ uses iCloud, gmail, or similar calendar synching, you have no local calendar.
 // look in console for results
 
 - (IBAction)searchByRange:(id)sender {
+    EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent];
+    if (status == EKAuthorizationStatusDenied || status == EKAuthorizationStatusRestricted) {
+        NSLog(@"%@", @"no access");
+        return;
+    }
+    
     EKCalendar* cal = nil;
     NSArray* calendars = [self.database calendarsForEntityType:EKEntityTypeEvent];
     NSLog(@"%@", calendars);
@@ -216,6 +239,12 @@ uses iCloud, gmail, or similar calendar synching, you have no local calendar.
 // universal, works on iPhone or iPad
 
 - (IBAction) showEventUI:(id)sender {
+    EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent];
+    if (status == EKAuthorizationStatusDenied || status == EKAuthorizationStatusRestricted) {
+        NSLog(@"%@", @"no access");
+        return;
+    }
+    
     EKEvent* ev = [self.database eventWithIdentifier:self.napid];
     if (!ev) {
         NSLog(@"failed to retrieve event");
@@ -283,6 +312,7 @@ uses iCloud, gmail, or similar calendar synching, you have no local calendar.
     [[EKCalendarChooser alloc]
      initWithSelectionStyle:EKCalendarChooserSelectionStyleSingle
      displayStyle:EKCalendarChooserDisplayAllCalendars
+     entityType:EKEntityTypeEvent // added in iOS 6
      eventStore:self.database];
     choo.showsDoneButton = YES;
     choo.showsCancelButton = YES;
