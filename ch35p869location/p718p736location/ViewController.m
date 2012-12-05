@@ -1,9 +1,10 @@
 
 
 #import "ViewController.h"
+#import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
-@interface ViewController ()
+@interface ViewController () <CLLocationManagerDelegate>
 @property (nonatomic, strong) IBOutlet MKMapView *map;
 @property (nonatomic, strong) CLLocationManager* locman;
 @property (nonatomic, strong) NSDate* startTime;
@@ -11,9 +12,10 @@
 @end
 
 @implementation ViewController
-@synthesize map, locman, startTime, gotloc;
 
 - (IBAction)doButton:(id)sender {
+    // authorization interface is different because older,
+    // and because it can be toggled as a whole, over and above this app
     BOOL ok = [CLLocationManager locationServicesEnabled];
     if (!ok) {
         NSLog(@"oh well");
@@ -28,7 +30,8 @@
     self.locman = lm;
     self.locman.delegate = self;
     self.locman.desiredAccuracy = kCLLocationAccuracyBest;
-    self.locman.purpose = @"This app would like to tell you where you are.";
+    // purpose property deprecated in iOS 6: use info.plist instead
+    // self.locman.purpose = @"This app would like to tell you where you are.";
     self.startTime = [NSDate date]; // now
     self.gotloc = NO;
     [self.locman startUpdatingLocation];
@@ -62,11 +65,11 @@
     CLLocationCoordinate2D coordinate = newLocation.coordinate;
     MKCoordinateRegion reg = 
         MKCoordinateRegionMakeWithDistance(coordinate, 600, 600);
-    self->map.region = reg;
+    self.map.region = reg;
     MKPointAnnotation* ann = [[MKPointAnnotation alloc] init];
     ann.coordinate = coordinate;
     ann.title = @"You are here";
-    [self->map addAnnotation:ann];
+    [self.map addAnnotation:ann];
 }
 
 

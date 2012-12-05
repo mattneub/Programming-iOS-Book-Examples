@@ -13,11 +13,10 @@
     CGFloat oldX, oldY, oldZ;
     NSInteger state;
 }
-@synthesize motman, timer, label;
 
 - (IBAction)doButton:(id)sender {
     self.motman = [CMMotionManager new];
-    if (!motman.accelerometerAvailable) {
+    if (!self.motman.accelerometerAvailable) {
         NSLog(@"oh well");
         return;
     }
@@ -41,7 +40,7 @@
 }
 
 - (void) pollAccel: (id) dummy {
-    CMAccelerometerData* dat = motman.accelerometerData;
+    CMAccelerometerData* dat = self.motman.accelerometerData;
     CMAcceleration acc = dat.acceleration;
     [self addAcceleration: acc];
     CGFloat x = self->oldX;

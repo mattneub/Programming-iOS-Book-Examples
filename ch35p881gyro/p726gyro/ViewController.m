@@ -10,11 +10,10 @@
 
 
 @implementation ViewController
-@synthesize motman, timer;
 
 - (IBAction)doButton:(id)sender {
     self.motman = [CMMotionManager new];
-    if (!motman.deviceMotionAvailable) {
+    if (!self.motman.deviceMotionAvailable) {
         NSLog(@"oh well");
         return;
     }
@@ -40,7 +39,7 @@
 - (void) pollAttitude: (id) dummy {
     CMDeviceMotion* mot = self.motman.deviceMotion;
     if (mot.magneticField.accuracy <= CMMagneticFieldCalibrationAccuracyLow)
-        return; // not ready yet
+        return; // not ready yet; "wave in figure 8" dialog might appear now
     CMAttitude* att = mot.attitude;
     CGFloat to_deg = 180.0 / M_PI;
     NSLog(@"%f %f %f", att.pitch * to_deg, att.roll * to_deg, att.yaw * to_deg);

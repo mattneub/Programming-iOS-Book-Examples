@@ -7,22 +7,20 @@
 @interface ViewController ()
 @property (nonatomic, strong) CMMotionManager* motman;
 @property (nonatomic, strong) NSTimer* timer;
+@property (nonatomic, weak) IBOutlet MyView* v;
+@property (nonatomic, strong) CMAttitude* ref;
+
 @end
 
 
-@implementation ViewController {
-    IBOutlet MyView* v;
-    CMAttitude* ref;
-}
-@synthesize motman, timer;
-
+@implementation ViewController 
 
 - (IBAction) doButton:(id)sender {
     
-    self->ref = nil; // start over if user presses button again
+    self.ref = nil; // start over if user presses button again
     
     self.motman = [CMMotionManager new];
-    if (!motman.deviceMotionAvailable) {
+    if (!self.motman.deviceMotionAvailable) {
         NSLog(@"oh well");
         return;
     }
@@ -40,12 +38,12 @@
 - (void) pollAttitude: (id) dummy {
     CMDeviceMotion* mot = self.motman.deviceMotion;
     CMAttitude* att = mot.attitude;
-    if (!self->ref) {
-        self->ref = att;
+    if (!self.ref) {
+        self.ref = att;
         NSLog(@"got ref %f %f %f", att.pitch, att.roll, att.yaw);
         return;
     }
-    [att multiplyByInverseOfAttitude:self->ref];
+    [att multiplyByInverseOfAttitude:self.ref];
     CMRotationMatrix r = att.rotationMatrix;
     
     CATransform3D t = CATransform3DIdentity;
@@ -60,7 +58,7 @@
     t.m33 = r.m33;
     
     
-    CALayer* lay = [[self->v.layer sublayers] objectAtIndex:0];
+    CALayer* lay = [self.v.layer sublayers][0];
     [CATransaction setDisableActions:YES];
     
     lay.transform = t;
