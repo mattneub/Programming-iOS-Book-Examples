@@ -2,14 +2,16 @@
 
 #import "MyOverlayView.h"
 
-@implementation MyOverlayView {
-    CGFloat angle;
-}
+@interface MyOverlayView ()
+@property CGFloat angle;
+@end
+
+@implementation MyOverlayView
 
 - (id) initWithOverlay:(id <MKOverlay>)overlay angle: (CGFloat) ang {
     self = [super initWithOverlay:overlay];
     if (self) {
-        self->angle = ang;
+        self->_angle = ang;
     }
     return self;
 }
@@ -37,7 +39,7 @@
     };
     // rotate the arrow around its center
     CGAffineTransform t1 = CGAffineTransformMakeTranslation(unit*2, unit*2);
-    CGAffineTransform t2 = CGAffineTransformRotate(t1, angle);
+    CGAffineTransform t2 = CGAffineTransformRotate(t1, self.angle);
     CGAffineTransform t3 = CGAffineTransformTranslate(t2, -unit*2, -unit*2);
     CGPathAddLines(p, &t3, points, 7);
     CGPathCloseSubpath(p);
