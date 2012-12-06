@@ -245,6 +245,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p780p798undoableDrag/p780p798undoableDrag-Prefix.pch";
 				INFOPLIST_FILE = "p780p798undoableDrag/p780p798undoableDrag-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -256,6 +257,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p780p798undoableDrag/p780p798undoableDrag-Prefix.pch";
 				INFOPLIST_FILE = "p780p798undoableDrag/p780p798undoableDrag-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -280,6 +282,7 @@
 				A4FACF7D14ED69CA00992210 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

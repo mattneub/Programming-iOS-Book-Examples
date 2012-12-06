@@ -6,7 +6,6 @@
 @end
 
 @implementation MyView
-@synthesize undoer;
 
 - (NSUndoManager*) undoManager {
     return self.undoer;
@@ -79,7 +78,7 @@
         UIMenuItem *mi2 = 
         [[UIMenuItem alloc] initWithTitle:[self.undoer redoMenuItemTitle] 
                                    action:@selector(redo:)];
-        [m setMenuItems:[NSArray arrayWithObjects: mi1, mi2, nil]];
+        [m setMenuItems:@[mi1, mi2]];
         [m setMenuVisible:YES animated:YES];
     }
 }
