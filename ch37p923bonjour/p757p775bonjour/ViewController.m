@@ -1,13 +1,12 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <NSNetServiceBrowserDelegate, NSNetServiceDelegate>
 @property (nonatomic, retain) NSNetServiceBrowser* nsb;
 @property (nonatomic, retain) NSMutableArray* services;
 @end
 
 @implementation ViewController 
-@synthesize nsb, services;
 
 // tap button, watch console when you turn on Sharing in iTunes
 

@@ -14,7 +14,6 @@
 		A45BDDD214EABA92001BAB2F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A45BDDD114EABA92001BAB2F /* main.m */; };
 		A45BDDD614EABA92001BAB2F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A45BDDD514EABA92001BAB2F /* AppDelegate.m */; };
 		A45BDDD914EABA92001BAB2F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A45BDDD814EABA92001BAB2F /* ViewController.m */; };
-		A45BDDDC14EABA92001BAB2F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A45BDDDA14EABA92001BAB2F /* ViewController.xib */; };
 		A45BDDE714EABADB001BAB2F /* MyImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A45BDDE514EABADA001BAB2F /* MyImageDownloader.m */; };
 		A45BDE1A14EAE50E001BAB2F /* MyDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A45BDE1914EAE50E001BAB2F /* MyDownloader.m */; };
 /* End PBXBuildFile section */
@@ -32,7 +31,6 @@
 		A45BDDD514EABA92001BAB2F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A45BDDD714EABA92001BAB2F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A45BDDD814EABA92001BAB2F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A45BDDDB14EABA92001BAB2F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		A45BDDE414EABADA001BAB2F /* MyImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImageDownloader.h; sourceTree = "<group>"; };
 		A45BDDE514EABADA001BAB2F /* MyImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImageDownloader.m; sourceTree = "<group>"; };
 		A45BDE1814EAE50E001BAB2F /* MyDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDownloader.h; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 				A45BDDD514EABA92001BAB2F /* AppDelegate.m */,
 				A45BDDD714EABA92001BAB2F /* ViewController.h */,
 				A45BDDD814EABA92001BAB2F /* ViewController.m */,
-				A45BDDDA14EABA92001BAB2F /* ViewController.xib */,
 				A45BDDE814EABAE0001BAB2F /* Downloader */,
 				A45BDDCC14EABA92001BAB2F /* Supporting Files */,
 			);
@@ -169,7 +166,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A45BDDD014EABA92001BAB2F /* InfoPlist.strings in Resources */,
-				A45BDDDC14EABA92001BAB2F /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,14 +193,6 @@
 				A45BDDCF14EABA92001BAB2F /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		A45BDDDA14EABA92001BAB2F /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A45BDDDB14EABA92001BAB2F /* en */,
-			);
-			name = ViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -261,6 +249,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p754p772downloader/p754p772downloader-Prefix.pch";
 				INFOPLIST_FILE = "p754p772downloader/p754p772downloader-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -272,6 +261,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p754p772downloader/p754p772downloader-Prefix.pch";
 				INFOPLIST_FILE = "p754p772downloader/p754p772downloader-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -296,6 +286,7 @@
 				A45BDDE114EABA92001BAB2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

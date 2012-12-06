@@ -9,5 +9,6 @@
 @property (nonatomic, strong, readonly) NSData* receivedData;
 
 - (id) initWithRequest: (NSURLRequest*) req;
+- (void) cancel;
 
 @end

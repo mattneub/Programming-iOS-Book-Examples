@@ -4,9 +4,6 @@
 #import "MyDownloaderPrivateProperties.h"
 
 @implementation MyDownloader
-@synthesize connection=_connection;
-@synthesize request=_request;
-@synthesize mutableReceivedData=_mutableReceivedData;
 
 - (NSData*) receivedData {
     return [self.mutableReceivedData copy];
@@ -31,11 +28,19 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"connectionFinished" object:self userInfo:[NSDictionary dictionaryWithObject:error forKey:@"error"]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"connectionFinished" object:self userInfo:@{@"error": error}];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"connectionFinished" object:self];
+}
+
+- (void) cancel { // added this
+    // cancel download in progress, replace connection, start over
+    [self.connection cancel];
+    self->_connection = [[NSURLConnection alloc] initWithRequest:self->_request
+                                                        delegate:self
+                                                startImmediately:NO];
 }
 
 

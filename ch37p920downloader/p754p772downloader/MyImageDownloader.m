@@ -8,11 +8,10 @@
 @end
 
 @implementation MyImageDownloader
-@synthesize image;
 
 - (UIImage*) image {
-    if (image)
-        return image;
+    if (self->_image)
+        return self->_image;
     [self.connection start];
     return nil;
 }
@@ -27,6 +26,11 @@
         self.image = im;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"imageDownloaded" object:self];
     }
+}
+
+- (void) cancel { // added this
+    if (!self.image) // no point cancelling if we did the download
+        [super cancel];
 }
 
 
