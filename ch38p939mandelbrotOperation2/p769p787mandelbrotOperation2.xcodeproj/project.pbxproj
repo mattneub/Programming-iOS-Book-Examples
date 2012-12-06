@@ -24,10 +24,10 @@
 		A4936B4F14EC21CD00CCE9E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A4936B5114EC21CD00CCE9E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A4936B5314EC21CD00CCE9E8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A4936B5714EC21CD00CCE9E8 /* p769p787mandelbrotOperation2-Info.plist */ = {isa = PBXFileReference; path = "p769p787mandelbrotOperation2-Info.plist"; sourceTree = "<group>"; };
+		A4936B5714EC21CD00CCE9E8 /* p769p787mandelbrotOperation2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p769p787mandelbrotOperation2-Info.plist"; sourceTree = "<group>"; };
 		A4936B5914EC21CD00CCE9E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A4936B5B14EC21CD00CCE9E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A4936B5D14EC21CD00CCE9E8 /* p769p787mandelbrotOperation2-Prefix.pch */ = {isa = PBXFileReference; path = "p769p787mandelbrotOperation2-Prefix.pch"; sourceTree = "<group>"; };
+		A4936B5D14EC21CD00CCE9E8 /* p769p787mandelbrotOperation2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p769p787mandelbrotOperation2-Prefix.pch"; sourceTree = "<group>"; };
 		A4936B5E14EC21CD00CCE9E8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A4936B5F14EC21CD00CCE9E8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A4936B6C14EC220800CCE9E8 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -243,6 +243,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p769p787mandelbrotOperation/p769p787mandelbrotOperation2-Prefix.pch";
 				INFOPLIST_FILE = "p769p787mandelbrotOperation/p769p787mandelbrotOperation2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p769p787mandelbrotOperation2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -254,6 +255,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p769p787mandelbrotOperation/p769p787mandelbrotOperation2-Prefix.pch";
 				INFOPLIST_FILE = "p769p787mandelbrotOperation/p769p787mandelbrotOperation2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = p769p787mandelbrotOperation2;
 				WRAPPER_EXTENSION = app;
 			};

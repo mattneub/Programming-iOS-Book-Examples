@@ -243,6 +243,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p769p787mandelbrotOperation/p769p787mandelbrotOperation-Prefix.pch";
 				INFOPLIST_FILE = "p769p787mandelbrotOperation/p769p787mandelbrotOperation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -254,6 +255,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p769p787mandelbrotOperation/p769p787mandelbrotOperation-Prefix.pch";
 				INFOPLIST_FILE = "p769p787mandelbrotOperation/p769p787mandelbrotOperation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -278,6 +280,7 @@
 				A4936B6B14EC21CD00CCE9E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

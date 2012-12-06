@@ -15,7 +15,7 @@
 
 
 @implementation MyMandelbrotView {
-	CGContextRef bitmapContext ;
+	CGContextRef _bitmapContext ;
 }
 @synthesize queue;
 
@@ -128,19 +128,19 @@ BOOL isInMandelbrotSet(float re, float im)
      name:@"MyMandelbrotOperationFinished" 
      object:op];
     CGContextRef context = [op bitmapContext];
-    if (self->bitmapContext)
-        CGContextRelease(self->bitmapContext);
-    self->bitmapContext = (CGContextRef) context;
-    CGContextRetain(self->bitmapContext);
+    if (self->_bitmapContext)
+        CGContextRelease(self->_bitmapContext);
+    self->_bitmapContext = (CGContextRef) context;
+    CGContextRetain(self->_bitmapContext);
     [self setNeedsDisplay];
 }
 
-// turn pixels of self->bitmapContext into CGImage, draw into ourselves
+// turn pixels of self->_bitmapContext into CGImage, draw into ourselves
 - (void) drawRect:(CGRect)rect {
     static BOOL which = NO;
-    if (self->bitmapContext) {
+    if (self->_bitmapContext) {
         CGContextRef context = UIGraphicsGetCurrentContext();
-        CGImageRef im = CGBitmapContextCreateImage(self->bitmapContext);
+        CGImageRef im = CGBitmapContextCreateImage(self->_bitmapContext);
         CGContextDrawImage(context, self.bounds, im);
         CGImageRelease(im);
         // this will make it more obvious when we are redrawn
@@ -150,8 +150,8 @@ BOOL isInMandelbrotSet(float re, float im)
 
 // final memory managment
 - (void) dealloc {
-    if (self->bitmapContext)
-        CGContextRelease(bitmapContext);
+    if (self->_bitmapContext)
+        CGContextRelease(self->_bitmapContext);
     [queue cancelAllOperations];
 }
 

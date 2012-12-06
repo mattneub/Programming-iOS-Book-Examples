@@ -14,7 +14,7 @@
 #define MANDELBROT_STEPS	200
 
 @implementation MyMandelbrotView {
-	CGContextRef bitmapContext ;
+	CGContextRef _bitmapContext ;
 }
 
 /*
@@ -36,18 +36,16 @@
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     [self makeBitmapContext: self.bounds.size];
     CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
-    NSDictionary* d = [[NSDictionary alloc] initWithObjectsAndKeys:
-                       [NSValue valueWithCGPoint:center], @"center", 
-                       [NSNumber numberWithInt: 1], @"zoom", 
-                       nil];
+    NSDictionary* d = @{@"center": [NSValue valueWithCGPoint:center], 
+                       @"zoom": @1};
     [self performSelectorInBackground:@selector(reallyDraw:) withObject:d];
 }
 
 // trampoline, background thread entry point
 - (void) reallyDraw: (NSDictionary*) d {
     @autoreleasepool {
-        [self drawAtCenter: [[d objectForKey:@"center"] CGPointValue] 
-                      zoom: [[d objectForKey:@"zoom"] intValue]];
+        [self drawAtCenter: [d[@"center"] CGPointValue] 
+                      zoom: [d[@"zoom"] intValue]];
         [self performSelectorOnMainThread:@selector(allDone) 
                                withObject:nil waitUntilDone:NO];
     }
@@ -65,18 +63,18 @@
 
 // create (and memory manage) instance variable
 - (void) makeBitmapContext:(CGSize)size {
-    if (self->bitmapContext)
-        CGContextRelease(self->bitmapContext);
+    if (self->_bitmapContext)
+        CGContextRelease(self->_bitmapContext);
 	int bitmapBytesPerRow = (size.width * 4);
 	bitmapBytesPerRow += (16 - bitmapBytesPerRow%16)%16;
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = NULL;
 	context = CGBitmapContextCreate(NULL, size.width, size.height, 8, bitmapBytesPerRow, colorSpace, kCGImageAlphaPremultipliedLast);
 	CGColorSpaceRelease(colorSpace);
-    self->bitmapContext = context;
+    self->_bitmapContext = context;
 }
 
-// draw pixels of self->bitmapContext
+// draw pixels of self->_bitmapContext
 
 BOOL isInMandelbrotSet(float re, float im)
 {
@@ -100,8 +98,8 @@ BOOL isInMandelbrotSet(float re, float im)
 
 - (void)drawAtCenter:(CGPoint)center zoom:(CGFloat)zoom
 {
-	CGContextSetAllowsAntialiasing(bitmapContext, FALSE);
-    CGContextSetRGBFillColor(bitmapContext, 0.0f, 0.0f, 0.0f, 1.0f);
+	CGContextSetAllowsAntialiasing(self->_bitmapContext, FALSE);
+    CGContextSetRGBFillColor(self->_bitmapContext, 0.0f, 0.0f, 0.0f, 1.0f);
 	
 	CGFloat re;
 	CGFloat im;
@@ -120,7 +118,7 @@ BOOL isInMandelbrotSet(float re, float im)
 			
 			if (isInMandelbrotSet(re, im))
 			{
-				CGContextFillRect (bitmapContext, CGRectMake(i, j, 1.0f, 1.0f));
+				CGContextFillRect (self->_bitmapContext, CGRectMake(i, j, 1.0f, 1.0f));
 			}
 		}
 	}
@@ -128,12 +126,12 @@ BOOL isInMandelbrotSet(float re, float im)
 
 // ==== end of material called on background thread
 
-// turn pixels of self->bitmapContext into CGImage, draw into ourselves
+// turn pixels of self->_bitmapContext into CGImage, draw into ourselves
 - (void) drawRect:(CGRect)rect {
     static BOOL which = NO;
-    if (self->bitmapContext) {
+    if (self->_bitmapContext) {
         CGContextRef context = UIGraphicsGetCurrentContext();
-        CGImageRef im = CGBitmapContextCreateImage(self->bitmapContext);
+        CGImageRef im = CGBitmapContextCreateImage(self->_bitmapContext);
         CGContextDrawImage(context, self.bounds, im);
         CGImageRelease(im);
         // this will make it more obvious when we are redrawn
@@ -143,8 +141,8 @@ BOOL isInMandelbrotSet(float re, float im)
 
 // final memory managment
 - (void) dealloc {
-    if (self->bitmapContext)
-        CGContextRelease(bitmapContext);
+    if (self->_bitmapContext)
+        CGContextRelease(self->_bitmapContext);
 }
 
 

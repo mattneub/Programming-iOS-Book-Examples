@@ -14,14 +14,14 @@
 #define MANDELBROT_STEPS	200
 
 @implementation MyMandelbrotView {
-    CGContextRef bitmapContext;
-    dispatch_queue_t draw_queue;
+    CGContextRef _bitmapContext;
+    dispatch_queue_t _draw_queue;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder: aDecoder];
     if (self) {
-        self->draw_queue = dispatch_queue_create("com.neuburg.mandeldraw", NULL);
+        self->_draw_queue = dispatch_queue_create("com.neuburg.mandeldraw", NULL);
     }
     return self;
 }
@@ -44,13 +44,13 @@
      }];
     if (bti == UIBackgroundTaskInvalid)
         return;
-    dispatch_async(draw_queue, ^{ 
+    dispatch_async(self->_draw_queue, ^{
         CGContextRef bitmap = [self makeBitmapContext: self.bounds.size];
         [self drawAtCenter: center zoom: 1 context:bitmap];
         dispatch_async(dispatch_get_main_queue(), ^{ 
-            if (self->bitmapContext)
-                CGContextRelease(self->bitmapContext);
-            self->bitmapContext = bitmap;
+            if (self->_bitmapContext)
+                CGContextRelease(self->_bitmapContext);
+            self->_bitmapContext = bitmap;
             [self setNeedsDisplay];
             [[UIApplication sharedApplication] endBackgroundTask:bti];
         });
@@ -70,7 +70,7 @@
     return context;
 }
 
-// draw pixels of self->bitmapContext
+// draw pixels of self->_bitmapContext
 
 BOOL isInMandelbrotSet(float re, float im)
 {
@@ -122,12 +122,12 @@ BOOL isInMandelbrotSet(float re, float im)
 
 // ==== end of material called on background thread
 
-// turn pixels of self->bitmapContext into CGImage, draw into ourselves
+// turn pixels of self->_bitmapContext into CGImage, draw into ourselves
 - (void) drawRect:(CGRect)rect {
     static BOOL which = NO;
-    if (self->bitmapContext) {
+    if (self->_bitmapContext) {
         CGContextRef context = UIGraphicsGetCurrentContext();
-        CGImageRef im = CGBitmapContextCreateImage(self->bitmapContext);
+        CGImageRef im = CGBitmapContextCreateImage(self->_bitmapContext);
         CGContextDrawImage(context, self.bounds, im);
         CGImageRelease(im);
         // this will make it more obvious when we are redrawn
@@ -138,10 +138,10 @@ BOOL isInMandelbrotSet(float re, float im)
 // final memory managment
 
 - (void) dealloc {
-    if (bitmapContext)
-        CGContextRelease(bitmapContext);
-    dispatch_release(draw_queue);
-    // NOTE TO SELF! on iOS 6, this is not necessary and I expect the compiler to flag it
+    if (_bitmapContext)
+        CGContextRelease(_bitmapContext);
+    // dispatch_release(draw_queue);
+    // on iOS 6, dispatch_release not necessary and the compiler will flag it
     // this is a big change, actually; see <os/object.h>
 }
 

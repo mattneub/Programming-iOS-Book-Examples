@@ -7,10 +7,9 @@
 @end
 
 @implementation ViewController
-@synthesize mv;
 
 - (IBAction) doButton: (id) sender {
-    [mv drawThatPuppy];
+    [self.mv drawThatPuppy];
 }
 
 

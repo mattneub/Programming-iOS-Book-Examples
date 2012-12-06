@@ -15,7 +15,7 @@
 
 
 @implementation MyMandelbrotView {
-	CGContextRef bitmapContext ;
+	CGContextRef _bitmapContext ;
 }
 @synthesize queue;
 
@@ -44,13 +44,13 @@
     [[MyMandelbrotOperation alloc] initWithSize:self.bounds.size 
                                          center:center zoom:1];
     __block __weak id observer = [[NSNotificationCenter defaultCenter] addObserverForName:@"MyMandelbrotOperationFinished" object:op queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-        NSLog(@"here %i", [NSThread currentThread] == [NSThread mainThread]);
+        NSLog(@"here %i", [NSThread isMainThread]);
         MyMandelbrotOperation* op2 = note.object;
         CGContextRef context = [op2 bitmapContext];
-        if (self->bitmapContext)
-            CGContextRelease(self->bitmapContext);
-        self->bitmapContext = (CGContextRef) context;
-        CGContextRetain(self->bitmapContext);
+        if (self->_bitmapContext)
+            CGContextRelease(self->_bitmapContext);
+        self->_bitmapContext = (CGContextRef) context;
+        CGContextRetain(self->_bitmapContext);
         [self setNeedsDisplay];
         NSLog(@"observer is %@", observer);
         NSLog(@"operations are the same %i", op2 == op);
@@ -129,12 +129,12 @@ BOOL isInMandelbrotSet(float re, float im)
 // ==== end of material moved to NSOperation
 
 
-// turn pixels of self->bitmapContext into CGImage, draw into ourselves
+// turn pixels of self->_bitmapContext into CGImage, draw into ourselves
 - (void) drawRect:(CGRect)rect {
     static BOOL which = NO;
-    if (self->bitmapContext) {
+    if (self->_bitmapContext) {
         CGContextRef context = UIGraphicsGetCurrentContext();
-        CGImageRef im = CGBitmapContextCreateImage(self->bitmapContext);
+        CGImageRef im = CGBitmapContextCreateImage(self->_bitmapContext);
         CGContextDrawImage(context, self.bounds, im);
         CGImageRelease(im);
         // this will make it more obvious when we are redrawn
@@ -144,8 +144,8 @@ BOOL isInMandelbrotSet(float re, float im)
 
 // final memory managment
 - (void) dealloc {
-    if (self->bitmapContext)
-        CGContextRelease(bitmapContext);
+    if (self->_bitmapContext)
+        CGContextRelease(self->_bitmapContext);
     [queue cancelAllOperations];
 }
 

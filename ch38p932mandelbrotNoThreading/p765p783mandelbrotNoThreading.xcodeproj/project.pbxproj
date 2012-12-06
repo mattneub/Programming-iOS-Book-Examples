@@ -245,6 +245,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p765p783mandelbrotNoThreading/p765p783mandelbrotNoThreading-Prefix.pch";
 				INFOPLIST_FILE = "p765p783mandelbrotNoThreading/p765p783mandelbrotNoThreading-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -256,6 +257,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p765p783mandelbrotNoThreading/p765p783mandelbrotNoThreading-Prefix.pch";
 				INFOPLIST_FILE = "p765p783mandelbrotNoThreading/p765p783mandelbrotNoThreading-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -280,6 +282,7 @@
 				A4936B0014EC195700CCE9E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
