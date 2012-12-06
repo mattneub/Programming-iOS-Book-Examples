@@ -4,14 +4,15 @@
 #import "Person.h"
 #import "PeopleDocument.h"
 
-@interface PeopleLister ()
+@interface PeopleLister () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+
 @property (nonatomic, strong) NSMutableArray* people;
 @property (nonatomic, strong) PeopleDocument* doc;
 @property (nonatomic, strong) NSURL* fileURL;
+
 @end
 
 @implementation PeopleLister
-@synthesize people, doc, fileURL=_fileURL;
 
 - (id) initWithNibName:(NSString *)nibNameOrNil 
                 bundle:(NSBundle *)nibBundleOrNil 
@@ -19,9 +20,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self->_fileURL = fileURL;
-        self.title = [fileURL.lastPathComponent stringByDeletingPathExtension];
-        UIBarButtonItem* b = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(doAdd:)];
-        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:b,nil];
     }
     return self;
 }
@@ -32,6 +30,11 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = [self.fileURL.lastPathComponent stringByDeletingPathExtension];
+    UIBarButtonItem* b = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(doAdd:)];
+    self.navigationItem.rightBarButtonItems = @[b];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"PersonCell" bundle:nil] forCellReuseIdentifier:@"Person"];
     
     NSFileManager* fm = [[NSFileManager alloc] init];
@@ -43,7 +46,7 @@
         }
     };
     if (![fm fileExistsAtPath:[self.fileURL path]])
-        [self.doc saveToURL:doc.fileURL 
+        [self.doc saveToURL:self.doc.fileURL
            forSaveOperation:UIDocumentSaveForCreating 
           completionHandler:listPeople];
     else
@@ -64,8 +67,8 @@
 - (void) doAdd: (id) sender {
     [self.tableView endEditing:YES];
     Person* newP = [Person new];
-    [people addObject: newP];
-    NSInteger ct = [people count];
+    [self.people addObject: newP];
+    NSInteger ct = [self.people count];
     NSIndexPath* ix = [NSIndexPath indexPathForRow:ct-1 inSection:0];
     [self.tableView reloadData];
     [self.tableView scrollToRowAtIndexPath:ix atScrollPosition:UITableViewScrollPositionBottom animated:YES];
@@ -83,7 +86,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [people count];
+    return [self.people count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView 
@@ -92,7 +95,7 @@
         [tableView dequeueReusableCellWithIdentifier:@"Person"];
     UITextField* first = (UITextField*)[cell viewWithTag:1];
     UITextField* last = (UITextField*)[cell viewWithTag:2];
-    Person* p = [people objectAtIndex:indexPath.row];
+    Person* p = (self.people)[indexPath.row];
     first.text = p.firstName;
     last.text = p.lastName;
     first.delegate = last.delegate = self;
@@ -107,7 +110,7 @@
     UITableViewCell* cell = (UITableViewCell*)v;
     NSIndexPath* ip = [self.tableView indexPathForCell:cell];
     NSInteger row = ip.row;
-    Person* p = [people objectAtIndex:row];
+    Person* p = (self.people)[row];
     [p setValue:textField.text forKey: ((textField.tag == 1) ? @"firstName" : @"lastName")];
 
     [self.doc updateChangeCount:UIDocumentChangeDone];
@@ -118,7 +121,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView endEditing:YES];
     [self.people removeObjectAtIndex:indexPath.row];
-    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
+    [tableView deleteRowsAtIndexPaths:@[indexPath] 
                      withRowAnimation:UITableViewRowAnimationAutomatic];
 
     [self.doc updateChangeCount:UIDocumentChangeDone];
@@ -127,7 +130,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void) forceSave: (id) n {
     NSLog(@"here");
     [self.tableView endEditing:YES];
-    [self.doc saveToURL:doc.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
+    [self.doc saveToURL:self.doc.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

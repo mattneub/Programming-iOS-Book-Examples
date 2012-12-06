@@ -4,7 +4,6 @@
 #import "MyPersonParser.h"
 
 @implementation MyPeopleParser
-@synthesize people;
 
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
@@ -17,7 +16,7 @@
 }
 
 - (void) finishedChild: (NSString*) s {
-    [people addObject: [(MyPersonParser*)self.child person]];
+    [self.people addObject: [(MyPersonParser*)self.child person]];
 }
 
 

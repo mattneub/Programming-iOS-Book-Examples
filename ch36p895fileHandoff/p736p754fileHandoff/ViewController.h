@@ -1,10 +1,7 @@
 
 
 #import <UIKit/UIKit.h>
-#import <QuickLook/QuickLook.h>
 
-@interface ViewController : UIViewController  <UIDocumentInteractionControllerDelegate, QLPreviewControllerDataSource>
-
+@interface ViewController : UIViewController  
 - (void) displayPDF: (NSURL*) url;
-
 @end

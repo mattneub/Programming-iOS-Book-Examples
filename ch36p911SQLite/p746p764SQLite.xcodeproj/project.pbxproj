@@ -15,10 +15,12 @@
 		A406622514E9E6F2006F0A77 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A406622414E9E6F2006F0A77 /* AppDelegate.m */; };
 		A406622814E9E6F2006F0A77 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A406622714E9E6F2006F0A77 /* ViewController.m */; };
 		A406622B14E9E6F2006F0A77 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A406622914E9E6F2006F0A77 /* ViewController.xib */; };
-		A406624114E9E7E9006F0A77 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = A406623C14E9E7E9006F0A77 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A406624214E9E7E9006F0A77 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A406623E14E9E7E9006F0A77 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A406624314E9E7E9006F0A77 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = A406624014E9E7E9006F0A77 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A406624514E9E869006F0A77 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A406624414E9E868006F0A77 /* libsqlite3.dylib */; };
+		C920CC341670F49100A35DD6 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = C920CC2B1670F49100A35DD6 /* FMDatabase.m */; };
+		C920CC351670F49100A35DD6 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C920CC2D1670F49100A35DD6 /* FMDatabaseAdditions.m */; };
+		C920CC361670F49100A35DD6 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = C920CC2F1670F49100A35DD6 /* FMDatabasePool.m */; };
+		C920CC371670F49100A35DD6 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C920CC311670F49100A35DD6 /* FMDatabaseQueue.m */; };
+		C920CC381670F49100A35DD6 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C920CC331670F49100A35DD6 /* FMResultSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,13 +37,17 @@
 		A406622614E9E6F2006F0A77 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A406622714E9E6F2006F0A77 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A406622A14E9E6F2006F0A77 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		A406623B14E9E7E9006F0A77 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
-		A406623C14E9E7E9006F0A77 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
-		A406623D14E9E7E9006F0A77 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		A406623E14E9E7E9006F0A77 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		A406623F14E9E7E9006F0A77 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
-		A406624014E9E7E9006F0A77 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		A406624414E9E868006F0A77 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		C920CC2A1670F49100A35DD6 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		C920CC2B1670F49100A35DD6 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		C920CC2C1670F49100A35DD6 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		C920CC2D1670F49100A35DD6 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		C920CC2E1670F49100A35DD6 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		C920CC2F1670F49100A35DD6 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		C920CC301670F49100A35DD6 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		C920CC311670F49100A35DD6 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		C920CC321670F49100A35DD6 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		C920CC331670F49100A35DD6 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,12 +121,16 @@
 		A406623A14E9E739006F0A77 /* fmdb */ = {
 			isa = PBXGroup;
 			children = (
-				A406623B14E9E7E9006F0A77 /* FMDatabase.h */,
-				A406623C14E9E7E9006F0A77 /* FMDatabase.m */,
-				A406623D14E9E7E9006F0A77 /* FMDatabaseAdditions.h */,
-				A406623E14E9E7E9006F0A77 /* FMDatabaseAdditions.m */,
-				A406623F14E9E7E9006F0A77 /* FMResultSet.h */,
-				A406624014E9E7E9006F0A77 /* FMResultSet.m */,
+				C920CC2A1670F49100A35DD6 /* FMDatabase.h */,
+				C920CC2B1670F49100A35DD6 /* FMDatabase.m */,
+				C920CC2C1670F49100A35DD6 /* FMDatabaseAdditions.h */,
+				C920CC2D1670F49100A35DD6 /* FMDatabaseAdditions.m */,
+				C920CC2E1670F49100A35DD6 /* FMDatabasePool.h */,
+				C920CC2F1670F49100A35DD6 /* FMDatabasePool.m */,
+				C920CC301670F49100A35DD6 /* FMDatabaseQueue.h */,
+				C920CC311670F49100A35DD6 /* FMDatabaseQueue.m */,
+				C920CC321670F49100A35DD6 /* FMResultSet.h */,
+				C920CC331670F49100A35DD6 /* FMResultSet.m */,
 			);
 			name = fmdb;
 			sourceTree = "<group>";
@@ -190,9 +200,11 @@
 				A406622114E9E6F2006F0A77 /* main.m in Sources */,
 				A406622514E9E6F2006F0A77 /* AppDelegate.m in Sources */,
 				A406622814E9E6F2006F0A77 /* ViewController.m in Sources */,
-				A406624114E9E7E9006F0A77 /* FMDatabase.m in Sources */,
-				A406624214E9E7E9006F0A77 /* FMDatabaseAdditions.m in Sources */,
-				A406624314E9E7E9006F0A77 /* FMResultSet.m in Sources */,
+				C920CC341670F49100A35DD6 /* FMDatabase.m in Sources */,
+				C920CC351670F49100A35DD6 /* FMDatabaseAdditions.m in Sources */,
+				C920CC361670F49100A35DD6 /* FMDatabasePool.m in Sources */,
+				C920CC371670F49100A35DD6 /* FMDatabaseQueue.m in Sources */,
+				C920CC381670F49100A35DD6 /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +281,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p746p764SQLite/p746p764SQLite-Prefix.pch";
 				INFOPLIST_FILE = "p746p764SQLite/p746p764SQLite-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -280,6 +293,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p746p764SQLite/p746p764SQLite-Prefix.pch";
 				INFOPLIST_FILE = "p746p764SQLite/p746p764SQLite-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -304,6 +318,7 @@
 				A406623014E9E6F2006F0A77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

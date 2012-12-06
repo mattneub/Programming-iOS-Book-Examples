@@ -8,7 +8,6 @@
 @end
 
 @implementation ViewController
-@synthesize iv;
 
 - (IBAction)doButton:(id)sender {
     NSURL* url = [[NSBundle mainBundle] URLForResource:@"colson" withExtension:@"jpg"];
@@ -25,12 +24,10 @@
     CGFloat scale = [UIScreen mainScreen].scale;
     CGFloat w = (self.iv.bounds.size.width - 10)*scale;
     NSDictionary* d = 
-    [NSDictionary dictionaryWithObjectsAndKeys:
-     (id)kCFBooleanTrue, kCGImageSourceShouldAllowFloat,
-     (id)kCFBooleanTrue, kCGImageSourceCreateThumbnailWithTransform,
-     (id)kCFBooleanTrue, kCGImageSourceCreateThumbnailFromImageAlways,
-     [NSNumber numberWithInt:(int)w], kCGImageSourceThumbnailMaxPixelSize,
-     nil];
+    @{(id)kCGImageSourceShouldAllowFloat: (id)kCFBooleanTrue,
+     (id)kCGImageSourceCreateThumbnailWithTransform: (id)kCFBooleanTrue,
+     (id)kCGImageSourceCreateThumbnailFromImageAlways: (id)kCFBooleanTrue,
+     (id)kCGImageSourceThumbnailMaxPixelSize: @((int)w)};
     CGImageRef imref = CGImageSourceCreateThumbnailAtIndex(src, 0, (__bridge CFDictionaryRef)d);
     UIImage* im = 
     [UIImage imageWithCGImage:imref scale:scale orientation:UIImageOrientationUp];

@@ -4,7 +4,6 @@
 #import "Person.h"
 
 @implementation MyPersonParser
-@synthesize person;
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
     [self makeChild:[MyXMLParserDelegate class] elementName:elementName parser:parser];

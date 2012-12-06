@@ -1,8 +1,10 @@
 
 
 #import "ViewController.h"
+#import <QuickLook/QuickLook.h>
 
-@interface ViewController ()
+@interface ViewController () <UIDocumentInteractionControllerDelegate, QLPreviewControllerDataSource>
+
 @property (nonatomic, weak) IBOutlet UIWebView *wv;
 @property (nonatomic, weak) IBOutlet UIButton *b;
 @property (nonatomic, weak) IBOutlet UIButton *b2;
@@ -12,12 +14,11 @@
 @end
 
 @implementation ViewController
-@synthesize wv, b, b2, pdf, pdfs, dic;
 
 - (void)dealloc
 {
-    [wv stopLoading];
-    [wv setDelegate: nil];
+    [self->_wv stopLoading];
+    [self->_wv setDelegate: nil];
 }
 
 // run on device
@@ -30,13 +31,13 @@
     self.dic = [UIDocumentInteractionController interactionControllerWithURL:url];
     UIImage* icon = [[self.dic icons] objectAtIndex:0];
     [self.b setImage:icon forState:UIControlStateNormal];
-    b.enabled = YES;
+    self.b.enabled = YES;
     
     NSURLRequest* req = [NSURLRequest requestWithURL:url];
     [self.wv loadRequest:req];
 }
 
-// then tap the Hand Off button to try previewing...
+// then tap the Preview button to try previewing...
 // and perhaps handing the currently showing PDF to another application
 
 - (IBAction)doButton:(id)sender {

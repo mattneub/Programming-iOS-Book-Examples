@@ -2,7 +2,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PeopleLister : UITableViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface PeopleLister : UITableViewController
 
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil fileURL: (NSURL*) fileURL;
 

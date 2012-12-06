@@ -9,6 +9,8 @@ Changes include:
 
 * Use autosynthesis of properties.
 
+* Move protocol adoption declarations to implementation file where possible.
+
 * Use constraints (instead of frame) to position and size subviews, whenever this is relational (and doesn't get in the way of the example).
 
 * Illustrate some newly available CIFilters.
@@ -32,6 +34,8 @@ New examples include:
 * Show new storyboard features: container controller, Exit (unwind).
 
 * Show collection views.
+
+* Show basic Core Data usage (ch 36).
 
 * Other new iOS 6 features as they arise.
 

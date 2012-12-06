@@ -4,7 +4,6 @@
 
 
 @implementation MyXMLParserDelegate
-@synthesize text, parent, child, name;
 
 - (void) start: (NSString*) el parent: (id) p {
     self.name = el;
@@ -27,8 +26,8 @@
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-    if (parent) {
-        [parent finishedChild: [self.text copy]];
+    if (self.parent) {
+        [self.parent finishedChild: [self.text copy]];
         parser.delegate = self.parent;
     }
 }

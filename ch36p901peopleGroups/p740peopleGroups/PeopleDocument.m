@@ -2,12 +2,11 @@
 #import "PeopleDocument.h"
 
 @implementation PeopleDocument
-@synthesize people;
 
 -(id)initWithFileURL:(NSURL *)url {
     self = [super initWithFileURL:url];
     if (self) {
-        self->people = [NSMutableArray array];
+        self->_people = [NSMutableArray array];
     }
     return self;
 }

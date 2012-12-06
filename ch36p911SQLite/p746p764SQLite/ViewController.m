@@ -23,9 +23,13 @@
     [db executeUpdate:@"create table people (lastname text, firstname text)"];
     
     [db beginTransaction];
-    [db executeUpdate:@"insert into people (firstname, lastname) values ('Matt', 'Neuburg')"];
-    [db executeUpdate:@"insert into people (firstname, lastname) values ('Snidely', 'Whiplash')"];
-    [db executeUpdate:@"insert into people (firstname, lastname) values ('Dudley', 'Doright')"];
+    // note: right way to supply literals
+    [db executeUpdate:@"insert into people (firstname, lastname) values (?,?)",
+     @"Matt", @"Neuburg"];
+    [db executeUpdate:@"insert into people (firstname, lastname) values (?,?)",
+     @"Snidely", @"Whiplash"];
+    [db executeUpdate:@"insert into people (firstname, lastname) values (?,?)",
+     @"Dudley", @"Doright"];
     [db commit];
     
     NSLog(@"I think I created it");
@@ -44,7 +48,8 @@
     
     FMResultSet *rs = [db executeQuery:@"select * from people"];
     while ([rs next]) {
-        NSLog(@"%@ %@", [rs stringForColumn:@"firstname"], [rs stringForColumn:@"lastname"]);
+        // note: new keyed subscripting available
+        NSLog(@"%@ %@", rs[@"firstname"], rs[@"lastname"]);
     }
     
     [db close];
