@@ -22,6 +22,7 @@
 		C9C4D1AA167008750012E4E9 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C4D1A7167008750012E4E9 /* PersonCell.xib */; };
 		C9C4D1AF167008DF0012E4E9 /* PeopleLister.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C4D1AD167008DF0012E4E9 /* PeopleLister.m */; };
 		C9C4D1B0167008DF0012E4E9 /* PeopleLister.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C4D1AE167008DF0012E4E9 /* PeopleLister.xib */; };
+		C9CFB13D16719AC600689C7F /* NSManagedObject+GroupAndPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CFB13C16719AC600689C7F /* NSManagedObject+GroupAndPerson.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,8 @@
 		C9C4D1AC167008DF0012E4E9 /* PeopleLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleLister.h; sourceTree = "<group>"; };
 		C9C4D1AD167008DF0012E4E9 /* PeopleLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleLister.m; sourceTree = "<group>"; };
 		C9C4D1AE167008DF0012E4E9 /* PeopleLister.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleLister.xib; sourceTree = "<group>"; };
+		C9CFB13B16719AC600689C7F /* NSManagedObject+GroupAndPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+GroupAndPerson.h"; sourceTree = "<group>"; };
+		C9CFB13C16719AC600689C7F /* NSManagedObject+GroupAndPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+GroupAndPerson.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,8 @@
 				C9C4D1AC167008DF0012E4E9 /* PeopleLister.h */,
 				C9C4D1AD167008DF0012E4E9 /* PeopleLister.m */,
 				C9C4D1AE167008DF0012E4E9 /* PeopleLister.xib */,
+				C9CFB13B16719AC600689C7F /* NSManagedObject+GroupAndPerson.h */,
+				C9CFB13C16719AC600689C7F /* NSManagedObject+GroupAndPerson.m */,
 				C9C4D14E166FF1790012E4E9 /* Supporting Files */,
 			);
 			path = ch36p901peopleGroups2;
@@ -194,6 +199,7 @@
 				C9C4D161166FF1790012E4E9 /* ch36p901peopleGroups2.xcdatamodeld in Sources */,
 				C9C4D169166FF5D20012E4E9 /* DocumentLister.m in Sources */,
 				C9C4D1AF167008DF0012E4E9 /* PeopleLister.m in Sources */,
+				C9CFB13D16719AC600689C7F /* NSManagedObject+GroupAndPerson.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +308,7 @@
 				C9C4D166166FF1790012E4E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -1,6 +1,7 @@
 
 
 #import "PeopleLister.h"
+#import "NSManagedObject+GroupAndPerson.h"
 
 @interface PeopleLister () <NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
@@ -29,7 +30,7 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     
-    self.title = [self.groupObject valueForKey:@"name"];
+    self.title = self.groupObject.name;
     UIBarButtonItem* b = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(doAdd:)];
     self.navigationItem.rightBarButtonItems = @[b];
     
@@ -58,7 +59,7 @@
      initWithFetchRequest:req
      managedObjectContext:self.groupObject.managedObjectContext
      sectionNameKeyPath:nil
-     cacheName:[self.groupObject valueForKey:@"uuid"]]; // prevent cache name conflicts
+     cacheName:self.groupObject.uuid]; // prevent cache name conflicts
     afrc.delegate = self;
     self.frc = afrc;
     
@@ -91,8 +92,8 @@
     NSManagedObject *object = [self.frc objectAtIndexPath:indexPath];
     UITextField* first = (UITextField*)[cell viewWithTag:1];
     UITextField* last = (UITextField*)[cell viewWithTag:2];
-    first.text = [object valueForKey:@"firstName"];
-    last.text = [object valueForKey:@"lastName"];
+    first.text = object.firstName;
+    last.text = object.lastName;
     first.delegate = last.delegate = self;
     return cell;
 }
@@ -103,10 +104,10 @@
     NSEntityDescription *entity = [[self.frc fetchRequest] entity];
     NSManagedObject *mo =
     [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-    [mo setValue:self.groupObject forKey:@"group"];
-    [mo setValue:@"" forKey:@"lastName"];
-    [mo setValue:@"" forKey:@"firstName"];
-    [mo setValue:[NSDate date] forKey:@"timestamp"];
+    mo.group = self.groupObject;
+    mo.lastName = @"";
+    mo.firstName = @"";
+    mo.timestamp = [NSDate date];
     
     // Save the context.
     NSError *error = nil;

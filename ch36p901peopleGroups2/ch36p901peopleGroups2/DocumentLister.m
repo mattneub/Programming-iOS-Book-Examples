@@ -3,6 +3,7 @@
 #import "DocumentLister.h"
 #import "PeopleLister.h"
 #import "AppDelegate.h"
+#import "NSManagedObject+GroupAndPerson.h"
 
 @interface DocumentLister () <UIAlertViewDelegate, NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) NSFetchedResultsController* frc;
@@ -88,10 +89,9 @@
     NSManagedObject *mo =
     [NSEntityDescription insertNewObjectForEntityForName:[entity name]
                                   inManagedObjectContext:context];
-    [mo setValue:name forKey:@"name"];
-    NSUUID* uuid = [NSUUID UUID];
-    [mo setValue: uuid.UUIDString forKey:@"uuid"];
-    [mo setValue: [NSDate date] forKey:@"timestamp"];
+    mo.name = name;
+    mo.uuid = [[NSUUID UUID] UUIDString];
+    mo.timestamp = [NSDate date];
     
     // Save the context.
     NSError *error = nil;
@@ -133,7 +133,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     NSManagedObject *object = [self.frc objectAtIndexPath:indexPath];
-    cell.textLabel.text = [object valueForKey:@"name"];
+    cell.textLabel.text = object.name;
     return cell;
 }
 
