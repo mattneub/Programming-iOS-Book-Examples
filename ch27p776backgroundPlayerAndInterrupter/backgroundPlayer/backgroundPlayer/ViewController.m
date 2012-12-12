@@ -20,9 +20,8 @@
     // new iOS 5 feature
     // this info shows up in the locked screen and below the "multimedia" buttons
     MPNowPlayingInfoCenter* mpic = [MPNowPlayingInfoCenter defaultCenter];
-    mpic.nowPlayingInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                           @"Matt Neuburg", MPMediaItemPropertyArtist,
-                           @"About Tiagol", MPMediaItemPropertyTitle, nil];
+    mpic.nowPlayingInfo = @{MPMediaItemPropertyArtist: @"Matt Neuburg",
+                           MPMediaItemPropertyTitle: @"About Tiagol"};
     
 }
 
