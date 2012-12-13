@@ -6,14 +6,14 @@
 @implementation Dog
 
 {
-    int number;
+    int _number;
 }
 
 
 - (id) initWithNumber: (int) n {
     self = [super init];
     if (self) {
-        self->number = n;
+        self->_number = n;
     }
     return self;
 }
@@ -23,7 +23,7 @@
 }
 
 - (int) number {
-    return self->number;
+    return self->_number;
 }
 
 @end
