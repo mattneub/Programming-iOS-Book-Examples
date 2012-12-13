@@ -315,8 +315,7 @@ sectionForSectionIndexTitle:(NSString *)title
 }
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.001);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    dispatch_async(dispatch_get_main_queue(), ^(void){
         for (UIView* v in self.sbc.searchResultsTableView.subviews) {
             if ([v isKindOfClass: [UILabel class]] && [[(UILabel*)v text] isEqualToString:@"No Results"]) {
                 [(UILabel*)v setText: @""];
