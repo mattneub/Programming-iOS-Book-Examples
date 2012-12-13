@@ -6,15 +6,15 @@
 @implementation Dog
 
 {
-    int number;
+    int _number;
 }
 
 - (void) setNumber: (int) n {
-    self->number = n;
+    self->_number = n;
 }
 
 - (int) number {
-    return self->number;
+    return self->_number;
 }
 
 @end

@@ -9,9 +9,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    // showing the syntax for properties
-    // Dog's accessors for number are not public...
-    // ...but a property is declared so we can call them using property syntax
+    // changed the purpose of the example
+    // instead of showing how to declare a property, I now save that to chapter 12
+    // here, we make the accessors public, thus enabling property syntax without the declaration
     Dog* fido = [[Dog alloc] init];
     fido.number = 42; 
     int n = fido.number;

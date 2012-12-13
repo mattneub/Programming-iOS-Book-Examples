@@ -4,5 +4,6 @@
 
 
 @interface Dog : NSObject 
-@property (nonatomic) int number;
+- (void) setNumber: (int) n;
+- (int) number;
 @end
