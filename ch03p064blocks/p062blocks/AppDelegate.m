@@ -22,6 +22,19 @@
     }; 
     
     NSArray* arr2 = [arr sortedArrayUsingComparator: sortByLastCharacter];
+    
+    /*
+     // or we could haved defined the block anonymously inline:
+     NSArray* arr2 = [arr sortedArrayUsingComparator: ^(id obj1, id obj2) {
+         NSString* s1 = (NSString*) obj1;
+         NSString* s2 = (NSString*) obj2;
+         NSString* string1end = [s1 substringFromIndex:[s1 length] - 1];
+         NSString* string2end = [s2 substringFromIndex:[s2 length] - 1];
+         return [string1end compare:string2end];
+     }];
+     */
+    
+    
     NSLog(@"%@", arr2);
 
     
