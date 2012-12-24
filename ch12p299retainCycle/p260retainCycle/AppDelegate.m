@@ -15,10 +15,10 @@
     
     MyClass* m1 = [MyClass new];
     MyClass* m2 = [MyClass new];
-    m1->thing = m2;
-    m2->thing = m1;
+    m1.thing = m2;
+    m2.thing = m1;
 
-    
+    NSLog(@"%@", @"finished");
     return YES;
 }
 

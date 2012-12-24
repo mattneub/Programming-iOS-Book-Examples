@@ -3,10 +3,15 @@
 #import "MyClass.h"
 
 @implementation MyClass {
+    /* __weak */ id _thing;
 }
 
-- (void) dealloc {
-    NSLog(@"dealloc");
+- (void) setThing: (id) what {
+    self->_thing = what;
+}
+
+-(void)dealloc {
+    NSLog(@"%@", @"dealloc");
 }
 
 @end
