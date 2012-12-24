@@ -25,7 +25,7 @@
 // for case 2 and 3, leave it at "strong" to see how we can break the retain cycle
 @property (nonatomic, strong) id observer;
 
-@property (nonatomic, strong) NSPointerArray* parr;
+@property (nonatomic, strong) NSHashTable* set;
 
 @end
 
@@ -36,7 +36,8 @@
     [super viewWillAppear:animated];
     
     switch (which) {
-        case 1: case 2: {
+        case 1:
+        case 2: {
             self.observer = [[NSNotificationCenter defaultCenter] addObserverForName:@"woohoo"
                                                                          object:nil queue:nil 
                                                                      usingBlock:^(NSNotification *note) 
@@ -46,7 +47,7 @@
 
             break;
         }
-        case 3: {
+        case 3: { // weak-strong dance prevents retain cycle up front
             __weak FlipsideViewController* wself = self;
             self.observer = [[NSNotificationCenter defaultCenter] addObserverForName:@"woohoo"
                                                                          object:nil queue:nil 
@@ -62,16 +63,24 @@
         }
         case 4: {
             // imagine we have many of these observers
-            // collect them into a weak pointer array
-            self.parr = [NSPointerArray weakObjectsPointerArray];
-            [self.parr addPointer:
-             (__bridge void *)([[NSNotificationCenter defaultCenter]
-                                addObserverForName:@"woohoo"
-                                object:nil queue:nil
-                                usingBlock:^(NSNotification *note)
-                                {
-                                    [self description];
-                                }])];
+            // collect them into a weak mutable set (hash table)
+            self.set = [NSHashTable weakObjectsHashTable];
+            [self.set addObject:
+             ([[NSNotificationCenter defaultCenter]
+               addObserverForName:@"woohoo"
+               object:nil queue:nil
+               usingBlock:^(NSNotification *note)
+               {
+                   [self description];
+               }])];
+            [self.set addObject:
+             ([[NSNotificationCenter defaultCenter]
+               addObserverForName:@"woohoo"
+               object:nil queue:nil
+               usingBlock:^(NSNotification *note)
+               {
+                   [self description];
+               }])];
         }
     }
 }
@@ -79,7 +88,7 @@
 - (IBAction)done:(id)sender
 {
     switch (which) {
-        case 1: case 3: {
+        case 1: {
             NSLog(@"observer %@", self.observer); // prove that observer is valid
             [[NSNotificationCenter defaultCenter] removeObserver:self.observer];
             break;
@@ -92,19 +101,32 @@
         }
         case 4: {
             // remove all observers
-            for (id obj in self.parr) {
+            for (id obj in self.set) {
                 NSLog(@"%@", obj); // prove that observer is valid
                 [[NSNotificationCenter defaultCenter] removeObserver:obj];
             }
-            // that's all! self.parr was not retaining those observers
+            // that's all! self.set was not retaining those observers
             break;
         }
+        case 3: break;
     }
     [self.delegate flipsideViewControllerDidFinish:self];
 }
 
+// note that case 3 has the remarkable property that you can unregister in dealloc itself
+
 - (void) dealloc {
     NSLog(@"dealloc");
+    switch (which) {
+        case 4: break;
+        case 1: break;
+        case 2: break;
+        case 3: {
+            NSLog(@"observer %@", self.observer); // prove that observer is valid
+            [[NSNotificationCenter defaultCenter] removeObserver:self.observer];
+        }
+    }
+
 }
 
 @end
