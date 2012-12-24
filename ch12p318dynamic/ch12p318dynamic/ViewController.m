@@ -3,15 +3,15 @@
 #import "ViewController.h"
 #import <objc/runtime.h> // tricky-wicky
 
-@interface ViewController () {
-    NSString* _name; // since we're going to use @dynamic, we need to declare any ivars manually
-    NSNumber* _number;
-}
+@interface ViewController ()
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSNumber* number;
 @end
 
-@implementation ViewController
+@implementation ViewController {
+    NSString* _name; // since we're going to use @dynamic, we need to declare any ivars manually
+    NSNumber* _number;
+}
 @dynamic name, number;
 
 - (void)viewDidLoad
