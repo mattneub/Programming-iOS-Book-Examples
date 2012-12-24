@@ -6,8 +6,8 @@
 #import "MyClass.h"
 
 @implementation AppDelegate {
-    MyClass* thing;
-    id obj;
+    MyClass* _thing;
+    id _obj;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -19,26 +19,29 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    self->obj = [NSObject new];
-    nav.delegate = obj;
+    _obj = [NSObject new];
+    
+    nav.delegate = _obj;
     
     MyClass* m = [MyClass new];
-    m.delegate = obj;
-    self->thing = m;
+    m.delegate = _obj;
+    _thing = m;
     
     // added another log and numbers, to show when the log messages occur
-    NSLog(@"MyClass delegate (1): %@", thing.delegate); // 
-    NSLog(@"Nav Controller delegate (1): %@", thing.delegate); //
+    NSLog(@"MyClass delegate (1): %@", _thing.delegate); // 
+    NSLog(@"Nav Controller delegate (1): %@", _thing.delegate); //
     
     // get off this transaction, give autorelease pool a chance to drain
     dispatch_async(dispatch_get_main_queue(), ^{
         // cry havoc, and let slip the dogs of war
-        self->obj = nil; // releases obj - now what is nav.delegate pointing to?
+        _obj = nil; // releases obj - now what is nav.delegate pointing to??
         
-        NSLog(@"MyClass delegate (2): %@", thing.delegate); // perfectly safe, __weak ref is nilified
+        NSLog(@"MyClass delegate (2): %@",
+              _thing.delegate); // perfectly safe, __weak ref is nilified
         
         NSLog(@"Nav Controller delegate (2): %@", ((UINavigationController*)self.window.rootViewController).delegate); // if you're lucky it might print something!
         // or more likely it will just crash, or maybe print and *then* crash
+        // good chance to turn on Zombies so you can see this happen "nicely"
     });
     
     return YES;
