@@ -3,6 +3,8 @@ The downloadable code and screenshots for my book, "Programming iOS 5: Fundament
 
 At the top level, I've **revised the examples to fit iOS 6**.
 
+While I'm drafting the revised book, the full text of the draft is available here: <http://www.apeth.com/iOSBook/> At present, you can read the draft for Programming iOS 6 for chapters 1 through 11. (Other chapters are still the old iOS 5 edition.) You can tell from the blurb at the top of each page whether a chapter is old or new.
+
 Changes include:
 
 * Use new literals and subscripting for arrays, dictionaries, numbers.
