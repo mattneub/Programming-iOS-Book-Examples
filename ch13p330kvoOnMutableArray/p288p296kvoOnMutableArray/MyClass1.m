@@ -36,7 +36,7 @@
 }
 
 - (NSUInteger) countOfTheData {
-    return self->_theData.count;
+    return [self->_theData count];
 }
 
 - (id) objectInTheDataAtIndex: (NSUInteger) ix {
@@ -44,7 +44,7 @@
 }
 
 - (void) insertObject: (id) val inTheDataAtIndex: (NSUInteger) ix {
-    self->_theData[ix] = val;
+    [self->_theData insertObject:val atIndex:ix];
 }
 
 - (void) removeObjectFromTheDataAtIndex: (NSUInteger) ix {
