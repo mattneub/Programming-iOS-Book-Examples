@@ -4,7 +4,7 @@
 
 @implementation AppDelegate
 
-#define which 1 // and try 2 to use iOS 6 constraints instead
+#define which 1 // and try 2 and 3 to use iOS 6 constraints instead
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -28,14 +28,14 @@
             break;
         }
         
-        case 2: { // but if you're going to use constraints, supplying a frame is pointless!
+        case 2: case 3:
+        { // but if you're going to use constraints, supplying a frame is pointless!
             // both dimensions and positioning will be part of the constraints
             v2 = [UIView new];
             v3 = [UIView new];
             break;
         }
     }
-    
     
     v2.backgroundColor = [UIColor colorWithRed:.5 green:1 blue:0 alpha:1];
     v3.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
@@ -49,36 +49,73 @@
             v3.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin;
             break;
         }
-        case 2: { // the constraints way
+        case 2: {
+            //v1.translatesAutoresizingMaskIntoConstraints = NO;
+            v2.translatesAutoresizingMaskIntoConstraints = NO;
+            v3.translatesAutoresizingMaskIntoConstraints = NO;
+            [v1 addConstraint:
+             [NSLayoutConstraint
+              constraintWithItem:v2 attribute:NSLayoutAttributeLeft
+              relatedBy:0
+              toItem:v1 attribute:NSLayoutAttributeLeft
+              multiplier:1 constant:0]];
+            [v1 addConstraint:
+             [NSLayoutConstraint
+              constraintWithItem:v2 attribute:NSLayoutAttributeRight
+              relatedBy:0
+              toItem:v1 attribute:NSLayoutAttributeRight
+              multiplier:1 constant:0]];
+            [v2 addConstraint:
+             [NSLayoutConstraint
+              constraintWithItem:v2 attribute:NSLayoutAttributeHeight
+              relatedBy:0
+              toItem:nil attribute:0
+              multiplier:1 constant:10]];
+            [v3 addConstraint:
+             [NSLayoutConstraint
+              constraintWithItem:v3 attribute:NSLayoutAttributeWidth
+              relatedBy:0
+              toItem:nil attribute:0
+              multiplier:1 constant:20]];
+            [v3 addConstraint:
+             [NSLayoutConstraint
+              constraintWithItem:v3 attribute:NSLayoutAttributeHeight
+              relatedBy:0
+              toItem:nil attribute:0
+              multiplier:1 constant:20]];
+            [v1 addConstraint:
+             [NSLayoutConstraint
+              constraintWithItem:v3 attribute:NSLayoutAttributeRight
+              relatedBy:0
+              toItem:v1 attribute:NSLayoutAttributeRight
+              multiplier:1 constant:0]];
+            [v1 addConstraint:
+             [NSLayoutConstraint
+              constraintWithItem:v3 attribute:NSLayoutAttributeBottom
+              relatedBy:0
+              toItem:v1 attribute:NSLayoutAttributeBottom
+              multiplier:1 constant:0]];
+        }
+        case 3: {
             NSDictionary *vs = NSDictionaryOfVariableBindings(v2,v3);
             v2.translatesAutoresizingMaskIntoConstraints = NO;
             v3.translatesAutoresizingMaskIntoConstraints = NO;
-            NSArray* con;
-            con = [NSLayoutConstraint
-                   constraintsWithVisualFormat:@"H:|[v2]|"
-                   options:0
-                   metrics:nil
-                   views:vs];
-            [v1 addConstraints:con];
-            v2.translatesAutoresizingMaskIntoConstraints = NO;
-            con = [NSLayoutConstraint
-                   constraintsWithVisualFormat:@"V:|[v2(10)]"
-                   options:0
-                   metrics:nil
-                   views:vs];
-            [v1 addConstraints:con];
-            con = [NSLayoutConstraint
-                   constraintsWithVisualFormat:@"H:[v3(20)]|"
-                   options:0
-                   metrics:nil
-                   views:vs];
-            [v1 addConstraints:con];
-            con = [NSLayoutConstraint
-                   constraintsWithVisualFormat:@"V:[v3(20)]|"
-                   options:0
-                   metrics:nil
-                   views:vs];
-            [v1 addConstraints:con];
+            [v1 addConstraints:
+             [NSLayoutConstraint
+              constraintsWithVisualFormat:@"H:|[v2]|"
+              options:0 metrics:nil views:vs]];
+            [v1 addConstraints:
+             [NSLayoutConstraint
+              constraintsWithVisualFormat:@"V:|[v2(10)]"
+              options:0 metrics:nil views:vs]];
+            [v1 addConstraints:
+             [NSLayoutConstraint
+              constraintsWithVisualFormat:@"H:[v3(20)]|"
+              options:0 metrics:nil views:vs]];
+            [v1 addConstraints:
+             [NSLayoutConstraint
+              constraintsWithVisualFormat:@"V:[v3(20)]|"
+              options:0 metrics:nil views:vs]];
             break;
         }
     }
@@ -96,6 +133,7 @@
         f.size.width += 40;
         f.size.height -= 50;
         v1.bounds = f;
+        NSLog(@"%@", v1.constraints);
     });
     
     // Override point for customization after application launch.
