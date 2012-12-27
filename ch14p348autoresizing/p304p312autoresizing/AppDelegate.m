@@ -4,7 +4,7 @@
 
 @implementation AppDelegate
 
-#define which 1 // and try 2 and 3 to use iOS 6 constraints instead
+#define which 2 // and try 2 and 3 to use iOS 6 constraints instead
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -65,6 +65,12 @@
               relatedBy:0
               toItem:v1 attribute:NSLayoutAttributeRight
               multiplier:1 constant:0]];
+            [v1 addConstraint:
+             [NSLayoutConstraint
+              constraintWithItem:v2 attribute:NSLayoutAttributeTop
+              relatedBy:0
+              toItem:v1 attribute:NSLayoutAttributeTop
+              multiplier:1 constant:0]];
             [v2 addConstraint:
              [NSLayoutConstraint
               constraintWithItem:v2 attribute:NSLayoutAttributeHeight
@@ -95,6 +101,7 @@
               relatedBy:0
               toItem:v1 attribute:NSLayoutAttributeBottom
               multiplier:1 constant:0]];
+            break;
         }
         case 3: {
             NSDictionary *vs = NSDictionaryOfVariableBindings(v2,v3);
@@ -134,6 +141,9 @@
         f.size.height -= 50;
         v1.bounds = f;
         NSLog(@"%@", v1.constraints);
+        NSLog(@"%i", v1.hasAmbiguousLayout);
+        NSLog(@"%i", v2.hasAmbiguousLayout);
+        NSLog(@"%i", v3.hasAmbiguousLayout);
     });
     
     // Override point for customization after application launch.
