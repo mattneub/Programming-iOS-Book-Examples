@@ -30,22 +30,18 @@
     v1.translatesAutoresizingMaskIntoConstraints = NO;
     v2.translatesAutoresizingMaskIntoConstraints = NO;
     NSDictionary* d = NSDictionaryOfVariableBindings(sup, v1, v2);
-    NSArray* cons;
-    cons = [NSLayoutConstraint constraintsWithVisualFormat:@"|-[v1]-(40)-[v2(==v1)]-|"
-                                                   options:0
-                                                   metrics:0
-                                                     views:d];
-    [sup addConstraints:cons];
-    cons = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[v1]-|"
-                                                   options:0
-                                                   metrics:0
-                                                     views:d];
-    [sup addConstraints:cons];
-    cons = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[v2]-|"
-                                                   options:0
-                                                   metrics:0
-                                                     views:d];
-    [sup addConstraints:cons];
+    [sup addConstraints:
+     [NSLayoutConstraint
+      constraintsWithVisualFormat:@"|-[v1]-(40)-[v2(==v1)]-|"
+      options:0 metrics:0 views:d]];
+    [sup addConstraints:
+     [NSLayoutConstraint
+      constraintsWithVisualFormat:@"V:|-[v1]-|"
+      options:0 metrics:0 views:d]];
+    [sup addConstraints:
+     [NSLayoutConstraint
+      constraintsWithVisualFormat:@"V:|-[v2]-|"
+      options:0 metrics:0 views:d]];
 }
 
 -(void)viewDidAppear:(BOOL)animated {

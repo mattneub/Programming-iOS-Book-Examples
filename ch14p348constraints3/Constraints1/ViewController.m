@@ -31,12 +31,10 @@
     UIView* sup = self.view;
     [sup removeConstraints:@[cons1, cons2]];
     NSDictionary* d = NSDictionaryOfVariableBindings(sup, v1, v2);
-    NSArray* cons;
-    cons = [NSLayoutConstraint constraintsWithVisualFormat:@"|-[v1]-(40)-[v2(==v1)]-|"
-                                                   options:0
-                                                   metrics:0
-                                                     views:d];
-    [sup addConstraints:cons];
+    [sup addConstraints:
+     [NSLayoutConstraint
+      constraintsWithVisualFormat:@"|-[v1]-(40)-[v2(==v1)]-|"
+      options:0 metrics:0 views:d]];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
