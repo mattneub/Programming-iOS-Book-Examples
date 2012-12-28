@@ -9,14 +9,14 @@
     CGRect moiextent; // for example 5, get extent in advance
     double _frame;
     
-    UIImageView* iv;
+    UIImageView* _iv;
 
     CIContext* con; // generate once early, as they are expensive and time-consuming to make
 
 }
 
 
-#define which 5 // or 2 for non-Core Image
+#define which 4 // or 2 for non-Core Image
 // new in iOS 6! see 3 (mask), 4 (tile)
 // iOS 6 can now also do transition filters; should try to illustrate this in the animations chapter
 // try 5 to see it
@@ -29,10 +29,10 @@
     
     
     UIImage* moi = [UIImage imageNamed:@"moi.jpg"];
-    self->iv = [[UIImageView alloc] initWithImage:moi]; // just to get started
-    self->iv.backgroundColor = [UIColor blackColor];
-    [self.window.rootViewController.view addSubview: self->iv];
-    self->iv.center = self.window.center;
+    self->_iv = [[UIImageView alloc] initWithImage:moi]; // just to get started
+    self->_iv.backgroundColor = [UIColor blackColor];
+    [self.window.rootViewController.view addSubview: self->_iv];
+    self->_iv.center = self.window.center;
     
     self->con = [CIContext contextWithOptions:nil];
 
@@ -63,15 +63,18 @@
             // this allows us to do the same sort of thing in a much snazzier way
             // instead of painting black on top, we put a color behind and mask to it
             
+            self->_iv.backgroundColor = [UIColor clearColor];
+            
             CIFilter* col = [CIFilter filterWithName:@"CIConstantColorGenerator"];
-            CIColor* cicol = [[CIColor alloc] initWithColor:[UIColor redColor]];
+            CIColor* cicol = [[CIColor alloc] initWithColor:[UIColor clearColor]];
             [col setValue:cicol forKey:@"inputColor"];
             CIImage* colorimage = [col valueForKey: @"outputImage"];
             
             CIFilter* grad = [CIFilter filterWithName:@"CIRadialGradient"];
             CIVector* center = [CIVector vectorWithX:moi.size.width/2.0 Y:moi.size.height/2.0];
             [grad setValue:center forKey:@"inputCenter"];
-            [grad setValue:@75 forKey:@"inputRadius0"];
+            [grad setValue:@85 forKey:@"inputRadius0"];
+            [grad setValue:@100 forKey:@"inputRadius1"];
             CIImage *gradimage = [grad valueForKey: @"outputImage"];
 
             CIFilter* blend = [CIFilter filterWithName:@"CIBlendWithMask"];
@@ -90,6 +93,7 @@
             [tile setValue:moi2 forKey:@"inputImage"];
             CIVector* center = [CIVector vectorWithX:moi.size.width/2.0-60 Y:moi.size.height/2.0-70];
             [tile setValue:center forKey:@"inputCenter"];
+            [tile setValue:@50 forKey:@"inputWidth"];
             
             CGImageRef moi3 = [self->con createCGImage:tile.outputImage
                                         fromRect:moi2.extent];
@@ -145,7 +149,7 @@
         }
     }
     
-    self->iv.image = moi4;
+    self->_iv.image = moi4;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -158,7 +162,7 @@
     [_tran setValue:@(_frame) forKey:@"inputTime"];
     CGImageRef moi3 = [self->con createCGImage:_tran.outputImage
                                 fromRect:moiextent];
-    self->iv.image = [UIImage imageWithCGImage:moi3];
+    self->_iv.image = [UIImage imageWithCGImage:moi3];
     CGImageRelease(moi3);
     
     _frame += sender.duration;
