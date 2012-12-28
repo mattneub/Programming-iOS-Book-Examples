@@ -27,14 +27,21 @@
     __weak IBOutlet UIView *v2;
 }
 
--(void)viewDidLoad {
-    UIView* sup = self.view;
-    [sup removeConstraints:@[cons1, cons2]];
-    NSDictionary* d = NSDictionaryOfVariableBindings(sup, v1, v2);
-    [sup addConstraints:
-     [NSLayoutConstraint
-      constraintsWithVisualFormat:@"|-[v1]-(40)-[v2(==v1)]-|"
-      options:0 metrics:0 views:d]];
+-(void)viewDidLoad { // if we add and then remove, we crash if the views are in the interface
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        UIView* sup = self.view;
+        [sup removeConstraints:@[cons1, cons2]];
+        NSDictionary* d = NSDictionaryOfVariableBindings(sup, v1, v2);
+        [sup addConstraints:
+         [NSLayoutConstraint
+          constraintsWithVisualFormat:@"|-[v1]-(40)-[v2(==v1)]-|"
+          options:0 metrics:0 views:d]];
+        // [sup removeConstraints:@[cons1, cons2]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [NSLayoutConstraint reportAmbiguity:nil];
+        });
+    });
 }
 
 -(void)viewDidAppear:(BOOL)animated {
