@@ -16,12 +16,12 @@ CGImageRef flip (CGImageRef im) {
 
 
 
-#define which 1
+#define which 12
 // substitute "2" thru "9" for other examples
-// iOS 5:
+// iOS 5 and 6:
 // added case "10" to illustrate use of a CIFilter
-// added case "11" to illustrate image tiling
-// added case "12" to illustrate image stretching
+// added case "11" and now "13" to illustrate image tiling
+// added case "12" and now "14" to illustrate image stretching
 
 // try all examples with both single-resolution and double-resolution device
 // the double-resolution Mars image has "2" in it so you can see when it is being used
@@ -40,7 +40,9 @@ CGImageRef flip (CGImageRef im) {
         {
             UIImageView* iv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Mars.png"]];
             [self.window.rootViewController.view addSubview: iv];
-            iv.center = self.window.center;
+            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
+                                    CGRectGetMidY(iv.superview.bounds));
+            iv.frame = CGRectIntegral(iv.frame);
             break;
         }
         case 2:
@@ -56,7 +58,9 @@ CGImageRef flip (CGImageRef im) {
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
             [self.window.rootViewController.view addSubview: iv];
-            iv.center = self.window.center;
+            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
+                                    CGRectGetMidY(iv.superview.bounds));
+            iv.frame = CGRectIntegral(iv.frame);
             break;
         }
         case 10: 
@@ -201,33 +205,70 @@ CGImageRef flip (CGImageRef im) {
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:mars2];
             [self.window.rootViewController.view addSubview: iv];
-            iv.center = self.window.center;
+            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
+                                    CGRectGetMidY(iv.superview.bounds));
+            iv.frame = CGRectIntegral(iv.frame);
             break;
         }
-        case 11: {
-            // iOS 5 has efficient tiling
-            // (by "efficient" I mean that this takes basically no more memory than the original image)
-            
+        case 11: { // old style tiling
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
-            UIImage* marsTiled = [mars resizableImageWithCapInsets:UIEdgeInsetsZero];
-            UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(20,5,mars.size.width*2,mars.size.height*4)];
+            UIImage* marsTiled = [mars resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode: UIImageResizingModeTile];
+            UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(0,0,mars.size.width*2,mars.size.height*4)];
             iv.image = marsTiled;
             [self.window.rootViewController.view addSubview:iv];
+            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
+                                    CGRectGetMidY(iv.superview.bounds));
+            iv.frame = CGRectIntegral(iv.frame);
+            break;
+        }
+        case 13: { // new style iOS 6 tiling
+            UIImage* mars = [UIImage imageNamed:@"Mars.png"];
+            UIImage* marsTiled = [mars resizableImageWithCapInsets:
+                                  UIEdgeInsetsMake(mars.size.height/4.0,
+                                                   mars.size.width/4.0,
+                                                   mars.size.height/4.0,
+                                                   mars.size.width/4.0)
+                                                      resizingMode: UIImageResizingModeTile];
+            UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(0,0,mars.size.width*2,mars.size.height*4)];
+            iv.image = marsTiled;
+            [self.window.rootViewController.view addSubview:iv];
+            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
+                                    CGRectGetMidY(iv.superview.bounds));
+            iv.frame = CGRectIntegral(iv.frame);
+            break;
+        }
+        case 14: { // new style iOS 6 stretching
+            UIImage* mars = [UIImage imageNamed:@"Mars.png"];
+            UIImage* marsTiled = [mars resizableImageWithCapInsets:
+                                  UIEdgeInsetsMake(mars.size.height/4.0,
+                                                   mars.size.width/4.0,
+                                                   mars.size.height/4.0,
+                                                   mars.size.width/4.0)
+                                                      resizingMode: UIImageResizingModeStretch];
+            UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(0,0,mars.size.width*2,mars.size.height*4)];
+            iv.image = marsTiled;
+            [self.window.rootViewController.view addSubview:iv];
+            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
+                                    CGRectGetMidY(iv.superview.bounds));
+            iv.frame = CGRectIntegral(iv.frame);
             break;
         }
         case 12: {
             // stretching
             // uses new iOS 5 method rather than old method
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
-            CGFloat capw = mars.size.width / 2.0 - 1;
-            CGFloat caph = mars.size.height / 2.0 - 1;
-            // new iOS 6 feature, can explicitly specify stretch
-            // not needed here because default is to stretch if inset leaves just one pixel
-            // but may as well use it
-            UIImage* marsTiled = [mars resizableImageWithCapInsets:UIEdgeInsetsMake(caph, capw, caph, capw) resizingMode:UIImageResizingModeStretch];
-            UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(20,5,mars.size.width*2,mars.size.height*1.5)];
+            UIImage* marsTiled = [mars resizableImageWithCapInsets:
+                                  UIEdgeInsetsMake(mars.size.height/2.0 - 1,
+                                                   mars.size.width/2.0 - 1,
+                                                   mars.size.height/2.0 - 1,
+                                                   mars.size.width/2.0 - 1)
+                                                      resizingMode: UIImageResizingModeStretch];
+            UIImageView* iv = [[UIImageView alloc] initWithFrame: CGRectMake(0,0,mars.size.width*2,mars.size.height*4)];
             iv.image = marsTiled;
             [self.window.rootViewController.view addSubview:iv];
+            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
+                                    CGRectGetMidY(iv.superview.bounds));
+            iv.frame = CGRectIntegral(iv.frame);
             break;
         }
         case 3: 
@@ -244,7 +285,9 @@ CGImageRef flip (CGImageRef im) {
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
             [self.window.rootViewController.view addSubview: iv];
-            iv.center = self.window.center;
+            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
+                                    CGRectGetMidY(iv.superview.bounds));
+            iv.frame = CGRectIntegral(iv.frame);
             break;
         }
         case 4:
@@ -259,7 +302,9 @@ CGImageRef flip (CGImageRef im) {
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
             [self.window.rootViewController.view addSubview: iv];
-            iv.center = self.window.center;
+            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
+                                    CGRectGetMidY(iv.superview.bounds));
+            iv.frame = CGRectIntegral(iv.frame);
             break;
         }
         case 5:
@@ -284,7 +329,9 @@ CGImageRef flip (CGImageRef im) {
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
             [self.window.rootViewController.view addSubview: iv];
-            iv.center = self.window.center;
+            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
+                                    CGRectGetMidY(iv.superview.bounds));
+            iv.frame = CGRectIntegral(iv.frame);
             break;
         }
         case 6:
@@ -308,7 +355,9 @@ CGImageRef flip (CGImageRef im) {
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
             [self.window.rootViewController.view addSubview: iv];
-            iv.center = self.window.center;
+            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
+                                    CGRectGetMidY(iv.superview.bounds));
+            iv.frame = CGRectIntegral(iv.frame);
             break;
         }
         case 7:
@@ -332,7 +381,9 @@ CGImageRef flip (CGImageRef im) {
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
             [self.window.rootViewController.view addSubview: iv];
-            iv.center = self.window.center;
+            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
+                                    CGRectGetMidY(iv.superview.bounds));
+            iv.frame = CGRectIntegral(iv.frame);
             break;
         }
         case 8:
@@ -362,7 +413,9 @@ CGImageRef flip (CGImageRef im) {
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
             [self.window.rootViewController.view addSubview: iv];
-            iv.center = self.window.center;
+            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
+                                    CGRectGetMidY(iv.superview.bounds));
+            iv.frame = CGRectIntegral(iv.frame);
             break;
         }
         case 9:
@@ -394,7 +447,9 @@ CGImageRef flip (CGImageRef im) {
             
             UIImageView* iv = [[UIImageView alloc] initWithImage:im];
             [self.window.rootViewController.view addSubview: iv];
-            iv.center = self.window.center;
+            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
+                                    CGRectGetMidY(iv.superview.bounds));
+            iv.frame = CGRectIntegral(iv.frame);
             break;
             
         }
