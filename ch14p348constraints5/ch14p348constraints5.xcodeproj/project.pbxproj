@@ -19,6 +19,7 @@
 		C93C25F3168CCC0800051ED5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C93C25F2168CCC0800051ED5 /* ViewController.m */; };
 		C93C25F6168CCC0800051ED5 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C93C25F4168CCC0800051ED5 /* ViewController.xib */; };
 		C93C25FE168CCC3500051ED5 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = C93C25FD168CCC3500051ED5 /* MyView.m */; };
+		C9B913E0168F496E0036FE32 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DCD36B168F43B1005AFC36 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C93C25F5168CCC0800051ED5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		C93C25FC168CCC3500051ED5 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
 		C93C25FD168CCC3500051ED5 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
+		C9DCD36B168F43B1005AFC36 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 				C93C25DA168CCC0700051ED5 /* UIKit.framework in Frameworks */,
 				C93C25DC168CCC0700051ED5 /* Foundation.framework in Frameworks */,
 				C93C25DE168CCC0700051ED5 /* CoreGraphics.framework in Frameworks */,
+				C9B913E0168F496E0036FE32 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +62,7 @@
 		C93C25CA168CCC0700051ED5 = {
 			isa = PBXGroup;
 			children = (
+				C9DCD36B168F43B1005AFC36 /* QuartzCore.framework */,
 				C93C25DF168CCC0700051ED5 /* ch14p348constraints5 */,
 				C93C25D8168CCC0700051ED5 /* Frameworks */,
 				C93C25D6168CCC0700051ED5 /* Products */,
@@ -298,6 +302,7 @@
 				C93C25FB168CCC0800051ED5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
