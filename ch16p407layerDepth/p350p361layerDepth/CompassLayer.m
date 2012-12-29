@@ -2,9 +2,13 @@
 
 #import "CompassLayer.h"
 
+@interface CompassLayer()
+@property (nonatomic, strong) CALayer* rotationLayer;
+
+@end
+
 
 @implementation CompassLayer{
-    CALayer* rotationLayer;
     BOOL _didSetup;
 }
 
@@ -16,16 +20,16 @@
     switch (which) {
         case 1:
         {
-            self->rotationLayer.anchorPoint = CGPointMake(1,0.5); 
-            self->rotationLayer.position = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMidY(self.bounds)); 
-            self->rotationLayer.transform = CATransform3DMakeRotation(M_PI/4.0, 0, 1, 0);
+            self.rotationLayer.anchorPoint = CGPointMake(1,0.5);
+            self.rotationLayer.position = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMidY(self.bounds)); 
+            self.rotationLayer.transform = CATransform3DMakeRotation(M_PI/4.0, 0, 1, 0);
             break;
         }
         case 2:
         {
-            self->rotationLayer.anchorPoint = CGPointMake(1,0.5);
-            self->rotationLayer.position = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMidY(self.bounds));
-            self->rotationLayer.transform = CATransform3DMakeRotation(M_PI/4.0, 0, 1, 0);
+            self.rotationLayer.anchorPoint = CGPointMake(1,0.5);
+            self.rotationLayer.position = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMidY(self.bounds));
+            self.rotationLayer.transform = CATransform3DMakeRotation(M_PI/4.0, 0, 1, 0);
             CATransform3D transform = CATransform3DIdentity;
             transform.m34 = -1.0/1000.0;
             self.sublayerTransform = transform;
@@ -92,7 +96,7 @@
     [g addSublayer:arrow];
     [arrow setNeedsDisplay];
         
-    self->rotationLayer = g;
+    self.rotationLayer = g;
 
 }
 

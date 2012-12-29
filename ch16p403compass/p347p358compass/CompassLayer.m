@@ -16,7 +16,7 @@
     [CATransaction setDisableActions:YES];
     
     // the gradient
-    CAGradientLayer* g = [[CAGradientLayer alloc] init];
+    CAGradientLayer* g = [CAGradientLayer new];
     // new, should have been doing this all along
     g.contentsScale = [UIScreen mainScreen].scale;
     g.frame = self.bounds;
@@ -27,7 +27,7 @@
     [self addSublayer:g];
     
     // the circle
-    CAShapeLayer* circle = [[CAShapeLayer alloc] init];
+    CAShapeLayer* circle = [CAShapeLayer new];
     circle.contentsScale = [UIScreen mainScreen].scale; // new
     circle.lineWidth = 2.0;
     circle.fillColor = [[UIColor colorWithRed:0.9 green:0.95 blue:0.93 alpha:0.9] CGColor];
@@ -43,7 +43,7 @@
     // the four cardinal points
     NSArray* pts = @[@"N", @"E", @"S", @"W"];
     for (int i = 0; i < 4; i++) {
-        CATextLayer* t = [[CATextLayer alloc] init];
+        CATextLayer* t = [CATextLayer new];
         // new and makes a huge difference
         // should have been doing this all along
         t.contentsScale = [UIScreen mainScreen].scale;
@@ -57,6 +57,7 @@
         // new: and since the text is lower, we can put the vertical position higher
         CGFloat vert = CGRectGetMidY(circle.bounds) / CGRectGetHeight(t.bounds);
         t.anchorPoint = CGPointMake(0.5, vert);
+        // NSLog(@"%@", NSStringFromCGPoint(t.anchorPoint));
         t.alignmentMode = kCAAlignmentCenter;
         t.foregroundColor = [[UIColor blackColor] CGColor]; 
         [t setAffineTransform:CGAffineTransformMakeRotation(i*M_PI/2.0)];
@@ -64,7 +65,7 @@
     }
     
     // the arrow
-    CALayer* arrow = [[CALayer alloc] init];
+    CALayer* arrow = [CALayer new];
     // new and makes a huge difference
     // should have been doing this all along
     arrow.contentsScale = [UIScreen mainScreen].scale;
@@ -97,7 +98,7 @@
 }
 
 - (void) mask: (CALayer*) arrow {
-    CAShapeLayer* mask = [[CAShapeLayer alloc] init];
+    CAShapeLayer* mask = [CAShapeLayer new];
     mask.frame = arrow.bounds;
     CGMutablePathRef p2 = CGPathCreateMutable();
     CGPathAddEllipseInRect(p2, NULL, CGRectInset(mask.bounds, 10, 10));

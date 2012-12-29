@@ -2,11 +2,14 @@
 
 #import "CompassLayer.h"
 
+@interface CompassLayer()
+@property (nonatomic, strong) CALayer* rotationLayer;
+@end
 
 @implementation CompassLayer
 
 {
-    CALayer* rotationLayer;
+    
     BOOL _didSetup;
 }
 
@@ -15,9 +18,9 @@
 
 - (void) doRotate {
     NSLog(@"rotate");
-    self->rotationLayer.anchorPoint = CGPointMake(1,0.5);
-    self->rotationLayer.position = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMidY(self.bounds));
-    self->rotationLayer.transform = CATransform3DMakeRotation(M_PI/4.0, 0, 1, 0);
+    self.rotationLayer.anchorPoint = CGPointMake(1,0.5);
+    self.rotationLayer.position = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMidY(self.bounds));
+    self.rotationLayer.transform = CATransform3DMakeRotation(M_PI/4.0, 0, 1, 0);
 
 }
 
@@ -38,7 +41,7 @@
     CATransformLayer* master = [CATransformLayer layer];
     master.frame = self.bounds;
     [self addSublayer: master];
-    self->rotationLayer = master;
+    self.rotationLayer = master;
 
     
     // the gradient
