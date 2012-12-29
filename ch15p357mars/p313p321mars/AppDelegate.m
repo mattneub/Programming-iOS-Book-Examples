@@ -16,7 +16,7 @@ CGImageRef flip (CGImageRef im) {
 
 
 
-#define which 12
+#define which 1
 // substitute "2" thru "9" for other examples
 // iOS 5 and 6:
 // added case "10" to illustrate use of a CIFilter
@@ -38,11 +38,33 @@ CGImageRef flip (CGImageRef im) {
     switch (which) {
         case 1:
         {
-            UIImageView* iv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Mars.png"]];
+            UIImageView* iv = [UIImageView new];
             [self.window.rootViewController.view addSubview: iv];
-            iv.center = CGPointMake(CGRectGetMidX(iv.superview.bounds),
-                                    CGRectGetMidY(iv.superview.bounds));
-            iv.frame = CGRectIntegral(iv.frame);
+            iv.translatesAutoresizingMaskIntoConstraints = NO;
+            [iv.superview addConstraint:
+             [NSLayoutConstraint
+              constraintWithItem:iv attribute:NSLayoutAttributeCenterX
+              relatedBy:0
+              toItem:iv.superview attribute:NSLayoutAttributeCenterX
+              multiplier:1 constant:0]];
+            [iv.superview addConstraint:
+             [NSLayoutConstraint
+              constraintWithItem:iv attribute:NSLayoutAttributeCenterY
+              relatedBy:0
+              toItem:iv.superview attribute:NSLayoutAttributeCenterY
+              multiplier:1 constant:0]];
+            
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                iv.image = [UIImage imageNamed:@"Mars.png"];
+                NSLog(@"%@", NSStringFromCGSize(iv.intrinsicContentSize));
+                NSLog(@"%@", NSStringFromCGRect(iv.bounds)); // 0,0,0,0 now; things will change at layout time!
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC);
+                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                    NSLog(@"%@", NSStringFromCGRect(iv.bounds)); // aha
+                });
+            });
+
             break;
         }
         case 2:
