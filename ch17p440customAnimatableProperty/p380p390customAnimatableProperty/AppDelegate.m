@@ -33,7 +33,7 @@
     UIButton* b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [b setTitle:@"Animate" forState:UIControlStateNormal];
     [b sizeToFit];
-    b.center = CGPointMake(self.window.center.x,300);
+    b.center = CGPointMake(self.window.rootViewController.view.center.x,300);
     b.frame = CGRectIntegral(b.frame);
     [b addTarget:self action:@selector(animate) forControlEvents:UIControlEventTouchUpInside];
     [self.window.rootViewController.view addSubview:b];
