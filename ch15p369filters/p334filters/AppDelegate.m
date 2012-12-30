@@ -4,19 +4,21 @@
 #import <QuartzCore/QuartzCore.h>
 
 @implementation AppDelegate {
-    __weak CADisplayLink* _link; // for example 5
+    // __weak CADisplayLink* _link; // for example 5
     CIFilter* _tran; // for example 5
-    CGRect moiextent; // for example 5, get extent in advance
+    CGRect _moiextent; // for example 5, get extent in advance
     double _frame;
+    
+    CFTimeInterval _timestamp;
     
     UIImageView* _iv;
 
-    CIContext* con; // generate once early, as they are expensive and time-consuming to make
+    CIContext* _con; // generate once early, as they are expensive and time-consuming to make
 
 }
 
 
-#define which 4 // or 2 for non-Core Image
+#define which 5 // or 2 for non-Core Image
 // new in iOS 6! see 3 (mask), 4 (tile)
 // iOS 6 can now also do transition filters; should try to illustrate this in the animations chapter
 // try 5 to see it
@@ -32,12 +34,14 @@
     self->_iv = [[UIImageView alloc] initWithImage:moi]; // just to get started
     self->_iv.backgroundColor = [UIColor blackColor];
     [self.window.rootViewController.view addSubview: self->_iv];
-    self->_iv.center = self.window.center;
+    self->_iv.center = CGPointMake(CGRectGetMidX(self->_iv.superview.bounds),
+                            CGRectGetMidY(self->_iv.superview.bounds));
+    self->_iv.frame = CGRectIntegral(self->_iv.frame);
     
-    self->con = [CIContext contextWithOptions:nil];
+    self->_con = [CIContext contextWithOptions:nil];
 
     CIImage* moi2 = [[CIImage alloc] initWithCGImage:moi.CGImage];
-    moiextent = moi2.extent;
+    self->_moiextent = moi2.extent;
     UIImage* moi4;
     
     switch (which) {
@@ -52,7 +56,7 @@
                               @"inputBackgroundImage", moi2,
                               nil];
             
-            CGImageRef moi3 = [self->con createCGImage:dark.outputImage
+            CGImageRef moi3 = [self->_con createCGImage:dark.outputImage
                                         fromRect:moi2.extent];
             moi4 = [UIImage imageWithCGImage:moi3];
             CGImageRelease(moi3);
@@ -82,7 +86,7 @@
             [blend setValue:colorimage forKey:@"inputBackgroundImage"];
             [blend setValue:gradimage forKey:@"inputMaskImage"];
             
-            CGImageRef moi3 = [self->con createCGImage:blend.outputImage
+            CGImageRef moi3 = [self->_con createCGImage:blend.outputImage
                                         fromRect:moi2.extent];
             moi4 = [UIImage imageWithCGImage:moi3];
             CGImageRelease(moi3);
@@ -95,7 +99,7 @@
             [tile setValue:center forKey:@"inputCenter"];
             [tile setValue:@50 forKey:@"inputWidth"];
             
-            CGImageRef moi3 = [self->con createCGImage:tile.outputImage
+            CGImageRef moi3 = [self->_con createCGImage:tile.outputImage
                                         fromRect:moi2.extent];
             moi4 = [UIImage imageWithCGImage:moi3];
             CGImageRelease(moi3);
@@ -111,12 +115,13 @@
             CIFilter* tran = [CIFilter filterWithName:@"CIFlashTransition"];
             [tran setValue:colorimage forKey:@"inputImage"];
             [tran setValue:moi2 forKey:@"inputTargetImage"];
-            CIVector* center = [CIVector vectorWithX:moi.size.width/2.0 Y:moi.size.height/2.0];
+            CIVector* center = [CIVector vectorWithX:self->_moiextent.size.width/2.0 Y:self->_moiextent.size.height/2.0];
             [tran setValue:center forKey:@"inputCenter"];
             
             self->_tran = tran;
-            self->_link = [CADisplayLink displayLinkWithTarget:self selector:@selector(nextFrame:)];
-            [self->_link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+                        
+            CADisplayLink* link = [CADisplayLink displayLinkWithTarget:self selector:@selector(nextFrame:)];
+            [link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
 
             break;
         }
@@ -156,23 +161,31 @@
     return YES;
 }
 
+#define SCALE 1.0 // try 0.2 for slow motion
+
 - (void) nextFrame: (CADisplayLink*) sender {
-
-
-    [_tran setValue:@(_frame) forKey:@"inputTime"];
-    CGImageRef moi3 = [self->con createCGImage:_tran.outputImage
-                                fromRect:moiextent];
+    // pick up and store first timestamp
+    if (self->_timestamp < 0.01) {
+        self->_timestamp = sender.timestamp;
+        self->_frame = 0.0;
+    } else { // calculate frame
+        self->_frame = (sender.timestamp - self->_timestamp) * SCALE;
+    }
+    sender.paused = YES; // defend against frame loss
+    
+    [_tran setValue:@(self->_frame) forKey:@"inputTime"];
+    CGImageRef moi3 = [self->_con createCGImage:_tran.outputImage
+                                       fromRect:_moiextent];
     self->_iv.image = [UIImage imageWithCGImage:moi3];
     CGImageRelease(moi3);
     
-    _frame += sender.duration;
-    
-    if (_frame > 1.05 + sender.duration) { // play safe
+    if (_frame > 1.0) {
         [sender invalidate];
         _frame = 0.0;
     }
+    sender.paused = NO;
     
-    // NSLog(@"here %f", frame);
+    // NSLog(@"here %f", self->_frame);
     
 
 }
