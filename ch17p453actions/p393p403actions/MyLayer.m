@@ -15,5 +15,12 @@
     return [super defaultActionForKey: aKey];
 }
 
+-(id<CAAction>)actionForKey:(NSString *)event {
+    if ([event isEqualToString:@"position"] &&
+        [self valueForKey:@"suppressPositionAnimation"])
+        return nil;
+    return [super actionForKey:event];
+}
+
 
 @end

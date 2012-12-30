@@ -8,7 +8,7 @@
     CALayer* lay;
 }
 
-#define which 1 // try also "2" thru "5"
+#define which 6 // try also "2" thru "6"
 
 - (void) animate {
     
@@ -69,6 +69,15 @@
             layer.opacity = 0; 
             // the delegate will "shrink" the layer as it disappears
             break;
+        }
+        case 6:
+        {
+            CALayer* layer = self->lay;
+            [lay setValue: @YES forKey: @"suppressPositionAnimation"];
+            CGPoint newP = CGPointMake(200,300);
+            [CATransaction setAnimationDuration:1.5];
+            layer.position = newP; // no animation
+            layer.opacity = 0; // animation as usual
         }
     }
 }
