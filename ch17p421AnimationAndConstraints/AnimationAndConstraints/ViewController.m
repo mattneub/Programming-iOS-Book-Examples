@@ -14,39 +14,66 @@
 
 }
 
-#define which 1 // and 2
+#define which 1 // and 2 and 3 and 4
 
 - (IBAction)doButton:(id)sender {
+    UIView* sup = _v.superview;
     switch (which) {
         case 1: {
             CGPoint p = _v.center;
             p.x += 100;
             [UIView animateWithDuration:1 animations:^{
                 _v.center = p;
-            } completion:^(BOOL b){
-                // if we do not do something like this...
-                // then when we rotate, layout happens, and we will revert to our original position
-                NSArray* cons = self.view.constraints;
-                NSIndexSet* ixx =
-                [cons indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-                    NSLayoutConstraint* con = obj;
-                    return (con.firstItem == _v) && (con.firstAttribute == NSLayoutAttributeLeading);
-                }];
-                NSLayoutConstraint* con = [cons objectsAtIndexes:ixx][0];
-                con.constant = _v.frame.origin.x; // and this will cause view / viewcontroller layout
-            }];
+            }]; // everything *looks* okay, but it isn't
             break;
         }
         case 2: {
-            // however, there's a better way: just set the constraint *as* the animation!
-            // the constraint is not an animatable property, so just set it
-            NSArray* cons = self.view.constraints;
-            NSIndexSet* ixx =
-            [cons indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-                NSLayoutConstraint* con = obj;
-                return (con.firstItem == _v) && (con.firstAttribute == NSLayoutAttributeLeading);
+            CGPoint p = _v.center;
+            p.x += 100;
+            [UIView animateWithDuration:1 animations:^{
+                _v.center = p;
+            } completion:^(BOOL b){
+                [_v layoutIfNeeded]; // this is what will happen at layout time
             }];
-            NSLayoutConstraint* con = [cons objectsAtIndexes:ixx][0];
+            break;
+        }
+        case 3: {
+            CGPoint p = _v.center;
+            p.x += 100;
+            [UIView animateWithDuration:1 animations:^{
+                _v.center = p;
+                // solution 1: fix constraints to match
+                NSArray* cons = sup.constraints;
+                NSUInteger ix =
+                [cons indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                    NSLayoutConstraint* con = obj;
+                    return ((con.firstItem == _v) && (con.firstAttribute == NSLayoutAttributeLeading));
+                }];
+                NSLayoutConstraint* con = cons[ix];
+                /*
+                 [sup removeConstraint:con];
+                 [sup addConstraint:
+                 [NSLayoutConstraint
+                 constraintWithItem:con.firstItem attribute:con.firstAttribute
+                 relatedBy:con.relation
+                 toItem:con.secondItem attribute:con.secondAttribute
+                 multiplier:1 constant:_v.frame.origin.x]];
+                 */
+                con.constant = _v.frame.origin.x; // and this will cause view / viewcontroller layout
+
+            }];
+            break;
+        }
+
+        case 4: {
+            // solution 2: just set the constraint *as* the animation!
+            NSArray* cons = sup.constraints;
+            NSUInteger ix =
+            [cons indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                NSLayoutConstraint* con = obj;
+                return ((con.firstItem == _v) && (con.firstAttribute == NSLayoutAttributeLeading));
+            }];
+            NSLayoutConstraint* con = cons[ix];
             con.constant += 100;
             // so what do we actually animate? here's the trick: animate the act of layout
             [UIView animateWithDuration:1 animations:^{
