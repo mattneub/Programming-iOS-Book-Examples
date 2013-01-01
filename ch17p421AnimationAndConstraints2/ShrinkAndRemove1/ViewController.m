@@ -7,7 +7,7 @@
 
 @end
 
-# define which 2 // and 2
+# define which 1 // and 2
 
 @implementation ViewController
 
