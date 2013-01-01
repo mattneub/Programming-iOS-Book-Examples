@@ -19,6 +19,7 @@
 		A4AB3B7D14AD43D40024722D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AB3B7414AD43D30024722D /* RootViewController.m */; };
 		A4AB3B7F14AD43D40024722D /* Popover1View1.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AB3B7714AD43D30024722D /* Popover1View1.m */; };
 		A4AB3B8214AD43D40024722D /* MyPopoverBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AB3B7C14AD43D30024722D /* MyPopoverBackgroundView.m */; };
+		C98CDA3F16926540004AF45E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98CDA3E16926540004AF45E /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		A4AB3B7714AD43D30024722D /* Popover1View1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Popover1View1.m; sourceTree = "<group>"; };
 		A4AB3B7B14AD43D30024722D /* MyPopoverBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPopoverBackgroundView.h; sourceTree = "<group>"; };
 		A4AB3B7C14AD43D30024722D /* MyPopoverBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPopoverBackgroundView.m; sourceTree = "<group>"; };
+		C98CDA3E16926540004AF45E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C98CDA3F16926540004AF45E /* QuartzCore.framework in Frameworks */,
 				A4AB3B5114AD43440024722D /* UIKit.framework in Frameworks */,
 				A4AB3B5314AD43440024722D /* Foundation.framework in Frameworks */,
 				A4AB3B5514AD43440024722D /* CoreGraphics.framework in Frameworks */,
@@ -61,6 +64,7 @@
 		A4AB3B4114AD43440024722D = {
 			isa = PBXGroup;
 			children = (
+				C98CDA3E16926540004AF45E /* QuartzCore.framework */,
 				A4AB3B5614AD43440024722D /* p550p565popoversStoryboard */,
 				A4AB3B4F14AD43440024722D /* Frameworks */,
 				A4AB3B4D14AD43440024722D /* Products */,

@@ -3,6 +3,7 @@
 #import "RootViewController.h"
 #import "Popover1View1.h"
 #import "MyPopoverBackgroundView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface RootViewController () <UIPopoverControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) UIPopoverController* currentPop;
@@ -34,10 +35,7 @@
         nav.delegate = self;
         self.currentPop = pop;
         vc.title = @"Back"; // can't find a way to change Back button title successfully in storyboard
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, .001);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            pop.passthroughViews = nil;
-        });
+        [CATransaction setCompletionBlock:^{ pop.passthroughViews = nil; }];
         self->_oldChoice = [[NSUserDefaults standardUserDefaults] integerForKey:@"choice"];
         pop.delegate = self;
         // sheesh
@@ -55,10 +53,7 @@
         pop.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 40);
         pop.popoverBackgroundViewClass = [MyPopoverBackgroundView class];
         self.currentPop = pop;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, .001);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            pop.passthroughViews = nil;
-        });
+        [CATransaction setCompletionBlock:^{ pop.passthroughViews = nil; }];
         pop.delegate = self;
     }
 }
@@ -74,6 +69,13 @@
 
 - (void) cancelPop1: (id) sender {
     // dismiss popover and revert choice
+    NSLog(@"%@", @"here1");
+    [CATransaction setCompletionBlock:^{
+        NSLog(@"%@", @"here2");
+    }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"%@", @"here3");
+    });
     [self.currentPop dismissPopoverAnimated:YES];
     self.currentPop = nil;
     [[NSUserDefaults standardUserDefaults] setInteger:self->_oldChoice forKey:@"choice"];
