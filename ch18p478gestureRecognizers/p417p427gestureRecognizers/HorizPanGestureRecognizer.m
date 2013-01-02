@@ -4,20 +4,20 @@
 
 
 @implementation HorizPanGestureRecognizer {
-    CGPoint origLoc;
+    CGPoint _origLoc;
 }
 
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    self->origLoc = [[touches anyObject] locationInView:self.view.superview];
+    self->_origLoc = [[touches anyObject] locationInView:self.view.superview];
     [super touchesBegan: touches withEvent: event];
 }
 
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     if (self.state == UIGestureRecognizerStatePossible) {
         CGPoint loc = [[touches anyObject] locationInView:self.view.superview];
-        CGFloat deltaX = fabs(loc.x - origLoc.x);
-        CGFloat deltaY = fabs(loc.y - origLoc.y);
+        CGFloat deltaX = fabs(loc.x - self->_origLoc.x);
+        CGFloat deltaY = fabs(loc.y - self->_origLoc.y);
         if (deltaY >= deltaX)
             self.state = UIGestureRecognizerStateFailed;
     }

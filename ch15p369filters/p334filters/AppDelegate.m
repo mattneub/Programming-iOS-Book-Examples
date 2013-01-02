@@ -18,7 +18,7 @@
 }
 
 
-#define which 5 // or 2 for non-Core Image
+#define which 1 // or 2 for non-Core Image
 // new in iOS 6! see 3 (mask), 4 (tile)
 // iOS 6 can now also do transition filters; should try to illustrate this in the animations chapter
 // try 5 to see it
@@ -56,7 +56,7 @@
                               @"inputBackgroundImage", moi2,
                               nil];
             
-            CGImageRef moi3 = [self->_con createCGImage:dark.outputImage
+            CGImageRef moi3 = [[CIContext contextWithOptions:nil] createCGImage:dark.outputImage
                                         fromRect:moi2.extent];
             moi4 = [UIImage imageWithCGImage:moi3];
             CGImageRelease(moi3);
@@ -86,10 +86,11 @@
             [blend setValue:colorimage forKey:@"inputBackgroundImage"];
             [blend setValue:gradimage forKey:@"inputMaskImage"];
             
-            CGImageRef moi3 = [self->_con createCGImage:blend.outputImage
+            CGImageRef moi3 = [[CIContext contextWithOptions:nil] createCGImage:blend.outputImage
                                         fromRect:moi2.extent];
             moi4 = [UIImage imageWithCGImage:moi3];
             CGImageRelease(moi3);
+            
             break;
         }
         case 4: { // iOS 6 also lets us do some fun tiling effects
@@ -99,7 +100,7 @@
             [tile setValue:center forKey:@"inputCenter"];
             [tile setValue:@50 forKey:@"inputWidth"];
             
-            CGImageRef moi3 = [self->_con createCGImage:tile.outputImage
+            CGImageRef moi3 = [[CIContext contextWithOptions:nil] createCGImage:tile.outputImage
                                         fromRect:moi2.extent];
             moi4 = [UIImage imageWithCGImage:moi3];
             CGImageRelease(moi3);

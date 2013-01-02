@@ -16,7 +16,7 @@
 @implementation ViewController
 
 {
-    CGPoint origOffset;
+    CGPoint _origOffset;
 }
 
 - (void)viewDidLoad
@@ -44,13 +44,13 @@
         [vv.layer addAnimation:anim forKey:nil];
         // oddly, UILongPressGestureRecognizer lacks translationInView:,
         // so we have to keep track of the whole movement ourselves
-        self->origOffset = CGPointMake(CGRectGetMidX(vv.bounds) - [lp locationInView:vv].x,
+        self->_origOffset = CGPointMake(CGRectGetMidX(vv.bounds) - [lp locationInView:vv].x,
                                        CGRectGetMidY(vv.bounds) - [lp locationInView:vv].y);
     }
     if (lp.state == UIGestureRecognizerStateChanged) {
         CGPoint c = [lp locationInView: vv.superview];
-        c.x += self->origOffset.x;
-        c.y += self->origOffset.y;
+        c.x += self->_origOffset.x;
+        c.y += self->_origOffset.y;
         vv.center = c;
     }
     if (lp.state == UIGestureRecognizerStateEnded ||

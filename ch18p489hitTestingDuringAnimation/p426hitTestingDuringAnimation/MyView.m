@@ -3,19 +3,20 @@
 #import "MyView.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation MyView {
-    IBOutlet UIView* v;
-}
+@interface MyView ()
+@property (nonatomic, weak) IBOutlet UIView* v;
+@end
 
+@implementation MyView 
 // the top-level (root) view is a MyView
 
 - (void) awakeFromNib {
     [super awakeFromNib];
     UITapGestureRecognizer* t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-    [self->v addGestureRecognizer:t];
+    [self.v addGestureRecognizer:t];
     t.cancelsTouchesInView = NO;
     // uncomment next line to see how button, even if tappable, "swallows the touch" while animating
-    //[self->v removeGestureRecognizer:t];
+    // [self.v removeGestureRecognizer:t];
 }
 
 - (void) tap: (UIGestureRecognizer*) g {
@@ -26,12 +27,12 @@
     // comment out this next line to use our munged hit-testing
     // return [super hitTest:point withEvent:event];
     // v is the animated subview
-    CALayer* lay = [self->v.layer presentationLayer];
+    CALayer* lay = [self.v.layer presentationLayer];
     CALayer* hitLayer = [lay hitTest: point];
     if (hitLayer == lay || hitLayer.superlayer == lay)
-        return self->v;
+        return self.v;
     UIView* hitView = [super hitTest:point withEvent:event];
-    if (hitView == self->v)
+    if (hitView == self.v)
         return self;
     return hitView;
 }

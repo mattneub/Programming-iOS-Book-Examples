@@ -3,49 +3,49 @@
 #import "MyView3.h"
 
 @implementation MyView3 {
-    BOOL decidedDirection;
-    BOOL horiz;
-    BOOL decidedTapOrDrag;
-    BOOL drag;
+    BOOL _decidedDirection;
+    BOOL _horiz;
+    BOOL _decidedTapOrDrag;
+    BOOL _drag;
 }
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     // be undecided
-    self->decidedTapOrDrag = NO;
+    self->_decidedTapOrDrag = NO;
     // prepare for a tap
     int ct = [[touches anyObject] tapCount];
     if (ct == 2) {
         [NSObject cancelPreviousPerformRequestsWithTarget:self
                                                  selector:@selector(singleTap)
                                                    object:nil];
-        self->decidedTapOrDrag = YES;
-        self->drag = NO;
+        self->_decidedTapOrDrag = YES;
+        self->_drag = NO;
         return;
     }
     // prepare for a drag
-    self->decidedDirection = NO;
+    self->_decidedDirection = NO;
 }
 
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (self->decidedTapOrDrag && !self->drag)
+    if (self->_decidedTapOrDrag && !self->_drag)
         return;
     [self.superview bringSubviewToFront:self];
-    self->decidedTapOrDrag = YES;
-    self->drag = YES;
-    if (!self->decidedDirection) {
-        self->decidedDirection = YES;
+    self->_decidedTapOrDrag = YES;
+    self->_drag = YES;
+    if (!self->_decidedDirection) {
+        self->_decidedDirection = YES;
         CGPoint then = [[touches anyObject] previousLocationInView: self];
         CGPoint now = [[touches anyObject] locationInView: self];
         CGFloat deltaX = fabs(then.x - now.x);
         CGFloat deltaY = fabs(then.y - now.y);
-        self->horiz = (deltaX >= deltaY);
+        self->_horiz = (deltaX >= deltaY);
     }
     CGPoint loc = [[touches anyObject] locationInView: self.superview];
     CGPoint oldP = [[touches anyObject] previousLocationInView: self.superview];
     CGFloat deltaX = loc.x - oldP.x;
     CGFloat deltaY = loc.y - oldP.y;
     CGPoint c = self.center;
-    if (self->horiz)
+    if (self->_horiz)
         c.x += deltaX;
     else
         c.y += deltaY;
@@ -54,7 +54,7 @@
 
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (!self->decidedTapOrDrag || !self->drag) {
+    if (!self->_decidedTapOrDrag || !self->_drag) {
         // end for a tap
         int ct = [[touches anyObject] tapCount];
         if (ct == 1)

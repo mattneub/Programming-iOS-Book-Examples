@@ -5,7 +5,6 @@
 #import "VertPanGestureRecognizer.h"
 
 @interface ViewController ()
-@property (nonatomic, weak) IBOutlet UIView* v;
 @property (nonatomic, weak) IBOutlet UIGestureRecognizer* singleTapper;
 @property (nonatomic, weak) IBOutlet UIGestureRecognizer* doubleTapper;
 @end

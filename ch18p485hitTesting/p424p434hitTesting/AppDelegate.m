@@ -30,10 +30,13 @@
 // the gesture recognizer is on the window
 // but the window can use hit testing to determine where the tap really was
 
+
 - (void) singleTap: (UIGestureRecognizer*) g {
     CGPoint p = [g locationOfTouch:0 inView:self.window];
     UIView* v = [self.window hitTest:p withEvent:nil];
     if (v && [v isKindOfClass:[UIImageView class]]) {
+        // warning: in iOS 6 and 6.0.1, autolayout breaks this animation (don't get me started)
+        // the workaround is to use full-on Core Animation
         [UIView animateWithDuration:0.2 
                               delay:0 
                             options:UIViewAnimationOptionAutoreverse 
