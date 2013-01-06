@@ -10,17 +10,17 @@
 
 #pragma mark - View lifecycle
 
-#define which 1 // try also "2" and "3" and "4"
+#define which 2 // try also "2" and "3" and "4"
 
 - (void) loadView {
     switch (which) {
         case 1:
         {
             // construct view entirely in code
-            UIView* v = [[UIView alloc] init];
+            UIView* v = [UIView new];
             v.backgroundColor = [UIColor greenColor];
             self.view = v;
-            UILabel* label = [[UILabel alloc] init];
+            UILabel* label = [UILabel new];
             [v addSubview:label];
             label.text = @"Hello, World!";
             
@@ -38,29 +38,25 @@
         case 2: // same as case 1 but using constraints
         {
             // construct view entirely in code
-            UIView* v = [[UIView alloc] init];
+            UIView* v = [UIView new];
             v.backgroundColor = [UIColor greenColor];
             self.view = v;
-            UILabel* label = [[UILabel alloc] init];
+            UILabel* label = [UILabel new];
             [v addSubview:label];
             label.text = @"Hello, World!";
             
             label.translatesAutoresizingMaskIntoConstraints = NO;
             [self.view addConstraint:
              [NSLayoutConstraint
-              constraintWithItem:label
-              attribute:NSLayoutAttributeCenterX
-              relatedBy:NSLayoutRelationEqual
-              toItem:self.view
-              attribute:NSLayoutAttributeCenterX
+              constraintWithItem:label attribute:NSLayoutAttributeCenterX
+              relatedBy:0
+              toItem:self.view attribute:NSLayoutAttributeCenterX
               multiplier:1 constant:0]];
             [self.view addConstraint:
              [NSLayoutConstraint
-              constraintWithItem:label
-              attribute:NSLayoutAttributeCenterY
-              relatedBy:NSLayoutRelationEqual
-              toItem:self.view
-              attribute:NSLayoutAttributeCenterY
+              constraintWithItem:label attribute:NSLayoutAttributeCenterY
+              relatedBy:0
+              toItem:self.view attribute:NSLayoutAttributeCenterY
               multiplier:1 constant:0]];
             break;
         }

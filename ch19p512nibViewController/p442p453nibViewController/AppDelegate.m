@@ -21,7 +21,7 @@
             theRVC = [[RootViewController alloc] initWithNibName: @"RootView" bundle:nil];
             break;
         case 2:
-            theRVC = [[RootViewController alloc] init];
+            theRVC = [RootViewController new];
             break;
     }
     self.window.rootViewController = theRVC; // retains, places view into interface 

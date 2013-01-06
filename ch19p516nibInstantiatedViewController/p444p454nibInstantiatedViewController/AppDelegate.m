@@ -2,13 +2,15 @@
 
 #import "AppDelegate.h"
 
-@implementation AppDelegate
-
-{
-    IBOutlet UIViewController* vc;
+@implementation AppDelegate {
+    
+    IBOutlet UIViewController *vc;
+    
 }
 
-#define which 2 // try also "2"
+
+
+#define which 1 // try also "2"
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
