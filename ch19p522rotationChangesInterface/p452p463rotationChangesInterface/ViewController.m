@@ -15,6 +15,7 @@
   // but I think "3" is most elegant and appropriate
   // takes a lot of preparation, but expresses what we're doing with most elegance and clarity:
   // namely, we're swapping constraints in and out
+  // ("2" is not used in the book, since "3" is so much better)
 
 #if which==1
 
@@ -121,40 +122,40 @@
     br.translatesAutoresizingMaskIntoConstraints = NO;
     br.backgroundColor = [UIColor blackColor];
     [self.view addSubview:br];
-    [self.view setNeedsUpdateConstraints];
-    // and also prepare two sets of constraints
-    NSMutableArray* marrOn = [NSMutableArray array];
-    NSMutableArray* marrOff = [NSMutableArray array];
+    // not needed if we're already doing autolayout
+    // [self.view setNeedsUpdateConstraints];
+        
+    // "b.r. is pinned to top and bottom of superview"
+    [self.view addConstraints:
+     [NSLayoutConstraint
+      constraintsWithVisualFormat:@"V:|-0-[br]-0-|"
+      options:0 metrics:nil views:@{@"br":br}]];
     
-    NSArray* cons;
-    cons = [NSLayoutConstraint
-            constraintsWithVisualFormat:@"V:|-0-[br]-0-|"
-            options:0 metrics:nil views:@{@"br":br}];
-    [marrOn addObjectsFromArray:cons];
-    [marrOff addObjectsFromArray:cons];
-    
-    NSLayoutConstraint* con =
+    // "b.r. is 1/3 the width of superview"
+    [self.view addConstraint:
      [NSLayoutConstraint
       constraintWithItem:br attribute:NSLayoutAttributeWidth
-      relatedBy:NSLayoutRelationEqual
+      relatedBy:0
       toItem:self.view attribute:NSLayoutAttributeWidth
-      multiplier:1.0/3.0 constant:0];
-    [marrOn addObject:con];
-    [marrOff addObject:con];
+      multiplier:1.0/3.0 constant:0]];
     
-    cons = [NSLayoutConstraint
-            constraintsWithVisualFormat:@"H:|-0-[br]"
-            options:0 metrics:nil views:@{@"br":br}];
-    [marrOn addObjectsFromArray:cons];
-    con = [NSLayoutConstraint
-           constraintWithItem:br attribute:NSLayoutAttributeRight
-           relatedBy:NSLayoutRelationEqual
-           toItem:self.view attribute:NSLayoutAttributeLeft
-           multiplier:1 constant:0];
-    [marrOff addObject:con];
+    // "onscreen, b.r.'s left is pinned to superview's left"
+    NSArray* marrOn =
+    [NSLayoutConstraint
+     constraintsWithVisualFormat:@"H:|-0-[br]"
+     options:0 metrics:nil views:@{@"br":br}];
     
-    self.blackRectConstraintsOnscreen = [marrOn copy];
-    self.blackRectConstraintsOffscreen = [marrOff copy];
+    // "offscreen, b.r.'s right is pinned to superview's left"
+    NSArray* marrOff = @[
+    [NSLayoutConstraint
+     constraintWithItem:br attribute:NSLayoutAttributeRight
+     relatedBy:NSLayoutRelationEqual
+     toItem:self.view attribute:NSLayoutAttributeLeft
+     multiplier:1 constant:0]
+    ];
+    
+    self.blackRectConstraintsOnscreen = marrOn;
+    self.blackRectConstraintsOffscreen = marrOff;
 }
 
 -(void)updateViewConstraints {
