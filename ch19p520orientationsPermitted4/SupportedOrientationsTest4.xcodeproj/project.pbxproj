@@ -18,6 +18,7 @@
 		C95700D4162C915600E5D6EC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95700D3162C915600E5D6EC /* Default-568h@2x.png */; };
 		C95700D7162C915600E5D6EC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C95700D6162C915600E5D6EC /* ViewController.m */; };
 		C95700DA162C915600E5D6EC /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C95700D8162C915600E5D6EC /* ViewController.xib */; };
+		C98FE6E4169A2443000D38CB /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98FE6E3169A2443000D38CB /* MyView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		C95700D5162C915600E5D6EC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C95700D6162C915600E5D6EC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C95700D9162C915600E5D6EC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		C98FE6E2169A2443000D38CB /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
+		C98FE6E3169A2443000D38CB /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,8 @@
 				C95700D5162C915600E5D6EC /* ViewController.h */,
 				C95700D6162C915600E5D6EC /* ViewController.m */,
 				C95700D8162C915600E5D6EC /* ViewController.xib */,
+				C98FE6E2169A2443000D38CB /* MyView.h */,
+				C98FE6E3169A2443000D38CB /* MyView.m */,
 				C95700C4162C915600E5D6EC /* Supporting Files */,
 			);
 			name = SupportedOrientationsTest4;
@@ -177,6 +182,7 @@
 				C95700CA162C915600E5D6EC /* main.m in Sources */,
 				C95700CE162C915600E5D6EC /* AppDelegate.m in Sources */,
 				C95700D7162C915600E5D6EC /* ViewController.m in Sources */,
+				C98FE6E4169A2443000D38CB /* MyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,17 +10,19 @@
     BOOL _shouldRotate;
 }
 
-// all three are now contributing to the story:
-// the plist, the app delegate, and the view controller
-// but they must agree! each level down adds a further filter, as it were
-// if the app delegate says Landscape,
-// the view controller can't say Portrait
-
 -(NSUInteger)supportedInterfaceOrientations {
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    NSLog(@"device %i", orientation);
+    if (orientation)
+      NSLog(@"self %i", self.interfaceOrientation);
     return UIInterfaceOrientationMaskAll;
 }
 
 -(BOOL)shouldAutorotate {
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    NSLog(@"device %i", orientation);
+    if (orientation)
+        NSLog(@"self %i", self.interfaceOrientation);
     return self->_shouldRotate;
 }
 
@@ -29,6 +31,35 @@
 - (IBAction)doButton:(id)sender {
     self->_shouldRotate = !self->_shouldRotate;
     [UIViewController attemptRotationToDeviceOrientation];
+}
+
+// rotation events check
+
+-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+// layout events check
+
+-(void)viewWillLayoutSubviews {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+-(void)viewDidLayoutSubviews {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+-(void)updateViewConstraints {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+    [super updateViewConstraints];
 }
 
 
