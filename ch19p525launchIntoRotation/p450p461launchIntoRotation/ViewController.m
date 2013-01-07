@@ -6,7 +6,7 @@
     BOOL _viewInitializationDone;
 }
 
-#define which 1 // and "2" and "3" for the correct way;
+#define which 5 // and "2" and "3" for the correct way;
                 // however, there's an argument that "4" is now even better
                 // (use updateViewConstraints to initiate layout)
                 // finally, "5" does it with constraints alone
@@ -32,7 +32,10 @@
         case 2: // works, but probably not the right thing to do
         {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self finishViewDidLoad];
+                UIView* square = [[UIView alloc] initWithFrame:CGRectMake(0,0,10,10)];
+                square.backgroundColor = [UIColor blackColor];
+                square.center = CGPointMake(CGRectGetMidX(self.view.bounds),5); // top center?
+                [self.view addSubview:square];
             });
             break;
         }
@@ -49,30 +52,28 @@
         }
         case 5: // best way if you can do it, just set it and forget it
         {
-            UIView* square = [[UIView alloc] init];
+            UIView* square = [UIView new];
             square.backgroundColor = [UIColor blackColor];
             [self.view addSubview:square];
             square.translatesAutoresizingMaskIntoConstraints = NO;
-            NSArray* cons;
-            cons = [NSLayoutConstraint
-                    constraintsWithVisualFormat:@"V:|-0-[square(10)]"
-                    options:0 metrics:nil
-                    views:@{@"square":square}];
-            [self.view addConstraints:cons];
-            cons = [NSLayoutConstraint
-                    constraintsWithVisualFormat:@"H:[square(10)]"
-                    options:0 metrics:nil
-                    views:@{@"square":square}];
-            [self.view addConstraints:cons];
+            CGFloat side = 10;
+            [square addConstraint:
+             [NSLayoutConstraint
+              constraintWithItem:square attribute:NSLayoutAttributeWidth
+              relatedBy:0
+              toItem:nil attribute:0
+              multiplier:1 constant:side]];
+            [self.view addConstraints:
+             [NSLayoutConstraint
+              constraintsWithVisualFormat:@"V:|-0-[square(side)]"
+              options:0 metrics:@{@"side":@(side)}
+              views:@{@"square":square}]];
             [self.view addConstraint:
              [NSLayoutConstraint
-              constraintWithItem:square
-              attribute:NSLayoutAttributeCenterX
-              relatedBy:NSLayoutRelationEqual
-              toItem:self.view
-              attribute:NSLayoutAttributeCenterX
+              constraintWithItem:square attribute:NSLayoutAttributeCenterX
+              relatedBy:0
+              toItem:self.view attribute:NSLayoutAttributeCenterX
               multiplier:1 constant:0]];
-            NSLog(@"%@", self.view.constraints);
             break;
         }
     }
@@ -86,9 +87,9 @@
 }
 
 - (void) finishInitializingView {
-    if (_viewInitializationDone)
+    if (self->_viewInitializationDone)
         return;
-    _viewInitializationDone = YES;
+    self->_viewInitializationDone = YES;
     NSLog(@"finish initializing");
     UIView* square = [[UIView alloc] initWithFrame:CGRectMake(0,0,10,10)];
     square.backgroundColor = [UIColor blackColor];
