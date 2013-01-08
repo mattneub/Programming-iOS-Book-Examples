@@ -21,6 +21,8 @@
 }
 
 - (IBAction)doButton:(id)sender {
+    NSLog(@"presented vc's presenting vc: %@", self.presentingViewController);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"speak" object:self];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -11,7 +11,7 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-#define which 1 // and try "2" to illustrated "preferred..."
+#define which 2 // and try "2" to illustrated "preferred..."
 
 #if (which==1)
 
@@ -32,15 +32,21 @@
 #if (which==2)
 
 -(NSUInteger)supportedInterfaceOrientations {
+    NSLog(@"2nd supported");
     return UIInterfaceOrientationMaskAll;
 }
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    NSLog(@"2nd preferred");
     return UIInterfaceOrientationPortrait;
 }
 
 
 #endif
+
+-(void)viewWillLayoutSubviews {
+    NSLog(@"%@", @"2nd will layout");
+}
 
 
 @end

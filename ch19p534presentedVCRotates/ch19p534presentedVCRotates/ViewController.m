@@ -21,4 +21,9 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
+-(void)viewWillLayoutSubviews {
+    NSLog(@"%@", @"1st will layout");
+}
+
+
 @end
