@@ -12,14 +12,16 @@
     UIViewController* vc = [ExtraViewController new];
     
     // uncomment these lines to see the difference (on iPad only)
-//    self.definesPresentationContext = YES;
-//    vc.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.definesPresentationContext = YES;
+    vc.modalPresentationStyle = UIModalPresentationCurrentContext;
     
     // and then these (on iPad only)
-//    self.providesPresentationContextTransitionStyle = YES;
-//    self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    self.providesPresentationContextTransitionStyle = YES;
+    self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 
-
+    // testing whether, using these styles, supported orientations is obeyed
+//    vc.modalPresentationStyle = UIModalPresentationFormSheet; // no
+//    vc.modalPresentationStyle = UIModalPresentationPageSheet; // no
     [self presentViewController:vc animated:YES completion:nil];
 
 }
