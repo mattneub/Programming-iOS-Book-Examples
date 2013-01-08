@@ -1,11 +1,12 @@
 
 #import "ViewController.h"
 #import "LandscapeViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation ViewController
 
 -(NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
+    return 0; // in iOS 6, must do this or status bar won't animate
 }
 
 - (void) viewDidLoad {
@@ -19,17 +20,20 @@
 
 - (void)screenRotated:(NSNotification *)n {
     UIDeviceOrientation rot = [UIDevice currentDevice].orientation;
-    if (UIDeviceOrientationIsLandscape(rot) && !self.presentedViewController) {
+    if (UIDeviceOrientationIsLandscape(rot) & !self.presentedViewController) {
+        NSLog(@"%@", @"landscape");
+        [[UIApplication sharedApplication]
+         setStatusBarOrientation:rot animated:YES];
         UIViewController* vc = [LandscapeViewController new];
         vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:vc animated:YES completion:nil];
-    }
-    else if ((UIDeviceOrientationPortrait == rot) && self.presentedViewController) {
+    } else if (UIDeviceOrientationPortrait == rot) {
+        NSLog(@"%@", @"portrait");
+        [[UIApplication sharedApplication]
+         setStatusBarOrientation:rot animated:YES];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
-// explicitly rotating the status bar no longer works to trigger rotation animation
-// however, this is still a valuable technique, and the dissolve sort of covers the issue
 
 @end

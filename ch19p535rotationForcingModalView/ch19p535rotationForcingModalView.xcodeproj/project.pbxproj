@@ -17,6 +17,7 @@
 		A4BCE1CB14605B8C0053A1E8 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4BCE1C914605B8C0053A1E8 /* ViewController.xib */; };
 		A4BCE1D414605C1D0053A1E8 /* LandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BCE1D214605C1D0053A1E8 /* LandscapeViewController.m */; };
 		A4BCE1D514605C1D0053A1E8 /* LandscapeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4BCE1D314605C1D0053A1E8 /* LandscapeView.xib */; };
+		C9B7FF67169BB032001B685C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B7FF66169BB032001B685C /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A4BCE1D114605C1D0053A1E8 /* LandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeViewController.h; sourceTree = "<group>"; };
 		A4BCE1D214605C1D0053A1E8 /* LandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeViewController.m; sourceTree = "<group>"; };
 		A4BCE1D314605C1D0053A1E8 /* LandscapeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandscapeView.xib; sourceTree = "<group>"; };
+		C9B7FF66169BB032001B685C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9B7FF67169BB032001B685C /* QuartzCore.framework in Frameworks */,
 				A4BCE1B514605B8C0053A1E8 /* UIKit.framework in Frameworks */,
 				A4BCE1B714605B8C0053A1E8 /* Foundation.framework in Frameworks */,
 				A4BCE1B914605B8C0053A1E8 /* CoreGraphics.framework in Frameworks */,
@@ -55,6 +58,7 @@
 		A4BCE1A514605B8B0053A1E8 = {
 			isa = PBXGroup;
 			children = (
+				C9B7FF66169BB032001B685C /* QuartzCore.framework */,
 				A4BCE1BA14605B8C0053A1E8 /* ch19p535rotationForcingModalView */,
 				A4BCE1B314605B8C0053A1E8 /* Frameworks */,
 				A4BCE1B114605B8C0053A1E8 /* Products */,
