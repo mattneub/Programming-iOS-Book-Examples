@@ -27,5 +27,13 @@
                 [NSString stringWithFormat: @"%@.jpg", [self.boy lowercaseString]]];
 }
 
+- (NSString*) description {
+    return self.boy;
+}
+
+- (IBAction)tap:(UIGestureRecognizer*)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"tap" object:sender];
+}
+
 
 @end
