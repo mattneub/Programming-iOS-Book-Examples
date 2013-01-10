@@ -18,6 +18,11 @@
     return self;
 }
 
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    NSLog(@"%@", @"view 1 did load");
+}
+
 -(NSUInteger)supportedInterfaceOrientations {
     NSLog(@"supported1");
     return UIInterfaceOrientationMaskLandscape; // irrelevant! called but not obeyed in any way
