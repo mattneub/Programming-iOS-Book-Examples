@@ -34,7 +34,20 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
+    // logging and view classes prove that the embedded view goes inside the container view
+    // and that this has already happened at this point
     NSLog(@"viewdidload children %@", self.childViewControllers);
+    NSLog(@"%@", self.view);
+    NSLog(@"%@", self.view.subviews);
+    UIView* v = [self.view viewWithTag:100];
+    do
+    {
+        NSLog(@"%@", v);
+        v = v.superview;
+    }
+    while (v);
+    
+
 }
 
 // and now doFlip starts the segue from our current child
@@ -79,5 +92,29 @@
 
 // NOTE: the simplicity of the above depends on the fact that we are allowed to have
 // two segues with the same identifier in the same storyboard
+
+-(void)viewWillAppear:(BOOL)animated {
+    NSLog(@"%@", @"will appear");
+    return;
+    UIView* v = [self.view viewWithTag:100];
+    do
+    {
+        NSLog(@"%@", v);
+        v = v.superview;
+    }
+    while (v);
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    NSLog(@"%@", @"did appear");
+    return;
+    UIView* v = [self.view viewWithTag:100];
+    do
+    {
+        NSLog(@"%@", v);
+        v = v.superview;
+    }
+    while (v);
+}
 
 @end

@@ -18,6 +18,8 @@
 		A42443091464C2B200A84C7F /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A42443071464C2B200A84C7F /* SecondViewController.m */; };
 		C9431820163B80B8004E8F0E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C943181F163B80B8004E8F0E /* Storyboard.storyboard */; };
 		C9431823163B88F9004E8F0E /* FlipSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431822163B88F9004E8F0E /* FlipSegue.m */; };
+		C9FBA11C16A08DD600D9C949 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FBA11B16A08DD600D9C949 /* MyView.m */; };
+		C9FBA12016A0925F00D9C949 /* MyContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FBA11F16A0925F00D9C949 /* MyContainerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,10 @@
 		C943181F163B80B8004E8F0E /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		C9431821163B88F9004E8F0E /* FlipSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipSegue.h; sourceTree = "<group>"; };
 		C9431822163B88F9004E8F0E /* FlipSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipSegue.m; sourceTree = "<group>"; };
+		C9FBA11A16A08DD600D9C949 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
+		C9FBA11B16A08DD600D9C949 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
+		C9FBA11E16A0925F00D9C949 /* MyContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContainerView.h; sourceTree = "<group>"; };
+		C9FBA11F16A0925F00D9C949 /* MyContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyContainerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,10 @@
 				A42443071464C2B200A84C7F /* SecondViewController.m */,
 				C9431821163B88F9004E8F0E /* FlipSegue.h */,
 				C9431822163B88F9004E8F0E /* FlipSegue.m */,
+				C9FBA11A16A08DD600D9C949 /* MyView.h */,
+				C9FBA11B16A08DD600D9C949 /* MyView.m */,
+				C9FBA11E16A0925F00D9C949 /* MyContainerView.h */,
+				C9FBA11F16A0925F00D9C949 /* MyContainerView.m */,
 				A42442EB1464BEDF00A84C7F /* Supporting Files */,
 			);
 			path = p476containerController;
@@ -181,6 +191,8 @@
 				A42443041464BFDB00A84C7F /* FirstViewController.m in Sources */,
 				A42443091464C2B200A84C7F /* SecondViewController.m in Sources */,
 				C9431823163B88F9004E8F0E /* FlipSegue.m in Sources */,
+				C9FBA11C16A08DD600D9C949 /* MyView.m in Sources */,
+				C9FBA12016A0925F00D9C949 /* MyContainerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
