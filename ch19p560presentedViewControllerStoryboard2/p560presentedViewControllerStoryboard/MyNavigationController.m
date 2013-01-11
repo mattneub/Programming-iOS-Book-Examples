@@ -16,13 +16,14 @@
  
  First, leave the two chunks of code here commented out, and run the example.
  Make sure you understand from the logging how it works:
- the runtime searches for a segue destination by walking up the parent chain
- until it finds someone who says YES to canPerformUnwindSegueAction:.
+ the runtime searches for a segue destination by walking up the v.c. chain
+ until it finds someone who says YES to canPerformUnwindSegueAction:
+ (or at least has the appropriate action method and doesn't say NO).
  
  Second, uncomment the first chunk of code below and run the example.
  The result appears to be the same, but look at the logging and you'll see
  that what we've done is to change the way the segue destination is found.
- The second controller up the parent chain (RootViewController) is contained,
+ The second controller up the chain (RootViewController) is contained,
  so *before* we consult his canPerformUnwindSegueAction:,
  we consult his *container* to see if the container implements viewControllerForUnwindSegueAction.
  In this case, the container (this navigation controller) *does* implement it,

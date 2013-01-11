@@ -26,6 +26,8 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+// this isn't strictly necessary; if we don't say no, the answer is yes
+
 -(BOOL)canPerformUnwindSegueAction:(SEL)action fromViewController:(UIViewController *)fromViewController withSender:(id)sender {
     NSLog(@"root view controller can perform, returning YES");
     return YES;
