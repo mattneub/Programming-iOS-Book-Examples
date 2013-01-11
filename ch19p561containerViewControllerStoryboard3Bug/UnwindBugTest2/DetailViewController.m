@@ -27,10 +27,14 @@
     self.masterPopoverController = nil;
 }
 
+// this works around the bug
+// if not full screen, pass the unwind search on up to the split view controller
+-(BOOL)canPerformUnwindSegueAction:(SEL)action fromViewController:(UIViewController *)fromViewController withSender:(id)sender {
+    return (fromViewController.modalPresentationStyle == UIModalPresentationFullScreen);
+}
 
-// to work around the bug, comment out (or rename) this method
 -(IBAction)unwind:(UIStoryboardSegue*)seg{
-    NSLog(@"%@", @"unwind");
+    NSLog(@"detail view controller %@", @"unwind");
 }
 
 @end

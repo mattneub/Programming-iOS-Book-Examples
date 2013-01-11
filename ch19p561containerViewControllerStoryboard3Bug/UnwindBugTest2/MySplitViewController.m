@@ -8,7 +8,7 @@
 @implementation MySplitViewController
 
 -(IBAction)unwind:(UIStoryboardSegue*)seg{
-    NSLog(@"%@", @"unwind");
+    NSLog(@"split view controller %@", @"unwind");
 }
 
 
