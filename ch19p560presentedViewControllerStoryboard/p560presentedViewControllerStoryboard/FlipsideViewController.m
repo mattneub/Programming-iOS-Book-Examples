@@ -25,7 +25,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"returnFromAlternate"]) {
-        NSLog(@"preparing for unwind segue");
+        NSLog(@"preparing for unwind segue to %@", segue.destinationViewController);
     }
 }
 
