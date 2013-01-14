@@ -30,7 +30,7 @@
 
 -(void)encodeRestorableStateWithCoder:(NSCoder *)coder {
     NSLog(@"pep encode");
-    [coder encodeObject:self.boy forKey:@"boy"]; // this our only state-saving move!
+    [coder encodeObject:self.boy forKey:@"boy"]; // this is our only state-saving move!
     [super encodeRestorableStateWithCoder:coder];
 }
 

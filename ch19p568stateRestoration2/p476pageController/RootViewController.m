@@ -21,6 +21,32 @@
     return result;
 }
 
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    NSLog(@"rvc viewdidload");
+}
+
+-(void)viewWillAppear:(BOOL) animated {
+    [super viewWillAppear:animated];
+    NSLog(@"rvc view will appear");
+}
+
+-(void)viewDidAppear:(BOOL) animated {
+    [super viewDidAppear:animated];
+    NSLog(@"rvc view did appear");
+}
+
+-(void)viewWillDisappear:(BOOL) animated {
+    [super viewWillDisappear:animated];
+    NSLog(@"rvc view will disappear");
+}
+
+-(void)viewDidDisappear:(BOOL) animated {
+    [super viewDidDisappear:animated];
+    NSLog(@"rvc view did disappear");
+}
+
+
 -(void)encodeRestorableStateWithCoder:(NSCoder *)coder {
     NSLog(@"rvc encode");
     // nothing to do

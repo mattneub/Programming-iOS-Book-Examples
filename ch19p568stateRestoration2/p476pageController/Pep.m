@@ -54,10 +54,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"pep viewdidload");
     self.name.text = self.boy;
     self.pic.image = [UIImage imageNamed:
                       [NSString stringWithFormat: @"%@.jpg", [self.boy lowercaseString]]];
 }
+
+
+-(void)viewWillAppear:(BOOL) animated {
+    [super viewWillAppear:animated];
+    NSLog(@"pep view will appear");
+}
+
+-(void)viewDidAppear:(BOOL) animated {
+    [super viewDidAppear:animated];
+    NSLog(@"pep view did appear");
+}
+
+-(void)viewWillDisappear:(BOOL) animated {
+    [super viewWillDisappear:animated];
+    NSLog(@"pep view will disappear");
+}
+
+-(void)viewDidDisappear:(BOOL) animated {
+    [super viewDidDisappear:animated];
+    NSLog(@"pep view did disappear");
+}
+
 
 - (IBAction)doButton:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

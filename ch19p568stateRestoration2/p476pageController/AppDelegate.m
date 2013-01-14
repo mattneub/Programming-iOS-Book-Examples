@@ -88,4 +88,8 @@
     NSLog(@"appdiddecode");
 }
 
+-(void)application:(UIApplication *)application willEncodeRestorableStateWithCoder:(NSCoder *)coder {
+    NSLog(@"appwillencode");
+}
+
 @end
