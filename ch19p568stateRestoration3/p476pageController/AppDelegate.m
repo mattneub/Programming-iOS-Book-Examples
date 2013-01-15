@@ -20,12 +20,16 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
 // answer yes to the two big questions
 
 -(BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder {
+    
+    NSLog(@"%@", [coder decodeObjectForKey:UIApplicationStateRestorationBundleVersionKey]);
+    
     return YES;
 }
 
