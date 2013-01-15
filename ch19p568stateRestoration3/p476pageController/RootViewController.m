@@ -60,6 +60,7 @@
                                  initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl
                                  navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                  options:nil];
+    // pvc.restorationIdentifier = @"pvc"; // no need
     
     // give it an initial page
     Pep* page = [[Pep alloc] initWithPepBoy:(self.pep)[0] nib: nil bundle: nil];

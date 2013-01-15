@@ -28,7 +28,7 @@
     return YES;
 }
 
--(UIViewController *)application:(UIApplication *)application viewControllerWithRestorationIdentifierPath:(NSArray *)ic coder:(NSCoder *)coder {
+-(UIViewController *)applicationNOT:(UIApplication *)application viewControllerWithRestorationIdentifierPath:(NSArray *)ic coder:(NSCoder *)coder {
     if ([[ic lastObject] isEqualToString:@"nav"]) {
         return self.window.rootViewController;
     }
@@ -38,5 +38,7 @@
 
     return nil;
 }
+
+// all load, all appear, all decode
 
 @end
