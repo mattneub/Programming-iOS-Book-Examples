@@ -14,7 +14,7 @@
     self.view = sv;
     CGFloat y = 10;
     for (int i=0; i<30; i++) {
-        UILabel* lab = [[UILabel alloc] init];
+        UILabel* lab = [UILabel new];
         lab.text = [NSString stringWithFormat:@"This is label %i", i+1];
         [lab sizeToFit];
         CGRect f = lab.frame;
@@ -34,6 +34,7 @@
     CGSize sz = sv.bounds.size;
     sz.height = y;
     sv.contentSize = sz; // This is the crucial line
+    
 }
 
 -(NSUInteger)supportedInterfaceOrientations {
@@ -43,6 +44,7 @@
             break;
         case 2:
             result = UIInterfaceOrientationMaskAll;
+            break;
     }
     return result;
 }

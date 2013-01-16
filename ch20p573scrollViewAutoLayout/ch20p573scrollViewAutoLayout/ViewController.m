@@ -18,7 +18,7 @@
  Strategy 1:
  A UIView stands in for the content view area.
  It *does* translate autoresizing mask into constraints,
- and it most not have other external constraints;
+ and it must not have other external constraints;
  We set the scroll view's contentSize as in the old days.
  */
 
@@ -29,11 +29,11 @@
     [self.scrollView removeConstraints:self.constraints];
 }
 
--(void)viewDidLayoutSubviews {
+-(void)viewWillLayoutSubviews {
     if (!finishedLayout) {
         finishedLayout = YES;
         self.scrollView.contentSize = self.contentView.bounds.size;
-        [self.view layoutSubviews];
+        // [self.view layoutSubviews];
         // NSLog(@"%@", @"here");
     }
 }

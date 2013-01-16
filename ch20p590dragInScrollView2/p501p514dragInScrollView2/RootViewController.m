@@ -8,7 +8,7 @@
 
 @implementation RootViewController 
 
-// variant on the preceding example: not in the book, uses a feature new in iOS 5
+// variant on the preceding example
 // at the outset, there is no flag
 // the user can summon the flag with a swipe to the right
 // demonstrates that we can now interact with the scroll view's built-in gesture recognizers
@@ -141,7 +141,8 @@
 
 - (void) keepDragging: (UIPanGestureRecognizer*) p {
     // the delay here, combined with the change in offset, determines the speed of autoscrolling
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC);
+    float delay = 0.1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self dragging: p];
     });

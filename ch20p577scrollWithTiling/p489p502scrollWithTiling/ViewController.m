@@ -1,11 +1,11 @@
 
 
-#import "RootViewController.h"
+#import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "TiledView.h"
 
 
-@implementation RootViewController
+@implementation ViewController
 
 
 -(void)loadView {
@@ -16,7 +16,7 @@
     // but to save space I've included just 9, making a three-by-three image
     CGRect f = CGRectMake(0,0,3*TILESIZE,3*TILESIZE);
     TiledView* content = [[TiledView alloc] initWithFrame:f];
-    float tsz = 256 * content.layer.contentsScale;
+    float tsz = TILESIZE * content.layer.contentsScale;
     [(CATiledLayer*)content.layer setTileSize: CGSizeMake(tsz, tsz)];
     [self.view addSubview:content];
     [sv setContentSize: f.size];

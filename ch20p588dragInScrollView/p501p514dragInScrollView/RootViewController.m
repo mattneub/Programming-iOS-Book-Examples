@@ -53,10 +53,11 @@
     UIImageView* iv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"smiley.png"]];
     iv.translatesAutoresizingMaskIntoConstraints = NO;
     [sv addSubview:iv];
-    [self.view addConstraint:
-     [NSLayoutConstraint constraintWithItem:iv attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:-5]];
-    [self.view addConstraint:
-     [NSLayoutConstraint constraintWithItem:iv attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:5]];
+    UIView* sup = sv.superview;
+    [sup addConstraint:
+     [NSLayoutConstraint constraintWithItem:iv attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:sup attribute:NSLayoutAttributeRight multiplier:1 constant:-5]];
+    [sup addConstraint:
+     [NSLayoutConstraint constraintWithItem:iv attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:sup attribute:NSLayoutAttributeTop multiplier:1 constant:5]];
 }
 
 - (void) dragging: (UIPanGestureRecognizer*) p {
@@ -126,7 +127,8 @@
 
 - (void) keepDragging: (UIPanGestureRecognizer*) p {
     // the delay here, combined with the change in offset, determines the speed of autoscrolling
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC);
+    float delay = 0.1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self dragging: p];
     });

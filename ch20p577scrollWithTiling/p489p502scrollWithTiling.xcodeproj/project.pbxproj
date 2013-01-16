@@ -13,7 +13,7 @@
 		A4620BC614675C6E00D188B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4620BC414675C6E00D188B9 /* InfoPlist.strings */; };
 		A4620BC814675C6E00D188B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4620BC714675C6E00D188B9 /* main.m */; };
 		A4620BCC14675C6E00D188B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4620BCB14675C6E00D188B9 /* AppDelegate.m */; };
-		A4620BD614675CA900D188B9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4620BD314675CA900D188B9 /* RootViewController.m */; };
+		A4620BD614675CA900D188B9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4620BD314675CA900D188B9 /* ViewController.m */; };
 		A4620BD714675CA900D188B9 /* TiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4620BD514675CA900D188B9 /* TiledView.m */; };
 		A4620BE114675CC100D188B9 /* Shed_1000_0_0.png in Resources */ = {isa = PBXBuildFile; fileRef = A4620BD814675CC100D188B9 /* Shed_1000_0_0.png */; };
 		A4620BE214675CC100D188B9 /* Shed_1000_0_1.png in Resources */ = {isa = PBXBuildFile; fileRef = A4620BD914675CC100D188B9 /* Shed_1000_0_1.png */; };
@@ -38,8 +38,8 @@
 		A4620BC914675C6E00D188B9 /* p489p502scrollWithTiling-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p489p502scrollWithTiling-Prefix.pch"; sourceTree = "<group>"; };
 		A4620BCA14675C6E00D188B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A4620BCB14675C6E00D188B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A4620BD214675CA900D188B9 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		A4620BD314675CA900D188B9 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A4620BD214675CA900D188B9 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A4620BD314675CA900D188B9 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A4620BD414675CA900D188B9 /* TiledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiledView.h; sourceTree = "<group>"; };
 		A4620BD514675CA900D188B9 /* TiledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiledView.m; sourceTree = "<group>"; };
 		A4620BD814675CC100D188B9 /* Shed_1000_0_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shed_1000_0_0.png; sourceTree = "<group>"; };
@@ -102,8 +102,8 @@
 			children = (
 				A4620BCA14675C6E00D188B9 /* AppDelegate.h */,
 				A4620BCB14675C6E00D188B9 /* AppDelegate.m */,
-				A4620BD214675CA900D188B9 /* RootViewController.h */,
-				A4620BD314675CA900D188B9 /* RootViewController.m */,
+				A4620BD214675CA900D188B9 /* ViewController.h */,
+				A4620BD314675CA900D188B9 /* ViewController.m */,
 				A4620BD414675CA900D188B9 /* TiledView.h */,
 				A4620BD514675CA900D188B9 /* TiledView.m */,
 				A4620BC214675C6E00D188B9 /* Supporting Files */,
@@ -203,7 +203,7 @@
 			files = (
 				A4620BC814675C6E00D188B9 /* main.m in Sources */,
 				A4620BCC14675C6E00D188B9 /* AppDelegate.m in Sources */,
-				A4620BD614675CA900D188B9 /* RootViewController.m in Sources */,
+				A4620BD614675CA900D188B9 /* ViewController.m in Sources */,
 				A4620BD714675CA900D188B9 /* TiledView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

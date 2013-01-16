@@ -11,7 +11,6 @@
 
 // for best results, zoom with lines 14 and 15 showing, so you can see the tiling change
 
-#define which 1 // try "2" to see how to get the same behavior on double-resolution screen
 
 - (void)loadView {
     UIScrollView* sv = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
@@ -30,24 +29,6 @@
     sv.maximumZoomScale = 2.0;
     sv.delegate = self;
     
-    switch (which) {
-        case 1: break;
-        case 2:
-        {
-            if ([[UIScreen mainScreen] scale] > 1.0) {
-                NSLog(@"%@", NSStringFromCGRect(f));
-                // these lines were always just wrong, it appears
-                // perhaps this is because contentsscale now compensates for us
-                // also I saw a weird behavior where drawRect picked a much smaller size
-                //f.size.width *= 4.0;
-                //f.size.height *= 4.0;
-                //lay.tileSize = f.size;
-                lay.levelsOfDetailBias = 3; // 2 wasn't enough to trigger retile on zoom
-                NSLog(@"%@", NSStringFromCGRect(f));
-            }
-            break;
-        }
-    }
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
