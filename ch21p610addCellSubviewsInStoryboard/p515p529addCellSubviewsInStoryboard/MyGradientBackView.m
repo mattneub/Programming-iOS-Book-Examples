@@ -13,13 +13,10 @@
 
 @implementation MyGradientBackView
 
-// to change the background image to the gradient from the previous examples,
-// change its class in the storyboard to MyGradientImageView
-
 - (void) awakeFromNib {
     [super awakeFromNib];
     self.backgroundColor = [UIColor blackColor];
-    UIView* v2 = [[GradientView alloc] init];
+    UIView* v2 = [GradientView new];
     CAGradientLayer* lay = (CAGradientLayer*)v2.layer;
     lay.colors = @[(id)[UIColor colorWithWhite:0.6 alpha:1].CGColor,
     (id)([UIColor colorWithWhite:0.4 alpha:1].CGColor)];

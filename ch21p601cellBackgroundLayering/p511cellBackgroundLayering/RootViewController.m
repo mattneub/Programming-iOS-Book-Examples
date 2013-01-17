@@ -46,11 +46,11 @@
     // but with the modern dequeue system, the cell is never nil
     // so we need another way to know if we've initially configured this cell
     if (!cell.backgroundView) {
-        UIImageView* v = [[UIImageView alloc] init]; // no need to set frame
+        UIImageView* v = [UIImageView new]; // no need to set frame
         v.contentMode = UIViewContentModeScaleToFill;
         v.image = [UIImage imageNamed:@"linen.png"];
         cell.backgroundView = v;
-        UIView* v2 = [[UIView alloc] init]; // no need to set frame
+        UIView* v2 = [UIView new]; // no need to set frame
         v2.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.1];
         cell.selectedBackgroundView = v2;
         cell.textLabel.backgroundColor = [UIColor clearColor];

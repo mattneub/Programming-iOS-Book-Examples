@@ -1,15 +1,25 @@
 
 
 #import "RootViewController.h"
-#import "MyCell.h"
 #import <QuartzCore/QuartzCore.h>
+
+@interface MyCell : UITableViewCell
+@end
+@implementation MyCell
+-(id)initWithStyle:(UITableViewCellStyle)style
+   reuseIdentifier:(NSString *)reuseIdentifier {
+    // change style
+    self = [super initWithStyle:UITableViewCellStyleValue2
+                reuseIdentifier:reuseIdentifier];
+    return self;
+}
+@end
+
 
 @interface GradientView:UIView
 @end
 @implementation GradientView
-+(Class)layerClass {
-    return [CAGradientLayer class];
-}
++(Class)layerClass { return [CAGradientLayer class]; }
 @end
 
 @implementation RootViewController
@@ -50,7 +60,7 @@
     // cell is never nil, so we need another test for whether we've done common config
     if (cell.backgroundView == nil) {
                 
-        UIView* v = [[UIView alloc] init];
+        UIView* v = [UIView new];
         v.backgroundColor = [UIColor blackColor];
         
         // I've changed the way I draw this gradient with rounded corners,
@@ -62,7 +72,7 @@
         // I've declared the entire GradientView class in this class's interface file
         // that's a useful trick for one-shot simple classes
         
-        UIView* v2 = [[GradientView alloc] init];
+        UIView* v2 = [GradientView new];
         CAGradientLayer* lay = (CAGradientLayer*)v2.layer;
         lay.colors = @[(id)[UIColor colorWithWhite:0.6 alpha:1].CGColor,
         (id)([UIColor colorWithWhite:0.4 alpha:1].CGColor)];
@@ -76,8 +86,8 @@
         cell.backgroundView = v;
         
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
-        cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping; // UILineBreakModeWordWrap deprecated
-        cell.textLabel.numberOfLines = 2;
+//        cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping; // UILineBreakModeWordWrap deprecated
+//        cell.textLabel.numberOfLines = 2;
         cell.textLabel.textColor = [UIColor whiteColor];
         
         // comment out next lines to see hole punch problem

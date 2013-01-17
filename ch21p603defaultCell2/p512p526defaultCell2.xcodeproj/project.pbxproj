@@ -17,7 +17,6 @@
 		A49A6C761469CA47007F5A7C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A6C741469CA47007F5A7C /* RootViewController.m */; };
 		A49A6C771469CA47007F5A7C /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49A6C751469CA47007F5A7C /* RootView.xib */; };
 		A49A6C791469CAEC007F5A7C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49A6C781469CAEC007F5A7C /* QuartzCore.framework */; };
-		A49A6C881469D427007F5A7C /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A49A6C871469D427007F5A7C /* MyCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +35,6 @@
 		A49A6C741469CA47007F5A7C /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		A49A6C751469CA47007F5A7C /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
 		A49A6C781469CAEC007F5A7C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		A49A6C861469D427007F5A7C /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
-		A49A6C871469D427007F5A7C /* MyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +88,6 @@
 				A49A6C731469CA47007F5A7C /* RootViewController.h */,
 				A49A6C741469CA47007F5A7C /* RootViewController.m */,
 				A49A6C751469CA47007F5A7C /* RootView.xib */,
-				A49A6C861469D427007F5A7C /* MyCell.h */,
-				A49A6C871469D427007F5A7C /* MyCell.m */,
 				A49A6C611469CA0B007F5A7C /* Supporting Files */,
 			);
 			name = p512p526defaultCell2;
@@ -177,7 +172,6 @@
 				A49A6C671469CA0B007F5A7C /* main.m in Sources */,
 				A49A6C6B1469CA0B007F5A7C /* AppDelegate.m in Sources */,
 				A49A6C761469CA47007F5A7C /* RootViewController.m in Sources */,
-				A49A6C881469D427007F5A7C /* MyCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

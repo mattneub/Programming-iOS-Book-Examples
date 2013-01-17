@@ -14,7 +14,7 @@
 
 @implementation RootViewController
 
-#define which 1 // try 2 for cell layout override in cell class
+#define which 2 // try 2 for cell layout override in cell class
 
 -(void)viewDidLoad {
     [super viewDidLoad];
