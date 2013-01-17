@@ -39,9 +39,9 @@
     if (cell.backgroundView == nil) {
         // stuff that is in common for all cells can go here
         
-        UIView* v = [[UIView alloc] init];
+        UIView* v = [UIView new];
         v.backgroundColor = [UIColor blackColor];
-        UIView* v2 = [[GradientView alloc] init];
+        UIView* v2 = [GradientView new];
         CAGradientLayer* lay = (CAGradientLayer*)v2.layer;
         lay.colors = @[(id)[UIColor colorWithWhite:0.6 alpha:1].CGColor,
         (id)([UIColor colorWithWhite:0.4 alpha:1].CGColor)];
@@ -56,11 +56,11 @@
         // insert our own views into the contentView
         
         // CGFloat side = cell.contentView.bounds.size.height;
-        UIImageView* iv = [[UIImageView alloc] init];
+        UIImageView* iv = [UIImageView new];
         iv.tag = 1;
         [cell.contentView addSubview:iv];
 
-        UILabel* lab = [[UILabel alloc] init];
+        UILabel* lab = [UILabel new];
         lab.tag = 2;
         [cell.contentView addSubview:lab];
         
@@ -68,31 +68,23 @@
         // we can use autolayout to lay them out
         
         NSDictionary* d = NSDictionaryOfVariableBindings(iv, lab);
-        
-        // imageView is a square
         iv.translatesAutoresizingMaskIntoConstraints = NO;
-        [iv addConstraint:
-         [NSLayoutConstraint constraintWithItem:iv attribute:NSLayoutAttributeWidth
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:iv attribute:NSLayoutAttributeHeight
-                                    multiplier:1 constant:0]];
-        // height pinned to superview
-        [cell.contentView addConstraints:
-         [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[iv]-0-|"
-                                                 options:0 metrics:nil views:d]];
-        // right edge pinned to superview
-        [cell.contentView addConstraints:
-         [NSLayoutConstraint constraintsWithVisualFormat:@"H:[iv]-0-|"
-                                                 options:0 metrics:nil views:d]];
-        
-        // label has height pinned to superview
         lab.translatesAutoresizingMaskIntoConstraints = NO;
+        // image view is vertically centered
+        [cell.contentView addConstraint:
+         [NSLayoutConstraint
+          constraintWithItem:iv attribute:NSLayoutAttributeCenterY relatedBy:0 toItem:cell.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+        // it's a square
+        [cell.contentView addConstraint:
+         [NSLayoutConstraint
+          constraintWithItem:iv attribute:NSLayoutAttributeWidth relatedBy:0 toItem:iv attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];        
+        // label has height pinned to superview
         [cell.contentView addConstraints:
          [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[lab]-0-|"
                                                  options:0 metrics:nil views:d]];
         // horizontal margins
         [cell.contentView addConstraints:
-         [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-5-[lab]-10-[iv]"
+         [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-5-[lab]-10-[iv]-5-|"
                                                  options:0 metrics:nil views:d]];
 
     }
