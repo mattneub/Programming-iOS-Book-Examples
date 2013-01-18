@@ -4,7 +4,6 @@
 
 @interface RootViewController ()
 
-@property (nonatomic, strong) NSArray* states;
 @property (nonatomic, strong) NSMutableArray* sectionNames;
 @property (nonatomic, strong) NSMutableArray* sectionData;
 @end
@@ -14,12 +13,12 @@
 -(void) createData { // not in nib any more so can't use awakeFromNib for this
     
     NSString* s = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"states" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil];
-    self.states = [s componentsSeparatedByString:@"\n"];
+    NSArray* states = [s componentsSeparatedByString:@"\n"];
     
     self.sectionNames = [NSMutableArray array];
     self.sectionData = [NSMutableArray array];
     NSString* previous = @"";
-    for (NSString* aState in self.states) {
+    for (NSString* aState in states) {
         // get the first letter
         NSString* c = [aState substringToIndex:1];
         // only add a letter to sectionNames when it's a different letter
@@ -40,6 +39,8 @@
  you can add your own content to the contentView. That's all there is to it! (Except for tint.)
  You can subclass it. You can register it by class or by nib.
  */
+
+// warning: detailTextLabel seems broken; it never appears
 
 
 - (void)viewDidLoad
@@ -71,54 +72,60 @@
         NSLog(@"creating new header view"); // this will prove we're reusing views
         // it works; we're creating only about 6 views
         h.tintColor = [UIColor redColor]; // this will prove we're using these reusable views
+        
         // this next line actually overrides the tinting we just set
         // delete "contentView" to get a deprecation message!
         // you are not supposed to set the backgroundColor directly
-        h.contentView.backgroundColor = [UIColor redColor];
-        // so, let's have a little fun: add image view to header
-        UIImageView* v = [[UIImageView alloc] init];
-        v.tag = 1;
+        //h.contentView.backgroundColor = [UIColor redColor];
+        // so, let's have a little fun
+        UILabel* lab = [UILabel new];
+        lab.tag = 1;
+        lab.font = [UIFont fontWithName:@"Georgia-Bold" size:22];
+        lab.textColor = [UIColor greenColor];
+        lab.backgroundColor = [UIColor clearColor];
+        [h.contentView addSubview:lab];
+        
+        
+        UIImageView* v = [UIImageView new];
+        v.tag = 2;
         v.backgroundColor = [UIColor blackColor];
+        v.image = [UIImage imageNamed:@"us_flag_small.gif"];
         [h.contentView addSubview:v];
         
         // I wasn't able to set up a constraint between the image view and the built-in text label
         // this may be because the built-in text label isn't really a subview at this time
-        // the lesson is probably that you can't really mix and match as I'm doing here
+        // LATER: aha, I figured out why: the built-in text label is not in the content view
+        // the lesson is probably that you can't really mix and match
+        // I changed the code so I no longer do that
+        lab.translatesAutoresizingMaskIntoConstraints = NO;
         v.translatesAutoresizingMaskIntoConstraints = NO;
         [h.contentView addConstraints:
-         [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-40-[v(40)]"
+         [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-5-[lab(25)]-10-[v(40)]"
                                                  options:0 metrics:nil
-                                                   views:@{@"v":v}]];
+                                                   views:@{@"v":v, @"lab":lab}]];
         [h.contentView addConstraints:
          [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[v]-0-|"
                                                  options:0 metrics:nil
                                                    views:@{@"v":v}]];
+        [h.contentView addConstraints:
+         [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[lab]-0-|"
+                                                 options:0 metrics:nil
+                                                   views:@{@"lab":lab}]];
+
 
     }
-    NSString* stateName = (self.sectionData)[section][0]; // use first state of section
-    stateName = [stateName lowercaseString];
-    stateName = [stateName stringByReplacingOccurrencesOfString:@" " withString:@""];
-    stateName = [NSString stringWithFormat:@"flag_%@.gif", stateName];
-    UIImage* im = [UIImage imageNamed: stateName];
-    UIImageView* iv = (UIImageView*)[h.contentView viewWithTag:1];
-    iv.image = im;
-    
-    
-    // hmmm, this next line fails!
-    // things must be happening in the wrong order
-    // again the textLabel is giving us trouble
-    // I suspect that the textLabel isn't set up until later in the story
-    // h.textLabel.font = [UIFont fontWithName:@"Georgia" size:18];
+    UILabel* lab = (UILabel*)[h.contentView viewWithTag:1];
+    lab.text = self.sectionNames[section];
+//    NSString* stateName = (self.sectionData)[section][0]; // use first state of section
+//    stateName = [stateName lowercaseString];
+//    stateName = [stateName stringByReplacingOccurrencesOfString:@" " withString:@""];
+//    stateName = [NSString stringWithFormat:@"flag_%@.gif", stateName];
+//    UIImage* im = [UIImage imageNamed: stateName];
+//    UIImageView* iv = (UIImageView*)[h.contentView viewWithTag:2];
+//    iv.image = im;
     return h;
 }
 
--(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-    // okay, so setting up the textLabel earlier didn't work?
-    // let's do it here instead, another new feature
-    UITableViewHeaderFooterView* h = (id)view;
-    h.textLabel.font = [UIFont fontWithName:@"Georgia-Bold" size:22];
-    h.textLabel.textColor = [UIColor greenColor];
-}
 
 // these "did end displaying" events are new in iOS 6 (header, footer, and even cell)
 // presumably you could use them for some sort of dynamic efficiency?
@@ -130,12 +137,6 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 30;
-}
-
-
-- (NSString *)tableView:(UITableView *)tableView
-titleForHeaderInSection:(NSInteger)section {
-    return (self.sectionNames)[section];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -153,9 +154,16 @@ titleForHeaderInSection:(NSInteger)section {
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = 
     [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    NSString* s =
-    (self.sectionData)[[indexPath section]][[indexPath row]];
+    NSString* s = self.sectionData[indexPath.section][indexPath.row];
     cell.textLabel.text = s;
+    
+    NSString* stateName = s;
+    stateName = [stateName lowercaseString];
+    stateName = [stateName stringByReplacingOccurrencesOfString:@" " withString:@""];
+    stateName = [NSString stringWithFormat:@"flag_%@.gif", stateName];
+    UIImage* im = [UIImage imageNamed: stateName];
+    cell.imageView.image = im;
+    
     return cell;
 }
 

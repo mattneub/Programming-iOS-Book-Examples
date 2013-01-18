@@ -16,6 +16,7 @@
 		A431EC57146AE43D00724BFB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A431EC55146AE43D00724BFB /* RootViewController.m */; };
 		A431EC58146AE43D00724BFB /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A431EC56146AE43D00724BFB /* RootView.xib */; };
 		A431EC5A146AE44A00724BFB /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = A431EC59146AE44A00724BFB /* states.txt */; };
+		C935ACFA16A9C6ED00EB9E90 /* us_flag_small.gif in Resources */ = {isa = PBXBuildFile; fileRef = C935ACF916A9C6ED00EB9E90 /* us_flag_small.gif */; };
 		C979E72F1642F0EF009EF366 /* flag_alabama.gif in Resources */ = {isa = PBXBuildFile; fileRef = C979E6FD1642F0EF009EF366 /* flag_alabama.gif */; };
 		C979E7301642F0EF009EF366 /* flag_alaska.gif in Resources */ = {isa = PBXBuildFile; fileRef = C979E6FE1642F0EF009EF366 /* flag_alaska.gif */; };
 		C979E7311642F0EF009EF366 /* flag_arizona.gif in Resources */ = {isa = PBXBuildFile; fileRef = C979E6FF1642F0EF009EF366 /* flag_arizona.gif */; };
@@ -83,6 +84,7 @@
 		A431EC55146AE43D00724BFB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		A431EC56146AE43D00724BFB /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
 		A431EC59146AE44A00724BFB /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
+		C935ACF916A9C6ED00EB9E90 /* us_flag_small.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = us_flag_small.gif; path = ../../../../../../../../../../../Users/matt/Desktop/us_flag_small.gif; sourceTree = "<group>"; };
 		C979E6FD1642F0EF009EF366 /* flag_alabama.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_alabama.gif; sourceTree = "<group>"; };
 		C979E6FE1642F0EF009EF366 /* flag_alaska.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_alaska.gif; sourceTree = "<group>"; };
 		C979E6FF1642F0EF009EF366 /* flag_arizona.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_arizona.gif; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		C979E6FB1642F0DE009EF366 /* flags */ = {
 			isa = PBXGroup;
 			children = (
+				C935ACF916A9C6ED00EB9E90 /* us_flag_small.gif */,
 				C979E6FD1642F0EF009EF366 /* flag_alabama.gif */,
 				C979E6FE1642F0EF009EF366 /* flag_alaska.gif */,
 				C979E6FF1642F0EF009EF366 /* flag_arizona.gif */,
@@ -363,6 +366,7 @@
 				C979E75E1642F0EF009EF366 /* flag_westvirginia.gif in Resources */,
 				C979E75F1642F0EF009EF366 /* flag_wisconsin.gif in Resources */,
 				C979E7601642F0EF009EF366 /* flag_wyoming.gif in Resources */,
+				C935ACFA16A9C6ED00EB9E90 /* us_flag_small.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
