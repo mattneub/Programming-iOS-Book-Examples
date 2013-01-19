@@ -11,7 +11,7 @@
 
 @implementation ViewController
 
-#define which 1 // try "2" for layout-and-constraints way
+#define which 3 // try "2" for layout-and-constraints way
   // but I think "3" is most elegant and appropriate
   // takes a lot of preparation, but expresses what we're doing with most elegance and clarity:
   // namely, we're swapping constraints in and out
@@ -76,11 +76,11 @@
     [self.view addSubview:br];
     NSArray* cons;
     cons = [NSLayoutConstraint
-            constraintsWithVisualFormat:@"V:|-0-[br]-0-|"
+            constraintsWithVisualFormat:@"V:|[br]|"
             options:0 metrics:nil views:@{@"br":br}];
     [self.view addConstraints:cons];
     cons = [NSLayoutConstraint
-            constraintsWithVisualFormat:@"H:|-0-[br]"
+            constraintsWithVisualFormat:@"H:|[br]"
             options:0 metrics:nil views:@{@"br":br}];
     [self.view addConstraints:cons];
     [self.view addConstraint:
@@ -128,7 +128,7 @@
     // "b.r. is pinned to top and bottom of superview"
     [self.view addConstraints:
      [NSLayoutConstraint
-      constraintsWithVisualFormat:@"V:|-0-[br]-0-|"
+      constraintsWithVisualFormat:@"V:|[br]|"
       options:0 metrics:nil views:@{@"br":br}]];
     
     // "b.r. is 1/3 the width of superview"
@@ -142,7 +142,7 @@
     // "onscreen, b.r.'s left is pinned to superview's left"
     NSArray* marrOn =
     [NSLayoutConstraint
-     constraintsWithVisualFormat:@"H:|-0-[br]"
+     constraintsWithVisualFormat:@"H:|[br]"
      options:0 metrics:nil views:@{@"br":br}];
     
     // "offscreen, b.r.'s right is pinned to superview's left"

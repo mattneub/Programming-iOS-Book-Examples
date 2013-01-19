@@ -80,7 +80,7 @@
           constraintWithItem:iv attribute:NSLayoutAttributeWidth relatedBy:0 toItem:iv attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];        
         // label has height pinned to superview
         [cell.contentView addConstraints:
-         [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[lab]-0-|"
+         [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[lab]|"
                                                  options:0 metrics:nil views:d]];
         // horizontal margins
         [cell.contentView addConstraints:

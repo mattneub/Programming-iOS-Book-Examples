@@ -76,11 +76,11 @@
     [self.view addSubview:pvc.view];
     [self.view addConstraints:
      [NSLayoutConstraint
-      constraintsWithVisualFormat:@"V:|-0-[pvc]-0-|"
+      constraintsWithVisualFormat:@"V:|[pvc]|"
       options:0 metrics:nil views:@{@"pvc":pvc.view}]];
     [self.view addConstraints:
      [NSLayoutConstraint
-      constraintsWithVisualFormat:@"H:|-0-[pvc]-0-|"
+      constraintsWithVisualFormat:@"H:|[pvc]|"
       options:0 metrics:nil views:@{@"pvc":pvc.view}]];
     [pvc didMoveToParentViewController:self];
 }

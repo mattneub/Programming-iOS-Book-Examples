@@ -104,11 +104,11 @@
                                                  options:0 metrics:nil
                                                    views:@{@"v":v, @"lab":lab}]];
         [h.contentView addConstraints:
-         [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[v]-0-|"
+         [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v]|"
                                                  options:0 metrics:nil
                                                    views:@{@"v":v}]];
         [h.contentView addConstraints:
-         [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[lab]-0-|"
+         [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[lab]|"
                                                  options:0 metrics:nil
                                                    views:@{@"lab":lab}]];
 

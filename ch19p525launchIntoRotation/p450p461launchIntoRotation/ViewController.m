@@ -65,7 +65,7 @@
               multiplier:1 constant:side]];
             [self.view addConstraints:
              [NSLayoutConstraint
-              constraintsWithVisualFormat:@"V:|-0-[square(side)]"
+              constraintsWithVisualFormat:@"V:|[square(side)]"
               options:0 metrics:@{@"side":@(side)}
               views:@{@"square":square}]];
             [self.view addConstraint:

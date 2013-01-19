@@ -36,10 +36,10 @@
     vc.view.translatesAutoresizingMaskIntoConstraints = NO;
     [self.panel addConstraints:
      [NSLayoutConstraint
-      constraintsWithVisualFormat:@"H:|-0-[v]-0-|" options:0 metrics:nil views:@{@"v":vc.view}]];
+      constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:@{@"v":vc.view}]];
     [self.panel addConstraints:
      [NSLayoutConstraint
-      constraintsWithVisualFormat:@"V:|-0-[v]-0-|" options:0 metrics:nil views:@{@"v":vc.view}]];
+      constraintsWithVisualFormat:@"V:|[v]|" options:0 metrics:nil views:@{@"v":vc.view}]];
 
     
 }
@@ -64,10 +64,10 @@
                                 NSLog(@"%@", @"doing constraints");
                                 [self.panel addConstraints:
                                  [NSLayoutConstraint
-                                  constraintsWithVisualFormat:@"H:|-0-[v]-0-|" options:0 metrics:nil views:@{@"v":tovc.view}]];
+                                  constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:@{@"v":tovc.view}]];
                                 [self.panel addConstraints:
                                  [NSLayoutConstraint
-                                  constraintsWithVisualFormat:@"V:|-0-[v]-0-|" options:0 metrics:nil views:@{@"v":tovc.view}]];
+                                  constraintsWithVisualFormat:@"V:|[v]|" options:0 metrics:nil views:@{@"v":tovc.view}]];
 
                             }
                             completion:^(BOOL done){
