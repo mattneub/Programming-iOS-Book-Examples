@@ -16,6 +16,7 @@
 		A431EC57146AE43D00724BFB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A431EC55146AE43D00724BFB /* RootViewController.m */; };
 		A431EC58146AE43D00724BFB /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A431EC56146AE43D00724BFB /* RootView.xib */; };
 		A431EC5A146AE44A00724BFB /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = A431EC59146AE44A00724BFB /* states.txt */; };
+		C946E7B816AC6BB10000A62B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C946E7B716AC6BB10000A62B /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		A431EC55146AE43D00724BFB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		A431EC56146AE43D00724BFB /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
 		A431EC59146AE44A00724BFB /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
+		C946E7B716AC6BB10000A62B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C946E7B816AC6BB10000A62B /* QuartzCore.framework in Frameworks */,
 				A431EC3E146AE42000724BFB /* UIKit.framework in Frameworks */,
 				A431EC40146AE42000724BFB /* Foundation.framework in Frameworks */,
 				A431EC42146AE42000724BFB /* CoreGraphics.framework in Frameworks */,
@@ -52,6 +55,7 @@
 		A431EC2E146AE42000724BFB = {
 			isa = PBXGroup;
 			children = (
+				C946E7B716AC6BB10000A62B /* QuartzCore.framework */,
 				A431EC43146AE42000724BFB /* p536p550searchableTable */,
 				A431EC3C146AE42000724BFB /* Frameworks */,
 				A431EC3A146AE42000724BFB /* Products */,

@@ -1,6 +1,16 @@
 
 
 #import "RootViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
+@interface GradientView:UIView
+@end
+@implementation GradientView
++(Class)layerClass {
+    return [CAGradientLayer class];
+}
+@end
+
 
 @interface RootViewController ()  <UISearchDisplayDelegate, UISearchBarDelegate>
 
@@ -38,11 +48,12 @@
     }
 }
 
-#define which 1 // try also "2" for scope buttons, "3" for sections, "4" for sections with magnifying glass
+#define which 4 // try also "2" for scope buttons, "3" for sections, "4" for sections with magnifying glass
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // register, the iOS 6 way
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     // new iOS feature: register header and footer views as well!
@@ -54,7 +65,7 @@
     //
     [self createData];
     self.navigationItem.title = @"States";
-    UISearchBar* b = [[UISearchBar alloc] init];
+    UISearchBar* b = [UISearchBar new];
     [b sizeToFit];
     switch (which) {
         case 1: break;
@@ -85,12 +96,14 @@
 // how can I register a cell with the search display controller's table view?
 // at my viewDidLoad time, that table view doesn't even exist yet
 // solution is this method, which is effectively viewDidLoad for that table view
+// this is also the place to do other table configurations, e.g. to make this table look like mine
 
 // by the way, this shows why the new registration system is so great:
 // I got a nice crash message telling me I'd failed to do this registration
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView {
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -226,6 +239,24 @@ titleForHeaderInSection:(NSInteger)section {
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = 
     [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    if (cell.backgroundView == nil) {
+        // stuff that is in common for all cells can go here
+        // added this stuff to illustrate how to make it *look* as if the two tables are the same
+        UIView* v = [UIView new];
+        v.backgroundColor = [UIColor blackColor];
+        UIView* v2 = [GradientView new];
+        CAGradientLayer* lay = (CAGradientLayer*)v2.layer;
+        lay.colors = @[(id)[UIColor colorWithWhite:0.6 alpha:1].CGColor,
+        (id)([UIColor colorWithWhite:0.4 alpha:1].CGColor)];
+        lay.borderWidth = 1;
+        lay.borderColor = [UIColor blackColor].CGColor;
+        lay.cornerRadius = 5;
+        [v addSubview:v2];
+        v2.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        // or you could do the same thing with constraints, but there is no need
+        cell.backgroundView = v;
+        cell.textLabel.backgroundColor = [UIColor clearColor];
+    }
     switch (which) {
         case 1:
         case 2:
