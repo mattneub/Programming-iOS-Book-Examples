@@ -78,17 +78,17 @@ titleForHeaderInSection:(NSInteger)section {
 
 - (void)tableView:(UITableView *)tableView 
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle 
-forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [(self.sectionData)[indexPath.section] 
-     removeObjectAtIndex:indexPath.row];
-    if ([(self.sectionData)[indexPath.section] count] == 0) {
-        [self.sectionData removeObjectAtIndex: indexPath.section];
-        [self.sectionNames removeObjectAtIndex: indexPath.section];
-        [tableView deleteSections:[NSIndexSet indexSetWithIndex: indexPath.section] 
+forRowAtIndexPath:(NSIndexPath *)ip {
+    [(self.sectionData)[ip.section] 
+     removeObjectAtIndex:ip.row];
+    if ([(self.sectionData)[ip.section] count] == 0) {
+        [self.sectionData removeObjectAtIndex: ip.section];
+        [self.sectionNames removeObjectAtIndex: ip.section];
+        [tableView deleteSections:[NSIndexSet indexSetWithIndex: ip.section] 
                  withRowAnimation:UITableViewRowAnimationAutomatic];
         [tableView reloadSectionIndexTitles]; // whoa! in iOS 5 this works! (previously was a no-op)
     } else {
-        [tableView deleteRowsAtIndexPaths:@[indexPath] 
+        [tableView deleteRowsAtIndexPaths:@[ip]
                          withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }

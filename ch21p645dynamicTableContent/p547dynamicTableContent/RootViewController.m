@@ -109,7 +109,7 @@
  numberOfRowsInSection:(NSInteger)section {
     if ([self.hiddenSections containsObject:@(section)])
         return 0;
-    return [(self.sectionData)[section] count];
+    return [self.sectionData[section] count];
 }
 
 // Customize the appearance of table view cells.
@@ -138,8 +138,8 @@
 
 // and here's what to do when the user double-clicks a header
 - (void) tap: (UIGestureRecognizer*) g {
-    UILabel* lab = (UILabel*)g.view;
-    NSString* s = [lab.text substringFromIndex:3];
+    UITableViewHeaderFooterView* v = (id)g.view;
+    NSString* s = [v.textLabel.text substringFromIndex:3];
     NSUInteger sec = [self.sectionNames indexOfObject:s];
     NSUInteger ct = [(NSArray*)(self.sectionData)[sec] count];
     NSNumber* secnum = @(sec);

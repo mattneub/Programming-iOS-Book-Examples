@@ -17,6 +17,12 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     [self.refreshControl addTarget:self action:@selector(doRefresh:) forControlEvents:UIControlEventValueChanged];
+    return;
+    // prove that the refresh control is above the header view
+    UIButton* b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [b setTitle:@"Surprise" forState:UIControlStateNormal];
+    [b sizeToFit];
+    self.tableView.tableHeaderView = b;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -46,6 +52,13 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self.refreshControl endRefreshing];
     });
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView setContentOffset:CGPointMake(0,-44) animated:YES];
+    [self.refreshControl beginRefreshing];
+    [self doRefresh:nil];
+    // NSLog(@"%@", self.tableView.tableHeaderView); // the refresh control is not the header view
 }
 
 

@@ -120,13 +120,13 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     // update data model to match
     NSIndexPath* ip = [self.tableView indexPathForCell:cell];
     if (ip.section == 1)
-        (self.numbers)[ip.row] = cell.textField.text;
+        self.numbers[ip.row] = cell.textField.text;
     else if (ip.section == 0)
         self.name = cell.textField.text;
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    NSString* s = (self.numbers)[fromIndexPath.row];
+    NSString* s = self.numbers[fromIndexPath.row];
     [self.numbers removeObjectAtIndex: fromIndexPath.row];
     [self.numbers insertObject:s atIndex: toIndexPath.row];
     [tableView reloadData]; // to get plus and minus buttons to redraw themselves
