@@ -25,14 +25,14 @@
     
     if (indexPath.item == 0) // degenerate case 1
         return atts;
+    if (atts.frame.origin.x - 1 <= self.sectionInset.left) // degenerate case 2
+        return atts;
     
     NSIndexPath* ipPrev =
     [NSIndexPath indexPathForItem:indexPath.item-1 inSection:indexPath.section];
     
     CGRect fPrev = [self layoutAttributesForItemAtIndexPath:ipPrev].frame;
-    CGFloat rightPrev = fPrev.origin.x + fPrev.size.width + 10;
-    if (atts.frame.origin.x <= rightPrev) // degenerate case 2
-        return atts;
+    CGFloat rightPrev = fPrev.origin.x + fPrev.size.width + self.minimumInteritemSpacing;
     CGRect f = atts.frame;
     f.origin.x = rightPrev;
     atts.frame = f;
