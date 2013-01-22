@@ -14,12 +14,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient error: NULL];
+    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient error: nil];
     // iOS 6, delegate deprecated, use notifications instead
     // [[AVAudioSession sharedInstance] setDelegate: self];
     // iOS 6, AudioToolbox C interface deprecated, use new Objective-C capabilities instead
     //AudioSessionAddPropertyListener(kAudioSessionProperty_AudioRouteChange,
-    //                                routeChangeCallback, NULL);
+    //                                routeChangeCallback, nil);
     
     // new in iOS 6, we can sign up for notifications
     // I am intentionally leaking the observers and self, no harm done
@@ -48,7 +48,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    [[AVAudioSession sharedInstance] setActive: YES error: NULL];
+    [[AVAudioSession sharedInstance] setActive: YES error: nil];
 }
 
 

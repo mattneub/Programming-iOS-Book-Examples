@@ -23,7 +23,7 @@ NSInteger sortByLastCharacter(id string1, id string2, void* context) {
                     @"Jack",
                     ]; // use cute new array literal
     // we don't actually need the ampersand here, though it's fine to use it
-    NSArray* arr2 = [arr sortedArrayUsingFunction:sortByLastCharacter context:NULL];
+    NSArray* arr2 = [arr sortedArrayUsingFunction:sortByLastCharacter context:nil];
     NSLog(@"%@", arr2);
 
     

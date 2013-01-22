@@ -62,7 +62,7 @@
     [[UIColor colorWithRed:0.9 green:0.95 blue:0.93 alpha:0.9] CGColor];
     circle.strokeColor = [[UIColor grayColor] CGColor];
     CGMutablePathRef p = CGPathCreateMutable();
-    CGPathAddEllipseInRect(p, NULL, CGRectInset(self.bounds, 3, 3));
+    CGPathAddEllipseInRect(p, nil, CGRectInset(self.bounds, 3, 3));
     circle.path = p;
     [master addSublayer:circle];
     circle.bounds = self.bounds;
@@ -109,7 +109,7 @@
     line.contentsScale = [UIScreen mainScreen].scale; // probably pointless
     line.bounds = CGRectMake(0,0,3.5,50);
     CGMutablePathRef p2 = CGPathCreateMutable();
-    CGPathAddRect(p2, NULL, line.bounds);
+    CGPathAddRect(p2, nil, line.bounds);
     line.path = p2;
     CGPathRelease(p2);
     line.fillColor = [[UIColor colorWithRed:1.0 green:0.95 blue:1.0 alpha:0.95] CGColor];
@@ -156,14 +156,14 @@ void drawStripes (void *info, CGContextRef con) {
     CGContextStrokePath(con);
     
     // draw a patterned triangle, the point of the arrow
-    CGColorSpaceRef sp = CGColorSpaceCreatePattern(NULL);
+    CGColorSpaceRef sp = CGColorSpaceCreatePattern(nil);
     CGContextSetFillColorSpace (con, sp);
     CGColorSpaceRelease (sp);
     CGPatternCallbacks callback = {
-        0, drawStripes, NULL
+        0, drawStripes, nil
     };
     CGAffineTransform tr = CGAffineTransformIdentity;
-    CGPatternRef patt = CGPatternCreate(NULL,
+    CGPatternRef patt = CGPatternCreate(nil,
                                         CGRectMake(0,0,4,4),
                                         tr,
                                         4, 4, 

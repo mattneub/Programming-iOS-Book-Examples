@@ -79,7 +79,7 @@
     // anyway I've added these lines to provide one
     // iOS 6: looks like this bug is fixed; we can delete these lines
     /*
-    self.layer.shadowPath = CGPathCreateWithRect(body, NULL);
+    self.layer.shadowPath = CGPathCreateWithRect(body, nil);
     self.layer.shadowColor = [UIColor grayColor].CGColor;
     self.layer.shadowRadius = 20;
     self.layer.shadowOpacity = 0.4;

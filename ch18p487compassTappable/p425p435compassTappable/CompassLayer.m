@@ -34,7 +34,7 @@
     [[UIColor colorWithRed:0.9 green:0.95 blue:0.93 alpha:0.9] CGColor];
     circle.strokeColor = [[UIColor grayColor] CGColor];
     CGMutablePathRef p = CGPathCreateMutable();
-    CGPathAddEllipseInRect(p, NULL, CGRectInset(self.bounds, 3, 3));
+    CGPathAddEllipseInRect(p, nil, CGRectInset(self.bounds, 3, 3));
     circle.path = p;
     [self addSublayer:circle];
     circle.bounds = self.bounds;
@@ -100,14 +100,14 @@ void drawStripes (void *info, CGContextRef con) {
     CGContextStrokePath(con);
     
     // draw a patterned triangle, the point of the arrow
-    CGColorSpaceRef sp = CGColorSpaceCreatePattern(NULL);
+    CGColorSpaceRef sp = CGColorSpaceCreatePattern(nil);
     CGContextSetFillColorSpace (con, sp);
     CGColorSpaceRelease (sp);
     CGPatternCallbacks callback = {
-        0, drawStripes, NULL
+        0, drawStripes, nil
     };
     CGAffineTransform tr = CGAffineTransformIdentity;
-    CGPatternRef patt = CGPatternCreate(NULL,
+    CGPatternRef patt = CGPatternCreate(nil,
                                         CGRectMake(0,0,4,4),
                                         tr,
                                         4, 4, 
@@ -136,12 +136,12 @@ void drawStripes (void *info, CGContextRef con) {
         // for example, here we artificially restrict touchability to roughly the shaft/point area
         CGPoint pt = [self.arrow convertPoint:p fromLayer:self.superlayer];
         CGMutablePathRef path = CGPathCreateMutable();
-        CGPathAddRect(path, NULL, CGRectMake(10,20,20,80));
-        CGPathMoveToPoint(path, NULL, 0, 25);
-        CGPathAddLineToPoint(path, NULL, 20, 0);
-        CGPathAddLineToPoint(path, NULL, 40, 25);
+        CGPathAddRect(path, nil, CGRectMake(10,20,20,80));
+        CGPathMoveToPoint(path, nil, 0, 25);
+        CGPathAddLineToPoint(path, nil, 20, 0);
+        CGPathAddLineToPoint(path, nil, 40, 25);
         CGPathCloseSubpath(path);
-        if (!CGPathContainsPoint(path, NULL, pt, false))
+        if (!CGPathContainsPoint(path, nil, pt, false))
             lay = nil;
         CGPathRelease(path);
         NSLog(@"%@ arrow at %@", lay ? @"hit" : @"missed", NSStringFromCGPoint(pt));

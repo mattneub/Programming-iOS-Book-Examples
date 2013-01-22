@@ -45,7 +45,7 @@
     NSString* path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"aif"];
     if ([[(UIButton*)sender currentTitle] isEqualToString:@"Forever"]) {
         // for remote control to work, our audio session policy must be Playback
-        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: NULL];
+        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
         self.player.forever = YES;
     }
     else {
@@ -60,7 +60,7 @@
         // new call in iOS 6
         [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient
                                          withOptions: AVAudioSessionCategoryOptionDuckOthers
-                                               error: NULL];
+                                               error: nil];
         self.player.forever = NO;
     }
     [self.player play:path];
@@ -72,11 +72,11 @@
 //                            sizeof(duck), &duck);
 //    AudioSessionSetActive(false);
 //    AudioSessionSetActive(true);
-    [[AVAudioSession sharedInstance] setActive:NO error:NULL];
+    [[AVAudioSession sharedInstance] setActive:NO error:nil];
     [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient
                                      withOptions: 0
-                                           error: NULL];
-    [[AVAudioSession sharedInstance] setActive:YES error:NULL];
+                                           error: nil];
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
 
 }
 

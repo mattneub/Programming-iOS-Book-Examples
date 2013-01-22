@@ -125,9 +125,9 @@
             CTFramesetterRef fs = 
             CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)self.text);
             CGMutablePathRef path = CGPathCreateMutable();
-            CGPathAddRect(path, NULL, rect);
+            CGPathAddRect(path, nil, rect);
             // range (0,0) means "the whole string"
-            CTFrameRef f = CTFramesetterCreateFrame(fs, CFRangeMake(0, 0), path, NULL);
+            CTFrameRef f = CTFramesetterCreateFrame(fs, CFRangeMake(0, 0), path, nil);
             CTFrameDraw(f, ctx);
             CGPathRelease(path);
             CFRelease(f);

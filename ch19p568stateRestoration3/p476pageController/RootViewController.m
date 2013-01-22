@@ -66,7 +66,7 @@
     Pep* page = [[Pep alloc] initWithPepBoy:(self.pep)[0] nib: nil bundle: nil];
     [pvc setViewControllers:@[page]
                   direction:UIPageViewControllerNavigationDirectionForward
-                   animated:NO completion:NULL];
+                   animated:NO completion:nil];
     
     // give it a data source
     pvc.dataSource = self;

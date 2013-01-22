@@ -17,12 +17,12 @@
     int leftright = 1;
     CGPoint next = self.view.layer.position;
     CGPoint pos;
-    CGPathMoveToPoint(path, NULL, next.x, next.y);
+    CGPathMoveToPoint(path, nil, next.x, next.y);
     for (int i = 0; i < 4; i++) {
         pos = next;
         leftright *= -1;
         next = CGPointMake(pos.x+h*leftright, pos.y+v);
-        CGPathAddCurveToPoint(path, NULL, pos.x, pos.y+30, next.x, next.y-30, 
+        CGPathAddCurveToPoint(path, nil, pos.x, pos.y+30, next.x, next.y-30, 
                               next.x, next.y);
     }
     CAKeyframeAnimation* anim1 = [CAKeyframeAnimation animationWithKeyPath:@"position"];

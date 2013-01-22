@@ -15,7 +15,7 @@
     objectA.value = @"Hello";
     [objectA addObserver:objectB forKeyPath:@"value" 
                  options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                 context: NULL];
+                 context: nil];
     objectA.value = @"Goodbye"; // notification is triggered
     
     // remember to unregister! (but if you forget, you should get a nice warning in the console at runtime)

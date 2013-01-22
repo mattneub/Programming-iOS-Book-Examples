@@ -23,14 +23,14 @@
 // I've slowed down all the animations to make them clearer
 
 - (void) animate {
-    [UIView beginAnimations:nil context:NULL];
+    [UIView beginAnimations:nil context:nil];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft 
                            forView:_iv cache:YES];
     [UIView setAnimationDuration:2];
     _iv.image = [UIImage imageNamed:@"Saturn.gif"];
     [UIView commitAnimations];
     // =======
-    [UIView beginAnimations:nil context:NULL];
+    [UIView beginAnimations:nil context:nil];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft 
                            forView:_b cache:YES];
     [UIView setAnimationDuration:2];
@@ -41,7 +41,7 @@
         case 1:
         {
             _v.reverse = !_v.reverse;
-            [UIView beginAnimations:nil context:NULL];
+            [UIView beginAnimations:nil context:nil];
             [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft 
                                    forView:_v cache:YES];
             [UIView setAnimationDuration:2];

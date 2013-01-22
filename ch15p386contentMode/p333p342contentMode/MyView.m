@@ -53,14 +53,14 @@ void drawStripes (void *info, CGContextRef con) {
     CGContextRestoreGState(con); // done clipping
     
     // draw the patterned triangle, the point of the arrow
-    CGColorSpaceRef sp2 = CGColorSpaceCreatePattern(NULL);
+    CGColorSpaceRef sp2 = CGColorSpaceCreatePattern(nil);
     CGContextSetFillColorSpace (con, sp2);
     CGColorSpaceRelease (sp2);
     CGPatternCallbacks callback = {
-        0, drawStripes, NULL
+        0, drawStripes, nil
     };
     CGAffineTransform tr = CGAffineTransformIdentity;
-    CGPatternRef patt = CGPatternCreate(NULL,
+    CGPatternRef patt = CGPatternCreate(nil,
                                         CGRectMake(0,0,4,4),
                                         tr,
                                         4, 4, 

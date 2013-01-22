@@ -38,10 +38,10 @@
     NSLog(@"audio finished %i", flag);
 //    [[AVAudioSession sharedInstance] setActive:NO withFlags:AVAudioSessionSetActiveFlags_NotifyOthersOnDeactivation error:nil];
     // above line deprecated in iOS 6, replaced with the following:
-    [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:NULL];
+    [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
 
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:NULL];
-    [[AVAudioSession sharedInstance] setActive: YES error:NULL];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
+    [[AVAudioSession sharedInstance] setActive: YES error:nil];
 }
 
 - (void)audioPlayerBeginInterruption:(AVAudioPlayer *)p {

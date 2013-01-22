@@ -27,13 +27,13 @@
         case 1: {
             // the old way! we had to use Core Text to set attributes of an attributed string
             __block CGFloat f = 18.0;
-            CTFontRef basefont = CTFontCreateWithName((CFStringRef)@"Baskerville", f, NULL);
+            CTFontRef basefont = CTFontCreateWithName((CFStringRef)@"Baskerville", f, nil);
             [s enumerateSubstringsInRange:NSMakeRange(0, [s length])
                                   options:NSStringEnumerationByWords
                                usingBlock:
              ^(NSString *substring, NSRange substringRange, NSRange encRange, BOOL *stop) {
                  f += 3.5;
-                 CTFontRef font2 = CTFontCreateCopyWithAttributes(basefont, f, NULL, NULL);
+                 CTFontRef font2 = CTFontCreateCopyWithAttributes(basefont, f, nil, nil);
                  NSDictionary* d2 = @{(NSString*)kCTFontAttributeName: CFBridgingRelease(font2)};
                  [mas addAttributes:d2 range:encRange];
              }];
@@ -42,7 +42,7 @@
                                             NSStringEnumerationReverse)
                                usingBlock:
              ^(NSString *substring, NSRange substringRange, NSRange encRange, BOOL *stop) {
-                 CTFontRef font2 = CTFontCreateCopyWithSymbolicTraits (basefont, f, NULL, kCTFontBoldTrait, kCTFontBoldTrait);
+                 CTFontRef font2 = CTFontCreateCopyWithSymbolicTraits (basefont, f, nil, kCTFontBoldTrait, kCTFontBoldTrait);
                  NSDictionary* d2 = @{(NSString*)kCTFontAttributeName: CFBridgingRelease(font2)};
                  [mas addAttributes:d2 range:encRange];
                  *stop = YES; // do just once, last word
@@ -70,7 +70,7 @@
              ^(NSString *substring, NSRange substringRange, NSRange encRange, BOOL *stop) {
                  // good example of why Core Text is still useful:
                  // there's no Objective-C way to say "give me the bold variant of this font"!
-                 CTFontRef font2 = CTFontCreateCopyWithSymbolicTraits ((__bridge CTFontRef)basefont, f, NULL, kCTFontBoldTrait, kCTFontBoldTrait);
+                 CTFontRef font2 = CTFontCreateCopyWithSymbolicTraits ((__bridge CTFontRef)basefont, f, nil, kCTFontBoldTrait, kCTFontBoldTrait);
                  // however, CTFont is not toll-free bridged to UIFont
                  // so we have to make a new font with the same name
                  UIFont* font2b =

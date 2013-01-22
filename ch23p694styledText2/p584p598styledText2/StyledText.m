@@ -62,8 +62,8 @@
     CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)self.text);
     // draw column 1
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddRect(path, NULL, r1);
-    CTFrameRef f = CTFramesetterCreateFrame(fs, CFRangeMake(0, 0), path, NULL);
+    CGPathAddRect(path, nil, r1);
+    CTFrameRef f = CTFramesetterCreateFrame(fs, CFRangeMake(0, 0), path, nil);
     CTFrameDraw(f, ctx);
     [self appendLinesAndBoundsOfFrame:f context:ctx];
     CGPathRelease(path);
@@ -71,9 +71,9 @@
     CFRelease(f);
     // draw column 2
     path = CGPathCreateMutable();
-    CGPathAddRect(path, NULL, r2);
+    CGPathAddRect(path, nil, r2);
     f = CTFramesetterCreateFrame(fs, 
-                                 CFRangeMake(drawnRange.location + drawnRange.length, 0), path, NULL);
+                                 CFRangeMake(drawnRange.location + drawnRange.length, 0), path, nil);
     CTFrameDraw(f, ctx);
     [self appendLinesAndBoundsOfFrame:f context:ctx];
     CGPathRelease(path);
@@ -100,7 +100,7 @@
             CTLineRef theLine = (__bridge CTLineRef)(self.theLines)[i];
             CFRange range = CTLineGetStringRange(theLine);
             CFStringRef s = CFStringCreateWithSubstring(
-                                                        NULL, (__bridge CFStringRef)[self.text string], range);
+                                                        nil, (__bridge CFStringRef)[self.text string], range);
             // ... do something with string here ...
             NSLog(@"tapped %@", s);
             CFRelease(s);

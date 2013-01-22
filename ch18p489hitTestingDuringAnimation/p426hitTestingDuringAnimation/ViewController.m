@@ -40,7 +40,7 @@
             break;
         }
         case 2: {
-            [UIView beginAnimations:nil context:NULL];
+            [UIView beginAnimations:nil context:nil];
             [UIView setAnimationDuration:10];
             self->button.center = goal;
             [UIView commitAnimations];

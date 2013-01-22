@@ -20,7 +20,7 @@
     
     NSString* path = [[NSBundle mainBundle] pathForResource:@"states" ofType:@"txt"];
     NSString* s = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    CTFontRef font = CTFontCreateWithName((CFStringRef)@"Didot", 18, NULL);
+    CTFontRef font = CTFontCreateWithName((CFStringRef)@"Didot", 18, nil);
     CTFontDescriptorRef fontdesc1 = CTFontCopyFontDescriptor(font);
     // names come from SFNTLayoutTypes.h (iOS 6 new feature)
     // these are said to be deprecated, but the non-deprecated values don't work for Didot
@@ -28,7 +28,7 @@
     CTFontDescriptorCreateCopyWithFeature(fontdesc1, 
                                           (__bridge CFNumberRef)@(kLetterCaseType),
                                           (__bridge CFNumberRef)@(kSmallCapsSelector));
-    CTFontRef basefont = CTFontCreateWithFontDescriptor(fontdesc2, 0, NULL);
+    CTFontRef basefont = CTFontCreateWithFontDescriptor(fontdesc2, 0, nil);
     NSDictionary* d = @{(NSString*)kCTFontAttributeName: CFBridgingRelease(basefont)};
     NSMutableAttributedString* mas = 
     [[NSMutableAttributedString alloc] initWithString:s attributes:d];

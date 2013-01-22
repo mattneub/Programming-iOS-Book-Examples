@@ -50,7 +50,7 @@
         _authDone = YES;
         ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
         if (status == kABAuthorizationStatusNotDetermined) {
-            ABAddressBookRef adbk = ABAddressBookCreateWithOptions(NULL, NULL);
+            ABAddressBookRef adbk = ABAddressBookCreateWithOptions(nil, nil);
             ABAddressBookRequestAccessWithCompletion(adbk,
                                                      ^(bool granted,
                                                        CFErrorRef error) {
@@ -70,16 +70,16 @@
     }
     
     // iOS 6 change: use "withOptions", not the plain vanilla Create
-    // we can get a NULL result and an error if, say, we have no access
+    // we can get a nil result and an error if, say, we have no access
     // (there are not, in fact, any options to pass at the moment)
-    CFErrorRef err = NULL;
-    ABAddressBookRef adbk = ABAddressBookCreateWithOptions(NULL, &err);
-    if (NULL == adbk) {
+    CFErrorRef err = nil;
+    ABAddressBookRef adbk = ABAddressBookCreateWithOptions(nil, &err);
+    if (nil == adbk) {
         NSLog(@"error: %@", err);
         return;
     }
     
-    ABRecordRef moi = NULL;
+    ABRecordRef moi = nil;
     CFArrayRef matts = ABAddressBookCopyPeopleWithName(adbk, (CFStringRef)@"Matt");
     // might be multiple matts, but let's find the one with last name Neuburg
     for (CFIndex ix = 0; ix < CFArrayGetCount(matts); ix++) {
@@ -90,7 +90,7 @@
         if (last)
             CFRelease(last);
     }
-    if (NULL == moi) {
+    if (nil == moi) {
         NSLog(@"Couldn't find myself");
         CFRelease(matts);
         CFRelease(adbk);
@@ -118,21 +118,21 @@
         NSLog(@"%@", @"no access");
         return;
     }
-    CFErrorRef err = NULL;
-    ABAddressBookRef adbk = ABAddressBookCreateWithOptions(NULL, &err);
-    if (NULL == adbk) {
+    CFErrorRef err = nil;
+    ABAddressBookRef adbk = ABAddressBookCreateWithOptions(nil, &err);
+    if (nil == adbk) {
         NSLog(@"error: %@", err);
         return;
     }
     
     ABRecordRef snidely = ABPersonCreate();
-    ABRecordSetValue(snidely, kABPersonFirstNameProperty, @"Snidely", NULL);
-    ABRecordSetValue(snidely, kABPersonLastNameProperty, @"Whiplash", NULL);
+    ABRecordSetValue(snidely, kABPersonFirstNameProperty, @"Snidely", nil);
+    ABRecordSetValue(snidely, kABPersonLastNameProperty, @"Whiplash", nil);
     ABMutableMultiValueRef addr = ABMultiValueCreateMutable(kABStringPropertyType);
-    ABMultiValueAddValueAndLabel(addr, @"snidely@villains.com", kABHomeLabel, NULL);
-    ABRecordSetValue(snidely, kABPersonEmailProperty, addr, NULL);
-    ABAddressBookAddRecord(adbk, snidely, NULL);
-    ABAddressBookSave(adbk, NULL);
+    ABMultiValueAddValueAndLabel(addr, @"snidely@villains.com", kABHomeLabel, nil);
+    ABRecordSetValue(snidely, kABPersonEmailProperty, addr, nil);
+    ABAddressBookAddRecord(adbk, snidely, nil);
+    ABAddressBookSave(adbk, nil);
     CFRelease(addr);
     CFRelease(snidely);
     CFRelease(adbk);
@@ -182,22 +182,22 @@
 // look in console for result; new person is created but not permanently added to user's address book
 
 -(void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person {
-    if (NULL != person) {
+    if (nil != person) {
         ABAuthorizationStatus stat = ABAddressBookGetAuthorizationStatus();
         if (stat==kABAuthorizationStatusDenied || stat==kABAuthorizationStatusRestricted) {
             NSLog(@"%@", @"no access");
             return;
         }
-        CFErrorRef err = NULL;
-        ABAddressBookRef adbk = ABAddressBookCreateWithOptions(NULL, &err);
-        if (NULL == adbk) {
+        CFErrorRef err = nil;
+        ABAddressBookRef adbk = ABAddressBookCreateWithOptions(nil, &err);
+        if (nil == adbk) {
             NSLog(@"error: %@", err);
             return;
         }
         
         // if we do not delete the person, the person will stay in the contacts database automatically!
-        ABAddressBookRemoveRecord(adbk, person, NULL);
-        ABAddressBookSave(adbk, NULL);
+        ABAddressBookRemoveRecord(adbk, person, nil);
+        ABAddressBookSave(adbk, nil);
         CFStringRef name = ABRecordCopyCompositeName(person);
         NSLog(@"I have a person named %@, but I am not saving this person to the database", name); 
         // do something with new person

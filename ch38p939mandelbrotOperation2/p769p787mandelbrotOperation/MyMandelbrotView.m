@@ -69,8 +69,8 @@
 	int bitmapBytesPerRow = (size.width * 4);
 	bitmapBytesPerRow += (16 - bitmapBytesPerRow%16)%16;
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef context = NULL;
-	context = CGBitmapContextCreate(NULL, size.width, size.height, 8, bitmapBytesPerRow, colorSpace, kCGImageAlphaPremultipliedLast);
+    CGContextRef context = nil;
+	context = CGBitmapContextCreate(nil, size.width, size.height, 8, bitmapBytesPerRow, colorSpace, kCGImageAlphaPremultipliedLast);
 	CGColorSpaceRelease(colorSpace);
     self->bitmapContext = context;
 }

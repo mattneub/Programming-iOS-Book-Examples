@@ -13,10 +13,10 @@
     CGRect r = CGRectInset(self.bounds, ins, ins);
     CGFloat radius = r.size.height / 2.0;
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, CGRectGetMaxX(r) - radius, ins);
-    CGPathAddArc(path, NULL, 
+    CGPathMoveToPoint(path, nil, CGRectGetMaxX(r) - radius, ins);
+    CGPathAddArc(path, nil, 
                  radius+ins, radius+ins, radius, -M_PI/2.0, M_PI/2.0, true);
-    CGPathAddArc(path, NULL, 
+    CGPathAddArc(path, nil, 
                  CGRectGetMaxX(r) - radius, radius+ins, radius, M_PI/2.0, -M_PI/2.0, true);
     CGPathCloseSubpath(path);
     CGContextAddPath(c, path);

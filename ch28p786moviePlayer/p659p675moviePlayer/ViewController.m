@@ -152,7 +152,7 @@
     if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(editedVideoPath))
         UISaveVideoAtPathToSavedPhotosAlbum(editedVideoPath, self, 
                                             @selector(video:savedWithError:ci:), 
-                                            NULL);
+                                            nil);
     else
         NSLog(@"need to think of something else to do with it");
 }

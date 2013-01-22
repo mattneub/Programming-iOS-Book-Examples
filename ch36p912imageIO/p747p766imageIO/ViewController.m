@@ -11,8 +11,8 @@
 
 - (IBAction)doButton:(id)sender {
     NSURL* url = [[NSBundle mainBundle] URLForResource:@"colson" withExtension:@"jpg"];
-    CGImageSourceRef src = CGImageSourceCreateWithURL((__bridge CFURLRef)url, NULL);
-    CFDictionaryRef result1 = CGImageSourceCopyPropertiesAtIndex(src, 0, NULL);
+    CGImageSourceRef src = CGImageSourceCreateWithURL((__bridge CFURLRef)url, nil);
+    CFDictionaryRef result1 = CGImageSourceCopyPropertiesAtIndex(src, 0, nil);
     NSDictionary* result = CFBridgingRelease(result1);    
     NSLog(@"%@", result);
     CFRelease(src);
@@ -20,7 +20,7 @@
 
 - (IBAction)doButton2:(id)sender {
     NSURL* url = [[NSBundle mainBundle] URLForResource:@"colson" withExtension:@"jpg"];
-    CGImageSourceRef src = CGImageSourceCreateWithURL((__bridge CFURLRef)url, NULL);
+    CGImageSourceRef src = CGImageSourceCreateWithURL((__bridge CFURLRef)url, nil);
     CGFloat scale = [UIScreen mainScreen].scale;
     CGFloat w = (self.iv.bounds.size.width - 10)*scale;
     NSDictionary* d = 
@@ -38,17 +38,17 @@
 
 - (IBAction)doButton3:(id)sender {
     NSURL* url = [[NSBundle mainBundle] URLForResource:@"colson" withExtension:@"jpg"];
-    CGImageSourceRef src = CGImageSourceCreateWithURL((__bridge CFURLRef)url, NULL);
+    CGImageSourceRef src = CGImageSourceCreateWithURL((__bridge CFURLRef)url, nil);
     NSFileManager* fm = [[NSFileManager alloc] init];
     NSURL* suppurl = [fm URLForDirectory:NSApplicationSupportDirectory 
                                 inDomain:NSUserDomainMask 
                        appropriateForURL:nil 
-                                  create:YES error:NULL];
+                                  create:YES error:nil];
     NSURL* tiff = [suppurl URLByAppendingPathComponent:@"mytiff.tiff"];
     CGImageDestinationRef dest = 
     CGImageDestinationCreateWithURL((__bridge CFURLRef)tiff, 
-                                    (CFStringRef)@"public.tiff", 1, NULL);
-    CGImageDestinationAddImageFromSource(dest, src, 0, NULL);
+                                    (CFStringRef)@"public.tiff", 1, nil);
+    CGImageDestinationAddImageFromSource(dest, src, 0, nil);
     bool ok = CGImageDestinationFinalize(dest);
     if (ok)
         NSLog(@"tiff image written to disk");

@@ -21,7 +21,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder: aDecoder];
     if (self) {
-        self->_draw_queue = dispatch_queue_create("com.neuburg.mandeldraw", NULL);
+        self->_draw_queue = dispatch_queue_create("com.neuburg.mandeldraw", nil);
     }
     return self;
 }
@@ -64,8 +64,8 @@
 	int bitmapBytesPerRow = (size.width * 4);
 	bitmapBytesPerRow += (16 - bitmapBytesPerRow%16)%16;
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef context = NULL;
-	context = CGBitmapContextCreate(NULL, size.width, size.height, 8, bitmapBytesPerRow, colorSpace, kCGImageAlphaPremultipliedLast);
+    CGContextRef context = nil;
+	context = CGBitmapContextCreate(nil, size.width, size.height, 8, bitmapBytesPerRow, colorSpace, kCGImageAlphaPremultipliedLast);
 	CGColorSpaceRelease(colorSpace);
     return context;
 }

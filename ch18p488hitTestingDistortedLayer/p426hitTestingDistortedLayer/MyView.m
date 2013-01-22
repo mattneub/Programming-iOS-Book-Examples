@@ -48,7 +48,7 @@
     
     unsigned char pixel[1] = {0};
     CGContextRef context = CGBitmapContextCreate(pixel, 
-                                                 1, 1, 8, 1, NULL,
+                                                 1, 1, 8, 1, nil,
                                                  kCGImageAlphaOnly);
     UIGraphicsPushContext(context);
     [im drawAtPoint:CGPointMake(-point.x, -point.y)];

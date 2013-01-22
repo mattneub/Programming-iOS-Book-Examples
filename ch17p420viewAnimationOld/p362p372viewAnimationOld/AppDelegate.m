@@ -15,7 +15,7 @@
         case 1:
         {
             // p 362
-            [UIView beginAnimations:nil context:NULL];
+            [UIView beginAnimations:nil context:nil];
             _v.backgroundColor = [UIColor yellowColor];
             CGPoint p = _v.center;
             p.y -= 100;
@@ -26,7 +26,7 @@
         case 2:
         {
             // p 364, jump
-            [UIView beginAnimations:nil context:NULL];
+            [UIView beginAnimations:nil context:nil];
             [UIView setAnimationRepeatAutoreverses:YES];
             CGPoint p = _v.center;
             p.x += 100;
@@ -37,7 +37,7 @@
         case 3:
         {
             // p 365, failed solution
-            [UIView beginAnimations:nil context:NULL];
+            [UIView beginAnimations:nil context:nil];
             [UIView setAnimationRepeatAutoreverses:YES];
             CGPoint p = _v.center;
             p.x += 100;
@@ -51,7 +51,7 @@
         case 4:
         {
             // p 365, successful solution
-            [UIView beginAnimations:nil context:NULL];
+            [UIView beginAnimations:nil context:nil];
             [UIView setAnimationRepeatAutoreverses:YES];
             [UIView setAnimationDelegate:self];
             [UIView setAnimationDidStopSelector:@selector(stopped:fin:context:)];
@@ -64,14 +64,14 @@
         case 5:
         {
             // p 366
-            [UIView beginAnimations:nil context:NULL];
+            [UIView beginAnimations:nil context:nil];
             [UIView setAnimationDuration:1];
             CGPoint p = _v.center;
             p.x += 100;
             _v.center = p;
             [UIView commitAnimations];
             
-            [UIView beginAnimations:nil context:NULL];
+            [UIView beginAnimations:nil context:nil];
             // uncomment the next line to fix the problem
             // [UIView setAnimationBeginsFromCurrentState:YES];
             [UIView setAnimationDuration:1];

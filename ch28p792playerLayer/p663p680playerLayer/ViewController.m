@@ -59,7 +59,7 @@
     NSLog(@"adding player layer to interface");
     lay.frame = CGRectMake(10,10,300,200);
     [self.view.layer addSublayer:lay];
-    [lay addObserver:self forKeyPath:@"readyForDisplay" options:0 context:NULL];
+    [lay addObserver:self forKeyPath:@"readyForDisplay" options:0 context:nil];
 }
 
 - (IBAction)doButton:(id)sender {
@@ -101,7 +101,7 @@
     item.audioMix = mix;
     
     [self.player replaceCurrentItemWithPlayerItem:item];
-    [self.playerlayer addObserver:self forKeyPath:@"readyForDisplay" options:0 context:NULL];
+    [self.playerlayer addObserver:self forKeyPath:@"readyForDisplay" options:0 context:nil];
 }
 
 @end

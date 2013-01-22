@@ -81,7 +81,7 @@
     [self.assets removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,3)]];
                
                                                    
-    [self.qp addObserver:self forKeyPath:@"currentItem" options:0 context:NULL];
+    [self.qp addObserver:self forKeyPath:@"currentItem" options:0 context:nil];
     [self.qp play];
     [self changed];
     

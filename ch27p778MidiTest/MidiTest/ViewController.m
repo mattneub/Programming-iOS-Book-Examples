@@ -158,9 +158,9 @@
                                                kCFAllocatorDefault,
                                                (__bridge CFURLRef) presetURL,
                                                &propertyResourceData,
-                                               NULL,
-                                               NULL,
-                                               NULL
+                                               nil,
+                                               nil,
+                                               nil
                                                );
     
    	
@@ -172,7 +172,7 @@
                                                        propertyResourceData,
                                                        kCFPropertyListImmutable,
                                                        &dataFormat,
-                                                       NULL
+                                                       nil
                                                        );
     
     // Set the class info property for the Sampler unit using the property list as the value.
