@@ -3,6 +3,7 @@
 #import "RootViewController.h"
 #import "Popover1View1.h"
 #import "MyPopoverBackgroundView.h"
+#import "ExtraViewController.h"
 
 @interface RootViewController () <UIPopoverControllerDelegate, UINavigationControllerDelegate> 
 @property (nonatomic, strong) UIPopoverController* currentPop;
@@ -36,6 +37,10 @@
          target: self
          action: @selector(savePop1:)]; 
     vc.navigationItem.leftBarButtonItem = b;
+    UIButton* bb = [UIButton buttonWithType:UIButtonTypeInfoDark];
+    [bb addTarget:self action:@selector(doPresent:) forControlEvents:UIControlEventTouchUpInside];
+    [bb sizeToFit];
+    vc.navigationItem.titleView = bb;
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:vc];
     UIPopoverController* pop = [[UIPopoverController alloc] initWithContentViewController:nav];
     // comment out next line and you'll see the bug when navigating back and forth between different sized content views
@@ -74,6 +79,7 @@
 
 - (void) cancelPop1: (id) sender {
     // dismiss popover and revert choice
+    NSLog(@"%@", NSStringFromCGSize(self.currentPop.contentViewController.contentSizeForViewInPopover));
     [self.currentPop dismissPopoverAnimated:YES];
     self.currentPop = nil;
     [[NSUserDefaults standardUserDefaults] setInteger:self->_oldChoice forKey:@"choice"];
@@ -107,6 +113,7 @@
     vc.view.frame = CGRectMake(0,0,300,300);
     vc.view.backgroundColor = [UIColor greenColor];
     vc.contentSizeForViewInPopover = CGSizeMake(300,300);
+    // vc.modalInPopover = YES;
     UILabel* label = [[UILabel alloc] init];
     label.text = @"I am a very silly popover!";
     [label sizeToFit];
@@ -153,6 +160,7 @@
     [presenter presentViewController:vc animated:YES completion:nil];
     // uncomment next line and we'll be non-modal, but you shouldn't
     // vc.modalInPopover = NO;
+    //self.currentPop.passthroughViews = nil;
 }
 
 - (void) done: (UIButton*) sender {
@@ -164,7 +172,7 @@
 
 // I'd rather not have popovers showing thru rotation
 // this dismissal counts as a cancel
-// this is optional; I don't think popovers staying thru rotation is bad
+// this is optional; I don't think popovers staying thru rotation is that bad
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     UIPopoverController* pc = self.currentPop;
     if (pc) {
@@ -190,5 +198,10 @@
 // was that messy or what?????
 // but I don't see a better way, in the absence of decent built-in popover management
 // and of course if this app had more popovers it could get even messier!
+
+-(void) doPresent: (id) sender {
+    return; // demonstrates odd constraints bug in presented-in-popover views
+    [self.currentPop.contentViewController presentViewController:[ExtraViewController new] animated:YES completion:nil];
+}
 
 @end

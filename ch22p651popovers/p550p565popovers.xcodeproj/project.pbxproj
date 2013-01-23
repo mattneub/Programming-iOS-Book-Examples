@@ -21,6 +21,8 @@
 		A4E8434F146D9FFF009D6B11 /* Popover1View2.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E8434A146D9FFF009D6B11 /* Popover1View2.m */; };
 		A4E84356146DAB78009D6B11 /* MyPopoverBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E84355146DAB78009D6B11 /* MyPopoverBackgroundView.m */; };
 		A4E84358146DAD04009D6B11 /* linen.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E84357146DAD04009D6B11 /* linen.png */; };
+		C954DCE316AF308A00368921 /* ExtraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C954DCE116AF308A00368921 /* ExtraViewController.m */; };
+		C954DCE416AF308A00368921 /* ExtraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C954DCE216AF308A00368921 /* ExtraViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,9 @@
 		A4E84354146DAB77009D6B11 /* MyPopoverBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPopoverBackgroundView.h; sourceTree = "<group>"; };
 		A4E84355146DAB78009D6B11 /* MyPopoverBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPopoverBackgroundView.m; sourceTree = "<group>"; };
 		A4E84357146DAD04009D6B11 /* linen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linen.png; sourceTree = "<group>"; };
+		C954DCE016AF308A00368921 /* ExtraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraViewController.h; sourceTree = "<group>"; };
+		C954DCE116AF308A00368921 /* ExtraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtraViewController.m; sourceTree = "<group>"; };
+		C954DCE216AF308A00368921 /* ExtraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExtraViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +111,9 @@
 				A4E8434A146D9FFF009D6B11 /* Popover1View2.m */,
 				A4E84354146DAB77009D6B11 /* MyPopoverBackgroundView.h */,
 				A4E84355146DAB78009D6B11 /* MyPopoverBackgroundView.m */,
+				C954DCE016AF308A00368921 /* ExtraViewController.h */,
+				C954DCE116AF308A00368921 /* ExtraViewController.m */,
+				C954DCE216AF308A00368921 /* ExtraViewController.xib */,
 				A4E84333146D9FE7009D6B11 /* Supporting Files */,
 			);
 			path = p550p565popovers;
@@ -177,6 +185,7 @@
 				A4E8434C146D9FFF009D6B11 /* RootView.xib in Resources */,
 				A4E8434E146D9FFF009D6B11 /* Popover1View1.xib in Resources */,
 				A4E84358146DAD04009D6B11 /* linen.png in Resources */,
+				C954DCE416AF308A00368921 /* ExtraViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +202,7 @@
 				A4E8434D146D9FFF009D6B11 /* Popover1View1.m in Sources */,
 				A4E8434F146D9FFF009D6B11 /* Popover1View2.m in Sources */,
 				A4E84356146DAB78009D6B11 /* MyPopoverBackgroundView.m in Sources */,
+				C954DCE316AF308A00368921 /* ExtraViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

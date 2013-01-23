@@ -11,7 +11,7 @@
     CGFloat arrOff;
     UIPopoverArrowDirection arrDir;
 }
-@dynamic arrowDirection, arrowOffset;
+//@dynamic arrowDirection, arrowOffset;
 
 // new iOS 6 feature
 // very subtle! causes slight shadow *inside* the frame (esp. at top)
@@ -110,12 +110,12 @@
 
 - (void) setArrowDirection: (UIPopoverArrowDirection) val {
     self->arrDir = val;
-    [self setNeedsDisplay];
+    [self setNeedsLayout];
 }
 
 - (void) setArrowOffset: (CGFloat) val {
     self->arrOff = val;
-    [self setNeedsDisplay];
+    [self setNeedsLayout];
 }
 
 
