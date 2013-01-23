@@ -27,6 +27,8 @@
     self.splitViewController.delegate = detailViewController;
     self.splitViewController.viewControllers = @[masterNavigationController, detailNavigationController];
     
+    // self.splitViewController.presentsWithGesture = NO;
+    
     self.window.rootViewController = self.splitViewController;
     [self.window makeKeyAndVisible];
     return YES;

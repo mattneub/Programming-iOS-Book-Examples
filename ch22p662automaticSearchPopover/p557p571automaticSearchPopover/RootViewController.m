@@ -2,7 +2,7 @@
 
 #import "RootViewController.h"
 
-@interface RootViewController ()
+@interface RootViewController () <UISearchDisplayDelegate>
 @property (nonatomic, strong) NSArray* states;
 @property (nonatomic, strong) NSArray* filteredStates;
 @end
@@ -21,13 +21,11 @@
     return self;
 }
 
+-(void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView {
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // tricky to find a reliable place to do this
-    // must precede all uses of cellForRow
-    // but can't do early in view controller code...
-    // because search display controller keeps destroying and recreating the table view
-    [self.searchDisplayController.searchResultsTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     return 1;
 }
 
@@ -40,7 +38,7 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = 
     [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.textLabel.text = [self.filteredStates objectAtIndex: indexPath.row];
+    cell.textLabel.text = (self.filteredStates)[indexPath.row];
     return cell;
 }
 

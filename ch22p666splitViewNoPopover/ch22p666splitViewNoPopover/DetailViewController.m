@@ -70,7 +70,7 @@
 {
     NSLog(@"willHide, popover controller: %@", popoverController);
 
-    barButtonItem.title = @"Master";
+    //barButtonItem.title = @"Yoho";
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     self.masterPopoverController = popoverController;
     
