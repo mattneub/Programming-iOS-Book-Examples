@@ -36,19 +36,39 @@
     [content addAttributes: @{NSStrokeColorAttributeName:[UIColor redColor],
 NSStrokeWidthAttributeName: @-2.0}
                      range:r];
+    
+    NSMutableParagraphStyle* para = [NSMutableParagraphStyle new];
+    para.lineBreakMode = NSLineBreakByTruncatingMiddle; // not essential, just proving it works
+    [content addAttributes: @{NSParagraphStyleAttributeName:para} range:NSMakeRange(0,1)];
+    
     self.label2.attributedText = content;
 
-    self.label3.text = @"The Gettysburg Address by A. Lincoln";
+    NSString* s3 = @"The Gettysburg Address by A. Lincoln";
+    self.label3.attributedText = [[NSAttributedString alloc] initWithString:s3];
+    //self.label3.text = s3;
     // two ways of making the text fit:
-    // uncomment one or the other
-    /*
-    self.label3.adjustsLetterSpacingToFitWidth = YES; // new in iOS 6
-     */
-    /*
-    self.label3.adjustsFontSizeToFitWidth = YES;
-    self.label3.minimumScaleFactor = 0.8; // new in iOS 6, replaces minimum font size
-     */
+    // turn on one or the other
+    self.label3.adjustsFontSizeToFitWidth = NO;
+    self.label3.minimumScaleFactor = 0.4; // new in iOS 6, replaces minimum font size
+    self.label3.adjustsLetterSpacingToFitWidth = NO; // new in iOS 6
+    //self.label3.lineBreakMode = NSLineBreakByWordWrapping;
+    self.label3.backgroundColor = [UIColor whiteColor];
+    self.label3.baselineAdjustment = UIBaselineAdjustmentNone;
 }
 
+- (IBAction)doButton:(id)sender {
+    // showing that highlightedTextColor doesn't affect attributed string
+    self.label1.highlightedTextColor = [UIColor whiteColor];
+    self.label1.highlighted = YES;
+    // self.label2.text = self.label2.attributedText.string;
+    self.label2.highlightedTextColor = [UIColor whiteColor];
+    self.label2.highlighted = YES;
+    int64_t delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        self.label1.highlighted = NO;
+        self.label2.highlighted = NO;
+    });
+}
 
 @end

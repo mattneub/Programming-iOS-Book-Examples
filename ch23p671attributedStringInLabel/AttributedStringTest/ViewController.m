@@ -4,14 +4,14 @@
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *lab;
-
+@property (strong, nonatomic) NSAttributedString* content;
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
     
     NSString* s1 = @"The Gettysburg Address, as delivered on a certain occasion "
     @"(namely Thursday, November 19, 1863) by A. Lincoln";
@@ -22,6 +22,7 @@
      @{
      NSFontAttributeName:
      [UIFont fontWithName:@"Arial-BoldMT" size:15],
+     NSKernAttributeName:@0,
      NSForegroundColorAttributeName:
      [UIColor colorWithRed:0.251 green:0.000 blue:0.502 alpha:1]
      }];
@@ -44,14 +45,16 @@ NSStrokeWidthAttributeName: @-2.0
 
     NSString* s2 = @"Fourscore and seven years ago, our fathers brought forth "
     @"upon this continent a new nation, conceived in liberty and dedicated "
-    @"to the proposition that all men are created equal.";
+    @"to the proposition that all men are created equal. Wow";
+    // added "Wow" to show autokerning
     NSMutableAttributedString* content2 =
     [[NSMutableAttributedString alloc]
      initWithString:s2
      attributes:
      @{
      NSFontAttributeName:
-     [UIFont fontWithName:@"HoeflerText-Black" size:16]
+     [UIFont fontWithName:@"HoeflerText-Black" size:16],
+     NSKernAttributeName:[NSNull null] // required to get autokerning
      }];
     [content2 setAttributes:
      @{
@@ -73,12 +76,55 @@ NSStrokeWidthAttributeName: @-2.0
     [content2 addAttribute:NSParagraphStyleAttributeName
                      value:para2 range:NSMakeRange(0,1)];
 
-    [content.mutableString appendString:@"\n"];
+    int end = content.length;
+    [content replaceCharactersInRange:NSMakeRange(end, 0) withString:@"\n"];
     [content appendAttributedString:content2];
+    
+    /*
+    [content enumerateAttribute:NSFontAttributeName inRange:NSMakeRange(0,content.length) options:NSAttributedStringEnumerationLongestEffectiveRangeNotRequired usingBlock:^(id value, NSRange range, BOOL *stop) {
+        UIFont* font = value;
+        if (font.pointSize == 15)
+            [content addAttribute:NSFontAttributeName value:[UIFont fontWithName: @"Arial-BoldMT" size:20] range:range];
+    }];
+     */
     
     self.lab.attributedText = content;
     self.lab.numberOfLines = 0;
-    self.lab.backgroundColor = [UIColor whiteColor];
+    
+    self.content = content;
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    // showing margin-related bug with sizeToFit
+    //[self.lab sizeToFit];
+
+    
+    return;
+    
+    // showing margin-related bug with boundingRectWithSize
+    // this is probably the basis of the previous bug
+    
+    CGRect rect = [self.content boundingRectWithSize:self.lab.bounds.size options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    
+    // width is wrong so we have to widen it again
+
+    rect.size.width = self.lab.bounds.size.width;
+    rect.size.height += 5;
+    
+    UIGraphicsBeginImageContextWithOptions(rect.size, YES, 0);
+    [[UIColor whiteColor] setFill];
+    CGContextFillRect(UIGraphicsGetCurrentContext(), rect);
+    [self.content drawInRect:rect];
+    UIImage* im = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    UIImageView* iv = [[UIImageView alloc] initWithImage:im];
+    iv.center = self.lab.center;
+    iv.frame = CGRectIntegral(iv.frame);
+    [self.lab.superview addSubview:iv];
+    [self.lab removeFromSuperview];
+
 }
 
 
