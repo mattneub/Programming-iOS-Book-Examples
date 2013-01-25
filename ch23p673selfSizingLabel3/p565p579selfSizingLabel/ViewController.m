@@ -16,7 +16,7 @@
 
 - (IBAction)doButton:(id)sender {
     self.widthConstraint.constant -= 10;
-    self.theLabel.preferredMaxLayoutWidth = self.widthConstraint.constant-10;
+    self.theLabel.preferredMaxLayoutWidth = self.widthConstraint.constant;
 }
 
 

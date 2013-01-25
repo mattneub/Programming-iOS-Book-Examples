@@ -101,18 +101,26 @@ NSStrokeWidthAttributeName: @-2.0
     //[self.lab sizeToFit];
 
     
-    return;
+    //return;
+    
     
     // showing margin-related bug with boundingRectWithSize
     // this is probably the basis of the previous bug
     
-    CGRect rect = [self.content boundingRectWithSize:self.lab.bounds.size options:NSStringDrawingUsesLineFragmentOrigin context:nil];
-    
+    CGRect rect = [self.lab.attributedText boundingRectWithSize:self.lab.bounds.size options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+        
     // width is wrong so we have to widen it again
 
     rect.size.width = self.lab.bounds.size.width;
     rect.size.height += 5;
     
+    CGRect f = self.lab.bounds;
+    f.size = rect.size;
+    self.lab.bounds = f;
+    
+    return;
+    
+    // proving that we can just well draw the text ourselves, maybe better
     UIGraphicsBeginImageContextWithOptions(rect.size, YES, 0);
     [[UIColor whiteColor] setFill];
     CGContextFillRect(UIGraphicsGetCurrentContext(), rect);

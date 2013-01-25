@@ -27,6 +27,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         // that way, the label's width is correct when this code executes
         self.theLabel.preferredMaxLayoutWidth = self.theLabel.bounds.size.width;
+        // [self.theLabel layoutSubviews];
     });
 }
 

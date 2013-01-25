@@ -15,6 +15,7 @@
 		A470889414AE67F40066DE3C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A470889314AE67F40066DE3C /* AppDelegate.m */; };
 		A470889714AE67F40066DE3C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A470889614AE67F40066DE3C /* ViewController.m */; };
 		A470889A14AE67F40066DE3C /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A470889814AE67F40066DE3C /* ViewController.xib */; };
+		C94B1DBC16B222230035D76B /* MyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C94B1DBB16B222230035D76B /* MyLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		A470889514AE67F40066DE3C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A470889614AE67F40066DE3C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A470889914AE67F40066DE3C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		C94B1DBA16B222230035D76B /* MyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLabel.h; sourceTree = "<group>"; };
+		C94B1DBB16B222230035D76B /* MyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,8 @@
 				A470889314AE67F40066DE3C /* AppDelegate.m */,
 				A470889514AE67F40066DE3C /* ViewController.h */,
 				A470889614AE67F40066DE3C /* ViewController.m */,
+				C94B1DBA16B222230035D76B /* MyLabel.h */,
+				C94B1DBB16B222230035D76B /* MyLabel.m */,
 				A470889814AE67F40066DE3C /* ViewController.xib */,
 				A470888A14AE67F40066DE3C /* Supporting Files */,
 			);
@@ -163,6 +168,7 @@
 				A470889014AE67F40066DE3C /* main.m in Sources */,
 				A470889414AE67F40066DE3C /* AppDelegate.m in Sources */,
 				A470889714AE67F40066DE3C /* ViewController.m in Sources */,
+				C94B1DBC16B222230035D76B /* MyLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
