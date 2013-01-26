@@ -231,7 +231,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p578p592textViewAndKeyboard/p578p592textViewAndKeyboard2-Prefix.pch";
 				INFOPLIST_FILE = "p578p592textViewAndKeyboard/p578p592textViewAndKeyboard2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = p578p592textViewAndKeyboard2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -243,7 +243,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p578p592textViewAndKeyboard/p578p592textViewAndKeyboard2-Prefix.pch";
 				INFOPLIST_FILE = "p578p592textViewAndKeyboard/p578p592textViewAndKeyboard2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = p578p592textViewAndKeyboard2;
 				WRAPPER_EXTENSION = app;
 			};

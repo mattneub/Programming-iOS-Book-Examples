@@ -3,14 +3,10 @@
 #import "RootViewController.h"
 
 @interface RootViewController ()
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 @property (nonatomic, strong) IBOutlet UITextView *tv;
 @end
 
-@implementation RootViewController {
-    CGFloat oldBottomConstraint;
-}
-
+@implementation RootViewController 
 
 - (void)dealloc
 {
