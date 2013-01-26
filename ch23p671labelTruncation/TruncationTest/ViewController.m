@@ -37,6 +37,7 @@
     para2.lineBreakMode = NSLineBreakByWordWrapping;
     para2.paragraphSpacing = 5;
     
+    // comment out this next line to see what difference it makes
     para2.lineBreakMode = NSLineBreakByTruncatingTail;
     [content2 addAttribute:NSParagraphStyleAttributeName value:para2 range:NSMakeRange(0,1)];
 
