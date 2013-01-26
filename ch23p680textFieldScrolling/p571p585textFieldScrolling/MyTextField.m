@@ -4,11 +4,17 @@
 #import "AppDelegate.h"
 
 @implementation MyTextField
-@synthesize nextField;
+
+-(void)awakeFromNib {
+    [super awakeFromNib];
+    self.allowsEditingTextAttributes = YES;
+}
 
 // p 575
 
 - (BOOL) canPerformAction:(SEL)action withSender: (id) sender {
+//    NSLog(@"%@", NSStringFromSelector(action));
+//    return [super canPerformAction:action withSender:sender];
     if (action == @selector(expand:))
         return ([self.text length] == 2); // could be more intelligent here
     if (action == @selector(copy:))

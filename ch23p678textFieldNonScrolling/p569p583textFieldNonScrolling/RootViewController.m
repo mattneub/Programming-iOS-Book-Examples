@@ -8,7 +8,7 @@
 @end
 
 @implementation RootViewController {
-    CGPoint oldOffset;
+    CGPoint _oldOffset;
 }
 
 
@@ -53,7 +53,7 @@
 
 - (void) keyboardShow: (NSNotification*) n {
     NSLog(@"show");
-    self->oldOffset = self.scrollView.contentOffset;
+    self->_oldOffset = self.scrollView.contentOffset;
     NSDictionary* d = [n userInfo];
     CGRect r = [d[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     r = [self.scrollView convertRect:r fromView:nil];
@@ -71,7 +71,7 @@
 
 - (void) keyboardHide: (NSNotification*) n {
     NSLog(@"hide");
-    [self.scrollView setContentOffset:self->oldOffset animated:YES];
+    [self.scrollView setContentOffset:self->_oldOffset animated:YES];
 }
 
 - (void) keyboardMove: (NSNotification*) n {

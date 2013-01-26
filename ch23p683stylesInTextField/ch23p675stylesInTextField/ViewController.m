@@ -25,6 +25,7 @@
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSDictionary* d = textField.typingAttributes;
+    NSLog(@"%@", d);
     NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
     // md[NSUnderlineStyleAttributeName] = @(NSUnderlineStyleSingle);
     md[NSForegroundColorAttributeName] = [UIColor redColor];

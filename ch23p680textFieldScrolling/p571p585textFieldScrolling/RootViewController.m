@@ -8,6 +8,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *scrollViewBottomConstraint;
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITextField *secondTextField;
 @property (nonatomic, weak) UIView* fr;
 @property (nonatomic, strong) IBOutlet UIView *buttonView;
 @end
@@ -21,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.secondTextField.allowsEditingTextAttributes = YES; // no nib setting for this???!!!
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardShow:)
                                                  name:UIKeyboardWillShowNotification
@@ -95,6 +97,14 @@
         return YES;
     textField.text = [textField.text stringByReplacingCharactersInRange:range withString:lc];
     return NO;
+}
+
+
+// proving that you can't catch this method here
+// you'd need to subclass UITextField, which seems nutty
+-(void) toggleBoldface: (id) sender {
+    NSLog(@"%@", @"toggling bold");
+    [super toggleBoldface:sender];
 }
 
 
