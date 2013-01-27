@@ -1,6 +1,7 @@
 
 
 #import "ViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ViewController ()
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
@@ -10,9 +11,9 @@
 @end
 
 @implementation ViewController {
-    UIEdgeInsets oldContentInset;
-    UIEdgeInsets oldIndicatorInset;
-    CGPoint oldOffset;
+    UIEdgeInsets _oldContentInset;
+    UIEdgeInsets _oldIndicatorInset;
+    CGPoint _oldOffset;
 }
 
 -(void)viewDidLoad {
@@ -33,9 +34,9 @@
 }
 
 - (void) keyboardShow: (NSNotification*) n {
-    self->oldContentInset = self.scrollView.contentInset;
-    self->oldIndicatorInset = self.scrollView.scrollIndicatorInsets;
-    self->oldOffset = self.scrollView.contentOffset;
+    self->_oldContentInset = self.scrollView.contentInset;
+    self->_oldIndicatorInset = self.scrollView.scrollIndicatorInsets;
+    self->_oldOffset = self.scrollView.contentOffset;
     NSDictionary* d = [n userInfo];
     CGRect r = [[d objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     r = [self.scrollView convertRect:r fromView:nil];
@@ -59,19 +60,14 @@
 }
 
 - (void) keyboardHide: (NSNotification*) n {
-    [self.scrollView setContentOffset:self->oldOffset animated:YES];
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        self.scrollView.scrollIndicatorInsets = self->oldIndicatorInset;
-        self.scrollView.contentInset = self->oldContentInset;
-    });
+    [self.scrollView setContentOffset:self->_oldOffset animated:YES];
+    [CATransaction setCompletionBlock:^{
+        self.scrollView.scrollIndicatorInsets = self->_oldIndicatorInset;
+        self.scrollView.contentInset = self->_oldContentInset;
+    }];
 }
 
 - (IBAction)doNextField:(id)sender {
-    //    if ([self.fr isKindOfClass: [MyTextField class]]) {
-    //        UITextField* nextField = [(MyTextField*)self.fr nextField];
-    //        [nextField becomeFirstResponder];
-    //    }
     NSMutableArray* marr = [NSMutableArray array];
     for (UIView* v in self.fr.superview.subviews) {
         if ([v isKindOfClass: [UITextField class]])

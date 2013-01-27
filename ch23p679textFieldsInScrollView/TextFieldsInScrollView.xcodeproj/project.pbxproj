@@ -18,6 +18,7 @@
 		C97FE98616B32ACE007F9FAE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C97FE98516B32ACE007F9FAE /* Default-568h@2x.png */; };
 		C97FE98916B32ACE007F9FAE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97FE98816B32ACE007F9FAE /* ViewController.m */; };
 		C97FE98C16B32ACE007F9FAE /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C97FE98A16B32ACE007F9FAE /* ViewController.xib */; };
+		C98E0A5B16B49153003AE7C1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98E0A5A16B49153003AE7C1 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		C97FE98716B32ACE007F9FAE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C97FE98816B32ACE007F9FAE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C97FE98B16B32ACE007F9FAE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		C98E0A5A16B49153003AE7C1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C98E0A5B16B49153003AE7C1 /* QuartzCore.framework in Frameworks */,
 				C97FE97016B32ACE007F9FAE /* UIKit.framework in Frameworks */,
 				C97FE97216B32ACE007F9FAE /* Foundation.framework in Frameworks */,
 				C97FE97416B32ACE007F9FAE /* CoreGraphics.framework in Frameworks */,
@@ -56,6 +59,7 @@
 		C97FE96016B32ACE007F9FAE = {
 			isa = PBXGroup;
 			children = (
+				C98E0A5A16B49153003AE7C1 /* QuartzCore.framework */,
 				C97FE97516B32ACE007F9FAE /* Tersting */,
 				C97FE96E16B32ACE007F9FAE /* Frameworks */,
 				C97FE96C16B32ACE007F9FAE /* Products */,
@@ -292,6 +296,7 @@
 				C97FE99116B32ACE007F9FAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

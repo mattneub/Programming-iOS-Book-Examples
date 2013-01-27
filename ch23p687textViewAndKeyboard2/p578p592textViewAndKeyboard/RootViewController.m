@@ -16,7 +16,25 @@
 -(void)viewDidLoad {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
+    
 }
+
+- (void)viewDidAppearNOT:(BOOL) animated {
+    // playing around with how one might get lined paper effect, not very convincing
+    [super viewDidAppear:animated];
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(20,25), YES, 0);
+    [[UIColor yellowColor] setFill];
+    CGContextRef con = UIGraphicsGetCurrentContext();
+    CGContextFillRect(con, CGRectMake(0,0,20,25));
+    [[UIColor blueColor] setFill];
+    CGContextFillRect(con, CGRectMake(0,23,20,1));
+    UIImage* pat = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    UIColor* pcol = [UIColor colorWithPatternImage:pat];    
+    self.tv.backgroundColor = pcol;
+}
+
 
 // -----
 
