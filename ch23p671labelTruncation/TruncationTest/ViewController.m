@@ -33,7 +33,7 @@
     NSMutableParagraphStyle* para2 = [NSMutableParagraphStyle new];
     para2.headIndent = 10;
     para2.firstLineHeadIndent = 10;
-    para2.tailIndent = -1;
+    para2.tailIndent = -10;
     para2.lineBreakMode = NSLineBreakByWordWrapping;
     para2.paragraphSpacing = 5;
     
@@ -66,7 +66,7 @@
     para.headIndent = 10;
     para.firstLineHeadIndent = 10;
     para.paragraphSpacingBefore = 5;
-    para.tailIndent = -1;
+    para.tailIndent = -10;
     para.lineBreakMode = NSLineBreakByWordWrapping;
     [content addAttribute:NSParagraphStyleAttributeName value:para range:NSMakeRange(0,title.length)];
 
@@ -76,6 +76,11 @@
     // now the label gives up, and the second paragraph draws only its first line, truncated
     
     self.lab2.attributedText = content;
+    
+    // and here's the fix (thank you, Kyle Sluder); uncomment to use it
+    // we must set the label's line break mode *in code*, *after* assigning the attributed text
+    
+    self.lab2.lineBreakMode = NSLineBreakByTruncatingTail;
     
 }
 
