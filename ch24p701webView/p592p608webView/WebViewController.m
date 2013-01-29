@@ -9,6 +9,7 @@
 
 @implementation WebViewController {
     BOOL _didDecode;
+    BOOL _canNavigate;
 }
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -16,6 +17,8 @@
     if (self) {
         self.restorationIdentifier = @"wvc";
         self.restorationClass = [self class];
+        UIBarButtonItem* b = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
+        self.navigationItem.rightBarButtonItem = b;
     }
     return self;
 }
@@ -34,10 +37,14 @@
 -(void)encodeRestorableStateWithCoder:(NSCoder *)coder {
     NSLog(@"%@", @"encode");
     [super encodeRestorableStateWithCoder:coder];
-    [coder encodeObject:
-     [NSValue valueWithCGPoint:
-      ((UIWebView*)self.view).scrollView.contentOffset]
-                 forKey:@"oldOffset"];
+    // for our *local* page example, save offset for manual restore
+    if (!self->_canNavigate) {
+        NSLog(@"%@", @"saving offset");
+        [coder encodeObject:
+         [NSValue valueWithCGPoint:
+          ((UIWebView*)self.view).scrollView.contentOffset]
+                     forKey:@"oldOffset"];
+    }
 }
 
 - (void)dealloc
@@ -56,10 +63,12 @@
     self.view = wv;
     wv.delegate = self;
     
+    // prove that we can attach gesture recognizer to web view's scroll view
     UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
     swipe.direction = UISwipeGestureRecognizerDirectionRight;
     [wv.scrollView addGestureRecognizer:swipe];
     
+    // prepare nice activity indicator to cover loading
     UIActivityIndicatorView* act = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     act.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.5];
     self.activity = act;
@@ -74,30 +83,34 @@
 }
 
 - (void) swipe: (id) dummy {
-    NSLog(@"swipe");
+    NSLog(@"swipe"); // okay, you proved it :)
 }
 
+#define LOADREQ 1 // 0, or try 1 for a different application...
+// one that loads an actual request and lets you experiment with state saving and restoration
+
 -(void)viewDidAppear:(BOOL)animated {
-    NSLog(@"%@ %@", @"view did appear", ((UIWebView*)self.view).request);
     [super viewDidAppear:animated];
     
     UIWebView* wv = (id)self.view;
+    NSLog(@"%@ req: %@ can go back: %i", @"view did appear", wv.request, wv.canGoBack);
+
     
-    // uncomment this section to experiment with state saving and restoration
-    /*
+#if LOADREQ == 1
     
+    self ->_canNavigate = YES;
     if (self->_didDecode) {
-        self->_didDecode = NO;
         if (wv.request)
             [wv loadRequest:wv.request];
         NSLog(@"%@", @"I'm outta here");
         return;
     }
-     NSURL* url = [NSURL URLWithString:@"http://www.apeth.com/RubyFrontierDocs/default.html"];
+    NSURL* url = [NSURL URLWithString:@"http://www.apeth.com/RubyFrontierDocs/default.html"];
     [wv loadRequest:[NSURLRequest requestWithURL:url]];
     return;
+
+#endif
      
-     */
     
     NSString* path = [[NSBundle mainBundle] pathForResource:@"htmlbody" ofType:@"txt"];
     NSURL* base = [NSURL fileURLWithPath:path];
@@ -134,10 +147,16 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)wv {
     [self.activity stopAnimating];
+    // for our *local* example, restoring offset is up to us
     if (self.oldOffset) {
+        NSLog(@"%@", @"restoring offset");
         wv.scrollView.contentOffset = [self.oldOffset CGPointValue];
-        self.oldOffset = nil;
+    } else if (self->_didDecode && wv.canGoBack) {
+        NSLog(@"%@", @"going back, going back, going back to Nassau Hall");
+        [wv goBack];
     }
+    self.oldOffset = nil;
+    self->_didDecode = NO;
 }
 
 - (void)webView:(UIWebView *)wv didFailLoadWithError:(NSError *)error {
@@ -151,11 +170,20 @@
         return NO;
     }
     if (nt == UIWebViewNavigationTypeLinkClicked) { // disable link-clicking
+        if (self->_canNavigate)
+            return YES;
         NSLog(@"user would like to navigate to %@", r.URL);
+        // this is how you would open in Mobile Safari
         // [[UIApplication sharedApplication] openURL:r.URL];
         return NO;
     }
     return YES;
+}
+
+- (void) goBack: (id) sender {
+    UIWebView* wv = (id)self.view;
+    if (wv.canGoBack)
+        [wv goBack];
 }
 
 
