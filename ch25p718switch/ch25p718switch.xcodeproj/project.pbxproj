@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9DD8C0516B8A04C00C3F939 /* pic2.png in Resources */ = {isa = PBXBuildFile; fileRef = C9DD8C0416B8A04C00C3F939 /* pic2.png */; };
+		C9DD8C0716B8A1A900C3F939 /* pic1.png in Resources */ = {isa = PBXBuildFile; fileRef = C9DD8C0616B8A1A900C3F939 /* pic1.png */; };
 		C9F3B6CE16668DD0006568C9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3B6CD16668DD0006568C9 /* UIKit.framework */; };
 		C9F3B6D016668DD0006568C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3B6CF16668DD0006568C9 /* Foundation.framework */; };
 		C9F3B6D216668DD0006568C9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3B6D116668DD0006568C9 /* CoreGraphics.framework */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C9DD8C0416B8A04C00C3F939 /* pic2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic2.png; sourceTree = "<group>"; };
+		C9DD8C0616B8A1A900C3F939 /* pic1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic1.png; sourceTree = "<group>"; };
 		C9F3B6C916668DD0006568C9 /* ch25p718switch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch25p718switch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9F3B6CD16668DD0006568C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9F3B6CF16668DD0006568C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -88,6 +92,8 @@
 				C9F3B6E516668DD1006568C9 /* ViewController.h */,
 				C9F3B6E616668DD1006568C9 /* ViewController.m */,
 				C9F3B6E816668DD1006568C9 /* ViewController.xib */,
+				C9DD8C0416B8A04C00C3F939 /* pic2.png */,
+				C9DD8C0616B8A1A900C3F939 /* pic1.png */,
 				C9F3B6D416668DD0006568C9 /* Supporting Files */,
 			);
 			path = ch25p718switch;
@@ -163,6 +169,8 @@
 				C9F3B6E216668DD1006568C9 /* Default@2x.png in Resources */,
 				C9F3B6E416668DD1006568C9 /* Default-568h@2x.png in Resources */,
 				C9F3B6EA16668DD1006568C9 /* ViewController.xib in Resources */,
+				C9DD8C0516B8A04C00C3F939 /* pic2.png in Resources */,
+				C9DD8C0716B8A1A900C3F939 /* pic1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
