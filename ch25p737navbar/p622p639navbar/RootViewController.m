@@ -37,6 +37,7 @@
  */
 
 - (IBAction)doButton:(id)sender {
+    
     // let's test the shadow image
     // we need a custom background image
     UIImage* lin = [UIImage imageNamed:@"lin.png"];
@@ -61,6 +62,17 @@
     UIImage* sh = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     [self.nav setShadowImage:sh];
+    
+    return; // comment out this line to play with custom status bar color
+    
+//    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+//    return;
+    
+    UINavigationBar* nav = [[UINavigationBar alloc] initWithFrame:CGRectMake(0,0,320,1)];
+    nav.tintColor = [UIColor redColor];
+    nav.alpha = 0;
+    [self.nav.superview addSubview:nav];
+
 
 }
 
