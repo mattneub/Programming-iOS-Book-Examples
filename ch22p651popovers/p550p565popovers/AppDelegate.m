@@ -22,7 +22,7 @@
     // note how we can use appearanceWhenContainedIn to differentiate cases
     [[UIBarButtonItem appearanceWhenContainedIn: [UINavigationBar class], [UIPopoverController class], nil]
      setTintColor:[UIColor grayColor]];
-    [[UIBarButtonItem appearance] setTintColor: [UIColor brownColor]];
+    ((UIBarButtonItem*)[UIBarButtonItem appearance]).tintColor = [UIColor brownColor];
 
     // this looks sort of terrible, but it shows what can be done
     [[UINavigationBar appearanceWhenContainedIn: [UIPopoverController class], nil] setBackgroundColor: [UIColor colorWithRed:0.785 green:0.802 blue:0.827 alpha:1.000]];

@@ -15,7 +15,6 @@
  */
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated]; // note order of operations
     if (selected) {
         UIActivityIndicatorView* v = 
         [[UIActivityIndicatorView alloc] 
@@ -28,6 +27,7 @@
          [NSLayoutConstraint constraintWithItem:v attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:v.superview attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
         [v.superview addConstraint:
          [NSLayoutConstraint constraintWithItem:v attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:v.superview attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+        v.transform = CGAffineTransformMakeScale(1.2, 1.2);
         [v startAnimating];
     } else {
         UIView* v = [self viewWithTag:1001];
@@ -39,6 +39,7 @@
             [v removeFromSuperview];
         }
     }
+    [super setSelected:selected animated:animated];
 }
 
 @end

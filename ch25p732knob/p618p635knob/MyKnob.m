@@ -21,7 +21,7 @@ static CGFloat pToA (UITouch* touch, UIView* self) {
 - (BOOL) continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     CGFloat ang = pToA(touch, self);
     ang -= self->_initialAngle;
-    CGFloat absoluteAngle = self.angle + ang;
+    CGFloat absoluteAngle = self->_angle + ang;
     if (absoluteAngle < 0) {
         self.transform = CGAffineTransformIdentity;
         self->_angle = 0;

@@ -35,12 +35,12 @@
     UINavigationController* more = self.tabBarController.moreNavigationController;
     UIViewController* list = (more.viewControllers)[0];
     list.title = @"";
-    UIBarButtonItem* b = [[UIBarButtonItem alloc] init];
+    UIBarButtonItem* b = [UIBarButtonItem new];
     b.title = @"Back";
     list.navigationItem.backBarButtonItem = b; // so user can navigate back
     more.navigationBar.barStyle = UIBarStyleBlack;
     UITableView* tv = (UITableView*)list.view;
-    MyDataSource* mds = [[MyDataSource alloc] init];
+    MyDataSource* mds = [MyDataSource new];
     self.myDataSource = mds; // retain policy
     self.myDataSource.originalDataSource = tv.dataSource;
     tv.dataSource = self.myDataSource;

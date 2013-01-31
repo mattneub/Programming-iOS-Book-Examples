@@ -3,8 +3,9 @@
 #import "MyProgressView.h"
 
 @interface RootViewController ()
-@property (strong, nonatomic) IBOutlet UIProgressView *prog3;
-@property (strong, nonatomic) IBOutlet UIProgressView *prog2;
+@property (weak, nonatomic) IBOutlet UIProgressView *progDef;
+@property (weak, nonatomic) IBOutlet UIProgressView *prog3;
+@property (weak, nonatomic) IBOutlet UIProgressView *prog2;
 @property (nonatomic, strong) IBOutlet MyProgressView *prog;
 @end
 
@@ -46,6 +47,7 @@
     self.prog.value = val;
     self.prog2.progress = val;
     self.prog3.progress = val;
+    self.progDef.progress = val;
     [self.prog setNeedsDisplay];
     if (val >= 1.0)
         [t invalidate];
