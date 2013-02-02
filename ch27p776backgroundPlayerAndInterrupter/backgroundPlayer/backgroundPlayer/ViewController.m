@@ -27,7 +27,7 @@
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event {
     UIEventSubtype rc = event.subtype;
-    NSLog(@"hey, I got a remote event! %i", rc);
+    NSLog(@"got a remote event! %i", rc);
     if (rc == UIEventSubtypeRemoteControlPlay)
         [self.player.player play];
     else if (rc == UIEventSubtypeRemoteControlStop)
@@ -53,11 +53,12 @@
     return YES;
 }
 
-
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear: animated];
     [self becomeFirstResponder];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
 }
+
 
 @end

@@ -12,7 +12,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient withOptions:0 error:nil];
     
     // iOS 6 uses notifications instead of delegate
     [[NSNotificationCenter defaultCenter]
@@ -23,7 +23,7 @@
          NSLog(@"interruption %@:\n%@", which ? @"began" : @"ended", note.userInfo);
          if (!which) {
              // interruption ended, let's reactivate
-             [[AVAudioSession sharedInstance] setActive: YES error: nil];
+             [[AVAudioSession sharedInstance] setActive: YES withOptions: 0 error: nil];
          }
      }];
 
@@ -39,7 +39,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     NSLog(@"interrupter did become active");
 
-    [[AVAudioSession sharedInstance] setActive: YES error: nil];
+    [[AVAudioSession sharedInstance] setActive: YES withOptions: 0 error: nil];
 
 }
 

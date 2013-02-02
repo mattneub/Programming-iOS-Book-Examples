@@ -22,8 +22,8 @@
 	
 	self.player = newPlayer;
     
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-    [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:0 error:nil];
+    [[AVAudioSession sharedInstance] setActive:YES withOptions:0 error:nil];
     
 //    player.enableRate = YES;
 //    player.rate = 1.2; // cool new iOS 5 feature, may as well play with it
@@ -40,8 +40,8 @@
     // above line deprecated in iOS 6, replaced with the following:
     [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
 
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];
-    [[AVAudioSession sharedInstance] setActive: YES error:nil];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient withOptions:0 error:nil];
+    [[AVAudioSession sharedInstance] setActive: YES withOptions:0 error:nil];
 }
 
 - (void)audioPlayerBeginInterruption:(AVAudioPlayer *)p {
@@ -49,11 +49,11 @@
 }
 
 // iOS 6 change, now use Options, not flags...
--(void)audioPlayerEndInterruption:(AVAudioPlayer *)p withOptions:(NSUInteger)flags {
-    NSLog(@"audio player interruption ended with flags %i", flags);
+-(void)audioPlayerEndInterruption:(AVAudioPlayer *)p withOptions:(NSUInteger)opts {
+    NSLog(@"audio player interruption ended with flags %i", opts);
 
     // ... and the name of the flag has changed
-    if (flags & AVAudioSessionInterruptionOptionShouldResume) {
+    if (opts & AVAudioSessionInterruptionOptionShouldResume) {
         NSLog(@"I was told to resume");
         // but this is just a test, always try to resume
     }
