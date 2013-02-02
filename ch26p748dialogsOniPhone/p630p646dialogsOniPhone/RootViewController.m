@@ -10,9 +10,15 @@
 @synthesize alertString;
 
 - (IBAction)doAlertView:(id)sender {
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Not So Fast!" 
-                                                    message:@"Do you really want to do this tremendously destructive thing?" 
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Not So Fast!"
+                                                    message:@"Do you really want to do this tremendously destructive thing?"
                                                    delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", @"Maybe", nil];
+    // alternatively, try this:
+    /*
+    alert = [[UIAlertView alloc] initWithTitle:@"Not So Fast!"
+                                       message:@"Do you really want to do this tremendously destructive thing?"
+                                      delegate:self cancelButtonTitle:nil otherButtonTitles:@"No", @"Maybe", @"Yes", nil];
+     */
     [alert show];
 }
 
@@ -49,7 +55,7 @@
 - (IBAction)doActionSheet:(id)sender {
     UIActionSheet* sheet = 
     [[UIActionSheet alloc] initWithTitle:@"Choose New Layout" delegate:self 
-                       cancelButtonTitle:(NSString *)@"Cancel" destructiveButtonTitle:nil 
+                       cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil 
                        otherButtonTitles:@"3 by 3", @"4 by 3", @"4 by 4", @"5 by 4", @"5 by 5",
      nil];
     [sheet showInView: self.view.window.rootViewController.view];
