@@ -50,7 +50,7 @@
 
 // iOS 6 change, now use Options, not flags...
 -(void)audioPlayerEndInterruption:(AVAudioPlayer *)p withOptions:(NSUInteger)opts {
-    NSLog(@"audio player interruption ended with flags %i", opts);
+    NSLog(@"audio player interruption ended with options %i", opts);
 
     // ... and the name of the flag has changed
     if (opts & AVAudioSessionInterruptionOptionShouldResume) {
