@@ -15,6 +15,8 @@
 		A487870014B2452800B29A1E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A48786FF14B2452800B29A1E /* AppDelegate.m */; };
 		A487870914B2455600B29A1E /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A487870714B2455600B29A1E /* RootViewController.m */; };
 		A487870A14B2455600B29A1E /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A487870814B2455600B29A1E /* RootView.xib */; };
+		C9F17D4E16BC1C3E00AB3F96 /* PopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F17D4C16BC1C3E00AB3F96 /* PopoverViewController.m */; };
+		C9F17D4F16BC1C3E00AB3F96 /* PopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9F17D4D16BC1C3E00AB3F96 /* PopoverViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,9 @@
 		A487870614B2455600B29A1E /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		A487870714B2455600B29A1E /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		A487870814B2455600B29A1E /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
+		C9F17D4B16BC1C3E00AB3F96 /* PopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverViewController.h; sourceTree = "<group>"; };
+		C9F17D4C16BC1C3E00AB3F96 /* PopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverViewController.m; sourceTree = "<group>"; };
+		C9F17D4D16BC1C3E00AB3F96 /* PopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +87,9 @@
 				A487870614B2455600B29A1E /* RootViewController.h */,
 				A487870714B2455600B29A1E /* RootViewController.m */,
 				A487870814B2455600B29A1E /* RootView.xib */,
+				C9F17D4B16BC1C3E00AB3F96 /* PopoverViewController.h */,
+				C9F17D4C16BC1C3E00AB3F96 /* PopoverViewController.m */,
+				C9F17D4D16BC1C3E00AB3F96 /* PopoverViewController.xib */,
 				A48786F614B2452800B29A1E /* Supporting Files */,
 			);
 			path = p623p651actionSheetPopover;
@@ -150,6 +158,7 @@
 			files = (
 				A48786FA14B2452800B29A1E /* InfoPlist.strings in Resources */,
 				A487870A14B2455600B29A1E /* RootView.xib in Resources */,
+				C9F17D4F16BC1C3E00AB3F96 /* PopoverViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +172,7 @@
 				A48786FC14B2452800B29A1E /* main.m in Sources */,
 				A487870014B2452800B29A1E /* AppDelegate.m in Sources */,
 				A487870914B2455600B29A1E /* RootViewController.m in Sources */,
+				C9F17D4E16BC1C3E00AB3F96 /* PopoverViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
