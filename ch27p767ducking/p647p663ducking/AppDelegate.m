@@ -3,7 +3,6 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
-// #import <AudioToolbox/AudioToolbox.h> // not any more! iOS 6 deprecates
 #import <AVFoundation/AVFoundation.h>
 
 
@@ -14,7 +13,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient error: nil];
+    [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient
+                                     withOptions:0 error: nil];
     // iOS 6, delegate deprecated, use notifications instead
     // [[AVAudioSession sharedInstance] setDelegate: self];
     // iOS 6, AudioToolbox C interface deprecated, use new Objective-C capabilities instead
@@ -48,7 +48,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    [[AVAudioSession sharedInstance] setActive: YES error: nil];
+    NSLog(@"%@", @"app became active");
+    [[AVAudioSession sharedInstance] setActive: YES withOptions: 0 error: nil];
 }
 
 

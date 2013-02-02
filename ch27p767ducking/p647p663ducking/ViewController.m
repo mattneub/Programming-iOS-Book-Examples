@@ -2,7 +2,6 @@
 
 #import "ViewController.h"
 #import "Player.h"
-#import <AudioToolbox/AudioToolbox.h>
 
 @interface ViewController ()
 @property (nonatomic, retain) Player* player;
@@ -45,7 +44,7 @@
     NSString* path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"aif"];
     if ([[(UIButton*)sender currentTitle] isEqualToString:@"Forever"]) {
         // for remote control to work, our audio session policy must be Playback
-        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
+        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback withOptions: 0 error: nil];
         self.player.forever = YES;
     }
     else {
@@ -72,11 +71,11 @@
 //                            sizeof(duck), &duck);
 //    AudioSessionSetActive(false);
 //    AudioSessionSetActive(true);
-    [[AVAudioSession sharedInstance] setActive:NO error:nil];
+    [[AVAudioSession sharedInstance] setActive:NO withOptions:0 error:nil];
     [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryAmbient
                                      withOptions: 0
                                            error: nil];
-    [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    [[AVAudioSession sharedInstance] setActive:YES withOptions: 0 error:nil];
 
 }
 
@@ -88,6 +87,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear: animated];
+    //return;
     [self becomeFirstResponder];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }

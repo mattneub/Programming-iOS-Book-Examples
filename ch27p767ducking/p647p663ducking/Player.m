@@ -48,7 +48,7 @@
 //}
 
 -(void)audioPlayerEndInterruption:(AVAudioPlayer *)player withOptions:(NSUInteger)flags {
-    NSLog(@"audio player flags: %i", flags);
+    NSLog(@"audio player ended interruption flags: %i", flags);
 }
 
 

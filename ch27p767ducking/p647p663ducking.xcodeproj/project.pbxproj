@@ -16,7 +16,6 @@
 		A4E1278C14D24C2300623341 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E1278B14D24C2300623341 /* ViewController.m */; };
 		A4E1278F14D24C2300623341 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E1278D14D24C2300623341 /* ViewController.xib */; };
 		A4E1279614D24C5700623341 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E1279514D24C5700623341 /* AVFoundation.framework */; };
-		A4E1279814D24CC900623341 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E1279714D24CC900623341 /* AudioToolbox.framework */; };
 		A4E1279B14D24D1600623341 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E1279A14D24D1600623341 /* Player.m */; };
 		A4E1279D14D24EC200623341 /* test.aif in Resources */ = {isa = PBXBuildFile; fileRef = A4E1279C14D24EC200623341 /* test.aif */; };
 /* End PBXBuildFile section */
@@ -36,7 +35,6 @@
 		A4E1278B14D24C2300623341 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A4E1278E14D24C2300623341 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		A4E1279514D24C5700623341 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		A4E1279714D24CC900623341 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A4E1279914D24D1600623341 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		A4E1279A14D24D1600623341 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		A4E1279C14D24EC200623341 /* test.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.aif; sourceTree = "<group>"; };
@@ -47,7 +45,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4E1279814D24CC900623341 /* AudioToolbox.framework in Frameworks */,
 				A4E1279614D24C5700623341 /* AVFoundation.framework in Frameworks */,
 				A4E1277914D24C2300623341 /* UIKit.framework in Frameworks */,
 				A4E1277B14D24C2300623341 /* Foundation.framework in Frameworks */,
@@ -61,7 +58,6 @@
 		A4E1276914D24C2300623341 = {
 			isa = PBXGroup;
 			children = (
-				A4E1279714D24CC900623341 /* AudioToolbox.framework */,
 				A4E1279514D24C5700623341 /* AVFoundation.framework */,
 				A4E1277E14D24C2300623341 /* p647p663ducking */,
 				A4E1277714D24C2300623341 /* Frameworks */,
