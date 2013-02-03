@@ -17,9 +17,9 @@
 		A41E471514D454C4004813DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A41E471414D454C4004813DB /* AppDelegate.m */; };
 		A41E471814D454C4004813DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A41E471714D454C4004813DB /* ViewController.m */; };
 		A41E471B14D454C4004813DB /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A41E471914D454C4004813DB /* ViewController.xib */; };
-		A41E472214D454F7004813DB /* movie2.m4v in Resources */ = {isa = PBXBuildFile; fileRef = A41E472114D454F7004813DB /* movie2.m4v */; };
 		A41E472414D45596004813DB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A41E472314D45596004813DB /* MediaPlayer.framework */; };
 		A446518F14D633D30066E9D0 /* MyMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A446518E14D633D30066E9D0 /* MyMoviePlayerViewController.m */; };
+		C92D5B9B16BECC6700C322BF /* ElMirage.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C92D5B9A16BECC6700C322BF /* ElMirage.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,10 +38,10 @@
 		A41E471614D454C4004813DB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A41E471714D454C4004813DB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A41E471A14D454C4004813DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		A41E472114D454F7004813DB /* movie2.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = movie2.m4v; sourceTree = "<group>"; };
 		A41E472314D45596004813DB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		A446518D14D633D30066E9D0 /* MyMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMoviePlayerViewController.h; sourceTree = "<group>"; };
 		A446518E14D633D30066E9D0 /* MyMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMoviePlayerViewController.m; sourceTree = "<group>"; };
+		C92D5B9A16BECC6700C322BF /* ElMirage.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ElMirage.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +99,7 @@
 				A41E471914D454C4004813DB /* ViewController.xib */,
 				A446518D14D633D30066E9D0 /* MyMoviePlayerViewController.h */,
 				A446518E14D633D30066E9D0 /* MyMoviePlayerViewController.m */,
-				A41E472114D454F7004813DB /* movie2.m4v */,
+				C92D5B9A16BECC6700C322BF /* ElMirage.mp4 */,
 				A40EE96B14D5A3DC0042E7E0 /* wilhelm.aiff */,
 				A41E470B14D454C3004813DB /* Supporting Files */,
 			);
@@ -169,8 +169,8 @@
 			files = (
 				A41E470F14D454C3004813DB /* InfoPlist.strings in Resources */,
 				A41E471B14D454C4004813DB /* ViewController.xib in Resources */,
-				A41E472214D454F7004813DB /* movie2.m4v in Resources */,
 				A40EE96C14D5A3DC0042E7E0 /* wilhelm.aiff in Resources */,
+				C92D5B9B16BECC6700C322BF /* ElMirage.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

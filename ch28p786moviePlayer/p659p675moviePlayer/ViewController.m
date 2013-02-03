@@ -5,7 +5,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import "MyMoviePlayerViewController.h"
 
-@interface ViewController() <UINavigationControllerDelegate, UIVideoEditorControllerDelegate>
+// run on device!
+
+@interface ViewController() <UINavigationControllerDelegate, UIVideoEditorControllerDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) MPMoviePlayerController* mpc;
 @property (nonatomic, strong) UIPopoverController* currentPop;
@@ -24,7 +26,7 @@
 
 // just testing, pay no attention to this
 - (void) stateChanged: (id) n {
-    NSLog(@"%@", @"state changed");
+    NSLog(@"%@ %i", @"state changed", [[n object] playbackState]);
     NSLog(@"%@", [[AVAudioSession sharedInstance] category]);
     if (self.mpc.playbackState == MPMoviePlaybackStatePlaying)
         [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
@@ -42,7 +44,7 @@
 
 - (void)setUpMPC
 {
-    NSURL* m = [[NSBundle mainBundle] URLForResource:@"movie2" withExtension:@"m4v"];
+    NSURL* m = [[NSBundle mainBundle] URLForResource:@"ElMirage" withExtension:@"mp4"];
     //m = [[NSBundle mainBundle] URLForResource:@"wilhelm" withExtension:@"aiff"];
     MPMoviePlayerController* mp = [[MPMoviePlayerController alloc] initWithContentURL:m];
     self.mpc = mp; // retain policy
@@ -90,17 +92,25 @@
 }
 
 - (IBAction)doButton:(id)sender {
-    NSURL* m = [[NSBundle mainBundle] URLForResource:@"movie2" withExtension:@"m4v"];
-    MPMoviePlayerViewController* mpvc = 
+    NSURL* m = [[NSBundle mainBundle] URLForResource:@"ElMirage" withExtension:@"mp4"];
+    
+    // prevent weird error messages
+    UIGraphicsBeginImageContext(CGSizeMake(1,1));
+    MPMoviePlayerViewController* mpvc =
     [[MyMoviePlayerViewController alloc] initWithContentURL: m];
+    UIGraphicsEndImageContext();
+    
+    // mpvc.moviePlayer.shouldAutoplay = NO;
+    
     [self presentMoviePlayerViewControllerAnimated:mpvc];
-    mpvc.moviePlayer.initialPlaybackTime = 0;
-    mpvc.moviePlayer.endPlaybackTime = 60 + 57;
+    //    mpvc.moviePlayer.initialPlaybackTime = 0;
+    //    mpvc.moviePlayer.endPlaybackTime = 60 + 57;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(vcFinished:) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
 }
 
-- (void) vcFinished: (id) dummy {
+- (void) vcFinished: (id) n {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
+    NSLog(@"%@ %@", @"did finish", n);
     // try commenting this out and you'll see what the problem is:
     // There Can Be Only One
     // so after our MPMoviePlayerViewController, our MPMoviePlayerController's view is busted
@@ -111,24 +121,27 @@
 // note: must run on device; no video editing in simulator
 
 - (IBAction)doEditorButton:(id)sender {
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"movie2" ofType:@"m4v"];
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"ElMirage" ofType:@"mp4"];
     BOOL can = [UIVideoEditorController canEditVideoAtPath:path];
     if (!can) {
         NSLog(@"can't edit this video");
         return;
     }
-    UIVideoEditorController* vc = [[UIVideoEditorController alloc] init];
+    UIVideoEditorController* vc = [UIVideoEditorController new];
     vc.delegate = self;
     vc.videoPath = path;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-    // if (0) {
+        // if (0) {
         // this is for demonstration only: the interface is *still* broken on iPad
         // says Choose Video etc.
         // but if you try to present the view controller full screen,
         // you get a crash 'On iPad, UIVideoEditorController must be presented via UIPopoverController'
+        //        [self presentViewController:vc animated:YES completion:nil];
+        //        return;
         UIPopoverController* pop = [[UIPopoverController alloc] initWithContentViewController:vc];
+        pop.delegate = self;
         self.currentPop = pop;
-        [pop presentPopoverFromRect:[sender bounds] inView:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:NO];
+        [pop presentPopoverFromRect:[sender bounds] inView:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
     else {
         [self presentViewController:vc animated:YES completion:nil];
@@ -150,8 +163,8 @@
 -(void)videoEditorController:(UIVideoEditorController *)editor didSaveEditedVideoToPath:(NSString *)editedVideoPath {
     NSLog(@"saving to %@", editedVideoPath);
     if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(editedVideoPath))
-        UISaveVideoAtPathToSavedPhotosAlbum(editedVideoPath, self, 
-                                            @selector(video:savedWithError:ci:), 
+        UISaveVideoAtPathToSavedPhotosAlbum(editedVideoPath, self,
+                                            @selector(video:savedWithError:ci:),
                                             nil);
     else
         NSLog(@"need to think of something else to do with it");
@@ -164,7 +177,7 @@
      to Photos library
      If that's the case, we will get error like this:
      Error Domain=ALAssetsLibraryErrorDomain Code=-3310 "Data unavailable" UserInfo=0x1d8355d0 {NSLocalizedRecoverySuggestion=Launch the Photos application, NSUnderlyingError=0x1d83d470 "Data unavailable", NSLocalizedDescription=Data unavailable}
-
+     
      */
     [self dismissViewControllerAnimated:YES completion:^{
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -183,7 +196,13 @@
     }];
 }
 
-
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    NSLog(@"%@", @"popover dismissed");
+    self.currentPop = nil;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.mpc prepareToPlay]; // iOS 6 change
+    });
+}
 
 
 
