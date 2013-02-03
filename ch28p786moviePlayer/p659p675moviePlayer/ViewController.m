@@ -22,7 +22,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#define which 2 // try also 2
+#define which 1 // try also 2
 
 // just testing, pay no attention to this
 - (void) stateChanged: (id) n {
