@@ -10,6 +10,8 @@
 
 @implementation ViewController
 
+// probably best to run on device
+
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"readyForDisplay"]) {
         AVPlayerLayer* lay = (AVPlayerLayer*) object;
@@ -22,7 +24,7 @@
             AVPlayerItem* item = self.player.currentItem;
             if (self.synchlayer)
                 [self.synchlayer removeFromSuperlayer];
-            AVSynchronizedLayer* syncLayer = 
+            AVSynchronizedLayer* syncLayer =
             [AVSynchronizedLayer synchronizedLayerWithPlayerItem:item];
             syncLayer.frame = CGRectMake(10,200,300,10);
             syncLayer.backgroundColor = [[UIColor whiteColor] CGColor];
@@ -48,11 +50,13 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-    NSURL* m = [[NSBundle mainBundle] URLForResource:@"movie2" withExtension:@"m4v"];
-        
+    NSURL* m = [[NSBundle mainBundle] URLForResource:@"ElMirage" withExtension:@"mp4"];
+    
     AVURLAsset* asset = [AVURLAsset URLAssetWithURL:m options:nil];
     AVPlayerItem* item = [AVPlayerItem playerItemWithAsset:asset];
     AVPlayer* p = [AVPlayer playerWithPlayerItem:item];
+    //    AVPlayer* p = [AVPlayer playerWithURL:m];
+    
     self.player = p;
     AVPlayerLayer* lay = [AVPlayerLayer playerLayerWithPlayer:p];
     self.playerlayer = lay;
@@ -89,16 +93,18 @@
     
     comptrack = [comp addMutableTrackWithMediaType:type preferredTrackID:kCMPersistentTrackID_Invalid];
     [comptrack insertTimeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(0,1), CMTimeMakeWithSeconds(10,1)) ofTrack:track atTime:CMTimeMakeWithSeconds(0,1) error:nil];
-
+    
     AVPlayerItem* item = [AVPlayerItem playerItemWithAsset:[comp copy]];
+    
     
     AVMutableAudioMixInputParameters* params = [AVMutableAudioMixInputParameters audioMixInputParametersWithTrack:comptrack];
     [params setVolume:1 atTime:CMTimeMakeWithSeconds(0,1)];
     [params setVolumeRampFromStartVolume:1 toEndVolume:0 timeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(6,1), CMTimeMakeWithSeconds(2,1))];
     AVMutableAudioMix* mix = [AVMutableAudioMix audioMix];
     mix.inputParameters = [NSArray arrayWithObject: params];
-
+    
     item.audioMix = mix;
+    
     
     [self.player replaceCurrentItemWithPlayerItem:item];
     [self.playerlayer addObserver:self forKeyPath:@"readyForDisplay" options:0 context:nil];

@@ -19,6 +19,7 @@
 		A40EE9A314D5CD730042E7E0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40EE9A214D5CD730042E7E0 /* CoreMedia.framework */; };
 		A40EE9A514D5CD7B0042E7E0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40EE9A414D5CD7B0042E7E0 /* QuartzCore.framework */; };
 		A4FAFA2814D7015500726DF6 /* aboutTiagol.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A4FAFA2714D7015500726DF6 /* aboutTiagol.m4a */; };
+		C9E4332616BED0DA00697884 /* ElMirage.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C9E4332516BED0DA00697884 /* ElMirage.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		A40EE9A214D5CD730042E7E0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		A40EE9A414D5CD7B0042E7E0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A4FAFA2714D7015500726DF6 /* aboutTiagol.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = aboutTiagol.m4a; sourceTree = "<group>"; };
+		C9E4332516BED0DA00697884 /* ElMirage.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ElMirage.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				A40EE99314D5CC240042E7E0 /* ViewController.h */,
 				A40EE99414D5CC240042E7E0 /* ViewController.m */,
 				A40EE99614D5CC240042E7E0 /* ViewController.xib */,
+				C9E4332516BED0DA00697884 /* ElMirage.mp4 */,
 				A4FAFA2714D7015500726DF6 /* aboutTiagol.m4a */,
 				A40EE98814D5CC230042E7E0 /* Supporting Files */,
 			);
@@ -166,6 +169,7 @@
 				A40EE98C14D5CC230042E7E0 /* InfoPlist.strings in Resources */,
 				A40EE99814D5CC240042E7E0 /* ViewController.xib in Resources */,
 				A4FAFA2814D7015500726DF6 /* aboutTiagol.m4a in Resources */,
+				C9E4332616BED0DA00697884 /* ElMirage.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
