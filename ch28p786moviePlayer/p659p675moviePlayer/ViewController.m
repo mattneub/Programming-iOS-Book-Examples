@@ -5,7 +5,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "MyMoviePlayerViewController.h"
 
-// run on device!
+// run on device! or, if on simulator, at least turn off breakpoints
 
 @interface ViewController() <UINavigationControllerDelegate, UIVideoEditorControllerDelegate, UIPopoverControllerDelegate>
 
