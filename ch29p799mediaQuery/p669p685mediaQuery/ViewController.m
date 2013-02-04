@@ -12,6 +12,15 @@
 
 @implementation ViewController
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserverForName:MPMediaLibraryDidChangeNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+        NSLog(@"library changed!");
+    }];
+    [[MPMediaLibrary defaultMediaLibrary] beginGeneratingLibraryChangeNotifications];
+    NSLog(@"library last modified %@", [[MPMediaLibrary defaultMediaLibrary] lastModifiedDate]);
+}
+
 - (IBAction)doAllAlbumTitles:(id)sender {
     MPMediaQuery* query = [MPMediaQuery albumsQuery];
     NSArray* result = [query collections];
@@ -21,6 +30,11 @@
     for (MPMediaItemCollection* album in result)
         NSLog(@"%@", [album.items[0]
                       valueForProperty:MPMediaItemPropertyAlbumTitle]);
+//    for (MPMediaItemCollection* album in result)
+//        for (MPMediaItem* song in album.items)
+//            NSLog(@"%@ %@", [song
+//                          valueForProperty:MPMediaItemPropertyIsCloudItem], [song valueForProperty:MPMediaItemPropertyTitle]);
+
 }
 
 - (IBAction)doAllSonataAlbumTitles:(id)sender {
@@ -47,9 +61,9 @@
     NSMutableArray* marr = [NSMutableArray array];
     MPMediaItemCollection* queue = nil;
     for (MPMediaItem* song in query.items) {
-        CGFloat dur = 
-        [[song valueForProperty:MPMediaItemPropertyPlaybackDuration] floatValue];
-        if (dur < 30)
+        NSNumber* dur =
+        [song valueForProperty:MPMediaItemPropertyPlaybackDuration];
+        if ([dur floatValue] < 30)
             [marr addObject: song];
     }
     if ([marr count] == 0)
@@ -95,17 +109,16 @@
 
 - (void) timerFired: (id) dummy {
     MPMusicPlayerController* mp = [MPMusicPlayerController applicationMusicPlayer];
-    if ([mp playbackState] == MPMusicPlaybackStatePlaying || 
-        [mp playbackState] == MPMusicPlaybackStatePaused) {
-        self.p.hidden = NO;
-        MPMediaItem* item = mp.nowPlayingItem;
-        NSTimeInterval current = mp.currentPlaybackTime;
-        NSTimeInterval total = 
-        [[item valueForProperty:MPMediaItemPropertyPlaybackDuration] doubleValue];
-        self.p.progress = current / total;
-    } else {
+    MPMediaItem* item = mp.nowPlayingItem;
+    if (!item || mp.playbackState == MPMusicPlaybackStateStopped) {
         self.p.hidden = YES;
+        return;
     }
+    self.p.hidden = NO;
+    NSTimeInterval current = mp.currentPlaybackTime;
+    NSTimeInterval total =
+    [[item valueForProperty:MPMediaItemPropertyPlaybackDuration] doubleValue];
+    self.p.progress = current / total;
 }
 
 

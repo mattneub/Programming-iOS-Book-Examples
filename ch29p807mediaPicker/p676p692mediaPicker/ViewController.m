@@ -3,7 +3,7 @@
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface ViewController () <MPMediaPickerControllerDelegate>
+@interface ViewController () <MPMediaPickerControllerDelegate, UIPopoverControllerDelegate>
 @property (nonatomic, strong) UIPopoverController* currentPop;
 @end
 
@@ -15,7 +15,7 @@
 
 - (void) presentPicker: (id) sender {
     MPMediaPickerController* picker = 
-    [[MPMediaPickerController alloc] init];
+    [MPMediaPickerController new];
     // code works just as well if you uncomment next line
     // picker.allowsPickingMultipleItems = YES;
     picker.delegate = self;
@@ -37,6 +37,7 @@
 - (void) dismissPicker: (MPMediaPickerController*) mediaPicker {
     if (self.currentPop && self.currentPop.popoverVisible) {
         [self.currentPop dismissPopoverAnimated:YES];
+        self.currentPop = nil;
     } else {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -55,6 +56,10 @@
 
 - (void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker {
     [self dismissPicker: mediaPicker];
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    self.currentPop = nil;
 }
 
 

@@ -41,6 +41,8 @@
     
     [self.vv setMinimumVolumeSliderImage:[im1 resizableImageWithCapInsets:UIEdgeInsetsMake(9,9,9,9) resizingMode:UIImageResizingModeStretch] forState:UIControlStateNormal];
     [self.vv setMaximumVolumeSliderImage:[im2 resizableImageWithCapInsets:UIEdgeInsetsMake(9,9,9,9) resizingMode:UIImageResizingModeStretch] forState:UIControlStateNormal];
+    [self.vv setMinimumVolumeSliderImage:[im2 resizableImageWithCapInsets:UIEdgeInsetsMake(9,9,9,9) resizingMode:UIImageResizingModeStretch] forState:UIControlStateHighlighted];
+    [self.vv setMaximumVolumeSliderImage:[im1 resizableImageWithCapInsets:UIEdgeInsetsMake(9,9,9,9) resizingMode:UIImageResizingModeStretch] forState:UIControlStateHighlighted];
     
     UIImage* thumb = [self.vv volumeThumbImageForState:UIControlStateNormal];
     sz = thumb.size;
@@ -51,6 +53,14 @@
     UIGraphicsEndImageContext();
     
     [self.vv setVolumeThumbImage:im3 forState:UIControlStateNormal];
+
+    sz.width +=10; sz.height += 10;
+    UIGraphicsBeginImageContextWithOptions(sz, NO, 0);
+    [thumb drawInRect:CGRectMake(0,0,sz.width,sz.height)];
+    UIImage* im4 = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [self.vv setVolumeThumbImage:im4 forState:UIControlStateHighlighted];
 
 }
 
@@ -110,7 +120,7 @@
     }];
     if (![self.assets count])
         return;
-    AVPlayerItem* newItem = (self.assets)[0];
+    AVPlayerItem* newItem = self.assets[0];
     [self.qp insertItem:newItem afterItem:[self.qp.items lastObject]];
     [self.assets removeObjectAtIndex:0];
     
