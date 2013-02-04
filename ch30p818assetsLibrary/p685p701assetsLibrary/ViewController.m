@@ -47,7 +47,7 @@
         if (!result)
             return;
         ALAssetRepresentation* rep = [result defaultRepresentation];
-        // NSLog(@"%@", rep.filename); // new in iOS 5
+        NSLog(@"%@", rep.filename); // new in iOS 5
         CGImageRef im = [rep fullScreenImage]; //
 //        im = result.aspectRatioThumbnail; // ---
 //        self->iv.contentMode = UIViewContentModeCenter; // ---
@@ -83,7 +83,8 @@
         NSLog(@"%@", @"No access");
         return;
     }
-    ALAssetsLibrary* library = [[ALAssetsLibrary alloc] init];
+    NSLog(@"%@", @"We're off to see the wizard");
+    ALAssetsLibrary* library = [ALAssetsLibrary new];
     [library enumerateGroupsWithTypes: ALAssetsGroupAlbum 
                            usingBlock: getGroups
                          failureBlock: oops];

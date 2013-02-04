@@ -23,14 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A4F1303114D99D8100952762 /* p680p696pickAMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p680p696pickAMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4F1303114D99D8100952762 /* p680p696pickAPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p680p696pickAPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4F1303514D99D8100952762 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A4F1303714D99D8100952762 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A4F1303914D99D8100952762 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A4F1303D14D99D8100952762 /* p680p696pickAMovie-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p680p696pickAMovie-Info.plist"; sourceTree = "<group>"; };
+		A4F1303D14D99D8100952762 /* p680p696pickAPhoto-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p680p696pickAPhoto-Info.plist"; sourceTree = "<group>"; };
 		A4F1303F14D99D8100952762 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A4F1304114D99D8100952762 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A4F1304314D99D8100952762 /* p680p696pickAMovie-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p680p696pickAMovie-Prefix.pch"; sourceTree = "<group>"; };
+		A4F1304314D99D8100952762 /* p680p696pickAPhoto-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "p680p696pickAPhoto-Prefix.pch"; sourceTree = "<group>"; };
 		A4F1304414D99D8100952762 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A4F1304514D99D8100952762 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A4F1304714D99D8100952762 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 		A4F1303214D99D8100952762 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A4F1303114D99D8100952762 /* p680p696pickAMovie.app */,
+				A4F1303114D99D8100952762 /* p680p696pickAPhoto.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,10 +109,10 @@
 		A4F1303C14D99D8100952762 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A4F1303D14D99D8100952762 /* p680p696pickAMovie-Info.plist */,
+				A4F1303D14D99D8100952762 /* p680p696pickAPhoto-Info.plist */,
 				A4F1303E14D99D8100952762 /* InfoPlist.strings */,
 				A4F1304114D99D8100952762 /* main.m */,
-				A4F1304314D99D8100952762 /* p680p696pickAMovie-Prefix.pch */,
+				A4F1304314D99D8100952762 /* p680p696pickAPhoto-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -120,9 +120,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A4F1303014D99D8100952762 /* p680p696pickAMovie */ = {
+		A4F1303014D99D8100952762 /* p680p696pickAPhoto */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A4F1305214D99D8100952762 /* Build configuration list for PBXNativeTarget "p680p696pickAMovie" */;
+			buildConfigurationList = A4F1305214D99D8100952762 /* Build configuration list for PBXNativeTarget "p680p696pickAPhoto" */;
 			buildPhases = (
 				A4F1302D14D99D8100952762 /* Sources */,
 				A4F1302E14D99D8100952762 /* Frameworks */,
@@ -132,9 +132,9 @@
 			);
 			dependencies = (
 			);
-			name = p680p696pickAMovie;
+			name = p680p696pickAPhoto;
 			productName = p680p696pickAMovie;
-			productReference = A4F1303114D99D8100952762 /* p680p696pickAMovie.app */;
+			productReference = A4F1303114D99D8100952762 /* p680p696pickAPhoto.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -145,7 +145,7 @@
 			attributes = {
 				LastUpgradeCheck = 0420;
 			};
-			buildConfigurationList = A4F1302B14D99D8100952762 /* Build configuration list for PBXProject "p680p696pickAMovie" */;
+			buildConfigurationList = A4F1302B14D99D8100952762 /* Build configuration list for PBXProject "p680p696pickAPhoto" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -157,7 +157,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A4F1303014D99D8100952762 /* p680p696pickAMovie */,
+				A4F1303014D99D8100952762 /* p680p696pickAPhoto */,
 			);
 		};
 /* End PBXProject section */
@@ -267,10 +267,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "p680p696pickAMovie/p680p696pickAMovie-Prefix.pch";
-				INFOPLIST_FILE = "p680p696pickAMovie/p680p696pickAMovie-Info.plist";
+				GCC_PREFIX_HEADER = "p680p696pickAMovie/p680p696pickAPhoto-Prefix.pch";
+				INFOPLIST_FILE = "p680p696pickAMovie/p680p696pickAPhoto-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = p680p696pickAPhoto;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -279,10 +279,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "p680p696pickAMovie/p680p696pickAMovie-Prefix.pch";
-				INFOPLIST_FILE = "p680p696pickAMovie/p680p696pickAMovie-Info.plist";
+				GCC_PREFIX_HEADER = "p680p696pickAMovie/p680p696pickAPhoto-Prefix.pch";
+				INFOPLIST_FILE = "p680p696pickAMovie/p680p696pickAPhoto-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = p680p696pickAPhoto;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -290,7 +290,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A4F1302B14D99D8100952762 /* Build configuration list for PBXProject "p680p696pickAMovie" */ = {
+		A4F1302B14D99D8100952762 /* Build configuration list for PBXProject "p680p696pickAPhoto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A4F1305014D99D8100952762 /* Debug */,
@@ -299,7 +299,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A4F1305214D99D8100952762 /* Build configuration list for PBXNativeTarget "p680p696pickAMovie" */ = {
+		A4F1305214D99D8100952762 /* Build configuration list for PBXNativeTarget "p680p696pickAPhoto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A4F1305314D99D8100952762 /* Debug */,

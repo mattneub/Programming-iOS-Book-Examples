@@ -21,7 +21,8 @@
     
     self.sess.sessionPreset = AVCaptureSessionPreset640x480;
     self.snapper = [AVCaptureStillImageOutput new];
-    self.snapper.outputSettings = @{AVVideoCodecKey: AVVideoCodecJPEG};
+    // new iOS 6 feature: we can set the JPEG quality of the output
+    self.snapper.outputSettings = @{AVVideoCodecKey: AVVideoCodecJPEG, AVVideoQualityKey:@0.6};
     [self.sess addOutput:self.snapper];
 
     AVCaptureDevice* cam = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -63,8 +64,6 @@
 
         });
     };
-    // new iOS 6 feature: we can set the JPEG quality of the output
-    self.snapper.outputSettings = @{AVVideoQualityKey:@0.6};
     [self.snapper captureStillImageAsynchronouslyFromConnection:vc 
                                               completionHandler:h];
 

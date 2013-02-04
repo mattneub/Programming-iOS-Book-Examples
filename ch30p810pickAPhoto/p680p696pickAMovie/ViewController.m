@@ -9,7 +9,6 @@
 
 @interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverControllerDelegate>
 @property (nonatomic, strong) IBOutlet UIView *redView;
-@property (nonatomic, strong) MPMoviePlayerController* mpc;
 @property (nonatomic, strong) UIPopoverController* currentPop;
 @end
 
@@ -42,26 +41,17 @@
 
 
 - (IBAction)doPick:(id)sender {
-    // new iOS 6 feature: we can learn what our authorization status is...
-    // ...but to do so, we must use ALAssetsLibrary
-    ALAuthorizationStatus stat = [ALAssetsLibrary authorizationStatus];
-    if (stat == ALAuthorizationStatusDenied || stat == ALAuthorizationStatusRestricted) {
-        NSLog(@"%@", @"No access");
-        // return; // in this example, we can proceed anyway
-    }
-    
-    UIImagePickerControllerSourceType type = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    UIImagePickerControllerSourceType type = UIImagePickerControllerSourceTypePhotoLibrary;
     BOOL ok = [UIImagePickerController isSourceTypeAvailable:type];
     if (!ok) {
         NSLog(@"alas");
         return;
     }
-    [self.mpc pause]; // don't play behind picker
-    
     UIImagePickerController* picker = [UIImagePickerController new];
     picker.sourceType = type;
-    picker.mediaTypes = @[(NSString*)kUTTypeVideo];
+    picker.mediaTypes = @[(NSString*)kUTTypeImage];
     picker.delegate = self;
+    picker.allowsEditing = YES;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
         [self presentViewController:picker animated:YES completion:nil];
     else {
@@ -74,54 +64,43 @@
     }
 }
 
-/* If there are no videos, the picker will appear...
- ...but with a No Videos message in it
- */
-
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    NSLog(@"%@", info);
     NSURL* url = info[UIImagePickerControllerMediaURL];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
         [self dismissViewControllerAnimated:YES completion:^{
-            if (url)
-                [self showMovie:url];
+            [self dealWithInfo:info];
         }];
     else {
         [self.currentPop dismissPopoverAnimated:NO]; // must be NO, otherwise we hit the Only One rule
         self.currentPop = nil;
         if (url) {
-            [CATransaction setCompletionBlock:^{
-                [self showMovie:url];
-            }];
+            [self dealWithInfo:info];
         }
     }
 }
 
--(void)showMovie:(NSURL*)url {
-    MPMoviePlayerController* mp = [[MPMoviePlayerController alloc] initWithContentURL:url];
-    self.mpc = mp;
-    self.mpc.view.frame = self.redView.bounds;
-    self.mpc.backgroundView.backgroundColor = [UIColor redColor];
-//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-//        self.mpc.scalingMode = MPMovieScalingModeNone;
+- (void) dealWithInfo: (NSDictionary*) info {
+    UIImage* im = nil;
+    im = info[UIImagePickerControllerEditedImage];
+    if (!im)
+        im = info[UIImagePickerControllerOriginalImage];
+    UIImageView* iv = [UIImageView new];
+    iv.frame = self.redView.bounds;
+    iv.contentMode = UIViewContentModeScaleAspectFit;
+    iv.image = im;
     while ([self.redView.subviews count])
         [self.redView.subviews[0] removeFromSuperview];
-    [self.redView addSubview:self.mpc.view];
-    // why isn't the slider appearing????
-    // oh - it's because if the width is too narrow, the slider isn't shown!!!
-    // fixed by rotating interface to landscape
-    [self.mpc prepareToPlay];
-    // NSLog(@"%@", self.redView.subviews);
+    [self.redView addSubview:iv];
 }
 
+
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [self dismissViewControllerAnimated:YES completion:^{
-        [self.mpc prepareToPlay];
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
     self.currentPop = nil;
-    [self.mpc prepareToPlay];
 }
 
 // hmm, no longer crashes if app doesn't permit portrait

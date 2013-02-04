@@ -79,7 +79,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                                                           style:UIBarButtonItemStyleBordered 
                                                          target:self 
                                                          action:@selector(doCancel:)];
-    [nc.topViewController setToolbarItems:@[b]];
+    UILabel* lab = [UILabel new];
+    lab.text = @"Double tap to take a picture";
+    lab.backgroundColor = [UIColor clearColor];
+    [lab sizeToFit];
+    UIBarButtonItem* b2 = [[UIBarButtonItem alloc] initWithCustomView:lab];
+    [nc.topViewController setToolbarItems:@[b, b2]];
     nc.topViewController.title = @"Retake";
 }
 

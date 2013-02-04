@@ -5,7 +5,7 @@
 
 @interface ViewController () <UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (nonatomic, weak) IBOutlet UIImageView *iv;
-@property (nonatomic, strong) UIImagePickerController* p;
+@property (nonatomic, strong) UIImagePickerController* picker;
 
 @end
 
@@ -36,13 +36,19 @@
     UIView* v2 = [[UIView alloc] initWithFrame:CGRectMake(0,f.size.height-h,f.size.width,h)];
     v2.backgroundColor = [UIColor redColor];
     [v addSubview: v2];
+    UILabel* lab = [UILabel new];
+    lab.text = @"Double tap to take a picture";
+    lab.backgroundColor = [UIColor clearColor];
+    [lab sizeToFit];
+    lab.center = CGPointMake(CGRectGetMidX(v2.bounds), CGRectGetMidY(v2.bounds));
+    [v2 addSubview:lab];
     UITapGestureRecognizer* t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     t.numberOfTapsRequired = 2;
     [v addGestureRecognizer:t];
     picker.cameraOverlayView = v;
      */
     [self presentViewController:picker animated:YES completion:nil];
-    self.p = picker;
+    self.picker = picker;
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
@@ -58,7 +64,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 }
 
 - (void) tap: (id) g {
-    [self.p takePicture];
+    [self.picker takePicture];
 }
 
 
