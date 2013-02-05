@@ -229,7 +229,7 @@ uses iCloud, gmail, or similar calendar synching, you have no local calendar.
          ^(EKEvent *event, BOOL *stop) {
              [marr addObject: event];
              if ([event.title rangeOfString:@"nap"].location != NSNotFound)
-                 self.napid = event.eventIdentifier;
+                 self.napid = event.calendarItemIdentifier;
          }];
         [marr sortUsingSelector:@selector(compareStartDateWithEvent:)];
         NSLog(@"%@", marr);
@@ -245,7 +245,7 @@ uses iCloud, gmail, or similar calendar synching, you have no local calendar.
         return;
     }
     
-    EKEvent* ev = [self.database eventWithIdentifier:self.napid];
+    EKEvent* ev = (EKEvent*)[self.database calendarItemWithIdentifier:self.napid];
     if (!ev) {
         NSLog(@"failed to retrieve event");
         return;
