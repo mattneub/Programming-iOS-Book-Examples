@@ -217,7 +217,7 @@ uses iCloud, gmail, or similar calendar synching, you have no local calendar.
     // how to do calendrical arithmetic: I got this wrong in the 1st edn.
     NSCalendar* greg = 
         [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents* comp = [[NSDateComponents alloc] init];
+    NSDateComponents* comp = [NSDateComponents new];
     comp.year = 1; // we're going to add 2 to the year
     NSDate* d2 = [greg dateByAddingComponents:comp toDate:d1 options:0];
     NSPredicate* pred = 
@@ -250,7 +250,7 @@ uses iCloud, gmail, or similar calendar synching, you have no local calendar.
         NSLog(@"failed to retrieve event");
         return;
     }
-    EKEventViewController* evc = [[EKEventViewController alloc] init];
+    EKEventViewController* evc = [EKEventViewController new];
     evc.event = ev;
     evc.delegate = self;
     evc.allowsEditing = YES;

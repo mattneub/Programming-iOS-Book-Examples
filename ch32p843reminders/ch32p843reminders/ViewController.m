@@ -67,12 +67,12 @@
     
     // let's add an alarm
     // interesting use of location: we can make a location-based alarm
-    // (these sort of suck, but that has nothing to do with us)
     EKAlarm* alarm = [EKAlarm new];
-    EKStructuredLocation *loc = [EKStructuredLocation locationWithTitle:@"Home"];
-    loc.geoLocation = [[CLLocation alloc] initWithLatitude:34.439533 longitude:119.272933];
+    EKStructuredLocation *loc = [EKStructuredLocation locationWithTitle:@"Trader Joe's"];
+    loc.geoLocation = [[CLLocation alloc] initWithLatitude:34.271848 longitude:-119.247714];
+    loc.radius = 10; // metres
     alarm.structuredLocation = loc;
-    alarm.proximity = EKAlarmProximityEnter; // "geofence": we alarm when *arriving* home
+    alarm.proximity = EKAlarmProximityEnter; // "geofence": we alarm when *arriving*
     // if Reminders doesn't have location access, it might ask for it now
     [rem addAlarm:alarm];
     
