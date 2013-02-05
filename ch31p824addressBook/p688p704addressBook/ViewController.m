@@ -5,12 +5,17 @@
 #import <AddressBookUI/AddressBookUI.h>
 
 
-@interface ViewController () <ABPeoplePickerNavigationControllerDelegate, ABNewPersonViewControllerDelegate>
+@interface ViewController () <ABPeoplePickerNavigationControllerDelegate, ABNewPersonViewControllerDelegate, ABUnknownPersonViewControllerDelegate, ABPersonViewControllerDelegate>
 
 @end
 
 @implementation ViewController {
     BOOL _authDone;
+}
+
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    self.title = @"Address Book Examples";
 }
 
 // run all examples on device
@@ -48,15 +53,15 @@
     [super viewDidAppear:animated];
     if (!_authDone) {
         _authDone = YES;
-        ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
-        if (status == kABAuthorizationStatusNotDetermined) {
+        // ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
+        // if (status == kABAuthorizationStatusNotDetermined) {
             ABAddressBookRef adbk = ABAddressBookCreateWithOptions(nil, nil);
             ABAddressBookRequestAccessWithCompletion(adbk,
                                                      ^(bool granted,
                                                        CFErrorRef error) {
-                NSLog(@"%i", granted);
+                NSLog(@"%i %@", granted, adbk);
             });
-        }
+        // }
     }
 }
 
@@ -87,13 +92,12 @@
         CFStringRef last = ABRecordCopyValue(matt, kABPersonLastNameProperty);
         if (last && CFStringCompare(last, (CFStringRef)@"Neuburg", 0) == 0)
             moi = matt;
-        if (last)
-            CFRelease(last);
+        if (last) CFRelease(last);
     }
     if (nil == moi) {
         NSLog(@"Couldn't find myself");
-        CFRelease(matts);
-        CFRelease(adbk);
+        if (matts) CFRelease(matts);
+        if (adbk) CFRelease(adbk);
         return;
     }
     // parse my emails
@@ -102,17 +106,18 @@
         CFStringRef label = ABMultiValueCopyLabelAtIndex(emails, ix);
         CFStringRef value = ABMultiValueCopyValueAtIndex(emails, ix);
         NSLog(@"I have a %@ address: %@", label, value);
-        CFRelease(label);
-        CFRelease(value);
+        if (label) CFRelease(label);
+        if (value) CFRelease(value);
     }
-    CFRelease(emails);
-    CFRelease(matts);
-    CFRelease(adbk);
+    if (emails) CFRelease(emails);
+    if (matts) CFRelease(matts);
+    if (adbk) CFRelease(adbk);
 }
 
 // look in Contacts app afterwards to see that Snidely now exists
 
 - (IBAction)doButton2:(id)sender {
+    
     ABAuthorizationStatus stat = ABAddressBookGetAuthorizationStatus();
     if (stat==kABAuthorizationStatusDenied || stat==kABAuthorizationStatusRestricted) {
         NSLog(@"%@", @"no access");
@@ -133,9 +138,9 @@
     ABRecordSetValue(snidely, kABPersonEmailProperty, addr, nil);
     ABAddressBookAddRecord(adbk, snidely, nil);
     ABAddressBookSave(adbk, nil);
-    CFRelease(addr);
-    CFRelease(snidely);
-    CFRelease(adbk);
+    if (addr) CFRelease(addr);
+    if (snidely) CFRelease(snidely);
+    if (adbk) CFRelease(adbk);
     
 }
 
@@ -143,10 +148,9 @@
 
 - (IBAction)doButton3:(id)sender {
     ABPeoplePickerNavigationController* picker = 
-    [[ABPeoplePickerNavigationController alloc] init];
+    [ABPeoplePickerNavigationController new];
     picker.peoplePickerDelegate = self; // note: not merely "delegate"
-    picker.displayedProperties = 
-    [NSArray arrayWithObject: [NSNumber numberWithInt: kABPersonEmailProperty]];
+    picker.displayedProperties = @[@(kABPersonEmailProperty)];
     [self presentViewController:picker animated:YES completion:nil];
 }
 
@@ -159,8 +163,8 @@
     CFIndex ix = ABMultiValueGetIndexForIdentifier(emails, identifier);
     CFStringRef email = ABMultiValueCopyValueAtIndex(emails, ix);
     NSLog(@"%@", email); // do something with the email here
-    CFRelease(email);
-    CFRelease(emails);
+    if (email) CFRelease(email);
+    if (emails) CFRelease(emails);
     [self dismissViewControllerAnimated:YES completion:nil];
     return NO;
 }
@@ -171,8 +175,41 @@
 
 //
 
+
+- (IBAction)doViewPerson:(id)sender {
+    
+    
+    CFErrorRef err = nil;
+    ABAddressBookRef adbk = ABAddressBookCreateWithOptions(nil, &err);
+    if (nil == adbk) {
+        NSLog(@"error: %@", err);
+        return;
+    }
+    CFArrayRef snides = ABAddressBookCopyPeopleWithName(adbk, (CFStringRef)@"Snidely Whiplash");
+    if (CFArrayGetCount(snides) < 1) {
+        NSLog(@"%@", @"No Snidely!");
+        return;
+    }
+    ABRecordRef snidely = CFArrayGetValueAtIndex(snides, 0);
+    ABPersonViewController* pvc = [ABPersonViewController new];
+    pvc.displayedPerson = snidely;
+    pvc.personViewDelegate = self;
+    pvc.allowsEditing = YES;
+    pvc.allowsActions = YES;
+    [self.navigationController pushViewController:pvc animated:YES];
+    if (snides) CFRelease(snides);
+    if (adbk) CFRelease(adbk);
+
+}
+
+- (BOOL)personViewController:(ABPersonViewController *)personViewController shouldPerformDefaultActionForPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier {
+    return NO;
+}
+
+//
+
 - (IBAction)doButton4:(id)sender {
-    ABNewPersonViewController* npvc = [[ABNewPersonViewController alloc] init];
+    ABNewPersonViewController* npvc = [ABNewPersonViewController new];
     npvc.newPersonViewDelegate = self;
     UINavigationController* nc = 
     [[UINavigationController alloc] initWithRootViewController:npvc];
@@ -183,28 +220,39 @@
 
 -(void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person {
     if (nil != person) {
-        ABAuthorizationStatus stat = ABAddressBookGetAuthorizationStatus();
-        if (stat==kABAuthorizationStatusDenied || stat==kABAuthorizationStatusRestricted) {
-            NSLog(@"%@", @"no access");
-            return;
-        }
-        CFErrorRef err = nil;
-        ABAddressBookRef adbk = ABAddressBookCreateWithOptions(nil, &err);
-        if (nil == adbk) {
-            NSLog(@"error: %@", err);
-            return;
-        }
-        
+        // if we didn't have access, we wouldn't be here!
+        ABAddressBookRef adbk = ABAddressBookCreateWithOptions(nil, nil);
         // if we do not delete the person, the person will stay in the contacts database automatically!
         ABAddressBookRemoveRecord(adbk, person, nil);
         ABAddressBookSave(adbk, nil);
         CFStringRef name = ABRecordCopyCompositeName(person);
         NSLog(@"I have a person named %@, but I am not saving this person to the database", name); 
         // do something with new person
-        CFRelease(name);
-        CFRelease(adbk);
+        if (name) CFRelease(name);
+        if (adbk) CFRelease(adbk);
     }
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)doButtonUnknownPerson:(id)sender {
+    ABUnknownPersonViewController* unk = [ABUnknownPersonViewController new];
+    unk.alternateName = @"Johnny Appleseed";
+    unk.message = @"Person who really knows trees";
+    unk.allowsAddingToAddressBook = YES;
+    unk.allowsActions = YES;
+    ABRecordRef person = ABPersonCreate();
+    ABMutableMultiValueRef addr = ABMultiValueCreateMutable(kABStringPropertyType);
+    ABMultiValueAddValueAndLabel(addr, @"johnny@seeds.com", kABHomeLabel, nil);
+    ABRecordSetValue(person, kABPersonEmailProperty, addr, nil);
+    unk.displayedPerson = person;
+    unk.unknownPersonViewDelegate = self;
+    [self.navigationController pushViewController:unk animated:YES];
+    if (person) CFRelease(person);
+    if (addr) CFRelease(addr);
+}
+
+-(void)unknownPersonViewController:(ABUnknownPersonViewController *)unknownCardViewController didResolveToPerson:(ABRecordRef)person {
+    NSLog(@"%@", person);
 }
 
 
