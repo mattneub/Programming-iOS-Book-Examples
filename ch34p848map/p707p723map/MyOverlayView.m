@@ -16,6 +16,8 @@
     return self;
 }
 
+// called many times because it's tiled
+
 - (void)drawMapRect:(MKMapRect)mapRect zoomScale:(MKZoomScale)zoomScale inContext:(CGContextRef)context
 {
     NSLog(@"draw this: %@", MKStringFromMapRect(mapRect));

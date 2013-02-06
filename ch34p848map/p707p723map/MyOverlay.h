@@ -10,6 +10,6 @@
 @property (nonatomic, readonly) MKMapRect boundingMapRect;
 - (id) initWithRect: (MKMapRect) rect;
 
-@property (nonatomic, retain) UIBezierPath* path;
+@property (nonatomic, strong) UIBezierPath* path;
 
 @end

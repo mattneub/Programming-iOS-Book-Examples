@@ -9,7 +9,7 @@
 
 @interface ViewController() <MKMapViewDelegate>
 @property (nonatomic, strong) IBOutlet MKMapView* map;
-@property (nonatomic) CLLocationCoordinate2D loc;
+@property (nonatomic) CLLocationCoordinate2D annloc;
 @end
 
 @implementation ViewController
@@ -28,19 +28,32 @@
     NSLog(@"mapRect:\n%@", MKStringFromMapRect(mapView.visibleMapRect));
 }
 
-#define which 9 // try 2, 3, 4, 5, 6, 7, 8, 9
+#define which 1 // try 2, 3, 4, 5, 6, 7, 8, 9
 
 // added unified region creation for all cases
 -(void)setUpRegion { // changed coordinates slightly to look better with Apple's maps
     CLLocationCoordinate2D loc = CLLocationCoordinate2DMake(34.924365,-120.217372);
-    MKCoordinateSpan span = MKCoordinateSpanMake(.015, .013);
+    MKCoordinateSpan span = MKCoordinateSpanMake(.015, .015);
     MKCoordinateRegion reg = MKCoordinateRegionMake(loc, span);
     self.map.region = reg;
-    self.loc = CLLocationCoordinate2DMake(34.923964,-120.219558); // annotation
+    self.annloc = CLLocationCoordinate2DMake(34.923964,-120.219558); // annotation
+    
+    return;
+    loc = CLLocationCoordinate2DMake(34.924365,-120.217372);
+    reg = MKCoordinateRegionMakeWithDistance(loc, 1200, 1200);
+    self.map.region = reg;
+
+    return; 
+    loc = CLLocationCoordinate2DMake(34.924365,-120.217372);
+    MKMapPoint pt = MKMapPointForCoordinate(loc);
+    double w = MKMapPointsPerMeterAtLatitude(loc.latitude) * 1200;
+    self.map.visibleMapRect = MKMapRectMake(pt.x - w/2.0, pt.y - w/2.0, w, w);
+
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear: animated];
+    // return;
     
     switch (which) {
         case 1: // figure 34-1
@@ -52,8 +65,8 @@
         case 2: // figure 34-2
         {
             [self setUpRegion];
-            MKPointAnnotation* ann = [[MKPointAnnotation alloc] init];
-            ann.coordinate = self.loc;
+            MKPointAnnotation* ann = [MKPointAnnotation new];
+            ann.coordinate = self.annloc;
             ann.title = @"Park here";
             ann.subtitle = @"Fun awaits down the road!";
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC);
@@ -68,8 +81,8 @@
         {
             [self setUpRegion];
             self.map.delegate = self;
-            MKPointAnnotation* ann = [[MKPointAnnotation alloc] init];
-            ann.coordinate = self.loc;
+            MKPointAnnotation* ann = [MKPointAnnotation new];
+            ann.coordinate = self.annloc;
             ann.title = @"Park here";
             ann.subtitle = @"Fun awaits down the road!";
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC);
@@ -82,7 +95,7 @@
         {
             [self setUpRegion];
             self.map.delegate = self;
-            MyAnnotation* ann = [[MyAnnotation alloc] initWithLocation:self.loc];
+            MyAnnotation* ann = [[MyAnnotation alloc] initWithLocation:self.annloc];
             ann.title = @"Park here";
             ann.subtitle = @"Fun awaits down the road!";
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC);
@@ -104,13 +117,13 @@
         {
             [self setUpRegion];
             self.map.delegate = self;
-            MyAnnotation* ann = [[MyAnnotation alloc] initWithLocation:self.loc];
+            MyAnnotation* ann = [[MyAnnotation alloc] initWithLocation:self.annloc];
             ann.title = @"Park here";
             ann.subtitle = @"Fun awaits down the road!";
             [self.map addAnnotation:ann];
             
             // loc = self.map.region.center;
-            CLLocationCoordinate2D loc = self.loc;
+            CLLocationCoordinate2D loc = self.annloc;
             CGFloat lat = loc.latitude;
             CLLocationDistance metersPerPoint = MKMetersPerMapPointAtLatitude(lat);
             MKMapPoint c = MKMapPointForCoordinate(loc);
@@ -132,10 +145,10 @@
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 [self.map addOverlay:tri];
                 
-                MKPointAnnotation* annot = [[MKPointAnnotation alloc] init];
-                annot.coordinate = tri.coordinate;
-                annot.title = @"This way!";
-                [self.map addAnnotation:annot];
+//                MKPointAnnotation* annot = [MKPointAnnotation new];
+//                annot.coordinate = tri.coordinate;
+//                annot.title = @"This way!";
+//                [self.map addAnnotation:annot];
 
             });
             
@@ -145,13 +158,13 @@
         {
             [self setUpRegion];
             self.map.delegate = self;
-            MyAnnotation* ann = [[MyAnnotation alloc] initWithLocation:self.loc];
+            MyAnnotation* ann = [[MyAnnotation alloc] initWithLocation:self.annloc];
             ann.title = @"Park here";
             ann.subtitle = @"Fun awaits down the road!";
             [self.map addAnnotation:ann];
             
             // start with our position and derive a nice unit for drawing
-            CLLocationCoordinate2D loc = self.loc;
+            CLLocationCoordinate2D loc = self.annloc;
             CGFloat lat = loc.latitude;
             CLLocationDistance metersPerPoint = MKMetersPerMapPointAtLatitude(lat);
             MKMapPoint c = MKMapPointForCoordinate(loc);
@@ -188,10 +201,10 @@
                 // add the overlay to the map
                 [self.map addOverlay:over];
                 
-                MKPointAnnotation* annot = [[MKPointAnnotation alloc] init];
-                annot.coordinate = over.coordinate;
-                annot.title = @"This way!";
-                [self.map addAnnotation:annot];
+//                MKPointAnnotation* annot = [MKPointAnnotation new];
+//                annot.coordinate = over.coordinate;
+//                annot.title = @"This way!";
+//                [self.map addAnnotation:annot];
             });
             
             break;
@@ -200,14 +213,14 @@
         {
             [self setUpRegion];
             self.map.delegate = self;
-            MyAnnotation* ann = [[MyAnnotation alloc] initWithLocation:self.loc];
+            MyAnnotation* ann = [[MyAnnotation alloc] initWithLocation:self.annloc];
             ann.title = @"Park here";
             ann.subtitle = @"Fun awaits down the road!";
             [self.map addAnnotation:ann];
 
             
             // start with our position and derive a nice unit for drawing
-            CLLocationCoordinate2D loc = self.loc;
+            CLLocationCoordinate2D loc = self.annloc;
             CGFloat lat = loc.latitude;
             CLLocationDistance metersPerPoint = MKMetersPerMapPointAtLatitude(lat);
             MKMapPoint c = MKMapPointForCoordinate(loc);
@@ -222,7 +235,7 @@
                 // add the overlay to the map
                 [self.map addOverlay:over];
                 
-                MKPointAnnotation* annot = [[MKPointAnnotation alloc] init];
+                MKPointAnnotation* annot = [MKPointAnnotation new];
                 annot.coordinate = over.coordinate;
                 annot.title = @"This way!";
                 [self.map addAnnotation:annot];
@@ -374,13 +387,38 @@
 
 
 - (IBAction)doShowInMapsApp:(id)sender {
-    MKPlacemark* p = [[MKPlacemark alloc] initWithCoordinate:self.loc addressDictionary:nil];
+    MKPlacemark* p = [[MKPlacemark alloc] initWithCoordinate:self.annloc addressDictionary:nil];
     MKMapItem* mi = [[MKMapItem alloc] initWithPlacemark: p];
     mi.name = @"A Great Place to Dirt Bike"; // label to appear in Maps app
     NSValue* span = [NSValue valueWithMKCoordinateSpan:self.map.region.span];
     [mi openInMapsWithLaunchOptions:
      @{MKLaunchOptionsMapTypeKey: @(MKMapTypeHybrid),
           MKLaunchOptionsMapSpanKey: span}];
+}
+
+- (IBAction)doSearchInMapsApp:(id)sender {
+    MKLocalSearchRequest* req = [MKLocalSearchRequest new];
+    req.naturalLanguageQuery = @"Tepusquet Road and Colson Canyon Road, Santa Maria, California";
+    MKLocalSearch* search = [[MKLocalSearch alloc] initWithRequest:req];
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+        MKMapItem* where = response.mapItems[0]; // I'm feeling lucky
+        MKPlacemark* place = where.placemark;
+        CLLocationCoordinate2D loc = place.location.coordinate;
+        MKCoordinateRegion reg = MKCoordinateRegionMakeWithDistance(loc, 1200, 1200);
+        self.map.region = reg;
+        MKPointAnnotation* ann = [MKPointAnnotation new];
+        ann.coordinate = loc;
+        [self.map addAnnotation:ann];
+    }];
+}
+
+- (void)mapViewNOT:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
+{
+    if (newState == MKAnnotationViewDragStateEnding)
+    {
+        CLLocationCoordinate2D droppedAt = annotationView.annotation.coordinate;
+        NSLog(@"dropped at %f,%f", droppedAt.latitude, droppedAt.longitude);
+    }
 }
 
 
