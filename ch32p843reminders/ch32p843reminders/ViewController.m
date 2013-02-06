@@ -70,7 +70,7 @@
     EKAlarm* alarm = [EKAlarm new];
     EKStructuredLocation *loc = [EKStructuredLocation locationWithTitle:@"Trader Joe's"];
     loc.geoLocation = [[CLLocation alloc] initWithLatitude:34.271848 longitude:-119.247714];
-    loc.radius = 10; // metres
+    loc.radius = 10*1000; // metres
     alarm.structuredLocation = loc;
     alarm.proximity = EKAlarmProximityEnter; // "geofence": we alarm when *arriving*
     // if Reminders doesn't have location access, it might ask for it now
