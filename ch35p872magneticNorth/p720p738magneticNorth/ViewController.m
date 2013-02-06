@@ -24,7 +24,7 @@
         NSLog(@"drat");
         return;
     }
-    CLLocationManager* lm = [[CLLocationManager alloc] init];
+    CLLocationManager* lm = [CLLocationManager new];
     self.locman = lm;
     self.locman.delegate = self;
     self.locman.headingFilter = 3;

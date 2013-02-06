@@ -22,11 +22,11 @@
         return;
     }
     CLAuthorizationStatus auth = [CLLocationManager authorizationStatus];
-    if (auth == kCLAuthorizationStatusRestricted) {
-        NSLog(@"sigh"); // user will never be able to authorize us
+    if (auth == kCLAuthorizationStatusRestricted || auth == kCLAuthorizationStatusDenied) {
+        NSLog(@"sigh");
         return;
     }
-    CLLocationManager* lm = [[CLLocationManager alloc] init];
+    CLLocationManager* lm = [CLLocationManager new];
     self.locman = lm;
     self.locman.delegate = self;
     self.locman.desiredAccuracy = kCLLocationAccuracyBest;
