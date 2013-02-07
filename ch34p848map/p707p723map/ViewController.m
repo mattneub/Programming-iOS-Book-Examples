@@ -405,10 +405,8 @@
         MKPlacemark* place = where.placemark;
         CLLocationCoordinate2D loc = place.location.coordinate;
         MKCoordinateRegion reg = MKCoordinateRegionMakeWithDistance(loc, 1200, 1200);
-        self.map.region = reg;
-        MKPointAnnotation* ann = [MKPointAnnotation new];
-        ann.coordinate = loc;
-        [self.map addAnnotation:ann];
+        [self.map setRegion:reg animated:YES];
+        [self.map addAnnotation:place];
     }];
 }
 
