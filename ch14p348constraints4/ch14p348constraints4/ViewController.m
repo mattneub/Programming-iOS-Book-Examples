@@ -23,6 +23,9 @@
     id button = self.button;
     id label = self.label;
     
+//    NSLog(@"label content hugging %f", [self.label contentHuggingPriorityForAxis:UILayoutConstraintAxisHorizontal]);
+//    NSLog(@"label content compression resistance %f", [self.label contentCompressionResistancePriorityForAxis:UILayoutConstraintAxisHorizontal]);
+    
     NSDictionary* d = NSDictionaryOfVariableBindings(button,label);
     [self.view addConstraints:
      [NSLayoutConstraint
@@ -40,7 +43,10 @@
       multiplier:1 constant:0];
     con.priority = 700;
     [self.view addConstraint:con];
-    
+}
+
+-(void)viewDidLayoutSubviews {
+//    NSLog(@"%@", [self.label constraintsAffectingLayoutForAxis:UILayoutConstraintAxisHorizontal]);
 }
 
 
