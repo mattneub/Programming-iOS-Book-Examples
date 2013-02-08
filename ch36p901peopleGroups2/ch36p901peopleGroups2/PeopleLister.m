@@ -100,24 +100,22 @@
 
 - (void) doAdd: (id) sender {
     [self.tableView endEditing:YES];
-    NSManagedObjectContext *context = [self.frc managedObjectContext];
-    NSEntityDescription *entity = [[self.frc fetchRequest] entity];
+    NSManagedObjectContext *context = self.frc.managedObjectContext;
+    NSEntityDescription *entity = self.frc.fetchRequest.entity;
     NSManagedObject *mo =
     [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
     mo.group = self.groupObject;
     mo.lastName = @"";
     mo.firstName = @"";
     mo.timestamp = [NSDate date];
-    
-    // Save the context.
+    // save context
     NSError *error = nil;
-    if (![context save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+    BOOL ok = [context save:&error];
+    if (!ok) {
+        NSLog(@"%@", error);
+        return;
     }
-    // and the rest is in the update delegate messages 
+    // and the rest is in the update delegate messages
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
@@ -130,26 +128,24 @@
     NSManagedObject* object = [self.frc objectAtIndexPath:ip];
     [object setValue:textField.text forKey: ((textField.tag == 1) ? @"firstName" : @"lastName")];
     
-    // Save the context.
-    NSManagedObjectContext *context = [self.frc managedObjectContext];
+    // save context
     NSError *error = nil;
-    if (![context save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+    BOOL ok = [context save:&error];
+    if (!ok) {
+        NSLog(@"%@", error);
+        return;
     }
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    NSManagedObjectContext *context = [self.frc managedObjectContext];
+    NSManagedObjectContext *context = self.frc.managedObjectContext;
+    // save context
     NSError *error = nil;
-    if (![context save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+    BOOL ok = [context save:&error];
+    if (!ok) {
+        NSLog(@"%@", error);
+        return;
     }
 }
 

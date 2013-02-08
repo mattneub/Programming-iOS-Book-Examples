@@ -1,15 +1,15 @@
 
 
-#import "DocumentLister.h"
+#import "GroupLister.h"
 #import "PeopleLister.h"
 #import "AppDelegate.h"
 #import "NSManagedObject+GroupAndPerson.h"
 
-@interface DocumentLister () <UIAlertViewDelegate, NSFetchedResultsControllerDelegate>
+@interface GroupLister () <UIAlertViewDelegate, NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) NSFetchedResultsController* frc;
 @end
 
-@implementation DocumentLister
+@implementation GroupLister
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -84,22 +84,21 @@
         return;
     if ([name isEqualToString: @""])
         return;
-    NSManagedObjectContext *context = [self.frc managedObjectContext];
-    NSEntityDescription *entity = [[self.frc fetchRequest] entity];
+    NSManagedObjectContext *context = self.frc.managedObjectContext;
+    NSEntityDescription *entity = self.frc.fetchRequest.entity;
     NSManagedObject *mo =
-    [NSEntityDescription insertNewObjectForEntityForName:[entity name]
+    [NSEntityDescription insertNewObjectForEntityForName:entity.name
                                   inManagedObjectContext:context];
     mo.name = name;
     mo.uuid = [[NSUUID UUID] UUIDString];
     mo.timestamp = [NSDate date];
     
-    // Save the context.
+    // save context
     NSError *error = nil;
-    if (![context save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+    BOOL ok = [context save:&error];
+    if (!ok) {
+        NSLog(@"%@", error);
+        return;
     }
     PeopleLister* pl = [[PeopleLister alloc] initWithNibName:@"PeopleLister" bundle:nil groupManagedObject:mo];
     [self.navigationController pushViewController:pl animated:YES];
@@ -118,13 +117,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[self.frc sections] count];
+    return [self.frc.sections count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    id<NSFetchedResultsSectionInfo> sectionInfo = [self.frc sections][section];
-    return [sectionInfo numberOfObjects];
+    id<NSFetchedResultsSectionInfo> sectionInfo = self.frc.sections[section];
+    return sectionInfo.numberOfObjects;
 }
 
 // Customize the appearance of table view cells.

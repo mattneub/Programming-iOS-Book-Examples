@@ -28,7 +28,7 @@
 }
 
 - (void) doRefresh: (id) sender {
-    NSFileManager* fm = [[NSFileManager alloc] init];
+    NSFileManager* fm = [NSFileManager new];
     NSURL* docsurl = [fm URLForDirectory:NSDocumentDirectory 
                                 inDomain:NSUserDomainMask
                        appropriateForURL:nil create:NO error:nil];
@@ -62,7 +62,7 @@
         return;
     if ([name isEqualToString: @""])
         return;
-    NSFileManager* fm = [[NSFileManager alloc] init];
+    NSFileManager* fm = [NSFileManager new];
     NSURL* docsurl = [fm URLForDirectory:NSDocumentDirectory 
                                 inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
     NSURL* ubiq = [(AppDelegate*)[[UIApplication sharedApplication] delegate] ubiq];

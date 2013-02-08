@@ -10,7 +10,7 @@
 - (IBAction) doButton: (id) sender {
     NSURL* url = [[NSBundle mainBundle] URLForResource:@"folks" withExtension:@"xml"];
     NSXMLParser* parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-    MyPeopleParser* people = [[MyPeopleParser alloc] init];
+    MyPeopleParser* people = [MyPeopleParser new];
     [parser setDelegate: people];
     [parser parse];
     

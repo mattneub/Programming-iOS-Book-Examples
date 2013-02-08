@@ -1,7 +1,7 @@
 
 
 #import "AppDelegate.h"
-#import "DocumentLister.h"
+#import "GroupLister.h"
 
 @interface AppDelegate ()
 @property (readwrite, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -22,9 +22,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    DocumentLister* dl = [[DocumentLister alloc] init];
-    dl.managedObjectContext = self.managedObjectContext;
-    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:dl];
+    GroupLister* gl = [GroupLister new];
+    gl.managedObjectContext = self.managedObjectContext;
+    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:gl];
     self.window.rootViewController = nav;
     
     self.window.backgroundColor = [UIColor whiteColor];

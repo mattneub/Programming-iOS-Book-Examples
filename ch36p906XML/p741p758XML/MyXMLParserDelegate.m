@@ -12,7 +12,7 @@
 }
 
 - (void) makeChild: (Class) class elementName: (NSString*) elementName parser: (NSXMLParser*) parser {
-    MyXMLParserDelegate* del = [[class alloc] init];
+    MyXMLParserDelegate* del = [class new];
     self.child = del;
     parser.delegate = del;
     [del start: elementName parent: self];

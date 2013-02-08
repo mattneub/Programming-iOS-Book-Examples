@@ -2,6 +2,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DocumentLister : UITableViewController 
+@interface GroupLister : UITableViewController 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @end

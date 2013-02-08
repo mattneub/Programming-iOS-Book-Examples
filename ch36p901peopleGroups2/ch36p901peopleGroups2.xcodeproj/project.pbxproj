@@ -18,7 +18,7 @@
 		C9C4D15C166FF1790012E4E9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9C4D15B166FF1790012E4E9 /* Default@2x.png */; };
 		C9C4D15E166FF1790012E4E9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9C4D15D166FF1790012E4E9 /* Default-568h@2x.png */; };
 		C9C4D161166FF1790012E4E9 /* ch36p901peopleGroups2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9C4D15F166FF1790012E4E9 /* ch36p901peopleGroups2.xcdatamodeld */; };
-		C9C4D169166FF5D20012E4E9 /* DocumentLister.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C4D168166FF5D20012E4E9 /* DocumentLister.m */; };
+		C9C4D169166FF5D20012E4E9 /* GroupLister.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C4D168166FF5D20012E4E9 /* GroupLister.m */; };
 		C9C4D1AA167008750012E4E9 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C4D1A7167008750012E4E9 /* PersonCell.xib */; };
 		C9C4D1AF167008DF0012E4E9 /* PeopleLister.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C4D1AD167008DF0012E4E9 /* PeopleLister.m */; };
 		C9C4D1B0167008DF0012E4E9 /* PeopleLister.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C4D1AE167008DF0012E4E9 /* PeopleLister.xib */; };
@@ -41,8 +41,8 @@
 		C9C4D15B166FF1790012E4E9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		C9C4D15D166FF1790012E4E9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C9C4D160166FF1790012E4E9 /* ch36p901peopleGroups2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ch36p901peopleGroups2.xcdatamodel; sourceTree = "<group>"; };
-		C9C4D167166FF5D20012E4E9 /* DocumentLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentLister.h; sourceTree = "<group>"; };
-		C9C4D168166FF5D20012E4E9 /* DocumentLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentLister.m; sourceTree = "<group>"; };
+		C9C4D167166FF5D20012E4E9 /* GroupLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupLister.h; sourceTree = "<group>"; };
+		C9C4D168166FF5D20012E4E9 /* GroupLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupLister.m; sourceTree = "<group>"; };
 		C9C4D1A7167008750012E4E9 /* PersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
 		C9C4D1AC167008DF0012E4E9 /* PeopleLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleLister.h; sourceTree = "<group>"; };
 		C9C4D1AD167008DF0012E4E9 /* PeopleLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleLister.m; sourceTree = "<group>"; };
@@ -100,8 +100,8 @@
 				C9C4D156166FF1790012E4E9 /* AppDelegate.h */,
 				C9C4D157166FF1790012E4E9 /* AppDelegate.m */,
 				C9C4D15F166FF1790012E4E9 /* ch36p901peopleGroups2.xcdatamodeld */,
-				C9C4D167166FF5D20012E4E9 /* DocumentLister.h */,
-				C9C4D168166FF5D20012E4E9 /* DocumentLister.m */,
+				C9C4D167166FF5D20012E4E9 /* GroupLister.h */,
+				C9C4D168166FF5D20012E4E9 /* GroupLister.m */,
 				C9C4D1A7167008750012E4E9 /* PersonCell.xib */,
 				C9C4D1AC167008DF0012E4E9 /* PeopleLister.h */,
 				C9C4D1AD167008DF0012E4E9 /* PeopleLister.m */,
@@ -197,7 +197,7 @@
 				C9C4D154166FF1790012E4E9 /* main.m in Sources */,
 				C9C4D158166FF1790012E4E9 /* AppDelegate.m in Sources */,
 				C9C4D161166FF1790012E4E9 /* ch36p901peopleGroups2.xcdatamodeld in Sources */,
-				C9C4D169166FF5D20012E4E9 /* DocumentLister.m in Sources */,
+				C9C4D169166FF5D20012E4E9 /* GroupLister.m in Sources */,
 				C9C4D1AF167008DF0012E4E9 /* PeopleLister.m in Sources */,
 				C9CFB13D16719AC600689C7F /* NSManagedObject+GroupAndPerson.m in Sources */,
 			);

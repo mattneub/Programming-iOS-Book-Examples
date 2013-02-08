@@ -29,7 +29,7 @@
 - (void) displayPDF: (NSURL*) url {
     self.pdf = url;
     self.dic = [UIDocumentInteractionController interactionControllerWithURL:url];
-    UIImage* icon = [[self.dic icons] objectAtIndex:0];
+    UIImage* icon = self.dic.icons[0];
     [self.b setImage:icon forState:UIControlStateNormal];
     self.b.enabled = YES;
     
@@ -43,7 +43,16 @@
 - (IBAction)doButton:(id)sender {
     if (!self.pdf)
         return;
-    self.dic = [UIDocumentInteractionController interactionControllerWithURL:self.pdf];
+    
+    
+//    self.dic = [UIDocumentInteractionController interactionControllerWithURL:self.pdf];
+//    BOOL y =
+//    [self.dic presentOptionsMenuFromRect:[sender bounds]
+//                             inView:sender animated:YES];
+//  BOOL y = [self.dic presentOpenInMenuFromRect:[sender bounds] inView:sender animated:YES];
+//    return;
+    
+    
     self.dic.delegate = self;
     [self.dic presentPreviewAnimated:YES];
 }
@@ -58,7 +67,7 @@
 
 - (IBAction)doButton2:(id)sender {
     // obtain URLs of PDFs as an array
-    NSFileManager* fm = [[NSFileManager alloc] init];
+    NSFileManager* fm = [NSFileManager new];
     NSURL* docsurl = [fm URLForDirectory:NSDocumentDirectory 
                                 inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
     NSDirectoryEnumerator* dir = [fm enumeratorAtURL:[docsurl URLByAppendingPathComponent:@"Inbox"] includingPropertiesForKeys:nil options:0 errorHandler:nil];
@@ -74,7 +83,7 @@
     if (![self.pdfs count])
         return;
     // show preview interface
-    QLPreviewController* preview = [[QLPreviewController alloc] init];
+    QLPreviewController* preview = [QLPreviewController new];
     preview.dataSource = self;
     [self presentViewController:preview animated:YES completion:nil];
 }
@@ -86,7 +95,7 @@
 
 - (id <QLPreviewItem>) previewController: (QLPreviewController *) controller 
                       previewItemAtIndex: (NSInteger) index {
-    return [self.pdfs objectAtIndex:index];
+    return (self.pdfs)[index];
 }
 
 

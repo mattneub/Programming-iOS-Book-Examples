@@ -11,7 +11,7 @@
 
 - (void) finishedChild:(NSString *)s {
     if (!self.person) {
-        Person* p = [[Person alloc] init];
+        Person* p = [Person new];
         self.person = p;
     }
     [self.person setValue: s forKey: self.child.name];

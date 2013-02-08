@@ -31,7 +31,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:[[DocumentLister alloc] init]];
+    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:[DocumentLister new]];
     self.window.rootViewController = nav;
     
     // this is the other part of iCloud-enablement

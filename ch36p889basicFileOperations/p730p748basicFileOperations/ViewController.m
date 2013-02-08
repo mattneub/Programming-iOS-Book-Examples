@@ -11,7 +11,7 @@
 }
 
 - (IBAction)doButton2:(id)sender {
-    NSFileManager* fm = [[NSFileManager alloc] init];
+    NSFileManager* fm = [NSFileManager new];
     NSError* err = nil;
     NSURL* docsurl = [fm URLForDirectory:NSDocumentDirectory 
                                 inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:&err];
@@ -22,7 +22,7 @@
 }
 
 - (IBAction)doButton3:(id)sender {
-    NSFileManager* fm = [[NSFileManager alloc] init];
+    NSFileManager* fm = [NSFileManager new];
     NSError* err = nil;
     NSURL* suppurl = [fm URLForDirectory:NSApplicationSupportDirectory 
                                 inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:&err];
@@ -33,7 +33,7 @@
 }
 
 - (IBAction)doButton4:(id)sender {
-    NSFileManager* fm = [[NSFileManager alloc] init];
+    NSFileManager* fm = [NSFileManager new];
     NSURL* docsurl = [fm URLForDirectory:NSDocumentDirectory 
                                 inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
     NSURL* myfolder = [docsurl URLByAppendingPathComponent:@"MyFolder"];
@@ -60,7 +60,7 @@
 }
 
 - (IBAction)doButton5:(id)sender {
-    NSFileManager* fm = [[NSFileManager alloc] init];
+    NSFileManager* fm = [NSFileManager new];
     NSURL* docsurl = [fm URLForDirectory:NSDocumentDirectory 
                                 inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
     NSError* err = nil;
@@ -75,7 +75,7 @@
 // no longer used
 - (IBAction)doButton6:(id)sender {
     NSString* docs = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSFileManager* fm = [[NSFileManager alloc] init];
+    NSFileManager* fm = [NSFileManager new];
     NSError* err = nil;
     NSArray* arr = [fm subpathsOfDirectoryAtPath:docs error:&err];
     if (!arr) {
@@ -86,7 +86,7 @@
 }
 
 - (IBAction)doButton7:(id)sender {
-    NSFileManager* fm = [[NSFileManager alloc] init];
+    NSFileManager* fm = [NSFileManager new];
     NSURL* docsurl = [fm URLForDirectory:NSDocumentDirectory 
                                 inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
     NSDirectoryEnumerator* dir = [fm enumeratorAtURL:docsurl includingPropertiesForKeys:nil options:0 errorHandler:nil];
@@ -96,10 +96,10 @@
 }
 
 - (IBAction)doButton8:(id)sender {
-    NSFileManager* fm = [[NSFileManager alloc] init];
+    NSFileManager* fm = [NSFileManager new];
     NSURL* docsurl = [fm URLForDirectory:NSDocumentDirectory 
                                 inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-    Person* moi = [[Person alloc] init];
+    Person* moi = [Person new];
     moi.firstName = @"Matt";
     moi.lastName = @"Neuburg";
     NSData* moidata = [NSKeyedArchiver archivedDataWithRootObject:moi];
@@ -108,7 +108,7 @@
 }
 
 - (IBAction)doButton9:(id)sender {
-    NSFileManager* fm = [[NSFileManager alloc] init];
+    NSFileManager* fm = [NSFileManager new];
     NSURL* docsurl = [fm URLForDirectory:NSDocumentDirectory 
                                 inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
     NSURL* moifile = [docsurl URLByAppendingPathComponent:@"moi.txt"];

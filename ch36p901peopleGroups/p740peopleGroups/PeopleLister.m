@@ -37,7 +37,7 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"PersonCell" bundle:nil] forCellReuseIdentifier:@"Person"];
     
-    NSFileManager* fm = [[NSFileManager alloc] init];
+    NSFileManager* fm = [NSFileManager new];
     self.doc = [[PeopleDocument alloc] initWithFileURL:self.fileURL];
     void (^listPeople) (BOOL) = ^(BOOL success) {
         if (success) {
