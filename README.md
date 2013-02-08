@@ -3,7 +3,7 @@ The downloadable code and screenshots for my book, "Programming iOS 5: Fundament
 
 At the top level, I've **revised the examples to fit iOS 6**.
 
-While I'm drafting the revised book, the full text of the draft is available here: <http://www.apeth.com/iOSBook/> At present, you can read the draft for Programming iOS 6 for chapters 1 through 36. (Other chapters are still the old iOS 5 edition.) You can tell from the warning at the top of a page if it hasn't been revised yet.
+While I'm drafting the revised book, the full text of the draft is available here: <http://www.apeth.com/iOSBook/> At present, you can read the draft for Programming iOS 6 for chapters 1 through 37. (Other chapters are still the old iOS 5 edition.) You can tell from the warning at the top of a page if it hasn't been revised yet.
 
 Changes include:
 
