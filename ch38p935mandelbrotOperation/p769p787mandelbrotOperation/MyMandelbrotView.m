@@ -5,8 +5,6 @@
 
 @interface MyMandelbrotView()
 @property (nonatomic, strong) NSOperationQueue* queue;
-//- (void)drawAtCenter:(CGPoint)center zoom:(CGFloat)zoom ;
-//- (void)makeBitmapContext:(CGSize)size ;
 @end
 
 // best to run on device, because we want a slow processor in order to see the delay
@@ -17,7 +15,6 @@
 @implementation MyMandelbrotView {
 	CGContextRef _bitmapContext ;
 }
-@synthesize queue;
 
 /*
 - (void) drawThatPuppy {
@@ -32,7 +29,7 @@
     CGPoint center = 
     CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     if (!self.queue) {
-        NSOperationQueue* q = [[NSOperationQueue alloc] init];
+        NSOperationQueue* q = [NSOperationQueue new];
         [q setMaxConcurrentOperationCount:1];
         self.queue = q; // retain policy
     }
@@ -152,7 +149,7 @@ BOOL isInMandelbrotSet(float re, float im)
 - (void) dealloc {
     if (self->_bitmapContext)
         CGContextRelease(self->_bitmapContext);
-    [queue cancelAllOperations];
+    [self->_queue cancelAllOperations];
 }
 
 

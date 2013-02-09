@@ -5,8 +5,6 @@
 
 @interface MyMandelbrotView()
 @property (nonatomic, strong) NSOperationQueue* queue;
-//- (void)drawAtCenter:(CGPoint)center zoom:(CGFloat)zoom ;
-//- (void)makeBitmapContext:(CGSize)size ;
 @end
 
 // best to run on device, because we want a slow processor in order to see the delay
@@ -32,7 +30,7 @@
     CGPoint center = 
     CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     if (!self.queue) {
-        NSOperationQueue* q = [[NSOperationQueue alloc] init];
+        NSOperationQueue* q = [NSOperationQueue new];
         q.name = @"My Mandelbrot Queue";
         [q setMaxConcurrentOperationCount:1];
         self.queue = q; // retain policy

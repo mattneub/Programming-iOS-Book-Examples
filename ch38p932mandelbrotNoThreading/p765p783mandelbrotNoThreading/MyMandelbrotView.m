@@ -8,10 +8,6 @@
 
 #define MANDELBROT_STEPS	200
 
-@interface MyMandelbrotView ()
-- (void)drawAtCenter:(CGPoint)center zoom:(CGFloat)zoom ;
-- (void)makeBitmapContext:(CGSize)size ;
-@end
 
 @implementation MyMandelbrotView {
 	CGContextRef _bitmapContext ;

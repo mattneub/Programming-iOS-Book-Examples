@@ -2,11 +2,6 @@
 
 #import "MyMandelbrotView.h"
 
-@interface MyMandelbrotView ()
-- (void)drawAtCenter:(CGPoint)center zoom:(CGFloat)zoom context:(CGContextRef)c;
-- (CGContextRef)makeBitmapContext:(CGSize)size CF_RETURNS_RETAINED; // quiet the Analyzer
-@end
-
 // best to run on device, because we want a slow processor in order to see the delay
 // you can increase the size of MANDELBROT_STEPS to make even more of a delay
 // but on my device, there's plenty of delay as is!
@@ -60,7 +55,8 @@
 // ==== this material is called on background thread
 
 // create (and return) context
-- (CGContextRef) makeBitmapContext:(CGSize)size {
+
+- (CGContextRef) makeBitmapContext:(CGSize)size CF_RETURNS_RETAINED {
 	int bitmapBytesPerRow = (size.width * 4);
 	bitmapBytesPerRow += (16 - bitmapBytesPerRow%16)%16;
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();

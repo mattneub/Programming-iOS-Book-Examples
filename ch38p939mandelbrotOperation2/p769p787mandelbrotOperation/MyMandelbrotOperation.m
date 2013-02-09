@@ -30,14 +30,14 @@
 }
 
 // create (and memory manage) instance variable
-- (void) makeBitmapContext:(CGSize)sizze {
+- (void) makeBitmapContext:(CGSize)size {
     if (self->_bitmapContext)
         CGContextRelease(self->_bitmapContext);
-	int bitmapBytesPerRow = (sizze.width * 4);
+	int bitmapBytesPerRow = (size.width * 4);
 	bitmapBytesPerRow += (16 - bitmapBytesPerRow%16)%16;
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = nil;
-	context = CGBitmapContextCreate(nil, sizze.width, sizze.height, 8, bitmapBytesPerRow, colorSpace, kCGImageAlphaPremultipliedLast);
+	context = CGBitmapContextCreate(nil, size.width, size.height, 8, bitmapBytesPerRow, colorSpace, kCGImageAlphaPremultipliedLast);
 	CGColorSpaceRelease(colorSpace);
     self->_bitmapContext = context;
 }
