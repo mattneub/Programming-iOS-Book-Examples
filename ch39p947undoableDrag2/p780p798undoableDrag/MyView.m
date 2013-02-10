@@ -32,25 +32,23 @@
     return YES;
 }
 
-- (void) setCenterUndoably: (NSValue*) newCenter {
-    [self.undoer registerUndoWithTarget:self 
-                               selector:@selector(setCenterUndoably:) 
-                                 object:[NSValue valueWithCGPoint:self.center]];
+- (void) setCenterUndoably: (CGPoint) newCenter {
+    [[self.undoer prepareWithInvocationTarget:self]
+        setCenterUndoably: self.center];
     [self.undoer setActionName: @"Move"];
     if (self.undoer.isUndoing || self.undoer.isRedoing) { // animate
         NSLog(@"here");
         UIViewAnimationOptions opt = UIViewAnimationOptionBeginFromCurrentState;
         [UIView animateWithDuration:0.4 delay:0.1 options:opt animations:^{
-            self.center = [newCenter CGPointValue];
+            self.center = newCenter;
         } completion:nil];
     } else { // just do it
-        self.center = [newCenter CGPointValue];
+        self.center = newCenter;
     }
 }
 
 
 - (void) dragging: (UIPanGestureRecognizer*) p {
-    [self becomeFirstResponder];
     if (p.state == UIGestureRecognizerStateBegan)
         [self.undoer beginUndoGrouping];
     if (p.state == UIGestureRecognizerStateBegan ||
@@ -58,12 +56,14 @@
         CGPoint delta = [p translationInView: self.superview];
         CGPoint c = self.center;
         c.x += delta.x; c.y += delta.y;
-        [self setCenterUndoably: [NSValue valueWithCGPoint:c]];
+        [self setCenterUndoably: c];
         [p setTranslation: CGPointZero inView: self.superview];
     }
     if (p.state == UIGestureRecognizerStateEnded || 
-        p.state == UIGestureRecognizerStateCancelled)
+        p.state == UIGestureRecognizerStateCancelled) {
         [self.undoer endUndoGrouping];
+        [self becomeFirstResponder];
+    }
 }
 
 // ===== press-and-hold, menu
