@@ -13,10 +13,14 @@
     dispatch_queue_t _draw_queue;
 }
 
+static char* QKEY = "label";
+static char* QVAL = "com.neuburg.mandeldraw";
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder: aDecoder];
     if (self) {
-        self->_draw_queue = dispatch_queue_create("com.neuburg.mandeldraw", nil);
+        self->_draw_queue = dispatch_queue_create(QVAL, nil);
+        dispatch_queue_set_specific(self->_draw_queue, QKEY, QVAL, nil);
     }
     return self;
 }
@@ -31,6 +35,7 @@
  */
 
 - (void) drawThatPuppy {
+    // [self makeBitmapContext:CGSizeZero]; // test "wrong thread" assertion
     CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     // see p. 775; to test, increase MANDELBROT_STEPS and suspend while still calculating
     __block UIBackgroundTaskIdentifier bti = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler: 
@@ -54,9 +59,14 @@
 
 // ==== this material is called on background thread
 
+- (void) assertOnBackgroundThread {
+    NSAssert(dispatch_get_specific(QKEY) == QVAL, @"Wrong thread");
+}
+
 // create (and return) context
 
 - (CGContextRef) makeBitmapContext:(CGSize)size CF_RETURNS_RETAINED {
+    [self assertOnBackgroundThread];
 	int bitmapBytesPerRow = (size.width * 4);
 	bitmapBytesPerRow += (16 - bitmapBytesPerRow%16)%16;
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -90,6 +100,8 @@ BOOL isInMandelbrotSet(float re, float im)
 
 - (void)drawAtCenter:(CGPoint)center zoom:(CGFloat)zoom context: (CGContextRef) context
 {
+    [self assertOnBackgroundThread];
+    
 	CGContextSetAllowsAntialiasing(context, FALSE);
     CGContextSetRGBFillColor(context, 0.0f, 0.0f, 0.0f, 1.0f);
 	
