@@ -1,11 +1,9 @@
 
-The downloadable code and screenshots for my book, "Programming iOS 5: Fundamentals of iPhone, iPad, and iPod touch Development," published by O'Reilly in March 2012, have now been moved off to the subfolder iOS5bookExamples.
+These are the downloadable code examples for my book, _Programming iOS 6_. The full text of the book itself is available here: <http://www.apeth.com/iOSBook/>
 
-At the top level, I've **revised the examples to fit iOS 6**.
+(The downloadable code and screenshots for the previous edition, _Programming iOS 5: Fundamentals of iPhone, iPad, and iPod touch Development,_ published by O'Reilly in March 2012, have been moved off to the subfolder iOS5bookExamples.)
 
-While I'm drafting the revised book, the full text of the draft is available here: <http://www.apeth.com/iOSBook/> At present, you can read the draft for Programming iOS 6 for chapters 1 through 39. (Other chapters are still the old iOS 5 edition.) You can tell from the warning at the top of a page if it hasn't been revised yet.
-
-Changes include:
+Changes from the iOS 5 examples to the iOS 6 examples include:
 
 * Use new literals and subscripting for arrays, dictionaries, numbers.
 
@@ -44,3 +42,4 @@ New examples include:
 This list is not exhaustive by any means. If you really want to know everything that I've changed, clone to your computer and do a diff against commit 25644891 (that's when I started this round of revision).
 
 Matt Neuburg
+
