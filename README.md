@@ -1,7 +1,7 @@
 
-These are the downloadable code examples for my book, _Programming iOS 6_. The full text of the book itself is available here: <http://www.apeth.com/iOSBook/>
+These are the downloadable code examples for my book, _Programming iOS 6_. The full text of the book itself is available in preview form here: <http://www.apeth.com/iOSBook/>. The book is now (March 2013) published by O'Reilly and is available for purchase in printed form and in many digital formats: <http://shop.oreilly.com/product/0636920029717.do>. If you find these examples helpful and you haven't purchased the book, please consider doing so.
 
-(The downloadable code and screenshots for the previous edition, _Programming iOS 5: Fundamentals of iPhone, iPad, and iPod touch Development,_ published by O'Reilly in March 2012, have been moved off to the subfolder iOS5bookExamples.)
+The downloadable code and screenshots for the previous edition, _Programming iOS 5,_ published by O'Reilly in March 2012, have been moved off to the subfolder "iOS5bookExamples".
 
 Changes from the iOS 5 examples to the iOS 6 examples include:
 
