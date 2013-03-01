@@ -17,7 +17,6 @@ void drawStripes (void *info, CGContextRef con) {
 
 
 - (void)drawRect:(CGRect)rect {
-    // patterned arrowhead, exactly as for figure 15-7
     // obtain the current graphics context
     CGContextRef con = UIGraphicsGetCurrentContext();
     CGContextSaveGState(con);

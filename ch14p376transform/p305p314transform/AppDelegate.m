@@ -15,7 +15,7 @@
     switch (which) {
         case 1:
         {
-            // figure 14-8
+            // figure 14-6
             UIView* v1 = [[UIView alloc] initWithFrame:CGRectMake(113, 111, 132, 194)];
             v1.backgroundColor = [UIColor colorWithRed:1 green:.4 blue:1 alpha:1];
             UIView* v2 = [[UIView alloc] initWithFrame:CGRectInset(v1.bounds, 10, 10)];
@@ -29,7 +29,7 @@
         }
         case 2:
         {
-            // figure 14-9
+            // figure 14-7
             UIView* v1 = [[UIView alloc] initWithFrame:CGRectMake(113, 111, 132, 194)];
             v1.backgroundColor = [UIColor colorWithRed:1 green:.4 blue:1 alpha:1];
             UIView* v2 = [[UIView alloc] initWithFrame:CGRectInset(v1.bounds, 10, 10)];
@@ -43,7 +43,7 @@
         }
         case 3:
         {
-            // figure 14-10
+            // figure 14-8
             UIView* v1 = [[UIView alloc] initWithFrame:CGRectMake(20, 111, 132, 194)];
             v1.backgroundColor = [UIColor colorWithRed:1 green:.4 blue:1 alpha:1];
             UIView* v2 = [[UIView alloc] initWithFrame:v1.bounds];
@@ -58,7 +58,7 @@
         }
         case 4:
         {
-            // figure 14-11
+            // figure 14-9
             UIView* v1 = [[UIView alloc] initWithFrame:CGRectMake(20, 111, 132, 194)];
             v1.backgroundColor = [UIColor colorWithRed:1 green:.4 blue:1 alpha:1];
             UIView* v2 = [[UIView alloc] initWithFrame:v1.bounds];
@@ -73,7 +73,7 @@
         }
         case 5:
         {
-            // figure 14-11 using concat
+            // figure 14-9 using concat
             UIView* v1 = [[UIView alloc] initWithFrame:CGRectMake(20, 111, 132, 194)];
             v1.backgroundColor = [UIColor colorWithRed:1 green:.4 blue:1 alpha:1];
             UIView* v2 = [[UIView alloc] initWithFrame:v1.bounds];
@@ -89,7 +89,7 @@
         }
         case 6:
         {
-            // figure 14-12
+            // figure 14-10
             UIView* v1 = [[UIView alloc] initWithFrame:CGRectMake(20, 111, 132, 194)];
             v1.backgroundColor = [UIColor colorWithRed:1 green:.4 blue:1 alpha:1];
             UIView* v2 = [[UIView alloc] initWithFrame:v1.bounds];
@@ -106,7 +106,7 @@
         }
         case 7:
         {
-            // figure 14-13
+            // figure 14-11
             UIView* v1 = [[UIView alloc] initWithFrame:CGRectMake(113, 111, 132, 194)];
             v1.backgroundColor = [UIColor colorWithRed:1 green:.4 blue:1 alpha:1];
             UIView* v2 = [[UIView alloc] initWithFrame:CGRectInset(v1.bounds, 10, 10)];

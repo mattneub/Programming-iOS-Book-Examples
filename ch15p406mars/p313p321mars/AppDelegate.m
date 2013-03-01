@@ -69,7 +69,7 @@ CGImageRef flip (CGImageRef im) {
         }
         case 2:
         {
-            // figure 15-1
+            // figure 15-6
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
             CGSize sz = [mars size];
             UIGraphicsBeginImageContextWithOptions(CGSizeMake(sz.width*2, sz.height), NO, 0);
@@ -295,7 +295,7 @@ CGImageRef flip (CGImageRef im) {
         }
         case 3: 
         {
-            // figure 15-2
+            // figure 15-7
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
             CGSize sz = [mars size];
             UIGraphicsBeginImageContextWithOptions(CGSizeMake(sz.width*2, sz.height*2), NO, 0);
@@ -314,7 +314,7 @@ CGImageRef flip (CGImageRef im) {
         }
         case 4:
         {
-            // figure 15-3
+            // figure 15-8
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
             CGSize sz = [mars size];
             UIGraphicsBeginImageContextWithOptions(CGSizeMake(sz.width/2.0, sz.height), NO, 0);
@@ -331,7 +331,7 @@ CGImageRef flip (CGImageRef im) {
         }
         case 5:
         {
-            // figure 15-4
+            // figure 15-9
             // incorrectly flipped, doesn't work on double-resolution device
             UIImage* mars = [UIImage imageNamed:@"Mars.png"];
             // extract each half as a CGImage

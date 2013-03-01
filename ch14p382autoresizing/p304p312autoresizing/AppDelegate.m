@@ -11,7 +11,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [UIViewController new];
     
-    // figure 14-6
+    // figure 14-12
     UIView* v1 = [[UIView alloc] initWithFrame:CGRectMake(100, 111, 132, 194)];
     v1.backgroundColor = [UIColor colorWithRed:1 green:.4 blue:1 alpha:1];
     
@@ -133,7 +133,7 @@
      so this would be a valuable technique even without these next upcoming lines
      */
     
-    // these next lines show the result of autoresizing (figure 14-7)
+    // these next lines show the result of autoresizing (figure 14-13)
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         CGRect f = v1.bounds;

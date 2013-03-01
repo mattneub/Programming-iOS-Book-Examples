@@ -59,7 +59,7 @@ void drawStripes (void *info, CGContextRef con) {
         }
         case 2:
         {
-            // figure 15-5
+            // figure 15-13
             // obtain the current graphics context
             CGContextRef con = UIGraphicsGetCurrentContext();
             
@@ -86,7 +86,7 @@ void drawStripes (void *info, CGContextRef con) {
         }
         case 3:
         {
-            // figure 15-5 using UIBezierPath instead of CG drawing
+            // figure 15-13 using UIBezierPath instead of CG drawing
             UIBezierPath* p = [UIBezierPath bezierPath];
             [p moveToPoint:CGPointMake(100,100)];
             [p addLineToPoint:CGPointMake(100, 19)];
@@ -138,7 +138,7 @@ void drawStripes (void *info, CGContextRef con) {
         }
         case 5:
         {
-            // gradient shaft, figure 15-6
+            // gradient shaft, figure 15-14
             // obtain the current graphics context
             CGContextRef con = UIGraphicsGetCurrentContext();
             CGContextSaveGState(con);
@@ -184,7 +184,7 @@ void drawStripes (void *info, CGContextRef con) {
         }
         case 6:
         {
-            // patterned arrowhead, figure 15-7
+            // patterned arrowhead, figure 15-15
             // obtain the current graphics context
             CGContextRef con = UIGraphicsGetCurrentContext();
             CGContextSaveGState(con);
@@ -246,7 +246,7 @@ void drawStripes (void *info, CGContextRef con) {
         }
         case 7:
         {
-            // CTM, figure 15-8
+            // CTM, figure 15-16
             UIGraphicsBeginImageContextWithOptions(CGSizeMake(40,100), NO, 0.0);
             CGContextRef con = UIGraphicsGetCurrentContext();
             CGContextSaveGState(con);
@@ -346,7 +346,7 @@ void drawStripes (void *info, CGContextRef con) {
         }
         case 9:
         {
-            // same as case 7, with shadow, figure 15-9
+            // same as case 7, with shadow, figure 15-17
             UIGraphicsBeginImageContextWithOptions(CGSizeMake(40,100), NO, 0.0);
             CGContextRef con = UIGraphicsGetCurrentContext();
             CGContextSaveGState(con);

@@ -9,7 +9,7 @@
 {
     
     // Even though we haven't gotten to instantiation yet,
-    // I know you're anxious to try out the brand-new class described on p. 69
+    // I know you're anxious to try out the brand-new class described on p. 77
     // So here we go!
     
     MyClass* thing = [[MyClass alloc] init];
