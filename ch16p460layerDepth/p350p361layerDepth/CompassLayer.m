@@ -13,7 +13,7 @@
 }
 
 
-# define which 1 // figure 16-7; try "2" to see figure 16-8
+# define which 1 // figure 16-8; try "2" to see figure 16-9
 
 - (void) doRotate {
     NSLog(@"rotate");

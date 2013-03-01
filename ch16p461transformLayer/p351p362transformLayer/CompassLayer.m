@@ -14,7 +14,7 @@
 }
 
 
-// figure 16-9
+// figure 16-10
 
 - (void) doRotate {
     NSLog(@"rotate");

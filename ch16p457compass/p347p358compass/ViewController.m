@@ -17,20 +17,20 @@
     switch (which) {
         case 1:
         {
-            // p. 371
+            // p. 487
             c.arrow.transform = CATransform3DRotate(c.arrow.transform, M_PI/4.0, 0, 0, 1);
             break;
         }
         case 2:
         {
-            // p. 372
+            // p. 488
             [CATransaction setAnimationDuration:0.8];
             c.arrow.transform = CATransform3DRotate(c.arrow.transform, M_PI/4.0, 0, 0, 1);
             break;
         }
         case 3:
         {
-            // p. 374
+            // p. 490
             CAMediaTimingFunction* clunk = 
             [CAMediaTimingFunction functionWithControlPoints:.9 :.1 :.7 :.9];
             [CATransaction setAnimationTimingFunction: clunk];
@@ -39,7 +39,7 @@
         }
         case 4:
         {
-            // p. 377
+            // p. 494
             // capture the start and end values
             CATransform3D startValue = c.arrow.transform;
             CATransform3D endValue = CATransform3DRotate(startValue, M_PI/4.0, 0, 0, 1);
@@ -60,7 +60,7 @@
         }
         case 5:
         {
-            // p. 377
+            // p. 495
             [CATransaction setDisableActions:YES];
             c.arrow.transform = CATransform3DRotate(c.arrow.transform, M_PI/4.0, 0, 0, 1);
             CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"transform"];
@@ -73,7 +73,7 @@
         }
         case 6:
         {
-            // p. 378
+            // p. 495
             // capture the start and end values
             CATransform3D nowValue = c.arrow.transform;
             CATransform3D startValue = CATransform3DRotate(nowValue, M_PI/40.0, 0, 0, 1);
@@ -93,7 +93,7 @@
         }
         case 7:
         {
-            // p. 378
+            // p. 496
             CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"transform"];
             anim.duration = 0.05;
             anim.timingFunction = 
@@ -109,7 +109,7 @@
         }
         case 8:
         {
-            // p. 379
+            // p. 497
             NSMutableArray* values = [NSMutableArray array];
             [values addObject: @0.0f];
             int direction = 1;
@@ -126,7 +126,7 @@
         }
         case 9:
         {
-            // p. 381
+            // p. 500
             // capture current value, set final value
             CGFloat rot = M_PI/4.0;
             [CATransaction setDisableActions:YES];

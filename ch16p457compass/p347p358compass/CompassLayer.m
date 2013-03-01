@@ -79,10 +79,10 @@
     [arrow setNeedsDisplay];
     
     
-    // uncomment next line (only) for Figure 16-4, contentsCenter and contentsGravity
+    // uncomment next line (only) for Figure 16-5, contentsCenter and contentsGravity
     // [self performSelector:@selector(resizeArrowLayer:) withObject:arrow afterDelay:0.4];
     
-    // uncomment next line (only) for Figure 16-10, layer mask
+    // uncomment next line (only) for Figure 16-11, layer mask
     // [self performSelector:@selector(mask:) withObject:arrow];
     
     self.arrow = arrow;
