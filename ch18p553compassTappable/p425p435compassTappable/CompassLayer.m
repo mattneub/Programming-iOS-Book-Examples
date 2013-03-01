@@ -158,7 +158,6 @@ void drawStripes (void *info, CGContextRef con) {
 }
 
 - (void) rotateArrow {
-    // p. 381
     // capture current value, set final value
     CGFloat rot = M_PI/4.0;
     [CATransaction setDisableActions:YES];
