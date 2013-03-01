@@ -14,7 +14,7 @@
     switch (which) {
         case 1:
         {
-            // p 362
+            // p 475
             [UIView beginAnimations:nil context:nil];
             _v.backgroundColor = [UIColor yellowColor];
             CGPoint p = _v.center;
@@ -25,7 +25,7 @@
         }
         case 2:
         {
-            // p 364, jump
+            // p 478, jump
             [UIView beginAnimations:nil context:nil];
             [UIView setAnimationRepeatAutoreverses:YES];
             CGPoint p = _v.center;
@@ -36,7 +36,7 @@
         }
         case 3:
         {
-            // p 365, failed solution
+            // p 478, failed solution
             [UIView beginAnimations:nil context:nil];
             [UIView setAnimationRepeatAutoreverses:YES];
             CGPoint p = _v.center;
@@ -50,7 +50,7 @@
         }
         case 4:
         {
-            // p 365, successful solution
+            // p 478, successful solution
             [UIView beginAnimations:nil context:nil];
             [UIView setAnimationRepeatAutoreverses:YES];
             [UIView setAnimationDelegate:self];
@@ -63,7 +63,7 @@
         }
         case 5:
         {
-            // p 366
+            // p 479
             [UIView beginAnimations:nil context:nil];
             [UIView setAnimationDuration:1];
             CGPoint p = _v.center;
@@ -83,7 +83,7 @@
         }
         case 6:
         {
-            // p 369, same as case 4 but using block-based solution (and no need for delegate)
+            // p 483, same as case 4 but using block-based solution (and no need for delegate)
             CGPoint p = _v.center;
             CGPoint pOrig = p;
             p.x += 100;

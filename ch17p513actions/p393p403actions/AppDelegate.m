@@ -50,7 +50,6 @@
         }
         case 4:
         {
-            // p 394
             CALayer* layer = [CALayer layer];
             layer.frame = CGRectMake(200,50,40,40);
             layer.contents = (id)[[UIImage imageNamed:@"Saturn.gif"] CGImage];
