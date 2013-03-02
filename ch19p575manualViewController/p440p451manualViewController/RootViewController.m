@@ -91,7 +91,7 @@
         }
         case 4:
         {
-            // p 445: no need for us to alloc-init the view and assign it to self.view;
+            // no need for us to alloc-init the view and assign it to self.view;
             // if we do nothing in loadView, it's done for us
             // rest is like case 3
             // in the 2nd edition of the book, skipped this example
