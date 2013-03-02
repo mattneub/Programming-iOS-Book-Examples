@@ -23,7 +23,7 @@
         self.navigationItem.rightBarButtonItems = @[b, b2];
         
         
-        // uncomment these lines and see what happens (see p. 470)
+        // uncomment these lines and see what happens (see p. 620)
 //        b = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"files.png"] style:UIBarButtonItemStyleBordered target:nil action:nil];
 //        self.navigationItem.backBarButtonItem = b;
     }
