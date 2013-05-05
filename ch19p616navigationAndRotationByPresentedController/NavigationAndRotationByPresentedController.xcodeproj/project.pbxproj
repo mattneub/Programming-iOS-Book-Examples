@@ -1,0 +1,331 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C9B9CD4D17356EAD00244B69 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9CD4C17356EAD00244B69 /* UIKit.framework */; };
+		C9B9CD4F17356EAD00244B69 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9CD4E17356EAD00244B69 /* Foundation.framework */; };
+		C9B9CD5117356EAD00244B69 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B9CD5017356EAD00244B69 /* CoreGraphics.framework */; };
+		C9B9CD5717356EAD00244B69 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9B9CD5517356EAD00244B69 /* InfoPlist.strings */; };
+		C9B9CD5917356EAD00244B69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B9CD5817356EAD00244B69 /* main.m */; };
+		C9B9CD5D17356EAD00244B69 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B9CD5C17356EAD00244B69 /* AppDelegate.m */; };
+		C9B9CD5F17356EAD00244B69 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B9CD5E17356EAD00244B69 /* Default.png */; };
+		C9B9CD6117356EAD00244B69 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B9CD6017356EAD00244B69 /* Default@2x.png */; };
+		C9B9CD6317356EAD00244B69 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9B9CD6217356EAD00244B69 /* Default-568h@2x.png */; };
+		C9B9CD6617356EAD00244B69 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B9CD6417356EAD00244B69 /* MainStoryboard.storyboard */; };
+		C9B9CD6917356EAD00244B69 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B9CD6817356EAD00244B69 /* ViewController.m */; };
+		C9B9CD7117356F4A00244B69 /* MyNavControllerLandscape.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B9CD7017356F4A00244B69 /* MyNavControllerLandscape.m */; };
+		C9B9CD7417356F5E00244B69 /* MyNavControllerPortrait.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B9CD7317356F5E00244B69 /* MyNavControllerPortrait.m */; };
+		C9B9CD771735701200244B69 /* ViewControllerIntermediary.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B9CD761735701200244B69 /* ViewControllerIntermediary.m */; };
+		C9B9CD7A1735799100244B69 /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B9CD791735799100244B69 /* ViewController2.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C9B9CD4917356EAD00244B69 /* NavigationAndRotationByPresentedController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationAndRotationByPresentedController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9B9CD4C17356EAD00244B69 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C9B9CD4E17356EAD00244B69 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C9B9CD5017356EAD00244B69 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C9B9CD5417356EAD00244B69 /* NavigationAndRotationByPresentedController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NavigationAndRotationByPresentedController-Info.plist"; sourceTree = "<group>"; };
+		C9B9CD5617356EAD00244B69 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C9B9CD5817356EAD00244B69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C9B9CD5A17356EAD00244B69 /* NavigationAndRotationByPresentedController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NavigationAndRotationByPresentedController-Prefix.pch"; sourceTree = "<group>"; };
+		C9B9CD5B17356EAD00244B69 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C9B9CD5C17356EAD00244B69 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C9B9CD5E17356EAD00244B69 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		C9B9CD6017356EAD00244B69 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		C9B9CD6217356EAD00244B69 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		C9B9CD6517356EAD00244B69 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		C9B9CD6717356EAD00244B69 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C9B9CD6817356EAD00244B69 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C9B9CD6F17356F4A00244B69 /* MyNavControllerLandscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavControllerLandscape.h; sourceTree = "<group>"; };
+		C9B9CD7017356F4A00244B69 /* MyNavControllerLandscape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavControllerLandscape.m; sourceTree = "<group>"; };
+		C9B9CD7217356F5E00244B69 /* MyNavControllerPortrait.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavControllerPortrait.h; sourceTree = "<group>"; };
+		C9B9CD7317356F5E00244B69 /* MyNavControllerPortrait.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavControllerPortrait.m; sourceTree = "<group>"; };
+		C9B9CD751735701200244B69 /* ViewControllerIntermediary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerIntermediary.h; sourceTree = "<group>"; };
+		C9B9CD761735701200244B69 /* ViewControllerIntermediary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerIntermediary.m; sourceTree = "<group>"; };
+		C9B9CD781735799100244B69 /* ViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
+		C9B9CD791735799100244B69 /* ViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C9B9CD4617356EAD00244B69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9B9CD4D17356EAD00244B69 /* UIKit.framework in Frameworks */,
+				C9B9CD4F17356EAD00244B69 /* Foundation.framework in Frameworks */,
+				C9B9CD5117356EAD00244B69 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C9B9CD4017356EAD00244B69 = {
+			isa = PBXGroup;
+			children = (
+				C9B9CD5217356EAD00244B69 /* NavigationAndRotationByPresentedController */,
+				C9B9CD4B17356EAD00244B69 /* Frameworks */,
+				C9B9CD4A17356EAD00244B69 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C9B9CD4A17356EAD00244B69 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9B9CD4917356EAD00244B69 /* NavigationAndRotationByPresentedController.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C9B9CD4B17356EAD00244B69 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9B9CD4C17356EAD00244B69 /* UIKit.framework */,
+				C9B9CD4E17356EAD00244B69 /* Foundation.framework */,
+				C9B9CD5017356EAD00244B69 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9B9CD5217356EAD00244B69 /* NavigationAndRotationByPresentedController */ = {
+			isa = PBXGroup;
+			children = (
+				C9B9CD5B17356EAD00244B69 /* AppDelegate.h */,
+				C9B9CD5C17356EAD00244B69 /* AppDelegate.m */,
+				C9B9CD6417356EAD00244B69 /* MainStoryboard.storyboard */,
+				C9B9CD6717356EAD00244B69 /* ViewController.h */,
+				C9B9CD6817356EAD00244B69 /* ViewController.m */,
+				C9B9CD751735701200244B69 /* ViewControllerIntermediary.h */,
+				C9B9CD761735701200244B69 /* ViewControllerIntermediary.m */,
+				C9B9CD781735799100244B69 /* ViewController2.h */,
+				C9B9CD791735799100244B69 /* ViewController2.m */,
+				C9B9CD6F17356F4A00244B69 /* MyNavControllerLandscape.h */,
+				C9B9CD7017356F4A00244B69 /* MyNavControllerLandscape.m */,
+				C9B9CD7217356F5E00244B69 /* MyNavControllerPortrait.h */,
+				C9B9CD7317356F5E00244B69 /* MyNavControllerPortrait.m */,
+				C9B9CD5317356EAD00244B69 /* Supporting Files */,
+			);
+			name = NavigationAndRotationByPresentedController;
+			path = NavigationAndRotationByChildController;
+			sourceTree = "<group>";
+		};
+		C9B9CD5317356EAD00244B69 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9B9CD5417356EAD00244B69 /* NavigationAndRotationByPresentedController-Info.plist */,
+				C9B9CD5517356EAD00244B69 /* InfoPlist.strings */,
+				C9B9CD5817356EAD00244B69 /* main.m */,
+				C9B9CD5A17356EAD00244B69 /* NavigationAndRotationByPresentedController-Prefix.pch */,
+				C9B9CD5E17356EAD00244B69 /* Default.png */,
+				C9B9CD6017356EAD00244B69 /* Default@2x.png */,
+				C9B9CD6217356EAD00244B69 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C9B9CD4817356EAD00244B69 /* NavigationAndRotationByPresentedController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9B9CD6C17356EAD00244B69 /* Build configuration list for PBXNativeTarget "NavigationAndRotationByPresentedController" */;
+			buildPhases = (
+				C9B9CD4517356EAD00244B69 /* Sources */,
+				C9B9CD4617356EAD00244B69 /* Frameworks */,
+				C9B9CD4717356EAD00244B69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NavigationAndRotationByPresentedController;
+			productName = NavigationAndRotationByChildController;
+			productReference = C9B9CD4917356EAD00244B69 /* NavigationAndRotationByPresentedController.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C9B9CD4117356EAD00244B69 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Matt Neuburg";
+			};
+			buildConfigurationList = C9B9CD4417356EAD00244B69 /* Build configuration list for PBXProject "NavigationAndRotationByPresentedController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C9B9CD4017356EAD00244B69;
+			productRefGroup = C9B9CD4A17356EAD00244B69 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C9B9CD4817356EAD00244B69 /* NavigationAndRotationByPresentedController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9B9CD4717356EAD00244B69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9B9CD5717356EAD00244B69 /* InfoPlist.strings in Resources */,
+				C9B9CD5F17356EAD00244B69 /* Default.png in Resources */,
+				C9B9CD6117356EAD00244B69 /* Default@2x.png in Resources */,
+				C9B9CD6317356EAD00244B69 /* Default-568h@2x.png in Resources */,
+				C9B9CD6617356EAD00244B69 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C9B9CD4517356EAD00244B69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9B9CD5917356EAD00244B69 /* main.m in Sources */,
+				C9B9CD5D17356EAD00244B69 /* AppDelegate.m in Sources */,
+				C9B9CD6917356EAD00244B69 /* ViewController.m in Sources */,
+				C9B9CD7117356F4A00244B69 /* MyNavControllerLandscape.m in Sources */,
+				C9B9CD7417356F5E00244B69 /* MyNavControllerPortrait.m in Sources */,
+				C9B9CD771735701200244B69 /* ViewControllerIntermediary.m in Sources */,
+				C9B9CD7A1735799100244B69 /* ViewController2.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C9B9CD5517356EAD00244B69 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9B9CD5617356EAD00244B69 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C9B9CD6417356EAD00244B69 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9B9CD6517356EAD00244B69 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C9B9CD6A17356EAD00244B69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C9B9CD6B17356EAD00244B69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C9B9CD6D17356EAD00244B69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NavigationAndRotationByChildController/NavigationAndRotationByPresentedController-Prefix.pch";
+				INFOPLIST_FILE = "NavigationAndRotationByChildController/NavigationAndRotationByPresentedController-Info.plist";
+				PRODUCT_NAME = NavigationAndRotationByPresentedController;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C9B9CD6E17356EAD00244B69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NavigationAndRotationByChildController/NavigationAndRotationByPresentedController-Prefix.pch";
+				INFOPLIST_FILE = "NavigationAndRotationByChildController/NavigationAndRotationByPresentedController-Info.plist";
+				PRODUCT_NAME = NavigationAndRotationByPresentedController;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C9B9CD4417356EAD00244B69 /* Build configuration list for PBXProject "NavigationAndRotationByPresentedController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9B9CD6A17356EAD00244B69 /* Debug */,
+				C9B9CD6B17356EAD00244B69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9B9CD6C17356EAD00244B69 /* Build configuration list for PBXNativeTarget "NavigationAndRotationByPresentedController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9B9CD6D17356EAD00244B69 /* Debug */,
+				C9B9CD6E17356EAD00244B69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C9B9CD4117356EAD00244B69 /* Project object */;
+}
