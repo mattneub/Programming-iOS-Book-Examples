@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iGC-c7-MBM"/>
+                        <viewControllerLayoutGuide type="bottom" id="8UP-0q-tLV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.5" maximumZoomScale="1.5" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSE-ol-TvX" customClass="MyScrollView">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="999" contentMode="scaleToFill" image="bird.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="hdc-gN-zN3">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="dno-fh-W2F" appends="YES" id="9Kh-we-9XV"/>
+                                        </connections>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="hdc-gN-zN3" firstAttribute="top" secondItem="TSE-ol-TvX" secondAttribute="top" id="692-Xh-W0x"/>
+                                    <constraint firstAttribute="trailing" secondItem="hdc-gN-zN3" secondAttribute="trailing" id="AC6-Qx-R0A"/>
+                                    <constraint firstItem="hdc-gN-zN3" firstAttribute="leading" secondItem="TSE-ol-TvX" secondAttribute="leading" id="Bvv-IX-XGu"/>
+                                    <constraint firstAttribute="bottom" secondItem="hdc-gN-zN3" secondAttribute="bottom" id="L2U-3I-UVK"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="La8-XV-TuS"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8UP-0q-tLV" firstAttribute="top" secondItem="TSE-ol-TvX" secondAttribute="bottom" id="NHz-pO-I2P"/>
+                            <constraint firstAttribute="trailing" secondItem="TSE-ol-TvX" secondAttribute="trailing" id="Svq-Zd-bpk"/>
+                            <constraint firstItem="TSE-ol-TvX" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="kGT-Ma-VSl"/>
+                            <constraint firstItem="TSE-ol-TvX" firstAttribute="top" secondItem="iGC-c7-MBM" secondAttribute="bottom" id="oGU-XU-Uzf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="iv" destination="hdc-gN-zN3" id="sii-fs-mhn"/>
+                        <outlet property="sv" destination="TSE-ol-TvX" id="MPG-2c-Chj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="dno-fh-W2F">
+                    <connections>
+                        <action selector="tapped:" destination="vXZ-lx-hvc" id="VmE-SE-D3f"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bird.jpg" width="400" height="300"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

@@ -1,45 +1,17 @@
 
-These are the downloadable code examples for my book, _Programming iOS 6_. The full text of the book itself is available in preview form here: <http://www.apeth.com/iOSBook/>. The book is now (March 2013) published by O'Reilly and is available for purchase in printed form and in many digital formats: <http://shop.oreilly.com/product/0636920029717.do>. If you find these examples helpful and you haven't purchased the book, please consider doing so.
+These are the downloadable code examples for my books, _iOS 7 Programming Fundamentals_ (<http://shop.oreilly.com/product/0636920032465.do>) and _Programming iOS 7_ (<http://shop.oreilly.com/product/0636920031017.do>).
 
-The downloadable code and screenshots for the previous edition, _Programming iOS 5,_ published by O'Reilly in March 2012, have been moved off to the subfolder "iOS5bookExamples".
+Together, these two books constitute the 4th edition of my previous books, _Programming iOS 4_, *Programming iOS 5*, and *Programming iOS 6*. The book was getting awfully big (over 1150 pages in the 3rd edition, and growing); so for the 4th edition we have broken it into two volumes, something that I have always wanted to do anyway. I hope readers will find that this makes the book more tractable (both figuratively and literally).
 
-Changes from the iOS 5 examples to the iOS 6 examples include:
+The obvious place to split the volumes was after Chapter 13 (end of Part III). Thus, the structure of the two new books is exactly the same as the structure of the previous editions, but divided in two groups: _iOS 7 Programming Fundamentals_ contains old chapters 1–13, and _Programming iOS 7_ contains old chapters 14–40.
 
-* Use new literals and subscripting for arrays, dictionaries, numbers.
+Of course, in the second book, the chapter numbering now starts over at 1 (old Chapter 14 becomes new Chapter 1, and so on). I have not yet renamed the folders containing the examples, however. Thus *they still have the old chapter numbers*, as if the two books were still one book. I'm used to the old numbering, and old habits are hard to break, so cut me some slack. I'll get around to it eventually...
 
-* Use autosynthesis of properties.
+At this moment, my revision has reached old Chapter 21, so the examples currently end there. As I revise more, I'll add more revised examples. Stay tuned!
 
-* Move protocol adoption declarations to implementation file where possible.
+If you find these examples helpful and you haven't purchased the books, please consider doing so.
 
-* Use constraints (instead of frame) to position and size subviews, whenever this is relational (and doesn't get in the way of the example).
-
-* Illustrate some newly available CIFilters.
-
-* Illustrate new UIView/UIGestureRecognizer interaction.
-
-* Illustrate new rotation rules, including new structure of launch-into-rotation.
-
-* For table views, use exclusively new register-and-dequeue architecture.
-
-New examples include:
-
-* Further illustrate use of constraints (ch 14), esp. in company with animation (ch 17).
-
-* Show gesture recognizers in nib (ch 18).
-
-* Show new rotation/orientation rules (ch 19).
-
-* Show new state save-and-restore (ch 19).
-
-* Show new storyboard features: container controller, Exit (unwind).
-
-* Show collection views.
-
-* Show basic Core Data usage (ch 36).
-
-* Other new iOS 6 features as they arise.
-
-This list is not exhaustive by any means. If you really want to know everything that I've changed, clone to your computer and do a diff against commit 25644891 (that's when I started this round of revision).
+The downloadable code and screenshots for the previous editions — _Programming iOS 6_, published by O'Reilly in March 2013; _Programming iOS 5,_ published by O'Reilly in March 2012; and _Programming iOS 4_, published by O'Reilly in May 2011 — have been moved off to subfolders "iOS6bookExamples", "iOS5bookExamples", and "iOS4bookExamples".
 
 Matt Neuburg
 
