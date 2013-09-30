@@ -95,7 +95,7 @@
       options:0 metrics:nil views:vs]];
     [v1 addConstraints:
      [NSLayoutConstraint
-      constraintsWithVisualFormat:@"V:[v3]|"
+      constraintsWithVisualFormat:@"V:[v3(20)]|"
       options:0 metrics:nil views:vs]];
     
 #endif
