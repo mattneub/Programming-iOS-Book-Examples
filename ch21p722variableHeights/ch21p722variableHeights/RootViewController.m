@@ -57,7 +57,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Cell* cell = (Cell*)[tableView dequeueReusableCellWithIdentifier:@"Cell"
+    Cell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"
                                                         forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     cell.lab.text = self.trivia[indexPath.row];
