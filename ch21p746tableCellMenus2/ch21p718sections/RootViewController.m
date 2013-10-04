@@ -72,10 +72,7 @@
     stateName = [NSString stringWithFormat:@"flag_%@.gif", stateName];
     UIImage* im = [UIImage imageNamed: stateName];
     cell.imageView.image = im;
-    
-    // menu handling, set up communication from cell
-    cell.celldelegate = self;
-    
+        
     return cell;
 }
 
