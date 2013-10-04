@@ -37,7 +37,7 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    MyCell* cell = (MyCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell"
+    MyCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"
                                                             forIndexPath:indexPath];
     
     if (indexPath.section == 0)
