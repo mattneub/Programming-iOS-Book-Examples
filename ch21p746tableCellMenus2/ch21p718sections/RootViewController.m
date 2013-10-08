@@ -125,16 +125,12 @@
 
 // menu handling ==========
 
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (BOOL)tableView:(UITableView *)tableView
+shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath {
     // extra menu item
     UIMenuItem* mi =
     [[UIMenuItem alloc] initWithTitle:@"Abbrev" action:NSSelectorFromString(@"abbrev:")];
     [[UIMenuController sharedMenuController] setMenuItems:@[mi]];
-}
-
-- (BOOL)tableView:(UITableView *)tableView
-shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
 
