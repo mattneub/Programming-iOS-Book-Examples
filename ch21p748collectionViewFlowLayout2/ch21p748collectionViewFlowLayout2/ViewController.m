@@ -201,28 +201,15 @@
     NSArray* arr = [self.collectionView indexPathsForSelectedItems];
     if (!arr || ![arr count])
         return;
-    // first update the model
-    // not so easy! we don't get magical renumbering as we go
-    // solution: form a dictionary of indexsets
+    // sort
+    arr = [arr sortedArrayUsingSelector:@selector(compare:)];
+    // reverse, delete data, keeping track when we empty a section
     NSMutableIndexSet* empties = [NSMutableIndexSet indexSet];
-    NSMutableDictionary* d = [NSMutableDictionary dictionary];
-    for (NSIndexPath* ip in arr) {
-        NSMutableIndexSet* set = d[@(ip.section)];
-        if (!set) {
-            d[@(ip.section)] = [NSMutableIndexSet indexSet];
-            set = d[@(ip.section)];
-        }
-        [set addIndex:ip.item];
+    for (NSIndexPath* ip in [arr reverseObjectEnumerator]) {
+        [self.sectionData[ip.section] removeObjectAtIndex:ip.item];
+        if (![self.sectionData[ip.section] count])
+            [empties addIndex:ip.section];
     }
-    // now we can deal with each section in turn and delete all its selected items at once
-    for (NSNumber* n in [d allKeys]) {
-        NSMutableArray* marr = self.sectionData[[n integerValue]];
-        [marr removeObjectsAtIndexes:d[n]];
-        // also keep track of indexes of any sections that were emptied by doing that
-        if (![marr count])
-            [empties addIndex: [n integerValue]];
-    }
-    
     // finally, request the deletion from the view; notice the slick automatic animation
     [self.collectionView performBatchUpdates:^{ // so that we can proceed after completion
         [self.collectionView deleteItemsAtIndexPaths:arr];
