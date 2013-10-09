@@ -49,4 +49,32 @@
     [(MyFlowLayout*)layout flush];
 }
 
+// showing the extremely weird transfer of responsibilities
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSLog(@"\n%@\n%@", self.collectionView.dataSource, self.collectionView.delegate);
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSLog(@"\n%@\n%@", self.collectionView.dataSource, self.collectionView.delegate);
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        NSLog(@"\n%@\n%@", self.collectionView.dataSource, self.collectionView.delegate);
+    });
+}
+
+// but I don't want to be the delegate, because I need the data for that, and I don't have it!
+// so I forward delegation back to the other view controller
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewController* cv = self.navigationController.viewControllers[0];
+    if ([cv respondsToSelector:_cmd])
+        return [(id<UICollectionViewDelegateFlowLayout>)cv collectionView:collectionView layout:collectionViewLayout sizeForItemAtIndexPath:indexPath];
+    return CGSizeZero;
+}
+
+
 @end

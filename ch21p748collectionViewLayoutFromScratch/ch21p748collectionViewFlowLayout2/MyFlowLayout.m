@@ -14,17 +14,35 @@
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSArray* arr = [super layoutAttributesForElementsInRect:rect];
     
-    // this is the secret sauce for getting animation to work with a layout
-    if (self.animating) {
-        return self.attributesBeingAnimated;
-    }
-    
     for (UICollectionViewLayoutAttributes* atts in arr) {
         if (nil == atts.representedElementKind) {
             NSIndexPath* ip = atts.indexPath;
             atts.frame = [self layoutAttributesForItemAtIndexPath:ip].frame;
         }
     }
+    
+    // secret sauce for getting animation to work with a layout
+    if (self.animating) {
+        NSMutableArray* marr = [NSMutableArray new];
+        for (UICollectionViewLayoutAttributes* atts in arr) {
+            NSIndexPath* path = atts.indexPath;
+            UICollectionViewLayoutAttributes* atts2 = nil;
+            switch (atts.representedElementCategory) {
+                case UICollectionElementCategoryCell:
+                    atts2 = [self.animator layoutAttributesForCellAtIndexPath:path];
+                    break;
+                case UICollectionElementCategorySupplementaryView:
+                    atts2 = [self.animator layoutAttributesForSupplementaryViewOfKind:atts.representedElementKind atIndexPath:path];
+                    break;
+                default:
+                    break;
+            }
+            [marr addObject: (atts2 ? atts2 : atts)];
+        }
+        return marr;
+    }
+
+    
     return arr;
 }
 
