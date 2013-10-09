@@ -5,7 +5,6 @@
 @interface MyFlowLayout () <UICollisionBehaviorDelegate>
 @property BOOL animating;
 @property (nonatomic, strong) UIDynamicAnimator* animator;
-@property (nonatomic, strong) NSArray* attributesBeingAnimated;
 @end
 
 @implementation MyFlowLayout
@@ -28,12 +27,15 @@
             NSIndexPath* path = atts.indexPath;
             UICollectionViewLayoutAttributes* atts2 = nil;
             switch (atts.representedElementCategory) {
-                case UICollectionElementCategoryCell:
+                case UICollectionElementCategoryCell: {
                     atts2 = [self.animator layoutAttributesForCellAtIndexPath:path];
                     break;
-                case UICollectionElementCategorySupplementaryView:
-                    atts2 = [self.animator layoutAttributesForSupplementaryViewOfKind:atts.representedElementKind atIndexPath:path];
+                }
+                case UICollectionElementCategorySupplementaryView: {
+                    NSString* kind = atts.representedElementKind;
+                    atts2 = [self.animator layoutAttributesForSupplementaryViewOfKind:kind atIndexPath:path];
                     break;
+                }
                 default:
                     break;
             }
@@ -75,7 +77,6 @@
     self.animator = anim;
     
     NSArray* atts = [self layoutAttributesForElementsInRect:visworld];
-    self.attributesBeingAnimated = atts;
     self.animating = YES;
     
     UIGravityBehavior* grav = [[UIGravityBehavior alloc] initWithItems:atts];
