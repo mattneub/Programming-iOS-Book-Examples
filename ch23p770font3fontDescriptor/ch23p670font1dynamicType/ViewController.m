@@ -1,6 +1,7 @@
 
 
 #import "ViewController.h"
+@import CoreText;
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *lab;
@@ -18,7 +19,12 @@
                                                object:nil];
 }
 
+#define which 1
+
 - (void) doDynamicType: (NSNotification*) n {
+
+#if which == 1
+    
     UIFontDescriptor* body =
     [UIFontDescriptor preferredFontDescriptorWithTextStyle:
      UIFontTextStyleBody];
@@ -26,6 +32,18 @@
     [body fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitItalic];
     UIFont* fbody = [UIFont fontWithDescriptor:body size:0];
     UIFont* femphasis = [UIFont fontWithDescriptor:emphasis size:0];
+    
+#elif which == 2
+    
+    UIFont* fbody = [UIFont fontWithName:@"GillSans" size:15];
+    CTFontRef font2 =
+    CTFontCreateCopyWithSymbolicTraits (
+                                        (__bridge CTFontRef)fbody, 0, nil,
+                                        kCTFontItalicTrait, kCTFontItalicTrait);
+    UIFont* femphasis = CFBridgingRelease(font2);
+
+#endif
+    
     NSString* s = self.lab.text;
     NSMutableAttributedString* mas =
     [[NSMutableAttributedString alloc] initWithString:s
