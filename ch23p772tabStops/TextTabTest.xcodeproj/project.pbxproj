@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9E5A88F180F508B00C41A1C /* onion.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C9E5A88E180F508B00C41A1C /* onion.jpg */; };
+		C9E5A891180F50D000C41A1C /* peppers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C9E5A890180F50D000C41A1C /* peppers.jpg */; };
 		C9E9BB5E180F0F3600A25F32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E9BB5D180F0F3600A25F32 /* Foundation.framework */; };
 		C9E9BB60180F0F3600A25F32 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E9BB5F180F0F3600A25F32 /* CoreGraphics.framework */; };
 		C9E9BB62180F0F3600A25F32 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E9BB61180F0F3600A25F32 /* UIKit.framework */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C9E5A88E180F508B00C41A1C /* onion.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = onion.jpg; sourceTree = "<group>"; };
+		C9E5A890180F50D000C41A1C /* peppers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = peppers.jpg; sourceTree = "<group>"; };
 		C9E9BB5A180F0F3600A25F32 /* TextTabTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextTabTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E9BB5D180F0F3600A25F32 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9E9BB5F180F0F3600A25F32 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -86,6 +90,8 @@
 				C9E9BB6F180F0F3600A25F32 /* Main.storyboard */,
 				C9E9BB72180F0F3600A25F32 /* ViewController.h */,
 				C9E9BB73180F0F3600A25F32 /* ViewController.m */,
+				C9E5A890180F50D000C41A1C /* peppers.jpg */,
+				C9E5A88E180F508B00C41A1C /* onion.jpg */,
 				C9E9BB75180F0F3600A25F32 /* Images.xcassets */,
 				C9E9BB64180F0F3600A25F32 /* Supporting Files */,
 			);
@@ -158,6 +164,8 @@
 				C9E9BB76180F0F3600A25F32 /* Images.xcassets in Resources */,
 				C9E9BB68180F0F3600A25F32 /* InfoPlist.strings in Resources */,
 				C9E9BB71180F0F3600A25F32 /* Main.storyboard in Resources */,
+				C9E5A891180F50D000C41A1C /* peppers.jpg in Resources */,
+				C9E5A88F180F508B00C41A1C /* onion.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +321,7 @@
 				C9E9BB8E180F0F3600A25F32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
