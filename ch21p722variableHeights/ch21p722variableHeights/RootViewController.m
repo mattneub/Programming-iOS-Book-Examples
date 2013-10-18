@@ -44,7 +44,8 @@
     Cell* cell = self.practiceCell;
     UILabel* lab = cell.lab;
     lab.text = s; // no need to know font, constraints, or anything else about label
-    return [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height + 1;
+    CGFloat h = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
+    return ceil(h) + 1;
     // I have no idea why the "+1" is needed, but it is; perhaps there is a rounding error here
 }
 
