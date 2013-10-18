@@ -36,6 +36,15 @@
     
     self.drawer.attributedText = content;
     
+    /*
+    
+    CGRect r =
+    [content boundingRectWithSize:CGSizeMake(320,10000)
+                    options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    NSLog(@"%@", NSStringFromCGRect(r));
+    NSLog(@"%f", ceil(r.size.height));
+     
+     */
 }
 
 - (void) makeAttributedString {
