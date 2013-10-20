@@ -9,10 +9,6 @@
 
 @implementation ViewController
 
-- (IBAction)doDone:(id)sender {
-    [self.tv resignFirstResponder];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -66,6 +62,8 @@
 }
 
 -(void)textViewDidChange:(UITextView *)textView {
+    // prevent typed characters from going behind keyboard
+    // the keyboard should be doing this for us automatically!
     CGRect r = [textView caretRectForPosition:textView.selectedTextRange.end];
     [textView scrollRectToVisible:r animated:NO];
 }
@@ -89,15 +87,25 @@
     self.keyboardShowing = YES;
 }
 
+- (IBAction)doDone:(id)sender {
+    [self.view endEditing:NO];
+}
+
 - (void) keyboardHide: (NSNotification*) n {
-    UIEdgeInsets insets = self.tv.contentInset;
-    insets.bottom = 0;
-    self.tv.contentInset = insets;
-    insets = self.tv.scrollIndicatorInsets;
-    insets.bottom = 0;
-    self.tv.scrollIndicatorInsets = insets;
-    
     self.keyboardShowing = NO;
+    
+    NSDictionary* d = [n userInfo];
+    NSNumber* curve = d[UIKeyboardAnimationCurveUserInfoKey];
+    NSNumber* duration = d[UIKeyboardAnimationDurationUserInfoKey];
+    [UIView animateWithDuration:duration.floatValue delay:0
+                        options:curve.integerValue << 16
+                     animations:
+     ^{
+         [self.tv setContentOffset:CGPointZero];
+     } completion:^(BOOL finished) {
+         self.tv.contentInset = UIEdgeInsetsZero;
+         self.tv.scrollIndicatorInsets = UIEdgeInsetsZero;
+     }];
 }
 
 -(BOOL)shouldAutorotate {
