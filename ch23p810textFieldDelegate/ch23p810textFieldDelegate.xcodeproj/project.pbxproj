@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C929ED671813105300B3C4AE /* abbreviations.txt in Resources */ = {isa = PBXBuildFile; fileRef = C929ED661813105300B3C4AE /* abbreviations.txt */; };
 		C9F3DE2B1812D0DF001483A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3DE2A1812D0DF001483A1 /* Foundation.framework */; };
 		C9F3DE2D1812D0DF001483A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3DE2C1812D0DF001483A1 /* CoreGraphics.framework */; };
 		C9F3DE2F1812D0DF001483A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3DE2E1812D0DF001483A1 /* UIKit.framework */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C929ED661813105300B3C4AE /* abbreviations.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = abbreviations.txt; sourceTree = "<group>"; };
 		C9F3DE271812D0DF001483A1 /* ch23p810textFieldDelegate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch23p810textFieldDelegate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9F3DE2A1812D0DF001483A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9F3DE2C1812D0DF001483A1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -91,6 +93,7 @@
 				C9F3DE401812D0DF001483A1 /* ViewController.m */,
 				C9F3DE5F1812DAEA001483A1 /* MyTextField.h */,
 				C9F3DE601812DAEA001483A1 /* MyTextField.m */,
+				C929ED661813105300B3C4AE /* abbreviations.txt */,
 				C9F3DE421812D0DF001483A1 /* Images.xcassets */,
 				C9F3DE311812D0DF001483A1 /* Supporting Files */,
 			);
@@ -160,6 +163,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C929ED671813105300B3C4AE /* abbreviations.txt in Resources */,
 				C9F3DE431812D0DF001483A1 /* Images.xcassets in Resources */,
 				C9F3DE351812D0DF001483A1 /* InfoPlist.strings in Resources */,
 				C9F3DE3E1812D0DF001483A1 /* Main.storyboard in Resources */,
@@ -319,6 +323,7 @@
 				C9F3DE5B1812D0DF001483A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
