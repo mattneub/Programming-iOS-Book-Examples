@@ -19,14 +19,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C929ED711813710C00B3C4AE /* ch23p811selfSizingTextField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch23p811selfSizingTextField.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C929ED711813710C00B3C4AE /* ch23p811selfSizingTextView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch23p811selfSizingTextView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C929ED741813710C00B3C4AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C929ED761813710C00B3C4AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C929ED781813710C00B3C4AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C929ED7C1813710C00B3C4AE /* ch23p811selfSizingTextField-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch23p811selfSizingTextField-Info.plist"; sourceTree = "<group>"; };
+		C929ED7C1813710C00B3C4AE /* ch23p811selfSizingTextView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch23p811selfSizingTextView-Info.plist"; sourceTree = "<group>"; };
 		C929ED7E1813710C00B3C4AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C929ED801813710C00B3C4AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C929ED821813710C00B3C4AE /* ch23p811selfSizingTextField-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch23p811selfSizingTextField-Prefix.pch"; sourceTree = "<group>"; };
+		C929ED821813710C00B3C4AE /* ch23p811selfSizingTextView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch23p811selfSizingTextView-Prefix.pch"; sourceTree = "<group>"; };
 		C929ED831813710C00B3C4AE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C929ED841813710C00B3C4AE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C929ED871813710C00B3C4AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		C929ED681813710C00B3C4AE = {
 			isa = PBXGroup;
 			children = (
-				C929ED7A1813710C00B3C4AE /* ch23p811selfSizingTextField */,
+				C929ED7A1813710C00B3C4AE /* ch23p811selfSizingTextView */,
 				C929ED731813710C00B3C4AE /* Frameworks */,
 				C929ED721813710C00B3C4AE /* Products */,
 			);
@@ -62,7 +62,7 @@
 		C929ED721813710C00B3C4AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C929ED711813710C00B3C4AE /* ch23p811selfSizingTextField.app */,
+				C929ED711813710C00B3C4AE /* ch23p811selfSizingTextView.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,7 +78,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C929ED7A1813710C00B3C4AE /* ch23p811selfSizingTextField */ = {
+		C929ED7A1813710C00B3C4AE /* ch23p811selfSizingTextView */ = {
 			isa = PBXGroup;
 			children = (
 				C929ED831813710C00B3C4AE /* AppDelegate.h */,
@@ -89,16 +89,17 @@
 				C929ED8C1813710C00B3C4AE /* Images.xcassets */,
 				C929ED7B1813710C00B3C4AE /* Supporting Files */,
 			);
+			name = ch23p811selfSizingTextView;
 			path = ch23p811selfSizingTextField;
 			sourceTree = "<group>";
 		};
 		C929ED7B1813710C00B3C4AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C929ED7C1813710C00B3C4AE /* ch23p811selfSizingTextField-Info.plist */,
+				C929ED7C1813710C00B3C4AE /* ch23p811selfSizingTextView-Info.plist */,
 				C929ED7D1813710C00B3C4AE /* InfoPlist.strings */,
 				C929ED801813710C00B3C4AE /* main.m */,
-				C929ED821813710C00B3C4AE /* ch23p811selfSizingTextField-Prefix.pch */,
+				C929ED821813710C00B3C4AE /* ch23p811selfSizingTextView-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -106,9 +107,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C929ED701813710C00B3C4AE /* ch23p811selfSizingTextField */ = {
+		C929ED701813710C00B3C4AE /* ch23p811selfSizingTextView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C929EDA31813710C00B3C4AE /* Build configuration list for PBXNativeTarget "ch23p811selfSizingTextField" */;
+			buildConfigurationList = C929EDA31813710C00B3C4AE /* Build configuration list for PBXNativeTarget "ch23p811selfSizingTextView" */;
 			buildPhases = (
 				C929ED6D1813710C00B3C4AE /* Sources */,
 				C929ED6E1813710C00B3C4AE /* Frameworks */,
@@ -118,9 +119,9 @@
 			);
 			dependencies = (
 			);
-			name = ch23p811selfSizingTextField;
+			name = ch23p811selfSizingTextView;
 			productName = ch23p811selfSizingTextField;
-			productReference = C929ED711813710C00B3C4AE /* ch23p811selfSizingTextField.app */;
+			productReference = C929ED711813710C00B3C4AE /* ch23p811selfSizingTextView.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -132,7 +133,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
-			buildConfigurationList = C929ED6C1813710C00B3C4AE /* Build configuration list for PBXProject "ch23p811selfSizingTextField" */;
+			buildConfigurationList = C929ED6C1813710C00B3C4AE /* Build configuration list for PBXProject "ch23p811selfSizingTextView" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -145,7 +146,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C929ED701813710C00B3C4AE /* ch23p811selfSizingTextField */,
+				C929ED701813710C00B3C4AE /* ch23p811selfSizingTextView */,
 			);
 		};
 /* End PBXProject section */
@@ -274,9 +275,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch23p811selfSizingTextField/ch23p811selfSizingTextField-Prefix.pch";
-				INFOPLIST_FILE = "ch23p811selfSizingTextField/ch23p811selfSizingTextField-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "ch23p811selfSizingTextField/ch23p811selfSizingTextView-Prefix.pch";
+				INFOPLIST_FILE = "ch23p811selfSizingTextField/ch23p811selfSizingTextView-Info.plist";
+				PRODUCT_NAME = ch23p811selfSizingTextView;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -287,9 +288,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch23p811selfSizingTextField/ch23p811selfSizingTextField-Prefix.pch";
-				INFOPLIST_FILE = "ch23p811selfSizingTextField/ch23p811selfSizingTextField-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "ch23p811selfSizingTextField/ch23p811selfSizingTextView-Prefix.pch";
+				INFOPLIST_FILE = "ch23p811selfSizingTextField/ch23p811selfSizingTextView-Info.plist";
+				PRODUCT_NAME = ch23p811selfSizingTextView;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -297,7 +298,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C929ED6C1813710C00B3C4AE /* Build configuration list for PBXProject "ch23p811selfSizingTextField" */ = {
+		C929ED6C1813710C00B3C4AE /* Build configuration list for PBXProject "ch23p811selfSizingTextView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C929EDA11813710C00B3C4AE /* Debug */,
@@ -306,13 +307,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C929EDA31813710C00B3C4AE /* Build configuration list for PBXNativeTarget "ch23p811selfSizingTextField" */ = {
+		C929EDA31813710C00B3C4AE /* Build configuration list for PBXNativeTarget "ch23p811selfSizingTextView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C929EDA41813710C00B3C4AE /* Debug */,
 				C929EDA51813710C00B3C4AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

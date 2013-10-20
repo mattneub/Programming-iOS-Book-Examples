@@ -21,9 +21,6 @@
     [[NSMutableAttributedString alloc] initWithString:s
                                            attributes:
      @{NSFontAttributeName:[UIFont fontWithName:@"GillSans" size:20]}];
-    [mas addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:[s rangeOfString:@"army"]];
-    
-    [mas addAttribute:NSLinkAttributeName value:[NSURL URLWithString:@"http://www.tidbits.com"] range:[s rangeOfString:@"army"]];
     
     NSMutableParagraphStyle* para = [NSMutableParagraphStyle new];
     para.alignment = NSTextAlignmentLeft;
