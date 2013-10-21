@@ -45,46 +45,56 @@
      @{NSFontAttributeName:[UIFont fontWithName:@"GillSans" size:14]}];
     
     NSMutableParagraphStyle* para = [NSMutableParagraphStyle new];
-    para.alignment = NSTextAlignmentLeft;
-    para.lineBreakMode = NSLineBreakByWordWrapping;
     para.hyphenationFactor = 1;
     [mas addAttribute:NSParagraphStyleAttributeName value:para range:NSMakeRange(0,1)];
     
 #define which 2
 #if which == 1
     
-    [self.tv.layoutManager removeTextContainerAtIndex:0];
-    [self.tv2.layoutManager removeTextContainerAtIndex:0];
+    CGRect r = self.tv.frame;
+    CGRect r2 = self.tv2.frame;
     
-    NSTextStorage* ts = [[NSTextStorage alloc] initWithAttributedString:mas];
-    NSLayoutManager* lm = [NSLayoutManager new];
-    [ts addLayoutManager:lm];
-    [lm addTextContainer:self.tv.textContainer];
-    [lm addTextContainer:self.tv2.textContainer];
+    NSTextStorage* ts1 = [[NSTextStorage alloc] initWithAttributedString:mas];
+    NSLayoutManager* lm1 = [NSLayoutManager new];
+    [ts1 addLayoutManager:lm1];
+    NSTextContainer* tc1 = [[NSTextContainer alloc] initWithSize:r.size];
+    [lm1 addTextContainer:tc1];
+    UITextView* tv = [[UITextView alloc] initWithFrame:r textContainer:tc1];
+    tv.scrollEnabled = NO;
+    
+    NSTextContainer* tc2 = [[NSTextContainer alloc] initWithSize:r2.size];
+    [lm1 addTextContainer:tc2];
+    UITextView* tv2 = [[UITextView alloc] initWithFrame:r2 textContainer:tc2];
+    tv2.scrollEnabled = NO;
+    
+    [self.tv removeFromSuperview];
+    [self.tv2 removeFromSuperview];
+    tv.backgroundColor = [UIColor yellowColor];
+    tv2.backgroundColor = [UIColor yellowColor];
+    [self.view addSubview:tv];
+    [self.view addSubview:tv2];
+    self.tv = tv;
+    self.tv2 = tv2;
 
-    self.ts = ts;
-    self.lm = lm;
     
 #elif which == 2
     
-    NSTextStorage* ts = [[NSTextStorage alloc] initWithAttributedString:mas];
-    NSLayoutManager* lm1 = [NSLayoutManager new];
-    [ts addLayoutManager:lm1];
-    NSLayoutManager* lm2 = [NSLayoutManager new];
-    [ts addLayoutManager:lm2];
-    CGSize sz1 = self.tv.frame.size;
-    CGSize sz2 = self.tv2.frame.size;
+    CGRect r = self.tv.frame;
+    CGRect r2 = self.tv2.frame;
     
-    NSTextContainer* tc1 = [[NSTextContainer alloc] initWithSize:sz1];
-    NSTextContainer* tc2 = [[NSTextContainer alloc] initWithSize:sz2];
+    NSTextStorage* ts1 = [[NSTextStorage alloc] initWithAttributedString:mas];
+    NSLayoutManager* lm1 = [NSLayoutManager new];
+    [ts1 addLayoutManager:lm1];
+    NSLayoutManager* lm2 = [NSLayoutManager new];
+    [ts1 addLayoutManager:lm2];
+    
+    NSTextContainer* tc1 = [[NSTextContainer alloc] initWithSize:r.size];
+    NSTextContainer* tc2 = [[NSTextContainer alloc] initWithSize:r2.size];
     [lm1 addTextContainer:tc1];
     [lm2 addTextContainer:tc2];
     
-    UITextView* tv = [[UITextView alloc] initWithFrame:self.tv.frame textContainer:tc1];
-    tv.backgroundColor = [UIColor yellowColor];
-
-    UITextView* tv2 = [[UITextView alloc] initWithFrame:self.tv2.frame textContainer:tc2];
-    tv2.backgroundColor = [UIColor yellowColor];
+    UITextView* tv = [[UITextView alloc] initWithFrame:r textContainer:tc1];
+    UITextView* tv2 = [[UITextView alloc] initWithFrame:r2 textContainer:tc2];
     
     [self.tv removeFromSuperview];
     [self.tv2 removeFromSuperview];
@@ -92,6 +102,10 @@
     [self.view addSubview: tv2];
     self.tv = tv;
     self.tv2 = tv2;
+    tv.backgroundColor = [UIColor yellowColor];
+    tv2.backgroundColor = [UIColor yellowColor];
+
+
 
 #endif
     
