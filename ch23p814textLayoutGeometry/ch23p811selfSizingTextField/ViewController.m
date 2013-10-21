@@ -1,6 +1,7 @@
 
 
 #import "ViewController.h"
+#import "MyLayoutManager.h"
 
 @interface ViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *tv;
@@ -47,9 +48,35 @@
     para.lineBreakMode = NSLineBreakByWordWrapping;
     [mas addAttribute:NSParagraphStyleAttributeName value:para range:NSMakeRange(0,1)];
 
-    self.tv.attributedText = mas;
+    CGRect r = self.tv.frame;
+    NSLayoutManager* lm = [MyLayoutManager new];
+    NSTextStorage* ts = [NSTextStorage new];
+    [ts addLayoutManager:lm];
+    NSTextContainer* tc =
+    [[NSTextContainer alloc]
+     initWithSize:CGSizeMake(r.size.width, r.size.height)];
+    [lm addTextContainer:tc];
+    UITextView* tv = [[UITextView alloc] initWithFrame:r textContainer:tc];
     
+    [self.tv removeFromSuperview];
+    [self.view addSubview:tv];
+    self.tv = tv;
+    
+    self.tv.attributedText = mas;
+    self.tv.scrollEnabled = YES;
+    self.tv.backgroundColor = [UIColor yellowColor];
     self.tv.textContainerInset = UIEdgeInsetsMake(20,20,20,20);
+    self.tv.selectable = NO;
+    self.tv.editable = NO;
+    
+    self.tv.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(10)-[tv]-(10)-|" options:0 metrics:nil views:@{@"tv":self.tv}]];
+    [self.view addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:[top][tv]-(10)-[bot]" options:0 metrics:nil views:@{@"tv":self.tv, @"top":self.topLayoutGuide, @"bot":self.bottomLayoutGuide}]];
+                                                                                                      
+                                                                                                      
+                                                                                
 }
 
 
@@ -80,6 +107,11 @@
     NSString* tag = [t tagAtIndex:ix scheme:NSLinguisticTagSchemeTokenType tokenRange:&r sentenceRange:nil];
     if ([tag isEqualToString: NSLinguisticTagWord])
         NSLog(@"%@", [self.tv.text substringWithRange:r]);
+    
+    MyLayoutManager* lm = (MyLayoutManager*)self.tv.layoutManager;
+    lm.wordRange = r;
+    [lm invalidateDisplayForCharacterRange:r];
+    
 }
 
 

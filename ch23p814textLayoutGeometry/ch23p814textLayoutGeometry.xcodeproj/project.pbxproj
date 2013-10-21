@@ -16,6 +16,7 @@
 		C929ED881813710C00B3C4AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C929ED861813710C00B3C4AE /* Main.storyboard */; };
 		C929ED8B1813710C00B3C4AE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C929ED8A1813710C00B3C4AE /* ViewController.m */; };
 		C929ED8D1813710C00B3C4AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C929ED8C1813710C00B3C4AE /* Images.xcassets */; };
+		C9E9DCEC1815AA8F001DA2BD /* MyLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E9DCEB1815AA8F001DA2BD /* MyLayoutManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		C929ED8A1813710C00B3C4AE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C929ED8C1813710C00B3C4AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C929ED931813710C00B3C4AE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C9E9DCEA1815AA8F001DA2BD /* MyLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLayoutManager.h; sourceTree = "<group>"; };
+		C9E9DCEB1815AA8F001DA2BD /* MyLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLayoutManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				C929ED861813710C00B3C4AE /* Main.storyboard */,
 				C929ED891813710C00B3C4AE /* ViewController.h */,
 				C929ED8A1813710C00B3C4AE /* ViewController.m */,
+				C9E9DCEA1815AA8F001DA2BD /* MyLayoutManager.h */,
+				C9E9DCEB1815AA8F001DA2BD /* MyLayoutManager.m */,
 				C929ED8C1813710C00B3C4AE /* Images.xcassets */,
 				C929ED7B1813710C00B3C4AE /* Supporting Files */,
 			);
@@ -172,6 +177,7 @@
 				C929ED8B1813710C00B3C4AE /* ViewController.m in Sources */,
 				C929ED851813710C00B3C4AE /* AppDelegate.m in Sources */,
 				C929ED811813710C00B3C4AE /* main.m in Sources */,
+				C9E9DCEC1815AA8F001DA2BD /* MyLayoutManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
