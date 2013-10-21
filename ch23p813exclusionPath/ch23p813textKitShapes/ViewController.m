@@ -42,36 +42,32 @@
     NSMutableAttributedString* mas =
     [[NSMutableAttributedString alloc] initWithString:s
                                            attributes:
-     @{NSFontAttributeName:[UIFont fontWithName:@"GillSans" size:10]}];
+     @{NSFontAttributeName:[UIFont fontWithName:@"GillSans" size:14]}];
     
     NSMutableParagraphStyle* para = [NSMutableParagraphStyle new];
-    para.alignment = NSTextAlignmentLeft;
-    para.lineBreakMode = NSLineBreakByWordWrapping;
     para.hyphenationFactor = 1;
     [mas addAttribute:NSParagraphStyleAttributeName value:para range:NSMakeRange(0,1)];
     
-    
     self.tv.attributedText = mas;
     
-    CGRect r = self.tv.bounds;
-    r = CGRectInset(r,20,20);
+    self.tv.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 0);
+    self.tv.scrollEnabled = NO;
     
+}
+
+-(void)viewDidLayoutSubviews {
+    
+
+    CGSize sz = self.tv.textContainer.size;
     UIBezierPath* p = [UIBezierPath new];
-    [p moveToPoint:CGPointMake(r.size.width/4.0,0)];
-    [p addLineToPoint:CGPointMake(r.size.width,0)];
-    [p addLineToPoint:CGPointMake(r.size.width,r.size.height)];
-    [p addLineToPoint:CGPointMake(r.size.width/4.0,r.size.height)];
-    [p addLineToPoint:CGPointMake(r.size.width,r.size.height/2.0)];
+    [p moveToPoint:CGPointMake(sz.width/4.0,0)];
+    [p addLineToPoint:CGPointMake(sz.width,0)];
+    [p addLineToPoint:CGPointMake(sz.width,sz.height)];
+    [p addLineToPoint:CGPointMake(sz.width/4.0,sz.height)];
+    [p addLineToPoint:CGPointMake(sz.width,sz.height/2.0)];
     [p closePath];
-
-    self.tv.textContainer.size = r.size;
-    self.tv.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 20);
     self.tv.textContainer.exclusionPaths = @[p];
-    self.tv.layoutManager.allowsNonContiguousLayout = YES;
-    
-    
 
-    
 }
 
 
