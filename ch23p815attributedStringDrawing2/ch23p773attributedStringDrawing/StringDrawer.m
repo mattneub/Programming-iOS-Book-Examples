@@ -29,7 +29,7 @@
     [lm addTextContainer:tc];
     tc.lineBreakMode = NSLineBreakByTruncatingTail;
     tc.lineFragmentPadding = 0;
-    NSRange r = [lm glyphRangeForCharacterRange:NSMakeRange(0,ts.string.length) actualCharacterRange:nil];
+    NSRange r = [lm glyphRangeForTextContainer:tc];
     [lm drawBackgroundForGlyphRange:r atPoint:CGPointMake(0,2)];
     [lm drawGlyphsForGlyphRange:r atPoint:CGPointMake(0,2)];
     
