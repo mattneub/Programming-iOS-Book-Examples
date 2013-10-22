@@ -15,11 +15,16 @@
     range = NSIntersectionRange(glyphsToShow, range);
     if (!range.length)
         return;
-        
-    CGRect r = [self boundingRectForGlyphRange:range inTextContainer:self.textContainers[0]];
+    NSTextContainer* tc = [self textContainerForGlyphAtIndex:range.location effectiveRange:nil];
+    CGRect r = [self boundingRectForGlyphRange:range inTextContainer:tc];
     r.origin.x += origin.x;
     r.origin.y += origin.y;
-    CGContextStrokeRect(UIGraphicsGetCurrentContext(), r);
+    CGContextRef c = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(c);
+    CGContextSetStrokeColorWithColor(c, [UIColor blackColor].CGColor);
+    CGContextSetLineWidth(c, 1.0);
+    CGContextStrokeRect(c, r);
+    CGContextRestoreGState(c);
 }
 
 @end
