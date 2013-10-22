@@ -18,6 +18,7 @@
 		C9C3DF291816B9D700BB541D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C3DF281816B9D700BB541D /* Images.xcassets */; };
 		C9C3DF471816BA2700BB541D /* StyledText.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C3DF461816BA2700BB541D /* StyledText.m */; };
 		C9C3DF491816BAD600BB541D /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9C3DF481816BAD600BB541D /* states.txt */; };
+		C9C565921816CBF9003E81E7 /* MyLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C565911816CBF9003E81E7 /* MyLayoutManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		C9C3DF451816BA2700BB541D /* StyledText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledText.h; sourceTree = "<group>"; };
 		C9C3DF461816BA2700BB541D /* StyledText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledText.m; sourceTree = "<group>"; };
 		C9C3DF481816BAD600BB541D /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
+		C9C565901816CBF9003E81E7 /* MyLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLayoutManager.h; sourceTree = "<group>"; };
+		C9C565911816CBF9003E81E7 /* MyLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLayoutManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 				C9C3DF261816B9D700BB541D /* ViewController.m */,
 				C9C3DF451816BA2700BB541D /* StyledText.h */,
 				C9C3DF461816BA2700BB541D /* StyledText.m */,
+				C9C565901816CBF9003E81E7 /* MyLayoutManager.h */,
+				C9C565911816CBF9003E81E7 /* MyLayoutManager.m */,
 				C9C3DF481816BAD600BB541D /* states.txt */,
 				C9C3DF281816B9D700BB541D /* Images.xcassets */,
 				C9C3DF171816B9D700BB541D /* Supporting Files */,
@@ -178,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9C3DF271816B9D700BB541D /* ViewController.m in Sources */,
+				C9C565921816CBF9003E81E7 /* MyLayoutManager.m in Sources */,
 				C9C3DF471816BA2700BB541D /* StyledText.m in Sources */,
 				C9C3DF211816B9D700BB541D /* AppDelegate.m in Sources */,
 				C9C3DF1D1816B9D700BB541D /* main.m in Sources */,
@@ -325,6 +331,7 @@
 				C9C3DF411816B9D800BB541D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
