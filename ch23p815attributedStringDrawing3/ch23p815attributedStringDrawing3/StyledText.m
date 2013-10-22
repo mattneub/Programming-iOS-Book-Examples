@@ -96,7 +96,7 @@
     if (ix == glyphRange.location + glyphRange.length - 1 && f == 1.0)
         return;
     // eliminate control character glyphs at end
-    while (NSGlyphPropertyControlCharacter && [self.lm propertyForGlyphAtIndex:glyphRange.location + glyphRange.length - 1])
+    while (NSGlyphPropertyControlCharacter & [self.lm propertyForGlyphAtIndex:glyphRange.location + glyphRange.length - 1])
         glyphRange.length -= 1;
     NSRange characterRange = [self.lm characterRangeForGlyphRange:glyphRange actualGlyphRange:nil];
     NSString* s = [self.text.string substringWithRange:characterRange]; // state name
