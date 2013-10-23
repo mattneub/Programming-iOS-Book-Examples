@@ -9,8 +9,6 @@
 
 @implementation ViewController
 
-#define which 2
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
