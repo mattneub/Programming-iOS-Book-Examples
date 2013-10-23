@@ -4,16 +4,33 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *lab;
 @property (weak, nonatomic) IBOutlet UITextView *tv;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *labelHeight;
 
 @end
 
 @implementation ViewController
 
-#define which 0 // try 1, 2, 3, 4, 5
+#define which 0 // try 0, 1, 2, 3, 4, 5
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.tv.textContainer.lineFragmentPadding = 0; // make it just like the label
+    // to show that under identical conditions they do draw identically
+    
+    self.tv.scrollEnabled = NO; // for some reason, setting in the nib doesn't always work
+    
+    // uncomment this to see another interesting workaround for the UILabel display issue
+    // let the label resize its own height
+    
+    /*
+    
+    [self.lab removeConstraint:self.labelHeight];
+    [self.lab addConstraint:
+     [NSLayoutConstraint constraintWithItem:self.lab attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:0 multiplier:1 constant:20]];
+     
+     */
     
 #if which == 0 || which == 1 || which == 4 || which == 5
 
