@@ -8,8 +8,7 @@
 @end
 
 @implementation WebViewController {
-    BOOL _didDecode;
-    BOOL _canNavigate;
+    BOOL _canNavigate; // distinguish the two examples, local and remote content
 }
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -35,15 +34,13 @@
 -(void)decodeRestorableStateWithCoder:(NSCoder *)coder {
     NSLog(@"%@", @"decode");
     [super decodeRestorableStateWithCoder:coder];
-    self.oldOffset = [coder decodeObjectForKey:@"oldOffset"];
-    self->_didDecode = YES;
+    self.oldOffset = [coder decodeObjectForKey:@"oldOffset"]; // for local example
 }
 
 -(void)encodeRestorableStateWithCoder:(NSCoder *)coder {
     NSLog(@"%@", @"encode");
     [super encodeRestorableStateWithCoder:coder];
-    // for our *local* page example, save offset for manual restore
-    if (!self->_canNavigate) {
+    if (!self->_canNavigate) { // local example; we have to manage offset ourselves
         NSLog(@"%@", @"saving offset");
         [coder encodeObject:
          [NSValue valueWithCGPoint:
@@ -51,6 +48,14 @@
                      forKey:@"oldOffset"];
     }
 }
+
+-(void)applicationFinishedRestoringState {
+    UIWebView* wv = (id)self.view;
+    if (wv.request) // remote example
+        [wv reload];
+}
+
+
 
 - (void)dealloc
 {
@@ -108,10 +113,7 @@
 #if LOADREQ == 1
     
     self ->_canNavigate = YES;
-    if (self->_didDecode) {
-        if (wv.request)
-            [wv reload]; // thanks to stack overflow user "Pellet"
-        NSLog(@"%@", @"I'm outta here");
+    if (wv.request) { // let applicationFinished handle reloading
         return;
     }
     NSURL* url = [NSURL URLWithString:@"http://www.apeth.com/RubyFrontierDocs/default.html"];
@@ -161,7 +163,6 @@
         wv.scrollView.contentOffset = [self.oldOffset CGPointValue];
     }
     self.oldOffset = nil;
-    self->_didDecode = NO;
 }
 
 - (void)webView:(UIWebView *)wv didFailLoadWithError:(NSError *)error {
