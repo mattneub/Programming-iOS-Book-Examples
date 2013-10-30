@@ -1,7 +1,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *sb;
 
 @end
@@ -93,6 +93,10 @@
     [self.sb setScopeBarButtonTitleTextAttributes:atts forState:UIControlStateNormal];
     [self.sb setScopeBarButtonTitleTextAttributes:atts forState:UIControlStateSelected];
 
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
 }
 
 
