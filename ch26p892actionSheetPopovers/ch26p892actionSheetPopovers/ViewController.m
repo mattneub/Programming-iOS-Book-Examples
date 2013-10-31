@@ -22,9 +22,10 @@
 
 - (IBAction)doButton:(id)sender {
     UIActionSheet* act = [[UIActionSheet alloc]
-                          initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel"
+                          initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" // not shown
                           destructiveButtonTitle:nil otherButtonTitles:@"Hey", @"Ho", @"Hey Nonny No", nil];
     [act showFromBarButtonItem:sender animated:YES];
+    //[act showInView:self.view];
 }
 
 // without this stuff, the toolbar buttons would be active while the action sheet popover is up
@@ -39,7 +40,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet
 didDismissWithButtonIndex:(NSInteger)buttonIndex {
     [self.toolbar setUserInteractionEnabled:YES];
-    NSLog(@"pressed %i", buttonIndex);
+    NSLog(@"pressed %i %i", buttonIndex, actionSheet.cancelButtonIndex);
 }
 
 // ========================
@@ -55,6 +56,10 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex {
 -(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
     NSLog(@"%@", @"popover dismissed");
     APPDEL.currentPop = nil;
+}
+
+-(void)actionSheetCancel:(UIActionSheet *)actionSheet {
+    NSLog(@"%@", @"here"); // never called
 }
 
 
