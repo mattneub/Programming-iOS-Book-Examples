@@ -20,6 +20,7 @@
      object:nil queue:nil
      usingBlock:^(NSNotification *note) {
          NSLog(@"change %@", note.userInfo);
+         NSLog(@"current route %@", [[AVAudioSession sharedInstance] currentRoute]);
      }];
     [[NSNotificationCenter defaultCenter]
      addObserverForName:AVAudioSessionInterruptionNotification
