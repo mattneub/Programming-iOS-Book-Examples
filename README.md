@@ -7,7 +7,7 @@ The obvious place to split the volumes was after Chapter 13 (end of Part III). T
 
 Of course, in the second book, the chapter numbering now starts over at 1 (old Chapter 14 becomes new Chapter 1, and so on). I have not yet renamed the folders containing the examples, however. Thus *they still have the old chapter numbers*, as if the two books were still one book. I'm used to the old numbering, and old habits are hard to break, so cut me some slack. I'll get around to it eventually...
 
-At this moment, my revision has reached old Chapter 23, so the examples currently end there. As I revise more, I'll add more revised examples. Stay tuned!
+At this moment, my revision has reached old Chapter 27, so the examples currently end there. As I revise more, I'll add more revised examples. Stay tuned!
 
 If you find these examples helpful and you haven't purchased the books, please consider doing so.
 
