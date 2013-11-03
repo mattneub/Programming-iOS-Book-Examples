@@ -14,6 +14,11 @@
     BOOL _didInitialLayout;
 }
 
+-(void)willFullscreen: (id) n {
+    // NSLog(@"%@", @"here");
+    // self.mpc.fullscreen = NO; // failed experiment; I don't see how to prevent fullscreen mode
+}
+
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -53,27 +58,35 @@
                name:MPMoviePlayerPlaybackStateDidChangeNotification
              object:self.mpc];
     
-#define which 1 // try 1 or 2
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(willFullscreen:)
+                                                 name:MPMoviePlayerWillEnterFullscreenNotification
+                                               object:self.mpc];
+
+    
+#define which 2 // try 1 or 2
     
 #if which == 1
     
     __block id observer = [[NSNotificationCenter defaultCenter] addObserverForName:MPMoviePlayerReadyForDisplayDidChangeNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
-        [[NSNotificationCenter defaultCenter] removeObserver:observer];
-        [self.view addSubview:self.mpc.view];
+        if (self.mpc.readyForDisplay) {
+            [[NSNotificationCenter defaultCenter] removeObserver:observer];
+            [self.view addSubview:self.mpc.view];
+        }
     }];
 
 #elif which == 2
     
     __block id observer = [[NSNotificationCenter defaultCenter] addObserverForName:MPMovieNaturalSizeAvailableNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
         [[NSNotificationCenter defaultCenter] removeObserver:observer];
-        [self finishSetup: nil];
+        [self finishSetup];
     }];
 
 #endif
     
 }
 
-- (void) finishSetup: (id) n {
+- (void) finishSetup {
     NSLog(@"%@", @"here2");
     CGRect f = self.mpc.view.bounds;
     f.size = self.mpc.naturalSize;
@@ -89,7 +102,7 @@
 
 // just testing, pay no attention to this
 - (void) stateChanged: (id) n {
-    NSLog(@"%@ %i", @"state changed", [[n object] playbackState]);
+    NSLog(@"%@ %d", @"state changed", (int)[[n object] playbackState]);
     return;
     NSLog(@"%@", [[AVAudioSession sharedInstance] category]);
     if (self.mpc.playbackState == MPMoviePlaybackStatePlaying)
