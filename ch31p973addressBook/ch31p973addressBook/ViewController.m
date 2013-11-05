@@ -6,11 +6,11 @@
 
 @interface ViewController () <ABPeoplePickerNavigationControllerDelegate, ABNewPersonViewControllerDelegate, ABUnknownPersonViewControllerDelegate, ABPersonViewControllerDelegate>
 
+@property (nonatomic, strong) id adbk;
 @end
 
 @implementation ViewController {
     BOOL _authDone;
-    BOOL _authGranted;
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -23,13 +23,9 @@
             case kABAuthorizationStatusDenied:
             case kABAuthorizationStatusRestricted: {
                 NSLog(@"%@", @"no access");
-                self->_authGranted = NO;
                 break;
             }
-            case kABAuthorizationStatusAuthorized: {
-                self->_authGranted = YES;
-                break;
-            }
+            case kABAuthorizationStatusAuthorized:
             case kABAuthorizationStatusNotDetermined: {
                 CFErrorRef err = nil;
                 ABAddressBookRef adbk = ABAddressBookCreateWithOptions(nil, &err);
@@ -41,11 +37,12 @@
                 ABAddressBookRequestAccessWithCompletion
                 (adbk, ^(bool granted, CFErrorRef error) {
                     ViewController* sself = wself;
+                    if (!sself)
+                        return;
                     if (granted)
-                        sself->_authGranted = YES;
+                        sself.adbk = CFBridgingRelease(adbk);
                     else
                         NSLog(@"error: %@", error);
-                    CFRelease(adbk);
                 });
             }
         }
@@ -53,16 +50,10 @@
 }
 
 - (IBAction)doFindMoi:(id)sender {
-    if (!self->_authDone || !self->_authGranted) {
-        NSLog(@"%@", @"No access");
+    ABAddressBookRef adbk = (__bridge ABAddressBookRef)self.adbk;
+    if (!adbk)
         return;
-    }
-    CFErrorRef err = nil;
-    ABAddressBookRef adbk = ABAddressBookCreateWithOptions(nil, &err);
-    if (nil == adbk) {
-        NSLog(@"error: %@", err);
-        return;
-    }
+
     ABRecordRef moi = nil;
     CFArrayRef matts = ABAddressBookCopyPeopleWithName(adbk, (CFStringRef)@"Matt");
     // might be multiple matts, but let's find the one with last name Neuburg
@@ -76,7 +67,6 @@
     if (nil == moi) {
         NSLog(@"Couldn't find myself");
         if (matts) CFRelease(matts);
-        if (adbk) CFRelease(adbk);
         return;
     }
     // parse my emails
@@ -90,20 +80,12 @@
     }
     if (emails) CFRelease(emails);
     if (matts) CFRelease(matts);
-    if (adbk) CFRelease(adbk);
 }
 
 - (IBAction) doCreateSnidely: (id) sender {
-    if (!self->_authDone || !self->_authGranted) {
-        NSLog(@"%@", @"No access");
+    ABAddressBookRef adbk = (__bridge ABAddressBookRef)self.adbk;
+    if (!adbk)
         return;
-    }
-    CFErrorRef err = nil;
-    ABAddressBookRef adbk = ABAddressBookCreateWithOptions(nil, &err);
-    if (nil == adbk) {
-        NSLog(@"error: %@", err);
-        return;
-    }
     
     ABRecordRef snidely = ABPersonCreate();
     ABRecordSetValue(snidely, kABPersonFirstNameProperty, @"Snidely", nil);
@@ -115,7 +97,6 @@
     ABAddressBookSave(adbk, nil);
     if (addr) CFRelease(addr);
     if (snidely) CFRelease(snidely);
-    if (adbk) CFRelease(adbk);
 
 }
 
@@ -153,19 +134,14 @@
 - (IBAction)doViewPerson:(id)sender {
     
     
-    if (!self->_authDone || !self->_authGranted) {
-        NSLog(@"%@", @"No access");
+    ABAddressBookRef adbk = (__bridge ABAddressBookRef)self.adbk;
+    if (!adbk)
         return;
-    }
-    CFErrorRef err = nil;
-    ABAddressBookRef adbk = ABAddressBookCreateWithOptions(nil, &err);
-    if (nil == adbk) {
-        NSLog(@"error: %@", err);
-        return;
-    }
+
     CFArrayRef snides = ABAddressBookCopyPeopleWithName(adbk, (CFStringRef)@"Snidely Whiplash");
     if (CFArrayGetCount(snides) < 1) {
         NSLog(@"%@", @"No Snidely!");
+        if (snides) CFRelease(snides);
         return;
     }
     ABRecordRef snidely = CFArrayGetValueAtIndex(snides, 0);
@@ -178,7 +154,6 @@
     pvc.allowsActions = NO;
     [self.navigationController pushViewController:pvc animated:YES];
     if (snides) CFRelease(snides);
-    if (adbk) CFRelease(adbk);
     
 }
 
@@ -201,7 +176,7 @@
 -(void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person {
     if (nil != person) {
         // if we didn't have access, we wouldn't be here!
-        ABAddressBookRef adbk = ABAddressBookCreateWithOptions(nil, nil);
+        ABAddressBookRef adbk = (__bridge ABAddressBookRef)self.adbk;
         // if we do not delete the person, the person will stay in the contacts database automatically!
         ABAddressBookRemoveRecord(adbk, person, nil);
         ABAddressBookSave(adbk, nil);
@@ -209,7 +184,6 @@
         NSLog(@"I have a person named %@, but I am not saving this person to the database", name);
         // do something with new person
         if (name) CFRelease(name);
-        if (adbk) CFRelease(adbk);
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
