@@ -17,7 +17,6 @@
     [super viewDidAppear:animated];
     if (!self->_authDone) {
         self->_authDone = YES;
-        // have we a definite No?
         ABAuthorizationStatus stat = ABAddressBookGetAuthorizationStatus();
         switch (stat) {
             case kABAuthorizationStatusDenied:
@@ -33,14 +32,10 @@
                     NSLog(@"error: %@", err);
                     return;
                 }
-                __weak ViewController* wself = self;
                 ABAddressBookRequestAccessWithCompletion
                 (adbk, ^(bool granted, CFErrorRef error) {
-                    ViewController* sself = wself;
-                    if (!sself)
-                        return;
                     if (granted)
-                        sself.adbk = CFBridgingRelease(adbk);
+                        self.adbk = CFBridgingRelease(adbk);
                     else
                         NSLog(@"error: %@", error);
                 });
