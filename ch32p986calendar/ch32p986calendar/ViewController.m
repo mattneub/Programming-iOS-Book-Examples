@@ -17,14 +17,14 @@
 }
 
 /*
- WARNING: I don't know if this is a bug or not, but if your device
- uses iCloud, gmail, or similar calendar synching, you have no Calendar access
- to your local calendar, so you can't see changes to it to confirm
- that examples that use it.
+ WARNING: I don't know if this is a bug or not, but if your iPhone
+ uses iCloud, gmail, or similar calendar synching, you have no access
+ to local calendars (even if you create one).
  However, these examples use the local calendar
  because I am reluctant to risk damaging your iCloud calendar.
- So these examples won't visibly work on your device unless you turn off
+ So these examples won't work on your iPhone unless you turn off
  every form of wireless calendar synching.
+ Oddly, I think the examples *do* work on the iPad!
  */
 
 - (void)viewDidAppear:(BOOL)animated {
