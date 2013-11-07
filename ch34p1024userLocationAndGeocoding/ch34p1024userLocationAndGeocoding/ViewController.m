@@ -145,7 +145,7 @@ didUpdateUserLocation:(MKUserLocation *)userLocation {
               MKPolyline* poly = route.polyline;
               [self.map addOverlay:poly];
               for (MKRouteStep* step in route.steps) {
-                  NSLog(@"%@", step.instructions);
+                  NSLog(@"After %d metres: %@", (int)step.distance, step.instructions);
               }
           }];
      }];
