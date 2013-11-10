@@ -142,6 +142,15 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					321A1AF8182F40E900E60C71 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 321A1AF4182F40E900E60C71 /* Build configuration list for PBXProject "ch25p1046attitudeRotation" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -327,6 +336,7 @@
 				321A1B2D182F40E900E60C71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
