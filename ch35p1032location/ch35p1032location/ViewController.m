@@ -24,7 +24,8 @@
         return;
     }
     if (self.trying)
-        return; // we are already doing location updates
+        return;
+    self.trying = YES;
     CLLocationManager* locman = [CLLocationManager new];
     self.locman = locman;
     locman.delegate = self;
