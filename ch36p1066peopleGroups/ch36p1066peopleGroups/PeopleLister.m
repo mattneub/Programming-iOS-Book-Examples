@@ -92,7 +92,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView 
         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = 
-        [tableView dequeueReusableCellWithIdentifier:@"Person"];
+        [tableView dequeueReusableCellWithIdentifier:@"Person" forIndexPath:indexPath];
     UITextField* first = (UITextField*)[cell viewWithTag:1];
     UITextField* last = (UITextField*)[cell viewWithTag:2];
     Person* p = (self.people)[indexPath.row];
