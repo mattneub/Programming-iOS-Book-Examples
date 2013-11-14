@@ -27,7 +27,8 @@
     
     NSString* s = @"http://www.apeth.net/matt/images/phoenixnewest.jpg";
     NSURL* url = [NSURL URLWithString:s];
-    NSURLRequest* req = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url];
+    [NSURLProtocol setProperty:@"howdy" forKey:@"greeting" inRequest:req];
     NSURLSessionDownloadTask* task = [[self session] downloadTaskWithRequest:req];
     self.task = task;
     self.iv.image = nil;
@@ -43,6 +44,9 @@
 }
 
 -(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
+    NSURLRequest* req = downloadTask.originalRequest;
+    id greeting = [NSURLProtocol propertyForKey:@"greeting" inRequest:req];
+    NSLog(@"%@", greeting);
     self.task = nil;
     NSHTTPURLResponse* response = (NSHTTPURLResponse*)downloadTask.response;
     NSInteger stat = response.statusCode;
@@ -53,8 +57,11 @@
     UIImage* im = [UIImage imageWithData:d];
     dispatch_async(dispatch_get_main_queue(), ^{
         self.iv.image = im;
-        NSLog(@"%@", @"done");
     });
+}
+
+-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    NSLog(@"completed; error: %@", error);
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
