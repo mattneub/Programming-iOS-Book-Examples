@@ -2,11 +2,11 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <NSURLSessionDataDelegate>
-@property (nonatomic, strong) NSMutableData* data;
+@interface ViewController () <NSURLSessionDownloadDelegate>
+// @property (nonatomic, strong) NSMutableData* data;
 @property (nonatomic, weak) IBOutlet UIImageView* iv;
 @property (nonatomic, strong) NSURLSession* session;
-@property (nonatomic, strong) NSURLSessionDataTask* task;
+@property (nonatomic, strong) NSURLSessionDownloadTask* task;
 @end
 
 @implementation ViewController
@@ -14,6 +14,7 @@
 - (NSURLSession*) configureSession {
     NSURLSessionConfiguration* config =
     [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    config.allowsCellularAccess = NO;
     NSURLSession* session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     return session;
 }
@@ -27,38 +28,39 @@
     NSString* s = @"http://www.apeth.net/matt/images/phoenixnewest.jpg";
     NSURL* url = [NSURL URLWithString:s];
     NSURLRequest* req = [NSURLRequest requestWithURL:url];
-    NSURLSessionDataTask* task = [[self session] dataTaskWithRequest:req];
+    NSURLSessionDownloadTask* task = [[self session] downloadTaskWithRequest:req];
     self.task = task;
     self.iv.image = nil;
     [task resume];
 }
 
--(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
-    self.data = [NSMutableData data];
-    NSInteger status = [(NSHTTPURLResponse*)response statusCode];
-    NSLog(@"got response: %d", status);
-    completionHandler(NSURLSessionResponseAllow);
+-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
+    NSLog(@"downloaded %d%%", (int)(100.0*totalBytesWritten/totalBytesExpectedToWrite));
 }
 
--(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-    NSLog(@"%@", @"got some data");
-    [self.data appendData:data];
+-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes {
+    // unused in this example
 }
 
--(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
     self.task = nil;
-    if (error) {
-        NSLog(@"%@", error);
+    NSHTTPURLResponse* response = (NSHTTPURLResponse*)downloadTask.response;
+    NSInteger stat = response.statusCode;
+    NSLog(@"status %i", stat);
+    if (stat != 200)
         return;
-    }
-    UIImage* im = [UIImage imageWithData:self.data];
-    self.iv.image = im;
-    NSLog(@"%@", @"done!");
+    NSData* d = [NSData dataWithContentsOfURL:location];
+    UIImage* im = [UIImage imageWithData:d];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.iv.image = im;
+        NSLog(@"%@", @"done");
+    });
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.session finishTasksAndInvalidate];
+    self.session = nil;
 }
 
 -(void)dealloc {

@@ -8,11 +8,14 @@
 
 @implementation ViewController
 
+// more convincing if you run it on a device
+
 - (IBAction) doSimpleHTTP: (id) sender {
+    self.iv.image = nil;
     NSString* s = @"http://www.apeth.net/matt/images/phoenixnewest.jpg";
     NSURL* url = [NSURL URLWithString:s];
     NSURLSession* session = [NSURLSession sharedSession];
-    NSURLSessionDataTask* task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSURLSessionDownloadTask* task = [session downloadTaskWithURL:url completionHandler:^(NSURL *loc, NSURLResponse *response, NSError *error) {
         NSLog(@"%@", @"here");
         if (error) {
             NSLog(@"%@", error);
@@ -24,7 +27,8 @@
             NSLog(@"%@", @"oh well");
             return;
         }
-        UIImage* im = [UIImage imageWithData:data];
+        NSData* d = [NSData dataWithContentsOfURL:loc];
+        UIImage* im = [UIImage imageWithData:d];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.iv.image = im;
             NSLog(@"%@", @"done");
