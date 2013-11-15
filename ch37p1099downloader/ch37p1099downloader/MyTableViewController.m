@@ -32,15 +32,15 @@
     self.model = [NSMutableArray array];
     
     for (int ix = 0; ix < 15; ix++) {
-        NSMutableDictionary* d = [NSMutableDictionary dictionaryWithDictionary:@{@"text": @"Manny", @"pic": mannyurl}];
+        NSMutableDictionary* d = [NSMutableDictionary dictionaryWithDictionary:@{@"text": @"Manny", @"picurl": mannyurl}];
         [self.model addObject: d];
     }
     for (int ix = 15; ix < 30; ix++) {
-        NSMutableDictionary* d = [NSMutableDictionary dictionaryWithDictionary:@{@"text": @"Moe", @"pic": moeurl}];
+        NSMutableDictionary* d = [NSMutableDictionary dictionaryWithDictionary:@{@"text": @"Moe", @"picurl": moeurl}];
         [self.model addObject: d];
     }
     for (int ix = 30; ix < 45; ix++) {
-        NSMutableDictionary* d = [NSMutableDictionary dictionaryWithDictionary:@{@"text": @"Jack", @"pic": jackurl}];
+        NSMutableDictionary* d = [NSMutableDictionary dictionaryWithDictionary:@{@"text": @"Jack", @"picurl": jackurl}];
         [self.model addObject: d];
     }
 }
@@ -64,24 +64,39 @@
     NSMutableDictionary* d = (self.model)[indexPath.row];
     cell.textLabel.text = d[@"text"];
     // have we got a picture?
-    id pic = d[@"pic"];
-    if ([pic isKindOfClass:[UIImage class]]) {
-        cell.imageView.image = pic;
-    } else if ([pic isKindOfClass:[NSString class]]) {
+    if (d[@"im"]) {
+        cell.imageView.image = d[@"im"];
+    } else if (!d[@"task"]) {
         cell.imageView.image = nil;
-        [self.downloader download:pic completionHandler:^(NSURL* url){
+        NSURLSessionTask* task = [self.downloader download:d[@"picurl"]
+                                         completionHandler:^(NSURL* url){
+            [d removeObjectForKey: @"task"];
             if (!url)
                 return;
             NSData* data = [NSData dataWithContentsOfURL:url];
             UIImage* im = [UIImage imageWithData:data];
-            d[@"pic"] = im;
+            d[@"im"] = im;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             });
         }];
+        d[@"task"] = task;
     }
     return cell;
 }
+
+-(void)tableView:(UITableView *)tableView
+didEndDisplayingCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableDictionary* d = self.model[indexPath.row];
+    NSURLSessionTask* task = d[@"task"];
+    if (task && task.state == NSURLSessionTaskStateRunning) {
+        [task cancel];
+        NSLog(@"cancel task for row %d", indexPath.row);
+        [d removeObjectForKey: @"task"];
+    }
+}
+
 
 - (void) dealloc {
     if (self->_downloader)

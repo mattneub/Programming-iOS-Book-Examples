@@ -17,25 +17,27 @@
     return self;
 }
 
-- (void) download:(NSString*)s completionHandler:(void(^)(NSURL* url))ch {
+- (NSURLSessionTask*) download:(NSString*)s completionHandler:(void(^)(NSURL* url))ch {
     NSURL* url = [NSURL URLWithString:s];
     NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url];
-    [NSURLProtocol setProperty:ch forKey:@"completionHandler" inRequest:req];
-    NSURLSessionDownloadTask* task = [[self session] downloadTaskWithRequest:req];
+    [NSURLProtocol setProperty:ch forKey:@"ch" inRequest:req];
+    NSURLSessionDownloadTask* task = [self.session downloadTaskWithRequest:req];
     [task resume];
+    return task;
 }
 
 -(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
-    // NSLog(@"downloaded %d%%", (int)(100.0*totalBytesWritten/totalBytesExpectedToWrite));
+    NSLog(@"downloaded %d%%", (int)(100.0*totalBytesWritten/totalBytesExpectedToWrite));
 }
 
 -(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes {
     // unused in this example
+    NSLog(@"%@", @"did resume");
 }
 
 -(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
     NSURLRequest* req = downloadTask.originalRequest;
-    void(^ch)(NSURL* url) = [NSURLProtocol propertyForKey:@"completionHandler" inRequest:req];
+    void(^ch)(NSURL* url) = [NSURLProtocol propertyForKey:@"ch" inRequest:req];
     NSHTTPURLResponse* response = (NSHTTPURLResponse*)downloadTask.response;
     NSInteger stat = response.statusCode;
     NSLog(@"status %i", stat);

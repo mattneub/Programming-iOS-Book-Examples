@@ -25,8 +25,16 @@
         self.downloader = downloader;
     }
     
+    /*
+    NSURLSession* session = [self.downloader valueForKey:@"session"];
+    [session getTasksWithCompletionHandler:^(NSArray *dataTasks, NSArray *uploadTasks, NSArray *downloadTasks) {
+        NSLog(@"%@\n%@\n%@", dataTasks, uploadTasks, downloadTasks);
+    }];
+     */
+    
     self.iv.image = nil;
     NSString* s = @"http://www.apeth.net/matt/images/phoenixnewest.jpg";
+    s = @"http://www.nasa.gov/sites/default/files/styles/1600x1200_autoletterbox/public/pia17474_1.jpg?itok=4fyEwd02";
     [self.downloader download:s completionHandler:^(NSURL* url){
         if (!url)
             return;

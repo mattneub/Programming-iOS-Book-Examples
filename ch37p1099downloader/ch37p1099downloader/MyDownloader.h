@@ -6,7 +6,7 @@
 - (id) initWithConfiguration: (NSURLSessionConfiguration*) config;
 - (void) cancelAllTasks;
 
-- (void) download:(NSString*)s completionHandler:(void(^)(NSURL* url))ch;
+- (NSURLSessionTask*) download:(NSString*)s completionHandler:(void(^)(NSURL* url))ch;
 
 
 
