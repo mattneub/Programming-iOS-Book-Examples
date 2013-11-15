@@ -3,7 +3,6 @@
 #import "ViewController.h"
 
 @interface ViewController () <NSURLSessionDownloadDelegate>
-// @property (nonatomic, strong) NSMutableData* data;
 @property (nonatomic, weak) IBOutlet UIImageView* iv;
 @property (nonatomic, strong) NSURLSession* session;
 @property (nonatomic, strong) NSURLSessionDownloadTask* task;
