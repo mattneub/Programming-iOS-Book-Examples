@@ -4,14 +4,22 @@
 
 @interface MyDownloader() <NSURLSessionDownloadDelegate>
 @property (nonatomic, strong) NSURLSession* session;
+@property (nonatomic, strong) NSOperationQueue* q;
 @end
 
 @implementation MyDownloader
 
+#define which 2 // use 2 to move delegate methods onto a background thread
+
 - (id) initWithConfiguration: (NSURLSessionConfiguration*) config {
     self = [super init];
     if (self) {
+        self->_q = [NSOperationQueue new];
+#if (which == 2)
+        NSURLSession* session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:self->_q];
+#else
         NSURLSession* session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+#endif
         self->_session = session;
     }
     return self;
@@ -46,7 +54,13 @@
         url = location;
         NSLog(@"downloaded %@", req.URL.lastPathComponent);
     }
+#if (which == 2)
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        ch(url);
+    });
+#else
     ch(url);
+#endif
 }
 
 - (void) cancelAllTasks {
