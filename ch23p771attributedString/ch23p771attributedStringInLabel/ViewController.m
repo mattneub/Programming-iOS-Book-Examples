@@ -10,6 +10,8 @@
 
 @implementation ViewController
 
+// Looks like the UILabel bug demonstrated here will probably be fixed in iOS 7.1
+
 #define which 0 // try 0, 1, 2, 3, 4, 5
 
 - (void)viewDidLoad

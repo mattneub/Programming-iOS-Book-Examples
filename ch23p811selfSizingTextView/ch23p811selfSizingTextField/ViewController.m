@@ -28,14 +28,15 @@
     [mas addAttribute:NSParagraphStyleAttributeName value:para range:NSMakeRange(0,1)];
 
     self.tv.attributedText = mas;
-    [self textViewDidChange:self.tv];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self textViewDidChange:self.tv];
+    });
 }
 
 -(void)textViewDidChange:(UITextView *)textView {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [textView sizeToFit];
-        self.heightConstraint.constant = textView.contentSize.height;
-    });
+    // [textView sizeToFit]; // seems no longer needed in iOS 7.1
+    self.heightConstraint.constant = textView.contentSize.height;
 }
 
 
