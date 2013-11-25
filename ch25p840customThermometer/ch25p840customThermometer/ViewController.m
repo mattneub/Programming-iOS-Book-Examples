@@ -11,13 +11,17 @@
 
 @implementation ViewController
 
+- (IBAction) doButton: (id) sender {
+    self.prog1.progress = 0;
+    self.prog2.progress = 0;
+    self.prog3.value = 0;
+    [self.prog3 setNeedsDisplay];
+    [NSTimer scheduledTimerWithTimeInterval:0.4 target:self selector:@selector(inc:) userInfo:nil repeats:YES];
+}
 
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(inc:) userInfo:nil repeats:YES];
+-(void)viewDidLayoutSubviews {
     
     /*
-    
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(9,9), NO, 0);
     CGContextRef con = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(con, [UIColor blackColor].CGColor);
@@ -41,7 +45,6 @@
                               resizingMode:UIImageResizingModeStretch];
     self.prog2.trackImage = im;
     self.prog2.progressImage = im2;
-     
      */
     
     self.prog2.backgroundColor = [UIColor blackColor];
@@ -57,15 +60,17 @@
     CGContextStrokeEllipseInRect(con, r);
     self.prog2.progressImage =
     [UIGraphicsGetImageFromCurrentImageContext()
-     resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
+     resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)
+     resizingMode:UIImageResizingModeStretch];
     UIGraphicsEndImageContext();
+     
 
 }
 
 -(void)inc:(NSTimer*)t {
     CGFloat val = self.prog3.value;
     val += 0.1;
-    [self.prog1 setProgress:val animated:NO]; // can't prevent it!
+    [self.prog1 setProgress:val animated:YES]; // bug fixed in iOS 7.1
     [self.prog2 setProgress:val animated:YES];
     self.prog3.value = val;
     [self.prog3 setNeedsDisplay];
