@@ -5,9 +5,7 @@ Together, these two books constitute the 4th edition of my previous books, _Prog
 
 The obvious place to split the volumes was after Chapter 13 (end of Part III). Thus, the structure of the two new books is exactly the same as the structure of the previous editions, but divided in two groups: _iOS 7 Programming Fundamentals_ contains old chapters 1–13, and _Programming iOS 7_ contains old chapters 14–40.
 
-Of course, in the second book, the chapter numbering now starts over at 1 (old Chapter 14 becomes new Chapter 1, and so on). I have not yet renamed the folders containing the examples, however. Thus *they still have the old chapter numbers*, as if the two books were still one book. I'm used to the old numbering, and old habits are hard to break, so cut me some slack. I'll get around to it eventually...
-
-Also, the page numbers in the folder names are currently just placeholders, designed to keep the examples in the right order. When I rename the folders, I'll make the page numbers correspond better to the pages of the printed books. 
+Of course, in the second book, the chapter numbering now starts over at 1 (old Chapter 14 becomes new Chapter 1, and so on). Similarly, the second book starts on its own page 1. So the chapter and page numbering of the folders containing the examples has to reflect this. To keep the examples sorted in the right order, I've retitled the folders such that the examples from _iOS 7 Programming Fundamentals_ start with `bk1`, and the examples from _Programming iOS 7_ start with `bk2`.
 
 If you find these examples helpful and you haven't purchased the books, please consider doing so.
 
