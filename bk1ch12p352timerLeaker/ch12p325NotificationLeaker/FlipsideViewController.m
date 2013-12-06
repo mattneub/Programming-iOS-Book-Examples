@@ -64,10 +64,7 @@ If dealloc is never called, you're leaking.
 }
 
 - (void) dealloc {
-    // dealloc is never called, we are leaking
     NSLog(@"%@", @"dealloc");
-    // timer is never invalidate, it keeps running
-    [self->_timer invalidate];
 }
 
 #elif WHICH==2 //=================
