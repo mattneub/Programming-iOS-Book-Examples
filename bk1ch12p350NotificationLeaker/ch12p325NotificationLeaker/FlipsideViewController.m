@@ -121,7 +121,9 @@ If dealloc is never called, you're leaking.
 @property (nonatomic, strong) id observer;
 @end
 
-@implementation FlipsideViewController
+@implementation FlipsideViewController  {
+    NSString* myIvar;
+}
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -135,6 +137,10 @@ If dealloc is never called, you're leaking.
                          FlipsideViewController* sself = weakself; // <===
                          if (sself) {                              // <===
                              [sself description]; // no leak - be careful not to mention self!
+                             // do not use NSAssert!
+                             // NSAssert(1, @"dummy assertion");
+                             // do not use ivar names!
+                             // myIvar = @"Testing"; // fortunately, compiler warns on this one
                          }
                      }];
 }
