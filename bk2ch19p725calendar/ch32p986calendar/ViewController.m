@@ -44,11 +44,13 @@
                 EKEventStore* database = [EKEventStore new];
                 [database requestAccessToEntityType:type completion:
                  ^(BOOL granted, NSError *error) {
-                     if (granted)
-                         self.database = database;
-                     else
-                         NSLog(@"error: %@", error);
-                 }];
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         if (granted)
+                             self.database = database;
+                         else
+                             NSLog(@"error: %@", error);
+                     });
+                }];
             }
         }
     }
