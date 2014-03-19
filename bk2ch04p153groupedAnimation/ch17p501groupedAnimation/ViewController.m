@@ -39,6 +39,7 @@
     }
     CAKeyframeAnimation* anim1 = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     anim1.path = path;
+    CGPathRelease(path);
     anim1.calculationMode = kCAAnimationPaced;
     
     NSArray* revs = @[@0.0f,

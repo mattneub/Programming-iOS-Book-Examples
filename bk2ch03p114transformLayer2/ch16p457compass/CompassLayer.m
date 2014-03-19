@@ -61,6 +61,7 @@
     CGMutablePathRef p = CGPathCreateMutable();
     CGPathAddEllipseInRect(p, nil, CGRectInset(self.bounds, 3, 3));
     circle.path = p;
+    CGPathRelease(p);
     [master addSublayer:circle]; //
     circle.bounds = self.bounds;
     circle.position = CGPointMake(CGRectGetMidX(self.bounds), 

@@ -26,6 +26,7 @@
     CGContextClip(c);
     CGContextFillRect(c, CGRectMake(
                                     r.origin.x, r.origin.y, r.size.width * self.value, r.size.height));
+    CGPathRelease(path);
 }
 
 @end
