@@ -16,22 +16,7 @@
 		C9C1C8801789E4E300BC3581 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C1C87E1789E4E300BC3581 /* Main.storyboard */; };
 		C9C1C8831789E4E300BC3581 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C1C8821789E4E300BC3581 /* ViewController.m */; };
 		C9C1C8851789E4E300BC3581 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C1C8841789E4E300BC3581 /* Images.xcassets */; };
-		C9C1C88C1789E4E300BC3581 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1C88B1789E4E300BC3581 /* XCTest.framework */; };
-		C9C1C88D1789E4E300BC3581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1C86C1789E4E300BC3581 /* Foundation.framework */; };
-		C9C1C88E1789E4E300BC3581 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1C8701789E4E300BC3581 /* UIKit.framework */; };
-		C9C1C8961789E4E300BC3581 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9C1C8941789E4E300BC3581 /* InfoPlist.strings */; };
-		C9C1C8981789E4E300BC3581 /* Empty_WindowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C1C8971789E4E300BC3581 /* Empty_WindowTests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C9C1C88F1789E4E300BC3581 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C9C1C8611789E4E300BC3581 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C9C1C8681789E4E300BC3581;
-			remoteInfo = "Empty Window";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C9C1C8691789E4E300BC3581 /* ch07p150emptyWindowNoMore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch07p150emptyWindowNoMore.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,11 +33,7 @@
 		C9C1C8811789E4E300BC3581 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C9C1C8821789E4E300BC3581 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9C1C8841789E4E300BC3581 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9C1C88A1789E4E300BC3581 /* ch07p150emptyWindowNoMoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ch07p150emptyWindowNoMoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C1C88B1789E4E300BC3581 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9C1C8931789E4E300BC3581 /* ch07p150emptyWindowNoMoreTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch07p150emptyWindowNoMoreTests-Info.plist"; sourceTree = "<group>"; };
-		C9C1C8951789E4E300BC3581 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9C1C8971789E4E300BC3581 /* Empty_WindowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Empty_WindowTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,16 +47,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C9C1C8871789E4E300BC3581 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C9C1C88C1789E4E300BC3581 /* XCTest.framework in Frameworks */,
-				C9C1C88E1789E4E300BC3581 /* UIKit.framework in Frameworks */,
-				C9C1C88D1789E4E300BC3581 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -83,7 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				C9C1C8721789E4E300BC3581 /* Empty Window */,
-				C9C1C8911789E4E300BC3581 /* Empty WindowTests */,
 				C9C1C86B1789E4E300BC3581 /* Frameworks */,
 				C9C1C86A1789E4E300BC3581 /* Products */,
 			);
@@ -93,7 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				C9C1C8691789E4E300BC3581 /* ch07p150emptyWindowNoMore.app */,
-				C9C1C88A1789E4E300BC3581 /* ch07p150emptyWindowNoMoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,24 +103,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C9C1C8911789E4E300BC3581 /* Empty WindowTests */ = {
-			isa = PBXGroup;
-			children = (
-				C9C1C8971789E4E300BC3581 /* Empty_WindowTests.m */,
-				C9C1C8921789E4E300BC3581 /* Supporting Files */,
-			);
-			path = "Empty WindowTests";
-			sourceTree = "<group>";
-		};
-		C9C1C8921789E4E300BC3581 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C9C1C8931789E4E300BC3581 /* ch07p150emptyWindowNoMoreTests-Info.plist */,
-				C9C1C8941789E4E300BC3581 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,24 +123,6 @@
 			productReference = C9C1C8691789E4E300BC3581 /* ch07p150emptyWindowNoMore.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C9C1C8891789E4E300BC3581 /* ch07p150emptyWindowNoMoreTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C9C1C89E1789E4E300BC3581 /* Build configuration list for PBXNativeTarget "ch07p150emptyWindowNoMoreTests" */;
-			buildPhases = (
-				C9C1C8861789E4E300BC3581 /* Sources */,
-				C9C1C8871789E4E300BC3581 /* Frameworks */,
-				C9C1C8881789E4E300BC3581 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C9C1C8901789E4E300BC3581 /* PBXTargetDependency */,
-			);
-			name = ch07p150emptyWindowNoMoreTests;
-			productName = "Empty WindowTests";
-			productReference = C9C1C88A1789E4E300BC3581 /* ch07p150emptyWindowNoMoreTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -198,11 +131,6 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
-				TargetAttributes = {
-					C9C1C8891789E4E300BC3581 = {
-						TestTargetID = C9C1C8681789E4E300BC3581;
-					};
-				};
 			};
 			buildConfigurationList = C9C1C8641789E4E300BC3581 /* Build configuration list for PBXProject "ch07p150emptyWindowNoMore" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -218,7 +146,6 @@
 			projectRoot = "";
 			targets = (
 				C9C1C8681789E4E300BC3581 /* ch07p150emptyWindowNoMore */,
-				C9C1C8891789E4E300BC3581 /* ch07p150emptyWindowNoMoreTests */,
 			);
 		};
 /* End PBXProject section */
@@ -231,14 +158,6 @@
 				C9C1C8851789E4E300BC3581 /* Images.xcassets in Resources */,
 				C9C1C8771789E4E300BC3581 /* InfoPlist.strings in Resources */,
 				C9C1C8801789E4E300BC3581 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C9C1C8881789E4E300BC3581 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C9C1C8961789E4E300BC3581 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,23 +174,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C9C1C8861789E4E300BC3581 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C9C1C8981789E4E300BC3581 /* Empty_WindowTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C9C1C8901789E4E300BC3581 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C9C1C8681789E4E300BC3581 /* ch07p150emptyWindowNoMore */;
-			targetProxy = C9C1C88F1789E4E300BC3581 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C9C1C8751789E4E300BC3581 /* InfoPlist.strings */ = {
@@ -288,14 +191,6 @@
 				C9C1C87F1789E4E300BC3581 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C9C1C8941789E4E300BC3581 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9C1C8951789E4E300BC3581 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -395,46 +290,6 @@
 			};
 			name = Release;
 		};
-		C9C1C89F1789E4E300BC3581 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Empty Window.app/Empty Window";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(SYSTEM_APPS_DIR)/Xcode5-DP2.app/Contents/Developer/Library/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Empty Window/Empty Window-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Empty WindowTests/ch07p150emptyWindowNoMoreTests-Info.plist";
-				PRODUCT_NAME = ch07p150emptyWindowNoMoreTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		C9C1C8A01789E4E300BC3581 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Empty Window.app/Empty Window";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(SYSTEM_APPS_DIR)/Xcode5-DP2.app/Contents/Developer/Library/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Empty Window/Empty Window-Prefix.pch";
-				INFOPLIST_FILE = "Empty WindowTests/ch07p150emptyWindowNoMoreTests-Info.plist";
-				PRODUCT_NAME = ch07p150emptyWindowNoMoreTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -452,15 +307,6 @@
 			buildConfigurations = (
 				C9C1C89C1789E4E300BC3581 /* Debug */,
 				C9C1C89D1789E4E300BC3581 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C9C1C89E1789E4E300BC3581 /* Build configuration list for PBXNativeTarget "ch07p150emptyWindowNoMoreTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C9C1C89F1789E4E300BC3581 /* Debug */,
-				C9C1C8A01789E4E300BC3581 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

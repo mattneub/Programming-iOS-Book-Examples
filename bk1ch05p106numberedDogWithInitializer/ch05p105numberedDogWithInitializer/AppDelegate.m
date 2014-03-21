@@ -9,7 +9,7 @@
 {
     Dog* fido = [[Dog alloc] initWithNumber:42];
     int n = fido.number;
-    NSLog(@"sure enough, n is now %i!", n);
+    NSLog(@"sure enough, n is now %d!", n);
     
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

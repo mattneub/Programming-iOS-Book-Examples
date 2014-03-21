@@ -11,7 +11,7 @@
     Dog* fido = [Dog new];
     [fido setNumber: 42];
     int n = [fido number];
-    NSLog(@"sure enough, n is now %i!", n);
+    NSLog(@"sure enough, n is now %d!", n);
     
     // showing that key-value coding also works
     NSNumber* num = @4242; // numeric object literal
@@ -19,7 +19,7 @@
     num = [fido valueForKey: @"number"];
     n = [num intValue];
     
-    NSLog(@"sure enough, n is now %i!", n);
+    NSLog(@"sure enough, n is now %d!", n);
     
 
     

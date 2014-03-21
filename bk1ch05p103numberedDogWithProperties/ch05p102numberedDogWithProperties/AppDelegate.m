@@ -11,7 +11,7 @@
     Dog* fido = [Dog new];
     fido.number = 42;
     int n = fido.number;
-    NSLog(@"sure enough, n is now %i!", n);
+    NSLog(@"sure enough, n is now %d!", n);
     
     
     
