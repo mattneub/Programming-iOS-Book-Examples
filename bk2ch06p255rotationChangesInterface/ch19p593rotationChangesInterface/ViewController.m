@@ -102,7 +102,7 @@
 }
 
 -(void)updateViewConstraints {
-    NSLog(@"updateviewconstraints %i", self.interfaceOrientation);
+    NSLog(@"updateviewconstraints %ld", (long)self.interfaceOrientation);
     [self.view removeConstraints:self.blackRectConstraintsOnscreen];
     [self.view removeConstraints:self.blackRectConstraintsOffscreen];
     if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation))

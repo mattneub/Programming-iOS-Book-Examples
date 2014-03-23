@@ -159,8 +159,8 @@
     // which way we are going depends on which vc is which
     // the most general way to express this is in terms of index number
     UITabBarController* tbc = (UITabBarController*)self.window.rootViewController;
-    int ix1 = [tbc.viewControllers indexOfObject:vc1];
-    int ix2 = [tbc.viewControllers indexOfObject:vc2];
+    NSUInteger ix1 = [tbc.viewControllers indexOfObject:vc1];
+    NSUInteger ix2 = [tbc.viewControllers indexOfObject:vc2];
     int dir = ix1 < ix2 ? 1 : -1;
     CGRect r = r1start;
     r.origin.x -= r.size.width * dir;

@@ -12,17 +12,17 @@
 
 -(NSUInteger)supportedInterfaceOrientations {
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
-    NSLog(@"supported, device %i", orientation);
+    NSLog(@"supported, device %ld", (long)orientation);
     if (orientation)
-      NSLog(@"self %i", self.interfaceOrientation);
+      NSLog(@"self %ld", (long)self.interfaceOrientation);
     return UIInterfaceOrientationMaskAll;
 }
 
 -(BOOL)shouldAutorotate {
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
-    NSLog(@"should, device %i", orientation);
+    NSLog(@"should, device %ld", (long)orientation);
     if (orientation)
-        NSLog(@"self %i", self.interfaceOrientation);
+        NSLog(@"self %ld", (long)self.interfaceOrientation);
     return self->_shouldRotate;
 }
 

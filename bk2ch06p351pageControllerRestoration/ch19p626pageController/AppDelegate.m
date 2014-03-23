@@ -127,7 +127,7 @@
                                                       object:nil queue:nil
                                                   usingBlock:^(NSNotification *n) {
         UIGestureRecognizer* g = n.object;
-        int which = g.view.tag;
+        NSInteger which = g.view.tag;
         UIViewController* vc =
         which == 0 ?
         [self pageViewController:pvc viewControllerBeforeViewController:pvc.viewControllers[0]] :
