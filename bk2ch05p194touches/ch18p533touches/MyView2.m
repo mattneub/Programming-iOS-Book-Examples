@@ -9,7 +9,7 @@
 #if which == 1
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    int ct = [(UITouch*)touches.anyObject tapCount];
+    NSUInteger ct = [(UITouch*)touches.anyObject tapCount];
     if (ct == 2) {
         [NSObject cancelPreviousPerformRequestsWithTarget:self
                                                  selector:@selector(singleTap)
@@ -18,7 +18,7 @@
 }
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    int ct = [(UITouch*)touches.anyObject tapCount];
+    NSUInteger ct = [(UITouch*)touches.anyObject tapCount];
     if (ct == 1)
         [self performSelector:@selector(singleTap) withObject:nil afterDelay:0.3];
     if (ct == 2)
