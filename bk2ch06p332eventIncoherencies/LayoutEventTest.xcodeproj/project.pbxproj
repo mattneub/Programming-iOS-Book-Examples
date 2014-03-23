@@ -16,23 +16,8 @@
 		C9DE747D17D3A75F00E9DA4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9DE747B17D3A75F00E9DA4D /* Main.storyboard */; };
 		C9DE748017D3A75F00E9DA4D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DE747F17D3A75F00E9DA4D /* ViewController.m */; };
 		C9DE748217D3A75F00E9DA4D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9DE748117D3A75F00E9DA4D /* Images.xcassets */; };
-		C9DE748917D3A75F00E9DA4D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DE748817D3A75F00E9DA4D /* XCTest.framework */; };
-		C9DE748A17D3A75F00E9DA4D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DE746917D3A75E00E9DA4D /* Foundation.framework */; };
-		C9DE748B17D3A75F00E9DA4D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DE746D17D3A75E00E9DA4D /* UIKit.framework */; };
-		C9DE749317D3A75F00E9DA4D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9DE749117D3A75F00E9DA4D /* InfoPlist.strings */; };
-		C9DE749517D3A75F00E9DA4D /* LayoutEventTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DE749417D3A75F00E9DA4D /* LayoutEventTestTests.m */; };
 		C9DE74A017D3A91600E9DA4D /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DE749F17D3A91600E9DA4D /* ViewController2.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C9DE748C17D3A75F00E9DA4D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C9DE745E17D3A75E00E9DA4D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C9DE746517D3A75E00E9DA4D;
-			remoteInfo = LayoutEventTest;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C9DE746617D3A75E00E9DA4D /* LayoutEventTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LayoutEventTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,11 +34,7 @@
 		C9DE747E17D3A75F00E9DA4D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C9DE747F17D3A75F00E9DA4D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9DE748117D3A75F00E9DA4D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9DE748717D3A75F00E9DA4D /* LayoutEventTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LayoutEventTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9DE748817D3A75F00E9DA4D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9DE749017D3A75F00E9DA4D /* LayoutEventTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LayoutEventTestTests-Info.plist"; sourceTree = "<group>"; };
-		C9DE749217D3A75F00E9DA4D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9DE749417D3A75F00E9DA4D /* LayoutEventTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayoutEventTestTests.m; sourceTree = "<group>"; };
 		C9DE749E17D3A91600E9DA4D /* ViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
 		C9DE749F17D3A91600E9DA4D /* ViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,16 +50,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C9DE748417D3A75F00E9DA4D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C9DE748917D3A75F00E9DA4D /* XCTest.framework in Frameworks */,
-				C9DE748B17D3A75F00E9DA4D /* UIKit.framework in Frameworks */,
-				C9DE748A17D3A75F00E9DA4D /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -86,7 +57,6 @@
 			isa = PBXGroup;
 			children = (
 				C9DE746F17D3A75E00E9DA4D /* LayoutEventTest */,
-				C9DE748E17D3A75F00E9DA4D /* LayoutEventTestTests */,
 				C9DE746817D3A75E00E9DA4D /* Frameworks */,
 				C9DE746717D3A75E00E9DA4D /* Products */,
 			);
@@ -96,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				C9DE746617D3A75E00E9DA4D /* LayoutEventTest.app */,
-				C9DE748717D3A75F00E9DA4D /* LayoutEventTestTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,24 +108,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C9DE748E17D3A75F00E9DA4D /* LayoutEventTestTests */ = {
-			isa = PBXGroup;
-			children = (
-				C9DE749417D3A75F00E9DA4D /* LayoutEventTestTests.m */,
-				C9DE748F17D3A75F00E9DA4D /* Supporting Files */,
-			);
-			path = LayoutEventTestTests;
-			sourceTree = "<group>";
-		};
-		C9DE748F17D3A75F00E9DA4D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C9DE749017D3A75F00E9DA4D /* LayoutEventTestTests-Info.plist */,
-				C9DE749117D3A75F00E9DA4D /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -177,24 +128,6 @@
 			productReference = C9DE746617D3A75E00E9DA4D /* LayoutEventTest.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C9DE748617D3A75F00E9DA4D /* LayoutEventTestTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C9DE749B17D3A75F00E9DA4D /* Build configuration list for PBXNativeTarget "LayoutEventTestTests" */;
-			buildPhases = (
-				C9DE748317D3A75F00E9DA4D /* Sources */,
-				C9DE748417D3A75F00E9DA4D /* Frameworks */,
-				C9DE748517D3A75F00E9DA4D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C9DE748D17D3A75F00E9DA4D /* PBXTargetDependency */,
-			);
-			name = LayoutEventTestTests;
-			productName = LayoutEventTestTests;
-			productReference = C9DE748717D3A75F00E9DA4D /* LayoutEventTestTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -203,11 +136,6 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
-				TargetAttributes = {
-					C9DE748617D3A75F00E9DA4D = {
-						TestTargetID = C9DE746517D3A75E00E9DA4D;
-					};
-				};
 			};
 			buildConfigurationList = C9DE746117D3A75E00E9DA4D /* Build configuration list for PBXProject "LayoutEventTest" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -223,7 +151,6 @@
 			projectRoot = "";
 			targets = (
 				C9DE746517D3A75E00E9DA4D /* LayoutEventTest */,
-				C9DE748617D3A75F00E9DA4D /* LayoutEventTestTests */,
 			);
 		};
 /* End PBXProject section */
@@ -236,14 +163,6 @@
 				C9DE748217D3A75F00E9DA4D /* Images.xcassets in Resources */,
 				C9DE747417D3A75F00E9DA4D /* InfoPlist.strings in Resources */,
 				C9DE747D17D3A75F00E9DA4D /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C9DE748517D3A75F00E9DA4D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C9DE749317D3A75F00E9DA4D /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,23 +180,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C9DE748317D3A75F00E9DA4D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C9DE749517D3A75F00E9DA4D /* LayoutEventTestTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C9DE748D17D3A75F00E9DA4D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C9DE746517D3A75E00E9DA4D /* LayoutEventTest */;
-			targetProxy = C9DE748C17D3A75F00E9DA4D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C9DE747217D3A75F00E9DA4D /* InfoPlist.strings */ = {
@@ -294,14 +197,6 @@
 				C9DE747C17D3A75F00E9DA4D /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C9DE749117D3A75F00E9DA4D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9DE749217D3A75F00E9DA4D /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -401,46 +296,6 @@
 			};
 			name = Release;
 		};
-		C9DE749C17D3A75F00E9DA4D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LayoutEventTest.app/LayoutEventTest";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LayoutEventTest/LayoutEventTest-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "LayoutEventTestTests/LayoutEventTestTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		C9DE749D17D3A75F00E9DA4D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LayoutEventTest.app/LayoutEventTest";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LayoutEventTest/LayoutEventTest-Prefix.pch";
-				INFOPLIST_FILE = "LayoutEventTestTests/LayoutEventTestTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -460,14 +315,7 @@
 				C9DE749A17D3A75F00E9DA4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		C9DE749B17D3A75F00E9DA4D /* Build configuration list for PBXNativeTarget "LayoutEventTestTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C9DE749C17D3A75F00E9DA4D /* Debug */,
-				C9DE749D17D3A75F00E9DA4D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

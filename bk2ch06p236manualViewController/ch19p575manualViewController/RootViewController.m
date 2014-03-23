@@ -88,7 +88,7 @@
 
 #elif which == 4
 
-// no viewDidLoad, no other means of getting the view...
+// no loadView, no other means of getting the view...
 // so a generic view is created for us
 
 - (void) viewDidLoad {

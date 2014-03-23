@@ -27,11 +27,7 @@
     UIImage* im = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     [(UITabBar*)[UITabBar appearance] setSelectionIndicatorImage:im];
-    
-    // But there's a bug; in iOS 7 the selection indicator image doesn't appear initially
-    // you have to toggle the selection to make it work, which is kind of awful
-
-    
+        
     return YES;
 }
 

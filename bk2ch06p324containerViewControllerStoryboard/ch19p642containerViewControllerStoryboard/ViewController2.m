@@ -32,12 +32,12 @@
 }
 
 -(void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
-    UIViewController* vc1 = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    // UIViewController* vc1 = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController* vc2 = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView* con = [transitionContext containerView];
-    CGRect r1start = [transitionContext initialFrameForViewController:vc1];
+    // CGRect r1start = [transitionContext initialFrameForViewController:vc1];
     CGRect r2end = [transitionContext finalFrameForViewController:vc2];
-    UIView* v1 = vc1.view;
+    // UIView* v1 = vc1.view;
     UIView* v2 = vc2.view;
 
     CGRect r2start = r2end;
