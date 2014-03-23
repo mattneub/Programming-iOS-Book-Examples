@@ -16,23 +16,8 @@
 		C953C0B117ABFD7000320991 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C953C0AF17ABFD7000320991 /* Main.storyboard */; };
 		C953C0B417ABFD7000320991 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C953C0B317ABFD7000320991 /* ViewController.m */; };
 		C953C0B617ABFD7000320991 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C953C0B517ABFD7000320991 /* Images.xcassets */; };
-		C953C0BD17ABFD7100320991 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C953C0BC17ABFD7100320991 /* XCTest.framework */; };
-		C953C0BE17ABFD7100320991 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C953C09D17ABFD7000320991 /* Foundation.framework */; };
-		C953C0BF17ABFD7100320991 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C953C0A117ABFD7000320991 /* UIKit.framework */; };
-		C953C0C717ABFD7100320991 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C953C0C517ABFD7100320991 /* InfoPlist.strings */; };
-		C953C0C917ABFD7100320991 /* ch14p400transformsAndConstraintsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C953C0C817ABFD7100320991 /* ch14p400transformsAndConstraintsTests.m */; };
 		C953C0D417AC04C600320991 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = C953C0D317AC04C600320991 /* MyView.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C953C0C017ABFD7100320991 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C953C09217ABFD7000320991 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C953C09917ABFD7000320991;
-			remoteInfo = ch14p400transformsAndConstraints;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C953C09A17ABFD7000320991 /* ch14p400transformsAndConstraints.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch14p400transformsAndConstraints.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,11 +34,7 @@
 		C953C0B217ABFD7000320991 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C953C0B317ABFD7000320991 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C953C0B517ABFD7000320991 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C953C0BB17ABFD7100320991 /* ch14p400transformsAndConstraintsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ch14p400transformsAndConstraintsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C953C0BC17ABFD7100320991 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C953C0C417ABFD7100320991 /* ch14p400transformsAndConstraintsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch14p400transformsAndConstraintsTests-Info.plist"; sourceTree = "<group>"; };
-		C953C0C617ABFD7100320991 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C953C0C817ABFD7100320991 /* ch14p400transformsAndConstraintsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ch14p400transformsAndConstraintsTests.m; sourceTree = "<group>"; };
 		C953C0D217AC04C600320991 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
 		C953C0D317AC04C600320991 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,16 +50,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C953C0B817ABFD7100320991 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C953C0BD17ABFD7100320991 /* XCTest.framework in Frameworks */,
-				C953C0BF17ABFD7100320991 /* UIKit.framework in Frameworks */,
-				C953C0BE17ABFD7100320991 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -86,7 +57,6 @@
 			isa = PBXGroup;
 			children = (
 				C953C0A317ABFD7000320991 /* ch14p400transformsAndConstraints */,
-				C953C0C217ABFD7100320991 /* ch14p400transformsAndConstraintsTests */,
 				C953C09C17ABFD7000320991 /* Frameworks */,
 				C953C09B17ABFD7000320991 /* Products */,
 			);
@@ -96,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				C953C09A17ABFD7000320991 /* ch14p400transformsAndConstraints.app */,
-				C953C0BB17ABFD7100320991 /* ch14p400transformsAndConstraintsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,24 +108,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C953C0C217ABFD7100320991 /* ch14p400transformsAndConstraintsTests */ = {
-			isa = PBXGroup;
-			children = (
-				C953C0C817ABFD7100320991 /* ch14p400transformsAndConstraintsTests.m */,
-				C953C0C317ABFD7100320991 /* Supporting Files */,
-			);
-			path = ch14p400transformsAndConstraintsTests;
-			sourceTree = "<group>";
-		};
-		C953C0C317ABFD7100320991 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C953C0C417ABFD7100320991 /* ch14p400transformsAndConstraintsTests-Info.plist */,
-				C953C0C517ABFD7100320991 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -177,24 +128,6 @@
 			productReference = C953C09A17ABFD7000320991 /* ch14p400transformsAndConstraints.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C953C0BA17ABFD7100320991 /* ch14p400transformsAndConstraintsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C953C0CF17ABFD7100320991 /* Build configuration list for PBXNativeTarget "ch14p400transformsAndConstraintsTests" */;
-			buildPhases = (
-				C953C0B717ABFD7100320991 /* Sources */,
-				C953C0B817ABFD7100320991 /* Frameworks */,
-				C953C0B917ABFD7100320991 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C953C0C117ABFD7100320991 /* PBXTargetDependency */,
-			);
-			name = ch14p400transformsAndConstraintsTests;
-			productName = ch14p400transformsAndConstraintsTests;
-			productReference = C953C0BB17ABFD7100320991 /* ch14p400transformsAndConstraintsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -203,11 +136,6 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
-				TargetAttributes = {
-					C953C0BA17ABFD7100320991 = {
-						TestTargetID = C953C09917ABFD7000320991;
-					};
-				};
 			};
 			buildConfigurationList = C953C09517ABFD7000320991 /* Build configuration list for PBXProject "ch14p400transformsAndConstraints" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -223,7 +151,6 @@
 			projectRoot = "";
 			targets = (
 				C953C09917ABFD7000320991 /* ch14p400transformsAndConstraints */,
-				C953C0BA17ABFD7100320991 /* ch14p400transformsAndConstraintsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -236,14 +163,6 @@
 				C953C0B617ABFD7000320991 /* Images.xcassets in Resources */,
 				C953C0A817ABFD7000320991 /* InfoPlist.strings in Resources */,
 				C953C0B117ABFD7000320991 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C953C0B917ABFD7100320991 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C953C0C717ABFD7100320991 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,23 +180,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C953C0B717ABFD7100320991 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C953C0C917ABFD7100320991 /* ch14p400transformsAndConstraintsTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C953C0C117ABFD7100320991 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C953C09917ABFD7000320991 /* ch14p400transformsAndConstraints */;
-			targetProxy = C953C0C017ABFD7100320991 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C953C0A617ABFD7000320991 /* InfoPlist.strings */ = {
@@ -294,14 +197,6 @@
 				C953C0B017ABFD7000320991 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C953C0C517ABFD7100320991 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C953C0C617ABFD7100320991 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -401,46 +296,6 @@
 			};
 			name = Release;
 		};
-		C953C0D017ABFD7100320991 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ch14p400transformsAndConstraints.app/ch14p400transformsAndConstraints";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch14p400transformsAndConstraints/ch14p400transformsAndConstraints-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "ch14p400transformsAndConstraintsTests/ch14p400transformsAndConstraintsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		C953C0D117ABFD7100320991 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ch14p400transformsAndConstraints.app/ch14p400transformsAndConstraints";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch14p400transformsAndConstraints/ch14p400transformsAndConstraints-Prefix.pch";
-				INFOPLIST_FILE = "ch14p400transformsAndConstraintsTests/ch14p400transformsAndConstraintsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -460,14 +315,7 @@
 				C953C0CE17ABFD7100320991 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		C953C0CF17ABFD7100320991 /* Build configuration list for PBXNativeTarget "ch14p400transformsAndConstraintsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C953C0D017ABFD7100320991 /* Debug */,
-				C953C0D117ABFD7100320991 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

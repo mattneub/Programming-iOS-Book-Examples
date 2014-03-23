@@ -16,23 +16,8 @@
 		C953C06D17ABF6A800320991 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C953C06B17ABF6A800320991 /* Main.storyboard */; };
 		C953C07017ABF6A800320991 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C953C06F17ABF6A800320991 /* ViewController.m */; };
 		C953C07217ABF6A800320991 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C953C07117ABF6A800320991 /* Images.xcassets */; };
-		C953C07917ABF6A800320991 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C953C07817ABF6A800320991 /* XCTest.framework */; };
-		C953C07A17ABF6A800320991 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C953C05917ABF6A800320991 /* Foundation.framework */; };
-		C953C07B17ABF6A800320991 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C953C05D17ABF6A800320991 /* UIKit.framework */; };
-		C953C08317ABF6A800320991 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C953C08117ABF6A800320991 /* InfoPlist.strings */; };
-		C953C08517ABF6A800320991 /* ch14p398constraintsOrderOfEventsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C953C08417ABF6A800320991 /* ch14p398constraintsOrderOfEventsTests.m */; };
 		C953C09017ABF6ED00320991 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = C953C08F17ABF6ED00320991 /* MyView.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C953C07C17ABF6A800320991 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C953C04E17ABF6A700320991 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C953C05517ABF6A700320991;
-			remoteInfo = ch14p398constraintsOrderOfEvents;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C953C05617ABF6A800320991 /* ch14p398constraintsOrderOfEvents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch14p398constraintsOrderOfEvents.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,11 +34,7 @@
 		C953C06E17ABF6A800320991 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C953C06F17ABF6A800320991 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C953C07117ABF6A800320991 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C953C07717ABF6A800320991 /* ch14p398constraintsOrderOfEventsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ch14p398constraintsOrderOfEventsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C953C07817ABF6A800320991 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C953C08017ABF6A800320991 /* ch14p398constraintsOrderOfEventsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch14p398constraintsOrderOfEventsTests-Info.plist"; sourceTree = "<group>"; };
-		C953C08217ABF6A800320991 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C953C08417ABF6A800320991 /* ch14p398constraintsOrderOfEventsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ch14p398constraintsOrderOfEventsTests.m; sourceTree = "<group>"; };
 		C953C08E17ABF6ED00320991 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
 		C953C08F17ABF6ED00320991 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,16 +50,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C953C07417ABF6A800320991 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C953C07917ABF6A800320991 /* XCTest.framework in Frameworks */,
-				C953C07B17ABF6A800320991 /* UIKit.framework in Frameworks */,
-				C953C07A17ABF6A800320991 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -86,7 +57,6 @@
 			isa = PBXGroup;
 			children = (
 				C953C05F17ABF6A800320991 /* ch14p398constraintsOrderOfEvents */,
-				C953C07E17ABF6A800320991 /* ch14p398constraintsOrderOfEventsTests */,
 				C953C05817ABF6A800320991 /* Frameworks */,
 				C953C05717ABF6A800320991 /* Products */,
 			);
@@ -96,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				C953C05617ABF6A800320991 /* ch14p398constraintsOrderOfEvents.app */,
-				C953C07717ABF6A800320991 /* ch14p398constraintsOrderOfEventsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,24 +108,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C953C07E17ABF6A800320991 /* ch14p398constraintsOrderOfEventsTests */ = {
-			isa = PBXGroup;
-			children = (
-				C953C08417ABF6A800320991 /* ch14p398constraintsOrderOfEventsTests.m */,
-				C953C07F17ABF6A800320991 /* Supporting Files */,
-			);
-			path = ch14p398constraintsOrderOfEventsTests;
-			sourceTree = "<group>";
-		};
-		C953C07F17ABF6A800320991 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C953C08017ABF6A800320991 /* ch14p398constraintsOrderOfEventsTests-Info.plist */,
-				C953C08117ABF6A800320991 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -177,24 +128,6 @@
 			productReference = C953C05617ABF6A800320991 /* ch14p398constraintsOrderOfEvents.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C953C07617ABF6A800320991 /* ch14p398constraintsOrderOfEventsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C953C08B17ABF6A800320991 /* Build configuration list for PBXNativeTarget "ch14p398constraintsOrderOfEventsTests" */;
-			buildPhases = (
-				C953C07317ABF6A800320991 /* Sources */,
-				C953C07417ABF6A800320991 /* Frameworks */,
-				C953C07517ABF6A800320991 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C953C07D17ABF6A800320991 /* PBXTargetDependency */,
-			);
-			name = ch14p398constraintsOrderOfEventsTests;
-			productName = ch14p398constraintsOrderOfEventsTests;
-			productReference = C953C07717ABF6A800320991 /* ch14p398constraintsOrderOfEventsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -203,11 +136,6 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
-				TargetAttributes = {
-					C953C07617ABF6A800320991 = {
-						TestTargetID = C953C05517ABF6A700320991;
-					};
-				};
 			};
 			buildConfigurationList = C953C05117ABF6A700320991 /* Build configuration list for PBXProject "ch14p398constraintsOrderOfEvents" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -223,7 +151,6 @@
 			projectRoot = "";
 			targets = (
 				C953C05517ABF6A700320991 /* ch14p398constraintsOrderOfEvents */,
-				C953C07617ABF6A800320991 /* ch14p398constraintsOrderOfEventsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -236,14 +163,6 @@
 				C953C07217ABF6A800320991 /* Images.xcassets in Resources */,
 				C953C06417ABF6A800320991 /* InfoPlist.strings in Resources */,
 				C953C06D17ABF6A800320991 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C953C07517ABF6A800320991 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C953C08317ABF6A800320991 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,23 +180,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C953C07317ABF6A800320991 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C953C08517ABF6A800320991 /* ch14p398constraintsOrderOfEventsTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C953C07D17ABF6A800320991 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C953C05517ABF6A700320991 /* ch14p398constraintsOrderOfEvents */;
-			targetProxy = C953C07C17ABF6A800320991 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C953C06217ABF6A800320991 /* InfoPlist.strings */ = {
@@ -294,14 +197,6 @@
 				C953C06C17ABF6A800320991 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C953C08117ABF6A800320991 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C953C08217ABF6A800320991 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -401,46 +296,6 @@
 			};
 			name = Release;
 		};
-		C953C08C17ABF6A800320991 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ch14p398constraintsOrderOfEvents.app/ch14p398constraintsOrderOfEvents";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch14p398constraintsOrderOfEvents/ch14p398constraintsOrderOfEvents-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "ch14p398constraintsOrderOfEventsTests/ch14p398constraintsOrderOfEventsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		C953C08D17ABF6A800320991 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ch14p398constraintsOrderOfEvents.app/ch14p398constraintsOrderOfEvents";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch14p398constraintsOrderOfEvents/ch14p398constraintsOrderOfEvents-Prefix.pch";
-				INFOPLIST_FILE = "ch14p398constraintsOrderOfEventsTests/ch14p398constraintsOrderOfEventsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -460,14 +315,7 @@
 				C953C08A17ABF6A800320991 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		C953C08B17ABF6A800320991 /* Build configuration list for PBXNativeTarget "ch14p398constraintsOrderOfEventsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C953C08C17ABF6A800320991 /* Debug */,
-				C953C08D17ABF6A800320991 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

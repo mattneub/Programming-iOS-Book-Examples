@@ -15,7 +15,7 @@
     CompassLayer* c = (CompassLayer*)self.compassView.layer;
     CALayer* arrow = c.arrow;
     
-#define which 9
+#define which 1
     
 #if which == 1
     

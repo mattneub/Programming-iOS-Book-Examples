@@ -16,22 +16,7 @@
 		C9747EA917AAC83600C8EC8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9747EA717AAC83600C8EC8F /* Main.storyboard */; };
 		C9747EAC17AAC83600C8EC8F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9747EAB17AAC83600C8EC8F /* ViewController.m */; };
 		C9747EAE17AAC83600C8EC8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9747EAD17AAC83600C8EC8F /* Images.xcassets */; };
-		C9747EB517AAC83600C8EC8F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9747EB417AAC83600C8EC8F /* XCTest.framework */; };
-		C9747EB617AAC83600C8EC8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9747E9517AAC83600C8EC8F /* Foundation.framework */; };
-		C9747EB717AAC83600C8EC8F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9747E9917AAC83600C8EC8F /* UIKit.framework */; };
-		C9747EBF17AAC83600C8EC8F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9747EBD17AAC83600C8EC8F /* InfoPlist.strings */; };
-		C9747EC117AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPrioritiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9747EC017AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPrioritiesTests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C9747EB817AAC83600C8EC8F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C9747E8A17AAC83600C8EC8F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C9747E9117AAC83600C8EC8F;
-			remoteInfo = ch14p393constraintsInequalitiesAndPriorities;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C9747E9217AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPriorities.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch14p393constraintsInequalitiesAndPriorities.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,11 +33,7 @@
 		C9747EAA17AAC83600C8EC8F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C9747EAB17AAC83600C8EC8F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9747EAD17AAC83600C8EC8F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9747EB317AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPrioritiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ch14p393constraintsInequalitiesAndPrioritiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9747EB417AAC83600C8EC8F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9747EBC17AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPrioritiesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch14p393constraintsInequalitiesAndPrioritiesTests-Info.plist"; sourceTree = "<group>"; };
-		C9747EBE17AAC83600C8EC8F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9747EC017AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPrioritiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ch14p393constraintsInequalitiesAndPrioritiesTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,16 +47,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C9747EB017AAC83600C8EC8F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C9747EB517AAC83600C8EC8F /* XCTest.framework in Frameworks */,
-				C9747EB717AAC83600C8EC8F /* UIKit.framework in Frameworks */,
-				C9747EB617AAC83600C8EC8F /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -83,7 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				C9747E9B17AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPriorities */,
-				C9747EBA17AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPrioritiesTests */,
 				C9747E9417AAC83600C8EC8F /* Frameworks */,
 				C9747E9317AAC83600C8EC8F /* Products */,
 			);
@@ -93,7 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				C9747E9217AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPriorities.app */,
-				C9747EB317AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPrioritiesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,24 +103,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C9747EBA17AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPrioritiesTests */ = {
-			isa = PBXGroup;
-			children = (
-				C9747EC017AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPrioritiesTests.m */,
-				C9747EBB17AAC83600C8EC8F /* Supporting Files */,
-			);
-			path = ch14p393constraintsInequalitiesAndPrioritiesTests;
-			sourceTree = "<group>";
-		};
-		C9747EBB17AAC83600C8EC8F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C9747EBC17AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPrioritiesTests-Info.plist */,
-				C9747EBD17AAC83600C8EC8F /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,24 +123,6 @@
 			productReference = C9747E9217AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPriorities.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C9747EB217AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPrioritiesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C9747EC717AAC83600C8EC8F /* Build configuration list for PBXNativeTarget "ch14p393constraintsInequalitiesAndPrioritiesTests" */;
-			buildPhases = (
-				C9747EAF17AAC83600C8EC8F /* Sources */,
-				C9747EB017AAC83600C8EC8F /* Frameworks */,
-				C9747EB117AAC83600C8EC8F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C9747EB917AAC83600C8EC8F /* PBXTargetDependency */,
-			);
-			name = ch14p393constraintsInequalitiesAndPrioritiesTests;
-			productName = ch14p393constraintsInequalitiesAndPrioritiesTests;
-			productReference = C9747EB317AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPrioritiesTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -198,11 +131,6 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
-				TargetAttributes = {
-					C9747EB217AAC83600C8EC8F = {
-						TestTargetID = C9747E9117AAC83600C8EC8F;
-					};
-				};
 			};
 			buildConfigurationList = C9747E8D17AAC83600C8EC8F /* Build configuration list for PBXProject "ch14p393constraintsInequalitiesAndPriorities" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -218,7 +146,6 @@
 			projectRoot = "";
 			targets = (
 				C9747E9117AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPriorities */,
-				C9747EB217AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPrioritiesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -231,14 +158,6 @@
 				C9747EAE17AAC83600C8EC8F /* Images.xcassets in Resources */,
 				C9747EA017AAC83600C8EC8F /* InfoPlist.strings in Resources */,
 				C9747EA917AAC83600C8EC8F /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C9747EB117AAC83600C8EC8F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C9747EBF17AAC83600C8EC8F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,23 +174,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C9747EAF17AAC83600C8EC8F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C9747EC117AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPrioritiesTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C9747EB917AAC83600C8EC8F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C9747E9117AAC83600C8EC8F /* ch14p393constraintsInequalitiesAndPriorities */;
-			targetProxy = C9747EB817AAC83600C8EC8F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C9747E9E17AAC83600C8EC8F /* InfoPlist.strings */ = {
@@ -288,14 +191,6 @@
 				C9747EA817AAC83600C8EC8F /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C9747EBD17AAC83600C8EC8F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9747EBE17AAC83600C8EC8F /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -395,46 +290,6 @@
 			};
 			name = Release;
 		};
-		C9747EC817AAC83600C8EC8F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ch14p393constraintsInequalitiesAndPriorities.app/ch14p393constraintsInequalitiesAndPriorities";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch14p393constraintsInequalitiesAndPriorities/ch14p393constraintsInequalitiesAndPriorities-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "ch14p393constraintsInequalitiesAndPrioritiesTests/ch14p393constraintsInequalitiesAndPrioritiesTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		C9747EC917AAC83600C8EC8F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ch14p393constraintsInequalitiesAndPriorities.app/ch14p393constraintsInequalitiesAndPriorities";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch14p393constraintsInequalitiesAndPriorities/ch14p393constraintsInequalitiesAndPriorities-Prefix.pch";
-				INFOPLIST_FILE = "ch14p393constraintsInequalitiesAndPrioritiesTests/ch14p393constraintsInequalitiesAndPrioritiesTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -454,14 +309,7 @@
 				C9747EC617AAC83600C8EC8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		C9747EC717AAC83600C8EC8F /* Build configuration list for PBXNativeTarget "ch14p393constraintsInequalitiesAndPrioritiesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C9747EC817AAC83600C8EC8F /* Debug */,
-				C9747EC917AAC83600C8EC8F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
