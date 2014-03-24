@@ -60,7 +60,7 @@
 
         
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"Hello there! %d", indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"Hello there! %ld", (long)indexPath.row];
 
     
     return cell;

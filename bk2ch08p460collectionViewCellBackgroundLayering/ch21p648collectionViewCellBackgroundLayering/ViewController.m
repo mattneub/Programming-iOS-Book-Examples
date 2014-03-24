@@ -73,7 +73,7 @@
         lab.backgroundColor = [UIColor clearColor];
     }
     UILabel* lab = (UILabel*)[cell viewWithTag:1];
-    lab.text = [NSString stringWithFormat:@"Howdy there %d", indexPath.item];
+    lab.text = [NSString stringWithFormat:@"Howdy there %ld", (long)indexPath.item];
     return cell;
 }
 

@@ -26,8 +26,8 @@
     MyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     UILabel* lab = cell.theLabel;
-    lab.text = [NSString stringWithFormat:@"This is row %d of section %d",
-                indexPath.row, indexPath.section];
+    lab.text = [NSString stringWithFormat:@"This is row %ld of section %ld",
+                (long)indexPath.row, (long)indexPath.section];
     if (lab.tag != 999) {
         lab.tag = 999;
         NSLog(@"%@", @"New cell");

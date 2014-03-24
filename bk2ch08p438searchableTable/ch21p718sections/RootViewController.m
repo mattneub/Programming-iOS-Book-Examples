@@ -101,7 +101,7 @@ sectionForSectionIndexTitle:(NSString *)title
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"number of rows in section %d", section);
+    NSLog(@"number of rows in section %ld", (long)section);
     NSArray* model =
     (tableView == self.sdc.searchResultsTableView) ?
     self.filteredSectionData : self.sectionData;
@@ -110,7 +110,7 @@ sectionForSectionIndexTitle:(NSString *)title
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"cell for section %d row %d", indexPath.section, indexPath.row);
+    NSLog(@"cell for section %ld row %ld", (long)indexPath.section, (long)indexPath.row);
     UITableViewCell *cell =
     [self.tableView dequeueReusableCellWithIdentifier:@"Cell"
                                     forIndexPath:indexPath];
@@ -132,7 +132,7 @@ sectionForSectionIndexTitle:(NSString *)title
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    NSLog(@"view for header %d", section);
+    NSLog(@"view for header %ld", (long)section);
     
     UITableViewHeaderFooterView* h =
     [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"Header"];

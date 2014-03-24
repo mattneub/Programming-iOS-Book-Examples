@@ -25,7 +25,7 @@
     int y = 0;
     NSMutableArray* atts = [NSMutableArray new];
     for (int i = 0; i < sections; i++) {
-        int jj = [self.collectionView numberOfItemsInSection:i];
+        NSInteger jj = [self.collectionView numberOfItemsInSection:i];
         for (int j = 0; j < jj; j++) {
             UICollectionViewLayoutAttributes* att =
             [UICollectionViewLayoutAttributes

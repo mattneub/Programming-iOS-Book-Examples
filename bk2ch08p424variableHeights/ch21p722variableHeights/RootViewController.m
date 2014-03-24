@@ -37,6 +37,8 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"Cell" bundle:nil] forCellReuseIdentifier:@"Cell"];
 
     self.tableView.estimatedRowHeight = 40; // new iOS 7 feature
+    
+    // self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 
@@ -46,7 +48,7 @@
     lab.text = s; // no need to know font, constraints, or anything else about label
     CGFloat h = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
     return ceil(h) + 1;
-    // I have no idea why the "+1" is needed, but it is; perhaps there is a rounding error here
+    // The "+1" is needed because the separator subtracts from the cell internal height!
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -67,7 +69,7 @@
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    int ix = indexPath.row;
+    NSInteger ix = indexPath.row;
     if ([NSNull null] == self.heights[ix]) {
         NSString* s = self.trivia[ix];
         CGFloat h = [self cellHeightForLabelString:s];
