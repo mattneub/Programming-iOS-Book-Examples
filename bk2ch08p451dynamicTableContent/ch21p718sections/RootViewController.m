@@ -129,7 +129,7 @@
 - (void) tap: (UIGestureRecognizer*) g {
     MyHeaderView* v = (id)g.view;
     
-    NSUInteger sec = v.section;
+    NSInteger sec = v.section;
     NSUInteger ct = [(NSArray*)(self.sectionData)[sec] count];
     NSNumber* secnum = @(sec);
     if ([self.hiddenSections containsObject:secnum]) {

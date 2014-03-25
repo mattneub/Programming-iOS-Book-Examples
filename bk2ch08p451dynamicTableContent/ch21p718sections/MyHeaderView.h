@@ -4,6 +4,6 @@
 
 @interface MyHeaderView : UITableViewHeaderFooterView
 
-@property NSUInteger section;
+@property NSInteger section;
 
 @end

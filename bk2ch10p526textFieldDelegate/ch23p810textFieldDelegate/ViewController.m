@@ -9,6 +9,9 @@
 
 @implementation ViewController
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+
 -(void)viewDidLoad {
     [super viewDidLoad];
     self.tf.allowsEditingTextAttributes = YES;
@@ -17,8 +20,10 @@
                                                 action:@selector(expand:)];
     UIMenuController *mc = [UIMenuController sharedMenuController];
     mc.menuItems = @[mi];
-
 }
+
+#pragma clang diagnostic pop
+
 
 /*
 - (void) dummy: (id) dummy {

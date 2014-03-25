@@ -87,7 +87,7 @@
     NSUInteger ix = [self.lm glyphIndexForPoint:p inTextContainer:tc fractionOfDistanceThroughGlyph:&f];
     NSRange glyphRange;
     [self.lm lineFragmentRectForGlyphAtIndex:ix effectiveRange:&glyphRange];
-    // NSLog(@"ix:%d f:%f glphRange:%@", ix, f, NSStringFromRange(glyphRange));
+    // NSLog(@"ix:%lu f:%f glphRange:%@", (unsigned long)ix, f, NSStringFromRange(glyphRange));
     // if ix is the first glyph of the line and f is 0...
     // or ix is the last glyph of the line and f is 1...
     // you missed the word entirely

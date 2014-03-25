@@ -41,9 +41,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"
                                                             forIndexPath:indexPath];
     
-    NSUInteger section = indexPath.section;
-    NSUInteger row = indexPath.row;
-    int choice = [[NSUserDefaults standardUserDefaults] integerForKey:@"choice"];
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    NSInteger choice = [[NSUserDefaults standardUserDefaults] integerForKey:@"choice"];
     if (section == 0) {
         if (row == 0)
             cell.textLabel.text = @"First";
@@ -65,8 +65,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSUInteger section = indexPath.section;
-    NSUInteger row = indexPath.row;
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
     if (section == 0) {
         [[NSUserDefaults standardUserDefaults] setInteger:row forKey:@"choice"];
         [tableView reloadData];
