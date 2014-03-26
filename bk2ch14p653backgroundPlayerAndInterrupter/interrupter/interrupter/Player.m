@@ -31,12 +31,12 @@
 	[self.player setDelegate: self];
 	[self.player prepareToPlay];
 	BOOL ok = [self.player play];
-    NSLog(@"trying to play %@ %i", path, ok);
+    NSLog(@"trying to play %@ %d", path, ok);
 }
 
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)p successfully:(BOOL)flag {
-    NSLog(@"audio finished %i", flag);
+    NSLog(@"audio finished %d", flag);
 
     [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
 
@@ -49,7 +49,7 @@
 }
 
 -(void)audioPlayerEndInterruption:(AVAudioPlayer *)p withOptions:(NSUInteger)opts {
-    NSLog(@"audio player interruption ended with options %i", opts);
+    NSLog(@"audio player interruption ended with options %lu", (unsigned long)opts);
 
     if (opts & AVAudioSessionInterruptionOptionShouldResume) {
         NSLog(@"I was told to resume");
@@ -57,7 +57,7 @@
     }
     [p prepareToPlay];
     BOOL ok = [p play];
-    NSLog(@"tried to play; did I? %i", ok);
+    NSLog(@"tried to play; did I? %d", ok);
 }
  
 

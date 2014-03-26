@@ -147,7 +147,7 @@
     else
         queue = [MPMediaItemCollection collectionWithItems:marr];
     if (queue) {
-        NSLog(@"got %d short songs", marr.count);
+        NSLog(@"got %lu short songs", (unsigned long)marr.count);
         MPMusicPlayerController* player =
         [MPMusicPlayerController applicationMusicPlayer];
         [player setQueueWithItemCollection:queue];
@@ -179,8 +179,8 @@
         if (NSNotFound == ix)
             self.label.text = @"";
         else
-            self.label.text = [NSString stringWithFormat:@"%i of %i: %@",
-                               ix+1, [self.q count], title];
+            self.label.text = [NSString stringWithFormat:@"%lu of %lu: %@",
+                               (unsigned long)ix+1, (unsigned long)[self.q count], title];
     }
     
     // fire the timer now, looks better

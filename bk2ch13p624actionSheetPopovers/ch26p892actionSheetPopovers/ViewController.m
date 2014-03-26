@@ -40,7 +40,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet
 didDismissWithButtonIndex:(NSInteger)buttonIndex {
     [self.toolbar setUserInteractionEnabled:YES];
-    NSLog(@"pressed %i %i", buttonIndex, actionSheet.cancelButtonIndex);
+    NSLog(@"pressed %ld %ld", (long)buttonIndex, (long)actionSheet.cancelButtonIndex);
 }
 
 // ========================

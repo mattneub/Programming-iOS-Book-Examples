@@ -46,7 +46,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
 
     NSLog(@"in %@", NSStringFromSelector(_cmd));
-    NSLog(@"state while entering background: %i", [application applicationState]);
+    NSLog(@"state while entering background: %ld", (long)[application applicationState]);
     return; // comment out to test immediate presentation of notification by background app
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){

@@ -25,7 +25,7 @@
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event {
     UIEventSubtype rc = event.subtype;
-    NSLog(@"got a remote event! %i", rc);
+    NSLog(@"got a remote event! %ld", (long)rc);
     if (rc == UIEventSubtypeRemoteControlTogglePlayPause) {
         if ([self.player.player isPlaying])
             [self.player.player stop];

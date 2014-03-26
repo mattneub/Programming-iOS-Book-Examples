@@ -26,7 +26,7 @@
 
 @implementation ViewController {
     int _curnum;
-    int _total;
+    NSUInteger _total;
 
 }
 
@@ -84,7 +84,7 @@
         if ([dur floatValue] < 30)
             [marr addObject: song];
     }
-    NSLog(@"got %d short songs", marr.count);
+    NSLog(@"got %lu short songs", (unsigned long)marr.count);
     if (!marr.count)
         return;
 
@@ -99,7 +99,7 @@
     self->_curnum = 0;
     self->_total = [self.assets count];
     
-    int seed = MIN(3,self.assets.count);
+    NSUInteger seed = MIN(3,self.assets.count);
     self.qp = [AVQueuePlayer queuePlayerWithItems:[self.assets objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,seed)]]];
     [self.assets removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,seed)]];
     
@@ -131,8 +131,8 @@
     AVMetadataItem* met = arr[0];
     [met loadValuesAsynchronouslyForKeys:@[@"value"] completionHandler:^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.label.text = [NSString stringWithFormat:@"%i of %i: %@",
-                               ++self->_curnum, self->_total, met.value];
+            self.label.text = [NSString stringWithFormat:@"%d of %lu: %@",
+                               ++self->_curnum, (unsigned long)self->_total, met.value];
             [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:@{MPMediaItemPropertyTitle: met.value}];
         });
     }];
@@ -171,7 +171,7 @@
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event {
     UIEventSubtype rc = event.subtype;
-    NSLog(@"hey, I got a remote event! %i", rc);
+    NSLog(@"hey, I got a remote event! %ld", (long)rc);
     if (rc == UIEventSubtypeRemoteControlPlay)
         [self.qp play];
     else if (rc == UIEventSubtypeRemoteControlStop)

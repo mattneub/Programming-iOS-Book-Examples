@@ -85,7 +85,7 @@
 }
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event {
-    NSLog(@"received remote control %d", event.subtype);
+    NSLog(@"received remote control %ld", (long)event.subtype);
     UIEventSubtype rc = event.subtype;
     // but in iOS 7 we no longer get this
     if (rc == UIEventSubtypeRemoteControlTogglePlayPause) {

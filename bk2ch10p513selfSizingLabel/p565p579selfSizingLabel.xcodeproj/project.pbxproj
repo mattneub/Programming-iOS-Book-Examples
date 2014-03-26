@@ -236,10 +236,11 @@
 		A470889E14AE67F40066DE3C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p565p579selfSizingLabel/p565p579selfSizingLabel-Prefix.pch";
 				INFOPLIST_FILE = "p565p579selfSizingLabel/p565p579selfSizingLabel-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -248,10 +249,11 @@
 		A470889F14AE67F40066DE3C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "p565p579selfSizingLabel/p565p579selfSizingLabel-Prefix.pch";
 				INFOPLIST_FILE = "p565p579selfSizingLabel/p565p579selfSizingLabel-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -47,7 +47,7 @@
 }
 
 -(void)audioPlayerEndInterruption:(AVAudioPlayer *)player withOptions:(NSUInteger)opts {
-    NSLog(@"audio player ended interruption options: %i", opts);
+    NSLog(@"audio player ended interruption options: %lu", (unsigned long)opts);
 }
 
 

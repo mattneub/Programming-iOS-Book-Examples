@@ -47,7 +47,7 @@
 }
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    NSLog(@"clicked button %i", buttonIndex);
+    NSLog(@"clicked button %ld", (long)buttonIndex);
     if (alertView.alertViewStyle == UIAlertViewStylePlainTextInput)
         NSLog(@"user entered: %@", self.alertString);
 }

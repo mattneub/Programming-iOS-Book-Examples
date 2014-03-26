@@ -29,7 +29,7 @@
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-    NSLog(@"did select item with tag %d", item.tag);
+    NSLog(@"did select item with tag %ld", (long)item.tag);
     if (item.tag == 0) {
         // More button
         tabBar.selectedItem = nil;

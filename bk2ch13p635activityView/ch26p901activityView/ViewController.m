@@ -16,7 +16,7 @@
     UIActivityViewController* avc = [[UIActivityViewController alloc] initWithActivityItems:things applicationActivities:nil];
     avc = [[UIActivityViewController alloc] initWithActivityItems:@[@"This is cool", url] applicationActivities:@[[MyCoolActivity new], [MyElaborateActivity new]]];
     avc.completionHandler = ^(NSString *activityType, BOOL completed) {
-        NSLog(@"activity %@ completed:%i", activityType, completed);
+        NSLog(@"activity %@ completed:%d", activityType, completed);
     };
     avc.excludedActivityTypes = @[
                                   UIActivityTypePostToFacebook,

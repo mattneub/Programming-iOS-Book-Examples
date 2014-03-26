@@ -43,7 +43,7 @@
     SLComposeViewController* vc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
     if (!vc) return;
     vc.completionHandler = ^(SLComposeViewControllerResult result) {
-        NSLog(@"tweet result %i", result);
+        NSLog(@"tweet result %ld", (long)result);
         [self dismissViewControllerAnimated:YES completion:nil];
     };
     [self presentViewController:vc animated:YES completion:nil];

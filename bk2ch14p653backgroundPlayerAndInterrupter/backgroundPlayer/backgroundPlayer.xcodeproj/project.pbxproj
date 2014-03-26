@@ -240,6 +240,7 @@
 		A4196FEC14D366D900D827A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "backgroundPlayer/backgroundPlayer-Prefix.pch";
 				INFOPLIST_FILE = "backgroundPlayer/backgroundPlayer-Info.plist";
@@ -252,6 +253,7 @@
 		A4196FED14D366D900D827A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "backgroundPlayer/backgroundPlayer-Prefix.pch";
 				INFOPLIST_FILE = "backgroundPlayer/backgroundPlayer-Info.plist";
