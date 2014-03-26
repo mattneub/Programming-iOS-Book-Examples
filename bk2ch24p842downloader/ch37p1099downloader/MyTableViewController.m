@@ -92,7 +92,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     NSURLSessionTask* task = d[@"task"];
     if (task && task.state == NSURLSessionTaskStateRunning) {
         [task cancel];
-        NSLog(@"cancel task for row %d", indexPath.row);
+        NSLog(@"cancel task for row %ld", (long)indexPath.row);
         [d removeObjectForKey: @"task"];
     }
 }

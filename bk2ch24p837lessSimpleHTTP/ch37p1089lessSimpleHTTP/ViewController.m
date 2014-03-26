@@ -49,7 +49,7 @@
     self.task = nil;
     NSHTTPURLResponse* response = (NSHTTPURLResponse*)downloadTask.response;
     NSInteger stat = response.statusCode;
-    NSLog(@"status %i", stat);
+    NSLog(@"status %ld", (long)stat);
     if (stat != 200)
         return;
     NSData* d = [NSData dataWithContentsOfURL:location];

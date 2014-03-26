@@ -56,7 +56,7 @@
 
 - (void) docChanged: (id) sender {
     // need to be a lot more sophisticated about this
-    NSLog(@"state: %i", self.doc.documentState);
+    NSLog(@"state: %lu", (unsigned long)self.doc.documentState);
     if (self.doc.documentState == UIDocumentStateNormal) {
         [self.tableView endEditing:YES];
         self.people = self.doc.people;

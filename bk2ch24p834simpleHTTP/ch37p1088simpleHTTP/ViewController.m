@@ -22,7 +22,7 @@
             return;
         }
         NSInteger status = [(NSHTTPURLResponse*)response statusCode];
-        NSLog(@"response status: %i", status);
+        NSLog(@"response status: %ld", (long)status);
         if (status != 200) {
             NSLog(@"%@", @"oh well");
             return;

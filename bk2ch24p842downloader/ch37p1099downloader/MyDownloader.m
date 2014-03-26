@@ -48,7 +48,7 @@
     void(^ch)(NSURL* url) = [NSURLProtocol propertyForKey:@"ch" inRequest:req];
     NSHTTPURLResponse* response = (NSHTTPURLResponse*)downloadTask.response;
     NSInteger stat = response.statusCode;
-    NSLog(@"status %i", stat);
+    NSLog(@"status %ld", (long)stat);
     NSURL* url = nil;
     if (stat == 200) {
         url = location;

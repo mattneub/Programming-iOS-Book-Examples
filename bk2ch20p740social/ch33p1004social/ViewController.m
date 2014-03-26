@@ -19,7 +19,7 @@
 }
 
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    NSLog(@"mail result %i", result);
+    NSLog(@"mail result %d", result);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -33,7 +33,7 @@
 }
 
 -(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
-    NSLog(@"message result %i", result);
+    NSLog(@"message result %d", result);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

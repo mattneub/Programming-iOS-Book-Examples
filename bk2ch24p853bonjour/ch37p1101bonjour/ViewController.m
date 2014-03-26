@@ -28,8 +28,8 @@
             [service setDelegate:self];
             [service resolveWithTimeout:10];
         } else {
-            NSLog(@"service %@ of type %@, port %i, addresses %@",
-                  service.name, service.type, service.port, service.addresses);
+            NSLog(@"service %@ of type %@, port %ld, addresses %@",
+                  service.name, service.type, (long)service.port, service.addresses);
         }
     }
 }
