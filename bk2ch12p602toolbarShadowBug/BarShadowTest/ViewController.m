@@ -2,7 +2,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <UIBarPositioningDelegate>
+@interface ViewController () <UIBarPositioningDelegate, UIToolbarDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationBar *navbar;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
@@ -53,14 +53,15 @@
     
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(4,4), NO, 0);
     [[[UIColor grayColor] colorWithAlphaComponent:0.3] setFill];
-    CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,0,4,2));
-    [[[UIColor grayColor] colorWithAlphaComponent:0.15] setFill];
     CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,2,4,2));
+    [[[UIColor grayColor] colorWithAlphaComponent:0.15] setFill];
+    CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,0,4,2));
     im = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     [self.toolbar setShadowImage:im forToolbarPosition:UIBarPositionAny];
     
-    return; // comment out to see workaround for bug
+    return;
+    // iOS 7.0 bug for which the following was a workaround is fixed in iOS 7.1
     for (UIView* v in self.toolbar.subviews) {
         if ([v isKindOfClass: [UIImageView class]] && v.bounds.size.height < 5) {
             v.backgroundColor = [UIColor clearColor];

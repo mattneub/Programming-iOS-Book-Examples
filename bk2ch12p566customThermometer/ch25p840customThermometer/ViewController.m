@@ -63,7 +63,8 @@
      resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)
      resizingMode:UIImageResizingModeStretch];
     UIGraphicsEndImageContext();
-     
+    
+    // but this code, which worked fine for years including iOS 7.0, is broken by iOS 7.1
 
 }
 
