@@ -95,16 +95,16 @@
     AVMutableComposition* comp = [AVMutableComposition composition];
     AVMutableCompositionTrack* comptrack = [comp addMutableTrackWithMediaType:type preferredTrackID:kCMPersistentTrackID_Invalid];
     
-    [comptrack insertTimeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(0,1), CMTimeMakeWithSeconds(5,1)) ofTrack:track atTime:CMTimeMakeWithSeconds(0,1) error:nil];
-    [comptrack insertTimeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(dur-5,1), CMTimeMakeWithSeconds(5,1)) ofTrack:track atTime:CMTimeMakeWithSeconds(5,1) error:nil];
+    [comptrack insertTimeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(0,600), CMTimeMakeWithSeconds(5,600)) ofTrack:track atTime:CMTimeMakeWithSeconds(0,600) error:nil];
+    [comptrack insertTimeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(dur-5,600), CMTimeMakeWithSeconds(5,600)) ofTrack:track atTime:CMTimeMakeWithSeconds(5,600) error:nil];
     
     type = AVMediaTypeAudio;
     arr = [oldAsset tracksWithMediaType:type];
     track = [arr lastObject];
     comptrack = [comp addMutableTrackWithMediaType:type preferredTrackID:kCMPersistentTrackID_Invalid];
 
-    [comptrack insertTimeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(0,1), CMTimeMakeWithSeconds(5,1)) ofTrack:track atTime:CMTimeMakeWithSeconds(0,1) error:nil];
-    [comptrack insertTimeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(dur-5,1), CMTimeMakeWithSeconds(5,1)) ofTrack:track atTime:CMTimeMakeWithSeconds(5,1) error:nil];
+    [comptrack insertTimeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(0,600), CMTimeMakeWithSeconds(5,600)) ofTrack:track atTime:CMTimeMakeWithSeconds(0,600) error:nil];
+    [comptrack insertTimeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(dur-5,600), CMTimeMakeWithSeconds(5,600)) ofTrack:track atTime:CMTimeMakeWithSeconds(5,600) error:nil];
 
     
     type = AVMediaTypeAudio;
@@ -114,13 +114,13 @@
     track = [arr lastObject];
     
     comptrack = [comp addMutableTrackWithMediaType:type preferredTrackID:kCMPersistentTrackID_Invalid];
-    [comptrack insertTimeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(0,1), CMTimeMakeWithSeconds(10,1)) ofTrack:track atTime:CMTimeMakeWithSeconds(0,1) error:nil];
+    [comptrack insertTimeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(0,600), CMTimeMakeWithSeconds(10,600)) ofTrack:track atTime:CMTimeMakeWithSeconds(0,600) error:nil];
     
     
     
     AVMutableAudioMixInputParameters* params = [AVMutableAudioMixInputParameters audioMixInputParametersWithTrack:comptrack];
-    [params setVolume:1 atTime:CMTimeMakeWithSeconds(0,1)];
-    [params setVolumeRampFromStartVolume:1 toEndVolume:0 timeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(6,1), CMTimeMakeWithSeconds(2,1))];
+    [params setVolume:1 atTime:CMTimeMakeWithSeconds(0,600)];
+    [params setVolumeRampFromStartVolume:1 toEndVolume:0 timeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(6,600), CMTimeMakeWithSeconds(2,600))];
     AVMutableAudioMix* mix = [AVMutableAudioMix new];
     mix.inputParameters = @[params];
     
