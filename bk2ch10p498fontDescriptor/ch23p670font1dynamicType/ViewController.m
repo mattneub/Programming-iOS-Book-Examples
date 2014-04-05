@@ -19,7 +19,7 @@
                                                object:nil];
 }
 
-#define which 1
+#define which 2
 
 - (void) doDynamicType: (NSNotification*) n {
 
@@ -35,6 +35,14 @@
     
 #elif which == 2
     
+    // this should work but doesn't (bug)
+    UIFont* fbody = [UIFont fontWithName:@"GillSans" size:15];
+    UIFontDescriptor* emphasis = [fbody.fontDescriptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitItalic];
+    UIFont* femphasis = [UIFont fontWithDescriptor:emphasis size:0];
+    
+#elif which == 3
+    
+    // the workaround is to drop down to Core Text
     UIFont* fbody = [UIFont fontWithName:@"GillSans" size:15];
     CTFontRef font2 =
     CTFontCreateCopyWithSymbolicTraits (
