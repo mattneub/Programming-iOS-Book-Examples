@@ -11,7 +11,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self doDynamicType:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(doDynamicType:)
                                                  name:UIContentSizeCategoryDidChangeNotification
@@ -19,7 +18,8 @@
 }
 
 - (void) doDynamicType: (NSNotification*) n {
-    self.lab.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    NSString* style = [[self.lab.font fontDescriptor] objectForKey:UIFontDescriptorTextStyleAttribute];
+    self.lab.font = [UIFont preferredFontForTextStyle:style];
 }
 
 
