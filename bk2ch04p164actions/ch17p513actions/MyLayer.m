@@ -26,5 +26,10 @@
     return [super actionForKey:event];
 }
 
+-(void)removeFromSuperlayer {
+    NSLog(@"%@", @"I'm being removed from my superlayer");
+    [super removeFromSuperlayer];
+}
+
 
 @end

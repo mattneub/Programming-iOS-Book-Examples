@@ -72,7 +72,13 @@
     [CATransaction setValue:@"" forKey:@"byebye"];
     layer.opacity = 0;
     // the delegate will "shrink" the layer as it disappears
-
+    
+#elif which == 8
+    
+    // 8 is intended to supersede 7; I think this is a much neater way
+    layer.delegate = self;
+    [layer setValue:@"" forKey:@"farewell"];
+    // the delegate will "shrink" the layer and remove it
     
 #endif
     
@@ -133,7 +139,31 @@
             return group;
         }
     }
+    if ([key isEqualToString:@"farewell"]) {
+        CABasicAnimation* anim1 =
+        [CABasicAnimation animationWithKeyPath:@"opacity"];
+        anim1.fromValue = @(layer.opacity);
+        anim1.toValue = @0.0f;
+        CABasicAnimation* anim2 =
+        [CABasicAnimation animationWithKeyPath:@"transform"];
+        anim2.toValue = [NSValue valueWithCATransform3D:
+                         CATransform3DScale(layer.transform, 0.1, 0.1, 1.0)];
+        CAAnimationGroup* group = [CAAnimationGroup animation];
+        group.animations = @[anim1, anim2];
+        group.duration = 0.2;
+        group.delegate = self;
+        [group setValue:layer forKey:@"remove"];
+        layer.opacity = 0;
+        return group;
+    }
+
     return nil;
+}
+
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    CALayer* layer = [anim valueForKey:@"remove"];
+    if (layer)
+        [layer removeFromSuperlayer];
 }
 
 
