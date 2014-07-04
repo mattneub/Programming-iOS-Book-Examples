@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4488.2" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3715.3"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="plg-02-dW1"/>
+                        <viewControllerLayoutGuide type="bottom" id="CKp-IT-Z2I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ce-pD-bQV" customClass="MyView">
+                                <rect key="frame" x="17" y="206" width="137" height="156"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="156" id="my2-Z1-XrQ"/>
+                                    <constraint firstAttribute="width" constant="137" id="qls-Gh-s6I"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X1t-rX-xgn" customClass="MyView">
+                                <rect key="frame" x="167" y="206" width="137" height="156"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="lRg-DO-RAd">
+                                <rect key="frame" x="20" y="20" width="280" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">Instructions: waggle the mouse or finger on one black square; then hold Option or use another finger so you're waggling on both. The question is, does the view behind feel the Pinch?</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="X1t-rX-xgn" secondAttribute="trailing" constant="16" id="13l-EU-F3u"/>
+                            <constraint firstItem="1ce-pD-bQV" firstAttribute="height" secondItem="X1t-rX-xgn" secondAttribute="height" id="5MC-cz-lab"/>
+                            <constraint firstItem="1ce-pD-bQV" firstAttribute="width" secondItem="X1t-rX-xgn" secondAttribute="width" id="7zZ-CP-e0K"/>
+                            <constraint firstItem="1ce-pD-bQV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="17" id="A9K-fq-dJ3"/>
+                            <constraint firstItem="1ce-pD-bQV" firstAttribute="centerY" secondItem="X1t-rX-xgn" secondAttribute="centerY" id="P2B-s1-REZ"/>
+                            <constraint firstAttribute="centerY" secondItem="1ce-pD-bQV" secondAttribute="centerY" id="Sg1-MO-3BJ"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="vZG-48-lvh" appends="YES" id="g0g-3d-HHa"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="vZG-48-lvh">
+                    <connections>
+                        <action selector="pinch:" destination="vXZ-lx-hvc" id="7aH-6f-Owy"/>
+                    </connections>
+                </pinchGestureRecognizer>
+            </objects>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

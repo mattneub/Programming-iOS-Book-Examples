@@ -1,0 +1,290 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4196FD214D366D900D827A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FD114D366D900D827A7 /* UIKit.framework */; };
+		A4196FD414D366D900D827A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FD314D366D900D827A7 /* Foundation.framework */; };
+		A4196FD614D366D900D827A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FD514D366D900D827A7 /* CoreGraphics.framework */; };
+		A4196FDC14D366D900D827A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4196FDA14D366D900D827A7 /* InfoPlist.strings */; };
+		A4196FDE14D366D900D827A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4196FDD14D366D900D827A7 /* main.m */; };
+		A4196FE214D366D900D827A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4196FE114D366D900D827A7 /* AppDelegate.m */; };
+		A4196FE514D366D900D827A7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4196FE414D366D900D827A7 /* ViewController.m */; };
+		A4196FFB14D36B9700D827A7 /* aboutTiagol.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */; };
+		A4196FFE14D36EC800D827A7 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = A4196FFD14D36EC800D827A7 /* Player.m */; };
+		C9A8A9131823E65600E9D48D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A8A9121823E65600E9D48D /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A4196FCD14D366D900D827A7 /* backgroundPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = backgroundPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4196FD114D366D900D827A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4196FD314D366D900D827A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4196FD514D366D900D827A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4196FD914D366D900D827A7 /* backgroundPlayer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "backgroundPlayer-Info.plist"; sourceTree = "<group>"; };
+		A4196FDB14D366D900D827A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A4196FDD14D366D900D827A7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4196FDF14D366D900D827A7 /* backgroundPlayer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "backgroundPlayer-Prefix.pch"; sourceTree = "<group>"; };
+		A4196FE014D366D900D827A7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A4196FE114D366D900D827A7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A4196FE314D366D900D827A7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A4196FE414D366D900D827A7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = aboutTiagol.m4a; sourceTree = "<group>"; };
+		A4196FFC14D36EC800D827A7 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = ../../interrupter/interrupter/Player.h; sourceTree = "<group>"; };
+		A4196FFD14D36EC800D827A7 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = ../../interrupter/interrupter/Player.m; sourceTree = "<group>"; };
+		C9A8A9121823E65600E9D48D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4196FCA14D366D900D827A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4196FD214D366D900D827A7 /* UIKit.framework in Frameworks */,
+				A4196FD414D366D900D827A7 /* Foundation.framework in Frameworks */,
+				A4196FD614D366D900D827A7 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4196FC214D366D800D827A7 = {
+			isa = PBXGroup;
+			children = (
+				A4196FD714D366D900D827A7 /* backgroundPlayer */,
+				A4196FD014D366D900D827A7 /* Frameworks */,
+				A4196FCE14D366D900D827A7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4196FCE14D366D900D827A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4196FCD14D366D900D827A7 /* backgroundPlayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4196FD014D366D900D827A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4196FD114D366D900D827A7 /* UIKit.framework */,
+				A4196FD314D366D900D827A7 /* Foundation.framework */,
+				A4196FD514D366D900D827A7 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4196FD714D366D900D827A7 /* backgroundPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				A4196FE014D366D900D827A7 /* AppDelegate.h */,
+				A4196FE114D366D900D827A7 /* AppDelegate.m */,
+				A4196FE314D366D900D827A7 /* ViewController.h */,
+				A4196FE414D366D900D827A7 /* ViewController.m */,
+				C9A8A9121823E65600E9D48D /* Main.storyboard */,
+				A4196FFC14D36EC800D827A7 /* Player.h */,
+				A4196FFD14D36EC800D827A7 /* Player.m */,
+				A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */,
+				A4196FD814D366D900D827A7 /* Supporting Files */,
+			);
+			path = backgroundPlayer;
+			sourceTree = "<group>";
+		};
+		A4196FD814D366D900D827A7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4196FD914D366D900D827A7 /* backgroundPlayer-Info.plist */,
+				A4196FDA14D366D900D827A7 /* InfoPlist.strings */,
+				A4196FDD14D366D900D827A7 /* main.m */,
+				A4196FDF14D366D900D827A7 /* backgroundPlayer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4196FCC14D366D900D827A7 /* backgroundPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4196FEB14D366D900D827A7 /* Build configuration list for PBXNativeTarget "backgroundPlayer" */;
+			buildPhases = (
+				A4196FC914D366D900D827A7 /* Sources */,
+				A4196FCA14D366D900D827A7 /* Frameworks */,
+				A4196FCB14D366D900D827A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = backgroundPlayer;
+			productName = backgroundPlayer;
+			productReference = A4196FCD14D366D900D827A7 /* backgroundPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4196FC414D366D800D827A7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A4196FC714D366D800D827A7 /* Build configuration list for PBXProject "backgroundPlayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4196FC214D366D800D827A7;
+			productRefGroup = A4196FCE14D366D900D827A7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4196FCC14D366D900D827A7 /* backgroundPlayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4196FCB14D366D900D827A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4196FDC14D366D900D827A7 /* InfoPlist.strings in Resources */,
+				A4196FFB14D36B9700D827A7 /* aboutTiagol.m4a in Resources */,
+				C9A8A9131823E65600E9D48D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4196FC914D366D900D827A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4196FDE14D366D900D827A7 /* main.m in Sources */,
+				A4196FE214D366D900D827A7 /* AppDelegate.m in Sources */,
+				A4196FE514D366D900D827A7 /* ViewController.m in Sources */,
+				A4196FFE14D36EC800D827A7 /* Player.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A4196FDA14D366D900D827A7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A4196FDB14D366D900D827A7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A4196FE914D366D900D827A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4196FEA14D366D900D827A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4196FEC14D366D900D827A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "backgroundPlayer/backgroundPlayer-Prefix.pch";
+				INFOPLIST_FILE = "backgroundPlayer/backgroundPlayer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4196FED14D366D900D827A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "backgroundPlayer/backgroundPlayer-Prefix.pch";
+				INFOPLIST_FILE = "backgroundPlayer/backgroundPlayer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4196FC714D366D800D827A7 /* Build configuration list for PBXProject "backgroundPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4196FE914D366D900D827A7 /* Debug */,
+				A4196FEA14D366D900D827A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4196FEB14D366D900D827A7 /* Build configuration list for PBXNativeTarget "backgroundPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4196FEC14D366D900D827A7 /* Debug */,
+				A4196FED14D366D900D827A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4196FC414D366D800D827A7 /* Project object */;
+}

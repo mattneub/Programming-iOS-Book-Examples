@@ -1,0 +1,318 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C958C28217E4106D00DBB7B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C958C28117E4106D00DBB7B7 /* Foundation.framework */; };
+		C958C28417E4106D00DBB7B7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C958C28317E4106D00DBB7B7 /* CoreGraphics.framework */; };
+		C958C28617E4106D00DBB7B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C958C28517E4106D00DBB7B7 /* UIKit.framework */; };
+		C958C28C17E4106D00DBB7B7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C958C28A17E4106D00DBB7B7 /* InfoPlist.strings */; };
+		C958C28E17E4106D00DBB7B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C958C28D17E4106D00DBB7B7 /* main.m */; };
+		C958C29217E4106D00DBB7B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C958C29117E4106D00DBB7B7 /* AppDelegate.m */; };
+		C958C29417E4106D00DBB7B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C958C29317E4106D00DBB7B7 /* Images.xcassets */; };
+		C958C2B317E410BA00DBB7B7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C958C2B117E410BA00DBB7B7 /* RootViewController.m */; };
+		C958C2B417E410BA00DBB7B7 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C958C2B217E410BA00DBB7B7 /* RootViewController.xib */; };
+		C958C2B617E4110200DBB7B7 /* linen.png in Resources */ = {isa = PBXBuildFile; fileRef = C958C2B517E4110200DBB7B7 /* linen.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C958C27E17E4106D00DBB7B7 /* ch21p701cellBackgroundLayering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch21p701cellBackgroundLayering.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C958C28117E4106D00DBB7B7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C958C28317E4106D00DBB7B7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C958C28517E4106D00DBB7B7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C958C28917E4106D00DBB7B7 /* ch21p701cellBackgroundLayering-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch21p701cellBackgroundLayering-Info.plist"; sourceTree = "<group>"; };
+		C958C28B17E4106D00DBB7B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C958C28D17E4106D00DBB7B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C958C28F17E4106D00DBB7B7 /* ch21p701cellBackgroundLayering-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch21p701cellBackgroundLayering-Prefix.pch"; sourceTree = "<group>"; };
+		C958C29017E4106D00DBB7B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C958C29117E4106D00DBB7B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C958C29317E4106D00DBB7B7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C958C29A17E4106D00DBB7B7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C958C2B017E410BA00DBB7B7 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		C958C2B117E410BA00DBB7B7 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		C958C2B217E410BA00DBB7B7 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		C958C2B517E4110200DBB7B7 /* linen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linen.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C958C27B17E4106D00DBB7B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C958C28417E4106D00DBB7B7 /* CoreGraphics.framework in Frameworks */,
+				C958C28617E4106D00DBB7B7 /* UIKit.framework in Frameworks */,
+				C958C28217E4106D00DBB7B7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C958C27517E4106D00DBB7B7 = {
+			isa = PBXGroup;
+			children = (
+				C958C28717E4106D00DBB7B7 /* ch21p701cellBackgroundLayering */,
+				C958C28017E4106D00DBB7B7 /* Frameworks */,
+				C958C27F17E4106D00DBB7B7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C958C27F17E4106D00DBB7B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C958C27E17E4106D00DBB7B7 /* ch21p701cellBackgroundLayering.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C958C28017E4106D00DBB7B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C958C28117E4106D00DBB7B7 /* Foundation.framework */,
+				C958C28317E4106D00DBB7B7 /* CoreGraphics.framework */,
+				C958C28517E4106D00DBB7B7 /* UIKit.framework */,
+				C958C29A17E4106D00DBB7B7 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C958C28717E4106D00DBB7B7 /* ch21p701cellBackgroundLayering */ = {
+			isa = PBXGroup;
+			children = (
+				C958C29017E4106D00DBB7B7 /* AppDelegate.h */,
+				C958C29117E4106D00DBB7B7 /* AppDelegate.m */,
+				C958C2B017E410BA00DBB7B7 /* RootViewController.h */,
+				C958C2B117E410BA00DBB7B7 /* RootViewController.m */,
+				C958C2B217E410BA00DBB7B7 /* RootViewController.xib */,
+				C958C2B517E4110200DBB7B7 /* linen.png */,
+				C958C29317E4106D00DBB7B7 /* Images.xcassets */,
+				C958C28817E4106D00DBB7B7 /* Supporting Files */,
+			);
+			path = ch21p701cellBackgroundLayering;
+			sourceTree = "<group>";
+		};
+		C958C28817E4106D00DBB7B7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C958C28917E4106D00DBB7B7 /* ch21p701cellBackgroundLayering-Info.plist */,
+				C958C28A17E4106D00DBB7B7 /* InfoPlist.strings */,
+				C958C28D17E4106D00DBB7B7 /* main.m */,
+				C958C28F17E4106D00DBB7B7 /* ch21p701cellBackgroundLayering-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C958C27D17E4106D00DBB7B7 /* ch21p701cellBackgroundLayering */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C958C2AA17E4106D00DBB7B7 /* Build configuration list for PBXNativeTarget "ch21p701cellBackgroundLayering" */;
+			buildPhases = (
+				C958C27A17E4106D00DBB7B7 /* Sources */,
+				C958C27B17E4106D00DBB7B7 /* Frameworks */,
+				C958C27C17E4106D00DBB7B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ch21p701cellBackgroundLayering;
+			productName = ch21p701cellBackgroundLayering;
+			productReference = C958C27E17E4106D00DBB7B7 /* ch21p701cellBackgroundLayering.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C958C27617E4106D00DBB7B7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Matt Neuburg";
+			};
+			buildConfigurationList = C958C27917E4106D00DBB7B7 /* Build configuration list for PBXProject "ch21p701cellBackgroundLayering" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C958C27517E4106D00DBB7B7;
+			productRefGroup = C958C27F17E4106D00DBB7B7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C958C27D17E4106D00DBB7B7 /* ch21p701cellBackgroundLayering */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C958C27C17E4106D00DBB7B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C958C28C17E4106D00DBB7B7 /* InfoPlist.strings in Resources */,
+				C958C29417E4106D00DBB7B7 /* Images.xcassets in Resources */,
+				C958C2B617E4110200DBB7B7 /* linen.png in Resources */,
+				C958C2B417E410BA00DBB7B7 /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C958C27A17E4106D00DBB7B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C958C29217E4106D00DBB7B7 /* AppDelegate.m in Sources */,
+				C958C28E17E4106D00DBB7B7 /* main.m in Sources */,
+				C958C2B317E410BA00DBB7B7 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C958C28A17E4106D00DBB7B7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C958C28B17E4106D00DBB7B7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C958C2A817E4106D00DBB7B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C958C2A917E4106D00DBB7B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C958C2AB17E4106D00DBB7B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ch21p701cellBackgroundLayering/ch21p701cellBackgroundLayering-Prefix.pch";
+				INFOPLIST_FILE = "ch21p701cellBackgroundLayering/ch21p701cellBackgroundLayering-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C958C2AC17E4106D00DBB7B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ch21p701cellBackgroundLayering/ch21p701cellBackgroundLayering-Prefix.pch";
+				INFOPLIST_FILE = "ch21p701cellBackgroundLayering/ch21p701cellBackgroundLayering-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C958C27917E4106D00DBB7B7 /* Build configuration list for PBXProject "ch21p701cellBackgroundLayering" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C958C2A817E4106D00DBB7B7 /* Debug */,
+				C958C2A917E4106D00DBB7B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C958C2AA17E4106D00DBB7B7 /* Build configuration list for PBXNativeTarget "ch21p701cellBackgroundLayering" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C958C2AB17E4106D00DBB7B7 /* Debug */,
+				C958C2AC17E4106D00DBB7B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C958C27617E4106D00DBB7B7 /* Project object */;
+}
