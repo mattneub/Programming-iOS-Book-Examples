@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3257463C1966F00F00DB6E3E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3257463B1966F00F00DB6E3E /* RootViewController.swift */; };
 		C9DA2AE217E7FDBE00E322DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA2AE117E7FDBE00E322DB /* Foundation.framework */; };
 		C9DA2AE417E7FDBE00E322DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA2AE317E7FDBE00E322DB /* CoreGraphics.framework */; };
 		C9DA2AE617E7FDBE00E322DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DA2AE517E7FDBE00E322DB /* UIKit.framework */; };
@@ -14,14 +15,14 @@
 		C9DA2AEE17E7FDBF00E322DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA2AED17E7FDBF00E322DB /* main.m */; };
 		C9DA2AF217E7FDBF00E322DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA2AF117E7FDBF00E322DB /* AppDelegate.m */; };
 		C9DA2AF417E7FDBF00E322DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9DA2AF317E7FDBF00E322DB /* Images.xcassets */; };
-		C9DA2B1317E7FDF900E322DB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA2B1117E7FDF900E322DB /* RootViewController.m */; };
 		C9DA2B1417E7FDF900E322DB /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9DA2B1217E7FDF900E322DB /* RootViewController.xib */; };
-		C9DA2B1917E7FE1500E322DB /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DA2B1617E7FE1500E322DB /* Cell.m */; };
 		C9DA2B1B17E7FE1500E322DB /* trivia.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9DA2B1817E7FE1500E322DB /* trivia.txt */; };
 		C9DA2B1D17E80F5C00E322DB /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9DA2B1C17E80F5C00E322DB /* Cell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3257463A1966F00E00DB6E3E /* ch21p722variableHeights-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch21p722variableHeights-Bridging-Header.h"; sourceTree = "<group>"; };
+		3257463B1966F00F00DB6E3E /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		C9DA2ADE17E7FDBE00E322DB /* ch21p722variableHeights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch21p722variableHeights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9DA2AE117E7FDBE00E322DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9DA2AE317E7FDBE00E322DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -34,11 +35,7 @@
 		C9DA2AF117E7FDBF00E322DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9DA2AF317E7FDBF00E322DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9DA2AFA17E7FDBF00E322DB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9DA2B1017E7FDF900E322DB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		C9DA2B1117E7FDF900E322DB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		C9DA2B1217E7FDF900E322DB /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
-		C9DA2B1517E7FE1500E322DB /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
-		C9DA2B1617E7FE1500E322DB /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
 		C9DA2B1817E7FE1500E322DB /* trivia.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trivia.txt; sourceTree = "<group>"; };
 		C9DA2B1C17E80F5C00E322DB /* Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Cell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,15 +87,13 @@
 			children = (
 				C9DA2AF017E7FDBF00E322DB /* AppDelegate.h */,
 				C9DA2AF117E7FDBF00E322DB /* AppDelegate.m */,
-				C9DA2B1017E7FDF900E322DB /* RootViewController.h */,
-				C9DA2B1117E7FDF900E322DB /* RootViewController.m */,
+				3257463B1966F00F00DB6E3E /* RootViewController.swift */,
 				C9DA2B1217E7FDF900E322DB /* RootViewController.xib */,
-				C9DA2B1517E7FE1500E322DB /* Cell.h */,
-				C9DA2B1617E7FE1500E322DB /* Cell.m */,
 				C9DA2B1C17E80F5C00E322DB /* Cell.xib */,
 				C9DA2B1817E7FE1500E322DB /* trivia.txt */,
 				C9DA2AF317E7FDBF00E322DB /* Images.xcassets */,
 				C9DA2AE817E7FDBE00E322DB /* Supporting Files */,
+				3257463A1966F00E00DB6E3E /* ch21p722variableHeights-Bridging-Header.h */,
 			);
 			path = ch21p722variableHeights;
 			sourceTree = "<group>";
@@ -180,10 +175,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3257463C1966F00F00DB6E3E /* RootViewController.swift in Sources */,
 				C9DA2AF217E7FDBF00E322DB /* AppDelegate.m in Sources */,
-				C9DA2B1917E7FE1500E322DB /* Cell.m in Sources */,
 				C9DA2AEE17E7FDBF00E322DB /* main.m in Sources */,
-				C9DA2B1317E7FDF900E322DB /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,10 +273,15 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch21p722variableHeights/ch21p722variableHeights-Prefix.pch";
 				INFOPLIST_FILE = "ch21p722variableHeights/ch21p722variableHeights-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch21p722variableHeights/ch21p722variableHeights-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -293,10 +292,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch21p722variableHeights/ch21p722variableHeights-Prefix.pch";
 				INFOPLIST_FILE = "ch21p722variableHeights/ch21p722variableHeights-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch21p722variableHeights/ch21p722variableHeights-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
