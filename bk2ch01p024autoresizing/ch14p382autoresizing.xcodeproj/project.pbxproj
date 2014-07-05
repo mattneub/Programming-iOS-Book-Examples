@@ -7,26 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32A9E1491968C31900E95B5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A9E1481968C31900E95B5F /* AppDelegate.swift */; };
 		C940A31317A97F5B0021BD3F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C940A31217A97F5B0021BD3F /* Foundation.framework */; };
 		C940A31517A97F5B0021BD3F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C940A31417A97F5B0021BD3F /* CoreGraphics.framework */; };
 		C940A31717A97F5B0021BD3F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C940A31617A97F5B0021BD3F /* UIKit.framework */; };
-		C940A31D17A97F5B0021BD3F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C940A31B17A97F5B0021BD3F /* InfoPlist.strings */; };
-		C940A31F17A97F5B0021BD3F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C940A31E17A97F5B0021BD3F /* main.m */; };
-		C940A32317A97F5B0021BD3F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C940A32217A97F5B0021BD3F /* AppDelegate.m */; };
 		C940A32517A97F5B0021BD3F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C940A32417A97F5B0021BD3F /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32A9E1481968C31900E95B5F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C940A30F17A97F5B0021BD3F /* ch14p382autoresizing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch14p382autoresizing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C940A31217A97F5B0021BD3F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C940A31417A97F5B0021BD3F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C940A31617A97F5B0021BD3F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C940A31A17A97F5B0021BD3F /* ch14p382autoresizing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch14p382autoresizing-Info.plist"; sourceTree = "<group>"; };
-		C940A31C17A97F5B0021BD3F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C940A31E17A97F5B0021BD3F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C940A32017A97F5B0021BD3F /* ch14p382autoresizing-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch14p382autoresizing-Prefix.pch"; sourceTree = "<group>"; };
-		C940A32117A97F5B0021BD3F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C940A32217A97F5B0021BD3F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C940A32417A97F5B0021BD3F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C940A32B17A97F5B0021BD3F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -76,8 +70,7 @@
 		C940A31817A97F5B0021BD3F /* ch14p382autoresizing */ = {
 			isa = PBXGroup;
 			children = (
-				C940A32117A97F5B0021BD3F /* AppDelegate.h */,
-				C940A32217A97F5B0021BD3F /* AppDelegate.m */,
+				32A9E1481968C31900E95B5F /* AppDelegate.swift */,
 				C940A32417A97F5B0021BD3F /* Images.xcassets */,
 				C940A31917A97F5B0021BD3F /* Supporting Files */,
 			);
@@ -88,9 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				C940A31A17A97F5B0021BD3F /* ch14p382autoresizing-Info.plist */,
-				C940A31B17A97F5B0021BD3F /* InfoPlist.strings */,
-				C940A31E17A97F5B0021BD3F /* main.m */,
-				C940A32017A97F5B0021BD3F /* ch14p382autoresizing-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -146,7 +136,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C940A31D17A97F5B0021BD3F /* InfoPlist.strings in Resources */,
 				C940A32517A97F5B0021BD3F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,23 +147,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C940A32317A97F5B0021BD3F /* AppDelegate.m in Sources */,
-				C940A31F17A97F5B0021BD3F /* main.m in Sources */,
+				32A9E1491968C31900E95B5F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		C940A31B17A97F5B0021BD3F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C940A31C17A97F5B0021BD3F /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C940A33917A97F5B0021BD3F /* Debug */ = {
@@ -250,10 +227,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch14p382autoresizing/ch14p382autoresizing-Prefix.pch";
 				INFOPLIST_FILE = "ch14p382autoresizing/ch14p382autoresizing-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -263,9 +244,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch14p382autoresizing/ch14p382autoresizing-Prefix.pch";
 				INFOPLIST_FILE = "ch14p382autoresizing/ch14p382autoresizing-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -290,6 +274,7 @@
 				C940A33D17A97F5B0021BD3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
