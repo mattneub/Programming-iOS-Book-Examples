@@ -1,0 +1,45 @@
+
+
+import UIKit
+import QuartzCore
+
+/*
+Well, here's something I didn't expect to see: they've fixed the view transform bug!
+The first view, which is constrained by its frame origin, transforms correctly in iOS 8!
+Try it in iOS 7 and you'll see what the problem used to be ever since iOS 5
+(the problem which the other views are demonstrating various ways to solve).
+*/
+
+class ViewController : UIViewController {
+    @IBOutlet var noConstraintsView : UIView
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.noConstraintsView.setTranslatesAutoresizingMaskIntoConstraints(false)
+    }
+    
+    @IBAction func doButton(g:UIGestureRecognizer) {
+        let p = g.locationInView(g.view)
+        let v = g.view.hitTest(p, withEvent: nil)
+        if !v { return }
+        if v == g.view { return }
+        if v is MyView { return }
+        dispatch_async(dispatch_get_main_queue()) {
+            self.grow(v)
+        }
+    }
+    
+    func grow(v:UIView) {
+        println("grow")
+        v.transform = CGAffineTransformScale(v.transform, 1.2, 1.2)
+    }
+    
+    @IBAction func growLayer(g:UIGestureRecognizer) {
+        println("growLayer")
+        let v = g.view
+        v.layer.transform = CATransform3DScale(v.layer.transform, 1.2, 1.2, 1)
+    }
+    
+    
+    
+}
