@@ -9,6 +9,14 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
+func dictionaryOfNames(arr:UIView...) -> Dictionary<String,UIView> {
+    var d = Dictionary<String,UIView>()
+    for (ix,v) in enumerate(arr) {
+        d["v\(ix+1)"] = v
+    }
+    return d
+}
+
 @UIApplicationMain class AppDelegate : UIResponder, UIApplicationDelegate {
     
     var window : UIWindow?
@@ -107,7 +115,10 @@ func delay(delay:Double, closure:()->()) {
             
             // NSDictionaryOfVariableBindings(v2,v3) // it's a macro, no macros in Swift
             
-            let d = ["v2":v2,"v3":v3]
+            // let d = ["v2":v2,"v3":v3]
+            // okay, that's boring...
+            // let's write our own Swift NSDictionaryOfVariableBindings substitute (sort of)
+            let d = dictionaryOfNames(v1,v2,v3)
             v1.addConstraints(
                 NSLayoutConstraint.constraintsWithVisualFormat(
                     "H:|[v2]|", options: nil, metrics: nil, views: d)
