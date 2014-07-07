@@ -274,6 +274,7 @@
 				GCC_PREFIX_HEADER = "throbAnimation/ch14p400transformsAndConstraints2-Prefix.pch";
 				INFOPLIST_FILE = "throbAnimation/ch14p400transformsAndConstraints2-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch14p400transformsAndConstraints2;
 				SWIFT_OBJC_BRIDGING_HEADER = "throbAnimation/ch14p400transformsAndConstraints2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -291,6 +292,7 @@
 				GCC_PREFIX_HEADER = "throbAnimation/ch14p400transformsAndConstraints2-Prefix.pch";
 				INFOPLIST_FILE = "throbAnimation/ch14p400transformsAndConstraints2-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch14p400transformsAndConstraints2;
 				SWIFT_OBJC_BRIDGING_HEADER = "throbAnimation/ch14p400transformsAndConstraints2-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
