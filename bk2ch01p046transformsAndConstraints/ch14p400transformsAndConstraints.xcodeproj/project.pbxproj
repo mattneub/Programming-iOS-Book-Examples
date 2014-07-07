@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		322373E51969F073000F2852 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322373E41969F073000F2852 /* ViewController.swift */; };
 		322373E71969F301000F2852 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322373E61969F301000F2852 /* MyView.swift */; };
+		322EA95C196AD82D00E67833 /* LoggingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322EA95B196AD82D00E67833 /* LoggingView.swift */; };
 		C953C09E17ABFD7000320991 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C953C09D17ABFD7000320991 /* Foundation.framework */; };
 		C953C0A017ABFD7000320991 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C953C09F17ABFD7000320991 /* CoreGraphics.framework */; };
 		C953C0A217ABFD7000320991 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C953C0A117ABFD7000320991 /* UIKit.framework */; };
@@ -23,6 +24,7 @@
 		322373E31969F073000F2852 /* ch14p400transformsAndConstraints-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch14p400transformsAndConstraints-Bridging-Header.h"; sourceTree = "<group>"; };
 		322373E41969F073000F2852 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		322373E61969F301000F2852 /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		322EA95B196AD82D00E67833 /* LoggingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingView.swift; sourceTree = "<group>"; };
 		C953C09A17ABFD7000320991 /* ch14p400transformsAndConstraints.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch14p400transformsAndConstraints.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C953C09D17ABFD7000320991 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C953C09F17ABFD7000320991 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,6 +90,7 @@
 				C953C0AF17ABFD7000320991 /* Main.storyboard */,
 				322373E41969F073000F2852 /* ViewController.swift */,
 				322373E61969F301000F2852 /* MyView.swift */,
+				322EA95B196AD82D00E67833 /* LoggingView.swift */,
 				C953C0B517ABFD7000320991 /* Images.xcassets */,
 				C953C0A417ABFD7000320991 /* Supporting Files */,
 				322373E31969F073000F2852 /* ch14p400transformsAndConstraints-Bridging-Header.h */,
@@ -173,6 +176,7 @@
 			files = (
 				322373E71969F301000F2852 /* MyView.swift in Sources */,
 				322373E51969F073000F2852 /* ViewController.swift in Sources */,
+				322EA95C196AD82D00E67833 /* LoggingView.swift in Sources */,
 				C953C0AE17ABFD7000320991 /* AppDelegate.m in Sources */,
 				C953C0AA17ABFD7000320991 /* main.m in Sources */,
 			);

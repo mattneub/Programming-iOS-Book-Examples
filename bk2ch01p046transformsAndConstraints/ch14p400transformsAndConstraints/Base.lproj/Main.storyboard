@@ -13,11 +13,11 @@
                         <viewControllerLayoutGuide type="top" id="LUB-Tp-gDo"/>
                         <viewControllerLayoutGuide type="bottom" id="Ezh-6K-d0t"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS" customClass="LoggingView" customModule="ch14p400transformsAndConstraints" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qet-ed-e6n" userLabel="TapperView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qet-ed-e6n" userLabel="TapperView" customClass="LoggingView" customModule="ch14p400transformsAndConstraints" customModuleProvider="target">
                                 <rect key="frame" x="32" y="35" width="98" height="76"/>
                                 <color key="backgroundColor" red="1" green="0.21931261690000001" blue="0.45882864099999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
