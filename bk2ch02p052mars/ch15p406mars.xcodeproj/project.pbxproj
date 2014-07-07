@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32F2FBBC196AFCC400CEFFA6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F2FBBB196AFCC400CEFFA6 /* ViewController.swift */; };
+		32F2FBBE196B056800CEFFA6 /* bottle5.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F2FBBD196B056800CEFFA6 /* bottle5.png */; };
 		C98613CA17AD916A0086DC9C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98613C917AD916A0086DC9C /* Foundation.framework */; };
 		C98613CC17AD916A0086DC9C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98613CB17AD916A0086DC9C /* CoreGraphics.framework */; };
 		C98613CE17AD916A0086DC9C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98613CD17AD916A0086DC9C /* UIKit.framework */; };
@@ -14,12 +16,13 @@
 		C98613D617AD916A0086DC9C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C98613D517AD916A0086DC9C /* main.m */; };
 		C98613DA17AD916A0086DC9C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C98613D917AD916A0086DC9C /* AppDelegate.m */; };
 		C98613DD17AD916A0086DC9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C98613DB17AD916A0086DC9C /* Main.storyboard */; };
-		C98613E017AD916A0086DC9C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98613DF17AD916A0086DC9C /* ViewController.m */; };
 		C98613E217AD916A0086DC9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C98613E117AD916A0086DC9C /* Images.xcassets */; };
 		C98613FF17AD92940086DC9C /* smileyiPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C98613FE17AD92940086DC9C /* smileyiPhone.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32F2FBBB196AFCC400CEFFA6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32F2FBBD196B056800CEFFA6 /* bottle5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottle5.png; sourceTree = "<group>"; };
 		C98613C617AD916A0086DC9C /* ch15p406mars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch15p406mars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98613C917AD916A0086DC9C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C98613CB17AD916A0086DC9C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -31,8 +34,6 @@
 		C98613D817AD916A0086DC9C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C98613D917AD916A0086DC9C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C98613DC17AD916A0086DC9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C98613DE17AD916A0086DC9C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C98613DF17AD916A0086DC9C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C98613E117AD916A0086DC9C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C98613E817AD916A0086DC9C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C98613FE17AD92940086DC9C /* smileyiPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smileyiPhone.png; sourceTree = "<group>"; };
@@ -86,9 +87,9 @@
 				C98613D817AD916A0086DC9C /* AppDelegate.h */,
 				C98613D917AD916A0086DC9C /* AppDelegate.m */,
 				C98613DB17AD916A0086DC9C /* Main.storyboard */,
-				C98613DE17AD916A0086DC9C /* ViewController.h */,
-				C98613DF17AD916A0086DC9C /* ViewController.m */,
+				32F2FBBB196AFCC400CEFFA6 /* ViewController.swift */,
 				C98613FE17AD92940086DC9C /* smileyiPhone.png */,
+				32F2FBBD196B056800CEFFA6 /* bottle5.png */,
 				C98613E117AD916A0086DC9C /* Images.xcassets */,
 				C98613D017AD916A0086DC9C /* Supporting Files */,
 			);
@@ -160,6 +161,7 @@
 			files = (
 				C98613E217AD916A0086DC9C /* Images.xcassets in Resources */,
 				C98613FF17AD92940086DC9C /* smileyiPhone.png in Resources */,
+				32F2FBBE196B056800CEFFA6 /* bottle5.png in Resources */,
 				C98613D417AD916A0086DC9C /* InfoPlist.strings in Resources */,
 				C98613DD17AD916A0086DC9C /* Main.storyboard in Resources */,
 			);
@@ -172,8 +174,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C98613E017AD916A0086DC9C /* ViewController.m in Sources */,
 				C98613DA17AD916A0086DC9C /* AppDelegate.m in Sources */,
+				32F2FBBC196AFCC400CEFFA6 /* ViewController.swift in Sources */,
 				C98613D617AD916A0086DC9C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,10 +275,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch15p406mars/ch15p406mars-Prefix.pch";
 				INFOPLIST_FILE = "ch15p406mars/ch15p406mars-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -286,9 +293,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch15p406mars/ch15p406mars-Prefix.pch";
 				INFOPLIST_FILE = "ch15p406mars/ch15p406mars-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -313,6 +324,7 @@
 				C98613FA17AD916A0086DC9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

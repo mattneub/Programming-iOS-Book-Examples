@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32F2FBC0196B089C00CEFFA6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F2FBBF196B089C00CEFFA6 /* ViewController.swift */; };
 		C986140D17ADDC6A0086DC9C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C986140C17ADDC6A0086DC9C /* Foundation.framework */; };
 		C986140F17ADDC6A0086DC9C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C986140E17ADDC6A0086DC9C /* CoreGraphics.framework */; };
 		C986141117ADDC6A0086DC9C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C986141017ADDC6A0086DC9C /* UIKit.framework */; };
@@ -14,11 +15,11 @@
 		C986141917ADDC6A0086DC9C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C986141817ADDC6A0086DC9C /* main.m */; };
 		C986141D17ADDC6A0086DC9C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C986141C17ADDC6A0086DC9C /* AppDelegate.m */; };
 		C986142017ADDC6A0086DC9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C986141E17ADDC6A0086DC9C /* Main.storyboard */; };
-		C986142317ADDC6A0086DC9C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C986142217ADDC6A0086DC9C /* ViewController.m */; };
 		C986142517ADDC6A0086DC9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C986142417ADDC6A0086DC9C /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32F2FBBF196B089C00CEFFA6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C986140917ADDC6A0086DC9C /* ch15p406marsResizable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch15p406marsResizable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C986140C17ADDC6A0086DC9C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C986140E17ADDC6A0086DC9C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -30,8 +31,6 @@
 		C986141B17ADDC6A0086DC9C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C986141C17ADDC6A0086DC9C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C986141F17ADDC6A0086DC9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C986142117ADDC6A0086DC9C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C986142217ADDC6A0086DC9C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C986142417ADDC6A0086DC9C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C986142B17ADDC6A0086DC9C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -84,8 +83,7 @@
 				C986141B17ADDC6A0086DC9C /* AppDelegate.h */,
 				C986141C17ADDC6A0086DC9C /* AppDelegate.m */,
 				C986141E17ADDC6A0086DC9C /* Main.storyboard */,
-				C986142117ADDC6A0086DC9C /* ViewController.h */,
-				C986142217ADDC6A0086DC9C /* ViewController.m */,
+				32F2FBBF196B089C00CEFFA6 /* ViewController.swift */,
 				C986142417ADDC6A0086DC9C /* Images.xcassets */,
 				C986141317ADDC6A0086DC9C /* Supporting Files */,
 			);
@@ -168,8 +166,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C986142317ADDC6A0086DC9C /* ViewController.m in Sources */,
 				C986141D17ADDC6A0086DC9C /* AppDelegate.m in Sources */,
+				32F2FBC0196B089C00CEFFA6 /* ViewController.swift in Sources */,
 				C986141917ADDC6A0086DC9C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,10 +267,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch15p406marsResizable/ch15p406marsResizable-Prefix.pch";
 				INFOPLIST_FILE = "ch15p406marsResizable/ch15p406marsResizable-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -282,9 +285,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch15p406marsResizable/ch15p406marsResizable-Prefix.pch";
 				INFOPLIST_FILE = "ch15p406marsResizable/ch15p406marsResizable-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -309,6 +316,7 @@
 				C986143D17ADDC6A0086DC9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

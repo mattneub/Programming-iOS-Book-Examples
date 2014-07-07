@@ -7,7 +7,6 @@
 {
     // Override point for customization after application launch.
     
-    self.window.tintColor = [UIColor redColor];
     
     return YES;
 }
