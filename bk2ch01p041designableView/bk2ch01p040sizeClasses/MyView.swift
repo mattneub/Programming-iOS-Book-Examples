@@ -4,7 +4,8 @@ import UIKit
 
 /*
 Demonstrating the Designable View feature, new in Xcode 6.
-The view must live in a framework of its own and be marked IBDesignable.
+The view must be marked IBDesignable.
+(In early betas it also had to live in its own framework, but no longer.)
 The result is that the storyboard draws the view more or less as it will appear.
 Thus, even though this view adds its own subviews in code, you can still see them in IB!
 The representation is not perfect but it's pretty good.
@@ -18,7 +19,7 @@ The representation is not perfect but it's pretty good.
     init(frame: CGRect) {
         super.init(frame:frame)
     }
-
+    
     init(coder aDecoder: NSCoder!) {
         super.init(coder:aDecoder)
     }
@@ -107,6 +108,6 @@ The representation is not perfect but it's pretty good.
     override func willMoveToSuperview(newSuperview: UIView!) {
         self.configure()
     }
-
+    
     
 }
