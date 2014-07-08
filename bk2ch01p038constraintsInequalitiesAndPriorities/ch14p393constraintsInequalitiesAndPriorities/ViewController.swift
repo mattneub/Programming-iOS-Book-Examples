@@ -1,8 +1,8 @@
 
 import UIKit
 
-func dictionaryOfNames(arr:UIView...) -> Dictionary<String,UIView> {
-    var d = Dictionary<String,UIView>()
+func dictionaryOfNames(arr:UIView...) -> [String:UIView] {
+    var d = [String:UIView]()
     for (ix,v) in enumerate(arr) {
         d["v\(ix+1)"] = v
     }

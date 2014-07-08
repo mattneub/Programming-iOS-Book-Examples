@@ -33,7 +33,6 @@
 		C951146217AC1A0C00F7C652 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C951146517AC1A0C00F7C652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C951146A17AC1A0C00F7C652 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C951147117AC1A0C00F7C652 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +72,6 @@
 				C951145217AC1A0C00F7C652 /* Foundation.framework */,
 				C951145417AC1A0C00F7C652 /* CoreGraphics.framework */,
 				C951145617AC1A0C00F7C652 /* UIKit.framework */,
-				C951147117AC1A0C00F7C652 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

@@ -18,7 +18,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var v1 : UIView
     @IBOutlet var v2 : UIView
-    var constraints : NSLayoutConstraint[]!
+    var constraints : [NSLayoutConstraint]!
     
     override func viewDidLoad()  {
         super.viewDidLoad()

@@ -11,7 +11,7 @@ class ViewController : UIViewController {
         let mars = UIImage(named:"Mars")
         var marsTiled = UIImage()
         
-        let which = 4
+        let which = 1
         switch which {
         case 1:
             marsTiled = mars.resizableImageWithCapInsets(UIEdgeInsetsZero, resizingMode: .Tile)

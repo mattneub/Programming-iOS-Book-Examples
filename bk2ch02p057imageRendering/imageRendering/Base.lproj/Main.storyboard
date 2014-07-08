@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -45,14 +45,28 @@
                                     <tabBarItem image="smiley2" id="zu8-Ol-5Rm"/>
                                 </items>
                             </tabBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SmileyVector" translatesAutoresizingMaskIntoConstraints="NO" id="7tY-eM-8w0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SmileyVector" translatesAutoresizingMaskIntoConstraints="NO" id="7tY-eM-8w0">
                                 <rect key="frame" x="20" y="210" width="85" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="4ZM-q8-Y1I"/>
+                                    <constraint firstAttribute="height" constant="76" id="k5V-Bu-Fxb"/>
+                                </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SmileyVector" translatesAutoresizingMaskIntoConstraints="NO" id="Sdm-VE-V7E">
-                                <rect key="frame" x="148" y="187" width="153" height="121"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SmileyVector" translatesAutoresizingMaskIntoConstraints="NO" id="Sdm-VE-V7E">
+                                <rect key="frame" x="148" y="210" width="153" height="121"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="121" id="1zb-j1-4tO"/>
+                                    <constraint firstAttribute="width" constant="153" id="FVB-pA-9ar"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7tY-eM-8w0" firstAttribute="top" secondItem="Sdm-VE-V7E" secondAttribute="top" id="PJL-Ev-1Du"/>
+                            <constraint firstItem="7tY-eM-8w0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="fB8-MD-PBM"/>
+                            <constraint firstItem="Sdm-VE-V7E" firstAttribute="leading" secondItem="7tY-eM-8w0" secondAttribute="trailing" constant="43" id="kkA-qs-l5P"/>
+                            <constraint firstItem="7tY-eM-8w0" firstAttribute="top" secondItem="bzT-7f-aWk" secondAttribute="bottom" constant="190" id="pbh-9i-vcT"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="b" destination="PIz-oe-rHG" id="GZ4-sZ-oqp"/>
@@ -72,6 +86,9 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
     </simulatedMetricsContainer>
 </document>

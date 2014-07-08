@@ -9,8 +9,8 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
-func dictionaryOfNames(arr:UIView...) -> Dictionary<String,UIView> {
-    var d = Dictionary<String,UIView>()
+func dictionaryOfNames(arr:UIView...) -> [String:UIView] {
+    var d = [String:UIView]()
     for (ix,v) in enumerate(arr) {
         d["v\(ix+1)"] = v
     }
@@ -42,7 +42,7 @@ func dictionaryOfNames(arr:UIView...) -> Dictionary<String,UIView> {
         v2.setTranslatesAutoresizingMaskIntoConstraints(false)
         v3.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-        var which = 2
+        var which = 1
         switch which {
         case 1:
             

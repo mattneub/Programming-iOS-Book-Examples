@@ -23,6 +23,9 @@ class ViewController : UIViewController {
         // one size fits all, without rasterization
         // apparently only vector PDFs are acceptable
         
+        // not demonstrated: setting alignment rectangle in asset catalog
+        // (haven't figured this out yet)
+        
     }
 }
 
