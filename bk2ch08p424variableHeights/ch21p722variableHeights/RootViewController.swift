@@ -7,7 +7,7 @@ class Cell : UITableViewCell {
 }
 
 class RootViewController : UITableViewController {
-    var trivia : String[]!
+    var trivia : [String]!
     
     override func prefersStatusBarHidden() -> Bool {
         return true
