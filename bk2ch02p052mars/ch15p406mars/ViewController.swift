@@ -3,7 +3,7 @@ import QuartzCore
 
 extension CGRect {
     var center : CGPoint {
-    return CGPointMake(CGRectGetMidX(self), CGRectGetMidY(self))
+    return CGPointMake(self.midX, self.midY)
     }
 }
 func delay(delay:Double, closure:()->()) {
@@ -40,7 +40,7 @@ class ViewController : UIViewController {
         switch which {
         case 1:
             // position using autoresizing-type behavior
-            iv.center = iv.superview.bounds.center // useful utility extension to CGRect, see above
+            iv.center = iv.superview.bounds.center // see above
             iv.frame = CGRectIntegral(iv.frame)
         case 2:
             // position using constraints
