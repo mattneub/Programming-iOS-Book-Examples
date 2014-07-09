@@ -6,4 +6,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+- (CGPatternRef) patternMaker;
+
 @end
