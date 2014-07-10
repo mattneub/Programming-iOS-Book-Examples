@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3259EE05196F380C007278D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259EE04196F380C007278D1 /* ViewController.swift */; };
 		32BFA913196EDD7B00630860 /* Smilers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFA912196EDD7B00630860 /* Smilers.swift */; };
-		32BFA916196EED0A00630860 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90742AF17B3078100506DAF /* ViewController.m */; };
 		C907429A17B3078100506DAF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C907429917B3078100506DAF /* Foundation.framework */; };
 		C907429C17B3078100506DAF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C907429B17B3078100506DAF /* CoreGraphics.framework */; };
 		C907429E17B3078100506DAF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C907429D17B3078100506DAF /* UIKit.framework */; };
@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3259EE04196F380C007278D1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32BFA912196EDD7B00630860 /* Smilers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smilers.swift; sourceTree = "<group>"; };
 		C907429617B3078100506DAF /* ch16p450drawingIntoLayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch16p450drawingIntoLayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C907429917B3078100506DAF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -32,8 +33,6 @@
 		C90742A817B3078100506DAF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C90742A917B3078100506DAF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C90742AC17B3078100506DAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C90742AE17B3078100506DAF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C90742AF17B3078100506DAF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C90742B117B3078100506DAF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C90742B817B3078100506DAF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -86,8 +85,7 @@
 				C90742A817B3078100506DAF /* AppDelegate.h */,
 				C90742A917B3078100506DAF /* AppDelegate.m */,
 				C90742AB17B3078100506DAF /* Main.storyboard */,
-				C90742AE17B3078100506DAF /* ViewController.h */,
-				C90742AF17B3078100506DAF /* ViewController.m */,
+				3259EE04196F380C007278D1 /* ViewController.swift */,
 				32BFA912196EDD7B00630860 /* Smilers.swift */,
 				C90742B117B3078100506DAF /* Images.xcassets */,
 				C90742A017B3078100506DAF /* Supporting Files */,
@@ -171,10 +169,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3259EE05196F380C007278D1 /* ViewController.swift in Sources */,
 				C90742AA17B3078100506DAF /* AppDelegate.m in Sources */,
 				C90742A617B3078100506DAF /* main.m in Sources */,
 				32BFA913196EDD7B00630860 /* Smilers.swift in Sources */,
-				32BFA916196EED0A00630860 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
