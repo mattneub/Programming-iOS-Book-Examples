@@ -1,9 +1,6 @@
 
 #import "ViewController.h"
-#import "Smiler.h"
-#import "Smiler2.h"
-#import "SmilerLayer.h"
-#import "SmilerLayer2.h"
+#import "ch16p450drawingIntoLayer-Swift.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) IBOutletCollection(UIView) NSArray* views;

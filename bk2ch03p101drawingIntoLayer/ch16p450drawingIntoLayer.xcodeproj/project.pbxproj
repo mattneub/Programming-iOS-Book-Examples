@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32BFA913196EDD7B00630860 /* Smilers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFA912196EDD7B00630860 /* Smilers.swift */; };
+		32BFA916196EED0A00630860 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90742AF17B3078100506DAF /* ViewController.m */; };
 		C907429A17B3078100506DAF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C907429917B3078100506DAF /* Foundation.framework */; };
 		C907429C17B3078100506DAF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C907429B17B3078100506DAF /* CoreGraphics.framework */; };
 		C907429E17B3078100506DAF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C907429D17B3078100506DAF /* UIKit.framework */; };
@@ -14,15 +16,11 @@
 		C90742A617B3078100506DAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C90742A517B3078100506DAF /* main.m */; };
 		C90742AA17B3078100506DAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C90742A917B3078100506DAF /* AppDelegate.m */; };
 		C90742AD17B3078100506DAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90742AB17B3078100506DAF /* Main.storyboard */; };
-		C90742B017B3078100506DAF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90742AF17B3078100506DAF /* ViewController.m */; };
 		C90742B217B3078100506DAF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90742B117B3078100506DAF /* Images.xcassets */; };
-		C90742D317B30A8000506DAF /* Smiler.m in Sources */ = {isa = PBXBuildFile; fileRef = C90742D217B30A8000506DAF /* Smiler.m */; };
-		C90742D617B30C6C00506DAF /* Smiler2.m in Sources */ = {isa = PBXBuildFile; fileRef = C90742D517B30C6C00506DAF /* Smiler2.m */; };
-		C90742D917B30D8700506DAF /* SmilerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C90742D817B30D8700506DAF /* SmilerLayer.m */; };
-		C90742DC17B30E1300506DAF /* SmilerLayer2.m in Sources */ = {isa = PBXBuildFile; fileRef = C90742DB17B30E1300506DAF /* SmilerLayer2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32BFA912196EDD7B00630860 /* Smilers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smilers.swift; sourceTree = "<group>"; };
 		C907429617B3078100506DAF /* ch16p450drawingIntoLayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch16p450drawingIntoLayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C907429917B3078100506DAF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C907429B17B3078100506DAF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -38,14 +36,6 @@
 		C90742AF17B3078100506DAF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C90742B117B3078100506DAF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C90742B817B3078100506DAF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C90742D117B30A8000506DAF /* Smiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Smiler.h; sourceTree = "<group>"; };
-		C90742D217B30A8000506DAF /* Smiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Smiler.m; sourceTree = "<group>"; };
-		C90742D417B30C6C00506DAF /* Smiler2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Smiler2.h; sourceTree = "<group>"; };
-		C90742D517B30C6C00506DAF /* Smiler2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Smiler2.m; sourceTree = "<group>"; };
-		C90742D717B30D8700506DAF /* SmilerLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmilerLayer.h; sourceTree = "<group>"; };
-		C90742D817B30D8700506DAF /* SmilerLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmilerLayer.m; sourceTree = "<group>"; };
-		C90742DA17B30E1300506DAF /* SmilerLayer2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmilerLayer2.h; sourceTree = "<group>"; };
-		C90742DB17B30E1300506DAF /* SmilerLayer2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmilerLayer2.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,14 +88,7 @@
 				C90742AB17B3078100506DAF /* Main.storyboard */,
 				C90742AE17B3078100506DAF /* ViewController.h */,
 				C90742AF17B3078100506DAF /* ViewController.m */,
-				C90742D117B30A8000506DAF /* Smiler.h */,
-				C90742D217B30A8000506DAF /* Smiler.m */,
-				C90742D417B30C6C00506DAF /* Smiler2.h */,
-				C90742D517B30C6C00506DAF /* Smiler2.m */,
-				C90742D717B30D8700506DAF /* SmilerLayer.h */,
-				C90742D817B30D8700506DAF /* SmilerLayer.m */,
-				C90742DA17B30E1300506DAF /* SmilerLayer2.h */,
-				C90742DB17B30E1300506DAF /* SmilerLayer2.m */,
+				32BFA912196EDD7B00630860 /* Smilers.swift */,
 				C90742B117B3078100506DAF /* Images.xcassets */,
 				C90742A017B3078100506DAF /* Supporting Files */,
 			);
@@ -188,13 +171,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C90742B017B3078100506DAF /* ViewController.m in Sources */,
-				C90742D617B30C6C00506DAF /* Smiler2.m in Sources */,
 				C90742AA17B3078100506DAF /* AppDelegate.m in Sources */,
-				C90742D917B30D8700506DAF /* SmilerLayer.m in Sources */,
 				C90742A617B3078100506DAF /* main.m in Sources */,
-				C90742DC17B30E1300506DAF /* SmilerLayer2.m in Sources */,
-				C90742D317B30A8000506DAF /* Smiler.m in Sources */,
+				32BFA913196EDD7B00630860 /* Smilers.swift in Sources */,
+				32BFA916196EED0A00630860 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,7 +231,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -282,7 +262,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -293,11 +273,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch16p450drawingIntoLayer/ch16p450drawingIntoLayer-Prefix.pch";
 				INFOPLIST_FILE = "ch16p450drawingIntoLayer/ch16p450drawingIntoLayer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -308,10 +292,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch16p450drawingIntoLayer/ch16p450drawingIntoLayer-Prefix.pch";
 				INFOPLIST_FILE = "ch16p450drawingIntoLayer/ch16p450drawingIntoLayer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -337,6 +324,7 @@
 				C90742CA17B3078100506DAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
