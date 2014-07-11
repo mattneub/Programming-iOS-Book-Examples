@@ -20,14 +20,14 @@
 
 /* Begin PBXFileReference section */
 		328279BA196F6460005E15EF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C9602BBC17B682B0001E8BC8 /* ch17p484cancelAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch17p484cancelAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9602BBC17B682B0001E8BC8 /* ch17p484cancelAnimation2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch17p484cancelAnimation2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9602BBF17B682B0001E8BC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9602BC117B682B0001E8BC8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C9602BC317B682B0001E8BC8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C9602BC717B682B0001E8BC8 /* ch17p484cancelAnimation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch17p484cancelAnimation-Info.plist"; sourceTree = "<group>"; };
+		C9602BC717B682B0001E8BC8 /* ch17p484cancelAnimation2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch17p484cancelAnimation2-Info.plist"; sourceTree = "<group>"; };
 		C9602BC917B682B0001E8BC8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C9602BCB17B682B0001E8BC8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9602BCD17B682B0001E8BC8 /* ch17p484cancelAnimation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch17p484cancelAnimation-Prefix.pch"; sourceTree = "<group>"; };
+		C9602BCD17B682B0001E8BC8 /* ch17p484cancelAnimation2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch17p484cancelAnimation2-Prefix.pch"; sourceTree = "<group>"; };
 		C9602BCE17B682B0001E8BC8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9602BCF17B682B0001E8BC8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9602BD217B682B0001E8BC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		C9602BBD17B682B0001E8BC8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C9602BBC17B682B0001E8BC8 /* ch17p484cancelAnimation.app */,
+				C9602BBC17B682B0001E8BC8 /* ch17p484cancelAnimation2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,10 +93,10 @@
 		C9602BC617B682B0001E8BC8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C9602BC717B682B0001E8BC8 /* ch17p484cancelAnimation-Info.plist */,
+				C9602BC717B682B0001E8BC8 /* ch17p484cancelAnimation2-Info.plist */,
 				C9602BC817B682B0001E8BC8 /* InfoPlist.strings */,
 				C9602BCB17B682B0001E8BC8 /* main.m */,
-				C9602BCD17B682B0001E8BC8 /* ch17p484cancelAnimation-Prefix.pch */,
+				C9602BCD17B682B0001E8BC8 /* ch17p484cancelAnimation2-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -104,9 +104,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C9602BBB17B682B0001E8BC8 /* ch17p484cancelAnimation */ = {
+		C9602BBB17B682B0001E8BC8 /* ch17p484cancelAnimation2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9602BEE17B682B1001E8BC8 /* Build configuration list for PBXNativeTarget "ch17p484cancelAnimation" */;
+			buildConfigurationList = C9602BEE17B682B1001E8BC8 /* Build configuration list for PBXNativeTarget "ch17p484cancelAnimation2" */;
 			buildPhases = (
 				C9602BB817B682B0001E8BC8 /* Sources */,
 				C9602BB917B682B0001E8BC8 /* Frameworks */,
@@ -116,9 +116,9 @@
 			);
 			dependencies = (
 			);
-			name = ch17p484cancelAnimation;
+			name = ch17p484cancelAnimation2;
 			productName = ch17p484cancelAnimation;
-			productReference = C9602BBC17B682B0001E8BC8 /* ch17p484cancelAnimation.app */;
+			productReference = C9602BBC17B682B0001E8BC8 /* ch17p484cancelAnimation2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -130,7 +130,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
-			buildConfigurationList = C9602BB717B682B0001E8BC8 /* Build configuration list for PBXProject "ch17p484cancelAnimation" */;
+			buildConfigurationList = C9602BB717B682B0001E8BC8 /* Build configuration list for PBXProject "ch17p484cancelAnimation2" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -143,7 +143,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C9602BBB17B682B0001E8BC8 /* ch17p484cancelAnimation */,
+				C9602BBB17B682B0001E8BC8 /* ch17p484cancelAnimation2 */,
 			);
 		};
 /* End PBXProject section */
@@ -269,12 +269,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch17p484cancelAnimation/ch17p484cancelAnimation-Prefix.pch";
-				INFOPLIST_FILE = "ch17p484cancelAnimation/ch17p484cancelAnimation-Info.plist";
+				GCC_PREFIX_HEADER = "ch17p484cancelAnimation/ch17p484cancelAnimation2-Prefix.pch";
+				INFOPLIST_FILE = "ch17p484cancelAnimation/ch17p484cancelAnimation2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch17p484cancelAnimation2;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -287,12 +287,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch17p484cancelAnimation/ch17p484cancelAnimation-Prefix.pch";
-				INFOPLIST_FILE = "ch17p484cancelAnimation/ch17p484cancelAnimation-Info.plist";
+				GCC_PREFIX_HEADER = "ch17p484cancelAnimation/ch17p484cancelAnimation2-Prefix.pch";
+				INFOPLIST_FILE = "ch17p484cancelAnimation/ch17p484cancelAnimation2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch17p484cancelAnimation2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -300,7 +300,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C9602BB717B682B0001E8BC8 /* Build configuration list for PBXProject "ch17p484cancelAnimation" */ = {
+		C9602BB717B682B0001E8BC8 /* Build configuration list for PBXProject "ch17p484cancelAnimation2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9602BEC17B682B1001E8BC8 /* Debug */,
@@ -309,7 +309,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9602BEE17B682B1001E8BC8 /* Build configuration list for PBXNativeTarget "ch17p484cancelAnimation" */ = {
+		C9602BEE17B682B1001E8BC8 /* Build configuration list for PBXNativeTarget "ch17p484cancelAnimation2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9602BEF17B682B1001E8BC8 /* Debug */,
