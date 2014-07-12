@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3283079A19718E3B002B6BFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283079919718E3B002B6BFF /* ViewController.swift */; };
 		C906E76B17B7DDA800AA51E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C906E76A17B7DDA800AA51E8 /* Foundation.framework */; };
 		C906E76D17B7DDA800AA51E8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C906E76C17B7DDA800AA51E8 /* CoreGraphics.framework */; };
 		C906E76F17B7DDA800AA51E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C906E76E17B7DDA800AA51E8 /* UIKit.framework */; };
@@ -14,11 +15,11 @@
 		C906E77717B7DDA800AA51E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C906E77617B7DDA800AA51E8 /* main.m */; };
 		C906E77B17B7DDA800AA51E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C906E77A17B7DDA800AA51E8 /* AppDelegate.m */; };
 		C906E77E17B7DDA800AA51E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C906E77C17B7DDA800AA51E8 /* Main.storyboard */; };
-		C906E78117B7DDA800AA51E8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C906E78017B7DDA800AA51E8 /* ViewController.m */; };
 		C906E78317B7DDA800AA51E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C906E78217B7DDA800AA51E8 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3283079919718E3B002B6BFF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C906E76717B7DDA800AA51E8 /* Dynamics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dynamics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C906E76A17B7DDA800AA51E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C906E76C17B7DDA800AA51E8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -30,8 +31,6 @@
 		C906E77917B7DDA800AA51E8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C906E77A17B7DDA800AA51E8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C906E77D17B7DDA800AA51E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C906E77F17B7DDA800AA51E8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C906E78017B7DDA800AA51E8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C906E78217B7DDA800AA51E8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C906E78917B7DDA900AA51E8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -84,8 +83,7 @@
 				C906E77917B7DDA800AA51E8 /* AppDelegate.h */,
 				C906E77A17B7DDA800AA51E8 /* AppDelegate.m */,
 				C906E77C17B7DDA800AA51E8 /* Main.storyboard */,
-				C906E77F17B7DDA800AA51E8 /* ViewController.h */,
-				C906E78017B7DDA800AA51E8 /* ViewController.m */,
+				3283079919718E3B002B6BFF /* ViewController.swift */,
 				C906E78217B7DDA800AA51E8 /* Images.xcassets */,
 				C906E77117B7DDA800AA51E8 /* Supporting Files */,
 			);
@@ -168,8 +166,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C906E78117B7DDA800AA51E8 /* ViewController.m in Sources */,
 				C906E77B17B7DDA800AA51E8 /* AppDelegate.m in Sources */,
+				3283079A19718E3B002B6BFF /* ViewController.swift in Sources */,
 				C906E77717B7DDA800AA51E8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,7 +225,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -258,7 +256,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -269,10 +267,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dynamics/Dynamics-Prefix.pch";
 				INFOPLIST_FILE = "Dynamics/Dynamics-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -282,9 +284,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dynamics/Dynamics-Prefix.pch";
 				INFOPLIST_FILE = "Dynamics/Dynamics-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32830796197169E5002B6BFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32830795197169E5002B6BFF /* ViewController.swift */; };
 		C94DC23317BAB5EA002DC560 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94DC23217BAB5EA002DC560 /* Foundation.framework */; };
 		C94DC23517BAB5EA002DC560 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94DC23417BAB5EA002DC560 /* CoreGraphics.framework */; };
 		C94DC23717BAB5EA002DC560 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94DC23617BAB5EA002DC560 /* UIKit.framework */; };
@@ -14,11 +15,11 @@
 		C94DC23F17BAB5EA002DC560 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C94DC23E17BAB5EA002DC560 /* main.m */; };
 		C94DC24317BAB5EA002DC560 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C94DC24217BAB5EA002DC560 /* AppDelegate.m */; };
 		C94DC24617BAB5EA002DC560 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C94DC24417BAB5EA002DC560 /* Main.storyboard */; };
-		C94DC24917BAB5EA002DC560 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94DC24817BAB5EA002DC560 /* ViewController.m */; };
 		C94DC24B17BAB5EA002DC560 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C94DC24A17BAB5EA002DC560 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32830795197169E5002B6BFF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C94DC22F17BAB5EA002DC560 /* ch17p518emitThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch17p518emitThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94DC23217BAB5EA002DC560 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C94DC23417BAB5EA002DC560 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -30,8 +31,6 @@
 		C94DC24117BAB5EA002DC560 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C94DC24217BAB5EA002DC560 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C94DC24517BAB5EA002DC560 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C94DC24717BAB5EA002DC560 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C94DC24817BAB5EA002DC560 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C94DC24A17BAB5EA002DC560 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C94DC25117BAB5EA002DC560 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -84,8 +83,7 @@
 				C94DC24117BAB5EA002DC560 /* AppDelegate.h */,
 				C94DC24217BAB5EA002DC560 /* AppDelegate.m */,
 				C94DC24417BAB5EA002DC560 /* Main.storyboard */,
-				C94DC24717BAB5EA002DC560 /* ViewController.h */,
-				C94DC24817BAB5EA002DC560 /* ViewController.m */,
+				32830795197169E5002B6BFF /* ViewController.swift */,
 				C94DC24A17BAB5EA002DC560 /* Images.xcassets */,
 				C94DC23917BAB5EA002DC560 /* Supporting Files */,
 			);
@@ -168,8 +166,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C94DC24917BAB5EA002DC560 /* ViewController.m in Sources */,
 				C94DC24317BAB5EA002DC560 /* AppDelegate.m in Sources */,
+				32830796197169E5002B6BFF /* ViewController.swift in Sources */,
 				C94DC23F17BAB5EA002DC560 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,7 +225,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -258,7 +256,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -269,10 +267,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch17p518emitThis/ch17p518emitThis-Prefix.pch";
 				INFOPLIST_FILE = "ch17p518emitThis/ch17p518emitThis-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -282,9 +284,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch17p518emitThis/ch17p518emitThis-Prefix.pch";
 				INFOPLIST_FILE = "ch17p518emitThis/ch17p518emitThis-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -309,6 +314,7 @@
 				C94DC26317BAB5EA002DC560 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
