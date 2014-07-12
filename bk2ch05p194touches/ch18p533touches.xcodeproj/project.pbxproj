@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		325749181971EB5400EF48F4 /* MyViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325749171971EB5400EF48F4 /* MyViews.swift */; };
 		C9BE540817BD18D2000C941F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BE540717BD18D2000C941F /* Foundation.framework */; };
 		C9BE540A17BD18D2000C941F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BE540917BD18D2000C941F /* CoreGraphics.framework */; };
 		C9BE540C17BD18D2000C941F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BE540B17BD18D2000C941F /* UIKit.framework */; };
@@ -16,13 +17,11 @@
 		C9BE541B17BD18D2000C941F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BE541917BD18D2000C941F /* Main.storyboard */; };
 		C9BE541E17BD18D2000C941F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE541D17BD18D2000C941F /* ViewController.m */; };
 		C9BE542017BD18D2000C941F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BE541F17BD18D2000C941F /* Images.xcassets */; };
-		C9BE544417BD1BED000C941F /* MyView0.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE543D17BD1BED000C941F /* MyView0.m */; };
-		C9BE544517BD1BED000C941F /* MyView1.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE543F17BD1BED000C941F /* MyView1.m */; };
-		C9BE544617BD1BED000C941F /* MyView2.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE544117BD1BED000C941F /* MyView2.m */; };
 		C9BE544717BD1BED000C941F /* MyView3.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE544317BD1BED000C941F /* MyView3.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		325749171971EB5400EF48F4 /* MyViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViews.swift; sourceTree = "<group>"; };
 		C9BE540417BD18D2000C941F /* ch18p533touches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch18p533touches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BE540717BD18D2000C941F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9BE540917BD18D2000C941F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -98,6 +97,7 @@
 				C9BE541917BD18D2000C941F /* Main.storyboard */,
 				C9BE541C17BD18D2000C941F /* ViewController.h */,
 				C9BE541D17BD18D2000C941F /* ViewController.m */,
+				325749171971EB5400EF48F4 /* MyViews.swift */,
 				C9BE543C17BD1BED000C941F /* MyView0.h */,
 				C9BE543D17BD1BED000C941F /* MyView0.m */,
 				C9BE543E17BD1BED000C941F /* MyView1.h */,
@@ -190,10 +190,8 @@
 			files = (
 				C9BE544717BD1BED000C941F /* MyView3.m in Sources */,
 				C9BE541E17BD18D2000C941F /* ViewController.m in Sources */,
-				C9BE544417BD1BED000C941F /* MyView0.m in Sources */,
 				C9BE541817BD18D2000C941F /* AppDelegate.m in Sources */,
-				C9BE544617BD1BED000C941F /* MyView2.m in Sources */,
-				C9BE544517BD1BED000C941F /* MyView1.m in Sources */,
+				325749181971EB5400EF48F4 /* MyViews.swift in Sources */,
 				C9BE541417BD18D2000C941F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,7 +249,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -282,7 +280,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -293,10 +291,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch18p533touches/ch18p533touches-Prefix.pch";
 				INFOPLIST_FILE = "ch18p533touches/ch18p533touches-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -306,9 +308,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch18p533touches/ch18p533touches-Prefix.pch";
 				INFOPLIST_FILE = "ch18p533touches/ch18p533touches-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -333,6 +338,7 @@
 				C9BE543817BD18D2000C941F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
