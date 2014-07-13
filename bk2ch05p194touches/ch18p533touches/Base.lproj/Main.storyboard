@@ -54,7 +54,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" id="ccX-Hm-634" customClass="MyView3">
+                            <view contentMode="scaleToFill" id="ccX-Hm-634" customClass="MyView3" customModule="ch18p533touches" customModuleProvider="target">
                                 <rect key="frame" x="20" y="404" width="150" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>

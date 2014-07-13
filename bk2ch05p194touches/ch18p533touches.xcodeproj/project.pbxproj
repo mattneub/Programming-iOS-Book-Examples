@@ -17,7 +17,6 @@
 		C9BE541B17BD18D2000C941F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BE541917BD18D2000C941F /* Main.storyboard */; };
 		C9BE541E17BD18D2000C941F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE541D17BD18D2000C941F /* ViewController.m */; };
 		C9BE542017BD18D2000C941F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BE541F17BD18D2000C941F /* Images.xcassets */; };
-		C9BE544717BD1BED000C941F /* MyView3.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BE544317BD1BED000C941F /* MyView3.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,14 +36,6 @@
 		C9BE541D17BD18D2000C941F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9BE541F17BD18D2000C941F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9BE542617BD18D2000C941F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9BE543C17BD1BED000C941F /* MyView0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView0.h; sourceTree = "<group>"; };
-		C9BE543D17BD1BED000C941F /* MyView0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView0.m; sourceTree = "<group>"; };
-		C9BE543E17BD1BED000C941F /* MyView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView1.h; sourceTree = "<group>"; };
-		C9BE543F17BD1BED000C941F /* MyView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView1.m; sourceTree = "<group>"; };
-		C9BE544017BD1BED000C941F /* MyView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView2.h; sourceTree = "<group>"; };
-		C9BE544117BD1BED000C941F /* MyView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView2.m; sourceTree = "<group>"; };
-		C9BE544217BD1BED000C941F /* MyView3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView3.h; sourceTree = "<group>"; };
-		C9BE544317BD1BED000C941F /* MyView3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView3.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,14 +89,6 @@
 				C9BE541C17BD18D2000C941F /* ViewController.h */,
 				C9BE541D17BD18D2000C941F /* ViewController.m */,
 				325749171971EB5400EF48F4 /* MyViews.swift */,
-				C9BE543C17BD1BED000C941F /* MyView0.h */,
-				C9BE543D17BD1BED000C941F /* MyView0.m */,
-				C9BE543E17BD1BED000C941F /* MyView1.h */,
-				C9BE543F17BD1BED000C941F /* MyView1.m */,
-				C9BE544017BD1BED000C941F /* MyView2.h */,
-				C9BE544117BD1BED000C941F /* MyView2.m */,
-				C9BE544217BD1BED000C941F /* MyView3.h */,
-				C9BE544317BD1BED000C941F /* MyView3.m */,
 				C9BE541F17BD18D2000C941F /* Images.xcassets */,
 				C9BE540E17BD18D2000C941F /* Supporting Files */,
 			);
@@ -188,7 +171,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9BE544717BD1BED000C941F /* MyView3.m in Sources */,
 				C9BE541E17BD18D2000C941F /* ViewController.m in Sources */,
 				C9BE541817BD18D2000C941F /* AppDelegate.m in Sources */,
 				325749181971EB5400EF48F4 /* MyViews.swift in Sources */,

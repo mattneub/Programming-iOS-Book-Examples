@@ -2,6 +2,15 @@
 
 import UIKit
 
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
+
 class MyView0 : UIView {
     
     override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
@@ -58,18 +67,16 @@ class MyView1 : UIView {
 
 class MyView2 : UIView {
     var time : NSTimeInterval?
-    var q : dispatch_queue_t!
-    var timer : dispatch_source_t!
-    var firsttime = false
+    var single = false
+    
+    // see 54cf020903 for an earlier, overblown attempt using timer dispatch source
+    // (because they can be cancelled, unlike dispatch_after)
     
     override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
         let ct = (touches.anyObject() as UITouch).tapCount
         switch ct {
         case 2:
-            if let timer = self.timer {
-                dispatch_source_cancel(timer)
-                self.timer = nil
-            }
+            self.single = false
         default: break
         }
     }
@@ -78,30 +85,108 @@ class MyView2 : UIView {
         let ct = (touches.anyObject() as UITouch).tapCount
         switch ct {
         case 1:
-            if !self.q {
-                self.q = dispatch_queue_create("timer",nil)
-            }
-            self.timer = dispatch_source_create(
-                DISPATCH_SOURCE_TYPE_TIMER,
-                0, 0, self.q)
-            dispatch_source_set_timer(self.timer,
-                dispatch_walltime(nil, 0),
-                UInt64(0.3 * Double(NSEC_PER_SEC)), UInt64(0.05 * Double(NSEC_PER_SEC)))
-            dispatch_source_set_event_handler(self.timer, {
-                if self.firsttime {
-                    self.firsttime = false
-                } else {
+            self.single = true
+            delay(0.3) {
+                if self.single {
                     println("single tap")
-                    dispatch_source_cancel(self.timer)
-                    self.timer = nil
                 }
-                })
-            self.firsttime = true
-            dispatch_resume(self.timer)
+            }
         case 2:
             println("double tap")
         default: break
         }
     }
+    
+    // dropped the long-press example
+    /*
+    - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    self->_time = [(UITouch*)touches.anyObject timestamp];
+    [self performSelector:@selector(touchWasLong)
+    withObject:nil afterDelay:0.4];
+    }
+    
+    - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSTimeInterval diff = event.timestamp - self->_time;
+    if (diff < 0.4) {
+    NSLog(@"short");
+    [NSObject cancelPreviousPerformRequestsWithTarget:self
+    selector:@selector(touchWasLong)
+    object:nil];
+    }
+*/
+}
+
+class MyView3 : UIView {
+    var decidedDirection = false
+    var horiz = false
+    var decidedTapOrDrag = false
+    var drag = false
+    var single = false
+    
+    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+        // be undecided
+        self.decidedTapOrDrag = false
+        // prepare for a tap
+        let ct = (touches.anyObject() as UITouch).tapCount
+        switch ct {
+        case 2:
+            self.single = false
+            self.decidedTapOrDrag = true
+            self.drag = false
+            return
+        default: break
+        }
+        // prepare for a drag
+        self.decidedDirection = false
+    }
+    
+    override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
+        if self.decidedTapOrDrag && !self.drag {return}
+        
+        self.superview.bringSubviewToFront(self)
+        let t = touches.anyObject() as UITouch
+        
+        self.decidedTapOrDrag = true
+        self.drag = true
+        if !self.decidedDirection {
+            self.decidedDirection = true
+            let then = t.previousLocationInView(self)
+            let now = t.locationInView(self)
+            let deltaX = fabs(then.x - now.x)
+            let deltaY = fabs(then.y - now.y)
+            self.horiz = deltaX >= deltaY
+        }
+        let loc = t.locationInView(self.superview)
+        let oldP = t.previousLocationInView(self.superview)
+        let deltaX = loc.x - oldP.x
+        let deltaY = loc.y - oldP.y
+        var c = self.center
+        if self.horiz {
+            c.x += deltaX
+        } else {
+            c.y += deltaY
+        }
+        self.center = c
+    }
+    
+    override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!) {
+        if !self.decidedTapOrDrag || !self.drag {
+            // end for a tap
+            let ct = (touches.anyObject() as UITouch).tapCount
+            switch ct {
+            case 1:
+                self.single = true
+                delay(0.3) {
+                    if self.single {
+                        println("single tap")
+                    }
+                }
+            case 2:
+                println("double tap")
+            default: break
+            }
+        }
+    }
+    
 }
 
