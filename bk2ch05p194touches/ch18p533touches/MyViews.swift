@@ -71,6 +71,9 @@ class MyView2 : UIView {
     
     // see 54cf020903 for an earlier, overblown attempt using timer dispatch source
     // (because they can be cancelled, unlike dispatch_after)
+    // see also http://stackoverflow.com/questions/8113268/how-to-cancel-nsblockoperation
+    // but I don't think any of that is needed here, any more than
+    // any complexity was needed with cancel...requests, as it is a single main-thread cancellation
     
     override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
         let ct = (touches.anyObject() as UITouch).tapCount
