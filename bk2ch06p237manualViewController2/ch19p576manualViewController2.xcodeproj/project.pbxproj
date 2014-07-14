@@ -19,11 +19,11 @@
 		321A940A1974343400B88F5B /* ch19p575manualViewController-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch19p575manualViewController-Bridging-Header.h"; sourceTree = "<group>"; };
 		321A940B1974343400B88F5B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		321A940D1974357700B88F5B /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		C9AFFBB717C27B8C00C3BAB0 /* ch19p575manualViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p575manualViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9AFFBB717C27B8C00C3BAB0 /* ch19p576manualViewController2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p576manualViewController2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9AFFBBA17C27B8C00C3BAB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9AFFBBC17C27B8C00C3BAB0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C9AFFBBE17C27B8C00C3BAB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C9AFFBC217C27B8C00C3BAB0 /* ch19p575manualViewController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p575manualViewController-Info.plist"; sourceTree = "<group>"; };
+		C9AFFBC217C27B8C00C3BAB0 /* ch19p576manualViewController2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p576manualViewController2-Info.plist"; sourceTree = "<group>"; };
 		C9AFFBCC17C27B8C00C3BAB0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9AFFBD317C27B8C00C3BAB0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -54,7 +54,7 @@
 		C9AFFBB817C27B8C00C3BAB0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C9AFFBB717C27B8C00C3BAB0 /* ch19p575manualViewController.app */,
+				C9AFFBB717C27B8C00C3BAB0 /* ch19p576manualViewController2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,7 +85,7 @@
 		C9AFFBC117C27B8C00C3BAB0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C9AFFBC217C27B8C00C3BAB0 /* ch19p575manualViewController-Info.plist */,
+				C9AFFBC217C27B8C00C3BAB0 /* ch19p576manualViewController2-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -93,9 +93,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C9AFFBB617C27B8C00C3BAB0 /* ch19p575manualViewController */ = {
+		C9AFFBB617C27B8C00C3BAB0 /* ch19p576manualViewController2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9AFFBE317C27B8C00C3BAB0 /* Build configuration list for PBXNativeTarget "ch19p575manualViewController" */;
+			buildConfigurationList = C9AFFBE317C27B8C00C3BAB0 /* Build configuration list for PBXNativeTarget "ch19p576manualViewController2" */;
 			buildPhases = (
 				C9AFFBB317C27B8C00C3BAB0 /* Sources */,
 				C9AFFBB417C27B8C00C3BAB0 /* Frameworks */,
@@ -105,9 +105,9 @@
 			);
 			dependencies = (
 			);
-			name = ch19p575manualViewController;
+			name = ch19p576manualViewController2;
 			productName = ch19p575manualViewController;
-			productReference = C9AFFBB717C27B8C00C3BAB0 /* ch19p575manualViewController.app */;
+			productReference = C9AFFBB717C27B8C00C3BAB0 /* ch19p576manualViewController2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -119,7 +119,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
-			buildConfigurationList = C9AFFBB217C27B8C00C3BAB0 /* Build configuration list for PBXProject "ch19p575manualViewController" */;
+			buildConfigurationList = C9AFFBB217C27B8C00C3BAB0 /* Build configuration list for PBXProject "ch19p576manualViewController2" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -131,7 +131,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C9AFFBB617C27B8C00C3BAB0 /* ch19p575manualViewController */,
+				C9AFFBB617C27B8C00C3BAB0 /* ch19p576manualViewController2 */,
 			);
 		};
 /* End PBXProject section */
@@ -236,10 +236,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "ch19p575manualViewController/ch19p575manualViewController-Info.plist";
+				INFOPLIST_FILE = "ch19p575manualViewController/ch19p576manualViewController2-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch19p576manualViewController2;
 				SWIFT_OBJC_BRIDGING_HEADER = "ch19p575manualViewController/ch19p575manualViewController-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
@@ -254,10 +254,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "ch19p575manualViewController/ch19p575manualViewController-Info.plist";
+				INFOPLIST_FILE = "ch19p575manualViewController/ch19p576manualViewController2-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch19p576manualViewController2;
 				SWIFT_OBJC_BRIDGING_HEADER = "ch19p575manualViewController/ch19p575manualViewController-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
@@ -266,7 +266,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C9AFFBB217C27B8C00C3BAB0 /* Build configuration list for PBXProject "ch19p575manualViewController" */ = {
+		C9AFFBB217C27B8C00C3BAB0 /* Build configuration list for PBXProject "ch19p576manualViewController2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9AFFBE117C27B8C00C3BAB0 /* Debug */,
@@ -275,7 +275,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9AFFBE317C27B8C00C3BAB0 /* Build configuration list for PBXNativeTarget "ch19p575manualViewController" */ = {
+		C9AFFBE317C27B8C00C3BAB0 /* Build configuration list for PBXNativeTarget "ch19p576manualViewController2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9AFFBE417C27B8C00C3BAB0 /* Debug */,
