@@ -20,14 +20,14 @@
 
 /* Begin PBXFileReference section */
 		32CDC6E319758DAB00ACE428 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C9FB996C17C5412B00B836E0 /* ch19p593rotationChangesInterface.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p593rotationChangesInterface.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9FB996C17C5412B00B836E0 /* ch19p593rotationChangesInterface2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p593rotationChangesInterface2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FB996F17C5412B00B836E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9FB997117C5412B00B836E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C9FB997317C5412B00B836E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C9FB997717C5412B00B836E0 /* ch19p593rotationChangesInterface-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p593rotationChangesInterface-Info.plist"; sourceTree = "<group>"; };
+		C9FB997717C5412B00B836E0 /* ch19p593rotationChangesInterface2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p593rotationChangesInterface2-Info.plist"; sourceTree = "<group>"; };
 		C9FB997917C5412B00B836E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C9FB997B17C5412B00B836E0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9FB997D17C5412B00B836E0 /* ch19p593rotationChangesInterface-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch19p593rotationChangesInterface-Prefix.pch"; sourceTree = "<group>"; };
+		C9FB997D17C5412B00B836E0 /* ch19p593rotationChangesInterface2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch19p593rotationChangesInterface2-Prefix.pch"; sourceTree = "<group>"; };
 		C9FB997E17C5412B00B836E0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9FB997F17C5412B00B836E0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9FB998217C5412B00B836E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		C9FB996D17C5412B00B836E0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C9FB996C17C5412B00B836E0 /* ch19p593rotationChangesInterface.app */,
+				C9FB996C17C5412B00B836E0 /* ch19p593rotationChangesInterface2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,10 +93,10 @@
 		C9FB997617C5412B00B836E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C9FB997717C5412B00B836E0 /* ch19p593rotationChangesInterface-Info.plist */,
+				C9FB997717C5412B00B836E0 /* ch19p593rotationChangesInterface2-Info.plist */,
 				C9FB997817C5412B00B836E0 /* InfoPlist.strings */,
 				C9FB997B17C5412B00B836E0 /* main.m */,
-				C9FB997D17C5412B00B836E0 /* ch19p593rotationChangesInterface-Prefix.pch */,
+				C9FB997D17C5412B00B836E0 /* ch19p593rotationChangesInterface2-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -104,9 +104,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C9FB996B17C5412B00B836E0 /* ch19p593rotationChangesInterface */ = {
+		C9FB996B17C5412B00B836E0 /* ch19p593rotationChangesInterface2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9FB999E17C5412B00B836E0 /* Build configuration list for PBXNativeTarget "ch19p593rotationChangesInterface" */;
+			buildConfigurationList = C9FB999E17C5412B00B836E0 /* Build configuration list for PBXNativeTarget "ch19p593rotationChangesInterface2" */;
 			buildPhases = (
 				C9FB996817C5412B00B836E0 /* Sources */,
 				C9FB996917C5412B00B836E0 /* Frameworks */,
@@ -116,9 +116,9 @@
 			);
 			dependencies = (
 			);
-			name = ch19p593rotationChangesInterface;
+			name = ch19p593rotationChangesInterface2;
 			productName = ch19p593rotationChangesInterface;
-			productReference = C9FB996C17C5412B00B836E0 /* ch19p593rotationChangesInterface.app */;
+			productReference = C9FB996C17C5412B00B836E0 /* ch19p593rotationChangesInterface2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -130,7 +130,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
-			buildConfigurationList = C9FB996717C5412A00B836E0 /* Build configuration list for PBXProject "ch19p593rotationChangesInterface" */;
+			buildConfigurationList = C9FB996717C5412A00B836E0 /* Build configuration list for PBXProject "ch19p593rotationChangesInterface2" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -143,7 +143,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C9FB996B17C5412B00B836E0 /* ch19p593rotationChangesInterface */,
+				C9FB996B17C5412B00B836E0 /* ch19p593rotationChangesInterface2 */,
 			);
 		};
 /* End PBXProject section */
@@ -269,11 +269,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch19p593rotationChangesInterface/ch19p593rotationChangesInterface-Prefix.pch";
-				INFOPLIST_FILE = "ch19p593rotationChangesInterface/ch19p593rotationChangesInterface-Info.plist";
+				GCC_PREFIX_HEADER = "ch19p593rotationChangesInterface/ch19p593rotationChangesInterface2-Prefix.pch";
+				INFOPLIST_FILE = "ch19p593rotationChangesInterface/ch19p593rotationChangesInterface2-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch19p593rotationChangesInterface2;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -286,11 +286,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch19p593rotationChangesInterface/ch19p593rotationChangesInterface-Prefix.pch";
-				INFOPLIST_FILE = "ch19p593rotationChangesInterface/ch19p593rotationChangesInterface-Info.plist";
+				GCC_PREFIX_HEADER = "ch19p593rotationChangesInterface/ch19p593rotationChangesInterface2-Prefix.pch";
+				INFOPLIST_FILE = "ch19p593rotationChangesInterface/ch19p593rotationChangesInterface2-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch19p593rotationChangesInterface2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -298,7 +298,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C9FB996717C5412A00B836E0 /* Build configuration list for PBXProject "ch19p593rotationChangesInterface" */ = {
+		C9FB996717C5412A00B836E0 /* Build configuration list for PBXProject "ch19p593rotationChangesInterface2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9FB999C17C5412B00B836E0 /* Debug */,
@@ -307,7 +307,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9FB999E17C5412B00B836E0 /* Build configuration list for PBXNativeTarget "ch19p593rotationChangesInterface" */ = {
+		C9FB999E17C5412B00B836E0 /* Build configuration list for PBXNativeTarget "ch19p593rotationChangesInterface2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9FB999F17C5412B00B836E0 /* Debug */,
