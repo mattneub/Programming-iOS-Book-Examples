@@ -6,9 +6,18 @@ extension CGAffineTransform : Printable {
     return NSStringFromCGAffineTransform(self)
     }
 }
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
 
 class ViewController : UIViewController {
     @IBOutlet var lab: UILabel
+    @IBOutlet var v: UIView
     
     var shouldRotate = false
     
@@ -57,16 +66,21 @@ class ViewController : UIViewController {
     @IBAction func doButton(sender:AnyObject?) {
         self.shouldRotate = !self.shouldRotate
         self.adjustLabel()
-        UIViewController.attemptRotationToDeviceOrientation()
+        delay(0.1) {
+            UIViewController.attemptRotationToDeviceOrientation()
+        }
         // there's a bug here (at least I take it to be a bug) in iOS 8 only:
+        // if you rotate the device and then tap the button,
         // we rotate but the app does not resize itself to fit the new orientation
-        // if you run in iOS 7
+        // if you run in iOS 7 it works fine
     }
     
     // rotation events (willAnimateRotation, willRotateTo, didRotateFrom) deprecated in iOS 8
     // instead, use this:
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+        // call super
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         println("will transition size change to \(size)")
         println("with target transform \(coordinator.targetTransform())") // *
         // apparently does not mean that anyone will actually have this transform ultimately
@@ -75,10 +89,8 @@ class ViewController : UIViewController {
         println("screen native bounds: \(UIScreen.mainScreen().nativeBounds)")
         println("screen coord space bounds: \(UIScreen.mainScreen().coordinateSpace.bounds)") // *
         println("screen fixed space bounds: \(UIScreen.mainScreen().fixedCoordinateSpace.bounds)") // *
-        // haven't figure this out yet
-        let sp = UIScreen.mainScreen().coordinateSpace
-        let r = sp.convertRect(sp.bounds, toCoordinateSpace: UIScreen.mainScreen().fixedCoordinateSpace)
-        println("coordinate space bounds converted into fixed space: \(r)")
+        let r = self.view.convertRect(self.lab.frame, toCoordinateSpace: UIScreen.mainScreen().fixedCoordinateSpace)
+        println("label's frame converted into fixed space: \(r)")
         println("window frame: \(self.view.window.frame)")
         println("window bounds: \(self.view.window.bounds)")
         println("window transform: \(self.view.window.transform)")
@@ -86,6 +98,8 @@ class ViewController : UIViewController {
         coordinator.animateAlongsideTransition({
             _ in
             println("transitioning size change to \(size)")
+            // arrow keeps pointing to physical top of device
+            self.v.transform = CGAffineTransformConcat(CGAffineTransformInvert(coordinator.targetTransform()), self.v.transform)
             }, completion: {
                 _ in
                 // showing that in iOS 8 the screen itself changes "size"
@@ -95,10 +109,10 @@ class ViewController : UIViewController {
                 // screen native bounds do not change and are expressed in scale resolution
                 println("screen coord space bounds: \(UIScreen.mainScreen().coordinateSpace.bounds)")
                 println("screen fixed space bounds: \(UIScreen.mainScreen().fixedCoordinateSpace.bounds)")
-                // haven't figure this out yet
-                let sp = UIScreen.mainScreen().coordinateSpace
-                let r = sp.convertRect(sp.bounds, toCoordinateSpace: UIScreen.mainScreen().fixedCoordinateSpace)
-                println("coordinate space bounds converted into fixed space: \(r)")
+                // concentrate on the green label and think about these numbers:
+                // the fixed coordinate space's top left is glued to the top left of the physical device
+                let r = self.view.convertRect(self.lab.frame, toCoordinateSpace: UIScreen.mainScreen().fixedCoordinateSpace)
+                println("label's frame converted into fixed space: \(r)")
                 println("window frame: \(self.view.window.frame)")
                 println("window bounds: \(self.view.window.bounds)")
                 // showing that in iOS 8 rotation no longer involves application of transform to view
