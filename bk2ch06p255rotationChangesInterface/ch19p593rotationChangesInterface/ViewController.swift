@@ -20,14 +20,22 @@ class ViewController : UIViewController {
         return br
     }
     
-//    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
-//        println(size)
-//    }
+    /*
+    
+    Possibly useful facts:
+    
+    "size" is received on every rotation where the app rotates, 
+    but "trait" is received only if there is a trait *change* (e.g. between portrait and landscape)
+    
+    if both are received, "trait" is first
+    
+    */
     
     // "willAnimateRotation" etc. are deprecated
     // can capture rotation stages by watching for the trait collection change
     
     override func willTransitionToTraitCollection(newCollection: UITraitCollection!, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+        println("will transition to trait collection")
         let v = self.blackRect
         var newFrameOriginX : CGFloat = v.frame.origin.x
         if newCollection.verticalSizeClass == .Compact { // landscape
@@ -50,6 +58,11 @@ class ViewController : UIViewController {
                 }
             })
     }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+        println("will transition to size")
+    }
+
 
     
     
