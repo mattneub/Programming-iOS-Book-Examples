@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		325A9EB71976CA0300673F40 /* ExtraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A9EB61976CA0300673F40 /* ExtraViewController.swift */; };
+		325A9EB91976CA7E00673F40 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A9EB81976CA7E00673F40 /* SecondViewController.swift */; };
+		325A9EBB1976CAA100673F40 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A9EBA1976CAA100673F40 /* FirstViewController.swift */; };
 		C925A3C417C925CB004E5E68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C925A3C317C925CB004E5E68 /* Foundation.framework */; };
 		C925A3C617C925CB004E5E68 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C925A3C517C925CB004E5E68 /* CoreGraphics.framework */; };
 		C925A3C817C925CB004E5E68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C925A3C717C925CB004E5E68 /* UIKit.framework */; };
@@ -15,14 +18,14 @@
 		C925A3D417C925CB004E5E68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C925A3D317C925CB004E5E68 /* AppDelegate.m */; };
 		C925A3D717C925CB004E5E68 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C925A3D517C925CB004E5E68 /* Main_iPhone.storyboard */; };
 		C925A3DA17C925CB004E5E68 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C925A3D817C925CB004E5E68 /* Main_iPad.storyboard */; };
-		C925A3DD17C925CB004E5E68 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C925A3DC17C925CB004E5E68 /* FirstViewController.m */; };
-		C925A3E017C925CB004E5E68 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C925A3DF17C925CB004E5E68 /* SecondViewController.m */; };
 		C925A3E217C925CB004E5E68 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C925A3E117C925CB004E5E68 /* Images.xcassets */; };
-		C925A40117C926C0004E5E68 /* ExtraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C925A3FF17C926C0004E5E68 /* ExtraViewController.m */; };
 		C925A40217C926C0004E5E68 /* ExtraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C925A40017C926C0004E5E68 /* ExtraViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		325A9EB61976CA0300673F40 /* ExtraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraViewController.swift; sourceTree = "<group>"; };
+		325A9EB81976CA7E00673F40 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		325A9EBA1976CAA100673F40 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		C925A3C017C925CB004E5E68 /* ch19p607modalPresentationContext.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p607modalPresentationContext.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C925A3C317C925CB004E5E68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C925A3C517C925CB004E5E68 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -35,14 +38,8 @@
 		C925A3D317C925CB004E5E68 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C925A3D617C925CB004E5E68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		C925A3D917C925CB004E5E68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		C925A3DB17C925CB004E5E68 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		C925A3DC17C925CB004E5E68 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		C925A3DE17C925CB004E5E68 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		C925A3DF17C925CB004E5E68 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		C925A3E117C925CB004E5E68 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C925A3E817C925CB004E5E68 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C925A3FE17C926C0004E5E68 /* ExtraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraViewController.h; sourceTree = "<group>"; };
-		C925A3FF17C926C0004E5E68 /* ExtraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtraViewController.m; sourceTree = "<group>"; };
 		C925A40017C926C0004E5E68 /* ExtraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExtraViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,12 +92,9 @@
 				C925A3D317C925CB004E5E68 /* AppDelegate.m */,
 				C925A3D517C925CB004E5E68 /* Main_iPhone.storyboard */,
 				C925A3D817C925CB004E5E68 /* Main_iPad.storyboard */,
-				C925A3DB17C925CB004E5E68 /* FirstViewController.h */,
-				C925A3DC17C925CB004E5E68 /* FirstViewController.m */,
-				C925A3DE17C925CB004E5E68 /* SecondViewController.h */,
-				C925A3DF17C925CB004E5E68 /* SecondViewController.m */,
-				C925A3FE17C926C0004E5E68 /* ExtraViewController.h */,
-				C925A3FF17C926C0004E5E68 /* ExtraViewController.m */,
+				325A9EBA1976CAA100673F40 /* FirstViewController.swift */,
+				325A9EB81976CA7E00673F40 /* SecondViewController.swift */,
+				325A9EB61976CA0300673F40 /* ExtraViewController.swift */,
 				C925A40017C926C0004E5E68 /* ExtraViewController.xib */,
 				C925A3E117C925CB004E5E68 /* Images.xcassets */,
 				C925A3CA17C925CB004E5E68 /* Supporting Files */,
@@ -186,11 +180,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C925A3E017C925CB004E5E68 /* SecondViewController.m in Sources */,
-				C925A40117C926C0004E5E68 /* ExtraViewController.m in Sources */,
+				325A9EB91976CA7E00673F40 /* SecondViewController.swift in Sources */,
 				C925A3D417C925CB004E5E68 /* AppDelegate.m in Sources */,
-				C925A3DD17C925CB004E5E68 /* FirstViewController.m in Sources */,
+				325A9EBB1976CAA100673F40 /* FirstViewController.swift in Sources */,
 				C925A3D017C925CB004E5E68 /* main.m in Sources */,
+				325A9EB71976CA0300673F40 /* ExtraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,7 +249,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -287,7 +281,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -299,10 +293,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p607modalPresentationContext/ch19p607modalPresentationContext-Prefix.pch";
 				INFOPLIST_FILE = "ch19p607modalPresentationContext/ch19p607modalPresentationContext-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -312,9 +310,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p607modalPresentationContext/ch19p607modalPresentationContext-Prefix.pch";
 				INFOPLIST_FILE = "ch19p607modalPresentationContext/ch19p607modalPresentationContext-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -339,6 +340,7 @@
 				C925A3FA17C925CB004E5E68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
