@@ -7,6 +7,11 @@
 
 @end
 
+/* This is example breaks under iOS 8
+ and I don't know how to fix it
+ (or whether it even can be fixed)
+ */
+
 @implementation ViewController
 
 -(NSUInteger)supportedInterfaceOrientations {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="WOE-BL-mJg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WOE-BL-mJg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
     </dependencies>
@@ -22,7 +22,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gS4-Rx-ifo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-142" y="96"/>
+            <point key="canvasLocation" x="-142" y="93"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Z6P-bO-qXw">
@@ -33,23 +33,42 @@
                         <viewControllerLayoutGuide type="bottom" id="3XG-xO-0AX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EtI-e5-scA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hTM-iJ-VGA"/>
+                    <navigationItem key="navigationItem" id="hTM-iJ-VGA">
+                        <barButtonItem key="rightBarButtonItem" image="key" id="K7n-5W-Uc4">
+                            <connections>
+                                <segue destination="O2F-eb-2KL" kind="show" id="4yK-RY-8Lu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ioq-CK-tqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="369" y="111"/>
+            <point key="canvasLocation" x="553.5" y="93.802816901408448"/>
+        </scene>
+        <!--View2 Controller-->
+        <scene sceneID="ubB-VX-hiY">
+            <objects>
+                <viewController id="O2F-eb-2KL" customClass="View2Controller" customModule="ch19p615navigationInterface" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tVF-CH-xZo"/>
+                        <viewControllerLayoutGuide type="bottom" id="wZ1-gF-j0x"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ejP-wJ-dPP">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d8L-hh-EwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1208" y="93"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
-    </simulatedMetricsContainer>
+    <resources>
+        <image name="key" width="12" height="26"/>
+    </resources>
 </document>

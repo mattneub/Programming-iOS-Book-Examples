@@ -39,7 +39,9 @@ class SecondViewController : UIViewController {
     I have not found any workaround.
 */
 
-    
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
     
     override func supportedInterfaceOrientations() -> Int {
         return Int(UIInterfaceOrientationMask.Landscape.toRaw())

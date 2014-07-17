@@ -127,7 +127,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
-			buildConfigurationList = C9E177BD17CCC53E00D6513D /* Build configuration list for PBXProject "ch19p615navigationInterface" */;
+			buildConfigurationList = C9E177BD17CCC53E00D6513D /* Build configuration list for PBXProject "bk2ch06p282navigationInterfaceStoryboard" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -286,7 +286,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C9E177BD17CCC53E00D6513D /* Build configuration list for PBXProject "ch19p615navigationInterface" */ = {
+		C9E177BD17CCC53E00D6513D /* Build configuration list for PBXProject "bk2ch06p282navigationInterfaceStoryboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9E177F217CCC53E00D6513D /* Debug */,

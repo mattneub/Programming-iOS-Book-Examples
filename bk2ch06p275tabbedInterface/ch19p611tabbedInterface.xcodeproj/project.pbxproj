@@ -7,34 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32411B0C19773F5000C7F85B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32411B0B19773F5000C7F85B /* SecondViewController.swift */; };
+		32411B0E19773FF200C7F85B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32411B0D19773FF200C7F85B /* FirstViewController.swift */; };
+		32411B10197740C100C7F85B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32411B0F197740C100C7F85B /* AppDelegate.swift */; };
 		C913A4AE17C97C3F00941E4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C913A4AD17C97C3F00941E4C /* Foundation.framework */; };
 		C913A4B017C97C3F00941E4C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C913A4AF17C97C3F00941E4C /* CoreGraphics.framework */; };
 		C913A4B217C97C3F00941E4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C913A4B117C97C3F00941E4C /* UIKit.framework */; };
-		C913A4B817C97C3F00941E4C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C913A4B617C97C3F00941E4C /* InfoPlist.strings */; };
-		C913A4BA17C97C3F00941E4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C913A4B917C97C3F00941E4C /* main.m */; };
-		C913A4BE17C97C3F00941E4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C913A4BD17C97C3F00941E4C /* AppDelegate.m */; };
 		C913A4C117C97C3F00941E4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C913A4BF17C97C3F00941E4C /* Main.storyboard */; };
-		C913A4C417C97C3F00941E4C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C913A4C317C97C3F00941E4C /* FirstViewController.m */; };
-		C913A4C717C97C3F00941E4C /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C913A4C617C97C3F00941E4C /* SecondViewController.m */; };
 		C913A4C917C97C3F00941E4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C913A4C817C97C3F00941E4C /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32411B0B19773F5000C7F85B /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		32411B0D19773FF200C7F85B /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		32411B0F197740C100C7F85B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C913A4AA17C97C3F00941E4C /* ch19p611tabbedInterface.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p611tabbedInterface.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C913A4AD17C97C3F00941E4C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C913A4AF17C97C3F00941E4C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C913A4B117C97C3F00941E4C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C913A4B517C97C3F00941E4C /* ch19p611tabbedInterface-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p611tabbedInterface-Info.plist"; sourceTree = "<group>"; };
-		C913A4B717C97C3F00941E4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C913A4B917C97C3F00941E4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C913A4BB17C97C3F00941E4C /* ch19p611tabbedInterface-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch19p611tabbedInterface-Prefix.pch"; sourceTree = "<group>"; };
-		C913A4BC17C97C3F00941E4C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C913A4BD17C97C3F00941E4C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C913A4C017C97C3F00941E4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C913A4C217C97C3F00941E4C /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		C913A4C317C97C3F00941E4C /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		C913A4C517C97C3F00941E4C /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		C913A4C617C97C3F00941E4C /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		C913A4C817C97C3F00941E4C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C913A4CF17C97C3F00941E4C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -84,13 +76,10 @@
 		C913A4B317C97C3F00941E4C /* ch19p611tabbedInterface */ = {
 			isa = PBXGroup;
 			children = (
-				C913A4BC17C97C3F00941E4C /* AppDelegate.h */,
-				C913A4BD17C97C3F00941E4C /* AppDelegate.m */,
+				32411B0F197740C100C7F85B /* AppDelegate.swift */,
 				C913A4BF17C97C3F00941E4C /* Main.storyboard */,
-				C913A4C217C97C3F00941E4C /* FirstViewController.h */,
-				C913A4C317C97C3F00941E4C /* FirstViewController.m */,
-				C913A4C517C97C3F00941E4C /* SecondViewController.h */,
-				C913A4C617C97C3F00941E4C /* SecondViewController.m */,
+				32411B0D19773FF200C7F85B /* FirstViewController.swift */,
+				32411B0B19773F5000C7F85B /* SecondViewController.swift */,
 				C913A4C817C97C3F00941E4C /* Images.xcassets */,
 				C913A4B417C97C3F00941E4C /* Supporting Files */,
 			);
@@ -101,9 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				C913A4B517C97C3F00941E4C /* ch19p611tabbedInterface-Info.plist */,
-				C913A4B617C97C3F00941E4C /* InfoPlist.strings */,
-				C913A4B917C97C3F00941E4C /* main.m */,
-				C913A4BB17C97C3F00941E4C /* ch19p611tabbedInterface-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -161,7 +147,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C913A4C917C97C3F00941E4C /* Images.xcassets in Resources */,
-				C913A4B817C97C3F00941E4C /* InfoPlist.strings in Resources */,
 				C913A4C117C97C3F00941E4C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,24 +158,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C913A4C717C97C3F00941E4C /* SecondViewController.m in Sources */,
-				C913A4BE17C97C3F00941E4C /* AppDelegate.m in Sources */,
-				C913A4C417C97C3F00941E4C /* FirstViewController.m in Sources */,
-				C913A4BA17C97C3F00941E4C /* main.m in Sources */,
+				32411B10197740C100C7F85B /* AppDelegate.swift in Sources */,
+				32411B0E19773FF200C7F85B /* FirstViewController.swift in Sources */,
+				32411B0C19773F5000C7F85B /* SecondViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C913A4B617C97C3F00941E4C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C913A4B717C97C3F00941E4C /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C913A4BF17C97C3F00941E4C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -233,7 +209,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -264,7 +240,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -275,10 +251,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch19p611tabbedInterface/ch19p611tabbedInterface-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ch19p611tabbedInterface/ch19p611tabbedInterface-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -288,9 +268,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch19p611tabbedInterface/ch19p611tabbedInterface-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ch19p611tabbedInterface/ch19p611tabbedInterface-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

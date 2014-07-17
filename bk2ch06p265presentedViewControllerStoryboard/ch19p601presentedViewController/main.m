@@ -1,8 +1,8 @@
 //
 //  main.m
-//  ch19p611tabbedInterface
+//  ch19p601presentedViewController
 //
-//  Created by Matt Neuburg on 8/24/13.
+//  Created by Matt Neuburg on 8/22/13.
 //  Copyright (c) 2013 Matt Neuburg. All rights reserved.
 //
 
