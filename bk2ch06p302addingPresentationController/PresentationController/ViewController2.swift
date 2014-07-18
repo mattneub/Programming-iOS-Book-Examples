@@ -8,11 +8,13 @@ class ViewController2: UIViewController {
     // must be done before presentation even has a chance to start
     init(coder aDecoder: NSCoder!) {
         super.init(coder:aDecoder)
+        // NB if we want to modify the _animation_, we need to set the transitioningDelegate
+        self.transitioningDelegate = self
+        // if we want to modify the _presentation_, we need to set the style to custom
         // customize presentation only on iPhone
         // how will we find out which it is? we have no traitCollection yet...
         // I know, let's ask the window
         if UIApplication.sharedApplication().keyWindow.traitCollection.userInterfaceIdiom == .Phone {
-            self.transitioningDelegate = self
             self.modalPresentationStyle = .Custom
         }
     }
@@ -36,6 +38,13 @@ class MyPresentationController : UIPresentationController {
 }
 
 // comment out what follows and then add it back incrementally
+/*
+The moral here is:
+(1) The separation into presentation controller and animation controller is ***great***!
+(2) Your eyes may glaze over at all the classes/protocols in the documentation, 
+but if you just add the pieces one by one
+it all makes perfect sense
+*/
 
 // ==========================
 
@@ -89,4 +98,46 @@ extension MyPresentationController {
         v.tintAdjustmentMode = .Automatic
     }
 }
+
+// ==========================
+
+extension ViewController2 : UIViewControllerTransitioningDelegate {
+    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+        return self
+    }
+}
+
+extension ViewController2 : UIViewControllerAnimatedTransitioning {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning!) -> NSTimeInterval {
+        return 0.4
+    }
+    
+    func animateTransition(transitionContext: UIViewControllerContextTransitioning!) {
+        let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
+        let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
+        
+        let con = transitionContext.containerView()
+        
+        let r1start = transitionContext.initialFrameForViewController(vc1)
+        let r2end = transitionContext.finalFrameForViewController(vc2)
+        
+        let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)
+        let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)
+        
+        v2.frame = r2end
+        v2.transform = CGAffineTransformMakeScale(0.1, 0.1)
+        v2.alpha = 0
+        con.addSubview(v2)
+        
+        UIView.animateWithDuration(0.4, animations: {
+            v2.alpha = 1
+            v2.transform = CGAffineTransformIdentity
+            }, completion: {
+                _ in
+                transitionContext.completeTransition(true)
+            })
+        
+    }
+}
+
 
