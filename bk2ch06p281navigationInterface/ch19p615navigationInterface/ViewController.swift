@@ -22,6 +22,10 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
     func navigate() {
         let v2c = View2Controller(nibName: nil, bundle: nil)
         self.navigationController.pushViewController(v2c, animated: true)
+        // alternatively, can use new way in iOS 8:
+        // self.showViewController(v2c, sender: self)
+        // makes no difference here; the purpose is to loosen the coupling ...
+        // ... in a possible split view controller situation
     }
     
     override func viewDidLoad() {
