@@ -28,7 +28,7 @@
     return 0.4;
 }
 
-#define which 2
+#define which 1
 #if which == 1
 
 -(void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
