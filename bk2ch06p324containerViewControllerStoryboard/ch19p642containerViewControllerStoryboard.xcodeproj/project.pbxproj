@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		326C8038197ACCA1003C0B1C /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326C8037197ACCA1003C0B1C /* ViewController2.swift */; };
 		C94F185217D163DA00C192CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94F185117D163DA00C192CE /* Foundation.framework */; };
 		C94F185417D163DA00C192CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94F185317D163DA00C192CE /* CoreGraphics.framework */; };
 		C94F185617D163DA00C192CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94F185517D163DA00C192CE /* UIKit.framework */; };
@@ -16,11 +17,11 @@
 		C94F186517D163DA00C192CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C94F186317D163DA00C192CE /* Main.storyboard */; };
 		C94F186817D163DA00C192CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94F186717D163DA00C192CE /* ViewController.m */; };
 		C94F186A17D163DA00C192CE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C94F186917D163DA00C192CE /* Images.xcassets */; };
-		C94F188817D164E600C192CE /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = C94F188717D164E600C192CE /* ViewController2.m */; };
 		C94F188B17D1809200C192CE /* ChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94F188A17D1809200C192CE /* ChildViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		326C8037197ACCA1003C0B1C /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		C94F184E17D163DA00C192CE /* ch19p642containerViewControllerStoryboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p642containerViewControllerStoryboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94F185117D163DA00C192CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C94F185317D163DA00C192CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -96,6 +97,7 @@
 				C94F188A17D1809200C192CE /* ChildViewController.m */,
 				C94F188617D164E600C192CE /* ViewController2.h */,
 				C94F188717D164E600C192CE /* ViewController2.m */,
+				326C8037197ACCA1003C0B1C /* ViewController2.swift */,
 				C94F186917D163DA00C192CE /* Images.xcassets */,
 				C94F185817D163DA00C192CE /* Supporting Files */,
 			);
@@ -179,10 +181,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C94F186817D163DA00C192CE /* ViewController.m in Sources */,
-				C94F188817D164E600C192CE /* ViewController2.m in Sources */,
 				C94F188B17D1809200C192CE /* ChildViewController.m in Sources */,
 				C94F186217D163DA00C192CE /* AppDelegate.m in Sources */,
 				C94F185E17D163DA00C192CE /* main.m in Sources */,
+				326C8038197ACCA1003C0B1C /* ViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,10 +285,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p642containerViewControllerStoryboard/ch19p642containerViewControllerStoryboard-Prefix.pch";
 				INFOPLIST_FILE = "ch19p642containerViewControllerStoryboard/ch19p642containerViewControllerStoryboard-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch19p642containerViewControllerStoryboard;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -296,9 +303,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p642containerViewControllerStoryboard/ch19p642containerViewControllerStoryboard-Prefix.pch";
 				INFOPLIST_FILE = "ch19p642containerViewControllerStoryboard/ch19p642containerViewControllerStoryboard-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch19p642containerViewControllerStoryboard;
 				WRAPPER_EXTENSION = app;
 			};
