@@ -7,37 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32246B9A197C2F12008B78CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32246B99197C2F12008B78CE /* AppDelegate.swift */; };
+		32246B9C197C2F52008B78CE /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32246B9B197C2F52008B78CE /* RootViewController.swift */; };
+		32246B9E197C3152008B78CE /* PresentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32246B9D197C3152008B78CE /* PresentedViewController.swift */; };
+		32246BA0197C3174008B78CE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32246B9F197C3174008B78CE /* SecondViewController.swift */; };
 		C937D36B17D4FE6400D5F188 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C937D36A17D4FE6400D5F188 /* Foundation.framework */; };
 		C937D36D17D4FE6400D5F188 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C937D36C17D4FE6400D5F188 /* CoreGraphics.framework */; };
 		C937D36F17D4FE6400D5F188 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C937D36E17D4FE6400D5F188 /* UIKit.framework */; };
-		C937D37517D4FE6400D5F188 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C937D37317D4FE6400D5F188 /* InfoPlist.strings */; };
-		C937D37717D4FE6400D5F188 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C937D37617D4FE6400D5F188 /* main.m */; };
-		C937D37B17D4FE6400D5F188 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C937D37A17D4FE6400D5F188 /* AppDelegate.m */; };
 		C937D38317D4FE6400D5F188 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C937D38217D4FE6400D5F188 /* Images.xcassets */; };
-		C937D3A517D4FEB200D5F188 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C937D3A017D4FEB200D5F188 /* RootViewController.m */; };
-		C937D3A617D4FEB200D5F188 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C937D3A217D4FEB200D5F188 /* SecondViewController.m */; };
-		C937D3A717D4FEB200D5F188 /* PresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C937D3A417D4FEB200D5F188 /* PresentedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32246B99197C2F12008B78CE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		32246B9B197C2F52008B78CE /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		32246B9D197C3152008B78CE /* PresentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentedViewController.swift; sourceTree = "<group>"; };
+		32246B9F197C3174008B78CE /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C937D36717D4FE6400D5F188 /* ch19p652SimplestRestorationExample2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p652SimplestRestorationExample2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C937D36A17D4FE6400D5F188 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C937D36C17D4FE6400D5F188 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C937D36E17D4FE6400D5F188 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C937D37217D4FE6400D5F188 /* ch19p652SimplestRestorationExample2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p652SimplestRestorationExample2-Info.plist"; sourceTree = "<group>"; };
-		C937D37417D4FE6400D5F188 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C937D37617D4FE6400D5F188 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C937D37817D4FE6400D5F188 /* ch19p652SimplestRestorationExample2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch19p652SimplestRestorationExample2-Prefix.pch"; sourceTree = "<group>"; };
-		C937D37917D4FE6400D5F188 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C937D37A17D4FE6400D5F188 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C937D38217D4FE6400D5F188 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C937D38917D4FE6400D5F188 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C937D39F17D4FEB200D5F188 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		C937D3A017D4FEB200D5F188 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		C937D3A117D4FEB200D5F188 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		C937D3A217D4FEB200D5F188 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		C937D3A317D4FEB200D5F188 /* PresentedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentedViewController.h; sourceTree = "<group>"; };
-		C937D3A417D4FEB200D5F188 /* PresentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentedViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,14 +76,10 @@
 		C937D37017D4FE6400D5F188 /* ch19p652SimplestRestorationExample2 */ = {
 			isa = PBXGroup;
 			children = (
-				C937D37917D4FE6400D5F188 /* AppDelegate.h */,
-				C937D37A17D4FE6400D5F188 /* AppDelegate.m */,
-				C937D39F17D4FEB200D5F188 /* RootViewController.h */,
-				C937D3A017D4FEB200D5F188 /* RootViewController.m */,
-				C937D3A117D4FEB200D5F188 /* SecondViewController.h */,
-				C937D3A217D4FEB200D5F188 /* SecondViewController.m */,
-				C937D3A317D4FEB200D5F188 /* PresentedViewController.h */,
-				C937D3A417D4FEB200D5F188 /* PresentedViewController.m */,
+				32246B99197C2F12008B78CE /* AppDelegate.swift */,
+				32246B9B197C2F52008B78CE /* RootViewController.swift */,
+				32246B9F197C3174008B78CE /* SecondViewController.swift */,
+				32246B9D197C3152008B78CE /* PresentedViewController.swift */,
 				C937D38217D4FE6400D5F188 /* Images.xcassets */,
 				C937D37117D4FE6400D5F188 /* Supporting Files */,
 			);
@@ -103,9 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				C937D37217D4FE6400D5F188 /* ch19p652SimplestRestorationExample2-Info.plist */,
-				C937D37317D4FE6400D5F188 /* InfoPlist.strings */,
-				C937D37617D4FE6400D5F188 /* main.m */,
-				C937D37817D4FE6400D5F188 /* ch19p652SimplestRestorationExample2-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -163,7 +147,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C937D38317D4FE6400D5F188 /* Images.xcassets in Resources */,
-				C937D37517D4FE6400D5F188 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,26 +157,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C937D3A617D4FEB200D5F188 /* SecondViewController.m in Sources */,
-				C937D3A717D4FEB200D5F188 /* PresentedViewController.m in Sources */,
-				C937D37B17D4FE6400D5F188 /* AppDelegate.m in Sources */,
-				C937D37717D4FE6400D5F188 /* main.m in Sources */,
-				C937D3A517D4FEB200D5F188 /* RootViewController.m in Sources */,
+				32246BA0197C3174008B78CE /* SecondViewController.swift in Sources */,
+				32246B9A197C2F12008B78CE /* AppDelegate.swift in Sources */,
+				32246B9C197C2F52008B78CE /* RootViewController.swift in Sources */,
+				32246B9E197C3152008B78CE /* PresentedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		C937D37317D4FE6400D5F188 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C937D37417D4FE6400D5F188 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C937D39717D4FE6400D5F188 /* Debug */ = {
@@ -227,7 +198,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -258,7 +229,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -269,10 +240,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch19p652SimplestRestorationExample2/ch19p652SimplestRestorationExample2-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ch19p652SimplestRestorationExample2/ch19p652SimplestRestorationExample2-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -282,9 +257,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch19p652SimplestRestorationExample2/ch19p652SimplestRestorationExample2-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ch19p652SimplestRestorationExample2/ch19p652SimplestRestorationExample2-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -309,6 +287,7 @@
 				C937D39B17D4FE6400D5F188 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
