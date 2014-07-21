@@ -7,38 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		327856BA197CB47E00BD83B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327856B9197CB47E00BD83B9 /* AppDelegate.swift */; };
+		327856BC197CB48900BD83B9 /* Pep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327856BB197CB48900BD83B9 /* Pep.swift */; };
 		C94F83B717CFAC7A00DA797B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94F83B617CFAC7A00DA797B /* Foundation.framework */; };
 		C94F83B917CFAC7A00DA797B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94F83B817CFAC7A00DA797B /* CoreGraphics.framework */; };
 		C94F83BB17CFAC7A00DA797B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94F83BA17CFAC7A00DA797B /* UIKit.framework */; };
-		C94F83C117CFAC7A00DA797B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C94F83BF17CFAC7A00DA797B /* InfoPlist.strings */; };
-		C94F83C317CFAC7A00DA797B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C94F83C217CFAC7A00DA797B /* main.m */; };
-		C94F83C717CFAC7A00DA797B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C94F83C617CFAC7A00DA797B /* AppDelegate.m */; };
 		C94F83C917CFAC7A00DA797B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C94F83C817CFAC7A00DA797B /* Images.xcassets */; };
 		C94F83E817CFACA600DA797B /* jack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C94F83E517CFACA600DA797B /* jack.jpg */; };
 		C94F83E917CFACA600DA797B /* manny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C94F83E617CFACA600DA797B /* manny.jpg */; };
 		C94F83EA17CFACA600DA797B /* moe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C94F83E717CFACA600DA797B /* moe.jpg */; };
-		C94F83EE17CFACB400DA797B /* Pep.m in Sources */ = {isa = PBXBuildFile; fileRef = C94F83EC17CFACB400DA797B /* Pep.m */; };
 		C94F83EF17CFACB400DA797B /* Pep.xib in Resources */ = {isa = PBXBuildFile; fileRef = C94F83ED17CFACB400DA797B /* Pep.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		327856B9197CB47E00BD83B9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		327856BB197CB48900BD83B9 /* Pep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pep.swift; sourceTree = "<group>"; };
 		C94F83B317CFAC7A00DA797B /* ch19p654pageControllerRestoration3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p654pageControllerRestoration3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94F83B617CFAC7A00DA797B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C94F83B817CFAC7A00DA797B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C94F83BA17CFAC7A00DA797B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C94F83BE17CFAC7A00DA797B /* ch19p654pageControllerRestoration3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p654pageControllerRestoration3-Info.plist"; sourceTree = "<group>"; };
-		C94F83C017CFAC7A00DA797B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C94F83C217CFAC7A00DA797B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C94F83C417CFAC7A00DA797B /* ch19p654pageControllerRestoration3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch19p654pageControllerRestoration3-Prefix.pch"; sourceTree = "<group>"; };
-		C94F83C517CFAC7A00DA797B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C94F83C617CFAC7A00DA797B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C94F83C817CFAC7A00DA797B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C94F83CF17CFAC7A00DA797B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C94F83E517CFACA600DA797B /* jack.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jack.jpg; sourceTree = "<group>"; };
 		C94F83E617CFACA600DA797B /* manny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = manny.jpg; sourceTree = "<group>"; };
 		C94F83E717CFACA600DA797B /* moe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moe.jpg; sourceTree = "<group>"; };
-		C94F83EB17CFACB400DA797B /* Pep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pep.h; sourceTree = "<group>"; };
-		C94F83EC17CFACB400DA797B /* Pep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pep.m; sourceTree = "<group>"; };
 		C94F83ED17CFACB400DA797B /* Pep.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Pep.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,13 +80,11 @@
 		C94F83BC17CFAC7A00DA797B /* ch19p626pageController */ = {
 			isa = PBXGroup;
 			children = (
-				C94F83C517CFAC7A00DA797B /* AppDelegate.h */,
-				C94F83C617CFAC7A00DA797B /* AppDelegate.m */,
+				327856B9197CB47E00BD83B9 /* AppDelegate.swift */,
 				C94F83E517CFACA600DA797B /* jack.jpg */,
 				C94F83E617CFACA600DA797B /* manny.jpg */,
 				C94F83E717CFACA600DA797B /* moe.jpg */,
-				C94F83EB17CFACB400DA797B /* Pep.h */,
-				C94F83EC17CFACB400DA797B /* Pep.m */,
+				327856BB197CB48900BD83B9 /* Pep.swift */,
 				C94F83ED17CFACB400DA797B /* Pep.xib */,
 				C94F83C817CFAC7A00DA797B /* Images.xcassets */,
 				C94F83BD17CFAC7A00DA797B /* Supporting Files */,
@@ -105,9 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				C94F83BE17CFAC7A00DA797B /* ch19p654pageControllerRestoration3-Info.plist */,
-				C94F83BF17CFAC7A00DA797B /* InfoPlist.strings */,
-				C94F83C217CFAC7A00DA797B /* main.m */,
-				C94F83C417CFAC7A00DA797B /* ch19p654pageControllerRestoration3-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -163,7 +151,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C94F83C117CFAC7A00DA797B /* InfoPlist.strings in Resources */,
 				C94F83E817CFACA600DA797B /* jack.jpg in Resources */,
 				C94F83EA17CFACA600DA797B /* moe.jpg in Resources */,
 				C94F83EF17CFACB400DA797B /* Pep.xib in Resources */,
@@ -179,24 +166,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C94F83EE17CFACB400DA797B /* Pep.m in Sources */,
-				C94F83C717CFAC7A00DA797B /* AppDelegate.m in Sources */,
-				C94F83C317CFAC7A00DA797B /* main.m in Sources */,
+				327856BC197CB48900BD83B9 /* Pep.swift in Sources */,
+				327856BA197CB47E00BD83B9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		C94F83BF17CFAC7A00DA797B /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C94F83C017CFAC7A00DA797B /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C94F83DD17CFAC7A00DA797B /* Debug */ = {
@@ -230,7 +205,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -261,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -272,10 +247,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch19p626pageController/ch19p654pageControllerRestoration3-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ch19p626pageController/ch19p654pageControllerRestoration3-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch19p654pageControllerRestoration3;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -285,9 +264,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch19p626pageController/ch19p654pageControllerRestoration3-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ch19p626pageController/ch19p654pageControllerRestoration3-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch19p654pageControllerRestoration3;
 				WRAPPER_EXTENSION = app;
 			};
