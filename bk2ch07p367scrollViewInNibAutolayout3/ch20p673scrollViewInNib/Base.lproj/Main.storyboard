@@ -23,13 +23,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4I0-0D-sN3" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6g-wg-JQb">
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="173" translatesAutoresizingMaskIntoConstraints="NO" id="h6g-wg-JQb" customClass="MyView" customModule="ch20p673scrollViewInNibAutolayout" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="200" height="173"/>
                                                 <color key="backgroundColor" red="1" green="0.21931261690000001" blue="0.45882864099999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="doc-KO-IBi"/>
-                                                    <constraint firstAttribute="height" constant="173" id="tSC-55-07j"/>
-                                                </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpl-LU-ADO">
                                                 <rect key="frame" x="20" y="213" width="200" height="173"/>
