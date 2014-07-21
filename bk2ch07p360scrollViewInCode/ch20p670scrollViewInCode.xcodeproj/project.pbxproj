@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32A41C4C197D23690039206F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A41C4B197D23690039206F /* ViewController.swift */; };
 		C957330D17DE1152005E6B5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C957330C17DE1152005E6B5A /* Foundation.framework */; };
 		C957330F17DE1152005E6B5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C957330E17DE1152005E6B5A /* CoreGraphics.framework */; };
 		C957331117DE1152005E6B5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C957331017DE1152005E6B5A /* UIKit.framework */; };
@@ -14,11 +15,11 @@
 		C957331917DE1152005E6B5A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C957331817DE1152005E6B5A /* main.m */; };
 		C957331D17DE1152005E6B5A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C957331C17DE1152005E6B5A /* AppDelegate.m */; };
 		C957332017DE1152005E6B5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C957331E17DE1152005E6B5A /* Main.storyboard */; };
-		C957332317DE1152005E6B5A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C957332217DE1152005E6B5A /* ViewController.m */; };
 		C957332517DE1152005E6B5A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C957332417DE1152005E6B5A /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32A41C4B197D23690039206F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C957330917DE1152005E6B5A /* ch20p670scrollViewInCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p670scrollViewInCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C957330C17DE1152005E6B5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C957330E17DE1152005E6B5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -30,8 +31,6 @@
 		C957331B17DE1152005E6B5A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C957331C17DE1152005E6B5A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C957331F17DE1152005E6B5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C957332117DE1152005E6B5A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C957332217DE1152005E6B5A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C957332417DE1152005E6B5A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C957332B17DE1152005E6B5A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -84,8 +83,7 @@
 				C957331B17DE1152005E6B5A /* AppDelegate.h */,
 				C957331C17DE1152005E6B5A /* AppDelegate.m */,
 				C957331E17DE1152005E6B5A /* Main.storyboard */,
-				C957332117DE1152005E6B5A /* ViewController.h */,
-				C957332217DE1152005E6B5A /* ViewController.m */,
+				32A41C4B197D23690039206F /* ViewController.swift */,
 				C957332417DE1152005E6B5A /* Images.xcassets */,
 				C957331317DE1152005E6B5A /* Supporting Files */,
 			);
@@ -169,8 +167,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C957332317DE1152005E6B5A /* ViewController.m in Sources */,
 				C957331D17DE1152005E6B5A /* AppDelegate.m in Sources */,
+				32A41C4C197D23690039206F /* ViewController.swift in Sources */,
 				C957331917DE1152005E6B5A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,7 +226,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -259,7 +257,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -270,10 +268,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p570scrollViewInCode/ch20p670scrollViewInCode-Prefix.pch";
 				INFOPLIST_FILE = "ch20p570scrollViewInCode/ch20p670scrollViewInCode-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch20p670scrollViewInCode;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -283,9 +285,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p570scrollViewInCode/ch20p670scrollViewInCode-Prefix.pch";
 				INFOPLIST_FILE = "ch20p570scrollViewInCode/ch20p670scrollViewInCode-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch20p670scrollViewInCode;
 				WRAPPER_EXTENSION = app;
 			};

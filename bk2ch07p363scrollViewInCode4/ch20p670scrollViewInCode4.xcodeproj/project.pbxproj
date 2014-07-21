@@ -20,14 +20,14 @@
 
 /* Begin PBXFileReference section */
 		32A41C4F197D28E30039206F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C98755C617DE2CF800578DCB /* ch20p670scrollViewInCode3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p670scrollViewInCode3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C98755C617DE2CF800578DCB /* ch20p670scrollViewInCode4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p670scrollViewInCode4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C98755C917DE2CF800578DCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C98755CB17DE2CF800578DCB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C98755CD17DE2CF800578DCB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C98755D117DE2CF800578DCB /* ch20p670scrollViewInCode3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch20p670scrollViewInCode3-Info.plist"; sourceTree = "<group>"; };
+		C98755D117DE2CF800578DCB /* ch20p670scrollViewInCode4-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch20p670scrollViewInCode4-Info.plist"; sourceTree = "<group>"; };
 		C98755D317DE2CF800578DCB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C98755D517DE2CF800578DCB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C98755D717DE2CF800578DCB /* ch20p670scrollViewInCode3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch20p670scrollViewInCode3-Prefix.pch"; sourceTree = "<group>"; };
+		C98755D717DE2CF800578DCB /* ch20p670scrollViewInCode4-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch20p670scrollViewInCode4-Prefix.pch"; sourceTree = "<group>"; };
 		C98755D817DE2CF800578DCB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C98755D917DE2CF800578DCB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C98755DC17DE2CF800578DCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		C98755C717DE2CF800578DCB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C98755C617DE2CF800578DCB /* ch20p670scrollViewInCode3.app */,
+				C98755C617DE2CF800578DCB /* ch20p670scrollViewInCode4.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,10 +93,10 @@
 		C98755D017DE2CF800578DCB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C98755D117DE2CF800578DCB /* ch20p670scrollViewInCode3-Info.plist */,
+				C98755D117DE2CF800578DCB /* ch20p670scrollViewInCode4-Info.plist */,
 				C98755D217DE2CF800578DCB /* InfoPlist.strings */,
 				C98755D517DE2CF800578DCB /* main.m */,
-				C98755D717DE2CF800578DCB /* ch20p670scrollViewInCode3-Prefix.pch */,
+				C98755D717DE2CF800578DCB /* ch20p670scrollViewInCode4-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -104,9 +104,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C98755C517DE2CF800578DCB /* ch20p670scrollViewInCode3 */ = {
+		C98755C517DE2CF800578DCB /* ch20p670scrollViewInCode4 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C98755F817DE2CF800578DCB /* Build configuration list for PBXNativeTarget "ch20p670scrollViewInCode3" */;
+			buildConfigurationList = C98755F817DE2CF800578DCB /* Build configuration list for PBXNativeTarget "ch20p670scrollViewInCode4" */;
 			buildPhases = (
 				C98755C217DE2CF800578DCB /* Sources */,
 				C98755C317DE2CF800578DCB /* Frameworks */,
@@ -116,9 +116,9 @@
 			);
 			dependencies = (
 			);
-			name = ch20p670scrollViewInCode3;
+			name = ch20p670scrollViewInCode4;
 			productName = ch20p670scrollViewInCode3;
-			productReference = C98755C617DE2CF800578DCB /* ch20p670scrollViewInCode3.app */;
+			productReference = C98755C617DE2CF800578DCB /* ch20p670scrollViewInCode4.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -130,7 +130,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
-			buildConfigurationList = C98755C117DE2CF800578DCB /* Build configuration list for PBXProject "ch20p670scrollViewInCode3" */;
+			buildConfigurationList = C98755C117DE2CF800578DCB /* Build configuration list for PBXProject "ch20p670scrollViewInCode4" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -143,7 +143,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C98755C517DE2CF800578DCB /* ch20p670scrollViewInCode3 */,
+				C98755C517DE2CF800578DCB /* ch20p670scrollViewInCode4 */,
 			);
 		};
 /* End PBXProject section */
@@ -225,7 +225,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -256,7 +256,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -269,11 +269,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch20p670scrollViewInCode3/ch20p670scrollViewInCode3-Prefix.pch";
-				INFOPLIST_FILE = "ch20p670scrollViewInCode3/ch20p670scrollViewInCode3-Info.plist";
+				GCC_PREFIX_HEADER = "ch20p670scrollViewInCode3/ch20p670scrollViewInCode4-Prefix.pch";
+				INFOPLIST_FILE = "ch20p670scrollViewInCode3/ch20p670scrollViewInCode4-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch20p670scrollViewInCode4;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -286,11 +286,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch20p670scrollViewInCode3/ch20p670scrollViewInCode3-Prefix.pch";
-				INFOPLIST_FILE = "ch20p670scrollViewInCode3/ch20p670scrollViewInCode3-Info.plist";
+				GCC_PREFIX_HEADER = "ch20p670scrollViewInCode3/ch20p670scrollViewInCode4-Prefix.pch";
+				INFOPLIST_FILE = "ch20p670scrollViewInCode3/ch20p670scrollViewInCode4-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch20p670scrollViewInCode4;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -298,7 +298,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C98755C117DE2CF800578DCB /* Build configuration list for PBXProject "ch20p670scrollViewInCode3" */ = {
+		C98755C117DE2CF800578DCB /* Build configuration list for PBXProject "ch20p670scrollViewInCode4" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C98755F617DE2CF800578DCB /* Debug */,
@@ -307,7 +307,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C98755F817DE2CF800578DCB /* Build configuration list for PBXNativeTarget "ch20p670scrollViewInCode3" */ = {
+		C98755F817DE2CF800578DCB /* Build configuration list for PBXNativeTarget "ch20p670scrollViewInCode4" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C98755F917DE2CF800578DCB /* Debug */,
