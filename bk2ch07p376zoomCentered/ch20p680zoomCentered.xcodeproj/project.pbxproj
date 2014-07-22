@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3272D9FA197EAA77004B79F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272D9F9197EAA77004B79F1 /* ViewController.swift */; };
 		C9722DBE17E15E0F0033076A /* bird.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C9722DBD17E15E0F0033076A /* bird.jpg */; };
-		C9722DC117E15E1B0033076A /* MyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9722DC017E15E1B0033076A /* MyScrollView.m */; };
 		C975DC3617E022A7007F4075 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3517E022A7007F4075 /* Foundation.framework */; };
 		C975DC3817E022A7007F4075 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3717E022A7007F4075 /* CoreGraphics.framework */; };
 		C975DC3A17E022A7007F4075 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3917E022A7007F4075 /* UIKit.framework */; };
@@ -16,14 +16,12 @@
 		C975DC4217E022A7007F4075 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C975DC4117E022A7007F4075 /* main.m */; };
 		C975DC4617E022A7007F4075 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C975DC4517E022A7007F4075 /* AppDelegate.m */; };
 		C975DC4917E022A7007F4075 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C975DC4717E022A7007F4075 /* Main.storyboard */; };
-		C975DC4C17E022A7007F4075 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C975DC4B17E022A7007F4075 /* ViewController.m */; };
 		C975DC4E17E022A7007F4075 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C975DC4D17E022A7007F4075 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3272D9F9197EAA77004B79F1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9722DBD17E15E0F0033076A /* bird.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bird.jpg; sourceTree = "<group>"; };
-		C9722DBF17E15E1B0033076A /* MyScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyScrollView.h; sourceTree = "<group>"; };
-		C9722DC017E15E1B0033076A /* MyScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyScrollView.m; sourceTree = "<group>"; };
 		C975DC3217E022A7007F4075 /* ch20p680zoomCentered.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p680zoomCentered.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C975DC3517E022A7007F4075 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C975DC3717E022A7007F4075 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -35,8 +33,6 @@
 		C975DC4417E022A7007F4075 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C975DC4517E022A7007F4075 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C975DC4817E022A7007F4075 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C975DC4A17E022A7007F4075 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C975DC4B17E022A7007F4075 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C975DC4D17E022A7007F4075 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C975DC5417E022A7007F4075 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -89,11 +85,8 @@
 				C975DC4417E022A7007F4075 /* AppDelegate.h */,
 				C975DC4517E022A7007F4075 /* AppDelegate.m */,
 				C975DC4717E022A7007F4075 /* Main.storyboard */,
-				C975DC4A17E022A7007F4075 /* ViewController.h */,
-				C975DC4B17E022A7007F4075 /* ViewController.m */,
+				3272D9F9197EAA77004B79F1 /* ViewController.swift */,
 				C975DC4D17E022A7007F4075 /* Images.xcassets */,
-				C9722DBF17E15E1B0033076A /* MyScrollView.h */,
-				C9722DC017E15E1B0033076A /* MyScrollView.m */,
 				C9722DBD17E15E0F0033076A /* bird.jpg */,
 				C975DC3C17E022A7007F4075 /* Supporting Files */,
 			);
@@ -177,8 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C975DC4C17E022A7007F4075 /* ViewController.m in Sources */,
-				C9722DC117E15E1B0033076A /* MyScrollView.m in Sources */,
+				3272D9FA197EAA77004B79F1 /* ViewController.swift in Sources */,
 				C975DC4617E022A7007F4075 /* AppDelegate.m in Sources */,
 				C975DC4217E022A7007F4075 /* main.m in Sources */,
 			);
@@ -239,7 +231,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -272,7 +264,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -284,10 +276,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p680zoomCentered/ch20p680zoomCentered-Prefix.pch";
 				INFOPLIST_FILE = "ch20p680zoomCentered/ch20p680zoomCentered-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -298,9 +294,12 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p680zoomCentered/ch20p680zoomCentered-Prefix.pch";
 				INFOPLIST_FILE = "ch20p680zoomCentered/ch20p680zoomCentered-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

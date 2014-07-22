@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32692F97197E9DFF001677C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32692F96197E9DFF001677C1 /* ViewController.swift */; };
 		C9EA92A517DF67BD00C71EDE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA92A417DF67BD00C71EDE /* Foundation.framework */; };
 		C9EA92A717DF67BD00C71EDE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA92A617DF67BD00C71EDE /* CoreGraphics.framework */; };
 		C9EA92A917DF67BD00C71EDE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA92A817DF67BD00C71EDE /* UIKit.framework */; };
@@ -14,9 +15,7 @@
 		C9EA92B117DF67BD00C71EDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EA92B017DF67BD00C71EDE /* main.m */; };
 		C9EA92B517DF67BD00C71EDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EA92B417DF67BD00C71EDE /* AppDelegate.m */; };
 		C9EA92B817DF67BD00C71EDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9EA92B617DF67BD00C71EDE /* Main.storyboard */; };
-		C9EA92BB17DF67BD00C71EDE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EA92BA17DF67BD00C71EDE /* ViewController.m */; };
 		C9EA92BD17DF67BD00C71EDE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9EA92BC17DF67BD00C71EDE /* Images.xcassets */; };
-		C9EA92ED17DF693200C71EDE /* TiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EA92EC17DF693200C71EDE /* TiledView.m */; };
 		C9EA930A17DF7FD800C71EDE /* CuriousFrog_500_3_0.png in Resources */ = {isa = PBXBuildFile; fileRef = C9EA930117DF7FD800C71EDE /* CuriousFrog_500_3_0.png */; };
 		C9EA930B17DF7FD800C71EDE /* CuriousFrog_500_3_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C9EA930217DF7FD800C71EDE /* CuriousFrog_500_3_1.png */; };
 		C9EA930C17DF7FD800C71EDE /* CuriousFrog_500_3_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C9EA930317DF7FD800C71EDE /* CuriousFrog_500_3_2.png */; };
@@ -29,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32692F96197E9DFF001677C1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9EA92A117DF67BD00C71EDE /* ch20p677scrollWithTiling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p677scrollWithTiling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9EA92A417DF67BD00C71EDE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9EA92A617DF67BD00C71EDE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -40,12 +40,8 @@
 		C9EA92B317DF67BD00C71EDE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9EA92B417DF67BD00C71EDE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9EA92B717DF67BD00C71EDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9EA92B917DF67BD00C71EDE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C9EA92BA17DF67BD00C71EDE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9EA92BC17DF67BD00C71EDE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9EA92C317DF67BD00C71EDE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9EA92EB17DF693200C71EDE /* TiledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiledView.h; sourceTree = "<group>"; };
-		C9EA92EC17DF693200C71EDE /* TiledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiledView.m; sourceTree = "<group>"; };
 		C9EA930117DF7FD800C71EDE /* CuriousFrog_500_3_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CuriousFrog_500_3_0.png; sourceTree = "<group>"; };
 		C9EA930217DF7FD800C71EDE /* CuriousFrog_500_3_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CuriousFrog_500_3_1.png; sourceTree = "<group>"; };
 		C9EA930317DF7FD800C71EDE /* CuriousFrog_500_3_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CuriousFrog_500_3_2.png; sourceTree = "<group>"; };
@@ -105,10 +101,7 @@
 				C9EA92B317DF67BD00C71EDE /* AppDelegate.h */,
 				C9EA92B417DF67BD00C71EDE /* AppDelegate.m */,
 				C9EA92B617DF67BD00C71EDE /* Main.storyboard */,
-				C9EA92B917DF67BD00C71EDE /* ViewController.h */,
-				C9EA92BA17DF67BD00C71EDE /* ViewController.m */,
-				C9EA92EB17DF693200C71EDE /* TiledView.h */,
-				C9EA92EC17DF693200C71EDE /* TiledView.m */,
+				32692F96197E9DFF001677C1 /* ViewController.swift */,
 				C9EA930017DF6A4700C71EDE /* pix */,
 				C9EA92BC17DF67BD00C71EDE /* Images.xcassets */,
 				C9EA92AB17DF67BD00C71EDE /* Supporting Files */,
@@ -217,10 +210,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9EA92BB17DF67BD00C71EDE /* ViewController.m in Sources */,
+				32692F97197E9DFF001677C1 /* ViewController.swift in Sources */,
 				C9EA92B517DF67BD00C71EDE /* AppDelegate.m in Sources */,
 				C9EA92B117DF67BD00C71EDE /* main.m in Sources */,
-				C9EA92ED17DF693200C71EDE /* TiledView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +269,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -308,7 +300,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -319,10 +311,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p677scrollWithTiling/ch20p677scrollWithTiling-Prefix.pch";
 				INFOPLIST_FILE = "ch20p677scrollWithTiling/ch20p677scrollWithTiling-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -332,9 +328,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p677scrollWithTiling/ch20p677scrollWithTiling-Prefix.pch";
 				INFOPLIST_FILE = "ch20p677scrollWithTiling/ch20p677scrollWithTiling-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
