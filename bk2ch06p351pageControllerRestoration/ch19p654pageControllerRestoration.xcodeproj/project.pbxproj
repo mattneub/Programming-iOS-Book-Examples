@@ -27,8 +27,6 @@
 		C94F83B817CFAC7A00DA797B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C94F83BA17CFAC7A00DA797B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C94F83BE17CFAC7A00DA797B /* ch19p654pageControllerRestoration-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p654pageControllerRestoration-Info.plist"; sourceTree = "<group>"; };
-		C94F83C517CFAC7A00DA797B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C94F83C617CFAC7A00DA797B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C94F83C817CFAC7A00DA797B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C94F83CF17CFAC7A00DA797B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C94F83E517CFACA600DA797B /* jack.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jack.jpg; sourceTree = "<group>"; };
@@ -84,8 +82,6 @@
 		C94F83BC17CFAC7A00DA797B /* ch19p626pageController */ = {
 			isa = PBXGroup;
 			children = (
-				C94F83C517CFAC7A00DA797B /* AppDelegate.h */,
-				C94F83C617CFAC7A00DA797B /* AppDelegate.m */,
 				32785688197C53E200BD83B9 /* AppDelegate.swift */,
 				C94F83E517CFACA600DA797B /* jack.jpg */,
 				C94F83E617CFACA600DA797B /* manny.jpg */,

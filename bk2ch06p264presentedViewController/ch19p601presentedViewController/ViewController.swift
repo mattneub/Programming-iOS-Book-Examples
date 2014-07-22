@@ -5,7 +5,7 @@ import UIKit
 class ViewController : UIViewController, SecondViewControllerDelegate {
     
     @IBAction func doPresent(sender:AnyObject?) {
-        let which = 3
+        let which = 1
         
         let svc = SecondViewController()
         svc.data = "This is very important data!"

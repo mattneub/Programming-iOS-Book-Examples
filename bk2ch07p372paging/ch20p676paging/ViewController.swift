@@ -3,8 +3,8 @@
 import UIKit
 
 class ViewController : UIViewController, UIScrollViewDelegate {
-    @IBOutlet var sv : UIScrollView
-    @IBOutlet var pager : UIPageControl
+    @IBOutlet var sv : UIScrollView!
+    @IBOutlet var pager : UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()

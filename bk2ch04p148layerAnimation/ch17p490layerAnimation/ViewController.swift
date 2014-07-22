@@ -4,7 +4,7 @@ import UIKit
 import QuartzCore
 
 class ViewController : UIViewController {
-    @IBOutlet var compassView : CompassView
+    @IBOutlet var compassView : CompassView!
     
     @IBAction func doButton(sender:AnyObject?) {
         let c = self.compassView.layer as CompassLayer

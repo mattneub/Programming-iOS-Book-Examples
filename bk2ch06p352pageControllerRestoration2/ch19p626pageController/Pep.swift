@@ -5,11 +5,11 @@ import UIKit
 class Pep: UIViewController {
     
     let boy : String
-    @IBOutlet var name : UILabel
-    @IBOutlet var pic : UIImageView
+    @IBOutlet var name : UILabel!
+    @IBOutlet var pic : UIImageView!
     
-    // we add @required to satisfy the compiler's worry that class's "self" might be a subclass
-    @required init(pepBoy boy:String, nib:String?, bundle:NSBundle?) {
+    // we add "required" to satisfy the compiler's worry that class's "self" might be a subclass
+    required init(pepBoy boy:String, nib:String?, bundle:NSBundle?) {
         self.boy = boy
         super.init(nibName: nib, bundle: bundle)
         self.restorationIdentifier = "pep" // *

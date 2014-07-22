@@ -16,7 +16,7 @@ class ViewController : UIViewController {
 // imitate an alert view
 
 class ViewController2 : UIViewController {
-    @IBOutlet var button : UIButton
+    @IBOutlet var button : UIButton!
     
     @IBAction func doButton(sender:AnyObject?) {
         self.presentingViewController.dismissViewControllerAnimated(true, completion: nil)
@@ -47,7 +47,7 @@ class ViewController2 : UIViewController {
 
 extension ViewController2 : UIViewControllerTransitioningDelegate {
     func presentationControllerForPresentedViewController(presented: UIViewController!, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController!) -> UIPresentationController! {
-        return MyPresentationController(presentingViewController: presenting, presentedViewController: presented)
+        return MyPresentationController(presentedViewController: presented, presentingViewController: presenting)
     }
 }
 

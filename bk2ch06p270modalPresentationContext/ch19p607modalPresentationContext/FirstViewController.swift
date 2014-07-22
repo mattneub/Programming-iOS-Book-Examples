@@ -4,7 +4,7 @@ import UIKit
 class FirstViewController : UIViewController {
     
     @IBAction func doPresent(sender:AnyObject?) {
-        let which = 3
+        let which = 1
         switch which {
         case 1:
             let vc = ExtraViewController()

@@ -4,7 +4,7 @@ import UIKit
 import QuartzCore
 
 class MyView : UIView {
-    @IBOutlet var v : UIView // the animated subview
+    @IBOutlet var v : UIView! // the animated subview
     
     override func awakeFromNib() {
         super.awakeFromNib()

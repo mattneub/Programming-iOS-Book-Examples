@@ -4,7 +4,7 @@ import UIKit
 import QuartzCore
 
 class ViewController : UIViewController {
-    @IBOutlet var button : UIButton
+    @IBOutlet var button : UIButton!
     
     var oldButtonCenter : CGPoint!
     

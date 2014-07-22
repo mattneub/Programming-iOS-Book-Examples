@@ -1,7 +1,7 @@
 import UIKit
 
 class ViewController : UIViewController {
-    @IBOutlet var v : UIView
+    @IBOutlet var v : UIView!
     var pOrig : CGPoint!
     
     func animate() {

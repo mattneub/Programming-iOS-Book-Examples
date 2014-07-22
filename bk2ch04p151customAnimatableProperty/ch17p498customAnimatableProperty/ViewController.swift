@@ -3,7 +3,7 @@ import UIKit
 import QuartzCore
 
 class ViewController : UIViewController {
-    @IBOutlet var v : UIView
+    @IBOutlet var v : UIView!
     
     @IBAction func doButton (sender:AnyObject) {
         let lay = self.v.layer

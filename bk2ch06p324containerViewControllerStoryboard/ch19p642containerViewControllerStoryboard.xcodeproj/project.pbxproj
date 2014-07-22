@@ -37,8 +37,6 @@
 		C94F186717D163DA00C192CE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C94F186917D163DA00C192CE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C94F187017D163DB00C192CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C94F188617D164E600C192CE /* ViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
-		C94F188717D164E600C192CE /* ViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
 		C94F188917D1809200C192CE /* ChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildViewController.h; sourceTree = "<group>"; };
 		C94F188A17D1809200C192CE /* ChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,8 +93,6 @@
 				C94F186717D163DA00C192CE /* ViewController.m */,
 				C94F188917D1809200C192CE /* ChildViewController.h */,
 				C94F188A17D1809200C192CE /* ChildViewController.m */,
-				C94F188617D164E600C192CE /* ViewController2.h */,
-				C94F188717D164E600C192CE /* ViewController2.m */,
 				326C8037197ACCA1003C0B1C /* ViewController2.swift */,
 				C94F186917D163DA00C192CE /* Images.xcassets */,
 				C94F185817D163DA00C192CE /* Supporting Files */,

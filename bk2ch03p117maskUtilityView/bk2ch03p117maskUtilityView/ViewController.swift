@@ -65,7 +65,7 @@ class MaskView : UIView {
 */
 
 class ViewController: UIViewController {
-    @IBOutlet var iv: UIImageView
+    @IBOutlet var iv: UIImageView!
                             
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

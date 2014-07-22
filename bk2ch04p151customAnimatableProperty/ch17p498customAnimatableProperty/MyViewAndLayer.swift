@@ -15,14 +15,14 @@ extension MyLayer {
     // this Swift extension contains everything except the @dynamic declaration...
     // ...which can only be made in Objective-C
     
-    override class func needsDisplayForKey(key: String!) -> Bool {
+    override public class func needsDisplayForKey(key: String!) -> Bool {
         if key == "thickness" {
             return true
         }
     return super.needsDisplayForKey(key)
     }
 
-    override func drawInContext(con: CGContext!) {
+    override public func drawInContext(con: CGContext!) {
         let r = self.bounds.rectByInsetting(dx:20, dy:20)
         CGContextSetFillColorWithColor(con, UIColor.redColor().CGColor)
         CGContextFillRect(con, r)
@@ -35,7 +35,7 @@ extension MyLayer {
     // NB that we can implicitly animate even for view's underlying layer!
     // this is something the book has always been wrong about
     
-    override func actionForKey(key: String!) -> CAAction! {
+    override public func actionForKey(key: String!) -> CAAction! {
         if key == "thickness" {
             let ba = CABasicAnimation(keyPath: key)
             // stolen directly from Apple's sample code:

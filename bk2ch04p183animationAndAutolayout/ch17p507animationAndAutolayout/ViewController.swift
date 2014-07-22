@@ -4,8 +4,8 @@ import UIKit
 import QuartzCore
 
 class ViewController : UIViewController {
-    @IBOutlet var v : UIView
-    @IBOutlet var v_horizontalPositionConstraint : NSLayoutConstraint
+    @IBOutlet var v : UIView!
+    @IBOutlet var v_horizontalPositionConstraint : NSLayoutConstraint!
     
     @IBAction func doButton(sender:AnyObject?) {
     

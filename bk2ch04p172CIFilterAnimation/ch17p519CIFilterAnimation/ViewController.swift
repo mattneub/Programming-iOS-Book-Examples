@@ -3,7 +3,7 @@ import UIKit
 import QuartzCore
 
 class ViewController : UIViewController {
-    @IBOutlet var v : UIView
+    @IBOutlet var v : UIView!
     
     var tran : CIFilter!
     var moiextent : CGRect!

@@ -26,7 +26,7 @@ class ViewController2: UIViewController {
 
 extension ViewController2 : UIViewControllerTransitioningDelegate {
     func presentationControllerForPresentedViewController(presented: UIViewController!, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController!) -> UIPresentationController! {
-        let pc = MyPresentationController(presentingViewController: presenting, presentedViewController: presented)
+        let pc = MyPresentationController(presentedViewController: presented, presentingViewController: presenting)
         return pc
     }
 }

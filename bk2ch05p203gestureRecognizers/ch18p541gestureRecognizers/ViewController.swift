@@ -3,7 +3,7 @@
 import UIKit
 
 class ViewController : UIViewController {
-    @IBOutlet var v : UIView
+    @IBOutlet var v : UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

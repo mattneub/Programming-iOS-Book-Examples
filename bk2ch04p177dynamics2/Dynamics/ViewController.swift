@@ -3,7 +3,7 @@
 import UIKit
 
 class ViewController : UIViewController, UIDynamicAnimatorDelegate {
-    @IBOutlet var iv : UIImageView
+    @IBOutlet var iv : UIImageView!
     var anim : UIDynamicAnimator!
     
     override func viewDidLoad() {

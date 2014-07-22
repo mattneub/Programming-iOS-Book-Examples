@@ -3,7 +3,7 @@ import UIKit
 
 class MyView : UIView {
     
-    @lazy var arrow : UIImage = self.arrowImage()
+    lazy var arrow : UIImage = self.arrowImage()
     
     init (frame:CGRect) {
         super.init(frame:frame)

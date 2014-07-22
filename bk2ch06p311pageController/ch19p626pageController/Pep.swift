@@ -5,8 +5,8 @@ import UIKit
 class Pep: UIViewController {
     
     let boy : String
-    @IBOutlet var name : UILabel
-    @IBOutlet var pic : UIImageView
+    @IBOutlet var name : UILabel!
+    @IBOutlet var pic : UIImageView!
     
     init(pepBoy boy:String, nib:String?, bundle:NSBundle?) {
         self.boy = boy

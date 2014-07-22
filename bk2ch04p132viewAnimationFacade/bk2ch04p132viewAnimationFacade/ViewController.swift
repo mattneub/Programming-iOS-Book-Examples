@@ -3,7 +3,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet var v: MyView
+    @IBOutlet var v: MyView!
     
     // MyView presents a facade where its "swing" property is view-animatable
     

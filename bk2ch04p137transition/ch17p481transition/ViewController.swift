@@ -4,10 +4,10 @@ import UIKit
 
 class ViewController : UIViewController {
     
-    @IBOutlet var iv : UIImageView
-    @IBOutlet var v : MyView
-    @IBOutlet var outer : UIView
-    @IBOutlet var inner : UIView
+    @IBOutlet var iv : UIImageView!
+    @IBOutlet var v : MyView!
+    @IBOutlet var outer : UIView!
+    @IBOutlet var inner : UIView!
     
     @IBAction func doButton(sender : AnyObject?) {
         self.animate()

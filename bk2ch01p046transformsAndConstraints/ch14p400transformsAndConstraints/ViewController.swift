@@ -15,7 +15,7 @@ applying the view transform no longer triggers layout in iOS 8
 */
 
 class ViewController : UIViewController {
-    @IBOutlet var noConstraintsView : UIView
+    @IBOutlet var noConstraintsView : UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -20,7 +20,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let ding = UIFont(name:"ZapfDingbatsITC", size:40)
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(100,40), false, 0)
         let c = UIGraphicsGetCurrentContext()
-        let s = "\u2713"
+        let s = "\u{2713}"
         let p = NSMutableParagraphStyle()
         p.alignment = .Right
         s.drawInRect(CGRectMake(0,0,100,40),

@@ -4,9 +4,9 @@ import UIKit
 
 class ViewController : UIViewController {
     
-    @IBOutlet var lab : UILabel
+    @IBOutlet var lab : UILabel!
     
-    @IBAction func doButton(sender:AnyObject) {
+    @IBAction func doButton(sender:AnyObject?) {
         self.animate()
     }
     

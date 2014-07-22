@@ -27,7 +27,7 @@ class ViewController : UIViewController {
     }
     
     // as of this writing there's a bug where we don't see the keyboard or the 
-    // alert view itself is truncated
+    // alert view itself is truncated: seems to be fixed in seed 4
     
     @IBAction func doWrite(sender:AnyObject?) {
         let alert = UIAlertController(title: "Write", message: nil, preferredStyle: .Alert)

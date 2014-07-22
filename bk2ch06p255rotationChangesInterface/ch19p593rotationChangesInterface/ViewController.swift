@@ -2,7 +2,7 @@
 import UIKit
 
 class ViewController : UIViewController {
-    @lazy var blackRect : UIView = self.makeBlackRect()
+    lazy var blackRect : UIView = self.makeBlackRect()
     
     func makeBlackRect() -> UIView {
         var f = self.view.bounds

@@ -4,8 +4,8 @@ import UIKit
 import QuartzCore
 
 class ViewController  : UIViewController {
-    @IBOutlet var v : UIView
-    @IBOutlet var longPresser : UILongPressGestureRecognizer
+    @IBOutlet var v : UIView!
+    @IBOutlet var longPresser : UILongPressGestureRecognizer!
     
     func longPress(lp:UILongPressGestureRecognizer!) {
         switch lp.state {

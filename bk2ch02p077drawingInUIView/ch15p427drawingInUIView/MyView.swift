@@ -9,7 +9,7 @@ class MyView : UIView {
     }
     
     override func drawRect(rect: CGRect) {
-        let which = 6
+        let which = 1
         switch which {
         case 1:
             let con = UIGraphicsGetCurrentContext();

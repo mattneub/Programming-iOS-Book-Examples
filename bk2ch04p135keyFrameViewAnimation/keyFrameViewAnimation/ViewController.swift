@@ -1,7 +1,7 @@
 import UIKit
 
 class ViewController : UIViewController {
-    @IBOutlet var v : UIView
+    @IBOutlet var v : UIView!
     
     @IBAction func doButton(sender : AnyObject?) {
         self.animate()

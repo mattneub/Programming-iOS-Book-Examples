@@ -16,8 +16,8 @@ For one thing, we get a complaint from the autolayout system...
 
 class ViewController: UIViewController {
 
-    @IBOutlet var v1 : UIView
-    @IBOutlet var v2 : UIView
+    @IBOutlet var v1 : UIView!
+    @IBOutlet var v2 : UIView!
     var constraints : [NSLayoutConstraint]!
     
     override func viewDidLoad()  {

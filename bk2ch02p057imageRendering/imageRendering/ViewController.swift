@@ -1,8 +1,8 @@
 import UIKit
 
 class ViewController : UIViewController {
-    @IBOutlet var b : UIButton
-    @IBOutlet var tbi : UITabBarItem
+    @IBOutlet var b : UIButton!
+    @IBOutlet var tbi : UITabBarItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()

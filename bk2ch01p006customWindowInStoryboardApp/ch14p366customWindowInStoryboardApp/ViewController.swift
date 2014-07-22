@@ -6,6 +6,7 @@ class ViewController : UIViewController {
         super.viewDidAppear(animated)
         println(self.view.window)
         println(UIApplication.sharedApplication().delegate.window)
+        println((UIApplication.sharedApplication().delegate as AppDelegate).window)
         println(UIApplication.sharedApplication().keyWindow)
     }
 }

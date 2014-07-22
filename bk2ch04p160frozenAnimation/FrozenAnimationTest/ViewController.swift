@@ -5,7 +5,7 @@ import QuartzCore
 
 class ViewController: UIViewController {
     
-    @IBOutlet var v: UIView
+    @IBOutlet var v: UIView!
     var shape : CAShapeLayer!
     
     override func viewDidLoad() {

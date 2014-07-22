@@ -2,7 +2,7 @@
 import UIKit
 
 extension CGAffineTransform : Printable {
-    var description : String {
+    public var description : String {
     return NSStringFromCGAffineTransform(self)
     }
 }
@@ -16,8 +16,8 @@ func delay(delay:Double, closure:()->()) {
 }
 
 class ViewController : UIViewController {
-    @IBOutlet var lab: UILabel
-    @IBOutlet var v: UIView
+    @IBOutlet var lab: UILabel!
+    @IBOutlet var v: UIView!
     
     var shouldRotate = false
     

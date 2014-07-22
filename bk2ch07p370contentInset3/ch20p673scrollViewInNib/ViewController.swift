@@ -3,7 +3,7 @@
 import UIKit
 
 class ViewController : UIViewController {
-    @IBOutlet var sv : UIScrollView
+    @IBOutlet var sv : UIScrollView!
     var didSetup = false
     
     // storyboard doesn't use autolayout

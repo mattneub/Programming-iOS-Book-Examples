@@ -2,7 +2,7 @@ import UIKit
 import QuartzCore
 
 class ViewController : UIViewController {
-    @IBOutlet strong var views: NSArray?
+    @IBOutlet var views: NSArray?
     var smilers = [Smiler(), Smiler2()] // to serve as delegates
     
     func makeLayerOfClass(klass:CALayer.Type, andAddToView ix:Int) -> CALayer {

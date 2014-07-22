@@ -13,10 +13,10 @@ func dictionaryOfNames(arr:UIView...) -> [String:UIView] {
 class ViewController : UIViewController {
     
     
-    @IBOutlet var lab1 : UILabel
-    @IBOutlet var lab2 : UILabel
-    @IBOutlet var label : UILabel
-    @IBOutlet var button : UIButton
+    @IBOutlet var lab1 : UILabel!
+    @IBOutlet var lab2 : UILabel!
+    @IBOutlet var label : UILabel!
+    @IBOutlet var button : UIButton!
     
     @IBAction func doWiden(sender:AnyObject?) {
         self.lab1.text = self.lab1.text + "xxxxx"

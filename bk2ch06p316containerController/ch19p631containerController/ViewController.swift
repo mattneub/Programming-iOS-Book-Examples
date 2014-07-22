@@ -3,7 +3,7 @@ import UIKit
 
 class ViewController : UIViewController {
     
-    @IBOutlet var panel : UIView
+    @IBOutlet var panel : UIView!
     var cur : Int = 0
     var swappers = [UIViewController]()
     

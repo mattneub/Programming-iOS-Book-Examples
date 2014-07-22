@@ -3,13 +3,13 @@
 import UIKit
 
 class ViewController : UIViewController {
-    @IBOutlet var iv1 : UIImageView
-    @IBOutlet var iv2 : UIImageView
-    @IBOutlet var iv3 : UIImageView
-    @IBOutlet var iv4 : UIImageView
-    @IBOutlet var iv5 : UIImageView
-    @IBOutlet var iv6 : UIImageView
-    @IBOutlet var iv7 : UIImageView
+    @IBOutlet var iv1 : UIImageView!
+    @IBOutlet var iv2 : UIImageView!
+    @IBOutlet var iv3 : UIImageView!
+    @IBOutlet var iv4 : UIImageView!
+    @IBOutlet var iv5 : UIImageView!
+    @IBOutlet var iv6 : UIImageView!
+    @IBOutlet var iv7 : UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
