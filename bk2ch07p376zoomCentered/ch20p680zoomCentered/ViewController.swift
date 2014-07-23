@@ -72,6 +72,7 @@ class MyScrollView : UIScrollView {
     override func layoutSubviews() {
         // see WWDC 2010 video on this topic
         // comment this out and zoom the bird image smaller to see the difference
+        // println("layout")
         super.layoutSubviews()
         let v = self.delegate.viewForZoomingInScrollView!(self)
         let svw = self.bounds.size.width

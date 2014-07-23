@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32F50F97197F5A4D00F3960A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F50F96197F5A4D00F3960A /* ViewController.swift */; };
+		32F50F99197F5E9200F3960A /* MyFlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F50F98197F5E9200F3960A /* MyFlagView.swift */; };
 		C90302AC17E239860093D3D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90302AB17E239860093D3D6 /* Foundation.framework */; };
 		C90302AE17E239860093D3D6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90302AD17E239860093D3D6 /* CoreGraphics.framework */; };
 		C90302B017E239860093D3D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90302AF17E239860093D3D6 /* UIKit.framework */; };
@@ -14,7 +16,6 @@
 		C90302B817E239860093D3D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C90302B717E239860093D3D6 /* main.m */; };
 		C90302BC17E239860093D3D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C90302BB17E239860093D3D6 /* AppDelegate.m */; };
 		C90302BF17E239860093D3D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90302BD17E239860093D3D6 /* Main.storyboard */; };
-		C90302C217E239860093D3D6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90302C117E239860093D3D6 /* ViewController.m */; };
 		C90302C417E239860093D3D6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90302C317E239860093D3D6 /* Images.xcassets */; };
 		C90302E317E239C50093D3D6 /* map.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C90302E017E239C50093D3D6 /* map.jpg */; };
 		C90302E417E239C50093D3D6 /* redflag.png in Resources */ = {isa = PBXBuildFile; fileRef = C90302E117E239C50093D3D6 /* redflag.png */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32F50F96197F5A4D00F3960A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32F50F98197F5E9200F3960A /* MyFlagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFlagView.swift; sourceTree = "<group>"; };
 		C90302A817E239860093D3D6 /* ch20p688dragInScrollView2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p688dragInScrollView2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90302AB17E239860093D3D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C90302AD17E239860093D3D6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -33,8 +36,6 @@
 		C90302BA17E239860093D3D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C90302BB17E239860093D3D6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C90302BE17E239860093D3D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C90302C017E239860093D3D6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C90302C117E239860093D3D6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C90302C317E239860093D3D6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C90302CA17E239860093D3D6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C90302E017E239C50093D3D6 /* map.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = map.jpg; sourceTree = "<group>"; };
@@ -90,8 +91,8 @@
 				C90302BA17E239860093D3D6 /* AppDelegate.h */,
 				C90302BB17E239860093D3D6 /* AppDelegate.m */,
 				C90302BD17E239860093D3D6 /* Main.storyboard */,
-				C90302C017E239860093D3D6 /* ViewController.h */,
-				C90302C117E239860093D3D6 /* ViewController.m */,
+				32F50F96197F5A4D00F3960A /* ViewController.swift */,
+				32F50F98197F5E9200F3960A /* MyFlagView.swift */,
 				C90302C317E239860093D3D6 /* Images.xcassets */,
 				C90302E017E239C50093D3D6 /* map.jpg */,
 				C90302E117E239C50093D3D6 /* redflag.png */,
@@ -180,8 +181,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C90302C217E239860093D3D6 /* ViewController.m in Sources */,
 				C90302BC17E239860093D3D6 /* AppDelegate.m in Sources */,
+				32F50F97197F5A4D00F3960A /* ViewController.swift in Sources */,
+				32F50F99197F5E9200F3960A /* MyFlagView.swift in Sources */,
 				C90302B817E239860093D3D6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,7 +243,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -274,7 +276,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -286,10 +288,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p688dragInScrollView/ch20p688dragInScrollView2-Prefix.pch";
 				INFOPLIST_FILE = "ch20p688dragInScrollView/ch20p688dragInScrollView2-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch20p688dragInScrollView2;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -300,9 +306,12 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p688dragInScrollView/ch20p688dragInScrollView2-Prefix.pch";
 				INFOPLIST_FILE = "ch20p688dragInScrollView/ch20p688dragInScrollView2-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch20p688dragInScrollView2;
 				WRAPPER_EXTENSION = app;
 			};

@@ -8,6 +8,11 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var v: UIView!
     var didSetup = false
     
+    /*
+    Unfortunately the custom scroll view for keeping the view centered
+    works poorly in iOS 8...
+*/
+    
     override func viewDidLayoutSubviews() {
         if !self.didSetup {
             self.didSetup = true
@@ -24,13 +29,12 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidEndZooming(scrollView: UIScrollView!, withView view: UIView!, atScale scale: CGFloat) {
         scrollView.bounces = self.oldBounces
+        view.contentScaleFactor = scale * UIScreen.mainScreen().scale // *
     }
 
     func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView! {
         return scrollView.viewWithTag(999)
     }
-    
-    // same annoying "jump" bug in iOS 8
     
     @IBAction func tapped(tap : UIGestureRecognizer) {
         let v = tap.view
