@@ -3,7 +3,7 @@
 import UIKit
 
 class Cell : UITableViewCell {
-    @IBOutlet var lab : UILabel
+    @IBOutlet weak var lab : UILabel!
 }
 
 class RootViewController : UITableViewController {
