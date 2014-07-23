@@ -34,8 +34,9 @@ class ViewController : UIViewController {
     }
     
     func grow(v:UIView) {
-        println("grow")
+        println("grow \(v)")
         v.transform = CGAffineTransformScale(v.transform, 1.2, 1.2)
+        
     }
     
     @IBAction func growLayer(g:UIGestureRecognizer) {
