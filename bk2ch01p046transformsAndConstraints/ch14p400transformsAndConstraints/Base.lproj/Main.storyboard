@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
@@ -27,7 +28,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLt-Yo-C0N" userLabel="TapperView">
-                                <rect key="frame" x="32" y="135" width="98" height="76"/>
+                                <rect key="frame" x="32" y="134" width="98" height="76"/>
                                 <color key="backgroundColor" red="1" green="0.21931261690000001" blue="0.45882864099999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -75,10 +76,10 @@
                             <constraint firstItem="Qet-ed-e6n" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="32" id="8tn-2j-GqK"/>
                             <constraint firstItem="grh-0z-79y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="DcF-dc-YDX"/>
                             <constraint firstItem="Fj8-kB-1jh" firstAttribute="top" secondItem="LUB-Tp-gDo" secondAttribute="bottom" constant="318" id="KTf-pc-W3d"/>
-                            <constraint firstAttribute="centerX" secondItem="KLt-Yo-C0N" secondAttribute="centerX" constant="79" id="UpV-pn-HZC"/>
+                            <constraint firstAttribute="leading" secondItem="KLt-Yo-C0N" secondAttribute="centerX" constant="-81" id="UpV-pn-HZC"/>
                             <constraint firstItem="grh-0z-79y" firstAttribute="top" secondItem="LUB-Tp-gDo" secondAttribute="bottom" constant="208" id="dKJ-fm-dKe"/>
+                            <constraint firstItem="KLt-Yo-C0N" firstAttribute="centerY" secondItem="LUB-Tp-gDo" secondAttribute="bottom" constant="152" id="dgn-zk-g0H"/>
                             <constraint firstItem="Qet-ed-e6n" firstAttribute="top" secondItem="LUB-Tp-gDo" secondAttribute="bottom" constant="15" id="mta-Za-6aP"/>
-                            <constraint firstAttribute="top" secondItem="KLt-Yo-C0N" secondAttribute="centerY" constant="-173" id="uLk-jk-Ju0"/>
                             <constraint firstItem="Fj8-kB-1jh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="32" id="uxW-KO-tyX"/>
                         </constraints>
                         <connections>
