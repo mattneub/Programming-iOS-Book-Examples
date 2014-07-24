@@ -31,12 +31,8 @@ class SecondViewController : UIViewController {
     }
     
     /* 
-    This is the biggest and most far-reaching breakage in iOS 8 that I have found so far.
-    A presented view controller can no longer dictate the accepted orientations of the app
-    at the moment it appears
-    (and the presenting view controller can no longer dictate the accepted orientations
-    at the moment the presented view controller is dismissed).
-    I have not found any workaround.
+    ability of presented view controller to force app rotation
+    missing in initial seeds of iOS 8, restored in seed 4
 */
 
     override func shouldAutorotate() -> Bool {
