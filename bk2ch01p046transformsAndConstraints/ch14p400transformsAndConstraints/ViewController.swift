@@ -12,6 +12,8 @@ Try it in iOS 7 and you'll see what the problem used to be ever since iOS 5
 Logging reveals that the fix was exactly as I have been saying all these years:
 applying the view transform no longer triggers layout in iOS 8
 (neither updateConstraints on the view nor layoutSubviews on its superview is called).
+Moreover, it appears that constraints are now used to calculate and set
+a view's center and bounds, not its frame, as they should have been all along.
 */
 
 class ViewController : UIViewController {
