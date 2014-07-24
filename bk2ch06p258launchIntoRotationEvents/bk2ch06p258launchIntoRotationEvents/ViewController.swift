@@ -21,14 +21,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 //    override func supportedInterfaceOrientations() -> Int {
 //        return Int(UIInterfaceOrientationMask.Landscape.toRaw())
 //    }
-//    
+    
 //    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController!) -> Int {
 //        return Int(UIInterfaceOrientationMask.Landscape.toRaw())
 //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController.delegate = self
+//        self.navigationController.delegate = self
         println("viewDidLoad")
         println(self.view.bounds.size)
         println(self.traitCollection)
@@ -112,9 +112,14 @@ trait collection did change
 
 app accepts any, portrait is first, but view controller is landscape only, device is held in landscape or portrait, doesn't matter
 
-MESS (bug? not sure)
+// MESS (bug? not sure) - fixed in seed 4!
 viewDidLoad, portrait view, portrait trait collection
 trait collection did change (others)
+will transition to landscape trait collection
+(no view size change notification?)
+trait collection did change
+(layout in landscape)
+
 
 app accepts any, landscape is first, view controller is landscape only, device is held in landscape or portrait
 
@@ -133,5 +138,10 @@ we do not have actual view dimensions until "will appear"
 In navigation interface, we can get did layout more than once on rotation...
 ...and dimensions are not necessarily correct the first time
 layout on rotation in that case is *after* the transitions/trait changes
+*/
+
+/*
+I took out the navigation interface because it confuses the matter for now;
+for example, we can launch into portrait even if the navigation controller delegate says no
 */
 
