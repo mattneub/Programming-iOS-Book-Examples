@@ -7,37 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		324855761981FDB6008C5170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324855751981FDB6008C5170 /* AppDelegate.swift */; };
+		324855781981FDF8008C5170 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324855771981FDF8008C5170 /* RootViewController.swift */; };
+		3248557A1981FE2D008C5170 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324855791981FE2D008C5170 /* MyCell.swift */; };
 		C909B89E17EA016900DC5F48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C909B89D17EA016900DC5F48 /* Foundation.framework */; };
 		C909B8A017EA016900DC5F48 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C909B89F17EA016900DC5F48 /* CoreGraphics.framework */; };
 		C909B8A217EA016900DC5F48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C909B8A117EA016900DC5F48 /* UIKit.framework */; };
-		C909B8A817EA016900DC5F48 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C909B8A617EA016900DC5F48 /* InfoPlist.strings */; };
-		C909B8AA17EA016900DC5F48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C909B8A917EA016900DC5F48 /* main.m */; };
-		C909B8AE17EA016900DC5F48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C909B8AD17EA016900DC5F48 /* AppDelegate.m */; };
 		C909B8B017EA016900DC5F48 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C909B8AF17EA016900DC5F48 /* Images.xcassets */; };
-		C909B8CF17EA01B900DC5F48 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C909B8CD17EA01B900DC5F48 /* RootViewController.m */; };
 		C909B8D017EA01B900DC5F48 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C909B8CE17EA01B900DC5F48 /* RootViewController.xib */; };
-		C909B8D417EA021000DC5F48 /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C909B8D217EA021000DC5F48 /* MyCell.m */; };
 		C909B8D517EA021000DC5F48 /* MyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C909B8D317EA021000DC5F48 /* MyCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		324855751981FDB6008C5170 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		324855771981FDF8008C5170 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		324855791981FE2D008C5170 /* MyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		C909B89A17EA016900DC5F48 /* ch21p741editInsertAndRearrangeRows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch21p741editInsertAndRearrangeRows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C909B89D17EA016900DC5F48 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C909B89F17EA016900DC5F48 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C909B8A117EA016900DC5F48 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C909B8A517EA016900DC5F48 /* ch21p741editInsertAndRearrangeRows-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch21p741editInsertAndRearrangeRows-Info.plist"; sourceTree = "<group>"; };
-		C909B8A717EA016900DC5F48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C909B8A917EA016900DC5F48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C909B8AB17EA016900DC5F48 /* ch21p741editInsertAndRearrangeRows-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch21p741editInsertAndRearrangeRows-Prefix.pch"; sourceTree = "<group>"; };
-		C909B8AC17EA016900DC5F48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C909B8AD17EA016900DC5F48 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C909B8AF17EA016900DC5F48 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C909B8B617EA016A00DC5F48 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C909B8CC17EA01B900DC5F48 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		C909B8CD17EA01B900DC5F48 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		C909B8CE17EA01B900DC5F48 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
-		C909B8D117EA021000DC5F48 /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
-		C909B8D217EA021000DC5F48 /* MyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
 		C909B8D317EA021000DC5F48 /* MyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,13 +78,10 @@
 		C909B8A317EA016900DC5F48 /* ch21p741editInsertAndRearrangeRows */ = {
 			isa = PBXGroup;
 			children = (
-				C909B8AC17EA016900DC5F48 /* AppDelegate.h */,
-				C909B8AD17EA016900DC5F48 /* AppDelegate.m */,
-				C909B8CC17EA01B900DC5F48 /* RootViewController.h */,
-				C909B8CD17EA01B900DC5F48 /* RootViewController.m */,
+				324855751981FDB6008C5170 /* AppDelegate.swift */,
+				324855771981FDF8008C5170 /* RootViewController.swift */,
 				C909B8CE17EA01B900DC5F48 /* RootViewController.xib */,
-				C909B8D117EA021000DC5F48 /* MyCell.h */,
-				C909B8D217EA021000DC5F48 /* MyCell.m */,
+				324855791981FE2D008C5170 /* MyCell.swift */,
 				C909B8D317EA021000DC5F48 /* MyCell.xib */,
 				C909B8AF17EA016900DC5F48 /* Images.xcassets */,
 				C909B8A417EA016900DC5F48 /* Supporting Files */,
@@ -104,9 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				C909B8A517EA016900DC5F48 /* ch21p741editInsertAndRearrangeRows-Info.plist */,
-				C909B8A617EA016900DC5F48 /* InfoPlist.strings */,
-				C909B8A917EA016900DC5F48 /* main.m */,
-				C909B8AB17EA016900DC5F48 /* ch21p741editInsertAndRearrangeRows-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -162,7 +148,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C909B8A817EA016900DC5F48 /* InfoPlist.strings in Resources */,
 				C909B8D517EA021000DC5F48 /* MyCell.xib in Resources */,
 				C909B8B017EA016900DC5F48 /* Images.xcassets in Resources */,
 				C909B8D017EA01B900DC5F48 /* RootViewController.xib in Resources */,
@@ -176,25 +161,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C909B8AE17EA016900DC5F48 /* AppDelegate.m in Sources */,
-				C909B8D417EA021000DC5F48 /* MyCell.m in Sources */,
-				C909B8AA17EA016900DC5F48 /* main.m in Sources */,
-				C909B8CF17EA01B900DC5F48 /* RootViewController.m in Sources */,
+				324855761981FDB6008C5170 /* AppDelegate.swift in Sources */,
+				3248557A1981FE2D008C5170 /* MyCell.swift in Sources */,
+				324855781981FDF8008C5170 /* RootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		C909B8A617EA016900DC5F48 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C909B8A717EA016900DC5F48 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C909B8C417EA016A00DC5F48 /* Debug */ = {
@@ -230,7 +203,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -263,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -275,10 +248,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch21p741editInsertAndRearrangeRows/ch21p741editInsertAndRearrangeRows-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ch21p741editInsertAndRearrangeRows/ch21p741editInsertAndRearrangeRows-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -289,9 +266,12 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch21p741editInsertAndRearrangeRows/ch21p741editInsertAndRearrangeRows-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ch21p741editInsertAndRearrangeRows/ch21p741editInsertAndRearrangeRows-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
