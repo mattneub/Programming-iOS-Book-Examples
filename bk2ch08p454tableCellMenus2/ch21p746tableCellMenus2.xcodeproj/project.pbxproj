@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3259CF2D1982A69B00D0A6D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259CF2B1982A69B00D0A6D4 /* AppDelegate.swift */; };
+		3259CF2E1982A69B00D0A6D4 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259CF2C1982A69B00D0A6D4 /* RootViewController.swift */; };
+		3259CF301982A6B600D0A6D4 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259CF2F1982A6B600D0A6D4 /* MyCell.swift */; };
 		C9333F1617E676F90060FC39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9333F1517E676F90060FC39 /* Foundation.framework */; };
 		C9333F1817E676F90060FC39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9333F1717E676F90060FC39 /* CoreGraphics.framework */; };
 		C9333F1A17E676F90060FC39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9333F1917E676F90060FC39 /* UIKit.framework */; };
-		C9333F2017E676F90060FC39 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9333F1E17E676F90060FC39 /* InfoPlist.strings */; };
-		C9333F2217E676F90060FC39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9333F2117E676F90060FC39 /* main.m */; };
-		C9333F2617E676F90060FC39 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9333F2517E676F90060FC39 /* AppDelegate.m */; };
 		C9333F2817E676F90060FC39 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9333F2717E676F90060FC39 /* Images.xcassets */; };
-		C9333F4717E677570060FC39 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9333F4517E677570060FC39 /* RootViewController.m */; };
 		C9333F4817E677570060FC39 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9333F4617E677570060FC39 /* RootViewController.xib */; };
 		C9333F4A17E677890060FC39 /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9333F4917E677890060FC39 /* states.txt */; };
 		C9333F7F17E67EDC0060FC39 /* flag_alabama.gif in Resources */ = {isa = PBXBuildFile; fileRef = C9333F4C17E67EDC0060FC39 /* flag_alabama.gif */; };
@@ -68,24 +67,19 @@
 		C9333FAF17E67EDC0060FC39 /* flag_wisconsin.gif in Resources */ = {isa = PBXBuildFile; fileRef = C9333F7C17E67EDC0060FC39 /* flag_wisconsin.gif */; };
 		C9333FB017E67EDC0060FC39 /* flag_wyoming.gif in Resources */ = {isa = PBXBuildFile; fileRef = C9333F7D17E67EDC0060FC39 /* flag_wyoming.gif */; };
 		C9333FB117E67EDC0060FC39 /* us_flag_small.gif in Resources */ = {isa = PBXBuildFile; fileRef = C9333F7E17E67EDC0060FC39 /* us_flag_small.gif */; };
-		C9DFE3D417FF18AC00C90846 /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DFE3D317FF18AC00C90846 /* MyCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C9333F1217E676F90060FC39 /* ch21p746tableCellMenus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch21p746tableCellMenus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3259CF2B1982A69B00D0A6D4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3259CF2C1982A69B00D0A6D4 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		3259CF2F1982A6B600D0A6D4 /* MyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
+		C9333F1217E676F90060FC39 /* ch21p746tableCellMenus2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch21p746tableCellMenus2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9333F1517E676F90060FC39 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9333F1717E676F90060FC39 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C9333F1917E676F90060FC39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C9333F1D17E676F90060FC39 /* ch21p746tableCellMenus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch21p746tableCellMenus-Info.plist"; sourceTree = "<group>"; };
-		C9333F1F17E676F90060FC39 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9333F2117E676F90060FC39 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9333F2317E676F90060FC39 /* ch21p746tableCellMenus-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch21p746tableCellMenus-Prefix.pch"; sourceTree = "<group>"; };
-		C9333F2417E676F90060FC39 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C9333F2517E676F90060FC39 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C9333F1D17E676F90060FC39 /* ch21p746tableCellMenus2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch21p746tableCellMenus2-Info.plist"; sourceTree = "<group>"; };
 		C9333F2717E676F90060FC39 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9333F2E17E676F90060FC39 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9333F4417E677570060FC39 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		C9333F4517E677570060FC39 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		C9333F4617E677570060FC39 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		C9333F4917E677890060FC39 /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
 		C9333F4C17E67EDC0060FC39 /* flag_alabama.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_alabama.gif; sourceTree = "<group>"; };
@@ -139,8 +133,6 @@
 		C9333F7C17E67EDC0060FC39 /* flag_wisconsin.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_wisconsin.gif; sourceTree = "<group>"; };
 		C9333F7D17E67EDC0060FC39 /* flag_wyoming.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_wyoming.gif; sourceTree = "<group>"; };
 		C9333F7E17E67EDC0060FC39 /* us_flag_small.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = us_flag_small.gif; sourceTree = "<group>"; };
-		C9DFE3D217FF18AC00C90846 /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
-		C9DFE3D317FF18AC00C90846 /* MyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +161,7 @@
 		C9333F1317E676F90060FC39 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C9333F1217E676F90060FC39 /* ch21p746tableCellMenus.app */,
+				C9333F1217E676F90060FC39 /* ch21p746tableCellMenus2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,13 +180,10 @@
 		C9333F1B17E676F90060FC39 /* ch21p718sections */ = {
 			isa = PBXGroup;
 			children = (
-				C9333F2417E676F90060FC39 /* AppDelegate.h */,
-				C9333F2517E676F90060FC39 /* AppDelegate.m */,
-				C9333F4417E677570060FC39 /* RootViewController.h */,
-				C9333F4517E677570060FC39 /* RootViewController.m */,
+				3259CF2B1982A69B00D0A6D4 /* AppDelegate.swift */,
+				3259CF2C1982A69B00D0A6D4 /* RootViewController.swift */,
 				C9333F4617E677570060FC39 /* RootViewController.xib */,
-				C9DFE3D217FF18AC00C90846 /* MyCell.h */,
-				C9DFE3D317FF18AC00C90846 /* MyCell.m */,
+				3259CF2F1982A6B600D0A6D4 /* MyCell.swift */,
 				C9333F4917E677890060FC39 /* states.txt */,
 				C9333F4B17E67ED00060FC39 /* flags */,
 				C9333F2717E676F90060FC39 /* Images.xcassets */,
@@ -206,10 +195,7 @@
 		C9333F1C17E676F90060FC39 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C9333F1D17E676F90060FC39 /* ch21p746tableCellMenus-Info.plist */,
-				C9333F1E17E676F90060FC39 /* InfoPlist.strings */,
-				C9333F2117E676F90060FC39 /* main.m */,
-				C9333F2317E676F90060FC39 /* ch21p746tableCellMenus-Prefix.pch */,
+				C9333F1D17E676F90060FC39 /* ch21p746tableCellMenus2-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -275,9 +261,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C9333F1117E676F90060FC39 /* ch21p746tableCellMenus */ = {
+		C9333F1117E676F90060FC39 /* ch21p746tableCellMenus2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9333F3E17E676F90060FC39 /* Build configuration list for PBXNativeTarget "ch21p746tableCellMenus" */;
+			buildConfigurationList = C9333F3E17E676F90060FC39 /* Build configuration list for PBXNativeTarget "ch21p746tableCellMenus2" */;
 			buildPhases = (
 				C9333F0E17E676F90060FC39 /* Sources */,
 				C9333F0F17E676F90060FC39 /* Frameworks */,
@@ -287,9 +273,9 @@
 			);
 			dependencies = (
 			);
-			name = ch21p746tableCellMenus;
+			name = ch21p746tableCellMenus2;
 			productName = ch21p718sections;
-			productReference = C9333F1217E676F90060FC39 /* ch21p746tableCellMenus.app */;
+			productReference = C9333F1217E676F90060FC39 /* ch21p746tableCellMenus2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -301,7 +287,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
-			buildConfigurationList = C9333F0D17E676F90060FC39 /* Build configuration list for PBXProject "ch21p746tableCellMenus" */;
+			buildConfigurationList = C9333F0D17E676F90060FC39 /* Build configuration list for PBXProject "ch21p746tableCellMenus2" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -313,7 +299,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C9333F1117E676F90060FC39 /* ch21p746tableCellMenus */,
+				C9333F1117E676F90060FC39 /* ch21p746tableCellMenus2 */,
 			);
 		};
 /* End PBXProject section */
@@ -361,7 +347,6 @@
 				C9333F8317E67EDC0060FC39 /* flag_california.gif in Resources */,
 				C9333F8717E67EDC0060FC39 /* flag_florida.gif in Resources */,
 				C9333FAE17E67EDC0060FC39 /* flag_westvirginia.gif in Resources */,
-				C9333F2017E676F90060FC39 /* InfoPlist.strings in Resources */,
 				C9333FA917E67EDC0060FC39 /* flag_texas.gif in Resources */,
 				C9333F9717E67EDC0060FC39 /* flag_missouri.gif in Resources */,
 				C9333F8417E67EDC0060FC39 /* flag_colorado.gif in Resources */,
@@ -388,25 +373,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9333F2617E676F90060FC39 /* AppDelegate.m in Sources */,
-				C9DFE3D417FF18AC00C90846 /* MyCell.m in Sources */,
-				C9333F2217E676F90060FC39 /* main.m in Sources */,
-				C9333F4717E677570060FC39 /* RootViewController.m in Sources */,
+				3259CF301982A6B600D0A6D4 /* MyCell.swift in Sources */,
+				3259CF2E1982A69B00D0A6D4 /* RootViewController.swift in Sources */,
+				3259CF2D1982A69B00D0A6D4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		C9333F1E17E676F90060FC39 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9333F1F17E676F90060FC39 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C9333F3C17E676F90060FC39 /* Debug */ = {
@@ -442,7 +415,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -475,7 +448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -487,10 +460,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch21p718sections/ch21p746tableCellMenus-Prefix.pch";
-				INFOPLIST_FILE = "ch21p718sections/ch21p746tableCellMenus-Info.plist";
-				PRODUCT_NAME = ch21p746tableCellMenus;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "ch21p718sections/ch21p746tableCellMenus2-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = ch21p746tableCellMenus2;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -501,10 +478,13 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch21p718sections/ch21p746tableCellMenus-Prefix.pch";
-				INFOPLIST_FILE = "ch21p718sections/ch21p746tableCellMenus-Info.plist";
-				PRODUCT_NAME = ch21p746tableCellMenus;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "ch21p718sections/ch21p746tableCellMenus2-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = ch21p746tableCellMenus2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -512,7 +492,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C9333F0D17E676F90060FC39 /* Build configuration list for PBXProject "ch21p746tableCellMenus" */ = {
+		C9333F0D17E676F90060FC39 /* Build configuration list for PBXProject "ch21p746tableCellMenus2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9333F3C17E676F90060FC39 /* Debug */,
@@ -521,7 +501,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9333F3E17E676F90060FC39 /* Build configuration list for PBXNativeTarget "ch21p746tableCellMenus" */ = {
+		C9333F3E17E676F90060FC39 /* Build configuration list for PBXNativeTarget "ch21p746tableCellMenus2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9333F3F17E676F90060FC39 /* Debug */,
