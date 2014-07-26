@@ -1,9 +1,30 @@
 
 import UIKit
 
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
+
+class MyGravityBehavior : UIGravityBehavior {
+    deinit {
+        println("farewell from grav")
+    }
+}
+
+class MyImageView : UIImageView {
+    deinit {
+        println("farewell from iv")
+    }
+}
+
 class ViewController : UIViewController {
     
-    @IBOutlet var iv : UIImageView!
+    @IBOutlet weak var iv : UIImageView!
     var anim : UIDynamicAnimator!
     
     override func viewDidLoad() {
@@ -16,16 +37,64 @@ class ViewController : UIViewController {
     @IBAction func doButton(sender:AnyObject?) {
         (sender as UIButton).enabled = false
         
-        let grav = UIGravityBehavior()
-        grav.action = {
-            let items = self.anim.itemsInRect(self.view.bounds) as [UIView]
-            let ix = find(items, self.iv)
-            if !ix {
-                self.anim.removeAllBehaviors()
-                self.iv.removeFromSuperview()
-                println("done")
+        let grav = MyGravityBehavior()
+        
+        /*
+        The retain cycle issue here is more complicated than I thought.
+        I demonstrate some alternatives...
+        */
+        
+        let which = 4
+        switch which {
+        case 1:
+            // leak! neither the image view nor the gravity behavior is released
+            grav.action = {
+                let items = self.anim.itemsInRect(self.view.bounds) as [UIView]
+                let ix = find(items, self.iv)
+                if !ix {
+                    self.anim.removeAllBehaviors()
+                    self.iv.removeFromSuperview()
+                    println("done")
+                }
             }
+        case 2:
+            grav.action = {
+                let items = self.anim.itemsInRect(self.view.bounds) as [UIView]
+                let ix = find(items, self.iv)
+                if !ix {
+                    self.anim.removeAllBehaviors()
+                    self.iv.removeFromSuperview()
+                    self.anim = nil // * both are released
+                    println("done")
+                }
+            }
+        case 3:
+            grav.action = {
+                let items = self.anim.itemsInRect(self.view.bounds) as [UIView]
+                let ix = find(items, self.iv)
+                if !ix {
+                    delay(0) { // * both are released
+                        self.anim.removeAllBehaviors()
+                    }
+                    self.iv.removeFromSuperview()
+                    println("done")
+                }
+            }
+        case 4:
+            grav.action = {
+                [weak grav] in // *
+                let items = self.anim.itemsInRect(self.view.bounds) as [UIView]
+                let ix = find(items, self.iv)
+                if !ix {
+                    self.anim.removeBehavior(grav) // * grav is released, iv is not!
+                    self.anim.removeAllBehaviors() // probably because of the other behaviors
+                    self.iv.removeFromSuperview()
+                    println("done")
+                }
+            }
+        default: break
         }
+        
         self.anim.addBehavior(grav)
         grav.addItem(self.iv)
         
