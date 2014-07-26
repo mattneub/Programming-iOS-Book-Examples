@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32DB4DC01982BE6F00CDA842 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DB4DBF1982BE6F00CDA842 /* ViewController.swift */; };
 		C9F1DD791803104000AE4AE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F1DD781803104000AE4AE5 /* Foundation.framework */; };
 		C9F1DD7B1803104000AE4AE5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F1DD7A1803104000AE4AE5 /* CoreGraphics.framework */; };
 		C9F1DD7D1803104000AE4AE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F1DD7C1803104000AE4AE5 /* UIKit.framework */; };
@@ -14,12 +15,12 @@
 		C9F1DD851803104000AE4AE5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F1DD841803104000AE4AE5 /* main.m */; };
 		C9F1DD891803104000AE4AE5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F1DD881803104000AE4AE5 /* AppDelegate.m */; };
 		C9F1DD8C1803104000AE4AE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F1DD8A1803104000AE4AE5 /* Main.storyboard */; };
-		C9F1DD8F1803104000AE4AE5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F1DD8E1803104000AE4AE5 /* ViewController.m */; };
 		C9F1DD911803104000AE4AE5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9F1DD901803104000AE4AE5 /* Images.xcassets */; };
 		C9F1DDAE180311DF00AE4AE5 /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9F1DDAD180311DF00AE4AE5 /* states.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32DB4DBF1982BE6F00CDA842 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9F1DD751803104000AE4AE5 /* ch21p748collectionViewFlowLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch21p748collectionViewFlowLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9F1DD781803104000AE4AE5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9F1DD7A1803104000AE4AE5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -31,8 +32,6 @@
 		C9F1DD871803104000AE4AE5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9F1DD881803104000AE4AE5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9F1DD8B1803104000AE4AE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9F1DD8D1803104000AE4AE5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C9F1DD8E1803104000AE4AE5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9F1DD901803104000AE4AE5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9F1DD971803104000AE4AE5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C9F1DDAD180311DF00AE4AE5 /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
@@ -86,8 +85,7 @@
 				C9F1DD871803104000AE4AE5 /* AppDelegate.h */,
 				C9F1DD881803104000AE4AE5 /* AppDelegate.m */,
 				C9F1DD8A1803104000AE4AE5 /* Main.storyboard */,
-				C9F1DD8D1803104000AE4AE5 /* ViewController.h */,
-				C9F1DD8E1803104000AE4AE5 /* ViewController.m */,
+				32DB4DBF1982BE6F00CDA842 /* ViewController.swift */,
 				C9F1DDAD180311DF00AE4AE5 /* states.txt */,
 				C9F1DD901803104000AE4AE5 /* Images.xcassets */,
 				C9F1DD7F1803104000AE4AE5 /* Supporting Files */,
@@ -172,8 +170,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9F1DD8F1803104000AE4AE5 /* ViewController.m in Sources */,
 				C9F1DD891803104000AE4AE5 /* AppDelegate.m in Sources */,
+				32DB4DC01982BE6F00CDA842 /* ViewController.swift in Sources */,
 				C9F1DD851803104000AE4AE5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,7 +231,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -266,7 +264,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -278,10 +276,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch21p748collectionViewFlowLayout/ch21p748collectionViewFlowLayout-Prefix.pch";
 				INFOPLIST_FILE = "ch21p748collectionViewFlowLayout/ch21p748collectionViewFlowLayout-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -292,9 +294,12 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch21p748collectionViewFlowLayout/ch21p748collectionViewFlowLayout-Prefix.pch";
 				INFOPLIST_FILE = "ch21p748collectionViewFlowLayout/ch21p748collectionViewFlowLayout-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
