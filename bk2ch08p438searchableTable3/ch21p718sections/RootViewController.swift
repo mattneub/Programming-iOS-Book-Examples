@@ -28,11 +28,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
                 // and in that case also add new subarray to our array of subarrays
                 self.sectionData += [String]()
             }
-            // in Swift, an array inside an array can't be mutable
-            // so pull it out, modify it, put it back
-            var arr = sectionData.removeLast()
-            arr += aState
-            sectionData += arr
+            sectionData[sectionData.count-1] += aState
         }
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")

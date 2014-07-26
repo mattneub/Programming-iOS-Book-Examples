@@ -25,11 +25,7 @@ class ViewController : UICollectionViewController {
                 // and in that case also add new subarray to our array of subarrays
                 self.sectionData += [String]()
             }
-            // in Swift, an array inside an array can't be mutable
-            // so pull it out, modify it, put it back
-            var arr = sectionData.removeLast()
-            arr += aState
-            sectionData += arr
+            sectionData[sectionData.count-1] += aState
         }
         self.navigationItem.title = "States"
         
@@ -47,6 +43,8 @@ class ViewController : UICollectionViewController {
     override func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
         return self.sectionData[section].count
     }
+    
+    // minimal formatting; this is just to prove we can show the data at all
     
     // headers 
     
@@ -94,5 +92,5 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
 }
 
 // that duplication is exactly what iOS 8 is supposed to fix with _automatic_ variable cell size
-// but I can't get that to work
+// but I can't get that to work (see next example for my workaround using constraints)
 
