@@ -198,14 +198,18 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     func doDelete(sender:AnyObject) { // button, delete selected cells
         let arr = self.collectionView.indexPathsForSelectedItems() as [NSIndexPath]?
-        if !arr || arr!.count == 0 { return }
+        if !arr || arr!.count == 0 {
+            return
+        }
         // sort
         let arr2 = (arr! as NSArray).sortedArrayUsingSelector(Selector("compare:")).reverse() as [NSIndexPath]
         // delete data
         var empties = [Int]() // keep track of what sections get emptied
         for ip in arr2 {
             self.sectionData[ip.section].removeAtIndex(ip.item)
-            if self.sectionData[ip.section].count == 0 { empties += ip.section }
+            if self.sectionData[ip.section].count == 0 {
+                empties += ip.section
+            }
         }
         // will need an NSIndexSet version of that empties list
         let emptyset = NSMutableIndexSet()
