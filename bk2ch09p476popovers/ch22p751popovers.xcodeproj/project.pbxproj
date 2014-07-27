@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32064A86198544580069F4B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32064A85198544580069F4B2 /* ViewController.swift */; };
+		32064AB3198582810069F4B2 /* MyPopoverBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32064AB2198582810069F4B2 /* MyPopoverBackgroundView.swift */; };
+		32064AB5198587810069F4B2 /* ExtraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32064AB4198587810069F4B2 /* ExtraViewController.swift */; };
+		32AE0C7019858A5100DAC510 /* PopoverViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE0C6F19858A5100DAC510 /* PopoverViewControllers.swift */; };
 		C97528FF1808545900CB3D2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97528FE1808545900CB3D2D /* Foundation.framework */; };
 		C97529011808545900CB3D2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97529001808545900CB3D2D /* CoreGraphics.framework */; };
 		C97529031808545900CB3D2D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97529021808545900CB3D2D /* UIKit.framework */; };
@@ -14,18 +18,18 @@
 		C975290B1808545900CB3D2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C975290A1808545900CB3D2D /* main.m */; };
 		C975290F1808545900CB3D2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C975290E1808545900CB3D2D /* AppDelegate.m */; };
 		C97529121808545900CB3D2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97529101808545900CB3D2D /* Main.storyboard */; };
-		C97529151808545900CB3D2D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97529141808545900CB3D2D /* ViewController.m */; };
 		C97529171808545900CB3D2D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97529161808545900CB3D2D /* Images.xcassets */; };
-		C97529361808557200CB3D2D /* Popover1View1.m in Sources */ = {isa = PBXBuildFile; fileRef = C97529341808557200CB3D2D /* Popover1View1.m */; };
 		C97529371808557200CB3D2D /* Popover1View1.xib in Resources */ = {isa = PBXBuildFile; fileRef = C97529351808557200CB3D2D /* Popover1View1.xib */; };
-		C975293A1808710700CB3D2D /* Popover1View2.m in Sources */ = {isa = PBXBuildFile; fileRef = C97529391808710700CB3D2D /* Popover1View2.m */; };
-		C975294018087BAF00CB3D2D /* MyPopoverBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = C975293F18087BAF00CB3D2D /* MyPopoverBackgroundView.m */; };
 		C975294218087CC200CB3D2D /* linen.png in Resources */ = {isa = PBXBuildFile; fileRef = C975294118087CC200CB3D2D /* linen.png */; };
-		C9AAEDBE1809989F00D4BCF1 /* ExtraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9AAEDBD1809989F00D4BCF1 /* ExtraViewController.m */; };
 		C9AAEDC01809991500D4BCF1 /* ExtraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9AAEDBF1809991500D4BCF1 /* ExtraViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32064A84198544580069F4B2 /* ch22p751popovers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch22p751popovers-Bridging-Header.h"; sourceTree = "<group>"; };
+		32064A85198544580069F4B2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32064AB2198582810069F4B2 /* MyPopoverBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPopoverBackgroundView.swift; sourceTree = "<group>"; };
+		32064AB4198587810069F4B2 /* ExtraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraViewController.swift; sourceTree = "<group>"; };
+		32AE0C6F19858A5100DAC510 /* PopoverViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewControllers.swift; sourceTree = "<group>"; };
 		C97528FB1808545900CB3D2D /* ch22p751popovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch22p751popovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97528FE1808545900CB3D2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C97529001808545900CB3D2D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -37,20 +41,10 @@
 		C975290D1808545900CB3D2D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C975290E1808545900CB3D2D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C97529111808545900CB3D2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C97529131808545900CB3D2D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C97529141808545900CB3D2D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C97529161808545900CB3D2D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C975291D1808545900CB3D2D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C97529331808557200CB3D2D /* Popover1View1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Popover1View1.h; sourceTree = "<group>"; };
-		C97529341808557200CB3D2D /* Popover1View1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Popover1View1.m; sourceTree = "<group>"; };
 		C97529351808557200CB3D2D /* Popover1View1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Popover1View1.xib; sourceTree = "<group>"; };
-		C97529381808710700CB3D2D /* Popover1View2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Popover1View2.h; sourceTree = "<group>"; };
-		C97529391808710700CB3D2D /* Popover1View2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Popover1View2.m; sourceTree = "<group>"; };
-		C975293E18087BAF00CB3D2D /* MyPopoverBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPopoverBackgroundView.h; sourceTree = "<group>"; };
-		C975293F18087BAF00CB3D2D /* MyPopoverBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPopoverBackgroundView.m; sourceTree = "<group>"; };
 		C975294118087CC200CB3D2D /* linen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linen.png; sourceTree = "<group>"; };
-		C9AAEDBC1809989F00D4BCF1 /* ExtraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraViewController.h; sourceTree = "<group>"; };
-		C9AAEDBD1809989F00D4BCF1 /* ExtraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtraViewController.m; sourceTree = "<group>"; };
 		C9AAEDBF1809991500D4BCF1 /* ExtraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExtraViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,21 +96,16 @@
 				C975290D1808545900CB3D2D /* AppDelegate.h */,
 				C975290E1808545900CB3D2D /* AppDelegate.m */,
 				C97529101808545900CB3D2D /* Main.storyboard */,
-				C97529131808545900CB3D2D /* ViewController.h */,
-				C97529141808545900CB3D2D /* ViewController.m */,
-				C97529331808557200CB3D2D /* Popover1View1.h */,
-				C97529341808557200CB3D2D /* Popover1View1.m */,
+				32064A85198544580069F4B2 /* ViewController.swift */,
+				32AE0C6F19858A5100DAC510 /* PopoverViewControllers.swift */,
 				C97529351808557200CB3D2D /* Popover1View1.xib */,
-				C97529381808710700CB3D2D /* Popover1View2.h */,
-				C97529391808710700CB3D2D /* Popover1View2.m */,
-				C975293E18087BAF00CB3D2D /* MyPopoverBackgroundView.h */,
-				C975293F18087BAF00CB3D2D /* MyPopoverBackgroundView.m */,
-				C9AAEDBC1809989F00D4BCF1 /* ExtraViewController.h */,
-				C9AAEDBD1809989F00D4BCF1 /* ExtraViewController.m */,
+				32064AB2198582810069F4B2 /* MyPopoverBackgroundView.swift */,
+				32064AB4198587810069F4B2 /* ExtraViewController.swift */,
 				C9AAEDBF1809991500D4BCF1 /* ExtraViewController.xib */,
 				C975294118087CC200CB3D2D /* linen.png */,
 				C97529161808545900CB3D2D /* Images.xcassets */,
 				C97529051808545900CB3D2D /* Supporting Files */,
+				32064A84198544580069F4B2 /* ch22p751popovers-Bridging-Header.h */,
 			);
 			path = ch22p751popovers;
 			sourceTree = "<group>";
@@ -200,12 +189,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C97529151808545900CB3D2D /* ViewController.m in Sources */,
-				C975294018087BAF00CB3D2D /* MyPopoverBackgroundView.m in Sources */,
 				C975290F1808545900CB3D2D /* AppDelegate.m in Sources */,
-				C97529361808557200CB3D2D /* Popover1View1.m in Sources */,
-				C975293A1808710700CB3D2D /* Popover1View2.m in Sources */,
-				C9AAEDBE1809989F00D4BCF1 /* ExtraViewController.m in Sources */,
+				32064AB3198582810069F4B2 /* MyPopoverBackgroundView.swift in Sources */,
+				32AE0C7019858A5100DAC510 /* PopoverViewControllers.swift in Sources */,
+				32064AB5198587810069F4B2 /* ExtraViewController.swift in Sources */,
+				32064A86198544580069F4B2 /* ViewController.swift in Sources */,
 				C975290B1808545900CB3D2D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,7 +253,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -299,7 +287,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -312,10 +300,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch22p751popovers/ch22p751popovers-Prefix.pch";
 				INFOPLIST_FILE = "ch22p751popovers/ch22p751popovers-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch22p751popovers/ch22p751popovers-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -326,10 +318,13 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch22p751popovers/ch22p751popovers-Prefix.pch";
 				INFOPLIST_FILE = "ch22p751popovers/ch22p751popovers-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch22p751popovers/ch22p751popovers-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
