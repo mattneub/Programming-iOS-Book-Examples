@@ -1,8 +1,7 @@
 
 #import "ViewController2.h"
 #import "Cell.h"
-// #import "MyFlowLayout.h"
-#import "ch21p748collectionViewLayoutFromScratch-Swift.h"
+#import "MyFlowLayout.h"
 
 @interface ViewController2 ()
 @end

@@ -1,5 +1,10 @@
 
 
+/*
+ I've provided two independent versions of this example, one Swift, one Objective-C,
+ because the Swift version is prohibitively slow (especially on a device)
+ */
+
 #import "ViewController.h"
 #import "Cell.h"
 

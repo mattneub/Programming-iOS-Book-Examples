@@ -93,8 +93,6 @@
 		C9F1DE2E1803183800AE4AE5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9F1DE2F1803183800AE4AE5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9F1DE321803183800AE4AE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9F1DE341803183800AE4AE5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C9F1DE351803183800AE4AE5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9F1DE371803183800AE4AE5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9F1DE3E1803183800AE4AE5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C9F1DE551803190900AE4AE5 /* flag_alabama.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_alabama.gif; sourceTree = "<group>"; };
@@ -147,15 +145,7 @@
 		C9F1DE841803190900AE4AE5 /* flag_westvirginia.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_westvirginia.gif; sourceTree = "<group>"; };
 		C9F1DE851803190900AE4AE5 /* flag_wisconsin.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_wisconsin.gif; sourceTree = "<group>"; };
 		C9F1DE861803190900AE4AE5 /* flag_wyoming.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = flag_wyoming.gif; sourceTree = "<group>"; };
-		C9F1DEBC18031C0400AE4AE5 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
-		C9F1DEBD18031C0400AE4AE5 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
 		C9F1DEBF18031C5200AE4AE5 /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
-		C9F1DEC118031C5F00AE4AE5 /* MyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFlowLayout.h; sourceTree = "<group>"; };
-		C9F1DEC218031C5F00AE4AE5 /* MyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFlowLayout.m; sourceTree = "<group>"; };
-		C9F1DEC61803378200AE4AE5 /* MyLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLayout.h; sourceTree = "<group>"; };
-		C9F1DEC71803378200AE4AE5 /* MyLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLayout.m; sourceTree = "<group>"; };
-		C9F1DEC91804942100AE4AE5 /* ViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
-		C9F1DECA1804942100AE4AE5 /* ViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,21 +196,11 @@
 				C9F1DE2E1803183800AE4AE5 /* AppDelegate.h */,
 				C9F1DE2F1803183800AE4AE5 /* AppDelegate.m */,
 				C9F1DE311803183800AE4AE5 /* Main.storyboard */,
-				C9F1DE341803183800AE4AE5 /* ViewController.h */,
-				C9F1DE351803183800AE4AE5 /* ViewController.m */,
 				322E0C49198496510089C833 /* ViewController.swift */,
-				C9F1DEC91804942100AE4AE5 /* ViewController2.h */,
-				C9F1DECA1804942100AE4AE5 /* ViewController2.m */,
 				322E0C47198491580089C833 /* ViewController2.swift */,
-				C9F1DEBC18031C0400AE4AE5 /* Cell.h */,
-				C9F1DEBD18031C0400AE4AE5 /* Cell.m */,
 				322E0C4B198498760089C833 /* Cell.swift */,
 				32FB02BD19841FD5006889DD /* Cell.xib */,
-				C9F1DEC118031C5F00AE4AE5 /* MyFlowLayout.h */,
-				C9F1DEC218031C5F00AE4AE5 /* MyFlowLayout.m */,
 				32FB02C219842C00006889DD /* MyFlowLayout.swift */,
-				C9F1DEC61803378200AE4AE5 /* MyLayout.h */,
-				C9F1DEC71803378200AE4AE5 /* MyLayout.m */,
 				32FB02C01984218C006889DD /* MyLayout.swift */,
 				C9F1DEBF18031C5200AE4AE5 /* states.txt */,
 				C9F1DE54180318F800AE4AE5 /* Flags */,
