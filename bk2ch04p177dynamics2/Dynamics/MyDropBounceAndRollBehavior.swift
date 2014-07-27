@@ -17,15 +17,15 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
         
         let grav = UIGravityBehavior()
         grav.action = {
-            // self will retain grav so do not let grav retain self!
+            // self will retain grav so do not let grav retain self
+            // this is actually a simpler case for memory management,
+            // because "self" incorporates all the behaviors at once
             [weak self] in
-            if let sself = self {
-                let items = anim.itemsInRect(sup.bounds) as [UIView]
-                if !find(items, sself.v) {
-                    anim.removeBehavior(sself)
-                    sself.v.removeFromSuperview()
-                    println("done")
-                }
+            let items = anim.itemsInRect(sup.bounds) as [UIView]
+            if !find(items, self!.v) {
+                anim.removeBehavior(self)
+                self!.v.removeFromSuperview()
+                println("done")
             }
         }
         self.addChildBehavior(grav)
@@ -73,7 +73,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
     }
     
     deinit {
-        println("farewell") // prove we are being deallocated in good order
+        println("farewell from behavior") // prove we are being deallocated in good order
     }
     
 }

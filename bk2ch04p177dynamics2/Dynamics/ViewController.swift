@@ -2,8 +2,14 @@
 
 import UIKit
 
+class MyImageView : UIImageView {
+    deinit {
+        println("farewell from image view")
+    }
+}
+
 class ViewController : UIViewController, UIDynamicAnimatorDelegate {
-    @IBOutlet var iv : UIImageView!
+    @IBOutlet weak var iv : UIImageView!
     var anim : UIDynamicAnimator!
     
     override func viewDidLoad() {
