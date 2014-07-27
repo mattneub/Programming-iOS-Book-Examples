@@ -80,6 +80,7 @@
             lab.backgroundColor = [UIColor lightGrayColor];
             lab.layer.cornerRadius = 8;
             lab.layer.borderWidth = 2;
+            lab.layer.masksToBounds = YES;
             lab.layer.borderColor = [UIColor blackColor].CGColor;
             NSDictionary* d = NSDictionaryOfVariableBindings(lab);
             lab.translatesAutoresizingMaskIntoConstraints = NO;
@@ -150,8 +151,9 @@
         self.modelCell = arr[0];
     }
     self.modelCell.lab.text = (self.sectionData)[indexPath.section][indexPath.row];
-    CGSize sz = [self.modelCell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    sz.width = ceil(sz.width) + 1.0;
+    CGSize sz = [self.modelCell.container systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    // sz.width = ceil(sz.width) + 1.0;
+    sz.width = ceil(sz.width); sz.height = ceil(sz.height);
     return sz;
 }
 
