@@ -1,6 +1,7 @@
 
 
 #import "AppDelegate.h"
+@import CoreText;
 
 @implementation AppDelegate
 
@@ -11,4 +12,13 @@
 }
 							
 
+@end
+
+@implementation UIFont (CTFont)
+- (CTFontRef) toCTFont {
+    return (__bridge CTFontRef) self;
+}
++ (UIFont*) fromCTFont: (CTFontRef) ctfont {
+    return (__bridge UIFont*)ctfont;
+}
 @end
