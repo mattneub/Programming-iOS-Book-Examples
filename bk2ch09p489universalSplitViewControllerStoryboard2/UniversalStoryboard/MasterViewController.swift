@@ -52,6 +52,9 @@ class MasterViewController: UITableViewController {
             println("prepare for segue")
             println(object)
             controller.detailItem = object
+            // just proving that when collapsed, svc has just the one child
+            // basically that child is now in total charge of the interface
+            println("children of svc: \(self.splitViewController.viewControllers)")
             // again, duplication from AppDelegate
             // the problem is that if we do this segue...
             // the detail view navigation controller is completely replaced,

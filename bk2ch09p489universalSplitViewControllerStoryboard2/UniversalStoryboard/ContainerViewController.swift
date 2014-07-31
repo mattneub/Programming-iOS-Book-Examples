@@ -35,7 +35,7 @@ class ContainerViewController : UIViewController {
     // as in comedy, timing is everything
     // this setup needs to be postponed to our initial layout (viewDidLoad is too soon)
     
-    let which = 1 // try 2, it's even more interesting
+    let which = 2 // try 2, it's even more interesting
     
     override func viewWillLayoutSubviews() {
         if !self.didInitialSetup {
