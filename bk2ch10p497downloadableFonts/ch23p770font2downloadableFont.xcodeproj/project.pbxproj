@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		328BC5C6198ABB690062D99A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BC5C5198ABB690062D99A /* ViewController.swift */; };
 		C9DDA0DD180DC5E900E9E0CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DDA0DC180DC5E900E9E0CC /* Foundation.framework */; };
 		C9DDA0DF180DC5E900E9E0CC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DDA0DE180DC5E900E9E0CC /* CoreGraphics.framework */; };
 		C9DDA0E1180DC5E900E9E0CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DDA0E0180DC5E900E9E0CC /* UIKit.framework */; };
@@ -14,11 +15,11 @@
 		C9DDA0E9180DC5E900E9E0CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DDA0E8180DC5E900E9E0CC /* main.m */; };
 		C9DDA0ED180DC5E900E9E0CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DDA0EC180DC5E900E9E0CC /* AppDelegate.m */; };
 		C9DDA0F0180DC5E900E9E0CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9DDA0EE180DC5E900E9E0CC /* Main.storyboard */; };
-		C9DDA0F3180DC5E900E9E0CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DDA0F2180DC5E900E9E0CC /* ViewController.m */; };
 		C9DDA0F5180DC5E900E9E0CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9DDA0F4180DC5E900E9E0CC /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		328BC5C5198ABB690062D99A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9DDA0D9180DC5E900E9E0CC /* ch23p770font2downloadableFont.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch23p770font2downloadableFont.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9DDA0DC180DC5E900E9E0CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9DDA0DE180DC5E900E9E0CC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -86,6 +87,7 @@
 				C9DDA0EE180DC5E900E9E0CC /* Main.storyboard */,
 				C9DDA0F1180DC5E900E9E0CC /* ViewController.h */,
 				C9DDA0F2180DC5E900E9E0CC /* ViewController.m */,
+				328BC5C5198ABB690062D99A /* ViewController.swift */,
 				C9DDA0F4180DC5E900E9E0CC /* Images.xcassets */,
 				C9DDA0E3180DC5E900E9E0CC /* Supporting Files */,
 			);
@@ -169,8 +171,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9DDA0F3180DC5E900E9E0CC /* ViewController.m in Sources */,
 				C9DDA0ED180DC5E900E9E0CC /* AppDelegate.m in Sources */,
+				328BC5C6198ABB690062D99A /* ViewController.swift in Sources */,
 				C9DDA0E9180DC5E900E9E0CC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,10 +277,13 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch23p670font1dynamicType/ch23p770font2downloadableFont-Prefix.pch";
 				INFOPLIST_FILE = "ch23p670font1dynamicType/ch23p770font2downloadableFont-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ch23p770font2downloadableFont;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -289,9 +294,11 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch23p670font1dynamicType/ch23p770font2downloadableFont-Prefix.pch";
 				INFOPLIST_FILE = "ch23p670font1dynamicType/ch23p770font2downloadableFont-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ch23p770font2downloadableFont;
 				WRAPPER_EXTENSION = app;
 			};
