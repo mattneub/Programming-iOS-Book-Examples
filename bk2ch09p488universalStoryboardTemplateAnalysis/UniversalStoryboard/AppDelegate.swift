@@ -44,17 +44,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // this means the second view controller is "merged" onto the first in appropriate way
     // with a nav interface, what's appropriate is:
     // discard the 2nd nav controller, push 2nd v.c. onto 1st nav controller
+    
+    func primaryViewControllerForCollapsingSplitViewController(splitViewController: UISplitViewController!) -> UIViewController! {
+        println("delegate primary view for collapsing, returning nil")
+        return nil // means just do what you would normally do
+    }
 
     func splitViewController(splitViewController: UISplitViewController!, collapseSecondaryViewController vc2:UIViewController!, ontoPrimaryViewController vc1:UIViewController!) -> Bool {
-        println("collapse!")
+        println("begin delegate collapse")
         if let vc2 = vc2 as? UINavigationController {
             if let detail = vc2.topViewController as? DetailViewController {
                 if !detail.detailItem {
-                    // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+                    // Return true to indicate "do nothing with vc2"
+                    // try changing it to false!
+                    // the svc will do its default behavior, which is to push the detail onto the stack
+                    // so that we will launch showing it!
+                    println("end delegate collapse, returning true")
                     return true
                 }
             }
         }
+        println("end delegate collapse, returning false")
         return false
     }
 

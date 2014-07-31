@@ -50,7 +50,7 @@ class MasterViewController: UITableViewController {
             let object = objects[ip.row] as NSDate
             let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
             println("prepare for segue")
-            println(object)
+            println("object: \(object)")
             controller.detailItem = object
             // again, duplication from AppDelegate
             // the problem is that if we do this segue...
@@ -87,6 +87,37 @@ class MasterViewController: UITableViewController {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
+    
+    
+}
+
+extension MasterViewController {
+    override func collapseSecondaryViewController(secondaryViewController: UIViewController!, forSplitViewController splitViewController: UISplitViewController!) {
+        println("master view controller collapse")
+        super.collapseSecondaryViewController(secondaryViewController, forSplitViewController: splitViewController)
+    }
+    
+    override func targetViewControllerForAction(action: Selector, sender: AnyObject!) -> UIViewController! {
+        let result = super.targetViewControllerForAction(action, sender: sender)
+        println("master view controller target for \(action), returning \(result)")
+        return result
+    }
+    
+    override func showViewController(vc: UIViewController!, sender: AnyObject!) {
+        println("master view controller showViewController")
+        super.showViewController(vc, sender: sender)
+    }
+    
+    // NB it turns out it's important NOT to implement showDetailViewController here at all!
+    // if we do, targetViewControllerForAction will return this vc, which is wrong
+    // and we'll get an endless cycle.
+    // The whole point of targetViewControllerForAction here is that we want it to find
+    // the split view controller
+    
+//    override func showDetailViewController(vc: UIViewController!, sender: AnyObject!) {
+//        println("master view controller showDetailViewController")
+//        super.showDetailViewController(vc, sender: sender)
+//    }
     
     
 }

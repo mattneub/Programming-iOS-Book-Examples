@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3221E4E21989D155000E7842 /* MasterNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221E4E11989D155000E7842 /* MasterNavigationViewController.swift */; };
 		32A356CB19886D6B00515592 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A356CA19886D6B00515592 /* AppDelegate.swift */; };
 		32A356CD19886D6B00515592 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A356CC19886D6B00515592 /* MasterViewController.swift */; };
 		32A356CF19886D6B00515592 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A356CE19886D6B00515592 /* DetailViewController.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3221E4E11989D155000E7842 /* MasterNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterNavigationViewController.swift; sourceTree = "<group>"; };
 		32A356C519886D6B00515592 /* UniversalStoryboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniversalStoryboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A356C919886D6B00515592 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32A356CA19886D6B00515592 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				32A356CA19886D6B00515592 /* AppDelegate.swift */,
 				32A356CC19886D6B00515592 /* MasterViewController.swift */,
 				32A356CE19886D6B00515592 /* DetailViewController.swift */,
+				3221E4E11989D155000E7842 /* MasterNavigationViewController.swift */,
 				32A356D019886D6B00515592 /* Main.storyboard */,
 				32A356D319886D6B00515592 /* Images.xcassets */,
 				32A356C819886D6B00515592 /* Supporting Files */,
@@ -143,6 +146,7 @@
 			files = (
 				32A356CF19886D6B00515592 /* DetailViewController.swift in Sources */,
 				32A356CD19886D6B00515592 /* MasterViewController.swift in Sources */,
+				3221E4E21989D155000E7842 /* MasterNavigationViewController.swift in Sources */,
 				32A356CB19886D6B00515592 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

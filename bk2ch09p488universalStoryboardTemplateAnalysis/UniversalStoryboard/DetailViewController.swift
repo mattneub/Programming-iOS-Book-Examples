@@ -10,14 +10,15 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     var detailItem: AnyObject? {
         didSet {
-            println("didset")
+            println("detailItem didset")
             self.configureView()
         }
     }
 
     func configureView() {
-        println(self.detailItem)
-        println(self.detailDescriptionLabel)
+        println("detail view configureView")
+        println("detailItem: \(self.detailItem)")
+        println("label: \(self.detailDescriptionLabel)")
         // problem is that when user taps a date in the master view...
         // an entirely new detail view controller is created
         // thus its viewDidLoad is called, and configureView is called...
@@ -36,8 +37,27 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("viewdidload")
+        println("detail view viewdidload")
         self.configureView()
     }
+}
+
+extension DetailViewController {
+    override func targetViewControllerForAction(action: Selector, sender: AnyObject!) -> UIViewController! {
+        let result = super.targetViewControllerForAction(action, sender: sender)
+        println("detail view controller target for \(action), returning \(result)")
+        return result
+    }
+    
+    override func showViewController(vc: UIViewController!, sender: AnyObject!) {
+        println("detail view controller showViewController")
+        super.showViewController(vc, sender: sender)
+    }
+    
+    override func showDetailViewController(vc: UIViewController!, sender: AnyObject!) {
+        println("detail view controller showDetailViewController")
+        super.showDetailViewController(vc, sender: sender)
+    }
+
 }
 
