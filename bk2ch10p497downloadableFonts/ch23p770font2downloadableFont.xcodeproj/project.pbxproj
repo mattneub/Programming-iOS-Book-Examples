@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32299BE6198AD45900017BF4 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32299BE5198AD45900017BF4 /* SourceCodePro-Regular.ttf */; };
 		328BC5C6198ABB690062D99A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BC5C5198ABB690062D99A /* ViewController.swift */; };
 		C9DDA0DD180DC5E900E9E0CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DDA0DC180DC5E900E9E0CC /* Foundation.framework */; };
 		C9DDA0DF180DC5E900E9E0CC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DDA0DE180DC5E900E9E0CC /* CoreGraphics.framework */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32299BE5198AD45900017BF4 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
 		328BC5C5198ABB690062D99A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9DDA0D9180DC5E900E9E0CC /* ch23p770font2downloadableFont.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch23p770font2downloadableFont.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9DDA0DC180DC5E900E9E0CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -85,6 +87,7 @@
 				C9DDA0EE180DC5E900E9E0CC /* Main.storyboard */,
 				328BC5C5198ABB690062D99A /* ViewController.swift */,
 				C9DDA0F4180DC5E900E9E0CC /* Images.xcassets */,
+				32299BE5198AD45900017BF4 /* SourceCodePro-Regular.ttf */,
 				C9DDA0E3180DC5E900E9E0CC /* Supporting Files */,
 			);
 			name = ch23p770font1dynamicType;
@@ -155,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9DDA0F5180DC5E900E9E0CC /* Images.xcassets in Resources */,
+				32299BE6198AD45900017BF4 /* SourceCodePro-Regular.ttf in Resources */,
 				C9DDA0E7180DC5E900E9E0CC /* InfoPlist.strings in Resources */,
 				C9DDA0F0180DC5E900E9E0CC /* Main.storyboard in Resources */,
 			);

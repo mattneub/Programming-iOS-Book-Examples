@@ -10,6 +10,11 @@ class ViewController : UIViewController {
     (and so does Apple's own DownloadFont example)
 */
     
+    /*
+    I've also included a font, mostly just to display Apple's new feature
+    where you can set the font of something to an included font right in IB
+*/
+    
     @IBOutlet var lab : UILabel!
     
     func doDynamicType(n:NSNotification!) {
