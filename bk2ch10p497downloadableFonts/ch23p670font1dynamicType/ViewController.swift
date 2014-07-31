@@ -5,6 +5,11 @@ import CoreText
 
 class ViewController : UIViewController {
     
+    /*
+    Works fine in iOS 7, but as of this moment it breaks in iOS 8
+    (and so does Apple's own DownloadFont example)
+*/
+    
     @IBOutlet var lab : UILabel!
     
     func doDynamicType(n:NSNotification!) {
@@ -16,7 +21,7 @@ class ViewController : UIViewController {
         self.doDynamicType(nil)
         
         // see http://support.apple.com/kb/HT5484 (? needs revision? is there a more recent version?)
-        let name = "AppleGothic-Regular"
+        let name = "LucidaGrande"
         let size : CGFloat = 12
         let f = UIFont(name:name, size:size)
         if f != nil {
@@ -36,9 +41,10 @@ class ViewController : UIViewController {
                     NSLog("%@", "downloading will begin")
                 case .Downloading:
                     let d = (prog as NSDictionary)
-                    NSLog("progress: %@%%",
-                        d[kCTFontDescriptorMatchingPercentage] as String
-                    )
+                    let cur : AnyObject = d.objectForKey(kCTFontDescriptorMatchingPercentage)
+                    if let cur = cur as? NSObject {
+                        NSLog("progress: %@%%", cur)
+                    }
                 case .DidFinishDownloading:
                     NSLog("%@", "downloading did finish")
                 case .DidFailWithError:
@@ -56,37 +62,6 @@ class ViewController : UIViewController {
                 }
                 return true
             })
-        /*
-        if (state == kCTFontDescriptorMatchingDidBegin) {
-        NSLog(@"%@", @"matching did begin");
-        }
-        else if (state == kCTFontDescriptorMatchingWillBeginDownloading) {
-        NSLog(@"%@", @"downloading will begin");
-        }
-        else if (state == kCTFontDescriptorMatchingDownloading) {
-        NSDictionary* d = (__bridge NSDictionary*)prog;
-        NSLog(@"progress: %@%%",
-        d[(__bridge NSString*)kCTFontDescriptorMatchingPercentage]);
-        }
-        else if (state == kCTFontDescriptorMatchingDidFinishDownloading) {
-        NSLog(@"%@", @"downloading did finish");
-        }
-        else if (state == kCTFontDescriptorMatchingDidFailWithError) {
-        NSLog(@"%@", @"downloading failed");
-        }
-        else if (state == kCTFontDescriptorMatchingDidFinish) {
-        NSLog(@"%@", @"matching did finish");
-        dispatch_async(dispatch_get_main_queue(), ^{
-        UIFont* f = [UIFont fontWithName:name size:size];
-        if (f) {
-        NSLog(@"%@", @"got the font!");
-        self.lab.font = f;
-        }
-        });
-        }
-        return (bool)YES;
-        });
-        */
     }
     
 }
