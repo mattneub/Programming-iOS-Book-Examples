@@ -2,8 +2,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StringDrawer : UIView
-
-@property (nonatomic, copy) NSAttributedString* attributedText;
-
+@interface NSString (Drawfixer)
++ (NSStringDrawingOptions) combine:(NSStringDrawingOptions)option1 with:(NSStringDrawingOptions)option2;
 @end
