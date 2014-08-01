@@ -1,6 +1,17 @@
 
 #import "StringDrawer.h"
 
+// not my solution: see http://stackoverflow.com/a/25029448/341994
+@implementation NSString (Drawfixer)
++ (NSStringDrawingOptions) combine:(NSStringDrawingOptions)option1 with:(NSStringDrawingOptions)option2
+{
+    return option1 | option2;
+}
+@end
+
+
+/*
+
 @implementation StringDrawer
 
 - (void) setAttributedText:(NSAttributedString *)attributedText {
@@ -36,5 +47,9 @@
 #endif
     
 }
+ 
 
 @end
+ 
+ */
+
