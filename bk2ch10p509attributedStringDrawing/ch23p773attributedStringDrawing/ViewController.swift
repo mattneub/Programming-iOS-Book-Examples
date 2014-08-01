@@ -25,63 +25,63 @@ class ViewController : UIViewController {
         // another way: draw the string in a view's drawRect:
         
         self.drawer.attributedText = content
-
+        
     }
     
     func makeAttributedString() -> NSAttributedString {
         var content : NSMutableAttributedString!
         var content2 : NSMutableAttributedString!
         
-            let s1 = "The Gettysburg Address, as delivered on a certain occasion " +
-            "(namely Thursday, November 19, 1863) by A. Lincoln"
-            content = NSMutableAttributedString(string:s1, attributes:[
-                NSFontAttributeName: UIFont(name:"Arial-BoldMT", size:15),
-                NSForegroundColorAttributeName: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
-            )
-            let r = (s1 as NSString).rangeOfString("Gettysburg Address")
-            let atts = [
-                NSStrokeColorAttributeName: UIColor.redColor(),
-                NSStrokeWidthAttributeName: -2.0
-            ]
-            content.addAttributes(atts, range: r)
-
+        let s1 = "The Gettysburg Address, as delivered on a certain occasion " +
+        "(namely Thursday, November 19, 1863) by A. Lincoln"
+        content = NSMutableAttributedString(string:s1, attributes:[
+            NSFontAttributeName: UIFont(name:"Arial-BoldMT", size:15),
+            NSForegroundColorAttributeName: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
+        )
+        let r = (s1 as NSString).rangeOfString("Gettysburg Address")
+        let atts = [
+            NSStrokeColorAttributeName: UIColor.redColor(),
+            NSStrokeWidthAttributeName: -2.0
+        ]
+        content.addAttributes(atts, range: r)
+        
         let para = NSMutableParagraphStyle()
-            para.headIndent = 10
-            para.firstLineHeadIndent = 10
-            para.tailIndent = -10
-            para.lineBreakMode = .ByWordWrapping
-            para.alignment = .Center
-            para.paragraphSpacing = 15
-            content.addAttribute(NSParagraphStyleAttributeName,
-                value:para, range:NSMakeRange(0,1))
-
+        para.headIndent = 10
+        para.firstLineHeadIndent = 10
+        para.tailIndent = -10
+        para.lineBreakMode = .ByWordWrapping
+        para.alignment = .Center
+        para.paragraphSpacing = 15
+        content.addAttribute(NSParagraphStyleAttributeName,
+            value:para, range:NSMakeRange(0,1))
+        
         let s2 = "Fourscore and seven years ago, our fathers brought forth " +
-                "upon this continent a new nation, conceived in liberty and dedicated " +
-            "to the proposition that all men are created equal."
-            content2 = NSMutableAttributedString(string:s2, attributes: [
-                NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:16)
-                ])
-            content2.addAttributes([
-                NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:24),
-                NSExpansionAttributeName: 0.3,
-                NSKernAttributeName: -4 // negative kerning bug fixed in iOS 8
-                ], range:NSMakeRange(0,1))
-
+            "upon this continent a new nation, conceived in liberty and dedicated " +
+        "to the proposition that all men are created equal."
+        content2 = NSMutableAttributedString(string:s2, attributes: [
+            NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:16)
+            ])
+        content2.addAttributes([
+            NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:24),
+            NSExpansionAttributeName: 0.3,
+            NSKernAttributeName: -4 // negative kerning bug fixed in iOS 8
+            ], range:NSMakeRange(0,1))
+        
         let para2 = NSMutableParagraphStyle()
-            para2.headIndent = 10
-            para2.firstLineHeadIndent = 10
-            para2.tailIndent = -10
-            para2.lineBreakMode = .ByWordWrapping
-            para2.alignment = .Justified
-            para2.lineHeightMultiple = 1.2
-            para2.hyphenationFactor = 1.0
-            content2.addAttribute(NSParagraphStyleAttributeName,
-                value:para2, range:NSMakeRange(0,1))
-
+        para2.headIndent = 10
+        para2.firstLineHeadIndent = 10
+        para2.tailIndent = -10
+        para2.lineBreakMode = .ByWordWrapping
+        para2.alignment = .Justified
+        para2.lineHeightMultiple = 1.2
+        para2.hyphenationFactor = 1.0
+        content2.addAttribute(NSParagraphStyleAttributeName,
+            value:para2, range:NSMakeRange(0,1))
+        
         let end = content.length
-            content.replaceCharactersInRange(NSMakeRange(end, 0), withString:"\n")
-            content.appendAttributedString(content2)
-
+        content.replaceCharactersInRange(NSMakeRange(end, 0), withString:"\n")
+        content.appendAttributedString(content2)
+        
         return content
         
     }
