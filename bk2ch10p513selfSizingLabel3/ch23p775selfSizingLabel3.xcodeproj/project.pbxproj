@@ -22,14 +22,14 @@
 /* Begin PBXFileReference section */
 		32E97E71198BDA1A001DC6EF /* MyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLabel.swift; sourceTree = "<group>"; };
 		32E97E73198BDA74001DC6EF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C9E53C9B18117B3300B19F42 /* ch23p775selfSizingLabel2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch23p775selfSizingLabel2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9E53C9B18117B3300B19F42 /* ch23p775selfSizingLabel3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch23p775selfSizingLabel3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E53C9E18117B3300B19F42 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9E53CA018117B3300B19F42 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C9E53CA218117B3300B19F42 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C9E53CA618117B3300B19F42 /* ch23p775selfSizingLabel2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch23p775selfSizingLabel2-Info.plist"; sourceTree = "<group>"; };
+		C9E53CA618117B3300B19F42 /* ch23p775selfSizingLabel3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch23p775selfSizingLabel3-Info.plist"; sourceTree = "<group>"; };
 		C9E53CA818117B3300B19F42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C9E53CAA18117B3300B19F42 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9E53CAC18117B3300B19F42 /* ch23p775selfSizingLabel2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch23p775selfSizingLabel2-Prefix.pch"; sourceTree = "<group>"; };
+		C9E53CAC18117B3300B19F42 /* ch23p775selfSizingLabel3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch23p775selfSizingLabel3-Prefix.pch"; sourceTree = "<group>"; };
 		C9E53CAD18117B3300B19F42 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9E53CAE18117B3300B19F42 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9E53CB118117B3300B19F42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		C9E53C9C18117B3300B19F42 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C9E53C9B18117B3300B19F42 /* ch23p775selfSizingLabel2.app */,
+				C9E53C9B18117B3300B19F42 /* ch23p775selfSizingLabel3.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,10 +96,10 @@
 		C9E53CA518117B3300B19F42 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C9E53CA618117B3300B19F42 /* ch23p775selfSizingLabel2-Info.plist */,
+				C9E53CA618117B3300B19F42 /* ch23p775selfSizingLabel3-Info.plist */,
 				C9E53CA718117B3300B19F42 /* InfoPlist.strings */,
 				C9E53CAA18117B3300B19F42 /* main.m */,
-				C9E53CAC18117B3300B19F42 /* ch23p775selfSizingLabel2-Prefix.pch */,
+				C9E53CAC18117B3300B19F42 /* ch23p775selfSizingLabel3-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -107,9 +107,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C9E53C9A18117B3300B19F42 /* ch23p775selfSizingLabel2 */ = {
+		C9E53C9A18117B3300B19F42 /* ch23p775selfSizingLabel3 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9E53CCD18117B3300B19F42 /* Build configuration list for PBXNativeTarget "ch23p775selfSizingLabel2" */;
+			buildConfigurationList = C9E53CCD18117B3300B19F42 /* Build configuration list for PBXNativeTarget "ch23p775selfSizingLabel3" */;
 			buildPhases = (
 				C9E53C9718117B3300B19F42 /* Sources */,
 				C9E53C9818117B3300B19F42 /* Frameworks */,
@@ -119,9 +119,9 @@
 			);
 			dependencies = (
 			);
-			name = ch23p775selfSizingLabel2;
+			name = ch23p775selfSizingLabel3;
 			productName = ch23p775selfSizingLabel2;
-			productReference = C9E53C9B18117B3300B19F42 /* ch23p775selfSizingLabel2.app */;
+			productReference = C9E53C9B18117B3300B19F42 /* ch23p775selfSizingLabel3.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -133,7 +133,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
-			buildConfigurationList = C9E53C9618117B3200B19F42 /* Build configuration list for PBXProject "ch23p775selfSizingLabel2" */;
+			buildConfigurationList = C9E53C9618117B3200B19F42 /* Build configuration list for PBXProject "ch23p775selfSizingLabel3" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -146,7 +146,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C9E53C9A18117B3300B19F42 /* ch23p775selfSizingLabel2 */,
+				C9E53C9A18117B3300B19F42 /* ch23p775selfSizingLabel3 */,
 			);
 		};
 /* End PBXProject section */
@@ -278,11 +278,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch23p775selfSizingLabel2/ch23p775selfSizingLabel2-Prefix.pch";
-				INFOPLIST_FILE = "ch23p775selfSizingLabel2/ch23p775selfSizingLabel2-Info.plist";
+				GCC_PREFIX_HEADER = "ch23p775selfSizingLabel2/ch23p775selfSizingLabel3-Prefix.pch";
+				INFOPLIST_FILE = "ch23p775selfSizingLabel2/ch23p775selfSizingLabel3-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch23p775selfSizingLabel3;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -296,11 +296,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch23p775selfSizingLabel2/ch23p775selfSizingLabel2-Prefix.pch";
-				INFOPLIST_FILE = "ch23p775selfSizingLabel2/ch23p775selfSizingLabel2-Info.plist";
+				GCC_PREFIX_HEADER = "ch23p775selfSizingLabel2/ch23p775selfSizingLabel3-Prefix.pch";
+				INFOPLIST_FILE = "ch23p775selfSizingLabel2/ch23p775selfSizingLabel3-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch23p775selfSizingLabel3;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -308,7 +308,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C9E53C9618117B3200B19F42 /* Build configuration list for PBXProject "ch23p775selfSizingLabel2" */ = {
+		C9E53C9618117B3200B19F42 /* Build configuration list for PBXProject "ch23p775selfSizingLabel3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9E53CCB18117B3300B19F42 /* Debug */,
@@ -317,7 +317,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9E53CCD18117B3300B19F42 /* Build configuration list for PBXNativeTarget "ch23p775selfSizingLabel2" */ = {
+		C9E53CCD18117B3300B19F42 /* Build configuration list for PBXNativeTarget "ch23p775selfSizingLabel3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9E53CCE18117B3300B19F42 /* Debug */,
