@@ -1,0 +1,79 @@
+
+import UIKit
+
+class ViewController: UIViewController, UITextViewDelegate {
+    @IBOutlet var tv : UITextView!
+    var keyboardShowing = false
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let path = NSBundle.mainBundle().pathForResource("brillig", ofType: "txt")
+        let s = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: nil)
+        let s2 = s!.stringByReplacingOccurrencesOfString("\n", withString: "")
+        let mas = NSMutableAttributedString(string:s2, attributes:[
+            NSFontAttributeName: UIFont(name:"GillSans", size:20)
+            ])
+        
+        let para = NSMutableParagraphStyle()
+        para.alignment = .Left
+        para.lineBreakMode = .ByWordWrapping
+        mas.addAttribute(NSParagraphStyleAttributeName, value:para, range:NSMakeRange(0,1))
+        
+        self.tv.attributedText = mas
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
+
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        return !self.keyboardShowing
+    }
+    
+    // much simpler than in iOS 7; a lot of the touchy bugs are gone in iOS 8
+    // as long as you play your part (adjust content offset),
+    // iOS 8 will play its part (scroll cursor to visible)
+    
+    // I don't know whether anything is gained by animating the changes along with the keyboard,
+    // but it can't hurt
+    
+    func keyboardShow(n:NSNotification) {
+        self.keyboardShowing = true
+        
+        let d = n.userInfo
+        let r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
+        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
+        let f = self.tv.frame
+        let fs = self.tv.superview.bounds
+        let diff = fs.size.height - f.origin.y - f.size.height;
+        let keyboardTop = r.size.height - diff
+        UIView.animateWithDuration(duration.doubleValue,
+            delay: 0, options: nil, animations: {
+                self.tv.contentInset.bottom = keyboardTop
+                self.tv.scrollIndicatorInsets.bottom = keyboardTop
+            }, completion: nil)
+    }
+    
+    func keyboardHide(n:NSNotification) {
+        self.keyboardShowing = false
+        
+        let d = n.userInfo
+        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
+        let curve = d[UIKeyboardAnimationCurveUserInfoKey] as NSNumber
+        let curveOpt = UIViewAnimationOptions.fromRaw(
+            UInt(curve.unsignedIntegerValue) << 16)!
+        UIView.animateWithDuration(duration.doubleValue,
+            delay:0,
+            options:curveOpt,
+            animations:{
+                self.tv.contentInset = UIEdgeInsetsZero
+                self.tv.scrollIndicatorInsets = UIEdgeInsetsZero
+            }, completion:nil)
+    }
+
+    func doDone(sender:AnyObject) {
+        self.view.endEditing(false)
+    }
+
+}
