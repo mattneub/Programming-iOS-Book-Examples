@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32D88B51198C156E00A0F421 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D88B50198C156E00A0F421 /* ViewController.swift */; };
 		C9F3DDE81812C4E3001483A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3DDE71812C4E3001483A1 /* Foundation.framework */; };
 		C9F3DDEA1812C4E3001483A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3DDE91812C4E3001483A1 /* CoreGraphics.framework */; };
 		C9F3DDEC1812C4E3001483A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F3DDEB1812C4E3001483A1 /* UIKit.framework */; };
@@ -14,12 +15,12 @@
 		C9F3DDF41812C4E3001483A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DDF31812C4E3001483A1 /* main.m */; };
 		C9F3DDF81812C4E3001483A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DDF71812C4E3001483A1 /* AppDelegate.m */; };
 		C9F3DDFB1812C4E4001483A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F3DDF91812C4E4001483A1 /* Main.storyboard */; };
-		C9F3DDFE1812C4E4001483A1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F3DDFD1812C4E4001483A1 /* ViewController.m */; };
 		C9F3DE001812C4E4001483A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9F3DDFF1812C4E4001483A1 /* Images.xcassets */; };
 		C9F3DE1D1812C655001483A1 /* AccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9F3DE1C1812C655001483A1 /* AccessoryView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32D88B50198C156E00A0F421 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9F3DDE41812C4E3001483A1 /* ch23p808keyboardAccessory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch23p808keyboardAccessory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9F3DDE71812C4E3001483A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9F3DDE91812C4E3001483A1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -31,8 +32,6 @@
 		C9F3DDF61812C4E3001483A1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9F3DDF71812C4E3001483A1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9F3DDFA1812C4E4001483A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9F3DDFC1812C4E4001483A1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C9F3DDFD1812C4E4001483A1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9F3DDFF1812C4E4001483A1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9F3DE061812C4E4001483A1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C9F3DE1C1812C655001483A1 /* AccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccessoryView.xib; sourceTree = "<group>"; };
@@ -86,8 +85,7 @@
 				C9F3DDF61812C4E3001483A1 /* AppDelegate.h */,
 				C9F3DDF71812C4E3001483A1 /* AppDelegate.m */,
 				C9F3DDF91812C4E4001483A1 /* Main.storyboard */,
-				C9F3DDFC1812C4E4001483A1 /* ViewController.h */,
-				C9F3DDFD1812C4E4001483A1 /* ViewController.m */,
+				32D88B50198C156E00A0F421 /* ViewController.swift */,
 				C9F3DE1C1812C655001483A1 /* AccessoryView.xib */,
 				C9F3DDFF1812C4E4001483A1 /* Images.xcassets */,
 				C9F3DDEE1812C4E3001483A1 /* Supporting Files */,
@@ -173,8 +171,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9F3DDFE1812C4E4001483A1 /* ViewController.m in Sources */,
 				C9F3DDF81812C4E3001483A1 /* AppDelegate.m in Sources */,
+				32D88B51198C156E00A0F421 /* ViewController.swift in Sources */,
 				C9F3DDF41812C4E3001483A1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,7 +232,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -267,7 +265,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -279,10 +277,13 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch21p808keyboardAccessory/ch23p808keyboardAccessory-Prefix.pch";
 				INFOPLIST_FILE = "ch21p808keyboardAccessory/ch23p808keyboardAccessory-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ch23p808keyboardAccessory;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -293,9 +294,11 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch21p808keyboardAccessory/ch23p808keyboardAccessory-Prefix.pch";
 				INFOPLIST_FILE = "ch21p808keyboardAccessory/ch23p808keyboardAccessory-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ch23p808keyboardAccessory;
 				WRAPPER_EXTENSION = app;
 			};
