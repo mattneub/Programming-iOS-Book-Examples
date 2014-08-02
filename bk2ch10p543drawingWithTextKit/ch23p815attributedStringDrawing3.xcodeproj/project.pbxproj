@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		329CB919198D5B5600EFF5AE /* MyLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CB918198D5B5600EFF5AE /* MyLayoutManager.swift */; };
+		329CB91B198D5C8400EFF5AE /* StyledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329CB91A198D5C8400EFF5AE /* StyledText.swift */; };
 		C9C3DF111816B9D700BB541D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C3DF101816B9D700BB541D /* Foundation.framework */; };
 		C9C3DF131816B9D700BB541D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C3DF121816B9D700BB541D /* CoreGraphics.framework */; };
 		C9C3DF151816B9D700BB541D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C3DF141816B9D700BB541D /* UIKit.framework */; };
@@ -16,12 +18,13 @@
 		C9C3DF241816B9D700BB541D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C3DF221816B9D700BB541D /* Main.storyboard */; };
 		C9C3DF271816B9D700BB541D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C3DF261816B9D700BB541D /* ViewController.m */; };
 		C9C3DF291816B9D700BB541D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C3DF281816B9D700BB541D /* Images.xcassets */; };
-		C9C3DF471816BA2700BB541D /* StyledText.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C3DF461816BA2700BB541D /* StyledText.m */; };
 		C9C3DF491816BAD600BB541D /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9C3DF481816BAD600BB541D /* states.txt */; };
-		C9C565921816CBF9003E81E7 /* MyLayoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C565911816CBF9003E81E7 /* MyLayoutManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		329CB917198D5B5500EFF5AE /* ch23p815attributedStringDrawing3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch23p815attributedStringDrawing3-Bridging-Header.h"; sourceTree = "<group>"; };
+		329CB918198D5B5600EFF5AE /* MyLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLayoutManager.swift; sourceTree = "<group>"; };
+		329CB91A198D5C8400EFF5AE /* StyledText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledText.swift; sourceTree = "<group>"; };
 		C9C3DF0D1816B9D700BB541D /* ch23p815attributedStringDrawing3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch23p815attributedStringDrawing3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C3DF101816B9D700BB541D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9C3DF121816B9D700BB541D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -37,11 +40,7 @@
 		C9C3DF261816B9D700BB541D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9C3DF281816B9D700BB541D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9C3DF2F1816B9D700BB541D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9C3DF451816BA2700BB541D /* StyledText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledText.h; sourceTree = "<group>"; };
-		C9C3DF461816BA2700BB541D /* StyledText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledText.m; sourceTree = "<group>"; };
 		C9C3DF481816BAD600BB541D /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
-		C9C565901816CBF9003E81E7 /* MyLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLayoutManager.h; sourceTree = "<group>"; };
-		C9C565911816CBF9003E81E7 /* MyLayoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLayoutManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,13 +93,12 @@
 				C9C3DF221816B9D700BB541D /* Main.storyboard */,
 				C9C3DF251816B9D700BB541D /* ViewController.h */,
 				C9C3DF261816B9D700BB541D /* ViewController.m */,
-				C9C3DF451816BA2700BB541D /* StyledText.h */,
-				C9C3DF461816BA2700BB541D /* StyledText.m */,
-				C9C565901816CBF9003E81E7 /* MyLayoutManager.h */,
-				C9C565911816CBF9003E81E7 /* MyLayoutManager.m */,
+				329CB91A198D5C8400EFF5AE /* StyledText.swift */,
+				329CB918198D5B5600EFF5AE /* MyLayoutManager.swift */,
 				C9C3DF481816BAD600BB541D /* states.txt */,
 				C9C3DF281816B9D700BB541D /* Images.xcassets */,
 				C9C3DF171816B9D700BB541D /* Supporting Files */,
+				329CB917198D5B5500EFF5AE /* ch23p815attributedStringDrawing3-Bridging-Header.h */,
 			);
 			path = ch23p815attributedStringDrawing3;
 			sourceTree = "<group>";
@@ -183,8 +181,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9C3DF271816B9D700BB541D /* ViewController.m in Sources */,
-				C9C565921816CBF9003E81E7 /* MyLayoutManager.m in Sources */,
-				C9C3DF471816BA2700BB541D /* StyledText.m in Sources */,
+				329CB919198D5B5600EFF5AE /* MyLayoutManager.swift in Sources */,
+				329CB91B198D5C8400EFF5AE /* StyledText.swift in Sources */,
 				C9C3DF211816B9D700BB541D /* AppDelegate.m in Sources */,
 				C9C3DF1D1816B9D700BB541D /* main.m in Sources */,
 			);
@@ -245,7 +243,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -279,7 +277,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -292,10 +290,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch23p815attributedStringDrawing3/ch23p815attributedStringDrawing3-Prefix.pch";
 				INFOPLIST_FILE = "ch23p815attributedStringDrawing3/ch23p815attributedStringDrawing3-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch23p815attributedStringDrawing3/ch23p815attributedStringDrawing3-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -306,10 +308,13 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch23p815attributedStringDrawing3/ch23p815attributedStringDrawing3-Prefix.pch";
 				INFOPLIST_FILE = "ch23p815attributedStringDrawing3/ch23p815attributedStringDrawing3-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch23p815attributedStringDrawing3/ch23p815attributedStringDrawing3-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
