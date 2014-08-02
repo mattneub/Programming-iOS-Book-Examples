@@ -1,7 +1,7 @@
 
 
 #import "ViewController.h"
-#import "WebViewController.h"
+#import "ch24p825webview-Swift.h"
 
 @interface ViewController ()
 
