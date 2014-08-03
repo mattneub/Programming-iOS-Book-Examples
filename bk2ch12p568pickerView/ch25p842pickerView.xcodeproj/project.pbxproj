@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		328D0D79198DD1B40051C56A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328D0D78198DD1B40051C56A /* ViewController.swift */; };
 		C9F271F5181C212D003FCBA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F271F4181C212D003FCBA0 /* Foundation.framework */; };
 		C9F271F7181C212E003FCBA0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F271F6181C212E003FCBA0 /* CoreGraphics.framework */; };
 		C9F271F9181C212E003FCBA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F271F8181C212E003FCBA0 /* UIKit.framework */; };
@@ -14,13 +15,12 @@
 		C9F27201181C212E003FCBA0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F27200181C212E003FCBA0 /* main.m */; };
 		C9F27205181C212E003FCBA0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F27204181C212E003FCBA0 /* AppDelegate.m */; };
 		C9F27208181C212E003FCBA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F27206181C212E003FCBA0 /* Main.storyboard */; };
-		C9F2720B181C212E003FCBA0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F2720A181C212E003FCBA0 /* ViewController.m */; };
 		C9F2720D181C212E003FCBA0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9F2720C181C212E003FCBA0 /* Images.xcassets */; };
 		C9F2722A181C2154003FCBA0 /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9F27229181C2154003FCBA0 /* states.txt */; };
-		C9F2722D181C23D1003FCBA0 /* MyPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F2722C181C23D1003FCBA0 /* MyPickerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		328D0D78198DD1B40051C56A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9F271F1181C212D003FCBA0 /* ch25p842pickerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch25p842pickerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9F271F4181C212D003FCBA0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9F271F6181C212E003FCBA0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -32,13 +32,9 @@
 		C9F27203181C212E003FCBA0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9F27204181C212E003FCBA0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9F27207181C212E003FCBA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9F27209181C212E003FCBA0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C9F2720A181C212E003FCBA0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9F2720C181C212E003FCBA0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9F27213181C212E003FCBA0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C9F27229181C2154003FCBA0 /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
-		C9F2722B181C23D1003FCBA0 /* MyPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPickerView.h; sourceTree = "<group>"; };
-		C9F2722C181C23D1003FCBA0 /* MyPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPickerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,10 +85,7 @@
 				C9F27203181C212E003FCBA0 /* AppDelegate.h */,
 				C9F27204181C212E003FCBA0 /* AppDelegate.m */,
 				C9F27206181C212E003FCBA0 /* Main.storyboard */,
-				C9F27209181C212E003FCBA0 /* ViewController.h */,
-				C9F2720A181C212E003FCBA0 /* ViewController.m */,
-				C9F2722B181C23D1003FCBA0 /* MyPickerView.h */,
-				C9F2722C181C23D1003FCBA0 /* MyPickerView.m */,
+				328D0D78198DD1B40051C56A /* ViewController.swift */,
 				C9F27229181C2154003FCBA0 /* states.txt */,
 				C9F2720C181C212E003FCBA0 /* Images.xcassets */,
 				C9F271FB181C212E003FCBA0 /* Supporting Files */,
@@ -177,8 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9F2722D181C23D1003FCBA0 /* MyPickerView.m in Sources */,
-				C9F2720B181C212E003FCBA0 /* ViewController.m in Sources */,
+				328D0D79198DD1B40051C56A /* ViewController.swift in Sources */,
 				C9F27205181C212E003FCBA0 /* AppDelegate.m in Sources */,
 				C9F27201181C212E003FCBA0 /* main.m in Sources */,
 			);
@@ -284,10 +276,13 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch25p842pickerView/ch25p842pickerView-Prefix.pch";
 				INFOPLIST_FILE = "ch25p842pickerView/ch25p842pickerView-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -298,9 +293,11 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch25p842pickerView/ch25p842pickerView-Prefix.pch";
 				INFOPLIST_FILE = "ch25p842pickerView/ch25p842pickerView-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
