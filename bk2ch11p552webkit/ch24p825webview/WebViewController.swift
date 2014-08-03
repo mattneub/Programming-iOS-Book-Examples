@@ -2,12 +2,17 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler {
+/*
+A simple no-navigation web view - we just show our own custom content and that's all.
+Demonstrates basic web kit configuration and some cool features.
+*/
+
+class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler, UIViewControllerRestoration {
     
     var activity = UIActivityIndicatorView()
     var oldOffset : NSValue? // use nil as indicator
     
-    var fontsize = 18
+    var fontsize = 18 // should save and restore this but it's only an example
     var cssrule : String {
     get {
         var s = "var s = document.createElement('style');\n"
@@ -18,51 +23,43 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         return s
     }
     }
-    var canNavigate = false // distinguishes the two examples, local and remote content
     weak var wv : WKWebView!
     
     required init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-//        self.restorationIdentifier = "wvc"
-//        self.restorationClass = self.dynamicType
-//        let b = UIBarButtonItem(title:"Back", style:.Bordered, target:self, action:"goBack:")
-//        self.navigationItem.rightBarButtonItem = b
+        self.restorationIdentifier = "wvc"
+        self.restorationClass = self.dynamicType
         self.edgesForExtendedLayout = .None // get accurate offset restoration
     }
-    
-    /*
     
     class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject]!, coder: NSCoder!) -> UIViewController! {
         return self(nibName:nil, bundle:nil)
     }
     
-    // for the local page example, we must save and restore offset ourselves
+    // we must save and restore offset ourselves
     // note that I don't touch the web view at this point: just an ivar
     // we don't have any web content yet!
 
     override func decodeRestorableStateWithCoder(coder: NSCoder!) {
         println("decode")
         super.decodeRestorableStateWithCoder(coder)
-        self.oldOffset = coder.decodeObjectForKey("oldOffset") as? NSValue // for local example
+        let oldOffset = coder.decodeObjectForKey("oldOffset") as? NSValue
+        println("retrieved old offset as \(oldOffset)")
+        self.oldOffset = oldOffset // for local example
     }
     
     override func encodeRestorableStateWithCoder(coder: NSCoder!) {
         println("encode")
         super.encodeRestorableStateWithCoder(coder)
-        if !self.canNavigate { // local example; we have to manage offset ourselves
-            println("saving offset")
-            let off = self.wv.scrollView.contentOffset
-            coder.encodeObject(NSValue(CGPoint:off), forKey:"oldOffset")
-        }
+        // we have to manage offset ourselves
+        let off = self.wv.scrollView.contentOffset
+        println("saving offset \(off)")
+        coder.encodeObject(NSValue(CGPoint:off), forKey:"oldOffset")
     }
     
     override func applicationFinishedRestoringState() {
-        if self.wv.request {
-            // remote example
-            self.wv.reload()
-        }
+        println("finished restoring state") // still too soon to fix offset, not loaded yet
     }
-    */
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,10 +105,11 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
 //        wv.paginationMode = .LeftToRight
 //        wv.scrollView.pagingEnabled = true
         
-        // prove that we can attach gesture recognizer to web view's scroll view
-//        let swipe = UISwipeGestureRecognizer(target:self, action:"swipe:")
-//        swipe.direction = .Left
-//        wv.scrollView.addGestureRecognizer(swipe)
+        // prove we can attach gesture recognizer to web view's scroll view
+        let swipe = UISwipeGestureRecognizer(target:self, action:"swipe:")
+        swipe.direction = .Left
+        wv.scrollView.addGestureRecognizer(swipe)
+        wv.allowsBackForwardNavigationGestures = false
         
         // prepare nice activity indicator to cover loading
         let act = UIActivityIndicatorView(activityIndicatorStyle:.WhiteLarge)
@@ -143,15 +141,22 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                             self.activity.startAnimating()
                         } else {
                             self.activity.stopAnimating()
+                            println("stopping animating")
+                            // for our *local* example, restoring offset is up to us
+                            if self.oldOffset != nil { // local example
+                                if wv.estimatedProgress == 1 {
+                                    println("finished loading! restoring offset")
+                                    wv.scrollView.contentOffset = self.oldOffset!.CGPointValue()
+                                    self.oldOffset = nil
+                                }
+                            }
                         }
                     }
                 }
-            case "title": // but not for our static local example, please
+            case "title": // not actually showing it in this example
                 if let val:AnyObject = change[NSKeyValueChangeNewKey] {
                     if let val = val as? String {
-                        if self.canNavigate {
-                            self.navigationItem.title = val
-                        }
+                        println(val)
                     }
                 }
             default:break
@@ -159,28 +164,13 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         }
     }
     
-    
-//    func swipe(g:UIGestureRecognizer) {
-//        println("swipe") // okay, you proved it
-//    }
-//    
-//    let LOADREQ = 1 // 0, or try 1 for a different application...
-//    // one that loads an actual request and lets you experiment with state saving and restoration
-    
+    func swipe(g:UIGestureRecognizer) {
+        println("swipe") // okay, you proved it!
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        //println("view did appear, req: \(self.wv.request)")
-        
-//        if LOADREQ == 1 {
-//            self.canNavigate = true
-//            if self.wv.request { // let applicationFinished handle reloading
-//                return
-//            }
-//            let url = NSURL(string: "http://www.apeth.com/RubyFrontierDocs/default.html")
-//            self.wv.loadRequest(NSURLRequest(URL:url))
-//            return
-//        }
+        println("view did appear, req: \(self.wv.URL)")
         
         let b = UIBarButtonItem(title: "Size", style: .Plain, target: self, action: "doDecreaseSize:")
         self.navigationItem.rightBarButtonItems = [b]
@@ -231,50 +221,17 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         // with webkit, probably no need for this, but no harm done
         self.wv.stopLoading()
     }
-
-    /*
-    
-    func webViewDidStartLoad(wv: UIWebView!) {
-        self.activity.startAnimating()
-    }
-    
-    func webViewDidFinishLoad(wv: UIWebView!) {
-        self.activity.stopAnimating()
-        // for our *local* example, restoring offset is up to us
-        if self.oldOffset != nil && !self.canNavigate { // local example
-            println("restoring offset")
-            wv.scrollView.contentOffset = self.oldOffset!.CGPointValue()
-        }
-        self.oldOffset = nil
-    }
-    
-    func webView(webView: UIWebView!, didFailLoadWithError error: NSError!) {
-        self.activity.stopAnimating()
-    }
-    
-    */
     
     func webView(webView: WKWebView!, decidePolicyForNavigationAction navigationAction: WKNavigationAction!, decisionHandler: ((WKNavigationActionPolicy) -> Void)!) {
         if navigationAction.navigationType == .LinkActivated {
-            if self.canNavigate {
-                decisionHandler(.Allow)
-            } else {
-                let url = navigationAction.request.URL
-                println("user would like to navigate to \(url)")
-                // this is how you would open in Mobile Safari
-                // UIApplication.sharedApplication().openURL(url)
-                decisionHandler(.Cancel)
-            }
+            let url = navigationAction.request.URL
+            println("user would like to navigate to \(url)")
+            // this is how you would open in Mobile Safari
+            // UIApplication.sharedApplication().openURL(url)
+            decisionHandler(.Cancel)
         }
         // must always call _something_
         decisionHandler(.Allow)
-    }
-    
-        
-    func goBack(sender:AnyObject) {
-//        if self.wv.canGoBack {
-//            self.wv.goBack()
-//        }
     }
     
     func userContentController(userContentController: WKUserContentController!,
