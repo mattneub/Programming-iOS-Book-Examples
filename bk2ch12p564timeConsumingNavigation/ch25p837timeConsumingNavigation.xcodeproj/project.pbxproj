@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3227F81D198DBAEC00D05958 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227F81C198DBAEC00D05958 /* MyTableViewCell.swift */; };
+		3227F81F198DBCDE00D05958 /* RootViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227F81E198DBCDE00D05958 /* RootViewControllerTableViewController.swift */; };
 		C96712FF181AF46B00FC5C36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96712FE181AF46B00FC5C36 /* Foundation.framework */; };
 		C9671301181AF46B00FC5C36 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9671300181AF46B00FC5C36 /* CoreGraphics.framework */; };
 		C9671303181AF46B00FC5C36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9671302181AF46B00FC5C36 /* UIKit.framework */; };
@@ -15,12 +17,13 @@
 		C967130F181AF46B00FC5C36 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C967130E181AF46B00FC5C36 /* AppDelegate.m */; };
 		C9671312181AF46B00FC5C36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9671310181AF46B00FC5C36 /* Main.storyboard */; };
 		C9671317181AF46B00FC5C36 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9671316181AF46B00FC5C36 /* Images.xcassets */; };
-		C9671335181AF51B00FC5C36 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9671334181AF51B00FC5C36 /* RootViewController.m */; };
-		C9671338181AF55700FC5C36 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9671337181AF55700FC5C36 /* MyTableViewCell.m */; };
 		C967133B181AF75A00FC5C36 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C967133A181AF75A00FC5C36 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3227F81B198DBAEC00D05958 /* ch25p837timeConsumingNavigation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch25p837timeConsumingNavigation-Bridging-Header.h"; sourceTree = "<group>"; };
+		3227F81C198DBAEC00D05958 /* MyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		3227F81E198DBCDE00D05958 /* RootViewControllerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewControllerTableViewController.swift; sourceTree = "<group>"; };
 		C96712FB181AF46B00FC5C36 /* ch25p837timeConsumingNavigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch25p837timeConsumingNavigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96712FE181AF46B00FC5C36 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9671300181AF46B00FC5C36 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -34,10 +37,6 @@
 		C9671311181AF46B00FC5C36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9671316181AF46B00FC5C36 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C967131D181AF46C00FC5C36 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9671333181AF51B00FC5C36 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		C9671334181AF51B00FC5C36 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		C9671336181AF55700FC5C36 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
-		C9671337181AF55700FC5C36 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
 		C9671339181AF75A00FC5C36 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C967133A181AF75A00FC5C36 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,14 +89,13 @@
 				C967130D181AF46B00FC5C36 /* AppDelegate.h */,
 				C967130E181AF46B00FC5C36 /* AppDelegate.m */,
 				C9671310181AF46B00FC5C36 /* Main.storyboard */,
-				C9671333181AF51B00FC5C36 /* RootViewController.h */,
-				C9671334181AF51B00FC5C36 /* RootViewController.m */,
+				3227F81E198DBCDE00D05958 /* RootViewControllerTableViewController.swift */,
 				C9671339181AF75A00FC5C36 /* ViewController.h */,
 				C967133A181AF75A00FC5C36 /* ViewController.m */,
-				C9671336181AF55700FC5C36 /* MyTableViewCell.h */,
-				C9671337181AF55700FC5C36 /* MyTableViewCell.m */,
+				3227F81C198DBAEC00D05958 /* MyTableViewCell.swift */,
 				C9671316181AF46B00FC5C36 /* Images.xcassets */,
 				C9671305181AF46B00FC5C36 /* Supporting Files */,
+				3227F81B198DBAEC00D05958 /* ch25p837timeConsumingNavigation-Bridging-Header.h */,
 			);
 			path = ch25p837timeConsumingNavigation;
 			sourceTree = "<group>";
@@ -178,11 +176,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3227F81F198DBCDE00D05958 /* RootViewControllerTableViewController.swift in Sources */,
 				C967130F181AF46B00FC5C36 /* AppDelegate.m in Sources */,
-				C9671335181AF51B00FC5C36 /* RootViewController.m in Sources */,
 				C967130B181AF46B00FC5C36 /* main.m in Sources */,
-				C9671338181AF55700FC5C36 /* MyTableViewCell.m in Sources */,
 				C967133B181AF75A00FC5C36 /* ViewController.m in Sources */,
+				3227F81D198DBAEC00D05958 /* MyTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +239,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -274,7 +272,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -286,10 +284,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch25p837timeConsumingNavigation/ch25p837timeConsumingNavigation-Prefix.pch";
 				INFOPLIST_FILE = "ch25p837timeConsumingNavigation/ch25p837timeConsumingNavigation-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch25p837timeConsumingNavigation/ch25p837timeConsumingNavigation-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -300,10 +302,13 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch25p837timeConsumingNavigation/ch25p837timeConsumingNavigation-Prefix.pch";
 				INFOPLIST_FILE = "ch25p837timeConsumingNavigation/ch25p837timeConsumingNavigation-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch25p837timeConsumingNavigation/ch25p837timeConsumingNavigation-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
