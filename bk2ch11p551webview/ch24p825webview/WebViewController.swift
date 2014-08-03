@@ -92,7 +92,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         println("swipe") // okay, you proved it
     }
     
-    let LOADREQ = 1 // 0, or try 1 for a different application...
+    let LOADREQ = 0 // 0, or try 1 for a different application...
     // one that loads an actual request and lets you experiment with state saving and restoration
     
     override func viewDidAppear(animated: Bool) {
@@ -114,7 +114,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         let ss = NSString(contentsOfFile:path, encoding:NSUTF8StringEncoding, error:nil)
         
         let path2 = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")
-        var s = NSString(contentsOfFile:path, encoding:NSUTF8StringEncoding, error:nil)
+        var s = NSString(contentsOfFile:path2, encoding:NSUTF8StringEncoding, error:nil)
 
         s = s.stringByReplacingOccurrencesOfString("<maximagewidth>", withString:"80%")
         s = s.stringByReplacingOccurrencesOfString("<fontsize>", withString:"18")
