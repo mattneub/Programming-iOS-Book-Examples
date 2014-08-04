@@ -26,8 +26,6 @@
 		C9E177C717CCC53E00D6513D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C9E177C917CCC53E00D6513D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9E177CD17CCC53E00D6513D /* ch19p615navigationInterface-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p615navigationInterface-Info.plist"; sourceTree = "<group>"; };
-		C9E177D417CCC53E00D6513D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C9E177D517CCC53E00D6513D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9E177D817CCC53E00D6513D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9E177DD17CCC53E00D6513D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9E177E417CCC53E00D6513D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -78,8 +76,6 @@
 		C9E177CB17CCC53E00D6513D /* ch19p615navigationInterface */ = {
 			isa = PBXGroup;
 			children = (
-				C9E177D417CCC53E00D6513D /* AppDelegate.h */,
-				C9E177D517CCC53E00D6513D /* AppDelegate.m */,
 				32411B1519774A3C00C7F85B /* AppDelegate.swift */,
 				C9E177D717CCC53E00D6513D /* Main.storyboard */,
 				32411B131977488300C7F85B /* ViewController.swift */,
