@@ -49,15 +49,56 @@ class MyImageView1 : UIImageView {
 class MyImageView2 : UIImageView {
     override func awakeFromNib() {
         super.awakeFromNib()
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(100,100), false, 0)
-        let con = UIGraphicsGetCurrentContext()
-        CGContextAddEllipseInRect(con, CGRectMake(0,0,100,100))
-        CGContextSetFillColorWithColor(con, UIColor.blueColor().CGColor)
-        CGContextFillPath(con)
-        let im = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        self.image = im
+//        UIGraphicsBeginImageContextWithOptions(CGSizeMake(100,100), false, 0)
+//        let con = UIGraphicsGetCurrentContext()
+//        CGContextAddEllipseInRect(con, CGRectMake(0,0,100,100))
+//        CGContextSetFillColorWithColor(con, UIColor.blueColor().CGColor)
+//        CGContextFillPath(con)
+//        let im = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+        
+        self.image = drawnImage()(CGSizeMake(100,100)) {
+            let con = UIGraphicsGetCurrentContext()
+            CGContextAddEllipseInRect(con, CGRectMake(0,0,100,100))
+            CGContextSetFillColorWithColor(con, UIColor.blueColor().CGColor)
+            CGContextFillPath(con)
+        }
+        
     }
+}
+
+/*
+NOTE: This structured dance is boring, distracting, confusing (when reading), and error-prone:
+
+UIGraphicsBeginImageContextWithOptions(CGSizeMake(100,100), false, 0)
+// do stuff
+let im = UIGraphicsGetImageFromCurrentImageContext()
+UIGraphicsEndImageContext()
+
+Since the purpose is to extract the image, it would be nice to replace that with a functional architecture that clearly yields the image. Moreover, such an architecture has the advantage of isolating any local variables used within the "sandwich". In Objective-C you can at least wrap the interior in curly braces to form a scope, but Swift, with its easy closure formation, offers the opportunity for an even clearer presentation, along these lines:
+*/
+
+func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(size, false, 0)
+    closure()
+    let result = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return result
+}
+
+/*
+In the above, I've assumed that the context is not opaque (second parameter is false). If we want to specify that explicitly, we can, but it would be nice to have to specify it always - we'd like the opaque parameter to be optional. But you can't have an optional second parameter and a third closure parameter. The solution is to curry the function into two sets of parameters:
+*/
+
+func drawnImage (opaque:Bool = false) -> (CGSize, () -> ()) -> UIImage {
+    func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
+        closure()
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
+    }
+    return imageOfSize
 }
 
 

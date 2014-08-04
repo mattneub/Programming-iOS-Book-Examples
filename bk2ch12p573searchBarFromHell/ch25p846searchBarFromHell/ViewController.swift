@@ -2,6 +2,14 @@
 
 import UIKit
 
+func imageFromContextOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(size, false, 0)
+    closure()
+    let result = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return result
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet var sb : UISearchBar!
@@ -20,12 +28,10 @@ class ViewController: UIViewController {
         self.sb.setBackgroundImage(linim, forBarPosition:.Any, barMetrics:.Default)
         self.sb.setBackgroundImage(linim, forBarPosition:.Any, barMetrics:.DefaultPrompt)
         
-        let sep = UIImage(named:"sepia.jpg")
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(320,20), false, 0)
-        UIBezierPath(roundedRect:CGRectMake(5,0,320-5*2,20), cornerRadius:8).addClip()
-        sep.drawInRect(CGRectMake(0,0,320,20))
-        let sepim = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        let sepim = imageFromContextOfSize(CGSizeMake(320,20)) {
+            UIBezierPath(roundedRect:CGRectMake(5,0,320-5*2,20), cornerRadius:8).addClip()
+            UIImage(named:"sepia.jpg").drawInRect(CGRectMake(0,0,320,20))
+        }
         self.sb.setSearchFieldBackgroundImage(sepim, forState:.Normal)
         // just to show what it does:
         self.sb.searchFieldBackgroundPositionAdjustment = UIOffsetMake(0, -10) // up from center
@@ -47,17 +53,15 @@ class ViewController: UIViewController {
         
         let manny = UIImage(named:"manny.jpg")
         self.sb.setImage(manny, forSearchBarIcon:.Search, state:.Normal)
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(20,20), true, 0)
-        manny.drawInRect(CGRectMake(0,0,20,20))
-        let mannyim = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        let mannyim = imageFromContextOfSize(CGSizeMake(20,20)) {
+            manny.drawInRect(CGRectMake(0,0,20,20))
+        }
         self.sb.setImage(mannyim, forSearchBarIcon:.Clear, state:.Normal)
         
         let moe = UIImage(named:"moe.jpg")
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(20,20), true, 0)
-        moe.drawInRect(CGRectMake(0,0,20,20))
-        let moeim = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        let moeim = imageFromContextOfSize(CGSizeMake(20,20)) {
+            moe.drawInRect(CGRectMake(0,0,20,20))
+        }
         self.sb.setImage(moeim, forSearchBarIcon:.Clear, state:.Highlighted)
         
         self.sb.showsScopeBar = true
@@ -67,13 +71,12 @@ class ViewController: UIViewController {
         
         self.sb.setScopeBarButtonBackgroundImage(linim, forState:.Normal)
 
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(2,2), true, 0)
-        UIColor.whiteColor().setFill()
-        UIBezierPath(rect:CGRectMake(0,0,2,2)).fill()
-        let divim = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        self.sb.setScopeBarButtonDividerImage(divim, forLeftSegmentState:.Normal, rightSegmentState:.Normal)
+        let divim = imageFromContextOfSize(CGSizeMake(2,2)) {
+            UIColor.whiteColor().setFill()
+            UIBezierPath(rect:CGRectMake(0,0,2,2)).fill()
+        }
+        self.sb.setScopeBarButtonDividerImage(divim,
+            forLeftSegmentState:.Normal, rightSegmentState:.Normal)
 
         let shad = NSShadow()
         shad.shadowColor = UIColor.grayColor()
