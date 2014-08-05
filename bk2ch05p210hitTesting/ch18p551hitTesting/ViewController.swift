@@ -35,14 +35,12 @@ class MyView : UIView {
     // try the example with hitTest commented out and with it restored to see the difference
 
     override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView! {
-        let result = super.hitTest(point, withEvent:event)
-        if (result) {
+        if let result = super.hitTest(point, withEvent:event) {
             return result
         }
         for sub in self.subviews.reverse() as [UIView] {
             let pt = self.convertPoint(point, toView:sub)
-            let result = sub.hitTest(pt, withEvent:event)
-            if (result) {
+            if let result = sub.hitTest(pt, withEvent:event) {
                 return result
             }
         }

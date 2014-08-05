@@ -14,7 +14,7 @@ func delay(delay:Double, closure:()->()) {
 class MyView0 : UIView {
     
     override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
-        self.superview.bringSubviewToFront(self)
+        self.superview!.bringSubviewToFront(self)
         
         let t = touches.anyObject() as UITouch
         let loc = t.locationInView(self.superview)
@@ -38,7 +38,7 @@ class MyView1 : UIView {
     }
     
     override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
-        self.superview.bringSubviewToFront(self)
+        self.superview!.bringSubviewToFront(self)
         
         let t = touches.anyObject() as UITouch
         
@@ -146,7 +146,7 @@ class MyView3 : UIView {
     override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
         if self.decidedTapOrDrag && !self.drag {return}
         
-        self.superview.bringSubviewToFront(self)
+        self.superview!.bringSubviewToFront(self)
         let t = touches.anyObject() as UITouch
         
         self.decidedTapOrDrag = true

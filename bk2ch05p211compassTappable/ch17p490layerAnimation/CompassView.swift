@@ -10,7 +10,7 @@ extension CGRect {
 }
 
 class CompassView : UIView {
-    override class func layerClass() -> AnyClass! {
+    override class func layerClass() -> AnyClass {
         return CompassLayer.self
     }
     
