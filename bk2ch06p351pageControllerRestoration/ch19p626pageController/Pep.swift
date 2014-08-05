@@ -12,6 +12,10 @@ class Pep: UIViewController {
         self.boy = boy
         super.init(nibName: nib, bundle: bundle)
     }
+    
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

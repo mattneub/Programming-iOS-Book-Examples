@@ -3,7 +3,7 @@ import UIKit
 
 class View2Controller : UIViewController {
     
-    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.title = "Second"
         // whoa, check this out: the image comes right out of the asset catalog as a template image!
@@ -11,6 +11,10 @@ class View2Controller : UIViewController {
         // can have both left bar buttons and back bar button
         self.navigationItem.leftBarButtonItem = b
         self.navigationItem.leftItemsSupplementBackButton = true
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
     }
     
     override func viewDidLoad() {

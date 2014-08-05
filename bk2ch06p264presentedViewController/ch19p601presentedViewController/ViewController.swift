@@ -19,7 +19,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
             // user taps background and presented vc just dismisses? weird; bug?
         case 3:
             svc.modalTransitionStyle = .FlipHorizontal
-            self.view.window.backgroundColor = UIColor.greenColor() // prove window shows thru
+            self.view.window!.backgroundColor = UIColor.greenColor() // prove window shows thru
             // no transition on present, only on dismiss; bug?
         default: break
         }

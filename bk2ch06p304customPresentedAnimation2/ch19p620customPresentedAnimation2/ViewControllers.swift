@@ -38,11 +38,16 @@ class ViewController2 : UIViewController {
         self.button.setBackgroundImage(im, forState:.Highlighted)
     }
     
-    init() {
+    override init() {
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .Custom
         self.transitioningDelegate = self
     }
+    
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
+
 }
 
 extension ViewController2 : UIViewControllerTransitioningDelegate {

@@ -9,8 +9,8 @@ class ViewController : UIViewController {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.swappers += FirstViewController()
-        self.swappers += SecondViewController()
+        self.swappers += [FirstViewController()]
+        self.swappers += [SecondViewController()]
     }
     
     override func viewDidLoad() {

@@ -6,9 +6,13 @@ class ViewControllerChild: UIViewController {
     
     var expanded = false
     
-    init() {
+    override init() {
         super.init(nibName: nil, bundle: nil)
         self.preferredContentSize = CGSizeMake(250,250)
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
     }
     
     @IBAction func doButton(sender: AnyObject) {

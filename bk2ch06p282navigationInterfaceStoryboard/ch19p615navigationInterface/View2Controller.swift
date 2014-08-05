@@ -2,14 +2,9 @@
 import UIKit
 
 class View2Controller : UIViewController {
-    
-    // unused, but must be present anyway
-    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
+        
     // we're now coming out of a nib, must implement init(coder:), may as well configure here
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder!) {
         super.init(coder:aDecoder)
         self.title = "Second"
         // whoa, check this out: the image comes right out of the asset catalog as a template image!

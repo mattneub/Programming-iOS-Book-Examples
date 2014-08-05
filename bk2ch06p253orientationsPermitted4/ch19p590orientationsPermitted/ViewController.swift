@@ -91,9 +91,9 @@ class ViewController : UIViewController {
         println("screen fixed space bounds: \(UIScreen.mainScreen().fixedCoordinateSpace.bounds)") // *
         let r = self.view.convertRect(self.lab.frame, toCoordinateSpace: UIScreen.mainScreen().fixedCoordinateSpace)
         println("label's frame converted into fixed space: \(r)")
-        println("window frame: \(self.view.window.frame)")
-        println("window bounds: \(self.view.window.bounds)")
-        println("window transform: \(self.view.window.transform)")
+        println("window frame: \(self.view.window!.frame)")
+        println("window bounds: \(self.view.window!.bounds)")
+        println("window transform: \(self.view.window!.transform)")
         println("view transform: \(self.view.transform)")
         coordinator.animateAlongsideTransition({
             _ in
@@ -113,10 +113,10 @@ class ViewController : UIViewController {
                 // the fixed coordinate space's top left is glued to the top left of the physical device
                 let r = self.view.convertRect(self.lab.frame, toCoordinateSpace: UIScreen.mainScreen().fixedCoordinateSpace)
                 println("label's frame converted into fixed space: \(r)")
-                println("window frame: \(self.view.window.frame)")
-                println("window bounds: \(self.view.window.bounds)")
+                println("window frame: \(self.view.window!.frame)")
+                println("window bounds: \(self.view.window!.bounds)")
                 // showing that in iOS 8 rotation no longer involves application of transform to view
-                println("window transform: \(self.view.window.transform)")
+                println("window transform: \(self.view.window!.transform)")
                 println("view transform: \(self.view.transform)")
                 
             })

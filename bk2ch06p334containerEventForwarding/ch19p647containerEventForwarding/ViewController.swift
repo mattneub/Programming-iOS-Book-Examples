@@ -21,8 +21,8 @@ class ViewController : Base {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.swappers += self.childViewControllers[0] as UIViewController
-        self.swappers += self.storyboard.instantiateViewControllerWithIdentifier("child2") as UIViewController
+        self.swappers.append(self.childViewControllers[0] as UIViewController)
+        self.swappers.append(self.storyboard.instantiateViewControllerWithIdentifier("child2") as UIViewController)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -108,7 +108,7 @@ On flip we expect to see (ignoring parent messages):
         cur = cur == 0 ? 1 : 0
         let tovc = self.swappers[cur]
         
-        tovc.view.frame = fromvc.view.superview.bounds
+        tovc.view.frame = fromvc.view.superview!.bounds
         
         // must have both as children before we can transition between them
         self.addChildViewController(tovc) // "will" called for us

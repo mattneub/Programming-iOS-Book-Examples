@@ -16,6 +16,10 @@ class Pep: UIViewController {
         // self.restorationClass = self.dynamicType // * no restoration class, let app delegate point
     }
     
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
+    
     override func encodeRestorableStateWithCoder(coder: NSCoder!) {
         // super.encodeRestorableStateWithCoder(coder)
         println("pep about to encode boy \(self.boy)")

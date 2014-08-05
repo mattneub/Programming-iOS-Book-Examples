@@ -39,12 +39,12 @@ class ViewController : UIViewController {
         let v = self.blackRect
         var newFrameOriginX : CGFloat = v.frame.origin.x
         if newCollection.verticalSizeClass == .Compact { // landscape
-            if !v.superview {
+            if v.superview == nil {
                 self.view.addSubview(v)
                 newFrameOriginX = 0 // set into variable so we can animate change
             }
         } else { // portrait
-            if v.superview {
+            if v.superview != nil {
                 newFrameOriginX = -v.frame.size.width // ditto
             }
         }

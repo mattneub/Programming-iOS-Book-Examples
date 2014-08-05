@@ -14,7 +14,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         style:.Bordered, target:nil, action:nil)
         // how to append additional right bar button items
         var rbbi = self.navigationItem.rightBarButtonItems as [UIBarButtonItem]
-        rbbi += b2
+        rbbi += [b2]
         self.navigationItem.rightBarButtonItems = rbbi
         
         // how to customize back button
