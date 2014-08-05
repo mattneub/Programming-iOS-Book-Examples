@@ -7,8 +7,18 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIApplication.sharedApplication().delegate.window!.tintColor = UIColor.redColor()
-
+        /*
+        Very cool. In seed 5, Swift understands this correctly as needing a double unwrap.
+        I have not said what class the delegate is, and the window var is optional,
+        so we don't know the getter is even implemented.
+        So we must unwrap twice: once because we think there is a window var,
+        and again because we think there is a real UIWindow there.
+*/
+        
+        if let window = UIApplication.sharedApplication().delegate.window! {
+            window.tintColor = UIColor.redColor()
+        }
+        
         let im = UIImage(named:"Smiley").imageWithRenderingMode(.AlwaysTemplate)
         self.b.setBackgroundImage(im, forState: .Normal)
         

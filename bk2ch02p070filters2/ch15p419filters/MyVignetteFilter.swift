@@ -17,9 +17,7 @@ class MyVignetteFilter : CIFilter {
         return self.makeOutputImage()
     }
     }
-    init() {
-        super.init()
-    }
+
     deinit {
         // just making sure we are not leaking
         println("farewell")

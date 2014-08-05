@@ -40,12 +40,12 @@ class ViewController : UIViewController {
         switch which {
         case 1:
             // position using autoresizing-type behavior
-            iv.center = iv.superview.bounds.center // see above
+            iv.center = iv.superview!.bounds.center // see above
             iv.frame.integerize()
         case 2:
             // position using constraints
             iv.setTranslatesAutoresizingMaskIntoConstraints(false)
-            iv.superview.addConstraint(
+            iv.superview!.addConstraint(
                 NSLayoutConstraint(item: iv,
                     attribute: .CenterX,
                     relatedBy: .Equal,
@@ -53,7 +53,7 @@ class ViewController : UIViewController {
                     attribute: .CenterX,
                     multiplier: 1, constant: 0)
             )
-            iv.superview.addConstraint(
+            iv.superview!.addConstraint(
                 NSLayoutConstraint(item: iv,
                     attribute: .CenterY,
                     relatedBy: .Equal,

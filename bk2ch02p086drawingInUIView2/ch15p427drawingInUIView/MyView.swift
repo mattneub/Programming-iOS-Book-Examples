@@ -5,9 +5,13 @@ class MyView : UIView {
     
     lazy var arrow : UIImage = self.arrowImage()
     
-    init (frame:CGRect) {
+    override init (frame:CGRect) {
         super.init(frame:frame)
         self.opaque = false
+    }
+
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
     }
     
     func arrowImage () -> UIImage {

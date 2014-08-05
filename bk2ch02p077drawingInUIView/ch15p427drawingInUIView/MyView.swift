@@ -3,9 +3,13 @@ import UIKit
 
 class MyView : UIView {
     
-    init() {
+    override init() {
         super.init(frame:CGRectZero)
         self.opaque = false
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
     }
     
     override func drawRect(rect: CGRect) {
