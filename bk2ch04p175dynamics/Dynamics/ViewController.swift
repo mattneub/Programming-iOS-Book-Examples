@@ -51,7 +51,7 @@ class ViewController : UIViewController {
             grav.action = {
                 let items = self.anim.itemsInRect(self.view.bounds) as [UIView]
                 let ix = find(items, self.iv)
-                if !ix {
+                if ix == nil {
                     self.anim.removeAllBehaviors()
                     self.iv.removeFromSuperview()
                     println("done")
@@ -61,7 +61,7 @@ class ViewController : UIViewController {
             grav.action = {
                 let items = self.anim.itemsInRect(self.view.bounds) as [UIView]
                 let ix = find(items, self.iv)
-                if !ix {
+                if ix == nil {
                     self.anim.removeAllBehaviors()
                     self.iv.removeFromSuperview()
                     self.anim = nil // * both are released
@@ -72,7 +72,7 @@ class ViewController : UIViewController {
             grav.action = {
                 let items = self.anim.itemsInRect(self.view.bounds) as [UIView]
                 let ix = find(items, self.iv)
-                if !ix {
+                if ix == nil {
                     delay(0) { // * both are released
                         self.anim.removeAllBehaviors()
                     }
@@ -85,7 +85,7 @@ class ViewController : UIViewController {
                 [weak grav] in // *
                 let items = self.anim.itemsInRect(self.view.bounds) as [UIView]
                 let ix = find(items, self.iv)
-                if !ix {
+                if ix == nil {
                     self.anim.removeBehavior(grav) // * grav is released, iv is not!
                     self.anim.removeAllBehaviors() // probably because of the other behaviors
                     self.iv.removeFromSuperview()

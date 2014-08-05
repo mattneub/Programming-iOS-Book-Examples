@@ -88,9 +88,9 @@ class ViewController : UIViewController {
             var direction = 1.0
             // comma is legal in the for block!
             for (var i = 20; i < 60; i += 5, direction *= -1) { // alternate directions
-                values += direction * M_PI / Double(i)
+                values.append( direction * M_PI / Double(i) )
             }
-            values += 0.0
+            values.append(0.0)
             let anim = CAKeyframeAnimation(keyPath:"transform")
             anim.values = values
             anim.additive = true
@@ -119,9 +119,9 @@ class ViewController : UIViewController {
             var values = [0.0]
             var direction = 1.0
             for (var i = 20; i < 60; i += 5, direction *= -1) { // alternate directions
-                values += direction * M_PI / Double(i)
+                values.append( direction * M_PI / Double(i) )
             }
-            values += 0.0
+            values.append(0.0)
             let anim2 = CAKeyframeAnimation(keyPath:"transform")
             anim2.values = values
             anim2.duration = 0.25

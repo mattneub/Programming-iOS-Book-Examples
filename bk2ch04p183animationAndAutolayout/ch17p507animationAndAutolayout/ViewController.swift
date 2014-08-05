@@ -55,7 +55,7 @@ class ViewController : UIViewController {
             // general solution to all such problems: animate a temporary snapshot instead!
             let snap = self.v.snapshotViewAfterScreenUpdates(true)
             snap.frame = self.v.frame
-            self.v.superview.addSubview(snap)
+            self.v.superview!.addSubview(snap)
             self.v.hidden = true
             UIView.animateWithDuration(0.3, delay:0, options:.Autoreverse,
                 animations:{

@@ -11,7 +11,7 @@ extension CGRect {
 
 // view exists solely to host layer
 class CompassView : UIView {
-    override class func layerClass() -> AnyClass! {
+    override class func layerClass() -> AnyClass {
         return CompassLayer.self
     }
 }

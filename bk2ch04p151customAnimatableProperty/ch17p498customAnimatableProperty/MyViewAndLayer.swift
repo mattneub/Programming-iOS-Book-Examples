@@ -4,7 +4,7 @@ import UIKit
 import QuartzCore
 
 class MyView : UIView { // exists purely to host MyLayer
-    override class func layerClass() -> AnyClass! {
+    override class func layerClass() -> AnyClass {
         return MyLayer.self
     }
     override func drawRect(rect: CGRect) {} // so that layer will draw itself

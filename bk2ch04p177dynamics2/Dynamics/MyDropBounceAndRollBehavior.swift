@@ -13,7 +13,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
     override func willMoveToAnimator(anim: UIDynamicAnimator!) {
         if (!anim) { return }
         
-        let sup = self.v.superview
+        let sup = self.v.superview!
         
         let grav = UIGravityBehavior()
         grav.action = {
@@ -22,7 +22,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
             // because "self" incorporates all the behaviors at once
             [weak self] in
             let items = anim.itemsInRect(sup.bounds) as [UIView]
-            if !find(items, self!.v) {
+            if find(items, self!.v) == nil {
                 anim.removeBehavior(self)
                 self!.v.removeFromSuperview()
                 println("done")
