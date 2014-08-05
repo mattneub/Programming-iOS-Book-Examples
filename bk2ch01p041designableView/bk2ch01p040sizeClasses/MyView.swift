@@ -15,14 +15,15 @@ The representation is not perfect but it's pretty good.
     
     // My experience is that you must supply both inits even though they just call super
     // Otherwise IB can crash
+    // no longer seems to be needed!
     
-    init(frame: CGRect) {
-        super.init(frame:frame)
-    }
-    
-    init(coder aDecoder: NSCoder!) {
-        super.init(coder:aDecoder)
-    }
+//    init(frame: CGRect) {
+//        super.init(frame:frame)
+//    }
+//    
+//    init(coder aDecoder: NSCoder!) {
+//        super.init(coder:aDecoder)
+//    }
     
     func configure() {
         self.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)

@@ -26,12 +26,12 @@ class ViewController : UIViewController {
     
     @IBAction func doButton(g:UIGestureRecognizer) {
         let p = g.locationInView(g.view)
-        let v = g.view.hitTest(p, withEvent: nil)
-        if !v { return }
-        if v == g.view { return }
-        if v is MyView { return }
-        dispatch_async(dispatch_get_main_queue()) {
-            self.grow(v)
+        if let v = g.view.hitTest(p, withEvent: nil) {
+            if v == g.view { return }
+            if v is MyView { return }
+            dispatch_async(dispatch_get_main_queue()) {
+                self.grow(v)
+            }
         }
     }
     

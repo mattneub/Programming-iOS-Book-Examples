@@ -12,11 +12,7 @@ class MyView: UIView {
     
     var c1 : NSLayoutConstraint!
     var c2 : NSLayoutConstraint!
-    
-    init(coder aDecoder: NSCoder!) {
-        super.init(coder:aDecoder)
-    }
-    
+        
     func configure() {
         self.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
         let v2 = UIView()
