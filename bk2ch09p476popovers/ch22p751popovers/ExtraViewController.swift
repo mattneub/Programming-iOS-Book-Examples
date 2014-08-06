@@ -7,10 +7,14 @@ import UIKit
 
 class ExtraViewController : UIViewController {
     
-    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: "ExtraViewController", bundle: nibBundleOrNil)
         self.modalPresentationStyle = .CurrentContext
         self.preferredContentSize = CGSizeMake(320,220)
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
     }
     
     @IBAction func doButton(sender:AnyObject) {

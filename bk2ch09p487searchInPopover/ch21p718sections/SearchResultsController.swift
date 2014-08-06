@@ -14,16 +14,21 @@ a default table with the search results in each cell's textLabel.
 class SearchResultsController : UITableViewController {
     var originalData : [String]
     var filteredData = [String]()
+    
     init(data:[[String]]) {
         // we don't use sections, so flatten the data into a single array of strings
         var flattened = [String]()
         for arr in data {
             for s in arr {
-                flattened += s
+                flattened += [s]
             }
         }
         self.originalData = flattened
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
     }
     
     // all boilerplate; note that our data is _filteredData_, which is initially empty

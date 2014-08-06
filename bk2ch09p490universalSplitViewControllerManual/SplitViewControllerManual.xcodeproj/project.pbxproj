@@ -11,20 +11,9 @@
 		324F58BB19895EEF00A1186B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F58BA19895EEF00A1186B /* ViewController.swift */; };
 		324F58BE19895EEF00A1186B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 324F58BC19895EEF00A1186B /* Main.storyboard */; };
 		324F58C019895EEF00A1186B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 324F58BF19895EEF00A1186B /* Images.xcassets */; };
-		324F58CC19895EEF00A1186B /* SplitViewControllerManualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F58CB19895EEF00A1186B /* SplitViewControllerManualTests.swift */; };
 		324F58D6198960FE00A1186B /* PrimaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F58D5198960FE00A1186B /* PrimaryViewController.swift */; };
 		324F58D81989636C00A1186B /* SecondaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F58D71989636C00A1186B /* SecondaryViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		324F58C619895EEF00A1186B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 324F58AB19895EEF00A1186B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 324F58B219895EEF00A1186B;
-			remoteInfo = SplitViewControllerManual;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		324F58B319895EEF00A1186B /* SplitViewControllerManual.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitViewControllerManual.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,22 +22,12 @@
 		324F58BA19895EEF00A1186B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		324F58BD19895EEF00A1186B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		324F58BF19895EEF00A1186B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		324F58C519895EEF00A1186B /* SplitViewControllerManualTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SplitViewControllerManualTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		324F58CA19895EEF00A1186B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		324F58CB19895EEF00A1186B /* SplitViewControllerManualTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewControllerManualTests.swift; sourceTree = "<group>"; };
 		324F58D5198960FE00A1186B /* PrimaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryViewController.swift; sourceTree = "<group>"; };
 		324F58D71989636C00A1186B /* SecondaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		324F58B019895EEF00A1186B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		324F58C219895EEF00A1186B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -62,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				324F58B519895EEF00A1186B /* SplitViewControllerManual */,
-				324F58C819895EEF00A1186B /* SplitViewControllerManualTests */,
 				324F58B419895EEF00A1186B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,7 +49,6 @@
 			isa = PBXGroup;
 			children = (
 				324F58B319895EEF00A1186B /* SplitViewControllerManual.app */,
-				324F58C519895EEF00A1186B /* SplitViewControllerManualTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,23 +75,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		324F58C819895EEF00A1186B /* SplitViewControllerManualTests */ = {
-			isa = PBXGroup;
-			children = (
-				324F58CB19895EEF00A1186B /* SplitViewControllerManualTests.swift */,
-				324F58C919895EEF00A1186B /* Supporting Files */,
-			);
-			path = SplitViewControllerManualTests;
-			sourceTree = "<group>";
-		};
-		324F58C919895EEF00A1186B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				324F58CA19895EEF00A1186B /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,24 +95,6 @@
 			productReference = 324F58B319895EEF00A1186B /* SplitViewControllerManual.app */;
 			productType = "com.apple.product-type.application";
 		};
-		324F58C419895EEF00A1186B /* SplitViewControllerManualTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 324F58D219895EEF00A1186B /* Build configuration list for PBXNativeTarget "SplitViewControllerManualTests" */;
-			buildPhases = (
-				324F58C119895EEF00A1186B /* Sources */,
-				324F58C219895EEF00A1186B /* Frameworks */,
-				324F58C319895EEF00A1186B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				324F58C719895EEF00A1186B /* PBXTargetDependency */,
-			);
-			name = SplitViewControllerManualTests;
-			productName = SplitViewControllerManualTests;
-			productReference = 324F58C519895EEF00A1186B /* SplitViewControllerManualTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -164,10 +106,6 @@
 				TargetAttributes = {
 					324F58B219895EEF00A1186B = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					324F58C419895EEF00A1186B = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 324F58B219895EEF00A1186B;
 					};
 				};
 			};
@@ -185,7 +123,6 @@
 			projectRoot = "";
 			targets = (
 				324F58B219895EEF00A1186B /* SplitViewControllerManual */,
-				324F58C419895EEF00A1186B /* SplitViewControllerManualTests */,
 			);
 		};
 /* End PBXProject section */
@@ -197,13 +134,6 @@
 			files = (
 				324F58BE19895EEF00A1186B /* Main.storyboard in Resources */,
 				324F58C019895EEF00A1186B /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		324F58C319895EEF00A1186B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,23 +151,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		324F58C119895EEF00A1186B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				324F58CC19895EEF00A1186B /* SplitViewControllerManualTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		324F58C719895EEF00A1186B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 324F58B219895EEF00A1186B /* SplitViewControllerManual */;
-			targetProxy = 324F58C619895EEF00A1186B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		324F58BC19895EEF00A1186B /* Main.storyboard */ = {
@@ -352,40 +266,6 @@
 			};
 			name = Release;
 		};
-		324F58D319895EEF00A1186B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SplitViewControllerManual.app/SplitViewControllerManual";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SplitViewControllerManualTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Debug;
-		};
-		324F58D419895EEF00A1186B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SplitViewControllerManual.app/SplitViewControllerManual";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SplitViewControllerManualTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -405,14 +285,7 @@
 				324F58D119895EEF00A1186B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		324F58D219895EEF00A1186B /* Build configuration list for PBXNativeTarget "SplitViewControllerManualTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				324F58D319895EEF00A1186B /* Debug */,
-				324F58D419895EEF00A1186B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

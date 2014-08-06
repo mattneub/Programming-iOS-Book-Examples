@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return true
     }
     
+    
     // MARK: - Split view
     
     // on iPhone, the split v.c. will be "collapsed"
@@ -54,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         println("begin delegate collapse")
         if let vc2 = vc2 as? UINavigationController {
             if let detail = vc2.topViewController as? DetailViewController {
-                if !detail.detailItem {
+                if detail.detailItem == nil {
                     // Return true to indicate "do nothing with vc2"
                     // try changing it to false!
                     // the svc will do its default behavior, which is to push the detail onto the stack

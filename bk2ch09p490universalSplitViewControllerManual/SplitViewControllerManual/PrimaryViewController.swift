@@ -34,7 +34,7 @@ class PrimaryViewController : UIViewController {
             NSLayoutConstraint(item: seg, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1, constant: 0)
         )
         self.view.addConstraint (
-            NSLayoutConstraint(item: seg, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: seg, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: 50)
         )
         seg.addTarget(self, action: "change:", forControlEvents: .ValueChanged)
     }
@@ -85,19 +85,19 @@ class PrimaryViewController : UIViewController {
 // ...so that the secondary can find the primary in an agnostic way
 
 // to use targetViewControllerForAction for a custom action, 
-// you need to extend UIViewController...
-// ...to satisfy the compiler... (the implementation can be empty)
+// you need to a protocol to satisfy the compiler
+// (should be able to use an extension, but seed 5 broke that)
 
-extension UIViewController {
-    func showHide(sender:AnyObject) {}
+@objc protocol ShowHide {
+    func showHide(sender:AnyObject)
 }
 
 // ...and then override to implement in a specific class ...
 // ... so that targetViewControllerForAction finds this specific instance
 
-extension PrimaryViewController {
+extension PrimaryViewController : ShowHide {
     
-    override func showHide(sender:AnyObject) {
+    func showHide(sender:AnyObject) {
         // how to show/hide ourselves depends on the state of the split view controller
         // if expanded, let the split view controller deal with it
         // if collapsed, we are in charge of the interface and must decide what this means
@@ -125,7 +125,7 @@ extension PrimaryViewController {
             self.verticalConstraints = (
                 NSLayoutConstraint.constraintsWithVisualFormat("V:|-(minuscon)-[v]-(con)-|", options: nil, metrics: ["con":con, "minuscon":-con], views: ["v":vc2.view]) as [NSLayoutConstraint]
             )
-            self.view.addConstraints(self.verticalConstraints)
+            self.view.addConstraints(self.verticalConstraints!)
             UIView.animateWithDuration(0.25, animations: {
                 self.view.layoutIfNeeded()
                 })

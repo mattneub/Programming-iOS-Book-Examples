@@ -191,7 +191,7 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
         }
     }
     
-    func popoverPresentationController(popoverPresentationController: UIPopoverPresentationController!, willRepositionPopoverToRect rect: UnsafePointer<CGRect>, inView view: AutoreleasingUnsafePointer<UIView?>) {
+    func popoverPresentationController(popoverPresentationController: UIPopoverPresentationController!, willRepositionPopoverToRect rect: UnsafeMutablePointer<CGRect>, inView view: AutoreleasingUnsafeMutablePointer<UIView?>) {
         // just playing (also, note how to talk thru pointer parameter in Swift)
         if view.memory == self.button {
             rect.memory = self.button2.bounds

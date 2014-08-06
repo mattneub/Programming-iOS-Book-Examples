@@ -11,19 +11,8 @@
 		325C17D01985A32B007A27A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325C17CF1985A32B007A27A8 /* ViewController.swift */; };
 		325C17D31985A32B007A27A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 325C17D11985A32B007A27A8 /* Main.storyboard */; };
 		325C17D51985A32B007A27A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 325C17D41985A32B007A27A8 /* Images.xcassets */; };
-		325C17E11985A32B007A27A8 /* PopoverOnPhoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325C17E01985A32B007A27A8 /* PopoverOnPhoneTests.swift */; };
 		325C17ED19870ED3007A27A8 /* linkhelp.html in Resources */ = {isa = PBXBuildFile; fileRef = 325C17EC19870ED3007A27A8 /* linkhelp.html */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		325C17DB1985A32B007A27A8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 325C17C01985A32B007A27A8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 325C17C71985A32B007A27A8;
-			remoteInfo = PopoverOnPhone;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		325C17C81985A32B007A27A8 /* PopoverOnPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopoverOnPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,21 +21,11 @@
 		325C17CF1985A32B007A27A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		325C17D21985A32B007A27A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		325C17D41985A32B007A27A8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		325C17DA1985A32B007A27A8 /* PopoverOnPhoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopoverOnPhoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		325C17DF1985A32B007A27A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		325C17E01985A32B007A27A8 /* PopoverOnPhoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverOnPhoneTests.swift; sourceTree = "<group>"; };
 		325C17EC19870ED3007A27A8 /* linkhelp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = linkhelp.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		325C17C51985A32B007A27A8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		325C17D71985A32B007A27A8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -60,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				325C17CA1985A32B007A27A8 /* PopoverOnPhone */,
-				325C17DD1985A32B007A27A8 /* PopoverOnPhoneTests */,
 				325C17C91985A32B007A27A8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				325C17C81985A32B007A27A8 /* PopoverOnPhone.app */,
-				325C17DA1985A32B007A27A8 /* PopoverOnPhoneTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,23 +72,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		325C17DD1985A32B007A27A8 /* PopoverOnPhoneTests */ = {
-			isa = PBXGroup;
-			children = (
-				325C17E01985A32B007A27A8 /* PopoverOnPhoneTests.swift */,
-				325C17DE1985A32B007A27A8 /* Supporting Files */,
-			);
-			path = PopoverOnPhoneTests;
-			sourceTree = "<group>";
-		};
-		325C17DE1985A32B007A27A8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				325C17DF1985A32B007A27A8 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,24 +92,6 @@
 			productReference = 325C17C81985A32B007A27A8 /* PopoverOnPhone.app */;
 			productType = "com.apple.product-type.application";
 		};
-		325C17D91985A32B007A27A8 /* PopoverOnPhoneTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 325C17E71985A32B007A27A8 /* Build configuration list for PBXNativeTarget "PopoverOnPhoneTests" */;
-			buildPhases = (
-				325C17D61985A32B007A27A8 /* Sources */,
-				325C17D71985A32B007A27A8 /* Frameworks */,
-				325C17D81985A32B007A27A8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				325C17DC1985A32B007A27A8 /* PBXTargetDependency */,
-			);
-			name = PopoverOnPhoneTests;
-			productName = PopoverOnPhoneTests;
-			productReference = 325C17DA1985A32B007A27A8 /* PopoverOnPhoneTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -161,10 +103,6 @@
 				TargetAttributes = {
 					325C17C71985A32B007A27A8 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					325C17D91985A32B007A27A8 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 325C17C71985A32B007A27A8;
 					};
 				};
 			};
@@ -182,7 +120,6 @@
 			projectRoot = "";
 			targets = (
 				325C17C71985A32B007A27A8 /* PopoverOnPhone */,
-				325C17D91985A32B007A27A8 /* PopoverOnPhoneTests */,
 			);
 		};
 /* End PBXProject section */
@@ -198,13 +135,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		325C17D81985A32B007A27A8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -217,23 +147,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		325C17D61985A32B007A27A8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				325C17E11985A32B007A27A8 /* PopoverOnPhoneTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		325C17DC1985A32B007A27A8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 325C17C71985A32B007A27A8 /* PopoverOnPhone */;
-			targetProxy = 325C17DB1985A32B007A27A8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		325C17D11985A32B007A27A8 /* Main.storyboard */ = {
@@ -348,40 +262,6 @@
 			};
 			name = Release;
 		};
-		325C17E81985A32B007A27A8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PopoverOnPhone.app/PopoverOnPhone";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PopoverOnPhoneTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Debug;
-		};
-		325C17E91985A32B007A27A8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PopoverOnPhone.app/PopoverOnPhone";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PopoverOnPhoneTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -401,14 +281,7 @@
 				325C17E61985A32B007A27A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		325C17E71985A32B007A27A8 /* Build configuration list for PBXNativeTarget "PopoverOnPhoneTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				325C17E81985A32B007A27A8 /* Debug */,
-				325C17E91985A32B007A27A8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -14,12 +14,17 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
         return true // try false to see if you can find a difference...
     }
     
-    init(frame:CGRect) {
+    override init(frame:CGRect) {
         self.arrOff = 0
         self.arrDir = .Any
         super.init(frame:frame)
         self.opaque = false
     }
+    
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
+
     
     let ARBASE : CGFloat = 20
     let ARHEIGHT : CGFloat = 20
