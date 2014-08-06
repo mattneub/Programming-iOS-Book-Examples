@@ -12,13 +12,17 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
     return self.view as UIWebView
     }
     
-    required init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.restorationIdentifier = "wvc"
         self.restorationClass = self.dynamicType
         let b = UIBarButtonItem(title:"Back", style:.Bordered, target:self, action:"goBack:")
         self.navigationItem.rightBarButtonItem = b
         self.edgesForExtendedLayout = .None // get accurate offset restoration
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
     }
     
     class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject]!, coder: NSCoder!) -> UIViewController! {

@@ -25,12 +25,17 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     }
     weak var wv : WKWebView!
     
-    required init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.restorationIdentifier = "wvc"
         self.restorationClass = self.dynamicType
         self.edgesForExtendedLayout = .None // get accurate offset restoration
     }
+    
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
+
     
     class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject]!, coder: NSCoder!) -> UIViewController! {
         return self(nibName:nil, bundle:nil)
@@ -131,7 +136,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         
     }
     
-    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafePointer<()>) {
+    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<()>) {
         if let wv = object as? WKWebView {
             switch keyPath! {
             case "loading": // new:1 or 0
