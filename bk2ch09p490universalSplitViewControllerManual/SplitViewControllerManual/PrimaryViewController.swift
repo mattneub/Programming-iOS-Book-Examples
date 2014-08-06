@@ -85,19 +85,18 @@ class PrimaryViewController : UIViewController {
 // ...so that the secondary can find the primary in an agnostic way
 
 // to use targetViewControllerForAction for a custom action, 
-// you need to a protocol to satisfy the compiler
-// (should be able to use an extension, but seed 5 broke that)
+// you need to an extentsion to satisfy the compiler
 
-@objc protocol ShowHide {
-    func showHide(sender:AnyObject)
+extension UIViewController {
+    dynamic func showHide(sender:AnyObject) {} // in seed 5, must be dynamic or polymorphism breaks: bug?
 }
 
 // ...and then override to implement in a specific class ...
 // ... so that targetViewControllerForAction finds this specific instance
 
-extension PrimaryViewController : ShowHide {
+extension PrimaryViewController {
     
-    func showHide(sender:AnyObject) {
+    override func showHide(sender:AnyObject) {
         // how to show/hide ourselves depends on the state of the split view controller
         // if expanded, let the split view controller deal with it
         // if collapsed, we are in charge of the interface and must decide what this means
