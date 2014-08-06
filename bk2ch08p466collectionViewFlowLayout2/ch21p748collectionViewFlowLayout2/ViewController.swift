@@ -33,11 +33,11 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c
-                self.sectionNames += c.uppercaseString
+                self.sectionNames.append( c.uppercaseString )
                 // and in that case also add new subarray to our array of subarrays
-                self.sectionData += [String]()
+                self.sectionData.append( [String]() )
             }
-            sectionData[sectionData.count-1] += aState
+            sectionData[sectionData.count-1].append( aState )
         }
         
         let b = UIBarButtonItem(title:"Switch", style:.Plain, target:self, action:"doSwitch:")
@@ -198,7 +198,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     func doDelete(sender:AnyObject) { // button, delete selected cells
         let arr = self.collectionView.indexPathsForSelectedItems() as [NSIndexPath]?
-        if !arr || arr!.count == 0 {
+        if arr == nil || arr!.count == 0 {
             return
         }
         // sort
@@ -208,7 +208,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         for ip in arr2 {
             self.sectionData[ip.section].removeAtIndex(ip.item)
             if self.sectionData[ip.section].count == 0 {
-                empties += ip.section
+                empties += [ip.section]
             }
         }
         // will need an NSIndexSet version of that empties list

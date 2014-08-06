@@ -6,16 +6,13 @@ class SearchResultsController : UITableViewController {
     var originalData = [String]()
     var filteredData = [String]()
     weak var searchController : UISearchController?
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
+        
     func takeData(data:[[String]]) {
         // we don't use sections, so flatten the data into a single array of strings
         var flattened = [String]()
         for arr in data {
             for s in arr {
-                flattened += s
+                flattened += [s]
             }
         }
         self.originalData = flattened

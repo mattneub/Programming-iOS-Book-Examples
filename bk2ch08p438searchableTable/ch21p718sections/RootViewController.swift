@@ -21,11 +21,11 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c
-                self.sectionNames += c.uppercaseString
+                self.sectionNames.append( c.uppercaseString )
                 // and in that case also add new subarray to our array of subarrays
-                self.sectionData += [String]()
+                self.sectionData.append( [String]() )
             }
-            sectionData[sectionData.count-1] += aState
+            sectionData[sectionData.count-1].append( aState )
         }
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
@@ -47,7 +47,12 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         let b = searcher.searchBar
         b.sizeToFit() // crucial, trust me on this one
         b.autocapitalizationType = .None
-        self.tableView.tableHeaderView = b
+        // new in seed 5; to prevent false color behind table view,
+        // I had to put search bar in a view
+        // unfortunately it is then partly hidden behind the index
+        let v = UIView(frame:b.bounds)
+        v.addSubview(b)
+        self.tableView.tableHeaderView = v
         self.tableView.reloadData()
         self.tableView.scrollToRowAtIndexPath(
             NSIndexPath(forRow: 0, inSection: 0),

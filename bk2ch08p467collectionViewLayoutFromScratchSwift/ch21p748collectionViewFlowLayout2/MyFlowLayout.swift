@@ -46,7 +46,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
                     atts2 = self.animator.layoutAttributesForSupplementaryViewOfKind(kind, atIndexPath:path)
                 default: break
                 }
-                marr += (atts2 ? atts2! : atts)
+                marr += [atts2 ?? atts]
             }
             return marr
         }

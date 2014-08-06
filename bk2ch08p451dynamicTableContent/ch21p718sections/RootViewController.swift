@@ -25,11 +25,11 @@ class RootViewController : UITableViewController {
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c
-                self.sectionNames += c.uppercaseString
+                self.sectionNames.append( c.uppercaseString )
                 // and in that case also add new subarray to our array of subarrays
-                self.sectionData += [String]()
+                self.sectionData.append( [String]() )
             }
-            sectionData[sectionData.count-1] += aState
+            sectionData[sectionData.count-1].append( aState )
         }
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.registerClass(

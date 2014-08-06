@@ -70,7 +70,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField!) {
         // some cell's text field has finished editing; which cell?
         var v : UIView = textField
-        do { v = v.superview } while !(v is UITableViewCell)
+        do { v = v.superview! } while !(v is UITableViewCell)
         let cell = v as MyCell
         // update data model to match
         let ip = self.tableView.indexPathForCell(cell)
@@ -114,7 +114,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         tableView.endEditing(true) // user can click minus/plus while still editing
         // so we must force saving to the model
         if editingStyle == .Insert {
-            self.numbers += ""
+            self.numbers += [""]
             let ct = self.numbers.count
             tableView.beginUpdates()
             tableView.insertRowsAtIndexPaths(
