@@ -45,7 +45,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         let r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
         let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
         let f = self.tv.frame
-        let fs = self.tv.superview.bounds
+        let fs = self.tv.superview!.bounds
         let diff = fs.size.height - f.origin.y - f.size.height;
         let keyboardTop = r.size.height - diff
         UIView.animateWithDuration(duration.doubleValue,

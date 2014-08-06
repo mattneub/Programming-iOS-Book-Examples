@@ -17,7 +17,7 @@ class ViewController : UIViewController {
         var content : NSMutableAttributedString!
         var content2 : NSMutableAttributedString!
 
-        let which = 0 // 0 ... 5
+        let which = 5 // 0 ... 5
         switch which {
         case 0, 1, 4, 5:
             let s1 = "The Gettysburg Address, as delivered on a certain occasion " +
@@ -95,7 +95,7 @@ class ViewController : UIViewController {
                 inRange:NSMakeRange(0,content.length),
                 options:NSAttributedStringEnumerationOptions.LongestEffectiveRangeNotRequired,
                 usingBlock: {
-                    (value:AnyObject!, range:NSRange, stop:UnsafePointer<ObjCBool>) -> Void in
+                    (value:AnyObject!, range:NSRange, stop:UnsafeMutablePointer<ObjCBool>) -> Void in
                     println(range)
                     let font = value as UIFont
                     if font.pointSize == 15 {

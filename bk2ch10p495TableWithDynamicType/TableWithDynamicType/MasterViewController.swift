@@ -1,10 +1,4 @@
-//
-//  MasterViewController.swift
-//  TableWithDynamicType
-//
-//  Created by Matt Neuburg on 7/31/14.
-//  Copyright (c) 2014 Matt Neuburg. All rights reserved.
-//
+
 
 import UIKit
 
@@ -26,10 +20,6 @@ class MasterViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addButton
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     func insertNewObject(sender: AnyObject) {
         if objects == nil {
@@ -87,8 +77,6 @@ class MasterViewController: UITableViewController {
         if editingStyle == .Delete {
             objects.removeObjectAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
 

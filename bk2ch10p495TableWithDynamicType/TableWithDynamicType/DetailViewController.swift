@@ -1,10 +1,4 @@
-//
-//  DetailViewController.swift
-//  TableWithDynamicType
-//
-//  Created by Matt Neuburg on 7/31/14.
-//  Copyright (c) 2014 Matt Neuburg. All rights reserved.
-//
+
 
 import UIKit
 
@@ -35,10 +29,6 @@ class DetailViewController: UIViewController {
         self.configureView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
 
 }

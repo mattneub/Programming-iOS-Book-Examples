@@ -12,16 +12,13 @@ class MyTextField: UITextField {
     
     class func stateForAbbrev(abbrev:String) -> String? {
         let ix = find(list, abbrev.uppercaseString)
-        if !ix {
-            return nil
-        }
-        return list[ix!+1]
+        return ix != nil ? list[ix!+1] : nil
     }
     
     override func canPerformAction(action: Selector, withSender sender: AnyObject!) -> Bool {
         if action == "expand:" {
             if let s = self.textInRange(self.selectedTextRange) {
-                return ( countElements(s) == 2 && self.dynamicType.stateForAbbrev(s) )
+                return ( countElements(s) == 2 && self.dynamicType.stateForAbbrev(s) != nil )
             }
         }
         return super.canPerformAction(action, withSender:sender)

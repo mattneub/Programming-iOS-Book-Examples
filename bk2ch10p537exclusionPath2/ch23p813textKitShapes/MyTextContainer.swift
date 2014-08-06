@@ -2,7 +2,7 @@ import UIKit
 
 class MyTextContainer : NSTextContainer {
     
-    override func lineFragmentRectForProposedRect(proposedRect: CGRect, atIndex characterIndex: Int, writingDirection baseWritingDirection: NSWritingDirection, remainingRect: UnsafePointer<CGRect>) -> CGRect {
+    override func lineFragmentRectForProposedRect(proposedRect: CGRect, atIndex characterIndex: Int, writingDirection baseWritingDirection: NSWritingDirection, remainingRect: UnsafeMutablePointer<CGRect>) -> CGRect {
         
         var result = super.lineFragmentRectForProposedRect(proposedRect, atIndex:characterIndex, writingDirection:baseWritingDirection, remainingRect:remainingRect)
         

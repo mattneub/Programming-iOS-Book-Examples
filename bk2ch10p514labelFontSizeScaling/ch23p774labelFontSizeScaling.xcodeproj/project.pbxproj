@@ -33,9 +33,6 @@
 		C9AAC2F4181825EE00634B44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9AAC2F9181825EE00634B44 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9AAC300181825EE00634B44 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9AAC308181825EE00634B44 /* ch23p774labelFontSizeScalingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch23p774labelFontSizeScalingTests-Info.plist"; sourceTree = "<group>"; };
-		C9AAC30A181825EE00634B44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9AAC30C181825EE00634B44 /* ch23p774labelFontSizeScalingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ch23p774labelFontSizeScalingTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				C9AAC2E7181825EE00634B44 /* ch23p774labelFontSizeScaling */,
-				C9AAC306181825EE00634B44 /* ch23p774labelFontSizeScalingTests */,
 				C9AAC2E0181825EE00634B44 /* Frameworks */,
 				C9AAC2DF181825EE00634B44 /* Products */,
 			);
@@ -101,24 +97,6 @@
 				C9AAC2EA181825EE00634B44 /* InfoPlist.strings */,
 				C9AAC2ED181825EE00634B44 /* main.m */,
 				C9AAC2EF181825EE00634B44 /* ch23p774labelFontSizeScaling-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C9AAC306181825EE00634B44 /* ch23p774labelFontSizeScalingTests */ = {
-			isa = PBXGroup;
-			children = (
-				C9AAC30C181825EE00634B44 /* ch23p774labelFontSizeScalingTests.m */,
-				C9AAC307181825EE00634B44 /* Supporting Files */,
-			);
-			path = ch23p774labelFontSizeScalingTests;
-			sourceTree = "<group>";
-		};
-		C9AAC307181825EE00634B44 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C9AAC308181825EE00634B44 /* ch23p774labelFontSizeScalingTests-Info.plist */,
-				C9AAC309181825EE00634B44 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -211,14 +189,6 @@
 				C9AAC2F4181825EE00634B44 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C9AAC309181825EE00634B44 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9AAC30A181825EE00634B44 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -7,8 +7,6 @@ class ViewController : UIViewController {
     /*
     The problem is that dynamic type is not actually dynamic!
     Updating the interface is up to you.
-    
-    
 */
     
     @IBOutlet var lab : UILabel!

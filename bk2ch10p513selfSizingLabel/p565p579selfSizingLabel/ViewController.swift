@@ -5,16 +5,12 @@ import UIKit
 class ViewController : UIViewController {
     @IBOutlet var theLabel : UILabel!
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         let showTheBug = false
         switch showTheBug {
-        case false:
+        case true:
             let para = NSMutableParagraphStyle()
             para.headIndent = 20;
             para.firstLineHeadIndent = 20

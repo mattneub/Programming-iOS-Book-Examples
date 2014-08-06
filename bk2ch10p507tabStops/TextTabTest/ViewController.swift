@@ -14,7 +14,7 @@ class ViewController : UIViewController {
         var tabs = [NSTextTab]()
         let terms = NSTextTab.columnTerminatorsForLocale(NSLocale.currentLocale())
         let tab = NSTextTab(textAlignment:.Right, location:170, options:[NSTabColumnTerminatorsAttributeName:terms])
-        tabs += tab
+        tabs += [tab]
         p.tabStops = tabs
         p.firstLineHeadIndent = 20
         let mas = NSMutableAttributedString(string:s, attributes:[
@@ -49,7 +49,7 @@ class ViewController : UIViewController {
     func thumbnailOfImageWithName(name:String, withExtension ext: String) -> UIImage {
         let url = NSBundle.mainBundle().URLForResource(name,
                 withExtension:ext)
-        let src = CGImageSourceCreateWithURL(url, nil).takeRetainedValue()
+        let src = CGImageSourceCreateWithURL(url, nil)
         let scale = UIScreen.mainScreen().scale
         let w : CGFloat = 20 * scale
         let d = [
@@ -59,7 +59,7 @@ class ViewController : UIViewController {
             kCGImageSourceThumbnailMaxPixelSize: Int(w)
         ]
         let imref =
-            CGImageSourceCreateThumbnailAtIndex(src, 0, d).takeRetainedValue()
+            CGImageSourceCreateThumbnailAtIndex(src, 0, d)
         let im = UIImage(CGImage:imref, scale:scale, orientation:.Up)
         return im
     }
