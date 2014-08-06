@@ -15,7 +15,7 @@ class MyFlagView : UIImageView {
         UIGraphicsEndImageContext()
         
         let info = CGBitmapInfo.fromRaw(CGImageAlphaInfo.Only.toRaw())!
-        let pixel = UnsafePointer<CUnsignedChar>.alloc(1)
+        let pixel = UnsafeMutablePointer<CUnsignedChar>.alloc(1)
         pixel[0] = 0
         let context = CGBitmapContextCreate(pixel,
             1, 1, 8, 1, nil, info)

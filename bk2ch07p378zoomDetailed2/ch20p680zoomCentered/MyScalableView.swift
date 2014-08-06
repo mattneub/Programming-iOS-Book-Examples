@@ -4,7 +4,7 @@ import UIKit
 
 class MyScalableView : UIView {
     
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
         self.backgroundColor = UIColor.blackColor()
     }

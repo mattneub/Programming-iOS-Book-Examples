@@ -23,7 +23,7 @@ class ViewController : UIViewController {
 // but they seem to be gone now
 
 class TiledView : UIView {
-    override class func layerClass() -> AnyClass! {
+    override class func layerClass() -> AnyClass {
         return CATiledLayer.self
     }
     

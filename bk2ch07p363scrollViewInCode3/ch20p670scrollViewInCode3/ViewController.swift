@@ -35,7 +35,7 @@ class ViewController : UIViewController {
         let v = UIView() // content view
         sv.addSubview(v)
         
-        let which = 1
+        let which = 2
         switch which {
         case 1:
             
@@ -71,8 +71,6 @@ class ViewController : UIViewController {
                 y += lab.bounds.size.height + 10
             }
             
-            // DOESN'T WORK IN iOS 8!
-            
             // set content view width, height, and frame-to-superview constraints
             // content size is calculated for us
             v.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -82,15 +80,7 @@ class ViewController : UIViewController {
             sv.addConstraints(
                 NSLayoutConstraint.constraintsWithVisualFormat("H:|[v(0)]|",
                     options:nil, metrics:nil, views:["v":v]))
-            
-            // What's happened in iOS 8 is that this approach works only if...
-            // the width and height constraints are _intrinsic_, or (same thing)
-            // are dictated by constraints of other objects from the inside
-            // (which is why the _next_ case _does_ work)
-            // thus I could get this to work if v were a UIView subclass...
-            // ... with an intrinsic size of (0,y)
-            // I'll add another example showing this
-            
+                        
         case 3:
             // content view doesn't use explicit constraints
             // subviews do explicit constraints

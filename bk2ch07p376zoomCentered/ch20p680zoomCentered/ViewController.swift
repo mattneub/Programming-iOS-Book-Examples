@@ -17,6 +17,8 @@ class ViewController : UIViewController, UIScrollViewDelegate {
             self.didSetup = true
             // work around auto layout bug in iOS 8
             // turn off auto layout and assign content size manually
+            // even in seed 5 I can't get this entire example to work at all in iOS 8...
+            // ...if auto layout is on
             self.sv.contentSize = CGSizeMake(400,300)
             
             // nice to have horizontal centering at startup

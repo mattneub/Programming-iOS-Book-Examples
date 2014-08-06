@@ -43,6 +43,9 @@ class ViewController : UIViewController {
         // v must be a view that has an intrinsic size...
         // ...so that we do not set explicit width and height constraints on it
         
+        // THIS BUG WAS FIXED IN SEED 5
+        // This example, though it works, is no longer needed
+        
         let v = ContentView() // content view
         sv.addSubview(v)
         

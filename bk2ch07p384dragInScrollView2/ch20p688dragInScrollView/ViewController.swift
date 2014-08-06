@@ -26,7 +26,7 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
         let iv = UIImageView(image:UIImage(named:"smiley.png"))
         iv.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.sv.addSubview(iv)
-        let sup = self.sv.superview
+        let sup = self.sv.superview!
         sup.addConstraint(
             NSLayoutConstraint(item:iv,
                 attribute:.Right,

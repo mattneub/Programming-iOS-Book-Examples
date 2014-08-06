@@ -7,7 +7,7 @@ class MyTiledView : UIView {
     var currentImage : UIImage!
     var currentSize = CGSizeZero
     
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder!) {
         super.init(coder:aDecoder)
         let lay = self.layer as CATiledLayer
         let scale = lay.contentsScale
@@ -16,7 +16,7 @@ class MyTiledView : UIView {
         lay.levelsOfDetailBias = 2
     }
     
-    override class func layerClass() -> AnyClass! {
+    override class func layerClass() -> AnyClass {
         return CATiledLayer.self
     }
     

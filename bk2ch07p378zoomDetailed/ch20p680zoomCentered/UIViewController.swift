@@ -11,7 +11,6 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     override func viewDidLayoutSubviews() {
         if !self.didSetup {
             self.didSetup = true
-            // work around auto layout bug in iOS 8
             // turn off auto layout and assign content size manually
             self.sv.contentSize = CGSizeMake(208,238)
         }
@@ -31,6 +30,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     }
     
     // same annoying "jump" bug in iOS 8
+    // there is also a slight "jump" as we zoom
     
     @IBAction func tapped(tap : UIGestureRecognizer) {
         let v = tap.view
