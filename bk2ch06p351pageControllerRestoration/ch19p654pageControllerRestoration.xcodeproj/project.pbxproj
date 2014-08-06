@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		32785687197C53DD00BD83B9 /* Pep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32785686197C53DD00BD83B9 /* Pep.swift */; };
 		32785689197C53E200BD83B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32785688197C53E200BD83B9 /* AppDelegate.swift */; };
+		327D4ED51991E8E000B95C4F /* Pep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D4ED41991E8E000B95C4F /* Pep.swift */; };
+		327D4ED71991E8EC00B95C4F /* Pep.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327D4ED61991E8EC00B95C4F /* Pep.xib */; };
 		C94F83B717CFAC7A00DA797B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94F83B617CFAC7A00DA797B /* Foundation.framework */; };
 		C94F83B917CFAC7A00DA797B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94F83B817CFAC7A00DA797B /* CoreGraphics.framework */; };
 		C94F83BB17CFAC7A00DA797B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94F83BA17CFAC7A00DA797B /* UIKit.framework */; };
@@ -16,12 +17,12 @@
 		C94F83E817CFACA600DA797B /* jack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C94F83E517CFACA600DA797B /* jack.jpg */; };
 		C94F83E917CFACA600DA797B /* manny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C94F83E617CFACA600DA797B /* manny.jpg */; };
 		C94F83EA17CFACA600DA797B /* moe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C94F83E717CFACA600DA797B /* moe.jpg */; };
-		C94F83EF17CFACB400DA797B /* Pep.xib in Resources */ = {isa = PBXBuildFile; fileRef = C94F83ED17CFACB400DA797B /* Pep.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		32785686197C53DD00BD83B9 /* Pep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pep.swift; sourceTree = "<group>"; };
 		32785688197C53E200BD83B9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		327D4ED41991E8E000B95C4F /* Pep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pep.swift; sourceTree = "<group>"; };
+		327D4ED61991E8EC00B95C4F /* Pep.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Pep.xib; sourceTree = "<group>"; };
 		C94F83B317CFAC7A00DA797B /* ch19p654pageControllerRestoration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p654pageControllerRestoration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94F83B617CFAC7A00DA797B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C94F83B817CFAC7A00DA797B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -34,7 +35,6 @@
 		C94F83E717CFACA600DA797B /* moe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moe.jpg; sourceTree = "<group>"; };
 		C94F83EB17CFACB400DA797B /* Pep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pep.h; sourceTree = "<group>"; };
 		C94F83EC17CFACB400DA797B /* Pep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pep.m; sourceTree = "<group>"; };
-		C94F83ED17CFACB400DA797B /* Pep.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Pep.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +88,8 @@
 				C94F83E717CFACA600DA797B /* moe.jpg */,
 				C94F83EB17CFACB400DA797B /* Pep.h */,
 				C94F83EC17CFACB400DA797B /* Pep.m */,
-				32785686197C53DD00BD83B9 /* Pep.swift */,
-				C94F83ED17CFACB400DA797B /* Pep.xib */,
+				327D4ED41991E8E000B95C4F /* Pep.swift */,
+				327D4ED61991E8EC00B95C4F /* Pep.xib */,
 				C94F83C817CFAC7A00DA797B /* Images.xcassets */,
 				C94F83BD17CFAC7A00DA797B /* Supporting Files */,
 			);
@@ -155,9 +155,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				327D4ED71991E8EC00B95C4F /* Pep.xib in Resources */,
 				C94F83E817CFACA600DA797B /* jack.jpg in Resources */,
 				C94F83EA17CFACA600DA797B /* moe.jpg in Resources */,
-				C94F83EF17CFACB400DA797B /* Pep.xib in Resources */,
 				C94F83C917CFAC7A00DA797B /* Images.xcassets in Resources */,
 				C94F83E917CFACA600DA797B /* manny.jpg in Resources */,
 			);
@@ -170,8 +170,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32785687197C53DD00BD83B9 /* Pep.swift in Sources */,
 				32785689197C53E200BD83B9 /* AppDelegate.swift in Sources */,
+				327D4ED51991E8E000B95C4F /* Pep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

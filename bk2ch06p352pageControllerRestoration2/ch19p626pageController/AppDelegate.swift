@@ -31,7 +31,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         pvc.restorationIdentifier = "pvc" // * crucial!
         
         // give it an initial page
-        let page = Pep(pepBoy: self.pep[0], nib: nil, bundle: nil)
+        let page = Pep(pepBoy: self.pep[0])
         pvc.setViewControllers([page], direction: .Forward, animated: false, completion: nil)
         // give it a data source
         pvc.dataSource = self
@@ -75,7 +75,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
         if ix >= self.pep.count {
             return nil
         }
-        return Pep(pepBoy: self.pep![ix], nib: nil, bundle: nil)
+        return Pep(pepBoy: self.pep![ix])
     }
     func pageViewController(pageViewController: UIPageViewController!, viewControllerBeforeViewController viewController: UIViewController!) -> UIViewController! {
         let boy = (viewController as Pep).boy
@@ -83,7 +83,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
         if ix < 0 {
             return nil
         }
-        return Pep(pepBoy: self.pep[ix], nib: nil, bundle: nil)
+        return Pep(pepBoy: self.pep[ix])
     }
     
     // if these methods are implemented, page indicator appears

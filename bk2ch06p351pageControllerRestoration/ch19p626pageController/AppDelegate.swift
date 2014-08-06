@@ -29,7 +29,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // make a page view controller
         let pvc = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         // give it an initial page
-        let page = Pep(pepBoy: self.pep[0], nib: nil, bundle: nil)
+        let page = Pep(pepBoy: self.pep[0])
         pvc.setViewControllers([page], direction: .Forward, animated: false, completion: nil)
         // give it a data source
         pvc.dataSource = self
@@ -56,7 +56,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let boy : AnyObject = coder.decodeObjectForKey("boy")
         if let boy = boy as? String {
             let pvc = self.window!.rootViewController as UIPageViewController
-            let pep = Pep(pepBoy: boy, nib: nil, bundle: nil)
+            let pep = Pep(pepBoy: boy)
             pvc.setViewControllers([pep], direction: .Forward, animated: false, completion: nil)
         }
     }
@@ -69,7 +69,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
         if ix >= self.pep.count {
             return nil
         }
-        return Pep(pepBoy: self.pep![ix], nib: nil, bundle: nil)
+        return Pep(pepBoy: self.pep![ix])
     }
     func pageViewController(pageViewController: UIPageViewController!, viewControllerBeforeViewController viewController: UIViewController!) -> UIViewController! {
         let boy = (viewController as Pep).boy
@@ -77,7 +77,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
         if ix < 0 {
             return nil
         }
-        return Pep(pepBoy: self.pep[ix], nib: nil, bundle: nil)
+        return Pep(pepBoy: self.pep[ix])
     }
     
     // if these methods are implemented, page indicator appears

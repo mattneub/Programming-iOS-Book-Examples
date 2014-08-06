@@ -9,9 +9,9 @@ class Pep: UIViewController {
     @IBOutlet var pic : UIImageView!
     
     // we add "required" to satisfy the compiler's worry that class's "self" might be a subclass
-    required init(pepBoy boy:String, nib:String?, bundle:NSBundle?) {
+    required init(pepBoy boy:String) {
         self.boy = boy
-        super.init(nibName: nib, bundle: bundle)
+        super.init(nibName: "Pep", bundle: nil)
         self.restorationIdentifier = "pep" // *
         // self.restorationClass = self.dynamicType // * no restoration class, let app delegate point
     }

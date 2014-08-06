@@ -39,7 +39,7 @@ class ViewController2 : UIViewController {
     }
     
     override init() {
-        super.init(nibName: nil, bundle: nil)
+        super.init(nibName: "ViewController2", bundle: nil)
         self.modalPresentationStyle = .Custom
         self.transitioningDelegate = self
     }

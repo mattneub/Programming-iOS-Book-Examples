@@ -33,7 +33,7 @@
     if (UIDeviceOrientationIsLandscape(r) & !self.presentedViewController) {
         [[UIApplication sharedApplication]
          setStatusBarOrientation:r2 animated:YES];
-        UIViewController* vc = [SecondViewController new];
+        UIViewController* vc = [[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
         vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:vc animated:YES completion:nil];
     } else if (UIDeviceOrientationPortrait == r) {

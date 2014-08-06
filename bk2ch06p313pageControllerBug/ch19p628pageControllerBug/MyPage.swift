@@ -11,7 +11,16 @@ class MyPage : UIViewController {
         }
     }
     }
-        
+    
+    override init() {
+        super.init(nibName: "MyPage", bundle: nil)
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lab.text = "\(self.num)"

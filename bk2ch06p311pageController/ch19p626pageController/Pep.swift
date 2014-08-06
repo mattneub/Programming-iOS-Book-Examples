@@ -8,9 +8,9 @@ class Pep: UIViewController {
     @IBOutlet var name : UILabel!
     @IBOutlet var pic : UIImageView!
     
-    init(pepBoy boy:String, nib:String?, bundle:NSBundle?) {
+    init(pepBoy boy:String) {
         self.boy = boy
-        super.init(nibName: nib, bundle: bundle)
+        super.init(nibName: "Pep", bundle: nil)
     }
     
     required init(coder: NSCoder) {

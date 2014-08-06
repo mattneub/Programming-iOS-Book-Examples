@@ -4,16 +4,6 @@ import UIKit
 
 class ViewController : UIViewController, SecondViewControllerDelegate {
     
-    /*
-    @IBAction func doPresent(sender:AnyObject?) {
-        let which = 3
-        
-        let svc = SecondViewController()
-        svc.data = "This is very important data!"
-        svc.delegate = self
-        self.presentViewController(svc, animated:true, completion:nil)
-    }
-*/
     // the segue in the storyboard is drawn directly from the button...
     // so SecondViewController will be instantiated for us...
     // and "presentViewController" will be called for us
