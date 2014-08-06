@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		321B0304197F2251006E0EE2 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321B0303197F2250006E0EE2 /* UIViewController.swift */; };
+		321B0304197F2251006E0EE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321B0303197F2250006E0EE2 /* ViewController.swift */; };
 		321B0306197F22B8006E0EE2 /* MyScalableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321B0305197F22B8006E0EE2 /* MyScalableView.swift */; };
 		C975DC3617E022A7007F4075 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3517E022A7007F4075 /* Foundation.framework */; };
 		C975DC3817E022A7007F4075 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3717E022A7007F4075 /* CoreGraphics.framework */; };
@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		321B0303197F2250006E0EE2 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		321B0303197F2250006E0EE2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		321B0305197F22B8006E0EE2 /* MyScalableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScalableView.swift; sourceTree = "<group>"; };
 		C975DC3217E022A7007F4075 /* ch20p681zoomDetailed2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p681zoomDetailed2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C975DC3517E022A7007F4075 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -87,7 +87,7 @@
 				C975DC4417E022A7007F4075 /* AppDelegate.h */,
 				C975DC4517E022A7007F4075 /* AppDelegate.m */,
 				C975DC4717E022A7007F4075 /* Main.storyboard */,
-				321B0303197F2250006E0EE2 /* UIViewController.swift */,
+				321B0303197F2250006E0EE2 /* ViewController.swift */,
 				C975DC4D17E022A7007F4075 /* Images.xcassets */,
 				C9AD185D17E1ECF800C0513B /* earthFromSaturn.png */,
 				321B0305197F22B8006E0EE2 /* MyScalableView.swift */,
@@ -173,7 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				321B0304197F2251006E0EE2 /* UIViewController.swift in Sources */,
+				321B0304197F2251006E0EE2 /* ViewController.swift in Sources */,
 				C975DC4617E022A7007F4075 /* AppDelegate.m in Sources */,
 				C975DC4217E022A7007F4075 /* main.m in Sources */,
 				321B0306197F22B8006E0EE2 /* MyScalableView.swift in Sources */,

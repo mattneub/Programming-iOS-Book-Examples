@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3272DA29197ED968004B79F1 /* MyTiledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272DA28197ED968004B79F1 /* MyTiledView.swift */; };
-		3272DA2B197EDCD6004B79F1 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272DA2A197EDCD6004B79F1 /* UIViewController.swift */; };
+		3272DA2B197EDCD6004B79F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272DA2A197EDCD6004B79F1 /* ViewController.swift */; };
 		C975DC3617E022A7007F4075 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3517E022A7007F4075 /* Foundation.framework */; };
 		C975DC3817E022A7007F4075 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3717E022A7007F4075 /* CoreGraphics.framework */; };
 		C975DC3A17E022A7007F4075 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3917E022A7007F4075 /* UIKit.framework */; };
@@ -22,7 +22,7 @@
 
 /* Begin PBXFileReference section */
 		3272DA28197ED968004B79F1 /* MyTiledView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTiledView.swift; sourceTree = "<group>"; };
-		3272DA2A197EDCD6004B79F1 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		3272DA2A197EDCD6004B79F1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C975DC3217E022A7007F4075 /* ch20p681zoomDetailed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p681zoomDetailed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C975DC3517E022A7007F4075 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C975DC3717E022A7007F4075 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,7 +87,7 @@
 				C975DC4417E022A7007F4075 /* AppDelegate.h */,
 				C975DC4517E022A7007F4075 /* AppDelegate.m */,
 				C975DC4717E022A7007F4075 /* Main.storyboard */,
-				3272DA2A197EDCD6004B79F1 /* UIViewController.swift */,
+				3272DA2A197EDCD6004B79F1 /* ViewController.swift */,
 				C975DC4D17E022A7007F4075 /* Images.xcassets */,
 				C9AD185D17E1ECF800C0513B /* earthFromSaturn.png */,
 				3272DA28197ED968004B79F1 /* MyTiledView.swift */,
@@ -176,7 +176,7 @@
 				3272DA29197ED968004B79F1 /* MyTiledView.swift in Sources */,
 				C975DC4617E022A7007F4075 /* AppDelegate.m in Sources */,
 				C975DC4217E022A7007F4075 /* main.m in Sources */,
-				3272DA2B197EDCD6004B79F1 /* UIViewController.swift in Sources */,
+				3272DA2B197EDCD6004B79F1 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
