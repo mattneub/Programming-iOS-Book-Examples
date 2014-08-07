@@ -10,6 +10,12 @@ func imageFromContextOfSize(size:CGSize, closure:() -> ()) -> UIImage {
     return result
 }
 
+func lend<T where T:NSObject> (closure:(T)->()) -> T {
+    let orig = T()
+    closure(orig)
+    return orig
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet var sb : UISearchBar!
@@ -78,13 +84,14 @@ class ViewController: UIViewController {
         self.sb.setScopeBarButtonDividerImage(divim,
             forLeftSegmentState:.Normal, rightSegmentState:.Normal)
 
-        let shad = NSShadow()
-        shad.shadowColor = UIColor.grayColor()
-        shad.shadowOffset = CGSizeMake(2,2)
         let atts = [
             NSFontAttributeName: UIFont(name:"GillSans-Bold", size:16),
             NSForegroundColorAttributeName: UIColor.whiteColor(),
-            NSShadowAttributeName: shad,
+            NSShadowAttributeName: lend() {
+                (shad:NSShadow) in
+                shad.shadowColor = UIColor.grayColor()
+                shad.shadowOffset = CGSizeMake(2,2)
+            },
             NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleDouble.toRaw()
         ]
         self.sb.setScopeBarButtonTitleTextAttributes(atts, forState:.Normal)
