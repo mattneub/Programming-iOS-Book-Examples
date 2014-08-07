@@ -1,6 +1,15 @@
 
 import UIKit
 
+// useful little utility for encapsulation of "lend me" objects like
+// NSMutableParagraphStyle and NSShadow
+
+func lend<T where T:NSObject> (closure:(T)->()) -> T {
+    let orig = T()
+    closure(orig)
+    return orig
+}
+
 class ViewController : UIViewController {
     
     @IBOutlet var lab : UILabel!
@@ -17,7 +26,7 @@ class ViewController : UIViewController {
         var content : NSMutableAttributedString!
         var content2 : NSMutableAttributedString!
 
-        let which = 5 // 0 ... 5
+        let which = 1 // 0 ... 5
         switch which {
         case 0, 1, 4, 5:
             let s1 = "The Gettysburg Address, as delivered on a certain occasion " +
@@ -27,25 +36,25 @@ class ViewController : UIViewController {
                 NSForegroundColorAttributeName: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
                 )
             let r = (s1 as NSString).rangeOfString("Gettysburg Address")
-            let atts = [
+            content.addAttributes([
                 NSStrokeColorAttributeName: UIColor.redColor(),
                 NSStrokeWidthAttributeName: -2.0
-            ]
-            content.addAttributes(atts, range: r)
+                ], range: r)
             self.lab.attributedText = content
             self.tv.attributedText = content
             self.tv.contentInset = UIEdgeInsetsMake(20,0,0,0)
             if which > 0 {fallthrough}
         case 1, 4, 5:
-            let para = NSMutableParagraphStyle()
-            para.headIndent = 10
-            para.firstLineHeadIndent = 10
-            para.tailIndent = -10
-            para.lineBreakMode = .ByWordWrapping
-            para.alignment = .Center
-            para.paragraphSpacing = 15
             content.addAttribute(NSParagraphStyleAttributeName,
-                value:para, range:NSMakeRange(0,1))
+                value:lend(){
+                    (para:NSMutableParagraphStyle) in
+                    para.headIndent = 10
+                    para.firstLineHeadIndent = 10
+                    para.tailIndent = -10
+                    para.lineBreakMode = .ByWordWrapping
+                    para.alignment = .Center
+                    para.paragraphSpacing = 15
+                }, range:NSMakeRange(0,1))
             self.lab.attributedText = content
             self.tv.attributedText = content
             self.tv.contentInset = UIEdgeInsetsMake(20,0,0,0)
@@ -67,16 +76,17 @@ class ViewController : UIViewController {
             self.tv.contentInset = UIEdgeInsetsMake(20,0,0,0)
             if which > 2 {fallthrough}
         case 3, 4, 5:
-            let para2 = NSMutableParagraphStyle()
-            para2.headIndent = 10
-            para2.firstLineHeadIndent = 10
-            para2.tailIndent = -10
-            para2.lineBreakMode = .ByWordWrapping
-            para2.alignment = .Justified
-            para2.lineHeightMultiple = 1.2
-            para2.hyphenationFactor = 1.0
             content2.addAttribute(NSParagraphStyleAttributeName,
-                value:para2, range:NSMakeRange(0,1))
+                value:lend(){
+                    (para:NSMutableParagraphStyle) in
+                    para.headIndent = 10
+                    para.firstLineHeadIndent = 10
+                    para.tailIndent = -10
+                    para.lineBreakMode = .ByWordWrapping
+                    para.alignment = .Justified
+                    para.lineHeightMultiple = 1.2
+                    para.hyphenationFactor = 1.0
+                }, range:NSMakeRange(0,1))
             self.lab.attributedText = content2
             self.tv.attributedText = content2
             self.tv.contentInset = UIEdgeInsetsMake(20,0,0,0)

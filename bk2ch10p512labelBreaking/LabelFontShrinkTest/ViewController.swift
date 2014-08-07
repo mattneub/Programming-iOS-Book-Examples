@@ -2,6 +2,12 @@
 
 import UIKit
 
+func lend<T where T:NSObject> (closure:(T)->()) -> T {
+    let orig = T()
+    closure(orig)
+    return orig
+}
+
 class ViewController : UIViewController {
     
     @IBOutlet var lab1 : UILabel!
@@ -41,12 +47,13 @@ class ViewController : UIViewController {
         self.lab1.lineBreakMode = brk
         
         
-        let para = NSMutableParagraphStyle()
-        para.alignment = align
-        para.lineBreakMode = brk
         let mas = NSMutableAttributedString(string:s, attributes:[
             NSFontAttributeName:f,
-            NSParagraphStyleAttributeName:para
+            NSParagraphStyleAttributeName:lend({
+                (para : NSMutableParagraphStyle) in
+                para.alignment = align
+                para.lineBreakMode = brk
+            })
         ])
         mas.addAttribute(NSForegroundColorAttributeName,
             value:UIColor.blueColor(),

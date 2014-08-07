@@ -3,6 +3,12 @@
 import UIKit
 import ImageIO
 
+func lend<T where T:NSObject> (closure:(T)->()) -> T {
+    let orig = T()
+    closure(orig)
+    return orig
+}
+
 class ViewController : UIViewController {
     @IBOutlet var tv : UITextView!
     
@@ -10,16 +16,17 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         
         let s = "Onions\t$2.34\nPeppers\t$15.2\n"
-        let p = NSMutableParagraphStyle()
-        var tabs = [NSTextTab]()
-        let terms = NSTextTab.columnTerminatorsForLocale(NSLocale.currentLocale())
-        let tab = NSTextTab(textAlignment:.Right, location:170, options:[NSTabColumnTerminatorsAttributeName:terms])
-        tabs += [tab]
-        p.tabStops = tabs
-        p.firstLineHeadIndent = 20
         let mas = NSMutableAttributedString(string:s, attributes:[
-                NSFontAttributeName:UIFont(name:"GillSans", size:15),
-                NSParagraphStyleAttributeName:p
+            NSFontAttributeName:UIFont(name:"GillSans", size:15),
+            NSParagraphStyleAttributeName:lend() {
+                (p:NSMutableParagraphStyle) in
+                var tabs = [NSTextTab]()
+                let terms = NSTextTab.columnTerminatorsForLocale(NSLocale.currentLocale())
+                let tab = NSTextTab(textAlignment:.Right, location:170, options:[NSTabColumnTerminatorsAttributeName:terms])
+                tabs += [tab]
+                p.tabStops = tabs
+                p.firstLineHeadIndent = 20
+            }
             ])
         self.tv.attributedText = mas
         
@@ -52,14 +59,13 @@ class ViewController : UIViewController {
         let src = CGImageSourceCreateWithURL(url, nil)
         let scale = UIScreen.mainScreen().scale
         let w : CGFloat = 20 * scale
-        let d = [
+        let imref =
+        CGImageSourceCreateThumbnailAtIndex(src, 0, [
             kCGImageSourceShouldAllowFloat : kCFBooleanTrue,
             kCGImageSourceCreateThumbnailWithTransform: kCFBooleanTrue,
             kCGImageSourceCreateThumbnailFromImageAlways: kCFBooleanTrue,
             kCGImageSourceThumbnailMaxPixelSize: Int(w)
-        ]
-        let imref =
-            CGImageSourceCreateThumbnailAtIndex(src, 0, d)
+            ])
         let im = UIImage(CGImage:imref, scale:scale, orientation:.Up)
         return im
     }

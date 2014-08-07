@@ -12,6 +12,12 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
+func lend<T where T:NSObject> (closure:(T)->()) -> T {
+    let orig = T()
+    closure(orig)
+    return orig
+}
+
 class StyledText: UIView {
     
     @NSCopying var text : NSAttributedString?
@@ -29,20 +35,22 @@ class StyledText: UIView {
         let s = NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil)
         
         let desc = UIFontDescriptor(name:"Didot", size:18)
-        let att = [
-            UIFontFeatureTypeIdentifierKey:kLetterCaseType,
-            UIFontFeatureSelectorIdentifierKey:kSmallCapsSelector
-        ]
         let desc2 = desc.fontDescriptorByAddingAttributes(
-            [UIFontDescriptorFeatureSettingsAttribute:[att]]
+            [UIFontDescriptorFeatureSettingsAttribute:[[
+                UIFontFeatureTypeIdentifierKey:kLetterCaseType,
+                UIFontFeatureSelectorIdentifierKey:kSmallCapsSelector
+                ]]]
         )
         let f = UIFont(descriptor: desc2, size: 0)
         
         let d = [NSFontAttributeName:f]
         let mas = NSMutableAttributedString(string: s, attributes: d)
-        let para = NSMutableParagraphStyle()
-        para.alignment = .Center
-        mas.addAttribute(NSParagraphStyleAttributeName, value: para, range: NSMakeRange(0,mas.length))
+        mas.addAttribute(NSParagraphStyleAttributeName,
+            value: lend() {
+                (para:NSMutableParagraphStyle) in
+                para.alignment = .Center
+            },
+            range: NSMakeRange(0,mas.length))
         self.text = mas
         
         let tap = UITapGestureRecognizer(target: self, action: "tap:")

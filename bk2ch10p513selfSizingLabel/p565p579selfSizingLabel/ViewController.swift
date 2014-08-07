@@ -2,6 +2,12 @@
 
 import UIKit
 
+func lend<T where T:NSObject> (closure:(T)->()) -> T {
+    let orig = T()
+    closure(orig)
+    return orig
+}
+
 class ViewController : UIViewController {
     @IBOutlet var theLabel : UILabel!
     
@@ -11,12 +17,15 @@ class ViewController : UIViewController {
         let showTheBug = false
         switch showTheBug {
         case true:
-            let para = NSMutableParagraphStyle()
-            para.headIndent = 20;
-            para.firstLineHeadIndent = 20
-            para.tailIndent = -20
             let att = self.theLabel.attributedText.mutableCopy() as NSMutableAttributedString
-            att.addAttribute(NSParagraphStyleAttributeName, value:para, range:NSMakeRange(0,1))
+            att.addAttribute(NSParagraphStyleAttributeName,
+                value:lend({
+                    (para : NSMutableParagraphStyle) in
+                    para.headIndent = 20;
+                    para.firstLineHeadIndent = 20
+                    para.tailIndent = -20
+                }),
+                range:NSMakeRange(0,1))
             self.theLabel.attributedText = att
 
         default:break

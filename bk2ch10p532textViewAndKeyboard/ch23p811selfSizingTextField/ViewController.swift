@@ -1,6 +1,12 @@
 
 import UIKit
 
+func lend<T where T:NSObject> (closure:(T)->()) -> T {
+    let orig = T()
+    closure(orig)
+    return orig
+}
+
 class ViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var tv : UITextView!
     var keyboardShowing = false
@@ -15,10 +21,13 @@ class ViewController: UIViewController, UITextViewDelegate {
             NSFontAttributeName: UIFont(name:"GillSans", size:20)
             ])
         
-        let para = NSMutableParagraphStyle()
-        para.alignment = .Left
-        para.lineBreakMode = .ByWordWrapping
-        mas.addAttribute(NSParagraphStyleAttributeName, value:para, range:NSMakeRange(0,1))
+        mas.addAttribute(NSParagraphStyleAttributeName,
+            value:lend(){
+                (para:NSMutableParagraphStyle) in
+                para.alignment = .Left
+                para.lineBreakMode = .ByWordWrapping
+            },
+            range:NSMakeRange(0,1))
         
         self.tv.attributedText = mas
 
