@@ -9,6 +9,13 @@ func imageFromContextOfSize(size:CGSize, closure:() -> ()) -> UIImage {
     return result
 }
 
+func lend<T where T:NSObject> (closure:(T)->()) -> T {
+    let orig = T()
+    closure(orig)
+    return orig
+}
+
+
 class ViewController: UIViewController {
     
     @IBOutlet var stepper : UIStepper!
@@ -49,11 +56,10 @@ class ViewController: UIViewController {
             NSAttributedString(string:"\u{21DA}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30),
                 NSForegroundColorAttributeName: UIColor.whiteColor(),
-                NSParagraphStyleAttributeName: {
-                    let para = NSMutableParagraphStyle()
+                NSParagraphStyleAttributeName: lend() {
+                    (para : NSMutableParagraphStyle) in
                     para.alignment = .Center
-                    return para
-                    }()
+                    }
                 ]).drawInRect(CGRectMake(0,-5,45,29))
         }.imageWithRenderingMode(.AlwaysOriginal)
         self.stepper.setDecrementImage(imleft, forState:.Normal)
@@ -62,11 +68,10 @@ class ViewController: UIViewController {
             NSAttributedString(string:"\u{21DA}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30),
                 NSForegroundColorAttributeName: UIColor.blackColor(),
-                NSParagraphStyleAttributeName: {
-                    let para = NSMutableParagraphStyle()
+                NSParagraphStyleAttributeName: lend() {
+                    (para : NSMutableParagraphStyle) in
                     para.alignment = .Center
-                    return para
-                    }()
+                }
                 ]).drawInRect(CGRectMake(0,-5,45,29))
             }.imageWithRenderingMode(.AlwaysOriginal)
         self.stepper.setDecrementImage(imleftblack, forState:.Disabled)
@@ -75,11 +80,10 @@ class ViewController: UIViewController {
             NSAttributedString(string:"\u{21DA}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30),
                 NSForegroundColorAttributeName: self.stepper.tintColor,
-                NSParagraphStyleAttributeName: {
-                    let para = NSMutableParagraphStyle()
+                NSParagraphStyleAttributeName: lend() {
+                    (para : NSMutableParagraphStyle) in
                     para.alignment = .Center
-                    return para
-                    }()
+                }
                 ]).drawInRect(CGRectMake(0,-5,45,29))
             }.imageWithRenderingMode(.AlwaysOriginal)
         self.stepper.setDecrementImage(imlefttint, forState:.Highlighted)
@@ -88,11 +92,10 @@ class ViewController: UIViewController {
             NSAttributedString(string:"\u{21DB}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30),
                 NSForegroundColorAttributeName: UIColor.whiteColor(),
-                NSParagraphStyleAttributeName: {
-                    let para = NSMutableParagraphStyle()
+                NSParagraphStyleAttributeName: lend() {
+                    (para : NSMutableParagraphStyle) in
                     para.alignment = .Center
-                    return para
-                    }()
+                }
                 ]).drawInRect(CGRectMake(0,-5,45,29))
             }.imageWithRenderingMode(.AlwaysOriginal)
         self.stepper.setIncrementImage(imright, forState:.Normal)
@@ -101,11 +104,10 @@ class ViewController: UIViewController {
             NSAttributedString(string:"\u{21DB}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30),
                 NSForegroundColorAttributeName: UIColor.blackColor(),
-                NSParagraphStyleAttributeName: {
-                    let para = NSMutableParagraphStyle()
+                NSParagraphStyleAttributeName: lend() {
+                    (para : NSMutableParagraphStyle) in
                     para.alignment = .Center
-                    return para
-                    }()
+                }
                 ]).drawInRect(CGRectMake(0,-5,45,29))
             }.imageWithRenderingMode(.AlwaysOriginal)
         self.stepper.setIncrementImage(imrightblack, forState:.Disabled)
@@ -114,11 +116,10 @@ class ViewController: UIViewController {
             NSAttributedString(string:"\u{21DB}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30),
                 NSForegroundColorAttributeName: self.stepper.tintColor,
-                NSParagraphStyleAttributeName: {
-                    let para = NSMutableParagraphStyle()
+                NSParagraphStyleAttributeName: lend() {
+                    (para : NSMutableParagraphStyle) in
                     para.alignment = .Center
-                    return para
-                    }()
+                }
                 ]).drawInRect(CGRectMake(0,-5,45,29))
             }.imageWithRenderingMode(.AlwaysOriginal)
         self.stepper.setIncrementImage(imrighttint, forState:.Highlighted)
