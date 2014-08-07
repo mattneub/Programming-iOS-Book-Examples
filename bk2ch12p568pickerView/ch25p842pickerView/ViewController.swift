@@ -42,20 +42,29 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
         return 50
     }
     
-    func pickerView(pickerView: UIPickerView!, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView! {
-        var lab : UILabel
-        if (view) {
-            lab = view as UILabel
-        } else {
-            lab = UILabel()
-        }
-        lab.text = self.states[row]
-        lab.backgroundColor = UIColor.clearColor()
-        lab.sizeToFit()
-        return lab
+    // bug: no views are reused
+    // the labels are not leaking (they are deallocated in good order)...
+    // but they are not being reused either
+    
+    func pickerView(pickerView: UIPickerView!, viewForRow row: Int,
+        forComponent component: Int, reusingView view: UIView!) -> UIView! {
+            var lab : UILabel
+            if let label = view as? UILabel {
+                lab = label
+                println("reusing label")
+            } else {
+                lab = MyLabel()
+                println("making new label")
+            }
+            lab.text = self.states[row]
+            lab.backgroundColor = UIColor.clearColor()
+            lab.sizeToFit()
+            return lab
     }
-    
+}
 
-
-    
+class MyLabel : UILabel {
+    deinit {
+        println("farewell")
+    }
 }
