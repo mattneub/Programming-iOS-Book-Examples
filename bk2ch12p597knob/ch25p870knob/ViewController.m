@@ -1,7 +1,7 @@
 
 
 #import "ViewController.h"
-#import "MyKnob.h"
+#import "ch25p870knob-Swift.h"
 
 
 @interface ViewController ()

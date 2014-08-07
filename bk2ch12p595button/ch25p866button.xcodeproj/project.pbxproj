@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32A579381993EB3200221E36 /* MyShrinkingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A579371993EB3200221E36 /* MyShrinkingButton.swift */; };
+		32A5793A1993ED8300221E36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A579391993ED8300221E36 /* ViewController.swift */; };
 		C9166610181ED1D700D07DE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C916660F181ED1D700D07DE8 /* Foundation.framework */; };
 		C9166612181ED1D700D07DE8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9166611181ED1D700D07DE8 /* CoreGraphics.framework */; };
 		C9166614181ED1D700D07DE8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9166613181ED1D700D07DE8 /* UIKit.framework */; };
@@ -14,13 +16,13 @@
 		C916661C181ED1D700D07DE8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C916661B181ED1D700D07DE8 /* main.m */; };
 		C9166620181ED1D700D07DE8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C916661F181ED1D700D07DE8 /* AppDelegate.m */; };
 		C9166623181ED1D700D07DE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9166621181ED1D700D07DE8 /* Main.storyboard */; };
-		C9166626181ED1D700D07DE8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9166625181ED1D700D07DE8 /* ViewController.m */; };
 		C9166628181ED1D700D07DE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9166627181ED1D700D07DE8 /* Images.xcassets */; };
 		C9166645181ED20D00D07DE8 /* coin2.png in Resources */ = {isa = PBXBuildFile; fileRef = C9166644181ED20D00D07DE8 /* coin2.png */; };
-		C9166648181ED21A00D07DE8 /* MyShrinkingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9166647181ED21A00D07DE8 /* MyShrinkingButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32A579371993EB3200221E36 /* MyShrinkingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyShrinkingButton.swift; sourceTree = "<group>"; };
+		32A579391993ED8300221E36 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C916660C181ED1D700D07DE8 /* ch25p866button.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch25p866button.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C916660F181ED1D700D07DE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9166611181ED1D700D07DE8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -32,13 +34,9 @@
 		C916661E181ED1D700D07DE8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C916661F181ED1D700D07DE8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9166622181ED1D700D07DE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9166624181ED1D700D07DE8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C9166625181ED1D700D07DE8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9166627181ED1D700D07DE8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C916662E181ED1D700D07DE8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C9166644181ED20D00D07DE8 /* coin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin2.png; sourceTree = "<group>"; };
-		C9166646181ED21A00D07DE8 /* MyShrinkingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyShrinkingButton.h; sourceTree = "<group>"; };
-		C9166647181ED21A00D07DE8 /* MyShrinkingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyShrinkingButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,10 +87,8 @@
 				C916661E181ED1D700D07DE8 /* AppDelegate.h */,
 				C916661F181ED1D700D07DE8 /* AppDelegate.m */,
 				C9166621181ED1D700D07DE8 /* Main.storyboard */,
-				C9166624181ED1D700D07DE8 /* ViewController.h */,
-				C9166625181ED1D700D07DE8 /* ViewController.m */,
-				C9166646181ED21A00D07DE8 /* MyShrinkingButton.h */,
-				C9166647181ED21A00D07DE8 /* MyShrinkingButton.m */,
+				32A579391993ED8300221E36 /* ViewController.swift */,
+				32A579371993EB3200221E36 /* MyShrinkingButton.swift */,
 				C9166644181ED20D00D07DE8 /* coin2.png */,
 				C9166627181ED1D700D07DE8 /* Images.xcassets */,
 				C9166616181ED1D700D07DE8 /* Supporting Files */,
@@ -177,8 +173,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9166626181ED1D700D07DE8 /* ViewController.m in Sources */,
-				C9166648181ED21A00D07DE8 /* MyShrinkingButton.m in Sources */,
+				32A5793A1993ED8300221E36 /* ViewController.swift in Sources */,
+				32A579381993EB3200221E36 /* MyShrinkingButton.swift in Sources */,
 				C9166620181ED1D700D07DE8 /* AppDelegate.m in Sources */,
 				C916661C181ED1D700D07DE8 /* main.m in Sources */,
 			);
@@ -239,7 +235,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -272,7 +268,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -284,10 +280,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch25p866button/ch25p866button-Prefix.pch";
 				INFOPLIST_FILE = "ch25p866button/ch25p866button-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -298,9 +298,12 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch25p866button/ch25p866button-Prefix.pch";
 				INFOPLIST_FILE = "ch25p866button/ch25p866button-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
