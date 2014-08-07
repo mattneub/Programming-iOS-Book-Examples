@@ -27,7 +27,7 @@ class RootViewController : UITableViewController {
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as MyCell
-        if (cell.textLabel.numberOfLines != 2) { // never previously configured
+        if cell.textLabel.numberOfLines != 2 { // never previously configured
             cell.textLabel.font = UIFont(name:"Helvetica-Bold", size:16)
             cell.textLabel.lineBreakMode = .ByWordWrapping
             cell.textLabel.numberOfLines = 2

@@ -6,7 +6,7 @@ class MyFlagView : UIImageView {
     // use our hit test from chapter 5 so that user must tap actual flag drawing
     override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView! {
         let inside = self.pointInside(point, withEvent:event)
-        if (!inside) { return nil }
+        if !inside { return nil }
         
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
         let lay = self.layer

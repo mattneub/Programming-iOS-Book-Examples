@@ -91,7 +91,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             // (setting to 0.5 seems to fix it)
             // now using delay in completion handler to solve the issue
             
-            if (percent > 0.5) {
+            if percent > 0.5 {
                 self.inter.finishInteractiveTransition()
             } else {
                 self.inter.cancelInteractiveTransition()

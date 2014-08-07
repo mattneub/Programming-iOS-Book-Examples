@@ -40,7 +40,7 @@ class MyView : UIView {
     
     override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView! {
         let inside = self.pointInside(point, withEvent:event)
-        if (!inside) { return nil }
+        if !inside { return nil }
         
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
         let subs = self.layer.sublayers

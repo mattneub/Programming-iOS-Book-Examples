@@ -11,7 +11,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
     }
     
     override func willMoveToAnimator(anim: UIDynamicAnimator!) {
-        if (!anim) { return }
+        if anim == nil { return }
         
         let sup = self.v.superview!
         

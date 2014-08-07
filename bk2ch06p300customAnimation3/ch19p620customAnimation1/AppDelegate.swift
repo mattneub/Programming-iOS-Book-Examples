@@ -109,7 +109,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             let v1 = tc.viewForKey(UITransitionContextFromViewKey)
             let v2 = tc.viewForKey(UITransitionContextToViewKey)
             
-            if (percent > 0.5) {
+            if percent > 0.5 {
                 UIView.animateWithDuration(0.2, animations:{
                     v1.frame = self.r1end
                     v2.frame = r2end

@@ -150,7 +150,7 @@ extension ViewController : UIDynamicAnimatorDelegate, UICollisionBehaviorDelegat
                 if let bounce = b as? UIDynamicItemBehavior {
                     let v = bounce.angularVelocityForItem(self.iv)
                     println(v)
-                    if (v <= 0.1) {
+                    if v <= 0.1 {
                         println("adding angular velocity")
                         bounce.addAngularVelocity(30, forItem:self.iv)
                     }

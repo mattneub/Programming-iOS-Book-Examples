@@ -48,10 +48,10 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
         var proposedX = self.arrowOffset
         let limit : CGFloat = 22.0
         let maxX = rect.size.width/2.0 - limit
-        if (proposedX > maxX) {
+        if proposedX > maxX {
             proposedX = maxX
         }
-        if (proposedX < limit) {
+        if proposedX < limit {
             proposedX = limit
         }
         CGContextTranslateCTM(con, rect.size.width/2.0 + proposedX - ARBASE/2.0, 0)

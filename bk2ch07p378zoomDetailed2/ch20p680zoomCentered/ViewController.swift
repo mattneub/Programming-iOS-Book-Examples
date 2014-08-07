@@ -62,12 +62,12 @@ class MyScrollView : UIScrollView {
         let vw = v.frame.size.width
         let vh = v.frame.size.height
         var f = v.frame
-        if (vw < svw) {
+        if vw < svw {
             f.origin.x = (svw - vw) / 2.0
         } else {
             f.origin.x = 0
         }
-        if (vh < svh) {
+        if vh < svh {
             f.origin.y = (svh - vh) / 2.0
         } else {
             f.origin.y = 0

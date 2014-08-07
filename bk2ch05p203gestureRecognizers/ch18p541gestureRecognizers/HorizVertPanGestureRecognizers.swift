@@ -16,7 +16,7 @@ class HorizPanGestureRecognizer : UIPanGestureRecognizer {
             let loc = (touches.anyObject() as UITouch).locationInView(self.view.superview)
             let deltaX = fabs(loc.x - self.origLoc.x)
             let deltaY = fabs(loc.y - self.origLoc.y)
-            if (deltaY >= deltaX) {
+            if deltaY >= deltaX {
                 self.state = .Failed
             }
         }
@@ -44,7 +44,7 @@ class VertPanGestureRecognizer : UIPanGestureRecognizer {
             let loc = (touches.anyObject() as UITouch).locationInView(self.view.superview)
             let deltaX = fabs(loc.x - self.origLoc.x)
             let deltaY = fabs(loc.y - self.origLoc.y)
-            if (deltaX >= deltaY) {
+            if deltaX >= deltaY {
                 self.state = .Failed
             }
         }
