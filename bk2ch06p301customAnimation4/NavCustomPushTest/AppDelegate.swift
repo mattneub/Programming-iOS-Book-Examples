@@ -5,7 +5,7 @@ import UIKit
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]!) -> Bool {
+    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
     
         (self.window!.rootViewController as UINavigationController).delegate = self
         return true

@@ -7,7 +7,7 @@ import UIKit
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    func application(application: UIApplication!, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]!) -> Bool {
+    func application(application: UIApplication!, willFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         
         self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
         

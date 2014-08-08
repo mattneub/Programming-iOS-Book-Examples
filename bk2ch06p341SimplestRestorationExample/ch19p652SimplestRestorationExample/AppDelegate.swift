@@ -12,7 +12,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     we rely on the storyboard to do all the restoration work for us.
 */
     
-    func application(application: UIApplication!, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]!) -> Bool {
+    func application(application: UIApplication!, willFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         return true
     }
     

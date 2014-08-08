@@ -12,7 +12,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
     var r1end = CGRectZero
     var r2start = CGRectZero
     
-    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]!) -> Bool {
+    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         
         let tbc = self.window!.rootViewController as UITabBarController
         tbc.delegate = self

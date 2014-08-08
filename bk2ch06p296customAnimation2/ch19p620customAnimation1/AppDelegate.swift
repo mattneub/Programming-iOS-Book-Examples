@@ -19,7 +19,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
     var inter : UIPercentDrivenInteractiveTransition!
     var interacting = false
     
-    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]!) -> Bool {
+    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         
         let tbc = self.window!.rootViewController as UITabBarController
         tbc.delegate = self
