@@ -49,7 +49,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     /*
-    Also new in iOS 8, your app automatically gets a preference pane with a Notifications setting
+    Also new in iOS 8, in addition to its place in the Notifications Center setttings pane,
+    your app automatically gets a preference pane of its own with a Notifications setting
     so user can visit this at any time to change permitted notifications
     ... I did that but it did not cause application:didRegisterUserNotificationSettings to fire
 */
