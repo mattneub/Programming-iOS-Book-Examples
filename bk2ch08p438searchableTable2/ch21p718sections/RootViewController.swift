@@ -33,7 +33,12 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         self.tableView.sectionIndexColor = UIColor.whiteColor()
         self.tableView.sectionIndexBackgroundColor = UIColor.redColor()
         // self.tableView.sectionIndexTrackingBackgroundColor = UIColor.blueColor()
-        self.tableView.backgroundColor = UIColor.yellowColor()
+        // self.tableView.backgroundColor = UIColor.yellowColor()
+        self.tableView.backgroundView = {
+            let v = UIView()
+            v.backgroundColor = UIColor.yellowColor()
+            return v
+            }()
         
         let src = SearchResultsController() // we will configure later
         let searcher = UISearchController(searchResultsController: src)
@@ -44,9 +49,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         b.autocapitalizationType = .None
         b.sizeToFit()
         b.scopeButtonTitles = ["Starts", "Contains"] // won't show in the table
-        let v = UIView(frame:b.bounds)
-        v.addSubview(b)
-        self.tableView.tableHeaderView = v
+        self.tableView.tableHeaderView = b
         self.tableView.reloadData()
         self.tableView.scrollToRowAtIndexPath(
             NSIndexPath(forRow: 0, inSection: 0),

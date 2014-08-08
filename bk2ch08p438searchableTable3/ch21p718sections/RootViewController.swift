@@ -36,7 +36,12 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         self.tableView.sectionIndexColor = UIColor.whiteColor()
         self.tableView.sectionIndexBackgroundColor = UIColor.redColor()
         // self.tableView.sectionIndexTrackingBackgroundColor = UIColor.blueColor()
-        self.tableView.backgroundColor = UIColor.yellowColor()
+        // self.tableView.backgroundColor = UIColor.yellowColor()
+        self.tableView.backgroundView = { // this will fix it
+            let v = UIView()
+            v.backgroundColor = UIColor.yellowColor()
+            return v
+            }()
         
         // in this version, we take the total opposite approach:
         // we don't present any extra view at all!
@@ -56,8 +61,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         let b = searcher.searchBar
         b.sizeToFit() // crucial, trust me on this one
         b.autocapitalizationType = .None
-        self.tableView.tableHeaderView = b // shows the "false color" bug behind the top of the table...
-        // ... but on the other hand the search bar is sized correctly for the index
+        self.tableView.tableHeaderView = b
         self.tableView.reloadData()
         self.tableView.scrollToRowAtIndexPath(
             NSIndexPath(forRow: 0, inSection: 0),

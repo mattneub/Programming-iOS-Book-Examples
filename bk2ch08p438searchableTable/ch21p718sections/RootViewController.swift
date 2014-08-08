@@ -33,7 +33,12 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         self.tableView.sectionIndexColor = UIColor.whiteColor()
         self.tableView.sectionIndexBackgroundColor = UIColor.redColor()
         // self.tableView.sectionIndexTrackingBackgroundColor = UIColor.blueColor()
-        self.tableView.backgroundColor = UIColor.yellowColor()
+        self.tableView.backgroundColor = UIColor.yellowColor() // but the search bar covers that
+        self.tableView.backgroundView = { // this will fix it
+            let v = UIView()
+            v.backgroundColor = UIColor.yellowColor()
+            return v
+        }()
         
         // most rudimentary possible search interface
         // instantiate a view controller that will present the search results
@@ -51,12 +56,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // WARNING: do NOT call showsScopeBar! it messes things up!
         // (buttons will show during search if there are titles)
         b.autocapitalizationType = .None
-        // new in seed 5; to prevent false color behind table view,
-        // I had to put search bar in a view
-        // unfortunately it is then partly hidden behind the index
-        let v = UIView(frame:b.bounds)
-        v.addSubview(b)
-        self.tableView.tableHeaderView = v
+        self.tableView.tableHeaderView = b
         self.tableView.reloadData()
         self.tableView.scrollToRowAtIndexPath(
             NSIndexPath(forRow: 0, inSection: 0),
