@@ -30,7 +30,6 @@ class ViewController : UIViewController {
             let iv = UIImageView(image:empty)
             iv.frame.origin = CGPointMake(100,100)
             self.view.addSubview(iv)
-            // iv.image = [UIImage imageNamed:@"smiley"];
             
             iv.animationImages = arr
             iv.animationDuration = 2
