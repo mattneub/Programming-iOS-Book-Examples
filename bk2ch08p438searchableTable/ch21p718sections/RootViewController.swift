@@ -46,6 +46,10 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // put the search controller's search bar into the interface
         let b = searcher.searchBar
         b.sizeToFit() // crucial, trust me on this one
+        // b.scopeButtonTitles = ["Hey", "Ho"] // shows during search only; uncomment to see
+        // (not used in this example; just showing the interface)
+        // WARNING: do NOT call showsScopeBar! it messes things up!
+        // (buttons will show during search if there are titles)
         b.autocapitalizationType = .None
         // new in seed 5; to prevent false color behind table view,
         // I had to put search bar in a view

@@ -43,12 +43,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         let b = searcher.searchBar
         b.autocapitalizationType = .None
         b.sizeToFit()
-        // rolling with the seed 5 punches...
-        // I still can't get the scope bar to show both in the table and in the search interface
-        // but by adding the scope bar, hidden, in the table, and using a container view...
-        // ...the interface keeps working after I show the scope bar in the search interface
-        b.scopeButtonTitles = ["Starts", "Contains"]
-        b.showsScopeBar = true
+        b.scopeButtonTitles = ["Starts", "Contains"] // won't show in the table
         let v = UIView(frame:b.bounds)
         v.addSubview(b)
         self.tableView.tableHeaderView = v
@@ -174,7 +169,6 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
             let sb = sc.searchBar
             sb.removeFromSuperview()
             // hold my beer and watch _this_!
-            sb.scopeButtonTitles = ["Starts", "Contains"]
             sb.showsScopeBar = true
             sb.sizeToFit()
             v2.addSubview(sb)
