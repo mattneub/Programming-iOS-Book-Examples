@@ -7,31 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		327481D219944A540043DC9D /* MyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327481D119944A540043DC9D /* MyDataSource.swift */; };
+		327481D419944C820043DC9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327481D319944C820043DC9D /* AppDelegate.swift */; };
 		C964A4A318206D3B00E4D23D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C964A4A218206D3B00E4D23D /* Foundation.framework */; };
 		C964A4A518206D3B00E4D23D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C964A4A418206D3B00E4D23D /* CoreGraphics.framework */; };
 		C964A4A718206D3B00E4D23D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C964A4A618206D3B00E4D23D /* UIKit.framework */; };
-		C964A4AD18206D3B00E4D23D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C964A4AB18206D3B00E4D23D /* InfoPlist.strings */; };
-		C964A4AF18206D3B00E4D23D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C964A4AE18206D3B00E4D23D /* main.m */; };
-		C964A4B318206D3B00E4D23D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C964A4B218206D3B00E4D23D /* AppDelegate.m */; };
 		C964A4BE18206D3B00E4D23D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C964A4BD18206D3B00E4D23D /* Images.xcassets */; };
-		C964A4DC1820708D00E4D23D /* MyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C964A4DB1820708D00E4D23D /* MyDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		327481D019944A540043DC9D /* ch25p882tabBarMore-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch25p882tabBarMore-Bridging-Header.h"; sourceTree = "<group>"; };
+		327481D119944A540043DC9D /* MyDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDataSource.swift; sourceTree = "<group>"; };
+		327481D319944C820043DC9D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C964A49F18206D3B00E4D23D /* ch25p882tabBarMore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch25p882tabBarMore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C964A4A218206D3B00E4D23D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C964A4A418206D3B00E4D23D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C964A4A618206D3B00E4D23D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C964A4AA18206D3B00E4D23D /* ch25p882tabBarMore-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch25p882tabBarMore-Info.plist"; sourceTree = "<group>"; };
-		C964A4AC18206D3B00E4D23D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C964A4AE18206D3B00E4D23D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C964A4B018206D3B00E4D23D /* ch25p882tabBarMore-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch25p882tabBarMore-Prefix.pch"; sourceTree = "<group>"; };
-		C964A4B118206D3B00E4D23D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C964A4B218206D3B00E4D23D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C964A4BD18206D3B00E4D23D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C964A4C418206D3B00E4D23D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C964A4DA1820708D00E4D23D /* MyDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataSource.h; sourceTree = "<group>"; };
-		C964A4DB1820708D00E4D23D /* MyDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +73,11 @@
 		C964A4A818206D3B00E4D23D /* ch25p882tabBarMore */ = {
 			isa = PBXGroup;
 			children = (
-				C964A4B118206D3B00E4D23D /* AppDelegate.h */,
-				C964A4B218206D3B00E4D23D /* AppDelegate.m */,
-				C964A4DA1820708D00E4D23D /* MyDataSource.h */,
-				C964A4DB1820708D00E4D23D /* MyDataSource.m */,
+				327481D319944C820043DC9D /* AppDelegate.swift */,
+				327481D119944A540043DC9D /* MyDataSource.swift */,
 				C964A4BD18206D3B00E4D23D /* Images.xcassets */,
 				C964A4A918206D3B00E4D23D /* Supporting Files */,
+				327481D019944A540043DC9D /* ch25p882tabBarMore-Bridging-Header.h */,
 			);
 			path = ch25p882tabBarMore;
 			sourceTree = "<group>";
@@ -93,9 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				C964A4AA18206D3B00E4D23D /* ch25p882tabBarMore-Info.plist */,
-				C964A4AB18206D3B00E4D23D /* InfoPlist.strings */,
-				C964A4AE18206D3B00E4D23D /* main.m */,
-				C964A4B018206D3B00E4D23D /* ch25p882tabBarMore-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -153,7 +143,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C964A4BE18206D3B00E4D23D /* Images.xcassets in Resources */,
-				C964A4AD18206D3B00E4D23D /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,24 +153,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C964A4B318206D3B00E4D23D /* AppDelegate.m in Sources */,
-				C964A4AF18206D3B00E4D23D /* main.m in Sources */,
-				C964A4DC1820708D00E4D23D /* MyDataSource.m in Sources */,
+				327481D419944C820043DC9D /* AppDelegate.swift in Sources */,
+				327481D219944A540043DC9D /* MyDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		C964A4AB18206D3B00E4D23D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C964A4AC18206D3B00E4D23D /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C964A4D218206D3B00E4D23D /* Debug */ = {
@@ -217,7 +194,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -250,7 +227,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -262,10 +239,15 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch25p882tabBarMore/ch25p882tabBarMore-Prefix.pch";
 				INFOPLIST_FILE = "ch25p882tabBarMore/ch25p882tabBarMore-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch25p882tabBarMore/ch25p882tabBarMore-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -276,10 +258,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch25p882tabBarMore/ch25p882tabBarMore-Prefix.pch";
 				INFOPLIST_FILE = "ch25p882tabBarMore/ch25p882tabBarMore-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch25p882tabBarMore/ch25p882tabBarMore-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
