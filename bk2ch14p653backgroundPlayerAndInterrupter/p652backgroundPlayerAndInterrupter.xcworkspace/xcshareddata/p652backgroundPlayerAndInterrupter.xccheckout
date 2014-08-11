@@ -12,20 +12,24 @@
 	<dict>
 		<key>98C59FBA-30AA-4047-92C0-11AD2813FDAD</key>
 		<string>ssh://github.com/mattneub/Programming-iOS-Book-Examples.git</string>
+		<key>EF4576F41AF83E76CF2914F565135B7E126CDDB2</key>
+		<string>github.com:mattneub/Programming-iOS-Book-Examples.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>bk2ch14p653backgroundPlayerAndInterrupter/p652backgroundPlayerAndInterrupter.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>98C59FBA-30AA-4047-92C0-11AD2813FDAD</key>
+		<string>../../../online examples</string>
+		<key>EF4576F41AF83E76CF2914F565135B7E126CDDB2</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/mattneub/Programming-iOS-Book-Examples.git</string>
+	<string>github.com:mattneub/Programming-iOS-Book-Examples.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>98C59FBA-30AA-4047-92C0-11AD2813FDAD</string>
+	<string>EF4576F41AF83E76CF2914F565135B7E126CDDB2</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>98C59FBA-30AA-4047-92C0-11AD2813FDAD</string>
 			<key>IDESourceControlWCCName</key>
 			<string>online examples</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EF4576F41AF83E76CF2914F565135B7E126CDDB2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>online%20examples</string>
 		</dict>
 	</array>
 </dict>

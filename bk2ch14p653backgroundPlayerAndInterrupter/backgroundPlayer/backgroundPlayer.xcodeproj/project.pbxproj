@@ -7,34 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3280FA671997EDD500EA8B8B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA661997EDD500EA8B8B /* Player.swift */; };
+		3280FA691998095100EA8B8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA681998095100EA8B8B /* ViewController.swift */; };
+		3280FA6B19980B5700EA8B8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA6A19980B5700EA8B8B /* AppDelegate.swift */; };
 		A4196FD214D366D900D827A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FD114D366D900D827A7 /* UIKit.framework */; };
 		A4196FD414D366D900D827A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FD314D366D900D827A7 /* Foundation.framework */; };
 		A4196FD614D366D900D827A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FD514D366D900D827A7 /* CoreGraphics.framework */; };
-		A4196FDC14D366D900D827A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4196FDA14D366D900D827A7 /* InfoPlist.strings */; };
-		A4196FDE14D366D900D827A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4196FDD14D366D900D827A7 /* main.m */; };
-		A4196FE214D366D900D827A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4196FE114D366D900D827A7 /* AppDelegate.m */; };
-		A4196FE514D366D900D827A7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4196FE414D366D900D827A7 /* ViewController.m */; };
 		A4196FFB14D36B9700D827A7 /* aboutTiagol.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */; };
-		A4196FFE14D36EC800D827A7 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = A4196FFD14D36EC800D827A7 /* Player.m */; };
 		C9A8A9131823E65600E9D48D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A8A9121823E65600E9D48D /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3280FA651997EDD500EA8B8B /* backgroundPlayer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "backgroundPlayer-Bridging-Header.h"; sourceTree = "<group>"; };
+		3280FA661997EDD500EA8B8B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		3280FA681998095100EA8B8B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3280FA6A19980B5700EA8B8B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4196FCD14D366D900D827A7 /* backgroundPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = backgroundPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4196FD114D366D900D827A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A4196FD314D366D900D827A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A4196FD514D366D900D827A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A4196FD914D366D900D827A7 /* backgroundPlayer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "backgroundPlayer-Info.plist"; sourceTree = "<group>"; };
-		A4196FDB14D366D900D827A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A4196FDD14D366D900D827A7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A4196FDF14D366D900D827A7 /* backgroundPlayer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "backgroundPlayer-Prefix.pch"; sourceTree = "<group>"; };
-		A4196FE014D366D900D827A7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		A4196FE114D366D900D827A7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A4196FE314D366D900D827A7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A4196FE414D366D900D827A7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = aboutTiagol.m4a; sourceTree = "<group>"; };
-		A4196FFC14D36EC800D827A7 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = ../../interrupter/interrupter/Player.h; sourceTree = "<group>"; };
-		A4196FFD14D36EC800D827A7 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = ../../interrupter/interrupter/Player.m; sourceTree = "<group>"; };
 		C9A8A9121823E65600E9D48D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,15 +75,13 @@
 		A4196FD714D366D900D827A7 /* backgroundPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				A4196FE014D366D900D827A7 /* AppDelegate.h */,
-				A4196FE114D366D900D827A7 /* AppDelegate.m */,
-				A4196FE314D366D900D827A7 /* ViewController.h */,
-				A4196FE414D366D900D827A7 /* ViewController.m */,
+				3280FA6A19980B5700EA8B8B /* AppDelegate.swift */,
+				3280FA681998095100EA8B8B /* ViewController.swift */,
 				C9A8A9121823E65600E9D48D /* Main.storyboard */,
-				A4196FFC14D36EC800D827A7 /* Player.h */,
-				A4196FFD14D36EC800D827A7 /* Player.m */,
+				3280FA661997EDD500EA8B8B /* Player.swift */,
 				A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */,
 				A4196FD814D366D900D827A7 /* Supporting Files */,
+				3280FA651997EDD500EA8B8B /* backgroundPlayer-Bridging-Header.h */,
 			);
 			path = backgroundPlayer;
 			sourceTree = "<group>";
@@ -99,9 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				A4196FD914D366D900D827A7 /* backgroundPlayer-Info.plist */,
-				A4196FDA14D366D900D827A7 /* InfoPlist.strings */,
-				A4196FDD14D366D900D827A7 /* main.m */,
-				A4196FDF14D366D900D827A7 /* backgroundPlayer-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -156,7 +144,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4196FDC14D366D900D827A7 /* InfoPlist.strings in Resources */,
 				A4196FFB14D36B9700D827A7 /* aboutTiagol.m4a in Resources */,
 				C9A8A9131823E65600E9D48D /* Main.storyboard in Resources */,
 			);
@@ -169,25 +156,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4196FDE14D366D900D827A7 /* main.m in Sources */,
-				A4196FE214D366D900D827A7 /* AppDelegate.m in Sources */,
-				A4196FE514D366D900D827A7 /* ViewController.m in Sources */,
-				A4196FFE14D36EC800D827A7 /* Player.m in Sources */,
+				3280FA691998095100EA8B8B /* ViewController.swift in Sources */,
+				3280FA6B19980B5700EA8B8B /* AppDelegate.swift in Sources */,
+				3280FA671997EDD500EA8B8B /* Player.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		A4196FDA14D366D900D827A7 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A4196FDB14D366D900D827A7 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A4196FE914D366D900D827A7 /* Debug */ = {
@@ -211,7 +186,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -230,7 +205,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -241,11 +216,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "backgroundPlayer/backgroundPlayer-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "backgroundPlayer/backgroundPlayer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "backgroundPlayer/backgroundPlayer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -254,11 +233,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "backgroundPlayer/backgroundPlayer-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "backgroundPlayer/backgroundPlayer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "backgroundPlayer/backgroundPlayer-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
