@@ -20,10 +20,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         
+        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, withOptions: nil, error: nil)
+        
         let types : UIUserNotificationType = .Alert
         let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
         application.registerUserNotificationSettings(settings)
-
     
         return true
     }
@@ -66,13 +67,18 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         println("bp in \(__FUNCTION__)")
     }
     
+    // we are a player app, we activate playback category only when we actually start playing
+    // the rest of the time we use ambient just so we have an active category
     func applicationDidBecomeActive(application: UIApplication) {
         println("bp in \(__FUNCTION__)")
-        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: nil, error: nil)
         AVAudioSession.sharedInstance().setActive(true, withOptions: nil, error: nil)
+        // new iOS 8 feature
+        let mute = AVAudioSession.sharedInstance().secondaryAudioShouldBeSilencedHint
+        let s = mute ? "to" : "not"
+        println("I need \(s) mute my secondary audio at this point")
     }
     
-    // kill app from app switcher while playing in background
+    // trying killing app from app switcher while playing in background;
     // we receive this!
     
     func applicationWillTerminate(application: UIApplication) {

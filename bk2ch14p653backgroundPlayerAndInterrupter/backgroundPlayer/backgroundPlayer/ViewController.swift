@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     }
 
     override func canBecomeFirstResponder() -> Bool {
-        return true
+        return true // but we get the same effect if we return false; is that a bug?
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -33,16 +33,20 @@ class ViewController: UIViewController {
     
     override func remoteControlReceivedWithEvent(event: UIEvent!) {
         let rc = event.subtype
-        let p = self.player.player
-        println("bp received remote control \(rc.toRaw())") // 101 = pause, 100 = play
-        switch rc {
-        case .RemoteControlTogglePlayPause:
-            if p.playing { p.pause() } else { p.play() }
-        case .RemoteControlPlay:
-            p.play()
-        case .RemoteControlPause:
-            p.pause()
-        default:break
+        println("bp received remote control \(rc.toRaw())")
+        // 101 = pause, 100 = play (remote control interface on control center)
+        // 103 = playpause (remote control button on earbuds)
+
+        if let p = self.player.player {
+            switch rc {
+            case .RemoteControlTogglePlayPause:
+                if p.playing { p.pause() } else { p.play() }
+            case .RemoteControlPlay:
+                p.play()
+            case .RemoteControlPause:
+                p.pause()
+            default:break
+            }
         }
         
     }

@@ -8,6 +8,8 @@ import AVFoundation
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
+    // standard behavior: category is ambient, activate on app activate and after interruption ends
+    
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, withOptions: nil, error: nil)
