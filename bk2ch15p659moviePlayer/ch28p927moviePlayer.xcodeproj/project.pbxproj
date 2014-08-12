@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		329BF1C0199A8FA6003E0923 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329BF1BF199A8FA6003E0923 /* ViewController.swift */; };
+		329BF1C2199AA376003E0923 /* MyMoviePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329BF1C1199AA376003E0923 /* MyMoviePlayerViewController.swift */; };
 		C992BCD918245D6600A08358 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C992BCD818245D6600A08358 /* Foundation.framework */; };
 		C992BCDB18245D6600A08358 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C992BCDA18245D6600A08358 /* CoreGraphics.framework */; };
 		C992BCDD18245D6600A08358 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C992BCDC18245D6600A08358 /* UIKit.framework */; };
@@ -14,14 +16,15 @@
 		C992BCE518245D6600A08358 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C992BCE418245D6600A08358 /* main.m */; };
 		C992BCE918245D6600A08358 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C992BCE818245D6600A08358 /* AppDelegate.m */; };
 		C992BCEC18245D6600A08358 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C992BCEA18245D6600A08358 /* Main.storyboard */; };
-		C992BCEF18245D6600A08358 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C992BCEE18245D6600A08358 /* ViewController.m */; };
 		C992BCF118245D6600A08358 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C992BCF018245D6600A08358 /* Images.xcassets */; };
 		C992BD0E18245DA700A08358 /* ElMirage.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C992BD0D18245DA700A08358 /* ElMirage.mp4 */; };
 		C992BD1018245DAE00A08358 /* wilhelm.aiff in Resources */ = {isa = PBXBuildFile; fileRef = C992BD0F18245DAE00A08358 /* wilhelm.aiff */; };
-		C992BD131824712D00A08358 /* MyMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C992BD121824712D00A08358 /* MyMoviePlayerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		329BF1BE199A8FA6003E0923 /* ch28p927moviePlayer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch28p927moviePlayer-Bridging-Header.h"; sourceTree = "<group>"; };
+		329BF1BF199A8FA6003E0923 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		329BF1C1199AA376003E0923 /* MyMoviePlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMoviePlayerViewController.swift; sourceTree = "<group>"; };
 		C992BCD518245D6600A08358 /* ch28p927moviePlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch28p927moviePlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C992BCD818245D6600A08358 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C992BCDA18245D6600A08358 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -33,14 +36,10 @@
 		C992BCE718245D6600A08358 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C992BCE818245D6600A08358 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C992BCEB18245D6600A08358 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C992BCED18245D6600A08358 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C992BCEE18245D6600A08358 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C992BCF018245D6600A08358 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C992BCF718245D6700A08358 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C992BD0D18245DA700A08358 /* ElMirage.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ElMirage.mp4; sourceTree = "<group>"; };
 		C992BD0F18245DAE00A08358 /* wilhelm.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = wilhelm.aiff; sourceTree = "<group>"; };
-		C992BD111824712D00A08358 /* MyMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMoviePlayerViewController.h; sourceTree = "<group>"; };
-		C992BD121824712D00A08358 /* MyMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMoviePlayerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,14 +90,13 @@
 				C992BCE718245D6600A08358 /* AppDelegate.h */,
 				C992BCE818245D6600A08358 /* AppDelegate.m */,
 				C992BCEA18245D6600A08358 /* Main.storyboard */,
-				C992BCED18245D6600A08358 /* ViewController.h */,
-				C992BCEE18245D6600A08358 /* ViewController.m */,
-				C992BD111824712D00A08358 /* MyMoviePlayerViewController.h */,
-				C992BD121824712D00A08358 /* MyMoviePlayerViewController.m */,
+				329BF1BF199A8FA6003E0923 /* ViewController.swift */,
+				329BF1C1199AA376003E0923 /* MyMoviePlayerViewController.swift */,
 				C992BD0D18245DA700A08358 /* ElMirage.mp4 */,
 				C992BD0F18245DAE00A08358 /* wilhelm.aiff */,
 				C992BCF018245D6600A08358 /* Images.xcassets */,
 				C992BCDF18245D6600A08358 /* Supporting Files */,
+				329BF1BE199A8FA6003E0923 /* ch28p927moviePlayer-Bridging-Header.h */,
 			);
 			path = ch28p927moviePlayer;
 			sourceTree = "<group>";
@@ -181,9 +179,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C992BCEF18245D6600A08358 /* ViewController.m in Sources */,
+				329BF1C2199AA376003E0923 /* MyMoviePlayerViewController.swift in Sources */,
+				329BF1C0199A8FA6003E0923 /* ViewController.swift in Sources */,
 				C992BCE918245D6600A08358 /* AppDelegate.m in Sources */,
-				C992BD131824712D00A08358 /* MyMoviePlayerViewController.m in Sources */,
 				C992BCE518245D6600A08358 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,7 +241,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -276,7 +274,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -288,11 +286,15 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch28p927moviePlayer/ch28p927moviePlayer-Prefix.pch";
 				INFOPLIST_FILE = "ch28p927moviePlayer/ch28p927moviePlayer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch28p927moviePlayer/ch28p927moviePlayer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -304,11 +306,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch28p927moviePlayer/ch28p927moviePlayer-Prefix.pch";
 				INFOPLIST_FILE = "ch28p927moviePlayer/ch28p927moviePlayer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch28p927moviePlayer/ch28p927moviePlayer-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
