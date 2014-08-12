@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		32316DDA198C2D3E00DE5423 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32316DD9198C2D3E00DE5423 /* ViewController.swift */; };
+		32F09C19199A5EAC00806131 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F09C18199A5EAC00806131 /* ActionViewController.swift */; };
+		32F09C1B199A5EAC00806131 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F09C1A199A5EAC00806131 /* MainInterface.storyboard */; };
+		32F09C1E199A5EAC00806131 /* Expand2.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 32F09C14199A5EAC00806131 /* Expand2.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		32F09C25199A5F1800806131 /* abbreviations.txt in Resources */ = {isa = PBXBuildFile; fileRef = 32F09C24199A5F1800806131 /* abbreviations.txt */; };
 		32F34C7F199927EB00EED43C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F34C7E199927EB00EED43C /* AppDelegate.swift */; };
 		32F34C8919992BE700EED43C /* ActionRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F34C8819992BE700EED43C /* ActionRequestHandler.swift */; };
 		32F34C8E19992BE700EED43C /* Expand.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 32F34C8419992BE700EED43C /* Expand.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -20,6 +24,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		32F09C1C199A5EAC00806131 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9F3DE1F1812D0DF001483A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32F09C13199A5EAC00806131;
+			remoteInfo = Expand2;
+		};
+		32F09C1F199A5EAC00806131 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9F3DE1F1812D0DF001483A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32F09C13199A5EAC00806131;
+			remoteInfo = Expand2;
+		};
 		32F34C8C19992BE700EED43C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C9F3DE1F1812D0DF001483A1 /* Project object */;
@@ -44,6 +62,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				32F34C8E19992BE700EED43C /* Expand.appex in Embed App Extensions */,
+				32F09C1E199A5EAC00806131 /* Expand2.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,6 +71,11 @@
 
 /* Begin PBXFileReference section */
 		32316DD9198C2D3E00DE5423 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32F09C14199A5EAC00806131 /* Expand2.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Expand2.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		32F09C17199A5EAC00806131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32F09C18199A5EAC00806131 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		32F09C1A199A5EAC00806131 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		32F09C24199A5F1800806131 /* abbreviations.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = abbreviations.txt; sourceTree = "<group>"; };
 		32F34C7E199927EB00EED43C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32F34C8419992BE700EED43C /* Expand.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Expand.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		32F34C8719992BE700EED43C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +92,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		32F09C11199A5EAC00806131 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32F34C8119992BE700EED43C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -88,6 +119,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32F09C15199A5EAC00806131 /* Expand2 */ = {
+			isa = PBXGroup;
+			children = (
+				32F09C18199A5EAC00806131 /* ActionViewController.swift */,
+				32F09C24199A5F1800806131 /* abbreviations.txt */,
+				32F09C1A199A5EAC00806131 /* MainInterface.storyboard */,
+				32F09C16199A5EAC00806131 /* Supporting Files */,
+			);
+			path = Expand2;
+			sourceTree = "<group>";
+		};
+		32F09C16199A5EAC00806131 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				32F09C17199A5EAC00806131 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		32F34C8519992BE700EED43C /* Expand */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +161,7 @@
 			children = (
 				C9F3DE301812D0DF001483A1 /* ch23p810textFieldDelegate */,
 				32F34C8519992BE700EED43C /* Expand */,
+				32F09C15199A5EAC00806131 /* Expand2 */,
 				C9F3DE291812D0DF001483A1 /* Frameworks */,
 				C9F3DE281812D0DF001483A1 /* Products */,
 			);
@@ -121,6 +172,7 @@
 			children = (
 				C9F3DE271812D0DF001483A1 /* bk2ch13p636actionExtension.app */,
 				32F34C8419992BE700EED43C /* Expand.appex */,
+				32F09C14199A5EAC00806131 /* Expand2.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,6 +211,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		32F09C13199A5EAC00806131 /* Expand2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32F09C23199A5EAC00806131 /* Build configuration list for PBXNativeTarget "Expand2" */;
+			buildPhases = (
+				32F09C10199A5EAC00806131 /* Sources */,
+				32F09C11199A5EAC00806131 /* Frameworks */,
+				32F09C12199A5EAC00806131 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Expand2;
+			productName = Expand2;
+			productReference = 32F09C14199A5EAC00806131 /* Expand2.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		32F34C8319992BE700EED43C /* Expand */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32F34C9119992BE700EED43C /* Build configuration list for PBXNativeTarget "Expand" */;
@@ -190,6 +259,8 @@
 			dependencies = (
 				32F34C8D19992BE700EED43C /* PBXTargetDependency */,
 				32F34C9019992BE700EED43C /* PBXTargetDependency */,
+				32F09C1D199A5EAC00806131 /* PBXTargetDependency */,
+				32F09C20199A5EAC00806131 /* PBXTargetDependency */,
 			);
 			name = bk2ch13p636actionExtension;
 			productName = ch23p810textFieldDelegate;
@@ -205,6 +276,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
+					32F09C13199A5EAC00806131 = {
+						CreatedOnToolsVersion = 6.0;
+					};
 					32F34C8319992BE700EED43C = {
 						CreatedOnToolsVersion = 6.0;
 					};
@@ -225,11 +299,21 @@
 			targets = (
 				C9F3DE261812D0DF001483A1 /* bk2ch13p636actionExtension */,
 				32F34C8319992BE700EED43C /* Expand */,
+				32F09C13199A5EAC00806131 /* Expand2 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		32F09C12199A5EAC00806131 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32F09C25199A5F1800806131 /* abbreviations.txt in Resources */,
+				32F09C1B199A5EAC00806131 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32F34C8219992BE700EED43C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,6 +334,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		32F09C10199A5EAC00806131 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32F09C19199A5EAC00806131 /* ActionViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32F34C8019992BE700EED43C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -270,6 +362,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		32F09C1D199A5EAC00806131 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32F09C13199A5EAC00806131 /* Expand2 */;
+			targetProxy = 32F09C1C199A5EAC00806131 /* PBXContainerItemProxy */;
+		};
+		32F09C20199A5EAC00806131 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32F09C13199A5EAC00806131 /* Expand2 */;
+			targetProxy = 32F09C1F199A5EAC00806131 /* PBXContainerItemProxy */;
+		};
 		32F34C8D19992BE700EED43C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 32F34C8319992BE700EED43C /* Expand */;
@@ -294,6 +396,39 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		32F09C21199A5EAC00806131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = Expand2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		32F09C22199A5EAC00806131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = Expand2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		32F34C9219992BE700EED43C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -437,6 +572,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		32F09C23199A5EAC00806131 /* Build configuration list for PBXNativeTarget "Expand2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32F09C21199A5EAC00806131 /* Debug */,
+				32F09C22199A5EAC00806131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		32F34C9119992BE700EED43C /* Build configuration list for PBXNativeTarget "Expand" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -444,6 +587,7 @@
 				32F34C9319992BE700EED43C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9F3DE221812D0DF001483A1 /* Build configuration list for PBXProject "bk2ch13p636actionExtension" */ = {
 			isa = XCConfigurationList;
