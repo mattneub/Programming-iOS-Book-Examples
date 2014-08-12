@@ -5,13 +5,9 @@ import CoreText
 
 class ViewController : UIViewController {
     
-    /*
-    Works fine in iOS 7, but as of this moment it breaks in iOS 8
-    (and so does Apple's own DownloadFont example)
-*/
     
     /*
-    I've also included a font, mostly just to display Apple's new feature
+    I've also included a font, mostly just to display Xcode 6 new feature
     where you can set the font of something to an included font right in IB
 */
     
@@ -26,8 +22,8 @@ class ViewController : UIViewController {
         self.doDynamicType(nil)
         
         // see http://support.apple.com/kb/HT5484 (? needs revision? is there a more recent version?)
-        let name = "LucidaGrande"
-        let size : CGFloat = 12
+        let name = "NanumBrush" // another one to try: YuppySC-Regular, also good old LucidaGrande
+        let size : CGFloat = 24
         let f = UIFont(name:name, size:size)
         if f != nil {
             self.lab.font = f
@@ -45,9 +41,10 @@ class ViewController : UIViewController {
                 case .WillBeginDownloading:
                     NSLog("%@", "downloading will begin")
                 case .Downloading:
-                    let d = (prog as NSDictionary)
-                    let cur : AnyObject = d.objectForKey(kCTFontDescriptorMatchingPercentage)
-                    if let cur = cur as? NSObject {
+                    let d = prog as NSDictionary
+                    let key = kCTFontDescriptorMatchingPercentage
+                    let cur : AnyObject? = d[key]
+                    if let cur = cur as? NSNumber {
                         NSLog("progress: %@%%", cur)
                     }
                 case .DidFinishDownloading:
