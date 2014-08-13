@@ -160,14 +160,16 @@ class ViewController: UIViewController {
     }
     
     func changed(n:NSNotification) {
+        self.label.text = ""
         let player = MPMusicPlayerController.applicationMusicPlayer()
         if n.object === player { // just playing safe
-            let title = player.nowPlayingItem.valueForProperty(MPMediaItemPropertyTitle) as String
-            let ix = player.indexOfNowPlayingItem
-            if NSNotFound == ix {
-                self.label.text = ""
-            } else {
-                self.label.text = "\(ix+1) of \(self.q.count): \(title)"
+            if let title : AnyObject = player.nowPlayingItem?.valueForProperty(MPMediaItemPropertyTitle) {
+                if let title = title as? String {
+                    let ix = player.indexOfNowPlayingItem
+                    if ix != NSNotFound {
+                        self.label.text = "\(ix+1) of \(self.q.count): \(title)"
+                    }
+                }
             }
         }
         self.timer?.fire() // looks better if we fire timer now
