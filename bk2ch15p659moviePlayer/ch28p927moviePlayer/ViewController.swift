@@ -4,6 +4,15 @@ import UIKit
 import MediaPlayer
 import AVFoundation
 
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
+
 class ViewController: UIViewController, UINavigationControllerDelegate, UIVideoEditorControllerDelegate, UIPopoverPresentationControllerDelegate {
 
     var didInitialLayout = false
@@ -175,6 +184,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIVideoE
     func videoEditorController(editor: UIVideoEditorController!, didFailWithError error: NSError!) {
         println("error: \(error.localizedDescription)")
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func navigationController(navigationController: UINavigationController!, willShowViewController viewController: UIViewController!, animated: Bool) {
+        let vc = viewController as UIViewController
+        vc.title = ""
+        vc.navigationItem.title = ""
+        // I can suppress the title but I haven't found a way to fix the right bar button
+        // (so that it says Save instead of Use)
     }
     
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController!) {
