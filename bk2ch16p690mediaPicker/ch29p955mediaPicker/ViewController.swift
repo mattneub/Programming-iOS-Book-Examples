@@ -13,7 +13,9 @@ class ViewController: UIViewController {
     
     func presentPicker (sender:AnyObject) {
         // universal app is so incredibly easy in iOS 8!
-        let picker = MPMediaPickerController(mediaTypes:.AnyAudio) // new in iOS 8, need to specify
+        let picker = MPMediaPickerController(mediaTypes:.Music) // new in iOS 8, need to specify
+        // for example, you can have just podcasts or audio books
+        // I don't understand what the "video" options are for; when I try them, I get all audio
         picker.delegate = self
         picker.modalPresentationStyle = .Popover // or comment this out for fullscreen on both
         self.presentViewController(picker, animated: true, completion: nil)
