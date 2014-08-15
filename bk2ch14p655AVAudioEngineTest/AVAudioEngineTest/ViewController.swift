@@ -163,7 +163,7 @@ class ViewController: UIViewController {
         // because of the reverb; so to detect when the sound has faded away,
         // we watch for the last output buffer value to become very small
         var done = false
-        effect2.installTapOnBus(0, bufferSize: 4096, format: f2.processingFormat, block: {
+        effect2.installTapOnBus(0, bufferSize: 4096, format: outfile.processingFormat, block: {
             (buffer : AVAudioPCMBuffer!, time : AVAudioTime!) in
             let dataptrptr = buffer.floatChannelData
             let dataptr = dataptrptr.memory
