@@ -26,7 +26,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Xh-qZ-3AL">
-                                <rect key="frame" x="16" y="96" width="75" height="30"/>
+                                <rect key="frame" x="16" y="82" width="75" height="30"/>
                                 <state key="normal" title="Play Buffer">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6G-iA-iqU">
-                                <rect key="frame" x="16" y="176" width="205" height="30"/>
+                                <rect key="frame" x="16" y="137" width="205" height="30"/>
                                 <state key="normal" title="Play File While Looping Buffer">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -44,7 +44,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTj-MA-FTc">
-                                <rect key="frame" x="16" y="262" width="163" height="30"/>
+                                <rect key="frame" x="16" y="196" width="163" height="30"/>
                                 <state key="normal" title="Play File Through Effect">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -53,12 +53,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlb-yE-aQ3">
-                                <rect key="frame" x="16" y="404" width="33" height="30"/>
+                                <rect key="frame" x="16" y="367" width="33" height="30"/>
                                 <state key="normal" title="Stop">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="doStop:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="PXK-qF-B3G"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLV-YU-2WB">
+                                <rect key="frame" x="16" y="260" width="74" height="30"/>
+                                <state key="normal" title="Create File">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doButton5:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="uXF-g8-nMW"/>
                                 </connections>
                             </button>
                         </subviews>

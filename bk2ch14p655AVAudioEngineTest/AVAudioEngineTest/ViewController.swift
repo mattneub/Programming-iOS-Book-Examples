@@ -124,6 +124,70 @@ class ViewController: UIViewController {
         println(player.volume)
     }
     
+    @IBAction func doButton5(sender: AnyObject) {
+        // simple minimal file-writing example
+        // not difficult, but you have to form a valid file format or you'll get an error up front
+        // also, it's a little disappointing to find that you must _play_ the sound...
+        // you can't just process it directly into a file, which is what I was hoping to do
+        
+        let url2 = NSBundle.mainBundle().URLForResource("Hooded", withExtension: "mp3")
+        let f2 = AVAudioFile(forReading: url2, error: nil)
+        let buffer = AVAudioPCMBuffer(PCMFormat: f2.processingFormat, frameCapacity: UInt32(f2.length/3)) // only need 1/3 of the original recording
+        f2.readIntoBuffer(buffer, error: nil)
+        
+        let player2 = AVAudioPlayerNode()
+        engine.attachNode(player2)
+        
+        let effect2 = AVAudioUnitReverb()
+        effect2.loadFactoryPreset(.Cathedral)
+        effect2.wetDryMix = 40
+        engine.attachNode(effect2)
+        
+        engine.connect(player2, to: effect2, format: f2.processingFormat)
+        let mixer = engine.mainMixerNode
+        engine.connect(effect2, to: mixer, format: f2.processingFormat)
+
+        let fm = NSFileManager.defaultManager()
+        let doc = fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: nil)
+        let outurl = doc.URLByAppendingPathComponent("myfile.aac")
+        
+        var err : NSError?
+        let outfile = AVAudioFile(forWriting: outurl, settings: [
+            AVFormatIDKey : kAudioFormatMPEG4AAC,
+            AVNumberOfChannelsKey : 1,
+            AVSampleRateKey : 22050,
+            AVEncoderBitRatePerChannelKey : 16
+            ], error: &err)
+        
+        // we'll know when the input buffer is emptied, but the sound will still be going on
+        // because of the reverb; so to detect when the sound has faded away,
+        // we watch for the last output buffer value to become very small
+        var done = false
+        effect2.installTapOnBus(0, bufferSize: 4096, format: f2.processingFormat, block: {
+            (buffer : AVAudioPCMBuffer!, time : AVAudioTime!) in
+            let dataptrptr = buffer.floatChannelData
+            let dataptr = dataptrptr.memory
+            let datum = dataptr[buffer.frameLength-1]
+            if done && fabs(datum) < 0.000001 {
+                println("stopping")
+                self.engine.stop()
+                return
+            }
+            var err : NSError?
+            let ok = outfile.writeFromBuffer(buffer, error:&err)
+            if !ok {
+                println(err)
+            }
+            })
+        player2.scheduleBuffer(buffer, atTime: nil, options: nil, completionHandler: {
+            done = true
+        })
+
+        engine.prepare()
+        engine.startAndReturnError(nil)
+        player2.play()
+    }
+    
     @IBAction func doStop(sender: AnyObject) {
         engine.stop()
         engine.reset()
