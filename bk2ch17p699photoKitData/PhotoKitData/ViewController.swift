@@ -5,6 +5,7 @@ import Photos
 
 class ViewController: UIViewController {
     var status = PHAuthorizationStatus.NotDetermined
+    var albums : PHFetchResult!
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -22,6 +23,8 @@ class ViewController: UIViewController {
         default:
             self.status = status
         }
+        
+        PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
     }
 
     @IBAction func doButton(sender: AnyObject) {
@@ -78,7 +81,6 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: "Pick an album:", message: nil, preferredStyle: .ActionSheet)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         let result = PHAssetCollection.fetchAssetCollectionsWithType(
-            // let's examine albums synced onto the device from iPhoto
             .Album, subtype: .AlbumSyncedAlbum, options: nil)
         result.enumerateObjectsUsingBlock {
             (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) -> () in
@@ -109,15 +111,25 @@ class ViewController: UIViewController {
             }, completionHandler: {
                 // completion may take some considerable time (asynchronous)
                 (ok:Bool, err:NSError!) in
-                println(ok)
+                println("created TestAlbum: \(ok)")
         })
     }
     
     @IBAction func doButton5(sender: AnyObject) {
+        let opts = PHFetchOptions()
+        opts.wantsIncrementalChangeDetails = false // not used
+        // imagine first that we are displaying a list of all regular albums...
+        // ... so have performed a fetch request and are hanging on to the result
+        self.albums = PHAssetCollection.fetchAssetCollectionsWithType(
+            .Album, subtype: .AlbumRegular, options: nil)
+        // and if we have an observer, it will automatically be sent PHChange messages
+        // for this fetch request - if we wanted to prevent that,
+        // we would have included the option above
+
+        
         // find Recently Added smart-album
         // add first photo from it to a new album
         let result = PHAssetCollection.fetchAssetCollectionsWithType(
-            // let's examine albums synced onto the device from iPhoto
             .SmartAlbum, subtype: .SmartAlbumRecentlyAdded, options: nil)
         let rec = result.firstObject as PHAssetCollection!
         if rec == nil {
@@ -135,8 +147,25 @@ class ViewController: UIViewController {
             }, completionHandler: {
                 // completion may take some considerable time (asynchronous)
                 (ok:Bool, err:NSError!) in
-                println(ok)
+                println("created My Cool Album: \(ok)")
         })
+    }
+}
+
+extension ViewController : PHPhotoLibraryChangeObserver {
+    func photoLibraryDidChange(changeInfo: PHChange!) {
+        println(changeInfo)
+        if self.albums !== nil {
+            if let details = changeInfo.changeDetailsForFetchResult(self.albums) {
+                dispatch_async(dispatch_get_main_queue()) { // NB get on main queue if necessary
+                    println("inserted: \(details.insertedObjects)")
+                    println("changed: \(details.changedObjects)")
+                    self.albums = details.fetchResultAfterChanges
+                    // and you can imagine that if we had an interface...
+                    // we might change it to reflect these changes
+                }
+            }
+        }
     }
 }
 
