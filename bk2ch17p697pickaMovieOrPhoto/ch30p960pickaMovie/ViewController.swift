@@ -3,9 +3,11 @@
 import UIKit
 import MediaPlayer
 import MobileCoreServices
+import Photos
 
 class ViewController: UIViewController {
     var mpc : MPMoviePlayerController!
+    var status = PHAuthorizationStatus.NotDetermined
     @IBOutlet var redView : UIView!
     
     override func supportedInterfaceOrientations() -> Int {
@@ -15,7 +17,35 @@ class ViewController: UIViewController {
         return Int(UIInterfaceOrientationMask.Landscape.toRaw())
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        // access permission dialog will appear automatically if necessary...
+        // ...when we try to present the UIImagePickerController
+        // however, things then proceed asynchronously
+        // so it can look better to try to ascertain permission in advance
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .NotDetermined:
+            PHPhotoLibrary.requestAuthorization({
+                status in
+                self.status = status
+            })
+        default:
+            self.status = status
+        }
+    }
+    
     @IBAction func doPick (sender:AnyObject!) {
+        // by this time we have status, so we can bow out or whatever
+        if self.status != .Authorized {
+            // might do something here if denied, like put up an alert asking for authorization
+            println("not authorized")
+            return
+        }
+        // NB if user previously denied, then authorizes us in Settings while we're running,
+        // **we will crash in the background**
+        // I've always regarded this as a bug...
+        
         let src = UIImagePickerControllerSourceType.PhotoLibrary
         let ok = UIImagePickerController.isSourceTypeAvailable(src)
         if !ok {
@@ -33,8 +63,7 @@ class ViewController: UIViewController {
         
         picker.allowsEditing = false // try true
         
-        // access permission dialog will appear automatically if necessary
-        // this is will automatically be fullscreen on phone and pad, looks fine
+        // this will automatically be fullscreen on phone and pad, looks fine
         // note that for .PhotoLibrary, iPhone app must permit portrait orientation
         // if we want a popover, on pad, we can do that; just uncomment next line
         // picker.modalPresentationStyle = .Popover
