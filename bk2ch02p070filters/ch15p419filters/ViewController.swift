@@ -8,15 +8,18 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         
         let moi = UIImage(named:"Moi")
-        let moici = CIImage(CGImage: moi.CGImage)
+        let moici = CIImage(image:moi)
         let moiextent = moici.extent()
         
         let grad = CIFilter(name: "CIRadialGradient")
         let center = CIVector(x: moiextent.width/2.0, y: moiextent.height/2.0)
         
+        let smallerDimension = min(moiextent.width, moiextent.height)
+        let largerDimension = max(moiextent.width, moiextent.height)
+        
         grad.setValue(center, forKey:"inputCenter")
-        grad.setValue(85, forKey:"inputRadius0")
-        grad.setValue(100, forKey:"inputRadius1")
+        grad.setValue(smallerDimension/2.0 * 0.85, forKey:"inputRadius0")
+        grad.setValue(largerDimension/2.0, forKey:"inputRadius1")
         let gradimage = grad.outputImage
         
         let blend = CIFilter(name: "CIBlendWithMask")

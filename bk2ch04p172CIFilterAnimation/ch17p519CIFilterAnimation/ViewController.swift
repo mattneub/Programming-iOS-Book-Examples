@@ -14,7 +14,7 @@ class ViewController : UIViewController {
     
     @IBAction func doButton (sender:AnyObject) {
         let moi = UIImage(named:"moi")
-        let moi2 = CIImage(CGImage:moi.CGImage)
+        let moi2 = CIImage(image:moi)
         self.moiextent = moi2.extent()
         
         let col = CIFilter(name:"CIConstantColorGenerator")

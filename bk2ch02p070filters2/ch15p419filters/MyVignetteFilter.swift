@@ -3,7 +3,7 @@ import UIKit
 
 class MyVignetteFilter : CIFilter {
     // rather elaborate dance, in Swift, to slot needed properties into position
-    var realInputImage : CIImage?
+    private var realInputImage : CIImage?
     var inputImage : CIImage {
     get {
         return self.realInputImage!
@@ -12,6 +12,16 @@ class MyVignetteFilter : CIFilter {
         self.realInputImage = im
     }
     }
+    private var realInputPercentage : NSNumber = NSNumber(double: 1.0)
+    var inputPercentage : NSNumber {
+        get {
+            return self.realInputPercentage
+        }
+        set (val) {
+            self.realInputPercentage = val
+        }
+    }
+
     override var outputImage : CIImage! {
     get {
         return self.makeOutputImage()
@@ -29,9 +39,12 @@ class MyVignetteFilter : CIFilter {
         let grad = CIFilter(name: "CIRadialGradient")
         let center = CIVector(x: moiextent.width/2.0, y: moiextent.height/2.0)
         
+        let smallerDimension = min(moiextent.width, moiextent.height)
+        let largerDimension = max(moiextent.width, moiextent.height)
+        
         grad.setValue(center, forKey:"inputCenter")
-        grad.setValue(85, forKey:"inputRadius0")
-        grad.setValue(100, forKey:"inputRadius1")
+        grad.setValue(smallerDimension/2.0 * CGFloat(self.inputPercentage.doubleValue), forKey:"inputRadius0")
+        grad.setValue(largerDimension/2.0, forKey:"inputRadius1")
         let gradimage = grad.outputImage
         
         let blend = CIFilter(name: "CIBlendWithMask")

@@ -8,8 +8,9 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         
         let vig = MyVignetteFilter()
-        let moici = CIImage(CGImage: UIImage(named:"Moi").CGImage)
+        let moici = CIImage(image: UIImage(named:"Moi"))
         vig.setValue(moici, forKey: "inputImage")
+        vig.setValue(NSNumber(double:0.7), forKey: "inputPercentage")
         let outim = vig.outputImage
         
         let outimcg = CIContext(options: nil).createCGImage(outim, fromRect: outim.extent())
