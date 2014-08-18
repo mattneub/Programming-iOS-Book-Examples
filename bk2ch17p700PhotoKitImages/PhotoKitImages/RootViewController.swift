@@ -46,17 +46,26 @@ class RootViewController: UIViewController {
 
 extension RootViewController : PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(changeInfo: PHChange!) {
-        let ci = changeInfo.changeDetailsForFetchResult(self.modelController.recentAlbums)
-        // if what just happened is: we went from nil to results (because user granted permission)...
-        // then start over
-        let oldResult = ci.fetchResultBeforeChanges
-        if oldResult.firstObject == nil {
-            let newResult = ci.fetchResultAfterChanges
-            if newResult.firstObject != nil {
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.tryToAddInitialPage()
+        if let ci = changeInfo.changeDetailsForFetchResult(self.modelController.recentAlbums) {
+            // if what just happened is: we went from nil to results (because user granted permission)...
+            // then start over
+            let oldResult = ci.fetchResultBeforeChanges
+            if oldResult.firstObject == nil {
+                let newResult = ci.fetchResultAfterChanges
+                if newResult.firstObject != nil {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.tryToAddInitialPage()
+                    }
                 }
             }
+        }
+    }
+}
+
+extension RootViewController {
+    @IBAction func doVignetteButton(sender: AnyObject) {
+        if let dvc = self.pageViewController?.viewControllers[0] as? DataViewController {
+            dvc.doVignette()
         }
     }
 }

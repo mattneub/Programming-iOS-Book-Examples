@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32C9184419A1788B00AB60EA /* MyVignetteFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C9184319A1788B00AB60EA /* MyVignetteFilter.swift */; };
 		32EBFD7619A10EA9008F9D28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBFD7519A10EA9008F9D28 /* AppDelegate.swift */; };
 		32EBFD7819A10EA9008F9D28 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBFD7719A10EA9008F9D28 /* RootViewController.swift */; };
 		32EBFD7A19A10EA9008F9D28 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBFD7919A10EA9008F9D28 /* DataViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		32C9184319A1788B00AB60EA /* MyVignetteFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVignetteFilter.swift; sourceTree = "<group>"; };
 		32EBFD7019A10EA9008F9D28 /* PhotoKitImages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoKitImages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32EBFD7419A10EA9008F9D28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32EBFD7519A10EA9008F9D28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				32EBFD7919A10EA9008F9D28 /* DataViewController.swift */,
 				32EBFD7B19A10EA9008F9D28 /* ModelController.swift */,
 				32EBFD7D19A10EA9008F9D28 /* Main.storyboard */,
+				32C9184319A1788B00AB60EA /* MyVignetteFilter.swift */,
 				32EBFD8019A10EA9008F9D28 /* Images.xcassets */,
 				32EBFD7319A10EA9008F9D28 /* Supporting Files */,
 			);
@@ -216,6 +219,7 @@
 			files = (
 				32EBFD7819A10EA9008F9D28 /* RootViewController.swift in Sources */,
 				32EBFD7C19A10EA9008F9D28 /* ModelController.swift in Sources */,
+				32C9184419A1788B00AB60EA /* MyVignetteFilter.swift in Sources */,
 				32EBFD7A19A10EA9008F9D28 /* DataViewController.swift in Sources */,
 				32EBFD7619A10EA9008F9D28 /* AppDelegate.swift in Sources */,
 			);
@@ -403,6 +407,7 @@
 				32EBFD9219A10EA9008F9D28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		32EBFD9319A10EA9008F9D28 /* Build configuration list for PBXNativeTarget "PhotoKitImagesTests" */ = {
 			isa = XCConfigurationList;
@@ -411,6 +416,7 @@
 				32EBFD9519A10EA9008F9D28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
