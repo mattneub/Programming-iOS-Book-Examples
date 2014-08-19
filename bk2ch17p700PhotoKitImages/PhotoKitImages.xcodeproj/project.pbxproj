@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		328C1A2E19A268AB00B08BA1 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328C1A2D19A268AB00B08BA1 /* PhotosUI.framework */; };
+		328C1A3019A268AB00B08BA1 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328C1A2F19A268AB00B08BA1 /* Photos.framework */; };
+		328C1A3519A268AB00B08BA1 /* PhotoEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C1A3419A268AB00B08BA1 /* PhotoEditingViewController.swift */; };
+		328C1A3719A268AB00B08BA1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328C1A3619A268AB00B08BA1 /* MainInterface.storyboard */; };
+		328C1A3A19A268AB00B08BA1 /* Vignette.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 328C1A2B19A268AB00B08BA1 /* Vignette.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		328C1A4219A27A7F00B08BA1 /* MyVignetteFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C1A4119A27A7F00B08BA1 /* MyVignetteFilter.swift */; };
+		328C1A4519A283B300B08BA1 /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C1A4319A283B300B08BA1 /* EditingViewController.swift */; };
+		328C1A4619A283B300B08BA1 /* EditingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 328C1A4419A283B300B08BA1 /* EditingViewController.xib */; };
 		32C9184419A1788B00AB60EA /* MyVignetteFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C9184319A1788B00AB60EA /* MyVignetteFilter.swift */; };
 		32EBFD7619A10EA9008F9D28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBFD7519A10EA9008F9D28 /* AppDelegate.swift */; };
 		32EBFD7819A10EA9008F9D28 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBFD7719A10EA9008F9D28 /* RootViewController.swift */; };
@@ -18,6 +26,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		328C1A3819A268AB00B08BA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 32EBFD6819A10EA9008F9D28 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 328C1A2A19A268AB00B08BA1;
+			remoteInfo = Vignette;
+		};
+		328C1A3B19A268AB00B08BA1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 32EBFD6819A10EA9008F9D28 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 328C1A2A19A268AB00B08BA1;
+			remoteInfo = Vignette;
+		};
 		32EBFD8719A10EA9008F9D28 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 32EBFD6819A10EA9008F9D28 /* Project object */;
@@ -27,7 +49,30 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		328C1A4019A268AB00B08BA1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				328C1A3A19A268AB00B08BA1 /* Vignette.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		328C1A2B19A268AB00B08BA1 /* Vignette.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Vignette.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		328C1A2D19A268AB00B08BA1 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		328C1A2F19A268AB00B08BA1 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		328C1A3319A268AB00B08BA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		328C1A3419A268AB00B08BA1 /* PhotoEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditingViewController.swift; sourceTree = "<group>"; };
+		328C1A3619A268AB00B08BA1 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		328C1A4119A27A7F00B08BA1 /* MyVignetteFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVignetteFilter.swift; sourceTree = "<group>"; };
+		328C1A4319A283B300B08BA1 /* EditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
+		328C1A4419A283B300B08BA1 /* EditingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditingViewController.xib; sourceTree = "<group>"; };
 		32C9184319A1788B00AB60EA /* MyVignetteFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVignetteFilter.swift; sourceTree = "<group>"; };
 		32EBFD7019A10EA9008F9D28 /* PhotoKitImages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoKitImages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32EBFD7419A10EA9008F9D28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,6 +88,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		328C1A2819A268AB00B08BA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				328C1A2E19A268AB00B08BA1 /* PhotosUI.framework in Frameworks */,
+				328C1A3019A268AB00B08BA1 /* Photos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32EBFD6D19A10EA9008F9D28 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -60,11 +114,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		328C1A2C19A268AB00B08BA1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				328C1A2D19A268AB00B08BA1 /* PhotosUI.framework */,
+				328C1A2F19A268AB00B08BA1 /* Photos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		328C1A3119A268AB00B08BA1 /* Vignette */ = {
+			isa = PBXGroup;
+			children = (
+				328C1A3419A268AB00B08BA1 /* PhotoEditingViewController.swift */,
+				328C1A4119A27A7F00B08BA1 /* MyVignetteFilter.swift */,
+				328C1A3619A268AB00B08BA1 /* MainInterface.storyboard */,
+				328C1A3219A268AB00B08BA1 /* Supporting Files */,
+			);
+			path = Vignette;
+			sourceTree = "<group>";
+		};
+		328C1A3219A268AB00B08BA1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				328C1A3319A268AB00B08BA1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		32EBFD6719A10EA9008F9D28 = {
 			isa = PBXGroup;
 			children = (
 				32EBFD7219A10EA9008F9D28 /* PhotoKitImages */,
 				32EBFD8919A10EA9008F9D28 /* PhotoKitImagesTests */,
+				328C1A3119A268AB00B08BA1 /* Vignette */,
+				328C1A2C19A268AB00B08BA1 /* Frameworks */,
 				32EBFD7119A10EA9008F9D28 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,6 +158,7 @@
 			children = (
 				32EBFD7019A10EA9008F9D28 /* PhotoKitImages.app */,
 				32EBFD8619A10EA9008F9D28 /* PhotoKitImagesTests.xctest */,
+				328C1A2B19A268AB00B08BA1 /* Vignette.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,6 +169,8 @@
 				32EBFD7519A10EA9008F9D28 /* AppDelegate.swift */,
 				32EBFD7719A10EA9008F9D28 /* RootViewController.swift */,
 				32EBFD7919A10EA9008F9D28 /* DataViewController.swift */,
+				328C1A4319A283B300B08BA1 /* EditingViewController.swift */,
+				328C1A4419A283B300B08BA1 /* EditingViewController.xib */,
 				32EBFD7B19A10EA9008F9D28 /* ModelController.swift */,
 				32EBFD7D19A10EA9008F9D28 /* Main.storyboard */,
 				32C9184319A1788B00AB60EA /* MyVignetteFilter.swift */,
@@ -121,6 +208,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		328C1A2A19A268AB00B08BA1 /* Vignette */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 328C1A3F19A268AB00B08BA1 /* Build configuration list for PBXNativeTarget "Vignette" */;
+			buildPhases = (
+				328C1A2719A268AB00B08BA1 /* Sources */,
+				328C1A2819A268AB00B08BA1 /* Frameworks */,
+				328C1A2919A268AB00B08BA1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Vignette;
+			productName = Vignette;
+			productReference = 328C1A2B19A268AB00B08BA1 /* Vignette.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		32EBFD6F19A10EA9008F9D28 /* PhotoKitImages */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32EBFD9019A10EA9008F9D28 /* Build configuration list for PBXNativeTarget "PhotoKitImages" */;
@@ -128,10 +232,13 @@
 				32EBFD6C19A10EA9008F9D28 /* Sources */,
 				32EBFD6D19A10EA9008F9D28 /* Frameworks */,
 				32EBFD6E19A10EA9008F9D28 /* Resources */,
+				328C1A4019A268AB00B08BA1 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				328C1A3919A268AB00B08BA1 /* PBXTargetDependency */,
+				328C1A3C19A268AB00B08BA1 /* PBXTargetDependency */,
 			);
 			name = PhotoKitImages;
 			productName = PhotoKitImages;
@@ -165,6 +272,9 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
+					328C1A2A19A268AB00B08BA1 = {
+						CreatedOnToolsVersion = 6.0;
+					};
 					32EBFD6F19A10EA9008F9D28 = {
 						CreatedOnToolsVersion = 6.0;
 					};
@@ -189,17 +299,27 @@
 			targets = (
 				32EBFD6F19A10EA9008F9D28 /* PhotoKitImages */,
 				32EBFD8519A10EA9008F9D28 /* PhotoKitImagesTests */,
+				328C1A2A19A268AB00B08BA1 /* Vignette */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		328C1A2919A268AB00B08BA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				328C1A3719A268AB00B08BA1 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32EBFD6E19A10EA9008F9D28 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				32EBFD7F19A10EA9008F9D28 /* Main.storyboard in Resources */,
 				32EBFD8119A10EA9008F9D28 /* Images.xcassets in Resources */,
+				328C1A4619A283B300B08BA1 /* EditingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,11 +333,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		328C1A2719A268AB00B08BA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				328C1A4219A27A7F00B08BA1 /* MyVignetteFilter.swift in Sources */,
+				328C1A3519A268AB00B08BA1 /* PhotoEditingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		32EBFD6C19A10EA9008F9D28 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				32EBFD7819A10EA9008F9D28 /* RootViewController.swift in Sources */,
+				328C1A4519A283B300B08BA1 /* EditingViewController.swift in Sources */,
 				32EBFD7C19A10EA9008F9D28 /* ModelController.swift in Sources */,
 				32C9184419A1788B00AB60EA /* MyVignetteFilter.swift in Sources */,
 				32EBFD7A19A10EA9008F9D28 /* DataViewController.swift in Sources */,
@@ -236,6 +366,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		328C1A3919A268AB00B08BA1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 328C1A2A19A268AB00B08BA1 /* Vignette */;
+			targetProxy = 328C1A3819A268AB00B08BA1 /* PBXContainerItemProxy */;
+		};
+		328C1A3C19A268AB00B08BA1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 328C1A2A19A268AB00B08BA1 /* Vignette */;
+			targetProxy = 328C1A3B19A268AB00B08BA1 /* PBXContainerItemProxy */;
+		};
 		32EBFD8819A10EA9008F9D28 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 32EBFD6F19A10EA9008F9D28 /* PhotoKitImages */;
@@ -255,6 +395,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		328C1A3D19A268AB00B08BA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Vignette/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		328C1A3E19A268AB00B08BA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Vignette/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		32EBFD8E19A10EA9008F9D28 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -391,6 +555,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		328C1A3F19A268AB00B08BA1 /* Build configuration list for PBXNativeTarget "Vignette" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				328C1A3D19A268AB00B08BA1 /* Debug */,
+				328C1A3E19A268AB00B08BA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		32EBFD6B19A10EA9008F9D28 /* Build configuration list for PBXProject "PhotoKitImages" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

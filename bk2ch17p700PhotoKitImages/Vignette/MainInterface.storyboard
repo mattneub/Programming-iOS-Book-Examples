@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ObA-dk-sSI">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Photo Editing View Controller-->
+        <scene sceneID="7MM-of-jgj">
+            <objects>
+                <viewController id="ObA-dk-sSI" customClass="PhotoEditingViewController" customModule="Vignette" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qkL-Od-lgU"/>
+                        <viewControllerLayoutGuide type="bottom" id="n38-gi-rB5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zMn-AG-sqS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RwB-xV-Zyw">
+                                <rect key="frame" x="14" y="28" width="292" height="31"/>
+                                <connections>
+                                    <action selector="doSlider:" destination="ObA-dk-sSI" eventType="valueChanged" id="fhN-6i-Pur"/>
+                                </connections>
+                            </slider>
+                            <glkView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" enableSetNeedsDisplay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKG-x4-oHv">
+                                <rect key="frame" x="40" y="78" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="EXv-tP-e0w"/>
+                                    <constraint firstAttribute="height" constant="240" id="Rsw-OO-r48"/>
+                                </constraints>
+                            </glkView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Zn-f7-6ft">
+                                <rect key="frame" x="99" y="344" width="123" height="29"/>
+                                <segments>
+                                    <segment title="Vignette"/>
+                                    <segment title="Remove"/>
+                                </segments>
+                                <connections>
+                                    <action selector="doSegmentedControl:" destination="ObA-dk-sSI" eventType="valueChanged" id="Taa-0m-YZ5"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RwB-xV-Zyw" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leadingMargin" id="DUc-2S-fy2"/>
+                            <constraint firstItem="xKG-x4-oHv" firstAttribute="top" secondItem="RwB-xV-Zyw" secondAttribute="bottom" constant="20" id="DYD-oK-cZj"/>
+                            <constraint firstItem="4Zn-f7-6ft" firstAttribute="top" secondItem="xKG-x4-oHv" secondAttribute="bottom" constant="26" id="LZx-6c-hxT"/>
+                            <constraint firstAttribute="centerX" secondItem="4Zn-f7-6ft" secondAttribute="centerX" constant="-0.5" id="bpO-qh-uxW"/>
+                            <constraint firstItem="RwB-xV-Zyw" firstAttribute="trailing" secondItem="zMn-AG-sqS" secondAttribute="trailingMargin" id="cja-au-PWf"/>
+                            <constraint firstAttribute="centerX" secondItem="xKG-x4-oHv" secondAttribute="centerX" id="gHM-OL-g8x"/>
+                            <constraint firstItem="RwB-xV-Zyw" firstAttribute="top" secondItem="qkL-Od-lgU" secondAttribute="bottom" constant="8" id="pBW-ef-i7H"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="528"/>
+                    <connections>
+                        <outlet property="glkview" destination="xKG-x4-oHv" id="YSP-gF-cdp"/>
+                        <outlet property="seg" destination="4Zn-f7-6ft" id="Oau-5p-7ov"/>
+                        <outlet property="slider" destination="RwB-xV-Zyw" id="mm7-q6-JUm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="326" y="-128"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
+</document>
