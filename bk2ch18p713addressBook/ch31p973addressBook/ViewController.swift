@@ -53,6 +53,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
             if let last = ABRecordCopyValue(matt, kABPersonLastNameProperty).takeRetainedValue() as? String {
                 if last == "Neuburg" {
                     moi = matt
+                    break
                 }
             }
         }
@@ -61,10 +62,11 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
             return
         }
         // parse my emails
-        let emails:ABMultiValue = ABRecordCopyValue(moi, kABPersonEmailProperty).takeRetainedValue() as ABMultiValue
+        let emails:ABMultiValue = ABRecordCopyValue(
+            moi, kABPersonEmailProperty).takeRetainedValue() as ABMultiValue
         for ix in 0 ..< ABMultiValueGetCount(emails) {
-            let label = ABMultiValueCopyLabelAtIndex(emails,ix).takeRetainedValue() as NSString as String
-            let value = ABMultiValueCopyValueAtIndex(emails,ix).takeRetainedValue() as NSString as String
+            let label = ABMultiValueCopyLabelAtIndex(emails,ix).takeRetainedValue() as NSString
+            let value = ABMultiValueCopyValueAtIndex(emails,ix).takeRetainedValue() as NSString
             println("I have a \(label) address: \(value)")
         }
     }
@@ -78,7 +80,8 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         let snidely:ABRecord = ABPersonCreate().takeRetainedValue()
         ABRecordSetValue(snidely, kABPersonFirstNameProperty, "Snidely", nil)
         ABRecordSetValue(snidely, kABPersonLastNameProperty, "Whiplash", nil)
-        let addr:ABMutableMultiValue = ABMultiValueCreateMutable(ABPropertyType(kABStringPropertyType)).takeRetainedValue()
+        let addr:ABMutableMultiValue = ABMultiValueCreateMutable(
+            ABPropertyType(kABStringPropertyType)).takeRetainedValue()
         ABMultiValueAddValueAndLabel(addr, "snidely@villains.com", kABHomeLabel, nil)
         ABRecordSetValue(snidely, kABPersonEmailProperty, addr, nil)
         ABAddressBookAddRecord(adbk, snidely, nil)
@@ -103,7 +106,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         identifier: ABMultiValueIdentifier) {
             let emails : ABMultiValue = ABRecordCopyValue(person, property).takeRetainedValue()
             let ix = ABMultiValueGetIndexForIdentifier(emails, identifier)
-            let email = ABMultiValueCopyValueAtIndex(emails, ix).takeRetainedValue() as NSString as String
+            let email = ABMultiValueCopyValueAtIndex(emails, ix).takeRetainedValue() as NSString
             println(email) // do something with the email here
             self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -116,7 +119,8 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
             return
         }
 
-        let snides = ABAddressBookCopyPeopleWithName(adbk, "Snidely Whiplash").takeRetainedValue() as NSArray as Array<ABRecord>
+        let snides = ABAddressBookCopyPeopleWithName(
+            adbk, "Snidely Whiplash").takeRetainedValue() as NSArray as Array<ABRecord>
         if snides.count == 0 {
             println("no Snidely")
             return
@@ -132,8 +136,10 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         self.showViewController(pvc, sender:self) // push onto navigation controller
     }
     
-    func personViewController(personViewController: ABPersonViewController!, shouldPerformDefaultActionForPerson person: ABRecord!, property: ABPropertyID, identifier: ABMultiValueIdentifier) -> Bool {
-        return false // if true, email tap launches email etc.
+    func personViewController(personViewController: ABPersonViewController!,
+        shouldPerformDefaultActionForPerson person: ABRecord!,
+        property: ABPropertyID, identifier: ABMultiValueIdentifier) -> Bool {
+            return false // if true, email tap launches email etc.
     }
 
     // =========
@@ -145,17 +151,18 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         self.presentViewController(nc, animated:true, completion:nil)
     }
 
-    func newPersonViewController(newPersonView: ABNewPersonViewController!, didCompleteWithNewPerson person: ABRecord!) {
-        if person != nil {
-            // if we didn't have access, we wouldn't be here!
-            // if we do not delete the person, the person will stay in the contacts database automatically!
-            ABAddressBookRemoveRecord(adbk, person, nil)
-            ABAddressBookSave(adbk, nil)
-            let name = ABRecordCopyCompositeName(person).takeRetainedValue() as NSString as String
-            println("I have a person named \(name), but I am not saving this person to the database")
-            // do something with new person
-        }
-        self.dismissViewControllerAnimated(true, completion:nil)
+    func newPersonViewController(newPersonView: ABNewPersonViewController!,
+        didCompleteWithNewPerson person: ABRecord!) {
+            if person != nil {
+                // if we didn't have access, we wouldn't be here!
+                // if we do not delete the person, the person will stay in the contacts database automatically!
+                ABAddressBookRemoveRecord(adbk, person, nil)
+                ABAddressBookSave(adbk, nil)
+                let name = ABRecordCopyCompositeName(person).takeRetainedValue()
+                println("I have a person named \(name), not saving this person to the database")
+                // do something with new person
+            }
+            self.dismissViewControllerAnimated(true, completion:nil)
     }
     
     // =========
@@ -168,7 +175,8 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         let person:ABRecord = ABPersonCreate().takeRetainedValue()
         ABRecordSetValue(person, kABPersonFirstNameProperty, "Johnny", nil)
         ABRecordSetValue(person, kABPersonLastNameProperty, "Appleseed", nil)
-        let addr:ABMutableMultiValue = ABMultiValueCreateMutable(ABPropertyType(kABStringPropertyType)).takeRetainedValue()
+        let addr:ABMutableMultiValue = ABMultiValueCreateMutable(
+            ABPropertyType(kABStringPropertyType)).takeRetainedValue()
         ABMultiValueAddValueAndLabel(addr, "johnny@seeds.com", kABHomeLabel, nil)
         ABRecordSetValue(person, kABPersonEmailProperty, addr, nil)
         unk.displayedPerson = person
@@ -176,11 +184,13 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         self.showViewController(unk, sender:self) // push onto navigation controller
     }
 
-    func unknownPersonViewController(unknownCardViewController: ABUnknownPersonViewController!, didResolveToPerson person: ABRecord!) {
-        if let person:ABRecord = person {
-            let name = ABRecordCopyCompositeName(person).takeRetainedValue()
-            println("user did something with \(name)") // only implementing this to shut the compiler up
-        }
+    func unknownPersonViewController(
+        unknownCardViewController: ABUnknownPersonViewController!,
+        didResolveToPerson person: ABRecord!) {
+            if let person:ABRecord = person {
+                let name = ABRecordCopyCompositeName(person).takeRetainedValue()
+                println("user did something with \(name)") // only implementing this to shut the compiler up
+            }
     }
     
     
