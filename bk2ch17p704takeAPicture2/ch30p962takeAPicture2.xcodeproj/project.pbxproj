@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		324DD41619A42F5500E85278 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324DD41519A42F5500E85278 /* ViewController.swift */; };
+		324DD41819A4346200E85278 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324DD41719A4346200E85278 /* SecondViewController.swift */; };
+		324DD41A19A436A600E85278 /* MyImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324DD41919A436A600E85278 /* MyImagePickerController.swift */; };
 		C9E2173918286A5100A58EAD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E2173818286A5100A58EAD /* Foundation.framework */; };
 		C9E2173B18286A5100A58EAD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E2173A18286A5100A58EAD /* CoreGraphics.framework */; };
 		C9E2173D18286A5100A58EAD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E2173C18286A5100A58EAD /* UIKit.framework */; };
@@ -14,14 +17,15 @@
 		C9E2174518286A5100A58EAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2174418286A5100A58EAD /* main.m */; };
 		C9E2174918286A5100A58EAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2174818286A5100A58EAD /* AppDelegate.m */; };
 		C9E2174C18286A5100A58EAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E2174A18286A5100A58EAD /* Main.storyboard */; };
-		C9E2174F18286A5100A58EAD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2174E18286A5100A58EAD /* ViewController.m */; };
 		C9E2175118286A5100A58EAD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E2175018286A5100A58EAD /* Images.xcassets */; };
-		C9E217701828707400A58EAD /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2176E1828707400A58EAD /* SecondViewController.m */; };
 		C9E217711828707400A58EAD /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E2176F1828707400A58EAD /* SecondViewController.xib */; };
-		C9E217741828740B00A58EAD /* MyImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E217731828740B00A58EAD /* MyImagePickerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		324DD41419A42F5500E85278 /* ch30p962takeAPicture2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch30p962takeAPicture2-Bridging-Header.h"; sourceTree = "<group>"; };
+		324DD41519A42F5500E85278 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		324DD41719A4346200E85278 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		324DD41919A436A600E85278 /* MyImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyImagePickerController.swift; sourceTree = "<group>"; };
 		C9E2173518286A5100A58EAD /* ch30p962takeAPicture2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch30p962takeAPicture2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E2173818286A5100A58EAD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9E2173A18286A5100A58EAD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -33,15 +37,9 @@
 		C9E2174718286A5100A58EAD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9E2174818286A5100A58EAD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9E2174B18286A5100A58EAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9E2174D18286A5100A58EAD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C9E2174E18286A5100A58EAD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9E2175018286A5100A58EAD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9E2175718286A5100A58EAD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9E2176D1828707400A58EAD /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		C9E2176E1828707400A58EAD /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		C9E2176F1828707400A58EAD /* SecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
-		C9E217721828740B00A58EAD /* MyImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImagePickerController.h; sourceTree = "<group>"; };
-		C9E217731828740B00A58EAD /* MyImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImagePickerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,15 +90,13 @@
 				C9E2174718286A5100A58EAD /* AppDelegate.h */,
 				C9E2174818286A5100A58EAD /* AppDelegate.m */,
 				C9E2174A18286A5100A58EAD /* Main.storyboard */,
-				C9E2174D18286A5100A58EAD /* ViewController.h */,
-				C9E2174E18286A5100A58EAD /* ViewController.m */,
-				C9E2176D1828707400A58EAD /* SecondViewController.h */,
-				C9E2176E1828707400A58EAD /* SecondViewController.m */,
+				324DD41519A42F5500E85278 /* ViewController.swift */,
+				324DD41719A4346200E85278 /* SecondViewController.swift */,
 				C9E2176F1828707400A58EAD /* SecondViewController.xib */,
-				C9E217721828740B00A58EAD /* MyImagePickerController.h */,
-				C9E217731828740B00A58EAD /* MyImagePickerController.m */,
+				324DD41919A436A600E85278 /* MyImagePickerController.swift */,
 				C9E2175018286A5100A58EAD /* Images.xcassets */,
 				C9E2173F18286A5100A58EAD /* Supporting Files */,
+				324DD41419A42F5500E85278 /* ch30p962takeAPicture2-Bridging-Header.h */,
 			);
 			path = ch30p962takeAPicture2;
 			sourceTree = "<group>";
@@ -182,11 +178,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9E217701828707400A58EAD /* SecondViewController.m in Sources */,
-				C9E2174F18286A5100A58EAD /* ViewController.m in Sources */,
-				C9E217741828740B00A58EAD /* MyImagePickerController.m in Sources */,
+				324DD41819A4346200E85278 /* SecondViewController.swift in Sources */,
+				324DD41619A42F5500E85278 /* ViewController.swift in Sources */,
 				C9E2174918286A5100A58EAD /* AppDelegate.m in Sources */,
 				C9E2174518286A5100A58EAD /* main.m in Sources */,
+				324DD41A19A436A600E85278 /* MyImagePickerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,10 +286,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch30p962takeAPicture2/ch30p962takeAPicture2-Prefix.pch";
 				INFOPLIST_FILE = "ch30p962takeAPicture2/ch30p962takeAPicture2-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch30p962takeAPicture2/ch30p962takeAPicture2-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -304,10 +304,13 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch30p962takeAPicture2/ch30p962takeAPicture2-Prefix.pch";
 				INFOPLIST_FILE = "ch30p962takeAPicture2/ch30p962takeAPicture2-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch30p962takeAPicture2/ch30p962takeAPicture2-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
