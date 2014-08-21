@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		326E425E19A65C14005BF906 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326E425D19A65C14005BF906 /* ViewController.swift */; };
+		326E426819A6689A005BF906 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326E426719A6689A005BF906 /* ShareViewController.swift */; };
+		326E426A19A6689A005BF906 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 326E426919A6689A005BF906 /* MainInterface.storyboard */; };
+		326E426D19A6689A005BF906 /* Electrocute.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 326E426319A6689A005BF906 /* Electrocute.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		326E427519A67126005BF906 /* VoltageChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326E427419A67126005BF906 /* VoltageChooser.swift */; };
 		C9E0A300182B00DF0099B0CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E0A2FF182B00DF0099B0CD /* Foundation.framework */; };
 		C9E0A302182B00DF0099B0CD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E0A301182B00DF0099B0CD /* CoreGraphics.framework */; };
 		C9E0A304182B00DF0099B0CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E0A303182B00DF0099B0CD /* UIKit.framework */; };
@@ -18,8 +22,44 @@
 		C9E0A318182B00DF0099B0CD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E0A317182B00DF0099B0CD /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		326E426B19A6689A005BF906 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9E0A2F4182B00DF0099B0CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 326E426219A6689A005BF906;
+			remoteInfo = Electrocute;
+		};
+		326E426E19A6689B005BF906 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9E0A2F4182B00DF0099B0CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 326E426219A6689A005BF906;
+			remoteInfo = Electrocute;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		326E427319A6689B005BF906 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				326E426D19A6689A005BF906 /* Electrocute.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		326E425D19A65C14005BF906 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		326E426319A6689A005BF906 /* Electrocute.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Electrocute.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		326E426619A6689A005BF906 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		326E426719A6689A005BF906 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		326E426919A6689A005BF906 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		326E427419A67126005BF906 /* VoltageChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoltageChooser.swift; sourceTree = "<group>"; };
 		C9E0A2FC182B00DF0099B0CD /* ch33p1004social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch33p1004social.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E0A2FF182B00DF0099B0CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9E0A301182B00DF0099B0CD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -36,6 +76,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		326E426019A6689A005BF906 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9E0A2F9182B00DF0099B0CD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -49,10 +96,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		326E426419A6689A005BF906 /* Electrocute */ = {
+			isa = PBXGroup;
+			children = (
+				326E426719A6689A005BF906 /* ShareViewController.swift */,
+				326E427419A67126005BF906 /* VoltageChooser.swift */,
+				326E426919A6689A005BF906 /* MainInterface.storyboard */,
+				326E426519A6689A005BF906 /* Supporting Files */,
+			);
+			path = Electrocute;
+			sourceTree = "<group>";
+		};
+		326E426519A6689A005BF906 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				326E426619A6689A005BF906 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		C9E0A2F3182B00DF0099B0CD = {
 			isa = PBXGroup;
 			children = (
 				C9E0A305182B00DF0099B0CD /* ch33p1004social */,
+				326E426419A6689A005BF906 /* Electrocute */,
 				C9E0A2FE182B00DF0099B0CD /* Frameworks */,
 				C9E0A2FD182B00DF0099B0CD /* Products */,
 			);
@@ -62,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				C9E0A2FC182B00DF0099B0CD /* ch33p1004social.app */,
+				326E426319A6689A005BF906 /* Electrocute.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,6 +172,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		326E426219A6689A005BF906 /* Electrocute */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 326E427019A6689B005BF906 /* Build configuration list for PBXNativeTarget "Electrocute" */;
+			buildPhases = (
+				326E425F19A6689A005BF906 /* Sources */,
+				326E426019A6689A005BF906 /* Frameworks */,
+				326E426119A6689A005BF906 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Electrocute;
+			productName = Electrocute;
+			productReference = 326E426319A6689A005BF906 /* Electrocute.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C9E0A2FB182B00DF0099B0CD /* ch33p1004social */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9E0A32E182B00DF0099B0CD /* Build configuration list for PBXNativeTarget "ch33p1004social" */;
@@ -111,10 +196,13 @@
 				C9E0A2F8182B00DF0099B0CD /* Sources */,
 				C9E0A2F9182B00DF0099B0CD /* Frameworks */,
 				C9E0A2FA182B00DF0099B0CD /* Resources */,
+				326E427319A6689B005BF906 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				326E426C19A6689A005BF906 /* PBXTargetDependency */,
+				326E426F19A6689B005BF906 /* PBXTargetDependency */,
 			);
 			name = ch33p1004social;
 			productName = ch33p1004social;
@@ -129,6 +217,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					326E426219A6689A005BF906 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
 			};
 			buildConfigurationList = C9E0A2F7182B00DF0099B0CD /* Build configuration list for PBXProject "ch33p1004social" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -144,11 +237,20 @@
 			projectRoot = "";
 			targets = (
 				C9E0A2FB182B00DF0099B0CD /* ch33p1004social */,
+				326E426219A6689A005BF906 /* Electrocute */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		326E426119A6689A005BF906 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				326E426A19A6689A005BF906 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9E0A2FA182B00DF0099B0CD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -162,6 +264,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		326E425F19A6689A005BF906 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				326E427519A67126005BF906 /* VoltageChooser.swift in Sources */,
+				326E426819A6689A005BF906 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9E0A2F8182B00DF0099B0CD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -173,6 +284,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		326E426C19A6689A005BF906 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 326E426219A6689A005BF906 /* Electrocute */;
+			targetProxy = 326E426B19A6689A005BF906 /* PBXContainerItemProxy */;
+		};
+		326E426F19A6689B005BF906 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 326E426219A6689A005BF906 /* Electrocute */;
+			targetProxy = 326E426E19A6689B005BF906 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C9E0A308182B00DF0099B0CD /* InfoPlist.strings */ = {
@@ -194,6 +318,39 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		326E427119A6689B005BF906 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = Electrocute/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		326E427219A6689B005BF906 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = Electrocute/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		C9E0A32C182B00DF0099B0CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -304,6 +461,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		326E427019A6689B005BF906 /* Build configuration list for PBXNativeTarget "Electrocute" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				326E427119A6689B005BF906 /* Debug */,
+				326E427219A6689B005BF906 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C9E0A2F7182B00DF0099B0CD /* Build configuration list for PBXProject "ch33p1004social" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
