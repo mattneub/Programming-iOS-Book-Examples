@@ -12,6 +12,7 @@ import UIKit
         
         self.window!.rootViewController = UIViewController()
         let mainview = self.window!.rootViewController.view
+        let MPI = CGFloat(M_PI) // shut the compiler up
         
         let which = 1
         switch which {
@@ -23,7 +24,7 @@ import UIKit
             mainview.addSubview(v1)
             v1.addSubview(v2)
             
-            v1.transform = CGAffineTransformMakeRotation(CGFloat(45 * M_PI/180.0))
+            v1.transform = CGAffineTransformMakeRotation(45 * MPI/180.0)
             println(v1.frame)
             
         case 2:
@@ -45,7 +46,7 @@ import UIKit
             v1.addSubview(v2)
             
             v2.transform = CGAffineTransformMakeTranslation(100, 0)
-            v2.transform = CGAffineTransformRotate(v2.transform, CGFloat(45 * M_PI/180.0))
+            v2.transform = CGAffineTransformRotate(v2.transform, 45 * MPI/180.0)
             
         case 4:
             let v1 = UIView(frame:CGRectMake(20, 111, 132, 194))
@@ -55,7 +56,7 @@ import UIKit
             mainview.addSubview(v1)
             v1.addSubview(v2)
             
-            v2.transform = CGAffineTransformMakeRotation(CGFloat(45 * M_PI/180.0))
+            v2.transform = CGAffineTransformMakeRotation(45 * MPI/180.0)
             v2.transform = CGAffineTransformTranslate(v2.transform, 100, 0)
             
         case 5: // same as case 4 but using concat
@@ -66,7 +67,7 @@ import UIKit
             mainview.addSubview(v1)
             v1.addSubview(v2)
             
-            let r = CGAffineTransformMakeRotation(CGFloat(45 * M_PI/180.0))
+            let r = CGAffineTransformMakeRotation(45 * MPI/180.0)
             let t = CGAffineTransformMakeTranslation(100, 0)
             v2.transform = CGAffineTransformConcat(t,r) // not r,t
             
@@ -78,10 +79,10 @@ import UIKit
             mainview.addSubview(v1)
             v1.addSubview(v2)
 
-            let r = CGAffineTransformMakeRotation(CGFloat(45 * M_PI/180.0));
-            let t = CGAffineTransformMakeTranslation(100, 0);
-            v2.transform = CGAffineTransformConcat(t,r);
-            v2.transform = CGAffineTransformConcat(CGAffineTransformInvert(r), v2.transform);
+            let r = CGAffineTransformMakeRotation(45 * MPI/180.0)
+            let t = CGAffineTransformMakeTranslation(100, 0)
+            v2.transform = CGAffineTransformConcat(t,r)
+            v2.transform = CGAffineTransformConcat(CGAffineTransformInvert(r), v2.transform)
             
         case 7:
             let v1 = UIView(frame:CGRectMake(113, 111, 132, 194))
