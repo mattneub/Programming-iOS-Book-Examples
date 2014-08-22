@@ -11,6 +11,12 @@ func imageFromContextOfSize(size:CGSize, closure:() -> ()) -> UIImage {
     return result
 }
 
+/*
+NB New in iOS 7, MPMediaItem properties can be access directly
+But I never got the memo, so I'm behind on this change!
+Thus we can eliminate the use of valueForProperty throughout
+*/
+
 class ViewController: UIViewController {
     
     var q : MPMediaItemCollection!
@@ -82,7 +88,7 @@ class ViewController: UIViewController {
         let result = query.collections as [MPMediaItemCollection]
         // prove we've performed the query, by logging the album titles
         for album in result {
-            println(album.representativeItem.valueForProperty(MPMediaItemPropertyAlbumTitle))
+            println(album.representativeItem.albumTitle)
         }
         return; // testing
         // cloud item values are 0 and 1, meaning false and true
@@ -96,35 +102,34 @@ class ViewController: UIViewController {
     @IBAction func doBeethovenAlbumTitles (sender:AnyObject!) {
         let query = MPMediaQuery.albumsQuery()
         let hasBeethoven = MPMediaPropertyPredicate(value:"Beethoven",
-            forProperty:MPMediaItemPropertyAlbumTitle,
+            forProperty:"albumTitle",
             comparisonType:.Contains)
         query.addFilterPredicate(hasBeethoven)
         let result = query.collections as [MPMediaItemCollection]
         for album in result {
-            println(album.representativeItem.valueForProperty(MPMediaItemPropertyAlbumTitle))
+            println(album.representativeItem.albumTitle)
         }
     }
     
     @IBAction func doSonataAlbumsOnDevice (sender:AnyObject!) {
         let query = MPMediaQuery.albumsQuery()
         let hasSonata = MPMediaPropertyPredicate(value:"Sonata",
-            forProperty:MPMediaItemPropertyTitle,
+            forProperty:"title",
             comparisonType:.Contains)
         query.addFilterPredicate(hasSonata)
-        
         let isPresent = MPMediaPropertyPredicate(value:false,
-            forProperty:MPMediaItemPropertyIsCloudItem,
+            forProperty:"isCloudItem", // string name of property incorrect in header
             comparisonType:.EqualTo)
         query.addFilterPredicate(isPresent)
         
         let result = query.collections as [MPMediaItemCollection]
         for album in result {
-            println(album.representativeItem.valueForProperty(MPMediaItemPropertyAlbumTitle))
+            println(album.representativeItem.albumTitle)
         }
         // and here are the songs in the first of those albums
         let album = result[0]
         for song in album.items as [MPMediaItem] {
-            println(song.valueForProperty(MPMediaItemPropertyTitle))
+            println(song.title)
         }
     }
     
@@ -132,12 +137,12 @@ class ViewController: UIViewController {
         let query = MPMediaQuery.songsQuery()
         // always need to filter out songs that aren't present
         let isPresent = MPMediaPropertyPredicate(value:false,
-            forProperty:MPMediaItemPropertyIsCloudItem,
+            forProperty:"isCloudItem",
             comparisonType:.EqualTo)
         query.addFilterPredicate(isPresent)
         
         let shorties = (query.items as [MPMediaItem]).filter {
-            let dur = $0.valueForProperty(MPMediaItemPropertyPlaybackDuration) as NSNumber
+            let dur = $0.playbackDuration as NSNumber
             return dur.floatValue < 30
         }
         
@@ -163,7 +168,7 @@ class ViewController: UIViewController {
         self.label.text = ""
         let player = MPMusicPlayerController.applicationMusicPlayer()
         if n.object === player { // just playing safe
-            if let title : AnyObject = player.nowPlayingItem?.valueForProperty(MPMediaItemPropertyTitle) {
+            if let title : AnyObject = player.nowPlayingItem?.title {
                 if let title = title as? String {
                     let ix = player.indexOfNowPlayingItem
                     if ix != NSNotFound {
@@ -184,7 +189,7 @@ class ViewController: UIViewController {
         }
         self.prog.hidden = false
         let current = player.currentPlaybackTime
-        let total = (item.valueForProperty(MPMediaItemPropertyPlaybackDuration) as NSNumber).doubleValue
+        let total = (item.playbackDuration as NSNumber).doubleValue
         self.prog.progress = Float(current / total)
     }
 
