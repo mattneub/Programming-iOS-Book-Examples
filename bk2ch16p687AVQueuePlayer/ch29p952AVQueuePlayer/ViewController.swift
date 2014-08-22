@@ -4,6 +4,7 @@ import UIKit
 import MediaPlayer
 import AVFoundation
 import CoreMedia
+import AVKit
 
 protocol PlayerPauser {
     var playing : Bool {get}
@@ -59,10 +60,10 @@ class ViewController: UIViewController {
         let query = MPMediaQuery.songsQuery()
         // always need to filter out songs that aren't present
         let isPresent = MPMediaPropertyPredicate(value:false,
-            forProperty:MPMediaItemPropertyIsCloudItem,
+            forProperty:"isCloudItem",
             comparisonType:.EqualTo)
         query.addFilterPredicate(isPresent)
-        return query.items[0].valueForProperty(MPMediaItemPropertyAssetURL) as NSURL
+        return query.items[0].assetURL
     }
     
     @IBAction func doPlayOneSongAVAudioPlayer (sender:AnyObject!) {
@@ -89,17 +90,37 @@ class ViewController: UIViewController {
         self.curplayer = self.avplayer
     }
     
+    @IBAction func doPlayOneSongAVKit(sender: AnyObject) {
+        let url = self.oneSong()
+        let p = AVPlayer(URL:url)
+        let vc = AVPlayerViewController()
+        vc.player = p
+        vc.view.frame = CGRectMake(20,10,250,60) // no smaller height or we get constraint issues
+        // cover the black background, heh heh
+        let v = UIView(frame:CGRectMake(0,0,250,60))
+        v.backgroundColor = UIColor.blackColor()
+        vc.contentOverlayView.addSubview(v)
+        let v2 = UIView(frame:CGRectMake(0,0,250,20))
+        v2.backgroundColor = UIColor.whiteColor()
+        vc.contentOverlayView.addSubview(v2)
+
+        self.addChildViewController(vc)
+        self.view.addSubview(vc.view)
+        vc.didMoveToParentViewController(self)
+        p.play()
+    }
+
     @IBAction func doPlayShortSongs (sender:AnyObject!) {
         let query = MPMediaQuery.songsQuery()
         // always need to filter out songs that aren't present
         let isPresent = MPMediaPropertyPredicate(value:false,
-            forProperty:MPMediaItemPropertyIsCloudItem,
+            forProperty:"isCloudItem",
             comparisonType:.EqualTo)
         query.addFilterPredicate(isPresent)
         
         let shorties = (query.items as [MPMediaItem]).filter {
-            let dur = $0.valueForProperty(MPMediaItemPropertyPlaybackDuration) as NSNumber
-            return dur.floatValue < 30
+            let dur = $0.playbackDuration
+            return dur < 30
         }
         
         if shorties.count == 0 {
@@ -108,7 +129,11 @@ class ViewController: UIViewController {
         }
         
         self.assets = shorties.map {
-            AVPlayerItem(URL: $0.valueForProperty(MPMediaItemPropertyAssetURL) as NSURL)
+            let url = $0.assetURL
+            let asset = AVAsset.assetWithURL(url) as AVAsset
+            return AVPlayerItem(
+                asset: asset, automaticallyLoadedAssetKeys: ["duration"])
+            // duration needed later; this way, queue player will load it for us up front
         }
         
         self.curnum = 0
@@ -118,9 +143,9 @@ class ViewController: UIViewController {
         self.qp = AVQueuePlayer(items:Array(self.assets[0..<0+seed]))
         self.assets = Array(self.assets[seed..<self.assets.count])
         
-        self.qp.addObserver(self, forKeyPath:"currentItem", options:nil, context:nil)
+        // use .Initial option so that we get an observation for the first item
+        self.qp.addObserver(self, forKeyPath:"currentItem", options:.Initial, context:nil)
         self.qp.play()
-        self.changed()
         self.curplayer = self.qp
         
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
@@ -142,18 +167,25 @@ class ViewController: UIViewController {
             self.timer?.fire()
             return
         }
+        self.curnum++
         var arr = item.asset.commonMetadata
         arr = AVMetadataItem.metadataItemsFromArray(arr,
             withKey:AVMetadataCommonKeyTitle,
             keySpace:AVMetadataKeySpaceCommon)
         let met = arr[0] as AVMetadataItem
         met.loadValuesAsynchronouslyForKeys(["value"]) {
-            dispatch_async(dispatch_get_main_queue()) {
-                self.label.text = "\(++self.curnum) of \(self.total): \(met.value)"
-                MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
-                    MPMediaItemPropertyTitle: met.value
-                    ]
+            // should always check for successful load of value
+            if met.statusOfValueForKey("value", error: nil) == AVKeyValueStatus.Loaded {
+                // can't be sure what thread we're on ...
+                // ...or whether we'll be called back synchronously or asynchronously
+                // so I like to step out to the main thread just in case
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.label.text = "\(self.curnum) of \(self.total): \(met.value)"
+                    MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
+                        MPMediaItemPropertyTitle: met.value
+                        ]
                 }
+            }
         }
         if self.assets.count == 0 {
             return
@@ -168,13 +200,11 @@ class ViewController: UIViewController {
     func timerFired(sender:AnyObject) {
         if let item = self.qp.currentItem {
             let asset = item.asset
-            asset.loadValuesAsynchronouslyForKeys(["duration"]) {
-                dispatch_async(dispatch_get_main_queue()) {
-                    let cur = self.qp.currentTime()
-                    let dur = asset.duration
-                    self.prog.progress = Float(CMTimeGetSeconds(cur)/CMTimeGetSeconds(dur))
-                    self.prog.hidden = false
-                    }
+            if asset.statusOfValueForKey("duration", error: nil) == .Loaded {
+                let cur = self.qp.currentTime()
+                let dur = asset.duration
+                self.prog.progress = Float(CMTimeGetSeconds(cur)/CMTimeGetSeconds(dur))
+                self.prog.hidden = false
             }
         } else {
             self.label.text = ""
