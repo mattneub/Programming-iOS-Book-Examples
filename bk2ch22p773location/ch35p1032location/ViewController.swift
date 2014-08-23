@@ -11,6 +11,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let ok = CLLocationManager.locationServicesEnabled()
         if !ok {
             println("Alas") // could put up an alert
+            // alternatively, just keep going and request authorization:
+            // system will put up a dialog suggesting the user turn on Location Services
             return
         }
         let stat = CLLocationManager.authorizationStatus()
@@ -32,7 +34,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             // if user does this, we will _NOT_ crash!
             return
         }
-        locman.requestWhenInUseAuthorization() // if this causes the request dialog...
+        locman.requestWhenInUseAuthorization()
+        // if Location Services is off and we get here, system will suggest turning it on
+        // if it's on and undetermined, we get the request dialog...
         // ... and if the user denies us, then startUpdatingLocation() will fail...
         // ... and we will fall into didFailWithError - so we'll shut everything down there
         if self.trying { return }
