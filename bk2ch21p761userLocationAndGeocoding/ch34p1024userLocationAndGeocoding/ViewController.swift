@@ -34,14 +34,8 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         // and this request will be ignored without a corresponding reason in the Info.plist
         self.locman.requestWhenInUseAuthorization()
         self.map.showsUserLocation = true
-    }
-
-    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
-        if mapView.userTrackingMode == .None {
-            let coordinate = userLocation.location.coordinate
-            let reg = MKCoordinateRegionMakeWithDistance(coordinate, 600, 600)
-            mapView.region = reg
-        }
+        self.map.userTrackingMode = .Follow // will cause map to zoom nicely to user location
+        // (the thing I was doing before, adjusting the map region manually, was just wrong)
     }
 
     @IBAction func reportAddress (sender:AnyObject!) {
