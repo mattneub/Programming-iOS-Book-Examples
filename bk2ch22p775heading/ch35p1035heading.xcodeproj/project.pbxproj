@@ -14,8 +14,8 @@
 		3228D8BA182ED6DD00EBC319 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3228D8B9182ED6DD00EBC319 /* main.m */; };
 		3228D8BE182ED6DD00EBC319 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3228D8BD182ED6DD00EBC319 /* AppDelegate.m */; };
 		3228D8C1182ED6DD00EBC319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3228D8BF182ED6DD00EBC319 /* Main.storyboard */; };
-		3228D8C4182ED6DD00EBC319 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3228D8C3182ED6DD00EBC319 /* ViewController.m */; };
 		3228D8C6182ED6DD00EBC319 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3228D8C5182ED6DD00EBC319 /* Images.xcassets */; };
+		3294362F19A91C8600F0FE9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3294362E19A91C8600F0FE9F /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +30,9 @@
 		3228D8BC182ED6DD00EBC319 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3228D8BD182ED6DD00EBC319 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3228D8C0182ED6DD00EBC319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3228D8C2182ED6DD00EBC319 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3228D8C3182ED6DD00EBC319 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3228D8C5182ED6DD00EBC319 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3228D8CC182ED6DD00EBC319 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3294362E19A91C8600F0FE9F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +83,7 @@
 				3228D8BC182ED6DD00EBC319 /* AppDelegate.h */,
 				3228D8BD182ED6DD00EBC319 /* AppDelegate.m */,
 				3228D8BF182ED6DD00EBC319 /* Main.storyboard */,
-				3228D8C2182ED6DD00EBC319 /* ViewController.h */,
-				3228D8C3182ED6DD00EBC319 /* ViewController.m */,
+				3294362E19A91C8600F0FE9F /* ViewController.swift */,
 				3228D8C5182ED6DD00EBC319 /* Images.xcassets */,
 				3228D8B4182ED6DD00EBC319 /* Supporting Files */,
 			);
@@ -177,8 +175,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3228D8C4182ED6DD00EBC319 /* ViewController.m in Sources */,
 				3228D8BE182ED6DD00EBC319 /* AppDelegate.m in Sources */,
+				3294362F19A91C8600F0FE9F /* ViewController.swift in Sources */,
 				3228D8BA182ED6DD00EBC319 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -271,7 +269,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -283,10 +281,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch35p1035heading/ch35p1035heading-Prefix.pch";
 				INFOPLIST_FILE = "ch35p1035heading/ch35p1035heading-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -297,9 +299,12 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch35p1035heading/ch35p1035heading-Prefix.pch";
 				INFOPLIST_FILE = "ch35p1035heading/ch35p1035heading-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
