@@ -32,6 +32,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         // new in iOS 8, can't simply switch this on
         // must request authorization first
         // and this request will be ignored without a corresponding reason in the Info.plist
+        // (see next chapter for full dance)
         self.locman.requestWhenInUseAuthorization()
         self.map.showsUserLocation = true
         self.map.userTrackingMode = .Follow // will cause map to zoom nicely to user location
