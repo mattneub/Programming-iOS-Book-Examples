@@ -4,6 +4,14 @@ import UIKit
 import MediaPlayer
 import MobileCoreServices
 import Photos
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
 
 class ViewController: UIViewController {
     var mpc : MPMoviePlayerController!
@@ -16,35 +24,59 @@ class ViewController: UIViewController {
         }
         return Int(UIInterfaceOrientationMask.Landscape.toRaw())
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+
+    func determineStatus() -> Bool {
         // access permission dialog will appear automatically if necessary...
         // ...when we try to present the UIImagePickerController
         // however, things then proceed asynchronously
         // so it can look better to try to ascertain permission in advance
         let status = PHPhotoLibrary.authorizationStatus()
+        self.status = status
         switch status {
+        case .Authorized:
+            return true
         case .NotDetermined:
             PHPhotoLibrary.requestAuthorization({
                 status in
                 self.status = status
             })
-        default:
-            self.status = status
+            return false
+        case .Restricted:
+            return false
+        case .Denied:
+            // new iOS 8 feature: sane way of getting the user directly to the relevant prefs
+            // I think the crash-in-background issue is now gone
+            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Photos library?", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+                _ in
+                let url = NSURL(string:UIApplicationOpenSettingsURLString)
+                UIApplication.sharedApplication().openURL(url)
+            }))
+            self.presentViewController(alert, animated:true, completion:nil)
+            return false
+        }
+    }
+
+    /*
+    New authorization strategy: check for authorization when we first appear,
+    when we are brought back to the front,
+    and when the user taps a button whose functionality needs authorization
+    */
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.determineStatus()
+        delay (2) {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "determineStatus", name: UIApplicationDidBecomeActiveNotification, object: nil)
         }
     }
     
     @IBAction func doPick (sender:AnyObject!) {
-        // by this time we have status, so we can bow out or whatever
-        if self.status != .Authorized {
-            // might do something here if denied, like put up an alert asking for authorization
+        if !self.determineStatus() {
             println("not authorized")
             return
         }
-        // NB if user previously denied, then authorizes us in Settings while we're running,
-        // **we will crash in the background**
-        // I've always regarded this as a bug...
         
         let src = UIImagePickerControllerSourceType.PhotoLibrary
         let ok = UIImagePickerController.isSourceTypeAvailable(src)
@@ -95,12 +127,12 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
                 im = edim
             }
             self.dismissViewControllerAnimated(true) {
-                let type = info[UIImagePickerControllerMediaType] as NSString
+                let type = info[UIImagePickerControllerMediaType] as NSString?
                 // idiotic foo to evade casting issues; Swift doesn't know CFString is NSString?
                 let typeim = kUTTypeImage as NSString
                 let typemovie = kUTTypeMovie as NSString
                 if type != nil {
-                    switch type {
+                    switch type! {
                     case typeim:
                         if im != nil {
                             self.showImage(im!)

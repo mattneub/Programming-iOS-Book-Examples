@@ -2,37 +2,67 @@
 
 import UIKit
 import Photos
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
 
 class ViewController: UIViewController {
     var status = PHAuthorizationStatus.NotDetermined
     var albums : PHFetchResult!
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    func determineStatus() -> Bool {
         // access permission dialog will appear automatically if necessary...
         // ...when we try to present the UIImagePickerController
         // however, things then proceed asynchronously
         // so it can look better to try to ascertain permission in advance
         let status = PHPhotoLibrary.authorizationStatus()
+        self.status = status
         switch status {
+        case .Authorized:
+            return true
         case .NotDetermined:
             PHPhotoLibrary.requestAuthorization({
                 status in
                 self.status = status
             })
-        default:
-            self.status = status
+            return false
+        case .Restricted:
+            return false
+        case .Denied:
+            // new iOS 8 feature: sane way of getting the user directly to the relevant prefs
+            // I think the crash-in-background issue is now gone
+            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Photos library?", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+                _ in
+                let url = NSURL(string:UIApplicationOpenSettingsURLString)
+                UIApplication.sharedApplication().openURL(url)
+            }))
+            self.presentViewController(alert, animated:true, completion:nil)
+            return false
         }
-        
-        PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.determineStatus()
+        delay (2) {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "determineStatus", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        }
+        PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self) // *
+    }
+
+
     @IBAction func doButton(sender: AnyObject) {
-        if self.status != .Authorized {
+        if !self.determineStatus() {
             println("not authorized")
             return
         }
-
         
         let opts = PHFetchOptions()
         let desc = NSSortDescriptor(key: "startDate", ascending: true)
@@ -57,7 +87,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func doButton2(sender: AnyObject) {
-        if self.status != .Authorized {
+        if !self.determineStatus() {
             println("not authorized")
             return
         }
@@ -73,7 +103,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func doButton3(sender: AnyObject) {
-        if self.status != .Authorized {
+        if !self.determineStatus() {
             println("not authorized")
             return
         }
@@ -99,6 +129,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func doButton4(sender: AnyObject) {
+        if !self.determineStatus() {
+            println("not authorized")
+            return
+        }
+
         // modification of the library
         // all modifications operate through their own "changeRequest" class
         // so, for example, to create or delete a PHAssetCollection,
@@ -116,6 +151,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func doButton5(sender: AnyObject) {
+        if !self.determineStatus() {
+            println("not authorized")
+            return
+        }
+
         let opts = PHFetchOptions()
         opts.wantsIncrementalChangeDetails = false // not used
         // imagine first that we are displaying a list of all regular albums...
