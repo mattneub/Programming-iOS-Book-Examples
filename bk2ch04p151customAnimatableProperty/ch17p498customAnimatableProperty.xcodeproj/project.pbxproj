@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3210907519AA4BD2003A3D6B /* MyLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA73D17B952A6009F3ED0 /* MyLayer.m */; };
 		328B01DA1970BA9C000DB939 /* MyViewAndLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B01D91970BA9C000DB939 /* MyViewAndLayer.swift */; };
 		328B01DE1970BEB4000DB939 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B01DD1970BEB4000DB939 /* ViewController.swift */; };
 		C9BFA70817B95260009F3ED0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BFA70717B95260009F3ED0 /* Foundation.framework */; };
@@ -17,7 +18,6 @@
 		C9BFA71817B95260009F3ED0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA71717B95260009F3ED0 /* AppDelegate.m */; };
 		C9BFA71B17B95260009F3ED0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BFA71917B95260009F3ED0 /* Main.storyboard */; };
 		C9BFA72017B95260009F3ED0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BFA71F17B95260009F3ED0 /* Images.xcassets */; };
-		C9BFA74017B952A6009F3ED0 /* MyLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA73D17B952A6009F3ED0 /* MyLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -177,10 +177,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				328B01DE1970BEB4000DB939 /* ViewController.swift in Sources */,
+				3210907519AA4BD2003A3D6B /* MyLayer.m in Sources */,
 				C9BFA71817B95260009F3ED0 /* AppDelegate.m in Sources */,
 				C9BFA71417B95260009F3ED0 /* main.m in Sources */,
 				328B01DA1970BA9C000DB939 /* MyViewAndLayer.swift in Sources */,
-				C9BFA74017B952A6009F3ED0 /* MyLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

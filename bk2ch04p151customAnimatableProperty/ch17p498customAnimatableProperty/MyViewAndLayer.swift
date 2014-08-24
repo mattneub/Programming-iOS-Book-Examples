@@ -12,19 +12,19 @@ class MyView : UIView { // exists purely to host MyLayer
 
 // see also Nick Lockwood's discussion http://www.objc.io/issue-12/animating-custom-layer-properties.html
 
-extension MyLayer {
+public extension MyLayer {
     
     // this Swift extension contains everything except the @dynamic declaration...
     // ...which can only be made in Objective-C
     
-    override public class func needsDisplayForKey(key: String!) -> Bool {
+    override class func needsDisplayForKey(key: String!) -> Bool {
         if key == "thickness" {
             return true
         }
     return super.needsDisplayForKey(key)
     }
 
-    override public func drawInContext(con: CGContext!) {
+    override func drawInContext(con: CGContext!) {
         let r = self.bounds.rectByInsetting(dx:20, dy:20)
         CGContextSetFillColorWithColor(con, UIColor.redColor().CGColor)
         CGContextFillRect(con, r)
@@ -32,12 +32,11 @@ extension MyLayer {
         CGContextStrokeRect(con, r)
     }
     
-    // not completely necessary to add this next bit...
-    // unless, in addition to explicit animation, you want implicit animation
+    // this plus the "dynamic" declaration is what what permits *implicit* animation
     // NB that we can implicitly animate even for view's underlying layer!
     // this is something the book has always been wrong about
     
-    override public func actionForKey(key: String!) -> CAAction! {
+    override func actionForKey(key: String!) -> CAAction! {
         if key == "thickness" {
             let ba = CABasicAnimation(keyPath: key)
             // stolen directly from Apple's sample code:
