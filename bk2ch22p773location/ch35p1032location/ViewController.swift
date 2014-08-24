@@ -7,34 +7,42 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var startTime : NSDate!
     var trying = false
     
-    @IBAction func doFindMe (sender:AnyObject!) {
+    func determineStatus() -> Bool {
         let ok = CLLocationManager.locationServicesEnabled()
         if !ok {
-            println("Alas") // could put up an alert
-            // alternatively, just keep going and request authorization:
+            locman.requestWhenInUseAuthorization()
             // system will put up a dialog suggesting the user turn on Location Services
-            return
+            return true
         }
-        let stat = CLLocationManager.authorizationStatus()
-        if stat == CLAuthorizationStatus.Restricted {
-            println("Oh, well") // pointless, we can't be enabled
-            return
-        }
-        // new iOS 8 feature: we can switch to our own preferences...
-        // ...so if user has denied us, we can urge authorization on our behalf
-        if stat == CLAuthorizationStatus.Denied {
-            let alert = UIAlertController(title: "Authorization Needed", message: "Wouldn't you like to authorize this app's use of Location Services?", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        let status = CLLocationManager.authorizationStatus()
+        switch status {
+        case .Authorized, .AuthorizedWhenInUse:
+            return true
+        case .NotDetermined:
+            locman.requestWhenInUseAuthorization()
+            return true // NB, this is different from strategy in previous chapters
+        case .Restricted:
+            return false
+        case .Denied:
+            // new iOS 8 feature: sane way of getting the user directly to the relevant prefs
+            // I think the crash-in-background issue is now gone
+            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use Location Services?", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
                 _ in
-                let url = NSURL(string: UIApplicationOpenSettingsURLString)
+                let url = NSURL(string:UIApplicationOpenSettingsURLString)
                 UIApplication.sharedApplication().openURL(url)
             }))
-            self.presentViewController(alert, animated: true, completion: nil)
-            // if user does this, we will _NOT_ crash!
+            self.presentViewController(alert, animated:true, completion:nil)
+            return false
+        }
+    }
+    
+    @IBAction func doFindMe (sender:AnyObject!) {
+        if !self.determineStatus() {
+            println("not authorized")
             return
         }
-        locman.requestWhenInUseAuthorization()
         // if Location Services is off and we get here, system will suggest turning it on
         // if it's on and undetermined, we get the request dialog...
         // ... and if the user denies us, then startUpdatingLocation() will fail...
