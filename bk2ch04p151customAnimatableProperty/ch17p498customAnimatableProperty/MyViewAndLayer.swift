@@ -10,6 +10,8 @@ class MyView : UIView { // exists purely to host MyLayer
     override func drawRect(rect: CGRect) {} // so that layer will draw itself
 }
 
+// see also Nick Lockwood's discussion http://www.objc.io/issue-12/animating-custom-layer-properties.html
+
 extension MyLayer {
     
     // this Swift extension contains everything except the @dynamic declaration...
