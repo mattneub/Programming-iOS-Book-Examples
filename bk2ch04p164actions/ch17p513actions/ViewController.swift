@@ -104,7 +104,7 @@ class MyLayer : CALayer {
     
     override func actionForKey(key: String!) -> CAAction! {
         if key == "position" {
-            if self.valueForKey("suppressPositionAnimation") {
+            if self.valueForKey("suppressPositionAnimation") != nil {
                 return nil
             }
         }
@@ -162,7 +162,7 @@ extension ViewController {
         
         // on opacity change with "byebye" key, "pop" out of sight
         if key == "opacity" {
-            if CATransaction.valueForKey("byebye") {
+            if CATransaction.valueForKey("byebye") != nil {
                 let anim1 = CABasicAnimation(keyPath:"opacity")
                 anim1.fromValue = layer.opacity
                 anim1.toValue = 0.0
