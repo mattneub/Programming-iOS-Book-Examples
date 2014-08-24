@@ -4,40 +4,59 @@ import UIKit
 import EventKit
 import EventKitUI
 
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
+
+
 class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDelegate, EKCalendarChooserDelegate {
-    var database : EKEventStore!
+    var database = EKEventStore()
     var napid : String!
-    var authDone = false
     var calsToDelete : NSSet!
+    
+    func determineStatus() -> Bool {
+        let type = EKEntityTypeEvent
+        let stat = EKEventStore.authorizationStatusForEntityType(type)
+        switch stat {
+        case .Authorized:
+            return true
+        case .NotDetermined:
+            database.requestAccessToEntityType(type, completion:nil)
+            return false
+        case .Restricted:
+            return false
+        case .Denied:
+            // new iOS 8 feature: sane way of getting the user directly to the relevant prefs
+            // I think the crash-in-background issue is now gone
+            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Calendar?", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+                _ in
+                let url = NSURL(string:UIApplicationOpenSettingsURLString)
+                UIApplication.sharedApplication().openURL(url)
+            }))
+            self.presentViewController(alert, animated:true, completion:nil)
+            return false
+        }
+    }
+
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let type = EKEntityTypeEvent
-        if !self.authDone {
-            self.authDone = true
-            let stat = EKEventStore.authorizationStatusForEntityType(type)
-            switch stat {
-            case .Denied, .Restricted:
-                println("no access")
-            case .Authorized, .NotDetermined:
-                let database = EKEventStore()
-                database.requestAccessToEntityType(type) {
-                    (granted:Bool, err:NSError!) in
-                    dispatch_async(dispatch_get_main_queue()) {
-                        if granted {
-                            self.database = database
-                        } else {
-                            println(err)
-                        }
-                    }
-                }
-            }
+        self.determineStatus()
+        delay (2) {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "determineStatus", name: UIApplicationDidBecomeActiveNotification, object: nil)
         }
     }
 
     @IBAction func createCalendar (sender:AnyObject!) {
-        if self.database == nil {
-            println("no access")
+        if !self.determineStatus() {
+            println("not authorized")
             return
         }
         // obtain local source
@@ -78,8 +97,8 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     }
     
     @IBAction func createSimpleEvent (sender:AnyObject!) {
-        if self.database == nil {
-            println("no access")
+        if !self.determineStatus() {
+            println("not authorized")
             return
         }
         
@@ -119,8 +138,8 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     }
 
     @IBAction func createRecurringEvent (sender:AnyObject!) {
-        if self.database == nil {
-            println("no access")
+        if !self.determineStatus() {
+            println("not authorized")
             return
         }
         
@@ -168,8 +187,8 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     }
     
     @IBAction func searchByRange (sender:AnyObject!) {
-        if self.database == nil {
-            println("no access")
+        if !self.determineStatus() {
+            println("not authorized")
             return
         }
         
@@ -204,8 +223,8 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     // ========
 
     @IBAction func showEventUI (sender:AnyObject!) {
-        if self.database == nil {
-            println("no access")
+        if !self.determineStatus() {
+            println("not authorized")
             return
         }
         if self.napid == nil {

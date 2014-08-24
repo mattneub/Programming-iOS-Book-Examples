@@ -3,46 +3,74 @@ import UIKit
 import AddressBook
 import AddressBookUI
 
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
+
 class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelegate, ABPersonViewControllerDelegate, ABNewPersonViewControllerDelegate, ABUnknownPersonViewControllerDelegate {
 
     // note: if the contacts change behind your back while your app is open...
     // your retained address book will go out of date
     // unfortunately the way around that is to register an external change callback...
     // ...and you can't do that using Swift alone
-    var adbk : ABAddressBook!
-    var authDone = false
+    var adbk : ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
+    
+    func determineStatus() -> Bool {
+        let status = ABAddressBookGetAuthorizationStatus()
+        switch status {
+        case .Authorized:
+            return true
+        case .NotDetermined:
+            ABAddressBookRequestAccessWithCompletion(adbk) {
+                (granted:Bool, err:CFError!) in
+                if granted {
+                    // replace dummy address book we created earlier
+                    var err : Unmanaged<CFError>? = nil
+                    let adbk : ABAddressBook? = ABAddressBookCreateWithOptions(nil, &err).takeRetainedValue()
+                    if adbk == nil {
+                        println(err)
+                        return
+                    }
+                } else {
+                    println(err)
+                }
+            }
+            return false
+        case .Restricted:
+            return false
+        case .Denied:
+            // new iOS 8 feature: sane way of getting the user directly to the relevant prefs
+            // I think the crash-in-background issue is now gone
+            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Contacts?", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+                _ in
+                let url = NSURL(string:UIApplicationOpenSettingsURLString)
+                UIApplication.sharedApplication().openURL(url)
+            }))
+            self.presentViewController(alert, animated:true, completion:nil)
+            return false
+        }
+    }
+
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if !self.authDone {
-            self.authDone = true
-            let stat = ABAddressBookGetAuthorizationStatus()
-            switch stat {
-            case .Denied, .Restricted:
-                println("no access")
-            case .Authorized, .NotDetermined:
-                var err : Unmanaged<CFError>? = nil
-                let adbk : ABAddressBook? = ABAddressBookCreateWithOptions(nil, &err).takeRetainedValue()
-                if adbk == nil {
-                    println(err)
-                    return
-                }
-                ABAddressBookRequestAccessWithCompletion(adbk) {
-                    (granted:Bool, err:CFError!) in
-                    if granted {
-                        self.adbk = adbk
-                    } else {
-                        println(err)
-                    }
-                }
-            }
+        self.determineStatus()
+        delay (2) {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "determineStatus", name: UIApplicationDidBecomeActiveNotification, object: nil)
         }
     }
     
     @IBAction func doFindMoi (sender:AnyObject!) {
         
-        if adbk == nil {
-            println("no access")
+        if !self.determineStatus() {
+            println("not authorized")
             return
         }
         
@@ -72,8 +100,8 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     }
 
     @IBAction func doCreateSnidely (sender:AnyObject!) {
-        if adbk == nil {
-            println("no access")
+        if !self.determineStatus() {
+            println("not authorized")
             return
         }
 
@@ -114,8 +142,8 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     // =========
     
     @IBAction func doViewPerson (sender:AnyObject!) {
-        if adbk == nil {
-            println("no access")
+        if !self.determineStatus() {
+            println("not authorized")
             return
         }
 

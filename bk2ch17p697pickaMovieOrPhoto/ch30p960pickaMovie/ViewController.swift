@@ -15,7 +15,6 @@ func delay(delay:Double, closure:()->()) {
 
 class ViewController: UIViewController {
     var mpc : MPMoviePlayerController!
-    var status = PHAuthorizationStatus.NotDetermined
     @IBOutlet var redView : UIView!
     
     override func supportedInterfaceOrientations() -> Int {
@@ -31,15 +30,11 @@ class ViewController: UIViewController {
         // however, things then proceed asynchronously
         // so it can look better to try to ascertain permission in advance
         let status = PHPhotoLibrary.authorizationStatus()
-        self.status = status
         switch status {
         case .Authorized:
             return true
         case .NotDetermined:
-            PHPhotoLibrary.requestAuthorization({
-                status in
-                self.status = status
-            })
+            PHPhotoLibrary.requestAuthorization(nil)
             return false
         case .Restricted:
             return false

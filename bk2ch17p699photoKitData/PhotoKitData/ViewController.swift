@@ -12,24 +12,15 @@ func delay(delay:Double, closure:()->()) {
 }
 
 class ViewController: UIViewController {
-    var status = PHAuthorizationStatus.NotDetermined
     var albums : PHFetchResult!
 
     func determineStatus() -> Bool {
-        // access permission dialog will appear automatically if necessary...
-        // ...when we try to present the UIImagePickerController
-        // however, things then proceed asynchronously
-        // so it can look better to try to ascertain permission in advance
         let status = PHPhotoLibrary.authorizationStatus()
-        self.status = status
         switch status {
         case .Authorized:
             return true
         case .NotDetermined:
-            PHPhotoLibrary.requestAuthorization({
-                status in
-                self.status = status
-            })
+            PHPhotoLibrary.requestAuthorization(nil)
             return false
         case .Restricted:
             return false

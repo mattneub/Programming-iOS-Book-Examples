@@ -3,39 +3,58 @@
 import UIKit
 import EventKit
 
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
+
+
 class ViewController: UIViewController {
     
-    var authDone = false
-    var database : EKEventStore!
+    var database = EKEventStore()
 
+    func determineStatus() -> Bool {
+        let type = EKEntityTypeReminder // *
+        let stat = EKEventStore.authorizationStatusForEntityType(type)
+        switch stat {
+        case .Authorized:
+            return true
+        case .NotDetermined:
+            database.requestAccessToEntityType(type, completion:nil)
+            return false
+        case .Restricted:
+            return false
+        case .Denied:
+            // new iOS 8 feature: sane way of getting the user directly to the relevant prefs
+            // I think the crash-in-background issue is now gone
+            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Calendar?", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+                _ in
+                let url = NSURL(string:UIApplicationOpenSettingsURLString)
+                UIApplication.sharedApplication().openURL(url)
+            }))
+            self.presentViewController(alert, animated:true, completion:nil)
+            return false
+        }
+    }
+    
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let type = EKEntityTypeReminder // *
-        if !self.authDone {
-            self.authDone = true
-            let stat = EKEventStore.authorizationStatusForEntityType(type)
-            switch stat {
-            case .Denied, .Restricted:
-                println("no access")
-            case .Authorized, .NotDetermined:
-                let database = EKEventStore()
-                database.requestAccessToEntityType(type) {
-                    (granted:Bool, err:NSError!) in
-                    dispatch_async(dispatch_get_main_queue()) {
-                        if granted {
-                            self.database = database
-                        } else {
-                            println(err)
-                        }
-                    }
-                }
-            }
+        self.determineStatus()
+        delay (2) {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "determineStatus", name: UIApplicationDidBecomeActiveNotification, object: nil)
         }
     }
 
     @IBAction func doNewReminder (sender:AnyObject!) {
-        if self.database == nil {
-            println("no access")
+        if !self.determineStatus() {
+            println("not authorized")
             return
         }
         
