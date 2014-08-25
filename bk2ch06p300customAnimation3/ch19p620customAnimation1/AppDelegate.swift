@@ -88,11 +88,11 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             let v1 = tc.viewForKey(UITransitionContextFromViewKey)
             let v2 = tc.viewForKey(UITransitionContextToViewKey)
             
-            r1start.origin.x += (r1end.origin.x-r1start.origin.x)*CGFloat(percent)
+            r1start.origin.x += (r1end.origin.x-r1start.origin.x)*percent
             v1.frame = r1start
             
             var r2start = self.r2start // copy
-            r2start.origin.x += (r2end.origin.x-r2start.origin.x)*CGFloat(percent)
+            r2start.origin.x += (r2end.origin.x-r2start.origin.x)*percent
             v2.frame = r2start
 
             tc.updateInteractiveTransition(percent)
@@ -177,12 +177,12 @@ extension AppDelegate : UIViewControllerInteractiveTransitioning {
         let tbc = self.window!.rootViewController as UITabBarController
         let ix1 = find(tbc.viewControllers as [UIViewController], vc1)
         let ix2 = find(tbc.viewControllers as [UIViewController], vc2)
-        let dir = ix1 < ix2 ? 1 : -1
+        let dir : CGFloat = ix1 < ix2 ? 1 : -1
         var r = r1start
-        r.origin.x -= r.size.width * CGFloat(dir)
+        r.origin.x -= r.size.width * dir
         let r1end = r
         r = r2end
-        r.origin.x += r.size.width * CGFloat(dir)
+        r.origin.x += r.size.width * dir
         let r2start = r
         v2.frame = r2start
         con.addSubview(v2)

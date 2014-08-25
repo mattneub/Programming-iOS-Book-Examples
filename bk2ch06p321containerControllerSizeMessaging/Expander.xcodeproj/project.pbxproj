@@ -11,20 +11,9 @@
 		32101C08197C104800319736 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32101C07197C104800319736 /* ViewController.swift */; };
 		32101C0B197C104800319736 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32101C09197C104800319736 /* Main.storyboard */; };
 		32101C0D197C104800319736 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32101C0C197C104800319736 /* Images.xcassets */; };
-		32101C19197C104800319736 /* ExpanderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32101C18197C104800319736 /* ExpanderTests.swift */; };
 		32101C24197C106A00319736 /* ViewControllerChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32101C22197C106A00319736 /* ViewControllerChild.swift */; };
 		32101C25197C106A00319736 /* ViewControllerChild.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32101C23197C106A00319736 /* ViewControllerChild.xib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		32101C13197C104800319736 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 32101BF8197C104800319736 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 32101BFF197C104800319736;
-			remoteInfo = Expander;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		32101C00197C104800319736 /* Expander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expander.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,22 +22,12 @@
 		32101C07197C104800319736 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32101C0A197C104800319736 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32101C0C197C104800319736 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		32101C12197C104800319736 /* ExpanderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExpanderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		32101C17197C104800319736 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32101C18197C104800319736 /* ExpanderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpanderTests.swift; sourceTree = "<group>"; };
 		32101C22197C106A00319736 /* ViewControllerChild.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerChild.swift; sourceTree = "<group>"; };
 		32101C23197C106A00319736 /* ViewControllerChild.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewControllerChild.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		32101BFD197C104800319736 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32101C0F197C104800319736 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -62,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				32101C02197C104800319736 /* Expander */,
-				32101C15197C104800319736 /* ExpanderTests */,
 				32101C01197C104800319736 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,7 +49,6 @@
 			isa = PBXGroup;
 			children = (
 				32101C00197C104800319736 /* Expander.app */,
-				32101C12197C104800319736 /* ExpanderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,23 +75,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		32101C15197C104800319736 /* ExpanderTests */ = {
-			isa = PBXGroup;
-			children = (
-				32101C18197C104800319736 /* ExpanderTests.swift */,
-				32101C16197C104800319736 /* Supporting Files */,
-			);
-			path = ExpanderTests;
-			sourceTree = "<group>";
-		};
-		32101C16197C104800319736 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				32101C17197C104800319736 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,24 +95,6 @@
 			productReference = 32101C00197C104800319736 /* Expander.app */;
 			productType = "com.apple.product-type.application";
 		};
-		32101C11197C104800319736 /* ExpanderTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 32101C1F197C104800319736 /* Build configuration list for PBXNativeTarget "ExpanderTests" */;
-			buildPhases = (
-				32101C0E197C104800319736 /* Sources */,
-				32101C0F197C104800319736 /* Frameworks */,
-				32101C10197C104800319736 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				32101C14197C104800319736 /* PBXTargetDependency */,
-			);
-			name = ExpanderTests;
-			productName = ExpanderTests;
-			productReference = 32101C12197C104800319736 /* ExpanderTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -164,10 +106,6 @@
 				TargetAttributes = {
 					32101BFF197C104800319736 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					32101C11197C104800319736 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 32101BFF197C104800319736;
 					};
 				};
 			};
@@ -185,7 +123,6 @@
 			projectRoot = "";
 			targets = (
 				32101BFF197C104800319736 /* Expander */,
-				32101C11197C104800319736 /* ExpanderTests */,
 			);
 		};
 /* End PBXProject section */
@@ -198,13 +135,6 @@
 				32101C0B197C104800319736 /* Main.storyboard in Resources */,
 				32101C25197C106A00319736 /* ViewControllerChild.xib in Resources */,
 				32101C0D197C104800319736 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32101C10197C104800319736 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,23 +151,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		32101C0E197C104800319736 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				32101C19197C104800319736 /* ExpanderTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		32101C14197C104800319736 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 32101BFF197C104800319736 /* Expander */;
-			targetProxy = 32101C13197C104800319736 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		32101C09197C104800319736 /* Main.storyboard */ = {
@@ -350,40 +264,6 @@
 			};
 			name = Release;
 		};
-		32101C20197C104800319736 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Expander.app/Expander";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ExpanderTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Debug;
-		};
-		32101C21197C104800319736 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Expander.app/Expander";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ExpanderTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -403,14 +283,7 @@
 				32101C1E197C104800319736 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		32101C1F197C104800319736 /* Build configuration list for PBXNativeTarget "ExpanderTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				32101C20197C104800319736 /* Debug */,
-				32101C21197C104800319736 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

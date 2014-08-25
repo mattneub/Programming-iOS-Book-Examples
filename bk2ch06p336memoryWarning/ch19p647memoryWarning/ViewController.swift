@@ -5,33 +5,31 @@ import Foundation
 class ViewController : UIViewController {
     
     var myBigDataAlias : NSData!
-    var myBigData : NSData? {
-    set (newdata) {
-        self.myBigDataAlias = newdata
-    }
-    get {
-        if myBigDataAlias == nil {
-            let fm = NSFileManager()
-            let f = NSTemporaryDirectory().stringByAppendingPathComponent("myBigData")
-            if fm.fileExistsAtPath(f) {
-                println("loading big data from disk")
-                self.myBigDataAlias = NSData(contentsOfFile: f)
-                var err : NSError?
-                let ok = fm.removeItemAtPath(f, error: &err)
-                assert(ok, "Couldn't remove temp file")
-                println("deleted big data from disk")
-            }
+    var myBigData : NSData! {
+        set (newdata) {
+            self.myBigDataAlias = newdata
         }
-        return self.myBigDataAlias
-    }
+        get {
+            if myBigDataAlias == nil {
+                let fm = NSFileManager()
+                let f = NSTemporaryDirectory().stringByAppendingPathComponent("myBigData")
+                if fm.fileExistsAtPath(f) {
+                    println("loading big data from disk")
+                    self.myBigDataAlias = NSData(contentsOfFile: f)
+                    var err : NSError?
+                    let ok = fm.removeItemAtPath(f, error: &err)
+                    assert(ok, "Couldn't remove temp file")
+                    println("deleted big data from disk")
+                }
+            }
+            return self.myBigDataAlias
+        }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // wow, this is some big data!
         self.myBigData = "howdy".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-        // memory warning broken in iOS 8, have to register
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveMemoryWarning", name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
     }
     
     // tap button to prove we've got big data

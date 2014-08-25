@@ -19,7 +19,7 @@ class MyView : UIView {
         println("tap! (gesture recognizer)")
     }
     
-    override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView! {
+    override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView? {
         // uncomment this next line to see what it's like without our munged hit-testing
         // return super.hitTest(point, withEvent: event)
         // v is the animated subview

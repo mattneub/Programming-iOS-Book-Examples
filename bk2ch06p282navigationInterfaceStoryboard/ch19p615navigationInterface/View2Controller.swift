@@ -4,7 +4,7 @@ import UIKit
 class View2Controller : UIViewController {
         
     // we're now coming out of a nib, must implement init(coder:), may as well configure here
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
         self.title = "Second"
         // whoa, check this out: the image comes right out of the asset catalog as a template image!

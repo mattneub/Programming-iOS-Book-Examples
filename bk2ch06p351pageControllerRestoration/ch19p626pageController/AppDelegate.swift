@@ -53,7 +53,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication!, didDecodeRestorableStateWithCoder coder: NSCoder!) {
-        let boy : AnyObject = coder.decodeObjectForKey("boy")
+        let boy: AnyObject? = coder.decodeObjectForKey("boy")
         if let boy = boy as? String {
             let pvc = self.window!.rootViewController as UIPageViewController
             let pep = Pep(pepBoy: boy)

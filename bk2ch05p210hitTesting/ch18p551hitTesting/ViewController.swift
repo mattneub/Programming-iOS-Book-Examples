@@ -34,7 +34,7 @@ class MyView : UIView {
     // this hitTest override makes it possible
     // try the example with hitTest commented out and with it restored to see the difference
 
-    override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView! {
+    override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView? {
         if let result = super.hitTest(point, withEvent:event) {
             return result
         }

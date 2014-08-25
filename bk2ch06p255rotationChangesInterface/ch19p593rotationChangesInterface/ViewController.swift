@@ -37,7 +37,7 @@ class ViewController : UIViewController {
     override func willTransitionToTraitCollection(newCollection: UITraitCollection!, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
         println("will transition to trait collection")
         let v = self.blackRect
-        var newFrameOriginX : CGFloat = v.frame.origin.x
+        var newFrameOriginX = v.frame.origin.x
         if newCollection.verticalSizeClass == .Compact { // landscape
             if v.superview == nil {
                 self.view.addSubview(v)

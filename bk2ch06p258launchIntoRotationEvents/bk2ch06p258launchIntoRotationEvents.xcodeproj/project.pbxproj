@@ -11,18 +11,7 @@
 		32A595C41975DCD800A7EDD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A595C31975DCD800A7EDD8 /* ViewController.swift */; };
 		32A595C71975DCD800A7EDD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A595C51975DCD800A7EDD8 /* Main.storyboard */; };
 		32A595C91975DCD800A7EDD8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A595C81975DCD800A7EDD8 /* Images.xcassets */; };
-		32A595D51975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEventsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A595D41975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEventsTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		32A595CF1975DCD800A7EDD8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 32A595B41975DCD800A7EDD8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 32A595BB1975DCD800A7EDD8;
-			remoteInfo = bk2ch06p258launchIntoRotationEvents;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		32A595BC1975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEvents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk2ch06p258launchIntoRotationEvents.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,20 +20,10 @@
 		32A595C31975DCD800A7EDD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32A595C61975DCD800A7EDD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32A595C81975DCD800A7EDD8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		32A595CE1975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEventsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bk2ch06p258launchIntoRotationEventsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		32A595D31975DCD800A7EDD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32A595D41975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEventsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bk2ch06p258launchIntoRotationEventsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		32A595B91975DCD800A7EDD8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32A595CB1975DCD800A7EDD8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -58,7 +37,6 @@
 			isa = PBXGroup;
 			children = (
 				32A595BE1975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEvents */,
-				32A595D11975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEventsTests */,
 				32A595BD1975DCD800A7EDD8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				32A595BC1975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEvents.app */,
-				32A595CE1975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEventsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,23 +69,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		32A595D11975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEventsTests */ = {
-			isa = PBXGroup;
-			children = (
-				32A595D41975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEventsTests.swift */,
-				32A595D21975DCD800A7EDD8 /* Supporting Files */,
-			);
-			path = bk2ch06p258launchIntoRotationEventsTests;
-			sourceTree = "<group>";
-		};
-		32A595D21975DCD800A7EDD8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				32A595D31975DCD800A7EDD8 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,24 +89,6 @@
 			productReference = 32A595BC1975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEvents.app */;
 			productType = "com.apple.product-type.application";
 		};
-		32A595CD1975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEventsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 32A595DB1975DCD800A7EDD8 /* Build configuration list for PBXNativeTarget "bk2ch06p258launchIntoRotationEventsTests" */;
-			buildPhases = (
-				32A595CA1975DCD800A7EDD8 /* Sources */,
-				32A595CB1975DCD800A7EDD8 /* Frameworks */,
-				32A595CC1975DCD800A7EDD8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				32A595D01975DCD800A7EDD8 /* PBXTargetDependency */,
-			);
-			name = bk2ch06p258launchIntoRotationEventsTests;
-			productName = bk2ch06p258launchIntoRotationEventsTests;
-			productReference = 32A595CE1975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEventsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -158,10 +100,6 @@
 				TargetAttributes = {
 					32A595BB1975DCD800A7EDD8 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					32A595CD1975DCD800A7EDD8 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 32A595BB1975DCD800A7EDD8;
 					};
 				};
 			};
@@ -179,7 +117,6 @@
 			projectRoot = "";
 			targets = (
 				32A595BB1975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEvents */,
-				32A595CD1975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEventsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -191,13 +128,6 @@
 			files = (
 				32A595C71975DCD800A7EDD8 /* Main.storyboard in Resources */,
 				32A595C91975DCD800A7EDD8 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32A595CC1975DCD800A7EDD8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,23 +143,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		32A595CA1975DCD800A7EDD8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				32A595D51975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEventsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		32A595D01975DCD800A7EDD8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 32A595BB1975DCD800A7EDD8 /* bk2ch06p258launchIntoRotationEvents */;
-			targetProxy = 32A595CF1975DCD800A7EDD8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		32A595C51975DCD800A7EDD8 /* Main.storyboard */ = {
@@ -342,40 +256,6 @@
 			};
 			name = Release;
 		};
-		32A595DC1975DCD800A7EDD8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bk2ch06p258launchIntoRotationEvents.app/bk2ch06p258launchIntoRotationEvents";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = bk2ch06p258launchIntoRotationEventsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Debug;
-		};
-		32A595DD1975DCD800A7EDD8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bk2ch06p258launchIntoRotationEvents.app/bk2ch06p258launchIntoRotationEvents";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = bk2ch06p258launchIntoRotationEventsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -395,14 +275,7 @@
 				32A595DA1975DCD800A7EDD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		32A595DB1975DCD800A7EDD8 /* Build configuration list for PBXNativeTarget "bk2ch06p258launchIntoRotationEventsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				32A595DC1975DCD800A7EDD8 /* Debug */,
-				32A595DD1975DCD800A7EDD8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

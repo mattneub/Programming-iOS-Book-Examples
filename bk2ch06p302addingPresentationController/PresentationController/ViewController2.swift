@@ -6,7 +6,7 @@ import QuartzCore
 class ViewController2: UIViewController {
     // important: viewDidLoad() is too late for this sort of thing
     // must be done before presentation even has a chance to start
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
         // NB if we want to modify the _animation_, we need to set the transitioningDelegate
         self.transitioningDelegate = self

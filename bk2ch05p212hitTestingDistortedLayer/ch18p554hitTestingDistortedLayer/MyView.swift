@@ -38,7 +38,7 @@ class MyView : UIView {
         lay.contents = im.CGImage
     }
     
-    override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView! {
+    override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView? {
         let inside = self.pointInside(point, withEvent:event)
         if !inside { return nil }
         

@@ -130,12 +130,12 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         let tbc = self.window!.rootViewController as UITabBarController
         let ix1 = find(tbc.viewControllers as [UIViewController], vc1)
         let ix2 = find(tbc.viewControllers as [UIViewController], vc2)
-        let dir = ix1 < ix2 ? 1 : -1
+        let dir : CGFloat = ix1 < ix2 ? 1 : -1
         var r = r1start
-        r.origin.x -= r.size.width * CGFloat(dir)
+        r.origin.x -= r.size.width * dir
         let r1end = r
         r = r2end
-        r.origin.x += r.size.width * CGFloat(dir)
+        r.origin.x += r.size.width * dir
         let r2start = r
         v2.frame = r2start
         con.addSubview(v2)
