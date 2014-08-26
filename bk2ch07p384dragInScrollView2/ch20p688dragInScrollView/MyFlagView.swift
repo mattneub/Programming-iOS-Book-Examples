@@ -4,7 +4,7 @@ import QuartzCore
 
 class MyFlagView : UIImageView {
     // use our hit test from chapter 5 so that user must tap actual flag drawing
-    override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView! {
+    override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView? {
         let inside = self.pointInside(point, withEvent:event)
         if !inside { return nil }
         

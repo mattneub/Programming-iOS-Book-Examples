@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         wv.frame = vc.view.bounds
         wv.autoresizingMask = .FlexibleWidth | .FlexibleHeight
         let f = NSBundle.mainBundle().pathForResource("linkhelp", ofType: "html")
-        let s = NSString(contentsOfFile: f, encoding: NSUTF8StringEncoding, error: nil)
+        let s = NSString(contentsOfFile: f!, encoding: NSUTF8StringEncoding, error: nil)
         wv.loadHTMLString(s, baseURL: nil)
         
         pop.sourceView = (sender as UIView)

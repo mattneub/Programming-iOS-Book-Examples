@@ -17,7 +17,7 @@ class RootViewController : UITableViewController {
         super.viewDidLoad()
         
         let url = NSBundle.mainBundle().URLForResource("trivia", withExtension: "txt")
-        let s = String.stringWithContentsOfURL(url, encoding: NSUTF8StringEncoding, error: nil)
+        let s = String.stringWithContentsOfURL(url!, encoding: NSUTF8StringEncoding, error: nil)
         var arr = s!.componentsSeparatedByString("\n")
         arr.removeLast()
         self.trivia = arr
