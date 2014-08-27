@@ -50,7 +50,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
     }
     
     override func applicationFinishedRestoringState() {
-        if self.wv.request {
+        if self.wv.request != nil {
             // remote example
             self.wv.reload()
         }
@@ -105,7 +105,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         
         if LOADREQ == 1 {
             self.canNavigate = true
-            if self.wv.request { // let applicationFinished handle reloading
+            if self.wv.request != nil { // let applicationFinished handle reloading
                 return
             }
             let url = NSURL(string: "http://www.apeth.com/RubyFrontierDocs/default.html")
@@ -113,11 +113,11 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
             return
         }
         
-        let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")
+        let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
         let base = NSURL.fileURLWithPath(path)
         let ss = NSString(contentsOfFile:path, encoding:NSUTF8StringEncoding, error:nil)
         
-        let path2 = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")
+        let path2 = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")!
         var s = NSString(contentsOfFile:path2, encoding:NSUTF8StringEncoding, error:nil)
 
         s = s.stringByReplacingOccurrencesOfString("<maximagewidth>", withString:"80%")

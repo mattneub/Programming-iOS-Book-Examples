@@ -180,11 +180,11 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         let b = UIBarButtonItem(title: "Size", style: .Plain, target: self, action: "doDecreaseSize:")
         self.navigationItem.rightBarButtonItems = [b]
         
-        let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")
+        let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
         let base = NSURL.fileURLWithPath(path)
         let ss = NSString(contentsOfFile:path, encoding:NSUTF8StringEncoding, error:nil)
         
-        let path2 = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")
+        let path2 = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")!
         var s = NSString(contentsOfFile:path2, encoding:NSUTF8StringEncoding, error:nil)
 
         s = s.stringByReplacingOccurrencesOfString("<maximagewidth>", withString:"80%")
