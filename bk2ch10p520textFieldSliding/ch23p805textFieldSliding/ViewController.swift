@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func keyboardShow(n:NSNotification) {
-        let d = n.userInfo
+        let d = n.userInfo!
         let r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
         // next line no longer needed; in iOS 8, keyboard and views are in same coordinate space
         // r = self.slidingView.convertRect(r, fromView:nil)
@@ -55,7 +55,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func keyboardHide(n:NSNotification) {
-        let d = n.userInfo
+        let d = n.userInfo!
         let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
         let curve = d[UIKeyboardAnimationCurveUserInfoKey] as NSNumber
         let curveOpt = UIViewAnimationOptions.fromRaw(

@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let path = NSBundle.mainBundle().pathForResource("brillig", ofType: "txt")
+        let path = NSBundle.mainBundle().pathForResource("brillig", ofType: "txt")!
         let s = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: nil)
         let s2 = s!.stringByReplacingOccurrencesOfString("\n", withString: "")
         let mas = NSMutableAttributedString(string:s2, attributes:[

@@ -20,7 +20,7 @@ func lend<T where T:NSObject> (closure:(T)->()) -> T {
 
 class StyledText: UIView {
     
-    @NSCopying var text : NSAttributedString?
+    @NSCopying var text = NSAttributedString() // shut up the compiler
     var lm : NSLayoutManager!
     var tc : NSTextContainer!
     var tc2 : NSTextContainer!
@@ -31,7 +31,7 @@ class StyledText: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let path = NSBundle.mainBundle().pathForResource("states", ofType: "txt")
+        let path = NSBundle.mainBundle().pathForResource("states", ofType: "txt")!
         let s = NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil)
         
         let desc = UIFontDescriptor(name:"Didot", size:18)
@@ -124,7 +124,7 @@ class StyledText: UIView {
         }
         // okay, we've got the range!
         let characterRange = self.lm.characterRangeForGlyphRange(glyphRange, actualGlyphRange:nil)
-        let s = (self.text!.string as NSString).substringWithRange(characterRange) // state name
+        let s = (self.text.string as NSString).substringWithRange(characterRange) // state name
         println("you tapped \(s)")
         let lm = self.lm as MyLayoutManager
         lm.wordRange = characterRange

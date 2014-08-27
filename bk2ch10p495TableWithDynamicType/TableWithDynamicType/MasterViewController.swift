@@ -22,9 +22,6 @@ class MasterViewController: UITableViewController {
 
 
     func insertNewObject(sender: AnyObject) {
-        if objects == nil {
-            objects = NSMutableArray()
-        }
         objects.insertObject(NSDate.date(), atIndex: 0)
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)

@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let path = NSBundle.mainBundle().pathForResource("brillig", ofType: "txt")
+        let path = NSBundle.mainBundle().pathForResource("brillig", ofType: "txt")!
         let s = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: nil)
         let s2 = s!.stringByReplacingOccurrencesOfString("\n", withString: "")
         let mas = NSMutableAttributedString(string:s2, attributes:[
@@ -50,7 +50,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     func keyboardShow(n:NSNotification) {
         self.keyboardShowing = true
         
-        let d = n.userInfo
+        let d = n.userInfo!
         let r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
         let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
         let f = self.tv.frame
@@ -67,7 +67,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     func keyboardHide(n:NSNotification) {
         self.keyboardShowing = false
         
-        let d = n.userInfo
+        let d = n.userInfo!
         let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
         let curve = d[UIKeyboardAnimationCurveUserInfoKey] as NSNumber
         let curveOpt = UIViewAnimationOptions.fromRaw(

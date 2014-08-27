@@ -24,7 +24,7 @@ class ViewController : UIViewController {
         // see http://support.apple.com/kb/HT5484 (? needs revision? is there a more recent version?)
         let name = "NanumBrush" // another one to try: YuppySC-Regular, also good old LucidaGrande
         let size : CGFloat = 24
-        let f = UIFont(name:name, size:size)
+        let f : UIFont! = UIFont(name:name, size:size)
         if f != nil {
             self.lab.font = f
             println("already installed")
@@ -54,7 +54,7 @@ class ViewController : UIViewController {
                 case .DidFinish:
                     NSLog("%@", "matching did finish")
                     dispatch_async(dispatch_get_main_queue(), {
-                        let f = UIFont(name:name, size:size)
+                        let f : UIFont! = UIFont(name:name, size:size)
                         if f != nil {
                             NSLog("%@", "got the font!")
                             self.lab.font = f
