@@ -24,7 +24,7 @@ class ActionViewController: UIViewController {
         let items = self.extensionContext.inputItems
         // open the envelopes
         if let extensionItem = items[0] as? NSExtensionItem {
-            if let provider = extensionItem.attachments[0] as? NSItemProvider {
+            if let provider = extensionItem.attachments?[0] as? NSItemProvider {
                 if provider.hasItemConformingToTypeIdentifier(self.desiredType) {
                     provider.loadItemForTypeIdentifier(self.desiredType, options: nil) {
                         (item:NSSecureCoding!, err:NSError!) -> () in
@@ -59,7 +59,7 @@ class ActionViewController: UIViewController {
     
     @IBAction func cancel(sender: AnyObject) {
         self.extensionContext.completeRequestReturningItems(
-            nil, completionHandler: nil)
+            [AnyObject](), completionHandler: nil)
     }
     
     @IBAction func done(sender: AnyObject) {

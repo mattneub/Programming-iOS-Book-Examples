@@ -3,7 +3,7 @@ import UIKit
 import MobileCoreServices
 
 
-class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
+class ActionRequestHandler: NSObject /*, NSExtensionRequestHandling */ { // ???
     
     let list : [String] = {
         let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")
@@ -22,7 +22,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
         let items = self.extensionContext!.inputItems
         // open the envelopes
         if let extensionItem = items[0] as? NSExtensionItem {
-            if let provider = extensionItem.attachments[0] as? NSItemProvider {
+            if let provider = extensionItem.attachments?[0] as? NSItemProvider {
                 if provider.hasItemConformingToTypeIdentifier(self.desiredType) {
                     provider.loadItemForTypeIdentifier(self.desiredType, options: nil) {
                         (item:NSSecureCoding!, err:NSError!) -> () in
@@ -55,14 +55,14 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
         if (item == nil) {
             // didn't get anything to process, pass nil back to host
             self.extensionContext?.completeRequestReturningItems(
-                nil, completionHandler: nil)
+                [AnyObject](), completionHandler: nil)
         } else {
             if let abbrev = self.stateForAbbrev(item!) {
                 self.extensionContext?.completeRequestReturningItems(
                     self.stuffThatEnvelope(abbrev), completionHandler: nil)
             } else {
                 self.extensionContext?.completeRequestReturningItems(
-                    nil, completionHandler: nil)
+                    [AnyObject](), completionHandler: nil)
             }
         }
         // the template tells us to release this when done

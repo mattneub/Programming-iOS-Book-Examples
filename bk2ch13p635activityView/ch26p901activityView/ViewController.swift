@@ -4,7 +4,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBAction func doButton (sender:AnyObject) {
-        let url = NSBundle.mainBundle().URLForResource("sunglasses", withExtension:"png")
+        let url = NSBundle.mainBundle().URLForResource("sunglasses", withExtension:"png")!
         let things = ["This is cool", url]
         // let avc = UIActivityViewController(activityItems:things, applicationActivities:nil)
         let avc = UIActivityViewController(activityItems:things, applicationActivities:[MyCoolActivity(), MyElaborateActivity()])

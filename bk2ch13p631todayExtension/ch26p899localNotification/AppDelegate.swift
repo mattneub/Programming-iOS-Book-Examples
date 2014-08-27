@@ -107,7 +107,7 @@ extension AppDelegate { // for communication from our Today Extension
         let scheme = url.scheme
         let host = url.host
         if scheme == "coffeetime" {
-            if let min = host.toInt() {
+            if let min = host?.toInt() {
                 let vc = self.window!.rootViewController as ViewController
                 vc.scheduleNotificationForSecondsFromNow(min*60)
                 return true

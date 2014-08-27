@@ -40,7 +40,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 }
                 // open the envelopes
                 if let extensionItem = items[0] as? NSExtensionItem {
-                    if let provider = extensionItem.attachments[0] as? NSItemProvider {
+                    if let provider = extensionItem.attachments?[0] as? NSItemProvider {
                         if provider.hasItemConformingToTypeIdentifier(self.desiredType) {
                             provider.loadItemForTypeIdentifier(self.desiredType, options: nil, completionHandler: {
                                 (item:NSSecureCoding!, err:NSError!) -> () in
