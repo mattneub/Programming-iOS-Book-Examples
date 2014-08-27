@@ -8,9 +8,9 @@ class ViewController: UIViewController {
     @IBOutlet var prog3 : MyProgressView!
 
     @IBAction func doButton (sender:AnyObject) {
-        self.prog1.progress = 0;
-        self.prog2.progress = 0;
-        self.prog3.value = 0;
+        self.prog1.progress = 0
+        self.prog2.progress = 0
+        self.prog3.value = 0
         self.prog3.setNeedsDisplay()
         NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "inc:", userInfo: nil, repeats: true)
     }

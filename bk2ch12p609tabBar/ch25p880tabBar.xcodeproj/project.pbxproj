@@ -31,8 +31,6 @@
 		C9382B491820488500F38DB0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9382B4A1820488500F38DB0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9382B4D1820488500F38DB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9382B4F1820488500F38DB0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C9382B501820488500F38DB0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9382B521820488500F38DB0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9382B591820488500F38DB0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -85,8 +83,6 @@
 				C9382B491820488500F38DB0 /* AppDelegate.h */,
 				C9382B4A1820488500F38DB0 /* AppDelegate.m */,
 				C9382B4C1820488500F38DB0 /* Main.storyboard */,
-				C9382B4F1820488500F38DB0 /* ViewController.h */,
-				C9382B501820488500F38DB0 /* ViewController.m */,
 				327481CE1994431D0043DC9D /* ViewController.swift */,
 				C9382B521820488500F38DB0 /* Images.xcassets */,
 				C9382B411820488500F38DB0 /* Supporting Files */,
