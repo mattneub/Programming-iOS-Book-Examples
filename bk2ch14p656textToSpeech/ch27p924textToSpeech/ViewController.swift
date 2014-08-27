@@ -5,7 +5,7 @@ import AVFoundation
 
 class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
-    var talker : AVSpeechSynthesizer!
+    var talker = AVSpeechSynthesizer()
 
     @IBAction func talk (sender:AnyObject!) {
         let utter = AVSpeechUtterance(string:"Polly, want a cracker?")
@@ -15,7 +15,6 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
         var rate = AVSpeechUtteranceMaximumSpeechRate - AVSpeechUtteranceMinimumSpeechRate
         rate = rate * 0.15 + AVSpeechUtteranceMinimumSpeechRate
         utter.rate = rate
-        self.talker = self.talker ?? AVSpeechSynthesizer()
         self.talker.delegate = self
         self.talker.speakUtterance(utter)
     }

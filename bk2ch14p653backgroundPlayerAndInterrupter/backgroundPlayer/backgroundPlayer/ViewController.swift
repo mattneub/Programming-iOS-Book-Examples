@@ -10,7 +10,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton (sender:AnyObject!) {
         // start over
-        let path = NSBundle.mainBundle().pathForResource("aboutTiagol", ofType: "m4a")
+        let path = NSBundle.mainBundle().pathForResource("aboutTiagol", ofType: "m4a")!
         self.player.playFileAtPath(path)
         
         // this info shows up in the locked screen and control center

@@ -27,23 +27,25 @@ class Player : NSObject, AVAudioPlayerDelegate {
         self.observer =
             NSNotificationCenter.defaultCenter()
                 .addObserverForName(
-                AVAudioSessionSilenceSecondaryAudioHintNotification,
-            object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: {
-                [weak self](note:NSNotification!) in
-                println("bp player: muting hint notification received")
-                let why = note.userInfo[
-                    AVAudioSessionSilenceSecondaryAudioHintTypeKey
-                    ]! as? UInt
-                if let sself = self {
-                    switch why! {
-                    case 1: // began
-                        println("bp player: muting hint started")
-                    case 0: // ended
-                        println("bp player: muting hint ended")
-                    default:break
-                    }
-                }
-        })
+                    AVAudioSessionSilenceSecondaryAudioHintNotification,
+                    object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: {
+                        [weak self](note:NSNotification!) in
+                        println("bp player: muting hint notification received")
+                        let why : AnyObject? = note.userInfo?[
+                            AVAudioSessionSilenceSecondaryAudioHintTypeKey
+                        ]
+                        if why != nil {
+                            if let sself = self {
+                                switch why! as UInt {
+                                case 1: // began
+                                    println("bp player: muting hint started")
+                                case 0: // ended
+                                    println("bp player: muting hint ended")
+                                default:break
+                                }
+                            }
+                        }
+                })
         // interruption notification
         self.observer2 =
             NSNotificationCenter.defaultCenter()
@@ -55,9 +57,9 @@ class Player : NSObject, AVAudioPlayerDelegate {
                         // docs say same Hint key might appear in interruption notification
                         // but I've never actually seen that happen
                         // perhaps I just don't know the circumstances when this can happen
-                        let why : AnyObject? = note.userInfo[
+                        let why : AnyObject? = note.userInfo?[
                             AVAudioSessionSilenceSecondaryAudioHintTypeKey
-                            ]
+                        ]
                         println("bp secondary silence hint in interruption: \(why)") // always nil
                         if why != nil { // never gotten to here
                             if let sself = self {
@@ -74,7 +76,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
                         // just as in previous systems...
                         // and even then it only happens for apps like my Interrupter
                         // which add this option deliberately
-                        let option : AnyObject? = note.userInfo[
+                        let option : AnyObject? = note.userInfo?[
                             AVAudioSessionInterruptionOptionKey
                         ]
                         println("bp option: \(option)")
@@ -95,9 +97,9 @@ class Player : NSObject, AVAudioPlayerDelegate {
                             }
                         }
                 })
-
+        
     }
-
+    
     func playFileAtPath(path:NSString) {
         player?.delegate = nil
         player?.stop()
@@ -108,8 +110,8 @@ class Player : NSObject, AVAudioPlayerDelegate {
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: nil, error: nil)
         AVAudioSession.sharedInstance().setActive(true, withOptions: nil, error: nil)
         
-//        player.enableRate = true
-//        player.rate = 1.2 // cool feature
+        //        player.enableRate = true
+        //        player.rate = 1.2 // cool feature
         
         player.prepareToPlay()
         player.delegate = self
@@ -130,13 +132,13 @@ class Player : NSObject, AVAudioPlayerDelegate {
     func stop () {
         player?.pause()
     }
-
+    
     deinit {
         println("bp player dealloc")
         NSNotificationCenter.defaultCenter().removeObserver(self.observer)
         NSNotificationCenter.defaultCenter().removeObserver(self.observer2)
         player?.delegate = nil
     }
-
-
+    
+    
 }

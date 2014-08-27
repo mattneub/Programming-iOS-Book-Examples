@@ -18,7 +18,7 @@ class ViewController: UIViewController, PlayerDelegate {
 
     @IBAction func doButton (sender:AnyObject!) {
         self.player.delegate = self
-        let path = NSBundle.mainBundle().pathForResource("test", ofType: "aif")
+        let path = NSBundle.mainBundle().pathForResource("test", ofType: "aif")!
         if (sender as UIButton).currentTitle == "Forever" {
             // for remote control to work, our audio session policy must be Playback
             AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: nil, error: nil)

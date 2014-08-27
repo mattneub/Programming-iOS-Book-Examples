@@ -16,7 +16,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         NSNotificationCenter.defaultCenter().addObserverForName(AVAudioSessionInterruptionNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
             (note:NSNotification!) -> Void in
-            let which : AnyObject? = note.userInfo[AVAudioSessionInterruptionTypeKey]
+            let which : AnyObject? = note.userInfo?[AVAudioSessionInterruptionTypeKey]
             if which != nil {
                 if let began = which! as? UInt {
                     if began == 0 {

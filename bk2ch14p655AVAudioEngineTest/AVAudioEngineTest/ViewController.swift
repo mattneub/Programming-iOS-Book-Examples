@@ -149,7 +149,7 @@ class ViewController: UIViewController {
 
         let fm = NSFileManager.defaultManager()
         let doc = fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: nil)
-        let outurl = doc.URLByAppendingPathComponent("myfile.aac")
+        let outurl = doc!.URLByAppendingPathComponent("myfile.aac")
         
         var err : NSError?
         let outfile = AVAudioFile(forWriting: outurl, settings: [
