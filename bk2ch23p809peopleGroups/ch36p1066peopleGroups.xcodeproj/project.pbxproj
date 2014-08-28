@@ -7,47 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320D8AC519AF99AF0065F2C5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320D8AC419AF99AF0065F2C5 /* Person.swift */; };
+		320D8AC719AF9AED0065F2C5 /* PeopleLister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320D8AC619AF9AED0065F2C5 /* PeopleLister.swift */; };
+		320D8AC919AFA9F80065F2C5 /* PeopleDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320D8AC819AFA9F80065F2C5 /* PeopleDocument.swift */; };
 		32335D6418328D8100B84460 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32335D6318328D8100B84460 /* Foundation.framework */; };
 		32335D6618328D8100B84460 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32335D6518328D8100B84460 /* CoreGraphics.framework */; };
 		32335D6818328D8100B84460 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32335D6718328D8100B84460 /* UIKit.framework */; };
-		32335D6E18328D8100B84460 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32335D6C18328D8100B84460 /* InfoPlist.strings */; };
-		32335D7018328D8100B84460 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 32335D6F18328D8100B84460 /* main.m */; };
-		32335D7418328D8100B84460 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32335D7318328D8100B84460 /* AppDelegate.m */; };
 		32335D7718328D8100B84460 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32335D7518328D8100B84460 /* Main.storyboard */; };
 		32335D7C18328D8100B84460 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32335D7B18328D8100B84460 /* Images.xcassets */; };
-		32335D9A18328E2000B84460 /* DocumentLister.m in Sources */ = {isa = PBXBuildFile; fileRef = 32335D9918328E2000B84460 /* DocumentLister.m */; };
-		32335D9D18328E5C00B84460 /* PeopleDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 32335D9C18328E5C00B84460 /* PeopleDocument.m */; };
-		32335DA318328E6A00B84460 /* PeopleLister.m in Sources */ = {isa = PBXBuildFile; fileRef = 32335D9F18328E6A00B84460 /* PeopleLister.m */; };
-		32335DA418328E6A00B84460 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 32335DA118328E6A00B84460 /* Person.m */; };
 		32335DA518328E6A00B84460 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32335DA218328E6A00B84460 /* PersonCell.xib */; };
 		32335DA718328FA400B84460 /* PeopleLister.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32335DA618328FA400B84460 /* PeopleLister.xib */; };
+		325156CF19AFEED100BE7C83 /* DocumentLister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325156CE19AFEED100BE7C83 /* DocumentLister.swift */; };
+		32B5FA9419B0D77D00BA7DFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B5FA9319B0D77D00BA7DFC /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		320C325E1832A17300C466C0 /* ch36p1066peopleGroups.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ch36p1066peopleGroups.entitlements; sourceTree = "<group>"; };
+		320D8AC319AF99AF0065F2C5 /* ch36p1066peopleGroups-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch36p1066peopleGroups-Bridging-Header.h"; sourceTree = "<group>"; };
+		320D8AC419AF99AF0065F2C5 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		320D8AC619AF9AED0065F2C5 /* PeopleLister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleLister.swift; sourceTree = "<group>"; };
+		320D8AC819AFA9F80065F2C5 /* PeopleDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleDocument.swift; sourceTree = "<group>"; };
 		32335D6018328D8100B84460 /* ch36p1066peopleGroups.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch36p1066peopleGroups.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32335D6318328D8100B84460 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		32335D6518328D8100B84460 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32335D6718328D8100B84460 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		32335D6B18328D8100B84460 /* ch36p1066peopleGroups-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch36p1066peopleGroups-Info.plist"; sourceTree = "<group>"; };
-		32335D6D18328D8100B84460 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		32335D6F18328D8100B84460 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32335D7118328D8100B84460 /* ch36p1066peopleGroups-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch36p1066peopleGroups-Prefix.pch"; sourceTree = "<group>"; };
-		32335D7218328D8100B84460 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		32335D7318328D8100B84460 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		32335D7618328D8100B84460 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32335D7B18328D8100B84460 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		32335D8218328D8100B84460 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		32335D9818328E2000B84460 /* DocumentLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentLister.h; sourceTree = "<group>"; };
-		32335D9918328E2000B84460 /* DocumentLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentLister.m; sourceTree = "<group>"; };
-		32335D9B18328E5C00B84460 /* PeopleDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleDocument.h; sourceTree = "<group>"; };
-		32335D9C18328E5C00B84460 /* PeopleDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleDocument.m; sourceTree = "<group>"; };
-		32335D9E18328E6A00B84460 /* PeopleLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleLister.h; sourceTree = "<group>"; };
-		32335D9F18328E6A00B84460 /* PeopleLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleLister.m; sourceTree = "<group>"; };
-		32335DA018328E6A00B84460 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		32335DA118328E6A00B84460 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		32335DA218328E6A00B84460 /* PersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
 		32335DA618328FA400B84460 /* PeopleLister.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleLister.xib; sourceTree = "<group>"; };
+		325156CE19AFEED100BE7C83 /* DocumentLister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentLister.swift; sourceTree = "<group>"; };
+		32B5FA9319B0D77D00BA7DFC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,21 +87,17 @@
 			isa = PBXGroup;
 			children = (
 				320C325E1832A17300C466C0 /* ch36p1066peopleGroups.entitlements */,
-				32335D7218328D8100B84460 /* AppDelegate.h */,
-				32335D7318328D8100B84460 /* AppDelegate.m */,
+				32B5FA9319B0D77D00BA7DFC /* AppDelegate.swift */,
 				32335D7518328D8100B84460 /* Main.storyboard */,
-				32335D9818328E2000B84460 /* DocumentLister.h */,
-				32335D9918328E2000B84460 /* DocumentLister.m */,
-				32335D9B18328E5C00B84460 /* PeopleDocument.h */,
-				32335D9C18328E5C00B84460 /* PeopleDocument.m */,
-				32335D9E18328E6A00B84460 /* PeopleLister.h */,
-				32335D9F18328E6A00B84460 /* PeopleLister.m */,
+				325156CE19AFEED100BE7C83 /* DocumentLister.swift */,
+				320D8AC819AFA9F80065F2C5 /* PeopleDocument.swift */,
+				320D8AC619AF9AED0065F2C5 /* PeopleLister.swift */,
 				32335DA618328FA400B84460 /* PeopleLister.xib */,
-				32335DA018328E6A00B84460 /* Person.h */,
-				32335DA118328E6A00B84460 /* Person.m */,
+				320D8AC419AF99AF0065F2C5 /* Person.swift */,
 				32335DA218328E6A00B84460 /* PersonCell.xib */,
 				32335D7B18328D8100B84460 /* Images.xcassets */,
 				32335D6A18328D8100B84460 /* Supporting Files */,
+				320D8AC319AF99AF0065F2C5 /* ch36p1066peopleGroups-Bridging-Header.h */,
 			);
 			path = ch36p1066peopleGroups;
 			sourceTree = "<group>";
@@ -119,9 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				32335D6B18328D8100B84460 /* ch36p1066peopleGroups-Info.plist */,
-				32335D6C18328D8100B84460 /* InfoPlist.strings */,
-				32335D6F18328D8100B84460 /* main.m */,
-				32335D7118328D8100B84460 /* ch36p1066peopleGroups-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -189,7 +173,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				32335D7C18328D8100B84460 /* Images.xcassets in Resources */,
-				32335D6E18328D8100B84460 /* InfoPlist.strings in Resources */,
 				32335DA718328FA400B84460 /* PeopleLister.xib in Resources */,
 				32335DA518328E6A00B84460 /* PersonCell.xib in Resources */,
 				32335D7718328D8100B84460 /* Main.storyboard in Resources */,
@@ -203,26 +186,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32335DA418328E6A00B84460 /* Person.m in Sources */,
-				32335D9A18328E2000B84460 /* DocumentLister.m in Sources */,
-				32335D7418328D8100B84460 /* AppDelegate.m in Sources */,
-				32335D7018328D8100B84460 /* main.m in Sources */,
-				32335DA318328E6A00B84460 /* PeopleLister.m in Sources */,
-				32335D9D18328E5C00B84460 /* PeopleDocument.m in Sources */,
+				320D8AC719AF9AED0065F2C5 /* PeopleLister.swift in Sources */,
+				325156CF19AFEED100BE7C83 /* DocumentLister.swift in Sources */,
+				320D8AC919AFA9F80065F2C5 /* PeopleDocument.swift in Sources */,
+				32B5FA9419B0D77D00BA7DFC /* AppDelegate.swift in Sources */,
+				320D8AC519AF99AF0065F2C5 /* Person.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		32335D6C18328D8100B84460 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				32335D6D18328D8100B84460 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		32335D7518328D8100B84460 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -267,7 +241,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -300,7 +274,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -312,13 +286,17 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch36p1066peopleGroups/ch36p1066peopleGroups-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ch36p1066peopleGroups/ch36p1066peopleGroups-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch36p1066peopleGroups/ch36p1066peopleGroups-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -329,13 +307,16 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch36p1066peopleGroups/ch36p1066peopleGroups-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ch36p1066peopleGroups/ch36p1066peopleGroups-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch36p1066peopleGroups/ch36p1066peopleGroups-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
