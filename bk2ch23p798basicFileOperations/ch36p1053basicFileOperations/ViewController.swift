@@ -112,8 +112,8 @@ class ViewController: UIViewController {
             let intent = NSFileAccessIntent.writingIntentWithURL(moifile, options: nil)
             fc.coordinateAccessWithIntents([intent], queue: NSOperationQueue.mainQueue()) {
                 (err:NSError!) in
-                let m = moidata
-                m.writeToURL(intent.URL, atomically: true)
+                // compiler gets confused if a one-liner returns a BOOL result
+                let ok = moidata.writeToURL(intent.URL, atomically: true)
             }
         default:break
         }
