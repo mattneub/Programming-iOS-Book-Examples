@@ -14,7 +14,7 @@ class MyPeopleParser : MyXMLParserDelegate {
             }
     }
     
-    override func finishedChild(s: String) {
+    func finishedChild(s: String) {
         self.people.append((self.child as MyPersonParser).person)
     }
     

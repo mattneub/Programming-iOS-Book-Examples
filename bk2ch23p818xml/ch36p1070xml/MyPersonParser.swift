@@ -12,7 +12,7 @@ class MyPersonParser : MyXMLParserDelegate {
             self.makeChild(MyXMLParserDelegate.self, elementName: elementName, parser: parser)
     }
     
-    override func finishedChild(s: String) {
+    func finishedChild(s: String) {
         if self.person == nil {
             self.person = Person(firstName: "", lastName: "")
         }

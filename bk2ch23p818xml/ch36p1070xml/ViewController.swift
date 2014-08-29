@@ -8,7 +8,7 @@ class ViewController: UIViewController {
     @IBAction func doButton (sender:AnyObject!) {
         let url = NSBundle.mainBundle().URLForResource("folks", withExtension: "xml")!
         let parser = NSXMLParser(contentsOfURL: url)
-        let people = MyPeopleParser()
+        let people = MyPeopleParser(name:"", parent:nil)
         parser.delegate = people
         parser.parse()
         
