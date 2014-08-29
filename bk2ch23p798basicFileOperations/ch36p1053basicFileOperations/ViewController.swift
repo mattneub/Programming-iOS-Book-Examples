@@ -138,7 +138,7 @@ class ViewController: UIViewController {
                 (err:NSError!) in
                 let persondata = NSData(contentsOfURL: intent.URL)
                 let person = NSKeyedUnarchiver.unarchiveObjectWithData(persondata) as Person
-                println("\(person.firstName) \(person.lastName)")
+                println(person)
             }
         default:break
         }

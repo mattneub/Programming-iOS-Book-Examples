@@ -6,6 +6,10 @@ class Person: NSObject, NSCoding {
     @NSCopying var firstName : NSString
     @NSCopying var lastName : NSString
     
+    override var description : String! {
+        return self.firstName + " " + self.lastName
+    }
+    
     init(firstName:String, lastName:String) {
         self.firstName = firstName
         self.lastName = lastName
