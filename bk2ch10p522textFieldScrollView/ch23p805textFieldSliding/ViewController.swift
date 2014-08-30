@@ -49,39 +49,39 @@ class ViewController: UIViewController {
         let f = self.fr!.frame
         let y : CGFloat =
         f.maxY + r.size.height - self.scrollView.bounds.height + 5
-        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
-        let curve = d[UIKeyboardAnimationCurveUserInfoKey] as NSNumber
-        let curveOpt = UIViewAnimationOptions.fromRaw(
-            UInt(curve.unsignedIntegerValue) << 16)!
+//        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
+//        let curve = d[UIKeyboardAnimationCurveUserInfoKey] as NSNumber
+//        let curveOpt = UIViewAnimationOptions.fromRaw(
+//            UInt(curve.unsignedIntegerValue) << 16)!
         
         if r.origin.y < f.maxY {
-            UIView.animateWithDuration(duration.doubleValue,
-                delay:0,
-                options:curveOpt,
-                animations:{
+//            UIView.animateWithDuration(duration.doubleValue,
+//                delay:0,
+//                options:curveOpt,
+//                animations:{
                     self.scrollView.bounds.origin = CGPointMake(0,y)
                     self.scrollView.contentInset.bottom = r.size.height
                     self.scrollView.scrollIndicatorInsets.bottom = r.size.height
-                }, completion:nil)
+//                }, completion:nil)
         }
         
 
     }
     
     func keyboardHide(n:NSNotification) {
-        let d = n.userInfo!
-        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
-        let curve = d[UIKeyboardAnimationCurveUserInfoKey] as NSNumber
-        let curveOpt = UIViewAnimationOptions.fromRaw(
-            UInt(curve.unsignedIntegerValue) << 16)!
-        UIView.animateWithDuration(duration.doubleValue,
-            delay:0,
-            options:curveOpt,
-            animations:{
+//        let d = n.userInfo!
+//        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
+//        let curve = d[UIKeyboardAnimationCurveUserInfoKey] as NSNumber
+//        let curveOpt = UIViewAnimationOptions.fromRaw(
+//            UInt(curve.unsignedIntegerValue) << 16)!
+//        UIView.animateWithDuration(duration.doubleValue,
+//            delay:0,
+//            options:curveOpt,
+//            animations:{
                 self.scrollView.bounds.origin = self.oldOffset
                 self.scrollView.scrollIndicatorInsets = self.oldIndicatorInset
                 self.scrollView.contentInset = self.oldContentInset
-            }, completion:nil)
+//            }, completion:nil)
     }
 
     

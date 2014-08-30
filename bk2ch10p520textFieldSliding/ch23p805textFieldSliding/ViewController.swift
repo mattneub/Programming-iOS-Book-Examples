@@ -37,37 +37,38 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let f = self.fr!.frame
         let y : CGFloat =
             f.maxY + r.size.height - self.slidingView.bounds.height + 5
-        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
-        let curve = d[UIKeyboardAnimationCurveUserInfoKey] as NSNumber
-        let curveOpt = UIViewAnimationOptions.fromRaw(
-            UInt(curve.unsignedIntegerValue) << 16)!
+//        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
+//        let curve = d[UIKeyboardAnimationCurveUserInfoKey] as NSNumber
+//        let curveOpt = UIViewAnimationOptions.fromRaw(
+//            UInt(curve.unsignedIntegerValue) << 16)!
         
         if r.origin.y < f.maxY {
-            UIView.animateWithDuration(duration.doubleValue,
-                delay:0,
-                options:curveOpt,
-                animations:{
+            // animation no longer needed; in iOS 8, this is *part* of a UIView animation block
+//            UIView.animateWithDuration(duration.doubleValue,
+//                delay:0,
+//                options:curveOpt,
+//                animations:{
                 self.topConstraint.constant = -y
                 self.bottomConstraint.constant = y
                 self.view.layoutIfNeeded()
-                }, completion:nil)
+//                }, completion:nil)
         }
     }
 
     func keyboardHide(n:NSNotification) {
-        let d = n.userInfo!
-        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
-        let curve = d[UIKeyboardAnimationCurveUserInfoKey] as NSNumber
-        let curveOpt = UIViewAnimationOptions.fromRaw(
-            UInt(curve.unsignedIntegerValue) << 16)!
-        UIView.animateWithDuration(duration.doubleValue,
-            delay:0,
-            options:curveOpt,
-            animations:{
+//        let d = n.userInfo!
+//        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
+//        let curve = d[UIKeyboardAnimationCurveUserInfoKey] as NSNumber
+//        let curveOpt = UIViewAnimationOptions.fromRaw(
+//            UInt(curve.unsignedIntegerValue) << 16)!
+//        UIView.animateWithDuration(duration.doubleValue,
+//            delay:0,
+//            options:curveOpt,
+//            animations:{
                 self.topConstraint.constant = 0
                 self.bottomConstraint.constant = 0
                 self.view.layoutIfNeeded()
-            }, completion:nil)
+//            }, completion:nil)
     }
 
 }
