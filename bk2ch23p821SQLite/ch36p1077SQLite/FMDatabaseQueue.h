@@ -68,8 +68,13 @@
     int                 _openFlags;
 }
 
+/** Path of database */
+
 @property (atomic, retain) NSString *path;
-@property (atomic) int openFlags;
+
+/** Open flags */
+
+@property (atomic, readonly) int openFlags;
 
 ///----------------------------------------------------
 /// @name Initialization, opening, and closing of queue
@@ -111,6 +116,15 @@
  */
 
 - (instancetype)initWithPath:(NSString*)aPath flags:(int)openFlags;
+
+/** Returns the Class of 'FMDatabase' subclass, that will be used to instantiate database object.
+ 
+ Subclasses can override this method to return specified Class of 'FMDatabase' subclass.
+ 
+ @return The Class of 'FMDatabase' subclass, that will be used to instantiate database object.
+ */
+
++ (Class)databaseClass;
 
 /** Close database used by queue. */
 
