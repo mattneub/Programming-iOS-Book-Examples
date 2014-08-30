@@ -11,17 +11,15 @@
 		3223A4E31832FB3B00F6FED0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3223A4E21832FB3B00F6FED0 /* CoreGraphics.framework */; };
 		3223A4E51832FB3B00F6FED0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3223A4E41832FB3B00F6FED0 /* UIKit.framework */; };
 		3223A4E71832FB3B00F6FED0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3223A4E61832FB3B00F6FED0 /* CoreData.framework */; };
-		3223A4ED1832FB3B00F6FED0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3223A4EB1832FB3B00F6FED0 /* InfoPlist.strings */; };
-		3223A4EF1832FB3B00F6FED0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3223A4EE1832FB3B00F6FED0 /* main.m */; };
-		3223A4F31832FB3B00F6FED0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3223A4F21832FB3B00F6FED0 /* AppDelegate.m */; };
 		3223A4F61832FB3B00F6FED0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3223A4F41832FB3B00F6FED0 /* Main.storyboard */; };
 		3223A4F91832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3223A4F71832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.xcdatamodeld */; };
 		3223A5011832FB3B00F6FED0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3223A5001832FB3B00F6FED0 /* Images.xcassets */; };
-		3223A5241832FBD600F6FED0 /* GroupLister.m in Sources */ = {isa = PBXBuildFile; fileRef = 3223A51F1832FBD600F6FED0 /* GroupLister.m */; };
-		3223A5251832FBD600F6FED0 /* PeopleLister.m in Sources */ = {isa = PBXBuildFile; fileRef = 3223A5211832FBD600F6FED0 /* PeopleLister.m */; };
 		3223A5261832FBD600F6FED0 /* PeopleLister.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3223A5221832FBD600F6FED0 /* PeopleLister.xib */; };
 		3223A5271832FBD600F6FED0 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3223A5231832FBD600F6FED0 /* PersonCell.xib */; };
 		3223A52A1832FBE300F6FED0 /* NSManagedObject+GroupAndPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 3223A5291832FBE300F6FED0 /* NSManagedObject+GroupAndPerson.m */; };
+		326C01C019B236C7004331C7 /* PeopleLister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326C01BF19B236C7004331C7 /* PeopleLister.swift */; };
+		329B44B219B24C610086C7A6 /* GroupLister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329B44B119B24C610086C7A6 /* GroupLister.swift */; };
+		329B44E419B252C70086C7A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329B44E319B252C70086C7A6 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,23 +29,18 @@
 		3223A4E41832FB3B00F6FED0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3223A4E61832FB3B00F6FED0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3223A4EA1832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch36p1079peopleGroupsCoreData-Info.plist"; sourceTree = "<group>"; };
-		3223A4EC1832FB3B00F6FED0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3223A4EE1832FB3B00F6FED0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3223A4F01832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch36p1079peopleGroupsCoreData-Prefix.pch"; sourceTree = "<group>"; };
-		3223A4F11832FB3B00F6FED0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		3223A4F21832FB3B00F6FED0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3223A4F51832FB3B00F6FED0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3223A4F81832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ch36p1079peopleGroupsCoreData.xcdatamodel; sourceTree = "<group>"; };
 		3223A5001832FB3B00F6FED0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3223A5071832FB3B00F6FED0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		3223A51E1832FBD600F6FED0 /* GroupLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupLister.h; sourceTree = "<group>"; };
-		3223A51F1832FBD600F6FED0 /* GroupLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupLister.m; sourceTree = "<group>"; };
-		3223A5201832FBD600F6FED0 /* PeopleLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleLister.h; sourceTree = "<group>"; };
-		3223A5211832FBD600F6FED0 /* PeopleLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleLister.m; sourceTree = "<group>"; };
 		3223A5221832FBD600F6FED0 /* PeopleLister.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleLister.xib; sourceTree = "<group>"; };
 		3223A5231832FBD600F6FED0 /* PersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
 		3223A5281832FBE300F6FED0 /* NSManagedObject+GroupAndPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+GroupAndPerson.h"; sourceTree = "<group>"; };
 		3223A5291832FBE300F6FED0 /* NSManagedObject+GroupAndPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+GroupAndPerson.m"; sourceTree = "<group>"; };
+		326C01BE19B236C6004331C7 /* ch36p1079peopleGroupsCoreData-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch36p1079peopleGroupsCoreData-Bridging-Header.h"; sourceTree = "<group>"; };
+		326C01BF19B236C7004331C7 /* PeopleLister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleLister.swift; sourceTree = "<group>"; };
+		329B44B119B24C610086C7A6 /* GroupLister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLister.swift; sourceTree = "<group>"; };
+		329B44E319B252C70086C7A6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,20 +90,18 @@
 		3223A4E81832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData */ = {
 			isa = PBXGroup;
 			children = (
-				3223A4F11832FB3B00F6FED0 /* AppDelegate.h */,
-				3223A4F21832FB3B00F6FED0 /* AppDelegate.m */,
+				329B44E319B252C70086C7A6 /* AppDelegate.swift */,
 				3223A4F41832FB3B00F6FED0 /* Main.storyboard */,
 				3223A5281832FBE300F6FED0 /* NSManagedObject+GroupAndPerson.h */,
 				3223A5291832FBE300F6FED0 /* NSManagedObject+GroupAndPerson.m */,
-				3223A51E1832FBD600F6FED0 /* GroupLister.h */,
-				3223A51F1832FBD600F6FED0 /* GroupLister.m */,
-				3223A5201832FBD600F6FED0 /* PeopleLister.h */,
-				3223A5211832FBD600F6FED0 /* PeopleLister.m */,
+				329B44B119B24C610086C7A6 /* GroupLister.swift */,
+				326C01BF19B236C7004331C7 /* PeopleLister.swift */,
 				3223A5221832FBD600F6FED0 /* PeopleLister.xib */,
 				3223A5231832FBD600F6FED0 /* PersonCell.xib */,
 				3223A5001832FB3B00F6FED0 /* Images.xcassets */,
 				3223A4F71832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.xcdatamodeld */,
 				3223A4E91832FB3B00F6FED0 /* Supporting Files */,
+				326C01BE19B236C6004331C7 /* ch36p1079peopleGroupsCoreData-Bridging-Header.h */,
 			);
 			path = ch36p1079peopleGroupsCoreData;
 			sourceTree = "<group>";
@@ -119,9 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				3223A4EA1832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData-Info.plist */,
-				3223A4EB1832FB3B00F6FED0 /* InfoPlist.strings */,
-				3223A4EE1832FB3B00F6FED0 /* main.m */,
-				3223A4F01832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -180,7 +168,6 @@
 			files = (
 				3223A5011832FB3B00F6FED0 /* Images.xcassets in Resources */,
 				3223A5261832FBD600F6FED0 /* PeopleLister.xib in Resources */,
-				3223A4ED1832FB3B00F6FED0 /* InfoPlist.strings in Resources */,
 				3223A5271832FBD600F6FED0 /* PersonCell.xib in Resources */,
 				3223A4F61832FB3B00F6FED0 /* Main.storyboard in Resources */,
 			);
@@ -193,11 +180,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3223A5251832FBD600F6FED0 /* PeopleLister.m in Sources */,
-				3223A5241832FBD600F6FED0 /* GroupLister.m in Sources */,
+				326C01C019B236C7004331C7 /* PeopleLister.swift in Sources */,
 				3223A52A1832FBE300F6FED0 /* NSManagedObject+GroupAndPerson.m in Sources */,
-				3223A4F31832FB3B00F6FED0 /* AppDelegate.m in Sources */,
-				3223A4EF1832FB3B00F6FED0 /* main.m in Sources */,
+				329B44B219B24C610086C7A6 /* GroupLister.swift in Sources */,
+				329B44E419B252C70086C7A6 /* AppDelegate.swift in Sources */,
 				3223A4F91832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,14 +191,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3223A4EB1832FB3B00F6FED0 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3223A4EC1832FB3B00F6FED0 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		3223A4F41832FB3B00F6FED0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -257,7 +235,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -290,7 +268,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -302,10 +280,15 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch36p1079peopleGroupsCoreData/ch36p1079peopleGroupsCoreData-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ch36p1079peopleGroupsCoreData/ch36p1079peopleGroupsCoreData-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch36p1079peopleGroupsCoreData/ch36p1079peopleGroupsCoreData-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -316,10 +299,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch36p1079peopleGroupsCoreData/ch36p1079peopleGroupsCoreData-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "ch36p1079peopleGroupsCoreData/ch36p1079peopleGroupsCoreData-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch36p1079peopleGroupsCoreData/ch36p1079peopleGroupsCoreData-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
