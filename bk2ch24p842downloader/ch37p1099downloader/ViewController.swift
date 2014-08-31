@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     @IBAction func doDownload (sender:AnyObject!) {
         self.iv.image = nil
-        let s = "http://www.nasa.gov/sites/default/files/styles/1600x1200_autoletterbox/public/pia17474_1.jpg?itok=4fyEwd02"
+        let s = "http://www.nasa.gov/sites/default/files/styles/1600x1200_autoletterbox/public/pia17474_1.jpg"
         self.downloader.download(s) {
             url in
             if url == nil {
