@@ -14,10 +14,10 @@
 		3213106F1835486E0091B292 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3213106E1835486E0091B292 /* main.m */; };
 		321310731835486E0091B292 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 321310721835486E0091B292 /* AppDelegate.m */; };
 		321310761835486E0091B292 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 321310741835486E0091B292 /* Main.storyboard */; };
-		321310791835486E0091B292 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 321310781835486E0091B292 /* ViewController.m */; };
 		3213107B1835486E0091B292 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3213107A1835486E0091B292 /* Images.xcassets */; };
-		32131099183548A00091B292 /* MyDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 32131098183548A00091B292 /* MyDownloader.m */; };
-		3213109C183556600091B292 /* MyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3213109B183556600091B292 /* MyTableViewController.m */; };
+		32625B4619B37D48005B6531 /* MyDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32625B4519B37D48005B6531 /* MyDownloader.swift */; };
+		32625BA119B394FE005B6531 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32625BA019B394FE005B6531 /* ViewController.swift */; };
+		32625BA319B397C6005B6531 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32625BA219B397C6005B6531 /* MyTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,14 +32,12 @@
 		321310711835486E0091B292 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		321310721835486E0091B292 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		321310751835486E0091B292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		321310771835486E0091B292 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		321310781835486E0091B292 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3213107A1835486E0091B292 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		321310811835486E0091B292 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		32131097183548A00091B292 /* MyDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDownloader.h; sourceTree = "<group>"; };
-		32131098183548A00091B292 /* MyDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDownloader.m; sourceTree = "<group>"; };
-		3213109A183556600091B292 /* MyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewController.h; sourceTree = "<group>"; };
-		3213109B183556600091B292 /* MyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewController.m; sourceTree = "<group>"; };
+		32625B4419B37D48005B6531 /* ch37p1099downloader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch37p1099downloader-Bridging-Header.h"; sourceTree = "<group>"; };
+		32625B4519B37D48005B6531 /* MyDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDownloader.swift; sourceTree = "<group>"; };
+		32625BA019B394FE005B6531 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32625BA219B397C6005B6531 /* MyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,14 +88,12 @@
 				321310711835486E0091B292 /* AppDelegate.h */,
 				321310721835486E0091B292 /* AppDelegate.m */,
 				321310741835486E0091B292 /* Main.storyboard */,
-				321310771835486E0091B292 /* ViewController.h */,
-				321310781835486E0091B292 /* ViewController.m */,
-				32131097183548A00091B292 /* MyDownloader.h */,
-				32131098183548A00091B292 /* MyDownloader.m */,
-				3213109A183556600091B292 /* MyTableViewController.h */,
-				3213109B183556600091B292 /* MyTableViewController.m */,
+				32625BA019B394FE005B6531 /* ViewController.swift */,
+				32625B4519B37D48005B6531 /* MyDownloader.swift */,
+				32625BA219B397C6005B6531 /* MyTableViewController.swift */,
 				3213107A1835486E0091B292 /* Images.xcassets */,
 				321310691835486E0091B292 /* Supporting Files */,
+				32625B4419B37D48005B6531 /* ch37p1099downloader-Bridging-Header.h */,
 			);
 			path = ch37p1099downloader;
 			sourceTree = "<group>";
@@ -178,10 +174,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				321310791835486E0091B292 /* ViewController.m in Sources */,
-				3213109C183556600091B292 /* MyTableViewController.m in Sources */,
+				32625BA119B394FE005B6531 /* ViewController.swift in Sources */,
+				32625BA319B397C6005B6531 /* MyTableViewController.swift in Sources */,
+				32625B4619B37D48005B6531 /* MyDownloader.swift in Sources */,
 				321310731835486E0091B292 /* AppDelegate.m in Sources */,
-				32131099183548A00091B292 /* MyDownloader.m in Sources */,
 				3213106F1835486E0091B292 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,7 +237,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -274,7 +270,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -286,10 +282,15 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch37p1099downloader/ch37p1099downloader-Prefix.pch";
 				INFOPLIST_FILE = "ch37p1099downloader/ch37p1099downloader-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch37p1099downloader/ch37p1099downloader-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -300,10 +301,14 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch37p1099downloader/ch37p1099downloader-Prefix.pch";
 				INFOPLIST_FILE = "ch37p1099downloader/ch37p1099downloader-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ch37p1099downloader/ch37p1099downloader-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32625B4319B37583005B6531 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32625B4219B37583005B6531 /* ViewController.swift */; };
 		C9722E6B18E8746C00FB17D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9722E6A18E8746C00FB17D1 /* Foundation.framework */; };
 		C9722E6D18E8746C00FB17D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9722E6C18E8746C00FB17D1 /* CoreGraphics.framework */; };
 		C9722E6F18E8746C00FB17D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9722E6E18E8746C00FB17D1 /* UIKit.framework */; };
@@ -14,11 +15,11 @@
 		C9722E7718E8746C00FB17D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9722E7618E8746C00FB17D1 /* main.m */; };
 		C9722E7B18E8746C00FB17D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9722E7A18E8746C00FB17D1 /* AppDelegate.m */; };
 		C9722E7E18E8746C00FB17D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9722E7C18E8746C00FB17D1 /* Main.storyboard */; };
-		C9722E8118E8746C00FB17D1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9722E8018E8746C00FB17D1 /* ViewController.m */; };
 		C9722E8318E8746C00FB17D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9722E8218E8746C00FB17D1 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32625B4219B37583005B6531 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9722E6718E8746C00FB17D1 /* DataTaskExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataTaskExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9722E6A18E8746C00FB17D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9722E6C18E8746C00FB17D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -30,8 +31,6 @@
 		C9722E7918E8746C00FB17D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9722E7A18E8746C00FB17D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9722E7D18E8746C00FB17D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9722E7F18E8746C00FB17D1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C9722E8018E8746C00FB17D1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C9722E8218E8746C00FB17D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9722E8918E8746C00FB17D1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -84,8 +83,7 @@
 				C9722E7918E8746C00FB17D1 /* AppDelegate.h */,
 				C9722E7A18E8746C00FB17D1 /* AppDelegate.m */,
 				C9722E7C18E8746C00FB17D1 /* Main.storyboard */,
-				C9722E7F18E8746C00FB17D1 /* ViewController.h */,
-				C9722E8018E8746C00FB17D1 /* ViewController.m */,
+				32625B4219B37583005B6531 /* ViewController.swift */,
 				C9722E8218E8746C00FB17D1 /* Images.xcassets */,
 				C9722E7118E8746C00FB17D1 /* Supporting Files */,
 			);
@@ -168,8 +166,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9722E8118E8746C00FB17D1 /* ViewController.m in Sources */,
 				C9722E7B18E8746C00FB17D1 /* AppDelegate.m in Sources */,
+				32625B4319B37583005B6531 /* ViewController.swift in Sources */,
 				C9722E7718E8746C00FB17D1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,7 +226,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -260,7 +258,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -271,10 +269,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DataTaskExample/DataTaskExample-Prefix.pch";
 				INFOPLIST_FILE = "DataTaskExample/DataTaskExample-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -284,9 +286,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DataTaskExample/DataTaskExample-Prefix.pch";
 				INFOPLIST_FILE = "DataTaskExample/DataTaskExample-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
