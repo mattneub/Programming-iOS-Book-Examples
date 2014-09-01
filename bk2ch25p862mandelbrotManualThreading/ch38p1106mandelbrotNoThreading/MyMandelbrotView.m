@@ -1,4 +1,9 @@
-//  Mandelbrot drawing code based on https://github.com/ddeville/Mandelbrot-set-on-iPhone 
+/*
+ I don't know how to translate this example directly into Swift,
+ since Swift doesn't permit "performSelector"
+ */
+
+//  Mandelbrot drawing code based on https://github.com/ddeville/Mandelbrot-set-on-iPhone
 
 #import "MyMandelbrotView.h"
 
