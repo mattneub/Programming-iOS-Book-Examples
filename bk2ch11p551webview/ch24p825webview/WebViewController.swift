@@ -16,7 +16,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.restorationIdentifier = "wvc"
         self.restorationClass = self.dynamicType
-        let b = UIBarButtonItem(title:"Back", style:.Bordered, target:self, action:"goBack:")
+        let b = UIBarButtonItem(title:"Back", style:.Plain, target:self, action:"goBack:")
         self.navigationItem.rightBarButtonItem = b
         self.edgesForExtendedLayout = .None // get accurate offset restoration
     }

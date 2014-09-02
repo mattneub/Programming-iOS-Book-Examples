@@ -9,9 +9,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         
         self.title = "First"
         // right bar button item now set up in storyboard so we can use a "show" segue
-        // let b = UIBarButtonItem(image:UIImage(named:"key.png"), style:.Bordered, target:self, action:"navigate")
-        let b2 = UIBarButtonItem(image:UIImage(named:"files.png"),
-        style:.Bordered, target:nil, action:nil)
+        let b2 = UIBarButtonItem(image:UIImage(named:"files.png"), style:.Plain, target:nil, action:nil)
         // how to append additional right bar button items
         var rbbi = self.navigationItem.rightBarButtonItems as [UIBarButtonItem]
         rbbi += [b2]
