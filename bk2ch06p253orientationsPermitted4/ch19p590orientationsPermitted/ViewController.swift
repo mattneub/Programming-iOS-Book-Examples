@@ -118,7 +118,7 @@ class ViewController : UIViewController {
                 // showing that in iOS 8 rotation no longer involves application of transform to view
                 println("window transform: \(self.view.window!.transform)")
                 println("view transform: \(self.view.transform)")
-                
+                println(CGAffineTransformIdentity)
             })
     }
     
