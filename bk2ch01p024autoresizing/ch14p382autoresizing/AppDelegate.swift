@@ -20,7 +20,7 @@ func delay(delay:Double, closure:()->()) {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         self.window!.rootViewController = UIViewController()
-        let mainview = self.window!.rootViewController.view
+        let mainview = self.window!.rootViewController!.view
         
         let v1 = UIView(frame:CGRectMake(100, 111, 132, 194))
         v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)

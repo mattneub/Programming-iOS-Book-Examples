@@ -9,7 +9,7 @@ import UIKit
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         self.window!.rootViewController = UIViewController()
-        let mainview = self.window!.rootViewController.view
+        let mainview = self.window!.rootViewController!.view
         
         let which = 1
         switch which {
