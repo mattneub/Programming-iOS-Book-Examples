@@ -19,9 +19,10 @@ class ViewController : UIViewController {
     @IBOutlet var button : UIButton!
     
     @IBAction func doWiden(sender:AnyObject?) {
-        self.lab1.text = self.lab1.text + "xxxxx"
-        self.lab2.text = self.lab2.text + "xxxxx"
-        self.label.text = self.label.text + "xxxxx"
+        self.lab1.text = self.lab1.text! + "xxxxx"
+        self.lab2.text = self.lab2.text! + "xxxxx"
+        self.label.text = self.label.text! + "xxxxx"
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -34,11 +35,11 @@ class ViewController : UIViewController {
         
         self.view.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-[v1]", options: nil, metrics: nil, views: d)
+                "V:|-20-[v1]", options: nil, metrics: nil, views: d)
         )
         self.view.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-[v2]", options: nil, metrics: nil, views: d)
+                "V:|-20-[v2]", options: nil, metrics: nil, views: d)
         )
         self.view.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
@@ -56,8 +57,14 @@ class ViewController : UIViewController {
         
         // we will be ambiguous when the label texts grow
         // one way to solve: different compression resistance priorities
+        
+        let p = self.lab2.contentCompressionResistancePriorityForAxis(.Horizontal)
+        self.lab1.setContentCompressionResistancePriority(p+1, forAxis: .Horizontal)
+//        println(self.lab1.contentCompressionResistancePriorityForAxis(.Horizontal))
+//        println(self.lab2.contentCompressionResistancePriorityForAxis(.Horizontal))
+//        println(self.lab1.contentHuggingPriorityForAxis(.Horizontal))
+//        println(self.lab2.contentHuggingPriorityForAxis(.Horizontal))
 
-        self.lab1.setContentCompressionResistancePriority(751, forAxis: .Horizontal)
         
         // =====================================
         
