@@ -17,6 +17,33 @@ func dictionaryOfNames(arr:UIView...) -> [String:UIView] {
     return d
 }
 
+extension NSLayoutConstraint {
+    class func reportAmbiguity (var v:UIView?) {
+        if v == nil {
+            v = UIApplication.sharedApplication().keyWindow
+        }
+        for vv in v!.subviews as [UIView] {
+            println("\(vv) \(vv.hasAmbiguousLayout())")
+            if vv.subviews.count > 0 {
+                self.reportAmbiguity(vv)
+            }
+        }
+    }
+    class func listConstraints (var v:UIView?) {
+        if v == nil {
+            v = UIApplication.sharedApplication().keyWindow
+        }
+        for vv in v!.subviews as [UIView] {
+            let arr1 = vv.constraintsAffectingLayoutForAxis(.Horizontal)
+            let arr2 = vv.constraintsAffectingLayoutForAxis(.Vertical)
+            NSLog("\n\n%@\nH: %@\nV:%@", vv, arr1, arr2);
+            if vv.subviews.count > 0 {
+                self.listConstraints(vv)
+            }
+        }
+    }
+}
+
 @UIApplicationMain class AppDelegate : UIResponder, UIApplicationDelegate {
     
     var window : UIWindow?
@@ -135,11 +162,8 @@ func dictionaryOfNames(arr:UIView...) -> [String:UIView] {
                 NSLayoutConstraint.constraintsWithVisualFormat(
                     "V:[v3(20)]|", options: nil, metrics: nil, views: d)
             )
-            
         default: break
         }
-
-        
         
         delay(2) {
             v1.bounds.size.width += 40
