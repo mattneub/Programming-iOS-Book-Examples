@@ -17,13 +17,15 @@ The representation is not perfect but it's pretty good.
     // Otherwise IB can crash
     // no longer seems to be needed!
     
-//    init(frame: CGRect) {
-//        super.init(frame:frame)
-//    }
-//    
-//    init(coder aDecoder: NSCoder!) {
-//        super.init(coder:aDecoder)
-//    }
+    override init(frame: CGRect) {
+        super.init(frame:frame)
+        self.configure()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder:aDecoder)
+        self.configure()
+    }
     
     func configure() {
         self.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
@@ -104,10 +106,11 @@ The representation is not perfect but it's pretty good.
     override func prepareForInterfaceBuilder() {
         // IB-only preparations can go here
         // typically this will involve supplying stub data
+        self.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
     }
     
     override func willMoveToSuperview(newSuperview: UIView!) {
-        self.configure()
+        // self.configure()
     }
     
     
