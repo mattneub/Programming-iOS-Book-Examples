@@ -25,7 +25,7 @@ class ViewController : UIViewController {
     
     @IBAction func doButton(g:UIGestureRecognizer) {
         let p = g.locationInView(g.view)
-        if let v = g.view.hitTest(p, withEvent: nil) {
+        if let v = g.view!.hitTest(p, withEvent: nil) {
             if v == g.view { return }
             if v is MyView { return }
             dispatch_async(dispatch_get_main_queue()) {
@@ -42,7 +42,7 @@ class ViewController : UIViewController {
     
     @IBAction func growLayer(g:UIGestureRecognizer) {
         println("growLayer")
-        let v = g.view
+        let v = g.view!
         v.layer.transform = CATransform3DScale(v.layer.transform, 1.2, 1.2, 1)
     }
     
