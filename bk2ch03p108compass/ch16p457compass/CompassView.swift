@@ -1,7 +1,7 @@
 
 
 import UIKit
-import QuartzCore
+
 
 func delay(delay:Double, closure:()->()) {
     dispatch_after(

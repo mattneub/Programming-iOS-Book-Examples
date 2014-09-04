@@ -1,6 +1,6 @@
 
 import UIKit
-import QuartzCore
+
 
 class MyTiledView : UIView {
     

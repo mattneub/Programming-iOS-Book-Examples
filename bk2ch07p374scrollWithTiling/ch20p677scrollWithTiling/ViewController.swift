@@ -1,6 +1,6 @@
 
 import UIKit
-import QuartzCore
+
 
 let TILESIZE : CGFloat = 256
 

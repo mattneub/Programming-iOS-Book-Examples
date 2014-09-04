@@ -1,5 +1,5 @@
 import UIKit
-import QuartzCore
+
 
 class ViewController : UIViewController {
     var v : UIView!

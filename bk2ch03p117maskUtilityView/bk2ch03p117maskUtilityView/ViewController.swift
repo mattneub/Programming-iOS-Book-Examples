@@ -1,7 +1,7 @@
 
 
 import UIKit
-import QuartzCore
+
 
 func maskOfSize(sz:CGSize, roundingCorners rad:CGFloat) -> CALayer {
     let r = CGRect(origin:CGPointZero, size:sz)

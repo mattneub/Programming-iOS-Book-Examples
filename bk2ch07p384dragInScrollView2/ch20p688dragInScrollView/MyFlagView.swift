@@ -1,6 +1,6 @@
 
 import UIKit
-import QuartzCore
+
 
 class MyFlagView : UIImageView {
     // use our hit test from chapter 5 so that user must tap actual flag drawing

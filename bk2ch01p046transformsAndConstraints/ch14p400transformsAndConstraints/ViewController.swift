@@ -1,7 +1,6 @@
 
 
 import UIKit
-import QuartzCore
 
 /*
 Well, here's something I didn't expect to see: they've fixed the view transform bug!

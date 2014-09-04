@@ -1,7 +1,7 @@
 
 
 import UIKit
-import QuartzCore
+
 
 class MyView : UIView {
     @IBOutlet var v : UIView! // the animated subview

@@ -1,6 +1,6 @@
 
 import UIKit
-import QuartzCore
+
 
 class ViewController : UIViewController {
     @IBAction func doButton(sender:AnyObject?) {

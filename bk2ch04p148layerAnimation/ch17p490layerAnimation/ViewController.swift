@@ -1,7 +1,7 @@
 
 
 import UIKit
-import QuartzCore
+
 
 class ViewController : UIViewController {
     @IBOutlet var compassView : CompassView!

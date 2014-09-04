@@ -1,7 +1,7 @@
 
 
 import UIKit
-import QuartzCore
+
 
 class MyView : UIView { // exists purely to host MyLayer
     override class func layerClass() -> AnyClass {

@@ -1,5 +1,5 @@
 import UIKit
-import QuartzCore
+
 
 class MyView1 : UIView {
     override func drawRect(rect: CGRect) {

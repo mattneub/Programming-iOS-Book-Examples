@@ -1,7 +1,7 @@
 
 
 import UIKit
-import QuartzCore
+
 
 // hit-testing on the non-transparent portion of a drawing
 // (here, it's the black ellipse)

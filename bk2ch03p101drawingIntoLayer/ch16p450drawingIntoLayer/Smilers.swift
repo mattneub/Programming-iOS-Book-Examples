@@ -1,7 +1,7 @@
 
 
 import UIKit
-import QuartzCore
+
 
 class Smiler:NSObject {
     override func drawLayer(layer: CALayer!, inContext ctx: CGContext!) {

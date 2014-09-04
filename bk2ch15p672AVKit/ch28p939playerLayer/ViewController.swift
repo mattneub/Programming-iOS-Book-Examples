@@ -2,7 +2,7 @@
 
 import UIKit
 import AVFoundation
-import QuartzCore
+
 import CoreMedia
 import AVKit
 

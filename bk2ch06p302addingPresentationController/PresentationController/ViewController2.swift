@@ -1,7 +1,7 @@
 
 
 import UIKit
-import QuartzCore
+
 
 class ViewController2: UIViewController {
     // important: viewDidLoad() is too late for this sort of thing

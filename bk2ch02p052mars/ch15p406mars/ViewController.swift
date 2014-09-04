@@ -1,5 +1,4 @@
 import UIKit
-import QuartzCore
 
 extension CGRect {
     var center : CGPoint {

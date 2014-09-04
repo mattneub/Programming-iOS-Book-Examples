@@ -1,7 +1,6 @@
 
 
 import UIKit
-import QuartzCore
 
 class MyView: UIView, Printable {
     
