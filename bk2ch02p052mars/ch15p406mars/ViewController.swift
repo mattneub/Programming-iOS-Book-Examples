@@ -3,7 +3,7 @@ import QuartzCore
 
 extension CGRect {
     var center : CGPoint {
-    return CGPointMake(self.midX, self.midY)
+        return CGPointMake(self.midX, self.midY)
     }
 }
 func delay(delay:Double, closure:()->()) {
