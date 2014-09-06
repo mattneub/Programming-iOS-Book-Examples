@@ -37,7 +37,7 @@ class ViewController : UIViewController {
         im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         self.iv2.image = im
-
+        
         // ======
         
         mars = UIImage(named:"Mars")
@@ -97,7 +97,7 @@ class ViewController : UIViewController {
         UIGraphicsEndImageContext()
         // no memory management
         self.iv5.image = im
-
+        
         // ======
         
         mars = UIImage(named:"Mars")
@@ -123,7 +123,7 @@ class ViewController : UIViewController {
         UIGraphicsEndImageContext()
         // no memory management
         self.iv6.image = im
-
+        
         // ======
         
         mars = UIImage(named:"Mars")
@@ -140,14 +140,18 @@ class ViewController : UIViewController {
         UIGraphicsBeginImageContextWithOptions(
             CGSizeMake(sz.width*1.5, sz.height), false, 0)
         // instead of calling flip, pass through UIImage
-        UIImage(CGImage: marsLeft, scale: mars.scale, orientation: mars.imageOrientation).drawAtPoint(CGPointMake(0,0))
-        UIImage(CGImage: marsRight, scale: mars.scale, orientation: mars.imageOrientation).drawAtPoint(CGPointMake(sz.width,0))
+        UIImage(CGImage: marsLeft, scale: mars.scale,
+            orientation: mars.imageOrientation)
+            .drawAtPoint(CGPointMake(0,0))
+        UIImage(CGImage: marsRight, scale: mars.scale,
+            orientation: mars.imageOrientation)
+            .drawAtPoint(CGPointMake(sz.width,0))
         im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         // no memory management
         self.iv7.image = im
-
-
+        
+        
     }
     
 }

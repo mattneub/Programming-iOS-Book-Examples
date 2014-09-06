@@ -15,7 +15,13 @@ class ViewController : UIViewController {
         and again because we think there is a real UIWindow there.
 */
         
-        if let window = UIApplication.sharedApplication().delegate.window! {
+        /*
+        Very uncool. Now (seed 7) they've gone too far.
+        Not only is delegate itself now an optional that needs unwrapping, but
+        window must be unwrapped twice.
+*/
+        
+        if let window = UIApplication.sharedApplication().delegate!.window! {
             window.tintColor = UIColor.redColor()
         }
         
