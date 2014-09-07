@@ -62,6 +62,7 @@ class CompassLayer : CALayer {
         // ...and moreover our chief sublayer is now a CATransformLayer
         // to which the other layers are added
 
+        // let master = CALayer()
         let master = CATransformLayer()
         master.frame = self.bounds
         self.addSublayer(master)
