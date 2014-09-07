@@ -28,16 +28,28 @@ class MyView: UIView, Printable {
     
     override func updateConstraints() {
         super.updateConstraints()
-        println("\(self)\n\(__FUNCTION__)")
+        println("\(self)\n\(__FUNCTION__)\n")
     }
     
-//    override func layoutSublayersOfLayer(layer: CALayer!) {
-//        super.layoutSublayersOfLayer(layer)
-//        println("\(self)\n\(__FUNCTION__)")
-//    }
+    // gets an extra cycle, I've no idea why
+    override func layoutSublayersOfLayer(layer: CALayer!) {
+        super.layoutSublayersOfLayer(layer)
+        println("\(self)\n\(__FUNCTION__)\n")
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        println("\(self)\n\(__FUNCTION__)")
+        println("\(self)\n\(__FUNCTION__)\n")
+    }
+    
+    override class func layerClass() -> AnyClass {
+        return MyLoggingLayer.self
+    }
+}
+
+class MyLoggingLayer : CALayer {
+    override func layoutSublayers() {
+        super.layoutSublayers()
+        println("layer of \(self.delegate)\n\(__FUNCTION__)\n")
     }
 }
