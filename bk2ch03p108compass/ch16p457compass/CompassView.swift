@@ -73,7 +73,7 @@ class CompassLayer : CALayer {
             t.position = circle.bounds.center
             let vert = circle.bounds.midY / t.bounds.height
             t.anchorPoint = CGPointMake(0.5, vert)
-            // NSLog(@"%@", NSStringFromCGPoint(t.anchorPoint));
+            // println(t.anchorPoint)
             t.alignmentMode = kCAAlignmentCenter
             t.foregroundColor = UIColor.blackColor().CGColor
             t.setAffineTransform(CGAffineTransformMakeRotation(CGFloat(ix)*CGFloat(M_PI)/2.0))

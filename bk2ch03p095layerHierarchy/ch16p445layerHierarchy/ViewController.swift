@@ -23,6 +23,7 @@ class ViewController : UIViewController {
             // a view can be interspersed with sibling layers
             let iv = UIImageView(image:UIImage(named:"smiley"))
             mainview.addSubview(iv)
+            // iv.layer.zPosition = 1
             iv.frame.origin = CGPointMake(180,180)
         case 2:
             // a layer can have image content
