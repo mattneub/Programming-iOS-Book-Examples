@@ -12,11 +12,16 @@ class MyView : UIView {
         fatalError("NSCoding not supported")
     }
     
+    override init(frame: CGRect) {
+        super.init(frame:frame)
+        self.opaque = false
+    }
+    
     override func drawRect(rect: CGRect) {
-        let which = 1
+        let which = 6
         switch which {
         case 1:
-            let con = UIGraphicsGetCurrentContext();
+            let con = UIGraphicsGetCurrentContext()
             
             // draw a black (by default) vertical line, the shaft of the arrow
             CGContextMoveToPoint(con, 100, 100)
@@ -37,7 +42,7 @@ class MyView : UIView {
             CGContextAddLineToPoint(con, 110, 101)
             CGContextSetBlendMode(con, kCGBlendModeClear)
             CGContextFillPath(con)
-
+            
         case 2:
             let p = UIBezierPath()
             p.moveToPoint(CGPointMake(100,100))
@@ -83,7 +88,7 @@ class MyView : UIView {
             CGContextAddLineToPoint(con, 100, 0)
             CGContextAddLineToPoint(con, 120, 25)
             CGContextFillPath(con)
-
+            
         case 4:
             // obtain the current graphics context
             let con = UIGraphicsGetCurrentContext()
@@ -125,7 +130,7 @@ class MyView : UIView {
             CGContextAddLineToPoint(con, 100, 0)
             CGContextAddLineToPoint(con, 120, 25)
             CGContextFillPath(con)
-
+            
         case 5:
             // obtain the current graphics context
             let con = UIGraphicsGetCurrentContext()
@@ -178,7 +183,7 @@ class MyView : UIView {
             p.addLineToPoint(CGPointMake(100,0))
             p.addLineToPoint(CGPointMake(120,25))
             p.fill()
-
+            
         case 6:
             
             // obtain the current graphics context
@@ -221,7 +226,7 @@ class MyView : UIView {
             // can't construct CGPatternRef in Swift
             // (because we can't form the pointer-to-C-function)
             // so we construct it in Objective-C and pass it
-            let patt = (UIApplication.sharedApplication().delegate as AppDelegate).patternMaker().takeRetainedValue()
+            let patt = PatternHelper().patternMaker().takeRetainedValue()
             var alph : CGFloat = 1.0
             CGContextSetFillPattern(con, patt, &alph)
             
@@ -229,7 +234,7 @@ class MyView : UIView {
             CGContextAddLineToPoint(con, 100, 0)
             CGContextAddLineToPoint(con, 120, 25)
             CGContextFillPath(con)
-
+            
             
         default: break
         }

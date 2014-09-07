@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		323AF42B196DB2F1000B1C7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323AF42A196DB2F1000B1C7C /* ViewController.swift */; };
 		323AF42D196DB31D000B1C7C /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323AF42C196DB31D000B1C7C /* MyView.swift */; };
+		32BD8FDC19BBBB4A00F6760B /* PatternHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BD8FDB19BBBB4A00F6760B /* PatternHelper.m */; };
 		C9E67A4E17B023F70062A15F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E67A4D17B023F70062A15F /* Foundation.framework */; };
 		C9E67A5017B023F70062A15F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E67A4F17B023F70062A15F /* CoreGraphics.framework */; };
 		C9E67A5217B023F70062A15F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E67A5117B023F70062A15F /* UIKit.framework */; };
@@ -23,6 +24,8 @@
 		323AF42A196DB2F1000B1C7C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		323AF42C196DB31D000B1C7C /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		323AF42E196DBD49000B1C7C /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		32BD8FDA19BBBB4A00F6760B /* PatternHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatternHelper.h; sourceTree = "<group>"; };
+		32BD8FDB19BBBB4A00F6760B /* PatternHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatternHelper.m; sourceTree = "<group>"; };
 		C9E67A4A17B023F70062A15F /* ch15p427drawingInUIView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch15p427drawingInUIView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E67A4D17B023F70062A15F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9E67A4F17B023F70062A15F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,6 +91,8 @@
 				C9E67A5F17B023F70062A15F /* Main.storyboard */,
 				323AF42A196DB2F1000B1C7C /* ViewController.swift */,
 				323AF42C196DB31D000B1C7C /* MyView.swift */,
+				32BD8FDA19BBBB4A00F6760B /* PatternHelper.h */,
+				32BD8FDB19BBBB4A00F6760B /* PatternHelper.m */,
 				323AF42E196DBD49000B1C7C /* BridgingHeader.h */,
 				C9E67A6517B023F70062A15F /* Images.xcassets */,
 				C9E67A5417B023F70062A15F /* Supporting Files */,
@@ -175,6 +180,7 @@
 				323AF42D196DB31D000B1C7C /* MyView.swift in Sources */,
 				C9E67A5E17B023F70062A15F /* AppDelegate.m in Sources */,
 				C9E67A5A17B023F70062A15F /* main.m in Sources */,
+				32BD8FDC19BBBB4A00F6760B /* PatternHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

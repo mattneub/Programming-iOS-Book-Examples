@@ -1,1 +1,1 @@
-#import "AppDelegate.h"
+#import "PatternHelper.h"

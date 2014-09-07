@@ -17,6 +17,7 @@ class ViewController : UIViewController {
         
         let mv = MyView()
         self.view.addSubview(mv)
+        
         mv.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         mv.superview!.addConstraints(
