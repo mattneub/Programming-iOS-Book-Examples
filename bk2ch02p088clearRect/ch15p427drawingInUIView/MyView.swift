@@ -10,7 +10,7 @@ class MyView : UIView {
         // clearRect will cause a black square
         self.backgroundColor = self.backgroundColor!.colorWithAlphaComponent(1)
         // but uncomment the next line: clearRect will cause a clear square!
-        // self.backgroundColor = self.backgroundColor.colorWithAlphaComponent(0.99)
+        // self.backgroundColor = self.backgroundColor!.colorWithAlphaComponent(0.99)
         
         println("Layer opaque: \(self.layer.opaque)")
     }
