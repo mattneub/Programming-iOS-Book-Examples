@@ -46,6 +46,7 @@ class ViewController : UIViewController {
         let mask = self.maskOfSize(CGSizeMake(100,100), roundingCorners: 20)
         mask.frame.origin = CGPointMake(110,160)
         lay.mask = mask
+        // lay.setValue(mask, forKey: "mask")
     }
     
 }
