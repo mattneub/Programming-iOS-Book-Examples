@@ -21,9 +21,9 @@ class MyView: UIView, Printable {
     @IBInspectable var myImage : UIImage?
     //@IBInspectable var myRange : Range<Int>? = 1...3 // nope
     //@IBInspectable var someView : UIView? // nope
-
+    
     override var description : String {
-        return super.description + "\n" + self.name!
+        return super.description + "\n" + (self.name ?? "noname")
     }
     
     override func updateConstraints() {
@@ -39,6 +39,11 @@ class MyView: UIView, Printable {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        println("\(self)\n\(__FUNCTION__)\n")
+    }
+    
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection) {
+        // super.traitCollectionDidChange(previousTraitCollection)
         println("\(self)\n\(__FUNCTION__)\n")
     }
     
