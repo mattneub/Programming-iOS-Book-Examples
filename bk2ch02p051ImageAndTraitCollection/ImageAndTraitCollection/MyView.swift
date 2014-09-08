@@ -13,12 +13,12 @@ class MyView: UIView {
     }
     
     override func drawRect(rect: CGRect) {
-        if self.image != nil {
+        if var im = self.image {
             if let asset = self.image.imageAsset {
                 let tc = self.traitCollection
-                let im = asset.imageWithTraitCollection(tc)
-                im.drawAtPoint(CGPointZero)
+                im = asset.imageWithTraitCollection(tc)
             }
+            im.drawAtPoint(CGPointZero)
         }
     }
 }
