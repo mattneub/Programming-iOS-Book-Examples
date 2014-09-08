@@ -9,6 +9,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var iv2: UIImageView!
     
     @IBOutlet weak var b: UIButton!
+    @IBOutlet weak var v: MyView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,8 @@ class ViewController: UIViewController {
         
         self.b.setImage(im, forState: .Normal)
         self.b.setImage(im, forState: .Highlighted)
+        
+        self.v.image = im
 
     }
 

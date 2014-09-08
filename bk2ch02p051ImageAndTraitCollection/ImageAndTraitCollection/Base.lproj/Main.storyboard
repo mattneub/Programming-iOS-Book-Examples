@@ -29,17 +29,28 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMU-Zw-VYF" customClass="MyView" customModule="ImageAndTraitCollection" customModuleProvider="target">
+                                <rect key="frame" x="437" y="92" width="136" height="141"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="136" id="d8E-gp-2N4"/>
+                                    <constraint firstAttribute="height" constant="141" id="wiH-Id-9iY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="cMU-Zw-VYF" secondAttribute="trailing" constant="11" id="PCf-MK-J0j"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NnX-B9-0RT" secondAttribute="trailing" constant="9" id="hUt-aE-Use"/>
                             <constraint firstItem="NnX-B9-0RT" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="19" id="jNz-RA-aIn"/>
+                            <constraint firstItem="cMU-Zw-VYF" firstAttribute="top" secondItem="NnX-B9-0RT" secondAttribute="bottom" constant="23" id="vgJ-8h-Tam"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="b" destination="NnX-B9-0RT" id="4uJ-75-p4m"/>
                         <outlet property="iv" destination="NOd-nC-gEa" id="TI4-cp-RLu"/>
                         <outlet property="iv2" destination="lkV-av-Duv" id="FuK-fE-IRr"/>
+                        <outlet property="v" destination="cMU-Zw-VYF" id="QhP-qV-e2U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

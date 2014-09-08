@@ -14,6 +14,7 @@
 		3235AC7619BD1040000BF8E3 /* ImageAndTraitCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3235AC7519BD1040000BF8E3 /* ImageAndTraitCollectionTests.swift */; };
 		3235AC8119BD1D40000BF8E3 /* frowney.png in Resources */ = {isa = PBXBuildFile; fileRef = 3235AC7F19BD1D40000BF8E3 /* frowney.png */; };
 		3235AC8219BD1D40000BF8E3 /* smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = 3235AC8019BD1D40000BF8E3 /* smiley.png */; };
+		32B800A819BD55FE00965954 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B800A719BD55FE00965954 /* MyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		3235AC7519BD1040000BF8E3 /* ImageAndTraitCollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAndTraitCollectionTests.swift; sourceTree = "<group>"; };
 		3235AC7F19BD1D40000BF8E3 /* frowney.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frowney.png; sourceTree = "<group>"; };
 		3235AC8019BD1D40000BF8E3 /* smiley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley.png; sourceTree = "<group>"; };
+		32B800A719BD55FE00965954 /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				3235AC6219BD1040000BF8E3 /* AppDelegate.swift */,
 				3235AC6419BD1040000BF8E3 /* ViewController.swift */,
 				3235AC6619BD1040000BF8E3 /* Main.storyboard */,
+				32B800A719BD55FE00965954 /* MyView.swift */,
 				3235AC7F19BD1D40000BF8E3 /* frowney.png */,
 				3235AC8019BD1D40000BF8E3 /* smiley.png */,
 				3235AC6919BD1040000BF8E3 /* Images.xcassets */,
@@ -216,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32B800A819BD55FE00965954 /* MyView.swift in Sources */,
 				3235AC6519BD1040000BF8E3 /* ViewController.swift in Sources */,
 				3235AC6319BD1040000BF8E3 /* AppDelegate.swift in Sources */,
 			);
@@ -403,6 +407,7 @@
 				3235AC7B19BD1040000BF8E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3235AC7C19BD1040000BF8E3 /* Build configuration list for PBXNativeTarget "ImageAndTraitCollectionTests" */ = {
 			isa = XCConfigurationList;
@@ -411,6 +416,7 @@
 				3235AC7E19BD1040000BF8E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
