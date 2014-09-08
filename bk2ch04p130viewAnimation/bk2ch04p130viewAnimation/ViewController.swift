@@ -21,13 +21,9 @@ func animHelper(t:Int, dur: NSTimeInterval, del: NSTimeInterval, opt: UIViewAnim
             com!(done)
         }
         if t > 0 {
-            animHelper2(t-1, dur, del, opt, anim, com)
+            animHelper(t-1, dur, del, opt, anim, com)
         }
     })
-}
-
-func animHelper2(t:Int, dur: NSTimeInterval, del: NSTimeInterval, opt: UIViewAnimationOptions, anim: () -> Void , com: ((Bool) -> Void)?) {
-    animHelper(t, dur, del, opt, anim, com)
 }
 
 class ViewController: UIViewController {
