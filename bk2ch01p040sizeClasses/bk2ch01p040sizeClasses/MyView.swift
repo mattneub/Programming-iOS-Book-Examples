@@ -99,7 +99,13 @@ class MyView: UIView {
         let d2 : CGFloat = comp ? 20 : 80
         self.c1.constant = d1
         self.c2.constant = d2
+        println("\(d1) \(d2)")
         super.updateConstraints()
+    }
+    
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection) {
+        println("did change")
+        self.setNeedsUpdateConstraints()
     }
 
 
