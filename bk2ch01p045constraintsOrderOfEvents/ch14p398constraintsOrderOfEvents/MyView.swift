@@ -45,6 +45,12 @@ class MyView: UIView, Printable {
     override func traitCollectionDidChange(previousTraitCollection: UITraitCollection) {
         // super.traitCollectionDidChange(previousTraitCollection)
         println("\(self)\n\(__FUNCTION__)\n")
+//        let prev : UITraitCollection? = previousTraitCollection
+//        if prev == nil {
+//            println("nil")
+//        }
+//        let none = "none"
+//        println("old: \(previousTraitCollection ?? none)\n")
     }
     
     override class func layerClass() -> AnyClass {
