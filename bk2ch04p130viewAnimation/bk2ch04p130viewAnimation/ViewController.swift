@@ -10,20 +10,25 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
-func animateTimes(times:Int, #duration: NSTimeInterval, #delay: NSTimeInterval, #options: UIViewAnimationOptions, #animations: () -> Void , #completion: ((Bool) -> Void)?) {
-    animHelper(times-1, duration, delay, options, animations, completion)
+func animateTimes(times:Int, #duration: NSTimeInterval,
+    #delay: NSTimeInterval, #options: UIViewAnimationOptions,
+    #animations: () -> Void , #completion: ((Bool) -> Void)?) {
+        animHelper(times-1, duration, delay, options, animations, completion)
 }
 
-func animHelper(t:Int, dur: NSTimeInterval, del: NSTimeInterval, opt: UIViewAnimationOptions, anim: () -> Void , com: ((Bool) -> Void)?) {
-    UIView.animateWithDuration(dur, delay: del, options: opt, animations: anim, completion: {
-        done in
-        if com != nil {
-            com!(done)
-        }
-        if t > 0 {
-            animHelper(t-1, dur, del, opt, anim, com)
-        }
-    })
+func animHelper(t:Int, dur: NSTimeInterval, del: NSTimeInterval,
+    opt: UIViewAnimationOptions,
+    anim: () -> Void , com: ((Bool) -> Void)?) {
+        UIView.animateWithDuration(dur, delay: del, options: opt,
+            animations: anim, completion: {
+                done in
+                if com != nil {
+                    com!(done)
+                }
+                if t > 0 {
+                    animHelper(t-1, dur, del, opt, anim, com)
+                }
+        })
 }
 
 class ViewController: UIViewController {
