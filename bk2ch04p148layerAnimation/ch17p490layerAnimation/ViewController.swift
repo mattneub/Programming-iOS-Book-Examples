@@ -10,7 +10,7 @@ class ViewController : UIViewController {
         let c = self.compassView.layer as CompassLayer
         let arrow = c.arrow!
         
-        let which = 4
+        let which = 9
         switch which {
         case 1:
             arrow.transform = CATransform3DRotate(
@@ -34,7 +34,8 @@ class ViewController : UIViewController {
             
             // capture the start and end values
             let startValue = arrow.transform
-            let endValue = CATransform3DRotate(startValue, CGFloat(M_PI)/4.0, 0, 0, 1)
+            let endValue = CATransform3DRotate(
+                startValue, CGFloat(M_PI)/4.0, 0, 0, 1)
             // change the layer, without implicit animation
             CATransaction.setDisableActions(true)
             arrow.transform = endValue
@@ -50,7 +51,8 @@ class ViewController : UIViewController {
             
         case 5:
             CATransaction.setDisableActions(true)
-            arrow.transform = CATransform3DRotate(arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)
+            arrow.transform = CATransform3DRotate(
+                arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)
             let anim = CABasicAnimation(keyPath:"transform")
             anim.duration = 0.8
             let clunk = CAMediaTimingFunction(controlPoints:0.9, 0.1, 0.7, 0.9)
@@ -60,12 +62,15 @@ class ViewController : UIViewController {
         case 6:
             // capture the start and end values
             let nowValue = arrow.transform
-            let startValue = CATransform3DRotate(nowValue, CGFloat(M_PI)/40.0, 0, 0, 1)
-            let endValue = CATransform3DRotate(nowValue, CGFloat(-M_PI)/40.0, 0, 0, 1)
+            let startValue = CATransform3DRotate(
+                nowValue, CGFloat(M_PI)/40.0, 0, 0, 1)
+            let endValue = CATransform3DRotate(
+                nowValue, CGFloat(-M_PI)/40.0, 0, 0, 1)
             // construct the explicit animation
             let anim = CABasicAnimation(keyPath:"transform")
             anim.duration = 0.05
-            anim.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionLinear)
+            anim.timingFunction = CAMediaTimingFunction(
+                name:kCAMediaTimingFunctionLinear)
             anim.repeatCount = 3
             anim.autoreverses = true
             anim.fromValue = NSValue(CATransform3D:startValue)
@@ -76,16 +81,33 @@ class ViewController : UIViewController {
         case 7:
             let anim = CABasicAnimation(keyPath:"transform")
             anim.duration = 0.05
-            anim.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionLinear)
+            anim.timingFunction = CAMediaTimingFunction(
+                name:kCAMediaTimingFunctionLinear)
             anim.repeatCount = 3
             anim.autoreverses = true
             anim.additive = true
-            anim.valueFunction = CAValueFunction(name:kCAValueFunctionRotateZ)
+            anim.valueFunction = CAValueFunction(
+                name:kCAValueFunctionRotateZ)
             anim.fromValue = M_PI/40
             anim.toValue = -M_PI/40
             arrow.addAnimation(anim, forKey:nil)
-
+            
         case 8:
+            let rot = CGFloat(M_PI)/4.0
+            CATransaction.setDisableActions(true)
+            arrow.transform = CATransform3DRotate(arrow.transform, rot, 0, 0, 1)
+            // construct animation additively
+            let anim = CABasicAnimation(keyPath:"transform")
+            anim.duration = 0.8
+            let clunk = CAMediaTimingFunction(controlPoints:0.9, 0.1, 0.7, 0.9)
+            anim.timingFunction = clunk
+            anim.fromValue = -rot
+            anim.toValue = 0
+            anim.additive = true
+            anim.valueFunction = CAValueFunction(name:kCAValueFunctionRotateZ)
+            arrow.addAnimation(anim, forKey:nil)
+
+        case 9:
             var values = [0.0]
             var direction = 1.0
             // comma is legal in the for block!
@@ -99,7 +121,7 @@ class ViewController : UIViewController {
             anim.valueFunction = CAValueFunction(name: kCAValueFunctionRotateZ)
             arrow.addAnimation(anim, forKey:nil)
 
-        case 9:
+        case 10:
             // put them all together, they spell Mother...
             
             // capture current value, set final value
