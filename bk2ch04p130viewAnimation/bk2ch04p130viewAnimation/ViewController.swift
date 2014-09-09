@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let which = 9
+        let which = 11
         
         delay(3) {
             println(0)
@@ -112,6 +112,26 @@ class ViewController: UIViewController {
                         _ in
                         self.v.center.x = xorig
                 })
+            case 10:
+                UIView.animateWithDuration(1, animations: {
+                    self.v.center.x += 100
+                })
+                let opts = UIViewAnimationOptions.BeginFromCurrentState
+                UIView.animateWithDuration(1, delay: 0, options: nil,
+                    animations: {
+                        self.v.center.y += 100
+                    }, completion: nil)
+            case 11:
+                UIView.animateWithDuration(2, animations: {
+                    self.v.center.x += 100
+                })
+                delay(1) {
+                    let opts = UIViewAnimationOptions.BeginFromCurrentState
+                    UIView.animateWithDuration(1, delay: 0, options: opts,
+                        animations: {
+                            self.v.center.y += 100
+                        }, completion: nil)
+                }
             default:break
             }
         }
