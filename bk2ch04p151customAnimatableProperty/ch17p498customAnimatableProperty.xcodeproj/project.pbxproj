@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3210907519AA4BD2003A3D6B /* MyLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA73D17B952A6009F3ED0 /* MyLayer.m */; };
 		328B01DA1970BA9C000DB939 /* MyViewAndLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B01D91970BA9C000DB939 /* MyViewAndLayer.swift */; };
 		328B01DE1970BEB4000DB939 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B01DD1970BEB4000DB939 /* ViewController.swift */; };
 		C9BFA70817B95260009F3ED0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BFA70717B95260009F3ED0 /* Foundation.framework */; };
@@ -37,8 +36,6 @@
 		C9BFA71A17B95260009F3ED0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9BFA71F17B95260009F3ED0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9BFA72617B95260009F3ED0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9BFA73C17B952A6009F3ED0 /* MyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLayer.h; sourceTree = "<group>"; };
-		C9BFA73D17B952A6009F3ED0 /* MyLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +87,6 @@
 				C9BFA71717B95260009F3ED0 /* AppDelegate.m */,
 				C9BFA71917B95260009F3ED0 /* Main.storyboard */,
 				328B01DD1970BEB4000DB939 /* ViewController.swift */,
-				C9BFA73C17B952A6009F3ED0 /* MyLayer.h */,
-				C9BFA73D17B952A6009F3ED0 /* MyLayer.m */,
 				328B01D91970BA9C000DB939 /* MyViewAndLayer.swift */,
 				C9BFA71F17B95260009F3ED0 /* Images.xcassets */,
 				C9BFA70E17B95260009F3ED0 /* Supporting Files */,
@@ -177,7 +172,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				328B01DE1970BEB4000DB939 /* ViewController.swift in Sources */,
-				3210907519AA4BD2003A3D6B /* MyLayer.m in Sources */,
 				C9BFA71817B95260009F3ED0 /* AppDelegate.m in Sources */,
 				C9BFA71417B95260009F3ED0 /* main.m in Sources */,
 				328B01DA1970BA9C000DB939 /* MyViewAndLayer.swift in Sources */,
