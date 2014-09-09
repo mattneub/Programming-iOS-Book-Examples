@@ -23,30 +23,34 @@ class ViewController : UIViewController {
         UIView.animateKeyframesWithDuration(4,
             delay: 0, options: optfinal,
             animations: {
-                UIView.addKeyframeWithRelativeStartTime(start, relativeDuration: dur,
+                // self.v.alpha = 0
+                UIView.addKeyframeWithRelativeStartTime(start,
+                    relativeDuration: dur,
                     animations: {
                         p.x += dx*dir; p.y += dy
                         self.v.center = p
                     })
                 start += dur; dir *= -1
-                UIView.addKeyframeWithRelativeStartTime(start, relativeDuration: dur,
+                UIView.addKeyframeWithRelativeStartTime(start,
+                    relativeDuration: dur,
                     animations: {
                         p.x += dx*dir; p.y += dy
                         self.v.center = p
                     })
                 start += dur; dir *= -1
-                UIView.addKeyframeWithRelativeStartTime(start, relativeDuration: dur,
+                UIView.addKeyframeWithRelativeStartTime(start,
+                    relativeDuration: dur,
                     animations: {
                         p.x += dx*dir; p.y += dy
                         self.v.center = p
                     })
                 start += dur; dir *= -1
-                UIView.addKeyframeWithRelativeStartTime(start, relativeDuration: dur,
+                UIView.addKeyframeWithRelativeStartTime(start,
+                    relativeDuration: dur,
                     animations: {
                         p.x += dx*dir; p.y += dy
                         self.v.center = p
                     })
-
             }, completion: nil)
         
     }

@@ -10,14 +10,16 @@ class ViewController : UIViewController {
         let c = self.compassView.layer as CompassLayer
         let arrow = c.arrow!
         
-        let which = 9
+        let which = 4
         switch which {
         case 1:
-            arrow.transform = CATransform3DRotate(arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)
+            arrow.transform = CATransform3DRotate(
+                arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)
             
         case 2:
             CATransaction.setAnimationDuration(0.8)
-            arrow.transform = CATransform3DRotate(arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)
+            arrow.transform = CATransform3DRotate(
+                arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)
             
         case 3:
             let clunk = CAMediaTimingFunction(controlPoints: 0.9, 0.1, 0.7, 0.9)

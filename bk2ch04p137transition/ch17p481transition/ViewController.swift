@@ -38,7 +38,7 @@ class ViewController : UIViewController {
                 f.origin.x = 0
                 self.inner.frame = f
             }, completion: nil)
-
+        
     }
     
 }
