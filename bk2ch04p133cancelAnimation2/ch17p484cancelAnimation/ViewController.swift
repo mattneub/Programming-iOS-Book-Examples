@@ -20,7 +20,7 @@ class ViewController : UIViewController {
         UIView.animateWithDuration(0.1, delay:0,
             options:.BeginFromCurrentState,
             animations: {
-                self.v.center = self.pOrig!
+                self.v.center = self.pOrig
             }, completion:nil)
     }
     
@@ -31,6 +31,6 @@ class ViewController : UIViewController {
     @IBAction func doStop(sender:AnyObject?) {
         self.cancel()
     }
-
+    
     
 }
