@@ -29,7 +29,9 @@ class ViewController : UIViewController {
             pos = next
             leftright *= -1
             next = CGPointMake(pos.x+h*leftright, pos.y+v)
-            CGPathAddCurveToPoint(path, nil, pos.x, pos.y+30, next.x, next.y-30,
+            CGPathAddCurveToPoint(path, nil,
+                pos.x, pos.y+30,
+                next.x, next.y-30,
                 next.x, next.y)
         }
         let anim1 = CAKeyframeAnimation(keyPath:"position")

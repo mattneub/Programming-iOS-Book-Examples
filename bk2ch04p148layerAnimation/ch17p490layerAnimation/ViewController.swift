@@ -10,7 +10,7 @@ class ViewController : UIViewController {
         let c = self.compassView.layer as CompassLayer
         let arrow = c.arrow!
         
-        let which = 9
+        let which = 10
         switch which {
         case 1:
             arrow.transform = CATransform3DRotate(

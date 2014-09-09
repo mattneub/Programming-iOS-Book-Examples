@@ -16,12 +16,10 @@ class ViewController: UIViewController {
         shape.fillColor = UIColor.clearColor().CGColor
         shape.strokeColor = UIColor.redColor().CGColor
         
-        let path = CGPathCreateMutable()
-        CGPathAddRect(path, nil, shape.bounds)
+        let path = CGPathCreateWithRect(shape.bounds, nil)
         shape.path = path
         
-        let path2 = CGPathCreateMutable()
-        CGPathAddEllipseInRect(path2, nil, shape.bounds)
+        let path2 = CGPathCreateWithEllipseInRect(shape.bounds, nil)
         let ba = CABasicAnimation(keyPath: "path")
         ba.duration = 1
         ba.fromValue = path
