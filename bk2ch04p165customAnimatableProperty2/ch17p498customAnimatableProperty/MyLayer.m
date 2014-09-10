@@ -11,5 +11,14 @@
 
 @dynamic thickness;
 
+// copied from Apple's example, but I don't see how it helps in this situation
+
+-(id)initWithLayer:(id)layer {
+    self = [super initWithLayer:layer];
+    if ([layer isKindOfClass:[MyLayer class]])
+        self.thickness = ((MyLayer*)layer).thickness;
+    return self;
+}
+
 
 @end

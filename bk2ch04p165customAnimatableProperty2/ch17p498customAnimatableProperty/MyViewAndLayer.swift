@@ -21,9 +21,9 @@ public extension MyLayer {
         if key == "thickness" {
             return true
         }
-    return super.needsDisplayForKey(key)
+        return super.needsDisplayForKey(key)
     }
-
+    
     override func drawInContext(con: CGContext!) {
         let r = self.bounds.rectByInsetting(dx:20, dy:20)
         CGContextSetFillColorWithColor(con, UIColor.redColor().CGColor)
@@ -41,7 +41,7 @@ public extension MyLayer {
             let ba = CABasicAnimation(keyPath: key)
             // stolen directly from Apple's sample code:
             // sorry, guys, but I would never have thought of this!
-            ba.fromValue = self.presentationLayer().valueForKey(key)
+            ba.fromValue = (self.presentationLayer() as CALayer).valueForKey(key)
             return ba
         }
         return super.actionForKey(key)
