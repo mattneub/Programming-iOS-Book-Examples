@@ -9,7 +9,7 @@ class ViewController : UIViewController {
     
     @IBAction func doButton(sender:AnyObject?) {
     
-        let which = 6
+        let which = 7
         switch which {
         case 1:
             UIView.animateWithDuration(1, animations:{
@@ -64,6 +64,15 @@ class ViewController : UIViewController {
                     _ in
                     self.v.hidden = false
                     snap.removeFromSuperview()
+                })
+
+        case 7:
+            let snap = self.v.snapshotViewAfterScreenUpdates(true)
+            snap.frame = self.v.frame
+            self.v.superview!.addSubview(snap)
+            self.v.hidden = true
+            UIView.animateWithDuration(1, animations:{
+                snap.center.x += 100
                 })
 
 
