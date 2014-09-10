@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -35,6 +36,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exclusive touch: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIA-sc-Evx">
+                                <rect key="frame" x="20" y="116" width="130" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8Hx-GY-SvU">
+                                <rect key="frame" x="190" y="111" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switched:" destination="vXZ-lx-hvc" eventType="valueChanged" id="6p9-vy-Qmc"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -43,8 +56,12 @@
                             <constraint firstItem="1ce-pD-bQV" firstAttribute="height" secondItem="X1t-rX-xgn" secondAttribute="height" id="5MC-cz-lab"/>
                             <constraint firstItem="1ce-pD-bQV" firstAttribute="width" secondItem="X1t-rX-xgn" secondAttribute="width" id="7zZ-CP-e0K"/>
                             <constraint firstItem="1ce-pD-bQV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="17" id="A9K-fq-dJ3"/>
+                            <constraint firstItem="iIA-sc-Evx" firstAttribute="top" secondItem="plg-02-dW1" secondAttribute="bottom" constant="96" id="And-br-Rqn"/>
                             <constraint firstItem="1ce-pD-bQV" firstAttribute="centerY" secondItem="X1t-rX-xgn" secondAttribute="centerY" id="P2B-s1-REZ"/>
                             <constraint firstAttribute="centerY" secondItem="1ce-pD-bQV" secondAttribute="centerY" id="Sg1-MO-3BJ"/>
+                            <constraint firstItem="8Hx-GY-SvU" firstAttribute="leading" secondItem="iIA-sc-Evx" secondAttribute="trailing" constant="40" id="ec9-BC-1yU"/>
+                            <constraint firstItem="8Hx-GY-SvU" firstAttribute="top" secondItem="plg-02-dW1" secondAttribute="bottom" constant="91" id="hNF-Np-xcG"/>
+                            <constraint firstItem="iIA-sc-Evx" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="4" id="xXn-vs-0EB"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="vZG-48-lvh" appends="YES" id="g0g-3d-HHa"/>
@@ -63,9 +80,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>
