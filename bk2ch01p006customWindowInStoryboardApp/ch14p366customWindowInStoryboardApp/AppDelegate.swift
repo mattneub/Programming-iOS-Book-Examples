@@ -2,8 +2,6 @@
 
 import UIKit
 
-class MyWindow : UIWindow {}
-
 @UIApplicationMain class AppDelegate : UIResponder, UIApplicationDelegate {
     
     lazy var window : UIWindow = {
