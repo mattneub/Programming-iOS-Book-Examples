@@ -18,16 +18,17 @@ class CompassView : UIView {
     @IBAction func tapped(t:UITapGestureRecognizer) {
         let p = t.locationOfTouch(0, inView: self.superview)
         let hitLayer = self.layer.hitTest(p)
-        let arrow = (self.layer as CompassLayer).arrow!
-        if hitLayer == arrow {
-            arrow.transform = CATransform3DRotate(arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)
+        let arrow = (self.layer as CompassLayer).arrow
+        if hitLayer? == arrow {
+            arrow.transform = CATransform3DRotate(
+                arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)
         }
     }
 
 }
 
 class CompassLayer : CALayer {
-    var arrow : CALayer?
+    var arrow : CALayer!
     var rotationLayer : CALayer!
     var didSetup = false
     
@@ -37,6 +38,26 @@ class CompassLayer : CALayer {
             self.didSetup = true
             self.setup()
         }
+    }
+    
+    override func hitTest(p: CGPoint) -> CALayer! {
+        var lay = super.hitTest(p)
+        if lay == self.arrow {
+            // artificially restrict touchability to roughly the shaft/point area
+            let pt = self.arrow.convertPoint(p, fromLayer:self.superlayer)
+            let path = CGPathCreateMutable()
+            CGPathAddRect(path, nil, CGRectMake(10,20,20,80))
+            CGPathMoveToPoint(path, nil, 0, 25)
+            CGPathAddLineToPoint(path, nil, 20, 0)
+            CGPathAddLineToPoint(path, nil, 40, 25)
+            CGPathCloseSubpath(path)
+            if !CGPathContainsPoint(path, nil, pt, false) {
+                lay = nil;
+            }
+            let result = lay != nil ? "hit" : "missed"
+            println("\(result) arrow at \(pt)")
+        }
+        return lay
     }
     
     func setup () {
