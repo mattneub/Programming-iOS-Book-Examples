@@ -15,18 +15,18 @@ class ViewController  : UIViewController {
             anim.fromValue = NSValue(CATransform3D:CATransform3DIdentity)
             anim.repeatCount = Float.infinity
             anim.autoreverses = true
-            lp.view.layer.addAnimation(anim, forKey:nil)
+            lp.view!.layer.addAnimation(anim, forKey:nil)
         case .Ended, .Cancelled:
-            lp.view.layer.removeAllAnimations()
+            lp.view!.layer.removeAllAnimations()
         default: break
         }
     }
     
     func dragging(p : UIPanGestureRecognizer!) {
-        let vv = p.view
+        let vv = p.view!
         switch p.state {
         case .Began, .Changed:
-            let delta = p.translationInView(vv.superview)
+            let delta = p.translationInView(vv.superview!)
             var c = vv.center
             c.x += delta.x; c.y += delta.y
             vv.center = c
