@@ -11,10 +11,10 @@ class ViewController : UIViewController {
             self.anim = UIDynamicAnimator(referenceView:self.view)
             self.anim.delegate = self
             let loc = g.locationOfTouch(0, inView:g.view)
-            let cen = CGPointMake(g.view.bounds.midX, g.view.bounds.midY)
+            let cen = CGPointMake(g.view!.bounds.midX, g.view!.bounds.midY)
             let off = UIOffsetMake(loc.x-cen.x, loc.y-cen.y)
             let anchor = g.locationOfTouch(0, inView:self.view)
-            let att = UIAttachmentBehavior(item:g.view,
+            let att = UIAttachmentBehavior(item:g.view!,
                 offsetFromCenter:off, attachedToAnchor:anchor)
             self.anim.addBehavior(att)
             self.att = att

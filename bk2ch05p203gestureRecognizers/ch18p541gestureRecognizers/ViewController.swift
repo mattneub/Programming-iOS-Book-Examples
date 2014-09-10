@@ -41,10 +41,10 @@ class ViewController : UIViewController {
     }
     
     func dragging(p : UIPanGestureRecognizer!) {
-        let vv = p.view
+        let vv = p.view!
         switch p.state {
         case .Began, .Changed:
-            let delta = p.translationInView(vv.superview)
+            let delta = p.translationInView(vv.superview!)
             var c = vv.center
             c.x += delta.x; c.y += delta.y
             vv.center = c

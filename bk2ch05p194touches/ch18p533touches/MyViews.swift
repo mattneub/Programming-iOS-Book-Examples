@@ -13,7 +13,7 @@ func delay(delay:Double, closure:()->()) {
 
 class MyView0 : UIView {
     
-    override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         self.superview!.bringSubviewToFront(self)
         
         let t = touches.anyObject() as UITouch
@@ -33,11 +33,11 @@ class MyView1 : UIView {
     var decided = false
     var horiz = false
     
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.decided = false
     }
     
-    override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         self.superview!.bringSubviewToFront(self)
         
         let t = touches.anyObject() as UITouch
@@ -66,8 +66,25 @@ class MyView1 : UIView {
 }
 
 class MyView2 : UIView {
-    var time : NSTimeInterval?
+    var time : NSTimeInterval!
     var single = false
+    
+    /*
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.time = (touches.anyObject() as UITouch).timestamp
+    }
+    
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        let diff = event.timestamp - self.time
+        if (diff < 0.4) {
+            println("short")
+        } else {
+            println("long")
+        }
+    }
+
+*/
     
     // see 54cf020903 for an earlier, overblown attempt using timer dispatch source
     // (because they can be cancelled, unlike dispatch_after)
@@ -75,7 +92,7 @@ class MyView2 : UIView {
     // but I don't think any of that is needed here, any more than
     // any complexity was needed with cancel...requests, as it is a single main-thread cancellation
     
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let ct = (touches.anyObject() as UITouch).tapCount
         switch ct {
         case 2:
@@ -84,13 +101,13 @@ class MyView2 : UIView {
         }
     }
     
-    override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         let ct = (touches.anyObject() as UITouch).tapCount
         switch ct {
         case 1:
             self.single = true
             delay(0.3) {
-                if self.single {
+                if self.single { // no second tap intervened
                     println("single tap")
                 }
             }
@@ -126,7 +143,7 @@ class MyView3 : UIView {
     var drag = false
     var single = false
     
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         // be undecided
         self.decidedTapOrDrag = false
         // prepare for a tap
@@ -143,7 +160,7 @@ class MyView3 : UIView {
         self.decidedDirection = false
     }
     
-    override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         if self.decidedTapOrDrag && !self.drag {return}
         
         self.superview!.bringSubviewToFront(self)
@@ -172,7 +189,7 @@ class MyView3 : UIView {
         self.center = c
     }
     
-    override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         if !self.decidedTapOrDrag || !self.drag {
             // end for a tap
             let ct = (touches.anyObject() as UITouch).tapCount
