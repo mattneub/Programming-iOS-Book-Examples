@@ -30,7 +30,7 @@ class ViewController : UIViewController {
         emit.emitterCells = [cell]
         self.view.layer.addSublayer(emit)
         
-        let which = 0
+        let which = 5
         switch which {
         case 0:
             break
@@ -82,8 +82,10 @@ class ViewController : UIViewController {
             cell2.velocity = 200
             cell2.scale = 0.2
             
-            //    cell2.beginTime = .04;
-            //    cell2.duration = .2;
+            cell2.beginTime = 0.04
+            cell2.duration = 0.2
+            
+            // return;
             
             // these next two lines are not causing the same result on iOS 7 as on iOS 6
             // I have filed a bug on this

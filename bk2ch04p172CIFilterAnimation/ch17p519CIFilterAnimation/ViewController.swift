@@ -13,9 +13,8 @@ class ViewController : UIViewController {
     var con: CIContext!
     
     @IBAction func doButton (sender:AnyObject) {
-        let moi = UIImage(named:"moi")
-        let moi2 = CIImage(image:moi)
-        self.moiextent = moi2.extent()
+        let moi = CIImage(image:UIImage(named:"moi"))
+        self.moiextent = moi.extent()
         
         let col = CIFilter(name:"CIConstantColorGenerator")
         let cicol = CIColor(color:UIColor.redColor())
@@ -24,7 +23,7 @@ class ViewController : UIViewController {
         
         let tran = CIFilter(name:"CIFlashTransition")
         tran.setValue(colorimage, forKey:"inputImage")
-        tran.setValue(moi2, forKey:"inputTargetImage")
+        tran.setValue(moi, forKey:"inputTargetImage")
         let center = CIVector(x:self.moiextent.width/2.0, y:self.moiextent.height/2.0)
         tran.setValue(center, forKey:"inputCenter")
         

@@ -17,6 +17,9 @@ class MyGravityBehavior : UIGravityBehavior {
 }
 
 class MyImageView : UIImageView {
+    override func willMoveToWindow(newWindow: UIWindow?) {
+        println("image view move to \(newWindow)")
+    }
     deinit {
         println("farewell from iv")
     }
@@ -44,7 +47,7 @@ class ViewController : UIViewController {
         I demonstrate some alternatives...
         */
         
-        let which = 4
+        let which = 3
         switch which {
         case 1:
             // leak! neither the image view nor the gravity behavior is released
@@ -75,9 +78,9 @@ class ViewController : UIViewController {
                 if ix == nil {
                     delay(0) { // * both are released
                         self.anim.removeAllBehaviors()
+                        self.iv.removeFromSuperview()
+                        println("done")
                     }
-                    self.iv.removeFromSuperview()
-                    println("done")
                 }
             }
         case 4:
@@ -104,7 +107,7 @@ class ViewController : UIViewController {
         push.pushDirection = CGVectorMake(2, 0)
         // [push setTargetOffsetFromCenter:UIOffsetMake(0, -200) forItem:self.iv];
         self.anim.addBehavior(push)
-
+        
         // ========
         
         let coll = UICollisionBehavior()
@@ -123,9 +126,9 @@ class ViewController : UIViewController {
         bounce.elasticity = 0.4
         self.anim.addBehavior(bounce)
         bounce.addItem(self.iv)
-
         
-
+        
+        
     }
     
 }
@@ -158,5 +161,5 @@ extension ViewController : UIDynamicAnimatorDelegate, UICollisionBehaviorDelegat
                 }
             }
     }
-
+    
 }

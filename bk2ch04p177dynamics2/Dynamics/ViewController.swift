@@ -3,6 +3,9 @@
 import UIKit
 
 class MyImageView : UIImageView {
+    override func willMoveToWindow(newWindow: UIWindow?) {
+        println("image view move to \(newWindow)")
+    }
     deinit {
         println("farewell from image view")
     }

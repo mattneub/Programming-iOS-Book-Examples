@@ -33,7 +33,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
 
         let push = UIPushBehavior(items:[self.v], mode:.Instantaneous)
         push.pushDirection = CGVectorMake(2, 0)
-        // [push setTargetOffsetFromCenter:UIOffsetMake(0, -200) forItem:self.iv];
+        // push.setTargetOffsetFromCenter(UIOffsetMake(0, -200), forItem:self.v)
         self.addChildBehavior(push)
 
         let coll = UICollisionBehavior()
