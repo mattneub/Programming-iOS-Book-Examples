@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		32B365361973066000518B7A /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B365351973066000518B7A /* MyView.swift */; };
 		32B36538197309DB00518B7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B36537197309DB00518B7A /* ViewController.swift */; };
+		32C3183919C10BBE00C88EF6 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C3183819C10BBE00C88EF6 /* MyButton.swift */; };
 		C97B89C217BEA02D0084F81A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97B89C117BEA02D0084F81A /* Foundation.framework */; };
 		C97B89C417BEA02D0084F81A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97B89C317BEA02D0084F81A /* CoreGraphics.framework */; };
 		C97B89C617BEA02D0084F81A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97B89C517BEA02D0084F81A /* UIKit.framework */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		32B365351973066000518B7A /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		32B36537197309DB00518B7A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32C3183819C10BBE00C88EF6 /* MyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		C97B89BE17BEA02D0084F81A /* ch18p555hitTestingDuringAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch18p555hitTestingDuringAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97B89C117BEA02D0084F81A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C97B89C317BEA02D0084F81A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,6 +89,7 @@
 				C97B89D317BEA02D0084F81A /* Main.storyboard */,
 				32B36537197309DB00518B7A /* ViewController.swift */,
 				32B365351973066000518B7A /* MyView.swift */,
+				32C3183819C10BBE00C88EF6 /* MyButton.swift */,
 				C97B89D917BEA02D0084F81A /* Images.xcassets */,
 				C97B89C817BEA02D0084F81A /* Supporting Files */,
 			);
@@ -171,6 +174,7 @@
 			files = (
 				32B365361973066000518B7A /* MyView.swift in Sources */,
 				C97B89D217BEA02D0084F81A /* AppDelegate.m in Sources */,
+				32C3183919C10BBE00C88EF6 /* MyButton.swift in Sources */,
 				32B36538197309DB00518B7A /* ViewController.swift in Sources */,
 				C97B89CE17BEA02D0084F81A /* main.m in Sources */,
 			);
