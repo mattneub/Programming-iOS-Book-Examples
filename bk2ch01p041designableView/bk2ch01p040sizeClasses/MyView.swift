@@ -13,6 +13,8 @@ The representation is not perfect but it's pretty good.
 
 @IBDesignable class MyView: UIView {
     
+    @IBInspectable var name : String!
+    
     // My experience is that you must supply both inits even though they just call super
     // Otherwise IB can crash
     // no longer seems to be needed!
