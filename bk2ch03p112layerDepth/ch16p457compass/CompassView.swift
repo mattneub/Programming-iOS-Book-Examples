@@ -38,8 +38,8 @@ class CompassLayer : CALayer {
             self.rotationLayer.anchorPoint = CGPointMake(1,0.5)
             self.rotationLayer.position = CGPointMake(self.bounds.maxX, self.bounds.midY)
             self.rotationLayer.transform = CATransform3DMakeRotation(CGFloat(M_PI)/4.0, 0, 1, 0)
-            // self.rotationLayer.setValue(M_PI/4, forKeyPath:"transform.rotation.y")
-            // self.rotationLayer.transform.rotation.y = M_PI/4
+//             self.rotationLayer.setValue(M_PI/4, forKeyPath:"transform.rotation.y")
+//             self.rotationLayer.transform.rotation.y = M_PI/4 // nope, sorry
         case 2:
             self.rotationLayer.anchorPoint = CGPointMake(1,0.5)
             self.rotationLayer.position = CGPointMake(self.bounds.maxX, self.bounds.midY)
