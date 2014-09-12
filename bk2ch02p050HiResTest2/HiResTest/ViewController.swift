@@ -8,9 +8,13 @@ import UIKit
 // so the asset catalog version works,
 // and the init(named:) versions work
 
+// aha, further testing suggests that the bug is in `pathForResource`
+
 class ViewController: UIViewController {
     @IBOutlet weak var iv3: UIImageView!
     @IBOutlet weak var iv4: UIImageView!
+    @IBOutlet weak var iv5: UIImageView!
+    @IBOutlet weak var iv6: UIImageView!
 
     @IBOutlet weak var iv: UIImageView!
     override func viewDidLoad() {
@@ -19,6 +23,16 @@ class ViewController: UIViewController {
         
         self.iv3.image = UIImage(named:"one")
         self.iv4.image = UIImage(named:"uno")
+        
+        if let s = NSBundle.mainBundle().pathForResource("one", ofType: "png") {
+            self.iv5.image = UIImage(contentsOfFile: s)
+        }
+        if let s2 = NSBundle.mainBundle().pathForResource("uno", ofType: "png") {
+            self.iv6.image = UIImage(contentsOfFile: s2)
+        } else {
+            self.iv6.image = UIImage(named:"Smiley")
+        }
+
     }
 
 
