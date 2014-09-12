@@ -10,25 +10,28 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
-func animateTimes(times:Int, #duration: NSTimeInterval,
-    #delay: NSTimeInterval, #options: UIViewAnimationOptions,
-    #animations: () -> Void , #completion: ((Bool) -> Void)?) {
-        animHelper(times-1, duration, delay, options, animations, completion)
-}
+extension UIView {
+    class func animateWithTimes(times:Int, duration: NSTimeInterval,
+        delay: NSTimeInterval, options: UIViewAnimationOptions,
+        animations: () -> Void, completion: ((Bool) -> Void)?) {
+            self.animHelper(
+                times-1, duration, delay, options, animations, completion)
+    }
 
-func animHelper(t:Int, dur: NSTimeInterval, del: NSTimeInterval,
-    opt: UIViewAnimationOptions,
-    anim: () -> Void , com: ((Bool) -> Void)?) {
-        UIView.animateWithDuration(dur, delay: del, options: opt,
-            animations: anim, completion: {
-                done in
-                if com != nil {
-                    com!(done)
-                }
-                if t > 0 {
-                    animHelper(t-1, dur, del, opt, anim, com)
-                }
-        })
+    class func animHelper(t:Int, _ dur: NSTimeInterval, _ del: NSTimeInterval,
+        _ opt: UIViewAnimationOptions,
+        _ anim: () -> Void, _ com: ((Bool) -> Void)?) {
+            UIView.animateWithDuration(dur, delay: del, options: opt,
+                animations: anim, completion: {
+                    done in
+                    if com != nil {
+                        com!(done)
+                    }
+                    if t > 0 {
+                        self.animHelper(t-1, dur, del, opt, anim, com)
+                    }
+            })
+    }
 }
 
 class ViewController: UIViewController {
@@ -37,7 +40,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let which = 11
+        let which = 9
         
         delay(3) {
             println(0)
@@ -106,7 +109,7 @@ class ViewController: UIViewController {
             case 9:
                 let opts = UIViewAnimationOptions.Autoreverse
                 let xorig = self.v.center.x
-                animateTimes(3, duration:1, delay:0, options:opts, animations:{
+                UIView.animateWithTimes(3, duration:1, delay:0, options:opts, animations:{
                     self.v.center.x += 100
                     }, completion:{
                         _ in
