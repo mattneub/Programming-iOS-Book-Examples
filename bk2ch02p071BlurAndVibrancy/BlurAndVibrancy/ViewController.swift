@@ -21,14 +21,16 @@ class ViewController: UIViewController {
         let blur = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
         blur.frame = mainview.bounds
         blur.autoresizingMask = .FlexibleWidth | .FlexibleHeight
-        let vib = UIVisualEffectView(effect: UIVibrancyEffect(forBlurEffect: blur.effect as UIBlurEffect))
+        let vib = UIVisualEffectView(effect: UIVibrancyEffect(
+            forBlurEffect: blur.effect as UIBlurEffect))
         let lab = UILabel()
         lab.text = "Hello, world!"
         lab.sizeToFit()
         vib.frame = lab.frame
         vib.contentView.addSubview(lab)
         vib.center = CGPointMake(blur.bounds.midX, blur.bounds.midY)
-        vib.autoresizingMask = .FlexibleTopMargin | .FlexibleBottomMargin | .FlexibleLeftMargin | .FlexibleRightMargin
+        vib.autoresizingMask = .FlexibleTopMargin | .FlexibleBottomMargin |
+            .FlexibleLeftMargin | .FlexibleRightMargin
         blur.contentView.addSubview(vib)
         mainview.addSubview(blur)
     }

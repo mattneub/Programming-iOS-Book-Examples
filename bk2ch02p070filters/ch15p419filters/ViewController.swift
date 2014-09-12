@@ -7,6 +7,8 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // println(CIFilter.filterNamesInCategories(nil).count)
+        
         let moi = UIImage(named:"Moi")
         let moici = CIImage(image:moi)
         let moiextent = moici.extent()
