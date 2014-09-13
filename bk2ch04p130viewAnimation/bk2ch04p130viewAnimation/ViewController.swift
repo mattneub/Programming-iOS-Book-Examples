@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let which = 9
+        let which = 8
         
         delay(3) {
             println(0)
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
                         self.v.center.x = xorig
                 })
             case 8:
-                self.animate(2)
+                self.animate(3)
             case 9:
                 let opts = UIViewAnimationOptions.Autoreverse
                 let xorig = self.v.center.x
@@ -148,7 +148,7 @@ class ViewController: UIViewController {
             }, completion: {
                 _ in
                 self.v.center.x = xorig
-                if count > 0 {
+                if count > 1 {
                     self.animate(count-1)
                 }
         })
