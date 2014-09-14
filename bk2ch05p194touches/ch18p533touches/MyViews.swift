@@ -99,6 +99,12 @@ class MyView2 : UIView {
             self.single = false
         default: break
         }
+        // logging to show that location in the window gives a very different result in iOS 8 from iOS 7
+        let t = touches.anyObject() as UITouch
+        println(t.locationInView(self))
+        println(t.locationInView(self.window!))
+        println(t.locationInView(nil))
+
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
