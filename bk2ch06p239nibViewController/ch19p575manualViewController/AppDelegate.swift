@@ -12,7 +12,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let theRVC = RootViewController(nibName:"MyNib", bundle:nil) // explicit nib name
         
         // in iOS 3, 4, 5, 6, and 7,
-        // but if the nib is called "RootView.xib" or "RootViewController.xib",
+        // if the nib is called "RootView.xib" or "RootViewController.xib",
         // you can pass nil as the nibName here (or call init() with no args)
         // but in iOS 8 (starting with seed 5?) this feature is gone for "RootViewController.xib"
         // ... but it does still work for "RootView.xib"!
