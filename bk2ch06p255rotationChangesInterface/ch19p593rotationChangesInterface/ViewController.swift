@@ -34,7 +34,7 @@ class ViewController : UIViewController {
     // "willAnimateRotation" etc. are deprecated
     // can capture rotation stages by watching for the trait collection change
     
-    override func willTransitionToTraitCollection(newCollection: UITraitCollection!, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         println("will transition to trait collection")
         let v = self.blackRect
         var newFrameOriginX = v.frame.origin.x
@@ -59,7 +59,7 @@ class ViewController : UIViewController {
             })
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         println("will transition to size")
     }
 

@@ -61,7 +61,7 @@ class ViewController : UIViewController {
     
     // iOS 8 gives us a more appropriate place to do that
     
-    override func willTransitionToTraitCollection(newCollection: UITraitCollection!, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         self.view.removeConstraints(self.blackRectConstraintsOnscreen)
         self.view.removeConstraints(self.blackRectConstraintsOffscreen)
         if newCollection.verticalSizeClass == .Compact {

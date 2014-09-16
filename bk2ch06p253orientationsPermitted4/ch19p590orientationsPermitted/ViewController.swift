@@ -78,7 +78,7 @@ class ViewController : UIViewController {
     // rotation events (willAnimateRotation, willRotateTo, didRotateFrom) deprecated in iOS 8
     // instead, use this:
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         // call super
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         println("will transition size change to \(size)")

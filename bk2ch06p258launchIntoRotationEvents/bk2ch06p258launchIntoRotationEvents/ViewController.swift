@@ -52,19 +52,19 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         println("did appear \(self.view.bounds.size)")
     }
     
-    override func willTransitionToTraitCollection(newCollection: UITraitCollection!, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         println("willTransition")
         println(newCollection)
         super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         println("willTransition")
         println(size)
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection!) {
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection) {
         println("trait collection did change")
     }
 
