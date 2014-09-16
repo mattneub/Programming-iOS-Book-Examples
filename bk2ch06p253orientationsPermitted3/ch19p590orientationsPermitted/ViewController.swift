@@ -14,7 +14,6 @@ class ViewController : UIViewController {
         // "Supported orientations has no common orientation with the application, and shouldAutorotate is returning YES"
         // return Int(UIInterfaceOrientationMask.Portrait.toRaw())
         return Int(UIInterfaceOrientationMask.LandscapeRight.toRaw())
-
     }
     
 }

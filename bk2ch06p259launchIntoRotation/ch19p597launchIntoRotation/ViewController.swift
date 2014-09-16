@@ -5,9 +5,10 @@ import UIKit
 class ViewController : UIViewController {
     var viewInitializationDone = false
     
-    let which = 3
+    let which = 1
     
     override func viewDidLoad() {
+        println(self.view.bounds.size)
         super.viewDidLoad()
         
         if which == 1 {
@@ -47,7 +48,7 @@ class ViewController : UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        println("will layout")
+        println("will layout \(self.view.bounds.size)")
         
         if which == 2 {
             // this is still my favorite place, however
@@ -66,7 +67,7 @@ class ViewController : UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        println("did layout")
+        println("did layout \(self.view.bounds.size)")
     }
     
     
