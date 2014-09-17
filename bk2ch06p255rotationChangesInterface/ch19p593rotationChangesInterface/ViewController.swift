@@ -34,8 +34,10 @@ class ViewController : UIViewController {
     // "willAnimateRotation" etc. are deprecated
     // can capture rotation stages by watching for the trait collection change
     
+
     override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         println("will transition to trait collection")
+        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
         let v = self.blackRect
         var newFrameOriginX = v.frame.origin.x
         if newCollection.verticalSizeClass == .Compact { // landscape
@@ -64,6 +66,5 @@ class ViewController : UIViewController {
     }
 
 
-    
-    
+
 }
