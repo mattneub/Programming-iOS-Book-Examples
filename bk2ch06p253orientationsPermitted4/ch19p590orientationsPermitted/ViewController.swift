@@ -73,6 +73,7 @@ class ViewController : UIViewController {
         // if you rotate the device and then tap the button,
         // we rotate but the app does not resize itself to fit the new orientation
         // if you run in iOS 7 it works fine
+        // aaaah, looks like they fixed this bug in time
     }
     
     // rotation events (willAnimateRotation, willRotateTo, didRotateFrom) deprecated in iOS 8
