@@ -16,6 +16,11 @@ class ViewController : UIViewController {
     
     override func supportedInterfaceOrientations() -> Int {
         
+        println(UIApplication.sharedApplication().statusBarOrientation.toRaw())
+        println(UIDevice.currentDevice().orientation.toRaw())
+        let result = UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)
+        println(result)
+        
         // return UIInterfaceOrientation.Portrait.toRaw() // crash!
         // ha ha, you didn't read the docs
         // you don't return an orientation; you return an orientation *mask*
@@ -28,6 +33,7 @@ class ViewController : UIViewController {
 
         println("supported") // called 10 times at launch! WTF?
         // and then 6 more times if you tap on the interface!
+        
         return Int(UIInterfaceOrientationMask.Portrait.toRaw()) // gag me with a spoon
     }
     
