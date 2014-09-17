@@ -30,8 +30,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
 //        self.navigationController.delegate = self
         println("viewDidLoad")
-        println(self.view.bounds.size)
-        println(self.traitCollection)
+        println("viewDidLoad reports \(self.view.bounds.size)")
+        println("viewDidLoad reports \(self.traitCollection)")
     }
     
     override func viewWillAppear(animated: Bool) {
