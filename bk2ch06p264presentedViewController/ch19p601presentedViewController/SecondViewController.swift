@@ -9,7 +9,7 @@ Standard architecture for handing info from vc to presented vc...
 
 */
 
-@objc protocol SecondViewControllerDelegate {
+protocol SecondViewControllerDelegate : class {
     func acceptData(data:AnyObject!)
 }
 
@@ -20,6 +20,18 @@ class SecondViewController : UIViewController {
     weak var delegate : SecondViewControllerDelegate?
     
     @IBAction func doDismiss(sender:AnyObject?) {
+        // logging to show relationships
+        println(self.presentingViewController!)
+        println(self.presentingViewController!.presentedViewController)
+        var vc = self.delegate! as AnyObject as UIViewController
+        println(vc.presentedViewController)
+        
+        
+        // just proving it works
+        // self.dismissViewControllerAnimated(true, completion: nil)
+        // vc.dismissViewControllerAnimated(true, completion: nil)
+        // return;
+        
         self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
     

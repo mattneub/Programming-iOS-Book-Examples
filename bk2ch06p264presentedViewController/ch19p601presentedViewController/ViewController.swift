@@ -5,6 +5,12 @@ import UIKit
 class ViewController : UIViewController, SecondViewControllerDelegate {
     
     @IBAction func doPresent(sender:AnyObject?) {
+        
+        // logging to prove these are normally nil
+        println(self.presentingViewController)
+        println(self.presentedViewController)
+        
+        
         let which = 1
         
         let svc = SecondViewController(nibName: "SecondViewController", bundle: nil)
