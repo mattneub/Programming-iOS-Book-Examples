@@ -4,7 +4,7 @@ import UIKit
 class FirstViewController : UIViewController {
     
     @IBAction func doPresent(sender:AnyObject?) {
-        let which = 1
+        let which = 3
         switch which {
         case 1:
             let vc = ExtraViewController(nibName: "ExtraViewController", bundle: nil)
@@ -20,12 +20,16 @@ class FirstViewController : UIViewController {
 
         case 3:
             let vc = ExtraViewController(nibName: "ExtraViewController", bundle: nil)
+            
             self.definesPresentationContext = true
             // comment out next line to see the difference
             self.providesPresentationContextTransitionStyle = true
             self.modalTransitionStyle = .CoverVertical
             vc.modalPresentationStyle = .CurrentContext
             vc.modalTransitionStyle = .FlipHorizontal // this will be overridden
+            
+            vc.modalPresentationCapturesStatusBarAppearance = true
+            
             self.presentViewController(vc, animated: true, completion: nil)
 
             /*
@@ -36,6 +40,7 @@ class FirstViewController : UIViewController {
             switch back to First view, tap button to dismiss
             black view, that's the bug
     */
+            
             
         default: break
         }

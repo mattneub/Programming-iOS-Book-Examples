@@ -8,6 +8,8 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         let svc = SecondViewController(nibName:"SecondViewController", bundle:nil)
         svc.data = "This is very important data!"
         svc.delegate = self
+//        svc.view.alpha = 0.5
+//        svc.modalPresentationStyle = .OverFullScreen
         self.presentViewController(svc, animated:true, completion:nil)
         
     }
@@ -25,6 +27,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     }
     
     override func supportedInterfaceOrientations() -> Int  {
+        println("first supported")
         return Int(UIInterfaceOrientationMask.Portrait.toRaw())
     }
     
@@ -32,6 +35,9 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         println("presenter will layout")
     }
     
-    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        println("presenter size")
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    }
     
 }

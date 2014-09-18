@@ -9,7 +9,8 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     // and "presentViewController" will be called for us
     // thus we need another place to configure
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "present" { // it will be
             let svc = segue.destinationViewController as SecondViewController
             svc.data = "This is very important data!"

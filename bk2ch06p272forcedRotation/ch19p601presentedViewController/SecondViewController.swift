@@ -14,7 +14,7 @@ class SecondViewController : UIViewController {
     weak var delegate : SecondViewControllerDelegate?
     
     @IBAction func doDismiss(sender:AnyObject?) {
-        self.presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+        self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -40,15 +40,22 @@ class SecondViewController : UIViewController {
     }
     
     override func supportedInterfaceOrientations() -> Int {
+        println("second supported")
         return Int(UIInterfaceOrientationMask.Landscape.toRaw())
     }
     
     override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
-        return UIInterfaceOrientation.LandscapeLeft
+        return .LandscapeLeft
     }
     
     override func viewWillLayoutSubviews() {
         println("presented will layout")
     }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        println("presented size")
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    }
+
     
 }

@@ -24,7 +24,7 @@ class SecondViewController : UIViewController {
     // I'll show that later
     
     @IBAction func doDismiss(sender:AnyObject?) {
-        self.presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+        self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
