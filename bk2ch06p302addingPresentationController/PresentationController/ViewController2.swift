@@ -20,7 +20,7 @@ class ViewController2: UIViewController {
     }
     
     @IBAction func doButton(sender: AnyObject) {
-        self.presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+        self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 
@@ -65,7 +65,7 @@ extension MyPresentationController {
     override func dismissalTransitionWillBegin() {
         let con = self.containerView
         let shadow = (con.subviews as [UIView])[0]
-        let tc = self.presentedViewController.transitionCoordinator()
+        let tc = self.presentedViewController.transitionCoordinator()!
         tc.animateAlongsideTransition({
             _ in
             shadow.alpha = 0
@@ -108,21 +108,21 @@ extension ViewController2 : UIViewControllerTransitioningDelegate {
 }
 
 extension ViewController2 : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning!) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
         return 0.4
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning!) {
+    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
         let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
         
         let con = transitionContext.containerView()
         
-        let r1start = transitionContext.initialFrameForViewController(vc1)
-        let r2end = transitionContext.finalFrameForViewController(vc2)
+        let r1start = transitionContext.initialFrameForViewController(vc1!)
+        let r2end = transitionContext.finalFrameForViewController(vc2!)
         
-        let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)
-        let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)
+        //let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)!
+        let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)!
         
         v2.frame = r2end
         v2.transform = CGAffineTransformMakeScale(0.1, 0.1)
