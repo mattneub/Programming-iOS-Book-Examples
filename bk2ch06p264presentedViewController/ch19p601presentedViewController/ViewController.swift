@@ -10,23 +10,37 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         println(self.presentingViewController)
         println(self.presentedViewController)
         
-        
-        let which = 1
-        
         let svc = SecondViewController(nibName: "SecondViewController", bundle: nil)
         svc.data = "This is very important data!"
         svc.delegate = self
         
+        let which = 5
         switch which {
-        case 1: break
-        case 2: svc.modalTransitionStyle = .PartialCurl
+        case 1: break // showing that .CoverVertical is the default
+        case 2: svc.modalTransitionStyle = .CoverVertical
+        case 3: svc.modalTransitionStyle = .CrossDissolve
+        case 4: svc.modalTransitionStyle = .PartialCurl
             // partial curl is not partial in iOS 8; bug?
             // thus, the "click to dismiss" feature makes no sense
             // user taps background and presented vc just dismisses? weird; bug?
-        case 3:
+        case 5:
             svc.modalTransitionStyle = .FlipHorizontal
             self.view.window!.backgroundColor = UIColor.greenColor() // prove window shows thru
-            // no transition on present, only on dismiss; bug?
+            // no transition on present, only on dismiss; bug? - ok, fixed
+        default: break
+        }
+        
+        println(self.traitCollection)
+
+        let which2 = 1
+        switch which2 {
+        case 1: break // showing that .FullScreen is the default
+        case 2: svc.modalPresentationStyle = .FullScreen
+        case 3: svc.modalPresentationStyle = .PageSheet
+        case 4: svc.modalPresentationStyle = .FormSheet
+        case 5:
+            svc.modalPresentationStyle = .OverFullScreen
+            svc.view.alpha = 0.5 // just to prove that it's working
         default: break
         }
         
