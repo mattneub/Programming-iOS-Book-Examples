@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		32CDC6E419758DAB00ACE428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CDC6E319758DAB00ACE428 /* ViewController.swift */; };
+		32E3B59019CB2C7900EC3A8A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E3B58F19CB2C7900EC3A8A /* LaunchScreen.xib */; };
 		C9FB997017C5412B00B836E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FB996F17C5412B00B836E0 /* Foundation.framework */; };
 		C9FB997217C5412B00B836E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FB997117C5412B00B836E0 /* CoreGraphics.framework */; };
 		C9FB997417C5412B00B836E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FB997317C5412B00B836E0 /* UIKit.framework */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		32CDC6E319758DAB00ACE428 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32E3B58F19CB2C7900EC3A8A /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		C9FB996C17C5412B00B836E0 /* ch19p593rotationChangesInterface2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p593rotationChangesInterface2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FB996F17C5412B00B836E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9FB997117C5412B00B836E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -84,6 +86,7 @@
 				C9FB997F17C5412B00B836E0 /* AppDelegate.m */,
 				C9FB998117C5412B00B836E0 /* Main.storyboard */,
 				32CDC6E319758DAB00ACE428 /* ViewController.swift */,
+				32E3B58F19CB2C7900EC3A8A /* LaunchScreen.xib */,
 				C9FB998717C5412B00B836E0 /* Images.xcassets */,
 				C9FB997617C5412B00B836E0 /* Supporting Files */,
 			);
@@ -153,6 +156,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32E3B59019CB2C7900EC3A8A /* LaunchScreen.xib in Resources */,
 				C9FB998817C5412B00B836E0 /* Images.xcassets in Resources */,
 				C9FB997A17C5412B00B836E0 /* InfoPlist.strings in Resources */,
 				C9FB998317C5412B00B836E0 /* Main.storyboard in Resources */,
@@ -266,7 +270,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p593rotationChangesInterface/ch19p593rotationChangesInterface2-Prefix.pch";
@@ -283,7 +286,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p593rotationChangesInterface/ch19p593rotationChangesInterface2-Prefix.pch";

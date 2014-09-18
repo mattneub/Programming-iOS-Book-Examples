@@ -11,6 +11,7 @@
 		32A595C41975DCD800A7EDD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A595C31975DCD800A7EDD8 /* ViewController.swift */; };
 		32A595C71975DCD800A7EDD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A595C51975DCD800A7EDD8 /* Main.storyboard */; };
 		32A595C91975DCD800A7EDD8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A595C81975DCD800A7EDD8 /* Images.xcassets */; };
+		32E3B59219CB2CA900EC3A8A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E3B59119CB2CA900EC3A8A /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		32A595C31975DCD800A7EDD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32A595C61975DCD800A7EDD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32A595C81975DCD800A7EDD8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32E3B59119CB2CA900EC3A8A /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				32A595C11975DCD800A7EDD8 /* AppDelegate.swift */,
 				32A595C31975DCD800A7EDD8 /* ViewController.swift */,
 				32A595C51975DCD800A7EDD8 /* Main.storyboard */,
+				32E3B59119CB2CA900EC3A8A /* LaunchScreen.xib */,
 				32A595C81975DCD800A7EDD8 /* Images.xcassets */,
 				32A595BF1975DCD800A7EDD8 /* Supporting Files */,
 			);
@@ -127,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32A595C71975DCD800A7EDD8 /* Main.storyboard in Resources */,
+				32E3B59219CB2CA900EC3A8A /* LaunchScreen.xib in Resources */,
 				32A595C91975DCD800A7EDD8 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,7 +242,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = bk2ch06p258launchIntoRotationEvents/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -250,7 +253,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = bk2ch06p258launchIntoRotationEvents/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

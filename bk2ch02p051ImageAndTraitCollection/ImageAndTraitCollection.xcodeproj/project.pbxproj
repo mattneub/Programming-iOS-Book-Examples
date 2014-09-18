@@ -15,6 +15,7 @@
 		3235AC8119BD1D40000BF8E3 /* frowney.png in Resources */ = {isa = PBXBuildFile; fileRef = 3235AC7F19BD1D40000BF8E3 /* frowney.png */; };
 		3235AC8219BD1D40000BF8E3 /* smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = 3235AC8019BD1D40000BF8E3 /* smiley.png */; };
 		32B800A819BD55FE00965954 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B800A719BD55FE00965954 /* MyView.swift */; };
+		32E3B58C19CB2BF900EC3A8A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E3B58B19CB2BF900EC3A8A /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		3235AC7F19BD1D40000BF8E3 /* frowney.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frowney.png; sourceTree = "<group>"; };
 		3235AC8019BD1D40000BF8E3 /* smiley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley.png; sourceTree = "<group>"; };
 		32B800A719BD55FE00965954 /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		32E3B58B19CB2BF900EC3A8A /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				3235AC6419BD1040000BF8E3 /* ViewController.swift */,
 				3235AC6619BD1040000BF8E3 /* Main.storyboard */,
 				32B800A719BD55FE00965954 /* MyView.swift */,
+				32E3B58B19CB2BF900EC3A8A /* LaunchScreen.xib */,
 				3235AC7F19BD1D40000BF8E3 /* frowney.png */,
 				3235AC8019BD1D40000BF8E3 /* smiley.png */,
 				3235AC6919BD1040000BF8E3 /* Images.xcassets */,
@@ -198,6 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32E3B58C19CB2BF900EC3A8A /* LaunchScreen.xib in Resources */,
 				3235AC8219BD1D40000BF8E3 /* smiley.png in Resources */,
 				3235AC8119BD1D40000BF8E3 /* frowney.png in Resources */,
 				3235AC6819BD1040000BF8E3 /* Main.storyboard in Resources */,
@@ -336,7 +340,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ImageAndTraitCollection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -347,7 +350,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ImageAndTraitCollection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

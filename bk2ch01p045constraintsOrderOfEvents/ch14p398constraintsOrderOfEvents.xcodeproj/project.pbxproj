@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		32050FAC1969C10900D79F0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32050FAB1969C10900D79F0B /* AppDelegate.swift */; };
 		32050FAE1969C22700D79F0B /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32050FAD1969C22700D79F0B /* MyView.swift */; };
+		32E3B58A19CB2BB200EC3A8A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E3B58919CB2BB200EC3A8A /* LaunchScreen.xib */; };
 		C953C05A17ABF6A800320991 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C953C05917ABF6A800320991 /* Foundation.framework */; };
 		C953C05C17ABF6A800320991 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C953C05B17ABF6A800320991 /* CoreGraphics.framework */; };
 		C953C05E17ABF6A800320991 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C953C05D17ABF6A800320991 /* UIKit.framework */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		32050FAB1969C10900D79F0B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32050FAD1969C22700D79F0B /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		32E3B58919CB2BB200EC3A8A /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		C953C05617ABF6A800320991 /* ch14p398constraintsOrderOfEvents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch14p398constraintsOrderOfEvents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C953C05917ABF6A800320991 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C953C05B17ABF6A800320991 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -77,6 +79,7 @@
 				32050FAB1969C10900D79F0B /* AppDelegate.swift */,
 				C953C06B17ABF6A800320991 /* Main.storyboard */,
 				32050FAD1969C22700D79F0B /* MyView.swift */,
+				32E3B58919CB2BB200EC3A8A /* LaunchScreen.xib */,
 				C953C07117ABF6A800320991 /* Images.xcassets */,
 				C953C06017ABF6A800320991 /* Supporting Files */,
 			);
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C953C07217ABF6A800320991 /* Images.xcassets in Resources */,
+				32E3B58A19CB2BB200EC3A8A /* LaunchScreen.xib in Resources */,
 				C953C06D17ABF6A800320991 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,7 +250,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
@@ -264,7 +267,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
