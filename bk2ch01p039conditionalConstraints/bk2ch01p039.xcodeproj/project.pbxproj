@@ -11,6 +11,7 @@
 		3245F7E21969A305000394F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3245F7E11969A305000394F3 /* Images.xcassets */; };
 		3245F7F81969A33C000394F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3245F7F71969A33C000394F3 /* ViewController.swift */; };
 		3245F7FA1969A354000394F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3245F7F91969A354000394F3 /* Main.storyboard */; };
+		32E3B59619CB31A000EC3A8A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E3B59519CB31A000EC3A8A /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		3245F7E11969A305000394F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3245F7F71969A33C000394F3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3245F7F91969A354000394F3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		32E3B59519CB31A000EC3A8A /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				3245F7DF1969A305000394F3 /* AppDelegate.swift */,
 				3245F7F71969A33C000394F3 /* ViewController.swift */,
+				32E3B59519CB31A000EC3A8A /* LaunchScreen.xib */,
 				3245F7F91969A354000394F3 /* Main.storyboard */,
 				3245F7E11969A305000394F3 /* Images.xcassets */,
 				3245F7DD1969A305000394F3 /* Supporting Files */,
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3245F7E21969A305000394F3 /* Images.xcassets in Resources */,
+				32E3B59619CB31A000EC3A8A /* LaunchScreen.xib in Resources */,
 				3245F7FA1969A354000394F3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,7 +230,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = bk2ch01p039/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -240,7 +243,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = bk2ch01p039/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
