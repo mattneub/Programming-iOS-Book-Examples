@@ -24,4 +24,18 @@ class View2Controller : UIViewController {
     // with a back button, we get "pop" for free, both by tapping the button...
     // and interactively by dragging from the left edge
     
+    // nasty bug
+    
+    /*
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+
+    */
+    
 }

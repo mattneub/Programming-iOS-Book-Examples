@@ -6,7 +6,7 @@ class FirstViewController : UIViewController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController.delegate = self
+        self.tabBarController?.delegate = self
     }
     
     // tab bar delegate gets to dictate orientations...
@@ -24,6 +24,10 @@ class FirstViewController : UIViewController, UITabBarControllerDelegate {
         print(" ")
         println(__FUNCTION__)
         return Int(UIInterfaceOrientationMask.Landscape.toRaw()) // called, but pointless
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
     

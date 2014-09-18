@@ -45,7 +45,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         }
         
         self.presentViewController(svc, animated:true, completion:nil)
-        
+        // self.showViewController(svc, sender:self) // ooops! we're in a nav interface, uses that :)
     }
     
     func acceptData(data:AnyObject!) {

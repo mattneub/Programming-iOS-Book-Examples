@@ -10,4 +10,14 @@ class SecondViewController : UIViewController {
         return Int(UIInterfaceOrientationMask.Landscape.toRaw()) // called, but pointless
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+
+    
 }

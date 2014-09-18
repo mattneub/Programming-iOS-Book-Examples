@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		322817F019CB47690074E54E /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322817EF19CB47690074E54E /* MyNavigationController.swift */; };
 		32411B121977478D00C7F85B /* View2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32411B111977478D00C7F85B /* View2Controller.swift */; };
 		32411B141977488300C7F85B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32411B131977488300C7F85B /* ViewController.swift */; };
 		32411B1619774A3C00C7F85B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32411B1519774A3C00C7F85B /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		322817EF19CB47690074E54E /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		32411B111977478D00C7F85B /* View2Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View2Controller.swift; sourceTree = "<group>"; };
 		32411B131977488300C7F85B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32411B1519774A3C00C7F85B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				C9E177D717CCC53E00D6513D /* Main.storyboard */,
 				32411B131977488300C7F85B /* ViewController.swift */,
 				32411B111977478D00C7F85B /* View2Controller.swift */,
+				322817EF19CB47690074E54E /* MyNavigationController.swift */,
 				C9E177DD17CCC53E00D6513D /* Images.xcassets */,
 				C9E177CC17CCC53E00D6513D /* Supporting Files */,
 			);
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32411B1619774A3C00C7F85B /* AppDelegate.swift in Sources */,
+				322817F019CB47690074E54E /* MyNavigationController.swift in Sources */,
 				32411B141977488300C7F85B /* ViewController.swift in Sources */,
 				32411B121977478D00C7F85B /* View2Controller.swift in Sources */,
 			);

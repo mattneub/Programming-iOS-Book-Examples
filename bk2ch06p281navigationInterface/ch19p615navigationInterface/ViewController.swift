@@ -21,7 +21,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
     
     func navigate() {
         let v2c = View2Controller(nibName: nil, bundle: nil)
-        self.navigationController.pushViewController(v2c, animated: true)
+        self.navigationController!.pushViewController(v2c, animated: true)
         // alternatively, can use new way in iOS 8:
         // self.showViewController(v2c, sender: self)
         // makes no difference here; the purpose is to loosen the coupling ...
@@ -30,11 +30,25 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController.delegate = self
+        self.navigationController!.delegate = self
     }
     
     func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController!) -> Int {
         return Int(UIInterfaceOrientationMask.Portrait.toRaw())
     }
+    
+    // wow, this causes a nasty bug
+    
+    /*
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+
+*/
     
 }

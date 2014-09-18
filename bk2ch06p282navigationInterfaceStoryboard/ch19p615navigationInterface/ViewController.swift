@@ -31,7 +31,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController.delegate = self
+        self.navigationController!.delegate = self
     }
     
     func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController!) -> Int {
