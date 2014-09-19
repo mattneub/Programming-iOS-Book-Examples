@@ -17,7 +17,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 // we lose the built-in interactive pop transition
 
 extension AppDelegate : UINavigationControllerDelegate {
-    func navigationController(navigationController: UINavigationController!, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController!, toViewController toVC: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if operation == .Push {
             return self
         }
@@ -26,15 +26,15 @@ extension AppDelegate : UINavigationControllerDelegate {
 }
 
 extension AppDelegate : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning!) -> NSTimeInterval{
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval{
         return 0.6
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning!) {
-        let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
+    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+        let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         let con = transitionContext.containerView()
         let r2end = transitionContext.finalFrameForViewController(vc2)
-        let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)
+        let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)!
         
         con.addSubview(v2)
         v2.frame = r2end
