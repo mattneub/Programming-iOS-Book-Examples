@@ -60,7 +60,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
         var result = false
         
         if g == self.rightEdger {
-            result = (tbc.selectedIndex < tbc.viewControllers.count - 1)
+            result = (tbc.selectedIndex < tbc.viewControllers!.count - 1)
         }
         else {
             result = (tbc.selectedIndex > 0)
@@ -69,7 +69,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
     }
     
     func pan(g:UIScreenEdgePanGestureRecognizer) {
-        let v = g.view
+        let v = g.view!
         let tbc = self.window!.rootViewController as UITabBarController
         let delta = g.translationInView(v)
         let percent = fabs(delta.x/v.bounds.size.width)
@@ -107,14 +107,14 @@ extension AppDelegate : UIGestureRecognizerDelegate {
 
 extension AppDelegate : UIViewControllerAnimatedTransitioning {
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning!) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
         return 0.4
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning!) {
+    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
-        let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
-        let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
+        let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         
         let con = transitionContext.containerView()
         
@@ -122,8 +122,8 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         let r2end = transitionContext.finalFrameForViewController(vc2)
         
         // new in iOS 8, use these instead of assuming that the views are the views of the vcs
-        let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)
-        let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)
+        let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)!
+        let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)!
         
         // which way we are going depends on which vc is which
         // the most general way to express this is in terms of index number
