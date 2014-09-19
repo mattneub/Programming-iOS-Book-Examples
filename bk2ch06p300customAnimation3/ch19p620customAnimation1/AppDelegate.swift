@@ -35,12 +35,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
         return true
     }
     
-    func tabBarController(tabBarController: UITabBarController!, animationControllerForTransitionFromViewController fromVC: UIViewController!, toViewController toVC: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func tabBarController(tabBarController: UITabBarController, animationControllerForTransitionFromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         // for this example, we are interactive _only_, and _we_ are the interactor
         return self.interacting ? self : nil
     }
     
-    func tabBarController(tabBarController: UITabBarController!, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning!) -> UIViewControllerInteractiveTransitioning! {
+    func tabBarController(tabBarController: UITabBarController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         // no interaction if we didn't use g.r.
         return self.interacting ? self : nil
     }
@@ -48,12 +48,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
 
 extension AppDelegate : UIGestureRecognizerDelegate {
     
-    func gestureRecognizerShouldBegin(g: UIGestureRecognizer!) -> Bool {
+    func gestureRecognizerShouldBegin(g: UIGestureRecognizer) -> Bool {
         let tbc = self.window!.rootViewController as UITabBarController
         var result = false
         
         if g == self.rightEdger {
-            result = (tbc.selectedIndex < tbc.viewControllers.count - 1)
+            result = (tbc.selectedIndex < tbc.viewControllers!.count - 1)
         }
         else {
             result = (tbc.selectedIndex > 0)
@@ -62,7 +62,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
     }
     
     func pan(g:UIScreenEdgePanGestureRecognizer) {
-        let v = g.view
+        let v = g.view!
         let tbc = self.window!.rootViewController as UITabBarController
         let delta = g.translationInView(v)
         let percent = fabs(delta.x/v.bounds.size.width)
@@ -77,16 +77,16 @@ extension AppDelegate : UIGestureRecognizerDelegate {
                 tbc.selectedIndex = tbc.selectedIndex - 1
             }
         case .Changed:
-            let vc1 = tc.viewControllerForKey(UITransitionContextFromViewControllerKey)
-            let vc2 = tc.viewControllerForKey(UITransitionContextToViewControllerKey)
+            let vc1 = tc.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+            let vc2 = tc.viewControllerForKey(UITransitionContextToViewControllerKey)!
             
             let con = tc.containerView()
             
             var r1start = tc.initialFrameForViewController(vc1)
             var r2end = tc.finalFrameForViewController(vc2)
             
-            let v1 = tc.viewForKey(UITransitionContextFromViewKey)
-            let v2 = tc.viewForKey(UITransitionContextToViewKey)
+            let v1 = tc.viewForKey(UITransitionContextFromViewKey)!
+            let v2 = tc.viewForKey(UITransitionContextToViewKey)!
             
             r1start.origin.x += (r1end.origin.x-r1start.origin.x)*percent
             v1.frame = r1start
@@ -98,16 +98,16 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             tc.updateInteractiveTransition(percent)
             
         case .Ended:
-            let vc1 = tc.viewControllerForKey(UITransitionContextFromViewControllerKey)
-            let vc2 = tc.viewControllerForKey(UITransitionContextToViewControllerKey)
+            let vc1 = tc.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+            let vc2 = tc.viewControllerForKey(UITransitionContextToViewControllerKey)!
             
             let con = tc.containerView()
             
             var r1start = tc.initialFrameForViewController(vc1)
             var r2end = tc.finalFrameForViewController(vc2)
             
-            let v1 = tc.viewForKey(UITransitionContextFromViewKey)
-            let v2 = tc.viewForKey(UITransitionContextToViewKey)
+            let v1 = tc.viewForKey(UITransitionContextFromViewKey)!
+            let v2 = tc.viewForKey(UITransitionContextToViewKey)!
             
             if percent > 0.5 {
                 UIView.animateWithDuration(0.2, animations:{
@@ -133,16 +133,16 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             self.interacting = false
         case .Cancelled:
             
-            let vc1 = tc.viewControllerForKey(UITransitionContextFromViewControllerKey)
-            let vc2 = tc.viewControllerForKey(UITransitionContextToViewControllerKey)
+            let vc1 = tc.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+            let vc2 = tc.viewControllerForKey(UITransitionContextToViewControllerKey)!
             
             let con = tc.containerView()
             
             var r1start = tc.initialFrameForViewController(vc1)
             var r2end = tc.finalFrameForViewController(vc2)
             
-            let v1 = tc.viewForKey(UITransitionContextFromViewKey)
-            let v2 = tc.viewForKey(UITransitionContextToViewKey)
+            let v1 = tc.viewForKey(UITransitionContextFromViewKey)!
+            let v2 = tc.viewForKey(UITransitionContextToViewKey)!
 
             v1.frame = r1start
             v2.frame = r2start
@@ -156,21 +156,21 @@ extension AppDelegate : UIGestureRecognizerDelegate {
 }
 
 extension AppDelegate : UIViewControllerInteractiveTransitioning {
-    func startInteractiveTransition(transitionContext: UIViewControllerContextTransitioning!){
+    func startInteractiveTransition(transitionContext: UIViewControllerContextTransitioning){
         // store transition context so the gesture recognizer can get at it
         self.context = transitionContext
         
         // set up initial conditions
-        let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
-        let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
+        let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         
         let con = transitionContext.containerView()
         
         let r1start = transitionContext.initialFrameForViewController(vc1)
         let r2end = transitionContext.finalFrameForViewController(vc2)
         
-        let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)
-        let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)
+        let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)!
+        let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)!
         
         // which way we are going depends on which vc is which
         // the most general way to express this is in terms of index number
@@ -195,11 +195,11 @@ extension AppDelegate : UIViewControllerInteractiveTransitioning {
 
 extension AppDelegate : UIViewControllerAnimatedTransitioning {
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning!) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
         return 0.4
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning!) {
+    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
     }
 }

@@ -42,12 +42,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
         return true
     }
     
-    func tabBarController(tabBarController: UITabBarController!, animationControllerForTransitionFromViewController fromVC: UIViewController!, toViewController toVC: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func tabBarController(tabBarController: UITabBarController, animationControllerForTransitionFromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
     
-    func tabBarController(tabBarController: UITabBarController!, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning!) -> UIViewControllerInteractiveTransitioning! {
-        let result : UIViewControllerInteractiveTransitioning! = self.interacting ? self.inter : nil
+    func tabBarController(tabBarController: UITabBarController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        let result : UIViewControllerInteractiveTransitioning? = self.interacting ? self.inter : nil
         // no interaction if we didn't use g.r.
         return result
     }
@@ -55,7 +55,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
 
 extension AppDelegate : UIGestureRecognizerDelegate {
     
-    func gestureRecognizerShouldBegin(g: UIGestureRecognizer!) -> Bool {
+    func gestureRecognizerShouldBegin(g: UIGestureRecognizer) -> Bool {
         let tbc = self.window!.rootViewController as UITabBarController
         var result = false
         

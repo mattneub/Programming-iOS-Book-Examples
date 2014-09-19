@@ -6,7 +6,7 @@ class FirstViewController : UIViewController {}
 class SecondViewController : UIViewController {}
 
 @UIApplicationMain
-class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
+class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
@@ -15,8 +15,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
         
         return true
     }
-    
-    func tabBarController(tabBarController: UITabBarController!, animationControllerForTransitionFromViewController fromVC: UIViewController!, toViewController toVC: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+}
+
+extension AppDelegate : UITabBarControllerDelegate {
+
+    func tabBarController(tabBarController: UITabBarController, animationControllerForTransitionFromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
 }
