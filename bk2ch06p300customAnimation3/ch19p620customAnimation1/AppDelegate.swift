@@ -66,7 +66,30 @@ extension AppDelegate : UIGestureRecognizerDelegate {
         let tbc = self.window!.rootViewController as UITabBarController
         let delta = g.translationInView(v)
         let percent = fabs(delta.x/v.bounds.size.width)
+        
+        var vc1 : UIViewController!
+        var vc2 : UIViewController!
+        var con : UIView!
+        var r1start : CGRect!
+        var r2end : CGRect!
+        var v1 : UIView!
+        var v2 : UIView!
+        
         let tc = self.context
+        if tc != nil {
+        
+            vc1 = tc.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+            vc2 = tc.viewControllerForKey(UITransitionContextToViewControllerKey)!
+            
+            con = tc.containerView()
+            
+            r1start = tc.initialFrameForViewController(vc1)
+            r2end = tc.finalFrameForViewController(vc2)
+            
+            v1 = tc.viewForKey(UITransitionContextFromViewKey)!
+            v2 = tc.viewForKey(UITransitionContextToViewKey)!
+
+        }
         
         switch g.state {
         case .Began:
@@ -77,16 +100,6 @@ extension AppDelegate : UIGestureRecognizerDelegate {
                 tbc.selectedIndex = tbc.selectedIndex - 1
             }
         case .Changed:
-            let vc1 = tc.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-            let vc2 = tc.viewControllerForKey(UITransitionContextToViewControllerKey)!
-            
-            let con = tc.containerView()
-            
-            var r1start = tc.initialFrameForViewController(vc1)
-            var r2end = tc.finalFrameForViewController(vc2)
-            
-            let v1 = tc.viewForKey(UITransitionContextFromViewKey)!
-            let v2 = tc.viewForKey(UITransitionContextToViewKey)!
             
             r1start.origin.x += (r1end.origin.x-r1start.origin.x)*percent
             v1.frame = r1start
@@ -98,16 +111,6 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             tc.updateInteractiveTransition(percent)
             
         case .Ended:
-            let vc1 = tc.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-            let vc2 = tc.viewControllerForKey(UITransitionContextToViewControllerKey)!
-            
-            let con = tc.containerView()
-            
-            var r1start = tc.initialFrameForViewController(vc1)
-            var r2end = tc.finalFrameForViewController(vc2)
-            
-            let v1 = tc.viewForKey(UITransitionContextFromViewKey)!
-            let v2 = tc.viewForKey(UITransitionContextToViewKey)!
             
             if percent > 0.5 {
                 UIView.animateWithDuration(0.2, animations:{
@@ -132,17 +135,6 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             
             self.interacting = false
         case .Cancelled:
-            
-            let vc1 = tc.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-            let vc2 = tc.viewControllerForKey(UITransitionContextToViewControllerKey)!
-            
-            let con = tc.containerView()
-            
-            var r1start = tc.initialFrameForViewController(vc1)
-            var r2end = tc.finalFrameForViewController(vc2)
-            
-            let v1 = tc.viewForKey(UITransitionContextFromViewKey)!
-            let v2 = tc.viewForKey(UITransitionContextToViewKey)!
 
             v1.frame = r1start
             v2.frame = r2start
