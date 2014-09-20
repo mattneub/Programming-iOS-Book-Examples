@@ -36,6 +36,7 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         
         let con = transitionContext.containerView()
+        println(con)
         
         let r1start = transitionContext.initialFrameForViewController(vc1)
         let r2end = transitionContext.finalFrameForViewController(vc2)
