@@ -4,6 +4,9 @@ import UIKit
 
 
 class ViewController2: UIViewController {
+    
+    @IBOutlet weak var button: UIButton!
+    
     // important: viewDidLoad() is too late for this sort of thing
     // must be done before presentation even has a chance to start
     required init(coder aDecoder: NSCoder) {
@@ -25,7 +28,7 @@ class ViewController2: UIViewController {
 }
 
 extension ViewController2 : UIViewControllerTransitioningDelegate {
-    func presentationControllerForPresentedViewController(presented: UIViewController!, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController!) -> UIPresentationController! {
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController) -> UIPresentationController? {
         let pc = MyPresentationController(presentedViewController: presented, presentingViewController: presenting)
         return pc
     }
@@ -45,6 +48,7 @@ The moral here is:
 but if you just add the pieces one by one
 it all makes perfect sense
 */
+
 
 // ==========================
 
@@ -73,6 +77,7 @@ extension MyPresentationController {
     }
 }
 
+
 // ===========================
 
 extension MyPresentationController {
@@ -82,7 +87,11 @@ extension MyPresentationController {
         v.layer.masksToBounds = true
         return v
     }
+//    override func shouldRemovePresentersView() -> Bool {
+//        return true
+//    }
 }
+
 
 // ===========================
 
@@ -99,10 +108,12 @@ extension MyPresentationController {
     }
 }
 
+
 // ==========================
 
 extension ViewController2 : UIViewControllerTransitioningDelegate {
-    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        // return nil
         return self
     }
 }
@@ -113,12 +124,12 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
+        // let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
         let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
         
         let con = transitionContext.containerView()
         
-        let r1start = transitionContext.initialFrameForViewController(vc1!)
+        // let r1start = transitionContext.initialFrameForViewController(vc1!)
         let r2end = transitionContext.finalFrameForViewController(vc2!)
         
         //let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)!
@@ -137,6 +148,20 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
                 transitionContext.completeTransition(true)
             })
         
+    }
+}
+
+// =======
+
+extension ViewController2 {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let tc = self.transitionCoordinator() {
+            tc.animateAlongsideTransition({
+                _ in
+                self.button.frame.origin.y += 100
+            }, completion: nil)
+        }
     }
 }
 
