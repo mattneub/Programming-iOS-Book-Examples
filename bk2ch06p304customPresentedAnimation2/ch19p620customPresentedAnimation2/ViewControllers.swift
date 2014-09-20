@@ -19,7 +19,7 @@ class ViewController2 : UIViewController {
     @IBOutlet var button : UIButton!
     
     @IBAction func doButton(sender:AnyObject?) {
-        self.presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+        self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class ViewController2 : UIViewController {
         self.view.layer.borderWidth = 2
         self.view.layer.cornerRadius = 10
         self.view.layer.masksToBounds = true
-        self.button.layer.borderColor = self.button.tintColor.CGColor
+        self.button.layer.borderColor = self.button.tintColor!.CGColor
         self.button.layer.borderWidth = 1
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(10,10), false, 0)
         CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), UIColor(white:0.4, alpha:1.5).CGColor)
@@ -64,7 +64,7 @@ class MyPresentationController : UIPresentationController {
         shadow.alpha = 0
         con.insertSubview(shadow, atIndex: 0)
         shadow.autoresizingMask = .FlexibleWidth | .FlexibleHeight
-        let tc = self.presentedViewController.transitionCoordinator()
+        let tc = self.presentedViewController.transitionCoordinator()!
         tc.animateAlongsideTransition({
             _ in
             shadow.alpha = 1
@@ -79,7 +79,7 @@ class MyPresentationController : UIPresentationController {
     override func dismissalTransitionWillBegin() {
         let con = self.containerView
         let shadow = (con.subviews as [UIView])[0]
-        let tc = self.presentedViewController.transitionCoordinator()
+        let tc = self.presentedViewController.transitionCoordinator()!
         tc.animateAlongsideTransition({
             _ in
             shadow.alpha = 0
@@ -121,19 +121,19 @@ extension ViewController2 : UIViewControllerTransitioningDelegate {
 }
 
 extension ViewController2 : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning!)
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning)
         -> NSTimeInterval {
             return 0.25
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning!) {
+    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
         let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
         
         let con = transitionContext.containerView()
         
-        let r1start = transitionContext.initialFrameForViewController(vc1)
-        let r2end = transitionContext.finalFrameForViewController(vc2)
+        let r1start = transitionContext.initialFrameForViewController(vc1!)
+        let r2end = transitionContext.finalFrameForViewController(vc2!)
         
         let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)
         let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)
@@ -142,7 +142,7 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
         // for both presentation and dismissal
         // so we have to distinguish the two cases
         
-        if v2 != nil && v2 == self.view {
+        if let v2 = v2 {
             con.addSubview(v2)
             let scale = CGAffineTransformMakeScale(1.6,1.6)
             v2.transform = scale
@@ -154,7 +154,7 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
                     _ in
                     transitionContext.completeTransition(true)
                 })
-        } else {
+        } else if let v1 = v1 {
             UIView.animateWithDuration(0.25, animations: {
                 v1.alpha = 0
                 }, completion: {
