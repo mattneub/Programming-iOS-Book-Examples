@@ -8,7 +8,7 @@ import UIKit
         return MyWindow(frame: UIScreen.mainScreen().bounds)
     }()
     
-    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         return true
     }
     

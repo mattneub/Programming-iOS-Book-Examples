@@ -10,7 +10,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     // standard behavior: category is ambient, activate on app activate and after interruption ends
     
-    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, withOptions: nil, error: nil)
         

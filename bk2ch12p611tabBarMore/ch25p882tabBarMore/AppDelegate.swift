@@ -8,7 +8,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var tabBarController = UITabBarController()
     var myDataSource : MyDataSource!
     
-    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
         self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
 

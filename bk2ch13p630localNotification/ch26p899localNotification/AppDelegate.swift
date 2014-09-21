@@ -14,7 +14,7 @@ func delay(delay:Double, closure:()->()) {
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // new in iOS 8! must register to present alert / play sound with a local or push notification
         let types : UIUserNotificationType = .Alert | .Sound
