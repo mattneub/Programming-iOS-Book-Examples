@@ -20,6 +20,8 @@ class ViewController: UIViewController {
         sz.height = min(sz.height, self.view.frame.height - 40*2)
         self.childsize = sz
         
+        Helper().tellViewController(child, newSize: sz) // *
+        
         
         child.view.frame = CGRect(origin: CGPointMake(40,40), size: sz)
         child.view.setTranslatesAutoresizingMaskIntoConstraints(true)
@@ -38,12 +40,11 @@ class ViewController: UIViewController {
             println("parent hears that the child wants to change size to \(sz)")
             sz.width = min(sz.width, self.view.frame.width - 40*2)
             sz.height = min(sz.height, self.view.frame.height - 40*2)
+            
+            Helper().tellViewController(child, newSize: sz) // *
+            
             child.view.frame = CGRect(origin: CGPointMake(40,40), size: sz)
             self.childsize = sz
-            
-            // notification of child is _manual_
-            // can't call this because we have no transition coordinator (bug?)
-            // child.viewWillTransitionToSize(sz, withTransitionCoordinator: nil)
         }
     }
     
@@ -65,7 +66,6 @@ class ViewController: UIViewController {
                 child.view.frame = CGRect(origin: CGPointMake(40,40), size:self.childsize)
             }
         }
-        
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
 

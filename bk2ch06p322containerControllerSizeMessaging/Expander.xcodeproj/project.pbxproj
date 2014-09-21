@@ -13,6 +13,7 @@
 		32101C0D197C104800319736 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32101C0C197C104800319736 /* Images.xcassets */; };
 		32101C24197C106A00319736 /* ViewControllerChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32101C22197C106A00319736 /* ViewControllerChild.swift */; };
 		32101C25197C106A00319736 /* ViewControllerChild.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32101C23197C106A00319736 /* ViewControllerChild.xib */; };
+		321F180B19CF7F3700B28BCF /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F180A19CF7F3700B28BCF /* Helper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		32101C0C197C104800319736 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		32101C22197C106A00319736 /* ViewControllerChild.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerChild.swift; sourceTree = "<group>"; };
 		32101C23197C106A00319736 /* ViewControllerChild.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewControllerChild.xib; sourceTree = "<group>"; };
+		321F180819CF7F3600B28BCF /* Expander-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Expander-Bridging-Header.h"; sourceTree = "<group>"; };
+		321F180919CF7F3700B28BCF /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		321F180A19CF7F3700B28BCF /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +63,13 @@
 				32101C05197C104800319736 /* AppDelegate.swift */,
 				32101C07197C104800319736 /* ViewController.swift */,
 				32101C22197C106A00319736 /* ViewControllerChild.swift */,
+				321F180919CF7F3700B28BCF /* Helper.h */,
+				321F180A19CF7F3700B28BCF /* Helper.m */,
 				32101C23197C106A00319736 /* ViewControllerChild.xib */,
 				32101C09197C104800319736 /* Main.storyboard */,
 				32101C0C197C104800319736 /* Images.xcassets */,
 				32101C03197C104800319736 /* Supporting Files */,
+				321F180819CF7F3600B28BCF /* Expander-Bridging-Header.h */,
 			);
 			path = Expander;
 			sourceTree = "<group>";
@@ -148,6 +155,7 @@
 				32101C24197C106A00319736 /* ViewControllerChild.swift in Sources */,
 				32101C08197C104800319736 /* ViewController.swift in Sources */,
 				32101C06197C104800319736 /* AppDelegate.swift in Sources */,
+				321F180B19CF7F3700B28BCF /* Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,9 +255,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Expander/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Expander/Expander-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -258,9 +269,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Expander/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Expander/Expander-Bridging-Header.h";
 			};
 			name = Release;
 		};
