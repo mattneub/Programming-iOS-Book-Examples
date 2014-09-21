@@ -7,7 +7,7 @@ import UIKit
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    func application(application: UIApplication!, willFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+    func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
         
@@ -22,25 +22,25 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(application: UIApplication!, shouldRestoreApplicationState coder: NSCoder!) -> Bool {
+    func application(application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
         println("app should restore \(coder)")
         return true
     }
     
-    func application(application: UIApplication!, shouldSaveApplicationState coder: NSCoder!) -> Bool {
+    func application(application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
         println("app should save \(coder)")
         return true
     }
     
-    func application(application: UIApplication!, willEncodeRestorableStateWithCoder coder: NSCoder!) {
+    func application(application: UIApplication, willEncodeRestorableStateWithCoder coder: NSCoder) {
         println("app will encode \(coder)")
     }
     
-    func application(application: UIApplication!, didDecodeRestorableStateWithCoder coder: NSCoder!) {
+    func application(application: UIApplication, didDecodeRestorableStateWithCoder coder: NSCoder) {
         println("app did decode \(coder)")
     }
     
-    func application(application: UIApplication!, viewControllerWithRestorationIdentifierPath ip: [AnyObject]!, coder: NSCoder!) -> UIViewController! {
+    func application(application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [AnyObject], coder: NSCoder) -> UIViewController? {
         
         println("app delegate \(ip) \(coder)")
         let last = (ip as NSArray).lastObject as String
@@ -48,7 +48,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             return self.window!.rootViewController
         }
         if last == "root" {
-            return (self.window!.rootViewController as UINavigationController).viewControllers[0] as UIViewController
+            return (self.window!.rootViewController as UINavigationController).viewControllers[0] as? UIViewController
         }
         return nil // shouldn't happen; the others all have restoration classes
     }

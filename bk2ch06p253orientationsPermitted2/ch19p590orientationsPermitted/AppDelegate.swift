@@ -11,7 +11,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(application: UIApplication!, supportedInterfaceOrientationsForWindow window: UIWindow!) -> Int {
+    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow) -> Int {
         println("supported") // whoa
         
         // uncomment next line to get a different answer...

@@ -3,11 +3,11 @@ import UIKit
 
 class PresentedViewController : UIViewController {
     
-    override func encodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func encodeRestorableStateWithCoder(coder: NSCoder) {
         println("\(self) encode \(coder)")
     }
     
-    override func decodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func decodeRestorableStateWithCoder(coder: NSCoder) {
         println("\(self) decode \(coder)")
     }
     
@@ -31,7 +31,7 @@ class PresentedViewController : UIViewController {
     }
     
     func doDismiss(sender:AnyObject?) {
-        self.presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+        self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

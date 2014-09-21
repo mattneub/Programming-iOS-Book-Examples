@@ -6,7 +6,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     var pep : [NSString]!
     
-    func application(application: UIApplication!, willFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+    func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
         
         self.setUpPageViewController()
@@ -16,11 +16,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(application: UIApplication!, shouldRestoreApplicationState coder: NSCoder!) -> Bool {
+    func application(application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
         return true // *
     }
     
-    func application(application: UIApplication!, shouldSaveApplicationState coder: NSCoder!) -> Bool {
+    func application(application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
         return true // *
     }
     
@@ -46,13 +46,13 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     // all we really need to save is the current boy name
     
-    func application(application: UIApplication!, willEncodeRestorableStateWithCoder coder: NSCoder!) {
+    func application(application: UIApplication, willEncodeRestorableStateWithCoder coder: NSCoder) {
         let pvc = self.window!.rootViewController as UIPageViewController
         let boy = (pvc.viewControllers[0] as Pep).boy
         coder.encodeObject(boy, forKey:"boy")
     }
     
-    func application(application: UIApplication!, didDecodeRestorableStateWithCoder coder: NSCoder!) {
+    func application(application: UIApplication, didDecodeRestorableStateWithCoder coder: NSCoder) {
         let boy: AnyObject? = coder.decodeObjectForKey("boy")
         if let boy = boy as? String {
             let pvc = self.window!.rootViewController as UIPageViewController
@@ -63,7 +63,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate : UIPageViewControllerDataSource {
-    func pageViewController(pageViewController: UIPageViewController!, viewControllerAfterViewController viewController: UIViewController!) -> UIViewController! {
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         let boy = (viewController as Pep).boy
         let ix = find(self.pep!, boy)! + 1
         if ix >= self.pep.count {
@@ -71,7 +71,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
         }
         return Pep(pepBoy: self.pep![ix])
     }
-    func pageViewController(pageViewController: UIPageViewController!, viewControllerBeforeViewController viewController: UIViewController!) -> UIViewController! {
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         let boy = (viewController as Pep).boy
         let ix = find(self.pep!, boy)! - 1
         if ix < 0 {
@@ -105,14 +105,14 @@ extension AppDelegate {
         NSNotificationCenter.defaultCenter().addObserverForName("tap", object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: {
             n in
             let g = n.object as UIGestureRecognizer
-            let which = g.view.tag
+            let which = g.view!.tag
             let vc0 = pvc.viewControllers[0] as UIViewController
             let vc = (which == 0 ? self.pageViewController(pvc, viewControllerBeforeViewController: vc0) : self.pageViewController(pvc, viewControllerAfterViewController: vc0))
             if vc == nil {
                 return
             }
             let dir : UIPageViewControllerNavigationDirection = which == 0 ? .Reverse : .Forward
-            pvc.setViewControllers([vc], direction: dir, animated: true, completion: nil)
+            pvc.setViewControllers([vc!], direction: dir, animated: true, completion: nil)
             })
     }
 }

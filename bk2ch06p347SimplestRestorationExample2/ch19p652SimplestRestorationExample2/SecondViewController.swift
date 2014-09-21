@@ -5,11 +5,11 @@ import UIKit
 class SecondViewController : UIViewController {
     
     
-    override func encodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func encodeRestorableStateWithCoder(coder: NSCoder) {
         println("\(self) encode \(coder)")
     }
     
-    override func decodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func decodeRestorableStateWithCoder(coder: NSCoder) {
         println("\(self) decode \(coder)")
     }
     
@@ -51,8 +51,8 @@ class SecondViewController : UIViewController {
 // "Warning: restoration class for view controller does not conform to UIViewControllerRestoration protocol: Class is ..."
 
 extension SecondViewController : UIViewControllerRestoration {
-    class func viewControllerWithRestorationIdentifierPath(ip: [AnyObject]!,
-        coder: NSCoder!) -> UIViewController! {
+    class func viewControllerWithRestorationIdentifierPath(ip: [AnyObject],
+        coder: NSCoder) -> UIViewController? {
             println("vcwithrip \(self) \(ip) \(coder)")
             var vc : UIViewController? = nil
             let last = (ip as NSArray).lastObject as String

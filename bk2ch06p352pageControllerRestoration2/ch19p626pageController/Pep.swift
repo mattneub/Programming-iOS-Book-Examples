@@ -20,7 +20,7 @@ class Pep: UIViewController {
         fatalError("NSCoding not supported")
     }
     
-    override func encodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func encodeRestorableStateWithCoder(coder: NSCoder) {
         super.encodeRestorableStateWithCoder(coder)
         println("pep about to encode boy \(self.boy)")
         coder.encodeObject(self.boy, forKey:"boy")
@@ -42,7 +42,7 @@ class Pep: UIViewController {
 }
 
 extension Pep : UIViewControllerRestoration {
-    class func viewControllerWithRestorationIdentifierPath(ip: [AnyObject]!, coder: NSCoder!) -> UIViewController! {
+    class func viewControllerWithRestorationIdentifierPath(ip: [AnyObject], coder: NSCoder) -> UIViewController? {
         let boy = coder.decodeObjectForKey("boy") as String
         println("pep decoded boy \(boy)")
         return self(pepBoy: boy)

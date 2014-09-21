@@ -20,7 +20,7 @@ class Pep: UIViewController {
         fatalError("NSCoding not supported")
     }
     
-    override func encodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func encodeRestorableStateWithCoder(coder: NSCoder) {
         // super.encodeRestorableStateWithCoder(coder)
         println("pep about to encode boy \(self.boy)")
         coder.encodeObject(self.boy, forKey:"boy")
@@ -28,7 +28,7 @@ class Pep: UIViewController {
     
     // and now we simply decode directly
     
-    override func decodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func decodeRestorableStateWithCoder(coder: NSCoder) {
         // super.decodeRestorableStateWithCoder(coder)
         let boy : AnyObject? = coder.decodeObjectForKey("boy")
         println("pep about to decode boy \(boy)")

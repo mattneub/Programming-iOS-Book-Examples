@@ -3,11 +3,11 @@ import UIKit
 
 class RootViewController : UIViewController {
     
-    override func encodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func encodeRestorableStateWithCoder(coder: NSCoder) {
         println("\(self) encode \(coder)")
     }
     
-    override func decodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func decodeRestorableStateWithCoder(coder: NSCoder) {
         println("\(self) decode \(coder)")
     }
     
@@ -53,7 +53,7 @@ class RootViewController : UIViewController {
     
     func doPush(sender:AnyObject?) {
         let pvc = self.dynamicType.makeSecondViewController()
-        self.navigationController.pushViewController(pvc, animated:true)
+        self.navigationController!.pushViewController(pvc, animated:true)
     }
 }
 
@@ -64,8 +64,8 @@ class RootViewController : UIViewController {
 // "Warning: restoration class for view controller does not conform to UIViewControllerRestoration protocol: Class is ..."
 
 extension RootViewController : UIViewControllerRestoration {
-    class func viewControllerWithRestorationIdentifierPath(ip: [AnyObject]!,
-        coder: NSCoder!) -> UIViewController! {
+    class func viewControllerWithRestorationIdentifierPath(ip: [AnyObject],
+        coder: NSCoder) -> UIViewController? {
             println("vcwithrip \(self) \(ip) \(coder)")
             var vc : UIViewController? = nil
             let last = (ip as NSArray).lastObject as String

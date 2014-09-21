@@ -24,7 +24,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         var err : NSError?
         let docsurl = fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &err)
         let dir = fm.enumeratorAtURL(docsurl!, includingPropertiesForKeys: nil, options: nil, errorHandler: nil)
-        while let f = dir.nextObject() as? NSURL {
+        while let f = dir?.nextObject() as? NSURL {
             if f.pathExtension == self.ext {
                 url = f
                 break
@@ -87,7 +87,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         var err : NSError?
         let docsurl = fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &err)
         let dir = fm.enumeratorAtURL(docsurl!, includingPropertiesForKeys: nil, options: nil, errorHandler: nil)
-        while let f = dir.nextObject() as? NSURL {
+        while let f = dir?.nextObject() as? NSURL {
             if f.pathExtension == self.ext {
                 println(QLPreviewController.canPreviewItem(f))
                 self.docs.append(f)

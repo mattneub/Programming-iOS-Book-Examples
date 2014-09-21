@@ -12,12 +12,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         return true
     }
     
-    // handleOpenURL deprecated? but it does seem to work just fie
+    // handleOpenURL deprecated? but it does seem to work just fine
     
-//    func application(_ application: UIApplication!,
-//        openURL url: NSURL!,
-//        sourceApplication sourceApplication: String!,
-//        annotation annotation: AnyObject!) -> Bool {
+//    func application(application: UIApplication,
+//        openURL url: NSURL,
+//        sourceApplication sourceApplication: String,
+//        annotation annotation: AnyObject?) -> Bool {
 //    }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
@@ -52,7 +52,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         }
         
         let vc = self.window?.rootViewController as ViewController
-        vc.displayPDF(finalurl)
+        vc.displayDoc(finalurl)
         println("end \(__FUNCTION__)")
         return true
     }

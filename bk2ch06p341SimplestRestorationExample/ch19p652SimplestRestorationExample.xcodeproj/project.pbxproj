@@ -25,7 +25,6 @@
 		C937D32217D4F75400D5F188 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C937D32417D4F75400D5F188 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C937D32817D4F75400D5F188 /* ch19p652SimplestRestorationExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p652SimplestRestorationExample-Info.plist"; sourceTree = "<group>"; };
-		C937D32F17D4F75400D5F188 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C937D33317D4F75400D5F188 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C937D33817D4F75400D5F188 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C937D33F17D4F75500D5F188 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -82,7 +81,6 @@
 		C937D32617D4F75400D5F188 /* ch19p652SimplestRestorationExample */ = {
 			isa = PBXGroup;
 			children = (
-				C937D32F17D4F75400D5F188 /* AppDelegate.h */,
 				329C8EE5197C1A7D0047EEB2 /* AppDelegate.swift */,
 				C937D33217D4F75400D5F188 /* Main.storyboard */,
 				C937D35517D4F97100D5F188 /* RootViewController.h */,
