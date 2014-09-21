@@ -17,11 +17,12 @@ class ViewControllerChild: UIViewController {
     
     @IBAction func doButton(sender: AnyObject) {
         // magically trigger communication with parent
+        println("child setting preferred content size")
         self.preferredContentSize = self.expanded ? CGSizeMake(250,250) : CGSizeMake(350,350)
         self.expanded = !self.expanded
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         println("I am the child and my new size will be \(size)")
     }
 
