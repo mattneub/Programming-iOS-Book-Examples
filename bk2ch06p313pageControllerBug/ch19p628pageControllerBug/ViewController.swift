@@ -3,7 +3,7 @@ import UIKit
 
 class ViewController : UIViewController, UIPageViewControllerDataSource {
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let pvc = segue.destinationViewController as UIPageViewController
         pvc.dataSource = self
         let page = MyPage()
@@ -11,7 +11,7 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
         pvc.setViewControllers([page], direction:.Forward, animated:false, completion:nil)
     }
     
-    func pageViewController(pageViewController: UIPageViewController!, viewControllerAfterViewController viewController: UIViewController!) -> UIViewController! {
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         let page = viewController as MyPage
         let num = page.num
         if num == 10 { return nil }
@@ -20,7 +20,7 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
         return page2
     }
     
-    func pageViewController(pageViewController: UIPageViewController!, viewControllerBeforeViewController viewController: UIViewController!) -> UIViewController! {
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         let page = viewController as MyPage
         let num = page.num
         if num == 1 { return nil }
