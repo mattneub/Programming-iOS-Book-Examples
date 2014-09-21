@@ -41,7 +41,7 @@ class ViewController : UIViewController {
             toViewController:tovc,
             duration:0.4,
             options:.TransitionFlipFromLeft,
-            animations:nil,
+            animations:{},
             completion:{
                 _ in
                 // finally, finish up
