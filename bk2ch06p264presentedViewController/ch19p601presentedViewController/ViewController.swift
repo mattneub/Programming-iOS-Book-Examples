@@ -14,7 +14,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         svc.data = "This is very important data!"
         svc.delegate = self
         
-        let which = 5
+        let which = 1
         switch which {
         case 1: break // showing that .CoverVertical is the default
         case 2: svc.modalTransitionStyle = .CoverVertical

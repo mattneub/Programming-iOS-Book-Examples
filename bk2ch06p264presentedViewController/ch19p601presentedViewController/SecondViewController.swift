@@ -48,5 +48,10 @@ class SecondViewController : UIViewController {
         }
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        println("new size coming: \(size)")
+    }
+    
     
 }
