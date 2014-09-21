@@ -18,7 +18,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func setUpPageViewController() {
         self.pep = ["Manny", "Moe", "Jack"]
-        // make a page view controller
+        // make a page view controller - NB try both .PageCurl and .Scroll
         let pvc = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         // give it an initial page
         let page = Pep(pepBoy: self.pep[0])
@@ -39,7 +39,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate : UIPageViewControllerDataSource {
-    func pageViewController(pageViewController: UIPageViewController!, viewControllerAfterViewController viewController: UIViewController!) -> UIViewController! {
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         let boy = (viewController as Pep).boy
         let ix = find(self.pep!, boy)! + 1
         if ix >= self.pep.count {
@@ -47,7 +47,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
         }
         return Pep(pepBoy: self.pep![ix])
     }
-    func pageViewController(pageViewController: UIPageViewController!, viewControllerBeforeViewController viewController: UIViewController!) -> UIViewController! {
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         let boy = (viewController as Pep).boy
         let ix = find(self.pep!, boy)! - 1
         if ix < 0 {
@@ -58,37 +58,38 @@ extension AppDelegate : UIPageViewControllerDataSource {
     
     // if these methods are implemented, page indicator appears
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController!) -> Int {
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
         return self.pep.count
     }
-    func presentationIndexForPageViewController(pvc: UIPageViewController!) -> Int {
+    func presentationIndexForPageViewController(pvc: UIPageViewController) -> Int {
         let page = pvc.viewControllers[0] as Pep
         let boy = page.boy
         return find(self.pep!, boy)!
     }
     
-}
-
-extension AppDelegate {
+    // =======
+    
     func messWithGestureRecognizers(pvc:UIPageViewController) {
-        /*
-        for g in pvc.gestureRecognizers as [UIGestureRecognizer] { // ? does nothing for scroll
-            if let g = g as? UITapGestureRecognizer {
-                g.numberOfTapsRequired = 2
+        if pvc.transitionStyle == .PageCurl { // does nothing for .Scroll
+            for g in pvc.gestureRecognizers as [UIGestureRecognizer] {
+                if let g = g as? UITapGestureRecognizer {
+                    g.numberOfTapsRequired = 2
+                }
             }
         }
-*/
-        NSNotificationCenter.defaultCenter().addObserverForName("tap", object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: {
-            n in
-            let g = n.object as UIGestureRecognizer
-            let which = g.view.tag
-            let vc0 = pvc.viewControllers[0] as UIViewController
-            let vc = (which == 0 ? self.pageViewController(pvc, viewControllerBeforeViewController: vc0) : self.pageViewController(pvc, viewControllerAfterViewController: vc0))
-            if vc == nil {
-                return
-            }
-            let dir : UIPageViewControllerNavigationDirection = which == 0 ? .Reverse : .Forward
-            pvc.setViewControllers([vc], direction: dir, animated: true, completion: nil)
+        else { // not needed for .PageCurl
+            NSNotificationCenter.defaultCenter().addObserverForName("tap", object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: {
+                n in
+                let g = n.object as UIGestureRecognizer
+                let which = g.view!.tag
+                let vc0 = pvc.viewControllers[0] as UIViewController
+                let vc = (which == 0 ? self.pageViewController(pvc, viewControllerBeforeViewController: vc0) : self.pageViewController(pvc, viewControllerAfterViewController: vc0))
+                if vc == nil {
+                    return
+                }
+                let dir : UIPageViewControllerNavigationDirection = which == 0 ? .Reverse : .Forward
+                pvc.setViewControllers([vc!], direction: dir, animated: true, completion: nil)
             })
+        }
     }
 }
