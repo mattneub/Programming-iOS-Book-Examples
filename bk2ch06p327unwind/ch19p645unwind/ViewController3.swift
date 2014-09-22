@@ -11,7 +11,7 @@ class ViewController3 : UIViewController {
         return result
     }
 
-    override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController!, withSender sender: AnyObject!) -> UIViewController! {
+    override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject!) -> UIViewController? {
         
         var result : UIViewController? = nil
         
@@ -21,26 +21,27 @@ class ViewController3 : UIViewController {
         return result
     }
 
-    override func segueForUnwindingToViewController(toViewController: UIViewController!, fromViewController: UIViewController!, identifier: String!) -> UIStoryboardSegue! {
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String) -> UIStoryboardSegue {
         println("\(self) was asked for segue")
-        return nil
+        // can't return nil
+        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
     }
     
     @IBAction func unwind(seg:UIStoryboardSegue!) {
         println("view controller 3 unwind is never called")
     }
     
-    override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController!, withSender sender: AnyObject!) -> Bool {
+    override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
         println("view controller 3 can perform is never called")
         return false
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject!) -> Bool {
         println("view controller 3 should perform returns true")
         return true
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         println("view controller 3 prepare for segue is called")
     }
 

@@ -10,7 +10,7 @@ class MyNavigationController : UINavigationController {
         return result
     }
     
-    override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController!, withSender sender: AnyObject!) -> UIViewController! {
+    override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject!) -> UIViewController? {
         
         var result : UIViewController? = nil
         
@@ -31,15 +31,17 @@ class MyNavigationController : UINavigationController {
         return result
     }
     
-    override func segueForUnwindingToViewController(toViewController: UIViewController!, fromViewController: UIViewController!, identifier: String!) -> UIStoryboardSegue! {
+    /*
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String) -> UIStoryboardSegue {
         println("\(self) was asked for segue")
         return UIStoryboardSegue(identifier: identifier, source: fromViewController, destination: toViewController, performHandler: {
-            fromViewController.presentingViewController.dismissViewControllerAnimated(true, completion: {
+            fromViewController.presentingViewController!.dismissViewControllerAnimated(true, completion: {
                 _ in
                 self.popToViewController(toViewController, animated: true)
                 return; // argh, swift!
                 })
             })
     }
+*/
     
 }

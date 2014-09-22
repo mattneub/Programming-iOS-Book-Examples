@@ -12,7 +12,7 @@ class ViewController2 : UIViewController {
         return result
     }
 
-    override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController!, withSender sender: AnyObject!) -> UIViewController! {
+    override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject!) -> UIViewController? {
         
         var result : UIViewController? = nil
         
@@ -26,7 +26,7 @@ class ViewController2 : UIViewController {
         println("view controller 2 unwind is called")
     }
     
-    override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController!, withSender sender: AnyObject!) -> Bool {
+    override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
         var result = false
         
         let which = 1
@@ -42,9 +42,10 @@ class ViewController2 : UIViewController {
         return result
     }
 
-    override func segueForUnwindingToViewController(toViewController: UIViewController!, fromViewController: UIViewController!, identifier: String!) -> UIStoryboardSegue! {
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String) -> UIStoryboardSegue {
         println("\(self) was asked for segue")
-        return nil
+        // can't return nil
+        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
     }
 
 }
