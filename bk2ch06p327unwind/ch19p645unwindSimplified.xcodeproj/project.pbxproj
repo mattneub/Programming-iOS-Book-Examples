@@ -27,14 +27,14 @@
 		326C806A197AEDEB003C0B1C /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		326C806C197AF0D9003C0B1C /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		326C806E197AF3B2003C0B1C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C90829B517D2678800213704 /* ch19p645unwind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p645unwind.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C90829B517D2678800213704 /* ch19p645unwindSimplified.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p645unwindSimplified.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90829B817D2678800213704 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C90829BA17D2678800213704 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C90829BC17D2678800213704 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C90829C017D2678800213704 /* ch19p645unwind-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p645unwind-Info.plist"; sourceTree = "<group>"; };
+		C90829C017D2678800213704 /* ch19p645unwindSimplified-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p645unwindSimplified-Info.plist"; sourceTree = "<group>"; };
 		C90829C217D2678800213704 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C90829C417D2678800213704 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C90829C617D2678800213704 /* ch19p645unwind-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch19p645unwind-Prefix.pch"; sourceTree = "<group>"; };
+		C90829C617D2678800213704 /* ch19p645unwindSimplified-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch19p645unwindSimplified-Prefix.pch"; sourceTree = "<group>"; };
 		C90829C717D2678800213704 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C90829C817D2678800213704 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C90829CB17D2678800213704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		C90829B617D2678800213704 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C90829B517D2678800213704 /* ch19p645unwind.app */,
+				C90829B517D2678800213704 /* ch19p645unwindSimplified.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,10 +104,10 @@
 		C90829BF17D2678800213704 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C90829C017D2678800213704 /* ch19p645unwind-Info.plist */,
+				C90829C017D2678800213704 /* ch19p645unwindSimplified-Info.plist */,
 				C90829C117D2678800213704 /* InfoPlist.strings */,
 				C90829C417D2678800213704 /* main.m */,
-				C90829C617D2678800213704 /* ch19p645unwind-Prefix.pch */,
+				C90829C617D2678800213704 /* ch19p645unwindSimplified-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -115,9 +115,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C90829B417D2678800213704 /* ch19p645unwind */ = {
+		C90829B417D2678800213704 /* ch19p645unwindSimplified */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C90829E717D2678800213704 /* Build configuration list for PBXNativeTarget "ch19p645unwind" */;
+			buildConfigurationList = C90829E717D2678800213704 /* Build configuration list for PBXNativeTarget "ch19p645unwindSimplified" */;
 			buildPhases = (
 				C90829B117D2678800213704 /* Sources */,
 				C90829B217D2678800213704 /* Frameworks */,
@@ -127,9 +127,9 @@
 			);
 			dependencies = (
 			);
-			name = ch19p645unwind;
+			name = ch19p645unwindSimplified;
 			productName = ch19p645unwind;
-			productReference = C90829B517D2678800213704 /* ch19p645unwind.app */;
+			productReference = C90829B517D2678800213704 /* ch19p645unwindSimplified.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -141,7 +141,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
-			buildConfigurationList = C90829B017D2678800213704 /* Build configuration list for PBXProject "ch19p645unwind" */;
+			buildConfigurationList = C90829B017D2678800213704 /* Build configuration list for PBXProject "ch19p645unwindSimplified" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -154,7 +154,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C90829B417D2678800213704 /* ch19p645unwind */,
+				C90829B417D2678800213704 /* ch19p645unwindSimplified */,
 			);
 		};
 /* End PBXProject section */
@@ -283,11 +283,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch19p645unwind/ch19p645unwind-Prefix.pch";
-				INFOPLIST_FILE = "ch19p645unwind/ch19p645unwind-Info.plist";
+				GCC_PREFIX_HEADER = "ch19p645unwind/ch19p645unwindSimplified-Prefix.pch";
+				INFOPLIST_FILE = "ch19p645unwind/ch19p645unwindSimplified-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch19p645unwindSimplified;
 				SWIFT_OBJC_BRIDGING_HEADER = "ch19p645unwind/ch19p645unwind-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
@@ -301,11 +301,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch19p645unwind/ch19p645unwind-Prefix.pch";
-				INFOPLIST_FILE = "ch19p645unwind/ch19p645unwind-Info.plist";
+				GCC_PREFIX_HEADER = "ch19p645unwind/ch19p645unwindSimplified-Prefix.pch";
+				INFOPLIST_FILE = "ch19p645unwind/ch19p645unwindSimplified-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch19p645unwindSimplified;
 				SWIFT_OBJC_BRIDGING_HEADER = "ch19p645unwind/ch19p645unwind-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
@@ -314,7 +314,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C90829B017D2678800213704 /* Build configuration list for PBXProject "ch19p645unwind" */ = {
+		C90829B017D2678800213704 /* Build configuration list for PBXProject "ch19p645unwindSimplified" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C90829E517D2678800213704 /* Debug */,
@@ -323,7 +323,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C90829E717D2678800213704 /* Build configuration list for PBXNativeTarget "ch19p645unwind" */ = {
+		C90829E717D2678800213704 /* Build configuration list for PBXNativeTarget "ch19p645unwindSimplified" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C90829E817D2678800213704 /* Debug */,
