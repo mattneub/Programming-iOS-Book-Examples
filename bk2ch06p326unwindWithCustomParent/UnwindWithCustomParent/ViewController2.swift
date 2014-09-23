@@ -25,6 +25,15 @@ class ViewController2: UIViewController {
         println("vc 2 unwind")
     }
 
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        println("\(self) \(__FUNCTION__)")
+    }
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+        println("\(self) \(__FUNCTION__)")
+    }
+
 
 
 }

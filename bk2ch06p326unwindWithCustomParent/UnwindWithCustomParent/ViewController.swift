@@ -32,6 +32,18 @@ class ViewController: UIViewController {
         result = vc
         return result
     }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        // from later in the chapter: comment out to prevent forwarding
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        println("\(self) \(__FUNCTION__)")
+    }
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        // from later in the chapter: comment out to prevent forwarding
+        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+        println("\(self) \(__FUNCTION__)")
+    }
+
 
 
 }
