@@ -41,7 +41,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         proxy.currentPageIndicatorTintColor = UIColor.redColor()
         proxy.backgroundColor = UIColor.yellowColor()
         
-        // self.messWithGestureRecognizers(pvc) // uncomment to try it
     }
     
     // all we really need to save is the current boy name
@@ -65,15 +64,15 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 extension AppDelegate : UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         let boy = (viewController as Pep).boy
-        let ix = find(self.pep!, boy)! + 1
+        let ix = find(self.pep, boy)! + 1
         if ix >= self.pep.count {
             return nil
         }
-        return Pep(pepBoy: self.pep![ix])
+        return Pep(pepBoy: self.pep[ix])
     }
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         let boy = (viewController as Pep).boy
-        let ix = find(self.pep!, boy)! - 1
+        let ix = find(self.pep, boy)! - 1
         if ix < 0 {
             return nil
         }
@@ -88,31 +87,8 @@ extension AppDelegate : UIPageViewControllerDataSource {
     func presentationIndexForPageViewController(pvc: UIPageViewController!) -> Int {
         let page = pvc.viewControllers[0] as Pep
         let boy = page.boy
-        return find(self.pep!, boy)!
+        return find(self.pep, boy)!
     }
     
 }
 
-extension AppDelegate {
-    func messWithGestureRecognizers(pvc:UIPageViewController) {
-        /*
-        for g in pvc.gestureRecognizers as [UIGestureRecognizer] { // ? does nothing for scroll
-            if let g = g as? UITapGestureRecognizer {
-                g.numberOfTapsRequired = 2
-            }
-        }
-*/
-        NSNotificationCenter.defaultCenter().addObserverForName("tap", object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: {
-            n in
-            let g = n.object as UIGestureRecognizer
-            let which = g.view!.tag
-            let vc0 = pvc.viewControllers[0] as UIViewController
-            let vc = (which == 0 ? self.pageViewController(pvc, viewControllerBeforeViewController: vc0) : self.pageViewController(pvc, viewControllerAfterViewController: vc0))
-            if vc == nil {
-                return
-            }
-            let dir : UIPageViewControllerNavigationDirection = which == 0 ? .Reverse : .Forward
-            pvc.setViewControllers([vc!], direction: dir, animated: true, completion: nil)
-            })
-    }
-}

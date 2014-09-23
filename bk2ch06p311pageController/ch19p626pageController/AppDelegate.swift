@@ -41,15 +41,15 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 extension AppDelegate : UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         let boy = (viewController as Pep).boy
-        let ix = find(self.pep!, boy)! + 1
+        let ix = find(self.pep, boy)! + 1
         if ix >= self.pep.count {
             return nil
         }
-        return Pep(pepBoy: self.pep![ix])
+        return Pep(pepBoy: self.pep[ix])
     }
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         let boy = (viewController as Pep).boy
-        let ix = find(self.pep!, boy)! - 1
+        let ix = find(self.pep, boy)! - 1
         if ix < 0 {
             return nil
         }
@@ -64,7 +64,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
     func presentationIndexForPageViewController(pvc: UIPageViewController) -> Int {
         let page = pvc.viewControllers[0] as Pep
         let boy = page.boy
-        return find(self.pep!, boy)!
+        return find(self.pep, boy)!
     }
     
     // =======
