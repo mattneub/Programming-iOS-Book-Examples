@@ -4,25 +4,25 @@ import Foundation
 
 class ViewController : UIViewController {
     
-    var myBigDataAlias : NSData!
+    private var myBigDataReal : NSData!
     var myBigData : NSData! {
         set (newdata) {
-            self.myBigDataAlias = newdata
+            self.myBigDataReal = newdata
         }
         get {
-            if myBigDataAlias == nil {
+            if myBigDataReal == nil {
                 let fm = NSFileManager()
                 let f = NSTemporaryDirectory().stringByAppendingPathComponent("myBigData")
                 if fm.fileExistsAtPath(f) {
                     println("loading big data from disk")
-                    self.myBigDataAlias = NSData(contentsOfFile: f)
+                    self.myBigDataReal = NSData(contentsOfFile: f)
                     var err : NSError?
                     let ok = fm.removeItemAtPath(f, error: &err)
                     assert(ok, "Couldn't remove temp file")
                     println("deleted big data from disk")
                 }
             }
-            return self.myBigDataAlias
+            return self.myBigDataReal
         }
     }
     
