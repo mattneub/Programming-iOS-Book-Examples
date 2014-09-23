@@ -22,7 +22,7 @@ class ViewController : Base {
         super.viewDidLoad()
         
         self.swappers.append(self.childViewControllers[0] as UIViewController)
-        self.swappers.append(self.storyboard.instantiateViewControllerWithIdentifier("child2") as UIViewController)
+        self.swappers.append(self.storyboard!.instantiateViewControllerWithIdentifier("child2") as UIViewController)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -121,7 +121,7 @@ On flip we expect to see (ignoring parent messages):
                 toViewController:tovc,
                 duration:0.4,
                 options:.TransitionFlipFromLeft,
-                animations:nil,
+                animations:{},
                 completion:{
                     _ in
                     // finally, finish up

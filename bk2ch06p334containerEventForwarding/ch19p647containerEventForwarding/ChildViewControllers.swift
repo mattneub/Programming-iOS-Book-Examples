@@ -44,11 +44,11 @@ class Base : UIViewController {
         println("\(self) \(__FUNCTION__)")
         super.updateViewConstraints()
     }
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         println("\(self) \(__FUNCTION__)")
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
-    override func willTransitionToTraitCollection(newCollection: UITraitCollection!, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         println("\(self) \(__FUNCTION__)")
         super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
     }
