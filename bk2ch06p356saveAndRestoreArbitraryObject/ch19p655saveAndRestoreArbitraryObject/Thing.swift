@@ -6,9 +6,9 @@ class Thing : NSObject, UIStateRestoring {
     
     var word = ""
     
-    var objectRestorationClass : UIObjectRestoration? // unused
+    var restorationParent: UIStateRestoring! // unused
     
-    var restorationParent : UIStateRestoring? // unused
+    var objectRestorationClass: AnyObject.Type! // unused
     
     func encodeRestorableStateWithCoder(coder: NSCoder!) {
         println("thing encode")
