@@ -46,14 +46,14 @@ class MyNavigationController : UINavigationController {
             if fromViewController == self.presentedViewController {
                 return UIStoryboardSegue(identifier: identifier,
                     source: fromViewController,
-                    destination: toViewController,
-                    performHandler: {
-                    self.dismissViewControllerAnimated(true, completion: {
-                        _ in
-                        self.popToViewController(toViewController, animated: true)
-                        return // argh, swift!
-                    })
-                })
+                    destination: toViewController) {
+                        self.dismissViewControllerAnimated(true) {
+                            _ in
+                            self.popToViewController(
+                                toViewController, animated: true)
+                            return // argh, swift!
+                        }
+                }
             }
         }
         return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
