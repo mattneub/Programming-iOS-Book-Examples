@@ -13,5 +13,10 @@
     
 }
 
+// prove that the segue is not magically called during restoration
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"%@", segue.identifier);
+}
 
 @end

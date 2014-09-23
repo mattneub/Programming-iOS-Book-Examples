@@ -12,10 +12,13 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     we rely on the storyboard to do all the restoration work for us.
 */
     
+    // interestingly, you can prevent the bug by commenting out willFinishLaunchingWithOptions
+    // but of course what are the chances you'd be able to do that in real life?
+    
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         return true
     }
-        
+    
     func application(application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
         return true
     }
