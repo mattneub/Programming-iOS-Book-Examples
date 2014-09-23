@@ -4,20 +4,33 @@ import UIKit
 
 class ViewController : UIViewController {
     
-    override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController!, withSender sender: AnyObject!) -> Bool {
+    @IBOutlet var lab : UILabel!
+    
+    override var description : String {
+        get {
+            if self.lab != nil {
+                return "View Controller \(self.lab.text!)"
+            }
+            else {
+                return super.description
+            }
+        }
+    }
+    
+    override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
         let ok = super.canPerformUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        println("I \(self) am being asked can perform from \(fromViewController), and my background is \(self.view.backgroundColor), and I am answering \(ok)")
+        println("I \(self) am being asked can perform from \(fromViewController), and I am answering \(ok)")
         return ok
     }
     
-    override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController!, withSender sender: AnyObject!) -> UIViewController! {
-        println("I \(self) will be asked for destination")
+    override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject!) -> UIViewController? {
+        println("I \(self) will be asked for vc-for-unwind")
         let vc = super.viewControllerForUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        println("I \(self) was asked for the destination, and I am returning \(vc)")
+        println("I \(self) was asked for vc-for-unwind, and I am returning \(vc!)")
         return vc
     }
     
-    override func segueForUnwindingToViewController(toViewController: UIViewController!, fromViewController: UIViewController!, identifier: String!) -> UIStoryboardSegue! {
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String) -> UIStoryboardSegue {
         println("I \(self) will be asked for the segue")
         let seg = super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
         println("I \(self) was asked for the segue, and I am returning \(seg) \(seg.identifier)")
@@ -28,7 +41,7 @@ class ViewController : UIViewController {
         println("I \(self) was asked to unwind \(seg) \(seg.identifier)")
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         println("I \(self) was asked to prepare for segue \(segue) \(segue.identifier)")
     }
     
