@@ -24,6 +24,16 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
         println("app should restore \(coder)")
+        // how to examine the coder
+        if let idiomraw = coder.decodeObjectForKey(
+            UIApplicationStateRestorationUserInterfaceIdiomKey)
+            as? Int {
+                if let idiom = UIUserInterfaceIdiom.fromRaw(idiomraw) {
+                    if idiom == .Phone {
+                        println("phone")
+                    }
+                }
+        }
         return true
     }
     
@@ -40,6 +50,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         println("app did decode \(coder)")
     }
     
+    /*
+    
     func application(application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [AnyObject], coder: NSCoder) -> UIViewController? {
         
         println("app delegate \(ip) \(coder)")
@@ -52,6 +64,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         }
         return nil // shouldn't happen; the others all have restoration classes
     }
+
+*/
 
     
 }
