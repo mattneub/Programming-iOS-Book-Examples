@@ -20,8 +20,9 @@ class ViewController : UIViewController {
     }
     
     override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
+        println("I \(self) will be asked can perform from \(fromViewController)")
         let ok = super.canPerformUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        println("I \(self) am being asked can perform from \(fromViewController), and I am answering \(ok)")
+        println("I \(self) was asked can perform from \(fromViewController), and I am answering \(ok)")
         return ok
     }
     
@@ -49,7 +50,7 @@ class ViewController : UIViewController {
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         let ok = super.respondsToSelector(aSelector)
-        if NSStringFromSelector(aSelector) == "unwind:" {
+        if (NSStringFromSelector(aSelector) as NSString).rangeOfString("Unwind").length > 0 {
             println("I \(self) was asked responds to selector \(aSelector), responding \(ok)")
         }
         return ok
