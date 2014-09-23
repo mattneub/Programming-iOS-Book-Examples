@@ -35,12 +35,15 @@ class Base : UIViewController {
         super.updateViewConstraints()
         println("\(self) \(__FUNCTION__)")
     }
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         println("\(self) \(__FUNCTION__)")
     }
-    override func willTransitionToTraitCollection(newCollection: UITraitCollection!, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+        println("\(self) \(__FUNCTION__)")
+    }
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection) {
         println("\(self) \(__FUNCTION__)")
     }
 }

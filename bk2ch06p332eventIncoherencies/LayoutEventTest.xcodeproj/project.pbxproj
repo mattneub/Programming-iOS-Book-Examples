@@ -273,6 +273,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LayoutEventTest/LayoutEventTest-Prefix.pch";
 				INFOPLIST_FILE = "LayoutEventTest/LayoutEventTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LayoutEventTest/LayoutEventTest-Bridging-Header.h";
@@ -290,6 +291,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LayoutEventTest/LayoutEventTest-Prefix.pch";
 				INFOPLIST_FILE = "LayoutEventTest/LayoutEventTest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LayoutEventTest/LayoutEventTest-Bridging-Header.h";
