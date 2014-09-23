@@ -4,6 +4,8 @@ import UIKit
 
 class ViewController : UIViewController {
     
+    // play with this both in iOS 8 and iOS 7 to see how things have changed
+    
     @IBOutlet var lab : UILabel!
     
     override var description : String {
