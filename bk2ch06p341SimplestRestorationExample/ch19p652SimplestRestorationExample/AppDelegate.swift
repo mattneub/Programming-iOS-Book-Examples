@@ -4,18 +4,8 @@ import UIKit
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    /*
-    As of this writing, interesting bug where the launch image screen shot
-    is whipped away too soon and we see the presented view controller
-    animate into place. This is a problem only for presented view controllers,
-    not pushed view controllers, and only in this simple situation where
-    we rely on the storyboard to do all the restoration work for us.
-*/
-    
-    // interestingly, you can prevent the bug by commenting out willFinishLaunchingWithOptions
-    // but of course what are the chances you'd be able to do that in real life?
-    
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        self.window?.makeKeyAndVisible() // crucial
         return true
     }
     
