@@ -134,6 +134,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             }
             
             self.interacting = false
+            self.context = nil
         case .Cancelled:
 
             v1.frame = r1start
@@ -142,6 +143,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             tc.cancelInteractiveTransition()
             tc.completeTransition(false)
             self.interacting = false
+            self.context = nil
         default: break
         }
     }
