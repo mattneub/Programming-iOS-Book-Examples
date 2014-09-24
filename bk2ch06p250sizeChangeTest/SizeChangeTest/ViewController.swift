@@ -29,6 +29,10 @@ class ViewController: UIViewController {
         println("size will change")
         println(size)
     }
+    
+    override func viewWillLayoutSubviews() {
+        println("will layout")
+    }
 
 
 }
