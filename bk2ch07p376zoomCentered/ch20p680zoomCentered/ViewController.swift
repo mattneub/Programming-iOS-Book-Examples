@@ -52,7 +52,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     // but it seems a pity to have to do that
     
     @IBAction func tapped(tap : UIGestureRecognizer) {
-        let v = tap.view
+        let v = tap.view!
         let sv = v.superview as UIScrollView
         if sv.zoomScale < 1 {
             sv.setZoomScale(1, animated:true)
@@ -76,23 +76,24 @@ class MyScrollView : UIScrollView {
         // comment this out and zoom the bird image smaller to see the difference
         // println("layout")
         super.layoutSubviews()
-        let v = self.delegate.viewForZoomingInScrollView!(self)
-        let svw = self.bounds.size.width
-        let svh = self.bounds.size.height
-        let vw = v.frame.size.width
-        let vh = v.frame.size.height
-        var f = v.frame
-        if vw < svw {
-            f.origin.x = (svw - vw) / 2.0
-        } else {
-            f.origin.x = 0
+        if let v = self.delegate?.viewForZoomingInScrollView?(self) {
+            let svw = self.bounds.size.width
+            let svh = self.bounds.size.height
+            let vw = v.frame.size.width
+            let vh = v.frame.size.height
+            var f = v.frame
+            if vw < svw {
+                f.origin.x = (svw - vw) / 2.0
+            } else {
+                f.origin.x = 0
+            }
+            if vh < svh {
+                f.origin.y = (svh - vh) / 2.0
+            } else {
+                f.origin.y = 0
+            }
+            v.frame = f
         }
-        if vh < svh {
-            f.origin.y = (svh - vh) / 2.0
-        } else {
-            f.origin.y = 0
-        }
-        v.frame = f
     }
     
 }
