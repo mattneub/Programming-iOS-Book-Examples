@@ -50,7 +50,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
         sv.delegate = self
     }
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView! {
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return scrollView.viewWithTag(999)
     }
     

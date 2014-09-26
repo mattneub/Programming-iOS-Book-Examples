@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3224BB9019D5EE48000C0030 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3224BB8F19D5EE48000C0030 /* Launch Screen.xib */; };
 		32692F97197E9DFF001677C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32692F96197E9DFF001677C1 /* ViewController.swift */; };
 		C9EA92A517DF67BD00C71EDE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA92A417DF67BD00C71EDE /* Foundation.framework */; };
 		C9EA92A717DF67BD00C71EDE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA92A617DF67BD00C71EDE /* CoreGraphics.framework */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3224BB8F19D5EE48000C0030 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		32692F96197E9DFF001677C1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9EA92A117DF67BD00C71EDE /* ch20p677scrollWithTiling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p677scrollWithTiling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9EA92A417DF67BD00C71EDE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -102,6 +104,7 @@
 				C9EA92B417DF67BD00C71EDE /* AppDelegate.m */,
 				C9EA92B617DF67BD00C71EDE /* Main.storyboard */,
 				32692F96197E9DFF001677C1 /* ViewController.swift */,
+				3224BB8F19D5EE48000C0030 /* Launch Screen.xib */,
 				C9EA930017DF6A4700C71EDE /* pix */,
 				C9EA92BC17DF67BD00C71EDE /* Images.xcassets */,
 				C9EA92AB17DF67BD00C71EDE /* Supporting Files */,
@@ -197,6 +200,7 @@
 				C9EA931117DF7FD800C71EDE /* CuriousFrog_500_5_1.png in Resources */,
 				C9EA931217DF7FD800C71EDE /* CuriousFrog_500_5_2.png in Resources */,
 				C9EA92B817DF67BD00C71EDE /* Main.storyboard in Resources */,
+				3224BB9019D5EE48000C0030 /* Launch Screen.xib in Resources */,
 				C9EA931017DF7FD800C71EDE /* CuriousFrog_500_5_0.png in Resources */,
 				C9EA930A17DF7FD800C71EDE /* CuriousFrog_500_3_0.png in Resources */,
 				C9EA930C17DF7FD800C71EDE /* CuriousFrog_500_3_2.png in Resources */,
@@ -310,7 +314,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p677scrollWithTiling/ch20p677scrollWithTiling-Prefix.pch";
@@ -327,7 +330,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p677scrollWithTiling/ch20p677scrollWithTiling-Prefix.pch";

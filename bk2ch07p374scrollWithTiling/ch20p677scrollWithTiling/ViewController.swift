@@ -9,7 +9,7 @@ class ViewController : UIViewController {
     @IBOutlet var content : TiledView!
     
     override func viewDidLoad() {
-        let f = CGRectMake(0,0,CGFloat(3)*TILESIZE,CGFloat(3)*TILESIZE)
+        let f = CGRectMake(0,0,3*TILESIZE,3*TILESIZE)
         let content = TiledView(frame:f)
         let tsz = TILESIZE * content.layer.contentsScale
         (content.layer as CATiledLayer).tileSize = CGSizeMake(tsz, tsz)
@@ -44,7 +44,7 @@ class TiledView : UIView {
         let y = Int(tile.origin.y/TILESIZE)
         let tileName = NSString(format:"CuriousFrog_500_\(x+3)_\(y)")
         let path = NSBundle.mainBundle().pathForResource(tileName, ofType:"png")
-        let image = UIImage(contentsOfFile:path)
+        let image = UIImage(contentsOfFile:path!)
         
         image.drawAtPoint(CGPointMake(CGFloat(x)*TILESIZE,CGFloat(y)*TILESIZE))
         
