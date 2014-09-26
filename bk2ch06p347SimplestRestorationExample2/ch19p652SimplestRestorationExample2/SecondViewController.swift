@@ -55,7 +55,7 @@ extension SecondViewController : UIViewControllerRestoration {
         coder: NSCoder) -> UIViewController? {
             println("vcwithrip \(self) \(ip) \(coder)")
             var vc : UIViewController? = nil
-            let last = (ip as NSArray).lastObject as String
+            let last = ip.last as String
             switch last {
             case "presented":
                 vc = self.makePresentedViewController()

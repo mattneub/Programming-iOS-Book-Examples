@@ -55,7 +55,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [AnyObject], coder: NSCoder) -> UIViewController? {
         
         println("app delegate \(ip) \(coder)")
-        let last = (ip as NSArray).lastObject as String
+        let last = ip.last as String
         if last == "nav" {
             return self.window!.rootViewController
         }
