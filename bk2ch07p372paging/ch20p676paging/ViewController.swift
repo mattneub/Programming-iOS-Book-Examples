@@ -19,11 +19,11 @@ class ViewController : UIViewController, UIScrollViewDelegate {
         self.sv.contentSize = CGSizeMake(3*sz.width,sz.height)
     }
     
-    func scrollViewWillBeginDecelerating(scrollView: UIScrollView!) {
+    func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
         println("begin")
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         println("end")
         let x = self.sv.contentOffset.x
         let w = self.sv.bounds.size.width
