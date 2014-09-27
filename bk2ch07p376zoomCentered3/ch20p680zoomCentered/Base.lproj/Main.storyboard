@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch20p680zoomCentered3" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="850-wM-qEP"/>
+                        <viewControllerLayoutGuide type="bottom" id="edy-W9-xhT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.5" maximumZoomScale="1.5" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSE-ol-TvX">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <subviews>
+                                    <view tag="999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6h-1K-KvF" userLabel="ContentView" customClass="MyTappableView" customModule="ch20p680zoomCentered3" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
+                                        <subviews>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="bird.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="hdc-gN-zN3">
+                                                <rect key="frame" x="0.0" y="124" width="400" height="300"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="dno-fh-W2F" appends="YES" id="9Kh-we-9XV"/>
+                                                </connections>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="400" id="Azr-5k-OEi"/>
+                                            <constraint firstAttribute="height" constant="300" id="tge-kJ-bug"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="E6h-1K-KvF" firstAttribute="top" secondItem="TSE-ol-TvX" secondAttribute="top" id="56A-jA-rCh"/>
+                                    <constraint firstItem="E6h-1K-KvF" firstAttribute="leading" secondItem="TSE-ol-TvX" secondAttribute="leading" id="Ulo-fh-V4h"/>
+                                    <constraint firstAttribute="bottom" secondItem="E6h-1K-KvF" secondAttribute="bottom" id="vwS-xK-Fj0"/>
+                                    <constraint firstAttribute="trailing" secondItem="E6h-1K-KvF" secondAttribute="trailing" id="wpF-nW-emH"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="La8-XV-TuS"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TSE-ol-TvX" secondAttribute="trailing" id="4Cs-Ad-ypl"/>
+                            <constraint firstItem="TSE-ol-TvX" firstAttribute="top" secondItem="850-wM-qEP" secondAttribute="bottom" id="51Y-tg-0D7"/>
+                            <constraint firstItem="edy-W9-xhT" firstAttribute="top" secondItem="TSE-ol-TvX" secondAttribute="bottom" id="wDi-4X-hfl"/>
+                            <constraint firstItem="TSE-ol-TvX" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="wVA-jX-FTT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="iv" destination="hdc-gN-zN3" id="sii-fs-mhn"/>
+                        <outlet property="sv" destination="TSE-ol-TvX" id="MPG-2c-Chj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="dno-fh-W2F">
+                    <connections>
+                        <action selector="tapped:" destination="vXZ-lx-hvc" id="VmE-SE-D3f"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bird.jpg" width="400" height="300"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

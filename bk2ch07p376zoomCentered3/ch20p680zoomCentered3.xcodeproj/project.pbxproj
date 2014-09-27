@@ -1,0 +1,332 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3272D9FA197EAA77004B79F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272D9F9197EAA77004B79F1 /* ViewController.swift */; };
+		C9722DBE17E15E0F0033076A /* bird.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C9722DBD17E15E0F0033076A /* bird.jpg */; };
+		C975DC3617E022A7007F4075 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3517E022A7007F4075 /* Foundation.framework */; };
+		C975DC3817E022A7007F4075 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3717E022A7007F4075 /* CoreGraphics.framework */; };
+		C975DC3A17E022A7007F4075 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3917E022A7007F4075 /* UIKit.framework */; };
+		C975DC4017E022A7007F4075 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C975DC3E17E022A7007F4075 /* InfoPlist.strings */; };
+		C975DC4217E022A7007F4075 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C975DC4117E022A7007F4075 /* main.m */; };
+		C975DC4617E022A7007F4075 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C975DC4517E022A7007F4075 /* AppDelegate.m */; };
+		C975DC4917E022A7007F4075 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C975DC4717E022A7007F4075 /* Main.storyboard */; };
+		C975DC4E17E022A7007F4075 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C975DC4D17E022A7007F4075 /* Images.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3272D9F9197EAA77004B79F1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C9722DBD17E15E0F0033076A /* bird.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bird.jpg; sourceTree = "<group>"; };
+		C975DC3217E022A7007F4075 /* ch20p680zoomCentered3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p680zoomCentered3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C975DC3517E022A7007F4075 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C975DC3717E022A7007F4075 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C975DC3917E022A7007F4075 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C975DC3D17E022A7007F4075 /* ch20p680zoomCentered3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch20p680zoomCentered3-Info.plist"; sourceTree = "<group>"; };
+		C975DC3F17E022A7007F4075 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C975DC4117E022A7007F4075 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C975DC4317E022A7007F4075 /* ch20p680zoomCentered3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch20p680zoomCentered3-Prefix.pch"; sourceTree = "<group>"; };
+		C975DC4417E022A7007F4075 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C975DC4517E022A7007F4075 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C975DC4817E022A7007F4075 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C975DC4D17E022A7007F4075 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C975DC5417E022A7007F4075 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C975DC2F17E022A7007F4075 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C975DC3817E022A7007F4075 /* CoreGraphics.framework in Frameworks */,
+				C975DC3A17E022A7007F4075 /* UIKit.framework in Frameworks */,
+				C975DC3617E022A7007F4075 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C975DC2917E022A7007F4075 = {
+			isa = PBXGroup;
+			children = (
+				C975DC3B17E022A7007F4075 /* ch20p680zoomCentered */,
+				C975DC3417E022A7007F4075 /* Frameworks */,
+				C975DC3317E022A7007F4075 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C975DC3317E022A7007F4075 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C975DC3217E022A7007F4075 /* ch20p680zoomCentered3.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C975DC3417E022A7007F4075 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C975DC3517E022A7007F4075 /* Foundation.framework */,
+				C975DC3717E022A7007F4075 /* CoreGraphics.framework */,
+				C975DC3917E022A7007F4075 /* UIKit.framework */,
+				C975DC5417E022A7007F4075 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C975DC3B17E022A7007F4075 /* ch20p680zoomCentered */ = {
+			isa = PBXGroup;
+			children = (
+				C975DC4417E022A7007F4075 /* AppDelegate.h */,
+				C975DC4517E022A7007F4075 /* AppDelegate.m */,
+				C975DC4717E022A7007F4075 /* Main.storyboard */,
+				3272D9F9197EAA77004B79F1 /* ViewController.swift */,
+				C975DC4D17E022A7007F4075 /* Images.xcassets */,
+				C9722DBD17E15E0F0033076A /* bird.jpg */,
+				C975DC3C17E022A7007F4075 /* Supporting Files */,
+			);
+			path = ch20p680zoomCentered;
+			sourceTree = "<group>";
+		};
+		C975DC3C17E022A7007F4075 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C975DC3D17E022A7007F4075 /* ch20p680zoomCentered3-Info.plist */,
+				C975DC3E17E022A7007F4075 /* InfoPlist.strings */,
+				C975DC4117E022A7007F4075 /* main.m */,
+				C975DC4317E022A7007F4075 /* ch20p680zoomCentered3-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C975DC3117E022A7007F4075 /* ch20p680zoomCentered3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C975DC6417E022A8007F4075 /* Build configuration list for PBXNativeTarget "ch20p680zoomCentered3" */;
+			buildPhases = (
+				C975DC2E17E022A7007F4075 /* Sources */,
+				C975DC2F17E022A7007F4075 /* Frameworks */,
+				C975DC3017E022A7007F4075 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ch20p680zoomCentered3;
+			productName = ch20p680zoomCentered;
+			productReference = C975DC3217E022A7007F4075 /* ch20p680zoomCentered3.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C975DC2A17E022A7007F4075 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Matt Neuburg";
+			};
+			buildConfigurationList = C975DC2D17E022A7007F4075 /* Build configuration list for PBXProject "ch20p680zoomCentered3" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C975DC2917E022A7007F4075;
+			productRefGroup = C975DC3317E022A7007F4075 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C975DC3117E022A7007F4075 /* ch20p680zoomCentered3 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C975DC3017E022A7007F4075 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9722DBE17E15E0F0033076A /* bird.jpg in Resources */,
+				C975DC4E17E022A7007F4075 /* Images.xcassets in Resources */,
+				C975DC4017E022A7007F4075 /* InfoPlist.strings in Resources */,
+				C975DC4917E022A7007F4075 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C975DC2E17E022A7007F4075 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3272D9FA197EAA77004B79F1 /* ViewController.swift in Sources */,
+				C975DC4617E022A7007F4075 /* AppDelegate.m in Sources */,
+				C975DC4217E022A7007F4075 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C975DC3E17E022A7007F4075 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C975DC3F17E022A7007F4075 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C975DC4717E022A7007F4075 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C975DC4817E022A7007F4075 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C975DC6217E022A8007F4075 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C975DC6317E022A8007F4075 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C975DC6517E022A8007F4075 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ch20p680zoomCentered/ch20p680zoomCentered3-Prefix.pch";
+				INFOPLIST_FILE = "ch20p680zoomCentered/ch20p680zoomCentered3-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = ch20p680zoomCentered3;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C975DC6617E022A8007F4075 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ch20p680zoomCentered/ch20p680zoomCentered3-Prefix.pch";
+				INFOPLIST_FILE = "ch20p680zoomCentered/ch20p680zoomCentered3-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = ch20p680zoomCentered3;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C975DC2D17E022A7007F4075 /* Build configuration list for PBXProject "ch20p680zoomCentered3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C975DC6217E022A8007F4075 /* Debug */,
+				C975DC6317E022A8007F4075 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C975DC6417E022A8007F4075 /* Build configuration list for PBXNativeTarget "ch20p680zoomCentered3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C975DC6517E022A8007F4075 /* Debug */,
+				C975DC6617E022A8007F4075 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C975DC2A17E022A7007F4075 /* Project object */;
+}
