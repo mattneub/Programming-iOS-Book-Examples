@@ -23,6 +23,10 @@ class ViewController : UIViewController {
 // but they seem to be gone now
 
 class TiledView : UIView {
+    
+    var drawQueue : dispatch_queue_t = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL)
+
+    
     override class func layerClass() -> AnyClass {
         return CATiledLayer.self
     }
@@ -36,23 +40,26 @@ class TiledView : UIView {
     */
     
     override func drawRect(r: CGRect) {
-        // println("drawRect: \(r)") // bug? not thread-safe! gives garbled output
-        NSLog("drawRect: %@", NSStringFromCGRect(r))
-        
-        let tile = r
-        let x = Int(tile.origin.x/TILESIZE)
-        let y = Int(tile.origin.y/TILESIZE)
-        let tileName = NSString(format:"CuriousFrog_500_\(x+3)_\(y)")
-        let path = NSBundle.mainBundle().pathForResource(tileName, ofType:"png")
-        let image = UIImage(contentsOfFile:path!)
-        
-        image.drawAtPoint(CGPointMake(CGFloat(x)*TILESIZE,CGFloat(y)*TILESIZE))
-        
-        // in real life, comment out the following! it's here just so we can see the tile boundaries
-        
-        let bp = UIBezierPath(rect: r)
-        UIColor.whiteColor().setStroke()
-        bp.stroke()
+        dispatch_sync(drawQueue, { // work around nasty thread issue...
+            // we are called twice simultaneously on two different background threads!
+            
+            println("drawRect: \(r)")
+            
+            let tile = r
+            let x = Int(tile.origin.x/TILESIZE)
+            let y = Int(tile.origin.y/TILESIZE)
+            let tileName = NSString(format:"CuriousFrog_500_\(x+3)_\(y)")
+            let path = NSBundle.mainBundle().pathForResource(tileName, ofType:"png")
+            let image = UIImage(contentsOfFile:path!)
+            
+            image.drawAtPoint(CGPointMake(CGFloat(x)*TILESIZE,CGFloat(y)*TILESIZE))
+            
+            // in real life, comment out the following! it's here just so we can see the tile boundaries
+            
+            let bp = UIBezierPath(rect: r)
+            UIColor.whiteColor().setStroke()
+            bp.stroke()
+        })
     }
 }
 
