@@ -63,7 +63,6 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidZoom(scrollView: UIScrollView) {
-        println(scrollView.contentSize)
         self.centerView()
     }
     
@@ -76,7 +75,6 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     // image view is also zoomable by double-tapping
     
     @IBAction func tapped(tap : UIGestureRecognizer) {
-        println("here")
         let sv = self.sv
         if sv.zoomScale < 1 {
             sv.setZoomScale(1, animated:true)
