@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		321B0304197F2251006E0EE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321B0303197F2250006E0EE2 /* ViewController.swift */; };
 		321B0306197F22B8006E0EE2 /* MyScalableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321B0305197F22B8006E0EE2 /* MyScalableView.swift */; };
+		32BCC92D19D66BA400B35D4C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32BCC92C19D66BA400B35D4C /* LaunchScreen.xib */; };
 		C975DC3617E022A7007F4075 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3517E022A7007F4075 /* Foundation.framework */; };
 		C975DC3817E022A7007F4075 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3717E022A7007F4075 /* CoreGraphics.framework */; };
 		C975DC3A17E022A7007F4075 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3917E022A7007F4075 /* UIKit.framework */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		321B0303197F2250006E0EE2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		321B0305197F22B8006E0EE2 /* MyScalableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScalableView.swift; sourceTree = "<group>"; };
+		32BCC92C19D66BA400B35D4C /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		C975DC3217E022A7007F4075 /* ch20p681zoomDetailed2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p681zoomDetailed2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C975DC3517E022A7007F4075 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C975DC3717E022A7007F4075 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,6 +90,7 @@
 				C975DC4517E022A7007F4075 /* AppDelegate.m */,
 				C975DC4717E022A7007F4075 /* Main.storyboard */,
 				321B0303197F2250006E0EE2 /* ViewController.swift */,
+				32BCC92C19D66BA400B35D4C /* LaunchScreen.xib */,
 				C975DC4D17E022A7007F4075 /* Images.xcassets */,
 				C9AD185D17E1ECF800C0513B /* earthFromSaturn.png */,
 				321B0305197F22B8006E0EE2 /* MyScalableView.swift */,
@@ -159,6 +162,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32BCC92D19D66BA400B35D4C /* LaunchScreen.xib in Resources */,
 				C9AD185E17E1ECF800C0513B /* earthFromSaturn.png in Resources */,
 				C975DC4E17E022A7007F4075 /* Images.xcassets in Resources */,
 				C975DC4017E022A7007F4075 /* InfoPlist.strings in Resources */,
@@ -279,7 +283,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p680zoomCentered/ch20p681zoomDetailed2-Prefix.pch";
@@ -298,7 +301,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p680zoomCentered/ch20p681zoomDetailed2-Prefix.pch";
