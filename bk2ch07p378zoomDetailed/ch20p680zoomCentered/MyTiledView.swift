@@ -7,7 +7,9 @@ class MyTiledView : UIView {
     var currentImage : UIImage!
     var currentSize = CGSizeZero
     
-    required init(coder aDecoder: NSCoder!) {
+    var drawQueue : dispatch_queue_t = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL)
+    
+    required init(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
         let lay = self.layer as CATiledLayer
         let scale = lay.contentsScale
@@ -28,33 +30,42 @@ class MyTiledView : UIView {
         //    NSLog(@"%@", NSStringFromCGRect(CGContextGetClipBoundingBox(UIGraphicsGetCurrentContext())));
         
         
-        let oldSize = self.currentSize
-        if !CGSizeEqualToSize(oldSize, rect.size) {
-            // make a new size
-            self.currentSize = rect.size
-            // make a new image
-            let lay = self.layer as CATiledLayer
-            
-            let tr = CGContextGetCTM(UIGraphicsGetCurrentContext())
-            let sc = tr.a/lay.contentsScale
-            let scale = sc/4.0
-            
-            let path = NSBundle.mainBundle().pathForResource("earthFromSaturn", ofType:"png")
-            let im = UIImage(contentsOfFile:path)
-            let sz = CGSizeMake(im.size.width * scale, im.size.height * scale)
-            UIGraphicsBeginImageContextWithOptions(sz, true, 1)
-            im.drawInRect(CGRectMake(0,0,sz.width,sz.height))
-            self.currentImage = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            NSLog("created image at size %@", NSStringFromCGSize(sz))
-        }
-        self.currentImage.drawInRect(self.bounds)
         
-        // comment out the following! it's here just so we can see the tile boundaries
-        
-        let bp = UIBezierPath(rect: rect)
-        UIColor.whiteColor().setStroke()
-        bp.stroke()
+        dispatch_sync(drawQueue, { // work around nasty thread issue...
+            // we are called twice simultaneously on two different background threads!
+
+            let oldSize = self.currentSize
+            // NSLog("oldSize %@", NSStringFromCGSize(oldSize))
+            // NSLog("rect.size %@", NSStringFromCGSize(rect.size))
+            if !CGSizeEqualToSize(oldSize, rect.size) {
+                // NSLog("%@", "not equal, making new size")
+                // make a new size
+                self.currentSize = rect.size
+                // make a new image
+                let lay = self.layer as CATiledLayer
+                
+                let tr = CGContextGetCTM(UIGraphicsGetCurrentContext())
+                let sc = tr.a/lay.contentsScale
+                let scale = sc/4.0
+                
+                let path = NSBundle.mainBundle().pathForResource("earthFromSaturn", ofType:"png")
+                let im = UIImage(contentsOfFile:path!)
+                let sz = CGSizeMake(im.size.width * scale, im.size.height * scale)
+                UIGraphicsBeginImageContextWithOptions(sz, true, 1)
+                im.drawInRect(CGRectMake(0,0,sz.width,sz.height))
+                self.currentImage = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                NSLog("created image at size %@", NSStringFromCGSize(sz)) // only three times
+            }
+            self.currentImage.drawInRect(self.bounds)
+            
+            // comment out the following! it's here just so we can see the tile boundaries
+            
+            let bp = UIBezierPath(rect: rect)
+            UIColor.whiteColor().setStroke()
+            bp.stroke()
+            
+        })
     }
 }
 

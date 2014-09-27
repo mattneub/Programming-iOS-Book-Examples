@@ -16,16 +16,16 @@ class ViewController : UIViewController, UIScrollViewDelegate {
         }
     }
     
-    func scrollViewWillBeginZooming(scrollView: UIScrollView!, withView view: UIView!) {
+    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView) {
         self.oldBounces = scrollView.bounces
         scrollView.bounces = false
     }
     
-    func scrollViewDidEndZooming(scrollView: UIScrollView!, withView view: UIView!, atScale scale: CGFloat) {
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView, atScale scale: CGFloat) {
         scrollView.bounces = self.oldBounces
     }
 
-    func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView! {
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return scrollView.viewWithTag(999)
     }
     
@@ -33,7 +33,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     // there is also a slight "jump" as we zoom
     
     @IBAction func tapped(tap : UIGestureRecognizer) {
-        let v = tap.view
+        let v = tap.view!
         let sv = v.superview as UIScrollView
         if sv.zoomScale < 1 {
             sv.setZoomScale(1, animated:true)
@@ -52,23 +52,24 @@ class MyScrollView : UIScrollView {
     override func layoutSubviews() {
 //        println("layout")
         super.layoutSubviews()
-        let v = self.delegate.viewForZoomingInScrollView!(self)
-        let svw = self.bounds.size.width
-        let svh = self.bounds.size.height
-        let vw = v.frame.size.width
-        let vh = v.frame.size.height
-        var f = v.frame
-        if vw < svw {
-            f.origin.x = (svw - vw) / 2.0
-        } else {
-            f.origin.x = 0
+        if let v = self.delegate?.viewForZoomingInScrollView?(self) {
+            let svw = self.bounds.width
+            let svh = self.bounds.height
+            let vw = v.frame.width
+            let vh = v.frame.height
+            var f = v.frame
+            if vw < svw {
+                f.origin.x = (svw - vw) / 2.0
+            } else {
+                f.origin.x = 0
+            }
+            if vh < svh {
+                f.origin.y = (svh - vh) / 2.0
+            } else {
+                f.origin.y = 0
+            }
+            v.frame = f
         }
-        if vh < svh {
-            f.origin.y = (svh - vh) / 2.0
-        } else {
-            f.origin.y = 0
-        }
-        v.frame = f
     }
     
 }

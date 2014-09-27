@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3272DA29197ED968004B79F1 /* MyTiledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272DA28197ED968004B79F1 /* MyTiledView.swift */; };
 		3272DA2B197EDCD6004B79F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272DA2A197EDCD6004B79F1 /* ViewController.swift */; };
+		32BCC92B19D6690B00B35D4C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32BCC92A19D6690B00B35D4C /* LaunchScreen.xib */; };
 		C975DC3617E022A7007F4075 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3517E022A7007F4075 /* Foundation.framework */; };
 		C975DC3817E022A7007F4075 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3717E022A7007F4075 /* CoreGraphics.framework */; };
 		C975DC3A17E022A7007F4075 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C975DC3917E022A7007F4075 /* UIKit.framework */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		3272DA28197ED968004B79F1 /* MyTiledView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTiledView.swift; sourceTree = "<group>"; };
 		3272DA2A197EDCD6004B79F1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32BCC92A19D6690B00B35D4C /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		C975DC3217E022A7007F4075 /* ch20p681zoomDetailed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p681zoomDetailed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C975DC3517E022A7007F4075 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C975DC3717E022A7007F4075 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -91,6 +93,7 @@
 				C975DC4D17E022A7007F4075 /* Images.xcassets */,
 				C9AD185D17E1ECF800C0513B /* earthFromSaturn.png */,
 				3272DA28197ED968004B79F1 /* MyTiledView.swift */,
+				32BCC92A19D6690B00B35D4C /* LaunchScreen.xib */,
 				C975DC3C17E022A7007F4075 /* Supporting Files */,
 			);
 			path = ch20p680zoomCentered;
@@ -159,6 +162,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32BCC92B19D6690B00B35D4C /* LaunchScreen.xib in Resources */,
 				C9AD185E17E1ECF800C0513B /* earthFromSaturn.png in Resources */,
 				C975DC4E17E022A7007F4075 /* Images.xcassets in Resources */,
 				C975DC4017E022A7007F4075 /* InfoPlist.strings in Resources */,
@@ -279,7 +283,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p680zoomCentered/ch20p681zoomDetailed-Prefix.pch";
@@ -299,7 +302,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p680zoomCentered/ch20p681zoomDetailed-Prefix.pch";
