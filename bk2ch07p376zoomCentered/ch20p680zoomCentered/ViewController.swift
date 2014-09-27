@@ -29,19 +29,19 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     }
     
     
-    func scrollViewWillBeginZooming(scrollView: UIScrollView!, withView view: UIView!) {
+    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView) {
         self.oldBounces = scrollView.bounces
         scrollView.bounces = false
     }
     
-    func scrollViewDidEndZooming(scrollView: UIScrollView!, withView view: UIView!, atScale scale: CGFloat) {
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView, atScale scale: CGFloat) {
         scrollView.bounces = self.oldBounces
     }
 
     
     // image view is zoomable
 
-    func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView! {
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return scrollView.viewWithTag(999)
     }
     
@@ -77,10 +77,10 @@ class MyScrollView : UIScrollView {
         // println("layout")
         super.layoutSubviews()
         if let v = self.delegate?.viewForZoomingInScrollView?(self) {
-            let svw = self.bounds.size.width
-            let svh = self.bounds.size.height
-            let vw = v.frame.size.width
-            let vh = v.frame.size.height
+            let svw = self.bounds.width
+            let svh = self.bounds.height
+            let vw = v.frame.width
+            let vh = v.frame.height
             var f = v.frame
             if vw < svw {
                 f.origin.x = (svw - vw) / 2.0
