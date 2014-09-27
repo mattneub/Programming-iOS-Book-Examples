@@ -1,6 +1,14 @@
 
 
 import UIKit
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
 
 class ViewController : UIViewController {
     
@@ -29,6 +37,14 @@ class ViewController : UIViewController {
         var sz = sv.bounds.size
         sz.height = y
         sv.contentSize = sz // This is the crucial line
+        
+        println(sv.contentSize)
+        
+        delay(2) {
+            println(sv.contentSize)
+        }
+        
+        
 
     }
     
