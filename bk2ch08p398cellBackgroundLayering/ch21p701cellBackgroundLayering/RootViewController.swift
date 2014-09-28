@@ -4,11 +4,11 @@ import UIKit
 class RootViewController : UITableViewController {
     let cellIdentifier = "Cell"
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
     
@@ -34,30 +34,34 @@ class RootViewController : UITableViewController {
     has none of those issues, and the cell will never be an Optional (or nil) ever again.
 */
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
         if cell == nil {
             cell = UITableViewCell(style:.Default, reuseIdentifier:cellIdentifier)
             
-            cell!.textLabel.textColor = UIColor.whiteColor()
+            cell.textLabel!.textColor = UIColor.whiteColor()
             
             let v = UIImageView() // no need to set frame
             v.contentMode = .ScaleToFill
             v.image = UIImage(named:"linen.png")
-            cell!.backgroundView = v
+            cell.backgroundView = v
             
             let v2 = UIView() // no need to set frame
             v2.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.2)
-            cell!.selectedBackgroundView = v2;
+            cell.selectedBackgroundView = v2;
             // next line no longer necessary in iOS 7!
             // cell.textLabel.backgroundColor = UIColor.clearColor()
             
             // next line didn't work until iOS 7!
-            cell!.backgroundColor = UIColor.redColor()
+            cell.backgroundColor = UIColor.redColor()
             
+//            let b = UIButton.buttonWithType(.System) as UIButton
+//            b.setTitle("Tap Me", forState:.Normal)
+//            b.sizeToFit()
+//            cell.accessoryView = b
             
         }
-        cell!.textLabel.text = "Hello there! \(indexPath.row)"
+        cell.textLabel!.text = "Hello there! \(indexPath.row)"
         
         return cell
     }

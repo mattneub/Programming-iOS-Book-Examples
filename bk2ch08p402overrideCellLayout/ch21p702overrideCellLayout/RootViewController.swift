@@ -7,14 +7,14 @@ class RootViewController : UITableViewController {
         super.viewDidLoad()
         self.tableView.registerClass(MyCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
-        self.tableView.rowHeight = 58 // new iOS 8 feature - we really need to handle this manually
+        self.tableView.rowHeight = 58
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
     
@@ -25,15 +25,15 @@ class RootViewController : UITableViewController {
     in a previous call to cellForRow).
 */
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as MyCell
-        if cell.textLabel.numberOfLines != 2 { // never previously configured
-            cell.textLabel.font = UIFont(name:"Helvetica-Bold", size:16)
-            cell.textLabel.lineBreakMode = .ByWordWrapping
-            cell.textLabel.numberOfLines = 2
+        if cell.textLabel!.numberOfLines != 2 { // never previously configured
+            cell.textLabel!.font = UIFont(name:"Helvetica-Bold", size:16)
+            cell.textLabel!.lineBreakMode = .ByWordWrapping
+            cell.textLabel!.numberOfLines = 2
         }
         
-        cell.textLabel.text = "The author of this book, who would rather be out dirt biking"
+        cell.textLabel!.text = "The author of this book, who would rather be out dirt biking"
         
         // shrink apparent size of image
         let im = UIImage(named:"moi.png")
@@ -41,8 +41,8 @@ class RootViewController : UITableViewController {
         im.drawInRect(CGRectMake(0,0,36,36))
         let im2 = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        cell.imageView.image = im2
-        cell.imageView.contentMode = .Center
+        cell.imageView!.image = im2
+        cell.imageView!.contentMode = .Center
         
         return cell
     }
