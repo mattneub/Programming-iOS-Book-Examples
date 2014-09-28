@@ -7,14 +7,14 @@ class RootViewController : UITableViewController {
         super.viewDidLoad()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
-        self.tableView.rowHeight = 58 // *
+        // self.tableView.rowHeight = 58 // *
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
     
@@ -25,7 +25,7 @@ class RootViewController : UITableViewController {
     in a previous call to cellForRow).
 */
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
         if cell.viewWithTag(1) == nil {
             let iv = UIImageView()

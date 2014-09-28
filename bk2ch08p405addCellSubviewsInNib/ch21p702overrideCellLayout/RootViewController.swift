@@ -7,18 +7,18 @@ class RootViewController : UITableViewController {
         super.viewDidLoad()
         self.tableView.registerNib(UINib(nibName:"MyCell", bundle:nil), forCellReuseIdentifier: "Cell") // *
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
-        self.tableView.rowHeight = 58 // *
+        // self.tableView.rowHeight = 58 // *
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
 
         // can refer to subviews by their tags
