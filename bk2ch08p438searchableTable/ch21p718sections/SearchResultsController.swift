@@ -38,17 +38,17 @@ class SearchResultsController : UITableViewController {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.filteredData.count
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = self.filteredData[indexPath.row]
+        cell.textLabel!.text = self.filteredData[indexPath.row]
         return cell
     }
 }
@@ -63,7 +63,7 @@ and reload the table.
 */
 
 extension SearchResultsController : UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController!) {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
         println("here")
         let sb = searchController.searchBar
         let target = sb.text

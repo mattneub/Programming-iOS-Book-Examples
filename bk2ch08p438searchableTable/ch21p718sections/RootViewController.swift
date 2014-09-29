@@ -64,18 +64,18 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // that's all! The rest is in SearchResultsController
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.sectionNames.count
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.sectionData[section].count
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         let s = self.sectionData[indexPath.section][indexPath.row]
-        cell.textLabel.text = s
+        cell.textLabel!.text = s
         
         // this part is not in the book, it's just for fun
         var stateName = s
@@ -83,7 +83,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         stateName = stateName.stringByReplacingOccurrencesOfString(" ", withString:"")
         stateName = "flag_\(stateName).gif"
         let im = UIImage(named: stateName)
-        cell.imageView.image = im
+        cell.imageView!.image = im
         
         return cell
     }
@@ -96,13 +96,13 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     
     */
     // this is more "interesting"
-    override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as UITableViewHeaderFooterView
         if h.tintColor != UIColor.redColor() {
             println("configuring a new header view") // only called about 7 times
             h.tintColor = UIColor.redColor() // invisible marker, tee-hee
             h.backgroundView = UIView()
-            h.backgroundView.backgroundColor = UIColor.blackColor()
+            h.backgroundView!.backgroundColor = UIColor.blackColor()
             let lab = UILabel()
             lab.tag = 1
             lab.font = UIFont(name:"Georgia-Bold", size:22)
@@ -138,7 +138,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     */
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView!) -> [AnyObject]! {
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
         return self.sectionNames
     }
 }
