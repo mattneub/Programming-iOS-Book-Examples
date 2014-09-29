@@ -11,15 +11,15 @@ class RootViewController : UITableViewController {
         self.tableView.rowHeight = 58 // *
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1000 // make a lot of rows this time!
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as MyCell
 
         let lab = cell.theLabel
@@ -40,6 +40,7 @@ class RootViewController : UITableViewController {
         UIGraphicsEndImageContext()
         iv.image = im2
         iv.contentMode = .Center
+
         
         return cell
     }

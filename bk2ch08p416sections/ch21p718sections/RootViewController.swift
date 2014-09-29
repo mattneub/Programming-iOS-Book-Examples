@@ -32,20 +32,22 @@ class RootViewController : UITableViewController {
         self.tableView.sectionIndexColor = UIColor.whiteColor()
         self.tableView.sectionIndexBackgroundColor = UIColor.redColor()
         self.tableView.sectionIndexTrackingBackgroundColor = UIColor.blueColor()
+        // anyone know what this does????
+        // self.tableView.separatorEffect = UIBlurEffect(style: .Dark)
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.sectionNames.count
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.sectionData[section].count
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         let s = self.sectionData[indexPath.section][indexPath.row]
-        cell.textLabel.text = s
+        cell.textLabel!.text = s
         
         // this part is not in the book, it's just for fun
         var stateName = s
@@ -53,26 +55,24 @@ class RootViewController : UITableViewController {
         stateName = stateName.stringByReplacingOccurrencesOfString(" ", withString:"")
         stateName = "flag_\(stateName).gif"
         let im = UIImage(named: stateName)
-        cell.imageView.image = im
+        cell.imageView!.image = im
         
         return cell
     }
     
     /*
-    
-    override func tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
-    return self.sectionNames[section]
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     }
-    
     */
+
     // this is more "interesting"
-    override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as UITableViewHeaderFooterView
         if h.tintColor != UIColor.redColor() {
             println("configuring a new header view") // only called about 7 times
             h.tintColor = UIColor.redColor() // invisible marker, tee-hee
             h.backgroundView = UIView()
-            h.backgroundView.backgroundColor = UIColor.blackColor()
+            h.backgroundView?.backgroundColor = UIColor.blackColor()
             let lab = UILabel()
             lab.tag = 1
             lab.font = UIFont(name:"Georgia-Bold", size:22)
@@ -95,6 +95,11 @@ class RootViewController : UITableViewController {
             h.contentView.addConstraints(
                 NSLayoutConstraint.constraintsWithVisualFormat("V:|[lab]|",
                     options:nil, metrics:nil, views:["lab":lab]))
+//            let b = UIButton.buttonWithType(.System) as UIButton
+//            b.setTitle("Howdy", forState:.Normal)
+//            b.sizeToFit()
+//            println(b.tintColor)
+//            h.addSubview(b)
         }
         let lab = h.contentView.viewWithTag(1) as UILabel
         lab.text = self.sectionNames[section]
@@ -103,12 +108,12 @@ class RootViewController : UITableViewController {
     }
     
     /*
-    override func tableView(tableView: UITableView!, willDisplayHeaderView view: UIView!, forSection section: Int) {
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
     println(view) // prove we are reusing header views
     }
     */
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView!) -> [AnyObject]! {
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
         return self.sectionNames
     }
 }
