@@ -41,4 +41,13 @@ class RootViewController : UITableViewController {
         cell.lab.text = self.trivia[indexPath.row]
         return cell
     }
+    
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        if tableView.cellForRowAtIndexPath(indexPath)!.selected {
+            tableView.deselectRowAtIndexPath(indexPath, animated:false)
+            return nil
+        }
+        return indexPath
+    }
+    
 }
