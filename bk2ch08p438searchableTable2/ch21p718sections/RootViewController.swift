@@ -56,18 +56,18 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
             atScrollPosition:.Top, animated:false)
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.sectionNames.count
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.sectionData[section].count
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         let s = self.sectionData[indexPath.section][indexPath.row]
-        cell.textLabel.text = s
+        cell.textLabel!.text = s
         
         // this part is not in the book, it's just for fun
         var stateName = s
@@ -75,17 +75,17 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         stateName = stateName.stringByReplacingOccurrencesOfString(" ", withString:"")
         stateName = "flag_\(stateName).gif"
         let im = UIImage(named: stateName)
-        cell.imageView.image = im
+        cell.imageView!.image = im
         
         return cell
     }
     
-    override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as UITableViewHeaderFooterView
         if h.tintColor != UIColor.redColor() {
             h.tintColor = UIColor.redColor() // invisible marker, tee-hee
             h.backgroundView = UIView()
-            h.backgroundView.backgroundColor = UIColor.blackColor()
+            h.backgroundView!.backgroundColor = UIColor.blackColor()
             let lab = UILabel()
             lab.tag = 1
             lab.font = UIFont(name:"Georgia-Bold", size:22)
@@ -115,14 +115,14 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         
     }
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView!) -> [AnyObject]! {
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
         return self.sectionNames
     }
 }
 
 extension RootViewController : UISearchControllerDelegate, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
-    func presentSearchController(sc: UISearchController!) {
+    func presentSearchController(sc: UISearchController) {
         println("search!")
         // good opportunity to control timing of search results controller configuration
         let src = sc.searchResultsController as SearchResultsController
@@ -131,24 +131,31 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
         sc.searchBar.delegate = src
 
         sc.transitioningDelegate = self
+        sc.modalPresentationStyle = .Custom // ?
         self.presentViewController(sc, animated: true, completion: nil)
     }
     
-    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController) -> UIPresentationController? {
+        let p = UIPresentationController(presentedViewController: presented, presentingViewController: presenting)
+        println("wow") // never called, sorry
+        return p
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning! {
         return self
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning! {
         return self
     }
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning!) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
         return 0.3
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning!) {
-        let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
-        let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
+    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+        let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         
         let con = transitionContext.containerView()
         
@@ -158,7 +165,7 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
         let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)
         let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)
 
-        if v2 != nil { // presenting, vc2 is the search controller
+        if let v2 = v2 { // presenting, vc2 is the search controller
             
             // our responsibilities are:
             // get vc2 into the interface, obviously

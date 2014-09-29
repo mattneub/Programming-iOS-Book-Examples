@@ -68,18 +68,18 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
             atScrollPosition:.Top, animated:false)
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.sectionNames.count
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.sectionData[section].count
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         let s = self.sectionData[indexPath.section][indexPath.row]
-        cell.textLabel.text = s
+        cell.textLabel!.text = s
         
         // this part is not in the book, it's just for fun
         var stateName = s
@@ -87,17 +87,17 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         stateName = stateName.stringByReplacingOccurrencesOfString(" ", withString:"")
         stateName = "flag_\(stateName).gif"
         let im = UIImage(named: stateName)
-        cell.imageView.image = im
+        cell.imageView!.image = im
         
         return cell
     }
     
-    override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as UITableViewHeaderFooterView
         if h.tintColor != UIColor.redColor() {
             h.tintColor = UIColor.redColor() // invisible marker, tee-hee
             h.backgroundView = UIView()
-            h.backgroundView.backgroundColor = UIColor.blackColor()
+            h.backgroundView!.backgroundColor = UIColor.blackColor()
             let lab = UILabel()
             lab.tag = 1
             lab.font = UIFont(name:"Georgia-Bold", size:22)
@@ -127,23 +127,23 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     // much nicer without section index during search
-    override func sectionIndexTitlesForTableView(tableView: UITableView!) -> [AnyObject]! {
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
         return self.searching ? nil : self.sectionNames
     }
 }
 
 extension RootViewController : UISearchControllerDelegate {
     // flag for whoever needs it (in this case, sectionIndexTitles...)
-    func willPresentSearchController(searchController: UISearchController!) {
+    func willPresentSearchController(searchController: UISearchController) {
         self.searching = true
     }
-    func willDismissSearchController(searchController: UISearchController!) {
+    func willDismissSearchController(searchController: UISearchController) {
         self.searching = false
     }
 }
 
 extension RootViewController : UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController!) {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
         let sb = searchController.searchBar
         let target = sb.text
         if target == "" {
@@ -170,7 +170,7 @@ extension RootViewController : UISearchResultsUpdating {
             let s = sec[0]
             let arr = Array(s)
             return String(arr[0])
-            }
+        }
         self.tableView.reloadData()
     }
 }

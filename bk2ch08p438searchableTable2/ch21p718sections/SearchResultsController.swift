@@ -28,23 +28,23 @@ class SearchResultsController : UITableViewController {
         
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.filteredData.count
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = self.filteredData[indexPath.row]
+        cell.textLabel!.text = self.filteredData[indexPath.row]
         return cell
     }
 }
 
 extension SearchResultsController : UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController!) {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
         println("update")
         self.searchController = searchController // keep a weak ref just in case
         let sb = searchController.searchBar
@@ -65,6 +65,6 @@ extension SearchResultsController : UISearchResultsUpdating {
 
 extension SearchResultsController : UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar!, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        self.updateSearchResultsForSearchController(self.searchController)
+        self.updateSearchResultsForSearchController(self.searchController!)
     }
 }
