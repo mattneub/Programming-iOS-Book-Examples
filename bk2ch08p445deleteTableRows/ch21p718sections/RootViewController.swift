@@ -33,39 +33,55 @@ class RootViewController : UITableViewController {
         self.tableView.sectionIndexBackgroundColor = UIColor.redColor()
         self.tableView.sectionIndexTrackingBackgroundColor = UIColor.blueColor()
         
+//        let b = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: "doEdit:")
+//        self.navigationItem.rightBarButtonItem = b
+        
         self.navigationItem.rightBarButtonItem = self.editButtonItem() // badda-bing, badda-boom
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+//    func doEdit(sender:AnyObject?) {
+//        var which : UIBarButtonSystemItem
+//        if !self.tableView.editing {
+//            self.tableView.setEditing(true, animated:true)
+//            which = .Done
+//        } else {
+//            self.tableView.setEditing(false, animated:true)
+//            which = .Edit
+//        }
+//        let b = UIBarButtonItem(barButtonSystemItem: which, target: self, action: "doEdit:")
+//        self.navigationItem.rightBarButtonItem = b
+//    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.sectionNames.count
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.sectionData[section].count
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         let s = self.sectionData[indexPath.section][indexPath.row]
-        cell.textLabel.text = s
+        cell.textLabel!.text = s
         
         var stateName = s
         stateName = stateName.lowercaseString
         stateName = stateName.stringByReplacingOccurrencesOfString(" ", withString:"")
         stateName = "flag_\(stateName).gif"
         let im = UIImage(named: stateName)
-        cell.imageView.image = im
+        cell.imageView!.image = im
         
         return cell
     }
     
-    override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
         let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as UITableViewHeaderFooterView
         if h.tintColor != UIColor.redColor() {
             println("configuring a new header view") // only called about 7 times
             h.tintColor = UIColor.redColor() // invisible marker, tee-hee
             h.backgroundView = UIView()
-            h.backgroundView.backgroundColor = UIColor.blackColor()
+            h.backgroundView!.backgroundColor = UIColor.blackColor()
             let lab = UILabel()
             lab.tag = 1
             lab.font = UIFont(name:"Georgia-Bold", size:22)
@@ -96,11 +112,11 @@ class RootViewController : UITableViewController {
     }
     
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView!) -> [AnyObject]! {
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
         return self.sectionNames
     }
 
-    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath ip: NSIndexPath!) {
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath ip: NSIndexPath) {
         self.sectionData[ip.section].removeAtIndex(ip.row)
         if self.sectionData[ip.section].count == 0 {
             self.sectionData.removeAtIndex(ip.section)
@@ -116,7 +132,7 @@ class RootViewController : UITableViewController {
     
     // prevent swipe-to-edit
     
-    override func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle {
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         return self.editing ? .Delete : .None
     }
     
