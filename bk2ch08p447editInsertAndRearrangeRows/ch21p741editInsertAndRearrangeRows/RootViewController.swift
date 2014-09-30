@@ -17,18 +17,18 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         self.tableView.registerNib(UINib(nibName: "MyCell", bundle: nil), forCellReuseIdentifier: "Cell")
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         }
         return self.numbers.count
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell",
             forIndexPath:indexPath) as MyCell
         
@@ -44,7 +44,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         return cell
     }
     
-    override func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle {
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         if indexPath.section == 1 {
             let ct = self.tableView(tableView, numberOfRowsInSection:indexPath.section)
             if ct-1 == indexPath.row {
@@ -55,25 +55,25 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         return .None
     }
     
-    override func tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String {
         if section == 0 {
             return "Name"
         }
         return "Number"
     }
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.endEditing(true)
         return false
     }
     
-    func textFieldDidEndEditing(textField: UITextField!) {
+    func textFieldDidEndEditing(textField: UITextField) {
         // some cell's text field has finished editing; which cell?
         var v : UIView = textField
         do { v = v.superview! } while !(v is UITableViewCell)
         let cell = v as MyCell
         // update data model to match
-        let ip = self.tableView.indexPathForCell(cell)
+        let ip = self.tableView.indexPathForCell(cell)!
         if ip.section == 1 {
             self.numbers[ip.row] = cell.textField.text
         } else if ip.section == 0 {
@@ -81,21 +81,21 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         }
     }
     
-    override func tableView(tableView: UITableView!, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
+    override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         if indexPath.section == 1 {
             return true
         }
         return false
     }
     
-    override func tableView(tableView: UITableView!, moveRowAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
         let s = self.numbers[fromIndexPath.row]
         self.numbers.removeAtIndex(fromIndexPath.row)
         self.numbers.insert(s, atIndex: toIndexPath.row)
         tableView.reloadData() // to get plus and minus buttons to redraw themselves
     }
     
-    override func tableView(tableView: UITableView!, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath!, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath!) -> NSIndexPath! {
+    override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
         tableView.endEditing(true)
         if proposedDestinationIndexPath.section == 0 {
             return NSIndexPath(forRow:0, inSection:1)
@@ -103,14 +103,14 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         return proposedDestinationIndexPath
     }
     
-    override func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         if indexPath.section == 1 && self.numbers.count > 1 {
             return true
         }
         return false
     }
     
-    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         tableView.endEditing(true) // user can click minus/plus while still editing
         // so we must force saving to the model
         if editingStyle == .Insert {
