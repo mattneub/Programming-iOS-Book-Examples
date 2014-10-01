@@ -4,7 +4,7 @@ import UIKit
 
 class ViewController : UIViewController, UIGestureRecognizerDelegate {
     
-    func gestureRecognizer(g: UIGestureRecognizer!, shouldRequireFailureOfGestureRecognizer og: UIGestureRecognizer!) -> Bool {
+    func gestureRecognizer(g: UIGestureRecognizer, shouldRequireFailureOfGestureRecognizer og: UIGestureRecognizer) -> Bool {
         
         let s1 = NSString(CString: object_getClassName(g), encoding: NSUTF8StringEncoding)
         let s2 = NSString(format:"%p", g.view!)
@@ -22,7 +22,7 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-    func gestureRecognizer(g: UIGestureRecognizer!, shouldBeRequiredToFailByGestureRecognizer og: UIGestureRecognizer!) -> Bool {
+    func gestureRecognizer(g: UIGestureRecognizer, shouldBeRequiredToFailByGestureRecognizer og: UIGestureRecognizer) -> Bool {
         
         let s1 = NSString(CString: object_getClassName(g), encoding: NSUTF8StringEncoding)
         let s2 = NSString(format:"%p", g.view!)

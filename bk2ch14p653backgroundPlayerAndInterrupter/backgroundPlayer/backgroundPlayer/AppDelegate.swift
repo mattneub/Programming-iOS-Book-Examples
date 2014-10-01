@@ -46,7 +46,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(application: UIApplication) {
         println("bp in \(__FUNCTION__)")
-        println("bp state while entering background: \(application.applicationState.toRaw())")
+        println("bp state while entering background: \(application.applicationState.rawValue)")
         return; // comment out to experiment with background app performing immediate local notification
         
         delay(2) {

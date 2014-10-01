@@ -13,7 +13,7 @@ class ViewController : UIViewController {
         let lay = CALayer()
         lay.frame = self.v.layer.bounds
         self.v.layer.addSublayer(lay)
-        lay.contents = UIImage(named:"Mars").CGImage
+        lay.contents = UIImage(named:"Mars")!.CGImage
         lay.contentsGravity = kCAGravityResizeAspectFill
         self.v.layer.masksToBounds = true // try making this false to see what difference it makes
         self.v.layer.borderWidth = 2
@@ -27,7 +27,7 @@ class ViewController : UIViewController {
         t.subtype = kCATransitionFromBottom
         t.duration = 2
         CATransaction.setDisableActions(true)
-        lay.contents = UIImage(named: "Smiley").CGImage
+        lay.contents = UIImage(named: "Smiley")!.CGImage
         lay.addAnimation(t, forKey: nil)
 
     }

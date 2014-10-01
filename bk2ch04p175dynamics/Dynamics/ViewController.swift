@@ -135,17 +135,17 @@ class ViewController : UIViewController {
 
 extension ViewController : UIDynamicAnimatorDelegate, UICollisionBehaviorDelegate {
     
-    func dynamicAnimatorDidPause(animator: UIDynamicAnimator!) {
+    func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
         println("pause")
     }
     
-    func dynamicAnimatorWillResume(animator: UIDynamicAnimator!) {
+    func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
         println("resume")
     }
     
-    func collisionBehavior(behavior: UICollisionBehavior!,
-        beganContactForItem item: UIDynamicItem!,
-        withBoundaryIdentifier identifier: NSCopying!,
+    func collisionBehavior(behavior: UICollisionBehavior,
+        beganContactForItem item: UIDynamicItem,
+        withBoundaryIdentifier identifier: NSCopying,
         atPoint p: CGPoint) {
             println(p)
             // look for the dynamic item behavior

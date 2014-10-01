@@ -38,7 +38,7 @@ class MyView : UIView {
         lay.contents = im.CGImage
     }
     
-    override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView? {
+    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
         let inside = self.pointInside(point, withEvent:event)
         if !inside { return nil }
         
@@ -49,7 +49,7 @@ class MyView : UIView {
         let im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        let info = CGBitmapInfo.fromRaw(CGImageAlphaInfo.Only.toRaw())!
+        let info = CGBitmapInfo(CGImageAlphaInfo.Only.rawValue)
         let pixel = UnsafeMutablePointer<CUnsignedChar>.alloc(1)
         pixel[0] = 0
         let context = CGBitmapContextCreate(pixel,

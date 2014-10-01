@@ -12,7 +12,7 @@ class ViewController: UIViewController {
         for ix in 1 ..< 8 {
             self.items.append(
                 UITabBarItem(
-                    tabBarSystemItem: UITabBarSystemItem.fromRaw(ix)!, tag: ix
+                    tabBarSystemItem: UITabBarSystemItem(ix), tag: ix
                 )
             )
         }

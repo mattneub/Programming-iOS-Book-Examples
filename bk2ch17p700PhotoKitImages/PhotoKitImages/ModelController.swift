@@ -18,7 +18,7 @@ class ModelController: NSObject {
         }
         let options = PHFetchOptions() // photos only, please
         let pred = NSPredicate(format: "mediaType = %@", NSNumber(
-            integer:PHAssetMediaType.Image.toRaw()))
+            integer:PHAssetMediaType.Image.rawValue))
         options.predicate = pred
         let result2 = PHAsset.fetchAssetsInAssetCollection(rec, options: options)
         self.photos = result2

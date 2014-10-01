@@ -33,9 +33,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIVideoE
     
     override func supportedInterfaceOrientations() -> Int {
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            return Int(UIInterfaceOrientationMask.All.toRaw())
+            return Int(UIInterfaceOrientationMask.All.rawValue)
         }
-        return Int(UIInterfaceOrientationMask.Landscape.toRaw())
+        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
     }
     
     override func viewDidLayoutSubviews() {
@@ -93,7 +93,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIVideoE
     
     // just testing, pay no attention
     func stateChanged(n:NSNotification) {
-        println("state changed: \((n.object as MPMoviePlayerController).playbackState.toRaw())")
+        println("state changed: \((n.object as MPMoviePlayerController).playbackState.rawValue)")
         return;
         println(AVAudioSession.sharedInstance().category)
         if self.mpc!.playbackState == .Playing {

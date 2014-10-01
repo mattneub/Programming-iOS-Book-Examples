@@ -16,14 +16,14 @@ class FirstViewController : UIViewController, UITabBarControllerDelegate {
         print(self)
         print(" ")
         println(__FUNCTION__)
-        return Int(UIInterfaceOrientationMask.Portrait.toRaw())
+        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
     }
     
     override func supportedInterfaceOrientations() -> Int {
         print(self)
         print(" ")
         println(__FUNCTION__)
-        return Int(UIInterfaceOrientationMask.Landscape.toRaw()) // called, but pointless
+        return Int(UIInterfaceOrientationMask.Landscape.rawValue) // called, but pointless
     }
     
     override func prefersStatusBarHidden() -> Bool {

@@ -28,7 +28,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     
     override func supportedInterfaceOrientations() -> Int  {
         println("first supported")
-        return Int(UIInterfaceOrientationMask.Portrait.toRaw())
+        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
     }
     
     override func viewWillLayoutSubviews() {

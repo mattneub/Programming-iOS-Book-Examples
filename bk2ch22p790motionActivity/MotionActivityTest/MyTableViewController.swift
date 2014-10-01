@@ -76,7 +76,7 @@ class MyTableViewController: UITableViewController {
                 }
             }
             for i in stride(from: acts.count-1, through: 0, by: -1) {
-                if acts[i].confidence.toRaw() < 2 {
+                if acts[i].confidence.rawValue < 2 {
                     acts.removeAtIndex(i)
                 }
             }

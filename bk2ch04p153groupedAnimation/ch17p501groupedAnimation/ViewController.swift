@@ -9,7 +9,7 @@ class ViewController : UIViewController {
         
         self.v = UIView(frame:CGRectMake(254,28,56,38))
         self.view.addSubview(self.v)
-        self.v.layer.contents = UIImage(named:"boat.gif").CGImage
+        self.v.layer.contents = UIImage(named:"boat.gif")!.CGImage
         self.v.layer.contentsGravity = kCAGravityResizeAspectFill
     }
     

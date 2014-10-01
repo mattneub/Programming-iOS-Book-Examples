@@ -29,7 +29,7 @@ class ViewController : UIViewController {
         // ... which fits but doesn't preserve aspect
         
 //        println(iv.clipsToBounds)
-//        println(iv.contentMode.toRaw())
+//        println(iv.contentMode.rawValue)
         
         // just to clarify boundaries of image view
         iv.layer.borderColor = UIColor.blackColor().CGColor

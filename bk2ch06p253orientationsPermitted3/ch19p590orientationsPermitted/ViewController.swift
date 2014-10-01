@@ -12,8 +12,8 @@ class ViewController : UIViewController {
     override func supportedInterfaceOrientations() -> Int {
         // uncomment next line to crash
         // "Supported orientations has no common orientation with the application, and shouldAutorotate is returning YES"
-        // return Int(UIInterfaceOrientationMask.Portrait.toRaw())
-        return Int(UIInterfaceOrientationMask.LandscapeRight.toRaw())
+        // return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+        return Int(UIInterfaceOrientationMask.LandscapeRight.rawValue)
     }
     
 }

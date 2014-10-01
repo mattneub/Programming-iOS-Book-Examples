@@ -19,11 +19,11 @@ I can think of various ways we can wind up launching into landscape:
 class ViewController: UIViewController, UINavigationControllerDelegate {
     
 //    override func supportedInterfaceOrientations() -> Int {
-//        return Int(UIInterfaceOrientationMask.Landscape.toRaw())
+//        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
 //    }
     
 //    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController!) -> Int {
-//        return Int(UIInterfaceOrientationMask.Landscape.toRaw())
+//        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
 //    }
     
     override func viewDidLoad() {

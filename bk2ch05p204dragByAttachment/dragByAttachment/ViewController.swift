@@ -27,10 +27,10 @@ class ViewController : UIViewController {
 }
 
 extension ViewController : UIDynamicAnimatorDelegate {
-    func dynamicAnimatorDidPause(animator: UIDynamicAnimator!) {
+    func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
         println("pause")
     }
-    func dynamicAnimatorWillResume(animator: UIDynamicAnimator!) {
+    func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
         println("resume")
     }
 

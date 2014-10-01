@@ -19,9 +19,9 @@ class ViewController: UIViewController {
     
     override func supportedInterfaceOrientations() -> Int {
         if self.traitCollection.userInterfaceIdiom == .Pad {
-            return Int(UIInterfaceOrientationMask.All.toRaw())
+            return Int(UIInterfaceOrientationMask.All.rawValue)
         }
-        return Int(UIInterfaceOrientationMask.Landscape.toRaw())
+        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
     }
 
     func determineStatus() -> Bool {

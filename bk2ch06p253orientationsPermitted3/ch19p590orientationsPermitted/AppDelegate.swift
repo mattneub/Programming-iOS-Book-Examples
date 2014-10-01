@@ -11,6 +11,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow) -> Int {
-        return Int(UIInterfaceOrientationMask.Landscape.toRaw())
+        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
     }
 }

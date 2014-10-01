@@ -41,7 +41,7 @@ class SecondViewController : UIViewController {
     
     override func supportedInterfaceOrientations() -> Int {
         println("second supported")
-        return Int(UIInterfaceOrientationMask.Landscape.toRaw())
+        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
     }
     
     override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {

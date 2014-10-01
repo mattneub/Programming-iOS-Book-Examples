@@ -19,9 +19,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // ... if the _first_ orientation in the Info.plist is _also_ a landscape orientation
         // (rearrange them and you'll see)
         // otherwise, we do a visible launch-and-sudden-rotate (on iPhone only)
-        // return Int(UIInterfaceOrientationMask.Landscape.toRaw())
+        // return Int(UIInterfaceOrientationMask.Landscape.rawValue)
         
-        return Int(UIInterfaceOrientationMask.All.toRaw()) // still excludes upside-down
+        return Int(UIInterfaceOrientationMask.All.rawValue) // still excludes upside-down
     }
     
 }

@@ -115,8 +115,8 @@ class StyledText: UIView {
         func lastCharIsControl () -> Bool {
             let lastCharRange = glyphRange.location + glyphRange.length - 1
             let property = self.lm.propertyForGlyphAtIndex(lastCharRange)
-            let mask1 = property.toRaw()
-            let mask2 = NSGlyphProperty.ControlCharacter.toRaw()
+            let mask1 = property.rawValue
+            let mask2 = NSGlyphProperty.ControlCharacter.rawValue
             return mask1 & mask2 != 0
         }
         while lastCharIsControl() {

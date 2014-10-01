@@ -239,7 +239,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mi.name = "A Great Place to Dirt Bike" // label to appear in Maps app
         let span = NSValue(MKCoordinateSpan:self.map.region.span)
         let opts = [
-            MKLaunchOptionsMapTypeKey: MKMapType.Hybrid.toRaw(),
+            MKLaunchOptionsMapTypeKey: MKMapType.Hybrid.rawValue,
             MKLaunchOptionsMapSpanKey: span
         ]
         mi.openInMapsWithLaunchOptions(opts)

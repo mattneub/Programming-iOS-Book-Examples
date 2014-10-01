@@ -6,8 +6,8 @@ class MyCell : UITableViewCell {
     override func didTransitionToState(state: UITableViewCellStateMask) {
         // well, I think I had this wrong all these years
         // but sheesh, Swift numerics are getting harder and harder
-        let editing = UITableViewCellStateMask.ShowingEditControlMask.toRaw()
-        if state.toRaw() & editing != 0 {
+        let editing = UITableViewCellStateMask.ShowingEditControlMask.rawValue
+        if state.rawValue & editing != 0 {
             self.textField.enabled = true
         }
         else {

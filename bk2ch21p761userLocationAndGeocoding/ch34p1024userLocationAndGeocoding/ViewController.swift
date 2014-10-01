@@ -24,7 +24,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         let mi = MKMapItem.mapItemForCurrentLocation()
         let span = MKCoordinateSpanMake(0.005, 0.005)
         mi.openInMapsWithLaunchOptions([
-            MKLaunchOptionsMapTypeKey: MKMapType.Standard.toRaw()
+            MKLaunchOptionsMapTypeKey: MKMapType.Standard.rawValue
             ])
     }
     

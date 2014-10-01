@@ -37,7 +37,7 @@ class ViewController  : UIViewController {
 }
 
 extension ViewController : UIGestureRecognizerDelegate {
-    func gestureRecognizerShouldBegin(g: UIGestureRecognizer!) -> Bool {
+    func gestureRecognizerShouldBegin(g: UIGestureRecognizer) -> Bool {
         // g is the pan gesture recognizer
         var result = true
         switch self.longPresser.state {
@@ -48,18 +48,18 @@ extension ViewController : UIGestureRecognizerDelegate {
         return result
     }
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         println("sim")
         return true
     }
     
     /*
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRequireFailureOfGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOfGestureRecognizer otherGestureRecognizer: UIGestureRecognize!) -> Bool {
         println("=== should\n\(gestureRecognizer)\n\(otherGestureRecognizer)")
         return false
     }
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldBeRequiredToFailByGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailByGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         println("=== should be\n\(gestureRecognizer)\n\(otherGestureRecognizer)")
         return false
     }

@@ -6,8 +6,8 @@ class MyAction : NSObject, CAAction {
             let anim = CABasicAnimation(keyPath: event)
             anim.duration = 5
             let lay = anObject as CALayer
-            let newP : AnyObject = lay.valueForKey(event)
-            let oldP : AnyObject = lay.presentationLayer()!.valueForKey(event)
+            let newP : AnyObject? = lay.valueForKey(event)
+            let oldP : AnyObject? = lay.presentationLayer()!.valueForKey(event)
             println("from \(oldP) to \(newP)")
             lay.addAnimation(anim, forKey:nil)
     }
@@ -47,7 +47,7 @@ class ViewController : UIViewController {
         let layer = MyLayer()
         layer.frame = CGRectMake(50,50,40,40)
         CATransaction.setDisableActions(true) // prevent MyLayer automatic contents animation on next line
-        layer.contents = UIImage(named:"Mars").CGImage
+        layer.contents = UIImage(named:"Mars")!.CGImage
         layer.contentsGravity = kCAGravityResizeAspectFill
         self.view.layer.addSublayer(layer)
         self.layer = layer
@@ -107,13 +107,13 @@ class ViewController : UIViewController {
             
         case 7:
             // layer automatically turns this into a push-from-left transition
-            layer.contents = UIImage(named:"Smiley").CGImage
+            layer.contents = UIImage(named:"Smiley")!.CGImage
 
         case 8:
             let layer = CALayer()
             layer.frame = CGRectMake(200,50,40,40)
             layer.contentsGravity = kCAGravityResizeAspectFill
-            layer.contents = UIImage(named:"Smiley").CGImage
+            layer.contents = UIImage(named:"Smiley")!.CGImage
             layer.delegate = self
             self.view.layer.addSublayer(layer)
             // the delegate (me) will "pop" the layer as it appears

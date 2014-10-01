@@ -7,7 +7,7 @@ class SecondViewController : UIViewController {
         print(self)
         print(" ")
         println(__FUNCTION__)
-        return Int(UIInterfaceOrientationMask.Landscape.toRaw()) // called, but pointless
+        return Int(UIInterfaceOrientationMask.Landscape.rawValue) // called, but pointless
     }
     
     override func prefersStatusBarHidden() -> Bool {

@@ -127,7 +127,7 @@ class ViewController : UIViewController {
             // capture current value, set final value
             let rot = M_PI/4.0
             CATransaction.setDisableActions(true)
-            let current = arrow.valueForKeyPath("transform.rotation.z").doubleValue
+            let current = arrow.valueForKeyPath("transform.rotation.z")!.doubleValue
             arrow.setValue(current + rot, forKeyPath:"transform.rotation.z")
 
             // first animation (rotate and clunk)

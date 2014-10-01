@@ -22,7 +22,7 @@ class ViewController : UIViewController {
         let which = 1
         switch which {
         case 1:
-            let mars = UIImage(named: "Mars")
+            let mars = UIImage(named: "Mars")!
             UIGraphicsBeginImageContextWithOptions(mars.size, false, 0)
             let empty = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()

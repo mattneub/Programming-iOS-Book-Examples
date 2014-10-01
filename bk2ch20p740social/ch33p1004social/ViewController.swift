@@ -54,7 +54,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, MFM
         }
         vc.completionHandler = {
             (result:SLComposeViewControllerResult) in
-            println("tweet result \(result.toRaw())")
+            println("tweet result \(result.rawValue)")
             self.dismissViewControllerAnimated(true, completion:nil)
         };
         self.presentViewController(vc, animated:true, completion:nil)

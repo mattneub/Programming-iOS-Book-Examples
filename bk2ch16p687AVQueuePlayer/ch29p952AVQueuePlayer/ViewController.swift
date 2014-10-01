@@ -229,7 +229,7 @@ class ViewController: UIViewController {
     
     override func remoteControlReceivedWithEvent(event: UIEvent!) {
         let rc = event.subtype
-        println("received remote control \(rc.toRaw())")
+        println("received remote control \(rc.rawValue)")
 
         let p = self.curplayer
         switch rc {

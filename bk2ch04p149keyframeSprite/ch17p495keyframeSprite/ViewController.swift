@@ -11,14 +11,14 @@ class ViewController : UIViewController {
         var arr = [UIImage]()
         for (var i = 0; i < 3; i++) {
             UIGraphicsBeginImageContextWithOptions(CGSizeMake(24,24), true, 0)
-            UIImage(named: "sprites.png").drawAtPoint(CGPointMake(CGFloat(-(5+i)*24), -4*24))
+            UIImage(named: "sprites.png")!.drawAtPoint(CGPointMake(CGFloat(-(5+i)*24), -4*24))
             let im = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             arr += [im!]
         }
         for (var i = 1; i >= 0; i--) {
             UIGraphicsBeginImageContextWithOptions(CGSizeMake(24,24), true, 0)
-            UIImage(named: "sprites.png").drawAtPoint(CGPointMake(CGFloat(-(5+i)*24),-4*24))
+            UIImage(named: "sprites.png")!.drawAtPoint(CGPointMake(CGFloat(-(5+i)*24),-4*24))
             let im = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             arr += [im!]

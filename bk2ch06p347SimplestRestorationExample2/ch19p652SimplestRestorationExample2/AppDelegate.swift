@@ -28,7 +28,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         if let idiomraw = coder.decodeObjectForKey(
             UIApplicationStateRestorationUserInterfaceIdiomKey)
             as? Int {
-                if let idiom = UIUserInterfaceIdiom.fromRaw(idiomraw) {
+                if let idiom = UIUserInterfaceIdiom(rawValue:idiomraw) {
                     if idiom == .Phone {
                         println("phone")
                     }

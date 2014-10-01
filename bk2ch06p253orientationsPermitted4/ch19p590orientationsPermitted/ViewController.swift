@@ -34,15 +34,15 @@ class ViewController : UIViewController {
         // aha, this explains why we are called 10 times;
         // the first 9 times, the device doesn't have an orientation yet
         let orientation = UIDevice.currentDevice().orientation
-        println("supported, device \(orientation.toRaw())")
+        println("supported, device \(orientation.rawValue)")
         
         if orientation != .Unknown {
-            println("self \(self.interfaceOrientation.toRaw())")
+            println("self \(self.interfaceOrientation.rawValue)")
             // but the above is deprecated in iOS 8; ask about the status bar instead
-            println("status bar \(UIApplication.sharedApplication().statusBarOrientation.toRaw())")
+            println("status bar \(UIApplication.sharedApplication().statusBarOrientation.rawValue)")
         }
         
-        return Int(UIInterfaceOrientationMask.All.toRaw())
+        return Int(UIInterfaceOrientationMask.All.rawValue)
         // but not really, because the app is only portrait and the two landscapes
         // if we add upside-down, we crash when the app tries to rotate upside-down
     }
@@ -50,12 +50,12 @@ class ViewController : UIViewController {
     override func shouldAutorotate() -> Bool {
         
         let orientation = UIDevice.currentDevice().orientation
-        println("should, device \(orientation.toRaw())")
+        println("should, device \(orientation.rawValue)")
         
         if orientation != .Unknown {
-            println("self \(self.interfaceOrientation.toRaw())")
+            println("self \(self.interfaceOrientation.rawValue)")
             // but the above is deprecated in iOS 8; ask about the status bar instead
-            println("status bar \(UIApplication.sharedApplication().statusBarOrientation.toRaw())")
+            println("status bar \(UIApplication.sharedApplication().statusBarOrientation.rawValue)")
         }
         // return true
         return self.shouldRotate

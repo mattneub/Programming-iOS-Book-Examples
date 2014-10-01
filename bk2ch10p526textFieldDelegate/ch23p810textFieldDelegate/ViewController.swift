@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         var md = (textField.typingAttributes as NSDictionary).mutableCopy() as NSMutableDictionary
         let d2 = [
             NSForegroundColorAttributeName: UIColor.redColor(),
-            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.toRaw()
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue
         ]
         md.addEntriesFromDictionary(d2)
         textField.typingAttributes = md

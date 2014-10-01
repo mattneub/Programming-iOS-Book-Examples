@@ -53,9 +53,9 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
 
     }
     
-    func collisionBehavior(behavior: UICollisionBehavior!,
-        beganContactForItem item: UIDynamicItem!,
-        withBoundaryIdentifier identifier: NSCopying!,
+    func collisionBehavior(behavior: UICollisionBehavior,
+        beganContactForItem item: UIDynamicItem,
+        withBoundaryIdentifier identifier: NSCopying,
         atPoint p: CGPoint) {
             println(p)
             // look for the dynamic item behavior

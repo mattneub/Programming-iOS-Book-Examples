@@ -34,7 +34,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
     }
     
     func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController!) -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.toRaw())
+        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
     }
     
     // wow, this causes a nasty bug

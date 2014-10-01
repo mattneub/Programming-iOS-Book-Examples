@@ -21,13 +21,13 @@ class ViewController: UIViewController {
         let mas = NSMutableAttributedString(string: "Pay Tribute", attributes: [
             NSFontAttributeName: UIFont(name:"GillSans-Bold", size:16),
             NSForegroundColorAttributeName: UIColor.purpleColor(),
-            // NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.toRaw()
+            // NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue
             ])
         // there's a bug when you add underlining to a range afterwards; never appears
         mas.addAttributes([
             NSStrokeColorAttributeName: UIColor.redColor(),
             NSStrokeWidthAttributeName: -2,
-            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.toRaw()
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue
             ], range: NSMakeRange(4, mas.length-4))
         self.button.setAttributedTitle(mas, forState: .Normal)
         self.lab.attributedText = mas // prove the bug is attributed string, not button
