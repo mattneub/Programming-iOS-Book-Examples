@@ -16,7 +16,7 @@ class ViewController : UIViewController {
         
         // ======
         
-        var mars = UIImage(named:"Mars")
+        var mars = UIImage(named:"Mars")!
         var sz = mars.size
         UIGraphicsBeginImageContextWithOptions(
             CGSizeMake(sz.width*2, sz.height), false, 0)
@@ -28,7 +28,7 @@ class ViewController : UIViewController {
         
         // ======
         
-        mars = UIImage(named:"Mars")
+        mars = UIImage(named:"Mars")!
         sz = mars.size
         UIGraphicsBeginImageContextWithOptions(
             CGSizeMake(sz.width*2, sz.height*2), false, 0)
@@ -40,7 +40,7 @@ class ViewController : UIViewController {
         
         // ======
         
-        mars = UIImage(named:"Mars")
+        mars = UIImage(named:"Mars")!
         sz = mars.size
         UIGraphicsBeginImageContextWithOptions(
             CGSizeMake(sz.width/2.0, sz.height), false, 0)
@@ -51,7 +51,7 @@ class ViewController : UIViewController {
         
         // ======
         
-        mars = UIImage(named:"Mars")
+        mars = UIImage(named:"Mars")!
         // extract each half as CGImage
         sz = mars.size
         var marsLeft = CGImageCreateWithImageInRect(
@@ -76,7 +76,7 @@ class ViewController : UIViewController {
         
         // ======
         
-        mars = UIImage(named:"Mars")
+        mars = UIImage(named:"Mars")!
         // extract each half as CGImage
         sz = mars.size
         marsLeft = CGImageCreateWithImageInRect(
@@ -100,7 +100,7 @@ class ViewController : UIViewController {
         
         // ======
         
-        mars = UIImage(named:"Mars")
+        mars = UIImage(named:"Mars")!
         sz = mars.size
         // derive CGImage first, use its dimensions to extract its halves
         var marsCG = mars.CGImage
@@ -126,7 +126,7 @@ class ViewController : UIViewController {
         
         // ======
         
-        mars = UIImage(named:"Mars")
+        mars = UIImage(named:"Mars")!
         sz = mars.size
         // derive CGImage first, use its dimensions to extract its halves
         marsCG = mars.CGImage
@@ -141,10 +141,10 @@ class ViewController : UIViewController {
             CGSizeMake(sz.width*1.5, sz.height), false, 0)
         // instead of calling flip, pass through UIImage
         UIImage(CGImage: marsLeft, scale: mars.scale,
-            orientation: mars.imageOrientation)
+            orientation: mars.imageOrientation)!
             .drawAtPoint(CGPointMake(0,0))
         UIImage(CGImage: marsRight, scale: mars.scale,
-            orientation: mars.imageOrientation)
+            orientation: mars.imageOrientation)!
             .drawAtPoint(CGPointMake(sz.width,0))
         im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

@@ -8,7 +8,7 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mars = UIImage(named:"Mars")
+        let mars = UIImage(named:"Mars")!
         var marsTiled = UIImage()
         
         let which = 1

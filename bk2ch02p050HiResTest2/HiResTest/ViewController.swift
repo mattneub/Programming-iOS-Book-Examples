@@ -10,6 +10,8 @@ import UIKit
 
 // aha, further testing suggests that the bug is in `pathForResource`
 
+// bug fixed in Xcode 6.1!
+
 class ViewController: UIViewController {
     @IBOutlet weak var iv3: UIImageView!
     @IBOutlet weak var iv4: UIImageView!
@@ -30,7 +32,8 @@ class ViewController: UIViewController {
         if let s2 = NSBundle.mainBundle().pathForResource("uno", ofType: "png") {
             self.iv6.image = UIImage(contentsOfFile: s2)
         } else {
-            self.iv6.image = UIImage(named:"Smiley")
+            println("looking for smiley")
+            self.iv6.image = UIImage(named:"smiley")
         }
 
     }

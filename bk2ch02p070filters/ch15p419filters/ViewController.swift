@@ -33,14 +33,14 @@ class ViewController : UIViewController {
         
         // two ways to obtain final bitmap
         
-        let which = 1
+        let which = 2
         switch which {
         case 1:
             let moicg = CIContext(options: nil).createCGImage(blendimage, fromRect: moiextent)
             self.iv.image = UIImage(CGImage: moicg)
         case 2:
             UIGraphicsBeginImageContextWithOptions(moiextent.size, false, 0)
-            UIImage(CIImage: blendimage).drawInRect(moiextent)
+            UIImage(CIImage: blendimage)!.drawInRect(moiextent)
             let im = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             self.iv.image = im

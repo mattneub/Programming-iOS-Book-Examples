@@ -25,10 +25,10 @@ class ViewController : UIViewController {
             window.tintColor = UIColor.redColor()
         }
         
-        let im = UIImage(named:"Smiley").imageWithRenderingMode(.AlwaysTemplate)
+        let im = UIImage(named:"Smiley")!.imageWithRenderingMode(.AlwaysTemplate)
         self.b.setBackgroundImage(im, forState: .Normal)
         
-        let im2 = UIImage(named:"smiley2").imageWithRenderingMode(.AlwaysOriginal)
+        let im2 = UIImage(named:"smiley2")!.imageWithRenderingMode(.AlwaysOriginal)
         self.tbi.image = im2
         
         // but with Xcode 6, this sort of thing is usually unnecessary!

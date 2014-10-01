@@ -25,8 +25,8 @@ class ViewController: UIViewController {
         let tccom = UITraitCollection(verticalSizeClass: .Compact)
         let tc2 = UITraitCollection(traitsFromCollections: [tcdisp, tcphone, tccom])
         let moods = UIImageAsset()
-        let frowney = UIImage(named:"frowney").imageWithRenderingMode(.AlwaysOriginal)
-        let smiley = UIImage(named:"smiley").imageWithRenderingMode(.AlwaysOriginal)
+        let frowney = UIImage(named:"frowney")!.imageWithRenderingMode(.AlwaysOriginal)
+        let smiley = UIImage(named:"smiley")!.imageWithRenderingMode(.AlwaysOriginal)
         moods.registerImage(frowney, withTraitCollection: tc1)
         moods.registerImage(smiley, withTraitCollection: tc2)
         
