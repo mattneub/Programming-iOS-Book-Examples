@@ -6,7 +6,7 @@ class MyView: UIView {
     
     var image : UIImage!
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection) {
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
         if self.traitCollection != previousTraitCollection {
             self.setNeedsDisplay()
         }

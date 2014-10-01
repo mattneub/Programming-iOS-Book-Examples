@@ -42,7 +42,7 @@ class MyView: UIView, Printable {
         println("\(self)\n\(__FUNCTION__)\n")
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection) {
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
         // super.traitCollectionDidChange(previousTraitCollection)
         println("\(self)\n\(__FUNCTION__)\n")
 //        let prev : UITraitCollection? = previousTraitCollection

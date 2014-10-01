@@ -43,7 +43,7 @@ class Base : UIViewController {
         super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
         println("\(self) \(__FUNCTION__)")
     }
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection) {
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
         println("\(self) \(__FUNCTION__)")
     }
 }

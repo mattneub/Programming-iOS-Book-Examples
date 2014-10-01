@@ -64,7 +64,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection) {
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
         println("trait collection did change")
     }
 

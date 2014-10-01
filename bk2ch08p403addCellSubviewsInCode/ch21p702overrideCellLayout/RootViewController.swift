@@ -78,6 +78,9 @@ class RootViewController : UITableViewController {
         iv.image = im2
         iv.contentMode = .Center
         
+//        let s = NSStringFromUIEdgeInsets(cell.separatorInset)
+//        println(s)
+        
         return cell
     }
     

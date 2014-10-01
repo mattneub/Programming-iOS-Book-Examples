@@ -23,7 +23,7 @@ class MyLabel : UILabel {
     // where rotation does not change traits,
     // and it wouldn't work if our size changed for some other reason
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection) {
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
         println("trait")
         delay(0.0) {
             self.preferredMaxLayoutWidth = self.bounds.width

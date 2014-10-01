@@ -103,7 +103,7 @@ class MyView: UIView {
         super.updateConstraints()
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection) {
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
         println("did change")
         self.setNeedsUpdateConstraints()
     }

@@ -64,9 +64,8 @@ class ViewController: UIViewController {
         }
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection) {
-        // foo because Apple has not marked previousTraitCollection as nil even though it can be
-        let prev : UITraitCollection? = previousTraitCollection
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+        let prev = previousTraitCollection
         let tc = self.traitCollection
         if prev == nil && tc.verticalSizeClass == .Compact {
             self.doSwap()

@@ -8,8 +8,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var con2: NSLayoutConstraint!
 
     
-    
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection) {
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
         println("vc did change")
         let tc = self.traitCollection
         if tc.horizontalSizeClass == .Regular {
