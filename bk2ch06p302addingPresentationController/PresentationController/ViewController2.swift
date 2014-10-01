@@ -17,7 +17,7 @@ class ViewController2: UIViewController {
         // customize presentation only on iPhone
         // how will we find out which it is? we have no traitCollection yet...
         // I know, let's ask the window
-        if UIApplication.sharedApplication().keyWindow.traitCollection.userInterfaceIdiom == .Phone {
+        if UIApplication.sharedApplication().keyWindow!.traitCollection.userInterfaceIdiom == .Phone {
             self.modalPresentationStyle = .Custom
         }
     }

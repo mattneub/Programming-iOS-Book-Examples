@@ -36,7 +36,7 @@ class ViewController3 : UIViewController {
         return false
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject!) -> Bool {
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         println("view controller 3 should perform returns true")
         return true
     }

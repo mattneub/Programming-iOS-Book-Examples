@@ -13,7 +13,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         let rvc = RootViewController()
         rvc.restorationIdentifier = "root"
-        let nav = UINavigationController(rootViewController:rvc)
+        let nav = UINavigationController(rootViewController:rvc)!
         nav.restorationIdentifier = "nav"
         
         self.window!.rootViewController = nav
@@ -26,11 +26,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         println("app should restore \(coder)")
         // how to examine the coder
         if let idiomraw = coder.decodeObjectForKey(
-            UIApplicationStateRestorationUserInterfaceIdiomKey)
-            as? Int {
+            UIApplicationStateRestorationUserInterfaceIdiomKey) as? Int {
                 if let idiom = UIUserInterfaceIdiom(rawValue:idiomraw) {
                     if idiom == .Phone {
                         println("phone")
+                    } else {
+                        println("pad")
                     }
                 }
         }

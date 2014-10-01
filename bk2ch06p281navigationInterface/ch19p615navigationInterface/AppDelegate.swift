@@ -12,7 +12,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         // and now for some even more disgusting decoration
         
-        let im = UIImage(named:"linen.png")
+        let im = UIImage(named:"linen.png")!
         let sz = CGSizeMake(5,34)
         UIGraphicsBeginImageContextWithOptions(sz, false, 0)
         im.drawAtPoint(CGPointMake(-55,-55))

@@ -11,7 +11,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         let arr = UINib(
-            nibName: "Main", bundle: nil).instantiateWithOwner(
+            nibName: "Main", bundle: nil)!.instantiateWithOwner(
                 nil, options: nil) as [UIViewController]
         self.window!.rootViewController = arr[0]
         
