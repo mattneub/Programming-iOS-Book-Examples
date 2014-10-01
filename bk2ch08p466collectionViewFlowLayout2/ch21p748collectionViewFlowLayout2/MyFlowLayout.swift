@@ -5,7 +5,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
     // how to left-justify every "line" of the layout
     // looks much nicer, in my humble opinion
     
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]! {
+    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
         let arr = super.layoutAttributesForElementsInRect(rect) as [UICollectionViewLayoutAttributes]
         return arr.map {
             atts in
@@ -17,7 +17,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         }
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath!) -> UICollectionViewLayoutAttributes! {
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
         let atts = super.layoutAttributesForItemAtIndexPath(indexPath)
         if indexPath.item == 0 {
             return atts // degenerate case 1
@@ -25,10 +25,10 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         if atts.frame.origin.x - 1 <= self.sectionInset.left {
             return atts // degenerate case 2
         }
-        let ipPrev = NSIndexPath(forItem:indexPath.item-1, inSection:indexPath.section)
-        let fPrev = self.layoutAttributesForItemAtIndexPath(ipPrev).frame
-        let rightPrev = fPrev.origin.x + fPrev.size.width + self.minimumInteritemSpacing
-        atts.frame.origin.x = rightPrev
+        let ipPv = NSIndexPath(forItem:indexPath.item-1, inSection:indexPath.section)
+        let fPv = self.layoutAttributesForItemAtIndexPath(ipPv).frame
+        let rightPv = fPv.origin.x + fPv.size.width + self.minimumInteritemSpacing
+        atts.frame.origin.x = rightPv
         return atts
     }
 

@@ -17,11 +17,11 @@ class ViewController2 : UICollectionViewController {
             flow.headerReferenceSize = CGSizeMake(50,50)
             flow.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10)
         }
-        self.collectionView.reloadData()
+        self.collectionView!.reloadData()
     }
     
     func doFlush (sender:AnyObject) {
-        if let layout = self.collectionView.collectionViewLayout as? MyFlowLayout {
+        if let layout = self.collectionView!.collectionViewLayout as? MyFlowLayout {
             layout.flush()
         }
     }
@@ -31,14 +31,14 @@ class ViewController2 : UICollectionViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        println("\(self.collectionView.dataSource) \(self.collectionView.delegate)")
+        println("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
     }
     
     override func viewDidAppear(animated: Bool)  {
         super.viewDidAppear(animated)
-        println("\(self.collectionView.dataSource) \(self.collectionView.delegate)")
+        println("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
         delay(2) {
-            println("\(self.collectionView.dataSource) \(self.collectionView.delegate)")
+            println("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
         }
     }
     
@@ -46,10 +46,10 @@ class ViewController2 : UICollectionViewController {
     // (this is what I couldn't get Apple to understand; how can the data source and delegate be different?)
     // so I forward delegation back to the other view controller
     
-    func collectionView(collectionView: UICollectionView!,
-        layout collectionViewLayout: UICollectionViewLayout!,
-        sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-            let cv = self.navigationController.viewControllers[0] as ViewController
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+            let cv = self.navigationController!.viewControllers[0] as ViewController
             let result = cv.collectionView(collectionView, layout:collectionViewLayout,
                 sizeForItemAtIndexPath:indexPath)
             return result

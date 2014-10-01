@@ -46,13 +46,13 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         let b2 = UIBarButtonItem(title:"Delete", style:.Plain, target:self, action:"doDelete:")
         self.navigationItem.rightBarButtonItem = b2
         
-        self.collectionView.backgroundColor = UIColor.whiteColor()
-        self.collectionView.allowsMultipleSelection = true
+        self.collectionView!.backgroundColor = UIColor.whiteColor()
+        self.collectionView!.allowsMultipleSelection = true
         
         // register cell, comes from a nib even though we are using a storyboard
-        self.collectionView.registerNib(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier:"Cell")
+        self.collectionView!.registerNib(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier:"Cell")
         // register headers
-        self.collectionView.registerClass(UICollectionReusableView.self,
+        self.collectionView!.registerClass(UICollectionReusableView.self,
             forSupplementaryViewOfKind:UICollectionElementKindSectionHeader,
             withReuseIdentifier:"Header")
         
@@ -60,7 +60,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         
         // if you don't do something about header size...
         // ...you won't see any headers
-        let flow = self.collectionView.collectionViewLayout as UICollectionViewFlowLayout
+        let flow = self.collectionView!.collectionViewLayout as UICollectionViewFlowLayout
         self.setUpFlowLayout(flow)
     }
     
@@ -69,17 +69,17 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         flow.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10) // looks nicer
     }
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return self.sectionNames.count
     }
     
-    override func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.sectionData[section].count
     }
     
     // headers
     
-    override func collectionView(collectionView: UICollectionView!, viewForSupplementaryElementOfKind kind: String!, atIndexPath indexPath: NSIndexPath!) -> UICollectionReusableView! {
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         var v : UICollectionReusableView! = nil
         if kind == UICollectionElementKindSectionHeader {
@@ -111,7 +111,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     // cells
     
-    override func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as Cell
         if cell.lab.text == "Label" { // new cell
@@ -144,7 +144,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             cell.addSubview(iv)
         }
         cell.lab.text = self.sectionData[indexPath.section][indexPath.row]
-        var stateName = cell.lab.text
+        var stateName = cell.lab.text!
         // flag in background! very cute
         stateName = stateName.lowercaseString
         stateName = stateName.stringByReplacingOccurrencesOfString(" ", withString:"")
@@ -163,7 +163,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // simply turning on estimatedItemSize should do it for me (sizing according to constraints)
     // but I have not been able to get that feature to work
     
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         // note; this approach didn't work on iOS 8...
         // ...until I introduced the "container" view
         // systemLayoutSize works on the container view but not on the cell itself in iOS 8
@@ -183,13 +183,13 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // can just change layouts on the fly! with built-in animation!!!
     func doSwitch(sender:AnyObject!) { // button
         // new iOS 7 property collectionView.collectionViewLayout points to *original* layout, which is preserved
-        let oldLayout = self.collectionView.collectionViewLayout as UICollectionViewFlowLayout
+        let oldLayout = self.collectionView!.collectionViewLayout as UICollectionViewFlowLayout
         var newLayout = self.collectionViewLayout as UICollectionViewFlowLayout
         if newLayout == oldLayout {
             newLayout = MyFlowLayout()
         }
         self.setUpFlowLayout(newLayout)
-        self.collectionView.setCollectionViewLayout(newLayout, animated:true)
+        self.collectionView!.setCollectionViewLayout(newLayout, animated:true)
     }
     
     // =======================
@@ -197,12 +197,12 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // deletion, really quite similar to a table view
     
     func doDelete(sender:AnyObject) { // button, delete selected cells
-        let arr = self.collectionView.indexPathsForSelectedItems() as [NSIndexPath]?
-        if arr == nil || arr!.count == 0 {
+        let arr = self.collectionView!.indexPathsForSelectedItems() as [NSIndexPath]
+        if arr.count == 0 {
             return
         }
         // sort
-        let arr2 = (arr! as NSArray).sortedArrayUsingSelector(Selector("compare:")).reverse() as [NSIndexPath]
+        let arr2 = (arr as NSArray).sortedArrayUsingSelector(Selector("compare:")).reverse() as [NSIndexPath]
         // delete data
         var empties = [Int]() // keep track of what sections get emptied
         for ip in arr2 {
@@ -217,12 +217,12 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             emptyset.addIndex(i)
         }
         // request the deletion from the view; notice the slick automatic animation
-        self.collectionView.performBatchUpdates({
-            self.collectionView.deleteItemsAtIndexPaths(arr2)
+        self.collectionView!.performBatchUpdates({
+            self.collectionView!.deleteItemsAtIndexPaths(arr2)
             if empties.count > 0 { // delete empty sections
                 self.sectionNames.removeAtIndexes(empties) // see utility function at top of file
                 self.sectionData.removeAtIndexes(empties)
-                self.collectionView.deleteSections(emptyset)
+                self.collectionView!.deleteSections(emptyset)
             }
             }, completion: nil)
     }
@@ -231,17 +231,17 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     // exactly as for table views
     
-    override func collectionView(collectionView: UICollectionView!, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath!) -> Bool {
+    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         let mi = UIMenuItem(title:"Capital", action:"capital:")
         UIMenuController.sharedMenuController().menuItems = [mi]
         return true
     }
     
-    override func collectionView(collectionView: UICollectionView!, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath!, withSender sender: AnyObject!) -> Bool {
+    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject) -> Bool {
         return (action == "copy:") || (action == "capital:")
     }
     
-    override func collectionView(collectionView: UICollectionView!, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath!, withSender sender: AnyObject!) {
+    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject) {
         // in real life, would do something here
         let state = self.sectionData[indexPath.section][indexPath.row]
         if action == "copy:" {

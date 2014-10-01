@@ -37,31 +37,31 @@ class ViewController : UICollectionViewController {
         self.navigationItem.title = "States"
         let bb = UIBarButtonItem(title:"Push", style:.Plain, target:self, action:"doPush:")
         self.navigationItem.rightBarButtonItem = bb
-        self.collectionView.backgroundColor = UIColor.whiteColor()
-        self.collectionView.allowsMultipleSelection = true
+        self.collectionView!.backgroundColor = UIColor.whiteColor()
+        self.collectionView!.allowsMultipleSelection = true
         
         // register cell, comes from a nib even though we are using a storyboard
-        self.collectionView.registerNib(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier:"Cell")
+        self.collectionView!.registerNib(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier:"Cell")
         // register headers (for the other view controller!)
-        self.collectionView.registerClass(UICollectionReusableView.self,
+        self.collectionView!.registerClass(UICollectionReusableView.self,
             forSupplementaryViewOfKind:UICollectionElementKindSectionHeader,
             withReuseIdentifier:"Header")
 
         // no supplementary views or anything
     }
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return self.sectionNames.count
     }
     
-    override func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.sectionData[section].count
     }
 
     
     // headers
     
-    override func collectionView(collectionView: UICollectionView!, viewForSupplementaryElementOfKind kind: String!, atIndexPath indexPath: NSIndexPath!) -> UICollectionReusableView! {
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         var v : UICollectionReusableView! = nil
         if kind == UICollectionElementKindSectionHeader {
@@ -93,7 +93,7 @@ class ViewController : UICollectionViewController {
     
     // cells
     
-    override func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as Cell
         if cell.lab.text == "Label" { // new cell
@@ -126,7 +126,7 @@ class ViewController : UICollectionViewController {
             cell.addSubview(iv)
         }
         cell.lab.text = self.sectionData[indexPath.section][indexPath.row]
-        var stateName = cell.lab.text
+        var stateName = cell.lab.text!
         // flag in background! very cute
         stateName = stateName.lowercaseString
         stateName = stateName.stringByReplacingOccurrencesOfString(" ", withString:"")
@@ -139,7 +139,7 @@ class ViewController : UICollectionViewController {
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         self.modelCell.lab.text = self.sectionData[indexPath.section][indexPath.row]
         var sz = self.modelCell.container.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)

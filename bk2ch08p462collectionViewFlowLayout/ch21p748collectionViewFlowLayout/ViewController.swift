@@ -29,18 +29,18 @@ class ViewController : UICollectionViewController {
         }
         self.navigationItem.title = "States"
         
-        self.collectionView.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header")
+        self.collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header")
         // if you don't do something about header size...
         // ...you won't see any headers
-        let flow = self.collectionView.collectionViewLayout as UICollectionViewFlowLayout
+        let flow = self.collectionView!.collectionViewLayout as UICollectionViewFlowLayout
         flow.headerReferenceSize = CGSizeMake(30,30)
     }
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return self.sectionNames.count
     }
     
-    override func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.sectionData[section].count
     }
     
@@ -48,7 +48,7 @@ class ViewController : UICollectionViewController {
     
     // headers 
     
-    override func collectionView(collectionView: UICollectionView!, viewForSupplementaryElementOfKind kind: String!, atIndexPath indexPath: NSIndexPath!) -> UICollectionReusableView! {
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         var v : UICollectionReusableView! = nil
         if kind == UICollectionElementKindSectionHeader {
             v = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", forIndexPath:indexPath) as UICollectionReusableView
@@ -64,7 +64,7 @@ class ViewController : UICollectionViewController {
     
     // cells
     
-    override func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath:indexPath) as UICollectionViewCell
         if cell.contentView.subviews.count == 0 {
             cell.contentView.addSubview(UILabel(frame:CGRectMake(0,0,30,30)))
@@ -82,7 +82,7 @@ class ViewController : UICollectionViewController {
 // adjust the size of each cell, as a UICollectionViewDelegateFlowLayout
 
 extension ViewController : UICollectionViewDelegateFlowLayout {
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         // note horrible duplication of code here
         let lab = UILabel(frame:CGRectMake(0,0,30,30))
         lab.text = (self.sectionData)[indexPath.section][indexPath.item]

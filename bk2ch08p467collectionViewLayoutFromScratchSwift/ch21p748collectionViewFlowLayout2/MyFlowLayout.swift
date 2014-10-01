@@ -21,7 +21,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
     var animating = false
     var animator : UIDynamicAnimator!
     
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]! {
+    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject] {
         let sup = super.layoutAttributesForElementsInRect(rect) as [UICollectionViewLayoutAttributes]
         let arr = sup.map {
             atts -> UICollectionViewLayoutAttributes in
@@ -53,7 +53,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         return arr
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath!) -> UICollectionViewLayoutAttributes! {
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
         let atts = super.layoutAttributesForItemAtIndexPath(indexPath)
         if indexPath.item == 0 {
             return atts // degenerate case 1
@@ -71,7 +71,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
     func flush () {
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         
-        let visworld = self.collectionView.bounds
+        let visworld = self.collectionView!.bounds
         let anim = MyDynamicAnimator(collectionViewLayout:self)
         self.animator = anim
         
@@ -120,7 +120,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
 }
 
 extension MyFlowLayout : UICollisionBehaviorDelegate {
-    func collisionBehavior(behavior: UICollisionBehavior!, beganContactForItem item: UIDynamicItem!, withBoundaryIdentifier identifier: NSCopying!, atPoint p: CGPoint) {
+    func collisionBehavior(behavior: UICollisionBehavior, beganContactForItem item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying, atPoint p: CGPoint) {
     
         let push = UIPushBehavior(items:[item], mode:.Continuous)
         push.setAngle(3*CGFloat(M_PI)/4.0, magnitude:1.5)
