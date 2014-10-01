@@ -28,7 +28,7 @@ class ViewController : UIViewController {
         case 2:
             // a layer can have image content
             let lay4 = CALayer()
-            let im = UIImage(named:"smiley")
+            let im = UIImage(named:"smiley")!
             lay4.frame = CGRect(origin:CGPointMake(180,180), size:im.size)
             lay4.contents = im.CGImage // no need to remember to cast to id
             // but you do still need to remember to take the CGImage
