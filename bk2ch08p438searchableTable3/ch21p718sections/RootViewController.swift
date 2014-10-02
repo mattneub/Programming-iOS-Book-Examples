@@ -167,9 +167,7 @@ extension RootViewController : UISearchResultsUpdating {
             (sec:[String]) -> String in
             //return (sec[0] as NSString).substringWithRange(NSMakeRange(0,1))
             //I don't know, it's either that or this:
-            let s = sec[0]
-            let arr = Array(s)
-            return String(arr[0])
+            return String(Array(sec[0])[0])
         }
         self.tableView.reloadData()
     }
