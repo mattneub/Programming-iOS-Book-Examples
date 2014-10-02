@@ -18,6 +18,10 @@ class RootViewController: UITableViewController {
         super.viewDidLoad()
 //        self.refreshControl = UIRefreshControl()
 //        self.refreshControl!.addTarget(self, action: "doRefresh", forControlEvents: .ValueChanged)
+        
+//        let v = UIView()
+//        v.backgroundColor = UIColor.blackColor()
+//        self.tableView.backgroundView = v
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
