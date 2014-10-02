@@ -66,7 +66,7 @@ class RootViewController : UITableViewController {
         
         let ud = NSUserDefaults.standardUserDefaults()
         let setting = tv.cellForRowAtIndexPath(indexPath)!.textLabel!.text
-        let header = self.tableView(tv, titleForHeaderInSection:indexPath.section)
+        let header = self.tableView(tv, titleForHeaderInSection:indexPath.section)!
         ud.setValue(setting, forKey:header)
         
         NSLog("%@", "about to reload!")

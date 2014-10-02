@@ -15,7 +15,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     var sectionData = [[String]]()
     lazy var modelCell : Cell = { // load lazily from nib
         () -> Cell in
-        let arr = UINib(nibName:"Cell", bundle:nil).instantiateWithOwner(nil, options:nil)
+        let arr = UINib(nibName:"Cell", bundle:nil)!.instantiateWithOwner(nil, options:nil)
         return arr[0] as Cell
         }()
     
@@ -24,7 +24,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     override func viewDidLoad() {
-        let s = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)
+        let s = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
         let states = s.componentsSeparatedByString("\n") as [String]
         var previous = ""
         for aState in states {
@@ -67,6 +67,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     func setUpFlowLayout(flow:UICollectionViewFlowLayout) {
         flow.headerReferenceSize = CGSizeMake(50,50) // larger - we will place label within this
         flow.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10) // looks nicer
+        // uncomment to crash
+        // flow.estimatedItemSize = CGSizeMake(100,30)
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -129,7 +131,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             shadow.shadowBlurRadius = 4
             let check2 =
             NSAttributedString(string:"\u{2714}", attributes:[
-                NSFontAttributeName: UIFont(name:"ZapfDingbatsITC", size:24),
+                NSFontAttributeName: UIFont(name:"ZapfDingbatsITC", size:24)!,
                 NSForegroundColorAttributeName: UIColor.greenColor(),
                 NSStrokeColorAttributeName: UIColor.redColor(),
                 NSStrokeWidthAttributeName: -4,
@@ -168,8 +170,11 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // ...until I introduced the "container" view
         // systemLayoutSize works on the container view but not on the cell itself in iOS 8
         // (perhaps because the nib lacks a contentView)
+        // Oooh, fixed (6.1)!
         self.modelCell.lab.text = self.sectionData[indexPath.section][indexPath.row]
-        var sz = self.modelCell.container.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        //the "container" workaround is no longer needed
+        //var sz = self.modelCell.container.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        var sz = self.modelCell.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)
         return sz
     }
@@ -232,7 +237,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // exactly as for table views
     
     override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        let mi = UIMenuItem(title:"Capital", action:"capital:")
+        let mi = UIMenuItem(title:"Capital", action:"capital:")!
         UIMenuController.sharedMenuController().menuItems = [mi]
         return true
     }

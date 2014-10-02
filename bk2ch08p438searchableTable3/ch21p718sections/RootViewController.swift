@@ -15,7 +15,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func viewDidLoad() {
-        let s = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)
+        let s = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
         let states = s.componentsSeparatedByString("\n") as [String]
         var previous = ""
         for aState in states {
@@ -158,8 +158,8 @@ extension RootViewController : UISearchResultsUpdating {
             let newsec = sec.filter {
                 s in
                 let options = NSStringCompareOptions.CaseInsensitiveSearch
-                let found = (s as NSString).rangeOfString(target, options: options).length
-                return (found != 0)
+                let found = s.rangeOfString(target, options: options)
+                return (found != nil)
             }
             return newsec
             }.filter {$0.count > 0} // is Swift cool or what?

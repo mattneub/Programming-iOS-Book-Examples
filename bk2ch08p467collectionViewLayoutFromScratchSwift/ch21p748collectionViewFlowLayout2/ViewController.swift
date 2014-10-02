@@ -14,12 +14,12 @@ class ViewController : UICollectionViewController {
     var sectionData = [[String]]()
     lazy var modelCell : Cell = { // load lazily from nib
         () -> Cell in
-        let arr = UINib(nibName:"Cell", bundle:nil).instantiateWithOwner(nil, options:nil)
+        let arr = UINib(nibName:"Cell", bundle:nil)!.instantiateWithOwner(nil, options:nil)
         return arr[0] as Cell
         }()
 
     override func viewDidLoad() {
-        let s = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)
+        let s = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
         let states = s.componentsSeparatedByString("\n") as [String]
         var previous = ""
         for aState in states {
@@ -111,7 +111,7 @@ class ViewController : UICollectionViewController {
             shadow.shadowBlurRadius = 4
             let check2 =
             NSAttributedString(string:"\u{2714}", attributes:[
-                NSFontAttributeName: UIFont(name:"ZapfDingbatsITC", size:24),
+                NSFontAttributeName: UIFont(name:"ZapfDingbatsITC", size:24)!,
                 NSForegroundColorAttributeName: UIColor.greenColor(),
                 NSStrokeColorAttributeName: UIColor.redColor(),
                 NSStrokeWidthAttributeName: -4,

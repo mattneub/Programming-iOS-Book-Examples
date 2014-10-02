@@ -6,7 +6,7 @@ class ViewController : UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let layout = self.collectionView.collectionViewLayout as UICollectionViewFlowLayout
+        let layout = self.collectionView!.collectionViewLayout as UICollectionViewFlowLayout
         layout.itemSize = CGSizeMake(150,50)
         
         let v = UIView()
@@ -19,11 +19,11 @@ class ViewController : UICollectionViewController {
         return true
     }
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 20
     }
     
@@ -41,7 +41,7 @@ class ViewController : UICollectionViewController {
     the content view and its contents are on top of that
     */
     
-    override func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell",
         forIndexPath:indexPath) as UICollectionViewCell
         if cell.backgroundView == nil { // brand new cell

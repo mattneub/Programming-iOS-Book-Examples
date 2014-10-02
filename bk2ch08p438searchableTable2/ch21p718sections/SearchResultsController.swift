@@ -56,8 +56,8 @@ extension SearchResultsController : UISearchResultsUpdating {
             if searchController.searchBar.selectedScopeButtonIndex == 0 {
                 options = options | .AnchoredSearch
             }
-            let found = (s as NSString).rangeOfString(target, options: options).length
-            return (found != 0)
+            let found = s.rangeOfString(target, options: options)
+            return (found != nil)
         }
         self.tableView.reloadData()
     }

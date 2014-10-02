@@ -72,7 +72,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         
         let visworld = self.collectionView!.bounds
-        let anim = MyDynamicAnimator(collectionViewLayout:self)
+        let anim = MyDynamicAnimator(collectionViewLayout:self)!
         self.animator = anim
         
         let atts = self.layoutAttributesForElementsInRect(visworld)
@@ -93,12 +93,12 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         coll.collisionDelegate = self
         anim.addBehavior(coll)
 
-        let beh = UIDynamicItemBehavior(items:atts)
+        let beh = UIDynamicItemBehavior(items:atts)!
         beh.elasticity = 0.8
         beh.friction = 0.1
         anim.addBehavior(beh)
         
-        let grav = UIGravityBehavior(items:atts)
+        let grav = UIGravityBehavior(items:atts)!
         grav.magnitude = 0.8
         grav.action = {
             let atts = self.animator.itemsInRect(visworld)

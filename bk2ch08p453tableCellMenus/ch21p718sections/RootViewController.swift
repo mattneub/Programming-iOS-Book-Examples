@@ -11,7 +11,7 @@ class RootViewController : UITableViewController {
     }
     
     override func viewDidLoad() {
-        let s = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)
+        let s = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
         let states = s.componentsSeparatedByString("\n") as [String]
         var previous = ""
         for aState in states {
