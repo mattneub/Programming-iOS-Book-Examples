@@ -12,8 +12,8 @@ class MyScalableView : UIView {
     override func drawRect(rect: CGRect) {
         println("rect: \(rect); bounds: \(self.bounds); scale: \(self.layer.contentsScale)")
         
-        let path = NSBundle.mainBundle().pathForResource("earthFromSaturn", ofType:"png")
-        let im = UIImage(contentsOfFile:path!)
+        let path = NSBundle.mainBundle().pathForResource("earthFromSaturn", ofType:"png")!
+        let im = UIImage(contentsOfFile:path)!
         im.drawInRect(rect)
     }
     

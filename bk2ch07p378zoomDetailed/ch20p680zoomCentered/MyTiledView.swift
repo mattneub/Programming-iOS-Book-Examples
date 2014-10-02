@@ -48,8 +48,8 @@ class MyTiledView : UIView {
                 let sc = tr.a/lay.contentsScale
                 let scale = sc/4.0
                 
-                let path = NSBundle.mainBundle().pathForResource("earthFromSaturn", ofType:"png")
-                let im = UIImage(contentsOfFile:path!)
+                let path = NSBundle.mainBundle().pathForResource("earthFromSaturn", ofType:"png")!
+                let im = UIImage(contentsOfFile:path)!
                 let sz = CGSizeMake(im.size.width * scale, im.size.height * scale)
                 UIGraphicsBeginImageContextWithOptions(sz, true, 1)
                 im.drawInRect(CGRectMake(0,0,sz.width,sz.height))

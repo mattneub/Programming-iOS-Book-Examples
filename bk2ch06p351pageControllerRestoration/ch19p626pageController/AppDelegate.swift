@@ -81,10 +81,10 @@ extension AppDelegate : UIPageViewControllerDataSource {
     
     // if these methods are implemented, page indicator appears
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController!) -> Int {
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
         return self.pep.count
     }
-    func presentationIndexForPageViewController(pvc: UIPageViewController!) -> Int {
+    func presentationIndexForPageViewController(pvc: UIPageViewController) -> Int {
         let page = pvc.viewControllers[0] as Pep
         let boy = page.boy
         return find(self.pep, boy)!
