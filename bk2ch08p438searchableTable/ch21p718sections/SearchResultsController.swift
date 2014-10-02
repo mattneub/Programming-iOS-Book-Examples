@@ -17,13 +17,7 @@ class SearchResultsController : UITableViewController {
     
     init(data:[[String]]) {
         // we don't use sections, so flatten the data into a single array of strings
-        var flattened = [String]()
-        for arr in data {
-            for s in arr {
-                flattened += [s]
-            }
-        }
-        self.originalData = flattened
+        self.originalData = data.reduce([String](),+)
         super.init(nibName: nil, bundle: nil)
     }
     
