@@ -15,7 +15,7 @@ class MyLayout : UICollectionViewLayout {
         // how many items are there in total?
         let total = Array(0 ..< sections).map {
             self.collectionView!.numberOfItemsInSection($0)
-            }.reduce(0, combine:+)
+            }.reduce(0, +)
         
         // work out cell size based on bounds size
         let sz = self.collectionView!.bounds.size
