@@ -7,7 +7,7 @@ import UIKit
 
 class ExtraViewController : UIViewController {
     
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: "ExtraViewController", bundle: nibBundleOrNil)
         self.modalPresentationStyle = .CurrentContext
         self.preferredContentSize = CGSizeMake(320,220)

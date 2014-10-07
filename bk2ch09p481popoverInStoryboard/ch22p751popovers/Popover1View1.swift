@@ -9,11 +9,11 @@ class Popover1View1 : UITableViewController {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier:"Cell")
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var result = 0
         switch section {
         case 0:
@@ -23,7 +23,7 @@ class Popover1View1 : UITableViewController {
         return result
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
         
         let section = indexPath.section
@@ -33,9 +33,9 @@ class Popover1View1 : UITableViewController {
         case 0:
             switch row {
             case 0:
-                cell.textLabel.text = "First"
+                cell.textLabel!.text = "First"
             case 1:
-                cell.textLabel.text = "Second"
+                cell.textLabel!.text = "Second"
             default:break
             }
             cell.accessoryType = (choice == row ?
@@ -46,7 +46,7 @@ class Popover1View1 : UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let section = indexPath.section
         let row = indexPath.row
         switch section {

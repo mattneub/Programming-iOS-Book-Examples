@@ -22,7 +22,8 @@ class ViewController : UIViewController {
     
     @IBAction func doPopover1(sender:AnyObject?) {
         let vc = Popover1View1()
-        let nav = UINavigationController(rootViewController: vc)
+        // vc.modalInPopover = true
+        let nav = UINavigationController(rootViewController: vc)!
         let b = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self,
             action: "cancelPop1:")
         vc.navigationItem.rightBarButtonItem = b
@@ -33,22 +34,27 @@ class ViewController : UIViewController {
         bb.addTarget(self, action:"doPresent:", forControlEvents:.TouchUpInside)
         bb.sizeToFit()
         vc.navigationItem.titleView = bb
-
+        //hmm, this feels like a bug: merely examining the presentation controller...
+        //freezes it so that it never becomes a popover presentation controller
+        //println(nav.presentationController)
         nav.modalPresentationStyle = .Popover
+        //println(nav.presentationController)
         self.presentViewController(nav, animated: true, completion: nil)
+        
         // where's the configuration for the popover controller?
         // we can do it _after_ presentation
-        let pop = nav.popoverPresentationController // self-contained; no need to retain or track!
-        pop.barButtonItem = sender as UIBarButtonItem // who arrow points to
-        pop.delegate = self
-        // if you want to prevent toolbar buttons from being active
-        // by setting passthroughViews to nil, you must use non-zero delayed performance
-        // I find this annoying; why does the toolbar default to being active?
-        delay(0.1) {
-            pop.passthroughViews = nil
-        }
-        // just playing with appearance; try it with and without
+        if let pop = nav.popoverPresentationController { // self-contained; no need to retain or track!
+            pop.barButtonItem = sender as UIBarButtonItem // who arrow points to
+            pop.delegate = self
+            // if you want to prevent toolbar buttons from being active
+            // by setting passthroughViews to nil, you must use non-zero delayed performance
+            // I find this annoying; why does the toolbar default to being active?
+            delay(0.1) {
+                pop.passthroughViews = nil
+            }
+            // just playing with appearance; try it with and without
         pop.backgroundColor = UIColor.yellowColor() // visible as arrow color
+        }
         nav.navigationBar.barTintColor = UIColor.redColor() // works in iOS 8
         //nav.navigationBar.backgroundColor = UIColor.redColor()
         nav.navigationBar.tintColor = UIColor.whiteColor()
@@ -75,7 +81,7 @@ class ViewController : UIViewController {
         // this is because the popover controller is a UIContentContainer...
         // and can respond to preferred size changes from its child
         let evc = ExtraViewController(nibName: nil, bundle: nil)
-        self.presentedViewController.presentViewController(evc, animated: true, completion: nil)
+        self.presentedViewController!.presentViewController(evc, animated: true, completion: nil)
     }
     
     // demonstrating how to summon a popover attached to an ordinary view
@@ -87,12 +93,13 @@ class ViewController : UIViewController {
         let vc = UIViewController()
         vc.modalPresentationStyle = .Popover
         self.presentViewController(vc, animated: true, completion: nil)
-        let pop = vc.popoverPresentationController
-        pop.sourceView = v
-        pop.sourceRect = v.bounds
-        pop.delegate = self
-        // not working here either
-        pop.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 30)
+        if let pop = vc.popoverPresentationController {
+            pop.sourceView = v
+            pop.sourceRect = v.bounds
+            pop.delegate = self
+            // not working here either
+            pop.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 30)
+        }
     }
     
     // second popover, demonstrating some additional configuration features
@@ -100,8 +107,8 @@ class ViewController : UIViewController {
     @IBAction func doPopover2 (sender:AnyObject) {
         let vc = UIViewController()
         vc.modalPresentationStyle = .Popover
+        // vc.modalInPopover = true
         self.presentViewController(vc, animated: true, completion: nil)
-        let pop = vc.popoverPresentationController
         // vc's view is now loaded and we are free to configure it further
         vc.view.frame = CGRectMake(0,0,300,300)
         vc.view.backgroundColor = UIColor.greenColor()
@@ -114,26 +121,32 @@ class ViewController : UIViewController {
         vc.view.addSubview(label)
         let t = UITapGestureRecognizer(target:self, action:"tapped:")
         vc.view.addGestureRecognizer(t)
-        // we can dictate the background view
-        pop.popoverBackgroundViewClass = MyPopoverBackgroundView.self
-        pop.barButtonItem = sender as UIBarButtonItem
-        // we can force the popover further from the edge of the screen
-        // silly example: just a little extra space at this popover's right
-        // but it isn't working; this may be an iOS 8 bug
-        pop.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 30)
-        pop.delegate = self
-        delay(0.1) {
-            pop.passthroughViews = nil
+        if let pop = vc.popoverPresentationController {
+            vc.modalInPopover = true
+            // we can dictate the background view
+            pop.popoverBackgroundViewClass = MyPopoverBackgroundView.self
+            pop.barButtonItem = sender as UIBarButtonItem
+            // we can force the popover further from the edge of the screen
+            // silly example: just a little extra space at this popover's right
+            // but it isn't working; this may be an iOS 8 bug
+            pop.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 30)
+            pop.delegate = self
+            delay(0.1) {
+                pop.passthroughViews = nil
+            }
         }
     }
     
     func tapped (sender:AnyObject) {
+        println("tap")
+        let presenter = self.presentedViewController!
+        presenter.modalInPopover = true // no effect
         let vc = UIViewController()
-        vc.modalPresentationStyle = .CurrentContext
+        vc.modalInPopover = true // no effect
+        vc.modalPresentationStyle = .CurrentContext // oooh
         vc.view.frame = CGRectMake(0,0,300,300)
         vc.view.backgroundColor = UIColor.whiteColor()
         vc.preferredContentSize = vc.view.bounds.size
-        vc.modalInPopover = false // no result; it gets set again later to YES
         let b = UIButton.buttonWithType(.System) as UIButton
         b.setTitle("Done", forState:.Normal)
         b.sizeToFit()
@@ -144,19 +157,20 @@ class ViewController : UIViewController {
         vc.view.addSubview(b)
         // uncomment next line if you'd like to experiment
         // previously, only coverVertical was legal, but in iOS this restriction is lifted
-        // vc.modalTransitionStyle = .CrossDissolve
-        let presenter = self.presentedViewController
+        vc.modalTransitionStyle = .FlipHorizontal // wow, this looks really cool
         presenter.presentViewController(vc, animated:true, completion:{
                 _ in println("presented")
             })
-        // uncomment next line and we'll be non-modal, but you shouldn't
-        // vc.modalInPopover = NO;
+        vc.modalInPopover = true // no effect
         //self.currentPop.passthroughViews = nil;
+        delay(1) {
+            println(vc.modalInPopover)
+        }
     }
     
     func done (sender:AnyObject) {
         var r = sender as UIResponder
-        do { r = r.nextResponder() } while !(r is UIViewController)
+        do { r = r.nextResponder()! } while !(r is UIViewController)
         (r as UIViewController).dismissViewControllerAnimated(true, completion: {
             println("dismissed")
             })
@@ -168,7 +182,7 @@ extension ViewController : UINavigationControllerDelegate {
     // this bug is evident when you tap the Change Size row and navigate back:
     // the height doesn't change back
 
-    func navigationController(nc: UINavigationController!, didShowViewController vc: UIViewController!, animated: Bool) {
+    func navigationController(nc: UINavigationController, didShowViewController vc: UIViewController, animated: Bool) {
         nc.preferredContentSize = vc.preferredContentSize
     }
 
@@ -176,7 +190,7 @@ extension ViewController : UINavigationControllerDelegate {
 
 extension ViewController : UIPopoverPresentationControllerDelegate {
     
-    func prepareForPopoverPresentation(pop: UIPopoverPresentationController!) {
+    func prepareForPopoverPresentation(pop: UIPopoverPresentationController) {
         if pop.presentedViewController is UINavigationController {
             // this is a popover where the user can make changes but then cancel them
             // thus we need to preserve the current values in case we have to revert (cancel) later
@@ -184,15 +198,16 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
         }
     }
     
-    func popoverPresentationControllerDidDismissPopover(pop: UIPopoverPresentationController!) {
+    func popoverPresentationControllerDidDismissPopover(pop: UIPopoverPresentationController) {
         if pop.presentedViewController is UINavigationController {
             // user cancelled, restore defaults
             NSUserDefaults.standardUserDefaults().setInteger(self.oldChoice, forKey: "choice")
         }
     }
     
-    func popoverPresentationController(popoverPresentationController: UIPopoverPresentationController!, willRepositionPopoverToRect rect: UnsafeMutablePointer<CGRect>, inView view: AutoreleasingUnsafeMutablePointer<UIView?>) {
+    func popoverPresentationController(popoverPresentationController: UIPopoverPresentationController, willRepositionPopoverToRect rect: UnsafeMutablePointer<CGRect>, inView view: AutoreleasingUnsafeMutablePointer<UIView?>) {
         // just playing (also, note how to talk thru pointer parameter in Swift)
+        println("reposition")
         if view.memory == self.button {
             rect.memory = self.button2.bounds
             view.memory = self.button2

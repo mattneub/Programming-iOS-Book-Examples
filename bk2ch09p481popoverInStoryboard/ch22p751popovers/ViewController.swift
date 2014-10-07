@@ -24,27 +24,29 @@ class ViewController : UIViewController, UIToolbarDelegate {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        println(segue)
         let dest = segue.destinationViewController as UIViewController
-        let pop = dest.popoverPresentationController
-        pop.delegate = self
-        delay(0.1) {
-            pop.passthroughViews = nil
+        if let pop = dest.popoverPresentationController {
+            pop.delegate = self
+            delay(0.1) {
+                pop.passthroughViews = nil
+            }
+            pop.permittedArrowDirections = .Up | .Down
         }
-        pop.permittedArrowDirections = .Up | .Down
         self.oldChoice = NSUserDefaults.standardUserDefaults().integerForKey("choice")
     }
 }
 
 extension ViewController : UIPopoverPresentationControllerDelegate {
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController!) -> UIModalPresentationStyle {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         // try swapping these; it works
         return .FullScreen
         // return .None
     }
     
-    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController!) {
+    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
         NSUserDefaults.standardUserDefaults().setInteger(self.oldChoice, forKey: "choice")
     }
 
