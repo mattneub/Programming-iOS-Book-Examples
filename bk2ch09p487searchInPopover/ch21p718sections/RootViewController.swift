@@ -44,10 +44,12 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         searcher.searchResultsUpdater = src
         // put the search controller's search bar into the interface
         let b = searcher.searchBar
-        b.sizeToFit()
-        b.frame.size.width = 250
+        // b.sizeToFit()
+        // b.frame.size.width = 250
         b.autocapitalizationType = .None
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: b)
+        self.navigationItem.titleView = b
+        b.showsCancelButton = true // no effect
+
         
         // could proceed to configure the UISearchController further...
         // or could configure its presentationController (a UIPopoverPresentationController)
@@ -55,7 +57,8 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         
         // however, I'm having difficulty detecting dismissal of the popover
         searcher.delegate = self
-        (searcher.presentationController as UIPopoverPresentationController).delegate = self
+        searcher.presentationController?.delegate = self
+//        (searcher.presentationController as UIPopoverPresentationController).delegate = self
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -93,7 +96,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
         let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as UITableViewHeaderFooterView
         if h.tintColor != UIColor.redColor() {
-            println("configuring a new header view") // only called about 7 times
+            // println("configuring a new header view") // only called about 7 times
             h.tintColor = UIColor.redColor() // invisible marker, tee-hee
             h.backgroundView = UIView()
             h.backgroundView!.backgroundColor = UIColor.blackColor()
@@ -139,20 +142,24 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
 }
 
 extension RootViewController : UISearchControllerDelegate {
-    func willDismissSearchController(searchController: UISearchController!) {
-        println("sc dismiss") // no; bug?
-    }
+    func willPresentSearchController(searchController: UISearchController) { println(__FUNCTION__) }
+    func didPresentSearchController(searchController: UISearchController) { println(__FUNCTION__) }
+    // but these are never called; I regard this as a bug
+    func willDismissSearchController(searchController: UISearchController) { println(__FUNCTION__) }
+    func didDismissSearchController(searchController: UISearchController) { println(__FUNCTION__) }
 }
 extension RootViewController : UIPopoverPresentationControllerDelegate {
     func prepareForPopoverPresentation(popoverPresentationController: UIPopoverPresentationController) {
-        println("prepare")  // no, not after first time; bug?
+        println("prepare")
     }
-    func popoverPresentationControllerShouldDismissPopover(popoverPresentationController: UIPopoverPresentationController) -> Bool {
-        println("pop should dismiss") // no, not after first time; bug?
+    func popoverPresentationControllerShouldDismissPopover(pop: UIPopoverPresentationController) -> Bool {
+        println("pop should dismiss")
+        self.searcher.searchBar.text = nil // woo-hoo! fix dismissal failure to empty
         return true
     }
-    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController!) {
-        println("pop dismiss") // no, not after the first time; bug?
+    func popoverPresentationControllerDidDismissPopover(pop: UIPopoverPresentationController) {
+        println("pop dismiss")
+        self.searcher.presentationController?.delegate = self // this is the big bug fix
     }
 }
 

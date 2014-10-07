@@ -64,18 +64,7 @@ and reload the table.
 
 extension SearchResultsController : UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        println("here")
-        
-        let sc = searchController
-        println(sc)
-        let pres = searchController.presentationController
-        println(pres)
-        let del = pres?.delegate
-        println(del)
-        // nailed it down: the popover controller is changing to a different popover controller...
-        // and the new popover controller has no delegate
-        
-        
+        println("update")
         let sb = searchController.searchBar
         let target = sb.text
         self.filteredData = self.originalData.filter {
