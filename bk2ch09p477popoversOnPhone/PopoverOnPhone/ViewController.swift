@@ -49,8 +49,8 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
         // we could do some sort of check here...
         // ...but the important thing is: we won't even be consulted except in an "adaptive" situation
         // i.e. it's not an iPad
-        //return .FullScreen
-        return .None
+        return .FullScreen
+        //return .None
     }
     
     // trick #3: fix the interface for iPhone, but this won't be called
