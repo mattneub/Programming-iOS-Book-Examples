@@ -3,7 +3,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     /*
     It's important to study the storyboard:
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Override point for customization after application launch.
         let svc = self.window!.rootViewController as UISplitViewController
         // place button in detail controller's nav bar
-        let nav = (svc.viewControllers as NSArray).lastObject as UINavigationController
+        let nav = svc.viewControllers.last as UINavigationController
         // new in iOS 8, split v.c. vends the button with a method
         // note duplication!
         // the button will be added when the user taps a row in the master v.c....
@@ -37,21 +37,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         svc.delegate = self
         return true
     }
-    
-    
-    // MARK: - Split view
-    
+}
+
+extension AppDelegate: UISplitViewControllerDelegate {
+
     // on iPhone, the split v.c. will be "collapsed"
     // this means the second view controller is "merged" onto the first in appropriate way
     // with a nav interface, what's appropriate is:
     // discard the 2nd nav controller, push 2nd v.c. onto 1st nav controller
     
-    func primaryViewControllerForCollapsingSplitViewController(splitViewController: UISplitViewController!) -> UIViewController! {
+    func primaryViewControllerForCollapsingSplitViewController(splitViewController: UISplitViewController) -> UIViewController? {
         println("delegate primary view for collapsing, returning nil")
         return nil // means just do what you would normally do
     }
 
-    func splitViewController(splitViewController: UISplitViewController!, collapseSecondaryViewController vc2:UIViewController!, ontoPrimaryViewController vc1:UIViewController!) -> Bool {
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController vc2:UIViewController, ontoPrimaryViewController vc1:UIViewController) -> Bool {
         println("begin delegate collapse")
         if let vc2 = vc2 as? UINavigationController {
             if let detail = vc2.topViewController as? DetailViewController {
@@ -67,6 +67,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         }
         println("end delegate collapse, returning false")
         return false
+    }
+    
+
+    func targetDisplayModeForActionInSplitViewController(svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
+        println("mode?")
+        return .Automatic
+    }
+    
+    
+    func splitViewController(svc: UISplitViewController, willChangeToDisplayMode displayMode: UISplitViewControllerDisplayMode) {
+        println("changing to mode: \(displayMode.rawValue)")
     }
 
 }

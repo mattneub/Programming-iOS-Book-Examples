@@ -43,18 +43,19 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController {
-    override func targetViewControllerForAction(action: Selector, sender: AnyObject!) -> UIViewController! {
+    override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
+        println("detail view controller target for \(action)...")
         let result = super.targetViewControllerForAction(action, sender: sender)
         println("detail view controller target for \(action), returning \(result)")
         return result
     }
     
-    override func showViewController(vc: UIViewController!, sender: AnyObject!) {
+    override func showViewController(vc: UIViewController, sender: AnyObject?) {
         println("detail view controller showViewController")
         super.showViewController(vc, sender: sender)
     }
     
-    override func showDetailViewController(vc: UIViewController!, sender: AnyObject!) {
+    override func showDetailViewController(vc: UIViewController, sender: AnyObject?) {
         println("detail view controller showDetailViewController")
         super.showDetailViewController(vc, sender: sender)
     }

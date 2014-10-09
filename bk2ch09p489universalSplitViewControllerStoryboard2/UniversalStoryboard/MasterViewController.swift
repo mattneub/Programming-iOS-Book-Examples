@@ -37,7 +37,7 @@ class MasterViewController: UITableViewController {
     }
     
     func insertNewObject(sender: AnyObject) {
-        objects.insert(NSDate.date(), atIndex: 0)
+        objects.insert(NSDate(), atIndex: 0)
         let ip = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([ip], withRowAnimation: .Automatic)
     }
@@ -46,7 +46,7 @@ class MasterViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
-            let ip = self.tableView.indexPathForSelectedRow()
+            let ip = self.tableView.indexPathForSelectedRow()!
             let object = objects[ip.row] as NSDate
             let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
             println("prepare for segue")
@@ -54,7 +54,7 @@ class MasterViewController: UITableViewController {
             controller.detailItem = object
             // just proving that when collapsed, svc has just the one child
             // basically that child is now in total charge of the interface
-            println("children of svc: \(self.splitViewController.viewControllers)")
+            println("children of svc: \(self.splitViewController!.viewControllers)")
             // again, duplication from AppDelegate
             // the problem is that if we do this segue...
             // the detail view navigation controller is completely replaced,
@@ -76,7 +76,7 @@ class MasterViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         let object = objects[indexPath.row] as NSDate
-        cell.textLabel.text = object.description
+        cell.textLabel!.text = object.description
         return cell
     }
     

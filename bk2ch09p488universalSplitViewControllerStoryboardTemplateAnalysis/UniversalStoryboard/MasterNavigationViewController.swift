@@ -1,6 +1,14 @@
 
 
 import UIKit
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
 
 class MasterNavigationViewController : UINavigationController {
     // logging to show how things work
@@ -13,9 +21,26 @@ class MasterNavigationViewController : UINavigationController {
     // it turns around and sends showViewController to the nav controller in the primary!
     // thus it gets pushed onto the stack
     
-    override func showViewController(vc: UIViewController!, sender: AnyObject!) {
-        println("master NAV view controller showViewController")
+    override func showViewController(vc: UIViewController, sender: AnyObject?) {
+        println("master NAV view controller showViewController: \(vc)")
         super.showViewController(vc, sender: sender)
+        delay(1) {
+            println(self.viewControllers)
+        }
     }
+    
+    override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
+        println("master NAV view controller target for \(action)...")
+        let result = super.targetViewControllerForAction(action, sender: sender)
+        println("master NAV view controller target for \(action), returning \(result)")
+        return result
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true // no effect
+    }
+    
+
+
 
 }

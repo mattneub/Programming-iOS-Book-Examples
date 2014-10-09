@@ -13,7 +13,7 @@ class ContainerViewController : UIViewController {
     @IBOutlet var topConstraint: NSLayoutConstraint!
     var didInitialSetup = false
     
-    override func addChildViewController(childController: UIViewController!) {
+    override func addChildViewController(childController: UIViewController) {
         super.addChildViewController(childController)
         if let svc = self.childViewControllers[0] as? UISplitViewController {
             svc.delegate = self // need to do this as early as humanly possible
@@ -64,7 +64,7 @@ class ContainerViewController : UIViewController {
     // another variant (see Apple's AdaptivePhotos example):
     // don't override traits on launch (so, portrait, collapsed)
     // but do override just in case we rotate to landscape
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         let svc = self.childViewControllers[0] as UISplitViewController
         if which == 2 {
             if size.width > 320 {

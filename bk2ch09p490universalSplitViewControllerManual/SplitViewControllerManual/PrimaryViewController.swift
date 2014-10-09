@@ -26,7 +26,7 @@ class PrimaryViewController : UIViewController {
         
         // configure our view
         self.view.backgroundColor = UIColor.greenColor()
-        let seg = UISegmentedControl(items: ["White","Red"])
+        let seg = UISegmentedControl(items: ["White","Red"])!
         seg.selectedSegmentIndex = 1
         self.view.addSubview(seg)
         seg.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -43,8 +43,8 @@ class PrimaryViewController : UIViewController {
         var vc : UIViewController
         // note this expression of the difference as to where the Secondary will be,
         // depending whether the svc is expanded or collapsed
-        if !self.splitViewController.collapsed {
-            vc = self.splitViewController.viewControllers[1] as UIViewController
+        if !self.splitViewController!.collapsed {
+            vc = self.splitViewController!.viewControllers[1] as UIViewController
         } else {
             vc = self.childViewControllers[0] as UIViewController
         }
@@ -66,7 +66,7 @@ class PrimaryViewController : UIViewController {
     // if this were an interface where collapsed could turn to expanded,
     // we would also need to implement the inverse operation
     
-    override func collapseSecondaryViewController(vc2: UIViewController!, forSplitViewController splitViewController: UISplitViewController!) {
+    override func collapseSecondaryViewController(vc2: UIViewController, forSplitViewController splitViewController: UISplitViewController) {
         self.addChildViewController(vc2)
         self.view.addSubview(vc2.view)
         vc2.didMoveToParentViewController(self)
@@ -85,7 +85,7 @@ class PrimaryViewController : UIViewController {
 // ...so that the secondary can find the primary in an agnostic way
 
 // to use targetViewControllerForAction for a custom action, 
-// you need to an extentsion to satisfy the compiler
+// you need to an extension to satisfy the compiler
 
 extension UIViewController {
     dynamic func showHide(sender:AnyObject) {} // in seed 5, must be dynamic or polymorphism breaks: bug?
@@ -101,7 +101,7 @@ extension PrimaryViewController {
         // if expanded, let the split view controller deal with it
         // if collapsed, we are in charge of the interface and must decide what this means
         
-        let svc = self.splitViewController
+        let svc = self.splitViewController!
         if !svc.collapsed {
             switch svc.displayMode {
             case .PrimaryHidden:

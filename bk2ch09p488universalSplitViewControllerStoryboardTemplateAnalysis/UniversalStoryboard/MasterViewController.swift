@@ -9,6 +9,10 @@ class MasterViewController: UITableViewController {
     // var detail: DetailViewController? = nil
     var objects = [NSDate]()
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true // no effect
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
@@ -37,7 +41,7 @@ class MasterViewController: UITableViewController {
     }
     
     func insertNewObject(sender: AnyObject) {
-        objects.insert(NSDate.date(), atIndex: 0)
+        objects.insert(NSDate(), atIndex: 0)
         let ip = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([ip], withRowAnimation: .Automatic)
     }
@@ -46,7 +50,7 @@ class MasterViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
-            let ip = self.tableView.indexPathForSelectedRow()
+            let ip = self.tableView.indexPathForSelectedRow()!
             let object = objects[ip.row] as NSDate
             let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
             println("prepare for segue")
@@ -56,7 +60,9 @@ class MasterViewController: UITableViewController {
             // the problem is that if we do this segue...
             // the detail view navigation controller is completely replaced,
             // so we must re-add the button
-            controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem()
+            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+            controller.navigationItem.leftItemsSupplementBackButton = true
+
         }
     }
 
@@ -73,7 +79,7 @@ class MasterViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         let object = objects[indexPath.row] as NSDate
-        cell.textLabel.text = object.description
+        cell.textLabel!.text = object.description
         return cell
     }
     
@@ -87,23 +93,22 @@ class MasterViewController: UITableViewController {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
-    
-    
 }
 
 extension MasterViewController {
-    override func collapseSecondaryViewController(secondaryViewController: UIViewController!, forSplitViewController splitViewController: UISplitViewController!) {
+    override func collapseSecondaryViewController(secondaryViewController: UIViewController, forSplitViewController splitViewController: UISplitViewController) {
         println("master view controller collapse")
         super.collapseSecondaryViewController(secondaryViewController, forSplitViewController: splitViewController)
     }
     
-    override func targetViewControllerForAction(action: Selector, sender: AnyObject!) -> UIViewController! {
+    override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
+        println("master view controller target for \(action)...")
         let result = super.targetViewControllerForAction(action, sender: sender)
         println("master view controller target for \(action), returning \(result)")
         return result
     }
     
-    override func showViewController(vc: UIViewController!, sender: AnyObject!) {
+    override func showViewController(vc: UIViewController, sender: AnyObject?) {
         println("master view controller showViewController")
         super.showViewController(vc, sender: sender)
     }

@@ -28,7 +28,7 @@ class SecondaryViewController : UIViewController {
         // and we don't care! agnostic messaging up the hierarchy
         let target = self.targetViewControllerForAction("showHide:", sender: self)
         if target != nil {
-            target.showHide(self)
+            target!.showHide(self)
         }
     }
     
