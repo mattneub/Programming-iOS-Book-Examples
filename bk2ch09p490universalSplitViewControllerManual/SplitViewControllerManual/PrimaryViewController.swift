@@ -88,15 +88,25 @@ class PrimaryViewController : UIViewController {
 // you need to an extension to satisfy the compiler
 
 extension UIViewController {
-    dynamic func showHide(sender:AnyObject) {} // in seed 5, must be dynamic or polymorphism breaks: bug?
+    func showHide(sender:AnyObject?) {// in seed 5, must be dynamic or polymorphism breaks: bug? seems fixed
+        // how to use targetViewControllerForAction to look up the hierarchy
+        // we don't know who implements showHide or where he is in the hierarchy,
+        // and we don't care! agnostic messaging up the hierarchy
+        let target = self.targetViewControllerForAction("showHide:", sender: sender)
+        if target != nil {
+            target!.showHide(self)
+        }
+    }
 }
+
 
 // ...and then override to implement in a specific class ...
 // ... so that targetViewControllerForAction finds this specific instance
 
 extension PrimaryViewController {
     
-    override func showHide(sender:AnyObject) {
+    override func showHide(sender:AnyObject?) {
+        println("showHide")
         // how to show/hide ourselves depends on the state of the split view controller
         // if expanded, let the split view controller deal with it
         // if collapsed, we are in charge of the interface and must decide what this means

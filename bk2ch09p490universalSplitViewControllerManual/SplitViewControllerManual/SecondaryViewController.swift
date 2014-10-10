@@ -10,7 +10,7 @@ class SecondaryViewController : UIViewController {
         self.view.backgroundColor = UIColor.redColor()
         let b = UIButton.buttonWithType(.System) as UIButton
         b.setTitle("Configure", forState: .Normal)
-        b.addTarget(self, action: "showHidePrimary:", forControlEvents: .TouchUpInside)
+        b.addTarget(self, action: "callShowHide:", forControlEvents: .TouchUpInside)
         self.view.addSubview(b)
         b.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.view.addConstraints(
@@ -21,15 +21,9 @@ class SecondaryViewController : UIViewController {
         )
     }
     
-    // communicate with the Primary to appear or disappear
-    func showHidePrimary(sender:AnyObject) {
-        // how to use targetViewControllerForAction to look up the hierarchy
-        // we don't know who implements showHide or where he is in the hierarchy,
-        // and we don't care! agnostic messaging up the hierarchy
-        let target = self.targetViewControllerForAction("showHide:", sender: self)
-        if target != nil {
-            target!.showHide(self)
-        }
+    func callShowHide(sender:AnyObject?) {
+        // this intermediate method is unnecessary; it's just so I can log the call
+        println("calling showHide on self")
+        self.showHide(sender)
     }
-    
 }
