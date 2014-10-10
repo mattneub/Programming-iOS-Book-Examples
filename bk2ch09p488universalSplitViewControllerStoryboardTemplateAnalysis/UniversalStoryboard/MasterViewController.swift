@@ -102,7 +102,7 @@ extension MasterViewController {
     }
     
     override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
-        println("master view controller target for \(action)...")
+        println("master view controller target for \(action) \(sender)...")
         let result = super.targetViewControllerForAction(action, sender: sender)
         println("master view controller target for \(action), returning \(result)")
         return result
@@ -119,11 +119,29 @@ extension MasterViewController {
     // The whole point of targetViewControllerForAction here is that we want it to find
     // the split view controller
     
-//    override func showDetailViewController(vc: UIViewController!, sender: AnyObject!) {
-//        println("master view controller showDetailViewController")
-//        super.showDetailViewController(vc, sender: sender)
-//    }
+    override func showDetailViewController(vc: UIViewController, sender: AnyObject?) {
+        println("master view controller showDetailViewController")
+        super.showDetailViewController(vc, sender: sender)
+    }
+    
+    override func respondsToSelector(aSelector: Selector) -> Bool {
+        let ok = super.respondsToSelector(aSelector)
+        if aSelector == "showDetailViewController:sender:" {
+            println("master responds? \(ok)")
+        }
+        return ok
+    }
+    
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+        var ok = super.canPerformAction(action, withSender:sender)
+        if action == "showDetailViewController:sender:" {
+            ok = false
+            println("master can perform? \(ok)")
+        }
+        return ok
+    }
     
     
+        
 }
 

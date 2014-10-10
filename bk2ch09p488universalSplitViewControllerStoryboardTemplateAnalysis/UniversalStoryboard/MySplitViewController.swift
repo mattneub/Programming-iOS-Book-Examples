@@ -5,7 +5,7 @@ import UIKit
 class MySplitViewController: UISplitViewController {
     
     override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
-        println("split view controller target for \(action)...")
+        println("split view controller target for \(action) \(sender)...")
         let result = super.targetViewControllerForAction(action, sender: sender)
         println("split view controller target for \(action), returning \(result)")
         return result
@@ -29,6 +29,21 @@ class MySplitViewController: UISplitViewController {
     }
 
 
+    override func respondsToSelector(aSelector: Selector) -> Bool {
+        let ok = super.respondsToSelector(aSelector)
+        if aSelector == "showDetailViewController:sender:" {
+            println("svc responds? \(ok)")
+        }
+        return ok
+    }
+
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+        let ok = super.canPerformAction(action, withSender:sender)
+        if action == "showDetailViewController:sender:" {
+            println("svc can perform? \(ok)")
+        }
+        return ok
+    }
 
    
 }

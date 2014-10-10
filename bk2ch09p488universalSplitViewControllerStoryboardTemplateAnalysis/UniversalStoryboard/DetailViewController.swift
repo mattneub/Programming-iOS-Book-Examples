@@ -44,7 +44,7 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController {
     override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
-        println("detail view controller target for \(action)...")
+        println("detail view controller target for \(action) \(sender)...")
         let result = super.targetViewControllerForAction(action, sender: sender)
         println("detail view controller target for \(action), returning \(result)")
         return result
@@ -59,6 +59,24 @@ extension DetailViewController {
         println("detail view controller showDetailViewController")
         super.showDetailViewController(vc, sender: sender)
     }
+    
+    override func respondsToSelector(aSelector: Selector) -> Bool {
+        let ok = super.respondsToSelector(aSelector)
+        if aSelector == "showDetailViewController:sender:" {
+            println("detail responds? \(ok)")
+        }
+        return ok
+    }
+    
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+        let ok = super.canPerformAction(action, withSender:sender)
+        if action == "showDetailViewController:sender:" {
+            println("detail can perform? \(ok)")
+        }
+        return ok
+    }
+
+
 
 }
 

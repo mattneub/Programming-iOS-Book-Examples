@@ -79,6 +79,17 @@ extension AppDelegate: UISplitViewControllerDelegate {
     func splitViewController(svc: UISplitViewController, willChangeToDisplayMode displayMode: UISplitViewControllerDisplayMode) {
         println("changing to mode: \(displayMode.rawValue)")
     }
+    
+    func splitViewController(splitViewController: UISplitViewController, showViewController vc: UIViewController, sender: AnyObject?) -> Bool {
+        println("svc show vc")
+        return false
+    }
+    
+    func splitViewController(splitViewController: UISplitViewController, showDetailViewController vc: UIViewController, sender: AnyObject?) -> Bool {
+        println("svc show detail vc")
+        return false
+    }
+
 
 }
 
