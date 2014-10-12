@@ -14,15 +14,19 @@ class ViewController: UIViewController {
             "upon this continent a new nation, conceived in liberty and dedicated " +
             "to the proposition that all men are created equal."
         let content2 = NSMutableAttributedString(string:s2, attributes: [
-            NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:16)
+            NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:16)!
         ])
         content2.addAttributes([
-            NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:24),
+            NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:24)!,
             NSKernAttributeName: -4
             ], range:NSMakeRange(0,1))
         
         self.lab.adjustsFontSizeToFitWidth = true
         self.lab.minimumScaleFactor = 0.7
+        
+        // self.lab.lineBreakMode = .ByWordWrapping
+        
+        // self.lab.numberOfLines = 1
         
         self.lab.attributedText = content2
         self.lab2.attributedText = content2

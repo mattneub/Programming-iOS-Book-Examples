@@ -67,7 +67,7 @@ class ViewController: UIViewController, PlayerDelegate {
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
     }
     
-    override func remoteControlReceivedWithEvent(event: UIEvent!) {
+    override func remoteControlReceivedWithEvent(event: UIEvent) {
         let rc = event.subtype
         let p = self.player.player
         println("received remote control \(rc.rawValue)") // 101 = pause, 100 = play
