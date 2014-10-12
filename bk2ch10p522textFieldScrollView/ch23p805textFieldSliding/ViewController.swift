@@ -39,8 +39,6 @@ class ViewController: UIViewController {
         self.oldContentInset = self.scrollView.contentInset
         self.oldIndicatorInset = self.scrollView.scrollIndicatorInsets
         self.oldOffset = self.scrollView.contentOffset
-
-        
         
         let d = n.userInfo!
         var r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
@@ -48,42 +46,16 @@ class ViewController: UIViewController {
         let f = self.fr!.frame
         let y : CGFloat =
         f.maxY + r.size.height - self.scrollView.bounds.height + 5
-//        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
-//        let curve = d[UIKeyboardAnimationCurveUserInfoKey] as NSNumber
-//        let curveOpt = UIViewAnimationOptions.fromRaw(
-//            UInt(curve.unsignedIntegerValue) << 16)!
-        
         // no need to scroll, as the scroll view will do it for us
         // so all we have to do is adjust the inset
         self.scrollView.contentInset.bottom = r.size.height
         self.scrollView.scrollIndicatorInsets.bottom = r.size.height
-
-        if r.origin.y < f.maxY {
-//            UIView.animateWithDuration(duration.doubleValue,
-//                delay:0,
-//                options:curveOpt,
-//                animations:{
-                    //self.scrollView.bounds.origin = CGPointMake(0,y)
-//                }, completion:nil)
-        }
-        
-
     }
     
     func keyboardHide(n:NSNotification) {
-//        let d = n.userInfo!
-//        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
-//        let curve = d[UIKeyboardAnimationCurveUserInfoKey] as NSNumber
-//        let curveOpt = UIViewAnimationOptions.fromRaw(
-//            UInt(curve.unsignedIntegerValue) << 16)!
-//        UIView.animateWithDuration(duration.doubleValue,
-//            delay:0,
-//            options:curveOpt,
-//            animations:{
-                self.scrollView.bounds.origin = self.oldOffset
-                self.scrollView.scrollIndicatorInsets = self.oldIndicatorInset
-                self.scrollView.contentInset = self.oldContentInset
-//            }, completion:nil)
+        self.scrollView.bounds.origin = self.oldOffset
+        self.scrollView.scrollIndicatorInsets = self.oldIndicatorInset
+        self.scrollView.contentInset = self.oldContentInset
     }
 
     

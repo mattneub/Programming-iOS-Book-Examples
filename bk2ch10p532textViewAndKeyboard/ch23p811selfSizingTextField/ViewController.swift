@@ -43,6 +43,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     // much simpler than in iOS 7; a lot of the touchy bugs are gone in iOS 8
     // as long as you play your part (adjust content offset),
     // iOS 8 will play its part (scroll cursor to visible)
+    // and we don't have to animate
     
     func keyboardShow(n:NSNotification) {
         self.keyboardShowing = true
@@ -50,33 +51,18 @@ class ViewController: UIViewController, UITextViewDelegate {
         let d = n.userInfo!
         var r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
         r = self.tv.superview!.convertRect(r, fromView:nil)
-//        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
         let f = self.tv.frame
         let fs = self.tv.superview!.bounds
         let diff = fs.size.height - f.origin.y - f.size.height;
         let keyboardTop = r.size.height - diff
-//        UIView.animateWithDuration(duration.doubleValue,
-//            delay: 0, options: nil, animations: {
-                self.tv.contentInset.bottom = keyboardTop
-                self.tv.scrollIndicatorInsets.bottom = keyboardTop
-//            }, completion: nil)
+        self.tv.contentInset.bottom = keyboardTop
+        self.tv.scrollIndicatorInsets.bottom = keyboardTop
     }
     
     func keyboardHide(n:NSNotification) {
         self.keyboardShowing = false
-        
-//        let d = n.userInfo!
-//        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
-//        let curve = d[UIKeyboardAnimationCurveUserInfoKey] as NSNumber
-//        let curveOpt = UIViewAnimationOptions.fromRaw(
-//            UInt(curve.unsignedIntegerValue) << 16)!
-//        UIView.animateWithDuration(duration.doubleValue,
-//            delay:0,
-//            options:curveOpt,
-//            animations:{
-                self.tv.contentInset = UIEdgeInsetsZero
-                self.tv.scrollIndicatorInsets = UIEdgeInsetsZero
-//            }, completion:nil)
+        self.tv.contentInset = UIEdgeInsetsZero
+        self.tv.scrollIndicatorInsets = UIEdgeInsetsZero
     }
 
     func doDone(sender:AnyObject) {
