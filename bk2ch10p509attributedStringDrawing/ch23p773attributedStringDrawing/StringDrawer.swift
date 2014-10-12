@@ -14,7 +14,8 @@ class StringDrawer : UIView {
         // unfortunately there's a huge bug in Swift:
         // we can't "or" NSStringDrawingOptions values together
         // I've resorted to the assistance of Objective-C
-        let options = NSString.combine(.TruncatesLastVisibleLine, with:.UsesLineFragmentOrigin)
-        self.attributedText.drawWithRect(r, options: options, context: nil)
+        let opts = NSString.combine(.TruncatesLastVisibleLine, with:.UsesLineFragmentOrigin)
+        // let opts = NSStringDrawingOptions.UsesLineFragmentOrigin
+        self.attributedText.drawWithRect(r, options: opts, context: nil)
     }
 }

@@ -41,7 +41,7 @@ class ViewController : UIViewController {
         let s1 = "The Gettysburg Address, as delivered on a certain occasion " +
         "(namely Thursday, November 19, 1863) by A. Lincoln"
         content = NSMutableAttributedString(string:s1, attributes:[
-            NSFontAttributeName: UIFont(name:"Arial-BoldMT", size:15),
+            NSFontAttributeName: UIFont(name:"Arial-BoldMT", size:15)!,
             NSForegroundColorAttributeName: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
         )
         let r = (s1 as NSString).rangeOfString("Gettysburg Address")
@@ -66,10 +66,10 @@ class ViewController : UIViewController {
             "upon this continent a new nation, conceived in liberty and dedicated "
          s2 = s2 + "to the proposition that all men are created equal."
         content2 = NSMutableAttributedString(string:s2, attributes: [
-            NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:16)
+            NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:16)!
             ])
         content2.addAttributes([
-            NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:24),
+            NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:24)!,
             NSExpansionAttributeName: 0.3,
             NSKernAttributeName: -4 // negative kerning bug fixed in iOS 8
             ], range:NSMakeRange(0,1))
