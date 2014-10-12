@@ -18,7 +18,7 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tv.textContainer.lineFragmentPadding = 0 // make it just like the label
+        // self.tv.textContainer.lineFragmentPadding = 0 // make it just like the label
         // to show that under identical conditions they do draw identically
 
         self.tv.scrollEnabled = false // in case setting in the nib doesn't work
@@ -26,15 +26,15 @@ class ViewController : UIViewController {
         var content : NSMutableAttributedString!
         var content2 : NSMutableAttributedString!
 
-        let which = 1 // 0 ... 5
+        let which = 5 // 0 ... 5
         switch which {
         case 0, 1, 4, 5:
             let s1 = "The Gettysburg Address, as delivered on a certain occasion " +
                 "(namely Thursday, November 19, 1863) by A. Lincoln"
             content = NSMutableAttributedString(string:s1, attributes:[
-                NSFontAttributeName: UIFont(name:"Arial-BoldMT", size:15),
-                NSForegroundColorAttributeName: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
-                )
+                NSFontAttributeName: UIFont(name:"Arial-BoldMT", size:15)!,
+                NSForegroundColorAttributeName: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)
+                ])
             let r = (s1 as NSString).rangeOfString("Gettysburg Address")
             content.addAttributes([
                 NSStrokeColorAttributeName: UIColor.redColor(),
@@ -45,16 +45,16 @@ class ViewController : UIViewController {
             self.tv.contentInset = UIEdgeInsetsMake(20,0,0,0)
             if which > 0 {fallthrough}
         case 1, 4, 5:
-            content.addAttribute(NSParagraphStyleAttributeName,
-                value:lend(){
-                    (para:NSMutableParagraphStyle) in
-                    para.headIndent = 10
-                    para.firstLineHeadIndent = 10
-                    para.tailIndent = -10
-                    para.lineBreakMode = .ByWordWrapping
-                    para.alignment = .Center
-                    para.paragraphSpacing = 15
-                }, range:NSMakeRange(0,1))
+            let para = NSMutableParagraphStyle()
+            para.headIndent = 10
+            para.firstLineHeadIndent = 10
+            para.tailIndent = -10
+            para.lineBreakMode = .ByWordWrapping
+            para.alignment = .Center
+            para.paragraphSpacing = 15
+            content.addAttribute(
+                NSParagraphStyleAttributeName,
+                value:para, range:NSMakeRange(0,1))
             self.lab.attributedText = content
             self.tv.attributedText = content
             self.tv.contentInset = UIEdgeInsetsMake(20,0,0,0)
@@ -64,10 +64,10 @@ class ViewController : UIViewController {
                 "upon this continent a new nation, conceived in liberty and dedicated " +
                 "to the proposition that all men are created equal."
             content2 = NSMutableAttributedString(string:s2, attributes: [
-                NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:16)
+                NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:16)!
             ])
             content2.addAttributes([
-                NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:24),
+                NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:24)!,
                 NSExpansionAttributeName: 0.3,
                 NSKernAttributeName: -4 // negative kerning bug fixed in iOS 8
             ], range:NSMakeRange(0,1))
@@ -101,16 +101,17 @@ class ViewController : UIViewController {
             if which > 4 {fallthrough}
         case 5:
             // demonstrating efficient cycling through style runs
+            let opts : NSAttributedStringEnumerationOptions = .LongestEffectiveRangeNotRequired
             content.enumerateAttribute(NSFontAttributeName,
                 inRange:NSMakeRange(0,content.length),
-                options:NSAttributedStringEnumerationOptions.LongestEffectiveRangeNotRequired,
+                options:opts,
                 usingBlock: {
                     (value:AnyObject!, range:NSRange, stop:UnsafeMutablePointer<ObjCBool>) -> Void in
                     println(range)
                     let font = value as UIFont
                     if font.pointSize == 15 {
                         content.addAttribute(NSFontAttributeName,
-                            value:UIFont(name: "Arial-BoldMT", size:20),
+                            value:UIFont(name: "Arial-BoldMT", size:20)!,
                             range:range)
                     }
                 })

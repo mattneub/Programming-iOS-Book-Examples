@@ -31,13 +31,12 @@ class ViewController : UIViewController {
             // the workaround is drop down to Core Text
             // unfortunately Swift seems unaware that CTFont and UIFont are now bridged
             fbody = UIFont(name: "GillSans", size: 15)
-            // see AppDelegate.m for category methods I created to cross the bridge
-            let result = CTFontCreateCopyWithSymbolicTraits(fbody.toCTFont().takeRetainedValue(), 0, nil, CTFontSymbolicTraits.ItalicTrait, CTFontSymbolicTraits.ItalicTrait)
-            femphasis = UIFont.fromCTFont(result)
+            let result = CTFontCreateCopyWithSymbolicTraits(fbody as AnyObject as CTFont, 0, nil, .ItalicTrait, .ItalicTrait)
+            femphasis = result as AnyObject as UIFont
         default:break
         }
         
-        let s = self.lab.text as NSString
+        let s = self.lab.text! as NSString
         let mas = NSMutableAttributedString(string: s, attributes: [NSFontAttributeName:fbody])
         mas.addAttribute(NSFontAttributeName, value: femphasis, range: s.rangeOfString("wild"))
         self.lab.attributedText = mas

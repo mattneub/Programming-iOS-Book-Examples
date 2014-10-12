@@ -43,7 +43,7 @@ class ViewController : UIViewController {
                 case .Downloading:
                     let d = prog as NSDictionary
                     let key = kCTFontDescriptorMatchingPercentage
-                    let cur : AnyObject? = d[key]
+                    let cur : AnyObject? = d[key as NSString]
                     if let cur = cur as? NSNumber {
                         NSLog("progress: %@%%", cur)
                     }
