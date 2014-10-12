@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITextViewDelegate {
             "all mimsy were the borogoves, and the mome raths outgrabe."
         
         let mas = NSMutableAttributedString(string:s, attributes:[
-            NSFontAttributeName: UIFont(name:"GillSans", size:20)
+            NSFontAttributeName: UIFont(name:"GillSans", size:20)!
         ])
         
         mas.addAttribute(NSParagraphStyleAttributeName,

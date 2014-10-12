@@ -15,10 +15,10 @@ class ViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
 
         let path = NSBundle.mainBundle().pathForResource("brillig", ofType: "txt")!
-        let s = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: nil)
+        let s = String(contentsOfFile:path, encoding: NSUTF8StringEncoding, error: nil)
         let s2 = s!.stringByReplacingOccurrencesOfString("\n", withString: "")
         let mas = NSMutableAttributedString(string:s2, attributes:[
-            NSFontAttributeName: UIFont(name:"GillSans", size:20)
+            NSFontAttributeName: UIFont(name:"GillSans", size:20)!
             ])
         
         mas.addAttribute(NSParagraphStyleAttributeName,
@@ -48,7 +48,8 @@ class ViewController: UIViewController, UITextViewDelegate {
         self.keyboardShowing = true
         
         let d = n.userInfo!
-        let r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
+        var r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
+        r = self.tv.superview!.convertRect(r, fromView:nil)
 //        let duration = d[UIKeyboardAnimationDurationUserInfoKey] as NSNumber
         let f = self.tv.frame
         let fs = self.tv.superview!.bounds
