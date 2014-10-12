@@ -3,13 +3,14 @@ import UIKit
 
 class MyLabel : UILabel {
     
-    
     override func layoutSubviews() {
-        println("layout")
+        println("layout") // just proving that the "no layout" bug is fixed
         super.layoutSubviews()
-        self.preferredMaxLayoutWidth = self.bounds.width
+        // no longer needed; the label is configured in the nib
+        // self.preferredMaxLayoutWidth = self.bounds.width
     }
     
+    /*
     
     // okay but there's a major problem: 
     // in iOS 8, labels are not getting layoutSubviews calls at all!
@@ -23,6 +24,8 @@ class MyLabel : UILabel {
     // where rotation does not change traits,
     // and it wouldn't work if our size changed for some other reason
     
+    // thank heavens, they fixed this bug!
+    
     override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
         println("trait")
         delay(0.0) {
@@ -30,6 +33,8 @@ class MyLabel : UILabel {
         }
         super.traitCollectionDidChange(previousTraitCollection)
     }
+
+*/
     
     
 }
