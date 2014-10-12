@@ -2,62 +2,70 @@
 
 import UIKit
 
-let list : [String] = {
-    let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")
-    let s = NSString(contentsOfURL:path, encoding:NSUTF8StringEncoding, error:nil)
-    return s.componentsSeparatedByString("\n") as [String]
-}()
 
 class MyTextField: UITextField {
     
-    class func stateForAbbrev(abbrev:String) -> String? {
-        let ix = find(list, abbrev.uppercaseString)
+    let list : [String] = {
+        let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")!
+        let s = NSString(contentsOfURL:path, encoding:NSUTF8StringEncoding, error:nil)!
+        return s.componentsSeparatedByString("\n") as [String]
+        }()
+    
+    func stateForAbbrev(abbrev:String) -> String? {
+        let ix = find(self.list, abbrev.uppercaseString)
         return ix != nil ? list[ix!+1] : nil
     }
     
-    override func canPerformAction(action: Selector, withSender sender: AnyObject!) -> Bool {
+    
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
         if action == "expand:" {
-            if let s = self.textInRange(self.selectedTextRange) {
-                return ( countElements(s) == 2 && self.dynamicType.stateForAbbrev(s) != nil )
+            if let r = self.selectedTextRange {
+                let s = self.textInRange(r)
+                return
+                    countElements(s) == 2 && self.stateForAbbrev(s) != nil
             }
+            
         }
         return super.canPerformAction(action, withSender:sender)
     }
     
-    func expand(sender:AnyObject) {
-        if let s = self.textInRange(self.selectedTextRange) {
-            if let ss = self.dynamicType.stateForAbbrev(s) {
-                self.replaceRange(self.selectedTextRange, withText:ss)
+    func expand(sender:AnyObject?) {
+        if let r = self.selectedTextRange {
+            let s = self.textInRange(r)
+            if let ss = self.stateForAbbrev(s) {
+                self.replaceRange(r, withText:ss)
             }
         }
     }
     
-    override func copy(sender:AnyObject) {
+    override func copy(sender:AnyObject?) {
         super.copy(sender)
         let pb = UIPasteboard.generalPasteboard()
-        let s = pb.string
-        // ... alter s here ...
-        let ss = s + "surprise!"
-        pb.string = ss
+        if let s = pb.string {
+            // ... alter s here ...
+            let ss = s + "surprise!"
+            pb.string = ss
+        }
     }
-    
-    
 }
 
 extension UITextField { // is this legal? sure makes life better...
     var selectedRange : NSRange {
     get {
-        let r : UITextRange = self.selectedTextRange
-        let loc = self.offsetFromPosition(self.beginningOfDocument,
-            toPosition:r.start)
-        let len = self.offsetFromPosition(r.start,
-            toPosition:r.end)
-        return NSMakeRange(loc,len)
+        if let r = self.selectedTextRange {
+            let loc = self.offsetFromPosition(self.beginningOfDocument,
+                toPosition:r.start)
+            let len = self.offsetFromPosition(r.start,
+                toPosition:r.end)
+            return NSMakeRange(loc,len)
+        } else {
+            return NSMakeRange(0,0)
+        }
     }
     set (r) {
-        let st : UITextPosition = self.positionFromPosition(self.beginningOfDocument,
+        let st = self.positionFromPosition(self.beginningOfDocument,
             offset:r.location)
-        let en : UITextPosition = self.positionFromPosition(self.beginningOfDocument,
+        let en = self.positionFromPosition(self.beginningOfDocument,
             offset:r.location + r.length)
         self.selectedTextRange = self.textRangeFromPosition(st, toPosition:en)
     }

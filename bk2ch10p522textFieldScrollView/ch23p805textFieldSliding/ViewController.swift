@@ -21,11 +21,11 @@ class ViewController: UIViewController {
         
     }
     
-    func textFieldDidBeginEditing(tf: UITextField!) {
+    func textFieldDidBeginEditing(tf: UITextField) {
         self.fr = tf // keep track of first responder
     }
     
-    func textFieldShouldReturn(tf: UITextField!) -> Bool {
+    func textFieldShouldReturn(tf: UITextField) -> Bool {
         tf.resignFirstResponder()
         self.fr = nil
         return true
@@ -44,7 +44,6 @@ class ViewController: UIViewController {
         
         let d = n.userInfo!
         var r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
-        // next line no longer needed; in iOS 8, keyboard and views are in same coordinate space
         r = self.scrollView.convertRect(r, fromView:nil)
         let f = self.fr!.frame
         let y : CGFloat =
@@ -54,14 +53,17 @@ class ViewController: UIViewController {
 //        let curveOpt = UIViewAnimationOptions.fromRaw(
 //            UInt(curve.unsignedIntegerValue) << 16)!
         
+        // no need to scroll, as the scroll view will do it for us
+        // so all we have to do is adjust the inset
+        self.scrollView.contentInset.bottom = r.size.height
+        self.scrollView.scrollIndicatorInsets.bottom = r.size.height
+
         if r.origin.y < f.maxY {
 //            UIView.animateWithDuration(duration.doubleValue,
 //                delay:0,
 //                options:curveOpt,
 //                animations:{
-                    self.scrollView.bounds.origin = CGPointMake(0,y)
-                    self.scrollView.contentInset.bottom = r.size.height
-                    self.scrollView.scrollIndicatorInsets.bottom = r.size.height
+                    //self.scrollView.bounds.origin = CGPointMake(0,y)
 //                }, completion:nil)
         }
         

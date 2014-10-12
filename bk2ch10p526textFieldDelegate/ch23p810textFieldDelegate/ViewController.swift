@@ -11,14 +11,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         self.tf.allowsEditingTextAttributes = true
         
-        let mi = UIMenuItem(title:"Expand", action:"expand:")
+        let mi = UIMenuItem(title:"Expand", action:"expand:")!
         let mc = UIMenuController.sharedMenuController()
         mc.menuItems = [mi]
 
     }
     
-    
-    func textField(textField: UITextField!, shouldChangeCharactersInRange range: NSRange, replacementString string: String!) -> Bool {
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         println("here '\(string)'")
         
         if string == "\n" {
@@ -33,12 +32,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // not very satisfactory but it does show the result
         
-        var md = (textField.typingAttributes as NSDictionary).mutableCopy() as NSMutableDictionary
-        let d2 = [
+        var md = (textField.typingAttributes! as NSDictionary).mutableCopy() as NSMutableDictionary
+        md.addEntriesFromDictionary([
             NSForegroundColorAttributeName: UIColor.redColor(),
             NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue
-        ]
-        md.addEntriesFromDictionary(d2)
+        ])
         textField.typingAttributes = md
         
         return false

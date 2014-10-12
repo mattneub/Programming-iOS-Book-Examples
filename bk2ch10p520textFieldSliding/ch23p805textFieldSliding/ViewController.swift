@@ -15,11 +15,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    func textFieldDidBeginEditing(tf: UITextField!) {
+    func textFieldDidBeginEditing(tf: UITextField) {
         self.fr = tf // keep track of first responder
     }
     
-    func textFieldShouldReturn(tf: UITextField!) -> Bool {
+    func textFieldShouldReturn(tf: UITextField) -> Bool {
         tf.resignFirstResponder()
         self.fr = nil
         return true
@@ -31,9 +31,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func keyboardShow(n:NSNotification) {
         let d = n.userInfo!
-        let r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
-        // next line no longer needed; in iOS 8, keyboard and views are in same coordinate space
-        // r = self.slidingView.convertRect(r, fromView:nil)
+        var r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
+        // in iOS 8, keyboard and fullscreen views are in same coordinate space
+        // however, I'm keeping this line because our view might not be fullscreen
+        r = self.slidingView.convertRect(r, fromView:nil)
         let f = self.fr!.frame
         let y : CGFloat =
             f.maxY + r.size.height - self.slidingView.bounds.height + 5
