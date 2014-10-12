@@ -17,7 +17,7 @@ class ViewController : UIViewController {
         
         let s = "Onions\t$2.34\nPeppers\t$15.2\n"
         let mas = NSMutableAttributedString(string:s, attributes:[
-            NSFontAttributeName:UIFont(name:"GillSans", size:15),
+            NSFontAttributeName:UIFont(name:"GillSans", size:15)!,
             NSParagraphStyleAttributeName:lend() {
                 (p:NSMutableParagraphStyle) in
                 var tabs = [NSTextTab]()
@@ -30,7 +30,7 @@ class ViewController : UIViewController {
             ])
         self.tv.attributedText = mas
         
-        // return; 
+        // return;
         
         let onions = self.thumbnailOfImageWithName("onion", withExtension:"jpg")
         let peppers = self.thumbnailOfImageWithName("peppers", withExtension:"jpg")
@@ -51,6 +51,9 @@ class ViewController : UIViewController {
         mas.insertAttributedString(pepperattchar, atIndex:(r2.location + r2.length))
         
         self.tv.attributedText = mas
+        
+//        println(NSAttachmentCharacter)
+//        println(0xFFFC)
     }
     
     func thumbnailOfImageWithName(name:String, withExtension ext: String) -> UIImage {
@@ -59,14 +62,15 @@ class ViewController : UIViewController {
         let src = CGImageSourceCreateWithURL(url, nil)
         let scale = UIScreen.mainScreen().scale
         let w : CGFloat = 20 * scale
-        let imref =
-        CGImageSourceCreateThumbnailAtIndex(src, 0, [
+        let d : [String:AnyObject] = [
             kCGImageSourceShouldAllowFloat : kCFBooleanTrue,
             kCGImageSourceCreateThumbnailWithTransform: kCFBooleanTrue,
             kCGImageSourceCreateThumbnailFromImageAlways: kCFBooleanTrue,
             kCGImageSourceThumbnailMaxPixelSize: Int(w)
-            ])
-        let im = UIImage(CGImage:imref, scale:scale, orientation:.Up)
+        ]
+        let imref =
+        CGImageSourceCreateThumbnailAtIndex(src, 0, d)
+        let im = UIImage(CGImage:imref, scale:scale, orientation:.Up)!
         return im
     }
     
