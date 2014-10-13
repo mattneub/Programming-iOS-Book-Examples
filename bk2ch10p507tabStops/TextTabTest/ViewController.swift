@@ -50,10 +50,26 @@ class ViewController : UIViewController {
         let r2 = (mas.string as NSString).rangeOfString("Peppers")
         mas.insertAttributedString(pepperattchar, atIndex:(r2.location + r2.length))
         
+        mas.appendAttributedString(NSAttributedString(string: "\n\n", attributes:nil))
+        mas.appendAttributedString(NSAttributedString(string: "LINK", attributes: [
+            NSLinkAttributeName : NSURL(string: "http://www.apple.com")!
+            ]))
+        mas.appendAttributedString(NSAttributedString(string: "\n\n", attributes:nil))
+        mas.appendAttributedString(NSAttributedString(string: "(805)-123-4567", attributes: nil))
+        mas.appendAttributedString(NSAttributedString(string: "\n\n", attributes:nil))
+        mas.appendAttributedString(NSAttributedString(string: "123 Main Street, Anytown, CA 91234", attributes: nil))
+        mas.appendAttributedString(NSAttributedString(string: "\n\n", attributes:nil))
+        mas.appendAttributedString(NSAttributedString(string: "tomorrow at 4 PM", attributes: nil))
+
+        
         self.tv.attributedText = mas
         
 //        println(NSAttachmentCharacter)
 //        println(0xFFFC)
+        
+        self.tv.selectable = true
+        self.tv.editable = false
+        self.tv.delegate = self
     }
     
     func thumbnailOfImageWithName(name:String, withExtension ext: String) -> UIImage {
@@ -74,4 +90,15 @@ class ViewController : UIViewController {
         return im
     }
     
+}
+
+extension ViewController : UITextViewDelegate {
+    func textView(textView: UITextView, shouldInteractWithTextAttachment textAttachment: NSTextAttachment, inRange characterRange: NSRange) -> Bool {
+        return true
+    }
+    
+    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+        println(URL)
+        return true
+    }
 }
