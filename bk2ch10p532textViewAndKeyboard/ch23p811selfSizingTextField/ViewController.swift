@@ -50,13 +50,9 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         let d = n.userInfo!
         var r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
-        r = self.tv.superview!.convertRect(r, fromView:nil)
-        let f = self.tv.frame
-        let fs = self.tv.superview!.bounds
-        let diff = fs.size.height - f.origin.y - f.size.height;
-        let keyboardTop = r.size.height - diff
-        self.tv.contentInset.bottom = keyboardTop
-        self.tv.scrollIndicatorInsets.bottom = keyboardTop
+        r = self.tv.convertRect(r, fromView:nil)
+        self.tv.contentInset.bottom = r.size.height
+        self.tv.scrollIndicatorInsets.bottom = r.size.height
     }
     
     func keyboardHide(n:NSNotification) {
