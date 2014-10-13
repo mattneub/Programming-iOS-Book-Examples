@@ -43,9 +43,6 @@ class ViewController: UIViewController {
         let d = n.userInfo!
         var r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
         r = self.scrollView.convertRect(r, fromView:nil)
-        let f = self.fr!.frame
-        let y : CGFloat =
-        f.maxY + r.size.height - self.scrollView.bounds.height + 5
         // no need to scroll, as the scroll view will do it for us
         // so all we have to do is adjust the inset
         self.scrollView.contentInset.bottom = r.size.height
