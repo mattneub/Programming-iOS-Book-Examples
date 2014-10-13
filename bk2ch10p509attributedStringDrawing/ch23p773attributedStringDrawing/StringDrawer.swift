@@ -16,6 +16,12 @@ class StringDrawer : UIView {
         // I've resorted to the assistance of Objective-C
         let opts = NSString.combine(.TruncatesLastVisibleLine, with:.UsesLineFragmentOrigin)
         // let opts = NSStringDrawingOptions.UsesLineFragmentOrigin
-        self.attributedText.drawWithRect(r, options: opts, context: nil)
+        
+        let context = NSStringDrawingContext()
+        context.minimumScaleFactor = 0.5 // does nothing
+        
+        self.attributedText.drawWithRect(r, options: opts, context: context)
+        
+        println(context.totalBounds)
     }
 }
