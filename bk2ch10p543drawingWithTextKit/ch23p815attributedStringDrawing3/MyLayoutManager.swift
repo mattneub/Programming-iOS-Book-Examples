@@ -16,17 +16,18 @@ class MyLayoutManager : NSLayoutManager {
         if range.length == 0 {
             return
         }
-        let tc = self.textContainerForGlyphAtIndex(range.location, effectiveRange:nil)
-        var r = self.boundingRectForGlyphRange(range, inTextContainer:tc)
-        r.origin.x += origin.x
-        r.origin.y += origin.y
-        r.inset(dx: -2, dy: 0)
-        let c = UIGraphicsGetCurrentContext()
-        CGContextSaveGState(c)
-        CGContextSetStrokeColorWithColor(c, UIColor.blackColor().CGColor)
-        CGContextSetLineWidth(c, 1.0)
-        CGContextStrokeRect(c, r)
-        CGContextRestoreGState(c)
+        if let tc = self.textContainerForGlyphAtIndex(range.location, effectiveRange:nil) {
+            var r = self.boundingRectForGlyphRange(range, inTextContainer:tc)
+            r.origin.x += origin.x
+            r.origin.y += origin.y
+            r.inset(dx: -2, dy: 0)
+            let c = UIGraphicsGetCurrentContext()
+            CGContextSaveGState(c)
+            CGContextSetStrokeColorWithColor(c, UIColor.blackColor().CGColor)
+            CGContextSetLineWidth(c, 1.0)
+            CGContextStrokeRect(c, r)
+            CGContextRestoreGState(c)
+        }
 
     }
     

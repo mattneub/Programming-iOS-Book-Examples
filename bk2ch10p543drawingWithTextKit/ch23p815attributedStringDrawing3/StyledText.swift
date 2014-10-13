@@ -32,7 +32,7 @@ class StyledText: UIView {
         super.awakeFromNib()
         
         let path = NSBundle.mainBundle().pathForResource("states", ofType: "txt")!
-        let s = NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil)
+        let s = String(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil)
         
         let desc = UIFontDescriptor(name:"Didot", size:18)
         let desc2 = desc.fontDescriptorByAddingAttributes(
@@ -44,7 +44,7 @@ class StyledText: UIView {
         let f = UIFont(descriptor: desc2, size: 0)
         
         let d = [NSFontAttributeName:f]
-        let mas = NSMutableAttributedString(string: s, attributes: d)
+        let mas = NSMutableAttributedString(string: s!, attributes: d)
         mas.addAttribute(NSParagraphStyleAttributeName,
             value: lend() {
                 (para:NSMutableParagraphStyle) in

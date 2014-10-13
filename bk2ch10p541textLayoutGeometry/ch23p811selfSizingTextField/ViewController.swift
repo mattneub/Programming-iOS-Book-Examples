@@ -15,10 +15,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         let path = NSBundle.mainBundle().pathForResource("brillig", ofType: "txt")!
-        let s = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: nil)
+        let s = String(contentsOfFile:path, encoding: NSUTF8StringEncoding, error: nil)
         let s2 = s!.stringByReplacingOccurrencesOfString("\n", withString: "")
         let mas = NSMutableAttributedString(string:s2, attributes:[
-            NSFontAttributeName: UIFont(name:"GillSans", size:20)
+            NSFontAttributeName: UIFont(name:"GillSans", size:20)!
             ])
         
         mas.addAttribute(NSParagraphStyleAttributeName,
@@ -85,11 +85,11 @@ class ViewController: UIViewController {
         
         
         // what word is that?
-        let scheme = NSLinguisticTagSchemeTokenType
-        let t = NSLinguisticTagger(tagSchemes:[scheme], options:0)
+        let sch = NSLinguisticTagSchemeTokenType
+        let t = NSLinguisticTagger(tagSchemes:[sch], options:0)
         t.string = self.tv.text
         var r : NSRange = NSMakeRange(0,0)
-        let tag = t.tagAtIndex(ix, scheme:scheme, tokenRange:&r, sentenceRange:nil)
+        let tag = t.tagAtIndex(ix, scheme:sch, tokenRange:&r, sentenceRange:nil)
         if tag == NSLinguisticTagWord {
             println((self.tv.text as NSString).substringWithRange(r))
         }
