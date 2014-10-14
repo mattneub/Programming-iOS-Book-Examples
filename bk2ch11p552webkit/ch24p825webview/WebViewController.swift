@@ -37,7 +37,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     }
 
     
-    class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject]!, coder: NSCoder!) -> UIViewController! {
+    class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject], coder: NSCoder) -> UIViewController? {
         return self(nibName:nil, bundle:nil)
     }
     
@@ -45,7 +45,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     // note that I don't touch the web view at this point: just an ivar
     // we don't have any web content yet!
 
-    override func decodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func decodeRestorableStateWithCoder(coder: NSCoder) {
         println("decode")
         super.decodeRestorableStateWithCoder(coder)
         let oldOffset = coder.decodeObjectForKey("oldOffset") as? NSValue
@@ -53,7 +53,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         self.oldOffset = oldOffset // for local example
     }
     
-    override func encodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func encodeRestorableStateWithCoder(coder: NSCoder) {
         println("encode")
         super.encodeRestorableStateWithCoder(coder)
         // we have to manage offset ourselves
@@ -136,9 +136,9 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         
     }
     
-    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<()>) {
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<()>) {
         if let wv = object as? WKWebView {
-            switch keyPath! {
+            switch keyPath {
             case "loading": // new:1 or 0
                 if let val:AnyObject = change[NSKeyValueChangeNewKey] {
                     if let val = val as? Bool {
@@ -177,28 +177,78 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         super.viewDidAppear(animated)
         println("view did appear, req: \(self.wv.URL)")
         
-        let b = UIBarButtonItem(title: "Size", style: .Plain, target: self, action: "doDecreaseSize:")
-        self.navigationItem.rightBarButtonItems = [b]
+        let which = 1
+        switch which {
+        case 1:
+            let b = UIBarButtonItem(title: "Size", style: .Plain, target: self, action: "doDecreaseSize:")
+            self.navigationItem.rightBarButtonItems = [b]
+            
+            let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
+            let base = NSURL.fileURLWithPath(path)
+            let ss = NSString(contentsOfFile:path, encoding:NSUTF8StringEncoding, error:nil)!
+            
+            let path2 = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")!
+            var s = NSString(contentsOfFile:path2, encoding:NSUTF8StringEncoding, error:nil)!
+            
+            s = s.stringByReplacingOccurrencesOfString("<maximagewidth>", withString:"80%")
+            s = s.stringByReplacingOccurrencesOfString("<margin>", withString:"10")
+            s = s.stringByReplacingOccurrencesOfString("<guid>", withString:"http://tidbits.com/article/12228")
+            s = s.stringByReplacingOccurrencesOfString("<ourtitle>", withString:"Lion Details Revealed with Shipping Date and Price")
+            // note way to set up messaging from web page's javascript to us
+            s = s.stringByReplacingOccurrencesOfString("<playbutton>", withString:"<img src=\"listen.png\" onclick=\"window.webkit.messageHandlers.playbutton.postMessage('play')\">")
+            s = s.stringByReplacingOccurrencesOfString("<author>", withString:"TidBITS Staff")
+            s = s.stringByReplacingOccurrencesOfString("<date>", withString:"Mon, 06 Jun 2011 13:00:39 PDT")
+            s = s.stringByReplacingOccurrencesOfString("<content>", withString:ss)
+            
+            // missing from docs, but in header file
+            self.wv.loadHTMLString(s, baseURL:base)
+            // ===========================
+            // so, WKWebView can't load _any_ files using a local file URL
+            // here are some tests...
+        case 2:
+            let path = NSBundle.mainBundle().pathForResource("release", ofType:"pdf")! // crashes in simulator, blank on the device, "Could not create a sandbox extension for '/'"
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 3:
+            let path = NSBundle.mainBundle().pathForResource("testing", ofType:"pdf")! // works in simulator, blank on the device, "Could not create a sandbox extension for '/'"
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 4:
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtf")! // works in simulator, blank on the device, "Could not create a sandbox extension for '/'"
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 5:
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"doc")! // works in simulator, blank on the device, "Could not create a sandbox extension for '/'"
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 6:
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"docx")!  // works in simulator, blank on the device, "Could not create a sandbox extension for '/'"
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 7:
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"pages")! // blank in simulator, blank on the device, "Could not create a sandbox extension for '/'"
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 8:
+            let path = NSBundle.mainBundle().pathForResource("test.pages", ofType:"zip")! // crashes in simulator, blank on the device, "Could not create a sandbox extension for '/'"
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 9:
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtfd")! // blank in simulator, blank on the device, "Could not create a sandbox extension for '/'"
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 10:
+            let path = NSBundle.mainBundle().pathForResource("test.rtfd", ofType:"zip")! // blank in simulator, blank on the device, "Could not create a sandbox extension for '/'"
+            let url = NSURL.fileURLWithPath(path)!
+            println(path)
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 11:
+            let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        default: break
+        }
         
-        let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
-        let base = NSURL.fileURLWithPath(path)
-        let ss = NSString(contentsOfFile:path, encoding:NSUTF8StringEncoding, error:nil)
-        
-        let path2 = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")!
-        var s = NSString(contentsOfFile:path2, encoding:NSUTF8StringEncoding, error:nil)
-
-        s = s.stringByReplacingOccurrencesOfString("<maximagewidth>", withString:"80%")
-        s = s.stringByReplacingOccurrencesOfString("<margin>", withString:"10")
-        s = s.stringByReplacingOccurrencesOfString("<guid>", withString:"http://tidbits.com/article/12228")
-        s = s.stringByReplacingOccurrencesOfString("<ourtitle>", withString:"Lion Details Revealed with Shipping Date and Price")
-        // note way to set up messaging from web page's javascript to us
-        s = s.stringByReplacingOccurrencesOfString("<playbutton>", withString:"<img src=\"listen.png\" onclick=\"window.webkit.messageHandlers.playbutton.postMessage('play')\">")
-        s = s.stringByReplacingOccurrencesOfString("<author>", withString:"TidBITS Staff")
-        s = s.stringByReplacingOccurrencesOfString("<date>", withString:"Mon, 06 Jun 2011 13:00:39 PDT")
-        s = s.stringByReplacingOccurrencesOfString("<content>", withString:ss)
-        
-        // missing from docs, but in header file
-        self.wv.loadHTMLString(s, baseURL:base)
 
     }
     

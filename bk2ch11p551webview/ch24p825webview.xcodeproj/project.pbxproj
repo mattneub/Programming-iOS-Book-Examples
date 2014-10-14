@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		3297F7CC198D7C0300C4BE9B /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297F7CB198D7C0300C4BE9B /* WebViewController.swift */; };
+		329B2BB319EC9E400028C549 /* testing.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 329B2BAA19EC9E400028C549 /* testing.pdf */; };
+		329B2BB419EC9E400028C549 /* test.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 329B2BAB19EC9E400028C549 /* test.rtf */; };
+		329B2BB519EC9E400028C549 /* test.docx in Resources */ = {isa = PBXBuildFile; fileRef = 329B2BAC19EC9E400028C549 /* test.docx */; };
+		329B2BB619EC9E400028C549 /* test.doc in Resources */ = {isa = PBXBuildFile; fileRef = 329B2BAD19EC9E400028C549 /* test.doc */; };
+		329B2BB719EC9E400028C549 /* test.pages in Resources */ = {isa = PBXBuildFile; fileRef = 329B2BAE19EC9E400028C549 /* test.pages */; };
+		329B2BB819EC9E400028C549 /* test.pages.zip in Resources */ = {isa = PBXBuildFile; fileRef = 329B2BAF19EC9E400028C549 /* test.pages.zip */; };
+		329B2BB919EC9E400028C549 /* test.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 329B2BB019EC9E400028C549 /* test.rtfd */; };
+		329B2BBA19EC9E400028C549 /* release.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 329B2BB119EC9E400028C549 /* release.pdf */; };
+		329B2BBB19EC9E400028C549 /* test.rtfd.zip in Resources */ = {isa = PBXBuildFile; fileRef = 329B2BB219EC9E400028C549 /* test.rtfd.zip */; };
 		C9EC6B4E1819AB4000606A3A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EC6B4D1819AB4000606A3A /* Foundation.framework */; };
 		C9EC6B501819AB4000606A3A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EC6B4F1819AB4000606A3A /* CoreGraphics.framework */; };
 		C9EC6B521819AB4000606A3A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EC6B511819AB4000606A3A /* UIKit.framework */; };
@@ -25,6 +34,15 @@
 /* Begin PBXFileReference section */
 		3297F7CA198D7C0300C4BE9B /* ch24p825webview-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch24p825webview-Bridging-Header.h"; sourceTree = "<group>"; };
 		3297F7CB198D7C0300C4BE9B /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		329B2BAA19EC9E400028C549 /* testing.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = testing.pdf; sourceTree = "<group>"; };
+		329B2BAB19EC9E400028C549 /* test.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = test.rtf; sourceTree = "<group>"; };
+		329B2BAC19EC9E400028C549 /* test.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.docx; sourceTree = "<group>"; };
+		329B2BAD19EC9E400028C549 /* test.doc */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.doc; sourceTree = "<group>"; };
+		329B2BAE19EC9E400028C549 /* test.pages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = test.pages; sourceTree = "<group>"; };
+		329B2BAF19EC9E400028C549 /* test.pages.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = test.pages.zip; sourceTree = "<group>"; };
+		329B2BB019EC9E400028C549 /* test.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = test.rtfd; sourceTree = "<group>"; };
+		329B2BB119EC9E400028C549 /* release.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = release.pdf; sourceTree = "<group>"; };
+		329B2BB219EC9E400028C549 /* test.rtfd.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = test.rtfd.zip; sourceTree = "<group>"; };
 		C9EC6B4A1819AB4000606A3A /* ch24p825webview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch24p825webview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9EC6B4D1819AB4000606A3A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9EC6B4F1819AB4000606A3A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -99,6 +117,15 @@
 				C9EC6B821819AC2800606A3A /* htmlbody.txt */,
 				C9EC6B831819AC2800606A3A /* htmlTemplate.txt */,
 				C9EC6B841819AC2800606A3A /* listen.png */,
+				329B2BAA19EC9E400028C549 /* testing.pdf */,
+				329B2BAB19EC9E400028C549 /* test.rtf */,
+				329B2BAC19EC9E400028C549 /* test.docx */,
+				329B2BAD19EC9E400028C549 /* test.doc */,
+				329B2BAE19EC9E400028C549 /* test.pages */,
+				329B2BAF19EC9E400028C549 /* test.pages.zip */,
+				329B2BB019EC9E400028C549 /* test.rtfd */,
+				329B2BB119EC9E400028C549 /* release.pdf */,
+				329B2BB219EC9E400028C549 /* test.rtfd.zip */,
 				C9EC6B651819AB4000606A3A /* Images.xcassets */,
 				C9EC6B541819AB4000606A3A /* Supporting Files */,
 				3297F7CA198D7C0300C4BE9B /* ch24p825webview-Bridging-Header.h */,
@@ -170,11 +197,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9EC6B871819AC2800606A3A /* listen.png in Resources */,
+				329B2BB819EC9E400028C549 /* test.pages.zip in Resources */,
 				C9EC6B661819AB4000606A3A /* Images.xcassets in Resources */,
+				329B2BB919EC9E400028C549 /* test.rtfd in Resources */,
+				329B2BB419EC9E400028C549 /* test.rtf in Resources */,
 				C9EC6B851819AC2800606A3A /* htmlbody.txt in Resources */,
+				329B2BBB19EC9E400028C549 /* test.rtfd.zip in Resources */,
 				C9EC6B581819AB4000606A3A /* InfoPlist.strings in Resources */,
+				329B2BB319EC9E400028C549 /* testing.pdf in Resources */,
+				329B2BB719EC9E400028C549 /* test.pages in Resources */,
+				329B2BB619EC9E400028C549 /* test.doc in Resources */,
+				329B2BBA19EC9E400028C549 /* release.pdf in Resources */,
 				C9EC6B861819AC2800606A3A /* htmlTemplate.txt in Resources */,
 				C9EC6B611819AB4000606A3A /* Main.storyboard in Resources */,
+				329B2BB519EC9E400028C549 /* test.docx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
     return self.view as UIWebView
     }
     
-    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.restorationIdentifier = "wvc"
         self.restorationClass = self.dynamicType
@@ -21,11 +21,15 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         self.edgesForExtendedLayout = .None // get accurate offset restoration
     }
     
+    override convenience init() {
+        self.init(nibName:nil, bundle:nil)
+    }
+    
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     
-    class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject]!, coder: NSCoder!) -> UIViewController! {
+    class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject], coder: NSCoder) -> UIViewController? {
         return self(nibName:nil, bundle:nil)
     }
     
@@ -33,13 +37,13 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
     // note that I don't touch the web view at this point: just an ivar
     // we don't have any web content yet!
 
-    override func decodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func decodeRestorableStateWithCoder(coder: NSCoder) {
         println("decode")
         super.decodeRestorableStateWithCoder(coder)
         self.oldOffset = coder.decodeObjectForKey("oldOffset") as? NSValue // for local example
     }
     
-    override func encodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func encodeRestorableStateWithCoder(coder: NSCoder) {
         println("encode")
         super.encodeRestorableStateWithCoder(coder)
         if !self.canNavigate { // local example; we have to manage offset ourselves
@@ -108,29 +112,76 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
             if self.wv.request != nil { // let applicationFinished handle reloading
                 return
             }
-            let url = NSURL(string: "http://www.apeth.com/RubyFrontierDocs/default.html")
+            let url = NSURL(string: "http://www.apeth.com/RubyFrontierDocs/default.html")!
             self.wv.loadRequest(NSURLRequest(URL:url))
             return
         }
         
-        let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
-        let base = NSURL.fileURLWithPath(path)
-        let ss = NSString(contentsOfFile:path, encoding:NSUTF8StringEncoding, error:nil)
-        
-        let path2 = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")!
-        var s = NSString(contentsOfFile:path2, encoding:NSUTF8StringEncoding, error:nil)
+        let which = 1
+        switch which {
+        case 1:
+            let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
+            let base = NSURL.fileURLWithPath(path)
+            let ss = NSString(contentsOfFile:path, encoding:NSUTF8StringEncoding, error:nil)!
+            
+            let path2 = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")!
+            var s = NSString(contentsOfFile:path2, encoding:NSUTF8StringEncoding, error:nil)!
+            
+            s = s.stringByReplacingOccurrencesOfString("<maximagewidth>", withString:"80%")
+            s = s.stringByReplacingOccurrencesOfString("<fontsize>", withString:"18")
+            s = s.stringByReplacingOccurrencesOfString("<margin>", withString:"10")
+            s = s.stringByReplacingOccurrencesOfString("<guid>", withString:"http://tidbits.com/article/12228")
+            s = s.stringByReplacingOccurrencesOfString("<ourtitle>", withString:"Lion Details Revealed with Shipping Date and Price")
+            s = s.stringByReplacingOccurrencesOfString("<playbutton>", withString:"<img src=\"listen.png\" onclick=\"document.location='play:me'\">")
+            s = s.stringByReplacingOccurrencesOfString("<author>", withString:"TidBITS Staff")
+            s = s.stringByReplacingOccurrencesOfString("<date>", withString:"Mon, 06 Jun 2011 13:00:39 PDT")
+            s = s.stringByReplacingOccurrencesOfString("<content>", withString:ss)
+            
+            self.wv.loadHTMLString(s, baseURL:base)
+        case 2:
+            let path = NSBundle.mainBundle().pathForResource("release", ofType:"pdf")! // works in simulator, works in device
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 3:
+            let path = NSBundle.mainBundle().pathForResource("testing", ofType:"pdf")! // works in simulator, works in device
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 4:
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtf")! // works in simulator, blank on device :( "Cannot find data converter callback for uti public.rtf" [known issue, see release notes]
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 5:
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"doc")! // works in simulator, works on device!
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 6:
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"docx")!  // works in simulator, works on device
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 7:
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"pages")! // blank in simulator, blank on device, no message :(
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 8:
+            let path = NSBundle.mainBundle().pathForResource("test.pages", ofType:"zip")! // works in simulator! works on device, but unbelievably slow
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 9:
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtfd")! // blank in simulator, blank on device, no message
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 10:
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtfd.zip")! // blank in simulator, blank on device, "Cannot find data converter callback for uti com.apple.rtfd"
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 11:
+            let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")! // works in simulator, works in device (as text, of course)
+            let url = NSURL.fileURLWithPath(path)!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        default:break
+        }
 
-        s = s.stringByReplacingOccurrencesOfString("<maximagewidth>", withString:"80%")
-        s = s.stringByReplacingOccurrencesOfString("<fontsize>", withString:"18")
-        s = s.stringByReplacingOccurrencesOfString("<margin>", withString:"10")
-        s = s.stringByReplacingOccurrencesOfString("<guid>", withString:"http://tidbits.com/article/12228")
-        s = s.stringByReplacingOccurrencesOfString("<ourtitle>", withString:"Lion Details Revealed with Shipping Date and Price")
-        s = s.stringByReplacingOccurrencesOfString("<playbutton>", withString:"<img src=\"listen.png\" onclick=\"document.location='play:me'\">")
-        s = s.stringByReplacingOccurrencesOfString("<author>", withString:"TidBITS Staff")
-        s = s.stringByReplacingOccurrencesOfString("<date>", withString:"Mon, 06 Jun 2011 13:00:39 PDT")
-        s = s.stringByReplacingOccurrencesOfString("<content>", withString:ss)
         
-        self.wv.loadHTMLString(s, baseURL:base)
 
     }
     
