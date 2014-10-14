@@ -177,7 +177,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         super.viewDidAppear(animated)
         println("view did appear, req: \(self.wv.URL)")
         
-        let which = 1
+        let which = 8
         switch which {
         case 1:
             let b = UIBarButtonItem(title: "Size", style: .Plain, target: self, action: "doDecreaseSize:")
@@ -204,9 +204,10 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             self.wv.loadHTMLString(s, baseURL:base)
             // ===========================
             // so, WKWebView can't load _any_ files using a local file URL
+            // but the other types work fine except for rtf / rtfd which is a known issue (see release notes)
             // here are some tests...
         case 2:
-            let path = NSBundle.mainBundle().pathForResource("release", ofType:"pdf")! // crashes in simulator, blank on the device, "Could not create a sandbox extension for '/'"
+            let path = NSBundle.mainBundle().pathForResource("release", ofType:"pdf")! // works in simulator, blank on the device, "Could not create a sandbox extension for '/'"
             let url = NSURL.fileURLWithPath(path)!
             self.wv.loadRequest(NSURLRequest(URL: url))
         case 3:
@@ -230,7 +231,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             let url = NSURL.fileURLWithPath(path)!
             self.wv.loadRequest(NSURLRequest(URL: url))
         case 8:
-            let path = NSBundle.mainBundle().pathForResource("test.pages", ofType:"zip")! // crashes in simulator, blank on the device, "Could not create a sandbox extension for '/'"
+            let path = NSBundle.mainBundle().pathForResource("test.pages", ofType:"zip")! // works in simulator, blank on the device, "Could not create a sandbox extension for '/'"
             let url = NSURL.fileURLWithPath(path)!
             self.wv.loadRequest(NSURLRequest(URL: url))
         case 9:
@@ -246,6 +247,29 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
             let url = NSURL.fileURLWithPath(path)!
             self.wv.loadRequest(NSURLRequest(URL: url))
+        case 12:
+            let url = NSURL(string: "http://www.apeth.com/rez/release.pdf")! // yep!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 13:
+            let url = NSURL(string: "http://www.apeth.com/rez/testing.pdf")! // yep!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 14:
+            let url = NSURL(string: "http://www.apeth.com/rez/test.rtf")! // nope
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 15:
+            let url = NSURL(string: "http://www.apeth.com/rez/test.doc")! // yep!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 16:
+            let url = NSURL(string: "http://www.apeth.com/rez/test.docx")! // yep!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 18:
+            let url = NSURL(string: "http://www.apeth.com/rez/test.pages.zip")! // yep!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+
+        case 20:
+            let url = NSURL(string: "http://www.apeth.com/rez/test.rtfd.zip")! // nope
+            self.wv.loadRequest(NSURLRequest(URL: url))
+
         default: break
         }
         
