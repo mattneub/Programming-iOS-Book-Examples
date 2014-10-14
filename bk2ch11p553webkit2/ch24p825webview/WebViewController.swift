@@ -6,7 +6,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
     var activity = UIActivityIndicatorView()
     weak var wv : WKWebView!
     
-    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.restorationIdentifier = "wvc"
         self.restorationClass = self.dynamicType
@@ -17,14 +17,14 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         fatalError("NSCoding not supported")
     }
 
-    class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject]!, coder: NSCoder!) -> UIViewController! {
+    class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject], coder: NSCoder) -> UIViewController? {
         return self(nibName:nil, bundle:nil)
     }
     
     // unfortunately I see no evidence that the web view is assisting us at all!
     // the view is not coming back with its URL restored etc, as a UIWebView does
 
-    override func decodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func decodeRestorableStateWithCoder(coder: NSCoder) {
         println("decode")
         super.decodeRestorableStateWithCoder(coder)
 //        let oldOffset = coder.decodeObjectForKey("oldOffset") as? NSValue
@@ -32,7 +32,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
 //        self.oldOffset = oldOffset // for local example
     }
     
-    override func encodeRestorableStateWithCoder(coder: NSCoder!) {
+    override func encodeRestorableStateWithCoder(coder: NSCoder) {
         println("encode")
         super.encodeRestorableStateWithCoder(coder)
 //        if !self.canNavigate { // local example; we have to manage offset ourselves
@@ -97,9 +97,9 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         
     }
     
-    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<()>) {
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<()>) {
         if let wv = object as? WKWebView {
-            switch keyPath! {
+            switch keyPath {
             case "loading": // new:1 or 0
                 if let val:AnyObject = change[NSKeyValueChangeNewKey] {
                     if let val = val as? Bool {
@@ -132,7 +132,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
 //            if self.wv.URL {  let applicationFinished handle reloading
 //                return
 //            }
-        let url = NSURL(string: "http:www.apeth.com/RubyFrontierDocs/default.html")
+        let url = NSURL(string: "http://www.apeth.com/RubyFrontierDocs/default.html")!
         self.wv.loadRequest(NSURLRequest(URL:url))
     }
     

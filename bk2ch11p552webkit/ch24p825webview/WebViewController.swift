@@ -74,24 +74,24 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         // it is copied, so if we supply one we can't change it later
         // alternatively, to use a default configuration, use frame alone
         
-        let ucc = WKUserContentController()
-        
-        // prepare to receive messages under the "playbutton" name
-        // unfortunately there's a bug: the script message handler cannot be self,
-        // or we will leak
-        ucc.addScriptMessageHandler(self, name: "playbutton")
+        // here, frame unimportant, we will be sized automatically
+        let wv = WKWebView(frame: CGRectZero)
+        self.wv = wv
         
         // inject a CSS rule (example taken from WWDC 2014 video)
         // (instead of body style containing font-size:<fontsize>px; in template)
+
         let s = self.cssrule
         let script = WKUserScript(source: s, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
-        ucc.addUserScript(script)
+        self.wv.configuration.userContentController.addUserScript(script)
+
+        // prepare to receive messages under the "playbutton" name
+        // unfortunately there's a bug: the script message handler cannot be self,
+        // or we will leak
         
-        let config = WKWebViewConfiguration()
-        config.userContentController = ucc
+        self.wv.configuration.userContentController.addScriptMessageHandler(
+            self, name: "playbutton")
         
-        // here, frame unimportant, we will be sized automatically
-        let wv = WKWebView(frame: CGRectZero, configuration: config)
         wv.restorationIdentifier = "wv"
         wv.scrollView.backgroundColor = UIColor.blackColor() // web view alone, ineffective
         self.view.addSubview(wv)
@@ -102,7 +102,6 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         self.view.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat("V:|[wv]|", options: nil, metrics: nil, views: ["wv":wv])
         )
-        self.wv = wv
         
         wv.navigationDelegate = self
         
@@ -177,18 +176,18 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         super.viewDidAppear(animated)
         println("view did appear, req: \(self.wv.URL)")
         
-        let which = 8
+        let which = 1
         switch which {
         case 1:
             let b = UIBarButtonItem(title: "Size", style: .Plain, target: self, action: "doDecreaseSize:")
             self.navigationItem.rightBarButtonItems = [b]
             
-            let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
-            let base = NSURL.fileURLWithPath(path)
-            let ss = NSString(contentsOfFile:path, encoding:NSUTF8StringEncoding, error:nil)!
+            let bodypath = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
+            let ss = NSString(contentsOfFile:bodypath, encoding:NSUTF8StringEncoding, error:nil)!
             
-            let path2 = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")!
-            var s = NSString(contentsOfFile:path2, encoding:NSUTF8StringEncoding, error:nil)!
+            let templatepath = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")!
+            let base = NSURL.fileURLWithPath(templatepath)!
+            var s = NSString(contentsOfFile:templatepath, encoding:NSUTF8StringEncoding, error:nil)!
             
             s = s.stringByReplacingOccurrencesOfString("<maximagewidth>", withString:"80%")
             s = s.stringByReplacingOccurrencesOfString("<margin>", withString:"10")
@@ -201,7 +200,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             s = s.stringByReplacingOccurrencesOfString("<content>", withString:ss)
             
             // missing from docs, but in header file
-            self.wv.loadHTMLString(s, baseURL:base)
+            self.wv.loadHTMLString(s, baseURL:base) // fails because we can't load the local image
             // ===========================
             // so, WKWebView can't load _any_ files using a local file URL
             // but the other types work fine except for rtf / rtfd which is a known issue (see release notes)
@@ -254,7 +253,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             let url = NSURL(string: "http://www.apeth.com/rez/testing.pdf")! // yep!
             self.wv.loadRequest(NSURLRequest(URL: url))
         case 14:
-            let url = NSURL(string: "http://www.apeth.com/rez/test.rtf")! // nope
+            let url = NSURL(string: "http://www.apeth.com/rez/test.rtf")! // nope... yep! fixed in 8.1
             self.wv.loadRequest(NSURLRequest(URL: url))
         case 15:
             let url = NSURL(string: "http://www.apeth.com/rez/test.doc")! // yep!
@@ -267,7 +266,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             self.wv.loadRequest(NSURLRequest(URL: url))
 
         case 20:
-            let url = NSURL(string: "http://www.apeth.com/rez/test.rtfd.zip")! // nope
+            let url = NSURL(string: "http://www.apeth.com/rez/test.rtfd.zip")! // nope :(
             self.wv.loadRequest(NSURLRequest(URL: url))
 
         default: break
@@ -308,6 +307,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             // this is how you would open in Mobile Safari
             // UIApplication.sharedApplication().openURL(url)
             decisionHandler(.Cancel)
+            return
         }
         // must always call _something_
         decisionHandler(.Allow)
