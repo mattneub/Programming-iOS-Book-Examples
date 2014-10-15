@@ -11,13 +11,14 @@ class MyMessageHandler : NSObject, WKScriptMessageHandler {
     weak var delegate : WebViewController?
     init(delegate:WebViewController) {
         self.delegate = delegate
+        super.init()
     }
     func userContentController(userContentController: WKUserContentController,
         didReceiveScriptMessage message: WKScriptMessage) {
             delegate?.userContentController(userContentController, didReceiveScriptMessage: message)
     }
     deinit {
-        println("message handler dealloc") // never called; leaking, but that's better than leaking my view controller
+        println("message handler dealloc")
     }
 }
 
