@@ -7,7 +7,21 @@ A simple no-navigation web view - we just show our own custom content and that's
 Demonstrates basic web kit configuration and some cool features.
 */
 
-class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler, UIViewControllerRestoration {
+class MyMessageHandler : NSObject, WKScriptMessageHandler {
+    weak var delegate : WebViewController?
+    init(delegate:WebViewController) {
+        self.delegate = delegate
+    }
+    func userContentController(userContentController: WKUserContentController,
+        didReceiveScriptMessage message: WKScriptMessage) {
+            delegate?.userContentController(userContentController, didReceiveScriptMessage: message)
+    }
+    deinit {
+        println("message handler dealloc") // never called; leaking, but that's better than leaking my view controller
+    }
+}
+
+class WebViewController: UIViewController, WKNavigationDelegate, UIViewControllerRestoration {
     
     var activity = UIActivityIndicatorView()
     var oldOffset : NSValue? // use nil as indicator
@@ -90,7 +104,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         // or we will leak
         
         self.wv.configuration.userContentController.addScriptMessageHandler(
-            self, name: "playbutton")
+            MyMessageHandler(delegate:self), name: "playbutton")
         
         wv.restorationIdentifier = "wv"
         wv.scrollView.backgroundColor = UIColor.blackColor() // web view alone, ineffective
@@ -283,14 +297,6 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         self.wv.evaluateJavaScript(s, completionHandler: nil)
     }
     
-    
-    // work around memory leak (retain cycle)
-    override func viewWillDisappear(animated: Bool) {
-        if self.isMovingFromParentViewController() {
-            self.wv.configuration.userContentController.removeScriptMessageHandlerForName("playbutton")
-        }
-    }
-    
     deinit {
         println("dealloc")
         // using KVO, always tear down, take no chances
@@ -298,6 +304,9 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         self.wv.removeObserver(self, forKeyPath: "title")
         // with webkit, probably no need for this, but no harm done
         self.wv.stopLoading()
+        // break all retains
+        self.wv.configuration.userContentController.removeAllUserScripts()
+        self.wv.configuration.userContentController.removeScriptMessageHandlerForName("playbutton")
     }
     
     func webView(webView: WKWebView!, decidePolicyForNavigationAction navigationAction: WKNavigationAction!, decisionHandler: ((WKNavigationActionPolicy) -> Void)!) {
@@ -313,8 +322,8 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         decisionHandler(.Allow)
     }
     
-    func userContentController(userContentController: WKUserContentController!,
-        didReceiveScriptMessage message: WKScriptMessage!) {
+    func userContentController(userContentController: WKUserContentController,
+        didReceiveScriptMessage message: WKScriptMessage) {
             if message.name == "playbutton" {
                 if let body = message.body as? String {
                     if body == "play" {
@@ -323,6 +332,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                 }
             }
     }
+
 
 }
 
