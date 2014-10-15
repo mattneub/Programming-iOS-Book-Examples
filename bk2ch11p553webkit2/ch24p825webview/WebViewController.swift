@@ -95,6 +95,8 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         // cool feature, show title
         wv.addObserver(self, forKeyPath: "title", options: .New, context: nil)
         
+        wv.navigationDelegate = self
+        
     }
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<()>) {
@@ -151,5 +153,27 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
     }
     
 
+}
+
+extension WebViewController : WKNavigationDelegate {
+    func webView(webView: WKWebView!, didCommitNavigation navigation: WKNavigation!) {
+        println("did commit \(navigation)")
+    }
+    
+    func webView(webView: WKWebView!, didFailNavigation navigation: WKNavigation!, withError error: NSError!) {
+        println("did fail")
+    }
+    
+    func webView(webView: WKWebView!, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError!) {
+        println("did fail provisional")
+    }
+    
+    func webView(webView: WKWebView!, didFinishNavigation navigation: WKNavigation!) {
+        println("did finish")
+    }
+    
+    func webView(webView: WKWebView!, didStartProvisionalNavigation navigation: WKNavigation!) {
+        println("did start")
+    }
 }
 
