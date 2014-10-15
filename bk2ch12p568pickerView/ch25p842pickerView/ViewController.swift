@@ -7,7 +7,7 @@ class MyPickerView : UIPickerView {
         println("intrinsic")
         var sz = super.intrinsicContentSize()
         sz.height = 140 // but it only goes down to 162, maximum 180
-        // sz.width = 250 // just proving this actuall does something
+        // sz.width = 250 // just proving this actually does something
         return sz
     }
     
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let f = NSBundle.mainBundle().pathForResource("states", ofType: "txt")!
-        let s = NSString(contentsOfFile: f, encoding: NSUTF8StringEncoding, error: nil)
+        let s = NSString(contentsOfFile: f, encoding: NSUTF8StringEncoding, error: nil)!
         self.states = s.componentsSeparatedByString("\n") as [String]
     }
     
@@ -33,12 +33,12 @@ class ViewController: UIViewController {
 extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     
     // returns the number of 'columns' to display.
-    func numberOfComponentsInPickerView(pickerView: UIPickerView!) -> Int {
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     
     // returns the # of rows in each component..
-    func pickerView(pickerView: UIPickerView!, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 50
     }
     
@@ -46,8 +46,8 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     // the labels are not leaking (they are deallocated in good order)...
     // but they are not being reused either
     
-    func pickerView(pickerView: UIPickerView!, viewForRow row: Int,
-        forComponent component: Int, reusingView view: UIView!) -> UIView! {
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int,
+        forComponent component: Int, reusingView view: UIView!) -> UIView {
             var lab : UILabel
             if let label = view as? UILabel {
                 lab = label
