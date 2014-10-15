@@ -55,9 +55,13 @@ class ViewController: UIViewController {
         CGContextSetStrokeColorWithColor(con, UIColor.blackColor().CGColor)
         CGContextStrokeRect(con, r)
         CGContextStrokeEllipseInRect(con, r)
-        self.prog2.progressImage =
+        let im =
             UIGraphicsGetImageFromCurrentImageContext().resizableImageWithCapInsets(UIEdgeInsetsMake(4, 4, 4, 4), resizingMode:.Stretch)
         UIGraphicsEndImageContext()
+        // self.prog2.progressImage = im
+        // hacky workaround
+        let ims = self.prog2.subviews.filter {$0 is UIImageView}.map {$0 as UIImageView}
+        ims[1].image = im
         
         // but this code, which worked fine for years including iOS 7.0, was broken by iOS 7.1
         // and remains broken in iOS 8
@@ -65,11 +69,11 @@ class ViewController: UIViewController {
     }
     
     func inc(t:NSTimer) {
-        var val = self.prog3.value
+        var val = Float(self.prog3.value)
         val += 0.1
         self.prog1.setProgress(val, animated:true) // bug fixed in iOS 7.1
         self.prog2.setProgress(val, animated:true)
-        self.prog3.value = val
+        self.prog3.value = CGFloat(val)
         self.prog3.setNeedsDisplay()
         if val >= 1.0 {
             t.invalidate()
