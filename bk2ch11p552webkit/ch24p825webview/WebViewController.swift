@@ -8,8 +8,8 @@ Demonstrates basic web kit configuration and some cool features.
 */
 
 class MyMessageHandler : NSObject, WKScriptMessageHandler {
-    weak var delegate : WebViewController?
-    init(delegate:WebViewController) {
+    weak var delegate : WKScriptMessageHandler?
+    init(delegate:WKScriptMessageHandler) {
         self.delegate = delegate
         super.init()
     }
@@ -22,7 +22,7 @@ class MyMessageHandler : NSObject, WKScriptMessageHandler {
     }
 }
 
-class WebViewController: UIViewController, WKNavigationDelegate, UIViewControllerRestoration {
+class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler, UIViewControllerRestoration {
     
     var activity = UIActivityIndicatorView()
     var oldOffset : NSValue? // use nil as indicator
