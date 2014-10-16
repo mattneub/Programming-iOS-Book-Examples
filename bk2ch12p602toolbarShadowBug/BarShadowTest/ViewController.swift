@@ -1,6 +1,6 @@
 
 import UIKit
-func imageFromContextOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     closure()
     let result = UIGraphicsGetImageFromCurrentImageContext()
@@ -20,13 +20,13 @@ class ViewController: UIViewController {
         
         let sz = CGSizeMake(20,20)
         
-        self.navbar.setBackgroundImage(imageFromContextOfSize(sz) {
+        self.navbar.setBackgroundImage(imageOfSize(sz) {
             UIColor(white:0.95, alpha:0.85).setFill()
             CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,0,20,20))
             }, forBarPosition:.Any, barMetrics: .Default)
         self.navbar.translucent = true
         
-        self.toolbar.setBackgroundImage(imageFromContextOfSize(sz) {
+        self.toolbar.setBackgroundImage(imageOfSize(sz) {
             UIColor(white:0.95, alpha:0.85).setFill()
             CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,0,20,20))
             }, forToolbarPosition:.Any, barMetrics: .Default)
@@ -34,13 +34,13 @@ class ViewController: UIViewController {
 
         let sz2 = CGSizeMake(4,4)
         
-        self.navbar.shadowImage = imageFromContextOfSize(sz2) {
+        self.navbar.shadowImage = imageOfSize(sz2) {
             UIColor.grayColor().colorWithAlphaComponent(0.3).setFill()
             CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,0,4,2))
             UIColor.grayColor().colorWithAlphaComponent(0.15).setFill()
             CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,2,4,2))
         }
-        self.toolbar.setShadowImage( imageFromContextOfSize(sz2) {
+        self.toolbar.setShadowImage( imageOfSize(sz2) {
             UIColor.grayColor().colorWithAlphaComponent(0.3).setFill()
             CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,2,4,2))
             UIColor.grayColor().colorWithAlphaComponent(0.15).setFill()
