@@ -22,12 +22,12 @@ class MyKnob: UIControl {
         return atan2(loc.y - c.y, loc.x - c.x)
     }
     
-    override func beginTrackingWithTouch(touch: UITouch!, withEvent event: UIEvent!) -> Bool {
+    override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent) -> Bool {
         self.initialAngle = pToA(touch)
         return true
     }
     
-    override func continueTrackingWithTouch(touch: UITouch!, withEvent event: UIEvent!) -> Bool {
+    override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent) -> Bool {
         let ang = pToA(touch) - self.initialAngle
         let absoluteAngle = self.angle + ang
         switch absoluteAngle { // how to do inequalities in a Swift switch statement
@@ -51,12 +51,12 @@ class MyKnob: UIControl {
         }
     }
     
-    override func endTrackingWithTouch(touch: UITouch!, withEvent event: UIEvent!) {
+    override func endTrackingWithTouch(touch: UITouch, withEvent event: UIEvent) {
         self.sendActionsForControlEvents(.ValueChanged)
     }
     
     override func drawRect(rect: CGRect) {
-        UIImage(named:"knob.png").drawInRect(rect)
+        UIImage(named:"knob.png")!.drawInRect(rect)
     }
     
 }
