@@ -15,8 +15,8 @@ class MySlider: UISlider {
         //    self.maximumTrackTintColor = UIColor.greenColor()
         //    self.thumbTintColor = UIColor.orangeColor()
         
-        self.setThumbImage(UIImage(named:"moneybag1.png"), forState: .Normal)
-        let coinEnd = UIImage(named:"coin2.png").resizableImageWithCapInsets(
+        self.setThumbImage(UIImage(named:"moneybag1.png")!, forState: .Normal)
+        let coinEnd = UIImage(named:"coin2.png")!.resizableImageWithCapInsets(
             UIEdgeInsetsMake(0,7,0,7), resizingMode: .Stretch)
         self.setMinimumTrackImage(coinEnd, forState: .Normal)
         self.setMaximumTrackImage(coinEnd, forState: .Normal)
@@ -63,7 +63,8 @@ class MySlider: UISlider {
 
     override func thumbRectForBounds(bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
         return super.thumbRectForBounds(
-            bounds, trackRect: rect, value: value).rectByOffsetting(dx: 0, dy: -7)
+            bounds, trackRect: rect, value: value)
+            .rectByOffsetting(dx: 0, dy: -7)
     }
 
 }

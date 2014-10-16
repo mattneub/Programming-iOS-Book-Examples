@@ -2,7 +2,7 @@
 
 import UIKit
 
-func imageFromContextOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     closure()
     let result = UIGraphicsGetImageFromCurrentImageContext()
@@ -22,20 +22,20 @@ class ViewController: UIViewController {
         
         // background, set desired height but make width resizable
         // sufficient to set for Normal only
-
+        
         let sz = CGSizeMake(100,60)
-        let im = imageFromContextOfSize(sz) {
-            UIImage(named:"linen.png").drawInRect(CGRect(origin: CGPoint(), size: sz))
-        }.resizableImageWithCapInsets(
-            UIEdgeInsetsMake(0,10,0,10), resizingMode: .Stretch)
+        let im = imageOfSize(sz) {
+            UIImage(named:"linen.png")!.drawInRect(CGRect(origin: CGPoint(), size: sz))
+            }.resizableImageWithCapInsets(
+                UIEdgeInsetsMake(0,10,0,10), resizingMode: .Stretch)
         self.seg.setBackgroundImage(im, forState: .Normal, barMetrics: .Default)
         
         // segment images, redraw at final size
         let pep = ["manny", "moe", "jack"].map {$0 + ".jpg"}
-        for i in 0 ..< 3 {
+        for (i, boy) in enumerate(pep) {
             let sz = CGSizeMake(30,30)
-            let im = imageFromContextOfSize(sz) {
-                UIImage(named:pep[i]).drawInRect(CGRect(origin: CGPoint(), size: sz))
+            let im = imageOfSize(sz) {
+                UIImage(named:boy)!.drawInRect(CGRect(origin: CGPoint(), size: sz))
                 }.imageWithRenderingMode(.AlwaysOriginal)
             self.seg.setImage(im, forSegmentAtIndex: i)
             self.seg.setWidth(80, forSegmentAtIndex: i)
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         
         // divider, set at desired width, sufficient to set for Normal only
         let sz2 = CGSizeMake(2,10)
-        let div = imageFromContextOfSize(sz2) {
+        let div = imageOfSize(sz2) {
             UIColor.whiteColor().set()
             CGContextFillRect(UIGraphicsGetCurrentContext(), CGRect(origin: CGPoint(), size: sz2))
         }
