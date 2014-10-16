@@ -29,14 +29,14 @@ class ViewController: UIViewController {
         self.sb.barTintColor = UIColor.greenColor() // unseen in this example
         // self.sb.backgroundColor = UIColor.redColor()
         
-        let lin = UIImage(named:"linen.png")
+        let lin = UIImage(named:"linen.png")!
         let linim = lin.resizableImageWithCapInsets(UIEdgeInsetsMake(1,1,1,1), resizingMode:.Stretch)
         self.sb.setBackgroundImage(linim, forBarPosition:.Any, barMetrics:.Default)
         self.sb.setBackgroundImage(linim, forBarPosition:.Any, barMetrics:.DefaultPrompt)
         
         let sepim = imageFromContextOfSize(CGSizeMake(320,20)) {
             UIBezierPath(roundedRect:CGRectMake(5,0,320-5*2,20), cornerRadius:8).addClip()
-            UIImage(named:"sepia.jpg").drawInRect(CGRectMake(0,0,320,20))
+            UIImage(named:"sepia.jpg")!.drawInRect(CGRectMake(0,0,320,20))
         }
         self.sb.setSearchFieldBackgroundImage(sepim, forState:.Normal)
         // just to show what it does:
@@ -44,9 +44,8 @@ class ViewController: UIViewController {
         
         // how to reach in and grab the text field
         for v in (self.sb.subviews[0] as UIView).subviews as [UIView] {
-            if v is UITextField {
+            if let tf = v as? UITextField {
                 println("got that puppy")
-                let tf = v as UITextField
                 tf.textColor = UIColor.whiteColor()
                 break
             }
@@ -57,14 +56,14 @@ class ViewController: UIViewController {
         //    self.sb.showsSearchResultsButton = true
         //    self.sb.searchResultsButtonSelected = true
         
-        let manny = UIImage(named:"manny.jpg")
+        let manny = UIImage(named:"manny.jpg")!
         self.sb.setImage(manny, forSearchBarIcon:.Search, state:.Normal)
         let mannyim = imageFromContextOfSize(CGSizeMake(20,20)) {
             manny.drawInRect(CGRectMake(0,0,20,20))
         }
         self.sb.setImage(mannyim, forSearchBarIcon:.Clear, state:.Normal)
         
-        let moe = UIImage(named:"moe.jpg")
+        let moe = UIImage(named:"moe.jpg")!
         let moeim = imageFromContextOfSize(CGSizeMake(20,20)) {
             moe.drawInRect(CGRectMake(0,0,20,20))
         }
@@ -85,7 +84,7 @@ class ViewController: UIViewController {
             forLeftSegmentState:.Normal, rightSegmentState:.Normal)
 
         let atts = [
-            NSFontAttributeName: UIFont(name:"GillSans-Bold", size:16),
+            NSFontAttributeName: UIFont(name:"GillSans-Bold", size:16)!,
             NSForegroundColorAttributeName: UIColor.whiteColor(),
             NSShadowAttributeName: lend() {
                 (shad:NSShadow) in

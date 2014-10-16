@@ -1,7 +1,7 @@
 
 import UIKit
 
-func imageFromContextOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     closure()
     let result = UIGraphicsGetImageFromCurrentImageContext()
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     @IBAction func doStep(sender:AnyObject!) {
         let step = sender as UIStepper
-        self.prog.progress = Float(step.value / (step.maximumValue - step.minimumValue))
+        self.prog.setProgress(Float(step.value / (step.maximumValue - step.minimumValue)), animated:true)
     }
 
     override func viewDidLoad() {
@@ -31,17 +31,17 @@ class ViewController: UIViewController {
         
         self.stepper.tintColor = UIColor.yellowColor()
         
-        let imdis = UIImage(named: "pic2.png")
+        let imdis = UIImage(named: "pic2.png")!
             .resizableImageWithCapInsets(
                 UIEdgeInsetsMake(1, 1, 1, 1), resizingMode:.Stretch)
         self.stepper.setBackgroundImage(imdis, forState:.Disabled)
         
-        let imnorm = UIImage(named: "pic1.png")
+        let imnorm = UIImage(named: "pic1.png")!
             .resizableImageWithCapInsets(
                 UIEdgeInsetsMake(1, 1, 1, 1), resizingMode:.Stretch)
         self.stepper.setBackgroundImage(imnorm, forState:.Normal)
         
-        let tint = imageFromContextOfSize(CGSizeMake(3,3)) {
+        let tint = imageOfSize(CGSizeMake(3,3)) {
             self.stepper.tintColor.setFill()
             CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,0,3,3))
         }.resizableImageWithCapInsets(
@@ -52,9 +52,9 @@ class ViewController: UIViewController {
 
         // image (treated as template by default)
         
-        let imleft = imageFromContextOfSize(CGSizeMake(45,29)) {
+        let imleft = imageOfSize(CGSizeMake(45,29)) {
             NSAttributedString(string:"\u{21DA}", attributes:[
-                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30),
+                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: UIColor.whiteColor(),
                 NSParagraphStyleAttributeName: lend() {
                     (para : NSMutableParagraphStyle) in
@@ -64,9 +64,9 @@ class ViewController: UIViewController {
         }.imageWithRenderingMode(.AlwaysOriginal)
         self.stepper.setDecrementImage(imleft, forState:.Normal)
         
-        let imleftblack = imageFromContextOfSize(CGSizeMake(45,29)) {
+        let imleftblack = imageOfSize(CGSizeMake(45,29)) {
             NSAttributedString(string:"\u{21DA}", attributes:[
-                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30),
+                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: UIColor.blackColor(),
                 NSParagraphStyleAttributeName: lend() {
                     (para : NSMutableParagraphStyle) in
@@ -76,9 +76,9 @@ class ViewController: UIViewController {
             }.imageWithRenderingMode(.AlwaysOriginal)
         self.stepper.setDecrementImage(imleftblack, forState:.Disabled)
 
-        let imlefttint = imageFromContextOfSize(CGSizeMake(45,29)) {
+        let imlefttint = imageOfSize(CGSizeMake(45,29)) {
             NSAttributedString(string:"\u{21DA}", attributes:[
-                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30),
+                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: self.stepper.tintColor,
                 NSParagraphStyleAttributeName: lend() {
                     (para : NSMutableParagraphStyle) in
@@ -88,9 +88,9 @@ class ViewController: UIViewController {
             }.imageWithRenderingMode(.AlwaysOriginal)
         self.stepper.setDecrementImage(imlefttint, forState:.Highlighted)
 
-        let imright = imageFromContextOfSize(CGSizeMake(45,29)) {
+        let imright = imageOfSize(CGSizeMake(45,29)) {
             NSAttributedString(string:"\u{21DB}", attributes:[
-                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30),
+                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: UIColor.whiteColor(),
                 NSParagraphStyleAttributeName: lend() {
                     (para : NSMutableParagraphStyle) in
@@ -100,9 +100,9 @@ class ViewController: UIViewController {
             }.imageWithRenderingMode(.AlwaysOriginal)
         self.stepper.setIncrementImage(imright, forState:.Normal)
         
-        let imrightblack = imageFromContextOfSize(CGSizeMake(45,29)) {
+        let imrightblack = imageOfSize(CGSizeMake(45,29)) {
             NSAttributedString(string:"\u{21DB}", attributes:[
-                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30),
+                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: UIColor.blackColor(),
                 NSParagraphStyleAttributeName: lend() {
                     (para : NSMutableParagraphStyle) in
@@ -112,9 +112,9 @@ class ViewController: UIViewController {
             }.imageWithRenderingMode(.AlwaysOriginal)
         self.stepper.setIncrementImage(imrightblack, forState:.Disabled)
         
-        let imrighttint = imageFromContextOfSize(CGSizeMake(45,29)) {
+        let imrighttint = imageOfSize(CGSizeMake(45,29)) {
             NSAttributedString(string:"\u{21DB}", attributes:[
-                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30),
+                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: self.stepper.tintColor,
                 NSParagraphStyleAttributeName: lend() {
                     (para : NSMutableParagraphStyle) in
