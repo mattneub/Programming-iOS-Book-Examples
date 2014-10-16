@@ -32,7 +32,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         more.navigationBar.tintColor = UIColor.whiteColor() // oooh oooh
         
         let tv = list.view as UITableView
-        let mds = MyDataSource(originalDataSource: tv.dataSource)
+        let mds = MyDataSource(originalDataSource: tv.dataSource!)
         self.myDataSource = mds
         tv.dataSource = mds
         
