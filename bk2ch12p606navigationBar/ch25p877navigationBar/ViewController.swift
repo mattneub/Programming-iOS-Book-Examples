@@ -1,7 +1,7 @@
 
 
 import UIKit
-func imageFromContextOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     closure()
     let result = UIGraphicsGetImageFromCurrentImageContext()
@@ -21,18 +21,17 @@ class ViewController: UIViewController {
         // very simple example
 
         self.navbar.backIndicatorImage =
-            imageFromContextOfSize(CGSizeMake(10,20)) {
+            imageOfSize(CGSizeMake(10,20)) {
                 CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(6,0,4,20))
         }
         self.navbar.backIndicatorTransitionMaskImage =
-            imageFromContextOfSize(CGSizeMake(10,20)) {
-        }
+            imageOfSize(CGSizeMake(10,20)) {}
         
         // shadow, as in previous example
         
         let sz = CGSizeMake(20,20)
         
-        self.navbar.setBackgroundImage(imageFromContextOfSize(sz) {
+        self.navbar.setBackgroundImage(imageOfSize(sz) {
             UIColor(white:0.95, alpha:0.85).setFill()
             CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,0,20,20))
             }, forBarPosition:.Any, barMetrics: .Default)
@@ -40,7 +39,7 @@ class ViewController: UIViewController {
         
         let sz2 = CGSizeMake(4,4)
         
-        self.navbar.shadowImage = imageFromContextOfSize(sz2) {
+        self.navbar.shadowImage = imageOfSize(sz2) {
             UIColor.grayColor().colorWithAlphaComponent(0.3).setFill()
             CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,0,4,2))
             UIColor.grayColor().colorWithAlphaComponent(0.15).setFill()
@@ -57,7 +56,7 @@ class ViewController: UIViewController {
     
     func pushNext(sender:AnyObject) {
         let oldb = sender as UIBarButtonItem
-        let s = oldb.title;
+        let s = oldb.title
         let ni = UINavigationItem(title:s)
         if s == "Evers" {
             let b = UIBarButtonItem(
