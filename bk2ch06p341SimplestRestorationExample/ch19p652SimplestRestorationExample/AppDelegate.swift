@@ -20,7 +20,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     let which = 0
     
     /*
-    func application(application: UIApplication!, viewControllerWithRestorationIdentifierPath ip: [AnyObject]!, coder: NSCoder!) -> UIViewController! {
+    func application(application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [AnyObject]!, coder: NSCoder!) -> UIViewController! {
         
         if which == 0 {
             return nil

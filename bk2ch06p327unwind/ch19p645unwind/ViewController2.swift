@@ -43,7 +43,7 @@ class ViewController2 : UIViewController {
         return result
     }
 
-    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String) -> UIStoryboardSegue {
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
         println("view controller 2 was asked for segue")
         // can't return nil
         return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)

@@ -13,7 +13,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         let rvc = RootViewController()
         rvc.restorationIdentifier = "root"
-        let nav = UINavigationController(rootViewController:rvc)!
+        let nav = UINavigationController(rootViewController:rvc)
         nav.restorationIdentifier = "nav"
         
         self.window!.rootViewController = nav

@@ -22,7 +22,7 @@ class MyNavController : UINavigationController {
         return vc
     }
     
-    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String) -> UIStoryboardSegue {
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
         println("I \(self) will be asked for the segue")
         let seg = super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
         println("I \(self) was asked for the segue, and I am returning \(seg) \(seg.identifier)")

@@ -35,7 +35,7 @@ class MyNavigationController : UINavigationController {
         return result
     }
     
-    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String) -> UIStoryboardSegue {
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
         println("nav controller was asked for segue")
         
         // are we in the very specific situation where

@@ -50,14 +50,14 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // so this time around, we save the Pep object itself
     // and assume that Pep is itself archivable (which it now is)
     
-    func application(application: UIApplication!, willEncodeRestorableStateWithCoder coder: NSCoder) {
+    func application(application: UIApplication, willEncodeRestorableStateWithCoder coder: NSCoder) {
         let pvc = self.window!.rootViewController as UIPageViewController
         let pep = pvc.viewControllers[0] as Pep
         println("app delegate encoding \(pep)")
         coder.encodeObject(pep, forKey:"pep")
     }
     
-    func application(application: UIApplication!, didDecodeRestorableStateWithCoder coder: NSCoder) {
+    func application(application: UIApplication, didDecodeRestorableStateWithCoder coder: NSCoder) {
         let pep : AnyObject? = coder.decodeObjectForKey("pep")
         println("app delegate decoding \(pep)")
         if let pep = pep as? Pep {
