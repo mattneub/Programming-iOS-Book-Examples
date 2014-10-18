@@ -32,17 +32,14 @@ class MyKnob: UIControl {
         let absoluteAngle = self.angle + ang
         switch absoluteAngle { // how to do inequalities in a Swift switch statement
         case let ang where ang < 0:
-            self.transform = CGAffineTransformIdentity
             self.angle = 0
             self.sendActionsForControlEvents(.ValueChanged)
             return false
         case let ang where ang > 5:
-            self.transform = CGAffineTransformMakeRotation(5)
             self.angle = 5
             self.sendActionsForControlEvents(.ValueChanged)
             return false
         default:
-            self.transform = CGAffineTransformRotate(self.transform, ang)
             self.angle = absoluteAngle
             if self.continuous {
                 self.sendActionsForControlEvents(.ValueChanged)
