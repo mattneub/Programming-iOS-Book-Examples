@@ -10,6 +10,8 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
         super.init()
     }
     
+    // exclamation mark instead of question mark is deliberate so I don't have to keep unwrapping!
+    
     override func willMoveToAnimator(anim: UIDynamicAnimator!) {
         if anim == nil { return }
         

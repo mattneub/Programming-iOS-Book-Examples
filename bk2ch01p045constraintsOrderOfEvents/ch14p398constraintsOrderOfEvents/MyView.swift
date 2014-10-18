@@ -32,7 +32,7 @@ class MyView: UIView, Printable {
     }
     
     // gets an extra cycle, I've no idea why
-    override func layoutSublayersOfLayer(layer: CALayer!) {
+    override func layoutSublayersOfLayer(layer: CALayer) {
         super.layoutSublayersOfLayer(layer)
         println("\(self)\n\(__FUNCTION__)\n")
     }

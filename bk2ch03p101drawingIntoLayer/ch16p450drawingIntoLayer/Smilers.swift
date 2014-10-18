@@ -4,7 +4,7 @@ import UIKit
 
 
 class Smiler:NSObject {
-    override func drawLayer(layer: CALayer!, inContext ctx: CGContext!) {
+    override func drawLayer(layer: CALayer, inContext ctx: CGContext) {
         UIGraphicsPushContext(ctx)
         //[[UIImage imageNamed: @"smiley"] drawInRect:CGContextGetClipBoundingBox(ctx)];
         UIImage(named:"smiley")!.drawAtPoint(CGPoint())
@@ -15,7 +15,7 @@ class Smiler:NSObject {
 }
 
 class Smiler2:NSObject {
-    override func displayLayer(layer: CALayer!) {
+    override func displayLayer(layer: CALayer) {
         layer.contents = UIImage(named:"smiley")!.CGImage
         println("\(__FUNCTION__)")
         println(layer.contentsGravity)
@@ -23,7 +23,7 @@ class Smiler2:NSObject {
 }
 
 class SmilerLayer:CALayer {
-    override func drawInContext(ctx: CGContext!) {
+    override func drawInContext(ctx: CGContext) {
         UIGraphicsPushContext(ctx)
         //[[UIImage imageNamed: @"smiley"] drawInRect:CGContextGetClipBoundingBox(ctx)];
         UIImage(named:"smiley")!.drawAtPoint(CGPoint())

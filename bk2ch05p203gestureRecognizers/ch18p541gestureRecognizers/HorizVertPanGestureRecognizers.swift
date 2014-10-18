@@ -6,12 +6,12 @@ import UIKit
 class HorizPanGestureRecognizer : UIPanGestureRecognizer {
     var origLoc : CGPoint!
     
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.origLoc = (touches.anyObject() as UITouch).locationInView(self.view!.superview)
         super.touchesBegan(touches, withEvent:event)
     }
     
-    override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         if self.state == .Possible {
             let loc = (touches.anyObject() as UITouch).locationInView(self.view!.superview)
             let deltaX = fabs(loc.x - self.origLoc.x)
@@ -34,12 +34,12 @@ class HorizPanGestureRecognizer : UIPanGestureRecognizer {
 class VertPanGestureRecognizer : UIPanGestureRecognizer {
     var origLoc : CGPoint!
     
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.origLoc = (touches.anyObject() as UITouch).locationInView(self.view!.superview)
         super.touchesBegan(touches, withEvent:event)
     }
     
-    override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         if self.state == .Possible {
             let loc = (touches.anyObject() as UITouch).locationInView(self.view!.superview)
             let deltaX = fabs(loc.x - self.origLoc.x)

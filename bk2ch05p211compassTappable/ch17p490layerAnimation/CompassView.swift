@@ -40,7 +40,7 @@ class CompassLayer : CALayer {
         }
     }
     
-    override func hitTest(p: CGPoint) -> CALayer! {
+    override func hitTest(p: CGPoint) -> CALayer? {
         var lay = super.hitTest(p)
         if lay == self.arrow {
             // artificially restrict touchability to roughly the shaft/point area
@@ -122,7 +122,7 @@ class CompassLayer : CALayer {
 
     }
     
-    override func drawLayer(layer: CALayer!, inContext con: CGContext!) {
+    override func drawLayer(layer: CALayer, inContext con: CGContext) {
         println("drawLayer:inContext: for arrow")
         
         // Questa poi la conosco pur troppo!

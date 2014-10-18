@@ -9,7 +9,7 @@ class LoggingView: UIView {
         println("\(self) \(__FUNCTION__)\n")
     }
     
-    override func layoutSublayersOfLayer(layer: CALayer!) {
+    override func layoutSublayersOfLayer(layer: CALayer) {
         super.layoutSublayersOfLayer(layer)
         println("\(self) \(__FUNCTION__)\n")
     }

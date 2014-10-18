@@ -14,14 +14,14 @@ class MyLayer : CALayer {
     
     var thickness : CGFloat = 0
     
-    override class func needsDisplayForKey(key: String!) -> Bool {
+    override class func needsDisplayForKey(key: String) -> Bool {
         if key == "thickness" {
             return true
         }
         return super.needsDisplayForKey(key)
     }
     
-    override func drawInContext(con: CGContext!) {
+    override func drawInContext(con: CGContext) {
         let r = self.bounds.rectByInsetting(dx:20, dy:20)
         CGContextSetFillColorWithColor(con, UIColor.redColor().CGColor)
         CGContextFillRect(con, r)

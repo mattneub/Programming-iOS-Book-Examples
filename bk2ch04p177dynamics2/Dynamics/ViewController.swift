@@ -26,11 +26,11 @@ class ViewController : UIViewController, UIDynamicAnimatorDelegate {
         self.anim.addBehavior(MyDropBounceAndRollBehavior(view:self.iv))
     }
     
-    func dynamicAnimatorDidPause(animator: UIDynamicAnimator!) {
+    func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
         println("pause")
     }
     
-    func dynamicAnimatorWillResume(animator: UIDynamicAnimator!) {
+    func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
         println("resume")
     }
 

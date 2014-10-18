@@ -24,7 +24,7 @@ public extension MyLayer {
         return super.needsDisplayForKey(key)
     }
     
-    override func drawInContext(con: CGContext!) {
+    override func drawInContext(con: CGContext) {
         let r = self.bounds.rectByInsetting(dx:20, dy:20)
         CGContextSetFillColorWithColor(con, UIColor.redColor().CGColor)
         CGContextFillRect(con, r)

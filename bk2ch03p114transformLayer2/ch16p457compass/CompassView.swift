@@ -149,7 +149,7 @@ class CompassLayer : CALayer {
 
     }
     
-    override func drawLayer(layer: CALayer!, inContext con: CGContext!) {
+    override func drawLayer(layer: CALayer, inContext con: CGContext) {
         println("drawLayer:inContext: for arrow")
         
         // Questa poi la conosco pur troppo!
