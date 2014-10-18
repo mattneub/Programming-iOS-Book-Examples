@@ -14,7 +14,7 @@ func delay(delay:Double, closure:()->()) {
 class ViewController : UIViewController, UIToolbarDelegate {
     var oldChoice : Int = -1
     
-    func positionForBar(bar: UIBarPositioning!) -> UIBarPosition {
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return .TopAttached
     }
     

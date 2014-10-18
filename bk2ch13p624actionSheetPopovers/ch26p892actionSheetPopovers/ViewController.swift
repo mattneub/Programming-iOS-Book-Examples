@@ -47,7 +47,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : UIToolbarDelegate {
-    func positionForBar(bar: UIBarPositioning!) -> UIBarPosition {
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return .TopAttached
     }
 }

@@ -70,7 +70,7 @@ class ActionViewController: UIViewController {
 }
 
 extension ActionViewController : UIBarPositioningDelegate {
-    func positionForBar(bar: UIBarPositioning!) -> UIBarPosition {
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return .TopAttached
     }
 }

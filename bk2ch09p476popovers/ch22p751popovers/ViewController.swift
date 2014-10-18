@@ -220,7 +220,7 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
 // in Xcode 5 you couldn't do that; you had to arrange it in code
 
 extension ViewController : UIToolbarDelegate {
-    func positionForBar(bar: UIBarPositioning!) -> UIBarPosition {
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return .TopAttached
     }
 }
