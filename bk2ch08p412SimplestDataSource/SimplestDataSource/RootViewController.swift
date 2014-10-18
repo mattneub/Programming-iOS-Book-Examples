@@ -12,7 +12,7 @@ func delay(delay:Double, closure:()->()) {
 
 class RootViewController: UITableViewController {
     
-    var pep : [String]! = ["Manny", "Moe", "Jack"]
+    var pep : [String]! = ["Manny", "Moe", "Jack"] // pretend model might not be ready
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class RootViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
-        cell.textLabel!.text = pep[indexPath.row]
+        cell.textLabel.text = pep[indexPath.row]
         return cell
     }
 

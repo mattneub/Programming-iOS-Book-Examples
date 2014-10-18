@@ -39,7 +39,7 @@ class RootViewController : UITableViewController {
         if cell == nil {
             cell = UITableViewCell(style:.Default, reuseIdentifier:cellIdentifier)
             
-            cell.textLabel!.textColor = UIColor.whiteColor()
+            cell.textLabel.textColor = UIColor.whiteColor()
             
             let v = UIImageView() // no need to set frame
             v.contentMode = .ScaleToFill
@@ -61,7 +61,7 @@ class RootViewController : UITableViewController {
 //            cell.accessoryView = b
             
         }
-        cell.textLabel!.text = "Hello there! \(indexPath.row)"
+        cell.textLabel.text = "Hello there! \(indexPath.row)"
         
         return cell
     }

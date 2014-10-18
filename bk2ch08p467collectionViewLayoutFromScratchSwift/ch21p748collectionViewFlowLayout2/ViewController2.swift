@@ -17,11 +17,11 @@ class ViewController2 : UICollectionViewController {
             flow.headerReferenceSize = CGSizeMake(50,50)
             flow.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10)
         }
-        self.collectionView!.reloadData()
+        self.collectionView.reloadData()
     }
     
     func doFlush (sender:AnyObject) {
-        if let layout = self.collectionView!.collectionViewLayout as? MyFlowLayout {
+        if let layout = self.collectionView.collectionViewLayout as? MyFlowLayout {
             layout.flush()
         }
     }
@@ -31,14 +31,14 @@ class ViewController2 : UICollectionViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        println("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
+        println("\(self.collectionView.dataSource) \(self.collectionView.delegate)")
     }
     
     override func viewDidAppear(animated: Bool)  {
         super.viewDidAppear(animated)
-        println("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
+        println("\(self.collectionView.dataSource) \(self.collectionView.delegate)")
         delay(2) {
-            println("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
+            println("\(self.collectionView.dataSource) \(self.collectionView.delegate)")
         }
     }
     

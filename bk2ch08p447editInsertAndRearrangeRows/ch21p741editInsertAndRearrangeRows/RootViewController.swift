@@ -14,7 +14,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         self.numbers = ["(123) 456-7890"]
         self.tableView.allowsSelection = false
         
-        self.tableView.registerNib(UINib(nibName: "MyCell", bundle: nil)!, forCellReuseIdentifier: "Cell")
+        self.tableView.registerNib(UINib(nibName: "MyCell", bundle: nil), forCellReuseIdentifier: "Cell")
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

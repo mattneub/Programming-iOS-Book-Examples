@@ -22,7 +22,7 @@ class RootViewController : UITableViewController {
         arr.removeLast()
         self.trivia = arr
         
-        self.tableView.registerNib(UINib(nibName: "Cell", bundle: nil)!, forCellReuseIdentifier: "Cell")
+        self.tableView.registerNib(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.rowHeight = UITableViewAutomaticDimension // not actually necessary
         self.tableView.estimatedRowHeight = 40 // turn on automatic cell variable sizing!
     }

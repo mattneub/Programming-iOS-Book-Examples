@@ -29,10 +29,10 @@ class ViewController : UICollectionViewController {
         }
         self.navigationItem.title = "States"
         
-        self.collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header")
+        self.collectionView.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header")
         // if you don't do something about header size...
         // ...you won't see any headers
-        let flow = self.collectionView!.collectionViewLayout as UICollectionViewFlowLayout
+        let flow = self.collectionView.collectionViewLayout as UICollectionViewFlowLayout
         flow.headerReferenceSize = CGSizeMake(30,30)
     }
     

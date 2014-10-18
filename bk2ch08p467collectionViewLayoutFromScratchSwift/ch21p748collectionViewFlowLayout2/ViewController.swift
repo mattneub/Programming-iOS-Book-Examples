@@ -14,7 +14,7 @@ class ViewController : UICollectionViewController {
     var sectionData = [[String]]()
     lazy var modelCell : Cell = { // load lazily from nib
         () -> Cell in
-        let arr = UINib(nibName:"Cell", bundle:nil)!.instantiateWithOwner(nil, options:nil)
+        let arr = UINib(nibName:"Cell", bundle:nil).instantiateWithOwner(nil, options:nil)
         return arr[0] as Cell
         }()
 
@@ -37,13 +37,13 @@ class ViewController : UICollectionViewController {
         self.navigationItem.title = "States"
         let bb = UIBarButtonItem(title:"Push", style:.Plain, target:self, action:"doPush:")
         self.navigationItem.rightBarButtonItem = bb
-        self.collectionView!.backgroundColor = UIColor.whiteColor()
-        self.collectionView!.allowsMultipleSelection = true
+        self.collectionView.backgroundColor = UIColor.whiteColor()
+        self.collectionView.allowsMultipleSelection = true
         
         // register cell, comes from a nib even though we are using a storyboard
-        self.collectionView!.registerNib(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier:"Cell")
+        self.collectionView.registerNib(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier:"Cell")
         // register headers (for the other view controller!)
-        self.collectionView!.registerClass(UICollectionReusableView.self,
+        self.collectionView.registerClass(UICollectionReusableView.self,
             forSupplementaryViewOfKind:UICollectionElementKindSectionHeader,
             withReuseIdentifier:"Header")
 
