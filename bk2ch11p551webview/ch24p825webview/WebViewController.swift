@@ -185,11 +185,11 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
 
     }
     
-    func webViewDidStartLoad(wv: UIWebView!) {
+    func webViewDidStartLoad(wv: UIWebView) {
         self.activity.startAnimating()
     }
     
-    func webViewDidFinishLoad(wv: UIWebView!) {
+    func webViewDidFinishLoad(wv: UIWebView) {
         self.activity.stopAnimating()
         // for our *local* example, restoring offset is up to us
         if self.oldOffset != nil && !self.canNavigate { // local example
@@ -199,11 +199,11 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         self.oldOffset = nil
     }
     
-    func webView(webView: UIWebView!, didFailLoadWithError error: NSError!) {
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
         self.activity.stopAnimating()
     }
     
-    func webView(webView: UIWebView!, shouldStartLoadWithRequest r: NSURLRequest!, navigationType nt: UIWebViewNavigationType) -> Bool {
+    func webView(webView: UIWebView, shouldStartLoadWithRequest r: NSURLRequest, navigationType nt: UIWebViewNavigationType) -> Bool {
         if r.URL.scheme == "play" {
             println("user would like to hear the podcast")
             return false

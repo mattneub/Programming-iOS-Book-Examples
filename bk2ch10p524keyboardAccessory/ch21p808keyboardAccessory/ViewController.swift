@@ -10,7 +10,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // configure accessory view
-        let arr = UINib(nibName:"AccessoryView", bundle:nil)!.instantiateWithOwner(nil, options:nil)
+        let arr = UINib(nibName:"AccessoryView", bundle:nil).instantiateWithOwner(nil, options:nil)
         self.accessoryView = arr[0] as UIView
         let b = self.accessoryView.subviews[0] as UIButton
         b.addTarget(self, action:"doNextButton:", forControlEvents:.TouchUpInside)

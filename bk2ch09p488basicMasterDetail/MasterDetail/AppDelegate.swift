@@ -12,10 +12,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         svc.delegate = self
         let master = MasterViewController()
         master.title = "Pep"
-        let nav1 = UINavigationController(rootViewController:master)!
+        let nav1 = UINavigationController(rootViewController:master)
         svc.addChildViewController(nav1)
         let detail = DetailViewController()
-        let nav2 = UINavigationController(rootViewController:detail)!
+        let nav2 = UINavigationController(rootViewController:detail)
         svc.addChildViewController(nav2)
         self.window!.rootViewController = svc
         let b = svc.displayModeButtonItem()

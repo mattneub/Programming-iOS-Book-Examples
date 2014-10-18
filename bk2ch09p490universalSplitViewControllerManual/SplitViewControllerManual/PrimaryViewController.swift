@@ -26,7 +26,7 @@ class PrimaryViewController : UIViewController {
         
         // configure our view
         self.view.backgroundColor = UIColor.greenColor()
-        let seg = UISegmentedControl(items: ["White","Red"])!
+        let seg = UISegmentedControl(items: ["White","Red"])
         seg.selectedSegmentIndex = 1
         self.view.addSubview(seg)
         seg.setTranslatesAutoresizingMaskIntoConstraints(false)

@@ -32,7 +32,7 @@ class MasterViewController: UITableViewController {
         detail.navigationItem.leftBarButtonItem = b
         detail.navigationItem.leftItemsSupplementBackButton = true
         
-        let nav = UINavigationController(rootViewController: detail)!
+        let nav = UINavigationController(rootViewController: detail)
         self.showDetailViewController(nav, sender: self)
     }
 

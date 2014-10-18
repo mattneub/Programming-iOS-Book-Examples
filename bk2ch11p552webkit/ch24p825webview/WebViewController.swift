@@ -310,7 +310,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         self.wv.configuration.userContentController.removeScriptMessageHandlerForName("playbutton")
     }
     
-    func webView(webView: WKWebView!, decidePolicyForNavigationAction navigationAction: WKNavigationAction!, decisionHandler: ((WKNavigationActionPolicy) -> Void)!) {
+    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: ((WKNavigationActionPolicy) -> Void)) {
         if navigationAction.navigationType == .LinkActivated {
             let url = navigationAction.request.URL
             println("user would like to navigate to \(url)")

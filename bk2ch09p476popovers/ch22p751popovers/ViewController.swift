@@ -23,7 +23,7 @@ class ViewController : UIViewController {
     @IBAction func doPopover1(sender:AnyObject?) {
         let vc = Popover1View1()
         // vc.modalInPopover = true
-        let nav = UINavigationController(rootViewController: vc)!
+        let nav = UINavigationController(rootViewController: vc)
         let b = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self,
             action: "cancelPop1:")
         vc.navigationItem.rightBarButtonItem = b
