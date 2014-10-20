@@ -18,7 +18,7 @@ class PopoverViewController: UIViewController {
         self.presentViewController(alert, animated: true, completion: nil)
         // tapping outside the sheet but inside the containing popover dismisses the sheet
         // tapping outside the containing popover dismisses the popover
-        // this seems to me to be a very good default
+        // to prevent that, you have to take charge of dismissal
     }
 
 }

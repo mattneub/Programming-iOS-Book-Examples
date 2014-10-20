@@ -10,6 +10,8 @@ func delay(delay:Double, closure:()->()) {
 }
 
 class ViewController: UIViewController {
+    
+
     @IBOutlet var toolbar : UIToolbar!
     
     @IBAction func doButton(sender:AnyObject) {
@@ -23,13 +25,14 @@ class ViewController: UIViewController {
         // "UIPopoverPresentationController should have a non-nil sourceView or barButtonItem set before the presentation occurs"
         // so the runtime knows that on iPad this should be a popover, and has arranged it already
         // all we have to do is fulfill our usual popover responsibilities
-        let pop = alert.popoverPresentationController
-        pop.barButtonItem = sender as UIBarButtonItem
-        // but now we have the usual foo where we must prevent the bar button items
-        // from being "live"; why isn't this automatic???
-        // still, it isn't anywhere near as bad as in previous systems
-        delay(0.1) {
-            pop.passthroughViews = nil
+        if let pop = alert.popoverPresentationController {
+            pop.barButtonItem = sender as UIBarButtonItem
+            // but now we have the usual foo where we must prevent the bar button items
+            // from being "live"; why isn't this automatic???
+            // still, it isn't anywhere near as bad as in previous systems
+            delay(0.1) {
+                pop.passthroughViews = nil
+            }
         }
     }
     
@@ -37,13 +40,23 @@ class ViewController: UIViewController {
         let pvc = PopoverViewController(nibName: "PopoverViewController", bundle: nil)
         pvc.modalPresentationStyle = .Popover
         self.presentViewController(pvc, animated: true, completion: nil)
-        let pop = pvc.popoverPresentationController
-        pop.barButtonItem = sender as UIBarButtonItem
-        delay(0.1) {
-            pop.passthroughViews = nil
+        if let pop = pvc.popoverPresentationController {
+            pop.barButtonItem = sender as UIBarButtonItem
+            pop.delegate = self
+            delay(0.1) {
+                pop.passthroughViews = nil
+            }
         }
     }
 
+}
+
+extension ViewController : UIPopoverPresentationControllerDelegate {
+    func popoverPresentationControllerShouldDismissPopover(
+        pop: UIPopoverPresentationController) -> Bool {
+            let ok = pop.presentedViewController.presentedViewController == nil
+            return ok
+    }
 }
 
 extension ViewController : UIToolbarDelegate {
