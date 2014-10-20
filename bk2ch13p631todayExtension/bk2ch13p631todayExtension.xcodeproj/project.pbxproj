@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		322C932019F557A500036BE0 /* cup.png in Resources */ = {isa = PBXBuildFile; fileRef = 322C931F19F557A500036BE0 /* cup.png */; };
 		323FD2CC1996BD5200C0A682 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 323FD2CB1996BD5200C0A682 /* NotificationCenter.framework */; };
 		323FD2D11996BD5200C0A682 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323FD2D01996BD5200C0A682 /* TodayViewController.swift */; };
 		323FD2D31996BD5200C0A682 /* CoffeeTimeToday.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 323FD2D21996BD5200C0A682 /* CoffeeTimeToday.storyboard */; };
@@ -52,6 +53,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		322C931F19F557A500036BE0 /* cup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cup.png; sourceTree = "<group>"; };
 		323FD2CA1996BD5200C0A682 /* CoffeeTimeTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CoffeeTimeTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		323FD2CB1996BD5200C0A682 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		323FD2CF1996BD5200C0A682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				323FD2D01996BD5200C0A682 /* TodayViewController.swift */,
+				322C931F19F557A500036BE0 /* cup.png */,
 				323FD2D21996BD5200C0A682 /* CoffeeTimeToday.storyboard */,
 				323FD2CE1996BD5200C0A682 /* Supporting Files */,
 			);
@@ -238,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				322C932019F557A500036BE0 /* cup.png in Resources */,
 				323FD2D31996BD5200C0A682 /* CoffeeTimeToday.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
