@@ -5,6 +5,15 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBAction func doButton(sender:AnyObject) {
+        println("checking for notification permissions")
+        let settings = UIApplication.sharedApplication().currentUserNotificationSettings()
+        if settings.types.rawValue & UIUserNotificationType.Alert.rawValue != 0 {
+            println("alert enabled \(settings.types.rawValue)")
+        } else {
+            println("no alerts")
+        }
+        // I can't specify it, but there are situations where this whole thing gets out of sync
+        
         println("creating local notification")
         let ln = UILocalNotification()
         ln.alertBody = "Time for another cup of coffee!"
