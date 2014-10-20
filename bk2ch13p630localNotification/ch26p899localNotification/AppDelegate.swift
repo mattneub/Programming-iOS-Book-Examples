@@ -105,7 +105,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     // new in iOS 8, this is how we will hear about our custom buttons tapped in the alert
-    // if user taps to open, id will be nil
     // if user taps our custom action button, id will be its id
     // for background, you can stay in the background and run for a couple of seconds
     // for foreground, you will be brought to foreground
