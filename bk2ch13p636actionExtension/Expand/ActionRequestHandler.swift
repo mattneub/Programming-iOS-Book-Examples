@@ -6,15 +6,15 @@ import MobileCoreServices
 class ActionRequestHandler: NSObject /*, NSExtensionRequestHandling */ { // ???
     
     let list : [String] = {
-        let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")
-        let s = NSString(contentsOfURL:path, encoding:NSUTF8StringEncoding, error:nil)
+        let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")!
+        let s = String(contentsOfURL:path, encoding:NSUTF8StringEncoding, error:nil)!
         return s.componentsSeparatedByString("\n") as [String]
         }()
 
     var extensionContext: NSExtensionContext?
     // NSObject has no magically acquired extension context, we must keep a reference
     
-    let desiredType = kUTTypePlainText as NSString
+    let desiredType = kUTTypePlainText
     
     func beginRequestWithExtensionContext(context: NSExtensionContext!) {
         // Do not call super in an Action extension with no user interface
@@ -55,14 +55,14 @@ class ActionRequestHandler: NSObject /*, NSExtensionRequestHandling */ { // ???
         if (item == nil) {
             // didn't get anything to process, pass nil back to host
             self.extensionContext?.completeRequestReturningItems(
-                [AnyObject](), completionHandler: nil)
+                nil, completionHandler: nil)
         } else {
             if let abbrev = self.stateForAbbrev(item!) {
                 self.extensionContext?.completeRequestReturningItems(
                     self.stuffThatEnvelope(abbrev), completionHandler: nil)
             } else {
                 self.extensionContext?.completeRequestReturningItems(
-                    [AnyObject](), completionHandler: nil)
+                    nil, completionHandler: nil)
             }
         }
         // the template tells us to release this when done

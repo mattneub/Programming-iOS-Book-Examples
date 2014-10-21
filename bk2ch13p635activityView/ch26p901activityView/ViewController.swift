@@ -35,3 +35,21 @@ class ViewController: UIViewController {
         }
     }
 }
+
+// forget it, I can't figure this out
+/*
+
+extension ViewController : UIActivityItemSource {
+    func activityViewController(activityViewController: UIActivityViewController, subjectForActivityType activityType: String?) -> String {
+        println("here")
+        return "This is cool"
+    }
+    func activityViewControllerPlaceholderItem(activityViewController: UIActivityViewController) -> AnyObject {
+        return NSObject.init()
+    }
+    func activityViewController(activityViewController: UIActivityViewController, itemForActivityType activityType: String) -> AnyObject? {
+        return nil
+    }
+}
+
+*/

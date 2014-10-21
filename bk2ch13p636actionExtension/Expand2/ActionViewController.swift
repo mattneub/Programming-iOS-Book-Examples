@@ -7,8 +7,8 @@ class ActionViewController: UIViewController {
     @IBOutlet weak var lab: UILabel!
 
     let list : [String] = {
-        let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")
-        let s = NSString(contentsOfURL:path, encoding:NSUTF8StringEncoding, error:nil)
+        let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")!
+        let s = NSString(contentsOfURL:path, encoding:NSUTF8StringEncoding, error:nil)!
         return s.componentsSeparatedByString("\n") as [String]
         }()
     
@@ -20,8 +20,10 @@ class ActionViewController: UIViewController {
         super.viewDidLoad()
         self.doneButton.enabled = false
         self.lab.text = "No expansion available."
-        
-        let items = self.extensionContext.inputItems
+        if self.extensionContext == nil {
+            return
+        }
+        let items = self.extensionContext!.inputItems
         // open the envelopes
         if let extensionItem = items[0] as? NSExtensionItem {
             if let provider = extensionItem.attachments?[0] as? NSItemProvider {
@@ -58,12 +60,12 @@ class ActionViewController: UIViewController {
     }
     
     @IBAction func cancel(sender: AnyObject) {
-        self.extensionContext.completeRequestReturningItems(
-            [AnyObject](), completionHandler: nil)
+        self.extensionContext?.completeRequestReturningItems(
+            nil, completionHandler: nil)
     }
     
     @IBAction func done(sender: AnyObject) {
-        self.extensionContext.completeRequestReturningItems(
+        self.extensionContext?.completeRequestReturningItems(
             self.stuffThatEnvelope(self.abbrev!), completionHandler: nil)
     }
     

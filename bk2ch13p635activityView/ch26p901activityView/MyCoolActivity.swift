@@ -1,6 +1,6 @@
 
 import UIKit
-func imageFromContextOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     closure()
     let result = UIGraphicsGetImageFromCurrentImageContext()
@@ -16,11 +16,11 @@ class MyCoolActivity : UIActivity {
     override init() {
         let idiom = UIScreen.mainScreen().traitCollection.userInterfaceIdiom
         var scale : CGFloat = (idiom == .Pad ? 76 : 60) - 10
-        let im = UIImage(named:"sunglasses.png")
+        let im = UIImage(named:"sunglasses.png")!
         let largerSize = fmax(im.size.height, im.size.width)
         scale /= largerSize
         let sz = CGSizeMake(im.size.width*scale, im.size.height*scale)
-        self.image = imageFromContextOfSize(sz) {
+        self.image = imageOfSize(sz) {
             im.drawInRect(CGRect(origin: CGPoint(), size: sz))
         }
         super.init()
@@ -30,19 +30,19 @@ class MyCoolActivity : UIActivity {
         return .Action // the default
     }
     
-    override func activityType() -> String! {
+    override func activityType() -> String? {
         return "com.neuburg.matt.coolActivity"
     }
     
-    override func activityTitle() -> String! {
+    override func activityTitle() -> String? {
         return "Be Cool"
     }
     
-    override func activityImage() -> UIImage! {
+    override func activityImage() -> UIImage? {
         return self.image
     }
     
-    override func canPerformWithActivityItems(activityItems: [AnyObject]!) -> Bool {
+    override func canPerformWithActivityItems(activityItems: [AnyObject]) -> Bool {
         println("cool can perform \(activityItems)")
         for obj in activityItems {
             if obj is String {
@@ -54,7 +54,7 @@ class MyCoolActivity : UIActivity {
         return false
     }
     
-    override func prepareWithActivityItems(activityItems: [AnyObject]!) {
+    override func prepareWithActivityItems(activityItems: [AnyObject]) {
         println("cool prepare \(activityItems)")
         self.items = activityItems
     }
