@@ -16,18 +16,18 @@ class Player : NSObject, AVAudioPlayerDelegate {
     var observer2 : NSObjectProtocol!
     
     func playFileAtPath(path:NSString) {
-        player?.delegate = nil
-        player?.stop()
+        self.player?.delegate = nil
+        self.player?.stop()
         let fileURL = NSURL(fileURLWithPath: path)
-        player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
+        self.player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
         // error-checking omitted
         
         // switch to playback category while playing, interrupt background audio
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: nil, error: nil)
         AVAudioSession.sharedInstance().setActive(true, withOptions: nil, error: nil)
         
-        player.prepareToPlay()
-        player.delegate = self
+        self.player.prepareToPlay()
+        self.player.delegate = self
         let ok = player.play()
         println("interrupter trying to play \(path): \(ok)")
     }
@@ -45,12 +45,12 @@ class Player : NSObject, AVAudioPlayerDelegate {
     // to hear about interruptions, in iOS 8, use the session notifications
     
     func stop () {
-        player?.pause()
+        self.player?.pause()
     }
     
     deinit {
         println("interrupter player dealloc")
-        player?.delegate = nil
+        self.player?.delegate = nil
     }
     
     

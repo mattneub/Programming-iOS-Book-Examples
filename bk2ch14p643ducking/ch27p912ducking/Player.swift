@@ -14,26 +14,33 @@ class Player : NSObject, AVAudioPlayerDelegate {
     weak var delegate : PlayerDelegate?
 
     func playFileAtPath(path:NSString) {
-        player?.delegate = nil
-        player?.stop()
+        self.player?.delegate = nil
+        self.player?.stop()
         let fileURL = NSURL(fileURLWithPath: path)
-        player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
+        self.player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
         // error-checking omitted
-        player.prepareToPlay()
-        player.delegate = self
+        self.player.prepareToPlay()
+        self.player.delegate = self
         if self.forever {
             self.player.numberOfLoops = -1
         }
-        player.play()
+        
+//        player.enableRate = true
+//        player.rate = 1.2 // cool feature
+        
+        self.player.play()
         
         // cute little demo
         let mpic = MPNowPlayingInfoCenter.defaultCenter()
-        mpic.nowPlayingInfo = [MPMediaItemPropertyTitle:"This Is a Test"]
+        mpic.nowPlayingInfo = [
+            MPMediaItemPropertyTitle:"This Is a Test",
+            MPMediaItemPropertyArtist:"Matt Neuburg"
+        ]
     }
     
     // delegate method
     func audioPlayerDidFinishPlaying(AVAudioPlayer!, successfully: Bool) {
-        delegate?.soundFinished(self)
+        self.delegate?.soundFinished(self)
     }
     
     /* 
@@ -50,11 +57,11 @@ class Player : NSObject, AVAudioPlayerDelegate {
     */
     
     func stop () {
-        player?.pause()
+        self.player?.pause()
     }
 
     deinit {
-        player?.delegate = nil
+        self.player?.delegate = nil
     }
 
 

@@ -25,11 +25,44 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             AVAudioSessionInterruptionNotification, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: {
                 (note:NSNotification!) in
                 let why : AnyObject? = note.userInfo?[AVAudioSessionInterruptionTypeKey]
-                if why != nil {
-                    let what = (why! as UInt == 1) ? "began" : "ended"
-                    println("interruption \(what):\n\(note.userInfo!)")
+                if let why = why as? UInt {
+                    if let why = AVAudioSessionInterruptionType(rawValue: why) {
+                        if why == .Began {
+                            println("interruption began:\n\(note.userInfo!)")
+                        } else {
+                            println("interruption ended:\n\(note.userInfo!)")
+                            let opt : AnyObject? = note.userInfo![AVAudioSessionInterruptionOptionKey]
+                            if let opt = opt as? UInt {
+                                let opts = AVAudioSessionInterruptionOptions(opt)
+                                if opts == .OptionShouldResume {
+                                    println("should resume")
+                                } else {
+                                    println("not should resume")
+                                }
+                            }
+                        }
+                    }
                 }
         })
+        
+        // use control center to test, e.g. start and stop a Music song
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(
+            AVAudioSessionSilenceSecondaryAudioHintNotification, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: {
+                (note:NSNotification!) in
+                let why : AnyObject? = note.userInfo?[AVAudioSessionSilenceSecondaryAudioHintTypeKey]
+                if let why = why as? UInt {
+                    if let why = AVAudioSessionSilenceSecondaryAudioHintType(rawValue:why) {
+                        if why == .Begin {
+                            println("silence hint begin:\n\(note.userInfo!)")
+                        } else {
+                            println("silence hint end:\n\(note.userInfo!)")
+                        }
+                    }
+                }
+            })
+        
+        
         return true
     }
     

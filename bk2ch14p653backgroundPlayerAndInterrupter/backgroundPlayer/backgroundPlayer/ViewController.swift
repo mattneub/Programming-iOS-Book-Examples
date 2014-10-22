@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     @IBAction func doButton (sender:AnyObject!) {
         // start over
         let path = NSBundle.mainBundle().pathForResource("aboutTiagol", ofType: "m4a")!
+        self.player = Player() // just testing for leakage / retain cycle
         self.player.playFileAtPath(path)
         
         // this info shows up in the locked screen and control center
@@ -31,7 +32,7 @@ class ViewController: UIViewController {
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
     }
     
-    override func remoteControlReceivedWithEvent(event: UIEvent!) {
+    override func remoteControlReceivedWithEvent(event: UIEvent) {
         let rc = event.subtype
         println("bp received remote control \(rc.rawValue)")
         // 101 = pause, 100 = play (remote control interface on control center)

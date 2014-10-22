@@ -22,10 +22,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, withOptions: nil, error: nil)
         
-        let types : UIUserNotificationType = .Alert
-        let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
-        application.registerUserNotificationSettings(settings)
-    
         return true
     }
     
@@ -71,6 +67,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // the rest of the time we use ambient just so we have an active category
     func applicationDidBecomeActive(application: UIApplication) {
         println("bp in \(__FUNCTION__)")
+        
+        let types : UIUserNotificationType = .Alert
+        let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
+        application.registerUserNotificationSettings(settings)
+        
         AVAudioSession.sharedInstance().setActive(true, withOptions: nil, error: nil)
         // new iOS 8 feature
         let mute = AVAudioSession.sharedInstance().secondaryAudioShouldBeSilencedHint
