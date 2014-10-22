@@ -138,14 +138,14 @@ class ViewController: UIViewController {
         let player2 = AVAudioPlayerNode()
         engine.attachNode(player2)
         
-        let effect2 = AVAudioUnitReverb()
-        effect2.loadFactoryPreset(.Cathedral)
-        effect2.wetDryMix = 40
-        engine.attachNode(effect2)
+        let effect = AVAudioUnitReverb()
+        effect.loadFactoryPreset(.Cathedral)
+        effect.wetDryMix = 40
+        engine.attachNode(effect)
         
-        engine.connect(player2, to: effect2, format: f2.processingFormat)
+        engine.connect(player2, to: effect, format: f2.processingFormat)
         let mixer = engine.mainMixerNode
-        engine.connect(effect2, to: mixer, format: f2.processingFormat)
+        engine.connect(effect, to: mixer, format: f2.processingFormat)
 
         let fm = NSFileManager.defaultManager()
         let doc = fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: nil)
@@ -163,7 +163,7 @@ class ViewController: UIViewController {
         // because of the reverb; so to detect when the sound has faded away,
         // we watch for the last output buffer value to become very small
         var done = false
-        effect2.installTapOnBus(0, bufferSize: 4096, format: outfile.processingFormat, block: {
+        effect.installTapOnBus(0, bufferSize: 4096, format: outfile.processingFormat, block: {
             (buffer : AVAudioPCMBuffer!, time : AVAudioTime!) in
             let dataptrptr = buffer.floatChannelData
             let dataptr = dataptrptr.memory
