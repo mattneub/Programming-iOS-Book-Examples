@@ -20,6 +20,7 @@ class ShareViewController: SLComposeServiceViewController {
         config.value = self.voltage
         config.tapHandler = {
             [weak self] in
+            // should be able to get rid of sself at this point
             if let sself = self { // one, two, cha-cha-cha
                 // I tried to give VoltageChooser an init override but this caused a crash
                 // so we set the delegate separately instead
