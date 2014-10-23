@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         
     }
     
-    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<()>) {
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<()>) {
         if keyPath == "readyForDisplay" {
             dispatch_async(dispatch_get_main_queue(), {
                 self.finishConstructingInterface()
@@ -109,7 +109,7 @@ class ViewController: UIViewController {
         
         let type3 = AVMediaTypeAudio
         let s = NSBundle.mainBundle().URLForResource("aboutTiagol", withExtension:"m4a")
-        let asset = AVURLAsset.URLAssetWithURL(s, options:nil)
+        let asset = AVURLAsset(URL:s, options:nil)
         let arr3 = asset.tracksWithMediaType(type3)
         let track3 = arr3.last as AVAssetTrack
         

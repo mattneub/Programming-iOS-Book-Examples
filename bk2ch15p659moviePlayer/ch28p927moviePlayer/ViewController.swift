@@ -59,7 +59,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIVideoE
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "stateChanged:", name: MPMoviePlayerPlaybackStateDidChangeNotification, object: self.mpc)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "willFullscreen:", name: MPMoviePlayerWillEnterFullscreenNotification, object: self.mpc)
         
-        let which = 2
+        let which = 1
         switch which {
         case 1:
             var observer : NSObjectProtocol! = nil
@@ -130,7 +130,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIVideoE
     // note: must run on device; no video editing in simulator
     
     @IBAction func doEditorButton (sender:AnyObject!) {
-        let path = NSBundle.mainBundle().pathForResource("ElMirage", ofType: "mp4")
+        let path = NSBundle.mainBundle().pathForResource("ElMirage", ofType: "mp4")!
         let can = UIVideoEditorController.canEditVideoAtPath(path)
         if !can {
             println("can't edit this video")
