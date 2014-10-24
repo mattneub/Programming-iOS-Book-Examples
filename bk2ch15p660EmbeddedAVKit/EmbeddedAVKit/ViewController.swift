@@ -49,6 +49,16 @@ class ViewController: UIViewController {
         self.view.addSubview(av.view)
         av.didMoveToParentViewController(self)
         
+        /*
+        // just experimenting
+        let grs = (av.view.subviews[0] as UIView).gestureRecognizers as [UIGestureRecognizer]
+        for gr in grs {
+            if gr is UIPinchGestureRecognizer {
+                gr.enabled = false
+            }
+        }
+*/
+        
         av.addObserver(self, forKeyPath: "readyForDisplay", options: nil, context: nil)
         
         return; // just proving you can swap out the player
