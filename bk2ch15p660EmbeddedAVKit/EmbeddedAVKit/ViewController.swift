@@ -76,8 +76,79 @@ class ViewController: UIViewController {
         vc.removeObserver(self, forKeyPath:"readyForDisplay")
         vc.view.hidden = false
     }
+}
 
-
+extension ViewController : UIVideoEditorControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
+    @IBAction func doEditorButton (sender:AnyObject!) {
+        let path = NSBundle.mainBundle().pathForResource("ElMirage", ofType: "mp4")!
+        let can = UIVideoEditorController.canEditVideoAtPath(path)
+        if !can {
+            println("can't edit this video")
+            return
+        }
+        let vc = UIVideoEditorController()
+        vc.delegate = self
+        vc.videoPath = path
+        // must set to popover _manually_ on iPad! exception on presentation if you don't
+        // could just set it; works fine as adaptive on iPhone
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            vc.modalPresentationStyle = .Popover
+        }
+        self.presentViewController(vc, animated: true, completion: nil)
+        println(vc.modalPresentationStyle.rawValue)
+        if let pop = vc.popoverPresentationController {
+            let v = sender as UIView
+            pop.sourceView = v
+            pop.sourceRect = v.bounds
+            pop.delegate = self
+        }
+        // both Cancel and Save on phone (Cancel and Use on pad) dismiss the v.c.
+        // but without delegate methods, you don't know what happened or where the edited movie is
+        // with delegate methods, on the other hand, dismissing is up to you
+    }
+    
+    func videoEditorController(editor: UIVideoEditorController!, didSaveEditedVideoToPath editedVideoPath: String!) {
+        println("saved to \(editedVideoPath)")
+        if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(editedVideoPath) {
+            println("saving to photos album")
+            UISaveVideoAtPathToSavedPhotosAlbum(editedVideoPath, self, "video:savedWithError:ci:", nil)
+        } else {
+            println("can't save to photos album, need to think of something else")
+        }
+    }
+    
+    func video(video:NSString!, savedWithError error:NSError!, ci:UnsafeMutablePointer<()>) {
+        println("did save, error:\(error)")
+        /*
+        Important to check for error, because user can deny access
+        to Photos library
+        If that's the case, we will get error like this:
+        Error Domain=ALAssetsLibraryErrorDomain Code=-3310 "Data unavailable" UserInfo=0x1d8355d0 {NSLocalizedRecoverySuggestion=Launch the Photos application, NSUnderlyingError=0x1d83d470 "Data unavailable", NSLocalizedDescription=Data unavailable}
+        */
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func videoEditorControllerDidCancel(editor: UIVideoEditorController!) {
+        println("editor cancelled")
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func videoEditorController(editor: UIVideoEditorController!, didFailWithError error: NSError!) {
+        println("error: \(error.localizedDescription)")
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func navigationController(navigationController: UINavigationController!, willShowViewController viewController: UIViewController!, animated: Bool) {
+        let vc = viewController as UIViewController
+        vc.title = ""
+        vc.navigationItem.title = ""
+        // I can suppress the title but I haven't found a way to fix the right bar button
+        // (so that it says Save instead of Use)
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController!) {
+        println("editor popover dismissed")
+    }
 
 }
 
