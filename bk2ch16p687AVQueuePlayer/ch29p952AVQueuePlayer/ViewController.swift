@@ -18,6 +18,8 @@ extension AVAudioPlayer : PlayerPauser {
     }
 }
 
+// really shouldn't be using this one any more
+
 extension MPMoviePlayerController : PlayerPauser {
     var playing : Bool {
         return self.currentPlaybackRate > 0.1
@@ -60,7 +62,7 @@ class ViewController: UIViewController {
         let query = MPMediaQuery.songsQuery()
         // always need to filter out songs that aren't present
         let isPresent = MPMediaPropertyPredicate(value:false,
-            forProperty:"isCloudItem",
+            forProperty:MPMediaItemPropertyIsCloudItem,
             comparisonType:.EqualTo)
         query.addFilterPredicate(isPresent)
         return query.items[0].assetURL
@@ -114,7 +116,7 @@ class ViewController: UIViewController {
         let query = MPMediaQuery.songsQuery()
         // always need to filter out songs that aren't present
         let isPresent = MPMediaPropertyPredicate(value:false,
-            forProperty:"isCloudItem",
+            forProperty:MPMediaItemPropertyIsCloudItem,
             comparisonType:.EqualTo)
         query.addFilterPredicate(isPresent)
         
@@ -155,7 +157,7 @@ class ViewController: UIViewController {
         self.timer.fire()
     }
     
-    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<()>) {
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<()>) {
         if keyPath == "currentItem" {
             self.changed()
         }
@@ -175,7 +177,7 @@ class ViewController: UIViewController {
         let met = arr[0] as AVMetadataItem
         met.loadValuesAsynchronouslyForKeys(["value"]) {
             // should always check for successful load of value
-            if met.statusOfValueForKey("value", error: nil) == AVKeyValueStatus.Loaded {
+            if met.statusOfValueForKey("value", error: nil) == .Loaded {
                 // can't be sure what thread we're on ...
                 // ...or whether we'll be called back synchronously or asynchronously
                 // so I like to step out to the main thread just in case
@@ -227,7 +229,7 @@ class ViewController: UIViewController {
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
     }
     
-    override func remoteControlReceivedWithEvent(event: UIEvent!) {
+    override func remoteControlReceivedWithEvent(event: UIEvent) {
         let rc = event.subtype
         println("received remote control \(rc.rawValue)")
 

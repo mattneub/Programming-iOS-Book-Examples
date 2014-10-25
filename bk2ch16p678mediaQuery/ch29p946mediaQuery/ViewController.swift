@@ -3,7 +3,7 @@
 import UIKit
 import MediaPlayer
 
-func imageFromContextOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     closure()
     let result = UIGraphicsGetImageFromCurrentImageContext()
@@ -60,8 +60,8 @@ class ViewController: UIViewController {
                 resizingMode:.Stretch)
         
         let sz2 = CGSizeMake(40,40)
-        let thumb = imageFromContextOfSize(sz2) {
-            UIImage(named:"SmileyRound.png").drawInRect(CGRectMake(0,0,sz2.width,sz2.height))
+        let thumb = imageOfSize(sz2) {
+            UIImage(named:"SmileyRound.png")!.drawInRect(CGRectMake(0,0,sz2.width,sz2.height))
         }
         self.vv.setVolumeThumbImage(thumb, forState:.Normal)
         
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
     @IBAction func doBeethovenAlbumTitles (sender:AnyObject!) {
         let query = MPMediaQuery.albumsQuery()
         let hasBeethoven = MPMediaPropertyPredicate(value:"Beethoven",
-            forProperty:"albumTitle",
+            forProperty:MPMediaItemPropertyAlbumTitle,
             comparisonType:.Contains)
         query.addFilterPredicate(hasBeethoven)
         let result = query.collections as [MPMediaItemCollection]
@@ -114,11 +114,11 @@ class ViewController: UIViewController {
     @IBAction func doSonataAlbumsOnDevice (sender:AnyObject!) {
         let query = MPMediaQuery.albumsQuery()
         let hasSonata = MPMediaPropertyPredicate(value:"Sonata",
-            forProperty:"title",
+            forProperty:MPMediaItemPropertyTitle,
             comparisonType:.Contains)
         query.addFilterPredicate(hasSonata)
         let isPresent = MPMediaPropertyPredicate(value:false,
-            forProperty:"isCloudItem", // string name of property incorrect in header
+            forProperty:MPMediaItemPropertyIsCloudItem, // string name of property incorrect in header
             comparisonType:.EqualTo)
         query.addFilterPredicate(isPresent)
         
@@ -137,7 +137,7 @@ class ViewController: UIViewController {
         let query = MPMediaQuery.songsQuery()
         // always need to filter out songs that aren't present
         let isPresent = MPMediaPropertyPredicate(value:false,
-            forProperty:"isCloudItem",
+            forProperty:MPMediaItemPropertyIsCloudItem,
             comparisonType:.EqualTo)
         query.addFilterPredicate(isPresent)
         

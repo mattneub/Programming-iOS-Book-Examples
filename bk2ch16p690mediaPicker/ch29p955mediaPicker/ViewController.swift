@@ -3,8 +3,6 @@
 import UIKit
 import MediaPlayer
 
-// not fully tested on iPad yet
-
 class ViewController: UIViewController {
     
     @IBAction func doGo (sender:AnyObject!) {
@@ -17,11 +15,13 @@ class ViewController: UIViewController {
         // for example, you can have just podcasts or audio books
         // I don't understand what the "video" options are for; when I try them, I get all audio
         picker.delegate = self
-        picker.modalPresentationStyle = .Popover // or comment this out for fullscreen on both
+        picker.allowsPickingMultipleItems = true
+        picker.modalPresentationStyle = .Popover
+        picker.preferredContentSize = CGSizeMake(500,600)
         self.presentViewController(picker, animated: true, completion: nil)
         if let pop = picker.popoverPresentationController {
-            if pop.adaptivePresentationStyle() == .Popover {
-                pop.barButtonItem = sender as UIBarButtonItem
+            if let b = sender as? UIBarButtonItem {
+                pop.barButtonItem = b
             }
         }
     }
