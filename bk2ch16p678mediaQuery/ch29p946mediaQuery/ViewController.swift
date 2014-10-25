@@ -142,8 +142,8 @@ class ViewController: UIViewController {
         query.addFilterPredicate(isPresent)
         
         let shorties = (query.items as [MPMediaItem]).filter {
-            let dur = $0.playbackDuration as NSNumber
-            return dur.floatValue < 30
+            let dur = $0.playbackDuration
+            return dur < 30
         }
         
         if shorties.count == 0 {
@@ -189,7 +189,7 @@ class ViewController: UIViewController {
         }
         self.prog.hidden = false
         let current = player.currentPlaybackTime
-        let total = (item.playbackDuration as NSNumber).doubleValue
+        let total = item.playbackDuration
         self.prog.progress = Float(current / total)
     }
 

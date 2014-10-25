@@ -192,9 +192,8 @@ class ViewController: UIViewController {
         if self.assets.count == 0 {
             return
         }
-        let newItem = self.assets[0] as AVPlayerItem
+        let newItem = self.assets.removeAtIndex(0)
         self.qp.insertItem(newItem, afterItem:self.qp.items().last as AVPlayerItem)
-        self.assets.removeAtIndex(0)
         
         self.timer?.fire()
     }
