@@ -1,9 +1,9 @@
 
 
 import UIKit
-import MediaPlayer
 import MobileCoreServices
 import Photos
+import AVKit
 func delay(delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
@@ -14,7 +14,6 @@ func delay(delay:Double, closure:()->()) {
 }
 
 class ViewController: UIViewController {
-    var mpc : MPMoviePlayerController!
     @IBOutlet var redView : UIView!
     
     override func supportedInterfaceOrientations() -> Int {
@@ -45,7 +44,7 @@ class ViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
                 _ in
-                let url = NSURL(string:UIApplicationOpenSettingsURLString)
+                let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.sharedApplication().openURL(url)
             }))
             self.presentViewController(alert, animated:true, completion:nil)
@@ -71,19 +70,21 @@ class ViewController: UIViewController {
             return
         }
         
-        let src = UIImagePickerControllerSourceType.PhotoLibrary
+        let src = UIImagePickerControllerSourceType.SavedPhotosAlbum
         let ok = UIImagePickerController.isSourceTypeAvailable(src)
         if !ok {
             println("alas")
             return
         }
         
-        self.mpc?.pause() // don't play behind picker
-        
         let arr = UIImagePickerController.availableMediaTypesForSourceType(src)
+        if arr == nil {
+            println("no available types")
+            return
+        }
         let picker = MyImagePickerController() // see comments below for reason
         picker.sourceType = src
-        picker.mediaTypes = arr
+        picker.mediaTypes = arr!
         picker.delegate = self
         
         picker.allowsEditing = false // try true
@@ -111,8 +112,15 @@ class ViewController: UIViewController {
 
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    // this has no effect
+    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> Int {
+        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
+    }
+    
+    
     func imagePickerController(picker: UIImagePickerController!,
         didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!) {
+            println(info[UIImagePickerControllerReferenceURL])
             let url = info[UIImagePickerControllerMediaURL] as NSURL?
             var im = info[UIImagePickerControllerOriginalImage] as UIImage?
             var edim = info[UIImagePickerControllerEditedImage] as UIImage?
@@ -120,17 +128,14 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
                 im = edim
             }
             self.dismissViewControllerAnimated(true) {
-                let type = info[UIImagePickerControllerMediaType] as NSString?
-                // idiotic foo to evade casting issues; Swift doesn't know CFString is NSString?
-                let typeim = kUTTypeImage as NSString
-                let typemovie = kUTTypeMovie as NSString
+                let type = info[UIImagePickerControllerMediaType] as String?
                 if type != nil {
                     switch type! {
-                    case typeim:
+                    case kUTTypeImage:
                         if im != nil {
                             self.showImage(im!)
                         }
-                    case typemovie:
+                    case kUTTypeMovie:
                         if url != nil {
                             self.showMovie(url!)
                         }
@@ -140,23 +145,34 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
             }
     }
     
+    func clearAll() {
+        if self.childViewControllers.count > 0 {
+            let av = self.childViewControllers[0] as AVPlayerViewController
+            av.willMoveToParentViewController(nil)
+            av.view.removeFromSuperview()
+            av.removeFromParentViewController()
+        }
+        self.redView.subviews.map { ($0 as UIView).removeFromSuperview() }
+    }
+    
     func showImage(im:UIImage) {
+        self.clearAll()
         let iv = UIImageView(image:im)
         iv.contentMode = .ScaleAspectFit
         iv.frame = self.redView.bounds
-        self.redView.subviews.map { ($0 as UIView).removeFromSuperview() }
         self.redView.addSubview(iv)
     }
     
     func showMovie(url:NSURL) {
-        let mp = MPMoviePlayerController(contentURL: url)
-        self.mpc = mp
-        mp.shouldAutoplay = false
-        mp.view.frame = self.redView.bounds
-        mp.backgroundView.backgroundColor = self.redView.backgroundColor
-        self.redView.subviews.map { ($0 as UIView).removeFromSuperview() }
-        self.redView.addSubview(mp.view)
-        mp.prepareToPlay()
+        self.clearAll()
+        let av = AVPlayerViewController()
+        let player = AVPlayer(URL:url)
+        av.player = player
+        self.addChildViewController(av)
+        av.view.frame = self.redView.bounds
+        av.view.backgroundColor = self.redView.backgroundColor
+        self.redView.addSubview(av.view)
+        av.didMoveToParentViewController(self)
     }
     
 }
