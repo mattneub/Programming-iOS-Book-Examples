@@ -26,6 +26,8 @@
 	<true/>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>I want to hear everything you say, ever.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>I want to spy on you late at night.</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
