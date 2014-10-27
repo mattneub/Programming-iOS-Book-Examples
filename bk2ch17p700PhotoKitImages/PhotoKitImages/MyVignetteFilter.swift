@@ -11,26 +11,8 @@ extension CIColor {
 }
 
 class MyVignetteFilter : CIFilter {
-    // rather elaborate dance, in Swift, to slot needed properties into position
-    private var realInputImage : CIImage?
-    var inputImage : CIImage {
-        get {
-            return self.realInputImage!
-        }
-        set (im) {
-            self.realInputImage = im
-        }
-    }
-    private var realInputPercentage : NSNumber = NSNumber(double: 1.0)
-    var inputPercentage : NSNumber {
-        get {
-            return self.realInputPercentage
-        }
-        set (val) {
-            self.realInputPercentage = val
-        }
-    }
-    
+    var inputImage : CIImage!
+    var inputPercentage : NSNumber! = NSNumber(double: 1.0)
     override var outputImage : CIImage! {
         get {
             return self.makeOutputImage()
@@ -48,7 +30,7 @@ class MyVignetteFilter : CIFilter {
         let largerDimension = max(moiextent.width, moiextent.height)
         
         grad.setValue(center, forKey:"inputCenter")
-        grad.setValue(smallerDimension/2.0 * CGFloat(self.realInputPercentage.doubleValue), forKey:"inputRadius0")
+        grad.setValue(smallerDimension/2.0 * CGFloat(self.inputPercentage), forKey:"inputRadius0")
         grad.setValue(largerDimension/2.0, forKey:"inputRadius1")
         grad.setValue(CIColor(color: UIColor.whiteColor()), forKey:"inputColor0")
         grad.setValue(CIColor(color: UIColor.clearColor()), forKey:"inputColor1")

@@ -5,7 +5,7 @@ import Photos
 import ImageIO
 import MobileCoreServices
 
-func imageFromContextOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     closure()
     let result = UIGraphicsGetImageFromCurrentImageContext()
@@ -15,11 +15,11 @@ func imageFromContextOfSize(size:CGSize, closure:() -> ()) -> UIImage {
 
 class DataViewController: UIViewController, EditingViewControllerDelegate {
                             
-    @IBOutlet weak var dataLabel: UILabel!
+    @IBOutlet var dataLabel: UILabel!
     @IBOutlet var frameview : UIView!
     @IBOutlet var iv : UIImageView!
-    var dataObject: AnyObject?
-    var index : Int = -1
+    var dataObject: PHAsset!
+    // var index : Int = -1
     var input : PHContentEditingInput!
     let myidentifier = "com.neuburg.matt.PhotoKitImages.vignette"
 
@@ -30,15 +30,16 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
     }
     
     func setUpInterface() {
-        if let obj: AnyObject = dataObject {
-            self.dataLabel!.text = obj.description
-        } else {
-            self.dataLabel!.text = ""
+        if self.dataObject == nil {
+            self.dataLabel.text = ""
+            self.iv.image = nil
+            return
         }
+        self.dataLabel.text = self.dataObject.description
         // okay, this is why we are here! fetch the image data!!!!!
         // we have to say quite specifically what "view" of image we want
-        PHImageManager.defaultManager().requestImageForAsset(self.dataObject as PHAsset, targetSize: CGSizeMake(300,300), contentMode: .AspectFit, options: nil) {
-            (im:UIImage!, info:[NSObject : AnyObject]!) -> Void in
+        PHImageManager.defaultManager().requestImageForAsset(self.dataObject, targetSize: CGSizeMake(300,300), contentMode: .AspectFit, options: nil) {
+            (im:UIImage!, info:[NSObject : AnyObject]!) in
             // this block can be called multiple times
             // and you can see why: initially we might get a degraded version of the image
             // and in fact we do, as I show with logging
@@ -52,7 +53,6 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
     
     func doVignette() {
         // part one: standard dance to obtain PHContentEditingInput; hang on to it for later
-        let asset = self.dataObject as PHAsset
         let options = PHContentEditingInputRequestOptions()
         // note that if we reply true to canHandle..., then we will be handed the *original* photo + data
         // thus we can continue our edit where we left off, or remove it (and I illustrate both here)
@@ -60,6 +60,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             (adjustmentData : PHAdjustmentData!) in
             return adjustmentData.formatIdentifier == self.myidentifier
         }
+        let asset = self.dataObject
         asset.requestContentEditingInputWithOptions(options, completionHandler: {
             (input:PHContentEditingInput!, info:[NSObject : AnyObject]!) in
             self.input = input
@@ -69,7 +70,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             
             let im = input.displaySizeImage
             let sz = CGSizeMake(im.size.width/4.0, im.size.height/4.0)
-            let im2 = imageFromContextOfSize(sz) {
+            let im2 = imageOfSize(sz) {
                 // perhaps no need for this, but the image they give us is much larger than we need
                 im.drawInRect(CGRect(origin: CGPoint(), size: sz))
             }
@@ -79,8 +80,8 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             evc.delegate = self
             if let adj = input.adjustmentData {
                 if adj.formatIdentifier == self.myidentifier && adj.data != nil {
-                    if let vigAmount = NSKeyedUnarchiver.unarchiveObjectWithData(adj.data) as? NSNumber {
-                        evc.initialVignette = vigAmount.doubleValue
+                    if let vigAmount = NSKeyedUnarchiver.unarchiveObjectWithData(adj.data) as? Double {
+                        evc.initialVignette = vigAmount
                         evc.canUndo = true
                     }
                 }
@@ -100,7 +101,12 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         let outurl = output.renderedContentURL
         // cute feature: if vignette is -1, this signals we should remove the vignette
         // in that case, we substitute the original image and store nil data in adjustment
-        if vignette >= 0 {
+        if vignette < 0 {
+            output.adjustmentData = PHAdjustmentData(
+                formatIdentifier: myidentifier, formatVersion: "1.0", data: nil)
+            let fm = NSFileManager.defaultManager()
+            fm.copyItemAtURL(inurl, toURL: outurl, error: nil)
+        } else {
             let outcgimage = {
                 () -> CGImage in
                 // at this point we do whatever editing means to us, returning a CGImage
@@ -118,17 +124,12 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             output.adjustmentData = PHAdjustmentData(
                 formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
             let dest = CGImageDestinationCreateWithURL(outurl, kUTTypeJPEG, 1, nil)
-            CGImageDestinationAddImage(dest, outcgimage, [kCGImageDestinationLossyCompressionQuality:1])
+            CGImageDestinationAddImage(dest, outcgimage, [kCGImageDestinationLossyCompressionQuality as String:1])
             CGImageDestinationFinalize(dest)
-        } else {
-            output.adjustmentData = PHAdjustmentData(
-                formatIdentifier: myidentifier, formatVersion: "1.0", data: nil)
-            let fm = NSFileManager.defaultManager()
-            fm.copyItemAtURL(inurl, toURL: outurl, error: nil)
         }
         // now we must tell the photo library to pick up the edited image
         PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-            let asset = self.dataObject as PHAsset
+            let asset = self.dataObject
             let req = PHAssetChangeRequest(forAsset: asset)
             req.contentEditingOutput = output
             }, completionHandler: {

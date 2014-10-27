@@ -29,6 +29,8 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         self.seg.hidden = true
         self.seg.selectedSegmentIndex = 0
         
+        self.title = "Vignette" // doesn't work, and I have not found a way to set the title
+        
     }
 
     func canHandleAdjustmentData(adjustmentData: PHAdjustmentData?) -> Bool {
@@ -75,8 +77,8 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         self.displayImage = CIImage(image:self.input.displaySizeImage)
         if let adj = input.adjustmentData {
             if adj.formatIdentifier == myidentifier && adj.data != nil {
-                if let vigAmount = NSKeyedUnarchiver.unarchiveObjectWithData(adj.data) as? NSNumber {
-                    self.slider.value = Float(vigAmount.doubleValue)
+                if let vigAmount = NSKeyedUnarchiver.unarchiveObjectWithData(adj.data) as? Double {
+                    self.slider.value = Float(vigAmount)
                     self.seg.hidden = false
                 }
             }
@@ -111,7 +113,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
                 output.adjustmentData = PHAdjustmentData(
                     formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
                 let dest = CGImageDestinationCreateWithURL(outurl, kUTTypeJPEG, 1, nil)
-                CGImageDestinationAddImage(dest, outcgimage, [kCGImageDestinationLossyCompressionQuality:1])
+                CGImageDestinationAddImage(dest, outcgimage, [kCGImageDestinationLossyCompressionQuality as String:1])
                 CGImageDestinationFinalize(dest)
             } else {
                 output.adjustmentData = PHAdjustmentData(

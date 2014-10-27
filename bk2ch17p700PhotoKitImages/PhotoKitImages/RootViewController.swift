@@ -49,7 +49,7 @@ class RootViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
                 _ in
-                let url = NSURL(string:UIApplicationOpenSettingsURLString)
+                let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.sharedApplication().openURL(url)
             }))
             self.presentViewController(alert, animated:true, completion:nil)
@@ -66,7 +66,7 @@ class RootViewController: UIViewController {
     
     func tryToAddInitialPage() {
         self.modelController = ModelController()
-        if let dvc = self.modelController.viewControllerAtIndex(0, storyboard: self.storyboard) {
+        if let dvc = self.modelController.viewControllerAtIndex(0, storyboard: self.storyboard!) {
             let viewControllers: NSArray = [dvc]
             self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
             self.pageViewController!.dataSource = self.modelController
@@ -78,7 +78,7 @@ class RootViewController: UIViewController {
         self.pageViewController!.dataSource = nil
         self.tryToAddInitialPage() // if succeeds, will set data source for real
         
-        self.addChildViewController(self.pageViewController)
+        self.addChildViewController(self.pageViewController!)
         self.view.addSubview(self.pageViewController!.view)
         self.pageViewController!.view.frame = self.view.bounds
         self.pageViewController!.didMoveToParentViewController(self)

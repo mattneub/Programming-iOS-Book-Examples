@@ -3,6 +3,13 @@
 import UIKit
 import Photos
 
+extension PHFetchResult: SequenceType {
+    public func generate() -> NSFastGenerator {
+        return NSFastGenerator(self)
+    }
+}
+
+
 class ModelController: NSObject {
     
     var recentAlbums : PHFetchResult!
@@ -10,7 +17,7 @@ class ModelController: NSObject {
     
     func tryToGetStarted() {
         let result = PHAssetCollection.fetchAssetCollectionsWithType(
-            .SmartAlbum, subtype: .SmartAlbumRecentlyAdded, options: nil)
+            .SmartAlbum, subtype: .SmartAlbumUserLibrary, options: nil)
         self.recentAlbums = result
         let rec = result.firstObject as PHAssetCollection!
         if rec == nil {
@@ -34,14 +41,17 @@ class ModelController: NSObject {
             return nil
         }
         let dvc = storyboard.instantiateViewControllerWithIdentifier("DataViewController") as DataViewController
-        dvc.dataObject = self.photos[index]
-        dvc.index = index
+        dvc.dataObject = self.photos[index] as PHAsset
+        // dvc.index = index
         return dvc
     }
     
 
     func indexOfViewController(dvc: DataViewController) -> Int {
-        return dvc.index
+        // return dvc.index
+        let asset = dvc.dataObject
+        let ix = self.photos.indexOfObject(asset)
+        return ix
     }
 }
 
@@ -52,7 +62,7 @@ extension ModelController : UIPageViewControllerDataSource {
         if ix == 0 {
             return nil
         }
-        return self.viewControllerAtIndex(ix-1, storyboard:viewController.storyboard)
+        return self.viewControllerAtIndex(ix-1, storyboard:viewController.storyboard!)
     }
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
@@ -60,7 +70,7 @@ extension ModelController : UIPageViewControllerDataSource {
         if ix + 1 >= self.photos.count {
             return nil
         }
-        return self.viewControllerAtIndex(ix+1, storyboard:viewController.storyboard)
+        return self.viewControllerAtIndex(ix+1, storyboard:viewController.storyboard!)
     }
 
 
