@@ -53,6 +53,10 @@ class ViewController: UIViewController {
             let im = UIImage(data:data)
             dispatch_async(dispatch_get_main_queue()) {
                 
+                self.previewLayer.removeFromSuperlayer()
+                self.previewLayer = nil
+                self.sess.stopRunning()
+
                 let iv = UIImageView(frame:self.previewLayer.frame)
                 iv.contentMode = .ScaleAspectFit
                 iv.image = im
@@ -60,9 +64,6 @@ class ViewController: UIViewController {
                 self.iv?.removeFromSuperview()
                 self.iv = iv
                 
-                self.previewLayer.removeFromSuperlayer()
-                self.previewLayer = nil
-                self.sess.stopRunning()
                 
             }
 
