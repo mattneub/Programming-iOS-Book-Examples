@@ -2,13 +2,14 @@
 
 import UIKit
 import AVFoundation
+import AVKit
 import MobileCoreServices
 
 class ViewController: UIViewController,
 UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-    @IBOutlet var iv : UIImageView!
-    @IBOutlet var picker : UIImagePickerController!
+    @IBOutlet weak var redView: UIView!
+    weak var picker : UIImagePickerController?
     
     func determineStatus() -> Bool {
         let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
@@ -55,43 +56,24 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             println("no camera")
             return
         }
+        let desiredType = kUTTypeImage
+        // let desiredType = kUTTypeMovie
         let arr = UIImagePickerController.availableMediaTypesForSourceType(.Camera) as [String]
-        if find(arr, kUTTypeImage) == nil {
-            println("no stills")
+        println(arr)
+        if find(arr, desiredType) == nil {
+            println("no capture")
             return
         }
         let picker = UIImagePickerController()
         picker.sourceType = .Camera
-        picker.mediaTypes = [kUTTypeImage]
+        picker.mediaTypes = [desiredType]
         // picker.allowsEditing = true
         picker.delegate = self
         
-        
-        // ====
-        /*
-        picker.showsCameraControls = false
-        let f = self.view.window!.bounds
-        let h : CGFloat = 53
-        let v = UIView(frame:f)
-        let v2 = UIView(frame:CGRectMake(0,f.size.height-h,f.size.width,h))
-        v2.backgroundColor = UIColor.redColor()
-        v.addSubview(v2)
-        let lab = UILabel()
-        lab.text = "Double tap to take a picture"
-        lab.backgroundColor = UIColor.clearColor()
-        lab.sizeToFit()
-        lab.center = CGPointMake(v2.bounds.midX, v2.bounds.midY)
-        v2.addSubview(lab)
-        let t = UITapGestureRecognizer(target:self, action:"tap:")
-        t.numberOfTapsRequired = 2
-        v.addGestureRecognizer(t)
-        picker.cameraOverlayView = v
-        self.picker = picker
-*/
-        // ====
-        
         // user will get the "access the camera" system dialog at this point if necessary
         // if the user refuses, Very Weird Things happen...
+        // better to get authorization beforehand
+        
         self.presentViewController(picker, animated: true, completion: nil)
     }
 
@@ -99,22 +81,65 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!) {
-        var im = info[UIImagePickerControllerOriginalImage] as UIImage?
-        let edim = info[UIImagePickerControllerEditedImage] as UIImage?
-        if edim != nil {
-            im = edim
+    func imagePickerController(picker: UIImagePickerController!,
+        didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!) {
+            println(info[UIImagePickerControllerReferenceURL])
+            let url = info[UIImagePickerControllerMediaURL] as NSURL?
+            var im = info[UIImagePickerControllerOriginalImage] as UIImage?
+            var edim = info[UIImagePickerControllerEditedImage] as UIImage?
+            if edim != nil {
+                im = edim
+            }
+            self.dismissViewControllerAnimated(true) {
+                let type = info[UIImagePickerControllerMediaType] as String?
+                if type != nil {
+                    switch type! {
+                    case kUTTypeImage:
+                        if im != nil {
+                            self.showImage(im!)
+                        }
+                    case kUTTypeMovie:
+                        if url != nil {
+                            self.showMovie(url!)
+                        }
+                    default:break
+                    }
+                }
+            }
+    }
+    
+    func clearAll() {
+        if self.childViewControllers.count > 0 {
+            let av = self.childViewControllers[0] as AVPlayerViewController
+            av.willMoveToParentViewController(nil)
+            av.view.removeFromSuperview()
+            av.removeFromParentViewController()
         }
-        if im != nil {
-            self.iv.image = im!
-        }
-        self.dismissViewControllerAnimated(true, completion: nil)
-        // user may get the "access photos" system dialog -- spurious?
-        // saw this the first time but then could not reproduce
+        self.redView.subviews.map { ($0 as UIView).removeFromSuperview() }
+    }
+    
+    func showImage(im:UIImage) {
+        self.clearAll()
+        let iv = UIImageView(image:im)
+        iv.contentMode = .ScaleAspectFit
+        iv.frame = self.redView.bounds
+        self.redView.addSubview(iv)
+    }
+    
+    func showMovie(url:NSURL) {
+        self.clearAll()
+        let av = AVPlayerViewController()
+        let player = AVPlayer(URL:url)
+        av.player = player
+        self.addChildViewController(av)
+        av.view.frame = self.redView.bounds
+        av.view.backgroundColor = self.redView.backgroundColor
+        self.redView.addSubview(av.view)
+        av.didMoveToParentViewController(self)
     }
     
     func tap (g:UIGestureRecognizer) {
-        self.picker.takePicture()
+        self.picker?.takePicture()
     }
 
 
