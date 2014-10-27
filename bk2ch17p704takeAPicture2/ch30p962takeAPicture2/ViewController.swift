@@ -1,9 +1,11 @@
 
 
 import UIKit
+import AVFoundation
+import AVKit
 import MobileCoreServices
 
-func imageFromContextOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     closure()
     let result = UIGraphicsGetImageFromCurrentImageContext()
@@ -17,20 +19,59 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet var iv : UIImageView!
     @IBOutlet var picker : UIImagePickerController!
     
+    func determineStatus() -> Bool {
+        let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
+        switch status {
+        case .Authorized:
+            return true
+        case .NotDetermined:
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: nil)
+            return false
+        case .Restricted:
+            return false
+        case .Denied:
+            let alert = UIAlertController(
+                title: "Need Authorization",
+                message: "Wouldn't you like to authorize this app " +
+                "to use the camera?",
+                preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(
+                title: "No", style: .Cancel, handler: nil))
+            alert.addAction(UIAlertAction(
+                title: "OK", style: .Default, handler: {
+                    _ in
+                    let url = NSURL(string:UIApplicationOpenSettingsURLString)!
+                    UIApplication.sharedApplication().openURL(url)
+            }))
+            self.presentViewController(alert, animated:true, completion:nil)
+            return false
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.determineStatus()
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "determineStatus",
+            name: UIApplicationWillEnterForegroundNotification,
+            object: nil)
+    }
+
+    
     @IBAction func doTake (sender:AnyObject!) {
         let ok = UIImagePickerController.isSourceTypeAvailable(.Camera)
         if (!ok) {
             println("no camera")
             return
         }
-        let arr = UIImagePickerController.availableMediaTypesForSourceType(.Camera) as [NSString]
-        if find(arr, kUTTypeImage as NSString) == nil {
+        let arr = UIImagePickerController.availableMediaTypesForSourceType(.Camera) as [String]
+        if find(arr, kUTTypeImage) == nil {
             println("no stills")
             return
         }
         let picker = MyImagePickerController()
         picker.sourceType = .Camera
-        picker.mediaTypes = [kUTTypeImage as NSString]
+        picker.mediaTypes = [kUTTypeImage]
         picker.allowsEditing = true
         picker.delegate = self
         
@@ -75,7 +116,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         nc.toolbarHidden = false
         
         let sz = CGSizeMake(10,10)
-        let im = imageFromContextOfSize(sz) {
+        let im = imageOfSize(sz) {
             UIColor.blackColor().colorWithAlphaComponent(0.1).setFill()
             CGContextFillRect(UIGraphicsGetCurrentContext(), CGRect(origin: CGPoint(), size: sz))
         }
