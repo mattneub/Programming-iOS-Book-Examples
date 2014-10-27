@@ -328,6 +328,7 @@
 				INFOPLIST_FILE = PhotoKitData/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -339,6 +340,7 @@
 				INFOPLIST_FILE = PhotoKitData/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -395,6 +397,7 @@
 				3242861219A0100800231054 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3242861319A0100800231054 /* Build configuration list for PBXNativeTarget "PhotoKitDataTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +406,7 @@
 				3242861519A0100800231054 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

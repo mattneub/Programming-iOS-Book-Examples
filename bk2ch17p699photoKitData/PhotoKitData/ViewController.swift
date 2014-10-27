@@ -31,7 +31,7 @@ class ViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
                 _ in
-                let url = NSURL(string:UIApplicationOpenSettingsURLString)
+                let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.sharedApplication().openURL(url)
             }))
             self.presentViewController(alert, animated:true, completion:nil)
@@ -59,17 +59,21 @@ class ViewController: UIViewController {
         let result = PHCollectionList.fetchCollectionListsWithType(
             .MomentList, subtype: .MomentListYear, options: opts)
         result.enumerateObjectsUsingBlock {
-            (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) -> () in
+            (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
             let list = obj as PHCollectionList
+            let f = NSDateFormatter()
+            f.dateFormat = "\nyyyy"
+            println(f.stringFromDate(list.startDate))
             if list.collectionListType == .MomentList {
                 let result = PHAssetCollection.fetchMomentsInMomentList(list, options: nil)
                 result.enumerateObjectsUsingBlock {
-                    (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) -> () in
+                    (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
                     let coll = obj as PHAssetCollection
                     if ix == 0 {
-                        println("======= \(result.count) collections starting \(list.startDate)")
+                        println("======= \(result.count) clusters")
                     }
-                    println("starting \(coll.startDate)")
+                    f.dateFormat = ("yyyy-MM-dd")
+                    println("starting \(f.stringFromDate(coll.startDate)): " + "\(coll.estimatedAssetCount)")
                 }
             }
         }
@@ -85,7 +89,7 @@ class ViewController: UIViewController {
             // let's examine albums synced onto the device from iPhoto
             .Album, subtype: .AlbumSyncedAlbum, options: nil)
         result.enumerateObjectsUsingBlock {
-            (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) -> () in
+            (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
             let album = obj as PHAssetCollection
             println("\(album.localizedTitle): approximately \(album.estimatedAssetCount) photos")
         }
@@ -102,19 +106,25 @@ class ViewController: UIViewController {
         let result = PHAssetCollection.fetchAssetCollectionsWithType(
             .Album, subtype: .AlbumSyncedAlbum, options: nil)
         result.enumerateObjectsUsingBlock {
-            (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) -> () in
+            (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
             let album = obj as PHAssetCollection
             alert.addAction(UIAlertAction(title: album.localizedTitle, style: .Default, handler: {
                 (_:UIAlertAction!) in
                 let result = PHAsset.fetchAssetsInAssetCollection(album, options: nil)
                 result.enumerateObjectsUsingBlock {
-                    (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) -> () in
+                    (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
                     let asset = obj as PHAsset
                     println(asset)
                 }
             }))
         }
         self.presentViewController(alert, animated: true, completion: nil)
+        if let pop = alert.popoverPresentationController {
+            if let v = sender as? UIView {
+                pop.sourceView = v
+                pop.sourceRect = v.bounds
+            }
+        }
     }
     
     @IBAction func doButton4(sender: AnyObject) {
