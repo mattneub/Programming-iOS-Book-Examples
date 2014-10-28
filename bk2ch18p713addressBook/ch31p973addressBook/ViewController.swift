@@ -18,30 +18,45 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     // your retained address book will go out of date
     // unfortunately the way around that is to register an external change callback...
     // ...and you can't do that using Swift alone
-    var adbk : ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
+    var adbk : ABAddressBook!
+    
+    func createAddressBook() -> Bool {
+        if self.adbk != nil {
+            return true
+        }
+        var err : Unmanaged<CFError>? = nil
+        let adbk : ABAddressBook? = ABAddressBookCreateWithOptions(nil, &err).takeRetainedValue()
+        if adbk == nil {
+            println(err)
+            self.adbk = nil
+            return false
+        }
+        self.adbk = adbk
+        return true
+    }
     
     func determineStatus() -> Bool {
         let status = ABAddressBookGetAuthorizationStatus()
         switch status {
         case .Authorized:
-            return true
+            return self.createAddressBook()
         case .NotDetermined:
-            ABAddressBookRequestAccessWithCompletion(adbk) {
+            var ok = false
+            ABAddressBookRequestAccessWithCompletion(nil) {
                 (granted:Bool, err:CFError!) in
-                if granted {
-                    // replace dummy address book we created earlier
-                    var err : Unmanaged<CFError>? = nil
-                    let adbk : ABAddressBook? = ABAddressBookCreateWithOptions(nil, &err).takeRetainedValue()
-                    if adbk == nil {
-                        println(err)
-                        return
+                dispatch_async(dispatch_get_main_queue()) {
+                    if granted {
+                        ok = self.createAddressBook()
                     }
-                } else {
-                    println(err)
                 }
             }
+            if ok == true {
+                return true
+            }
+            self.adbk = nil
             return false
         case .Restricted:
+            self.adbk = nil
             return false
         case .Denied:
             // new iOS 8 feature: sane way of getting the user directly to the relevant prefs
@@ -50,10 +65,11 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
             alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
                 _ in
-                let url = NSURL(string:UIApplicationOpenSettingsURLString)
+                let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.sharedApplication().openURL(url)
             }))
             self.presentViewController(alert, animated:true, completion:nil)
+            self.adbk = nil
             return false
         }
     }
@@ -73,7 +89,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         }
         
         var moi : ABRecord! = nil
-        let matts = ABAddressBookCopyPeopleWithName(adbk, "Matt").takeRetainedValue() as NSArray
+        let matts = ABAddressBookCopyPeopleWithName(self.adbk, "Matt").takeRetainedValue() as NSArray
         // could have asked for "Matt Neuburg" but I wanted to show how to cycle thru the results
         for matt in matts {
             if let last = ABRecordCopyValue(matt, kABPersonLastNameProperty).takeRetainedValue() as? String {
@@ -91,8 +107,8 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         let emails:ABMultiValue = ABRecordCopyValue(
             moi, kABPersonEmailProperty).takeRetainedValue() as ABMultiValue
         for ix in 0 ..< ABMultiValueGetCount(emails) {
-            let label = ABMultiValueCopyLabelAtIndex(emails,ix).takeRetainedValue() as NSString
-            let value = ABMultiValueCopyValueAtIndex(emails,ix).takeRetainedValue() as NSString
+            let label = ABMultiValueCopyLabelAtIndex(emails,ix).takeRetainedValue() as String
+            let value = ABMultiValueCopyValueAtIndex(emails,ix).takeRetainedValue() as String
             println("I have a \(label) address: \(value)")
         }
     }
@@ -110,8 +126,8 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
             ABPropertyType(kABStringPropertyType)).takeRetainedValue()
         ABMultiValueAddValueAndLabel(addr, "snidely@villains.com", kABHomeLabel, nil)
         ABRecordSetValue(snidely, kABPersonEmailProperty, addr, nil)
-        ABAddressBookAddRecord(adbk, snidely, nil)
-        ABAddressBookSave(adbk, nil)
+        ABAddressBookAddRecord(self.adbk, snidely, nil)
+        ABAddressBookSave(self.adbk, nil)
     }
     
     // ============
@@ -121,20 +137,34 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         picker.peoplePickerDelegate = self
         picker.displayedProperties = [Int(kABPersonEmailProperty)]
         // new iOS 8 features: instead of delegate "continueAfter" methods
+        // picker.predicateForEnablingPerson = NSPredicate(format: "%K like %@", ABPersonFamilyNameProperty, "Neuburg")
         picker.predicateForSelectionOfPerson = NSPredicate(value:false) // display additional info for all persons
         picker.predicateForSelectionOfProperty = NSPredicate(value:true) // call delegate method for all properties
         self.presentViewController(picker, animated:true, completion:nil)
+    }
+    
+    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, didSelectPerson person: ABRecord!) {
+        println("person")
+        println(person)
     }
     
     func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!,
         didSelectPerson person: ABRecordRef!,
         property: ABPropertyID,
         identifier: ABMultiValueIdentifier) {
+            println("person and property")
+//            println(person)
+//            println(property)
+//            return;
+            if property != kABPersonEmailProperty {
+                println("WTF") // shouldn't happen
+                return
+            }
             let emails : ABMultiValue = ABRecordCopyValue(person, property).takeRetainedValue()
             let ix = ABMultiValueGetIndexForIdentifier(emails, identifier)
-            let email = ABMultiValueCopyValueAtIndex(emails, ix).takeRetainedValue() as NSString
+            let email = ABMultiValueCopyValueAtIndex(emails, ix).takeRetainedValue() as String
             println(email) // do something with the email here
-            self.dismissViewControllerAnimated(true, completion: nil)
+            // self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // =========
@@ -146,14 +176,14 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         }
 
         let snides = ABAddressBookCopyPeopleWithName(
-            adbk, "Snidely Whiplash").takeRetainedValue() as NSArray as Array<ABRecord>
+            self.adbk, "Snidely Whiplash").takeRetainedValue() as Array<ABRecord>
         if snides.count == 0 {
             println("no Snidely")
             return
         }
         let snidely:ABRecord = snides[0]
         let pvc = ABPersonViewController()
-        pvc.addressBook = adbk
+        pvc.addressBook = self.adbk
         pvc.displayedPerson = snidely
         pvc.personViewDelegate = self
         pvc.displayedProperties = [Int(kABPersonEmailProperty)]
@@ -182,8 +212,8 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
             if person != nil {
                 // if we didn't have access, we wouldn't be here!
                 // if we do not delete the person, the person will stay in the contacts database automatically!
-                ABAddressBookRemoveRecord(adbk, person, nil)
-                ABAddressBookSave(adbk, nil)
+                ABAddressBookRemoveRecord(self.adbk, person, nil)
+                ABAddressBookSave(self.adbk, nil)
                 let name = ABRecordCopyCompositeName(person).takeRetainedValue()
                 println("I have a person named \(name), not saving this person to the database")
                 // do something with new person
