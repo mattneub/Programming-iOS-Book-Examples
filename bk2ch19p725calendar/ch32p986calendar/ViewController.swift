@@ -26,7 +26,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         case .Authorized:
             return true
         case .NotDetermined:
-            database.requestAccessToEntityType(type, completion:nil)
+            self.database.requestAccessToEntityType(type, completion:{_,_ in})
             return false
         case .Restricted:
             return false
@@ -37,7 +37,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
                 _ in
-                let url = NSURL(string:UIApplicationOpenSettingsURLString)
+                let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.sharedApplication().openURL(url)
             }))
             self.presentViewController(alert, animated:true, completion:nil)
@@ -105,7 +105,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             return
         }
         
-        let greg = NSCalendar(calendarIdentifier:NSGregorianCalendar)
+        let greg = NSCalendar(calendarIdentifier:NSGregorianCalendar)!
         let comp = NSDateComponents()
         comp.year = 2015
         comp.month = 8
@@ -164,7 +164,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         ev.addRecurrenceRule(recur)
         ev.calendar = cal
         // need a start date and end date
-        let greg = NSCalendar(calendarIdentifier:NSGregorianCalendar)
+        let greg = NSCalendar(calendarIdentifier:NSGregorianCalendar)!
         let comp = NSDateComponents()
         comp.year = 2015
         comp.month = 1
@@ -196,7 +196,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         }
         
         let d1 = NSDate() // today
-        let greg = NSCalendar(calendarIdentifier:NSGregorianCalendar)
+        let greg = NSCalendar(calendarIdentifier:NSGregorianCalendar)!
         let comp = NSDateComponents()
         comp.year = 1 // we're going to add 1 to the year
         let d2 = greg.dateByAddingComponents(comp, toDate:d1, options:nil)
@@ -237,7 +237,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
 
         let evc = EKEventViewController()
         evc.event = ev
-        evc.allowsEditing = true
+        evc.allowsEditing = false
         // evc.delegate = self
         // in iOS 8 I see no serious reason to assign a delegate...
         // ...unless you want to know what the user did
@@ -251,9 +251,10 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             nav.modalPresentationStyle = .Popover
             self.presentViewController(nav, animated: true, completion: nil)
             if let pop = nav.popoverPresentationController {
-                let v = sender as UIView
-                pop.sourceView = v
-                pop.sourceRect = v.bounds
+                if let v = sender as? UIView {
+                    pop.sourceView = v
+                    pop.sourceRect = v.bounds
+                }
             }
         }
     }
@@ -266,7 +267,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
                 self.dismissViewControllerAnimated(true, completion: nil)
             } else {
                 // user deleted, pop off nav stack
-                self.navigationController.popToViewController(self, animated: true)
+                self.navigationController!.popToViewController(self, animated: true)
             }
     }
 
