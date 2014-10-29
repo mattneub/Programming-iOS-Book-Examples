@@ -252,7 +252,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     func eventViewController(controller: EKEventViewController!,
         didCompleteWithAction action: EKEventViewAction) {
             println("did complete with action \(action.value)")
-            // controller.dismissViewControllerAnimated(true, completion: nil)
+            controller.dismissViewControllerAnimated(true, completion: nil)
     }
 
     // ========
