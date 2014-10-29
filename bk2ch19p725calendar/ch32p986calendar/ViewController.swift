@@ -17,8 +17,7 @@ func delay(delay:Double, closure:()->()) {
 class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDelegate, EKCalendarChooserDelegate {
     var database = EKEventStore()
     var napid : String!
-    var calsToDelete : NSSet!
-    
+
     func determineStatus() -> Bool {
         let type = EKEntityTypeEvent
         let stat = EKEventStore.authorizationStatusForEntityType(type)
@@ -237,24 +236,15 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
 
         let evc = EKEventViewController()
         evc.event = ev
-        evc.allowsEditing = false
-        // evc.delegate = self
-        // in iOS 8 I see no serious reason to assign a delegate...
-        // ...unless you want to know what the user did
-        // if you omit the delegate, all the right stuff happens anyway
-        // NB I have not found a gracious way to "do the right thing" automatically
-        // on both phone and pad
-        if self.traitCollection.userInterfaceIdiom == .Phone {
-            self.showViewController(evc, sender: self)
-        } else {
-            let nav = UINavigationController(rootViewController: evc)
-            nav.modalPresentationStyle = .Popover
-            self.presentViewController(nav, animated: true, completion: nil)
-            if let pop = nav.popoverPresentationController {
-                if let v = sender as? UIView {
-                    pop.sourceView = v
-                    pop.sourceRect = v.bounds
-                }
+        evc.allowsEditing = true
+        evc.delegate = self
+        let nav = UINavigationController(rootViewController: evc)
+        nav.modalPresentationStyle = .Popover
+        self.presentViewController(nav, animated: true, completion: nil)
+        if let pop = nav.popoverPresentationController {
+            if let v = sender as? UIView {
+                pop.sourceView = v
+                pop.sourceRect = v.bounds
             }
         }
     }
@@ -262,13 +252,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     func eventViewController(controller: EKEventViewController!,
         didCompleteWithAction action: EKEventViewAction) {
             println("did complete with action \(action.value)")
-            if self.presentedViewController != nil {
-                // user tapped done or deleted, either way, dismiss popover
-                self.dismissViewControllerAnimated(true, completion: nil)
-            } else {
-                // user deleted, pop off nav stack
-                self.navigationController!.popToViewController(self, animated: true)
-            }
+            // controller.dismissViewControllerAnimated(true, completion: nil)
     }
 
     // ========
@@ -283,9 +267,10 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         evc.modalPresentationStyle = .Popover
         self.presentViewController(evc, animated: true, completion: nil)
         if let pop = evc.popoverPresentationController {
-            let v = sender as UIView
-            pop.sourceView = v
-            pop.sourceRect = v.bounds
+            if let v = sender as? UIView {
+                pop.sourceView = v
+                pop.sourceRect = v.bounds
+            }
         }
     }
     
@@ -316,9 +301,10 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         nav.modalPresentationStyle = .Popover
         self.presentViewController(nav, animated: true, completion: nil)
         if let pop = nav.popoverPresentationController {
-            let v = sender as UIView
-            pop.sourceView = v
-            pop.sourceRect = v.bounds
+            if let v = sender as? UIView {
+                pop.sourceView = v
+                pop.sourceRect = v.bounds
+            }
         }
     }
     
@@ -332,17 +318,16 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         // up to us to respond
         let cals = calendarChooser.selectedCalendars
             if cals != nil && cals.count > 0 {
-                self.calsToDelete = cals.valueForKey("calendarIdentifier") as NSSet
+                let calsToDelete = cals.valueForKey("calendarIdentifier") as NSSet
                 let alert = UIAlertController(title: "Delete selected calendar?", message: nil, preferredStyle: .ActionSheet)
                 alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
                 alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: {
                     _ in
-                    for ident in self.calsToDelete {
+                    for ident in calsToDelete {
                         if let cal = self.database.calendarWithIdentifier(ident as String) {
                             self.database.removeCalendar(cal, commit: true, error: nil)
                         }
                     }
-                    self.calsToDelete = nil
                     // dismiss *everything*
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }))
