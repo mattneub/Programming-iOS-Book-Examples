@@ -22,7 +22,7 @@ class VoltageChooser : UIViewController {
     
     func doTap (sender : UISegmentedControl) {
         if let svc = self.delegate {
-            svc.userChose(sender.titleForSegmentAtIndex(sender.selectedSegmentIndex))
+            svc.userChose(sender.titleForSegmentAtIndex(sender.selectedSegmentIndex)!)
         }
     }
     

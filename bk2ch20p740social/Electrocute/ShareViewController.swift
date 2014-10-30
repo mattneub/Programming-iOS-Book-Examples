@@ -43,7 +43,7 @@ class ShareViewController: SLComposeServiceViewController {
         // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
         
         // I don't actually run an "Electrocute" server so we just return without networking :)
-        self.extensionContext.completeRequestReturningItems(NSArray(), completionHandler: nil)
+        self.extensionContext!.completeRequestReturningItems(NSArray(), completionHandler: nil)
     }
 
     func userChose (s : String) {
