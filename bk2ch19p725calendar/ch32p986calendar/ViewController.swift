@@ -211,9 +211,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
                         println("found the nap")
                     }
             }
-            let marr = (events as NSArray).mutableCopy() as NSMutableArray
-            marr.sortUsingSelector("compareStartDateWithEvent:")
-            println(marr)
+            sort(&events) {return $0.compareStartDateWithEvent($1) == .OrderedAscending}
         }
     }
     
