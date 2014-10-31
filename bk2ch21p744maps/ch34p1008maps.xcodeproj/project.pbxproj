@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32BF75331A02A33500D61C2F /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BF75321A02A33500D61C2F /* MyAnnotation.m */; };
 		32D93D5519A7B10C00B017D1 /* MyOverlayRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D93D5419A7B10C00B017D1 /* MyOverlayRenderer.swift */; };
 		32D93D5719A7BA2E00B017D1 /* MyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D93D5619A7BA2E00B017D1 /* MyOverlay.swift */; };
 		32D93D5919A7BCA600B017D1 /* MyAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D93D5819A7BCA600B017D1 /* MyAnnotation.swift */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32BF75311A02A33500D61C2F /* MyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnnotation.h; sourceTree = "<group>"; };
+		32BF75321A02A33500D61C2F /* MyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
 		32D93D5319A7B10C00B017D1 /* ch34p1008maps-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch34p1008maps-Bridging-Header.h"; sourceTree = "<group>"; };
 		32D93D5419A7B10C00B017D1 /* MyOverlayRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOverlayRenderer.swift; sourceTree = "<group>"; };
 		32D93D5619A7BA2E00B017D1 /* MyOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOverlay.swift; sourceTree = "<group>"; };
@@ -104,6 +107,8 @@
 				C935A901182BEE9B007F97D1 /* clipartdirtbike.gif */,
 				32D93D5A19A7BDE400B017D1 /* MyAnnotationView.swift */,
 				32D93D5819A7BCA600B017D1 /* MyAnnotation.swift */,
+				32BF75311A02A33500D61C2F /* MyAnnotation.h */,
+				32BF75321A02A33500D61C2F /* MyAnnotation.m */,
 				32D93D5619A7BA2E00B017D1 /* MyOverlay.swift */,
 				32D93D5419A7B10C00B017D1 /* MyOverlayRenderer.swift */,
 				C935A909182BF453007F97D1 /* smileyWithTransparencyTiny.png */,
@@ -194,6 +199,7 @@
 			files = (
 				32D93D5519A7B10C00B017D1 /* MyOverlayRenderer.swift in Sources */,
 				32D93D5719A7BA2E00B017D1 /* MyOverlay.swift in Sources */,
+				32BF75331A02A33500D61C2F /* MyAnnotation.m in Sources */,
 				C911DACE182B34D60035F0FD /* AppDelegate.m in Sources */,
 				32D93D5B19A7BDE400B017D1 /* MyAnnotationView.swift in Sources */,
 				32D93D5919A7BCA600B017D1 /* MyAnnotation.swift in Sources */,

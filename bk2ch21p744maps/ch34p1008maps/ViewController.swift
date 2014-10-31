@@ -2,14 +2,18 @@
 import UIKit
 import MapKit
 
-// work around swift compiler/linker bug
-func myMKMapRect(x: Double, y:Double, w:Double, h:Double) -> MKMapRect {
-    return MKMapRect(origin:MKMapPoint(x:x, y:y), size:MKMapSize(width:w, height:h))
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
 }
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
-    let which = 1 // 1...10
+    let which = 10 // 1...10
 
     @IBOutlet var map : MKMapView!
     var annloc : CLLocationCoordinate2D!
@@ -28,7 +32,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         //  or ...
 //        let pt = MKMapPointForCoordinate(loc)
 //        let w = MKMapPointsPerMeterAtLatitude(loc.latitude) * 1200
-//        self.map.visibleMapRect = myMKMapRect(pt.x - w/2.0, pt.y - w/2.0, w, w)
+//        self.map.visibleMapRect = MKMapRectMake(pt.x - w/2.0, pt.y - w/2.0, w, w)
 
         self.annloc = CLLocationCoordinate2DMake(34.923964,-120.219558)
         
@@ -46,6 +50,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
             ann.title = "Park here"
             ann.subtitle = "Fun awaits down the road!"
             self.map.addAnnotation(ann)
+            /*
+            delay(2) {
+                UIView.animateWithDuration(0.25) {
+                    var loc = ann.coordinate
+                    loc.latitude = loc.latitude + 0.0005
+                    loc.longitude = loc.longitude + 0.001
+                    ann.coordinate = loc
+                }
+            }
+*/
         }
         if which == 8 {
             let lat = self.annloc.latitude
@@ -74,7 +88,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             let unit = CGFloat(75.0/metersPerPoint)
             // size and position the overlay bounds on the earth
             let sz = CGSizeMake(4*unit, 4*unit)
-            let mr = myMKMapRect(c.x + 2*Double(unit), c.y - 4.5*Double(unit), Double(sz.width), Double(sz.height))
+            let mr = MKMapRectMake(c.x + 2*Double(unit), c.y - 4.5*Double(unit), Double(sz.width), Double(sz.height))
             // describe the arrow as a CGPath
             let p = CGPathCreateMutable()
             let start = CGPointMake(0, unit*1.5)
@@ -98,6 +112,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             over.path = UIBezierPath(CGPath:p)
             // add the overlay to the map
             self.map.addOverlay(over)
+            // println(self.map.overlays)
         }
         if which == 10 {
             
@@ -107,7 +122,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             let unit = 75.0/metersPerPoint
             // size and position the overlay bounds on the earth
             let sz = CGSizeMake(4*CGFloat(unit), 4*CGFloat(unit))
-            let mr = myMKMapRect(c.x + 2*unit, c.y - 4.5*unit, Double(sz.width), Double(sz.height))
+            let mr = MKMapRectMake(c.x + 2*unit, c.y - 4.5*unit, Double(sz.width), Double(sz.height))
             let over = MyOverlay(rect:mr)
             self.map.addOverlay(over, level:.AboveRoads)
             
@@ -173,13 +188,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 if v == nil {
                     v = MyAnnotationView(annotation:annotation, reuseIdentifier:ident)
                     v.canShowCallout = true
-                    let im = UIImage(named:"smileyWithTransparencyTiny.png")
+                    let im = UIImage(named:"smileyWithTransparencyTiny.png")!
                         .imageWithRenderingMode(.AlwaysTemplate)
                     let iv = UIImageView(image:im)
                     v.leftCalloutAccessoryView = iv
                     v.rightCalloutAccessoryView = UIButton.buttonWithType(.InfoLight) as UIButton
                 }
                 v.annotation = annotation
+                // v.draggable = true
             }
             return v
         }
@@ -244,6 +260,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
         ]
         mi.openInMapsWithLaunchOptions(opts)
 
+    }
+    
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+        
     }
 
 }
