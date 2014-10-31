@@ -1,6 +1,7 @@
 
 import UIKit
 import MapKit
+import AddressBookUI
 
 class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     @IBOutlet var map : MKMapView!
@@ -22,9 +23,11 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     
     @IBAction func doButton (sender:AnyObject!) {
         let mi = MKMapItem.mapItemForCurrentLocation()
-        let span = MKCoordinateSpanMake(0.005, 0.005)
+        // setting the span doesn't seem to work
+        //let span = MKCoordinateSpanMake(0.0005, 0.0005)
         mi.openInMapsWithLaunchOptions([
-            MKLaunchOptionsMapTypeKey: MKMapType.Standard.rawValue
+            MKLaunchOptionsMapTypeKey: MKMapType.Standard.rawValue,
+            //MKLaunchOptionsMapSpanKey: NSValue(MKCoordinateSpan:span)
             ])
     }
     
@@ -50,7 +53,8 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             (placemarks : [AnyObject]!, error : NSError!) in
             if placemarks != nil {
                 let p = placemarks[0] as CLPlacemark
-                println("you are at: \(p.addressDictionary)") // do something with address
+                let s = ABCreateStringWithAddressDictionary(p.addressDictionary, false)
+                println("you are at:\n\(s)") // do something with address
             }
         }
     }
