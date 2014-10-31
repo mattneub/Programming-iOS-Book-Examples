@@ -37,7 +37,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         // and this request will be ignored without a corresponding reason in the Info.plist
         // (see next chapter for full dance)
         self.locman.requestWhenInUseAuthorization()
-        self.map.showsUserLocation = true
+        // self.map.showsUserLocation = true // otiose (I love that word)
         self.map.userTrackingMode = .Follow // will cause map to zoom nicely to user location
         // (the thing I was doing before, adjusting the map region manually, was just wrong)
     }
