@@ -8,12 +8,20 @@ class MyTableViewController: UITableViewController {
     let motman = CMMotionActivityManager()
     var authorized = false
     var data : [CMMotionActivity]!
+    var queue = NSOperationQueue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let b = UIBarButtonItem(title: "Start", style: .Plain, target: self, action: "doStart:")
         self.navigationItem.rightBarButtonItem = b
+        
+        let ok = CMStepCounter.isStepCountingAvailable()
+        println("step counting: \(ok)")
+        let ok2 = CMPedometer.isStepCountingAvailable()
+        println("pedometer: \(ok2)")
+        let ok3 = CMPedometer.isDistanceAvailable()
+        println("distance: \(ok3)")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -31,32 +39,19 @@ class MyTableViewController: UITableViewController {
         // instead, we attempt to "tickle" the activity manager and see if we get an error
         // this will cause the system authorization dialog to be presented if necessary
         let now = NSDate()
-        motman.queryActivityStartingFromDate(now, toDate:now, toQueue:NSOperationQueue.mainQueue()) {
+        motman.queryActivityStartingFromDate(now, toDate:now, toQueue:self.queue) {
             (arr:[AnyObject]!, err:NSError!) in
-            if err != nil && err.code == Int(CMErrorMotionActivityNotAuthorized.value) {
-                // hmm, but I'm getting a nil error here even though we are not authorized
-                // but I do get an empty array, we could check for that I suppose
-                // perhaps an iOS 7 bug, and I can't test on iOS 8 yet
+            let notauth = Int(CMErrorMotionActivityNotAuthorized.value)
+            if err != nil && err.code == notauth {
                 println("no authorization")
+                self.authorized = false
             } else {
+                println("authorized")
                 self.authorized = true
             }
         }
     }
     
-    func tf(b:Bool) -> String {
-        return b ? "t" : "f"
-    }
-    
-    func overallAct(act:CMMotionActivity) -> String {
-        let s = self.tf(act.stationary)
-        let w = self.tf(act.walking)
-        let r = self.tf(act.running)
-        let a = self.tf(act.automotive)
-        let u = self.tf(act.unknown)
-        return "\(s) \(w) \(r) \(a) \(u)"
-    }
-
     func doStart(sender:AnyObject!) {
         if !self.authorized {
             self.checkAuthorization()
@@ -71,7 +66,7 @@ class MyTableViewController: UITableViewController {
             var acts = arr as [CMMotionActivity]
             // crude filter: eliminate empties, low-confidence, and successive duplicates
             for i in stride(from: acts.count-1, through: 0, by: -1) {
-                if self.overallAct(acts[i]) == "f f f f f" {
+                if acts[i].overallAct() == "f f f f f" {
                     acts.removeAtIndex(i)
                 }
             }
@@ -81,13 +76,14 @@ class MyTableViewController: UITableViewController {
                 }
             }
             for i in stride(from: acts.count-1, through: 1, by: -1) {
-                if self.overallAct(acts[i]) == self.overallAct(acts[i-1]) {
+                if acts[i].overallAct() == acts[i-1].overallAct() {
                     acts.removeAtIndex(i)
                 }
             }
-            self.data = acts
-            self.tableView.reloadData()
-            
+            dispatch_async(dispatch_get_main_queue()) {
+                self.data = acts
+                self.tableView.reloadData()
+            }
             /*
             let format = NSDateFormatter()
             format.dateFormat = "MMM d, HH:mm:ss"
@@ -103,28 +99,28 @@ class MyTableViewController: UITableViewController {
         }
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if self.data != nil {
             return 1
         }
         return 0
     }
 
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.data != nil {
             return self.data.count
         }
         return 0
     }
 
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
         let act = self.data[indexPath.row]
         let format = NSDateFormatter()
         format.dateFormat = "MMM d, HH:mm:ss"
         cell.textLabel.text = format.stringFromDate(act.startDate)
-        cell.detailTextLabel.text = self.overallAct(act)
+        cell.detailTextLabel!.text = act.overallAct()
         
         cell.backgroundColor = UIColor.whiteColor()
         if act.automotive {
