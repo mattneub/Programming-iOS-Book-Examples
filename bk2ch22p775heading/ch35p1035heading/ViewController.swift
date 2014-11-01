@@ -38,7 +38,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         var h = newHeading.magneticHeading
         let h2 = newHeading.trueHeading // will be -1 if we have no location info
         print("\(h) \(h2) ")
-        if h2 > 0 {
+        if h2 >= 0 {
             h = h2
         }
         let cards = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
