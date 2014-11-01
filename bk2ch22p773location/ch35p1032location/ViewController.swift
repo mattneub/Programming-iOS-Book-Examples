@@ -18,7 +18,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         case .Authorized, .AuthorizedWhenInUse:
             return true
         case .NotDetermined:
-            locman.requestWhenInUseAuthorization()
+            self.locman.requestWhenInUseAuthorization()
             // locman.requestAlwaysAuthorization()
             return true // NB, this is different from strategy in previous chapters
         case .Restricted:
@@ -49,16 +49,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // ... and we will fall into didFailWithError - so we'll shut everything down there
         if self.trying { return }
         self.trying = true
-        locman.delegate = self
-        locman.desiredAccuracy = kCLLocationAccuracyBest
-        locman.activityType = .Fitness
+        self.locman.delegate = self
+        self.locman.desiredAccuracy = kCLLocationAccuracyBest
+        self.locman.activityType = .Fitness
         self.startTime = nil
         println("starting")
-        locman.startUpdatingLocation()
+        self.locman.startUpdatingLocation()
     }
     
     func stopTrying () {
-        locman.stopUpdatingLocation()
+        self.locman.stopUpdatingLocation()
         self.startTime = nil
         self.trying = false
     }

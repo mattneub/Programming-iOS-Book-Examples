@@ -5,7 +5,7 @@ import CoreMotion
 
 class MyTableViewController: UITableViewController {
     
-    let motman = CMMotionActivityManager()
+    let actman = CMMotionActivityManager()
     var authorized = false
     var data : [CMMotionActivity]!
     var queue = NSOperationQueue()
@@ -39,7 +39,7 @@ class MyTableViewController: UITableViewController {
         // instead, we attempt to "tickle" the activity manager and see if we get an error
         // this will cause the system authorization dialog to be presented if necessary
         let now = NSDate()
-        motman.queryActivityStartingFromDate(now, toDate:now, toQueue:self.queue) {
+        self.actman.queryActivityStartingFromDate(now, toDate:now, toQueue:self.queue) {
             (arr:[AnyObject]!, err:NSError!) in
             let notauth = Int(CMErrorMotionActivityNotAuthorized.value)
             if err != nil && err.code == notauth {
@@ -61,7 +61,7 @@ class MyTableViewController: UITableViewController {
         // collect historical data
         let now = NSDate()
         let yester = now.dateByAddingTimeInterval(-60*60*24)
-        self.motman.queryActivityStartingFromDate(yester, toDate: now, toQueue: NSOperationQueue.mainQueue()) {
+        self.actman.queryActivityStartingFromDate(yester, toDate: now, toQueue: NSOperationQueue.mainQueue()) {
             (arr:[AnyObject]!, err:NSError!) -> Void in
             var acts = arr as [CMMotionActivity]
             // crude filter: eliminate empties, low-confidence, and successive duplicates

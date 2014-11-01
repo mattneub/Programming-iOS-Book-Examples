@@ -13,19 +13,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if !CLLocationManager.headingAvailable() {return} // lacking hardware
         if self.updating {return}
         println("starting")
-        locman.delegate = self
-        locman.headingFilter = 5
-        locman.headingOrientation = .Portrait
+        self.locman.delegate = self
+        self.locman.headingFilter = 5
+        self.locman.headingOrientation = .Portrait
         self.updating = true
         // NO AUTH NEEDED!
         // the heading part works just fine even if Location Services is turned off
         // and if it is turned on, we will get true-north
         // seems like a major bug to me
-        locman.startUpdatingHeading()
+        self.locman.startUpdatingHeading()
     }
     
     @IBAction func doStop (sender:AnyObject!) {
-        locman.stopUpdatingHeading()
+        self.locman.stopUpdatingHeading()
         self.lab.text = ""
         self.updating = false
     }
