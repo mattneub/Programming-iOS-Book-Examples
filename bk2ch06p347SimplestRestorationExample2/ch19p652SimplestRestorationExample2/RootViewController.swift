@@ -66,7 +66,7 @@ class RootViewController : UIViewController {
 extension RootViewController : UIViewControllerRestoration {
     class func viewControllerWithRestorationIdentifierPath(ip: [AnyObject],
         coder: NSCoder) -> UIViewController? {
-            println("vcwithrip \(self) \(ip) \(coder)")
+            println("vcwithrip \(NSStringFromClass(self)) \(ip) \(coder)")
             var vc : UIViewController? = nil
             let last = ip.last as String
             switch last {
