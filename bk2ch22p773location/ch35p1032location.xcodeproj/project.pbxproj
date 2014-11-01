@@ -129,6 +129,15 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					32315063182E903500B03F54 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 3231505F182E903500B03F54 /* Build configuration list for PBXProject "ch35p1032location" */;
 			compatibilityVersion = "Xcode 3.2";

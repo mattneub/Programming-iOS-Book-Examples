@@ -10,9 +10,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func determineStatus() -> Bool {
         let ok = CLLocationManager.locationServicesEnabled()
         if !ok {
-            locman.requestWhenInUseAuthorization()
+            return true // ! this is so that we try to use it anyway...
             // system will put up a dialog suggesting the user turn on Location Services
-            return true
         }
         let status = CLLocationManager.authorizationStatus()
         switch status {
@@ -20,6 +19,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             return true
         case .NotDetermined:
             locman.requestWhenInUseAuthorization()
+            // locman.requestAlwaysAuthorization()
             return true // NB, this is different from strategy in previous chapters
         case .Restricted:
             return false
@@ -30,7 +30,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
                 _ in
-                let url = NSURL(string:UIApplicationOpenSettingsURLString)
+                let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.sharedApplication().openURL(url)
             }))
             self.presentViewController(alert, animated:true, completion:nil)
@@ -72,6 +72,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let REQ_TIME : NSTimeInterval = 10
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        print("did update location ")
         let loc = locations.last as CLLocation
         let acc = loc.horizontalAccuracy
         let time = loc.timestamp
@@ -92,7 +93,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         // got it
         println("You are at \(coord.latitude) \(coord.longitude)")
-        self.stopTrying()
+        // self.stopTrying()
     }
 
 }
