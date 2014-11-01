@@ -121,7 +121,7 @@ On flip we expect to see (ignoring parent messages):
                 toViewController:tovc,
                 duration:0.4,
                 options:.TransitionFlipFromLeft,
-                animations:{},
+                animations:nil,
                 completion:{
                     _ in
                     // finally, finish up
