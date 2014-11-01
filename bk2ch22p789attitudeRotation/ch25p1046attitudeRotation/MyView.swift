@@ -39,7 +39,7 @@ class MyView: UIView {
         lay3.zPosition = 30
         self.layer1.addSublayer(lay3)
         self.layer2b = lay3
-        lay3.contents = UIImage(named:"jet.png").CGImage
+        lay3.contents = UIImage(named:"jet.png")!.CGImage
 
     }
 
