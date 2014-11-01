@@ -2,13 +2,13 @@
 
 import UIKit
 
-class MyTimer: NSObject {
+class CancelableTimer: NSObject {
     
-    var q = dispatch_queue_create("timer",nil)
-    var timer : dispatch_source_t!
-    var firsttime = true
-    var once : Bool
-    var handler : () -> ()
+    private var q = dispatch_queue_create("timer",nil)
+    private var timer : dispatch_source_t!
+    private var firsttime = true
+    private var once : Bool
+    private var handler : () -> ()
     
     init(once:Bool, handler:()->()) {
         self.once = once
@@ -16,7 +16,7 @@ class MyTimer: NSObject {
         super.init()
     }
     
-    func start(interval:Double) {
+    func startWithInterval(interval:Double) {
         self.firsttime = true
         self.cancel()
         self.timer = dispatch_source_create(
@@ -24,7 +24,8 @@ class MyTimer: NSObject {
             0, 0, self.q)
         dispatch_source_set_timer(self.timer,
             dispatch_walltime(nil, 0),
-            UInt64(interval * Double(NSEC_PER_SEC)), UInt64(0.05 * Double(NSEC_PER_SEC)))
+            UInt64(interval * Double(NSEC_PER_SEC)),
+            UInt64(0.05 * Double(NSEC_PER_SEC)))
         dispatch_source_set_event_handler(self.timer, {
             if self.firsttime {
                 self.firsttime = false

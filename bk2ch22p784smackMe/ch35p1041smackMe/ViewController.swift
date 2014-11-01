@@ -6,7 +6,7 @@ class ViewController: UIViewController {
 
     let motman = CMMotionManager()
     var polltimer : NSTimer!
-    var canceltimer : MyTimer!
+    var canceltimer : CancelableTimer!
     
     var oldX = 0.0
     var oldY = 0.0
@@ -46,26 +46,22 @@ class ViewController: UIViewController {
                 self.oldTime = dat.timestamp
                 self.lastSlap = -1
                 self.canceltimer?.cancel()
-                self.canceltimer = MyTimer(once: true) {
-                    self.report("left")
+                self.canceltimer = CancelableTimer(once: true) {
+                    println("left")
                 }
-                self.canceltimer.start(0.5)
+                self.canceltimer.startWithInterval(0.5)
             }
         } else if x > thresh {
             if dat.timestamp - self.oldTime > 0.5 || self.lastSlap == -1 {
                 self.oldTime = dat.timestamp
                 self.lastSlap = 1
                 self.canceltimer?.cancel()
-                self.canceltimer = MyTimer(once: true) {
-                    self.report("right")
+                self.canceltimer = CancelableTimer(once: true) {
+                    println("right")
                 }
-                self.canceltimer.start(0.5)
+                self.canceltimer.startWithInterval(0.5)
             }
         }
-    }
-
-    func report(s:String) {
-        println(s)
     }
 
 
