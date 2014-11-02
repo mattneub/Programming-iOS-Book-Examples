@@ -8,8 +8,8 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
     @IBOutlet var wv : UIWebView!
     var doc : NSURL!
     var docs : [NSURL]!
-    var dic : UIDocumentInteractionController!
-    let ext = "txt"
+    let dic = UIDocumentInteractionController()
+    let exts = ["pdf", "txt"]
     
     func displayDoc (url:NSURL) {
         println("displayDoc: \(url)")
@@ -25,7 +25,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         let docsurl = fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &err)
         let dir = fm.enumeratorAtURL(docsurl!, includingPropertiesForKeys: nil, options: nil, errorHandler: nil)
         while let f = dir?.nextObject() as? NSURL {
-            if f.pathExtension == self.ext {
+            if find(self.exts, f.pathExtension) != nil {
                 url = f
                 break
             }
@@ -54,7 +54,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
             println("no doc")
             return
         }
-        self.dic = UIDocumentInteractionController(URL:url)
+        self.dic.URL = url
         let v = sender as UIView
         let ok = self.dic.presentOpenInMenuFromRect(v.bounds, inView: v, animated: true)
         if !ok {
@@ -72,12 +72,12 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
             return
         }
         println(url)
-        self.dic = UIDocumentInteractionController(URL:url)
+        self.dic.URL = url
         self.dic.delegate = self
         self.dic.presentPreviewAnimated(true)
     }
     
-    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController!) -> UIViewController! {
+    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
         return self
     }
     
@@ -88,19 +88,25 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         let docsurl = fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &err)
         let dir = fm.enumeratorAtURL(docsurl!, includingPropertiesForKeys: nil, options: nil, errorHandler: nil)
         while let f = dir?.nextObject() as? NSURL {
-            if f.pathExtension == self.ext {
-                println(QLPreviewController.canPreviewItem(f))
-                self.docs.append(f)
+            if find(self.exts, f.pathExtension) != nil {
+                if QLPreviewController.canPreviewItem(f) {
+                    println("adding \(f)")
+                    self.docs.append(f)
+                }
             }
         }
         if self.docs.count == 0 {
+            println("no docs")
             return
         }
         // show preview interface
         let preview = QLPreviewController()
         preview.dataSource = self
+        preview.currentPreviewItemIndex = 0
         self.presentViewController(preview, animated: true, completion: nil)
     }
+    
+    
     
     func numberOfPreviewItemsInPreviewController(controller: QLPreviewController!) -> Int {
         return self.docs.count

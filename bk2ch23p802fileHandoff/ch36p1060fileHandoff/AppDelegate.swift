@@ -14,13 +14,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     // handleOpenURL deprecated? but it does seem to work just fine
     
-//    func application(application: UIApplication,
-//        openURL url: NSURL,
-//        sourceApplication sourceApplication: String,
-//        annotation annotation: AnyObject?) -> Bool {
-//    }
-    
-    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         println("start \(__FUNCTION__)")
         println(url)
         
@@ -29,7 +23,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // a document in the inbox
         
         var finalurl = url
-
         let dir = url.URLByDeletingLastPathComponent?.lastPathComponent
         if dir == "Inbox" {
             println("inbox")
@@ -51,7 +44,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             }
         }
         
-        let vc = self.window?.rootViewController as ViewController
+        let vc = self.window!.rootViewController as ViewController
         vc.displayDoc(finalurl)
         println("end \(__FUNCTION__)")
         return true
