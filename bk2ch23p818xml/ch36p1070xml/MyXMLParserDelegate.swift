@@ -2,18 +2,14 @@
 
 import UIKit
 
-// protocol as a way of declaring an abstract method to be inherited and implemented by subclasses
-@objc protocol MyXMLParserDelegateProtocol {
-    optional func finishedChild(s:String)
-}
 
-class MyXMLParserDelegate : NSObject, NSXMLParserDelegate, MyXMLParserDelegateProtocol {
-    var text = ""
+class MyXMLParserDelegate : NSObject {
     var name : String!
+    var text = ""
     weak var parent : MyXMLParserDelegate?
     var child : MyXMLParserDelegate!
     
-    required init(name:String!, parent:MyXMLParserDelegate!) {
+    required init(name:String, parent:MyXMLParserDelegate?) {
         self.name = name
         self.parent = parent
         super.init()
@@ -24,21 +20,24 @@ class MyXMLParserDelegate : NSObject, NSXMLParserDelegate, MyXMLParserDelegatePr
         self.child = del
         parser.delegate = del
     }
+    func finishedChild(s:String) {
+        fatalError("Subclass must implement finishedChild:!")
+    }
     
-    // func finishedChild(s:String) {} // subclass may implement as desired
-    
-    // NSXMLParser delegate messages
-    
+}
+
+extension MyXMLParserDelegate : NSXMLParserDelegate {
     func parser(parser: NSXMLParser, foundCharacters string: String!) {
         self.text = self.text + string
     }
     
     func parser(parser: NSXMLParser, didEndElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!) {
         if self.parent != nil {
-            // rather tricky syntax to allow calling optional method; bug in Swift?
-            (self.parent! as MyXMLParserDelegateProtocol).finishedChild?(self.text)
+            self.parent!.finishedChild(self.text)
             parser.delegate = self.parent
         }
     }
     
 }
+
+

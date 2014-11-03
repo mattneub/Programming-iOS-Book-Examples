@@ -4,7 +4,7 @@ import UIKit
 
 class MyPersonParser : MyXMLParserDelegate {
     
-    var person : Person! = nil
+    var person = Person(firstName: "", lastName: "")
     
     func parser(parser: NSXMLParser, didStartElement elementName: String!,
         namespaceURI: String!, qualifiedName qName: String!,
@@ -12,10 +12,7 @@ class MyPersonParser : MyXMLParserDelegate {
             self.makeChild(MyXMLParserDelegate.self, elementName: elementName, parser: parser)
     }
     
-    func finishedChild(s: String) {
-        if self.person == nil {
-            self.person = Person(firstName: "", lastName: "")
-        }
+    override func finishedChild(s: String) {
         self.person.setValue(s, forKey:self.child.name)
     }
     
