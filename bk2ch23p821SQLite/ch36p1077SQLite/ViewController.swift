@@ -55,6 +55,7 @@ class ViewController: UIViewController {
         while rs.next() {
             print(rs["firstname"]); print(" "); println(rs["lastname"])
         }
+        db.close()
 
     }
 
