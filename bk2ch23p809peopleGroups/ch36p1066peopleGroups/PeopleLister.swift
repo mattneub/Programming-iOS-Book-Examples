@@ -59,25 +59,25 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         let ix = NSIndexPath(forRow:ct-1, inSection:0)
         self.tableView.reloadData()
         self.tableView.scrollToRowAtIndexPath(ix, atScrollPosition:.Bottom, animated:true)
-        let cell = self.tableView.cellForRowAtIndexPath(ix)
+        let cell = self.tableView.cellForRowAtIndexPath(ix)!
         let tf = cell.viewWithTag(1) as UITextField
         tf.becomeFirstResponder()
         
         self.doc.updateChangeCount(.Done)
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if self.doc == nil {
             return 0
         }
         return 1
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.people.count
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Person", forIndexPath:indexPath) as UITableViewCell
         let first = cell.viewWithTag(1) as UITextField
         let last = cell.viewWithTag(2) as UITextField
@@ -89,12 +89,12 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         return cell
     }
     
-    func textFieldDidEndEditing(textField: UITextField!) {
+    func textFieldDidEndEditing(textField: UITextField) {
         println("did end editing")
         var v = textField.superview!
         while !(v is UITableViewCell) {v = v.superview!}
         let cell = v as UITableViewCell
-        let ip = self.tableView.indexPathForCell(cell)
+        let ip = self.tableView.indexPathForCell(cell)!
         let row = ip.row
         let p = self.people[row]
         p.setValue(textField.text, forKey: textField.tag == 1 ? "firstName" : "lastName")
@@ -102,7 +102,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         self.doc.updateChangeCount(.Done)
     }
     
-    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.endEditing(true)
         self.people.removeAtIndex(indexPath.row)
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation:.Automatic)
