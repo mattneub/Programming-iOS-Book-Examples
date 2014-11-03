@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         let result = CGImageSourceCopyPropertiesAtIndex(src, 0, nil) as NSDictionary
         println(result)
         // just proving it really is a dictionary
-        print(result["PixelWidth"]!); print(" by "); println(result["PixelHeight"]!)
+        print(result[kCGImagePropertyPixelWidth as String]!); print(" by "); println(result[kCGImagePropertyPixelHeight as String]!)
     }
 
     @IBAction func doButton2 (sender:AnyObject!) {
@@ -22,13 +22,13 @@ class ViewController: UIViewController {
         let scale = UIScreen.mainScreen().scale
         let w = self.iv.bounds.width * scale
         let d = [
-            kCGImageSourceShouldAllowFloat : true,
-            kCGImageSourceCreateThumbnailWithTransform : true,
-            kCGImageSourceCreateThumbnailFromImageAlways : true,
-            kCGImageSourceThumbnailMaxPixelSize : w
+            kCGImageSourceShouldAllowFloat as String : true,
+            kCGImageSourceCreateThumbnailWithTransform as String : true,
+            kCGImageSourceCreateThumbnailFromImageAlways as String : true,
+            kCGImageSourceThumbnailMaxPixelSize as String : w
         ]
         let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d)
-        let im = UIImage(CGImage: imref, scale: scale, orientation: .Up)
+        let im = UIImage(CGImage: imref, scale: scale, orientation: .Up)!
         self.iv.image = im
         println(im)
         println(im.size)
@@ -38,8 +38,8 @@ class ViewController: UIViewController {
         let url = NSBundle.mainBundle().URLForResource("colson", withExtension: "jpg")
         let src = CGImageSourceCreateWithURL(url, nil)
         let fm = NSFileManager()
-        let suppurl = fm.URLForDirectory(.ApplicationSupportDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: nil)
-        let tiff = suppurl!.URLByAppendingPathComponent("mytiff.tiff")
+        let suppurl = fm.URLForDirectory(.ApplicationSupportDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: nil)!
+        let tiff = suppurl.URLByAppendingPathComponent("mytiff.tiff")
         let dest = CGImageDestinationCreateWithURL(tiff, kUTTypeTIFF, 1, nil)
         CGImageDestinationAddImageFromSource(dest, src, 0, nil)
         let ok = CGImageDestinationFinalize(dest)
