@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     lazy var managedObjectModel: NSManagedObjectModel = {
         let modelURL = NSBundle.mainBundle().URLForResource("ch36p1079peopleGroupsCoreData", withExtension: "momd")
-        return NSManagedObjectModel(contentsOfURL: modelURL!)
+        return NSManagedObjectModel(contentsOfURL: modelURL!)!
         }()
     
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {

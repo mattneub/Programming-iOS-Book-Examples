@@ -50,11 +50,11 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
         av.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         av.addAction(UIAlertAction(title: "OK", style: .Default) {
             _ in
-            let name = (av.textFields[0] as UITextField).text
+            let name = (av.textFields![0] as UITextField).text
             if name == nil || name == "" {return}
             let context = self.frc.managedObjectContext
-            let entity = self.frc.fetchRequest.entity
-            let mo = NSEntityDescription.insertNewObjectForEntityForName(entity.name, inManagedObjectContext: context) as NSManagedObject
+            let entity = self.frc.fetchRequest.entity!
+            let mo = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext: context) as NSManagedObject
             mo.name = name
             mo.uuid = NSUUID().UUIDString
             mo.timestamp = NSDate()
@@ -68,21 +68,21 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
             }
 
             let pl = PeopleLister(groupManagedObject: mo)
-            self.navigationController.pushViewController(pl, animated: true)
+            self.navigationController!.pushViewController(pl, animated: true)
             })
         self.presentViewController(av, animated: true, completion: nil)
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
-        return self.frc.sections.count
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return self.frc.sections!.count
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = self.frc.sections[section] as NSFetchedResultsSectionInfo
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let sectionInfo = self.frc.sections![section] as NSFetchedResultsSectionInfo
         return sectionInfo.numberOfObjects
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
         cell.accessoryType = .DisclosureIndicator
         let object = self.frc.objectAtIndexPath(indexPath) as NSManagedObject
@@ -94,9 +94,9 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
         self.tableView.reloadData()
     }
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let pl = PeopleLister(groupManagedObject: self.frc.objectAtIndexPath(indexPath) as NSManagedObject)
-        self.navigationController.pushViewController(pl, animated: true)
+        self.navigationController!.pushViewController(pl, animated: true)
     }
 
 }

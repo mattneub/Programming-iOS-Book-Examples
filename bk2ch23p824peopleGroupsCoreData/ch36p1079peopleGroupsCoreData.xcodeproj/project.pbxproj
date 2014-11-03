@@ -16,7 +16,7 @@
 		3223A5011832FB3B00F6FED0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3223A5001832FB3B00F6FED0 /* Images.xcassets */; };
 		3223A5261832FBD600F6FED0 /* PeopleLister.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3223A5221832FBD600F6FED0 /* PeopleLister.xib */; };
 		3223A5271832FBD600F6FED0 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3223A5231832FBD600F6FED0 /* PersonCell.xib */; };
-		3223A52A1832FBE300F6FED0 /* NSManagedObject+GroupAndPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 3223A5291832FBE300F6FED0 /* NSManagedObject+GroupAndPerson.m */; };
+		323D6F1A1A07F2430006B3C2 /* NSManagedObject+GroupAndPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 3223A5291832FBE300F6FED0 /* NSManagedObject+GroupAndPerson.m */; };
 		326C01C019B236C7004331C7 /* PeopleLister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326C01BF19B236C7004331C7 /* PeopleLister.swift */; };
 		329B44B219B24C610086C7A6 /* GroupLister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329B44B119B24C610086C7A6 /* GroupLister.swift */; };
 		329B44E419B252C70086C7A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329B44E319B252C70086C7A6 /* AppDelegate.swift */; };
@@ -181,9 +181,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				326C01C019B236C7004331C7 /* PeopleLister.swift in Sources */,
-				3223A52A1832FBE300F6FED0 /* NSManagedObject+GroupAndPerson.m in Sources */,
 				329B44B219B24C610086C7A6 /* GroupLister.swift in Sources */,
 				329B44E419B252C70086C7A6 /* AppDelegate.swift in Sources */,
+				323D6F1A1A07F2430006B3C2 /* NSManagedObject+GroupAndPerson.m in Sources */,
 				3223A4F91832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
