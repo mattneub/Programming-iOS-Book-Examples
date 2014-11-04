@@ -25,18 +25,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSURLSessionDownloadDeleg
     
     func startDownload (_:AnyObject?) {
         let s = "http://www.nasa.gov/sites/default/files/styles/1600x1200_autoletterbox/public/pia17474_1.jpg"
-        let task = self.session.downloadTaskWithURL(NSURL(string:s))
+        let task = self.session.downloadTaskWithURL(NSURL(string:s)!)
         task.resume()
     }
 
-    func URLSession(session: NSURLSession!, downloadTask: NSURLSessionDownloadTask!, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+    func URLSession(session: NSURLSession!, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         let prog = Double(totalBytesWritten)/Double(totalBytesExpectedToWrite)
         println("downloaded \(100.0*prog)%")
         NSNotificationCenter.defaultCenter().postNotificationName("GotProgress", object:self, userInfo:["progress":prog])
     }
     
-    func URLSession(session: NSURLSession!, downloadTask: NSURLSessionDownloadTask!, didFinishDownloadingToURL location: NSURL!) {
-        let d = NSData(contentsOfURL: location)
+    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
+        let d = NSData(contentsOfURL: location)!
         let im = UIImage(data:d)
         dispatch_async(dispatch_get_main_queue()) {
             println("finished; posting notification")
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSURLSessionDownloadDeleg
         }
     }
     
-    func URLSession(session: NSURLSession!, task: NSURLSessionTask!, didCompleteWithError error: NSError!) {
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
         println("completed; error: \(error)")
     }
     
