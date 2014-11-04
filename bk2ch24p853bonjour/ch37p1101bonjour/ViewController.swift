@@ -20,11 +20,13 @@ class ViewController: UIViewController, NSNetServiceBrowserDelegate, NSNetServic
     func updateInterface () {
         for service in self.services {
             if service.port == -1 {
-                println("service \(service.name) of type \(service.type), not yet resolved")
+                println("service \(service.name) of type \(service.type)" +
+                    " not yet resolved")
                 service.delegate = self
                 service.resolveWithTimeout(10)
             } else {
-                println("service \(service.name) of type \(service.type), port \(service.port), addresses \(service.addresses)")
+                println("service \(service.name) of type \(service.type)," +
+                    "port \(service.port), addresses \(service.addresses)")
             }
         }
     }
