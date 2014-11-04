@@ -59,9 +59,9 @@ class MyTableViewController: UITableViewController {
         } else {
             if m.task == nil { // no task? start one!
                 cell.imageView.image = nil
-                m.task = self.downloader.download(m.picurl) {
-                    url in
-                    m.task == nil
+                m.task = self.downloader.download(m.picurl) { // *
+                    [weak self] url in // *
+                    m.task == nil // *
                     if url == nil {
                         return
                     }
@@ -69,8 +69,7 @@ class MyTableViewController: UITableViewController {
                     let im = UIImage(data:data)
                     m.im = im
                     dispatch_async(dispatch_get_main_queue()) {
-                        m.task = nil // or we get retain cycle
-                        self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                        self!.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
                     }
                 }
             }

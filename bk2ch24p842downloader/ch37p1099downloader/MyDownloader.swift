@@ -13,7 +13,7 @@ typealias MyDownloaderCompletion = @objc_block (NSURL!) -> ()
 class MyDownloader: NSObject, NSURLSessionDownloadDelegate {
     let config : NSURLSessionConfiguration
     let q = NSOperationQueue()
-    let main = false // try false to move delegate methods onto a background thread
+    let main = true // try false to move delegate methods onto a background thread
     lazy var session : NSURLSession = {
         let queue = (self.main ? NSOperationQueue.mainQueue() : self.q)
         return NSURLSession(configuration:self.config, delegate:self, delegateQueue:queue)
@@ -32,7 +32,7 @@ class MyDownloader: NSObject, NSURLSessionDownloadDelegate {
         task.resume()
         return task
     }
-
+    
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten writ: Int64, totalBytesExpectedToWrite exp: Int64) {
         println("downloaded \(100*writ/exp)%")
     }
@@ -41,7 +41,7 @@ class MyDownloader: NSObject, NSURLSessionDownloadDelegate {
         // unused in this example
         println("did resume")
     }
-    
+
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
         let req = downloadTask.originalRequest
         let ch : AnyObject = NSURLProtocol.propertyForKey("ch", inRequest:req)!
