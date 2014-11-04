@@ -69,6 +69,7 @@ class MyTableViewController: UITableViewController {
                     let im = UIImage(data:data)
                     m.im = im
                     dispatch_async(dispatch_get_main_queue()) {
+                        m.task = nil // or we get retain cycle
                         self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
                     }
                 }
@@ -87,6 +88,12 @@ class MyTableViewController: UITableViewController {
             }
         }
     }
+    
+    deinit {
+        self.downloader.cancelAllTasks()
+        println("table view controller dealloc")
+    }
+
 }
 
 // unfortunately a Swift dictionary inside an array is effectively immutable
@@ -95,8 +102,8 @@ class MyTableViewController: UITableViewController {
 // but the truth is that this should have been a simple value class all along, so here it is
 
 class Model {
-    var task : NSURLSessionTask!
-    var im : UIImage!
     var text : String!
+    var im : UIImage!
     var picurl : String!
+    var task : NSURLSessionTask!
 }

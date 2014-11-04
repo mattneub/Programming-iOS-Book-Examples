@@ -11,12 +11,12 @@ class ViewController: UIViewController {
         config.allowsCellularAccess = false
         config.URLCache = nil
         return config
-    }()
+        }()
     
     lazy var downloader : MyDownloader = {
         let d : MyDownloader = MyDownloader(configuration:self.configuration)
         return d
-    }()
+        }()
     
     @IBAction func doDownload (sender:AnyObject!) {
         self.iv.image = nil
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         self.downloader.cancelAllTasks()
         println("view controller dealloc")
     }
-
-
-
+    
+    
+    
 }

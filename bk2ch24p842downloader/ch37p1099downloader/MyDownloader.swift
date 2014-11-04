@@ -7,12 +7,13 @@ class Wrapper<T> {
     init(_ p:T){self.p = p}
 }
 
-typealias MyDownloaderCompletion = (NSURL!) -> ()
+// must be @objc_block or we won't get memory management on background thread
+typealias MyDownloaderCompletion = @objc_block (NSURL!) -> ()
 
 class MyDownloader: NSObject, NSURLSessionDownloadDelegate {
     let config : NSURLSessionConfiguration
     let q = NSOperationQueue()
-    let main = true // try false to move delegate methods onto a background thread
+    let main = false // try false to move delegate methods onto a background thread
     lazy var session : NSURLSession = {
         let queue = (self.main ? NSOperationQueue.mainQueue() : self.q)
         return NSURLSession(configuration:self.config, delegate:self, delegateQueue:queue)
