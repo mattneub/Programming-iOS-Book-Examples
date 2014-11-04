@@ -7,6 +7,8 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
     @IBOutlet var iv : UIImageView!
     var task : NSURLSessionTask!
     
+    let which = 1
+    
     lazy var session : NSURLSession = {
         let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
         config.allowsCellularAccess = false
@@ -22,29 +24,38 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
         }
         
         let s = "http://www.apeth.net/matt/images/phoenixnewest.jpg"
-        let url = NSURL(string:s)
+        let url = NSURL(string:s)!
         let req = NSMutableURLRequest(URL:url)
-        NSURLProtocol.setProperty("howdy", forKey:"greeting", inRequest:req)
+        if which == 1 { // show how to attach stuff to the request
+            NSURLProtocol.setProperty("howdy", forKey:"greeting", inRequest:req)
+        }
         let task = self.session.downloadTaskWithRequest(req)
         self.task = task
         self.iv.image = nil
         task.resume()
 
     }
-
     
-    func URLSession(session: NSURLSession!, downloadTask: NSURLSessionDownloadTask!, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        println("downloaded \(100*totalBytesWritten/totalBytesExpectedToWrite)%")
+    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten writ: Int64, totalBytesExpectedToWrite exp: Int64) {
+        println("downloaded \(100*writ/exp)%")
     }
     
-    func URLSession(session: NSURLSession!, downloadTask: NSURLSessionDownloadTask!, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
+    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
         // unused in this example
     }
     
-    func URLSession(session: NSURLSession!, downloadTask: NSURLSessionDownloadTask!, didFinishDownloadingToURL location: NSURL!) {
-        let req = downloadTask.originalRequest
-        if let greeting = NSURLProtocol.propertyForKey("greeting", inRequest:req) as? String {
-            println(greeting)
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+        println("completed: error: \(error)")
+    }
+    
+    // this is the only required NSURLSessionDownloadDelegate method
+
+    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
+        if which == 1 {
+            let req = downloadTask.originalRequest
+            if let greeting = NSURLProtocol.propertyForKey("greeting", inRequest:req) as? String {
+                println(greeting)
+            }
         }
         self.task = nil
         let response = downloadTask.response as NSHTTPURLResponse
@@ -53,15 +64,11 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
         if stat != 200 {
             return
         }
-        let d = NSData(contentsOfURL:location)
+        let d = NSData(contentsOfURL:location)!
         let im = UIImage(data:d)
         dispatch_async(dispatch_get_main_queue()) {
             self.iv.image = im
         }
-    }
-    
-    func URLSession(session: NSURLSession!, task: NSURLSessionTask!, didCompleteWithError error: NSError!) {
-        println("completed: error: \(error)")
     }
     
     override func viewWillDisappear(animated: Bool) {

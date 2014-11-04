@@ -27,7 +27,7 @@ class MyDownloader: NSObject, NSURLSessionDownloadDelegate {
     }
     
     func download(s:String, completionHandler ch : MyDownloaderCompletionHandler) -> NSURLSessionTask {
-        let url = NSURL(string:s)
+        let url = NSURL(string:s)!
         let req = NSMutableURLRequest(URL:url)
         let ch2 : AnyObject = unsafeBitCast(ch, AnyObject.self)
         NSURLProtocol.setProperty(ch2, forKey:"ch", inRequest:req)
@@ -36,18 +36,18 @@ class MyDownloader: NSObject, NSURLSessionDownloadDelegate {
         return task
     }
     
-    func URLSession(session: NSURLSession!, downloadTask: NSURLSessionDownloadTask!, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        println("downloaded \(100*totalBytesWritten/totalBytesExpectedToWrite)%")
+    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten writ: Int64, totalBytesExpectedToWrite exp: Int64) {
+        println("downloaded \(100*writ/exp)%")
     }
     
-    func URLSession(session: NSURLSession!, downloadTask: NSURLSessionDownloadTask!, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
+    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
         // unused in this example
         println("did resume")
     }
     
-    func URLSession(session: NSURLSession!, downloadTask: NSURLSessionDownloadTask!, didFinishDownloadingToURL location: NSURL!) {
+    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
         let req = downloadTask.originalRequest
-        let ch : AnyObject = NSURLProtocol.propertyForKey("ch", inRequest:req)
+        let ch : AnyObject = NSURLProtocol.propertyForKey("ch", inRequest:req)!
         let response = downloadTask.response as NSHTTPURLResponse
         let stat = response.statusCode
         println("status \(stat)")

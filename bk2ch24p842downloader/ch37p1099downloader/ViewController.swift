@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     }()
     
     lazy var downloader : MyDownloader = {
-        return MyDownloader(configuration:self.configuration)
+        let d : MyDownloader = MyDownloader(configuration:self.configuration)
+        return d
     }()
     
     @IBAction func doDownload (sender:AnyObject!) {
@@ -25,10 +26,11 @@ class ViewController: UIViewController {
             if url == nil {
                 return
             }
-            let d = NSData(contentsOfURL: url)
-            let im = UIImage(data:d)
-            dispatch_async(dispatch_get_main_queue()) {
-                self.iv.image = im
+            if let d = NSData(contentsOfURL: url) {
+                let im = UIImage(data:d)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.iv.image = im
+                }
             }
         }
     }

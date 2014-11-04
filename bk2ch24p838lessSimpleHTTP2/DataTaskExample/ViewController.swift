@@ -1,7 +1,3 @@
-/*
-Not in the book. But this seems like a serious omission;
-I should demonstrate minimally how to do a data task, as well as a download task.
-*/
 
 
 import UIKit
@@ -25,7 +21,7 @@ class ViewController: UIViewController, NSURLSessionDataDelegate {
         }
         
         let s = "http://www.apeth.net/matt/images/phoenixnewest.jpg"
-        let url = NSURL(string:s)
+        let url = NSURL(string:s)!
         let req = NSMutableURLRequest(URL:url)
         let task = self.session.dataTaskWithRequest(req) // *
         self.task = task
@@ -35,14 +31,14 @@ class ViewController: UIViewController, NSURLSessionDataDelegate {
         
     }
     
-    func URLSession(session: NSURLSession!, dataTask: NSURLSessionDataTask!, didReceiveData data: NSData!) {
+    func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
         println("received \(data.length) bytes of data")
         // do something with the data here!
         self.data.appendData(data)
     }
     
     
-    func URLSession(session: NSURLSession!, task: NSURLSessionTask!, didCompleteWithError error: NSError!) {
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
         println("completed: error: \(error)")
         self.task = nil
         if error == nil {
