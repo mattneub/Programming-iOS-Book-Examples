@@ -24,7 +24,7 @@ class ViewController : UIViewController {
 
 class TiledView : UIView {
     
-    var drawQueue : dispatch_queue_t = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL)
+    let drawQueue = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL)
 
     
     override class func layerClass() -> AnyClass {
