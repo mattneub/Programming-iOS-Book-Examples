@@ -25,7 +25,7 @@ class MyMandelbrotView : UIView {
         self.setNeedsDisplay()
     }
     
-    // create instance variable
+    // create bitmap context
     func makeBitmapContext(size:CGSize) {
         var bitmapBytesPerRow : UInt = UInt(size.width * 4)
         bitmapBytesPerRow += (16 - (bitmapBytesPerRow % 16)) % 16
@@ -35,26 +35,23 @@ class MyMandelbrotView : UIView {
         self.bitmapContext = context
     }
     
-    func isInMandelbrotSet(re:Float, _ im:Float) -> Bool {
-        var fl = true
-        var x : Float = 0
-        var y : Float = 0
-        var nx : Float = 0
-        var ny : Float = 0
-        for _ in 0 ..< MANDELBROT_STEPS {
-            nx = x*x - y*y + re
-            ny = 2*x*y + im
-            if nx*nx + ny*ny > 4 {
-                fl = false
-                break
-            }
-            x = nx
-            y = ny
-        }
-        return fl
-    }
-    
+    // draw pixels of bitmap context
     func drawAtCenter(center:CGPoint, zoom:CGFloat) {
+        func isInMandelbrotSet(re:Float, im:Float) -> Bool {
+            var fl = true
+            var (x:Float, y:Float, nx:Float, ny:Float) = (0,0,0,0)
+            for _ in 0 ..< MANDELBROT_STEPS {
+                nx = x*x - y*y + re
+                ny = 2*x*y + im
+                if nx*nx + ny*ny > 4 {
+                    fl = false
+                    break
+                }
+                x = nx
+                y = ny
+            }
+            return fl
+        }
         CGContextSetAllowsAntialiasing(self.bitmapContext, false)
         CGContextSetRGBFillColor(self.bitmapContext, 0, 0, 0, 1)
         var re : CGFloat
@@ -65,10 +62,8 @@ class MyMandelbrotView : UIView {
             for j in 0 ..< maxj {
                 re = (CGFloat(i) - 1.33 * center.x) / 160
                 im = (CGFloat(j) - 1.0 * center.y) / 160
-                
                 re /= zoom
                 im /= zoom
-                
                 if (isInMandelbrotSet(Float(re), Float(im))) {
                     CGContextFillRect (self.bitmapContext, CGRectMake(CGFloat(i), CGFloat(j), 1.0, 1.0))
                 }
@@ -76,8 +71,7 @@ class MyMandelbrotView : UIView {
         }
     }
     
-    // turn pixels of self.bitmapContext into CGImage, draw into ourselves
-    
+    // turn pixels of bitmap context into CGImage, draw into ourselves
     override func drawRect(rect: CGRect) {
         if self.bitmapContext != nil {
             let context = UIGraphicsGetCurrentContext()
