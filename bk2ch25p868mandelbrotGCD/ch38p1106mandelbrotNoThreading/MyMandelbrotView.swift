@@ -17,12 +17,11 @@ class MyMandelbrotView : UIView {
     let MANDELBROT_STEPS = 200
     
     var bitmapContext: CGContext!
-    var draw_queue : dispatch_queue_t = {
+    let draw_queue : dispatch_queue_t = {
         let q = dispatch_queue_create(QVAL, nil)
         dispatch_queue_set_specific(q, QKEY, &QVAL, nil)
         return q
     }()
-    
     
     var odd = false
     
@@ -32,7 +31,8 @@ class MyMandelbrotView : UIView {
         let center = CGPointMake(self.bounds.midX, self.bounds.midY)
         // to test, increase MANDELBROT_STEPS and suspend while still calculating
         var bti : UIBackgroundTaskIdentifier = 0
-        bti = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({
+        bti = UIApplication.sharedApplication()
+            .beginBackgroundTaskWithExpirationHandler({
                 UIApplication.sharedApplication().endBackgroundTask(bti)
             })
         if bti == UIBackgroundTaskInvalid {
@@ -69,27 +69,26 @@ class MyMandelbrotView : UIView {
         return context
     }
     
-    func isInMandelbrotSet(re:Float, _ im:Float) -> Bool {
-        var fl = true
-        var x : Float = 0
-        var y : Float = 0
-        var nx : Float = 0
-        var ny : Float = 0
-        for _ in 0 ..< MANDELBROT_STEPS {
-            nx = x*x - y*y + re
-            ny = 2*x*y + im
-            if nx*nx + ny*ny > 4 {
-                fl = false
-                break
-            }
-            x = nx
-            y = ny
-        }
-        return fl
-    }
-    
     // NB do NOT refer to self.bitmapContext here!
-    func drawAtCenter(center:CGPoint, zoom:CGFloat, context:CGContextRef) {
+    func drawAtCenter(center:CGPoint, zoom:CGFloat, context:CGContext) {
+        
+        func isInMandelbrotSet(re:Float, im:Float) -> Bool {
+            var fl = true
+            var (x:Float, y:Float, nx:Float, ny:Float) = (0,0,0,0)
+            for _ in 0 ..< MANDELBROT_STEPS {
+                nx = x*x - y*y + re
+                ny = 2*x*y + im
+                if nx*nx + ny*ny > 4 {
+                    fl = false
+                    break
+                }
+                x = nx
+                y = ny
+            }
+            return fl
+        }
+
+        
         self.assertOnBackgroundThread()
 
         CGContextSetAllowsAntialiasing(context, false) // *
@@ -126,6 +125,5 @@ class MyMandelbrotView : UIView {
             self.backgroundColor = self.odd ? UIColor.greenColor() : UIColor.redColor()
         }
     }
-
     
 }
