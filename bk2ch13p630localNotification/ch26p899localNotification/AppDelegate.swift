@@ -25,6 +25,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             }
         }
         
+        self.registerMyNotification(application)
+        
         println("end \(__FUNCTION__)")
         return true
     }
@@ -36,13 +38,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     ... I did that but it did not cause application:didRegisterUserNotificationSettings to fire
 */
     
-    // I think this should go here, so that we re-register every time we come to the foreground...
-    // scenario: we register, user sees dialog, user refuses
-    // later, user accepts in Settings
-    // but if we now try to present notification, we can't because our registration didn't go through the first time
-    // this way, we are always registering so that if we are ever accepted, we can do it
-    func applicationWillEnterForeground(application: UIApplication) {
-        println("start \(__FUNCTION__)")
+    
+    func registerMyNotification(application:UIApplication) {
         // new in iOS 8! must register to present alert / play sound with a local or push notification
         let types : UIUserNotificationType = .Alert | .Sound
         // if we want custom actions in our alert, we must create them when we register
@@ -72,6 +69,19 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // can also check at any time with currentUserNotificationSettings
         
         // unfortunately if the user accepts, the default is banner, not alert :(
+    }
+    
+    
+    func applicationWillEnterForeground(application: UIApplication) {
+        println("start \(__FUNCTION__)")
+        
+        // I think this should go here, so that we re-register every time we come to the foreground...
+        // scenario: we register, user sees dialog, user refuses
+        // later, user accepts in Settings
+        // but if we now try to present notification, we can't because our registration didn't go through the first time
+        // this way, we are always registering so that if we are ever accepted, we can do it
+        self.registerMyNotification(application)
+        
         println("end \(__FUNCTION__)")
 
 
