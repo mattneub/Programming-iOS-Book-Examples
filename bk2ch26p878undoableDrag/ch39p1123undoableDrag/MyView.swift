@@ -29,9 +29,9 @@ class MyView : UIView {
             object: NSValue(CGPoint:self.center))
         self.undoer.setActionName("Move")
         if self.undoer.undoing || self.undoer.redoing {
-            println("here")
-            let opt = UIViewAnimationOptions.BeginFromCurrentState // not needed in iOS 8?
-            UIView.animateWithDuration(0.4, delay: 0.1, options: opt, animations: {
+//            println("here")
+//            let opt = UIViewAnimationOptions.BeginFromCurrentState // not needed in iOS 8?
+            UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: {
                 self.center = newCenter.CGPointValue()
             }, completion: nil)
         } else {
