@@ -104,7 +104,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             return
         }
         
-        let greg = NSCalendar(calendarIdentifier:NSGregorianCalendar)!
+        let greg = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
         let comp = NSDateComponents()
         comp.year = 2015
         comp.month = 8
@@ -163,7 +163,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         ev.addRecurrenceRule(recur)
         ev.calendar = cal
         // need a start date and end date
-        let greg = NSCalendar(calendarIdentifier:NSGregorianCalendar)!
+        let greg = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
         let comp = NSDateComponents()
         comp.year = 2015
         comp.month = 1
@@ -195,7 +195,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         }
         
         let d1 = NSDate() // today
-        let greg = NSCalendar(calendarIdentifier:NSGregorianCalendar)!
+        let greg = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
         let comp = NSDateComponents()
         comp.year = 1 // we're going to add 1 to the year
         let d2 = greg.dateByAddingComponents(comp, toDate:d1, options:nil)

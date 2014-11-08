@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         // reminder can have due date
         // let's make it today
         let today = NSDate()
-        let greg = NSCalendar(calendarIdentifier:NSGregorianCalendar)!
+        let greg = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
         // day without time means "all day"
         let comps : NSCalendarUnit = .YearCalendarUnit | .MonthCalendarUnit | .DayCalendarUnit
         // start date not needed on iOS
