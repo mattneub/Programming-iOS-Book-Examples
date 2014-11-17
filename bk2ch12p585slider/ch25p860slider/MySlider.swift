@@ -40,8 +40,8 @@ class MySlider: UISlider {
         if !CGRectContainsPoint(CGRectInset(track, 0, -10), pt) {
             return // not on track, forget it
         }
-        let percentage = Float(pt.x / s.bounds.size.width)
-        let delta = percentage * (s.maximumValue - s.minimumValue)
+        let percentage = pt.x / s.bounds.size.width
+        let delta = Float(percentage) * (s.maximumValue - s.minimumValue)
         let value = s.minimumValue + delta
         s.setValue(value, animated:true) // animation broken in iOS 7, still broken in iOS 8
     }
