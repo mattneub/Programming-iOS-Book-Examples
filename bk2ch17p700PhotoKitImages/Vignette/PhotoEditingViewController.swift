@@ -90,7 +90,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         // Update UI to reflect that editing has finished and output is being rendered.
         
         // Render and provide output on a background queue.
-        dispatch_async(dispatch_get_global_queue(CLong(DISPATCH_QUEUE_PRIORITY_DEFAULT), 0)) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             // Create editing output from the editing input.
             let vignetteAmount = Double(self.slider.value)
             let input = self.input

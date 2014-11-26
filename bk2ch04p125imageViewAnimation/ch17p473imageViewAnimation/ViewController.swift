@@ -19,7 +19,7 @@ class ViewController : UIViewController {
     
     func animate () {
         
-        let which = 1
+        let which = 2
         switch which {
         case 1:
             let mars = UIImage(named: "Mars")!
@@ -51,7 +51,7 @@ class ViewController : UIViewController {
                 CGContextFillPath(con)
                 let im = UIGraphicsGetImageFromCurrentImageContext()
                 UIGraphicsEndImageContext()
-                arr += [im!]
+                arr += [im]
             }
             let im = UIImage.animatedImageWithImages(arr, duration:0.5)
             let b = UIButton.buttonWithType(.System) as UIButton
