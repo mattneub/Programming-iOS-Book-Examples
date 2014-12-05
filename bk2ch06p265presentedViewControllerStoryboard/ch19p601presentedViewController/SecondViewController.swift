@@ -9,7 +9,7 @@ Standard architecture for handing info from vc to presented vc...
 
 */
 
-@objc protocol SecondViewControllerDelegate {
+protocol SecondViewControllerDelegate : class {
     func acceptData(data:AnyObject!)
 }
 

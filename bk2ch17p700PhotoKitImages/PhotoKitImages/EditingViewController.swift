@@ -7,7 +7,7 @@ import OpenGLES
 import MobileCoreServices
 import AVFoundation
 
-@objc protocol EditingViewControllerDelegate {
+protocol EditingViewControllerDelegate : class {
     func finishEditingWithVignette(vignette:Double)
 }
 
