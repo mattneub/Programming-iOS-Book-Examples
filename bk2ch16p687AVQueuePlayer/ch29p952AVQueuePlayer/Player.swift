@@ -8,7 +8,8 @@ protocol PlayerDelegate : class {
     func soundFinished(sender : AnyObject)
 }
 
-class Player : NSObject, AVAudioPlayerDelegate {
+class Player : NSObject, AVAudioPlayerDelegate
+{
     var player : AVAudioPlayer!
     var forever = false
     weak var delegate : PlayerDelegate?

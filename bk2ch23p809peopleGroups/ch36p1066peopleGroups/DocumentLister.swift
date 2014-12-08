@@ -34,9 +34,9 @@ class DocumentLister: UITableViewController {
         self.files = fm.contentsOfDirectoryAtURL(
             self.docsurl, includingPropertiesForKeys: nil, options: nil, error: nil)!
             .filter
-            { ($0 as NSURL).pathExtension == "pplgrp" }
-            .map
-            { $0 as NSURL }
+            { ($0 as NSURL).pathExtension == "pplgrp" } as [NSURL]
+//            .map
+//            { $0 as NSURL }
         self.tableView.reloadData()
     }
     
@@ -76,7 +76,7 @@ class DocumentLister: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
         let fileURL = self.files[indexPath.row]
-        cell.textLabel.text = fileURL.lastPathComponent.stringByDeletingPathExtension
+        cell.textLabel!.text = fileURL.lastPathComponent!.stringByDeletingPathExtension
         cell.accessoryType = .DisclosureIndicator
         return cell
     }

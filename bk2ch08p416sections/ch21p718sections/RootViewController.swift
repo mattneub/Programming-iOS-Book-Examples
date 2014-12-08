@@ -47,7 +47,7 @@ class RootViewController : UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         let s = self.sectionData[indexPath.section][indexPath.row]
-        cell.textLabel.text = s
+        cell.textLabel!.text = s
         
         // this part is not in the book, it's just for fun
         var stateName = s
@@ -55,7 +55,7 @@ class RootViewController : UITableViewController {
         stateName = stateName.stringByReplacingOccurrencesOfString(" ", withString:"")
         stateName = "flag_\(stateName).gif"
         let im = UIImage(named: stateName)
-        cell.imageView.image = im
+        cell.imageView!.image = im
         
         return cell
     }

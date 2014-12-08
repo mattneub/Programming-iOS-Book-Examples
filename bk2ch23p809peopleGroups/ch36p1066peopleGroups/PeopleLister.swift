@@ -27,7 +27,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = self.fileURL.lastPathComponent.stringByDeletingPathExtension
+        self.title = self.fileURL.lastPathComponent!.stringByDeletingPathExtension
         let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "doAdd:")
         self.navigationItem.rightBarButtonItems = [b]
         

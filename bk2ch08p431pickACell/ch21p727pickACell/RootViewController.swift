@@ -11,10 +11,10 @@ class RootViewController : UITableViewController {
         // supply checkmarks as necessary
         let ud = NSUserDefaults.standardUserDefaults()
         
-        NSLog("about to update %@", cell.textLabel.text!)
+        NSLog("about to update %@", cell.textLabel!.text!)
         cell.accessoryType = .None
-        if ud.valueForKey("Style") as? String == cell.textLabel.text! ||
-            ud.valueForKey("Size") as? String == cell.textLabel.text! {
+        if ud.valueForKey("Style") as? String == cell.textLabel!.text! ||
+            ud.valueForKey("Size") as? String == cell.textLabel!.text! {
         cell.accessoryType = .Checkmark
         }
         return cell
@@ -22,9 +22,9 @@ class RootViewController : UITableViewController {
     
     func log(#tv:UITableView, ip:NSIndexPath, phrase:String) {
         NSLog("%@", "========")
-        NSLog("%@ %@", phrase, tv.cellForRowAtIndexPath(ip)!.textLabel.text!)
+        NSLog("%@ %@", phrase, tv.cellForRowAtIndexPath(ip)!.textLabel!.text!)
         NSLog("cell highlighted? %@", "\(tv.cellForRowAtIndexPath(ip)!.highlighted)")
-        NSLog("label highlighted? %@", "\(tv.cellForRowAtIndexPath(ip)!.textLabel.highlighted)")
+        NSLog("label highlighted? %@", "\(tv.cellForRowAtIndexPath(ip)!.textLabel!.highlighted)")
     }
     
     override func tableView(tv: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -65,7 +65,7 @@ class RootViewController : UITableViewController {
         log(tv: tv, ip: indexPath, phrase: "did select")
         
         let ud = NSUserDefaults.standardUserDefaults()
-        let setting = tv.cellForRowAtIndexPath(indexPath)!.textLabel.text
+        let setting = tv.cellForRowAtIndexPath(indexPath)!.textLabel!.text
         let header = self.tableView(tv, titleForHeaderInSection:indexPath.section)!
         ud.setValue(setting, forKey:header)
         
@@ -75,7 +75,7 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(tv: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        NSLog("did deselect %@", tv.cellForRowAtIndexPath(indexPath)!.textLabel.text!)
+        NSLog("did deselect %@", tv.cellForRowAtIndexPath(indexPath)!.textLabel!.text!)
     }
 
     

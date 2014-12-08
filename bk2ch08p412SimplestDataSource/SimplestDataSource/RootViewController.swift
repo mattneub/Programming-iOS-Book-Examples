@@ -38,7 +38,7 @@ class RootViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
-        cell.textLabel.text = pep[indexPath.row]
+        cell.textLabel!.text = pep[indexPath.row]
         return cell
     }
 

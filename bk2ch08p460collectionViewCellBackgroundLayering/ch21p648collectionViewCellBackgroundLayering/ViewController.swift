@@ -6,7 +6,7 @@ class ViewController : UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let layout = self.collectionView.collectionViewLayout as UICollectionViewFlowLayout
+        let layout = self.collectionView!.collectionViewLayout as UICollectionViewFlowLayout
         layout.itemSize = CGSizeMake(150,50)
         
         let v = UIView()
