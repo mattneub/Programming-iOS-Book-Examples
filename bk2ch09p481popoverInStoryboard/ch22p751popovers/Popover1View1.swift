@@ -33,9 +33,9 @@ class Popover1View1 : UITableViewController {
         case 0:
             switch row {
             case 0:
-                cell.textLabel.text = "First"
+                cell.textLabel!.text = "First"
             case 1:
-                cell.textLabel.text = "Second"
+                cell.textLabel!.text = "Second"
             default:break
             }
             cell.accessoryType = (choice == row ?
