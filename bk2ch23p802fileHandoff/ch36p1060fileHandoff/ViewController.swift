@@ -25,7 +25,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         let docsurl = fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &err)
         let dir = fm.enumeratorAtURL(docsurl!, includingPropertiesForKeys: nil, options: nil, errorHandler: nil)
         while let f = dir?.nextObject() as? NSURL {
-            if find(self.exts, f.pathExtension) != nil {
+            if find(self.exts, f.pathExtension!) != nil {
                 url = f
                 break
             }
@@ -88,7 +88,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         let docsurl = fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &err)
         let dir = fm.enumeratorAtURL(docsurl!, includingPropertiesForKeys: nil, options: nil, errorHandler: nil)
         while let f = dir?.nextObject() as? NSURL {
-            if find(self.exts, f.pathExtension) != nil {
+            if find(self.exts, f.pathExtension!) != nil {
                 if QLPreviewController.canPreviewItem(f) {
                     println("adding \(f)")
                     self.docs.append(f)

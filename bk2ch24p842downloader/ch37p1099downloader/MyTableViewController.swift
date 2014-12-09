@@ -52,13 +52,13 @@ class MyTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
         let m = self.model[indexPath.row]
-        cell.textLabel.text = m.text
+        cell.textLabel!.text = m.text
         // have we got a picture?
         if let im = m.im {
-            cell.imageView.image = im
+            cell.imageView!.image = im
         } else {
             if m.task == nil { // no task? start one!
-                cell.imageView.image = nil
+                cell.imageView!.image = nil
                 m.task = self.downloader.download(m.picurl) { // *
                     [weak self] url in // *
                     m.task == nil // *

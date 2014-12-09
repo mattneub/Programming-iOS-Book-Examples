@@ -119,7 +119,7 @@ class MyTableViewController: UITableViewController {
         let act = self.data[indexPath.row]
         let format = NSDateFormatter()
         format.dateFormat = "MMM d, HH:mm:ss"
-        cell.textLabel.text = format.stringFromDate(act.startDate)
+        cell.textLabel!.text = format.stringFromDate(act.startDate)
         cell.detailTextLabel!.text = act.overallAct()
         
         cell.backgroundColor = UIColor.whiteColor()

@@ -86,7 +86,7 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
         cell.accessoryType = .DisclosureIndicator
         let object = self.frc.objectAtIndexPath(indexPath) as NSManagedObject
-        cell.textLabel.text = object.name
+        cell.textLabel!.text = object.name
         return cell
     }
     

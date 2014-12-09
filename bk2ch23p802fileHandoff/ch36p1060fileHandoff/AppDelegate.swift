@@ -29,7 +29,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             let fm = NSFileManager()
             var err : NSError?
             let docsurl = fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &err)
-            let dest = docsurl!.URLByAppendingPathComponent(url.lastPathComponent)
+            let dest = docsurl!.URLByAppendingPathComponent(url.lastPathComponent!)
             println("copying")
             var ok = fm.copyItemAtURL(url, toURL: dest, error: &err)
             if !ok {
