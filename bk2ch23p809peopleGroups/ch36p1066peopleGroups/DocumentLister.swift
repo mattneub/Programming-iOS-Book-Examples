@@ -35,8 +35,6 @@ class DocumentLister: UITableViewController {
             self.docsurl, includingPropertiesForKeys: nil, options: nil, error: nil)!
             .filter
             { ($0 as NSURL).pathExtension == "pplgrp" } as [NSURL]
-//            .map
-//            { $0 as NSURL }
         self.tableView.reloadData()
     }
     
