@@ -15,8 +15,8 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doDynamicType:", name: UIContentSizeCategoryDidChangeNotification, object: nil)
         
-        // println((UIFont.familyNames() as [String])
-        //    .map{UIFont.fontNamesForFamilyName($0)})
+//        UIFont.familyNames()
+//            .map{UIFont.fontNamesForFamilyName($0 as String)}.map(println)
 
     }
     

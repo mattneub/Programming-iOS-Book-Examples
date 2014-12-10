@@ -15,7 +15,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             ],
             forState:.Normal)
         
-        // println((UIFont.familyNames() as [String]).map{UIFont.fontNamesForFamilyName($0)})
+//        UIFont.familyNames()
+//            .map{UIFont.fontNamesForFamilyName($0 as String)}.map(println)
+
         
         let ding = UIFont(name:"ZapfDingbatsITC", size:40)!
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(100,40), false, 0)

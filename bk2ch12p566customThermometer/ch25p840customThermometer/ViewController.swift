@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         UIGraphicsEndImageContext()
         // self.prog2.progressImage = im
         // hacky workaround
-        let ims = self.prog2.subviews.filter {$0 is UIImageView}.map {$0 as UIImageView}
+        let ims = self.prog2.subviews.filter {$0 is UIImageView} as [UIImageView]
         ims[1].image = im
         
         // but this code, which worked fine for years including iOS 7.0, was broken by iOS 7.1

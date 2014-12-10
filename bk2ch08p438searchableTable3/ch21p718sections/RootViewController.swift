@@ -154,21 +154,13 @@ extension RootViewController : UISearchResultsUpdating {
         }
         // we have a target string
         self.sectionData = self.originalSectionData.map {
-            (sec:[String]) -> [String] in
-            let newsec = sec.filter {
-                s in
+            $0.filter {
                 let options = NSStringCompareOptions.CaseInsensitiveSearch
-                let found = s.rangeOfString(target, options: options)
+                let found = $0.rangeOfString(target, options: options)
                 return (found != nil)
             }
-            return newsec
-            }.filter {$0.count > 0} // is Swift cool or what?
-        self.sectionNames = self.sectionData.map {
-            (sec:[String]) -> String in
-            //return (sec[0] as NSString).substringWithRange(NSMakeRange(0,1))
-            //I don't know, it's either that or this:
-            return String(Array(sec[0])[0])
-        }
+        }.filter {$0.count > 0} // is Swift cool or what?
+        self.sectionNames = self.sectionData.map {prefix($0[0],1)}
         self.tableView.reloadData()
     }
 }
