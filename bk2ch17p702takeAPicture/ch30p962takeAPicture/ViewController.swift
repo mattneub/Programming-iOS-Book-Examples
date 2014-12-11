@@ -81,12 +81,12 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController!,
-        didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!) {
+    func imagePickerController(picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
             println(info[UIImagePickerControllerReferenceURL])
             let url = info[UIImagePickerControllerMediaURL] as NSURL?
             var im = info[UIImagePickerControllerOriginalImage] as UIImage?
-            var edim = info[UIImagePickerControllerEditedImage] as UIImage?
+            let edim = info[UIImagePickerControllerEditedImage] as UIImage?
             if edim != nil {
                 im = edim
             }
