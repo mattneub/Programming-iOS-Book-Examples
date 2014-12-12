@@ -109,9 +109,8 @@ class ViewController : UIViewController {
 
         case 9:
             var values = [0.0]
-            var direction = 1.0
             // comma is legal in the for block!
-            for (var i = 20; i < 60; i += 5, direction *= -1) { // alternate directions
+            for (var i = 20, direction = 1.0; i < 60; i += 5, direction *= -1) { // alternate directions
                 values.append( direction * M_PI / Double(i) )
             }
             values.append(0.0)
@@ -141,8 +140,7 @@ class ViewController : UIViewController {
 
             // second animation (waggle)
             var values = [0.0]
-            var direction = 1.0
-            for (var i = 20; i < 60; i += 5, direction *= -1) { // alternate directions
+            for (var i = 20, direction = 1.0; i < 60; i += 5, direction *= -1) { // alternate directions
                 values.append( direction * M_PI / Double(i) )
             }
             values.append(0.0)
