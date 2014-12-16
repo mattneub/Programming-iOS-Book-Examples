@@ -4,7 +4,7 @@ import Foundation
 
 class ViewController : UIViewController {
     
-    private var myBigDataReal : NSData!
+    private var myBigDataReal : NSData! = nil
     var myBigData : NSData! {
         set (newdata) {
             self.myBigDataReal = newdata

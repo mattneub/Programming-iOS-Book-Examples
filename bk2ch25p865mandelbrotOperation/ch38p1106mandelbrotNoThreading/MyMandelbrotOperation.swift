@@ -6,7 +6,7 @@ class MyMandelbrotOperation : NSOperation {
     private let size : CGSize
     private let center : CGPoint
     private let zoom : CGFloat
-    private(set) var bitmapContext : CGContext!
+    private(set) var bitmapContext : CGContext! = nil
     
     init(size sz:CGSize, center c:CGPoint, zoom z:CGFloat) {
         self.size = sz

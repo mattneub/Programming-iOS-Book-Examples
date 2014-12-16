@@ -5,7 +5,7 @@ import UIKit
 class CancelableTimer: NSObject {
     
     private var q = dispatch_queue_create("timer",nil)
-    private var timer : dispatch_source_t!
+    private var timer : dispatch_source_t! = nil
     private var firsttime = true
     private var once : Bool
     private var handler : () -> ()
