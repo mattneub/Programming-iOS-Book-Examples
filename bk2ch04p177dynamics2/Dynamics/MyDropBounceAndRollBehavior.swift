@@ -22,11 +22,11 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
             // self will retain grav so do not let grav retain self
             // this is actually a simpler case for memory management,
             // because "self" incorporates all the behaviors at once
-            [weak self] in
+            [unowned self] in // * changed from weak to unowned here
             let items = anim.itemsInRect(sup.bounds) as [UIView]
-            if find(items, self!.v) == nil {
+            if find(items, self.v) == nil {
                 anim.removeBehavior(self)
-                self!.v.removeFromSuperview()
+                self.v.removeFromSuperview()
                 println("done")
             }
         }
