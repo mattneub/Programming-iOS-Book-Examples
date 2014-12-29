@@ -96,7 +96,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     }
     
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!) {
-        var im = info[UIImagePickerControllerOriginalImage] as UIImage?
+        var im = info[UIImagePickerControllerOriginalImage] as? UIImage
         if im == nil {
             return
         }

@@ -121,14 +121,14 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     func imagePickerController(picker: UIImagePickerController!,
         didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!) {
             println(info[UIImagePickerControllerReferenceURL])
-            let url = info[UIImagePickerControllerMediaURL] as NSURL?
-            var im = info[UIImagePickerControllerOriginalImage] as UIImage?
-            var edim = info[UIImagePickerControllerEditedImage] as UIImage?
+            let url = info[UIImagePickerControllerMediaURL] as? NSURL
+            var im = info[UIImagePickerControllerOriginalImage] as? UIImage
+            var edim = info[UIImagePickerControllerEditedImage] as? UIImage
             if edim != nil {
                 im = edim
             }
             self.dismissViewControllerAnimated(true) {
-                let type = info[UIImagePickerControllerMediaType] as String?
+                let type = info[UIImagePickerControllerMediaType] as? String
                 if type != nil {
                     switch type! {
                     case kUTTypeImage:
