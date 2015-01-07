@@ -4,7 +4,7 @@
 
 @implementation SystemSoundHelper
 
-void SoundFinished (SystemSoundID snd, void* context) {
+void soundFinished (SystemSoundID snd, void* context) {
     NSLog(@"finished!");
     AudioServicesRemoveSystemSoundCompletion(snd);
     AudioServicesDisposeSystemSoundID(snd);
@@ -12,7 +12,7 @@ void SoundFinished (SystemSoundID snd, void* context) {
 
 // typedef void (*AudioServicesSystemSoundCompletionProc) ( SystemSoundID ssID, void *clientData );
 - (AudioServicesSystemSoundCompletionProc) completionHandler {
-    return SoundFinished;
+    return soundFinished;
 }
 
 
