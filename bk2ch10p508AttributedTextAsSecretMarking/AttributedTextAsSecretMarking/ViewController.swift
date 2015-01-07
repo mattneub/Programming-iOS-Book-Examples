@@ -12,7 +12,8 @@ class ViewController: UIViewController {
             mas.addAttribute("HERE", value: 1, range: r)
             mas.replaceCharactersInRange(r, withString: NSDate().description)
         } else {
-            mas.enumerateAttribute("HERE", inRange: NSMakeRange(0, mas.length), options: nil) { (value:AnyObject!, r:NSRange, stop:UnsafeMutablePointer<ObjCBool>) -> Void in
+            mas.enumerateAttribute("HERE", inRange: NSMakeRange(0, mas.length), options: nil) {
+                value, r, stop in
                 if let value = value as? Int {
                     if value == 1 {
                         mas.replaceCharactersInRange(r, withString: NSDate().description)
