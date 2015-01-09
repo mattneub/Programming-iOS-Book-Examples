@@ -25,7 +25,12 @@ class ViewController: UIViewController {
         }
     }
     
+    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        println("will rotate") // not called if viewWillTransitionToSize is implement
+    }
+    
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         println("size will change")
         println(size)
     }
