@@ -3,8 +3,8 @@
 import UIKit
 
 class Person: NSObject, NSCoding {
-    @NSCopying var firstName : NSString
-    @NSCopying var lastName : NSString
+    var firstName : String
+    var lastName : String
     
     override var description : String {
         return self.firstName + " " + self.lastName
