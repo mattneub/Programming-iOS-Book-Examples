@@ -12,7 +12,7 @@ class FlipsideViewController: UIViewController {
     
     var observer : AnyObject! = nil
     
-    let which = 1
+    let which = 0
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
