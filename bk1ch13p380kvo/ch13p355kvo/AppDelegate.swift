@@ -46,7 +46,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let opts : NSKeyValueObservingOptions = .New | .Old
         objectA.addObserver(objectB, forKeyPath: "value", options: opts, context: &con)
         (objectA as MyClass1).value = true
-        // objectA.removeObserver(objectB, forKeyPath: "value")
+        // comment out next line if you wish to crash
+        objectA.removeObserver(objectB, forKeyPath: "value")
         objectA = nil
         
         return true
