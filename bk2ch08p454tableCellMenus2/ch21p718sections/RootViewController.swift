@@ -3,6 +3,8 @@
 import UIKit
 
 class RootViewController : UITableViewController {
+    override var nibName : String { return "RootViewController" }
+    
     var sectionNames = [String]()
     var sectionData = [[String]]()
     
