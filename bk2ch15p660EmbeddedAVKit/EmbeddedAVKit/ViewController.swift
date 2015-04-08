@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-
+    
     override func supportedInterfaceOrientations() -> Int {
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             return Int(UIInterfaceOrientationMask.All.rawValue)
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         let asset = AVURLAsset(URL:url, options:nil)
         let item = AVPlayerItem(asset:asset)
         let player = AVPlayer(playerItem:item)
-
+        
         let av = AVPlayerViewController()
         av.player = player
         av.view.frame = CGRectMake(10,10,300,200)
@@ -53,11 +53,11 @@ class ViewController: UIViewController {
         // just experimenting
         let grs = (av.view.subviews[0] as UIView).gestureRecognizers as [UIGestureRecognizer]
         for gr in grs {
-            if gr is UIPinchGestureRecognizer {
-                gr.enabled = false
-            }
+        if gr is UIPinchGestureRecognizer {
+        gr.enabled = false
         }
-*/
+        }
+        */
         
         av.addObserver(self, forKeyPath: "readyForDisplay", options: .New, context: nil)
         
@@ -68,21 +68,17 @@ class ViewController: UIViewController {
             av.player = player
         }
     }
-
+    
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<()>) {
-        if keyPath == "readyForDisplay" {
-            if let obj = object as? AVPlayerViewController {
-                if let ok = change[NSKeyValueChangeNewKey] as? Bool {
-                    if ok {
-                        dispatch_async(dispatch_get_main_queue(), {
-                            self.finishConstructingInterface(obj)
-                        })
-                    }
-                }
-            }
+        if keyPath == "readyForDisplay",
+            let obj = object as? AVPlayerViewController,
+            let ok = change[NSKeyValueChangeNewKey] as? Bool where ok {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.finishConstructingInterface(obj)
+                })
         }
     }
-
+    
     func finishConstructingInterface (vc:AVPlayerViewController) {
         println("finishing")
         vc.removeObserver(self, forKeyPath:"readyForDisplay")
@@ -109,7 +105,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         self.presentViewController(vc, animated: true, completion: nil)
         println(vc.modalPresentationStyle.rawValue)
         if let pop = vc.popoverPresentationController {
-            let v = sender as UIView
+            let v = sender as! UIView
             pop.sourceView = v
             pop.sourceRect = v.bounds
             pop.delegate = self
@@ -119,7 +115,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         // with delegate methods, on the other hand, dismissing is up to you
     }
     
-    func videoEditorController(editor: UIVideoEditorController!, didSaveEditedVideoToPath editedVideoPath: String!) {
+    func videoEditorController(editor: UIVideoEditorController, didSaveEditedVideoToPath editedVideoPath: String) {
         println("saved to \(editedVideoPath)")
         if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(editedVideoPath) {
             println("saving to photos album")
@@ -140,17 +136,17 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func videoEditorControllerDidCancel(editor: UIVideoEditorController!) {
+    func videoEditorControllerDidCancel(editor: UIVideoEditorController) {
         println("editor cancelled")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func videoEditorController(editor: UIVideoEditorController!, didFailWithError error: NSError!) {
+    func videoEditorController(editor: UIVideoEditorController, didFailWithError error: NSError) {
         println("error: \(error.localizedDescription)")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func navigationController(navigationController: UINavigationController!, willShowViewController viewController: UIViewController!, animated: Bool) {
+    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
         let vc = viewController as UIViewController
         vc.title = ""
         vc.navigationItem.title = ""
@@ -158,9 +154,9 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         // (so that it says Save instead of Use)
     }
     
-    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController!) {
+    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
         println("editor popover dismissed")
     }
-
+    
 }
 
