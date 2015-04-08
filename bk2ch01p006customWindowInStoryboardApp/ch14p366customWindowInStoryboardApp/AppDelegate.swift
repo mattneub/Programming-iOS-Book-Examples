@@ -4,7 +4,7 @@ import UIKit
 
 @UIApplicationMain class AppDelegate : UIResponder, UIApplicationDelegate {
     
-    lazy var window : UIWindow = {
+    lazy var window : UIWindow? = {
         return MyWindow(frame: UIScreen.mainScreen().bounds)
     }()
     

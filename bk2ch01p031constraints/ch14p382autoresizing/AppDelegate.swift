@@ -22,7 +22,7 @@ extension NSLayoutConstraint {
         if v == nil {
             v = UIApplication.sharedApplication().keyWindow
         }
-        for vv in v!.subviews as [UIView] {
+        for vv in v!.subviews as! [UIView] {
             println("\(vv) \(vv.hasAmbiguousLayout())")
             if vv.subviews.count > 0 {
                 self.reportAmbiguity(vv)
@@ -33,7 +33,7 @@ extension NSLayoutConstraint {
         if v == nil {
             v = UIApplication.sharedApplication().keyWindow
         }
-        for vv in v!.subviews as [UIView] {
+        for vv in v!.subviews as! [UIView] {
             let arr1 = vv.constraintsAffectingLayoutForAxis(.Horizontal)
             let arr2 = vv.constraintsAffectingLayoutForAxis(.Vertical)
             NSLog("\n\n%@\nH: %@\nV:%@", vv, arr1, arr2);

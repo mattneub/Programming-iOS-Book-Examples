@@ -6,8 +6,9 @@ class ViewController : UIViewController {
         super.viewDidAppear(animated)
         println(self.view.window!)
         println(UIApplication.sharedApplication().delegate!.window!!) // kind of wacky, there, Swift
-        println((UIApplication.sharedApplication().delegate as AppDelegate).window)
-        println(UIApplication.sharedApplication().keyWindow)
+        println((UIApplication.sharedApplication().delegate as! AppDelegate).window!)
+        println(UIApplication.sharedApplication().keyWindow!)
+        println(UIApplication.sharedApplication().windows.count) // prove there's just the one, ours
     }
     
     // for end of chapter 5 example
