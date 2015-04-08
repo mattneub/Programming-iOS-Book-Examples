@@ -23,7 +23,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
             // this is actually a simpler case for memory management,
             // because "self" incorporates all the behaviors at once
             [unowned self] in // * changed from weak to unowned here
-            let items = anim.itemsInRect(sup.bounds) as [UIView]
+            let items = anim.itemsInRect(sup.bounds) as! [UIView]
             if find(items, self.v) == nil {
                 anim.removeBehavior(self)
                 self.v.removeFromSuperview()
@@ -61,7 +61,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
         atPoint p: CGPoint) {
             println(p)
             // look for the dynamic item behavior
-            for b in self.childBehaviors as [UIDynamicBehavior] {
+            for b in self.childBehaviors as! [UIDynamicBehavior] {
                 if let bounce = b as? UIDynamicItemBehavior {
                     let v = bounce.angularVelocityForItem(item)
                     println(v)

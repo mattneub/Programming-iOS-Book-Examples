@@ -22,7 +22,7 @@ class ViewController : UIViewController, UIDynamicAnimatorDelegate {
     }
     
     @IBAction func doButton(sender:AnyObject?) {
-        (sender as UIButton).enabled = false
+        (sender as! UIButton).enabled = false
         self.anim.addBehavior(MyDropBounceAndRollBehavior(view:self.iv))
     }
     

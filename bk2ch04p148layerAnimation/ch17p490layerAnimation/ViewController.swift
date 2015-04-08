@@ -7,7 +7,7 @@ class ViewController : UIViewController {
     @IBOutlet var compassView : CompassView!
     
     @IBAction func doButton(sender:AnyObject?) {
-        let c = self.compassView.layer as CompassLayer
+        let c = self.compassView.layer as! CompassLayer
         let arrow = c.arrow!
         
         let which = 10
