@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		32C95B6C198B3EC300708AC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C95B6B198B3EC300708AC3 /* ViewController.swift */; };
-		32C95B6D198B42C500708AC3 /* StringDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A50D9E1810085000F5B6CE /* StringDrawer.m */; };
 		32C95B6F198B457A00708AC3 /* StringDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C95B69198B3D3300708AC3 /* StringDrawer.swift */; };
 		C9A50D69180F835200F5B6CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A50D68180F835200F5B6CE /* Foundation.framework */; };
 		C9A50D6B180F835200F5B6CE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A50D6A180F835200F5B6CE /* CoreGraphics.framework */; };
@@ -37,8 +36,6 @@
 		C9A50D7B180F835200F5B6CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9A50D80180F835300F5B6CE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9A50D87180F835300F5B6CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9A50D9D1810085000F5B6CE /* StringDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringDrawer.h; sourceTree = "<group>"; };
-		C9A50D9E1810085000F5B6CE /* StringDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringDrawer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +87,6 @@
 				C9A50D78180F835200F5B6CE /* AppDelegate.m */,
 				C9A50D7A180F835200F5B6CE /* Main.storyboard */,
 				32C95B6B198B3EC300708AC3 /* ViewController.swift */,
-				C9A50D9D1810085000F5B6CE /* StringDrawer.h */,
-				C9A50D9E1810085000F5B6CE /* StringDrawer.m */,
 				32C95B69198B3D3300708AC3 /* StringDrawer.swift */,
 				32C95B6E198B437B00708AC3 /* Bridge.h */,
 				C9A50D80180F835300F5B6CE /* Images.xcassets */,
@@ -178,7 +173,6 @@
 			files = (
 				32C95B6C198B3EC300708AC3 /* ViewController.swift in Sources */,
 				32C95B6F198B457A00708AC3 /* StringDrawer.swift in Sources */,
-				32C95B6D198B42C500708AC3 /* StringDrawer.m in Sources */,
 				C9A50D79180F835200F5B6CE /* AppDelegate.m in Sources */,
 				C9A50D75180F835200F5B6CE /* main.m in Sources */,
 			);
