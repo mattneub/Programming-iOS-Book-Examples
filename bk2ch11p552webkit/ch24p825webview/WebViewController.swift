@@ -198,11 +198,11 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             self.navigationItem.rightBarButtonItems = [b]
             
             let bodypath = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
-            let ss = NSString(contentsOfFile:bodypath, encoding:NSUTF8StringEncoding, error:nil)!
+            let ss = String(contentsOfFile:bodypath, encoding:NSUTF8StringEncoding, error:nil)!
             
             let templatepath = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")!
             let base = NSURL.fileURLWithPath(templatepath)!
-            var s = NSString(contentsOfFile:templatepath, encoding:NSUTF8StringEncoding, error:nil)!
+            var s = String(contentsOfFile:templatepath, encoding:NSUTF8StringEncoding, error:nil)!
             
             s = s.stringByReplacingOccurrencesOfString("<maximagewidth>", withString:"80%")
             s = s.stringByReplacingOccurrencesOfString("<margin>", withString:"10")
