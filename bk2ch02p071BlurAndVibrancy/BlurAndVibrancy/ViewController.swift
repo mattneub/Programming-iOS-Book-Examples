@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         blur.frame = mainview.bounds
         blur.autoresizingMask = .FlexibleWidth | .FlexibleHeight
         let vib = UIVisualEffectView(effect: UIVibrancyEffect(
-            forBlurEffect: blur.effect as UIBlurEffect))
+            forBlurEffect: blur.effect as! UIBlurEffect))
         let lab = UILabel()
         lab.text = "Hello, world!"
         lab.sizeToFit()

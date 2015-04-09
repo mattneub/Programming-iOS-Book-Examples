@@ -33,7 +33,7 @@ class ViewController : UIViewController {
         
         // two ways to obtain final bitmap
         
-        let which = 2
+        let which = 1
         switch which {
         case 1:
             let moicg = CIContext(options: nil).createCGImage(blendimage, fromRect: moiextent)

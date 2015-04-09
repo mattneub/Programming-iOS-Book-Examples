@@ -3,13 +3,14 @@ import UIKit
 
 class MyView : UIView {
     
-    override init() {
+    init() {
         super.init(frame:CGRectZero)
         self.opaque = false
     }
     
     required init(coder: NSCoder) {
-        fatalError("NSCoding not supported")
+        super.init(coder: coder)
+        self.opaque = false
     }
     
     override init(frame: CGRect) {
@@ -18,7 +19,7 @@ class MyView : UIView {
     }
     
     override func drawRect(rect: CGRect) {
-        let which = 6
+        let which = 1
         switch which {
         case 1:
             let con = UIGraphicsGetCurrentContext()

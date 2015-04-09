@@ -67,7 +67,7 @@ class ViewController : UIViewController {
         delay (2) {
             iv.image = UIImage(named:"bottle5.png")
             // if we're using constraints...
-            // the image view is resized setting the image changes the intrinsic content size
+            // the image view is resized, because setting the image changes the intrinsic content size
         }
         
     }
