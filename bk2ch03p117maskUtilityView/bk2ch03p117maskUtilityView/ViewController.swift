@@ -69,7 +69,7 @@ class ViewController: UIViewController {
                             
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let which = 2
+        let which = 1
         switch which {
         case 1:
             let mask = maskOfSize(self.iv.bounds.size, roundingCorners:20)

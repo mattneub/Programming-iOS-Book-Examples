@@ -17,7 +17,7 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         
         var lay1 = CALayer()
-        let which = 2
+        let which = 1
         switch which {
         case 1: break
         case 2:

@@ -11,7 +11,7 @@ class ViewController : UIViewController {
         //    lay.contentsGravity = kCAGravityBottom
         //    lay.contentsRect = CGRectMake(0.2,0.2,0.5,0.5)
         //    lay.contentsCenter = CGRectMake(0.0, 0.4, 1.0, 0.6)
-        let v = (self.views! as [UIView])[ix]
+        let v = (self.views! as! [UIView])[ix]
         lay.frame = v.layer.bounds
         v.layer.addSublayer(lay)
         lay.setNeedsDisplay()
