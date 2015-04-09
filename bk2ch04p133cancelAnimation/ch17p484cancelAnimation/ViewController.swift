@@ -19,7 +19,7 @@ class ViewController : UIViewController {
     }
     
     func cancel() {
-        let which = 3
+        let which = 1
         switch which {
         case 1:
             // simplest possible solution: just kill it dead

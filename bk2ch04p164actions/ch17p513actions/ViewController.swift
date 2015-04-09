@@ -5,7 +5,7 @@ class MyAction : NSObject, CAAction {
         arguments dict: [NSObject : AnyObject]!) {
             let anim = CABasicAnimation(keyPath: event)
             anim.duration = 5
-            let lay = anObject as CALayer
+            let lay = anObject as! CALayer
             let newP : AnyObject? = lay.valueForKey(event)
             let oldP : AnyObject? = lay.presentationLayer()!.valueForKey(event)
             println("from \(oldP) to \(newP)")
@@ -16,9 +16,9 @@ class MyAction : NSObject, CAAction {
 class MyWagglePositionAction : NSObject, CAAction {
     func runActionForKey(event: String!, object anObject: AnyObject!,
         arguments dict: [NSObject : AnyObject]!) {
-            let lay = anObject as CALayer
-            let newP = (lay.valueForKey(event) as NSValue).CGPointValue()
-            let oldP = (lay.presentationLayer()!.valueForKey(event) as NSValue).CGPointValue()
+            let lay = anObject as! CALayer
+            let newP = (lay.valueForKey(event) as! NSValue).CGPointValue()
+            let oldP = (lay.presentationLayer()!.valueForKey(event) as! NSValue).CGPointValue()
 
             let d = sqrt(pow(oldP.x - newP.x, 2) + pow(oldP.y - newP.y, 2))
             let r = Double(d/3.0)
@@ -56,7 +56,7 @@ class ViewController : UIViewController {
     @IBAction func doButton(sender:AnyObject?) {
         let layer = self.layer
         
-        let which = 10
+        let which = 1
         switch which {
         case 1:
             layer.position = CGPointMake(100,100) // proving that it normally works

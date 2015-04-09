@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func doSlider(sender: AnyObject) {
-        let slider = sender as UISlider
+        let slider = sender as! UISlider
         self.shape.timeOffset = Double(slider.value)
     }
 

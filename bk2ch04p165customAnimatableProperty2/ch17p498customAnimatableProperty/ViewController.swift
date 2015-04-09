@@ -6,7 +6,7 @@ class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     
     @IBAction func doButton (sender:AnyObject) {
-        let lay = self.v.layer as MyLayer
+        let lay = self.v.layer as! MyLayer
         let cur = lay.thickness
         let val : CGFloat = cur == 10 ? 0 : 10
         CATransaction.setDisableActions(true)
@@ -17,7 +17,7 @@ class ViewController : UIViewController {
     }
     
     @IBAction func doButton2 (sender:AnyObject) {
-        let lay = self.v.layer as MyLayer
+        let lay = self.v.layer as! MyLayer
         let cur = lay.thickness
         let val : CGFloat = cur == 10 ? 0 : 10
         lay.thickness = val // implicit

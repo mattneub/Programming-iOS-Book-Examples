@@ -38,7 +38,7 @@ class ViewController : UIViewController {
     }
     
     @IBAction func doButton(sender:AnyObject?) {
-        (sender as UIButton).enabled = false
+        (sender as! UIButton).enabled = false
         
         let grav = MyGravityBehavior()
         
@@ -47,12 +47,12 @@ class ViewController : UIViewController {
         I demonstrate some alternatives...
         */
         
-        let which = 3
+        let which = 1
         switch which {
         case 1:
             // leak! neither the image view nor the gravity behavior is released
             grav.action = {
-                let items = self.anim.itemsInRect(self.view.bounds) as [UIView]
+                let items = self.anim.itemsInRect(self.view.bounds) as! [UIView]
                 let ix = find(items, self.iv)
                 if ix == nil {
                     self.anim.removeAllBehaviors()
@@ -62,7 +62,7 @@ class ViewController : UIViewController {
             }
         case 2:
             grav.action = {
-                let items = self.anim.itemsInRect(self.view.bounds) as [UIView]
+                let items = self.anim.itemsInRect(self.view.bounds) as! [UIView]
                 let ix = find(items, self.iv)
                 if ix == nil {
                     self.anim.removeAllBehaviors()
@@ -73,7 +73,7 @@ class ViewController : UIViewController {
             }
         case 3:
             grav.action = {
-                let items = self.anim.itemsInRect(self.view.bounds) as [UIView]
+                let items = self.anim.itemsInRect(self.view.bounds) as! [UIView]
                 let ix = find(items, self.iv)
                 if ix == nil {
                     delay(0) { // * both are released
@@ -86,7 +86,7 @@ class ViewController : UIViewController {
         case 4:
             grav.action = {
                 [weak grav] in // *
-                let items = self.anim.itemsInRect(self.view.bounds) as [UIView]
+                let items = self.anim.itemsInRect(self.view.bounds) as! [UIView]
                 let ix = find(items, self.iv)
                 if ix == nil {
                     self.anim.removeBehavior(grav) // * grav is released, iv is not!
@@ -149,7 +149,7 @@ extension ViewController : UIDynamicAnimatorDelegate, UICollisionBehaviorDelegat
         atPoint p: CGPoint) {
             println(p)
             // look for the dynamic item behavior
-            for b in self.anim.behaviors as [UIDynamicBehavior] {
+            for b in self.anim.behaviors as! [UIDynamicBehavior] {
                 if let bounce = b as? UIDynamicItemBehavior {
                     let v = bounce.angularVelocityForItem(self.iv)
                     println(v)

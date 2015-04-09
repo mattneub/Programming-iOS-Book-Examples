@@ -9,7 +9,7 @@ class ViewController : UIViewController {
     
     @IBAction func doButton(sender:AnyObject?) {
     
-        let which = 7
+        let which = 1
         switch which {
         case 1:
             UIView.animateWithDuration(1, animations:{
@@ -53,7 +53,7 @@ class ViewController : UIViewController {
             
         case 6:
             // general solution to all such problems: animate a temporary snapshot instead!
-            let snap = self.v.snapshotViewAfterScreenUpdates(true)
+            let snap = self.v.snapshotViewAfterScreenUpdates(false)
             snap.frame = self.v.frame
             self.v.superview!.addSubview(snap)
             self.v.hidden = true
@@ -67,7 +67,7 @@ class ViewController : UIViewController {
                 })
 
         case 7:
-            let snap = self.v.snapshotViewAfterScreenUpdates(true)
+            let snap = self.v.snapshotViewAfterScreenUpdates(false)
             snap.frame = self.v.frame
             self.v.superview!.addSubview(snap)
             self.v.hidden = true

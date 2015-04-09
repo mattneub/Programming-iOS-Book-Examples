@@ -41,7 +41,7 @@ public extension MyLayer {
             let ba = CABasicAnimation(keyPath: key)
             // stolen directly from Apple's sample code:
             // sorry, guys, but I would never have thought of this!
-            ba.fromValue = (self.presentationLayer() as CALayer).valueForKey(key)
+            ba.fromValue = (self.presentationLayer() as! CALayer).valueForKey(key)
             return ba
         }
         return super.actionForKey(key)

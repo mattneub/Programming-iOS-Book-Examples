@@ -30,7 +30,7 @@ class ViewController : UIViewController {
         emit.emitterCells = [cell]
         self.view.layer.addSublayer(emit)
         
-        let which = 5
+        let which = 0
         switch which {
         case 0:
             break

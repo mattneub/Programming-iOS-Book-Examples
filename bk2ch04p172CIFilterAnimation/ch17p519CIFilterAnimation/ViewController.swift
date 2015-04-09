@@ -19,7 +19,7 @@ class ViewController : UIViewController {
         let col = CIFilter(name:"CIConstantColorGenerator")
         let cicol = CIColor(color:UIColor.redColor())
         col.setValue(cicol, forKey:"inputColor")
-        let colorimage = col.valueForKey("outputImage") as CIImage
+        let colorimage = col.valueForKey("outputImage") as! CIImage
         
         let tran = CIFilter(name:"CIFlashTransition")
         tran.setValue(colorimage, forKey:"inputImage")
