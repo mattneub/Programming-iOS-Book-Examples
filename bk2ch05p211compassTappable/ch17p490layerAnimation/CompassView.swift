@@ -18,8 +18,8 @@ class CompassView : UIView {
     @IBAction func tapped(t:UITapGestureRecognizer) {
         let p = t.locationOfTouch(0, inView: self.superview)
         let hitLayer = self.layer.hitTest(p)
-        let arrow = (self.layer as CompassLayer).arrow
-        if hitLayer? == arrow {
+        let arrow = (self.layer as! CompassLayer).arrow
+        if hitLayer != nil && hitLayer == arrow {
             arrow.transform = CATransform3DRotate(
                 arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)
         }
@@ -40,7 +40,7 @@ class CompassLayer : CALayer {
         }
     }
     
-    override func hitTest(p: CGPoint) -> CALayer? {
+    override func hitTest(p: CGPoint) -> CALayer! {
         var lay = super.hitTest(p)
         if lay == self.arrow {
             // artificially restrict touchability to roughly the shaft/point area

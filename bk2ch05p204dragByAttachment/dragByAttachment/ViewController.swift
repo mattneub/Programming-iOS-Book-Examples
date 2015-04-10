@@ -5,7 +5,7 @@ class ViewController : UIViewController {
     var anim : UIDynamicAnimator!
     var att : UIAttachmentBehavior!
     
-    @IBAction func panning(g: UIPanGestureRecognizer!) {
+    @IBAction func panning(g: UIPanGestureRecognizer) {
         switch g.state {
         case .Began:
             self.anim = UIDynamicAnimator(referenceView:self.view)

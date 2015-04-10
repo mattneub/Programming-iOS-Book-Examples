@@ -23,7 +23,7 @@ class MyView : UIView {
     
     override func drawRect(rect: CGRect) {
         let subs = self.layer.sublayers
-        let lay = subs[subs.count-1] as CALayer
+        let lay = subs[subs.count-1] as! CALayer
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
         let con = UIGraphicsGetCurrentContext()
         let r = self.bounds.rectByInsetting(dx: 30, dy: 30)
@@ -38,13 +38,13 @@ class MyView : UIView {
         lay.contents = im.CGImage
     }
     
-    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-        let inside = self.pointInside(point, withEvent:event)
+    override func hitTest(point: CGPoint, withEvent e: UIEvent?) -> UIView? {
+        let inside = self.pointInside(point, withEvent:e)
         if !inside { return nil }
         
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
         let subs = self.layer.sublayers
-        let lay = subs[subs.count-1] as CALayer
+        let lay = subs[subs.count-1] as! CALayer
         lay.renderInContext(UIGraphicsGetCurrentContext())
         let im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
