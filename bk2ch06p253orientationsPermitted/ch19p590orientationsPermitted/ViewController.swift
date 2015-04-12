@@ -6,13 +6,6 @@ class ViewController : UIViewController {
     
     // how to override the application's list of possible orientations
     // at the view controller level
-
-    // something weird is going on in the Swift version of this
-    // why does supportedInterfaceOrientations() was to return Int?
-    // should be UInt...
-    
-    // And then, how are we supposed to obtain the necessary Int?
-    // Apparently you have to call rawValue, which is annoying
     
     override func supportedInterfaceOrientations() -> Int {
         
@@ -21,7 +14,9 @@ class ViewController : UIViewController {
         let result = UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)
         println(result)
         
+        // uncomment next line in order to crash
         // return UIInterfaceOrientation.Portrait.rawValue // crash!
+        
         // ha ha, you didn't read the docs
         // you don't return an orientation; you return an orientation *mask*
         // (UIInterfaceOrientationMask)
@@ -33,6 +28,8 @@ class ViewController : UIViewController {
 
         println("supported") // called 10 times at launch! WTF?
         // and then 6 more times if you tap on the interface!
+        // okay, in my latest test it's only 5 times at launch
+        // I guess that's, uh, better...
         
         return Int(UIInterfaceOrientationMask.Portrait.rawValue) // gag me with a spoon
     }

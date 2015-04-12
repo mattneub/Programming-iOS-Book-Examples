@@ -23,7 +23,7 @@ class MasterViewController : UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "showDetail" {
-            (segue.destinationViewController as DetailViewController).detailItem = NSDate()
+            (segue.destinationViewController as! DetailViewController).detailItem = NSDate()
         }
     }
     

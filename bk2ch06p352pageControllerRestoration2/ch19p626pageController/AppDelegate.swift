@@ -4,7 +4,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
-    var pep : [NSString]!
+    var pep : [String]!
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
@@ -51,8 +51,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // and assume that Pep is itself archivable (which it now is)
     
     func application(application: UIApplication, willEncodeRestorableStateWithCoder coder: NSCoder) {
-        let pvc = self.window!.rootViewController as UIPageViewController
-        let pep = pvc.viewControllers[0] as Pep
+        let pvc = self.window!.rootViewController as! UIPageViewController
+        let pep = pvc.viewControllers[0] as! Pep
         println("app delegate encoding \(pep)")
         coder.encodeObject(pep, forKey:"pep")
     }
@@ -61,7 +61,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let pep : AnyObject? = coder.decodeObjectForKey("pep")
         println("app delegate decoding \(pep)")
         if let pep = pep as? Pep {
-            let pvc = self.window!.rootViewController as UIPageViewController
+            let pvc = self.window!.rootViewController as! UIPageViewController
             pvc.setViewControllers([pep], direction: .Forward, animated: false, completion: nil)
         }
     }
@@ -69,7 +69,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 
 extension AppDelegate : UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        let boy = (viewController as Pep).boy
+        let boy = (viewController as! Pep).boy
         let ix = find(self.pep, boy)! + 1
         if ix >= self.pep.count {
             return nil
@@ -77,7 +77,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
         return Pep(pepBoy: self.pep[ix])
     }
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        let boy = (viewController as Pep).boy
+        let boy = (viewController as! Pep).boy
         let ix = find(self.pep, boy)! - 1
         if ix < 0 {
             return nil
@@ -91,7 +91,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
         return self.pep.count
     }
     func presentationIndexForPageViewController(pvc: UIPageViewController) -> Int {
-        let page = pvc.viewControllers[0] as Pep
+        let page = pvc.viewControllers[0] as! Pep
         let boy = page.boy
         return find(self.pep, boy)!
     }

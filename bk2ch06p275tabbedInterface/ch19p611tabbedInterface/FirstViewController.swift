@@ -12,7 +12,7 @@ class FirstViewController : UIViewController, UITabBarControllerDelegate {
     // tab bar delegate gets to dictate orientations...
     // so there's no need to subclass UITabBarController
     
-    func tabBarControllerSupportedInterfaceOrientations(tabBarController: UITabBarController!) -> Int {
+    func tabBarControllerSupportedInterfaceOrientations(tabBarController: UITabBarController) -> Int {
         print(self)
         print(" ")
         println(__FUNCTION__)

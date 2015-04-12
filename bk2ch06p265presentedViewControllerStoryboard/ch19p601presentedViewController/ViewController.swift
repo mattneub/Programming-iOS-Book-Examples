@@ -12,7 +12,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "present" { // it will be
-            let svc = segue.destinationViewController as SecondViewController
+            let svc = segue.destinationViewController as! SecondViewController
             svc.data = "This is very important data!"
             svc.delegate = self
         }

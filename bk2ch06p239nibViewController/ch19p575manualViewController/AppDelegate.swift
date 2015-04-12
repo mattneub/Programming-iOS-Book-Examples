@@ -9,17 +9,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        let theRVC = RootViewController(nibName:"MyNib", bundle:nil) // explicit nib name
+        // demonstrating that the eponymous .xib file is _not_ found automatically:
         
-        // in iOS 3, 4, 5, 6, and 7,
-        // if the nib is called "RootView.xib" or "RootViewController.xib",
-        // you can pass nil as the nibName here (or call init() with no args)
-        // but in iOS 8 (starting with seed 5?) this feature is gone for "RootViewController.xib"
-        // ... but it does still work for "RootView.xib"!
-        // I don't know if that's a momentary bug or what, but...
-        // (In one way, it feels deliberate, since RootViewController is a dumb name for xib file!)
-        // since I can't rely on it, however, I'm going to stop relying on it from here on in
-        // so it's going to be explicit nib names from now on, I guess
+        let theRVC = RootViewController()
+        
+        // the empty white window proves that our nib is not loading
         
         self.window!.rootViewController = theRVC
         

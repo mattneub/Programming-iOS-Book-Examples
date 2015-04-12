@@ -12,7 +12,7 @@ class MyPage : UIViewController {
     }
     }
     
-    override init() {
+    init() {
         super.init(nibName: "MyPage", bundle: nil)
     }
     

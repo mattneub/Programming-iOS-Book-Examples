@@ -43,7 +43,7 @@ class Pep: UIViewController {
 
 extension Pep : UIViewControllerRestoration {
     class func viewControllerWithRestorationIdentifierPath(ip: [AnyObject], coder: NSCoder) -> UIViewController? {
-        let boy = coder.decodeObjectForKey("boy") as String
+        let boy = coder.decodeObjectForKey("boy") as! String
         println("pep decoded boy \(boy)")
         return self(pepBoy: boy)
     }

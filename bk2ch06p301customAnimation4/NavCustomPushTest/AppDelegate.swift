@@ -7,7 +7,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
-        (self.window!.rootViewController as UINavigationController).delegate = self
+        (self.window!.rootViewController as! UINavigationController).delegate = self
         return true
         
     }

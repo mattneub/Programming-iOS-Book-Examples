@@ -34,8 +34,8 @@ class ViewController: UIViewController {
     }
     
     override func preferredContentSizeDidChangeForChildContentContainer(container: UIContentContainer) {
-        let child = self.childViewControllers[0] as UIViewController
-        if container as UIViewController == child {
+        let child = self.childViewControllers[0] as! UIViewController
+        if container as! UIViewController == child {
             var sz = child.preferredContentSize
             println("parent hears that the child wants to change size to \(sz)")
             sz.width = min(sz.width, self.view.frame.width - 40*2)
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         let rot = coordinator.targetTransform()
         if !(rot.b == 0 && rot.c == 0) {
             // would our subview be too big for the new orientation?
-            let child = self.childViewControllers[0] as UIViewController
+            let child = self.childViewControllers[0] as! UIViewController
             let f = child.view.frame
             println(f)
             let f2 = self.view.bounds

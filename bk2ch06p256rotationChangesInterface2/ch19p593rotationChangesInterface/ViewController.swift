@@ -38,7 +38,7 @@ class ViewController : UIViewController {
                 multiplier:1, constant:0)
         ]
         
-        self.blackRectConstraintsOnscreen = marrOn as [NSLayoutConstraint]
+        self.blackRectConstraintsOnscreen = marrOn as! [NSLayoutConstraint]
         self.blackRectConstraintsOffscreen = marrOff
         // start out offscreen!
         self.view.addConstraints(self.blackRectConstraintsOffscreen)

@@ -4,7 +4,7 @@ import UIKit
 
 class RootViewController: UIViewController {
     
-    let which = 2
+    let which = 1
     
     override func loadView() {
         let v = UIView()

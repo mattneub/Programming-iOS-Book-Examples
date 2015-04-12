@@ -32,7 +32,7 @@ class ViewController : UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
             _ in
-            self.thing.word = (alert.textFields![0] as UITextField).text
+            self.thing.word = (alert.textFields![0] as! UITextField).text
             }))
         self.presentViewController(alert, animated: true, completion: nil)
     }

@@ -10,7 +10,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow) -> Int {
+    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> Int {
         return Int(UIInterfaceOrientationMask.Landscape.rawValue)
     }
 }

@@ -9,6 +9,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
+        // workaround 5, my favorite: override the `nibName` getter
+        
         let theRVC = RootViewController()
                 
         self.window!.rootViewController = theRVC

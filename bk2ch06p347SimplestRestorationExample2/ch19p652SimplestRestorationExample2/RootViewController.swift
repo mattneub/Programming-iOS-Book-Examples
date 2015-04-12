@@ -22,7 +22,7 @@ class RootViewController : UIViewController {
         let b = UIBarButtonItem(title:"Push",
             style:.Plain, target:self, action:"doPush:")
         self.navigationItem.rightBarButtonItem = b
-        let button = UIButton.buttonWithType(.System) as UIButton
+        let button = UIButton.buttonWithType(.System) as! UIButton
         button.setTitle("Present", forState:.Normal)
         button.addTarget(self,
             action:"doPresent:",
@@ -68,7 +68,7 @@ extension RootViewController : UIViewControllerRestoration {
         coder: NSCoder) -> UIViewController? {
             println("vcwithrip \(NSStringFromClass(self)) \(ip) \(coder)")
             var vc : UIViewController? = nil
-            let last = ip.last as String
+            let last = ip.last as! String
             switch last {
             case "presented":
                 vc = self.makePresentedViewController()

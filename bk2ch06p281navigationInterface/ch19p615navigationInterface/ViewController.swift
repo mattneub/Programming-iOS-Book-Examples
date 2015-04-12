@@ -10,7 +10,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         self.title = "First"
         let b = UIBarButtonItem(image:UIImage(named:"key.png"), style:.Plain, target:self, action:"navigate")
         let b2 = UIBarButtonItem(image:UIImage(named:"files.png"),
-        style:.Bordered, target:nil, action:nil)
+        style:.Plain, target:nil, action:nil)
         self.navigationItem.rightBarButtonItems = [b, b2]
         
         // how to customize back button
@@ -33,7 +33,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         self.navigationController!.delegate = self
     }
     
-    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController!) -> Int {
+    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> Int {
         return Int(UIInterfaceOrientationMask.Portrait.rawValue)
     }
     

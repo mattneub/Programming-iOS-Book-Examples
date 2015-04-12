@@ -2,11 +2,12 @@
 import UIKit
 
 class RootViewController : UIViewController {
-    required init(coder: NSCoder) {
-        fatalError("NSCoding not supported")
-    }
-    override init() {
+    init() {
         super.init(nibName:"RootViewController", bundle:nil)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

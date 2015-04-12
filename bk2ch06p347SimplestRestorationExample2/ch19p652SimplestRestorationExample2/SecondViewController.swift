@@ -21,7 +21,7 @@ class SecondViewController : UIViewController {
         super.viewDidLoad()
         println("view did load \(self)")
         self.view.backgroundColor = UIColor.yellowColor()
-        let button = UIButton.buttonWithType(.System) as UIButton
+        let button = UIButton.buttonWithType(.System) as! UIButton
         button.setTitle("Present", forState:.Normal)
         button.addTarget(self,
             action:"doPresent:",
@@ -55,7 +55,7 @@ extension SecondViewController : UIViewControllerRestoration {
         coder: NSCoder) -> UIViewController? {
             println("vcwithrip \(NSStringFromClass(self)) \(ip) \(coder)")
             var vc : UIViewController? = nil
-            let last = ip.last as String
+            let last = ip.last as! String
             switch last {
             case "presented":
                 vc = self.makePresentedViewController()

@@ -38,7 +38,7 @@ class ViewController2 : UIViewController {
         self.button.setBackgroundImage(im, forState:.Highlighted)
     }
     
-    override init() {
+    init() {
         super.init(nibName: "ViewController2", bundle: nil)
         self.modalPresentationStyle = .Custom
         self.transitioningDelegate = self
@@ -51,7 +51,7 @@ class ViewController2 : UIViewController {
 }
 
 extension ViewController2 : UIViewControllerTransitioningDelegate {
-    func presentationControllerForPresentedViewController(presented: UIViewController!, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController!) -> UIPresentationController! {
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         return MyPresentationController(presentedViewController: presented, presentingViewController: presenting)
     }
 }
@@ -78,7 +78,7 @@ class MyPresentationController : UIPresentationController {
     
     override func dismissalTransitionWillBegin() {
         let con = self.containerView
-        let shadow = (con.subviews as [UIView])[0]
+        let shadow = (con.subviews as! [UIView])[0]
         let tc = self.presentedViewController.transitionCoordinator()!
         tc.animateAlongsideTransition({
             _ in
@@ -111,11 +111,11 @@ class MyPresentationController : UIPresentationController {
 }
 
 extension ViewController2 : UIViewControllerTransitioningDelegate {
-    func animationControllerForPresentedController(presented: UIViewController!, presentingController presenting: UIViewController!, sourceController source: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController!) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
 }

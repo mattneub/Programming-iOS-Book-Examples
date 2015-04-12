@@ -4,7 +4,7 @@ import UIKit
 class ViewController : UIViewController, UIPageViewControllerDataSource {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        let pvc = segue.destinationViewController as UIPageViewController
+        let pvc = segue.destinationViewController as! UIPageViewController
         pvc.dataSource = self
         let page = MyPage()
         page.num = 1
@@ -12,7 +12,7 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        let page = viewController as MyPage
+        let page = viewController as! MyPage
         let num = page.num
         if num == 10 { return nil }
         let page2 = MyPage()
@@ -21,7 +21,7 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        let page = viewController as MyPage
+        let page = viewController as! MyPage
         let num = page.num
         if num == 1 { return nil }
         let page2 = MyPage()
@@ -39,7 +39,7 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
     func jumpTo8(sender:AnyObject?) {
         let page = MyPage()
         page.num = 8
-        let pvc = self.childViewControllers[0] as UIPageViewController
+        let pvc = self.childViewControllers[0] as! UIPageViewController
         pvc.setViewControllers([page], direction: .Forward, animated: true, completion: {
             _ in
             // workaround:

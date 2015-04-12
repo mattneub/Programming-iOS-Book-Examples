@@ -35,7 +35,7 @@ class ViewController : UIViewController {
     // tap button to prove we've got big data
     
     @IBAction func doButton (sender:AnyObject?) {
-        let s = NSString(data: self.myBigData, encoding: NSUTF8StringEncoding)
+        let s = NSString(data: self.myBigData, encoding: NSUTF8StringEncoding) as! String
         let av = UIAlertController(title: "Got big data, and it says:", message: s, preferredStyle: .Alert)
         av.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
         self.presentViewController(av, animated: true, completion: nil)

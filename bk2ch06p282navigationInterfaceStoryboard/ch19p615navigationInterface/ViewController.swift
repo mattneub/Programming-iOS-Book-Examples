@@ -11,7 +11,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         // right bar button item now set up in storyboard so we can use a "show" segue
         let b2 = UIBarButtonItem(image:UIImage(named:"files.png"), style:.Plain, target:nil, action:nil)
         // how to append additional right bar button items
-        var rbbi = self.navigationItem.rightBarButtonItems as [UIBarButtonItem]
+        var rbbi = self.navigationItem.rightBarButtonItems as! [UIBarButtonItem]
         rbbi += [b2]
         self.navigationItem.rightBarButtonItems = rbbi
         
@@ -34,7 +34,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         self.navigationController!.delegate = self
     }
     
-    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController!) -> Int {
+    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> Int {
         return Int(UIInterfaceOrientationMask.Portrait.rawValue)
     }
     

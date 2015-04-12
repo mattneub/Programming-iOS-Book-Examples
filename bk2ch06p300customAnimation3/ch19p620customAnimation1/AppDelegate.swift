@@ -14,7 +14,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let tbc = self.window!.rootViewController as UITabBarController
+        let tbc = self.window!.rootViewController as! UITabBarController
         tbc.delegate = self
         
         // keep ref to g.r.s, because can't learn which one it is by asking for "edges" later
@@ -49,7 +49,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
 extension AppDelegate : UIGestureRecognizerDelegate {
     
     func gestureRecognizerShouldBegin(g: UIGestureRecognizer) -> Bool {
-        let tbc = self.window!.rootViewController as UITabBarController
+        let tbc = self.window!.rootViewController as! UITabBarController
         var result = false
         
         if g == self.rightEdger {
@@ -63,7 +63,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
     
     func pan(g:UIScreenEdgePanGestureRecognizer) {
         let v = g.view!
-        let tbc = self.window!.rootViewController as UITabBarController
+        let tbc = self.window!.rootViewController as! UITabBarController
         let delta = g.translationInView(v)
         let percent = fabs(delta.x/v.bounds.size.width)
         
@@ -168,9 +168,9 @@ extension AppDelegate : UIViewControllerInteractiveTransitioning {
         
         // which way we are going depends on which vc is which
         // the most general way to express this is in terms of index number
-        let tbc = self.window!.rootViewController as UITabBarController
-        let ix1 = find(tbc.viewControllers as [UIViewController], vc1)
-        let ix2 = find(tbc.viewControllers as [UIViewController], vc2)
+        let tbc = self.window!.rootViewController as! UITabBarController
+        let ix1 = find(tbc.viewControllers as! [UIViewController], vc1)
+        let ix2 = find(tbc.viewControllers as! [UIViewController], vc2)
         let dir : CGFloat = ix1 < ix2 ? 1 : -1
         var r1end = r1start
         r1end.origin.x -= r1end.size.width * dir

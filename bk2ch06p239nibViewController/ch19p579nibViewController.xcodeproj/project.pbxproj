@@ -13,7 +13,7 @@
 		C9AFFBBD17C27B8C00C3BAB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AFFBBC17C27B8C00C3BAB0 /* CoreGraphics.framework */; };
 		C9AFFBBF17C27B8C00C3BAB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AFFBBE17C27B8C00C3BAB0 /* UIKit.framework */; };
 		C9AFFBCD17C27B8C00C3BAB0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9AFFBCC17C27B8C00C3BAB0 /* Images.xcassets */; };
-		C9AFFBED17C2850200C3BAB0 /* MyNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9AFFBEC17C2850200C3BAB0 /* MyNib.xib */; };
+		C9AFFBED17C2850200C3BAB0 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9AFFBEC17C2850200C3BAB0 /* RootViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,7 @@
 		C9AFFBC217C27B8C00C3BAB0 /* ch19p579nibViewController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p579nibViewController-Info.plist"; sourceTree = "<group>"; };
 		C9AFFBCC17C27B8C00C3BAB0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9AFFBD317C27B8C00C3BAB0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9AFFBEC17C2850200C3BAB0 /* MyNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNib.xib; sourceTree = "<group>"; };
+		C9AFFBEC17C2850200C3BAB0 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 			children = (
 				321A94111974434700B88F5B /* AppDelegate.swift */,
 				321A94131974436300B88F5B /* RootViewController.swift */,
-				C9AFFBEC17C2850200C3BAB0 /* MyNib.xib */,
+				C9AFFBEC17C2850200C3BAB0 /* RootViewController.xib */,
 				C9AFFBCC17C27B8C00C3BAB0 /* Images.xcassets */,
 				C9AFFBC117C27B8C00C3BAB0 /* Supporting Files */,
 			);
@@ -142,7 +142,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9AFFBED17C2850200C3BAB0 /* MyNib.xib in Resources */,
+				C9AFFBED17C2850200C3BAB0 /* RootViewController.xib in Resources */,
 				C9AFFBCD17C27B8C00C3BAB0 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

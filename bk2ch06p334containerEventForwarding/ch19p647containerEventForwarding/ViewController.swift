@@ -21,8 +21,8 @@ class ViewController : Base {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.swappers.append(self.childViewControllers[0] as UIViewController)
-        self.swappers.append(self.storyboard!.instantiateViewControllerWithIdentifier("child2") as UIViewController)
+        self.swappers.append(self.childViewControllers[0] as! UIViewController)
+        self.swappers.append(self.storyboard!.instantiateViewControllerWithIdentifier("child2") as! UIViewController)
     }
     
     override func viewWillAppear(animated: Bool) {

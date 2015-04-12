@@ -11,7 +11,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        (self.window!.rootViewController as UITabBarController).delegate = self
+        (self.window!.rootViewController as! UITabBarController).delegate = self
         
         return true
     }
@@ -47,9 +47,9 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         
         // which way we are going depends on which vc is which
         // the most general way to express this is in terms of index number
-        let tbc = self.window!.rootViewController as UITabBarController
-        let ix1 = find(tbc.viewControllers as [UIViewController], vc1)
-        let ix2 = find(tbc.viewControllers as [UIViewController], vc2)
+        let tbc = self.window!.rootViewController as! UITabBarController
+        let ix1 = find(tbc.viewControllers as! [UIViewController], vc1)
+        let ix2 = find(tbc.viewControllers as! [UIViewController], vc2)
         let dir : CGFloat = ix1 < ix2 ? 1 : -1
         var r1end = r1start
         r1end.origin.x -= r1end.size.width * dir

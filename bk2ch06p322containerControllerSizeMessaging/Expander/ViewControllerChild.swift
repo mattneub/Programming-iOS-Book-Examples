@@ -6,7 +6,7 @@ class ViewControllerChild: UIViewController {
     
     var expanded = false
     
-    override init() {
+    init() {
         super.init(nibName: "ViewControllerChild", bundle: nil)
         self.preferredContentSize = CGSizeMake(250,250)
     }

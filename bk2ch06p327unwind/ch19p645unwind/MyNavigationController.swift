@@ -19,10 +19,10 @@ class MyNavigationController : UINavigationController {
         var result : UIViewController? = nil
         
         println("nav controller's view controller for unwind is called...")
-        let which = 2
+        let which = 1
         switch which {
         case 1:
-            let vc = self.viewControllers[0] as UIViewController
+            let vc = self.viewControllers[0] as! UIViewController
             println("nav controller returns \(vc) from vc for unwind segue")
             result = vc
         case 2:
@@ -41,7 +41,7 @@ class MyNavigationController : UINavigationController {
         // are we in the very specific situation where
         // we are unwinding from vc 3 thru vc 2 to vc 1?
         
-        let vcs = self.viewControllers as [UIViewController]
+        let vcs = self.viewControllers as! [UIViewController]
         if vcs.count == 2 && toViewController == vcs[0] {
             if fromViewController == self.presentedViewController {
                 return UIStoryboardSegue(identifier: identifier,

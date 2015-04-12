@@ -10,8 +10,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         return true
     }
-    
-    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow) -> Int {
+        
+    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> Int {
         println("supported") // whoa
         
         // uncomment next line to get a different answer...

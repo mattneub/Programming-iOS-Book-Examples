@@ -17,6 +17,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBAction func doButton(sender: AnyObject) {
+        println(self.view.bounds.size)
         let nav = self.navigationController!
         nav.navigationBarHidden = !nav.navigationBarHidden
         delay(1) {
@@ -26,7 +27,7 @@ class ViewController: UIViewController {
     }
     
     override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        println("will rotate") // not called if viewWillTransitionToSize is implement
+        println("will rotate") // not called if viewWillTransitionToSize is implemented
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {

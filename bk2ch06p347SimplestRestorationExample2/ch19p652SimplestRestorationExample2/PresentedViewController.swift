@@ -19,7 +19,7 @@ class PresentedViewController : UIViewController {
         super.viewDidLoad()
         println("view did load \(self)")
         self.view.backgroundColor = UIColor.blueColor()
-        let button = UIButton.buttonWithType(.System) as UIButton
+        let button = UIButton.buttonWithType(.System) as! UIButton
         button.setTitle("Dismiss", forState:.Normal)
         button.addTarget(self,
             action:"doDismiss:",

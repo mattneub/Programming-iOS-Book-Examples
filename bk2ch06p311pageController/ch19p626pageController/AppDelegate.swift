@@ -4,7 +4,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
-    var pep : [NSString]!
+    var pep : [String]!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
@@ -40,7 +40,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 
 extension AppDelegate : UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        let boy = (viewController as Pep).boy
+        let boy = (viewController as! Pep).boy
         let ix = find(self.pep, boy)! + 1
         if ix >= self.pep.count {
             return nil
@@ -48,7 +48,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
         return Pep(pepBoy: self.pep[ix])
     }
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        let boy = (viewController as Pep).boy
+        let boy = (viewController as! Pep).boy
         let ix = find(self.pep, boy)! - 1
         if ix < 0 {
             return nil
@@ -62,7 +62,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
         return self.pep.count
     }
     func presentationIndexForPageViewController(pvc: UIPageViewController) -> Int {
-        let page = pvc.viewControllers[0] as Pep
+        let page = pvc.viewControllers[0] as! Pep
         let boy = page.boy
         return find(self.pep, boy)!
     }
@@ -71,7 +71,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
     
     func messWithGestureRecognizers(pvc:UIPageViewController) {
         if pvc.transitionStyle == .PageCurl { // does nothing for .Scroll
-            for g in pvc.gestureRecognizers as [UIGestureRecognizer] {
+            for g in pvc.gestureRecognizers as! [UIGestureRecognizer] {
                 if let g = g as? UITapGestureRecognizer {
                     g.numberOfTapsRequired = 2
                 }
@@ -80,9 +80,9 @@ extension AppDelegate : UIPageViewControllerDataSource {
         else { // not needed for .PageCurl
             NSNotificationCenter.defaultCenter().addObserverForName("tap", object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: {
                 n in
-                let g = n.object as UIGestureRecognizer
+                let g = n.object as! UIGestureRecognizer
                 let which = g.view!.tag
-                let vc0 = pvc.viewControllers[0] as UIViewController
+                let vc0 = pvc.viewControllers[0] as! UIViewController
                 let vc = (which == 0 ? self.pageViewController(pvc, viewControllerBeforeViewController: vc0) : self.pageViewController(pvc, viewControllerAfterViewController: vc0))
                 if vc == nil {
                     return

@@ -68,7 +68,7 @@ extension MyPresentationController {
 extension MyPresentationController {
     override func dismissalTransitionWillBegin() {
         let con = self.containerView
-        let shadow = (con.subviews as [UIView])[0]
+        let shadow = (con.subviews as! [UIView])[0]
         let tc = self.presentedViewController.transitionCoordinator()!
         tc.animateAlongsideTransition({
             _ in
