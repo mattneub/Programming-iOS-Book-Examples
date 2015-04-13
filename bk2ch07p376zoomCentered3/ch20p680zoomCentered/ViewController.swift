@@ -86,7 +86,7 @@ class MyTappableView : UIView {
         if let result = super.hitTest(point, withEvent:event) {
             return result
         }
-        for sub in self.subviews.reverse() as [UIView] {
+        for sub in self.subviews.reverse() as! [UIView] {
             let pt = self.convertPoint(point, toView:sub)
             if let result = sub.hitTest(pt, withEvent:event) {
                 return result

@@ -11,7 +11,7 @@ class MyTiledView : UIView {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
-        let lay = self.layer as CATiledLayer
+        let lay = self.layer as! CATiledLayer
         let scale = lay.contentsScale
         lay.tileSize = CGSizeMake(208*scale,238*scale)
         lay.levelsOfDetail = 3
@@ -42,7 +42,7 @@ class MyTiledView : UIView {
                 // make a new size
                 self.currentSize = rect.size
                 // make a new image
-                let lay = self.layer as CATiledLayer
+                let lay = self.layer as! CATiledLayer
                 
                 let tr = CGContextGetCTM(UIGraphicsGetCurrentContext())
                 let sc = tr.a/lay.contentsScale

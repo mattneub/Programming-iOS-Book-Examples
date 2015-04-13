@@ -53,7 +53,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     
     @IBAction func tapped(tap : UIGestureRecognizer) {
         let v = tap.view!
-        let sv = v.superview as UIScrollView
+        let sv = v.superview as! UIScrollView
         if sv.zoomScale < 1 {
             sv.setZoomScale(1, animated:true)
             let pt = CGPointMake((v.bounds.width - sv.bounds.width)/2.0,0)

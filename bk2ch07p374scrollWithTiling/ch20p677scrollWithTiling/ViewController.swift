@@ -12,7 +12,7 @@ class ViewController : UIViewController {
         let f = CGRectMake(0,0,3*TILESIZE,3*TILESIZE)
         let content = TiledView(frame:f)
         let tsz = TILESIZE * content.layer.contentsScale
-        (content.layer as CATiledLayer).tileSize = CGSizeMake(tsz, tsz)
+        (content.layer as! CATiledLayer).tileSize = CGSizeMake(tsz, tsz)
         self.sv.addSubview(content)
         self.sv.contentSize = f.size
         self.content = content
@@ -48,7 +48,7 @@ class TiledView : UIView {
             let tile = r
             let x = Int(tile.origin.x/TILESIZE)
             let y = Int(tile.origin.y/TILESIZE)
-            let tileName = NSString(format:"CuriousFrog_500_\(x+3)_\(y)")
+            let tileName = String(format:"CuriousFrog_500_\(x+3)_\(y)")
             let path = NSBundle.mainBundle().pathForResource(tileName, ofType:"png")!
             let image = UIImage(contentsOfFile:path)!
             

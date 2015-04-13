@@ -35,7 +35,7 @@ class ViewController : UIViewController {
         let v = UIView() // content view
         sv.addSubview(v)
         
-        let which = 4
+        let which = 1
         switch which {
         case 1:
             
