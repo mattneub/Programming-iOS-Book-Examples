@@ -35,7 +35,7 @@ class RootViewController : UITableViewController {
 */
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell!
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell!
         if cell == nil {
             cell = UITableViewCell(style:.Default, reuseIdentifier:cellIdentifier)
             
@@ -55,10 +55,13 @@ class RootViewController : UITableViewController {
             // next line didn't work until iOS 7!
             cell.backgroundColor = UIColor.redColor()
             
-//            let b = UIButton.buttonWithType(.System) as UIButton
+//            let b = UIButton.buttonWithType(.System) as! UIButton
 //            b.setTitle("Tap Me", forState:.Normal)
 //            b.sizeToFit()
 //            cell.accessoryView = b
+            
+            // cell.textLabel!.font = UIFont(name:"Helvetica-Bold", size:12.0)
+
             
         }
         cell.textLabel!.text = "Hello there! \(indexPath.row)"

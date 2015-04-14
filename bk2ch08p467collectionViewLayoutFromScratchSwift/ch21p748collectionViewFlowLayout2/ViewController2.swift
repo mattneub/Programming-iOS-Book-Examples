@@ -49,7 +49,7 @@ class ViewController2 : UICollectionViewController {
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            let cv = self.navigationController!.viewControllers[0] as ViewController
+            let cv = self.navigationController!.viewControllers[0] as! ViewController
             let result = cv.collectionView(collectionView, layout:collectionViewLayout,
                 sizeForItemAtIndexPath:indexPath)
             return result

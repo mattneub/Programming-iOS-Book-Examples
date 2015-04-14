@@ -11,8 +11,8 @@ class RootViewController : UITableViewController {
     }
     
     override func viewDidLoad() {
-        let s = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
-        let states = s.componentsSeparatedByString("\n") as [String]
+        let s = String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
+        let states = s.componentsSeparatedByString("\n")
         var previous = ""
         for aState in states {
             // get the first letter
@@ -45,7 +45,7 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
         
@@ -67,7 +67,7 @@ class RootViewController : UITableViewController {
 
     // this is more "interesting"
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as UITableViewHeaderFooterView
+        let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as! UITableViewHeaderFooterView
         if h.tintColor != UIColor.redColor() {
             println("configuring a new header view") // only called about 7 times
             h.tintColor = UIColor.redColor() // invisible marker, tee-hee
@@ -101,7 +101,7 @@ class RootViewController : UITableViewController {
 //            println(b.tintColor)
 //            h.addSubview(b)
         }
-        let lab = h.contentView.viewWithTag(1) as UILabel
+        let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
         return h
         

@@ -16,8 +16,8 @@ class RootViewController : UITableViewController {
     }
     
     override func viewDidLoad() {
-        let s = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
-        let states = s.componentsSeparatedByString("\n") as [String]
+        let s = String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
+        let states = s.componentsSeparatedByString("\n")
         var previous = ""
         for aState in states {
             // get the first letter
@@ -52,7 +52,7 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
         
@@ -68,7 +68,7 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
-        let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as MyHeaderView
+        let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as! MyHeaderView
         if h.tintColor != UIColor.redColor() {
             h.tintColor = UIColor.redColor() // invisible marker, tee-hee
             h.backgroundView = UIView()
@@ -101,7 +101,7 @@ class RootViewController : UITableViewController {
             tap.numberOfTapsRequired = 2
             h.addGestureRecognizer(tap)
         }
-        let lab = h.contentView.viewWithTag(1) as UILabel
+        let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
         h.section = section // *
         return h
@@ -112,7 +112,7 @@ class RootViewController : UITableViewController {
     }
     
     func tap (g : UIGestureRecognizer) {
-        let v = g.view as MyHeaderView
+        let v = g.view as! MyHeaderView
         let sec = v.section
         let ct = self.sectionData[sec].count
         let arr = Array(0..<ct).map {NSIndexPath(forRow:$0, inSection:sec)} // whoa

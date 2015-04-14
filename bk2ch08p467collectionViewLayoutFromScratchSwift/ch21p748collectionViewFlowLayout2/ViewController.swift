@@ -15,12 +15,12 @@ class ViewController : UICollectionViewController {
     lazy var modelCell : Cell = { // load lazily from nib
         () -> Cell in
         let arr = UINib(nibName:"Cell", bundle:nil).instantiateWithOwner(nil, options:nil)
-        return arr[0] as Cell
+        return arr[0] as! Cell
         }()
 
     override func viewDidLoad() {
-        let s = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
-        let states = s.componentsSeparatedByString("\n") as [String]
+        let s = String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
+        let states = s.componentsSeparatedByString("\n")
         var previous = ""
         for aState in states {
             // get the first letter
@@ -65,7 +65,7 @@ class ViewController : UICollectionViewController {
         
         var v : UICollectionReusableView! = nil
         if kind == UICollectionElementKindSectionHeader {
-            v = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", forIndexPath:indexPath) as UICollectionReusableView
+            v = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", forIndexPath:indexPath) as! UICollectionReusableView
             if v.subviews.count == 0 {
                 let lab = UILabel() // we will size it later
                 v.addSubview(lab)
@@ -85,7 +85,7 @@ class ViewController : UICollectionViewController {
                     NSLayoutConstraint.constraintsWithVisualFormat("V:[lab(30)]-5-|",
                         options:nil, metrics:nil, views:["lab":lab]))
             }
-            let lab = v.subviews[0] as UILabel
+            let lab = v.subviews[0] as! UILabel
             lab.text = self.sectionNames[indexPath.section]
         }
         return v
@@ -95,7 +95,7 @@ class ViewController : UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as Cell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! Cell
         if cell.lab.text == "Label" { // new cell
             cell.layer.cornerRadius = 8
             cell.layer.borderWidth = 2

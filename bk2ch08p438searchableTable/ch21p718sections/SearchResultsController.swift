@@ -1,6 +1,7 @@
 
 
 import UIKit
+import Swift
 
 /*
 No law whatever says that the search results controller must be a table view controller,
@@ -17,7 +18,8 @@ class SearchResultsController : UITableViewController {
     
     init(data:[[String]]) {
         // we don't use sections, so flatten the data into a single array of strings
-        self.originalData = data.reduce([String](),+)
+        self.originalData = data.reduce([String](), combine:+)
+        // new in Swift 1.2, could instead say data.flatMap {$0}
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -41,7 +43,7 @@ class SearchResultsController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel!.text = self.filteredData[indexPath.row]
         return cell
     }

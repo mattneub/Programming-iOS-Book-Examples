@@ -16,7 +16,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     lazy var modelCell : Cell = { // load lazily from nib
         () -> Cell in
         let arr = UINib(nibName:"Cell", bundle:nil).instantiateWithOwner(nil, options:nil)
-        return arr[0] as Cell
+        return arr[0] as! Cell
         }()
     
     override func prefersStatusBarHidden() -> Bool {
@@ -24,8 +24,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     override func viewDidLoad() {
-        let s = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
-        let states = s.componentsSeparatedByString("\n") as [String]
+        let s = String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
+        let states = s.componentsSeparatedByString("\n")
         var previous = ""
         for aState in states {
             // get the first letter
@@ -60,7 +60,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         
         // if you don't do something about header size...
         // ...you won't see any headers
-        let flow = self.collectionView!.collectionViewLayout as UICollectionViewFlowLayout
+        let flow = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
         self.setUpFlowLayout(flow)
     }
     
@@ -85,7 +85,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         
         var v : UICollectionReusableView! = nil
         if kind == UICollectionElementKindSectionHeader {
-            v = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", forIndexPath:indexPath) as UICollectionReusableView
+            v = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", forIndexPath:indexPath) as! UICollectionReusableView
             if v.subviews.count == 0 {
                 let lab = UILabel() // we will size it later
                 v.addSubview(lab)
@@ -105,7 +105,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                     NSLayoutConstraint.constraintsWithVisualFormat("V:[lab(30)]-5-|",
                         options:nil, metrics:nil, views:["lab":lab]))
             }
-            let lab = v.subviews[0] as UILabel
+            let lab = v.subviews[0] as! UILabel
             lab.text = self.sectionNames[indexPath.section]
         }
         return v
@@ -115,7 +115,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as Cell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! Cell
         if cell.lab.text == "Label" { // new cell
             cell.layer.cornerRadius = 8
             cell.layer.borderWidth = 2
@@ -188,8 +188,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // can just change layouts on the fly! with built-in animation!!!
     func doSwitch(sender:AnyObject!) { // button
         // new iOS 7 property collectionView.collectionViewLayout points to *original* layout, which is preserved
-        let oldLayout = self.collectionView!.collectionViewLayout as UICollectionViewFlowLayout
-        var newLayout = self.collectionViewLayout as UICollectionViewFlowLayout
+        let oldLayout = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
+        var newLayout = self.collectionViewLayout as! UICollectionViewFlowLayout
         if newLayout == oldLayout {
             newLayout = MyFlowLayout()
         }
@@ -202,12 +202,12 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // deletion, really quite similar to a table view
     
     func doDelete(sender:AnyObject) { // button, delete selected cells
-        let arr = self.collectionView!.indexPathsForSelectedItems() as [NSIndexPath]
+        let arr = self.collectionView!.indexPathsForSelectedItems() as! [NSIndexPath]
         if arr.count == 0 {
             return
         }
         // sort
-        let arr2 = (arr as NSArray).sortedArrayUsingSelector(Selector("compare:")).reverse() as [NSIndexPath]
+        let arr2 = (arr as NSArray).sortedArrayUsingSelector(Selector("compare:")).reverse() as! [NSIndexPath]
         // delete data
         var empties = [Int]() // keep track of what sections get emptied
         for ip in arr2 {

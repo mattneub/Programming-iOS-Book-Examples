@@ -6,7 +6,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
     // looks much nicer, in my humble opinion
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
-        let arr = super.layoutAttributesForElementsInRect(rect) as [UICollectionViewLayoutAttributes]
+        let arr = super.layoutAttributesForElementsInRect(rect) as! [UICollectionViewLayoutAttributes]
         return arr.map {
             atts in
             if atts.representedElementKind == nil {

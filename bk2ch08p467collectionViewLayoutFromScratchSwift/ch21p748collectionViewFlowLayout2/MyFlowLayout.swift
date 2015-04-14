@@ -2,6 +2,10 @@
 import UIKit
 
 class MyDynamicAnimator : UIDynamicAnimator {
+    // work around Swift 1.2 initializer inheritance bug
+    override init(collectionViewLayout:UICollectionViewLayout) {
+        super.init(collectionViewLayout:collectionViewLayout)
+    }
     deinit {
         println("animator: farewell")
     }
@@ -22,7 +26,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
     var animator : UIDynamicAnimator!
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject] {
-        let sup = super.layoutAttributesForElementsInRect(rect) as [UICollectionViewLayoutAttributes]
+        let sup = super.layoutAttributesForElementsInRect(rect) as! [UICollectionViewLayoutAttributes]
         let arr = sup.map {
             atts -> UICollectionViewLayoutAttributes in
             if atts.representedElementKind == nil {
@@ -82,7 +86,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         // we do not want the headers to be part of this collision behavior...
         // because they stretch all the way across the screen and won't fall through
         
-        let items = (atts as [UICollectionViewLayoutAttributes]).filter {
+        let items = (atts as! [UICollectionViewLayoutAttributes]).filter {
             $0.representedElementKind == nil
         }
         let coll = UICollisionBehavior(items:items)

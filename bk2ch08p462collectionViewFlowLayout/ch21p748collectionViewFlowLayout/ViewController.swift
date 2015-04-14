@@ -12,8 +12,8 @@ class ViewController : UICollectionViewController {
     }
     
     override func viewDidLoad() {
-        let s = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
-        let states = s.componentsSeparatedByString("\n") as [String]
+        let s = String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
+        let states = s.componentsSeparatedByString("\n")
         var previous = ""
         for aState in states {
             // get the first letter
@@ -32,7 +32,7 @@ class ViewController : UICollectionViewController {
         self.collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header")
         // if you don't do something about header size...
         // ...you won't see any headers
-        let flow = self.collectionView!.collectionViewLayout as UICollectionViewFlowLayout
+        let flow = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
         flow.headerReferenceSize = CGSizeMake(30,30)
     }
     
@@ -51,11 +51,11 @@ class ViewController : UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         var v : UICollectionReusableView! = nil
         if kind == UICollectionElementKindSectionHeader {
-            v = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", forIndexPath:indexPath) as UICollectionReusableView
+            v = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", forIndexPath:indexPath) as! UICollectionReusableView
             if v.subviews.count == 0 {
                 v.addSubview(UILabel(frame:CGRectMake(0,0,30,30)))
             }
-            let lab = v.subviews[0] as UILabel
+            let lab = v.subviews[0] as! UILabel
             lab.text = (self.sectionNames)[indexPath.section]
             lab.textAlignment = .Center
         }
@@ -65,11 +65,11 @@ class ViewController : UICollectionViewController {
     // cells
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath:indexPath) as UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath:indexPath) as! UICollectionViewCell
         if cell.contentView.subviews.count == 0 {
             cell.contentView.addSubview(UILabel(frame:CGRectMake(0,0,30,30)))
         }
-        let lab = cell.contentView.subviews[0] as UILabel
+        let lab = cell.contentView.subviews[0] as! UILabel
         lab.text = (self.sectionData)[indexPath.section][indexPath.item] // "item" synonym for "row"
         lab.sizeToFit()
         return cell

@@ -10,7 +10,7 @@ class Cell : UICollectionViewCell {
         // find my collection view
         var v : UIView = self
         do { v = v.superview! } while !(v is UICollectionView)
-        let cv = v as UICollectionView
+        let cv = v as! UICollectionView
         // ask it what index path we are
         let ip = cv.indexPathForCell(self)!
         // relay to its delegate

@@ -12,8 +12,8 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func viewDidLoad() {
-        let s = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
-        let states = s.componentsSeparatedByString("\n") as [String]
+        let s = String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
+        let states = s.componentsSeparatedByString("\n")
         var previous = ""
         for aState in states {
             // get the first letter
@@ -65,7 +65,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
         
@@ -81,7 +81,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as UITableViewHeaderFooterView
+        let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as! UITableViewHeaderFooterView
         if h.tintColor != UIColor.redColor() {
             h.tintColor = UIColor.redColor() // invisible marker, tee-hee
             h.backgroundView = UIView()
@@ -109,7 +109,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
                 NSLayoutConstraint.constraintsWithVisualFormat("V:|[lab]|",
                     options:nil, metrics:nil, views:["lab":lab]))
         }
-        let lab = h.contentView.viewWithTag(1) as UILabel
+        let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
         return h
         
@@ -125,7 +125,7 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
     func presentSearchController(sc: UISearchController) {
         println("search!")
         // good opportunity to control timing of search results controller configuration
-        let src = sc.searchResultsController as SearchResultsController
+        let src = sc.searchResultsController as! SearchResultsController
         src.takeData(self.sectionData) // that way if it changes we are up to date
         sc.searchResultsUpdater = src
         sc.searchBar.delegate = src
@@ -141,11 +141,11 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
         return p
     }
     
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning! {
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
     
@@ -175,7 +175,7 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
             
             con.addSubview(v2)
             v2.frame = r2end
-            let sc = vc2 as UISearchController
+            let sc = vc2 as! UISearchController
             let sb = sc.searchBar
             sb.removeFromSuperview()
             // hold my beer and watch _this_!
@@ -196,7 +196,7 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
             // but if we showed the cancel button and we don't want it in the normal interface,
             // we need to get rid of it now; similarly with the scope bar
             
-            let sc = vc1 as UISearchController
+            let sc = vc1 as! UISearchController
             let sb = sc.searchBar
             sb.showsCancelButton = false
             sb.showsScopeBar = false

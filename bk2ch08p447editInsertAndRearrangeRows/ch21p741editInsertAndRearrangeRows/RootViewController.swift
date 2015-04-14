@@ -30,7 +30,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell",
-            forIndexPath:indexPath) as MyCell
+            forIndexPath:indexPath) as! MyCell
         
         switch indexPath.section {
         case 0:
@@ -74,7 +74,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         // another way to say:
 //        var v : UIView
 //        for v = textField; !(v is UITableViewCell); v = v.superview! {}
-        let cell = v as MyCell
+        let cell = v as! MyCell
         // update data model to match
         let ip = self.tableView.indexPathForCell(cell)!
         if ip.section == 1 {
@@ -130,7 +130,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
             // crucial that this next bit be *outside* the update block
             let cell = self.tableView.cellForRowAtIndexPath(
                 NSIndexPath(forRow:ct-1, inSection:1))
-            (cell as MyCell).textField.becomeFirstResponder()
+            (cell as! MyCell).textField.becomeFirstResponder()
         }
         if editingStyle == .Delete {
             self.numbers.removeAtIndex(indexPath.row)

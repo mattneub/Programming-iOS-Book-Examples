@@ -26,7 +26,7 @@ class RootViewController : UITableViewController {
 */
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! UITableViewCell
         if cell.viewWithTag(1) == nil {
             let iv = UIImageView()
             iv.tag = 1
@@ -65,10 +65,10 @@ class RootViewController : UITableViewController {
         }
         // can refer to subviews by their tags
         
-        let lab = cell.viewWithTag(2) as UILabel
+        let lab = cell.viewWithTag(2) as! UILabel
         lab.text = "The author of this book, who would rather be out dirt biking"
         
-        let iv = cell.viewWithTag(1) as UIImageView
+        let iv = cell.viewWithTag(1) as! UIImageView
         // shrink apparent size of image
         let im = UIImage(named:"moi.png")!
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(36,36), true, 0.0)

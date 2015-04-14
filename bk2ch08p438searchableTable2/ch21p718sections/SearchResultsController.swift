@@ -9,7 +9,7 @@ class SearchResultsController : UITableViewController {
         
     func takeData(data:[[String]]) {
         // we don't use sections, so flatten the data into a single array of strings
-        self.originalData = data.reduce([String](),+)
+        self.originalData = data.reduce([String](), combine:+)
     }
     
     override func viewDidLoad() {
@@ -31,7 +31,7 @@ class SearchResultsController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel!.text = self.filteredData[indexPath.row]
         return cell
     }
@@ -58,7 +58,7 @@ extension SearchResultsController : UISearchResultsUpdating {
 }
 
 extension SearchResultsController : UISearchBarDelegate {
-    func searchBar(searchBar: UISearchBar!, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         self.updateSearchResultsForSearchController(self.searchController!)
     }
 }

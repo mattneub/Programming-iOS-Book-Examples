@@ -6,7 +6,7 @@ class ViewController : UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let layout = self.collectionView!.collectionViewLayout as UICollectionViewFlowLayout
+        let layout = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSizeMake(150,50)
         
         let v = UIView()
@@ -43,7 +43,7 @@ class ViewController : UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell",
-        forIndexPath:indexPath) as UICollectionViewCell
+        forIndexPath:indexPath) as! UICollectionViewCell
         if cell.backgroundView == nil { // brand new cell
             cell.backgroundColor = UIColor.redColor()
             
@@ -72,7 +72,7 @@ class ViewController : UICollectionViewController {
             lab.highlightedTextColor = UIColor.whiteColor()
             lab.backgroundColor = UIColor.clearColor()
         }
-        let lab = cell.viewWithTag(1) as UILabel
+        let lab = cell.viewWithTag(1) as! UILabel
         lab.text = "Howdy there \(indexPath.item)"
         return cell
     }
