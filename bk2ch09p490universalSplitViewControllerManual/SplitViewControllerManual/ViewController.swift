@@ -33,8 +33,8 @@ class ViewController: UIViewController {
     
     override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
         if action == "showHide:" {
-            let svc = self.childViewControllers[0] as UISplitViewController
-            let primary = svc.viewControllers[0] as UIViewController
+            let svc = self.childViewControllers[0] as! UISplitViewController
+            let primary = svc.viewControllers[0] as! UIViewController
             if primary.canPerformAction(action, withSender: sender) {
                 return primary
             }

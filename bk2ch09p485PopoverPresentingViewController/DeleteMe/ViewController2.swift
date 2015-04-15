@@ -8,12 +8,12 @@ class ViewController2: UIViewController, UIPopoverPresentationControllerDelegate
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         println("prepare") // make sure we're called
-        let dest = segue.destinationViewController as UIViewController
+        let dest = segue.destinationViewController as! UIViewController
         dest.modalInPopover = true  // does nothing
         self.modalInPopover = true // desperate, still does nothing
         if let pop = self.popoverPresentationController {
             println("del")
-            pop.delegate = self
+            pop.delegate = self // comment out this line to see what happens without the workaround
         }
     }
     

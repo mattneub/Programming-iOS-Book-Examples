@@ -48,7 +48,7 @@ class MasterViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             let ip = self.tableView.indexPathForSelectedRow()!
             let object = objects[ip.row] as NSDate
-            let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
+            let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
             println("prepare for segue")
             println(object)
             controller.detailItem = object
@@ -74,7 +74,7 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         let object = objects[indexPath.row] as NSDate
         cell.textLabel!.text = object.description
         return cell

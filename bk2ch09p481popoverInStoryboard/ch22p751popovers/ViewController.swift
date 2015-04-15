@@ -26,7 +26,7 @@ class ViewController : UIViewController, UIToolbarDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         println(segue)
-        let dest = segue.destinationViewController as UIViewController
+        let dest = segue.destinationViewController as! UIViewController
         if let pop = dest.popoverPresentationController {
             pop.delegate = self
             delay(0.1) {

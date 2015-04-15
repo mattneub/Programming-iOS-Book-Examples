@@ -44,11 +44,11 @@ class PrimaryViewController : UIViewController {
         // note this expression of the difference as to where the Secondary will be,
         // depending whether the svc is expanded or collapsed
         if !self.splitViewController!.collapsed {
-            vc = self.splitViewController!.viewControllers[1] as UIViewController
+            vc = self.splitViewController!.viewControllers[1] as! UIViewController
         } else {
-            vc = self.childViewControllers[0] as UIViewController
+            vc = self.childViewControllers[0] as! UIViewController
         }
-        let seg = sender as UISegmentedControl
+        let seg = sender as! UISegmentedControl
         switch seg.selectedSegmentIndex {
         case 0:
             vc.view.backgroundColor = UIColor.whiteColor()
@@ -76,7 +76,7 @@ class PrimaryViewController : UIViewController {
             NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options: nil, metrics: nil, views: ["v":vc2.view])
         )
         self.verticalConstraints =
-            (NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options: nil, metrics: nil, views: ["v":vc2.view]) as [NSLayoutConstraint])
+            (NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options: nil, metrics: nil, views: ["v":vc2.view]) as! [NSLayoutConstraint])
         self.view.addConstraints(self.verticalConstraints!)
     }
 }
@@ -124,7 +124,7 @@ extension PrimaryViewController {
             }
         }
         else {
-            let vc2 = sender as UIViewController
+            let vc2 = sender as! UIViewController
             var con = 0
             if !self.exposed {
                 con = 270
@@ -132,7 +132,7 @@ extension PrimaryViewController {
             self.exposed = !self.exposed
             self.view.removeConstraints(self.verticalConstraints!)
             self.verticalConstraints = (
-                NSLayoutConstraint.constraintsWithVisualFormat("V:|-(minuscon)-[v]-(con)-|", options: nil, metrics: ["con":con, "minuscon":-con], views: ["v":vc2.view]) as [NSLayoutConstraint]
+                NSLayoutConstraint.constraintsWithVisualFormat("V:|-(minuscon)-[v]-(con)-|", options: nil, metrics: ["con":con, "minuscon":-con], views: ["v":vc2.view]) as! [NSLayoutConstraint]
             )
             self.view.addConstraints(self.verticalConstraints!)
             UIView.animateWithDuration(0.25, animations: {

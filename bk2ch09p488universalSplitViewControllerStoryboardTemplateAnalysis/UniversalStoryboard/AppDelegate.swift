@@ -24,9 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        let svc = self.window!.rootViewController as UISplitViewController
+        let svc = self.window!.rootViewController as! UISplitViewController
         // place button in detail controller's nav bar
-        let nav = svc.viewControllers.last as UINavigationController
+        let nav = svc.viewControllers.last as! UINavigationController
         // new in iOS 8, split v.c. vends the button with a method
         // note duplication!
         // the button will be added when the user taps a row in the master v.c....

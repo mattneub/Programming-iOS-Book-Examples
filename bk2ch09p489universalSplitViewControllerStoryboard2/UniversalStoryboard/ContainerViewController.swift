@@ -41,7 +41,7 @@ class ContainerViewController : UIViewController {
         if !self.didInitialSetup {
             self.didInitialSetup = true
             self.view.backgroundColor = UIColor.greenColor()
-            let svc = self.childViewControllers[0] as UISplitViewController
+            let svc = self.childViewControllers[0] as! UISplitViewController
             svc.preferredDisplayMode = .AllVisible
             // if not collapsed, always side by side
             // if you insert the display mode button, it gives the option to hide the master column
@@ -65,7 +65,7 @@ class ContainerViewController : UIViewController {
     // don't override traits on launch (so, portrait, collapsed)
     // but do override just in case we rotate to landscape
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        let svc = self.childViewControllers[0] as UISplitViewController
+        let svc = self.childViewControllers[0] as! UISplitViewController
         if which == 2 {
             if size.width > 320 {
                 // landscape
@@ -85,7 +85,7 @@ extension ContainerViewController : UISplitViewControllerDelegate {
     // as in the template, we must take action to prevent the detail from being pushed and shown
     // in collapsed mode
     
-    func splitViewController(svc: UISplitViewController!,
+    func splitViewController(svc: UISplitViewController,
         collapseSecondaryViewController vc2: UIViewController!,
         ontoPrimaryViewController vc1: UIViewController!) -> Bool {
             return true

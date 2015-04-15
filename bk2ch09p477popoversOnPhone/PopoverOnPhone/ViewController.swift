@@ -21,12 +21,12 @@ class ViewController: UIViewController {
         wv.frame = vc.view.bounds
         wv.autoresizingMask = .FlexibleWidth | .FlexibleHeight
         let f = NSBundle.mainBundle().pathForResource("linkhelp", ofType: "html")
-        let s = NSString(contentsOfFile: f!, encoding: NSUTF8StringEncoding, error: nil)
+        let s = String(contentsOfFile: f!, encoding: NSUTF8StringEncoding, error: nil)
         wv.loadHTMLString(s, baseURL: nil)
         
         if let pop = vc.popoverPresentationController {
-            pop.sourceView = (sender as UIView)
-            pop.sourceRect = (sender as UIView).bounds
+            pop.sourceView = (sender as! UIView)
+            pop.sourceRect = (sender as! UIView).bounds
         }
         
         // that alone is completely sufficient, on iOS 8, for iPad and iPhone!
