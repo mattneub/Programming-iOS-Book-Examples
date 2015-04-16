@@ -61,11 +61,11 @@ class ViewController : UIViewController {
         
         let mas = NSMutableAttributedString(string:s, attributes:[
             NSFontAttributeName:f,
-            NSParagraphStyleAttributeName:lend({
+            NSParagraphStyleAttributeName: lend {
                 (para : NSMutableParagraphStyle) in
                 para.alignment = align
                 para.lineBreakMode = brk
-            })
+            }
         ])
         mas.addAttribute(NSForegroundColorAttributeName,
             value:UIColor.blueColor(),

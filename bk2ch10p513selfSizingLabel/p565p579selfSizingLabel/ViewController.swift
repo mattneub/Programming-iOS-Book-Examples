@@ -17,22 +17,22 @@ class ViewController : UIViewController {
         let showTheBug = false
         switch showTheBug {
         case true:
-            let att = self.theLabel.attributedText.mutableCopy() as NSMutableAttributedString
+            let att = self.theLabel.attributedText.mutableCopy() as! NSMutableAttributedString
             att.addAttribute(NSParagraphStyleAttributeName,
-                value:lend({
+                value: lend {
                     (para : NSMutableParagraphStyle) in
                     para.headIndent = 20;
                     para.firstLineHeadIndent = 20
                     para.tailIndent = -20
-                }),
+                } ,
                 range:NSMakeRange(0,1))
             self.theLabel.attributedText = att
 
         default:break
         }
 
-        
         self.theLabel.sizeToFit()
+        
     }
     
 }

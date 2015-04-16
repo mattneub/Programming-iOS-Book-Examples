@@ -32,12 +32,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // not very satisfactory but it does show the result
         
-        var md = (textField.typingAttributes! as NSDictionary).mutableCopy() as NSMutableDictionary
+        var md = (textField.typingAttributes! as NSDictionary).mutableCopy() as! NSMutableDictionary
         md.addEntriesFromDictionary([
             NSForegroundColorAttributeName: UIColor.redColor(),
             NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue
         ])
-        textField.typingAttributes = md
+        textField.typingAttributes = md as [NSObject:AnyObject]
         
         return false
 

@@ -53,7 +53,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     // kind of hacky, but the problem is that textViewDidChange was happening too late;
     // by that time, the text view had scrolled if necessary
 
-    func textView(textView: UITextView!, shouldChangeTextInRange range: NSRange, replacementText text: String!) -> Bool {
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         textView.text = (textView.text as NSString).stringByReplacingCharactersInRange(range,
             withString:text)
         self.adjustHeight()

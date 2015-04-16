@@ -7,8 +7,8 @@ class MyTextField: UITextField {
     
     let list : [String] = {
         let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")!
-        let s = NSString(contentsOfURL:path, encoding:NSUTF8StringEncoding, error:nil)!
-        return s.componentsSeparatedByString("\n") as [String]
+        let s = String(contentsOfURL:path, encoding:NSUTF8StringEncoding, error:nil)!
+        return s.componentsSeparatedByString("\n")
         }()
     
     func stateForAbbrev(abbrev:String) -> String? {
@@ -21,8 +21,7 @@ class MyTextField: UITextField {
         if action == "expand:" {
             if let r = self.selectedTextRange {
                 let s = self.textInRange(r)
-                return
-                    countElements(s) == 2 && self.stateForAbbrev(s) != nil
+                return count(s) == 2 && self.stateForAbbrev(s) != nil
             }
             
         }

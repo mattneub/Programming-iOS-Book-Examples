@@ -17,7 +17,6 @@
 		C9A50D79180F835200F5B6CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A50D78180F835200F5B6CE /* AppDelegate.m */; };
 		C9A50D7C180F835200F5B6CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A50D7A180F835200F5B6CE /* Main.storyboard */; };
 		C9A50D81180F835300F5B6CE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A50D80180F835300F5B6CE /* Images.xcassets */; };
-		C9A50D9F1810085000F5B6CE /* StringDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A50D9E1810085000F5B6CE /* StringDrawer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +36,6 @@
 		C9A50D7B180F835200F5B6CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9A50D80180F835300F5B6CE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9A50D87180F835300F5B6CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9A50D9D1810085000F5B6CE /* StringDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringDrawer.h; sourceTree = "<group>"; };
-		C9A50D9E1810085000F5B6CE /* StringDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringDrawer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +87,6 @@
 				C9A50D78180F835200F5B6CE /* AppDelegate.m */,
 				C9A50D7A180F835200F5B6CE /* Main.storyboard */,
 				32C95B71198BC18100708AC3 /* ViewController.swift */,
-				C9A50D9D1810085000F5B6CE /* StringDrawer.h */,
-				C9A50D9E1810085000F5B6CE /* StringDrawer.m */,
 				32C95B73198BC1E700708AC3 /* StringDrawer.swift */,
 				C9A50D80180F835300F5B6CE /* Images.xcassets */,
 				C9A50D6F180F835200F5B6CE /* Supporting Files */,
@@ -177,7 +172,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9A50D9F1810085000F5B6CE /* StringDrawer.m in Sources */,
 				32C95B74198BC1E700708AC3 /* StringDrawer.swift in Sources */,
 				C9A50D79180F835200F5B6CE /* AppDelegate.m in Sources */,
 				32C95B72198BC18100708AC3 /* ViewController.swift in Sources */,

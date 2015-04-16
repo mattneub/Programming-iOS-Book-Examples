@@ -126,7 +126,7 @@ class StyledText: UIView {
         let characterRange = self.lm.characterRangeForGlyphRange(glyphRange, actualGlyphRange:nil)
         let s = (self.text.string as NSString).substringWithRange(characterRange) // state name
         println("you tapped \(s)")
-        let lm = self.lm as MyLayoutManager
+        let lm = self.lm as! MyLayoutManager
         lm.wordRange = characterRange
         self.setNeedsDisplay()
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()

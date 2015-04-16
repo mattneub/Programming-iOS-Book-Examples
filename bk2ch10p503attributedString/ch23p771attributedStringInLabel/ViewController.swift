@@ -26,7 +26,7 @@ class ViewController : UIViewController {
         var content : NSMutableAttributedString!
         var content2 : NSMutableAttributedString!
 
-        let which = 5 // 0 ... 5
+        let which = 0 // 0 ... 5
         switch which {
         case 0, 1, 4, 5:
             let s1 = "The Gettysburg Address, as delivered on a certain occasion " +
@@ -70,6 +70,7 @@ class ViewController : UIViewController {
                 NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:24)!,
                 NSExpansionAttributeName: 0.3,
                 NSKernAttributeName: -4 // negative kerning bug fixed in iOS 8
+                // but they broke it again in iOS 8.3!
             ], range:NSMakeRange(0,1))
             self.lab.attributedText = content2
             self.tv.attributedText = content2
@@ -77,7 +78,7 @@ class ViewController : UIViewController {
             if which > 2 {fallthrough}
         case 3, 4, 5:
             content2.addAttribute(NSParagraphStyleAttributeName,
-                value:lend(){
+                value:lend {
                     (para:NSMutableParagraphStyle) in
                     para.headIndent = 10
                     para.firstLineHeadIndent = 10
@@ -106,9 +107,9 @@ class ViewController : UIViewController {
                 inRange:NSMakeRange(0,content.length),
                 options:opts,
                 usingBlock: {
-                    (value:AnyObject!, range:NSRange, stop:UnsafeMutablePointer<ObjCBool>) -> Void in
+                    value, range, stop in
                     println(range)
-                    let font = value as UIFont
+                    let font = value as! UIFont
                     if font.pointSize == 15 {
                         content.addAttribute(NSFontAttributeName,
                             value:UIFont(name: "Arial-BoldMT", size:20)!,

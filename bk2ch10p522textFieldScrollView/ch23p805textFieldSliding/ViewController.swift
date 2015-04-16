@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
         
-        let contentView = self.scrollView.subviews[0] as UIView
+        let contentView = self.scrollView.subviews[0] as! UIView
         self.scrollView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Width, relatedBy: .Equal, toItem: self.scrollView, attribute: .Width, multiplier: 1, constant: 0))
         self.scrollView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Height, relatedBy: .Equal, toItem: self.scrollView, attribute: .Height, multiplier: 1, constant: 0))
         
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         self.oldOffset = self.scrollView.contentOffset
         
         let d = n.userInfo!
-        var r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
+        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         r = self.scrollView.convertRect(r, fromView:nil)
         // no need to scroll, as the scroll view will do it for us
         // so all we have to do is adjust the inset

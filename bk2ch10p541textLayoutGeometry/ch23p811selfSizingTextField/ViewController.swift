@@ -94,7 +94,7 @@ class ViewController: UIViewController {
             println((self.tv.text as NSString).substringWithRange(r))
         }
         
-        let lm = self.tv.layoutManager as MyLayoutManager
+        let lm = self.tv.layoutManager as! MyLayoutManager
         lm.wordRange = r
         lm.invalidateDisplayForCharacterRange(r)
 

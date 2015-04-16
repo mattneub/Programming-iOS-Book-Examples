@@ -34,7 +34,7 @@ class ViewController: UIViewController {
             },
             range:NSMakeRange(0,1))
         
-        let which = 2
+        let which = 1
         switch which {
         case 1:
             let r = self.tv.frame

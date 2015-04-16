@@ -1,6 +1,6 @@
 
 import UIKit
-import CoreText
+// import CoreText // no longer necessary to import core text
 
 class ViewController : UIViewController {
     

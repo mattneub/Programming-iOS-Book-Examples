@@ -1,34 +1,19 @@
 
 
 import UIKit
-func delay(delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
-}
+
 func lend<T where T:NSObject> (closure:(T)->()) -> T {
     let orig = T()
     closure(orig)
     return orig
 }
 
-class ViewController : UIViewController {
-    @IBOutlet var lab1 : UILabel! // normal; width constrained absolutely, height adjusts automatically
-    @IBOutlet var lab2 : UILabel! // MyLabel; set up in the nib to adjust automatically, the label subclass is no longer needed in iOS 8
-    
-    // rotate for full effect
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        delay(2) {
-            self.doYourThing()
-        }
-    }
-    
-    func doYourThing() {
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
         
         let s2 = "Fourscore and seven years ago, our fathers brought forth " +
             "upon this continent a new nation, conceived in liberty and dedicated " +
@@ -55,17 +40,27 @@ class ViewController : UIViewController {
             },
             range:NSMakeRange(0,1))
         
-        self.lab1.attributedText = content2
-        self.lab2.attributedText = content2
+        
+        let lab = UILabel() // preferredMaxLayoutWidth is 0
+        lab.numberOfLines = 0
+        lab.backgroundColor = UIColor.yellowColor()
+        lab.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.view.addSubview(lab)
+        self.view.addConstraints(
+            NSLayoutConstraint.constraintsWithVisualFormat(
+                "H:|-(30)-[v]-(30)-|",
+                options: nil, metrics: nil, views: ["v":lab])
+        )
+        self.view.addConstraints(
+            NSLayoutConstraint.constraintsWithVisualFormat(
+                "V:|-(30)-[v]",
+                options: nil, metrics: nil, views: ["v":lab])
+        )
+        lab.attributedText = content2
 
     }
-    
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animateAlongsideTransition(nil) {
-            _ in
-            println(self.lab1.preferredMaxLayoutWidth)
-            println(self.lab2.preferredMaxLayoutWidth)
-        }
 
-    }
+
+
 }
+

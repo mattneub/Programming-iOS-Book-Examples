@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func keyboardShow(n:NSNotification) {
         let d = n.userInfo!
-        var r = (d[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
+        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         // in iOS 8, keyboard and fullscreen views are in same coordinate space
         // however, I'm keeping this line because our view might not be fullscreen
         r = self.slidingView.convertRect(r, fromView:nil)

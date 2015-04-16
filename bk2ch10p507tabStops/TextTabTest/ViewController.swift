@@ -18,7 +18,7 @@ class ViewController : UIViewController {
         let s = "Onions\t$2.34\nPeppers\t$15.2\n"
         let mas = NSMutableAttributedString(string:s, attributes:[
             NSFontAttributeName:UIFont(name:"GillSans", size:15)!,
-            NSParagraphStyleAttributeName:lend() {
+            NSParagraphStyleAttributeName:lend {
                 (p:NSMutableParagraphStyle) in
                 var tabs = [NSTextTab]()
                 let terms = NSTextTab.columnTerminatorsForLocale(NSLocale.currentLocale())
@@ -78,10 +78,10 @@ class ViewController : UIViewController {
         let src = CGImageSourceCreateWithURL(url, nil)
         let scale = UIScreen.mainScreen().scale
         let w : CGFloat = 20 * scale
-        let d : [String:AnyObject] = [
-            kCGImageSourceShouldAllowFloat : kCFBooleanTrue,
-            kCGImageSourceCreateThumbnailWithTransform: kCFBooleanTrue,
-            kCGImageSourceCreateThumbnailFromImageAlways: kCFBooleanTrue,
+        let d : [NSObject:AnyObject] = [
+            kCGImageSourceShouldAllowFloat : true,
+            kCGImageSourceCreateThumbnailWithTransform: true,
+            kCGImageSourceCreateThumbnailFromImageAlways: true,
             kCGImageSourceThumbnailMaxPixelSize: Int(w)
         ]
         let imref =

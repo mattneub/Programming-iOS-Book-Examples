@@ -16,12 +16,12 @@ class ViewController : UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doDynamicType:", name: UIContentSizeCategoryDidChangeNotification, object: nil)
         
 //        UIFont.familyNames()
-//            .map{UIFont.fontNamesForFamilyName($0 as String)}.map(println)
+//            .map{UIFont.fontNamesForFamilyName($0 as! String)}.map(println)
 
     }
     
     func doDynamicType(n:NSNotification) {
-        let style = self.lab.font.fontDescriptor().objectForKey(UIFontDescriptorTextStyleAttribute) as String
+        let style = self.lab.font.fontDescriptor().objectForKey(UIFontDescriptorTextStyleAttribute) as! String
         self.lab.font = UIFont.preferredFontForTextStyle(style)
     }
     
