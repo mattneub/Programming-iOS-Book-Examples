@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         self.sb.searchFieldBackgroundPositionAdjustment = UIOffsetMake(0, -10) // up from center
         
         // how to reach in and grab the text field
-        for v in (self.sb.subviews[0] as UIView).subviews as [UIView] {
+        for v in (self.sb.subviews[0] as! UIView).subviews as! [UIView] {
             if let tf = v as? UITextField {
                 println("got that puppy")
                 tf.textColor = UIColor.whiteColor()
@@ -86,7 +86,7 @@ class ViewController: UIViewController {
         let atts = [
             NSFontAttributeName: UIFont(name:"GillSans-Bold", size:16)!,
             NSForegroundColorAttributeName: UIColor.whiteColor(),
-            NSShadowAttributeName: lend() {
+            NSShadowAttributeName: lend {
                 (shad:NSShadow) in
                 shad.shadowColor = UIColor.grayColor()
                 shad.shadowOffset = CGSizeMake(2,2)
@@ -100,7 +100,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : UISearchBarDelegate {
-    func searchBarSearchButtonClicked(searchBar: UISearchBar!) {
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
 }

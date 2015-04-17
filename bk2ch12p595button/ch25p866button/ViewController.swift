@@ -20,7 +20,8 @@ class ViewController: UIViewController {
         let mas = NSMutableAttributedString(string: "Pay Tribute", attributes: [
             NSFontAttributeName: UIFont(name:"GillSans-Bold", size:16)!,
             NSForegroundColorAttributeName: UIColor.purpleColor(),
-            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleNone.rawValue
+            // in iOS 8.3 can comment out next line; bug is fixed
+            // NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleNone.rawValue
             ])
         mas.addAttributes([
             NSStrokeColorAttributeName: UIColor.redColor(),
@@ -29,7 +30,7 @@ class ViewController: UIViewController {
             ], range: NSMakeRange(4, mas.length-4))
         self.button.setAttributedTitle(mas, forState: .Normal)
         
-        let mas2 = mas.mutableCopy() as NSMutableAttributedString
+        let mas2 = mas.mutableCopy() as! NSMutableAttributedString
         mas2.addAttributes([
             NSForegroundColorAttributeName: UIColor.whiteColor()
             ], range: NSMakeRange(0, mas2.length))

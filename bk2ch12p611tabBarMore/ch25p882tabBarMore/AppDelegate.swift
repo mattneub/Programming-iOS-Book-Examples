@@ -23,7 +23,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         self.window!.rootViewController = self.tabBarController
         
         let more = self.tabBarController.moreNavigationController
-        let list = more.viewControllers[0] as UIViewController
+        let list = more.viewControllers[0] as! UIViewController
         list.title = ""
         let b = UIBarButtonItem()
         b.title = "Back"
@@ -31,7 +31,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         more.navigationBar.barTintColor = UIColor.redColor() // ooooh
         more.navigationBar.tintColor = UIColor.whiteColor() // oooh oooh
         
-        let tv = list.view as UITableView
+        let tv = list.view as! UITableView
         let mds = MyDataSource(originalDataSource: tv.dataSource!)
         self.myDataSource = mds
         tv.dataSource = mds

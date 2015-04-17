@@ -20,8 +20,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let f = NSBundle.mainBundle().pathForResource("states", ofType: "txt")!
-        let s = NSString(contentsOfFile: f, encoding: NSUTF8StringEncoding, error: nil)!
-        self.states = s.componentsSeparatedByString("\n") as [String]
+        let s = String(contentsOfFile: f, encoding: NSUTF8StringEncoding, error: nil)!
+        self.states = s.componentsSeparatedByString("\n")
     }
     
     override func viewDidLayoutSubviews() {

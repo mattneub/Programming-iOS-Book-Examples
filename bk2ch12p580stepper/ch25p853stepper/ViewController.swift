@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet var prog : UIProgressView!
     
     @IBAction func doStep(sender:AnyObject!) {
-        let step = sender as UIStepper
+        let step = sender as! UIStepper
         self.prog.setProgress(Float(step.value / (step.maximumValue - step.minimumValue)), animated:true)
     }
 
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
             NSAttributedString(string:"\u{21DA}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: UIColor.whiteColor(),
-                NSParagraphStyleAttributeName: lend() {
+                NSParagraphStyleAttributeName: lend {
                     (para : NSMutableParagraphStyle) in
                     para.alignment = .Center
                     }
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
             NSAttributedString(string:"\u{21DA}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: UIColor.blackColor(),
-                NSParagraphStyleAttributeName: lend() {
+                NSParagraphStyleAttributeName: lend {
                     (para : NSMutableParagraphStyle) in
                     para.alignment = .Center
                 }
@@ -80,7 +80,7 @@ class ViewController: UIViewController {
             NSAttributedString(string:"\u{21DA}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: self.stepper.tintColor,
-                NSParagraphStyleAttributeName: lend() {
+                NSParagraphStyleAttributeName: lend {
                     (para : NSMutableParagraphStyle) in
                     para.alignment = .Center
                 }
@@ -92,7 +92,7 @@ class ViewController: UIViewController {
             NSAttributedString(string:"\u{21DB}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: UIColor.whiteColor(),
-                NSParagraphStyleAttributeName: lend() {
+                NSParagraphStyleAttributeName: lend {
                     (para : NSMutableParagraphStyle) in
                     para.alignment = .Center
                 }
@@ -104,7 +104,7 @@ class ViewController: UIViewController {
             NSAttributedString(string:"\u{21DB}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: UIColor.blackColor(),
-                NSParagraphStyleAttributeName: lend() {
+                NSParagraphStyleAttributeName: lend {
                     (para : NSMutableParagraphStyle) in
                     para.alignment = .Center
                 }
@@ -116,7 +116,7 @@ class ViewController: UIViewController {
             NSAttributedString(string:"\u{21DB}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: self.stepper.tintColor,
-                NSParagraphStyleAttributeName: lend() {
+                NSParagraphStyleAttributeName: lend {
                     (para : NSMutableParagraphStyle) in
                     para.alignment = .Center
                 }

@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     }
     
     func pushNext(sender:AnyObject) {
-        let oldb = sender as UIBarButtonItem
+        let oldb = sender as! UIBarButtonItem
         let s = oldb.title
         let ni = UINavigationItem(title:s)
         if s == "Evers" {

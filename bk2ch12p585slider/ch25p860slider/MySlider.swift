@@ -31,7 +31,7 @@ class MySlider: UISlider {
     }
     
     func tapped(g:UIGestureRecognizer) {
-        let s = g.view as UISlider
+        let s = g.view as! UISlider
         if s.highlighted {
             return // tap on thumb, let slider deal with it
         }
