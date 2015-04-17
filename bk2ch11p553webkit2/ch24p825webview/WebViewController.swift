@@ -160,19 +160,19 @@ extension WebViewController : WKNavigationDelegate {
         println("did commit \(navigation)")
     }
     
-    func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation, withError error: NSError!) {
+    func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
         println("did fail")
     }
     
-    func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation, withError error: NSError) {
+    func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
         println("did fail provisional")
     }
     
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation) {
+    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         println("did finish")
     }
     
-    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation) {
+    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         println("did start")
     }
 }

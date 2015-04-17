@@ -9,7 +9,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
     var canNavigate = false // distinguish the two examples, local and remote content
     
     var wv : UIWebView {
-    return self.view as UIWebView
+        return self.view as! UIWebView
     }
     
     required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -21,7 +21,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         self.edgesForExtendedLayout = .None // get accurate offset restoration
     }
     
-    override convenience init() {
+    convenience init() {
         self.init(nibName:nil, bundle:nil)
     }
     
@@ -122,10 +122,10 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         case 1:
             let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
             let base = NSURL.fileURLWithPath(path)
-            let ss = NSString(contentsOfFile:path, encoding:NSUTF8StringEncoding, error:nil)!
+            let ss = String(contentsOfFile:path, encoding:NSUTF8StringEncoding, error:nil)!
             
             let path2 = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")!
-            var s = NSString(contentsOfFile:path2, encoding:NSUTF8StringEncoding, error:nil)!
+            var s = String(contentsOfFile:path2, encoding:NSUTF8StringEncoding, error:nil)!
             
             s = s.stringByReplacingOccurrencesOfString("<maximagewidth>", withString:"80%")
             s = s.stringByReplacingOccurrencesOfString("<fontsize>", withString:"18")
@@ -147,7 +147,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
             let url = NSURL.fileURLWithPath(path)!
             self.wv.loadRequest(NSURLRequest(URL: url))
         case 4:
-            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtf")! // works in simulator, blank on device :( "Cannot find data converter callback for uti public.rtf" [known issue, see release notes]
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtf")! // works in simulator, works in device (iOS 8.3, I think it was fixed in 8.1)
             let url = NSURL.fileURLWithPath(path)!
             self.wv.loadRequest(NSURLRequest(URL: url))
         case 5:
@@ -171,7 +171,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
             let url = NSURL.fileURLWithPath(path)!
             self.wv.loadRequest(NSURLRequest(URL: url))
         case 10:
-            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtfd.zip")! // blank in simulator, blank on device, "Cannot find data converter callback for uti com.apple.rtfd"
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtfd.zip")! // blank in simulator, blank on device, "Unable to read document" displayed
             let url = NSURL.fileURLWithPath(path)!
             self.wv.loadRequest(NSURLRequest(URL: url))
         case 11:
@@ -204,7 +204,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
     }
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest r: NSURLRequest, navigationType nt: UIWebViewNavigationType) -> Bool {
-        if r.URL.scheme == "play" {
+        if let scheme = r.URL?.scheme where scheme == "play" {
             println("user would like to hear the podcast")
             return false
         }

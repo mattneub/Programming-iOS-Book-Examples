@@ -215,7 +215,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             s = s.stringByReplacingOccurrencesOfString("<content>", withString:ss)
             
             // missing from docs, but in header file
-            self.wv.loadHTMLString(s, baseURL:base) // fails because we can't load the local image
+            self.wv.loadHTMLString(s, baseURL:base) // fails on device, because we can't load the local image
             // ===========================
             // so, WKWebView can't load _any_ files using a local file URL
             // but the other types work fine except for rtf / rtfd which is a known issue (see release notes)
