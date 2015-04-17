@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-oe-FbW">
-                                <rect key="frame" x="37" y="20" width="246" height="257"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="257"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="257" id="2hD-0u-bgc"/>
@@ -30,8 +30,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZiI-oe-FbW" firstAttribute="top" secondItem="qOu-jN-vXC" secondAttribute="bottom" id="IKo-pU-iUX"/>
-                            <constraint firstAttribute="trailing" secondItem="ZiI-oe-FbW" secondAttribute="trailing" constant="37" id="RFF-eE-Idp"/>
-                            <constraint firstItem="ZiI-oe-FbW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="37" id="SNg-MY-Ers"/>
+                            <constraint firstAttribute="trailing" secondItem="ZiI-oe-FbW" secondAttribute="trailing" id="RFF-eE-Idp"/>
+                            <constraint firstItem="ZiI-oe-FbW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="SNg-MY-Ers"/>
                         </constraints>
                     </view>
                     <connections>
@@ -45,9 +45,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>

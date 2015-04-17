@@ -19,13 +19,14 @@ class MyTextContainer : NSTextContainer {
         }
 */
         
-        let r = self.size.width / 2.0
+        let r = self.size.height / 2.0
         // convert initial y so that circle is centered at origin
         let y = r - result.origin.y
         let theta = asin(y/r)
         let x = r * cos(theta)
         // convert resulting x from circle centered at origin
-        result.origin.x = r-x
+        let offset = self.size.width / 2.0 - r
+        result.origin.x = r-x+offset
         result.size.width = 2*x
 
         
