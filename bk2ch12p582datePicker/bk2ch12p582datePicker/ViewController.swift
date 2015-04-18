@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let which = 2
+        let which = 1
         switch which {
         case 1:
             dp.datePickerMode = .Date

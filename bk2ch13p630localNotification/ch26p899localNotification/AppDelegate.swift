@@ -60,7 +60,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // if .Background, should also set authenticationRequired to say what to do from lock screen
         
         category.setActions([action1, action2], forContext: .Default) // can have 4 for default, 2 for minimal
-        let settings = UIUserNotificationSettings(forTypes: types, categories: NSSet(array: [category]))
+        let settings = UIUserNotificationSettings(forTypes: types, categories: Set([category]))
         application.registerUserNotificationSettings(settings)
         // if this app has never requested this registration,
         // it will put up a dialog asking if we can present alerts etc.

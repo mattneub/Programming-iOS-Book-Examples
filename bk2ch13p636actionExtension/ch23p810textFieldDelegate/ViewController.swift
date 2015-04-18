@@ -14,7 +14,7 @@ func delay(delay:Double, closure:()->()) {
 class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var tf : UITextField!
-    let desiredType = kUTTypePlainText as NSString
+    let desiredType = kUTTypePlainText as String
     
     override func viewDidLoad() {
         super.viewDidLoad()

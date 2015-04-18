@@ -8,13 +8,13 @@ class ActionRequestHandler: NSObject /*, NSExtensionRequestHandling */ { // ???
     let list : [String] = {
         let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")!
         let s = String(contentsOfURL:path, encoding:NSUTF8StringEncoding, error:nil)!
-        return s.componentsSeparatedByString("\n") as [String]
+        return s.componentsSeparatedByString("\n")
         }()
 
     var extensionContext: NSExtensionContext?
     // NSObject has no magically acquired extension context, we must keep a reference
     
-    let desiredType = kUTTypePlainText
+    let desiredType = kUTTypePlainText as String
     
     func beginRequestWithExtensionContext(context: NSExtensionContext!) {
         // Do not call super in an Action extension with no user interface

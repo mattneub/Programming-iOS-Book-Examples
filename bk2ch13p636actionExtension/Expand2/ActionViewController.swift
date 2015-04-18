@@ -8,11 +8,11 @@ class ActionViewController: UIViewController {
 
     let list : [String] = {
         let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")!
-        let s = NSString(contentsOfURL:path, encoding:NSUTF8StringEncoding, error:nil)!
-        return s.componentsSeparatedByString("\n") as [String]
+        let s = String(contentsOfURL:path, encoding:NSUTF8StringEncoding, error:nil)!
+        return s.componentsSeparatedByString("\n")
         }()
     
-    let desiredType = kUTTypePlainText as NSString
+    let desiredType = kUTTypePlainText as String
     var orig : String?
     var abbrev : String?
 

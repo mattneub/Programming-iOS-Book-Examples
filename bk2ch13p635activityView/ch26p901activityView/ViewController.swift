@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         self.presentViewController(avc, animated:true, completion:nil)
         // on iPad this will be an action sheet and will need a source view or bar button item
         if let pop = avc.popoverPresentationController {
-            let v = sender as UIView
+            let v = sender as! UIView
             pop.sourceView = v
             pop.sourceRect = v.bounds
         }

@@ -27,7 +27,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
     @IBAction func doButton(sender: AnyObject) {
         NSLog("doButton")
-        let v = sender as UIView
+        let v = sender as! UIView
         let t = v.tag // tag is number of minutes
         if let url = NSURL(string:"coffeetime://\(String(t))") {
             NSLog("%@", "\(url)")

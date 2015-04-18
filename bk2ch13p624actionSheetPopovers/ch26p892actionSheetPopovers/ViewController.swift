@@ -16,17 +16,20 @@ class ViewController: UIViewController {
     
     @IBAction func doButton(sender:AnyObject) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)) // not shown
-        alert.addAction(UIAlertAction(title: "Hey", style: .Default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Ho", style: .Default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Hey Nonny No", style: .Default, handler: nil))
+        func handler(act:UIAlertAction!) {
+            println("User tapped \(act.title)")
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: handler)) // not shown
+        alert.addAction(UIAlertAction(title: "Hey", style: .Default, handler: handler))
+        alert.addAction(UIAlertAction(title: "Ho", style: .Default, handler: handler))
+        alert.addAction(UIAlertAction(title: "Hey Nonny No", style: .Default, handler: handler))
         self.presentViewController(alert, animated: true, completion: nil)
         // if we do no more than that, we'll crash with a helpful error message:
         // "UIPopoverPresentationController should have a non-nil sourceView or barButtonItem set before the presentation occurs"
         // so the runtime knows that on iPad this should be a popover, and has arranged it already
         // all we have to do is fulfill our usual popover responsibilities
         if let pop = alert.popoverPresentationController {
-            pop.barButtonItem = sender as UIBarButtonItem
+            pop.barButtonItem = sender as! UIBarButtonItem
             // but now we have the usual foo where we must prevent the bar button items
             // from being "live"; why isn't this automatic???
             // still, it isn't anywhere near as bad as in previous systems
@@ -41,8 +44,8 @@ class ViewController: UIViewController {
         pvc.modalPresentationStyle = .Popover
         self.presentViewController(pvc, animated: true, completion: nil)
         if let pop = pvc.popoverPresentationController {
-            pop.barButtonItem = sender as UIBarButtonItem
-            pop.delegate = self
+            pop.barButtonItem = sender as! UIBarButtonItem
+            //pop.delegate = self
             delay(0.1) {
                 pop.passthroughViews = nil
             }
@@ -51,6 +54,9 @@ class ViewController: UIViewController {
 
 }
 
+// not needed in iOS 8.3
+
+/*
 extension ViewController : UIPopoverPresentationControllerDelegate {
     func popoverPresentationControllerShouldDismissPopover(
         pop: UIPopoverPresentationController) -> Bool {
@@ -58,6 +64,7 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
             return ok
     }
 }
+*/
 
 extension ViewController : UIToolbarDelegate {
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {

@@ -39,23 +39,23 @@ class ViewController: UIViewController {
         }
         func handler(act:UIAlertAction!) {
             // it's a closure so we have a reference to the alert
-            let tf = alert.textFields![0] as UITextField
+            let tf = alert.textFields![0] as! UITextField
             println("User entered \(tf.text), tapped \(act.title)")
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: handler))
-        (alert.actions[1] as UIAlertAction).enabled = false
+        (alert.actions[1] as! UIAlertAction).enabled = false
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func textChanged(sender:AnyObject) {
-        let tf = sender as UITextField
+        let tf = sender as! UITextField
         // enable OK button only if there is text
         // hold my beer and watch this: how to get a reference to the alert
         var resp : UIResponder! = tf
         while !(resp is UIAlertController) { resp = resp.nextResponder() }
-        let alert = resp as UIAlertController
-        (alert.actions[1] as UIAlertAction).enabled = (tf.text != "")
+        let alert = resp as! UIAlertController
+        (alert.actions[1] as! UIAlertAction).enabled = (tf.text != "")
     }
     
     // =====
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
 //            v.hidden = true
 //        }
         if let pop = action.popoverPresentationController {
-            let v = sender as UIView
+            let v = sender as! UIView
             pop.sourceView = v
             pop.sourceRect = v.bounds
         }
