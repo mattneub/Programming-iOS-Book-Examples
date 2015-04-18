@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     }
     
     func finishConstructingInterface () {
-        let vc = self.childViewControllers[0] as AVPlayerViewController
+        let vc = self.childViewControllers[0] as! AVPlayerViewController
         let p = vc.player
         if p.status != .ReadyToPlay {
             return
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
     // can be a mutable composition
     
     @IBAction func doButton2 (sender:AnyObject!) {
-        let vc = self.childViewControllers[0] as AVPlayerViewController
+        let vc = self.childViewControllers[0] as! AVPlayerViewController
         let p = vc.player
         p.pause()
         
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         
         let type = AVMediaTypeVideo
         let arr = oldAsset.tracksWithMediaType(type)
-        let track = arr.last as AVAssetTrack
+        let track = arr.last as! AVAssetTrack
         
         let duration : CMTime = track.timeRange.duration
         
@@ -100,7 +100,7 @@ class ViewController: UIViewController {
         
         let type2 = AVMediaTypeAudio
         let arr2 = oldAsset.tracksWithMediaType(type2)
-        let track2 = arr2.last as AVAssetTrack
+        let track2 = arr2.last as! AVAssetTrack
         let comptrack2 = comp.addMutableTrackWithMediaType(type2, preferredTrackID:Int32(kCMPersistentTrackID_Invalid))
         
         comptrack2.insertTimeRange(CMTimeRangeMake(CMTimeMakeWithSeconds(0,600), CMTimeMakeWithSeconds(5,600)), ofTrack:track2, atTime:CMTimeMakeWithSeconds(0,600), error:nil)
@@ -111,7 +111,7 @@ class ViewController: UIViewController {
         let s = NSBundle.mainBundle().URLForResource("aboutTiagol", withExtension:"m4a")
         let asset = AVURLAsset(URL:s, options:nil)
         let arr3 = asset.tracksWithMediaType(type3)
-        let track3 = arr3.last as AVAssetTrack
+        let track3 = arr3.last as! AVAssetTrack
         
         let comptrack3 = comp.addMutableTrackWithMediaType(type3, preferredTrackID:Int32(kCMPersistentTrackID_Invalid))
         comptrack3.insertTimeRange(CMTimeRangeMake(CMTimeMakeWithSeconds(0,600), CMTimeMakeWithSeconds(10,600)), ofTrack:track3, atTime:CMTimeMakeWithSeconds(0,600), error:nil)
@@ -129,7 +129,7 @@ class ViewController: UIViewController {
         // ...we supply the .Initial option
         p.addObserver(self, forKeyPath:"status", options:.Initial, context:nil)
         p.replaceCurrentItemWithPlayerItem(item)
-        (sender as UIControl).enabled = false
+        (sender as! UIControl).enabled = false
     }
 
     

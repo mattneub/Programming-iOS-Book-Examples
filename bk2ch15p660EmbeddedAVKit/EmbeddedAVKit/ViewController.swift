@@ -72,7 +72,7 @@ class ViewController: UIViewController {
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<()>) {
         if keyPath == "readyForDisplay",
             let obj = object as? AVPlayerViewController,
-            let ok = change[NSKeyValueChangeNewKey] as? Bool where ok {
+            ok = change[NSKeyValueChangeNewKey] as? Bool where ok {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.finishConstructingInterface(obj)
                 })
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
     func finishConstructingInterface (vc:AVPlayerViewController) {
         println("finishing")
         vc.removeObserver(self, forKeyPath:"readyForDisplay")
-        vc.view.hidden = false
+        vc.view.hidden = false // hmm, maybe I should be animating the alpha instead
     }
 }
 

@@ -8,12 +8,12 @@ class ViewController: UIViewController {
 
     @IBAction func doPresent(sender: AnyObject) {
         
-        let which = 1
+        let which = 2
         switch which {
         case 1:
             let av = AVPlayerViewController()
-            // let url = NSBundle.mainBundle().URLForResource("ElMirage", withExtension: "mp4")
-            let url = NSBundle.mainBundle().URLForResource("wilhelm", withExtension: "aiff")
+            let url = NSBundle.mainBundle().URLForResource("ElMirage", withExtension: "mp4")
+            // let url = NSBundle.mainBundle().URLForResource("wilhelm", withExtension: "aiff")
             let player = AVPlayer(URL: url)
             av.player = player
             self.presentViewController(av, animated: true, completion: {

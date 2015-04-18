@@ -50,7 +50,7 @@ class ViewController: UIViewController {
     
     func getVideoTrack(asset:AVAsset) {
         // we have tracks or we wouldn't be here
-        let vtrack = asset.tracksWithMediaCharacteristic(AVMediaCharacteristicVisual)[0] as AVAssetTrack
+        let vtrack = asset.tracksWithMediaCharacteristic(AVMediaCharacteristicVisual)[0] as! AVAssetTrack
         vtrack.loadValuesAsynchronouslyForKeys(["naturalSize"], completionHandler: {
             let status = vtrack.statusOfValueForKey("naturalSize", error: nil)
             if status == .Loaded {
@@ -89,7 +89,7 @@ class ViewController: UIViewController {
     }
     
     func finishConstructingInterface () {
-        let vc = self.childViewControllers[0] as AVPlayerViewController
+        let vc = self.childViewControllers[0] as! AVPlayerViewController
         if !vc.readyForDisplay {
             return
         }
