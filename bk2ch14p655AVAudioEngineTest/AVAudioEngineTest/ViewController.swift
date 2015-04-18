@@ -167,7 +167,7 @@ class ViewController: UIViewController {
             (buffer : AVAudioPCMBuffer!, time : AVAudioTime!) in
             let dataptrptr = buffer.floatChannelData
             let dataptr = dataptrptr.memory
-            let datum = dataptr[buffer.frameLength-1]
+            let datum = dataptr[Int(buffer.frameLength) - 1]
             if done && fabs(datum) < 0.000001 {
                 println("stopping")
                 self.engine.stop()

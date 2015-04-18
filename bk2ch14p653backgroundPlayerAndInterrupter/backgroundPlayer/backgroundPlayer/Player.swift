@@ -1,6 +1,6 @@
 
 
-import UIKIt
+import UIKit
 import AVFoundation
 import MediaPlayer
 
@@ -46,7 +46,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
         })
     }
     
-    func playFileAtPath(path:NSString) {
+    func playFileAtPath(path:String) {
         self.player?.delegate = nil
         self.player?.stop()
         let fileURL = NSURL(fileURLWithPath: path)
