@@ -85,7 +85,7 @@ class ViewController: UIViewController {
     
     @IBAction func doAllAlbumTitles (sender:AnyObject!) {
         let query = MPMediaQuery.albumsQuery()
-        let result = query.collections as [MPMediaItemCollection]
+        let result = query.collections as! [MPMediaItemCollection]
         // prove we've performed the query, by logging the album titles
         for album in result {
             println(album.representativeItem.albumTitle)
@@ -93,7 +93,7 @@ class ViewController: UIViewController {
         return; // testing
         // cloud item values are 0 and 1, meaning false and true
         for album in result {
-            for song in album.items as [MPMediaItem] {
+            for song in album.items as! [MPMediaItem] {
                 println("\(song.valueForProperty(MPMediaItemPropertyIsCloudItem)) \(song.valueForProperty(MPMediaItemPropertyAssetURL)) \(song.valueForProperty(MPMediaItemPropertyTitle))")
             }
         }
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
             forProperty:MPMediaItemPropertyAlbumTitle,
             comparisonType:.Contains)
         query.addFilterPredicate(hasBeethoven)
-        let result = query.collections as [MPMediaItemCollection]
+        let result = query.collections as! [MPMediaItemCollection]
         for album in result {
             println(album.representativeItem.albumTitle)
         }
@@ -122,13 +122,13 @@ class ViewController: UIViewController {
             comparisonType:.EqualTo)
         query.addFilterPredicate(isPresent)
         
-        let result = query.collections as [MPMediaItemCollection]
+        let result = query.collections as! [MPMediaItemCollection]
         for album in result {
             println(album.representativeItem.albumTitle)
         }
         // and here are the songs in the first of those albums
         let album = result[0]
-        for song in album.items as [MPMediaItem] {
+        for song in album.items as! [MPMediaItem] {
             println(song.title)
         }
     }
@@ -141,7 +141,7 @@ class ViewController: UIViewController {
             comparisonType:.EqualTo)
         query.addFilterPredicate(isPresent)
         
-        let shorties = (query.items as [MPMediaItem]).filter {
+        let shorties = (query.items as! [MPMediaItem]).filter {
             let dur = $0.playbackDuration
             return dur < 30
         }

@@ -69,12 +69,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func doPlayOneSongAVAudioPlayer (sender:AnyObject!) {
+        self.curplayer?.pause()
         let url = self.oneSong()
         self.player.playFileAtURL(url)
         self.curplayer = self.player.player
     }
     
     @IBAction func doPlayOneSongMPMoviePlayerController (sender:AnyObject!) {
+        self.curplayer?.pause()
         let url = self.oneSong()
         let mpc = MPMoviePlayerController(contentURL:url)
         self.mpc = mpc
@@ -86,6 +88,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func doPlayOneSongAVPlayer (sender:AnyObject!) {
+        self.curplayer?.pause()
         let url = self.oneSong()
         self.avplayer = AVPlayer(URL:url)
         self.avplayer.play()
@@ -93,6 +96,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func doPlayOneSongAVKit(sender: AnyObject) {
+        self.curplayer?.pause()
         let url = self.oneSong()
         let p = AVPlayer(URL:url)
         let vc = AVPlayerViewController()
@@ -110,9 +114,11 @@ class ViewController: UIViewController {
         self.view.addSubview(vc.view)
         vc.didMoveToParentViewController(self)
         p.play()
+        self.curplayer = p
     }
 
     @IBAction func doPlayShortSongs (sender:AnyObject!) {
+        self.curplayer?.pause()
         let query = MPMediaQuery.songsQuery()
         // always need to filter out songs that aren't present
         let isPresent = MPMediaPropertyPredicate(value:false,
@@ -120,7 +126,7 @@ class ViewController: UIViewController {
             comparisonType:.EqualTo)
         query.addFilterPredicate(isPresent)
         
-        let shorties = (query.items as [MPMediaItem]).filter {
+        let shorties = (query.items as! [MPMediaItem]).filter {
             let dur = $0.playbackDuration
             return dur < 30
         }
@@ -132,7 +138,7 @@ class ViewController: UIViewController {
         
         self.assets = shorties.map {
             let url = $0.assetURL
-            let asset = AVAsset.assetWithURL(url) as AVAsset
+            let asset = AVAsset.assetWithURL(url) as! AVAsset
             return AVPlayerItem(
                 asset: asset, automaticallyLoadedAssetKeys: ["duration"])
             // duration needed later; this way, queue player will load it for us up front
@@ -174,7 +180,7 @@ class ViewController: UIViewController {
         arr = AVMetadataItem.metadataItemsFromArray(arr,
             withKey:AVMetadataCommonKeyTitle,
             keySpace:AVMetadataKeySpaceCommon)
-        let met = arr[0] as AVMetadataItem
+        let met = arr[0] as! AVMetadataItem
         met.loadValuesAsynchronouslyForKeys(["value"]) {
             // should always check for successful load of value
             if met.statusOfValueForKey("value", error: nil) == .Loaded {
@@ -193,7 +199,7 @@ class ViewController: UIViewController {
             return
         }
         let newItem = self.assets.removeAtIndex(0)
-        self.qp.insertItem(newItem, afterItem:self.qp.items().last as AVPlayerItem)
+        self.qp.insertItem(newItem, afterItem:self.qp.items().last as! AVPlayerItem)
         
         self.timer?.fire()
     }

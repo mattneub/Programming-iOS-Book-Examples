@@ -1,6 +1,6 @@
 
 
-import UIKIt
+import UIKit
 import AVFoundation
 import MediaPlayer
 
