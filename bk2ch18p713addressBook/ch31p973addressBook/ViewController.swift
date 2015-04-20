@@ -89,7 +89,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         }
         
         var moi : ABRecord! = nil
-        let matts = ABAddressBookCopyPeopleWithName(self.adbk, "Matt").takeRetainedValue() as NSArray
+        let matts = ABAddressBookCopyPeopleWithName(self.adbk, "Matt").takeRetainedValue() as [AnyObject]
         // could have asked for "Matt Neuburg" but I wanted to show how to cycle thru the results
         for matt in matts {
             if let last = ABRecordCopyValue(matt, kABPersonLastNameProperty).takeRetainedValue() as? String {
@@ -105,10 +105,10 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         }
         // parse my emails
         let emails:ABMultiValue = ABRecordCopyValue(
-            moi, kABPersonEmailProperty).takeRetainedValue() as ABMultiValue
+            moi, kABPersonEmailProperty).takeRetainedValue()
         for ix in 0 ..< ABMultiValueGetCount(emails) {
             let label = ABMultiValueCopyLabelAtIndex(emails,ix).takeRetainedValue() as String
-            let value = ABMultiValueCopyValueAtIndex(emails,ix).takeRetainedValue() as String
+            let value = ABMultiValueCopyValueAtIndex(emails,ix).takeRetainedValue() as! String
             println("I have a \(label) address: \(value)")
         }
     }
@@ -122,7 +122,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         let snidely:ABRecord = ABPersonCreate().takeRetainedValue()
         ABRecordSetValue(snidely, kABPersonFirstNameProperty, "Snidely", nil)
         ABRecordSetValue(snidely, kABPersonLastNameProperty, "Whiplash", nil)
-        let addr:ABMutableMultiValue = ABMultiValueCreateMutable(
+        let addr:ABMultiValue = ABMultiValueCreateMutable(
             ABPropertyType(kABStringPropertyType)).takeRetainedValue()
         ABMultiValueAddValueAndLabel(addr, "snidely@villains.com", kABHomeLabel, nil)
         ABRecordSetValue(snidely, kABPersonEmailProperty, addr, nil)
@@ -160,9 +160,9 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
                 println("WTF") // shouldn't happen
                 return
             }
-            let emails : ABMultiValue = ABRecordCopyValue(person, property).takeRetainedValue()
+            let emails:ABMultiValue = ABRecordCopyValue(person, property).takeRetainedValue()
             let ix = ABMultiValueGetIndexForIdentifier(emails, identifier)
-            let email = ABMultiValueCopyValueAtIndex(emails, ix).takeRetainedValue() as String
+            let email = ABMultiValueCopyValueAtIndex(emails, ix).takeRetainedValue() as! String
             println(email) // do something with the email here
             // self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -176,7 +176,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         }
 
         let snides = ABAddressBookCopyPeopleWithName(
-            self.adbk, "Snidely Whiplash").takeRetainedValue() as Array<ABRecord>
+            self.adbk, "Snidely Whiplash").takeRetainedValue() as [AnyObject]
         if snides.count == 0 {
             println("no Snidely")
             return
