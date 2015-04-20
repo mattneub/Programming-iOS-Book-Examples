@@ -60,7 +60,7 @@ class ViewController: UIViewController {
             .MomentList, subtype: .MomentListYear, options: opts)
         result.enumerateObjectsUsingBlock {
             (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
-            let list = obj as PHCollectionList
+            let list = obj as! PHCollectionList
             let f = NSDateFormatter()
             f.dateFormat = "\nyyyy"
             println(f.stringFromDate(list.startDate))
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
                 let result = PHAssetCollection.fetchMomentsInMomentList(list, options: nil)
                 result.enumerateObjectsUsingBlock {
                     (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
-                    let coll = obj as PHAssetCollection
+                    let coll = obj as! PHAssetCollection
                     if ix == 0 {
                         println("======= \(result.count) clusters")
                     }
@@ -90,7 +90,7 @@ class ViewController: UIViewController {
             .Album, subtype: .AlbumSyncedAlbum, options: nil)
         result.enumerateObjectsUsingBlock {
             (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
-            let album = obj as PHAssetCollection
+            let album = obj as! PHAssetCollection
             println("\(album.localizedTitle): approximately \(album.estimatedAssetCount) photos")
         }
     }
@@ -107,13 +107,13 @@ class ViewController: UIViewController {
             .Album, subtype: .AlbumSyncedAlbum, options: nil)
         result.enumerateObjectsUsingBlock {
             (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
-            let album = obj as PHAssetCollection
+            let album = obj as! PHAssetCollection
             alert.addAction(UIAlertAction(title: album.localizedTitle, style: .Default, handler: {
                 (_:UIAlertAction!) in
                 let result = PHAsset.fetchAssetsInAssetCollection(album, options: nil)
                 result.enumerateObjectsUsingBlock {
                     (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
-                    let asset = obj as PHAsset
+                    let asset = obj as! PHAsset
                     println(asset)
                 }
             }))
@@ -170,13 +170,15 @@ class ViewController: UIViewController {
         // add first photo from it to a new album
         let result = PHAssetCollection.fetchAssetCollectionsWithType(
             .SmartAlbum, subtype: .SmartAlbumRecentlyAdded, options: nil)
-        let rec = result.firstObject as PHAssetCollection!
+        let rec = result.firstObject as! PHAssetCollection!
         if rec == nil {
+            println("no recently added album")
             return
         }
         let result2 = PHAsset.fetchAssetsInAssetCollection(rec, options: nil)
-        let ph = result2.firstObject as PHAsset!
+        let ph = result2.firstObject as! PHAsset!
         if ph == nil {
+            println("no first item in recently added album")
             return
         }
         PHPhotoLibrary.sharedPhotoLibrary().performChanges({

@@ -64,14 +64,15 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             println("no camera")
             return
         }
-        let arr = UIImagePickerController.availableMediaTypesForSourceType(.Camera) as [String]
-        if find(arr, kUTTypeImage) == nil {
+        let arr = UIImagePickerController.availableMediaTypesForSourceType(.Camera) as! [String]
+        let desiredType = kUTTypeImage as! String
+        if find(arr, desiredType) == nil {
             println("no stills")
             return
         }
         let picker = MyImagePickerController()
         picker.sourceType = .Camera
-        picker.mediaTypes = [kUTTypeImage]
+        picker.mediaTypes = [desiredType]
         picker.allowsEditing = true
         picker.delegate = self
         
@@ -91,11 +92,11 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         self.presentViewController(picker, animated: true, completion: nil)
     }
 
-    func imagePickerControllerDidCancel(picker: UIImagePickerController!) {
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         var im = info[UIImagePickerControllerOriginalImage] as? UIImage
         if im == nil {
             return
@@ -108,7 +109,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         self.picker.takePicture()
     }
 
-    func navigationController(nc: UINavigationController!, didShowViewController vc: UIViewController!, animated: Bool) {
+    func navigationController(nc: UINavigationController, didShowViewController vc: UIViewController, animated: Bool) {
         if vc is SecondViewController {
             nc.toolbarHidden = true
             return

@@ -68,7 +68,7 @@ class RootViewController: UIViewController {
         self.modelController = ModelController()
         if let dvc = self.modelController.viewControllerAtIndex(0, storyboard: self.storyboard!) {
             let viewControllers: NSArray = [dvc]
-            self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
+            self.pageViewController!.setViewControllers(viewControllers as [AnyObject], direction: .Forward, animated: false, completion: nil)
             self.pageViewController!.dataSource = self.modelController
         }
     }

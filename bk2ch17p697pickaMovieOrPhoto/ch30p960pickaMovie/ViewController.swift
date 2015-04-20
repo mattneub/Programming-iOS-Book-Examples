@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         }
         return Int(UIInterfaceOrientationMask.Landscape.rawValue)
     }
-
+    
     func determineStatus() -> Bool {
         // access permission dialog will appear automatically if necessary...
         // ...when we try to present the UIImagePickerController
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
             return false
         }
     }
-
+    
     /*
     New authorization strategy: check for authorization when we first appear,
     when we are brought back to the front,
@@ -70,7 +70,9 @@ class ViewController: UIViewController {
             return
         }
         
-        let src = UIImagePickerControllerSourceType.SavedPhotosAlbum
+        // horrible
+        // let src = UIImagePickerControllerSourceType.SavedPhotosAlbum
+        let src = UIImagePickerControllerSourceType.PhotoLibrary
         let ok = UIImagePickerController.isSourceTypeAvailable(src)
         if !ok {
             println("alas")
@@ -96,7 +98,7 @@ class ViewController: UIViewController {
         self.presentViewController(picker, animated: true, completion: nil)
         // ignore:
         if let pop = picker.popoverPresentationController {
-            let v = sender as UIView
+            let v = sender as! UIView
             pop.sourceView = v
             pop.sourceRect = v.bounds
         }
@@ -118,8 +120,8 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     }
     
     
-    func imagePickerController(picker: UIImagePickerController!,
-        didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!) {
+    func imagePickerController(picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
             println(info[UIImagePickerControllerReferenceURL])
             let url = info[UIImagePickerControllerMediaURL] as? NSURL
             var im = info[UIImagePickerControllerOriginalImage] as? UIImage
@@ -131,11 +133,11 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
                 let type = info[UIImagePickerControllerMediaType] as? String
                 if type != nil {
                     switch type! {
-                    case kUTTypeImage:
+                    case kUTTypeImage as! String:
                         if im != nil {
                             self.showImage(im!)
                         }
-                    case kUTTypeMovie:
+                    case kUTTypeMovie as! String:
                         if url != nil {
                             self.showMovie(url!)
                         }
@@ -147,12 +149,12 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     
     func clearAll() {
         if self.childViewControllers.count > 0 {
-            let av = self.childViewControllers[0] as AVPlayerViewController
+            let av = self.childViewControllers[0] as! AVPlayerViewController
             av.willMoveToParentViewController(nil)
             av.view.removeFromSuperview()
             av.removeFromParentViewController()
         }
-        self.redView.subviews.map { ($0 as UIView).removeFromSuperview() }
+        self.redView.subviews.map { ($0 as! UIView).removeFromSuperview() }
     }
     
     func showImage(im:UIImage) {

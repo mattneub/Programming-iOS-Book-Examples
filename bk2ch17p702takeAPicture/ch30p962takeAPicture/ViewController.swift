@@ -56,9 +56,9 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             println("no camera")
             return
         }
-        let desiredType = kUTTypeImage
+        let desiredType = kUTTypeImage as! String
         // let desiredType = kUTTypeMovie
-        let arr = UIImagePickerController.availableMediaTypesForSourceType(.Camera) as [String]
+        let arr = UIImagePickerController.availableMediaTypesForSourceType(.Camera) as! [String]
         println(arr)
         if find(arr, desiredType) == nil {
             println("no capture")
@@ -77,7 +77,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         self.presentViewController(picker, animated: true, completion: nil)
     }
 
-    func imagePickerControllerDidCancel(picker: UIImagePickerController!) {
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -94,11 +94,11 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                 let type = info[UIImagePickerControllerMediaType] as? String
                 if type != nil {
                     switch type! {
-                    case kUTTypeImage:
+                    case kUTTypeImage as! String:
                         if im != nil {
                             self.showImage(im!)
                         }
-                    case kUTTypeMovie:
+                    case kUTTypeMovie as! String:
                         if url != nil {
                             self.showMovie(url!)
                         }
@@ -110,12 +110,12 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     func clearAll() {
         if self.childViewControllers.count > 0 {
-            let av = self.childViewControllers[0] as AVPlayerViewController
+            let av = self.childViewControllers[0] as! AVPlayerViewController
             av.willMoveToParentViewController(nil)
             av.view.removeFromSuperview()
             av.removeFromParentViewController()
         }
-        self.redView.subviews.map { ($0 as UIView).removeFromSuperview() }
+        self.redView.subviews.map { ($0 as! UIView).removeFromSuperview() }
     }
     
     func showImage(im:UIImage) {

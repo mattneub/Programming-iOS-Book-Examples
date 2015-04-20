@@ -19,7 +19,7 @@ class ModelController: NSObject {
         let result = PHAssetCollection.fetchAssetCollectionsWithType(
             .SmartAlbum, subtype: .SmartAlbumUserLibrary, options: nil)
         self.recentAlbums = result
-        let rec = result.firstObject as PHAssetCollection!
+        let rec = result.firstObject as! PHAssetCollection!
         if rec == nil {
             return
         }
@@ -40,8 +40,8 @@ class ModelController: NSObject {
         if self.photos == nil || self.photos.count == 0 || index >= self.photos.count {
             return nil
         }
-        let dvc = storyboard.instantiateViewControllerWithIdentifier("DataViewController") as DataViewController
-        dvc.dataObject = self.photos[index] as PHAsset
+        let dvc = storyboard.instantiateViewControllerWithIdentifier("DataViewController") as! DataViewController
+        dvc.dataObject = self.photos[index] as! PHAsset
         // dvc.index = index
         return dvc
     }
@@ -58,7 +58,7 @@ class ModelController: NSObject {
 extension ModelController : UIPageViewControllerDataSource {
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        let ix = self.indexOfViewController(viewController as DataViewController)
+        let ix = self.indexOfViewController(viewController as! DataViewController)
         if ix == 0 {
             return nil
         }
@@ -66,7 +66,7 @@ extension ModelController : UIPageViewControllerDataSource {
     }
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        let ix = self.indexOfViewController(viewController as DataViewController)
+        let ix = self.indexOfViewController(viewController as! DataViewController)
         if ix + 1 >= self.photos.count {
             return nil
         }
