@@ -13,14 +13,14 @@ func delay(delay:Double, closure:()->()) {
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
-    let which = 10 // 1...10
-
+    let which = 1 // 1...10
+    
     @IBOutlet var map : MKMapView!
     var annloc : CLLocationCoordinate2D!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.map.tintColor = UIColor.greenColor()
         
         let loc = CLLocationCoordinate2DMake(34.927752,-120.217608)
@@ -30,10 +30,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // let reg = MKCoordinateRegionMakeWithDistance(loc, 1200, 1200)
         self.map.region = reg
         //  or ...
-//        let pt = MKMapPointForCoordinate(loc)
-//        let w = MKMapPointsPerMeterAtLatitude(loc.latitude) * 1200
-//        self.map.visibleMapRect = MKMapRectMake(pt.x - w/2.0, pt.y - w/2.0, w, w)
-
+        //        let pt = MKMapPointForCoordinate(loc)
+        //        let w = MKMapPointsPerMeterAtLatitude(loc.latitude) * 1200
+        //        self.map.visibleMapRect = MKMapRectMake(pt.x - w/2.0, pt.y - w/2.0, w, w)
+        
         self.annloc = CLLocationCoordinate2DMake(34.923964,-120.219558)
         
         if which == 1 {
@@ -50,7 +50,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
             ann.title = "Park here"
             ann.subtitle = "Fun awaits down the road!"
             self.map.addAnnotation(ann)
-            /*
             delay(2) {
                 UIView.animateWithDuration(0.25) {
                     var loc = ann.coordinate
@@ -59,7 +58,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
                     ann.coordinate = loc
                 }
             }
-*/
         }
         if which == 8 {
             let lat = self.annloc.latitude
@@ -132,7 +130,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             self.map.addAnnotation(annot)
         }
     }
-
+    
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         if which == 3 {
             var v : MKAnnotationView! = nil
@@ -141,9 +139,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 v = mapView.dequeueReusableAnnotationViewWithIdentifier(ident)
                 if v == nil {
                     v = MKPinAnnotationView(annotation:annotation, reuseIdentifier:ident)
-                    (v as MKPinAnnotationView).pinColor = .Green
+                    (v as! MKPinAnnotationView).pinColor = .Green
                     v.canShowCallout = true
-                    (v as MKPinAnnotationView).animatesDrop = true
+                    (v as! MKPinAnnotationView).animatesDrop = true
                     
                 }
                 v.annotation = annotation
@@ -192,10 +190,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
                         .imageWithRenderingMode(.AlwaysTemplate)
                     let iv = UIImageView(image:im)
                     v.leftCalloutAccessoryView = iv
-                    v.rightCalloutAccessoryView = UIButton.buttonWithType(.InfoLight) as UIButton
+                    v.rightCalloutAccessoryView = UIButton.buttonWithType(.InfoLight) as! UIButton
                 }
                 v.annotation = annotation
-                // v.draggable = true
+                v.draggable = true
             }
             return v
         }
@@ -204,14 +202,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(mapView: MKMapView!, didAddAnnotationViews views: [AnyObject]!) {
         if which >= 7 {
-            for aView in views as [MKAnnotationView] {
+            for aView in views as! [MKAnnotationView] {
                 if aView.reuseIdentifier == "bike" {
                     aView.transform = CGAffineTransformMakeScale(0, 0)
                     aView.alpha = 0
                     UIView.animateWithDuration(0.8) {
                         aView.alpha = 1
                         aView.transform = CGAffineTransformIdentity
-                        }
+                    }
                 }
             }
         }
@@ -253,17 +251,24 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let p = MKPlacemark(coordinate:self.annloc, addressDictionary:nil)
         let mi = MKMapItem(placemark: p)
         mi.name = "A Great Place to Dirt Bike" // label to appear in Maps app
-        let span = NSValue(MKCoordinateSpan:self.map.region.span)
+        // setting the span seems to have no effect
+        //let span = NSValue(MKCoordinateSpan:self.map.region.span)
         let opts = [
             MKLaunchOptionsMapTypeKey: MKMapType.Hybrid.rawValue,
-            MKLaunchOptionsMapSpanKey: span
+            //MKLaunchOptionsMapSpanKey: span
         ]
         mi.openInMapsWithLaunchOptions(opts)
-
+        
     }
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
-        
+        switch (newState) {
+        case .Starting:
+            view.dragState = .Dragging
+        case .Ending, .Canceling:
+            view.dragState = .None
+        default: break
+        }
     }
-
+    
 }

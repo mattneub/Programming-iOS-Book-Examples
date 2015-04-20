@@ -12,16 +12,11 @@ class MyOverlay : NSObject, MKOverlay {
         }
     }
     
-    private let realBoundingMapRect : MKMapRect
-    var boundingMapRect : MKMapRect {
-        get {
-            return realBoundingMapRect
-        }
-    }
+    var boundingMapRect : MKMapRect
     var path : UIBezierPath!
     
     init(rect:MKMapRect) {
-        self.realBoundingMapRect = rect
+        self.boundingMapRect = rect
         super.init()
     }
     

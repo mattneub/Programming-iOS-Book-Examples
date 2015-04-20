@@ -24,10 +24,10 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     @IBAction func doButton (sender:AnyObject!) {
         let mi = MKMapItem.mapItemForCurrentLocation()
         // setting the span doesn't seem to work
-        //let span = MKCoordinateSpanMake(0.0005, 0.0005)
+        // let span = MKCoordinateSpanMake(0.0005, 0.0005)
         mi.openInMapsWithLaunchOptions([
             MKLaunchOptionsMapTypeKey: MKMapType.Standard.rawValue,
-            //MKLaunchOptionsMapSpanKey: NSValue(MKCoordinateSpan:span)
+            // MKLaunchOptionsMapSpanKey: NSValue(MKCoordinateSpan:span)
             ])
     }
     
@@ -52,17 +52,17 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         geo.reverseGeocodeLocation(loc) {
             (placemarks : [AnyObject]!, error : NSError!) in
             if placemarks != nil {
-                let p = placemarks[0] as CLPlacemark
+                let p = placemarks[0] as! CLPlacemark
                 let s = ABCreateStringWithAddressDictionary(p.addressDictionary, false)
                 println("you are at:\n\(s)") // do something with address
             }
         }
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar!) {
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         let s = searchBar.text
-        if s == nil || countElements(s) < 5 { return }
+        if s == nil || count(s) < 5 { return }
         let geo = CLGeocoder()
         geo.geocodeAddressString(s) {
             (placemarks : [AnyObject]!, error : NSError!) in
@@ -71,7 +71,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
                 return
             }
             self.map.showsUserLocation = false
-            let p = placemarks[0] as CLPlacemark
+            let p = placemarks[0] as! CLPlacemark
             let mp = MKPlacemark(placemark:p)
             self.map.removeAnnotations(self.map.annotations)
             self.map.addAnnotation(mp)
@@ -90,7 +90,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         }
         let req = MKLocalSearchRequest()
         req.naturalLanguageQuery = "Thai restaurant"
-        req.region = self.map.region
+        req.region = MKCoordinateRegionMake(loc.coordinate, MKCoordinateSpanMake(1,1))
         let search = MKLocalSearch(request:req)
         search.startWithCompletionHandler() {
             (response : MKLocalSearchResponse!, error : NSError!) in
@@ -99,7 +99,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
                 return
             }
             self.map.showsUserLocation = false
-            let mi = response.mapItems[0] as MKMapItem // I'm feeling lucky
+            let mi = response.mapItems[0] as! MKMapItem // I'm feeling lucky
             let place = mi.placemark
             let loc = place.location.coordinate
             let reg = MKCoordinateRegionMakeWithDistance(loc, 1200, 1200)
@@ -130,7 +130,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
                 return
             }
             println("Got restaurant address")
-            let mi = response.mapItems[0] as MKMapItem // I'm still feeling lucky
+            let mi = response.mapItems[0] as! MKMapItem // I'm still feeling lucky
             let req = MKDirectionsRequest()
             req.setSource(MKMapItem.mapItemForCurrentLocation())
             req.setDestination(mi)
@@ -142,7 +142,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
                     return
                 }
                 println("got directions")
-                let route = response.routes[0] as MKRoute // I'm feeling insanely lucky
+                let route = response.routes[0] as! MKRoute // I'm feeling insanely lucky
                 let poly = route.polyline
                 self.map.addOverlay(poly)
                 for step in route.steps {
