@@ -71,7 +71,7 @@ class ViewController: UIViewController {
         let today = NSDate()
         let greg = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
         // day without time means "all day"
-        let comps : NSCalendarUnit = .YearCalendarUnit | .MonthCalendarUnit | .DayCalendarUnit
+        let comps : NSCalendarUnit = .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay
         // start date not needed on iOS
         // rem.startDateComponents = [greg components:comps fromDate:today];
         rem.dueDateComponents = greg.components(comps, fromDate:today)

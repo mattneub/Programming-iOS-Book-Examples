@@ -58,7 +58,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         }
         // obtain local source
         var src : EKSource! = nil
-        for source in self.database.sources() as [EKSource] {
+        for source in self.database.sources() as! [EKSource] {
             if source.sourceType.value == EKSourceTypeLocal.value {
                 src = source
                 break
@@ -83,7 +83,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     }
 
     func calendarWithName( name:String ) -> EKCalendar? {
-        let calendars = self.database.calendarsForEntityType(EKEntityTypeEvent) as [EKCalendar]
+        let calendars = self.database.calendarsForEntityType(EKEntityTypeEvent) as! [EKCalendar]
         for cal in calendars { // (should be using identifier)
             if cal.title == name {
                 return cal
@@ -212,6 +212,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
                     }
             }
             sort(&events) {return $0.compareStartDateWithEvent($1) == .OrderedAscending}
+            // println(events)
         }
     }
     
@@ -226,7 +227,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             println("need to search for nap event first")
             return
         }
-        let ev = self.database.calendarItemWithIdentifier(self.napid) as EKEvent!
+        let ev = self.database.calendarItemWithIdentifier(self.napid) as! EKEvent!
         if ev == nil {
             println("failed to retrieve event")
             return
@@ -314,9 +315,9 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     
     func calendarChooserDidFinish(calendarChooser: EKCalendarChooser!) {
         // up to us to respond
-        let cals = calendarChooser.selectedCalendars
+        let cals = calendarChooser.selectedCalendars as! Set<EKCalendar>!
             if cals != nil && cals.count > 0 {
-                let calsToDelete = cals.valueForKey("calendarIdentifier") as NSSet
+                let calsToDelete = map(cals!) {$0.calendarIdentifier}
                 let alert = UIAlertController(title: "Delete selected calendar?", message: nil, preferredStyle: .ActionSheet)
                 alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
                 alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: {
