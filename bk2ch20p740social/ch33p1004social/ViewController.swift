@@ -70,7 +70,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, MFM
         }
         self.presentViewController(act, animated: true, completion: nil)
         if let pop = act.popoverPresentationController {
-            let v = sender as UIView
+            let v = sender as! UIView
             pop.sourceView = v
             pop.sourceRect = v.bounds
         }
