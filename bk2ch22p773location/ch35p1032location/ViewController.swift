@@ -15,7 +15,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         let status = CLLocationManager.authorizationStatus()
         switch status {
-        case .Authorized, .AuthorizedWhenInUse:
+        case .AuthorizedAlways, .AuthorizedWhenInUse:
             return true
         case .NotDetermined:
             self.locman.requestWhenInUseAuthorization()
@@ -73,7 +73,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         print("did update location ")
-        let loc = locations.last as CLLocation
+        let loc = locations.last as! CLLocation
         let acc = loc.horizontalAccuracy
         let time = loc.timestamp
         let coord = loc.coordinate
@@ -93,7 +93,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         // got it
         println("You are at \(coord.latitude) \(coord.longitude)")
-        // self.stopTrying()
+        self.stopTrying()
     }
 
 }

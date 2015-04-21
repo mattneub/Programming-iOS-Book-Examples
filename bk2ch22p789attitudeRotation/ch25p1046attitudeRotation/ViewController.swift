@@ -16,10 +16,9 @@ class ViewController: UIViewController {
             println("oh well")
             return
         }
-        let ref = CMAttitudeReferenceFrameXArbitraryCorrectedZVertical
-        let f = ref.value
-        let avail = UInt32(CMMotionManager.availableAttitudeReferenceFrames())
-        if avail & f == 0 {
+        let ref = CMAttitudeReferenceFrame.XArbitraryCorrectedZVertical
+        let avail = CMMotionManager.availableAttitudeReferenceFrames()
+        if avail.rawValue & ref.rawValue == 0 {
             println("darn")
             return
         }
@@ -53,7 +52,7 @@ class ViewController: UIViewController {
         t.m32 = CGFloat(r.m32)
         t.m33 = CGFloat(r.m33)
 
-        let lay = self.v.layer.sublayers[0] as CALayer
+        let lay = self.v.layer.sublayers[0] as! CALayer
         CATransaction.setAnimationDuration(1.0/10.0)
         lay.transform = t
     }

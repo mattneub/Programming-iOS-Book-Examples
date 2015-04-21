@@ -57,6 +57,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager!) -> Bool {
         return true // if you want the calibration dialog to be able to appear
+        // I did in fact see it appear, so this works in iOS 8.3 at least
     }
 
 

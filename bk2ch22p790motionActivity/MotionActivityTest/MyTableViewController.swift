@@ -63,7 +63,7 @@ class MyTableViewController: UITableViewController {
         let yester = now.dateByAddingTimeInterval(-60*60*24)
         self.actman.queryActivityStartingFromDate(yester, toDate: now, toQueue: NSOperationQueue.mainQueue()) {
             (arr:[AnyObject]!, err:NSError!) -> Void in
-            var acts = arr as [CMMotionActivity]
+            var acts = arr as! [CMMotionActivity]
             // crude filter: eliminate empties, low-confidence, and successive duplicates
             for i in stride(from: acts.count-1, through: 0, by: -1) {
                 if acts[i].overallAct() == "f f f f f" {
@@ -114,7 +114,7 @@ class MyTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
 
         let act = self.data[indexPath.row]
         let format = NSDateFormatter()

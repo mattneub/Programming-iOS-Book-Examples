@@ -13,11 +13,10 @@ class ViewController: UIViewController {
             println("Oh, well")
             return
         }
-        // idiot Swift numeric foo
-        let ref = CMAttitudeReferenceFrameXMagneticNorthZVertical
-        let f = ref.value
-        let avail = UInt32(CMMotionManager.availableAttitudeReferenceFrames())
-        if avail & f == 0 {
+        // idiot Swift numeric foo (different in iOS 8.3 but still idiotic)
+        let ref = CMAttitudeReferenceFrame.XMagneticNorthZVertical
+        let avail = CMMotionManager.availableAttitudeReferenceFrames()
+        if avail.rawValue & ref.rawValue == 0 {
             println("darn")
             return
         }
