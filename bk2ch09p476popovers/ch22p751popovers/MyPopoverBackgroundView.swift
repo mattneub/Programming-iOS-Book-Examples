@@ -48,16 +48,16 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
         
         let con = UIGraphicsGetCurrentContext()
         CGContextSaveGState(con)
-        var proposedX = self.arrowOffset
+        var propX = self.arrowOffset
         let limit : CGFloat = 22.0
         let maxX = rect.size.width/2.0 - limit
-        if proposedX > maxX {
-            proposedX = maxX
+        if propX > maxX {
+            propX = maxX
         }
-        if proposedX < limit {
-            proposedX = limit
+        if propX < limit {
+            propX = limit
         }
-        CGContextTranslateCTM(con, rect.size.width/2.0 + proposedX - Arrow.ARBASE/2.0, 0)
+        CGContextTranslateCTM(con, rect.size.width/2.0 + propX - Arrow.ARBASE/2.0, 0)
         CGContextMoveToPoint(con, 0, Arrow.ARHEIGHT)
         CGContextAddLineToPoint(con, Arrow.ARBASE / 2.0, 0)
         CGContextAddLineToPoint(con, Arrow.ARBASE, Arrow.ARHEIGHT)

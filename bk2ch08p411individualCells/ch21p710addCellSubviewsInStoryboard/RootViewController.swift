@@ -24,7 +24,7 @@ class RootViewController : UITableViewController {
 
         let lab = cell.theLabel
         // prove that many rows does not mean many cell objects
-        lab.text = "This is row \(indexPath.row) of section \(indexPath.section)"
+        lab.text = "Row \(indexPath.row) of section \(indexPath.section)"
         if lab.tag != 999 {
             lab.tag = 999
             println("New cell \(++self.cells)")
