@@ -19,11 +19,11 @@ class MyMandelbrotOperation : NSOperation {
 
     // create instance variable
     func makeBitmapContext(size:CGSize) {
-        var bitmapBytesPerRow : UInt = UInt(size.width * 4)
+        var bitmapBytesPerRow = Int(size.width * 4)
         bitmapBytesPerRow += (16 - (bitmapBytesPerRow % 16)) % 16
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let prem : CGBitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
-        let context = CGBitmapContextCreate(nil, UInt(size.width), UInt(size.height), 8, bitmapBytesPerRow, colorSpace, prem)
+        let context = CGBitmapContextCreate(nil, Int(size.width), Int(size.height), 8, bitmapBytesPerRow, colorSpace, prem)
         self.bitmapContext = context
     }
     
