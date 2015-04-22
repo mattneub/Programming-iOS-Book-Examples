@@ -23,8 +23,8 @@ class Person: NSObject, NSCoding {
     }
     
     required init(coder: NSCoder) {
-        self.lastName = coder.decodeObjectForKey("last")! as String
-        self.firstName = coder.decodeObjectForKey("first")! as String
+        self.lastName = coder.decodeObjectForKey("last") as! String
+        self.firstName = coder.decodeObjectForKey("first") as! String
         // do not call super init(coder:) in this case
         super.init()
     }

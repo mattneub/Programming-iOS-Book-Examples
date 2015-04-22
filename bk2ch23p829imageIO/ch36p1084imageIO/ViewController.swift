@@ -10,7 +10,7 @@ class ViewController: UIViewController {
     @IBAction func doButton (sender:AnyObject!) {
         let url = NSBundle.mainBundle().URLForResource("colson", withExtension: "jpg")
         let src = CGImageSourceCreateWithURL(url, nil)
-        let result = CGImageSourceCopyPropertiesAtIndex(src, 0, nil) as NSDictionary
+        let result = CGImageSourceCopyPropertiesAtIndex(src, 0, nil) as [NSObject:AnyObject]
         println(result)
         // just proving it really is a dictionary
         print(result[kCGImagePropertyPixelWidth as String]!); print(" by "); println(result[kCGImagePropertyPixelHeight as String]!)
@@ -21,11 +21,11 @@ class ViewController: UIViewController {
         let src = CGImageSourceCreateWithURL(url, nil)
         let scale = UIScreen.mainScreen().scale
         let w = self.iv.bounds.width * scale
-        let d = [
-            kCGImageSourceShouldAllowFloat as String : true,
-            kCGImageSourceCreateThumbnailWithTransform as String : true,
-            kCGImageSourceCreateThumbnailFromImageAlways as String : true,
-            kCGImageSourceThumbnailMaxPixelSize as String : w
+        let d : [NSObject:AnyObject] = [
+            kCGImageSourceShouldAllowFloat : true,
+            kCGImageSourceCreateThumbnailWithTransform : true,
+            kCGImageSourceCreateThumbnailFromImageAlways : true,
+            kCGImageSourceThumbnailMaxPixelSize : w
         ]
         let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d)
         let im = UIImage(CGImage: imref, scale: scale, orientation: .Up)!

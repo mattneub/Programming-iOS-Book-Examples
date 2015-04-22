@@ -5,7 +5,7 @@ class ViewController: UIViewController {
     
     var dbpath : String {
         get {
-            let docsdir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last as String
+            let docsdir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last as! String
             return docsdir.stringByAppendingPathComponent("people.db")
         }
     }

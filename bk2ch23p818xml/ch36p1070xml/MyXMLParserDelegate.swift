@@ -27,11 +27,11 @@ class MyXMLParserDelegate : NSObject {
 }
 
 extension MyXMLParserDelegate : NSXMLParserDelegate {
-    func parser(parser: NSXMLParser, foundCharacters string: String!) {
-        self.text = self.text + string
+    func parser(parser: NSXMLParser, foundCharacters string: String?) {
+        self.text = self.text + string!
     }
     
-    func parser(parser: NSXMLParser, didEndElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!) {
+    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if self.parent != nil {
             self.parent!.finishedChild(self.text)
             parser.delegate = self.parent

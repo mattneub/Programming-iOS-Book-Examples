@@ -60,7 +60,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         self.tableView.reloadData()
         self.tableView.scrollToRowAtIndexPath(ix, atScrollPosition:.Bottom, animated:true)
         let cell = self.tableView.cellForRowAtIndexPath(ix)!
-        let tf = cell.viewWithTag(1) as UITextField
+        let tf = cell.viewWithTag(1) as! UITextField
         tf.becomeFirstResponder()
         
         self.doc.updateChangeCount(.Done)
@@ -78,9 +78,9 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Person", forIndexPath:indexPath) as UITableViewCell
-        let first = cell.viewWithTag(1) as UITextField
-        let last = cell.viewWithTag(2) as UITextField
+        let cell = tableView.dequeueReusableCellWithIdentifier("Person", forIndexPath:indexPath) as! UITableViewCell
+        let first = cell.viewWithTag(1) as! UITextField
+        let last = cell.viewWithTag(2) as! UITextField
         let p = self.people[indexPath.row]
         first.text = p.firstName
         last.text = p.lastName
@@ -93,7 +93,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         println("did end editing")
         var v = textField.superview!
         while !(v is UITableViewCell) {v = v.superview!}
-        let cell = v as UITableViewCell
+        let cell = v as! UITableViewCell
         let ip = self.tableView.indexPathForCell(cell)!
         let row = ip.row
         let p = self.people[row]

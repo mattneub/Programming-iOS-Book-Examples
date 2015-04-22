@@ -13,8 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        let navigationController = self.window!.rootViewController as UINavigationController
-        let controller = navigationController.topViewController as GroupLister
+        let navigationController = self.window!.rootViewController as! UINavigationController
+        let controller = navigationController.topViewController as! GroupLister
         controller.managedObjectContext = self.managedObjectContext
         return true
     }
@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: NSURL = {
-        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as NSURL
+        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as! NSURL
         }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {

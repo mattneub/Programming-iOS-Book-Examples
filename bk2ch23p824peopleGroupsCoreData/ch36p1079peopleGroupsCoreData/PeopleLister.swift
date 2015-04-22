@@ -53,15 +53,15 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = self.frc.sections![section] as NSFetchedResultsSectionInfo
+        let sectionInfo = self.frc.sections![section] as! NSFetchedResultsSectionInfo
         return sectionInfo.numberOfObjects
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Person", forIndexPath:indexPath) as UITableViewCell
-        let object = self.frc.objectAtIndexPath(indexPath) as NSManagedObject
-        let first = cell.viewWithTag(1) as UITextField
-        let last = cell.viewWithTag(2) as UITextField
+        let cell = tableView.dequeueReusableCellWithIdentifier("Person", forIndexPath:indexPath) as! UITableViewCell
+        let object = self.frc.objectAtIndexPath(indexPath) as! NSManagedObject
+        let first = cell.viewWithTag(1) as! UITextField
+        let last = cell.viewWithTag(2) as! UITextField
         first.text = object.firstName
         last.text = object.lastName
         first.delegate = self; last.delegate = self
@@ -72,7 +72,7 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         self.tableView.endEditing(true)
         let context = self.frc.managedObjectContext
         let entity = self.frc.fetchRequest.entity!
-        let mo = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext:context) as NSManagedObject
+        let mo = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext:context) as! NSManagedObject
         mo.group = self.groupObject
         mo.lastName = ""
         mo.firstName = ""
@@ -87,13 +87,13 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         // and the rest is in the update delegate messages
     }
     
-    func textFieldDidEndEditing(textField: UITextField!) {
+    func textFieldDidEndEditing(textField: UITextField) {
         println("did end editing")
         var v = textField.superview!
         while !(v is UITableViewCell) {v = v.superview!}
-        let cell = v as UITableViewCell
+        let cell = v as! UITableViewCell
         let ip = self.tableView.indexPathForCell(cell)!
-        let object = self.frc.objectAtIndexPath(ip) as NSManagedObject
+        let object = self.frc.objectAtIndexPath(ip) as! NSManagedObject
         object.setValue(textField.text, forKey: ((textField.tag == 1) ? "firstName" : "lastName"))
         
         // save context
@@ -137,7 +137,7 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
                 self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
                 dispatch_async(dispatch_get_main_queue()) { // wait for interface to settle
                     let cell = self.tableView.cellForRowAtIndexPath(newIndexPath!)!
-                    let tf = cell.viewWithTag(1) as UITextField
+                    let tf = cell.viewWithTag(1) as! UITextField
                     tf.becomeFirstResponder()
                 }
             }

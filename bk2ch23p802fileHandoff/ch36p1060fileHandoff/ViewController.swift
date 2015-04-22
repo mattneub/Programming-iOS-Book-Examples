@@ -55,7 +55,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
             return
         }
         self.dic.URL = url
-        let v = sender as UIView
+        let v = sender as! UIView
         let ok = self.dic.presentOpenInMenuFromRect(v.bounds, inView: v, animated: true)
         if !ok {
             println("That didn't work out")

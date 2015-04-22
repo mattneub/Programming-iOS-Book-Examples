@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func doButton1 (sender:AnyObject!) {
-        let docs = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last as String
+        let docs = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last as! String
         println(docs)
     }
     
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
             println(err)
             return
         }
-        (arr! as [NSURL]).map{$0.lastPathComponent}.map(println)
+        (arr as! [NSURL]).map{$0.lastPathComponent!}.map(println)
         // ======
 //        self.query.enumerateResultsUsingBlock {
 //            obj, ix, stop in
@@ -88,10 +88,12 @@ class ViewController: UIViewController {
         // this is what you do when an Objective-C enumerable doesn't conform to Swift's SequenceType
         while let f = dir.nextObject() as? NSURL {
             if f.pathExtension == "txt" {
-                println(f.lastPathComponent)
+                println(f.lastPathComponent!)
             }
         }
     }
+    
+    let which = 1
     
     @IBAction func doButton8 (sender:AnyObject!) {
         let fm = NSFileManager()
@@ -100,7 +102,6 @@ class ViewController: UIViewController {
         let moi = Person(firstName: "Matt", lastName: "Neuburg")
         let moidata = NSKeyedArchiver.archivedDataWithRootObject(moi)
         let moifile = docsurl.URLByAppendingPathComponent("moi.txt")
-        let which = 1
         switch which {
         case 1:
             moidata.writeToURL(moifile, atomically: true)
@@ -123,11 +124,10 @@ class ViewController: UIViewController {
         var err : NSError?
         let docsurl = fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: &err)!
         let moifile = docsurl.URLByAppendingPathComponent("moi.txt")
-        let which = 1
         switch which {
         case 1:
             let persondata = NSData(contentsOfURL: moifile)!
-            let person = NSKeyedUnarchiver.unarchiveObjectWithData(persondata) as Person
+            let person = NSKeyedUnarchiver.unarchiveObjectWithData(persondata) as! Person
             println(person)
         case 2:
             // ==== the NSFileCoordinator way
@@ -136,7 +136,7 @@ class ViewController: UIViewController {
             fc.coordinateAccessWithIntents([intent], queue: NSOperationQueue.mainQueue()) {
                 (err:NSError!) in
                 let persondata = NSData(contentsOfURL: intent.URL)!
-                let person = NSKeyedUnarchiver.unarchiveObjectWithData(persondata) as Person
+                let person = NSKeyedUnarchiver.unarchiveObjectWithData(persondata) as! Person
                 println(person)
             }
         default:break

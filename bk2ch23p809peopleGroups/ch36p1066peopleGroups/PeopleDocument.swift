@@ -11,7 +11,7 @@ class PeopleDocument: UIDocument {
         error outError: NSErrorPointer) -> Bool {
             println("loading \(typeName)")
             if let contents = contents as? NSData {
-                let arr = NSKeyedUnarchiver.unarchiveObjectWithData(contents) as [Person]
+                let arr = NSKeyedUnarchiver.unarchiveObjectWithData(contents) as! [Person]
                 self.people = arr
                 return true
             }

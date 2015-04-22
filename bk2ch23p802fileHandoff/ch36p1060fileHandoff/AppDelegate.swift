@@ -18,11 +18,13 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         println("start \(__FUNCTION__)")
         println(url)
         
+        
+        var finalurl = url
+        
         // new code: copy out of the inbox into the documents folder
         // I don't know why, but for some reason Quick Look can no longer preview
         // a document in the inbox
-        
-        var finalurl = url
+
         let dir = url.URLByDeletingLastPathComponent?.lastPathComponent
         if dir == "Inbox" {
             println("inbox")
@@ -44,7 +46,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             }
         }
         
-        let vc = self.window!.rootViewController as ViewController
+        let vc = self.window!.rootViewController as! ViewController
         vc.displayDoc(finalurl)
         println("end \(__FUNCTION__)")
         return true
