@@ -16,12 +16,12 @@ class ViewController: UIViewController {
     @IBAction func doStart (sender:AnyObject!) {
         self.prog.progress = 0
         self.iv.image = nil
-        let del = UIApplication.sharedApplication().delegate as AppDelegate
+        let del = UIApplication.sharedApplication().delegate as! AppDelegate
         del.startDownload(self)
     }
     
     func grabPicture () {
-        let del = UIApplication.sharedApplication().delegate as AppDelegate
+        let del = UIApplication.sharedApplication().delegate as! AppDelegate
         self.iv.image = del.image
         del.image = nil
         if self.iv.image != nil {
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     }
     
     func crash (sender:AnyObject?) {
-        let s = sender as String
+        let s = sender as! String
     }
 
 

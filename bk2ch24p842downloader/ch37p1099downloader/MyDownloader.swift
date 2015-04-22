@@ -45,15 +45,15 @@ class MyDownloader: NSObject, NSURLSessionDownloadDelegate {
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
         let req = downloadTask.originalRequest
         let ch : AnyObject = NSURLProtocol.propertyForKey("ch", inRequest:req)!
-        let response = downloadTask.response as NSHTTPURLResponse
+        let response = downloadTask.response as! NSHTTPURLResponse
         let stat = response.statusCode
         println("status \(stat)")
         var url : NSURL! = nil
         if stat == 200 {
             url = location
-            println("download \(req.URL.lastPathComponent)")
+            println("download \(req.URL!.lastPathComponent)")
         }
-        let ch2 = (ch as Wrapper).p as MyDownloaderCompletion
+        let ch2 = (ch as! Wrapper).p as MyDownloaderCompletion
         if self.main {
             ch2(url)
         } else {

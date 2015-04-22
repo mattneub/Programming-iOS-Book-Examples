@@ -35,7 +35,7 @@ class ViewController: UIViewController, NSNetServiceBrowserDelegate, NSNetServic
         self.updateInterface()
     }
     
-    func netServiceBrowser(aNetServiceBrowser: NSNetServiceBrowser, didFindService aNetService: NSNetService!, moreComing: Bool) {
+    func netServiceBrowser(aNetServiceBrowser: NSNetServiceBrowser, didFindService aNetService: NSNetService, moreComing: Bool) {
         println("adding a service")
         self.services.append(aNetService)
         if !moreComing {
@@ -43,7 +43,7 @@ class ViewController: UIViewController, NSNetServiceBrowserDelegate, NSNetServic
         }
     }
     
-    func netServiceBrowser(aNetServiceBrowser: NSNetServiceBrowser, didRemoveService aNetService: NSNetService!, moreComing: Bool) {
+    func netServiceBrowser(aNetServiceBrowser: NSNetServiceBrowser, didRemoveService aNetService: NSNetService, moreComing: Bool) {
         if let ix = find(self.services, aNetService) {
             self.services.removeAtIndex(ix)
             println("removing a service")

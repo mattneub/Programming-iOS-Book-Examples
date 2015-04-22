@@ -18,7 +18,7 @@ class ViewController: UIViewController {
                 println(error)
                 return
             }
-            let status = (response as NSHTTPURLResponse).statusCode
+            let status = (response as! NSHTTPURLResponse).statusCode
             println("response status: \(status)")
             if status != 200 {
                 println("oh well")

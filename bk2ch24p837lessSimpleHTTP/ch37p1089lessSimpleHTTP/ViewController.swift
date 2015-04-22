@@ -58,7 +58,7 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
             }
         }
         self.task = nil
-        let response = downloadTask.response as NSHTTPURLResponse
+        let response = downloadTask.response as! NSHTTPURLResponse
         let stat = response.statusCode
         println("status \(stat)")
         if stat != 200 {
