@@ -140,18 +140,34 @@ class ViewController: UIViewController {
         }
     }
     
+    let whichAnimateWay = 2 // 1 or 2
+    
     func animate(count:Int) {
-        let opts = UIViewAnimationOptions.Autoreverse
-        let xorig = self.v.center.x
-        UIView.animateWithDuration(1, delay: 0, options: opts, animations: {
-            self.v.center.x += 100
-            }, completion: {
-                _ in
-                self.v.center.x = xorig
-                if count > 1 {
-                    self.animate(count-1)
-                }
-        })
+        switch whichAnimateWay {
+        case 1:
+            let opts = UIViewAnimationOptions.Autoreverse
+            let xorig = self.v.center.x
+            UIView.animateWithDuration(1, delay: 0, options: opts, animations: {
+                UIView.setAnimationRepeatCount(Float(count)) // I really don't like this
+                self.v.center.x += 100
+                }, completion: {
+                    _ in
+                    self.v.center.x = xorig
+            })
+        case 2:
+            let opts = UIViewAnimationOptions.Autoreverse
+            let xorig = self.v.center.x
+            UIView.animateWithDuration(1, delay: 0, options: opts, animations: {
+                self.v.center.x += 100
+                }, completion: {
+                    _ in
+                    self.v.center.x = xorig
+                    if count > 1 {
+                        self.animate(count-1)
+                    }
+            })
+        default: break
+        }
     }
     
 }
