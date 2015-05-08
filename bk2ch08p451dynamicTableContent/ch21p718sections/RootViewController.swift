@@ -2,8 +2,21 @@
 
 import UIKit
 
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
+
 class MyHeaderView : UITableViewHeaderFooterView {
     var section = 0
+    // just testing reuse
+    deinit {
+        println ("farewell from a header, section \(section)")
+    }
 }
 
 class RootViewController : UITableViewController {
@@ -38,6 +51,10 @@ class RootViewController : UITableViewController {
         self.tableView.sectionIndexColor = UIColor.whiteColor()
         self.tableView.sectionIndexBackgroundColor = UIColor.redColor()
         self.tableView.sectionIndexTrackingBackgroundColor = UIColor.blueColor()
+        return // just testing reuse
+        delay(5) {
+            self.tableView.reloadData()
+        }
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
