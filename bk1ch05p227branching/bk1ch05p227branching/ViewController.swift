@@ -64,6 +64,8 @@ class ViewController: UIViewController {
             }
         }
         
+        // these will also be repeated in chapter 10
+        
         if let ui = n.userInfo {
             if let prog = ui["progress"] as? Double {
                 self.progress = prog
