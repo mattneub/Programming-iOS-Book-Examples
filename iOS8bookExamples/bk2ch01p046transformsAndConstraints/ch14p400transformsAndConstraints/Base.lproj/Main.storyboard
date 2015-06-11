@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch14p400transformsAndConstraints" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LUB-Tp-gDo"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ezh-6K-d0t"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS" customClass="LoggingView" customModule="ch14p400transformsAndConstraints" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qet-ed-e6n" userLabel="TapperView" customClass="LoggingView" customModule="ch14p400transformsAndConstraints" customModuleProvider="target">
+                                <rect key="frame" x="32" y="35" width="98" height="76"/>
+                                <color key="backgroundColor" red="1" green="0.21931261690000001" blue="0.45882864099999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="4JB-L5-k33"/>
+                                    <constraint firstAttribute="width" constant="98" id="xcr-M5-kaP"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLt-Yo-C0N" userLabel="TapperView">
+                                <rect key="frame" x="32" y="134" width="98" height="76"/>
+                                <color key="backgroundColor" red="1" green="0.21931261690000001" blue="0.45882864099999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="V2j-5n-ILd"/>
+                                    <constraint firstAttribute="height" constant="76" id="p1W-PW-caz"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grh-0z-79y" customClass="MyView" customModule="ch14p400transformsAndConstraints" customModuleProvider="target">
+                                <rect key="frame" x="20" y="228" width="122" height="92"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZZ-S6-jBl" userLabel="TapperView">
+                                        <rect key="frame" x="12" y="8" width="98" height="76"/>
+                                        <color key="backgroundColor" red="1" green="0.21931261690000001" blue="0.45882864099999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="98" placeholder="YES" id="Uzp-EA-VUn"/>
+                                            <constraint firstAttribute="height" constant="76" placeholder="YES" id="s2n-KV-Zsh"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="122" id="0Pu-e3-BO6"/>
+                                    <constraint firstItem="NZZ-S6-jBl" firstAttribute="top" secondItem="grh-0z-79y" secondAttribute="top" constant="8" placeholder="YES" id="DUT-yj-Kn2"/>
+                                    <constraint firstAttribute="height" constant="92" id="L1H-oo-ySb"/>
+                                    <constraint firstItem="NZZ-S6-jBl" firstAttribute="leading" secondItem="grh-0z-79y" secondAttribute="leading" constant="12" placeholder="YES" id="ZBx-3w-Che"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fj8-kB-1jh" userLabel="TapperView">
+                                <rect key="frame" x="32" y="338" width="98" height="76"/>
+                                <color key="backgroundColor" red="1" green="0.21931261690000001" blue="0.45882864099999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="P38-Sy-0kD"/>
+                                    <constraint firstAttribute="height" constant="76" id="XxU-zI-Ksy"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="3hU-lZ-DOT" appends="YES" id="V0u-Tu-8U3"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Qet-ed-e6n" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="32" id="8tn-2j-GqK"/>
+                            <constraint firstItem="grh-0z-79y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="DcF-dc-YDX"/>
+                            <constraint firstItem="Fj8-kB-1jh" firstAttribute="top" secondItem="LUB-Tp-gDo" secondAttribute="bottom" constant="318" id="KTf-pc-W3d"/>
+                            <constraint firstAttribute="leading" secondItem="KLt-Yo-C0N" secondAttribute="centerX" constant="-81" id="UpV-pn-HZC"/>
+                            <constraint firstItem="grh-0z-79y" firstAttribute="top" secondItem="LUB-Tp-gDo" secondAttribute="bottom" constant="208" id="dKJ-fm-dKe"/>
+                            <constraint firstItem="KLt-Yo-C0N" firstAttribute="centerY" secondItem="LUB-Tp-gDo" secondAttribute="bottom" constant="152" id="dgn-zk-g0H"/>
+                            <constraint firstItem="Qet-ed-e6n" firstAttribute="top" secondItem="LUB-Tp-gDo" secondAttribute="bottom" constant="15" id="mta-Za-6aP"/>
+                            <constraint firstItem="Fj8-kB-1jh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="32" id="uxW-KO-tyX"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="z8g-yD-QBP" appends="YES" id="lmB-eq-5Jk"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="noConstraintsView" destination="NZZ-S6-jBl" id="hYE-L9-Jrn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="z8g-yD-QBP">
+                    <connections>
+                        <action selector="doButton:" destination="vXZ-lx-hvc" id="MNt-ri-bjy"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="3hU-lZ-DOT">
+                    <connections>
+                        <action selector="growLayer:" destination="vXZ-lx-hvc" id="klM-52-WbW"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
+</document>

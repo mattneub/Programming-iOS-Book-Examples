@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch23p773attributedStringDrawing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3ag-CL-Cnl"/>
+                        <viewControllerLayoutGuide type="bottom" id="l9Z-z1-rNt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oCC-74-2Sc">
+                                <rect key="frame" x="20" y="38" width="280" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="QEf-a2-ASg"/>
+                                    <constraint firstAttribute="width" constant="280" id="n4L-H4-idt"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xsQ-zD-Cba" customClass="StringDrawer" customModule="ch23p773attributedStringDrawing" customModuleProvider="target">
+                                <rect key="frame" x="20" y="314" width="280" height="166"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="166" id="Y8Z-Eq-Hpr"/>
+                                    <constraint firstAttribute="width" constant="280" id="gb0-fM-ecs"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xsQ-zD-Cba" firstAttribute="top" secondItem="oCC-74-2Sc" secondAttribute="bottom" constant="26" id="IfJ-gV-fKS"/>
+                            <constraint firstAttribute="centerX" secondItem="xsQ-zD-Cba" secondAttribute="centerX" id="YfN-X0-jlE"/>
+                            <constraint firstAttribute="centerX" secondItem="oCC-74-2Sc" secondAttribute="centerX" id="cyD-3G-EeT"/>
+                            <constraint firstItem="oCC-74-2Sc" firstAttribute="top" secondItem="3ag-CL-Cnl" secondAttribute="bottom" constant="18" id="plp-Hx-cmg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="drawer" destination="xsQ-zD-Cba" id="eGp-w4-2yq"/>
+                        <outlet property="iv" destination="oCC-74-2Sc" id="Lqp-ir-oeO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
+</document>

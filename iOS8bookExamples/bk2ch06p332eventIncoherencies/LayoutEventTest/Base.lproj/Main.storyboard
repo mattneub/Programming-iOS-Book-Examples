@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="DPU-GI-ccZ">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="rlF-uN-ogy">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="DPU-GI-ccZ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KsZ-Zs-YkQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="XYF-Hi-JCb" kind="relationship" relationship="rootViewController" id="lDZ-li-O88"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9v6-wL-2PH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-180" y="12"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="MvP-Sm-qRK">
+            <objects>
+                <viewController id="XYF-Hi-JCb" customClass="ViewController" customModule="LayoutEventTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lzv-oX-G5G"/>
+                        <viewControllerLayoutGuide type="bottom" id="p98-wh-qaJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rDs-D9-OFc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4J4-SR-00B">
+                        <barButtonItem key="rightBarButtonItem" title="Push" id="l2i-nH-IJL">
+                            <connections>
+                                <segue destination="EHP-sL-INA" kind="push" id="ngD-qF-XzR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZbS-3X-ecR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="388" y="9"/>
+        </scene>
+        <!--View Controller2-->
+        <scene sceneID="NKc-Xn-spS">
+            <objects>
+                <viewController id="EHP-sL-INA" customClass="ViewController2" customModule="LayoutEventTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kig-wN-6JF"/>
+                        <viewControllerLayoutGuide type="bottom" id="ash-BA-E76"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jNE-TM-D63">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="1" green="0.21931261690000001" blue="0.45882864099999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="g4F-Fd-FXn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZYS-2V-rnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="775" y="9"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
+</document>

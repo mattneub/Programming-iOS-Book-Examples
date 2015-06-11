@@ -1,0 +1,266 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		32C18D3B1992DEDA000156B1 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32C18D3A1992DEDA000156B1 /* ViewController.xib */; };
+		32C18D3D1992DF60000156B1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C18D3C1992DF60000156B1 /* Images.xcassets */; };
+		32E97E6E198BD76C001DC6EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E97E6D198BD76C001DC6EF /* AppDelegate.swift */; };
+		32E97E70198BD7A7001DC6EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E97E6F198BD7A7001DC6EF /* ViewController.swift */; };
+		A470888414AE67F40066DE3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A470888314AE67F40066DE3C /* UIKit.framework */; };
+		A470888614AE67F40066DE3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A470888514AE67F40066DE3C /* Foundation.framework */; };
+		A470888814AE67F40066DE3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A470888714AE67F40066DE3C /* CoreGraphics.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		32C18D3A1992DEDA000156B1 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		32C18D3C1992DF60000156B1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32E97E6D198BD76C001DC6EF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		32E97E6F198BD7A7001DC6EF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A470887F14AE67F40066DE3C /* p565p579selfSizingLabel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p565p579selfSizingLabel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A470888314AE67F40066DE3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A470888514AE67F40066DE3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A470888714AE67F40066DE3C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A470888B14AE67F40066DE3C /* p565p579selfSizingLabel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "p565p579selfSizingLabel-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A470887C14AE67F40066DE3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A470888414AE67F40066DE3C /* UIKit.framework in Frameworks */,
+				A470888614AE67F40066DE3C /* Foundation.framework in Frameworks */,
+				A470888814AE67F40066DE3C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A470887414AE67F40066DE3C = {
+			isa = PBXGroup;
+			children = (
+				A470888914AE67F40066DE3C /* p565p579selfSizingLabel */,
+				A470888214AE67F40066DE3C /* Frameworks */,
+				A470888014AE67F40066DE3C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A470888014AE67F40066DE3C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A470887F14AE67F40066DE3C /* p565p579selfSizingLabel.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A470888214AE67F40066DE3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A470888314AE67F40066DE3C /* UIKit.framework */,
+				A470888514AE67F40066DE3C /* Foundation.framework */,
+				A470888714AE67F40066DE3C /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A470888914AE67F40066DE3C /* p565p579selfSizingLabel */ = {
+			isa = PBXGroup;
+			children = (
+				32E97E6D198BD76C001DC6EF /* AppDelegate.swift */,
+				32E97E6F198BD7A7001DC6EF /* ViewController.swift */,
+				32C18D3A1992DEDA000156B1 /* ViewController.xib */,
+				32C18D3C1992DF60000156B1 /* Images.xcassets */,
+				A470888A14AE67F40066DE3C /* Supporting Files */,
+			);
+			path = p565p579selfSizingLabel;
+			sourceTree = "<group>";
+		};
+		A470888A14AE67F40066DE3C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A470888B14AE67F40066DE3C /* p565p579selfSizingLabel-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A470887E14AE67F40066DE3C /* p565p579selfSizingLabel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A470889D14AE67F40066DE3C /* Build configuration list for PBXNativeTarget "p565p579selfSizingLabel" */;
+			buildPhases = (
+				A470887B14AE67F40066DE3C /* Sources */,
+				A470887C14AE67F40066DE3C /* Frameworks */,
+				A470887D14AE67F40066DE3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = p565p579selfSizingLabel;
+			productName = p565p579selfSizingLabel;
+			productReference = A470887F14AE67F40066DE3C /* p565p579selfSizingLabel.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A470887614AE67F40066DE3C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A470887914AE67F40066DE3C /* Build configuration list for PBXProject "p565p579selfSizingLabel" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A470887414AE67F40066DE3C;
+			productRefGroup = A470888014AE67F40066DE3C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A470887E14AE67F40066DE3C /* p565p579selfSizingLabel */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A470887D14AE67F40066DE3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32C18D3B1992DEDA000156B1 /* ViewController.xib in Resources */,
+				32C18D3D1992DF60000156B1 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A470887B14AE67F40066DE3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32E97E6E198BD76C001DC6EF /* AppDelegate.swift in Sources */,
+				32E97E70198BD7A7001DC6EF /* ViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A470889B14AE67F40066DE3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A470889C14AE67F40066DE3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A470889E14AE67F40066DE3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "p565p579selfSizingLabel/p565p579selfSizingLabel-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A470889F14AE67F40066DE3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "p565p579selfSizingLabel/p565p579selfSizingLabel-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A470887914AE67F40066DE3C /* Build configuration list for PBXProject "p565p579selfSizingLabel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A470889B14AE67F40066DE3C /* Debug */,
+				A470889C14AE67F40066DE3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A470889D14AE67F40066DE3C /* Build configuration list for PBXNativeTarget "p565p579selfSizingLabel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A470889E14AE67F40066DE3C /* Debug */,
+				A470889F14AE67F40066DE3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A470887614AE67F40066DE3C /* Project object */;
+}

@@ -1,0 +1,289 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		325C17CE1985A32B007A27A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325C17CD1985A32B007A27A8 /* AppDelegate.swift */; };
+		325C17D01985A32B007A27A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325C17CF1985A32B007A27A8 /* ViewController.swift */; };
+		325C17D31985A32B007A27A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 325C17D11985A32B007A27A8 /* Main.storyboard */; };
+		325C17D51985A32B007A27A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 325C17D41985A32B007A27A8 /* Images.xcassets */; };
+		325C17ED19870ED3007A27A8 /* linkhelp.html in Resources */ = {isa = PBXBuildFile; fileRef = 325C17EC19870ED3007A27A8 /* linkhelp.html */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		325C17C81985A32B007A27A8 /* PopoverOnPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopoverOnPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		325C17CC1985A32B007A27A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		325C17CD1985A32B007A27A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		325C17CF1985A32B007A27A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		325C17D21985A32B007A27A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		325C17D41985A32B007A27A8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		325C17EC19870ED3007A27A8 /* linkhelp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = linkhelp.html; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		325C17C51985A32B007A27A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		325C17BF1985A32B007A27A8 = {
+			isa = PBXGroup;
+			children = (
+				325C17CA1985A32B007A27A8 /* PopoverOnPhone */,
+				325C17C91985A32B007A27A8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		325C17C91985A32B007A27A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				325C17C81985A32B007A27A8 /* PopoverOnPhone.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		325C17CA1985A32B007A27A8 /* PopoverOnPhone */ = {
+			isa = PBXGroup;
+			children = (
+				325C17CD1985A32B007A27A8 /* AppDelegate.swift */,
+				325C17CF1985A32B007A27A8 /* ViewController.swift */,
+				325C17D11985A32B007A27A8 /* Main.storyboard */,
+				325C17EC19870ED3007A27A8 /* linkhelp.html */,
+				325C17D41985A32B007A27A8 /* Images.xcassets */,
+				325C17CB1985A32B007A27A8 /* Supporting Files */,
+			);
+			path = PopoverOnPhone;
+			sourceTree = "<group>";
+		};
+		325C17CB1985A32B007A27A8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				325C17CC1985A32B007A27A8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		325C17C71985A32B007A27A8 /* PopoverOnPhone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 325C17E41985A32B007A27A8 /* Build configuration list for PBXNativeTarget "PopoverOnPhone" */;
+			buildPhases = (
+				325C17C41985A32B007A27A8 /* Sources */,
+				325C17C51985A32B007A27A8 /* Frameworks */,
+				325C17C61985A32B007A27A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PopoverOnPhone;
+			productName = PopoverOnPhone;
+			productReference = 325C17C81985A32B007A27A8 /* PopoverOnPhone.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		325C17C01985A32B007A27A8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					325C17C71985A32B007A27A8 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 325C17C31985A32B007A27A8 /* Build configuration list for PBXProject "PopoverOnPhone" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 325C17BF1985A32B007A27A8;
+			productRefGroup = 325C17C91985A32B007A27A8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				325C17C71985A32B007A27A8 /* PopoverOnPhone */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		325C17C61985A32B007A27A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				325C17ED19870ED3007A27A8 /* linkhelp.html in Resources */,
+				325C17D31985A32B007A27A8 /* Main.storyboard in Resources */,
+				325C17D51985A32B007A27A8 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		325C17C41985A32B007A27A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				325C17D01985A32B007A27A8 /* ViewController.swift in Sources */,
+				325C17CE1985A32B007A27A8 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		325C17D11985A32B007A27A8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				325C17D21985A32B007A27A8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		325C17E21985A32B007A27A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		325C17E31985A32B007A27A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		325C17E51985A32B007A27A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = PopoverOnPhone/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		325C17E61985A32B007A27A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = PopoverOnPhone/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		325C17C31985A32B007A27A8 /* Build configuration list for PBXProject "PopoverOnPhone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				325C17E21985A32B007A27A8 /* Debug */,
+				325C17E31985A32B007A27A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		325C17E41985A32B007A27A8 /* Build configuration list for PBXNativeTarget "PopoverOnPhone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				325C17E51985A32B007A27A8 /* Debug */,
+				325C17E61985A32B007A27A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 325C17C01985A32B007A27A8 /* Project object */;
+}

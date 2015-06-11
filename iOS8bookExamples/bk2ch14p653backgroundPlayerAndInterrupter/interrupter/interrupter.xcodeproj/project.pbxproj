@@ -1,0 +1,266 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		323EA993199915A600FB4834 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323EA992199915A600FB4834 /* ViewController.swift */; };
+		323EA9951999182C00FB4834 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323EA9941999182C00FB4834 /* AppDelegate.swift */; };
+		327755D919F7FB7A00C5598F /* Hooded.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 327755D819F7FB7A00C5598F /* Hooded.aiff */; };
+		32A1DFBD19991B2400CD6491 /* Player2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A1DFBC19991B2400CD6491 /* Player2.swift */; };
+		A4196FA614D366BA00D827A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FA514D366BA00D827A7 /* UIKit.framework */; };
+		A4196FA814D366BA00D827A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FA714D366BA00D827A7 /* Foundation.framework */; };
+		A4196FAA14D366BA00D827A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FA914D366BA00D827A7 /* CoreGraphics.framework */; };
+		C9A8A9151823E6F100E9D48D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A8A9141823E6F100E9D48D /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		323EA992199915A600FB4834 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		323EA9941999182C00FB4834 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		327755D819F7FB7A00C5598F /* Hooded.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Hooded.aiff; sourceTree = "<group>"; };
+		32A1DFBC19991B2400CD6491 /* Player2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player2.swift; sourceTree = "<group>"; };
+		A4196FA114D366BA00D827A7 /* interrupter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = interrupter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4196FA514D366BA00D827A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A4196FA714D366BA00D827A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A4196FA914D366BA00D827A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A4196FAD14D366BA00D827A7 /* interrupter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "interrupter-Info.plist"; sourceTree = "<group>"; };
+		C9A8A9141823E6F100E9D48D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4196F9E14D366BA00D827A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4196FA614D366BA00D827A7 /* UIKit.framework in Frameworks */,
+				A4196FA814D366BA00D827A7 /* Foundation.framework in Frameworks */,
+				A4196FAA14D366BA00D827A7 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4196F9614D366BA00D827A7 = {
+			isa = PBXGroup;
+			children = (
+				A4196FAB14D366BA00D827A7 /* interrupter */,
+				A4196FA414D366BA00D827A7 /* Frameworks */,
+				A4196FA214D366BA00D827A7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4196FA214D366BA00D827A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4196FA114D366BA00D827A7 /* interrupter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4196FA414D366BA00D827A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4196FA514D366BA00D827A7 /* UIKit.framework */,
+				A4196FA714D366BA00D827A7 /* Foundation.framework */,
+				A4196FA914D366BA00D827A7 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4196FAB14D366BA00D827A7 /* interrupter */ = {
+			isa = PBXGroup;
+			children = (
+				323EA9941999182C00FB4834 /* AppDelegate.swift */,
+				323EA992199915A600FB4834 /* ViewController.swift */,
+				32A1DFBC19991B2400CD6491 /* Player2.swift */,
+				C9A8A9141823E6F100E9D48D /* Main.storyboard */,
+				327755D819F7FB7A00C5598F /* Hooded.aiff */,
+				A4196FAC14D366BA00D827A7 /* Supporting Files */,
+			);
+			path = interrupter;
+			sourceTree = "<group>";
+		};
+		A4196FAC14D366BA00D827A7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4196FAD14D366BA00D827A7 /* interrupter-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4196FA014D366BA00D827A7 /* interrupter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4196FBF14D366BA00D827A7 /* Build configuration list for PBXNativeTarget "interrupter" */;
+			buildPhases = (
+				A4196F9D14D366BA00D827A7 /* Sources */,
+				A4196F9E14D366BA00D827A7 /* Frameworks */,
+				A4196F9F14D366BA00D827A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = interrupter;
+			productName = interrupter;
+			productReference = A4196FA114D366BA00D827A7 /* interrupter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4196F9814D366BA00D827A7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A4196F9B14D366BA00D827A7 /* Build configuration list for PBXProject "interrupter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4196F9614D366BA00D827A7;
+			productRefGroup = A4196FA214D366BA00D827A7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4196FA014D366BA00D827A7 /* interrupter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4196F9F14D366BA00D827A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A8A9151823E6F100E9D48D /* Main.storyboard in Resources */,
+				327755D919F7FB7A00C5598F /* Hooded.aiff in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4196F9D14D366BA00D827A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				323EA9951999182C00FB4834 /* AppDelegate.swift in Sources */,
+				323EA993199915A600FB4834 /* ViewController.swift in Sources */,
+				32A1DFBD19991B2400CD6491 /* Player2.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A4196FBD14D366BA00D827A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4196FBE14D366BA00D827A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4196FC014D366BA00D827A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "interrupter/interrupter-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4196FC114D366BA00D827A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "interrupter/interrupter-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4196F9B14D366BA00D827A7 /* Build configuration list for PBXProject "interrupter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4196FBD14D366BA00D827A7 /* Debug */,
+				A4196FBE14D366BA00D827A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4196FBF14D366BA00D827A7 /* Build configuration list for PBXNativeTarget "interrupter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4196FC014D366BA00D827A7 /* Debug */,
+				A4196FC114D366BA00D827A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4196F9814D366BA00D827A7 /* Project object */;
+}

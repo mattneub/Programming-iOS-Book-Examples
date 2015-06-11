@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="2048" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Pep" customModule="ch19p626pageController" customModuleProvider="target">
+            <connections>
+                <outlet property="name" destination="4" id="5"/>
+                <outlet property="pic" destination="6" id="7"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="6">
+                    <rect key="frame" x="164" y="65" width="240" height="202"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="61h-Q8-P4n"/>
+                        <constraint firstAttribute="height" constant="202" id="sYL-i4-pUN"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="4">
+                    <rect key="frame" x="237" y="17" width="94" height="50"/>
+                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="40"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8">
+                    <rect key="frame" x="514" y="0.0" width="54" height="320"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="54" id="AO4-wV-sbA"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="16" appends="YES" id="17"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9">
+                    <rect key="frame" x="0.0" y="0.0" width="54" height="320"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="54" id="dCO-Sf-Qjj"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="18" appends="YES" id="19"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="4" secondAttribute="centerX" id="G6N-sQ-9jS"/>
+                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" constant="17" id="LFv-al-SQA"/>
+                <constraint firstAttribute="trailing" secondItem="8" secondAttribute="trailing" id="N5e-V9-f8x"/>
+                <constraint firstItem="8" firstAttribute="top" secondItem="1" secondAttribute="top" id="P4B-xc-muX"/>
+                <constraint firstItem="6" firstAttribute="top" secondItem="4" secondAttribute="bottom" constant="-2" id="PeU-cF-QTY"/>
+                <constraint firstAttribute="bottom" secondItem="8" secondAttribute="bottom" id="XE8-g9-WIW"/>
+                <constraint firstItem="9" firstAttribute="top" secondItem="1" secondAttribute="top" id="YMy-bS-kqa"/>
+                <constraint firstAttribute="centerX" secondItem="6" secondAttribute="centerX" id="hOr-AM-8uy"/>
+                <constraint firstItem="9" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="hfb-ks-KLb"/>
+                <constraint firstAttribute="bottom" secondItem="9" secondAttribute="bottom" id="wM8-29-UHn"/>
+            </constraints>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+        </view>
+        <tapGestureRecognizer id="16">
+            <connections>
+                <action selector="tap:" destination="-1" id="21"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="18">
+            <connections>
+                <action selector="tap:" destination="-1" id="20"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
+</document>

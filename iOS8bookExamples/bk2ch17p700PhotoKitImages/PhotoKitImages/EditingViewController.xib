@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditingViewController" customModule="PhotoKitImages" customModuleProvider="target">
+            <connections>
+                <outlet property="glkview" destination="SVa-Pa-cWF" id="fMn-Cf-XyP"/>
+                <outlet property="slider" destination="pf6-t3-JDU" id="NmK-ca-JLZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pf6-t3-JDU">
+                    <rect key="frame" x="27" y="27" width="549" height="31"/>
+                    <connections>
+                        <action selector="doSlider:" destination="-1" eventType="valueChanged" id="gfS-Sk-KQN"/>
+                    </connections>
+                </slider>
+                <glkView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="center" enableSetNeedsDisplay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVa-Pa-cWF">
+                    <rect key="frame" x="181" y="85" width="240" height="240"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="2w2-Pb-cIc"/>
+                        <constraint firstAttribute="height" constant="240" id="8lr-1O-JY5"/>
+                    </constraints>
+                </glkView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="SVa-Pa-cWF" firstAttribute="top" secondItem="pf6-t3-JDU" secondAttribute="bottom" constant="28" id="CL4-48-Fq6"/>
+                <constraint firstAttribute="trailing" secondItem="pf6-t3-JDU" secondAttribute="trailing" constant="26" id="T3R-7B-E1m"/>
+                <constraint firstItem="pf6-t3-JDU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="29" id="Tk8-zn-2EE"/>
+                <constraint firstAttribute="centerX" secondItem="SVa-Pa-cWF" secondAttribute="centerX" constant="-1" id="Uk8-ZC-uYN"/>
+                <constraint firstItem="pf6-t3-JDU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="27" id="jG2-Hb-ojY"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

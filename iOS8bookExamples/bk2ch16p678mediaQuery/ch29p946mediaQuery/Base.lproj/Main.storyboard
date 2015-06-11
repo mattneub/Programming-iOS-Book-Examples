@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch29p946mediaQuery" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZIY-Md-ito"/>
+                        <viewControllerLayoutGuide type="bottom" id="qgP-7F-NMz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBO-Dx-noH">
+                                <rect key="frame" x="20" y="20" width="85" height="30"/>
+                                <state key="normal" title="Album Titles">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doAllAlbumTitles:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ajC-TE-NIu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-cB-Afl">
+                                <rect key="frame" x="20" y="69" width="163" height="30"/>
+                                <state key="normal" title="Beethoven Album Titles">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doBeethovenAlbumTitles:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JuG-SG-YTq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSt-cA-Lkl">
+                                <rect key="frame" x="20" y="121" width="191" height="30"/>
+                                <state key="normal" title="Albums Containing Sonatas">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doSonataAlbumsOnDevice:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="giF-22-3mg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUL-aj-uAA">
+                                <rect key="frame" x="20" y="172" width="115" height="30"/>
+                                <state key="normal" title="Play short songs">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doPlayShortSongs:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="J3K-jg-CMp"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lik-uU-PIR">
+                                <rect key="frame" x="158" y="527" width="5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="4ZB-JY-PlT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ut6-m3-s2Y">
+                                <rect key="frame" x="85" y="507" width="150" height="2"/>
+                            </progressView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvp-hQ-SPH" customClass="MyVolumeView">
+                                <rect key="frame" x="20" y="456" width="280" height="23"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="FTL-1Q-iCn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="tvp-hQ-SPH" secondAttribute="centerX" id="0zB-Ph-d76"/>
+                            <constraint firstItem="lik-uU-PIR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="5" id="F5p-p8-rF8"/>
+                            <constraint firstItem="ut6-m3-s2Y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="85" id="J7t-Cc-2tV"/>
+                            <constraint firstItem="lik-uU-PIR" firstAttribute="top" secondItem="ut6-m3-s2Y" secondAttribute="bottom" constant="18" id="Nej-KW-vOq"/>
+                            <constraint firstAttribute="centerX" secondItem="lik-uU-PIR" secondAttribute="centerX" id="UFP-9n-fN7"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lik-uU-PIR" secondAttribute="trailing" constant="5" id="YQ8-4b-1Ck"/>
+                            <constraint firstAttribute="centerX" secondItem="ut6-m3-s2Y" secondAttribute="centerX" id="azB-47-dpX"/>
+                            <constraint firstItem="tvp-hQ-SPH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="bgP-aB-sxc"/>
+                            <constraint firstAttribute="trailing" secondItem="ut6-m3-s2Y" secondAttribute="trailing" constant="85" id="uGr-yQ-4Ux"/>
+                            <constraint firstItem="ut6-m3-s2Y" firstAttribute="top" secondItem="tvp-hQ-SPH" secondAttribute="bottom" constant="28" id="uqR-ca-3AA"/>
+                            <constraint firstItem="qgP-7F-NMz" firstAttribute="top" secondItem="lik-uU-PIR" secondAttribute="bottom" constant="20" id="xfC-Ub-nna"/>
+                            <constraint firstAttribute="trailing" secondItem="tvp-hQ-SPH" secondAttribute="trailing" constant="20" id="xgB-ev-2Lx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="lik-uU-PIR" id="Kzb-qY-Ca5"/>
+                        <outlet property="prog" destination="ut6-m3-s2Y" id="2d3-6c-pJz"/>
+                        <outlet property="vv" destination="tvp-hQ-SPH" id="PxX-dU-pCT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

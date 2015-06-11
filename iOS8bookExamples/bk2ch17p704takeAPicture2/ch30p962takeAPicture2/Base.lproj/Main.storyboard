@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch30p962takeAPicture2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7eT-sO-7bx"/>
+                        <viewControllerLayoutGuide type="bottom" id="B9B-iq-ayX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jbt-2O-aby">
+                                <rect key="frame" x="37" y="46" width="247" height="252"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="252" id="46t-J1-KZ7"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7B-Fr-OSy">
+                                <rect key="frame" x="187" y="518" width="97" height="30"/>
+                                <state key="normal" title="Take a Picture">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doTake:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="con-h4-Dfm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="j7B-Fr-OSy" secondAttribute="trailing" constant="36" id="6hZ-td-sWp"/>
+                            <constraint firstItem="B9B-iq-ayX" firstAttribute="top" secondItem="j7B-Fr-OSy" secondAttribute="bottom" constant="20" id="EHE-FC-41N"/>
+                            <constraint firstItem="Jbt-2O-aby" firstAttribute="top" secondItem="7eT-sO-7bx" secondAttribute="bottom" constant="26" id="RGB-8m-gPx"/>
+                            <constraint firstItem="Jbt-2O-aby" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="37" id="YqZ-Hb-sin"/>
+                            <constraint firstAttribute="trailing" secondItem="Jbt-2O-aby" secondAttribute="trailing" constant="36" id="h3c-Ff-Z1B"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="iv" destination="Jbt-2O-aby" id="7ms-wq-Lgv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
+</document>

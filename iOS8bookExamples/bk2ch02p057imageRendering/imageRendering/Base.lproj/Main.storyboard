@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="imageRendering" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bzT-7f-aWk"/>
+                        <viewControllerLayoutGuide type="bottom" id="f6n-je-z5b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVR-hf-eYn">
+                                <rect key="frame" x="20" y="29" width="40" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" backgroundImage="Smiley">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIz-oe-rHG">
+                                <rect key="frame" x="148" y="29" width="40" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" backgroundImage="Smiley">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vI-H5-IWU">
+                                <rect key="frame" x="260" y="29" width="40" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" backgroundImage="SmileyTemplate">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CHX-ky-uV4">
+                                <rect key="frame" x="0.0" y="107" width="320" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem image="smiley2" id="gkF-cW-LGT"/>
+                                    <tabBarItem image="smiley2" id="zu8-Ol-5Rm"/>
+                                </items>
+                            </tabBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SmileyVector" translatesAutoresizingMaskIntoConstraints="NO" id="7tY-eM-8w0">
+                                <rect key="frame" x="20" y="210" width="85" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="4ZM-q8-Y1I"/>
+                                    <constraint firstAttribute="height" constant="76" id="k5V-Bu-Fxb"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SmileyVector" translatesAutoresizingMaskIntoConstraints="NO" id="Sdm-VE-V7E">
+                                <rect key="frame" x="148" y="210" width="153" height="121"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="121" id="1zb-j1-4tO"/>
+                                    <constraint firstAttribute="width" constant="153" id="FVB-pA-9ar"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7tY-eM-8w0" firstAttribute="top" secondItem="Sdm-VE-V7E" secondAttribute="top" id="PJL-Ev-1Du"/>
+                            <constraint firstItem="7tY-eM-8w0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="fB8-MD-PBM"/>
+                            <constraint firstItem="Sdm-VE-V7E" firstAttribute="leading" secondItem="7tY-eM-8w0" secondAttribute="trailing" constant="43" id="kkA-qs-l5P"/>
+                            <constraint firstItem="7tY-eM-8w0" firstAttribute="top" secondItem="bzT-7f-aWk" secondAttribute="bottom" constant="190" id="pbh-9i-vcT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="b" destination="PIz-oe-rHG" id="GZ4-sZ-oqp"/>
+                        <outlet property="tbi" destination="gkF-cW-LGT" id="7G7-QL-iSS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Smiley" width="60" height="60"/>
+        <image name="SmileyTemplate" width="60" height="60"/>
+        <image name="SmileyVector" width="151" height="118"/>
+        <image name="smiley2" width="30" height="30"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
+</document>
