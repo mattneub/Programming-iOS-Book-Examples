@@ -21,11 +21,11 @@ class ViewController: UIViewController {
         return true
     }
     
-    override func supportedInterfaceOrientations() -> Int {
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            return Int(UIInterfaceOrientationMask.All.rawValue)
+            return .All
         }
-        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
+        return .Landscape
     }
     
     override func viewDidLayoutSubviews() {
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     }
     
     func setUpChild() {
-        let url = NSBundle.mainBundle().URLForResource("ElMirage", withExtension:"mp4")
+        let url = NSBundle.mainBundle().URLForResource("ElMirage", withExtension:"mp4")!
         let asset = AVURLAsset(URL:url, options:nil)
         let item = AVPlayerItem(asset:asset)
         let player = AVPlayer(playerItem:item)
@@ -63,24 +63,53 @@ class ViewController: UIViewController {
         
         return; // just proving you can swap out the player
         delay(3) {
-            let url = NSBundle.mainBundle().URLForResource("wilhelm", withExtension:"aiff")
+            let url = NSBundle.mainBundle().URLForResource("wilhelm", withExtension:"aiff")!
             let player = AVPlayer(URL:url)
             av.player = player
         }
     }
     
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<()>) {
-        if keyPath == "readyForDisplay",
-            let obj = object as? AVPlayerViewController,
-            ok = change[NSKeyValueChangeNewKey] as? Bool where ok {
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.finishConstructingInterface(obj)
-                })
-        }
+//    override func observeValueForKeyPath(keyPath: String?,
+//        ofObject object: AnyObject?, change: [NSObject : AnyObject]?,
+//        context: UnsafeMutablePointer<()>) {
+//            if keyPath == "readyForDisplay" {
+//                if let obj = object as? AVPlayerViewController {
+//                    if let ok = change?[NSKeyValueChangeNewKey] as? Bool {
+//                        if ok {
+//                            // ...
+//                            print(obj)
+//                        }
+//                    }
+//                }
+//            }
+//    }
+
+    
+//    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<()>) {
+//        if keyPath == "readyForDisplay",
+//            let obj = object as? AVPlayerViewController,
+//            ok = change?[NSKeyValueChangeNewKey] as? Bool where ok {
+//                dispatch_async(dispatch_get_main_queue(), {
+//                    self.finishConstructingInterface(obj)
+//                })
+//        }
+//    }
+    
+    override func observeValueForKeyPath(keyPath: String?,
+        ofObject object: AnyObject?, change: [NSObject : AnyObject]?,
+        context: UnsafeMutablePointer<()>) {
+            guard keyPath == "readyForDisplay" else {return}
+            guard let obj = object as? AVPlayerViewController else {return}
+            guard let ok = change?[NSKeyValueChangeNewKey] as? Bool else {return}
+            guard ok else {return}
+            dispatch_async(dispatch_get_main_queue(), {
+                self.finishConstructingInterface(obj)
+            })
     }
+
     
     func finishConstructingInterface (vc:AVPlayerViewController) {
-        println("finishing")
+        print("finishing")
         vc.removeObserver(self, forKeyPath:"readyForDisplay")
         vc.view.hidden = false // hmm, maybe I should be animating the alpha instead
     }
@@ -91,7 +120,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         let path = NSBundle.mainBundle().pathForResource("ElMirage", ofType: "mp4")!
         let can = UIVideoEditorController.canEditVideoAtPath(path)
         if !can {
-            println("can't edit this video")
+            print("can't edit this video")
             return
         }
         let vc = UIVideoEditorController()
@@ -103,7 +132,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
             vc.modalPresentationStyle = .Popover
         }
         self.presentViewController(vc, animated: true, completion: nil)
-        println(vc.modalPresentationStyle.rawValue)
+        print(vc.modalPresentationStyle.rawValue)
         if let pop = vc.popoverPresentationController {
             let v = sender as! UIView
             pop.sourceView = v
@@ -116,17 +145,17 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
     }
     
     func videoEditorController(editor: UIVideoEditorController, didSaveEditedVideoToPath editedVideoPath: String) {
-        println("saved to \(editedVideoPath)")
+        print("saved to \(editedVideoPath)")
         if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(editedVideoPath) {
-            println("saving to photos album")
+            print("saving to photos album")
             UISaveVideoAtPathToSavedPhotosAlbum(editedVideoPath, self, "video:savedWithError:ci:", nil)
         } else {
-            println("can't save to photos album, need to think of something else")
+            print("can't save to photos album, need to think of something else")
         }
     }
     
     func video(video:NSString!, savedWithError error:NSError!, ci:UnsafeMutablePointer<()>) {
-        println("did save, error:\(error)")
+        print("did save, error:\(error)")
         /*
         Important to check for error, because user can deny access
         to Photos library
@@ -137,12 +166,12 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
     }
     
     func videoEditorControllerDidCancel(editor: UIVideoEditorController) {
-        println("editor cancelled")
+        print("editor cancelled")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func videoEditorController(editor: UIVideoEditorController, didFailWithError error: NSError) {
-        println("error: \(error.localizedDescription)")
+        print("error: \(error.localizedDescription)")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -155,7 +184,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
     }
     
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
-        println("editor popover dismissed")
+        print("editor popover dismissed")
     }
     
 }

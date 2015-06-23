@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32C11F9B1B372DF400E254C3 /* Thing.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C11F9A1B372DF400E254C3 /* Thing.m */; };
 		32DF44571AFA972C0042B49C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DF44561AFA972C0042B49C /* AppDelegate.swift */; };
 		32DF44591AFA972C0042B49C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DF44581AFA972C0042B49C /* ViewController.swift */; };
 		32DF445C1AFA972C0042B49C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32DF445A1AFA972C0042B49C /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32C11F981B372DF300E254C3 /* bk1ch05p239loops-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bk1ch05p239loops-Bridging-Header.h"; sourceTree = "<group>"; };
+		32C11F991B372DF300E254C3 /* Thing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thing.h; sourceTree = "<group>"; };
+		32C11F9A1B372DF400E254C3 /* Thing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Thing.m; sourceTree = "<group>"; };
 		32DF44511AFA972C0042B49C /* bk1ch05p239loops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk1ch05p239loops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32DF44551AFA972C0042B49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32DF44561AFA972C0042B49C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,10 +60,13 @@
 			children = (
 				32DF44561AFA972C0042B49C /* AppDelegate.swift */,
 				32DF44581AFA972C0042B49C /* ViewController.swift */,
+				32C11F991B372DF300E254C3 /* Thing.h */,
+				32C11F9A1B372DF400E254C3 /* Thing.m */,
 				32DF445A1AFA972C0042B49C /* Main.storyboard */,
 				32DF445D1AFA972C0042B49C /* Images.xcassets */,
 				32DF445F1AFA972C0042B49C /* LaunchScreen.xib */,
 				32DF44541AFA972C0042B49C /* Supporting Files */,
+				32C11F981B372DF300E254C3 /* bk1ch05p239loops-Bridging-Header.h */,
 			);
 			path = bk1ch05p239loops;
 			sourceTree = "<group>";
@@ -98,6 +105,7 @@
 		32DF44491AFA972C0042B49C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -142,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32C11F9B1B372DF400E254C3 /* Thing.m in Sources */,
 				32DF44591AFA972C0042B49C /* ViewController.swift in Sources */,
 				32DF44571AFA972C0042B49C /* AppDelegate.swift in Sources */,
 			);
@@ -254,9 +263,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = bk1ch05p239loops/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bk1ch05p239loops/bk1ch05p239loops-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -264,9 +276,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = bk1ch05p239loops/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bk1ch05p239loops/bk1ch05p239loops-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -289,6 +303,7 @@
 				32DF44721AFA972C0042B49C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

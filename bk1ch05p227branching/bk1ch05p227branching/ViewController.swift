@@ -10,28 +10,37 @@ class ViewController: UIViewController {
     var player : AVPlayer!
     
     var progress = 0.0
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let v = UIView()
+        let tile = UIView()
         if self.selectedTile != nil { // artificial stubbing to illustrate code from one of my apps
             
             
             // okay, we've tapped a tile; there are three cases
-            if self.selectedTile == nil { // no other selected tile: select and play
-                self.selectTile(v)
-                let url = v.layer.valueForKey("song") as! NSURL
-                let item = AVPlayerItem(URL:url)
-                self.player = AVPlayer(playerItem:item)
-                self.player!.play()
-            } else if self.selectedTile == v { // selected tile was tapped: deselect
+            if self.selectedTile == nil { // no selected tile: select and play this tile
+                self.selectTile(tile)
+                self.playTile(tile)
+            } else if self.selectedTile == tile { // selected tile was tapped: deselect it and stop playing it
                 self.deselectAll()
-            } else { // there was one selected tile and another was tapped: swap
-                let v1 = self.selectedTile!
-                self.selectedTile = nil
-                let v2 = v
-                self.swap(v1, with:v2, check:true, fence:true)
+                self.player?.pause()
+            } else { // there was a selected tile, and another tile was tapped: swap them
+                self.swap(self.selectedTile, with:tile, check:true, fence:true)
+            }
+            
+            // using new Swift 2.0 optional unwrapping switch, we can also say it this way:
+            
+            switch self.selectedTile { // use interesting new Swift 2.0 unwrapping syntax
+            case nil: // no selected tile: select and play this tile
+                self.selectTile(tile)
+                self.playTile(tile)
+            case tile?: // selected tile was tapped: deselect it and stop playing it
+                self.deselectAll()
+                self.player?.pause()
+            case let tile2?: // there was a selected tile, and another tile was tapped: swap them
+                self.swap(tile2, with:tile, check:true, fence:true)
             }
             
         }
@@ -45,15 +54,34 @@ class ViewController: UIViewController {
     }
     
     func notificationArrived(n:NSNotification) {
-        let prog = n.userInfo?["progress"] as? NSNumber
-        if prog != nil {
-            self.progress = prog!.doubleValue
+        do {
+            let prog = n.userInfo?["progress"] as? NSNumber
+            if prog != nil {
+                self.progress = prog!.doubleValue
+            }
         }
         
+        do {
+            let prog = (n.userInfo?["progress"] as? NSNumber)?.doubleValue
+            if prog != nil {
+                self.progress = prog!
+            }
+        }
+        
+        if let prog = (n.userInfo?["progress"] as? NSNumber)?.doubleValue {
+            self.progress = prog
+        }
+
+        // chapter 10
+        if let prog = n.userInfo?["progress"] as? Double {
+            self.progress = prog
+        }
+
+
         if let ui = n.userInfo {
             if let prog : AnyObject = ui["progress"] {
-                if prog is NSNumber {
-                    self.progress = (prog as! NSNumber).doubleValue
+                if let prog = prog as? NSNumber {
+                    self.progress = prog.doubleValue
                 }
             }
         }
@@ -64,17 +92,10 @@ class ViewController: UIViewController {
             }
         }
         
-        // these will also be repeated in chapter 10
-        
-        if let ui = n.userInfo {
-            if let prog = ui["progress"] as? Double {
-                self.progress = prog
-            }
+        if let ui = n.userInfo, prog = ui["progress"] as? NSNumber {
+            self.progress = prog.doubleValue
         }
         
-        if let ui = n.userInfo, prog = ui["progress"] as? Double {
-            self.progress = prog
-        }
 
     }
 
@@ -83,19 +104,21 @@ class ViewController: UIViewController {
     func selectTile(v:UIView) {}
     func deselectAll() {}
     func swap(v1:UIView, with v2:UIView, check:Bool, fence:Bool) {}
+    func playTile (tile:UIView) {}
 
 
 }
 
 class C1 : NSObject {
-    override func observeValueForKeyPath(keyPath: String,
-        ofObject object: AnyObject, change: [NSObject : AnyObject],
+    override func observeValueForKeyPath(keyPath: String?,
+        ofObject object: AnyObject?, change: [NSObject : AnyObject]?,
         context: UnsafeMutablePointer<()>) {
             if keyPath == "readyForDisplay" {
                 if let obj = object as? AVPlayerViewController {
-                    if let ok = change[NSKeyValueChangeNewKey] as? Bool {
+                    if let ok = change?[NSKeyValueChangeNewKey] as? Bool {
                         if ok {
                             // ...
+                            print(obj)
                         }
                     }
                 }
@@ -104,14 +127,29 @@ class C1 : NSObject {
 }
 
 class C2 : NSObject {
-    override func observeValueForKeyPath(keyPath: String,
-        ofObject object: AnyObject, change: [NSObject : AnyObject],
+    override func observeValueForKeyPath(keyPath: String?,
+        ofObject object: AnyObject?, change: [NSObject : AnyObject]?,
         context: UnsafeMutablePointer<()>) {
             if keyPath == "readyForDisplay",
                 let obj = object as? AVPlayerViewController,
-                let ok = change[NSKeyValueChangeNewKey] as? Bool where ok {
+                let ok = change?[NSKeyValueChangeNewKey] as? Bool where ok {
                     // ...
+                    print(obj)
             }
     }
+}
+
+class C3 : NSObject {
+    override func observeValueForKeyPath(keyPath: String?,
+        ofObject object: AnyObject?, change: [NSObject : AnyObject]?,
+        context: UnsafeMutablePointer<()>) {
+            guard keyPath == "readyForDisplay" else {return}
+            guard let obj = object as? AVPlayerViewController else {return}
+            guard let ok = change?[NSKeyValueChangeNewKey] as? Bool else {return}
+            guard ok else {return}
+            // ...
+            print(obj)
+    }
+
 }
 

@@ -7,42 +7,93 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let greeting = "hello"
-        let checkmark = "\u{21DA}"
-        var n = 5
-        let s = "You have \(n) widgets."
-
-        let ud = NSUserDefaults.standardUserDefaults()
-        // let s2 = "You have \(ud.integerForKey("widgets")) widgets." // compile error
-        let n2 = ud.integerForKey("widgets")
-        let s2 = "You have \(n2) widgets."
-
-        let ss = "hello"
-        let ss2 = " world"
-        let greeting2 = ss + ss2
+        do {
+            let greeting = "hello"
+            print(greeting)
+            let leftTripleArrow = "\u{21DA}"
+            print(leftTripleArrow)
+            let n = 5
+            let s = "You have \(n) widgets."
+            print(s)
+        }
         
-        var sss = "hello"
-        let sss2 = " world"
-        sss.extend(sss2) // or: sss += sss2
-
-        let ssss = "hello"
-        let ssss2 = "world"
-        let space = " "
-        let greeting3 = space.join([ssss,ssss2])
-
-        let i = 7
-        let sssss = String(i)
-        let i2 = 31
-        let sssss2 = String(i2, radix:16) // "1f"
-
-        let ssssss = "31"
-        let ii = ssssss.toInt() // Optional(31)
-
-        let sssssss = "hello"
-        let length = count(sssssss) // 5
+        do {
+            let m = 4
+            let n = 5
+            let s = "You have \(m + n) widgets."
+            print(s)
+        }
         
-        for c in sssssss {
-            println(c) // print each Character on its own line
+        do {
+            let ud = NSUserDefaults.standardUserDefaults()
+            // let s = "You have \(ud.integerForKey("widgets")) widgets." // compile error
+            let n = ud.integerForKey("widgets")
+            let s = "You have \(n) widgets."
+            print(s)
+        }
+        
+        do {
+            let s = "hello"
+            let s2 = " world"
+            let greeting = s + s2
+            print(greeting)
+        }
+
+        do {
+            var s = "hello"
+            let s2 = " world"
+            s.extend(s2) // or: sss += sss2
+            print(s)
+        }
+
+        do {
+            let s = "hello"
+            let s2 = "world"
+            let space = " "
+            let greeting = space.join([s,s2])
+            print(greeting)
+        }
+        
+        do {
+            print("hello".hasPrefix("he"))
+            print("hello".hasSuffix("lo"))
+        }
+
+        do {
+            let i = 7
+            let s = String(i)
+            print(s)
+        }
+
+        do {
+            let i = 31
+            let s = String(i, radix:16) // "1f"
+            print(s)
+        }
+        
+        do {
+            let s = "31"
+            let i = Int(s) // Optional(31)
+            print(i)
+        }
+        
+        do {
+            let s = "31.34"
+            let i = Int(s) // nil because it wasn't an Int; you don't get magical double-coercion
+            print(i)
+        }
+        
+        do {
+            let s = "hello"
+            let length = s.characters.count // 5
+            print(length)
+        }
+        
+        do {
+            let s = "hello"
+            for c in s.characters {
+                print(c) // print each Character on its own line
+            }
         }
 
 

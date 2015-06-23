@@ -1,6 +1,8 @@
 
 import UIKit
 
+// NB this bug is fixed in iOS 9
+
 // work around odd behavior (bug?) where CIColor(color:UIColor.whiteColor()) gives transparent, not white
 extension CIColor {
     convenience init(uicolor:UIColor) {

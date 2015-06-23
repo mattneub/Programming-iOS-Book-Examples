@@ -14,12 +14,26 @@ class ViewController: UIViewController {
     var currow : Int? = 0
 
     var hilite = false
+    
+    var type = ListType.Albums
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var type = ListType.Albums
         
+        /*
+        let title = switch type { // compile error
+        case .Albums:
+            "Albums"
+        case .Playlists:
+            "Playlists"
+        case .Podcasts:
+            "Podcasts"
+        case .Books:
+            "Books"
+        }
+*/
 
         let title : String = {
             switch type {
@@ -33,6 +47,7 @@ class ViewController: UIViewController {
                 return "Books"
             }
             }()
+        print(title) // shut up compiler
 
         let cell = UITableViewCell()
         let ix = NSIndexPath(forRow: 0, inSection: 0)
@@ -47,27 +62,44 @@ class ViewController: UIViewController {
             context, self.hilite ? purple.CGColor : beige.CGColor)
         UIGraphicsEndImageContext()
         
-        if true {
+        do {
             let arr : [String?] = []
-            let arr2 = arr.map{ $0 == nil ? NSNull() : $0! }
-            let arr3 = arr.map{ $0 ?? NSNull() }
+            do {
+                let arr2 : [AnyObject] = arr.map {if $0 == nil {return NSNull()} else {return $0!}}
+                print(arr2)
+            }
+            do {
+                let arr2 = arr.map{ $0 != nil ? $0! : NSNull() }
+                print(arr2)
+            }
+            do {
+                let arr2 = arr.map{ $0 ?? NSNull() }
+                print(arr2)
+            }
         }
         
-        if true {
+        do {
             let arr : [AnyObject] = []
-            let arr2 : [String] = arr.map {
-                if $0 is String {
-                    return $0 as! String
-                } else {
-                    return ""
+            do {
+                let arr2 : [String] = arr.map {
+                    if $0 is String {
+                        return $0 as! String
+                    } else {
+                        return ""
+                    }
                 }
+                print(arr2)
             }
-            let arr3 = arr.map { $0 as? String ?? "" }
+            do {
+                let arr2 = arr.map { $0 as? String ?? "" }
+                print(arr2)
+            }
         }
 
-        var i1 : AnyObject = 1
-        var i2 : AnyObject = 2
+        let i1 : AnyObject = 1
+        let i2 : AnyObject = 2
         let someNumber = i1 as? Int ?? i2 as? Int ?? 0
+        print(someNumber)
 
     
     }
