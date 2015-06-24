@@ -6,7 +6,7 @@ class Dog {
     var name = ""
     var whatADogSays = "woof"
     func bark() {
-        println(self.whatADogSays)
+        print(self.whatADogSays)
     }
     func speak() {
         self.bark()
@@ -26,10 +26,10 @@ class ViewController: UIViewController {
         dog1.name = "Fido"
         var dog2 = Dog()
         dog2.name = "Rover"
-        println(dog1.name) // "Fido"
-        println(dog2.name) // "Rover"
+        print(dog1.name) // "Fido"
+        print(dog2.name) // "Rover"
         dog2 = dog1
-        println(dog2.name) // "Fido"
+        print(dog2.name) // "Fido"
         
         // the magic word "self"
         

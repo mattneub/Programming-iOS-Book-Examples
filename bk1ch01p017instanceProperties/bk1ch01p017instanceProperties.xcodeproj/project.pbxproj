@@ -99,6 +99,7 @@
 		3236A4191AED4E38000A3679 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -107,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3236A41C1AED4E38000A3679 /* Build configuration list for PBXProject "bk1ch01p015yourFirstInstance" */;
+			buildConfigurationList = 3236A41C1AED4E38000A3679 /* Build configuration list for PBXProject "bk1ch01p017instanceProperties" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -274,7 +275,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3236A41C1AED4E38000A3679 /* Build configuration list for PBXProject "bk1ch01p015yourFirstInstance" */ = {
+		3236A41C1AED4E38000A3679 /* Build configuration list for PBXProject "bk1ch01p017instanceProperties" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3236A43E1AED4E39000A3679 /* Debug */,

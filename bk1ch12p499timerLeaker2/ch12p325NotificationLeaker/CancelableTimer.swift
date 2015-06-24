@@ -40,6 +40,6 @@ class CancelableTimer: NSObject {
         }
     }
     deinit {
-        println("deinit cancelable timer")
+        print("deinit cancelable timer")
     }
 }

@@ -3,7 +3,7 @@
 import UIKit
 
 class Dog {
-    var noise : String? = nil
+    var noise : String?
     func speak() -> String? {
         return self.noise
     }

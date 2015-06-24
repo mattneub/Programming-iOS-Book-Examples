@@ -4,7 +4,7 @@ import UIKit
 import WebKit
 
 class HelpViewController: UIViewController {
-    weak var wv : UIWebView? = nil
+    weak var wv : UIWebView?
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         let wv = UIWebView(frame:self.view.bounds)
@@ -28,7 +28,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior {
         grav.action = {
             [unowned self] in
             let items = anim.itemsInRect(sup.bounds) as! [UIView]
-            if find(items, self.v) == nil {
+            if items.indexOf(self.v) == nil {
                 anim.removeBehavior(self)
                 self.v.removeFromSuperview()
             }
@@ -59,17 +59,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if true {
-            println(1)
+        do {
+            print(1)
             func testRetainCycle() {
                 class Dog {
                     deinit {
-                        println("farewell from Dog")
+                        print("farewell from Dog")
                     }
                 }
                 class Cat {
                     deinit {
-                        println("farewell from Cat")
+                        print("farewell from Cat")
                     }
                 }
                 let d = Dog()
@@ -78,19 +78,19 @@ class ViewController: UIViewController {
             testRetainCycle() // farewell from Cat, farewell from Dog
         }
         
-        if true {
-            println(2)
+        do {
+            print(2)
             func testRetainCycle() {
                 class Dog {
-                    var cat : Cat? = nil
+                    var cat : Cat?
                     deinit {
-                        println("farewell from Dog")
+                        print("farewell from Dog")
                     }
                 }
                 class Cat {
-                    var dog : Dog? = nil
+                    var dog : Dog?
                     deinit {
-                        println("farewell from Cat")
+                        print("farewell from Cat")
                     }
                 }
                 let d = Dog()
@@ -101,19 +101,19 @@ class ViewController: UIViewController {
             testRetainCycle() // nothing in console
         }
         
-        if true {
-            println(3)
+        do {
+            print(3)
             func testRetainCycle() {
                 class Dog {
-                    weak var cat : Cat? = nil
+                    weak var cat : Cat?
                     deinit {
-                        println("farewell from Dog")
+                        print("farewell from Dog")
                     }
                 }
                 class Cat {
-                    weak var dog : Dog? = nil
+                    weak var dog : Dog?
                     deinit {
-                        println("farewell from Cat")
+                        print("farewell from Cat")
                     }
                 }
                 let d = Dog()
@@ -124,20 +124,20 @@ class ViewController: UIViewController {
             testRetainCycle() // farewell from Cat, farewell from Dog
         }
         
-        if true {
-            println(4)
+        do {
+            print(4)
             func testUnowned() {
                 class Boy {
-                    var dog : Dog? = nil
+                    var dog : Dog?
                     deinit {
-                        println("farewell from Boy")
+                        print("farewell from Boy")
                     }
                 }
                 class Dog {
                     let boy : Boy
                     init(boy:Boy) { self.boy = boy }
                     deinit {
-                        println("farewell from Dog")
+                        print("farewell from Dog")
                     }
                 }
                 let b = Boy()
@@ -147,20 +147,20 @@ class ViewController: UIViewController {
             testUnowned() // nothing in console
         }
         
-        if true {
-            println(5)
+        do {
+            print(5)
             func testUnowned() {
                 class Boy {
-                    var dog : Dog? = nil
+                    var dog : Dog?
                     deinit {
-                        println("farewell from Boy")
+                        print("farewell from Boy")
                     }
                 }
                 class Dog {
                     unowned let boy : Boy // *
                     init(boy:Boy) { self.boy = boy }
                     deinit {
-                        println("farewell from Dog")
+                        print("farewell from Dog")
                     }
                 }
                 let b = Boy()
@@ -170,62 +170,61 @@ class ViewController: UIViewController {
                 var b2 = Optional(Boy())
                 let d2 = Dog(boy: b2!)
                 b2 = nil // destroy the Boy behind the Dog's back
-                println(d2.boy) // crash
+                print(d2.boy) // crash
 
             }
             testUnowned() // farewell from Boy, farewell from Dog
         }
         
-        if true {
-            println(6)
+        do {
+            print(6)
             class FunctionHolder {
-                var function : (Void -> Void)? = nil
+                var function : (Void -> Void)?
                 deinit {
-                    println("farewell from FunctionHolder")
+                    print("farewell from FunctionHolder")
                 }
             }
             func testFunctionHolder() {
                 let f = FunctionHolder()
                 f.function = {
-                    println(f)
+                    print(f)
                 }
             }
             testFunctionHolder() // nothing in console
         }
         
-        if true {
-            println(7)
+        do {
+            print(7)
             class FunctionHolder {
-                var function : (Void -> Void)? = nil
+                var function : (Void -> Void)?
                 deinit {
-                    println("farewell from FunctionHolder")
+                    print("farewell from FunctionHolder")
                 }
             }
             func testFunctionHolder() {
                 let f = FunctionHolder()
                 f.function = {
                     [weak f] in
-                    println(f)
+                    print(f)
                 }
             }
             testFunctionHolder() // farewell from FunctionHolder
         }
         
-        if true {
-            println(8)
+        do {
+            print(8)
             class FunctionHolder {
-                var function : (Void -> Void)? = nil
+                var function : (Void -> Void)?
                 deinit {
-                    println("farewell from FunctionHolder")
+                    print("farewell from FunctionHolder")
                 }
             }
             func testFunctionHolder() {
                 let f = FunctionHolder()
                 f.function = {      // here comes the weak–strong dance
                     [weak f] in     // weak
-                    if let f = f {  // strong
-                        println(f)
-                    }
+                    guard let f = f else { return }
+                    print(f)        // strong
                 }
             }
             testFunctionHolder() // farewell from FunctionHolder

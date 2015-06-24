@@ -4,10 +4,10 @@ import UIKit
 
 class MyImageView : UIImageView {
     override func willMoveToWindow(newWindow: UIWindow?) {
-        println("image view move to \(newWindow)")
+        print("image view move to \(newWindow)")
     }
     deinit {
-        println("farewell from image view")
+        print("farewell from image view")
     }
 }
 
@@ -27,11 +27,11 @@ class ViewController : UIViewController, UIDynamicAnimatorDelegate {
     }
     
     func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
-        println("pause")
+        print("pause")
     }
     
     func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
-        println("resume")
+        print("resume")
     }
 
 }

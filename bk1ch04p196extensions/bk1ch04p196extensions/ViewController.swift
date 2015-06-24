@@ -45,7 +45,7 @@ extension CGAffineTransform : Printable {
 }
 
 class Dog<T> {
-    var name : T? = nil
+    var name : T?
 }
 extension Dog {
     func sayYourName() -> T? { // T is the type of self.name

@@ -8,7 +8,7 @@ protocol FlipsideViewControllerDelegate : class {
 
 class FlipsideViewController: UIViewController {
     
-    weak var delegate : FlipsideViewControllerDelegate! = nil
+    weak var delegate : FlipsideViewControllerDelegate!
     
     var timer : NSTimer!
     

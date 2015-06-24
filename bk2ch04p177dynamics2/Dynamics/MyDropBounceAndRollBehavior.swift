@@ -24,10 +24,10 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
             // because "self" incorporates all the behaviors at once
             [unowned self] in // * changed from weak to unowned here
             let items = anim.itemsInRect(sup.bounds) as! [UIView]
-            if find(items, self.v) == nil {
+            if items.indexOf(self.v) == nil {
                 anim.removeBehavior(self)
                 self.v.removeFromSuperview()
-                println("done")
+                print("done")
             }
         }
         self.addChildBehavior(grav)
@@ -57,16 +57,16 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
     
     func collisionBehavior(behavior: UICollisionBehavior,
         beganContactForItem item: UIDynamicItem,
-        withBoundaryIdentifier identifier: NSCopying,
+        withBoundaryIdentifier identifier: NSCopying?,
         atPoint p: CGPoint) {
-            println(p)
+            print(p)
             // look for the dynamic item behavior
-            for b in self.childBehaviors as! [UIDynamicBehavior] {
+            for b in self.childBehaviors {
                 if let bounce = b as? UIDynamicItemBehavior {
                     let v = bounce.angularVelocityForItem(item)
-                    println(v)
+                    print(v)
                     if v <= 0.1 {
-                        println("adding angular velocity")
+                        print("adding angular velocity")
                         bounce.addAngularVelocity(30, forItem:item)
                     }
                     break;
@@ -75,7 +75,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
     }
     
     deinit {
-        println("farewell from behavior") // prove we are being deallocated in good order
+        print("farewell from behavior") // prove we are being deallocated in good order
     }
     
 }

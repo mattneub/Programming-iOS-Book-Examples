@@ -8,33 +8,33 @@ protocol FlipsideViewControllerDelegate : class {
 
 class FlipsideViewController: UIViewController {
     
-    weak var delegate : FlipsideViewControllerDelegate! = nil
+    weak var delegate : FlipsideViewControllerDelegate!
     
     var timer : CancelableTimer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("creating timer")
+        print("creating timer")
         self.timer = CancelableTimer(once: false) {
             [unowned self] in // comment out this line to leak
             self.dummy()
         }
-        println("starting timer")
+        print("starting timer")
         self.timer.startWithInterval(1)
     }
     
     func dummy() {
-        println("timer fired")
+        print("timer fired")
     }
     
     @IBAction func done (sender:AnyObject!) {
-        println("done")
+        print("done")
         self.delegate?.flipsideViewControllerDidFinish(self)
     }
     
     // if deinit is not called when you tap Done, we are leaking
     deinit {
-        println("deinit")
+        print("deinit")
         self.timer?.cancel()
     }
     

@@ -78,7 +78,7 @@ struct Bird4 : Flier4 {
 }
 
 class Dog<T> {
-    var name : T? = nil
+    var name : T?
 }
 let d = Dog<String>()
 

@@ -3,10 +3,7 @@ class Dog {
     var name = ""
     private var whatADogSays = "woof"
     func bark() {
-        println(self.whatADogSays)
-    }
-    func speak() {
-        println(self.whatADogSays)
+        print(self.whatADogSays)
     }
     func nameCat(cat:Cat) {
         cat.secretName = "Lazybones" // legal: same file
@@ -17,6 +14,6 @@ class Dog {
 }
 
 class Cat {
-    private var secretName : String? = nil
+    private var secretName : String?
 }
 

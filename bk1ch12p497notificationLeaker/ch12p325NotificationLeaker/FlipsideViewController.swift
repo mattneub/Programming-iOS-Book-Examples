@@ -8,9 +8,9 @@ protocol FlipsideViewControllerDelegate : class {
 
 class FlipsideViewController: UIViewController {
     
-    weak var delegate : FlipsideViewControllerDelegate! = nil
+    weak var delegate : FlipsideViewControllerDelegate!
     
-    var observer : AnyObject! = nil
+    var observer : AnyObject!
     
     let which = 0
     

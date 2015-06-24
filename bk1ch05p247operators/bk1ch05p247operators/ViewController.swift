@@ -39,21 +39,21 @@ class ViewController: UIViewController {
         var v1 = Vial(500_000)
         let v2 = Vial(400_000)
         let v3 = v1 + v2
-        println(v3.numberOfBacteria) // 900000
+        print(v3.numberOfBacteria) // 900000
     
         v1 += v2
-        println(v1.numberOfBacteria) // 900000
+        print(v1.numberOfBacteria) // 900000
         
         let ok = v1 == v3
-        println(ok)
+        print(ok)
         
         let arr = [v1,v2]
-        let ix = find(arr,v1) // Optional wrapping 0
-        println(ix)
+        let ix = arr.indexOf(v1) // Optional wrapping 0
+        print(ix)
 
-        println(2^^2) // 4
-        println(2^^3) // 8
-        println(3^^3) // 27
+        print(2^^2) // 4
+        print(2^^3) // 8
+        print(3^^3) // 27
 
     
     }

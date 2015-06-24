@@ -98,6 +98,7 @@
 		32EF94451AFBD910004E706B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -289,6 +290,7 @@
 				32EF946E1AFBD910004E706B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

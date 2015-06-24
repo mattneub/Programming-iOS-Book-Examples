@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		322DCCC71B3B238600CD85EC /* LegalFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322DCCC61B3B238600CD85EC /* LegalFile.swift */; };
 		3236A4271AED4E39000A3679 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236A4261AED4E39000A3679 /* AppDelegate.swift */; };
 		3236A4291AED4E39000A3679 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236A4281AED4E39000A3679 /* ViewController.swift */; };
 		3236A42C1AED4E39000A3679 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3236A42A1AED4E39000A3679 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		322DCCC61B3B238600CD85EC /* LegalFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalFile.swift; sourceTree = "<group>"; };
 		3236A4211AED4E39000A3679 /* bk1ch01p015yourFirstInstance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk1ch01p015yourFirstInstance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3236A4251AED4E39000A3679 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3236A4261AED4E39000A3679 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				3236A4261AED4E39000A3679 /* AppDelegate.swift */,
 				3236A4281AED4E39000A3679 /* ViewController.swift */,
+				322DCCC61B3B238600CD85EC /* LegalFile.swift */,
 				3236A42A1AED4E39000A3679 /* Main.storyboard */,
 				3236A42D1AED4E39000A3679 /* Images.xcassets */,
 				3236A42F1AED4E39000A3679 /* LaunchScreen.xib */,
@@ -98,6 +101,7 @@
 		3236A4191AED4E38000A3679 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -142,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				322DCCC71B3B238600CD85EC /* LegalFile.swift in Sources */,
 				3236A4291AED4E39000A3679 /* ViewController.swift in Sources */,
 				3236A4271AED4E39000A3679 /* AppDelegate.swift in Sources */,
 			);
@@ -254,6 +259,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = bk1ch01p015yourFirstInstance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -264,6 +271,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = bk1ch01p015yourFirstInstance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -289,6 +298,7 @@
 				3236A4421AED4E39000A3679 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
