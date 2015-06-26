@@ -1,7 +1,7 @@
 
 import UIKit
 
-func repeatString(s:String, #times:Int) -> String {
+func repeatString(s:String, times:Int) -> String {
     var result = ""
     for _ in 1...times { result += s }
     return result
@@ -16,12 +16,12 @@ func repeatString2(s:String, times n:Int) -> String {
 class Dog {
     func say(s:String, times:Int) {
         for _ in 1...times {
-            println(s)
+            print(s)
         }
     }
     func say2(s:String, _ times:Int) {
         for _ in 1...times {
-            println(s)
+            print(s)
         }
     }
 }
@@ -35,16 +35,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let s = repeatString("hi", times:3)
-        println(s)
+        print(s)
         
         let s2 = repeatString2("hi", times:3)
-        println(s2)
+        print(s2)
         
         let d = Dog()
         d.say("woof", times:3)
 
         let d2 = Dog()
-        d.say2("woof", 3)
+        d2.say2("woof", 3)
+        
+        do {
+            let s = "hello"
+            let s2 = s.stringByReplacingOccurrencesOfString("ell", withString:"ipp")
+            // s2 is now "hippo"
+            print(s2)
+        }
+
 
         
     }

@@ -12,18 +12,7 @@
 		323891E81AEDDA6700487FD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 323891E61AEDDA6700487FD0 /* Main.storyboard */; };
 		323891EA1AEDDA6700487FD0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323891E91AEDDA6700487FD0 /* Images.xcassets */; };
 		323891ED1AEDDA6700487FD0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 323891EB1AEDDA6700487FD0 /* LaunchScreen.xib */; };
-		323891F91AEDDA6700487FD0 /* bk1ch02p036defaultParametersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323891F81AEDDA6700487FD0 /* bk1ch02p036defaultParametersTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		323891F31AEDDA6700487FD0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 323891D51AEDDA6600487FD0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 323891DC1AEDDA6600487FD0;
-			remoteInfo = bk1ch02p036defaultParameters;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		323891DD1AEDDA6600487FD0 /* bk1ch02p036defaultParameters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk1ch02p036defaultParameters.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,20 +22,10 @@
 		323891E71AEDDA6700487FD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		323891E91AEDDA6700487FD0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		323891EC1AEDDA6700487FD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		323891F21AEDDA6700487FD0 /* bk1ch02p036defaultParametersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bk1ch02p036defaultParametersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		323891F71AEDDA6700487FD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		323891F81AEDDA6700487FD0 /* bk1ch02p036defaultParametersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bk1ch02p036defaultParametersTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		323891DA1AEDDA6600487FD0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		323891EF1AEDDA6700487FD0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -60,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				323891DF1AEDDA6600487FD0 /* bk1ch02p036defaultParameters */,
-				323891F51AEDDA6700487FD0 /* bk1ch02p036defaultParametersTests */,
 				323891DE1AEDDA6600487FD0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				323891DD1AEDDA6600487FD0 /* bk1ch02p036defaultParameters.app */,
-				323891F21AEDDA6700487FD0 /* bk1ch02p036defaultParametersTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,23 +72,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		323891F51AEDDA6700487FD0 /* bk1ch02p036defaultParametersTests */ = {
-			isa = PBXGroup;
-			children = (
-				323891F81AEDDA6700487FD0 /* bk1ch02p036defaultParametersTests.swift */,
-				323891F61AEDDA6700487FD0 /* Supporting Files */,
-			);
-			path = bk1ch02p036defaultParametersTests;
-			sourceTree = "<group>";
-		};
-		323891F61AEDDA6700487FD0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				323891F71AEDDA6700487FD0 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,39 +92,18 @@
 			productReference = 323891DD1AEDDA6600487FD0 /* bk1ch02p036defaultParameters.app */;
 			productType = "com.apple.product-type.application";
 		};
-		323891F11AEDDA6700487FD0 /* bk1ch02p036defaultParametersTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 323891FF1AEDDA6700487FD0 /* Build configuration list for PBXNativeTarget "bk1ch02p036defaultParametersTests" */;
-			buildPhases = (
-				323891EE1AEDDA6700487FD0 /* Sources */,
-				323891EF1AEDDA6700487FD0 /* Frameworks */,
-				323891F01AEDDA6700487FD0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				323891F41AEDDA6700487FD0 /* PBXTargetDependency */,
-			);
-			name = bk1ch02p036defaultParametersTests;
-			productName = bk1ch02p036defaultParametersTests;
-			productReference = 323891F21AEDDA6700487FD0 /* bk1ch02p036defaultParametersTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		323891D51AEDDA6600487FD0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					323891DC1AEDDA6600487FD0 = {
 						CreatedOnToolsVersion = 6.3.1;
-					};
-					323891F11AEDDA6700487FD0 = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 323891DC1AEDDA6600487FD0;
 					};
 				};
 			};
@@ -182,7 +121,6 @@
 			projectRoot = "";
 			targets = (
 				323891DC1AEDDA6600487FD0 /* bk1ch02p036defaultParameters */,
-				323891F11AEDDA6700487FD0 /* bk1ch02p036defaultParametersTests */,
 			);
 		};
 /* End PBXProject section */
@@ -198,13 +136,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		323891F01AEDDA6700487FD0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -217,23 +148,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		323891EE1AEDDA6700487FD0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				323891F91AEDDA6700487FD0 /* bk1ch02p036defaultParametersTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		323891F41AEDDA6700487FD0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 323891DC1AEDDA6600487FD0 /* bk1ch02p036defaultParameters */;
-			targetProxy = 323891F31AEDDA6700487FD0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		323891E61AEDDA6700487FD0 /* Main.storyboard */ = {
@@ -356,40 +271,6 @@
 			};
 			name = Release;
 		};
-		323892001AEDDA6700487FD0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = bk1ch02p036defaultParametersTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bk1ch02p036defaultParameters.app/bk1ch02p036defaultParameters";
-			};
-			name = Debug;
-		};
-		323892011AEDDA6700487FD0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = bk1ch02p036defaultParametersTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bk1ch02p036defaultParameters.app/bk1ch02p036defaultParameters";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -409,14 +290,7 @@
 				323891FE1AEDDA6700487FD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		323891FF1AEDDA6700487FD0 /* Build configuration list for PBXNativeTarget "bk1ch02p036defaultParametersTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				323892001AEDDA6700487FD0 /* Debug */,
-				323892011AEDDA6700487FD0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

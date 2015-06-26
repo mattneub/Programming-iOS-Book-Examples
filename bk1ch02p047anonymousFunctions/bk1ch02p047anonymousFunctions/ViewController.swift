@@ -11,7 +11,7 @@ func sayHowdy() -> String {
 }
 func performAndPrint(f:()->String) {
     let s = f()
-    println(s)
+    print(s)
 }
 
 
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         doThis { // no parentheses!
-            println("Howdy")
+            print("Howdy")
         }
         
         performAndPrint {
@@ -33,8 +33,15 @@ class ViewController: UIViewController {
         }
 
         let arr = [2, 4, 6, 8]
-        let arr2 = arr.map {$0*2} // it doesn't get any Swiftier than this
-        println(arr2)
+        
+        func doubleMe(i:Int) -> Int {
+            return i*2
+        }
+        let arr2 = arr.map(doubleMe) // [4, 8, 12, 16]
+        print(arr2)
+        
+        let arr3 = arr.map {$0*2} // it doesn't get any Swiftier than this
+        print(arr3)
 
         
     }
@@ -47,7 +54,7 @@ class ViewController: UIViewController {
             self.myButton.frame.origin.y += 20
             }, completion: {
                 (finished:Bool) -> () in
-                println("finished: \(finished)")
+                print("finished: \(finished)")
         })
 
         
@@ -60,7 +67,7 @@ class ViewController: UIViewController {
         UIView.animateWithDuration(0.4, animations: {
             self.myButton2.frame.origin.y += 20
             }) {
-                println("finished: \($0)") // must have either "_ in" or "$0"
+                print("finished: \($0)") // must have either "_ in" or "$0"
         }
 
         

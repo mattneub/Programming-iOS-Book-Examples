@@ -18,24 +18,31 @@ func say() -> Int {
 }
 
 func giveMeAString(s:String) {
-    println("thanks!")
+    print("thanks!")
 }
 
 
 class ViewController: UIViewController {
     
-    // this is not legal, because Objective-C can't deal with it:
-    /*
-    func say (what:String) {
+    // if you delete `@nonobject`, this is not legal, because Objective-C can't deal with it:
+    func sayy (what:String) {
     }
-    func say (what:Int) {
+    @nonobjc func sayy (what:Int) {
     }
-*/
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // but overloading is _not_ legal at the local level
+        // I take it that is because we have no dynamic dispatch here?
+        /*
+        func sayyy (what:String) {
+        }
+        func sayyy (what:Int) {
+        }
+*/
 
         say("howdy")
         say(1)
@@ -44,7 +51,7 @@ class ViewController: UIViewController {
         // but these are fine:
         giveMeAString(say())
         let result = say() + "two"
-        println(result)
+        print(result)
     
     }
 

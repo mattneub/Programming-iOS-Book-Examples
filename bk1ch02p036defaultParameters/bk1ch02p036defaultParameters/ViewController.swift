@@ -5,24 +5,24 @@ import UIKit
 class Dog {
     func say(s:String, times:Int = 1) {
         for _ in 1...times {
-            println(s)
+            print(s)
         }
     }
 }
 
-func doThing (a:Int = 0, b:Int = 3) {}
+func doThing (a a:Int = 0, b:Int = 3) {}
 
 // variadic
 
 func sayStrings(arrayOfStrings:String ...) {
-    for s in arrayOfStrings { println(s) }
+    for s in arrayOfStrings { print(s) }
 }
 
 // ignored
 
-func say(s:String, #times:Int, loudly _:Bool) {Dog().say(s, times:times)}
+func say(s:String, times:Int, loudly _:Bool) {Dog().say(s, times:times)}
 
-func say2(s:String, #times:Int, _:Bool) {Dog().say(s, times:times)}
+func say2(s:String, times:Int, _:Bool) {Dog().say(s, times:times)}
 
 
 
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         let d = Dog()
         d.say("woof") // same as saying d.say("woof", times:1)
         d.say("woof", times:3)
-
+        
         doThing(b:5, a:10) // legal but don't
 
         sayStrings("hey", "ho", "nonny nonny no")

@@ -5,7 +5,7 @@ func doThis(f:()->()) {
     f()
 }
 
-func imageOfSize(size:CGSize, whatToDraw:() -> ()) -> UIImage {
+func imageOfSize(size:CGSize, _ whatToDraw:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     whatToDraw()
     let result = UIGraphicsGetImageFromCurrentImageContext()
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         
         
         func whatToDo() {
-            println("I did it")
+            print("I did it")
         }
         doThis(whatToDo)
         
@@ -54,12 +54,20 @@ class ViewController: UIViewController {
             self.myButton.frame.origin.y += 20
         }
         func whatToDoLater(finished:Bool) {
-            println("finished: \(finished)")
+            print("finished: \(finished)")
         }
         UIView.animateWithDuration(
             0.4, animations: whatToAnimate, completion: whatToDoLater)
         
         
+    }
+    
+    func test() {
+        let vc = UIViewController()
+        func whatToDoLater() {
+            print("I finished!")
+        }
+        self.presentViewController(vc, animated:true, completion:whatToDoLater)
     }
 
     
