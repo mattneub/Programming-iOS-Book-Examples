@@ -6,14 +6,17 @@ import UIKit
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
+    let which = 1
+    
+    typealias RootViewController = ViewController
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
-        let which = 1
         switch which {
         case 1:
             
             self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
-            self.window!.rootViewController = ViewController()
+            self.window!.rootViewController = RootViewController()
             self.window!.backgroundColor = UIColor.whiteColor()
             self.window!.makeKeyAndVisible()
             
@@ -23,7 +26,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             
             self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
             let window = self.window!
-            window.rootViewController = ViewController()
+            window.rootViewController = RootViewController()
             window.backgroundColor = UIColor.whiteColor()
             window.makeKeyAndVisible()
 

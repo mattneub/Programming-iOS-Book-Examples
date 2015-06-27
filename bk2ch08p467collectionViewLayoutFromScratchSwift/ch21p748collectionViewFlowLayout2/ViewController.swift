@@ -19,7 +19,7 @@ class ViewController : UICollectionViewController {
         }()
 
     override func viewDidLoad() {
-        let s = String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
+        let s = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
         let states = s.componentsSeparatedByString("\n")
         var previous = ""
         for aState in states {
@@ -65,7 +65,7 @@ class ViewController : UICollectionViewController {
         
         var v : UICollectionReusableView! = nil
         if kind == UICollectionElementKindSectionHeader {
-            v = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", forIndexPath:indexPath) as! UICollectionReusableView
+            v = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", forIndexPath:indexPath)
             if v.subviews.count == 0 {
                 let lab = UILabel() // we will size it later
                 v.addSubview(lab)
@@ -77,13 +77,13 @@ class ViewController : UICollectionViewController {
                 lab.layer.borderWidth = 2
                 lab.layer.masksToBounds = true // has to be added for iOS 8 label
                 lab.layer.borderColor = UIColor.blackColor().CGColor
-                lab.setTranslatesAutoresizingMaskIntoConstraints(false)
+                lab.translatesAutoresizingMaskIntoConstraints = false
                 v.addConstraints(
                     NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[lab(35)]",
-                        options:nil, metrics:nil, views:["lab":lab]))
+                        options:[], metrics:nil, views:["lab":lab]))
                 v.addConstraints(
                     NSLayoutConstraint.constraintsWithVisualFormat("V:[lab(30)]-5-|",
-                        options:nil, metrics:nil, views:["lab":lab]))
+                        options:[], metrics:nil, views:["lab":lab]))
             }
             let lab = v.subviews[0] as! UILabel
             lab.text = self.sectionNames[indexPath.section]

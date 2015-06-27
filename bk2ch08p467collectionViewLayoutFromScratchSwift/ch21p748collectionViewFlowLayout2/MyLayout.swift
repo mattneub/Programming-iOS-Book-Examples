@@ -12,10 +12,12 @@ class MyLayout : UICollectionViewLayout {
         //        println("prepare")
         let sections = self.collectionView!.numberOfSections()
         
+        /*
         // how many items are there in total?
         let total = Array(0 ..< sections).map {
             self.collectionView!.numberOfItemsInSection($0)
             }.reduce(0, combine: +)
+        */
         
         // work out cell size based on bounds size
         let sz = self.collectionView!.bounds.size
@@ -58,7 +60,7 @@ class MyLayout : UICollectionViewLayout {
         return ok
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         //        println("atts")
         for att in self.atts {
             if att.indexPath == indexPath {
@@ -68,7 +70,7 @@ class MyLayout : UICollectionViewLayout {
         return nil // shouldn't happen
     }
     
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
+    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         //        println("rect")
         return self.atts
     }

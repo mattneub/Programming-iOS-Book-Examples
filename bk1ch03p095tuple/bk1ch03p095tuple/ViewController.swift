@@ -2,8 +2,8 @@
 
 import UIKit
 
-func f (i1:Int, i2:Int) -> () {}
-func f2 (#i1:Int, #i2:Int) -> () {}
+func f (i1:Int, _ i2:Int) -> () {}
+func f2 (i1 i1:Int, i2:Int) -> () {}
 
 
 class ViewController: UIViewController {
@@ -11,61 +11,135 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        var pair : (Int, String)
-        pair = (1, "One")
-        
-        var pair2 = (1, "One")
-        
-        var ix: Int
-        var s: String
-        (ix, s) = (1, "One")
-        
-        let (ixx, ss) = (1, "One") // can use let or var here
-        
-        var s1 = "Hello"
-        var s2 = "world"
-        (s1, s2) = (s2, s1) // now s1 is "world" and s2 is "Hello"
-        
-        let pair3 = (1, "One")
-        let (_, s3) = pair3 // now s3 is "One"
-        
-        for (ix,c) in enumerate(s) {
-            println("character \(ix) is \(c)")
+        do {
+            let pair : (Int, String) = (1, "One")
+            _ = pair
         }
         
-        let ixxx = pair.0 // now ixxx is 1
-        pair.0 = 2 // now pair is (2, "One")
-        
-        if true {
-            var pair : (first:Int, second:String) = (1, "One")
+        do {
+            let pair = (1, "One")
+            _ = pair
         }
         
-        if true {
-            var pair = (first:1, second:"One")
+        do {
+            var ix: Int
+            var s: String
+            (ix, s) = (1, "One")
+            _ = ix; _ = s
         }
         
-        if true {
+        do {
+            let (ix, s) = (1, "One") // can use let or var here
+            _ = ix; _ = s
+        }
+        
+        do {
+            var s1 = "Hello"
+            var s2 = "world"
+            (s1, s2) = (s2, s1) // now s1 is "world" and s2 is "Hello"
+        }
+        
+        do {
+            let pair = (1, "One")
+            let (_, s) = pair // now s is "One"
+            _ = s
+        }
+        
+        do {
+            let s = "hello"
+            for (ix,c) in s.characters.enumerate() {
+                print("character \(ix) is \(c)")
+            }
+        }
+        
+        
+        do {
+            var pair = (1, "One")
+            let ix = pair.0 // now ix is 1
+            pair.0 = 2 // now pair is (2, "One")
+            print(pair)
+            _ = ix
+        }
+        
+        do {
+            let pair : (first:Int, second:String) = (1, "One")
+            _ = pair
+        }
+        
+        do {
+            let pair = (first:1, second:"One")
+            _ = pair
+        }
+        
+        do {
             var pair = (first:1, second:"One")
             let x = pair.first // 1
             pair.first = 2
             let y = pair.0 // 2
+            _ = x; _ = y
         }
         
-        if true {
-            var pair = (1, "One")
-            var pairWithNames : (first:Int, second:String) = pair
+        do {
+            let pair = (1, "One")
+            let pairWithNames : (first:Int, second:String) = pair
             let ix = pairWithNames.first // 1
+            _ = pair
+            _ = pairWithNames
+            _ = ix
         }
+        
+        do {
+            var pairWithoutNames = (1, "One")
+            pairWithoutNames = (first:2, second:"Two")
+            print(pairWithoutNames)
+            // let ix = pairWithoutNames.first // compile error, we stripped the names
+        }
+        
+        do {
+            func tupleMaker() -> (first:Int, second:String) {
+                return (1, "One")
+            }
+            let ix = tupleMaker().first // 1
+            print(ix)
+        }
+
         
         // parameter list in function call is actually a tuple
         
-        let p = (1,2)
-        f(p)
+        do {
+            let tuple = (1,2)
+            f(tuple)
+        }
+        
+        do {
+            let tuple = (i1:1, i2:2)
+            f2(tuple)
+        }
+        
+        do { // examples from the dev forums
+            
+            var array: [(Int, Int)] = []
+            
+            // OK - literals
+            array.append(1, 1)
+            
+            // OK - let integer
+            let int_const = 1
+            array.append(int_const, 1)
+            
+            // OK - let tuple
+            let const_tuple: (Int, Int) = (1, 1)
+            array.append(const_tuple)
+            
+            // NOK - var integer
+            // var int_var = 1
+            // array.append(int_var, 1)
+            
+            // NOK - var tuple
+            // var var_tuple: (Int, Int) = (1, 1)
+            // array.append(var_tuple)
 
-        let p2 = (i1:1, i2:2)
-        f2(p2)
-
+        }
         
         
     }

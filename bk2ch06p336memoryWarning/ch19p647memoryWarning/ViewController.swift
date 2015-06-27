@@ -14,12 +14,14 @@ class ViewController : UIViewController {
                 let fm = NSFileManager()
                 let f = NSTemporaryDirectory().stringByAppendingPathComponent("myBigData")
                 if fm.fileExistsAtPath(f) {
-                    println("loading big data from disk")
+                    print("loading big data from disk")
                     self.myBigDataReal = NSData(contentsOfFile: f)
-                    var err : NSError?
-                    let ok = fm.removeItemAtPath(f, error: &err)
-                    assert(ok, "Couldn't remove temp file")
-                    println("deleted big data from disk")
+                    do {
+                        try fm.removeItemAtPath(f)
+                        print("deleted big data from disk")
+                    } catch {
+                        print("Couldn't remove temp file")
+                    }
                 }
             }
             return self.myBigDataReal
@@ -45,7 +47,7 @@ class ViewController : UIViewController {
     
     func saveAndReleaseMyBigData() {
         if let myBigData = self.myBigData {
-            println("unloading big data")
+            print("unloading big data")
             let f = NSTemporaryDirectory().stringByAppendingPathComponent("myBigData")
             myBigData.writeToFile(f, atomically:false)
             self.myBigData = nil
@@ -53,7 +55,7 @@ class ViewController : UIViewController {
     }
     
     override func didReceiveMemoryWarning() {
-        println("did receive memory warning")
+        print("did receive memory warning")
         super.didReceiveMemoryWarning()
         self.saveAndReleaseMyBigData()
     }

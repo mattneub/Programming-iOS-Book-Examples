@@ -64,17 +64,17 @@ class MyMandelbrotView : UIView {
         var bitmapBytesPerRow = Int(size.width * 4)
         bitmapBytesPerRow += (16 - (bitmapBytesPerRow % 16)) % 16
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let prem = CGBitmapInfo(CGImageAlphaInfo.PremultipliedLast.rawValue)
-        let context = CGBitmapContextCreate(nil, Int(size.width), Int(size.height), 8, bitmapBytesPerRow, colorSpace, prem)
-        return context
+        let prem = CGImageAlphaInfo.PremultipliedLast
+        let context = CGBitmapContextCreate(nil, Int(size.width), Int(size.height), 8, bitmapBytesPerRow, colorSpace, prem.rawValue)
+        return context!
     }
     
     // NB do NOT refer to self.bitmapContext here!
     func drawAtCenter(center:CGPoint, zoom:CGFloat, context:CGContext) {
         
-        func isInMandelbrotSet(re:Float, im:Float) -> Bool {
+        func isInMandelbrotSet(re:Float, _ im:Float) -> Bool {
             var fl = true
-            var (x:Float, y:Float, nx:Float, ny:Float) = (0,0,0,0)
+            var (x, y, nx, ny) : (Float, Float, Float, Float) = (0,0,0,0)
             for _ in 0 ..< MANDELBROT_STEPS {
                 nx = x*x - y*y + re
                 ny = 2*x*y + im

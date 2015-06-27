@@ -14,11 +14,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // how to check whether assignment into an optional chain worked
         let ok : Void? = self.window?.rootViewController = ViewController()
         if ok != nil {
-            println("it worked")
+            print("it worked")
         }
         // or:
         if (self.window?.rootViewController = ViewController()) != nil {
-            println("it worked")
+            print("it worked")
         }
 
         

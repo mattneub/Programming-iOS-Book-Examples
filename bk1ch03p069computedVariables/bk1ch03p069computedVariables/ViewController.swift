@@ -1,13 +1,14 @@
 
 
 import UIKit
+import MediaPlayer
 
 var now : String {
     get {
         return NSDate().description
     }
     set {
-        println(newValue)
+        print(newValue)
     }
 }
 
@@ -18,6 +19,11 @@ var now2 : String { // showing you can omit "get" if there is no "set"
 
 
 class ViewController: UIViewController {
+    
+    var mp : MPMusicPlayerController {
+        return MPMusicPlayerController.systemMusicPlayer()
+    }
+
     
     // typical "facade" structure
     private var _p : String = ""
@@ -33,10 +39,10 @@ class ViewController: UIViewController {
     // observer
     var s = "whatever" {
         willSet {
-            println(newValue)
+            print(newValue)
         }
         didSet {
-            println(oldValue)
+            print(oldValue)
             // self.s = "something else"
         }
     }
@@ -49,7 +55,7 @@ class ViewController: UIViewController {
     
     
         now = "Howdy"
-        println(now)
+        print(now)
         
         self.s = "Hello"
         self.s = "Bonjour"

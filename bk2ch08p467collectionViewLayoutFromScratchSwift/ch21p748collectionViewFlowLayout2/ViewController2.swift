@@ -31,14 +31,14 @@ class ViewController2 : UICollectionViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        println("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
+        print("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
     }
     
     override func viewDidAppear(animated: Bool)  {
         super.viewDidAppear(animated)
-        println("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
+        print("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
         delay(2) {
-            println("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
+            print("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
         }
     }
     

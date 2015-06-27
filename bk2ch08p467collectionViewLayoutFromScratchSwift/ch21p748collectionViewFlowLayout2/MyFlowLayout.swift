@@ -2,12 +2,8 @@
 import UIKit
 
 class MyDynamicAnimator : UIDynamicAnimator {
-    // work around Swift 1.2 initializer inheritance bug
-    override init(collectionViewLayout:UICollectionViewLayout) {
-        super.init(collectionViewLayout:collectionViewLayout)
-    }
     deinit {
-        println("animator: farewell")
+        print("animator: farewell")
     }
 }
 
@@ -20,34 +16,53 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
+/*
+Lots of changes here, some of them rather half-baked perhaps.
+We got a helpful warning that we are not supposed to be modifying attributes without copying,
+so now I copy everywhere.
+Lots of things turned into optionals and I may not be dealing coherently with them.
+*/
+
+/*
+If we run, we now run without crashing on Flush,
+but we sometimes crash with a dangling pointer on Push
+and I have not tracked this down yet
+*/
+
 class MyFlowLayout : UICollectionViewFlowLayout {
     
     var animating = false
     var animator : UIDynamicAnimator!
     
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject] {
-        let sup = super.layoutAttributesForElementsInRect(rect) as! [UICollectionViewLayoutAttributes]
-        let arr = sup.map {
-            atts -> UICollectionViewLayoutAttributes in
-            if atts.representedElementKind == nil {
-                let ip = atts.indexPath
-                atts.frame = self.layoutAttributesForItemAtIndexPath(ip).frame
+    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        var arr : [UICollectionViewLayoutAttributes]? = nil
+        if let sup = super.layoutAttributesForElementsInRect(rect) {
+            arr = sup.map {
+                atts -> UICollectionViewLayoutAttributes in
+                let attscopy = atts.copy() as! UICollectionViewLayoutAttributes
+                if attscopy.representedElementKind == nil {
+                    let ip = atts.indexPath
+                    if let frame = self.layoutAttributesForItemAtIndexPath(ip)?.frame {
+                        attscopy.frame = frame
+                    }
+                }
+                return attscopy
             }
-            return atts
         }
         
         // secret sauce for getting animation to work with a layout
-        if self.animating {
+        if let arr = arr where self.animating {
             var marr = [UICollectionViewLayoutAttributes]()
             for atts in arr {
                 let path = atts.indexPath
                 var atts2 : UICollectionViewLayoutAttributes? = nil
                 switch atts.representedElementCategory {
                 case .Cell:
-                    atts2 = self.animator.layoutAttributesForCellAtIndexPath(path)
+                    atts2 = self.animator?.layoutAttributesForCellAtIndexPath(path)
                 case .SupplementaryView:
-                    let kind = atts.representedElementKind
-                    atts2 = self.animator.layoutAttributesForSupplementaryViewOfKind(kind, atIndexPath:path)
+                    if let kind = atts.representedElementKind {
+                        atts2 = self.animator?.layoutAttributesForSupplementaryViewOfKind(kind, atIndexPath:path)
+                    }
                 default: break
                 }
                 marr += [atts2 ?? atts]
@@ -57,18 +72,23 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         return arr
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
-        let atts = super.layoutAttributesForItemAtIndexPath(indexPath)
-        if indexPath.item == 0 {
-            return atts // degenerate case 1
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+        var atts = super.layoutAttributesForItemAtIndexPath(indexPath)
+        if atts != nil {
+            if indexPath.item == 0 {
+                return atts // degenerate case 1
+            }
+            if atts!.frame.origin.x - 1 <= self.sectionInset.left {
+                return atts // degenerate case 2
+            }
+            let ipPrev = NSIndexPath(forItem:indexPath.item-1, inSection:indexPath.section)
+            if let fPrev = self.layoutAttributesForItemAtIndexPath(ipPrev)?.frame {
+                let rightPrev = fPrev.origin.x + fPrev.size.width + self.minimumInteritemSpacing
+                let attsCopy = atts!.copy() as! UICollectionViewLayoutAttributes
+                attsCopy.frame.origin.x = rightPrev
+                atts = attsCopy
+            }
         }
-        if atts.frame.origin.x - 1 <= self.sectionInset.left {
-            return atts // degenerate case 2
-        }
-        let ipPrev = NSIndexPath(forItem:indexPath.item-1, inSection:indexPath.section)
-        let fPrev = self.layoutAttributesForItemAtIndexPath(ipPrev).frame
-        let rightPrev = fPrev.origin.x + fPrev.size.width + self.minimumInteritemSpacing
-        atts.frame.origin.x = rightPrev
         return atts
     }
     
@@ -79,14 +99,14 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         let anim = MyDynamicAnimator(collectionViewLayout:self)
         self.animator = anim
         
-        let atts = self.layoutAttributesForElementsInRect(visworld)
+        let atts = self.layoutAttributesForElementsInRect(visworld)!
         self.animating = true
         
         // collision behavior: floor, with a hole at the left end
         // we do not want the headers to be part of this collision behavior...
         // because they stretch all the way across the screen and won't fall through
         
-        let items = (atts as! [UICollectionViewLayoutAttributes]).filter {
+        let items = atts.filter {
             $0.representedElementKind == nil
         }
         let coll = UICollisionBehavior(items:items)
@@ -107,7 +127,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         grav.action = {
             let atts = self.animator.itemsInRect(visworld)
             if atts.count == 0 || anim.elapsedTime() > 4 {
-                println("done")
+                print("done")
                 delay(0) { // memory management
                     self.animator.removeAllBehaviors()
                     self.animator = nil
@@ -124,7 +144,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
 }
 
 extension MyFlowLayout : UICollisionBehaviorDelegate {
-    func collisionBehavior(behavior: UICollisionBehavior, beganContactForItem item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying, atPoint p: CGPoint) {
+    func collisionBehavior(behavior: UICollisionBehavior, beganContactForItem item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, atPoint p: CGPoint) {
     
         let push = UIPushBehavior(items:[item], mode:.Continuous)
         push.setAngle(3*CGFloat(M_PI)/4.0, magnitude:1.5)
