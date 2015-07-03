@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         do {
             let arr = [1,2,1,3,2,4,3,5]
             let set = Set(arr)
-            let arr2 = Array(set) // [5,2,3,1,4] perhaps
+            let arr2 = Array(set) // [5,2,3,1,4], perhaps
             print(arr2)
         }
         

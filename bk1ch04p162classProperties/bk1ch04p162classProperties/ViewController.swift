@@ -7,7 +7,7 @@ class Dog {
         return "woof"
     }
     func bark() {
-        println(Dog.whatDogsSay())
+        print(Dog.whatDogsSay())
     }
 }
 
@@ -28,7 +28,7 @@ class Dog2 {
         return "woof"
     }
     func bark() {
-        println(Dog.whatDogsSay())
+        print(Dog.whatDogsSay())
     }
 }
 
@@ -41,14 +41,21 @@ class NoisyDog2 : Dog2 {
 class Dog3 {
     static var whatDogsSay = "woof"
     func bark() {
-        println(Dog.whatDogsSay)
+        print(Dog.whatDogsSay)
     }
 }
 
 // compile error (and so for other variants):
 /*
 class NoisyDog3 : Dog3 {
-    override static var whatDogsSay : String {return "WOOF"}
+    override static var whatDogsSay : String {
+        set {
+            
+        }
+        get {
+            return "WOOF"
+        }
+    }
 }
 */
 
@@ -57,7 +64,7 @@ class Dog4 {
         return "woof"
     }
     func bark() {
-        println(Dog.whatDogsSay)
+        print(Dog.whatDogsSay)
     }
 }
 

@@ -2,17 +2,17 @@
 
 import UIKit
 
-enum ListType : String {
+enum Filter : String {
     case Albums = "Albums"
     case Playlists = "Playlists"
     case Podcasts = "Podcasts"
     case Books = "Audiobooks"
-    static var cases : [ListType] = [Albums, Playlists, Podcasts, Books]
+    static var cases : [Filter] = [Albums, Playlists, Podcasts, Books]
     init!(_ ix:Int) {
         if !(0...3).contains(ix) {
             return nil
         }
-        self = ListType.cases[ix]
+        self = Filter.cases[ix]
     }
     init!(_ rawValue:String) {
         self.init(rawValue:rawValue)
@@ -25,9 +25,9 @@ enum ListType : String {
         set {}
     }
     mutating func advance() {
-        var ix = find(ListType.cases, self)!
+        var ix = Filter.cases.indexOf(self)!
         ix = (ix + 1) % 4
-        self = ListType.cases[ix]
+        self = Filter.cases[ix]
     }
 
 }
@@ -59,24 +59,29 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let type1 = ListType.Albums
-        let type2 = ListType(rawValue:"Playlists")!
-        let type3 = ListType(2) // .Podcasts
+        let type1 = Filter.Albums
+        let type2 = Filter(rawValue:"Playlists")!
+        let type3 = Filter(2) // .Podcasts
 
-        let type4 = ListType(5) // nil
+        let type4 = Filter(5) // nil
         
-        let type5 = ListType("Playlists")
+        let type5 = Filter("Playlists")
         
-        println(type5.description)
+        print(type5.description)
         
         // type5.s = "test" // compile error
         var type6 = type5
         type6.s = "test"
         
-        var type7 = ListType.Books
-        type7.advance() // ListType.Albums
+        var type7 = Filter.Books
+        type7.advance() // Filter.Albums
+        print(type7)
 
-    
+        _ = type1
+        _ = type2
+        _ = type3
+        _ = type4
+        _ = type5
     }
 
 

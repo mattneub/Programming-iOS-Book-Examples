@@ -12,6 +12,7 @@
 		3242DC061AF930B6007D8170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3242DC041AF930B6007D8170 /* Main.storyboard */; };
 		3242DC081AF930B6007D8170 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3242DC071AF930B6007D8170 /* Images.xcassets */; };
 		3242DC0B1AF930B6007D8170 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3242DC091AF930B6007D8170 /* LaunchScreen.xib */; };
+		3272D8611B46D2C10065C1E3 /* Thing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3272D8601B46D2C10065C1E3 /* Thing.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		3242DC051AF930B6007D8170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3242DC071AF930B6007D8170 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3242DC0A1AF930B6007D8170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3272D85E1B46D2C10065C1E3 /* bk1ch04p204collections-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bk1ch04p204collections-Bridging-Header.h"; sourceTree = "<group>"; };
+		3272D85F1B46D2C10065C1E3 /* Thing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thing.h; sourceTree = "<group>"; };
+		3272D8601B46D2C10065C1E3 /* Thing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Thing.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +60,13 @@
 			children = (
 				3242DC001AF930B6007D8170 /* AppDelegate.swift */,
 				3242DC021AF930B6007D8170 /* ViewController.swift */,
+				3272D85F1B46D2C10065C1E3 /* Thing.h */,
+				3272D8601B46D2C10065C1E3 /* Thing.m */,
 				3242DC041AF930B6007D8170 /* Main.storyboard */,
 				3242DC071AF930B6007D8170 /* Images.xcassets */,
 				3242DC091AF930B6007D8170 /* LaunchScreen.xib */,
 				3242DBFE1AF930B6007D8170 /* Supporting Files */,
+				3272D85E1B46D2C10065C1E3 /* bk1ch04p204collections-Bridging-Header.h */,
 			);
 			path = bk1ch04p204collections;
 			sourceTree = "<group>";
@@ -98,6 +105,7 @@
 		3242DBF31AF930B6007D8170 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -142,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3272D8611B46D2C10065C1E3 /* Thing.m in Sources */,
 				3242DC031AF930B6007D8170 /* ViewController.swift in Sources */,
 				3242DC011AF930B6007D8170 /* AppDelegate.swift in Sources */,
 			);
@@ -254,9 +263,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = bk1ch04p204collections/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bk1ch04p204collections/bk1ch04p204collections-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -264,9 +276,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = bk1ch04p204collections/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bk1ch04p204collections/bk1ch04p204collections-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -289,6 +303,7 @@
 				3242DC1C1AF930B6007D8170 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

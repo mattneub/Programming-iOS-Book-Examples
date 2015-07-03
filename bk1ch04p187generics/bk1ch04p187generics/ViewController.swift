@@ -14,7 +14,7 @@ struct Bird : Flier {
 
 protocol Flier2 {
     typealias Other
-    func flockTogetherWith(f:Other)
+    func flockTogetherWith(f:Self.Other) // just showing that this is legal
     func mateWith(f:Other)
 }
 struct Bird2 : Flier2 {
@@ -37,7 +37,7 @@ struct HolderOfTwoSameThings<T> {
 }
 let holder = HolderOfTwoSameThings(thingOne:"howdy", thingTwo:"getLost")
 
-func flockTwoTogether<T, U>(f1:T, f2:U) {}
+func flockTwoTogether<T, U>(f1:T, _ f2:U) {}
 let vd : Void = flockTwoTogether("hey", 1)
 
 protocol Flier3 {
@@ -51,12 +51,12 @@ struct Insect3 : Flier3 {
     func flockTogetherWith(f:Insect3) {}
 }
 
-func flockTwoTogether2<T:Flier3>(f1:T, f2:T) {}
+func flockTwoTogether2<T:Flier3>(f1:T, _ f2:T) {}
 let vd2 : Void = flockTwoTogether2(Bird3(), Bird3())
 // let vd3 : Void = flockTwoTogether2(Bird3(), Insect3())
 // let vd4 : Void = flockTwoTogether2("hey", "ho")
 
-func myMin<T:Comparable>(things:T ...) -> T {
+func myMin<T:Comparable>(things:Array<T>) -> T {
     var minimum = things[0]
     for ix in 1..<things.count {
         if things[ix] < minimum { // compile error if you remove Comparable constraint
@@ -95,13 +95,37 @@ struct FlierMaker<T:Flier5> {
 }
 let f = FlierMaker<Bird5>.makeFlier() // returns a Bird5
 
-// class NoisyDog : Dog {} // nope
-// class NoisyDog : Dog<String> {} // nope
-class NoisyDog<U> : Dog<String> {}
-let nd = NoisyDog<Int>() // the Int is pointless
+class NoisyDog : Dog<String> {} // yes! This is new in Swift 2.0
+class NoisyDog2<T> : Dog<T> {} // and this is also legal!
+// class NoisyDog3 : Dog<T> {} // but this is not; the superclass generic must be resolved somehow
+
+protocol Flier6 {
+    typealias Other
+    func fly()
+}
+
+/*
+func flockTwoTogether6(f1:Flier6, _ f2:Flier6) { // compile error
+    f1.fly()
+    f2.fly()
+}
+*/
+
+func flockTwoTogether6<T1:Flier6, T2:Flier6>(f1:T1, _ f2:T2) {
+    f1.fly()
+    f2.fly()
+}
+
 
 
 
 class ViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let min = myMin([4,1,5,2])
+        print(min)
+    }
 }
 

@@ -14,6 +14,18 @@ func performAndPrint(f:()->String) {
     print(s)
 }
 
+func imageOfSize(size:CGSize, _ whatToDraw:() -> ()) -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(size, false, 0)
+    whatToDraw()
+    let result = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return result
+}
+
+func test(h:(Int, Int, Int) -> Int) {
+    
+}
+
 
 
 class ViewController: UIViewController {
@@ -23,6 +35,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let image = imageOfSize(CGSizeMake(45,20), {
+            let p = UIBezierPath(
+                roundedRect: CGRectMake(0,0,45,20), cornerRadius: 8)
+            p.stroke()
+        })
+        
+        test {
+            _ in // showing that _ can mean "ignore _all_ parameters"
+            return 0
+        }
+
         
         doThis { // no parentheses!
             print("Howdy")

@@ -10,12 +10,13 @@ struct Digit {
     subscript(ix:Int) -> Int {
         get {
             let s = String(self.number)
-            return String(Array(s)[ix]).toInt()!
+            return Int(String(s[advance(s.startIndex,ix)]))!
         }
         set {
-            var arr = Array(String(self.number))
-            arr[ix] = Character(String(newValue))
-            self.number = String(arr).toInt()!
+            var s = String(self.number)
+            let i = advance(s.startIndex,ix)
+            s.replaceRange(i...i, with: String(newValue))
+            self.number = Int(s)!
         }
     }
 }
@@ -25,7 +26,7 @@ class Dog {
         static var noise = "Woof"
     }
     func bark() {
-        println(Dog.Noise.noise)
+        print(Dog.Noise.noise)
     }
 }
 
@@ -38,10 +39,18 @@ class ViewController: UIViewController {
         
         var d = Digit(1234)
         let aDigit = d[1] // 2
-        println(aDigit)
+        print(aDigit)
         
         d[0] = 2 // now d.number is 2234
-        println(d.number)
+        print(d.number)
+        
+        struct What {
+            subscript(first:Int, second:Int) -> Int {
+                return 0
+            }
+        }
+        let w = What()
+        print(w[1,2]) // compiles; there are still too dang-blasted many externalization rules
 
         Dog.Noise.noise = "Arf"
         Dog().bark()
@@ -55,10 +64,10 @@ class ViewController: UIViewController {
         let app = UIApplication.sharedApplication()
         let window = app.keyWindow
         let vc = window?.rootViewController
-        println(vc)
+        print(vc)
         
         let vc2 = UIApplication.sharedApplication().keyWindow?.rootViewController
-        println(vc2)
+        print(vc2)
 
 
     }

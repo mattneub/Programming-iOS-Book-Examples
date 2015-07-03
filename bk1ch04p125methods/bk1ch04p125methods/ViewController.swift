@@ -11,22 +11,22 @@ class Dog {
         self.license = license
     }
     func bark() {
-        println(self.whatDogsSay)
+        print(self.whatDogsSay)
     }
     func speak() {
         self.bark()
-        println("I'm \(self.name)")
+        print("I'm \(self.name)")
     }
     func speak2() { // legal, but I never intentionally write code like this
         bark()
-        println("I'm \(name)")
+        print("I'm \(name)")
     }
 }
 
 class Dog2 {
     func say(s:String, times:Int) {
         for _ in 1...times {
-            println(s)
+            print(s)
         }
     }
 }
@@ -38,14 +38,14 @@ struct Greeting {
         return self.friendly + " but " + self.hostile
     }
     static func beFriendly() {
-        println(self.friendly)
+        print(self.friendly)
     }
 }
 
 class Dog3 {
     static var whatDogsSay = "Woof"
     func bark() {
-        println(Dog3.whatDogsSay)
+        print(Dog3.whatDogsSay)
     }
 }
 
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         let m = MyClass()
         let f = MyClass.store(m) // what just happened!?
         f("howdy")
-        println(m.s) // howdy
+        print(m.s) // howdy
 
     
     }

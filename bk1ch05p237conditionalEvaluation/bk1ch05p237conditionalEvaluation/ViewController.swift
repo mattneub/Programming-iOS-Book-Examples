@@ -1,7 +1,7 @@
 
 import UIKit
 
-enum ListType {
+enum Filter {
     case Albums
     case Playlists
     case Podcasts
@@ -15,7 +15,7 @@ class ViewController: UIViewController {
 
     var hilite = false
     
-    var type = ListType.Albums
+    var type = Filter.Albums
 
 
     override func viewDidLoad() {

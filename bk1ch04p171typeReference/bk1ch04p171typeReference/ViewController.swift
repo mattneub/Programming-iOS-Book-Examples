@@ -6,7 +6,7 @@ class Dog {
         return "Woof"
     }
     func bark() {
-        println(self.dynamicType.whatDogsSay)
+        print(self.dynamicType.whatDogsSay)
     }
 }
 class NoisyDog : Dog {
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         d.bark()
         let nd = NoisyDog()
         nd.bark() // Woof woof woof
-        println(nd.dynamicType)
+        print(nd.dynamicType)
     
         typeExpecter(Dog)
         typeExpecter(Dog.self)

@@ -1,28 +1,28 @@
 
 import UIKit
 
-enum ListType {
+enum Filter {
     case Albums
     case Playlists
     case Podcasts
     case Books
 }
 
-func listTypeExpecter(type:ListType) {
+func filterExpecter(type:Filter) {
     if type == .Albums {
-        println("it's albums")
-        println(type) // unhelpful
+        print("it's albums")
+        print(type) // now actually useful!
     }
 }
 
-enum ListType2 : Int {
+enum Filter2 : Int {
     case Albums
     case Playlists
     case Podcasts
     case Books
 }
 
-enum ListType3 : String {
+enum Filter3 : String {
     case Albums = "Albums"
     case Playlists = "Playlists"
     case Podcasts = "Podcasts"
@@ -44,47 +44,52 @@ enum Error2 {
 
 
 class ViewController: UIViewController {
+    var err2 : Error2 = .Fatal(n:-12, s:"Oh the horror")
+    var s : String? = "howdy"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let type = ListType.Albums
-        let type2 : ListType = .Albums
-        listTypeExpecter(.Albums)
+        let type = Filter.Albums
+        let type2 : Filter = .Albums
+        filterExpecter(.Albums)
 
         let v = UIView()
-        v.autoresizingMask = .None
+        v.contentMode = .Center
         
-        let type3 = ListType3.Albums
-        println(type3.rawValue) // Albums
+        let type3 = Filter3.Albums
+        print(type3.rawValue) // Albums
         
-        let type4 = ListType3(rawValue:"Albums")
-        // let type5 = ListType3("Albums") // nope
-        if type4 == .Albums { println("yep") }
+        let type4 = Filter3(rawValue:"Albums")
+        // let type5 = Filter3("Albums") // nope
+        if type4 == .Albums { print("yep") }
 
         let err : Error = .Number(4)
 
         let num = 4
         let errr : Error = .Number(num)
 
-        let err2 : Error2 = .Fatal(n:-12, s:"Oh the horror")
 
         switch err2 {
         case .Number(let theNumber):
-            println("number: \(theNumber)")
+            print("number: \(theNumber)")
         case .Message(let theMessage):
-            println("message: \(theMessage)")
+            print("message: \(theMessage)")
         case .Fatal(let theNumber, let theMessage):
-            println("number: \(theNumber), message: \(theMessage)")
+            print("number: \(theNumber), message: \(theMessage)")
         }
 
-        let s : String? = "howdy"
         switch s {
         case .Some(let theString):
-            println(theString) // howdy
+            print(theString) // howdy
         case .None:
-            println("it's nil")
+            print("it's nil")
         }
+        
+        _ = type
+        _ = type2
+        _ = err
+        _ = errr
 
     
     }

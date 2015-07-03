@@ -3,7 +3,7 @@ import UIKit
 
 class Dog {
     func bark() {
-        println("woof")
+        print("woof")
     }
     func speak() {
         self.bark()
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if true {
+        do {
             func tellToBark(d:Dog) {
                 d.bark()
             }
@@ -35,14 +35,14 @@ class ViewController: UIViewController {
             tellToBark(d2) // woof woof
         }
 
-        if true {
+        do {
             let d : NoisyDog = NoisyDog()
             d.speak() // woof woof
             let d2 : Dog = NoisyDog()
             d2.speak() // woof woof
         }
         
-        if true {
+        do {
             func tellToHush(d:Dog) {
                 // d.beQuiet() // compile error
                 (d as! NoisyDog).beQuiet()
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
             tellToHush(d)
         }
         
-        if true {
+        do {
             func tellToHush(d:Dog) {
                 // (d as! NoisyDog).beQuiet() // compiles, but prepare to crash...!
                 if d is NoisyDog {
@@ -73,28 +73,51 @@ class ViewController: UIViewController {
             tellToHush(d)
         }
         
-        if true {
+        do {
+            func tellToHush(d:Dog) {
+                (d as! NoisyDog).beQuiet()
+                if d is NoisyDog {
+                    let d2 = d as! NoisyDog
+                    d2.beQuiet()
+                }
+                let noisyMaybe = d as? NoisyDog // an Optional wrapping a NoisyDog
+                if noisyMaybe != nil {
+                    noisyMaybe!.beQuiet()
+                }
+                (d as? NoisyDog)?.beQuiet()
+                
+            }
+            let d: Dog = NoisyDog()
+            tellToHush(d)
+        }
+
+        
+        do {
             let d : Dog? = NoisyDog()
-            if d is NoisyDog { println("yep") }
+            if d is NoisyDog { print("yep") }
         }
         
-        if true {
+        do {
             let d : Dog? = NoisyDog()
             let d2 = d as! NoisyDog
             d2.beQuiet()
         }
         
-        if true {
+        do {
             let d : Dog? = NoisyDog()
             let d2 = d as? NoisyDog
             d2?.beQuiet()
         }
         
-        if true {
+        do {
             let ud = NSUserDefaults.standardUserDefaults()
             ud.setObject(1, forKey: "Test")
             let i = ud.objectForKey("Test") as! Int
+            _ = i
         }
+        
+        let y = 0 as CGFloat // I didn't realize this sort of literal numeric cast was legal
+        _ = y
 
     }
 

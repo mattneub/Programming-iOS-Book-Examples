@@ -4,15 +4,15 @@ import UIKit
 
 class Quadruped {
     func walk () {
-        println("walk walk walk")
+        print("walk walk walk")
     }
 }
 class Dog : Quadruped {
     func bark () {
-        println("woof")
+        print("woof")
     }
     func bark2 () {
-        println("woof")
+        print("woof")
     }
     func barkAndWalk() {
         self.bark()
@@ -22,7 +22,7 @@ class Dog : Quadruped {
 class Cat : Quadruped {}
 class NoisyDog : Dog {
     override func bark () {
-        println("woof woof woof")
+        print("woof woof woof")
     }
     override func bark2 () {
         for _ in 1...3 {

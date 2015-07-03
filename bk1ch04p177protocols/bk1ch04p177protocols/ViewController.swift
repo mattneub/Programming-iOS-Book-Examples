@@ -18,7 +18,7 @@ struct Bee {
 func tellToFly(f:Flier) {
     f.fly()
 }
-enum ListType : String, Printable {
+enum Filter : String, CustomStringConvertible {
     case Albums = "Albums"
     case Playlists = "Playlists"
     case Podcasts = "Podcasts"
@@ -31,8 +31,10 @@ func isBird(f:Flier) -> Bool {
 func tellGetWorm(f:Flier) {
     (f as? Bird)?.getWorm()
 }
-
-
+struct Insect : Flier {
+    func fly() {
+    }
+}
 
 
 class ViewController: UIViewController {
@@ -45,10 +47,16 @@ class ViewController: UIViewController {
         let b2 = Bee()
         // tellToFly(b2) // compile error
         
-        let type = ListType.Albums
-        println(type) // Albums
+        let type = Filter.Albums
+        print(type) // Albums
+        print("It is \(type)") // It is Albums
+        
+        let ok = isBird(Bird())
+        print(ok)
+        let ok2 = isBird(Insect())
+        print(ok2)
 
-
+        _ = b2
     
     }
 

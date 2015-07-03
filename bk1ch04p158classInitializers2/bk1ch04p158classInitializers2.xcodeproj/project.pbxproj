@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3212E5C01B41BA17004109E6 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E5BF1B41BA17004109E6 /* MyTableViewController.swift */; };
 		32BE44721AF67A75006E9C7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BE44711AF67A75006E9C7D /* AppDelegate.swift */; };
 		32BE44741AF67A75006E9C7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BE44731AF67A75006E9C7D /* ViewController.swift */; };
 		32BE44791AF67A75006E9C7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BE44781AF67A75006E9C7D /* Images.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3212E5BF1B41BA17004109E6 /* MyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
 		32BE446C1AF67A75006E9C7D /* bk1ch04p158classInitializers2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk1ch04p158classInitializers2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32BE44701AF67A75006E9C7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32BE44711AF67A75006E9C7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				32BE44711AF67A75006E9C7D /* AppDelegate.swift */,
 				32BE44731AF67A75006E9C7D /* ViewController.swift */,
+				3212E5BF1B41BA17004109E6 /* MyTableViewController.swift */,
 				32BE44911AF67AEA006E9C7D /* MyNib.xib */,
 				32BE44781AF67A75006E9C7D /* Images.xcassets */,
 				32BE447A1AF67A75006E9C7D /* LaunchScreen.xib */,
@@ -98,6 +101,7 @@
 		32BE44641AF67A75006E9C7D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -143,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32BE44741AF67A75006E9C7D /* ViewController.swift in Sources */,
+				3212E5C01B41BA17004109E6 /* MyTableViewController.swift in Sources */,
 				32BE44721AF67A75006E9C7D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,6 +286,7 @@
 				32BE448D1AF67A75006E9C7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

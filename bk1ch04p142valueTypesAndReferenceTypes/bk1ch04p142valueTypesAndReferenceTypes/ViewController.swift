@@ -54,53 +54,63 @@ class ViewController: UIViewController {
 
     
         let d = Digit(123)
-        // d.number = 42 // compile error: cannot assign to 'number' in 'd'
+        // d.number = 42 // compile error: cannot assign to property: 'd' is a 'let' constant
 
         var d2 : Digit = Digit(123) {
             didSet {
-                println("d2 was set")
+                print("d2 was set")
             }
         }
         d2.number = 42 // "d2 was set"
+        
+        do {
+            var d = Digit(123)
+            // let d = Digit(123)
+            d.changeNumberTo(42) // compile error if d is `let`
+        }
 
         let rover = Dog()
         rover.name = "Rover" // fine
         
         var rover2 : Dog = Dog() {
             didSet {
-                println("did set rover2")
+                print("did set rover2")
             }
         }
         rover2.name = "Rover" // nothing in console
 
-        if true {
-            var d = Digit(123)
-            println(d.number) // 123
+        do {
+            let d = Digit(123)
+            print(d.number) // 123
             var d2 = d // assignment!
             d2.number = 42
-            println(d.number) // 123
+            print(d.number) // 123
+            
         }
         
-        if true {
-            var fido = Dog()
-            println(fido.name) // Fido
-            var rover = fido // assignment!
+        do {
+            let fido = Dog()
+            print(fido.name) // Fido
+            let rover = fido // assignment!
             rover.name = "Rover"
-            println(fido.name) // Rover
+            print(fido.name) // Rover
+            
         }
         
-        if true {
-            var d = Digit(123)
-            println(d.number) // 123
+        do {
+            let d = Digit(123)
+            print(d.number) // 123
             digitChanger(d)
-            println(d.number) // 123
+            print(d.number) // 123
+            
         }
 
-        if true {
-            var fido = Dog()
-            println(fido.name) // "Fido"
+        do {
+            let fido = Dog()
+            print(fido.name) // "Fido"
             dogChanger(fido)
-            println(fido.name) // "Rover"
+            print(fido.name) // "Rover"
+            
         }
     }
 

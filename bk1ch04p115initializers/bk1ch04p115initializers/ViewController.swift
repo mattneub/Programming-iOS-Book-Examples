@@ -55,6 +55,16 @@ class Dog5 {
     }
 }
 
+/*
+class Dog5not {
+    var name : String
+    var license : Int
+    init(name:String = "") {
+        self.name = name // compile error
+    }
+}
+*/
+
 class Dog6 {
     let name : String
     let license : Int
@@ -83,7 +93,7 @@ struct Cat {
         self.license = license
     }
     func meow() {
-        println("meow")
+        print("meow")
     }
 }
 
@@ -125,6 +135,19 @@ class DogFailable {
         }
     }
 }
+
+struct DigitFailable {
+    var number : Int
+    var meaningOfLife : Bool
+    init?(number:Int) {
+        if number != 42 {
+            return nil // early exit is legal for a struct in Swift 2.0
+        }
+        self.number = number
+        self.meaningOfLife = false
+    }
+}
+
 
 
 
@@ -168,6 +191,46 @@ class ViewController: UIViewController {
         
         let fido8 = DogFailable(name:"", license:0)
         let name = fido8.name // crash
+        
+        let im = UIImage(named:"dummy")
+
+        _ = fido
+        _ = fido2
+        _ = fido3
+        _ = fido4
+        _ = fido5
+        _ = fido6
+        //_ = fido7
+        _ = fido8
+        //_ = rover
+        _ = rover2
+        _ = rover3
+        _ = rover4
+        _ = rover5
+        _ = rover6
+        //_ = rover7
+        //_ = rover8
+        //_ = spot
+        _ = spot2
+        _ = spot3
+        _ = spot4
+        _ = spot5
+        _ = spot6
+        _ = spot7
+        //_ = spot8
+        //_ = puff
+        //_ = puff2
+        _ = puff3
+        _ = puff4
+        _ = puff5
+        _ = puff6
+        //_ = puff7
+        //_ = puff8
+        
+        _ = name
+        _ = im
+
+
 
         
     }

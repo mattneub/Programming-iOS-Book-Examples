@@ -95,6 +95,24 @@ class NoisyDog8 : Dog8 {
     }
 }
 
+class Dog9 {
+    var name : String
+    var license : Int
+    init(name:String, license:Int) {
+        self.name = name
+        self.license = license
+    }
+}
+class NoisyDog9 : Dog9 {
+    convenience init?() {
+        return nil // legal
+    }
+    init?(ok:Bool) {
+        // return nil // compile error: "all stored properties... must be initialized..."
+        super.init(name:"Fido", license:123)
+        return nil // _now_ you are allowed to fail
+    }
+}
 
 
 class ViewController: UIViewController {
@@ -107,29 +125,48 @@ class ViewController: UIViewController {
         let d3 = Dog3(name:"Rover", license:42)
         let d4 = Dog4()
         
-        if true {
+        do {
             let nd1 = NoisyDog5(name:"Fido", license:1)
             let nd2 = NoisyDog5(license:2)
             // let nd3 = NoisyDog5() // compile error
+            
+            _ = nd1
+            _ = nd2
         }
         
-        if true {
+        do {
             let nd1 = NoisyDog6(name:"Fido", license:1)
             let nd2 = NoisyDog6(license:2)
             let nd3 = NoisyDog6(name:"Rover")
+            
+            _ = nd1
+            _ = nd2
+            _ = nd3
         }
 
-        if true {
+        do {
             let nd1 = NoisyDog7(name:"Rover")
             // let nd2 = NoisyDog7(name:"Fido", license:1) // compile error
             // let nd3 = NoisyDog7(license:2) // compile error
+            
+            _ = nd1
+
         }
         
-        if true {
+        do {
             let nd1 = NoisyDog8(name:"Rover", license:1)
             let nd2 = NoisyDog8(license:2)
+        
+            _ = nd1
+            _ = nd2
+
         }
     
+        _ = d
+        _ = d2
+        _ = d3
+        _ = d4
+        
     
     }
 

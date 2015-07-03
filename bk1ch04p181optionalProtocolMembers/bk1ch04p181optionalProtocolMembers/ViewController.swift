@@ -9,12 +9,16 @@ import UIKit
 }
 @objc class Bird : Flier {
     func sing() {
-        println("tweet")
+        print("tweet")
     }
     func sing2() -> String {
         return "warble"
     }
     var song2 : String = "gobble gobble"
+}
+
+@objc class Insect : Flier {
+    
 }
 
 protocol Flier2 {
@@ -36,9 +40,8 @@ struct Nest : IntegerLiteralConvertible {
     }
 }
 func reportEggs(nest:Nest) {
-    println("this nest contains \(nest.eggCount) eggs")
+    print("this nest contains \(nest.eggCount) eggs")
 }
-
 
 class ViewController: UIViewController {
     
@@ -50,6 +53,12 @@ class ViewController: UIViewController {
         // fatalError("init(coder:) has not been implemented")
         super.init(coder:aDecoder)
     }
+    
+    // inappropriate here, but a legal alternative:
+    
+//    required convenience init(coder aDecoder: NSCoder) {
+//        self.init()
+//    }
 
 
 
@@ -58,18 +67,33 @@ class ViewController: UIViewController {
 
         let f : Flier = Bird()
         let s = f.song // s is an Optional wrapping a String
-        println(s)
+        print(s)
         f.sing?()
         let s2 = f.sing2?()
-        println(s2)
+        print(s2)
 
-        // f.song2 = "woof" // compile error
+        // var f2 : Flier = Bird()
+        // f2.song2 = "woof" // compile error
+        
+        do {
+            let i : Flier = Insect()
+            let s = i.song
+            print(s) // nil
+            i.sing?() // safe but nothing happens
+            let s2 = i.sing2?() // nil
+            print(s2)
+            
+            // i.sing!() // legal but we will crash
+        }
+        
         
         
         reportEggs(4) // this nest contains 4 eggs
 
     
     }
+    
+    func f(f:protocol<CustomStringConvertible, CustomDebugStringConvertible>) {} // just showing the notation
 
 
 

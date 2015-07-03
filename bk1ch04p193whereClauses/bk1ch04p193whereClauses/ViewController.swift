@@ -2,43 +2,60 @@
 
 import UIKit
 
+// =====
+
+protocol Wieldable {
+}
+struct Sword : Wieldable {
+}
+struct Bow : Wieldable {
+}
+protocol Fighter {
+    typealias Weapon : Wieldable
+    typealias Enemy : Fighter
+    func steal(weapon:Self.Enemy.Weapon, from:Self.Enemy)
+}
+struct Soldier : Fighter {
+    typealias Weapon = Sword
+    typealias Enemy = Archer
+    func steal(weapon:Bow, from:Archer) {
+    }
+}
+struct Archer : Fighter {
+    typealias Weapon = Bow
+    typealias Enemy = Soldier
+    func steal (weapon:Sword, from:Soldier) {
+    }
+}
+
+struct Camp<T:Fighter> {
+    var spy : T.Enemy?
+}
+
+// =====
+
+class Dog {}
+class FlyingDog : Dog, Flier {}
 protocol Flier {
 }
 protocol Walker {
 }
-protocol FlierWalker {
+protocol Generic {
     typealias T : Flier, Walker // T must adopt Flier and Walker
+    // typealias U where U:Flier // no where clauses on typealias
+    typealias U : Dog, Flier // legal: this is basically an inheritance declaration!
 }
 func flyAndWalk<T where T:Walker, T:Flier> (f:T) {}
+func flyAndWalk2<T : protocol<Walker, Flier>> (f:T) {}
+func flyAndWalk3<T where T:Flier, T:Dog> (f:T) {}
+// func flyAndWalk4<T where T == Dog> (f:T) {}
 
-protocol Flier2 {
-    typealias Other
+struct Bird : Flier, Walker {}
+struct Kiwi : Walker {}
+struct S : Generic {
+    typealias T = Bird
+    typealias U = FlyingDog
 }
-struct Bird2 : Flier2 {
-    typealias Other = String
-}
-struct Insect2 : Flier2 {
-    typealias Other = Bird2
-}
-func flockTogether<T:Flier2 where T.Other:Equatable> (f:T) {}
-
-func printc<C : CollectionType where C.Generator.Element == Character>(c:C) {
-    for char in c {
-        println(char)
-    }
-}
-
-protocol Flier3 {
-    typealias Other
-}
-struct Bird3 : Flier {
-    typealias Other = String
-}
-struct Insect3 : Flier3 {
-    typealias Other = Int
-}
-func flockTwoTogether<T:Flier3, U:Flier3 where T.Other == U.Other>
-    (f1:T, f2:U) {}
 
 
 class ViewController: UIViewController {
@@ -46,9 +63,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        printc("howdy")
-        printc(["h" as Character, "i" as Character])
+        var c = Camp<Soldier>()
+        c.spy = Archer()
+        
+        var c2 = Camp<Archer>()
+        c2.spy = Soldier()
+        
 
+        
+        // flyAndWalk(Kiwi())
+        // flyAndWalk2(Kiwi())
+        flyAndWalk(Bird())
+        flyAndWalk2(Bird())
+        flyAndWalk3(FlyingDog())
+        
+        
     }
 
 

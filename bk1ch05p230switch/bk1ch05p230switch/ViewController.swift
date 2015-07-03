@@ -9,7 +9,7 @@ class NoisyDog : Dog {
     func beQuiet() {}
 }
 
-enum ListType : CustomStringConvertible {
+enum Filter : CustomStringConvertible {
     case Albums
     case Playlists
     case Podcasts
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     var ii : Int? = nil
     var iii : AnyObject = 1
     
-    var type : ListType = .Albums
+    var type : Filter = .Albums
     
     var err = Error.Number(-6)
     
