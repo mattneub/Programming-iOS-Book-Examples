@@ -56,7 +56,7 @@ let vd2 : Void = flockTwoTogether2(Bird3(), Bird3())
 // let vd3 : Void = flockTwoTogether2(Bird3(), Insect3())
 // let vd4 : Void = flockTwoTogether2("hey", "ho")
 
-func myMin<T:Comparable>(things:Array<T>) -> T {
+func myMin<T:Comparable>(things:T...) -> T {
     var minimum = things[0]
     for ix in 1..<things.count {
         if things[ix] < minimum { // compile error if you remove Comparable constraint
@@ -124,7 +124,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let min = myMin([4,1,5,2])
+        let min = myMin(4,1,5,2)
         print(min)
     }
 }

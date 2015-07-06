@@ -74,10 +74,11 @@ class ViewController: UIViewController {
         }
     }
     
+    enum NotLongEnough : ErrorType {
+        case ISaidLongIMeantLong
+    }
+
     func giveMeALongString(s:String) throws {
-        enum NotLongEnough : ErrorType {
-            case ISaidLongIMeantLong
-        }
         if s.characters.count < 5 {
             throw NotLongEnough.ISaidLongIMeantLong
         }
@@ -124,6 +125,53 @@ class ViewController: UIViewController {
         try! giveMeALongString("okayokay")
     }
     
+    // ===== just testing the call syntax and legality
+    
+    func receiveThrower(f:(String) throws -> ()) {
+    }
+    
+    func callReceiveThrower() {
+        receiveThrower(giveMeALongString)
+    }
+    
+    func callReceiveThrowerr() {
+        receiveThrower {
+            s in
+            if s.characters.count < 5 {
+                throw NotLongEnough.ISaidLongIMeantLong
+            }
+            print("thanks for the string")
+        }
+    }
+    
+    // ===== now let's show how it works with an actual call
+    
+    func receiveThrower2(f:(String) throws -> ()) throws {
+        try f("ok?")
+    }
+    func receiveThrower3(f:(String) throws -> ()) rethrows {
+        try f("ok?")
+    }
+
+    
+    func callReceiveThrower2() throws {
+        try receiveThrower2(giveMeALongString)
+        try receiveThrower3(giveMeALongString)
+    }
+    
+    func callReceiveThrowerr2() throws {
+        try receiveThrower2 {
+            s in
+            if s.characters.count < 5 {
+                throw NotLongEnough.ISaidLongIMeantLong
+            }
+            print("thanks for the string")
+        }
+        receiveThrower3 { // NB if the callee `rethrows` and we don't actually throw, no `try` needed
+            s in
+            print("thanks for the string")
+        }
+    }
 
 
 }

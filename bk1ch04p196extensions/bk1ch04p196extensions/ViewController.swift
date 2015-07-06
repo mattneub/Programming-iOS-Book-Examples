@@ -33,7 +33,7 @@ extension CGSize {
 }
 
 extension UIColor {
-    class func myGolden() -> UIColor {
+    class func myGoldenColor() -> UIColor {
         return self.init(red:1.000, green:0.894, blue:0.541, alpha:0.900)
     }
 }
@@ -100,9 +100,48 @@ class Rocket : Flier {
     }
 }
 
+protocol Flier2 {
+    func fly()
+}
+extension Flier2 {
+    func fly() {
+        print("flap flap flap")
+    }
+}
+struct Bird2 : Flier2 {
+}
+struct Insect2 : Flier2 {
+    func fly() {
+        print("whirr")
+    }
+}
+class Rocket2 : Flier2 {
+    func fly() {
+        print("zoooom")
+    }
+}
+
+extension RawRepresentable {
+    init?(_ what:RawValue) {
+        self.init(rawValue:what)
+    }
+}
+public enum Fill : Int {
+    case Empty = 1
+    case Solid
+    case Hazy
+}
+public enum Color : Int {
+    case Color1 = 1
+    case Color2
+    case Color3
+}
 
 
 class ViewController: UIViewController {
+    
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,21 +149,46 @@ class ViewController: UIViewController {
         let t = CGAffineTransformMakeRotation(2)
         print(t)
         
-        self.view.backgroundColor = UIColor.myGolden()
+        self.view.backgroundColor = UIColor.myGoldenColor()
         
-        let b = Bird()
-        b.fly() // flap flap flap
+        do {
         
-        let i = Insect()
-        i.fly() // whirr
-        let f : Flier = Insect()
-        f.fly() // flap flap flap
-        let ok = f is Insect
-        print(ok)
+            let b = Bird()
+            b.fly() // flap flap flap
+            
+            let i = Insect()
+            i.fly() // whirr
+            let f : Flier = Insect()
+            f.fly() // flap flap flap
+            let ok = f is Insect
+            print(ok)
+            
+            let r = Rocket()
+            r.fly() // zoooom
+            (r as Flier).fly() // flap flap flap
+            
+        }
         
-        let r = Rocket()
-        r.fly() // zoooom
-        (r as Flier).fly() // flap flap flap
+        // but:
+        
+        do {
+            
+            let b = Bird2()
+            b.fly() // flap flap flap
+            
+            let i = Insect2()
+            i.fly() // whirr
+            let f : Flier2 = Insect2()
+            f.fly() // whirr (!!!)
+            let ok = f is Insect2
+            print(ok)
+            
+            let r = Rocket2()
+            r.fly() // zoooom
+            (r as Flier2).fly() // zoooom (!!!)
+
+            
+        }
         
         let m = [4,1,5,7,2].min() // 1
         print(m)

@@ -31,6 +31,10 @@ class ViewController: UIViewController {
         }
         
         do {
+            let opts = UIViewAnimationOptions(rawValue:0b00011000)
+        }
+        
+        do {
             let val = UIViewAnimationOptions.Autoreverse.rawValue | UIViewAnimationOptions.Repeat.rawValue
             let opts = UIViewAnimationOptions(rawValue: val)
             print(opts)

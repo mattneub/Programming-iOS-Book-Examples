@@ -102,7 +102,8 @@ class ViewController: UIViewController {
             arr[1] = 4 // arr is now [1,4,3]
             arr[1..<2] = [7,8] // arr is now [1,7,8,3]
             arr[1..<2] = [] // arr is now [1,8,3]
-            
+            arr[1..<1] = [10] // arr is now [1,10,8,3] (no element was removed!)
+
             let slice = arr[1..<2]
             _ = slice
         }
@@ -149,17 +150,24 @@ class ViewController: UIViewController {
             let ix2 = aviary.indexOf {$0.name.characters.count < 5}
             print(ix2)
             
-            let ok2 = arr.startsWith([1,2]) {$0 == $1} // ***
-            let ok3 = arr.startsWith([1,2], isEquivalent:==) // ***
-            let ok4 = arr.startsWith([1,2])
-            let ok5 = arr.startsWith(1...2)
+            do {
+                let ok = arr.startsWith([1,2])
+                let ok2 = arr.startsWith([1,2]) {$0 == $1} // ***
+                let ok3 = arr.startsWith([1,2], isEquivalent:==) // ***
+                let ok4 = arr.startsWith([1,2])
+                let ok5 = arr.startsWith(1...2)
+                let ok6 = arr.startsWith([1,-2]) {abs($0) == abs($1)}
+                
+                _ = ok
+                _ = ok2
+                _ = ok3
+                _ = ok4
+                _ = ok5
+                _ = ok6
+            }
             _ = ok
             _ = okk
             _ = ix
-            _ = ok2
-            _ = ok3
-            _ = ok4
-            _ = ok5
         }
 
         do {
@@ -186,6 +194,9 @@ class ViewController: UIViewController {
         do {
             var arr = [1,2,3]
             arr.insert(4, atIndex:1)
+            print(arr)
+            arr.splice([10,9,8], atIndex:1)
+            print(arr)
             let i = arr.removeAtIndex(3)
             let ii = arr.removeLast()
             print(arr)

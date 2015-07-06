@@ -84,12 +84,14 @@ class ViewController: UIViewController {
         }
         
 
-        let shad = NSShadow()
-        shad.shadowOffset = CGSizeMake(1.5,1.5)
         UINavigationBar.appearance().titleTextAttributes = [
             NSFontAttributeName : UIFont(name: "ChalkboardSE-Bold", size: 20)!,
             NSForegroundColorAttributeName : UIColor.darkTextColor(),
-            NSShadowAttributeName : shad
+            NSShadowAttributeName : {
+                let shad = NSShadow()
+                shad.shadowOffset = CGSizeMake(1.5,1.5)
+                return shad
+            }()
         ]
         
         let nc = NSNotificationCenter.defaultCenter()
