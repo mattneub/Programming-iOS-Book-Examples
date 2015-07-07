@@ -2,12 +2,12 @@
 
 #import "Thing.h"
 
-@implementation Thing
+@implementation Pep
 
-- (NSArray*) badMethod {
+- (NSArray*) boys {
     return @[@"Mannie", @"Moe", @"Jack"];
 }
-- (NSArray*) goodMethod {
+- (NSArray*) boysGood {
     return @[@"Mannie", @"Moe", @"Jack"];
 }
 

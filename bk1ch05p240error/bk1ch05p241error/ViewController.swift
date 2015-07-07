@@ -30,8 +30,8 @@ class ViewController: UIViewController {
         self.stringTest2()
         
         do {
-            let s : String = try
-                String(contentsOfFile: "nonexistent", encoding: NSUTF8StringEncoding)
+            let f = "nonexistent" // path to some file, maybe
+            let s = try String(contentsOfFile: f, encoding: NSUTF8StringEncoding)
             print(s) // we won't get here
         } catch NSCocoaError.FileReadNoSuchFileError {
             print("no such file")
@@ -57,8 +57,9 @@ class ViewController: UIViewController {
                 }
             } catch MyFirstError.FirstMinorMistake {
                 print("first minor mistake")
-            } catch is MyFirstError {
-                print("first mistake, not minor")
+            } catch let err as MyFirstError {
+                // will never be called, just testing the syntax
+                print("first mistake, not minor \(err)")
             } catch MySecondError.SecondMinorMistake(let i) where i < 0 {
                 print("my second minor mistake \(i)")
             } catch {

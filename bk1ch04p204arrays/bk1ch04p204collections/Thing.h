@@ -2,9 +2,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Thing : NSObject
+@interface Pep : NSObject
 
-- (__nonnull NSArray*) badMethod;
-- (__nonnull NSArray<NSString*>*) goodMethod;
+- (__nonnull NSArray*) boys;
+- (__nonnull NSArray<NSString*>*) boysGood;
 
 @end

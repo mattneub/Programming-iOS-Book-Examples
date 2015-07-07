@@ -14,6 +14,7 @@ class ViewController: UIViewController {
             print("catching")
         }
         testDeferWithOtherBlocks()
+        testDeferWithThrow2()
     }
     
     let which = 0
@@ -41,6 +42,19 @@ class ViewController: UIViewController {
         throw NSError(domain: "Ouch", code: 1, userInfo: nil)
     }
     
+    func testDeferWithThrow2() {
+        print("starting2")
+        do {
+            defer {
+                print("ending2")
+            }
+            print("throwing")
+            throw NSError(domain: "Ouch", code: 1, userInfo: nil)
+        } catch {
+            print("caught: \(error)")
+        }
+    }
+
     // finally, let's also try other kinds of block
     
     func testDeferWithOtherBlocks() {

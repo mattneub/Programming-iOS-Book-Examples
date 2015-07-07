@@ -329,8 +329,11 @@ class ViewController: UIViewController {
             _ = arr
             _ = views
             // but you can still receive an untyped array
-            let pepboys = Thing().badMethod() as! [String]
-            print(pepboys)
+            let p = Pep()
+            let boys = p.boys() as! [String]
+            print(boys)
+            let boys2 = p.boysGood() // it's already a [String]
+            print(boys2)
         }
         
         do {
