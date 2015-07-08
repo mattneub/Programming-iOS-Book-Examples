@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3217DF231996A446001092A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3217DF221996A446001092A9 /* ViewController.swift */; };
-		323FD2C51996AEEC00C0A682 /* SystemSoundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C9592E7F18230D8000CE45EA /* SystemSoundHelper.m */; };
 		C9592E6A18230D8000CE45EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9592E6918230D8000CE45EA /* Foundation.framework */; };
 		C9592E6C18230D8000CE45EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9592E6B18230D8000CE45EA /* CoreGraphics.framework */; };
 		C9592E6E18230D8000CE45EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9592E6D18230D8000CE45EA /* UIKit.framework */; };
@@ -34,8 +33,6 @@
 		C9592E7818230D8000CE45EA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9592E7918230D8000CE45EA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9592E7C18230D8000CE45EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9592E7E18230D8000CE45EA /* SystemSoundHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemSoundHelper.h; sourceTree = "<group>"; };
-		C9592E7F18230D8000CE45EA /* SystemSoundHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemSoundHelper.m; sourceTree = "<group>"; };
 		C9592E8118230D8000CE45EA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9592E8818230D8100CE45EA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C9592E9E18230DD900CE45EA /* test.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.aif; sourceTree = "<group>"; };
@@ -89,8 +86,6 @@
 				C9592E7818230D8000CE45EA /* AppDelegate.h */,
 				C9592E7918230D8000CE45EA /* AppDelegate.m */,
 				C9592E7B18230D8000CE45EA /* Main.storyboard */,
-				C9592E7E18230D8000CE45EA /* SystemSoundHelper.h */,
-				C9592E7F18230D8000CE45EA /* SystemSoundHelper.m */,
 				3217DF221996A446001092A9 /* ViewController.swift */,
 				C9592E9E18230DD900CE45EA /* test.aif */,
 				323FD2C41996ADD900C0A682 /* Bridge.h */,
@@ -137,6 +132,7 @@
 		C9592E5E18230D8000CE45EA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -177,7 +173,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				323FD2C51996AEEC00C0A682 /* SystemSoundHelper.m in Sources */,
 				C9592E7A18230D8000CE45EA /* AppDelegate.m in Sources */,
 				3217DF231996A446001092A9 /* ViewController.swift in Sources */,
 				C9592E7618230D8000CE45EA /* main.m in Sources */,

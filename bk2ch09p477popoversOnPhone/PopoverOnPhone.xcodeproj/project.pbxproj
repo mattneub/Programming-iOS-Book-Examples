@@ -12,6 +12,7 @@
 		325C17D31985A32B007A27A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 325C17D11985A32B007A27A8 /* Main.storyboard */; };
 		325C17D51985A32B007A27A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 325C17D41985A32B007A27A8 /* Images.xcassets */; };
 		325C17ED19870ED3007A27A8 /* linkhelp.html in Resources */ = {isa = PBXBuildFile; fileRef = 325C17EC19870ED3007A27A8 /* linkhelp.html */; };
+		32A674F81B4C55AA0014EEFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A674F71B4C55AA0014EEFA /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		325C17D21985A32B007A27A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		325C17D41985A32B007A27A8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		325C17EC19870ED3007A27A8 /* linkhelp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = linkhelp.html; sourceTree = "<group>"; };
+		32A674F71B4C55AA0014EEFA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				325C17CD1985A32B007A27A8 /* AppDelegate.swift */,
 				325C17CF1985A32B007A27A8 /* ViewController.swift */,
+				32A674F71B4C55AA0014EEFA /* LaunchScreen.storyboard */,
 				325C17D11985A32B007A27A8 /* Main.storyboard */,
 				325C17EC19870ED3007A27A8 /* linkhelp.html */,
 				325C17D41985A32B007A27A8 /* Images.xcassets */,
@@ -98,6 +101,7 @@
 		325C17C01985A32B007A27A8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -130,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				325C17ED19870ED3007A27A8 /* linkhelp.html in Resources */,
+				32A674F81B4C55AA0014EEFA /* LaunchScreen.storyboard in Resources */,
 				325C17D31985A32B007A27A8 /* Main.storyboard in Resources */,
 				325C17D51985A32B007A27A8 /* Images.xcassets in Resources */,
 			);

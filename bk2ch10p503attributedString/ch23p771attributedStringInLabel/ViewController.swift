@@ -15,6 +15,8 @@ class ViewController : UIViewController {
     @IBOutlet var lab : UILabel!
     @IBOutlet var tv : UITextView!
     
+    let which = 0 // 0 ... 5
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +28,6 @@ class ViewController : UIViewController {
         var content : NSMutableAttributedString!
         var content2 : NSMutableAttributedString!
 
-        let which = 0 // 0 ... 5
         switch which {
         case 0, 1, 4, 5:
             let s1 = "The Gettysburg Address, as delivered on a certain occasion " +
@@ -108,7 +109,7 @@ class ViewController : UIViewController {
                 options:opts,
                 usingBlock: {
                     value, range, stop in
-                    println(range)
+                    print(range)
                     let font = value as! UIFont
                     if font.pointSize == 15 {
                         content.addAttribute(NSFontAttributeName,
