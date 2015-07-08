@@ -2,7 +2,7 @@
 
 #import "Thing.h"
 
-void setState (enum state s) {
+void setState (State s) {
     NSLog(@"%d",s);
 }
 

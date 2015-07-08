@@ -2,12 +2,13 @@
 
 #import <Foundation/Foundation.h>
 
-enum state {
+enum State {
     kDead,
     kAlive
 };
+typedef enum State State;
 
-void setState (enum state s);
+void setState (State s);
 
 @interface Thing : NSObject
 

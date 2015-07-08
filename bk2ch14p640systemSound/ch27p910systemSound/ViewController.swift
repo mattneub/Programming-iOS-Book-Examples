@@ -5,7 +5,7 @@ import AudioToolbox
 
 // can be top level...
 
-func soundFinished(snd:SystemSoundID, _ context:UnsafeMutablePointer<Void>) -> Void {
+func soundFinished(snd:UInt32, _ c:UnsafeMutablePointer<Void>) -> Void {
     print("finished!")
     AudioServicesRemoveSystemSoundCompletion(snd)
     AudioServicesDisposeSystemSoundID(snd)

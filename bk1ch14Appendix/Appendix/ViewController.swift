@@ -79,7 +79,7 @@ class ViewController: UIViewController {
             
             setState(kDead)
             setState(kAlive)
-            setState(state(rawValue:2)) // Swift can't stop you
+            setState(State(rawValue:2)) // Swift can't stop you
             
             self.view.autoresizingMask = .FlexibleWidth
             self.view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
@@ -163,13 +163,13 @@ class ViewController: UIViewController {
         
         do {
             func f (s:String) {print(s)}
+            // let thing = f as! AnyObject // crash
             let holder = StringExpecterHolder()
             holder.f = f
             let lay = CALayer()
             lay.setValue(holder, forKey:"myFunction")
             let holder2 = lay.valueForKey("myFunction") as! StringExpecterHolder
             holder2.f("testing")
-
         }
         
     }
