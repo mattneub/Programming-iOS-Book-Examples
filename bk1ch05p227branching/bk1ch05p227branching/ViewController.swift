@@ -111,7 +111,7 @@ class ViewController: UIViewController {
 
 class C1 : NSObject {
     override func observeValueForKeyPath(keyPath: String?,
-        ofObject object: AnyObject?, change: [NSObject : AnyObject]?,
+        ofObject object: AnyObject?, change: [String : AnyObject]?,
         context: UnsafeMutablePointer<()>) {
             if keyPath == "readyForDisplay" {
                 if let obj = object as? AVPlayerViewController {
@@ -128,7 +128,7 @@ class C1 : NSObject {
 
 class C2 : NSObject {
     override func observeValueForKeyPath(keyPath: String?,
-        ofObject object: AnyObject?, change: [NSObject : AnyObject]?,
+        ofObject object: AnyObject?, change: [String : AnyObject]?,
         context: UnsafeMutablePointer<()>) {
             if keyPath == "readyForDisplay",
                 let obj = object as? AVPlayerViewController,
@@ -141,7 +141,7 @@ class C2 : NSObject {
 
 class C3 : NSObject {
     override func observeValueForKeyPath(keyPath: String?,
-        ofObject object: AnyObject?, change: [NSObject : AnyObject]?,
+        ofObject object: AnyObject?, change: [String : AnyObject]?,
         context: UnsafeMutablePointer<()>) {
             guard keyPath == "readyForDisplay" else {return}
             guard let obj = object as? AVPlayerViewController else {return}

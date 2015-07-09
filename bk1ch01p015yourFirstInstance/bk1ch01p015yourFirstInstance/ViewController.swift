@@ -51,9 +51,9 @@ class ViewController: UIViewController {
         
         let sum = 1 + 2
         let x = 1.successor()
-        let y = "hello".generate()
         
-        let _ = (sum,x,y) // shut the compiler up
+        _ = sum
+        _ = x
         
         1.sayHello() // outputs: "Hello, I'm 1"
 

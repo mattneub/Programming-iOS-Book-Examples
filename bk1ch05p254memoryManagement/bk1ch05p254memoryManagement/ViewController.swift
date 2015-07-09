@@ -74,6 +74,9 @@ class ViewController: UIViewController {
                 }
                 let d = Dog()
                 let c = Cat()
+                
+                _ = d
+                _ = c
             }
             testRetainCycle() // farewell from Cat, farewell from Dog
         }

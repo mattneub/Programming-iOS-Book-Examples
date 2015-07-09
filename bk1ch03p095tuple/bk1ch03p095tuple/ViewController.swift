@@ -116,7 +116,14 @@ class ViewController: UIViewController {
             f2(tuple)
         }
         
+        do {
+//            var tuple = (i1:1, i2:2)
+//            f2(tuple) // compile error
+        }
+        
         do { // examples from the dev forums
+            
+            /*
             
             var array: [(Int, Int)] = []
             
@@ -132,12 +139,45 @@ class ViewController: UIViewController {
             array.append(const_tuple)
             
             // NOK - var integer
-            // var int_var = 1
-            // array.append(int_var, 1)
+             var int_var = 1
+             array.append(int_var, 1)
             
             // NOK - var tuple
-            // var var_tuple: (Int, Int) = (1, 1)
-            // array.append(var_tuple)
+             var var_tuple: (Int, Int) = (1, 1)
+             array.append(var_tuple)
+
+            */
+            
+            // However, this changed in Swift 2.0 beta 3:
+            // New! You can now write it like a tuple!
+            // parentheses in parentheses
+
+            
+            var array: [(Int, Int)] = []
+            
+            
+            // OK - literals
+            array.append((1,1))
+            
+            // OK - let integer
+            let int_const = 1
+            array.append((int_const, 1))
+            
+            // OK - let tuple
+            let const_tuple: (Int, Int) = (1, 1)
+            array.append(const_tuple)
+            
+            // OK - var integer
+            var int_var = 1
+            array.append((int_var, 1))
+            
+            // OK - var tuple
+            var var_tuple: (Int, Int) = (1, 1)
+            array.append(var_tuple)
+
+            // shut the compiler up
+            int_var = 0
+            var_tuple = (0,0)
 
         }
         

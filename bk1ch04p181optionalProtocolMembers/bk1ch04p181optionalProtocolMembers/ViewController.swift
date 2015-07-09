@@ -49,10 +49,11 @@ class ViewController: UIViewController {
         super.init(nibName: "ViewController", bundle: nil)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         // fatalError("init(coder:) has not been implemented")
         super.init(coder:aDecoder)
     }
+    
     
     // inappropriate here, but a legal alternative:
     

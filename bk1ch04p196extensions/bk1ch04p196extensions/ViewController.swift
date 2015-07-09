@@ -58,8 +58,8 @@ extension Dog where T : Equatable {
     
 }
 
-extension Array where T:Comparable {
-    func min() -> T {
+extension Array where Element:Comparable {
+    func min() -> Element {
         var minimum = self[0]
         for ix in 1..<self.count {
             if self[ix] < minimum {

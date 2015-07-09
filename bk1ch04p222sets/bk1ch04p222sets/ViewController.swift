@@ -32,6 +32,7 @@ class ViewController: UIViewController {
         
         do {
             let opts = UIViewAnimationOptions(rawValue:0b00011000)
+            _ = opts
         }
         
         do {
