@@ -10,7 +10,7 @@
 		3212E5C01B41BA17004109E6 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E5BF1B41BA17004109E6 /* MyTableViewController.swift */; };
 		32BE44721AF67A75006E9C7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BE44711AF67A75006E9C7D /* AppDelegate.swift */; };
 		32BE44741AF67A75006E9C7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BE44731AF67A75006E9C7D /* ViewController.swift */; };
-		32BE44791AF67A75006E9C7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BE44781AF67A75006E9C7D /* Images.xcassets */; };
+		32BE44791AF67A75006E9C7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BE44781AF67A75006E9C7D /* Assets.xcassets */; };
 		32BE447C1AF67A75006E9C7D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32BE447A1AF67A75006E9C7D /* LaunchScreen.xib */; };
 		32BE44921AF67AEA006E9C7D /* MyNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32BE44911AF67AEA006E9C7D /* MyNib.xib */; };
 /* End PBXBuildFile section */
@@ -21,7 +21,7 @@
 		32BE44701AF67A75006E9C7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32BE44711AF67A75006E9C7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32BE44731AF67A75006E9C7D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		32BE44781AF67A75006E9C7D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32BE44781AF67A75006E9C7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32BE447B1AF67A75006E9C7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		32BE44911AF67AEA006E9C7D /* MyNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNib.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,19 +60,11 @@
 				32BE44731AF67A75006E9C7D /* ViewController.swift */,
 				3212E5BF1B41BA17004109E6 /* MyTableViewController.swift */,
 				32BE44911AF67AEA006E9C7D /* MyNib.xib */,
-				32BE44781AF67A75006E9C7D /* Images.xcassets */,
+				32BE44781AF67A75006E9C7D /* Assets.xcassets */,
 				32BE447A1AF67A75006E9C7D /* LaunchScreen.xib */,
-				32BE446F1AF67A75006E9C7D /* Supporting Files */,
-			);
-			path = bk1ch04p158classInitializers2;
-			sourceTree = "<group>";
-		};
-		32BE446F1AF67A75006E9C7D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				32BE44701AF67A75006E9C7D /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = bk1ch04p158classInitializers2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +127,7 @@
 			files = (
 				32BE44921AF67AEA006E9C7D /* MyNib.xib in Resources */,
 				32BE447C1AF67A75006E9C7D /* LaunchScreen.xib in Resources */,
-				32BE44791AF67A75006E9C7D /* Images.xcassets in Resources */,
+				32BE44791AF67A75006E9C7D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +194,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -240,7 +232,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

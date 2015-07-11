@@ -283,6 +283,7 @@
 				325CA3631B34821900FF9AEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

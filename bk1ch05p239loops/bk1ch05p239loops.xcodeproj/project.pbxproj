@@ -11,7 +11,7 @@
 		32DF44571AFA972C0042B49C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DF44561AFA972C0042B49C /* AppDelegate.swift */; };
 		32DF44591AFA972C0042B49C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DF44581AFA972C0042B49C /* ViewController.swift */; };
 		32DF445C1AFA972C0042B49C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32DF445A1AFA972C0042B49C /* Main.storyboard */; };
-		32DF445E1AFA972C0042B49C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32DF445D1AFA972C0042B49C /* Images.xcassets */; };
+		32DF445E1AFA972C0042B49C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32DF445D1AFA972C0042B49C /* Assets.xcassets */; };
 		32DF44611AFA972C0042B49C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32DF445F1AFA972C0042B49C /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +24,7 @@
 		32DF44561AFA972C0042B49C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32DF44581AFA972C0042B49C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32DF445B1AFA972C0042B49C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32DF445D1AFA972C0042B49C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32DF445D1AFA972C0042B49C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32DF44601AFA972C0042B49C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,20 +63,12 @@
 				32C11F991B372DF300E254C3 /* Thing.h */,
 				32C11F9A1B372DF400E254C3 /* Thing.m */,
 				32DF445A1AFA972C0042B49C /* Main.storyboard */,
-				32DF445D1AFA972C0042B49C /* Images.xcassets */,
+				32DF445D1AFA972C0042B49C /* Assets.xcassets */,
 				32DF445F1AFA972C0042B49C /* LaunchScreen.xib */,
-				32DF44541AFA972C0042B49C /* Supporting Files */,
+				32DF44551AFA972C0042B49C /* Info.plist */,
 				32C11F981B372DF300E254C3 /* bk1ch05p239loops-Bridging-Header.h */,
 			);
 			path = bk1ch05p239loops;
-			sourceTree = "<group>";
-		};
-		32DF44541AFA972C0042B49C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				32DF44551AFA972C0042B49C /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +131,7 @@
 			files = (
 				32DF445C1AFA972C0042B49C /* Main.storyboard in Resources */,
 				32DF44611AFA972C0042B49C /* LaunchScreen.xib in Resources */,
-				32DF445E1AFA972C0042B49C /* Images.xcassets in Resources */,
+				32DF445E1AFA972C0042B49C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +206,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -252,7 +244,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -10,7 +10,7 @@
 		322B311F1AF3F11B008209FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322B311E1AF3F11B008209FD /* AppDelegate.swift */; };
 		322B31211AF3F11B008209FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322B31201AF3F11B008209FD /* ViewController.swift */; };
 		322B31241AF3F11B008209FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 322B31221AF3F11B008209FD /* Main.storyboard */; };
-		322B31261AF3F11B008209FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 322B31251AF3F11B008209FD /* Images.xcassets */; };
+		322B31261AF3F11B008209FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 322B31251AF3F11B008209FD /* Assets.xcassets */; };
 		322B31291AF3F11B008209FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 322B31271AF3F11B008209FD /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
@@ -20,7 +20,7 @@
 		322B311E1AF3F11B008209FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		322B31201AF3F11B008209FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		322B31231AF3F11B008209FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		322B31251AF3F11B008209FD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		322B31251AF3F11B008209FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		322B31281AF3F11B008209FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,19 +57,11 @@
 				322B311E1AF3F11B008209FD /* AppDelegate.swift */,
 				322B31201AF3F11B008209FD /* ViewController.swift */,
 				322B31221AF3F11B008209FD /* Main.storyboard */,
-				322B31251AF3F11B008209FD /* Images.xcassets */,
+				322B31251AF3F11B008209FD /* Assets.xcassets */,
 				322B31271AF3F11B008209FD /* LaunchScreen.xib */,
-				322B311C1AF3F11B008209FD /* Supporting Files */,
-			);
-			path = bk1ch04p132enums;
-			sourceTree = "<group>";
-		};
-		322B311C1AF3F11B008209FD /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				322B311D1AF3F11B008209FD /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = bk1ch04p132enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,7 +124,7 @@
 			files = (
 				322B31241AF3F11B008209FD /* Main.storyboard in Resources */,
 				322B31291AF3F11B008209FD /* LaunchScreen.xib in Resources */,
-				322B31261AF3F11B008209FD /* Images.xcassets in Resources */,
+				322B31261AF3F11B008209FD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +198,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -244,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

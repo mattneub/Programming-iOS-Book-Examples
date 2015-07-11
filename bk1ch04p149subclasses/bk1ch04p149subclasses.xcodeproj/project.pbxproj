@@ -10,7 +10,7 @@
 		323A558A1AF5A6D90050DB48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323A55891AF5A6D90050DB48 /* AppDelegate.swift */; };
 		323A558C1AF5A6D90050DB48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323A558B1AF5A6D90050DB48 /* ViewController.swift */; };
 		323A558F1AF5A6D90050DB48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 323A558D1AF5A6D90050DB48 /* Main.storyboard */; };
-		323A55911AF5A6D90050DB48 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323A55901AF5A6D90050DB48 /* Images.xcassets */; };
+		323A55911AF5A6D90050DB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323A55901AF5A6D90050DB48 /* Assets.xcassets */; };
 		323A55941AF5A6D90050DB48 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 323A55921AF5A6D90050DB48 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
@@ -20,7 +20,7 @@
 		323A55891AF5A6D90050DB48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		323A558B1AF5A6D90050DB48 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		323A558E1AF5A6D90050DB48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		323A55901AF5A6D90050DB48 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		323A55901AF5A6D90050DB48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		323A55931AF5A6D90050DB48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,19 +57,11 @@
 				323A55891AF5A6D90050DB48 /* AppDelegate.swift */,
 				323A558B1AF5A6D90050DB48 /* ViewController.swift */,
 				323A558D1AF5A6D90050DB48 /* Main.storyboard */,
-				323A55901AF5A6D90050DB48 /* Images.xcassets */,
+				323A55901AF5A6D90050DB48 /* Assets.xcassets */,
 				323A55921AF5A6D90050DB48 /* LaunchScreen.xib */,
-				323A55871AF5A6D90050DB48 /* Supporting Files */,
-			);
-			path = bk1ch04p149subclasses;
-			sourceTree = "<group>";
-		};
-		323A55871AF5A6D90050DB48 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				323A55881AF5A6D90050DB48 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = bk1ch04p149subclasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,7 +124,7 @@
 			files = (
 				323A558F1AF5A6D90050DB48 /* Main.storyboard in Resources */,
 				323A55941AF5A6D90050DB48 /* LaunchScreen.xib in Resources */,
-				323A55911AF5A6D90050DB48 /* Images.xcassets in Resources */,
+				323A55911AF5A6D90050DB48 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +198,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -244,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -10,7 +10,7 @@
 		3242DC011AF930B6007D8170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3242DC001AF930B6007D8170 /* AppDelegate.swift */; };
 		3242DC031AF930B6007D8170 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3242DC021AF930B6007D8170 /* ViewController.swift */; };
 		3242DC061AF930B6007D8170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3242DC041AF930B6007D8170 /* Main.storyboard */; };
-		3242DC081AF930B6007D8170 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3242DC071AF930B6007D8170 /* Images.xcassets */; };
+		3242DC081AF930B6007D8170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3242DC071AF930B6007D8170 /* Assets.xcassets */; };
 		3242DC0B1AF930B6007D8170 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3242DC091AF930B6007D8170 /* LaunchScreen.xib */; };
 		3272D8611B46D2C10065C1E3 /* Thing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3272D8601B46D2C10065C1E3 /* Thing.m */; };
 /* End PBXBuildFile section */
@@ -21,7 +21,7 @@
 		3242DC001AF930B6007D8170 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3242DC021AF930B6007D8170 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3242DC051AF930B6007D8170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3242DC071AF930B6007D8170 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3242DC071AF930B6007D8170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3242DC0A1AF930B6007D8170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3272D85E1B46D2C10065C1E3 /* bk1ch04p204collections-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bk1ch04p204collections-Bridging-Header.h"; sourceTree = "<group>"; };
 		3272D85F1B46D2C10065C1E3 /* Thing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thing.h; sourceTree = "<group>"; };
@@ -63,20 +63,12 @@
 				3272D85F1B46D2C10065C1E3 /* Thing.h */,
 				3272D8601B46D2C10065C1E3 /* Thing.m */,
 				3242DC041AF930B6007D8170 /* Main.storyboard */,
-				3242DC071AF930B6007D8170 /* Images.xcassets */,
+				3242DC071AF930B6007D8170 /* Assets.xcassets */,
 				3242DC091AF930B6007D8170 /* LaunchScreen.xib */,
-				3242DBFE1AF930B6007D8170 /* Supporting Files */,
+				3242DBFF1AF930B6007D8170 /* Info.plist */,
 				3272D85E1B46D2C10065C1E3 /* bk1ch04p204collections-Bridging-Header.h */,
 			);
 			path = bk1ch04p204collections;
-			sourceTree = "<group>";
-		};
-		3242DBFE1AF930B6007D8170 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3242DBFF1AF930B6007D8170 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +131,7 @@
 			files = (
 				3242DC061AF930B6007D8170 /* Main.storyboard in Resources */,
 				3242DC0B1AF930B6007D8170 /* LaunchScreen.xib in Resources */,
-				3242DC081AF930B6007D8170 /* Images.xcassets in Resources */,
+				3242DC081AF930B6007D8170 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +206,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -252,7 +244,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

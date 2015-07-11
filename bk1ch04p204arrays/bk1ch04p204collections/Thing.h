@@ -4,7 +4,7 @@
 
 @interface Pep : NSObject
 
-- (__nonnull NSArray*) boys;
-- (__nonnull NSArray<NSString*>*) boysGood;
+- (nonnull NSArray*) boys;
+- (nonnull NSArray<NSString*>*) boysGood;
 
 @end

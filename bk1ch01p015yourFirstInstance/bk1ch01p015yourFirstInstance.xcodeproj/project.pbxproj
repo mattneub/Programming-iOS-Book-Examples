@@ -11,7 +11,7 @@
 		3236A4271AED4E39000A3679 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236A4261AED4E39000A3679 /* AppDelegate.swift */; };
 		3236A4291AED4E39000A3679 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236A4281AED4E39000A3679 /* ViewController.swift */; };
 		3236A42C1AED4E39000A3679 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3236A42A1AED4E39000A3679 /* Main.storyboard */; };
-		3236A42E1AED4E39000A3679 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3236A42D1AED4E39000A3679 /* Images.xcassets */; };
+		3236A42E1AED4E39000A3679 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3236A42D1AED4E39000A3679 /* Assets.xcassets */; };
 		3236A4311AED4E39000A3679 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3236A42F1AED4E39000A3679 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
@@ -22,7 +22,7 @@
 		3236A4261AED4E39000A3679 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3236A4281AED4E39000A3679 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3236A42B1AED4E39000A3679 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3236A42D1AED4E39000A3679 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3236A42D1AED4E39000A3679 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3236A4301AED4E39000A3679 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,19 +60,11 @@
 				3236A4281AED4E39000A3679 /* ViewController.swift */,
 				322DCCC61B3B238600CD85EC /* LegalFile.swift */,
 				3236A42A1AED4E39000A3679 /* Main.storyboard */,
-				3236A42D1AED4E39000A3679 /* Images.xcassets */,
+				3236A42D1AED4E39000A3679 /* Assets.xcassets */,
 				3236A42F1AED4E39000A3679 /* LaunchScreen.xib */,
-				3236A4241AED4E39000A3679 /* Supporting Files */,
-			);
-			path = bk1ch01p015yourFirstInstance;
-			sourceTree = "<group>";
-		};
-		3236A4241AED4E39000A3679 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				3236A4251AED4E39000A3679 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = bk1ch01p015yourFirstInstance;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +127,7 @@
 			files = (
 				3236A42C1AED4E39000A3679 /* Main.storyboard in Resources */,
 				3236A4311AED4E39000A3679 /* LaunchScreen.xib in Resources */,
-				3236A42E1AED4E39000A3679 /* Images.xcassets in Resources */,
+				3236A42E1AED4E39000A3679 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +202,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -248,7 +240,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -262,6 +254,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = bk1ch01p015yourFirstInstance/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -274,6 +267,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = bk1ch01p015yourFirstInstance/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

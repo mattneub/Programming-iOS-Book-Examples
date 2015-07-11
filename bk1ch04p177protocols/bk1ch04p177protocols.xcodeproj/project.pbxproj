@@ -10,7 +10,7 @@
 		326E95261AF7C76A0074332F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326E95251AF7C76A0074332F /* AppDelegate.swift */; };
 		326E95281AF7C76A0074332F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326E95271AF7C76A0074332F /* ViewController.swift */; };
 		326E952B1AF7C76A0074332F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 326E95291AF7C76A0074332F /* Main.storyboard */; };
-		326E952D1AF7C76A0074332F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 326E952C1AF7C76A0074332F /* Images.xcassets */; };
+		326E952D1AF7C76A0074332F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 326E952C1AF7C76A0074332F /* Assets.xcassets */; };
 		326E95301AF7C76A0074332F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 326E952E1AF7C76A0074332F /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
@@ -20,7 +20,7 @@
 		326E95251AF7C76A0074332F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		326E95271AF7C76A0074332F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		326E952A1AF7C76A0074332F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		326E952C1AF7C76A0074332F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		326E952C1AF7C76A0074332F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		326E952F1AF7C76A0074332F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,19 +57,11 @@
 				326E95251AF7C76A0074332F /* AppDelegate.swift */,
 				326E95271AF7C76A0074332F /* ViewController.swift */,
 				326E95291AF7C76A0074332F /* Main.storyboard */,
-				326E952C1AF7C76A0074332F /* Images.xcassets */,
+				326E952C1AF7C76A0074332F /* Assets.xcassets */,
 				326E952E1AF7C76A0074332F /* LaunchScreen.xib */,
-				326E95231AF7C76A0074332F /* Supporting Files */,
-			);
-			path = bk1ch04p177protocols;
-			sourceTree = "<group>";
-		};
-		326E95231AF7C76A0074332F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				326E95241AF7C76A0074332F /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = bk1ch04p177protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,7 +124,7 @@
 			files = (
 				326E952B1AF7C76A0074332F /* Main.storyboard in Resources */,
 				326E95301AF7C76A0074332F /* LaunchScreen.xib in Resources */,
-				326E952D1AF7C76A0074332F /* Images.xcassets in Resources */,
+				326E952D1AF7C76A0074332F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +198,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -244,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

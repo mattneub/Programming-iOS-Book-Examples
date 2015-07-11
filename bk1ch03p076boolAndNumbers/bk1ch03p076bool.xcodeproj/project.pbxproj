@@ -10,7 +10,7 @@
 		327CEDC21AF13EF8001551BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327CEDC11AF13EF8001551BA /* AppDelegate.swift */; };
 		327CEDC41AF13EF8001551BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327CEDC31AF13EF8001551BA /* ViewController.swift */; };
 		327CEDC71AF13EF8001551BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 327CEDC51AF13EF8001551BA /* Main.storyboard */; };
-		327CEDC91AF13EF8001551BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 327CEDC81AF13EF8001551BA /* Images.xcassets */; };
+		327CEDC91AF13EF8001551BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 327CEDC81AF13EF8001551BA /* Assets.xcassets */; };
 		327CEDCC1AF13EF8001551BA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327CEDCA1AF13EF8001551BA /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
@@ -20,7 +20,7 @@
 		327CEDC11AF13EF8001551BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		327CEDC31AF13EF8001551BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		327CEDC61AF13EF8001551BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		327CEDC81AF13EF8001551BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		327CEDC81AF13EF8001551BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		327CEDCB1AF13EF8001551BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,19 +57,11 @@
 				327CEDC11AF13EF8001551BA /* AppDelegate.swift */,
 				327CEDC31AF13EF8001551BA /* ViewController.swift */,
 				327CEDC51AF13EF8001551BA /* Main.storyboard */,
-				327CEDC81AF13EF8001551BA /* Images.xcassets */,
+				327CEDC81AF13EF8001551BA /* Assets.xcassets */,
 				327CEDCA1AF13EF8001551BA /* LaunchScreen.xib */,
-				327CEDBF1AF13EF8001551BA /* Supporting Files */,
-			);
-			path = bk1ch03p076bool;
-			sourceTree = "<group>";
-		};
-		327CEDBF1AF13EF8001551BA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				327CEDC01AF13EF8001551BA /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = bk1ch03p076bool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,7 +124,7 @@
 			files = (
 				327CEDC71AF13EF8001551BA /* Main.storyboard in Resources */,
 				327CEDCC1AF13EF8001551BA /* LaunchScreen.xib in Resources */,
-				327CEDC91AF13EF8001551BA /* Images.xcassets in Resources */,
+				327CEDC91AF13EF8001551BA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +198,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -244,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

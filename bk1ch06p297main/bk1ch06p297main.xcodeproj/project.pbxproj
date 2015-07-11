@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		321333F61AFD0B3A00568843 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321333F51AFD0B3A00568843 /* AppDelegate.swift */; };
-		321333FD1AFD0B3A00568843 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 321333FC1AFD0B3A00568843 /* Images.xcassets */; };
+		321333FD1AFD0B3A00568843 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 321333FC1AFD0B3A00568843 /* Assets.xcassets */; };
 		321334001AFD0B3A00568843 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 321333FE1AFD0B3A00568843 /* LaunchScreen.xib */; };
 		321334161AFD0B5400568843 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321334151AFD0B5400568843 /* main.swift */; };
 		32F694B21AFD0CAB001CF183 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F694B01AFD0CAB001CF183 /* MyViewController.swift */; };
@@ -47,7 +47,7 @@
 		321333F01AFD0B3A00568843 /* bk1ch06p297main.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk1ch06p297main.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		321333F41AFD0B3A00568843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		321333F51AFD0B3A00568843 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		321333FC1AFD0B3A00568843 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		321333FC1AFD0B3A00568843 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		321333FF1AFD0B3A00568843 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		321334151AFD0B5400568843 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		32F694B01AFD0CAB001CF183 /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
@@ -101,20 +101,12 @@
 				321333F51AFD0B3A00568843 /* AppDelegate.swift */,
 				32F694B01AFD0CAB001CF183 /* MyViewController.swift */,
 				32F694B11AFD0CAB001CF183 /* MyViewController.xib */,
-				321333FC1AFD0B3A00568843 /* Images.xcassets */,
+				321333FC1AFD0B3A00568843 /* Assets.xcassets */,
 				321333FE1AFD0B3A00568843 /* LaunchScreen.xib */,
-				321333F31AFD0B3A00568843 /* Supporting Files */,
-			);
-			path = bk1ch06p297main;
-			sourceTree = "<group>";
-		};
-		321333F31AFD0B3A00568843 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				321334151AFD0B5400568843 /* main.swift */,
 				321333F41AFD0B3A00568843 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = bk1ch06p297main;
 			sourceTree = "<group>";
 		};
 		32F694BA1AFD0F4D001CF183 /* Coolness */ = {
@@ -122,17 +114,9 @@
 			children = (
 				32F694BD1AFD0F4D001CF183 /* Coolness.h */,
 				32F694D91AFD0F8E001CF183 /* Dog.swift */,
-				32F694BB1AFD0F4D001CF183 /* Supporting Files */,
-			);
-			path = Coolness;
-			sourceTree = "<group>";
-		};
-		32F694BB1AFD0F4D001CF183 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				32F694BC1AFD0F4D001CF183 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = Coolness;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +176,7 @@
 		321333E81AFD0B3A00568843 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -228,7 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				321334001AFD0B3A00568843 /* LaunchScreen.xib in Resources */,
-				321333FD1AFD0B3A00568843 /* Images.xcassets in Resources */,
+				321333FD1AFD0B3A00568843 /* Assets.xcassets in Resources */,
 				32F694B31AFD0CAB001CF183 /* MyViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,7 +304,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -357,7 +342,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
