@@ -4,12 +4,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet var arr : [UIView]!
+    @IBOutlet var coolviews : [UIView]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for (ix,b) in enumerate(arr as! [UIButton]) {
+        for (ix,b) in (self.coolviews as! [UIButton]).enumerate() {
             b.setTitle("B\(ix+1)", forState: .Normal)
         }
     }

@@ -4,13 +4,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet var v : UIView!
+    @IBOutlet var coolview : UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let arr = NSBundle.mainBundle().loadNibNamed("View", owner: self, options: nil)
-        self.view.addSubview(self.v)
+        NSBundle.mainBundle().loadNibNamed("View", owner: self, options: nil)
+        self.view.addSubview(self.coolview)
 
     
     }

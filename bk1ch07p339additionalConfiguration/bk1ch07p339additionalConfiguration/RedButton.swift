@@ -11,9 +11,22 @@ class RedButton: UIButton {
         }
     }
     
-    required init(coder aDecoder: NSCoder) {
+    @IBInspectable var borderColor : UIColor? {
+        get {
+            let cg = self.layer.borderColor
+            return cg == nil ? nil : UIColor(CGColor: cg!)
+        }
+        set {
+            self.layer.borderColor = newValue?.CGColor ?? nil
+        }
+    }
+
+    
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
-        self.layer.borderColor = UIColor.greenColor().CGColor
+        self.layer.shadowColor = UIColor.grayColor().CGColor
+        self.layer.shadowOffset = CGSizeMake(2,2)
+        self.layer.shadowOpacity = 0.7
     }
 
 

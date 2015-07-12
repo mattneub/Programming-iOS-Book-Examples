@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -41,9 +42,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outletCollection property="arr" destination="exE-xF-eXf" collectionClass="NSMutableArray" id="8tj-AT-dxm"/>
-                        <outletCollection property="arr" destination="1bc-CI-14a" collectionClass="NSMutableArray" id="Pb7-od-sub"/>
-                        <outletCollection property="arr" destination="uGE-OD-uOA" collectionClass="NSMutableArray" id="4iJ-4C-XmD"/>
+                        <outletCollection property="coolviews" destination="exE-xF-eXf" collectionClass="NSMutableArray" id="ziT-Tf-xns"/>
+                        <outletCollection property="coolviews" destination="1bc-CI-14a" collectionClass="NSMutableArray" id="f2o-9v-KfE"/>
+                        <outletCollection property="coolviews" destination="uGE-OD-uOA" collectionClass="NSMutableArray" id="Nto-iz-fHn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

@@ -10,7 +10,7 @@
 		32DA398B1AFD1BE300488C42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DA398A1AFD1BE300488C42 /* AppDelegate.swift */; };
 		32DA398D1AFD1BE300488C42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DA398C1AFD1BE300488C42 /* ViewController.swift */; };
 		32DA39901AFD1BE300488C42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32DA398E1AFD1BE300488C42 /* Main.storyboard */; };
-		32DA39921AFD1BE300488C42 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32DA39911AFD1BE300488C42 /* Images.xcassets */; };
+		32DA39921AFD1BE300488C42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32DA39911AFD1BE300488C42 /* Assets.xcassets */; };
 		32DA39951AFD1BE300488C42 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32DA39931AFD1BE300488C42 /* LaunchScreen.xib */; };
 		32DA39AB1AFD1C0D00488C42 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32DA39AA1AFD1C0D00488C42 /* View.xib */; };
 /* End PBXBuildFile section */
@@ -21,7 +21,7 @@
 		32DA398A1AFD1BE300488C42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32DA398C1AFD1BE300488C42 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32DA398F1AFD1BE300488C42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32DA39911AFD1BE300488C42 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32DA39911AFD1BE300488C42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32DA39941AFD1BE300488C42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		32DA39AA1AFD1C0D00488C42 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,19 +60,11 @@
 				32DA39AA1AFD1C0D00488C42 /* View.xib */,
 				32DA398C1AFD1BE300488C42 /* ViewController.swift */,
 				32DA398E1AFD1BE300488C42 /* Main.storyboard */,
-				32DA39911AFD1BE300488C42 /* Images.xcassets */,
+				32DA39911AFD1BE300488C42 /* Assets.xcassets */,
 				32DA39931AFD1BE300488C42 /* LaunchScreen.xib */,
-				32DA39881AFD1BE300488C42 /* Supporting Files */,
-			);
-			path = bk1ch07p321nibLoading;
-			sourceTree = "<group>";
-		};
-		32DA39881AFD1BE300488C42 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				32DA39891AFD1BE300488C42 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = bk1ch07p321nibLoading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,6 +93,7 @@
 		32DA397D1AFD1BE300488C42 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -135,7 +128,7 @@
 				32DA39AB1AFD1C0D00488C42 /* View.xib in Resources */,
 				32DA39901AFD1BE300488C42 /* Main.storyboard in Resources */,
 				32DA39951AFD1BE300488C42 /* LaunchScreen.xib in Resources */,
-				32DA39921AFD1BE300488C42 /* Images.xcassets in Resources */,
+				32DA39921AFD1BE300488C42 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +202,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -247,7 +240,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -293,6 +286,7 @@
 				32DA39A61AFD1BE300488C42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

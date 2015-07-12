@@ -10,7 +10,7 @@
 		32300F491AFD346700CC731C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32300F481AFD346700CC731C /* AppDelegate.swift */; };
 		32300F4B1AFD346700CC731C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32300F4A1AFD346700CC731C /* ViewController.swift */; };
 		32300F4E1AFD346800CC731C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32300F4C1AFD346800CC731C /* Main.storyboard */; };
-		32300F501AFD346800CC731C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32300F4F1AFD346800CC731C /* Images.xcassets */; };
+		32300F501AFD346800CC731C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32300F4F1AFD346800CC731C /* Assets.xcassets */; };
 		32300F531AFD346800CC731C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32300F511AFD346800CC731C /* LaunchScreen.xib */; };
 		32300F691AFD34A400CC731C /* RedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32300F681AFD34A400CC731C /* RedButton.swift */; };
 /* End PBXBuildFile section */
@@ -21,7 +21,7 @@
 		32300F481AFD346700CC731C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32300F4A1AFD346700CC731C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32300F4D1AFD346800CC731C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32300F4F1AFD346800CC731C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32300F4F1AFD346800CC731C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32300F521AFD346800CC731C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		32300F681AFD34A400CC731C /* RedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,19 +60,11 @@
 				32300F681AFD34A400CC731C /* RedButton.swift */,
 				32300F4A1AFD346700CC731C /* ViewController.swift */,
 				32300F4C1AFD346800CC731C /* Main.storyboard */,
-				32300F4F1AFD346800CC731C /* Images.xcassets */,
+				32300F4F1AFD346800CC731C /* Assets.xcassets */,
 				32300F511AFD346800CC731C /* LaunchScreen.xib */,
-				32300F461AFD346700CC731C /* Supporting Files */,
-			);
-			path = bk1ch07p339additionalConfiguration;
-			sourceTree = "<group>";
-		};
-		32300F461AFD346700CC731C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				32300F471AFD346700CC731C /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = bk1ch07p339additionalConfiguration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,6 +93,7 @@
 		32300F3B1AFD346700CC731C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -134,7 +127,7 @@
 			files = (
 				32300F4E1AFD346800CC731C /* Main.storyboard in Resources */,
 				32300F531AFD346800CC731C /* LaunchScreen.xib in Resources */,
-				32300F501AFD346800CC731C /* Images.xcassets in Resources */,
+				32300F501AFD346800CC731C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +202,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -247,7 +240,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -293,6 +286,7 @@
 				32300F641AFD346800CC731C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
