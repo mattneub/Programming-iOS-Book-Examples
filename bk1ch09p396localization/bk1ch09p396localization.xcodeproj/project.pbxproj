@@ -10,7 +10,7 @@
 		323891FE1AFE6ED500707FDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323891FD1AFE6ED500707FDB /* AppDelegate.swift */; };
 		323892001AFE6ED500707FDB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323891FF1AFE6ED500707FDB /* ViewController.swift */; };
 		323892031AFE6ED500707FDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 323892011AFE6ED500707FDB /* Main.storyboard */; };
-		323892051AFE6ED500707FDB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323892041AFE6ED500707FDB /* Images.xcassets */; };
+		323892051AFE6ED500707FDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 323892041AFE6ED500707FDB /* Assets.xcassets */; };
 		323892081AFE6ED500707FDB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 323892061AFE6ED500707FDB /* LaunchScreen.xib */; };
 		3238921F1AFE6F7500707FDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 323892211AFE6F7500707FDB /* InfoPlist.strings */; };
 		323892271AFE711500707FDB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 323892291AFE711500707FDB /* Localizable.strings */; };
@@ -22,7 +22,7 @@
 		323891FD1AFE6ED500707FDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		323891FF1AFE6ED500707FDB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		323892021AFE6ED500707FDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		323892041AFE6ED500707FDB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		323892041AFE6ED500707FDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		323892071AFE6ED500707FDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		323892201AFE6F7500707FDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		323892221AFE6F8E00707FDB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -64,21 +64,13 @@
 				323891FD1AFE6ED500707FDB /* AppDelegate.swift */,
 				323891FF1AFE6ED500707FDB /* ViewController.swift */,
 				323892011AFE6ED500707FDB /* Main.storyboard */,
-				323892041AFE6ED500707FDB /* Images.xcassets */,
+				323892041AFE6ED500707FDB /* Assets.xcassets */,
 				323892061AFE6ED500707FDB /* LaunchScreen.xib */,
-				323891FB1AFE6ED500707FDB /* Supporting Files */,
+				323891FC1AFE6ED500707FDB /* Info.plist */,
+				323892211AFE6F7500707FDB /* InfoPlist.strings */,
+				323892291AFE711500707FDB /* Localizable.strings */,
 			);
 			path = bk1ch09p396localization;
-			sourceTree = "<group>";
-		};
-		323891FB1AFE6ED500707FDB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				323891FC1AFE6ED500707FDB /* Info.plist */,
-				323892291AFE711500707FDB /* Localizable.strings */,
-				323892211AFE6F7500707FDB /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,6 +99,7 @@
 		323891F01AFE6ED500707FDB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -143,7 +136,7 @@
 				323892031AFE6ED500707FDB /* Main.storyboard in Resources */,
 				3238921F1AFE6F7500707FDB /* InfoPlist.strings in Resources */,
 				323892081AFE6ED500707FDB /* LaunchScreen.xib in Resources */,
-				323892051AFE6ED500707FDB /* Images.xcassets in Resources */,
+				323892051AFE6ED500707FDB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +229,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -274,7 +267,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -320,6 +313,7 @@
 				323892191AFE6ED500707FDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
