@@ -16,13 +16,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let s = "\u{a1}hol\u{e1}!"
+        let s = "\u{BF}Qui\u{E9}n?"
         print(s)
         for i in s.utf8 {
-            print(i) // 194, 161, 104, 111, 108, 195, 161, 33
+            print(i) // 194, 191, 81, 117, 105, 195, 169, 110, 63
         }
+        print("---")
         for i in s.utf16 {
-            print(i) // 161, 104, 111, 108, 225, 33
+            print(i) // 191, 81, 117, 105, 233, 110, 63
         }
         
         do {
