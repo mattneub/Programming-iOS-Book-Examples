@@ -8,28 +8,53 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        // new availability checking in Xcode 7
+        
+        if #available(iOS 9.0, *) {
+            let g = self.view.layoutGuides
+            print(g)
+        } else {
+        }
+        
+        if #available(iOS 8.0, *) {
+            let s = UIApplicationOpenSettingsURLString
+            print(s)
+        } else {
+        }
+        
+        if #available(iOS 8.0, *) {
+            let tc = UITraitCollection()
+            _ = tc
+        } else {
+        }
+
+        
+        
+        // unfortunately, not everything is marked up for availability, so you'll have to resort
+        // to manual checking just as before
         
         let v = UIDevice.currentDevice().systemVersion
-        println(v)
+        print(v)
         
         if self.respondsToSelector("traitCollection") {
             let tc = self.traitCollection
-            println(tc)
+            print(tc)
         } else {
-            println("no trait collections")
+            print("no trait collections")
         }
         
-        if NSClassFromString("UITraitCollection") != nil {
-            println("trait collections ok")
-        } else {
-            println("no trait collections")
-        }
+//        if NSClassFromString("UITraitCollection") != nil {
+//            print("trait collections ok")
+//        } else {
+//            print("no trait collections")
+//        }
         
-        if UIApplication.safeToUseSettingsString() {
-            println("settings URL ok")
-        } else {
-            println("no settings URL")
-        }
+        
+//        if UIApplication.safeToUseSettingsString() {
+//            print("settings URL ok")
+//        } else {
+//            print("no settings URL")
+//        }
 
 
 

@@ -10,7 +10,7 @@
 		32080BC21AFE5C3B00DB7A17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32080BC11AFE5C3B00DB7A17 /* AppDelegate.swift */; };
 		32080BC41AFE5C3B00DB7A17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32080BC31AFE5C3B00DB7A17 /* ViewController.swift */; };
 		32080BC71AFE5C3B00DB7A17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32080BC51AFE5C3B00DB7A17 /* Main.storyboard */; };
-		32080BC91AFE5C3B00DB7A17 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32080BC81AFE5C3B00DB7A17 /* Images.xcassets */; };
+		32080BC91AFE5C3B00DB7A17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32080BC81AFE5C3B00DB7A17 /* Assets.xcassets */; };
 		32080BCC1AFE5C3B00DB7A17 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32080BCA1AFE5C3B00DB7A17 /* LaunchScreen.xib */; };
 		32080BE41AFE5D5B00DB7A17 /* UIApplicationCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 32080BE31AFE5D5B00DB7A17 /* UIApplicationCategory.m */; };
 		32080BE61AFE5FD600DB7A17 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32080BE51AFE5FD600DB7A17 /* Photos.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -38,7 +38,7 @@
 		32080BC11AFE5C3B00DB7A17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32080BC31AFE5C3B00DB7A17 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32080BC61AFE5C3B00DB7A17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32080BC81AFE5C3B00DB7A17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32080BC81AFE5C3B00DB7A17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32080BCB1AFE5C3B00DB7A17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		32080BE11AFE5D5B00DB7A17 /* bk1ch09p357backwardCompatibility-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bk1ch09p357backwardCompatibility-Bridging-Header.h"; sourceTree = "<group>"; };
 		32080BE21AFE5D5B00DB7A17 /* UIApplicationCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIApplicationCategory.h; sourceTree = "<group>"; };
@@ -99,15 +99,16 @@
 				32080BE31AFE5D5B00DB7A17 /* UIApplicationCategory.m */,
 				32080BC31AFE5C3B00DB7A17 /* ViewController.swift */,
 				32080BC51AFE5C3B00DB7A17 /* Main.storyboard */,
-				32080BC81AFE5C3B00DB7A17 /* Images.xcassets */,
+				32080BC81AFE5C3B00DB7A17 /* Assets.xcassets */,
 				32080BCA1AFE5C3B00DB7A17 /* LaunchScreen.xib */,
-				32080BBF1AFE5C3B00DB7A17 /* Supporting Files */,
+				32080BC01AFE5C3B00DB7A17 /* Info.plist */,
+				32080BBF1AFE5C3B00DB7A17 /* Launch Images */,
 				32080BE11AFE5D5B00DB7A17 /* bk1ch09p357backwardCompatibility-Bridging-Header.h */,
 			);
 			path = bk1ch09p357backwardCompatibility;
 			sourceTree = "<group>";
 		};
-		32080BBF1AFE5C3B00DB7A17 /* Supporting Files */ = {
+		32080BBF1AFE5C3B00DB7A17 /* Launch Images */ = {
 			isa = PBXGroup;
 			children = (
 				329BCDB01AFE74350056D008 /* Default-568h@2x.png */,
@@ -126,9 +127,8 @@
 				329BCDBD1AFE74350056D008 /* Default-Portrait@2x.png */,
 				329BCDBE1AFE74350056D008 /* Default.png */,
 				329BCDBF1AFE74350056D008 /* Default@2x.png */,
-				32080BC01AFE5C3B00DB7A17 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			name = "Launch Images";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +157,7 @@
 		32080BB41AFE5C3B00DB7A17 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -202,7 +203,7 @@
 				329BCDC51AFE74350056D008 /* Default-iOS7-Portrait@2x.png in Resources */,
 				329BCDC31AFE74350056D008 /* Default-iOS7-Landscape@2x.png in Resources */,
 				329BCDC91AFE74350056D008 /* Default-iOS8-Landscape-736h@3x.png in Resources */,
-				32080BC91AFE5C3B00DB7A17 /* Images.xcassets in Resources */,
+				32080BC91AFE5C3B00DB7A17 /* Assets.xcassets in Resources */,
 				329BCDCB1AFE74350056D008 /* Default-Landscape@2x.png in Resources */,
 				329BCDCF1AFE74350056D008 /* Default@2x.png in Resources */,
 				329BCDCC1AFE74350056D008 /* Default-Portrait.png in Resources */,
