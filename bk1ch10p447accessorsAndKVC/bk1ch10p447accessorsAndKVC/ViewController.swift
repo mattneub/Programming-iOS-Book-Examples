@@ -81,6 +81,11 @@ class ViewController: UIViewController {
 //    }
 
 
+    @objc(couleur) var color4 : UIColor?  {
+        didSet {
+            print("someone set couleur")
+        }
+    }
 
 
     override func viewDidLoad() {
@@ -88,6 +93,7 @@ class ViewController: UIViewController {
         
         Thing().test()
         Thing().test2()
+        Thing().test3()
         
         let obj = NSObject()
         // uncomment the next line to crash
