@@ -1,21 +1,21 @@
 import UIKit
 
 class MyAction : NSObject, CAAction {
-    func runActionForKey(event: String!, object anObject: AnyObject!,
-        arguments dict: [NSObject : AnyObject]!) {
+    func runActionForKey(event: String, object anObject: AnyObject,
+        arguments dict: [NSObject : AnyObject]?) {
             let anim = CABasicAnimation(keyPath: event)
             anim.duration = 5
             let lay = anObject as! CALayer
             let newP : AnyObject? = lay.valueForKey(event)
             let oldP : AnyObject? = lay.presentationLayer()!.valueForKey(event)
-            println("from \(oldP) to \(newP)")
+            print("from \(oldP) to \(newP)")
             lay.addAnimation(anim, forKey:nil)
     }
 }
 
 class MyWagglePositionAction : NSObject, CAAction {
-    func runActionForKey(event: String!, object anObject: AnyObject!,
-        arguments dict: [NSObject : AnyObject]!) {
+    func runActionForKey(event: String, object anObject: AnyObject,
+        arguments dict: [NSObject : AnyObject]?) {
             let lay = anObject as! CALayer
             let newP = (lay.valueForKey(event) as! NSValue).CGPointValue()
             let oldP = (lay.presentationLayer()!.valueForKey(event) as! NSValue).CGPointValue()
@@ -53,10 +53,11 @@ class ViewController : UIViewController {
         self.layer = layer
     }
     
+    let which = 1
+    
     @IBAction func doButton(sender:AnyObject?) {
         let layer = self.layer
         
-        let which = 1
         switch which {
         case 1:
             layer.position = CGPointMake(100,100) // proving that it normally works
@@ -144,7 +145,7 @@ class MyLayer : CALayer {
     
     // layer whose response to contents setting is automatic push from left
     
-    override class func defaultActionForKey(key: String!) -> CAAction! {
+    override class func defaultActionForKey(key: String) -> CAAction? {
         if key == "contents" {
             let tr = CATransition()
             tr.type = kCATransitionPush
@@ -156,7 +157,7 @@ class MyLayer : CALayer {
     
     // layer whose implicit position animation can be turned off
     
-    override func actionForKey(key: String!) -> CAAction! {
+    override func actionForKey(key: String) -> CAAction? {
         if key == "position" {
             if self.valueForKey("suppressPositionAnimation") != nil {
                 return nil
@@ -167,7 +168,7 @@ class MyLayer : CALayer {
     
     
     override func removeFromSuperlayer() {
-        println("I'm being removed from my superlayer")
+        print("I'm being removed from my superlayer")
         super.removeFromSuperlayer()
     }
     
@@ -176,7 +177,7 @@ class MyLayer : CALayer {
 extension ViewController {
     
     // on implicit "position" animation, do a little waggle
-    override func actionForLayer(layer: CALayer!, forKey key: String!) -> CAAction! {
+    override func actionForLayer(layer: CALayer, forKey key: String) -> CAAction? {
         if key == "position" {
             return MyWagglePositionAction()
         }
@@ -234,7 +235,7 @@ extension ViewController {
         return nil
     }
     
-    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         if let layer = anim.valueForKey("remove") as? CALayer {
             layer.removeFromSuperlayer()
         }

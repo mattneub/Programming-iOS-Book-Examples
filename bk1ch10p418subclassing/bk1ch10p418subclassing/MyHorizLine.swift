@@ -4,7 +4,7 @@ import UIKit
 
 class MyHorizLine: UIView {
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
         self.backgroundColor = UIColor.clearColor()
     }

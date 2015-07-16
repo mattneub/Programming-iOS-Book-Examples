@@ -10,7 +10,7 @@
 		32B16ECF1AFEA10F00E98CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B16ECE1AFEA10F00E98CCB /* AppDelegate.swift */; };
 		32B16ED11AFEA10F00E98CCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B16ED01AFEA10F00E98CCB /* ViewController.swift */; };
 		32B16ED41AFEA10F00E98CCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32B16ED21AFEA10F00E98CCB /* Main.storyboard */; };
-		32B16ED61AFEA10F00E98CCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32B16ED51AFEA10F00E98CCB /* Images.xcassets */; };
+		32B16ED61AFEA10F00E98CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32B16ED51AFEA10F00E98CCB /* Assets.xcassets */; };
 		32B16ED91AFEA10F00E98CCB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32B16ED71AFEA10F00E98CCB /* LaunchScreen.xib */; };
 		32B16EEF1AFEA14700E98CCB /* MyHorizLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B16EEE1AFEA14700E98CCB /* MyHorizLine.swift */; };
 		32B16EF11AFEA1DA00E98CCB /* MyBoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B16EF01AFEA1DA00E98CCB /* MyBoundedLabel.swift */; };
@@ -22,7 +22,7 @@
 		32B16ECE1AFEA10F00E98CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32B16ED01AFEA10F00E98CCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32B16ED31AFEA10F00E98CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32B16ED51AFEA10F00E98CCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32B16ED51AFEA10F00E98CCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32B16ED81AFEA10F00E98CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		32B16EEE1AFEA14700E98CCB /* MyHorizLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyHorizLine.swift; sourceTree = "<group>"; };
 		32B16EF01AFEA1DA00E98CCB /* MyBoundedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBoundedLabel.swift; sourceTree = "<group>"; };
@@ -63,19 +63,11 @@
 				32B16EEE1AFEA14700E98CCB /* MyHorizLine.swift */,
 				32B16EF01AFEA1DA00E98CCB /* MyBoundedLabel.swift */,
 				32B16ED21AFEA10F00E98CCB /* Main.storyboard */,
-				32B16ED51AFEA10F00E98CCB /* Images.xcassets */,
+				32B16ED51AFEA10F00E98CCB /* Assets.xcassets */,
 				32B16ED71AFEA10F00E98CCB /* LaunchScreen.xib */,
-				32B16ECC1AFEA10F00E98CCB /* Supporting Files */,
-			);
-			path = bk1ch10p418subclassing;
-			sourceTree = "<group>";
-		};
-		32B16ECC1AFEA10F00E98CCB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				32B16ECD1AFEA10F00E98CCB /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = bk1ch10p418subclassing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,6 +96,7 @@
 		32B16EC11AFEA10F00E98CCB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -137,7 +130,7 @@
 			files = (
 				32B16ED41AFEA10F00E98CCB /* Main.storyboard in Resources */,
 				32B16ED91AFEA10F00E98CCB /* LaunchScreen.xib in Resources */,
-				32B16ED61AFEA10F00E98CCB /* Images.xcassets in Resources */,
+				32B16ED61AFEA10F00E98CCB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +206,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -251,7 +244,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -297,6 +290,7 @@
 				32B16EEA1AFEA10F00E98CCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

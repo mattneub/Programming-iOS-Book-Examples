@@ -16,7 +16,7 @@ class MyView : UIView {
     }
     
     func tap(g:UIGestureRecognizer!) {
-        println("tap! (gesture recognizer)")
+        print("tap! (gesture recognizer)")
     }
         
 }

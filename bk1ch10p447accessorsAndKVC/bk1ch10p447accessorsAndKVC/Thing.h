@@ -4,4 +4,5 @@
 
 @interface Thing : NSObject
 - (void) test;
+- (void) test2;
 @end

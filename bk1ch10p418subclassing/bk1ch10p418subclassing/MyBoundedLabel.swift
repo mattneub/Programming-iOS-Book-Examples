@@ -1,10 +1,4 @@
-//
-//  MyBoundedLabel.swift
-//  bk1ch10p418subclassing
-//
-//  Created by Matt Neuburg on 5/9/15.
-//  Copyright (c) 2015 Matt Neuburg. All rights reserved.
-//
+
 
 import UIKit
 

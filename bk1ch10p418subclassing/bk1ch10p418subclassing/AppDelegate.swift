@@ -10,14 +10,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
         return true
     }
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
-        println(aSelector)
+        print(aSelector)
         return super.respondsToSelector(aSelector)
     }
-
 
 
 }

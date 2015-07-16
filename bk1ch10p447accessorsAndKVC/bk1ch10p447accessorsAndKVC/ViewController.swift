@@ -35,22 +35,50 @@ class ViewController: UIViewController {
     
     var color : UIColor {
         get {
-            println("someone called the getter")
+            print("someone called the color getter")
             return UIColor.redColor()
         }
         set {
-            println("someone called the setter")
+            print("someone called the color setter")
         }
     }
+    
+    // in Swift 2.0, this works:
+    /*
     var color2 : UIColor {
         @objc(hue) get {
-            println("someone called the getter")
+            print("someone called the color2 getter")
             return UIColor.redColor()
         }
         @objc(setHue:) set {
-            println("someone called the setter")
+            print("someone called the color2 setter")
         }
     }
+*/
+    // but there is, in Swift 2.0, a simpler way:
+    
+    @objc(hue) var color2 : UIColor {
+        get {
+            print("someone called the color2 getter")
+            return UIColor.redColor()
+        }
+        set {
+            print("someone called the color2 setter")
+        }
+    }
+
+    
+    var color3 : UIColor?
+    
+    // these are compile errors, because they attempt to implement the accessors
+    
+//    func color3() -> UIColor? {
+//        return self.color3
+//    }
+    
+//    func setColor3(c:UIColor?) {
+//        self.color3 = c
+//    }
 
 
 
@@ -58,32 +86,32 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.setTranslatesAutoresizingMaskIntoConstraints(
-            self.view.translatesAutoresizingMaskIntoConstraints()
-        )
-        
         Thing().test()
+        Thing().test2()
         
         let obj = NSObject()
         // uncomment the next line to crash
         // obj.setValue("howdy", forKey:"keyName") // crash
 
-        var d = Dog()
+        let d = Dog()
         d.setValue("Fido", forKey:"name") // no crash!
-        println(d.name) // "Fido" - it worked!
+        print(d.name) // "Fido" - it worked!
 
         let c = self.valueForKey("hue") as? UIColor // "someone called the getter"
-        println(c) // Optional(UIDeviceRGBColorSpace 1 0 0 1)
+        print(c) // Optional(UIDeviceRGBColorSpace 1 0 0 1)
         
         let myObject = MyClass()
         let arr = myObject.valueForKeyPath("theData.name") as! [String]
-        println(arr)
-        if true {
+        print(arr)
+        do {
             let arr : AnyObject = myObject.valueForKey("pepBoys")!
-            println(arr)
+            print(arr)
             let arr2 : AnyObject = myObject.valueForKeyPath("pepBoys.name")!
-            println(arr2)
+            print(arr2)
         }
+        
+        _ = obj
+        
 
         
     }

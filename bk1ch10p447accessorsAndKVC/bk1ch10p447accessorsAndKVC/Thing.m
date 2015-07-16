@@ -11,4 +11,11 @@
     UIColor* c __attribute__((unused)) = [vc color]; // "someone called the getter"
 }
 
+- (void) test2 {
+    ViewController* vc = [ViewController new];
+    [vc setHue:[UIColor redColor]]; // "someone called the setter"
+    UIColor* c __attribute__((unused)) = [vc hue]; // "someone called the getter"
+}
+
+
 @end
