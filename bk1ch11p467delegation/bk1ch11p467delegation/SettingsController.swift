@@ -13,11 +13,11 @@ class SettingsController: UIViewController, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController!.delegate = self
+        self.navigationController?.delegate = self
     }
     func navigationControllerSupportedInterfaceOrientations(
-        navigationController: UINavigationController) -> Int {
-            return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+        nav: UINavigationController) -> UIInterfaceOrientationMask {
+            return .Portrait
     }
 
     @IBAction func doButton(sender: AnyObject) {
@@ -31,7 +31,6 @@ extension SettingsController : ColorPickerDelegate {
         let c = UIColor.blueColor()
         let cpc = ColorPickerController(colorName:colorName, andColor:c)
         cpc.delegate = self
-        // ... and present the color picker controller ...
         self.presentViewController(cpc, animated: true, completion: nil)
     }
     
@@ -40,7 +39,7 @@ extension SettingsController : ColorPickerDelegate {
     func colorPicker (picker:ColorPickerController,
         didSetColorNamed theName:String?,
         toColor theColor:UIColor?) {
-            println("the delegate method was called")
+            print("the delegate method was called")
             delay(0.1) {
                 picker.dismissViewControllerAnimated(true, completion: nil)
             }

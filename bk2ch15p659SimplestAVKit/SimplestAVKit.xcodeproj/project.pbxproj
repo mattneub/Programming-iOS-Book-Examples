@@ -162,6 +162,7 @@
 		32BB789C19F932510077BC3E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -413,6 +414,7 @@
 				32BB78C519F932510077BC3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		32BB78C619F932510077BC3E /* Build configuration list for PBXNativeTarget "SimplestAVKitTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +423,7 @@
 				32BB78C819F932510077BC3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

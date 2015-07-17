@@ -10,7 +10,7 @@
 		32B16FC51AFFBB1A00E98CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B16FC41AFFBB1A00E98CCB /* AppDelegate.swift */; };
 		32B16FC71AFFBB1A00E98CCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B16FC61AFFBB1A00E98CCB /* ViewController.swift */; };
 		32B16FCA1AFFBB1A00E98CCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32B16FC81AFFBB1A00E98CCB /* Main.storyboard */; };
-		32B16FCC1AFFBB1A00E98CCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32B16FCB1AFFBB1A00E98CCB /* Images.xcassets */; };
+		32B16FCC1AFFBB1A00E98CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32B16FCB1AFFBB1A00E98CCB /* Assets.xcassets */; };
 		32B16FCF1AFFBB1A00E98CCB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32B16FCD1AFFBB1A00E98CCB /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
@@ -20,7 +20,7 @@
 		32B16FC41AFFBB1A00E98CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32B16FC61AFFBB1A00E98CCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32B16FC91AFFBB1A00E98CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32B16FCB1AFFBB1A00E98CCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32B16FCB1AFFBB1A00E98CCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32B16FCE1AFFBB1A00E98CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,19 +57,11 @@
 				32B16FC41AFFBB1A00E98CCB /* AppDelegate.swift */,
 				32B16FC61AFFBB1A00E98CCB /* ViewController.swift */,
 				32B16FC81AFFBB1A00E98CCB /* Main.storyboard */,
-				32B16FCB1AFFBB1A00E98CCB /* Images.xcassets */,
+				32B16FCB1AFFBB1A00E98CCB /* Assets.xcassets */,
 				32B16FCD1AFFBB1A00E98CCB /* LaunchScreen.xib */,
-				32B16FC21AFFBB1A00E98CCB /* Supporting Files */,
-			);
-			path = bk1ch11p470dataSource;
-			sourceTree = "<group>";
-		};
-		32B16FC21AFFBB1A00E98CCB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				32B16FC31AFFBB1A00E98CCB /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = bk1ch11p470dataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +90,7 @@
 		32B16FB71AFFBB1A00E98CCB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -131,7 +124,7 @@
 			files = (
 				32B16FCA1AFFBB1A00E98CCB /* Main.storyboard in Resources */,
 				32B16FCF1AFFBB1A00E98CCB /* LaunchScreen.xib in Resources */,
-				32B16FCC1AFFBB1A00E98CCB /* Images.xcassets in Resources */,
+				32B16FCC1AFFBB1A00E98CCB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +198,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -243,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -289,6 +282,7 @@
 				32B16FE01AFFBB1A00E98CCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

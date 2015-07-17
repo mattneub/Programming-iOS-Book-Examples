@@ -31,7 +31,7 @@ class ViewController: UIViewController {
                     MPMusicPlayerControllerNowPlayingItemDidChangeNotification,
                     object: nil, queue: nil) {
                         _ in
-                        println("changed")
+                        print("changed")
             }
             self.observers.insert(ob as! NSObject)
 
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     }
     
     func nowPlayingItemChanged (n:NSNotification) {
-        println("changed")
+        print("changed")
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         mp.endGeneratingPlaybackNotifications()
     }
     
-    func singleTap(_:AnyObject) { // select me
+    func singleTap(_:AnyObject) {
         NSNotificationCenter.defaultCenter()
         .postNotificationName("cardTapped", object: self)
     }

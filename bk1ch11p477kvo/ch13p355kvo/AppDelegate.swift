@@ -11,16 +11,16 @@ class MyClass1 : NSObject {
 
 class MyClass2: NSObject {
     
-    override func observeValueForKeyPath(keyPath: String,
-        ofObject object: AnyObject, change: [NSObject : AnyObject],
-        context: UnsafeMutablePointer<Void>) {
-            println("I heard about the change!")
-            println(object.valueForKeyPath(keyPath))
-            println(change)
-            println(context == &con) // aha
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+            print("I heard about the change!")
+            if let keyPath = keyPath {
+                print(object?.valueForKeyPath?(keyPath))
+            }
+            print(change)
+            print(context == &con) // aha
             let c = UnsafeMutablePointer<String>(context)
             let s = c.memory
-            println(s)
+            print(s)
         }
     
 }
@@ -43,7 +43,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         objectA = MyClass1()
         objectB = MyClass2()
-        let opts : NSKeyValueObservingOptions = .New | .Old
+        let opts : NSKeyValueObservingOptions = [.New, .Old]
         objectA.addObserver(objectB, forKeyPath: "value", options: opts, context: &con)
         (objectA as! MyClass1).value = true
         // comment out next line if you wish to crash

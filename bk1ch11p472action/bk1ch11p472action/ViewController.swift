@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     @IBAction func showResponderChain(sender: UIResponder) {
         var r : UIResponder?
         for (r = sender; r != nil; r = r!.nextResponder()) {
-            println(r!)
+            print(r!)
         }
     }
 

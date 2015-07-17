@@ -70,7 +70,20 @@ class ViewController: UIViewController {
     }
     
 //    override func observeValueForKeyPath(keyPath: String?,
-//        ofObject object: AnyObject?, change: [NSObject : AnyObject]?,
+//        ofObject object: AnyObject?, change: [String : AnyObject]?,
+//        context: UnsafeMutablePointer<()>) {
+//            if keyPath == "readyForDisplay" {
+//                if let obj = object as? AVPlayerViewController {
+//                    dispatch_async(dispatch_get_main_queue(), {
+//                        self.finishConstructingInterface(obj)
+//                    })
+//                }
+//            }
+//    }
+
+    
+//    override func observeValueForKeyPath(keyPath: String?,
+//        ofObject object: AnyObject?, change: [String : AnyObject]?,
 //        context: UnsafeMutablePointer<()>) {
 //            if keyPath == "readyForDisplay" {
 //                if let obj = object as? AVPlayerViewController {
@@ -85,7 +98,7 @@ class ViewController: UIViewController {
 //    }
 
     
-//    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<()>) {
+//    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<()>) {
 //        if keyPath == "readyForDisplay",
 //            let obj = object as? AVPlayerViewController,
 //            ok = change?[NSKeyValueChangeNewKey] as? Bool where ok {
@@ -95,9 +108,7 @@ class ViewController: UIViewController {
 //        }
 //    }
     
-    override func observeValueForKeyPath(keyPath: String?,
-        ofObject object: AnyObject?, change: [NSObject : AnyObject]?,
-        context: UnsafeMutablePointer<()>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<()>) {
             guard keyPath == "readyForDisplay" else {return}
             guard let obj = object as? AVPlayerViewController else {return}
             guard let ok = change?[NSKeyValueChangeNewKey] as? Bool else {return}

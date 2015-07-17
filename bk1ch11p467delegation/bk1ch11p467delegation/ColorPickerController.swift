@@ -23,12 +23,12 @@ class ColorPickerController : UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return .Portrait
     }
 
     @IBAction func dismissColorPicker(sender: AnyObject?) {
-        var c : UIColor? = self.color
+        let c : UIColor? = self.color
         self.delegate?.colorPicker(
             self, didSetColorNamed: self.colorName, toColor: c)
     }
