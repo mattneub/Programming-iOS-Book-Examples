@@ -10,34 +10,22 @@
 		3252F50F1A868943000BC6C7 /* CancelableTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3252F50E1A868943000BC6C7 /* CancelableTimer.swift */; };
 		32EF65231A86744C00E5150E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF65221A86744C00E5150E /* MainViewController.swift */; };
 		32EF65251A8676CF00E5150E /* FlipsideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF65241A8676CF00E5150E /* FlipsideViewController.swift */; };
-		C9E8B37417A0307B0000C352 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E8B37317A0307B0000C352 /* Foundation.framework */; };
-		C9E8B37617A0307B0000C352 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E8B37517A0307B0000C352 /* CoreGraphics.framework */; };
-		C9E8B37817A0307B0000C352 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E8B37717A0307B0000C352 /* UIKit.framework */; };
-		C9E8B37E17A0307B0000C352 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9E8B37C17A0307B0000C352 /* InfoPlist.strings */; };
-		C9E8B38017A0307B0000C352 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E8B37F17A0307B0000C352 /* main.m */; };
-		C9E8B38417A0307B0000C352 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E8B38317A0307B0000C352 /* AppDelegate.m */; };
+		32FFD3BF1B5AAFCC0055D1E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32FFD3BE1B5AAFCC0055D1E0 /* LaunchScreen.storyboard */; };
+		32FFD3C11B5AAFEC0055D1E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FFD3C01B5AAFEC0055D1E0 /* AppDelegate.swift */; };
 		C9E8B38717A0307B0000C352 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E8B38517A0307B0000C352 /* Main.storyboard */; };
-		C9E8B38F17A0307B0000C352 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E8B38E17A0307B0000C352 /* Images.xcassets */; };
+		C9E8B38F17A0307B0000C352 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E8B38E17A0307B0000C352 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3252F50E1A868943000BC6C7 /* CancelableTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelableTimer.swift; sourceTree = "<group>"; };
-		32EF65211A86744C00E5150E /* ch12p325NotificationLeaker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch12p325NotificationLeaker-Bridging-Header.h"; sourceTree = "<group>"; };
 		32EF65221A86744C00E5150E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		32EF65241A8676CF00E5150E /* FlipsideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipsideViewController.swift; sourceTree = "<group>"; };
+		32FFD3BE1B5AAFCC0055D1E0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		32FFD3C01B5AAFEC0055D1E0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9E8B37017A0307B0000C352 /* ch12p325NotificationLeaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch12p325NotificationLeaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9E8B37317A0307B0000C352 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9E8B37517A0307B0000C352 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C9E8B37717A0307B0000C352 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C9E8B37B17A0307B0000C352 /* ch12p325NotificationLeaker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch12p325NotificationLeaker-Info.plist"; sourceTree = "<group>"; };
-		C9E8B37D17A0307B0000C352 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9E8B37F17A0307B0000C352 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9E8B38117A0307B0000C352 /* ch12p325NotificationLeaker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch12p325NotificationLeaker-Prefix.pch"; sourceTree = "<group>"; };
-		C9E8B38217A0307B0000C352 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C9E8B38317A0307B0000C352 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C9E8B37B17A0307B0000C352 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9E8B38617A0307B0000C352 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9E8B38E17A0307B0000C352 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9E8B39517A0307B0000C352 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C9E8B38E17A0307B0000C352 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,9 +33,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9E8B37617A0307B0000C352 /* CoreGraphics.framework in Frameworks */,
-				C9E8B37817A0307B0000C352 /* UIKit.framework in Frameworks */,
-				C9E8B37417A0307B0000C352 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				C9E8B37917A0307B0000C352 /* ch12p325NotificationLeaker */,
-				C9E8B37217A0307B0000C352 /* Frameworks */,
 				C9E8B37117A0307B0000C352 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,42 +55,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9E8B37217A0307B0000C352 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9E8B37317A0307B0000C352 /* Foundation.framework */,
-				C9E8B37517A0307B0000C352 /* CoreGraphics.framework */,
-				C9E8B37717A0307B0000C352 /* UIKit.framework */,
-				C9E8B39517A0307B0000C352 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C9E8B37917A0307B0000C352 /* ch12p325NotificationLeaker */ = {
 			isa = PBXGroup;
 			children = (
-				C9E8B38217A0307B0000C352 /* AppDelegate.h */,
-				C9E8B38317A0307B0000C352 /* AppDelegate.m */,
 				C9E8B38517A0307B0000C352 /* Main.storyboard */,
+				32FFD3C01B5AAFEC0055D1E0 /* AppDelegate.swift */,
 				32EF65221A86744C00E5150E /* MainViewController.swift */,
 				32EF65241A8676CF00E5150E /* FlipsideViewController.swift */,
 				3252F50E1A868943000BC6C7 /* CancelableTimer.swift */,
-				C9E8B38E17A0307B0000C352 /* Images.xcassets */,
-				C9E8B37A17A0307B0000C352 /* Supporting Files */,
-				32EF65211A86744C00E5150E /* ch12p325NotificationLeaker-Bridging-Header.h */,
+				C9E8B38E17A0307B0000C352 /* Assets.xcassets */,
+				32FFD3BE1B5AAFCC0055D1E0 /* LaunchScreen.storyboard */,
+				C9E8B37B17A0307B0000C352 /* Info.plist */,
 			);
 			path = ch12p325NotificationLeaker;
-			sourceTree = "<group>";
-		};
-		C9E8B37A17A0307B0000C352 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C9E8B37B17A0307B0000C352 /* ch12p325NotificationLeaker-Info.plist */,
-				C9E8B37C17A0307B0000C352 /* InfoPlist.strings */,
-				C9E8B37F17A0307B0000C352 /* main.m */,
-				C9E8B38117A0307B0000C352 /* ch12p325NotificationLeaker-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,8 +123,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9E8B38F17A0307B0000C352 /* Images.xcassets in Resources */,
-				C9E8B37E17A0307B0000C352 /* InfoPlist.strings in Resources */,
+				32FFD3BF1B5AAFCC0055D1E0 /* LaunchScreen.storyboard in Resources */,
+				C9E8B38F17A0307B0000C352 /* Assets.xcassets in Resources */,
 				C9E8B38717A0307B0000C352 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,8 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9E8B38417A0307B0000C352 /* AppDelegate.m in Sources */,
-				C9E8B38017A0307B0000C352 /* main.m in Sources */,
+				32FFD3C11B5AAFEC0055D1E0 /* AppDelegate.swift in Sources */,
 				32EF65251A8676CF00E5150E /* FlipsideViewController.swift in Sources */,
 				3252F50F1A868943000BC6C7 /* CancelableTimer.swift in Sources */,
 				32EF65231A86744C00E5150E /* MainViewController.swift in Sources */,
@@ -186,14 +146,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C9E8B37C17A0307B0000C352 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9E8B37D17A0307B0000C352 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C9E8B38517A0307B0000C352 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -236,7 +188,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -267,7 +219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -277,15 +229,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch12p325NotificationLeaker/ch12p325NotificationLeaker-Prefix.pch";
-				INFOPLIST_FILE = "ch12p325NotificationLeaker/ch12p325NotificationLeaker-Info.plist";
+				INFOPLIST_FILE = ch12p325NotificationLeaker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ch12p325NotificationLeaker/ch12p325NotificationLeaker-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -295,15 +246,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch12p325NotificationLeaker/ch12p325NotificationLeaker-Prefix.pch";
-				INFOPLIST_FILE = "ch12p325NotificationLeaker/ch12p325NotificationLeaker-Info.plist";
+				INFOPLIST_FILE = ch12p325NotificationLeaker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ch12p325NotificationLeaker/ch12p325NotificationLeaker-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

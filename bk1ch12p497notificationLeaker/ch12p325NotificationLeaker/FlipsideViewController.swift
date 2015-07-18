@@ -21,13 +21,13 @@ class FlipsideViewController: UIViewController {
             self.observer = NSNotificationCenter.defaultCenter().addObserverForName(
                 "woohoo", object:nil, queue:nil) {
                     _ in
-                    self.description; return // leak me, leak me
+                    self.description // leak me, leak me
             }
         case 1:
             self.observer = NSNotificationCenter.defaultCenter().addObserverForName(
                 "woohoo", object:nil, queue:nil) {
                     [unowned self] _ in // ha ha, fixed it
-                    self.description; return
+                    self.description
             }
         default:break
         }
@@ -35,18 +35,18 @@ class FlipsideViewController: UIViewController {
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        println("unregister")
+        print("unregister")
         NSNotificationCenter.defaultCenter().removeObserver(self.observer)
     }
     
     @IBAction func done (sender:AnyObject!) {
-        println("done")
+        print("done")
         self.delegate?.flipsideViewControllerDidFinish(self)
     }
     
     // if deinit is not called when you tap Done, we are leaking
     deinit {
-        println("deinit")
+        print("deinit")
     }
     
 }
