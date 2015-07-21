@@ -9,8 +9,9 @@ class ViewController: UIViewController {
 
     
     override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
-        print("vc did change")
+        print("trait collection did change")
         let tc = self.traitCollection
+        print(tc)
         if tc.horizontalSizeClass == .Regular {
             print("regular")
             if self.con1 != nil {

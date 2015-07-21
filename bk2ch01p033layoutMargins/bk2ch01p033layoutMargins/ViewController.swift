@@ -51,6 +51,16 @@ class ViewController: UIViewController {
                 v1.leftAnchor.constraintEqualToAnchor(v.layoutMarginsGuide.leftAnchor)
                 ])
             
+        case 3:
+            // new kind of margin, "readable content"
+            // particularly dramatic on iPad in landscape
+            NSLayoutConstraint.activateConstraints([
+                v1.topAnchor.constraintEqualToAnchor(v.readableContentGuide.topAnchor),
+                v1.bottomAnchor.constraintEqualToAnchor(v.readableContentGuide.bottomAnchor),
+                v1.rightAnchor.constraintEqualToAnchor(v.readableContentGuide.rightAnchor),
+                v1.leftAnchor.constraintEqualToAnchor(v.readableContentGuide.leftAnchor)
+                ])
+
         default:break
         }
         
