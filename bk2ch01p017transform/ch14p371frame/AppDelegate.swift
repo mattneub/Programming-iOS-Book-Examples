@@ -6,6 +6,8 @@ import UIKit
     
     var window : UIWindow?
     
+    let which = 1
+
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -13,7 +15,6 @@ import UIKit
         self.window!.rootViewController = UIViewController()
         let mainview = self.window!.rootViewController!.view
         
-        let which = 1
         switch which {
         case 1:
             let v1 = UIView(frame:CGRectMake(113, 111, 132, 194))
@@ -24,7 +25,7 @@ import UIKit
             v1.addSubview(v2)
             
             v1.transform = CGAffineTransformMakeRotation(45 * CGFloat(M_PI)/180.0)
-            println(v1.frame)
+            print(v1.frame)
             
         case 2:
             let v1 = UIView(frame:CGRectMake(113, 111, 132, 194))

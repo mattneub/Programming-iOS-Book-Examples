@@ -4,6 +4,8 @@ import UIKit
     
     var window : UIWindow?
     
+    let which = 1
+
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -11,7 +13,6 @@ import UIKit
         self.window!.rootViewController = UIViewController()
         let mainview = self.window!.rootViewController!.view
         
-        let which = 1
         switch which {
         case 1:
             let v1 = UIView(frame:CGRectMake(113, 111, 132, 194))

@@ -11,7 +11,7 @@ func delay(delay:Double, closure:()->()) {
 
 func dictionaryOfNames(arr:UIView...) -> [String:UIView] {
     var d = [String:UIView]()
-    for (ix,v) in enumerate(arr) {
+    for (ix,v) in arr.enumerate() {
         d["v\(ix+1)"] = v
     }
     return d
@@ -22,8 +22,8 @@ extension NSLayoutConstraint {
         if v == nil {
             v = UIApplication.sharedApplication().keyWindow
         }
-        for vv in v!.subviews as! [UIView] {
-            println("\(vv) \(vv.hasAmbiguousLayout())")
+        for vv in v!.subviews {
+            print("\(vv) \(vv.hasAmbiguousLayout())")
             if vv.subviews.count > 0 {
                 self.reportAmbiguity(vv)
             }
@@ -33,7 +33,7 @@ extension NSLayoutConstraint {
         if v == nil {
             v = UIApplication.sharedApplication().keyWindow
         }
-        for vv in v!.subviews as! [UIView] {
+        for vv in v!.subviews {
             let arr1 = vv.constraintsAffectingLayoutForAxis(.Horizontal)
             let arr2 = vv.constraintsAffectingLayoutForAxis(.Vertical)
             NSLog("\n\n%@\nH: %@\nV:%@", vv, arr1, arr2);
@@ -47,7 +47,8 @@ extension NSLayoutConstraint {
 @UIApplicationMain class AppDelegate : UIResponder, UIApplicationDelegate {
     
     var window : UIWindow?
-    
+    let which = 2
+
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -66,13 +67,12 @@ extension NSLayoutConstraint {
         v1.addSubview(v2)
         v1.addSubview(v3)
         
-        v2.setTranslatesAutoresizingMaskIntoConstraints(false)
-        v3.setTranslatesAutoresizingMaskIntoConstraints(false)
+        v2.translatesAutoresizingMaskIntoConstraints = false
+        v3.translatesAutoresizingMaskIntoConstraints = false
         
-        var which = 1
         switch which {
         case 1:
-            
+            // the old way, and this is the last time I'm going to show this
             v1.addConstraint(
                 NSLayoutConstraint(item: v2,
                     attribute: .Left,
@@ -137,8 +137,22 @@ extension NSLayoutConstraint {
                     attribute: .Bottom,
                     multiplier: 1, constant: 0)
             )
+        case 2: // new API in iOS 9 for making constraints individually
+            // and we should now be activating constraints, not adding them...
+            // to a specific view
+            // whereever possible, activate all the constraints at once
+            NSLayoutConstraint.activateConstraints([
+                v2.leftAnchor.constraintEqualToAnchor(v1.leftAnchor),
+                v2.rightAnchor.constraintEqualToAnchor(v1.rightAnchor),
+                v2.topAnchor.constraintEqualToAnchor(v1.topAnchor),
+                v2.heightAnchor.constraintEqualToConstant(10),
+                v3.widthAnchor.constraintEqualToConstant(20),
+                v3.heightAnchor.constraintEqualToConstant(20),
+                v3.rightAnchor.constraintEqualToAnchor(v1.rightAnchor),
+                v3.bottomAnchor.constraintEqualToAnchor(v1.bottomAnchor)
+            ])
 
-        case 2:
+        case 3:
             
             // NSDictionaryOfVariableBindings(v2,v3) // it's a macro, no macros in Swift
             
@@ -146,22 +160,16 @@ extension NSLayoutConstraint {
             // okay, that's boring...
             // let's write our own Swift NSDictionaryOfVariableBindings substitute (sort of)
             let d = dictionaryOfNames(v1,v2,v3)
-            v1.addConstraints(
+            NSLayoutConstraint.activateConstraints([
                 NSLayoutConstraint.constraintsWithVisualFormat(
-                    "H:|[v2]|", options: nil, metrics: nil, views: d)
-            )
-            v1.addConstraints(
+                    "H:|[v2]|", options: [], metrics: nil, views: d),
                 NSLayoutConstraint.constraintsWithVisualFormat(
-                    "V:|[v2(10)]", options: nil, metrics: nil, views: d)
-            )
-            v1.addConstraints(
+                    "V:|[v2(10)]", options: [], metrics: nil, views: d),
                 NSLayoutConstraint.constraintsWithVisualFormat(
-                    "H:[v3(20)]|", options: nil, metrics: nil, views: d)
-            )
-            v1.addConstraints(
+                    "H:[v3(20)]|", options: [], metrics: nil, views: d),
                 NSLayoutConstraint.constraintsWithVisualFormat(
-                    "V:[v3(20)]|", options: nil, metrics: nil, views: d)
-            )
+                    "V:[v3(20)]|", options: [], metrics: nil, views: d)
+                ].flatMap{$0}) // sorry about that but I see no better way
         default: break
         }
         

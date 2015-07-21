@@ -9,15 +9,17 @@ class ViewController: UIViewController {
 
     
     override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
-        println("vc did change")
+        print("vc did change")
         let tc = self.traitCollection
         if tc.horizontalSizeClass == .Regular {
-            println("regular")
+            print("regular")
             if self.con1 != nil {
-                println("changing constraints")
-                self.view.removeConstraints([self.con1, self.con2])
-                self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[tg]-[lab]", options: nil, metrics: nil, views: ["tg":self.topLayoutGuide, "lab":self.lab]))
-                self.view.addConstraint(NSLayoutConstraint(item: self.lab, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1, constant: 0))
+                print("changing constraints")
+                NSLayoutConstraint.deactivateConstraints([self.con1, self.con2])
+                NSLayoutConstraint.activateConstraints([
+                    NSLayoutConstraint.constraintsWithVisualFormat("V:[tg]-[lab]", options: [], metrics: nil, views: ["tg":self.topLayoutGuide, "lab":self.lab]),
+                    [self.lab.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)]
+                    ].flatMap{$0})
                 let sz = self.lab.font.pointSize * 2
                 self.lab.font = self.lab.font.fontWithSize(sz)
             }

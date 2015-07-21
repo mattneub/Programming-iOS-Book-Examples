@@ -2,7 +2,7 @@
 
 import UIKit
 
-class MyView: UIView, Printable {
+class MyView: UIView {
     
     @IBInspectable var name : String?
     // new Xcode 6 feature, edit properties in Attributes inspector instead of Runtime Attributes
@@ -19,8 +19,8 @@ class MyView: UIView, Printable {
     @IBInspectable var mySize : CGSize? = CGSizeZero
     @IBInspectable var myColor : UIColor? = UIColor.redColor()
     @IBInspectable var myImage : UIImage?
-    //@IBInspectable var myRange : Range<Int>? = 1...3 // nope
-    //@IBInspectable var someView : UIView? // nope
+//    @IBInspectable var myRange : Range<Int>? = 1...3 // nope
+//    @IBInspectable var someView : UIView? // nope
     
     override var description : String {
         return super.description + "\n" + (self.name ?? "noname")
@@ -28,29 +28,29 @@ class MyView: UIView, Printable {
     
     override func updateConstraints() {
         super.updateConstraints()
-        println("\(self)\n\(__FUNCTION__)\n")
+        print("\(self)\n\(__FUNCTION__)\n")
     }
     
     // gets an extra cycle, I've no idea why
     override func layoutSublayersOfLayer(layer: CALayer) {
         super.layoutSublayersOfLayer(layer)
-        println("\(self)\n\(__FUNCTION__)\n")
+        print("\(self)\n\(__FUNCTION__)\n")
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        println("\(self)\n\(__FUNCTION__)\n")
+        print("\(self)\n\(__FUNCTION__)\n")
     }
     
     override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
         // super.traitCollectionDidChange(previousTraitCollection)
-        println("\(self)\n\(__FUNCTION__)\n")
+        print("\(self)\n\(__FUNCTION__)\n")
 //        let prev : UITraitCollection? = previousTraitCollection
 //        if prev == nil {
-//            println("nil")
+//            print("nil")
 //        }
 //        let none = "none"
-//        println("old: \(previousTraitCollection ?? none)\n")
+//        print("old: \(previousTraitCollection ?? none)\n")
     }
     
     override class func layerClass() -> AnyClass {
@@ -61,6 +61,7 @@ class MyView: UIView, Printable {
 class MyLoggingLayer : CALayer {
     override func layoutSublayers() {
         super.layoutSublayers()
-        println("layer of \(self.delegate)\n\(__FUNCTION__)\n")
+        guard let del = self.delegate else {return}
+        print("layer of \(del)\n\(__FUNCTION__)\n")
     }
 }

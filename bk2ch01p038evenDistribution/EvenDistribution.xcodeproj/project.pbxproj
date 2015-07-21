@@ -7,44 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320229F41B5D61ED00976D91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 320229F31B5D61ED00976D91 /* LaunchScreen.storyboard */; };
 		32C081B019B7909B0027DCB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C081AF19B7909B0027DCB2 /* AppDelegate.swift */; };
 		32C081B219B7909B0027DCB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C081B119B7909B0027DCB2 /* ViewController.swift */; };
 		32C081B519B7909B0027DCB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C081B319B7909B0027DCB2 /* Main.storyboard */; };
-		32C081B719B7909B0027DCB2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C081B619B7909B0027DCB2 /* Images.xcassets */; };
-		32C081C319B7909B0027DCB2 /* EvenDistributionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C081C219B7909B0027DCB2 /* EvenDistributionTests.swift */; };
+		32C081B719B7909B0027DCB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C081B619B7909B0027DCB2 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		32C081BD19B7909B0027DCB2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 32C081A219B7909B0027DCB2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 32C081A919B7909B0027DCB2;
-			remoteInfo = EvenDistribution;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		320229F31B5D61ED00976D91 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32C081AA19B7909B0027DCB2 /* EvenDistribution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EvenDistribution.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C081AE19B7909B0027DCB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C081AF19B7909B0027DCB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32C081B119B7909B0027DCB2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32C081B419B7909B0027DCB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32C081B619B7909B0027DCB2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		32C081BC19B7909B0027DCB2 /* EvenDistributionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EvenDistributionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		32C081C119B7909B0027DCB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32C081C219B7909B0027DCB2 /* EvenDistributionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvenDistributionTests.swift; sourceTree = "<group>"; };
+		32C081B619B7909B0027DCB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		32C081A719B7909B0027DCB2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32C081B919B7909B0027DCB2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -58,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				32C081AC19B7909B0027DCB2 /* EvenDistribution */,
-				32C081BF19B7909B0027DCB2 /* EvenDistributionTests */,
 				32C081AB19B7909B0027DCB2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				32C081AA19B7909B0027DCB2 /* EvenDistribution.app */,
-				32C081BC19B7909B0027DCB2 /* EvenDistributionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,35 +57,11 @@
 				32C081AF19B7909B0027DCB2 /* AppDelegate.swift */,
 				32C081B119B7909B0027DCB2 /* ViewController.swift */,
 				32C081B319B7909B0027DCB2 /* Main.storyboard */,
-				32C081B619B7909B0027DCB2 /* Images.xcassets */,
-				32C081AD19B7909B0027DCB2 /* Supporting Files */,
-			);
-			path = EvenDistribution;
-			sourceTree = "<group>";
-		};
-		32C081AD19B7909B0027DCB2 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				32C081B619B7909B0027DCB2 /* Assets.xcassets */,
+				320229F31B5D61ED00976D91 /* LaunchScreen.storyboard */,
 				32C081AE19B7909B0027DCB2 /* Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		32C081BF19B7909B0027DCB2 /* EvenDistributionTests */ = {
-			isa = PBXGroup;
-			children = (
-				32C081C219B7909B0027DCB2 /* EvenDistributionTests.swift */,
-				32C081C019B7909B0027DCB2 /* Supporting Files */,
-			);
-			path = EvenDistributionTests;
-			sourceTree = "<group>";
-		};
-		32C081C019B7909B0027DCB2 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				32C081C119B7909B0027DCB2 /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = EvenDistribution;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,39 +84,18 @@
 			productReference = 32C081AA19B7909B0027DCB2 /* EvenDistribution.app */;
 			productType = "com.apple.product-type.application";
 		};
-		32C081BB19B7909B0027DCB2 /* EvenDistributionTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 32C081C919B7909B0027DCB2 /* Build configuration list for PBXNativeTarget "EvenDistributionTests" */;
-			buildPhases = (
-				32C081B819B7909B0027DCB2 /* Sources */,
-				32C081B919B7909B0027DCB2 /* Frameworks */,
-				32C081BA19B7909B0027DCB2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				32C081BE19B7909B0027DCB2 /* PBXTargetDependency */,
-			);
-			name = EvenDistributionTests;
-			productName = EvenDistributionTests;
-			productReference = 32C081BC19B7909B0027DCB2 /* EvenDistributionTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		32C081A219B7909B0027DCB2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					32C081A919B7909B0027DCB2 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					32C081BB19B7909B0027DCB2 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 32C081A919B7909B0027DCB2;
 					};
 				};
 			};
@@ -179,7 +113,6 @@
 			projectRoot = "";
 			targets = (
 				32C081A919B7909B0027DCB2 /* EvenDistribution */,
-				32C081BB19B7909B0027DCB2 /* EvenDistributionTests */,
 			);
 		};
 /* End PBXProject section */
@@ -189,15 +122,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320229F41B5D61ED00976D91 /* LaunchScreen.storyboard in Resources */,
 				32C081B519B7909B0027DCB2 /* Main.storyboard in Resources */,
-				32C081B719B7909B0027DCB2 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32C081BA19B7909B0027DCB2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				32C081B719B7909B0027DCB2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,23 +140,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		32C081B819B7909B0027DCB2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				32C081C319B7909B0027DCB2 /* EvenDistributionTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		32C081BE19B7909B0027DCB2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 32C081A919B7909B0027DCB2 /* EvenDistribution */;
-			targetProxy = 32C081BD19B7909B0027DCB2 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		32C081B319B7909B0027DCB2 /* Main.storyboard */ = {
@@ -277,7 +188,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -313,7 +224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -324,7 +235,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = EvenDistribution/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -335,44 +245,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = EvenDistribution/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		32C081CA19B7909B0027DCB2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = EvenDistributionTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EvenDistribution.app/EvenDistribution";
-			};
-			name = Debug;
-		};
-		32C081CB19B7909B0027DCB2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = EvenDistributionTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EvenDistribution.app/EvenDistribution";
 			};
 			name = Release;
 		};
@@ -395,14 +270,7 @@
 				32C081C819B7909B0027DCB2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		32C081C919B7909B0027DCB2 /* Build configuration list for PBXNativeTarget "EvenDistributionTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				32C081CA19B7909B0027DCB2 /* Debug */,
-				32C081CB19B7909B0027DCB2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

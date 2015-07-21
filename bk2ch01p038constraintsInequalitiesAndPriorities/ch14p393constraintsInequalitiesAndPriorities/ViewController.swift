@@ -3,7 +3,7 @@ import UIKit
 
 func dictionaryOfNames(arr:UIView...) -> [String:UIView] {
     var d = [String:UIView]()
-    for (ix,v) in enumerate(arr) {
+    for (ix,v) in arr.enumerate() {
         d["v\(ix+1)"] = v
     }
     return d
@@ -28,31 +28,23 @@ class ViewController : UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidLoad()
         
-        self.lab1.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.lab2.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.lab1.translatesAutoresizingMaskIntoConstraints = false
+        self.lab2.translatesAutoresizingMaskIntoConstraints = false
         
         let d = dictionaryOfNames(lab1,lab2)
         
-        self.view.addConstraints(
+        NSLayoutConstraint.activateConstraints([
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-20-[v1]", options: nil, metrics: nil, views: d)
-        )
-        self.view.addConstraints(
+                "V:|-20-[v1]", options: [], metrics: nil, views: d),
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-20-[v2]", options: nil, metrics: nil, views: d)
-        )
-        self.view.addConstraints(
+                "V:|-20-[v2]", options: [], metrics: nil, views: d),
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-20-[v1]", options: nil, metrics: nil, views: d)
-        )
-        self.view.addConstraints(
+                "H:|-20-[v1]", options: [], metrics: nil, views: d),
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:[v2]-20-|", options: nil, metrics: nil, views: d)
-        )
-        self.view.addConstraints(
+                "H:[v2]-20-|", options: [], metrics: nil, views: d),
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:[v1(>=20)]-(>=20)-[v2(>=20)]", options: nil, metrics: nil, views: d)
-        )
+                "H:[v1(>=100)]-(>=20)-[v2(>=100)]", options: [], metrics: nil, views: d)
+            ].flatMap{$0})
         // added width shrinkage limit to both labels, so neither gets driven down to invisibility
         
         // we will be ambiguous when the label texts grow
@@ -68,28 +60,22 @@ class ViewController : UIViewController {
         
         // =====================================
         
-        self.button.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.button.translatesAutoresizingMaskIntoConstraints = false
+        self.label.translatesAutoresizingMaskIntoConstraints = false
         
         let d2 = dictionaryOfNames(button, label)
-        self.view.addConstraints(
+        NSLayoutConstraint.activateConstraints([
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:[v1]-(112)-|", options: nil, metrics: nil, views: d2)
-        )
-        self.view.addConstraints(
+                "V:[v1]-(112)-|", options: [], metrics: nil, views: d2),
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "H:|-(>=10)-[v2]-[v1]-(>=10)-|",
                 options: NSLayoutFormatOptions.AlignAllBaseline,
                 metrics: nil, views: d2)
-        )
-        let con = NSLayoutConstraint(item: button,
-            attribute: .CenterX,
-            relatedBy: .Equal,
-            toItem: self.view,
-            attribute: .CenterX,
-            multiplier: 1, constant: 0)
+            ].flatMap{$0})
+        
+        let con = button.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
         con.priority = 700 // try commenting this out to see the difference in behavior
-        self.view.addConstraint(con)
+        NSLayoutConstraint.activateConstraints([con])
 
 
         

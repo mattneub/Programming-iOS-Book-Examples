@@ -3,9 +3,9 @@
 import UIKit
 
 /*
-Demonstrating the Designable View feature, new in Xcode 6.
+Demonstrating the Designable View feature.
 The view must be marked IBDesignable.
-(In early betas it also had to live in its own framework, but no longer.)
+(In early betas of Xcode 6 it also had to live in its own framework, but no longer.)
 The result is that the storyboard draws the view more or less as it will appear.
 Thus, even though this view adds its own subviews in code, you can still see them in IB!
 The representation is not perfect but it's pretty good.
@@ -15,16 +15,12 @@ The representation is not perfect but it's pretty good.
     
     @IBInspectable var name : String!
     
-    // My experience is that you must supply both inits even though they just call super
-    // Otherwise IB can crash
-    // no longer seems to be needed!
-    
     override init(frame: CGRect) {
         super.init(frame:frame)
         self.configure()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
         self.configure()
     }
@@ -36,73 +32,21 @@ The representation is not perfect but it's pretty good.
         let v3 = UIView()
         v3.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
         
-        v2.setTranslatesAutoresizingMaskIntoConstraints(false)
-        v3.setTranslatesAutoresizingMaskIntoConstraints(false)
+        v2.translatesAutoresizingMaskIntoConstraints = false
+        v3.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(v2)
         self.addSubview(v3)
         
-        self.addConstraint(
-            NSLayoutConstraint(item: v2,
-                attribute: .Left,
-                relatedBy: .Equal,
-                toItem: self,
-                attribute: .Left,
-                multiplier: 1, constant: 0)
-        )
-        self.addConstraint(
-            NSLayoutConstraint(item: v2,
-                attribute: .Right,
-                relatedBy: .Equal,
-                toItem: self,
-                attribute: .Right,
-                multiplier: 1, constant: 0)
-        )
-        self.addConstraint(
-            NSLayoutConstraint(item: v2,
-                attribute: .Top,
-                relatedBy: .Equal,
-                toItem: self,
-                attribute: .Top,
-                multiplier: 1, constant: 0)
-        )
-        let c1 = NSLayoutConstraint(item: v2,
-            attribute: .Height,
-            relatedBy: .Equal,
-            toItem: nil,
-            attribute: .NotAnAttribute,
-            multiplier: 1, constant: 10)
-        v2.addConstraint(c1)
-        let c2 = NSLayoutConstraint(item: v3,
-            attribute: .Width,
-            relatedBy: .Equal,
-            toItem: nil,
-            attribute: .NotAnAttribute,
-            multiplier: 1, constant: 20)
-        v3.addConstraint(c2)
-        v3.addConstraint(
-            NSLayoutConstraint(item: v3,
-                attribute: .Height,
-                relatedBy: .Equal,
-                toItem: v3,
-                attribute: .Width,
-                multiplier: 1, constant: 0)
-        )
-        self.addConstraint(
-            NSLayoutConstraint(item: v3,
-                attribute: .Right,
-                relatedBy: .Equal,
-                toItem: self,
-                attribute: .Right,
-                multiplier: 1, constant: 0)
-        )
-        self.addConstraint(
-            NSLayoutConstraint(item: v3,
-                attribute: .Bottom,
-                relatedBy: .Equal,
-                toItem: self,
-                attribute: .Bottom,
-                multiplier: 1, constant: 0)
-        )
+        NSLayoutConstraint.activateConstraints([
+            v2.leftAnchor.constraintEqualToAnchor(self.leftAnchor),
+            v2.rightAnchor.constraintEqualToAnchor(self.rightAnchor),
+            v2.topAnchor.constraintEqualToAnchor(self.topAnchor),
+            v2.heightAnchor.constraintEqualToConstant(10),
+            v3.widthAnchor.constraintEqualToConstant(20),
+            v3.heightAnchor.constraintEqualToAnchor(v3.widthAnchor),
+            v3.rightAnchor.constraintEqualToAnchor(self.rightAnchor),
+            v3.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor),
+        ])
     }
     
     override func prepareForInterfaceBuilder() {

@@ -10,19 +10,9 @@
 		32133F8D19B750940066F8B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32133F8C19B750940066F8B3 /* AppDelegate.swift */; };
 		32133F8F19B750940066F8B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32133F8E19B750940066F8B3 /* ViewController.swift */; };
 		32133F9219B750940066F8B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32133F9019B750940066F8B3 /* Main.storyboard */; };
-		32133F9419B750940066F8B3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32133F9319B750940066F8B3 /* Images.xcassets */; };
-		32133FA019B750940066F8B3 /* bk2ch01p033layoutMarginsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32133F9F19B750940066F8B3 /* bk2ch01p033layoutMarginsTests.swift */; };
+		32133F9419B750940066F8B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32133F9319B750940066F8B3 /* Assets.xcassets */; };
+		3269DF0E1B5D4FB1002FAED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3269DF0D1B5D4FB1002FAED1 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		32133F9A19B750940066F8B3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 32133F7F19B750940066F8B3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 32133F8619B750940066F8B3;
-			remoteInfo = bk2ch01p033layoutMargins;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		32133F8719B750940066F8B3 /* bk2ch01p033layoutMargins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk2ch01p033layoutMargins.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,21 +20,12 @@
 		32133F8C19B750940066F8B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32133F8E19B750940066F8B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32133F9119B750940066F8B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32133F9319B750940066F8B3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		32133F9919B750940066F8B3 /* bk2ch01p033layoutMarginsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bk2ch01p033layoutMarginsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		32133F9E19B750940066F8B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32133F9F19B750940066F8B3 /* bk2ch01p033layoutMarginsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bk2ch01p033layoutMarginsTests.swift; sourceTree = "<group>"; };
+		32133F9319B750940066F8B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3269DF0D1B5D4FB1002FAED1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		32133F8419B750940066F8B3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32133F9619B750940066F8B3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -58,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				32133F8919B750940066F8B3 /* bk2ch01p033layoutMargins */,
-				32133F9C19B750940066F8B3 /* bk2ch01p033layoutMarginsTests */,
 				32133F8819B750940066F8B3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				32133F8719B750940066F8B3 /* bk2ch01p033layoutMargins.app */,
-				32133F9919B750940066F8B3 /* bk2ch01p033layoutMarginsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,35 +57,11 @@
 				32133F8C19B750940066F8B3 /* AppDelegate.swift */,
 				32133F8E19B750940066F8B3 /* ViewController.swift */,
 				32133F9019B750940066F8B3 /* Main.storyboard */,
-				32133F9319B750940066F8B3 /* Images.xcassets */,
-				32133F8A19B750940066F8B3 /* Supporting Files */,
-			);
-			path = bk2ch01p033layoutMargins;
-			sourceTree = "<group>";
-		};
-		32133F8A19B750940066F8B3 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				32133F9319B750940066F8B3 /* Assets.xcassets */,
+				3269DF0D1B5D4FB1002FAED1 /* LaunchScreen.storyboard */,
 				32133F8B19B750940066F8B3 /* Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		32133F9C19B750940066F8B3 /* bk2ch01p033layoutMarginsTests */ = {
-			isa = PBXGroup;
-			children = (
-				32133F9F19B750940066F8B3 /* bk2ch01p033layoutMarginsTests.swift */,
-				32133F9D19B750940066F8B3 /* Supporting Files */,
-			);
-			path = bk2ch01p033layoutMarginsTests;
-			sourceTree = "<group>";
-		};
-		32133F9D19B750940066F8B3 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				32133F9E19B750940066F8B3 /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = bk2ch01p033layoutMargins;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,39 +84,18 @@
 			productReference = 32133F8719B750940066F8B3 /* bk2ch01p033layoutMargins.app */;
 			productType = "com.apple.product-type.application";
 		};
-		32133F9819B750940066F8B3 /* bk2ch01p033layoutMarginsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 32133FA619B750940066F8B3 /* Build configuration list for PBXNativeTarget "bk2ch01p033layoutMarginsTests" */;
-			buildPhases = (
-				32133F9519B750940066F8B3 /* Sources */,
-				32133F9619B750940066F8B3 /* Frameworks */,
-				32133F9719B750940066F8B3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				32133F9B19B750940066F8B3 /* PBXTargetDependency */,
-			);
-			name = bk2ch01p033layoutMarginsTests;
-			productName = bk2ch01p033layoutMarginsTests;
-			productReference = 32133F9919B750940066F8B3 /* bk2ch01p033layoutMarginsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		32133F7F19B750940066F8B3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					32133F8619B750940066F8B3 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					32133F9819B750940066F8B3 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 32133F8619B750940066F8B3;
 					};
 				};
 			};
@@ -179,7 +113,6 @@
 			projectRoot = "";
 			targets = (
 				32133F8619B750940066F8B3 /* bk2ch01p033layoutMargins */,
-				32133F9819B750940066F8B3 /* bk2ch01p033layoutMarginsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -189,15 +122,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3269DF0E1B5D4FB1002FAED1 /* LaunchScreen.storyboard in Resources */,
 				32133F9219B750940066F8B3 /* Main.storyboard in Resources */,
-				32133F9419B750940066F8B3 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32133F9719B750940066F8B3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				32133F9419B750940066F8B3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,23 +140,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		32133F9519B750940066F8B3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				32133FA019B750940066F8B3 /* bk2ch01p033layoutMarginsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		32133F9B19B750940066F8B3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 32133F8619B750940066F8B3 /* bk2ch01p033layoutMargins */;
-			targetProxy = 32133F9A19B750940066F8B3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		32133F9019B750940066F8B3 /* Main.storyboard */ = {
@@ -277,7 +188,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -313,7 +224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -324,7 +235,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = bk2ch01p033layoutMargins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -335,44 +245,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = bk2ch01p033layoutMargins/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		32133FA719B750940066F8B3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = bk2ch01p033layoutMarginsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bk2ch01p033layoutMargins.app/bk2ch01p033layoutMargins";
-			};
-			name = Debug;
-		};
-		32133FA819B750940066F8B3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = bk2ch01p033layoutMarginsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bk2ch01p033layoutMargins.app/bk2ch01p033layoutMargins";
 			};
 			name = Release;
 		};
@@ -395,14 +270,7 @@
 				32133FA519B750940066F8B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		32133FA619B750940066F8B3 /* Build configuration list for PBXNativeTarget "bk2ch01p033layoutMarginsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				32133FA719B750940066F8B3 /* Debug */,
-				32133FA819B750940066F8B3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

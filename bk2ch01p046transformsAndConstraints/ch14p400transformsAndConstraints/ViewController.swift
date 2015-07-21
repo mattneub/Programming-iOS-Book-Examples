@@ -20,7 +20,7 @@ class ViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.noConstraintsView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.noConstraintsView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     @IBAction func doButton(g:UIGestureRecognizer) {
@@ -35,13 +35,13 @@ class ViewController : UIViewController {
     }
     
     func grow(v:UIView) {
-        println("grow \(v)")
+        print("grow \(v)")
         v.transform = CGAffineTransformScale(v.transform, 1.2, 1.2)
         
     }
     
     @IBAction func growLayer(g:UIGestureRecognizer) {
-        println("growLayer")
+        print("growLayer")
         let v = g.view!
         v.layer.transform = CATransform3DScale(v.layer.transform, 1.2, 1.2, 1)
     }

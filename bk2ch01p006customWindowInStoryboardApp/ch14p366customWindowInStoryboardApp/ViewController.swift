@@ -4,11 +4,11 @@ import UIKit
 class ViewController : UIViewController {
     override func viewDidAppear(animated: Bool)  {
         super.viewDidAppear(animated)
-        println(self.view.window!)
-        println(UIApplication.sharedApplication().delegate!.window!!) // kind of wacky, there, Swift
-        println((UIApplication.sharedApplication().delegate as! AppDelegate).window!)
-        println(UIApplication.sharedApplication().keyWindow!)
-        println(UIApplication.sharedApplication().windows.count) // prove there's just the one, ours
+        print(self.view.window!)
+        print(UIApplication.sharedApplication().delegate!.window!!) // kind of wacky, there, Swift
+        print((UIApplication.sharedApplication().delegate as! AppDelegate).window!)
+        print(UIApplication.sharedApplication().keyWindow!)
+        print(UIApplication.sharedApplication().windows.count) // prove there's just the one, ours
     }
     
     // for end of chapter 5 example

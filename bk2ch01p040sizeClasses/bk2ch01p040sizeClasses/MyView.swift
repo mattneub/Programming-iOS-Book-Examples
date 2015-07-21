@@ -20,73 +20,24 @@ class MyView: UIView {
         let v3 = UIView()
         v3.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
         
-        v2.setTranslatesAutoresizingMaskIntoConstraints(false)
-        v3.setTranslatesAutoresizingMaskIntoConstraints(false)
+        v2.translatesAutoresizingMaskIntoConstraints = false
+        v3.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(v2)
         self.addSubview(v3)
         
-        self.addConstraint(
-            NSLayoutConstraint(item: v2,
-                attribute: .Left,
-                relatedBy: .Equal,
-                toItem: self,
-                attribute: .Left,
-                multiplier: 1, constant: 0)
-        )
-        self.addConstraint(
-            NSLayoutConstraint(item: v2,
-                attribute: .Right,
-                relatedBy: .Equal,
-                toItem: self,
-                attribute: .Right,
-                multiplier: 1, constant: 0)
-        )
-        self.addConstraint(
-            NSLayoutConstraint(item: v2,
-                attribute: .Top,
-                relatedBy: .Equal,
-                toItem: self,
-                attribute: .Top,
-                multiplier: 1, constant: 0)
-        )
-        self.c1 = NSLayoutConstraint(item: v2,
-            attribute: .Height,
-            relatedBy: .Equal,
-            toItem: nil,
-            attribute: .NotAnAttribute,
-            multiplier: 1, constant: 0) // not really
-        v2.addConstraint(c1)
-        self.c2 = NSLayoutConstraint(item: v3,
-            attribute: .Width,
-            relatedBy: .Equal,
-            toItem: nil,
-            attribute: .NotAnAttribute,
-            multiplier: 1, constant: 0) // not really
-        v3.addConstraint(c2)
-        v3.addConstraint(
-            NSLayoutConstraint(item: v3,
-                attribute: .Height,
-                relatedBy: .Equal,
-                toItem: v3,
-                attribute: .Width,
-                multiplier: 1, constant: 0)
-        )
-        self.addConstraint(
-            NSLayoutConstraint(item: v3,
-                attribute: .Right,
-                relatedBy: .Equal,
-                toItem: self,
-                attribute: .Right,
-                multiplier: 1, constant: 0)
-        )
-        self.addConstraint(
-            NSLayoutConstraint(item: v3,
-                attribute: .Bottom,
-                relatedBy: .Equal,
-                toItem: self,
-                attribute: .Bottom,
-                multiplier: 1, constant: 0)
-        )
+        
+        self.c1 = v2.heightAnchor.constraintEqualToConstant(0) // not really
+        self.c2 = v3.widthAnchor.constraintEqualToConstant(0) // not really
+        NSLayoutConstraint.activateConstraints([
+            c1,
+            c2,
+            v2.leftAnchor.constraintEqualToAnchor(self.leftAnchor),
+            v2.rightAnchor.constraintEqualToAnchor(self.rightAnchor),
+            v2.topAnchor.constraintEqualToAnchor(self.topAnchor),
+            v3.heightAnchor.constraintEqualToAnchor(v3.widthAnchor),
+            v3.rightAnchor.constraintEqualToAnchor(self.rightAnchor),
+            v3.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor),
+        ])
     }
     
     override func willMoveToSuperview(newSuperview: UIView!) {
@@ -99,12 +50,12 @@ class MyView: UIView {
         let d2 : CGFloat = comp ? 20 : 80
         self.c1.constant = d1
         self.c2.constant = d2
-        println("\(d1) \(d2)")
+        print("\(d1) \(d2)")
         super.updateConstraints()
     }
     
     override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
-        println("did change")
+        print("did change")
         self.setNeedsUpdateConstraints()
     }
 

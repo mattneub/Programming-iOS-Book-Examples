@@ -10,25 +10,20 @@
 		329DFA2119C0FB2B0076B82B /* MyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329DFA2019C0FB2B0076B82B /* MyWindow.swift */; };
 		32A9E13F196897CB00E95B5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A9E13E196897CB00E95B5F /* AppDelegate.swift */; };
 		32A9E141196898FC00E95B5F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A9E140196898FC00E95B5F /* ViewController.swift */; };
-		C910761A17A82CD30074C87B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C910761917A82CD30074C87B /* Foundation.framework */; };
-		C910761C17A82CD30074C87B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C910761B17A82CD30074C87B /* CoreGraphics.framework */; };
-		C910761E17A82CD30074C87B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C910761D17A82CD30074C87B /* UIKit.framework */; };
+		32AB96E71B5C75E900D5B6E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AB96E61B5C75E900D5B6E8 /* LaunchScreen.storyboard */; };
 		C910762D17A82CD30074C87B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C910762B17A82CD30074C87B /* Main.storyboard */; };
-		C910763217A82CD30074C87B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C910763117A82CD30074C87B /* Images.xcassets */; };
+		C910763217A82CD30074C87B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C910763117A82CD30074C87B /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		329DFA2019C0FB2B0076B82B /* MyWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWindow.swift; sourceTree = "<group>"; };
 		32A9E13E196897CB00E95B5F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32A9E140196898FC00E95B5F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32AB96E61B5C75E900D5B6E8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C910761617A82CD30074C87B /* ch14p366customWindowInStoryboardApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch14p366customWindowInStoryboardApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C910761917A82CD30074C87B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C910761B17A82CD30074C87B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C910761D17A82CD30074C87B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C910762117A82CD30074C87B /* ch14p366customWindowInStoryboardApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch14p366customWindowInStoryboardApp-Info.plist"; sourceTree = "<group>"; };
 		C910762C17A82CD30074C87B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C910763117A82CD30074C87B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C910763817A82CD30074C87B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C910763117A82CD30074C87B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,9 +31,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C910761C17A82CD30074C87B /* CoreGraphics.framework in Frameworks */,
-				C910761E17A82CD30074C87B /* UIKit.framework in Frameworks */,
-				C910761A17A82CD30074C87B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				C910761F17A82CD30074C87B /* ch14p366customWindowInStoryboardApp */,
-				C910761817A82CD30074C87B /* Frameworks */,
 				C910761717A82CD30074C87B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,17 +53,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C910761817A82CD30074C87B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C910761917A82CD30074C87B /* Foundation.framework */,
-				C910761B17A82CD30074C87B /* CoreGraphics.framework */,
-				C910761D17A82CD30074C87B /* UIKit.framework */,
-				C910763817A82CD30074C87B /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C910761F17A82CD30074C87B /* ch14p366customWindowInStoryboardApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,18 +60,11 @@
 				329DFA2019C0FB2B0076B82B /* MyWindow.swift */,
 				C910762B17A82CD30074C87B /* Main.storyboard */,
 				32A9E140196898FC00E95B5F /* ViewController.swift */,
-				C910763117A82CD30074C87B /* Images.xcassets */,
-				C910762017A82CD30074C87B /* Supporting Files */,
+				C910763117A82CD30074C87B /* Assets.xcassets */,
+				C910762117A82CD30074C87B /* ch14p366customWindowInStoryboardApp-Info.plist */,
+				32AB96E61B5C75E900D5B6E8 /* LaunchScreen.storyboard */,
 			);
 			path = ch14p366customWindowInStoryboardApp;
-			sourceTree = "<group>";
-		};
-		C910762017A82CD30074C87B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C910762117A82CD30074C87B /* ch14p366customWindowInStoryboardApp-Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +93,7 @@
 		C910760E17A82CD30074C87B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -146,7 +120,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C910763217A82CD30074C87B /* Images.xcassets in Resources */,
+				32AB96E71B5C75E900D5B6E8 /* LaunchScreen.storyboard in Resources */,
+				C910763217A82CD30074C87B /* Assets.xcassets in Resources */,
 				C910762D17A82CD30074C87B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,7 +184,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -240,7 +215,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -250,7 +225,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch14p366customWindowInStoryboardApp/ch14p366customWindowInStoryboardApp-Prefix.pch";
@@ -269,7 +243,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch14p366customWindowInStoryboardApp/ch14p366customWindowInStoryboardApp-Prefix.pch";

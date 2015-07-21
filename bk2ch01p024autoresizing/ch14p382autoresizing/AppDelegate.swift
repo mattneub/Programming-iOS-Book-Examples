@@ -33,7 +33,7 @@ func delay(delay:Double, closure:()->()) {
         v1.addSubview(v3)
         
         v2.autoresizingMask = .FlexibleWidth
-        v3.autoresizingMask = .FlexibleTopMargin | .FlexibleLeftMargin
+        v3.autoresizingMask = [.FlexibleTopMargin, .FlexibleLeftMargin]
 
 
         delay(2) {
