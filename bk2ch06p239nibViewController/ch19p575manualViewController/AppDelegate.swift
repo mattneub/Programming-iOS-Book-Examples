@@ -7,7 +7,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window = UIWindow()
         
         // demonstrating that the eponymous .xib file is _not_ found automatically:
         

@@ -17,7 +17,7 @@ func delay(delay:Double, closure:()->()) {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window = UIWindow()
         
         self.window!.rootViewController = UIViewController()
         let mainview = self.window!.rootViewController!.view
