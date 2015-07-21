@@ -15,7 +15,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         switch which {
         case 1:
             
-            self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
+            self.window = UIWindow()
             self.window!.rootViewController = RootViewController()
             self.window!.backgroundColor = UIColor.whiteColor()
             self.window!.makeKeyAndVisible()
@@ -24,7 +24,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             
             // if unwrapping many times drives you crazy, unwrap once into a local
             
-            self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
+            self.window = UIWindow()
             let window = self.window!
             window.rootViewController = RootViewController()
             window.backgroundColor = UIColor.whiteColor()

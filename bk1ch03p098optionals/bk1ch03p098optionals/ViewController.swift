@@ -43,9 +43,15 @@ class ViewController: UIViewController {
             print("it is empty") // prints
         }
 
-        var stringMaybe6 : String?
-        optionalExpecter(stringMaybe6) // legal because of implicit initialization
-        let s = stringMaybe6! // crash!
+        let crash = false
+        if crash {
+            var stringMaybe6 : String?
+            optionalExpecter(stringMaybe6) // legal because of implicit initialization
+            let s = stringMaybe6! // crash!
+            _ = s
+            _ = stringMaybe6
+            stringMaybe6 = "howdy"
+        }
         
         let stringMaybe7 : String?
         // optionalExpecter(stringMaybe7) // compile error; can't do that with a `let`
@@ -70,10 +76,7 @@ class ViewController: UIViewController {
         _ = stringMaybe3
         _ = stringMaybe4
         _ = stringMaybe5
-        _ = stringMaybe6
-        stringMaybe6 = "howdy"
         _ = upper
-        _ = s
         stringMaybe7 = "howdy"
         _ = stringMaybe7
     

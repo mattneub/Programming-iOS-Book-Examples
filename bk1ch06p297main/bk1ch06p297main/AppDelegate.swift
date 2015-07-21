@@ -9,7 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // look, ma, no storyboard!
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
+        self.window = UIWindow()
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.rootViewController =
             MyViewController(nibName:"MyViewController", bundle:nil)

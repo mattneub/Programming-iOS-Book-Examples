@@ -9,7 +9,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
+        self.window = UIWindow()
         
         let rvc = RootViewController()
         rvc.restorationIdentifier = "root"
