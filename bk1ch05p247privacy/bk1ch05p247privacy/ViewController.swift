@@ -13,13 +13,9 @@ struct Dog2 : CustomStringConvertible {
     var license = 1
     var description : String {
         var desc = "Dog ("
-        var properties = reflect(self)
-        for ix in 0 ..< properties.count {
-            let (s,m) = properties[ix]
-            desc.extend(s)
-            desc.extend(": ")
-            desc.extend(m.summary)
-            desc.extend(", ")
+        let mirror = Mirror(reflecting:self)
+        for (k,v) in mirror.children {
+            desc.extend("\(k!): \(v), ")
         }
         let c = desc.characters.count
         return String(prefix(desc.characters,c-2)) + ")"
