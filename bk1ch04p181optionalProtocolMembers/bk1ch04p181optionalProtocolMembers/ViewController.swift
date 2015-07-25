@@ -7,17 +7,17 @@ import UIKit
     optional func sing()
     optional func sing2() -> String
 }
-@objc class Bird : Flier {
-    func sing() {
+class Bird : Flier {
+    @objc func sing() {
         print("tweet")
     }
-    func sing2() -> String {
+    @objc func sing2() -> String {
         return "warble"
     }
-    var song2 : String = "gobble gobble"
+    @objc var song2 : String = "gobble gobble"
 }
 
-@objc class Insect : Flier {
+class Insect : Flier {
     
 }
 
@@ -73,8 +73,8 @@ class ViewController: UIViewController {
         let s2 = f.sing2?()
         print(s2)
 
-        // var f2 : Flier = Bird()
-        // f2.song2 = "woof" // compile error
+//        var f2 : Flier = Bird()
+//        f2.song2 = "woof" // compile error
         
         do {
             let i : Flier = Insect()
