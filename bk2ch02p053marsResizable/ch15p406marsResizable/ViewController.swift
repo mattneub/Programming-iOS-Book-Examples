@@ -5,13 +5,15 @@ class ViewController : UIViewController {
     
     @IBOutlet var iv : UIImageView!
     
+    let which = 1
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let mars = UIImage(named:"Mars")!
         var marsTiled = UIImage()
         
-        let which = 1
         switch which {
         case 1:
             marsTiled = mars.resizableImageWithCapInsets(UIEdgeInsetsZero, resizingMode: .Tile)

@@ -18,13 +18,13 @@ class ViewController : UIViewController {
         let mv = MyView()
         self.view.addSubview(mv)
         
-        mv.setTranslatesAutoresizingMaskIntoConstraints(false)
+        mv.translatesAutoresizingMaskIntoConstraints = false
         
         mv.superview!.addConstraints(
-            NSLayoutConstraint.constraintsWithVisualFormat("H:|-25-[v]-25-|", options: nil, metrics: nil, views: ["v":mv])
+            NSLayoutConstraint.constraintsWithVisualFormat("H:|-25-[v]-25-|", options: [], metrics: nil, views: ["v":mv])
         )
         mv.superview!.addConstraints(
-            NSLayoutConstraint.constraintsWithVisualFormat("V:[v(150)]", options: nil, metrics: nil, views: ["v":mv])
+            NSLayoutConstraint.constraintsWithVisualFormat("V:[v(150)]", options: [], metrics: nil, views: ["v":mv])
         )
         mv.superview!.addConstraint(
             NSLayoutConstraint(item: mv, attribute: .CenterY, relatedBy: .Equal, toItem: mv.superview, attribute: .CenterY, multiplier: 1, constant: 0)

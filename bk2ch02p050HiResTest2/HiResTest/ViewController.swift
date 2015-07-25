@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var iv: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(self.iv.image!.scale)
+        print(self.iv.image!.scale)
         
         self.iv3.image = UIImage(named:"one")
         self.iv4.image = UIImage(named:"uno")
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         if let s2 = NSBundle.mainBundle().pathForResource("uno", ofType: "png") {
             self.iv6.image = UIImage(contentsOfFile: s2)
         } else {
-            println("looking for smiley")
+            print("looking for smiley")
             self.iv6.image = UIImage(named:"smiley")
         }
 

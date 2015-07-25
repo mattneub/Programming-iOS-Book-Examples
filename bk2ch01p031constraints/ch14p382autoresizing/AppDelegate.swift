@@ -62,6 +62,7 @@ extension NSLayoutConstraint {
         v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
         let v3 = UIView()
         v3.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+        // v3.layer.setValue("littleRedSquare", forKey:"identifier")
         
         mainview.addSubview(v1)
         v1.addSubview(v2)
@@ -75,18 +76,18 @@ extension NSLayoutConstraint {
             // the old way, and this is the last time I'm going to show this
             v1.addConstraint(
                 NSLayoutConstraint(item: v2,
-                    attribute: .Left,
+                    attribute: .Leading,
                     relatedBy: .Equal,
                     toItem: v1,
-                    attribute: .Left,
+                    attribute: .Leading,
                     multiplier: 1, constant: 0)
             )
             v1.addConstraint(
                 NSLayoutConstraint(item: v2,
-                    attribute: .Right,
+                    attribute: .Trailing,
                     relatedBy: .Equal,
                     toItem: v1,
-                    attribute: .Right,
+                    attribute: .Trailing,
                     multiplier: 1, constant: 0)
             )
             v1.addConstraint(
@@ -123,10 +124,10 @@ extension NSLayoutConstraint {
             )
             v1.addConstraint(
                 NSLayoutConstraint(item: v3,
-                    attribute: .Right,
+                    attribute: .Trailing,
                     relatedBy: .Equal,
                     toItem: v1,
-                    attribute: .Right,
+                    attribute: .Trailing,
                     multiplier: 1, constant: 0)
             )
             v1.addConstraint(
@@ -142,13 +143,13 @@ extension NSLayoutConstraint {
             // to a specific view
             // whereever possible, activate all the constraints at once
             NSLayoutConstraint.activateConstraints([
-                v2.leftAnchor.constraintEqualToAnchor(v1.leftAnchor),
-                v2.rightAnchor.constraintEqualToAnchor(v1.rightAnchor),
+                v2.leadingAnchor.constraintEqualToAnchor(v1.leadingAnchor),
+                v2.trailingAnchor.constraintEqualToAnchor(v1.trailingAnchor),
                 v2.topAnchor.constraintEqualToAnchor(v1.topAnchor),
                 v2.heightAnchor.constraintEqualToConstant(10),
                 v3.widthAnchor.constraintEqualToConstant(20),
                 v3.heightAnchor.constraintEqualToConstant(20),
-                v3.rightAnchor.constraintEqualToAnchor(v1.rightAnchor),
+                v3.trailingAnchor.constraintEqualToAnchor(v1.trailingAnchor),
                 v3.bottomAnchor.constraintEqualToAnchor(v1.bottomAnchor)
             ])
 
@@ -168,7 +169,10 @@ extension NSLayoutConstraint {
                 NSLayoutConstraint.constraintsWithVisualFormat(
                     "H:[v3(20)]|", options: [], metrics: nil, views: d),
                 NSLayoutConstraint.constraintsWithVisualFormat(
-                    "V:[v3(20)]|", options: [], metrics: nil, views: d)
+                    "V:[v3(20)]|", options: [], metrics: nil, views: d),
+                // uncomment me to form a conflict
+//                NSLayoutConstraint.constraintsWithVisualFormat(
+//                    "V:[v3(10)]|", options: [], metrics: nil, views: d),
                 ].flatMap{$0}) // sorry about that but I see no better way
         default: break
         }
@@ -181,6 +185,10 @@ extension NSLayoutConstraint {
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
         return true
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        print("here") // for debugging
     }
     
 }

@@ -47,8 +47,8 @@ class ViewController: UIViewController {
             NSLayoutConstraint.activateConstraints([
                 v1.topAnchor.constraintEqualToAnchor(v.layoutMarginsGuide.topAnchor),
                 v1.bottomAnchor.constraintEqualToAnchor(v.layoutMarginsGuide.bottomAnchor),
-                v1.rightAnchor.constraintEqualToAnchor(v.layoutMarginsGuide.rightAnchor),
-                v1.leftAnchor.constraintEqualToAnchor(v.layoutMarginsGuide.leftAnchor)
+                v1.trailingAnchor.constraintEqualToAnchor(v.layoutMarginsGuide.trailingAnchor),
+                v1.leadingAnchor.constraintEqualToAnchor(v.layoutMarginsGuide.leadingAnchor)
                 ])
             
         case 3:
@@ -57,8 +57,8 @@ class ViewController: UIViewController {
             NSLayoutConstraint.activateConstraints([
                 v1.topAnchor.constraintEqualToAnchor(v.readableContentGuide.topAnchor),
                 v1.bottomAnchor.constraintEqualToAnchor(v.readableContentGuide.bottomAnchor),
-                v1.rightAnchor.constraintEqualToAnchor(v.readableContentGuide.rightAnchor),
-                v1.leftAnchor.constraintEqualToAnchor(v.readableContentGuide.leftAnchor)
+                v1.trailingAnchor.constraintEqualToAnchor(v.readableContentGuide.trailingAnchor),
+                v1.leadingAnchor.constraintEqualToAnchor(v.readableContentGuide.leadingAnchor)
                 ])
 
         default:break

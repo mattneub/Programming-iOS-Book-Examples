@@ -7,44 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		323C4EE51B6408EA0021117E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 323C4EE41B6408EA0021117E /* LaunchScreen.storyboard */; };
 		3276673919BB6D6E00B6CD5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276673819BB6D6E00B6CD5B /* AppDelegate.swift */; };
 		3276673B19BB6D6E00B6CD5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276673A19BB6D6E00B6CD5B /* ViewController.swift */; };
 		3276673E19BB6D6E00B6CD5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3276673C19BB6D6E00B6CD5B /* Main.storyboard */; };
-		3276674019BB6D6E00B6CD5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3276673F19BB6D6E00B6CD5B /* Images.xcassets */; };
-		3276674C19BB6D6E00B6CD5B /* BlurAndVibrancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276674B19BB6D6E00B6CD5B /* BlurAndVibrancyTests.swift */; };
+		3276674019BB6D6E00B6CD5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3276673F19BB6D6E00B6CD5B /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		3276674619BB6D6E00B6CD5B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3276672B19BB6D6E00B6CD5B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3276673219BB6D6E00B6CD5B;
-			remoteInfo = BlurAndVibrancy;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		323C4EE41B6408EA0021117E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3276673319BB6D6E00B6CD5B /* BlurAndVibrancy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlurAndVibrancy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3276673719BB6D6E00B6CD5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3276673819BB6D6E00B6CD5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3276673A19BB6D6E00B6CD5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3276673D19BB6D6E00B6CD5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3276673F19BB6D6E00B6CD5B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3276674519BB6D6E00B6CD5B /* BlurAndVibrancyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlurAndVibrancyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3276674A19BB6D6E00B6CD5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3276674B19BB6D6E00B6CD5B /* BlurAndVibrancyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurAndVibrancyTests.swift; sourceTree = "<group>"; };
+		3276673F19BB6D6E00B6CD5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3276673019BB6D6E00B6CD5B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3276674219BB6D6E00B6CD5B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -58,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				3276673519BB6D6E00B6CD5B /* BlurAndVibrancy */,
-				3276674819BB6D6E00B6CD5B /* BlurAndVibrancyTests */,
 				3276673419BB6D6E00B6CD5B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				3276673319BB6D6E00B6CD5B /* BlurAndVibrancy.app */,
-				3276674519BB6D6E00B6CD5B /* BlurAndVibrancyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,35 +57,11 @@
 				3276673819BB6D6E00B6CD5B /* AppDelegate.swift */,
 				3276673A19BB6D6E00B6CD5B /* ViewController.swift */,
 				3276673C19BB6D6E00B6CD5B /* Main.storyboard */,
-				3276673F19BB6D6E00B6CD5B /* Images.xcassets */,
-				3276673619BB6D6E00B6CD5B /* Supporting Files */,
-			);
-			path = BlurAndVibrancy;
-			sourceTree = "<group>";
-		};
-		3276673619BB6D6E00B6CD5B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				3276673F19BB6D6E00B6CD5B /* Assets.xcassets */,
+				323C4EE41B6408EA0021117E /* LaunchScreen.storyboard */,
 				3276673719BB6D6E00B6CD5B /* Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		3276674819BB6D6E00B6CD5B /* BlurAndVibrancyTests */ = {
-			isa = PBXGroup;
-			children = (
-				3276674B19BB6D6E00B6CD5B /* BlurAndVibrancyTests.swift */,
-				3276674919BB6D6E00B6CD5B /* Supporting Files */,
-			);
-			path = BlurAndVibrancyTests;
-			sourceTree = "<group>";
-		};
-		3276674919BB6D6E00B6CD5B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3276674A19BB6D6E00B6CD5B /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = BlurAndVibrancy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,39 +84,18 @@
 			productReference = 3276673319BB6D6E00B6CD5B /* BlurAndVibrancy.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3276674419BB6D6E00B6CD5B /* BlurAndVibrancyTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3276675219BB6D6E00B6CD5B /* Build configuration list for PBXNativeTarget "BlurAndVibrancyTests" */;
-			buildPhases = (
-				3276674119BB6D6E00B6CD5B /* Sources */,
-				3276674219BB6D6E00B6CD5B /* Frameworks */,
-				3276674319BB6D6E00B6CD5B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3276674719BB6D6E00B6CD5B /* PBXTargetDependency */,
-			);
-			name = BlurAndVibrancyTests;
-			productName = BlurAndVibrancyTests;
-			productReference = 3276674519BB6D6E00B6CD5B /* BlurAndVibrancyTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		3276672B19BB6D6E00B6CD5B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					3276673219BB6D6E00B6CD5B = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					3276674419BB6D6E00B6CD5B = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 3276673219BB6D6E00B6CD5B;
 					};
 				};
 			};
@@ -179,7 +113,6 @@
 			projectRoot = "";
 			targets = (
 				3276673219BB6D6E00B6CD5B /* BlurAndVibrancy */,
-				3276674419BB6D6E00B6CD5B /* BlurAndVibrancyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -189,15 +122,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				323C4EE51B6408EA0021117E /* LaunchScreen.storyboard in Resources */,
 				3276673E19BB6D6E00B6CD5B /* Main.storyboard in Resources */,
-				3276674019BB6D6E00B6CD5B /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3276674319BB6D6E00B6CD5B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				3276674019BB6D6E00B6CD5B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,23 +140,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3276674119BB6D6E00B6CD5B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3276674C19BB6D6E00B6CD5B /* BlurAndVibrancyTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3276674719BB6D6E00B6CD5B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3276673219BB6D6E00B6CD5B /* BlurAndVibrancy */;
-			targetProxy = 3276674619BB6D6E00B6CD5B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3276673C19BB6D6E00B6CD5B /* Main.storyboard */ = {
@@ -277,7 +188,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -313,7 +224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -324,7 +235,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = BlurAndVibrancy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -335,44 +245,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = BlurAndVibrancy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		3276675319BB6D6E00B6CD5B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = BlurAndVibrancyTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlurAndVibrancy.app/BlurAndVibrancy";
-			};
-			name = Debug;
-		};
-		3276675419BB6D6E00B6CD5B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = BlurAndVibrancyTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlurAndVibrancy.app/BlurAndVibrancy";
 			};
 			name = Release;
 		};
@@ -395,14 +270,7 @@
 				3276675119BB6D6E00B6CD5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		3276675219BB6D6E00B6CD5B /* Build configuration list for PBXNativeTarget "BlurAndVibrancyTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3276675319BB6D6E00B6CD5B /* Debug */,
-				3276675419BB6D6E00B6CD5B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

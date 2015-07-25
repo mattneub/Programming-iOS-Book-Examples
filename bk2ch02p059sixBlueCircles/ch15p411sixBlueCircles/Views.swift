@@ -78,11 +78,12 @@ UIGraphicsEndImageContext()
 Since the purpose is to extract the image, it would be nice to replace that with a functional architecture that clearly yields the image. Moreover, such an architecture has the advantage of isolating any local variables used within the "sandwich". In Objective-C you can at least wrap the interior in curly braces to form a scope, but Swift, with its easy closure formation, offers the opportunity for an even clearer presentation, along these lines:
 */
 
-func imageOfSize(size:CGSize, opaque:Bool = false, closure:() -> ()) -> UIImage {
+func imageOfSize(size:CGSize, _ opaque:Bool = false, _ closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
     closure()
     let result = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
     return result
 }
+
 

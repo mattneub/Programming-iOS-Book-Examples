@@ -12,7 +12,7 @@ class MyView : UIView {
         // but uncomment the next line: clearRect will cause a clear square!
         // self.backgroundColor = self.backgroundColor!.colorWithAlphaComponent(0.99)
         
-        println("Layer opaque: \(self.layer.opaque)")
+        print("Layer opaque: \(self.layer.opaque)")
     }
     
     required init(coder: NSCoder) {

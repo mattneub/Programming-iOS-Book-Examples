@@ -40,7 +40,9 @@ func delay(delay:Double, closure:()->()) {
             v1.bounds.size.width += 40
             v1.bounds.size.height -= 50
 //            v1.frame = mainview.bounds
-//            v1.autoresizingMask = .FlexibleHeight | .FlexibleWidth
+//            v1.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+            print(v2)
+            print(v3)
         }
         
         self.window!.backgroundColor = UIColor.whiteColor()

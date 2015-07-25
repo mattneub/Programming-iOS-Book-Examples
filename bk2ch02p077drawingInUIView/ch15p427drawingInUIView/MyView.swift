@@ -8,7 +8,7 @@ class MyView : UIView {
         self.opaque = false
     }
     
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.opaque = false
     }
@@ -18,8 +18,9 @@ class MyView : UIView {
         self.opaque = false
     }
     
+    let which = 6
+    
     override func drawRect(rect: CGRect) {
-        let which = 1
         switch which {
         case 1:
             let con = UIGraphicsGetCurrentContext()
@@ -41,7 +42,7 @@ class MyView : UIView {
             CGContextMoveToPoint(con, 90, 101)
             CGContextAddLineToPoint(con, 100, 90)
             CGContextAddLineToPoint(con, 110, 101)
-            CGContextSetBlendMode(con, kCGBlendModeClear)
+            CGContextSetBlendMode(con, .Clear)
             CGContextFillPath(con)
             
         case 2:
@@ -62,7 +63,7 @@ class MyView : UIView {
             p.moveToPoint(CGPointMake(90,101))
             p.addLineToPoint(CGPointMake(100, 90))
             p.addLineToPoint(CGPointMake(110, 101))
-            p.fillWithBlendMode(kCGBlendModeClear, alpha:1.0)
+            p.fillWithBlendMode(.Clear, alpha:1.0)
             
         case 3:
             
@@ -121,7 +122,7 @@ class MyView : UIView {
             let grad =
                 CGGradientCreateWithColorComponents (sp, colors, locs, 3)
             CGContextDrawLinearGradient (
-                con, grad, CGPointMake(89,0), CGPointMake(111,0), 0)
+                con, grad, CGPointMake(89,0), CGPointMake(111,0), [])
             
             CGContextRestoreGState(con) // done clipping
             
@@ -163,7 +164,7 @@ class MyView : UIView {
             let grad =
             CGGradientCreateWithColorComponents (sp, colors, locs, 3)
             CGContextDrawLinearGradient (
-                con, grad, CGPointMake(89,0), CGPointMake(111,0), 0)
+                con, grad, CGPointMake(89,0), CGPointMake(111,0), [])
             
             CGContextRestoreGState(con) // done clipping
             
@@ -217,20 +218,32 @@ class MyView : UIView {
             let grad =
             CGGradientCreateWithColorComponents (sp, colors, locs, 3)
             CGContextDrawLinearGradient (
-                con, grad, CGPointMake(89,0), CGPointMake(111,0), 0)
+                con, grad, CGPointMake(89,0), CGPointMake(111,0), [])
             
             CGContextRestoreGState(con) // done clipping
+            
             
             // draw the red triangle, the point of the arrow
             let sp2 = CGColorSpaceCreatePattern(nil)
             CGContextSetFillColorSpace(con, sp2)
-            // can't construct CGPatternRef in Swift
-            // (because we can't form the pointer-to-C-function)
-            // so we construct it in Objective-C and pass it
-            let patt = PatternHelper().patternMaker().takeRetainedValue()
+            // hooray for Swift 2.0!
+            let drawStripes : CGPatternDrawPatternCallback = {
+                _, con in
+                CGContextSetFillColorWithColor(con!, UIColor.redColor().CGColor)
+                CGContextFillRect(con!, CGRectMake(0,0,4,4))
+                CGContextSetFillColorWithColor(con!, UIColor.blueColor().CGColor)
+                CGContextFillRect(con!, CGRectMake(0,0,4,2))
+            }
+            var callbacks = CGPatternCallbacks(
+                version: 0, drawPattern: drawStripes, releaseInfo: nil)
+            let patt = CGPatternCreate(nil, CGRectMake(0,0,4,4),
+                CGAffineTransformIdentity, 4, 4,
+                .ConstantSpacingMinimalDistortion,
+                true, &callbacks)
             var alph : CGFloat = 1.0
             CGContextSetFillPattern(con, patt, &alph)
             
+
             CGContextMoveToPoint(con, 80, 25)
             CGContextAddLineToPoint(con, 100, 0)
             CGContextAddLineToPoint(con, 120, 25)

@@ -10,24 +10,13 @@
 		321466DE19C2E38E00C7F47B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321466DD19C2E38E00C7F47B /* AppDelegate.swift */; };
 		321466E019C2E38E00C7F47B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321466DF19C2E38E00C7F47B /* ViewController.swift */; };
 		321466E319C2E38E00C7F47B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 321466E119C2E38E00C7F47B /* Main.storyboard */; };
-		321466E519C2E38E00C7F47B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 321466E419C2E38E00C7F47B /* Images.xcassets */; };
+		321466E519C2E38E00C7F47B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 321466E419C2E38E00C7F47B /* Assets.xcassets */; };
 		321466E819C2E38E00C7F47B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 321466E619C2E38E00C7F47B /* LaunchScreen.xib */; };
-		321466F419C2E38E00C7F47B /* HiResTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321466F319C2E38E00C7F47B /* HiResTestTests.swift */; };
 		3214670019C2E3D800C7F47B /* one.png in Resources */ = {isa = PBXBuildFile; fileRef = 321466FD19C2E3D800C7F47B /* one.png */; };
 		3214670119C2E3D800C7F47B /* one@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 321466FE19C2E3D800C7F47B /* one@2x.png */; };
 		3214670219C2E3D800C7F47B /* one@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 321466FF19C2E3D800C7F47B /* one@3x.png */; };
 		324216C819C34297008F5390 /* SecondCatalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 324216C719C34297008F5390 /* SecondCatalog.xcassets */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		321466EE19C2E38E00C7F47B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 321466D019C2E38E00C7F47B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 321466D719C2E38E00C7F47B;
-			remoteInfo = HiResTest;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		321466D819C2E38E00C7F47B /* HiResTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiResTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,11 +24,8 @@
 		321466DD19C2E38E00C7F47B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		321466DF19C2E38E00C7F47B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		321466E219C2E38E00C7F47B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		321466E419C2E38E00C7F47B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		321466E419C2E38E00C7F47B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		321466E719C2E38E00C7F47B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		321466ED19C2E38E00C7F47B /* HiResTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HiResTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		321466F219C2E38E00C7F47B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		321466F319C2E38E00C7F47B /* HiResTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiResTestTests.swift; sourceTree = "<group>"; };
 		321466FD19C2E3D800C7F47B /* one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = one.png; sourceTree = "<group>"; };
 		321466FE19C2E3D800C7F47B /* one@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "one@2x.png"; sourceTree = "<group>"; };
 		321466FF19C2E3D800C7F47B /* one@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "one@3x.png"; sourceTree = "<group>"; };
@@ -54,13 +40,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		321466EA19C2E38E00C7F47B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -68,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				321466DA19C2E38E00C7F47B /* HiResTest */,
-				321466F019C2E38E00C7F47B /* HiResTestTests */,
 				321466D919C2E38E00C7F47B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				321466D819C2E38E00C7F47B /* HiResTest.app */,
-				321466ED19C2E38E00C7F47B /* HiResTestTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,37 +68,12 @@
 				321466FD19C2E3D800C7F47B /* one.png */,
 				321466FE19C2E3D800C7F47B /* one@2x.png */,
 				321466FF19C2E3D800C7F47B /* one@3x.png */,
-				321466E419C2E38E00C7F47B /* Images.xcassets */,
+				321466E419C2E38E00C7F47B /* Assets.xcassets */,
 				324216C719C34297008F5390 /* SecondCatalog.xcassets */,
 				321466E619C2E38E00C7F47B /* LaunchScreen.xib */,
-				321466DB19C2E38E00C7F47B /* Supporting Files */,
-			);
-			path = HiResTest;
-			sourceTree = "<group>";
-		};
-		321466DB19C2E38E00C7F47B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				321466DC19C2E38E00C7F47B /* Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		321466F019C2E38E00C7F47B /* HiResTestTests */ = {
-			isa = PBXGroup;
-			children = (
-				321466F319C2E38E00C7F47B /* HiResTestTests.swift */,
-				321466F119C2E38E00C7F47B /* Supporting Files */,
-			);
-			path = HiResTestTests;
-			sourceTree = "<group>";
-		};
-		321466F119C2E38E00C7F47B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				321466F219C2E38E00C7F47B /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = HiResTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,39 +96,18 @@
 			productReference = 321466D819C2E38E00C7F47B /* HiResTest.app */;
 			productType = "com.apple.product-type.application";
 		};
-		321466EC19C2E38E00C7F47B /* HiResTestTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 321466FA19C2E38E00C7F47B /* Build configuration list for PBXNativeTarget "HiResTestTests" */;
-			buildPhases = (
-				321466E919C2E38E00C7F47B /* Sources */,
-				321466EA19C2E38E00C7F47B /* Frameworks */,
-				321466EB19C2E38E00C7F47B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				321466EF19C2E38E00C7F47B /* PBXTargetDependency */,
-			);
-			name = HiResTestTests;
-			productName = HiResTestTests;
-			productReference = 321466ED19C2E38E00C7F47B /* HiResTestTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		321466D019C2E38E00C7F47B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					321466D719C2E38E00C7F47B = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					321466EC19C2E38E00C7F47B = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 321466D719C2E38E00C7F47B;
 					};
 				};
 			};
@@ -194,7 +125,6 @@
 			projectRoot = "";
 			targets = (
 				321466D719C2E38E00C7F47B /* HiResTest */,
-				321466EC19C2E38E00C7F47B /* HiResTestTests */,
 			);
 		};
 /* End PBXProject section */
@@ -209,15 +139,8 @@
 				3214670219C2E3D800C7F47B /* one@3x.png in Resources */,
 				321466E819C2E38E00C7F47B /* LaunchScreen.xib in Resources */,
 				3214670119C2E3D800C7F47B /* one@2x.png in Resources */,
-				321466E519C2E38E00C7F47B /* Images.xcassets in Resources */,
+				321466E519C2E38E00C7F47B /* Assets.xcassets in Resources */,
 				324216C819C34297008F5390 /* SecondCatalog.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		321466EB19C2E38E00C7F47B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,23 +156,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		321466E919C2E38E00C7F47B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				321466F419C2E38E00C7F47B /* HiResTestTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		321466EF19C2E38E00C7F47B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 321466D719C2E38E00C7F47B /* HiResTest */;
-			targetProxy = 321466EE19C2E38E00C7F47B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		321466E119C2E38E00C7F47B /* Main.storyboard */ = {
@@ -305,7 +212,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -341,7 +248,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -355,6 +262,7 @@
 				INFOPLIST_FILE = HiResTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -365,40 +273,7 @@
 				INFOPLIST_FILE = HiResTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		321466FB19C2E38E00C7F47B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = HiResTestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HiResTest.app/HiResTest";
-			};
-			name = Debug;
-		};
-		321466FC19C2E38E00C7F47B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = HiResTestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HiResTest.app/HiResTest";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -419,15 +294,6 @@
 			buildConfigurations = (
 				321466F819C2E38E00C7F47B /* Debug */,
 				321466F919C2E38E00C7F47B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		321466FA19C2E38E00C7F47B /* Build configuration list for PBXNativeTarget "HiResTestTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				321466FB19C2E38E00C7F47B /* Debug */,
-				321466FC19C2E38E00C7F47B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

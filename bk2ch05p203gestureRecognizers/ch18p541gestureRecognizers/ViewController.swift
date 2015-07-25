@@ -5,6 +5,9 @@ import UIKit
 class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     
+    let which = 2
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,7 +21,6 @@ class ViewController : UIViewController {
         t1.requireGestureRecognizerToFail(t2)
         self.v.addGestureRecognizer(t1)
 
-        let which = 2
         switch which {
         case 1:
             let p = UIPanGestureRecognizer(target: self, action: "dragging:")
@@ -34,10 +36,10 @@ class ViewController : UIViewController {
     }
     
     func singleTap () {
-        println("single tap")
+        print("single tap")
     }
     func doubleTap () {
-        println("double tap")
+        print("double tap")
     }
     
     func dragging(p : UIPanGestureRecognizer) {

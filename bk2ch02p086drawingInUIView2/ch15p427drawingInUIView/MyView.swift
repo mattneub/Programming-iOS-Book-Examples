@@ -47,7 +47,7 @@ class MyView : UIView {
         let grad =
         CGGradientCreateWithColorComponents (sp, colors, locs, 3)
         CGContextDrawLinearGradient (
-            con, grad, CGPointMake(9,0), CGPointMake(31,0), 0)
+            con, grad, CGPointMake(9,0), CGPointMake(31,0), [])
         
         CGContextRestoreGState(con) // done clipping
         
@@ -76,9 +76,10 @@ class MyView : UIView {
 
     }
     
+    let which = 3
+
     override func drawRect(rect: CGRect) {
 
-        let which = 1
         switch which {
         case 1:
             let con = UIGraphicsGetCurrentContext()

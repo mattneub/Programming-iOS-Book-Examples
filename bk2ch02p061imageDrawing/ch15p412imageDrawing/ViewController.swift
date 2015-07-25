@@ -33,7 +33,7 @@ class ViewController : UIViewController {
         UIGraphicsBeginImageContextWithOptions(
             CGSizeMake(sz.width*2, sz.height*2), false, 0)
         mars.drawInRect(CGRectMake(0,0,sz.width*2, sz.height*2))
-        mars.drawInRect(CGRectMake(sz.width/2.0, sz.height/2.0, sz.width, sz.height), blendMode: kCGBlendModeMultiply, alpha: 1.0)
+        mars.drawInRect(CGRectMake(sz.width/2.0, sz.height/2.0, sz.width, sz.height), blendMode: .Multiply, alpha: 1.0)
         im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         self.iv2.image = im
@@ -90,9 +90,9 @@ class ViewController : UIViewController {
             CGSizeMake(sz.width*1.5, sz.height), false, 0)
         con = UIGraphicsGetCurrentContext()
         CGContextDrawImage(con,
-            CGRectMake(0,0,sz.width/2.0,sz.height), flip(marsLeft))
+            CGRectMake(0,0,sz.width/2.0,sz.height), flip(marsLeft!))
         CGContextDrawImage(con,
-            CGRectMake(sz.width,0,sz.width/2.0,sz.height), flip(marsRight))
+            CGRectMake(sz.width,0,sz.width/2.0,sz.height), flip(marsRight!))
         im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         // no memory management
@@ -116,9 +116,9 @@ class ViewController : UIViewController {
         // the rest as before, draw each CGImage flipped
         con = UIGraphicsGetCurrentContext()
         CGContextDrawImage(con,
-            CGRectMake(0,0,sz.width/2.0,sz.height), flip(marsLeft))
+            CGRectMake(0,0,sz.width/2.0,sz.height), flip(marsLeft!))
         CGContextDrawImage(con,
-            CGRectMake(sz.width,0,sz.width/2.0,sz.height), flip(marsRight))
+            CGRectMake(sz.width,0,sz.width/2.0,sz.height), flip(marsRight!))
         im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         // no memory management
@@ -140,11 +140,11 @@ class ViewController : UIViewController {
         UIGraphicsBeginImageContextWithOptions(
             CGSizeMake(sz.width*1.5, sz.height), false, 0)
         // instead of calling flip, pass through UIImage
-        UIImage(CGImage: marsLeft, scale: mars.scale,
-            orientation: mars.imageOrientation)!
+        UIImage(CGImage: marsLeft!, scale: mars.scale,
+            orientation: mars.imageOrientation)
             .drawAtPoint(CGPointMake(0,0))
-        UIImage(CGImage: marsRight, scale: mars.scale,
-            orientation: mars.imageOrientation)!
+        UIImage(CGImage: marsRight!, scale: mars.scale,
+            orientation: mars.imageOrientation)
             .drawAtPoint(CGPointMake(sz.width,0))
         im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -163,5 +163,5 @@ func flip (im: CGImage) -> CGImage {
         CGRectMake(0, 0, sz.width, sz.height), im)
     let result = UIGraphicsGetImageFromCurrentImageContext().CGImage
     UIGraphicsEndImageContext()
-    return result;
+    return result!
 }

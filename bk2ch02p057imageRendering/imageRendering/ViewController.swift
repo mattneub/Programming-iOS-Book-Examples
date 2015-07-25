@@ -29,6 +29,39 @@ class ViewController : UIViewController {
         // not demonstrated: setting alignment rectangle in asset catalog
         // (haven't figured this out yet)
         
+        
+        let im3 = UIImage(named:"photo")!.imageWithAlignmentRectInsets(UIEdgeInsetsMake(0, 0, 24, 0))
+        let iv = UIImageView(image:im3)
+        self.view.addSubview(iv)
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            iv.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor),
+            iv.bottomAnchor.constraintEqualToAnchor(self.view.bottomAnchor)
+            ])
+        
+        // the previous code aligns to bottom correctly
+        // now, if alignment rectangle in asset catalog were working...
+        // then I should be able to make the same setting in the asset catalog
+        // and then I would just fetch the image directly
+        // but it doesn't work, as I shall now show
+        
+        let im4 = UIImage(named:"photo")! // trying to use asset catalog alignment
+        let iv2 = UIImageView(image:im4)
+        self.view.addSubview(iv2)
+        iv2.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            iv2.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor),
+            iv2.bottomAnchor.constraintEqualToAnchor(self.view.bottomAnchor)
+            ])
+
+        // In the asset catalog, it is the Top, not the Bottom, that I have set
+        // Moreover, if I don't also set the Left, nothing happens at all; 
+        // a Left of 0 turns off the whole thing
+        
+        print(im4.alignmentRectInsets) // C.UIEdgeInsets(top: 0.0, left: 0.5, bottom: 24.0, right: 0.0)
+        // but what I set was the top!
+        print(iv2.alignmentRectInsets())
+
     }
 }
 

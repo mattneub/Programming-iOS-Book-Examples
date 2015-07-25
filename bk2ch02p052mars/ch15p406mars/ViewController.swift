@@ -14,7 +14,12 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
+
+
 class ViewController : UIViewController {
+    
+    let which = 1
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +40,6 @@ class ViewController : UIViewController {
         iv.layer.borderColor = UIColor.blackColor().CGColor
         iv.layer.borderWidth = 2
         
-        let which = 1
         switch which {
         case 1:
             // position using autoresizing-type behavior
@@ -43,23 +47,11 @@ class ViewController : UIViewController {
             iv.frame.integerize()
         case 2:
             // position using constraints
-            iv.setTranslatesAutoresizingMaskIntoConstraints(false)
-            iv.superview!.addConstraint(
-                NSLayoutConstraint(item: iv,
-                    attribute: .CenterX,
-                    relatedBy: .Equal,
-                    toItem: iv.superview,
-                    attribute: .CenterX,
-                    multiplier: 1, constant: 0)
-            )
-            iv.superview!.addConstraint(
-                NSLayoutConstraint(item: iv,
-                    attribute: .CenterY,
-                    relatedBy: .Equal,
-                    toItem: iv.superview,
-                    attribute: .CenterY,
-                    multiplier: 1, constant: 0)
-            )
+            iv.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activateConstraints([
+                iv.centerXAnchor.constraintEqualToAnchor(iv.superview!.centerXAnchor),
+                iv.centerYAnchor.constraintEqualToAnchor(iv.superview!.centerYAnchor)
+                ])
         default: break
         }
         
