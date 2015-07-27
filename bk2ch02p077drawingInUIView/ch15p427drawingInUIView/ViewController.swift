@@ -30,7 +30,7 @@ class ViewController : UIViewController {
             NSLayoutConstraint(item: mv, attribute: .CenterY, relatedBy: .Equal, toItem: mv.superview, attribute: .CenterY, multiplier: 1, constant: 0)
         )
         
-        return; // comment out to experiment with resizing
+        // return; // comment out to experiment with resizing
         
         delay(0.1) {
             mv.bounds.size.height *= 2

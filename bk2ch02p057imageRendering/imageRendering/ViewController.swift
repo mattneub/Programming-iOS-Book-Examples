@@ -61,6 +61,15 @@ class ViewController : UIViewController {
         print(im4.alignmentRectInsets) // C.UIEdgeInsets(top: 0.0, left: 0.5, bottom: 24.0, right: 0.0)
         // but what I set was the top!
         print(iv2.alignmentRectInsets())
+        
+        /*
+        let im5 = UIImage(named:"smiley2")!
+        let b = UIButton(type: .System)
+        b.setImage(im5.imageWithAlignmentRectInsets(UIEdgeInsetsMake(0, 0, 40, 0)), forState: .Normal)
+        b.setTitle("Howdy", forState:.Normal)
+        b.sizeToFit()
+        self.view.addSubview(b)
+*/
 
     }
 }

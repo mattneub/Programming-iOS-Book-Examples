@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         v1.addSubview(v2)
         mainview.addSubview(v3)
 
-        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight))
         blur.frame = mainview.bounds
         blur.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         let vib = UIVisualEffectView(effect: UIVibrancyEffect(

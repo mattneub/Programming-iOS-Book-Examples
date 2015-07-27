@@ -39,9 +39,9 @@ class MyView : UIView {
         // draw the gradient
         let locs : [CGFloat] = [ 0.0, 0.5, 1.0 ]
         let colors : [CGFloat] = [
-            0.3,0.3,0.3,0.8, // starting color, transparent gray
-            0.0,0.0,0.0,1.0, // intermediate color, black
-            0.3,0.3,0.3,0.8 // ending color, transparent gray
+            0.8, 0.4, // starting color, transparent light gray
+            0.1, 0.5, // intermediate color, darker less transparent gray
+            0.8, 0.4, // ending color, transparent light gray
         ]
         let sp = CGColorSpaceCreateDeviceGray()
         let grad =
@@ -76,7 +76,7 @@ class MyView : UIView {
 
     }
     
-    let which = 3
+    let which = 2
 
     override func drawRect(rect: CGRect) {
 
