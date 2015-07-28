@@ -69,8 +69,8 @@ class CompassLayer : CALayer {
         g.contentsScale = UIScreen.mainScreen().scale
         g.frame = self.bounds
         g.colors = [
-            UIColor.blackColor().CGColor as AnyObject,
-            UIColor.redColor().CGColor as AnyObject
+            UIColor.blackColor().CGColor,
+            UIColor.redColor().CGColor
             ]
         g.locations = [0.0,1.0]
         self.addSublayer(g) //
