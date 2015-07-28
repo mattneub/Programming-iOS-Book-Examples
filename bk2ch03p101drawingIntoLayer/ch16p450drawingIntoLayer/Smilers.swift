@@ -9,16 +9,16 @@ class Smiler:NSObject {
         //[[UIImage imageNamed: @"smiley"] drawInRect:CGContextGetClipBoundingBox(ctx)];
         UIImage(named:"smiley")!.drawAtPoint(CGPoint())
         UIGraphicsPopContext()
-        println("\(__FUNCTION__)")
-        println(layer.contentsGravity)
+        print("\(__FUNCTION__)")
+        print(layer.contentsGravity)
     }
 }
 
 class Smiler2:NSObject {
     override func displayLayer(layer: CALayer) {
         layer.contents = UIImage(named:"smiley")!.CGImage
-        println("\(__FUNCTION__)")
-        println(layer.contentsGravity)
+        print("\(__FUNCTION__)")
+        print(layer.contentsGravity)
     }
 }
 
@@ -28,15 +28,15 @@ class SmilerLayer:CALayer {
         //[[UIImage imageNamed: @"smiley"] drawInRect:CGContextGetClipBoundingBox(ctx)];
         UIImage(named:"smiley")!.drawAtPoint(CGPoint())
         UIGraphicsPopContext()
-        println("\(__FUNCTION__)")
-        println(self.contentsGravity)
+        print("\(__FUNCTION__)")
+        print(self.contentsGravity)
     }
 }
 
 class SmilerLayer2:CALayer {
     override func display() {
         self.contents = UIImage(named:"smiley")!.CGImage
-        println("\(__FUNCTION__)")
-        println(self.contentsGravity)
+        print("\(__FUNCTION__)")
+        print(self.contentsGravity)
     }
 }

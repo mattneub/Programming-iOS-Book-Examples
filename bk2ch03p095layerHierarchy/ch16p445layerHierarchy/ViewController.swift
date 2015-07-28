@@ -3,6 +3,8 @@ import UIKit
 
 class ViewController : UIViewController {
     
+    let which = 2
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,7 +19,6 @@ class ViewController : UIViewController {
         lay2.frame = CGRectMake(41, 56, 132, 194)
         lay1.addSublayer(lay2)
         
-        let which = 1
         switch which {
         case 1:
             // a view can be interspersed with sibling layers

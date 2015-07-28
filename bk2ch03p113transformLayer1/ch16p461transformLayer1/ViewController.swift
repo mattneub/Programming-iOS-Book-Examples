@@ -13,11 +13,13 @@ func delay(delay:Double, closure:()->()) {
 class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     
+    let which = 2
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         var lay1 = CALayer()
-        let which = 1
         switch which {
         case 1: break
         case 2:

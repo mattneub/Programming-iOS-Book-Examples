@@ -38,7 +38,7 @@ func viewMaskOfSize(sz:CGSize, roundingCorners rad:CGFloat) -> UIView {
     let iv = UIImageView(frame:CGRect(origin: CGPoint(), size: sz))
     iv.contentMode = .ScaleToFill
     iv.image = im
-    iv.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+    iv.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
     return iv
 }
 
@@ -51,7 +51,7 @@ class MaskView : UIView {
         self.layer.needsDisplayOnBoundsChange = true
     }
     override func drawRect(r: CGRect) {
-        println("drawing")
+        print("drawing")
         let con = UIGraphicsGetCurrentContext()
         CGContextSetFillColorWithColor(
             con, UIColor(white:0, alpha:0).CGColor)
@@ -66,17 +66,18 @@ class MaskView : UIView {
 
 class ViewController: UIViewController {
     @IBOutlet var iv: UIImageView!
-                            
+
+    let which = 1
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let which = 1
         switch which {
         case 1:
             let mask = maskOfSize(self.iv.bounds.size, roundingCorners:20)
             self.iv.layer.mask = mask
         case 2:
             let mask = viewMaskOfSize(self.iv.bounds.size, roundingCorners:20)
-            println(self.iv.layer.mask)
+            print(self.iv.layer.mask)
 
             self.iv.maskView = mask
             // same effect, but we've added a subview that does the masking
@@ -84,7 +85,7 @@ class ViewController: UIViewController {
             // (the mask is not resized on rotation;
             // in fact, as far as I can tell, autoresizing doesn't work on the mask view)
             
-            println(self.iv.layer.mask)
+            print(self.iv.layer.mask)
         default: break
         }
     }

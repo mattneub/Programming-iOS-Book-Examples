@@ -6,7 +6,7 @@ class ViewController : UIViewController {
     var smilers = [Smiler(), Smiler2()] // to serve as delegates
     
     func makeLayerOfClass(klass:CALayer.Type, andAddToView ix:Int) -> CALayer {
-        let lay = klass()
+        let lay = klass.init()
         lay.contentsScale = UIScreen.mainScreen().scale
         //    lay.contentsGravity = kCAGravityBottom
         //    lay.contentsRect = CGRectMake(0.2,0.2,0.5,0.5)

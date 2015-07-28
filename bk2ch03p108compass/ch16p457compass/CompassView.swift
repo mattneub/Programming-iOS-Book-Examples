@@ -37,15 +37,15 @@ class CompassLayer : CALayer {
     }
     
     func setup () {
-        println("setup")
+        print("setup")
         
         // the gradient
         let g = CAGradientLayer()
         g.contentsScale = UIScreen.mainScreen().scale
         g.frame = self.bounds
         g.colors = [
-            UIColor.blackColor().CGColor as AnyObject,
-            UIColor.redColor().CGColor as AnyObject
+            UIColor.blackColor().CGColor,
+            UIColor.redColor().CGColor
             ]
         g.locations = [0.0,1.0]
         self.addSublayer(g)
@@ -65,7 +65,7 @@ class CompassLayer : CALayer {
         
         // the four cardinal points
         let pts = "NESW"
-        for (ix,c) in enumerate(pts) {
+        for (ix,c) in pts.characters.enumerate() {
             let t = CATextLayer()
             t.contentsScale = UIScreen.mainScreen().scale
             t.string = String(c)
@@ -73,7 +73,7 @@ class CompassLayer : CALayer {
             t.position = circle.bounds.center
             let vert = circle.bounds.midY / t.bounds.height
             t.anchorPoint = CGPointMake(0.5, vert)
-            // println(t.anchorPoint)
+            //print(t.anchorPoint)
             t.alignmentMode = kCAAlignmentCenter
             t.foregroundColor = UIColor.blackColor().CGColor
             t.setAffineTransform(CGAffineTransformMakeRotation(CGFloat(ix)*CGFloat(M_PI)/2.0))
@@ -105,7 +105,7 @@ class CompassLayer : CALayer {
     }
     
     override func drawLayer(layer: CALayer, inContext con: CGContext) {
-        println("drawLayer:inContext: for arrow")
+        print("drawLayer:inContext: for arrow")
         
         // Questa poi la conosco pur troppo!
         
@@ -146,7 +146,7 @@ class CompassLayer : CALayer {
     }
     
     func resizeArrowLayer(arrow:CALayer) {
-        println("resize arrow")
+        print("resize arrow")
         arrow.needsDisplayOnBoundsChange = false
         arrow.contentsCenter = CGRectMake(0.0, 0.4, 1.0, 0.6)
         arrow.contentsGravity = kCAGravityResizeAspect
@@ -156,11 +156,11 @@ class CompassLayer : CALayer {
     func mask(arrow:CALayer) {
         let mask = CAShapeLayer()
         mask.frame = arrow.bounds
-        let p2 = CGPathCreateMutable()
-        CGPathAddEllipseInRect(p2, nil, CGRectInset(mask.bounds, 10, 10))
+        let path = CGPathCreateMutable()
+        CGPathAddEllipseInRect(path, nil, CGRectInset(mask.bounds, 10, 10))
         mask.strokeColor = UIColor(white:0.0, alpha:0.5).CGColor
         mask.lineWidth = 20
-        mask.path = p2
+        mask.path = path
         arrow.mask = mask
     }
     

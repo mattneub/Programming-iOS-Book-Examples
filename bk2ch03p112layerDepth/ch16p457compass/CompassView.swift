@@ -30,9 +30,10 @@ class CompassLayer : CALayer {
     var rotationLayer : CALayer!
     var didSetup = false
     
+    let which = 2
+
     func doRotate () {
-        println("rotate")
-        let which = 1
+        print("rotate")
         switch which {
         case 1:
             self.rotationLayer.anchorPoint = CGPointMake(1,0.5)
@@ -62,7 +63,7 @@ class CompassLayer : CALayer {
     }
     
     func setup () {
-        println("setup")
+        print("setup")
         
         // the gradient
         let g = CAGradientLayer()
@@ -90,7 +91,7 @@ class CompassLayer : CALayer {
         
         // the four cardinal points
         let pts = "NESW"
-        for (ix,c) in enumerate(pts) {
+        for (ix,c) in pts.characters.enumerate() {
             let t = CATextLayer()
             t.contentsScale = UIScreen.mainScreen().scale
             t.string = String(c)
@@ -124,7 +125,7 @@ class CompassLayer : CALayer {
     }
     
     override func drawLayer(layer: CALayer, inContext con: CGContext) {
-        println("drawLayer:inContext: for arrow")
+        print("drawLayer:inContext: for arrow")
         
         // Questa poi la conosco pur troppo!
         
