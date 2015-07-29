@@ -12,7 +12,21 @@ class MyView : UIView { // exists purely to host MyLayer
 
 // see also Nick Lockwood's discussion http://www.objc.io/issue-12/animating-custom-layer-properties.html
 
-public extension MyLayer {
+/*
+// copied from Apple's example, but I don't see how it helps in this situation
+
+-(id)initWithLayer:(id)layer {
+self = [super initWithLayer:layer];
+if ([layer isKindOfClass:[MyLayer class]])
+self.thickness = ((MyLayer*)layer).thickness;
+return self;
+}
+*/
+
+class MyLayer : CALayer {
+    // new in Swift 2.0, @NSManaged acts as Objective-C @dynamic
+    // we don't need any Objective-C for this example any more!
+    @NSManaged var thickness : CGFloat
     
     // this Swift extension contains everything except the @dynamic declaration...
     // ...which can only be made in Objective-C

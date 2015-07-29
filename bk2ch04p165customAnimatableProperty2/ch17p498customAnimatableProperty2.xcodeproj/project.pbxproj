@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3210907519AA4BD2003A3D6B /* MyLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFA73D17B952A6009F3ED0 /* MyLayer.m */; };
 		326CB94F1B69281700D1DC41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 326CB94E1B69281700D1DC41 /* LaunchScreen.storyboard */; };
 		326CB9511B69282C00D1DC41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326CB9501B69282C00D1DC41 /* AppDelegate.swift */; };
 		328B01DA1970BA9C000DB939 /* MyViewAndLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B01D91970BA9C000DB939 /* MyViewAndLayer.swift */; };
@@ -19,15 +18,12 @@
 /* Begin PBXFileReference section */
 		326CB94E1B69281700D1DC41 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		326CB9501B69282C00D1DC41 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		328B01D81970BA9B000DB939 /* ch17p498customAnimatableProperty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch17p498customAnimatableProperty-Bridging-Header.h"; sourceTree = "<group>"; };
 		328B01D91970BA9C000DB939 /* MyViewAndLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewAndLayer.swift; sourceTree = "<group>"; };
 		328B01DD1970BEB4000DB939 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9BFA70417B95260009F3ED0 /* ch17p498customAnimatableProperty2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch17p498customAnimatableProperty2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BFA70F17B95260009F3ED0 /* ch17p498customAnimatableProperty2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch17p498customAnimatableProperty2-Info.plist"; sourceTree = "<group>"; };
 		C9BFA71A17B95260009F3ED0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9BFA71F17B95260009F3ED0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9BFA73C17B952A6009F3ED0 /* MyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLayer.h; sourceTree = "<group>"; };
-		C9BFA73D17B952A6009F3ED0 /* MyLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,13 +59,10 @@
 				C9BFA71917B95260009F3ED0 /* Main.storyboard */,
 				326CB9501B69282C00D1DC41 /* AppDelegate.swift */,
 				328B01DD1970BEB4000DB939 /* ViewController.swift */,
-				C9BFA73C17B952A6009F3ED0 /* MyLayer.h */,
-				C9BFA73D17B952A6009F3ED0 /* MyLayer.m */,
 				328B01D91970BA9C000DB939 /* MyViewAndLayer.swift */,
 				C9BFA71F17B95260009F3ED0 /* Images.xcassets */,
 				326CB94E1B69281700D1DC41 /* LaunchScreen.storyboard */,
 				C9BFA70F17B95260009F3ED0 /* ch17p498customAnimatableProperty2-Info.plist */,
-				328B01D81970BA9B000DB939 /* ch17p498customAnimatableProperty-Bridging-Header.h */,
 			);
 			path = ch17p498customAnimatableProperty;
 			sourceTree = "<group>";
@@ -142,7 +135,6 @@
 			files = (
 				326CB9511B69282C00D1DC41 /* AppDelegate.swift in Sources */,
 				328B01DE1970BEB4000DB939 /* ViewController.swift in Sources */,
-				3210907519AA4BD2003A3D6B /* MyLayer.m in Sources */,
 				328B01DA1970BA9C000DB939 /* MyViewAndLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,7 +233,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch17p498customAnimatableProperty2;
-				SWIFT_OBJC_BRIDGING_HEADER = "ch17p498customAnimatableProperty/ch17p498customAnimatableProperty-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -259,7 +251,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch17p498customAnimatableProperty2;
-				SWIFT_OBJC_BRIDGING_HEADER = "ch17p498customAnimatableProperty/ch17p498customAnimatableProperty-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
