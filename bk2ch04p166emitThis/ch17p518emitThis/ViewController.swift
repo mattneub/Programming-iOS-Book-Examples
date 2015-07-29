@@ -5,6 +5,8 @@ import UIKit
 
 class ViewController : UIViewController {
     
+    let which = 4
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +32,6 @@ class ViewController : UIViewController {
         emit.emitterCells = [cell]
         self.view.layer.addSublayer(emit)
         
-        let which = 0
         switch which {
         case 0:
             break

@@ -12,16 +12,22 @@ func delay(delay:Double, closure:()->()) {
 
 class MyGravityBehavior : UIGravityBehavior {
     deinit {
-        println("farewell from grav")
+        print("farewell from grav")
     }
 }
 
 class MyImageView : UIImageView {
+    // new in iOS 9, we can describe the shape of our image view for collisions
+    override var collisionBoundsType: UIDynamicItemCollisionBoundsType {
+        return .Ellipse
+    }
+    
+    
     override func willMoveToWindow(newWindow: UIWindow?) {
-        println("image view move to \(newWindow)")
+        print("image view move to \(newWindow)")
     }
     deinit {
-        println("farewell from iv")
+        print("farewell from iv")
     }
 }
 
@@ -37,6 +43,8 @@ class ViewController : UIViewController {
         self.anim.delegate = self
     }
     
+    let which = 3
+
     @IBAction func doButton(sender:AnyObject?) {
         (sender as! UIButton).enabled = false
         
@@ -47,52 +55,53 @@ class ViewController : UIViewController {
         I demonstrate some alternatives...
         */
         
-        let which = 1
         switch which {
         case 1:
             // leak! neither the image view nor the gravity behavior is released
             grav.action = {
                 let items = self.anim.itemsInRect(self.view.bounds) as! [UIView]
-                let ix = find(items, self.iv)
+                let ix = items.indexOf(self.iv)
                 if ix == nil {
                     self.anim.removeAllBehaviors()
                     self.iv.removeFromSuperview()
-                    println("done")
+                    print("done")
                 }
             }
         case 2:
             grav.action = {
                 let items = self.anim.itemsInRect(self.view.bounds) as! [UIView]
-                let ix = find(items, self.iv)
+                let ix = items.indexOf(self.iv)
                 if ix == nil {
                     self.anim.removeAllBehaviors()
                     self.iv.removeFromSuperview()
                     self.anim = nil // * both are released
-                    println("done")
+                    print("done")
                 }
             }
         case 3:
             grav.action = {
                 let items = self.anim.itemsInRect(self.view.bounds) as! [UIView]
-                let ix = find(items, self.iv)
+                let ix = items.indexOf(self.iv)
                 if ix == nil {
                     delay(0) { // * both are released
                         self.anim.removeAllBehaviors()
                         self.iv.removeFromSuperview()
-                        println("done")
+                        print("done")
                     }
                 }
             }
         case 4:
             grav.action = {
                 [weak grav] in // *
-                let items = self.anim.itemsInRect(self.view.bounds) as! [UIView]
-                let ix = find(items, self.iv)
-                if ix == nil {
-                    self.anim.removeBehavior(grav) // * grav is released, iv is not!
-                    self.anim.removeAllBehaviors() // probably because of the other behaviors
-                    self.iv.removeFromSuperview()
-                    println("done")
+                if let grav = grav {
+                    let items = self.anim.itemsInRect(self.view.bounds) as! [UIView]
+                    let ix = items.indexOf(self.iv)
+                    if ix == nil {
+                        self.anim.removeBehavior(grav) // * grav is released, iv is not!
+                        self.anim.removeAllBehaviors() // probably because of the other behaviors
+                        self.iv.removeFromSuperview()
+                        print("done")
+                    }
                 }
             }
         default: break
@@ -104,26 +113,26 @@ class ViewController : UIViewController {
         // ========
         
         let push = UIPushBehavior(items:[self.iv], mode:.Instantaneous)
-        push.pushDirection = CGVectorMake(2, 0)
-        // [push setTargetOffsetFromCenter:UIOffsetMake(0, -200) forItem:self.iv];
+        push.pushDirection = CGVectorMake(1, 0)
+        //push.setTargetOffsetFromCenter(UIOffsetMake(0,-200), forItem: self.iv)
         self.anim.addBehavior(push)
-        
+
         // ========
         
         let coll = UICollisionBehavior()
         coll.collisionMode = .Boundaries
         coll.collisionDelegate = self
         coll.addBoundaryWithIdentifier("floor",
-            fromPoint:CGPointMake(0, self.view.bounds.height),
-            toPoint:CGPointMake(self.view.bounds.width,
-                self.view.bounds.height))
+            fromPoint:CGPointMake(0, self.view.bounds.maxY),
+            toPoint:CGPointMake(self.view.bounds.maxX,
+                self.view.bounds.maxY))
         self.anim.addBehavior(coll)
         coll.addItem(self.iv)
-        
+
         // =========
         
         let bounce = UIDynamicItemBehavior()
-        bounce.elasticity = 0.4
+        bounce.elasticity = 0.8
         self.anim.addBehavior(bounce)
         bounce.addItem(self.iv)
         
@@ -136,26 +145,26 @@ class ViewController : UIViewController {
 extension ViewController : UIDynamicAnimatorDelegate, UICollisionBehaviorDelegate {
     
     func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
-        println("pause")
+        print("pause")
     }
     
     func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
-        println("resume")
+        print("resume")
     }
     
     func collisionBehavior(behavior: UICollisionBehavior,
         beganContactForItem item: UIDynamicItem,
-        withBoundaryIdentifier identifier: NSCopying,
+        withBoundaryIdentifier identifier: NSCopying?,
         atPoint p: CGPoint) {
-            println(p)
+            print(p)
             // look for the dynamic item behavior
-            for b in self.anim.behaviors as! [UIDynamicBehavior] {
+            for b in self.anim.behaviors {
                 if let bounce = b as? UIDynamicItemBehavior {
                     let v = bounce.angularVelocityForItem(self.iv)
-                    println(v)
-                    if v <= 0.1 {
-                        println("adding angular velocity")
-                        bounce.addAngularVelocity(30, forItem:self.iv)
+                    print(v)
+                    if v <= 6 {
+                        print("adding angular velocity")
+                        bounce.addAngularVelocity(6, forItem:self.iv)
                     }
                     break;
                 }

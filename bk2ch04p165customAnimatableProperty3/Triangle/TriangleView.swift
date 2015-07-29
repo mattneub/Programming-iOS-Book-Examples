@@ -25,7 +25,7 @@ class TriangleView: UIView {
         }
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
         let lay = self.layer as! TriangleLayer
         lay.v1x = 0
@@ -37,9 +37,12 @@ class TriangleView: UIView {
     override func drawRect(rect: CGRect) {}
 }
 
-public extension TriangleLayer {
+class TriangleLayer : CALayer {
     
-    public override func drawInContext(ctx: CGContext) {
+    @NSManaged var v1x : CGFloat
+    @NSManaged var v1y : CGFloat
+    
+    override func drawInContext(ctx: CGContext) {
         CGContextMoveToPoint(ctx, 0, 0)
         CGContextAddLineToPoint(ctx, self.bounds.size.width, 0)
         CGContextAddLineToPoint(ctx, self.v1x, self.v1y)

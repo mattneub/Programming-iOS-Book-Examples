@@ -10,24 +10,23 @@ class ViewController : UIViewController {
     var frame : Double!
     
     var timestamp: CFTimeInterval!
-    var con: CIContext!
+    var context = CIContext(options:nil)
     
     @IBAction func doButton (sender:AnyObject) {
-        let moi = CIImage(image:UIImage(named:"moi"))
-        self.moiextent = moi.extent()
+        let moi = CIImage(image:UIImage(named:"moi")!)!
+        self.moiextent = moi.extent
         
-        let col = CIFilter(name:"CIConstantColorGenerator")
+        let col = CIFilter(name:"CIConstantColorGenerator")!
         let cicol = CIColor(color:UIColor.redColor())
         col.setValue(cicol, forKey:"inputColor")
         let colorimage = col.valueForKey("outputImage") as! CIImage
         
-        let tran = CIFilter(name:"CIFlashTransition")
+        let tran = CIFilter(name:"CIFlashTransition")!
         tran.setValue(colorimage, forKey:"inputImage")
         tran.setValue(moi, forKey:"inputTargetImage")
         let center = CIVector(x:self.moiextent.width/2.0, y:self.moiextent.height/2.0)
         tran.setValue(center, forKey:"inputCenter")
         
-        self.con = CIContext(options:nil)
         self.tran = tran
         self.timestamp = 0.0 // signal that we are starting
         
@@ -53,17 +52,17 @@ class ViewController : UIViewController {
         sender.paused = true // defend against frame loss
         
         self.tran.setValue(self.frame, forKey:"inputTime")
-        let moi = self.con.createCGImage(tran.outputImage, fromRect:self.moiextent)
+        let moi = self.context.createCGImage(tran.outputImage, fromRect:self.moiextent)
         CATransaction.setDisableActions(true)
         self.v.layer.contents = moi
         
         if self.frame > 1.0 {
-            println("invalidate")
+            print("invalidate")
             sender.invalidate()
         }
         sender.paused = false
         
-        println("here \(self.frame)") // useful for seeing dropped frame rate
+        print("here \(self.frame)") // useful for seeing dropped frame rate
     }
     
 }

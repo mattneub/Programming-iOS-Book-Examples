@@ -34,22 +34,21 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
         grav.addItem(self.v)
 
         let push = UIPushBehavior(items:[self.v], mode:.Instantaneous)
-        push.pushDirection = CGVectorMake(2, 0)
-        // push.setTargetOffsetFromCenter(UIOffsetMake(0, -200), forItem:self.v)
+        push.pushDirection = CGVectorMake(1, 0)
+        //push.setTargetOffsetFromCenter(UIOffsetMake(0,-200), forItem: self.iv)
         self.addChildBehavior(push)
 
         let coll = UICollisionBehavior()
         coll.collisionMode = .Boundaries
         coll.collisionDelegate = self
         coll.addBoundaryWithIdentifier("floor",
-            fromPoint:CGPointMake(0, sup.bounds.size.height),
-            toPoint:CGPointMake(sup.bounds.size.width,
-                sup.bounds.size.height))
+            fromPoint:CGPointMake(0, sup.bounds.maxY),
+            toPoint:CGPointMake(sup.bounds.maxX, sup.bounds.maxY))
         self.addChildBehavior(coll)
         coll.addItem(self.v)
         
         let bounce = UIDynamicItemBehavior()
-        bounce.elasticity = 0.4
+        bounce.elasticity = 0.8
         self.addChildBehavior(bounce)
         bounce.addItem(self.v)
 
@@ -65,9 +64,9 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
                 if let bounce = b as? UIDynamicItemBehavior {
                     let v = bounce.angularVelocityForItem(item)
                     print(v)
-                    if v <= 0.1 {
+                    if v <= 6 {
                         print("adding angular velocity")
-                        bounce.addAngularVelocity(30, forItem:item)
+                        bounce.addAngularVelocity(6, forItem:item)
                     }
                     break;
                 }

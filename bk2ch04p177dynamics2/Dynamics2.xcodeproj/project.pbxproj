@@ -7,34 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		326CB95F1B6959E600D1DC41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 326CB95E1B6959E600D1DC41 /* LaunchScreen.storyboard */; };
+		326CB9611B695A0500D1DC41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326CB9601B695A0500D1DC41 /* AppDelegate.swift */; };
 		3283079C197199B8002B6BFF /* MyDropBounceAndRollBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283079B197199B8002B6BFF /* MyDropBounceAndRollBehavior.swift */; };
 		3283079E1971A5AF002B6BFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283079D1971A5AF002B6BFF /* ViewController.swift */; };
-		C906E76B17B7DDA800AA51E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C906E76A17B7DDA800AA51E8 /* Foundation.framework */; };
-		C906E76D17B7DDA800AA51E8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C906E76C17B7DDA800AA51E8 /* CoreGraphics.framework */; };
-		C906E76F17B7DDA800AA51E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C906E76E17B7DDA800AA51E8 /* UIKit.framework */; };
-		C906E77517B7DDA800AA51E8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C906E77317B7DDA800AA51E8 /* InfoPlist.strings */; };
-		C906E77717B7DDA800AA51E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C906E77617B7DDA800AA51E8 /* main.m */; };
-		C906E77B17B7DDA800AA51E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C906E77A17B7DDA800AA51E8 /* AppDelegate.m */; };
 		C906E77E17B7DDA800AA51E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C906E77C17B7DDA800AA51E8 /* Main.storyboard */; };
-		C906E78317B7DDA800AA51E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C906E78217B7DDA800AA51E8 /* Images.xcassets */; };
+		C906E78317B7DDA800AA51E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C906E78217B7DDA800AA51E8 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		326CB95E1B6959E600D1DC41 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		326CB9601B695A0500D1DC41 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3283079B197199B8002B6BFF /* MyDropBounceAndRollBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDropBounceAndRollBehavior.swift; sourceTree = "<group>"; };
 		3283079D1971A5AF002B6BFF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C906E76717B7DDA800AA51E8 /* Dynamics2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dynamics2.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C906E76A17B7DDA800AA51E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C906E76C17B7DDA800AA51E8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C906E76E17B7DDA800AA51E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C906E77217B7DDA800AA51E8 /* Dynamics2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dynamics2-Info.plist"; sourceTree = "<group>"; };
-		C906E77417B7DDA800AA51E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C906E77617B7DDA800AA51E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C906E77817B7DDA800AA51E8 /* Dynamics2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dynamics2-Prefix.pch"; sourceTree = "<group>"; };
-		C906E77917B7DDA800AA51E8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C906E77A17B7DDA800AA51E8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C906E77D17B7DDA800AA51E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C906E78217B7DDA800AA51E8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C906E78917B7DDA900AA51E8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C906E78217B7DDA800AA51E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,9 +31,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C906E76D17B7DDA800AA51E8 /* CoreGraphics.framework in Frameworks */,
-				C906E76F17B7DDA800AA51E8 /* UIKit.framework in Frameworks */,
-				C906E76B17B7DDA800AA51E8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				C906E77017B7DDA800AA51E8 /* Dynamics */,
-				C906E76917B7DDA800AA51E8 /* Frameworks */,
 				C906E76817B7DDA800AA51E8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,40 +53,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C906E76917B7DDA800AA51E8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C906E76A17B7DDA800AA51E8 /* Foundation.framework */,
-				C906E76C17B7DDA800AA51E8 /* CoreGraphics.framework */,
-				C906E76E17B7DDA800AA51E8 /* UIKit.framework */,
-				C906E78917B7DDA900AA51E8 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C906E77017B7DDA800AA51E8 /* Dynamics */ = {
 			isa = PBXGroup;
 			children = (
-				C906E77917B7DDA800AA51E8 /* AppDelegate.h */,
-				C906E77A17B7DDA800AA51E8 /* AppDelegate.m */,
 				C906E77C17B7DDA800AA51E8 /* Main.storyboard */,
 				3283079D1971A5AF002B6BFF /* ViewController.swift */,
+				326CB9601B695A0500D1DC41 /* AppDelegate.swift */,
 				3283079B197199B8002B6BFF /* MyDropBounceAndRollBehavior.swift */,
-				C906E78217B7DDA800AA51E8 /* Images.xcassets */,
-				C906E77117B7DDA800AA51E8 /* Supporting Files */,
+				C906E78217B7DDA800AA51E8 /* Assets.xcassets */,
+				C906E77217B7DDA800AA51E8 /* Dynamics2-Info.plist */,
+				326CB95E1B6959E600D1DC41 /* LaunchScreen.storyboard */,
 			);
 			path = Dynamics;
-			sourceTree = "<group>";
-		};
-		C906E77117B7DDA800AA51E8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C906E77217B7DDA800AA51E8 /* Dynamics2-Info.plist */,
-				C906E77317B7DDA800AA51E8 /* InfoPlist.strings */,
-				C906E77617B7DDA800AA51E8 /* main.m */,
-				C906E77817B7DDA800AA51E8 /* Dynamics2-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,8 +120,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C906E78317B7DDA800AA51E8 /* Images.xcassets in Resources */,
-				C906E77517B7DDA800AA51E8 /* InfoPlist.strings in Resources */,
+				C906E78317B7DDA800AA51E8 /* Assets.xcassets in Resources */,
+				326CB95F1B6959E600D1DC41 /* LaunchScreen.storyboard in Resources */,
 				C906E77E17B7DDA800AA51E8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,24 +133,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				326CB9611B695A0500D1DC41 /* AppDelegate.swift in Sources */,
 				3283079E1971A5AF002B6BFF /* ViewController.swift in Sources */,
 				3283079C197199B8002B6BFF /* MyDropBounceAndRollBehavior.swift in Sources */,
-				C906E77B17B7DDA800AA51E8 /* AppDelegate.m in Sources */,
-				C906E77717B7DDA800AA51E8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C906E77317B7DDA800AA51E8 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C906E77417B7DDA800AA51E8 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C906E77C17B7DDA800AA51E8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -230,7 +184,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -261,7 +215,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -271,7 +225,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dynamics/Dynamics2-Prefix.pch";
@@ -288,7 +241,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dynamics/Dynamics2-Prefix.pch";
