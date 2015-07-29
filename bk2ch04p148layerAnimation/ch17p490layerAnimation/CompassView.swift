@@ -30,7 +30,7 @@ class CompassLayer : CALayer {
     }
     
     func setup () {
-        println("setup")
+        print("setup")
         
         
         // the gradient
@@ -59,7 +59,7 @@ class CompassLayer : CALayer {
         
         // the four cardinal points
         let pts = "NESW"
-        for (ix,c) in enumerate(pts) {
+        for (ix,c) in pts.characters.enumerate() {
             let t = CATextLayer()
             t.contentsScale = UIScreen.mainScreen().scale
             t.string = String(c)
@@ -92,7 +92,7 @@ class CompassLayer : CALayer {
     }
     
     override func drawLayer(layer: CALayer, inContext con: CGContext) {
-        println("drawLayer:inContext: for arrow")
+        print("drawLayer:inContext: for arrow")
         
         // Questa poi la conosco pur troppo!
         

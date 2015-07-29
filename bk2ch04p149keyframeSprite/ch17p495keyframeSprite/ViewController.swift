@@ -40,7 +40,7 @@ class ViewController : UIViewController {
     @IBAction func doButton(sender:AnyObject?) {
 
         let anim = CAKeyframeAnimation(keyPath:"contents")
-        anim.values = self.images.map {$0.CGImage as AnyObject}
+        anim.values = self.images.map {$0.CGImage!}
         anim.keyTimes = [0.0, 0.25, 0.5, 0.75, 1.0]
         anim.calculationMode = kCAAnimationDiscrete
         anim.duration = 1.5

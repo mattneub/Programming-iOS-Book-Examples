@@ -6,11 +6,12 @@ import UIKit
 class ViewController : UIViewController {
     @IBOutlet var compassView : CompassView!
     
+    let which = 10
+
     @IBAction func doButton(sender:AnyObject?) {
         let c = self.compassView.layer as! CompassLayer
         let arrow = c.arrow!
         
-        let which = 1
         switch which {
         case 1:
             arrow.transform = CATransform3DRotate(
@@ -29,7 +30,7 @@ class ViewController : UIViewController {
         case 4:
             // proving that the completion block works
             CATransaction.setCompletionBlock({
-                println("done")
+                print("done")
                 })
             
             // capture the start and end values

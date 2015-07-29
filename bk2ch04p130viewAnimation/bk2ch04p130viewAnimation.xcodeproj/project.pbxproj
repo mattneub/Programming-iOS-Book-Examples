@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		329602901B68610800EF762F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3296028F1B68610800EF762F /* LaunchScreen.storyboard */; };
 		32B800B819BE13F800965954 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B800B719BE13F800965954 /* AppDelegate.swift */; };
 		32B800BA19BE13F800965954 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B800B919BE13F800965954 /* ViewController.swift */; };
 		32B800BD19BE13F800965954 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32B800BB19BE13F800965954 /* Main.storyboard */; };
-		32B800BF19BE13F800965954 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32B800BE19BE13F800965954 /* Images.xcassets */; };
+		32B800BF19BE13F800965954 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32B800BE19BE13F800965954 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3296028F1B68610800EF762F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32B800B219BE13F800965954 /* bk2ch04p130viewAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk2ch04p130viewAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32B800B619BE13F800965954 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32B800B719BE13F800965954 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32B800B919BE13F800965954 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32B800BC19BE13F800965954 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32B800BE19BE13F800965954 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		32B800C919BE13F800965954 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32B800CA19BE13F800965954 /* bk2ch04p130viewAnimationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bk2ch04p130viewAnimationTests.swift; sourceTree = "<group>"; };
+		32B800BE19BE13F800965954 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				32B800B419BE13F800965954 /* bk2ch04p130viewAnimation */,
-				32B800C719BE13F800965954 /* bk2ch04p130viewAnimationTests */,
 				32B800B319BE13F800965954 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,35 +57,11 @@
 				32B800B719BE13F800965954 /* AppDelegate.swift */,
 				32B800B919BE13F800965954 /* ViewController.swift */,
 				32B800BB19BE13F800965954 /* Main.storyboard */,
-				32B800BE19BE13F800965954 /* Images.xcassets */,
-				32B800B519BE13F800965954 /* Supporting Files */,
-			);
-			path = bk2ch04p130viewAnimation;
-			sourceTree = "<group>";
-		};
-		32B800B519BE13F800965954 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				32B800BE19BE13F800965954 /* Assets.xcassets */,
+				3296028F1B68610800EF762F /* LaunchScreen.storyboard */,
 				32B800B619BE13F800965954 /* Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		32B800C719BE13F800965954 /* bk2ch04p130viewAnimationTests */ = {
-			isa = PBXGroup;
-			children = (
-				32B800CA19BE13F800965954 /* bk2ch04p130viewAnimationTests.swift */,
-				32B800C819BE13F800965954 /* Supporting Files */,
-			);
-			path = bk2ch04p130viewAnimationTests;
-			sourceTree = "<group>";
-		};
-		32B800C819BE13F800965954 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				32B800C919BE13F800965954 /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = bk2ch04p130viewAnimation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,6 +90,7 @@
 		32B800AA19BE13F800965954 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -146,8 +122,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				329602901B68610800EF762F /* LaunchScreen.storyboard in Resources */,
 				32B800BD19BE13F800965954 /* Main.storyboard in Resources */,
-				32B800BF19BE13F800965954 /* Images.xcassets in Resources */,
+				32B800BF19BE13F800965954 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +188,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -247,7 +224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -258,7 +235,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = bk2ch04p130viewAnimation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -269,7 +245,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = bk2ch04p130viewAnimation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -295,6 +270,7 @@
 				32B800D019BE13F800965954 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

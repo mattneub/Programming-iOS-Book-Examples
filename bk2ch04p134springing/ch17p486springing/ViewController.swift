@@ -8,7 +8,7 @@ class ViewController : UIViewController {
         UIView.animateWithDuration(0.8, delay: 0,
             usingSpringWithDamping: 0.7,
             initialSpringVelocity: 20,
-            options: nil,
+            options: [],
             animations: {
                 self.v.center.y += 100
             }, completion: nil)

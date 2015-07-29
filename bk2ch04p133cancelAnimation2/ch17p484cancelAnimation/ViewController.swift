@@ -6,7 +6,7 @@ class ViewController : UIViewController {
     
     func animate() {
         self.pOrig = self.v.center
-        let opts : UIViewAnimationOptions = .Autoreverse | .Repeat
+        let opts : UIViewAnimationOptions = [.Autoreverse, .Repeat]
         UIView.animateWithDuration(1, delay: 0, options: opts,
             animations: {
                 self.v.center.x += 100

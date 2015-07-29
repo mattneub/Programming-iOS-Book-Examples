@@ -25,7 +25,7 @@ class ViewController : UIViewController {
         var next : CGPoint = self.v.layer.position
         var pos : CGPoint
         CGPathMoveToPoint(path, nil, next.x, next.y)
-        for i in 0 ..< 4 {
+        for _ in 0 ..< 4 {
             pos = next
             leftright *= -1
             next = CGPointMake(pos.x+h*leftright, pos.y+v)

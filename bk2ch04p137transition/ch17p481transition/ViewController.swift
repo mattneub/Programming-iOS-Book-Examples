@@ -30,7 +30,7 @@ class ViewController : UIViewController {
         
         // ======
         
-        let opts2 : UIViewAnimationOptions = .TransitionFlipFromLeft | .AllowAnimatedContent
+        let opts2 : UIViewAnimationOptions = [.TransitionFlipFromLeft, .AllowAnimatedContent]
         UIView.transitionWithView(self.outer, duration: 1, options: opts2,
             animations: {
                 var f = self.inner.frame

@@ -17,7 +17,7 @@ public extension MyLayer {
     // this Swift extension contains everything except the @dynamic declaration...
     // ...which can only be made in Objective-C
     
-    override class func needsDisplayForKey(key: String!) -> Bool {
+    override class func needsDisplayForKey(key: String) -> Bool {
         if key == "thickness" {
             return true
         }
@@ -36,7 +36,7 @@ public extension MyLayer {
     // NB that we can implicitly animate even for view's underlying layer!
     // this is something the book has always been wrong about
     
-    override func actionForKey(key: String!) -> CAAction! {
+    override func actionForKey(key: String) -> CAAction? {
         if key == "thickness" {
             let ba = CABasicAnimation(keyPath: key)
             // stolen directly from Apple's sample code:

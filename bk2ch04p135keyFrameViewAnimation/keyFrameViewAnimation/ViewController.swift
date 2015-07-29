@@ -9,9 +9,9 @@ class ViewController : UIViewController {
     
     func animate() {
         var p = self.v.center
-        let opt1 : UIViewKeyframeAnimationOptions = .CalculationModeLinear
+        var opts : UIViewKeyframeAnimationOptions = .CalculationModeLinear
         let opt2 : UIViewAnimationOptions = .CurveLinear
-        let opts = opt1 | UIViewKeyframeAnimationOptions(opt2.rawValue)
+        opts.insert(UIViewKeyframeAnimationOptions(rawValue:opt2.rawValue))
         let dur = 0.25
         var start = 0.0
         let dx : CGFloat = 100

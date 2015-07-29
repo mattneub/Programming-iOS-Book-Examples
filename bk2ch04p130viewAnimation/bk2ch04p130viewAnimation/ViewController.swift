@@ -11,27 +11,35 @@ func delay(delay:Double, closure:()->()) {
 }
 
 extension UIView {
-    class func animateWithTimes(times:Int, duration: NSTimeInterval,
-        delay: NSTimeInterval, options: UIViewAnimationOptions,
-        animations: () -> Void, completion: ((Bool) -> Void)?) {
-            self.animHelper(
-                times-1, duration, delay, options, animations, completion)
+    class func animateWithTimes(times:Int,
+        duration dur: NSTimeInterval,
+        delay del: NSTimeInterval,
+        options opts: UIViewAnimationOptions,
+        animations anim: () -> Void,
+        completion comp: ((Bool) -> Void)?) {
+            func animHelper(t:Int,
+                _ dur: NSTimeInterval,
+                _ del: NSTimeInterval,
+                _ opt: UIViewAnimationOptions,
+                _ anim: () -> Void,
+                _ com: ((Bool) -> Void)?) {
+                    UIView.animateWithDuration(dur,
+                        delay: del, options: opt,
+                        animations: anim, completion: {
+                            done in
+                            if com != nil {
+                                com!(done)
+                            }
+                            if t > 0 {
+                                delay(0) {
+                                    animHelper(t-1, dur, del, opt, anim, com)
+                                }
+                            }
+                    })
+            }
+            animHelper(times-1, dur, del, opts, anim, comp)
     }
 
-    class func animHelper(t:Int, _ dur: NSTimeInterval, _ del: NSTimeInterval,
-        _ opt: UIViewAnimationOptions,
-        _ anim: () -> Void, _ com: ((Bool) -> Void)?) {
-            UIView.animateWithDuration(dur, delay: del, options: opt,
-                animations: anim, completion: {
-                    done in
-                    if com != nil {
-                        com!(done)
-                    }
-                    if t > 0 {
-                        self.animHelper(t-1, dur, del, opt, anim, com)
-                    }
-            })
-    }
 }
 
 class ViewController: UIViewController {
@@ -40,11 +48,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let which = 1
+        let which = 9
         
         delay(3) {
-            println(0)
-            println(self.v.center.y)
+            print(0)
+            print(self.v.center.y)
             switch which {
             case 1:
                 UIView.animateWithDuration(0.4, animations: {
@@ -69,27 +77,28 @@ class ViewController: UIViewController {
                         self.v.removeFromSuperview()
                 })
             case 4:
-                UIView.animateWithDuration(0.4, animations: {
+                UIView.animateWithDuration(1, animations: {
                     self.v.backgroundColor = UIColor.redColor()
                     UIView.performWithoutAnimation {
                         self.v.center.y += 100
                     }
                 })
             case 5:
+                // need to think about this one
                 UIView.animateWithDuration(2, animations: {
-                    println(2)
-                    println(self.v.center.y)
+                    print(2)
+                    print(self.v.center.y)
                     self.v.center.y = 100
-                    println(3)
-                    println(self.v.center.y)
+                    print(3)
+                    print(self.v.center.y)
                     }, completion: {
                         _ in
-                        println(4)
-                        println(self.v.center.y)
+                        print(4)
+                        print(self.v.center.y)
                 })
                 self.v.center.y = 300
-                println(1)
-                println(self.v.center.y)
+                print(1)
+                print(self.v.center.y)
             case 6:
                 UIView.animateWithDuration(2, animations: {
                     self.v.center.y = 100
@@ -119,8 +128,8 @@ class ViewController: UIViewController {
                 UIView.animateWithDuration(1, animations: {
                     self.v.center.x += 100
                 })
-                let opts = UIViewAnimationOptions.BeginFromCurrentState
-                UIView.animateWithDuration(1, delay: 0, options: nil,
+                // let opts = UIViewAnimationOptions.BeginFromCurrentState
+                UIView.animateWithDuration(1, delay: 0, options: [],
                     animations: {
                         self.v.center.y += 100
                     }, completion: nil)
@@ -163,7 +172,9 @@ class ViewController: UIViewController {
                     _ in
                     self.v.center.x = xorig
                     if count > 1 {
-                        self.animate(count-1)
+                        delay(0) {
+                            self.animate(count-1)
+                        }
                     }
             })
         default: break

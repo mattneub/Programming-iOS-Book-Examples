@@ -7,44 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		329602921B6866AF00EF762F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 329602911B6866AF00EF762F /* LaunchScreen.storyboard */; };
 		32EF21FB1970E1BA009115B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF21FA1970E1BA009115B4 /* AppDelegate.swift */; };
 		32EF21FD1970E1BA009115B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF21FC1970E1BA009115B4 /* ViewController.swift */; };
 		32EF22001970E1BA009115B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32EF21FE1970E1BA009115B4 /* Main.storyboard */; };
-		32EF22021970E1BA009115B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32EF22011970E1BA009115B4 /* Images.xcassets */; };
-		32EF220E1970E1BA009115B4 /* bk2ch04p132viewAnimationFacadeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF220D1970E1BA009115B4 /* bk2ch04p132viewAnimationFacadeTests.swift */; };
+		32EF22021970E1BA009115B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32EF22011970E1BA009115B4 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		32EF22081970E1BA009115B4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 32EF21ED1970E1BA009115B4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 32EF21F41970E1BA009115B4;
-			remoteInfo = bk2ch04p132viewAnimationFacade;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		329602911B6866AF00EF762F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32EF21F51970E1BA009115B4 /* bk2ch04p132viewAnimationFacade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk2ch04p132viewAnimationFacade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32EF21F91970E1BA009115B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32EF21FA1970E1BA009115B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32EF21FC1970E1BA009115B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32EF21FF1970E1BA009115B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32EF22011970E1BA009115B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		32EF22071970E1BA009115B4 /* bk2ch04p132viewAnimationFacadeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bk2ch04p132viewAnimationFacadeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		32EF220C1970E1BA009115B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32EF220D1970E1BA009115B4 /* bk2ch04p132viewAnimationFacadeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bk2ch04p132viewAnimationFacadeTests.swift; sourceTree = "<group>"; };
+		32EF22011970E1BA009115B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		32EF21F21970E1BA009115B4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32EF22041970E1BA009115B4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -58,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				32EF21F71970E1BA009115B4 /* bk2ch04p132viewAnimationFacade */,
-				32EF220A1970E1BA009115B4 /* bk2ch04p132viewAnimationFacadeTests */,
 				32EF21F61970E1BA009115B4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				32EF21F51970E1BA009115B4 /* bk2ch04p132viewAnimationFacade.app */,
-				32EF22071970E1BA009115B4 /* bk2ch04p132viewAnimationFacadeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,35 +57,11 @@
 				32EF21FA1970E1BA009115B4 /* AppDelegate.swift */,
 				32EF21FC1970E1BA009115B4 /* ViewController.swift */,
 				32EF21FE1970E1BA009115B4 /* Main.storyboard */,
-				32EF22011970E1BA009115B4 /* Images.xcassets */,
-				32EF21F81970E1BA009115B4 /* Supporting Files */,
-			);
-			path = bk2ch04p132viewAnimationFacade;
-			sourceTree = "<group>";
-		};
-		32EF21F81970E1BA009115B4 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				32EF22011970E1BA009115B4 /* Assets.xcassets */,
+				329602911B6866AF00EF762F /* LaunchScreen.storyboard */,
 				32EF21F91970E1BA009115B4 /* Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		32EF220A1970E1BA009115B4 /* bk2ch04p132viewAnimationFacadeTests */ = {
-			isa = PBXGroup;
-			children = (
-				32EF220D1970E1BA009115B4 /* bk2ch04p132viewAnimationFacadeTests.swift */,
-				32EF220B1970E1BA009115B4 /* Supporting Files */,
-			);
-			path = bk2ch04p132viewAnimationFacadeTests;
-			sourceTree = "<group>";
-		};
-		32EF220B1970E1BA009115B4 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				32EF220C1970E1BA009115B4 /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = bk2ch04p132viewAnimationFacade;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,39 +84,18 @@
 			productReference = 32EF21F51970E1BA009115B4 /* bk2ch04p132viewAnimationFacade.app */;
 			productType = "com.apple.product-type.application";
 		};
-		32EF22061970E1BA009115B4 /* bk2ch04p132viewAnimationFacadeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 32EF22141970E1BA009115B4 /* Build configuration list for PBXNativeTarget "bk2ch04p132viewAnimationFacadeTests" */;
-			buildPhases = (
-				32EF22031970E1BA009115B4 /* Sources */,
-				32EF22041970E1BA009115B4 /* Frameworks */,
-				32EF22051970E1BA009115B4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				32EF22091970E1BA009115B4 /* PBXTargetDependency */,
-			);
-			name = bk2ch04p132viewAnimationFacadeTests;
-			productName = bk2ch04p132viewAnimationFacadeTests;
-			productReference = 32EF22071970E1BA009115B4 /* bk2ch04p132viewAnimationFacadeTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		32EF21ED1970E1BA009115B4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					32EF21F41970E1BA009115B4 = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					32EF22061970E1BA009115B4 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 32EF21F41970E1BA009115B4;
 					};
 				};
 			};
@@ -179,7 +113,6 @@
 			projectRoot = "";
 			targets = (
 				32EF21F41970E1BA009115B4 /* bk2ch04p132viewAnimationFacade */,
-				32EF22061970E1BA009115B4 /* bk2ch04p132viewAnimationFacadeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -189,15 +122,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				329602921B6866AF00EF762F /* LaunchScreen.storyboard in Resources */,
 				32EF22001970E1BA009115B4 /* Main.storyboard in Resources */,
-				32EF22021970E1BA009115B4 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32EF22051970E1BA009115B4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				32EF22021970E1BA009115B4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,23 +140,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		32EF22031970E1BA009115B4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				32EF220E1970E1BA009115B4 /* bk2ch04p132viewAnimationFacadeTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		32EF22091970E1BA009115B4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 32EF21F41970E1BA009115B4 /* bk2ch04p132viewAnimationFacade */;
-			targetProxy = 32EF22081970E1BA009115B4 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		32EF21FE1970E1BA009115B4 /* Main.storyboard */ = {
@@ -277,7 +188,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -313,7 +224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -324,7 +235,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = bk2ch04p132viewAnimationFacade/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -335,44 +245,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = bk2ch04p132viewAnimationFacade/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		32EF22151970E1BA009115B4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bk2ch04p132viewAnimationFacade.app/bk2ch04p132viewAnimationFacade";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = bk2ch04p132viewAnimationFacadeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-			};
-			name = Debug;
-		};
-		32EF22161970E1BA009115B4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bk2ch04p132viewAnimationFacade.app/bk2ch04p132viewAnimationFacade";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = bk2ch04p132viewAnimationFacadeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
 		};
@@ -393,15 +268,6 @@
 			buildConfigurations = (
 				32EF22121970E1BA009115B4 /* Debug */,
 				32EF22131970E1BA009115B4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		32EF22141970E1BA009115B4 /* Build configuration list for PBXNativeTarget "bk2ch04p132viewAnimationFacadeTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				32EF22151970E1BA009115B4 /* Debug */,
-				32EF22161970E1BA009115B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

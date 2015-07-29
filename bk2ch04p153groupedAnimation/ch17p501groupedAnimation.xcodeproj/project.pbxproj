@@ -8,32 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		3223777519714F7900E524FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3223777419714F7900E524FB /* ViewController.swift */; };
-		C976ACC617B957D600CE0261 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C976ACC517B957D600CE0261 /* Foundation.framework */; };
-		C976ACC817B957D600CE0261 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C976ACC717B957D600CE0261 /* CoreGraphics.framework */; };
-		C976ACCA17B957D600CE0261 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C976ACC917B957D600CE0261 /* UIKit.framework */; };
-		C976ACD017B957D600CE0261 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C976ACCE17B957D600CE0261 /* InfoPlist.strings */; };
-		C976ACD217B957D600CE0261 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C976ACD117B957D600CE0261 /* main.m */; };
-		C976ACD617B957D600CE0261 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C976ACD517B957D600CE0261 /* AppDelegate.m */; };
+		326CB9411B69246700D1DC41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 326CB9401B69246700D1DC41 /* LaunchScreen.storyboard */; };
+		326CB9431B69248100D1DC41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326CB9421B69248100D1DC41 /* AppDelegate.swift */; };
 		C976ACD917B957D600CE0261 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C976ACD717B957D600CE0261 /* Main.storyboard */; };
-		C976ACDE17B957D600CE0261 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C976ACDD17B957D600CE0261 /* Images.xcassets */; };
+		C976ACDE17B957D600CE0261 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C976ACDD17B957D600CE0261 /* Assets.xcassets */; };
 		C976ACFB17B9580F00CE0261 /* boat.gif in Resources */ = {isa = PBXBuildFile; fileRef = C976ACFA17B9580F00CE0261 /* boat.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3223777419714F7900E524FB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		326CB9401B69246700D1DC41 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		326CB9421B69248100D1DC41 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C976ACC217B957D600CE0261 /* ch17p501groupedAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch17p501groupedAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C976ACC517B957D600CE0261 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C976ACC717B957D600CE0261 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C976ACC917B957D600CE0261 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C976ACCD17B957D600CE0261 /* ch17p501groupedAnimation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch17p501groupedAnimation-Info.plist"; sourceTree = "<group>"; };
-		C976ACCF17B957D600CE0261 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C976ACD117B957D600CE0261 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C976ACD317B957D600CE0261 /* ch17p501groupedAnimation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch17p501groupedAnimation-Prefix.pch"; sourceTree = "<group>"; };
-		C976ACD417B957D600CE0261 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C976ACD517B957D600CE0261 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C976ACD817B957D600CE0261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C976ACDD17B957D600CE0261 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C976ACE417B957D600CE0261 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C976ACDD17B957D600CE0261 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C976ACFA17B9580F00CE0261 /* boat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = boat.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,9 +31,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C976ACC817B957D600CE0261 /* CoreGraphics.framework in Frameworks */,
-				C976ACCA17B957D600CE0261 /* UIKit.framework in Frameworks */,
-				C976ACC617B957D600CE0261 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				C976ACCB17B957D600CE0261 /* ch17p501groupedAnimation */,
-				C976ACC417B957D600CE0261 /* Frameworks */,
 				C976ACC317B957D600CE0261 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,40 +53,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C976ACC417B957D600CE0261 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C976ACC517B957D600CE0261 /* Foundation.framework */,
-				C976ACC717B957D600CE0261 /* CoreGraphics.framework */,
-				C976ACC917B957D600CE0261 /* UIKit.framework */,
-				C976ACE417B957D600CE0261 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C976ACCB17B957D600CE0261 /* ch17p501groupedAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				C976ACD417B957D600CE0261 /* AppDelegate.h */,
-				C976ACD517B957D600CE0261 /* AppDelegate.m */,
 				C976ACD717B957D600CE0261 /* Main.storyboard */,
 				3223777419714F7900E524FB /* ViewController.swift */,
+				326CB9421B69248100D1DC41 /* AppDelegate.swift */,
 				C976ACFA17B9580F00CE0261 /* boat.gif */,
-				C976ACDD17B957D600CE0261 /* Images.xcassets */,
-				C976ACCC17B957D600CE0261 /* Supporting Files */,
+				C976ACDD17B957D600CE0261 /* Assets.xcassets */,
+				326CB9401B69246700D1DC41 /* LaunchScreen.storyboard */,
+				C976ACCD17B957D600CE0261 /* ch17p501groupedAnimation-Info.plist */,
 			);
 			path = ch17p501groupedAnimation;
-			sourceTree = "<group>";
-		};
-		C976ACCC17B957D600CE0261 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C976ACCD17B957D600CE0261 /* ch17p501groupedAnimation-Info.plist */,
-				C976ACCE17B957D600CE0261 /* InfoPlist.strings */,
-				C976ACD117B957D600CE0261 /* main.m */,
-				C976ACD317B957D600CE0261 /* ch17p501groupedAnimation-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +93,7 @@
 		C976ACBA17B957D600CE0261 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -156,8 +120,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C976ACDE17B957D600CE0261 /* Images.xcassets in Resources */,
-				C976ACD017B957D600CE0261 /* InfoPlist.strings in Resources */,
+				C976ACDE17B957D600CE0261 /* Assets.xcassets in Resources */,
+				326CB9411B69246700D1DC41 /* LaunchScreen.storyboard in Resources */,
 				C976ACFB17B9580F00CE0261 /* boat.gif in Resources */,
 				C976ACD917B957D600CE0261 /* Main.storyboard in Resources */,
 			);
@@ -170,23 +134,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C976ACD617B957D600CE0261 /* AppDelegate.m in Sources */,
+				326CB9431B69248100D1DC41 /* AppDelegate.swift in Sources */,
 				3223777519714F7900E524FB /* ViewController.swift in Sources */,
-				C976ACD217B957D600CE0261 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C976ACCE17B957D600CE0261 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C976ACCF17B957D600CE0261 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C976ACD717B957D600CE0261 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -229,7 +184,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -260,7 +215,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -270,12 +225,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch17p501groupedAnimation/ch17p501groupedAnimation-Prefix.pch";
 				INFOPLIST_FILE = "ch17p501groupedAnimation/ch17p501groupedAnimation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -288,12 +242,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch17p501groupedAnimation/ch17p501groupedAnimation-Prefix.pch";
 				INFOPLIST_FILE = "ch17p501groupedAnimation/ch17p501groupedAnimation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -17,9 +17,10 @@ class ViewController : UIViewController {
         delay(1.0) {self.animate()}
     }
     
+    let which = 1
+
     func animate () {
         
-        let which = 1
         switch which {
         case 1:
             let mars = UIImage(named: "Mars")!
@@ -54,7 +55,7 @@ class ViewController : UIViewController {
                 arr += [im]
             }
             let im = UIImage.animatedImageWithImages(arr, duration:0.5)
-            let b = UIButton.buttonWithType(.System) as! UIButton
+            let b = UIButton(type:.System)
             b.setTitle("Howdy", forState:.Normal)
             b.setImage(im, forState:.Normal)
             b.center = CGPointMake(100,200)
@@ -63,7 +64,7 @@ class ViewController : UIViewController {
 
         case 3:
             let im = UIImage.animatedImageNamed("pac", duration:1)
-            let b = UIButton.buttonWithType(.System) as! UIButton
+            let b = UIButton(type:.System)
             b.setImage(im, forState:.Normal)
             b.center = CGPointMake(100,200)
             b.sizeToFit()
