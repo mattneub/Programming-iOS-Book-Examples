@@ -10,10 +10,9 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
         super.init()
     }
     
-    // exclamation mark instead of question mark is deliberate so I don't have to keep unwrapping!
     
-    override func willMoveToAnimator(anim: UIDynamicAnimator!) {
-        if anim == nil { return }
+    override func willMoveToAnimator(anim: UIDynamicAnimator?) {
+        guard let anim = anim else { return }
         
         let sup = self.v.superview!
         
@@ -60,15 +59,14 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
         atPoint p: CGPoint) {
             print(p)
             // look for the dynamic item behavior
-            for b in self.childBehaviors {
-                if let bounce = b as? UIDynamicItemBehavior {
-                    let v = bounce.angularVelocityForItem(item)
-                    print(v)
-                    if v <= 6 {
-                        print("adding angular velocity")
-                        bounce.addAngularVelocity(6, forItem:item)
-                    }
-                    break;
+            let b = self.childBehaviors
+            if let ix = b.indexOf({$0 is UIDynamicItemBehavior}) {
+                let bounce = b[ix] as! UIDynamicItemBehavior
+                let v = bounce.angularVelocityForItem(item)
+                print(v)
+                if v <= 6 {
+                    print("adding angular velocity")
+                    bounce.addAngularVelocity(6, forItem:item)
                 }
             }
     }

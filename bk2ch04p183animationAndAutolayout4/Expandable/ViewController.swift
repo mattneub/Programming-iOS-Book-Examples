@@ -13,7 +13,9 @@ class ViewController : UIViewController {
     @IBAction func toggleContents(sender: AnyObject!) {
         self.long = !self.long
         self.randomLabel.text = self.texts[self.long ? 1 : 0]
-
+        UIView.animateWithDuration(1) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func toggleButtonSelector (sender:AnyObject!) {

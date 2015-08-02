@@ -14,15 +14,15 @@ class ViewController: UIViewController {
         let c = self.oldConstraint.constant
         NSLayoutConstraint.deactivateConstraints([self.oldConstraint])
         let newConstraint = c > 0 ?
-            NSLayoutConstraint(item: v, attribute: .Trailing, relatedBy: .Equal, toItem: self.view, attribute: .TrailingMargin, multiplier: 1, constant: -c) :
-            NSLayoutConstraint(item: v, attribute: .Leading, relatedBy: .Equal, toItem: self.view, attribute: .LeadingMargin, multiplier: 1, constant: -c)
+            v.trailingAnchor.constraintEqualToAnchor(self.view.layoutMarginsGuide.trailingAnchor, constant:-c) :
+            v.leadingAnchor.constraintEqualToAnchor(self.view.layoutMarginsGuide.leadingAnchor, constant:-c)
         NSLayoutConstraint.activateConstraints([newConstraint])
         self.oldConstraint = newConstraint
         UIView.animateWithDuration(0.4) {
             v.layoutIfNeeded()
         }
     }
-
-
+    
+    
 }
 

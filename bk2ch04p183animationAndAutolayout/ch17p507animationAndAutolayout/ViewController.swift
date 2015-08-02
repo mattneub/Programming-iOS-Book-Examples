@@ -2,14 +2,24 @@
 
 import UIKit
 
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
+
 
 class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     @IBOutlet var v_horizontalPositionConstraint : NSLayoutConstraint!
     
+    let which = 8
+
     @IBAction func doButton(sender:AnyObject?) {
     
-        let which = 1
         switch which {
         case 1:
             UIView.animateWithDuration(1, animations:{
@@ -21,18 +31,18 @@ class ViewController : UIViewController {
                 self.v.center.x += 100
                 }, completion: {
                     _ in
+                    // NB new in iOS 9 must call setNeedsLayout to get layout
+                    self.v.setNeedsLayout()
                     self.v.layoutIfNeeded() // this is what will happen at layout time
                 })
 
         case 3:
             let con = self.v_horizontalPositionConstraint
             con.constant += 100
+            self.v.setNeedsLayout()
             UIView.animateWithDuration(1, animations:{
                 self.v.layoutIfNeeded()
-                }, completion: {
-                    _ in
-                    // self.v.layoutIfNeeded() // uncomment to prove there's now no problem
-                })
+                }, completion: nil)
             
         case 4:
             // this works fine in iOS 8! does not trigger spurious layout
@@ -62,8 +72,11 @@ class ViewController : UIViewController {
                     snap.transform = CGAffineTransformMakeScale(1.1, 1.1)
                 }, completion: {
                     _ in
-                    self.v.hidden = false
-                    snap.removeFromSuperview()
+                    // sometimes there is a flash; I may be able to prevent it with a delay
+                    //delay(0) {
+                        self.v.hidden = false
+                        snap.removeFromSuperview()
+                    //}
                 })
 
         case 7:
@@ -74,6 +87,19 @@ class ViewController : UIViewController {
             UIView.animateWithDuration(1, animations:{
                 snap.center.x += 100
                 })
+            
+        case 8:
+            // don't try this one: it may appear to work but it causes a constraint conflict
+            self.v.translatesAutoresizingMaskIntoConstraints = true
+            UIView.animateWithDuration(1, animations:{
+                self.v.center.x += 100
+                }, completion: {
+                    _ in
+                    // NB new in iOS 9 must call setNeedsLayout to get layout
+                    self.v.setNeedsLayout()
+                    self.v.layoutIfNeeded() // this is what will happen at layout time
+            })
+
 
 
         default: break

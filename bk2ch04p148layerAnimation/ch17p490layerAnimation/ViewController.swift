@@ -6,7 +6,7 @@ import UIKit
 class ViewController : UIViewController {
     @IBOutlet var compassView : CompassView!
     
-    let which = 10
+    let which = 9
 
     @IBAction func doButton(sender:AnyObject?) {
         let c = self.compassView.layer as! CompassLayer
@@ -115,6 +115,7 @@ class ViewController : UIViewController {
                 values.append( direction * M_PI / Double(i) )
             }
             values.append(0.0)
+            print(values)
             let anim = CAKeyframeAnimation(keyPath:"transform")
             anim.values = values
             anim.additive = true
@@ -127,7 +128,7 @@ class ViewController : UIViewController {
             // capture current value, set final value
             let rot = M_PI/4.0
             CATransaction.setDisableActions(true)
-            let current = arrow.valueForKeyPath("transform.rotation.z")!.doubleValue
+            let current = arrow.valueForKeyPath("transform.rotation.z") as! Double
             arrow.setValue(current + rot, forKeyPath:"transform.rotation.z")
 
             // first animation (rotate and clunk)

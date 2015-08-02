@@ -6,8 +6,8 @@ class MyAction : NSObject, CAAction {
             let anim = CABasicAnimation(keyPath: event)
             anim.duration = 5
             let lay = anObject as! CALayer
-            let newP : AnyObject? = lay.valueForKey(event)
-            let oldP : AnyObject? = lay.presentationLayer()!.valueForKey(event)
+            let newP = lay.valueForKey(event)
+            let oldP = (lay.presentationLayer() as! CALayer).valueForKey(event)
             print("from \(oldP) to \(newP)")
             lay.addAnimation(anim, forKey:nil)
     }
@@ -18,7 +18,7 @@ class MyWagglePositionAction : NSObject, CAAction {
         arguments dict: [NSObject : AnyObject]?) {
             let lay = anObject as! CALayer
             let newP = (lay.valueForKey(event) as! NSValue).CGPointValue()
-            let oldP = (lay.presentationLayer()!.valueForKey(event) as! NSValue).CGPointValue()
+            let oldP = ((lay.presentationLayer() as! CALayer).valueForKey(event) as! NSValue).CGPointValue()
 
             let d = sqrt(pow(oldP.x - newP.x, 2) + pow(oldP.y - newP.y, 2))
             let r = Double(d/3.0)
@@ -53,7 +53,7 @@ class ViewController : UIViewController {
         self.layer = layer
     }
     
-    let which = 1
+    let which = 10
     
     @IBAction func doButton(sender:AnyObject?) {
         let layer = self.layer
@@ -96,13 +96,13 @@ class ViewController : UIViewController {
             layer.delegate = nil
             layer.actions = ["position": MyWagglePositionAction()]
             
-            CATransaction.setAnimationDuration(1.5)
+            CATransaction.setAnimationDuration(0.4)
             layer.position = CGPointMake(200,200) // waggle
             
         case 6:
             // same as preceding but we use the delegate
             layer.delegate = self
-            CATransaction.setAnimationDuration(1.5)
+            CATransaction.setAnimationDuration(0.4)
             layer.position = CGPointMake(200,200) // waggle
 
             
@@ -125,7 +125,7 @@ class ViewController : UIViewController {
             CATransaction.setCompletionBlock({
                 layer.removeFromSuperlayer()
                 })
-            CATransaction.setValue("", forKey:"byebye")
+            CATransaction.setValue("", forKey:"bye")
             layer.opacity = 0
             // the delegate (me) will "shrink" the layer as it disappears
 
@@ -198,9 +198,9 @@ extension ViewController {
             return group
         }
         
-        // on opacity change with "byebye" key, "pop" out of sight
+        // on opacity change with "bye" key, "pop" out of sight
         if key == "opacity" {
-            if CATransaction.valueForKey("byebye") != nil {
+            if CATransaction.valueForKey("bye") != nil {
                 let anim1 = CABasicAnimation(keyPath:"opacity")
                 anim1.fromValue = layer.opacity
                 anim1.toValue = 0.0

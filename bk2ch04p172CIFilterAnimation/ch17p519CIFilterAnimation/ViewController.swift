@@ -10,7 +10,7 @@ class ViewController : UIViewController {
     var frame : Double!
     
     var timestamp: CFTimeInterval!
-    var context = CIContext(options:nil)
+    var context : CIContext!
     
     @IBAction func doButton (sender:AnyObject) {
         let moi = CIImage(image:UIImage(named:"moi")!)!
@@ -29,6 +29,7 @@ class ViewController : UIViewController {
         
         self.tran = tran
         self.timestamp = 0.0 // signal that we are starting
+        self.context = CIContext(options:nil)
         
         dispatch_async(dispatch_get_main_queue()) {
         
@@ -39,7 +40,7 @@ class ViewController : UIViewController {
         
     }
     
-    let SCALE = 0.2 // 0.2 for slow motion, looks a bit better in simulator
+    let SCALE = 1.0 // 0.2 for slow motion, looks a bit better in simulator
     // but really you need to test on device
     
     func nextFrame(sender:CADisplayLink) {

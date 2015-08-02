@@ -13,7 +13,6 @@ class ViewController : UIViewController {
             }, completion: nil)
     }
     
-    
     func cancel() {
         // this works the same way in iOS 8 as before...
         // ...because animation is not additive when existing animation is repeating

@@ -158,15 +158,14 @@ extension ViewController : UIDynamicAnimatorDelegate, UICollisionBehaviorDelegat
         atPoint p: CGPoint) {
             print(p)
             // look for the dynamic item behavior
-            for b in self.anim.behaviors {
-                if let bounce = b as? UIDynamicItemBehavior {
-                    let v = bounce.angularVelocityForItem(self.iv)
-                    print(v)
-                    if v <= 6 {
-                        print("adding angular velocity")
-                        bounce.addAngularVelocity(6, forItem:self.iv)
-                    }
-                    break;
+            let b = self.anim.behaviors
+            if let ix = b.indexOf({$0 is UIDynamicItemBehavior}) {
+                let bounce = b[ix] as! UIDynamicItemBehavior
+                let v = bounce.angularVelocityForItem(item)
+                print(v)
+                if v <= 6 {
+                    print("adding angular velocity")
+                    bounce.addAngularVelocity(6, forItem:item)
                 }
             }
     }

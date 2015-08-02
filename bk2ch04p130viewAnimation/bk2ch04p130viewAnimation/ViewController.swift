@@ -17,7 +17,7 @@ extension UIView {
         options opts: UIViewAnimationOptions,
         animations anim: () -> Void,
         completion comp: ((Bool) -> Void)?) {
-            func animHelper(t:Int,
+            func helper(t:Int,
                 _ dur: NSTimeInterval,
                 _ del: NSTimeInterval,
                 _ opt: UIViewAnimationOptions,
@@ -32,12 +32,12 @@ extension UIView {
                             }
                             if t > 0 {
                                 delay(0) {
-                                    animHelper(t-1, dur, del, opt, anim, com)
+                                    helper(t-1, dur, del, opt, anim, com)
                                 }
                             }
                     })
             }
-            animHelper(times-1, dur, del, opts, anim, comp)
+            helper(times-1, dur, del, opts, anim, comp)
     }
 
 }
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let which = 9
+        let which = 11
         
         delay(3) {
             print(0)
@@ -77,34 +77,36 @@ class ViewController: UIViewController {
                         self.v.removeFromSuperview()
                 })
             case 4:
+                UIView.performSystemAnimation(.Delete, onViews: [self.v], options: [], animations: nil, completion: {_ in print(self.v.superview)})
+            case 5:
                 UIView.animateWithDuration(1, animations: {
                     self.v.backgroundColor = UIColor.redColor()
                     UIView.performWithoutAnimation {
                         self.v.center.y += 100
                     }
                 })
-            case 5:
-                // need to think about this one
+            case 6:
+                func report(ix:Int) {
+                    let pres = (self.v.layer.presentationLayer() as! CALayer).position.y
+                    let model = self.v.center.y
+                    print("step \(ix): presentation \(pres), model \(model)")
+                }
                 UIView.animateWithDuration(2, animations: {
-                    print(2)
-                    print(self.v.center.y)
-                    self.v.center.y = 100
-                    print(3)
-                    print(self.v.center.y)
+                    report(2)
+                    self.v.center.y += 100
+                    report(3)
                     }, completion: {
                         _ in
-                        print(4)
-                        print(self.v.center.y)
+                        report(4)
                 })
-                self.v.center.y = 300
-                print(1)
-                print(self.v.center.y)
-            case 6:
-                UIView.animateWithDuration(2, animations: {
-                    self.v.center.y = 100
-                    self.v.center.y = 300
-                })
+                self.v.center.y += 300
+                report(1)
             case 7:
+                UIView.animateWithDuration(2, animations: {
+                    self.v.center.y += 100
+                    self.v.center.y += 300
+                    }, completion: {_ in print(self.v.center.y)})
+            case 8:
                 let opts = UIViewAnimationOptions.Autoreverse
                 let xorig = self.v.center.x
                 UIView.animateWithDuration(1, delay: 0, options: opts, animations: {
@@ -113,9 +115,9 @@ class ViewController: UIViewController {
                         _ in
                         self.v.center.x = xorig
                 })
-            case 8:
-                self.animate(3)
             case 9:
+                self.animate(3)
+            case 10:
                 let opts = UIViewAnimationOptions.Autoreverse
                 let xorig = self.v.center.x
                 UIView.animateWithTimes(3, duration:1, delay:0, options:opts, animations:{
@@ -124,22 +126,21 @@ class ViewController: UIViewController {
                         _ in
                         self.v.center.x = xorig
                 })
-            case 10:
+            case 11:
                 UIView.animateWithDuration(1, animations: {
                     self.v.center.x += 100
                 })
                 // let opts = UIViewAnimationOptions.BeginFromCurrentState
-                UIView.animateWithDuration(1, delay: 0, options: [],
-                    animations: {
+                UIView.animateWithDuration(1, animations: {
                         self.v.center.y += 100
-                    }, completion: nil)
-            case 11:
+                })
+            case 12:
                 UIView.animateWithDuration(2, animations: {
                     self.v.center.x += 100
                 })
                 delay(1) {
-                    let opts = UIViewAnimationOptions.BeginFromCurrentState
-                    UIView.animateWithDuration(1, delay: 0, options: opts,
+                    // let opts = UIViewAnimationOptions.BeginFromCurrentState
+                    UIView.animateWithDuration(1, delay: 0, options: [],
                         animations: {
                             self.v.center.y += 100
                         }, completion: nil)

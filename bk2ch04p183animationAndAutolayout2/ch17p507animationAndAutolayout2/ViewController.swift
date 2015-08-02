@@ -9,7 +9,7 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         // our nib uses autolayout...
         // ... but we intend to animate v, so we take it out of autolayout
-        self.v.setTranslatesAutoresizingMaskIntoConstraints(true)
+        self.v.translatesAutoresizingMaskIntoConstraints = true
         // (and v's constraints in the nib are all placeholders, so they've been deleted)
     }
     
@@ -24,6 +24,7 @@ class ViewController : UIViewController {
                     }, completion: {
                         _ in
                         self.v.transform = CGAffineTransformIdentity
+                        self.v.setNeedsLayout()
                         self.v.layoutIfNeeded() // no violation of constraints
                     })
             })
