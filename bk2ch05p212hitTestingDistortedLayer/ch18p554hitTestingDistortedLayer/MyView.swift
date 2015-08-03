@@ -18,12 +18,12 @@ class MyView : UIView {
     }
     
     func tap() {
-        println("tap")
+        print("tap")
     }
     
     override func drawRect(rect: CGRect) {
-        let subs = self.layer.sublayers
-        let lay = subs[subs.count-1] as! CALayer
+        guard let subs = self.layer.sublayers else {return}
+        let lay = subs[subs.count-1]
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
         let con = UIGraphicsGetCurrentContext()
         let r = self.bounds.rectByInsetting(dx: 30, dy: 30)
@@ -42,18 +42,18 @@ class MyView : UIView {
         let inside = self.pointInside(point, withEvent:e)
         if !inside { return nil }
         
+        guard let subs = self.layer.sublayers else {return nil}
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
-        let subs = self.layer.sublayers
-        let lay = subs[subs.count-1] as! CALayer
+        let lay = subs[subs.count-1]
         lay.renderInContext(UIGraphicsGetCurrentContext())
         let im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        let info = CGBitmapInfo(CGImageAlphaInfo.Only.rawValue)
+        let info = CGBitmapInfo(rawValue: CGImageAlphaInfo.Only.rawValue)
         let pixel = UnsafeMutablePointer<CUnsignedChar>.alloc(1)
         pixel[0] = 0
         let context = CGBitmapContextCreate(pixel,
-            1, 1, 8, 1, nil, info)
+            1, 1, 8, 1, nil, info.rawValue)!
         UIGraphicsPushContext(context)
         im.drawAtPoint(CGPointMake(-point.x, -point.y))
         UIGraphicsPopContext()

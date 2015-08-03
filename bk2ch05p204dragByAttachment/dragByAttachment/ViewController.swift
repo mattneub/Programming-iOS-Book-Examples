@@ -21,6 +21,7 @@ class ViewController : UIViewController {
         case .Changed:
             self.att.anchorPoint = g.locationOfTouch(0, inView: self.view)
         default:
+            print("done")
             self.anim = nil
         }
     }
@@ -28,10 +29,10 @@ class ViewController : UIViewController {
 
 extension ViewController : UIDynamicAnimatorDelegate {
     func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
-        println("pause")
+        print("pause")
     }
     func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
-        println("resume")
+        print("resume")
     }
 
 }

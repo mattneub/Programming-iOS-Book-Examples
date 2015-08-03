@@ -5,7 +5,7 @@ import UIKit
 class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     
-    let which = 2
+    let which = 1
 
     
     override func viewDidLoad() {
@@ -43,14 +43,14 @@ class ViewController : UIViewController {
     }
     
     func dragging(p : UIPanGestureRecognizer) {
-        let vv = p.view!
+        let v = p.view!
         switch p.state {
         case .Began, .Changed:
-            let delta = p.translationInView(vv.superview!)
-            var c = vv.center
+            let delta = p.translationInView(v.superview)
+            var c = v.center
             c.x += delta.x; c.y += delta.y
-            vv.center = c
-            p.setTranslation(CGPointZero, inView: vv.superview)
+            v.center = c
+            p.setTranslation(CGPointZero, inView: v.superview)
         default: break
         }
     }

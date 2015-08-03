@@ -2,14 +2,18 @@
 import UIKit
 
 class ViewController : UIViewController {
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     @IBAction func pinch(sender:AnyObject?) {
-        println("pinch")
+        print("pinch")
     }
     
     @IBAction func switched(sender: AnyObject) {
-        for v in self.view.subviews as! [UIView] {
-            if v is MyView {
-                let sw = sender as! UISwitch
+        let sw = sender as! UISwitch
+        for v in self.view.subviews {
+            if v is MyView || v is UIButton {
                 v.exclusiveTouch = sw.on
             }
         }
@@ -22,8 +26,8 @@ class MyView : UIView {
         super.awakeFromNib()
     }
     
-    override func touchesMoved(touches: Set<NSObject>, withEvent e: UIEvent) {
-        println(self)
+    override func touchesMoved(touches: Set<UITouch>, withEvent e: UIEvent?) {
+        print(self)
     }
     
 }

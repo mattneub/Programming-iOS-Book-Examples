@@ -19,7 +19,7 @@ class CompassView : UIView {
         let p = t.locationOfTouch(0, inView: self.superview)
         let hitLayer = self.layer.hitTest(p)
         let arrow = (self.layer as! CompassLayer).arrow
-        if hitLayer != nil && hitLayer == arrow {
+        if hitLayer == arrow {
             arrow.transform = CATransform3DRotate(
                 arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)
         }
@@ -40,7 +40,9 @@ class CompassLayer : CALayer {
         }
     }
     
-    override func hitTest(p: CGPoint) -> CALayer! {
+    // /*
+    
+    override func hitTest(p: CGPoint) -> CALayer? {
         var lay = super.hitTest(p)
         if lay == self.arrow {
             // artificially restrict touchability to roughly the shaft/point area
@@ -55,13 +57,15 @@ class CompassLayer : CALayer {
                 lay = nil;
             }
             let result = lay != nil ? "hit" : "missed"
-            println("\(result) arrow at \(pt)")
+            print("\(result) arrow at \(pt)")
         }
         return lay
     }
+
+    // */
     
     func setup () {
-        println("setup")
+        print("setup")
         
         
         // the gradient
@@ -90,7 +94,7 @@ class CompassLayer : CALayer {
         
         // the four cardinal points
         let pts = "NESW"
-        for (ix,c) in enumerate(pts) {
+        for (ix,c) in pts.characters.enumerate() {
             let t = CATextLayer()
             t.contentsScale = UIScreen.mainScreen().scale
             t.string = String(c)
@@ -123,7 +127,7 @@ class CompassLayer : CALayer {
     }
     
     override func drawLayer(layer: CALayer, inContext con: CGContext) {
-        println("drawLayer:inContext: for arrow")
+        print("drawLayer:inContext: for arrow")
         
         // Questa poi la conosco pur troppo!
         

@@ -11,9 +11,6 @@
 		323CE1EC1B60212100916FF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323CE1EB1B60212100916FF2 /* AppDelegate.swift */; };
 		32EA31551972D17800F4660E /* HorizVertPanGestureRecognizers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EA31541972D17800F4660E /* HorizVertPanGestureRecognizers.swift */; };
 		32EA31581972D5AB00F4660E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EA31571972D5AB00F4660E /* ViewController.swift */; };
-		C9BE545517BD4896000C941F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BE545417BD4896000C941F /* Foundation.framework */; };
-		C9BE545717BD4896000C941F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BE545617BD4896000C941F /* CoreGraphics.framework */; };
-		C9BE545917BD4896000C941F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BE545817BD4896000C941F /* UIKit.framework */; };
 		C9BE546817BD4896000C941F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BE546617BD4896000C941F /* Main.storyboard */; };
 		C9BE546D17BD4896000C941F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BE546C17BD4896000C941F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -24,13 +21,9 @@
 		32EA31541972D17800F4660E /* HorizVertPanGestureRecognizers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizVertPanGestureRecognizers.swift; sourceTree = "<group>"; };
 		32EA31571972D5AB00F4660E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9BE545117BD4896000C941F /* ch18p541gestureRecognizers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch18p541gestureRecognizers.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9BE545417BD4896000C941F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9BE545617BD4896000C941F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C9BE545817BD4896000C941F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9BE545C17BD4896000C941F /* ch18p541gestureRecognizers-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch18p541gestureRecognizers-Info.plist"; sourceTree = "<group>"; };
 		C9BE546717BD4896000C941F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9BE546C17BD4896000C941F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C9BE547317BD4896000C941F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,9 +31,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9BE545717BD4896000C941F /* CoreGraphics.framework in Frameworks */,
-				C9BE545917BD4896000C941F /* UIKit.framework in Frameworks */,
-				C9BE545517BD4896000C941F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				C9BE545A17BD4896000C941F /* ch18p541gestureRecognizers */,
-				C9BE545317BD4896000C941F /* Frameworks */,
 				C9BE545217BD4896000C941F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,17 +51,6 @@
 				C9BE545117BD4896000C941F /* ch18p541gestureRecognizers.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		C9BE545317BD4896000C941F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9BE545417BD4896000C941F /* Foundation.framework */,
-				C9BE545617BD4896000C941F /* CoreGraphics.framework */,
-				C9BE545817BD4896000C941F /* UIKit.framework */,
-				C9BE547317BD4896000C941F /* XCTest.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C9BE545A17BD4896000C941F /* ch18p541gestureRecognizers */ = {

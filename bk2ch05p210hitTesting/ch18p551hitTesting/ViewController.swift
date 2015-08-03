@@ -3,7 +3,7 @@ import UIKit
 
 class ViewController : UIViewController {
     @IBAction func doButton(sender:AnyObject?) {
-        println("button tap!")
+        print("button tap!")
     }
     
     @IBAction func tapped(g:UITapGestureRecognizer) {
@@ -38,7 +38,7 @@ class MyView : UIView {
         if let result = super.hitTest(point, withEvent:e) {
             return result
         }
-        for sub in self.subviews.reverse() as! [UIView] {
+        for sub in self.subviews.reverse() {
             let pt = self.convertPoint(point, toView:sub)
             if let result = sub.hitTest(pt, withEvent:e) {
                 return result

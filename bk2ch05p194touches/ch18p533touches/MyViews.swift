@@ -13,10 +13,10 @@ func delay(delay:Double, closure:()->()) {
 
 class MyView0 : UIView {
     
-    override func touchesMoved(touches: Set<NSObject>, withEvent e: UIEvent) {
+    override func touchesMoved(touches: Set<UITouch>, withEvent e: UIEvent?) {
         self.superview!.bringSubviewToFront(self)
         
-        let t = touches.first as! UITouch
+        let t = touches.first!
         let loc = t.locationInView(self.superview)
         let oldP = t.previousLocationInView(self.superview)
         let deltaX = loc.x - oldP.x
@@ -33,14 +33,14 @@ class MyView1 : UIView {
     var decided = false
     var horiz = false
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent e: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent e: UIEvent?) {
         self.decided = false
     }
     
-    override func touchesMoved(touches: Set<NSObject>, withEvent e: UIEvent) {
+    override func touchesMoved(touches: Set<UITouch>, withEvent e: UIEvent?) {
         self.superview!.bringSubviewToFront(self)
         
-        let t = touches.first as! UITouch
+        let t = touches.first!
         
         if !self.decided {
             self.decided = true
@@ -78,9 +78,9 @@ class MyView2 : UIView {
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         let diff = event.timestamp - self.time
         if (diff < 0.4) {
-            println("short")
+            print("short")
         } else {
-            println("long")
+            print("long")
         }
     }
 
@@ -92,33 +92,33 @@ class MyView2 : UIView {
     // but I don't think any of that is needed here, any more than
     // any complexity was needed with cancel...requests, as it is a single main-thread cancellation
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent e: UIEvent) {
-        let ct = (touches.first as! UITouch).tapCount
+    override func touchesBegan(touches: Set<UITouch>, withEvent e: UIEvent?) {
+        let ct = touches.first!.tapCount
         switch ct {
         case 2:
             self.single = false
         default: break
         }
         // logging to show that location in the window gives a very different result in iOS 8 from iOS 7
-        let t = touches.first as! UITouch
-        println(t.locationInView(self))
-        println(t.locationInView(self.window!))
-        println(t.locationInView(nil))
+        let t = touches.first!
+        print(t.locationInView(self))
+        print(t.locationInView(self.window!))
+        print(t.locationInView(nil))
 
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent e: UIEvent) {
-        let ct = (touches.first as! UITouch).tapCount
+    override func touchesEnded(touches: Set<UITouch>, withEvent e: UIEvent?) {
+        let ct = touches.first!.tapCount
         switch ct {
         case 1:
             self.single = true
             delay(0.3) {
                 if self.single { // no second tap intervened
-                    println("single tap")
+                    print("single tap")
                 }
             }
         case 2:
-            println("double tap")
+            print("double tap")
         default: break
         }
     }
@@ -149,11 +149,11 @@ class MyView3 : UIView {
     var drag = false
     var single = false
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent e: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent e: UIEvent?) {
         // be undecided
         self.decidedTapOrDrag = false
         // prepare for a tap
-        let ct = (touches.first as! UITouch).tapCount
+        let ct = touches.first!.tapCount
         switch ct {
         case 2:
             self.single = false
@@ -166,11 +166,11 @@ class MyView3 : UIView {
         self.decidedDirection = false
     }
     
-    override func touchesMoved(touches: Set<NSObject>, withEvent e: UIEvent) {
+    override func touchesMoved(touches: Set<UITouch>, withEvent e: UIEvent?) {
         if self.decidedTapOrDrag && !self.drag {return}
         
         self.superview!.bringSubviewToFront(self)
-        let t = touches.first as! UITouch
+        let t = touches.first!
         
         self.decidedTapOrDrag = true
         self.drag = true
@@ -195,20 +195,20 @@ class MyView3 : UIView {
         self.center = c
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent e: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent e: UIEvent?) {
         if !self.decidedTapOrDrag || !self.drag {
             // end for a tap
-            let ct = (touches.first as! UITouch).tapCount
+            let ct = touches.first!.tapCount
             switch ct {
             case 1:
                 self.single = true
                 delay(0.3) {
                     if self.single {
-                        println("single tap")
+                        print("single tap")
                     }
                 }
             case 2:
-                println("double tap")
+                print("double tap")
             default: break
             }
         }

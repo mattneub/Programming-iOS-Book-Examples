@@ -51,19 +51,18 @@ class ViewController  : UIViewController {
 extension ViewController : UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(g: UIGestureRecognizer) -> Bool {
         // g is the pan gesture recognizer
-        var result = true
         switch self.longPresser.state {
         case .Possible, .Failed:
-            result = false
-        default: break
+            return false
+        default:
+            return true
         }
-        return result
     }
     
     func gestureRecognizer(g: UIGestureRecognizer,
         shouldRecognizeSimultaneouslyWithGestureRecognizer
         g2: UIGestureRecognizer) -> Bool {
-            println("sim")
+            print("sim")
             return true
     }
     

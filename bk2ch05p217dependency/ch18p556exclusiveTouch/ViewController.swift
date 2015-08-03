@@ -15,7 +15,7 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
         if s1 == "_UISystemGestureGateGestureRecognizer" { return false }
         if s3 == "_UISystemGestureGateGestureRecognizer" { return false }
         
-        println("should \(s1) on \(s2) require failure of \(s3) on \(s4)")
+        print("should \(s1) on \(s2) require failure of \(s3) on \(s4)")
         
         return false
 
@@ -31,7 +31,7 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
         
         if s1 == "_UISystemGestureGateGestureRecognizer" { return false }
         
-        println("should \(s1) on \(s2) be required to fail by \(s3) on \(s4)")
+        print("should \(s1) on \(s2) be required to fail by \(s3) on \(s4)")
         
         return false
     }

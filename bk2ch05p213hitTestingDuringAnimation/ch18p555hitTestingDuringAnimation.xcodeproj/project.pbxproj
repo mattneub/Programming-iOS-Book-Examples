@@ -7,36 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320888EC1B6EE17100012483 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 320888EB1B6EE17100012483 /* LaunchScreen.storyboard */; };
+		320888EE1B6EE18B00012483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320888ED1B6EE18B00012483 /* AppDelegate.swift */; };
 		32B365361973066000518B7A /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B365351973066000518B7A /* MyView.swift */; };
 		32B36538197309DB00518B7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B36537197309DB00518B7A /* ViewController.swift */; };
 		32C3183919C10BBE00C88EF6 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C3183819C10BBE00C88EF6 /* MyButton.swift */; };
-		C97B89C217BEA02D0084F81A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97B89C117BEA02D0084F81A /* Foundation.framework */; };
-		C97B89C417BEA02D0084F81A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97B89C317BEA02D0084F81A /* CoreGraphics.framework */; };
-		C97B89C617BEA02D0084F81A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97B89C517BEA02D0084F81A /* UIKit.framework */; };
-		C97B89CC17BEA02D0084F81A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C97B89CA17BEA02D0084F81A /* InfoPlist.strings */; };
-		C97B89CE17BEA02D0084F81A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C97B89CD17BEA02D0084F81A /* main.m */; };
-		C97B89D217BEA02D0084F81A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C97B89D117BEA02D0084F81A /* AppDelegate.m */; };
 		C97B89D517BEA02D0084F81A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97B89D317BEA02D0084F81A /* Main.storyboard */; };
-		C97B89DA17BEA02D0084F81A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97B89D917BEA02D0084F81A /* Images.xcassets */; };
+		C97B89DA17BEA02D0084F81A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97B89D917BEA02D0084F81A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		320888EB1B6EE17100012483 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		320888ED1B6EE18B00012483 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32B365351973066000518B7A /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		32B36537197309DB00518B7A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32C3183819C10BBE00C88EF6 /* MyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		C97B89BE17BEA02D0084F81A /* ch18p555hitTestingDuringAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch18p555hitTestingDuringAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C97B89C117BEA02D0084F81A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C97B89C317BEA02D0084F81A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C97B89C517BEA02D0084F81A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C97B89C917BEA02D0084F81A /* ch18p555hitTestingDuringAnimation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch18p555hitTestingDuringAnimation-Info.plist"; sourceTree = "<group>"; };
-		C97B89CB17BEA02D0084F81A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C97B89CD17BEA02D0084F81A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C97B89CF17BEA02D0084F81A /* ch18p555hitTestingDuringAnimation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch18p555hitTestingDuringAnimation-Prefix.pch"; sourceTree = "<group>"; };
-		C97B89D017BEA02D0084F81A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C97B89D117BEA02D0084F81A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C97B89D417BEA02D0084F81A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C97B89D917BEA02D0084F81A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C97B89E017BEA02E0084F81A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C97B89D917BEA02D0084F81A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,9 +33,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C97B89C417BEA02D0084F81A /* CoreGraphics.framework in Frameworks */,
-				C97B89C617BEA02D0084F81A /* UIKit.framework in Frameworks */,
-				C97B89C217BEA02D0084F81A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				C97B89C717BEA02D0084F81A /* ch18p555hitTestingDuringAnimation */,
-				C97B89C017BEA02D0084F81A /* Frameworks */,
 				C97B89BF17BEA02D0084F81A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,41 +55,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C97B89C017BEA02D0084F81A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C97B89C117BEA02D0084F81A /* Foundation.framework */,
-				C97B89C317BEA02D0084F81A /* CoreGraphics.framework */,
-				C97B89C517BEA02D0084F81A /* UIKit.framework */,
-				C97B89E017BEA02E0084F81A /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C97B89C717BEA02D0084F81A /* ch18p555hitTestingDuringAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				C97B89D017BEA02D0084F81A /* AppDelegate.h */,
-				C97B89D117BEA02D0084F81A /* AppDelegate.m */,
 				C97B89D317BEA02D0084F81A /* Main.storyboard */,
+				320888ED1B6EE18B00012483 /* AppDelegate.swift */,
 				32B36537197309DB00518B7A /* ViewController.swift */,
 				32B365351973066000518B7A /* MyView.swift */,
 				32C3183819C10BBE00C88EF6 /* MyButton.swift */,
-				C97B89D917BEA02D0084F81A /* Images.xcassets */,
-				C97B89C817BEA02D0084F81A /* Supporting Files */,
+				320888EB1B6EE17100012483 /* LaunchScreen.storyboard */,
+				C97B89D917BEA02D0084F81A /* Assets.xcassets */,
+				C97B89C917BEA02D0084F81A /* ch18p555hitTestingDuringAnimation-Info.plist */,
 			);
 			path = ch18p555hitTestingDuringAnimation;
-			sourceTree = "<group>";
-		};
-		C97B89C817BEA02D0084F81A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C97B89C917BEA02D0084F81A /* ch18p555hitTestingDuringAnimation-Info.plist */,
-				C97B89CA17BEA02D0084F81A /* InfoPlist.strings */,
-				C97B89CD17BEA02D0084F81A /* main.m */,
-				C97B89CF17BEA02D0084F81A /* ch18p555hitTestingDuringAnimation-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,8 +123,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C97B89DA17BEA02D0084F81A /* Images.xcassets in Resources */,
-				C97B89CC17BEA02D0084F81A /* InfoPlist.strings in Resources */,
+				320888EC1B6EE17100012483 /* LaunchScreen.storyboard in Resources */,
+				C97B89DA17BEA02D0084F81A /* Assets.xcassets in Resources */,
 				C97B89D517BEA02D0084F81A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,25 +136,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320888EE1B6EE18B00012483 /* AppDelegate.swift in Sources */,
 				32B365361973066000518B7A /* MyView.swift in Sources */,
-				C97B89D217BEA02D0084F81A /* AppDelegate.m in Sources */,
 				32C3183919C10BBE00C88EF6 /* MyButton.swift in Sources */,
 				32B36538197309DB00518B7A /* ViewController.swift in Sources */,
-				C97B89CE17BEA02D0084F81A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C97B89CA17BEA02D0084F81A /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C97B89CB17BEA02D0084F81A /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C97B89D317BEA02D0084F81A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -234,7 +188,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -265,7 +219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -275,7 +229,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch18p555hitTestingDuringAnimation/ch18p555hitTestingDuringAnimation-Prefix.pch";
@@ -292,7 +245,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch18p555hitTestingDuringAnimation/ch18p555hitTestingDuringAnimation-Prefix.pch";
