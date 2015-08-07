@@ -25,7 +25,7 @@ class ViewController : UIViewController {
         case 1:
             let mars = UIImage(named: "Mars")!
             UIGraphicsBeginImageContextWithOptions(mars.size, false, 0)
-            let empty = UIGraphicsGetImageFromCurrentImageContext()
+            let empty = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
             let arr = [mars, empty, mars, empty, mars]
             let iv = UIImageView(image:empty)

@@ -15,7 +15,7 @@ class ViewController : UIViewController {
             "inputImage":moici,
             "inputPercentage":0.7
         ])
-        let outim = vig.outputImage
+        let outim = vig.outputImage!
 
         let outimcg = self.context.createCGImage(outim, fromRect: outim.extent)
         self.iv.image = UIImage(CGImage: outimcg)

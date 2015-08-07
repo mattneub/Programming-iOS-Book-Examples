@@ -5,23 +5,9 @@ class MyVignetteFilter : CIFilter {
     var inputImage : CIImage?
     var inputPercentage : NSNumber? = 1.0
     
-    override var outputImage : CIImage {
-        return self.makeOutputImage()!
+    override var outputImage : CIImage? {
+        return self.makeOutputImage()
     }
-    
-    // trying to prevent error message but failing
-    /*
-    override var attributes : [String:AnyObject] {
-        return [
-            "inputImage":[
-                "CIAttributeClass":CIImage.self
-            ],
-            "inputPercentage":[
-                "CIAttributeClass":NSNumber.self
-            ]
-        ]
-    }
-*/
     
     deinit {
         // just making sure we are not leaking

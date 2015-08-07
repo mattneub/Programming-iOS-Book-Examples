@@ -53,7 +53,7 @@ class ViewController : UIViewController {
         sender.paused = true // defend against frame loss
         
         self.tran.setValue(self.frame, forKey:"inputTime")
-        let moi = self.context.createCGImage(tran.outputImage, fromRect:self.moiextent)
+        let moi = self.context.createCGImage(tran.outputImage!, fromRect:self.moiextent)
         CATransaction.setDisableActions(true)
         self.v.layer.contents = moi
         

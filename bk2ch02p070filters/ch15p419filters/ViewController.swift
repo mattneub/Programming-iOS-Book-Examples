@@ -24,11 +24,12 @@ class ViewController : UIViewController {
         grad.setValue(center, forKey:"inputCenter")
         grad.setValue(smallerDimension/2.0 * 0.85, forKey:"inputRadius0")
         grad.setValue(largerDimension/2.0, forKey:"inputRadius1")
-        
+        let gradimage = grad.outputImage!
+
         // second filter
         let blendimage = moici.imageByApplyingFilter(
             "CIBlendWithMask", withInputParameters: [
-                "inputMaskImage":grad.outputImage
+                "inputMaskImage":gradimage
             ])
         
         // two ways to obtain final bitmap; third way, claimed to work, does not

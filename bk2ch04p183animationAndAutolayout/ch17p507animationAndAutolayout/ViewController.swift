@@ -16,7 +16,7 @@ class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     @IBOutlet var v_horizontalPositionConstraint : NSLayoutConstraint!
     
-    let which = 8
+    let which = 2
 
     @IBAction func doButton(sender:AnyObject?) {
     
