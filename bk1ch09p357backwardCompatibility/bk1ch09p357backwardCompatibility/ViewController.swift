@@ -27,21 +27,16 @@ class ViewController: UIViewController {
             _ = tc
         } else {
         }
-
-        
-        
-        // unfortunately, not everything is marked up for availability, so you'll have to resort
-        // to manual checking just as before
         
         let v = UIDevice.currentDevice().systemVersion
         print(v)
         
-        if self.respondsToSelector("traitCollection") {
-            let tc = self.traitCollection
-            print(tc)
-        } else {
-            print("no trait collections")
-        }
+//        if self.respondsToSelector("traitCollection") {
+//            let tc = self.traitCollection
+//            print(tc)
+//        } else {
+//            print("no trait collections")
+//        }
         
 //        if NSClassFromString("UITraitCollection") != nil {
 //            print("trait collections ok")

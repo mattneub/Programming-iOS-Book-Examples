@@ -40,6 +40,10 @@ let holder = HolderOfTwoSameThings(thingOne:"howdy", thingTwo:"getLost")
 func flockTwoTogether<T, U>(f1:T, _ f2:U) {}
 let vd : Void = flockTwoTogether("hey", 1)
 
+// illegal in Xcode 7 beta 5!
+
+/*
+
 protocol Flier3 {
     typealias Other : Flier3
     func flockTogetherWith(f:Other)
@@ -50,6 +54,24 @@ struct Bird3 : Flier3 {
 struct Insect3 : Flier3 {
     func flockTogetherWith(f:Insect3) {}
 }
+
+*/
+
+// workaround:
+
+protocol Superflier3 {}
+
+protocol Flier3 : Superflier3 {
+    typealias Other : Superflier3
+    func flockTogetherWith(f:Other)
+}
+struct Bird3 : Flier3 {
+    func flockTogetherWith(f:Insect3) {}
+}
+struct Insect3 : Flier3 {
+    func flockTogetherWith(f:Insect3) {}
+}
+
 
 func flockTwoTogether2<T:Flier3>(f1:T, _ f2:T) {}
 let vd2 : Void = flockTwoTogether2(Bird3(), Bird3())

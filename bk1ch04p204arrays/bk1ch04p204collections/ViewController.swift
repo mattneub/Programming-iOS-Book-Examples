@@ -120,8 +120,8 @@ class ViewController: UIViewController {
             print(arr.first)
             print(arr.last)
             let arr2 = arr[arr.count-2...arr.count-1] // [2,3]
-            let arr3 = suffix(arr,2) // [2,3]
-            let arr4 = suffix(arr,10) // [1,2,3] with no penalty
+            let arr3 = arr.suffix(2) // [2,3]
+            let arr4 = arr.suffix(10) // [1,2,3] with no penalty
             print(arr4)
             
             // let arr5 = arr[0..<10]
@@ -202,8 +202,8 @@ class ViewController: UIViewController {
             print(arr)
             _ = i
             _ = ii
-            let arr2 = dropFirst(arr)
-            let arr3 = dropLast(arr)
+            let arr2 = arr.dropFirst()
+            let arr3 = arr.dropLast()
             _ = arr2
             _ = arr3
         }
@@ -229,7 +229,7 @@ class ViewController: UIViewController {
         
         do {
             let arr = [1,2,3,4,5,6]
-            let arr2 = split(arr) {$0 % 2 == 0} // split at evens: [[1], [3], [5]]
+            let arr2 = arr.split {$0 % 2 == 0} // split at evens: [[1], [3], [5]]
             print(arr2)
             _ = arr2
         }

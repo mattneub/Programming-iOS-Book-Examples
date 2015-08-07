@@ -18,7 +18,7 @@ struct Dog2 : CustomStringConvertible {
             desc.extend("\(k!): \(v), ")
         }
         let c = desc.characters.count
-        return String(prefix(desc.characters,c-2)) + ")"
+        return String(desc.characters.prefix(c-2)) + ")"
     }
 }
 

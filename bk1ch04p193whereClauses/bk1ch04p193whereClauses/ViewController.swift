@@ -10,9 +10,11 @@ struct Sword : Wieldable {
 }
 struct Bow : Wieldable {
 }
-protocol Fighter {
+protocol Superfighter {
     typealias Weapon : Wieldable
-    typealias Enemy : Fighter
+}
+protocol Fighter : Superfighter {
+    typealias Enemy : Superfighter
     func steal(weapon:Self.Enemy.Weapon, from:Self.Enemy)
 }
 struct Soldier : Fighter {

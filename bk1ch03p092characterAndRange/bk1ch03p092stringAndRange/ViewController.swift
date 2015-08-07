@@ -68,19 +68,21 @@ class ViewController: UIViewController {
 
         do {
             let s = "hello"
-            let s2 = String(dropLast(s.characters))
+            let s2 = String(s.characters.dropFirst())
             print(s2)
         }
         
         do {
             let s = "hello"
-            let s2 = String(prefix(s.characters,4)) // "hell"
+            let s2 = String(s.characters.prefix(4)) // "hell"
             print(s2)
         }
         
         do {
             let s = "hello world"
-            let arr = split(s.characters) {$0 == " "}.map{String($0)}
+            let arra = s.characters.split{$0 == " "}
+            print(arra)
+            let arr = s.characters.split{$0 == " "}.map{String($0)}
             print(arr)
         }
         

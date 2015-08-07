@@ -88,7 +88,7 @@ class ViewController: UIViewController {
         
         do {
             UIGraphicsBeginImageContext(CGSizeMake(200,200))
-            let c = UIGraphicsGetCurrentContext()
+            let c = UIGraphicsGetCurrentContext()!
             let arr = [CGPoint(x:0,y:0),
                 CGPoint(x:50,y:50),
                 CGPoint(x:50,y:50),
@@ -100,7 +100,7 @@ class ViewController: UIViewController {
         
         do {
             UIGraphicsBeginImageContext(CGSizeMake(200,200))
-            let c = UIGraphicsGetCurrentContext()
+            let c = UIGraphicsGetCurrentContext()!
             let arr = UnsafeMutablePointer<CGPoint>.alloc(4)
             arr[0] = CGPoint(x:0,y:0)
             arr[1] = CGPoint(x:50,y:50)

@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         let purple = UIColor.purpleColor()
         let beige = UIColor.brownColor()
         UIGraphicsBeginImageContext(CGSizeMake(10,10))
-        let context = UIGraphicsGetCurrentContext()
+        let context = UIGraphicsGetCurrentContext()!
         CGContextSetFillColorWithColor(
             context, self.hilite ? purple.CGColor : beige.CGColor)
         UIGraphicsEndImageContext()
