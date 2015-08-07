@@ -20,7 +20,7 @@ class MyView : UIView {
     }
     
     override func drawRect(rect: CGRect) {
-        let con = UIGraphicsGetCurrentContext()
+        let con = UIGraphicsGetCurrentContext()!
         CGContextSetFillColorWithColor(con, UIColor.blueColor().CGColor)
         CGContextFillRect(con, rect)
         CGContextClearRect(con, CGRectMake(0,0,30,30))

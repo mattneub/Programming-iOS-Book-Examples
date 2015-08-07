@@ -11,7 +11,7 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(10,10), false, 1)
-        let con = UIGraphicsGetCurrentContext()
+        let con = UIGraphicsGetCurrentContext()!
         CGContextAddEllipseInRect(con, CGRectMake(0,0,10,10))
         CGContextSetFillColorWithColor(con, UIColor.grayColor().CGColor)
         CGContextFillPath(con)

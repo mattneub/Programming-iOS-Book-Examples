@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         let sz2 = CGSizeMake(2,10)
         let div = imageOfSize(sz2) {
             UIColor.whiteColor().set()
-            CGContextFillRect(UIGraphicsGetCurrentContext(), CGRect(origin: CGPoint(), size: sz2))
+            CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRect(origin: CGPoint(), size: sz2))
         }
         self.seg.setDividerImage(div, forLeftSegmentState: .Normal, rightSegmentState: .Normal, barMetrics: .Default)
     }

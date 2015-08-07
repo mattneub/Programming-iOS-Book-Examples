@@ -1,11 +1,6 @@
 
 import UIKit
 
-extension CGAffineTransform : Printable {
-    public var description : String {
-    return NSStringFromCGAffineTransform(self)
-    }
-}
 func delay(delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
@@ -29,33 +24,33 @@ class ViewController : UIViewController {
         self.adjustLabel()
     }
     
-    override func supportedInterfaceOrientations() -> Int {
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         
-        // aha, this explains why we are called 10 times;
-        // the first 9 times, the device doesn't have an orientation yet
+        // aha, this explains why we are called so many times;
+        // at first, the device doesn't have an orientation yet
         let orientation = UIDevice.currentDevice().orientation
-        println("supported, device \(orientation.rawValue)")
+        print("supported, device \(orientation.rawValue)")
         
         if orientation != .Unknown {
-            println("self \(self.interfaceOrientation.rawValue)")
-            // but the above is deprecated in iOS 8; ask about the status bar instead
-            println("status bar \(UIApplication.sharedApplication().statusBarOrientation.rawValue)")
+            print("self \(self.interfaceOrientation.rawValue)")
+            // but the above is deprecated in iOS 8
+            print("status bar \(UIApplication.sharedApplication().statusBarOrientation.rawValue)")
+            // but the above is deprecated in iOS 9 - wrongly, in my opinion
         }
-        
-        return Int(UIInterfaceOrientationMask.All.rawValue)
-        // but not really, because the app is only portrait and the two landscapes
-        // if we add upside-down, we crash when the app tries to rotate upside-down
+        // return super.supportedInterfaceOrientations()
+        return .All // this includes upside down if info.plist includes it
     }
     
     override func shouldAutorotate() -> Bool {
         
         let orientation = UIDevice.currentDevice().orientation
-        println("should, device \(orientation.rawValue)")
+        print("should, device \(orientation.rawValue)")
         
         if orientation != .Unknown {
-            println("self \(self.interfaceOrientation.rawValue)")
-            // but the above is deprecated in iOS 8; ask about the status bar instead
-            println("status bar \(UIApplication.sharedApplication().statusBarOrientation.rawValue)")
+            print("self \(self.interfaceOrientation.rawValue)")
+            // but the above is deprecated in iOS 8
+            print("status bar \(UIApplication.sharedApplication().statusBarOrientation.rawValue)")
+            // but the above is deprecated in iOS 9 - wrongly, in my opinion
         }
         // return true
         return self.shouldRotate
@@ -82,59 +77,59 @@ class ViewController : UIViewController {
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         // call super
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        println("will transition size change to \(size)")
-        println("with target transform \(coordinator.targetTransform())") // *
+        print("will transition size change to \(size)")
+        print("with target transform \(coordinator.targetTransform())") // *
         // apparently does not mean that anyone will actually have this transform ultimately
         // it's just a way of describing what the effective rotation is?
-        println("screen bounds: \(UIScreen.mainScreen().bounds)")
-        println("screen native bounds: \(UIScreen.mainScreen().nativeBounds)")
-        println("screen coord space bounds: \(UIScreen.mainScreen().coordinateSpace.bounds)") // *
-        println("screen fixed space bounds: \(UIScreen.mainScreen().fixedCoordinateSpace.bounds)") // *
+        print("screen bounds: \(UIScreen.mainScreen().bounds)")
+        print("screen native bounds: \(UIScreen.mainScreen().nativeBounds)")
+        print("screen coord space bounds: \(UIScreen.mainScreen().coordinateSpace.bounds)") // *
+        print("screen fixed space bounds: \(UIScreen.mainScreen().fixedCoordinateSpace.bounds)") // *
         let r = self.view.convertRect(self.lab.frame, toCoordinateSpace: UIScreen.mainScreen().fixedCoordinateSpace)
-        println("label's frame converted into fixed space: \(r)")
-        println("window frame: \(self.view.window!.frame)")
-        println("window bounds: \(self.view.window!.bounds)")
-        println("window transform: \(self.view.window!.transform)")
-        println("view transform: \(self.view.transform)")
+        print("label's frame converted into fixed space: \(r)")
+        print("window frame: \(self.view.window!.frame)")
+        print("window bounds: \(self.view.window!.bounds)")
+        print("window transform: \(self.view.window!.transform)")
+        print("view transform: \(self.view.transform)")
         coordinator.animateAlongsideTransition({
             _ in
-            println("transitioning size change to \(size)")
+            print("transitioning size change to \(size)")
             // arrow keeps pointing to physical top of device
             self.v.transform = CGAffineTransformConcat(CGAffineTransformInvert(coordinator.targetTransform()), self.v.transform)
             }, completion: {
                 _ in
                 // showing that in iOS 8 the screen itself changes "size"
-                println("did transition size change to \(size)")
-                println("screen bounds: \(UIScreen.mainScreen().bounds)")
-                println("screen native bounds: \(UIScreen.mainScreen().nativeBounds)")
+                print("did transition size change to \(size)")
+                print("screen bounds: \(UIScreen.mainScreen().bounds)")
+                print("screen native bounds: \(UIScreen.mainScreen().nativeBounds)")
                 // screen native bounds do not change and are expressed in scale resolution
-                println("screen coord space bounds: \(UIScreen.mainScreen().coordinateSpace.bounds)")
-                println("screen fixed space bounds: \(UIScreen.mainScreen().fixedCoordinateSpace.bounds)")
+                print("screen coord space bounds: \(UIScreen.mainScreen().coordinateSpace.bounds)")
+                print("screen fixed space bounds: \(UIScreen.mainScreen().fixedCoordinateSpace.bounds)")
                 // concentrate on the green label and think about these numbers:
                 // the fixed coordinate space's top left is glued to the top left of the physical device
                 let r = self.view.convertRect(self.lab.frame, toCoordinateSpace: UIScreen.mainScreen().fixedCoordinateSpace)
-                println("label's frame converted into fixed space: \(r)")
-                println("window frame: \(self.view.window!.frame)")
-                println("window bounds: \(self.view.window!.bounds)")
+                print("label's frame converted into fixed space: \(r)")
+                print("window frame: \(self.view.window!.frame)")
+                print("window bounds: \(self.view.window!.bounds)")
                 // showing that in iOS 8 rotation no longer involves application of transform to view
-                println("window transform: \(self.view.window!.transform)")
-                println("view transform: \(self.view.transform)")
-                println(CGAffineTransformIdentity)
+                print("window transform: \(self.view.window!.transform)")
+                print("view transform: \(self.view.transform)")
+                print(CGAffineTransformIdentity)
             })
     }
     
     // layout events check
     
     override func viewWillLayoutSubviews() {
-        println(__FUNCTION__)
+        print(__FUNCTION__)
     }
     
     override func viewDidLayoutSubviews() {
-        println(__FUNCTION__)
+        print(__FUNCTION__)
     }
     
     override func updateViewConstraints() {
-        println(__FUNCTION__)
+        print(__FUNCTION__)
         super.updateViewConstraints()
     }
 }

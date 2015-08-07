@@ -112,7 +112,7 @@
         
         // checkmark in top left corner when selected
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(cell.bounds.size.width, cell.bounds.size.height), NO, 0);
-        CGContextRef con = UIGraphicsGetCurrentContext();
+        CGContextRef con = UIGraphicsGetCurrentContext()!;
         NSShadow* shadow = [NSShadow new];
         shadow.shadowColor = [UIColor darkGrayColor];
         shadow.shadowOffset = CGSizeMake(2,2);

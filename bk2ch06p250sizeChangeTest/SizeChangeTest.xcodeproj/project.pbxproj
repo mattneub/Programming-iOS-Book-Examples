@@ -10,20 +10,9 @@
 		32BFF68719D2FA5400E8A8CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFF68619D2FA5400E8A8CA /* AppDelegate.swift */; };
 		32BFF68919D2FA5400E8A8CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFF68819D2FA5400E8A8CA /* ViewController.swift */; };
 		32BFF68C19D2FA5400E8A8CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32BFF68A19D2FA5400E8A8CA /* Main.storyboard */; };
-		32BFF68E19D2FA5400E8A8CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BFF68D19D2FA5400E8A8CA /* Images.xcassets */; };
+		32BFF68E19D2FA5400E8A8CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BFF68D19D2FA5400E8A8CA /* Assets.xcassets */; };
 		32BFF69119D2FA5400E8A8CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32BFF68F19D2FA5400E8A8CA /* LaunchScreen.xib */; };
-		32BFF69D19D2FA5500E8A8CA /* SizeChangeTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFF69C19D2FA5500E8A8CA /* SizeChangeTestTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		32BFF69719D2FA5500E8A8CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 32BFF67919D2FA5400E8A8CA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 32BFF68019D2FA5400E8A8CA;
-			remoteInfo = SizeChangeTest;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		32BFF68119D2FA5400E8A8CA /* SizeChangeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SizeChangeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,22 +20,12 @@
 		32BFF68619D2FA5400E8A8CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32BFF68819D2FA5400E8A8CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32BFF68B19D2FA5400E8A8CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32BFF68D19D2FA5400E8A8CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32BFF68D19D2FA5400E8A8CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32BFF69019D2FA5400E8A8CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		32BFF69619D2FA5500E8A8CA /* SizeChangeTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SizeChangeTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		32BFF69B19D2FA5500E8A8CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32BFF69C19D2FA5500E8A8CA /* SizeChangeTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeChangeTestTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		32BFF67E19D2FA5400E8A8CA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32BFF69319D2FA5500E8A8CA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -60,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				32BFF68319D2FA5400E8A8CA /* SizeChangeTest */,
-				32BFF69919D2FA5500E8A8CA /* SizeChangeTestTests */,
 				32BFF68219D2FA5400E8A8CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				32BFF68119D2FA5400E8A8CA /* SizeChangeTest.app */,
-				32BFF69619D2FA5500E8A8CA /* SizeChangeTestTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,36 +57,11 @@
 				32BFF68619D2FA5400E8A8CA /* AppDelegate.swift */,
 				32BFF68819D2FA5400E8A8CA /* ViewController.swift */,
 				32BFF68A19D2FA5400E8A8CA /* Main.storyboard */,
-				32BFF68D19D2FA5400E8A8CA /* Images.xcassets */,
+				32BFF68D19D2FA5400E8A8CA /* Assets.xcassets */,
 				32BFF68F19D2FA5400E8A8CA /* LaunchScreen.xib */,
-				32BFF68419D2FA5400E8A8CA /* Supporting Files */,
-			);
-			path = SizeChangeTest;
-			sourceTree = "<group>";
-		};
-		32BFF68419D2FA5400E8A8CA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				32BFF68519D2FA5400E8A8CA /* Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		32BFF69919D2FA5500E8A8CA /* SizeChangeTestTests */ = {
-			isa = PBXGroup;
-			children = (
-				32BFF69C19D2FA5500E8A8CA /* SizeChangeTestTests.swift */,
-				32BFF69A19D2FA5500E8A8CA /* Supporting Files */,
-			);
-			path = SizeChangeTestTests;
-			sourceTree = "<group>";
-		};
-		32BFF69A19D2FA5500E8A8CA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				32BFF69B19D2FA5500E8A8CA /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = SizeChangeTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,39 +84,18 @@
 			productReference = 32BFF68119D2FA5400E8A8CA /* SizeChangeTest.app */;
 			productType = "com.apple.product-type.application";
 		};
-		32BFF69519D2FA5500E8A8CA /* SizeChangeTestTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 32BFF6A319D2FA5500E8A8CA /* Build configuration list for PBXNativeTarget "SizeChangeTestTests" */;
-			buildPhases = (
-				32BFF69219D2FA5500E8A8CA /* Sources */,
-				32BFF69319D2FA5500E8A8CA /* Frameworks */,
-				32BFF69419D2FA5500E8A8CA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				32BFF69819D2FA5500E8A8CA /* PBXTargetDependency */,
-			);
-			name = SizeChangeTestTests;
-			productName = SizeChangeTestTests;
-			productReference = 32BFF69619D2FA5500E8A8CA /* SizeChangeTestTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		32BFF67919D2FA5400E8A8CA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					32BFF68019D2FA5400E8A8CA = {
 						CreatedOnToolsVersion = 6.0.1;
-					};
-					32BFF69519D2FA5500E8A8CA = {
-						CreatedOnToolsVersion = 6.0.1;
-						TestTargetID = 32BFF68019D2FA5400E8A8CA;
 					};
 				};
 			};
@@ -182,7 +113,6 @@
 			projectRoot = "";
 			targets = (
 				32BFF68019D2FA5400E8A8CA /* SizeChangeTest */,
-				32BFF69519D2FA5500E8A8CA /* SizeChangeTestTests */,
 			);
 		};
 /* End PBXProject section */
@@ -194,14 +124,7 @@
 			files = (
 				32BFF68C19D2FA5400E8A8CA /* Main.storyboard in Resources */,
 				32BFF69119D2FA5400E8A8CA /* LaunchScreen.xib in Resources */,
-				32BFF68E19D2FA5400E8A8CA /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32BFF69419D2FA5500E8A8CA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				32BFF68E19D2FA5400E8A8CA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,23 +140,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		32BFF69219D2FA5500E8A8CA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				32BFF69D19D2FA5500E8A8CA /* SizeChangeTestTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		32BFF69819D2FA5500E8A8CA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 32BFF68019D2FA5400E8A8CA /* SizeChangeTest */;
-			targetProxy = 32BFF69719D2FA5500E8A8CA /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		32BFF68A19D2FA5400E8A8CA /* Main.storyboard */ = {
@@ -289,7 +196,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -325,7 +232,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -352,40 +259,6 @@
 			};
 			name = Release;
 		};
-		32BFF6A419D2FA5500E8A8CA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SizeChangeTestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SizeChangeTest.app/SizeChangeTest";
-			};
-			name = Debug;
-		};
-		32BFF6A519D2FA5500E8A8CA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SizeChangeTestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SizeChangeTest.app/SizeChangeTest";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -405,14 +278,7 @@
 				32BFF6A219D2FA5500E8A8CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		32BFF6A319D2FA5500E8A8CA /* Build configuration list for PBXNativeTarget "SizeChangeTestTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				32BFF6A419D2FA5500E8A8CA /* Debug */,
-				32BFF6A519D2FA5500E8A8CA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

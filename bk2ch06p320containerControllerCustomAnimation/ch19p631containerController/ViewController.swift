@@ -35,7 +35,7 @@ class ViewController : UIViewController {
         tovc.view.frame = self.panel.bounds
 
         UIGraphicsBeginImageContextWithOptions(tovc.view.bounds.size, true, 0)
-        tovc.view.layer.renderInContext(UIGraphicsGetCurrentContext())
+        tovc.view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         let im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         let iv = UIImageView(image:im)

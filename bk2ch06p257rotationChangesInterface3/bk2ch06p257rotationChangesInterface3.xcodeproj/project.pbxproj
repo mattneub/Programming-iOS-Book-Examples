@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3269A7301B7261E100FB6321 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3269A72F1B7261E100FB6321 /* LaunchScreen.storyboard */; };
 		32CDC71F1975AA0B00ACE428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CDC71E1975AA0B00ACE428 /* AppDelegate.swift */; };
 		32CDC7211975AA0B00ACE428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CDC7201975AA0B00ACE428 /* ViewController.swift */; };
 		32CDC7241975AA0B00ACE428 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CDC7221975AA0B00ACE428 /* Main.storyboard */; };
-		32CDC7261975AA0B00ACE428 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32CDC7251975AA0B00ACE428 /* Images.xcassets */; };
+		32CDC7261975AA0B00ACE428 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32CDC7251975AA0B00ACE428 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3269A72F1B7261E100FB6321 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32CDC7191975AA0B00ACE428 /* bk2ch06p257rotationChangesInterface3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk2ch06p257rotationChangesInterface3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32CDC71D1975AA0B00ACE428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32CDC71E1975AA0B00ACE428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32CDC7201975AA0B00ACE428 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32CDC7231975AA0B00ACE428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32CDC7251975AA0B00ACE428 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32CDC7251975AA0B00ACE428 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,18 +57,11 @@
 				32CDC71E1975AA0B00ACE428 /* AppDelegate.swift */,
 				32CDC7201975AA0B00ACE428 /* ViewController.swift */,
 				32CDC7221975AA0B00ACE428 /* Main.storyboard */,
-				32CDC7251975AA0B00ACE428 /* Images.xcassets */,
-				32CDC71C1975AA0B00ACE428 /* Supporting Files */,
-			);
-			path = bk2ch06p257rotationChangesInterface3;
-			sourceTree = "<group>";
-		};
-		32CDC71C1975AA0B00ACE428 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				32CDC7251975AA0B00ACE428 /* Assets.xcassets */,
+				3269A72F1B7261E100FB6321 /* LaunchScreen.storyboard */,
 				32CDC71D1975AA0B00ACE428 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = bk2ch06p257rotationChangesInterface3;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +90,7 @@
 		32CDC7111975AA0B00ACE428 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -126,8 +122,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3269A7301B7261E100FB6321 /* LaunchScreen.storyboard in Resources */,
 				32CDC7241975AA0B00ACE428 /* Main.storyboard in Resources */,
-				32CDC7261975AA0B00ACE428 /* Images.xcassets in Resources */,
+				32CDC7261975AA0B00ACE428 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +188,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -227,7 +224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -238,7 +235,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = bk2ch06p257rotationChangesInterface3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -249,7 +245,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = bk2ch06p257rotationChangesInterface3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

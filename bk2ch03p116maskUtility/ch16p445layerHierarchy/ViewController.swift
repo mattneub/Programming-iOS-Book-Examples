@@ -6,7 +6,7 @@ class ViewController : UIViewController {
     func maskOfSize(sz:CGSize, roundingCorners rad:CGFloat) -> CALayer {
         let r = CGRect(origin:CGPointZero, size:sz)
         UIGraphicsBeginImageContextWithOptions(r.size, false, 0)
-        let con = UIGraphicsGetCurrentContext()
+        let con = UIGraphicsGetCurrentContext()!
         CGContextSetFillColorWithColor(
             con, UIColor(white:0, alpha:0).CGColor)
         CGContextFillRect(con, r)

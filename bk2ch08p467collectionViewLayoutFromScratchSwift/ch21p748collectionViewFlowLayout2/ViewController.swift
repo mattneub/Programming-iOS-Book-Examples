@@ -104,7 +104,7 @@ class ViewController : UICollectionViewController {
             
             // checkmark in top left corner when selected
             UIGraphicsBeginImageContextWithOptions(cell.bounds.size, false, 0)
-            let con = UIGraphicsGetCurrentContext()
+            let con = UIGraphicsGetCurrentContext()!
             let shadow = NSShadow()
             shadow.shadowColor = UIColor.darkGrayColor()
             shadow.shadowOffset = CGSizeMake(2,2)

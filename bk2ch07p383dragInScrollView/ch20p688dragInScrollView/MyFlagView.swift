@@ -10,7 +10,7 @@ class MyFlagView : UIImageView {
         
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
         let lay = self.layer
-        lay.renderInContext(UIGraphicsGetCurrentContext())
+        lay.renderInContext(UIGraphicsGetCurrentContext()!)
         let im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         

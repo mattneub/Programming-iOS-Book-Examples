@@ -10,18 +10,20 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         return true
     }
-        
-    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> Int {
-        println("supported") // whoa
+    
+    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {
+        print("supported") // whoa
         
         // uncomment next line to get a different answer...
-        // notice that this only works correctly in iOS 8...
-        // ... if the _first_ orientation in the Info.plist is _also_ a landscape orientation
-        // (rearrange them and you'll see)
-        // otherwise, we do a visible launch-and-sudden-rotate (on iPhone only)
-        // return Int(UIInterfaceOrientationMask.Landscape.rawValue)
+        // NB in my tests this works even if portrait is first in the Info.plist in iOS 9!
+        // However, order still matters; if user is holding at the other landscape orientation...
+        // we launch upside down and then rotate
+        // moreover, behind the scenes there is an extra rotation regardless in iOS 9
+        // (we are back to launching always into portrait if we can, even if the user doesn't see it)
+        // return .Landscape
         
-        return Int(UIInterfaceOrientationMask.All.rawValue) // still excludes upside-down
+        // launch into portrait, then rotate if user is holding in landscape
+        return .All // still excludes upside-down
     }
     
 }

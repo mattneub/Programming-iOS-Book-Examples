@@ -6,7 +6,7 @@ import UIKit
 func maskOfSize(sz:CGSize, roundingCorners rad:CGFloat) -> CALayer {
     let r = CGRect(origin:CGPointZero, size:sz)
     UIGraphicsBeginImageContextWithOptions(r.size, false, 0)
-    let con = UIGraphicsGetCurrentContext()
+    let con = UIGraphicsGetCurrentContext()!
     CGContextSetFillColorWithColor(
         con, UIColor(white:0, alpha:0).CGColor)
     CGContextFillRect(con, r)
@@ -25,7 +25,7 @@ func maskOfSize(sz:CGSize, roundingCorners rad:CGFloat) -> CALayer {
 func viewMaskOfSize(sz:CGSize, roundingCorners rad:CGFloat) -> UIView {
     let r = CGRect(origin:CGPointZero, size:sz)
     UIGraphicsBeginImageContextWithOptions(r.size, false, 0)
-    let con = UIGraphicsGetCurrentContext()
+    let con = UIGraphicsGetCurrentContext()!
     CGContextSetFillColorWithColor(
         con, UIColor(white:0, alpha:0).CGColor)
     CGContextFillRect(con, r)
@@ -52,7 +52,7 @@ class MaskView : UIView {
     }
     override func drawRect(r: CGRect) {
         print("drawing")
-        let con = UIGraphicsGetCurrentContext()
+        let con = UIGraphicsGetCurrentContext()!
         CGContextSetFillColorWithColor(
             con, UIColor(white:0, alpha:0).CGColor)
         CGContextFillRect(con, r)

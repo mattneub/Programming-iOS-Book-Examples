@@ -145,7 +145,7 @@ class CompassLayer : CALayer {
         
         // draw the triangle, the point of the arrow
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(4,4), false, 0)
-        let imcon = UIGraphicsGetCurrentContext()
+        let imcon = UIGraphicsGetCurrentContext()!
         CGContextSetFillColorWithColor(imcon, UIColor.redColor().CGColor)
         CGContextFillRect(imcon, CGRectMake(0,0,4,4))
         CGContextSetFillColorWithColor(imcon, UIColor.blueColor().CGColor)

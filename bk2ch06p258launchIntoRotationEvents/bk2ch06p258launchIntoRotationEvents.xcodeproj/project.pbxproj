@@ -59,17 +59,9 @@
 				32A595C51975DCD800A7EDD8 /* Main.storyboard */,
 				32E3B59119CB2CA900EC3A8A /* LaunchScreen.xib */,
 				32A595C81975DCD800A7EDD8 /* Images.xcassets */,
-				32A595BF1975DCD800A7EDD8 /* Supporting Files */,
-			);
-			path = bk2ch06p258launchIntoRotationEvents;
-			sourceTree = "<group>";
-		};
-		32A595BF1975DCD800A7EDD8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				32A595C01975DCD800A7EDD8 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = bk2ch06p258launchIntoRotationEvents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +90,7 @@
 		32A595B41975DCD800A7EDD8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -195,7 +188,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -231,7 +224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

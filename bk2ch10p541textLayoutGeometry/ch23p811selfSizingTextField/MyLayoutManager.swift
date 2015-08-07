@@ -19,7 +19,7 @@ class MyLayoutManager : NSLayoutManager {
             var r = self.boundingRectForGlyphRange(range, inTextContainer:tc)
             r.origin.x += origin.x
             r.origin.y += origin.y
-            let c = UIGraphicsGetCurrentContext()
+            let c = UIGraphicsGetCurrentContext()!
             CGContextSaveGState(c)
             CGContextSetStrokeColorWithColor(c, UIColor.blackColor().CGColor)
             CGContextSetLineWidth(c, 1.0)

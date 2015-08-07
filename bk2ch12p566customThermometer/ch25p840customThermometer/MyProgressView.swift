@@ -6,7 +6,7 @@ class MyProgressView: UIView {
     var value : CGFloat = 0
     
     override func drawRect(rect: CGRect) {
-        let c = UIGraphicsGetCurrentContext()
+        let c = UIGraphicsGetCurrentContext()!
         UIColor.whiteColor().set()
         let ins : CGFloat = 2.0
         let r = self.bounds.rectByInsetting(dx: ins, dy: ins)

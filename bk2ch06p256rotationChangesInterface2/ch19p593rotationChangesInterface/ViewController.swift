@@ -2,58 +2,57 @@
 import UIKit
 
 class ViewController : UIViewController {
-    var blackRectConstraintsOnscreen : [NSLayoutConstraint]!
-    var blackRectConstraintsOffscreen : [NSLayoutConstraint]!
-    
+    var greenRectConstraintsOnscreen : [NSLayoutConstraint]!
+    var greenRectConstraintsOffscreen : [NSLayoutConstraint]!
+
     override func viewDidLoad() {
-        let br = UIView()
-        br.setTranslatesAutoresizingMaskIntoConstraints(false)
-        br.backgroundColor = UIColor.blackColor()
-        self.view.addSubview(br)
+        super.viewDidLoad()
+        
+        let gr = UIView()
+        gr.translatesAutoresizingMaskIntoConstraints = false
+        gr.backgroundColor = UIColor.greenColor()
+        self.view.addSubview(gr)
         // not needed if we're already doing autolayout
         // [self.view setNeedsUpdateConstraints];
         
-        // "b.r. is pinned to top and bottom of superview"
-        self.view.addConstraints(
-            NSLayoutConstraint.constraintsWithVisualFormat("V:|[br]|",
-                options:nil, metrics:nil, views:["br":br]))
+        var c = [NSLayoutConstraint]()
+        // "g.r. is pinned to top and bottom of superview"
+        c.extend(
+            NSLayoutConstraint.constraintsWithVisualFormat("V:|[gr]|",
+                options:[], metrics:nil, views:["gr":gr])
+        )
+        // "g.r. is 1/3 the width of superview"
+        c.append(
+            gr.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor, multiplier: 1.0/3.0)
+        )
         
-        // "b.r. is 1/3 the width of superview"
-        self.view.addConstraint(
-            NSLayoutConstraint(item:br, attribute:.Width,
-                relatedBy:.Equal,
-                toItem:self.view, attribute:.Width,
-                multiplier:1.0/3.0, constant:0))
+        // "onscreen, g.r.'s left is pinned to superview's left"
+        let marrOn : [NSLayoutConstraint] =
+        NSLayoutConstraint.constraintsWithVisualFormat("H:|[gr]",
+            options:[], metrics:nil, views:["gr":gr])
         
-        // "onscreen, b.r.'s left is pinned to superview's left"
-        let marrOn =
-        NSLayoutConstraint.constraintsWithVisualFormat("H:|[br]",
-            options:nil, metrics:nil, views:["br":br])
-        
-        // "offscreen, b.r.'s right is pinned to superview's left"
-        let marrOff = [
-            NSLayoutConstraint(item:br, attribute:.Right,
-                relatedBy:.Equal,
-                toItem:self.view, attribute:.Left,
-                multiplier:1, constant:0)
+        // "offscreen, g.r.'s right is pinned to superview's left"
+        let marrOff : [NSLayoutConstraint] = [
+            gr.trailingAnchor.constraintEqualToAnchor(self.view.leadingAnchor)
         ]
         
-        self.blackRectConstraintsOnscreen = marrOn as! [NSLayoutConstraint]
-        self.blackRectConstraintsOffscreen = marrOff
+        self.greenRectConstraintsOnscreen = marrOn
+        self.greenRectConstraintsOffscreen = marrOff
         // start out offscreen!
-        self.view.addConstraints(self.blackRectConstraintsOffscreen)
+        c.extend(marrOff)
+        NSLayoutConstraint.activateConstraints(c)
         
     }
     
     // old code
     /*
     override func updateViewConstraints() {
-        self.view.removeConstraints(self.blackRectConstraintsOnscreen)
-        self.view.removeConstraints(self.blackRectConstraintsOffscreen)
+        self.view.removeConstraints(self.greenRectConstraintsOnscreen)
+        self.view.removeConstraints(self.greenRectConstraintsOffscreen)
         if self.traitCollection.verticalSizeClass == .Compact {
-            self.view.addConstraints(self.blackRectConstraintsOnscreen)
+            self.view.addConstraints(self.greenRectConstraintsOnscreen)
         } else {
-            self.view.addConstraints(self.blackRectConstraintsOffscreen)
+            self.view.addConstraints(self.greenRectConstraintsOffscreen)
         }
         super.updateViewConstraints()
     }
@@ -63,12 +62,12 @@ class ViewController : UIViewController {
     
     override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
-        self.view.removeConstraints(self.blackRectConstraintsOnscreen)
-        self.view.removeConstraints(self.blackRectConstraintsOffscreen)
+        NSLayoutConstraint.deactivateConstraints(self.greenRectConstraintsOnscreen)
+        NSLayoutConstraint.deactivateConstraints(self.greenRectConstraintsOffscreen)
         if newCollection.verticalSizeClass == .Compact {
-            self.view.addConstraints(self.blackRectConstraintsOnscreen)
+            NSLayoutConstraint.activateConstraints(self.greenRectConstraintsOnscreen)
         } else {
-            self.view.addConstraints(self.blackRectConstraintsOffscreen)
+            NSLayoutConstraint.activateConstraints(self.greenRectConstraintsOffscreen)
         }
 
     }

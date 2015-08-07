@@ -17,27 +17,44 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBAction func doButton(sender: AnyObject) {
-        println(self.view.bounds.size)
+        print(self.view.bounds.size)
         let nav = self.navigationController!
         nav.navigationBarHidden = !nav.navigationBarHidden
         delay(1) {
-            println("size did in fact change")
-            println(self.view.bounds.size)
+            print("size did in fact change")
+            print(self.view.bounds.size)
         }
     }
     
+    /*
     override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        println("will rotate") // not called if viewWillTransitionToSize is implemented
+        print("will rotate") // not called if viewWillTransitionToSize is implemented
     }
+*/
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        println("size will change")
-        println(size)
+        print("size will transition")
+        print(size)
+    }
+    
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        print("trait collection changed")
+    }
+    
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+        print("trait collection will transition")
+    }
+    
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+        print("update view constraints")
     }
     
     override func viewWillLayoutSubviews() {
-        println("will layout")
+        print("will layout")
     }
 
 

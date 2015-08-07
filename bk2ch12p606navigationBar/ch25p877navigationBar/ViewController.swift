@@ -22,7 +22,7 @@ class ViewController: UIViewController {
 
         self.navbar.backIndicatorImage =
             imageOfSize(CGSizeMake(10,20)) {
-                CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(6,0,4,20))
+                CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(6,0,4,20))
         }
         self.navbar.backIndicatorTransitionMaskImage =
             imageOfSize(CGSizeMake(10,20)) {}
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         
         self.navbar.setBackgroundImage(imageOfSize(sz) {
             UIColor(white:0.95, alpha:0.85).setFill()
-            CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,0,20,20))
+            CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,0,20,20))
             }, forBarPosition:.Any, barMetrics: .Default)
         self.navbar.translucent = true
         
@@ -41,9 +41,9 @@ class ViewController: UIViewController {
         
         self.navbar.shadowImage = imageOfSize(sz2) {
             UIColor.grayColor().colorWithAlphaComponent(0.3).setFill()
-            CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,0,4,2))
+            CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,0,4,2))
             UIColor.grayColor().colorWithAlphaComponent(0.15).setFill()
-            CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,2,4,2))
+            CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,2,4,2))
         }
         
         // set up initial state of nav item

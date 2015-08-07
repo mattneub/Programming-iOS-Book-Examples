@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         
         /*
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(9,9), NO, 0);
-        CGContextRef con = UIGraphicsGetCurrentContext();
+        CGContextRef con = UIGraphicsGetCurrentContext()!;
         CGContextSetFillColorWithColor(con, [UIColor blackColor].CGColor);
         CGContextMoveToPoint(con, 0, 4.5);
         CGContextAddLineToPoint(con, 4.5, 9);
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         self.prog2.backgroundColor = UIColor.blackColor()
         self.prog2.trackTintColor = UIColor.blackColor()
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(10,10), true, 0)
-        let con = UIGraphicsGetCurrentContext()
+        let con = UIGraphicsGetCurrentContext()!
         CGContextSetFillColorWithColor(con, UIColor.yellowColor().CGColor)
         CGContextFillRect(con, CGRectMake(0, 0, 10, 10))
         let r = CGRectInset(CGContextGetClipBoundingBox(con),1,1)

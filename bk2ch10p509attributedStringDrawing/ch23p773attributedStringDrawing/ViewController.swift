@@ -19,7 +19,7 @@ class ViewController : UIViewController {
         let rect = CGRectMake(0,0,280,250)
         UIGraphicsBeginImageContextWithOptions(rect.size, true, 0)
         UIColor.whiteColor().setFill()
-        CGContextFillRect(UIGraphicsGetCurrentContext(), rect)
+        CGContextFillRect(UIGraphicsGetCurrentContext()!, rect)
         content.drawInRect(rect) // draw attributed string
         let im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

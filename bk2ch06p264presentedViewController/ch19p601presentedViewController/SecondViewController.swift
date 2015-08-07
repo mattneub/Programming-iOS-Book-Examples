@@ -21,10 +21,10 @@ class SecondViewController : UIViewController {
     
     @IBAction func doDismiss(sender:AnyObject?) {
         // logging to show relationships
-        println(self.presentingViewController!)
-        println(self.presentingViewController!.presentedViewController)
-        var vc = self.delegate! as AnyObject as! UIViewController
-        println(vc.presentedViewController)
+        print(self.presentingViewController!)
+        print(self.presentingViewController!.presentedViewController)
+        let vc = self.delegate! as AnyObject as! UIViewController
+        print(vc.presentedViewController)
         
         
         // just proving it works
@@ -38,7 +38,7 @@ class SecondViewController : UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         // prove you've got data
-        println(self.data)
+        print(self.data)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -50,7 +50,7 @@ class SecondViewController : UIViewController {
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        println("new size coming: \(size)")
+        print("new size coming: \(size)")
     }
     
     

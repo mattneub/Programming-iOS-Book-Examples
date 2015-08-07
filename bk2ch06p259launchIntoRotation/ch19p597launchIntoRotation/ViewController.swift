@@ -8,7 +8,7 @@ class ViewController : UIViewController {
     let which = 1
     
     override func viewDidLoad() {
-        println(self.view.bounds.size)
+        print(self.view.bounds.size)
         super.viewDidLoad()
         
         if which == 1 {
@@ -18,9 +18,12 @@ class ViewController : UIViewController {
             // to its initial orientation (the first one listed in the Info.plist)
             // thus, although self.view may be resized further as it is placed into the interface...
             // it is at least in the right orientation already
+            // in iOS 9, this approach won't work on an iPhone held in landscape at launch...
+            // ...unless we add autoresizing
             let square = UIView(frame:CGRectMake(0,0,10,10))
             square.backgroundColor = UIColor.blackColor()
             square.center = CGPointMake(self.view.bounds.midX,5) // top center?
+            //square.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin, .FlexibleBottomMargin]
             self.view.addSubview(square)
         } else if which == 3 {
             // on the other hand, using constraints and no hard numbers is most reliable
@@ -28,34 +31,39 @@ class ViewController : UIViewController {
             let square = UIView()
             square.backgroundColor = UIColor.blackColor()
             self.view.addSubview(square)
-            square.setTranslatesAutoresizingMaskIntoConstraints(false)
+            square.translatesAutoresizingMaskIntoConstraints = false
             let side : CGFloat = 10
-            square.addConstraint(
-                NSLayoutConstraint(item:square, attribute:.Width,
-                relatedBy:.Equal,
-                toItem:nil, attribute:.NotAnAttribute,
-                multiplier:1, constant:side))
-            self.view.addConstraints(
+            NSLayoutConstraint.activateConstraints([
+                [
+                    square.widthAnchor.constraintEqualToConstant(side),
+                    square.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
+                ],
                 NSLayoutConstraint.constraintsWithVisualFormat("V:|[square(side)]",
-                options:nil, metrics:["side":side],
-                views:["square":square]))
-            self.view.addConstraint(
-                NSLayoutConstraint(item:square, attribute:.CenterX,
-                relatedBy:.Equal,
-                toItem:self.view, attribute:.CenterX,
-                multiplier:1, constant:0))
+                    options:[], metrics:["side":side],
+                    views:["square":square])
+                ].flatMap{$0})
         }
     }
     
     override func viewWillLayoutSubviews() {
-        println("will layout \(self.view.bounds.size)")
+        print("will layout \(self.view.bounds.size)")
         
         if which == 2 {
-            // this is still my favorite place, however
-            // it has the advantage that it is called just once on launch...
-            // ...and that the view has assumed its final size (e.g. into navigation interface)
-            // on the other hand, this will be called many times over the lifetime,
-            // so to initialize interface here, we need a flag
+            // this was formerly my favorite place...
+            // ...but now it doesn't work either if we launch into landscape on iPhone!
+            // that's because we always launch into portrait and then rotate
+            if !self.viewInitializationDone {
+                self.viewInitializationDone = true
+                let square = UIView(frame:CGRectMake(0,0,10,10))
+                square.backgroundColor = UIColor.blackColor()
+                square.center = CGPointMake(self.view.bounds.midX,5)
+                self.view.addSubview(square)
+            }
+        }
+    }
+    
+    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+        if which == 4 {
             if !self.viewInitializationDone {
                 self.viewInitializationDone = true
                 let square = UIView(frame:CGRectMake(0,0,10,10))
@@ -67,7 +75,9 @@ class ViewController : UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        println("did layout \(self.view.bounds.size)")
+        print("did layout \(self.view.bounds.size)")
+        
+
     }
     
     

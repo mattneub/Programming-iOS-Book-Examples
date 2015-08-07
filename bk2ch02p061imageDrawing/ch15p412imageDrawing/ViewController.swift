@@ -71,7 +71,7 @@ class ViewController : UIViewController {
             // draw each CGImage
             UIGraphicsBeginImageContextWithOptions(
                 CGSizeMake(sz.width*1.5, sz.height), false, 0)
-            let con = UIGraphicsGetCurrentContext()
+            let con = UIGraphicsGetCurrentContext()!
             CGContextDrawImage(con,
                 CGRectMake(0,0,sz.width/2.0,sz.height), marsLeft)
             CGContextDrawImage(con,
@@ -99,7 +99,7 @@ class ViewController : UIViewController {
             // draw each CGImage flipped
             UIGraphicsBeginImageContextWithOptions(
                 CGSizeMake(sz.width*1.5, sz.height), false, 0)
-            let con = UIGraphicsGetCurrentContext()
+            let con = UIGraphicsGetCurrentContext()!
             CGContextDrawImage(con,
                 CGRectMake(0,0,sz.width/2.0,sz.height), flip(marsLeft!))
             CGContextDrawImage(con,
@@ -126,7 +126,7 @@ class ViewController : UIViewController {
             UIGraphicsBeginImageContextWithOptions(
                 CGSizeMake(sz.width*1.5, sz.height), false, 0)
             // the rest as before, draw each CGImage flipped
-            let con = UIGraphicsGetCurrentContext()
+            let con = UIGraphicsGetCurrentContext()!
             CGContextDrawImage(con,
                 CGRectMake(0,0,sz.width/2.0,sz.height), flip(marsLeft!))
             CGContextDrawImage(con,
@@ -172,7 +172,7 @@ class ViewController : UIViewController {
 func flip (im: CGImage) -> CGImage {
     let sz = CGSizeMake(CGFloat(CGImageGetWidth(im)), CGFloat(CGImageGetHeight(im)))
     UIGraphicsBeginImageContextWithOptions(sz, false, 0)
-    CGContextDrawImage(UIGraphicsGetCurrentContext(),
+    CGContextDrawImage(UIGraphicsGetCurrentContext()!,
         CGRectMake(0, 0, sz.width, sz.height), im)
     let result = UIGraphicsGetImageFromCurrentImageContext().CGImage
     UIGraphicsEndImageContext()

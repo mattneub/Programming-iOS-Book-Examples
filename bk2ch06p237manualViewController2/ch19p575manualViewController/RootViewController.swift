@@ -4,7 +4,7 @@ import UIKit
 
 class RootViewController: UIViewController {
     
-    let which = 1
+    let which = 2
     
     override func loadView() {
         switch which {
@@ -32,21 +32,11 @@ class RootViewController: UIViewController {
         v.addSubview(label)
         label.text = "Hello, World!"
         
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.view.addConstraint(
-            NSLayoutConstraint(item: label,
-                attribute: .CenterX,
-                relatedBy: .Equal,
-                toItem: self.view,
-                attribute: .CenterX,
-                multiplier: 1, constant: 0))
-        self.view.addConstraint(
-            NSLayoutConstraint(item: label,
-                attribute: .CenterY,
-                relatedBy: .Equal,
-                toItem: self.view,
-                attribute: .CenterY,
-                multiplier: 1, constant: 0))
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            label.centerXAnchor.constraintEqualToAnchor(v.centerXAnchor),
+            label.centerYAnchor.constraintEqualToAnchor(v.centerYAnchor),
+            ])
 
     }
 

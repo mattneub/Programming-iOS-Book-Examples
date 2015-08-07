@@ -9,23 +9,18 @@
 /* Begin PBXBuildFile section */
 		321A94121974434700B88F5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321A94111974434700B88F5B /* AppDelegate.swift */; };
 		321A94141974436300B88F5B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321A94131974436300B88F5B /* RootViewController.swift */; };
-		C9AFFBBB17C27B8C00C3BAB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AFFBBA17C27B8C00C3BAB0 /* Foundation.framework */; };
-		C9AFFBBD17C27B8C00C3BAB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AFFBBC17C27B8C00C3BAB0 /* CoreGraphics.framework */; };
-		C9AFFBBF17C27B8C00C3BAB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AFFBBE17C27B8C00C3BAB0 /* UIKit.framework */; };
-		C9AFFBCD17C27B8C00C3BAB0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9AFFBCC17C27B8C00C3BAB0 /* Images.xcassets */; };
+		32D5C5C71B712F6700B8EEAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D5C5C61B712F6700B8EEAF /* LaunchScreen.storyboard */; };
+		C9AFFBCD17C27B8C00C3BAB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9AFFBCC17C27B8C00C3BAB0 /* Assets.xcassets */; };
 		C9AFFBED17C2850200C3BAB0 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9AFFBEC17C2850200C3BAB0 /* RootView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		321A94111974434700B88F5B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		321A94131974436300B88F5B /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		32D5C5C61B712F6700B8EEAF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9AFFBB717C27B8C00C3BAB0 /* ch19p579nibViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p579nibViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9AFFBBA17C27B8C00C3BAB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9AFFBBC17C27B8C00C3BAB0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C9AFFBBE17C27B8C00C3BAB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9AFFBC217C27B8C00C3BAB0 /* ch19p579nibViewController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p579nibViewController-Info.plist"; sourceTree = "<group>"; };
-		C9AFFBCC17C27B8C00C3BAB0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9AFFBD317C27B8C00C3BAB0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C9AFFBCC17C27B8C00C3BAB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9AFFBEC17C2850200C3BAB0 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -34,9 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9AFFBBD17C27B8C00C3BAB0 /* CoreGraphics.framework in Frameworks */,
-				C9AFFBBF17C27B8C00C3BAB0 /* UIKit.framework in Frameworks */,
-				C9AFFBBB17C27B8C00C3BAB0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				C9AFFBC017C27B8C00C3BAB0 /* ch19p575manualViewController */,
-				C9AFFBB917C27B8C00C3BAB0 /* Frameworks */,
 				C9AFFBB817C27B8C00C3BAB0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,35 +51,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9AFFBB917C27B8C00C3BAB0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9AFFBBA17C27B8C00C3BAB0 /* Foundation.framework */,
-				C9AFFBBC17C27B8C00C3BAB0 /* CoreGraphics.framework */,
-				C9AFFBBE17C27B8C00C3BAB0 /* UIKit.framework */,
-				C9AFFBD317C27B8C00C3BAB0 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C9AFFBC017C27B8C00C3BAB0 /* ch19p575manualViewController */ = {
 			isa = PBXGroup;
 			children = (
 				321A94111974434700B88F5B /* AppDelegate.swift */,
 				321A94131974436300B88F5B /* RootViewController.swift */,
 				C9AFFBEC17C2850200C3BAB0 /* RootView.xib */,
-				C9AFFBCC17C27B8C00C3BAB0 /* Images.xcassets */,
-				C9AFFBC117C27B8C00C3BAB0 /* Supporting Files */,
-			);
-			path = ch19p575manualViewController;
-			sourceTree = "<group>";
-		};
-		C9AFFBC117C27B8C00C3BAB0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				32D5C5C61B712F6700B8EEAF /* LaunchScreen.storyboard */,
+				C9AFFBCC17C27B8C00C3BAB0 /* Assets.xcassets */,
 				C9AFFBC217C27B8C00C3BAB0 /* ch19p579nibViewController-Info.plist */,
 			);
-			name = "Supporting Files";
+			path = ch19p575manualViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -117,6 +90,7 @@
 		C9AFFBAF17C27B8C00C3BAB0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -142,8 +116,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32D5C5C71B712F6700B8EEAF /* LaunchScreen.storyboard in Resources */,
 				C9AFFBED17C2850200C3BAB0 /* RootView.xib in Resources */,
-				C9AFFBCD17C27B8C00C3BAB0 /* Images.xcassets in Resources */,
+				C9AFFBCD17C27B8C00C3BAB0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +209,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
@@ -251,7 +225,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";

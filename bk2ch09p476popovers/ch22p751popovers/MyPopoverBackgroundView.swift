@@ -46,7 +46,7 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
         // I'm just going to make a triangle filled with our linen background...
         // ...extended by a rectangle so it joins to our "pinked" corner drawing
         
-        let con = UIGraphicsGetCurrentContext()
+        let con = UIGraphicsGetCurrentContext()!
         CGContextSaveGState(con)
         var propX = self.arrowOffset
         let limit : CGFloat = 22.0

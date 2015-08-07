@@ -45,7 +45,7 @@ class ViewController : UIViewController {
             let w : CGFloat = 18
             for i in 0 ..< 6 {
                 UIGraphicsBeginImageContextWithOptions(CGSizeMake(w,w), false, 0)
-                let con = UIGraphicsGetCurrentContext()
+                let con = UIGraphicsGetCurrentContext()!
                 CGContextSetFillColorWithColor(con, UIColor.redColor().CGColor)
                 let ii = CGFloat(i)
                 CGContextAddEllipseInRect(con, CGRectMake(0+ii,0+ii,w-ii*2,w-ii*2))

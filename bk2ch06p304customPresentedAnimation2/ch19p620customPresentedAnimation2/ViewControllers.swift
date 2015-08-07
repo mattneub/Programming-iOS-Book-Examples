@@ -31,8 +31,8 @@ class ViewController2 : UIViewController {
         self.button.layer.borderColor = self.button.tintColor!.CGColor
         self.button.layer.borderWidth = 1
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(10,10), false, 0)
-        CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), UIColor(white:0.4, alpha:1.5).CGColor)
-        CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,0,10,10))
+        CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext()!, UIColor(white:0.4, alpha:1.5).CGColor)
+        CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,0,10,10))
         let im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         self.button.setBackgroundImage(im, forState:.Highlighted)

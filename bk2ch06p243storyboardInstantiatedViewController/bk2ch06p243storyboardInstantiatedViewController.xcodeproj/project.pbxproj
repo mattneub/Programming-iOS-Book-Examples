@@ -10,7 +10,8 @@
 		321A94281974475B00B88F5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321A94271974475B00B88F5B /* AppDelegate.swift */; };
 		321A942A1974475B00B88F5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321A94291974475B00B88F5B /* ViewController.swift */; };
 		321A942D1974475B00B88F5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 321A942B1974475B00B88F5B /* Main.storyboard */; };
-		321A942F1974475B00B88F5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 321A942E1974475B00B88F5B /* Images.xcassets */; };
+		321A942F1974475B00B88F5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 321A942E1974475B00B88F5B /* Assets.xcassets */; };
+		32D5C5CF1B717C2700B8EEAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D5C5CE1B717C2700B8EEAF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,7 +20,8 @@
 		321A94271974475B00B88F5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		321A94291974475B00B88F5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		321A942C1974475B00B88F5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		321A942E1974475B00B88F5B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		321A942E1974475B00B88F5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		32D5C5CE1B717C2700B8EEAF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,18 +57,11 @@
 				321A94271974475B00B88F5B /* AppDelegate.swift */,
 				321A94291974475B00B88F5B /* ViewController.swift */,
 				321A942B1974475B00B88F5B /* Main.storyboard */,
-				321A942E1974475B00B88F5B /* Images.xcassets */,
-				321A94251974475B00B88F5B /* Supporting Files */,
-			);
-			path = bk2ch06p243storyboardInstantiatedViewController;
-			sourceTree = "<group>";
-		};
-		321A94251974475B00B88F5B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				321A942E1974475B00B88F5B /* Assets.xcassets */,
+				32D5C5CE1B717C2700B8EEAF /* LaunchScreen.storyboard */,
 				321A94261974475B00B88F5B /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = bk2ch06p243storyboardInstantiatedViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +90,7 @@
 		321A941A1974475B00B88F5B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -126,8 +122,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32D5C5CF1B717C2700B8EEAF /* LaunchScreen.storyboard in Resources */,
 				321A942D1974475B00B88F5B /* Main.storyboard in Resources */,
-				321A942F1974475B00B88F5B /* Images.xcassets in Resources */,
+				321A942F1974475B00B88F5B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +188,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -227,7 +224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -238,7 +235,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = bk2ch06p243storyboardInstantiatedViewController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
@@ -250,7 +246,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = bk2ch06p243storyboardInstantiatedViewController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
@@ -277,6 +272,7 @@
 				321A94401974475B00B88F5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

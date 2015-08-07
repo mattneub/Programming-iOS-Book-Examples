@@ -25,7 +25,7 @@ class MyView : UIView {
         guard let subs = self.layer.sublayers else {return}
         let lay = subs[subs.count-1]
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
-        let con = UIGraphicsGetCurrentContext()
+        let con = UIGraphicsGetCurrentContext()!
         let r = self.bounds.rectByInsetting(dx: 30, dy: 30)
         CGContextSaveGState(con)
         CGContextTranslateCTM(con, self.bounds.width/2.0, self.bounds.height/2.0)
@@ -45,7 +45,7 @@ class MyView : UIView {
         guard let subs = self.layer.sublayers else {return nil}
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
         let lay = subs[subs.count-1]
-        lay.renderInContext(UIGraphicsGetCurrentContext())
+        lay.renderInContext(UIGraphicsGetCurrentContext()!)
         let im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         

@@ -23,7 +23,7 @@ class MyView : UIView {
     override func drawRect(rect: CGRect) {
         switch which {
         case 1:
-            let con = UIGraphicsGetCurrentContext()
+            let con = UIGraphicsGetCurrentContext()!
             
             // draw a black (by default) vertical line, the shaft of the arrow
             CGContextMoveToPoint(con, 100, 100)
@@ -68,7 +68,7 @@ class MyView : UIView {
         case 3:
             
             // obtain the current graphics context
-            let con = UIGraphicsGetCurrentContext()
+            let con = UIGraphicsGetCurrentContext()!
             
             // punch triangular hole in context clipping region
             CGContextMoveToPoint(con, 90, 100)
@@ -93,7 +93,7 @@ class MyView : UIView {
             
         case 4:
             // obtain the current graphics context
-            let con = UIGraphicsGetCurrentContext()
+            let con = UIGraphicsGetCurrentContext()!
             CGContextSaveGState(con)
             
             // punch triangular hole in context clipping region
@@ -136,7 +136,7 @@ class MyView : UIView {
             
         case 5:
             // obtain the current graphics context
-            let con = UIGraphicsGetCurrentContext()
+            let con = UIGraphicsGetCurrentContext()!
             CGContextSaveGState(con)
             
             // punch triangular hole in context clipping region
@@ -171,7 +171,7 @@ class MyView : UIView {
             
             // draw the red triangle, the point of the arrow
             UIGraphicsBeginImageContextWithOptions(CGSizeMake(4,4), false, 0)
-            let imcon = UIGraphicsGetCurrentContext()
+            let imcon = UIGraphicsGetCurrentContext()!
             CGContextSetFillColorWithColor(imcon, UIColor.redColor().CGColor)
             CGContextFillRect(imcon, CGRectMake(0,0,4,4))
             CGContextSetFillColorWithColor(imcon, UIColor.blueColor().CGColor)
@@ -190,7 +190,7 @@ class MyView : UIView {
         case 6:
             
             // obtain the current graphics context
-            let con = UIGraphicsGetCurrentContext()
+            let con = UIGraphicsGetCurrentContext()!
             CGContextSaveGState(con)
             
             // punch triangular hole in context clipping region

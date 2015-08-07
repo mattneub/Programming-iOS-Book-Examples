@@ -18,7 +18,7 @@ class MyView : UIView {
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(40,100), false, 0.0)
         
         // obtain the current graphics context
-        let con = UIGraphicsGetCurrentContext()
+        let con = UIGraphicsGetCurrentContext()!
         CGContextSaveGState(con)
         
         // punch triangular hole in context clipping region
@@ -53,7 +53,7 @@ class MyView : UIView {
         
         // draw the red triangle, the point of the arrow
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(4,4), false, 0)
-        let imcon = UIGraphicsGetCurrentContext()
+        let imcon = UIGraphicsGetCurrentContext()!
         CGContextSetFillColorWithColor(imcon, UIColor.redColor().CGColor)
         CGContextFillRect(imcon, CGRectMake(0,0,4,4))
         CGContextSetFillColorWithColor(imcon, UIColor.blueColor().CGColor)
@@ -82,7 +82,7 @@ class MyView : UIView {
 
         switch which {
         case 1:
-            let con = UIGraphicsGetCurrentContext()
+            let con = UIGraphicsGetCurrentContext()!
             self.arrow.drawAtPoint(CGPointMake(0,0))
             for _ in 0..<3 {
                 CGContextTranslateCTM(con, 20, 100)
@@ -92,7 +92,7 @@ class MyView : UIView {
             }
             
         case 2:
-            let con = UIGraphicsGetCurrentContext()
+            let con = UIGraphicsGetCurrentContext()!
             CGContextSetShadow(con, CGSizeMake(7, 7), 12)
             
             self.arrow.drawAtPoint(CGPointMake(0,0))
@@ -104,7 +104,7 @@ class MyView : UIView {
             }
             
         case 3:
-            let con = UIGraphicsGetCurrentContext()
+            let con = UIGraphicsGetCurrentContext()!
             CGContextSetShadow(con, CGSizeMake(7, 7), 12)
             
             CGContextBeginTransparencyLayer(con, nil)

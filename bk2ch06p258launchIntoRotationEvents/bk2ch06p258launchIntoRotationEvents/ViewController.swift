@@ -18,9 +18,10 @@ I can think of various ways we can wind up launching into landscape:
 
 class ViewController: UIViewController, UINavigationControllerDelegate {
     
-//    override func supportedInterfaceOrientations() -> Int {
-//        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
-//    }
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return super.supportedInterfaceOrientations()
+        return .Landscape
+    }
     
 //    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController!) -> Int {
 //        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
@@ -29,50 +30,50 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.navigationController.delegate = self
-        println("viewDidLoad")
-        println("viewDidLoad reports \(self.view.bounds.size)")
-        println("viewDidLoad reports \(self.traitCollection)")
+        print("viewDidLoad")
+        print("viewDidLoad reports \(self.view.bounds.size)")
+        print("viewDidLoad reports \(self.traitCollection)")
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        println("will appear \(self.view.bounds.size)")
+        print("will appear \(self.view.bounds.size)")
     }
     
     override func viewWillLayoutSubviews() {
-        println("willLayout  \(self.view.bounds.size)")
+        print("willLayout  \(self.view.bounds.size)")
     }
     
     override func viewDidLayoutSubviews() {
-        println("didLayout \(self.view.bounds.size)")
+        print("didLayout \(self.view.bounds.size)")
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        println("did appear \(self.view.bounds.size)")
+        print("did appear \(self.view.bounds.size)")
     }
     
     override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        println("willTransition")
-        println(newCollection)
+        print("willTransition trait")
+        print(newCollection)
         super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        println("willTransition")
-        println(size)
+        print("willTransition size")
+        print(size)
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
     override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
-        println("trait collection did change")
+        print("trait collection did change")
     }
 
 }
 
 /*
 
-normal launch into portrait:
+=== normal launch into portrait:
 
 viewDidLoad, portrait view, portrait trait collection
 (will appear)
@@ -81,51 +82,38 @@ trait collection did change
 (didLayout)
 (did appear)
 
-normal launch with device at landscape:
+=== normal launch with device at landscape: NB this happens regardless of order in info plist!
+[basically the rule seems to be if app can launch into portrait, it will]
 
 viewDidLoad, portrait view, portrait trait collection
 trait collection did change (and the others)
-will transition to portrait
+[visible rotation]
+will transition to landscape
 will transition to landscape view size
 trait collection did change
-did/will layout, possibly several times...
+did/will layout
 
-app accepts only landscape:
+=== app accepts only landscape:
 
 viewDidLoad, landscape view, landscape trait collection
+(will appear)
 trait collection did change (and the others)
 => so, in this case, we do not start with portrait and then rotate!
 
-app accept any, but landscape is first, and device is held in landscape:
+=== app accepts any, but landscape is first, but device is held in portrait:
+[New: just like the first case! we launch into portrait and stay there]
 
-viewDidLoad, landscape view, landscape trait collection
-trait collection did change (and the others)
+=== app accepts any, portrait or landscape is first (!), but view controller is landscape only, device is held in portrait or landscape:
 
-app accepts any, but landscape is first, but device is held in portrait:
-
-viewDidLoad, landscape view, landscape trait collection
-trait collection did change (and the others)
-will transition to portrait
-will transition to portrait view size
-trait collection did change
-(layout)
-
-app accepts any, portrait is first, but view controller is landscape only, device is held in landscape or portrait, doesn't matter
-
-// MESS (bug? not sure) - fixed in seed 4!
-viewDidLoad, portrait view, portrait trait collection
-trait collection did change (others)
+viewDidLoad, portrait view, portrait trait
+(will appear)
 will transition to landscape trait collection
-(no view size change notification?)
+NO SIZE CHANGE NOTIFICATION
 trait collection did change
-(layout in landscape)
+(layout, did appear)
+[and if the app then rotates 180 degrees]
+will transition to same landscape size
 
-
-app accepts any, landscape is first, view controller is landscape only, device is held in landscape or portrait
-
-viewDidLoad, landscape view, landscape trait collection
-trait collection did change (others)
-(will transition to landscape view size, if device was in landscape orientation but it was the wrong one)
 
 */
 

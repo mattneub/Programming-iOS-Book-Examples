@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         
         let tint = imageOfSize(CGSizeMake(3,3)) {
             self.stepper.tintColor.setFill()
-            CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0,0,3,3))
+            CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,0,3,3))
         }.resizableImageWithCapInsets(
             UIEdgeInsetsMake(1, 1, 1, 1), resizingMode:.Stretch)
         self.stepper.setDividerImage(tint, forLeftSegmentState:.Normal, rightSegmentState:.Normal)

@@ -26,8 +26,8 @@ class MyTiledView : UIView {
         //    NSLog(@"rect %@", NSStringFromCGRect(rect));
         //    NSLog(@"bounds %@", NSStringFromCGRect(self.bounds));
         //    NSLog(@"contents scale %f", self.layer.contentsScale);
-        //    NSLog(@"%@", NSStringFromCGAffineTransform(CGContextGetCTM(UIGraphicsGetCurrentContext())));
-        //    NSLog(@"%@", NSStringFromCGRect(CGContextGetClipBoundingBox(UIGraphicsGetCurrentContext())));
+        //    NSLog(@"%@", NSStringFromCGAffineTransform(CGContextGetCTM(UIGraphicsGetCurrentContext()!)));
+        //    NSLog(@"%@", NSStringFromCGRect(CGContextGetClipBoundingBox(UIGraphicsGetCurrentContext()!)));
         
         
         
@@ -44,7 +44,7 @@ class MyTiledView : UIView {
                 // make a new image
                 let lay = self.layer as! CATiledLayer
                 
-                let tr = CGContextGetCTM(UIGraphicsGetCurrentContext())
+                let tr = CGContextGetCTM(UIGraphicsGetCurrentContext()!)
                 let sc = tr.a/lay.contentsScale
                 let scale = sc/4.0
                 

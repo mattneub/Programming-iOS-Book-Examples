@@ -35,7 +35,7 @@ class MyMandelbrotView : UIView {
     // turn pixels of self.bitmapContext into CGImage, draw into ourselves
     override func drawRect(rect: CGRect) {
         if self.bitmapContext != nil {
-            let context = UIGraphicsGetCurrentContext()
+            let context = UIGraphicsGetCurrentContext()!
             let im = CGBitmapContextCreateImage(self.bitmapContext)
             CGContextDrawImage(context, self.bounds, im)
             self.odd = !self.odd

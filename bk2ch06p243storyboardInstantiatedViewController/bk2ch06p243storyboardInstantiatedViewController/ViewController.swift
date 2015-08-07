@@ -6,7 +6,7 @@ class ViewController: UIViewController {
                             
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(self.view)
+        print(self.view)
     }
 
 
