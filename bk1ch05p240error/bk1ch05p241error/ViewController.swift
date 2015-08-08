@@ -13,6 +13,14 @@ enum MySecondError : ErrorType {
     case SecondFatalMistake
 }
 
+struct SomeStruct : ErrorType {
+
+}
+struct SomeClass : ErrorType {
+    
+}
+
+
 class ViewController: UIViewController {
     
     var ok = true
@@ -38,6 +46,10 @@ class ViewController: UIViewController {
         } catch {
             print(error)
         }
+        
+        var err = SomeStruct()
+        print(err._domain)
+        print(err._code)
         
     }
     

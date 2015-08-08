@@ -112,6 +112,35 @@ class NoisyDog9 : Dog9 {
         super.init(name:"Fido", license:123)
         return nil // _now_ you are allowed to fail
     }
+    // illegal: init? cannot override init
+//    override init?(name:String, license:Int) {
+//        super.init(name:name, license:license)
+//    }
+    override init(name:String, license:Int) {
+        super.init(name:name, license:license)
+    }
+}
+class ObnoxiousDog9 : NoisyDog9 {
+    // legal, init can override init?
+    override init(ok:Bool) {
+        super.init(name:"Fido", license:123)
+    }
+}
+class CrazyDog9 : NoisyDog9 {
+    override init(ok:Bool) {
+        super.init(ok:ok)! // legal: call super's designated init? without ? and by adding !
+    }
+}
+
+class A:NSObject {
+    init?(ok:Bool) {
+        super.init()
+    }
+}
+class B:A {
+    override init(ok:Bool) {
+        super.init(ok:ok)!
+    }
 }
 
 

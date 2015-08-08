@@ -78,6 +78,12 @@ class ViewController: UIViewController {
         case .Fatal(let theNumber, let theMessage):
             print("number: \(theNumber), message: \(theMessage)")
         }
+        
+        do {
+            let fatalMaker = Error2.Fatal
+            let err = fatalMaker(n:-1000, s:"Unbelievably bad error")
+            _ = err
+        }
 
         switch s {
         case .Some(let theString):
