@@ -19,11 +19,19 @@ class SecondViewController : UIViewController {
     
     weak var delegate : SecondViewControllerDelegate?
     
-    
-    // could alternatively use an "unwind" segue here
-    // I'll show that later
-    
     @IBAction func doDismiss(sender:AnyObject?) {
+        // logging to show relationships
+        print(self.presentingViewController!)
+        print(self.presentingViewController!.presentedViewController)
+        let vc = self.delegate! as AnyObject as! UIViewController
+        print(vc.presentedViewController)
+        
+        
+        // just proving it works
+        // self.dismissViewControllerAnimated(true, completion: nil)
+        // vc.dismissViewControllerAnimated(true, completion: nil)
+        // return;
+        
         self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
     

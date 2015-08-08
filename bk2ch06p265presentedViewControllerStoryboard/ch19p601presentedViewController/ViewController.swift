@@ -22,16 +22,16 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         // do something with data here
         
         // prove that you received data
-        println(data)
+        print(data)
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        println("vc did disappear")
+        print("vc did disappear")
     }
     
     override func dismissViewControllerAnimated(flag: Bool, completion: (() -> Void)!) {
-        println("here") // prove that this is called by clicking on curl
+        print("here") // prove that this is called by clicking on curl
         super.dismissViewControllerAnimated(flag, completion: completion)
     }
     

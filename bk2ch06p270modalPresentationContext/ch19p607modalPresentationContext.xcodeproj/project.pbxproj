@@ -10,15 +10,11 @@
 		325A9EB71976CA0300673F40 /* ExtraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A9EB61976CA0300673F40 /* ExtraViewController.swift */; };
 		325A9EB91976CA7E00673F40 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A9EB81976CA7E00673F40 /* SecondViewController.swift */; };
 		325A9EBB1976CAA100673F40 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A9EBA1976CAA100673F40 /* FirstViewController.swift */; };
-		C925A3C417C925CB004E5E68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C925A3C317C925CB004E5E68 /* Foundation.framework */; };
-		C925A3C617C925CB004E5E68 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C925A3C517C925CB004E5E68 /* CoreGraphics.framework */; };
-		C925A3C817C925CB004E5E68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C925A3C717C925CB004E5E68 /* UIKit.framework */; };
-		C925A3CE17C925CB004E5E68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C925A3CC17C925CB004E5E68 /* InfoPlist.strings */; };
-		C925A3D017C925CB004E5E68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C925A3CF17C925CB004E5E68 /* main.m */; };
-		C925A3D417C925CB004E5E68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C925A3D317C925CB004E5E68 /* AppDelegate.m */; };
+		32C345511B75196200004435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C345501B75196200004435 /* LaunchScreen.storyboard */; };
+		32C345531B75199E00004435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C345521B75199E00004435 /* AppDelegate.swift */; };
 		C925A3D717C925CB004E5E68 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C925A3D517C925CB004E5E68 /* Main_iPhone.storyboard */; };
 		C925A3DA17C925CB004E5E68 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C925A3D817C925CB004E5E68 /* Main_iPad.storyboard */; };
-		C925A3E217C925CB004E5E68 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C925A3E117C925CB004E5E68 /* Images.xcassets */; };
+		C925A3E217C925CB004E5E68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C925A3E117C925CB004E5E68 /* Assets.xcassets */; };
 		C925A40217C926C0004E5E68 /* ExtraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C925A40017C926C0004E5E68 /* ExtraViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -26,20 +22,13 @@
 		325A9EB61976CA0300673F40 /* ExtraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraViewController.swift; sourceTree = "<group>"; };
 		325A9EB81976CA7E00673F40 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		325A9EBA1976CAA100673F40 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		32C345501B75196200004435 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		32C345521B75199E00004435 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C925A3C017C925CB004E5E68 /* ch19p607modalPresentationContext.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p607modalPresentationContext.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C925A3C317C925CB004E5E68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C925A3C517C925CB004E5E68 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C925A3C717C925CB004E5E68 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C925A3CB17C925CB004E5E68 /* ch19p607modalPresentationContext-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p607modalPresentationContext-Info.plist"; sourceTree = "<group>"; };
-		C925A3CD17C925CB004E5E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C925A3CF17C925CB004E5E68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C925A3D117C925CB004E5E68 /* ch19p607modalPresentationContext-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch19p607modalPresentationContext-Prefix.pch"; sourceTree = "<group>"; };
-		C925A3D217C925CB004E5E68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C925A3D317C925CB004E5E68 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C925A3D617C925CB004E5E68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		C925A3D917C925CB004E5E68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		C925A3E117C925CB004E5E68 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C925A3E817C925CB004E5E68 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C925A3E117C925CB004E5E68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C925A40017C926C0004E5E68 /* ExtraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExtraViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -48,9 +37,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C925A3C617C925CB004E5E68 /* CoreGraphics.framework in Frameworks */,
-				C925A3C817C925CB004E5E68 /* UIKit.framework in Frameworks */,
-				C925A3C417C925CB004E5E68 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				C925A3C917C925CB004E5E68 /* ch19p607modalPresentationContext */,
-				C925A3C217C925CB004E5E68 /* Frameworks */,
 				C925A3C117C925CB004E5E68 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,43 +59,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C925A3C217C925CB004E5E68 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C925A3C317C925CB004E5E68 /* Foundation.framework */,
-				C925A3C517C925CB004E5E68 /* CoreGraphics.framework */,
-				C925A3C717C925CB004E5E68 /* UIKit.framework */,
-				C925A3E817C925CB004E5E68 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C925A3C917C925CB004E5E68 /* ch19p607modalPresentationContext */ = {
 			isa = PBXGroup;
 			children = (
-				C925A3D217C925CB004E5E68 /* AppDelegate.h */,
-				C925A3D317C925CB004E5E68 /* AppDelegate.m */,
 				C925A3D517C925CB004E5E68 /* Main_iPhone.storyboard */,
 				C925A3D817C925CB004E5E68 /* Main_iPad.storyboard */,
+				32C345521B75199E00004435 /* AppDelegate.swift */,
 				325A9EBA1976CAA100673F40 /* FirstViewController.swift */,
 				325A9EB81976CA7E00673F40 /* SecondViewController.swift */,
 				325A9EB61976CA0300673F40 /* ExtraViewController.swift */,
 				C925A40017C926C0004E5E68 /* ExtraViewController.xib */,
-				C925A3E117C925CB004E5E68 /* Images.xcassets */,
-				C925A3CA17C925CB004E5E68 /* Supporting Files */,
+				32C345501B75196200004435 /* LaunchScreen.storyboard */,
+				C925A3E117C925CB004E5E68 /* Assets.xcassets */,
+				C925A3CB17C925CB004E5E68 /* ch19p607modalPresentationContext-Info.plist */,
 			);
 			path = ch19p607modalPresentationContext;
-			sourceTree = "<group>";
-		};
-		C925A3CA17C925CB004E5E68 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C925A3CB17C925CB004E5E68 /* ch19p607modalPresentationContext-Info.plist */,
-				C925A3CC17C925CB004E5E68 /* InfoPlist.strings */,
-				C925A3CF17C925CB004E5E68 /* main.m */,
-				C925A3D117C925CB004E5E68 /* ch19p607modalPresentationContext-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +102,7 @@
 		C925A3B817C925CB004E5E68 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -167,9 +131,9 @@
 			files = (
 				C925A3DA17C925CB004E5E68 /* Main_iPad.storyboard in Resources */,
 				C925A40217C926C0004E5E68 /* ExtraViewController.xib in Resources */,
-				C925A3E217C925CB004E5E68 /* Images.xcassets in Resources */,
+				C925A3E217C925CB004E5E68 /* Assets.xcassets in Resources */,
+				32C345511B75196200004435 /* LaunchScreen.storyboard in Resources */,
 				C925A3D717C925CB004E5E68 /* Main_iPhone.storyboard in Resources */,
-				C925A3CE17C925CB004E5E68 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,10 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32C345531B75199E00004435 /* AppDelegate.swift in Sources */,
 				325A9EB91976CA7E00673F40 /* SecondViewController.swift in Sources */,
-				C925A3D417C925CB004E5E68 /* AppDelegate.m in Sources */,
 				325A9EBB1976CAA100673F40 /* FirstViewController.swift in Sources */,
-				C925A3D017C925CB004E5E68 /* main.m in Sources */,
 				325A9EB71976CA0300673F40 /* ExtraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,14 +154,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C925A3CC17C925CB004E5E68 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C925A3CD17C925CB004E5E68 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C925A3D517C925CB004E5E68 /* Main_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -249,7 +204,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -281,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -292,7 +247,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p607modalPresentationContext/ch19p607modalPresentationContext-Prefix.pch";
@@ -309,7 +263,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p607modalPresentationContext/ch19p607modalPresentationContext-Prefix.pch";
