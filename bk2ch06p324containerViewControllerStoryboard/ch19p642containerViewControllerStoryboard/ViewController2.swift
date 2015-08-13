@@ -24,14 +24,14 @@ extension ViewController2 : UIViewControllerTransitioningDelegate {
 }
 
 extension ViewController2 : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.8
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         
-        let con = transitionContext.containerView()
+        let con = transitionContext.containerView()!
         
         let r2end = transitionContext.finalFrameForViewController(vc2)
         
@@ -41,7 +41,7 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
         r2start.origin.y -= r2start.size.height
         v2.frame = r2start
         con.addSubview(v2)
-        UIView.animateWithDuration(0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: nil, animations: {
+        UIView.animateWithDuration(0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: [], animations: {
             v2.frame = r2end
             }, completion: {
                 _ in

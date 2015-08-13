@@ -11,35 +11,23 @@
 		326C806B197AEDEB003C0B1C /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326C806A197AEDEB003C0B1C /* ViewController3.swift */; };
 		326C806D197AF0D9003C0B1C /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326C806C197AF0D9003C0B1C /* ViewController2.swift */; };
 		326C806F197AF3B2003C0B1C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326C806E197AF3B2003C0B1C /* ViewController.swift */; };
-		C90829B917D2678800213704 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90829B817D2678800213704 /* Foundation.framework */; };
-		C90829BB17D2678800213704 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90829BA17D2678800213704 /* CoreGraphics.framework */; };
-		C90829BD17D2678800213704 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90829BC17D2678800213704 /* UIKit.framework */; };
-		C90829C317D2678800213704 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C90829C117D2678800213704 /* InfoPlist.strings */; };
-		C90829C517D2678800213704 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C90829C417D2678800213704 /* main.m */; };
-		C90829C917D2678800213704 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C90829C817D2678800213704 /* AppDelegate.m */; };
+		328C1A761B7A5F67001DA214 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C1A751B7A5F67001DA214 /* AppDelegate.swift */; };
+		328C1A781B7A5F83001DA214 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328C1A771B7A5F83001DA214 /* LaunchScreen.storyboard */; };
 		C90829CC17D2678800213704 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90829CA17D2678800213704 /* Main.storyboard */; };
-		C90829D117D2678800213704 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90829D017D2678800213704 /* Images.xcassets */; };
+		C90829D117D2678800213704 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C90829D017D2678800213704 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		326C8067197AE1C9003C0B1C /* ch19p645unwind-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch19p645unwind-Bridging-Header.h"; sourceTree = "<group>"; };
 		326C8068197AE1C9003C0B1C /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		326C806A197AEDEB003C0B1C /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		326C806C197AF0D9003C0B1C /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		326C806E197AF3B2003C0B1C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		328C1A751B7A5F67001DA214 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		328C1A771B7A5F83001DA214 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C90829B517D2678800213704 /* ch19p645unwindSimplified.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p645unwindSimplified.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C90829B817D2678800213704 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C90829BA17D2678800213704 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C90829BC17D2678800213704 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C90829C017D2678800213704 /* ch19p645unwindSimplified-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p645unwindSimplified-Info.plist"; sourceTree = "<group>"; };
-		C90829C217D2678800213704 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C90829C417D2678800213704 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C90829C617D2678800213704 /* ch19p645unwindSimplified-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch19p645unwindSimplified-Prefix.pch"; sourceTree = "<group>"; };
-		C90829C717D2678800213704 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C90829C817D2678800213704 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C90829CB17D2678800213704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C90829D017D2678800213704 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C90829D717D2678800213704 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C90829D017D2678800213704 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,9 +35,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C90829BB17D2678800213704 /* CoreGraphics.framework in Frameworks */,
-				C90829BD17D2678800213704 /* UIKit.framework in Frameworks */,
-				C90829B917D2678800213704 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				C90829BE17D2678800213704 /* ch19p645unwind */,
-				C90829B717D2678800213704 /* Frameworks */,
 				C90829B617D2678800213704 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,43 +57,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C90829B717D2678800213704 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C90829B817D2678800213704 /* Foundation.framework */,
-				C90829BA17D2678800213704 /* CoreGraphics.framework */,
-				C90829BC17D2678800213704 /* UIKit.framework */,
-				C90829D717D2678800213704 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C90829BE17D2678800213704 /* ch19p645unwind */ = {
 			isa = PBXGroup;
 			children = (
-				C90829C717D2678800213704 /* AppDelegate.h */,
-				C90829C817D2678800213704 /* AppDelegate.m */,
 				C90829CA17D2678800213704 /* Main.storyboard */,
+				328C1A751B7A5F67001DA214 /* AppDelegate.swift */,
 				326C806E197AF3B2003C0B1C /* ViewController.swift */,
 				326C806C197AF0D9003C0B1C /* ViewController2.swift */,
 				326C806A197AEDEB003C0B1C /* ViewController3.swift */,
 				326C8068197AE1C9003C0B1C /* MyNavigationController.swift */,
-				C90829D017D2678800213704 /* Images.xcassets */,
-				C90829BF17D2678800213704 /* Supporting Files */,
-				326C8067197AE1C9003C0B1C /* ch19p645unwind-Bridging-Header.h */,
+				328C1A771B7A5F83001DA214 /* LaunchScreen.storyboard */,
+				C90829D017D2678800213704 /* Assets.xcassets */,
+				C90829C017D2678800213704 /* ch19p645unwindSimplified-Info.plist */,
 			);
 			path = ch19p645unwind;
-			sourceTree = "<group>";
-		};
-		C90829BF17D2678800213704 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C90829C017D2678800213704 /* ch19p645unwindSimplified-Info.plist */,
-				C90829C117D2678800213704 /* InfoPlist.strings */,
-				C90829C417D2678800213704 /* main.m */,
-				C90829C617D2678800213704 /* ch19p645unwindSimplified-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +99,7 @@
 		C90829AD17D2678800213704 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -164,8 +126,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C90829D117D2678800213704 /* Images.xcassets in Resources */,
-				C90829C317D2678800213704 /* InfoPlist.strings in Resources */,
+				328C1A781B7A5F83001DA214 /* LaunchScreen.storyboard in Resources */,
+				C90829D117D2678800213704 /* Assets.xcassets in Resources */,
 				C90829CC17D2678800213704 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -177,11 +139,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				328C1A761B7A5F67001DA214 /* AppDelegate.swift in Sources */,
 				326C806D197AF0D9003C0B1C /* ViewController2.swift in Sources */,
-				C90829C917D2678800213704 /* AppDelegate.m in Sources */,
 				326C8069197AE1C9003C0B1C /* MyNavigationController.swift in Sources */,
 				326C806F197AF3B2003C0B1C /* ViewController.swift in Sources */,
-				C90829C517D2678800213704 /* main.m in Sources */,
 				326C806B197AEDEB003C0B1C /* ViewController3.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,14 +150,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C90829C117D2678800213704 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C90829C217D2678800213704 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C90829CA17D2678800213704 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -239,7 +192,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -270,7 +223,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -280,7 +233,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p645unwind/ch19p645unwindSimplified-Prefix.pch";
@@ -288,7 +240,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch19p645unwindSimplified;
-				SWIFT_OBJC_BRIDGING_HEADER = "ch19p645unwind/ch19p645unwind-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -298,7 +250,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p645unwind/ch19p645unwindSimplified-Prefix.pch";
@@ -306,7 +257,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch19p645unwindSimplified;
-				SWIFT_OBJC_BRIDGING_HEADER = "ch19p645unwind/ch19p645unwind-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -57,12 +57,12 @@ class ViewController : UIViewController {
     }
     
     func constrainInPanel(v:UIView) {
-        println("constrain")
-        v.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.panel.addConstraints(
-            NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options:nil, metrics:nil, views:["v":v]))
-        self.panel.addConstraints(
-            NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options:nil, metrics:nil, views:["v":v]))
+        print("constrain")
+        v.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options:[], metrics:nil, views:["v":v]),
+            NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options:[], metrics:nil, views:["v":v])
+            ].flatMap{$0})
     }
     
     // a different way (don't use both!)
@@ -76,12 +76,12 @@ class ViewController : UIViewController {
     }
     
     func constrainInPanel2(v:UIView) {
-        println("constrain2")
-        v.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.panel.removeConstraints(self.constraints)
+        print("constrain2")
+        v.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.deactivateConstraints(self.constraints)
         self.constraints.removeAll()
-        self.constraints.extend(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options:nil, metrics:nil, views:["v":v]) as! [NSLayoutConstraint])
-        self.constraints.extend(NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options:nil, metrics:nil, views:["v":v]) as! [NSLayoutConstraint])
-        self.panel.addConstraints(self.constraints)
+        self.constraints.extend(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options:[], metrics:nil, views:["v":v]))
+        self.constraints.extend(NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options:[], metrics:nil, views:["v":v]))
+        NSLayoutConstraint.activateConstraints(self.constraints)
     }
 }

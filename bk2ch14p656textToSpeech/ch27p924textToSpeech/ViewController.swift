@@ -9,7 +9,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
 
     @IBAction func talk (sender:AnyObject!) {
         let utter = AVSpeechUtterance(string:"Polly, want a cracker?")
-        // println(AVSpeechSynthesisVoice.speechVoices())
+        // print(AVSpeechSynthesisVoice.speechVoices())
         let v = AVSpeechSynthesisVoice(language: "en-US")
         utter.voice = v
         var rate = AVSpeechUtteranceMaximumSpeechRate - AVSpeechUtteranceMinimumSpeechRate
@@ -19,17 +19,17 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
         self.talker.speakUtterance(utter)
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didStartSpeechUtterance utterance: AVSpeechUtterance!) {
-        println("starting")
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {
+        print("starting")
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
-        println("finished")
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
+        print("finished")
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance!) {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
         let s = (utterance.speechString as NSString).substringWithRange(characterRange)
-        println("about to say \(s)")
+        print("about to say \(s)")
     }
     
     

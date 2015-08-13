@@ -56,7 +56,6 @@ still there in iOS 9!
 The following code stops the user from doing that, and so avoids the bug
 */
 
-
 extension FirstViewController : UITabBarControllerDelegate {
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
         return self.presentedViewController == nil

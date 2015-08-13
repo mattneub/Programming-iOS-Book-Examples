@@ -8,12 +8,16 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         super.awakeFromNib()
         
         self.title = "First"
+        
+        // cut because we can now create two right bar button items in the storyboard!
+        /*
         // right bar button item now set up in storyboard so we can use a "show" segue
         let b2 = UIBarButtonItem(image:UIImage(named:"files.png"), style:.Plain, target:nil, action:nil)
         // how to append additional right bar button items
-        var rbbi = self.navigationItem.rightBarButtonItems as! [UIBarButtonItem]
+        var rbbi = self.navigationItem.rightBarButtonItems!
         rbbi += [b2]
         self.navigationItem.rightBarButtonItems = rbbi
+*/
         
         // how to customize back button
         let b3 = UIBarButtonItem(image:UIImage(named:"files.png"), style:.Plain, target:nil, action:nil)
@@ -34,8 +38,8 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         self.navigationController!.delegate = self
     }
     
-    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+        return .Portrait
     }
     
 }

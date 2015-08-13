@@ -8,23 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		325AF04719780CC800E056AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325AF04619780CC800E056AF /* AppDelegate.swift */; };
-		C9E1780A17CCDECE00D6513D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E1780917CCDECE00D6513D /* Foundation.framework */; };
-		C9E1780C17CCDECE00D6513D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E1780B17CCDECE00D6513D /* CoreGraphics.framework */; };
-		C9E1780E17CCDECE00D6513D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E1780D17CCDECE00D6513D /* UIKit.framework */; };
+		32F99CA91B78F8480056D3FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F99CA81B78F8480056D3FD /* LaunchScreen.storyboard */; };
 		C9E1781D17CCDECE00D6513D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E1781B17CCDECE00D6513D /* Main.storyboard */; };
-		C9E1782517CCDECE00D6513D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E1782417CCDECE00D6513D /* Images.xcassets */; };
+		C9E1782517CCDECE00D6513D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E1782417CCDECE00D6513D /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		325AF04619780CC800E056AF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		32F99CA81B78F8480056D3FD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9E1780617CCDECE00D6513D /* ch19p620customAnimation1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p620customAnimation1.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9E1780917CCDECE00D6513D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9E1780B17CCDECE00D6513D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C9E1780D17CCDECE00D6513D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9E1781117CCDECE00D6513D /* ch19p620customAnimation1-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p620customAnimation1-Info.plist"; sourceTree = "<group>"; };
 		C9E1781C17CCDECE00D6513D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9E1782417CCDECE00D6513D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9E1782B17CCDECE00D6513D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C9E1782417CCDECE00D6513D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,9 +27,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9E1780C17CCDECE00D6513D /* CoreGraphics.framework in Frameworks */,
-				C9E1780E17CCDECE00D6513D /* UIKit.framework in Frameworks */,
-				C9E1780A17CCDECE00D6513D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,7 +37,6 @@
 			isa = PBXGroup;
 			children = (
 				C9E1780F17CCDECE00D6513D /* ch19p620customAnimation1 */,
-				C9E1780817CCDECE00D6513D /* Frameworks */,
 				C9E1780717CCDECE00D6513D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,23 +49,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9E1780817CCDECE00D6513D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9E1780917CCDECE00D6513D /* Foundation.framework */,
-				C9E1780B17CCDECE00D6513D /* CoreGraphics.framework */,
-				C9E1780D17CCDECE00D6513D /* UIKit.framework */,
-				C9E1782B17CCDECE00D6513D /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C9E1780F17CCDECE00D6513D /* ch19p620customAnimation1 */ = {
 			isa = PBXGroup;
 			children = (
 				325AF04619780CC800E056AF /* AppDelegate.swift */,
 				C9E1781B17CCDECE00D6513D /* Main.storyboard */,
-				C9E1782417CCDECE00D6513D /* Images.xcassets */,
+				C9E1782417CCDECE00D6513D /* Assets.xcassets */,
+				32F99CA81B78F8480056D3FD /* LaunchScreen.storyboard */,
+				C9E1781117CCDECE00D6513D /* ch19p620customAnimation1-Info.plist */,
 				C9E1781017CCDECE00D6513D /* Supporting Files */,
 			);
 			path = ch19p620customAnimation1;
@@ -83,7 +65,6 @@
 		C9E1781017CCDECE00D6513D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C9E1781117CCDECE00D6513D /* ch19p620customAnimation1-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -114,6 +95,7 @@
 		C9E177FE17CCDECE00D6513D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -140,7 +122,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9E1782517CCDECE00D6513D /* Images.xcassets in Resources */,
+				32F99CA91B78F8480056D3FD /* LaunchScreen.storyboard in Resources */,
+				C9E1782517CCDECE00D6513D /* Assets.xcassets in Resources */,
 				C9E1781D17CCDECE00D6513D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,7 +184,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -232,7 +215,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -242,7 +225,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
@@ -259,7 +241,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";

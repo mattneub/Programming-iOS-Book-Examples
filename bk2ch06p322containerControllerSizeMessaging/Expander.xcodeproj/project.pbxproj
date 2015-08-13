@@ -10,10 +10,10 @@
 		32101C06197C104800319736 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32101C05197C104800319736 /* AppDelegate.swift */; };
 		32101C08197C104800319736 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32101C07197C104800319736 /* ViewController.swift */; };
 		32101C0B197C104800319736 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32101C09197C104800319736 /* Main.storyboard */; };
-		32101C0D197C104800319736 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32101C0C197C104800319736 /* Images.xcassets */; };
+		32101C0D197C104800319736 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32101C0C197C104800319736 /* Assets.xcassets */; };
 		32101C24197C106A00319736 /* ViewControllerChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32101C22197C106A00319736 /* ViewControllerChild.swift */; };
 		32101C25197C106A00319736 /* ViewControllerChild.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32101C23197C106A00319736 /* ViewControllerChild.xib */; };
-		321F180B19CF7F3700B28BCF /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F180A19CF7F3700B28BCF /* Helper.m */; };
+		32272D561B797AE90010A4BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32272D551B797AE90010A4BA /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,12 +22,10 @@
 		32101C05197C104800319736 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32101C07197C104800319736 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32101C0A197C104800319736 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32101C0C197C104800319736 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32101C0C197C104800319736 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32101C22197C106A00319736 /* ViewControllerChild.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerChild.swift; sourceTree = "<group>"; };
 		32101C23197C106A00319736 /* ViewControllerChild.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewControllerChild.xib; sourceTree = "<group>"; };
-		321F180819CF7F3600B28BCF /* Expander-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Expander-Bridging-Header.h"; sourceTree = "<group>"; };
-		321F180919CF7F3700B28BCF /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
-		321F180A19CF7F3700B28BCF /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
+		32272D551B797AE90010A4BA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,23 +61,13 @@
 				32101C05197C104800319736 /* AppDelegate.swift */,
 				32101C07197C104800319736 /* ViewController.swift */,
 				32101C22197C106A00319736 /* ViewControllerChild.swift */,
-				321F180919CF7F3700B28BCF /* Helper.h */,
-				321F180A19CF7F3700B28BCF /* Helper.m */,
 				32101C23197C106A00319736 /* ViewControllerChild.xib */,
 				32101C09197C104800319736 /* Main.storyboard */,
-				32101C0C197C104800319736 /* Images.xcassets */,
-				32101C03197C104800319736 /* Supporting Files */,
-				321F180819CF7F3600B28BCF /* Expander-Bridging-Header.h */,
+				32101C0C197C104800319736 /* Assets.xcassets */,
+				32101C04197C104800319736 /* Info.plist */,
+				32272D551B797AE90010A4BA /* LaunchScreen.storyboard */,
 			);
 			path = Expander;
-			sourceTree = "<group>";
-		};
-		32101C03197C104800319736 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				32101C04197C104800319736 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,6 +96,7 @@
 		32101BF8197C104800319736 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -140,8 +129,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				32101C0B197C104800319736 /* Main.storyboard in Resources */,
+				32272D561B797AE90010A4BA /* LaunchScreen.storyboard in Resources */,
 				32101C25197C106A00319736 /* ViewControllerChild.xib in Resources */,
-				32101C0D197C104800319736 /* Images.xcassets in Resources */,
+				32101C0D197C104800319736 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +145,6 @@
 				32101C24197C106A00319736 /* ViewControllerChild.swift in Sources */,
 				32101C08197C104800319736 /* ViewController.swift in Sources */,
 				32101C06197C104800319736 /* AppDelegate.swift in Sources */,
-				321F180B19CF7F3700B28BCF /* Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +196,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -243,7 +232,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -254,12 +243,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Expander/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Expander/Expander-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -268,12 +256,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Expander/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Expander/Expander-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

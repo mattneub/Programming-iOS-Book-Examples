@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WOE-BL-mJg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WOE-BL-mJg">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -33,16 +34,19 @@
                         <viewControllerLayoutGuide type="bottom" id="3XG-xO-0AX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EtI-e5-scA">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="hTM-iJ-VGA">
-                        <barButtonItem key="rightBarButtonItem" image="key" id="K7n-5W-Uc4">
-                            <connections>
-                                <segue destination="O2F-eb-2KL" kind="show" id="4yK-RY-8Lu"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="key" id="K7n-5W-Uc4">
+                                <connections>
+                                    <segue destination="O2F-eb-2KL" kind="show" id="4yK-RY-8Lu"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="files" id="KuP-ga-c6V"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ioq-CK-tqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -58,7 +62,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wZ1-gF-j0x"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ejP-wJ-dPP">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -69,6 +73,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="files" width="20" height="26"/>
         <image name="key" width="12" height="26"/>
     </resources>
 </document>

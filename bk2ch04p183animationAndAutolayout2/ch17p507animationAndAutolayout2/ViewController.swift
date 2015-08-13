@@ -24,8 +24,8 @@ class ViewController : UIViewController {
                     }, completion: {
                         _ in
                         self.v.transform = CGAffineTransformIdentity
-                        self.v.setNeedsLayout()
-                        self.v.layoutIfNeeded() // no violation of constraints
+                        self.v.superview!.setNeedsLayout()
+                        self.v.superview!.layoutIfNeeded() // no violation of constraints
                     })
             })
     }

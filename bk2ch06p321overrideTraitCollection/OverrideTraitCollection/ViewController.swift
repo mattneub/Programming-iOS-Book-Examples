@@ -10,7 +10,7 @@ class ViewController: UIViewController {
     // ...which is configured with a different interface in the storyboard
     
     override func viewDidLoad() {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("vc2") as! UIViewController
+        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("vc2")
         self.addChildViewController(vc) // "will" called for us
         let tc = UITraitCollection(horizontalSizeClass: .Compact)
         self.setOverrideTraitCollection(tc, forChildViewController: vc)

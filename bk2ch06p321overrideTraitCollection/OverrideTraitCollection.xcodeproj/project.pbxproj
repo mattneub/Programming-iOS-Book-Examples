@@ -10,21 +10,10 @@
 		32132FDB19CF3ED10056FCBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32132FDA19CF3ED10056FCBB /* AppDelegate.swift */; };
 		32132FDD19CF3ED10056FCBB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32132FDC19CF3ED10056FCBB /* ViewController.swift */; };
 		32132FE019CF3ED10056FCBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32132FDE19CF3ED10056FCBB /* Main.storyboard */; };
-		32132FE219CF3ED10056FCBB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32132FE119CF3ED10056FCBB /* Images.xcassets */; };
+		32132FE219CF3ED10056FCBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32132FE119CF3ED10056FCBB /* Assets.xcassets */; };
 		32132FE519CF3ED10056FCBB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32132FE319CF3ED10056FCBB /* LaunchScreen.xib */; };
-		32132FF119CF3ED10056FCBB /* OverrideTraitCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32132FF019CF3ED10056FCBB /* OverrideTraitCollectionTests.swift */; };
 		32132FFB19CF3F0E0056FCBB /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32132FFA19CF3F0E0056FCBB /* ViewController2.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		32132FEB19CF3ED10056FCBB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 32132FCD19CF3ED10056FCBB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 32132FD419CF3ED10056FCBB;
-			remoteInfo = OverrideTraitCollection;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		32132FD519CF3ED10056FCBB /* OverrideTraitCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OverrideTraitCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,23 +21,13 @@
 		32132FDA19CF3ED10056FCBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32132FDC19CF3ED10056FCBB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32132FDF19CF3ED10056FCBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32132FE119CF3ED10056FCBB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32132FE119CF3ED10056FCBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32132FE419CF3ED10056FCBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		32132FEA19CF3ED10056FCBB /* OverrideTraitCollectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OverrideTraitCollectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		32132FEF19CF3ED10056FCBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32132FF019CF3ED10056FCBB /* OverrideTraitCollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverrideTraitCollectionTests.swift; sourceTree = "<group>"; };
 		32132FFA19CF3F0E0056FCBB /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		32132FD219CF3ED10056FCBB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32132FE719CF3ED10056FCBB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -62,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				32132FD719CF3ED10056FCBB /* OverrideTraitCollection */,
-				32132FED19CF3ED10056FCBB /* OverrideTraitCollectionTests */,
 				32132FD619CF3ED10056FCBB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,7 +49,6 @@
 			isa = PBXGroup;
 			children = (
 				32132FD519CF3ED10056FCBB /* OverrideTraitCollection.app */,
-				32132FEA19CF3ED10056FCBB /* OverrideTraitCollectionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,36 +60,11 @@
 				32132FDC19CF3ED10056FCBB /* ViewController.swift */,
 				32132FFA19CF3F0E0056FCBB /* ViewController2.swift */,
 				32132FDE19CF3ED10056FCBB /* Main.storyboard */,
-				32132FE119CF3ED10056FCBB /* Images.xcassets */,
+				32132FE119CF3ED10056FCBB /* Assets.xcassets */,
 				32132FE319CF3ED10056FCBB /* LaunchScreen.xib */,
-				32132FD819CF3ED10056FCBB /* Supporting Files */,
-			);
-			path = OverrideTraitCollection;
-			sourceTree = "<group>";
-		};
-		32132FD819CF3ED10056FCBB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				32132FD919CF3ED10056FCBB /* Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		32132FED19CF3ED10056FCBB /* OverrideTraitCollectionTests */ = {
-			isa = PBXGroup;
-			children = (
-				32132FF019CF3ED10056FCBB /* OverrideTraitCollectionTests.swift */,
-				32132FEE19CF3ED10056FCBB /* Supporting Files */,
-			);
-			path = OverrideTraitCollectionTests;
-			sourceTree = "<group>";
-		};
-		32132FEE19CF3ED10056FCBB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				32132FEF19CF3ED10056FCBB /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = OverrideTraitCollection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,39 +87,18 @@
 			productReference = 32132FD519CF3ED10056FCBB /* OverrideTraitCollection.app */;
 			productType = "com.apple.product-type.application";
 		};
-		32132FE919CF3ED10056FCBB /* OverrideTraitCollectionTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 32132FF719CF3ED10056FCBB /* Build configuration list for PBXNativeTarget "OverrideTraitCollectionTests" */;
-			buildPhases = (
-				32132FE619CF3ED10056FCBB /* Sources */,
-				32132FE719CF3ED10056FCBB /* Frameworks */,
-				32132FE819CF3ED10056FCBB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				32132FEC19CF3ED10056FCBB /* PBXTargetDependency */,
-			);
-			name = OverrideTraitCollectionTests;
-			productName = OverrideTraitCollectionTests;
-			productReference = 32132FEA19CF3ED10056FCBB /* OverrideTraitCollectionTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		32132FCD19CF3ED10056FCBB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					32132FD419CF3ED10056FCBB = {
 						CreatedOnToolsVersion = 6.0.1;
-					};
-					32132FE919CF3ED10056FCBB = {
-						CreatedOnToolsVersion = 6.0.1;
-						TestTargetID = 32132FD419CF3ED10056FCBB;
 					};
 				};
 			};
@@ -185,7 +116,6 @@
 			projectRoot = "";
 			targets = (
 				32132FD419CF3ED10056FCBB /* OverrideTraitCollection */,
-				32132FE919CF3ED10056FCBB /* OverrideTraitCollectionTests */,
 			);
 		};
 /* End PBXProject section */
@@ -197,14 +127,7 @@
 			files = (
 				32132FE019CF3ED10056FCBB /* Main.storyboard in Resources */,
 				32132FE519CF3ED10056FCBB /* LaunchScreen.xib in Resources */,
-				32132FE219CF3ED10056FCBB /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32132FE819CF3ED10056FCBB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				32132FE219CF3ED10056FCBB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,23 +144,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		32132FE619CF3ED10056FCBB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				32132FF119CF3ED10056FCBB /* OverrideTraitCollectionTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		32132FEC19CF3ED10056FCBB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 32132FD419CF3ED10056FCBB /* OverrideTraitCollection */;
-			targetProxy = 32132FEB19CF3ED10056FCBB /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		32132FDE19CF3ED10056FCBB /* Main.storyboard */ = {
@@ -293,7 +200,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -330,7 +237,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -358,40 +265,6 @@
 			};
 			name = Release;
 		};
-		32132FF819CF3ED10056FCBB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = OverrideTraitCollectionTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OverrideTraitCollection.app/OverrideTraitCollection";
-			};
-			name = Debug;
-		};
-		32132FF919CF3ED10056FCBB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = OverrideTraitCollectionTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OverrideTraitCollection.app/OverrideTraitCollection";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -411,14 +284,7 @@
 				32132FF619CF3ED10056FCBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		32132FF719CF3ED10056FCBB /* Build configuration list for PBXNativeTarget "OverrideTraitCollectionTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				32132FF819CF3ED10056FCBB /* Debug */,
-				32132FF919CF3ED10056FCBB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

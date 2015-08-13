@@ -29,16 +29,16 @@ class MasterViewController : UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        println("\(self) " + __FUNCTION__)
+        print("\(self) " + __FUNCTION__)
         if let tc = self.transitionCoordinator() {
-            println(tc)
+            print(tc)
         }
         if let tc = self.transitionCoordinator() {
             if tc.initiallyInteractive() {
                 tc.notifyWhenInteractionEndsUsingBlock {
                     context in
                     if context.isCancelled() {
-                        println("we got cancelled")
+                        print("we got cancelled")
                     }
                 }
             }
@@ -47,26 +47,26 @@ class MasterViewController : UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        println("\(self) " + __FUNCTION__)
+        print("\(self) " + __FUNCTION__)
         if let tc = self.transitionCoordinator() {
-            println(tc)
+            print(tc)
         }
         
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        println("\(self) " + __FUNCTION__)
+        print("\(self) " + __FUNCTION__)
         
         if let tc = self.transitionCoordinator() {
-            println(tc)
+            print(tc)
         }
         
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        println("\(self) " + __FUNCTION__)
+        print("\(self) " + __FUNCTION__)
         if let tc = self.transitionCoordinator() {
-            println(tc)
+            print(tc)
         }
         
     }

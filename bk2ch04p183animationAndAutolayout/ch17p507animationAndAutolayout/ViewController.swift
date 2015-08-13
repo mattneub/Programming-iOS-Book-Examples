@@ -16,7 +16,7 @@ class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     @IBOutlet var v_horizontalPositionConstraint : NSLayoutConstraint!
     
-    let which = 2
+    let which = 8
 
     @IBAction func doButton(sender:AnyObject?) {
     
@@ -32,16 +32,15 @@ class ViewController : UIViewController {
                 }, completion: {
                     _ in
                     // NB new in iOS 9 must call setNeedsLayout to get layout
-                    self.v.setNeedsLayout()
-                    self.v.layoutIfNeeded() // this is what will happen at layout time
+                    self.v.superview!.setNeedsLayout()
+                    self.v.superview!.layoutIfNeeded() // this is what will happen at layout time
                 })
 
         case 3:
             let con = self.v_horizontalPositionConstraint
             con.constant += 100
-            self.v.setNeedsLayout()
             UIView.animateWithDuration(1, animations:{
-                self.v.layoutIfNeeded()
+                self.v.superview!.layoutIfNeeded()
                 }, completion: nil)
             
         case 4:
@@ -95,9 +94,7 @@ class ViewController : UIViewController {
                 self.v.center.x += 100
                 }, completion: {
                     _ in
-                    // NB new in iOS 9 must call setNeedsLayout to get layout
-                    self.v.setNeedsLayout()
-                    self.v.layoutIfNeeded() // this is what will happen at layout time
+                    self.v.superview!.layoutIfNeeded() // ouch
             })
 
 

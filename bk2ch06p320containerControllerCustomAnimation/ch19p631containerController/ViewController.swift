@@ -69,12 +69,12 @@ class ViewController : UIViewController {
     }
     
     func constrainInPanel(v:UIView) {
-        println("constrain")
-        v.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.panel.addConstraints(
-            NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options:nil, metrics:nil, views:["v":v]))
-        self.panel.addConstraints(
-            NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options:nil, metrics:nil, views:["v":v]))
+        print("constrain")
+        v.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options:[], metrics:nil, views:["v":v]),
+            NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options:[], metrics:nil, views:["v":v])
+            ].flatMap{$0})
     }
     
 }

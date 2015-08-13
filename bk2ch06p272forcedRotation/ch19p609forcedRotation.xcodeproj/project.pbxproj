@@ -9,33 +9,22 @@
 /* Begin PBXBuildFile section */
 		325A9EC01976D1A500673F40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A9EBE1976D1A500673F40 /* ViewController.swift */; };
 		325A9EC11976D1A500673F40 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A9EBF1976D1A500673F40 /* SecondViewController.swift */; };
-		C9C5DFAA17C6928B00F55D82 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C5DFA917C6928B00F55D82 /* Foundation.framework */; };
-		C9C5DFAC17C6928B00F55D82 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C5DFAB17C6928B00F55D82 /* CoreGraphics.framework */; };
-		C9C5DFAE17C6928B00F55D82 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C5DFAD17C6928B00F55D82 /* UIKit.framework */; };
-		C9C5DFB417C6928B00F55D82 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9C5DFB217C6928B00F55D82 /* InfoPlist.strings */; };
-		C9C5DFB617C6928B00F55D82 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C5DFB517C6928B00F55D82 /* main.m */; };
-		C9C5DFBA17C6928B00F55D82 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C5DFB917C6928B00F55D82 /* AppDelegate.m */; };
+		326BCC651B77BCF3001C5FF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 326BCC641B77BCF3001C5FF0 /* LaunchScreen.storyboard */; };
+		326BCC671B77BD08001C5FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326BCC661B77BD08001C5FF0 /* AppDelegate.swift */; };
 		C9C5DFBD17C6928B00F55D82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C5DFBB17C6928B00F55D82 /* Main.storyboard */; };
-		C9C5DFC217C6928B00F55D82 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C5DFC117C6928B00F55D82 /* Images.xcassets */; };
+		C9C5DFC217C6928B00F55D82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C5DFC117C6928B00F55D82 /* Assets.xcassets */; };
 		C9C5DFE217C6931000F55D82 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9C5DFE017C6931000F55D82 /* SecondViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		325A9EBE1976D1A500673F40 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		325A9EBF1976D1A500673F40 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		326BCC641B77BCF3001C5FF0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		326BCC661B77BD08001C5FF0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9C5DFA617C6928B00F55D82 /* ch19p609forcedRotation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p609forcedRotation.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9C5DFA917C6928B00F55D82 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9C5DFAB17C6928B00F55D82 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C9C5DFAD17C6928B00F55D82 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9C5DFB117C6928B00F55D82 /* ch19p609forcedRotation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p609forcedRotation-Info.plist"; sourceTree = "<group>"; };
-		C9C5DFB317C6928B00F55D82 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9C5DFB517C6928B00F55D82 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9C5DFB717C6928B00F55D82 /* ch19p609forcedRotation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch19p609forcedRotation-Prefix.pch"; sourceTree = "<group>"; };
-		C9C5DFB817C6928B00F55D82 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C9C5DFB917C6928B00F55D82 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9C5DFBC17C6928B00F55D82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9C5DFC117C6928B00F55D82 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9C5DFC817C6928C00F55D82 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C9C5DFC117C6928B00F55D82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9C5DFE017C6931000F55D82 /* SecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SecondViewController.xib; path = ../SecondViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,9 +33,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9C5DFAC17C6928B00F55D82 /* CoreGraphics.framework in Frameworks */,
-				C9C5DFAE17C6928B00F55D82 /* UIKit.framework in Frameworks */,
-				C9C5DFAA17C6928B00F55D82 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				C9C5DFAF17C6928B00F55D82 /* ch19p601presentedViewController */,
-				C9C5DFA817C6928B00F55D82 /* Frameworks */,
 				C9C5DFA717C6928B00F55D82 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,41 +55,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9C5DFA817C6928B00F55D82 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9C5DFA917C6928B00F55D82 /* Foundation.framework */,
-				C9C5DFAB17C6928B00F55D82 /* CoreGraphics.framework */,
-				C9C5DFAD17C6928B00F55D82 /* UIKit.framework */,
-				C9C5DFC817C6928C00F55D82 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C9C5DFAF17C6928B00F55D82 /* ch19p601presentedViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C9C5DFB817C6928B00F55D82 /* AppDelegate.h */,
-				C9C5DFB917C6928B00F55D82 /* AppDelegate.m */,
 				C9C5DFBB17C6928B00F55D82 /* Main.storyboard */,
+				326BCC661B77BD08001C5FF0 /* AppDelegate.swift */,
 				325A9EBE1976D1A500673F40 /* ViewController.swift */,
 				325A9EBF1976D1A500673F40 /* SecondViewController.swift */,
 				C9C5DFE017C6931000F55D82 /* SecondViewController.xib */,
-				C9C5DFC117C6928B00F55D82 /* Images.xcassets */,
-				C9C5DFB017C6928B00F55D82 /* Supporting Files */,
+				C9C5DFC117C6928B00F55D82 /* Assets.xcassets */,
+				326BCC641B77BCF3001C5FF0 /* LaunchScreen.storyboard */,
+				C9C5DFB117C6928B00F55D82 /* ch19p609forcedRotation-Info.plist */,
 			);
 			path = ch19p601presentedViewController;
-			sourceTree = "<group>";
-		};
-		C9C5DFB017C6928B00F55D82 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C9C5DFB117C6928B00F55D82 /* ch19p609forcedRotation-Info.plist */,
-				C9C5DFB217C6928B00F55D82 /* InfoPlist.strings */,
-				C9C5DFB517C6928B00F55D82 /* main.m */,
-				C9C5DFB717C6928B00F55D82 /* ch19p609forcedRotation-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +96,7 @@
 		C9C5DF9E17C6928B00F55D82 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -160,8 +124,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9C5DFE217C6931000F55D82 /* SecondViewController.xib in Resources */,
-				C9C5DFC217C6928B00F55D82 /* Images.xcassets in Resources */,
-				C9C5DFB417C6928B00F55D82 /* InfoPlist.strings in Resources */,
+				326BCC651B77BCF3001C5FF0 /* LaunchScreen.storyboard in Resources */,
+				C9C5DFC217C6928B00F55D82 /* Assets.xcassets in Resources */,
 				C9C5DFBD17C6928B00F55D82 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,24 +137,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9C5DFBA17C6928B00F55D82 /* AppDelegate.m in Sources */,
+				326BCC671B77BD08001C5FF0 /* AppDelegate.swift in Sources */,
 				325A9EC01976D1A500673F40 /* ViewController.swift in Sources */,
 				325A9EC11976D1A500673F40 /* SecondViewController.swift in Sources */,
-				C9C5DFB617C6928B00F55D82 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C9C5DFB217C6928B00F55D82 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9C5DFB317C6928B00F55D82 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C9C5DFBB17C6928B00F55D82 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -233,7 +188,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -264,7 +219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -274,7 +229,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p601presentedViewController/ch19p609forcedRotation-Prefix.pch";
@@ -291,7 +245,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p601presentedViewController/ch19p609forcedRotation-Prefix.pch";

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1Gd-zj-9h5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -9,15 +10,15 @@
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch19p601presentedViewControllerAdaptive" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ytX-td-YPO"/>
-                        <viewControllerLayoutGuide type="bottom" id="nfb-50-Ok4"/>
+                        <viewControllerLayoutGuide type="top" id="Gak-zK-0vM"/>
+                        <viewControllerLayoutGuide type="bottom" id="MMe-fY-FOK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qFe-3P-msC">
-                                <rect key="frame" x="20" y="20" width="53" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qFe-3P-msC">
+                                <rect key="frame" x="16" y="20" width="53" height="30"/>
                                 <state key="normal" title="Present">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -25,8 +26,8 @@
                                     <action selector="doPresent:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RAc-vD-6fF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m90-7M-fBy">
-                                <rect key="frame" x="20" y="77" width="60" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m90-7M-fBy">
+                                <rect key="frame" x="16" y="77" width="60" height="30"/>
                                 <state key="normal" title="Advance"/>
                                 <connections>
                                     <action selector="doAdvance:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rzz-om-N7h"/>
@@ -34,6 +35,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="m90-7M-fBy" secondAttribute="leading" id="N6i-qM-CU5"/>
+                            <constraint firstItem="m90-7M-fBy" firstAttribute="top" secondItem="Gak-zK-0vM" secondAttribute="bottom" constant="77" id="Z4j-s7-VOQ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="qFe-3P-msC" secondAttribute="leading" id="jAn-SU-UoO"/>
+                            <constraint firstItem="qFe-3P-msC" firstAttribute="top" secondItem="Gak-zK-0vM" secondAttribute="bottom" constant="20" id="wjM-D8-T0r"/>
+                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="hul-0U-Yui"/>

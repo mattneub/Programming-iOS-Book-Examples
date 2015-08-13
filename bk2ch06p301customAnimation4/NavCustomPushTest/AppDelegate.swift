@@ -26,13 +26,13 @@ extension AppDelegate : UINavigationControllerDelegate {
 }
 
 extension AppDelegate : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval{
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval{
         return 0.6
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        let con = transitionContext.containerView()
+        let con = transitionContext.containerView()!
         let r2end = transitionContext.finalFrameForViewController(vc2)
         let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)!
         

@@ -12,18 +12,17 @@ class FirstViewController : UIViewController, UITabBarControllerDelegate {
     // tab bar delegate gets to dictate orientations...
     // so there's no need to subclass UITabBarController
     
-    func tabBarControllerSupportedInterfaceOrientations(tabBarController: UITabBarController) -> Int {
-        print(self)
-        print(" ")
-        println(__FUNCTION__)
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
-    }
+    func tabBarControllerSupportedInterfaceOrientations(tabBarController: UITabBarController) -> UIInterfaceOrientationMask {
+        print(self, appendNewline:false)
+        print(" ", appendNewline:false)
+        print(__FUNCTION__)
+        return .Portrait    }
     
-    override func supportedInterfaceOrientations() -> Int {
-        print(self)
-        print(" ")
-        println(__FUNCTION__)
-        return Int(UIInterfaceOrientationMask.Landscape.rawValue) // called, but pointless
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        print(self, appendNewline:false)
+        print(" ", appendNewline:false)
+        print(__FUNCTION__)
+        return .Landscape // called, but pointless
     }
     
     override func prefersStatusBarHidden() -> Bool {

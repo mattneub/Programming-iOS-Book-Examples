@@ -31,24 +31,23 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.delegate = self
+        // uncomment to get white status bar text
+        // self.navigationController!.navigationBar.barStyle = .Black
+        // uncomment to hide navigation bar
+        // self.navigationController!.setNavigationBarHidden(true, animated: false)
     }
     
-    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+        return .Portrait
     }
     
-    // wow, this causes a nasty bug
+//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+//        return .LightContent
+//    }
     
-    /*
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
+//    override func prefersStatusBarHidden() -> Bool {
+//        return true
+//    }
 
-*/
     
 }

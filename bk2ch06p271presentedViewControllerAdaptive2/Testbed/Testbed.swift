@@ -25,7 +25,7 @@ class Testbed: XCTestCase {
         
         let app = XCUIApplication()
         
-        for _ in (0..<20) {
+        for _ in (0..<7*8) {
             app.buttons["Advance"].tap()
             app.buttons["Present"].tap()
             app.buttons["Dismiss"].tap()

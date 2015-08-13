@@ -77,18 +77,18 @@ extension AppDelegate : UIGestureRecognizerDelegate {
         
         let tc = self.context
         if tc != nil {
-        
+            
             vc1 = tc.viewControllerForKey(UITransitionContextFromViewControllerKey)!
             vc2 = tc.viewControllerForKey(UITransitionContextToViewControllerKey)!
             
-            con = tc.containerView()
+            con = tc.containerView()!
             
             r1start = tc.initialFrameForViewController(vc1)
             r2end = tc.finalFrameForViewController(vc2)
             
             v1 = tc.viewForKey(UITransitionContextFromViewKey)!
             v2 = tc.viewForKey(UITransitionContextToViewKey)!
-
+            
         }
         
         switch g.state {
@@ -107,7 +107,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             var r2start = self.r2start // copy
             r2start.origin.x += (r2end.origin.x-r2start.origin.x)*percent
             v2.frame = r2start
-
+            
             tc.updateInteractiveTransition(percent)
             
         case .Ended:
@@ -116,30 +116,28 @@ extension AppDelegate : UIGestureRecognizerDelegate {
                 UIView.animateWithDuration(0.2, animations:{
                     v1.frame = self.r1end
                     v2.frame = r2end
-                    }, completion: {
-                        _ in
-                    tc.finishInteractiveTransition()
-                    tc.completeTransition(true)
-                    })
+                    }, completion: { _ in
+                        tc.finishInteractiveTransition()
+                        tc.completeTransition(true)
+                })
             }
             else {
                 UIView.animateWithDuration(0.2, animations:{
                     v1.frame = r1start
                     v2.frame = self.r2start
-                    }, completion: {
-                        _ in
-                    tc.cancelInteractiveTransition()
-                    tc.completeTransition(false)
-                    })
+                    }, completion: { _ in
+                        tc.cancelInteractiveTransition()
+                        tc.completeTransition(false)
+                })
             }
             
             self.interacting = false
             self.context = nil
         case .Cancelled:
-
+            
             v1.frame = r1start
             v2.frame = r2start
-
+            
             tc.cancelInteractiveTransition()
             tc.completeTransition(false)
             self.interacting = false
@@ -158,7 +156,7 @@ extension AppDelegate : UIViewControllerInteractiveTransitioning {
         let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         
-        let con = transitionContext.containerView()
+        let con = transitionContext.containerView()!
         
         let r1start = transitionContext.initialFrameForViewController(vc1)
         let r2end = transitionContext.finalFrameForViewController(vc2)
@@ -169,8 +167,8 @@ extension AppDelegate : UIViewControllerInteractiveTransitioning {
         // which way we are going depends on which vc is which
         // the most general way to express this is in terms of index number
         let tbc = self.window!.rootViewController as! UITabBarController
-        let ix1 = find(tbc.viewControllers as! [UIViewController], vc1)
-        let ix2 = find(tbc.viewControllers as! [UIViewController], vc2)
+        let ix1 = tbc.viewControllers!.indexOf(vc1)!
+        let ix2 = tbc.viewControllers!.indexOf(vc2)!
         let dir : CGFloat = ix1 < ix2 ? 1 : -1
         var r1end = r1start
         r1end.origin.x -= r1end.size.width * dir
@@ -186,8 +184,8 @@ extension AppDelegate : UIViewControllerInteractiveTransitioning {
 }
 
 extension AppDelegate : UIViewControllerAnimatedTransitioning {
-
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.4
     }
     

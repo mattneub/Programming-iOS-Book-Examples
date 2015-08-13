@@ -18,25 +18,27 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         // do something with data here
         
         // prove that you received data
-        println(data)
+        print(data)
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        println("vc did disappear")
+        print("vc did disappear")
     }
     
-    override func supportedInterfaceOrientations() -> Int  {
-        println("first supported")
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask  {
+        print("first supported")
+        return .Portrait
     }
     
     override func viewWillLayoutSubviews() {
-        println("presenter will layout")
+        print("presenter will layout")
     }
     
+    // not called in iOS 9, and I guess this makes a kind of sense
+    
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        println("presenter size")
+        print("presenter size")
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     

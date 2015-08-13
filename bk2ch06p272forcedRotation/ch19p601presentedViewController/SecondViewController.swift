@@ -20,7 +20,7 @@ class SecondViewController : UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         // prove you've got data
-        println(self.data)
+        print(self.data)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -39,9 +39,9 @@ class SecondViewController : UIViewController {
         return true
     }
     
-    override func supportedInterfaceOrientations() -> Int {
-        println("second supported")
-        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        print("second supported")
+        return .Landscape
     }
     
     override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
@@ -49,11 +49,11 @@ class SecondViewController : UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        println("presented will layout")
+        print("presented will layout")
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        println("presented size")
+        print("presented size")
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
 

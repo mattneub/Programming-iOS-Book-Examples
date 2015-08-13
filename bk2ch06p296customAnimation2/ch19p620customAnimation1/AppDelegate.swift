@@ -107,7 +107,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
 
 extension AppDelegate : UIViewControllerAnimatedTransitioning {
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.4
     }
     
@@ -116,7 +116,7 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         
-        let con = transitionContext.containerView()
+        let con = transitionContext.containerView()!
         
         let r1start = transitionContext.initialFrameForViewController(vc1)
         let r2end = transitionContext.finalFrameForViewController(vc2)
@@ -128,8 +128,8 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         // which way we are going depends on which vc is which
         // the most general way to express this is in terms of index number
         let tbc = self.window!.rootViewController as! UITabBarController
-        let ix1 = find(tbc.viewControllers as! [UIViewController], vc1)
-        let ix2 = find(tbc.viewControllers as! [UIViewController], vc2)
+        let ix1 = tbc.viewControllers!.indexOf(vc1)!
+        let ix2 = tbc.viewControllers!.indexOf(vc2)!
         let dir : CGFloat = ix1 < ix2 ? 1 : -1
         var r1end = r1start
         r1end.origin.x -= r1end.size.width * dir
@@ -139,7 +139,7 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         con.addSubview(v2)
         
         // interaction looks much better if animation curve is linear
-        var opts : UIViewAnimationOptions = self.interacting ? .CurveLinear : nil
+        let opts : UIViewAnimationOptions = self.interacting ? .CurveLinear : []
         
         if !self.interacting {
             UIApplication.sharedApplication().beginIgnoringInteractionEvents()
