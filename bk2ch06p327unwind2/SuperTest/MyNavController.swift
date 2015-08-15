@@ -3,46 +3,40 @@ import UIKit
 
 class MyNavController : UINavigationController {
     
-    override var description : String {
-        get {
-            return "MyNavController"
-        }
+    override func allowedChildViewControllersForUnwindingFromSource(source: UIStoryboardUnwindSegueSource) -> [UIViewController] {
+        let result = super.allowedChildViewControllersForUnwindingFromSource(source)
+        print("\(self.dynamicType) \(__FUNCTION__) \(result)")
+        return result
+    }
+    
+    override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+        print("\(self.dynamicType) \(__FUNCTION__) \(subsequentVC)")
+        super.unwindForSegue(unwindSegue, towardsViewController: subsequentVC)
     }
     
     override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
-        let ok = super.canPerformUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        println("I \(self) am being asked can perform from \(fromViewController), and I am answering \(ok)")
-        return ok
+        let result = super.canPerformUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
+        print("\(self.dynamicType) \(__FUNCTION__) \(result)")
+        return result
     }
     
-    override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject!) -> UIViewController? {
-        println("I \(self) will be asked for vc-for-unwind")
-        let vc = super.viewControllerForUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        println("I \(self) was asked for vc-for-unwind, and I am returning \(vc!)")
-        return vc
+    override func dismissViewControllerAnimated(flag: Bool, completion: (() -> Void)?) {
+        print("\(self.dynamicType) \(__FUNCTION__)")
+        super.dismissViewControllerAnimated(flag, completion: completion)
     }
     
-    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
-        println("I \(self) will be asked for the segue")
-        let seg = super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
-        println("I \(self) was asked for the segue, and I am returning \(seg) \(seg.identifier)")
-        return seg
-    }
-    
-    @IBAction func doUnwind(seg:UIStoryboardSegue) {
-        println("I \(self) was asked to unwind \(seg) \(seg.identifier)")
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        println("I \(self) was asked to prepare for segue \(segue) \(segue.identifier)")
-    }
-    
-    override func respondsToSelector(aSelector: Selector) -> Bool {
-        let ok = super.respondsToSelector(aSelector)
-        if NSStringFromSelector(aSelector) == "unwind:" {
-            println("I \(self) was asked responds to selector \(aSelector), responding \(ok)")
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        let result = super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
+        if identifier == "unwind" {
+            print("\(self.dynamicType) \(__FUNCTION__) \(result)")
         }
-        return ok
+        return result
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "unwind" {
+            print("\(self.dynamicType) \(__FUNCTION__)")
+        }
     }
     
     

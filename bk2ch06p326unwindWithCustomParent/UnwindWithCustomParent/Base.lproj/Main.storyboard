@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmL-wk-dQQ">
+                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmL-wk-dQQ">
                                 <rect key="frame" x="52" y="82" width="496" height="456"/>
                                 <connections>
                                     <segue destination="ba9-6R-ZGF" kind="embed" id="Qal-zz-snZ"/>
@@ -40,7 +40,7 @@
         <!--View Controller2-->
         <scene sceneID="C6z-bR-FS2">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ba9-6R-ZGF" customClass="ViewController2" customModule="UnwindWithCustomParent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" definesPresentationContext="YES" id="ba9-6R-ZGF" customClass="ViewController2" customModule="UnwindWithCustomParent" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J4Y-Mo-fQL"/>
                         <viewControllerLayoutGuide type="bottom" id="pM6-ZH-Wg8"/>
@@ -55,7 +55,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="wOm-HI-0yE" kind="presentation" id="lBD-YC-0XK"/>
+                                    <segue destination="wOm-HI-0yE" kind="presentation" modalPresentationStyle="overCurrentContext" id="lBD-YC-0XK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -85,15 +85,16 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxW-0O-i0z">
                                 <rect key="frame" x="45" y="31" width="52" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Unwind">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="91f-rN-ayH" kind="unwind" unwindAction="unwind:" id="6nX-yt-kGW"/>
+                                    <segue destination="91f-rN-ayH" kind="unwind" identifier="unwind" unwindAction="unwind:" id="6nX-yt-kGW"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.43529412150000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="PxW-0O-i0z" firstAttribute="top" secondItem="eX4-TX-K4c" secondAttribute="bottom" constant="31" id="3RQ-33-Q2w"/>
                             <constraint firstItem="PxW-0O-i0z" firstAttribute="leading" secondItem="bGW-tn-N8n" secondAttribute="leadingMargin" constant="25" id="mzU-gI-zfu"/>

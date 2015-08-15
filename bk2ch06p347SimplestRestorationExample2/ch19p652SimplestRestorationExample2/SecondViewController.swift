@@ -4,24 +4,33 @@ import UIKit
 
 class SecondViewController : UIViewController {
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        print("\(self.dynamicType) will appear")
+    }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        print("\(self.dynamicType) did appear")
+    }
+
     override func encodeRestorableStateWithCoder(coder: NSCoder) {
-        println("\(self) encode \(coder)")
+        print("\(self.dynamicType) encode \(coder)")
     }
     
     override func decodeRestorableStateWithCoder(coder: NSCoder) {
-        println("\(self) decode \(coder)")
+        print("\(self.dynamicType) decode \(coder)")
     }
     
     override func applicationFinishedRestoringState() {
-        println("finished \(self)")
+        print("finished \(self.dynamicType)")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("view did load \(self)")
+        print("view did load \(self.dynamicType)")
         self.view.backgroundColor = UIColor.yellowColor()
-        let button = UIButton.buttonWithType(.System) as! UIButton
+        let button = UIButton(type:.System)
         button.setTitle("Present", forState:.Normal)
         button.addTarget(self,
             action:"doPresent:",
@@ -53,7 +62,7 @@ class SecondViewController : UIViewController {
 extension SecondViewController : UIViewControllerRestoration {
     class func viewControllerWithRestorationIdentifierPath(ip: [AnyObject],
         coder: NSCoder) -> UIViewController? {
-            println("vcwithrip \(NSStringFromClass(self)) \(ip) \(coder)")
+            print("vcwithrip \(NSStringFromClass(self)) \(ip) \(coder)")
             var vc : UIViewController? = nil
             let last = ip.last as! String
             switch last {

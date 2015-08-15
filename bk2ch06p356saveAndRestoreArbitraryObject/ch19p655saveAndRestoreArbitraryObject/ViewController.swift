@@ -16,7 +16,7 @@ class ViewController : UIViewController {
     }
     
     override func applicationFinishedRestoringState() {
-        println("finished view controller")
+        print("finished view controller")
         // self.thing.restorationParent = self
     }
     
@@ -32,7 +32,7 @@ class ViewController : UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
             _ in
-            self.thing.word = (alert.textFields![0] as! UITextField).text
+            self.thing.word = alert.textFields![0].text!
             }))
         self.presentViewController(alert, animated: true, completion: nil)
     }
@@ -49,9 +49,9 @@ extension ViewController : UIObjectRestoration {
     }
     
     // unused, no actual restoration, just showing it can be done
-    class func objectWithRestorationIdentifierPath(ip: [AnyObject],
+    class func objectWithRestorationIdentifierPath(ip: [String],
         coder: NSCoder) -> UIStateRestoring? {
-            println(ip)
+            print(ip)
             let thing = self.makeThing()
             return thing
     }

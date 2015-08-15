@@ -4,6 +4,10 @@ class ViewController2 : UIViewController {
     @IBAction func doButton(sender:AnyObject?) {
         self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("vc2 view did load")
+    }
 }
 
 // ===== the rest of the example actually demonstrates something else entirely,

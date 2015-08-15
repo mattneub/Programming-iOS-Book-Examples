@@ -6,22 +6,22 @@ class Thing : NSObject, UIStateRestoring {
     
     var word = ""
     
-    var restorationParent: UIStateRestoring! // unused
+    var restorationParent: UIStateRestoring? // unused
     
-    var objectRestorationClass: AnyObject.Type! // unused
+    var objectRestorationClass: AnyObject.Type? // unused
     
     func encodeRestorableStateWithCoder(coder: NSCoder) {
-        println("thing encode")
+        print("thing encode")
         coder.encodeObject(self.word, forKey:"word")
     }
     
     func decodeRestorableStateWithCoder(coder: NSCoder) {
-        println("thing decode")
+        print("thing decode")
         self.word = coder.decodeObjectForKey("word") as! String
     }
     
     func applicationFinishedRestoringState() {
-        println("finished thing")
+        print("finished thing")
     }
     
     

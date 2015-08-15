@@ -12,7 +12,7 @@ class ViewController : UIViewController {
         get {
             if myBigDataReal == nil {
                 let fm = NSFileManager()
-                let f = NSTemporaryDirectory().stringByAppendingPathComponent("myBigData")
+                let f = (NSTemporaryDirectory() as NSString).stringByAppendingPathComponent("myBigData")
                 if fm.fileExistsAtPath(f) {
                     print("loading big data from disk")
                     self.myBigDataReal = NSData(contentsOfFile: f)
@@ -48,7 +48,7 @@ class ViewController : UIViewController {
     func saveAndReleaseMyBigData() {
         if let myBigData = self.myBigData {
             print("unloading big data")
-            let f = NSTemporaryDirectory().stringByAppendingPathComponent("myBigData")
+            let f = (NSTemporaryDirectory() as NSString).stringByAppendingPathComponent("myBigData")
             myBigData.writeToFile(f, atomically:false)
             self.myBigData = nil
         }
@@ -62,6 +62,12 @@ class ViewController : UIViewController {
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    // on device
+    
+    @IBAction func doButton2(sender: AnyObject) {
+        UIApplication.sharedApplication().performSelector("_performMemoryWarning")
     }
     
     // backgrounding

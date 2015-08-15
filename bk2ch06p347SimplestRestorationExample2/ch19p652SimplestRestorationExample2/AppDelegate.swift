@@ -24,15 +24,15 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
-        println("app should restore \(coder)")
+        print("app should restore \(coder)")
         // how to examine the coder
         if let idiomraw = coder.decodeObjectForKey(
             UIApplicationStateRestorationUserInterfaceIdiomKey) as? Int {
                 if let idiom = UIUserInterfaceIdiom(rawValue:idiomraw) {
                     if idiom == .Phone {
-                        println("phone")
+                        print("phone")
                     } else {
-                        println("pad")
+                        print("pad")
                     }
                 }
         }
@@ -40,23 +40,23 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
-        println("app should save \(coder)")
+        print("app should save \(coder)")
         return true
     }
     
     func application(application: UIApplication, willEncodeRestorableStateWithCoder coder: NSCoder) {
-        println("app will encode \(coder)")
+        print("app will encode \(coder)")
     }
     
     func application(application: UIApplication, didDecodeRestorableStateWithCoder coder: NSCoder) {
-        println("app did decode \(coder)")
+        print("app did decode \(coder)")
     }
     
     /*
     
     func application(application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [AnyObject], coder: NSCoder) -> UIViewController? {
         
-        println("app delegate \(ip) \(coder)")
+        print("app delegate \(ip) \(coder)")
         let last = ip.last as String
         if last == "nav" {
             return self.window!.rootViewController

@@ -7,33 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3242121D1B7E5C4A00E61281 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3242121C1B7E5C4A00E61281 /* LaunchScreen.storyboard */; };
+		3242121F1B7E5C5D00E61281 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3242121E1B7E5C5D00E61281 /* AppDelegate.swift */; };
 		32AE4643197B3A9400C83495 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AE4642197B3A9400C83495 /* ViewControllers.swift */; };
-		C9DE746A17D3A75E00E9DA4D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DE746917D3A75E00E9DA4D /* Foundation.framework */; };
-		C9DE746C17D3A75E00E9DA4D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DE746B17D3A75E00E9DA4D /* CoreGraphics.framework */; };
-		C9DE746E17D3A75E00E9DA4D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DE746D17D3A75E00E9DA4D /* UIKit.framework */; };
-		C9DE747417D3A75F00E9DA4D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9DE747217D3A75F00E9DA4D /* InfoPlist.strings */; };
-		C9DE747617D3A75F00E9DA4D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DE747517D3A75F00E9DA4D /* main.m */; };
-		C9DE747A17D3A75F00E9DA4D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DE747917D3A75F00E9DA4D /* AppDelegate.m */; };
 		C9DE747D17D3A75F00E9DA4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9DE747B17D3A75F00E9DA4D /* Main.storyboard */; };
-		C9DE748217D3A75F00E9DA4D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9DE748117D3A75F00E9DA4D /* Images.xcassets */; };
+		C9DE748217D3A75F00E9DA4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9DE748117D3A75F00E9DA4D /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		32AE4641197B3A9400C83495 /* LayoutEventTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LayoutEventTest-Bridging-Header.h"; sourceTree = "<group>"; };
+		3242121C1B7E5C4A00E61281 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3242121E1B7E5C5D00E61281 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32AE4642197B3A9400C83495 /* ViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
 		C9DE746617D3A75E00E9DA4D /* LayoutEventTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LayoutEventTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9DE746917D3A75E00E9DA4D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9DE746B17D3A75E00E9DA4D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C9DE746D17D3A75E00E9DA4D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9DE747117D3A75F00E9DA4D /* LayoutEventTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LayoutEventTest-Info.plist"; sourceTree = "<group>"; };
-		C9DE747317D3A75F00E9DA4D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9DE747517D3A75F00E9DA4D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9DE747717D3A75F00E9DA4D /* LayoutEventTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LayoutEventTest-Prefix.pch"; sourceTree = "<group>"; };
-		C9DE747817D3A75F00E9DA4D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C9DE747917D3A75F00E9DA4D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9DE747C17D3A75F00E9DA4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9DE748117D3A75F00E9DA4D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9DE748817D3A75F00E9DA4D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C9DE748117D3A75F00E9DA4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,9 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9DE746C17D3A75E00E9DA4D /* CoreGraphics.framework in Frameworks */,
-				C9DE746E17D3A75E00E9DA4D /* UIKit.framework in Frameworks */,
-				C9DE746A17D3A75E00E9DA4D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				C9DE746F17D3A75E00E9DA4D /* LayoutEventTest */,
-				C9DE746817D3A75E00E9DA4D /* Frameworks */,
 				C9DE746717D3A75E00E9DA4D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,40 +51,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9DE746817D3A75E00E9DA4D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9DE746917D3A75E00E9DA4D /* Foundation.framework */,
-				C9DE746B17D3A75E00E9DA4D /* CoreGraphics.framework */,
-				C9DE746D17D3A75E00E9DA4D /* UIKit.framework */,
-				C9DE748817D3A75F00E9DA4D /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C9DE746F17D3A75E00E9DA4D /* LayoutEventTest */ = {
 			isa = PBXGroup;
 			children = (
-				C9DE747817D3A75F00E9DA4D /* AppDelegate.h */,
-				C9DE747917D3A75F00E9DA4D /* AppDelegate.m */,
 				C9DE747B17D3A75F00E9DA4D /* Main.storyboard */,
+				3242121E1B7E5C5D00E61281 /* AppDelegate.swift */,
 				32AE4642197B3A9400C83495 /* ViewControllers.swift */,
-				C9DE748117D3A75F00E9DA4D /* Images.xcassets */,
-				C9DE747017D3A75F00E9DA4D /* Supporting Files */,
-				32AE4641197B3A9400C83495 /* LayoutEventTest-Bridging-Header.h */,
+				C9DE748117D3A75F00E9DA4D /* Assets.xcassets */,
+				3242121C1B7E5C4A00E61281 /* LaunchScreen.storyboard */,
+				C9DE747117D3A75F00E9DA4D /* LayoutEventTest-Info.plist */,
 			);
 			path = LayoutEventTest;
-			sourceTree = "<group>";
-		};
-		C9DE747017D3A75F00E9DA4D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C9DE747117D3A75F00E9DA4D /* LayoutEventTest-Info.plist */,
-				C9DE747217D3A75F00E9DA4D /* InfoPlist.strings */,
-				C9DE747517D3A75F00E9DA4D /* main.m */,
-				C9DE747717D3A75F00E9DA4D /* LayoutEventTest-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,6 +90,8 @@
 		C9DE745E17D3A75E00E9DA4D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -155,8 +118,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9DE748217D3A75F00E9DA4D /* Images.xcassets in Resources */,
-				C9DE747417D3A75F00E9DA4D /* InfoPlist.strings in Resources */,
+				3242121D1B7E5C4A00E61281 /* LaunchScreen.storyboard in Resources */,
+				C9DE748217D3A75F00E9DA4D /* Assets.xcassets in Resources */,
 				C9DE747D17D3A75F00E9DA4D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,23 +131,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3242121F1B7E5C5D00E61281 /* AppDelegate.swift in Sources */,
 				32AE4643197B3A9400C83495 /* ViewControllers.swift in Sources */,
-				C9DE747A17D3A75F00E9DA4D /* AppDelegate.m in Sources */,
-				C9DE747617D3A75F00E9DA4D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C9DE747217D3A75F00E9DA4D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9DE747317D3A75F00E9DA4D /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C9DE747B17D3A75F00E9DA4D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -227,7 +181,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -258,7 +212,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -268,15 +222,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LayoutEventTest/LayoutEventTest-Prefix.pch";
 				INFOPLIST_FILE = "LayoutEventTest/LayoutEventTest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "LayoutEventTest/LayoutEventTest-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -286,15 +239,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LayoutEventTest/LayoutEventTest-Prefix.pch";
 				INFOPLIST_FILE = "LayoutEventTest/LayoutEventTest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "LayoutEventTest/LayoutEventTest-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

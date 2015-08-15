@@ -4,8 +4,6 @@ import UIKit
 
 class ViewController : UIViewController {
     
-    // play with this both in iOS 8 and iOS 7 to see how things have changed
-    
     @IBOutlet var lab : UILabel!
     
     override var description : String {
@@ -19,41 +17,45 @@ class ViewController : UIViewController {
         }
     }
     
+    @IBAction func doUnwind(sender:UIStoryboardSegue) {
+        
+    }
+    
+    override func allowedChildViewControllersForUnwindingFromSource(source: UIStoryboardUnwindSegueSource) -> [UIViewController] {
+        let result = super.allowedChildViewControllersForUnwindingFromSource(source)
+        print("\(self) \(__FUNCTION__) \(result)")
+        return result
+    }
+    
+    override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+        print("\(self) \(__FUNCTION__) \(subsequentVC)")
+        super.unwindForSegue(unwindSegue, towardsViewController: subsequentVC)
+    }
+    
     override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
-        println("I \(self) will be asked can perform from \(fromViewController)")
-        let ok = super.canPerformUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        println("I \(self) was asked can perform from \(fromViewController), and I am answering \(ok)")
-        return ok
+        // let result = super.canPerformUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
+        let result = self.description == "View Controller 1"
+        print("\(self) \(__FUNCTION__) \(result)")
+        return result
     }
     
-    override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject!) -> UIViewController? {
-        println("I \(self) will be asked for vc-for-unwind")
-        let vc = super.viewControllerForUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        println("I \(self) was asked for vc-for-unwind, and I am returning \(vc!)")
-        return vc
+    override func dismissViewControllerAnimated(flag: Bool, completion: (() -> Void)?) {
+        print("\(self) \(__FUNCTION__)")
+        super.dismissViewControllerAnimated(flag, completion: completion)
     }
     
-    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
-        println("I \(self) will be asked for the segue")
-        let seg = super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
-        println("I \(self) was asked for the segue, and I am returning \(seg) \(seg.identifier)")
-        return seg
-    }
-    
-    @IBAction func doUnwind(seg:UIStoryboardSegue) {
-        println("I \(self) was asked to unwind \(seg) \(seg.identifier)")
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        println("I \(self) was asked to prepare for segue \(segue) \(segue.identifier)")
-    }
-    
-    override func respondsToSelector(aSelector: Selector) -> Bool {
-        let ok = super.respondsToSelector(aSelector)
-        if (NSStringFromSelector(aSelector) as NSString).rangeOfString("Unwind").length > 0 {
-            println("I \(self) was asked responds to selector \(aSelector), responding \(ok)")
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        let result = super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
+        if identifier == "unwind" {
+            print("\(self) \(__FUNCTION__) \(result)")
         }
-        return ok
+        return result
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "unwind" {
+            print("\(self) \(__FUNCTION__)")
+        }
     }
 
     

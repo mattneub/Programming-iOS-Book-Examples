@@ -22,7 +22,7 @@ class Pep: UIViewController {
     
     override func encodeRestorableStateWithCoder(coder: NSCoder) {
         super.encodeRestorableStateWithCoder(coder)
-        println("pep about to encode boy \(self.boy)")
+        print("pep about to encode boy \(self.boy)")
         coder.encodeObject(self.boy, forKey:"boy")
     }
 
@@ -44,7 +44,7 @@ class Pep: UIViewController {
 extension Pep : UIViewControllerRestoration {
     class func viewControllerWithRestorationIdentifierPath(ip: [AnyObject], coder: NSCoder) -> UIViewController? {
         let boy = coder.decodeObjectForKey("boy") as! String
-        println("pep decoded boy \(boy)")
-        return self(pepBoy: boy)
+        print("pep decoded boy \(boy)")
+        return self.init(pepBoy: boy)
     }
 }

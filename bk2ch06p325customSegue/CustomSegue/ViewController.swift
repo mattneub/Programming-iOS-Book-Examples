@@ -18,19 +18,23 @@ class ViewController2: UIViewController {
 // Xcode 7 lets you specify a custom segue class without saying Custom for the segue:
 // we are customizing a standard present modally segue
 
-class MyCoolSegue: UIStoryboardSegue, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
+class MyCoolSegue: UIStoryboardSegue {
     override func perform() {
         let dest = self.destinationViewController
         dest.modalPresentationStyle = .Custom
         dest.transitioningDelegate = self
         super.perform()
     }
+}
+extension MyCoolSegue: UIViewControllerTransitioningDelegate {
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
+}
+extension MyCoolSegue: UIViewControllerAnimatedTransitioning {
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.8
     }

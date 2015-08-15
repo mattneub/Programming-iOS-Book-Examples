@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uvP-Cf-jPa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uvP-Cf-jPa">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
     </dependencies>
     <scenes>
         <!--My Navigation Controller-->
         <scene sceneID="Ych-K1-DXb">
             <objects>
-                <navigationController definesPresentationContext="YES" id="uvP-Cf-jPa" customClass="MyNavigationController" customModule="ch19p645unwind" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="uvP-Cf-jPa" customClass="MyNavigationController" customModule="ch19p645unwindSimplified" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jvt-kq-DVo">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -23,7 +22,7 @@
         <!--Root-->
         <scene sceneID="bNS-Ua-fUr">
             <objects>
-                <viewController id="3aR-3h-i6M" customClass="ViewController" customModule="ch19p645unwind" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3aR-3h-i6M" customClass="ViewController" customModule="ch19p645unwindSimplified" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="N44-kJ-Qav"/>
                         <viewControllerLayoutGuide type="bottom" id="OWa-ue-pjN"/>
@@ -48,7 +47,7 @@
         <!--View Controller2-->
         <scene sceneID="i4d-RK-L76">
             <objects>
-                <viewController id="f6Q-NB-Vol" customClass="ViewController2" customModule="ch19p645unwind" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f6Q-NB-Vol" customClass="ViewController2" customModule="ch19p645unwindSimplified" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m6l-g5-HBR"/>
                         <viewControllerLayoutGuide type="bottom" id="ObD-1K-h1y"/>
@@ -79,7 +78,7 @@
         <!--View Controller3-->
         <scene sceneID="dfT-h2-SOI">
             <objects>
-                <viewController id="Pig-IK-yeC" customClass="ViewController3" customModule="ch19p645unwind" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Pig-IK-yeC" customClass="ViewController3" customModule="ch19p645unwindSimplified" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fhv-TH-fEL"/>
                         <viewControllerLayoutGuide type="bottom" id="59a-cW-9Pe"/>
@@ -108,9 +107,4 @@
             <point key="canvasLocation" x="1537" y="95"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

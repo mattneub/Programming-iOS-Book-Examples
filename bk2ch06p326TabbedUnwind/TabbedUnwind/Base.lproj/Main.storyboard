@@ -87,10 +87,10 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
-        <!--Extra View Controller-->
+        <!--Extra View Controller2-->
         <scene sceneID="bWa-k8-gHN">
             <objects>
-                <viewController id="BbI-1d-dy6" customClass="ExtraViewController" customModule="TabbedUnwind" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BbI-1d-dy6" customClass="ExtraViewController2" customModule="TabbedUnwind" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gDw-Eb-JOg"/>
                         <viewControllerLayoutGuide type="bottom" id="gK4-Ab-i1P"/>

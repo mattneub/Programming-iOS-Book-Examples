@@ -6,7 +6,7 @@ class ViewController : Base {
     var cur : Int = 0
     var swappers = [UIViewController]()
     
-    let which = 1 // 1 means automatic appearance forwarding, 2 means manual, try both
+    let which = 2 // 1 means automatic appearance forwarding, 2 means manual, try both
     // you will see that the messages to the child are the same either way,
     // thus proving we're doing manual forwarding correctly
     
@@ -21,15 +21,15 @@ class ViewController : Base {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.swappers.append(self.childViewControllers[0] as! UIViewController)
-        self.swappers.append(self.storyboard!.instantiateViewControllerWithIdentifier("child2") as! UIViewController)
+        self.swappers.append(self.childViewControllers[0])
+        self.swappers.append(self.storyboard!.instantiateViewControllerWithIdentifier("child2"))
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if which == 2 {
-            println("Forwarding manually!")
-            let child = self.swappers[self.cur] as UIViewController
+            print("Forwarding manually!")
+            let child = self.swappers[self.cur] 
             if child.isViewLoaded() && child.view.superview != nil {
                 child.beginAppearanceTransition(true, animated: true)
             }
@@ -39,7 +39,7 @@ class ViewController : Base {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if which == 2 {
-            let child = self.swappers[self.cur] as UIViewController
+            let child = self.swappers[self.cur] 
             if child.isViewLoaded() && child.view.superview != nil {
                 child.endAppearanceTransition()
             }
@@ -49,7 +49,7 @@ class ViewController : Base {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         if which == 2 {
-            let child = self.swappers[self.cur] as UIViewController
+            let child = self.swappers[self.cur] 
             if child.isViewLoaded() && child.view.superview != nil {
                 child.beginAppearanceTransition(false, animated: true)
             }
@@ -59,7 +59,7 @@ class ViewController : Base {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         if which == 2 {
-            let child = self.swappers[self.cur] as UIViewController
+            let child = self.swappers[self.cur] 
             if child.isViewLoaded() && child.view.superview != nil {
                 child.endAppearanceTransition()
             }
@@ -73,13 +73,13 @@ class ViewController : Base {
     
 On startup we expect to see (ignoring parent messages):
 
-<ChildViewController1: 0x79180d50> willMoveToParentViewController <ViewController: 0x79179420>
-<ChildViewController1: 0x79180d50> didMoveToParentViewController <ViewController: 0x79179420>
-<ChildViewController1: 0x79180d50> viewWillAppear
-<ChildViewController1: 0x79180d50> updateViewConstraints()
-<ChildViewController1: 0x79180d50> viewWillLayoutSubviews()
-<ChildViewController1: 0x79180d50> viewDidLayoutSubviews()
-<ChildViewController1: 0x79180d50> viewDidAppear
+    ChildViewController1 willMoveToParentViewController ViewController
+    ChildViewController1 didMoveToParentViewController ViewController
+    ChildViewController1 viewWillAppear
+    ChildViewController1 updateViewConstraints()
+    ChildViewController1 viewWillLayoutSubviews()
+    ChildViewController1 viewDidLayoutSubviews()
+    ChildViewController1 viewDidAppear
     
 */
     
@@ -88,17 +88,17 @@ On startup we expect to see (ignoring parent messages):
 
 On flip we expect to see (ignoring parent messages):
 
-<ChildViewController2: 0x79183f80> willMoveToParentViewController <ViewController: 0x79179420>
-<ChildViewController1: 0x79180d50> willMoveToParentViewController nil
-<ChildViewController1: 0x79180d50> viewWillDisappear
-<ChildViewController2: 0x79183f80> viewWillAppear
-<ChildViewController2: 0x79183f80> updateViewConstraints()
-<ChildViewController2: 0x79183f80> viewWillLayoutSubviews()
-<ChildViewController2: 0x79183f80> viewDidLayoutSubviews()
-<ChildViewController2: 0x79183f80> viewDidAppear
-<ChildViewController1: 0x79180d50> viewDidDisappear
-<ChildViewController2: 0x79183f80> didMoveToParentViewController <ViewController: 0x79179420>
-<ChildViewController1: 0x79180d50> didMoveToParentViewController nil
+    ChildViewController2 willMoveToParentViewController ViewController
+    ChildViewController1 willMoveToParentViewController nil
+    ChildViewController1 viewWillDisappear
+    ChildViewController2 viewWillAppear
+    ChildViewController2 updateViewConstraints()
+    ChildViewController2 viewWillLayoutSubviews()
+    ChildViewController2 viewDidLayoutSubviews()
+    ChildViewController2 viewDidAppear
+    ChildViewController1 viewDidDisappear
+    ChildViewController2 didMoveToParentViewController ViewController
+    ChildViewController1 didMoveToParentViewController nil
 
 */
 
@@ -161,17 +161,19 @@ On flip we expect to see (ignoring parent messages):
 Another interesting set of messages is on rotation:
     
 NB The child is messaged on the first two _because_ the parent calls super
-    Thus these, by calling super or not, are the iOS 8 version
+    Thus these, by calling super or not, are the equivalent
     of shouldAutomaticallyForwardRotationMethods and then forwarding or not
     
-<ViewController: 0x7b786570> willTransitionToTraitCollection(_:withTransitionCoordinator:)
-<ChildViewController1: 0x7b78c880> willTransitionToTraitCollection(_:withTransitionCoordinator:)
-<ViewController: 0x7b786570> viewWillTransitionToSize(_:withTransitionCoordinator:)
-<ChildViewController1: 0x7b78c880> viewWillTransitionToSize(_:withTransitionCoordinator:)
-[and also]
-<ViewController: 0x7b786570> viewWillLayoutSubviews()
-<ViewController: 0x7b786570> updateViewConstraints()
-<ViewController: 0x7b786570> viewDidLayoutSubviews()
+    ViewController willTransitionToTraitCollection(_:withTransitionCoordinator:)
+    ChildViewController1 willTransitionToTraitCollection(_:withTransitionCoordinator:)
+    ViewController viewWillTransitionToSize(_:withTransitionCoordinator:)
+    ChildViewController1 viewWillTransitionToSize(_:withTransitionCoordinator:)
+    
+    ViewController updateViewConstraints()
+    ViewController viewWillLayoutSubviews()
+    ViewController viewDidLayoutSubviews()
+    
+    // not getting these, though my notes say we used to:
 <ChildViewController1: 0x7b78c880> viewWillLayoutSubviews()
 <ChildViewController1: 0x7b78c880> viewDidLayoutSubviews()
     

@@ -22,7 +22,7 @@ class Pep: UIViewController {
     
     override func encodeRestorableStateWithCoder(coder: NSCoder) {
         // super.encodeRestorableStateWithCoder(coder)
-        println("pep about to encode boy \(self.boy)")
+        print("pep about to encode boy \(self.boy)")
         coder.encodeObject(self.boy, forKey:"boy")
     }
     
@@ -31,7 +31,7 @@ class Pep: UIViewController {
     override func decodeRestorableStateWithCoder(coder: NSCoder) {
         // super.decodeRestorableStateWithCoder(coder)
         let boy : AnyObject? = coder.decodeObjectForKey("boy")
-        println("pep about to decode boy \(boy)")
+        print("pep about to decode boy \(boy)")
         if let boy = boy as? String {
             self.boy = boy
         }

@@ -12,23 +12,6 @@ class ViewController: UIViewController {
     // _all_ parents along the way get a crack at this; thus each one gets an incremental `unwindForSegue` to mediate among his children
     // (the second parameter, "subsequentVC", is one of its children, not necessarily the final destination)
     
-
-    @IBAction func unwind(segue:UIStoryboardSegue!) {
-        print("view controller unwind")
-    }
-    
-    override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
-        let result = super.canPerformUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
-        
-        print("view controller can perform returns \(result)")
-        return result
-    }
-    
-    override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
-        print("view controller told to unwind for segue")
-        super.unwindForSegue(unwindSegue, towardsViewController:subsequentVC)
-    }
-    
     // --> viewControllerForUnwindSegueAction deprecated
     // --> segueForUnwindingToViewController deprecated
     // replacements are:
@@ -39,16 +22,53 @@ class ViewController: UIViewController {
     // return a list of its own children _except_ for that one (we can't segue to it, it contains the source)
     // The notion of the source relies on a new value class, UIStoryboardUnwindSegueSource
     // lets you get sender, sourceViewController, unwindAction
-
     
-    override func allowedChildViewControllersForUnwindingFromSource(source: UIStoryboardUnwindSegueSource) -> [UIViewController] {
-        print("view controller allowed child vcs called...")
-        let vcs = super.allowedChildViewControllersForUnwindingFromSource(source)
-        print("view controller the source was \(source.sourceViewController) sent by \(source.sender)")
-        print("view controller returns \(vcs) from allowed child vcs")
-        return vcs
+    // This particular example is kind of pointless now,
+    // because `dismiss` is sent by the runtime and that's all it takes to do this particular unwind
+
+
+    @IBAction func unwind(segue:UIStoryboardSegue!) {
+        print("view controller unwind")
     }
     
+    override func allowedChildViewControllersForUnwindingFromSource(source: UIStoryboardUnwindSegueSource) -> [UIViewController] {
+        let result = super.allowedChildViewControllersForUnwindingFromSource(source)
+        print("\(self.dynamicType) \(__FUNCTION__) \(result)")
+        return result
+    }
+    
+    override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+        print("\(self.dynamicType) \(__FUNCTION__) \(subsequentVC)")
+        super.unwindForSegue(unwindSegue, towardsViewController: subsequentVC)
+    }
+    
+    override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
+        let result = super.canPerformUnwindSegueAction(action, fromViewController: fromViewController, withSender: sender)
+        print("\(self.dynamicType) \(__FUNCTION__) \(result)")
+        return result
+    }
+    
+    override func dismissViewControllerAnimated(flag: Bool, completion: (() -> Void)?) {
+        print("\(self.dynamicType) \(__FUNCTION__)")
+        super.dismissViewControllerAnimated(flag, completion: completion)
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        let result = super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
+        if identifier == "unwind" {
+            print("\(self.dynamicType) \(__FUNCTION__) \(result)")
+        }
+        return result
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "unwind" {
+            print("\(self.dynamicType) \(__FUNCTION__)")
+        }
+    }
+    
+
+        
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         // from later in the chapter: comment out to prevent forwarding
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
