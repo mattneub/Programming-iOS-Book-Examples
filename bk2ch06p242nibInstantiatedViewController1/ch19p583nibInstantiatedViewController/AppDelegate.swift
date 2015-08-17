@@ -10,10 +10,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow()
         
-        let arr = UINib(
-            nibName: "Main", bundle: nil).instantiateWithOwner(
-                nil, options: nil) as! [UIViewController]
-        self.window!.rootViewController = arr[0]
+        let arr = UINib(nibName: "Main", bundle: nil)
+            .instantiateWithOwner(nil, options: nil)
+        self.window!.rootViewController = arr[0] as? UIViewController
         
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
