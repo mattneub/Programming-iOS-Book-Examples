@@ -9,21 +9,23 @@ class ViewController : UIViewController, UIScrollViewDelegate {
         
         let sv = UIScrollView()
         sv.backgroundColor = UIColor.whiteColor()
-        sv.setTranslatesAutoresizingMaskIntoConstraints(false)
+        sv.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sv)
-        self.view.addConstraints(
+        var con = [NSLayoutConstraint]()
+        con.extend(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "H:|[sv]|",
-                options:nil, metrics:nil,
+                options:[], metrics:nil,
                 views:["sv":sv]))
-        self.view.addConstraints(
+        con.extend(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "V:|[sv]|",
-                options:nil, metrics:nil,
+                options:[], metrics:nil,
                 views:["sv":sv]))
         
         let v = UIView() // content view
         sv.addSubview(v)
+        NSLayoutConstraint.activateConstraints(con)
 
         var w : CGFloat = 0
         var y : CGFloat = 10
@@ -57,12 +59,12 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     /*
     
     func scrollViewDidZoom(scrollView: UIScrollView) {
-        println(scrollView.bounds.size) // this is constant
-        println(scrollView.contentSize) // this is changing
+        print(scrollView.bounds.size) // this is constant
+        print(scrollView.contentSize) // this is changing
         let v = self.viewForZoomingInScrollView(scrollView)!
-        println(v.bounds.size) // this is constant
-        println(v.frame.size) // this is changing (and here it matches the content size)
-        println()
+        print(v.bounds.size) // this is constant
+        print(v.frame.size) // this is changing (and here it matches the content size)
+        print()
     }
 
 */

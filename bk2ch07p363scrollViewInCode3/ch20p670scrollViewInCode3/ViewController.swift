@@ -13,29 +13,31 @@ func delay(delay:Double, closure:()->()) {
 
 class ViewController : UIViewController {
     
-    
+    let which = 1
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let sv = UIScrollView()
         sv.backgroundColor = UIColor.whiteColor()
-        sv.setTranslatesAutoresizingMaskIntoConstraints(false)
+        sv.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sv)
-        self.view.addConstraints(
+        var con = [NSLayoutConstraint]()
+
+        con.extend(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "H:|[sv]|",
-                options:nil, metrics:nil,
+                options:[], metrics:nil,
                 views:["sv":sv]))
-        self.view.addConstraints(
+        con.extend(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "V:|[sv]|",
-                options:nil, metrics:nil,
+                options:[], metrics:nil,
                 views:["sv":sv]))
         
         let v = UIView() // content view
         sv.addSubview(v)
         
-        let which = 1
         switch which {
         case 1:
             
@@ -55,6 +57,7 @@ class ViewController : UIViewController {
             // set content view frame and content size explicitly
             v.frame = CGRectMake(0,0,0,y)
             sv.contentSize = v.frame.size
+            NSLayoutConstraint.activateConstraints(con)
             
         case 2:
             
@@ -73,14 +76,16 @@ class ViewController : UIViewController {
             
             // set content view width, height, and frame-to-superview constraints
             // content size is calculated for us
-            v.setTranslatesAutoresizingMaskIntoConstraints(false)
-            sv.addConstraints(
+            v.translatesAutoresizingMaskIntoConstraints = false
+            con.extend(
                 NSLayoutConstraint.constraintsWithVisualFormat("V:|[v(y)]|",
-                    options:nil, metrics:["y":y], views:["v":v]))
-            sv.addConstraints(
+                    options:[], metrics:["y":y], views:["v":v]))
+            con.extend(
                 NSLayoutConstraint.constraintsWithVisualFormat("H:|[v(0)]|",
-                    options:nil, metrics:nil, views:["v":v]))
-                        
+                    options:[], metrics:nil, views:["v":v]))
+            NSLayoutConstraint.activateConstraints(con)
+
+            
         case 3:
             // content view uses explicit constraints
             // subviews use explicit constraints
@@ -89,48 +94,50 @@ class ViewController : UIViewController {
             for i in 0 ..< 30 {
                 let lab = UILabel()
                 // lab.backgroundColor = UIColor.redColor()
-                lab.setTranslatesAutoresizingMaskIntoConstraints(false)
+                lab.translatesAutoresizingMaskIntoConstraints = false
                 lab.text = "This is label \(i+1)"
                 v.addSubview(lab) // *
-                v.addConstraints( // *
+                con.extend( // *
                     NSLayoutConstraint.constraintsWithVisualFormat(
                         "H:|-(10)-[lab]",
-                        options:nil, metrics:nil,
+                        options:[], metrics:nil,
                         views:["lab":lab]))
                 if previousLab == nil { // first one, pin to top
-                    v.addConstraints( // *
+                    con.extend( // *
                         NSLayoutConstraint.constraintsWithVisualFormat(
                             "V:|-(10)-[lab]",
-                            options:nil, metrics:nil,
+                            options:[], metrics:nil,
                             views:["lab":lab]))
                 } else { // all others, pin to previous
-                    v.addConstraints( // *
+                    con.extend( // *
                         NSLayoutConstraint.constraintsWithVisualFormat(
                             "V:[prev]-(10)-[lab]",
-                            options:nil, metrics:nil,
+                            options:[], metrics:nil,
                             views:["lab":lab, "prev":previousLab!]))
                 }
                 previousLab = lab
             }
             
             // last one, pin to bottom, this dictates content size height!
-            v.addConstraints( // *
+            con.extend( // *
                 NSLayoutConstraint.constraintsWithVisualFormat(
                     "V:[lab]-(10)-|",
-                    options:nil, metrics:nil,
+                    options:[], metrics:nil,
                     views:["lab":previousLab!]))
 
             
             // set content view width and frame-to-superview constraints
             // (height comes from subview constraints)
             // content size is calculated for us
-            v.setTranslatesAutoresizingMaskIntoConstraints(false)
-            sv.addConstraints(
+            v.translatesAutoresizingMaskIntoConstraints = false
+            con.extend(
                 NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|",
-                    options:nil, metrics:nil, views:["v":v])) // *
-            sv.addConstraints(
+                    options:[], metrics:nil, views:["v":v])) // *
+            con.extend(
                 NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|",
-                    options:nil, metrics:nil, views:["v":v]))
+                    options:[], metrics:nil, views:["v":v]))
+            NSLayoutConstraint.activateConstraints(con)
+
             
         case 4:
             // content view doesn't use explicit constraints
@@ -140,40 +147,41 @@ class ViewController : UIViewController {
             for i in 0 ..< 30 {
                 let lab = UILabel()
                 // lab.backgroundColor = UIColor.redColor()
-                lab.setTranslatesAutoresizingMaskIntoConstraints(false)
+                lab.translatesAutoresizingMaskIntoConstraints = false
                 lab.text = "This is label \(i+1)"
                 v.addSubview(lab) // *
-                v.addConstraints( // *
+                con.extend( // *
                     NSLayoutConstraint.constraintsWithVisualFormat(
                         "H:|-(10)-[lab]",
-                        options:nil, metrics:nil,
+                        options:[], metrics:nil,
                         views:["lab":lab]))
                 if previousLab == nil { // first one, pin to top
-                    v.addConstraints( // *
+                    con.extend( // *
                         NSLayoutConstraint.constraintsWithVisualFormat(
                             "V:|-(10)-[lab]",
-                            options:nil, metrics:nil,
+                            options:[], metrics:nil,
                             views:["lab":lab]))
                 } else { // all others, pin to previous
-                    v.addConstraints( // *
+                    con.extend( // *
                         NSLayoutConstraint.constraintsWithVisualFormat(
                             "V:[prev]-(10)-[lab]",
-                            options:nil, metrics:nil,
+                            options:[], metrics:nil,
                             views:["lab":lab, "prev":previousLab!]))
                 }
                 previousLab = lab
             }
             
             // last one, pin to bottom, this dictates content size height!
-            v.addConstraints( // *
+            con.extend( // *
                 NSLayoutConstraint.constraintsWithVisualFormat(
                     "V:[lab]-(10)-|",
-                    options:nil, metrics:nil,
+                    options:[], metrics:nil,
                     views:["lab":previousLab!]))
+            NSLayoutConstraint.activateConstraints(con)
             
             // autolayout helps us learn the consequences of those constraints
-            let minsz = v.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
             
+            let minsz = v.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
             // set content view frame and content size explicitly
             v.frame = CGRectMake(0,0,0,minsz.height)
             sv.contentSize = v.frame.size
@@ -182,7 +190,7 @@ class ViewController : UIViewController {
         }
         
         delay(2) {
-            println(sv.contentSize)
+            print(sv.contentSize)
         }
 
     }

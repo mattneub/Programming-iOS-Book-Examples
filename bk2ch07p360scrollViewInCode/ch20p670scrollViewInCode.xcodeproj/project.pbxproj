@@ -7,32 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		327154911B83A42C004CA4A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 327154901B83A42C004CA4A2 /* LaunchScreen.storyboard */; };
+		327154931B83A445004CA4A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327154921B83A445004CA4A2 /* AppDelegate.swift */; };
 		32A41C4C197D23690039206F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A41C4B197D23690039206F /* ViewController.swift */; };
-		C957330D17DE1152005E6B5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C957330C17DE1152005E6B5A /* Foundation.framework */; };
-		C957330F17DE1152005E6B5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C957330E17DE1152005E6B5A /* CoreGraphics.framework */; };
-		C957331117DE1152005E6B5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C957331017DE1152005E6B5A /* UIKit.framework */; };
-		C957331717DE1152005E6B5A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C957331517DE1152005E6B5A /* InfoPlist.strings */; };
-		C957331917DE1152005E6B5A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C957331817DE1152005E6B5A /* main.m */; };
-		C957331D17DE1152005E6B5A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C957331C17DE1152005E6B5A /* AppDelegate.m */; };
 		C957332017DE1152005E6B5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C957331E17DE1152005E6B5A /* Main.storyboard */; };
-		C957332517DE1152005E6B5A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C957332417DE1152005E6B5A /* Images.xcassets */; };
+		C957332517DE1152005E6B5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C957332417DE1152005E6B5A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		327154901B83A42C004CA4A2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		327154921B83A445004CA4A2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32A41C4B197D23690039206F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C957330917DE1152005E6B5A /* ch20p670scrollViewInCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p670scrollViewInCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C957330C17DE1152005E6B5A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C957330E17DE1152005E6B5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C957331017DE1152005E6B5A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C957331417DE1152005E6B5A /* ch20p670scrollViewInCode-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch20p670scrollViewInCode-Info.plist"; sourceTree = "<group>"; };
-		C957331617DE1152005E6B5A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C957331817DE1152005E6B5A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C957331A17DE1152005E6B5A /* ch20p670scrollViewInCode-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch20p670scrollViewInCode-Prefix.pch"; sourceTree = "<group>"; };
-		C957331B17DE1152005E6B5A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C957331C17DE1152005E6B5A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C957331F17DE1152005E6B5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C957332417DE1152005E6B5A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C957332B17DE1152005E6B5A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C957332417DE1152005E6B5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,9 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C957330F17DE1152005E6B5A /* CoreGraphics.framework in Frameworks */,
-				C957331117DE1152005E6B5A /* UIKit.framework in Frameworks */,
-				C957330D17DE1152005E6B5A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				C957331217DE1152005E6B5A /* ch20p670scrollViewInCode */,
-				C957330B17DE1152005E6B5A /* Frameworks */,
 				C957330A17DE1152005E6B5A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,40 +51,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C957330B17DE1152005E6B5A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C957330C17DE1152005E6B5A /* Foundation.framework */,
-				C957330E17DE1152005E6B5A /* CoreGraphics.framework */,
-				C957331017DE1152005E6B5A /* UIKit.framework */,
-				C957332B17DE1152005E6B5A /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C957331217DE1152005E6B5A /* ch20p670scrollViewInCode */ = {
 			isa = PBXGroup;
 			children = (
-				C957331B17DE1152005E6B5A /* AppDelegate.h */,
-				C957331C17DE1152005E6B5A /* AppDelegate.m */,
 				C957331E17DE1152005E6B5A /* Main.storyboard */,
+				327154921B83A445004CA4A2 /* AppDelegate.swift */,
 				32A41C4B197D23690039206F /* ViewController.swift */,
-				C957332417DE1152005E6B5A /* Images.xcassets */,
-				C957331317DE1152005E6B5A /* Supporting Files */,
+				327154901B83A42C004CA4A2 /* LaunchScreen.storyboard */,
+				C957332417DE1152005E6B5A /* Assets.xcassets */,
+				C957331417DE1152005E6B5A /* ch20p670scrollViewInCode-Info.plist */,
 			);
 			name = ch20p670scrollViewInCode;
 			path = ch20p570scrollViewInCode;
-			sourceTree = "<group>";
-		};
-		C957331317DE1152005E6B5A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C957331417DE1152005E6B5A /* ch20p670scrollViewInCode-Info.plist */,
-				C957331517DE1152005E6B5A /* InfoPlist.strings */,
-				C957331817DE1152005E6B5A /* main.m */,
-				C957331A17DE1152005E6B5A /* ch20p670scrollViewInCode-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +91,7 @@
 		C957330117DE1152005E6B5A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -154,8 +118,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C957332517DE1152005E6B5A /* Images.xcassets in Resources */,
-				C957331717DE1152005E6B5A /* InfoPlist.strings in Resources */,
+				327154911B83A42C004CA4A2 /* LaunchScreen.storyboard in Resources */,
+				C957332517DE1152005E6B5A /* Assets.xcassets in Resources */,
 				C957332017DE1152005E6B5A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,23 +131,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C957331D17DE1152005E6B5A /* AppDelegate.m in Sources */,
+				327154931B83A445004CA4A2 /* AppDelegate.swift in Sources */,
 				32A41C4C197D23690039206F /* ViewController.swift in Sources */,
-				C957331917DE1152005E6B5A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C957331517DE1152005E6B5A /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C957331617DE1152005E6B5A /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C957331E17DE1152005E6B5A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -226,7 +181,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -257,7 +212,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -267,7 +222,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p570scrollViewInCode/ch20p670scrollViewInCode-Prefix.pch";
@@ -284,7 +238,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p570scrollViewInCode/ch20p670scrollViewInCode-Prefix.pch";

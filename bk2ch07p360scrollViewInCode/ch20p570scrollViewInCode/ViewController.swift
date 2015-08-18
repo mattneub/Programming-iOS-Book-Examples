@@ -16,7 +16,7 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         
         let sv = UIScrollView(frame: self.view.bounds)
-        sv.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+        sv.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         self.view.addSubview(sv)
         sv.backgroundColor = UIColor.whiteColor()
         var y : CGFloat = 10
@@ -38,10 +38,10 @@ class ViewController : UIViewController {
         sz.height = y
         sv.contentSize = sz // This is the crucial line
         
-        println(sv.contentSize)
+        print(sv.contentSize)
         
         delay(2) {
-            println(sv.contentSize)
+            print(sv.contentSize)
         }
         
         

@@ -7,16 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320FE9511B83B95B00EEAB01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320FE9501B83B95B00EEAB01 /* AppDelegate.swift */; };
 		3224BB9019D5EE48000C0030 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3224BB8F19D5EE48000C0030 /* Launch Screen.xib */; };
 		32692F97197E9DFF001677C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32692F96197E9DFF001677C1 /* ViewController.swift */; };
-		C9EA92A517DF67BD00C71EDE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA92A417DF67BD00C71EDE /* Foundation.framework */; };
-		C9EA92A717DF67BD00C71EDE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA92A617DF67BD00C71EDE /* CoreGraphics.framework */; };
-		C9EA92A917DF67BD00C71EDE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EA92A817DF67BD00C71EDE /* UIKit.framework */; };
-		C9EA92AF17DF67BD00C71EDE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9EA92AD17DF67BD00C71EDE /* InfoPlist.strings */; };
-		C9EA92B117DF67BD00C71EDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EA92B017DF67BD00C71EDE /* main.m */; };
-		C9EA92B517DF67BD00C71EDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EA92B417DF67BD00C71EDE /* AppDelegate.m */; };
 		C9EA92B817DF67BD00C71EDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9EA92B617DF67BD00C71EDE /* Main.storyboard */; };
-		C9EA92BD17DF67BD00C71EDE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9EA92BC17DF67BD00C71EDE /* Images.xcassets */; };
+		C9EA92BD17DF67BD00C71EDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9EA92BC17DF67BD00C71EDE /* Assets.xcassets */; };
 		C9EA930A17DF7FD800C71EDE /* CuriousFrog_500_3_0.png in Resources */ = {isa = PBXBuildFile; fileRef = C9EA930117DF7FD800C71EDE /* CuriousFrog_500_3_0.png */; };
 		C9EA930B17DF7FD800C71EDE /* CuriousFrog_500_3_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C9EA930217DF7FD800C71EDE /* CuriousFrog_500_3_1.png */; };
 		C9EA930C17DF7FD800C71EDE /* CuriousFrog_500_3_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C9EA930317DF7FD800C71EDE /* CuriousFrog_500_3_2.png */; };
@@ -29,21 +24,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		320FE9501B83B95B00EEAB01 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3224BB8F19D5EE48000C0030 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		32692F96197E9DFF001677C1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9EA92A117DF67BD00C71EDE /* ch20p677scrollWithTiling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p677scrollWithTiling.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9EA92A417DF67BD00C71EDE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9EA92A617DF67BD00C71EDE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C9EA92A817DF67BD00C71EDE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9EA92AC17DF67BD00C71EDE /* ch20p677scrollWithTiling-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch20p677scrollWithTiling-Info.plist"; sourceTree = "<group>"; };
-		C9EA92AE17DF67BD00C71EDE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9EA92B017DF67BD00C71EDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9EA92B217DF67BD00C71EDE /* ch20p677scrollWithTiling-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch20p677scrollWithTiling-Prefix.pch"; sourceTree = "<group>"; };
-		C9EA92B317DF67BD00C71EDE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C9EA92B417DF67BD00C71EDE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9EA92B717DF67BD00C71EDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9EA92BC17DF67BD00C71EDE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9EA92C317DF67BD00C71EDE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C9EA92BC17DF67BD00C71EDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9EA930117DF7FD800C71EDE /* CuriousFrog_500_3_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CuriousFrog_500_3_0.png; sourceTree = "<group>"; };
 		C9EA930217DF7FD800C71EDE /* CuriousFrog_500_3_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CuriousFrog_500_3_1.png; sourceTree = "<group>"; };
 		C9EA930317DF7FD800C71EDE /* CuriousFrog_500_3_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CuriousFrog_500_3_2.png; sourceTree = "<group>"; };
@@ -60,9 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9EA92A717DF67BD00C71EDE /* CoreGraphics.framework in Frameworks */,
-				C9EA92A917DF67BD00C71EDE /* UIKit.framework in Frameworks */,
-				C9EA92A517DF67BD00C71EDE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,7 +57,6 @@
 			isa = PBXGroup;
 			children = (
 				C9EA92AA17DF67BD00C71EDE /* ch20p677scrollWithTiling */,
-				C9EA92A317DF67BD00C71EDE /* Frameworks */,
 				C9EA92A217DF67BD00C71EDE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,41 +69,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9EA92A317DF67BD00C71EDE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9EA92A417DF67BD00C71EDE /* Foundation.framework */,
-				C9EA92A617DF67BD00C71EDE /* CoreGraphics.framework */,
-				C9EA92A817DF67BD00C71EDE /* UIKit.framework */,
-				C9EA92C317DF67BD00C71EDE /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C9EA92AA17DF67BD00C71EDE /* ch20p677scrollWithTiling */ = {
 			isa = PBXGroup;
 			children = (
-				C9EA92B317DF67BD00C71EDE /* AppDelegate.h */,
-				C9EA92B417DF67BD00C71EDE /* AppDelegate.m */,
 				C9EA92B617DF67BD00C71EDE /* Main.storyboard */,
 				32692F96197E9DFF001677C1 /* ViewController.swift */,
+				320FE9501B83B95B00EEAB01 /* AppDelegate.swift */,
 				3224BB8F19D5EE48000C0030 /* Launch Screen.xib */,
 				C9EA930017DF6A4700C71EDE /* pix */,
-				C9EA92BC17DF67BD00C71EDE /* Images.xcassets */,
-				C9EA92AB17DF67BD00C71EDE /* Supporting Files */,
+				C9EA92BC17DF67BD00C71EDE /* Assets.xcassets */,
+				C9EA92AC17DF67BD00C71EDE /* ch20p677scrollWithTiling-Info.plist */,
 			);
 			path = ch20p677scrollWithTiling;
-			sourceTree = "<group>";
-		};
-		C9EA92AB17DF67BD00C71EDE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C9EA92AC17DF67BD00C71EDE /* ch20p677scrollWithTiling-Info.plist */,
-				C9EA92AD17DF67BD00C71EDE /* InfoPlist.strings */,
-				C9EA92B017DF67BD00C71EDE /* main.m */,
-				C9EA92B217DF67BD00C71EDE /* ch20p677scrollWithTiling-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		C9EA930017DF6A4700C71EDE /* pix */ = {
@@ -165,6 +125,7 @@
 		C9EA929917DF67BD00C71EDE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -193,10 +154,9 @@
 			files = (
 				C9EA930D17DF7FD800C71EDE /* CuriousFrog_500_4_0.png in Resources */,
 				C9EA930E17DF7FD800C71EDE /* CuriousFrog_500_4_1.png in Resources */,
-				C9EA92BD17DF67BD00C71EDE /* Images.xcassets in Resources */,
+				C9EA92BD17DF67BD00C71EDE /* Assets.xcassets in Resources */,
 				C9EA930F17DF7FD800C71EDE /* CuriousFrog_500_4_2.png in Resources */,
 				C9EA930B17DF7FD800C71EDE /* CuriousFrog_500_3_1.png in Resources */,
-				C9EA92AF17DF67BD00C71EDE /* InfoPlist.strings in Resources */,
 				C9EA931117DF7FD800C71EDE /* CuriousFrog_500_5_1.png in Resources */,
 				C9EA931217DF7FD800C71EDE /* CuriousFrog_500_5_2.png in Resources */,
 				C9EA92B817DF67BD00C71EDE /* Main.storyboard in Resources */,
@@ -214,23 +174,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320FE9511B83B95B00EEAB01 /* AppDelegate.swift in Sources */,
 				32692F97197E9DFF001677C1 /* ViewController.swift in Sources */,
-				C9EA92B517DF67BD00C71EDE /* AppDelegate.m in Sources */,
-				C9EA92B117DF67BD00C71EDE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C9EA92AD17DF67BD00C71EDE /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9EA92AE17DF67BD00C71EDE /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C9EA92B617DF67BD00C71EDE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -273,7 +224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -304,7 +255,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

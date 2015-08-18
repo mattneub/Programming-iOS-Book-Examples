@@ -12,7 +12,7 @@ class ViewController : UIViewController {
     override func viewDidLayoutSubviews() {
         if !didSetup {
             didSetup = true
-            self.sv.contentSize = (self.sv.subviews[0] as! UIView).bounds.size
+            self.sv.contentSize = self.sv.subviews[0].bounds.size
         }
     }
     

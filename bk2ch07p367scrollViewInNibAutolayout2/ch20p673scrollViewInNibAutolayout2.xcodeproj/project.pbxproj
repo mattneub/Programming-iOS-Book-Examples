@@ -8,31 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		321B7AA4197D7BBE00AAB151 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321B7AA3197D7BBE00AAB151 /* ViewController.swift */; };
-		C987560B17DE4FE200578DCB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C987560A17DE4FE200578DCB /* Foundation.framework */; };
-		C987560D17DE4FE200578DCB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C987560C17DE4FE200578DCB /* CoreGraphics.framework */; };
-		C987560F17DE4FE200578DCB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C987560E17DE4FE200578DCB /* UIKit.framework */; };
-		C987561517DE4FE200578DCB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C987561317DE4FE200578DCB /* InfoPlist.strings */; };
-		C987561717DE4FE200578DCB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C987561617DE4FE200578DCB /* main.m */; };
-		C987561B17DE4FE200578DCB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C987561A17DE4FE200578DCB /* AppDelegate.m */; };
+		322ACFBE1B83AEF70041EDF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 322ACFBD1B83AEF70041EDF3 /* LaunchScreen.storyboard */; };
+		322ACFC01B83AF040041EDF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322ACFBF1B83AF040041EDF3 /* AppDelegate.swift */; };
 		C987561E17DE4FE200578DCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C987561C17DE4FE200578DCB /* Main.storyboard */; };
-		C987562317DE4FE200578DCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C987562217DE4FE200578DCB /* Images.xcassets */; };
+		C987562317DE4FE200578DCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C987562217DE4FE200578DCB /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		321B7AA3197D7BBE00AAB151 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		322ACFBD1B83AEF70041EDF3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		322ACFBF1B83AF040041EDF3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C987560717DE4FE200578DCB /* ch20p673scrollViewInNibAutolayout2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch20p673scrollViewInNibAutolayout2.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C987560A17DE4FE200578DCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C987560C17DE4FE200578DCB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C987560E17DE4FE200578DCB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C987561217DE4FE200578DCB /* ch20p673scrollViewInNibAutolayout2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch20p673scrollViewInNibAutolayout2-Info.plist"; sourceTree = "<group>"; };
-		C987561417DE4FE200578DCB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C987561617DE4FE200578DCB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C987561817DE4FE200578DCB /* ch20p673scrollViewInNibAutolayout2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch20p673scrollViewInNibAutolayout2-Prefix.pch"; sourceTree = "<group>"; };
-		C987561917DE4FE200578DCB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C987561A17DE4FE200578DCB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C987561D17DE4FE200578DCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C987562217DE4FE200578DCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C987562917DE4FE200578DCB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C987562217DE4FE200578DCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,9 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C987560D17DE4FE200578DCB /* CoreGraphics.framework in Frameworks */,
-				C987560F17DE4FE200578DCB /* UIKit.framework in Frameworks */,
-				C987560B17DE4FE200578DCB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				C987561017DE4FE200578DCB /* ch20p673scrollViewInNib */,
-				C987560917DE4FE200578DCB /* Frameworks */,
 				C987560817DE4FE200578DCB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,39 +51,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C987560917DE4FE200578DCB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C987560A17DE4FE200578DCB /* Foundation.framework */,
-				C987560C17DE4FE200578DCB /* CoreGraphics.framework */,
-				C987560E17DE4FE200578DCB /* UIKit.framework */,
-				C987562917DE4FE200578DCB /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C987561017DE4FE200578DCB /* ch20p673scrollViewInNib */ = {
 			isa = PBXGroup;
 			children = (
-				C987561917DE4FE200578DCB /* AppDelegate.h */,
-				C987561A17DE4FE200578DCB /* AppDelegate.m */,
 				C987561C17DE4FE200578DCB /* Main.storyboard */,
 				321B7AA3197D7BBE00AAB151 /* ViewController.swift */,
-				C987562217DE4FE200578DCB /* Images.xcassets */,
-				C987561117DE4FE200578DCB /* Supporting Files */,
+				322ACFBF1B83AF040041EDF3 /* AppDelegate.swift */,
+				C987562217DE4FE200578DCB /* Assets.xcassets */,
+				322ACFBD1B83AEF70041EDF3 /* LaunchScreen.storyboard */,
+				C987561217DE4FE200578DCB /* ch20p673scrollViewInNibAutolayout2-Info.plist */,
 			);
 			path = ch20p673scrollViewInNib;
-			sourceTree = "<group>";
-		};
-		C987561117DE4FE200578DCB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C987561217DE4FE200578DCB /* ch20p673scrollViewInNibAutolayout2-Info.plist */,
-				C987561317DE4FE200578DCB /* InfoPlist.strings */,
-				C987561617DE4FE200578DCB /* main.m */,
-				C987561817DE4FE200578DCB /* ch20p673scrollViewInNibAutolayout2-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +90,7 @@
 		C98755FF17DE4FE200578DCB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -153,8 +117,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C987562317DE4FE200578DCB /* Images.xcassets in Resources */,
-				C987561517DE4FE200578DCB /* InfoPlist.strings in Resources */,
+				322ACFBE1B83AEF70041EDF3 /* LaunchScreen.storyboard in Resources */,
+				C987562317DE4FE200578DCB /* Assets.xcassets in Resources */,
 				C987561E17DE4FE200578DCB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,23 +130,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C987561B17DE4FE200578DCB /* AppDelegate.m in Sources */,
+				322ACFC01B83AF040041EDF3 /* AppDelegate.swift in Sources */,
 				321B7AA4197D7BBE00AAB151 /* ViewController.swift in Sources */,
-				C987561717DE4FE200578DCB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C987561317DE4FE200578DCB /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C987561417DE4FE200578DCB /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C987561C17DE4FE200578DCB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -225,7 +180,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -256,7 +211,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -266,7 +221,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p673scrollViewInNib/ch20p673scrollViewInNibAutolayout2-Prefix.pch";
@@ -282,7 +236,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch20p673scrollViewInNib/ch20p673scrollViewInNibAutolayout2-Prefix.pch";

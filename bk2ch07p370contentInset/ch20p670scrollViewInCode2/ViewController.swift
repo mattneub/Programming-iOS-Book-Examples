@@ -12,52 +12,54 @@ class ViewController : UIViewController {
         
         
         sv.backgroundColor = UIColor.whiteColor()
-        sv.setTranslatesAutoresizingMaskIntoConstraints(false)
+        sv.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sv)
-        self.view.addConstraints(
+        var con = [NSLayoutConstraint]()
+        con.extend(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "H:|[sv]|",
-                options:nil, metrics:nil,
+                options:[], metrics:nil,
                 views:["sv":sv]))
-        self.view.addConstraints(
+        con.extend(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "V:|[sv]|",
-                options:nil, metrics:nil,
+                options:[], metrics:nil,
                 views:["sv":sv]))
         var previousLab : UILabel? = nil
         for i in 0 ..< 30 {
             let lab = UILabel()
             // lab.backgroundColor = UIColor.redColor()
-            lab.setTranslatesAutoresizingMaskIntoConstraints(false)
+            lab.translatesAutoresizingMaskIntoConstraints = false
             lab.text = "This is label \(i+1)"
             sv.addSubview(lab)
-            sv.addConstraints(
+            con.extend(
                 NSLayoutConstraint.constraintsWithVisualFormat(
                     "H:|-(10)-[lab]",
-                    options:nil, metrics:nil,
+                    options:[], metrics:nil,
                     views:["lab":lab]))
             if previousLab == nil { // first one, pin to top
-                sv.addConstraints(
+                con.extend(
                     NSLayoutConstraint.constraintsWithVisualFormat(
                         "V:|-(10)-[lab]",
-                        options:nil, metrics:nil,
+                        options:[], metrics:nil,
                         views:["lab":lab]))
             } else { // all others, pin to previous
-                sv.addConstraints(
+                con.extend(
                     NSLayoutConstraint.constraintsWithVisualFormat(
                         "V:[prev]-(10)-[lab]",
-                        options:nil, metrics:nil,
+                        options:[], metrics:nil,
                         views:["lab":lab, "prev":previousLab!]))
             }
             previousLab = lab
         }
         
         // last one, pin to bottom, this dictates content size height!
-        sv.addConstraints(
+        con.extend(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "V:[lab]-(10)-|",
-                options:nil, metrics:nil,
+                options:[], metrics:nil,
                 views:["lab":previousLab!]))
+        NSLayoutConstraint.activateConstraints(con)
         
     }
 

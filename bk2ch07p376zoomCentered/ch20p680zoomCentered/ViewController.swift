@@ -29,12 +29,12 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     }
     
     
-    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView) {
+    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
         self.oldBounces = scrollView.bounces
         scrollView.bounces = false
     }
     
-    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView, atScale scale: CGFloat) {
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
         scrollView.bounces = self.oldBounces
     }
 
@@ -51,19 +51,20 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     // we can prevent this by setting animated: to false throughout
     // but it seems a pity to have to do that
     
+    let anim = true
     @IBAction func tapped(tap : UIGestureRecognizer) {
         let v = tap.view!
         let sv = v.superview as! UIScrollView
         if sv.zoomScale < 1 {
-            sv.setZoomScale(1, animated:true)
+            sv.setZoomScale(1, animated:anim)
             let pt = CGPointMake((v.bounds.width - sv.bounds.width)/2.0,0)
             sv.setContentOffset(pt, animated:false)
         }
         else if sv.zoomScale < sv.maximumZoomScale {
-            sv.setZoomScale(sv.maximumZoomScale, animated:true)
+            sv.setZoomScale(sv.maximumZoomScale, animated:anim)
         }
         else {
-            sv.setZoomScale(sv.minimumZoomScale, animated:true)
+            sv.setZoomScale(sv.minimumZoomScale, animated:anim)
         }
     }
 
@@ -74,7 +75,7 @@ class MyScrollView : UIScrollView {
     override func layoutSubviews() {
         // see WWDC 2010 video on this topic
         // comment this out and zoom the bird image smaller to see the difference
-        // println("layout")
+        // print("layout")
         super.layoutSubviews()
         if let v = self.delegate?.viewForZoomingInScrollView?(self) {
             let svw = self.bounds.width

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,13 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zP0-h3-1W8">
-                                <rect key="frame" x="20" y="66" width="280" height="155"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zP0-h3-1W8">
+                                <rect key="frame" x="16" y="66" width="288" height="155"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="155" id="DYf-Pc-Hoc"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="drh-bl-4Nr"/>
                                 </connections>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dbX-zv-7S5">
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dbX-zv-7S5">
                                 <rect key="frame" x="0.0" y="229" width="320" height="37"/>
                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="currentPageIndicatorTintColor" red="1" green="0.21931261690000001" blue="0.45882864099999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -32,6 +36,14 @@
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dbX-zv-7S5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="3mf-4l-2b8"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="zP0-h3-1W8" secondAttribute="leading" id="Xng-zz-Bkc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zP0-h3-1W8" secondAttribute="trailing" id="aVE-jy-ZLF"/>
+                            <constraint firstItem="dbX-zv-7S5" firstAttribute="top" secondItem="zP0-h3-1W8" secondAttribute="bottom" constant="8" id="ilB-b5-5Zg"/>
+                            <constraint firstItem="zP0-h3-1W8" firstAttribute="top" secondItem="q7A-KI-fj8" secondAttribute="bottom" constant="46" id="iob-ME-wuQ"/>
+                            <constraint firstAttribute="trailing" secondItem="dbX-zv-7S5" secondAttribute="trailing" id="sht-0v-XRR"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="pager" destination="dbX-zv-7S5" id="cb2-wH-kYf"/>
@@ -42,12 +54,4 @@
             </objects>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
-    </simulatedMetricsContainer>
 </document>
