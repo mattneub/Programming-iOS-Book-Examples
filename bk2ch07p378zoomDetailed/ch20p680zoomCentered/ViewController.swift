@@ -16,12 +16,12 @@ class ViewController : UIViewController, UIScrollViewDelegate {
         }
     }
     
-    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView) {
+    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
         self.oldBounces = scrollView.bounces
         scrollView.bounces = false
     }
     
-    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView, atScale scale: CGFloat) {
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
         scrollView.bounces = self.oldBounces
     }
 

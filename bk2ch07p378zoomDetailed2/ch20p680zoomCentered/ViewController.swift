@@ -22,14 +22,16 @@ class ViewController : UIViewController, UIScrollViewDelegate {
         }
     }
     
-    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView) {
+    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
         self.oldBounces = scrollView.bounces
         scrollView.bounces = false
     }
     
-    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView, atScale scale: CGFloat) {
-        scrollView.bounces = self.oldBounces
-        view.contentScaleFactor = scale * UIScreen.mainScreen().scale // *
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
+        if let view = view {
+            scrollView.bounces = self.oldBounces
+            view.contentScaleFactor = scale * UIScreen.mainScreen().scale // *
+        }
     }
 
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {

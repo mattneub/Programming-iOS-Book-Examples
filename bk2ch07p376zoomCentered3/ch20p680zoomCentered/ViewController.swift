@@ -15,20 +15,23 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     var didSetup = false
     var oldBounces = false
     
-    override func viewDidLayoutSubviews() {
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         if !self.didSetup {
             self.didSetup = true
-            self.sv.contentOffset = CGPointMake(40,0)
+            self.centerView() // unsure why, but without this we jump on first zoom
+            // doing it in ViewDidLayoutSubviews isn't good enough for some reason
         }
     }
     
     
-    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView) {
+    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
         self.oldBounces = scrollView.bounces
         scrollView.bounces = false
     }
     
-    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView, atScale scale: CGFloat) {
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
         scrollView.bounces = self.oldBounces
     }
     
@@ -77,6 +80,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
         else {
             sv.setZoomScale(sv.minimumZoomScale, animated:true)
         }
+        print(sv.contentOffset)
     }
 
 }
@@ -86,7 +90,7 @@ class MyTappableView : UIView {
         if let result = super.hitTest(point, withEvent:event) {
             return result
         }
-        for sub in self.subviews.reverse() as! [UIView] {
+        for sub in self.subviews.reverse() {
             let pt = self.convertPoint(point, toView:sub)
             if let result = sub.hitTest(pt, withEvent:event) {
                 return result

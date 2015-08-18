@@ -27,16 +27,17 @@ class ViewController : UIViewController, UIScrollViewDelegate {
             let v = self.viewForZoomingInScrollView(self.sv)!
             self.sv.contentSize = v.bounds.size
             self.sv.contentOffset = CGPointMake(40,0)
+            self.centerView()
         }
     }
     
     
-    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView) {
+    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
         self.oldBounces = scrollView.bounces
         scrollView.bounces = false
     }
     
-    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView, atScale scale: CGFloat) {
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
         scrollView.bounces = self.oldBounces
     }
     
@@ -94,7 +95,7 @@ class MyTappableView : UIView {
         if let result = super.hitTest(point, withEvent:event) {
             return result
         }
-        for sub in self.subviews.reverse() as! [UIView] {
+        for sub in self.subviews.reverse() {
             let pt = self.convertPoint(point, toView:sub)
             if let result = sub.hitTest(pt, withEvent:event) {
                 return result

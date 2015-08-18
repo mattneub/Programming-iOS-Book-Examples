@@ -19,25 +19,18 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.flag.setTranslatesAutoresizingMaskIntoConstraints(true) // tricky-wicky
+        self.flag.translatesAutoresizingMaskIntoConstraints = true // tricky-wicky
         
         self.sv.panGestureRecognizer.requireGestureRecognizerToFail(self.swipe) // *
         
         let iv = UIImageView(image:UIImage(named:"smiley.png"))
-        iv.setTranslatesAutoresizingMaskIntoConstraints(false)
+        iv.translatesAutoresizingMaskIntoConstraints = false
         self.sv.addSubview(iv)
         let sup = self.sv.superview!
-        sup.addConstraint(
-            NSLayoutConstraint(item:iv,
-                attribute:.Right,
-            relatedBy:.Equal,
-            toItem:sup, attribute:.Right,
-            multiplier:1, constant:-5))
-        sup.addConstraint(
-            NSLayoutConstraint(item:iv, attribute:.Top,
-            relatedBy:.Equal,
-            toItem:sup, attribute:.Top,
-            multiplier:1, constant:25))
+        NSLayoutConstraint.activateConstraints([
+            iv.rightAnchor.constraintEqualToAnchor(sup.rightAnchor, constant: -5),
+            iv.topAnchor.constraintEqualToAnchor(sup.topAnchor, constant: 25)
+            ])
     }
     
     // delegate of flag's pan gesture recognizer

@@ -9,7 +9,7 @@ class MyTiledView : UIView {
     
     var drawQueue : dispatch_queue_t = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL)
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
         let lay = self.layer as! CATiledLayer
         let scale = lay.contentsScale
