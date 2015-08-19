@@ -26,7 +26,7 @@ class RootViewController : UITableViewController {
 */
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath)
         if cell.viewWithTag(1) == nil {
             let iv = UIImageView()
             iv.tag = 1
@@ -40,22 +40,24 @@ class RootViewController : UITableViewController {
             // we can use autolayout to lay them out
             
             let d = ["iv":iv, "lab":lab]
-            iv.setTranslatesAutoresizingMaskIntoConstraints(false)
-            lab.setTranslatesAutoresizingMaskIntoConstraints(false)
+            iv.translatesAutoresizingMaskIntoConstraints = false
+            lab.translatesAutoresizingMaskIntoConstraints = false
+            var con = [NSLayoutConstraint]()
             // image view is vertically centered
-            cell.contentView.addConstraint(
-                NSLayoutConstraint(item:iv, attribute:.CenterY, relatedBy:.Equal, toItem:cell.contentView, attribute:.CenterY, multiplier:1, constant:0))
+            con.append(
+                iv.centerYAnchor.constraintEqualToAnchor(cell.contentView.centerYAnchor))
             // it's a square
-            cell.contentView.addConstraint(
-                NSLayoutConstraint(item:iv, attribute:.Width, relatedBy:.Equal, toItem:iv, attribute:.Height, multiplier:1, constant:0))
+            con.append(
+                iv.widthAnchor.constraintEqualToAnchor(iv.heightAnchor))
             // label has height pinned to superview
-            cell.contentView.addConstraints(
+            con.extend(
                 NSLayoutConstraint.constraintsWithVisualFormat("V:|[lab]|",
-                options:nil, metrics:nil, views:d))
+                options:[], metrics:nil, views:d))
             // horizontal margins
-            cell.contentView.addConstraints(
+            con.extend(
                 NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[lab]-15-[iv]-15-|",
-                options:nil, metrics:nil, views:d))
+                options:[], metrics:nil, views:d))
+            NSLayoutConstraint.activateConstraints(con)
             
             
             lab.font = UIFont(name:"Helvetica-Bold", size:16)

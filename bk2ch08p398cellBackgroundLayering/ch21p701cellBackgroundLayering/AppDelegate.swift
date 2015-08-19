@@ -9,7 +9,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
         self.window = UIWindow()
-        self.window!.rootViewController = RootViewController(nibName: "RootViewController", bundle: nil)
+        self.window!.rootViewController = RootViewController() // now works!
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
         return true

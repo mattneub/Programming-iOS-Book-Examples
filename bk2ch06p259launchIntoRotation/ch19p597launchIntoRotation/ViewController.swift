@@ -5,7 +5,7 @@ import UIKit
 class ViewController : UIViewController {
     var viewInitializationDone = false
     
-    let which = 1
+    let which = 3
     
     override func viewDidLoad() {
         print(self.view.bounds.size)
@@ -33,15 +33,16 @@ class ViewController : UIViewController {
             self.view.addSubview(square)
             square.translatesAutoresizingMaskIntoConstraints = false
             let side : CGFloat = 10
-            NSLayoutConstraint.activateConstraints([
-                [
-                    square.widthAnchor.constraintEqualToConstant(side),
-                    square.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
-                ],
+            var con = [NSLayoutConstraint]()
+            con.extend([
+                square.widthAnchor.constraintEqualToConstant(side),
+                square.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
+                ])
+            con.extend(
                 NSLayoutConstraint.constraintsWithVisualFormat("V:|[square(side)]",
                     options:[], metrics:["side":side],
-                    views:["square":square])
-                ].flatMap{$0})
+                    views:["square":square]))
+            NSLayoutConstraint.activateConstraints(con)
         }
     }
     
@@ -77,7 +78,7 @@ class ViewController : UIViewController {
     override func viewDidLayoutSubviews() {
         print("did layout \(self.view.bounds.size)")
         
-
+        
     }
     
     

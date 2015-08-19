@@ -27,13 +27,13 @@ class ViewController : UIViewController {
         )
         
         // "onscreen, g.r.'s left is pinned to superview's left"
-        let marrOn : [NSLayoutConstraint] =
-        NSLayoutConstraint.constraintsWithVisualFormat("H:|[gr]",
-            options:[], metrics:nil, views:["gr":gr])
+        let marrOn =
+            NSLayoutConstraint.constraintsWithVisualFormat("H:|[gr]",
+                options:[], metrics:nil, views:["gr":gr])
         
         // "offscreen, g.r.'s right is pinned to superview's left"
-        let marrOff : [NSLayoutConstraint] = [
-            gr.trailingAnchor.constraintEqualToAnchor(self.view.leadingAnchor)
+        let marrOff = [
+            gr.trailingAnchor.constraintEqualToAnchor(self.view.leadingAnchor)!
         ]
         
         self.greenRectConstraintsOnscreen = marrOn
