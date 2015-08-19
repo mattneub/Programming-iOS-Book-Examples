@@ -126,8 +126,7 @@ class ViewController : UIViewController {
                     views:["lab":previousLab!]))
 
             
-            // set content view width and frame-to-superview constraints
-            // (height comes from subview constraints)
+            // pin content view to scroll view, sized by its subview constraints
             // content size is calculated for us
             v.translatesAutoresizingMaskIntoConstraints = false
             con.extend(
@@ -135,7 +134,7 @@ class ViewController : UIViewController {
                     options:[], metrics:nil, views:["v":v])) // *
             con.extend(
                 NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|",
-                    options:[], metrics:nil, views:["v":v]))
+                    options:[], metrics:nil, views:["v":v])) // *
             NSLayoutConstraint.activateConstraints(con)
 
             

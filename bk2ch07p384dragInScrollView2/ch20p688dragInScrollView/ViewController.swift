@@ -56,7 +56,6 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
             // thanks for the flag, now stop operating altogether
             g.enabled = false
             })
-
     }
     
     @IBAction func dragging (p : UIPanGestureRecognizer) {
