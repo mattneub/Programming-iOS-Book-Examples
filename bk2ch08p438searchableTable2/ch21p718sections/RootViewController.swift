@@ -2,17 +2,23 @@
 
 import UIKit
 
+class MySearchController : UISearchController {
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+}
+
 class RootViewController : UITableViewController, UISearchBarDelegate {
     var sectionNames = [String]()
     var sectionData = [[String]]()
-    var searcher = UISearchController()
+    var searcher : UISearchController!
     
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
     
     override func viewDidLoad() {
-        let s = String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
+        let s = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
         let states = s.componentsSeparatedByString("\n")
         var previous = ""
         for aState in states {
@@ -41,7 +47,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
             }()
         
         let src = SearchResultsController() // we will configure later
-        let searcher = UISearchController(searchResultsController: src)
+        let searcher = MySearchController(searchResultsController: src)
         self.searcher = searcher
         searcher.delegate = self // so we can configure results controller and presentation
         // put the search controller's search bar into the interface
@@ -65,7 +71,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
         
@@ -81,11 +87,12 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as! UITableViewHeaderFooterView
+        let h = tableView
+            .dequeueReusableHeaderFooterViewWithIdentifier("Header")!
         if h.tintColor != UIColor.redColor() {
             h.tintColor = UIColor.redColor() // invisible marker, tee-hee
             h.backgroundView = UIView()
-            h.backgroundView!.backgroundColor = UIColor.blackColor()
+            h.backgroundView?.backgroundColor = UIColor.blackColor()
             let lab = UILabel()
             lab.tag = 1
             lab.font = UIFont(name:"Georgia-Bold", size:22)
@@ -97,17 +104,19 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
             v.backgroundColor = UIColor.blackColor()
             v.image = UIImage(named:"us_flag_small.gif")
             h.contentView.addSubview(v)
-            lab.setTranslatesAutoresizingMaskIntoConstraints(false)
-            v.setTranslatesAutoresizingMaskIntoConstraints(false)
-            h.contentView.addConstraints(
-                NSLayoutConstraint.constraintsWithVisualFormat("H:|-5-[lab(25)]-10-[v(40)]",
-                    options:nil, metrics:nil, views:["v":v, "lab":lab]))
-            h.contentView.addConstraints(
-                NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|",
-                    options:nil, metrics:nil, views:["v":v]))
-            h.contentView.addConstraints(
-                NSLayoutConstraint.constraintsWithVisualFormat("V:|[lab]|",
-                    options:nil, metrics:nil, views:["lab":lab]))
+            lab.translatesAutoresizingMaskIntoConstraints = false
+            v.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activateConstraints([
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "H:|-5-[lab(25)]-10-[v(40)]",
+                    options:[], metrics:nil, views:["v":v, "lab":lab]),
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "V:|[v]|",
+                    options:[], metrics:nil, views:["v":v]),
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "V:|[lab]|",
+                    options:[], metrics:nil, views:["lab":lab])
+                ].flatMap{$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
@@ -115,7 +124,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         
     }
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         return self.sectionNames
     }
 }
@@ -123,7 +132,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
 extension RootViewController : UISearchControllerDelegate, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
     func presentSearchController(sc: UISearchController) {
-        println("search!")
+        print("search!")
         // good opportunity to control timing of search results controller configuration
         let src = sc.searchResultsController as! SearchResultsController
         src.takeData(self.sectionData) // that way if it changes we are up to date
@@ -135,9 +144,9 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
         self.presentViewController(sc, animated: true, completion: nil)
     }
     
-    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController) -> UIPresentationController? {
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         let p = UIPresentationController(presentedViewController: presented, presentingViewController: presenting)
-        println("wow") // never called, sorry
+        print("wow") // never called, sorry
         return p
     }
     
@@ -149,7 +158,7 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
         return self
     }
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.3
     }
     
@@ -157,12 +166,12 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
         let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         
-        let con = transitionContext.containerView()
+        let con = transitionContext.containerView()!
         
-        let r1start = transitionContext.initialFrameForViewController(vc1)
+        // let r1start = transitionContext.initialFrameForViewController(vc1)
         let r2end = transitionContext.finalFrameForViewController(vc2)
         
-        let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)
+        // let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)
         let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)
 
         if let v2 = v2 { // presenting, vc2 is the search controller

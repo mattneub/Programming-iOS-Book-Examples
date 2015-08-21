@@ -3,7 +3,7 @@
 import UIKit
 
 class ViewController2 : UICollectionViewController {
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
         self.useLayoutToLayoutNavigationTransitions = true
     }

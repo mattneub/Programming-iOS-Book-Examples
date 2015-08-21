@@ -16,19 +16,6 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
-/*
-Lots of changes here, some of them rather half-baked perhaps.
-We got a helpful warning that we are not supposed to be modifying attributes without copying,
-so now I copy everywhere.
-Lots of things turned into optionals and I may not be dealing coherently with them.
-*/
-
-/*
-If we run, we now run without crashing on Flush,
-but we sometimes crash with a dangling pointer on Push
-and I have not tracked this down yet
-*/
-
 class MyFlowLayout : UICollectionViewFlowLayout {
     
     var animating = false
@@ -38,19 +25,16 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         var arr : [UICollectionViewLayoutAttributes]? = nil
         if let sup = super.layoutAttributesForElementsInRect(rect) {
             arr = sup.map {
-                atts -> UICollectionViewLayoutAttributes in
-                let attscopy = atts.copy() as! UICollectionViewLayoutAttributes
-                if attscopy.representedElementKind == nil {
+                (var atts) in
+                if atts.representedElementKind == nil {
                     let ip = atts.indexPath
-                    if let frame = self.layoutAttributesForItemAtIndexPath(ip)?.frame {
-                        attscopy.frame = frame
-                    }
+                    atts = self.layoutAttributesForItemAtIndexPath(ip)!
                 }
-                return attscopy
+                return atts
             }
         }
         
-        // secret sauce for getting animation to work with a layout
+        // secret sauce for getting animation to work with a layout // *
         if let arr = arr where self.animating {
             var marr = [UICollectionViewLayoutAttributes]()
             for atts in arr {
@@ -73,22 +57,18 @@ class MyFlowLayout : UICollectionViewFlowLayout {
     }
     
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        var atts = super.layoutAttributesForItemAtIndexPath(indexPath)
-        if atts != nil {
-            if indexPath.item == 0 {
-                return atts // degenerate case 1
-            }
-            if atts!.frame.origin.x - 1 <= self.sectionInset.left {
-                return atts // degenerate case 2
-            }
-            let ipPrev = NSIndexPath(forItem:indexPath.item-1, inSection:indexPath.section)
-            if let fPrev = self.layoutAttributesForItemAtIndexPath(ipPrev)?.frame {
-                let rightPrev = fPrev.origin.x + fPrev.size.width + self.minimumInteritemSpacing
-                let attsCopy = atts!.copy() as! UICollectionViewLayoutAttributes
-                attsCopy.frame.origin.x = rightPrev
-                atts = attsCopy
-            }
+        var atts = super.layoutAttributesForItemAtIndexPath(indexPath)!
+        if indexPath.item == 0 {
+            return atts // degenerate case 1
         }
+        if atts.frame.origin.x - 1 <= self.sectionInset.left {
+            return atts // degenerate case 2
+        }
+        let ipPv = NSIndexPath(forItem:indexPath.item-1, inSection:indexPath.section)
+        let fPv = self.layoutAttributesForItemAtIndexPath(ipPv)!.frame
+        let rightPv = fPv.origin.x + fPv.size.width + self.minimumInteritemSpacing
+        atts = atts.copy() as! UICollectionViewLayoutAttributes
+        atts.frame.origin.x = rightPv
         return atts
     }
     

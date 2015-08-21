@@ -7,33 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3256645D1B8651AA004576BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3256645C1B8651AA004576BB /* LaunchScreen.storyboard */; };
+		3256645F1B8651C3004576BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256645E1B8651C3004576BB /* AppDelegate.swift */; };
 		32DB4DC01982BE6F00CDA842 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DB4DBF1982BE6F00CDA842 /* ViewController.swift */; };
-		C9F1DD791803104000AE4AE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F1DD781803104000AE4AE5 /* Foundation.framework */; };
-		C9F1DD7B1803104000AE4AE5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F1DD7A1803104000AE4AE5 /* CoreGraphics.framework */; };
-		C9F1DD7D1803104000AE4AE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F1DD7C1803104000AE4AE5 /* UIKit.framework */; };
-		C9F1DD831803104000AE4AE5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9F1DD811803104000AE4AE5 /* InfoPlist.strings */; };
-		C9F1DD851803104000AE4AE5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F1DD841803104000AE4AE5 /* main.m */; };
-		C9F1DD891803104000AE4AE5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F1DD881803104000AE4AE5 /* AppDelegate.m */; };
 		C9F1DD8C1803104000AE4AE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F1DD8A1803104000AE4AE5 /* Main.storyboard */; };
-		C9F1DD911803104000AE4AE5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9F1DD901803104000AE4AE5 /* Images.xcassets */; };
+		C9F1DD911803104000AE4AE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9F1DD901803104000AE4AE5 /* Assets.xcassets */; };
 		C9F1DDAE180311DF00AE4AE5 /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9F1DDAD180311DF00AE4AE5 /* states.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3256645C1B8651AA004576BB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3256645E1B8651C3004576BB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32DB4DBF1982BE6F00CDA842 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9F1DD751803104000AE4AE5 /* ch21p748collectionViewFlowLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch21p748collectionViewFlowLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9F1DD781803104000AE4AE5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9F1DD7A1803104000AE4AE5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C9F1DD7C1803104000AE4AE5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9F1DD801803104000AE4AE5 /* ch21p748collectionViewFlowLayout-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch21p748collectionViewFlowLayout-Info.plist"; sourceTree = "<group>"; };
-		C9F1DD821803104000AE4AE5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9F1DD841803104000AE4AE5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9F1DD861803104000AE4AE5 /* ch21p748collectionViewFlowLayout-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch21p748collectionViewFlowLayout-Prefix.pch"; sourceTree = "<group>"; };
-		C9F1DD871803104000AE4AE5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C9F1DD881803104000AE4AE5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9F1DD8B1803104000AE4AE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9F1DD901803104000AE4AE5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9F1DD971803104000AE4AE5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C9F1DD901803104000AE4AE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9F1DDAD180311DF00AE4AE5 /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,9 +31,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9F1DD7B1803104000AE4AE5 /* CoreGraphics.framework in Frameworks */,
-				C9F1DD7D1803104000AE4AE5 /* UIKit.framework in Frameworks */,
-				C9F1DD791803104000AE4AE5 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				C9F1DD7E1803104000AE4AE5 /* ch21p748collectionViewFlowLayout */,
-				C9F1DD771803104000AE4AE5 /* Frameworks */,
 				C9F1DD761803104000AE4AE5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,40 +53,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9F1DD771803104000AE4AE5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9F1DD781803104000AE4AE5 /* Foundation.framework */,
-				C9F1DD7A1803104000AE4AE5 /* CoreGraphics.framework */,
-				C9F1DD7C1803104000AE4AE5 /* UIKit.framework */,
-				C9F1DD971803104000AE4AE5 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C9F1DD7E1803104000AE4AE5 /* ch21p748collectionViewFlowLayout */ = {
 			isa = PBXGroup;
 			children = (
-				C9F1DD871803104000AE4AE5 /* AppDelegate.h */,
-				C9F1DD881803104000AE4AE5 /* AppDelegate.m */,
 				C9F1DD8A1803104000AE4AE5 /* Main.storyboard */,
+				3256645E1B8651C3004576BB /* AppDelegate.swift */,
 				32DB4DBF1982BE6F00CDA842 /* ViewController.swift */,
 				C9F1DDAD180311DF00AE4AE5 /* states.txt */,
-				C9F1DD901803104000AE4AE5 /* Images.xcassets */,
-				C9F1DD7F1803104000AE4AE5 /* Supporting Files */,
+				C9F1DD901803104000AE4AE5 /* Assets.xcassets */,
+				3256645C1B8651AA004576BB /* LaunchScreen.storyboard */,
+				C9F1DD801803104000AE4AE5 /* ch21p748collectionViewFlowLayout-Info.plist */,
 			);
 			path = ch21p748collectionViewFlowLayout;
-			sourceTree = "<group>";
-		};
-		C9F1DD7F1803104000AE4AE5 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C9F1DD801803104000AE4AE5 /* ch21p748collectionViewFlowLayout-Info.plist */,
-				C9F1DD811803104000AE4AE5 /* InfoPlist.strings */,
-				C9F1DD841803104000AE4AE5 /* main.m */,
-				C9F1DD861803104000AE4AE5 /* ch21p748collectionViewFlowLayout-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +93,7 @@
 		C9F1DD6D1803104000AE4AE5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -157,8 +121,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9F1DDAE180311DF00AE4AE5 /* states.txt in Resources */,
-				C9F1DD911803104000AE4AE5 /* Images.xcassets in Resources */,
-				C9F1DD831803104000AE4AE5 /* InfoPlist.strings in Resources */,
+				3256645D1B8651AA004576BB /* LaunchScreen.storyboard in Resources */,
+				C9F1DD911803104000AE4AE5 /* Assets.xcassets in Resources */,
 				C9F1DD8C1803104000AE4AE5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,23 +134,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9F1DD891803104000AE4AE5 /* AppDelegate.m in Sources */,
+				3256645F1B8651C3004576BB /* AppDelegate.swift in Sources */,
 				32DB4DC01982BE6F00CDA842 /* ViewController.swift in Sources */,
-				C9F1DD851803104000AE4AE5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C9F1DD811803104000AE4AE5 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9F1DD821803104000AE4AE5 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C9F1DD8A1803104000AE4AE5 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -231,7 +186,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -264,7 +219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -275,7 +230,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch21p748collectionViewFlowLayout/ch21p748collectionViewFlowLayout-Prefix.pch";
@@ -293,7 +247,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch21p748collectionViewFlowLayout/ch21p748collectionViewFlowLayout-Prefix.pch";

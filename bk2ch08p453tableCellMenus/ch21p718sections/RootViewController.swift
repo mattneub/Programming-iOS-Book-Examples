@@ -11,7 +11,7 @@ class RootViewController : UITableViewController {
     }
     
     override func viewDidLoad() {
-        let s = String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
+        let s = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
         let states = s.componentsSeparatedByString("\n")
         var previous = ""
         for aState in states {
@@ -43,7 +43,7 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
         
@@ -59,12 +59,12 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
-        let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as! UITableViewHeaderFooterView
+        let h = tableView
+            .dequeueReusableHeaderFooterViewWithIdentifier("Header")!
         if h.tintColor != UIColor.redColor() {
-            println("configuring a new header view") // only called about 7 times
             h.tintColor = UIColor.redColor() // invisible marker, tee-hee
             h.backgroundView = UIView()
-            h.backgroundView!.backgroundColor = UIColor.blackColor()
+            h.backgroundView?.backgroundColor = UIColor.blackColor()
             let lab = UILabel()
             lab.tag = 1
             lab.font = UIFont(name:"Georgia-Bold", size:22)
@@ -76,17 +76,19 @@ class RootViewController : UITableViewController {
             v.backgroundColor = UIColor.blackColor()
             v.image = UIImage(named:"us_flag_small.gif")
             h.contentView.addSubview(v)
-            lab.setTranslatesAutoresizingMaskIntoConstraints(false)
-            v.setTranslatesAutoresizingMaskIntoConstraints(false)
-            h.contentView.addConstraints(
-                NSLayoutConstraint.constraintsWithVisualFormat("H:|-5-[lab(25)]-10-[v(40)]",
-                    options:nil, metrics:nil, views:["v":v, "lab":lab]))
-            h.contentView.addConstraints(
-                NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|",
-                    options:nil, metrics:nil, views:["v":v]))
-            h.contentView.addConstraints(
-                NSLayoutConstraint.constraintsWithVisualFormat("V:|[lab]|",
-                    options:nil, metrics:nil, views:["lab":lab]))
+            lab.translatesAutoresizingMaskIntoConstraints = false
+            v.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activateConstraints([
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "H:|-5-[lab(25)]-10-[v(40)]",
+                    options:[], metrics:nil, views:["v":v, "lab":lab]),
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "V:|[v]|",
+                    options:[], metrics:nil, views:["v":v]),
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "V:|[lab]|",
+                    options:[], metrics:nil, views:["lab":lab])
+                ].flatMap{$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
@@ -94,7 +96,7 @@ class RootViewController : UITableViewController {
         
     }
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject] {
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         return self.sectionNames
     }
     
@@ -104,14 +106,14 @@ class RootViewController : UITableViewController {
         return true
     }
     
-    override func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject) -> Bool {
+    override func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
         return action == "copy:"
     }
     
-    override func tableView(tableView: UITableView, performAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject) {
+    override func tableView(tableView: UITableView, performAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
         if action == "copy:" {
             // ... do whatever copying consists of ...
-            println("copying \(self.sectionData[indexPath.section][indexPath.row])")
+            print("copying \(self.sectionData[indexPath.section][indexPath.row])")
         }
     }
 }

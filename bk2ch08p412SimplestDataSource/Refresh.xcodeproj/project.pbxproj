@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		32AFD97319D8807200137E43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD97219D8807200137E43 /* AppDelegate.swift */; };
 		32AFD97819D8807200137E43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AFD97619D8807200137E43 /* Main.storyboard */; };
-		32AFD97A19D8807200137E43 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32AFD97919D8807200137E43 /* Images.xcassets */; };
+		32AFD97A19D8807200137E43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32AFD97919D8807200137E43 /* Assets.xcassets */; };
 		32AFD97D19D8807200137E43 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32AFD97B19D8807200137E43 /* LaunchScreen.xib */; };
 		32AFD99319D880A600137E43 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AFD99219D880A600137E43 /* RootViewController.swift */; };
 /* End PBXBuildFile section */
@@ -19,7 +19,7 @@
 		32AFD97119D8807200137E43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32AFD97219D8807200137E43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32AFD97719D8807200137E43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32AFD97919D8807200137E43 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32AFD97919D8807200137E43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32AFD97C19D8807200137E43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		32AFD99219D880A600137E43 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,19 +57,11 @@
 				32AFD97219D8807200137E43 /* AppDelegate.swift */,
 				32AFD97619D8807200137E43 /* Main.storyboard */,
 				32AFD99219D880A600137E43 /* RootViewController.swift */,
-				32AFD97919D8807200137E43 /* Images.xcassets */,
+				32AFD97919D8807200137E43 /* Assets.xcassets */,
 				32AFD97B19D8807200137E43 /* LaunchScreen.xib */,
-				32AFD97019D8807200137E43 /* Supporting Files */,
-			);
-			path = SimplestDataSource;
-			sourceTree = "<group>";
-		};
-		32AFD97019D8807200137E43 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				32AFD97119D8807200137E43 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = SimplestDataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +90,7 @@
 		32AFD96519D8807200137E43 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -131,7 +124,7 @@
 			files = (
 				32AFD97819D8807200137E43 /* Main.storyboard in Resources */,
 				32AFD97D19D8807200137E43 /* LaunchScreen.xib in Resources */,
-				32AFD97A19D8807200137E43 /* Images.xcassets in Resources */,
+				32AFD97A19D8807200137E43 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +196,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -239,7 +232,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

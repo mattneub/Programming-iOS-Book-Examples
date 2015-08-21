@@ -12,7 +12,7 @@ class ViewController : UICollectionViewController {
     }
     
     override func viewDidLoad() {
-        let s = String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
+        let s = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
         let states = s.componentsSeparatedByString("\n")
         var previous = ""
         for aState in states {
@@ -51,7 +51,7 @@ class ViewController : UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         var v : UICollectionReusableView! = nil
         if kind == UICollectionElementKindSectionHeader {
-            v = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", forIndexPath:indexPath) as! UICollectionReusableView
+            v = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", forIndexPath:indexPath) 
             if v.subviews.count == 0 {
                 v.addSubview(UILabel(frame:CGRectMake(0,0,30,30)))
             }
@@ -65,7 +65,7 @@ class ViewController : UICollectionViewController {
     // cells
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath:indexPath) as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath:indexPath) 
         if cell.contentView.subviews.count == 0 {
             cell.contentView.addSubview(UILabel(frame:CGRectMake(0,0,30,30)))
         }

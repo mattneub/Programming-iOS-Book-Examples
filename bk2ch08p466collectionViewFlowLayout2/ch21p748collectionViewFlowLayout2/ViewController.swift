@@ -3,7 +3,7 @@ import UIKit
 
 extension Array {
     mutating func removeAtIndexes (ixs:[Int]) -> () {
-        for i in ixs.sorted(>) {
+        for i in ixs.sort(>) {
             self.removeAtIndex(i)
         }
     }
@@ -24,7 +24,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     override func viewDidLoad() {
-        let s = String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
+        let s = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
         let states = s.componentsSeparatedByString("\n")
         var previous = ""
         for aState in states {
@@ -85,7 +85,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         
         var v : UICollectionReusableView! = nil
         if kind == UICollectionElementKindSectionHeader {
-            v = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", forIndexPath:indexPath) as! UICollectionReusableView
+            v = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", forIndexPath:indexPath) 
             if v.subviews.count == 0 {
                 let lab = UILabel() // we will size it later
                 v.addSubview(lab)
@@ -97,13 +97,13 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 lab.layer.borderWidth = 2
                 lab.layer.masksToBounds = true // has to be added for iOS 8 label
                 lab.layer.borderColor = UIColor.blackColor().CGColor
-                lab.setTranslatesAutoresizingMaskIntoConstraints(false)
-                v.addConstraints(
+                lab.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activateConstraints([
                     NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[lab(35)]",
-                        options:nil, metrics:nil, views:["lab":lab]))
-                v.addConstraints(
+                        options:[], metrics:nil, views:["lab":lab]),
                     NSLayoutConstraint.constraintsWithVisualFormat("V:[lab(30)]-5-|",
-                        options:nil, metrics:nil, views:["lab":lab]))
+                    options:[], metrics:nil, views:["lab":lab])
+                ].flatMap{$0})
             }
             let lab = v.subviews[0] as! UILabel
             lab.text = self.sectionNames[indexPath.section]
@@ -202,15 +202,15 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // deletion, really quite similar to a table view
     
     func doDelete(sender:AnyObject) { // button, delete selected cells
-        let arr = self.collectionView!.indexPathsForSelectedItems() as! [NSIndexPath]
+        let arr = self.collectionView!.indexPathsForSelectedItems()!
         if arr.count == 0 {
             return
         }
         // sort
-        let arr2 = (arr as NSArray).sortedArrayUsingSelector(Selector("compare:")).reverse() as! [NSIndexPath]
+        let arr2 = ((arr as NSArray).sortedArrayUsingSelector(Selector("compare:")) as! [NSIndexPath])
         // delete data
         var empties = [Int]() // keep track of what sections get emptied
-        for ip in arr2 {
+        for ip in arr2.reverse() {
             self.sectionData[ip.section].removeAtIndex(ip.item)
             if self.sectionData[ip.section].count == 0 {
                 empties += [ip.section]
@@ -242,18 +242,18 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         return true
     }
     
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject) -> Bool {
+    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
         return (action == "copy:") || (action == "capital:")
     }
     
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject) {
+    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
         // in real life, would do something here
         let state = self.sectionData[indexPath.section][indexPath.row]
         if action == "copy:" {
-            println ("copying \(state)")
+            print ("copying \(state)")
         }
         else if action == "capital:" {
-            println ("fetching the capital of \(state)")
+            print ("fetching the capital of \(state)")
         }
     }
 }

@@ -43,7 +43,7 @@ class SearchResultsController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         cell.textLabel!.text = self.filteredData[indexPath.row]
         return cell
     }
@@ -60,9 +60,9 @@ and reload the table.
 
 extension SearchResultsController : UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        println("here")
+        print("here")
         let sb = searchController.searchBar
-        let target = sb.text
+        let target = sb.text!
         self.filteredData = self.originalData.filter {
             s in
             let options = NSStringCompareOptions.CaseInsensitiveSearch

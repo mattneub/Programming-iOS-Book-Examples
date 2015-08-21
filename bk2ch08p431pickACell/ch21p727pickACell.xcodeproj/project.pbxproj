@@ -7,32 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		324518081B862CE900C57133 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 324518071B862CE900C57133 /* LaunchScreen.storyboard */; };
+		3245180A1B862D0000C57133 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324518091B862D0000C57133 /* AppDelegate.swift */; };
 		32CFD80B198030F000382648 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CFD80A198030F000382648 /* RootViewController.swift */; };
-		C946808D17E8BF2800967556 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C946808C17E8BF2800967556 /* Foundation.framework */; };
-		C946808F17E8BF2800967556 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C946808E17E8BF2800967556 /* CoreGraphics.framework */; };
-		C946809117E8BF2800967556 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C946809017E8BF2800967556 /* UIKit.framework */; };
-		C946809717E8BF2800967556 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C946809517E8BF2800967556 /* InfoPlist.strings */; };
-		C946809917E8BF2800967556 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C946809817E8BF2800967556 /* main.m */; };
-		C946809D17E8BF2800967556 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C946809C17E8BF2800967556 /* AppDelegate.m */; };
 		C94680A017E8BF2800967556 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C946809E17E8BF2800967556 /* Main.storyboard */; };
-		C94680A517E8BF2800967556 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C94680A417E8BF2800967556 /* Images.xcassets */; };
+		C94680A517E8BF2800967556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C94680A417E8BF2800967556 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		324518071B862CE900C57133 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		324518091B862D0000C57133 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32CFD80A198030F000382648 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		C946808917E8BF2800967556 /* ch21p727pickACell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch21p727pickACell.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C946808C17E8BF2800967556 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C946808E17E8BF2800967556 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C946809017E8BF2800967556 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C946809417E8BF2800967556 /* ch21p727pickACell-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch21p727pickACell-Info.plist"; sourceTree = "<group>"; };
-		C946809617E8BF2800967556 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C946809817E8BF2800967556 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C946809A17E8BF2800967556 /* ch21p727pickACell-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch21p727pickACell-Prefix.pch"; sourceTree = "<group>"; };
-		C946809B17E8BF2800967556 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C946809C17E8BF2800967556 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C946809F17E8BF2800967556 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C94680A417E8BF2800967556 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C94680AB17E8BF2800967556 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C94680A417E8BF2800967556 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,9 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C946808F17E8BF2800967556 /* CoreGraphics.framework in Frameworks */,
-				C946809117E8BF2800967556 /* UIKit.framework in Frameworks */,
-				C946808D17E8BF2800967556 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				C946809217E8BF2800967556 /* ch21p727pickACell */,
-				C946808B17E8BF2800967556 /* Frameworks */,
 				C946808A17E8BF2800967556 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,39 +51,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C946808B17E8BF2800967556 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C946808C17E8BF2800967556 /* Foundation.framework */,
-				C946808E17E8BF2800967556 /* CoreGraphics.framework */,
-				C946809017E8BF2800967556 /* UIKit.framework */,
-				C94680AB17E8BF2800967556 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C946809217E8BF2800967556 /* ch21p727pickACell */ = {
 			isa = PBXGroup;
 			children = (
-				C946809B17E8BF2800967556 /* AppDelegate.h */,
-				C946809C17E8BF2800967556 /* AppDelegate.m */,
 				32CFD80A198030F000382648 /* RootViewController.swift */,
+				324518091B862D0000C57133 /* AppDelegate.swift */,
 				C946809E17E8BF2800967556 /* Main.storyboard */,
-				C94680A417E8BF2800967556 /* Images.xcassets */,
-				C946809317E8BF2800967556 /* Supporting Files */,
+				324518071B862CE900C57133 /* LaunchScreen.storyboard */,
+				C94680A417E8BF2800967556 /* Assets.xcassets */,
+				C946809417E8BF2800967556 /* ch21p727pickACell-Info.plist */,
 			);
 			path = ch21p727pickACell;
-			sourceTree = "<group>";
-		};
-		C946809317E8BF2800967556 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C946809417E8BF2800967556 /* ch21p727pickACell-Info.plist */,
-				C946809517E8BF2800967556 /* InfoPlist.strings */,
-				C946809817E8BF2800967556 /* main.m */,
-				C946809A17E8BF2800967556 /* ch21p727pickACell-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +90,7 @@
 		C946808117E8BF2800967556 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -153,8 +117,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C94680A517E8BF2800967556 /* Images.xcassets in Resources */,
-				C946809717E8BF2800967556 /* InfoPlist.strings in Resources */,
+				324518081B862CE900C57133 /* LaunchScreen.storyboard in Resources */,
+				C94680A517E8BF2800967556 /* Assets.xcassets in Resources */,
 				C94680A017E8BF2800967556 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,8 +130,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C946809D17E8BF2800967556 /* AppDelegate.m in Sources */,
-				C946809917E8BF2800967556 /* main.m in Sources */,
+				3245180A1B862D0000C57133 /* AppDelegate.swift in Sources */,
 				32CFD80B198030F000382648 /* RootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,14 +138,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C946809517E8BF2800967556 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C946809617E8BF2800967556 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C946809E17E8BF2800967556 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -227,7 +182,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -260,7 +215,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -271,7 +226,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch21p727pickACell/ch21p727pickACell-Prefix.pch";
@@ -289,7 +243,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch21p727pickACell/ch21p727pickACell-Prefix.pch";

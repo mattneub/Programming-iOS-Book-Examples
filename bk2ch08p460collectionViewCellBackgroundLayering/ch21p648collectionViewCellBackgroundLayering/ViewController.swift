@@ -24,7 +24,7 @@ class ViewController : UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 30
     }
     
     // window background is white
@@ -43,7 +43,7 @@ class ViewController : UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell",
-        forIndexPath:indexPath) as! UICollectionViewCell
+        forIndexPath:indexPath)
         if cell.backgroundView == nil { // brand new cell
             cell.backgroundColor = UIColor.redColor()
             
@@ -57,17 +57,13 @@ class ViewController : UICollectionViewController {
             cell.selectedBackgroundView = v2
             
             let lab = UILabel()
-            lab.setTranslatesAutoresizingMaskIntoConstraints(false)
+            lab.translatesAutoresizingMaskIntoConstraints = false
             lab.tag = 1
             cell.contentView.addSubview(lab)
-            cell.contentView.addConstraint(
-            NSLayoutConstraint(item:lab, attribute:.CenterX,
-            relatedBy:.Equal,
-            toItem:cell.contentView, attribute:.CenterX, multiplier:1, constant:0))
-            cell.contentView.addConstraint(
-            NSLayoutConstraint(item:lab, attribute:.CenterY,
-            relatedBy:.Equal,
-                toItem:cell.contentView, attribute:.CenterY, multiplier:1, constant:0))
+            NSLayoutConstraint.activateConstraints([
+                lab.centerXAnchor.constraintEqualToAnchor(cell.contentView.centerXAnchor),
+                lab.centerYAnchor.constraintEqualToAnchor(cell.contentView.centerYAnchor)
+            ])
             lab.textColor = UIColor.blackColor()
             lab.highlightedTextColor = UIColor.whiteColor()
             lab.backgroundColor = UIColor.clearColor()

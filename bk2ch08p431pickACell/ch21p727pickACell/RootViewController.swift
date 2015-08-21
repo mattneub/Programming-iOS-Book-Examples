@@ -20,7 +20,7 @@ class RootViewController : UITableViewController {
         return cell
     }
     
-    func log(#tv:UITableView, ip:NSIndexPath, phrase:String) {
+    func log(tv tv:UITableView, ip:NSIndexPath, phrase:String) {
         NSLog("%@", "========")
         NSLog("%@ %@", phrase, tv.cellForRowAtIndexPath(ip)!.textLabel!.text!)
         NSLog("cell highlighted? %@", "\(tv.cellForRowAtIndexPath(ip)!.highlighted)")

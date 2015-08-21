@@ -70,7 +70,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         // some cell's text field has finished editing; which cell?
         var v : UIView = textField
-        do { v = v.superview! } while !(v is UITableViewCell)
+        repeat { v = v.superview! } while !(v is UITableViewCell)
         // another way to say:
 //        var v : UIView
 //        for v = textField; !(v is UITableViewCell); v = v.superview! {}
@@ -78,9 +78,9 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         // update data model to match
         let ip = self.tableView.indexPathForCell(cell)!
         if ip.section == 1 {
-            self.numbers[ip.row] = cell.textField.text
+            self.numbers[ip.row] = cell.textField.text!
         } else if ip.section == 0 {
-            self.name = cell.textField.text
+            self.name = cell.textField.text!
         }
     }
     

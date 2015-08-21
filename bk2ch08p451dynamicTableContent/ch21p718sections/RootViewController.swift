@@ -85,11 +85,12 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
-        let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as! MyHeaderView
+        let h = tableView
+            .dequeueReusableHeaderFooterViewWithIdentifier("Header") as! MyHeaderView
         if h.tintColor != UIColor.redColor() {
             h.tintColor = UIColor.redColor() // invisible marker, tee-hee
             h.backgroundView = UIView()
-            h.backgroundView!.backgroundColor = UIColor.blackColor()
+            h.backgroundView?.backgroundColor = UIColor.blackColor()
             let lab = UILabel()
             lab.tag = 1
             lab.font = UIFont(name:"Georgia-Bold", size:22)
@@ -103,20 +104,21 @@ class RootViewController : UITableViewController {
             h.contentView.addSubview(v)
             lab.translatesAutoresizingMaskIntoConstraints = false
             v.translatesAutoresizingMaskIntoConstraints = false
-            h.contentView.addConstraints(
-                NSLayoutConstraint.constraintsWithVisualFormat("H:|-5-[lab(25)]-10-[v(40)]",
-                    options:[], metrics:nil, views:["v":v, "lab":lab]))
-            h.contentView.addConstraints(
-                NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|",
-                    options:[], metrics:nil, views:["v":v]))
-            h.contentView.addConstraints(
-                NSLayoutConstraint.constraintsWithVisualFormat("V:|[lab]|",
-                    options:[], metrics:nil, views:["lab":lab]))
-            
+            NSLayoutConstraint.activateConstraints([
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "H:|-5-[lab(25)]-10-[v(40)]",
+                    options:[], metrics:nil, views:["v":v, "lab":lab]),
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "V:|[v]|",
+                    options:[], metrics:nil, views:["v":v]),
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "V:|[lab]|",
+                    options:[], metrics:nil, views:["lab":lab])
+                ].flatMap{$0})
             // add tap g.r.
-            let tap = UITapGestureRecognizer(target: self, action: "tap:")
-            tap.numberOfTapsRequired = 2
-            h.addGestureRecognizer(tap)
+            let tap = UITapGestureRecognizer(target: self, action: "tap:") // *
+            tap.numberOfTapsRequired = 2 // *
+            h.addGestureRecognizer(tap) // *
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]

@@ -36,17 +36,17 @@ class RootViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
 
         cell.textLabel!.text = pep[indexPath.row]
         return cell
     }
 
     @IBAction func doRefresh(sender: AnyObject) {
-        println("refreshing...")
+        print("refreshing...")
         delay(3) {
             (sender as! UIRefreshControl).endRefreshing()
-            println("done")
+            print("done")
         }
     }
 

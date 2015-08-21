@@ -27,7 +27,7 @@ class RootViewController : UITableViewController {
         lab.text = "Row \(indexPath.row) of section \(indexPath.section)"
         if lab.tag != 999 {
             lab.tag = 999
-            println("New cell \(++self.cells)")
+            print("New cell \(++self.cells)")
         }
 
         
