@@ -22,7 +22,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
     var animator : UIDynamicAnimator!
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        var arr : [UICollectionViewLayoutAttributes]? = nil
+        var arr = super.layoutAttributesForElementsInRect(rect)!
         if let sup = super.layoutAttributesForElementsInRect(rect) {
             arr = sup.map {
                 (var atts) in
@@ -35,23 +35,29 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         }
         
         // secret sauce for getting animation to work with a layout // *
-        if let arr = arr where self.animating {
-            var marr = [UICollectionViewLayoutAttributes]()
-            for atts in arr {
+        // for each attribute, if it can come from the animator, use that attribute instead
+        if self.animating {
+            return arr.map {
+                atts in
                 let path = atts.indexPath
-                var atts2 : UICollectionViewLayoutAttributes? = nil
                 switch atts.representedElementCategory {
                 case .Cell:
-                    atts2 = self.animator?.layoutAttributesForCellAtIndexPath(path)
+                    if let atts2 = self.animator?
+                        .layoutAttributesForCellAtIndexPath(path) {
+                            return atts2
+                    }
                 case .SupplementaryView:
                     if let kind = atts.representedElementKind {
-                        atts2 = self.animator?.layoutAttributesForSupplementaryViewOfKind(kind, atIndexPath:path)
+                        if let atts2 = self.animator?
+                            .layoutAttributesForSupplementaryViewOfKind(
+                                kind, atIndexPath:path) {
+                                    return atts2
+                        }
                     }
                 default: break
                 }
-                marr += [atts2 ?? atts]
+                return atts
             }
-            return marr
         }
         return arr
     }
