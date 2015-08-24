@@ -14,7 +14,7 @@
 
 @implementation ViewController
 
--(NSUInteger)supportedInterfaceOrientations {
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return 0;
 }
 
@@ -30,7 +30,7 @@
 - (void)screenRotated:(NSNotification *)n {
     UIDeviceOrientation r = [UIDevice currentDevice].orientation;
     UIInterfaceOrientation r2 = (UIInterfaceOrientation)r;
-    if (UIDeviceOrientationIsLandscape(r) & !self.presentedViewController) {
+    if (UIDeviceOrientationIsLandscape(r) && !self.presentedViewController) {
         [[UIApplication sharedApplication]
          setStatusBarOrientation:r2 animated:YES];
         UIViewController* vc = [[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
