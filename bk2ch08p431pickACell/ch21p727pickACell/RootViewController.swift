@@ -6,7 +6,7 @@ class RootViewController : UITableViewController {
     
     override func tableView(tv: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // we can still modify the cell as long as we fetch it from super
-        let cell = super.tableView(tv, cellForRowAtIndexPath:indexPath) as UITableViewCell
+        let cell = super.tableView(tv, cellForRowAtIndexPath:indexPath)
         
         // supply checkmarks as necessary
         let ud = NSUserDefaults.standardUserDefaults()
@@ -15,7 +15,7 @@ class RootViewController : UITableViewController {
         cell.accessoryType = .None
         if ud.valueForKey("Style") as? String == cell.textLabel!.text! ||
             ud.valueForKey("Size") as? String == cell.textLabel!.text! {
-        cell.accessoryType = .Checkmark
+                cell.accessoryType = .Checkmark
         }
         return cell
     }
@@ -77,6 +77,31 @@ class RootViewController : UITableViewController {
     override func tableView(tv: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         NSLog("did deselect %@", tv.cellForRowAtIndexPath(indexPath)!.textLabel!.text!)
     }
+    
+    // just proving this stuff works even in a grouped style table
+    
+    /*
 
+
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let v = UIView()
+        v.backgroundColor = UIColor.clearColor()
+        // v.backgroundColor = UIColor.yellowColor()
+        // tableView.backgroundColor = UIColor.greenColor()
+        return v
+    }
+    
+    
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let v = UIView()
+        v.backgroundColor = UIColor.blueColor()
+        return v
+    }
+
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 100
+    }
+
+*/
     
 }

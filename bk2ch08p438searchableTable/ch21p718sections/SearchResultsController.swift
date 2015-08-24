@@ -18,8 +18,7 @@ class SearchResultsController : UITableViewController {
     
     init(data:[[String]]) {
         // we don't use sections, so flatten the data into a single array of strings
-        self.originalData = data.reduce([String](), combine:+)
-        // new in Swift 1.2, could instead say data.flatMap {$0}
+        self.originalData = data.flatMap{$0}
         super.init(nibName: nil, bundle: nil)
     }
     

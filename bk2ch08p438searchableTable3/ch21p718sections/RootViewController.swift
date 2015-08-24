@@ -26,7 +26,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         var previous = ""
         for aState in states {
             // get the first letter
-            let c = (aState as NSString).substringWithRange(NSMakeRange(0,1))
+            let c = String(aState.characters.prefix(1))
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c

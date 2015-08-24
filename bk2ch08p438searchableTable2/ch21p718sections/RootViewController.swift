@@ -23,7 +23,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         var previous = ""
         for aState in states {
             // get the first letter
-            let c = (aState as NSString).substringWithRange(NSMakeRange(0,1))
+            let c = String(aState.characters.prefix(1))
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c
@@ -131,6 +131,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
 
 extension RootViewController : UISearchControllerDelegate, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
+    var which : Int {return 1}
     func presentSearchController(sc: UISearchController) {
         print("search!")
         // good opportunity to control timing of search results controller configuration
@@ -138,9 +139,14 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
         src.takeData(self.sectionData) // that way if it changes we are up to date
         sc.searchResultsUpdater = src
         sc.searchBar.delegate = src
-
-        sc.transitioningDelegate = self
-        sc.modalPresentationStyle = .Custom // ?
+        
+        switch which {
+        case 0: break
+        case 1:
+            sc.transitioningDelegate = self
+            sc.modalPresentationStyle = .Custom // ?
+        default: break
+        }
         self.presentViewController(sc, animated: true, completion: nil)
     }
     

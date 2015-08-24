@@ -4,12 +4,12 @@ import UIKit
 class MyLayout : UICollectionViewLayout {
     
     var sz = CGSizeZero
-    var atts = [UICollectionViewLayoutAttributes]()
+    var atts = [NSIndexPath:UICollectionViewLayoutAttributes]()
     
     // absolute rock-bottom layout from scratch, shows minimal responsibilities
     
     override func prepareLayout() {
-        //        println("prepare")
+        print("prepare")
         let sections = self.collectionView!.numberOfSections()
         
         /*
@@ -44,7 +44,9 @@ class MyLayout : UICollectionViewLayout {
                 }
             }
         }
-        self.atts = atts
+        for att in atts {
+            self.atts[att.indexPath] = att
+        }
         let fluff = (x == 0) ? 0 : 1
         self.sz = CGSizeMake(width, CGFloat(y+fluff) * cellside)
     }
@@ -56,22 +58,17 @@ class MyLayout : UICollectionViewLayout {
     
     override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
         let ok = newBounds.size.width != self.sz.width
-        //        println("should \(ok)")
+        print("should \(ok)")
         return ok
     }
     
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        //        println("atts")
-        for att in self.atts {
-            if att.indexPath == indexPath {
-                return att
-            }
-        }
-        return nil // shouldn't happen
+        print("atts")
+        return self.atts[indexPath]
     }
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         //        println("rect")
-        return self.atts
+        return self.atts.values.array
     }
 }

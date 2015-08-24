@@ -12,7 +12,7 @@ class MyView: UIView {
         return CATransformLayer.self
     }
     
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         super.init(coder:coder)
         let lay = CALayer()
         lay.frame = self.bounds

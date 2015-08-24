@@ -29,7 +29,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         var previous = ""
         for aState in states {
             // get the first letter
-            let c = (aState as NSString).substringWithRange(NSMakeRange(0,1))
+            let c = String(aState.characters.prefix(1))
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c
@@ -67,6 +67,9 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     func setUpFlowLayout(flow:UICollectionViewFlowLayout) {
         flow.headerReferenceSize = CGSizeMake(50,50) // larger - we will place label within this
         flow.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10) // looks nicer
+        
+        // flow.sectionHeadersPinToVisibleBounds = true // try cool new iOS 9 feature
+        
         // uncomment to crash
         // flow.estimatedItemSize = CGSizeMake(100,30)
     }

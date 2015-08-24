@@ -22,7 +22,7 @@ class MyHeaderView : UITableViewHeaderFooterView {
 class RootViewController : UITableViewController {
     var sectionNames = [String]()
     var sectionData = [[String]]()
-    var hiddenSections = NSMutableSet()
+    var hiddenSections = Set<Int>()
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -34,7 +34,7 @@ class RootViewController : UITableViewController {
         var previous = ""
         for aState in states {
             // get the first letter
-            let c = (aState as NSString).substringWithRange(NSMakeRange(0,1))
+            let c = String(aState.characters.prefix(1))
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c
@@ -62,7 +62,7 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.hiddenSections.containsObject(section) { // *
+        if self.hiddenSections.contains(section) { // *
             return 0
         }
         return self.sectionData[section].count
@@ -84,7 +84,7 @@ class RootViewController : UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView
             .dequeueReusableHeaderFooterViewWithIdentifier("Header") as! MyHeaderView
         if h.tintColor != UIColor.redColor() {
@@ -135,8 +135,8 @@ class RootViewController : UITableViewController {
         let sec = v.section
         let ct = self.sectionData[sec].count
         let arr = (0..<ct).map {NSIndexPath(forRow:$0, inSection:sec)} // whoa! ***
-        if self.hiddenSections.containsObject(sec) {
-            self.hiddenSections.removeObject(sec)
+        if self.hiddenSections.contains(sec) {
+            self.hiddenSections.remove(sec)
             self.tableView.beginUpdates()
             self.tableView.insertRowsAtIndexPaths(arr,
                 withRowAnimation:.Automatic)
@@ -145,7 +145,7 @@ class RootViewController : UITableViewController {
                 atScrollPosition:.None,
                 animated:true)
         } else {
-            self.hiddenSections.addObject(sec)
+            self.hiddenSections.insert(sec)
             self.tableView.beginUpdates()
             self.tableView.deleteRowsAtIndexPaths(arr,
                 withRowAnimation:.Automatic)

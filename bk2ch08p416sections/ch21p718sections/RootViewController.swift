@@ -16,7 +16,7 @@ class RootViewController : UITableViewController {
         var previous = ""
         for aState in states {
             // get the first letter
-            let c = (aState as NSString).substringWithRange(NSMakeRange(0,1))
+            let c = String(aState.characters.prefix(1))
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c
@@ -32,7 +32,7 @@ class RootViewController : UITableViewController {
         self.tableView.sectionIndexColor = UIColor.whiteColor()
         self.tableView.sectionIndexBackgroundColor = UIColor.redColor()
         self.tableView.sectionIndexTrackingBackgroundColor = UIColor.blueColor()
-        // anyone know what this does????
+        // not useful in this situation
         // self.tableView.separatorEffect = UIBlurEffect(style: .Dark)
     }
     
@@ -60,10 +60,10 @@ class RootViewController : UITableViewController {
         return cell
     }
     
-    /*
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return nil
+        // return self.sectionNames[section]
     }
-    */
 
     // this is more "interesting"
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -94,16 +94,23 @@ class RootViewController : UITableViewController {
                 NSLayoutConstraint.constraintsWithVisualFormat("V:|[lab]|",
                     options:[], metrics:nil, views:["lab":lab])
                 ].flatMap{$0})
-//            let b = UIButton.buttonWithType(.System) as UIButton
+            
+            // uncomment to see bug where button does not inherit superview's tint color
+//            let b = UIButton(type:.System)
 //            b.setTitle("Howdy", forState:.Normal)
 //            b.sizeToFit()
-//            println(b.tintColor)
+//            print(b.tintColor)
 //            h.addSubview(b)
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
         return h
         
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 22
+        return UITableViewAutomaticDimension
     }
     
     /*

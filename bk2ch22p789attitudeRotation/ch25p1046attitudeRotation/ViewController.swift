@@ -13,13 +13,13 @@ class ViewController: UIViewController {
     @IBAction func doButton (sender:AnyObject!) {
         self.ref = nil // start over if user presses button again
         if !self.motman.deviceMotionAvailable {
-            println("oh well")
+            print("oh well")
             return
         }
         let ref = CMAttitudeReferenceFrame.XArbitraryCorrectedZVertical
         let avail = CMMotionManager.availableAttitudeReferenceFrames()
-        if avail.rawValue & ref.rawValue == 0 {
-            println("darn")
+        if !avail.contains(ref) {
+            print("darn")
             return
         }
         self.motman.deviceMotionUpdateInterval = 1.0 / 20.0
@@ -29,12 +29,11 @@ class ViewController: UIViewController {
     }
     
     func pollAttitude(_:AnyObject!) {
-        let mot = self.motman.deviceMotion
-        if mot == nil {return}
+        guard let mot = self.motman.deviceMotion else {return}
         let att = mot.attitude
         if self.ref == nil {
             self.ref = att
-            println("got ref \(att.pitch), \(att.roll), \(att.yaw)")
+            print("got ref \(att.pitch), \(att.roll), \(att.yaw)")
             return
         }
         att.multiplyByInverseOfAttitude(self.ref)
@@ -52,7 +51,7 @@ class ViewController: UIViewController {
         t.m32 = CGFloat(r.m32)
         t.m33 = CGFloat(r.m33)
 
-        let lay = self.v.layer.sublayers[0] as! CALayer
+        let lay = self.v.layer.sublayers![0]
         CATransaction.setAnimationDuration(1.0/10.0)
         lay.transform = t
     }

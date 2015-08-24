@@ -15,7 +15,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        println("start \(__FUNCTION__)")
+        print("start \(__FUNCTION__)")
 
         NSLog("%@ %@", "\(__FUNCTION__)", "\(launchOptions)")
 
@@ -27,7 +27,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         self.registerMyNotification(application)
         
-        println("end \(__FUNCTION__)")
+        print("end \(__FUNCTION__)")
         return true
     }
     
@@ -41,7 +41,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func registerMyNotification(application:UIApplication) {
         // new in iOS 8! must register to present alert / play sound with a local or push notification
-        let types : UIUserNotificationType = .Alert | .Sound
+        let types : UIUserNotificationType = [.Alert, .Sound]
         // if we want custom actions in our alert, we must create them when we register
         let category = UIMutableUserNotificationCategory()
         category.identifier = "coffee" // will need this at notification creation time!
@@ -73,7 +73,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     
     func applicationWillEnterForeground(application: UIApplication) {
-        println("start \(__FUNCTION__)")
+        print("start \(__FUNCTION__)")
         
         // I think this should go here, so that we re-register every time we come to the foreground...
         // scenario: we register, user sees dialog, user refuses
@@ -82,19 +82,19 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // this way, we are always registering so that if we are ever accepted, we can do it
         self.registerMyNotification(application)
         
-        println("end \(__FUNCTION__)")
+        print("end \(__FUNCTION__)")
 
 
     }
     
     // will get this registration, no matter whether user sees registration dialog or not
     func application(application: UIApplication, didRegisterUserNotificationSettings settings: UIUserNotificationSettings) {
-        println("did register \(settings)")
+        print("did register \(settings)")
         // do not change registration here, you'll get a vicious circle
     }
     
     func doAlert(n:UILocalNotification) {
-        println("creating alert")
+        print("creating alert")
         let inactive = UIApplication.sharedApplication().applicationState == .Inactive
         let s = inactive ? "inactive" : "active"
         let alert = UIAlertController(title: "Hey",
@@ -108,10 +108,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // even if user refused to allow alert and sounds etc.,
     // we will receive this call if we are in the foreground when a local notification fires
     func application(application: UIApplication, didReceiveLocalNotification n: UILocalNotification) {
-        println("start \(__FUNCTION__)")
+        print("start \(__FUNCTION__)")
         NSLog("%@", "\(__FUNCTION__)")
         self.doAlert(n)
-        println("end \(__FUNCTION__)")
+        print("end \(__FUNCTION__)")
     }
     
     // new in iOS 8, this is how we will hear about our custom buttons tapped in the alert
@@ -120,17 +120,17 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // for foreground, you will be brought to foreground
     // but either way, nothing else will be called
     func application(application: UIApplication, handleActionWithIdentifier id: String?, forLocalNotification n: UILocalNotification, completionHandler: () -> Void) {
-        println("start \(__FUNCTION__)")
+        print("start \(__FUNCTION__)")
         NSLog("%@", "\(__FUNCTION__)")
-        println("user tapped \(id)")
+        print("user tapped \(id)")
         // you _must_ call the completion handler to tell the runtime you did this!
         completionHandler()
-        println("end \(__FUNCTION__)")
+        print("end \(__FUNCTION__)")
     }
     
     
     func applicationDidBecomeActive(application: UIApplication) {
-        println("start \(__FUNCTION__)")
-        println("end \(__FUNCTION__)")
+        print("start \(__FUNCTION__)")
+        print("end \(__FUNCTION__)")
     }
 }

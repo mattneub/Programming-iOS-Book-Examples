@@ -9,7 +9,7 @@ class SearchResultsController : UITableViewController {
         
     func takeData(data:[[String]]) {
         // we don't use sections, so flatten the data into a single array of strings
-        self.originalData = data.reduce([String](), combine:+)
+        self.originalData = data.flatMap{$0}
     }
     
     override func viewDidLoad() {
@@ -59,6 +59,7 @@ extension SearchResultsController : UISearchResultsUpdating {
 
 extension SearchResultsController : UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        print("button")
         self.updateSearchResultsForSearchController(self.searchController!)
     }
 }

@@ -43,7 +43,7 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if tableView.cellForRowAtIndexPath(indexPath)!.selected {
+        if tableView.indexPathForSelectedRow == indexPath {
             tableView.deselectRowAtIndexPath(indexPath, animated:false)
             return nil
         }

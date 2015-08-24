@@ -32,7 +32,7 @@ class StyledText: UIView {
         super.awakeFromNib()
         
         let path = NSBundle.mainBundle().pathForResource("states", ofType: "txt")!
-        let s = String(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil)
+        let s = try! String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
         
         let desc = UIFontDescriptor(name:"Didot", size:18)
         let desc2 = desc.fontDescriptorByAddingAttributes(
@@ -44,7 +44,7 @@ class StyledText: UIView {
         let f = UIFont(descriptor: desc2, size: 0)
         
         let d = [NSFontAttributeName:f]
-        let mas = NSMutableAttributedString(string: s!, attributes: d)
+        let mas = NSMutableAttributedString(string: s, attributes: d)
         mas.addAttribute(NSParagraphStyleAttributeName,
             value: lend() {
                 (para:NSMutableParagraphStyle) in
@@ -115,6 +115,7 @@ class StyledText: UIView {
         func lastCharIsControl () -> Bool {
             let lastCharRange = glyphRange.location + glyphRange.length - 1
             let property = self.lm.propertyForGlyphAtIndex(lastCharRange)
+            // let ok = property.contains[.ControlCharacter]
             let mask1 = property.rawValue
             let mask2 = NSGlyphProperty.ControlCharacter.rawValue
             return mask1 & mask2 != 0
@@ -125,7 +126,7 @@ class StyledText: UIView {
         // okay, we've got the range!
         let characterRange = self.lm.characterRangeForGlyphRange(glyphRange, actualGlyphRange:nil)
         let s = (self.text.string as NSString).substringWithRange(characterRange) // state name
-        println("you tapped \(s)")
+        print("you tapped \(s)")
         let lm = self.lm as! MyLayoutManager
         lm.wordRange = characterRange
         self.setNeedsDisplay()
