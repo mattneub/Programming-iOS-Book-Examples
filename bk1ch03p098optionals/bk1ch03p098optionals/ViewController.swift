@@ -43,7 +43,7 @@ class ViewController: UIViewController {
             print("it is empty") // prints
         }
 
-        let crash = false
+        var crash : Bool {return false}
         if crash {
             var stringMaybe6 : String?
             optionalExpecter(stringMaybe6) // legal because of implicit initialization
