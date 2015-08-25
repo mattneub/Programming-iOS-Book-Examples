@@ -11,12 +11,13 @@ class ViewController: UIViewController {
         
         // trick #1; declare the delegate _before_ presentation!
         if let pres = vc.popoverPresentationController {
-            pres.delegate = self
+            pres.delegate = self // comment out to see what the defaults are
         }
 
         self.presentViewController(vc, animated: true, completion: nil)
 
         let wv = UIWebView()
+        wv.backgroundColor = UIColor.whiteColor()
         vc.view.addSubview(wv)
         wv.frame = vc.view.bounds
         wv.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
@@ -25,16 +26,19 @@ class ViewController: UIViewController {
         wv.loadHTMLString(s, baseURL: nil)
         
         if let pop = vc.popoverPresentationController {
+            print(pop)
             pop.sourceView = (sender as! UIView)
             pop.sourceRect = (sender as! UIView).bounds
+            pop.backgroundColor = UIColor.whiteColor()
         }
         
         // that alone is completely sufficient, on iOS 8, for iPad and iPhone!
         // on iPhone the v.c. will be modal fullscreen by default
         // thus there is no need for conditional code about what device this is!
         
-        // however, there's no way to dismiss the web view on iPhone
+        // however, there's no way to dismiss the fullscreen web view on iPhone
         // the way we take care of this is thru the popover presentation controller's delegate
+        // it substitutes a different view controller with a Done button
     }
 }
 
@@ -45,36 +49,37 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
     // therefore, the delegate is consulted
     
     // trick #2: implement this method even if you want the default...
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        // we could do some sort of check here...
-        // ...but the important thing is: we won't even be consulted except in an "adaptive" situation
-        // i.e. it's not an iPad
-        //return .FullScreen
+    // NB I've switched to the newer method, so we are called on both iPad and iPhone
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        if traitCollection.horizontalSizeClass == .Compact {
+            // return .None // permitted not to adapt even on iPhone
+            // return .FormSheet // can also cover partially on iPhone
+            return .FullScreen
+        }
+        // return .FullScreen // permitted to adapt even on iPad
+        // return .FormSheet // can adapt to anything
         return .None
     }
     
-    // trick #3: fix the interface for iPhone, but this won't be called
-    // unless you did trick #2 and returned .FullScreen (or .OverFullScreen)
+    // trick #3: fix the interface for iPhone
+
     func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
         // we actually get the chance to swap out the v.c. for another!
-        // again, we could do a check here...
-        // ... but one thing is for sure: this must be a fullscreen iPhone presentation
-        let vc = controller.presentedViewController
-        let nav = UINavigationController(rootViewController: vc)
-        let b = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "dismissHelp:")
-        vc.navigationItem.rightBarButtonItem = b
-        return nav
+        if style != .Popover {
+            let vc = controller.presentedViewController
+            let nav = UINavigationController(rootViewController: vc)
+            let b = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "dismissHelp:")
+            vc.navigationItem.rightBarButtonItem = b
+            return nav
+        }
+        return nil
     }
     
     func dismissHelp(sender:AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    /*
-    Was that cool or what? But wait, there's more!
-    Return .None from the first method instead of .FullScreen, and you get
-    an actual bona fide pointy-arrowed popover right on the iPhone - for the first time in history!
-*/
     
 }
 

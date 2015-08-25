@@ -21,7 +21,7 @@
                                 <items>
                                     <barButtonItem title="Popover1" id="0Gt-AR-zng">
                                         <connections>
-                                            <segue destination="m0e-Xf-Op5" kind="popoverPresentation" identifier="MyPopover" popoverAnchorBarButtonItem="0Gt-AR-zng" id="Vci-eB-N8l">
+                                            <segue destination="m0e-Xf-Op5" kind="popoverPresentation" identifier="MyPopover" customClass="MyPopoverSegue" customModule="ch22p760popoverInStoryboard" customModuleProvider="target" popoverAnchorBarButtonItem="0Gt-AR-zng" id="Vci-eB-N8l">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES"/>
                                             </segue>
                                         </connections>

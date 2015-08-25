@@ -18,9 +18,9 @@ class ExtraViewController : UIViewController {
     }
     
     @IBAction func doButton(sender:AnyObject) {
-        println("extra view controller view frame: \(self.view.frame)")
+        print("extra view controller view frame: \(self.view.frame)")
         self.dismissViewControllerAnimated(true, completion:{
-            println("dismissed")
+            print("dismissed")
             })
     }
     
@@ -30,7 +30,7 @@ class ExtraViewController : UIViewController {
     }
     
     deinit {
-        println("dealloc extra view controller")
+        print("dealloc extra view controller")
     }
     
 }

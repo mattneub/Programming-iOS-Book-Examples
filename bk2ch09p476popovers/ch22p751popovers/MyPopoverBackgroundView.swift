@@ -10,10 +10,8 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
     var arrOff : CGFloat
     var arrDir : UIPopoverArrowDirection
     
-    struct Arrow {
-        static let ARBASE : CGFloat = 20
-        static let ARHEIGHT : CGFloat = 20
-    }
+    static var ARBASE : CGFloat {return 20}
+    static var ARHEIGHT : CGFloat {return 20}
     
     override class func wantsDefaultContentAppearance() -> Bool {
         return true // try false to see if you can find a difference...
@@ -57,12 +55,13 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
         if propX < limit {
             propX = limit
         }
-        CGContextTranslateCTM(con, rect.size.width/2.0 + propX - Arrow.ARBASE/2.0, 0)
-        CGContextMoveToPoint(con, 0, Arrow.ARHEIGHT)
-        CGContextAddLineToPoint(con, Arrow.ARBASE / 2.0, 0)
-        CGContextAddLineToPoint(con, Arrow.ARBASE, Arrow.ARHEIGHT)
+        let klass = self.dynamicType
+        CGContextTranslateCTM(con, rect.size.width/2.0 + propX - klass.ARBASE/2.0, 0)
+        CGContextMoveToPoint(con, 0, klass.ARHEIGHT)
+        CGContextAddLineToPoint(con, klass.ARBASE / 2.0, 0)
+        CGContextAddLineToPoint(con, klass.ARBASE, klass.ARHEIGHT)
         CGContextClosePath(con)
-        CGContextAddRect(con, CGRectMake(0,Arrow.ARHEIGHT,Arrow.ARBASE,15))
+        CGContextAddRect(con, CGRectMake(0,klass.ARHEIGHT,klass.ARBASE,15))
         CGContextClip(con)
         lin.drawAtPoint(CGPointMake(-40,-40))
         CGContextRestoreGState(con)
@@ -70,7 +69,7 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
         // draw the body, to go behind the view part of our rectangle (i.e. rect minus arrow)
         var arrow = CGRectZero
         var body = CGRectZero
-        CGRectDivide(rect, &arrow, &body, Arrow.ARHEIGHT, .MinYEdge)
+        CGRectDivide(rect, &arrow, &body, klass.ARHEIGHT, .MinYEdge)
         lin.drawInRect(body)
         
     }
@@ -82,11 +81,11 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
     // we are required to implement all this even though it's obvious what it needs to do
     
     override class func arrowBase() -> CGFloat {
-        return Arrow.ARBASE // no class variables in Swift, no #define, argh
+        return self.ARBASE
     }
     
     override class func arrowHeight() -> CGFloat {
-        return Arrow.ARHEIGHT // no class variables in Swift, no #define, argh
+        return self.ARHEIGHT
     }
     
     override var arrowDirection : UIPopoverArrowDirection {

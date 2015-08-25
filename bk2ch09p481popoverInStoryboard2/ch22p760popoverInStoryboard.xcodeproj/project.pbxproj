@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		32B8123D1B8BED9C00B04D1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32B8123C1B8BED9C00B04D1E /* LaunchScreen.storyboard */; };
 		32B8123F1B8BEDC900B04D1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B8123E1B8BEDC900B04D1E /* AppDelegate.swift */; };
+		32C132B51B8BFA8400CA7EDE /* MyPopoverSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C132B41B8BFA8400CA7EDE /* MyPopoverSegue.swift */; };
 		32CAF32C1987140C00FEE6D8 /* Popover1View1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CAF32B1987140C00FEE6D8 /* Popover1View1.swift */; };
 		32CAF32E198714F000FEE6D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CAF32D198714F000FEE6D8 /* ViewController.swift */; };
 		C97528CD180840D700CB3D2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97528CC180840D700CB3D2D /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		32B8123C1B8BED9C00B04D1E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32B8123E1B8BEDC900B04D1E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		32C132B41B8BFA8400CA7EDE /* MyPopoverSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPopoverSegue.swift; sourceTree = "<group>"; };
 		32CAF32B1987140C00FEE6D8 /* Popover1View1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover1View1.swift; sourceTree = "<group>"; };
 		32CAF32D198714F000FEE6D8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C97528B1180840D700CB3D2D /* ch22p760popoverInStoryboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch22p760popoverInStoryboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +61,7 @@
 				C97528EA180841B100CB3D2D /* Main.storyboard */,
 				32B8123E1B8BEDC900B04D1E /* AppDelegate.swift */,
 				32CAF32D198714F000FEE6D8 /* ViewController.swift */,
+				32C132B41B8BFA8400CA7EDE /* MyPopoverSegue.swift */,
 				32CAF32B1987140C00FEE6D8 /* Popover1View1.swift */,
 				C97528CC180840D700CB3D2D /* Assets.xcassets */,
 				32B8123C1B8BED9C00B04D1E /* LaunchScreen.storyboard */,
@@ -134,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32B8123F1B8BEDC900B04D1E /* AppDelegate.swift in Sources */,
+				32C132B51B8BFA8400CA7EDE /* MyPopoverSegue.swift in Sources */,
 				32CAF32E198714F000FEE6D8 /* ViewController.swift in Sources */,
 				32CAF32C1987140C00FEE6D8 /* Popover1View1.swift in Sources */,
 			);

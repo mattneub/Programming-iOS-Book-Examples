@@ -30,30 +30,32 @@ class ViewController : UIViewController {
         let b2 = UIBarButtonItem(barButtonSystemItem: .Done, target: self,
             action: "savePop1:")
         vc.navigationItem.leftBarButtonItem = b2
-        let bb = UIButton.buttonWithType(.InfoDark) as! UIButton
+        let bb = UIButton(type:.InfoDark)
         bb.addTarget(self, action:"doPresent:", forControlEvents:.TouchUpInside)
         bb.sizeToFit()
         vc.navigationItem.titleView = bb
         //hmm, this feels like a bug: merely examining the presentation controller...
         //freezes it so that it never becomes a popover presentation controller
-        //println(nav.presentationController)
+        //print(nav.presentationController)
         nav.modalPresentationStyle = .Popover
-        //println(nav.presentationController)
+        //print(nav.presentationController)
         self.presentViewController(nav, animated: true, completion: nil)
         
         // where's the configuration for the popover controller?
         // we can do it _after_ presentation
         if let pop = nav.popoverPresentationController { // self-contained; no need to retain or track!
-            pop.barButtonItem = sender as! UIBarButtonItem // who arrow points to
+            pop.barButtonItem = sender as? UIBarButtonItem // who arrow points to
             pop.delegate = self
             // if you want to prevent toolbar buttons from being active
             // by setting passthroughViews to nil, you must use non-zero delayed performance
             // I find this annoying; why does the toolbar default to being active?
+            // pop.passthroughViews = nil // too soon, has no effect
             delay(0.1) {
+                print(pop.passthroughViews)
                 pop.passthroughViews = nil
             }
             // just playing with appearance; try it with and without
-        pop.backgroundColor = UIColor.yellowColor() // visible as arrow color
+            pop.backgroundColor = UIColor.yellowColor() // visible as arrow color
         }
         nav.navigationBar.barTintColor = UIColor.redColor() // works in iOS 8
         //nav.navigationBar.backgroundColor = UIColor.redColor()
@@ -108,6 +110,8 @@ class ViewController : UIViewController {
         let vc = UIViewController()
         vc.modalPresentationStyle = .Popover
         // vc.modalInPopover = true
+        print(vc.popoverPresentationController) // NB valid here, we could configure here
+        
         self.presentViewController(vc, animated: true, completion: nil)
         // vc's view is now loaded and we are free to configure it further
         vc.view.frame = CGRectMake(0,0,300,300)
@@ -121,34 +125,34 @@ class ViewController : UIViewController {
         vc.view.addSubview(label)
         let t = UITapGestureRecognizer(target:self, action:"tapped:")
         vc.view.addGestureRecognizer(t)
+        
         if let pop = vc.popoverPresentationController {
+            print(pop)
             // uncomment next line if you want there to be no way to dismiss!
             // vc.modalInPopover = true
             // we can dictate the background view
             pop.popoverBackgroundViewClass = MyPopoverBackgroundView.self
-            pop.barButtonItem = sender as! UIBarButtonItem
+            pop.barButtonItem = sender as? UIBarButtonItem
             // we can force the popover further from the edge of the screen
             // silly example: just a little extra space at this popover's right
-            // but it isn't working; this may be an iOS 8 bug
+            // but it isn't working; this may be an iOS 8/9 bug
             pop.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 30)
             pop.delegate = self
             delay(0.1) {
                 pop.passthroughViews = nil
             }
         }
+
     }
     
     func tapped (sender:AnyObject) {
-        println("tap")
-        let presenter = self.presentedViewController!
-        presenter.modalInPopover = true // no effect
+        print("tap")
         let vc = UIViewController()
-        vc.modalInPopover = true // no effect
         vc.modalPresentationStyle = .CurrentContext // oooh
         vc.view.frame = CGRectMake(0,0,300,300)
         vc.view.backgroundColor = UIColor.whiteColor()
         vc.preferredContentSize = vc.view.bounds.size
-        let b = UIButton.buttonWithType(.System) as! UIButton
+        let b = UIButton(type:.System)
         b.setTitle("Done", forState:.Normal)
         b.sizeToFit()
         b.center = CGPointMake(150,150)
@@ -157,31 +161,40 @@ class ViewController : UIViewController {
         b.addTarget(self, action:"done:", forControlEvents:.TouchUpInside)
         vc.view.addSubview(b)
         // uncomment next line if you'd like to experiment
-        // previously, only coverVertical was legal, but in iOS this restriction is lifted
+        // previously, only coverVertical was legal, but this restriction is lifted
         vc.modalTransitionStyle = .FlipHorizontal // wow, this looks really cool
+        
+        let presenter = self.presentedViewController!
         presenter.presentViewController(vc, animated:true, completion:{
-                _ in println("presented")
-            })
-        //vc.modalInPopover = true // no effect
-        delay(1) {
-            // change in iOS 8.3!
-            // I was trying to show that even though presented-in-popover v.c. _is_ modal in popover...
-            // ... this has no effect: tapping outside dismisses _both_, including the popover
-            // that was in iOS 8.1 (and 8.2?), but this is no longer true in 8.3
-            // what happens now is that, as in iOS 7, presented-in-popover v.c. is modal once again
-            // tapping outside the popover dismisses the presented-in-popover v.c.
-            // but _not_ the popover itself
-            // more about this in a later example
-            println(presenter.popoverPresentationController!.passthroughViews)
-            println(vc.modalInPopover)
-        }
+            _ in
+            print("presented")
+            
+            // long-standing problem of how we want this to be dismissable
+            // presenter.modalInPopover = true // no, has no effect
+            // vc.modalInPopover = true // no, unnecessary: it now _will_ be modal!
+            // (and in fact you can't prevent it)
+        })
+        
+        // change in iOS 8.3!
+        // I was trying to show that even though presented-in-popover v.c. _is_ modal in popover...
+        // ... this has no effect: tapping outside dismisses _both_, including the popover
+        // that was in iOS 8.1 (and 8.2?), but this is no longer true in 8.3
+        // what happens now is that, as in iOS 7, presented-in-popover v.c. is modal once again
+        // tapping outside the popover dismisses the presented-in-popover v.c.
+        // but _not_ the popover itself
+        // more about this in a later example
+        
+        // changed again in iOS 9?! 
+        // Now we are back to the way it was in 8.1: tapping outside dismisses both
+        // I'm working around this with `shouldDismiss`, below
+        
     }
     
     func done (sender:AnyObject) {
         var r = sender as! UIResponder
-        do { r = r.nextResponder()! } while !(r is UIViewController)
+        repeat { r = r.nextResponder()! } while !(r is UIViewController)
         (r as! UIViewController).dismissViewControllerAnimated(true, completion: {
-            println("dismissed")
+            print("dismissed")
             })
     }
 }
@@ -216,7 +229,7 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
     
     func popoverPresentationController(popoverPresentationController: UIPopoverPresentationController, willRepositionPopoverToRect rect: UnsafeMutablePointer<CGRect>, inView view: AutoreleasingUnsafeMutablePointer<UIView?>) {
         // just playing (also, note how to talk thru pointer parameter in Swift)
-        println("reposition")
+        print("reposition")
         if view.memory == self.button {
             rect.memory = self.button2.bounds
             view.memory = self.button2

@@ -13,9 +13,17 @@ func delay(delay:Double, closure:()->()) {
 
 class ViewController : UIViewController, UIToolbarDelegate {
     var oldChoice : Int = -1
-    
+
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return .TopAttached
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let dest = segue.destinationViewController
+        if let pop = dest.popoverPresentationController {
+            pop.delegate = self
+        }
+        self.oldChoice = NSUserDefaults.standardUserDefaults().integerForKey("choice")
     }
     
     @IBAction func unwind (sender:UIStoryboardSegue) {
@@ -23,35 +31,21 @@ class ViewController : UIViewController, UIToolbarDelegate {
             NSUserDefaults.standardUserDefaults().setInteger(self.oldChoice, forKey: "choice")
         }
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print(segue)
-        if segue.identifier == "MyPopover" {
-            let dest = segue.destinationViewController
-            if let pop = dest.popoverPresentationController {
-                pop.delegate = self
-                delay(0.1) {
-                    pop.passthroughViews = nil
-                }
-                // pop.permittedArrowDirections = [.Up, .Down]
-            }
-        }
-        self.oldChoice = NSUserDefaults.standardUserDefaults().integerForKey("choice")
-    }
 }
 
 extension ViewController : UIPopoverPresentationControllerDelegate {
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        // try swapping these; it works
+        print("here3")
         if traitCollection.horizontalSizeClass == .Compact {
             return .FullScreen
-            // return .None
         }
         return .None
     }
     
+    // but this doesn't work; my guess is that we have gone out of existence at this point
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
+        print("here4") // not called, this could be a bug
         NSUserDefaults.standardUserDefaults().setInteger(self.oldChoice, forKey: "choice")
     }
 

@@ -10,7 +10,7 @@
 		325C17CE1985A32B007A27A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325C17CD1985A32B007A27A8 /* AppDelegate.swift */; };
 		325C17D01985A32B007A27A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325C17CF1985A32B007A27A8 /* ViewController.swift */; };
 		325C17D31985A32B007A27A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 325C17D11985A32B007A27A8 /* Main.storyboard */; };
-		325C17D51985A32B007A27A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 325C17D41985A32B007A27A8 /* Images.xcassets */; };
+		325C17D51985A32B007A27A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 325C17D41985A32B007A27A8 /* Assets.xcassets */; };
 		325C17ED19870ED3007A27A8 /* linkhelp.html in Resources */ = {isa = PBXBuildFile; fileRef = 325C17EC19870ED3007A27A8 /* linkhelp.html */; };
 		32A674F81B4C55AA0014EEFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A674F71B4C55AA0014EEFA /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -21,7 +21,7 @@
 		325C17CD1985A32B007A27A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		325C17CF1985A32B007A27A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		325C17D21985A32B007A27A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		325C17D41985A32B007A27A8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		325C17D41985A32B007A27A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		325C17EC19870ED3007A27A8 /* linkhelp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = linkhelp.html; sourceTree = "<group>"; };
 		32A674F71B4C55AA0014EEFA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,18 +61,10 @@
 				32A674F71B4C55AA0014EEFA /* LaunchScreen.storyboard */,
 				325C17D11985A32B007A27A8 /* Main.storyboard */,
 				325C17EC19870ED3007A27A8 /* linkhelp.html */,
-				325C17D41985A32B007A27A8 /* Images.xcassets */,
-				325C17CB1985A32B007A27A8 /* Supporting Files */,
-			);
-			path = PopoverOnPhone;
-			sourceTree = "<group>";
-		};
-		325C17CB1985A32B007A27A8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				325C17D41985A32B007A27A8 /* Assets.xcassets */,
 				325C17CC1985A32B007A27A8 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = PopoverOnPhone;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +128,7 @@
 				325C17ED19870ED3007A27A8 /* linkhelp.html in Resources */,
 				32A674F81B4C55AA0014EEFA /* LaunchScreen.storyboard in Resources */,
 				325C17D31985A32B007A27A8 /* Main.storyboard in Resources */,
-				325C17D51985A32B007A27A8 /* Images.xcassets in Resources */,
+				325C17D51985A32B007A27A8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +192,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -237,7 +229,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -249,7 +241,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = PopoverOnPhone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -260,7 +251,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = PopoverOnPhone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
