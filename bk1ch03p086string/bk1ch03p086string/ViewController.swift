@@ -51,7 +51,8 @@ class ViewController: UIViewController {
             let s = "hello"
             let s2 = "world"
             let space = " "
-            let greeting = space.join([s,s2])
+            // "join" has changed to "joinWithSeparator", which works the other way round
+            let greeting = [s,s2].joinWithSeparator(space)
             print(greeting)
         }
         
