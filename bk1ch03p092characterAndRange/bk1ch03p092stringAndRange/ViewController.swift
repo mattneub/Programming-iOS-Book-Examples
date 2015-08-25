@@ -96,7 +96,8 @@ class ViewController: UIViewController {
         do {
             let s = "hello"
             let ix = s.startIndex
-            let c = s[advance(ix,1)] // "e"
+            // "advance" is now an instance method "advancedBy"
+            let c = s[ix.advancedBy(1)] // "e"
             print(c)
         }
         
@@ -117,8 +118,9 @@ class ViewController: UIViewController {
         
         do {
             var s = "hello"
-            let ix = advance(s.characters.startIndex, 1)
-            s.splice("ey, h".characters, atIndex: ix)
+            let ix = s.characters.startIndex.advancedBy(1)
+            // "splice" is now "insertContentsOf"
+            s.insertContentsOf("ey, h".characters, at: ix)
             print(s)
         }
         
@@ -161,8 +163,8 @@ class ViewController: UIViewController {
         
         do {
             let s = "hello"
-            let ix1 = advance(s.startIndex,1)
-            let ix2 = advance(ix1,2)
+            let ix1 = s.startIndex.advancedBy(1)
+            let ix2 = ix1.advancedBy(2)
             let s2 = s[ix1...ix2] // "ell"
             print(s2)
         }
@@ -192,7 +194,7 @@ class ViewController: UIViewController {
         do {
             var s = "hello"
             let ix = s.startIndex
-            let r = advance(ix,1)...advance(ix,3)
+            let r = ix.advancedBy(1)...ix.advancedBy(3)
             s.replaceRange(r, with: "ipp") // s is now "hippo"
             print(s)
         }
@@ -200,7 +202,7 @@ class ViewController: UIViewController {
         do {
             var s = "hello"
             let ix = s.startIndex
-            let r = advance(ix,1)...advance(ix,3)
+            let r = ix.advancedBy(1)...ix.advancedBy(3)
             s.removeRange(r) // s is now "ho"
             print(s)
         }

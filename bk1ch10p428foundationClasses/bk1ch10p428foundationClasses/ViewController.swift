@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         do {
             let s = "hello"
             // let s2 = s.substringToIndex(4) // compile error
-            let s2 = s.substringToIndex(advance(s.startIndex,4))
+            let s2 = s.substringToIndex(s.startIndex.advancedBy(4))
             let ss2 = (s as NSString).substringToIndex(4)
             _ = s2
             _ = ss2

@@ -10,11 +10,11 @@ struct Digit {
     subscript(ix:Int) -> Int {
         get {
             let s = String(self.number)
-            return Int(String(s[advance(s.startIndex,ix)]))!
+            return Int(String(s[s.startIndex.advancedBy(ix)]))!
         }
         set {
             var s = String(self.number)
-            let i = advance(s.startIndex,ix)
+            let i = s.startIndex.advancedBy(ix)
             s.replaceRange(i...i, with: String(newValue))
             self.number = Int(s)!
         }

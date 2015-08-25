@@ -195,7 +195,7 @@ class ViewController: UIViewController {
             var arr = [1,2,3]
             arr.insert(4, atIndex:1)
             print(arr)
-            arr.splice([10,9,8], atIndex:1)
+            arr.insertContentsOf([10,9,8], at:1)
             print(arr)
             let i = arr.removeAtIndex(3)
             let ii = arr.removeLast()
@@ -210,8 +210,8 @@ class ViewController: UIViewController {
         
         do {
             let arr = [[1,2], [3,4], [5,6]]
-            let arr2 = [10,11].join(arr) // [1, 2, 10, 11, 3, 4, 10, 11, 5, 6]
-            let arr3 = [].join(arr) // [1, 2, 3, 4, 5, 6]
+            let arr2 = arr.joinWithSeparator([10,11]) // [1, 2, 10, 11, 3, 4, 10, 11, 5, 6]
+            let arr3 = arr.joinWithSeparator([]) // [1, 2, 3, 4, 5, 6]
             let arr4 = arr.flatMap {$0} // new in Swift 1.2
             _ = arr2
             _ = arr3
