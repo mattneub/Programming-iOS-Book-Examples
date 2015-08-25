@@ -4,6 +4,8 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
+    
+    var dothis = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +21,7 @@ class ViewController: UIViewController {
         let opts : UIViewAnimationOptions = [.Autoreverse, .Repeat]
         _ = opts
         
-        if false {
+        if dothis {
             let asset = AVAsset()
             let track = asset.tracks[0]
             let duration : CMTime = track.timeRange.duration
