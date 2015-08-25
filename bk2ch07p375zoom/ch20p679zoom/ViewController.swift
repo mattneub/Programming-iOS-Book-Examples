@@ -12,12 +12,12 @@ class ViewController : UIViewController, UIScrollViewDelegate {
         sv.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sv)
         var con = [NSLayoutConstraint]()
-        con.extend(
+        con.appendContentsOf(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "H:|[sv]|",
                 options:[], metrics:nil,
                 views:["sv":sv]))
-        con.extend(
+        con.appendContentsOf(
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "V:|[sv]|",
                 options:[], metrics:nil,

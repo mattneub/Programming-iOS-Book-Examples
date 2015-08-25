@@ -47,18 +47,18 @@ class ViewController: UIViewController {
         
         // first set of constraints
 
-        self.constraintsWith.extend(c1)
-        self.constraintsWith.extend(c2)
-        self.constraintsWith.extend(c3)
-        self.constraintsWith.extend(c4)
-        self.constraintsWith.extend(c5with)
+        self.constraintsWith.appendContentsOf(c1)
+        self.constraintsWith.appendContentsOf(c2)
+        self.constraintsWith.appendContentsOf(c3)
+        self.constraintsWith.appendContentsOf(c4)
+        self.constraintsWith.appendContentsOf(c5with)
         
         // second set of constraints
         
-        self.constraintsWithout.extend(c1)
-        self.constraintsWithout.extend(c3)
-        self.constraintsWithout.extend(c4)
-        self.constraintsWithout.extend(c5without)
+        self.constraintsWithout.appendContentsOf(c1)
+        self.constraintsWithout.appendContentsOf(c3)
+        self.constraintsWithout.appendContentsOf(c4)
+        self.constraintsWithout.appendContentsOf(c5without)
 
         // apply first set
 

@@ -83,14 +83,14 @@ class ViewController: UIViewController {
         // flockTwoTogether(Bird4(), Insect4()) // nope
         
         var s = "hello"
-        s.extend(" world".characters) // "hello world"
+        s.appendContentsOf(" world".characters) // "hello world"
         print(s)
-        s.extend(["!" as Character])
+        s.appendContentsOf(["!" as Character])
         print(s) // "hello world"
         
         var arr = ["mannie", "moe"]
-        arr.extend(["jack"])
-        // arr.extend([1]) // nope
+        arr.appendContentsOf(["jack"])
+        // arr.appendContentsOf([1]) // nope
         
         
     }

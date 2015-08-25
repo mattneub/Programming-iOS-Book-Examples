@@ -50,11 +50,11 @@ class RootViewController : UITableViewController {
             con.append(
                 iv.widthAnchor.constraintEqualToAnchor(iv.heightAnchor))
             // label has height pinned to superview
-            con.extend(
+            con.appendContentsOf(
                 NSLayoutConstraint.constraintsWithVisualFormat("V:|[lab]|",
                 options:[], metrics:nil, views:d))
             // horizontal margins
-            con.extend(
+            con.appendContentsOf(
                 NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[lab]-15-[iv]-15-|",
                 options:[], metrics:nil, views:d))
             NSLayoutConstraint.activateConstraints(con)

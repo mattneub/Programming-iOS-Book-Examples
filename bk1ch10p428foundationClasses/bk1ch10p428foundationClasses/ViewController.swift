@@ -151,7 +151,7 @@ class ViewController: UIViewController {
         
         do {
             var arr = ["zero", "one", "two", "three", "four", "five"]
-            arr.extend(["six", "seven", "eight", "nine", "ten"])
+            arr.appendContentsOf(["six", "seven", "eight", "nine", "ten"])
             let ixs = NSMutableIndexSet()
             ixs.addIndexesInRange(NSRange(1...4))
             ixs.addIndexesInRange(NSRange(8...10))

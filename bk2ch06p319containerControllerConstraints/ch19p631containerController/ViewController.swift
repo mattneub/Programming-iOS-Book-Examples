@@ -80,8 +80,8 @@ class ViewController : UIViewController {
         v.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.deactivateConstraints(self.constraints)
         self.constraints.removeAll()
-        self.constraints.extend(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options:[], metrics:nil, views:["v":v]))
-        self.constraints.extend(NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options:[], metrics:nil, views:["v":v]))
+        self.constraints.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options:[], metrics:nil, views:["v":v]))
+        self.constraints.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options:[], metrics:nil, views:["v":v]))
         NSLayoutConstraint.activateConstraints(self.constraints)
     }
 }

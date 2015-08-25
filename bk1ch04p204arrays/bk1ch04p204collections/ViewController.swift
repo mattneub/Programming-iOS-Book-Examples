@@ -181,8 +181,8 @@ class ViewController: UIViewController {
         do {
             var arr = [1,2,3]
             arr.append(4)
-            arr.extend([5,6])
-            arr.extend(7...8) // arr is now [1,2,3,4,5,6,7,8]
+            arr.appendContentsOf([5,6])
+            arr.appendContentsOf(7...8) // arr is now [1,2,3,4,5,6,7,8]
             
             let arr2 = arr + [4] // arr2 is now [1,2,3,4]
             var arr3 = [1,2,3]

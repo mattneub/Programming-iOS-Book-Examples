@@ -15,7 +15,7 @@ struct Dog2 : CustomStringConvertible {
         var desc = "Dog ("
         let mirror = Mirror(reflecting:self)
         for (k,v) in mirror.children {
-            desc.extend("\(k!): \(v), ")
+            desc.appendContentsOf("\(k!): \(v), ")
         }
         let c = desc.characters.count
         return String(desc.characters.prefix(c-2)) + ")"

@@ -17,7 +17,7 @@ class ViewController : UIViewController {
         
         var c = [NSLayoutConstraint]()
         // "g.r. is pinned to top and bottom of superview"
-        c.extend(
+        c.appendContentsOf(
             NSLayoutConstraint.constraintsWithVisualFormat("V:|[gr]|",
                 options:[], metrics:nil, views:["gr":gr])
         )
@@ -39,7 +39,7 @@ class ViewController : UIViewController {
         self.greenRectConstraintsOnscreen = marrOn
         self.greenRectConstraintsOffscreen = marrOff
         // start out offscreen!
-        c.extend(marrOff)
+        c.appendContentsOf(marrOff)
         NSLayoutConstraint.activateConstraints(c)
         
     }

@@ -34,11 +34,11 @@ class ViewController : UIViewController {
             square.translatesAutoresizingMaskIntoConstraints = false
             let side : CGFloat = 10
             var con = [NSLayoutConstraint]()
-            con.extend([
+            con.appendContentsOf([
                 square.widthAnchor.constraintEqualToConstant(side),
                 square.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
                 ])
-            con.extend(
+            con.appendContentsOf(
                 NSLayoutConstraint.constraintsWithVisualFormat("V:|[square(side)]",
                     options:[], metrics:["side":side],
                     views:["square":square]))

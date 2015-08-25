@@ -104,7 +104,7 @@ class ViewController: UIViewController {
             var d1 = ["NY":"New York", "CA":"California"]
             let d2 = ["MD":"Maryland"]
             // d1 += d2 // nope
-            // d1.extend(d2) // nope
+            // d1.appendContentsOf(d2) // nope
             let mutd1 = NSMutableDictionary(dictionary:d1)
             mutd1.addEntriesFromDictionary(d2)
             d1 = mutd1 as NSDictionary as! [String:String]

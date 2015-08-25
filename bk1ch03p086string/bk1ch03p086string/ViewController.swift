@@ -42,7 +42,8 @@ class ViewController: UIViewController {
         do {
             var s = "hello"
             let s2 = " world"
-            s.extend(s2) // or: sss += sss2
+            // "extend" has changed to "appendContentsOf"
+            s.appendContentsOf(s2) // or: sss += sss2
             print(s)
         }
 

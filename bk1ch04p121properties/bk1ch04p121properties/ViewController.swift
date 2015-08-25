@@ -55,8 +55,8 @@ class Moi7 {
     let last = "Neuburg"
     lazy var whole : String = { // "lazy" or we won't compile
         var s = self.first
-        s.extend(" ")
-        s.extend(self.last)
+        s.appendContentsOf(" ")
+        s.appendContentsOf(self.last)
         return s
     }()
 }
