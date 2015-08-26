@@ -39,7 +39,7 @@ class MyLayer : CALayer {
     }
     
     override func drawInContext(con: CGContext) {
-        let r = self.bounds.rectByInsetting(dx:20, dy:20)
+        let r = self.bounds.insetBy(dx:20, dy:20)
         CGContextSetFillColorWithColor(con, UIColor.redColor().CGColor)
         CGContextFillRect(con, r)
         CGContextSetLineWidth(con, self.thickness)

@@ -10,7 +10,7 @@ class StringDrawer : UIView {
     }
     
     override func drawRect(rect: CGRect) {
-        let r = rect.rectByOffsetting(dx: 0, dy: 2)
+        let r = rect.offsetBy(dx: 0, dy: 2)
         // bug trying to "or" NSStringDrawingOptions values together...
         // fixed in Swift 1.2 / Xcode 6.3!
         let opts : NSStringDrawingOptions = .TruncatesLastVisibleLine | .UsesLineFragmentOrigin

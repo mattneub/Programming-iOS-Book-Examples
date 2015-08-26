@@ -69,7 +69,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
         
         var vc1 : UIViewController!
         var vc2 : UIViewController!
-        var con : UIView!
+        // var con : UIView!
         var r1start : CGRect!
         var r2end : CGRect!
         var v1 : UIView!
@@ -81,7 +81,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             vc1 = tc.viewControllerForKey(UITransitionContextFromViewControllerKey)!
             vc2 = tc.viewControllerForKey(UITransitionContextToViewControllerKey)!
             
-            con = tc.containerView()!
+            // con = tc.containerView()!
             
             r1start = tc.initialFrameForViewController(vc1)
             r2end = tc.finalFrameForViewController(vc2)
@@ -161,7 +161,7 @@ extension AppDelegate : UIViewControllerInteractiveTransitioning {
         let r1start = transitionContext.initialFrameForViewController(vc1)
         let r2end = transitionContext.finalFrameForViewController(vc2)
         
-        let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)!
+        // let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)!
         let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)!
         
         // which way we are going depends on which vc is which

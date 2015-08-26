@@ -23,7 +23,7 @@ class RootViewController: UIViewController {
                 .FlexibleRightMargin]
             label.sizeToFit()
             label.center = CGPointMake(v.bounds.midX, v.bounds.midY)
-            label.frame.integerize()
+            label.frame.makeIntegralInPlace()
 
         case 2:
             label.translatesAutoresizingMaskIntoConstraints = false

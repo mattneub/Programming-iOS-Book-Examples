@@ -4,8 +4,8 @@ import UIKit
 class SecondViewController : UIViewController {
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        print(self, appendNewline:false)
-        print(" ", appendNewline:false)
+        print(self, terminator: "")
+        print(" ", terminator: "")
         print(__FUNCTION__)
         return .Landscape // called, but pointless
     }

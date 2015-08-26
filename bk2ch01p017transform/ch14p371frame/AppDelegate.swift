@@ -19,7 +19,7 @@ import UIKit
         case 1:
             let v1 = UIView(frame:CGRectMake(113, 111, 132, 194))
             v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
-            let v2 = UIView(frame:v1.bounds.rectByInsetting(dx: 10, dy: 10))
+            let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10))
             v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
             mainview.addSubview(v1)
             v1.addSubview(v2)
@@ -30,7 +30,7 @@ import UIKit
         case 2:
             let v1 = UIView(frame:CGRectMake(113, 111, 132, 194))
             v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
-            let v2 = UIView(frame:v1.bounds.rectByInsetting(dx: 10, dy: 10))
+            let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10))
             v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
             mainview.addSubview(v1)
             v1.addSubview(v2)
@@ -87,7 +87,7 @@ import UIKit
         case 7:
             let v1 = UIView(frame:CGRectMake(113, 111, 132, 194))
             v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
-            let v2 = UIView(frame:v1.bounds.rectByInsetting(dx: 10, dy: 10))
+            let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10))
             v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
             mainview.addSubview(v1)
             v1.addSubview(v2)

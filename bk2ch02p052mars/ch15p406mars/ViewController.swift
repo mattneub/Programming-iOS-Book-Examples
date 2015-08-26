@@ -44,7 +44,7 @@ class ViewController : UIViewController {
         case 1:
             // position using autoresizing-type behavior
             iv.center = iv.superview!.bounds.center // see above
-            iv.frame.integerize()
+            iv.frame.makeIntegralInPlace()
         case 2:
             // position using constraints
             iv.translatesAutoresizingMaskIntoConstraints = false

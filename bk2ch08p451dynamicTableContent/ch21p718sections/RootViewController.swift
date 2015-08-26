@@ -114,7 +114,7 @@ class RootViewController : UITableViewController {
                 NSLayoutConstraint.constraintsWithVisualFormat(
                     "V:|[lab]|",
                     options:[], metrics:nil, views:["lab":lab])
-                ].flatMap{$0})
+                ].flatten().map{$0})
             // add tap g.r.
             let tap = UITapGestureRecognizer(target: self, action: "tap:") // *
             tap.numberOfTapsRequired = 2 // *

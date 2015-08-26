@@ -47,11 +47,11 @@ class MySlider: UISlider {
     }
     
     override func maximumValueImageRectForBounds(bounds: CGRect) -> CGRect {
-        return super.maximumValueImageRectForBounds(bounds).rectByOffsetting(dx: 31, dy: 0)
+        return super.maximumValueImageRectForBounds(bounds).offsetBy(dx: 31, dy: 0)
     }
     
     override func minimumValueImageRectForBounds(bounds: CGRect) -> CGRect {
-        return super.minimumValueImageRectForBounds(bounds).rectByOffsetting(dx: -31, dy: 0)
+        return super.minimumValueImageRectForBounds(bounds).offsetBy(dx: -31, dy: 0)
     }
     
     override func trackRectForBounds(bounds: CGRect) -> CGRect {
@@ -64,7 +64,7 @@ class MySlider: UISlider {
     override func thumbRectForBounds(bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
         return super.thumbRectForBounds(
             bounds, trackRect: rect, value: value)
-            .rectByOffsetting(dx: 0, dy: -7)
+            .offsetBy(dx: 0, dy: -7)
     }
 
 }

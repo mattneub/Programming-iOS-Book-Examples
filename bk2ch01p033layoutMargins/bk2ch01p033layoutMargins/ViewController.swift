@@ -5,7 +5,6 @@ class ViewController: UIViewController {
     
     var didSetup = false
     
-    let which = 2
     
     override func viewDidLayoutSubviews() {
         if self.didSetup {return}
@@ -22,7 +21,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activateConstraints([
             NSLayoutConstraint.constraintsWithVisualFormat("H:|-(0)-[v]-(0)-|", options: [], metrics: nil, views: ["v":v]),
             NSLayoutConstraint.constraintsWithVisualFormat("V:|-(0)-[v]-(0)-|", options: [], metrics: nil, views: ["v":v])
-            ].flatMap{$0})
+            ].flatten().map{$0})
         
         // experiment by commenting out this line
         v.preservesSuperviewLayoutMargins = true
@@ -32,7 +31,7 @@ class ViewController: UIViewController {
         v1.translatesAutoresizingMaskIntoConstraints = false
         v.addSubview(v1)
 
-        
+        var which : Int {return 1}
         switch which {
             
         case 1:
@@ -40,7 +39,7 @@ class ViewController: UIViewController {
             NSLayoutConstraint.activateConstraints([
                 NSLayoutConstraint.constraintsWithVisualFormat("H:|-[v1]-|", options: [], metrics: nil, views: ["v1":v1]),
                 NSLayoutConstraint.constraintsWithVisualFormat("V:|-[v1]-|", options: [], metrics: nil, views: ["v1":v1])
-                ].flatMap{$0})
+                ].flatten().map{$0})
             
         case 2:
             // new notation treats margins as a pseudoview (UILayoutGuide)

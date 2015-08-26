@@ -128,7 +128,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
                 NSLayoutConstraint.constraintsWithVisualFormat(
                     "V:|[lab]|",
                     options:[], metrics:nil, views:["lab":lab])
-                ].flatMap{$0})
+                ].flatten().map{$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]

@@ -150,7 +150,7 @@ class CompassLayer : CALayer {
         arrow.needsDisplayOnBoundsChange = false
         arrow.contentsCenter = CGRectMake(0.0, 0.4, 1.0, 0.6)
         arrow.contentsGravity = kCAGravityResizeAspect
-        arrow.bounds.inset(dx: -20, dy: -20)
+        arrow.bounds.insetInPlace(dx: -20, dy: -20)
     }
     
     func mask(arrow:CALayer) {

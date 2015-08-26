@@ -37,7 +37,7 @@ class ViewController : UIViewController {
         lay2.backgroundColor = UIColor.blueColor().CGColor
         lay1.addSublayer(lay2)
         let lay3 = CALayer()
-        lay3.frame = f.rectByOffsetting(dx: 20, dy: 30)
+        lay3.frame = f.offsetBy(dx: 20, dy: 30)
         lay3.backgroundColor = UIColor.greenColor().CGColor
         lay3.zPosition = 10
         lay1.addSublayer(lay3)

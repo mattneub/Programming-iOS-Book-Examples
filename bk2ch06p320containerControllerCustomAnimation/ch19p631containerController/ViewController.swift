@@ -74,7 +74,7 @@ class ViewController : UIViewController {
         NSLayoutConstraint.activateConstraints([
             NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options:[], metrics:nil, views:["v":v]),
             NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options:[], metrics:nil, views:["v":v])
-            ].flatMap{$0})
+            ].flatten().map{$0})
     }
     
 }

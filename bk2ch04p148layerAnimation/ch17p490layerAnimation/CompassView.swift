@@ -32,7 +32,6 @@ class CompassLayer : CALayer {
     func setup () {
         print("setup")
         
-        
         // the gradient
         let g = CAGradientLayer()
         g.contentsScale = UIScreen.mainScreen().scale

@@ -13,14 +13,14 @@ class FirstViewController : UIViewController, UITabBarControllerDelegate {
     // so there's no need to subclass UITabBarController
     
     func tabBarControllerSupportedInterfaceOrientations(tabBarController: UITabBarController) -> UIInterfaceOrientationMask {
-        print(self, appendNewline:false)
-        print(" ", appendNewline:false)
+        print(self, terminator: "")
+        print(" ", terminator: "")
         print(__FUNCTION__)
         return .Portrait    }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        print(self, appendNewline:false)
-        print(" ", appendNewline:false)
+        print(self, terminator: "")
+        print(" ", terminator: "")
         print(__FUNCTION__)
         return .Landscape // called, but pointless
     }

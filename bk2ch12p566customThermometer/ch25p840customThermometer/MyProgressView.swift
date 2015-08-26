@@ -9,7 +9,7 @@ class MyProgressView: UIView {
         let c = UIGraphicsGetCurrentContext()!
         UIColor.whiteColor().set()
         let ins : CGFloat = 2.0
-        let r = self.bounds.rectByInsetting(dx: ins, dy: ins)
+        let r = self.bounds.insetBy(dx: ins, dy: ins)
         let radius : CGFloat = r.size.height / 2.0
         let mpi = CGFloat(M_PI)
         let path = CGPathCreateMutable()

@@ -156,7 +156,7 @@ class ViewController : UIViewController {
         b.setTitle("Done", forState:.Normal)
         b.sizeToFit()
         b.center = CGPointMake(150,150)
-        b.frame = b.frame.integerRect
+        b.frame = b.frame.integral
         b.autoresizingMask = .None
         b.addTarget(self, action:"done:", forControlEvents:.TouchUpInside)
         vc.view.addSubview(b)

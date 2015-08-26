@@ -35,10 +35,10 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     
     @IBAction func doPresent(sender:AnyObject?) {
         
-        print(original.rawValue, appendNewline:false)
-        print("\t", appendNewline:false)
-        print(adaptive.rawValue, appendNewline:false)
-        print("\t", appendNewline:false)
+        print(original.rawValue, terminator: "")
+        print("\t", terminator: "")
+        print(adaptive.rawValue, terminator: "")
+        print("\t", terminator: "")
 
         let svc = SecondViewController(nibName: "SecondViewController", bundle: nil)
         svc.data = "This is very important data!"
@@ -95,8 +95,8 @@ extension ViewController : UIAdaptivePresentationControllerDelegate {
     }
     
     func presentationController(presentationController: UIPresentationController, willPresentWithAdaptiveStyle style: UIModalPresentationStyle, transitionCoordinator: UIViewControllerTransitionCoordinator?) {
-        print(style.rawValue, appendNewline:false)
-        print("\t", appendNewline:false)
+        print(style.rawValue, terminator: "")
+        print("\t", terminator: "")
     }
     
     /*

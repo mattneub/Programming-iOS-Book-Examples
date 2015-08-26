@@ -106,7 +106,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                         options:[], metrics:nil, views:["lab":lab]),
                     NSLayoutConstraint.constraintsWithVisualFormat("V:[lab(30)]-5-|",
                     options:[], metrics:nil, views:["lab":lab])
-                ].flatMap{$0})
+                ].flatten().map{$0})
             }
             let lab = v.subviews[0] as! UILabel
             lab.text = self.sectionNames[indexPath.section]

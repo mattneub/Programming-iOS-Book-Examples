@@ -20,7 +20,7 @@ class MyLayoutManager : NSLayoutManager {
             var r = self.boundingRectForGlyphRange(range, inTextContainer:tc)
             r.origin.x += origin.x
             r.origin.y += origin.y
-            r.inset(dx: -2, dy: 0)
+            r.insetInPlace(dx: -2, dy: 0)
             let c = UIGraphicsGetCurrentContext()!
             CGContextSaveGState(c)
             CGContextSetStrokeColorWithColor(c, UIColor.blackColor().CGColor)

@@ -5,7 +5,6 @@ class ViewController : UIViewController {
     @IBOutlet var iv : UIImageView!
     let context = CIContext(options:nil)
     
-    let which = 3 // 1, 2 work; 3 does not and never has, so why do they say it does?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +32,8 @@ class ViewController : UIViewController {
             ])
         
         // two ways to obtain final bitmap; third way, claimed to work, does not
+        
+        var which : Int { return 2 }
         
         switch which {
         case 1:

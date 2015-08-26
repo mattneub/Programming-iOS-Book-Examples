@@ -14,7 +14,7 @@ class StringDrawer : UIView {
         let which = 1
         switch which {
         case 1:
-            let r = rect.rectByOffsetting(dx: 0, dy: 2)
+            let r = rect.offsetBy(dx: 0, dy: 2)
             let options : NSStringDrawingOptions = .TruncatesLastVisibleLine | .UsesLineFragmentOrigin
             self.attributedText.drawWithRect(r, options: options, context: nil)
         case 2:

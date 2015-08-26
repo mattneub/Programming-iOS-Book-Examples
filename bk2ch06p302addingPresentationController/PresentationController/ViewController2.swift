@@ -37,7 +37,7 @@ extension ViewController2 : UIViewControllerTransitioningDelegate {
 
 class MyPresentationController : UIPresentationController {
     override func frameOfPresentedViewInContainerView() -> CGRect {
-        return super.frameOfPresentedViewInContainerView().rectByInsetting(dx: 40, dy: 40)
+        return super.frameOfPresentedViewInContainerView().insetBy(dx: 40, dy: 40)
     }
 }
 

@@ -98,7 +98,7 @@ class MyPresentationController : UIPresentationController {
         let v = self.presentedView()!
         let con = self.containerView!
         v.center = CGPointMake(con.bounds.midX, con.bounds.midY)
-        return v.frame.integerRect
+        return v.frame.integral
     }
     
     override func containerViewWillLayoutSubviews() {
@@ -128,13 +128,13 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
-        let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
+        // let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
+        // let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
         
         let con = transitionContext.containerView()!
         
-        let r1start = transitionContext.initialFrameForViewController(vc1!)
-        let r2end = transitionContext.finalFrameForViewController(vc2!)
+        // let r1start = transitionContext.initialFrameForViewController(vc1!)
+        // let r2end = transitionContext.finalFrameForViewController(vc2!)
         
         let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)
         let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)

@@ -21,6 +21,6 @@ class MyAnnotationView : MKAnnotationView {
     
     override func drawRect(rect: CGRect) {
         let im = UIImage(named:"clipartdirtbike.gif")!
-        im.drawInRect(self.bounds.rectByInsetting(dx: 5, dy: 5))
+        im.drawInRect(self.bounds.insetBy(dx: 5, dy: 5))
     }
 }

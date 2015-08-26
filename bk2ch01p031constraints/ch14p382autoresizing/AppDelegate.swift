@@ -47,7 +47,6 @@ extension NSLayoutConstraint {
 @UIApplicationMain class AppDelegate : UIResponder, UIApplicationDelegate {
     
     var window : UIWindow?
-    let which = 2
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -71,6 +70,7 @@ extension NSLayoutConstraint {
         v2.translatesAutoresizingMaskIntoConstraints = false
         v3.translatesAutoresizingMaskIntoConstraints = false
         
+        var which : Int {return 3}
         switch which {
         case 1:
             // the old way, and this is the last time I'm going to show this
@@ -173,7 +173,7 @@ extension NSLayoutConstraint {
                 // uncomment me to form a conflict
 //                NSLayoutConstraint.constraintsWithVisualFormat(
 //                    "V:[v3(10)]|", options: [], metrics: nil, views: d),
-                ].flatMap{$0}) // sorry about that but I see no better way
+                ].flatten().map{$0})
         default: break
         }
         

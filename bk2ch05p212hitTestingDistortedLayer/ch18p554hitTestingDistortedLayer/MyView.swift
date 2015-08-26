@@ -26,7 +26,7 @@ class MyView : UIView {
         let lay = subs[subs.count-1]
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
         let con = UIGraphicsGetCurrentContext()!
-        let r = self.bounds.rectByInsetting(dx: 30, dy: 30)
+        let r = self.bounds.insetBy(dx: 30, dy: 30)
         CGContextSaveGState(con)
         CGContextTranslateCTM(con, self.bounds.width/2.0, self.bounds.height/2.0)
         CGContextRotateCTM(con, CGFloat(M_PI)/10.0)

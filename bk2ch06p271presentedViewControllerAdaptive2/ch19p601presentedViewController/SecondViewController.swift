@@ -25,10 +25,10 @@ class SecondViewController : UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print(self.view.bounds.size.width, appendNewline:false)
-        print("\t", appendNewline:false)
-        print(self.view.bounds.size.height, appendNewline:false)
-        print("\t", appendNewline:false)
+        print(self.view.bounds.size.width, terminator: "")
+        print("\t", terminator: "")
+        print(self.view.bounds.size.height, terminator: "")
+        print("\t", terminator: "")
 
         print(self.view.backgroundColor!)
 
