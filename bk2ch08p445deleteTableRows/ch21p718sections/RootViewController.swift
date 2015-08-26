@@ -110,7 +110,6 @@ class RootViewController : UITableViewController {
         let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
         return h
-        
     }
     
     
