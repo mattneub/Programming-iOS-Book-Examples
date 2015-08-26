@@ -172,6 +172,19 @@ class ViewController: UIViewController {
             holder2.f("testing")
         }
         
+        do {
+            let mas = NSMutableAttributedString()
+            let r = NSMakeRange(0,0) // not really, just making sure we compile
+            mas.enumerateAttribute("HERE", inRange: r, options: []) {
+                value, r, stop in
+                if let value = value as? Int where value == 1  {
+                    // ...
+                    stop.memory = true
+                }
+            }
+
+        }
+        
     }
 
     var myclass = MyClass()

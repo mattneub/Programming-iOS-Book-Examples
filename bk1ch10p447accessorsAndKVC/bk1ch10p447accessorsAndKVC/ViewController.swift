@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // in Swift 2.0, this works:
+    // in Swift 1.2, this works:
     /*
     var color2 : UIColor {
         @objc(hue) get {
