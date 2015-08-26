@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3289E0A719E4488700A0DB1B /* DeleteMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeleteMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3289E0A719E4488700A0DB1B /* PopoverPresentingViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopoverPresentingViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3289E0AB19E4488700A0DB1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3289E0AC19E4488700A0DB1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3289E0AE19E4488700A0DB1B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,7 +42,7 @@
 		3289E09E19E4488700A0DB1B = {
 			isa = PBXGroup;
 			children = (
-				3289E0A919E4488700A0DB1B /* DeleteMe */,
+				3289E0A919E4488700A0DB1B /* PopoverPresentingViewController */,
 				3289E0A819E4488700A0DB1B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,12 +50,12 @@
 		3289E0A819E4488700A0DB1B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3289E0A719E4488700A0DB1B /* DeleteMe.app */,
+				3289E0A719E4488700A0DB1B /* PopoverPresentingViewController.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3289E0A919E4488700A0DB1B /* DeleteMe */ = {
+		3289E0A919E4488700A0DB1B /* PopoverPresentingViewController */ = {
 			isa = PBXGroup;
 			children = (
 				3289E0AC19E4488700A0DB1B /* AppDelegate.swift */,
@@ -67,15 +67,15 @@
 				3289E0B519E4488700A0DB1B /* LaunchScreen.xib */,
 				3289E0AB19E4488700A0DB1B /* Info.plist */,
 			);
-			path = DeleteMe;
+			path = PopoverPresentingViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3289E0A619E4488700A0DB1B /* DeleteMe */ = {
+		3289E0A619E4488700A0DB1B /* PopoverPresentingViewController */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3289E0C619E4488700A0DB1B /* Build configuration list for PBXNativeTarget "DeleteMe" */;
+			buildConfigurationList = 3289E0C619E4488700A0DB1B /* Build configuration list for PBXNativeTarget "PopoverPresentingViewController" */;
 			buildPhases = (
 				3289E0A319E4488700A0DB1B /* Sources */,
 				3289E0A419E4488700A0DB1B /* Frameworks */,
@@ -85,9 +85,9 @@
 			);
 			dependencies = (
 			);
-			name = DeleteMe;
+			name = PopoverPresentingViewController;
 			productName = DeleteMe;
-			productReference = 3289E0A719E4488700A0DB1B /* DeleteMe.app */;
+			productReference = 3289E0A719E4488700A0DB1B /* PopoverPresentingViewController.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -105,7 +105,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3289E0A219E4488700A0DB1B /* Build configuration list for PBXProject "DeleteMe" */;
+			buildConfigurationList = 3289E0A219E4488700A0DB1B /* Build configuration list for PBXProject "PopoverPresentingViewController" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -118,7 +118,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3289E0A619E4488700A0DB1B /* DeleteMe */,
+				3289E0A619E4488700A0DB1B /* PopoverPresentingViewController */,
 			);
 		};
 /* End PBXProject section */
@@ -253,9 +253,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = DeleteMe/Info.plist;
+				INFOPLIST_FILE = PopoverPresentingViewController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PopoverPresentingViewController;
 			};
 			name = Debug;
 		};
@@ -263,16 +263,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = DeleteMe/Info.plist;
+				INFOPLIST_FILE = PopoverPresentingViewController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PopoverPresentingViewController;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3289E0A219E4488700A0DB1B /* Build configuration list for PBXProject "DeleteMe" */ = {
+		3289E0A219E4488700A0DB1B /* Build configuration list for PBXProject "PopoverPresentingViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3289E0C419E4488700A0DB1B /* Debug */,
@@ -281,7 +281,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3289E0C619E4488700A0DB1B /* Build configuration list for PBXNativeTarget "DeleteMe" */ = {
+		3289E0C619E4488700A0DB1B /* Build configuration list for PBXNativeTarget "PopoverPresentingViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3289E0C719E4488700A0DB1B /* Debug */,
