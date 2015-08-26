@@ -59,6 +59,8 @@ struct Insect3 : Flier3 {
 
 // workaround:
 
+///*
+
 protocol Superflier3 {}
 
 protocol Flier3 : Superflier3 {
@@ -71,6 +73,8 @@ struct Bird3 : Flier3 {
 struct Insect3 : Flier3 {
     func flockTogetherWith(f:Insect3) {}
 }
+
+//*/
 
 
 func flockTwoTogether2<T:Flier3>(f1:T, _ f2:T) {}

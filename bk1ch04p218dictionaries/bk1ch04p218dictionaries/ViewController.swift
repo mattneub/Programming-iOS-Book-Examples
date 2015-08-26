@@ -54,7 +54,7 @@ class ViewController: UIViewController {
                 print(s)
             }
             
-            let keys = d.keys.array
+            let keys = Array(d.keys)
             
             for (abbrev, state) in d {
                 print("\(abbrev) stands for \(state)")

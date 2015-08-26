@@ -69,6 +69,6 @@ class MyLayout : UICollectionViewLayout {
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         //        println("rect")
-        return self.atts.values.array
+        return Array(self.atts.values)
     }
 }

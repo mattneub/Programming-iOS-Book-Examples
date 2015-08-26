@@ -47,7 +47,27 @@ class ViewController: UIViewController {
             print(error)
         }
         
-        var err = SomeStruct()
+        // new better way in beta 6
+        
+        do {
+            let f = "nonexistent" // path to some file, maybe
+            if let s = try? String(contentsOfFile: f, encoding: NSUTF8StringEncoding) {
+                print(s) // won't happen
+            } else {
+                print("I guess there was no such file, eh?")
+            }
+        }
+        
+        lab: do {
+            // okay, I'm sick of failing, let's succeed for once :)
+            let f = NSBundle.mainBundle().pathForResource("testing", ofType: "txt")!
+            guard let s = try? String(contentsOfFile: f, encoding: NSUTF8StringEncoding)
+                else {print("still no file"); break lab}
+            print(s)
+            // if we get here, s is our string
+        }
+        
+        let err = SomeStruct()
         print(err._domain)
         print(err._code)
         

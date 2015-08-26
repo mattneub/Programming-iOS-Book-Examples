@@ -18,6 +18,14 @@ func sayStrings(arrayOfStrings:String ...) {
     for s in arrayOfStrings { print(s) }
 }
 
+// new in beta 6, variadic can go anywhere
+
+func sayStrings(arrayOfStrings:String ..., times:Int) {
+    for _ in 1...times {
+        for s in arrayOfStrings { print(s) }
+    }
+}
+
 // ignored
 
 func say(s:String, times:Int, loudly _:Bool) {Dog().say(s, times:times)}
@@ -39,6 +47,15 @@ class ViewController: UIViewController {
         doThing(b:5, a:10) // legal but don't
 
         sayStrings("hey", "ho", "nonny nonny no")
+        
+        sayStrings("Mannie", "Moe", "Jack", times:3)
+        
+        // print is now variadic
+        
+        print("Mannie", 3, true) // Mannie 3 true
+        
+        print("Mannie", "Moe", separator:", ", terminator: ", ")
+        print("Jack")
 
         say("hi", times:3, loudly:true)
         

@@ -11,6 +11,7 @@ enum Error {
 class ViewController: UIViewController {
     
     var movenda = [1,2,3]
+    var movenda2 = [1,2,3]
     
     var boardView = UIView()
     
@@ -24,6 +25,12 @@ class ViewController: UIViewController {
             while self.movenda.count > 0 {
                 let p = self.movenda.removeLast()
                 // ...
+                print(p)
+            }
+        }
+        
+        do {
+            while let p = self.movenda2.popLast() {
                 print(p)
             }
         }
@@ -116,7 +123,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            for i in stride(from: 10, through: 0, by: -2) {
+            for i in 10.stride(through: 0, by: -2) {
                 print(i) // 10, 8, 6, 4, 2, 0
             }
         }

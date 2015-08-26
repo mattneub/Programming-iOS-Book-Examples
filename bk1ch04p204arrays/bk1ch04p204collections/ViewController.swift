@@ -124,6 +124,17 @@ class ViewController: UIViewController {
             let arr4 = arr.suffix(10) // [1,2,3] with no penalty
             print(arr4)
             
+            // new in beta 6
+            
+            do {
+                let arr2 = arr.suffixFrom(1)
+                print(arr2)
+                let arr3 = arr.prefixUpTo(1)
+                print(arr3)
+                let arr4 = arr.prefixThrough(1)
+                print(arr4)
+            }
+            
             // let arr5 = arr[0..<10]
             
             var r = arr.indices
@@ -199,9 +210,11 @@ class ViewController: UIViewController {
             print(arr)
             let i = arr.removeAtIndex(3)
             let ii = arr.removeLast()
+            let iii = arr.popLast()
             print(arr)
             _ = i
             _ = ii
+            _ = iii
             let arr2 = arr.dropFirst()
             let arr3 = arr.dropLast()
             _ = arr2
@@ -213,9 +226,11 @@ class ViewController: UIViewController {
             let arr2 = arr.joinWithSeparator([10,11]) // [1, 2, 10, 11, 3, 4, 10, 11, 5, 6]
             let arr3 = arr.joinWithSeparator([]) // [1, 2, 3, 4, 5, 6]
             let arr4 = arr.flatMap {$0} // new in Swift 1.2
+            let arr5 = Array(arr.flatten()) // new in Xcode 7 beta 6
             _ = arr2
             _ = arr3
             _ = arr4
+            _ = arr5
         }
         
         do {
@@ -244,8 +259,8 @@ class ViewController: UIViewController {
         let arr = [1,2,3]
         let arr2 = arr.map {$0 * 2} // [2,4,6]
         let arr3 = arr.map {Double($0)} // [1.0, 2.0, 3.0]
-        pepboys.map {print($0)} // prints Manny, then Moe, then Jack
-        pepboys.map(print)
+        pepboys.forEach {print($0)} // prints Manny, then Moe, then Jack
+        // pepboys.map(print) // no longer compiles
         let arr4 = pepboys.filter{$0.hasPrefix("M")} // [Manny, Moe]
 
         let arrr = [1, 4, 9, 13, 112]
