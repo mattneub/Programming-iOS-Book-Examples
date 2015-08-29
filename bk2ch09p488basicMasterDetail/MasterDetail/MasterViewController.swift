@@ -9,6 +9,8 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        print(self.splitViewController?.childViewControllers)
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -20,7 +22,7 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         cell.textLabel!.text = model[indexPath.row]
         return cell
     }
@@ -35,5 +37,16 @@ class MasterViewController: UITableViewController {
         let nav = UINavigationController(rootViewController: detail)
         self.showDetailViewController(nav, sender: self)
     }
-
+    
+    // ====
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        // logging to show that I'm right to describe the detail view controller as "jettisoned".
+        // it is not _released_, but that's an internal implementation detail:
+        // the split view controller keeps it in its `__preservedDetailController` property
+        print(self.splitViewController?.childViewControllers)
+        
+    }
+    
 }

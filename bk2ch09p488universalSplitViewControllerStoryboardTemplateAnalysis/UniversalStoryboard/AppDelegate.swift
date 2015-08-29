@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // but what if the split view appears _originally_ in portrait so there is no master?
         // then if we don't also added the button here, there is no button
         // the user can summon with swipe but might not realize that
-        nav.topViewController.navigationItem.leftBarButtonItem = svc.displayModeButtonItem()
+        nav.topViewController?.navigationItem.leftBarButtonItem = svc.displayModeButtonItem()
         svc.delegate = self
         return true
     }
@@ -47,12 +47,12 @@ extension AppDelegate: UISplitViewControllerDelegate {
     // discard the 2nd nav controller, push 2nd v.c. onto 1st nav controller
     
     func primaryViewControllerForCollapsingSplitViewController(splitViewController: UISplitViewController) -> UIViewController? {
-        println("delegate primary view for collapsing, returning nil")
+        print("delegate primary view for collapsing, returning nil")
         return nil // means just do what you would normally do
     }
 
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController vc2:UIViewController, ontoPrimaryViewController vc1:UIViewController) -> Bool {
-        println("begin delegate collapse")
+        print("begin delegate collapse")
         if let vc2 = vc2 as? UINavigationController {
             if let detail = vc2.topViewController as? DetailViewController {
                 if detail.detailItem == nil {
@@ -60,33 +60,33 @@ extension AppDelegate: UISplitViewControllerDelegate {
                     // try changing it to false!
                     // the svc will do its default behavior, which is to push the detail onto the stack
                     // so that we will launch showing it!
-                    println("end delegate collapse, returning true")
+                    print("end delegate collapse, returning true")
                     return true
                 }
             }
         }
-        println("end delegate collapse, returning false")
+        print("end delegate collapse, returning false")
         return false
     }
     
 
     func targetDisplayModeForActionInSplitViewController(svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
-        println("mode?")
+        print("mode?")
         return .Automatic
     }
     
     
     func splitViewController(svc: UISplitViewController, willChangeToDisplayMode displayMode: UISplitViewControllerDisplayMode) {
-        println("changing to mode: \(displayMode.rawValue)")
+        print("changing to mode: \(displayMode.rawValue)")
     }
     
     func splitViewController(splitViewController: UISplitViewController, showViewController vc: UIViewController, sender: AnyObject?) -> Bool {
-        println("svc show vc")
+        print("svc show vc")
         return false
     }
     
     func splitViewController(splitViewController: UISplitViewController, showDetailViewController vc: UIViewController, sender: AnyObject?) -> Bool {
-        println("svc show detail vc")
+        print("svc show detail vc")
         return false
     }
 

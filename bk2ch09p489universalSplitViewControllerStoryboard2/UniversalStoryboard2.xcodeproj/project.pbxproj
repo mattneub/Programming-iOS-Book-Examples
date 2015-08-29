@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3204D07E1B90B7DF00C1E937 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3204D07D1B90B7DF00C1E937 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		322E869A1989349E0076FE3E /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E86991989349E0076FE3E /* ContainerViewController.swift */; };
 		32A356CB19886D6B00515592 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A356CA19886D6B00515592 /* AppDelegate.swift */; };
 		32A356CD19886D6B00515592 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A356CC19886D6B00515592 /* MasterViewController.swift */; };
 		32A356CF19886D6B00515592 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A356CE19886D6B00515592 /* DetailViewController.swift */; };
 		32A356D219886D6B00515592 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A356D019886D6B00515592 /* Main.storyboard */; };
-		32A356D419886D6B00515592 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A356D319886D6B00515592 /* Images.xcassets */; };
+		32A356D419886D6B00515592 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A356D319886D6B00515592 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3204D07D1B90B7DF00C1E937 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		322E86991989349E0076FE3E /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		32A356C519886D6B00515592 /* UniversalStoryboard2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniversalStoryboard2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A356C919886D6B00515592 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -23,7 +25,7 @@
 		32A356CC19886D6B00515592 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		32A356CE19886D6B00515592 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		32A356D119886D6B00515592 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32A356D319886D6B00515592 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32A356D319886D6B00515592 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,18 +63,11 @@
 				32A356CC19886D6B00515592 /* MasterViewController.swift */,
 				32A356CE19886D6B00515592 /* DetailViewController.swift */,
 				32A356D019886D6B00515592 /* Main.storyboard */,
-				32A356D319886D6B00515592 /* Images.xcassets */,
-				32A356C819886D6B00515592 /* Supporting Files */,
-			);
-			path = UniversalStoryboard;
-			sourceTree = "<group>";
-		};
-		32A356C819886D6B00515592 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				32A356D319886D6B00515592 /* Assets.xcassets */,
+				3204D07D1B90B7DF00C1E937 /* LaunchScreen.storyboard */,
 				32A356C919886D6B00515592 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = UniversalStoryboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,6 +96,7 @@
 		32A356BD19886D6B00515592 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -132,8 +128,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3204D07E1B90B7DF00C1E937 /* LaunchScreen.storyboard in Resources */,
 				32A356D219886D6B00515592 /* Main.storyboard in Resources */,
-				32A356D419886D6B00515592 /* Images.xcassets in Resources */,
+				32A356D419886D6B00515592 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +196,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -236,7 +233,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -248,10 +245,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = UniversalStoryboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = UniversalStoryboard2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -259,10 +256,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = UniversalStoryboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = UniversalStoryboard2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

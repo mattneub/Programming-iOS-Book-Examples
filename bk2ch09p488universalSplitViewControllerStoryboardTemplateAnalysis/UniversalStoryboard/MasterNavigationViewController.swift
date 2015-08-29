@@ -22,17 +22,17 @@ class MasterNavigationViewController : UINavigationController {
     // thus it gets pushed onto the stack
     
     override func showViewController(vc: UIViewController, sender: AnyObject?) {
-        println("master NAV view controller showViewController: \(vc)")
+        print("master NAV view controller showViewController: \(vc)")
         super.showViewController(vc, sender: sender)
         delay(1) {
-            println(self.viewControllers)
+            print(self.viewControllers)
         }
     }
     
     override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
-        println("master NAV view controller target for \(action) \(sender)...")
+        print("master NAV view controller target for \(action) \(sender)...")
         let result = super.targetViewControllerForAction(action, sender: sender)
-        println("master NAV view controller target for \(action), returning \(result)")
+        print("master NAV view controller target for \(action), returning \(result)")
         return result
     }
     
@@ -43,7 +43,7 @@ class MasterNavigationViewController : UINavigationController {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         let ok = super.respondsToSelector(aSelector)
         if aSelector == "showDetailViewController:sender:" {
-            println("master NAV responds? \(ok)")
+            print("master NAV responds? \(ok)")
         }
         return ok
     }
@@ -51,7 +51,7 @@ class MasterNavigationViewController : UINavigationController {
     override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
         let ok = super.canPerformAction(action, withSender:sender)
         if action == "showDetailViewController:sender:" {
-            println("master NAV can perform? \(ok)")
+            print("master NAV can perform? \(ok)")
         }
         return ok
     }

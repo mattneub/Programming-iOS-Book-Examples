@@ -10,15 +10,15 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     var detailItem: AnyObject? {
         didSet {
-            println("detailItem didset")
+            print("detailItem didset")
             self.configureView()
         }
     }
 
     func configureView() {
-        println("detail view configureView")
-        println("detailItem: \(self.detailItem)")
-        println("label: \(self.detailDescriptionLabel)")
+        print("detail view configureView")
+        print("detailItem: \(self.detailItem)")
+        print("label: \(self.detailDescriptionLabel)")
         // problem is that when user taps a date in the master view...
         // an entirely new detail view controller is created
         // thus its viewDidLoad is called, and configureView is called...
@@ -30,40 +30,40 @@ class DetailViewController: UIViewController {
         // in portrait view, it is; on iPhone it is
         if let detail: AnyObject = self.detailItem {
             if let label = self.detailDescriptionLabel {
-                self.detailDescriptionLabel.text = detail.description
+                label.text = detail.description
             }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("detail view viewdidload")
+        print("detail view viewdidload")
         self.configureView()
     }
 }
 
 extension DetailViewController {
     override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
-        println("detail view controller target for \(action) \(sender)...")
+        print("detail view controller target for \(action) \(sender)...")
         let result = super.targetViewControllerForAction(action, sender: sender)
-        println("detail view controller target for \(action), returning \(result)")
+        print("detail view controller target for \(action), returning \(result)")
         return result
     }
     
     override func showViewController(vc: UIViewController, sender: AnyObject?) {
-        println("detail view controller showViewController")
+        print("detail view controller showViewController")
         super.showViewController(vc, sender: sender)
     }
     
     override func showDetailViewController(vc: UIViewController, sender: AnyObject?) {
-        println("detail view controller showDetailViewController")
+        print("detail view controller showDetailViewController")
         super.showDetailViewController(vc, sender: sender)
     }
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         let ok = super.respondsToSelector(aSelector)
         if aSelector == "showDetailViewController:sender:" {
-            println("detail responds? \(ok)")
+            print("detail responds? \(ok)")
         }
         return ok
     }
@@ -71,7 +71,7 @@ extension DetailViewController {
     override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
         let ok = super.canPerformAction(action, withSender:sender)
         if action == "showDetailViewController:sender:" {
-            println("detail can perform? \(ok)")
+            print("detail can perform? \(ok)")
         }
         return ok
     }

@@ -35,8 +35,8 @@ class MasterViewController: UITableViewController {
 //        if let split = self.splitViewController {
 //            let vcs = split.viewControllers
 //            self.detail = vcs[vcs.count-1].topViewController as? DetailViewController
-//            println("self.detail:")
-//            println(self.detail)
+//            print("self.detail:")
+//            print(self.detail)
 //        }
     }
     
@@ -50,11 +50,11 @@ class MasterViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
-            let ip = self.tableView.indexPathForSelectedRow()!
+            let ip = self.tableView.indexPathForSelectedRow!
             let object = objects[ip.row] as NSDate
             let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-            println("prepare for segue")
-            println("object: \(object)")
+            print("prepare for segue")
+            print("object: \(object)")
             controller.detailItem = object
             // again, duplication from AppDelegate
             // the problem is that if we do this segue...
@@ -77,7 +77,7 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         let object = objects[indexPath.row] as NSDate
         cell.textLabel!.text = object.description
         return cell
@@ -97,19 +97,19 @@ class MasterViewController: UITableViewController {
 
 extension MasterViewController {
     override func collapseSecondaryViewController(secondaryViewController: UIViewController, forSplitViewController splitViewController: UISplitViewController) {
-        println("master view controller collapse")
+        print("master view controller collapse")
         super.collapseSecondaryViewController(secondaryViewController, forSplitViewController: splitViewController)
     }
     
     override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
-        println("master view controller target for \(action) \(sender)...")
+        print("master view controller target for \(action) \(sender)...")
         let result = super.targetViewControllerForAction(action, sender: sender)
-        println("master view controller target for \(action), returning \(result)")
+        print("master view controller target for \(action), returning \(result)")
         return result
     }
     
     override func showViewController(vc: UIViewController, sender: AnyObject?) {
-        println("master view controller showViewController")
+        print("master view controller showViewController")
         super.showViewController(vc, sender: sender)
     }
     
@@ -120,14 +120,14 @@ extension MasterViewController {
     // the split view controller
     
     override func showDetailViewController(vc: UIViewController, sender: AnyObject?) {
-        println("master view controller showDetailViewController")
+        print("master view controller showDetailViewController")
         super.showDetailViewController(vc, sender: sender)
     }
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         let ok = super.respondsToSelector(aSelector)
         if aSelector == "showDetailViewController:sender:" {
-            println("master responds? \(ok)")
+            print("master responds? \(ok)")
         }
         return ok
     }
@@ -136,7 +136,7 @@ extension MasterViewController {
         var ok = super.canPerformAction(action, withSender:sender)
         if action == "showDetailViewController:sender:" {
             ok = false
-            println("master can perform? \(ok)")
+            print("master can perform? \(ok)")
         }
         return ok
     }

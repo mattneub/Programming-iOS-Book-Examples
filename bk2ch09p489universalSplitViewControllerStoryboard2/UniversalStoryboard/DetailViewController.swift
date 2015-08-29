@@ -10,14 +10,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     var detailItem: AnyObject? {
         didSet {
-            println("didset")
+            print("didset")
             self.configureView()
         }
     }
 
     func configureView() {
-        println(self.detailItem)
-        println(self.detailDescriptionLabel)
         // problem is that when user taps a date in the master view...
         // an entirely new detail view controller is created
         // thus its viewDidLoad is called, and configureView is called...
@@ -27,16 +25,19 @@ class DetailViewController: UIViewController {
         // ... because we don't know the order of events:
         // could be detailItem first, then viewDidLoad
         // in portrait view, it is; on iPhone it is
+        print("configureView")
         if let detail: AnyObject = self.detailItem {
             if let label = self.detailDescriptionLabel {
-                self.detailDescriptionLabel.text = detail.description
+                print(self.detailItem)
+                print(self.detailDescriptionLabel)
+                label.text = detail.description
             }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("viewdidload")
+        print("viewdidload")
         self.configureView()
     }
 }

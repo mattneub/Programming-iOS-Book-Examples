@@ -21,5 +21,9 @@ class DetailViewController: UIViewController {
         self.lab = lab
         self.lab.text = self.boy
     }
+    
+    deinit {
+        print("farewell from detail view controller")
+    }
 
 }

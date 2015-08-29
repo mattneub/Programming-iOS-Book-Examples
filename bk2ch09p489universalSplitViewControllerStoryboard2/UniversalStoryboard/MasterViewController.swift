@@ -31,8 +31,8 @@ class MasterViewController: UITableViewController {
 //        if let split = self.splitViewController {
 //            let vcs = split.viewControllers
 //            self.detail = vcs[vcs.count-1].topViewController as? DetailViewController
-//            println("self.detail:")
-//            println(self.detail)
+//            print("self.detail:")
+//            print(self.detail)
 //        }
     }
     
@@ -46,15 +46,15 @@ class MasterViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
-            let ip = self.tableView.indexPathForSelectedRow()!
+            let ip = self.tableView.indexPathForSelectedRow!
             let object = objects[ip.row] as NSDate
             let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-            println("prepare for segue")
-            println(object)
+            print("prepare for segue")
+            print(object)
             controller.detailItem = object
             // just proving that when collapsed, svc has just the one child
             // basically that child is now in total charge of the interface
-            println("children of svc: \(self.splitViewController!.viewControllers)")
+            print("children of svc: \(self.splitViewController!.viewControllers)")
             // again, duplication from AppDelegate
             // the problem is that if we do this segue...
             // the detail view navigation controller is completely replaced,
@@ -74,7 +74,7 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         let object = objects[indexPath.row] as NSDate
         cell.textLabel!.text = object.description
         return cell

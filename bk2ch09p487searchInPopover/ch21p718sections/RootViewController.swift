@@ -5,10 +5,10 @@ import UIKit
 class RootViewController : UITableViewController, UISearchBarDelegate {
     var sectionNames = [String]()
     var sectionData = [[String]]()
-    var searcher = UISearchController()
+    var searcher : UISearchController!
     
     override func viewDidLoad() {
-        let s = String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding, error: nil)!
+        let s = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
         let states = s.componentsSeparatedByString("\n")
         var previous = ""
         for aState in states {
@@ -38,8 +38,13 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // instantiate a search controller and keep it alive
         let searcher = UISearchController(searchResultsController: src)
         self.searcher = searcher
+        // no effect in this situation:
+        searcher.hidesNavigationBarDuringPresentation = false
+        // searcher.dimsBackgroundDuringPresentation = false
         // make it a popover!
+        self.definesPresentationContext = true
         searcher.modalPresentationStyle = .Popover
+        searcher.preferredContentSize = CGSizeMake(400,400)
         // specify who the search controller should notify when the search bar changes
         searcher.searchResultsUpdater = src
         // put the search controller's search bar into the interface
@@ -57,7 +62,10 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         
         // however, I'm having difficulty detecting dismissal of the popover
         searcher.delegate = self
-        searcher.presentationController?.delegate = self
+        if let pres = searcher.presentationController {
+            print("setting presentation controller delegate")
+            pres.delegate = self
+        }
 //        (searcher.presentationController as UIPopoverPresentationController).delegate = self
     }
     
@@ -70,7 +78,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
         
@@ -94,9 +102,9 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     */
     // this is more "interesting"
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header") as! UITableViewHeaderFooterView
+        let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header")!
         if h.tintColor != UIColor.redColor() {
-            // println("configuring a new header view") // only called about 7 times
+            // print("configuring a new header view") // only called about 7 times
             h.tintColor = UIColor.redColor() // invisible marker, tee-hee
             h.backgroundView = UIView()
             h.backgroundView!.backgroundColor = UIColor.blackColor()
@@ -111,17 +119,16 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
             v.backgroundColor = UIColor.blackColor()
             v.image = UIImage(named:"us_flag_small.gif")
             h.contentView.addSubview(v)
-            lab.setTranslatesAutoresizingMaskIntoConstraints(false)
-            v.setTranslatesAutoresizingMaskIntoConstraints(false)
-            h.contentView.addConstraints(
+            lab.translatesAutoresizingMaskIntoConstraints = false
+            v.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activateConstraints([
                 NSLayoutConstraint.constraintsWithVisualFormat("H:|-5-[lab(25)]-10-[v(40)]",
-                    options:nil, metrics:nil, views:["v":v, "lab":lab]))
-            h.contentView.addConstraints(
+                    options:[], metrics:nil, views:["v":v, "lab":lab]),
                 NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|",
-                    options:nil, metrics:nil, views:["v":v]))
-            h.contentView.addConstraints(
+                    options:[], metrics:nil, views:["v":v]),
                 NSLayoutConstraint.constraintsWithVisualFormat("V:|[lab]|",
-                    options:nil, metrics:nil, views:["lab":lab]))
+                    options:[], metrics:nil, views:["lab":lab])
+            ].flatten().map{$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
@@ -131,35 +138,49 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     
     /*
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-    println(view) // prove we are reusing header views
+    print(view) // prove we are reusing header views
     }
     */
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject] {
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         return self.sectionNames
     }
     
 }
 
 extension RootViewController : UISearchControllerDelegate {
-    func willPresentSearchController(searchController: UISearchController) { println(__FUNCTION__) }
-    func didPresentSearchController(searchController: UISearchController) { println(__FUNCTION__) }
-    // but these are never called; I regard this as a bug
-    func willDismissSearchController(searchController: UISearchController) { println(__FUNCTION__) }
-    func didDismissSearchController(searchController: UISearchController) { println(__FUNCTION__) }
+    func presentSearchController(searchController: UISearchController) { print(__FUNCTION__) }
+    func willPresentSearchController(searchController: UISearchController) { print(__FUNCTION__) }
+    func didPresentSearchController(searchController: UISearchController) { print(__FUNCTION__) }
+    // these next functions are not called, I regard this as a bug
+    func willDismissSearchController(searchController: UISearchController) { print(__FUNCTION__) }
+    func didDismissSearchController(searchController: UISearchController) { print(__FUNCTION__) }
 }
+
 extension RootViewController : UIPopoverPresentationControllerDelegate {
-    func prepareForPopoverPresentation(popoverPresentationController: UIPopoverPresentationController) {
-        println("prepare")
+    func prepareForPopoverPresentation(pop: UIPopoverPresentationController) {
+        print("prepare")
+//        print(pop.sourceView)
+//        print(pop.passthroughViews)
+//        print(pop.delegate)
     }
     func popoverPresentationControllerShouldDismissPopover(pop: UIPopoverPresentationController) -> Bool {
-        println("pop should dismiss")
+        print("pop should dismiss")
         self.searcher.searchBar.text = nil // woo-hoo! fix dismissal failure to empty
         return true
     }
     func popoverPresentationControllerDidDismissPopover(pop: UIPopoverPresentationController) {
-        println("pop dismiss")
+        print("pop dismiss")
         self.searcher.presentationController?.delegate = self // this is the big bug fix
+    }
+}
+
+// not called, seems like a bug to me
+
+extension RootViewController : UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        print("waha")
+        return .None
     }
 }
 

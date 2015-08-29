@@ -5,26 +5,26 @@ import UIKit
 class MySplitViewController: UISplitViewController {
     
     override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
-        println("split view controller target for \(action) \(sender)...")
+        print("split view controller target for \(action) \(sender)...")
         let result = super.targetViewControllerForAction(action, sender: sender)
-        println("split view controller target for \(action), returning \(result)")
+        print("split view controller target for \(action), returning \(result)")
         return result
     }
     
-    override func showDetailViewController(vc: UIViewController!, sender: AnyObject!) {
-        println("split view controller showDetailViewController")
+    override func showDetailViewController(vc: UIViewController, sender: AnyObject?) {
+        print("split view controller showDetailViewController")
         super.showDetailViewController(vc, sender: sender)
     }
     
     override func childViewControllerForStatusBarHidden() -> UIViewController? {
         let vc = super.childViewControllerForStatusBarHidden()
-        println("hidden: \(vc)")
+        print("hidden: \(vc)")
         return vc
     }
     
     override func childViewControllerForStatusBarStyle() -> UIViewController? {
         let vc = super.childViewControllerForStatusBarStyle()
-        println("style: \(vc)")
+        print("style: \(vc)")
         return vc
     }
 
@@ -32,7 +32,7 @@ class MySplitViewController: UISplitViewController {
     override func respondsToSelector(aSelector: Selector) -> Bool {
         let ok = super.respondsToSelector(aSelector)
         if aSelector == "showDetailViewController:sender:" {
-            println("svc responds? \(ok)")
+            print("svc responds? \(ok)")
         }
         return ok
     }
@@ -40,7 +40,7 @@ class MySplitViewController: UISplitViewController {
     override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
         let ok = super.canPerformAction(action, withSender:sender)
         if action == "showDetailViewController:sender:" {
-            println("svc can perform? \(ok)")
+            print("svc can perform? \(ok)")
         }
         return ok
     }

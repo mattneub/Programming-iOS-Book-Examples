@@ -29,13 +29,11 @@ class PrimaryViewController : UIViewController {
         let seg = UISegmentedControl(items: ["White","Red"])
         seg.selectedSegmentIndex = 1
         self.view.addSubview(seg)
-        seg.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.view.addConstraint (
-            NSLayoutConstraint(item: seg, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1, constant: 0)
-        )
-        self.view.addConstraint (
-            NSLayoutConstraint(item: seg, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: 50)
-        )
+        seg.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            seg.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor),
+            seg.bottomAnchor.constraintEqualToAnchor(self.view.bottomAnchor, constant:-50)
+        ])
         seg.addTarget(self, action: "change:", forControlEvents: .ValueChanged)
     }
     
@@ -44,9 +42,9 @@ class PrimaryViewController : UIViewController {
         // note this expression of the difference as to where the Secondary will be,
         // depending whether the svc is expanded or collapsed
         if !self.splitViewController!.collapsed {
-            vc = self.splitViewController!.viewControllers[1] as! UIViewController
+            vc = self.splitViewController!.viewControllers[1] 
         } else {
-            vc = self.childViewControllers[0] as! UIViewController
+            vc = self.childViewControllers[0] 
         }
         let seg = sender as! UISegmentedControl
         switch seg.selectedSegmentIndex {
@@ -71,13 +69,13 @@ class PrimaryViewController : UIViewController {
         self.view.addSubview(vc2.view)
         vc2.didMoveToParentViewController(self)
         
-        vc2.view.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.view.addConstraints(
-            NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options: nil, metrics: nil, views: ["v":vc2.view])
-        )
+        vc2.view.translatesAutoresizingMaskIntoConstraints = false
         self.verticalConstraints =
-            (NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options: nil, metrics: nil, views: ["v":vc2.view]) as! [NSLayoutConstraint])
-        self.view.addConstraints(self.verticalConstraints!)
+            NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options: [], metrics: nil, views: ["v":vc2.view])
+        NSLayoutConstraint.activateConstraints([
+            NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options: [], metrics: nil, views: ["v":vc2.view]),
+            self.verticalConstraints!
+        ].flatten().map{$0})
     }
 }
 
@@ -85,10 +83,10 @@ class PrimaryViewController : UIViewController {
 // ...so that the secondary can find the primary in an agnostic way
 
 // to use targetViewControllerForAction for a custom action, 
-// you need to an extension to satisfy the compiler
+// you need an extension to satisfy the compiler
 
 extension UIViewController {
-    func showHide(sender:AnyObject?) {// in seed 5, must be dynamic or polymorphism breaks: bug? seems fixed
+    func showHide(sender:AnyObject?) {
         // how to use targetViewControllerForAction to look up the hierarchy
         // we don't know who implements showHide or where he is in the hierarchy,
         // and we don't care! agnostic messaging up the hierarchy
@@ -106,7 +104,7 @@ extension UIViewController {
 extension PrimaryViewController {
     
     override func showHide(sender:AnyObject?) {
-        println("showHide")
+        print("showHide")
         // how to show/hide ourselves depends on the state of the split view controller
         // if expanded, let the split view controller deal with it
         // if collapsed, we are in charge of the interface and must decide what this means
@@ -131,10 +129,9 @@ extension PrimaryViewController {
             }
             self.exposed = !self.exposed
             self.view.removeConstraints(self.verticalConstraints!)
-            self.verticalConstraints = (
-                NSLayoutConstraint.constraintsWithVisualFormat("V:|-(minuscon)-[v]-(con)-|", options: nil, metrics: ["con":con, "minuscon":-con], views: ["v":vc2.view]) as! [NSLayoutConstraint]
-            )
-            self.view.addConstraints(self.verticalConstraints!)
+            self.verticalConstraints =
+                NSLayoutConstraint.constraintsWithVisualFormat("V:|-(minuscon)-[v]-(con)-|", options: [], metrics: ["con":con, "minuscon":-con], views: ["v":vc2.view])
+            NSLayoutConstraint.activateConstraints(self.verticalConstraints!)
             UIView.animateWithDuration(0.25, animations: {
                 self.view.layoutIfNeeded()
                 })

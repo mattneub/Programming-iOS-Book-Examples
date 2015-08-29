@@ -10,7 +10,6 @@ import UIKit
 class ContainerViewController : UIViewController {
     
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet var topConstraint: NSLayoutConstraint!
     var didInitialSetup = false
     
     override func addChildViewController(childController: UIViewController) {
@@ -19,23 +18,11 @@ class ContainerViewController : UIViewController {
             svc.delegate = self // need to do this as early as humanly possible
         }
     }
-    
-    // unfortunately, IB will not let us make a constraint to the top of the superview
-    // it insists on making the constraint to the bottom of the top layout guide
-    // so we take control of the situation by swapping out constraints in code at launch
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.removeConstraint(self.topConstraint)
-        self.view.addConstraint(
-            NSLayoutConstraint(item: self.containerView, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 0)
-        )
-    }
-    
+        
     // as in comedy, timing is everything
     // this setup needs to be postponed to our initial layout (viewDidLoad is too soon)
     
-    let which = 1 // try 2, it's even more interesting
+    let which = 2 // try 2, it's even more interesting
     
     override func viewWillLayoutSubviews() {
         if !self.didInitialSetup {
@@ -67,7 +54,7 @@ class ContainerViewController : UIViewController {
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         let svc = self.childViewControllers[0] as! UISplitViewController
         if which == 2 {
-            if size.width > 320 {
+            if size.width > size.height {
                 // landscape
                 let traits = UITraitCollection(traitsFromCollections: [
                     UITraitCollection(horizontalSizeClass: .Regular)
@@ -86,8 +73,8 @@ extension ContainerViewController : UISplitViewControllerDelegate {
     // in collapsed mode
     
     func splitViewController(svc: UISplitViewController,
-        collapseSecondaryViewController vc2: UIViewController!,
-        ontoPrimaryViewController vc1: UIViewController!) -> Bool {
+        collapseSecondaryViewController vc2: UIViewController,
+        ontoPrimaryViewController vc1: UIViewController) -> Bool {
             return true
     }
 

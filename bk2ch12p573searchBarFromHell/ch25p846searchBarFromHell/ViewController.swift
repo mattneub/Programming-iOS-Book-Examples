@@ -43,9 +43,9 @@ class ViewController: UIViewController {
         self.sb.searchFieldBackgroundPositionAdjustment = UIOffsetMake(0, -10) // up from center
         
         // how to reach in and grab the text field
-        for v in (self.sb.subviews[0] as! UIView).subviews as! [UIView] {
+        for v in (self.sb.subviews[0] ).subviews {
             if let tf = v as? UITextField {
-                println("got that puppy")
+                print("got that puppy")
                 tf.textColor = UIColor.whiteColor()
                 break
             }
