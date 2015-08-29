@@ -3,6 +3,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
+    var didChooseDetail = false
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
@@ -23,14 +24,22 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
+        
+//        let tc = UIScreen.mainScreen().traitCollection
+//        if tc.horizontalSizeClass == .Regular {
+//            self.didExpand = true
+//        }
         return true
     }
 }
 
 extension AppDelegate : UISplitViewControllerDelegate {
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
-        print("collapsing")
-        return true
+    func splitViewController(svc: UISplitViewController, separateSecondaryViewControllerFromPrimaryViewController vc1: UIViewController) -> UIViewController? {
+        print("expanding")
+        return nil
     }
-    
+    func splitViewController(svc: UISplitViewController, collapseSecondaryViewController vc2: UIViewController, ontoPrimaryViewController vc1: UIViewController) -> Bool {
+        print("collapsing")
+        return !self.didChooseDetail
+    }
 }

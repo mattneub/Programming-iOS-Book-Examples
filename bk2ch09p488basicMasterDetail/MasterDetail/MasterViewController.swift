@@ -36,6 +36,9 @@ class MasterViewController: UITableViewController {
         
         let nav = UINavigationController(rootViewController: detail)
         self.showDetailViewController(nav, sender: self)
+        
+        let del = UIApplication.sharedApplication().delegate as! AppDelegate
+        del.didChooseDetail = true
     }
     
     // ====
