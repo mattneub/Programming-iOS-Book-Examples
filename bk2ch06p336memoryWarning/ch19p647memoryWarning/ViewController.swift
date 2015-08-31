@@ -4,6 +4,41 @@ import Foundation
 
 class ViewController : UIViewController {
     
+    // ignore; just making sure it compiles
+    
+    
+    let cache = NSCache()
+    var cachedData : NSData {
+        let key = "somekey"
+        var data = self.cache.objectForKey(key) as? NSData
+        if data != nil {
+            return data!
+        }
+        // ... recreate data here ...
+        data = NSData() // recreated data
+        self.cache.setObject(data!, forKey: key)
+        return data!
+    }
+    
+    var purgeable = NSPurgeableData()
+    var purgeabledata : NSData {
+        // surprisingly tricky to get content access barriers correct
+        if self.purgeable.beginContentAccess() && self.purgeable.length > 0 {
+            let result = self.purgeable.copy() as! NSData
+            self.purgeable.endContentAccess()
+            return result
+        } else {
+            // ... recreate data here ...
+            let data = NSData() // recreated data
+            self.purgeable = NSPurgeableData(data:data)
+            self.purgeable.endContentAccess() // must call "end"!
+            return data
+        }
+    }
+    
+
+    // this is the actual example
+    
     private var myBigDataReal : NSData! = nil
     var myBigData : NSData! {
         set (newdata) {

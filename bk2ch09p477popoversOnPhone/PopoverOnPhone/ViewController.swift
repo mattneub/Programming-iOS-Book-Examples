@@ -9,8 +9,8 @@ class ViewController: UIViewController {
         vc.preferredContentSize = CGSizeMake(400,500)
         vc.modalPresentationStyle = .Popover
         
-        // trick #1; declare the delegate _before_ presentation!
-        if let pres = vc.popoverPresentationController {
+        // declare the delegate _before_ presentation!
+        if let pres = vc.presentationController {
             pres.delegate = self // comment out to see what the defaults are
         }
 
@@ -45,11 +45,8 @@ class ViewController: UIViewController {
 extension ViewController : UIPopoverPresentationControllerDelegate {
     
     // UIPopoverPresentationControllerDelegate conforms to UIAdaptivePresentationControllerDelegate
-    // on iPhone, a popover is considered adaptive!
-    // therefore, the delegate is consulted
     
-    // trick #2: implement this method even if you want the default...
-    // NB I've switched to the newer method, so we are called on both iPad and iPhone
+    // no need to call this any longer, though you can if you want to
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         if traitCollection.horizontalSizeClass == .Compact {
@@ -62,8 +59,6 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
         return .None
     }
     
-    // trick #3: fix the interface for iPhone
-
     func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
         // we actually get the chance to swap out the v.c. for another!
         if style != .Popover {
