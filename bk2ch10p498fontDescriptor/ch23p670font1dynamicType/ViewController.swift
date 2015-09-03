@@ -10,36 +10,41 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         self.doDynamicType(nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "doDynamicType:", name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        
+        let f = UIFont(name: "Avenir", size: 15)!
+        let desc = f.fontDescriptor()
+        let desc2 = desc.fontDescriptorWithSymbolicTraits(.TraitItalic)
+        let f2 = UIFont(descriptor: desc2, size: 0)
+        print(f)
+        print(desc)
+        print(desc2)
+        print(f2)
     }
     
+    let which = 1
+
     func doDynamicType(n:NSNotification!) {
         var fbody : UIFont!
         var femphasis : UIFont!
-        let which = 1
         switch which {
         case 1:
             let body = UIFontDescriptor.preferredFontDescriptorWithTextStyle(UIFontTextStyleBody)
-            if let emphasis = body.fontDescriptorWithSymbolicTraits(.TraitItalic) {
-                fbody = UIFont(descriptor: body, size: 0)
-                femphasis = UIFont(descriptor: emphasis, size: 0)
-            }
+            let emphasis = body.fontDescriptorWithSymbolicTraits(.TraitItalic)
+            fbody = UIFont(descriptor: body, size: 0)
+            femphasis = UIFont(descriptor: emphasis, size: 0)
+            print(fbody)
         case 2:
-            // this should work but doesn't (bug?), and we crash later
-            // whoa, in iOS 8.3 it works!
-            if let body = UIFont(name: "GillSans", size: 15),
-                emphasis = body.fontDescriptor().fontDescriptorWithSymbolicTraits(.TraitItalic) {
-                    fbody = body
-                    femphasis = UIFont(descriptor: emphasis, size: 0)
-            }
+            // starting in iOS 8.3, this works
+            let body = UIFont(name: "GillSans", size: 15)!
+            let emphasis = body.fontDescriptor().fontDescriptorWithSymbolicTraits(.TraitItalic)
+            fbody = body
+            femphasis = UIFont(descriptor: emphasis, size: 0)
         case 3:
-            // the workaround is drop down to Core Text
-            // unfortunately Swift seems unaware that CTFont and UIFont are now bridged
-            // whoa, in Swift 1.2 it has heard about this!
-            if let body = UIFont(name: "GillSans", size: 15),
-                result = CTFontCreateCopyWithSymbolicTraits(body as CTFont, 0, nil, .ItalicTrait, .ItalicTrait) {
-                    fbody = body
-                    femphasis = result as UIFont
-            }
+            // the workaround in iOS 8.2 and before is drop down to Core Text
+            let body = UIFont(name: "GillSans", size: 15)!
+            let result = CTFontCreateCopyWithSymbolicTraits(body as CTFont, 0, nil, .ItalicTrait, .ItalicTrait)!
+            fbody = body
+            femphasis = result as UIFont
         default:break
         }
         

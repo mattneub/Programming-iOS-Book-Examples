@@ -15,9 +15,11 @@ class ViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
         
-        let contentView = self.scrollView.subviews[0] as! UIView
-        self.scrollView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Width, relatedBy: .Equal, toItem: self.scrollView, attribute: .Width, multiplier: 1, constant: 0))
-        self.scrollView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .Height, relatedBy: .Equal, toItem: self.scrollView, attribute: .Height, multiplier: 1, constant: 0))
+        let contentView = self.scrollView.subviews[0]
+        NSLayoutConstraint.activateConstraints([
+            contentView.widthAnchor.constraintEqualToAnchor(self.scrollView.widthAnchor),
+            contentView.heightAnchor.constraintEqualToAnchor(self.scrollView.heightAnchor),
+        ])
         
     }
     
@@ -53,6 +55,9 @@ class ViewController: UIViewController {
         self.scrollView.bounds.origin = self.oldOffset
         self.scrollView.scrollIndicatorInsets = self.oldIndicatorInset
         self.scrollView.contentInset = self.oldContentInset
+        self.fr?.resignFirstResponder()
+        self.fr = nil
+
     }
 
     

@@ -7,31 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		324675DA18A5516A009EFE78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324675D918A5516A009EFE78 /* Foundation.framework */; };
-		324675DC18A5516A009EFE78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324675DB18A5516A009EFE78 /* CoreGraphics.framework */; };
-		324675DE18A5516A009EFE78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324675DD18A5516A009EFE78 /* UIKit.framework */; };
-		324675E418A5516A009EFE78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 324675E218A5516A009EFE78 /* InfoPlist.strings */; };
-		324675E618A5516A009EFE78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 324675E518A5516A009EFE78 /* main.m */; };
-		324675EA18A5516B009EFE78 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 324675E918A5516B009EFE78 /* AppDelegate.m */; };
 		324675ED18A5516B009EFE78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 324675EB18A5516B009EFE78 /* Main.storyboard */; };
-		324675F218A5516B009EFE78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 324675F118A5516B009EFE78 /* Images.xcassets */; };
+		324675F218A5516B009EFE78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 324675F118A5516B009EFE78 /* Assets.xcassets */; };
+		328BBD311B962345009CBAA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BBD301B962345009CBAA2 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		328BBD331B96235D009CBAA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BBD321B96235D009CBAA2 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		32C3F5A519E9A2F90043C7F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C3F5A419E9A2F90043C7F6 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		324675D618A5516A009EFE78 /* AttributedTextAsSecretMarking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AttributedTextAsSecretMarking.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		324675D918A5516A009EFE78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		324675DB18A5516A009EFE78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		324675DD18A5516A009EFE78 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		324675E118A5516A009EFE78 /* AttributedTextAsSecretMarking-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AttributedTextAsSecretMarking-Info.plist"; sourceTree = "<group>"; };
-		324675E318A5516A009EFE78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		324675E518A5516A009EFE78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		324675E718A5516A009EFE78 /* AttributedTextAsSecretMarking-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AttributedTextAsSecretMarking-Prefix.pch"; sourceTree = "<group>"; };
-		324675E818A5516A009EFE78 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		324675E918A5516B009EFE78 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		324675EC18A5516B009EFE78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		324675F118A5516B009EFE78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		324675F818A5516B009EFE78 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		324675F118A5516B009EFE78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		328BBD301B962345009CBAA2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		328BBD321B96235D009CBAA2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32C3F5A419E9A2F90043C7F6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -40,9 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				324675DC18A5516A009EFE78 /* CoreGraphics.framework in Frameworks */,
-				324675DE18A5516A009EFE78 /* UIKit.framework in Frameworks */,
-				324675DA18A5516A009EFE78 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				324675DF18A5516A009EFE78 /* AttributedTextAsSecretMarking */,
-				324675D818A5516A009EFE78 /* Frameworks */,
 				324675D718A5516A009EFE78 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,39 +51,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		324675D818A5516A009EFE78 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				324675D918A5516A009EFE78 /* Foundation.framework */,
-				324675DB18A5516A009EFE78 /* CoreGraphics.framework */,
-				324675DD18A5516A009EFE78 /* UIKit.framework */,
-				324675F818A5516B009EFE78 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		324675DF18A5516A009EFE78 /* AttributedTextAsSecretMarking */ = {
 			isa = PBXGroup;
 			children = (
-				324675E818A5516A009EFE78 /* AppDelegate.h */,
-				324675E918A5516B009EFE78 /* AppDelegate.m */,
 				324675EB18A5516B009EFE78 /* Main.storyboard */,
+				328BBD321B96235D009CBAA2 /* AppDelegate.swift */,
 				32C3F5A419E9A2F90043C7F6 /* ViewController.swift */,
-				324675F118A5516B009EFE78 /* Images.xcassets */,
-				324675E018A5516A009EFE78 /* Supporting Files */,
+				324675F118A5516B009EFE78 /* Assets.xcassets */,
+				328BBD301B962345009CBAA2 /* LaunchScreen.storyboard */,
+				324675E118A5516A009EFE78 /* AttributedTextAsSecretMarking-Info.plist */,
 			);
 			path = AttributedTextAsSecretMarking;
-			sourceTree = "<group>";
-		};
-		324675E018A5516A009EFE78 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				324675E118A5516A009EFE78 /* AttributedTextAsSecretMarking-Info.plist */,
-				324675E218A5516A009EFE78 /* InfoPlist.strings */,
-				324675E518A5516A009EFE78 /* main.m */,
-				324675E718A5516A009EFE78 /* AttributedTextAsSecretMarking-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,8 +117,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				324675F218A5516B009EFE78 /* Images.xcassets in Resources */,
-				324675E418A5516A009EFE78 /* InfoPlist.strings in Resources */,
+				328BBD311B962345009CBAA2 /* LaunchScreen.storyboard in Resources */,
+				324675F218A5516B009EFE78 /* Assets.xcassets in Resources */,
 				324675ED18A5516B009EFE78 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,23 +130,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				324675EA18A5516B009EFE78 /* AppDelegate.m in Sources */,
+				328BBD331B96235D009CBAA2 /* AppDelegate.swift in Sources */,
 				32C3F5A519E9A2F90043C7F6 /* ViewController.swift in Sources */,
-				324675E618A5516A009EFE78 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		324675E218A5516A009EFE78 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				324675E318A5516A009EFE78 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		324675EB18A5516B009EFE78 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -227,7 +181,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -259,7 +213,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -269,7 +223,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AttributedTextAsSecretMarking/AttributedTextAsSecretMarking-Prefix.pch";
@@ -285,7 +238,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AttributedTextAsSecretMarking/AttributedTextAsSecretMarking-Prefix.pch";

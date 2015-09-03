@@ -15,7 +15,7 @@ class ViewController : UIViewController {
     @IBOutlet var lab : UILabel!
     @IBOutlet var tv : UITextView!
     
-    let which = 0 // 0 ... 5
+    let which = 4 // 0 ... 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ class ViewController : UIViewController {
                 ], range: r)
             self.lab.attributedText = content
             self.tv.attributedText = content
-            self.tv.contentInset = UIEdgeInsetsMake(20,0,0,0)
+            self.tv.textContainerInset = UIEdgeInsetsMake(30,0,0,0)
             if which > 0 {fallthrough}
         case 1, 4, 5:
             let para = NSMutableParagraphStyle()
@@ -58,7 +58,7 @@ class ViewController : UIViewController {
                 value:para, range:NSMakeRange(0,1))
             self.lab.attributedText = content
             self.tv.attributedText = content
-            self.tv.contentInset = UIEdgeInsetsMake(20,0,0,0)
+            self.tv.textContainerInset = UIEdgeInsetsMake(30,0,0,0)
             if which >= 4 {fallthrough}
         case 2, 3, 4, 5:
             let s2 = "Fourscore and seven years ago, our fathers brought forth " +
@@ -72,10 +72,11 @@ class ViewController : UIViewController {
                 NSExpansionAttributeName: 0.3,
                 NSKernAttributeName: -4 // negative kerning bug fixed in iOS 8
                 // but they broke it again in iOS 8.3!
+                // but they fixed it again in iOS 9!
             ], range:NSMakeRange(0,1))
             self.lab.attributedText = content2
             self.tv.attributedText = content2
-            self.tv.contentInset = UIEdgeInsetsMake(20,0,0,0)
+            self.tv.textContainerInset = UIEdgeInsetsMake(30,0,0,0)
             if which > 2 {fallthrough}
         case 3, 4, 5:
             content2.addAttribute(NSParagraphStyleAttributeName,
@@ -91,7 +92,7 @@ class ViewController : UIViewController {
                 }, range:NSMakeRange(0,1))
             self.lab.attributedText = content2
             self.tv.attributedText = content2
-            self.tv.contentInset = UIEdgeInsetsMake(20,0,0,0)
+            self.tv.textContainerInset = UIEdgeInsetsMake(20,0,0,0)
             if which > 3 {fallthrough}
         case 4, 5:
             let end = content.length
@@ -99,7 +100,7 @@ class ViewController : UIViewController {
             content.appendAttributedString(content2)
             self.lab.attributedText = content
             self.tv.attributedText = content
-            self.tv.contentInset = UIEdgeInsetsMake(10,0,0,0)
+            self.tv.textContainerInset = UIEdgeInsetsMake(20,0,0,0)
             if which > 4 {fallthrough}
         case 5:
             // demonstrating efficient cycling through style runs
@@ -119,7 +120,7 @@ class ViewController : UIViewController {
                 })
             self.lab.attributedText = content
             self.tv.attributedText = content
-            self.tv.contentInset = UIEdgeInsetsMake(10,0,0,0)
+            self.tv.textContainerInset = UIEdgeInsetsMake(0,0,0,0)
         default:break
         }
     }

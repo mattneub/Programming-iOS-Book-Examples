@@ -9,13 +9,14 @@ class StringDrawer : UIView {
         }
     }
     
+    let which = 2
+    
     override func drawRect(rect: CGRect) {
         
-        let which = 1
         switch which {
         case 1:
             let r = rect.offsetBy(dx: 0, dy: 2)
-            let options : NSStringDrawingOptions = .TruncatesLastVisibleLine | .UsesLineFragmentOrigin
+            let options : NSStringDrawingOptions = [.TruncatesLastVisibleLine, .UsesLineFragmentOrigin]
             self.attributedText.drawWithRect(r, options: options, context: nil)
         case 2:
             let lm = NSLayoutManager()

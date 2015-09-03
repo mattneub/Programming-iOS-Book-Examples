@@ -28,16 +28,15 @@ class ViewController : UIViewController {
         
         // idea is to provide a test bed for playing with these parameters
         // you can see how both string-based and attributed-string-based label behaves
-        // (and if there differences between iOS 7 and iOS 8)
         
         // also now added drawing attributed string in image to show wrapping differences
-        
 
         let f = UIFont(name:"GillSans", size:20)!
         
         let align : NSTextAlignment = .Left
-        let brk : NSLineBreakMode = .ByTruncatingTail
+        let brk : NSLineBreakMode = .ByTruncatingMiddle
         let numLines = 2
+        let tighten = true
         
         let adjusts = false
         let min : CGFloat = 0.8
@@ -51,8 +50,10 @@ class ViewController : UIViewController {
         self.lab2.baselineAdjustment = base
         self.lab1.numberOfLines = numLines
         self.lab2.numberOfLines = numLines
+        self.lab1.allowsDefaultTighteningForTruncation = tighten
+        self.lab2.allowsDefaultTighteningForTruncation = tighten
         
-        let s = "Little poltergeists make up the principal form of spontaneous material manifestation."
+        let s = "Little poltergeists make up the principal form of material manifestation."
         self.lab1.text = s
         self.lab1.font = f
         self.lab1.textAlignment = align
@@ -65,6 +66,7 @@ class ViewController : UIViewController {
                 (para : NSMutableParagraphStyle) in
                 para.alignment = align
                 para.lineBreakMode = brk
+                para.allowsDefaultTighteningForTruncation = tighten
             }
         ])
         mas.addAttribute(NSForegroundColorAttributeName,

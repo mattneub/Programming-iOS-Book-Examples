@@ -2,6 +2,11 @@ import UIKit
 
 class MyTextContainer : NSTextContainer {
     
+    // NB new in iOS 9, if we override this...
+    // we should override simpleRectangularTextContainer
+    
+    override var simpleRectangularTextContainer : Bool { return false } // *
+    
     override func lineFragmentRectForProposedRect(proposedRect: CGRect, atIndex characterIndex: Int, writingDirection baseWritingDirection: NSWritingDirection, remainingRect: UnsafeMutablePointer<CGRect>) -> CGRect {
         
         var result = super.lineFragmentRectForProposedRect(proposedRect, atIndex:characterIndex, writingDirection:baseWritingDirection, remainingRect:remainingRect)

@@ -27,10 +27,10 @@ class ViewController : UIViewController {
         let f : UIFont! = UIFont(name:name, size:size)
         if f != nil {
             self.lab.font = f
-            println("already installed")
+            print("already installed")
             return
         }
-        println("attempting to download font")
+        print("attempting to download font")
         let desc = UIFontDescriptor(name:name, size:size)
         CTFontDescriptorMatchFontDescriptorsWithProgressHandler(
             [desc], nil, {

@@ -12,6 +12,7 @@ func lend<T where T:NSObject> (closure:(T)->()) -> T {
 class ViewController : UIViewController {
     @IBOutlet var tv : UITextView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,11 +21,20 @@ class ViewController : UIViewController {
             NSFontAttributeName:UIFont(name:"GillSans", size:15)!,
             NSParagraphStyleAttributeName:lend {
                 (p:NSMutableParagraphStyle) in
-                var tabs = [NSTextTab]()
                 let terms = NSTextTab.columnTerminatorsForLocale(NSLocale.currentLocale())
                 let tab = NSTextTab(textAlignment:.Right, location:170, options:[NSTabColumnTerminatorsAttributeName:terms])
-                tabs += [tab]
-                p.tabStops = tabs
+                var which : Int { return 2 }
+                switch which {
+                case 1:
+                    p.tabStops = [tab]
+                case 2:
+                    for oldTab in p.tabStops {
+                        p.removeTabStop(oldTab)
+                    }
+                    p.addTabStop(tab)
+                default: break
+                }
+                
                 p.firstLineHeadIndent = 20
             }
             ])
@@ -74,8 +84,8 @@ class ViewController : UIViewController {
     
     func thumbnailOfImageWithName(name:String, withExtension ext: String) -> UIImage {
         let url = NSBundle.mainBundle().URLForResource(name,
-                withExtension:ext)
-        let src = CGImageSourceCreateWithURL(url, nil)
+                withExtension:ext)!
+        let src = CGImageSourceCreateWithURL(url, nil)!
         let scale = UIScreen.mainScreen().scale
         let w : CGFloat = 20 * scale
         let d : [NSObject:AnyObject] = [
@@ -85,8 +95,8 @@ class ViewController : UIViewController {
             kCGImageSourceThumbnailMaxPixelSize: Int(w)
         ]
         let imref =
-        CGImageSourceCreateThumbnailAtIndex(src, 0, d)
-        let im = UIImage(CGImage:imref, scale:scale, orientation:.Up)!
+        CGImageSourceCreateThumbnailAtIndex(src, 0, d)!
+        let im = UIImage(CGImage:imref, scale:scale, orientation:.Up)
         return im
     }
     
@@ -98,7 +108,7 @@ extension ViewController : UITextViewDelegate {
     }
     
     func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
-        println(URL)
+        print(URL)
         return true
     }
 }

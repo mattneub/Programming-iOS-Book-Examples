@@ -16,7 +16,38 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(tf: UITextField) {
+        print("did begin!")
         self.fr = tf // keep track of first responder
+        
+//        let s = NSAttributedString(string: "this is a test", attributes: [NSForegroundColorAttributeName:UIColor.blueColor(), NSFontAttributeName:UIFont(name: "GillSans", size: 20)!])
+//        tf.attributedText = s
+//        tf.textColor = UIColor.redColor()
+//        tf.text = "howdy"
+//        print(tf.attributedText)
+//        
+//        let lab = UILabel()
+//        lab.attributedText = s
+//        lab.textColor = UIColor.redColor()
+//        lab.text = "howdy"
+//        print(lab.attributedText)
+        
+//        let s = NSAttributedString(string: "this is a test so let's see what happens when we do this", attributes: [NSForegroundColorAttributeName:UIColor.blueColor(), NSFontAttributeName:UIFont(name: "GillSans", size: 20)!])
+//        tf.adjustsFontSizeToFitWidth = false
+//        tf.minimumFontSize = 6
+//        tf.attributedPlaceholder = s
+        
+        // tf.borderStyle = .Bezel
+        // tf.backgroundColor = UIColor.redColor()
+        
+//        let t = UITextField()
+//        t.borderStyle = .RoundedRect
+//        t.text = "This is a test of what is going on"
+//        t.sizeToFit()
+//        self.view.addSubview(t)
+        
+//        tf.background = UIImage(named:"yellowsilk4")!
+//        tf.borderStyle = .Line
+
     }
     
     func textFieldShouldReturn(tf: UITextField) -> Bool {
@@ -30,25 +61,35 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func keyboardShow(n:NSNotification) {
+        print("show!")
         let d = n.userInfo!
+        if let local = d[UIKeyboardIsLocalUserInfoKey] {
+            print(local)
+        }
         var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-        // in iOS 8, keyboard and fullscreen views are in same coordinate space
-        // however, I'm keeping this line because our view might not be fullscreen
         r = self.slidingView.convertRect(r, fromView:nil)
-        let f = self.fr!.frame
-        let y : CGFloat =
-            f.maxY + r.size.height - self.slidingView.bounds.height + 5
-        if r.origin.y < f.maxY {
-            self.topConstraint.constant = -y
-            self.bottomConstraint.constant = y
-            self.view.layoutIfNeeded()
+        if let f = self.fr?.frame {
+            let y : CGFloat =
+                f.maxY + r.size.height - self.slidingView.bounds.height + 5
+            if r.origin.y < f.maxY {
+                self.topConstraint.constant = -y
+                self.bottomConstraint.constant = y
+                self.view.layoutIfNeeded()
+            }
         }
     }
 
     func keyboardHide(n:NSNotification) {
+        print("hide!")
+        let d = n.userInfo!
+        if let local = d[UIKeyboardIsLocalUserInfoKey] {
+            print(local)
+        }
         self.topConstraint.constant = 0
         self.bottomConstraint.constant = 0
         self.view.layoutIfNeeded()
+        self.fr?.resignFirstResponder()
+        self.fr = nil
     }
 
 }

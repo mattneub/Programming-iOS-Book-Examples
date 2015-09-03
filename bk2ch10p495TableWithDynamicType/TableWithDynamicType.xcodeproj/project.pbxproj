@@ -7,21 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		322C69AE1B94D42F0021A09F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 322C69AD1B94D42F0021A09F /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		328BC5A7198AB6F20062D99A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BC5A6198AB6F20062D99A /* AppDelegate.swift */; };
 		328BC5A9198AB6F20062D99A /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BC5A8198AB6F20062D99A /* MasterViewController.swift */; };
 		328BC5AB198AB6F20062D99A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BC5AA198AB6F20062D99A /* DetailViewController.swift */; };
 		328BC5AE198AB6F20062D99A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BC5AC198AB6F20062D99A /* Main.storyboard */; };
-		328BC5B0198AB6F20062D99A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 328BC5AF198AB6F20062D99A /* Images.xcassets */; };
+		328BC5B0198AB6F20062D99A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 328BC5AF198AB6F20062D99A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		322C69AD1B94D42F0021A09F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		328BC5A1198AB6F20062D99A /* TableWithDynamicType.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableWithDynamicType.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		328BC5A5198AB6F20062D99A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		328BC5A6198AB6F20062D99A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		328BC5A8198AB6F20062D99A /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		328BC5AA198AB6F20062D99A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		328BC5AD198AB6F20062D99A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		328BC5AF198AB6F20062D99A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		328BC5AF198AB6F20062D99A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,18 +60,11 @@
 				328BC5A8198AB6F20062D99A /* MasterViewController.swift */,
 				328BC5AA198AB6F20062D99A /* DetailViewController.swift */,
 				328BC5AC198AB6F20062D99A /* Main.storyboard */,
-				328BC5AF198AB6F20062D99A /* Images.xcassets */,
-				328BC5A4198AB6F20062D99A /* Supporting Files */,
-			);
-			path = TableWithDynamicType;
-			sourceTree = "<group>";
-		};
-		328BC5A4198AB6F20062D99A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				328BC5AF198AB6F20062D99A /* Assets.xcassets */,
+				322C69AD1B94D42F0021A09F /* LaunchScreen.storyboard */,
 				328BC5A5198AB6F20062D99A /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = TableWithDynamicType;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +93,7 @@
 		328BC599198AB6F20062D99A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -129,8 +125,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				322C69AE1B94D42F0021A09F /* LaunchScreen.storyboard in Resources */,
 				328BC5AE198AB6F20062D99A /* Main.storyboard in Resources */,
-				328BC5B0198AB6F20062D99A /* Images.xcassets in Resources */,
+				328BC5B0198AB6F20062D99A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +192,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -231,7 +228,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -242,7 +239,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = TableWithDynamicType/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -253,7 +249,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = TableWithDynamicType/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

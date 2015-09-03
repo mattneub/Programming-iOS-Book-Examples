@@ -40,34 +40,41 @@ class ViewController: UIViewController, UITextViewDelegate {
         self.tv.attributedText = mas
         
         dispatch_async(dispatch_get_main_queue()) {
-            self.adjustHeight()
+            self.adjustHeight(self.tv)
         }
         
     }
     
-    func adjustHeight() {
-        let sz = self.tv.sizeThatFits(CGSizeMake(self.tv.bounds.width, 10000))
-        self.heightConstraint.constant = ceil(sz.height)
+    func adjustHeight(tv:UITextView) {
+//        let sz = self.tv.sizeThatFits(CGSizeMake(self.tv.bounds.width, 10000))
+//        self.heightConstraint.constant = ceil(sz.height)
+        self.heightConstraint.constant = ceil(tv.contentSize.height)
     }
     
-    // kind of hacky, but the problem is that textViewDidChange was happening too late;
-    // by that time, the text view had scrolled if necessary
+//    func textViewDidChange(textView: UITextView) {
+//        delay(0.05) {
+//            self.adjustHeight(textView)
+//        }
+//    }
+    
+    // textViewDidChange is happening too late;
+    // by that time, the text view has scrolled if necessary
+    // hence the delay
+    // so I prefer a solution using shouldChangeTextInRange but the problem is...
+    // if I return false, I also end up shifting the selection in weird ways
+    // and then I have to put it back, and it's not obvious what the algorithm is
+    // this is my attempt to get it right
 
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        let sel = textView.selectedRange
         textView.text = (textView.text as NSString).stringByReplacingCharactersInRange(range,
             withString:text)
-        self.adjustHeight()
+        self.adjustHeight(textView)
+        textView.selectedRange =
+            text.isEmpty && sel.length == 0 ?
+                NSMakeRange(sel.location - 1,0) : NSMakeRange(sel.location + text.utf16.count, 0)
         return false
     }
     
-    /*
-    // old code:
-    
-    -(void)textViewDidChange:(UITextView *)textView {
-    // [textView sizeToFit]; // seems no longer needed in iOS 7.1
-    self.heightConstraint.constant = textView.contentSize.height;
-    }
-
-*/
     
 }

@@ -63,8 +63,8 @@ class ViewController : UIViewController {
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animateAlongsideTransition(nil) {
             _ in
-            println(self.lab1.preferredMaxLayoutWidth)
-            println(self.lab2.preferredMaxLayoutWidth)
+            print(self.lab1.preferredMaxLayoutWidth)
+            print(self.lab2.preferredMaxLayoutWidth)
         }
 
     }

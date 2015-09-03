@@ -8,33 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		32299BE6198AD45900017BF4 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32299BE5198AD45900017BF4 /* SourceCodePro-Regular.ttf */; };
+		322C69B01B94D7060021A09F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 322C69AF1B94D7060021A09F /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		322C69B21B94D72D0021A09F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322C69B11B94D72D0021A09F /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		328BC5C6198ABB690062D99A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BC5C5198ABB690062D99A /* ViewController.swift */; };
-		C9DDA0DD180DC5E900E9E0CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DDA0DC180DC5E900E9E0CC /* Foundation.framework */; };
-		C9DDA0DF180DC5E900E9E0CC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DDA0DE180DC5E900E9E0CC /* CoreGraphics.framework */; };
-		C9DDA0E1180DC5E900E9E0CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9DDA0E0180DC5E900E9E0CC /* UIKit.framework */; };
-		C9DDA0E7180DC5E900E9E0CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9DDA0E5180DC5E900E9E0CC /* InfoPlist.strings */; };
-		C9DDA0E9180DC5E900E9E0CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DDA0E8180DC5E900E9E0CC /* main.m */; };
-		C9DDA0ED180DC5E900E9E0CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DDA0EC180DC5E900E9E0CC /* AppDelegate.m */; };
 		C9DDA0F0180DC5E900E9E0CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9DDA0EE180DC5E900E9E0CC /* Main.storyboard */; };
-		C9DDA0F5180DC5E900E9E0CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9DDA0F4180DC5E900E9E0CC /* Images.xcassets */; };
+		C9DDA0F5180DC5E900E9E0CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9DDA0F4180DC5E900E9E0CC /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		32299BE5198AD45900017BF4 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
+		322C69AF1B94D7060021A09F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		322C69B11B94D72D0021A09F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		328BC5C5198ABB690062D99A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9DDA0D9180DC5E900E9E0CC /* ch23p770font2downloadableFont.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch23p770font2downloadableFont.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9DDA0DC180DC5E900E9E0CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9DDA0DE180DC5E900E9E0CC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C9DDA0E0180DC5E900E9E0CC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9DDA0E4180DC5E900E9E0CC /* ch23p770font2downloadableFont-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch23p770font2downloadableFont-Info.plist"; sourceTree = "<group>"; };
-		C9DDA0E6180DC5E900E9E0CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9DDA0E8180DC5E900E9E0CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9DDA0EA180DC5E900E9E0CC /* ch23p770font2downloadableFont-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch23p770font2downloadableFont-Prefix.pch"; sourceTree = "<group>"; };
-		C9DDA0EB180DC5E900E9E0CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C9DDA0EC180DC5E900E9E0CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9DDA0EF180DC5E900E9E0CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9DDA0F4180DC5E900E9E0CC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9DDA0FB180DC5E900E9E0CC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C9DDA0F4180DC5E900E9E0CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,9 +31,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9DDA0DF180DC5E900E9E0CC /* CoreGraphics.framework in Frameworks */,
-				C9DDA0E1180DC5E900E9E0CC /* UIKit.framework in Frameworks */,
-				C9DDA0DD180DC5E900E9E0CC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				C9DDA0E2180DC5E900E9E0CC /* ch23p770font1dynamicType */,
-				C9DDA0DB180DC5E900E9E0CC /* Frameworks */,
 				C9DDA0DA180DC5E900E9E0CC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,41 +53,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9DDA0DB180DC5E900E9E0CC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9DDA0DC180DC5E900E9E0CC /* Foundation.framework */,
-				C9DDA0DE180DC5E900E9E0CC /* CoreGraphics.framework */,
-				C9DDA0E0180DC5E900E9E0CC /* UIKit.framework */,
-				C9DDA0FB180DC5E900E9E0CC /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C9DDA0E2180DC5E900E9E0CC /* ch23p770font1dynamicType */ = {
 			isa = PBXGroup;
 			children = (
-				C9DDA0EB180DC5E900E9E0CC /* AppDelegate.h */,
-				C9DDA0EC180DC5E900E9E0CC /* AppDelegate.m */,
 				C9DDA0EE180DC5E900E9E0CC /* Main.storyboard */,
+				322C69B11B94D72D0021A09F /* AppDelegate.swift */,
 				328BC5C5198ABB690062D99A /* ViewController.swift */,
-				C9DDA0F4180DC5E900E9E0CC /* Images.xcassets */,
+				C9DDA0F4180DC5E900E9E0CC /* Assets.xcassets */,
+				322C69AF1B94D7060021A09F /* LaunchScreen.storyboard */,
 				32299BE5198AD45900017BF4 /* SourceCodePro-Regular.ttf */,
-				C9DDA0E3180DC5E900E9E0CC /* Supporting Files */,
+				C9DDA0E4180DC5E900E9E0CC /* ch23p770font2downloadableFont-Info.plist */,
 			);
 			name = ch23p770font1dynamicType;
 			path = ch23p670font1dynamicType;
-			sourceTree = "<group>";
-		};
-		C9DDA0E3180DC5E900E9E0CC /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C9DDA0E4180DC5E900E9E0CC /* ch23p770font2downloadableFont-Info.plist */,
-				C9DDA0E5180DC5E900E9E0CC /* InfoPlist.strings */,
-				C9DDA0E8180DC5E900E9E0CC /* main.m */,
-				C9DDA0EA180DC5E900E9E0CC /* ch23p770font2downloadableFont-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +94,7 @@
 		C9DDA0D1180DC5E900E9E0CC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -157,9 +121,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9DDA0F5180DC5E900E9E0CC /* Images.xcassets in Resources */,
+				C9DDA0F5180DC5E900E9E0CC /* Assets.xcassets in Resources */,
+				322C69B01B94D7060021A09F /* LaunchScreen.storyboard in Resources */,
 				32299BE6198AD45900017BF4 /* SourceCodePro-Regular.ttf in Resources */,
-				C9DDA0E7180DC5E900E9E0CC /* InfoPlist.strings in Resources */,
 				C9DDA0F0180DC5E900E9E0CC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,23 +135,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9DDA0ED180DC5E900E9E0CC /* AppDelegate.m in Sources */,
+				322C69B21B94D72D0021A09F /* AppDelegate.swift in Sources */,
 				328BC5C6198ABB690062D99A /* ViewController.swift in Sources */,
-				C9DDA0E9180DC5E900E9E0CC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C9DDA0E5180DC5E900E9E0CC /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9DDA0E6180DC5E900E9E0CC /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C9DDA0EE180DC5E900E9E0CC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -232,7 +187,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -265,7 +220,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -276,7 +231,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch23p670font1dynamicType/ch23p770font2downloadableFont-Prefix.pch";
@@ -293,7 +247,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch23p670font1dynamicType/ch23p770font2downloadableFont-Prefix.pch";

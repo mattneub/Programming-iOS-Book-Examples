@@ -8,7 +8,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let url = NSBundle.mainBundle().URLForResource("test", withExtension: "rtf")!
         let opts = [NSDocumentTypeDocumentAttribute:NSRTFTextDocumentType]
-        let s = NSAttributedString(fileURL: url, options: opts, documentAttributes: nil, error: nil)
+        var d : NSDictionary? = nil
+        let s = try! NSAttributedString(URL: url, options: opts, documentAttributes: &d)
         self.tv.attributedText = s
     }
 

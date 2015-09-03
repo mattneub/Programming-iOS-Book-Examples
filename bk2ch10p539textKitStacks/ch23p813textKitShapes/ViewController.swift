@@ -19,8 +19,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let path = NSBundle.mainBundle().pathForResource("brillig", ofType: "txt")!
-        let s = String(contentsOfFile:path, encoding: NSUTF8StringEncoding, error: nil)
-        let s2 = s!.stringByReplacingOccurrencesOfString("\n", withString: "")
+        let s = try! String(contentsOfFile:path, encoding: NSUTF8StringEncoding)
+        let s2 = s.stringByReplacingOccurrencesOfString("\n", withString: "")
         let mas = NSMutableAttributedString(string:s2, attributes:[
             NSFontAttributeName: UIFont(name:"GillSans", size:14)!
             ])
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
             },
             range:NSMakeRange(0,1))
         
-        let which = 1
+        var which : Int { return 1 }
         switch which {
         case 1:
             let r = self.tv.frame

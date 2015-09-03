@@ -42,20 +42,19 @@ class ViewController: UIViewController {
         
         
         let lab = UILabel() // preferredMaxLayoutWidth is 0
+        print(lab.preferredMaxLayoutWidth)
         lab.numberOfLines = 0
         lab.backgroundColor = UIColor.yellowColor()
-        lab.setTranslatesAutoresizingMaskIntoConstraints(false)
+        lab.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lab)
-        self.view.addConstraints(
+        NSLayoutConstraint.activateConstraints([
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "H:|-(30)-[v]-(30)-|",
-                options: nil, metrics: nil, views: ["v":lab])
-        )
-        self.view.addConstraints(
+                options: [], metrics: nil, views: ["v":lab]),
             NSLayoutConstraint.constraintsWithVisualFormat(
                 "V:|-(30)-[v]",
-                options: nil, metrics: nil, views: ["v":lab])
-        )
+                options: [], metrics: nil, views: ["v":lab])
+            ].flatten().map{$0})
         lab.attributedText = content2
 
     }

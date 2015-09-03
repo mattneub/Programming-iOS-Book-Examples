@@ -11,15 +11,14 @@ class StringDrawer : UIView {
     
     override func drawRect(rect: CGRect) {
         let r = rect.offsetBy(dx: 0, dy: 2)
-        // bug trying to "or" NSStringDrawingOptions values together...
-        // fixed in Swift 1.2 / Xcode 6.3!
-        let opts : NSStringDrawingOptions = .TruncatesLastVisibleLine | .UsesLineFragmentOrigin
+        // just proving it's now an OptionSetType
+        let opts : NSStringDrawingOptions = [.TruncatesLastVisibleLine, .UsesLineFragmentOrigin]
         
         let context = NSStringDrawingContext()
         context.minimumScaleFactor = 0.5 // does nothing
         
         self.attributedText.drawWithRect(r, options: opts, context: context)
         
-        println(context.totalBounds)
+        print(context.totalBounds)
     }
 }

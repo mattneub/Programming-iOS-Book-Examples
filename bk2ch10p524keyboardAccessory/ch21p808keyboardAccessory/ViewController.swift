@@ -14,14 +14,18 @@ class ViewController: UIViewController {
         self.accessoryView = arr[0] as! UIView
         let b = self.accessoryView.subviews[0] as! UIButton
         b.addTarget(self, action:"doNextButton:", forControlEvents:.TouchUpInside)
+        
     }
+    
+
 
     func textFieldDidBeginEditing(tf: UITextField) {
         self.fr = tf // keep track of first responder
         tf.inputAccessoryView = self.accessoryView
         tf.keyboardAppearance = .Dark
+        
     }
-    
+
     func textFieldShouldReturn(tf: UITextField) -> Bool {
         tf.resignFirstResponder()
         self.fr = nil
@@ -29,7 +33,7 @@ class ViewController: UIViewController {
     }
     
     func doNextButton(sender:AnyObject) {
-        var ix = (self.textFields as NSArray).indexOfObject(self.fr)
+        var ix = self.textFields.indexOf(self.fr as! UITextField)!
         ix = ++ix % self.textFields.count
         let v = self.textFields[ix]
         v.becomeFirstResponder()

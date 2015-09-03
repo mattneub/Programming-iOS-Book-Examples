@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        println("here '\(string)'")
+        print("here '\(string)'")
         
         if string == "\n" {
             return true // otherwise, our automatic keyboard dismissal trick won't work
@@ -27,17 +27,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // force user to type in red, underlined, lowercase only
         
         let lc = string.lowercaseString
-        textField.text = (textField.text as NSString).stringByReplacingCharactersInRange(range,
+        textField.text = (textField.text! as NSString).stringByReplacingCharactersInRange(range,
                 withString:lc)
         
         // not very satisfactory but it does show the result
         
-        var md = (textField.typingAttributes! as NSDictionary).mutableCopy() as! NSMutableDictionary
+        let md = (textField.typingAttributes! as NSDictionary).mutableCopy() as! NSMutableDictionary
         md.addEntriesFromDictionary([
             NSForegroundColorAttributeName: UIColor.redColor(),
             NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue
         ])
-        textField.typingAttributes = md as [NSObject:AnyObject]
+        textField.typingAttributes = md.copy() as! NSDictionary as? [String:AnyObject]
         
         return false
 

@@ -7,12 +7,12 @@ class MyTextField: UITextField {
     
     let list : [String] = {
         let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")!
-        let s = String(contentsOfURL:path, encoding:NSUTF8StringEncoding, error:nil)!
+        let s = try! String(contentsOfURL:path, encoding:NSUTF8StringEncoding)
         return s.componentsSeparatedByString("\n")
         }()
     
     func stateForAbbrev(abbrev:String) -> String? {
-        let ix = find(self.list, abbrev.uppercaseString)
+        let ix = self.list.indexOf(abbrev.uppercaseString)
         return ix != nil ? list[ix!+1] : nil
     }
     
@@ -20,19 +20,21 @@ class MyTextField: UITextField {
     override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
         if action == "expand:" {
             if let r = self.selectedTextRange {
-                let s = self.textInRange(r)
-                return count(s) == 2 && self.stateForAbbrev(s) != nil
+                if let s = self.textInRange(r) {
+                    return s.characters.count == 2
+                        && self.stateForAbbrev(s) != nil
+                }
             }
-            
         }
         return super.canPerformAction(action, withSender:sender)
     }
     
     func expand(sender:AnyObject?) {
         if let r = self.selectedTextRange {
-            let s = self.textInRange(r)
-            if let ss = self.stateForAbbrev(s) {
-                self.replaceRange(r, withText:ss)
+            if let s = self.textInRange(r) {
+                if let ss = self.stateForAbbrev(s) {
+                    self.replaceRange(r, withText:ss)
+                }
             }
         }
     }
@@ -63,9 +65,9 @@ extension UITextField { // is this legal? sure makes life better...
     }
     set (r) {
         let st = self.positionFromPosition(self.beginningOfDocument,
-            offset:r.location)
+            offset:r.location)!
         let en = self.positionFromPosition(self.beginningOfDocument,
-            offset:r.location + r.length)
+            offset:r.location + r.length)!
         self.selectedTextRange = self.textRangeFromPosition(st, toPosition:en)
     }
     }

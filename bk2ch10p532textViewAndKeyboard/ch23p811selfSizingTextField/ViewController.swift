@@ -15,8 +15,8 @@ class ViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
 
         let path = NSBundle.mainBundle().pathForResource("brillig", ofType: "txt")!
-        let s = String(contentsOfFile:path, encoding: NSUTF8StringEncoding, error: nil)
-        let s2 = s!.stringByReplacingOccurrencesOfString("\n", withString: "")
+        let s = try! String(contentsOfFile:path, encoding: NSUTF8StringEncoding)
+        let s2 = s.stringByReplacingOccurrencesOfString("\n", withString: "")
         let mas = NSMutableAttributedString(string:s2, attributes:[
             NSFontAttributeName: UIFont(name:"GillSans", size:20)!
             ])
@@ -40,7 +40,6 @@ class ViewController: UIViewController, UITextViewDelegate {
         return !self.keyboardShowing
     }
     
-    // much simpler than in iOS 7; a lot of the touchy bugs are gone in iOS 8
     // as long as you play your part (adjust content offset),
     // iOS 8 will play its part (scroll cursor to visible)
     // and we don't have to animate
