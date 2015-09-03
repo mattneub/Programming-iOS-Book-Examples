@@ -109,6 +109,7 @@ extension ViewController : UITextViewDelegate {
     
     func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
         print(URL)
+        print((textView.text as NSString).substringWithRange(characterRange))
         return true
     }
 }

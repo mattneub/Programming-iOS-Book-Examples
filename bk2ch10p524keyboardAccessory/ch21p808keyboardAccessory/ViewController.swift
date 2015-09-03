@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         tf.inputAccessoryView = self.accessoryView
         tf.keyboardAppearance = .Dark
         
+        
     }
 
     func textFieldShouldReturn(tf: UITextField) -> Bool {

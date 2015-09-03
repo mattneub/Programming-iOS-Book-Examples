@@ -33,6 +33,8 @@ class ViewController: UIViewController, UITextViewDelegate {
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
+        
+        self.tv.keyboardDismissMode = .Interactive
 
     }
     
@@ -45,19 +47,27 @@ class ViewController: UIViewController, UITextViewDelegate {
     // and we don't have to animate
     
     func keyboardShow(n:NSNotification) {
-        self.keyboardShowing = true
+        print("show")
         
         let d = n.userInfo!
         var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         r = self.tv.convertRect(r, fromView:nil)
         self.tv.contentInset.bottom = r.size.height
         self.tv.scrollIndicatorInsets.bottom = r.size.height
+        
+        self.keyboardShowing = true
+        
+
     }
     
     func keyboardHide(n:NSNotification) {
-        self.keyboardShowing = false
+        print("hide")
+        
         self.tv.contentInset = UIEdgeInsetsZero
         self.tv.scrollIndicatorInsets = UIEdgeInsetsZero
+        
+        self.keyboardShowing = false
+
     }
 
     func doDone(sender:AnyObject) {
