@@ -73,12 +73,8 @@ class StyledText: UIView {
         let tc2 = NSTextContainer(size:r2.size)
         lm.addTextContainer(tc2)
         
-        self.lm = lm
-        self.ts = ts
-        self.tc = tc
-        self.tc2 = tc2
-        self.r1 = r1
-        self.r2 = r2
+        self.lm = lm; self.ts = ts; self.tc = tc; self.tc2 = tc2
+        self.r1 = r1; self.r2 = r2
     }
     
     override func drawRect(rect: CGRect) {

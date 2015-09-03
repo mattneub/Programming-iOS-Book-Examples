@@ -34,9 +34,10 @@ class ViewController: UIViewController {
             },
             range:NSMakeRange(0,1))
         
-        var which : Int { return 1 }
+        var which : Int { return 2 }
         switch which {
         case 1:
+            
             let r = self.tv.frame
             let r2 = self.tv2.frame
             
@@ -46,12 +47,12 @@ class ViewController: UIViewController {
             let tc1 = NSTextContainer(size:r.size)
             lm1.addTextContainer(tc1)
             let tv = UITextView(frame:r, textContainer:tc1)
-            tv.scrollEnabled = false
+//            tv.scrollEnabled = false
             
             let tc2 = NSTextContainer(size:r2.size)
             lm1.addTextContainer(tc2)
             let tv2 = UITextView(frame:r2, textContainer:tc2)
-            tv2.scrollEnabled = false
+//            tv2.scrollEnabled = false
             
             self.tv.removeFromSuperview()
             self.tv2.removeFromSuperview()

@@ -15,7 +15,7 @@ class MyLayoutManager : NSLayoutManager {
         if range.length == 0 {
             return
         }
-        if let tc = self.textContainerForGlyphAtIndex(range.location, effectiveRange:nil) {
+        if let tc = self.textContainerForGlyphAtIndex(range.location, effectiveRange:nil, withoutAdditionalLayout:true) {
             var r = self.boundingRectForGlyphRange(range, inTextContainer:tc)
             r.origin.x += origin.x
             r.origin.y += origin.y

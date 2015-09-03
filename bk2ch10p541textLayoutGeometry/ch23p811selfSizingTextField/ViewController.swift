@@ -15,9 +15,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         let path = NSBundle.mainBundle().pathForResource("brillig", ofType: "txt")!
-        let s = String(contentsOfFile:path, encoding: NSUTF8StringEncoding, error: nil)
-        let s2 = s!.stringByReplacingOccurrencesOfString("\n", withString: "")
-        let mas = NSMutableAttributedString(string:s2, attributes:[
+        let s = try! String(contentsOfFile:path, encoding: NSUTF8StringEncoding)
+        let s2 = s.stringByReplacingOccurrencesOfString("\n", withString: "")
+        let mas = NSMutableAttributedString(string:s2 + " " + s2, attributes:[
             NSFontAttributeName: UIFont(name:"GillSans", size:20)!
             ])
         
@@ -48,15 +48,15 @@ class ViewController: UIViewController {
         self.tv.selectable = false
         self.tv.editable = false
                 
-        self.tv.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.view.addConstraints(
+        self.tv.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
             NSLayoutConstraint.constraintsWithVisualFormat("H:|-(10)-[tv]-(10)-|",
-                options:nil, metrics:nil, views:["tv":self.tv]))
-        self.view.addConstraints(
+                options:[], metrics:nil, views:["tv":self.tv]),
             NSLayoutConstraint.constraintsWithVisualFormat("V:[top][tv]-(10)-[bot]",
-                options:nil, metrics:nil, views:[
+                options:[], metrics:nil, views:[
                     "tv":self.tv, "top":self.topLayoutGuide, "bot":self.bottomLayoutGuide
-                ]))
+                ])
+            ].flatten().map{$0})
 
     }
     
@@ -91,7 +91,7 @@ class ViewController: UIViewController {
         var r : NSRange = NSMakeRange(0,0)
         let tag = t.tagAtIndex(ix, scheme:sch, tokenRange:&r, sentenceRange:nil)
         if tag == NSLinguisticTagWord {
-            println((self.tv.text as NSString).substringWithRange(r))
+            print((self.tv.text as NSString).substringWithRange(r))
         }
         
         let lm = self.tv.layoutManager as! MyLayoutManager
