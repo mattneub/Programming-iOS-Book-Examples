@@ -100,7 +100,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         print("swipe") // okay, you proved it
     }
     
-    let LOADREQ = 0 // 0, or try 1 for a different application...
+    let LOADREQ = 1 // 0, or try 1 for a different application...
     // one that loads an actual request and lets you experiment with state saving and restoration
     
     override func viewDidAppear(animated: Bool) {
@@ -212,7 +212,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
             if self.canNavigate {
                 return true
             }
-            print("user would like to navigation to \(r.URL)")
+            print("user would like to navigate to \(r.URL)")
             // this is how you would open in Mobile Safari
             // UIApplication.sharedApplication().openURL(r.URL)
             return false

@@ -37,6 +37,8 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     
     var activity = UIActivityIndicatorView()
     var oldOffset : NSValue? // use nil as indicator
+    var oldHTMLString : String?
+    var oldBase : NSURL?
     
     var fontsize = 18
     var cssrule : String {
@@ -62,7 +64,12 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
 
     
     class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject], coder: NSCoder) -> UIViewController? {
-        return self.init(nibName:nil, bundle:nil)
+        let id = identifierComponents.last as! String
+        if id == "wvc" {
+            print("recreating wvc view controller")
+            return self.init(nibName:nil, bundle:nil)
+        }
+        return nil
     }
     
     // we must save and restore offset ourselves
@@ -79,6 +86,12 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         if let fontsize = coder.decodeObjectForKey("fontsize") as? Int {
             self.fontsize = fontsize
         }
+        if let oldHTMLString = coder.decodeObjectForKey("oldHTMLString") as? String {
+            self.oldHTMLString = oldHTMLString
+        }
+        if let oldBase = coder.decodeObjectForKey("oldBase") as? NSURL {
+            self.oldBase = oldBase
+        }
     }
     
     override func encodeRestorableStateWithCoder(coder: NSCoder) {
@@ -89,6 +102,8 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         print("saving offset \(off)")
         coder.encodeObject(NSValue(CGPoint:off), forKey:"oldOffset")
         coder.encodeObject(self.fontsize, forKey:"fontsize")
+        coder.encodeObject(self.oldHTMLString, forKey:"oldHTMLString")
+        coder.encodeObject(self.oldBase, forKey:"oldBase")
     }
     
     override func applicationFinishedRestoringState() {
@@ -204,16 +219,23 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        print("view did appear, req: \(self.wv.URL)")
+
         if !self.isMovingToParentViewController() {
             return // so we don't do this again when a presented view controller is dismissed
         }
-        print("view did appear, req: \(self.wv.URL)")
         
         var which : Int { return 1 }
         switch which {
         case 1:
             let b = UIBarButtonItem(title: "Size", style: .Plain, target: self, action: "doDecreaseSize:")
             self.navigationItem.rightBarButtonItems = [b]
+            
+            if let oldHTMLString = self.oldHTMLString, let oldBase = self.oldBase {
+                print("restoring html")
+                self.wv.loadHTMLString(oldHTMLString, baseURL:oldBase)
+                return
+            }
             
             let bodypath = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
             let ss = try! String(contentsOfFile:bodypath, encoding:NSUTF8StringEncoding)
@@ -233,6 +255,8 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             s = s.stringByReplacingOccurrencesOfString("<content>", withString:ss)
             
             self.wv.loadHTMLString(s, baseURL:base) // works in iOS 9! local and remote images are loading
+            self.oldHTMLString = s
+            self.oldBase = base
         case 2:
             let path = NSBundle.mainBundle().pathForResource("release", ofType:"pdf")!
             let url = NSURL.fileURLWithPath(path)
@@ -341,6 +365,11 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         // must always call _something_
         decisionHandler(.Allow)
     }
+    
+    func webViewWebContentProcessDidTerminate(webView: WKWebView) { // new in iOS 9
+        print("process did terminate") // but I do not know under what circumstances this will actually be called
+    }
+
     
     func safariViewControllerDidFinish(controller: SFSafariViewController) {
         self.dismissViewControllerAnimated(true, completion: nil)

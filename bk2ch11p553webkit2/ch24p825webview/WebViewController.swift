@@ -5,6 +5,7 @@ import WebKit
 class WebViewController: UIViewController, UIViewControllerRestoration {
     var activity = UIActivityIndicatorView()
     weak var wv : WKWebView!
+    var decoded = false
     
     required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -26,35 +27,29 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
 
     override func decodeRestorableStateWithCoder(coder: NSCoder) {
         print("decode")
+        self.decoded = true
         super.decodeRestorableStateWithCoder(coder)
-//        let oldOffset = coder.decodeObjectForKey("oldOffset") as? NSValue
-//        print("retrieved old offset as \(oldOffset)")
-//        self.oldOffset = oldOffset // for local example
     }
     
     override func encodeRestorableStateWithCoder(coder: NSCoder) {
         print("encode")
         super.encodeRestorableStateWithCoder(coder)
-//        if !self.canNavigate { // local example; we have to manage offset ourselves
-//            let off = self.wv.scrollView.contentOffset
-//            print("saving offset \(off)")
-//            coder.encodeObject(NSValue(CGPoint:off), forKey:"oldOffset")
-//        }
     }
 
 
     override func applicationFinishedRestoringState() {
-        print("finished restoring state")
-//        if self.wv.request {
-//            // remote example
-//            self.wv.reload()
-//        }
+        print("finished restoring state", self.wv.URL)
     }
 
+    override func loadView() {
+        print("loadView")
+        super.loadView()
+    }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
                 
         let wv = WKWebView(frame: CGRectZero)
         wv.restorationIdentifier = "wv"
@@ -118,9 +113,11 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         
         let b = UIBarButtonItem(title:"Back", style:.Plain, target:self, action:"goBack:")
         self.navigationItem.rightBarButtonItems = [b]
-//            if self.wv.URL {  let applicationFinished handle reloading
-//                return
-//            }
+        
+        if self.decoded {
+            // return // forget it, just trying to see if I was in restoration's way, but I'm not
+        }
+        
         let url = NSURL(string: "http://www.apeth.com/RubyFrontierDocs/default.html")!
         self.wv.loadRequest(NSURLRequest(URL:url))
     }
