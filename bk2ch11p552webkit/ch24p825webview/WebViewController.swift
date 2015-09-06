@@ -1,6 +1,17 @@
 
 import UIKit
 import WebKit
+import SafariServices
+
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
+
 
 /*
 A simple no-navigation web view - we just show our own custom content and that's all.
@@ -18,25 +29,23 @@ class MyMessageHandler : NSObject, WKScriptMessageHandler {
             delegate?.userContentController(userContentController, didReceiveScriptMessage: message)
     }
     deinit {
-        println("message handler dealloc")
+        print("message handler dealloc")
     }
 }
 
-class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler, UIViewControllerRestoration {
+class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler, UIViewControllerRestoration, SFSafariViewControllerDelegate {
     
     var activity = UIActivityIndicatorView()
     var oldOffset : NSValue? // use nil as indicator
     
-    var fontsize = 18 // should save and restore this but it's only an example
+    var fontsize = 18
     var cssrule : String {
-    get {
         var s = "var s = document.createElement('style');\n"
         s += "s.textContent = '"
         s += "body { font-size: \(self.fontsize)px; }"
         s += "';\n"
         s += "document.documentElement.appendChild(s);\n"
         return s
-    }
     }
     weak var wv : WKWebView!
     
@@ -53,32 +62,37 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
 
     
     class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject], coder: NSCoder) -> UIViewController? {
-        return self(nibName:nil, bundle:nil)
+        return self.init(nibName:nil, bundle:nil)
     }
     
     // we must save and restore offset ourselves
     // note that I don't touch the web view at this point: just an ivar
     // we don't have any web content yet!
-
+    
     override func decodeRestorableStateWithCoder(coder: NSCoder) {
-        println("decode")
+        print("decode")
         super.decodeRestorableStateWithCoder(coder)
-        let oldOffset = coder.decodeObjectForKey("oldOffset") as? NSValue
-        println("retrieved old offset as \(oldOffset)")
-        self.oldOffset = oldOffset // for local example
+        if let oldOffset = coder.decodeObjectForKey("oldOffset") as? NSValue {
+            print("retrieved old offset as \(oldOffset)")
+            self.oldOffset = oldOffset // for local example
+        }
+        if let fontsize = coder.decodeObjectForKey("fontsize") as? Int {
+            self.fontsize = fontsize
+        }
     }
     
     override func encodeRestorableStateWithCoder(coder: NSCoder) {
-        println("encode")
+        print("encode")
         super.encodeRestorableStateWithCoder(coder)
         // we have to manage offset ourselves
         let off = self.wv.scrollView.contentOffset
-        println("saving offset \(off)")
+        print("saving offset \(off)")
         coder.encodeObject(NSValue(CGPoint:off), forKey:"oldOffset")
+        coder.encodeObject(self.fontsize, forKey:"fontsize")
     }
     
     override func applicationFinishedRestoringState() {
-        println("finished restoring state") // still too soon to fix offset, not loaded yet
+        print("finished restoring state") // still too soon to fix offset, not loaded yet
     }
 
     override func viewDidLoad() {
@@ -104,20 +118,25 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         // unfortunately there's a bug: the script message handler cannot be self,
         // or we will leak
         
-        self.wv.configuration.userContentController.addScriptMessageHandler(
-            MyMessageHandler(delegate:self), name: "playbutton")
+        var leak : Bool { return false }
+        switch leak {
+        case true:
+            self.wv.configuration.userContentController.addScriptMessageHandler(
+                self, name: "playbutton")
+        case false:
+            self.wv.configuration.userContentController.addScriptMessageHandler(
+                MyMessageHandler(delegate:self), name: "playbutton")
+        }
+        
         
         wv.restorationIdentifier = "wv"
         wv.scrollView.backgroundColor = UIColor.blackColor() // web view alone, ineffective
         self.view.addSubview(wv)
-        wv.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.view.addConstraints(
-            NSLayoutConstraint.constraintsWithVisualFormat("H:|[wv]|", options: nil, metrics: nil, views: ["wv":wv])
-        )
-        self.view.addConstraints(
-            NSLayoutConstraint.constraintsWithVisualFormat("V:|[wv]|", options: nil, metrics: nil, views: ["wv":wv])
-        )
-        
+        wv.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            NSLayoutConstraint.constraintsWithVisualFormat("H:|[wv]|", options: [], metrics: nil, views: ["wv":wv]),
+            NSLayoutConstraint.constraintsWithVisualFormat("V:|[wv]|", options: [], metrics: nil, views: ["wv":wv])
+            ].flatten().map{$0})
         wv.navigationDelegate = self
         
         // sorry, missing this feature
@@ -135,14 +154,11 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         act.backgroundColor = UIColor(white:0.1, alpha:0.5)
         self.activity = act
         wv.addSubview(act)
-        act.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.view.addConstraint(
-            NSLayoutConstraint(item: act, attribute: .CenterX, relatedBy: .Equal, toItem: wv, attribute: .CenterX, multiplier: 1, constant: 0)
-        )
-        self.view.addConstraint(
-            NSLayoutConstraint(item: act, attribute: .CenterY, relatedBy: .Equal, toItem: wv, attribute: .CenterY, multiplier: 1, constant: 0)
-        )
-        
+        act.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            act.centerXAnchor.constraintEqualToAnchor(wv.centerXAnchor),
+            act.centerYAnchor.constraintEqualToAnchor(wv.centerYAnchor)
+            ])
         // webkit uses KVO
         wv.addObserver(self, forKeyPath: "loading", options: .New, context: nil)
         // cool feature, show title
@@ -150,59 +166,61 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         
     }
     
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<()>) {
-        if let wv = object as? WKWebView {
-            switch keyPath {
-            case "loading": // new:1 or 0
-                if let val:AnyObject = change[NSKeyValueChangeNewKey] {
-                    if let val = val as? Bool {
-                        if val {
-                            self.activity.startAnimating()
-                        } else {
-                            self.activity.stopAnimating()
-                            println("stopping animating")
-                            // for our *local* example, restoring offset is up to us
-                            if self.oldOffset != nil { // local example
-                                if wv.estimatedProgress == 1 {
-                                    println("finished loading! restoring offset")
-                                    wv.scrollView.contentOffset = self.oldOffset!.CGPointValue()
-                                    self.oldOffset = nil
-                                }
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<()>) {
+        guard let wv = object as? WKWebView else {return}
+        guard let keyPath = keyPath else {return}
+        guard let change = change else {return}
+        switch keyPath {
+        case "loading": // new:1 or 0
+            if let val = change[NSKeyValueChangeNewKey] as? Bool {
+                if val {
+                    self.activity.startAnimating()
+                } else {
+                    self.activity.stopAnimating()
+                    print("stopping animating")
+                    // for our *local* example, restoring offset is up to us
+                    if self.oldOffset != nil { // local example
+                        if wv.estimatedProgress == 1 {
+                            delay(0.1) { // had to introduce delay; there's a flash but there's nothing I can do
+                                print("finished loading! restoring offset")
+                                wv.scrollView.contentOffset = self.oldOffset!.CGPointValue()
+                                self.oldOffset = nil
                             }
                         }
                     }
                 }
-            case "title": // not actually showing it in this example
-                if let val:AnyObject = change[NSKeyValueChangeNewKey] {
-                    if let val = val as? String {
-                        println(val)
-                    }
-                }
-            default:break
             }
+        case "title": // not actually showing it in this example
+            if let val = change[NSKeyValueChangeNewKey] as? String {
+                print(val)
+            }
+        default:break
         }
     }
     
     func swipe(g:UIGestureRecognizer) {
-        println("swipe") // okay, you proved it!
+        print("swipe") // okay, you proved it!
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        println("view did appear, req: \(self.wv.URL)")
+        if !self.isMovingToParentViewController() {
+            return // so we don't do this again when a presented view controller is dismissed
+        }
+        print("view did appear, req: \(self.wv.URL)")
         
-        let which = 1
+        var which : Int { return 1 }
         switch which {
         case 1:
             let b = UIBarButtonItem(title: "Size", style: .Plain, target: self, action: "doDecreaseSize:")
             self.navigationItem.rightBarButtonItems = [b]
             
             let bodypath = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
-            let ss = String(contentsOfFile:bodypath, encoding:NSUTF8StringEncoding, error:nil)!
+            let ss = try! String(contentsOfFile:bodypath, encoding:NSUTF8StringEncoding)
             
             let templatepath = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")!
-            let base = NSURL.fileURLWithPath(templatepath)!
-            var s = String(contentsOfFile:templatepath, encoding:NSUTF8StringEncoding, error:nil)!
+            let base = NSURL.fileURLWithPath(templatepath)
+            var s = try! String(contentsOfFile:templatepath, encoding:NSUTF8StringEncoding)
             
             s = s.stringByReplacingOccurrencesOfString("<maximagewidth>", withString:"80%")
             s = s.stringByReplacingOccurrencesOfString("<margin>", withString:"10")
@@ -214,73 +232,66 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             s = s.stringByReplacingOccurrencesOfString("<date>", withString:"Mon, 06 Jun 2011 13:00:39 PDT")
             s = s.stringByReplacingOccurrencesOfString("<content>", withString:ss)
             
-            // missing from docs, but in header file
-            self.wv.loadHTMLString(s, baseURL:base) // fails on device, because we can't load the local image
-            // ===========================
-            // so, WKWebView can't load _any_ files using a local file URL
-            // but the other types work fine except for rtf / rtfd which is a known issue (see release notes)
-            // here are some tests...
+            self.wv.loadHTMLString(s, baseURL:base) // works in iOS 9! local and remote images are loading
         case 2:
-            let path = NSBundle.mainBundle().pathForResource("release", ofType:"pdf")! // works in simulator, blank on the device, "Could not create a sandbox extension for '/'"
-            let url = NSURL.fileURLWithPath(path)!
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.mainBundle().pathForResource("release", ofType:"pdf")!
+            let url = NSURL.fileURLWithPath(path)
+            self.wv.loadFileURL(url, allowingReadAccessToURL: url)
         case 3:
-            let path = NSBundle.mainBundle().pathForResource("testing", ofType:"pdf")! // works in simulator, blank on the device, "Could not create a sandbox extension for '/'"
-            let url = NSURL.fileURLWithPath(path)!
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.mainBundle().pathForResource("testing", ofType:"pdf")!
+            let url = NSURL.fileURLWithPath(path)
+            self.wv.loadFileURL(url, allowingReadAccessToURL: url)
         case 4:
-            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtf")! // works in simulator, blank on the device, "Could not create a sandbox extension for '/'"
-            let url = NSURL.fileURLWithPath(path)!
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtf")!
+            let url = NSURL.fileURLWithPath(path)
+            self.wv.loadFileURL(url, allowingReadAccessToURL: url)
         case 5:
-            let path = NSBundle.mainBundle().pathForResource("test", ofType:"doc")! // works in simulator, blank on the device, "Could not create a sandbox extension for '/'"
-            let url = NSURL.fileURLWithPath(path)!
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"doc")!
+            let url = NSURL.fileURLWithPath(path)
+            self.wv.loadFileURL(url, allowingReadAccessToURL: url)
         case 6:
-            let path = NSBundle.mainBundle().pathForResource("test", ofType:"docx")!  // works in simulator, blank on the device, "Could not create a sandbox extension for '/'"
-            let url = NSURL.fileURLWithPath(path)!
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"docx")!
+            let url = NSURL.fileURLWithPath(path)
+            self.wv.loadFileURL(url, allowingReadAccessToURL: url)
         case 7:
-            let path = NSBundle.mainBundle().pathForResource("test", ofType:"pages")! // blank in simulator, blank on the device, "Could not create a sandbox extension for '/'"
-            let url = NSURL.fileURLWithPath(path)!
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"pages")! // blank on device
+            let url = NSURL.fileURLWithPath(path)
+            self.wv.loadFileURL(url, allowingReadAccessToURL: url)
         case 8:
-            let path = NSBundle.mainBundle().pathForResource("test.pages", ofType:"zip")! // works in simulator, blank on the device, "Could not create a sandbox extension for '/'"
-            let url = NSURL.fileURLWithPath(path)!
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.mainBundle().pathForResource("test.pages", ofType:"zip")! // slow, but it does work!
+            let url = NSURL.fileURLWithPath(path)
+            self.wv.loadFileURL(url, allowingReadAccessToURL: url)
         case 9:
-            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtfd")! // blank in simulator, blank on the device, "Could not create a sandbox extension for '/'"
-            let url = NSURL.fileURLWithPath(path)!
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtfd")! // blank on device
+            let url = NSURL.fileURLWithPath(path)
+            self.wv.loadFileURL(url, allowingReadAccessToURL: url)
         case 10:
-            let path = NSBundle.mainBundle().pathForResource("test.rtfd", ofType:"zip")! // blank in simulator, blank on the device, "Could not create a sandbox extension for '/'"
-            let url = NSURL.fileURLWithPath(path)!
-            println(path)
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.mainBundle().pathForResource("test.rtfd", ofType:"zip")! // displays "Unable to Read Document."
+            let url = NSURL.fileURLWithPath(path)
+            self.wv.loadFileURL(url, allowingReadAccessToURL: url)
         case 11:
             let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
-            let url = NSURL.fileURLWithPath(path)!
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let url = NSURL.fileURLWithPath(path)
+            self.wv.loadFileURL(url, allowingReadAccessToURL: url)
         case 12:
-            let url = NSURL(string: "http://www.apeth.com/rez/release.pdf")! // yep!
+            let url = NSURL(string: "http://www.apeth.com/rez/release.pdf")!
             self.wv.loadRequest(NSURLRequest(URL: url))
         case 13:
-            let url = NSURL(string: "http://www.apeth.com/rez/testing.pdf")! // yep!
+            let url = NSURL(string: "http://www.apeth.com/rez/testing.pdf")!
             self.wv.loadRequest(NSURLRequest(URL: url))
         case 14:
-            let url = NSURL(string: "http://www.apeth.com/rez/test.rtf")! // nope... yep! fixed in 8.1
+            let url = NSURL(string: "http://www.apeth.com/rez/test.rtf")!
             self.wv.loadRequest(NSURLRequest(URL: url))
         case 15:
-            let url = NSURL(string: "http://www.apeth.com/rez/test.doc")! // yep!
+            let url = NSURL(string: "http://www.apeth.com/rez/test.doc")!
             self.wv.loadRequest(NSURLRequest(URL: url))
         case 16:
-            let url = NSURL(string: "http://www.apeth.com/rez/test.docx")! // yep!
+            let url = NSURL(string: "http://www.apeth.com/rez/test.docx")!
+            self.wv.loadRequest(NSURLRequest(URL: url))
+        case 17:
+            let url = NSURL(string: "http://www.apeth.com/rez/test.pages.zip")!
             self.wv.loadRequest(NSURLRequest(URL: url))
         case 18:
-            let url = NSURL(string: "http://www.apeth.com/rez/test.pages.zip")! // yep!
-            self.wv.loadRequest(NSURLRequest(URL: url))
-
-        case 20:
             let url = NSURL(string: "http://www.apeth.com/rez/test.rtfd.zip")! // nope :(
             self.wv.loadRequest(NSURLRequest(URL: url))
 
@@ -294,12 +305,15 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     
     func doDecreaseSize (sender:AnyObject) {
         self.fontsize -= 1
+        if self.fontsize < 10 {
+            self.fontsize = 20
+        }
         let s = self.cssrule
         self.wv.evaluateJavaScript(s, completionHandler: nil)
     }
     
     deinit {
-        println("dealloc")
+        print("dealloc")
         // using KVO, always tear down, take no chances
         self.wv.removeObserver(self, forKeyPath: "loading")
         self.wv.removeObserver(self, forKeyPath: "title")
@@ -312,23 +326,37 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: ((WKNavigationActionPolicy) -> Void)) {
         if navigationAction.navigationType == .LinkActivated {
-            let url = navigationAction.request.URL
-            println("user would like to navigate to \(url)")
-            // this is how you would open in Mobile Safari
-            // UIApplication.sharedApplication().openURL(url)
-            decisionHandler(.Cancel)
-            return
+            if let url = navigationAction.request.URL {
+                print("user would like to navigate to \(url)")
+                // this is how you would open in Mobile Safari
+                // UIApplication.sharedApplication().openURL(url)
+                // this is how to use the new Safari view controller
+                let svc = SFSafariViewController(URL: url)
+                svc.delegate = self
+                self.presentViewController(svc, animated: true, completion: nil)
+                decisionHandler(.Cancel)
+                return
+            }
         }
         // must always call _something_
         decisionHandler(.Allow)
     }
+    
+    func safariViewControllerDidFinish(controller: SFSafariViewController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func safariViewController(controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {
+        print("loaded svc")
+    }
+
     
     func userContentController(userContentController: WKUserContentController,
         didReceiveScriptMessage message: WKScriptMessage) {
             if message.name == "playbutton" {
                 if let body = message.body as? String {
                     if body == "play" {
-                        println("user would like to hear the podcast")
+                        print("user would like to hear the podcast")
                     }
                 }
             }
