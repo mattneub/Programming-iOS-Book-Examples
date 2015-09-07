@@ -18,10 +18,10 @@
 /* Begin PBXFileReference section */
 		3227F821198DBFA400D05958 /* MyProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProgressView.swift; sourceTree = "<group>"; };
 		3227F823198DC0A600D05958 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32A60E861B9E0E9900703AE4 /* bk2ch12p567observingNSProgress-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "bk2ch12p567observingNSProgress-Info.plist"; sourceTree = "<group>"; };
 		32E568B51B9DFB7100581B97 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32E568B71B9DFB7700581B97 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C9F271AD181C1A80003FCBA0 /* ch25p840customThermometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch25p840customThermometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9F271B8181C1A80003FCBA0 /* ch25p840customThermometer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch25p840customThermometer-Info.plist"; sourceTree = "<group>"; };
+		C9F271AD181C1A80003FCBA0 /* bk2ch12p567observingNSProgress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk2ch12p567observingNSProgress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9F271C3181C1A80003FCBA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9F271C8181C1A80003FCBA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -40,7 +40,7 @@
 		C9F271A4181C1A80003FCBA0 = {
 			isa = PBXGroup;
 			children = (
-				C9F271B6181C1A80003FCBA0 /* ch25p840customThermometer */,
+				C9F271B6181C1A80003FCBA0 /* bk2ch12p567observingNSProgress */,
 				C9F271AE181C1A80003FCBA0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +48,12 @@
 		C9F271AE181C1A80003FCBA0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C9F271AD181C1A80003FCBA0 /* ch25p840customThermometer.app */,
+				C9F271AD181C1A80003FCBA0 /* bk2ch12p567observingNSProgress.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9F271B6181C1A80003FCBA0 /* ch25p840customThermometer */ = {
+		C9F271B6181C1A80003FCBA0 /* bk2ch12p567observingNSProgress */ = {
 			isa = PBXGroup;
 			children = (
 				32E568B71B9DFB7700581B97 /* AppDelegate.swift */,
@@ -62,17 +62,18 @@
 				3227F821198DBFA400D05958 /* MyProgressView.swift */,
 				32E568B51B9DFB7100581B97 /* LaunchScreen.storyboard */,
 				C9F271C8181C1A80003FCBA0 /* Assets.xcassets */,
-				C9F271B8181C1A80003FCBA0 /* ch25p840customThermometer-Info.plist */,
+				32A60E861B9E0E9900703AE4 /* bk2ch12p567observingNSProgress-Info.plist */,
 			);
+			name = bk2ch12p567observingNSProgress;
 			path = ch25p840customThermometer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C9F271AC181C1A80003FCBA0 /* ch25p840customThermometer */ = {
+		C9F271AC181C1A80003FCBA0 /* bk2ch12p567observingNSProgress */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9F271DF181C1A80003FCBA0 /* Build configuration list for PBXNativeTarget "ch25p840customThermometer" */;
+			buildConfigurationList = C9F271DF181C1A80003FCBA0 /* Build configuration list for PBXNativeTarget "bk2ch12p567observingNSProgress" */;
 			buildPhases = (
 				C9F271A9181C1A80003FCBA0 /* Sources */,
 				C9F271AA181C1A80003FCBA0 /* Frameworks */,
@@ -82,9 +83,9 @@
 			);
 			dependencies = (
 			);
-			name = ch25p840customThermometer;
+			name = bk2ch12p567observingNSProgress;
 			productName = ch25p840customThermometer;
-			productReference = C9F271AD181C1A80003FCBA0 /* ch25p840customThermometer.app */;
+			productReference = C9F271AD181C1A80003FCBA0 /* bk2ch12p567observingNSProgress.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -97,7 +98,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
-			buildConfigurationList = C9F271A8181C1A80003FCBA0 /* Build configuration list for PBXProject "ch25p840customThermometer" */;
+			buildConfigurationList = C9F271A8181C1A80003FCBA0 /* Build configuration list for PBXProject "bk2ch12p567observingNSProgress" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -110,7 +111,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C9F271AC181C1A80003FCBA0 /* ch25p840customThermometer */,
+				C9F271AC181C1A80003FCBA0 /* bk2ch12p567observingNSProgress */,
 			);
 		};
 /* End PBXProject section */
@@ -232,11 +233,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch25p840customThermometer/ch25p840customThermometer-Prefix.pch";
-				INFOPLIST_FILE = "ch25p840customThermometer/ch25p840customThermometer-Info.plist";
+				GCC_PREFIX_HEADER = "ch25p840customThermometer/bk2ch12p567observingNSProgress-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/ch25p840customThermometer/bk2ch12p567observingNSProgress-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = bk2ch12p567observingNSProgress;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
@@ -250,11 +251,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch25p840customThermometer/ch25p840customThermometer-Prefix.pch";
-				INFOPLIST_FILE = "ch25p840customThermometer/ch25p840customThermometer-Info.plist";
+				GCC_PREFIX_HEADER = "ch25p840customThermometer/bk2ch12p567observingNSProgress-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/ch25p840customThermometer/bk2ch12p567observingNSProgress-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = bk2ch12p567observingNSProgress;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -263,7 +264,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C9F271A8181C1A80003FCBA0 /* Build configuration list for PBXProject "ch25p840customThermometer" */ = {
+		C9F271A8181C1A80003FCBA0 /* Build configuration list for PBXProject "bk2ch12p567observingNSProgress" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9F271DD181C1A80003FCBA0 /* Debug */,
@@ -272,7 +273,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9F271DF181C1A80003FCBA0 /* Build configuration list for PBXNativeTarget "ch25p840customThermometer" */ = {
+		C9F271DF181C1A80003FCBA0 /* Build configuration list for PBXNativeTarget "bk2ch12p567observingNSProgress" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9F271E0181C1A80003FCBA0 /* Debug */,

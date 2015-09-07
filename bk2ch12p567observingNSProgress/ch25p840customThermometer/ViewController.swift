@@ -6,6 +6,9 @@ class ViewController: UIViewController {
     @IBOutlet var prog1 : UIProgressView!
     @IBOutlet var prog2 : UIProgressView!
     @IBOutlet var prog3 : MyProgressView!
+    
+    var progress : NSProgress?
+    var progress2 : NSProgress?
 
     @IBAction func doButton (sender:AnyObject) {
         self.prog1.progress = 0
@@ -15,35 +18,13 @@ class ViewController: UIViewController {
         NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "inc:", userInfo: nil, repeats: true)
     }
     
+    var didSetUp = false
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        if self.didSetUp { return }
+        self.didSetUp = true
         
-        /*
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(9,9), NO, 0);
-        CGContextRef con = UIGraphicsGetCurrentContext()!;
-        CGContextSetFillColorWithColor(con, [UIColor blackColor].CGColor);
-        CGContextMoveToPoint(con, 0, 4.5);
-        CGContextAddLineToPoint(con, 4.5, 9);
-        CGContextAddLineToPoint(con, 9, 4.5);
-        CGContextAddLineToPoint(con, 4.5, 0);
-        CGContextClosePath(con);
-        CGPathRef p = CGContextCopyPath(con);
-        CGContextFillPath(con);
-        UIImage* im = UIGraphicsGetImageFromCurrentImageContext();
-        CGContextSetFillColorWithColor(con, [UIColor whiteColor].CGColor);
-        CGContextAddPath(con, p);
-        CGContextFillPath(con);
-        UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext();
-        CGPathRelease(p);
-        UIGraphicsEndImageContext();
-        im = [im resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)
-        resizingMode:UIImageResizingModeStretch];
-        im2 = [im2 resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)
-        resizingMode:UIImageResizingModeStretch];
-        self.prog2.trackImage = im;
-        self.prog2.progressImage = im2;
-        */
-
         self.prog2.backgroundColor = UIColor.blackColor()
         self.prog2.trackTintColor = UIColor.blackColor()
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(10,10), true, 0)
@@ -60,22 +41,33 @@ class ViewController: UIViewController {
         UIGraphicsEndImageContext()
         self.prog2.progressImage = im
         
-        // but this code, which worked fine for years including iOS 7.0, was broken by iOS 7.1
-        // and remained broken in iOS 8
-        // it is fixed at last once again in iOS 9!
+        // demonstrate NSProgress
         
-        // hacky workaround, can't recommend really
-        //        let ims = self.prog2.subviews.filter {$0 is UIImageView} as! [UIImageView]
-        //        ims[1].image = im
-
+        self.progress = NSProgress.discreteProgressWithTotalUnitCount(10)
+        self.prog1.observedProgress = self.progress
+        
+        // but how likely is it that we would want two pointers to the same NSProgress object?
+        // perhaps a more realistic scenario: set it and forget it
+        // the progress view's progress is a parent; meanwhile, the progressing operation updates a child
+        
+        self.prog2.observedProgress = NSProgress.discreteProgressWithTotalUnitCount(10)
+        self.progress2 = NSProgress(totalUnitCount: 10, parent: self.prog2.observedProgress!, pendingUnitCount: 10)
+        
+        // and of course that architecture is even more convincing if the child NSProgress lives at a distance
+        // from the progress view, and if there are multiple children
 
     }
     
     func inc(t:NSTimer) {
         var val = Float(self.prog3.value)
         val += 0.1
-        self.prog1.setProgress(val, animated:true) // bug fixed in iOS 7.1
-        self.prog2.setProgress(val, animated:true)
+        
+        // direct updating: prog1's progress is our progress
+        self.progress!.completedUnitCount = Int64(val * 10)
+        
+        // indirect updating: prog2's progress is our progress's parent
+        self.progress2!.completedUnitCount = Int64(val * 10)
+        
         self.prog3.value = CGFloat(val)
         self.prog3.setNeedsDisplay()
         if val >= 1.0 {
