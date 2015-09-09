@@ -11,11 +11,14 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var dp: UIDatePicker!
 
+    
+    let which = 2
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let which = 1
         switch which {
         case 1:
             dp.datePickerMode = .Date
@@ -45,15 +48,15 @@ class ViewController: UIViewController {
             let df = NSDateFormatter()
             df.timeStyle = .FullStyle
             df.dateStyle = .FullStyle
-            println(df.stringFromDate(d))
+            print(df.stringFromDate(d))
             // Tuesday, August 10, 1954 at 3:16:00 AM GMT-07:00
         } else {
             let t = dp.countDownDuration
             let f = NSDateComponentsFormatter()
-            f.allowedUnits = .CalendarUnitHour | .CalendarUnitMinute
+            f.allowedUnits = [.Hour, .Minute]
             f.unitsStyle = .Abbreviated
             if let s = f.stringFromTimeInterval(t) {
-                println(s) // "1h 12m"
+                print(s) // "1h 12m"
             }
 
         }

@@ -2,9 +2,14 @@
 
 import UIKit
 
+class ViewController: UIViewController {
+    
+    
+}
+
 class MySlider: UISlider {
     
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         super.init(coder:coder)
         
         let t = UITapGestureRecognizer(target: self, action: "tapped:")
@@ -44,6 +49,7 @@ class MySlider: UISlider {
         let delta = Float(percentage) * (s.maximumValue - s.minimumValue)
         let value = s.minimumValue + delta
         s.setValue(value, animated:true) // animation broken in iOS 7, still broken in iOS 8
+        // still broken in iOS 9
     }
     
     override func maximumValueImageRectForBounds(bounds: CGRect) -> CGRect {

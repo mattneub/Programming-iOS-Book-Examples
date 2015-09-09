@@ -35,16 +35,22 @@ class ViewController: UIViewController {
             UIColor(white:0.95, alpha:0.85).setFill()
             CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,0,20,20))
             }, forBarPosition:.Any, barMetrics: .Default)
-        self.navbar.translucent = true
         
-        let sz2 = CGSizeMake(4,4)
+        do {
         
-        self.navbar.shadowImage = imageOfSize(sz2) {
-            UIColor.grayColor().colorWithAlphaComponent(0.3).setFill()
-            CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,0,4,2))
-            UIColor.grayColor().colorWithAlphaComponent(0.15).setFill()
-            CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,2,4,2))
+            let sz = CGSizeMake(4,4)
+            
+            self.navbar.shadowImage = imageOfSize(sz) {
+                UIColor.grayColor().colorWithAlphaComponent(0.3).setFill()
+                CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,0,4,2))
+                UIColor.grayColor().colorWithAlphaComponent(0.15).setFill()
+                CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,2,4,2))
+            }
+            
         }
+        
+        self.navbar.translucent = true
+
         
         // set up initial state of nav item
 
@@ -56,7 +62,7 @@ class ViewController: UIViewController {
     
     func pushNext(sender:AnyObject) {
         let oldb = sender as! UIBarButtonItem
-        let s = oldb.title
+        let s = oldb.title! // *
         let ni = UINavigationItem(title:s)
         if s == "Evers" {
             let b = UIBarButtonItem(

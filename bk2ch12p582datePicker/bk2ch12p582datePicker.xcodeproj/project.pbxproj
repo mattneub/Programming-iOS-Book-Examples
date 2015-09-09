@@ -10,20 +10,9 @@
 		322559EE1AE1776C00CA5FAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322559ED1AE1776C00CA5FAE /* AppDelegate.swift */; };
 		322559F01AE1776C00CA5FAE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322559EF1AE1776C00CA5FAE /* ViewController.swift */; };
 		322559F31AE1776C00CA5FAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 322559F11AE1776C00CA5FAE /* Main.storyboard */; };
-		322559F51AE1776C00CA5FAE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 322559F41AE1776C00CA5FAE /* Images.xcassets */; };
+		322559F51AE1776C00CA5FAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 322559F41AE1776C00CA5FAE /* Assets.xcassets */; };
 		322559F81AE1776C00CA5FAE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 322559F61AE1776C00CA5FAE /* LaunchScreen.xib */; };
-		32255A041AE1776C00CA5FAE /* bk2ch12p582datePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32255A031AE1776C00CA5FAE /* bk2ch12p582datePickerTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		322559FE1AE1776C00CA5FAE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 322559E01AE1776C00CA5FAE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 322559E71AE1776C00CA5FAE;
-			remoteInfo = bk2ch12p582datePicker;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		322559E81AE1776C00CA5FAE /* bk2ch12p582datePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk2ch12p582datePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,22 +20,12 @@
 		322559ED1AE1776C00CA5FAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		322559EF1AE1776C00CA5FAE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		322559F21AE1776C00CA5FAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		322559F41AE1776C00CA5FAE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		322559F41AE1776C00CA5FAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		322559F71AE1776C00CA5FAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		322559FD1AE1776C00CA5FAE /* bk2ch12p582datePickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bk2ch12p582datePickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		32255A021AE1776C00CA5FAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32255A031AE1776C00CA5FAE /* bk2ch12p582datePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bk2ch12p582datePickerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		322559E51AE1776C00CA5FAE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		322559FA1AE1776C00CA5FAE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -60,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				322559EA1AE1776C00CA5FAE /* bk2ch12p582datePicker */,
-				32255A001AE1776C00CA5FAE /* bk2ch12p582datePickerTests */,
 				322559E91AE1776C00CA5FAE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				322559E81AE1776C00CA5FAE /* bk2ch12p582datePicker.app */,
-				322559FD1AE1776C00CA5FAE /* bk2ch12p582datePickerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,36 +57,11 @@
 				322559ED1AE1776C00CA5FAE /* AppDelegate.swift */,
 				322559EF1AE1776C00CA5FAE /* ViewController.swift */,
 				322559F11AE1776C00CA5FAE /* Main.storyboard */,
-				322559F41AE1776C00CA5FAE /* Images.xcassets */,
+				322559F41AE1776C00CA5FAE /* Assets.xcassets */,
 				322559F61AE1776C00CA5FAE /* LaunchScreen.xib */,
-				322559EB1AE1776C00CA5FAE /* Supporting Files */,
-			);
-			path = bk2ch12p582datePicker;
-			sourceTree = "<group>";
-		};
-		322559EB1AE1776C00CA5FAE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				322559EC1AE1776C00CA5FAE /* Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		32255A001AE1776C00CA5FAE /* bk2ch12p582datePickerTests */ = {
-			isa = PBXGroup;
-			children = (
-				32255A031AE1776C00CA5FAE /* bk2ch12p582datePickerTests.swift */,
-				32255A011AE1776C00CA5FAE /* Supporting Files */,
-			);
-			path = bk2ch12p582datePickerTests;
-			sourceTree = "<group>";
-		};
-		32255A011AE1776C00CA5FAE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				32255A021AE1776C00CA5FAE /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = bk2ch12p582datePicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,39 +84,18 @@
 			productReference = 322559E81AE1776C00CA5FAE /* bk2ch12p582datePicker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		322559FC1AE1776C00CA5FAE /* bk2ch12p582datePickerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 32255A0A1AE1776C00CA5FAE /* Build configuration list for PBXNativeTarget "bk2ch12p582datePickerTests" */;
-			buildPhases = (
-				322559F91AE1776C00CA5FAE /* Sources */,
-				322559FA1AE1776C00CA5FAE /* Frameworks */,
-				322559FB1AE1776C00CA5FAE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				322559FF1AE1776C00CA5FAE /* PBXTargetDependency */,
-			);
-			name = bk2ch12p582datePickerTests;
-			productName = bk2ch12p582datePickerTests;
-			productReference = 322559FD1AE1776C00CA5FAE /* bk2ch12p582datePickerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		322559E01AE1776C00CA5FAE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					322559E71AE1776C00CA5FAE = {
 						CreatedOnToolsVersion = 6.3;
-					};
-					322559FC1AE1776C00CA5FAE = {
-						CreatedOnToolsVersion = 6.3;
-						TestTargetID = 322559E71AE1776C00CA5FAE;
 					};
 				};
 			};
@@ -182,7 +113,6 @@
 			projectRoot = "";
 			targets = (
 				322559E71AE1776C00CA5FAE /* bk2ch12p582datePicker */,
-				322559FC1AE1776C00CA5FAE /* bk2ch12p582datePickerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -194,14 +124,7 @@
 			files = (
 				322559F31AE1776C00CA5FAE /* Main.storyboard in Resources */,
 				322559F81AE1776C00CA5FAE /* LaunchScreen.xib in Resources */,
-				322559F51AE1776C00CA5FAE /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		322559FB1AE1776C00CA5FAE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				322559F51AE1776C00CA5FAE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,23 +140,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		322559F91AE1776C00CA5FAE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				32255A041AE1776C00CA5FAE /* bk2ch12p582datePickerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		322559FF1AE1776C00CA5FAE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 322559E71AE1776C00CA5FAE /* bk2ch12p582datePicker */;
-			targetProxy = 322559FE1AE1776C00CA5FAE /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		322559F11AE1776C00CA5FAE /* Main.storyboard */ = {
@@ -291,7 +198,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -329,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -356,40 +263,6 @@
 			};
 			name = Release;
 		};
-		32255A0B1AE1776C00CA5FAE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = bk2ch12p582datePickerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bk2ch12p582datePicker.app/bk2ch12p582datePicker";
-			};
-			name = Debug;
-		};
-		32255A0C1AE1776C00CA5FAE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = bk2ch12p582datePickerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bk2ch12p582datePicker.app/bk2ch12p582datePicker";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -409,14 +282,7 @@
 				32255A091AE1776C00CA5FAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		32255A0A1AE1776C00CA5FAE /* Build configuration list for PBXNativeTarget "bk2ch12p582datePickerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				32255A0B1AE1776C00CA5FAE /* Debug */,
-				32255A0C1AE1776C00CA5FAE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

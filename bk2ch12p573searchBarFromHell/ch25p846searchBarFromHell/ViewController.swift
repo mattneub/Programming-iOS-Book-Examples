@@ -22,6 +22,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.sb.enablesReturnKeyAutomatically = false // true by default, even though unchecked!
 
         self.sb.searchBarStyle = .Default
         self.sb.barStyle = .Default
@@ -43,15 +45,17 @@ class ViewController: UIViewController {
         self.sb.searchFieldBackgroundPositionAdjustment = UIOffsetMake(0, -10) // up from center
         
         // how to reach in and grab the text field
-        for v in (self.sb.subviews[0] ).subviews {
+        for v in self.sb.subviews[0].subviews {
             if let tf = v as? UITextField {
                 print("got that puppy")
                 tf.textColor = UIColor.whiteColor()
+                // tf.enabled = false
                 break
             }
         }
         
         self.sb.text = "Search me!"
+        //self.sb.placeholder = "Search me!"
         //    self.sb.showsBookmarkButton = true
         //    self.sb.showsSearchResultsButton = true
         //    self.sb.searchResultsButtonSelected = true

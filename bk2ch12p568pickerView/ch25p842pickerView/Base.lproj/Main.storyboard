@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,9 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="162" translatesAutoresizingMaskIntoConstraints="NO" id="ESM-Gh-Wl4" customClass="MyPickerView" customModule="ch25p842pickerView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="48" width="320" height="162"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ESM-Gh-Wl4" customClass="MyPickerView" customModule="ch25p842pickerView" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="48" width="320" height="100"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="D4N-Mt-EPR"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="Tn0-3N-5Dq"/>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="6ms-pI-oBd"/>
@@ -28,7 +30,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="ESM-Gh-Wl4" secondAttribute="centerX" id="pOG-0d-XkQ"/>
+                            <constraint firstAttribute="trailing" secondItem="ESM-Gh-Wl4" secondAttribute="trailing" id="bwC-WV-pFV"/>
+                            <constraint firstItem="ESM-Gh-Wl4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="oCx-y7-9Gu"/>
                             <constraint firstItem="ESM-Gh-Wl4" firstAttribute="top" secondItem="6Ue-57-pDm" secondAttribute="bottom" constant="28" id="sEJ-Pz-3JP"/>
                         </constraints>
                     </view>
@@ -40,12 +43,4 @@
             </objects>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
-    </simulatedMetricsContainer>
 </document>

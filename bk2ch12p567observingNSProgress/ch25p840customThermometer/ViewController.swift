@@ -1,21 +1,71 @@
 
 import UIKit
 
+class ProgressingOperation : NSObject, NSProgressReporting {
+    let progress : NSProgress
+    init(units:Int) {
+        self.progress = NSProgress(totalUnitCount: Int64(units))
+        super.init()
+    }
+    func start() {
+        NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "inc:", userInfo: nil, repeats: true)
+    }
+    func inc(t:NSTimer) {
+        self.progress.completedUnitCount += 1
+        if self.progress.fractionCompleted >= 1.0 {
+            t.invalidate()
+            print("done")
+        }
+    }
+    
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet var prog1 : UIProgressView!
     @IBOutlet var prog2 : UIProgressView!
     @IBOutlet var prog3 : MyProgressView!
     
-    var progress : NSProgress?
-    var progress2 : NSProgress?
-
+    var op1 : ProgressingOperation?
+    var op2 : ProgressingOperation?
+    var op3 : ProgressingOperation?
+    
     @IBAction func doButton (sender:AnyObject) {
         self.prog1.progress = 0
         self.prog2.progress = 0
         self.prog3.value = 0
         self.prog3.setNeedsDisplay()
-        NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "inc:", userInfo: nil, repeats: true)
+        
+        // architecture 1: progress view's observedProgress is a second pointer to a vended NSProgress
+        
+        self.op1 = ProgressingOperation(units:10)
+        self.prog1.observedProgress = self.op1!.progress
+        self.op1!.start()
+
+        // architecture 2: progress view's observedProgress is parent of distant NSProgress
+        
+        self.prog2.observedProgress = NSProgress.discreteProgressWithTotalUnitCount(10)
+        self.prog2.observedProgress?.becomeCurrentWithPendingUnitCount(10)
+        self.op2 = ProgressingOperation(units:10) // automatically becomes child!
+        self.prog2.observedProgress?.resignCurrent()
+        self.op2!.start()
+
+        
+        // architecture 3: explicit KVO on an NSProgress, update progress view manually
+        
+        self.op3 = ProgressingOperation(units:10)
+        self.op3!.progress.addObserver(self, forKeyPath: "fractionCompleted", options: [.New], context: nil)
+        self.op3!.start()
+
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if let _ = object as? NSProgress {
+            if let frac = change?[NSKeyValueChangeNewKey] as? CGFloat {
+                self.prog3.value = frac
+                self.prog3.setNeedsDisplay()
+            }
+        }
     }
     
     var didSetUp = false
@@ -41,39 +91,6 @@ class ViewController: UIViewController {
         UIGraphicsEndImageContext()
         self.prog2.progressImage = im
         
-        // demonstrate NSProgress
-        
-        self.progress = NSProgress.discreteProgressWithTotalUnitCount(10)
-        self.prog1.observedProgress = self.progress
-        
-        // but how likely is it that we would want two pointers to the same NSProgress object?
-        // perhaps a more realistic scenario: set it and forget it
-        // the progress view's progress is a parent; meanwhile, the progressing operation updates a child
-        
-        self.prog2.observedProgress = NSProgress.discreteProgressWithTotalUnitCount(10)
-        self.progress2 = NSProgress(totalUnitCount: 10, parent: self.prog2.observedProgress!, pendingUnitCount: 10)
-        
-        // and of course that architecture is even more convincing if the child NSProgress lives at a distance
-        // from the progress view, and if there are multiple children
-
     }
     
-    func inc(t:NSTimer) {
-        var val = Float(self.prog3.value)
-        val += 0.1
-        
-        // direct updating: prog1's progress is our progress
-        self.progress!.completedUnitCount = Int64(val * 10)
-        
-        // indirect updating: prog2's progress is our progress's parent
-        self.progress2!.completedUnitCount = Int64(val * 10)
-        
-        self.prog3.value = CGFloat(val)
-        self.prog3.setNeedsDisplay()
-        if val >= 1.0 {
-            t.invalidate()
-        }
-
-    }
-
 }

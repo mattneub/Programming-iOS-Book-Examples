@@ -7,32 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		327192471BA09A89000B56F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 327192461BA09A89000B56F0 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		327192491BA09A8D000B56F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327192481BA09A8D000B56F0 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		327481CD19943F2A0043DC9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327481CC19943F2A0043DC9D /* ViewController.swift */; };
-		C9382AB5182011BE00F38DB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9382AB4182011BE00F38DB0 /* Foundation.framework */; };
-		C9382AB7182011BE00F38DB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9382AB6182011BE00F38DB0 /* CoreGraphics.framework */; };
-		C9382AB9182011BE00F38DB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9382AB8182011BE00F38DB0 /* UIKit.framework */; };
-		C9382ABF182011BE00F38DB0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9382ABD182011BE00F38DB0 /* InfoPlist.strings */; };
-		C9382AC1182011BE00F38DB0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9382AC0182011BE00F38DB0 /* main.m */; };
-		C9382AC5182011BE00F38DB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9382AC4182011BE00F38DB0 /* AppDelegate.m */; };
 		C9382AC8182011BE00F38DB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9382AC6182011BE00F38DB0 /* Main.storyboard */; };
-		C9382ACD182011BE00F38DB0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9382ACC182011BE00F38DB0 /* Images.xcassets */; };
+		C9382ACD182011BE00F38DB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9382ACC182011BE00F38DB0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		327192461BA09A89000B56F0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		327192481BA09A8D000B56F0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		327481CC19943F2A0043DC9D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9382AB1182011BE00F38DB0 /* ch25p877navigationBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch25p877navigationBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9382AB4182011BE00F38DB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9382AB6182011BE00F38DB0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C9382AB8182011BE00F38DB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9382ABC182011BE00F38DB0 /* ch25p877navigationBar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch25p877navigationBar-Info.plist"; sourceTree = "<group>"; };
-		C9382ABE182011BE00F38DB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9382AC0182011BE00F38DB0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9382AC2182011BE00F38DB0 /* ch25p877navigationBar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch25p877navigationBar-Prefix.pch"; sourceTree = "<group>"; };
-		C9382AC3182011BE00F38DB0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C9382AC4182011BE00F38DB0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9382AC7182011BE00F38DB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9382ACC182011BE00F38DB0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9382AD3182011BF00F38DB0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C9382ACC182011BE00F38DB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,9 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9382AB7182011BE00F38DB0 /* CoreGraphics.framework in Frameworks */,
-				C9382AB9182011BE00F38DB0 /* UIKit.framework in Frameworks */,
-				C9382AB5182011BE00F38DB0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				C9382ABA182011BE00F38DB0 /* ch25p877navigationBar */,
-				C9382AB3182011BE00F38DB0 /* Frameworks */,
 				C9382AB2182011BE00F38DB0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,39 +51,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9382AB3182011BE00F38DB0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9382AB4182011BE00F38DB0 /* Foundation.framework */,
-				C9382AB6182011BE00F38DB0 /* CoreGraphics.framework */,
-				C9382AB8182011BE00F38DB0 /* UIKit.framework */,
-				C9382AD3182011BF00F38DB0 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C9382ABA182011BE00F38DB0 /* ch25p877navigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				C9382AC3182011BE00F38DB0 /* AppDelegate.h */,
-				C9382AC4182011BE00F38DB0 /* AppDelegate.m */,
+				327192481BA09A8D000B56F0 /* AppDelegate.swift */,
 				C9382AC6182011BE00F38DB0 /* Main.storyboard */,
 				327481CC19943F2A0043DC9D /* ViewController.swift */,
-				C9382ACC182011BE00F38DB0 /* Images.xcassets */,
-				C9382ABB182011BE00F38DB0 /* Supporting Files */,
+				327192461BA09A89000B56F0 /* LaunchScreen.storyboard */,
+				C9382ACC182011BE00F38DB0 /* Assets.xcassets */,
+				C9382ABC182011BE00F38DB0 /* ch25p877navigationBar-Info.plist */,
 			);
 			path = ch25p877navigationBar;
-			sourceTree = "<group>";
-		};
-		C9382ABB182011BE00F38DB0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C9382ABC182011BE00F38DB0 /* ch25p877navigationBar-Info.plist */,
-				C9382ABD182011BE00F38DB0 /* InfoPlist.strings */,
-				C9382AC0182011BE00F38DB0 /* main.m */,
-				C9382AC2182011BE00F38DB0 /* ch25p877navigationBar-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +90,7 @@
 		C9382AA9182011BE00F38DB0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -153,8 +117,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9382ACD182011BE00F38DB0 /* Images.xcassets in Resources */,
-				C9382ABF182011BE00F38DB0 /* InfoPlist.strings in Resources */,
+				327192471BA09A89000B56F0 /* LaunchScreen.storyboard in Resources */,
+				C9382ACD182011BE00F38DB0 /* Assets.xcassets in Resources */,
 				C9382AC8182011BE00F38DB0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,23 +130,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9382AC5182011BE00F38DB0 /* AppDelegate.m in Sources */,
+				327192491BA09A8D000B56F0 /* AppDelegate.swift in Sources */,
 				327481CD19943F2A0043DC9D /* ViewController.swift in Sources */,
-				C9382AC1182011BE00F38DB0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C9382ABD182011BE00F38DB0 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9382ABE182011BE00F38DB0 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C9382AC6182011BE00F38DB0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -227,7 +182,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -260,7 +215,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -271,7 +226,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch25p877navigationBar/ch25p877navigationBar-Prefix.pch";
@@ -289,7 +243,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch25p877navigationBar/ch25p877navigationBar-Prefix.pch";

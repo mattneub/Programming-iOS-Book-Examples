@@ -4,9 +4,14 @@ import UIKit
 class MyPickerView : UIPickerView {
     
     override func intrinsicContentSize() -> CGSize {
-        println("intrinsic")
+        return super.intrinsicContentSize()
+        
+        // no need for trickery or testing; in iOS 9 you can just set the height constraint
+        print("intrinsic")
         var sz = super.intrinsicContentSize()
-        sz.height = 140 // but it only goes down to 162, maximum 180
+        let h : CGFloat = 140
+        print("trying to set to \(h)")
+        sz.height = h // but it only goes down to 162, maximum 180
         // sz.width = 250 // just proving this actually does something
         return sz
     }
@@ -20,12 +25,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let f = NSBundle.mainBundle().pathForResource("states", ofType: "txt")!
-        let s = String(contentsOfFile: f, encoding: NSUTF8StringEncoding, error: nil)!
+        let s = try! String(contentsOfFile: f, encoding: NSUTF8StringEncoding)
         self.states = s.componentsSeparatedByString("\n")
     }
     
     override func viewDidLayoutSubviews() {
-        println(self.picker.frame.height)
+        print(self.picker.frame.height)
     }
     
 }
@@ -47,14 +52,14 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     // but they are not being reused either
     
     func pickerView(pickerView: UIPickerView, viewForRow row: Int,
-        forComponent component: Int, reusingView view: UIView!) -> UIView {
-            var lab : UILabel
+        forComponent component: Int, reusingView view: UIView?) -> UIView {
+            let lab : UILabel
             if let label = view as? UILabel {
                 lab = label
-                println("reusing label")
+                print("reusing label")
             } else {
                 lab = MyLabel()
-                println("making new label")
+                print("making new label")
             }
             lab.text = self.states[row]
             lab.backgroundColor = UIColor.clearColor()
@@ -65,6 +70,6 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
 
 class MyLabel : UILabel {
     deinit {
-        println("farewell")
+        print("farewell")
     }
 }

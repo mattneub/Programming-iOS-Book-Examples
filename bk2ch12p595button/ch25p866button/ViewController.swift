@@ -5,6 +5,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var button : UIButton!
     
+    @IBOutlet weak var button2: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +39,10 @@ class ViewController: UIViewController {
         self.button.setAttributedTitle(mas2, forState: .Highlighted)
         
         self.button.adjustsImageWhenHighlighted = true
+        
+        self.button2.titleLabel!.numberOfLines = 2
+        self.button2.titleLabel!.textAlignment = .Center
+        self.button2.setTitle("Button with a title that wraps", forState: .Normal)
     }
 
 

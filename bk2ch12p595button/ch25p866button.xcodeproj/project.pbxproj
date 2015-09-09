@@ -9,12 +9,8 @@
 /* Begin PBXBuildFile section */
 		32A579381993EB3200221E36 /* MyShrinkingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A579371993EB3200221E36 /* MyShrinkingButton.swift */; };
 		32A5793A1993ED8300221E36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A579391993ED8300221E36 /* ViewController.swift */; };
-		C9166610181ED1D700D07DE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C916660F181ED1D700D07DE8 /* Foundation.framework */; };
-		C9166612181ED1D700D07DE8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9166611181ED1D700D07DE8 /* CoreGraphics.framework */; };
-		C9166614181ED1D700D07DE8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9166613181ED1D700D07DE8 /* UIKit.framework */; };
-		C916661A181ED1D700D07DE8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9166618181ED1D700D07DE8 /* InfoPlist.strings */; };
-		C916661C181ED1D700D07DE8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C916661B181ED1D700D07DE8 /* main.m */; };
-		C9166620181ED1D700D07DE8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C916661F181ED1D700D07DE8 /* AppDelegate.m */; };
+		32AF53AA1B9F960200CFCD3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AF53A91B9F960200CFCD3E /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		32AF53AC1B9F960600CFCD3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF53AB1B9F960600CFCD3E /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		C9166623181ED1D700D07DE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9166621181ED1D700D07DE8 /* Main.storyboard */; };
 		C9166628181ED1D700D07DE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9166627181ED1D700D07DE8 /* Images.xcassets */; };
 		C9166645181ED20D00D07DE8 /* coin2.png in Resources */ = {isa = PBXBuildFile; fileRef = C9166644181ED20D00D07DE8 /* coin2.png */; };
@@ -23,19 +19,12 @@
 /* Begin PBXFileReference section */
 		32A579371993EB3200221E36 /* MyShrinkingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyShrinkingButton.swift; sourceTree = "<group>"; };
 		32A579391993ED8300221E36 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32AF53A91B9F960200CFCD3E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		32AF53AB1B9F960600CFCD3E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C916660C181ED1D700D07DE8 /* ch25p866button.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch25p866button.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C916660F181ED1D700D07DE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9166611181ED1D700D07DE8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C9166613181ED1D700D07DE8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9166617181ED1D700D07DE8 /* ch25p866button-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch25p866button-Info.plist"; sourceTree = "<group>"; };
-		C9166619181ED1D700D07DE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C916661B181ED1D700D07DE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C916661D181ED1D700D07DE8 /* ch25p866button-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch25p866button-Prefix.pch"; sourceTree = "<group>"; };
-		C916661E181ED1D700D07DE8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C916661F181ED1D700D07DE8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9166622181ED1D700D07DE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9166627181ED1D700D07DE8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C916662E181ED1D700D07DE8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C9166644181ED20D00D07DE8 /* coin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,9 +33,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9166612181ED1D700D07DE8 /* CoreGraphics.framework in Frameworks */,
-				C9166614181ED1D700D07DE8 /* UIKit.framework in Frameworks */,
-				C9166610181ED1D700D07DE8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				C9166615181ED1D700D07DE8 /* ch25p866button */,
-				C916660E181ED1D700D07DE8 /* Frameworks */,
 				C916660D181ED1D700D07DE8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,41 +55,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C916660E181ED1D700D07DE8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C916660F181ED1D700D07DE8 /* Foundation.framework */,
-				C9166611181ED1D700D07DE8 /* CoreGraphics.framework */,
-				C9166613181ED1D700D07DE8 /* UIKit.framework */,
-				C916662E181ED1D700D07DE8 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C9166615181ED1D700D07DE8 /* ch25p866button */ = {
 			isa = PBXGroup;
 			children = (
-				C916661E181ED1D700D07DE8 /* AppDelegate.h */,
-				C916661F181ED1D700D07DE8 /* AppDelegate.m */,
+				32AF53AB1B9F960600CFCD3E /* AppDelegate.swift */,
 				C9166621181ED1D700D07DE8 /* Main.storyboard */,
 				32A579391993ED8300221E36 /* ViewController.swift */,
 				32A579371993EB3200221E36 /* MyShrinkingButton.swift */,
 				C9166644181ED20D00D07DE8 /* coin2.png */,
 				C9166627181ED1D700D07DE8 /* Images.xcassets */,
-				C9166616181ED1D700D07DE8 /* Supporting Files */,
+				32AF53A91B9F960200CFCD3E /* LaunchScreen.storyboard */,
+				C9166617181ED1D700D07DE8 /* ch25p866button-Info.plist */,
 			);
 			path = ch25p866button;
-			sourceTree = "<group>";
-		};
-		C9166616181ED1D700D07DE8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C9166617181ED1D700D07DE8 /* ch25p866button-Info.plist */,
-				C9166618181ED1D700D07DE8 /* InfoPlist.strings */,
-				C916661B181ED1D700D07DE8 /* main.m */,
-				C916661D181ED1D700D07DE8 /* ch25p866button-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +96,7 @@
 		C9166604181ED1D700D07DE8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -160,7 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9166628181ED1D700D07DE8 /* Images.xcassets in Resources */,
-				C916661A181ED1D700D07DE8 /* InfoPlist.strings in Resources */,
+				32AF53AA1B9F960200CFCD3E /* LaunchScreen.storyboard in Resources */,
 				C9166623181ED1D700D07DE8 /* Main.storyboard in Resources */,
 				C9166645181ED20D00D07DE8 /* coin2.png in Resources */,
 			);
@@ -173,24 +137,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32AF53AC1B9F960600CFCD3E /* AppDelegate.swift in Sources */,
 				32A5793A1993ED8300221E36 /* ViewController.swift in Sources */,
 				32A579381993EB3200221E36 /* MyShrinkingButton.swift in Sources */,
-				C9166620181ED1D700D07DE8 /* AppDelegate.m in Sources */,
-				C916661C181ED1D700D07DE8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C9166618181ED1D700D07DE8 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9166619181ED1D700D07DE8 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C9166621181ED1D700D07DE8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -235,7 +190,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -268,7 +223,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -279,7 +234,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch25p866button/ch25p866button-Prefix.pch";
@@ -297,7 +251,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch25p866button/ch25p866button-Prefix.pch";

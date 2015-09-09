@@ -28,7 +28,7 @@
                                 </connections>
                             </searchBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="53o-Ge-amw" secondAttribute="trailing" id="BUi-yg-uvN"/>
                             <constraint firstItem="53o-Ge-amw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Bs1-ox-kyw"/>
@@ -41,6 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="305" y="342"/>
         </scene>
     </scenes>
 </document>

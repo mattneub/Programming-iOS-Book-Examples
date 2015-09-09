@@ -8,36 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		32A8D661199407B000B1CF2F /* MyKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8D660199407B000B1CF2F /* MyKnob.swift */; };
-		C97177D7181F2CA000268B18 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97177D6181F2CA000268B18 /* Foundation.framework */; };
-		C97177D9181F2CA000268B18 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97177D8181F2CA000268B18 /* CoreGraphics.framework */; };
-		C97177DB181F2CA000268B18 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97177DA181F2CA000268B18 /* UIKit.framework */; };
-		C97177E1181F2CA000268B18 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C97177DF181F2CA000268B18 /* InfoPlist.strings */; };
-		C97177E3181F2CA000268B18 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C97177E2181F2CA000268B18 /* main.m */; };
-		C97177E7181F2CA000268B18 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C97177E6181F2CA000268B18 /* AppDelegate.m */; };
+		32AF53AE1B9F9B1600CFCD3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AF53AD1B9F9B1600CFCD3E /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		32AF53B01B9F9B1B00CFCD3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF53AF1B9F9B1B00CFCD3E /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		32AF53B21B9F9B3C00CFCD3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF53B11B9F9B3C00CFCD3E /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		C97177EA181F2CA000268B18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97177E8181F2CA000268B18 /* Main.storyboard */; };
-		C97177ED181F2CA000268B18 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97177EC181F2CA000268B18 /* ViewController.m */; };
-		C97177EF181F2CA000268B18 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97177EE181F2CA000268B18 /* Images.xcassets */; };
+		C97177EF181F2CA000268B18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97177EE181F2CA000268B18 /* Assets.xcassets */; };
 		C971780E181F2CD200268B18 /* knob.png in Resources */ = {isa = PBXBuildFile; fileRef = C971780B181F2CD200268B18 /* knob.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		32A8D65F199407B000B1CF2F /* ch25p870knob-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch25p870knob-Bridging-Header.h"; sourceTree = "<group>"; };
 		32A8D660199407B000B1CF2F /* MyKnob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyKnob.swift; sourceTree = "<group>"; };
+		32AF53AD1B9F9B1600CFCD3E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		32AF53AF1B9F9B1B00CFCD3E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		32AF53B11B9F9B3C00CFCD3E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C97177D3181F2CA000268B18 /* ch25p870knob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch25p870knob.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C97177D6181F2CA000268B18 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C97177D8181F2CA000268B18 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C97177DA181F2CA000268B18 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C97177DE181F2CA000268B18 /* ch25p870knob-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch25p870knob-Info.plist"; sourceTree = "<group>"; };
-		C97177E0181F2CA000268B18 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C97177E2181F2CA000268B18 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C97177E4181F2CA000268B18 /* ch25p870knob-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch25p870knob-Prefix.pch"; sourceTree = "<group>"; };
-		C97177E5181F2CA000268B18 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C97177E6181F2CA000268B18 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C97177E9181F2CA000268B18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C97177EB181F2CA000268B18 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C97177EC181F2CA000268B18 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		C97177EE181F2CA000268B18 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C97177F5181F2CA000268B18 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C97177EE181F2CA000268B18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C971780B181F2CD200268B18 /* knob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knob.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -46,9 +33,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C97177D9181F2CA000268B18 /* CoreGraphics.framework in Frameworks */,
-				C97177DB181F2CA000268B18 /* UIKit.framework in Frameworks */,
-				C97177D7181F2CA000268B18 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				C97177DC181F2CA000268B18 /* ch25p870knob */,
-				C97177D5181F2CA000268B18 /* Frameworks */,
 				C97177D4181F2CA000268B18 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,43 +55,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C97177D5181F2CA000268B18 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C97177D6181F2CA000268B18 /* Foundation.framework */,
-				C97177D8181F2CA000268B18 /* CoreGraphics.framework */,
-				C97177DA181F2CA000268B18 /* UIKit.framework */,
-				C97177F5181F2CA000268B18 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C97177DC181F2CA000268B18 /* ch25p870knob */ = {
 			isa = PBXGroup;
 			children = (
-				C97177E5181F2CA000268B18 /* AppDelegate.h */,
-				C97177E6181F2CA000268B18 /* AppDelegate.m */,
+				32AF53AF1B9F9B1B00CFCD3E /* AppDelegate.swift */,
 				C97177E8181F2CA000268B18 /* Main.storyboard */,
-				C97177EB181F2CA000268B18 /* ViewController.h */,
-				C97177EC181F2CA000268B18 /* ViewController.m */,
+				32AF53B11B9F9B3C00CFCD3E /* ViewController.swift */,
 				C971780B181F2CD200268B18 /* knob.png */,
 				32A8D660199407B000B1CF2F /* MyKnob.swift */,
-				C97177EE181F2CA000268B18 /* Images.xcassets */,
-				C97177DD181F2CA000268B18 /* Supporting Files */,
-				32A8D65F199407B000B1CF2F /* ch25p870knob-Bridging-Header.h */,
+				C97177EE181F2CA000268B18 /* Assets.xcassets */,
+				32AF53AD1B9F9B1600CFCD3E /* LaunchScreen.storyboard */,
+				C97177DE181F2CA000268B18 /* ch25p870knob-Info.plist */,
 			);
 			path = ch25p870knob;
-			sourceTree = "<group>";
-		};
-		C97177DD181F2CA000268B18 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C97177DE181F2CA000268B18 /* ch25p870knob-Info.plist */,
-				C97177DF181F2CA000268B18 /* InfoPlist.strings */,
-				C97177E2181F2CA000268B18 /* main.m */,
-				C97177E4181F2CA000268B18 /* ch25p870knob-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,9 +123,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C97177EF181F2CA000268B18 /* Images.xcassets in Resources */,
+				C97177EF181F2CA000268B18 /* Assets.xcassets in Resources */,
+				32AF53AE1B9F9B1600CFCD3E /* LaunchScreen.storyboard in Resources */,
 				C971780E181F2CD200268B18 /* knob.png in Resources */,
-				C97177E1181F2CA000268B18 /* InfoPlist.strings in Resources */,
 				C97177EA181F2CA000268B18 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,24 +137,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32AF53B21B9F9B3C00CFCD3E /* ViewController.swift in Sources */,
+				32AF53B01B9F9B1B00CFCD3E /* AppDelegate.swift in Sources */,
 				32A8D661199407B000B1CF2F /* MyKnob.swift in Sources */,
-				C97177ED181F2CA000268B18 /* ViewController.m in Sources */,
-				C97177E7181F2CA000268B18 /* AppDelegate.m in Sources */,
-				C97177E3181F2CA000268B18 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C97177DF181F2CA000268B18 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C97177E0181F2CA000268B18 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C97177E8181F2CA000268B18 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -240,7 +190,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -273,7 +223,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -284,7 +234,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch25p870knob/ch25p870knob-Prefix.pch";
@@ -292,7 +241,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ch25p870knob/ch25p870knob-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -303,7 +252,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch25p870knob/ch25p870knob-Prefix.pch";
@@ -311,7 +259,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ch25p870knob/ch25p870knob-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
