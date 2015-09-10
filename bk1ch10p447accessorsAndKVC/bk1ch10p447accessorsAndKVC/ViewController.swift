@@ -75,7 +75,7 @@ class ViewController: UIViewController {
 //    func color3() -> UIColor? {
 //        return self.color3
 //    }
-    
+//    
 //    func setColor3(c:UIColor?) {
 //        self.color3 = c
 //    }

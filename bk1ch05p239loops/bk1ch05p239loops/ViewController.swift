@@ -206,7 +206,7 @@ class ViewController: UIViewController {
             }
         }
         
-        do { // new in 2.0, you can break to an "if"
+        do { // new in 2.0, you can break to an "if" or "do"
             test: if true {
                 for i in 1...5 {
                     for j in 1...5 {
@@ -217,16 +217,13 @@ class ViewController: UIViewController {
             }
         }
                 
-        do { // new in 2.0, you can break from within an "if", but only a label break
-            test: while true {
-                if true {
-                    print("step one")
-                    break test
-                } else {
-                    break test
-                }
+        test2: do { // new in 2.0, you can break from within an "if", but only a label break
+            var ok : Bool { return true }
+            if ok {
+                print("step one")
+                break test2
             }
-            print("step three")
+            print("step two")
         }
         
 

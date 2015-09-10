@@ -356,7 +356,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                 // UIApplication.sharedApplication().openURL(url)
                 // this is how to use the new Safari view controller
                 let svc = SFSafariViewController(URL: url)
-                svc.delegate = self
+                // svc.delegate = self
                 self.presentViewController(svc, animated: true, completion: nil)
                 decisionHandler(.Cancel)
                 return
