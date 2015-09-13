@@ -61,6 +61,35 @@ class ViewController: UIViewController {
         
     }
     
+    func btiExample() {
+        /*
+        do {
+            let bti = UIApplication.sharedApplication()
+                .beginBackgroundTaskWithExpirationHandler({
+                    UIApplication.sharedApplication().endBackgroundTask(bti)
+                }) // error: variable used within its own initial value
+        }
+*/
+        /*
+        do {
+            var bti : UIBackgroundTaskIdentifier
+            bti = UIApplication.sharedApplication()
+                .beginBackgroundTaskWithExpirationHandler({
+                    UIApplication.sharedApplication().endBackgroundTask(bti)
+                }) // error: variable captured by a closure before being initialized
+        }
+*/
+        do {
+            var bti : UIBackgroundTaskIdentifier = 0
+            bti = UIApplication.sharedApplication()
+                .beginBackgroundTaskWithExpirationHandler({
+                    UIApplication.sharedApplication().endBackgroundTask(bti)
+                })
+
+        }
+
+    }
+    
 
 
 }

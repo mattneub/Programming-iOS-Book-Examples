@@ -123,7 +123,7 @@ class ViewController: UIViewController {
             s.insertContentsOf("ey, h".characters, at: ix)
             print(s)
         }
-        
+                
         do {
             let s = "Ha\u{030A}kon"
             print(s.characters.count) // 5

@@ -6,7 +6,7 @@ class Dog {
     func bark() {}
 }
 class NoisyDog : Dog {
-    func beQuiet() {}
+    func beQuiet() { print("arf arf arf") }
 }
 
 enum Filter : CustomStringConvertible {
@@ -233,14 +233,33 @@ class ViewController: UIViewController {
             }
         }
         
-        // new in Swift 2.0
+        // new in Swift 2.0, case pattern syntax in an "if", "while", or "for"
+        // the tag follows the pattern after an equal sign
         if case let .Number(n) = err {
             print("The error number is \(n)")
         }
         if case let .Number(n) = err where n < 0 {
             print("The negative error number is \(n)")
         }
-
+        
+        // and the inverse
+        do {
+            guard case let .Number(n) = err else {return}
+            print("not to worry, it's a number: \(n)")
+        }
+        
+        // note that most patterns will actually work here; for example, we had this:
+        //        switch d {
+        //        case let nd as NoisyDog:
+        //            nd.beQuiet()
+        // you can rewrite like this:
+        do {
+            if case let nd as NoisyDog = d {
+                nd.beQuiet()
+            }
+        }
+        // however, _that_ would be pointless, because there is already syntax for expressing that
+        
         switch i {
         case 1,3,5,7,9:
             print("You have a small odd number of thingies.")

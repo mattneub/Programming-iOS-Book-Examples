@@ -142,6 +142,8 @@ func flockTwoTogether6<T1:Flier6, T2:Flier6>(f1:T1, _ f2:T2) {
     f2.fly()
 }
 
+// just testing: this one actually segfaults
+// class Dog2<T:Dog2> {}
 
 
 
@@ -152,6 +154,7 @@ class ViewController: UIViewController {
         
         let min = myMin(4,1,5,2)
         print(min)
+        
     }
 }
 

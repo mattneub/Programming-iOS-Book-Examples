@@ -70,6 +70,19 @@ class ViewController: UIViewController {
         }
         
         do {
+            let arr : [Error] = [
+                .Message("ouch"), .Message("yipes"), .Number(10),
+                .Number(-1), .Fatal
+            ]
+            var i = 0
+            while case let .Message(message) = arr[i++]  {
+                print(message)
+            }
+            print(arr)
+
+        }
+        
+        do {
             for var i = 1; i < 6; i++ {
                 print(i)
             }
@@ -147,10 +160,10 @@ class ViewController: UIViewController {
         
         do {
             let arr : [Error] = [
-                Error.Message("ouch"), Error.Number(10),
-                Error.Number(-1), Error.Fatal
+                .Message("ouch"), .Message("yipes"), .Number(10),
+                .Number(-1), .Fatal
             ]
-            for case let .Number(i) in arr { // need a better example
+            for case let .Number(i) in arr {
                 print(i) // 10, -1
             }
         }

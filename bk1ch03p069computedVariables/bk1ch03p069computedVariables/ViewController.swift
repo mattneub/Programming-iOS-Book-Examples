@@ -63,6 +63,31 @@ class ViewController: UIViewController {
     
     
     }
+    
+    private var myBigDataReal : NSData! = nil
+    var myBigData : NSData! {
+        set (newdata) {
+            self.myBigDataReal = newdata
+        }
+        get {
+            if myBigDataReal == nil {
+                let fm = NSFileManager()
+                let f = (NSTemporaryDirectory() as NSString).stringByAppendingPathComponent("myBigData")
+                if fm.fileExistsAtPath(f) {
+                    print("loading big data from disk")
+                    self.myBigDataReal = NSData(contentsOfFile: f)
+                    do {
+                        try fm.removeItemAtPath(f)
+                        print("deleted big data from disk")
+                    } catch {
+                        print("Couldn't remove temp file")
+                    }
+                }
+            }
+            return self.myBigDataReal
+        }
+    }
+
 
 
 }

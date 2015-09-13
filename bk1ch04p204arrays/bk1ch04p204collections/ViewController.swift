@@ -339,7 +339,7 @@ class ViewController: UIViewController {
             let arr = UIFont.familyNames().map {
                 UIFont.fontNamesForFamilyName($0)
             }
-            // print(arr)
+            print(arr)
             let views = self.view.subviews
             _ = arr
             _ = views
@@ -361,6 +361,25 @@ class ViewController: UIViewController {
                 }
             }
             _ = arr2
+        }
+        
+        do {
+            // there seems to be some doubt now as to whether the medium of exchange...
+            // ... is AnyObject or NSObject
+            let s = "howdy" as NSObject
+            let s2 = "howdy" as AnyObject
+            let s3 = s as! String
+            let s4 = s2 as! String
+            print(s3, s4)
+            let arr = [Dog()]
+            let nsarr = arr as NSArray
+            // there is no problem even if it is NOT an NSObject, so what's the big deal?
+            print(nsarr.objectAtIndex(0))
+            
+            let arr2 = ["howdy", Dog()]
+            let nsarr2 = arr2 as NSArray
+            print(nsarr2)
+            
         }
 
     }
