@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3252F50F1A868943000BC6C7 /* CancelableTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3252F50E1A868943000BC6C7 /* CancelableTimer.swift */; };
+		3273F48B1BA64795002ECE6D /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3273F48A1BA64795002ECE6D /* MyView.swift */; settings = {ASSET_TAGS = (); }; };
 		32EF65231A86744C00E5150E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF65221A86744C00E5150E /* MainViewController.swift */; };
 		32EF65251A8676CF00E5150E /* FlipsideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF65241A8676CF00E5150E /* FlipsideViewController.swift */; };
 		32FFD3BF1B5AAFCC0055D1E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32FFD3BE1B5AAFCC0055D1E0 /* LaunchScreen.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		3252F50E1A868943000BC6C7 /* CancelableTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelableTimer.swift; sourceTree = "<group>"; };
+		3273F48A1BA64795002ECE6D /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		32EF65221A86744C00E5150E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		32EF65241A8676CF00E5150E /* FlipsideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipsideViewController.swift; sourceTree = "<group>"; };
 		32FFD3BE1B5AAFCC0055D1E0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				C9E8B38517A0307B0000C352 /* Main.storyboard */,
 				32FFD3C01B5AAFEC0055D1E0 /* AppDelegate.swift */,
 				32EF65221A86744C00E5150E /* MainViewController.swift */,
+				3273F48A1BA64795002ECE6D /* MyView.swift */,
 				32EF65241A8676CF00E5150E /* FlipsideViewController.swift */,
 				3252F50E1A868943000BC6C7 /* CancelableTimer.swift */,
 				C9E8B38E17A0307B0000C352 /* Assets.xcassets */,
@@ -138,6 +141,7 @@
 			files = (
 				32FFD3C11B5AAFEC0055D1E0 /* AppDelegate.swift in Sources */,
 				32EF65251A8676CF00E5150E /* FlipsideViewController.swift in Sources */,
+				3273F48B1BA64795002ECE6D /* MyView.swift in Sources */,
 				3252F50F1A868943000BC6C7 /* CancelableTimer.swift in Sources */,
 				32EF65231A86744C00E5150E /* MainViewController.swift in Sources */,
 			);

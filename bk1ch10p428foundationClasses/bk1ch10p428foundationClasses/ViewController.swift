@@ -53,6 +53,14 @@ class ViewController: UIViewController {
         }
         
         do {
+            let s = "MyFile"
+            let s2 = (s as NSString).stringByAppendingPathExtension("txt")
+            // let s3 = s.stringByAppendingPathExtension("txt") // compile error
+
+            print(s2)
+        }
+        
+        do {
             let s = "hello"
             let ms = NSMutableString(string:s)
             ms.deleteCharactersInRange(NSMakeRange(ms.length-1,1))
@@ -111,6 +119,12 @@ class ViewController: UIViewController {
             let n = 0 as NSNumber
             let n2 = NSNumber(float:0)
             
+            do {
+                // I regard these as bugs
+                // let n = UInt32(0) as NSNumber // compile error
+                // let i = n as! UInt32 // "always fails"
+            }
+            
             let dec1 = NSDecimalNumber(float: 4.0)
             let dec2 = NSDecimalNumber(float: 5.0)
             let sum = dec1.decimalNumberByAdding(dec2) // 9.0
@@ -150,13 +164,12 @@ class ViewController: UIViewController {
         }
         
         do {
-            var arr = ["zero", "one", "two", "three", "four", "five"]
-            arr.appendContentsOf(["six", "seven", "eight", "nine", "ten"])
+            let arr = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
             let ixs = NSMutableIndexSet()
             ixs.addIndexesInRange(NSRange(1...4))
             ixs.addIndexesInRange(NSRange(8...10))
             let arr2 = (arr as NSArray).objectsAtIndexes(ixs)
-            _ = arr2
+            print(arr2)
         }
         
         do {
