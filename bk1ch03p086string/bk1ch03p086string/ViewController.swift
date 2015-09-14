@@ -80,6 +80,12 @@ class ViewController: UIViewController {
         }
         
         do {
+            let s = "1f"
+            let i = Int(s, radix:16) // Optional(31)
+            print(i)
+        }
+        
+        do {
             let s = "31.34"
             let i = Int(s) // nil because it wasn't an Int; you don't get magical double-coercion
             print(i)
