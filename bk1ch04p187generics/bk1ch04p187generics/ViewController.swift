@@ -116,7 +116,7 @@ struct Bird5 : Flier5 {
 }
 struct FlierMaker<T:Flier5> {
     static func makeFlier() -> T {
-        return T()
+        return T() // a little surprising I don't have to say T.init(), but I guess it is a real type
     }
 }
 let f = FlierMaker<Bird5>.makeFlier() // returns a Bird5

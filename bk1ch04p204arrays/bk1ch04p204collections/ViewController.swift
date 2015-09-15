@@ -260,6 +260,7 @@ class ViewController: UIViewController {
         let arr2 = arr.map {$0 * 2} // [2,4,6]
         let arr3 = arr.map {Double($0)} // [1.0, 2.0, 3.0]
         pepboys.forEach {print($0)} // prints Manny, then Moe, then Jack
+        pepboys.enumerate().forEach {print("Pep boy \($0.0) is \($0.1)")}
         // pepboys.map(print) // no longer compiles
         let arr4 = pepboys.filter{$0.hasPrefix("M")} // [Manny, Moe]
 
