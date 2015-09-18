@@ -11,7 +11,6 @@ class ViewController : UIViewController {
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         
-        // NB deprecated in iOS 9 - but why? there still needs to be a way to learn this
         print(UIApplication.sharedApplication().statusBarOrientation.rawValue)
         
         print(UIDevice.currentDevice().orientation.rawValue)

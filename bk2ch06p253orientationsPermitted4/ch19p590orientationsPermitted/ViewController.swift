@@ -35,7 +35,6 @@ class ViewController : UIViewController {
             print("self \(self.interfaceOrientation.rawValue)")
             // but the above is deprecated in iOS 8
             print("status bar \(UIApplication.sharedApplication().statusBarOrientation.rawValue)")
-            // but the above is deprecated in iOS 9 - wrongly, in my opinion
         }
         // return super.supportedInterfaceOrientations()
         return .All // this includes upside down if info.plist includes it
@@ -50,7 +49,6 @@ class ViewController : UIViewController {
             print("self \(self.interfaceOrientation.rawValue)")
             // but the above is deprecated in iOS 8
             print("status bar \(UIApplication.sharedApplication().statusBarOrientation.rawValue)")
-            // but the above is deprecated in iOS 9 - wrongly, in my opinion
         }
         // return true
         return self.shouldRotate

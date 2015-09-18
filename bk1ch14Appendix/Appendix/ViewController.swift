@@ -23,6 +23,11 @@ class MyClass {
     }
 }
 
+struct Pair {
+    let x : Int
+    let y : Int
+}
+
 
 class ViewController: UIViewController {
     
@@ -43,6 +48,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        do {
+            // proving that Swift structs don't get the zeroing initializer
+            // let p = Pair()
+            let pp = CGPoint()
+        }
         
         do {
         

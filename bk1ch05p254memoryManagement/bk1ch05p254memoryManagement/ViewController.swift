@@ -210,6 +210,7 @@ class ViewController: UIViewController {
                     [weak f] in
                     print(f)
                 }
+                f.function!() // proving that what's printed is Optional
             }
             testFunctionHolder() // farewell from FunctionHolder
         }
@@ -229,6 +230,7 @@ class ViewController: UIViewController {
                     guard let f = f else { return }
                     print(f)        // strong
                 }
+                f.function!() // proving that what's printed is non-Optional
             }
             testFunctionHolder() // farewell from FunctionHolder
         }

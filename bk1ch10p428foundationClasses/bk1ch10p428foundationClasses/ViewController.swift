@@ -20,6 +20,15 @@ class ViewController: UIViewController {
                 print("it wasn't found")
             }
         }
+        
+        do {
+            let r = NSRange(1...3)
+            print(r)
+            let r2 = r.toRange()
+            print(r2)
+            // let r3 = Range(r)
+            // print(r3)
+        }
 
         do {
             let s = "hello"
@@ -131,6 +140,15 @@ class ViewController: UIViewController {
             _ = n
             _ = n2
             _ = sum
+        }
+        
+        do {
+            // perhaps the first example is more convincing if we use a variable
+            let ud = NSUserDefaults.standardUserDefaults()
+            let i = 0
+            ud.setInteger(i, forKey: "Score")
+            ud.setObject(i, forKey: "Score")
+            
         }
         
         do {
