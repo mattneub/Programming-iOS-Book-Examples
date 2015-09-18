@@ -85,12 +85,12 @@ func makeRoundedRectangleMaker(sz:CGSize) -> () -> UIImage {
 }
 
 // stop hard-coding the radius
-func makeRoundedRectangleMaker2(sz:CGSize, rad:CGFloat) -> () -> UIImage {
+func makeRoundedRectangleMaker2(sz:CGSize, _ r:CGFloat) -> () -> UIImage {
     return {
         imageOfSize(sz) {
             let p = UIBezierPath(
                 roundedRect: CGRect(origin:CGPointZero, size:sz),
-                cornerRadius: rad)
+                cornerRadius: r)
             p.stroke()
         }
     }
@@ -99,22 +99,22 @@ func makeRoundedRectangleMaker2(sz:CGSize, rad:CGFloat) -> () -> UIImage {
 // explicit curry
 func makeRoundedRectangleMaker3(sz:CGSize) -> (CGFloat) -> UIImage {
     return {
-        rad in
+        r in
         imageOfSize(sz) {
             let p = UIBezierPath(
                 roundedRect: CGRect(origin:CGPointZero, size:sz),
-                cornerRadius: rad)
+                cornerRadius: r)
             p.stroke()
         }
     }
 }
 
 // implicit curry
-func makeRoundedRectangleMaker4(sz:CGSize)(rad:CGFloat) -> UIImage {
+func makeRoundedRectangleMaker4(sz:CGSize)(_ r:CGFloat) -> UIImage {
     return imageOfSize(sz) {
         let p = UIBezierPath(
             roundedRect: CGRect(origin:CGPointZero, size:sz),
-            cornerRadius: rad)
+            cornerRadius: r)
         p.stroke()
     }
 }
@@ -204,7 +204,7 @@ class ViewController: UIViewController {
         self.myImageView2.image = maker()
         
         
-        let maker2 = makeRoundedRectangleMaker2(CGSizeMake(45,20), rad: 8)
+        let maker2 = makeRoundedRectangleMaker2(CGSizeMake(45,20), 8)
         _ = maker2
         
         let maker3 = makeRoundedRectangleMaker3(CGSizeMake(45,20))
@@ -214,9 +214,9 @@ class ViewController: UIViewController {
         _ = image1
         
         let maker4 = makeRoundedRectangleMaker4(CGSizeMake(45,20))
-        self.myImageView.image = maker4(rad:8)
+        self.myImageView.image = maker4(8)
 
-        let image2 = makeRoundedRectangleMaker4(CGSizeMake(45,20))(rad:8)
+        let image2 = makeRoundedRectangleMaker4(CGSizeMake(45,20))(8)
         _ = image2
 
 
