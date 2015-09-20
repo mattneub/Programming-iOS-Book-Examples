@@ -6,7 +6,6 @@ import UIKit
 class MyTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
         
         if selected {
             let v = UIActivityIndicatorView(activityIndicatorStyle:.WhiteLarge)
@@ -18,6 +17,7 @@ class MyTableViewCell: UITableViewCell {
             v.frame = v.frame.insetBy(dx: -10, dy: -10)
             let cf = self.contentView.convertRect(self.bounds, fromView:self)
             v.center = CGPointMake(cf.midX, cf.midY);
+            v.frame.makeIntegralInPlace() // ?
             v.tag = 1001
             self.contentView.addSubview(v)
             v.startAnimating()
@@ -27,6 +27,7 @@ class MyTableViewCell: UITableViewCell {
                 v.removeFromSuperview()
             }
         }
+        super.setSelected(selected, animated: animated)
 
     }
 

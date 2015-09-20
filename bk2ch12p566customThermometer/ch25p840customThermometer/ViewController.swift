@@ -6,12 +6,14 @@ class ViewController: UIViewController {
     @IBOutlet var prog1 : UIProgressView!
     @IBOutlet var prog2 : UIProgressView!
     @IBOutlet var prog3 : MyProgressView!
+    @IBOutlet var prog4: MyCircularProgressButton!
 
     @IBAction func doButton (sender:AnyObject) {
         self.prog1.progress = 0
         self.prog2.progress = 0
         self.prog3.value = 0
         self.prog3.setNeedsDisplay()
+        self.prog4.progress = 0
         NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "inc:", userInfo: nil, repeats: true)
     }
     
@@ -78,6 +80,7 @@ class ViewController: UIViewController {
         self.prog2.setProgress(val, animated:true)
         self.prog3.value = CGFloat(val)
         self.prog3.setNeedsDisplay()
+        self.prog4.progress = val
         if val >= 1.0 {
             t.invalidate()
         }
