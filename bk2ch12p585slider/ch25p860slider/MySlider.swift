@@ -2,6 +2,16 @@
 
 import UIKit
 
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
+
+
 class ViewController: UIViewController {
     
     
@@ -48,7 +58,11 @@ class MySlider: UISlider {
         let percentage = pt.x / s.bounds.size.width
         let delta = Float(percentage) * (s.maximumValue - s.minimumValue)
         let value = s.minimumValue + delta
-        s.setValue(value, animated:true) // animation broken in iOS 7, still broken in iOS 8
+        delay(0.1) {
+            s.setValue(value, animated:true)
+        }
+        // animation broken in iOS 7
+        // still broken in iOS 8
         // still broken in iOS 9
     }
     
