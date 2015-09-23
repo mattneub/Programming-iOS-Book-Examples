@@ -40,7 +40,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     
     func registerMyNotification(application:UIApplication) {
-        // new in iOS 8! must register to present alert / play sound with a local or push notification
+        // must register to present alert / play sound with a local or push notification
         let types : UIUserNotificationType = [.Alert, .Sound]
         // if we want custom actions in our alert, we must create them when we register
         let category = UIMutableUserNotificationCategory()
@@ -53,11 +53,21 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // if .Background, should also set authenticationRequired to say what to do from lock screen
         
         let action2 = UIMutableUserNotificationAction()
-        action2.identifier = "ohno"
-        action2.title = "Oh, No!" // user will see this
-        action2.destructive = false // the default, I'm just setting it to call attention to its existence
-        action2.activationMode = .Background // if .Background, app just stays in the background! cool
-        // if .Background, should also set authenticationRequired to say what to do from lock screen
+        var which : Int {return 2} // try 1 and 2
+        switch which {
+        case 1:
+            action2.identifier = "ohno"
+            action2.title = "Oh, No!" // user will see this
+            action2.destructive = false // the default, I'm just setting it to call attention to its existence
+            action2.activationMode = .Background // if .Background, app just stays in the background! cool
+            // if .Background, should also set authenticationRequired to say what to do from lock screen
+        case 2:
+            action2.identifier = "message"
+            action2.title = "Message"
+            action2.activationMode = .Background
+            action2.behavior = .TextInput // new in iOS 9!
+        default: break
+        }
         
         category.setActions([action1, action2], forContext: .Default) // can have 4 for default, 2 for minimal
         let settings = UIUserNotificationSettings(forTypes: types, categories: Set([category]))
@@ -80,7 +90,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // later, user accepts in Settings
         // but if we now try to present notification, we can't because our registration didn't go through the first time
         // this way, we are always registering so that if we are ever accepted, we can do it
-        self.registerMyNotification(application)
+        //self.registerMyNotification(application)
         
         print("end \(__FUNCTION__)")
 
@@ -114,6 +124,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         print("end \(__FUNCTION__)")
     }
     
+    /*
     // new in iOS 8, this is how we will hear about our custom buttons tapped in the alert
     // if user taps our custom action button, id will be its id
     // for background, you can stay in the background and run for a couple of seconds
@@ -123,6 +134,20 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         print("start \(__FUNCTION__)")
         NSLog("%@", "\(__FUNCTION__)")
         print("user tapped \(id)")
+        // you _must_ call the completion handler to tell the runtime you did this!
+        completionHandler()
+        print("end \(__FUNCTION__)")
+    }
+*/
+    
+    // new in iOS 9, same as in iOS 8 except that now we have `responseInfo` dictionary coming in
+    func application(application: UIApplication, handleActionWithIdentifier id: String?, forLocalNotification n: UILocalNotification, withResponseInfo d: [NSObject : AnyObject], completionHandler: () -> Void) {
+        print("start \(__FUNCTION__)")
+        NSLog("%@", "\(__FUNCTION__)")
+        print("user tapped \(id)")
+        if let s = d[UIUserNotificationActionResponseTypedTextKey] as? String {
+            print(s)
+        }
         // you _must_ call the completion handler to tell the runtime you did this!
         completionHandler()
         print("end \(__FUNCTION__)")

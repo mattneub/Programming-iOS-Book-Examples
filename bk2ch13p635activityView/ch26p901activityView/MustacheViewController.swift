@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ElaborateViewController: UIViewController {
+class MustacheViewController: UIViewController {
 
     weak var activity : UIActivity?
     var items: [AnyObject]
@@ -9,7 +9,7 @@ class ElaborateViewController: UIViewController {
     init(activity:UIActivity, items:[AnyObject]) {
         self.activity = activity
         self.items = items
-        super.init(nibName: "ElaborateViewController", bundle: nil)
+        super.init(nibName: "MustacheViewController", bundle: nil)
     }
     
     required init(coder: NSCoder) {
@@ -25,7 +25,7 @@ class ElaborateViewController: UIViewController {
     }
     
     deinit{
-        println("elaborate view controller dealloc")
+        print("elaborate view controller dealloc")
     }
 
 }

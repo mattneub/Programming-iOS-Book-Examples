@@ -17,13 +17,16 @@ class ViewController: UIViewController {
         // a UIAlertAction has a handler
         // here's a general handler (though none is needed if you want to ignore)
         func handler(act:UIAlertAction!) {
-            println("User tapped \(act.title)")
+            print("User tapped \(act.title)")
         }
         // illustrating the three button styles
         alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: handler))
         alert.addAction(UIAlertAction(title: "Yes", style: .Destructive, handler: handler))
         alert.addAction(UIAlertAction(title: "Maybe", style: .Default, handler: handler))
         // the last default one is bold in any case
+        // but new in iOS 9, seems to boldify the designated button title instead
+        alert.preferredAction = alert.actions[2]
+
         self.presentViewController(alert, animated: true, completion: nil)
         // dismissal is automatic when a button is tapped
     }
@@ -33,18 +36,18 @@ class ViewController: UIViewController {
     @IBAction func doAlertView2(sender:AnyObject) {
         let alert = UIAlertController(title: "Enter a number:", message: nil, preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler {
-            (tf:UITextField!) in
+            (tf:UITextField) in
             tf.keyboardType = .NumberPad
             tf.addTarget(self, action: "textChanged:", forControlEvents: .EditingChanged)
         }
-        func handler(act:UIAlertAction!) {
+        func handler(act:UIAlertAction) {
             // it's a closure so we have a reference to the alert
-            let tf = alert.textFields![0] as! UITextField
-            println("User entered \(tf.text), tapped \(act.title)")
+            let tf = alert.textFields![0] 
+            print("User entered \(tf.text), tapped \(act.title)")
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: handler))
-        (alert.actions[1] as! UIAlertAction).enabled = false
+        alert.actions[1].enabled = false
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
@@ -55,24 +58,22 @@ class ViewController: UIViewController {
         var resp : UIResponder! = tf
         while !(resp is UIAlertController) { resp = resp.nextResponder() }
         let alert = resp as! UIAlertController
-        (alert.actions[1] as! UIAlertAction).enabled = (tf.text != "")
+        alert.actions[1].enabled = (tf.text != "")
     }
     
     // =====
     
     func doActionSheet(sender:AnyObject) {
         let action = UIAlertController(title: "Choose New Layout", message: nil, preferredStyle: .ActionSheet)
-        action.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        func handler(act:UIAlertAction!) {
-            println(act.title)
+        action.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: {_ in print("Cancel")}))
+        func handler(act:UIAlertAction) {
+            print(act.title)
         }
         for s in ["3 by 3", "4 by 3", "4 by 4", "5 by 4", "5 by 5"] {
             action.addAction(UIAlertAction(title: s, style: .Default, handler: handler))
         }
+        // action.view.tintColor = UIColor.yellowColor()
         self.presentViewController(action, animated: true, completion: nil)
-//        for v in self.view.subviews as [UIView] {
-//            v.hidden = true
-//        }
         if let pop = action.popoverPresentationController {
             let v = sender as! UIView
             pop.sourceView = v

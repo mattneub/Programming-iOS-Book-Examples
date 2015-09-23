@@ -18,13 +18,13 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         return true
     }
-
-    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
         let scheme = url.scheme
         let host = url.host
         if scheme == "coffeetime" {
-            if let min = host?.toInt() {
-                println("got \(min) from our today extension")
+            if let host = host, min = Int(host) {
+                print("got \(min) from our today extension")
                 return true
             }
         }

@@ -29,28 +29,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func showActivityView() {
-        let things = self.tf.text
+        let things = self.tf.text!
         let avc = UIActivityViewController(activityItems:[things], applicationActivities:nil)
         avc.completionWithItemsHandler = {
-            (s: String!, ok: Bool, items: [AnyObject]!, err:NSError!) -> Void in
-            println("completed \(s) \(ok) \(items) \(err)")
+            (s: String?, ok: Bool, items: [AnyObject]?, err:NSError?) -> Void in
+            print("completed \(s) \(ok) \(items) \(err)")
             if ok {
-                if items == nil || items.count == 0 {
-                    return // nothing returned, nothing to do
+                guard let items = items where items.count > 0 else {
+                    return
                 }
-                // open the envelopes
-                if let extensionItem = items[0] as? NSExtensionItem {
-                    if let provider = extensionItem.attachments?[0] as? NSItemProvider {
-                        if provider.hasItemConformingToTypeIdentifier(self.desiredType) {
-                            provider.loadItemForTypeIdentifier(self.desiredType, options: nil, completionHandler: {
-                                (item:NSSecureCoding!, err:NSError!) -> () in
-                                dispatch_async(dispatch_get_main_queue()) {
-                                    if let s = item as? String {
-                                        self.tf.text = s
-                                    }
-                                }
-                                }
-                            )
+                guard let extensionItem = items[0] as? NSExtensionItem,
+                    let provider = extensionItem.attachments?[0] as? NSItemProvider
+                    where provider.hasItemConformingToTypeIdentifier(self.desiredType)
+                    else {
+                        return
+                }
+                provider.loadItemForTypeIdentifier(self.desiredType, options: nil) {
+                    (item:NSSecureCoding?, err:NSError!) -> () in
+                    dispatch_async(dispatch_get_main_queue()) {
+                        if let s = item as? String {
+                            self.tf.text = s
                         }
                     }
                 }
@@ -65,7 +63,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
             UIActivityTypePrint,
             // UIActivityTypeCopyToPasteboard,
             UIActivityTypeAssignToContact,
-            UIActivityTypeSaveToCameraRoll
+            UIActivityTypeSaveToCameraRoll,
+            UIActivityTypeAddToReadingList,
+            UIActivityTypePostToFlickr,
+            UIActivityTypePostToVimeo,
+            UIActivityTypePostToTencentWeibo,
+            UIActivityTypeAirDrop,
+            UIActivityTypeOpenInIBooks,
         ]
         self.presentViewController(avc, animated:true, completion:nil)
 

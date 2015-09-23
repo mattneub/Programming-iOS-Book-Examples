@@ -5,13 +5,13 @@ class PopoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.preferredContentSize = CGSizeMake(320,230)
+        self.preferredContentSize = CGSizeMake(320,300)
     }
     
     @IBAction func showOptions(sender:AnyObject) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         func handler(act:UIAlertAction!) {
-            println("User tapped \(act.title)")
+            print("User tapped \(act.title)")
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: handler))
         alert.addAction(UIAlertAction(title: "Hey", style: .Default, handler: handler))
@@ -23,6 +23,7 @@ class PopoverViewController: UIViewController {
         // tapping outside the containing popover dismisses the popover
         // to prevent that, you have to take charge of dismissal
         // No, the above is fixed in iOS 8.3
+        // But then it got unfixed in iOS 9
     }
 
 }

@@ -5,17 +5,17 @@ import MobileCoreServices
 class ActionViewController: UIViewController {
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var lab: UILabel!
-
+    
     let list : [String] = {
         let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")!
-        let s = String(contentsOfURL:path, encoding:NSUTF8StringEncoding, error:nil)!
+        let s = try! String(contentsOfURL:path, encoding:NSUTF8StringEncoding)
         return s.componentsSeparatedByString("\n")
         }()
     
     let desiredType = kUTTypePlainText as String
     var orig : String?
     var abbrev : String?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.doneButton.enabled = false
@@ -25,21 +25,21 @@ class ActionViewController: UIViewController {
         }
         let items = self.extensionContext!.inputItems
         // open the envelopes
-        if let extensionItem = items[0] as? NSExtensionItem {
-            if let provider = extensionItem.attachments?[0] as? NSItemProvider {
-                if provider.hasItemConformingToTypeIdentifier(self.desiredType) {
-                    provider.loadItemForTypeIdentifier(self.desiredType, options: nil) {
-                        (item:NSSecureCoding!, err:NSError!) -> () in
-                        dispatch_async(dispatch_get_main_queue()) {
-                            if let orig = item as? String {
-                                self.orig = orig
-                                if let abbrev = self.stateForAbbrev(orig) {
-                                    self.abbrev = abbrev
-                                    self.lab.text = "Can expand to \(abbrev)."
-                                    self.doneButton.enabled = true
-                                }
-                            }
-                        }
+        guard let extensionItem = items[0] as? NSExtensionItem,
+            let provider = extensionItem.attachments?[0] as? NSItemProvider
+            where provider.hasItemConformingToTypeIdentifier(self.desiredType)
+            else {
+                return
+        }
+        provider.loadItemForTypeIdentifier(self.desiredType, options: nil) {
+            (item:NSSecureCoding?, err:NSError!) -> () in
+            dispatch_async(dispatch_get_main_queue()) {
+                if let orig = item as? String {
+                    self.orig = orig
+                    if let abbrev = self.stateForAbbrev(orig) {
+                        self.abbrev = abbrev
+                        self.lab.text = "Can expand to \(abbrev)."
+                        self.doneButton.enabled = true
                     }
                 }
             }
@@ -47,7 +47,7 @@ class ActionViewController: UIViewController {
     }
     
     func stateForAbbrev(abbrev:String) -> String? {
-        let ix = find(list, abbrev.uppercaseString)
+        let ix = list.indexOf(abbrev.uppercaseString)
         return ix != nil ? list[ix!+1] : nil
     }
     

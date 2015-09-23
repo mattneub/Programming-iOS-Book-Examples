@@ -1,13 +1,12 @@
 
 import UIKit
-func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(size, false, 0)
+func imageOfSize(size:CGSize, _ opaque:Bool = false, _ closure:() -> ()) -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
     closure()
     let result = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
     return result
 }
-
 
 class MyCoolActivity : UIActivity {
     var items : [AnyObject]?
@@ -43,29 +42,29 @@ class MyCoolActivity : UIActivity {
     }
     
     override func canPerformWithActivityItems(activityItems: [AnyObject]) -> Bool {
-        println("cool can perform \(activityItems)")
+        print("cool can perform \(activityItems)")
         for obj in activityItems {
             if obj is String {
-                println("returning true")
+                print("returning true")
                 return true
             }
         }
-        println("returning false")
+        print("returning false")
         return false
     }
     
     override func prepareWithActivityItems(activityItems: [AnyObject]) {
-        println("cool prepare \(activityItems)")
+        print("cool prepare \(activityItems)")
         self.items = activityItems
     }
     
     override func performActivity() {
-        println("cool performing \(self.items)")
+        print("cool performing \(self.items)")
         self.activityDidFinish(true)
     }
     
     deinit {
-        println("cool activity dealloc")
+        print("cool activity dealloc")
     }
 
 }

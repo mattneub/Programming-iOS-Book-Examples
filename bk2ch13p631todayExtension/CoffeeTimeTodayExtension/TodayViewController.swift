@@ -6,7 +6,7 @@ import NotificationCenter
 class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var iv: UIImageView!
     
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         NSLog("init")
         super.init(coder:coder)
     }
@@ -39,7 +39,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         return UIEdgeInsetsMake(0,16,0,16)
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
+    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         NSLog("performUpdate")
         // Perform any setup necessary in order to update the view.
 

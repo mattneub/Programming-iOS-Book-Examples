@@ -36,23 +36,23 @@ class MyElaborateActivity : UIActivity {
     }
     
     override func canPerformWithActivityItems(activityItems: [AnyObject]) -> Bool {
-        println("elaborate can perform \(activityItems)")
-        println("returning true")
+        print("elaborate can perform \(activityItems)")
+        print("returning true")
         return true
     }
     
     override func prepareWithActivityItems(activityItems: [AnyObject]) {
-        println("elaborate prepare \(activityItems)")
+        print("elaborate prepare \(activityItems)")
         self.items = activityItems
     }
     
     override func activityViewController() -> UIViewController? {
-        let evc = ElaborateViewController(activity: self, items: self.items!)
-        return evc
+        let mvc = MustacheViewController(activity: self, items: self.items!)
+        return mvc
     }
     
     deinit {
-        println("elaborate activity dealloc")
+        print("elaborate activity dealloc")
     }
     
 }

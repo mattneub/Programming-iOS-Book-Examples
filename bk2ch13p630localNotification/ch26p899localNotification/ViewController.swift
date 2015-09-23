@@ -7,18 +7,24 @@ class ViewController: UIViewController {
     @IBAction func doButton(sender:AnyObject) {
         print("checking for notification permissions")
         if let settings = UIApplication.sharedApplication().currentUserNotificationSettings() {
-        // but you don't get enough info from this to make an intelligence decision
+        // but you don't get enough info from this to make an intelligent decision
             if settings.types.contains(.Alert) {
                 print("alert enabled \(settings.types.rawValue)")
             } else {
                 print("no alerts")
                 // but I would never bail out here, because you might still get into notif center / lock screen
             }
+            if settings.types.contains(.None) {
+                print("none")
+            } else {
+                print("not none")
+            }
             // I can't specify it, but there are situations where this whole thing gets out of sync
         }
         
         print("creating local notification")
         let ln = UILocalNotification()
+        // ln.alertTitle = "Caffeine!" // I see; it's for the Apple Watch
         ln.alertBody = "Time for another cup of coffee!"
         ln.category = "coffee" // causes Options button to spring magically to life in alert
         // Options button will offer Open, action buttons, Close
