@@ -31,6 +31,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func showActivityView() {
         let things = self.tf.text!
         let avc = UIActivityViewController(activityItems:[things], applicationActivities:nil)
+        // just showing it can be done this way
+        /*
+        let p = NSItemProvider()
+        p.registerItemForTypeIdentifier(desiredType) {
+            completion, klass, d in
+            completion(self.tf.text!, nil)
+        }
+        let avc = UIActivityViewController(activityItems:[p], applicationActivities:nil)
+*/
+        
         avc.completionWithItemsHandler = {
             (s: String?, ok: Bool, items: [AnyObject]?, err:NSError?) -> Void in
             print("completed \(s) \(ok) \(items) \(err)")
