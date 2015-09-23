@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		32316DDA198C2D3E00DE5423 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32316DD9198C2D3E00DE5423 /* ViewController.swift */; };
+		3232B8661BB235FD00ECAD1E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3232B8651BB235FD00ECAD1E /* Media.xcassets */; settings = {ASSET_TAGS = (); }; };
+		3232B8681BB2376F00ECAD1E /* Media2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3232B8671BB2376F00ECAD1E /* Media2.xcassets */; settings = {ASSET_TAGS = (); }; };
 		32715C441BB1D31F000EC1B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32715C431BB1D31F000EC1B2 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		32F09C19199A5EAC00806131 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F09C18199A5EAC00806131 /* ActionViewController.swift */; };
 		32F09C1B199A5EAC00806131 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F09C1A199A5EAC00806131 /* MainInterface.storyboard */; };
@@ -69,6 +71,8 @@
 
 /* Begin PBXFileReference section */
 		32316DD9198C2D3E00DE5423 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3232B8651BB235FD00ECAD1E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		3232B8671BB2376F00ECAD1E /* Media2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media2.xcassets; sourceTree = "<group>"; };
 		32715C431BB1D31F000EC1B2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32F09C14199A5EAC00806131 /* Expand2.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Expand2.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		32F09C17199A5EAC00806131 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				32F09C18199A5EAC00806131 /* ActionViewController.swift */,
+				3232B8671BB2376F00ECAD1E /* Media2.xcassets */,
 				32F09C24199A5F1800806131 /* abbreviations.txt */,
 				32F09C1A199A5EAC00806131 /* MainInterface.storyboard */,
 				32F09C17199A5EAC00806131 /* Info.plist */,
@@ -126,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				32F34C8819992BE700EED43C /* ActionRequestHandler.swift */,
+				3232B8651BB235FD00ECAD1E /* Media.xcassets */,
 				32F34C951999385000EED43C /* abbreviations.txt */,
 				32F34C8719992BE700EED43C /* Info.plist */,
 			);
@@ -268,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32F09C25199A5F1800806131 /* abbreviations.txt in Resources */,
+				3232B8681BB2376F00ECAD1E /* Media2.xcassets in Resources */,
 				32F09C1B199A5EAC00806131 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3232B8661BB235FD00ECAD1E /* Media.xcassets in Resources */,
 				32F34C961999385000EED43C /* abbreviations.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +366,7 @@
 		32F09C21199A5EAC00806131 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = ExpandIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -377,6 +386,7 @@
 		32F09C22199A5EAC00806131 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = ExpandIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -391,6 +401,7 @@
 		32F34C9219992BE700EED43C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = ExpandIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -410,6 +421,7 @@
 		32F34C9319992BE700EED43C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = ExpandIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
