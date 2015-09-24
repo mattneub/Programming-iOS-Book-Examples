@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320EA0981BB382A200D56478 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320EA0971BB382A200D56478 /* OtherViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		32316DDA198C2D3E00DE5423 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32316DD9198C2D3E00DE5423 /* ViewController.swift */; };
 		3232B8661BB235FD00ECAD1E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3232B8651BB235FD00ECAD1E /* Media.xcassets */; settings = {ASSET_TAGS = (); }; };
 		3232B8681BB2376F00ECAD1E /* Media2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3232B8671BB2376F00ECAD1E /* Media2.xcassets */; settings = {ASSET_TAGS = (); }; };
@@ -82,6 +83,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		320EA0971BB382A200D56478 /* OtherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
 		32316DD9198C2D3E00DE5423 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3232B8651BB235FD00ECAD1E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		3232B8671BB2376F00ECAD1E /* Media2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media2.xcassets; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				32CBE1261BB3049C0067CB21 /* ShareViewController.swift */,
 				32CBE1321BB308480067CB21 /* TableViewController.swift */,
+				320EA0971BB382A200D56478 /* OtherViewController.swift */,
 				32CBE1281BB3049C0067CB21 /* MainInterface.storyboard */,
 				32CBE12B1BB3049C0067CB21 /* Info.plist */,
 			);
@@ -372,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320EA0981BB382A200D56478 /* OtherViewController.swift in Sources */,
 				32CBE1271BB3049C0067CB21 /* ShareViewController.swift in Sources */,
 				32CBE1341BB308480067CB21 /* TableViewController.swift in Sources */,
 			);
@@ -676,6 +680,7 @@
 				32CBE1301BB3049C0067CB21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		32F09C23199A5EAC00806131 /* Build configuration list for PBXNativeTarget "Expand2" */ = {
 			isa = XCConfigurationList;

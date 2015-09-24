@@ -7,7 +7,7 @@
         <!--Share View Controller-->
         <scene sceneID="ceB-am-kn3">
             <objects>
-                <viewController id="j1y-V4-xli" customClass="ShareViewController" customModule="Shoebox" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="shareViewController" id="j1y-V4-xli" customClass="ShareViewController" customModule="Shoebox" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8bI-gs-bmD"/>
                         <viewControllerLayoutGuide type="bottom" id="d5i-Ba-RvD"/>
@@ -21,6 +21,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEy-Cv-SGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="539" y="97"/>
+        </scene>
+        <!--Other View Controller-->
+        <scene sceneID="Wbx-rf-w9R">
+            <objects>
+                <viewController storyboardIdentifier="OtherViewController" id="tJ4-eF-70Y" customClass="OtherViewController" customModule="Shoebox" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J9f-GU-Mnf"/>
+                        <viewControllerLayoutGuide type="bottom" id="1G9-x7-TBu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rdp-MN-pne">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5B-9m-60s">
+                                <rect key="frame" x="47" y="36" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doButton:" destination="tJ4-eF-70Y" eventType="touchUpInside" id="bdm-rx-JPu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UYl-pG-e8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1251" y="213"/>
         </scene>
     </scenes>
 </document>
