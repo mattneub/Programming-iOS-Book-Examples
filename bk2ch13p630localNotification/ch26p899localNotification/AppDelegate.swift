@@ -16,7 +16,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         print("start \(__FUNCTION__)")
-
         NSLog("%@ %@", "\(__FUNCTION__)", "\(launchOptions)")
 
         if let n = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
@@ -25,82 +24,15 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             }
         }
         
-        self.registerMyNotification(application)
-        
         print("end \(__FUNCTION__)")
         return true
     }
-    
-    /*
-    Also new in iOS 8, in addition to its place in the Notifications Center setttings pane,
-    your app automatically gets a preference pane of its own with a Notifications setting
-    so user can visit this at any time to change permitted notifications
-    ... I did that but it did not cause application:didRegisterUserNotificationSettings to fire
-*/
-    
-    
-    func registerMyNotification(application:UIApplication) {
-        // must register to present alert / play sound with a local or push notification
-        let types : UIUserNotificationType = [.Alert, .Sound]
-        // if we want custom actions in our alert, we must create them when we register
-        let category = UIMutableUserNotificationCategory()
-        category.identifier = "coffee" // will need this at notification creation time!
-        let action1 = UIMutableUserNotificationAction()
-        action1.identifier = "yum"
-        action1.title = "Yum" // user will see this
-        action1.destructive = false // the default, I'm just setting it to call attention to its existence
-        action1.activationMode = .Foreground // if .Background, app just stays in the background! cool
-        // if .Background, should also set authenticationRequired to say what to do from lock screen
         
-        let action2 = UIMutableUserNotificationAction()
-        var which : Int {return 2} // try 1 and 2
-        switch which {
-        case 1:
-            action2.identifier = "ohno"
-            action2.title = "Oh, No!" // user will see this
-            action2.destructive = false // the default, I'm just setting it to call attention to its existence
-            action2.activationMode = .Background // if .Background, app just stays in the background! cool
-            // if .Background, should also set authenticationRequired to say what to do from lock screen
-        case 2:
-            action2.identifier = "message"
-            action2.title = "Message"
-            action2.activationMode = .Background
-            action2.behavior = .TextInput // new in iOS 9!
-        default: break
-        }
-        
-        category.setActions([action1, action2], forContext: .Default) // can have 4 for default, 2 for minimal
-        let settings = UIUserNotificationSettings(forTypes: types, categories: Set([category]))
-        application.registerUserNotificationSettings(settings)
-        // if this app has never requested this registration,
-        // it will put up a dialog asking if we can present alerts etc.
-        // when the user accepts or refuses,
-        // will cause us to receive application:didRegisterUserNotificationSettings:
-        // can also check at any time with currentUserNotificationSettings
-        
-        // unfortunately if the user accepts, the default is banner, not alert :(
-    }
-    
-    
-    func applicationWillEnterForeground(application: UIApplication) {
-        print("start \(__FUNCTION__)")
-        
-        // I think this should go here, so that we re-register every time we come to the foreground...
-        // scenario: we register, user sees dialog, user refuses
-        // later, user accepts in Settings
-        // but if we now try to present notification, we can't because our registration didn't go through the first time
-        // this way, we are always registering so that if we are ever accepted, we can do it
-        //self.registerMyNotification(application)
-        
-        print("end \(__FUNCTION__)")
-
-
-    }
-    
     // will get this registration, no matter whether user sees registration dialog or not
     func application(application: UIApplication, didRegisterUserNotificationSettings settings: UIUserNotificationSettings) {
         print("did register \(settings)")
         // do not change registration here, you'll get a vicious circle
+        NSNotificationCenter.defaultCenter().postNotificationName("didRegisterUserNotificationSettings", object: self)
     }
     
     func doAlert(n:UILocalNotification) {
