@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         }
         
         category.setActions([action1, action2], forContext: .Default) // can have 4 for default, 2 for minimal
-        let settings = UIUserNotificationSettings(forTypes: types, categories: Set([category]))
+        let settings = UIUserNotificationSettings(forTypes: types, categories: [category])
         // prepare to proceed to next step
         var ob : NSObjectProtocol! = nil
         ob = NSNotificationCenter.defaultCenter().addObserverForName("didRegisterUserNotificationSettings", object: nil, queue: nil) {
