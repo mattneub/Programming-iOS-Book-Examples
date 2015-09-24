@@ -81,6 +81,7 @@ class ViewController: UIViewController {
         // Options button will offer Open, action buttons, Close
         ln.fireDate = NSDate(timeIntervalSinceNow:15)
         ln.soundName = UILocalNotificationDefaultSoundName
+        // ln.repeatInterval = .Minute
         UIApplication.sharedApplication().scheduleLocalNotification(ln)
     }
     /*
