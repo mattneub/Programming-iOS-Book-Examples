@@ -13,6 +13,7 @@ class TableViewController: UITableViewController {
         
     override func viewDidLoad() {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.scrollEnabled = false
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

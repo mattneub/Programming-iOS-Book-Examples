@@ -14,7 +14,7 @@ class ActionViewController: UIViewController {
     
     let desiredType = kUTTypePlainText as String
     var orig : String?
-    var abbrev : String?
+    var expansion : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +36,9 @@ class ActionViewController: UIViewController {
             dispatch_async(dispatch_get_main_queue()) {
                 if let orig = item as? String {
                     self.orig = orig
-                    if let abbrev = self.stateForAbbrev(orig) {
-                        self.abbrev = abbrev
-                        self.lab.text = "Can expand to \(abbrev)."
+                    if let exp = self.stateForAbbrev(orig) {
+                        self.expansion = exp
+                        self.lab.text = "Can expand to \(exp)."
                         self.doneButton.enabled = true
                     }
                 }
@@ -66,7 +66,7 @@ class ActionViewController: UIViewController {
     
     @IBAction func done(sender: AnyObject) {
         self.extensionContext?.completeRequestReturningItems(
-            self.stuffThatEnvelope(self.abbrev!), completionHandler: nil)
+            self.stuffThatEnvelope(self.expansion!), completionHandler: nil)
     }
     
 }

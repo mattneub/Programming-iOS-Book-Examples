@@ -31,7 +31,7 @@ class ShareViewController: SLComposeServiceViewController, SizeDelegate {
         c.value = self.selectedText
         c.tapHandler = {
             [unowned self] in
-            let tvc = TableViewController(style: UITableViewStyle.Plain)
+            let tvc = TableViewController(style: .Grouped)
             tvc.selectedSize = self.selectedText
             tvc.delegate = self
             self.pushConfigurationViewController(tvc)
