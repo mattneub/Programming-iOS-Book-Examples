@@ -12,29 +12,31 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, withOptions: nil, error: nil)
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, withOptions: [])
         
-        NSNotificationCenter.defaultCenter().addObserverForName(AVAudioSessionInterruptionNotification, object: nil, queue: NSOperationQueue.mainQueue()) {
-            (note:NSNotification!) -> Void in
-            let which : AnyObject? = note.userInfo?[AVAudioSessionInterruptionTypeKey]
-            if which != nil {
-                if let began = which! as? UInt {
-                    if began == 0 {
-                        AVAudioSession.sharedInstance().setActive(true, withOptions: nil, error: nil)
-                    }
+        NSNotificationCenter.defaultCenter().addObserverForName(
+            AVAudioSessionInterruptionNotification, object: nil, queue: nil) {
+                (n:NSNotification) in
+                guard let why =
+                    n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
+                    else {return}
+                guard let type = AVAudioSessionInterruptionType(rawValue: why)
+                    else {return}
+                if type == .Ended {
+                    _ = try? AVAudioSession.sharedInstance().setActive(true, withOptions: [])
                 }
-            }
         }
+
         
         return true
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
-        println("interrupter in \(__FUNCTION__)")
-        AVAudioSession.sharedInstance().setActive(true, withOptions: nil, error: nil)
+        print("interrupter in \(__FUNCTION__)")
+        _ = try? AVAudioSession.sharedInstance().setActive(true, withOptions: [])
     }
     
     func applicationWillTerminate(application: UIApplication) {
-        println("interrupter in \(__FUNCTION__)") // never received; the normal situation
+        print("interrupter in \(__FUNCTION__)") // never received; the normal situation
     }
 }

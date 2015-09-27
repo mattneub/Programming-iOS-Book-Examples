@@ -9,23 +9,19 @@
 /* Begin PBXBuildFile section */
 		323EA993199915A600FB4834 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323EA992199915A600FB4834 /* ViewController.swift */; };
 		323EA9951999182C00FB4834 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323EA9941999182C00FB4834 /* AppDelegate.swift */; };
+		3244D72C1BB6222800E9CE06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3244D72B1BB6222800E9CE06 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		327755D919F7FB7A00C5598F /* Hooded.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 327755D819F7FB7A00C5598F /* Hooded.aiff */; };
 		32A1DFBD19991B2400CD6491 /* Player2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A1DFBC19991B2400CD6491 /* Player2.swift */; };
-		A4196FA614D366BA00D827A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FA514D366BA00D827A7 /* UIKit.framework */; };
-		A4196FA814D366BA00D827A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FA714D366BA00D827A7 /* Foundation.framework */; };
-		A4196FAA14D366BA00D827A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FA914D366BA00D827A7 /* CoreGraphics.framework */; };
 		C9A8A9151823E6F100E9D48D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A8A9141823E6F100E9D48D /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		323EA992199915A600FB4834 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		323EA9941999182C00FB4834 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3244D72B1BB6222800E9CE06 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		327755D819F7FB7A00C5598F /* Hooded.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Hooded.aiff; sourceTree = "<group>"; };
 		32A1DFBC19991B2400CD6491 /* Player2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player2.swift; sourceTree = "<group>"; };
 		A4196FA114D366BA00D827A7 /* interrupter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = interrupter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A4196FA514D366BA00D827A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		A4196FA714D366BA00D827A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		A4196FA914D366BA00D827A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A4196FAD14D366BA00D827A7 /* interrupter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "interrupter-Info.plist"; sourceTree = "<group>"; };
 		C9A8A9141823E6F100E9D48D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -35,9 +31,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4196FA614D366BA00D827A7 /* UIKit.framework in Frameworks */,
-				A4196FA814D366BA00D827A7 /* Foundation.framework in Frameworks */,
-				A4196FAA14D366BA00D827A7 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				A4196FAB14D366BA00D827A7 /* interrupter */,
-				A4196FA414D366BA00D827A7 /* Frameworks */,
 				A4196FA214D366BA00D827A7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,16 +53,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A4196FA414D366BA00D827A7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A4196FA514D366BA00D827A7 /* UIKit.framework */,
-				A4196FA714D366BA00D827A7 /* Foundation.framework */,
-				A4196FA914D366BA00D827A7 /* CoreGraphics.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		A4196FAB14D366BA00D827A7 /* interrupter */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,17 +61,10 @@
 				32A1DFBC19991B2400CD6491 /* Player2.swift */,
 				C9A8A9141823E6F100E9D48D /* Main.storyboard */,
 				327755D819F7FB7A00C5598F /* Hooded.aiff */,
-				A4196FAC14D366BA00D827A7 /* Supporting Files */,
+				A4196FAD14D366BA00D827A7 /* interrupter-Info.plist */,
+				3244D72B1BB6222800E9CE06 /* LaunchScreen.storyboard */,
 			);
 			path = interrupter;
-			sourceTree = "<group>";
-		};
-		A4196FAC14D366BA00D827A7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A4196FAD14D366BA00D827A7 /* interrupter-Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,6 +93,7 @@
 		A4196F9814D366BA00D827A7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0420;
 			};
 			buildConfigurationList = A4196F9B14D366BA00D827A7 /* Build configuration list for PBXProject "interrupter" */;
@@ -142,6 +118,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3244D72C1BB6222800E9CE06 /* LaunchScreen.storyboard in Resources */,
 				C9A8A9151823E6F100E9D48D /* Main.storyboard in Resources */,
 				327755D919F7FB7A00C5598F /* Hooded.aiff in Resources */,
 			);
@@ -184,7 +161,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -203,7 +180,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -217,7 +194,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "interrupter/interrupter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -232,7 +209,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "interrupter/interrupter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		326181121BB7525A00A86328 /* PianoBell.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 326181111BB7525A00A86328 /* PianoBell.sf2 */; settings = {ASSET_TAGS = (); }; };
+		32D5254C1BB7294900AC8363 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D5254B1BB7294900AC8363 /* AppDelegate.swift */; };
+		32D5254E1BB7294900AC8363 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D5254D1BB7294900AC8363 /* ViewController.swift */; };
+		32D525511BB7294900AC8363 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D5254F1BB7294900AC8363 /* Main.storyboard */; };
+		32D525531BB7294900AC8363 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32D525521BB7294900AC8363 /* Assets.xcassets */; };
+		32D525561BB7294900AC8363 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D525541BB7294900AC8363 /* LaunchScreen.storyboard */; };
+		32D5255E1BB7296900AC8363 /* presto.mid in Resources */ = {isa = PBXBuildFile; fileRef = 32D5255D1BB7296900AC8363 /* presto.mid */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		326181111BB7525A00A86328 /* PianoBell.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = PianoBell.sf2; sourceTree = "<group>"; };
+		32D525481BB7294900AC8363 /* MIDITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MIDITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		32D5254B1BB7294900AC8363 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		32D5254D1BB7294900AC8363 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32D525501BB7294900AC8363 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		32D525521BB7294900AC8363 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		32D525551BB7294900AC8363 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		32D525571BB7294900AC8363 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32D5255D1BB7296900AC8363 /* presto.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = presto.mid; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		32D525451BB7294900AC8363 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		32D5253F1BB7294900AC8363 = {
+			isa = PBXGroup;
+			children = (
+				32D5254A1BB7294900AC8363 /* MIDITest */,
+				32D525491BB7294900AC8363 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		32D525491BB7294900AC8363 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				32D525481BB7294900AC8363 /* MIDITest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32D5254A1BB7294900AC8363 /* MIDITest */ = {
+			isa = PBXGroup;
+			children = (
+				32D5254B1BB7294900AC8363 /* AppDelegate.swift */,
+				32D5254D1BB7294900AC8363 /* ViewController.swift */,
+				32D5254F1BB7294900AC8363 /* Main.storyboard */,
+				32D5255D1BB7296900AC8363 /* presto.mid */,
+				326181111BB7525A00A86328 /* PianoBell.sf2 */,
+				32D525521BB7294900AC8363 /* Assets.xcassets */,
+				32D525541BB7294900AC8363 /* LaunchScreen.storyboard */,
+				32D525571BB7294900AC8363 /* Info.plist */,
+			);
+			path = MIDITest;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		32D525471BB7294900AC8363 /* MIDITest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32D5255A1BB7294900AC8363 /* Build configuration list for PBXNativeTarget "MIDITest" */;
+			buildPhases = (
+				32D525441BB7294900AC8363 /* Sources */,
+				32D525451BB7294900AC8363 /* Frameworks */,
+				32D525461BB7294900AC8363 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MIDITest;
+			productName = MIDITest;
+			productReference = 32D525481BB7294900AC8363 /* MIDITest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		32D525401BB7294900AC8363 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					32D525471BB7294900AC8363 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = 32D525431BB7294900AC8363 /* Build configuration list for PBXProject "MIDITest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 32D5253F1BB7294900AC8363;
+			productRefGroup = 32D525491BB7294900AC8363 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				32D525471BB7294900AC8363 /* MIDITest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		32D525461BB7294900AC8363 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				326181121BB7525A00A86328 /* PianoBell.sf2 in Resources */,
+				32D525561BB7294900AC8363 /* LaunchScreen.storyboard in Resources */,
+				32D525531BB7294900AC8363 /* Assets.xcassets in Resources */,
+				32D525511BB7294900AC8363 /* Main.storyboard in Resources */,
+				32D5255E1BB7296900AC8363 /* presto.mid in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		32D525441BB7294900AC8363 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32D5254E1BB7294900AC8363 /* ViewController.swift in Sources */,
+				32D5254C1BB7294900AC8363 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		32D5254F1BB7294900AC8363 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32D525501BB7294900AC8363 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		32D525541BB7294900AC8363 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32D525551BB7294900AC8363 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		32D525581BB7294900AC8363 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		32D525591BB7294900AC8363 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		32D5255B1BB7294900AC8363 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MIDITest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.MIDITest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		32D5255C1BB7294900AC8363 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MIDITest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.MIDITest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		32D525431BB7294900AC8363 /* Build configuration list for PBXProject "MIDITest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32D525581BB7294900AC8363 /* Debug */,
+				32D525591BB7294900AC8363 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32D5255A1BB7294900AC8363 /* Build configuration list for PBXNativeTarget "MIDITest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32D5255B1BB7294900AC8363 /* Debug */,
+				32D5255C1BB7294900AC8363 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 32D525401BB7294900AC8363 /* Project object */;
+}

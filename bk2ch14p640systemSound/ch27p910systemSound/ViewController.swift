@@ -16,6 +16,8 @@ func soundFinished(snd:UInt32, _ c:UnsafeMutablePointer<Void>) -> Void {
 class ViewController: UIViewController {
     
     // test on device (doesn't work in simulator)
+    
+    // NB AudioServicesPlaySystemSound will be deprecated! This is just to show the old way
 
     @IBAction func doButton (sender:AnyObject!) {
         let sndurl = NSBundle.mainBundle().URLForResource("test", withExtension: "aif")!
@@ -27,7 +29,7 @@ class ViewController: UIViewController {
         AudioServicesPlaySystemSound(snd)
     }
     
-    func doButton2 (sender:AnyObject!) { // not hooked to anything, just showing syntax
+    @IBAction func doButton2 (sender:AnyObject!) {
         let sndurl = NSBundle.mainBundle().URLForResource("test", withExtension: "aif")!
         var snd : SystemSoundID = 0
         AudioServicesCreateSystemSoundID(sndurl, &snd)

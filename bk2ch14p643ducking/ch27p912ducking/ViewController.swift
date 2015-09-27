@@ -21,23 +21,23 @@ class ViewController: UIViewController, PlayerDelegate {
         let path = NSBundle.mainBundle().pathForResource("test", ofType: "aif")!
         if (sender as! UIButton).currentTitle == "Forever" {
             // for remote control to work, our audio session policy must be Playback
-            AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: nil, error: nil)
+            _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: [])
             self.player.forever = true
         } else {
             // example works better if there is some background audio already playing
             let oth = AVAudioSession.sharedInstance().otherAudioPlaying
-            println("other audio playing: \(oth)")
+            print("other audio playing: \(oth)")
             // new iOS 8 feature! finer grained than merely whether other audio is playing
             let hint = AVAudioSession.sharedInstance().secondaryAudioShouldBeSilencedHint
-            println("secondary hint: \(hint)")
+            print("secondary hint: \(hint)")
             if !oth {
                 let alert = UIAlertController(title: "Pointless", message: "You won't get the point of the example unless some other audio is already playing!", preferredStyle: .Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
                 return
             }
-            println("ducking")
-            AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, withOptions: .DuckOthers, error: nil)
+            print("ducking")
+            _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, withOptions: .DuckOthers)
             self.player.forever = false
         }
         self.player.playFileAtPath(path)
@@ -48,11 +48,11 @@ class ViewController: UIViewController, PlayerDelegate {
     }
     
     func unduck() {
-        println("unducking")
+        print("unducking")
         let sess = AVAudioSession.sharedInstance()
-        sess.setActive(false, withOptions: nil, error: nil)
-        sess.setCategory(AVAudioSessionCategoryAmbient, withOptions: nil, error: nil)
-        sess.setActive(true, withOptions: nil, error: nil)
+        _ = try? sess.setActive(false, withOptions: [])
+        _ = try? sess.setCategory(AVAudioSessionCategoryAmbient, withOptions: [])
+        _ = try? sess.setActive(true, withOptions: [])
     }
     
     // ======== respond to remote controls
@@ -67,10 +67,10 @@ class ViewController: UIViewController, PlayerDelegate {
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
     }
     
-    override func remoteControlReceivedWithEvent(event: UIEvent) {
-        let rc = event.subtype
+    override func remoteControlReceivedWithEvent(event: UIEvent?) { // *
+        let rc = event!.subtype
         let p = self.player.player
-        println("received remote control \(rc.rawValue)") // 101 = pause, 100 = play
+        print("received remote control \(rc.rawValue)") // 101 = pause, 100 = play
         switch rc {
         case .RemoteControlTogglePlayPause:
             if p.playing { p.pause() } else { p.play() }

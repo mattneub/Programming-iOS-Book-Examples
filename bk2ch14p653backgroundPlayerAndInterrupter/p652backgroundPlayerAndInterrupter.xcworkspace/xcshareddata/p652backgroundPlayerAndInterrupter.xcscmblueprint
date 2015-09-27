@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "EF4576F41AF83E76CF2914F565135B7E126CDDB2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "EF4576F41AF83E76CF2914F565135B7E126CDDB2" : 0,
+    "98C59FBA-30AA-4047-92C0-11AD2813FDAD" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A3A0726F-7F65-4F2C-B4BD-BA7386FC8010",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "EF4576F41AF83E76CF2914F565135B7E126CDDB2" : "online%20examples",
+    "98C59FBA-30AA-4047-92C0-11AD2813FDAD" : "online examples"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "p652backgroundPlayerAndInterrupter",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "bk2ch14p653backgroundPlayerAndInterrupter\/p652backgroundPlayerAndInterrupter.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/github.com\/mattneub\/Programming-iOS-Book-Examples.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "98C59FBA-30AA-4047-92C0-11AD2813FDAD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:mattneub\/Programming-iOS-Book-Examples.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EF4576F41AF83E76CF2914F565135B7E126CDDB2"
+    }
+  ]
+}

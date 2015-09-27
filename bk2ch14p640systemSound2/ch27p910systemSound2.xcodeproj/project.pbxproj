@@ -19,8 +19,8 @@
 		3217DF221996A446001092A9 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		322B94AF1BB5BA5400B38718 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		322B94B11BB5BA6C00B38718 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C9592E6618230D8000CE45EA /* ch27p910systemSound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch27p910systemSound.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9592E7118230D8000CE45EA /* ch27p910systemSound-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch27p910systemSound-Info.plist"; sourceTree = "<group>"; };
+		3241C22A1BB5C4AC00D09188 /* ch27p910systemSound2-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ch27p910systemSound2-Info.plist"; sourceTree = "<group>"; };
+		C9592E6618230D8000CE45EA /* ch27p910systemSound2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch27p910systemSound2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9592E7C18230D8000CE45EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9592E8118230D8000CE45EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9592E9E18230DD900CE45EA /* test.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.aif; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		C9592E6718230D8000CE45EA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C9592E6618230D8000CE45EA /* ch27p910systemSound.app */,
+				C9592E6618230D8000CE45EA /* ch27p910systemSound2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -62,7 +62,7 @@
 				C9592E9E18230DD900CE45EA /* test.aif */,
 				C9592E8118230D8000CE45EA /* Assets.xcassets */,
 				322B94B11BB5BA6C00B38718 /* LaunchScreen.storyboard */,
-				C9592E7118230D8000CE45EA /* ch27p910systemSound-Info.plist */,
+				3241C22A1BB5C4AC00D09188 /* ch27p910systemSound2-Info.plist */,
 			);
 			path = ch27p910systemSound;
 			sourceTree = "<group>";
@@ -70,9 +70,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C9592E6518230D8000CE45EA /* ch27p910systemSound */ = {
+		C9592E6518230D8000CE45EA /* ch27p910systemSound2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9592E9818230D8100CE45EA /* Build configuration list for PBXNativeTarget "ch27p910systemSound" */;
+			buildConfigurationList = C9592E9818230D8100CE45EA /* Build configuration list for PBXNativeTarget "ch27p910systemSound2" */;
 			buildPhases = (
 				C9592E6218230D8000CE45EA /* Sources */,
 				C9592E6318230D8000CE45EA /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = ch27p910systemSound;
+			name = ch27p910systemSound2;
 			productName = ch27p910systemSound;
-			productReference = C9592E6618230D8000CE45EA /* ch27p910systemSound.app */;
+			productReference = C9592E6618230D8000CE45EA /* ch27p910systemSound2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -97,7 +97,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
-			buildConfigurationList = C9592E6118230D8000CE45EA /* Build configuration list for PBXProject "ch27p910systemSound" */;
+			buildConfigurationList = C9592E6118230D8000CE45EA /* Build configuration list for PBXProject "ch27p910systemSound2" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -110,7 +110,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C9592E6518230D8000CE45EA /* ch27p910systemSound */,
+				C9592E6518230D8000CE45EA /* ch27p910systemSound2 */,
 			);
 		};
 /* End PBXProject section */
@@ -232,10 +232,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch27p910systemSound/ch27p910systemSound-Prefix.pch";
-				INFOPLIST_FILE = "ch27p910systemSound/ch27p910systemSound-Info.plist";
+				GCC_PREFIX_HEADER = "ch27p910systemSound/ch27p910systemSound2-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/ch27p910systemSound/ch27p910systemSound2-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch27p910systemSound2;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
@@ -249,10 +249,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch27p910systemSound/ch27p910systemSound-Prefix.pch";
-				INFOPLIST_FILE = "ch27p910systemSound/ch27p910systemSound-Info.plist";
+				GCC_PREFIX_HEADER = "ch27p910systemSound/ch27p910systemSound2-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/ch27p910systemSound/ch27p910systemSound2-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch27p910systemSound2;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -261,7 +261,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C9592E6118230D8000CE45EA /* Build configuration list for PBXProject "ch27p910systemSound" */ = {
+		C9592E6118230D8000CE45EA /* Build configuration list for PBXProject "ch27p910systemSound2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9592E9618230D8100CE45EA /* Debug */,
@@ -270,7 +270,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9592E9818230D8100CE45EA /* Build configuration list for PBXNativeTarget "ch27p910systemSound" */ = {
+		C9592E9818230D8100CE45EA /* Build configuration list for PBXNativeTarget "ch27p910systemSound2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9592E9918230D8100CE45EA /* Debug */,

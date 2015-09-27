@@ -12,11 +12,14 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
         // print(AVSpeechSynthesisVoice.speechVoices())
         let v = AVSpeechSynthesisVoice(language: "en-US")
         utter.voice = v
-        var rate = AVSpeechUtteranceMaximumSpeechRate - AVSpeechUtteranceMinimumSpeechRate
-        rate = rate * 0.15 + AVSpeechUtteranceMinimumSpeechRate
-        utter.rate = rate
+//        var rate = AVSpeechUtteranceMaximumSpeechRate - AVSpeechUtteranceMinimumSpeechRate
+//        rate = rate * 0.15 + AVSpeechUtteranceMinimumSpeechRate
+//        utter.rate = rate
         self.talker.delegate = self
         self.talker.speakUtterance(utter)
+        
+        print(v?.identifier)
+        print(v?.quality.rawValue)
     }
     
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {

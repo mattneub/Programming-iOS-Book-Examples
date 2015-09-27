@@ -17,7 +17,8 @@ class Player : NSObject, AVAudioPlayerDelegate {
         self.player?.delegate = nil
         self.player?.stop()
         let fileURL = NSURL(fileURLWithPath: path)
-        self.player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
+        guard let p = try? AVAudioPlayer(contentsOfURL: fileURL) else {return} // nicer
+        self.player = p
         // error-checking omitted
         self.player.prepareToPlay()
         self.player.delegate = self
@@ -39,7 +40,8 @@ class Player : NSObject, AVAudioPlayerDelegate {
     }
     
     // delegate method
-    func audioPlayerDidFinishPlaying(AVAudioPlayer!, successfully: Bool) {
+    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) { // *
         self.delegate?.soundFinished(self)
     }
     
@@ -47,11 +49,11 @@ class Player : NSObject, AVAudioPlayerDelegate {
     NB! delegate interruption methods deprecated in iOS 8
     
     func audioPlayerBeginInterruption(player: AVAudioPlayer!) {
-        println("audio player interrupted")
+        print("audio player interrupted")
     }
     
     func audioPlayerEndInterruption(player: AVAudioPlayer!, withOptions flags: Int) {
-        println("audio player ended interruption, options \(flags)")
+        print("audio player ended interruption, options \(flags)")
     }
 
     */

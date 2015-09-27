@@ -19,26 +19,27 @@ class Player : NSObject, AVAudioPlayerDelegate {
         self.player?.delegate = nil
         self.player?.stop()
         let fileURL = NSURL(fileURLWithPath: path)
-        self.player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
+        guard let p = try? AVAudioPlayer(contentsOfURL: fileURL) else {return} // nicer
+        self.player = p
         // error-checking omitted
         
         // switch to playback category while playing, interrupt background audio
-        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: nil, error: nil)
-        AVAudioSession.sharedInstance().setActive(true, withOptions: nil, error: nil)
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: [])
+        _ = try? AVAudioSession.sharedInstance().setActive(true, withOptions: [])
         
         self.player.prepareToPlay()
         self.player.delegate = self
-        let ok = player.play()
-        println("interrupter trying to play \(path): \(ok)")
+        let ok = self.player.play()
+        print("interrupter trying to play \(path): \(ok)")
     }
     
-    func audioPlayerDidFinishPlaying(AVAudioPlayer!, successfully: Bool) {
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) { // *
         let sess = AVAudioSession.sharedInstance()
         // this is the key move
-        sess.setActive(false, withOptions: .OptionNotifyOthersOnDeactivation, error: nil)
+        _ = try? sess.setActive(false, withOptions: .NotifyOthersOnDeactivation)
         // now go back to ambient
-        sess.setCategory(AVAudioSessionCategoryAmbient, withOptions: nil, error: nil)
-        sess.setActive(true, withOptions: nil, error: nil)
+        _ = try? sess.setCategory(AVAudioSessionCategoryAmbient, withOptions: [])
+        _ = try? sess.setActive(true, withOptions: [])
         delegate?.soundFinished(self)
     }
     
@@ -49,7 +50,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
     }
     
     deinit {
-        println("interrupter player dealloc")
+        print("interrupter player dealloc")
         self.player?.delegate = nil
     }
     

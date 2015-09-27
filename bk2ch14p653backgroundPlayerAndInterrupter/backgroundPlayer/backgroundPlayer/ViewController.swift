@@ -32,9 +32,9 @@ class ViewController: UIViewController {
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
     }
     
-    override func remoteControlReceivedWithEvent(event: UIEvent) {
-        let rc = event.subtype
-        println("bp received remote control \(rc.rawValue)")
+    override func remoteControlReceivedWithEvent(event: UIEvent?) {
+        let rc = event!.subtype
+        print("bp received remote control \(rc.rawValue)")
         // 101 = pause, 100 = play (remote control interface on control center)
         // 103 = playpause (remote control button on earbuds)
 

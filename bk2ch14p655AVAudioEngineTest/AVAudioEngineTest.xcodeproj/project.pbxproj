@@ -10,9 +10,10 @@
 		324C200D199D105E00768D46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C200C199D105E00768D46 /* AppDelegate.swift */; };
 		324C200F199D105E00768D46 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C200E199D105E00768D46 /* ViewController.swift */; };
 		324C2012199D105E00768D46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 324C2010199D105E00768D46 /* Main.storyboard */; };
-		324C2014199D105E00768D46 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 324C2013199D105E00768D46 /* Images.xcassets */; };
+		324C2014199D105E00768D46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 324C2013199D105E00768D46 /* Assets.xcassets */; };
 		324C202A199D109700768D46 /* aboutTiagol.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 324C2029199D109700768D46 /* aboutTiagol.m4a */; };
 		324C202C199D109F00768D46 /* Hooded.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 324C202B199D109F00768D46 /* Hooded.mp3 */; };
+		32D5253A1BB6E9DF00AC8363 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D525391BB6E9DF00AC8363 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,9 +22,10 @@
 		324C200C199D105E00768D46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		324C200E199D105E00768D46 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		324C2011199D105E00768D46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		324C2013199D105E00768D46 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		324C2013199D105E00768D46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		324C2029199D109700768D46 /* aboutTiagol.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = aboutTiagol.m4a; sourceTree = "<group>"; };
 		324C202B199D109F00768D46 /* Hooded.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Hooded.mp3; sourceTree = "<group>"; };
+		32D525391BB6E9DF00AC8363 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,18 +63,11 @@
 				324C2029199D109700768D46 /* aboutTiagol.m4a */,
 				324C202B199D109F00768D46 /* Hooded.mp3 */,
 				324C2010199D105E00768D46 /* Main.storyboard */,
-				324C2013199D105E00768D46 /* Images.xcassets */,
-				324C200A199D105E00768D46 /* Supporting Files */,
-			);
-			path = AVAudioEngineTest;
-			sourceTree = "<group>";
-		};
-		324C200A199D105E00768D46 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				32D525391BB6E9DF00AC8363 /* LaunchScreen.storyboard */,
+				324C2013199D105E00768D46 /* Assets.xcassets */,
 				324C200B199D105E00768D46 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = AVAudioEngineTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,6 +96,7 @@
 		324C1FFF199D105D00768D46 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -134,7 +130,8 @@
 			files = (
 				324C2012199D105E00768D46 /* Main.storyboard in Resources */,
 				324C202A199D109700768D46 /* aboutTiagol.m4a in Resources */,
-				324C2014199D105E00768D46 /* Images.xcassets in Resources */,
+				324C2014199D105E00768D46 /* Assets.xcassets in Resources */,
+				32D5253A1BB6E9DF00AC8363 /* LaunchScreen.storyboard in Resources */,
 				324C202C199D109F00768D46 /* Hooded.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,7 +196,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -235,7 +232,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -246,7 +243,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = AVAudioEngineTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -257,7 +253,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = AVAudioEngineTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -283,6 +278,7 @@
 				324C2025199D105E00768D46 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

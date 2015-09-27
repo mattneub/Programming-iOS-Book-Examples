@@ -7,30 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3241C22D1BB5C6F300D09188 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3241C22C1BB5C6F300D09188 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		3280FA5E1997C57900EA8B8B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA5D1997C57900EA8B8B /* Player.swift */; };
 		3280FA601997C97700EA8B8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA5F1997C97700EA8B8B /* ViewController.swift */; };
 		3280FA621997D07D00EA8B8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA611997D07D00EA8B8B /* AppDelegate.swift */; };
-		C9592EAD1823107000CE45EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9592EAC1823107000CE45EA /* Foundation.framework */; };
-		C9592EAF1823107000CE45EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9592EAE1823107000CE45EA /* CoreGraphics.framework */; };
-		C9592EB11823107000CE45EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9592EB01823107000CE45EA /* UIKit.framework */; };
 		C9592EC01823107000CE45EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9592EBE1823107000CE45EA /* Main.storyboard */; };
-		C9592EC51823107000CE45EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9592EC41823107000CE45EA /* Images.xcassets */; };
+		C9592EC51823107000CE45EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9592EC41823107000CE45EA /* Assets.xcassets */; };
 		C9592EE51823110800CE45EA /* test.aif in Resources */ = {isa = PBXBuildFile; fileRef = C9592EE41823110800CE45EA /* test.aif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3280FA5C1997C57900EA8B8B /* ch27p912ducking-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch27p912ducking-Bridging-Header.h"; sourceTree = "<group>"; };
+		3241C22C1BB5C6F300D09188 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3280FA5D1997C57900EA8B8B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		3280FA5F1997C97700EA8B8B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3280FA611997D07D00EA8B8B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9592EA91823107000CE45EA /* ch27p912ducking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch27p912ducking.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9592EAC1823107000CE45EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9592EAE1823107000CE45EA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C9592EB01823107000CE45EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9592EB41823107000CE45EA /* ch27p912ducking-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch27p912ducking-Info.plist"; sourceTree = "<group>"; };
 		C9592EBF1823107000CE45EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9592EC41823107000CE45EA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9592ECB1823107100CE45EA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C9592EC41823107000CE45EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9592EE41823110800CE45EA /* test.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.aif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,9 +33,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9592EAF1823107000CE45EA /* CoreGraphics.framework in Frameworks */,
-				C9592EB11823107000CE45EA /* UIKit.framework in Frameworks */,
-				C9592EAD1823107000CE45EA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				C9592EB21823107000CE45EA /* ch27p912ducking */,
-				C9592EAB1823107000CE45EA /* Frameworks */,
 				C9592EAA1823107000CE45EA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,17 +55,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9592EAB1823107000CE45EA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9592EAC1823107000CE45EA /* Foundation.framework */,
-				C9592EAE1823107000CE45EA /* CoreGraphics.framework */,
-				C9592EB01823107000CE45EA /* UIKit.framework */,
-				C9592ECB1823107100CE45EA /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C9592EB21823107000CE45EA /* ch27p912ducking */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,19 +63,11 @@
 				3280FA5F1997C97700EA8B8B /* ViewController.swift */,
 				3280FA5D1997C57900EA8B8B /* Player.swift */,
 				C9592EE41823110800CE45EA /* test.aif */,
-				C9592EC41823107000CE45EA /* Images.xcassets */,
-				C9592EB31823107000CE45EA /* Supporting Files */,
-				3280FA5C1997C57900EA8B8B /* ch27p912ducking-Bridging-Header.h */,
-			);
-			path = ch27p912ducking;
-			sourceTree = "<group>";
-		};
-		C9592EB31823107000CE45EA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				C9592EC41823107000CE45EA /* Assets.xcassets */,
+				3241C22C1BB5C6F300D09188 /* LaunchScreen.storyboard */,
 				C9592EB41823107000CE45EA /* ch27p912ducking-Info.plist */,
 			);
-			name = "Supporting Files";
+			path = ch27p912ducking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +96,7 @@
 		C9592EA11823107000CE45EA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -160,7 +132,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9592EC51823107000CE45EA /* Images.xcassets in Resources */,
+				C9592EC51823107000CE45EA /* Assets.xcassets in Resources */,
+				3241C22D1BB5C6F300D09188 /* LaunchScreen.storyboard in Resources */,
 				C9592EE51823110800CE45EA /* test.aif in Resources */,
 				C9592EC01823107000CE45EA /* Main.storyboard in Resources */,
 			);
@@ -226,7 +199,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -259,7 +232,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -270,7 +243,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
@@ -278,7 +250,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ch27p912ducking/ch27p912ducking-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -289,7 +260,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
@@ -297,7 +267,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ch27p912ducking/ch27p912ducking-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

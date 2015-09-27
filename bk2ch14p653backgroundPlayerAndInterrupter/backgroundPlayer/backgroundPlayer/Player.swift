@@ -19,56 +19,55 @@ class Player : NSObject, AVAudioPlayerDelegate {
         // interruption notification
         // note (irrelevant for bk 2, but useful for bk 1) how to prevent retain cycle
         self.observer = NSNotificationCenter.defaultCenter().addObserverForName(
-            AVAudioSessionInterruptionNotification, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: {
-                [weak self](n:NSNotification!) in
-                let why : AnyObject? = n.userInfo?[AVAudioSessionInterruptionTypeKey]
-                if let why = why as? UInt {
-                    if let why = AVAudioSessionInterruptionType(rawValue: why) {
-                        if why == .Began {
-                            println("interruption began:\n\(n.userInfo!)")
-                        } else {
-                            println("interruption ended:\n\(n.userInfo!)")
-                            let opt : AnyObject? = n.userInfo![AVAudioSessionInterruptionOptionKey]
-                            if let opt = opt as? UInt {
-                                let opts = AVAudioSessionInterruptionOptions(opt)
-                                if opts == .OptionShouldResume {
-                                    println("should resume")
-                                    self?.player.prepareToPlay()
-                                    let ok = self?.player.play()
-                                    println("bp tried to resume play: did I? \(ok)")
-                                } else {
-                                    println("not should resume")
-                                }
-                            }
-                        }
+            AVAudioSessionInterruptionNotification, object: nil, queue: nil) {
+                [weak self](n:NSNotification) in
+                guard let why =
+                    n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
+                    else {return}
+                guard let type = AVAudioSessionInterruptionType(rawValue: why)
+                    else {return}
+                if type == .Began {
+                    print("interruption began:\n\(n.userInfo!)")
+                } else {
+                    print("interruption ended:\n\(n.userInfo!)")
+                    guard let opt = n.userInfo![AVAudioSessionInterruptionOptionKey] as? UInt else {return}
+                    let opts = AVAudioSessionInterruptionOptions(rawValue: opt)
+                    if opts.contains(.ShouldResume) {
+                        print("should resume")
+                        self?.player.prepareToPlay()
+                        let ok = self?.player.play()
+                        print("bp tried to resume play: did I? \(ok)")
+                    } else {
+                        print("not should resume")
                     }
                 }
-        })
+        }
     }
     
     func playFileAtPath(path:String) {
         self.player?.delegate = nil
         self.player?.stop()
         let fileURL = NSURL(fileURLWithPath: path)
-        println("bp making a new Player")
-        self.player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
+        print("bp making a new Player")
+        guard let p = try? AVAudioPlayer(contentsOfURL: fileURL) else {return} // nicer
+        self.player = p
         // error-checking omitted
         
-        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: nil, error: nil)
-        AVAudioSession.sharedInstance().setActive(true, withOptions: nil, error: nil)
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: [])
+        _ = try? AVAudioSession.sharedInstance().setActive(true, withOptions: [])
         
         
         self.player.prepareToPlay()
         self.player.delegate = self
         let ok = player.play()
-        println("bp trying to play \(path): \(ok)")
+        print("bp trying to play \(path): \(ok)")
     }
     
-    func audioPlayerDidFinishPlaying(AVAudioPlayer!, successfully: Bool) {
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) { // *
         let sess = AVAudioSession.sharedInstance()
-        sess.setActive(false, withOptions: .OptionNotifyOthersOnDeactivation, error: nil)
-        sess.setCategory(AVAudioSessionCategoryAmbient, withOptions: nil, error: nil)
-        sess.setActive(true, withOptions: nil, error: nil)
+        _ = try? sess.setActive(false, withOptions: .NotifyOthersOnDeactivation)
+        _ = try? sess.setCategory(AVAudioSessionCategoryAmbient, withOptions: [])
+        _ = try? sess.setActive(true, withOptions: [])
         delegate?.soundFinished(self)
     }
     
@@ -79,7 +78,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
     }
     
     deinit {
-        println("bp player dealloc")
+        print("bp player dealloc")
         if self.observer != nil {
             NSNotificationCenter.defaultCenter().removeObserver(self.observer)
         }

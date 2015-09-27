@@ -7,25 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3244D72E1BB6225400E9CE06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3244D72D1BB6225400E9CE06 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		3280FA671997EDD500EA8B8B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA661997EDD500EA8B8B /* Player.swift */; };
 		3280FA691998095100EA8B8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA681998095100EA8B8B /* ViewController.swift */; };
 		3280FA6B19980B5700EA8B8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA6A19980B5700EA8B8B /* AppDelegate.swift */; };
-		A4196FD214D366D900D827A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FD114D366D900D827A7 /* UIKit.framework */; };
-		A4196FD414D366D900D827A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FD314D366D900D827A7 /* Foundation.framework */; };
-		A4196FD614D366D900D827A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4196FD514D366D900D827A7 /* CoreGraphics.framework */; };
 		A4196FFB14D36B9700D827A7 /* aboutTiagol.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */; };
 		C9A8A9131823E65600E9D48D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A8A9121823E65600E9D48D /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3280FA651997EDD500EA8B8B /* backgroundPlayer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "backgroundPlayer-Bridging-Header.h"; sourceTree = "<group>"; };
+		3244D72D1BB6225400E9CE06 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3280FA661997EDD500EA8B8B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		3280FA681998095100EA8B8B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3280FA6A19980B5700EA8B8B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4196FCD14D366D900D827A7 /* backgroundPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = backgroundPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A4196FD114D366D900D827A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		A4196FD314D366D900D827A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		A4196FD514D366D900D827A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A4196FD914D366D900D827A7 /* backgroundPlayer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "backgroundPlayer-Info.plist"; sourceTree = "<group>"; };
 		A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = aboutTiagol.m4a; sourceTree = "<group>"; };
 		C9A8A9121823E65600E9D48D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -36,9 +31,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4196FD214D366D900D827A7 /* UIKit.framework in Frameworks */,
-				A4196FD414D366D900D827A7 /* Foundation.framework in Frameworks */,
-				A4196FD614D366D900D827A7 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				A4196FD714D366D900D827A7 /* backgroundPlayer */,
-				A4196FD014D366D900D827A7 /* Frameworks */,
 				A4196FCE14D366D900D827A7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,16 +53,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A4196FD014D366D900D827A7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A4196FD114D366D900D827A7 /* UIKit.framework */,
-				A4196FD314D366D900D827A7 /* Foundation.framework */,
-				A4196FD514D366D900D827A7 /* CoreGraphics.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		A4196FD714D366D900D827A7 /* backgroundPlayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,18 +61,10 @@
 				C9A8A9121823E65600E9D48D /* Main.storyboard */,
 				3280FA661997EDD500EA8B8B /* Player.swift */,
 				A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */,
-				A4196FD814D366D900D827A7 /* Supporting Files */,
-				3280FA651997EDD500EA8B8B /* backgroundPlayer-Bridging-Header.h */,
+				A4196FD914D366D900D827A7 /* backgroundPlayer-Info.plist */,
+				3244D72D1BB6225400E9CE06 /* LaunchScreen.storyboard */,
 			);
 			path = backgroundPlayer;
-			sourceTree = "<group>";
-		};
-		A4196FD814D366D900D827A7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A4196FD914D366D900D827A7 /* backgroundPlayer-Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +93,7 @@
 		A4196FC414D366D800D827A7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0420;
 			};
 			buildConfigurationList = A4196FC714D366D800D827A7 /* Build configuration list for PBXProject "backgroundPlayer" */;
@@ -144,6 +118,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3244D72E1BB6225400E9CE06 /* LaunchScreen.storyboard in Resources */,
 				A4196FFB14D36B9700D827A7 /* aboutTiagol.m4a in Resources */,
 				C9A8A9131823E65600E9D48D /* Main.storyboard in Resources */,
 			);
@@ -186,7 +161,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -205,7 +180,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -220,10 +195,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "backgroundPlayer/backgroundPlayer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "backgroundPlayer/backgroundPlayer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -237,10 +211,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "backgroundPlayer/backgroundPlayer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "backgroundPlayer/backgroundPlayer-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
