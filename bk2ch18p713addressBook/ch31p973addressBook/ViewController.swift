@@ -27,7 +27,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         var err : Unmanaged<CFError>? = nil
         let adbk : ABAddressBook? = ABAddressBookCreateWithOptions(nil, &err).takeRetainedValue()
         if adbk == nil {
-            println(err)
+            print(err)
             self.adbk = nil
             return false
         }
@@ -84,7 +84,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     @IBAction func doFindMoi (sender:AnyObject!) {
         
         if !self.determineStatus() {
-            println("not authorized")
+            print("not authorized")
             return
         }
         
@@ -100,7 +100,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
             }
         }
         if moi == nil {
-            println("couldn't find myself")
+            print("couldn't find myself")
             return
         }
         // parse my emails
@@ -109,13 +109,13 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         for ix in 0 ..< ABMultiValueGetCount(emails) {
             let label = ABMultiValueCopyLabelAtIndex(emails,ix).takeRetainedValue() as String
             let value = ABMultiValueCopyValueAtIndex(emails,ix).takeRetainedValue() as! String
-            println("I have a \(label) address: \(value)")
+            print("I have a \(label) address: \(value)")
         }
     }
 
     @IBAction func doCreateSnidely (sender:AnyObject!) {
         if !self.determineStatus() {
-            println("not authorized")
+            print("not authorized")
             return
         }
 
@@ -143,27 +143,27 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         self.presentViewController(picker, animated:true, completion:nil)
     }
     
-    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, didSelectPerson person: ABRecord!) {
-        println("person")
-        println(person)
+    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController, didSelectPerson person: ABRecord) {
+        print("person")
+        print(person)
     }
     
-    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!,
-        didSelectPerson person: ABRecordRef!,
+    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController,
+        didSelectPerson person: ABRecordRef,
         property: ABPropertyID,
         identifier: ABMultiValueIdentifier) {
-            println("person and property")
-//            println(person)
-//            println(property)
+            print("person and property")
+//            print(person)
+//            print(property)
 //            return;
             if property != kABPersonEmailProperty {
-                println("WTF") // shouldn't happen
+                print("WTF") // shouldn't happen
                 return
             }
             let emails:ABMultiValue = ABRecordCopyValue(person, property).takeRetainedValue()
             let ix = ABMultiValueGetIndexForIdentifier(emails, identifier)
             let email = ABMultiValueCopyValueAtIndex(emails, ix).takeRetainedValue() as! String
-            println(email) // do something with the email here
+            print(email) // do something with the email here
             // self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -171,14 +171,14 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     @IBAction func doViewPerson (sender:AnyObject!) {
         if !self.determineStatus() {
-            println("not authorized")
+            print("not authorized")
             return
         }
 
         let snides = ABAddressBookCopyPeopleWithName(
             self.adbk, "Snidely Whiplash").takeRetainedValue() as [AnyObject]
         if snides.count == 0 {
-            println("no Snidely")
+            print("no Snidely")
             return
         }
         let snidely:ABRecord = snides[0]
@@ -192,8 +192,8 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         self.showViewController(pvc, sender:self) // push onto navigation controller
     }
     
-    func personViewController(personViewController: ABPersonViewController!,
-        shouldPerformDefaultActionForPerson person: ABRecord!,
+    func personViewController(personViewController: ABPersonViewController,
+        shouldPerformDefaultActionForPerson person: ABRecord,
         property: ABPropertyID, identifier: ABMultiValueIdentifier) -> Bool {
             return false // if true, email tap launches email etc.
     }
@@ -206,16 +206,16 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         let nc = UINavigationController(rootViewController:npvc)
         self.presentViewController(nc, animated:true, completion:nil)
     }
+    
 
-    func newPersonViewController(newPersonView: ABNewPersonViewController!,
-        didCompleteWithNewPerson person: ABRecord!) {
+    func newPersonViewController(newPersonView: ABNewPersonViewController, didCompleteWithNewPerson person: ABRecord?) {
             if person != nil {
                 // if we didn't have access, we wouldn't be here!
                 // if we do not delete the person, the person will stay in the contacts database automatically!
                 ABAddressBookRemoveRecord(self.adbk, person, nil)
                 ABAddressBookSave(self.adbk, nil)
                 let name = ABRecordCopyCompositeName(person).takeRetainedValue()
-                println("I have a person named \(name), not saving this person to the database")
+                print("I have a person named \(name), not saving this person to the database")
                 // do something with new person
             }
             self.dismissViewControllerAnimated(true, completion:nil)
@@ -241,11 +241,11 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     }
 
     func unknownPersonViewController(
-        unknownCardViewController: ABUnknownPersonViewController!,
-        didResolveToPerson person: ABRecord!) {
+        unknownCardViewController: ABUnknownPersonViewController,
+        didResolveToPerson person: ABRecord?) {
             if let person:ABRecord = person {
                 let name = ABRecordCopyCompositeName(person).takeRetainedValue()
-                println("user did something with \(name)") // only implementing this to shut the compiler up
+                print("user did something with \(name)") // only implementing this to shut the compiler up
             }
     }
     
