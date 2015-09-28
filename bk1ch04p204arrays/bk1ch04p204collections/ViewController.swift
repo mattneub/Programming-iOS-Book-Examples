@@ -137,9 +137,14 @@ class ViewController: UIViewController {
             
             // let arr5 = arr[0..<10]
             
-            var r = arr.indices
-            r.startIndex = r.endIndex-2
-            print(arr[r])
+            do {
+                let arr = [1,2,3]
+                var r = arr.indices
+                r.startIndex = r.endIndex-2
+                let arr2 = arr[r] // [2,3]
+                print(arr2)
+            }
+            
             
             _ = arr2
             _ = arr3
