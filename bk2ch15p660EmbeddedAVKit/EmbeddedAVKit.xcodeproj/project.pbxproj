@@ -10,7 +10,7 @@
 		32BB78DC19F94BC80077BC3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BB78DB19F94BC80077BC3E /* AppDelegate.swift */; };
 		32BB78DE19F94BC80077BC3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BB78DD19F94BC80077BC3E /* ViewController.swift */; };
 		32BB78E119F94BC80077BC3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32BB78DF19F94BC80077BC3E /* Main.storyboard */; };
-		32BB78E319F94BC80077BC3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BB78E219F94BC80077BC3E /* Images.xcassets */; };
+		32BB78E319F94BC80077BC3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BB78E219F94BC80077BC3E /* Assets.xcassets */; };
 		32BB78E619F94BC80077BC3E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32BB78E419F94BC80077BC3E /* LaunchScreen.xib */; };
 		32BB78FD19F94BD30077BC3E /* ElMirage.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 32BB78FB19F94BD30077BC3E /* ElMirage.mp4 */; };
 		32BB78FE19F94BD30077BC3E /* wilhelm.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 32BB78FC19F94BD30077BC3E /* wilhelm.aiff */; };
@@ -22,7 +22,7 @@
 		32BB78DB19F94BC80077BC3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32BB78DD19F94BC80077BC3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32BB78E019F94BC80077BC3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32BB78E219F94BC80077BC3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32BB78E219F94BC80077BC3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32BB78E519F94BC80077BC3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		32BB78FB19F94BD30077BC3E /* ElMirage.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ElMirage.mp4; sourceTree = "<group>"; };
 		32BB78FC19F94BD30077BC3E /* wilhelm.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = wilhelm.aiff; sourceTree = "<group>"; };
@@ -63,19 +63,11 @@
 				32BB78FB19F94BD30077BC3E /* ElMirage.mp4 */,
 				32BB78FC19F94BD30077BC3E /* wilhelm.aiff */,
 				32BB78DF19F94BC80077BC3E /* Main.storyboard */,
-				32BB78E219F94BC80077BC3E /* Images.xcassets */,
+				32BB78E219F94BC80077BC3E /* Assets.xcassets */,
 				32BB78E419F94BC80077BC3E /* LaunchScreen.xib */,
-				32BB78D919F94BC80077BC3E /* Supporting Files */,
-			);
-			path = EmbeddedAVKit;
-			sourceTree = "<group>";
-		};
-		32BB78D919F94BC80077BC3E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				32BB78DA19F94BC80077BC3E /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = EmbeddedAVKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +102,11 @@
 				TargetAttributes = {
 					32BB78D519F94BC80077BC3E = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -140,7 +137,7 @@
 				32BB78FE19F94BD30077BC3E /* wilhelm.aiff in Resources */,
 				32BB78FD19F94BD30077BC3E /* ElMirage.mp4 in Resources */,
 				32BB78E619F94BC80077BC3E /* LaunchScreen.xib in Resources */,
-				32BB78E319F94BC80077BC3E /* Images.xcassets in Resources */,
+				32BB78E319F94BC80077BC3E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +209,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -248,7 +245,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

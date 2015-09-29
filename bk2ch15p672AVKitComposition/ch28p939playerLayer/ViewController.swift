@@ -4,31 +4,30 @@ import UIKit
 import AVFoundation
 
 import CoreMedia
+import AVKit
 
 class ViewController: UIViewController {
-    @IBOutlet var player : AVPlayer!
-    @IBOutlet var playerLayer : AVPlayerLayer!
-    @IBOutlet var synchLayer : AVSynchronizedLayer!
+    var synchLayer : AVSynchronizedLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let m = NSBundle.mainBundle().URLForResource("ElMirage", withExtension:"mp4")
-        //        let p = AVPlayer(URL:m)
+        let m = NSBundle.mainBundle().URLForResource("ElMirage", withExtension:"mp4")!
         let asset = AVURLAsset(URL:m, options:nil)
         let item = AVPlayerItem(asset:asset)
         let p = AVPlayer(playerItem:item)
-        self.player = p // might need a reference later
-        let lay = AVPlayerLayer(player:p)
-        lay.frame = CGRectMake(10,10,300,200)
-        self.playerLayer = lay
-        
-        lay.addObserver(self, forKeyPath:"readyForDisplay", options:nil, context:nil)
-        
+        p.addObserver(self, forKeyPath:"status", options:[], context:nil)
+        let vc = AVPlayerViewController()
+        vc.player = p
+        vc.view.frame = CGRectMake(10,10,300,200)
+        vc.view.hidden = true // looks nicer if we don't show until ready
+        self.addChildViewController(vc)
+        self.view.addSubview(vc.view)
+        vc.didMoveToParentViewController(self)
     }
     
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<()>) {
-        if keyPath == "readyForDisplay" {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<()>) {
+        if keyPath == "status" {
             dispatch_async(dispatch_get_main_queue(), {
                 self.finishConstructingInterface()
             })
@@ -36,22 +35,24 @@ class ViewController: UIViewController {
     }
     
     func finishConstructingInterface () {
-        if (!self.playerLayer.readyForDisplay) {
+        let vc = self.childViewControllers[0] as! AVPlayerViewController
+        let p = vc.player! //
+        if p.status != .ReadyToPlay {
             return
         }
+        p.removeObserver(self, forKeyPath:"status")
+        vc.view.hidden = false
         
-        self.playerLayer.removeObserver(self, forKeyPath:"readyForDisplay")
-        
-        if self.playerLayer.superlayer == nil {
-            self.view.layer.addSublayer(self.playerLayer)
-        }
+        // absolutely no reason why we shouldn't have a synch layer if we want one
+        // (of course the one in this example is kind of pointless...
+        // ...because the AVPlayerViewController's view gives us a position interface!)
         
         if self.synchLayer?.superlayer != nil {
             self.synchLayer.removeFromSuperlayer()
         }
         
         // create synch layer, put it in the interface
-        let item = self.player.currentItem
+        let item = p.currentItem! //
         let syncLayer = AVSynchronizedLayer(playerItem:item)
         syncLayer.frame = CGRectMake(10,220,300,10)
         syncLayer.backgroundColor = UIColor.lightGrayColor().CGColor
@@ -73,21 +74,20 @@ class ViewController: UIViewController {
         self.synchLayer = syncLayer
     }
     
-    @IBAction func doButton (sender:AnyObject!) {
-        let rate = self.player.rate
-        if rate < 0.01 {
-            self.player.rate = 1
-        } else {
-            self.player.rate = 0
-        }
-    }
 
+    // exactly as before; the AVPlayerViewController's player's item's asset...
+    // can be a mutable composition
+    
     @IBAction func doButton2 (sender:AnyObject!) {
-        let oldAsset = self.player.currentItem.asset
+        let vc = self.childViewControllers[0] as! AVPlayerViewController
+        let p = vc.player! //
+        p.pause()
+        
+        let oldAsset = p.currentItem!.asset //
         
         let type = AVMediaTypeVideo
         let arr = oldAsset.tracksWithMediaType(type)
-        let track = arr.last as! AVAssetTrack
+        let track = arr.last! //
         
         let duration : CMTime = track.timeRange.duration
         
@@ -95,28 +95,26 @@ class ViewController: UIViewController {
         let comptrack = comp.addMutableTrackWithMediaType(type,
             preferredTrackID: Int32(kCMPersistentTrackID_Invalid))
         
-        comptrack.insertTimeRange(CMTimeRangeMake(CMTimeMakeWithSeconds(0,600), CMTimeMakeWithSeconds(5,600)), ofTrack:track, atTime:CMTimeMakeWithSeconds(0,600), error:nil)
-        comptrack.insertTimeRange(CMTimeRangeMake(CMTimeSubtract(duration, CMTimeMakeWithSeconds(5,600)), CMTimeMakeWithSeconds(5,600)), ofTrack:track, atTime:CMTimeMakeWithSeconds(5,600), error:nil)
+        try! comptrack.insertTimeRange(CMTimeRangeMake(CMTimeMakeWithSeconds(0,600), CMTimeMakeWithSeconds(5,600)), ofTrack:track, atTime:CMTimeMakeWithSeconds(0,600))
+        try! comptrack.insertTimeRange(CMTimeRangeMake(CMTimeSubtract(duration, CMTimeMakeWithSeconds(5,600)), CMTimeMakeWithSeconds(5,600)), ofTrack:track, atTime:CMTimeMakeWithSeconds(5,600))
         
         let type2 = AVMediaTypeAudio
         let arr2 = oldAsset.tracksWithMediaType(type2)
-        let track2 = arr2.last as! AVAssetTrack
+        let track2 = arr2.last! //
         let comptrack2 = comp.addMutableTrackWithMediaType(type2, preferredTrackID:Int32(kCMPersistentTrackID_Invalid))
         
-        comptrack2.insertTimeRange(CMTimeRangeMake(CMTimeMakeWithSeconds(0,600), CMTimeMakeWithSeconds(5,600)), ofTrack:track2, atTime:CMTimeMakeWithSeconds(0,600), error:nil)
-        comptrack2.insertTimeRange(CMTimeRangeMake(CMTimeSubtract(duration, CMTimeMakeWithSeconds(5,600)), CMTimeMakeWithSeconds(5,600)), ofTrack:track2, atTime:CMTimeMakeWithSeconds(5,600), error:nil)
+        try! comptrack2.insertTimeRange(CMTimeRangeMake(CMTimeMakeWithSeconds(0,600), CMTimeMakeWithSeconds(5,600)), ofTrack:track2, atTime:CMTimeMakeWithSeconds(0,600))
+        try! comptrack2.insertTimeRange(CMTimeRangeMake(CMTimeSubtract(duration, CMTimeMakeWithSeconds(5,600)), CMTimeMakeWithSeconds(5,600)), ofTrack:track2, atTime:CMTimeMakeWithSeconds(5,600))
         
         
         let type3 = AVMediaTypeAudio
-        let s = NSBundle.mainBundle().URLForResource("aboutTiagol", withExtension:"m4a")
+        let s = NSBundle.mainBundle().URLForResource("aboutTiagol", withExtension:"m4a")!
         let asset = AVURLAsset(URL:s, options:nil)
         let arr3 = asset.tracksWithMediaType(type3)
-        let track3 = arr3.last as! AVAssetTrack
+        let track3 = arr3.last! //
         
         let comptrack3 = comp.addMutableTrackWithMediaType(type3, preferredTrackID:Int32(kCMPersistentTrackID_Invalid))
-        comptrack3.insertTimeRange(CMTimeRangeMake(CMTimeMakeWithSeconds(0,600), CMTimeMakeWithSeconds(10,600)), ofTrack:track3, atTime:CMTimeMakeWithSeconds(0,600), error:nil)
-        
-        
+        try! comptrack3.insertTimeRange(CMTimeRangeMake(CMTimeMakeWithSeconds(0,600), CMTimeMakeWithSeconds(10,600)), ofTrack:track3, atTime:CMTimeMakeWithSeconds(0,600))
         
         let params = AVMutableAudioMixInputParameters(track:comptrack3)
         params.setVolume(1, atTime:CMTimeMakeWithSeconds(0,600))
@@ -127,16 +125,14 @@ class ViewController: UIViewController {
         let item = AVPlayerItem(asset:comp)
         item.audioMix = mix
         
-        self.player.replaceCurrentItemWithPlayerItem(item)
-        self.playerLayer.addObserver(self, forKeyPath:"readyForDisplay", options:nil, context:nil)
+        // note this cool trick! the status won't change, so to trigger a KVO notification,
+        // ...we supply the .Initial option
+        p.addObserver(self, forKeyPath:"status", options:.Initial, context:nil)
+        p.replaceCurrentItemWithPlayerItem(item)
         (sender as! UIControl).enabled = false
     }
-    
-    @IBAction func restart (sender:AnyObject!) {
-        let item = self.player.currentItem
-        item.seekToTime(CMTimeMake(0, 1))
-    }
 
+    
 
     
 }

@@ -10,22 +10,11 @@
 		32BB78AA19F932510077BC3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BB78A919F932510077BC3E /* AppDelegate.swift */; };
 		32BB78AC19F932510077BC3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BB78AB19F932510077BC3E /* ViewController.swift */; };
 		32BB78AF19F932510077BC3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32BB78AD19F932510077BC3E /* Main.storyboard */; };
-		32BB78B119F932510077BC3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BB78B019F932510077BC3E /* Images.xcassets */; };
+		32BB78B119F932510077BC3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BB78B019F932510077BC3E /* Assets.xcassets */; };
 		32BB78B419F932510077BC3E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32BB78B219F932510077BC3E /* LaunchScreen.xib */; };
-		32BB78C019F932510077BC3E /* SimplestAVKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BB78BF19F932510077BC3E /* SimplestAVKitTests.swift */; };
 		32BB78CB19F932680077BC3E /* ElMirage.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 32BB78C919F932680077BC3E /* ElMirage.mp4 */; };
 		32BB78CC19F932680077BC3E /* wilhelm.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 32BB78CA19F932680077BC3E /* wilhelm.aiff */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		32BB78BA19F932510077BC3E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 32BB789C19F932510077BC3E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 32BB78A319F932510077BC3E;
-			remoteInfo = SimplestAVKit;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		32BB78A419F932510077BC3E /* SimplestAVKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplestAVKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,24 +22,14 @@
 		32BB78A919F932510077BC3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32BB78AB19F932510077BC3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32BB78AE19F932510077BC3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32BB78B019F932510077BC3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32BB78B019F932510077BC3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32BB78B319F932510077BC3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		32BB78B919F932510077BC3E /* SimplestAVKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplestAVKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		32BB78BE19F932510077BC3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32BB78BF19F932510077BC3E /* SimplestAVKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplestAVKitTests.swift; sourceTree = "<group>"; };
 		32BB78C919F932680077BC3E /* ElMirage.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ElMirage.mp4; sourceTree = "<group>"; };
 		32BB78CA19F932680077BC3E /* wilhelm.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = wilhelm.aiff; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		32BB78A119F932510077BC3E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32BB78B619F932510077BC3E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -64,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				32BB78A619F932510077BC3E /* SimplestAVKit */,
-				32BB78BC19F932510077BC3E /* SimplestAVKitTests */,
 				32BB78A519F932510077BC3E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				32BB78A419F932510077BC3E /* SimplestAVKit.app */,
-				32BB78B919F932510077BC3E /* SimplestAVKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,36 +63,11 @@
 				32BB78C919F932680077BC3E /* ElMirage.mp4 */,
 				32BB78CA19F932680077BC3E /* wilhelm.aiff */,
 				32BB78AD19F932510077BC3E /* Main.storyboard */,
-				32BB78B019F932510077BC3E /* Images.xcassets */,
+				32BB78B019F932510077BC3E /* Assets.xcassets */,
 				32BB78B219F932510077BC3E /* LaunchScreen.xib */,
-				32BB78A719F932510077BC3E /* Supporting Files */,
-			);
-			path = SimplestAVKit;
-			sourceTree = "<group>";
-		};
-		32BB78A719F932510077BC3E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				32BB78A819F932510077BC3E /* Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		32BB78BC19F932510077BC3E /* SimplestAVKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				32BB78BF19F932510077BC3E /* SimplestAVKitTests.swift */,
-				32BB78BD19F932510077BC3E /* Supporting Files */,
-			);
-			path = SimplestAVKitTests;
-			sourceTree = "<group>";
-		};
-		32BB78BD19F932510077BC3E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				32BB78BE19F932510077BC3E /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = SimplestAVKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,24 +90,6 @@
 			productReference = 32BB78A419F932510077BC3E /* SimplestAVKit.app */;
 			productType = "com.apple.product-type.application";
 		};
-		32BB78B819F932510077BC3E /* SimplestAVKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 32BB78C619F932510077BC3E /* Build configuration list for PBXNativeTarget "SimplestAVKitTests" */;
-			buildPhases = (
-				32BB78B519F932510077BC3E /* Sources */,
-				32BB78B619F932510077BC3E /* Frameworks */,
-				32BB78B719F932510077BC3E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				32BB78BB19F932510077BC3E /* PBXTargetDependency */,
-			);
-			name = SimplestAVKitTests;
-			productName = SimplestAVKitTests;
-			productReference = 32BB78B919F932510077BC3E /* SimplestAVKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -168,10 +102,11 @@
 				TargetAttributes = {
 					32BB78A319F932510077BC3E = {
 						CreatedOnToolsVersion = 6.1;
-					};
-					32BB78B819F932510077BC3E = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = 32BB78A319F932510077BC3E;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -189,7 +124,6 @@
 			projectRoot = "";
 			targets = (
 				32BB78A319F932510077BC3E /* SimplestAVKit */,
-				32BB78B819F932510077BC3E /* SimplestAVKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -203,14 +137,7 @@
 				32BB78CC19F932680077BC3E /* wilhelm.aiff in Resources */,
 				32BB78CB19F932680077BC3E /* ElMirage.mp4 in Resources */,
 				32BB78B419F932510077BC3E /* LaunchScreen.xib in Resources */,
-				32BB78B119F932510077BC3E /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		32BB78B719F932510077BC3E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				32BB78B119F932510077BC3E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,23 +153,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		32BB78B519F932510077BC3E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				32BB78C019F932510077BC3E /* SimplestAVKitTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		32BB78BB19F932510077BC3E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 32BB78A319F932510077BC3E /* SimplestAVKit */;
-			targetProxy = 32BB78BA19F932510077BC3E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		32BB78AD19F932510077BC3E /* Main.storyboard */ = {
@@ -298,7 +209,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -334,7 +245,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -348,6 +259,7 @@
 				INFOPLIST_FILE = SimplestAVKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -358,40 +270,7 @@
 				INFOPLIST_FILE = SimplestAVKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		32BB78C719F932510077BC3E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SimplestAVKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimplestAVKit.app/SimplestAVKit";
-			};
-			name = Debug;
-		};
-		32BB78C819F932510077BC3E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SimplestAVKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimplestAVKit.app/SimplestAVKit";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -412,15 +291,6 @@
 			buildConfigurations = (
 				32BB78C419F932510077BC3E /* Debug */,
 				32BB78C519F932510077BC3E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		32BB78C619F932510077BC3E /* Build configuration list for PBXNativeTarget "SimplestAVKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				32BB78C719F932510077BC3E /* Debug */,
-				32BB78C819F932510077BC3E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -28,11 +28,37 @@ class ViewController: UIViewController {
         return .Landscape
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: [])
+        _ = try? AVAudioSession.sharedInstance().setActive(true, withOptions: [])
+    }
+    
+    let which = 2
+    
     override func viewDidLayoutSubviews() {
         if !self.didInitialLayout {
             self.didInitialLayout = true
-            self.setUpChild()
+            switch which {
+            case 1:
+                self.setUpChildSimple()
+            case 2:
+                self.setUpChild()
+            default:break
+            }
         }
+    }
+    
+    func setUpChildSimple() {
+        let url = NSBundle.mainBundle().URLForResource(
+            "ElMirage", withExtension:"mp4")!
+        let player = AVPlayer(URL:url)
+        let av = AVPlayerViewController()
+        av.player = player
+        av.view.frame = CGRectMake(10,10,300,200)
+        self.addChildViewController(av)
+        self.view.addSubview(av.view)
+        av.didMoveToParentViewController(self)
     }
     
     func setUpChild() {
@@ -69,59 +95,22 @@ class ViewController: UIViewController {
         }
     }
     
-//    override func observeValueForKeyPath(keyPath: String?,
-//        ofObject object: AnyObject?, change: [String : AnyObject]?,
-//        context: UnsafeMutablePointer<()>) {
-//            if keyPath == "readyForDisplay" {
-//                if let obj = object as? AVPlayerViewController {
-//                    dispatch_async(dispatch_get_main_queue(), {
-//                        self.finishConstructingInterface(obj)
-//                    })
-//                }
-//            }
-//    }
-
-    
-//    override func observeValueForKeyPath(keyPath: String?,
-//        ofObject object: AnyObject?, change: [String : AnyObject]?,
-//        context: UnsafeMutablePointer<()>) {
-//            if keyPath == "readyForDisplay" {
-//                if let obj = object as? AVPlayerViewController {
-//                    if let ok = change?[NSKeyValueChangeNewKey] as? Bool {
-//                        if ok {
-//                            // ...
-//                            print(obj)
-//                        }
-//                    }
-//                }
-//            }
-//    }
-
-    
-//    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<()>) {
-//        if keyPath == "readyForDisplay",
-//            let obj = object as? AVPlayerViewController,
-//            ok = change?[NSKeyValueChangeNewKey] as? Bool where ok {
-//                dispatch_async(dispatch_get_main_queue(), {
-//                    self.finishConstructingInterface(obj)
-//                })
-//        }
-//    }
-    
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<()>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?,
+        context: UnsafeMutablePointer<()>) {
             guard keyPath == "readyForDisplay" else {return}
-            guard let obj = object as? AVPlayerViewController else {return}
+            guard let vc = object as? AVPlayerViewController else {return}
             guard let ok = change?[NSKeyValueChangeNewKey] as? Bool else {return}
             guard ok else {return}
+            vc.removeObserver(self, forKeyPath:"readyForDisplay")
+            
             dispatch_async(dispatch_get_main_queue(), {
-                self.finishConstructingInterface(obj)
+                self.finishConstructingInterface(vc)
             })
     }
-
+    
     
     func finishConstructingInterface (vc:AVPlayerViewController) {
         print("finishing")
-        vc.removeObserver(self, forKeyPath:"readyForDisplay")
         vc.view.hidden = false // hmm, maybe I should be animating the alpha instead
     }
 }
@@ -166,7 +155,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
     }
     
     func video(video:NSString!, savedWithError error:NSError!, ci:UnsafeMutablePointer<()>) {
-        print("did save, error:\(error)")
+        print("error:\(error)")
         /*
         Important to check for error, because user can deny access
         to Photos library
