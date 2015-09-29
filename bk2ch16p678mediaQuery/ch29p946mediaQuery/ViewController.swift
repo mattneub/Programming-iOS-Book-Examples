@@ -17,6 +17,8 @@ But I never got the memo, so I'm behind on this change!
 Thus we can eliminate the use of valueForProperty throughout
 */
 
+
+
 class ViewController: UIViewController {
     
     var q : MPMediaItemCollection!
@@ -77,24 +79,29 @@ class ViewController: UIViewController {
     }
     
     func wirelessChanged(n:NSNotification) {
-        println("wireless change \(n.userInfo)")
+        print("wireless change \(n.userInfo)")
     }
     func wirelessChanged2(n:NSNotification) {
-        println("wireless active change \(n.userInfo)")
+        print("wireless active change \(n.userInfo)")
     }
     
     @IBAction func doAllAlbumTitles (sender:AnyObject!) {
+        do {
+            let query = MPMediaQuery() // just making sure this is legal
+            let result = query.items
+            _ = result
+        }
         let query = MPMediaQuery.albumsQuery()
-        let result = query.collections as! [MPMediaItemCollection]
+        guard let result = query.collections else {return} //
         // prove we've performed the query, by logging the album titles
         for album in result {
-            println(album.representativeItem.albumTitle)
+            print(album.representativeItem?.albumTitle) //
         }
         return; // testing
         // cloud item values are 0 and 1, meaning false and true
         for album in result {
-            for song in album.items as! [MPMediaItem] {
-                println("\(song.valueForProperty(MPMediaItemPropertyIsCloudItem)) \(song.valueForProperty(MPMediaItemPropertyAssetURL)) \(song.valueForProperty(MPMediaItemPropertyTitle))")
+            for song in album.items { //
+                print("\(song.cloudItem) \(song.assetURL) \(song.title)")
             }
         }
     }
@@ -105,9 +112,9 @@ class ViewController: UIViewController {
             forProperty:MPMediaItemPropertyAlbumTitle,
             comparisonType:.Contains)
         query.addFilterPredicate(hasBeethoven)
-        let result = query.collections as! [MPMediaItemCollection]
+        guard let result = query.collections else {return} //
         for album in result {
-            println(album.representativeItem.albumTitle)
+            print(album.representativeItem?.albumTitle) //
         }
     }
     
@@ -122,14 +129,14 @@ class ViewController: UIViewController {
             comparisonType:.EqualTo)
         query.addFilterPredicate(isPresent)
         
-        let result = query.collections as! [MPMediaItemCollection]
+        guard let result = query.collections else {return} //
         for album in result {
-            println(album.representativeItem.albumTitle)
+            print(album.representativeItem?.albumTitle)
         }
         // and here are the songs in the first of those albums
         let album = result[0]
-        for song in album.items as! [MPMediaItem] {
-            println(song.title)
+        for song in album.items { //
+            print(song.title)
         }
     }
     
@@ -140,17 +147,18 @@ class ViewController: UIViewController {
             forProperty:MPMediaItemPropertyIsCloudItem,
             comparisonType:.EqualTo)
         query.addFilterPredicate(isPresent)
+        guard let items = query.items else {return} //
         
-        let shorties = (query.items as! [MPMediaItem]).filter {
+        let shorties = items.filter { //
             let dur = $0.playbackDuration
             return dur < 30
         }
         
         if shorties.count == 0 {
-            println("no songs that short!")
+            print("no songs that short!")
             return
         }
-        println("got \(shorties.count) short songs")
+        print("got \(shorties.count) short songs")
         let queue = MPMediaItemCollection(items:shorties)
         let player = MPMusicPlayerController.applicationMusicPlayer()
         player.setQueueWithItemCollection(queue)
@@ -182,11 +190,10 @@ class ViewController: UIViewController {
     
     func timerFired(_:AnyObject) {
         let player = MPMusicPlayerController.applicationMusicPlayer()
-        let item = player.nowPlayingItem
-        if item == nil || player.playbackState == .Stopped {
+        guard let item = player.nowPlayingItem where player.playbackState != .Stopped else {
             self.prog.hidden = true
             return
-        }
+        } //
         self.prog.hidden = false
         let current = player.currentPlaybackTime
         let total = item.playbackDuration
@@ -195,3 +202,20 @@ class ViewController: UIViewController {
 
     
 }
+
+class MyVolumeView : MPVolumeView {
+
+// uncomment to test
+    
+    override func volumeSliderRectForBounds(bounds: CGRect) -> CGRect {
+        // print(bounds)
+        return super.volumeSliderRectForBounds(bounds)
+    }
+    
+    override func volumeThumbRectForBounds(bounds: CGRect, volumeSliderRect rect: CGRect, value: Float) -> CGRect {
+        print(value)
+        return super.volumeThumbRectForBounds(bounds, volumeSliderRect: rect, value: value)
+    }
+
+}
+
