@@ -10,10 +10,8 @@ class ViewController: UIViewController {
     }
     
     func presentPicker (sender:AnyObject) {
-        // universal app is so incredibly easy in iOS 8!
-        let picker = MPMediaPickerController(mediaTypes:.Music) // new in iOS 8, need to specify
-        // for example, you can have just podcasts or audio books
-        // I don't understand what the "video" options are for; when I try them, I get all audio
+        let picker = MPMediaPickerController(mediaTypes:.Music)
+        picker.showsCloudItems = false
         picker.delegate = self
         picker.allowsPickingMultipleItems = true
         picker.modalPresentationStyle = .Popover
@@ -30,14 +28,16 @@ class ViewController: UIViewController {
 extension ViewController : MPMediaPickerControllerDelegate {
     // must implement these, as there is no automatic dismissal
     
-    func mediaPicker(mediaPicker: MPMediaPickerController!, didPickMediaItems mediaItemCollection: MPMediaItemCollection!) {
+    func mediaPicker(mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
+        print("did pick")
         let player = MPMusicPlayerController.applicationMusicPlayer()
         player.setQueueWithItemCollection(mediaItemCollection)
         player.play()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func mediaPickerDidCancel(mediaPicker: MPMediaPickerController!) {
+    func mediaPickerDidCancel(mediaPicker: MPMediaPickerController) {
+        print("cancel")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 

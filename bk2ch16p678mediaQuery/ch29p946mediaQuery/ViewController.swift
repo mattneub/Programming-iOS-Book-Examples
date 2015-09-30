@@ -57,6 +57,7 @@ class ViewController: UIViewController {
             im2.resizableImageWithCapInsets(UIEdgeInsetsMake(9,9,9,9),
                 resizingMode:.Stretch),
             forState:.Normal)
+        // only for EU devices; to test, use the EU switch under Developer settings on device
         self.vv.volumeWarningSliderImage =
             im3.resizableImageWithCapInsets(UIEdgeInsetsMake(9,9,9,9),
                 resizingMode:.Stretch)
@@ -154,13 +155,14 @@ class ViewController: UIViewController {
             return dur < 30
         }
         
-        if shorties.count == 0 {
+        guard shorties.count > 0 else {
             print("no songs that short!")
             return
         }
         print("got \(shorties.count) short songs")
         let queue = MPMediaItemCollection(items:shorties)
         let player = MPMusicPlayerController.applicationMusicPlayer()
+        player.stop()
         player.setQueueWithItemCollection(queue)
         player.shuffleMode = .Songs
         player.beginGeneratingPlaybackNotifications()
@@ -173,19 +175,16 @@ class ViewController: UIViewController {
     }
     
     func changed(n:NSNotification) {
+        defer {
+            self.timer?.fire() // looks better if we fire timer now
+        }
         self.label.text = ""
         let player = MPMusicPlayerController.applicationMusicPlayer()
-        if n.object === player { // just playing safe
-            if let title : AnyObject = player.nowPlayingItem?.title {
-                if let title = title as? String {
-                    let ix = player.indexOfNowPlayingItem
-                    if ix != NSNotFound {
-                        self.label.text = "\(ix+1) of \(self.q.count): \(title)"
-                    }
-                }
-            }
-        }
-        self.timer?.fire() // looks better if we fire timer now
+        guard n.object === player else { return } // just playing safe
+        guard let title = player.nowPlayingItem?.title else {return}
+        let ix = player.indexOfNowPlayingItem
+        guard ix != NSNotFound else {return}
+        self.label.text = "\(ix+1) of \(self.q.count): \(title)"
     }
     
     func timerFired(_:AnyObject) {
@@ -205,10 +204,9 @@ class ViewController: UIViewController {
 
 class MyVolumeView : MPVolumeView {
 
-// uncomment to test
     
     override func volumeSliderRectForBounds(bounds: CGRect) -> CGRect {
-        // print(bounds)
+        print(bounds)
         return super.volumeSliderRectForBounds(bounds)
     }
     

@@ -17,7 +17,7 @@ class Player : NSObject, AVAudioPlayerDelegate
     func playFileAtURL(fileURL:NSURL) {
         player?.delegate = nil
         player?.stop()
-        player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
+        player = try! AVAudioPlayer(contentsOfURL: fileURL)
         // error-checking omitted
         player.prepareToPlay()
         player.delegate = self
@@ -29,7 +29,7 @@ class Player : NSObject, AVAudioPlayerDelegate
     }
     
     // delegate method
-    func audioPlayerDidFinishPlaying(AVAudioPlayer!, successfully: Bool) {
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         delegate?.soundFinished(self)
     }
         
