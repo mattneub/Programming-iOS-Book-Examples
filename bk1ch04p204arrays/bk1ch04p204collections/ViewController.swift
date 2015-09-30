@@ -217,6 +217,15 @@ class ViewController: UIViewController {
             let ii = arr.removeLast()
             let iii = arr.popLast()
             print(arr)
+            do {
+                // let iiii = arr.popFirst() // not sure what happened to this
+                var arrslice = arr[arr.indices] // is this weird or what
+                let i = arrslice.popFirst()
+                print(i)
+                print(arrslice)
+                print(arr) // untouched, of course
+            }
+            print(arr)
             _ = i
             _ = ii
             _ = iii
