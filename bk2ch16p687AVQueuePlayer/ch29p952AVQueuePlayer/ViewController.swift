@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     var avplayer : AVPlayer!
     var qp : AVQueuePlayer!
     var items = [AVPlayerItem]()
-    var timer : NSTimer!
+    var ob : AnyObject!
     @IBOutlet var prog : UIProgressView!
     @IBOutlet var label : UILabel!
     
@@ -143,6 +143,10 @@ class ViewController: UIViewController {
         self.curnum = 0
         self.total = self.items.count
         
+        if self.ob != nil && self.qp != nil {
+            self.qp.removeTimeObserver(self.ob)
+        }
+        
         let seed = min(3,self.items.count)
         self.qp = AVQueuePlayer(items:Array(self.items.prefixUpTo(seed)))
         self.items = Array(self.items.suffixFrom(seed))
@@ -154,9 +158,8 @@ class ViewController: UIViewController {
         
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
         
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "timerFired:", userInfo: nil, repeats: true)
-        self.timer.tolerance = 0.1
-        self.timer.fire()
+        self.ob = self.qp.addPeriodicTimeObserverForInterval(CMTimeMakeWithSeconds(0.5, 600), queue: nil, usingBlock: self.timerFired)
+        
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<()>) {
@@ -166,9 +169,6 @@ class ViewController: UIViewController {
     }
     
     func changed() {
-        defer {
-            self.timer?.fire()
-        }
         guard let item = self.qp.currentItem else {return}
         self.curnum++
         var arr = item.asset.commonMetadata
@@ -196,19 +196,22 @@ class ViewController: UIViewController {
         self.qp.insertItem(newItem, afterItem:nil) // means "at end"
     }
     
-    func timerFired(sender:AnyObject) {
+    func timerFired(time:CMTime) {
         if let item = self.qp.currentItem {
             let asset = item.asset
             if asset.statusOfValueForKey("duration", error: nil) == .Loaded {
-                let cur = self.qp.currentTime()
                 let dur = asset.duration
-                self.prog.progress = Float(CMTimeGetSeconds(cur)/CMTimeGetSeconds(dur))
+                self.prog.setProgress(Float(time.seconds/dur.seconds), animated: false)
                 self.prog.hidden = false
             }
         } else {
+            // none of this is executed; I need a way of learning when we are completely done
+            // or else I can just forget this feature
             self.label.text = ""
             self.prog.hidden = true
-            self.timer.invalidate()
+            self.qp.removeTimeObserver(self.ob)
+            self.ob = nil
+            print("removing observer")
         }
     }
     
