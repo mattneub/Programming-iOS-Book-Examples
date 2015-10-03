@@ -38,13 +38,11 @@ class RootViewController: UIViewController {
         case .Authorized:
             return true
         case .NotDetermined:
-            PHPhotoLibrary.requestAuthorization(nil)
+            PHPhotoLibrary.requestAuthorization() {_ in}
             return false
         case .Restricted:
             return false
         case .Denied:
-            // new iOS 8 feature: sane way of getting the user directly to the relevant prefs
-            // I think the crash-in-background issue is now gone
             let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Photos library?", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
@@ -63,12 +61,16 @@ class RootViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "determineStatus", name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
 
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
     
     func tryToAddInitialPage() {
         self.modelController = ModelController()
         if let dvc = self.modelController.viewControllerAtIndex(0, storyboard: self.storyboard!) {
-            let viewControllers: NSArray = [dvc]
-            self.pageViewController!.setViewControllers(viewControllers as [AnyObject], direction: .Forward, animated: false, completion: nil)
+            let viewControllers = [dvc]
+            self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
             self.pageViewController!.dataSource = self.modelController
         }
     }
@@ -86,7 +88,7 @@ class RootViewController: UIViewController {
 }
 
 extension RootViewController : PHPhotoLibraryChangeObserver {
-    func photoLibraryDidChange(changeInfo: PHChange!) {
+    func photoLibraryDidChange(changeInfo: PHChange) {
         if let ci = changeInfo.changeDetailsForFetchResult(self.modelController.recentAlbums) {
             // if what just happened is: we went from nil to results (because user granted permission)...
             // then start over
@@ -106,11 +108,11 @@ extension RootViewController : PHPhotoLibraryChangeObserver {
 extension RootViewController {
     @IBAction func doVignetteButton(sender: AnyObject) {
         if !self.determineStatus() {
-            println("not authorized")
+            print("not authorized")
             return
         }
 
-        if let dvc = self.pageViewController?.viewControllers[0] as? DataViewController {
+        if let dvc = self.pageViewController?.viewControllers?[0] as? DataViewController {
             dvc.doVignette()
         }
     }

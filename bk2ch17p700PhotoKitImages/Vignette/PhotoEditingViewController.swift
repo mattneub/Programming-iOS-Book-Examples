@@ -37,7 +37,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         return adjustmentData?.formatIdentifier == myidentifier
     }
     
-    func glkView(view: GLKView!, drawInRect rect: CGRect) {
+    func glkView(view: GLKView, drawInRect rect: CGRect) {
         glClearColor(1.0, 1.0, 1.0, 1.0)
         glClear(UInt32(GL_COLOR_BUFFER_BIT))
         
@@ -56,9 +56,9 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         r.size.width = CGFloat(self.glkview.drawableWidth)
         r.size.height = CGFloat(self.glkview.drawableHeight)
         
-        r = AVMakeRectWithAspectRatioInsideRect(output.extent().size, r)
+        r = AVMakeRectWithAspectRatioInsideRect(output.extent.size, r)
         
-        self.context.drawImage(output, inRect: r, fromRect: output.extent())
+        self.context.drawImage(output, inRect: r, fromRect: output.extent)
     }
 
     
@@ -74,13 +74,12 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         // If you returned YES from canHandleAdjustmentData:, contentEditingInput has the original image and adjustment data.
         // If you returned NO, the contentEditingInput has past edits "baked in".
         self.input = contentEditingInput!
-        self.displayImage = CIImage(image:self.input.displaySizeImage)
-        if let adj = input.adjustmentData {
-            if adj.formatIdentifier == myidentifier && adj.data != nil {
-                if let vigAmount = NSKeyedUnarchiver.unarchiveObjectWithData(adj.data) as? Double {
-                    self.slider.value = Float(vigAmount)
-                    self.seg.hidden = false
-                }
+        self.displayImage = CIImage(image:self.input.displaySizeImage!)
+        let adj = input.adjustmentData
+        if adj.formatIdentifier == self.myidentifier && adj.data.length > 0 {
+            if let vigAmount = NSKeyedUnarchiver.unarchiveObjectWithData(adj.data) as? Double {
+                self.slider.value = Float(vigAmount)
+                self.seg.hidden = false
             }
         }
         self.glkview.display()
@@ -101,25 +100,25 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
             if self.seg.selectedSegmentIndex == 0 {
                 let outcgimage = {
                     () -> CGImage in
-                    let ci = CIImage(contentsOfURL: inurl)
+                    let ci = CIImage(contentsOfURL: inurl!)
                     self.vig.setValue(ci, forKey: "inputImage")
                     self.vig.setValue(vignetteAmount, forKey: "inputPercentage")
-                    let outim = self.vig.outputImage
+                    let outim = self.vig.outputImage!
                     // this step is time-consuming; could be good to provide user feedback here
-                    let outimcg = CIContext(options: nil).createCGImage(outim, fromRect: outim.extent())
+                    let outimcg = CIContext(options: nil).createCGImage(outim, fromRect: outim.extent)
                     return outimcg
                     }()
                 let data = NSKeyedArchiver.archivedDataWithRootObject(vignetteAmount)
                 output.adjustmentData = PHAdjustmentData(
                     formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
-                let dest = CGImageDestinationCreateWithURL(outurl, kUTTypeJPEG, 1, nil)
+                let dest = CGImageDestinationCreateWithURL(outurl, kUTTypeJPEG, 1, nil)!
                 CGImageDestinationAddImage(dest, outcgimage, [kCGImageDestinationLossyCompressionQuality as String:1])
                 CGImageDestinationFinalize(dest)
             } else {
                 output.adjustmentData = PHAdjustmentData(
-                    formatIdentifier: self.myidentifier, formatVersion: "1.0", data: nil)
+                    formatIdentifier: self.myidentifier, formatVersion: "1.0", data: NSData()) // ???????????
                 let fm = NSFileManager.defaultManager()
-                fm.copyItemAtURL(inurl, toURL: outurl, error: nil)
+                _ = try? fm.copyItemAtURL(inurl!, toURL: outurl)
             }
             
             // Call completion handler to commit edit to Photos.

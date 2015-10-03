@@ -3,32 +3,20 @@
 import UIKit
 import Photos
 
-extension PHFetchResult: SequenceType {
-    public func generate() -> NSFastGenerator {
-        return NSFastGenerator(self)
-    }
-}
-
-
 class ModelController: NSObject {
     
     var recentAlbums : PHFetchResult!
     var photos : PHFetchResult!
     
     func tryToGetStarted() {
-        let result = PHAssetCollection.fetchAssetCollectionsWithType(
+        self.recentAlbums = PHAssetCollection.fetchAssetCollectionsWithType(
             .SmartAlbum, subtype: .SmartAlbumUserLibrary, options: nil)
-        self.recentAlbums = result
-        let rec = result.firstObject as! PHAssetCollection!
-        if rec == nil {
-            return
-        }
+        guard let rec = self.recentAlbums.firstObject as? PHAssetCollection else {return}
         let options = PHFetchOptions() // photos only, please
         let pred = NSPredicate(format: "mediaType = %@", NSNumber(
             integer:PHAssetMediaType.Image.rawValue))
         options.predicate = pred
-        let result2 = PHAsset.fetchAssetsInAssetCollection(rec, options: options)
-        self.photos = result2
+        self.photos = PHAsset.fetchAssetsInAssetCollection(rec, options: options)
     }
 
     override init() {
@@ -41,7 +29,7 @@ class ModelController: NSObject {
             return nil
         }
         let dvc = storyboard.instantiateViewControllerWithIdentifier("DataViewController") as! DataViewController
-        dvc.dataObject = self.photos[index] as! PHAsset
+        dvc.asset = self.photos[index] as! PHAsset
         // dvc.index = index
         return dvc
     }
@@ -49,7 +37,7 @@ class ModelController: NSObject {
 
     func indexOfViewController(dvc: DataViewController) -> Int {
         // return dvc.index
-        let asset = dvc.dataObject
+        let asset = dvc.asset
         let ix = self.photos.indexOfObject(asset)
         return ix
     }

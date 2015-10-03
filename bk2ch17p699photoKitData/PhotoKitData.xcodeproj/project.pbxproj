@@ -10,19 +10,9 @@
 		324285FA19A0100800231054 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324285F919A0100800231054 /* AppDelegate.swift */; };
 		324285FC19A0100800231054 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324285FB19A0100800231054 /* ViewController.swift */; };
 		324285FF19A0100800231054 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 324285FD19A0100800231054 /* Main.storyboard */; };
-		3242860119A0100800231054 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3242860019A0100800231054 /* Images.xcassets */; };
-		3242860D19A0100800231054 /* PhotoKitDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3242860C19A0100800231054 /* PhotoKitDataTests.swift */; };
+		3242860119A0100800231054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3242860019A0100800231054 /* Assets.xcassets */; };
+		32FC0F211BBECD6F00BB8293 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32FC0F201BBECD6F00BB8293 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		3242860719A0100800231054 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 324285EC19A0100800231054 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 324285F319A0100800231054;
-			remoteInfo = PhotoKitData;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		324285F419A0100800231054 /* PhotoKitData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoKitData.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,21 +20,12 @@
 		324285F919A0100800231054 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		324285FB19A0100800231054 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		324285FE19A0100800231054 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3242860019A0100800231054 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3242860619A0100800231054 /* PhotoKitDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoKitDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3242860B19A0100800231054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3242860C19A0100800231054 /* PhotoKitDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoKitDataTests.swift; sourceTree = "<group>"; };
+		3242860019A0100800231054 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		32FC0F201BBECD6F00BB8293 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		324285F119A0100800231054 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3242860319A0100800231054 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -58,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				324285F619A0100800231054 /* PhotoKitData */,
-				3242860919A0100800231054 /* PhotoKitDataTests */,
 				324285F519A0100800231054 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				324285F419A0100800231054 /* PhotoKitData.app */,
-				3242860619A0100800231054 /* PhotoKitDataTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,35 +57,11 @@
 				324285F919A0100800231054 /* AppDelegate.swift */,
 				324285FB19A0100800231054 /* ViewController.swift */,
 				324285FD19A0100800231054 /* Main.storyboard */,
-				3242860019A0100800231054 /* Images.xcassets */,
-				324285F719A0100800231054 /* Supporting Files */,
-			);
-			path = PhotoKitData;
-			sourceTree = "<group>";
-		};
-		324285F719A0100800231054 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				3242860019A0100800231054 /* Assets.xcassets */,
+				32FC0F201BBECD6F00BB8293 /* LaunchScreen.storyboard */,
 				324285F819A0100800231054 /* Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		3242860919A0100800231054 /* PhotoKitDataTests */ = {
-			isa = PBXGroup;
-			children = (
-				3242860C19A0100800231054 /* PhotoKitDataTests.swift */,
-				3242860A19A0100800231054 /* Supporting Files */,
-			);
-			path = PhotoKitDataTests;
-			sourceTree = "<group>";
-		};
-		3242860A19A0100800231054 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3242860B19A0100800231054 /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = PhotoKitData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,24 +84,6 @@
 			productReference = 324285F419A0100800231054 /* PhotoKitData.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3242860519A0100800231054 /* PhotoKitDataTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3242861319A0100800231054 /* Build configuration list for PBXNativeTarget "PhotoKitDataTests" */;
-			buildPhases = (
-				3242860219A0100800231054 /* Sources */,
-				3242860319A0100800231054 /* Frameworks */,
-				3242860419A0100800231054 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3242860819A0100800231054 /* PBXTargetDependency */,
-			);
-			name = PhotoKitDataTests;
-			productName = PhotoKitDataTests;
-			productReference = 3242860619A0100800231054 /* PhotoKitDataTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -160,10 +97,6 @@
 					324285F319A0100800231054 = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = W3LHX5RGV2;
-					};
-					3242860519A0100800231054 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 324285F319A0100800231054;
 					};
 				};
 			};
@@ -181,7 +114,6 @@
 			projectRoot = "";
 			targets = (
 				324285F319A0100800231054 /* PhotoKitData */,
-				3242860519A0100800231054 /* PhotoKitDataTests */,
 			);
 		};
 /* End PBXProject section */
@@ -191,15 +123,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32FC0F211BBECD6F00BB8293 /* LaunchScreen.storyboard in Resources */,
 				324285FF19A0100800231054 /* Main.storyboard in Resources */,
-				3242860119A0100800231054 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3242860419A0100800231054 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				3242860119A0100800231054 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,23 +141,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3242860219A0100800231054 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3242860D19A0100800231054 /* PhotoKitDataTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3242860819A0100800231054 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 324285F319A0100800231054 /* PhotoKitData */;
-			targetProxy = 3242860719A0100800231054 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		324285FD19A0100800231054 /* Main.storyboard */ = {
@@ -279,7 +189,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -315,7 +225,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -326,7 +236,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PhotoKitData/Info.plist;
@@ -341,7 +250,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PhotoKitData/Info.plist;
@@ -349,40 +257,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		3242861419A0100800231054 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PhotoKitDataTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoKitData.app/PhotoKitData";
-			};
-			name = Debug;
-		};
-		3242861519A0100800231054 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PhotoKitDataTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoKitData.app/PhotoKitData";
 			};
 			name = Release;
 		};
@@ -403,15 +277,6 @@
 			buildConfigurations = (
 				3242861119A0100800231054 /* Debug */,
 				3242861219A0100800231054 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3242861319A0100800231054 /* Build configuration list for PBXNativeTarget "PhotoKitDataTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3242861419A0100800231054 /* Debug */,
-				3242861519A0100800231054 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

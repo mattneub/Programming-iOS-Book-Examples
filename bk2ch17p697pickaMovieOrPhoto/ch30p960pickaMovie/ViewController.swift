@@ -16,11 +16,11 @@ func delay(delay:Double, closure:()->()) {
 class ViewController: UIViewController {
     @IBOutlet var redView : UIView!
     
-    override func supportedInterfaceOrientations() -> Int {
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         if self.traitCollection.userInterfaceIdiom == .Pad {
-            return Int(UIInterfaceOrientationMask.All.rawValue)
+            return .All
         }
-        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
+        return .Landscape
     }
     
     func determineStatus() -> Bool {
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         case .Authorized:
             return true
         case .NotDetermined:
-            PHPhotoLibrary.requestAuthorization(nil)
+            PHPhotoLibrary.requestAuthorization() {_ in}
             return false
         case .Restricted:
             return false
@@ -64,9 +64,14 @@ class ViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "determineStatus", name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     @IBAction func doPick (sender:AnyObject!) {
         if !self.determineStatus() {
-            println("not authorized")
+            print("not authorized")
             return
         }
         
@@ -75,13 +80,13 @@ class ViewController: UIViewController {
         let src = UIImagePickerControllerSourceType.PhotoLibrary
         let ok = UIImagePickerController.isSourceTypeAvailable(src)
         if !ok {
-            println("alas")
+            print("alas")
             return
         }
         
         let arr = UIImagePickerController.availableMediaTypesForSourceType(src)
         if arr == nil {
-            println("no available types")
+            print("no available types")
             return
         }
         let picker = MyImagePickerController() // see comments below for reason
@@ -94,7 +99,7 @@ class ViewController: UIViewController {
         // this will automatically be fullscreen on phone and pad, looks fine
         // note that for .PhotoLibrary, iPhone app must permit portrait orientation
         // if we want a popover, on pad, we can do that; just uncomment next line
-        // picker.modalPresentationStyle = .Popover
+        picker.modalPresentationStyle = .Popover
         self.presentViewController(picker, animated: true, completion: nil)
         // ignore:
         if let pop = picker.popoverPresentationController {
@@ -115,17 +120,17 @@ class ViewController: UIViewController {
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // this has no effect
-    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> Int {
-        return Int(UIInterfaceOrientationMask.Landscape.rawValue)
+    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+        return .Landscape
     }
     
     
     func imagePickerController(picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-            println(info[UIImagePickerControllerReferenceURL])
+        didFinishPickingMediaWithInfo info: [String : AnyObject]) { //
+            print(info[UIImagePickerControllerReferenceURL])
             let url = info[UIImagePickerControllerMediaURL] as? NSURL
             var im = info[UIImagePickerControllerOriginalImage] as? UIImage
-            var edim = info[UIImagePickerControllerEditedImage] as? UIImage
+            let edim = info[UIImagePickerControllerEditedImage] as? UIImage
             if edim != nil {
                 im = edim
             }
@@ -133,11 +138,11 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
                 let type = info[UIImagePickerControllerMediaType] as? String
                 if type != nil {
                     switch type! {
-                    case kUTTypeImage as! String:
+                    case kUTTypeImage as NSString as String: // this is freaking ridiculous, Swift
                         if im != nil {
                             self.showImage(im!)
                         }
-                    case kUTTypeMovie as! String:
+                    case kUTTypeMovie as NSString as String:
                         if url != nil {
                             self.showMovie(url!)
                         }
@@ -154,7 +159,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
             av.view.removeFromSuperview()
             av.removeFromParentViewController()
         }
-        self.redView.subviews.map { ($0 as! UIView).removeFromSuperview() }
+        self.redView.subviews.forEach { $0.removeFromSuperview() }
     }
     
     func showImage(im:UIImage) {

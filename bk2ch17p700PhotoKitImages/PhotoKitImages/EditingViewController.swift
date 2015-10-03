@@ -60,22 +60,22 @@ class EditingViewController: UIViewController, GLKViewDelegate {
         self.glkview.display()
     }
     
-    func glkView(view: GLKView!, drawInRect rect: CGRect) {
+    func glkView(view: GLKView, drawInRect rect: CGRect) {
         glClearColor(1.0, 1.0, 1.0, 1.0)
         glClear(UInt32(GL_COLOR_BUFFER_BIT))
         
         self.vig.setValue(self.displayImage, forKey: "inputImage")
         let val = NSNumber(double: Double(self.slider.value))
         self.vig.setValue(val, forKey:"inputPercentage")
-        let output = self.vig.outputImage
+        let output = self.vig.outputImage!
         
         var r = self.glkview.bounds
         r.size.width = CGFloat(self.glkview.drawableWidth)
         r.size.height = CGFloat(self.glkview.drawableHeight)
 
-        r = AVMakeRectWithAspectRatioInsideRect(output.extent().size, r)
+        r = AVMakeRectWithAspectRatioInsideRect(output.extent.size, r)
         
-        self.context.drawImage(output, inRect: r, fromRect: output.extent())
+        self.context.drawImage(output, inRect: r, fromRect: output.extent)
     }
 
     
@@ -84,13 +84,21 @@ class EditingViewController: UIViewController, GLKViewDelegate {
     }
     
     func doDone (sender:AnyObject?) {
-        self.delegate?.finishEditingWithVignette(Double(self.slider.value))
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true) {
+            _ in
+            delay(0.1) {
+                self.delegate?.finishEditingWithVignette(Double(self.slider.value))
+            }
+        }
     }
     
     func doUndo (sender:AnyObject?) {
-        self.delegate?.finishEditingWithVignette(-1) // signal for removal
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true) {
+            _ in
+            delay(0.1) {
+                self.delegate?.finishEditingWithVignette(-1) // signal for removal
+            }
+        }
     }
 
     @IBAction func doSlider(sender: AnyObject?) {

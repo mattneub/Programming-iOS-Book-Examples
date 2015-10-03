@@ -20,13 +20,11 @@ class ViewController: UIViewController {
         case .Authorized:
             return true
         case .NotDetermined:
-            PHPhotoLibrary.requestAuthorization(nil)
+            PHPhotoLibrary.requestAuthorization() {_ in}
             return false
         case .Restricted:
             return false
         case .Denied:
-            // new iOS 8 feature: sane way of getting the user directly to the relevant prefs
-            // I think the crash-in-background issue is now gone
             let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Photos library?", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
@@ -49,7 +47,7 @@ class ViewController: UIViewController {
 
     @IBAction func doButton(sender: AnyObject) {
         if !self.determineStatus() {
-            println("not authorized")
+            print("not authorized")
             return
         }
         
@@ -62,26 +60,28 @@ class ViewController: UIViewController {
             (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
             let list = obj as! PHCollectionList
             let f = NSDateFormatter()
-            f.dateFormat = "\nyyyy"
-            println(f.stringFromDate(list.startDate))
+            f.dateFormat = "yyyy"
+            print(f.stringFromDate(list.startDate!))
+            // return;
             if list.collectionListType == .MomentList {
                 let result = PHAssetCollection.fetchMomentsInMomentList(list, options: nil)
                 result.enumerateObjectsUsingBlock {
                     (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
                     let coll = obj as! PHAssetCollection
                     if ix == 0 {
-                        println("======= \(result.count) clusters")
+                        print("======= \(result.count) clusters")
                     }
                     f.dateFormat = ("yyyy-MM-dd")
-                    println("starting \(f.stringFromDate(coll.startDate)): " + "\(coll.estimatedAssetCount)")
+                    print("starting \(f.stringFromDate(coll.startDate!)): " + "\(coll.estimatedAssetCount)")
                 }
             }
+            print("\n")
         }
     }
 
     @IBAction func doButton2(sender: AnyObject) {
         if !self.determineStatus() {
-            println("not authorized")
+            print("not authorized")
             return
         }
 
@@ -91,13 +91,13 @@ class ViewController: UIViewController {
         result.enumerateObjectsUsingBlock {
             (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
             let album = obj as! PHAssetCollection
-            println("\(album.localizedTitle): approximately \(album.estimatedAssetCount) photos")
+            print("\(album.localizedTitle): approximately \(album.estimatedAssetCount) photos")
         }
     }
     
     @IBAction func doButton3(sender: AnyObject) {
         if !self.determineStatus() {
-            println("not authorized")
+            print("not authorized")
             return
         }
 
@@ -114,7 +114,7 @@ class ViewController: UIViewController {
                 result.enumerateObjectsUsingBlock {
                     (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
                     let asset = obj as! PHAsset
-                    println(asset)
+                    print(asset.localIdentifier)
                 }
             }))
         }
@@ -127,9 +127,10 @@ class ViewController: UIViewController {
         }
     }
     
+    var newAlbumId : String?
     @IBAction func doButton4(sender: AnyObject) {
         if !self.determineStatus() {
-            println("not authorized")
+            print("not authorized")
             return
         }
 
@@ -139,19 +140,25 @@ class ViewController: UIViewController {
         // or to alter what assets it contains,
         // we need a PHAssetCollectionChangeRequest
         // we can use this only inside a PHPhotoLibrary `performChanges` block
+        var ph : PHObjectPlaceholder?
         PHPhotoLibrary.sharedPhotoLibrary().performChanges({
             let t = "TestAlbum"
-            let creat = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle(t)
+            let cr = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle(t)
+            ph = cr.placeholderForCreatedAssetCollection
             }, completionHandler: {
                 // completion may take some considerable time (asynchronous)
-                (ok:Bool, err:NSError!) in
-                println("created TestAlbum: \(ok)")
+                (ok:Bool, err:NSError?) in
+                print("created TestAlbum: \(ok)")
+                if let ph = ph {
+                    print("and its id is \(ph.localIdentifier)")
+                    self.newAlbumId = ph.localIdentifier
+                }
         })
     }
     
     @IBAction func doButton5(sender: AnyObject) {
         if !self.determineStatus() {
-            println("not authorized")
+            print("not authorized")
             return
         }
 
@@ -159,48 +166,53 @@ class ViewController: UIViewController {
         opts.wantsIncrementalChangeDetails = false // not used
         // imagine first that we are displaying a list of all regular albums...
         // ... so have performed a fetch request and are hanging on to the result
-        self.albums = PHAssetCollection.fetchAssetCollectionsWithType(
+        let alb = PHAssetCollection.fetchAssetCollectionsWithType(
             .Album, subtype: .AlbumRegular, options: nil)
+        self.albums = alb
         // and if we have an observer, it will automatically be sent PHChange messages
         // for this fetch request - if we wanted to prevent that,
         // we would have included the option above
-
         
-        // find Recently Added smart-album
-        // add first photo from it to a new album
+        
+        // find Recently Added smart album
         let result = PHAssetCollection.fetchAssetCollectionsWithType(
             .SmartAlbum, subtype: .SmartAlbumRecentlyAdded, options: nil)
-        let rec = result.firstObject as! PHAssetCollection!
-        if rec == nil {
-            println("no recently added album")
+        guard let rec = result.firstObject as? PHAssetCollection else {
+            print("no recently added album")
             return
         }
+        // find its first asset
         let result2 = PHAsset.fetchAssetsInAssetCollection(rec, options: nil)
-        let ph = result2.firstObject as! PHAsset!
-        if ph == nil {
-            println("no first item in recently added album")
+        guard let asset1 = result2.firstObject as? PHAsset else {
+            print("no first item in recently added album")
             return
         }
+        // find our newly created album by its local id
+        let result3 = PHAssetCollection.fetchAssetCollectionsWithLocalIdentifiers([self.newAlbumId!], options: nil)
+        guard let alb2 = result3.firstObject as? PHAssetCollection else {
+            print("no target album")
+            return
+        }
+        
         PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-            let t = "My Cool Album"
-            let creat = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle(t)
-            creat.addAssets([ph])
+            let cr = PHAssetCollectionChangeRequest(forAssetCollection: alb2)
+            cr?.addAssets([asset1])
             }, completionHandler: {
                 // completion may take some considerable time (asynchronous)
-                (ok:Bool, err:NSError!) in
-                println("created My Cool Album: \(ok)")
+                (ok:Bool, err:NSError?) in
+                print("added it: \(ok)")
         })
     }
 }
 
 extension ViewController : PHPhotoLibraryChangeObserver {
-    func photoLibraryDidChange(changeInfo: PHChange!) {
-        println(changeInfo)
+    func photoLibraryDidChange(changeInfo: PHChange) {
+        print(changeInfo)
         if self.albums !== nil {
             if let details = changeInfo.changeDetailsForFetchResult(self.albums) {
                 dispatch_async(dispatch_get_main_queue()) { // NB get on main queue if necessary
-                    println("inserted: \(details.insertedObjects)")
-                    println("changed: \(details.changedObjects)")
+                    print("inserted: \(details.insertedObjects)")
+                    print("changed: \(details.changedObjects)")
                     self.albums = details.fetchResultAfterChanges
                     // and you can imagine that if we had an interface...
                     // we might change it to reflect these changes

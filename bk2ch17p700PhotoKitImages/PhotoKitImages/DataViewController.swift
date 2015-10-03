@@ -18,33 +18,34 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
     @IBOutlet var dataLabel: UILabel!
     @IBOutlet var frameview : UIView!
     @IBOutlet var iv : UIImageView!
-    var dataObject: PHAsset!
+    var asset: PHAsset!
     // var index : Int = -1
     var input : PHContentEditingInput!
     let myidentifier = "com.neuburg.matt.PhotoKitImages.vignette"
 
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         self.setUpInterface()
     }
     
     func setUpInterface() {
-        if self.dataObject == nil {
+        guard let asset = self.asset else {
             self.dataLabel.text = ""
             self.iv.image = nil
             return
         }
-        self.dataLabel.text = self.dataObject.description
+        self.dataLabel.text = asset.description
         // okay, this is why we are here! fetch the image data!!!!!
         // we have to say quite specifically what "view" of image we want
-        PHImageManager.defaultManager().requestImageForAsset(self.dataObject, targetSize: CGSizeMake(300,300), contentMode: .AspectFit, options: nil) {
-            (im:UIImage!, info:[NSObject : AnyObject]!) in
+        PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: CGSizeMake(300,300), contentMode: .AspectFit, options: nil) {
+            (im:UIImage?, info:[NSObject : AnyObject]?) in
             // this block can be called multiple times
             // and you can see why: initially we might get a degraded version of the image
             // and in fact we do, as I show with logging
-            println(im.size)
-            self.iv.image = im
+            if let im = im {
+                print("set up interface: \(im.size)")
+                self.iv.image = im
+            }
         }
     }
     
@@ -60,27 +61,38 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             (adjustmentData : PHAdjustmentData!) in
             return adjustmentData.formatIdentifier == self.myidentifier
         }
-        let asset = self.dataObject
-        asset.requestContentEditingInputWithOptions(options, completionHandler: {
-            (input:PHContentEditingInput!, info:[NSObject : AnyObject]!) in
+        let asset = self.asset
+        var id : PHContentEditingInputRequestID = 0
+        id = asset.requestContentEditingInputWithOptions(options, completionHandler: {
+            (input:PHContentEditingInput?, info:[NSObject : AnyObject]) in
+            guard let input = input else {
+                asset.cancelContentEditingInputRequest(id)
+                return
+            }
             self.input = input
             
             // now we give the user an editing interface...
             // ...using the input's displaySizeImage and adjustmentData
             
-            let im = input.displaySizeImage
+            let im = input.displaySizeImage!
             let sz = CGSizeMake(im.size.width/4.0, im.size.height/4.0)
             let im2 = imageOfSize(sz) {
                 // perhaps no need for this, but the image they give us is much larger than we need
                 im.drawInRect(CGRect(origin: CGPoint(), size: sz))
             }
             
-            let evc = EditingViewController(displayImage:CIImage(image:im2))
+            let evc = EditingViewController(displayImage:CIImage(image:im2)!)
             
             evc.delegate = self
-            if let adj = input.adjustmentData {
-                if adj.formatIdentifier == self.myidentifier && adj.data != nil {
-                    if let vigAmount = NSKeyedUnarchiver.unarchiveObjectWithData(adj.data) as? Double {
+            let adj : PHAdjustmentData? = input.adjustmentData
+            print(adj)
+//            do {
+//                asset.cancelContentEditingInputRequest(id)
+//                return
+//            }
+            if let adj = adj where adj.formatIdentifier == self.myidentifier {
+                if let vigAmount = NSKeyedUnarchiver.unarchiveObjectWithData(adj.data) as? Double {
+                    if vigAmount >= 0.0 {
                         evc.initialVignette = vigAmount
                         evc.canUndo = true
                     }
@@ -94,46 +106,44 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
     func finishEditingWithVignette(vignette:Double) {
         // part two: obtain PHContentEditingOutput...
         // and apply editing to actual full size image
-        let vignetteAmount = NSNumber(double:vignette)
         let input = self.input
-        let inurl = input.fullSizeImageURL
+        let inurl = input.fullSizeImageURL!
+        let inorient = input.fullSizeImageOrientation
         let output = PHContentEditingOutput(contentEditingInput: input)
         let outurl = output.renderedContentURL
-        // cute feature: if vignette is -1, this signals we should remove the vignette
-        // in that case, we substitute the original image and store nil data in adjustment
-        if vignette < 0 {
-            output.adjustmentData = PHAdjustmentData(
-                formatIdentifier: myidentifier, formatVersion: "1.0", data: nil)
-            let fm = NSFileManager.defaultManager()
-            fm.copyItemAtURL(inurl, toURL: outurl, error: nil)
-        } else {
-            let outcgimage = {
-                () -> CGImage in
-                // at this point we do whatever editing means to us, returning a CGImage
-                let ci = CIImage(contentsOfURL: inurl)
+        
+        let outcgimage = {
+            () -> CGImage in
+            var ci = CIImage(contentsOfURL: inurl)!.imageByApplyingOrientation(inorient)
+            if vignette >= 0.0 {
                 let vig = MyVignetteFilter()
                 vig.setValue(ci, forKey: "inputImage")
-                vig.setValue(vignetteAmount, forKey: "inputPercentage")
-                let outim = vig.outputImage
-                // this step is time-consuming; could be good to provide user feedback here
-                let outimcg = CIContext(options: nil).createCGImage(outim, fromRect: outim.extent())
-                return outimcg
-                }()
-            // *must* supply adjustment data or edit will fail (silently)
-            let data = NSKeyedArchiver.archivedDataWithRootObject(vignetteAmount)
-            output.adjustmentData = PHAdjustmentData(
-                formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
-            let dest = CGImageDestinationCreateWithURL(outurl, kUTTypeJPEG, 1, nil)
-            CGImageDestinationAddImage(dest, outcgimage, [kCGImageDestinationLossyCompressionQuality as String:1])
-            CGImageDestinationFinalize(dest)
-        }
+                vig.setValue(vignette, forKey: "inputPercentage")
+                ci = vig.outputImage!
+            }
+            let outimcg = CIContext(options: nil).createCGImage(ci, fromRect: ci.extent)
+            return outimcg
+        }()
+        
+        let dest = CGImageDestinationCreateWithURL(outurl, kUTTypeJPEG, 1, nil)!
+        CGImageDestinationAddImage(dest, outcgimage, [
+            kCGImageDestinationLossyCompressionQuality as String:1
+            ])
+        CGImageDestinationFinalize(dest)
+
+        let data = NSKeyedArchiver.archivedDataWithRootObject(vignette)
+        output.adjustmentData = PHAdjustmentData(
+            formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
+
         // now we must tell the photo library to pick up the edited image
         PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-            let asset = self.dataObject
+            print("finishing")
+            let asset = self.asset
             let req = PHAssetChangeRequest(forAsset: asset)
             req.contentEditingOutput = output
             }, completionHandler: {
-                (ok:Bool, err:NSError!) in
+                (ok:Bool, err:NSError?) in
+                print("in completion handler")
                 // at the last minute, the user will get a special "modify?" dialog
                 // if the user refuses, we will receive "false"
                 if ok {
@@ -141,7 +151,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
                     // ...we should now reload it
                     self.setUpInterface()
                 } else {
-                    println(err)
+                    print("phasset change request error: \(err)")
                 }
         })
     }
