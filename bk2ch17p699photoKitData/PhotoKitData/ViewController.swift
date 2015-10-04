@@ -11,6 +11,12 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
+extension PHFetchResult: SequenceType {
+    public func generate() -> NSFastGenerator {
+        return NSFastGenerator(self)
+    }
+}
+
 class ViewController: UIViewController {
     var albums : PHFetchResult!
 
@@ -56,8 +62,7 @@ class ViewController: UIViewController {
         opts.sortDescriptors = [desc]
         let result = PHCollectionList.fetchCollectionListsWithType(
             .MomentList, subtype: .MomentListYear, options: opts)
-        result.enumerateObjectsUsingBlock {
-            (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
+        for obj in result {
             let list = obj as! PHCollectionList
             let f = NSDateFormatter()
             f.dateFormat = "yyyy"
@@ -65,8 +70,7 @@ class ViewController: UIViewController {
             // return;
             if list.collectionListType == .MomentList {
                 let result = PHAssetCollection.fetchMomentsInMomentList(list, options: nil)
-                result.enumerateObjectsUsingBlock {
-                    (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
+                for (ix,obj) in result.enumerate() {
                     let coll = obj as! PHAssetCollection
                     if ix == 0 {
                         print("======= \(result.count) clusters")
@@ -88,8 +92,7 @@ class ViewController: UIViewController {
         let result = PHAssetCollection.fetchAssetCollectionsWithType(
             // let's examine albums synced onto the device from iPhoto
             .Album, subtype: .AlbumSyncedAlbum, options: nil)
-        result.enumerateObjectsUsingBlock {
-            (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
+        for obj in result {
             let album = obj as! PHAssetCollection
             print("\(album.localizedTitle): approximately \(album.estimatedAssetCount) photos")
         }
@@ -105,14 +108,12 @@ class ViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         let result = PHAssetCollection.fetchAssetCollectionsWithType(
             .Album, subtype: .AlbumSyncedAlbum, options: nil)
-        result.enumerateObjectsUsingBlock {
-            (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
+        for obj in result {
             let album = obj as! PHAssetCollection
             alert.addAction(UIAlertAction(title: album.localizedTitle, style: .Default, handler: {
                 (_:UIAlertAction!) in
                 let result = PHAsset.fetchAssetsInAssetCollection(album, options: nil)
-                result.enumerateObjectsUsingBlock {
-                    (obj:AnyObject!, ix:Int, stop:UnsafeMutablePointer<ObjCBool>) in
+                for obj in result {
                     let asset = obj as! PHAsset
                     print(asset.localIdentifier)
                 }

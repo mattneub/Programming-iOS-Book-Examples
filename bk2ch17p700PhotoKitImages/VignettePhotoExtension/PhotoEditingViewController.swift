@@ -88,7 +88,14 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         // If you returned false, the contentEditingInput has past edits "baked in".
         self.input = contentEditingInput
         if let im = self.input?.displaySizeImage {
-            self.displayImage = CIImage(image:im)
+            let scale = max(im.size.width/self.glkview.bounds.width, im.size.height/self.glkview.bounds.height)
+            let sz = CGSizeMake(im.size.width/scale, im.size.height/scale)
+            let im2 = imageOfSize(sz) {
+                // perhaps no need for this, but the image they give us is much larger than we need
+                im.drawInRect(CGRect(origin: CGPoint(), size: sz))
+            }
+
+            self.displayImage = CIImage(image:im2)
             let adj : PHAdjustmentData? = self.input?.adjustmentData
             if let adj = adj where adj.formatIdentifier == self.myidentifier {
                 if let vigAmount = NSKeyedUnarchiver.unarchiveObjectWithData(adj.data) as? Double {

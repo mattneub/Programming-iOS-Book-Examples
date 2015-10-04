@@ -6,14 +6,6 @@ import ImageIO
 import MobileCoreServices
 import MyVignetteFilter
 
-func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(size, false, 0)
-    closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    return result
-}
-
 class DataViewController: UIViewController, EditingViewControllerDelegate {
                             
     @IBOutlet var dataLabel: UILabel!
@@ -60,6 +52,8 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         // thus we can continue our edit where we left off, or remove it (and I illustrate both here)
         options.canHandleAdjustmentData = {
             (adjustmentData : PHAdjustmentData!) in
+            // print("here")
+            // return false // just testing
             return adjustmentData.formatIdentifier == self.myidentifier
         }
         let asset = self.asset
@@ -122,8 +116,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
                 vig.setValue(vignette, forKey: "inputPercentage")
                 ci = vig.outputImage!
             }
-            let outimcg = CIContext(options: nil).createCGImage(ci, fromRect: ci.extent)
-            return outimcg
+            return CIContext(options: nil).createCGImage(ci, fromRect: ci.extent)
         }()
         
         let dest = CGImageDestinationCreateWithURL(outurl, kUTTypeJPEG, 1, nil)!
