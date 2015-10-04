@@ -4,10 +4,11 @@ import UIKit
 import AVFoundation
 import AVKit
 import MobileCoreServices
+import Photos
 
 class ViewController: UIViewController,
 UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-
+    
     @IBOutlet weak var redView: UIView!
     weak var picker : UIImagePickerController?
     
@@ -48,20 +49,21 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             name: UIApplicationWillEnterForegroundNotification,
             object: nil)
     }
-
+    
     
     @IBAction func doTake (sender:AnyObject!) {
-        let ok = UIImagePickerController.isSourceTypeAvailable(.Camera)
+        let cam = UIImagePickerControllerSourceType.Camera
+        let ok = UIImagePickerController.isSourceTypeAvailable(cam)
         if (!ok) {
-            println("no camera")
+            print("no camera")
             return
         }
-        let desiredType = kUTTypeImage as! String
-        // let desiredType = kUTTypeMovie
-        let arr = UIImagePickerController.availableMediaTypesForSourceType(.Camera) as! [String]
-        println(arr)
-        if find(arr, desiredType) == nil {
-            println("no capture")
+        let desiredType = kUTTypeImage as NSString as String
+        // let desiredType = kUTTypeMovie as NSString as String
+        let arr = UIImagePickerController.availableMediaTypesForSourceType(cam)
+        print(arr)
+        if arr?.indexOf(desiredType) == nil {
+            print("no capture")
             return
         }
         let picker = UIImagePickerController()
@@ -76,14 +78,14 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         
         self.presentViewController(picker, animated: true, completion: nil)
     }
-
+    
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-            println(info[UIImagePickerControllerReferenceURL])
+        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+            print(info[UIImagePickerControllerReferenceURL])
             let url = info[UIImagePickerControllerMediaURL] as? NSURL
             var im = info[UIImagePickerControllerOriginalImage] as? UIImage
             let edim = info[UIImagePickerControllerEditedImage] as? UIImage
@@ -94,11 +96,16 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                 let type = info[UIImagePickerControllerMediaType] as? String
                 if type != nil {
                     switch type! {
-                    case kUTTypeImage as! String:
+                    case kUTTypeImage as NSString as String:
                         if im != nil {
                             self.showImage(im!)
+                            // showing how simple it is to save into the Camera Roll
+                            let lib = PHPhotoLibrary.sharedPhotoLibrary()
+                            lib.performChanges({
+                                PHAssetChangeRequest.creationRequestForAssetFromImage(im!)
+                                }, completionHandler: nil)
                         }
-                    case kUTTypeMovie as! String:
+                    case kUTTypeMovie as NSString as String:
                         if url != nil {
                             self.showMovie(url!)
                         }
@@ -115,7 +122,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             av.view.removeFromSuperview()
             av.removeFromParentViewController()
         }
-        self.redView.subviews.map { ($0 as! UIView).removeFromSuperview() }
+        self.redView.subviews.forEach { $0.removeFromSuperview() }
     }
     
     func showImage(im:UIImage) {
@@ -141,6 +148,6 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func tap (g:UIGestureRecognizer) {
         self.picker?.takePicture()
     }
-
-
+    
+    
 }

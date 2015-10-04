@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         self.sess.addOutput(self.snapper)
         
         let cam = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-        let input = AVCaptureDeviceInput(device:cam, error:nil)
+        guard let input = try? AVCaptureDeviceInput(device:cam) else {return}
         self.sess.addInput(input)
         
         let lay = AVCaptureVideoPreviewLayer(session:self.sess)

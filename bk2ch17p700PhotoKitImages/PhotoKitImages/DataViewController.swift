@@ -4,6 +4,7 @@ import UIKit
 import Photos
 import ImageIO
 import MobileCoreServices
+import MyVignetteFilter
 
 func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)

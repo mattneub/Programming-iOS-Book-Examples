@@ -10,35 +10,23 @@
 		324DD41619A42F5500E85278 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324DD41519A42F5500E85278 /* ViewController.swift */; };
 		324DD41819A4346200E85278 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324DD41719A4346200E85278 /* SecondViewController.swift */; };
 		324DD41A19A436A600E85278 /* MyImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324DD41919A436A600E85278 /* MyImagePickerController.swift */; };
-		C9E2173918286A5100A58EAD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E2173818286A5100A58EAD /* Foundation.framework */; };
-		C9E2173B18286A5100A58EAD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E2173A18286A5100A58EAD /* CoreGraphics.framework */; };
-		C9E2173D18286A5100A58EAD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E2173C18286A5100A58EAD /* UIKit.framework */; };
-		C9E2174318286A5100A58EAD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9E2174118286A5100A58EAD /* InfoPlist.strings */; };
-		C9E2174518286A5100A58EAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2174418286A5100A58EAD /* main.m */; };
-		C9E2174918286A5100A58EAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2174818286A5100A58EAD /* AppDelegate.m */; };
+		32BA02E61BC0C90000E63644 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32BA02E51BC0C90000E63644 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		32BA02E81BC0C90E00E63644 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA02E71BC0C90E00E63644 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		C9E2174C18286A5100A58EAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E2174A18286A5100A58EAD /* Main.storyboard */; };
-		C9E2175118286A5100A58EAD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E2175018286A5100A58EAD /* Images.xcassets */; };
+		C9E2175118286A5100A58EAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E2175018286A5100A58EAD /* Assets.xcassets */; };
 		C9E217711828707400A58EAD /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E2176F1828707400A58EAD /* SecondViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		324DD41419A42F5500E85278 /* ch30p962takeAPicture2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch30p962takeAPicture2-Bridging-Header.h"; sourceTree = "<group>"; };
 		324DD41519A42F5500E85278 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		324DD41719A4346200E85278 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		324DD41919A436A600E85278 /* MyImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyImagePickerController.swift; sourceTree = "<group>"; };
+		32BA02E51BC0C90000E63644 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		32BA02E71BC0C90E00E63644 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9E2173518286A5100A58EAD /* ch30p962takeAPicture2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch30p962takeAPicture2.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9E2173818286A5100A58EAD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9E2173A18286A5100A58EAD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C9E2173C18286A5100A58EAD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9E2174018286A5100A58EAD /* ch30p962takeAPicture2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch30p962takeAPicture2-Info.plist"; sourceTree = "<group>"; };
-		C9E2174218286A5100A58EAD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9E2174418286A5100A58EAD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9E2174618286A5100A58EAD /* ch30p962takeAPicture2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch30p962takeAPicture2-Prefix.pch"; sourceTree = "<group>"; };
-		C9E2174718286A5100A58EAD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C9E2174818286A5100A58EAD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9E2174B18286A5100A58EAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9E2175018286A5100A58EAD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9E2175718286A5100A58EAD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C9E2175018286A5100A58EAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9E2176F1828707400A58EAD /* SecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,9 +35,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9E2173B18286A5100A58EAD /* CoreGraphics.framework in Frameworks */,
-				C9E2173D18286A5100A58EAD /* UIKit.framework in Frameworks */,
-				C9E2173918286A5100A58EAD /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				C9E2173E18286A5100A58EAD /* ch30p962takeAPicture2 */,
-				C9E2173718286A5100A58EAD /* Frameworks */,
 				C9E2173618286A5100A58EAD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,43 +57,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9E2173718286A5100A58EAD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9E2173818286A5100A58EAD /* Foundation.framework */,
-				C9E2173A18286A5100A58EAD /* CoreGraphics.framework */,
-				C9E2173C18286A5100A58EAD /* UIKit.framework */,
-				C9E2175718286A5100A58EAD /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C9E2173E18286A5100A58EAD /* ch30p962takeAPicture2 */ = {
 			isa = PBXGroup;
 			children = (
-				C9E2174718286A5100A58EAD /* AppDelegate.h */,
-				C9E2174818286A5100A58EAD /* AppDelegate.m */,
+				32BA02E71BC0C90E00E63644 /* AppDelegate.swift */,
 				C9E2174A18286A5100A58EAD /* Main.storyboard */,
 				324DD41519A42F5500E85278 /* ViewController.swift */,
 				324DD41719A4346200E85278 /* SecondViewController.swift */,
 				C9E2176F1828707400A58EAD /* SecondViewController.xib */,
 				324DD41919A436A600E85278 /* MyImagePickerController.swift */,
-				C9E2175018286A5100A58EAD /* Images.xcassets */,
-				C9E2173F18286A5100A58EAD /* Supporting Files */,
-				324DD41419A42F5500E85278 /* ch30p962takeAPicture2-Bridging-Header.h */,
+				32BA02E51BC0C90000E63644 /* LaunchScreen.storyboard */,
+				C9E2175018286A5100A58EAD /* Assets.xcassets */,
+				C9E2174018286A5100A58EAD /* ch30p962takeAPicture2-Info.plist */,
 			);
 			path = ch30p962takeAPicture2;
-			sourceTree = "<group>";
-		};
-		C9E2173F18286A5100A58EAD /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C9E2174018286A5100A58EAD /* ch30p962takeAPicture2-Info.plist */,
-				C9E2174118286A5100A58EAD /* InfoPlist.strings */,
-				C9E2174418286A5100A58EAD /* main.m */,
-				C9E2174618286A5100A58EAD /* ch30p962takeAPicture2-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +99,7 @@
 		C9E2172D18286A5100A58EAD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -165,8 +127,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9E217711828707400A58EAD /* SecondViewController.xib in Resources */,
-				C9E2175118286A5100A58EAD /* Images.xcassets in Resources */,
-				C9E2174318286A5100A58EAD /* InfoPlist.strings in Resources */,
+				32BA02E61BC0C90000E63644 /* LaunchScreen.storyboard in Resources */,
+				C9E2175118286A5100A58EAD /* Assets.xcassets in Resources */,
 				C9E2174C18286A5100A58EAD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,10 +140,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32BA02E81BC0C90E00E63644 /* AppDelegate.swift in Sources */,
 				324DD41819A4346200E85278 /* SecondViewController.swift in Sources */,
 				324DD41619A42F5500E85278 /* ViewController.swift in Sources */,
-				C9E2174918286A5100A58EAD /* AppDelegate.m in Sources */,
-				C9E2174518286A5100A58EAD /* main.m in Sources */,
 				324DD41A19A436A600E85278 /* MyImagePickerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,14 +150,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C9E2174118286A5100A58EAD /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9E2174218286A5100A58EAD /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C9E2174A18286A5100A58EAD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -241,7 +194,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -274,7 +227,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -285,7 +238,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch30p962takeAPicture2/ch30p962takeAPicture2-Prefix.pch";
@@ -293,7 +245,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ch30p962takeAPicture2/ch30p962takeAPicture2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -304,7 +255,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch30p962takeAPicture2/ch30p962takeAPicture2-Prefix.pch";
@@ -312,7 +262,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ch30p962takeAPicture2/ch30p962takeAPicture2-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -6,6 +6,7 @@ import GLKit
 import OpenGLES
 import MobileCoreServices
 import AVFoundation
+import MyVignetteFilter
 
 protocol EditingViewControllerDelegate : class {
     func finishEditingWithVignette(vignette:Double)
@@ -65,7 +66,7 @@ class EditingViewController: UIViewController, GLKViewDelegate {
         glClear(UInt32(GL_COLOR_BUFFER_BIT))
         
         self.vig.setValue(self.displayImage, forKey: "inputImage")
-        let val = NSNumber(double: Double(self.slider.value))
+        let val = Double(self.slider.value)
         self.vig.setValue(val, forKey:"inputPercentage")
         let output = self.vig.outputImage!
         

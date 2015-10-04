@@ -59,15 +59,16 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     
     @IBAction func doTake (sender:AnyObject!) {
-        let ok = UIImagePickerController.isSourceTypeAvailable(.Camera)
+        let cam = UIImagePickerControllerSourceType.Camera
+        let ok = UIImagePickerController.isSourceTypeAvailable(cam)
         if (!ok) {
-            println("no camera")
+            print("no camera")
             return
         }
-        let arr = UIImagePickerController.availableMediaTypesForSourceType(.Camera) as! [String]
-        let desiredType = kUTTypeImage as! String
-        if find(arr, desiredType) == nil {
-            println("no stills")
+        let arr = UIImagePickerController.availableMediaTypesForSourceType(cam)
+        let desiredType = kUTTypeImage as NSString as String
+        if arr?.indexOf(desiredType) == nil {
+            print("no stills")
             return
         }
         let picker = MyImagePickerController()
@@ -96,8 +97,8 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        var im = info[UIImagePickerControllerOriginalImage] as? UIImage
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let im = info[UIImagePickerControllerOriginalImage] as? UIImage
         if im == nil {
             return
         }
@@ -130,8 +131,8 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         lab.backgroundColor = UIColor.clearColor()
         lab.sizeToFit()
         let b2 = UIBarButtonItem(customView: lab)
-        nc.topViewController.toolbarItems = [b,b2]
-        nc.topViewController.title = "Retake"
+        nc.topViewController!.toolbarItems = [b,b2]
+        nc.topViewController!.title = "Retake"
     }
 
     func doCancel(sender:AnyObject) {

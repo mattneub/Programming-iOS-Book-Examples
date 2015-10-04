@@ -4,7 +4,7 @@ import UIKit
 // NB this bug is fixed in iOS 9
 
 // work around odd behavior (bug?) where CIColor(color:UIColor.whiteColor()) gives transparent, not white
-extension CIColor {
+public extension CIColor {
     convenience init(uicolor:UIColor) {
         var red : CGFloat = 0, green : CGFloat = 0, blue : CGFloat = 0, alpha : CGFloat = 0
         uicolor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
@@ -12,10 +12,10 @@ extension CIColor {
     }
 }
 
-class MyVignetteFilter : CIFilter {
-    var inputImage : CIImage?
-    var inputPercentage : NSNumber? = 1.0
-    override var outputImage : CIImage? {
+public class MyVignetteFilter : CIFilter {
+    public var inputImage : CIImage?
+    public var inputPercentage : NSNumber? = 1.0
+    public override var outputImage : CIImage? {
         return self.makeOutputImage()
     }
     
@@ -42,7 +42,7 @@ class MyVignetteFilter : CIFilter {
         let blend = CIFilter(name: "CIBlendWithAlphaMask")!
         blend.setValue(self.inputImage, forKey: "inputImage")
         let background = CIImage(color: CIColor(uicolor: UIColor.whiteColor()))
-        let background2 = background.imageByCroppingToRect(inputImage.extent)
+        let background2 = background.imageByCroppingToRect(extent)
         blend.setValue(background2, forKey:"inputBackgroundImage")
         blend.setValue(gradimage, forKey: "inputMaskImage")
         

@@ -24,10 +24,12 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>I want to hear everything you say, ever.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>I want to spy on you late at night.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>I want to hear everything you say, ever.</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
