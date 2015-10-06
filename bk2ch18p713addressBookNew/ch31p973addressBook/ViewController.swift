@@ -145,11 +145,10 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                 let pred = CNContact.predicateForContactsMatchingName("Snidely")
                 let keys = CNContactViewController.descriptorForRequiredKeys()
                 let snides = try CNContactStore().unifiedContactsMatchingPredicate(pred, keysToFetch: [keys])
-                guard snides.count > 0 else {
+                guard let snide = snides.first else {
                     print("no snidely")
                     return
                 }
-                let snide = snides[0]
                 let vc = CNContactViewController(forContact:snide)
                 vc.delegate = self
                 vc.message = "Nyah ah ahhh"
