@@ -7,32 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3245FC421BC4C7B800DD735B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3245FC411BC4C7B800DD735B /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		3245FC441BC4C7C100DD735B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3245FC431BC4C7C100DD735B /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		32F8330819A648E000F79E15 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F8330719A648E000F79E15 /* ViewController.swift */; };
-		C9C89B25182A9AAE0073DA93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C89B24182A9AAE0073DA93 /* Foundation.framework */; };
-		C9C89B27182A9AAE0073DA93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C89B26182A9AAE0073DA93 /* CoreGraphics.framework */; };
-		C9C89B29182A9AAE0073DA93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C89B28182A9AAE0073DA93 /* UIKit.framework */; };
-		C9C89B2F182A9AAE0073DA93 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9C89B2D182A9AAE0073DA93 /* InfoPlist.strings */; };
-		C9C89B31182A9AAF0073DA93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C89B30182A9AAE0073DA93 /* main.m */; };
-		C9C89B35182A9AAF0073DA93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C89B34182A9AAF0073DA93 /* AppDelegate.m */; };
 		C9C89B38182A9AAF0073DA93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C89B36182A9AAF0073DA93 /* Main.storyboard */; };
-		C9C89B3D182A9AAF0073DA93 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C89B3C182A9AAF0073DA93 /* Images.xcassets */; };
+		C9C89B3D182A9AAF0073DA93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C89B3C182A9AAF0073DA93 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3245FC411BC4C7B800DD735B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3245FC431BC4C7C100DD735B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32F8330719A648E000F79E15 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9C89B21182A9AAE0073DA93 /* ch32p994reminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch32p994reminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9C89B24182A9AAE0073DA93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C9C89B26182A9AAE0073DA93 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C9C89B28182A9AAE0073DA93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9C89B2C182A9AAE0073DA93 /* ch32p994reminders-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch32p994reminders-Info.plist"; sourceTree = "<group>"; };
-		C9C89B2E182A9AAE0073DA93 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9C89B30182A9AAE0073DA93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9C89B32182A9AAF0073DA93 /* ch32p994reminders-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch32p994reminders-Prefix.pch"; sourceTree = "<group>"; };
-		C9C89B33182A9AAF0073DA93 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C9C89B34182A9AAF0073DA93 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9C89B37182A9AAF0073DA93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9C89B3C182A9AAF0073DA93 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9C89B43182A9AAF0073DA93 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C9C89B3C182A9AAF0073DA93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,9 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9C89B27182A9AAE0073DA93 /* CoreGraphics.framework in Frameworks */,
-				C9C89B29182A9AAE0073DA93 /* UIKit.framework in Frameworks */,
-				C9C89B25182A9AAE0073DA93 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				C9C89B2A182A9AAE0073DA93 /* ch32p994reminders */,
-				C9C89B23182A9AAE0073DA93 /* Frameworks */,
 				C9C89B22182A9AAE0073DA93 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,39 +51,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9C89B23182A9AAE0073DA93 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9C89B24182A9AAE0073DA93 /* Foundation.framework */,
-				C9C89B26182A9AAE0073DA93 /* CoreGraphics.framework */,
-				C9C89B28182A9AAE0073DA93 /* UIKit.framework */,
-				C9C89B43182A9AAF0073DA93 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		C9C89B2A182A9AAE0073DA93 /* ch32p994reminders */ = {
 			isa = PBXGroup;
 			children = (
-				C9C89B33182A9AAF0073DA93 /* AppDelegate.h */,
-				C9C89B34182A9AAF0073DA93 /* AppDelegate.m */,
+				3245FC431BC4C7C100DD735B /* AppDelegate.swift */,
 				C9C89B36182A9AAF0073DA93 /* Main.storyboard */,
 				32F8330719A648E000F79E15 /* ViewController.swift */,
-				C9C89B3C182A9AAF0073DA93 /* Images.xcassets */,
-				C9C89B2B182A9AAE0073DA93 /* Supporting Files */,
+				C9C89B3C182A9AAF0073DA93 /* Assets.xcassets */,
+				3245FC411BC4C7B800DD735B /* LaunchScreen.storyboard */,
+				C9C89B2C182A9AAE0073DA93 /* ch32p994reminders-Info.plist */,
 			);
 			path = ch32p994reminders;
-			sourceTree = "<group>";
-		};
-		C9C89B2B182A9AAE0073DA93 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C9C89B2C182A9AAE0073DA93 /* ch32p994reminders-Info.plist */,
-				C9C89B2D182A9AAE0073DA93 /* InfoPlist.strings */,
-				C9C89B30182A9AAE0073DA93 /* main.m */,
-				C9C89B32182A9AAF0073DA93 /* ch32p994reminders-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +90,7 @@
 		C9C89B19182A9AAE0073DA93 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
@@ -153,8 +117,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9C89B3D182A9AAF0073DA93 /* Images.xcassets in Resources */,
-				C9C89B2F182A9AAE0073DA93 /* InfoPlist.strings in Resources */,
+				3245FC421BC4C7B800DD735B /* LaunchScreen.storyboard in Resources */,
+				C9C89B3D182A9AAF0073DA93 /* Assets.xcassets in Resources */,
 				C9C89B38182A9AAF0073DA93 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,23 +130,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9C89B35182A9AAF0073DA93 /* AppDelegate.m in Sources */,
+				3245FC441BC4C7C100DD735B /* AppDelegate.swift in Sources */,
 				32F8330819A648E000F79E15 /* ViewController.swift in Sources */,
-				C9C89B31182A9AAF0073DA93 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C9C89B2D182A9AAE0073DA93 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9C89B2E182A9AAE0073DA93 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C9C89B36182A9AAF0073DA93 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -227,7 +182,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -260,7 +215,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -271,7 +226,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch32p994reminders/ch32p994reminders-Prefix.pch";
@@ -289,7 +243,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch32p994reminders/ch32p994reminders-Prefix.pch";

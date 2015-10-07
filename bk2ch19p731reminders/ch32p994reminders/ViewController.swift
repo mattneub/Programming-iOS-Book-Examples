@@ -18,13 +18,13 @@ class ViewController: UIViewController {
     var database = EKEventStore()
 
     func determineStatus() -> Bool {
-        let type = EKEntityTypeReminder // *
+        let type = EKEntityType.Reminder // *
         let stat = EKEventStore.authorizationStatusForEntityType(type)
         switch stat {
         case .Authorized:
             return true
         case .NotDetermined:
-            database.requestAccessToEntityType(type, completion:{_,_ in})
+            database.requestAccessToEntityType(type, completion:{_ in})
             return false
         case .Restricted:
             return false
@@ -52,15 +52,11 @@ class ViewController: UIViewController {
 
     @IBAction func doNewReminder (sender:AnyObject!) {
         if !self.determineStatus() {
-            println("not authorized")
+            print("not authorized")
             return
         }
         
         let cal = self.database.defaultCalendarForNewReminders()
-        if cal == nil {
-            println("failed to find calendar")
-            return
-        }
         
         let rem = EKReminder(eventStore:self.database)
         rem.title = "Get bread"
@@ -71,7 +67,7 @@ class ViewController: UIViewController {
         let today = NSDate()
         let greg = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
         // day without time means "all day"
-        let comps : NSCalendarUnit = .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay
+        let comps : NSCalendarUnit = [.Year, .Month, .Day]
         // start date not needed on iOS
         // rem.startDateComponents = [greg components:comps fromDate:today];
         rem.dueDateComponents = greg.components(comps, fromDate:today)
@@ -83,7 +79,7 @@ class ViewController: UIViewController {
         loc.geoLocation = CLLocation(latitude:34.271848, longitude:-119.247714)
         loc.radius = 10*1000 // metres
         alarm.structuredLocation = loc
-        alarm.proximity = EKAlarmProximityEnter // "geofence": we alarm when *arriving*
+        alarm.proximity = .Enter // "geofence": we alarm when *arriving*
         // but this will have no effect until Reminders is granted Location access...
         // and in iOS 8 it won't even ask for it until it is launched
         // also, in iOS 8 the separate background usage pref is withdrawn;
@@ -91,13 +87,13 @@ class ViewController: UIViewController {
         // ...because it means "this app *or one of its features* is visible on screen"
         rem.addAlarm(alarm)
         
-        var err : NSError?
-        let ok = self.database.saveReminder(rem, commit:true, error:&err)
-        if !ok {
-            println("save calendar \(err!.localizedDescription)")
+        do {
+            try self.database.saveReminder(rem, commit:true)
+        } catch {
+            print("save calendar \(error)")
             return
         }
-        println("no error")
+        print("no error")
     }
 
 
