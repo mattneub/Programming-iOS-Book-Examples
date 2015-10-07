@@ -13,12 +13,19 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
+func lend<T where T:NSObject> (closure:(T)->()) -> T {
+    let orig = T()
+    closure(orig)
+    return orig
+}
 
 class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDelegate, EKCalendarChooserDelegate {
-    var database = EKEventStore()
+    let database = EKEventStore()
     var napid : String!
 
     func determineStatus() -> Bool {
+        
+        
         let type = EKEntityType.Event
         let stat = EKEventStore.authorizationStatusForEntityType(type)
         switch stat {
@@ -153,7 +160,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         // need a start date and end date
         let greg = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
         let comp = NSDateComponents()
-        comp.year = 2015
+        comp.year = 2016
         comp.month = 1
         comp.weekday = 1 // Sunday
         comp.weekdayOrdinal = 1 // *first* Sunday
@@ -185,20 +192,21 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         
         let d1 = NSDate() // today
         let greg = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
-        let comp = NSDateComponents()
-        comp.year = 2 // we're going to add 2 to the year
-        let d2 = greg.dateByAddingComponents(comp, toDate:d1, options:[])!
+        let d2 = greg.dateByAddingComponents(lend {
+            (comp:NSDateComponents) in comp.year = 2
+            }, toDate:d1, options:[])!
         let pred = self.database.predicateForEventsWithStartDate(
             d1, endDate:d2, calendars:[cal])
         var events = [EKEvent]()
         dispatch_async(dispatch_get_global_queue(0, 0)) {
             self.database.enumerateEventsMatchingPredicate(pred) {
                 (event:EKEvent, stop:UnsafeMutablePointer<ObjCBool>) in
-                    events += [event]
-                    if (event.title as NSString).rangeOfString("nap").location != NSNotFound {
-                        self.napid = event.calendarItemIdentifier
-                        print("found the nap")
-                    }
+                events += [event]
+                if event.title.rangeOfString("nap") != nil {
+                    self.napid = event.calendarItemIdentifier
+                    print("found the nap")
+                    // stop.memory = true
+                }
             }
             events.sortInPlace {
                 $0.compareStartDateWithEvent($1) == .OrderedAscending
@@ -305,27 +313,27 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func calendarChooserDidFinish(calendarChooser: EKCalendarChooser) {
+    func calendarChooserDidFinish(chooser: EKCalendarChooser) {
         // up to us to respond
-        let cals = calendarChooser.selectedCalendars
-            if cals.count > 0 {
-                let calsToDelete = cals.map {$0.calendarIdentifier}
-                let alert = UIAlertController(title: "Delete selected calendar?", message: nil, preferredStyle: .ActionSheet)
-                alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-                alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: {
-                    _ in
-                    for id in calsToDelete {
-                        if let cal = self.database.calendarWithIdentifier(id) {
-                            _ = try? self.database.removeCalendar(cal, commit: true)
-                        }
-                    }
-                    // dismiss *everything*
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                }))
-                // alert sheet inside presented-or-popover
-                calendarChooser.presentViewController(alert, animated: true, completion: nil)
-                return
+        let cals = chooser.selectedCalendars
+        guard cals.count > 0 else {
+            self.dismissViewControllerAnimated(true, completion:nil)
+            return
+        }
+        let calsToDelete = cals.map {$0.calendarIdentifier}
+        let alert = UIAlertController(title: "Delete selected calendar?", message: nil, preferredStyle: .ActionSheet)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: {
+            _ in
+            for id in calsToDelete {
+                if let cal = self.database.calendarWithIdentifier(id) {
+                    _ = try? self.database.removeCalendar(cal, commit: true)
+                }
             }
-        self.dismissViewControllerAnimated(true, completion:nil)
+            // dismiss *everything*
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        // alert sheet inside presented-or-popover
+        chooser.presentViewController(alert, animated: true, completion: nil)
     }
 }

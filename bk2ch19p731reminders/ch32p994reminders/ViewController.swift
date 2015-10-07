@@ -15,7 +15,7 @@ func delay(delay:Double, closure:()->()) {
 
 class ViewController: UIViewController {
     
-    var database = EKEventStore()
+    let database = EKEventStore()
 
     func determineStatus() -> Bool {
         let type = EKEntityType.Reminder // *
