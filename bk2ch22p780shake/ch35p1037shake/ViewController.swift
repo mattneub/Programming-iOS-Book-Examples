@@ -15,16 +15,16 @@ class ViewController: UIViewController {
         self.becomeFirstResponder()
     }
     
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if self.isFirstResponder() {
-            println("hey, you shook me!")
+            print("hey, you shook me!")
         } else {
             super.motionEnded(motion, withEvent: event)
         }
     }
     
     func textFieldDidEndEditing (textField:UITextField) {
-        println("end editing")
+        print("end editing")
         self.becomeFirstResponder()
     }
     

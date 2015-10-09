@@ -12,13 +12,13 @@ class ViewController: UIViewController {
     
     @IBAction func doButton (sender:AnyObject!) {
         self.ref = nil // start over if user presses button again
-        if !self.motman.deviceMotionAvailable {
+        guard self.motman.deviceMotionAvailable else {
             print("oh well")
             return
         }
         let ref = CMAttitudeReferenceFrame.XArbitraryCorrectedZVertical
         let avail = CMMotionManager.availableAttitudeReferenceFrames()
-        if !avail.contains(ref) {
+        guard avail.contains(ref) else {
             print("darn")
             return
         }

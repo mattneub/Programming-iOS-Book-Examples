@@ -10,9 +10,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var updating = false
     
     @IBAction func doStart (sender:AnyObject!) {
+        
         if !CLLocationManager.headingAvailable() {return} // lacking hardware
         if self.updating {return}
-        println("starting")
+        print("starting")
         self.locman.delegate = self
         self.locman.headingFilter = 5
         self.locman.headingOrientation = .Portrait
@@ -30,11 +31,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.updating = false
     }
 
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         self.doStop(nil)
     }
 
-    func locationManager(manager: CLLocationManager!, didUpdateHeading newHeading: CLHeading!) {
+    func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         var h = newHeading.magneticHeading
         let h2 = newHeading.trueHeading // will be -1 if we have no location info
         print("\(h) \(h2) ")
@@ -43,7 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         let cards = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
         var dir = "N"
-        for (ix, card) in enumerate(cards) {
+        for (ix, card) in cards.enumerate() {
             if h < 45.0/2.0 + 45.0*Double(ix) {
                 dir = card
                 break
@@ -52,10 +53,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if self.lab.text != dir {
             self.lab.text = dir
         }
-        println(dir)
+        print(dir)
     }
     
-    func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager!) -> Bool {
+    func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager) -> Bool {
         return true // if you want the calibration dialog to be able to appear
         // I did in fact see it appear, so this works in iOS 8.3 at least
     }

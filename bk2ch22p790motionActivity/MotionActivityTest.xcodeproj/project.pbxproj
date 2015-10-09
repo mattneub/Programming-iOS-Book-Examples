@@ -8,19 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		320884701A046D44003BFC7F /* MotionActivityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3208846F1A046D44003BFC7F /* MotionActivityExtension.swift */; };
+		3267F4711BC840F400DF4F84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3267F4701BC840F400DF4F84 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		32D0292319AB96CB00773C3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D0292219AB96CB00773C3E /* AppDelegate.swift */; };
 		32D0292819AB96CB00773C3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D0292619AB96CB00773C3E /* Main.storyboard */; };
-		32D0292A19AB96CB00773C3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32D0292919AB96CB00773C3E /* Images.xcassets */; };
+		32D0292A19AB96CB00773C3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32D0292919AB96CB00773C3E /* Assets.xcassets */; };
 		32D0294019AB974A00773C3E /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D0293F19AB974A00773C3E /* MyTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3208846F1A046D44003BFC7F /* MotionActivityExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionActivityExtension.swift; sourceTree = "<group>"; };
+		3267F4701BC840F400DF4F84 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32D0291D19AB96CB00773C3E /* MotionActivityTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotionActivityTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D0292119AB96CB00773C3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32D0292219AB96CB00773C3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32D0292719AB96CB00773C3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32D0292919AB96CB00773C3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32D0292919AB96CB00773C3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32D0293F19AB974A00773C3E /* MyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,18 +60,11 @@
 				32D0293F19AB974A00773C3E /* MyTableViewController.swift */,
 				3208846F1A046D44003BFC7F /* MotionActivityExtension.swift */,
 				32D0292619AB96CB00773C3E /* Main.storyboard */,
-				32D0292919AB96CB00773C3E /* Images.xcassets */,
-				32D0292019AB96CB00773C3E /* Supporting Files */,
-			);
-			path = MotionActivityTest;
-			sourceTree = "<group>";
-		};
-		32D0292019AB96CB00773C3E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				32D0292919AB96CB00773C3E /* Assets.xcassets */,
+				3267F4701BC840F400DF4F84 /* LaunchScreen.storyboard */,
 				32D0292119AB96CB00773C3E /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = MotionActivityTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +93,7 @@
 		32D0291519AB96CB00773C3E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -129,8 +125,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3267F4711BC840F400DF4F84 /* LaunchScreen.storyboard in Resources */,
 				32D0292819AB96CB00773C3E /* Main.storyboard in Resources */,
-				32D0292A19AB96CB00773C3E /* Images.xcassets in Resources */,
+				32D0292A19AB96CB00773C3E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +192,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -231,7 +228,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -242,7 +239,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MotionActivityTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -253,7 +249,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MotionActivityTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -3,15 +3,19 @@ import UIKit
 import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
-    var locman = CLLocationManager()
+    lazy var locman : CLLocationManager = {
+        let locman = CLLocationManager()
+        locman.delegate = self
+        return locman
+    }()
     var startTime : NSDate!
     var trying = false
+    var doThisWhenAuthorized : (() -> ())?
     
     func determineStatus() -> Bool {
-        let ok = CLLocationManager.locationServicesEnabled()
-        if !ok {
-            return true // ! this is so that we try to use it anyway...
-            // system will put up a dialog suggesting the user turn on Location Services
+        guard CLLocationManager.locationServicesEnabled() else {
+            self.locman.startUpdatingLocation() // might get "enable" dialog
+            return false
         }
         let status = CLLocationManager.authorizationStatus()
         switch status {
@@ -20,13 +24,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         case .NotDetermined:
             self.locman.requestWhenInUseAuthorization()
             // locman.requestAlwaysAuthorization()
-            return true // NB, this is different from strategy in previous chapters
+            return false
         case .Restricted:
             return false
         case .Denied:
-            // new iOS 8 feature: sane way of getting the user directly to the relevant prefs
-            // I think the crash-in-background issue is now gone
-            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use Location Services?", preferredStyle: .Alert)
+            let message = "Wouldn't you like to authorize" +
+            "this app to use Location Services?"
+            let alert = UIAlertController(title: "Need Authorization", message: message, preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
                 _ in
@@ -38,23 +42,43 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        print("did change auth: \(status.rawValue)")
+        switch status {
+        case .AuthorizedAlways, .AuthorizedWhenInUse:
+            self.doThisWhenAuthorized?()
+        default: break
+        }
+    }
+    
+    let which = 2 // 1 is old way, 2 is new way
+    
     @IBAction func doFindMe (sender:AnyObject!) {
-        if !self.determineStatus() {
-            println("not authorized")
+        self.doThisWhenAuthorized = {
+            [unowned self] in
+            print("resuming")
+            self.doFindMe(sender)
+        }
+        guard self.determineStatus() else {
+            print("not authorized")
             return
         }
-        // if Location Services is off and we get here, system will suggest turning it on
-        // if it's on and undetermined, we get the request dialog...
-        // ... and if the user denies us, then startUpdatingLocation() will fail...
-        // ... and we will fall into didFailWithError - so we'll shut everything down there
-        if self.trying { return }
-        self.trying = true
-        self.locman.delegate = self
-        self.locman.desiredAccuracy = kCLLocationAccuracyBest
-        self.locman.activityType = .Fitness
-        self.startTime = nil
-        println("starting")
-        self.locman.startUpdatingLocation()
+        self.doThisWhenAuthorized = nil
+        
+        switch which {
+        case 1:
+            if self.trying { return }
+            self.trying = true
+            self.locman.desiredAccuracy = kCLLocationAccuracyBest
+            self.locman.activityType = .Fitness
+            self.startTime = nil
+            print("starting")
+            self.locman.startUpdatingLocation()
+        case 2:
+            self.locman.desiredAccuracy = kCLLocationAccuracyBest
+            self.locman.requestLocation()
+        default: break
+        }
     }
     
     func stopTrying () {
@@ -63,37 +87,45 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.trying = false
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("failed: \(error)")
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("failed: \(error)")
         self.stopTrying()
     }
     
     let REQ_ACC : CLLocationAccuracy = 10
     let REQ_TIME : NSTimeInterval = 10
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        print("did update location ")
-        let loc = locations.last as! CLLocation
-        let acc = loc.horizontalAccuracy
-        let time = loc.timestamp
-        let coord = loc.coordinate
-        if self.startTime == nil {
-            self.startTime = NSDate()
-            return // ignore first attempt
-        }
-        println(acc)
-        let elapsed = time.timeIntervalSinceDate(self.startTime)
-        if elapsed > REQ_TIME {
-            println("This is taking too long")
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        switch which {
+        case 1:
+            print("did update location ")
+            let loc = locations.last!
+            let acc = loc.horizontalAccuracy
+            let time = loc.timestamp
+            let coord = loc.coordinate
+            if self.startTime == nil {
+                self.startTime = NSDate()
+                return // ignore first attempt
+            }
+            print(acc)
+            let elapsed = time.timeIntervalSinceDate(self.startTime)
+            if elapsed > REQ_TIME {
+                print("This is taking too long")
+                self.stopTrying()
+                return
+            }
+            if acc < 0 || acc > REQ_ACC {
+                return // wait for the next one
+            }
+            // got it
+            print("You are at \(coord.latitude) \(coord.longitude)")
             self.stopTrying()
-            return
+        case 2:
+            let loc = locations.last!
+            let coord = loc.coordinate
+            print("The quick way: You are at \(coord.latitude) \(coord.longitude)")
+        default: break
         }
-        if acc < 0 || acc > REQ_ACC {
-            return // wait for the next one
-        }
-        // got it
-        println("You are at \(coord.latitude) \(coord.longitude)")
-        self.stopTrying()
     }
 
 }

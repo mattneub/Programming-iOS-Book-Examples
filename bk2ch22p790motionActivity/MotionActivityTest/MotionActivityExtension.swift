@@ -11,8 +11,9 @@ extension CMMotionActivity {
         let w = tf(self.walking)
         let r = tf(self.running)
         let a = tf(self.automotive)
+        let c = tf(self.cycling)
         let u = tf(self.unknown)
-        return "\(s) \(w) \(r) \(a) \(u)"
+        return "\(s) \(w) \(r) \(a) \(c) \(u)"
     }
 
 }

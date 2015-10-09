@@ -9,14 +9,14 @@ class ViewController: UIViewController {
     var timer : NSTimer!
     
     @IBAction func doButton (sender:AnyObject!) {
-        if !self.motman.deviceMotionAvailable {
+        guard self.motman.deviceMotionAvailable else {
             print("Oh, well")
             return
         }
         // idiot Swift numeric foo (different in iOS 8.3 but still idiotic)
         let ref = CMAttitudeReferenceFrame.XMagneticNorthZVertical
         let avail = CMMotionManager.availableAttitudeReferenceFrames()
-        if !avail.contains(ref) {
+        guard avail.contains(ref) else {
             print("darn")
             return
         }

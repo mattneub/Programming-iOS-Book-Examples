@@ -16,12 +16,12 @@ class MyTableViewController: UITableViewController {
         let b = UIBarButtonItem(title: "Start", style: .Plain, target: self, action: "doStart:")
         self.navigationItem.rightBarButtonItem = b
         
-        let ok = CMStepCounter.isStepCountingAvailable()
-        println("step counting: \(ok)")
+//        let ok = CMStepCounter.isStepCountingAvailable()
+//        print("step counting: \(ok)")
         let ok2 = CMPedometer.isStepCountingAvailable()
-        println("pedometer: \(ok2)")
+        print("pedometer: \(ok2)")
         let ok3 = CMPedometer.isDistanceAvailable()
-        println("distance: \(ok3)")
+        print("distance: \(ok3)")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -31,7 +31,7 @@ class MyTableViewController: UITableViewController {
     
     func checkAuthorization() {
         if !CMMotionActivityManager.isActivityAvailable() {
-            println("darn")
+            print("darn")
             return
         }
         // there is also CMPedometer and various is...Available in iOS 8 on a subset of devices
@@ -40,13 +40,13 @@ class MyTableViewController: UITableViewController {
         // this will cause the system authorization dialog to be presented if necessary
         let now = NSDate()
         self.actman.queryActivityStartingFromDate(now, toDate:now, toQueue:self.queue) {
-            (arr:[AnyObject]!, err:NSError!) in
-            let notauth = Int(CMErrorMotionActivityNotAuthorized.value)
-            if err != nil && err.code == notauth {
-                println("no authorization")
+            (arr:[CMMotionActivity]?, err:NSError?) in
+            let notauth = Int(CMErrorMotionActivityNotAuthorized.rawValue)
+            if err != nil && err!.code == notauth {
+                print("no authorization")
                 self.authorized = false
             } else {
-                println("authorized")
+                print("authorized")
                 self.authorized = true
             }
         }
@@ -62,21 +62,24 @@ class MyTableViewController: UITableViewController {
         let now = NSDate()
         let yester = now.dateByAddingTimeInterval(-60*60*24)
         self.actman.queryActivityStartingFromDate(yester, toDate: now, toQueue: NSOperationQueue.mainQueue()) {
-            (arr:[AnyObject]!, err:NSError!) -> Void in
-            var acts = arr as! [CMMotionActivity]
+            (arr:[CMMotionActivity]?, err:NSError?) -> Void in
+            guard var acts = arr else {return}
             // crude filter: eliminate empties, low-confidence, and successive duplicates
-            for i in stride(from: acts.count-1, through: 0, by: -1) {
-                if acts[i].overallAct() == "f f f f f" {
+            for i in (0..<acts.count).reverse() {
+                if acts[i].overallAct() == "f f f f f f" {
+                    print("removing blank act")
                     acts.removeAtIndex(i)
                 }
             }
-            for i in stride(from: acts.count-1, through: 0, by: -1) {
+            for i in (0..<acts.count).reverse() {
                 if acts[i].confidence.rawValue < 2 {
+                    print("removing low confidence value")
                     acts.removeAtIndex(i)
                 }
             }
-            for i in stride(from: acts.count-1, through: 1, by: -1) {
+            for i in (1..<acts.count).reverse() {
                 if acts[i].overallAct() == acts[i-1].overallAct() {
+                    print("removing act identical to previous")
                     acts.removeAtIndex(i)
                 }
             }
@@ -89,10 +92,10 @@ class MyTableViewController: UITableViewController {
             format.dateFormat = "MMM d, HH:mm:ss"
             
             for act in acts {
-                println("=======")
-                println(format.stringFromDate(act.startDate))
-                println("S W R A U")
-                println(self.overallAct(act))
+                print("=======")
+                print(format.stringFromDate(act.startDate))
+                print("S W R A U")
+                print(self.overallAct(act))
             }
             */
             
@@ -114,7 +117,7 @@ class MyTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
 
         let act = self.data[indexPath.row]
         let format = NSDateFormatter()

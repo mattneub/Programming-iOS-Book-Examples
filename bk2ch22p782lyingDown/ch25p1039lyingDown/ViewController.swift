@@ -26,34 +26,33 @@ class ViewController: UIViewController {
             self.stopAccelerometer()
             return
         }
-        if !self.motman.accelerometerAvailable {
-            println("Oh, well")
+        guard self.motman.accelerometerAvailable else {
+            print("Oh, well")
             return
         }
         self.motman.accelerometerUpdateInterval = 1.0 / 30.0
         
-        let which = 1
+        var which : Int { return 2 }
         switch which {
         case 1:
             self.motman.startAccelerometerUpdates()
             self.timer = NSTimer.scheduledTimerWithTimeInterval(self.motman.accelerometerUpdateInterval, target: self, selector: "pollAccel:", userInfo: nil, repeats: true)
         case 2:
             self.motman.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: {
-                (accelerometerData:CMAccelerometerData!, error:NSError!) in
-                if error != nil {
-                    println(error)
+                (accelerometerData:CMAccelerometerData?, error:NSError?) in
+                guard let dat = accelerometerData else {
+                    print(error)
                     self.stopAccelerometer()
                     return
                 }
-                self.receiveAccel(accelerometerData)
+                self.receiveAccel(dat)
             })
         default:break
         }
     }
     
     func pollAccel (_:AnyObject!) {
-        let dat = self.motman.accelerometerData
-        if dat == nil { return }
+        guard let dat = self.motman.accelerometerData else {return}
         self.receiveAccel(dat)
     }
     

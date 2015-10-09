@@ -24,14 +24,16 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>The app would like to tell you where you are.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>The app would like to send your location info to the NSA.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>The app would like to tell you where you are.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
