@@ -2,6 +2,17 @@
 import UIKit
 import MapKit
 import AddressBookUI
+import Contacts
+
+func delay(delay:Double, closure:()->()) {
+    dispatch_after(
+        dispatch_time(
+            DISPATCH_TIME_NOW,
+            Int64(delay * Double(NSEC_PER_SEC))
+        ),
+        dispatch_get_main_queue(), closure)
+}
+
 
 class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     @IBOutlet var map : MKMapView!
@@ -43,18 +54,21 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     }
 
     @IBAction func reportAddress (sender:AnyObject!) {
-        let loc = self.map.userLocation.location
-        if loc == nil {
-            println("I don't know where you are now")
+        guard let loc = self.map.userLocation.location else {
+            print("I don't know where you are now")
             return
         }
         let geo = CLGeocoder()
         geo.reverseGeocodeLocation(loc) {
-            (placemarks : [AnyObject]!, error : NSError!) in
-            if placemarks != nil {
-                let p = placemarks[0] as! CLPlacemark
-                let s = ABCreateStringWithAddressDictionary(p.addressDictionary, false)
-                println("you are at:\n\(s)") // do something with address
+            (placemarks : [CLPlacemark]?, error : NSError?) in
+            guard let ps = placemarks where ps.count > 0 else {return}
+            let p = ps[0]
+            if let d = p.addressDictionary {
+                if let add = d["FormattedAddressLines"] as? [String] {
+                    for line in add {
+                        print(line)
+                    }
+                }
             }
         }
     }
@@ -62,16 +76,16 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         let s = searchBar.text
-        if s == nil || count(s) < 5 { return }
+        if s == nil || s!.characters.count < 5 { return }
         let geo = CLGeocoder()
-        geo.geocodeAddressString(s) {
-            (placemarks : [AnyObject]!, error : NSError!) in
-            if nil == placemarks {
-                println(error.localizedDescription)
+        geo.geocodeAddressString(s!) {
+            (placemarks : [CLPlacemark]?, error : NSError?) in
+            guard let placemarks = placemarks else {
+                print(error?.localizedDescription)
                 return
             }
             self.map.showsUserLocation = false
-            let p = placemarks[0] as! CLPlacemark
+            let p = placemarks[0]
             let mp = MKPlacemark(placemark:p)
             self.map.removeAnnotations(self.map.annotations)
             self.map.addAnnotation(mp)
@@ -82,10 +96,8 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     }
     
     @IBAction func thaiFoodNearMapLocation (sender:AnyObject!) {
-        let userLoc = self.map.userLocation
-        let loc = userLoc.location
-        if loc == nil {
-            println("I don't know where you are now")
+        guard let loc = self.map.userLocation.location else {
+            print("I don't know where you are now")
             return
         }
         let req = MKLocalSearchRequest()
@@ -93,15 +105,15 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         req.region = MKCoordinateRegionMake(loc.coordinate, MKCoordinateSpanMake(1,1))
         let search = MKLocalSearch(request:req)
         search.startWithCompletionHandler() {
-            (response : MKLocalSearchResponse!, error : NSError!) in
-            if response == nil {
-                println(error)
+            (response : MKLocalSearchResponse?, error : NSError?) in
+            guard let response = response else {
+                print(error)
                 return
             }
             self.map.showsUserLocation = false
-            let mi = response.mapItems[0] as! MKMapItem // I'm feeling lucky
+            let mi = response.mapItems[0] // I'm feeling lucky
             let place = mi.placemark
-            let loc = place.location.coordinate
+            let loc = place.location!.coordinate
             let reg = MKCoordinateRegionMakeWithDistance(loc, 1200, 1200)
             self.map.setRegion(reg, animated:true)
             let ann = MKPointAnnotation()
@@ -116,7 +128,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         let userLoc = self.map.userLocation
         let loc = userLoc.location
         if loc == nil {
-            println("I don't know where you are now")
+            print("I don't know where you are now")
             return
         }
         let req = MKLocalSearchRequest()
@@ -124,42 +136,42 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         req.region = self.map.region
         let search = MKLocalSearch(request:req)
         search.startWithCompletionHandler() {
-            (response : MKLocalSearchResponse!, error : NSError!) in
-            if response == nil {
-                println(error)
+            (response : MKLocalSearchResponse?, error : NSError?) in
+            guard let response = response else {
+                print(error)
                 return
             }
-            println("Got restaurant address")
-            let mi = response.mapItems[0] as! MKMapItem // I'm still feeling lucky
+            print("Got restaurant address")
+            let mi = response.mapItems[0] // I'm still feeling lucky
             let req = MKDirectionsRequest()
-            req.setSource(MKMapItem.mapItemForCurrentLocation())
-            req.setDestination(mi)
+            req.source = MKMapItem.mapItemForCurrentLocation()
+            req.destination = mi
             let dir = MKDirections(request:req)
             dir.calculateDirectionsWithCompletionHandler() {
-                (response:MKDirectionsResponse!, error:NSError!) in
-                if response == nil {
-                    println(error)
+                (response:MKDirectionsResponse?, error:NSError?) in
+                guard let response = response else {
+                    print(error)
                     return
                 }
-                println("got directions")
-                let route = response.routes[0] as! MKRoute // I'm feeling insanely lucky
+                print("got directions")
+                let route = response.routes[0] // I'm feeling insanely lucky
                 let poly = route.polyline
                 self.map.addOverlay(poly)
                 for step in route.steps {
-                    println("After \(step.distance) metres: \(step.instructions)")
+                    print("After \(step.distance) metres: \(step.instructions)")
                 }
             }
         }
     }
 
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-        var v : MKPolylineRenderer! = nil
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         if let overlay = overlay as? MKPolyline {
-            v = MKPolylineRenderer(polyline:overlay)
+            let v = MKPolylineRenderer(polyline:overlay)
             v.strokeColor = UIColor.blueColor().colorWithAlphaComponent(0.8)
             v.lineWidth = 2
+            return v
         }
-        return v
+        return MKOverlayRenderer()
     }
     
 }

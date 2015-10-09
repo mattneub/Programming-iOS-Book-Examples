@@ -3,7 +3,7 @@ import UIKit
 import MapKit
 
 class MyAnnotationView : MKAnnotationView {
-    override init(annotation:MKAnnotation, reuseIdentifier:String) {
+    override init(annotation:MKAnnotation?, reuseIdentifier:String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         let im = UIImage(named:"clipartdirtbike.gif")!
         self.frame = CGRectMake(0, 0, im.size.width / 3.0 + 5, im.size.height / 3.0 + 5)

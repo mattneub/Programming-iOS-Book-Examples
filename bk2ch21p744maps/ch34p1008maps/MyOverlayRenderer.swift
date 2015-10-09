@@ -3,16 +3,17 @@
 import UIKit
 import MapKit
 
+
 class MyOverlayRenderer : MKOverlayRenderer {
-    var angle : CGFloat
+    var angle : CGFloat = 0
     
-    init(overlay:MKOverlay!, angle:CGFloat) {
+    init(overlay:MKOverlay, angle:CGFloat) {
         self.angle = angle
         super.init(overlay:overlay)
     }
     
-    override func drawMapRect(mapRect: MKMapRect, zoomScale: MKZoomScale, inContext context: CGContext!) {
-        // println isn't thread-safe
+    override func drawMapRect(mapRect: MKMapRect, zoomScale: MKZoomScale, inContext context: CGContext) {
+        // print isn't thread-safe
         // MKStringFromMapRect isn't available in Swift
         let s = "\(mapRect.origin.x) \(mapRect.origin.y) \(mapRect.size.width) \(mapRect.size.height)"
         NSLog("draw this: %@", s)
@@ -43,10 +44,9 @@ class MyOverlayRenderer : MKOverlayRenderer {
         CGPathCloseSubpath(p)
         
         CGContextAddPath(context, p)
-        CGContextDrawPath(context, kCGPathFillStroke)
+        CGContextDrawPath(context, .FillStroke)
     }
 }
-
 
 
 

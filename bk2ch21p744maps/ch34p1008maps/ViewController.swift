@@ -30,9 +30,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // let reg = MKCoordinateRegionMakeWithDistance(loc, 1200, 1200)
         self.map.region = reg
         //  or ...
-        //        let pt = MKMapPointForCoordinate(loc)
-        //        let w = MKMapPointsPerMeterAtLatitude(loc.latitude) * 1200
-        //        self.map.visibleMapRect = MKMapRectMake(pt.x - w/2.0, pt.y - w/2.0, w, w)
+//                let pt = MKMapPointForCoordinate(loc)
+//                let w = MKMapPointsPerMeterAtLatitude(loc.latitude) * 1200
+//                self.map.visibleMapRect = MKMapRectMake(pt.x - w/2.0, pt.y - w/2.0, w, w)
         
         self.annloc = CLLocationCoordinate2DMake(34.923964,-120.219558)
         
@@ -131,15 +131,15 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if which == 3 {
             var v : MKAnnotationView! = nil
-            if annotation.title == "Park here" {
+            if let t = annotation.title where t == "Park here" {
                 let ident = "greenPin"
                 v = mapView.dequeueReusableAnnotationViewWithIdentifier(ident)
                 if v == nil {
                     v = MKPinAnnotationView(annotation:annotation, reuseIdentifier:ident)
-                    (v as! MKPinAnnotationView).pinColor = .Green
+                    (v as! MKPinAnnotationView).pinTintColor = MKPinAnnotationView.greenPinColor() // or any UIColor
                     v.canShowCallout = true
                     (v as! MKPinAnnotationView).animatesDrop = true
                     
@@ -150,7 +150,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         if which == 4 {
             var v : MKAnnotationView! = nil
-            if annotation.title == "Park here" {
+            if let t = annotation.title where t == "Park here" {
                 let ident = "bike"
                 v = mapView.dequeueReusableAnnotationViewWithIdentifier(ident)
                 if v == nil {
@@ -167,7 +167,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         if which == 5 {
             var v : MKAnnotationView! = nil
-            if annotation.title == "Park here" {
+            if let t = annotation.title where t == "Park here" {
                 let ident = "bike"
                 v = mapView.dequeueReusableAnnotationViewWithIdentifier(ident)
                 if v == nil {
@@ -190,7 +190,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
                         .imageWithRenderingMode(.AlwaysTemplate)
                     let iv = UIImageView(image:im)
                     v.leftCalloutAccessoryView = iv
-                    v.rightCalloutAccessoryView = UIButton.buttonWithType(.InfoLight) as! UIButton
+                    v.rightCalloutAccessoryView = UIButton(type:.InfoLight)
+                    let lab = UILabel()
+                    lab.text = "With a hey and a ho and a hey nonny no!"
+                    lab.numberOfLines = 0
+                    lab.font = lab.font.fontWithSize(10)
+                    v.detailCalloutAccessoryView = lab
                 }
                 v.annotation = annotation
                 v.draggable = true
@@ -200,9 +205,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
         return nil
     }
     
-    func mapView(mapView: MKMapView!, didAddAnnotationViews views: [AnyObject]!) {
+    // is this a bug? we get this message even if the user taps the whole callout,
+    // reporting that the button was tapped even though it wasn't
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        print("tap \(control)")
+    }
+    
+    func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
         if which >= 7 {
-            for aView in views as! [MKAnnotationView] {
+            for aView in views {
                 if aView.reuseIdentifier == "bike" {
                     aView.transform = CGAffineTransformMakeScale(0, 0)
                     aView.alpha = 0
@@ -215,36 +227,36 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+    // hmm, now returns non-nil MKOverlayRenderer
+    // this changes the structure of my code
+    
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         if which == 8 {
-            var v : MKPolygonRenderer! = nil
             if let overlay = overlay as? MKPolygon {
-                v = MKPolygonRenderer(polygon:overlay)
+                let v = MKPolygonRenderer(polygon:overlay)
                 v.fillColor = UIColor.redColor().colorWithAlphaComponent(0.1)
                 v.strokeColor = UIColor.redColor().colorWithAlphaComponent(0.8)
                 v.lineWidth = 2
+                return v
             }
-            return v
         }
         if which == 9 {
-            var v : MKOverlayPathRenderer! = nil
             if let overlay = overlay as? MyOverlay {
-                v = MKOverlayPathRenderer(overlay:overlay)
+                let v = MKOverlayPathRenderer(overlay:overlay)
                 v.path = overlay.path.CGPath
                 v.fillColor = UIColor.redColor().colorWithAlphaComponent(0.2)
                 v.strokeColor = UIColor.blackColor()
                 v.lineWidth = 2
+                return v
             }
-            return v
         }
         if which == 10 {
-            var v : MKOverlayRenderer! = nil
             if overlay is MyOverlay {
-                v = MyOverlayRenderer(overlay:overlay, angle: -CGFloat(M_PI)/3.5)
+                let v = MyOverlayRenderer(overlay:overlay, angle: -CGFloat(M_PI)/3.5)
+                return v
             }
-            return v
         }
-        return nil
+        return MKOverlayRenderer() // ???? why did they make this non-nil?
     }
     
     @IBAction func showPOIinMapsApp (sender:AnyObject) {
@@ -252,16 +264,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let mi = MKMapItem(placemark: p)
         mi.name = "A Great Place to Dirt Bike" // label to appear in Maps app
         // setting the span seems to have no effect
-        //let span = NSValue(MKCoordinateSpan:self.map.region.span)
         let opts = [
-            MKLaunchOptionsMapTypeKey: MKMapType.Hybrid.rawValue,
-            //MKLaunchOptionsMapSpanKey: span
+            MKLaunchOptionsMapTypeKey: MKMapType.Standard.rawValue,
+//            MKLaunchOptionsMapCenterKey: NSValue(MKCoordinate:self.map.region.center),
+//            MKLaunchOptionsMapSpanKey: NSValue(MKCoordinateSpan:self.map.region.span)
         ]
         mi.openInMapsWithLaunchOptions(opts)
         
     }
     
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
         switch (newState) {
         case .Starting:
             view.dragState = .Dragging
