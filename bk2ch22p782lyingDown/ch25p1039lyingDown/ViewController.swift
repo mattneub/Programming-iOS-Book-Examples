@@ -4,6 +4,12 @@ import UIKit
 import CoreMotion
 
 class ViewController: UIViewController {
+    
+    enum State {
+        case Unknown
+        case LyingDown
+        case NotLyingDown
+    }
 
     let motman = CMMotionManager()
     var timer : NSTimer!
@@ -11,14 +17,14 @@ class ViewController: UIViewController {
     var oldX = 0.0
     var oldY = 0.0
     var oldZ = 0.0
-    var state = 0
+    var state = State.Unknown
     
     func stopAccelerometer () {
         self.timer?.invalidate()
         self.timer = nil
         self.motman.stopAccelerometerUpdates()
         self.label.text = ""
-        (oldX, oldY, oldZ, state) = (0,0,0,0)
+        (oldX, oldY, oldZ, state) = (0,0,0,.Unknown)
     }
     
     @IBAction func doButton (sender:AnyObject!) {
@@ -32,7 +38,7 @@ class ViewController: UIViewController {
         }
         self.motman.accelerometerUpdateInterval = 1.0 / 30.0
         
-        var which : Int { return 2 }
+        var which : Int { return 1 }
         switch which {
         case 1:
             self.motman.startAccelerometerUpdates()
@@ -70,13 +76,13 @@ class ViewController: UIViewController {
         let z = self.oldZ
         let accu = 0.08
         if abs(x) < accu && abs(y) < accu && z < -0.5 {
-            if self.state == -1 || self.state == 1 {
-                self.state = 0
+            if self.state == .Unknown || self.state == .NotLyingDown {
+                self.state = .LyingDown
                 self.label.text = "I'm lying on my back... ahhh..."
             }
         } else {
-            if self.state == -1 || self.state == 0 {
-                self.state = 1
+            if self.state == .Unknown || self.state == .LyingDown {
+                self.state = .NotLyingDown
                 self.label.text = "Hey, put me back down on the table!"
             }
         }

@@ -3,6 +3,12 @@ import UIKit
 import CoreMotion
 
 class ViewController: UIViewController {
+    
+    enum Slap {
+        case Unknown
+        case Left
+        case Right
+    }
 
     let motman = CMMotionManager()
     var polltimer : NSTimer!
@@ -12,7 +18,7 @@ class ViewController: UIViewController {
     var oldY = 0.0
     var oldZ = 0.0
     var oldTime : NSTimeInterval = 0
-    var lastSlap = 0
+    var lastSlap = Slap.Unknown
     
     @IBAction func doButton (sender:AnyObject!) {
         if !self.motman.accelerometerAvailable {
@@ -41,9 +47,9 @@ class ViewController: UIViewController {
             // print(x)
         }
         if x < -thresh {
-            if dat.timestamp - self.oldTime > 0.5 || self.lastSlap == 1 {
+            if dat.timestamp - self.oldTime > 0.5 || self.lastSlap == .Right {
                 self.oldTime = dat.timestamp
-                self.lastSlap = -1
+                self.lastSlap = .Left
                 self.canceltimer?.cancel()
                 self.canceltimer = CancelableTimer(once: true) {
                     print("left")
@@ -51,9 +57,9 @@ class ViewController: UIViewController {
                 self.canceltimer.startWithInterval(0.5)
             }
         } else if x > thresh {
-            if dat.timestamp - self.oldTime > 0.5 || self.lastSlap == -1 {
+            if dat.timestamp - self.oldTime > 0.5 || self.lastSlap == .Left {
                 self.oldTime = dat.timestamp
-                self.lastSlap = 1
+                self.lastSlap = .Right
                 self.canceltimer?.cancel()
                 self.canceltimer = CancelableTimer(once: true) {
                     print("right")

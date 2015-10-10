@@ -6,15 +6,17 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet var lab : UILabel!
-    var locman = CLLocationManager()
+    lazy var locman : CLLocationManager = {
+        let locman = CLLocationManager()
+        locman.delegate = self
+        return locman
+        }()
     var updating = false
     
     @IBAction func doStart (sender:AnyObject!) {
-        
-        if !CLLocationManager.headingAvailable() {return} // lacking hardware
+        guard CLLocationManager.headingAvailable() else {return} // lacking hardware
         if self.updating {return}
         print("starting")
-        self.locman.delegate = self
         self.locman.headingFilter = 5
         self.locman.headingOrientation = .Portrait
         self.updating = true

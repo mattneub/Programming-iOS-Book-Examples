@@ -39,7 +39,7 @@ class MyTableViewController: UITableViewController {
         // instead, we attempt to "tickle" the activity manager and see if we get an error
         // this will cause the system authorization dialog to be presented if necessary
         let now = NSDate()
-        self.actman.queryActivityStartingFromDate(now, toDate:now, toQueue:self.queue) {
+        self.actman.queryActivityStartingFromDate(now, toDate:now, toQueue:NSOperationQueue.mainQueue()) {
             (arr:[CMMotionActivity]?, err:NSError?) in
             let notauth = Int(CMErrorMotionActivityNotAuthorized.rawValue)
             if err != nil && err!.code == notauth {
@@ -61,22 +61,14 @@ class MyTableViewController: UITableViewController {
         // collect historical data
         let now = NSDate()
         let yester = now.dateByAddingTimeInterval(-60*60*24)
-        self.actman.queryActivityStartingFromDate(yester, toDate: now, toQueue: NSOperationQueue.mainQueue()) {
+        self.actman.queryActivityStartingFromDate(yester, toDate: now, toQueue: self.queue) {
             (arr:[CMMotionActivity]?, err:NSError?) -> Void in
             guard var acts = arr else {return}
             // crude filter: eliminate empties, low-confidence, and successive duplicates
-            for i in (0..<acts.count).reverse() {
-                if acts[i].overallAct() == "f f f f f f" {
-                    print("removing blank act")
-                    acts.removeAtIndex(i)
-                }
-            }
-            for i in (0..<acts.count).reverse() {
-                if acts[i].confidence.rawValue < 2 {
-                    print("removing low confidence value")
-                    acts.removeAtIndex(i)
-                }
-            }
+            let blank = "f f f f f f"
+            acts = acts.filter {act in act.overallAct() != blank}
+            acts = acts.filter {act in act.confidence == .High}
+            acts = acts.filter {act in !(act.automotive && act.stationary)}
             for i in (1..<acts.count).reverse() {
                 if acts[i].overallAct() == acts[i-1].overallAct() {
                     print("removing act identical to previous")
