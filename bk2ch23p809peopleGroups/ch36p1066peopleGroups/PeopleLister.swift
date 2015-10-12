@@ -27,7 +27,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = self.fileURL.lastPathComponent!.stringByDeletingPathExtension
+        self.title = (self.fileURL.lastPathComponent! as NSString).stringByDeletingPathExtension
         let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "doAdd:")
         self.navigationItem.rightBarButtonItems = [b]
         
@@ -68,17 +68,19 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if self.doc == nil {
+            print("doc was nil")
             return 0
         }
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("self.people was \(self.people)")
         return self.people.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Person", forIndexPath:indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Person", forIndexPath:indexPath)
         let first = cell.viewWithTag(1) as! UITextField
         let last = cell.viewWithTag(2) as! UITextField
         let p = self.people[indexPath.row]
@@ -90,7 +92,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        println("did end editing")
+        print("did end editing")
         var v = textField.superview!
         while !(v is UITableViewCell) {v = v.superview!}
         let cell = v as! UITableViewCell
@@ -111,7 +113,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     }
     
     func forceSave(_:AnyObject?) {
-        println("force save")
+        print("force save")
         self.tableView.endEditing(true)
         self.doc.saveToURL(self.doc.fileURL, forSaveOperation:.ForOverwriting, completionHandler:nil)
     }

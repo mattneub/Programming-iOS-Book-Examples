@@ -7,22 +7,22 @@ class PeopleDocument: UIDocument {
     var people = [Person]()
     
     override func loadFromContents(contents: AnyObject,
-        ofType typeName: String,
-        error outError: NSErrorPointer) -> Bool {
-            println("loading \(typeName)")
+        ofType typeName: String?) throws {
+            print("loading \(typeName)")
             if let contents = contents as? NSData {
-                let arr = NSKeyedUnarchiver.unarchiveObjectWithData(contents) as! [Person]
-                self.people = arr
-                return true
+                if let arr = NSKeyedUnarchiver.unarchiveObjectWithData(contents) as? [Person] {
+                    self.people = arr
+                    print("loaded \(self.people)")
+                    return // all's well that ends well
+                }
             }
-            return false
+            throw NSError(domain: "NoDataDomain", code: -1, userInfo: nil)
     }
     
-    override func contentsForType(typeName: String,
-        error outError: NSErrorPointer) -> AnyObject? {
-            println("archiving \(typeName)")
-            let data = NSKeyedArchiver.archivedDataWithRootObject(self.people)
-            return data
+    override func contentsForType(typeName: String) throws -> AnyObject {
+        print("archiving \(typeName)")
+        let data = NSKeyedArchiver.archivedDataWithRootObject(self.people)
+        return data
     }
     
 }

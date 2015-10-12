@@ -16,7 +16,7 @@ class MyXMLParserDelegate : NSObject {
     }
     
     func makeChild(klass:MyXMLParserDelegate.Type, elementName:String, parser:NSXMLParser) {
-        let del = klass(name:elementName, parent:self)
+        let del = klass.init(name:elementName, parent:self)
         self.child = del
         parser.delegate = del
     }
@@ -27,8 +27,8 @@ class MyXMLParserDelegate : NSObject {
 }
 
 extension MyXMLParserDelegate : NSXMLParserDelegate {
-    func parser(parser: NSXMLParser, foundCharacters string: String?) {
-        self.text = self.text + string!
+    func parser(parser: NSXMLParser, foundCharacters string: String) {
+        self.text = self.text + string
     }
     
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {

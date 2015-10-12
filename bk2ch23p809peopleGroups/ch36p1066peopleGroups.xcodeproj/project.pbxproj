@@ -10,34 +10,28 @@
 		320D8AC519AF99AF0065F2C5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320D8AC419AF99AF0065F2C5 /* Person.swift */; };
 		320D8AC719AF9AED0065F2C5 /* PeopleLister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320D8AC619AF9AED0065F2C5 /* PeopleLister.swift */; };
 		320D8AC919AFA9F80065F2C5 /* PeopleDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320D8AC819AFA9F80065F2C5 /* PeopleDocument.swift */; };
-		32335D6418328D8100B84460 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32335D6318328D8100B84460 /* Foundation.framework */; };
-		32335D6618328D8100B84460 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32335D6518328D8100B84460 /* CoreGraphics.framework */; };
-		32335D6818328D8100B84460 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32335D6718328D8100B84460 /* UIKit.framework */; };
 		32335D7718328D8100B84460 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32335D7518328D8100B84460 /* Main.storyboard */; };
-		32335D7C18328D8100B84460 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32335D7B18328D8100B84460 /* Images.xcassets */; };
+		32335D7C18328D8100B84460 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32335D7B18328D8100B84460 /* Assets.xcassets */; };
 		32335DA518328E6A00B84460 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32335DA218328E6A00B84460 /* PersonCell.xib */; };
 		32335DA718328FA400B84460 /* PeopleLister.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32335DA618328FA400B84460 /* PeopleLister.xib */; };
 		325156CF19AFEED100BE7C83 /* DocumentLister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325156CE19AFEED100BE7C83 /* DocumentLister.swift */; };
+		328BA2A31BCAC810005A17A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BA2A21BCAC810005A17A9 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		32B5FA9419B0D77D00BA7DFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B5FA9319B0D77D00BA7DFC /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		320C325E1832A17300C466C0 /* ch36p1066peopleGroups.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ch36p1066peopleGroups.entitlements; sourceTree = "<group>"; };
-		320D8AC319AF99AF0065F2C5 /* ch36p1066peopleGroups-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ch36p1066peopleGroups-Bridging-Header.h"; sourceTree = "<group>"; };
 		320D8AC419AF99AF0065F2C5 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		320D8AC619AF9AED0065F2C5 /* PeopleLister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleLister.swift; sourceTree = "<group>"; };
 		320D8AC819AFA9F80065F2C5 /* PeopleDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleDocument.swift; sourceTree = "<group>"; };
 		32335D6018328D8100B84460 /* ch36p1066peopleGroups.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch36p1066peopleGroups.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		32335D6318328D8100B84460 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		32335D6518328D8100B84460 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		32335D6718328D8100B84460 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		32335D6B18328D8100B84460 /* ch36p1066peopleGroups-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch36p1066peopleGroups-Info.plist"; sourceTree = "<group>"; };
 		32335D7618328D8100B84460 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		32335D7B18328D8100B84460 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		32335D8218328D8100B84460 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		32335D7B18328D8100B84460 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32335DA218328E6A00B84460 /* PersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
 		32335DA618328FA400B84460 /* PeopleLister.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleLister.xib; sourceTree = "<group>"; };
 		325156CE19AFEED100BE7C83 /* DocumentLister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentLister.swift; sourceTree = "<group>"; };
+		328BA2A21BCAC810005A17A9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		328BA2A51BCAD8AA005A17A9 /* ch36p1066peopleGroups.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ch36p1066peopleGroups.entitlements; sourceTree = "<group>"; };
 		32B5FA9319B0D77D00BA7DFC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -46,9 +40,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32335D6618328D8100B84460 /* CoreGraphics.framework in Frameworks */,
-				32335D6818328D8100B84460 /* UIKit.framework in Frameworks */,
-				32335D6418328D8100B84460 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +50,6 @@
 			isa = PBXGroup;
 			children = (
 				32335D6918328D8100B84460 /* ch36p1066peopleGroups */,
-				32335D6218328D8100B84460 /* Frameworks */,
 				32335D6118328D8100B84460 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,21 +62,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		32335D6218328D8100B84460 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				32335D6318328D8100B84460 /* Foundation.framework */,
-				32335D6518328D8100B84460 /* CoreGraphics.framework */,
-				32335D6718328D8100B84460 /* UIKit.framework */,
-				32335D8218328D8100B84460 /* XCTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		32335D6918328D8100B84460 /* ch36p1066peopleGroups */ = {
 			isa = PBXGroup;
 			children = (
-				320C325E1832A17300C466C0 /* ch36p1066peopleGroups.entitlements */,
+				328BA2A51BCAD8AA005A17A9 /* ch36p1066peopleGroups.entitlements */,
 				32B5FA9319B0D77D00BA7DFC /* AppDelegate.swift */,
 				32335D7518328D8100B84460 /* Main.storyboard */,
 				325156CE19AFEED100BE7C83 /* DocumentLister.swift */,
@@ -95,19 +74,11 @@
 				32335DA618328FA400B84460 /* PeopleLister.xib */,
 				320D8AC419AF99AF0065F2C5 /* Person.swift */,
 				32335DA218328E6A00B84460 /* PersonCell.xib */,
-				32335D7B18328D8100B84460 /* Images.xcassets */,
-				32335D6A18328D8100B84460 /* Supporting Files */,
-				320D8AC319AF99AF0065F2C5 /* ch36p1066peopleGroups-Bridging-Header.h */,
-			);
-			path = ch36p1066peopleGroups;
-			sourceTree = "<group>";
-		};
-		32335D6A18328D8100B84460 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				32335D7B18328D8100B84460 /* Assets.xcassets */,
+				328BA2A21BCAC810005A17A9 /* LaunchScreen.storyboard */,
 				32335D6B18328D8100B84460 /* ch36p1066peopleGroups-Info.plist */,
 			);
-			name = "Supporting Files";
+			path = ch36p1066peopleGroups;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +107,7 @@
 		32335D5818328D8100B84460 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -172,9 +144,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32335D7C18328D8100B84460 /* Images.xcassets in Resources */,
+				32335D7C18328D8100B84460 /* Assets.xcassets in Resources */,
 				32335DA718328FA400B84460 /* PeopleLister.xib in Resources */,
 				32335DA518328E6A00B84460 /* PersonCell.xib in Resources */,
+				328BA2A31BCAC810005A17A9 /* LaunchScreen.storyboard in Resources */,
 				32335D7718328D8100B84460 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,7 +214,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -274,7 +247,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -285,7 +258,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -295,7 +267,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "ch36p1066peopleGroups/ch36p1066peopleGroups-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -306,7 +277,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -316,7 +286,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "ch36p1066peopleGroups/ch36p1066peopleGroups-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

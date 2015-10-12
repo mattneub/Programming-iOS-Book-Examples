@@ -2,9 +2,6 @@
 
 import UIKit
 
-/*
-NB NOT YET TESTED for iCloud in iOS 8!
-*/
 
 /*
 This app comes in two flavors: Normal, and iCloud-enabled.
@@ -27,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dispatch_async(dispatch_get_global_queue(0, 0)) {
             let fm = NSFileManager()
             let ubiq = fm.URLForUbiquityContainerIdentifier(nil)
-            println("ubiq: \(ubiq)")
+            print("ubiq: \(ubiq)")
             dispatch_async(dispatch_get_main_queue()) {
                 self.ubiq = ubiq
             }

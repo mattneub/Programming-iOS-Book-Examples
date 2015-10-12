@@ -6,6 +6,15 @@ import CoreData
 // this is all template code! Slightly simplified, took out comments, etc.
 // The only significant change I made was MasterViewController -> GroupLister
 
+extension NSManagedObject {
+    @NSManaged var firstName : String
+    @NSManaged var lastName : String
+    @NSManaged var name : String
+    @NSManaged var uuid : String
+    @NSManaged var timestamp : NSDate
+    @NSManaged var group : NSManagedObject
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -23,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: NSURL = {
-        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as! NSURL
+        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!
         }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -34,9 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("ch36p1079peopleGroupsCoreData.sqlite")
-        var error: NSError? = nil
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
-            println("Unresolved error \(error), \(error!.userInfo)")
+        do {
+            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+        } catch {
+            print("Unresolved error \(error)")
             fatalError("Terminating with unresolved error")
         }
         
@@ -48,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if coordinator == nil {
             return nil
         }
-        var managedObjectContext = NSManagedObjectContext()
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
         }()
@@ -57,10 +67,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func saveContext () {
         if let moc = self.managedObjectContext {
-            var error: NSError? = nil
-            if moc.hasChanges && !moc.save(&error) {
-                println("Unresolved error \(error), \(error!.userInfo)")
-                fatalError("Terminating with unresolved error")
+            if moc.hasChanges {
+                do {
+                    try moc.save()
+                } catch {
+                    print("Unresolved error \(error)")
+                    fatalError("Terminating with unresolved error")
+                }
             }
         }
     }

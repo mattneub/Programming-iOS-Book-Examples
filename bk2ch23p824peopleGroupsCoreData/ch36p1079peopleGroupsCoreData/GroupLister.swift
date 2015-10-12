@@ -1,5 +1,6 @@
 
 import UIKit
+import CoreData
 
 class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
     
@@ -18,9 +19,10 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
             cacheName:"Groups")
         afrc.delegate = self
         
-        var error : NSError? = nil
-        if !afrc.performFetch(&error) {
-            println("Unresolved error \(error!) \(error!.userInfo)")
+        do {
+            try afrc.performFetch()
+        } catch {
+            print("Unresolved error \(error)")
             fatalError("Aborting with unresolved error")
         }
         return afrc
@@ -50,23 +52,21 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
         av.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         av.addAction(UIAlertAction(title: "OK", style: .Default) {
             _ in
-            let name = (av.textFields![0] as! UITextField).text
-            if name == nil || name == "" {return}
+            guard let name = av.textFields![0].text where !name.isEmpty else {return}
             let context = self.frc.managedObjectContext
             let entity = self.frc.fetchRequest.entity!
-            let mo = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext: context) as! NSManagedObject
+            let mo = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext: context)
             mo.name = name
             mo.uuid = NSUUID().UUIDString
             mo.timestamp = NSDate()
             
             // save context
-            var error : NSError? = nil
-            let ok = context.save(&error)
-            if !ok {
-                println(error!)
+            do {
+                try context.save()
+            } catch {
+                print(error)
                 return
             }
-
             let pl = PeopleLister(groupManagedObject: mo)
             self.navigationController!.pushViewController(pl, animated: true)
             })
@@ -78,12 +78,12 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = self.frc.sections![section] as! NSFetchedResultsSectionInfo
+        let sectionInfo = self.frc.sections![section]
         return sectionInfo.numberOfObjects
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath)
         cell.accessoryType = .DisclosureIndicator
         let object = self.frc.objectAtIndexPath(indexPath) as! NSManagedObject
         cell.textLabel!.text = object.name

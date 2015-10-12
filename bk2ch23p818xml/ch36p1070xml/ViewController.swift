@@ -13,7 +13,7 @@ class ViewController: UIViewController {
                 parser.parse()
                 
                 // ... done, do something with people.people ...
-                println(people.people)
+                print(people.people)
             }
         }
     }

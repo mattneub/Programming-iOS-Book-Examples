@@ -6,15 +6,19 @@ class DocumentLister: UITableViewController {
     
     var files = [NSURL]()
     var docsurl : NSURL {
-        get {
-            let del = UIApplication.sharedApplication().delegate
-            if let ubiq = (del as! AppDelegate).ubiq {
-                return ubiq
-            } else {
+        var url = NSURL()
+        let del = UIApplication.sharedApplication().delegate
+        if let ubiq = (del as! AppDelegate).ubiq {
+            url = ubiq
+        } else {
+            do {
                 let fm = NSFileManager()
-                return fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: nil)!
+                url = try fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
+            } catch {
+                print(error)
             }
         }
+        return url
     }
 
     override func viewDidLoad() {
@@ -30,12 +34,23 @@ class DocumentLister: UITableViewController {
     }
     
     func doRefresh (_:AnyObject?) {
-        let fm = NSFileManager()
-        self.files = fm.contentsOfDirectoryAtURL(
-            self.docsurl, includingPropertiesForKeys: nil, options: nil, error: nil)!
-            .filter
-            { ($0 as! NSURL).pathExtension == "pplgrp" } as! [NSURL]
-        self.tableView.reloadData()
+        print("refreshing")
+        do {
+            let fm = NSFileManager()
+            self.files = try fm.contentsOfDirectoryAtURL(
+                self.docsurl, includingPropertiesForKeys: nil, options: [])
+                .filter {
+                    print($0)
+                    if fm.isUbiquitousItemAtURL($0) {
+                        print("trying to download \($0)")
+                        try fm.startDownloadingUbiquitousItemAtURL($0)
+                    }
+                    return $0.pathExtension! == "pplgrp"
+            }
+            self.tableView.reloadData()
+        } catch {
+            print(error)
+        }
     }
     
     func doAdd (_:AnyObject?) {
@@ -47,10 +62,8 @@ class DocumentLister: UITableViewController {
         av.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         av.addAction(UIAlertAction(title: "OK", style: .Default) {
             _ in
-            let name = (av.textFields![0] as! UITextField).text
-            if name == nil || name == "" {return}
-            // why on earth is this an optional?? seems like a bug to me
-            let url = self.docsurl.URLByAppendingPathComponent(name.stringByAppendingPathExtension("pplgrp")!)
+            guard let name = av.textFields![0].text where !name.isEmpty else {return}
+            let url = self.docsurl.URLByAppendingPathComponent((name as NSString).stringByAppendingPathExtension("pplgrp")!)
             // really should check to see if file by this name exists
             let pl = PeopleLister(fileURL: url)
             self.navigationController!.pushViewController(pl, animated: true)
@@ -58,8 +71,8 @@ class DocumentLister: UITableViewController {
         self.presentViewController(av, animated: true, completion: nil)
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         self.doRefresh(nil)
     }
     
@@ -72,9 +85,9 @@ class DocumentLister: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath)
         let fileURL = self.files[indexPath.row]
-        cell.textLabel!.text = fileURL.lastPathComponent!.stringByDeletingPathExtension
+        cell.textLabel!.text = (fileURL.lastPathComponent! as NSString).stringByDeletingPathExtension
         cell.accessoryType = .DisclosureIndicator
         return cell
     }

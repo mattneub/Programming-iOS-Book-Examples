@@ -8,7 +8,7 @@ class MyPersonParser : MyXMLParserDelegate {
     
     func parser(parser: NSXMLParser, didStartElement elementName: String,
         namespaceURI: String?, qualifiedName qName: String?,
-        attributes attributeDict: [NSObject : AnyObject]!) {
+        attributes attributeDict: [NSObject : AnyObject]) {
             self.makeChild(MyXMLParserDelegate.self, elementName: elementName, parser: parser)
     }
     

@@ -1,6 +1,7 @@
 
 
 import UIKit
+import CoreData
 
 class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, UITextFieldDelegate {
     
@@ -21,9 +22,10 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
             cacheName:self.groupObject.uuid) // prevent cache name conflicts
         afrc.delegate = self
         
-        var error : NSError? = nil
-        if !afrc.performFetch(&error) {
-            println("Unresolved error \(error!) \(error!.userInfo)")
+        do {
+            try afrc.performFetch()
+        } catch {
+            print("Unresolved error \(error)")
             fatalError("Aborting with unresolved error")
         }
         return afrc
@@ -53,12 +55,12 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = self.frc.sections![section] as! NSFetchedResultsSectionInfo
+        let sectionInfo = self.frc.sections![section]
         return sectionInfo.numberOfObjects
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Person", forIndexPath:indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Person", forIndexPath:indexPath)
         let object = self.frc.objectAtIndexPath(indexPath) as! NSManagedObject
         let first = cell.viewWithTag(1) as! UITextField
         let last = cell.viewWithTag(2) as! UITextField
@@ -72,23 +74,23 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         self.tableView.endEditing(true)
         let context = self.frc.managedObjectContext
         let entity = self.frc.fetchRequest.entity!
-        let mo = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext:context) as! NSManagedObject
+        let mo = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext:context)
         mo.group = self.groupObject
         mo.lastName = ""
         mo.firstName = ""
         mo.timestamp = NSDate()
         // save context
-        var error : NSError? = nil
-        let ok = context.save(&error)
-        if !ok {
-            println(error!)
+        do {
+            try context.save()
+        } catch {
+            print(error)
             return
         }
         // and the rest is in the update delegate messages
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        println("did end editing")
+        print("did end editing")
         var v = textField.superview!
         while !(v is UITableViewCell) {v = v.superview!}
         let cell = v as! UITableViewCell
@@ -97,10 +99,10 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         object.setValue(textField.text, forKey: ((textField.tag == 1) ? "firstName" : "lastName"))
         
         // save context
-        var error : NSError? = nil
-        let ok = object.managedObjectContext!.save(&error)
-        if !ok {
-            println(error!)
+        do {
+            try object.managedObjectContext!.save()
+        } catch {
+            print(error)
             return
         }
 
@@ -110,10 +112,10 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         super.viewWillDisappear(animated)
         let context = self.frc.managedObjectContext
         // save context
-        var error : NSError? = nil
-        let ok = context.save(&error)
-        if !ok {
-            println(error!)
+        do {
+            try context.save()
+        } catch {
+            print(error)
             return
         }
     }
