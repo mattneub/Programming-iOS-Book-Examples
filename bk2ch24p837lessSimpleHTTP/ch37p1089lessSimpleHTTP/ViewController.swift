@@ -7,7 +7,7 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
     @IBOutlet var iv : UIImageView!
     var task : NSURLSessionTask!
     
-    let which = 1
+    let which = 1 // 0 or 1
     
     lazy var session : NSURLSession = {
         let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
@@ -37,7 +37,7 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
     }
     
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten writ: Int64, totalBytesExpectedToWrite exp: Int64) {
-        println("downloaded \(100*writ/exp)%")
+        print("downloaded \(100*writ/exp)%")
     }
     
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
@@ -45,22 +45,22 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
     }
     
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
-        println("completed: error: \(error)")
+        print("completed: error: \(error)")
     }
     
     // this is the only required NSURLSessionDownloadDelegate method
 
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
         if which == 1 {
-            let req = downloadTask.originalRequest
+            let req = downloadTask.originalRequest!
             if let greeting = NSURLProtocol.propertyForKey("greeting", inRequest:req) as? String {
-                println(greeting)
+                print(greeting)
             }
         }
         self.task = nil
         let response = downloadTask.response as! NSHTTPURLResponse
         let stat = response.statusCode
-        println("status \(stat)")
+        print("status \(stat)")
         if stat != 200 {
             return
         }
@@ -77,7 +77,7 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
     }
     
     deinit {
-        println("farewell")
+        print("farewell")
     }
     
 }

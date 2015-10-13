@@ -12,23 +12,23 @@ class ViewController: UIViewController {
         let url = NSURL(string:s)!
         let session = NSURLSession.sharedSession()
         let task = session.downloadTaskWithURL(url) {
-            (loc:NSURL!, response:NSURLResponse!, error:NSError!) in
-            println("here")
+            (loc:NSURL?, response:NSURLResponse?, error:NSError?) in
+            print("here")
             if error != nil {
-                println(error)
+                print(error)
                 return
             }
             let status = (response as! NSHTTPURLResponse).statusCode
-            println("response status: \(status)")
+            print("response status: \(status)")
             if status != 200 {
-                println("oh well")
+                print("oh well")
                 return
             }
-            let d = NSData(contentsOfURL:loc)!
+            let d = NSData(contentsOfURL:loc!)!
             let im = UIImage(data:d)
             dispatch_async(dispatch_get_main_queue()) {
                 self.iv.image = im
-                println("done")
+                print("done")
             }
         }
         task.resume()

@@ -32,14 +32,14 @@ class ViewController: UIViewController, NSURLSessionDataDelegate {
     }
     
     func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
-        println("received \(data.length) bytes of data")
+        print("received \(data.length) bytes of data")
         // do something with the data here!
         self.data.appendData(data)
     }
     
     
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
-        println("completed: error: \(error)")
+        print("completed: error: \(error)")
         self.task = nil
         if error == nil {
             self.iv.image = UIImage(data:self.data)
@@ -53,7 +53,7 @@ class ViewController: UIViewController, NSURLSessionDataDelegate {
     }
     
     deinit {
-        println("farewell")
+        print("farewell")
     }
     
 

@@ -29,35 +29,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSURLSessionDownloadDeleg
         task.resume()
     }
 
-    func URLSession(session: NSURLSession!, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         let prog = Double(totalBytesWritten)/Double(totalBytesExpectedToWrite)
-        println("downloaded \(100.0*prog)%")
+        print("downloaded \(100.0*prog)%")
         NSNotificationCenter.defaultCenter().postNotificationName("GotProgress", object:self, userInfo:["progress":prog])
     }
     
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
-        let d = NSData(contentsOfURL: location)!
+        guard let d = NSData(contentsOfURL: location) else {return}
         let im = UIImage(data:d)
         dispatch_async(dispatch_get_main_queue()) {
-            println("finished; posting notification")
+            print("finished; posting notification")
             self.image = im
             NSNotificationCenter.defaultCenter().postNotificationName("GotPicture", object: self)
         }
     }
     
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
-        println("completed; error: \(error)")
+        print("completed; error: \(error)")
     }
     
     // === this is the Really Interesting Part
     
     func application(application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: () -> Void) {
-        println("hello hello, storing completion handler")
+        print("hello hello, storing completion handler")
         self.ch = completionHandler
     }
     
     func URLSessionDidFinishEventsForBackgroundURLSession(session: NSURLSession) {
-        println("calling completion handler")
+        print("calling completion handler")
         if self.ch != nil {
             self.ch()
         }

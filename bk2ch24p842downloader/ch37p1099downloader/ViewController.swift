@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     
     deinit {
         self.downloader.cancelAllTasks()
-        println("view controller dealloc")
+        print("view controller dealloc")
     }
     
     

@@ -11,8 +11,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPicture:", name: "GotPicture", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotProgress:", name: "GotProgress", object: nil)
+        let del = UIApplication.sharedApplication().delegate as! AppDelegate
+        _ = del.session // *
     }
-    
+        
     @IBAction func doStart (sender:AnyObject!) {
         self.prog.progress = 0
         self.iv.image = nil
@@ -27,11 +29,6 @@ class ViewController: UIViewController {
         if self.iv.image != nil {
             self.prog.progress = 1
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        self.grabPicture()
     }
     
     func gotPicture (n : NSNotification) {
@@ -51,7 +48,7 @@ class ViewController: UIViewController {
     }
     
     func crash (sender:AnyObject?) {
-        let s = sender as! String
+        _ = sender as! String
     }
 
 

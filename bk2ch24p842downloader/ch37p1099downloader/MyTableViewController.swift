@@ -50,7 +50,7 @@ class MyTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath)
         let m = self.model[indexPath.row]
         cell.textLabel!.text = m.text
         // have we got a picture?
@@ -82,7 +82,7 @@ class MyTableViewController: UITableViewController {
         if let task = m.task {
             if task.state == .Running {
                 task.cancel()
-                println("cancel task for row \(indexPath.row)")
+                print("cancel task for row \(indexPath.row)")
                 m.task = nil
             }
         }
@@ -90,7 +90,7 @@ class MyTableViewController: UITableViewController {
     
     deinit {
         self.downloader.cancelAllTasks()
-        println("table view controller dealloc")
+        print("table view controller dealloc")
     }
 
 }

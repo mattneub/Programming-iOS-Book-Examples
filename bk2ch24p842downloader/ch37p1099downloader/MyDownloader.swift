@@ -8,7 +8,7 @@ class Wrapper<T> {
 }
 
 // must be @objc_block or we won't get memory management on background thread
-typealias MyDownloaderCompletion = @objc_block (NSURL!) -> ()
+typealias MyDownloaderCompletion = @convention(block) (NSURL!) -> ()
 
 class MyDownloader: NSObject, NSURLSessionDownloadDelegate {
     let config : NSURLSessionConfiguration
@@ -34,24 +34,24 @@ class MyDownloader: NSObject, NSURLSessionDownloadDelegate {
     }
     
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten writ: Int64, totalBytesExpectedToWrite exp: Int64) {
-        println("downloaded \(100*writ/exp)%")
+        print("downloaded \(100*writ/exp)%")
     }
     
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
         // unused in this example
-        println("did resume")
+        print("did resume")
     }
 
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
-        let req = downloadTask.originalRequest
+        let req = downloadTask.originalRequest!
         let ch : AnyObject = NSURLProtocol.propertyForKey("ch", inRequest:req)!
         let response = downloadTask.response as! NSHTTPURLResponse
         let stat = response.statusCode
-        println("status \(stat)")
+        print("status \(stat)")
         var url : NSURL! = nil
         if stat == 200 {
             url = location
-            println("download \(req.URL!.lastPathComponent)")
+            print("download \(req.URL!.lastPathComponent)")
         }
         let ch2 = (ch as! Wrapper).p as MyDownloaderCompletion
         if self.main {
@@ -68,7 +68,7 @@ class MyDownloader: NSObject, NSURLSessionDownloadDelegate {
     }
     
     deinit {
-        println("farewell from MyDownloader")
+        print("farewell from MyDownloader")
     }
     
 }
