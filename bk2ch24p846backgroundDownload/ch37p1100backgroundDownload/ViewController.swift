@@ -11,8 +11,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPicture:", name: "GotPicture", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotProgress:", name: "GotProgress", object: nil)
-        let del = UIApplication.sharedApplication().delegate as! AppDelegate
-        _ = del.session // *
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        NSLog("%@", "view did appear")
+        self.grabPicture()
     }
         
     @IBAction func doStart (sender:AnyObject!) {
@@ -23,6 +27,7 @@ class ViewController: UIViewController {
     }
     
     func grabPicture () {
+        NSLog("%@", "grabbing picture")
         let del = UIApplication.sharedApplication().delegate as! AppDelegate
         self.iv.image = del.image
         del.image = nil

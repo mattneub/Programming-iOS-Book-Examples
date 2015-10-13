@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSURLSessionDownloadDeleg
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        NSLog("%@", "launching")
         return true
     }
     
@@ -31,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSURLSessionDownloadDeleg
 
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         let prog = Double(totalBytesWritten)/Double(totalBytesExpectedToWrite)
-        print("downloaded \(100.0*prog)%")
+        NSLog("%@", "downloaded \(100.0*prog)%")
         NSNotificationCenter.defaultCenter().postNotificationName("GotProgress", object:self, userInfo:["progress":prog])
     }
     
@@ -39,25 +40,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSURLSessionDownloadDeleg
         guard let d = NSData(contentsOfURL: location) else {return}
         let im = UIImage(data:d)
         dispatch_async(dispatch_get_main_queue()) {
-            print("finished; posting notification")
+            NSLog("%@", "finished; posting notification")
             self.image = im
             NSNotificationCenter.defaultCenter().postNotificationName("GotPicture", object: self)
         }
     }
     
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
-        print("completed; error: \(error)")
+        NSLog("%@", "completed; error: \(error)")
     }
     
     // === this is the Really Interesting Part
     
     func application(application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: () -> Void) {
-        print("hello hello, storing completion handler")
+        NSLog("%@", "hello hello, storing completion handler")
         self.ch = completionHandler
+        let _ = self.session // make sure we have one
     }
     
     func URLSessionDidFinishEventsForBackgroundURLSession(session: NSURLSession) {
-        print("calling completion handler")
+        NSLog("%@", "calling completion handler")
         if self.ch != nil {
             self.ch()
         }
