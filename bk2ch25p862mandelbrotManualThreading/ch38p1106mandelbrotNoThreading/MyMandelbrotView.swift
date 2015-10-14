@@ -17,13 +17,46 @@ class MyMandelbrotView : UIView {
     var bitmapContext: CGContext!
     var odd = false
     
-    // jumping-off point: draw the Mandelbrot set
+    /*
     func drawThatPuppy () {
         self.makeBitmapContext(self.bounds.size)
         let center = CGPointMake(self.bounds.midX, self.bounds.midY)
         self.drawAtCenter(center, zoom:1)
         self.setNeedsDisplay()
     }
+*/
+    
+    // you can see we're now threaded, because the button unhighlights immediately
+    // but see warnings in book text as to why this whole architecture is no good!
+    
+    // ==== changes begin
+    
+    // jumping-off point: draw the Mandelbrot set
+    func drawThatPuppy () {
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        self.makeBitmapContext(self.bounds.size)
+        let center = CGPointMake(self.bounds.midX, self.bounds.midY)
+        let d = ["center":NSValue(CGPoint: center), "zoom":CGFloat(1)]
+        self.performSelectorInBackground("reallyDraw:", withObject: d)
+    }
+    
+    // trampoline, background thread entry point
+    func reallyDraw(d:[NSObject:AnyObject]) {
+        autoreleasepool {
+            self.drawAtCenter((d["center"] as! NSValue).CGPointValue(), zoom: d["zoom"] as! CGFloat)
+            self.performSelectorOnMainThread("allDone", withObject: nil, waitUntilDone: false)
+        }
+    }
+    
+    // called on main thread! background thread exit point
+    func allDone() {
+        self.setNeedsDisplay()
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+    }
+    
+    // ==== changes end
+    
+    // ==== this material is now called on background thread
     
     // create bitmap context
     func makeBitmapContext(size:CGSize) {
@@ -70,6 +103,8 @@ class MyMandelbrotView : UIView {
             }
         }
     }
+    
+    // ==== end of material called on background thread
     
     // turn pixels of bitmap context into CGImage, draw into ourselves
     override func drawRect(rect: CGRect) {

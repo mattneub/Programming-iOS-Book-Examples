@@ -3,8 +3,17 @@
 
 import UIKit
 
+class SomeClass {
+    var once_token : dispatch_once_t = 0
+    func test() {
+        dispatch_once(&once_token) {
+            // this code will run just once in the life of this object
+        }
+    }
+}
+
 let qkeyString = "label" as NSString
-var QKEY = qkeyString.UTF8String
+let QKEY = qkeyString.UTF8String
 let qvalString = "com.neuburg.mandeldraw" as NSString
 var QVAL = qvalString.UTF8String
 
@@ -64,8 +73,8 @@ class MyMandelbrotView : UIView {
         var bitmapBytesPerRow = Int(size.width * 4)
         bitmapBytesPerRow += (16 - (bitmapBytesPerRow % 16)) % 16
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let prem = CGImageAlphaInfo.PremultipliedLast
-        let context = CGBitmapContextCreate(nil, Int(size.width), Int(size.height), 8, bitmapBytesPerRow, colorSpace, prem.rawValue)
+        let prem = CGImageAlphaInfo.PremultipliedLast.rawValue
+        let context = CGBitmapContextCreate(nil, Int(size.width), Int(size.height), 8, bitmapBytesPerRow, colorSpace, prem)
         return context!
     }
     

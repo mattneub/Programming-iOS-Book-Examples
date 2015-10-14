@@ -16,12 +16,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3247F3241837BBA300A9162F /* ch38p1106mandelbrotNoThreading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch38p1106mandelbrotNoThreading.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3247F32F1837BBA300A9162F /* ch38p1106mandelbrotNoThreading-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch38p1106mandelbrotNoThreading-Info.plist"; sourceTree = "<group>"; };
+		3247F3241837BBA300A9162F /* ch38p1106mandelbrotManualThreading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch38p1106mandelbrotManualThreading.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3247F33A1837BBA300A9162F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3247F33F1837BBA300A9162F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		324B83061BCE983900E61518 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		324B83081BCE983F00E61518 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3285142B1BCE9DD50078B9DD /* ch38p1106mandelbrotManualThreading-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ch38p1106mandelbrotManualThreading-Info.plist"; sourceTree = "<group>"; };
 		3289AB3819B3EA2900937D0C /* MyMandelbrotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMandelbrotView.swift; sourceTree = "<group>"; };
 		3289AB3A19B4154000937D0C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -40,7 +40,7 @@
 		3247F31B1837BBA300A9162F = {
 			isa = PBXGroup;
 			children = (
-				3247F32D1837BBA300A9162F /* ch38p1106mandelbrotNoThreading */,
+				3247F32D1837BBA300A9162F /* ch38p1106mandelbrotManualThreading */,
 				3247F3251837BBA300A9162F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +48,12 @@
 		3247F3251837BBA300A9162F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3247F3241837BBA300A9162F /* ch38p1106mandelbrotNoThreading.app */,
+				3247F3241837BBA300A9162F /* ch38p1106mandelbrotManualThreading.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3247F32D1837BBA300A9162F /* ch38p1106mandelbrotNoThreading */ = {
+		3247F32D1837BBA300A9162F /* ch38p1106mandelbrotManualThreading */ = {
 			isa = PBXGroup;
 			children = (
 				324B83081BCE983F00E61518 /* AppDelegate.swift */,
@@ -62,17 +62,18 @@
 				3289AB3819B3EA2900937D0C /* MyMandelbrotView.swift */,
 				3247F33F1837BBA300A9162F /* Assets.xcassets */,
 				324B83061BCE983900E61518 /* LaunchScreen.storyboard */,
-				3247F32F1837BBA300A9162F /* ch38p1106mandelbrotNoThreading-Info.plist */,
+				3285142B1BCE9DD50078B9DD /* ch38p1106mandelbrotManualThreading-Info.plist */,
 			);
+			name = ch38p1106mandelbrotManualThreading;
 			path = ch38p1106mandelbrotNoThreading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3247F3231837BBA300A9162F /* ch38p1106mandelbrotNoThreading */ = {
+		3247F3231837BBA300A9162F /* ch38p1106mandelbrotManualThreading */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3247F3561837BBA400A9162F /* Build configuration list for PBXNativeTarget "ch38p1106mandelbrotNoThreading" */;
+			buildConfigurationList = 3247F3561837BBA400A9162F /* Build configuration list for PBXNativeTarget "ch38p1106mandelbrotManualThreading" */;
 			buildPhases = (
 				3247F3201837BBA300A9162F /* Sources */,
 				3247F3211837BBA300A9162F /* Frameworks */,
@@ -82,9 +83,9 @@
 			);
 			dependencies = (
 			);
-			name = ch38p1106mandelbrotNoThreading;
+			name = ch38p1106mandelbrotManualThreading;
 			productName = ch38p1106mandelbrotNoThreading;
-			productReference = 3247F3241837BBA300A9162F /* ch38p1106mandelbrotNoThreading.app */;
+			productReference = 3247F3241837BBA300A9162F /* ch38p1106mandelbrotManualThreading.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -97,7 +98,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
-			buildConfigurationList = 3247F31F1837BBA300A9162F /* Build configuration list for PBXProject "ch38p1106mandelbrotNoThreading" */;
+			buildConfigurationList = 3247F31F1837BBA300A9162F /* Build configuration list for PBXProject "ch38p1106mandelbrotManualThreading" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -110,7 +111,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3247F3231837BBA300A9162F /* ch38p1106mandelbrotNoThreading */,
+				3247F3231837BBA300A9162F /* ch38p1106mandelbrotManualThreading */,
 			);
 		};
 /* End PBXProject section */
@@ -232,11 +233,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch38p1106mandelbrotNoThreading/ch38p1106mandelbrotNoThreading-Prefix.pch";
-				INFOPLIST_FILE = "ch38p1106mandelbrotNoThreading/ch38p1106mandelbrotNoThreading-Info.plist";
+				GCC_PREFIX_HEADER = "ch38p1106mandelbrotNoThreading/ch38p1106mandelbrotManualThreading-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/ch38p1106mandelbrotNoThreading/ch38p1106mandelbrotManualThreading-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch38p1106mandelbrotManualThreading;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -249,11 +250,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch38p1106mandelbrotNoThreading/ch38p1106mandelbrotNoThreading-Prefix.pch";
-				INFOPLIST_FILE = "ch38p1106mandelbrotNoThreading/ch38p1106mandelbrotNoThreading-Info.plist";
+				GCC_PREFIX_HEADER = "ch38p1106mandelbrotNoThreading/ch38p1106mandelbrotManualThreading-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/ch38p1106mandelbrotNoThreading/ch38p1106mandelbrotManualThreading-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch38p1106mandelbrotManualThreading;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -261,7 +262,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3247F31F1837BBA300A9162F /* Build configuration list for PBXProject "ch38p1106mandelbrotNoThreading" */ = {
+		3247F31F1837BBA300A9162F /* Build configuration list for PBXProject "ch38p1106mandelbrotManualThreading" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3247F3541837BBA400A9162F /* Debug */,
@@ -270,7 +271,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3247F3561837BBA400A9162F /* Build configuration list for PBXNativeTarget "ch38p1106mandelbrotNoThreading" */ = {
+		3247F3561837BBA400A9162F /* Build configuration list for PBXNativeTarget "ch38p1106mandelbrotManualThreading" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3247F3571837BBA400A9162F /* Debug */,
