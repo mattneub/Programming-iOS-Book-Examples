@@ -2,13 +2,15 @@
 
 import UIKit
 
+class ViewController : UIViewController {
+    
+}
+
 class MyView : UIView {
     
     let undoer = NSUndoManager()
-    override var undoManager : NSUndoManager {
-        get {
-            return self.undoer
-        }
+    override var undoManager : NSUndoManager? {
+        return self.undoer
     }
     
     override func awakeFromNib() {
@@ -29,13 +31,13 @@ class MyView : UIView {
         self.undoer.prepareWithInvocationTarget(self).setCenterUndoably(self.center) // *
         self.undoer.setActionName("Move")
         if self.undoer.undoing || self.undoer.redoing {
-//            println("here")
-//            let opt = UIViewAnimationOptions.BeginFromCurrentState // not needed in iOS 8?
-            UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: {
+            print("undoing or redoing")
+            UIView.animateWithDuration(0.4, delay: 0.1, options: [], animations: {
                 self.center = newCenter // *
             }, completion: nil)
         } else {
             // just do it
+            print("just do it")
             self.center = newCenter // *
         }
     }

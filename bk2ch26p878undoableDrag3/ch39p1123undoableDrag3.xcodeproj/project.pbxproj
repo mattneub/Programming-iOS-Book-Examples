@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3268385D1BCF0B9D00A986FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268385C1BCF0B9D00A986FF /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		3268385F1BCF0BA100A986FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3268385E1BCF0BA100A986FF /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		326838611BCF0E3600A986FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 326838601BCF0E3600A986FF /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		326838631BCF0E4700A986FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326838621BCF0E4700A986FF /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		3289AB4719B4C9AB00937D0C /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289AB4619B4C9AB00937D0C /* MyView.swift */; };
 		32942DFD183915D2003EB51A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32942DFB183915D2003EB51A /* Main.storyboard */; };
 		32942E02183915D2003EB51A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32942E01183915D2003EB51A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3268385C1BCF0B9D00A986FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		3268385E1BCF0BA100A986FF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		326838601BCF0E3600A986FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		326838621BCF0E4700A986FF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3289AB4619B4C9AB00937D0C /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
-		32942DE6183915D2003EB51A /* ch39p1123undoableDrag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch39p1123undoableDrag.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		32942DF1183915D2003EB51A /* ch39p1123undoableDrag-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch39p1123undoableDrag-Info.plist"; sourceTree = "<group>"; };
+		32942DE6183915D2003EB51A /* ch39p1123undoableDrag3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch39p1123undoableDrag3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		32942DF1183915D2003EB51A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32942DFC183915D2003EB51A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32942E01183915D2003EB51A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,7 +46,7 @@
 		32942DE7183915D2003EB51A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				32942DE6183915D2003EB51A /* ch39p1123undoableDrag.app */,
+				32942DE6183915D2003EB51A /* ch39p1123undoableDrag3.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,12 +54,12 @@
 		32942DEF183915D2003EB51A /* ch39p1123undoableDrag */ = {
 			isa = PBXGroup;
 			children = (
-				3268385E1BCF0BA100A986FF /* AppDelegate.swift */,
+				326838621BCF0E4700A986FF /* AppDelegate.swift */,
 				32942DFB183915D2003EB51A /* Main.storyboard */,
 				3289AB4619B4C9AB00937D0C /* MyView.swift */,
+				326838601BCF0E3600A986FF /* LaunchScreen.storyboard */,
 				32942E01183915D2003EB51A /* Assets.xcassets */,
-				3268385C1BCF0B9D00A986FF /* LaunchScreen.storyboard */,
-				32942DF1183915D2003EB51A /* ch39p1123undoableDrag-Info.plist */,
+				32942DF1183915D2003EB51A /* Info.plist */,
 			);
 			path = ch39p1123undoableDrag;
 			sourceTree = "<group>";
@@ -67,9 +67,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		32942DE5183915D2003EB51A /* ch39p1123undoableDrag */ = {
+		32942DE5183915D2003EB51A /* ch39p1123undoableDrag3 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 32942E18183915D3003EB51A /* Build configuration list for PBXNativeTarget "ch39p1123undoableDrag" */;
+			buildConfigurationList = 32942E18183915D3003EB51A /* Build configuration list for PBXNativeTarget "ch39p1123undoableDrag3" */;
 			buildPhases = (
 				32942DE2183915D2003EB51A /* Sources */,
 				32942DE3183915D2003EB51A /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = ch39p1123undoableDrag;
+			name = ch39p1123undoableDrag3;
 			productName = ch39p1123undoableDrag;
-			productReference = 32942DE6183915D2003EB51A /* ch39p1123undoableDrag.app */;
+			productReference = 32942DE6183915D2003EB51A /* ch39p1123undoableDrag3.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -94,7 +94,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
 			};
-			buildConfigurationList = 32942DE1183915D2003EB51A /* Build configuration list for PBXProject "ch39p1123undoableDrag" */;
+			buildConfigurationList = 32942DE1183915D2003EB51A /* Build configuration list for PBXProject "ch39p1123undoableDrag3" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -107,7 +107,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				32942DE5183915D2003EB51A /* ch39p1123undoableDrag */,
+				32942DE5183915D2003EB51A /* ch39p1123undoableDrag3 */,
 			);
 		};
 /* End PBXProject section */
@@ -117,7 +117,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3268385D1BCF0B9D00A986FF /* LaunchScreen.storyboard in Resources */,
+				326838611BCF0E3600A986FF /* LaunchScreen.storyboard in Resources */,
 				32942E02183915D2003EB51A /* Assets.xcassets in Resources */,
 				32942DFD183915D2003EB51A /* Main.storyboard in Resources */,
 			);
@@ -130,7 +130,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3268385F1BCF0BA100A986FF /* AppDelegate.swift in Sources */,
+				326838631BCF0E4700A986FF /* AppDelegate.swift in Sources */,
 				3289AB4719B4C9AB00937D0C /* MyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,11 +228,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch39p1123undoableDrag/ch39p1123undoableDrag-Prefix.pch";
-				INFOPLIST_FILE = "ch39p1123undoableDrag/ch39p1123undoableDrag-Info.plist";
+				GCC_PREFIX_HEADER = "ch39p1123undoableDrag/ch39p1123undoableDrag3-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/ch39p1123undoableDrag/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch39p1123undoableDrag3;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
@@ -245,11 +245,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ch39p1123undoableDrag/ch39p1123undoableDrag-Prefix.pch";
-				INFOPLIST_FILE = "ch39p1123undoableDrag/ch39p1123undoableDrag-Info.plist";
+				GCC_PREFIX_HEADER = "ch39p1123undoableDrag/ch39p1123undoableDrag3-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/ch39p1123undoableDrag/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ch39p1123undoableDrag3;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -257,7 +257,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		32942DE1183915D2003EB51A /* Build configuration list for PBXProject "ch39p1123undoableDrag" */ = {
+		32942DE1183915D2003EB51A /* Build configuration list for PBXProject "ch39p1123undoableDrag3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				32942E16183915D3003EB51A /* Debug */,
@@ -266,7 +266,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		32942E18183915D3003EB51A /* Build configuration list for PBXNativeTarget "ch39p1123undoableDrag" */ = {
+		32942E18183915D3003EB51A /* Build configuration list for PBXNativeTarget "ch39p1123undoableDrag3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				32942E19183915D3003EB51A /* Debug */,
