@@ -27,18 +27,6 @@ class MyView : UIView {
     
     // handler variant (new in iOS 9), better
     
-    func registerForUndo() {
-        let oldCenter = self.center
-        self.undoer.registerUndoWithTarget(self) {
-            v in
-            UIView.animateWithDuration(0.4, delay: 0.1, options: [], animations: {
-                v.center = oldCenter
-            }, completion: nil)
-            v.registerForUndo()
-        }
-        self.undoer.setActionName("Move")
-    }
-    
     func dragging (p : UIPanGestureRecognizer) {
         switch p.state {
         case .Began:
@@ -48,7 +36,18 @@ class MyView : UIView {
             let delta = p.translationInView(self.superview!)
             var c = self.center
             c.x += delta.x; c.y += delta.y
-            self.registerForUndo()
+            func registerForUndo() {
+                let oldCenter = self.center
+                self.undoer.registerUndoWithTarget(self) {
+                    v in
+                    UIView.animateWithDuration(0.4, delay: 0.1, options: [], animations: {
+                        v.center = oldCenter
+                        }, completion: nil)
+                    registerForUndo()
+                }
+                self.undoer.setActionName("Move")
+            }
+            registerForUndo()
             self.center = c // *
             p.setTranslation(CGPointZero, inView: self.superview!)
         case .Ended, .Cancelled:
