@@ -25,23 +25,18 @@ class MyView : UIView {
         return true
     }
     
-    // handler variant (new in iOS 9)
+    // handler variant (new in iOS 9), better
     
-    func setCenterUndoably (newCenter:CGPoint) {
+    func registerForUndo() {
         let oldCenter = self.center
         self.undoer.registerUndoWithTarget(self) {
             v in
-            v.setCenterUndoably(oldCenter)
+            UIView.animateWithDuration(0.4, delay: 0.1, options: [], animations: {
+                v.center = oldCenter
+            }, completion: nil)
+            v.registerForUndo()
         }
         self.undoer.setActionName("Move")
-        if self.undoer.undoing || self.undoer.redoing {
-            UIView.animateWithDuration(0.4, delay: 0.1, options: [], animations: {
-                self.center = newCenter
-            }, completion: nil)
-        } else {
-            // just do it
-            self.center = newCenter
-        }
     }
     
     func dragging (p : UIPanGestureRecognizer) {
@@ -53,12 +48,13 @@ class MyView : UIView {
             let delta = p.translationInView(self.superview!)
             var c = self.center
             c.x += delta.x; c.y += delta.y
-            self.setCenterUndoably(c) // *
+            self.registerForUndo()
+            self.center = c // *
             p.setTranslation(CGPointZero, inView: self.superview!)
         case .Ended, .Cancelled:
             self.undoer.endUndoGrouping()
             self.becomeFirstResponder()
-        default:break
+        default: break
         }
     }
     
