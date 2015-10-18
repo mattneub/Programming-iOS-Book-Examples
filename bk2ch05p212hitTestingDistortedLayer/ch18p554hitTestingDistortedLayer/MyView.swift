@@ -49,11 +49,11 @@ class MyView : UIView {
         let im = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        let info = CGBitmapInfo(rawValue: CGImageAlphaInfo.Only.rawValue)
+        let info = CGImageAlphaInfo.Only.rawValue
         let pixel = UnsafeMutablePointer<CUnsignedChar>.alloc(1)
         pixel[0] = 0
         let context = CGBitmapContextCreate(pixel,
-            1, 1, 8, 1, nil, info.rawValue)!
+            1, 1, 8, 1, nil, info)!
         UIGraphicsPushContext(context)
         im.drawAtPoint(CGPointMake(-point.x, -point.y))
         UIGraphicsPopContext()
