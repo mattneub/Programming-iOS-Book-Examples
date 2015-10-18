@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activateConstraints([newConstraint])
         self.oldConstraint = newConstraint
         UIView.animateWithDuration(0.4) {
-            v.layoutIfNeeded()
+            v.superview!.layoutIfNeeded()
         }
     }
     
