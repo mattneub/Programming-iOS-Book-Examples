@@ -18,7 +18,7 @@ class ViewController : UIViewController {
         })
     }
     
-    let which = 4
+    let which = 5
 
     func cancel() {
         switch which {
@@ -62,6 +62,10 @@ class ViewController : UIViewController {
                     _ in
                     print ("finished second animation")
             })
+        case 5:
+            // cancel just means stop where you are
+            self.v.layer.position = (self.v.layer.presentationLayer() as! CALayer).position
+            self.v.layer.removeAllAnimations()
         default: break
         }
     }
