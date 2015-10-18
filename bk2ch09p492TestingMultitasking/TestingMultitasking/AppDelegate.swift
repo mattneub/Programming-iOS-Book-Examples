@@ -7,30 +7,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    // use NSLog so we can read from the device console
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        NSLog("%@", __FUNCTION__)
         return true
     }
-
+    
     func applicationWillResignActive(application: UIApplication) {
-        print(__FUNCTION__)
+        NSLog("%@", __FUNCTION__)
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        print(__FUNCTION__)
+        NSLog("%@", __FUNCTION__)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        print(__FUNCTION__)
+        NSLog("%@", __FUNCTION__)
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        print(__FUNCTION__)
+        NSLog("%@", __FUNCTION__)
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        print(__FUNCTION__)
+        NSLog("%@", __FUNCTION__)
     }
 
 

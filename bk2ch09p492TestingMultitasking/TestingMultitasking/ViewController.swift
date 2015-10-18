@@ -4,11 +4,22 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NSLog("%@", __FUNCTION__)
+    }
+    
     override func viewWillAppear(animated:Bool) {
         super.viewWillAppear(animated)
+        NSLog("%@", __FUNCTION__)
         if self.presentingViewController != nil {
             self.view.backgroundColor = UIColor.yellowColor()
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        NSLog("%@", __FUNCTION__)
     }
     
     @IBAction func doButton(sender: AnyObject) {
