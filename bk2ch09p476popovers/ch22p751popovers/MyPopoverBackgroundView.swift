@@ -10,8 +10,8 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
     var arrOff : CGFloat
     var arrDir : UIPopoverArrowDirection
     
-    static var ARBASE : CGFloat {return 20}
-    static var ARHEIGHT : CGFloat {return 20}
+    static let ARBASE : CGFloat = 20
+    static let ARHEIGHT : CGFloat = 20
     
     override class func wantsDefaultContentAppearance() -> Bool {
         return true // try false to see if you can find a difference...
