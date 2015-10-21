@@ -15,8 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let svc = UISplitViewController()
-        svc.addChildViewController(PrimaryViewController())
-        svc.addChildViewController(SecondaryViewController())
+        svc.viewControllers = [PrimaryViewController(), SecondaryViewController()]
         self.addChildViewController(svc)
         self.view.addSubview(svc.view)
         svc.didMoveToParentViewController(self)
