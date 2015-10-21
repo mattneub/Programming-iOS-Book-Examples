@@ -33,14 +33,12 @@ class MasterViewController : UITableViewController {
         if let tc = self.transitionCoordinator() {
             print(tc)
         }
-        if let tc = self.transitionCoordinator() {
-            if tc.initiallyInteractive() {
-                tc.notifyWhenInteractionEndsUsingBlock {
-                    context in
-                    if context.isCancelled() {
-                        print("we got cancelled")
-                    }
-                }
+        guard let tc = self.transitionCoordinator() else {return}
+        guard tc.initiallyInteractive() else {return}
+        tc.notifyWhenInteractionEndsUsingBlock {
+            context in
+            if context.isCancelled() {
+                print("we got cancelled")
             }
         }
     }
