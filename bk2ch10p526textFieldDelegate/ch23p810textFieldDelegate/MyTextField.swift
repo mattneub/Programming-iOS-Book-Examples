@@ -18,24 +18,17 @@ class MyTextField: UITextField {
     
     
     override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
-        if action == "expand:" {
-            if let r = self.selectedTextRange {
-                if let s = self.textInRange(r) {
-                    return s.characters.count == 2
-                        && self.stateForAbbrev(s) != nil
-                }
-            }
+        if action == "expand:", let r = self.selectedTextRange,
+            let s = self.textInRange(r) {
+                return s.characters.count == 2 && self.stateForAbbrev(s) != nil
         }
         return super.canPerformAction(action, withSender:sender)
     }
     
     func expand(sender:AnyObject?) {
-        if let r = self.selectedTextRange {
-            if let s = self.textInRange(r) {
-                if let ss = self.stateForAbbrev(s) {
-                    self.replaceRange(r, withText:ss)
-                }
-            }
+        if let r = self.selectedTextRange, let s = self.textInRange(r),
+            let ss = self.stateForAbbrev(s) {
+                self.replaceRange(r, withText:ss)
         }
     }
     
