@@ -1,16 +1,15 @@
 
 import UIKit
 
-class ProgressingOperation : NSObject, NSProgressReporting {
+class ProgressingOperation {
     let progress : NSProgress
     init(units:Int) {
         self.progress = NSProgress(totalUnitCount: Int64(units))
-        super.init()
     }
     func start() {
         NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "inc:", userInfo: nil, repeats: true)
     }
-    func inc(t:NSTimer) {
+    @objc func inc(t:NSTimer) {
         self.progress.completedUnitCount += 1
         if self.progress.fractionCompleted >= 1.0 {
             t.invalidate()
