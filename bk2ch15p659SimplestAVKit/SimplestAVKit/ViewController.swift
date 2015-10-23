@@ -27,6 +27,17 @@ class ViewController: UIViewController {
                 _ in
                 // av.view.backgroundColor = UIColor.greenColor()
             })
+//            let iv = UIImageView(image:UIImage(named:"smiley")!)
+//            av.contentOverlayView!.addSubview(iv)
+//            let v = iv.superview!
+//            iv.translatesAutoresizingMaskIntoConstraints = false
+//            NSLayoutConstraint.activateConstraints([
+//                iv.bottomAnchor.constraintEqualToAnchor(v.bottomAnchor),
+//                iv.topAnchor.constraintEqualToAnchor(v.topAnchor),
+//                iv.leadingAnchor.constraintEqualToAnchor(v.leadingAnchor),
+//                iv.trailingAnchor.constraintEqualToAnchor(v.trailingAnchor),
+//                ])
+
             av.delegate = self
             av.allowsPictureInPicturePlayback = true
         case 2:
