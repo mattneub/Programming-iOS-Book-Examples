@@ -96,7 +96,7 @@ class ViewController: UIViewController {
         guard let result = query.collections else {return} //
         // prove we've performed the query, by logging the album titles
         for album in result {
-            print(album.representativeItem?.albumTitle) //
+            print(album.representativeItem!.albumTitle!) //
         }
         return; // testing
         // cloud item values are 0 and 1, meaning false and true
@@ -115,7 +115,7 @@ class ViewController: UIViewController {
         query.addFilterPredicate(hasBeethoven)
         guard let result = query.collections else {return} //
         for album in result {
-            print(album.representativeItem?.albumTitle) //
+            print(album.representativeItem!.albumTitle!) //
         }
     }
     
@@ -132,12 +132,12 @@ class ViewController: UIViewController {
         
         guard let result = query.collections else {return} //
         for album in result {
-            print(album.representativeItem?.albumTitle)
+            print(album.representativeItem!.albumTitle!)
         }
         // and here are the songs in the first of those albums
         let album = result[0]
         for song in album.items { //
-            print(song.title)
+            print(song.title!)
         }
     }
     
