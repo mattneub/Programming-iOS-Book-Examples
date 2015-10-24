@@ -54,23 +54,49 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     //
     
     @IBAction func doFindMoi (sender:AnyObject!) {
-        
         CNContactStore().requestAccessForEntityType(.Contacts) {
             ok, err in
             guard ok else {
                 print("not authorized")
                 return
             }
+            var which : Int {return 2} // 1 or 2
             do {
-                let pred = CNContact.predicateForContactsMatchingName("Matt")
-                var matts = try CNContactStore().unifiedContactsMatchingPredicate(pred, keysToFetch: [
-                    CNContactFamilyNameKey, CNContactGivenNameKey
-                ])
-                matts = matts.filter{$0.familyName == "Neuburg"}
-                guard var moi = matts.first else {
-                    print("couldn't find myself")
-                    return
+                var premoi : CNContact!
+                switch which {
+                case 1:
+                    let pred = CNContact.predicateForContactsMatchingName("Matt")
+                    var matts = try CNContactStore().unifiedContactsMatchingPredicate(pred, keysToFetch: [
+                        CNContactFamilyNameKey, CNContactGivenNameKey
+                        ])
+                    matts = matts.filter{$0.familyName == "Neuburg"}
+                    guard var moi = matts.first else {
+                        print("couldn't find myself")
+                        return
+                    }
+                    premoi = moi
+                case 2:
+                    let pred = CNContact.predicateForContactsMatchingName("Matt")
+                    let req = CNContactFetchRequest(keysToFetch: [
+                        CNContactFamilyNameKey, CNContactGivenNameKey
+                        ])
+                    req.predicate = pred
+                    var matt : CNContact? = nil
+                    try CNContactStore().enumerateContactsWithFetchRequest(req) {
+                        con, stop in
+                        if con.familyName == "Neuburg" {
+                            matt = con
+                            stop.memory = true
+                        }
+                    }
+                    guard var moi = matt else {
+                        print("couldn't find myself")
+                        return
+                    }
+                    premoi = moi
+                default:break
                 }
+                var moi = premoi
                 print(moi)
                 if moi.isKeyAvailable(CNContactEmailAddressesKey) {
                     print(moi.emailAddresses)
@@ -91,8 +117,8 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                 print(error)
             }
         }
-        
     }
+
     
     @IBAction func doCreateSnidely (sender:AnyObject!) {
         let snidely = CNMutableContact()
