@@ -58,7 +58,7 @@ extension NSLayoutConstraint {
     }
 }
 
-func imageOfSize(size:CGSize, opaque:Bool = false, closure:() -> ())
+func imageOfSize(size:CGSize, _ opaque:Bool = false, @noescape _ closure:() -> ())
     -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
         closure()
@@ -106,7 +106,7 @@ extension Array {
     }
 }
 
-func lend<T where T:NSObject> (closure:(T)->()) -> T {
+func lend<T where T:NSObject> (@noescape closure:(T)->()) -> T {
     let orig = T()
     closure(orig)
     return orig
@@ -143,6 +143,14 @@ class ViewController: UIViewController {
             CGContextSetFillColorWithColor(con, UIColor.blueColor().CGColor)
             CGContextFillPath(con)
         }
+        
+        let _ = imageOfSize(CGSizeMake(100,100), true) {
+            let con = UIGraphicsGetCurrentContext()!
+            CGContextAddEllipseInRect(con, CGRectMake(0,0,100,100))
+            CGContextSetFillColorWithColor(con, UIColor.blueColor().CGColor)
+            CGContextFillPath(con)
+        }
+
         
         let opts = UIViewAnimationOptions.Autoreverse
         let xorig = self.v.center.x
