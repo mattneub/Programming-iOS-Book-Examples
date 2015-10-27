@@ -28,6 +28,12 @@ struct Pair {
     let y : Int
 }
 
+class Womble : NSObject {
+    override init() {
+        super.init()
+    }
+}
+
 
 class ViewController: UIViewController {
     
