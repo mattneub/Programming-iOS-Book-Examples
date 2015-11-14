@@ -99,9 +99,22 @@ class Rocket : Flier {
         print("zoooom")
     }
 }
+class AtlasRocket : Rocket {
+    override func fly() {
+        print("ZOOOOOM")
+    }
+}
+class Daedalus : Flier {
+    // nothing
+}
+class Icarus : Daedalus {
+    func fly() {
+        print("fall into the sea")
+    }
+}
 
 protocol Flier2 {
-    func fly()
+    func fly() // *
 }
 extension Flier2 {
     func fly() {
@@ -120,6 +133,20 @@ class Rocket2 : Flier2 {
         print("zoooom")
     }
 }
+class AtlasRocket2 : Rocket2 {
+    override func fly() {
+        print("ZOOOOOM")
+    }
+}
+class Daedalus2 : Flier2 {
+    // nothing
+}
+class Icarus2 : Daedalus2 {
+    func fly() {
+        print("fall into the sea")
+    }
+}
+
 
 extension RawRepresentable {
     init?(_ what:RawValue) {
@@ -155,17 +182,29 @@ class ViewController: UIViewController {
         
             let b = Bird()
             b.fly() // flap flap flap
+            (b as Flier).fly() // flap flap flap
             
             let i = Insect()
             i.fly() // whirr
-            let f : Flier = Insect()
-            f.fly() // flap flap flap
-            let ok = f is Insect
-            print(ok)
+            (i as Flier).fly() // flap flap flap
             
             let r = Rocket()
             r.fly() // zoooom
             (r as Flier).fly() // flap flap flap
+            
+            let r2 = AtlasRocket()
+            r2.fly() // ZOOOOOM
+            (r2 as Rocket).fly() // ZOOOOOM
+            (r2 as Flier).fly() // flap flap flap
+            
+            let d = Daedalus()
+            d.fly() // flap flap flap
+            (d as Flier).fly() // flap flap flap
+            
+            let d2 = Icarus()
+            d2.fly() // fall into the sea
+            (d2 as Daedalus).fly() // flap flap flap
+            (d2 as Flier).fly() // flap flap flap
             
         }
         
@@ -178,14 +217,25 @@ class ViewController: UIViewController {
             
             let i = Insect2()
             i.fly() // whirr
-            let f : Flier2 = Insect2()
-            f.fly() // whirr (!!!)
-            let ok = f is Insect2
-            print(ok)
+            (i as Flier2).fly() // whirr (!!!)
             
             let r = Rocket2()
             r.fly() // zoooom
             (r as Flier2).fly() // zoooom (!!!)
+            
+            let r2 = AtlasRocket2()
+            r2.fly() // ZOOOOOM
+            (r2 as Rocket2).fly() // ZOOOOOM
+            (r2 as Flier2).fly() // ZOOOOOM (!!!)
+            
+            let d = Daedalus2()
+            d.fly() // flap flap flap
+            (d as Flier2).fly() // flap flap flap
+            
+            let d2 = Icarus2()
+            d2.fly() // fall into the sea
+            (d2 as Daedalus2).fly() // flap flap flap
+            (d2 as Flier2).fly() // flap flap flap
 
             
         }
