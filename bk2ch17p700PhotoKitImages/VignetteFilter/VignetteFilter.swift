@@ -1,4 +1,3 @@
-
 import UIKit
 
 
@@ -21,7 +20,7 @@ public extension CIColor {
     }
 }
 
-public class MyVignetteFilter : CIFilter {
+public class VignetteFilter : CIFilter {
     public var inputImage : CIImage?
     public var inputPercentage : NSNumber? = 1.0
     public override var outputImage : CIImage? {

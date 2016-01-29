@@ -6,7 +6,7 @@ import GLKit
 import OpenGLES
 import MobileCoreServices
 import AVFoundation
-import MyVignetteFilter
+import VignetteFilter
 
 protocol EditingViewControllerDelegate : class {
     func finishEditingWithVignette(vignette:Double)
@@ -20,7 +20,7 @@ class EditingViewController: UIViewController, GLKViewDelegate {
     
     var context : CIContext!
     let displayImage : CIImage
-    let vig = MyVignetteFilter()
+    let vig = VignetteFilter()
     var initialVignette : Double = 0.85
     var canUndo = false
     weak var delegate : EditingViewControllerDelegate?

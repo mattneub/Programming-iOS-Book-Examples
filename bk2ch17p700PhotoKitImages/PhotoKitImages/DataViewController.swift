@@ -4,7 +4,7 @@ import UIKit
 import Photos
 import ImageIO
 import MobileCoreServices
-import MyVignetteFilter
+import VignetteFilter
 
 class DataViewController: UIViewController, EditingViewControllerDelegate {
                             
@@ -111,7 +111,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             () -> CGImage in
             var ci = CIImage(contentsOfURL: inurl)!.imageByApplyingOrientation(inorient)
             if vignette >= 0.0 {
-                let vig = MyVignetteFilter()
+                let vig = VignetteFilter()
                 vig.setValue(ci, forKey: "inputImage")
                 vig.setValue(vignette, forKey: "inputPercentage")
                 ci = vig.outputImage!

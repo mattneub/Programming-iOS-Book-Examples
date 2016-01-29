@@ -7,7 +7,7 @@ import GLKit
 import OpenGLES
 import MobileCoreServices
 import AVFoundation
-import MyVignetteFilter
+import VignetteFilter
 
 class PhotoEditingViewController: UIViewController, PHContentEditingController, GLKViewDelegate {
     
@@ -20,7 +20,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
     let myidentifier = "com.neuburg.matt.PhotoKitImages.vignette"
     var displayImage : CIImage?
     var context : CIContext?
-    let vig = MyVignetteFilter()
+    let vig = VignetteFilter()
 
     
     @IBAction func doSlider(sender: AnyObject) {
@@ -51,8 +51,9 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         
         // orientation stuff worked out experimentally; I have no idea if it's right
         
-        if var output = self.displayImage,
+        if let output = self.displayImage, // removed if var, as it will be abolished
             let orient = self.input?.fullSizeImageOrientation {
+                var output = output
                 if self.seg.selectedSegmentIndex == 0 {
                     
                     self.vig.setValue(output, forKey: "inputImage")
@@ -128,7 +129,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
                 () -> CGImage in
                 var ci = CIImage(contentsOfURL: inurl)!.imageByApplyingOrientation(inorient)
                 if vignette >= 0.0 {
-                    let vig = MyVignetteFilter()
+                    let vig = VignetteFilter()
                     vig.setValue(ci, forKey: "inputImage")
                     vig.setValue(vignette, forKey: "inputPercentage")
                     ci = vig.outputImage!
