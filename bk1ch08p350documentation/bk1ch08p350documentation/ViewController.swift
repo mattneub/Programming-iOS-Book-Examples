@@ -9,14 +9,15 @@ class ViewController: UIViewController {
     
     * Because it's cool.
     * Because it's there.
+     
+    - parameters:
+     
+      - cats: A string containing cats
     
-    #### Parameters
-    
-    `cats` A string containing cats
-    
-    #### Return Value
-    
-    A string containing dogs
+    - returns: A string containing dogs
+     
+    - author: Who do you think?
+     
     */
     
     func dogMyCats(cats:String) -> String {
@@ -32,6 +33,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    /*
+     
+     For spec, see https://developer.apple.com/library/mac/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html
+     
+     Other type 1 markers are: throws, 
+     
+     Other type 2 (description subgraf) markers are: Precondition, Postcondition, Requires, Invariant, Complexity, Important, Warning, Author, Authors, Copyright, Date, SeeAlso, Since, Version, Attention, Bug, Experiment, Note, Remark, ToDo
+     
+     Release notes also mention keyword, recommended, recommendedover, but I don't see them doing anything.
+     
+    */
 
 
 }
