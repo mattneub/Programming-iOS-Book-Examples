@@ -75,18 +75,23 @@ class ViewController: UIViewController {
                 .Number(-1), .Fatal
             ]
             var i = 0
-            while case let .Message(message) = arr[i++]  {
+            // removed use of i++, deprecated in Swift 2.2, to be removed in Swift 3
+            while case let .Message(message) = arr[i]  {
+                i = i.successor()
                 print(message)
             }
             print(arr)
 
         }
         
+        // this _entire_ construct is deprecated in Swift 2.2, to be removed in Swift 3
+        /*
         do {
             for var i = 1; i < 6; i++ {
                 print(i)
             }
         }
+ */
         
         do {
             for i in 1...5 {
@@ -96,7 +101,8 @@ class ViewController: UIViewController {
         
         do {
             for var i in 1...5 {
-                i++
+                // removed use of i++, deprecated in Swift 2.2, to be removed in Swift 3
+                i = i + 1
                 print(i)
             }
         }
@@ -169,6 +175,8 @@ class ViewController: UIViewController {
         }
 
         
+        // this _entire_ construct is deprecated in Swift 2.2, to be removed in Swift 3
+        /*
         do {
             var i : Int
             for i = 1; i < 6; i++ {
@@ -181,7 +189,7 @@ class ViewController: UIViewController {
                 print(i)
             }
         }
-        
+ 
         do {
             let tvc = UITableViewCell()
             let subview1 = UIView()
@@ -194,11 +202,36 @@ class ViewController: UIViewController {
             for v = textField; !(v is UITableViewCell); v = v.superview! {}
             print(v)
         }
+        */
         
+        // this is my one example where the loss of C-style for loops is really a pity
+        // it was great being able to do two things in the prep line
+        /*
         do {
             var values = [0.0]
             for (var i = 20, direction = 1.0; i < 60; i += 5, direction *= -1) {
                 values.append( direction * M_PI / Double(i) )
+            }
+            print(values) // [0.0, 0.15707963267948966, -0.12566370614359174, 0.10471975511965977, -0.089759790102565518, 0.078539816339744828, -0.069813170079773182, 0.062831853071795868, -0.057119866428905326]
+        }
+        */
+        
+        // here's one workaround
+        do {
+            var values = [0.0]
+            var direction = 1.0
+            for i in 20.stride(to: 60, by: 5) {
+                values.append( direction * M_PI / Double(i) )
+                direction *= -1
+            }
+            print(values)
+        }
+        
+        // this is Swiftier and tighter, but a lot harder to understand
+        do {
+            var values = [0.0]
+            for (ix,i) in 20.stride(to: 60, by: 5).enumerate() {
+                values.append( (ix % 2 == 1 ? -1.0 : 1.0) * M_PI / Double(i) )
             }
             print(values)
         }

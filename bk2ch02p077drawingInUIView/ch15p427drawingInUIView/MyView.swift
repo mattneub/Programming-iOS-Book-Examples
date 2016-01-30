@@ -18,7 +18,7 @@ class MyView : UIView {
         self.opaque = false
     }
     
-    let which = 6
+    let which = 1
     
     override func drawRect(rect: CGRect) {
         switch which {

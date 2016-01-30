@@ -29,11 +29,13 @@ class ViewController: UIViewController {
         self.presentViewController(alert, animated: true, completion: nil)
     }
 
+    // rewritten to avoid use of C-style for loop
 
     @IBAction func showResponderChain(sender: UIResponder) {
-        var r : UIResponder?
-        for (r = sender; r != nil; r = r!.nextResponder()) {
+        var r : UIResponder? = sender
+        while r != nil {
             print(r!)
+            r = r!.nextResponder()
         }
     }
 

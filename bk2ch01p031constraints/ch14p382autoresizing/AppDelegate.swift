@@ -18,7 +18,8 @@ func dictionaryOfNames(arr:UIView...) -> [String:UIView] {
 }
 
 extension NSLayoutConstraint {
-    class func reportAmbiguity (var v:UIView?) {
+    class func reportAmbiguity (v:UIView?) {
+        var v = v
         if v == nil {
             v = UIApplication.sharedApplication().keyWindow
         }
@@ -29,7 +30,8 @@ extension NSLayoutConstraint {
             }
         }
     }
-    class func listConstraints (var v:UIView?) {
+    class func listConstraints (v:UIView?) {
+        var v = v
         if v == nil {
             v = UIApplication.sharedApplication().keyWindow
         }

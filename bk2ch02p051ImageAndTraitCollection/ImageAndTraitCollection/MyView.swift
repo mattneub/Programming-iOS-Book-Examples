@@ -11,7 +11,8 @@ class MyView: UIView {
     }
     
     override func drawRect(rect: CGRect) {
-        if var im = self.image {
+        if let im = self.image { // removed "if var", as this will be abolished soon
+            var im = im
             if let asset = self.image.imageAsset {
                 let tc = self.traitCollection
                 im = asset.imageWithTraitCollection(tc)

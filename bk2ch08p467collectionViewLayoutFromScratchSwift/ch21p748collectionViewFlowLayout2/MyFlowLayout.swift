@@ -25,7 +25,8 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         var arr = super.layoutAttributesForElementsInRect(rect)!
         if let sup = super.layoutAttributesForElementsInRect(rect) {
             arr = sup.map {
-                (var atts) in
+                atts in // remove (var atts)
+                var atts = atts
                 if atts.representedElementKind == nil {
                     let ip = atts.indexPath
                     atts = self.layoutAttributesForItemAtIndexPath(ip)!

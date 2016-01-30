@@ -125,14 +125,14 @@ class DogFailable {
     let name : String
     let license : Int
     init!(name:String, license:Int) {
-        self.name = name
-        self.license = license
         if name.isEmpty {
-            return nil
+            return nil // early exit is legal for a class in Swift 2.2
         }
         if license <= 0 {
             return nil
         }
+        self.name = name
+        self.license = license
     }
 }
 

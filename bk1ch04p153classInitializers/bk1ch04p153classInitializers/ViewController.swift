@@ -108,9 +108,10 @@ class NoisyDog9 : Dog9 {
         return nil // legal
     }
     init?(ok:Bool) {
-        // return nil // compile error: "all stored properties... must be initialized..."
+        if !ok {return nil}
+        // used to give compile error: "all stored properties... must be initialized..."
+        // now legal starting in Swift 2.2
         super.init(name:"Fido", license:123)
-        return nil // _now_ you are allowed to fail
     }
     // illegal: init? cannot override init
 //    override init?(name:String, license:Int) {
@@ -196,7 +197,7 @@ class ViewController: UIViewController {
         _ = d3
         _ = d4
         
-    
+        
     }
 
 

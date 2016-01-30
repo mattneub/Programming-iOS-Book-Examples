@@ -109,7 +109,11 @@ func makeRoundedRectangleMaker3(sz:CGSize) -> (CGFloat) -> UIImage {
     }
 }
 
-// implicit curry
+
+// implicit curry: deprecated in Swift 2.2, slated for removal in Swift 3
+
+/*
+
 func makeRoundedRectangleMaker4(sz:CGSize)(_ r:CGFloat) -> UIImage {
     return imageOfSize(sz) {
         let p = UIBezierPath(
@@ -119,6 +123,7 @@ func makeRoundedRectangleMaker4(sz:CGSize)(_ r:CGFloat) -> UIImage {
     }
 }
 
+ */
 
 
 
@@ -213,11 +218,11 @@ class ViewController: UIViewController {
         let image1 = makeRoundedRectangleMaker3(CGSizeMake(45,20))(8)
         _ = image1
         
-        let maker4 = makeRoundedRectangleMaker4(CGSizeMake(45,20))
-        self.myImageView.image = maker4(8)
-
-        let image2 = makeRoundedRectangleMaker4(CGSizeMake(45,20))(8)
-        _ = image2
+//        let maker4 = makeRoundedRectangleMaker4(CGSizeMake(45,20))
+//        self.myImageView.image = maker4(8)
+//
+//        let image2 = makeRoundedRectangleMaker4(CGSizeMake(45,20))(8)
+//        _ = image2
 
 
     }

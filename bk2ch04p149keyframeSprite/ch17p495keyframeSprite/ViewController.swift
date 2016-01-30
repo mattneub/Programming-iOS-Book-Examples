@@ -9,14 +9,15 @@ class ViewController : UIViewController {
     
     func makeImages () -> [UIImage] {
         var arr = [UIImage]()
-        for (var i = 0; i < 3; i++) {
+        // replace C for loops by stride
+        for i in 0.stride(to: 3, by: 1) { // (var i = 0; i < 3; i++) {
             UIGraphicsBeginImageContextWithOptions(CGSizeMake(24,24), true, 0)
             UIImage(named: "sprites.png")!.drawAtPoint(CGPointMake(CGFloat(-(5+i)*24), -4*24))
             let im = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             arr += [im]
         }
-        for (var i = 1; i >= 0; i--) {
+        for i in 1.stride(through: 0, by: -1) { // (var i = 1; i >= 0; i--) {
             UIGraphicsBeginImageContextWithOptions(CGSizeMake(24,24), true, 0)
             UIImage(named: "sprites.png")!.drawAtPoint(CGPointMake(CGFloat(-(5+i)*24),-4*24))
             let im = UIGraphicsGetImageFromCurrentImageContext()

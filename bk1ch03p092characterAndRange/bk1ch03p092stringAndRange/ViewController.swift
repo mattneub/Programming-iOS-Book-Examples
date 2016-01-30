@@ -101,12 +101,13 @@ class ViewController: UIViewController {
             print(c)
         }
         
-        do {
-            let s = "hello"
-            var ix = s.startIndex
-            let c = s[++ix] // "e"
-            print(c)
-        }
+        // example removed: ++ operator deprecated in Swift 2.2, will be removed in Swift 3
+//        do {
+//            let s = "hello"
+//            var ix = s.startIndex
+//            let c = s[++ix] // "e"
+//            print(c)
+//        }
 
         
         do {
@@ -169,11 +170,12 @@ class ViewController: UIViewController {
             print(s2)
         }
         
+        // removed ++ and -- from this example
         do {
             let s = "hello"
             var r = s.characters.indices
-            r.startIndex++
-            r.endIndex--
+            r.startIndex = r.startIndex.successor()
+            r.endIndex = r.endIndex.predecessor()
             let s2 = s[r] // "ell"
             print(s2)
         }

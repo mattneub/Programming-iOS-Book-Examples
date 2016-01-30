@@ -9,7 +9,8 @@ class MyFlowLayout : UICollectionViewFlowLayout {
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let arr = super.layoutAttributesForElementsInRect(rect)!
         return arr.map {
-            (var atts) in
+            atts in // remove (var atts)
+            var atts = atts
             if atts.representedElementKind == nil {
                 let ip = atts.indexPath
                 atts = self.layoutAttributesForItemAtIndexPath(ip)!

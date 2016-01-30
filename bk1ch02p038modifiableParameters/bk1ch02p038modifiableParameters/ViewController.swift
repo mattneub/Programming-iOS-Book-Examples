@@ -2,9 +2,13 @@
 
 import UIKit
 
+// WARNING: This may go away, because it is, after all, rather misleading
+
 func say(s:String, times:Int, var loudly:Bool) {
     loudly = true // can't do this without "var"
 }
+
+// WARNING: This may go away, because it is, after all, rather misleading
 
 func removeFromStringNot(var s:String, character c:Character) -> Int {
     var howMany = 0

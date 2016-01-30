@@ -34,7 +34,7 @@ func flockTwoTogether<T:Flier>(flier:T, _ other:Any) {
 }
 
 func typeTester(d:Dog, _ whattype:Dog.Type) {
-    // if d.dynamicType is whattype { // compile error, "not a type" (i.e. a not a type literal)
+    // if d.dynamicType is whattype {} // compile error, "not a type" (i.e. a not a type literal)
     if d.dynamicType === whattype {
         print("yep")
     } else {
