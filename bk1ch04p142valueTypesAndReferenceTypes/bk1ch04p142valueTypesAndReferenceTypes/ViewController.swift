@@ -44,8 +44,14 @@ struct RecursiveDog { // compile error
 
 */
 
+// but this is now legal:
 
-
+enum Node {
+    case None(Int)
+    indirect case Left(Int, Node)
+    indirect case Right(Int, Node)
+    indirect case Both(Int, Node, Node)
+}
 
 class ViewController: UIViewController {
 
