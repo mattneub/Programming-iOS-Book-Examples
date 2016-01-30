@@ -10,13 +10,11 @@ class ViewController: UIViewController {
     * Because it's cool.
     * Because it's there.
      
-    - parameters:
-     
-      - cats: A string containing cats
+    * parameter cats: A string containing cats
     
-    - returns: A string containing dogs
+    * returns: A string containing dogs
      
-    - author: Who do you think?
+    * author: Who do you think?
      
     */
     
