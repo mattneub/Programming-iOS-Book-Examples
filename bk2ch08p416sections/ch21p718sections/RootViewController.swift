@@ -115,7 +115,7 @@ class RootViewController : UITableViewController {
     
     /*
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-    println(view) // prove we are reusing header views
+    print(view) // prove we are reusing header views
     }
     */
     

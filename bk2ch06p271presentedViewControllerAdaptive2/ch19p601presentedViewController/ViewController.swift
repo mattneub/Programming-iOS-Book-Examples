@@ -30,7 +30,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         let pair = self.pairs[self.ix]
         self.original = UIModalPresentationStyle(rawValue:pair.0)!
         self.adaptive = UIModalPresentationStyle(rawValue:pair.1)!
-        self.ix++
+        self.ix += 1
     }
     
     @IBAction func doPresent(sender:AnyObject?) {

@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     
     func doNextButton(sender:AnyObject) {
         var ix = self.textFields.indexOf(self.fr as! UITextField)!
-        ix = ++ix % self.textFields.count
+        ix = (ix + 1) % self.textFields.count
         let v = self.textFields[ix]
         v.becomeFirstResponder()
     }

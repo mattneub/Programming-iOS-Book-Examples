@@ -110,10 +110,9 @@ class ViewController : UIViewController {
 
         case 9:
             var values = [0.0]
-            // comma is legal in the for block!
-            //WARNING this will have to be replaced; I already have a replacement ready
-            for (var i = 20, direction = 1.0; i < 60; i += 5, direction *= -1) { // alternate directions
-                values.append( direction * M_PI / Double(i) )
+            // work around loss of C for loop, but sorry to see it go
+            for (ix,i) in 20.stride(to: 60, by: 5).enumerate() {
+                values.append( (ix % 2 == 1 ? -1.0 : 1.0) * M_PI / Double(i) )
             }
             values.append(0.0)
             print(values)
@@ -143,9 +142,9 @@ class ViewController : UIViewController {
 
             // second animation (waggle)
             var values = [0.0]
-            //WARNING this will have to be replaced; I already have a replacement ready
-            for (var i = 20, direction = 1.0; i < 60; i += 5, direction *= -1) { // alternate directions
-                values.append( direction * M_PI / Double(i) )
+            // work around loss of C for loop, but sorry to see it go
+            for (ix,i) in 20.stride(to: 60, by: 5).enumerate() {
+                values.append( (ix % 2 == 1 ? -1.0 : 1.0) * M_PI / Double(i) )
             }
             values.append(0.0)
             let anim2 = CAKeyframeAnimation(keyPath:"transform")

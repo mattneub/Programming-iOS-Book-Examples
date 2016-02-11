@@ -37,10 +37,10 @@ class MyLayout : UICollectionViewLayout {
                     NSIndexPath(forItem:j, inSection:i))
                 att.frame = CGRectMake(CGFloat(x)*cellside,CGFloat(y)*cellside,cellside,cellside)
                 atts += [att]
-                x++
+                x += 1
                 if CGFloat(x) >= shortside {
                     x = 0
-                    y++
+                    y += 1
                 }
             }
         }
