@@ -170,7 +170,7 @@ class ViewController: UIViewController {
     
     func changed() {
         guard let item = self.qp.currentItem else {return}
-        self.curnum++
+        self.curnum += 1
         var arr = item.asset.commonMetadata
         arr = AVMetadataItem.metadataItemsFromArray(arr,
             withKey:AVMetadataCommonKeyTitle,

@@ -61,7 +61,7 @@ class MyTableViewController: UITableViewController {
                 cell.imageView!.image = nil
                 m.task = self.downloader.download(m.picurl) { // *
                     [weak self] url in // *
-                    m.task == nil // *
+                    m.task = nil // *
                     if url == nil {
                         return
                     }

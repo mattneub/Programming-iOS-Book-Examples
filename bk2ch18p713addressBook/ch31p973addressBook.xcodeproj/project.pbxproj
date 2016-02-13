@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		324DD41E19A4F82500E85278 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324DD41D19A4F82500E85278 /* ViewController.swift */; };
-		32B1342E1BB9823500B0BD94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32B1342D1BB9823500B0BD94 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		32B134301BB9824500B0BD94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B1342F1BB9824500B0BD94 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		32B1342E1BB9823500B0BD94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32B1342D1BB9823500B0BD94 /* LaunchScreen.storyboard */; };
+		32B134301BB9824500B0BD94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B1342F1BB9824500B0BD94 /* AppDelegate.swift */; };
 		C9D7D14518293B1800476387 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9D7D14318293B1800476387 /* Main.storyboard */; };
 		C9D7D14A18293B1800476387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9D7D14918293B1800476387 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -230,6 +230,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch31p973addressBook/ch31p973addressBook-Prefix.pch";
 				INFOPLIST_FILE = "ch31p973addressBook/ch31p973addressBook-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -248,6 +249,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch31p973addressBook/ch31p973addressBook-Prefix.pch";
 				INFOPLIST_FILE = "ch31p973addressBook/ch31p973addressBook-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

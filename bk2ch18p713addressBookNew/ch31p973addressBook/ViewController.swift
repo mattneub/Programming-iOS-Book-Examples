@@ -70,7 +70,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                         CNContactFamilyNameKey, CNContactGivenNameKey
                         ])
                     matts = matts.filter{$0.familyName == "Neuburg"}
-                    guard var moi = matts.first else {
+                    guard let moi = matts.first else {
                         print("couldn't find myself")
                         return
                     }
@@ -89,7 +89,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                             stop.memory = true
                         }
                     }
-                    guard var moi = matt else {
+                    guard let moi = matt else {
                         print("couldn't find myself")
                         return
                     }
