@@ -51,7 +51,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         
         // orientation stuff worked out experimentally; I have no idea if it's right
         
-        if let output = self.displayImage, // removed if var, as it will be abolished
+        if let output = self.displayImage, // removed if var, perhaps unnecessarily but it's clearer without
             let orient = self.input?.fullSizeImageOrientation {
                 var output = output
                 if self.seg.selectedSegmentIndex == 0 {
