@@ -32,11 +32,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
-        print("interrupter in \(__FUNCTION__)")
+        print("interrupter in \(#function)")
         _ = try? AVAudioSession.sharedInstance().setActive(true, withOptions: [])
     }
     
     func applicationWillTerminate(application: UIApplication) {
-        print("interrupter in \(__FUNCTION__)") // never received; the normal situation
+        print("interrupter in \(#function)") // never received; the normal situation
     }
 }

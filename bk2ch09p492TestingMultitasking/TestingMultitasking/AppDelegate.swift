@@ -10,28 +10,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // use NSLog so we can read from the device console
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        NSLog("%@", __FUNCTION__)
+        NSLog("%@", #function)
         return true
     }
     
     func applicationWillResignActive(application: UIApplication) {
-        NSLog("%@", __FUNCTION__)
+        NSLog("%@", #function)
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        NSLog("%@", __FUNCTION__)
+        NSLog("%@", #function)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        NSLog("%@", __FUNCTION__)
+        NSLog("%@", #function)
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        NSLog("%@", __FUNCTION__)
+        NSLog("%@", #function)
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        NSLog("%@", __FUNCTION__)
+        NSLog("%@", #function)
     }
 
 

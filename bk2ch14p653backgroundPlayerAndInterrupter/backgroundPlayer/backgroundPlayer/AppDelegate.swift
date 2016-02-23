@@ -26,11 +26,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillResignActive(application: UIApplication) {
-        print("bp in \(__FUNCTION__)")
+        print("bp in \(#function)")
         return; // comment out to perform timer experiment
         
         self.timer?.invalidate()
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "fired:", userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(fired(_:)), userInfo: nil, repeats: true)
     }
     
     // timer fires while we are in background, provided
@@ -41,7 +41,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
-        print("bp in \(__FUNCTION__)")
+        print("bp in \(#function)")
         print("bp state while entering background: \(application.applicationState.rawValue)")
         return; // comment out to experiment with background app performing immediate local notification
         
@@ -60,13 +60,13 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
-        print("bp in \(__FUNCTION__)")
+        print("bp in \(#function)")
     }
     
     // we are a player app, we activate playback category only when we actually start playing
     // the rest of the time we use ambient just so we have an active category
     func applicationDidBecomeActive(application: UIApplication) {
-        print("bp in \(__FUNCTION__)")
+        print("bp in \(#function)")
         
         let types : UIUserNotificationType = .Alert
         let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
@@ -83,6 +83,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // we receive this!
     
     func applicationWillTerminate(application: UIApplication) {
-        print("bp in \(__FUNCTION__)")
+        print("bp in \(#function)")
     }
 }

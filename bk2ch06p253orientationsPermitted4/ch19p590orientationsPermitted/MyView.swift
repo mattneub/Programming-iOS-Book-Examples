@@ -3,12 +3,12 @@ import UIKit
 class MyView : UIView {
     
     override func layoutSubviews() {
-        print(__FUNCTION__)
+        print(#function)
         super.layoutSubviews()
     }
     
     override func updateConstraints() {
-        print(__FUNCTION__)
+        print(#function)
         super.updateConstraints()
     }
     

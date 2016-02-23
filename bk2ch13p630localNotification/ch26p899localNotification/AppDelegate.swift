@@ -15,8 +15,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        print("start \(__FUNCTION__)")
-        NSLog("%@ %@", "\(__FUNCTION__)", "\(launchOptions)")
+        print("start \(#function)")
+        NSLog("%@ %@", "\(#function)", "\(launchOptions)")
 
         if let n = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
             delay(0.5) {
@@ -24,7 +24,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             }
         }
         
-        print("end \(__FUNCTION__)")
+        print("end \(#function)")
         return true
     }
         
@@ -50,10 +50,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // even if user refused to allow alert and sounds etc.,
     // we will receive this call if we are in the foreground when a local notification fires
     func application(application: UIApplication, didReceiveLocalNotification n: UILocalNotification) {
-        print("start \(__FUNCTION__)")
-        NSLog("%@", "\(__FUNCTION__)")
+        print("start \(#function)")
+        NSLog("%@", "\(#function)")
         self.doAlert(n)
-        print("end \(__FUNCTION__)")
+        print("end \(#function)")
     }
     
     /*
@@ -63,31 +63,31 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // for foreground, you will be brought to foreground
     // but either way, nothing else will be called
     func application(application: UIApplication, handleActionWithIdentifier id: String?, forLocalNotification n: UILocalNotification, completionHandler: () -> Void) {
-        print("start \(__FUNCTION__)")
-        NSLog("%@", "\(__FUNCTION__)")
+        print("start \(#function)")
+        NSLog("%@", "\(#function)")
         print("user tapped \(id)")
         // you _must_ call the completion handler to tell the runtime you did this!
         completionHandler()
-        print("end \(__FUNCTION__)")
+        print("end \(#function)")
     }
 */
     
     // new in iOS 9, same as in iOS 8 except that now we have `responseInfo` dictionary coming in
     func application(application: UIApplication, handleActionWithIdentifier id: String?, forLocalNotification n: UILocalNotification, withResponseInfo d: [NSObject : AnyObject], completionHandler: () -> Void) {
-        print("start \(__FUNCTION__)")
-        NSLog("%@", "\(__FUNCTION__)")
+        print("start \(#function)")
+        NSLog("%@", "\(#function)")
         print("user tapped \(id)")
         if let s = d[UIUserNotificationActionResponseTypedTextKey] as? String {
             print(s)
         }
         // you _must_ call the completion handler to tell the runtime you did this!
         completionHandler()
-        print("end \(__FUNCTION__)")
+        print("end \(#function)")
     }
     
     
     func applicationDidBecomeActive(application: UIApplication) {
-        print("start \(__FUNCTION__)")
-        print("end \(__FUNCTION__)")
+        print("start \(#function)")
+        print("end \(#function)")
     }
 }

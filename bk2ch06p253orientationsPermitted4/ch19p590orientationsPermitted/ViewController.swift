@@ -119,15 +119,15 @@ class ViewController : UIViewController {
     // layout events check
     
     override func viewWillLayoutSubviews() {
-        print(__FUNCTION__)
+        print(#function)
     }
     
     override func viewDidLayoutSubviews() {
-        print(__FUNCTION__)
+        print(#function)
     }
     
     override func updateViewConstraints() {
-        print(__FUNCTION__)
+        print(#function)
         super.updateViewConstraints()
     }
 }

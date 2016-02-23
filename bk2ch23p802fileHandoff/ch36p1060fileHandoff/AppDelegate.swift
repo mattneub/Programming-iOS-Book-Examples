@@ -6,14 +6,14 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        print("start \(__FUNCTION__)")
-        print("end \(__FUNCTION__)")
+        print("start \(#function)")
+        print("end \(#function)")
 
         return true
     }
     
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        print("start \(__FUNCTION__)")
+        print("start \(#function)")
         print(url)
         
         
@@ -45,18 +45,18 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         let vc = self.window!.rootViewController as! ViewController
         vc.displayDoc(finalurl)
-        print("end \(__FUNCTION__)")
+        print("end \(#function)")
         return true
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
-        print("start \(__FUNCTION__)")
-        print("end \(__FUNCTION__)")
+        print("start \(#function)")
+        print("end \(#function)")
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
-        print("start \(__FUNCTION__)")
-        print("end \(__FUNCTION__)")
+        print("start \(#function)")
+        print("end \(#function)")
     }
     
     // logging shows that handleOpenURL: comes *between* willEnter and didBecome

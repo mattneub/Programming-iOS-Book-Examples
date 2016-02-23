@@ -149,12 +149,12 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
 }
 
 extension RootViewController : UISearchControllerDelegate {
-    func presentSearchController(searchController: UISearchController) { print(__FUNCTION__) }
-    func willPresentSearchController(searchController: UISearchController) { print(__FUNCTION__) }
-    func didPresentSearchController(searchController: UISearchController) { print(__FUNCTION__) }
+    func presentSearchController(searchController: UISearchController) { print(#function) }
+    func willPresentSearchController(searchController: UISearchController) { print(#function) }
+    func didPresentSearchController(searchController: UISearchController) { print(#function) }
     // these next functions are not called, I regard this as a bug
-    func willDismissSearchController(searchController: UISearchController) { print(__FUNCTION__) }
-    func didDismissSearchController(searchController: UISearchController) { print(__FUNCTION__) }
+    func willDismissSearchController(searchController: UISearchController) { print(#function) }
+    func didDismissSearchController(searchController: UISearchController) { print(#function) }
 }
 
 extension RootViewController : UIPopoverPresentationControllerDelegate {

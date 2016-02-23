@@ -28,23 +28,23 @@ class MyView: UIView {
     
     override func updateConstraints() {
         super.updateConstraints()
-        print("\(self)\n\(__FUNCTION__)\n")
+        print("\(self)\n\(#function)\n")
     }
     
     // gets an extra cycle, I've no idea why
     override func layoutSublayersOfLayer(layer: CALayer) {
         super.layoutSublayersOfLayer(layer)
-        print("\(self)\n\(__FUNCTION__)\n")
+        print("\(self)\n\(#function)\n")
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        print("\(self)\n\(__FUNCTION__)\n")
+        print("\(self)\n\(#function)\n")
     }
     
     override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
         // super.traitCollectionDidChange(previousTraitCollection)
-        print("\(self)\n\(__FUNCTION__)\n")
+        print("\(self)\n\(#function)\n")
 //        let prev : UITraitCollection? = previousTraitCollection
 //        if prev == nil {
 //            print("nil")
@@ -62,6 +62,6 @@ class MyLoggingLayer : CALayer {
     override func layoutSublayers() {
         super.layoutSublayers()
         guard let del = self.delegate else {return}
-        print("layer of \(del)\n\(__FUNCTION__)\n")
+        print("layer of \(del)\n\(#function)\n")
     }
 }

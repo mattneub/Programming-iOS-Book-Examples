@@ -7,7 +7,7 @@ import UIKit
 // ==== colon and protocol
 
 protocol Flier {
-    typealias Other
+    associatedtype Other
 }
 struct Bird : Flier {
     typealias Other = String

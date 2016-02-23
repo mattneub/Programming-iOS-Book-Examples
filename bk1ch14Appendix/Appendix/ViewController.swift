@@ -14,7 +14,7 @@ class MyClass {
     var timer : NSTimer?
     func startTimer() {
         self.timer = NSTimer.scheduledTimerWithTimeInterval(1,
-            target: self, selector: "timerFired:",
+            target: self, selector: #selector(timerFired(_:)),
             userInfo: nil, repeats: true)
     }
     @objc func timerFired(t:NSTimer) { // will crash without @objc

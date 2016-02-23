@@ -12,19 +12,19 @@ class FirstViewController : UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
     }
     
     
@@ -33,7 +33,7 @@ class FirstViewController : UIViewController {
 class SecondViewController : UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
             print(tc)
         }
@@ -41,7 +41,7 @@ class SecondViewController : UIViewController {
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
             print(tc)
         }
@@ -49,7 +49,7 @@ class SecondViewController : UIViewController {
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
         
         if let tc = self.transitionCoordinator() {
             print(tc)
@@ -58,7 +58,7 @@ class SecondViewController : UIViewController {
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
             print(tc)
         }

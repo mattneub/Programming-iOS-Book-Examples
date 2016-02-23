@@ -29,7 +29,7 @@ class MasterViewController : UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
             print(tc)
         }
@@ -45,7 +45,7 @@ class MasterViewController : UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
             print(tc)
         }
@@ -53,7 +53,7 @@ class MasterViewController : UITableViewController {
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
         
         if let tc = self.transitionCoordinator() {
             print(tc)
@@ -62,7 +62,7 @@ class MasterViewController : UITableViewController {
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
             print(tc)
         }

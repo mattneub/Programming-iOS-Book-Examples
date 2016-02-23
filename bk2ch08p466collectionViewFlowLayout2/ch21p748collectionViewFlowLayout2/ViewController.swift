@@ -40,10 +40,10 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             sectionData[sectionData.count-1].append( aState )
         }
         
-        let b = UIBarButtonItem(title:"Switch", style:.Plain, target:self, action:"doSwitch:")
+        let b = UIBarButtonItem(title:"Switch", style:.Plain, target:self, action:#selector(doSwitch(_:)))
         self.navigationItem.leftBarButtonItem = b
         
-        let b2 = UIBarButtonItem(title:"Delete", style:.Plain, target:self, action:"doDelete:")
+        let b2 = UIBarButtonItem(title:"Delete", style:.Plain, target:self, action:#selector(doDelete(_:)))
         self.navigationItem.rightBarButtonItem = b2
         
         self.collectionView!.backgroundColor = UIColor.whiteColor()
@@ -209,8 +209,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         if arr.count == 0 {
             return
         }
-        // sort
-        let arr2 = ((arr as NSArray).sortedArrayUsingSelector(Selector("compare:")) as! [NSIndexPath])
+        // sort [NB I don't understand why compare(_:) can't be resolved without more info
+        let arr2 = ((arr as NSArray).sortedArrayUsingSelector(#selector(NSString.compare(_:))) as! [NSIndexPath])
         // delete data
         var empties = [Int]() // keep track of what sections get emptied
         for ip in arr2.reverse() {
@@ -238,24 +238,25 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // menu =================
     
     // exactly as for table views
+    // NB As in the table view example, we have to help Swift resolve capital(_:)
     
     override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        let mi = UIMenuItem(title:"Capital", action:"capital:")
+        let mi = UIMenuItem(title:"Capital", action:#selector(Cell.capital(_:)))
         UIMenuController.sharedMenuController().menuItems = [mi]
         return true
     }
     
     override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return (action == "copy:") || (action == "capital:")
+        return (action == #selector(copy(_:))) || (action == #selector(Cell.capital(_:)))
     }
     
     override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
         // in real life, would do something here
         let state = self.sectionData[indexPath.section][indexPath.row]
-        if action == "copy:" {
+        if action == #selector(copy(_:)) {
             print ("copying \(state)")
         }
-        else if action == "capital:" {
+        else if action == #selector(Cell.capital(_:)) {
             print ("fetching the capital of \(state)")
         }
     }

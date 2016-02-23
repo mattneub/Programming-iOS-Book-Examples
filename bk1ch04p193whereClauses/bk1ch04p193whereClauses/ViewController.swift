@@ -11,10 +11,10 @@ struct Sword : Wieldable {
 struct Bow : Wieldable {
 }
 protocol Superfighter {
-    typealias Weapon : Wieldable
+    associatedtype Weapon : Wieldable
 }
 protocol Fighter : Superfighter {
-    typealias Enemy : Superfighter
+    associatedtype Enemy : Superfighter
     func steal(weapon:Self.Enemy.Weapon, from:Self.Enemy)
 }
 struct Soldier : Fighter {
@@ -43,9 +43,9 @@ protocol Flier {
 protocol Walker {
 }
 protocol Generic {
-    typealias T : Flier, Walker // T must adopt Flier and Walker
-    // typealias U where U:Flier // no where clauses on typealias
-    typealias U : Dog, Flier // legal: this is basically an inheritance declaration!
+    associatedtype T : Flier, Walker // T must adopt Flier and Walker
+    // associatedtype U where U:Flier // no where clauses on associatedtype
+    associatedtype U : Dog, Flier // legal: this is basically an inheritance declaration!
 }
 func flyAndWalk<T where T:Walker, T:Flier> (f:T) {}
 func flyAndWalk2<T : protocol<Walker, Flier>> (f:T) {}

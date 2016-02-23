@@ -6,7 +6,7 @@ class SecondViewController : UIViewController {
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         print(self, terminator: "")
         print(" ", terminator: "")
-        print(__FUNCTION__)
+        print(#function)
         return .Landscape // called, but pointless
     }
     

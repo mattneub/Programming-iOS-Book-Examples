@@ -12,7 +12,7 @@ class MyCell : UITableViewCell {
         // ask it what index path we are
         let ip = tv.indexPathForCell(self)!
         // talk to its delegate
-        let action = Selector(__FUNCTION__ + ":") // work around weird way Swift expresses this
+        let action = Selector(#function + ":") // work around weird way Swift expresses this
         tv.delegate?.tableView?(tv, performAction:action, forRowAtIndexPath:ip, withSender:sender)
     }
 

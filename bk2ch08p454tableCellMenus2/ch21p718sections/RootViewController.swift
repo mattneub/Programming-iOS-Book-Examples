@@ -104,25 +104,30 @@ class RootViewController : UITableViewController {
     
     // menu handling ==========
     
+    // NB Swift 2.2 doesn't seem able to resolve #selector(abbrev(_:))
+    // without our telling it what class it's in
+    // I'm not sure I like this, since it means this class can't be agnostic about it
+    
     override func tableView(tableView: UITableView, shouldShowMenuForRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        let mi = UIMenuItem(title: "Abbrev", action: "abbrev:")
+        let mi = UIMenuItem(title: "Abbrev", action: #selector(MyCell.abbrev(_:)))
         UIMenuController.sharedMenuController().menuItems = [mi]
         return true
     }
     
     override func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return action == "copy:" || action == "abbrev:"
+        return action == #selector(copy(_:)) || action == #selector(MyCell.abbrev(_:))
     }
     
     override func tableView(tableView: UITableView, performAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-        if action == "copy:" {
+        if action == #selector(copy(_:)) {
             // ... do whatever copying consists of ...
             print("copying \(self.sectionData[indexPath.section][indexPath.row])")
         }
-        if action == "abbrev:" {
+        if action == #selector(MyCell.abbrev(_:)) {
             // ... do whatever abbreviating consists of ...
             print("abbreviating \(self.sectionData[indexPath.section][indexPath.row])")
         }
 
     }
 }
+

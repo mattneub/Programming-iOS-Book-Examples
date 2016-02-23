@@ -14,7 +14,7 @@ class Cell : UICollectionViewCell {
         // ask it what index path we are
         let ip = cv.indexPathForCell(self)!
         // relay to its delegate
-        let action = Selector( __FUNCTION__ + ":" )
+        let action = Selector(#function + ":")
         cv.delegate?.collectionView?(cv, performAction:action, forItemAtIndexPath: ip, withSender: sender)
     }
 }

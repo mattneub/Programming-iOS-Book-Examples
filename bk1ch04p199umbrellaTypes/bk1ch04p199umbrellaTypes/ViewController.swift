@@ -17,7 +17,7 @@ class NoisyDog : Dog {}
 func anyExpecter(a:Any) {}
 
 protocol Flier {
-    typealias Other
+    associatedtype Other
 }
 struct Bird : Flier {
     typealias Other = Insect

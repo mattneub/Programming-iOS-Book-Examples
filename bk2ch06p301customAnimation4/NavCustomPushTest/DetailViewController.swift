@@ -11,14 +11,14 @@ class DetailViewController : UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
             print(tc)
         }
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
             print(tc)
         }
@@ -26,7 +26,7 @@ class DetailViewController : UIViewController {
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
         
         if let tc = self.transitionCoordinator() {
             print(tc)
@@ -35,7 +35,7 @@ class DetailViewController : UIViewController {
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        print("\(self) " + __FUNCTION__)
+        print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
             print(tc)
         }

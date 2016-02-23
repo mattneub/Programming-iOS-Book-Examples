@@ -6,12 +6,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("%@", __FUNCTION__)
+        NSLog("%@", #function)
     }
     
     override func viewWillAppear(animated:Bool) {
         super.viewWillAppear(animated)
-        NSLog("%@", __FUNCTION__)
+        NSLog("%@", #function)
         if self.presentingViewController != nil {
             self.view.backgroundColor = UIColor.yellowColor()
         }
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        NSLog("%@", __FUNCTION__)
+        NSLog("%@", #function)
     }
     
     @IBAction func doButton(sender: AnyObject) {
@@ -62,17 +62,17 @@ class ViewController: UIViewController {
     }
 
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        print(__FUNCTION__, size, terminator:"\n\n")
+        print(#function, size, terminator:"\n\n")
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
     override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        print(__FUNCTION__, newCollection, terminator:"\n\n")
+        print(#function, newCollection, terminator:"\n\n")
         super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
     }
     
     override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
-        print(__FUNCTION__, self.traitCollection, terminator:"\n\n")
+        print(#function, self.traitCollection, terminator:"\n\n")
         super.traitCollectionDidChange(previousTraitCollection)
     }
 
