@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "doProg:", name: "prog", object: self)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(doProg), name: "prog", object: self)
         NSNotificationCenter.defaultCenter().postNotificationName("prog", object: self, userInfo: ["progress":4.2])
         return true
     }

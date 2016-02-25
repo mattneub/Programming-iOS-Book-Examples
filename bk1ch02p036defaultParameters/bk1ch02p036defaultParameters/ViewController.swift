@@ -48,13 +48,13 @@ class ViewController: UIViewController {
 
         sayStrings("hey", "ho", "nonny nonny no")
         
-        sayStrings("Mannie", "Moe", "Jack", times:3)
+        sayStrings("Manny", "Moe", "Jack", times:3)
         
         // print is now variadic
         
-        print("Mannie", 3, true) // Mannie 3 true
+        print("Manny", 3, true) // Manny 3 true
         
-        print("Mannie", "Moe", separator:", ", terminator: ", ")
+        print("Manny", "Moe", separator:", ", terminator: ", ")
         print("Jack")
 
         say("hi", times:3, loudly:true)

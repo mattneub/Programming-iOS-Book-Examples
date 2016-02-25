@@ -10,8 +10,8 @@ class ViewController  : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let p = UIPanGestureRecognizer(target:self, action:"dragging:")
-        let lp = UILongPressGestureRecognizer(target:self, action:"longPress:")
+        let p = UIPanGestureRecognizer(target:self, action:#selector(dragging))
+        let lp = UILongPressGestureRecognizer(target:self, action:#selector(longPress))
         lp.numberOfTapsRequired = 1
         self.v.addGestureRecognizer(p)
         self.v.addGestureRecognizer(lp)

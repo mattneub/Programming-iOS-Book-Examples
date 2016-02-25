@@ -28,7 +28,22 @@ func digitChanger(d:Digit) {
 }
 */
 
+// currently works, but deprecated in Swift 2.2 and will be removed in Swift 3
+// the example exactly illustrates the reason: you probably _think_ you are changing the original Digit object...
+// but you're just changing a copy
+// hence you now have two options: either redeclare var d = d to make local d mutable...
+// or, if you really intended to change the original Digit, use inout
+
+/*
+
 func digitChanger(var d:Digit) {
+    d.number = 42
+}
+ 
+ */
+
+func digitChanger(d:Digit) {
+    var d = d
     d.number = 42
 }
 

@@ -10,11 +10,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         self.button.addTarget(self,
-            action: "buttonPressed:",
+            action: #selector(buttonPressed),
             forControlEvents: .TouchUpInside)
         
         self.button2.addTarget(nil, // nil-targeted
-            action: "buttonPressed:",
+            action: #selector(buttonPressed),
             forControlEvents: .TouchUpInside)
 
         // third button is configured as nil-targeted in nib

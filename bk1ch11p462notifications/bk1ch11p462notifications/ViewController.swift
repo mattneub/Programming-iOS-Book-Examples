@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         case 1:
             
             NSNotificationCenter.defaultCenter().addObserver(self,
-                selector: "nowPlayingItemChanged:",
+                selector: #selector(nowPlayingItemChanged),
                 name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification,
                 object: nil)
             

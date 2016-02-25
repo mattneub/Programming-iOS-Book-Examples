@@ -13,7 +13,7 @@ class MyView : UIView {
         let lay = CALayer()
         lay.frame = self.layer.bounds
         self.layer.addSublayer(lay)
-        let t = UITapGestureRecognizer(target: self, action: "tap")
+        let t = UITapGestureRecognizer(target: self, action: #selector(tap))
         self.addGestureRecognizer(t)
     }
     

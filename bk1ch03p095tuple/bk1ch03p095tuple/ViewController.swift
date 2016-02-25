@@ -105,6 +105,10 @@ class ViewController: UIViewController {
 
         
         // parameter list in function call is actually a tuple
+        // however, new in Swift 2.2, these two calls now get a warning:
+        // "Passing 2 arguments to a callee as a single tuple value is deprecated"
+        // so is this "feature" going away? If so, you could _store_ as a tuple ...
+        // ...but _pass_ as individual arguments
         
         do {
             let tuple = (1,2)

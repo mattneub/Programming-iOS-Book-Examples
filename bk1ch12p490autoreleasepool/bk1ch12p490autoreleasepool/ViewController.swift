@@ -15,6 +15,8 @@ class ViewController: UIViewController {
         }
     }
     
+    // ignore warnings
+    
     func test() {
         let path = NSBundle.mainBundle().pathForResource("001", ofType: "png")!
         for j in 0 ..< 50 {

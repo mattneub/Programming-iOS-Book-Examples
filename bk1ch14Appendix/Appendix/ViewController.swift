@@ -148,7 +148,7 @@ class ViewController: UIViewController {
         do {
             // hold my beer and watch _this_!
             
-            let arr = ["Manniez", "Moey", "Jackx"]
+            let arr = ["Mannyz", "Moey", "Jackx"]
             func sortByLastCharacter(s1:AnyObject,
                 _ s2:AnyObject, _ context: UnsafeMutablePointer<Void>) -> Int {
                     let c1 = (s1 as! String).characters.last

@@ -88,7 +88,7 @@ class ViewController: UIViewController {
         s.appendContentsOf(["!" as Character])
         print(s) // "hello world"
         
-        var arr = ["mannie", "moe"]
+        var arr = ["manny", "moe"]
         arr.appendContentsOf(["jack"])
         // arr.appendContentsOf([1]) // nope
         

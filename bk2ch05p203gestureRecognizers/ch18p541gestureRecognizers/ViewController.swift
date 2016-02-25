@@ -13,22 +13,22 @@ class ViewController : UIViewController {
         
         // view that can be single-tapped, double-tapped, or dragged
         
-        let t2 = UITapGestureRecognizer(target:self, action:"doubleTap")
+        let t2 = UITapGestureRecognizer(target:self, action:#selector(doubleTap))
         t2.numberOfTapsRequired = 2
         self.v.addGestureRecognizer(t2)
         
-        let t1 = UITapGestureRecognizer(target:self, action:"singleTap")
+        let t1 = UITapGestureRecognizer(target:self, action:#selector(singleTap))
         t1.requireGestureRecognizerToFail(t2)
         self.v.addGestureRecognizer(t1)
 
         switch which {
         case 1:
-            let p = UIPanGestureRecognizer(target: self, action: "dragging:")
+            let p = UIPanGestureRecognizer(target: self, action: #selector(dragging))
             self.v.addGestureRecognizer(p)
         case 2:
-            let p = HorizPanGestureRecognizer(target: self, action: "dragging:")
+            let p = HorizPanGestureRecognizer(target: self, action: #selector(dragging))
             self.v.addGestureRecognizer(p)
-            let p2 = VertPanGestureRecognizer(target: self, action: "dragging:")
+            let p2 = VertPanGestureRecognizer(target: self, action: #selector(dragging))
             self.v.addGestureRecognizer(p2)
 
         default: break

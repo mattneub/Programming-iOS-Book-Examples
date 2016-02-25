@@ -15,7 +15,7 @@ class FlipsideViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         print("starting timer")
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "dummy:", userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(dummy), userInfo: nil, repeats: true)
         self.timer.tolerance = 0.1
     }
     

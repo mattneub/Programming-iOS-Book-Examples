@@ -10,9 +10,6 @@
 		32DF3E591B5DCF4B00BD6C43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32DF3E581B5DCF4B00BD6C43 /* LaunchScreen.storyboard */; };
 		32DF3E5B1B5DCF6200BD6C43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DF3E5A1B5DCF6200BD6C43 /* AppDelegate.swift */; };
 		32FE5D791969F79600F04FFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FE5D781969F79600F04FFF /* ViewController.swift */; };
-		C951145317AC1A0C00F7C652 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C951145217AC1A0C00F7C652 /* Foundation.framework */; };
-		C951145517AC1A0C00F7C652 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C951145417AC1A0C00F7C652 /* CoreGraphics.framework */; };
-		C951145717AC1A0C00F7C652 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C951145617AC1A0C00F7C652 /* UIKit.framework */; };
 		C951146617AC1A0C00F7C652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C951146417AC1A0C00F7C652 /* Main.storyboard */; };
 		C951146B17AC1A0C00F7C652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C951146A17AC1A0C00F7C652 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -22,9 +19,6 @@
 		32DF3E5A1B5DCF6200BD6C43 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32FE5D781969F79600F04FFF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C951144F17AC1A0C00F7C652 /* ch14p400transformsAndConstraints2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch14p400transformsAndConstraints2.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C951145217AC1A0C00F7C652 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C951145417AC1A0C00F7C652 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C951145617AC1A0C00F7C652 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C951145A17AC1A0C00F7C652 /* ch14p400transformsAndConstraints2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch14p400transformsAndConstraints2-Info.plist"; sourceTree = "<group>"; };
 		C951146517AC1A0C00F7C652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C951146A17AC1A0C00F7C652 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -35,9 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C951145517AC1A0C00F7C652 /* CoreGraphics.framework in Frameworks */,
-				C951145717AC1A0C00F7C652 /* UIKit.framework in Frameworks */,
-				C951145317AC1A0C00F7C652 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,7 +39,6 @@
 			isa = PBXGroup;
 			children = (
 				C951145817AC1A0C00F7C652 /* throbAnimation */,
-				C951145117AC1A0C00F7C652 /* Frameworks */,
 				C951145017AC1A0C00F7C652 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,16 +49,6 @@
 				C951144F17AC1A0C00F7C652 /* ch14p400transformsAndConstraints2.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		C951145117AC1A0C00F7C652 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C951145217AC1A0C00F7C652 /* Foundation.framework */,
-				C951145417AC1A0C00F7C652 /* CoreGraphics.framework */,
-				C951145617AC1A0C00F7C652 /* UIKit.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C951145817AC1A0C00F7C652 /* throbAnimation */ = {

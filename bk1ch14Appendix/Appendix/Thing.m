@@ -19,7 +19,7 @@ void setState (State s) {
 }
 
 - (NSArray<NSString*>*) pepBoys {
-    return @[@"Mannie", @"Moe", @"Jack"];
+    return @[@"Manny", @"Moe", @"Jack"];
 }
 
 - (void) justTesting {

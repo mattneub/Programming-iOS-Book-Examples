@@ -5,7 +5,7 @@
 @implementation Pep
 
 - (NSArray*) boys {
-    return @[@"Mannie", @"Moe", @"Jack"];
+    return @[@"Manny", @"Moe", @"Jack"];
 }
 
 @end

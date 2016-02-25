@@ -291,7 +291,7 @@ class ViewController: UIViewController {
 
 
         let nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: "notificationArrived:", name: "test", object: nil)
+        nc.addObserver(self, selector: #selector(notificationArrived), name: "test", object: nil)
         nc.postNotificationName("test", object: self, userInfo: ["junk":"nonsense"])
         nc.postNotificationName("test", object: self, userInfo: ["progress":"nonsense"])
         nc.postNotificationName("test", object: self, userInfo: ["progress":3])

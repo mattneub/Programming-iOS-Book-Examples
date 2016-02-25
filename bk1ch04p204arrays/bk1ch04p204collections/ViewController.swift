@@ -39,6 +39,23 @@ class ViewController: UIViewController {
             let objs = [1, "howdy"]
             // let arrr = [Insect(), Bird()] // compile error
             let arr : [Flier] = [Insect(), Bird()]
+            
+            do {
+                let arr2 : [Flier] = [Insect()]
+                // WARNING next line is legal (compiles) but you'll crash at runtime
+                // can't use array-casting to cast down from protocol type to adopter type
+                // let arr3 = arr2 as! [Insect]
+                _ = arr2
+            }
+            
+            do {
+                let arr2 : [Flier] = [Insect()]
+                // instead of above, to cast down, must cast individual elements down
+                let arr3 = arr2.map{$0 as! Insect}
+                _ = arr2
+                _ = arr3
+            }
+            
             let rs = Array(1...3)
             print(rs)
             let chars = Array("howdy".characters)
@@ -296,8 +313,15 @@ class ViewController: UIViewController {
             
             let arr2 = [[1,2], [3,4], [5,6], 7]
             let arr3 = arr2.flatMap {$0}
-            print(arr3) // I honestly don't understand this one
-
+            print(arr3)
+        }
+        
+        // flatMap has another use that I really should talk about:
+        // it unwraps Optionals safely while eliminating nils
+        do {
+            let arr : [String?] = ["Manny", nil, nil, "Moe", nil, "Jack", nil]
+            let arr2 = arr.flatMap{$0}
+            print(arr2)
         }
         
         do {

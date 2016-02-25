@@ -5,10 +5,10 @@
 @implementation Pep
 
 - (NSArray*) boys {
-    return @[@"Mannie", @"Moe", @"Jack"];
+    return @[@"Manny", @"Moe", @"Jack"];
 }
 - (NSArray*) boysGood {
-    return @[@"Mannie", @"Moe", @"Jack"];
+    return @[@"Manny", @"Moe", @"Jack"];
 }
 
 

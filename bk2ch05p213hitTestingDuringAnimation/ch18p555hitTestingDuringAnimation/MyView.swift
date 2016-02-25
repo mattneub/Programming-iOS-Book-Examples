@@ -8,7 +8,7 @@ class MyView : UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let t = UITapGestureRecognizer(target: self, action: "tap:")
+        let t = UITapGestureRecognizer(target: self, action: #selector(tap))
         self.v.addGestureRecognizer(t)
         t.cancelsTouchesInView = false
         // uncomment next line to see how button, even if tappable, "swallows the touch" while animating

@@ -95,7 +95,12 @@ class ViewController: UIViewController {
         ]
         
         let nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: "notificationArrived:", name: "test", object: nil)
+        // Cool and long-awaited new feature of Swift 2.2: no more string selectors
+        // This means the compiler will form the actual selector for you
+        // You don't even have to get it totally right! Here, I've used the bare name...
+        // ...but Swift will still form the selector correctly for me
+        // In other words, any valid reference to the method will do
+        nc.addObserver(self, selector:#selector(notificationArrived), name: "test", object: nil)
         nc.postNotificationName("test", object: self, userInfo: ["junk":"nonsense"])
         nc.postNotificationName("test", object: self, userInfo: ["progress":"nonsense"])
         nc.postNotificationName("test", object: self, userInfo: ["progress":3])
@@ -126,6 +131,8 @@ class ViewController: UIViewController {
         if prog != nil {
             self.progress = prog!.doubleValue
             print("at last! \(self.progress)")
+        } else {
+            print("invalid notification")
         }
     }
 
