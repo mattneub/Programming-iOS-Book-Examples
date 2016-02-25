@@ -8,7 +8,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         super.awakeFromNib()
         
         self.title = "First"
-        let b = UIBarButtonItem(image:UIImage(named:"key.png"), style:.Plain, target:self, action:"navigate")
+        let b = UIBarButtonItem(image:UIImage(named:"key.png"), style:.Plain, target:self, action:#selector(navigate))
         let b2 = UIBarButtonItem(image:UIImage(named:"files.png"),
         style:.Plain, target:nil, action:nil)
         self.navigationItem.rightBarButtonItems = [b, b2]

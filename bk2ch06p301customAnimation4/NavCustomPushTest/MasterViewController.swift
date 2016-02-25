@@ -5,7 +5,7 @@ class MasterViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let b = UIBarButtonItem(title: "Push", style: .Plain, target: self, action: "doPush:")
+        let b = UIBarButtonItem(title: "Push", style: .Plain, target: self, action: #selector(doPush))
         self.navigationItem.rightBarButtonItem = b
     }
     

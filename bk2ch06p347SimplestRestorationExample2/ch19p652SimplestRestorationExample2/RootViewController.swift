@@ -31,12 +31,12 @@ class RootViewController : UIViewController {
         print("view did load \(self.dynamicType)")
         self.view.backgroundColor = UIColor.greenColor()
         let b = UIBarButtonItem(title:"Push",
-            style:.Plain, target:self, action:"doPush:")
+            style:.Plain, target:self, action:#selector(doPush))
         self.navigationItem.rightBarButtonItem = b
         let button = UIButton(type:.System)
         button.setTitle("Present", forState:.Normal)
         button.addTarget(self,
-            action:"doPresent:",
+            action:#selector(doPresent),
             forControlEvents:.TouchUpInside)
         button.sizeToFit()
         button.center = self.view.center

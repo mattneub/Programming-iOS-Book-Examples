@@ -20,13 +20,13 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
         // keep ref to g.r.s, because can't learn which one it is by asking for "edges" later
         // (always comes back as None)
         
-        let sep = UIScreenEdgePanGestureRecognizer(target:self, action:"pan:")
+        let sep = UIScreenEdgePanGestureRecognizer(target:self, action:#selector(pan))
         sep.edges = UIRectEdge.Right
         tbc.view.addGestureRecognizer(sep)
         sep.delegate = self
         self.rightEdger = sep
         
-        let sep2 = UIScreenEdgePanGestureRecognizer(target:self, action:"pan:")
+        let sep2 = UIScreenEdgePanGestureRecognizer(target:self, action:#selector(pan))
         sep2.edges = UIRectEdge.Left
         tbc.view.addGestureRecognizer(sep2)
         sep2.delegate = self

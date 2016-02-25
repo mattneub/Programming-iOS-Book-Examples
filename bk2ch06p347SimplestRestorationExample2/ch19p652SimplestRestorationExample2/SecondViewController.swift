@@ -33,7 +33,7 @@ class SecondViewController : UIViewController {
         let button = UIButton(type:.System)
         button.setTitle("Present", forState:.Normal)
         button.addTarget(self,
-            action:"doPresent:",
+            action:#selector(doPresent),
             forControlEvents:.TouchUpInside)
         button.sizeToFit()
         button.center = self.view.center

@@ -101,15 +101,17 @@ class ViewController : UIViewController {
     
     // on device
     
+    // ignore compiler warning, it's private API (you'd have to remove it from shipping code)
+    
     @IBAction func doButton2(sender: AnyObject) {
-        UIApplication.sharedApplication().performSelector("_performMemoryWarning")
+        UIApplication.sharedApplication().performSelector(Selector("_performMemoryWarning"))
     }
     
     // backgrounding
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "backgrounding:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(backgrounding), name: UIApplicationDidEnterBackgroundNotification, object: nil)
     }
     
     func backgrounding(n:NSNotification) {

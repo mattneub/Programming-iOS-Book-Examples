@@ -32,7 +32,7 @@ class PresentedViewController : UIViewController {
         let button = UIButton(type:.System)
         button.setTitle("Dismiss", forState:.Normal)
         button.addTarget(self,
-            action:"doDismiss:",
+            action:#selector(doDismiss),
             forControlEvents:.TouchUpInside)
         button.sizeToFit()
         button.center = self.view.center
