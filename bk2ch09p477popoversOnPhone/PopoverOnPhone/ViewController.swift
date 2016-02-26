@@ -64,7 +64,7 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
         if style != .Popover {
             let vc = controller.presentedViewController
             let nav = UINavigationController(rootViewController: vc)
-            let b = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "dismissHelp:")
+            let b = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(dismissHelp))
             vc.navigationItem.rightBarButtonItem = b
             return nav
         }

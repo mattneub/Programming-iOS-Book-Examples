@@ -22,7 +22,7 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(insertNewObject))
         self.navigationItem.rightBarButtonItem = addButton
         // these next lines do not actually do anything, 
         // so I've taken them out as they are just confusing

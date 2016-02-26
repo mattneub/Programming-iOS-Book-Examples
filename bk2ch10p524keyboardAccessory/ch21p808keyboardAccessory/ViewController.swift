@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         let arr = UINib(nibName:"AccessoryView", bundle:nil).instantiateWithOwner(nil, options:nil)
         self.accessoryView = arr[0] as! UIView
         let b = self.accessoryView.subviews[0] as! UIButton
-        b.addTarget(self, action:"doNextButton:", forControlEvents:.TouchUpInside)
+        b.addTarget(self, action:#selector(doNextButton), forControlEvents:.TouchUpInside)
         
     }
     

@@ -11,7 +11,7 @@ class SecondaryViewController : UIViewController {
         let b = UIButton(type:.System)
         b.setTitle("Configure", forState: .Normal)
         b.backgroundColor = UIColor.yellowColor()
-        b.addTarget(self, action: "callShowHide:", forControlEvents: .TouchUpInside)
+        b.addTarget(self, action: #selector(callShowHide), forControlEvents: .TouchUpInside)
         self.view.addSubview(b)
         b.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activateConstraints([

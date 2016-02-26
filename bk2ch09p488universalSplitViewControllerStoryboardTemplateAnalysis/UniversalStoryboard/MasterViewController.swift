@@ -26,7 +26,7 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(insertNewObject))
         self.navigationItem.rightBarButtonItem = addButton
         // these next lines do not actually do anything, 
         // so I've taken them out as they are just confusing
@@ -126,7 +126,7 @@ extension MasterViewController {
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         let ok = super.respondsToSelector(aSelector)
-        if aSelector == "showDetailViewController:sender:" {
+        if aSelector == #selector(showDetailViewController) {
             print("master responds? \(ok)")
         }
         return ok
@@ -134,7 +134,7 @@ extension MasterViewController {
     
     override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
         var ok = super.canPerformAction(action, withSender:sender)
-        if action == "showDetailViewController:sender:" {
+        if action == #selector(showDetailViewController) {
             ok = false
             print("master can perform? \(ok)")
         }

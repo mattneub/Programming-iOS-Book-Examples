@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     // This is the kind of "loose coupling" that Apple is after here
     
     override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
-        if action == "showHide:" {
+        if action == #selector(showHide) {
             let svc = self.childViewControllers[0] as! UISplitViewController
             let primary = svc.viewControllers[0] 
             if primary.canPerformAction(action, withSender: sender) {

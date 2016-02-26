@@ -18,7 +18,7 @@ class MyTextField: UITextField {
     
     
     override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
-        if action == "expand:", let r = self.selectedTextRange,
+        if action == #selector(expand), let r = self.selectedTextRange,
             let s = self.textInRange(r) {
                 return s.characters.count == 2 && self.stateForAbbrev(s) != nil
         }

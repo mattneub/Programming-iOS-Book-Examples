@@ -9,7 +9,7 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.doDynamicType(nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "doDynamicType:", name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(doDynamicType), name: UIContentSizeCategoryDidChangeNotification, object: nil)
         
         let f = UIFont(name: "Avenir", size: 15)!
         let desc = f.fontDescriptor()

@@ -53,7 +53,7 @@ class StyledText: UIView {
             range: NSMakeRange(0,mas.length))
         self.text = mas
         
-        let tap = UITapGestureRecognizer(target: self, action: "tap:")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
         self.addGestureRecognizer(tap)
         
     }
@@ -86,7 +86,7 @@ class StyledText: UIView {
         self.lm.drawGlyphsForGlyphRange(range2, atPoint: self.r2.origin)
     }
     
-    func tap (g : UIGestureRecognizer) {
+    func tapped (g : UIGestureRecognizer) {
         // which column is it in?
         var p = g.locationInView(self)
         var tc = self.tc

@@ -11,7 +11,7 @@ class ViewController2 : UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "States 2"
-        let b = UIBarButtonItem(title:"Flush", style:.Plain, target:self, action:"doFlush:")
+        let b = UIBarButtonItem(title:"Flush", style:.Plain, target:self, action:#selector(doFlush))
         self.navigationItem.rightBarButtonItem = b
         if let flow = self.collectionViewLayout as? UICollectionViewFlowLayout {
             flow.headerReferenceSize = CGSizeMake(50,50)

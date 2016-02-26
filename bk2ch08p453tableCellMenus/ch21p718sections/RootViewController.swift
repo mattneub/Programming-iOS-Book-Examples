@@ -107,11 +107,11 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return action == "copy:"
+        return action == #selector(copy(_:))
     }
     
     override func tableView(tableView: UITableView, performAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-        if action == "copy:" {
+        if action == #selector(copy(_:)) {
             // ... do whatever copying consists of ...
             print("copying \(self.sectionData[indexPath.section][indexPath.row])")
         }

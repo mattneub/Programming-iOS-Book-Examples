@@ -34,7 +34,7 @@ class PrimaryViewController : UIViewController {
             seg.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor),
             seg.bottomAnchor.constraintEqualToAnchor(self.view.bottomAnchor, constant:-50)
         ])
-        seg.addTarget(self, action: "change:", forControlEvents: .ValueChanged)
+        seg.addTarget(self, action: #selector(change), forControlEvents: .ValueChanged)
     }
     
     func change(sender:AnyObject) {
@@ -90,7 +90,7 @@ extension UIViewController {
         // how to use targetViewControllerForAction to look up the hierarchy
         // we don't know who implements showHide or where he is in the hierarchy,
         // and we don't care! agnostic messaging up the hierarchy
-        let target = self.targetViewControllerForAction("showHide:", sender: sender)
+        let target = self.targetViewControllerForAction(#selector(showHide), sender: sender)
         if target != nil {
             target!.showHide(self)
         }

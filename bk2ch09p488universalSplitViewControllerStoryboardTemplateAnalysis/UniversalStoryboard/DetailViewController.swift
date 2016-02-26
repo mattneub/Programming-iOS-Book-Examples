@@ -62,7 +62,7 @@ extension DetailViewController {
     
     override func respondsToSelector(aSelector: Selector) -> Bool {
         let ok = super.respondsToSelector(aSelector)
-        if aSelector == "showDetailViewController:sender:" {
+        if aSelector == #selector(showDetailViewController) {
             print("detail responds? \(ok)")
         }
         return ok
@@ -70,7 +70,7 @@ extension DetailViewController {
     
     override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
         let ok = super.canPerformAction(action, withSender:sender)
-        if action == "showDetailViewController:sender:" {
+        if action == #selector(showDetailViewController) {
             print("detail can perform? \(ok)")
         }
         return ok

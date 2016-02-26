@@ -109,13 +109,13 @@ class RootViewController : UITableViewController {
     // I'm not sure I like this, since it means this class can't be agnostic about it
     
     override func tableView(tableView: UITableView, shouldShowMenuForRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        let mi = UIMenuItem(title: "Abbrev", action: #selector(MyCell.abbrev(_:)))
+        let mi = UIMenuItem(title: "Abbrev", action: #selector(MyCell.abbrev))
         UIMenuController.sharedMenuController().menuItems = [mi]
         return true
     }
     
     override func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return action == #selector(copy(_:)) || action == #selector(MyCell.abbrev(_:))
+        return action == #selector(copy(_:)) || action == #selector(MyCell.abbrev)
     }
     
     override func tableView(tableView: UITableView, performAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
@@ -123,7 +123,7 @@ class RootViewController : UITableViewController {
             // ... do whatever copying consists of ...
             print("copying \(self.sectionData[indexPath.section][indexPath.row])")
         }
-        if action == #selector(MyCell.abbrev(_:)) {
+        if action == #selector(MyCell.abbrev) {
             // ... do whatever abbreviating consists of ...
             print("abbreviating \(self.sectionData[indexPath.section][indexPath.row])")
         }

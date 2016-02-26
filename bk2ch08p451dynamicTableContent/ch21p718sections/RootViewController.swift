@@ -116,7 +116,7 @@ class RootViewController : UITableViewController {
                     options:[], metrics:nil, views:["lab":lab])
                 ].flatten().map{$0})
             // add tap g.r.
-            let tap = UITapGestureRecognizer(target: self, action: "tap:") // *
+            let tap = UITapGestureRecognizer(target: self, action: #selector(tapped)) // *
             tap.numberOfTapsRequired = 2 // *
             h.addGestureRecognizer(tap) // *
         }
@@ -130,7 +130,7 @@ class RootViewController : UITableViewController {
         return self.sectionNames
     }
     
-    func tap (g : UIGestureRecognizer) {
+    func tapped (g : UIGestureRecognizer) {
         let v = g.view as! MyHeaderView
         let sec = v.section
         let ct = self.sectionData[sec].count

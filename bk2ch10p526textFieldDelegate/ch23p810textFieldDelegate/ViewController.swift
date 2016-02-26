@@ -11,7 +11,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         self.tf.allowsEditingTextAttributes = true
         
-        let mi = UIMenuItem(title:"Expand", action:"expand:")
+        let mi = UIMenuItem(title:"Expand", action:#selector(MyTextField.expand))
         let mc = UIMenuController.sharedMenuController()
         mc.menuItems = [mi]
 

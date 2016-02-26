@@ -241,13 +241,13 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // NB As in the table view example, we have to help Swift resolve capital(_:)
     
     override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        let mi = UIMenuItem(title:"Capital", action:#selector(Cell.capital(_:)))
+        let mi = UIMenuItem(title:"Capital", action:#selector(Cell.capital))
         UIMenuController.sharedMenuController().menuItems = [mi]
         return true
     }
     
     override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return (action == #selector(copy(_:))) || (action == #selector(Cell.capital(_:)))
+        return (action == #selector(copy(_:))) || (action == #selector(Cell.capital))
     }
     
     override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
@@ -256,7 +256,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         if action == #selector(copy(_:)) {
             print ("copying \(state)")
         }
-        else if action == #selector(Cell.capital(_:)) {
+        else if action == #selector(Cell.capital) {
             print ("fetching the capital of \(state)")
         }
     }

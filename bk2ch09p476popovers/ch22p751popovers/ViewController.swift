@@ -25,13 +25,13 @@ class ViewController : UIViewController {
         // vc.modalInPopover = true
         let nav = UINavigationController(rootViewController: vc)
         let b = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self,
-            action: "cancelPop1:")
+            action: #selector(cancelPop1))
         vc.navigationItem.rightBarButtonItem = b
         let b2 = UIBarButtonItem(barButtonSystemItem: .Done, target: self,
-            action: "savePop1:")
+            action: #selector(savePop1))
         vc.navigationItem.leftBarButtonItem = b2
         let bb = UIButton(type:.InfoDark)
-        bb.addTarget(self, action:"doPresent:", forControlEvents:.TouchUpInside)
+        bb.addTarget(self, action:#selector(doPresent), forControlEvents:.TouchUpInside)
         bb.sizeToFit()
         vc.navigationItem.titleView = bb
         //hmm, this feels like a bug: merely examining the presentation controller...
@@ -123,7 +123,7 @@ class ViewController : UIViewController {
         label.center = CGPointMake(150,150)
         label.frame = CGRectIntegral(label.frame)
         vc.view.addSubview(label)
-        let t = UITapGestureRecognizer(target:self, action:"tapped:")
+        let t = UITapGestureRecognizer(target:self, action:#selector(tapped))
         vc.view.addGestureRecognizer(t)
         
         if let pop = vc.popoverPresentationController {
@@ -158,7 +158,7 @@ class ViewController : UIViewController {
         b.center = CGPointMake(150,150)
         b.frame = b.frame.integral
         b.autoresizingMask = .None
-        b.addTarget(self, action:"done:", forControlEvents:.TouchUpInside)
+        b.addTarget(self, action:#selector(done), forControlEvents:.TouchUpInside)
         vc.view.addSubview(b)
         // uncomment next line if you'd like to experiment
         // previously, only coverVertical was legal, but this restriction is lifted

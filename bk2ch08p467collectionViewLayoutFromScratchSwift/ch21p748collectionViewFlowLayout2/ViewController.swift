@@ -35,7 +35,7 @@ class ViewController : UICollectionViewController {
             sectionData[sectionData.count-1].append( aState )
         }
         self.navigationItem.title = "States"
-        let bb = UIBarButtonItem(title:"Push", style:.Plain, target:self, action:"doPush:")
+        let bb = UIBarButtonItem(title:"Push", style:.Plain, target:self, action:#selector(doPush))
         self.navigationItem.rightBarButtonItem = bb
         self.collectionView!.backgroundColor = UIColor.whiteColor()
         self.collectionView!.allowsMultipleSelection = true

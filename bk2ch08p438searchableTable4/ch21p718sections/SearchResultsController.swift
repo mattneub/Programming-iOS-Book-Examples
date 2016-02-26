@@ -27,7 +27,7 @@ class SearchResultsController : UIViewController {
             v.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
         ])
         self.child.didMoveToParentViewController(self)
-        let t = UITapGestureRecognizer(target: self, action: "tap:")
+        let t = UITapGestureRecognizer(target: self, action: #selector(tap))
         t.delegate = self
         self.view.addGestureRecognizer(t)
     }
