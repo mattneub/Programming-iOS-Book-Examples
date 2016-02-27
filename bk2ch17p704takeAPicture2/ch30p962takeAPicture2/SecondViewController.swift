@@ -11,7 +11,7 @@ class SecondViewController: UIViewController {
         self.image = im
         super.init(nibName: "SecondViewController", bundle: nil)
         self.title = "Decide"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Use", style: .Plain, target: self, action: "doUse:")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Use", style: .Plain, target: self, action: #selector(doUse))
     }
     
     required init(coder: NSCoder) {

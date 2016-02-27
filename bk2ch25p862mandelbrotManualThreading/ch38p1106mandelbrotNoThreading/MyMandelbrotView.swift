@@ -37,14 +37,14 @@ class MyMandelbrotView : UIView {
         self.makeBitmapContext(self.bounds.size)
         let center = CGPointMake(self.bounds.midX, self.bounds.midY)
         let d = ["center":NSValue(CGPoint: center), "zoom":CGFloat(1)]
-        self.performSelectorInBackground("reallyDraw:", withObject: d)
+        self.performSelectorInBackground(#selector(reallyDraw), withObject: d)
     }
     
     // trampoline, background thread entry point
     func reallyDraw(d:[NSObject:AnyObject]) {
         autoreleasepool {
             self.drawAtCenter((d["center"] as! NSValue).CGPointValue(), zoom: d["zoom"] as! CGFloat)
-            self.performSelectorOnMainThread("allDone", withObject: nil, waitUntilDone: false)
+            self.performSelectorOnMainThread(#selector(allDone), withObject: nil, waitUntilDone: false)
         }
     }
     

@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         // set up initial state of nav item
 
         let ni = UINavigationItem(title: "Tinker")
-        let b = UIBarButtonItem(title: "Evers", style: .Plain, target: self, action: "pushNext:")
+        let b = UIBarButtonItem(title: "Evers", style: .Plain, target: self, action: #selector(pushNext))
         ni.rightBarButtonItem = b
         self.navbar.items = [ni]
     }
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         let ni = UINavigationItem(title:s)
         if s == "Evers" {
             let b = UIBarButtonItem(
-                title:"Chance", style: .Plain, target:self, action:"pushNext:")
+                title:"Chance", style: .Plain, target:self, action:#selector(pushNext))
             ni.rightBarButtonItem = b
         }
         self.navbar.pushNavigationItem(ni, animated:true)

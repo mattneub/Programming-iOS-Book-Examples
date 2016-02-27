@@ -22,7 +22,7 @@ class MySlider: UISlider {
     required init?(coder: NSCoder) {
         super.init(coder:coder)
         
-        let t = UITapGestureRecognizer(target: self, action: "tapped:")
+        let t = UITapGestureRecognizer(target: self, action: #selector(tapped))
         self.addGestureRecognizer(t)
         
         //    self.superview.tintColor = UIColor.redColor()

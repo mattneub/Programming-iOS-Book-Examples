@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  bk2ch12p582datePicker
-//
-//  Created by Matt Neuburg on 4/17/15.
-//  Copyright (c) 2015 Matt Neuburg. All rights reserved.
-//
 
 import UIKit
 

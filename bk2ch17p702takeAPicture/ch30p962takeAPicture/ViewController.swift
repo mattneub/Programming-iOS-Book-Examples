@@ -45,7 +45,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         super.viewDidAppear(animated)
         self.determineStatus()
         NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: "determineStatus",
+            selector: #selector(determineStatus),
             name: UIApplicationWillEnterForegroundNotification,
             object: nil)
     }

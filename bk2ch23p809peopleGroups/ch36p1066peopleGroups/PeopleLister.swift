@@ -28,7 +28,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         self.title = (self.fileURL.lastPathComponent! as NSString).stringByDeletingPathExtension
-        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "doAdd:")
+        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(doAdd))
         self.navigationItem.rightBarButtonItems = [b]
         
         self.tableView.registerNib(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "Person")
@@ -120,7 +120,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "forceSave:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(forceSave), name: UIApplicationDidEnterBackgroundNotification, object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {

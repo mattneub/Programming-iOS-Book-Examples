@@ -44,7 +44,7 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         super.viewDidLoad()
         
         self.title = self.groupObject.name
-        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "doAdd:")
+        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(doAdd))
         self.navigationItem.rightBarButtonItems = [b]
         
         self.tableView.registerNib(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "Person")

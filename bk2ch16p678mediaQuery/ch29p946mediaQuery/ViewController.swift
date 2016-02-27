@@ -69,11 +69,11 @@ class ViewController: UIViewController {
         self.vv.setVolumeThumbImage(thumb, forState:.Normal)
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"wirelessChanged:",
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(wirelessChanged),
             name:MPVolumeViewWirelessRoutesAvailableDidChangeNotification,
             object:nil)
         NSNotificationCenter.defaultCenter().addObserver(self,
-            selector:"wirelessChanged2:",
+            selector:#selector(wirelessChanged2),
             name:MPVolumeViewWirelessRouteActiveDidChangeNotification,
             object:nil)
         
@@ -166,11 +166,11 @@ class ViewController: UIViewController {
         player.setQueueWithItemCollection(queue)
         player.shuffleMode = .Songs
         player.beginGeneratingPlaybackNotifications()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changed:", name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: player)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changed), name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: player)
         self.q = queue // retain a pointer to the queue
         player.play()
         
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "timerFired:", userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
         self.timer.tolerance = 0.1
     }
     

@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         self.prog3.value = 0
         self.prog3.setNeedsDisplay()
         self.prog4.progress = 0
-        NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "inc:", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: #selector(inc), userInfo: nil, repeats: true)
     }
     
     override func viewDidLayoutSubviews() {

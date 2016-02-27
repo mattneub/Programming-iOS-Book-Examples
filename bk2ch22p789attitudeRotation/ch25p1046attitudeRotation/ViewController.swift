@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         self.motman.deviceMotionUpdateInterval = 1.0 / 20.0
         self.motman.startDeviceMotionUpdatesUsingReferenceFrame(ref)
         let t = 1.0 / 10.0
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(t, target:self, selector:"pollAttitude:",userInfo:nil, repeats:true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(t, target:self, selector:#selector(pollAttitude),userInfo:nil, repeats:true)
     }
     
     func pollAttitude(_:AnyObject!) {

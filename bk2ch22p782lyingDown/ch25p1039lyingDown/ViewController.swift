@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         switch which {
         case 1:
             self.motman.startAccelerometerUpdates()
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(self.motman.accelerometerUpdateInterval, target: self, selector: "pollAccel:", userInfo: nil, repeats: true)
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(self.motman.accelerometerUpdateInterval, target: self, selector: #selector(pollAccel), userInfo: nil, repeats: true)
         case 2:
             self.motman.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: {
                 (accelerometerData:CMAccelerometerData?, error:NSError?) in

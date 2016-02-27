@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         print("starting")
         self.motman.accelerometerUpdateInterval = 1.0 / 30.0
         self.motman.startAccelerometerUpdates()
-        self.polltimer = NSTimer.scheduledTimerWithTimeInterval(self.motman.accelerometerUpdateInterval, target: self, selector: "pollAccel:", userInfo: nil, repeats: true)
+        self.polltimer = NSTimer.scheduledTimerWithTimeInterval(self.motman.accelerometerUpdateInterval, target: self, selector: #selector(pollAccel), userInfo: nil, repeats: true)
     }
     
     func addAcceleration(accel:CMAcceleration) {

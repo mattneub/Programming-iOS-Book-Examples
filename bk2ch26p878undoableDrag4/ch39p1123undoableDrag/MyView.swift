@@ -15,9 +15,9 @@ class MyView : UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let p = UIPanGestureRecognizer(target: self, action: "dragging:")
+        let p = UIPanGestureRecognizer(target: self, action: #selector(dragging))
         self.addGestureRecognizer(p)
-        let l = UILongPressGestureRecognizer(target: self, action: "longPress:")
+        let l = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
         self.addGestureRecognizer(l)
     }
     
@@ -63,18 +63,18 @@ class MyView : UIView {
         if g.state == .Began {
             let m = UIMenuController.sharedMenuController()
             m.setTargetRect(self.bounds, inView: self)
-            let mi1 = UIMenuItem(title: self.undoer.undoMenuItemTitle, action: "undo:")
-            let mi2 = UIMenuItem(title: self.undoer.redoMenuItemTitle, action: "redo:")
+            let mi1 = UIMenuItem(title: self.undoer.undoMenuItemTitle, action: #selector(undo))
+            let mi2 = UIMenuItem(title: self.undoer.redoMenuItemTitle, action: #selector(redo))
             m.menuItems = [mi1, mi2]
             m.setMenuVisible(true, animated:true)
         }
     }
     
     override func canPerformAction(action: Selector, withSender sender: AnyObject!) -> Bool {
-        if action == Selector("undo:") {
+        if action == #selector(undo) {
             return self.undoer.canUndo
         }
-        if action == Selector("redo:") {
+        if action == #selector(redo) {
             return self.undoer.canRedo
         }
         return super.canPerformAction(action, withSender: sender)

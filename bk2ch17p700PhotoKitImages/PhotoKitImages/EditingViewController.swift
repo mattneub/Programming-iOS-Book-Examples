@@ -42,13 +42,13 @@ class EditingViewController: UIViewController, GLKViewDelegate {
         
         self.edgesForExtendedLayout = UIRectEdge.None
         
-        let cancel = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "doCancel:")
+        let cancel = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(doCancel))
         self.navigationItem.leftBarButtonItem = cancel
-        let done = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "doDone:")
+        let done = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(doDone))
         self.navigationItem.rightBarButtonItem = done
         
         if self.canUndo {
-            let undo = UIBarButtonItem(title: "Remove", style: .Plain, target: self, action: "doUndo:")
+            let undo = UIBarButtonItem(title: "Remove", style: .Plain, target: self, action: #selector(doUndo))
             self.navigationItem.rightBarButtonItems = [done, undo]
         }
         

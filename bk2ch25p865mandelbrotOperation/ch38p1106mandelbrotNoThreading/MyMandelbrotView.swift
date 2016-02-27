@@ -17,7 +17,7 @@ class MyMandelbrotView : UIView {
     func drawThatPuppy () {
         let center = CGPointMake(self.bounds.midX, self.bounds.midY)
         let op = MyMandelbrotOperation(size: self.bounds.size, center: center, zoom: 1)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "operationFinished:", name: "MyMandelbrotOperationFinished", object: op)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(operationFinished), name: "MyMandelbrotOperationFinished", object: op)
         self.queue.addOperation(op)
     }
     

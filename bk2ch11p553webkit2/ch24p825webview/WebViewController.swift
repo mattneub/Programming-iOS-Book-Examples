@@ -111,7 +111,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         super.viewDidAppear(animated)
         print("view did appear, req: \(self.wv.URL)") // no evidence that restoration is being done for us
         
-        let b = UIBarButtonItem(title:"Back", style:.Plain, target:self, action:"goBack:")
+        let b = UIBarButtonItem(title:"Back", style:.Plain, target:self, action:#selector(goBack))
         self.navigationItem.rightBarButtonItems = [b]
         
         if self.decoded {

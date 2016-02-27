@@ -13,7 +13,7 @@ class MyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let b = UIBarButtonItem(title: "Start", style: .Plain, target: self, action: "doStart:")
+        let b = UIBarButtonItem(title: "Start", style: .Plain, target: self, action: #selector(doStart))
         self.navigationItem.rightBarButtonItem = b
         
 //        let ok = CMStepCounter.isStepCountingAvailable()

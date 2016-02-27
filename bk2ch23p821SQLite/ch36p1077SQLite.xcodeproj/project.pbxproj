@@ -10,15 +10,16 @@
 		3223A49F1832F7E100F6FED0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3223A49D1832F7E100F6FED0 /* Main.storyboard */; };
 		3223A4A41832F7E100F6FED0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3223A4A31832F7E100F6FED0 /* Assets.xcassets */; };
 		326C01BD19B2271A004331C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326C01BC19B2271A004331C7 /* ViewController.swift */; };
-		32D714ED1BCB1F51005CFAFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D714EC1BCB1F51005CFAFE /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		32D714EF1BCB1F58005CFAFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D714EE1BCB1F58005CFAFE /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		32D714FB1BCB1FA4005CFAFE /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D714F11BCB1FA4005CFAFE /* FMDatabase.m */; settings = {ASSET_TAGS = (); }; };
-		32D714FC1BCB1FA4005CFAFE /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D714F31BCB1FA4005CFAFE /* FMDatabaseAdditions.m */; settings = {ASSET_TAGS = (); }; };
-		32D714FD1BCB1FA4005CFAFE /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D714F51BCB1FA4005CFAFE /* FMDatabasePool.m */; settings = {ASSET_TAGS = (); }; };
-		32D714FE1BCB1FA4005CFAFE /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D714F71BCB1FA4005CFAFE /* FMDatabaseQueue.m */; settings = {ASSET_TAGS = (); }; };
-		32D714FF1BCB1FA4005CFAFE /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D714FA1BCB1FA4005CFAFE /* FMResultSet.m */; settings = {ASSET_TAGS = (); }; };
-		32D715041BCB2017005CFAFE /* FMDatabaseAdditionsVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D715021BCB2017005CFAFE /* FMDatabaseAdditionsVariadic.swift */; settings = {ASSET_TAGS = (); }; };
-		32D715051BCB2017005CFAFE /* FMDatabaseVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D715031BCB2017005CFAFE /* FMDatabaseVariadic.swift */; settings = {ASSET_TAGS = (); }; };
+		32D714ED1BCB1F51005CFAFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D714EC1BCB1F51005CFAFE /* LaunchScreen.storyboard */; };
+		32D714EF1BCB1F58005CFAFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D714EE1BCB1F58005CFAFE /* AppDelegate.swift */; };
+		32D714FB1BCB1FA4005CFAFE /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D714F11BCB1FA4005CFAFE /* FMDatabase.m */; };
+		32D714FC1BCB1FA4005CFAFE /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D714F31BCB1FA4005CFAFE /* FMDatabaseAdditions.m */; };
+		32D714FD1BCB1FA4005CFAFE /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D714F51BCB1FA4005CFAFE /* FMDatabasePool.m */; };
+		32D714FE1BCB1FA4005CFAFE /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D714F71BCB1FA4005CFAFE /* FMDatabaseQueue.m */; };
+		32D714FF1BCB1FA4005CFAFE /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D714FA1BCB1FA4005CFAFE /* FMResultSet.m */; };
+		32D715041BCB2017005CFAFE /* FMDatabaseAdditionsVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D715021BCB2017005CFAFE /* FMDatabaseAdditionsVariadic.swift */; };
+		32D715051BCB2017005CFAFE /* FMDatabaseVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D715031BCB2017005CFAFE /* FMDatabaseVariadic.swift */; };
+		8182AA0B1C8216C7007BA19E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8182AA0A1C8216C7007BA19E /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		32D715001BCB1FBE005CFAFE /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		32D715021BCB2017005CFAFE /* FMDatabaseAdditionsVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseAdditionsVariadic.swift; sourceTree = "<group>"; };
 		32D715031BCB2017005CFAFE /* FMDatabaseVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseVariadic.swift; sourceTree = "<group>"; };
+		8182AA0A1C8216C7007BA19E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8182AA0B1C8216C7007BA19E /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +63,7 @@
 		3223A47F1832F7E100F6FED0 = {
 			isa = PBXGroup;
 			children = (
+				8182AA0A1C8216C7007BA19E /* libsqlite3.tbd */,
 				3223A4911832F7E100F6FED0 /* ch36p1077SQLite */,
 				3223A4891832F7E100F6FED0 /* Products */,
 			);
@@ -284,7 +288,7 @@
 				INFOPLIST_FILE = "ch36p1077SQLite/ch36p1077SQLite-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "-lsqlite3";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ch36p1077SQLite/ch36p1077SQLite-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -303,7 +307,7 @@
 				INFOPLIST_FILE = "ch36p1077SQLite/ch36p1077SQLite-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "-lsqlite3";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ch36p1077SQLite/ch36p1077SQLite-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;

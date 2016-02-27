@@ -52,7 +52,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         super.viewDidAppear(animated)
         self.determineStatus()
         NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: "determineStatus",
+            selector: #selector(determineStatus),
             name: UIApplicationWillEnterForegroundNotification,
             object: nil)
     }
@@ -81,7 +81,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         picker.showsCameraControls = false
         let f = self.view.window!.bounds
         let v = UIView(frame:f)
-        let t = UITapGestureRecognizer(target:self, action:"tap:")
+        let t = UITapGestureRecognizer(target:self, action:#selector(tap))
         t.numberOfTapsRequired = 2
         v.addGestureRecognizer(t)
         
@@ -124,7 +124,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         }
         nc.toolbar.setBackgroundImage(im, forToolbarPosition: .Any, barMetrics: .Default)
         nc.toolbar.translucent = true
-        let b = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "doCancel:")
+        let b = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(doCancel))
         let lab = UILabel()
         lab.text = "Double tap to take a picture"
         lab.textColor = UIColor.whiteColor()

@@ -159,7 +159,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
 //        wv.scrollView.pagingEnabled = true
         
         // prove we can attach gesture recognizer to web view's scroll view
-        let swipe = UISwipeGestureRecognizer(target:self, action:"swipe:")
+        let swipe = UISwipeGestureRecognizer(target:self, action:#selector(swiped))
         swipe.direction = .Left
         wv.scrollView.addGestureRecognizer(swipe)
         wv.allowsBackForwardNavigationGestures = false
@@ -213,8 +213,8 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         }
     }
     
-    func swipe(g:UIGestureRecognizer) {
-        print("swipe") // okay, you proved it!
+    func swiped(g:UIGestureRecognizer) {
+        print("swiped") // okay, you proved it!
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -228,7 +228,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         var which : Int { return 1 }
         switch which {
         case 1:
-            let b = UIBarButtonItem(title: "Size", style: .Plain, target: self, action: "doDecreaseSize:")
+            let b = UIBarButtonItem(title: "Size", style: .Plain, target: self, action: #selector(doDecreaseSize))
             self.navigationItem.rightBarButtonItems = [b]
             
             if let oldHTMLString = self.oldHTMLString, let oldBase = self.oldBase {

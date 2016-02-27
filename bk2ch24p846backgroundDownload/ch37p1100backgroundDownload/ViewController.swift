@@ -9,8 +9,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPicture:", name: "GotPicture", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotProgress:", name: "GotProgress", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(gotPicture), name: "GotPicture", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(gotProgress), name: "GotProgress", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {

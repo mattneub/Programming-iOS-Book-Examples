@@ -31,9 +31,9 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "doAdd:")
+        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(doAdd))
         self.navigationItem.rightBarButtonItems = [b]
-        let b2 = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "doRefresh:")
+        let b2 = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(doRefresh))
         self.navigationItem.leftBarButtonItems = [b2]
         self.title = "Groups"
         // no need to register cell, comes from storyboard

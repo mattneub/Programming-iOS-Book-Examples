@@ -55,7 +55,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "determineStatus", name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {

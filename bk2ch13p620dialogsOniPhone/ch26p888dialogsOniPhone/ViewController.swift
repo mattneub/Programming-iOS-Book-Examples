@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         alert.addTextFieldWithConfigurationHandler {
             (tf:UITextField) in
             tf.keyboardType = .NumberPad
-            tf.addTarget(self, action: "textChanged:", forControlEvents: .EditingChanged)
+            tf.addTarget(self, action: #selector(self.textChanged), forControlEvents: .EditingChanged)
         }
         func handler(act:UIAlertAction) {
             // it's a closure so we have a reference to the alert

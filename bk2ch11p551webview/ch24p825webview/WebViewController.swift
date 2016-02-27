@@ -16,7 +16,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.restorationIdentifier = "wvc"
         self.restorationClass = self.dynamicType
-        let b = UIBarButtonItem(title:"Back", style:.Plain, target:self, action:"goBack:")
+        let b = UIBarButtonItem(title:"Back", style:.Plain, target:self, action:#selector(goBack))
         self.navigationItem.rightBarButtonItem = b
         self.edgesForExtendedLayout = .None // get accurate offset restoration
     }
@@ -78,7 +78,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
 //        wv.scrollView.pagingEnabled = true
         
         // prove that we can attach gesture recognizer to web view's scroll view
-        let swipe = UISwipeGestureRecognizer(target:self, action:"swipe:")
+        let swipe = UISwipeGestureRecognizer(target:self, action:#selector(swiped))
         swipe.direction = .Left
         wv.scrollView.addGestureRecognizer(swipe)
         
@@ -96,8 +96,8 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         )
     }
     
-    func swipe(g:UIGestureRecognizer) {
-        print("swipe") // okay, you proved it
+    func swiped(g:UIGestureRecognizer) {
+        print("swiped") // okay, you proved it
     }
     
     let LOADREQ = 1 // 0, or try 1 for a different application...

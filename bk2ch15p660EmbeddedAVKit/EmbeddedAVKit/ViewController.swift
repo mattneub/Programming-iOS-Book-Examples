@@ -148,7 +148,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         print("saved to \(editedVideoPath)")
         if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(editedVideoPath) {
             print("saving to photos album")
-            UISaveVideoAtPathToSavedPhotosAlbum(editedVideoPath, self, "video:savedWithError:ci:", nil)
+            UISaveVideoAtPathToSavedPhotosAlbum(editedVideoPath, self, #selector(video(_:savedWithError:ci:)), nil)
         } else {
             print("can't save to photos album, need to think of something else")
         }

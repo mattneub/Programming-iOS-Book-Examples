@@ -67,9 +67,9 @@ class ViewController: UIViewController, PlayerDelegate {
         let scc = MPRemoteCommandCenter.sharedCommandCenter()
         switch which {
         case 0:
-            scc.togglePlayPauseCommand.addTarget(self, action: "doPlayPause:")
-            scc.playCommand.addTarget(self, action:"doPlay:")
-            scc.pauseCommand.addTarget(self, action:"doPause:")
+            scc.togglePlayPauseCommand.addTarget(self, action: #selector(doPlayPause))
+            scc.playCommand.addTarget(self, action:#selector(doPlay))
+            scc.pauseCommand.addTarget(self, action:#selector(doPause))
         case 1:
             opaques["playPause"] = scc.togglePlayPauseCommand.addTargetWithHandler {
                 [unowned self] _ in

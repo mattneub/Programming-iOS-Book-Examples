@@ -7,7 +7,7 @@ class ProgressingOperation {
         self.progress = NSProgress(totalUnitCount: Int64(units))
     }
     func start() {
-        NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "inc:", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: #selector(inc), userInfo: nil, repeats: true)
     }
     @objc func inc(t:NSTimer) {
         self.progress.completedUnitCount += 1
