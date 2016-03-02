@@ -15,9 +15,9 @@ class MyView : UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let p = UIPanGestureRecognizer(target: self, action: "dragging:")
+        let p = UIPanGestureRecognizer(target: self, action: #selector(dragging))
         self.addGestureRecognizer(p)
-        let l = UILongPressGestureRecognizer(target: self, action: "longPress:")
+        let l = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
         self.addGestureRecognizer(l)
     }
     
@@ -27,7 +27,7 @@ class MyView : UIView {
     
     func setCenterUndoably (newCenter:NSValue) {
         self.undoer.registerUndoWithTarget(
-            self, selector: "setCenterUndoably:",
+            self, selector: #selector(setCenterUndoably),
             object: NSValue(CGPoint:self.center))
         self.undoer.setActionName("Move")
         if self.undoer.undoing || self.undoer.redoing {
