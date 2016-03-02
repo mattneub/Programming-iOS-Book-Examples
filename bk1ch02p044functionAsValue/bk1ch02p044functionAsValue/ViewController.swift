@@ -13,7 +13,88 @@ func imageOfSize(size:CGSize, _ whatToDraw:() -> ()) -> UIImage {
     return result
 }
 
+class Cat {
+    func purr () {
+        
+    }
+}
 
+class Dog {
+    let cat = Cat()
+    func bark() {
+        print("woof")
+    }
+    func bark(loudly:Bool) {
+        if loudly {
+            print("WOOF")
+        } else {
+            self.bark()
+        }
+    }
+    func test() {
+        // let barkFunction = bark
+        let barkFunction1 = bark(_:)
+        let barkFunction2 = bark as Void -> Void
+        let barkFunction3 = bark as Bool -> Void
+        let barkFunction4 : Bool -> Void = bark
+        let barkFunction5 = self.bark(_:)
+        
+        let barkFunction6 = self.dynamicType.bark(_:)
+        let barkFunction7 = Dog.bark(_:)
+        
+        _ = barkFunction1
+        _ = barkFunction2
+        _ = barkFunction3
+        _ = barkFunction4
+        _ = barkFunction5
+        _ = barkFunction6
+        _ = barkFunction7
+        
+        let f = {
+            // return bark(_:) // error
+            return self.bark(_:)
+        }
+        _ = f
+        
+        let purrFunction1 = cat.purr
+        let purrFunction2 = self.cat.purr
+        let purrFunction3 = Cat.purr
+        
+        _ = purrFunction1
+        _ = purrFunction2
+        _ = purrFunction3
+    }
+}
+
+class NoisyDog : Dog {
+    func test2() {
+        let barkFunction1 = bark(_:)
+        let barkFunction2 = self.bark(_:)
+        let barkFunction3 = super.bark(_:)
+        
+        _ = barkFunction1
+        _ = barkFunction2
+        _ = barkFunction3
+        
+    }
+}
+
+class Dog2 {
+    func bark() {
+        
+    }
+    func bark(loudly:Bool) {
+        
+    }
+    func bark(times:Int) {
+        
+    }
+    func test() {
+        // let barkFunction = bark(_:)
+        let barkFunction = bark(_:) as Int -> Void
+        _ = barkFunction
+    }
+}
 
 
 class ViewController: UIViewController {
@@ -23,7 +104,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         func whatToDo() {
             print("I did it")
@@ -45,6 +125,9 @@ class ViewController: UIViewController {
         self.view.addSubview(imageView)
         
     }
+    
+    
+    
     
     @IBAction func moveMyButton (sender:AnyObject!) {
         func whatToAnimate() { // self.myButton is a button in the interface
@@ -83,6 +166,8 @@ class ViewController: UIViewController {
         let ff2 = self.moveMyButton(_:)
         let f3 = ViewController.moveMyButton
         let ff3 = ViewController.moveMyButton(_:)
+        
+        // let v = viewDidLoad
         
         f(self.myButton)
         ff(self.myButton)
