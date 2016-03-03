@@ -2,14 +2,24 @@
 
 import UIKit
 
-// WARNING: This may go away, because it is, after all, rather misleading
-
+// This will go away, because it is, after all, rather misleading
+/*
 func say(s:String, times:Int, var loudly:Bool) {
     loudly = true // can't do this without "var"
 }
+ */
 
-// WARNING: This may go away, because it is, after all, rather misleading
+// instead, write this:
 
+func say(s:String, times:Int, loudly:Bool) {
+    var loudly = loudly
+    loudly = true
+    _ = loudly
+}
+
+
+// This will go away, because it is, after all, rather misleading
+/*
 func removeFromStringNot(var s:String, character c:Character) -> Int {
     var howMany = 0
     while let ix = s.characters.indexOf(c) {
@@ -18,6 +28,20 @@ func removeFromStringNot(var s:String, character c:Character) -> Int {
     }
     return howMany
 }
+ */
+
+// instead, write this:
+
+func removeFromStringNot(s:String, character c:Character) -> Int {
+    var s = s
+    var howMany = 0
+    while let ix = s.characters.indexOf(c) {
+        s.removeRange(ix...ix)
+        howMany += 1
+    }
+    return howMany
+}
+
 
 
 func removeFromString(inout s:String, character c:Character) -> Int {
