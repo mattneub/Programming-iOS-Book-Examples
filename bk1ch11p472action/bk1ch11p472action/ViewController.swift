@@ -32,11 +32,8 @@ class ViewController: UIViewController {
     // rewritten to avoid use of C-style for loop
 
     @IBAction func showResponderChain(sender: UIResponder) {
-        var r : UIResponder? = sender
-        while r != nil {
-            print(r!)
-            r = r!.nextResponder()
-        }
+        var r : UIResponder! = sender
+        repeat { print(r, "\n"); r = r.nextResponder() } while r != nil
     }
 
 }

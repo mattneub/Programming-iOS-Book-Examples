@@ -190,9 +190,9 @@ class ViewController : UIViewController {
         
     }
     
-    func done (sender:AnyObject) {
-        var r = sender as! UIResponder
-        repeat { r = r.nextResponder()! } while !(r is UIViewController)
+    func done (sender:UIResponder) {
+        var r : UIResponder! = sender
+        repeat { r = r.nextResponder() } while !(r is UIViewController)
         (r as! UIViewController).dismissViewControllerAnimated(true, completion: {
             print("dismissed")
             })
