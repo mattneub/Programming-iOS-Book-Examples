@@ -209,8 +209,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         if arr.count == 0 {
             return
         }
-        // sort [NB I don't understand why compare(_:) can't be resolved without more info
-        let arr2 = ((arr as NSArray).sortedArrayUsingSelector(#selector(NSString.compare(_:))) as! [NSIndexPath])
+        // sort
+        let arr2 = ((arr as NSArray).sortedArrayUsingSelector(#selector(NSIndexPath.compare(_:))) as! [NSIndexPath])
         // delete data
         var empties = [Int]() // keep track of what sections get emptied
         for ip in arr2.reverse() {
@@ -238,7 +238,6 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // menu =================
     
     // exactly as for table views
-    // NB As in the table view example, we have to help Swift resolve capital(_:)
     
     override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         let mi = UIMenuItem(title:"Capital", action:#selector(Cell.capital))

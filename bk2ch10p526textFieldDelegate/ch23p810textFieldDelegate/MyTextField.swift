@@ -5,6 +5,15 @@ import UIKit
 
 class MyTextField: UITextField {
     
+    // make self-dismissing; can do this without code, but just testing
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder:aDecoder)
+        self.addTarget(
+            nil, action:Selector("dummy:"), forControlEvents:.EditingDidEndOnExit)
+    }
+    
+    // func dummy(_:AnyObject) {}
+    
     let list : [String] = {
         let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")!
         let s = try! String(contentsOfURL:path, encoding:NSUTF8StringEncoding)

@@ -104,10 +104,6 @@ class RootViewController : UITableViewController {
     
     // menu handling ==========
     
-    // NB Swift 2.2 doesn't seem able to resolve #selector(abbrev(_:))
-    // without our telling it what class it's in
-    // I'm not sure I like this, since it means this class can't be agnostic about it
-    
     override func tableView(tableView: UITableView, shouldShowMenuForRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         let mi = UIMenuItem(title: "Abbrev", action: #selector(MyCell.abbrev))
         UIMenuController.sharedMenuController().menuItems = [mi]
