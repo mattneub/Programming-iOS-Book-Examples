@@ -45,7 +45,9 @@ class ViewController: UIViewController {
             
         }
         
-        // delay(0.3) { self.anim.performSelector("setDebugEnabled:", withObject:true) }
+//        delay(0.3) {
+//            self.anim.performSelector(Selector("setDebugEnabled:"), withObject:true)
+//        }
         
     }
     

@@ -126,6 +126,17 @@ class NoisyDog : Dog<String> {} // yes! This is new in Swift 2.0
 class NoisyDog2<T> : Dog<T> {} // and this is also legal!
 // class NoisyDog3 : Dog<T> {} // but this is not; the superclass generic must be resolved somehow
 
+struct Wrapper<T> {
+    
+}
+struct Wrapper2<T> {
+    var thing : T
+}
+class Cat {
+}
+class CalicoCat : Cat {
+}
+
 protocol Flier6 {
     associatedtype Other
     func fly()
@@ -156,6 +167,17 @@ class ViewController: UIViewController {
         
         let min = myMin(4,1,5,2)
         print(min)
+        
+        do {
+            // let w : Wrapper<Cat> = Wrapper<CalicoCat>() // error
+            var w2 : Wrapper2<Cat> = Wrapper2(thing:CalicoCat()) // fine
+            let w3 = Wrapper2(thing:CalicoCat())
+            // w2 = w3 // error
+            // ==== shut up the compiler
+            w2 = Wrapper2(thing:CalicoCat())
+            _ = w2
+            _ = w3
+        }
         
     }
 }
