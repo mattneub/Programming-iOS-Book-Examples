@@ -28,8 +28,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBAction func doButton(sender: AnyObject) {
         NSLog("doButton")
         let v = sender as! UIView
-        let t = v.tag // tag is number of minutes
-        if let url = NSURL(string:"coffeetime://\(t)") {
+        let comp = NSURLComponents()
+        comp.scheme = "coffeetime"
+        comp.host = String(v.tag) // tag is number of minutes
+        if let url = comp.URLRelativeToURL(nil) {
             NSLog("%@", "\(url)")
             self.extensionContext?.openURL(url, completionHandler: nil)
         }
