@@ -1,7 +1,6 @@
 
 
 import UIKit
-import CoreText
 
 func delay(delay:Double, closure:()->()) {
     dispatch_after(

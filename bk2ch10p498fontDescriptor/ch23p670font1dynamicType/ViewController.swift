@@ -1,7 +1,6 @@
 
 
 import UIKit
-import CoreText
 
 class ViewController : UIViewController {
     @IBOutlet var lab : UILabel!
