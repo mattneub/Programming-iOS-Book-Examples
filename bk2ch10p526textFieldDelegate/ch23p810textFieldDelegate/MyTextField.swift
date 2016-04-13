@@ -2,6 +2,10 @@
 
 import UIKit
 
+@objc protocol Dummy {
+    func dummy(sender:AnyObject?)
+}
+
 
 class MyTextField: UITextField {
     
@@ -9,7 +13,7 @@ class MyTextField: UITextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
         self.addTarget(
-            nil, action:Selector("dummy:"), forControlEvents:.EditingDidEndOnExit)
+            nil, action:#selector(Dummy.dummy), forControlEvents:.EditingDidEndOnExit)
     }
     
     // func dummy(_:AnyObject) {}
