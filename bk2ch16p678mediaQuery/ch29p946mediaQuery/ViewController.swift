@@ -135,6 +135,7 @@ class ViewController: UIViewController {
             print(album.representativeItem!.albumTitle!)
         }
         // and here are the songs in the first of those albums
+        guard result.count > 0 else {print("No sonatas"); return}
         let album = result[0]
         for song in album.items { //
             print(song.title!)
