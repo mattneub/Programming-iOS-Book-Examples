@@ -20,17 +20,17 @@ class Pep: UIViewController {
         fatalError("NSCoding not supported")
     }
     
-    override func encodeRestorableStateWithCoder(coder: NSCoder) {
+    override func encodeRestorableState(with coder: NSCoder) {
         // super.encodeRestorableStateWithCoder(coder)
         print("pep about to encode boy \(self.boy)")
-        coder.encodeObject(self.boy, forKey:"boy")
+        coder.encode(self.boy as NSString, forKey:"boy")
     }
     
     // and now we simply decode directly
     
-    override func decodeRestorableStateWithCoder(coder: NSCoder) {
+    override func decodeRestorableState(with coder: NSCoder) {
         // super.decodeRestorableStateWithCoder(coder)
-        let boy : AnyObject? = coder.decodeObjectForKey("boy")
+        let boy : AnyObject? = coder.decodeObject(forKey:"boy")
         print("pep about to decode boy \(boy)")
         if let boy = boy as? String {
             self.boy = boy
@@ -43,21 +43,21 @@ class Pep: UIViewController {
     
     override func applicationFinishedRestoringState() {
         self.name.text = self.boy
-        self.pic.image = UIImage(named:"\(self.boy.lowercaseString).jpg")
+        self.pic.image = UIImage(named:"\(self.boy.lowercased()).jpg")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.name.text = self.boy
-        self.pic.image = UIImage(named:"\(self.boy.lowercaseString).jpg")
+        self.pic.image = UIImage(named:"\(self.boy.lowercased()).jpg")
     }
     
     override var description : String {
     return self.boy
     }
     
-    @IBAction func tap (sender: UIGestureRecognizer?) {
-        NSNotificationCenter.defaultCenter().postNotificationName("tap", object: sender)
+    @IBAction func tap (_ sender: UIGestureRecognizer?) {
+        NSNotificationCenter.default().post(name: "tap", object: sender)
     }
 }
 

@@ -1,7 +1,7 @@
 
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -14,12 +14,12 @@ func delay(delay:Double, closure:()->()) {
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         return true
     }
     
-    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+    func application(_ app: UIApplication, open url: NSURL, options: [String : AnyObject]) -> Bool {
         let scheme = url.scheme
         let host = url.host
         if scheme == "coffeetime" {

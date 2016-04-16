@@ -3,7 +3,7 @@
 import UIKit
 
 protocol FlipsideViewControllerDelegate : class {
-    func flipsideViewControllerDidFinish(controller:FlipsideViewController)
+    func flipsideViewControllerDidFinish(_ controller:FlipsideViewController)
 }
 
 class FlipsideViewController: UIViewController {
@@ -14,18 +14,18 @@ class FlipsideViewController: UIViewController {
     
     let which = 0
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         switch which {
         case 0:
-            self.observer = NSNotificationCenter.defaultCenter().addObserverForName(
-                "woohoo", object:nil, queue:nil) {
+            self.observer = NSNotificationCenter.default().addObserver(
+                forName: "woohoo", object:nil, queue:nil) {
                     _ in
                     self.description // leak me, leak me
             }
         case 1:
-            self.observer = NSNotificationCenter.defaultCenter().addObserverForName(
-                "woohoo", object:nil, queue:nil) {
+            self.observer = NSNotificationCenter.default().addObserver(
+                forName: "woohoo", object:nil, queue:nil) {
                     [unowned self] _ in // ha ha, fixed it
                     self.description
             }
@@ -33,13 +33,13 @@ class FlipsideViewController: UIViewController {
         }
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("unregister")
-        NSNotificationCenter.defaultCenter().removeObserver(self.observer)
+        NSNotificationCenter.default().removeObserver(self.observer)
     }
     
-    @IBAction func done (sender:AnyObject!) {
+    @IBAction func done (_ sender:AnyObject!) {
         print("done")
         self.delegate?.flipsideViewControllerDidFinish(self)
     }
@@ -52,7 +52,7 @@ class FlipsideViewController: UIViewController {
 }
 
 extension FlipsideViewController : UIBarPositioningDelegate {
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
+    func position(forBar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 }

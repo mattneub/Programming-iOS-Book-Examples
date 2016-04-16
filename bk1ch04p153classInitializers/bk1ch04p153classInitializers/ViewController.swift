@@ -77,6 +77,14 @@ class NoisyDog7 : Dog7 {
     init(name:String) {
         super.init(name:name, license:1)
     }
+    init(license:Int) { // no "override", can be "convenience" or not
+        super.init(name:"Rover", license:license)
+    }
+    // or:
+//    convenience init(license:Int) { // no "override", can be "convenience" or not
+//        self.init(name:"Rover")
+//    }
+
 }
 class Dog8 {
     var name : String
@@ -130,6 +138,18 @@ class ObnoxiousDog9 : NoisyDog9 {
 class CrazyDog9 : NoisyDog9 {
     override init(ok:Bool) {
         super.init(ok:ok)! // legal: call super's designated init? without ? and by adding !
+    }
+}
+class Dog10 {
+    init() {
+        print("Dog10 init was called")
+    }
+}
+class NoisyDog10 : Dog10 {
+    init(name:String = "Fido") {
+        print("NoisyDog10 init(name:) was called")
+        // note that this is legal even though we don't explicitly call super.init
+        // the print messages prove that it is called anyway
     }
 }
 
@@ -190,6 +210,11 @@ class ViewController: UIViewController {
             _ = nd1
             _ = nd2
 
+        }
+        
+        do {
+            let nd = NoisyDog10()
+            _ = nd
         }
     
         _ = d

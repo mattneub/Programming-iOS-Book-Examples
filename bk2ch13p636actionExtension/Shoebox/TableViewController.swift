@@ -12,20 +12,20 @@ class TableViewController: UITableViewController {
     weak var delegate : SizeDelegate?
         
     override func viewDidLoad() {
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        self.tableView.scrollEnabled = false
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.isScrollEnabled = false
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
 
         cell.textLabel!.text = {
             switch indexPath.row {
@@ -40,13 +40,13 @@ class TableViewController: UITableViewController {
             }
         }()
         
-        cell.accessoryType = (cell.textLabel!.text == self.selectedSize) ? .Checkmark : .None
+        cell.accessoryType = (cell.textLabel!.text == self.selectedSize) ? .checkmark : .none
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)!
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
+        let cell = tableView.cellForRow(at:indexPath)!
         let s = cell.textLabel!.text!
         self.selectedSize = s
         self.delegate?.selectedText = s

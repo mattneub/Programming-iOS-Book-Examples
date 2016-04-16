@@ -36,29 +36,29 @@ class ViewController: UIViewController {
         }
         
         do {
-            let val = UIViewAnimationOptions.Autoreverse.rawValue | UIViewAnimationOptions.Repeat.rawValue
+            let val = UIViewAnimationOptions.autoreverse.rawValue | UIViewAnimationOptions.repeat.rawValue
             let opts = UIViewAnimationOptions(rawValue: val)
             print(opts)
         }
         
         do {
-            let opts : UIViewAnimationOptions = [UIViewAnimationOptions.Autoreverse, UIViewAnimationOptions.Repeat]
+            let opts : UIViewAnimationOptions = [UIViewAnimationOptions.autoreverse, UIViewAnimationOptions.repeat]
             print(opts)
         }
         
         do {
-            var opts = UIViewAnimationOptions.Autoreverse
-            opts.insert(.Repeat)
+            var opts = UIViewAnimationOptions.autoreverse
+            opts.insert(.repeat)
             print(opts)
         }
         
         do {
-            let opts : UIViewAnimationOptions = [.Autoreverse, .Repeat]
+            let opts : UIViewAnimationOptions = [.autoreverse, .repeat]
             print(opts)
         }
         
         do {
-            UIView.animateWithDuration(0.4, delay: 0, options: [.Autoreverse, .Repeat],
+            UIView.animate(withDuration:0.4, delay: 0, options: [.autoreverse, .repeat],
                 animations: {
                     // ...
                 }, completion: nil)
@@ -66,25 +66,51 @@ class ViewController: UIViewController {
 
         
         do {
-            let types : UIUserNotificationType = [.Alert, .Sound]
+            let types : UIUserNotificationType = [.alert, .sound]
             let category = UIMutableUserNotificationCategory()
             category.identifier = "coffee"
             // ...
             let settings = UIUserNotificationSettings(forTypes: types, categories: [category])
             print(settings)
         }
+        
+        do {
+            var s = Set<Int>()
+            s.insert(1)
+            let arr = Array(s) as NSArray // doesn't crash, but how did Array<Int> cross the bridge?
+            print(arr)
+        }
+        
+        
     }
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let t = touches.first // an Optional wrapping a UITouch
         print(t)
+    }
+    
+    let RECENTS = "recents"
+    let PIXCOUNT = 20
+    func test() {
+        let ud = NSUserDefaults.standard()
+        var recents = ud.object(forKey:RECENTS) as? [Int]
+        if recents == nil {
+            recents = []
+        }
+        var forbiddenNumbers = Set(recents!)
+        let legalNumbers = Set(1...PIXCOUNT).subtracting(forbiddenNumbers)
+        let newNumber = Array(legalNumbers)[
+            Int(arc4random_uniform(UInt32(legalNumbers.count)))
+        ]
+        forbiddenNumbers.insert(newNumber)
+        ud.set(Array(forbiddenNumbers) as NSArray, forKey:RECENTS)
     }
 
 
 }
 
 class MyTableViewCell : UITableViewCell {
-    override func didTransitionToState(state: UITableViewCellStateMask) {
-        let editing = UITableViewCellStateMask.ShowingEditControlMask.rawValue
+    override func didTransition(to state: UITableViewCellStateMask) {
+        let editing = UITableViewCellStateMask.showingEditControlMask.rawValue
         if state.rawValue & editing != 0 {
             // ... the ShowingEditControlMask bit is set ...
         }
@@ -92,8 +118,8 @@ class MyTableViewCell : UITableViewCell {
 }
 
 class MyTableViewCell2 : UITableViewCell {
-    override func didTransitionToState(state: UITableViewCellStateMask) {
-        if state.contains(.ShowingEditControlMask) {
+    override func didTransition(to state: UITableViewCellStateMask) {
+        if state.contains(.showingEditControlMask) {
             // ... the ShowingEditControlMask bit is set ...
         }
     }

@@ -2,14 +2,37 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class RootViewController : UITableViewController, UISearchBarDelegate {
     var sectionNames = [String]()
     var sectionData = [[String]]()
     var searcher : UISearchController!
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
-        let states = s.componentsSeparatedByString("\n")
+        let s = try! String(contentsOfFile: NSBundle.main().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
+        let states = s.components(separatedBy:"\n")
         var previous = ""
         for aState in states {
             // get the first letter
@@ -17,19 +40,19 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c
-                self.sectionNames.append( c.uppercaseString )
+                self.sectionNames.append( c.uppercased() )
                 // and in that case also add new subarray to our array of subarrays
                 self.sectionData.append( [String]() )
             }
             sectionData[sectionData.count-1].append( aState )
         }
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        self.tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
         
-        self.tableView.sectionIndexColor = UIColor.whiteColor()
-        self.tableView.sectionIndexBackgroundColor = UIColor.redColor()
-        // self.tableView.sectionIndexTrackingBackgroundColor = UIColor.blueColor()
-        self.tableView.backgroundColor = UIColor.yellowColor()
+        self.tableView.sectionIndexColor = UIColor.white()
+        self.tableView.sectionIndexBackgroundColor = UIColor.red()
+        // self.tableView.sectionIndexTrackingBackgroundColor = UIColor.blue()
+        self.tableView.backgroundColor = UIColor.yellow()
         
         // this is the only important part of this class! create popover searcher
         
@@ -43,15 +66,15 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // searcher.dimsBackgroundDuringPresentation = false
         // make it a popover!
         self.definesPresentationContext = true
-        searcher.modalPresentationStyle = .Popover
-        searcher.preferredContentSize = CGSizeMake(400,400)
+        searcher.modalPresentationStyle = .popover
+        searcher.preferredContentSize = CGSize(400,400)
         // specify who the search controller should notify when the search bar changes
         searcher.searchResultsUpdater = src
         // put the search controller's search bar into the interface
         let b = searcher.searchBar
         // b.sizeToFit()
         // b.frame.size.width = 250
-        b.autocapitalizationType = .None
+        b.autocapitalizationType = .none
         self.navigationItem.titleView = b
         b.showsCancelButton = true // no effect
 
@@ -69,23 +92,23 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
 //        (searcher.presentationController as UIPopoverPresentationController).delegate = self
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return self.sectionNames.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.sectionData[section].count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
         
         // this part is not in the book, it's just for fun
         var stateName = s
-        stateName = stateName.lowercaseString
-        stateName = stateName.stringByReplacingOccurrencesOfString(" ", withString:"")
+        stateName = stateName.lowercased()
+        stateName = stateName.replacingOccurrences(of:" ", with:"")
         stateName = "flag_\(stateName).gif"
         let im = UIImage(named: stateName)
         cell.imageView!.image = im
@@ -95,81 +118,81 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     
     /*
     
-    override func tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
+    override func tableView(_ tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
     return self.sectionNames[section]
     }
     
     */
     // this is more "interesting"
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let h = tableView.dequeueReusableHeaderFooterViewWithIdentifier("Header")!
-        if h.tintColor != UIColor.redColor() {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let h = tableView.dequeueReusableHeaderFooterView(withIdentifier:"Header")!
+        if h.tintColor != UIColor.red() {
             // print("configuring a new header view") // only called about 7 times
-            h.tintColor = UIColor.redColor() // invisible marker, tee-hee
+            h.tintColor = UIColor.red() // invisible marker, tee-hee
             h.backgroundView = UIView()
-            h.backgroundView!.backgroundColor = UIColor.blackColor()
+            h.backgroundView!.backgroundColor = UIColor.black()
             let lab = UILabel()
             lab.tag = 1
             lab.font = UIFont(name:"Georgia-Bold", size:22)
-            lab.textColor = UIColor.greenColor()
-            lab.backgroundColor = UIColor.clearColor()
+            lab.textColor = UIColor.green()
+            lab.backgroundColor = UIColor.clear()
             h.contentView.addSubview(lab)
             let v = UIImageView()
             v.tag = 2
-            v.backgroundColor = UIColor.blackColor()
+            v.backgroundColor = UIColor.black()
             v.image = UIImage(named:"us_flag_small.gif")
             h.contentView.addSubview(v)
             lab.translatesAutoresizingMaskIntoConstraints = false
             v.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activateConstraints([
-                NSLayoutConstraint.constraintsWithVisualFormat("H:|-5-[lab(25)]-10-[v(40)]",
+            NSLayoutConstraint.activate([
+                NSLayoutConstraint.constraints(withVisualFormat:"H:|-5-[lab(25)]-10-[v(40)]",
                     options:[], metrics:nil, views:["v":v, "lab":lab]),
-                NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|",
+                NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|",
                     options:[], metrics:nil, views:["v":v]),
-                NSLayoutConstraint.constraintsWithVisualFormat("V:|[lab]|",
+                NSLayoutConstraint.constraints(withVisualFormat:"V:|[lab]|",
                     options:[], metrics:nil, views:["lab":lab])
             ].flatten().map{$0})
         }
-        let lab = h.contentView.viewWithTag(1) as! UILabel
+        let lab = h.contentView.withTag(1) as! UILabel
         lab.text = self.sectionNames[section]
         return h
         
     }
     
     /*
-    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
     print(view) // prove we are reusing header views
     }
     */
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return self.sectionNames
     }
     
 }
 
 extension RootViewController : UISearchControllerDelegate {
-    func presentSearchController(searchController: UISearchController) { print(#function) }
-    func willPresentSearchController(searchController: UISearchController) { print(#function) }
-    func didPresentSearchController(searchController: UISearchController) { print(#function) }
+    func present(_ searchController: UISearchController) { print(#function) }
+    func willPresent(_ searchController: UISearchController) { print(#function) }
+    func didPresent(_ searchController: UISearchController) { print(#function) }
     // these next functions are not called, I regard this as a bug
-    func willDismissSearchController(searchController: UISearchController) { print(#function) }
-    func didDismissSearchController(searchController: UISearchController) { print(#function) }
+    func willDismiss(_ searchController: UISearchController) { print(#function) }
+    func didDismiss(_ searchController: UISearchController) { print(#function) }
 }
 
 extension RootViewController : UIPopoverPresentationControllerDelegate {
-    func prepareForPopoverPresentation(pop: UIPopoverPresentationController) {
+    func prepare(forPopoverPresentation pop: UIPopoverPresentationController) {
         print("prepare")
 //        print(pop.sourceView)
 //        print(pop.passthroughViews)
 //        print(pop.delegate)
     }
-    func popoverPresentationControllerShouldDismissPopover(pop: UIPopoverPresentationController) -> Bool {
+    func popoverPresentationControllerShouldDismissPopover(_ pop: UIPopoverPresentationController) -> Bool {
         print("pop should dismiss")
         self.searcher.searchBar.text = nil // woo-hoo! fix dismissal failure to empty
         return true
     }
-    func popoverPresentationControllerDidDismissPopover(pop: UIPopoverPresentationController) {
+    func popoverPresentationControllerDidDismissPopover(_ pop: UIPopoverPresentationController) {
         print("pop dismiss")
         self.searcher.presentationController?.delegate = self // this is the big bug fix
     }
@@ -178,9 +201,9 @@ extension RootViewController : UIPopoverPresentationControllerDelegate {
 // not called, seems like a bug to me
 
 extension RootViewController : UIAdaptivePresentationControllerDelegate {
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         print("waha")
-        return .None
+        return .none
     }
 }
 

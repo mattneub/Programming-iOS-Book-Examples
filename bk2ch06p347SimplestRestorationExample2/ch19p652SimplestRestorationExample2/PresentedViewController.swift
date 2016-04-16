@@ -3,21 +3,21 @@ import UIKit
 
 class PresentedViewController : UIViewController {
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("\(self.dynamicType) will appear")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("\(self.dynamicType) did appear")
     }
 
-    override func encodeRestorableStateWithCoder(coder: NSCoder) {
+    override func encodeRestorableState(with coder: NSCoder) {
         print("\(self.dynamicType) encode \(coder)")
     }
     
-    override func decodeRestorableStateWithCoder(coder: NSCoder) {
+    override func decodeRestorableState(with coder: NSCoder) {
         print("\(self.dynamicType) decode \(coder)")
     }
     
@@ -28,20 +28,20 @@ class PresentedViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("view did load \(self.dynamicType)")
-        self.view.backgroundColor = UIColor.blueColor()
-        let button = UIButton(type:.System)
-        button.setTitle("Dismiss", forState:.Normal)
+        self.view.backgroundColor = UIColor.blue()
+        let button = UIButton(type:.system)
+        button.setTitle("Dismiss", for:[])
         button.addTarget(self,
             action:#selector(doDismiss),
-            forControlEvents:.TouchUpInside)
+            for:.touchUpInside)
         button.sizeToFit()
         button.center = self.view.center
-        button.backgroundColor = UIColor.whiteColor()
+        button.backgroundColor = UIColor.white()
         self.view.addSubview(button)
     }
     
-    func doDismiss(sender:AnyObject?) {
-        self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+    func doDismiss(_ sender:AnyObject?) {
+        self.presenting!.dismiss(animated:true, completion: nil)
     }
     
 }

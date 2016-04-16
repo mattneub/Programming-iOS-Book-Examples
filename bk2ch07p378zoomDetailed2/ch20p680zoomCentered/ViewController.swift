@@ -2,6 +2,29 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class ViewController : UIViewController, UIScrollViewDelegate {
     var oldBounces = false
     @IBOutlet weak var sv: UIScrollView!
@@ -18,27 +41,27 @@ class ViewController : UIViewController, UIScrollViewDelegate {
             self.didSetup = true
             // work around auto layout bug in iOS 8
             // turn off auto layout and assign content size manually
-            self.sv.contentSize = CGSizeMake(208,238)
+            self.sv.contentSize = CGSize(208,238)
         }
     }
     
-    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
+    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
         self.oldBounces = scrollView.bounces
         scrollView.bounces = false
     }
     
-    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
+    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
         if let view = view {
             scrollView.bounces = self.oldBounces
-            view.contentScaleFactor = scale * UIScreen.mainScreen().scale // *
+            view.contentScaleFactor = scale * UIScreen.main().scale // *
         }
     }
 
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return scrollView.viewWithTag(999)
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return scrollView.withTag(999)
     }
     
-    @IBAction func tapped(tap : UIGestureRecognizer) {
+    @IBAction func tapped(_ tap : UIGestureRecognizer) {
         let v = tap.view!
         let sv = v.superview as! UIScrollView
         if sv.zoomScale < 1 {
@@ -58,7 +81,7 @@ class MyScrollView : UIScrollView {
     override func layoutSubviews() {
 //        println("layout")
         super.layoutSubviews()
-        if let v = self.delegate?.viewForZoomingInScrollView?(self) {
+        if let v = self.delegate?.viewForZooming?(in:self) {
             let svw = self.bounds.size.width
             let svh = self.bounds.size.height
             let vw = v.frame.size.width

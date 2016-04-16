@@ -6,12 +6,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     var pep : [String]!
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow()
         
         self.setUpPageViewController()
         
-        self.window!.backgroundColor = UIColor.whiteColor()
+        self.window!.backgroundColor = UIColor.white()
         self.window!.makeKeyAndVisible()
         return true
     }
@@ -19,19 +19,19 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     func setUpPageViewController() {
         self.pep = ["Manny", "Moe", "Jack"]
         // make a page view controller - NB try both .PageCurl and .Scroll
-        let pvc = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        let pvc = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         // give it an initial page
         let page = Pep(pepBoy: self.pep[0])
-        pvc.setViewControllers([page], direction: .Forward, animated: false, completion: nil)
+        pvc.setViewControllers([page], direction: .forward, animated: false, completion: nil)
         // give it a data source
         pvc.dataSource = self
         // stick it in the interface
         self.window!.rootViewController = pvc
         
         let proxy = UIPageControl.appearance()
-        proxy.pageIndicatorTintColor = UIColor.redColor().colorWithAlphaComponent(0.6)
-        proxy.currentPageIndicatorTintColor = UIColor.redColor()
-        proxy.backgroundColor = UIColor.yellowColor()
+        proxy.pageIndicatorTintColor = UIColor.red().withAlphaComponent(0.6)
+        proxy.currentPageIndicatorTintColor = UIColor.red()
+        proxy.backgroundColor = UIColor.yellow()
         
         // self.messWithGestureRecognizers(pvc) // uncomment to try it
     }
@@ -39,17 +39,17 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate : UIPageViewControllerDataSource {
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let boy = (viewController as! Pep).boy
-        let ix = self.pep.indexOf(boy)! + 1
+        let ix = self.pep.index(of:boy)! + 1
         if ix >= self.pep.count {
             return nil
         }
         return Pep(pepBoy: self.pep[ix])
     }
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         let boy = (viewController as! Pep).boy
-        let ix = self.pep.indexOf(boy)! - 1
+        let ix = self.pep.index(of:boy)! - 1
         if ix < 0 {
             return nil
         }
@@ -58,19 +58,19 @@ extension AppDelegate : UIPageViewControllerDataSource {
     
     // if these methods are implemented, page indicator appears
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return self.pep.count
     }
-    func presentationIndexForPageViewController(pvc: UIPageViewController) -> Int {
+    func presentationIndex(for pvc: UIPageViewController) -> Int {
         let page = pvc.viewControllers![0] as! Pep
         let boy = page.boy
-        return self.pep.indexOf(boy)!
+        return self.pep.index(of:boy)!
     }
     
     // =======
     
     func messWithGestureRecognizers(pvc:UIPageViewController) {
-        if pvc.transitionStyle == .PageCurl { // does nothing for .Scroll
+        if pvc.transitionStyle == .pageCurl { // does nothing for .scroll
             for g in pvc.gestureRecognizers {
                 if let g = g as? UITapGestureRecognizer {
                     g.numberOfTapsRequired = 2
@@ -78,20 +78,20 @@ extension AppDelegate : UIPageViewControllerDataSource {
             }
         }
         else { // not needed for .PageCurl
-            NSNotificationCenter.defaultCenter().addObserverForName("tap", object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: {
+            NSNotificationCenter.default().addObserver(forName:"tap", object: nil, queue: NSOperationQueue.main(), using: {
                 n in
                 let g = n.object as! UIGestureRecognizer
                 let which = g.view!.tag
                 let vc0 = pvc.viewControllers![0]
-                let vc = (which == 0 ? self.pageViewController(pvc, viewControllerBeforeViewController: vc0) : self.pageViewController(pvc, viewControllerAfterViewController: vc0))
+                let vc = (which == 0 ? self.pageViewController(pvc, viewControllerBefore: vc0) : self.pageViewController(pvc, viewControllerAfter: vc0))
                 if vc == nil {
                     return
                 }
-                let dir : UIPageViewControllerNavigationDirection = which == 0 ? .Reverse : .Forward
-                UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+                let dir : UIPageViewControllerNavigationDirection = which == 0 ? .reverse : .forward
+                UIApplication.shared().beginIgnoringInteractionEvents()
                 pvc.setViewControllers([vc!], direction: dir, animated: true, completion: {
                     _ in
-                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                    UIApplication.shared().endIgnoringInteractionEvents()
                 })
             })
         }

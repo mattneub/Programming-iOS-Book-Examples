@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var ubiq : NSURL!
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // this is the other part of iCloud-enablement
         // if we get a ubiquity container, we are good to go!
         // other classes will see that we have set ubiq and will use it
@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // if it doesn't exist, there is no iCloud account
         dispatch_async(dispatch_get_global_queue(0, 0)) {
             let fm = NSFileManager()
-            let ubiq = fm.URLForUbiquityContainerIdentifier(nil)
+            let ubiq = fm.urlForUbiquityContainerIdentifier(nil)
             print("ubiq: \(ubiq)")
             dispatch_async(dispatch_get_main_queue()) {
                 self.ubiq = ubiq

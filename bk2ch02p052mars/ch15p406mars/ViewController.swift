@@ -2,10 +2,10 @@ import UIKit
 
 extension CGRect {
     var center : CGPoint {
-        return CGPointMake(self.midX, self.midY)
+        return CGPoint(x:self.midX, y:self.midY)
     }
 }
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -30,14 +30,14 @@ class ViewController : UIViewController {
         
         iv.clipsToBounds = true // default is false...
         // though this won't matter unless you also play with the content mode
-        iv.contentMode = .ScaleAspectFit // default is .ScaleToFill...
+        iv.contentMode = .scaleAspectFit // default is .ScaleToFill...
         // ... which fits but doesn't preserve aspect
         
 //        println(iv.clipsToBounds)
 //        println(iv.contentMode.rawValue)
         
         // just to clarify boundaries of image view
-        iv.layer.borderColor = UIColor.blackColor().CGColor
+        iv.layer.borderColor = UIColor.black().cgColor
         iv.layer.borderWidth = 2
         
         switch which {
@@ -48,9 +48,9 @@ class ViewController : UIViewController {
         case 2:
             // position using constraints
             iv.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activateConstraints([
-                iv.centerXAnchor.constraintEqualToAnchor(iv.superview!.centerXAnchor),
-                iv.centerYAnchor.constraintEqualToAnchor(iv.superview!.centerYAnchor)
+            NSLayoutConstraint.activate([
+                iv.centerXAnchor.constraintEqual(to:iv.superview!.centerXAnchor),
+                iv.centerYAnchor.constraintEqual(to:iv.superview!.centerYAnchor)
                 ])
         default: break
         }

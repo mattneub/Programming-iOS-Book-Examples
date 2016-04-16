@@ -10,28 +10,28 @@ class NoisyDog : Dog {
 }
 
 enum Filter : CustomStringConvertible {
-    case Albums
-    case Playlists
-    case Podcasts
-    case Books
+    case albums
+    case playlists
+    case podcasts
+    case books
     var description : String {
         switch self {
-        case Albums:
+        case albums:
             return "Albums"
-        case Playlists:
+        case playlists:
             return "Playlists"
-        case Podcasts:
+        case podcasts:
             return "Podcasts"
-        case Books:
+        case books:
             return "Books"
         }
     }
 }
 
 enum Error {
-    case Number(Int)
-    case Message(String)
-    case Fatal
+    case number(Int)
+    case message(String)
+    case fatal
 }
 
 
@@ -48,9 +48,9 @@ class ViewController: UIViewController {
     var ii : Int? = nil
     var iii : AnyObject = 1
     
-    var type : Filter = .Albums
+    var type : Filter = .albums
     
-    var err = Error.Number(-6)
+    var err = Error.number(-6)
     
     var pep = "Groucho"
 
@@ -183,41 +183,41 @@ class ViewController: UIViewController {
         }
         
         switch type {
-        case .Albums:
+        case .albums:
             print("Albums")
-        case .Playlists:
+        case .playlists:
             print("Playlists")
-        case .Podcasts:
+        case .podcasts:
             print("Podcasts")
-        case .Books:
+        case .books:
             print("Books")
         }
 
         switch err {
-        case .Number(let theNumber):
+        case .number(let theNumber):
             print("It is a .Number: \(theNumber)")
-        case let .Message(theMessage):
+        case let .message(theMessage):
             print("It is a .Message: \(theMessage)")
-        case .Fatal:
+        case .fatal:
             print("It is a .Fatal")
         }
 
         switch err {
-        case let .Number(n) where n > 0:
+        case let .number(n) where n > 0:
             print("It's a positive error number \(n)")
-        case let .Number(n) where n < 0:
+        case let .number(n) where n < 0:
             print("It's a negative error number \(n)")
-        case .Number(0):
+        case .number(0):
             print("It's a zero error number")
         default:break
         }
 
         switch err {
-        case .Number(1..<Int.max):
+        case .number(1..<Int.max):
             print("It's a positive error number")
-        case .Number(Int.min...(-1)):
+        case .number(Int.min...(-1)):
             print("It's a negative error number")
-        case .Number(0):
+        case .number(0):
             print("It's a zero error number")
         default:break
         }
@@ -225,26 +225,26 @@ class ViewController: UIViewController {
         do {
             let i = ii
             switch i {
-            case .None: break
-            case .Some(1):
+            case .none: break
+            case .some(1):
                 print("You have 1 thingy!")
-            case .Some(let n):
+            case .some(let n):
                 print("You have \(n) thingies!")
             }
         }
         
         // new in Swift 2.0, case pattern syntax in an "if", "while", or "for"
         // the tag follows the pattern after an equal sign
-        if case let .Number(n) = err {
+        if case let .number(n) = err {
             print("The error number is \(n)")
         }
-        if case let .Number(n) = err where n < 0 {
+        if case let .number(n) = err where n < 0 {
             print("The negative error number is \(n)")
         }
         
         // and the inverse
         do {
-            guard case let .Number(n) = err else {return}
+            guard case let .number(n) = err else {return}
             print("not to worry, it's a number: \(n)")
         }
         
@@ -279,6 +279,20 @@ class ViewController: UIViewController {
             }
         }
         
+        // new in Swift 3, comma is legal even if the case declares a variable
+        // of course all the cases combined here need to declare the same variable
+        // and of the same type!
+        // this example is silly, but it would have been illegal before:
+        
+        switch err {
+        case let .number(n) where n > 0, let .number(n) where n < 0:
+            print("It's a nonzero error number \(n)")
+        case .number(0):
+            print("It's a zero error number")
+        default:break
+        }
+
+        
         switch pep {
         case "Manny": fallthrough
         case "Moe": fallthrough
@@ -290,20 +304,20 @@ class ViewController: UIViewController {
 
 
 
-        let nc = NSNotificationCenter.defaultCenter()
+        let nc = NSNotificationCenter.default()
         nc.addObserver(self, selector: #selector(notificationArrived), name: "test", object: nil)
-        nc.postNotificationName("test", object: self, userInfo: ["junk":"nonsense"])
-        nc.postNotificationName("test", object: self, userInfo: ["progress":"nonsense"])
-        nc.postNotificationName("test", object: self, userInfo: ["progress":3])
+        nc.post(name:"test", object: self, userInfo: ["junk":"nonsense"])
+        nc.post(name:"test", object: self, userInfo: ["progress":"nonsense"])
+        nc.post(name:"test", object: self, userInfo: ["progress":3])
     
 
     }
     
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+    func position(forBar bar: UIBarPositioning) -> UIBarPosition {
         switch true {
-        case bar === self.navbar:  return .TopAttached
-        case bar === self.toolbar: return .Bottom
-        default:                   return .Any
+        case bar === self.navbar:  return .topAttached
+        case bar === self.toolbar: return .bottom
+        default:                   return .any
         }
     }
     
@@ -318,6 +332,8 @@ class ViewController: UIViewController {
         if let prog = n.userInfo?["progress"] as? Double {
             self.progress = prog
         }
+        
+        print(n)
     }
 
 

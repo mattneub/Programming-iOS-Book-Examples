@@ -2,7 +2,7 @@
 
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -33,8 +33,8 @@ class ViewController: UIViewController, UITextViewDelegate {
         mas.addAttribute(NSParagraphStyleAttributeName,
             value:lend(){
                 (para:NSMutableParagraphStyle) in
-                para.alignment = .Left
-                para.lineBreakMode = .ByWordWrapping
+                para.alignment = .left
+                para.lineBreakMode = .byWordWrapping
             }, range:NSMakeRange(0,1))
         
         self.tv.attributedText = mas
@@ -45,8 +45,8 @@ class ViewController: UIViewController, UITextViewDelegate {
         
     }
     
-    func adjustHeight(tv:UITextView) {
-//        let sz = self.tv.sizeThatFits(CGSizeMake(self.tv.bounds.width, 10000))
+    func adjustHeight(_ tv:UITextView) {
+//        let sz = self.tv.sizeThatFits(CGSize(self.tv.bounds.width, 10000))
 //        self.heightConstraint.constant = ceil(sz.height)
         self.heightConstraint.constant = ceil(tv.contentSize.height)
     }
@@ -65,10 +65,10 @@ class ViewController: UIViewController, UITextViewDelegate {
     // and then I have to put it back, and it's not obvious what the algorithm is
     // this is my attempt to get it right
 
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let sel = textView.selectedRange
-        textView.text = (textView.text as NSString).stringByReplacingCharactersInRange(range,
-            withString:text)
+        textView.text = (textView.text as NSString).replacingCharacters(in:range,
+            with:text)
         self.adjustHeight(textView)
         textView.selectedRange =
             text.isEmpty && sel.length == 0 ?

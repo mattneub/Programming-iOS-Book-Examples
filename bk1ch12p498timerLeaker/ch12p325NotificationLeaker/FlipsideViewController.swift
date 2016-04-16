@@ -3,7 +3,7 @@
 import UIKit
 
 protocol FlipsideViewControllerDelegate : class {
-    func flipsideViewControllerDidFinish(controller:FlipsideViewController)
+    func flipsideViewControllerDidFinish(_ controller:FlipsideViewController)
 }
 
 class FlipsideViewController: UIViewController {
@@ -12,25 +12,25 @@ class FlipsideViewController: UIViewController {
     
     var timer : NSTimer!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("starting timer")
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(dummy), userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(dummy), userInfo: nil, repeats: true)
         self.timer.tolerance = 0.1
     }
     
-    func dummy(t:NSTimer) {
+    func dummy(_ t:NSTimer) {
         print("timer fired")
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         // return; // uncomment and we will leak
         print("invalidate")
         self.timer?.invalidate()
     }
     
-    @IBAction func done (sender:AnyObject!) {
+    @IBAction func done (_ sender:AnyObject!) {
         print("done")
         self.delegate?.flipsideViewControllerDidFinish(self)
     }
@@ -43,7 +43,7 @@ class FlipsideViewController: UIViewController {
 }
 
 extension FlipsideViewController : UIBarPositioningDelegate {
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
+    func position(forBar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 }

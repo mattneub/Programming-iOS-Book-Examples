@@ -14,8 +14,6 @@ class Dog {
 class NoisyDog : Dog {
 }
 
-// *** marks big changes in iOS 9 / Swift 2.0
-
 
 class ViewController: UIViewController {
 
@@ -62,7 +60,7 @@ class ViewController: UIViewController {
             print(chars)
             let kvs = Array(["hey":"ho", "nonny":"nonny no"])
             print(kvs)
-            let strings : [String?] = Array(count:100, repeatedValue:nil)
+            let strings : [String?] = Array(repeating:nil, count:100)
             _ = arr
             _ = strings
             _ = dogs
@@ -115,6 +113,15 @@ class ViewController: UIViewController {
         }
         
         do {
+            let arr = ["manny", "moe", "jack"]
+            let slice = arr[1...2]
+            print(slice)
+            print("slice:", slice[1]) // moe
+            let arr2 = Array(slice)
+            print("array:", arr2[1]) // jack
+        }
+        
+        do {
             var arr = [1,2,3]
             arr[1] = 4 // arr is now [1,4,3]
             arr[1..<2] = [7,8] // arr is now [1,7,8,3]
@@ -136,35 +143,43 @@ class ViewController: UIViewController {
             let arr = [1,2,3]
             print(arr.first)
             print(arr.last)
-            let arr2 = arr[arr.count-2...arr.count-1] // [2,3]
-            let arr3 = arr.suffix(2) // [2,3]
-            let arr4 = arr.suffix(10) // [1,2,3] with no penalty
-            print(arr4)
+            let slice = arr[arr.count-2...arr.count-1] // [2,3]
+            let slice2 = arr.suffix(2) // [2,3]
+            let slice3 = arr.suffix(10) // [1,2,3] with no penalty
+            let slice4 = arr.prefix(2)
+            print(slice3)
             
             // new in beta 6
             
             do {
-                let arr2 = arr.suffixFrom(1)
-                print(arr2)
-                let arr3 = arr.prefixUpTo(1)
-                print(arr3)
-                let arr4 = arr.prefixThrough(1)
-                print(arr4)
+                let slice = arr.suffix(from:1)
+                print(slice)
+                let slice2 = arr.prefix(upTo:1)
+                print(slice2)
+                let slice3 = arr.prefix(through:1)
+                print(slice3)
             }
             
             // let arr5 = arr[0..<10]
             
             do {
-                let arr = [1,2,3]
-                var r = arr.indices
-                r.startIndex = r.endIndex-2
-                let arr2 = arr[r] // [2,3]
-                print(arr2)
+                let slice = arr.suffix(from:1)
+                print(arr.startIndex)
+                print(slice.startIndex) // 1
+                print(slice.indices) // 1..<3
             }
             
             
-            _ = arr2
-            _ = arr3
+            do {
+                let arr = [1,2,3]
+                let slice = arr[arr.startIndex-2..<arr.endIndex] // [2,3]
+                print(slice)
+                print(slice.indices)
+                print(slice.startIndex)
+            }
+ 
+            
+            _ = (slice, slice2, slice3, slice4)
         }
         
         do {
@@ -177,19 +192,19 @@ class ViewController: UIViewController {
             let arr = [1,2,3]
             let ok = arr.contains(2) // ***
             let okk = arr.contains {$0 > 3} // false
-            let ix = arr.indexOf(2) // *** Optional wrapping 1
+            let ix = arr.index(of:2) // *** Optional wrapping 1
             
             let aviary = [Bird(name:"Tweety"), Bird(name:"Flappy"), Bird(name:"Lady")]
-            let ix2 = aviary.indexOf {$0.name.characters.count < 5}
+            let ix2 = aviary.index {$0.name.characters.count < 5} // index(where:)
             print(ix2)
             
             do {
-                let ok = arr.startsWith([1,2])
-                let ok2 = arr.startsWith([1,2]) {$0 == $1} // ***
-                let ok3 = arr.startsWith([1,2], isEquivalent:==) // ***
-                let ok4 = arr.startsWith([1,2])
-                let ok5 = arr.startsWith(1...2)
-                let ok6 = arr.startsWith([1,-2]) {abs($0) == abs($1)}
+                let ok = arr.starts(with:[1,2])
+                let ok2 = arr.starts(with:[1,2]) {$0 == $1} // ***
+                let ok3 = arr.starts(with:[1,2], isEquivalent:==) // ***
+                let ok4 = arr.starts(with:[1,2])
+                let ok5 = arr.starts(with:1...2)
+                let ok6 = arr.starts(with:[1,-2]) {abs($0) == abs($1)}
                 
                 _ = ok
                 _ = ok2
@@ -205,17 +220,17 @@ class ViewController: UIViewController {
 
         do {
             let arr = [3,1,-2]
-            let min = arr.minElement() // *** -2
+            let min = arr.min() // *** -2
             print(min)
-            let min2 = arr.minElement {abs($0)<abs($1)}
+            let min2 = arr.min {abs($0)<abs($1)}
             print(min2)
         }
         
         do {
             var arr = [1,2,3]
             arr.append(4)
-            arr.appendContentsOf([5,6])
-            arr.appendContentsOf(7...8) // arr is now [1,2,3,4,5,6,7,8]
+            arr.append(contentsOf:[5,6])
+            arr.append(contentsOf:7...8) // arr is now [1,2,3,4,5,6,7,8]
             
             let arr2 = arr + [4] // arr2 is now [1,2,3,4]
             var arr3 = [1,2,3]
@@ -226,18 +241,22 @@ class ViewController: UIViewController {
         
         do {
             var arr = [1,2,3]
-            arr.insert(4, atIndex:1)
+            arr.insert(4, at:1)
             print(arr)
-            arr.insertContentsOf([10,9,8], at:1)
+            arr.insert(contentsOf:[10,9,8], at:1)
             print(arr)
-            let i = arr.removeAtIndex(3)
+            let i = arr.remove(at:3)
             let ii = arr.removeLast()
-            let iii = arr.popLast()
+            let iii = arr.removeFirst()
+            let iiib = arr.removeFirst(1)
+            let iiii = arr.popLast()
+            // let iiiii = arr.popFirst()
             print(arr)
             do {
                 // let iiii = arr.popFirst() // not sure what happened to this
                 var arrslice = arr[arr.indices] // is this weird or what
                 let i = arrslice.popFirst()
+                // let ii = arrslice.popFirst(1)
                 print(i)
                 print(arrslice)
                 print(arr) // untouched, of course
@@ -246,30 +265,33 @@ class ViewController: UIViewController {
             _ = i
             _ = ii
             _ = iii
-            let arr2 = arr.dropFirst()
-            let arr3 = arr.dropLast()
-            _ = arr2
-            _ = arr3
+            let slice = arr.dropFirst()
+            let slice2 = arr.dropLast()
+            let slice3 = arr.dropFirst(100)
+            print("slice3", slice3)
+            _ = slice
+            _ = slice2
+            _ = slice3
         }
         
         do {
             let arr = [[1,2], [3,4], [5,6]]
-            let arr2 = arr.joinWithSeparator([10,11]) // [1, 2, 10, 11, 3, 4, 10, 11, 5, 6]
-            let arr3 = arr.joinWithSeparator([]) // [1, 2, 3, 4, 5, 6]
+            let joined = arr.joined(separator: [10,11]) // [1, 2, 10, 11, 3, 4, 10, 11, 5, 6]
+            let joined2 = arr.joined(separator: []) // [1, 2, 3, 4, 5, 6]
             let arr4 = arr.flatMap {$0} // new in Swift 1.2
             let arr5 = Array(arr.flatten()) // new in Xcode 7 beta 6
-            _ = arr2
-            _ = arr3
+            _ = joined
+            _ = joined2
             _ = arr4
             _ = arr5
         }
         
         do {
             var arr = [4,3,5,2,6,1]
-            arr.sortInPlace()
-            arr.sortInPlace {$0 > $1} // *** [1, 2, 3, 4, 5, 6]
+            arr.sort()
+            arr.sort {$0 > $1} // *** [1, 2, 3, 4, 5, 6]
             arr = [4,3,5,2,6,1]
-            arr.sortInPlace(>) // *** [1, 2, 3, 4, 5, 6]
+            arr.sort(isOrderedBefore: >) // *** [1, 2, 3, 4, 5, 6]
             
         }
         
@@ -284,14 +306,14 @@ class ViewController: UIViewController {
         for pepboy in pepboys {
             print(pepboy) // prints Manny, then Moe, then Jack
         }
-        for (ix,pepboy) in pepboys.enumerate() { // ***
+        for (ix,pepboy) in pepboys.enumerated() { // ***
             print("Pep boy \(ix) is \(pepboy)") // Pep boy 0 is Manny, etc.
         }
         let arr = [1,2,3]
         let arr2 = arr.map {$0 * 2} // [2,4,6]
         let arr3 = arr.map {Double($0)} // [1.0, 2.0, 3.0]
         pepboys.forEach {print($0)} // prints Manny, then Moe, then Jack
-        pepboys.enumerate().forEach {print("Pep boy \($0.0) is \($0.1)")}
+        pepboys.enumerated().forEach {print("Pep boy \($0.0) is \($0.1)")}
         // pepboys.map(print) // no longer compiles
         let arr4 = pepboys.filter{$0.hasPrefix("M")} // [Manny, Moe]
 
@@ -305,6 +327,13 @@ class ViewController: UIViewController {
         _ = sum
         _ = sum2
 
+        do {
+            let sec = 0
+            let ct = 10
+            _ = Array(0..<ct).map {NSIndexPath(forRow:$0, inSection:sec)}
+            _ = (0..<ct).map {NSIndexPath(forRow:$0, inSection:sec)}
+
+        }
         
         do {
             let arr = [[1,2], [3,4], [5,6]]
@@ -329,8 +358,8 @@ class ViewController: UIViewController {
             let target = "m"
             let arr2 = arr.map {
                 $0.filter {
-                    let options = NSStringCompareOptions.CaseInsensitiveSearch
-                    let found = $0.rangeOfString(target, options: options)
+                    let options = NSStringCompareOptions.caseInsensitiveSearch
+                    let found = $0.range(of:target, options: options)
                     return (found != nil)
                 }
                 }.filter {$0.count > 0}
@@ -345,10 +374,10 @@ class ViewController: UIViewController {
         
         do {
             var arr = ["Manny", "Moe", "Jack"]
-            // let ss = arr.componentsJoinedByString(", ") // compile error
-            let s = (arr as NSArray).componentsJoinedByString(", ")
+            // let ss = arr.componentsJoined(by:", ") // compile error
+            let s = (arr as NSArray).componentsJoined(by:", ")
             let arr2 = NSMutableArray(array:arr)
-            arr2.removeObject("Moe")
+            arr2.remove("Moe")
             arr = arr2 as NSArray as! [String]
             print(arr)
             
@@ -359,7 +388,7 @@ class ViewController: UIViewController {
         do {
             let arrCGPoints = [CGPoint]()
             // let arrr = arrCGPoints as NSArray // compiler stops you
-            let arrNSValues = arrCGPoints.map { NSValue(CGPoint:$0) }
+            let arrNSValues = arrCGPoints.map { NSValue(cgPoint:$0) }
             let arr = arrNSValues as NSArray
             _ = arrNSValues
             _ = arr
@@ -369,14 +398,14 @@ class ViewController: UIViewController {
             let arr = [String?]()
             // let arr2 = arr.map{if $0 == nil {return NSNull()} else {return $0!}} // compile error
             // let arr2 = arr.map{s -> AnyObject in if s == nil {return NSNull()} else {return s!}}
-            let arr2 : [AnyObject] = arr.map{if $0 == nil {return NSNull()} else {return $0!}}
+            let arr2 : [AnyObject] = arr.map{if $0 == nil {return NSNull()} else {return $0! as AnyObject}}
             _ = arr2
         }
         
         do {
             // the API is fixed!
             let arr = UIFont.familyNames().map {
-                UIFont.fontNamesForFamilyName($0)
+                UIFont.fontNames(forFamilyName: $0)
             }
             print(arr)
             let views = self.view.subviews
@@ -413,7 +442,7 @@ class ViewController: UIViewController {
             let arr = [Dog()]
             let nsarr = arr as NSArray
             // there is no problem even if it is NOT an NSObject, so what's the big deal?
-            print(nsarr.objectAtIndex(0))
+            print(nsarr.object(at:0))
             
             let arr2 = ["howdy", Dog()]
             let nsarr2 = arr2 as NSArray

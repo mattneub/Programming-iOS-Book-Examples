@@ -2,12 +2,17 @@
 import XCTest
 @testable import EmptyWindow
 
+// tests not working under swift 3
+
 class EmptyWindowTests: XCTestCase {
     
     var viewController = ViewController()
     
+    
     override func setUp() {
         super.setUp()
+        let b = NSBundle(for:self.dynamicType) // just testing
+
     }
     
     override func tearDown() {
@@ -16,7 +21,7 @@ class EmptyWindowTests: XCTestCase {
     
     func testDogMyCats() {
         if let viewController =
-            (UIApplication.sharedApplication().delegate as? AppDelegate)?
+            (UIApplication.shared().delegate as? AppDelegate)?
                 .window?.rootViewController as? ViewController {
                     print(viewController)
         }

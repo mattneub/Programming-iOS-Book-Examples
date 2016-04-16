@@ -2,6 +2,29 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class ViewController : UIViewController {
     var viewInitializationDone = false
     
@@ -20,29 +43,29 @@ class ViewController : UIViewController {
             // it is at least in the right orientation already
             // in iOS 9, this approach won't work on an iPhone held in landscape at launch...
             // ...unless we add autoresizing
-            let square = UIView(frame:CGRectMake(0,0,10,10))
-            square.backgroundColor = UIColor.blackColor()
-            square.center = CGPointMake(self.view.bounds.midX,5) // top center?
+            let square = UIView(frame:CGRect(0,0,10,10))
+            square.backgroundColor = UIColor.black()
+            square.center = CGPoint(self.view.bounds.midX,5) // top center?
             //square.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin, .FlexibleBottomMargin]
             self.view.addSubview(square)
         } else if which == 3 {
             // on the other hand, using constraints and no hard numbers is most reliable
             // and of course it has the advantage of being adaptable into future rotations
             let square = UIView()
-            square.backgroundColor = UIColor.blackColor()
+            square.backgroundColor = UIColor.black()
             self.view.addSubview(square)
             square.translatesAutoresizingMaskIntoConstraints = false
             let side : CGFloat = 10
             var con = [NSLayoutConstraint]()
-            con.appendContentsOf([
-                square.widthAnchor.constraintEqualToConstant(side),
-                square.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
+            con.append(contentsOf:[
+                square.widthAnchor.constraintEqual(toConstant:side),
+                square.centerXAnchor.constraintEqual(to:self.view.centerXAnchor)
                 ])
-            con.appendContentsOf(
-                NSLayoutConstraint.constraintsWithVisualFormat("V:|[square(side)]",
-                    options:[], metrics:["side":side],
+            con.append(contentsOf:
+                NSLayoutConstraint.constraints(withVisualFormat:"V:|[square(side)]",
+                    options:[], metrics:["side":side as NSNumber],
                     views:["square":square]))
-            NSLayoutConstraint.activateConstraints(con)
+            NSLayoutConstraint.activate(con)
         }
     }
     
@@ -55,21 +78,21 @@ class ViewController : UIViewController {
             // that's because we always launch into portrait and then rotate
             if !self.viewInitializationDone {
                 self.viewInitializationDone = true
-                let square = UIView(frame:CGRectMake(0,0,10,10))
-                square.backgroundColor = UIColor.blackColor()
-                square.center = CGPointMake(self.view.bounds.midX,5)
+                let square = UIView(frame:CGRect(0,0,10,10))
+                square.backgroundColor = UIColor.black()
+                square.center = CGPoint(self.view.bounds.midX,5)
                 self.view.addSubview(square)
             }
         }
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if which == 4 {
             if !self.viewInitializationDone {
                 self.viewInitializationDone = true
-                let square = UIView(frame:CGRectMake(0,0,10,10))
-                square.backgroundColor = UIColor.blackColor()
-                square.center = CGPointMake(self.view.bounds.midX,5)
+                let square = UIView(frame:CGRect(0,0,10,10))
+                square.backgroundColor = UIColor.black()
+                square.center = CGPoint(self.view.bounds.midX,5)
                 self.view.addSubview(square)
             }
         }

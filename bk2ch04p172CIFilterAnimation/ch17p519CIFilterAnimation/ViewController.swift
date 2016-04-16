@@ -12,14 +12,14 @@ class ViewController : UIViewController {
     var timestamp: CFTimeInterval!
     var context : CIContext!
     
-    @IBAction func doButton (sender:AnyObject) {
+    @IBAction func doButton (_ sender:AnyObject) {
         let moi = CIImage(image:UIImage(named:"moi")!)!
         self.moiextent = moi.extent
         
         let col = CIFilter(name:"CIConstantColorGenerator")!
-        let cicol = CIColor(color:UIColor.redColor())
+        let cicol = CIColor(color:UIColor.red())
         col.setValue(cicol, forKey:"inputColor")
-        let colorimage = col.valueForKey("outputImage") as! CIImage
+        let colorimage = col.value(forKey:"outputImage") as! CIImage
         
         let tran = CIFilter(name:"CIFlashTransition")!
         tran.setValue(colorimage, forKey:"inputImage")
@@ -34,7 +34,7 @@ class ViewController : UIViewController {
         dispatch_async(dispatch_get_main_queue()) {
         
             let link = CADisplayLink(target:self, selector:#selector(self.nextFrame))
-            link.addToRunLoop(NSRunLoop.mainRunLoop(), forMode:NSDefaultRunLoopMode)
+            link.add(to:NSRunLoop.main(), forMode:NSDefaultRunLoopMode)
         
         }
         
@@ -43,17 +43,17 @@ class ViewController : UIViewController {
     let SCALE = 1.0 // 0.2 for slow motion, looks a bit better in simulator
     // but really you need to test on device
     
-    func nextFrame(sender:CADisplayLink) {
+    func nextFrame(_ sender:CADisplayLink) {
         if self.timestamp < 0.01 { // pick up and store first timestamp
             self.timestamp = sender.timestamp
             self.frame = 0.0
         } else { // calculate frame
             self.frame = (sender.timestamp - self.timestamp) * SCALE
         }
-        sender.paused = true // defend against frame loss
+        sender.isPaused = true // defend against frame loss
         
-        self.tran.setValue(self.frame, forKey:"inputTime")
-        let moi = self.context.createCGImage(tran.outputImage!, fromRect:self.moiextent)
+        self.tran.setValue(self.frame as AnyObject, forKey:"inputTime")
+        let moi = self.context.createCGImage(tran.outputImage!, from:self.moiextent)
         CATransaction.setDisableActions(true)
         self.v.layer.contents = moi
         
@@ -61,7 +61,7 @@ class ViewController : UIViewController {
             print("invalidate")
             sender.invalidate()
         }
-        sender.paused = false
+        sender.isPaused = false
         
         print("here \(self.frame)") // useful for seeing dropped frame rate
     }

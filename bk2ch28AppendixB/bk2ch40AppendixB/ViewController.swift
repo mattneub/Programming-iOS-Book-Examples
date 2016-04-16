@@ -2,7 +2,7 @@
 
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -12,31 +12,51 @@ func delay(delay:Double, closure:()->()) {
 }
 
 extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+extension CGRect {
     var center : CGPoint {
-        return CGPointMake(self.midX, self.midY)
+        return CGPoint(self.midX, self.midY)
     }
 }
 
 extension CGSize {
-    func sizeByDelta(dw dw:CGFloat, dh:CGFloat) -> CGSize {
-        return CGSizeMake(self.width + dw, self.height + dh)
+    func sizeByDelta(dw:CGFloat, dh:CGFloat) -> CGSize {
+        return CGSize(self.width + dw, self.height + dh)
     }
 }
 
-func dictionaryOfNames(arr:UIView...) -> [String:UIView] {
+func dictionaryOfNames(_ arr:UIView...) -> [String:UIView] {
     var d = [String:UIView]()
-    for (ix,v) in arr.enumerate() {
+    for (ix,v) in arr.enumerated() {
         d["v\(ix+1)"] = v
     }
     return d
 }
 
 extension NSLayoutConstraint {
-    // remove var param from both
-    class func reportAmbiguity (v:UIView?) {
+    class func reportAmbiguity (_ v:UIView?) {
         var v = v
         if v == nil {
-            v = UIApplication.sharedApplication().keyWindow
+            v = UIApplication.shared().keyWindow
         }
         for vv in v!.subviews {
             print("\(vv) \(vv.hasAmbiguousLayout())")
@@ -45,15 +65,15 @@ extension NSLayoutConstraint {
             }
         }
     }
-    class func listConstraints (v:UIView?) {
+    class func listConstraints (_ v:UIView?) {
         var v = v
         if v == nil {
-            v = UIApplication.sharedApplication().keyWindow
+            v = UIApplication.shared().keyWindow
         }
         for vv in v!.subviews {
-            let arr1 = vv.constraintsAffectingLayoutForAxis(.Horizontal)
-            let arr2 = vv.constraintsAffectingLayoutForAxis(.Vertical)
-            NSLog("\n\n%@\nH: %@\nV:%@", vv, arr1, arr2);
+            let arr1 = vv.constraintsAffectingLayout(for:.horizontal)
+            let arr2 = vv.constraintsAffectingLayout(for:.vertical)
+            NSLog("\n\n%@\nH: %@\nV:%@", vv, arr1 as NSArray, arr2 as NSArray);
             if vv.subviews.count > 0 {
                 self.listConstraints(vv)
             }
@@ -61,31 +81,31 @@ extension NSLayoutConstraint {
     }
 }
 
-func imageOfSize(size:CGSize, _ opaque:Bool = false, @noescape _ closure:() -> ())
+func imageOfSize(_ size:CGSize, _ opaque:Bool = false, _ closure: @noescape () -> ())
     -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
         closure()
-        let result = UIGraphicsGetImageFromCurrentImageContext()
+        let result = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return result
 }
 
 extension UIView {
-    class func animateWithTimes(times:Int,
-        duration dur: NSTimeInterval,
-        delay del: NSTimeInterval,
-        options opts: UIViewAnimationOptions,
-        animations anim: () -> Void,
-        completion comp: ((Bool) -> Void)?) {
-            func helper(t:Int,
-                _ dur: NSTimeInterval,
-                _ del: NSTimeInterval,
-                _ opt: UIViewAnimationOptions,
-                _ anim: () -> Void,
-                _ com: ((Bool) -> Void)?) {
-                    UIView.animateWithDuration(dur,
-                        delay: del, options: opt,
-                        animations: anim, completion: {
+    class func animate(times:Int,
+                       duration dur: NSTimeInterval,
+                       delay del: NSTimeInterval,
+                       options opts: UIViewAnimationOptions,
+                       animations anim: () -> Void,
+                       completion comp: ((Bool) -> Void)?) {
+        func helper(_ t:Int,
+                    _ dur: NSTimeInterval,
+                    _ del: NSTimeInterval,
+                    _ opt: UIViewAnimationOptions,
+                    _ anim: () -> Void,
+                    _ com: ((Bool) -> Void)?) {
+            UIView.animate(withDuration: dur,
+                           delay: del, options: opt,
+                           animations: anim, completion: {
                             done in
                             if com != nil {
                                 com!(done)
@@ -95,21 +115,21 @@ extension UIView {
                                     helper(t-1, dur, del, opt, anim, com)
                                 }
                             }
-                    })
-            }
-            helper(times-1, dur, del, opts, anim, comp)
+            })
+        }
+        helper(times-1, dur, del, opts, anim, comp)
     }
 }
 
 extension Array {
-    mutating func removeAtIndexes (ixs:[Int]) -> () {
-        for i in ixs.sort(>) {
-            self.removeAtIndex(i)
+    mutating func remove(at ixs:[Int]) -> () {
+        for i in ixs.sorted(isOrderedBefore:>) {
+            self.remove(at:i)
         }
     }
 }
 
-func lend<T where T:NSObject> (@noescape closure:(T)->()) -> T {
+func lend<T where T:NSObject> (closure: @noescape (T)->()) -> T {
     let orig = T()
     closure(orig)
     return orig
@@ -140,24 +160,24 @@ class ViewController: UIViewController {
         NSLayoutConstraint.listConstraints(self.view)
         
         
-        let _ = imageOfSize(CGSizeMake(100,100)) {
+        let _ = imageOfSize(CGSize(100,100)) {
             let con = UIGraphicsGetCurrentContext()!
-            CGContextAddEllipseInRect(con, CGRectMake(0,0,100,100))
-            CGContextSetFillColorWithColor(con, UIColor.blueColor().CGColor)
-            CGContextFillPath(con)
+            con.addEllipse(inRect: CGRect(0,0,100,100))
+            con.setFillColor(UIColor.blue().cgColor)
+            con.fillPath()
         }
         
-        let _ = imageOfSize(CGSizeMake(100,100), true) {
+        let _ = imageOfSize(CGSize(100,100), true) {
             let con = UIGraphicsGetCurrentContext()!
-            CGContextAddEllipseInRect(con, CGRectMake(0,0,100,100))
-            CGContextSetFillColorWithColor(con, UIColor.blueColor().CGColor)
-            CGContextFillPath(con)
+            con.addEllipse(inRect: CGRect(0,0,100,100))
+            con.setFillColor(UIColor.blue().cgColor)
+            con.fillPath()
         }
 
         
-        let opts = UIViewAnimationOptions.Autoreverse
+        let opts = UIViewAnimationOptions.autoreverse
         let xorig = self.v.center.x
-        UIView.animateWithTimes(3, duration:1, delay:0, options:opts, animations:{
+        UIView.animate(times:3, duration:1, delay:0, options:opts, animations:{
             self.v.center.x += 100
             }, completion:{
                 _ in
@@ -165,7 +185,7 @@ class ViewController: UIViewController {
         })
         
         var arr = [1,2,3,4]
-        arr.removeAtIndexes([0,2])
+        arr.remove(at:[0,2])
         print(arr)
 
 
@@ -176,8 +196,8 @@ class ViewController: UIViewController {
                 para.headIndent = 10
                 para.firstLineHeadIndent = 10
                 para.tailIndent = -10
-                para.lineBreakMode = .ByWordWrapping
-                para.alignment = .Center
+                para.lineBreakMode = .byWordWrapping
+                para.alignment = .center
                 para.paragraphSpacing = 15
             }, range:NSMakeRange(0,1))
 

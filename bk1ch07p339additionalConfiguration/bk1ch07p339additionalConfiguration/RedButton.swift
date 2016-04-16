@@ -14,24 +14,24 @@ class RedButton: UIButton {
     @IBInspectable var borderColor : UIColor? {
         get {
             let cg = self.layer.borderColor
-            return cg == nil ? nil : UIColor(CGColor: cg!)
+            return cg == nil ? nil : UIColor(cgColor: cg!)
         }
         set {
-            self.layer.borderColor = newValue?.CGColor ?? nil
+            self.layer.borderColor = newValue?.cgColor ?? nil
         }
     }
 
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
-        self.layer.shadowColor = UIColor.grayColor().CGColor
-        self.layer.shadowOffset = CGSizeMake(2,2)
+        self.layer.shadowColor = UIColor.gray().cgColor
+        self.layer.shadowOffset = CGSize(width:2,height:2)
         self.layer.shadowOpacity = 0.7
     }
 
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.redColor()
+        self.backgroundColor = UIColor.red()
     }
 }

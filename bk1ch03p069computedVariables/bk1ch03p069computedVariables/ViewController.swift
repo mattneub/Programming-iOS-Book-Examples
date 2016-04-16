@@ -72,12 +72,12 @@ class ViewController: UIViewController {
         get {
             if myBigDataReal == nil {
                 let fm = NSFileManager()
-                let f = (NSTemporaryDirectory() as NSString).stringByAppendingPathComponent("myBigData")
-                if fm.fileExistsAtPath(f) {
+                let f = (NSTemporaryDirectory() as NSString).appendingPathComponent("myBigData")
+                if fm.fileExists(atPath:f) {
                     print("loading big data from disk")
                     self.myBigDataReal = NSData(contentsOfFile: f)
                     do {
-                        try fm.removeItemAtPath(f)
+                        try fm.removeItem(atPath:f)
                         print("deleted big data from disk")
                     } catch {
                         print("Couldn't remove temp file")

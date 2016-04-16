@@ -10,7 +10,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     // thus we need another place to configure
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "present" { // it will be
             let svc = segue.destinationViewController as! SecondViewController
             svc.data = "This is very important data!"
@@ -18,21 +18,21 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         }
     }
     
-    func acceptData(data:AnyObject!) {
+    func accept(data:AnyObject!) {
         // do something with data here
         
         // prove that you received data
         print(data)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("vc did disappear")
     }
     
-    override func dismissViewControllerAnimated(flag: Bool, completion: (() -> Void)!) {
+    override func dismiss(animated: Bool, completion: (() -> Void)!) {
         print("here") // prove that this is called by clicking on curl
-        super.dismissViewControllerAnimated(flag, completion: completion)
+        super.dismiss(animated:animated, completion: completion)
     }
     
     

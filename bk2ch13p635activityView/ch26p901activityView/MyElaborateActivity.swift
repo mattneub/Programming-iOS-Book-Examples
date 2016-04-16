@@ -7,20 +7,20 @@ class MyElaborateActivity : UIActivity {
     var image : UIImage
     
     override init() {
-        let idiom = UIScreen.mainScreen().traitCollection.userInterfaceIdiom
-        var scale : CGFloat = (idiom == .Pad ? 76 : 60) - 10
+        let idiom = UIScreen.main().traitCollection.userInterfaceIdiom
+        var scale : CGFloat = (idiom == .pad ? 76 : 60) - 10
         let im = UIImage(named:"sunglasses.png")!
         let largerSize = fmax(im.size.height, im.size.width)
         scale /= largerSize
-        let sz = CGSizeMake(im.size.width*scale, im.size.height*scale)
+        let sz = CGSize(im.size.width*scale, im.size.height*scale)
         self.image = imageOfSize(sz) {
-            im.drawInRect(CGRect(origin: CGPoint(), size: sz))
+            im.draw(in:CGRect(origin: CGPoint(), size: sz))
         }
         super.init()
     }
     
     override class func activityCategory() -> UIActivityCategory {
-        return .Action // the default
+        return .action // the default
     }
     
     override func activityType() -> String? {
@@ -35,13 +35,13 @@ class MyElaborateActivity : UIActivity {
         return self.image
     }
     
-    override func canPerformWithActivityItems(activityItems: [AnyObject]) -> Bool {
+    override func canPerform(withActivityItems activityItems: [AnyObject]) -> Bool {
         print("elaborate can perform \(activityItems)")
         print("returning true")
         return true
     }
     
-    override func prepareWithActivityItems(activityItems: [AnyObject]) {
+    override func prepare(withActivityItems activityItems: [AnyObject]) {
         print("elaborate prepare \(activityItems)")
         self.items = activityItems
     }

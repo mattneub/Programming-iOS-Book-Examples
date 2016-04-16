@@ -12,8 +12,8 @@ class ViewController : UIViewController {
     
     @IBOutlet var lab : UILabel!
     
-    func doDynamicType(n:NSNotification!) {
-        self.lab.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+    func doDynamicType(_ n:NSNotification!) {
+        self.lab.font = UIFont.preferredFont(forTextStyle:UIFontTextStyleHeadline)
     }
     
     override func viewDidLoad() {
@@ -35,22 +35,22 @@ class ViewController : UIViewController {
             [desc], nil, {
                 (state:CTFontDescriptorMatchingState, prog:CFDictionary!) -> Bool in
                 switch state {
-                case .DidBegin:
+                case .didBegin:
                     NSLog("%@", "matching did begin")
-                case .WillBeginDownloading:
+                case .willBeginDownloading:
                     NSLog("%@", "downloading will begin")
-                case .Downloading:
+                case .downloading:
                     let d = prog as NSDictionary
                     let key = kCTFontDescriptorMatchingPercentage
                     let cur : AnyObject? = d[key as NSString]
                     if let cur = cur as? NSNumber {
                         NSLog("progress: %@%%", cur)
                     }
-                case .DidFinishDownloading:
+                case .didFinishDownloading:
                     NSLog("%@", "downloading did finish")
-                case .DidFailWithError:
+                case .didFailWithError:
                     NSLog("%@", "downloading failed")
-                case .DidFinish:
+                case .didFinish:
                     NSLog("%@", "matching did finish")
                     dispatch_async(dispatch_get_main_queue(), {
                         let f : UIFont! = UIFont(name:name, size:size)

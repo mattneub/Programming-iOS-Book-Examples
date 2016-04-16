@@ -7,11 +7,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     var window : UIWindow?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         return true
     }
     
-    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         print("supported") // whoa
         
         // uncomment next line to get a different answer...
@@ -23,7 +23,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // return .Landscape
         
         // launch into portrait, then rotate if user is holding in landscape
-        return .All // still excludes upside-down
+        return .all // still excludes upside-down
     }
     
 }

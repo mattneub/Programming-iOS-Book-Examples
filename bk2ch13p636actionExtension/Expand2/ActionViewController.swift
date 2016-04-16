@@ -7,9 +7,9 @@ class ActionViewController: UIViewController {
     @IBOutlet weak var lab: UILabel!
     
     let list : [String] = {
-        let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")!
-        let s = try! String(contentsOfURL:path, encoding:NSUTF8StringEncoding)
-        return s.componentsSeparatedByString("\n")
+        let path = NSBundle.main().urlForResource("abbreviations", withExtension:"txt")!
+        let s = try! String(contentsOf:path, encoding:NSUTF8StringEncoding)
+        return s.components(separatedBy:"\n")
         }()
     
     let desiredType = kUTTypePlainText as String
@@ -18,7 +18,7 @@ class ActionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.doneButton.enabled = false
+        self.doneButton.isEnabled = false
         self.lab.text = "No expansion available."
         if self.extensionContext == nil {
             return
@@ -31,48 +31,48 @@ class ActionViewController: UIViewController {
             else {
                 return
         }
-        provider.loadItemForTypeIdentifier(self.desiredType, options: nil) {
+        provider.loadItem(forTypeIdentifier: self.desiredType, options: nil) {
             (item:NSSecureCoding?, err:NSError!) -> () in
             dispatch_async(dispatch_get_main_queue()) {
                 if let orig = item as? String {
                     self.orig = orig
-                    if let exp = self.stateForAbbrev(orig) {
+                    if let exp = self.state(forAbbrev:orig) {
                         self.expansion = exp
                         self.lab.text = "Can expand to \(exp)."
-                        self.doneButton.enabled = true
+                        self.doneButton.isEnabled = true
                     }
                 }
             }
         }
     }
     
-    func stateForAbbrev(abbrev:String) -> String? {
-        let ix = list.indexOf(abbrev.uppercaseString)
+    func state(forAbbrev abbrev:String) -> String? {
+        let ix = list.index(of:abbrev.uppercased())
         return ix != nil ? list[ix!+1] : nil
     }
     
-    func stuffThatEnvelope(item:String) -> [NSExtensionItem] {
+    func stuffThatEnvelope(_ item:String) -> [NSExtensionItem] {
         // everything has to get stuck back into the right sort of envelope
         let extensionItem = NSExtensionItem()
-        let itemProvider = NSItemProvider(item: item, typeIdentifier: desiredType)
+        let itemProvider = NSItemProvider(item: item as NSString, typeIdentifier: desiredType)
         extensionItem.attachments = [itemProvider]
         return [extensionItem]
     }
     
-    @IBAction func cancel(sender: AnyObject) {
-        self.extensionContext?.completeRequestReturningItems(
-            nil, completionHandler: nil)
+    @IBAction func cancel(_ sender: AnyObject) {
+        self.extensionContext?.completeRequest(
+            returningItems: nil, completionHandler: nil)
     }
     
-    @IBAction func done(sender: AnyObject) {
-        self.extensionContext?.completeRequestReturningItems(
-            self.stuffThatEnvelope(self.expansion!), completionHandler: nil)
+    @IBAction func done(_ sender: AnyObject) {
+        self.extensionContext?.completeRequest(
+            returningItems: self.stuffThatEnvelope(self.expansion!), completionHandler: nil)
     }
     
 }
 
 extension ActionViewController : UIBarPositioningDelegate {
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
+    func positionForBar(forBar bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 }

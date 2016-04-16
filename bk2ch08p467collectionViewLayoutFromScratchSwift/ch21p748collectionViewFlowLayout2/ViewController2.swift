@@ -11,16 +11,16 @@ class ViewController2 : UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "States 2"
-        let b = UIBarButtonItem(title:"Flush", style:.Plain, target:self, action:#selector(doFlush))
+        let b = UIBarButtonItem(title:"Flush", style:.plain, target:self, action:#selector(doFlush))
         self.navigationItem.rightBarButtonItem = b
         if let flow = self.collectionViewLayout as? UICollectionViewFlowLayout {
-            flow.headerReferenceSize = CGSizeMake(50,50)
+            flow.headerReferenceSize = CGSize(50,50)
             flow.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10)
         }
         self.collectionView!.reloadData()
     }
     
-    func doFlush (sender:AnyObject) {
+    func doFlush (_ sender:AnyObject) {
         if let layout = self.collectionView!.collectionViewLayout as? MyFlowLayout {
             layout.flush()
         }
@@ -29,13 +29,13 @@ class ViewController2 : UICollectionViewController {
     // extremely weird transfer of responsibilities
     // I filed a bug on this but Apple insists this is how they want it...
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         return;
         print("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
     }
     
-    override func viewDidAppear(animated: Bool)  {
+    override func viewDidAppear(_ animated: Bool)  {
         super.viewDidAppear(animated)
         return;
         print("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
@@ -53,7 +53,7 @@ class ViewController2 : UICollectionViewController {
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
             let cv = self.navigationController!.viewControllers[0] as! ViewController
             let result = cv.collectionView(collectionView, layout:collectionViewLayout,
-                sizeForItemAtIndexPath:indexPath)
+                sizeForItemAt:indexPath)
             return result
     }
     

@@ -7,6 +7,29 @@ func lend<T where T:NSObject> (closure:(T)->()) -> T {
     return orig
 }
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class ViewController : UIViewController {
     @IBOutlet var drawer : StringDrawer!
     @IBOutlet var iv : UIImageView!
@@ -16,12 +39,12 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         
         // draw into 280 x 250 image
-        let rect = CGRectMake(0,0,280,250)
+        let rect = CGRect(0,0,280,250)
         UIGraphicsBeginImageContextWithOptions(rect.size, true, 0)
-        UIColor.whiteColor().setFill()
-        CGContextFillRect(UIGraphicsGetCurrentContext()!, rect)
-        content.drawInRect(rect) // draw attributed string
-        let im = UIGraphicsGetImageFromCurrentImageContext()
+        UIColor.white().setFill()
+        UIGraphicsGetCurrentContext()!.fill(rect)
+        content.draw(in:rect) // draw attributed string
+        let im = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         // display the image
@@ -42,12 +65,12 @@ class ViewController : UIViewController {
         "(namely Thursday, November 19, 1863) by A. Lincoln"
         content = NSMutableAttributedString(string:s1, attributes:[
             NSFontAttributeName: UIFont(name:"Arial-BoldMT", size:15)!,
-            NSForegroundColorAttributeName: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
+            NSForegroundColorAttributeName: UIColor(red:0.251 as CGFloat, green:0.000, blue:0.502, alpha:1)]
         )
 
-        let r = (s1 as NSString).rangeOfString("Gettysburg Address")
+        let r = (s1 as NSString).range(of:"Gettysburg Address")
         content.addAttributes([
-            NSStrokeColorAttributeName: UIColor.redColor(),
+            NSStrokeColorAttributeName: UIColor.red(),
             NSStrokeWidthAttributeName: -2.0
         ], range: r)
         
@@ -57,8 +80,8 @@ class ViewController : UIViewController {
             para.headIndent = 10
             para.firstLineHeadIndent = 10
             para.tailIndent = -10
-            para.lineBreakMode = .ByWordWrapping
-            para.alignment = .Center
+            para.lineBreakMode = .byWordWrapping
+            para.alignment = .center
             para.paragraphSpacing = 15
         }, range:NSMakeRange(0,1))
         
@@ -80,15 +103,15 @@ class ViewController : UIViewController {
             para2.headIndent = 10
             para2.firstLineHeadIndent = 10
             para2.tailIndent = -10
-            para2.lineBreakMode = .ByWordWrapping
-            para2.alignment = .Justified
+            para2.lineBreakMode = .byWordWrapping
+            para2.alignment = .justified
             para2.lineHeightMultiple = 1.2
             para2.hyphenationFactor = 1.0
         }, range:NSMakeRange(0,1))
         
         let end = content.length
-        content.replaceCharactersInRange(NSMakeRange(end, 0), withString:"\n")
-        content.appendAttributedString(content2)
+        content.replaceCharacters(in:NSMakeRange(end, 0), with:"\n")
+        content.append(content2)
         
         return content
         

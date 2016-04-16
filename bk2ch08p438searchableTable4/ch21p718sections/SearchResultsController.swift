@@ -14,40 +14,40 @@ class SearchResultsController : UIViewController {
     }
     override func viewDidLoad() {
         self.automaticallyAdjustsScrollViewInsets = false
-        self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor.clear()
         self.addChildViewController(self.child)
         let v = self.child.view
         self.view.addSubview(self.child.view)
         v.layer.cornerRadius = 15
         v.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([
-            v.heightAnchor.constraintEqualToConstant(400),
-            v.widthAnchor.constraintEqualToConstant(400),
-            v.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 50),
-            v.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)
+        NSLayoutConstraint.activate([
+            v.heightAnchor.constraintEqual(toConstant:400),
+            v.widthAnchor.constraintEqual(toConstant:400),
+            v.topAnchor.constraintEqual(to:self.view.topAnchor, constant: 50),
+            v.centerXAnchor.constraintEqual(to:self.view.centerXAnchor)
         ])
-        self.child.didMoveToParentViewController(self)
+        self.child.didMove(toParentViewController: self)
         let t = UITapGestureRecognizer(target: self, action: #selector(tap))
         t.delegate = self
         self.view.addGestureRecognizer(t)
     }
 }
 extension SearchResultsController : UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(sc: UISearchController) {
-        self.child.updateSearchResultsForSearchController(sc)
+    func updateSearchResults(for sc: UISearchController) {
+        self.child.updateSearchResults(for:sc)
     }
 }
 extension SearchResultsController : UIGestureRecognizerDelegate {
     func tap(g:UITapGestureRecognizer) {
         // find the UISearchController and dismiss it
         var r : UIResponder = g.view!
-        while !(r is UISearchController) {r = r.nextResponder()!}
-        (r as! UISearchController).active = false
+        while !(r is UISearchController) {r = r.next()!}
+        (r as! UISearchController).isActive = false
     }
-    func gestureRecognizerShouldBegin(g: UIGestureRecognizer) -> Bool {
+    func gestureRecognizerShouldBegin(_ g: UIGestureRecognizer) -> Bool {
         // do nothing if the tap was in the table view
-        let pt = g.locationOfTouch(0, inView: self.child.view)
-        if self.child.tableView.pointInside(pt, withEvent: nil) {
+        let pt = g.location(ofTouch:0, in: self.child.view)
+        if self.child.tableView.point(inside:pt, with: nil) {
             return false
         }
         return true
@@ -63,7 +63,7 @@ class ChildViewController : UITableViewController {
         // we don't use sections, so flatten the data into a single array of strings
         self.originalData = data.flatten().map{$0}
         super.init(nibName: nil, bundle: nil)
-        // self.preferredContentSize = CGSizeMake(300,400)
+        // self.preferredContentSize = CGSize(300,400)
     }
     
     required init(coder: NSCoder) {
@@ -74,19 +74,19 @@ class ChildViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.filteredData.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
         cell.textLabel!.text = self.filteredData[indexPath.row]
         return cell
     }
@@ -102,14 +102,14 @@ and reload the table.
 */
 
 extension ChildViewController : UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         // print("here \(searchController.presentationController!.adaptivePresentationStyle().rawValue)")
         let sb = searchController.searchBar
         let target = sb.text!
         self.filteredData = self.originalData.filter {
             s in
-            let options = NSStringCompareOptions.CaseInsensitiveSearch
-            let found = s.rangeOfString(target, options: options)
+            let options = NSStringCompareOptions.caseInsensitiveSearch
+            let found = s.range(of:target, options: options)
             return (found != nil)
         }
         self.tableView.reloadData()

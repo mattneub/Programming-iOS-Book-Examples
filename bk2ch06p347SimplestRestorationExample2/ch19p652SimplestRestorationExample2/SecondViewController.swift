@@ -4,21 +4,21 @@ import UIKit
 
 class SecondViewController : UIViewController {
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("\(self.dynamicType) will appear")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("\(self.dynamicType) did appear")
     }
 
-    override func encodeRestorableStateWithCoder(coder: NSCoder) {
+    override func encodeRestorableState(with coder: NSCoder) {
         print("\(self.dynamicType) encode \(coder)")
     }
     
-    override func decodeRestorableStateWithCoder(coder: NSCoder) {
+    override func decodeRestorableState(with coder: NSCoder) {
         print("\(self.dynamicType) decode \(coder)")
     }
     
@@ -29,12 +29,12 @@ class SecondViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("view did load \(self.dynamicType)")
-        self.view.backgroundColor = UIColor.yellowColor()
-        let button = UIButton(type:.System)
-        button.setTitle("Present", forState:.Normal)
+        self.view.backgroundColor = UIColor.yellow()
+        let button = UIButton(type:.system)
+        button.setTitle("Present", for:[])
         button.addTarget(self,
             action:#selector(doPresent),
-            forControlEvents:.TouchUpInside)
+            for:.touchUpInside)
         button.sizeToFit()
         button.center = self.view.center
         self.view.addSubview(button)
@@ -47,9 +47,9 @@ class SecondViewController : UIViewController {
         return pvc
     }
     
-    func doPresent(sender:AnyObject?) {
+    func doPresent(_ sender:AnyObject?) {
         let pvc = self.dynamicType.makePresentedViewController()
-        self.presentViewController(pvc, animated:true, completion:nil)
+        self.present(pvc, animated:true, completion:nil)
     }
 }
 
@@ -60,7 +60,7 @@ class SecondViewController : UIViewController {
 // "Warning: restoration class for view controller does not conform to UIViewControllerRestoration protocol: Class is ..."
 
 extension SecondViewController : UIViewControllerRestoration {
-    class func viewControllerWithRestorationIdentifierPath(ip: [AnyObject],
+    class func viewController(withRestorationIdentifierPath ip: [AnyObject],
         coder: NSCoder) -> UIViewController? {
             print("vcwithrip \(NSStringFromClass(self)) \(ip) \(coder)")
             var vc : UIViewController? = nil

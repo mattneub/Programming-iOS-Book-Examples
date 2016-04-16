@@ -4,23 +4,23 @@ import UIKit
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window?.makeKeyAndVisible() // crucial
         return true
     }
     
-    func application(application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
+    func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
         return true
     }
     
-    func application(application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
+    func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
         return true
     }
     
     let which = 0
     
     /*
-    func application(application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [AnyObject]!, coder: NSCoder!) -> UIViewController! {
+    func application(_ application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [AnyObject]!, coder: NSCoder!) -> UIViewController! {
         
         if which == 0 {
             return nil
@@ -35,7 +35,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             return (self.window!.rootViewController as UINavigationController).viewControllers[0] as UIViewController
         }
         let board = coder.decodeObjectForKey(UIStateRestorationViewControllerStoryboardKey) as UIStoryboard
-        return board.instantiateViewControllerWithIdentifier(last) as UIViewController
+        return board.instantiateViewController(withIdentifier: last) as UIViewController
         
     }
 */

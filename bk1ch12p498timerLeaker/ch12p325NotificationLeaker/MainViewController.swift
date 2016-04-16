@@ -2,11 +2,11 @@ import UIKit
 
 class MainViewController: UIViewController, FlipsideViewControllerDelegate {
 
-    func flipsideViewControllerDidFinish(controller:FlipsideViewController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func flipsideViewControllerDidFinish(_ controller:FlipsideViewController) {
+        self.dismiss(animated: true)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showAlternate" {
             if let dest = segue.destinationViewController as? FlipsideViewController {
                 dest.delegate = self

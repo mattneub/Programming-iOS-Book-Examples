@@ -34,7 +34,7 @@ class TriangleView: UIView {
     override class func layerClass() -> AnyClass {
         return TriangleLayer.self
     }
-    override func drawRect(rect: CGRect) {}
+    override func draw(_ rect: CGRect) {}
 }
 
 class TriangleLayer : CALayer {
@@ -42,31 +42,31 @@ class TriangleLayer : CALayer {
     @NSManaged var v1x : CGFloat
     @NSManaged var v1y : CGFloat
     
-    override func drawInContext(ctx: CGContext) {
-        CGContextMoveToPoint(ctx, 0, 0)
-        CGContextAddLineToPoint(ctx, self.bounds.size.width, 0)
-        CGContextAddLineToPoint(ctx, self.v1x, self.v1y)
-        CGContextSetFillColorWithColor(ctx, UIColor.blueColor().CGColor)
-        CGContextFillPath(ctx)
+    override func draw(in con: CGContext) {
+        con.moveTo(x: 0, y: 0)
+        con.addLineTo(x: self.bounds.size.width, y: 0)
+        con.addLineTo(x: self.v1x, y: self.v1y)
+        con.setFillColor(UIColor.blue().cgColor)
+        con.fillPath()
         // println(self)
         // interesting, self is actually a different presentation layer per frame
     }
         
-    override class func needsDisplayForKey(key: String) -> Bool {
+    override class func needsDisplay(forKey key: String) -> Bool {
         if key == "v1x" || key == "v1y" {
             return true
         }
-        return super.needsDisplayForKey(key)
+        return super.needsDisplay(forKey:key)
     }
         
-    override func actionForKey(key: String) -> CAAction? {
+    override func action(forKey key: String) -> CAAction? {
         if self.presentationLayer() != nil {
             if key == "v1x" || key == "v1y" {
                 let ba = CABasicAnimation(keyPath: key)
-                ba.fromValue = (self.presentationLayer() as! CALayer).valueForKey(key)
+                ba.fromValue = (self.presentationLayer() as! CALayer).value(forKey:key)
                 return ba
             }
         }
-        return super.actionForKey(key)
+        return super.action(forKey: key)
     }
 }

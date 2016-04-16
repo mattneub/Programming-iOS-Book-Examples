@@ -15,8 +15,8 @@ class ViewController : UIViewController {
             UIFontFeatureTypeIdentifierKey:kLetterCaseType,
             UIFontFeatureSelectorIdentifierKey:kSmallCapsSelector
         ]
-        let desc2 = desc.fontDescriptorByAddingAttributes(
-            [UIFontDescriptorFeatureSettingsAttribute:[d]]
+        let desc2 = desc.addingAttributes(
+            [UIFontDescriptorFeatureSettingsAttribute:[d as NSDictionary]]
         )
         let f = UIFont(descriptor: desc2, size: 0)
         self.lab.font = f
@@ -25,15 +25,15 @@ class ViewController : UIViewController {
         
         do {
         
-            var f = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle2)
+            var f = UIFont.preferredFont(forTextStyle:UIFontTextStyleTitle2)
             
             let desc = f.fontDescriptor()
             let d = [
                 UIFontFeatureTypeIdentifierKey:kStylisticAlternativesType,
                 UIFontFeatureSelectorIdentifierKey:kStylisticAltOneOnSelector
             ]
-            let desc2 = desc.fontDescriptorByAddingAttributes(
-                [UIFontDescriptorFeatureSettingsAttribute:[d]]
+            let desc2 = desc.addingAttributes(
+                [UIFontDescriptorFeatureSettingsAttribute:[d as NSDictionary]]
             )
             f = UIFont(descriptor: desc2, size: 0)
             

@@ -8,13 +8,13 @@ class ViewController: UIViewController {
     var motman = CMMotionManager()
     var timer : NSTimer!
     
-    @IBAction func doButton (sender:AnyObject!) {
-        guard self.motman.deviceMotionAvailable else {
+    @IBAction func doButton (_ sender:AnyObject!) {
+        guard self.motman.isDeviceMotionAvailable else {
             print("Oh, well")
             return
         }
         // idiot Swift numeric foo (different in iOS 8.3 but still idiotic)
-        let ref = CMAttitudeReferenceFrame.XMagneticNorthZVertical
+        let ref = CMAttitudeReferenceFrame.xMagneticNorthZVertical
         let avail = CMMotionManager.availableAttitudeReferenceFrames()
         guard avail.contains(ref) else {
             print("darn")
@@ -22,9 +22,9 @@ class ViewController: UIViewController {
         }
         self.motman.showsDeviceMovementDisplay = true
         self.motman.deviceMotionUpdateInterval = 1.0 / 30.0
-        self.motman.startDeviceMotionUpdatesUsingReferenceFrame(ref)
+        self.motman.startDeviceMotionUpdates(using: ref)
         let t = self.motman.deviceMotionUpdateInterval * 10
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(t, target:self, selector:#selector(pollAttitude),userInfo:nil, repeats:true)
+        self.timer = NSTimer.scheduledTimer(timeInterval:t, target:self, selector:#selector(pollAttitude),userInfo:nil, repeats:true)
         
         print("starting")
     }

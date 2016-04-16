@@ -7,7 +7,7 @@ struct Digit {
     init(_ n:Int) {
         self.number = n
     }
-    mutating func changeNumberTo(n:Int) {
+    mutating func changeNumberTo(_ n:Int) {
         self.number = n
     }
     // illegal without "mutating"
@@ -42,12 +42,12 @@ func digitChanger(var d:Digit) {
  
  */
 
-func digitChanger(d:Digit) {
+func digitChanger(_ d:Digit) {
     var d = d
     d.number = 42
 }
 
-func dogChanger(d:Dog) {
+func dogChanger(_ d:Dog) {
     d.name = "Rover"
 }
 
@@ -62,10 +62,10 @@ struct RecursiveDog { // compile error
 // but this is now legal:
 
 enum Node {
-    case None(Int)
-    indirect case Left(Int, Node)
-    indirect case Right(Int, Node)
-    indirect case Both(Int, Node, Node)
+    case none(Int)
+    indirect case left(Int, Node)
+    indirect case right(Int, Node)
+    indirect case both(Int, Node, Node)
 }
 
 class ViewController: UIViewController {

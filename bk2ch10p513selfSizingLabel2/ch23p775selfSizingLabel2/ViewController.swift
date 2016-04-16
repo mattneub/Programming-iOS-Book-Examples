@@ -1,7 +1,7 @@
 
 
 import UIKit
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -21,7 +21,7 @@ class ViewController : UIViewController {
     
     // rotate for full effect
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         delay(2) {
             self.doYourThing()
@@ -48,8 +48,8 @@ class ViewController : UIViewController {
                 para.headIndent = 10
                 para.firstLineHeadIndent = 10
                 para.tailIndent = -10
-                para.lineBreakMode = .ByWordWrapping
-                para.alignment = .Justified
+                para.lineBreakMode = .byWordWrapping
+                para.alignment = .justified
                 para.lineHeightMultiple = 1.2
                 para.hyphenationFactor = 1.0
             },
@@ -60,8 +60,8 @@ class ViewController : UIViewController {
 
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animateAlongsideTransition(nil) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition:nil) {
             _ in
             print(self.lab1.preferredMaxLayoutWidth)
             print(self.lab2.preferredMaxLayoutWidth)

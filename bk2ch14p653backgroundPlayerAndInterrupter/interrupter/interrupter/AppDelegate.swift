@@ -10,20 +10,20 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     // standard behavior: category is ambient, activate on app activate and after interruption ends
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, withOptions: [])
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
         
-        NSNotificationCenter.defaultCenter().addObserverForName(
+        NSNotificationCenter.default().addObserver(forName:
             AVAudioSessionInterruptionNotification, object: nil, queue: nil) {
                 (n:NSNotification) in
                 guard let why =
-                    n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
+                    n.userInfo?[AVAudioSessionInterruptionTypeKey as NSString] as? UInt
                     else {return}
                 guard let type = AVAudioSessionInterruptionType(rawValue: why)
                     else {return}
-                if type == .Ended {
-                    _ = try? AVAudioSession.sharedInstance().setActive(true, withOptions: [])
+                if type == .ended {
+                    _ = try? AVAudioSession.sharedInstance().setActive(true)
                 }
         }
 
@@ -31,12 +31,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         print("interrupter in \(#function)")
-        _ = try? AVAudioSession.sharedInstance().setActive(true, withOptions: [])
+        _ = try? AVAudioSession.sharedInstance().setActive(true)
     }
     
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         print("interrupter in \(#function)") // never received; the normal situation
     }
 }

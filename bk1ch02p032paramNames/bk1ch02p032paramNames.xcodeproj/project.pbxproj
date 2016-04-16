@@ -12,6 +12,7 @@
 		3298273A1AEDAA700060923B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 329827381AEDAA700060923B /* Main.storyboard */; };
 		3298273C1AEDAA700060923B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3298273B1AEDAA700060923B /* Assets.xcassets */; };
 		3298273F1AEDAA700060923B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3298273D1AEDAA700060923B /* LaunchScreen.xib */; };
+		81545DEC1CCD2CA70059E75E /* Thing.m in Sources */ = {isa = PBXBuildFile; fileRef = 81545DEB1CCD2CA70059E75E /* Thing.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		329827391AEDAA700060923B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3298273B1AEDAA700060923B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3298273E1AEDAA700060923B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		81545DE91CCD2CA70059E75E /* bk1ch02p032paramNames-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bk1ch02p032paramNames-Bridging-Header.h"; sourceTree = "<group>"; };
+		81545DEA1CCD2CA70059E75E /* Thing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thing.h; sourceTree = "<group>"; };
+		81545DEB1CCD2CA70059E75E /* Thing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Thing.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +60,13 @@
 			children = (
 				329827341AEDAA700060923B /* AppDelegate.swift */,
 				329827361AEDAA700060923B /* ViewController.swift */,
+				81545DEA1CCD2CA70059E75E /* Thing.h */,
+				81545DEB1CCD2CA70059E75E /* Thing.m */,
 				329827381AEDAA700060923B /* Main.storyboard */,
 				3298273B1AEDAA700060923B /* Assets.xcassets */,
 				3298273D1AEDAA700060923B /* LaunchScreen.xib */,
 				329827331AEDAA700060923B /* Info.plist */,
+				81545DE91CCD2CA70059E75E /* bk1ch02p032paramNames-Bridging-Header.h */,
 			);
 			path = bk1ch02p032paramNames;
 			sourceTree = "<group>";
@@ -90,7 +97,7 @@
 		329827271AEDAA700060923B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
@@ -135,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81545DEC1CCD2CA70059E75E /* Thing.m in Sources */,
 				329827371AEDAA700060923B /* ViewController.swift in Sources */,
 				329827351AEDAA700060923B /* AppDelegate.swift in Sources */,
 			);
@@ -247,9 +255,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = bk1ch02p032paramNames/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bk1ch02p032paramNames/bk1ch02p032paramNames-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -257,9 +268,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = bk1ch02p032paramNames/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bk1ch02p032paramNames/bk1ch02p032paramNames-Bridging-Header.h";
 			};
 			name = Release;
 		};

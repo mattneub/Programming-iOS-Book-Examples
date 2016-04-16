@@ -6,11 +6,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    func pass100 (f:(Int)->()) {
+    func pass100 (_ f:(Int)->()) {
         f(100)
     }
     
-    func countAdder(f:()->()) -> () -> () {
+    func countAdder(_ f:()->()) -> () -> () {
         var ct = 0
         return {
             ct = ct + 1

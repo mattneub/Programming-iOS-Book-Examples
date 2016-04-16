@@ -18,6 +18,10 @@ struct Digit3 {
         self.number = number
     }
 }
+struct Digit3b {
+    var number = 42
+    init() {}
+}
 struct Digit4 {
     var number : Int
 }
@@ -30,8 +34,8 @@ struct Digit6 {
 
 struct Thing {
     var rawValue : Int = 0
-    static var One : Thing = Thing(rawValue:1)
-    static var Two : Thing = Thing(rawValue:2)
+    static var one : Thing = Thing(rawValue:1)
+    static var two : Thing = Thing(rawValue:2)
 }
 
 struct DigitReplacer {
@@ -51,11 +55,13 @@ class ViewController: UIViewController {
         let d = Digit()
         let dddd = Digit(number:86)
         
-        // let d2 = Digit2() // compile error
+        // let d2a = Digit2() // compile error
         let d2 = Digit2(number:86)
         
         let d3 = Digit3()
         let dd3 = Digit3(number:86)
+        
+        // let dd3b = Digit3b(number:86) // compile error
         
         let dd = Digit(number:86)
         let d4 = Digit4(number:86)
@@ -68,7 +74,7 @@ class ViewController: UIViewController {
         d7.replace()
         print(d7.number)
         
-        let thing : Thing = .One // no need to say Thing.One here
+        let thing : Thing = .one // no need to say Thing.one here
 
         _ = d
         _ = d2

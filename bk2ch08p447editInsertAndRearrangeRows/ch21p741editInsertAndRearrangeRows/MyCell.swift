@@ -3,8 +3,8 @@ import UIKit
 
 class MyCell : UITableViewCell {
     @IBOutlet weak var textField : UITextField!
-    override func didTransitionToState(state: UITableViewCellStateMask) {
-        self.textField.enabled = state.contains(.ShowingEditControlMask)
-        super.didTransitionToState(state)
+    override func didTransition(to state: UITableViewCellStateMask) {
+        self.textField.isEnabled = state.contains(.showingEditControlMask)
+        super.didTransition(to:state)
     }
 }

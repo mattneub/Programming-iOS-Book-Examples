@@ -2,7 +2,7 @@
 
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -21,15 +21,15 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         self.flag.translatesAutoresizingMaskIntoConstraints = true // tricky-wicky
         
-        self.sv.panGestureRecognizer.requireGestureRecognizerToFail(self.swipe) // *
+        self.sv.panGestureRecognizer.require(toFail:self.swipe) // *
         
         let iv = UIImageView(image:UIImage(named:"smiley.png"))
         iv.translatesAutoresizingMaskIntoConstraints = false
         self.sv.addSubview(iv)
         let sup = self.sv.superview!
-        NSLayoutConstraint.activateConstraints([
-            iv.rightAnchor.constraintEqualToAnchor(sup.rightAnchor, constant: -5),
-            iv.topAnchor.constraintEqualToAnchor(sup.topAnchor, constant: 25)
+        NSLayoutConstraint.activate([
+            iv.rightAnchor.constraintEqual(to:sup.rightAnchor, constant: -5),
+            iv.topAnchor.constraintEqual(to:sup.topAnchor, constant: 25)
             ])
     }
     
@@ -44,40 +44,40 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
 //        // trying to avoid weird behavior where sometimes pan gesture fails
 //    }
     
-    @IBAction func swiped (g: UISwipeGestureRecognizer) {
+    @IBAction func swiped (_ g: UISwipeGestureRecognizer) {
         let sv = self.sv
         let p = sv.contentOffset
         self.flag.frame.origin = p
         self.flag.frame.origin.x -= self.flag.bounds.size.width
-        self.flag.hidden = false
+        self.flag.isHidden = false
         
-        UIView.animateWithDuration(0.25, animations:{
+        UIView.animate(withDuration:0.25, animations:{
             self.flag.frame.origin.x = p.x
             // thanks for the flag, now stop operating altogether
-            g.enabled = false
+            g.isEnabled = false
             })
     }
     
-    @IBAction func dragging (p : UIPanGestureRecognizer) {
+    @IBAction func dragging (_  p: UIPanGestureRecognizer) {
         let v = p.view!
         switch p.state {
-        case .Began, .Changed:
-            let delta = p.translationInView(v.superview!)
+        case .began, .changed:
+            let delta = p.translation(in:v.superview!)
             v.center.x += delta.x
             v.center.y += delta.y
-            p.setTranslation(CGPointZero, inView: v.superview)
-            if p.state == .Changed {fallthrough} // comment out to prevent autoscroll
-        case .Changed:
+            p.setTranslation(CGPoint.zero, in: v.superview)
+            if p.state == .changed {fallthrough} // comment out to prevent autoscroll
+        case .changed:
             // autoscroll
             let sv = self.sv
-            let loc = p.locationInView(sv)
+            let loc = p.location(in:sv)
             let f = sv.bounds
             var off = sv.contentOffset
             let sz = sv.contentSize
             var c = v.center
             // to the right
-            if loc.x > CGRectGetMaxX(f) - 30 {
-                let margin = sz.width - CGRectGetMaxX(sv.bounds)
+            if loc.x > f.maxX - 30 {
+                let margin = sz.width - sv.bounds.maxX
                 if margin > 6 {
                     off.x += 5
                     sv.contentOffset = off
@@ -98,8 +98,8 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
                 }
             }
             // to the bottom
-            if loc.y > CGRectGetMaxY(f) - 30 {
-                let margin = sz.height - CGRectGetMaxY(sv.bounds)
+            if loc.y > f.maxY - 30 {
+                let margin = sz.height - sv.bounds.maxY
                 if margin > 6 {
                     off.y += 5
                     sv.contentOffset = off
@@ -124,7 +124,7 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    func keepDragging (p : UIPanGestureRecognizer) {
+    func keepDragging (_ p: UIPanGestureRecognizer) {
         // the delay here, combined with the change in offset, determines the speed of autoscrolling
         let del = 0.1
         delay(del) {

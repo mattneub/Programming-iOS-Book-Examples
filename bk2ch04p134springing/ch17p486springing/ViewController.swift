@@ -6,10 +6,10 @@ class ViewController : UIViewController {
     
     let which = 2
     
-    @IBAction func doButton(sender : AnyObject?) {
+    @IBAction func doButton(_ sender: AnyObject?) {
         switch which {
         case 1:
-            UIView.animateWithDuration(0.8, delay: 0,
+            UIView.animate(withDuration:0.8, delay: 0,
                 usingSpringWithDamping: 0.7,
                 initialSpringVelocity: 20,
                 options: [],
@@ -27,7 +27,7 @@ class ViewController : UIViewController {
             anim.stiffness = 4
             anim.duration = 0.8
             print(anim.settlingDuration)
-            self.v.layer.addAnimation(anim, forKey: nil)
+            self.v.layer.add(anim, forKey: nil)
         default:break
         }
     }

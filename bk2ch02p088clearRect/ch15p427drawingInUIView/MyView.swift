@@ -1,29 +1,46 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+
+
 class MyView : UIView {
     
     override init (frame:CGRect) {
         super.init(frame:frame)
-        self.opaque = false
-        self.backgroundColor = UIColor.redColor()
+        self.isOpaque = false
+        self.backgroundColor = UIColor.red()
         // clearRect will cause a black square
-        self.backgroundColor = self.backgroundColor!.colorWithAlphaComponent(1)
+        self.backgroundColor = self.backgroundColor!.withAlphaComponent(1)
         // but uncomment the next line: clearRect will cause a clear square!
         // self.backgroundColor = self.backgroundColor!.colorWithAlphaComponent(0.99)
         
-        print("Layer opaque: \(self.layer.opaque)")
+        print("Layer opaque: \(self.layer.isOpaque)")
     }
     
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let con = UIGraphicsGetCurrentContext()!
-        CGContextSetFillColorWithColor(con, UIColor.blueColor().CGColor)
-        CGContextFillRect(con, rect)
-        CGContextClearRect(con, CGRectMake(0,0,30,30))
+        con.setFillColor(UIColor.blue().cgColor)
+        con.fill(rect)
+        con.clear(CGRect(0,0,30,30))
 
     }
     

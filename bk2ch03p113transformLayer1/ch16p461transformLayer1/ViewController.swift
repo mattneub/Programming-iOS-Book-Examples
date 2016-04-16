@@ -1,7 +1,7 @@
 import UIKit
 
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -9,6 +9,23 @@ func delay(delay:Double, closure:()->()) {
         ),
         dispatch_get_main_queue(), closure)
 }
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+
 
 class ViewController : UIViewController {
     @IBOutlet var v : UIView!
@@ -30,15 +47,15 @@ class ViewController : UIViewController {
         lay1.frame = self.v.layer.bounds
         self.v.layer.addSublayer(lay1)
         
-        let f = CGRectMake(0,0,100,100)
+        let f = CGRect(0,0,100,100)
         
         let lay2 = CALayer()
         lay2.frame = f
-        lay2.backgroundColor = UIColor.blueColor().CGColor
+        lay2.backgroundColor = UIColor.blue().cgColor
         lay1.addSublayer(lay2)
         let lay3 = CALayer()
         lay3.frame = f.offsetBy(dx: 20, dy: 30)
-        lay3.backgroundColor = UIColor.greenColor().CGColor
+        lay3.backgroundColor = UIColor.green().cgColor
         lay3.zPosition = 10
         lay1.addSublayer(lay3)
 

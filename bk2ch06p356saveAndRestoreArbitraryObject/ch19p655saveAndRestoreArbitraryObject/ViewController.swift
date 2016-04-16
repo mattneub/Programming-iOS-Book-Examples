@@ -10,9 +10,13 @@ class ViewController : UIViewController {
         self.thing = self.dynamicType.makeThing()
     }
     
-    override func encodeRestorableStateWithCoder(coder: NSCoder) {
-        super.encodeRestorableStateWithCoder(coder)
-        coder.encodeObject(self.thing, forKey: "mything") // must show this object to the archiver
+    // This is not being called, and I don't know why
+    // as a result, the example is not working
+    
+    @objc(encodeRestorableStateWithCoder:)
+    override func encodeRestorableState(with coder: NSCoder) {
+        super.encodeRestorableState(with:coder)
+        coder.encode(self.thing, forKey: "mything") // must show this object to the archiver
     }
     
     override func applicationFinishedRestoringState() {
@@ -20,21 +24,25 @@ class ViewController : UIViewController {
         // self.thing.restorationParent = self
     }
     
-    @IBAction func doRead(sender:AnyObject?) {
-        let alert = UIAlertController(title: "Read", message: self.thing.word, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style:.Cancel, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+    @IBAction func doRead(_ sender:AnyObject?) {
+        let alert = UIAlertController(title: "Read", message: self.thing.word, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style:.cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
         
-    @IBAction func doWrite(sender:AnyObject?) {
-        let alert = UIAlertController(title: "Write", message: nil, preferredStyle: .Alert)
-        alert.addTextFieldWithConfigurationHandler({ tf in tf.text = self.thing.word })
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+    @IBAction func doWrite(_ sender:AnyObject?) {
+        let alert = UIAlertController(title: "Write", message: nil, preferredStyle: .alert)
+        alert.addTextField { tf in tf.text = self.thing.word }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             _ in
             self.thing.word = alert.textFields![0].text!
             }))
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    deinit {
+        print("farewell")
     }
     
 }
@@ -43,13 +51,13 @@ extension ViewController : UIObjectRestoration {
     
     class func makeThing () -> Thing {
         let thing = Thing()
-        UIApplication.registerObjectForStateRestoration(thing, restorationIdentifier: "thing")
+        UIApplication.registerObject(forStateRestoration: thing, restorationIdentifier: "thing")
         // thing.objectRestorationClass = self
         return thing
     }
     
     // unused, no actual restoration, just showing it can be done
-    class func objectWithRestorationIdentifierPath(ip: [String],
+    class func object(withRestorationIdentifierPath ip: [String],
         coder: NSCoder) -> UIStateRestoring? {
             print(ip)
             let thing = self.makeThing()

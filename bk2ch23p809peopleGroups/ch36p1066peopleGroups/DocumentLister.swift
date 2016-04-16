@@ -7,13 +7,13 @@ class DocumentLister: UITableViewController {
     var files = [NSURL]()
     var docsurl : NSURL {
         var url = NSURL()
-        let del = UIApplication.sharedApplication().delegate
+        let del = UIApplication.shared().delegate
         if let ubiq = (del as! AppDelegate).ubiq {
             url = ubiq
         } else {
             do {
                 let fm = NSFileManager()
-                url = try fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
+                url = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             } catch {
                 print(error)
             }
@@ -24,12 +24,12 @@ class DocumentLister: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(doAdd))
+        let b = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(doAdd))
         self.navigationItem.rightBarButtonItems = [b]
-        let b2 = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(doRefresh))
+        let b2 = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(doRefresh))
         self.navigationItem.leftBarButtonItems = [b2]
         self.title = "Groups"
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
     }
     
@@ -37,13 +37,13 @@ class DocumentLister: UITableViewController {
         print("refreshing")
         do {
             let fm = NSFileManager()
-            self.files = try fm.contentsOfDirectoryAtURL(
+            self.files = try fm.contentsOfDirectory(at:
                 self.docsurl, includingPropertiesForKeys: nil, options: [])
                 .filter {
                     print($0)
-                    if fm.isUbiquitousItemAtURL($0) {
+                    if fm.isUbiquitousItem(at:$0) {
                         print("trying to download \($0)")
-                        try fm.startDownloadingUbiquitousItemAtURL($0)
+                        try fm.startDownloadingUbiquitousItem(at:$0)
                     }
                     return $0.pathExtension! == "pplgrp"
             }
@@ -54,45 +54,42 @@ class DocumentLister: UITableViewController {
     }
     
     func doAdd (_:AnyObject?) {
-        let av = UIAlertController(title: "New Group", message: "Enter name:", preferredStyle: .Alert)
-        av.addTextFieldWithConfigurationHandler {
-            tf in
-            tf.autocapitalizationType = .Words
-        }
-        av.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        av.addAction(UIAlertAction(title: "OK", style: .Default) {
+        let av = UIAlertController(title: "New Group", message: "Enter name:", preferredStyle: .alert)
+        av.addTextField {$0.autocapitalizationType = .words}
+        av.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        av.addAction(UIAlertAction(title: "OK", style: .default) {
             _ in
             guard let name = av.textFields![0].text where !name.isEmpty else {return}
-            let url = self.docsurl.URLByAppendingPathComponent((name as NSString).stringByAppendingPathExtension("pplgrp")!)
+            let url = self.docsurl.appendingPathComponent((name as NSString).appendingPathExtension("pplgrp")!)
             // really should check to see if file by this name exists
             let pl = PeopleLister(fileURL: url)
             self.navigationController!.pushViewController(pl, animated: true)
         })
-        self.presentViewController(av, animated: true, completion: nil)
+        self.present(av, animated: true, completion: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.doRefresh(nil)
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.files.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
         let fileURL = self.files[indexPath.row]
-        cell.textLabel!.text = (fileURL.lastPathComponent! as NSString).stringByDeletingPathExtension
-        cell.accessoryType = .DisclosureIndicator
+        cell.textLabel!.text = (fileURL.lastPathComponent! as NSString).deletingPathExtension
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
         let pl = PeopleLister(fileURL: self.files[indexPath.row])
         self.navigationController!.pushViewController(pl, animated: true)
     }

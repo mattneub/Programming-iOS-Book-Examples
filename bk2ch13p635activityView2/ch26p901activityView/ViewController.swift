@@ -10,7 +10,7 @@ class MyProvider : UIActivityItemProvider {
 }
 
 class ViewController: UIViewController {
-    @IBAction func doButton (sender:AnyObject) {
+    @IBAction func doButton (_ sender:AnyObject) {
         // supply `self` so we will be queried separately for the item
         // let avc = UIActivityViewController(activityItems:[self], applicationActivities:nil)
         // supply an item provider so it can supply the data lazily
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
             "com.apple.mobilenotes.SharingExtension" // nope, can't exclude a sharing extension
         ]
         // avc.excludedActivityTypes = nil
-        self.presentViewController(avc, animated:true, completion:nil)
+        self.present(avc, animated:true, completion:nil)
         // on iPad this will be an action sheet and will need a source view or bar button item
         if let pop = avc.popoverPresentationController {
             let v = sender as! UIView
@@ -51,19 +51,19 @@ class ViewController: UIViewController {
 
 extension ViewController : UIActivityItemSource {
     func activityViewControllerPlaceholderItem(
-        activityViewController: UIActivityViewController)
+        _ activityViewController: UIActivityViewController)
         -> AnyObject {
             return ""
     }
     func activityViewController(
-        activityViewController: UIActivityViewController,
+        _ activityViewController: UIActivityViewController,
         itemForActivityType activityType: String)
         -> AnyObject? {
             print(activityType)
             return "Coolness"
     }
     func activityViewController(
-        activityViewController: UIActivityViewController,
+        _ activityViewController: UIActivityViewController,
         subjectForActivityType activityType: String?) -> String {
             return "This is cool"
     }

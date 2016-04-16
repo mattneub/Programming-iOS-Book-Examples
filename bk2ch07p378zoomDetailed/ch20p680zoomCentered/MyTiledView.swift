@@ -5,7 +5,7 @@ import UIKit
 class MyTiledView : UIView {
     
     var currentImage : UIImage!
-    var currentSize = CGSizeZero
+    var currentSize = CGSize.zero
     
     var drawQueue : dispatch_queue_t = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL)
     
@@ -13,7 +13,7 @@ class MyTiledView : UIView {
         super.init(coder:aDecoder)
         let lay = self.layer as! CATiledLayer
         let scale = lay.contentsScale
-        lay.tileSize = CGSizeMake(208*scale,238*scale)
+        lay.tileSize = CGSize(208*scale,238*scale)
         lay.levelsOfDetail = 3
         lay.levelsOfDetailBias = 2
     }
@@ -22,7 +22,7 @@ class MyTiledView : UIView {
         return CATiledLayer.self
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         //    NSLog(@"rect %@", NSStringFromCGRect(rect));
         //    NSLog(@"bounds %@", NSStringFromCGRect(self.bounds));
         //    NSLog(@"contents scale %f", self.layer.contentsScale);
@@ -37,32 +37,32 @@ class MyTiledView : UIView {
             let oldSize = self.currentSize
             // NSLog("oldSize %@", NSStringFromCGSize(oldSize))
             // NSLog("rect.size %@", NSStringFromCGSize(rect.size))
-            if !CGSizeEqualToSize(oldSize, rect.size) {
+            if oldSize.equalTo(rect.size) {
                 // NSLog("%@", "not equal, making new size")
                 // make a new size
                 self.currentSize = rect.size
                 // make a new image
                 let lay = self.layer as! CATiledLayer
                 
-                let tr = CGContextGetCTM(UIGraphicsGetCurrentContext()!)
+                let tr = UIGraphicsGetCurrentContext()!.ctm
                 let sc = tr.a/lay.contentsScale
                 let scale = sc/4.0
                 
-                let path = NSBundle.mainBundle().pathForResource("earthFromSaturn", ofType:"png")!
+                let path = NSBundle.main().pathForResource("earthFromSaturn", ofType:"png")!
                 let im = UIImage(contentsOfFile:path)!
-                let sz = CGSizeMake(im.size.width * scale, im.size.height * scale)
+                let sz = CGSize(im.size.width * scale, im.size.height * scale)
                 UIGraphicsBeginImageContextWithOptions(sz, true, 1)
-                im.drawInRect(CGRectMake(0,0,sz.width,sz.height))
-                self.currentImage = UIGraphicsGetImageFromCurrentImageContext()
+                im.draw(in:CGRect(0,0,sz.width,sz.height))
+                self.currentImage = UIGraphicsGetImageFromCurrentImageContext()!
                 UIGraphicsEndImageContext()
-                NSLog("created image at size %@", NSStringFromCGSize(sz)) // only three times
+                NSLog("created image at size %@", NSStringFromCGSize(sz) as NSObject) // only three times
             }
-            self.currentImage.drawInRect(self.bounds)
+            self.currentImage.draw(in:self.bounds)
             
             // comment out the following! it's here just so we can see the tile boundaries
             
             let bp = UIBezierPath(rect: rect)
-            UIColor.whiteColor().setStroke()
+            UIColor.white().setStroke()
             bp.stroke()
             
         })

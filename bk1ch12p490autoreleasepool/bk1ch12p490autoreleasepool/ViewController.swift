@@ -5,7 +5,7 @@ class ViewController: UIViewController {
     
     let which = 2
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         switch which {
@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     // ignore warnings
     
     func test() {
-        let path = NSBundle.mainBundle().pathForResource("001", ofType: "png")!
+        let path = NSBundle.main().pathForResource("001", ofType: "png")!
         for j in 0 ..< 50 {
             for i in 0 ..< 100 {
                 let im = UIImage(contentsOfFile: path)
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
     
     func test2() {
-        let path = NSBundle.mainBundle().pathForResource("001", ofType: "png")!
+        let path = NSBundle.main().pathForResource("001", ofType: "png")!
         for j in 0 ..< 50 {
             autoreleasepool {
                 for i in 0 ..< 100 {
@@ -37,6 +37,13 @@ class ViewController: UIViewController {
         }
     }
 
+    func dummy () {
+        let myMutableArray = NSMutableArray()
+        let obj = myMutableArray[0]
+        myMutableArray.removeObject(at:0)
+        // ... safe to refer to obj ...
+
+    }
 
 
 }

@@ -4,7 +4,7 @@ import UIKit
 
 extension Array {
     mutating func shuffle () {
-        for i in (0..<self.count).reverse() {
+        for i in (0..<self.count).reversed() {
             let ix1 = i
             let ix2 = Int(arc4random_uniform(UInt32(i+1)))
             (self[ix1], self[ix2]) = (self[ix2], self[ix1])
@@ -14,27 +14,29 @@ extension Array {
 
 extension Array {
     mutating func removeAtIndexes (ixs:[Int]) -> () {
-        for i in ixs.sort(>) {
-            self.removeAtIndex(i)
+        // for i in ixs.sorted().reversed() { // this might be clearer
+        for i in ixs.sorted(isOrderedBefore:>) { // required param label
+            self.remove(at:i)
         }
     }
 }
 
 extension CGRect {
     var center : CGPoint {
-        return CGPointMake(self.midX, self.midY)
+        return CGPoint(x:self.midX, y:self.midY)
     }
 }
 
 extension CGSize {
-    func sizeByDelta(dw dw:CGFloat, dh:CGFloat) -> CGSize {
-        return CGSizeMake(self.width + dw, self.height + dh)
+    func sizeByDelta(dw:CGFloat, dh:CGFloat) -> CGSize {
+        return CGSize(width:self.width + dw, height:self.height + dh)
     }
 }
 
 extension UIColor {
-    class func myGoldenColor() -> UIColor {
-        return self.init(red:1.000, green:0.894, blue:0.541, alpha:0.900)
+    class func myGolden() -> UIColor {
+        // weird, it lost its ability to coerce a literal to the expected type
+        return self.init(red:CGFloat(1.000), green:CGFloat(0.894), blue:CGFloat(0.541), alpha:CGFloat(0.900))
     }
 }
 
@@ -45,6 +47,20 @@ extension UIColor {
 //        return NSStringFromCGAffineTransform(self)
 //    }
 //}
+
+enum Archive : String {
+    case color = "itsColor"
+    case number = "itsNumber"
+    case shape = "itsShape"
+    case fill = "itsFill"
+}
+
+extension NSCoder {
+    func encode(_ objv: AnyObject?, forKey key: Archive) {
+        self.encode(objv, forKey:key.rawValue)
+    }
+}
+
 
 class Dog<T> {
     var name : T?
@@ -58,8 +74,19 @@ extension Dog where T : Equatable {
     
 }
 
+func myMin<T:Comparable>(_ things:T...) -> T {
+    var minimum = things[0]
+    for ix in 1..<things.count {
+        if things[ix] < minimum { // compile error
+            minimum = things[ix]
+        }
+    }
+    return minimum
+}
+
+
 extension Array where Element:Comparable {
-    func min() -> Element {
+    func myMin() -> Element {
         var minimum = self[0]
         for ix in 1..<self.count {
             if self[ix] < minimum {
@@ -67,6 +94,24 @@ extension Array where Element:Comparable {
             }
         }
         return minimum
+    }
+}
+
+/*
+
+extension Array where Element == Int {
+    
+}
+ 
+ */
+
+extension Array where Element : NSObject {
+    
+}
+
+extension Sequence where Iterator.Element == Int {
+    func sum() -> Int {
+        return self.reduce(0, combine: +)
     }
 }
 
@@ -78,7 +123,6 @@ extension Digit {
         self.init(number:42)
     }
 }
-let d = Digit(number:42)
 
 protocol Flier {
 }
@@ -154,14 +198,14 @@ extension RawRepresentable {
     }
 }
 public enum Fill : Int {
-    case Empty = 1
-    case Solid
-    case Hazy
+    case empty = 1
+    case solid
+    case hazy
 }
 public enum Color : Int {
-    case Color1 = 1
-    case Color2
-    case Color3
+    case color1 = 1
+    case color2
+    case color3
 }
 
 
@@ -173,10 +217,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let t = CGAffineTransformMakeRotation(2)
+        let t = CGAffineTransform(rotationAngle:2)
         print(t)
         
-        self.view.backgroundColor = UIColor.myGoldenColor()
+        self.view.backgroundColor = UIColor.myGolden()
+        
+        let d = Digit(number:42)
+        let d2 = Digit()
+        _ = (d,d2)
         
         do {
         
@@ -240,10 +288,11 @@ class ViewController: UIViewController {
             
         }
         
-        let m = [4,1,5,7,2].min() // 1
+        let m = [4,1,5,7,2].myMin() // 1
         print(m)
         // let d = [Digit(12), Digit(42)].min() // compile error
-        print([4,1,5].minElement())
+        print([4,1,5].myMin())
+        
         
     }
     

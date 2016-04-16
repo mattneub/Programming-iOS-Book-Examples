@@ -11,7 +11,7 @@ class MasterViewController: UITableViewController {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+        if UIDevice.current().userInterfaceIdiom == .pad {
             self.clearsSelectionOnViewWillAppear = false
             // not sure what this next line does, if anything
             // self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
@@ -22,7 +22,7 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(insertNewObject))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject))
         self.navigationItem.rightBarButtonItem = addButton
         // these next lines do not actually do anything, 
         // so I've taken them out as they are just confusing
@@ -36,15 +36,15 @@ class MasterViewController: UITableViewController {
 //        }
     }
     
-    func insertNewObject(sender: AnyObject) {
-        objects.insert(NSDate(), atIndex: 0)
+    func insertNewObject(_ sender: AnyObject) {
+        objects.insert(NSDate(), at: 0)
         let ip = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([ip], withRowAnimation: .Automatic)
+        self.tableView.insertRows(at:[ip], with: .automatic)
     }
     
     // MARK: - Segues
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             let ip = self.tableView.indexPathForSelectedRow!
             let object = objects[ip.row] as NSDate
@@ -65,29 +65,29 @@ class MasterViewController: UITableViewController {
 
     // MARK: - Table View
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return objects.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
         let object = objects[indexPath.row] as NSDate
         cell.textLabel!.text = object.description
         return cell
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: NSIndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            objects.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: NSIndexPath) {
+        if editingStyle == .delete {
+            objects.remove(at:indexPath.row)
+            tableView.deleteRows(at:[indexPath], with: .fade)
         }
     }
     

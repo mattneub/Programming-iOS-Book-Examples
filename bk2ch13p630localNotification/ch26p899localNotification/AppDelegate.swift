@@ -1,7 +1,7 @@
 
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -14,11 +14,11 @@ func delay(delay:Double, closure:()->()) {
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         print("start \(#function)")
-        NSLog("%@ %@", "\(#function)", "\(launchOptions)")
+        NSLog("%@ %@", "\(#function)" as NSObject, "\(launchOptions)" as NSObject)
 
-        if let n = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
+        if let n = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey as NSObject] as? UILocalNotification {
             delay(0.5) {
                 self.doAlert(n)
             }
@@ -29,29 +29,29 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
         
     // will get this registration, no matter whether user sees registration dialog or not
-    func application(application: UIApplication, didRegisterUserNotificationSettings settings: UIUserNotificationSettings) {
+    func application(_ application: UIApplication, didRegister settings: UIUserNotificationSettings) {
         print("did register \(settings)")
         // do not change registration here, you'll get a vicious circle
-        NSNotificationCenter.defaultCenter().postNotificationName("didRegisterUserNotificationSettings", object: self)
+        NSNotificationCenter.default().post(name: "didRegisterUserNotificationSettings", object: self)
     }
     
-    func doAlert(n:UILocalNotification) {
+    func doAlert(_ n:UILocalNotification) {
         print("creating alert")
-        let inactive = UIApplication.sharedApplication().applicationState == .Inactive
+        let inactive = UIApplication.shared().applicationState == .inactive
         let s = inactive ? "inactive" : "active"
         let alert = UIAlertController(title: "Hey",
             message: "While \(s), I received a local notification: \(n.alertBody)",
-            preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        self.window!.rootViewController!.presentViewController(alert,
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.window!.rootViewController!.present(alert,
             animated: true, completion: nil)
     }
     
     // even if user refused to allow alert and sounds etc.,
     // we will receive this call if we are in the foreground when a local notification fires
-    func application(application: UIApplication, didReceiveLocalNotification n: UILocalNotification) {
+    func application(_ application: UIApplication, didReceive n: UILocalNotification) {
         print("start \(#function)")
-        NSLog("%@", "\(#function)")
+        NSLog("%@", "\(#function)" as NSObject)
         self.doAlert(n)
         print("end \(#function)")
     }
@@ -62,7 +62,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // for background, you can stay in the background and run for a couple of seconds
     // for foreground, you will be brought to foreground
     // but either way, nothing else will be called
-    func application(application: UIApplication, handleActionWithIdentifier id: String?, forLocalNotification n: UILocalNotification, completionHandler: () -> Void) {
+    func application(_ application: UIApplication, handleActionWithIdentifier id: String?, forLocalNotification n: UILocalNotification, completionHandler: () -> Void) {
         print("start \(#function)")
         NSLog("%@", "\(#function)")
         print("user tapped \(id)")
@@ -73,11 +73,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 */
     
     // new in iOS 9, same as in iOS 8 except that now we have `responseInfo` dictionary coming in
-    func application(application: UIApplication, handleActionWithIdentifier id: String?, forLocalNotification n: UILocalNotification, withResponseInfo d: [NSObject : AnyObject], completionHandler: () -> Void) {
+    func application(_ application: UIApplication, handleActionWithIdentifier id: String?, for n: UILocalNotification, withResponseInfo d: [NSObject : AnyObject], completionHandler: () -> Void) {
         print("start \(#function)")
-        NSLog("%@", "\(#function)")
+        NSLog("%@", "\(#function)" as NSObject)
         print("user tapped \(id)")
-        if let s = d[UIUserNotificationActionResponseTypedTextKey] as? String {
+        if let s = d[UIUserNotificationActionResponseTypedTextKey as NSObject] as? String {
             print(s)
         }
         // you _must_ call the completion handler to tell the runtime you did this!
@@ -86,7 +86,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         print("start \(#function)")
         print("end \(#function)")
     }

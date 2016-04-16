@@ -6,15 +6,15 @@ class ViewController : UIViewController {
         return true
     }
     
-    @IBAction func pinch(sender:AnyObject?) {
+    @IBAction func pinch(_ sender:AnyObject?) {
         print("pinch")
     }
     
-    @IBAction func switched(sender: AnyObject) {
+    @IBAction func switched(_ sender: AnyObject) {
         let sw = sender as! UISwitch
         for v in self.view.subviews {
             if v is MyView || v is UIButton {
-                v.exclusiveTouch = sw.on
+                v.isExclusiveTouch = sw.isOn
             }
         }
     }
@@ -26,7 +26,7 @@ class MyView : UIView {
         super.awakeFromNib()
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent e: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with e: UIEvent?) {
         print(self)
     }
     

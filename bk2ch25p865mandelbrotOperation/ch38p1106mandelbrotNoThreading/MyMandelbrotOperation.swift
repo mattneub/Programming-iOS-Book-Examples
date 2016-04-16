@@ -22,13 +22,13 @@ class MyMandelbrotOperation : NSOperation {
         var bitmapBytesPerRow = Int(size.width * 4)
         bitmapBytesPerRow += (16 - (bitmapBytesPerRow % 16)) % 16
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let prem = CGImageAlphaInfo.PremultipliedLast.rawValue
-        let context = CGBitmapContextCreate(nil, Int(size.width), Int(size.height), 8, bitmapBytesPerRow, colorSpace, prem)
+        let prem = CGImageAlphaInfo.premultipliedLast.rawValue
+        let context = CGContext(data: nil, width: Int(size.width), height: Int(size.height), bitsPerComponent: 8, bytesPerRow: bitmapBytesPerRow, space: colorSpace, bitmapInfo: prem, releaseCallback: nil, releaseInfo: nil)
         self.bitmapContext = context
     }
     
-    func drawAtCenter(center:CGPoint, zoom:CGFloat) {
-        func isInMandelbrotSet(re:Float, _ im:Float) -> Bool {
+    func draw(center:CGPoint, zoom:CGFloat) {
+        func isInMandelbrotSet(_ re:Float, _ im:Float) -> Bool {
             var fl = true
             var (x, y, nx, ny) : (Float,Float,Float,Float) = (0,0,0,0)
             for _ in 0 ..< MANDELBROT_STEPS {
@@ -43,8 +43,8 @@ class MyMandelbrotOperation : NSOperation {
             }
             return fl
         }
-        CGContextSetAllowsAntialiasing(self.bitmapContext, false)
-        CGContextSetRGBFillColor(self.bitmapContext, 0, 0, 0, 1)
+        self.bitmapContext.setAllowsAntialiasing(false)
+        self.bitmapContext.setFillColor(red: 0, green: 0, blue: 0, alpha: 1)
         var re : CGFloat
         var im : CGFloat
         let maxi = Int(self.size.width) // *
@@ -58,20 +58,20 @@ class MyMandelbrotOperation : NSOperation {
                 im /= zoom
                 
                 if (isInMandelbrotSet(Float(re), Float(im))) {
-                    CGContextFillRect (self.bitmapContext, CGRectMake(CGFloat(i), CGFloat(j), 1.0, 1.0))
+                    self.bitmapContext.fill (CGRect(CGFloat(i), CGFloat(j), 1.0, 1.0))
                 }
             }
         }
     }
     
     override func main() {
-        if self.cancelled {
+        if self.isCancelled {
             return
         }
-        self.makeBitmapContext(self.size)
-        self.drawAtCenter(self.center, zoom: self.zoom)
-        if !self.cancelled {
-            NSNotificationCenter.defaultCenter().postNotificationName("MyMandelbrotOperationFinished", object: self)
+        self.makeBitmapContext(size:self.size)
+        self.draw(center: self.center, zoom: self.zoom)
+        if !self.isCancelled {
+            NSNotificationCenter.default().post(name: "MyMandelbrotOperationFinished", object: self)
         }
     }
 

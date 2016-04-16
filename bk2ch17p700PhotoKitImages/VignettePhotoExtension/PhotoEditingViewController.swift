@@ -9,6 +9,29 @@ import MobileCoreServices
 import AVFoundation
 import VignetteFilter
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class PhotoEditingViewController: UIViewController, PHContentEditingController, GLKViewDelegate {
     
     @IBOutlet weak var glkview: GLKView!
@@ -23,29 +46,29 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
     let vig = VignetteFilter()
 
     
-    @IBAction func doSlider(sender: AnyObject) {
+    @IBAction func doSlider(_ sender: AnyObject) {
         self.glkview.display()
     }
-    @IBAction func doSegmentedControl(sender: AnyObject) {
+    @IBAction func doSegmentedControl(_ sender: AnyObject) {
         self.glkview.display()
     }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let eaglcontext = EAGLContext(API:.OpenGLES2)
+        let eaglcontext = EAGLContext(api:.openGLES2)!
         self.glkview.context = eaglcontext
         self.glkview.delegate = self
         
-        self.context = CIContext(EAGLContext: self.glkview.context)
+        self.context = CIContext(eaglContext: self.glkview.context)
         
-        self.seg.hidden = true
+        self.seg.isHidden = true
         self.seg.selectedSegmentIndex = 0
         
         self.title = "Vignette" // doesn't work, and I have not found a way to set the title
     }
 
-    func glkView(view: GLKView, drawInRect rect: CGRect) {
+    func glkView(_ view: GLKView, drawIn rect: CGRect) {
         glClearColor(1.0, 1.0, 1.0, 1.0)
         glClear(UInt32(GL_COLOR_BUFFER_BIT))
         
@@ -58,14 +81,14 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
                     
                     self.vig.setValue(output, forKey: "inputImage")
                     let val = Double(self.slider.value)
-                    self.vig.setValue(val, forKey:"inputPercentage")
+                    self.vig.setValue(val as NSNumber, forKey:"inputPercentage")
                     output = self.vig.outputImage!
-                    if !self.seg.hidden {
-                        output = output.imageByApplyingOrientation(orient)
+                    if !self.seg.isHidden {
+                        output = output.applyingOrientation(orient)
                     }
                     
                 } else {
-                    output = output.imageByApplyingOrientation(orient)
+                    output = output.applyingOrientation(orient)
                 }
                 
                 var r = self.glkview.bounds
@@ -74,37 +97,37 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
                 
                 r = AVMakeRectWithAspectRatioInsideRect(output.extent.size, r)
                 
-                self.context?.drawImage(output, inRect: r, fromRect: output.extent)
+                self.context?.draw(output, in: r, from: output.extent)
         }
         
     }
 
-    func canHandleAdjustmentData(adjustmentData: PHAdjustmentData?) -> Bool {
+    func canHandle(_ adjustmentData: PHAdjustmentData?) -> Bool {
         return adjustmentData?.formatIdentifier == myidentifier
     }
 
-    func startContentEditingWithInput(contentEditingInput: PHContentEditingInput?, placeholderImage: UIImage) {
+    func startContentEditing(with contentEditingInput: PHContentEditingInput?, placeholderImage: UIImage) {
         // Present content for editing, and keep the contentEditingInput for use when closing the edit session.
         // If you returned true from canHandleAdjustmentData:, contentEditingInput has the original image and adjustment data.
         // If you returned false, the contentEditingInput has past edits "baked in".
         self.input = contentEditingInput
         if let im = self.input?.displaySizeImage {
             let scale = max(im.size.width/self.glkview.bounds.width, im.size.height/self.glkview.bounds.height)
-            let sz = CGSizeMake(im.size.width/scale, im.size.height/scale)
+            let sz = CGSize(im.size.width/scale, im.size.height/scale)
             let im2 = imageOfSize(sz) {
                 // perhaps no need for this, but the image they give us is much larger than we need
-                im.drawInRect(CGRect(origin: CGPoint(), size: sz))
+                im.draw(in:CGRect(origin: CGPoint(), size: sz))
             }
 
             self.displayImage = CIImage(image:im2)
             let adj : PHAdjustmentData? = self.input?.adjustmentData
             if let adj = adj where adj.formatIdentifier == self.myidentifier {
-                if let vigAmount = NSKeyedUnarchiver.unarchiveObjectWithData(adj.data) as? Double {
+                if let vigAmount = NSKeyedUnarchiver.unarchiveObject(with:adj.data) as? Double {
                     if vigAmount >= 0.0 {
                         self.slider.value = Float(vigAmount)
-                        self.seg.hidden = false
+                        self.seg.isHidden = false
                     } else {
-                        self.seg.hidden = true
+                        self.seg.isHidden = true
                     }
                 }
             }
@@ -113,7 +136,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
 
     }
 
-    func finishContentEditingWithCompletionHandler(completionHandler: ((PHContentEditingOutput!) -> Void)!) {
+    func finishContentEditing(completionHandler: ((PHContentEditingOutput?) -> Void)?) {
         // Update UI to reflect that editing has finished and output is being rendered.
         
         // Render and provide output on a background queue.
@@ -127,24 +150,24 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
             
             let outcgimage = {
                 () -> CGImage in
-                var ci = CIImage(contentsOfURL: inurl)!.imageByApplyingOrientation(inorient)
+                var ci = CIImage(contentsOf: inurl)!.applyingOrientation(inorient)
                 if vignette >= 0.0 {
                     let vig = VignetteFilter()
                     vig.setValue(ci, forKey: "inputImage")
-                    vig.setValue(vignette, forKey: "inputPercentage")
+                    vig.setValue(vignette as NSNumber, forKey: "inputPercentage")
                     ci = vig.outputImage!
                 }
-                let outimcg = CIContext(options: nil).createCGImage(ci, fromRect: ci.extent)
+                let outimcg = CIContext().createCGImage(ci, from: ci.extent)
                 return outimcg
                 }()
             
             let dest = CGImageDestinationCreateWithURL(outurl, kUTTypeJPEG, 1, nil)!
             CGImageDestinationAddImage(dest, outcgimage, [
-                kCGImageDestinationLossyCompressionQuality as String:1
-                ])
+                kCGImageDestinationLossyCompressionQuality as String:1 as NSNumber
+                ] as CFDictionary)
             CGImageDestinationFinalize(dest)
             
-            let data = NSKeyedArchiver.archivedDataWithRootObject(vignette)
+            let data = NSKeyedArchiver.archivedData(withRootObject:vignette as NSNumber)
             output.adjustmentData = PHAdjustmentData(
                 formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
             

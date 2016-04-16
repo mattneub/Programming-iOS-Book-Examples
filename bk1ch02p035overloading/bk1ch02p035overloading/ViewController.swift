@@ -3,9 +3,10 @@
 import UIKit
 
 // this is legal
-func say (what:String) {
+// this is legal
+func say (_ what:String) {
 }
-func say (what:Int) {
+func say (_ what:Int) {
 }
 
 // this is legal too, but _calling_ is trickier
@@ -17,14 +18,14 @@ func say() -> Int {
     return 1
 }
 
-func giveMeAString(s:String) {
+func giveMeAString(_ s:String) {
     print("thanks!")
 }
 
 
 class ViewController: UIViewController {
     
-    // if you delete `@nonobject`, this is not legal, because Objective-C can't deal with it:
+    // if you delete `@nonobjc`, this is not legal, because Objective-C can't deal with it:
     func sayy (what:String) {
     }
     @nonobjc func sayy (what:Int) {
@@ -38,12 +39,12 @@ class ViewController: UIViewController {
         // but overloading is _not_ legal at the local level
         // I take it that is because we have no dynamic dispatch here?
         /*
-        func sayyy (what:String) {
-        }
-        func sayyy (what:Int) {
-        }
-*/
-
+         func sayyy (what:String) {
+         }
+         func sayyy (what:Int) {
+         }
+         */
+        
         say("howdy")
         say(1)
         

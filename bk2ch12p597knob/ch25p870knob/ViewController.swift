@@ -4,7 +4,7 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet var knob : MyKnob!
     
-    @IBAction func doKnob (sender:AnyObject!) {
+    @IBAction func doKnob (_ sender:AnyObject!) {
         let knob = sender as! MyKnob
         print("knob angle is \(knob.angle)")
     }

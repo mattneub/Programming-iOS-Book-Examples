@@ -4,8 +4,8 @@ import UIKit
 
 class ViewController : UIViewController, SecondViewControllerDelegate {
     
-    var original : UIModalPresentationStyle = .PageSheet
-    var adaptive : UIModalPresentationStyle = .FormSheet
+    var original : UIModalPresentationStyle = .pageSheet
+    var adaptive : UIModalPresentationStyle = .formSheet
     lazy var pairs : [(Int, Int)] = {
         // hmm, I would also like to know what happens about -1
         let arr1 = [0, 1, 2, 3, 5, 6, 7] // I'll test popovers some other time
@@ -22,18 +22,18 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.edgesForExtendedLayout = .None
+        self.edgesForExtendedLayout = [] // none
         self.navigationController!.definesPresentationContext = true
     }
     
-    @IBAction func doAdvance(sender: AnyObject) {
+    @IBAction func doAdvance(_ sender: AnyObject) {
         let pair = self.pairs[self.ix]
         self.original = UIModalPresentationStyle(rawValue:pair.0)!
         self.adaptive = UIModalPresentationStyle(rawValue:pair.1)!
         self.ix += 1
     }
     
-    @IBAction func doPresent(sender:AnyObject?) {
+    @IBAction func doPresent(_ sender:AnyObject?) {
         
         print(original.rawValue, terminator: "")
         print("\t", terminator: "")
@@ -48,7 +48,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
 
         svc.presentationController!.delegate = self // *
         
-        self.presentViewController(svc, animated:true, completion:nil)
+        self.present(svc, animated:true, completion:nil)
         
         // just for the one case 7/-1 we will get a real popover: we have rules about that sort of thing!
         
@@ -61,15 +61,15 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         
     }
     
-    func acceptData(data:AnyObject!) {
+    func accept(data:AnyObject!) {
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
     
-    override func dismissViewControllerAnimated(flag: Bool, completion: (() -> Void)!) {
-        super.dismissViewControllerAnimated(flag, completion: completion)
+    override func dismiss(animated: Bool, completion: (() -> Void)!) {
+        super.dismiss(animated:animated, completion: completion)
     }
     
     
@@ -77,15 +77,15 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
 
 extension ViewController : UIAdaptivePresentationControllerDelegate {
 //    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-//        return .OverFullScreen
+//        return .overFullScreen
 //    }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // print("adapt!")
         return self.adaptive
     }
     
-    func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
+    func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
         let newvc = ThirdViewController(nibName: "ThirdViewController", bundle: nil)
         newvc.data = "This is very important data!"
         newvc.delegate = self
@@ -94,7 +94,7 @@ extension ViewController : UIAdaptivePresentationControllerDelegate {
         return newvc
     }
     
-    func presentationController(presentationController: UIPresentationController, willPresentWithAdaptiveStyle style: UIModalPresentationStyle, transitionCoordinator: UIViewControllerTransitionCoordinator?) {
+    func presentationController(_ presentationController: UIPresentationController, willPresentWithAdaptiveStyle style: UIModalPresentationStyle, transitionCoordinator: UIViewControllerTransitionCoordinator?) {
         print(style.rawValue, terminator: "")
         print("\t", terminator: "")
     }

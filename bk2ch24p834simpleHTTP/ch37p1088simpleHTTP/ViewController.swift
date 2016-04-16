@@ -6,12 +6,12 @@ class ViewController: UIViewController {
 
     @IBOutlet var iv : UIImageView!
     
-    @IBAction func doSimpleHTTP (sender:AnyObject!) {
+    @IBAction func doSimpleHTTP (_ sender:AnyObject!) {
         self.iv.image = nil
         let s = "http://www.apeth.net/matt/images/phoenixnewest.jpg"
         let url = NSURL(string:s)!
-        let session = NSURLSession.sharedSession()
-        let task = session.downloadTaskWithURL(url) {
+        let session = NSURLSession.shared()
+        let task = session.downloadTask(with:url) {
             (loc:NSURL?, response:NSURLResponse?, error:NSError?) in
             print("here")
             if error != nil {
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
                 print("oh well")
                 return
             }
-            let d = NSData(contentsOfURL:loc!)!
+            let d = NSData(contentsOf:loc!)!
             let im = UIImage(data:d)
             dispatch_async(dispatch_get_main_queue()) {
                 self.iv.image = im

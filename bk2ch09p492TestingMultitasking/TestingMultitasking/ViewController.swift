@@ -9,45 +9,45 @@ class ViewController: UIViewController {
         NSLog("%@", #function)
     }
     
-    override func viewWillAppear(animated:Bool) {
+    override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
         NSLog("%@", #function)
-        if self.presentingViewController != nil {
-            self.view.backgroundColor = UIColor.yellowColor()
+        if self.presenting != nil {
+            self.view.backgroundColor = UIColor.yellow()
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NSLog("%@", #function)
     }
     
-    @IBAction func doButton(sender: AnyObject) {
-        if self.presentingViewController != nil {
-            self.dismissViewControllerAnimated(true, completion:nil)
+    @IBAction func doButton(_ sender: AnyObject) {
+        if self.presenting != nil {
+            self.dismiss(animated:true, completion:nil)
         } else {
             print("window bounds are \(self.view.window!.bounds)")
-            print("screen bounds are \(UIScreen.mainScreen().bounds)")
+            print("screen bounds are \(UIScreen.main().bounds)")
             let v = sender as! UIView
-            let r = self.view.window?.convertRect(v.bounds, fromView: v)
+            let r = self.view.window?.convert(v.bounds, from: v)
             print("button in window is \(r)")
-            let r2 = v.convertRect(v.bounds, toCoordinateSpace: UIScreen.mainScreen().coordinateSpace)
+            let r2 = v.convert(v.bounds, to: UIScreen.main().coordinateSpace)
             print("button in screen is \(r2)")
         }
     }
     
     let which = 2
     
-    @IBAction func doButton2(sender: AnyObject) {
-        if self.presentingViewController != nil {
+    @IBAction func doButton2(_ sender: AnyObject) {
+        if self.presenting != nil {
             return
         }
-        if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("VC") {
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "VC") {
             switch which {
             case 1:
-                vc.modalPresentationStyle = .FormSheet
+                vc.modalPresentationStyle = .formSheet
             case 2:
-                vc.modalPresentationStyle = .Popover
+                vc.modalPresentationStyle = .popover
                 if let pop = vc.popoverPresentationController {
                     let v = sender as! UIView
                     pop.sourceView = v
@@ -56,22 +56,22 @@ class ViewController: UIViewController {
             default: break
             }
             vc.presentationController!.delegate = self
-            self.presentViewController(vc, animated:true, completion:nil)
+            self.present(vc, animated:true, completion:nil)
 
         }
     }
 
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         print(#function, size, terminator:"\n\n")
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        super.viewWillTransition(to: size, with: coordinator)
     }
     
-    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         print(#function, newCollection, terminator:"\n\n")
-        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+        super.willTransition(to: newCollection, with: coordinator)
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         print(#function, self.traitCollection, terminator:"\n\n")
         super.traitCollectionDidChange(previousTraitCollection)
     }
@@ -79,12 +79,12 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : UIAdaptivePresentationControllerDelegate {
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         print("adapt!")
-        if traitCollection.horizontalSizeClass == .Compact {
-            return .FullScreen
+        if traitCollection.horizontalSizeClass == .compact {
+            return .fullScreen
         }
-        return .None
+        return .none
     }
 
 }

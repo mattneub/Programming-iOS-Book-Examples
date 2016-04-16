@@ -43,32 +43,32 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController {
-    override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
+    override func targetViewController(forAction action: Selector, sender: AnyObject?) -> UIViewController? {
         print("detail view controller target for \(action) \(sender)...")
-        let result = super.targetViewControllerForAction(action, sender: sender)
+        let result = super.targetViewController(forAction: action, sender: sender)
         print("detail view controller target for \(action), returning \(result)")
         return result
     }
     
-    override func showViewController(vc: UIViewController, sender: AnyObject?) {
+    override func show(_ vc: UIViewController, sender: AnyObject?) {
         print("detail view controller showViewController")
-        super.showViewController(vc, sender: sender)
+        super.show(vc, sender: sender)
     }
     
-    override func showDetailViewController(vc: UIViewController, sender: AnyObject?) {
+    override func showDetailViewController(_ vc: UIViewController, sender: AnyObject?) {
         print("detail view controller showDetailViewController")
         super.showDetailViewController(vc, sender: sender)
     }
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
-        let ok = super.respondsToSelector(aSelector)
+    override func responds(to aSelector: Selector) -> Bool {
+        let ok = super.responds(to: aSelector)
         if aSelector == #selector(showDetailViewController) {
             print("detail responds? \(ok)")
         }
         return ok
     }
     
-    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
         let ok = super.canPerformAction(action, withSender:sender)
         if action == #selector(showDetailViewController) {
             print("detail can perform? \(ok)")

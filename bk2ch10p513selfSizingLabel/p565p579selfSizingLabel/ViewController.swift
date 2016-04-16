@@ -11,7 +11,7 @@ func lend<T where T:NSObject> (closure:(T)->()) -> T {
 class ViewController : UIViewController {
     @IBOutlet var theLabel : UILabel!
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         let showTheBug = true // set to true and run on iPhone 4s to see the bug

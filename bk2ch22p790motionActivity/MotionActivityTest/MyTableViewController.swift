@@ -13,7 +13,7 @@ class MyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let b = UIBarButtonItem(title: "Start", style: .Plain, target: self, action: #selector(doStart))
+        let b = UIBarButtonItem(title: "Start", style: .plain, target: self, action: #selector(doStart))
         self.navigationItem.rightBarButtonItem = b
         
 //        let ok = CMStepCounter.isStepCountingAvailable()
@@ -24,7 +24,7 @@ class MyTableViewController: UITableViewController {
         print("distance: \(ok3)")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.checkAuthorization()
     }
@@ -39,7 +39,7 @@ class MyTableViewController: UITableViewController {
         // instead, we attempt to "tickle" the activity manager and see if we get an error
         // this will cause the system authorization dialog to be presented if necessary
         let now = NSDate()
-        self.actman.queryActivityStartingFromDate(now, toDate:now, toQueue:NSOperationQueue.mainQueue()) {
+        self.actman.queryActivityStarting(from: now, to:now, to:NSOperationQueue.main()) {
             (arr:[CMMotionActivity]?, err:NSError?) in
             let notauth = Int(CMErrorMotionActivityNotAuthorized.rawValue)
             if err != nil && err!.code == notauth {
@@ -52,7 +52,7 @@ class MyTableViewController: UITableViewController {
         }
     }
     
-    func doStart(sender:AnyObject!) {
+    func doStart(_ sender:AnyObject!) {
         if !self.authorized {
             self.checkAuthorization()
             return
@@ -60,19 +60,19 @@ class MyTableViewController: UITableViewController {
         // there are two approaches: live and historical
         // collect historical data
         let now = NSDate()
-        let yester = now.dateByAddingTimeInterval(-60*60*24)
-        self.actman.queryActivityStartingFromDate(yester, toDate: now, toQueue: self.queue) {
+        let yester = now.addingTimeInterval(-60*60*24)
+        self.actman.queryActivityStarting(from: yester, to: now, to: self.queue) {
             (arr:[CMMotionActivity]?, err:NSError?) -> Void in
             guard var acts = arr else {return}
             // crude filter: eliminate empties, low-confidence, and successive duplicates
             let blank = "f f f f f f"
             acts = acts.filter {act in act.overallAct() != blank}
-            acts = acts.filter {act in act.confidence == .High}
+            acts = acts.filter {act in act.confidence == .high}
             acts = acts.filter {act in !(act.automotive && act.stationary)}
-            for i in (1..<acts.count).reverse() {
+            for i in (1..<acts.count).reversed() {
                 if acts[i].overallAct() == acts[i-1].overallAct() {
                     print("removing act identical to previous")
-                    acts.removeAtIndex(i)
+                    acts.remove(at:i)
                 }
             }
             dispatch_async(dispatch_get_main_queue()) {
@@ -94,35 +94,35 @@ class MyTableViewController: UITableViewController {
         }
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if self.data != nil {
             return 1
         }
         return 0
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.data != nil {
             return self.data.count
         }
         return 0
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
 
         let act = self.data[indexPath.row]
         let format = NSDateFormatter()
         format.dateFormat = "MMM d, HH:mm:ss"
-        cell.textLabel!.text = format.stringFromDate(act.startDate)
+        cell.textLabel!.text = format.string(from: act.startDate)
         cell.detailTextLabel!.text = act.overallAct()
         
-        cell.backgroundColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.white()
         if act.automotive {
-            cell.backgroundColor = UIColor.redColor()
+            cell.backgroundColor = UIColor.red()
         }
         if act.walking || act.running {
-            cell.backgroundColor = UIColor.greenColor()
+            cell.backgroundColor = UIColor.green()
         }
 
         return cell

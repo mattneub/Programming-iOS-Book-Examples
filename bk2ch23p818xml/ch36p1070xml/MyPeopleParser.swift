@@ -13,7 +13,7 @@ class MyPeopleParser : MyXMLParserDelegate {
                 self.makeChild(MyPersonParser.self, elementName: elementName, parser: parser)
             }
     }
-    override func finishedChild(s: String) {
+    override func finishedChild(_ s: String) {
         self.people.append((self.child as! MyPersonParser).person)
     }
     

@@ -6,13 +6,13 @@ class MyHorizLine: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear()
     }
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let c = UIGraphicsGetCurrentContext()!
-        CGContextMoveToPoint(c, 0, 0)
-        CGContextAddLineToPoint(c, self.bounds.size.width, 0)
-        CGContextStrokePath(c)
+        c.moveTo(x: 0, y: 0)
+        c.addLineTo(x: self.bounds.size.width, y: 0)
+        c.strokePath()
     }
 
 

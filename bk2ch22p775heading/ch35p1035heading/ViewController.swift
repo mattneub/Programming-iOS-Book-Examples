@@ -13,12 +13,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }()
     var updating = false
     
-    @IBAction func doStart (sender:AnyObject!) {
+    @IBAction func doStart (_ sender:AnyObject!) {
         guard CLLocationManager.headingAvailable() else {return} // lacking hardware
         if self.updating {return}
         print("starting")
         self.locman.headingFilter = 5
-        self.locman.headingOrientation = .Portrait
+        self.locman.headingOrientation = .portrait
         self.updating = true
         // NO AUTH NEEDED!
         // the heading part works just fine even if Location Services is turned off
@@ -27,17 +27,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.locman.startUpdatingHeading()
     }
     
-    @IBAction func doStop (sender:AnyObject!) {
+    @IBAction func doStop (_ sender:AnyObject!) {
         self.locman.stopUpdatingHeading()
         self.lab.text = ""
         self.updating = false
     }
 
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: NSError) {
         self.doStop(nil)
     }
 
-    func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+    func locationManager(_ manager: CLLocationManager, didUpdate newHeading: CLHeading) {
         var h = newHeading.magneticHeading
         let h2 = newHeading.trueHeading // will be -1 if we have no location info
         print("\(h) \(h2) ")
@@ -46,7 +46,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         let cards = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
         var dir = "N"
-        for (ix, card) in cards.enumerate() {
+        for (ix, card) in cards.enumerated() {
             if h < 45.0/2.0 + 45.0*Double(ix) {
                 dir = card
                 break
@@ -58,7 +58,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print(dir)
     }
     
-    func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager) -> Bool {
+    func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {
         return true // if you want the calibration dialog to be able to appear
         // I did in fact see it appear, so this works in iOS 8.3 at least
     }

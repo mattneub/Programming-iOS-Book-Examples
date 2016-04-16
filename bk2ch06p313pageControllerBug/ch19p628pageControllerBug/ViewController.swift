@@ -3,15 +3,15 @@ import UIKit
 
 class ViewController : UIViewController, UIPageViewControllerDataSource {
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject!) {
         let pvc = segue.destinationViewController as! UIPageViewController
         pvc.dataSource = self
         let page = MyPage()
         page.num = 1
-        pvc.setViewControllers([page], direction:.Forward, animated:false, completion:nil)
+        pvc.setViewControllers([page], direction:.forward, animated:false, completion:nil)
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let page = viewController as! MyPage
         let num = page.num
         if num == 10 { return nil }
@@ -20,7 +20,7 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
         return page2
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         let page = viewController as! MyPage
         let num = page.num
         if num == 1 { return nil }
@@ -36,11 +36,11 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
     // it is page 1!
     // that's the bug; the page view controller has not updated its internal state
 
-    func jumpTo8(sender:AnyObject?) {
+    func jumpTo8(_ sender:AnyObject?) {
         let page = MyPage()
         page.num = 8
         let pvc = self.childViewControllers[0] as! UIPageViewController
-        pvc.setViewControllers([page], direction: .Forward, animated: true, completion: {
+        pvc.setViewControllers([page], direction: .forward, animated: true, completion: {
             _ in
             // workaround:
             /*

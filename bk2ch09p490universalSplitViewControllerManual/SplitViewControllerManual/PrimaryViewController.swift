@@ -25,23 +25,23 @@ class PrimaryViewController : UIViewController {
         super.viewDidLoad()
         
         // configure our view
-        self.view.backgroundColor = UIColor.greenColor()
+        self.view.backgroundColor = UIColor.green()
         let seg = UISegmentedControl(items: ["White","Red"])
         seg.selectedSegmentIndex = 1
         self.view.addSubview(seg)
         seg.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([
-            seg.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor),
-            seg.bottomAnchor.constraintEqualToAnchor(self.view.bottomAnchor, constant:-50)
+        NSLayoutConstraint.activate([
+            seg.centerXAnchor.constraintEqual(to:self.view.centerXAnchor),
+            seg.bottomAnchor.constraintEqual(to:self.view.bottomAnchor, constant:-50)
         ])
-        seg.addTarget(self, action: #selector(change), forControlEvents: .ValueChanged)
+        seg.addTarget(self, action: #selector(change), for: .valueChanged)
     }
     
-    func change(sender:AnyObject) {
+    func change(_ sender:AnyObject) {
         var vc : UIViewController
         // note this expression of the difference as to where the Secondary will be,
         // depending whether the svc is expanded or collapsed
-        if !self.splitViewController!.collapsed {
+        if !self.splitViewController!.isCollapsed {
             vc = self.splitViewController!.viewControllers[1] 
         } else {
             vc = self.childViewControllers[0] 
@@ -49,9 +49,9 @@ class PrimaryViewController : UIViewController {
         let seg = sender as! UISegmentedControl
         switch seg.selectedSegmentIndex {
         case 0:
-            vc.view.backgroundColor = UIColor.whiteColor()
+            vc.view.backgroundColor = UIColor.white()
         case 1:
-            vc.view.backgroundColor = UIColor.redColor()
+            vc.view.backgroundColor = UIColor.red()
         default:break
         }
     }
@@ -64,16 +64,16 @@ class PrimaryViewController : UIViewController {
     // if this were an interface where collapsed could turn to expanded,
     // we would also need to implement the inverse operation
     
-    override func collapseSecondaryViewController(vc2: UIViewController, forSplitViewController splitViewController: UISplitViewController) {
+    override func collapseSecondaryViewController(_ vc2: UIViewController, for splitViewController: UISplitViewController) {
         self.addChildViewController(vc2)
         self.view.addSubview(vc2.view)
-        vc2.didMoveToParentViewController(self)
+        vc2.didMove(toParentViewController: self)
         
         vc2.view.translatesAutoresizingMaskIntoConstraints = false
         self.verticalConstraints =
-            NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options: [], metrics: nil, views: ["v":vc2.view])
-        NSLayoutConstraint.activateConstraints([
-            NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options: [], metrics: nil, views: ["v":vc2.view]),
+            NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|", options: [], metrics: nil, views: ["v":vc2.view])
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|", options: [], metrics: nil, views: ["v":vc2.view]),
             self.verticalConstraints!
         ].flatten().map{$0})
     }
@@ -86,11 +86,11 @@ class PrimaryViewController : UIViewController {
 // you need an extension to satisfy the compiler
 
 extension UIViewController {
-    func showHide(sender:AnyObject?) {
+    func showHide(_ sender:AnyObject?) {
         // how to use targetViewControllerForAction to look up the hierarchy
         // we don't know who implements showHide or where he is in the hierarchy,
         // and we don't care! agnostic messaging up the hierarchy
-        let target = self.targetViewControllerForAction(#selector(showHide), sender: sender)
+        let target = self.targetViewController(forAction:#selector(showHide), sender: sender)
         if target != nil {
             target!.showHide(self)
         }
@@ -103,22 +103,22 @@ extension UIViewController {
 
 extension PrimaryViewController {
     
-    override func showHide(sender:AnyObject?) {
+    override func showHide(_ sender:AnyObject?) {
         print("showHide")
         // how to show/hide ourselves depends on the state of the split view controller
         // if expanded, let the split view controller deal with it
         // if collapsed, we are in charge of the interface and must decide what this means
         
         let svc = self.splitViewController!
-        if !svc.collapsed {
+        if !svc.isCollapsed {
             switch svc.displayMode {
-            case .PrimaryHidden:
+            case .primaryHidden:
                 // changing display mode is animatable!
-                UIView.animateWithDuration(0.2, animations: {
-                    svc.preferredDisplayMode = .PrimaryOverlay
+                UIView.animate(withDuration:0.2, animations: {
+                    svc.preferredDisplayMode = .primaryOverlay
                     })
             default:
-                svc.preferredDisplayMode = .Automatic
+                svc.preferredDisplayMode = .automatic
             }
         }
         else {
@@ -130,9 +130,9 @@ extension PrimaryViewController {
             self.exposed = !self.exposed
             self.view.removeConstraints(self.verticalConstraints!)
             self.verticalConstraints =
-                NSLayoutConstraint.constraintsWithVisualFormat("V:|-(minuscon)-[v]-(con)-|", options: [], metrics: ["con":con, "minuscon":-con], views: ["v":vc2.view])
-            NSLayoutConstraint.activateConstraints(self.verticalConstraints!)
-            UIView.animateWithDuration(0.25, animations: {
+                NSLayoutConstraint.constraints(withVisualFormat:"V:|-(minuscon)-[v]-(con)-|", options: [], metrics: ["con":con as NSNumber, "minuscon":-con as NSNumber], views: ["v":vc2.view])
+            NSLayoutConstraint.activate(self.verticalConstraints!)
+            UIView.animate(withDuration:0.25, animations: {
                 self.view.layoutIfNeeded()
                 })
         }

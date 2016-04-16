@@ -6,7 +6,7 @@ class ViewController : UIViewController {
     
     @IBOutlet var lab : UILabel!
     
-    @IBAction func doButton(sender:AnyObject?) {
+    @IBAction func doButton(_ sender:AnyObject?) {
         self.animate()
     }
     
@@ -14,8 +14,8 @@ class ViewController : UIViewController {
         let lab2 = UILabel(frame:self.lab.frame)
         lab2.text = self.lab.text == "Hello" ? "Howdy" : "Hello"
         lab2.sizeToFit()
-        UIView.transitionFromView(self.lab, toView: lab2,
-            duration: 0.8, options: .TransitionFlipFromLeft,
+        UIView.transition(from:self.lab, to: lab2,
+            duration: 0.8, options: .transitionFlipFromLeft,
             completion: {
                 _ in
                 self.lab = lab2

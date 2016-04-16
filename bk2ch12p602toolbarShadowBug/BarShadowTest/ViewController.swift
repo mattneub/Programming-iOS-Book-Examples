@@ -1,67 +1,90 @@
 
 import UIKit
 
-func imageOfSize(size:CGSize, _ opaque:Bool = false, _ closure:() -> ()) -> UIImage {
+func imageOfSize(_ size:CGSize, _ opaque:Bool = false, _ closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
     closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()
+    let result = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return result
 }
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
 
 class ViewController: UIViewController {
     @IBOutlet var navbar : UINavigationBar!
     @IBOutlet var toolbar : UIToolbar!
     
     
-    override func viewDidAppear(animated:Bool) {
+    override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
 
-        self.view.backgroundColor = UIColor.yellowColor()
+        self.view.backgroundColor = UIColor.yellow()
         
-        let sz = CGSizeMake(20,20)
+        let sz = CGSize(20,20)
         
         self.navbar.setBackgroundImage(imageOfSize(sz, false) {
             UIColor(white:0.95, alpha:0.85).setFill()
             //UIColor(red: 1, green: 0, blue: 0, alpha: 1).setFill()
-            CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,0,20,20))
-            }, forBarPosition:.Any, barMetrics: .Default)
+            UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,20,20))
+            }, for:.any, barMetrics: .default)
         
         self.toolbar.setBackgroundImage(imageOfSize(sz) {
             UIColor(white:0.95, alpha:0.85).setFill()
-            CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,0,20,20))
-            }, forToolbarPosition:.Any, barMetrics: .Default)
+            UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,20,20))
+            }, forToolbarPosition:.any, barMetrics: .default)
         
         do {
-            let sz = CGSizeMake(4,4)
+            let sz = CGSize(4,4)
             
             self.navbar.shadowImage = imageOfSize(sz) {
-                UIColor.grayColor().colorWithAlphaComponent(0.3).setFill()
-                CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,0,4,2))
-                UIColor.grayColor().colorWithAlphaComponent(0.15).setFill()
-                CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,2,4,2))
+                UIColor.gray().withAlphaComponent(0.3).setFill()
+                UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,4,2))
+                UIColor.gray().withAlphaComponent(0.15).setFill()
+                UIGraphicsGetCurrentContext()!.fill(CGRect(0,2,4,2))
             }
             self.toolbar.setShadowImage( imageOfSize(sz) {
-                UIColor.grayColor().colorWithAlphaComponent(0.3).setFill()
-                CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,2,4,2))
-                UIColor.grayColor().colorWithAlphaComponent(0.15).setFill()
-                CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,0,4,2))
-                }, forToolbarPosition:.Any )
+                UIColor.gray().withAlphaComponent(0.3).setFill()
+                UIGraphicsGetCurrentContext()!.fill(CGRect(0,2,4,2))
+                UIColor.gray().withAlphaComponent(0.15).setFill()
+                UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,4,2))
+                }, forToolbarPosition:.any )
         }
         
         // try false - effective only here
-        self.navbar.translucent = true
-        self.toolbar.translucent = true
+        self.navbar.isTranslucent = true
+        self.toolbar.isTranslucent = true
 
     }
 }
 
 extension ViewController : UIBarPositioningDelegate {
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+    func position(forBar bar: UIBarPositioning) -> UIBarPosition {
         switch true { // another (old) trick for special switch situations
-        case bar === self.navbar: return .TopAttached
-        case bar === self.toolbar: return .Bottom
-        default: return .Any
+        case bar === self.navbar: return .topAttached
+        case bar === self.toolbar: return .bottom
+        default: return .any
         }
     }
 }

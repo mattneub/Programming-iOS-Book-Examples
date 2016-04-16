@@ -7,7 +7,7 @@ import UIKit
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow()
         
@@ -17,19 +17,19 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         nav.restorationIdentifier = "nav"
         
         self.window!.rootViewController = nav
-        self.window!.backgroundColor = UIColor.whiteColor()
+        self.window!.backgroundColor = UIColor.white()
         self.window!.restorationIdentifier = "window"
         self.window!.makeKeyAndVisible()
         return true
     }
     
-    func application(application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
+    func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
         print("app should restore \(coder)")
         // how to examine the coder
-        if let idiomraw = coder.decodeObjectForKey(
-            UIApplicationStateRestorationUserInterfaceIdiomKey) as? Int {
+        if let idiomraw = coder.decodeObject(
+            forKey: UIApplicationStateRestorationUserInterfaceIdiomKey) as? Int {
                 if let idiom = UIUserInterfaceIdiom(rawValue:idiomraw) {
-                    if idiom == .Phone {
+                    if idiom == .phone {
                         print("phone")
                     } else {
                         print("pad")
@@ -39,22 +39,22 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
+    func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
         print("app should save \(coder)")
         return true
     }
     
-    func application(application: UIApplication, willEncodeRestorableStateWithCoder coder: NSCoder) {
+    func application(_ application: UIApplication, willEncodeRestorableStateWith coder: NSCoder) {
         print("app will encode \(coder)")
     }
     
-    func application(application: UIApplication, didDecodeRestorableStateWithCoder coder: NSCoder) {
+    func application(_ application: UIApplication, didDecodeRestorableStateWith coder: NSCoder) {
         print("app did decode \(coder)")
     }
     
     /*
     
-    func application(application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [AnyObject], coder: NSCoder) -> UIViewController? {
+    func application(_ application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [AnyObject], coder: NSCoder) -> UIViewController? {
         
         print("app delegate \(ip) \(coder)")
         let last = ip.last as String

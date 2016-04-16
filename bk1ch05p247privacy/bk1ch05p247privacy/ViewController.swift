@@ -15,7 +15,7 @@ struct Dog2 : CustomStringConvertible {
         var desc = "Dog ("
         let mirror = Mirror(reflecting:self)
         for (k,v) in mirror.children {
-            desc.appendContentsOf("\(k!): \(v), ")
+            desc.append("\(k!): \(v), ")
         }
         let c = desc.characters.count
         return String(desc.characters.prefix(c-2)) + ")"
@@ -25,7 +25,7 @@ struct Dog2 : CustomStringConvertible {
 struct Dog3 : CustomReflectable {
     var name = "Fido"
     var license = 1
-    func customMirror() -> Mirror {
+    var customMirror : Mirror { // now a var instead of a func
         let children : [Mirror.Child] = [
             ("ineffable name", self.name),
             ("license to kill", self.license)

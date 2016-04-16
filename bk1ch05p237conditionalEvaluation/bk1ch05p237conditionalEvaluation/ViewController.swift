@@ -2,20 +2,21 @@
 import UIKit
 
 enum Filter {
-    case Albums
-    case Playlists
-    case Podcasts
-    case Books
+    case albums
+    case playlists
+    case podcasts
+    case books
 }
 
 
 class ViewController: UIViewController {
     
+    
     var currow : Int? = 0
 
     var hilite = false
     
-    var type = Filter.Albums
+    var type = Filter.albums
 
 
     override func viewDidLoad() {
@@ -24,26 +25,26 @@ class ViewController: UIViewController {
         
         /*
         let title = switch type { // compile error
-        case .Albums:
+        case .albums:
             "Albums"
-        case .Playlists:
+        case .playlists:
             "Playlists"
-        case .Podcasts:
+        case .podcasts:
             "Podcasts"
-        case .Books:
+        case .books:
             "Books"
         }
 */
 
         let title : String = {
             switch type {
-            case .Albums:
+            case .albums:
                 return "Albums"
-            case .Playlists:
+            case .playlists:
                 return "Playlists"
-            case .Podcasts:
+            case .podcasts:
                 return "Podcasts"
-            case .Books:
+            case .books:
                 return "Books"
             }
             }()
@@ -52,28 +53,27 @@ class ViewController: UIViewController {
         let cell = UITableViewCell()
         let ix = NSIndexPath(forRow: 0, inSection: 0)
         cell.accessoryType =
-            ix.row == self.currow ? .Checkmark : .DisclosureIndicator
+            ix.row == self.currow ? .checkmark : .disclosureIndicator
 
-        let purple = UIColor.purpleColor()
-        let beige = UIColor.brownColor()
-        UIGraphicsBeginImageContext(CGSizeMake(10,10))
+        let purple = UIColor.purple()
+        let beige = UIColor.brown()
+        UIGraphicsBeginImageContext(CGSize(width:10,height:10))
         let context = UIGraphicsGetCurrentContext()!
-        CGContextSetFillColorWithColor(
-            context, self.hilite ? purple.CGColor : beige.CGColor)
+        context.setFillColor(self.hilite ? purple.cgColor : beige.cgColor)
         UIGraphicsEndImageContext()
         
         do {
-            let arr : [String?] = []
+            let arr : [String?] = ["manny", nil, "jack"]
             do {
-                let arr2 : [AnyObject] = arr.map {if $0 == nil {return NSNull()} else {return $0!}}
+                let arr2 : [AnyObject] = arr.map {if $0 != nil {return $0! as AnyObject} else {return NSNull()}}
                 print(arr2)
             }
             do {
-                let arr2 = arr.map{ $0 != nil ? $0! : NSNull() }
+                let arr2 = arr.map{ $0 != nil ? $0! as AnyObject : NSNull() }
                 print(arr2)
             }
             do {
-                let arr2 = arr.map{ $0 ?? NSNull() }
+                let arr2 = arr.map{ $0 as? AnyObject ?? NSNull() }
                 print(arr2)
             }
         }

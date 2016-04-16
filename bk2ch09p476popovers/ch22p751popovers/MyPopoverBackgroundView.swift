@@ -19,9 +19,9 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
     
     override init(frame:CGRect) {
         self.arrOff = 0
-        self.arrDir = .Any
+        self.arrDir = .any
         super.init(frame:frame)
-        self.opaque = false
+        self.isOpaque = false
     }
     
     required init(coder: NSCoder) {
@@ -30,7 +30,7 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
 
     
 
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         // WARNING: this code is sort of a cheat:
         // I should be checking self.arrowDirection and changing what I do depending on that...
         // but instead I am just *assuming* that the arrowDirection is UIPopoverArrowDirectionUp
@@ -38,14 +38,14 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
         let linOrig = UIImage(named: "linen.png")!
         let capw = linOrig.size.width / 2.0 - 1
         let caph = linOrig.size.height / 2.0 - 1
-        let lin = linOrig.resizableImageWithCapInsets(UIEdgeInsetsMake(caph, capw, caph, capw),resizingMode:.Tile)
+        let lin = linOrig.resizableImage(withCapInsets:UIEdgeInsetsMake(caph, capw, caph, capw),resizingMode:.tile)
         
         // draw the arrow
         // I'm just going to make a triangle filled with our linen background...
         // ...extended by a rectangle so it joins to our "pinked" corner drawing
         
         let con = UIGraphicsGetCurrentContext()!
-        CGContextSaveGState(con)
+        con.saveGState()
         var propX = self.arrowOffset
         let limit : CGFloat = 22.0
         let maxX = rect.size.width/2.0 - limit
@@ -56,21 +56,21 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
             propX = limit
         }
         let klass = self.dynamicType
-        CGContextTranslateCTM(con, rect.size.width/2.0 + propX - klass.ARBASE/2.0, 0)
-        CGContextMoveToPoint(con, 0, klass.ARHEIGHT)
-        CGContextAddLineToPoint(con, klass.ARBASE / 2.0, 0)
-        CGContextAddLineToPoint(con, klass.ARBASE, klass.ARHEIGHT)
-        CGContextClosePath(con)
-        CGContextAddRect(con, CGRectMake(0,klass.ARHEIGHT,klass.ARBASE,15))
-        CGContextClip(con)
-        lin.drawAtPoint(CGPointMake(-40,-40))
-        CGContextRestoreGState(con)
+        con.translate(x: rect.size.width/2.0 + propX - klass.ARBASE/2.0, y: 0)
+        con.moveTo(x: 0, y: klass.ARHEIGHT)
+        con.addLineTo(x: klass.ARBASE / 2.0, y: 0)
+        con.addLineTo(x: klass.ARBASE, y: klass.ARHEIGHT)
+        con.closePath()
+        con.addRect(CGRect(0,klass.ARHEIGHT,klass.ARBASE,15))
+        con.clip()
+        lin.draw(at:CGPoint(-40,-40))
+        con.restoreGState()
         
         // draw the body, to go behind the view part of our rectangle (i.e. rect minus arrow)
-        var arrow = CGRectZero
-        var body = CGRectZero
-        CGRectDivide(rect, &arrow, &body, klass.ARHEIGHT, .MinYEdge)
-        lin.drawInRect(body)
+        var arrow = CGRect.zero
+        var body = CGRect.zero
+        rect.divide(slice: &arrow, remainder: &body, amount: klass.ARHEIGHT, edge: .minYEdge)
+        lin.draw(in:body)
         
     }
     

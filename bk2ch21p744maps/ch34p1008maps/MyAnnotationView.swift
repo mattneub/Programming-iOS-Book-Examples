@@ -6,9 +6,9 @@ class MyAnnotationView : MKAnnotationView {
     override init(annotation:MKAnnotation?, reuseIdentifier:String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         let im = UIImage(named:"clipartdirtbike.gif")!
-        self.frame = CGRectMake(0, 0, im.size.width / 3.0 + 5, im.size.height / 3.0 + 5)
-        self.centerOffset = CGPointMake(0,-20)
-        self.opaque = false
+        self.frame = CGRect(0, 0, im.size.width / 3.0 + 5, im.size.height / 3.0 + 5)
+        self.centerOffset = CGPoint(0,-20)
+        self.isOpaque = false
     }
     
     override init(frame: CGRect) {
@@ -19,8 +19,8 @@ class MyAnnotationView : MKAnnotationView {
         fatalError("NSCoding not supported")
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let im = UIImage(named:"clipartdirtbike.gif")!
-        im.drawInRect(self.bounds.insetBy(dx: 5, dy: 5))
+        im.draw(in:self.bounds.insetBy(dx: 5, dy: 5))
     }
 }

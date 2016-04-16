@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         switch which {
         case 1:
             let bbi = UIBarButtonItem(
-                barButtonSystemItem: .Camera, target: self, action: #selector(doCamera))
+                barButtonSystemItem: .camera, target: self, action: #selector(doCamera))
             let group = UIBarButtonItemGroup(
                 barButtonItems: [bbi], representativeItem: nil)
             let shortcuts = self.tf.inputAssistantItem
@@ -23,10 +23,10 @@ class ViewController: UIViewController {
         case 2:
             var bbis = [UIBarButtonItem]()
             for _ in 1...5 {
-                let bbi = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: #selector(doCamera))
+                let bbi = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(doCamera))
                 bbis.append(bbi)
             }
-            let rep = UIBarButtonItem(barButtonSystemItem: .Edit, target: nil, action: nil)
+            let rep = UIBarButtonItem(barButtonSystemItem: .edit, target: nil, action: nil)
             let group = UIBarButtonItemGroup(barButtonItems: bbis, representativeItem: rep)
             let shortcuts = self.tf.inputAssistantItem
             shortcuts.trailingBarButtonGroups.append(group)
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         
     }
     
-    func doCamera(sender:AnyObject) {
+    func doCamera(_ sender:AnyObject) {
         print("do camera")
     }
  

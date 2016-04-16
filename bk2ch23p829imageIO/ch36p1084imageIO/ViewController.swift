@@ -7,8 +7,8 @@ class ViewController: UIViewController {
 
     @IBOutlet var iv : UIImageView!
     
-    @IBAction func doButton (sender:AnyObject!) {
-        let url = NSBundle.mainBundle().URLForResource("colson", withExtension: "jpg")!
+    @IBAction func doButton (_ sender:AnyObject!) {
+        let url = NSBundle.main().urlForResource("colson", withExtension: "jpg")!
         let src = CGImageSourceCreateWithURL(url, nil)!
         let result = CGImageSourceCopyPropertiesAtIndex(src, 0, nil)! as [NSObject:AnyObject]
         print(result)
@@ -18,30 +18,30 @@ class ViewController: UIViewController {
         print("\(width) by \(height)")
     }
 
-    @IBAction func doButton2 (sender:AnyObject!) {
-        let url = NSBundle.mainBundle().URLForResource("colson", withExtension: "jpg")!
+    @IBAction func doButton2 (_ sender:AnyObject!) {
+        let url = NSBundle.main().urlForResource("colson", withExtension: "jpg")!
         let src = CGImageSourceCreateWithURL(url, nil)!
-        let scale = UIScreen.mainScreen().scale
+        let scale = UIScreen.main().scale
         let w = self.iv.bounds.width * scale
         let d : [NSObject:AnyObject] = [
             kCGImageSourceShouldAllowFloat : true,
             kCGImageSourceCreateThumbnailWithTransform : true,
             kCGImageSourceCreateThumbnailFromImageAlways : true,
-            kCGImageSourceThumbnailMaxPixelSize : w
+            kCGImageSourceThumbnailMaxPixelSize : w as NSNumber
         ]
-        let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d)!
-        let im = UIImage(CGImage: imref, scale: scale, orientation: .Up)
+        let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d as CFDictionary)!
+        let im = UIImage(cgImage: imref, scale: scale, orientation: .up)
         self.iv.image = im
         print(im)
         print(im.size)
     }
 
-    @IBAction func doButton3 (sender:AnyObject!) {
-        let url = NSBundle.mainBundle().URLForResource("colson", withExtension: "jpg")!
+    @IBAction func doButton3 (_ sender:AnyObject!) {
+        let url = NSBundle.main().urlForResource("colson", withExtension: "jpg")!
         let src = CGImageSourceCreateWithURL(url, nil)!
         let fm = NSFileManager()
-        let suppurl = try! fm.URLForDirectory(.ApplicationSupportDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
-        let tiff = suppurl.URLByAppendingPathComponent("mytiff.tiff")
+        let suppurl = try! fm.urlForDirectory(.applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let tiff = suppurl.appendingPathComponent("mytiff.tiff")
         let dest = CGImageDestinationCreateWithURL(tiff, kUTTypeTIFF, 1, nil)!
         CGImageDestinationAddImageFromSource(dest, src, 0, nil)
         let ok = CGImageDestinationFinalize(dest)

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3269B3131B8D39B3009950F2 /* testing.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3269B3121B8D39B3009950F2 /* testing.txt */; settings = {ASSET_TAGS = (); }; };
+		3269B3131B8D39B3009950F2 /* testing.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3269B3121B8D39B3009950F2 /* testing.txt */; };
 		32F8A8B31B385DBA0042B53B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F8A8B21B385DBA0042B53B /* AppDelegate.swift */; };
 		32F8A8B51B385DBA0042B53B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F8A8B41B385DBA0042B53B /* ViewController.swift */; };
 		32F8A8B81B385DBA0042B53B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F8A8B61B385DBA0042B53B /* Main.storyboard */; };

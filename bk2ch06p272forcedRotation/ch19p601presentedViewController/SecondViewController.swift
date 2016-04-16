@@ -4,7 +4,7 @@ import UIKit
 
 
 protocol SecondViewControllerDelegate : class {
-    func acceptData(data:AnyObject!)
+    func accept(data:AnyObject!)
 }
 
 class SecondViewController : UIViewController {
@@ -13,20 +13,20 @@ class SecondViewController : UIViewController {
     
     weak var delegate : SecondViewControllerDelegate?
     
-    @IBAction func doDismiss(sender:AnyObject?) {
-        self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func doDismiss(_ sender:AnyObject?) {
+        self.presenting!.dismiss(animated:true, completion: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // prove you've got data
         print(self.data)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if self.isBeingDismissed() {
-            self.delegate?.acceptData("Even more important data!")
+            self.delegate?.accept(data:"Even more important data!")
         }
     }
     
@@ -41,20 +41,20 @@ class SecondViewController : UIViewController {
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         print("second supported")
-        return .Landscape
+        return .landscape
     }
     
     override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
-        return .LandscapeLeft
+        return .landscapeLeft
     }
     
     override func viewWillLayoutSubviews() {
         print("presented will layout")
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         print("presented size")
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        super.viewWillTransition(to: size, with: coordinator)
     }
 
     

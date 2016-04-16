@@ -1,6 +1,6 @@
 
 import UIKit
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -16,11 +16,11 @@ class SettingsController: UIViewController, UINavigationControllerDelegate {
         self.navigationController?.delegate = self
     }
     func navigationControllerSupportedInterfaceOrientations(
-        nav: UINavigationController) -> UIInterfaceOrientationMask {
-            return .Portrait
+        _ nav: UINavigationController) -> UIInterfaceOrientationMask {
+            return .portrait
     }
 
-    @IBAction func doButton(sender: AnyObject) {
+    @IBAction func doButton(_ sender: AnyObject) {
         self.showColorPicker()
     }
 }
@@ -28,20 +28,20 @@ class SettingsController: UIViewController, UINavigationControllerDelegate {
 extension SettingsController : ColorPickerDelegate {
     func showColorPicker() {
         let colorName = "MyColor"
-        let c = UIColor.blueColor()
+        let c = UIColor.blue()
         let cpc = ColorPickerController(colorName:colorName, andColor:c)
         cpc.delegate = self
-        self.presentViewController(cpc, animated: true, completion: nil)
+        self.present(cpc, animated: true)
     }
     
     // delegate method
     
-    func colorPicker (picker:ColorPickerController,
+    func colorPicker (_ picker:ColorPickerController,
         didSetColorNamed theName:String?,
         toColor theColor:UIColor?) {
             print("the delegate method was called")
             delay(0.1) {
-                picker.dismissViewControllerAnimated(true, completion: nil)
+                picker.dismiss(animated: true)
             }
     }
 

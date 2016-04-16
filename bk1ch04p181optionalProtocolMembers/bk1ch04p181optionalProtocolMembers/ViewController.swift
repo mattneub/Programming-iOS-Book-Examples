@@ -2,10 +2,11 @@
 import UIKit
 
 @objc protocol Flier {
-    optional var song : String {get}
-    optional var song2 : String {get set}
-    optional func sing()
-    optional func sing2() -> String
+    @objc optional var song : String {get}
+    @objc optional var song2 : String {get set}
+    @objc optional var song3 : String? {get}
+    @objc optional func sing()
+    @objc optional func sing2() -> String
 }
 class Bird : Flier {
     @objc func sing() {
@@ -39,7 +40,7 @@ struct Nest : IntegerLiteralConvertible {
         self.eggCount = val
     }
 }
-func reportEggs(nest:Nest) {
+func reportEggs(_ nest:Nest) {
     print("this nest contains \(nest.eggCount) eggs")
 }
 
@@ -48,7 +49,7 @@ class ViewController: UIViewController {
     init() {
         super.init(nibName: "ViewController", bundle: nil)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         // fatalError("init(coder:) has not been implemented")
         super.init(coder:aDecoder)
@@ -69,6 +70,8 @@ class ViewController: UIViewController {
         let f : Flier = Bird()
         let s = f.song // s is an Optional wrapping a String
         print(s)
+        let sss = f.song3 // sss is an Optional wrapping an Optional wrapping a String
+        print(sss)
         f.sing?()
         let s2 = f.sing2?()
         print(s2)

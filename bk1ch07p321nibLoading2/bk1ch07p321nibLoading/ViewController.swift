@@ -9,7 +9,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSBundle.mainBundle().loadNibNamed("View", owner: self, options: nil)
+        NSBundle.main().loadNibNamed("View", owner: self)
         self.view.addSubview(self.coolview)
 
     

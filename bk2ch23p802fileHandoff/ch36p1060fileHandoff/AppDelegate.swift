@@ -5,14 +5,14 @@ import UIKit
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         print("start \(#function)")
         print("end \(#function)")
 
         return true
     }
     
-    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+    func application(_ app: UIApplication, open url: NSURL, options: [String : AnyObject]) -> Bool {
         print("start \(#function)")
         print(url)
         
@@ -44,17 +44,17 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 */
         
         let vc = self.window!.rootViewController as! ViewController
-        vc.displayDoc(finalurl)
+        vc.displayDoc(url: finalurl)
         print("end \(#function)")
         return true
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         print("start \(#function)")
         print("end \(#function)")
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         print("start \(#function)")
         print("end \(#function)")
     }

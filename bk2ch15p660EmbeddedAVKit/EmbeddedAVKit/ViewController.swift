@@ -4,7 +4,30 @@ import UIKit
 import AVKit
 import AVFoundation
 
-func delay(delay:Double, closure:()->()) {
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -22,16 +45,16 @@ class ViewController: UIViewController {
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            return .All
+        if UIDevice.current().userInterfaceIdiom == .pad {
+            return .all
         }
-        return .Landscape
+        return .landscape
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: [])
-        _ = try? AVAudioSession.sharedInstance().setActive(true, withOptions: [])
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        _ = try? AVAudioSession.sharedInstance().setActive(true)
     }
     
     let which = 2
@@ -50,30 +73,30 @@ class ViewController: UIViewController {
     }
     
     func setUpChildSimple() {
-        let url = NSBundle.mainBundle().URLForResource(
+        let url = NSBundle.main().urlForResource(
             "ElMirage", withExtension:"mp4")!
-        let player = AVPlayer(URL:url)
+        let player = AVPlayer(url:url)
         let av = AVPlayerViewController()
         av.player = player
-        av.view.frame = CGRectMake(10,10,300,200)
+        av.view.frame = CGRect(10,10,300,200)
         self.addChildViewController(av)
         self.view.addSubview(av.view)
-        av.didMoveToParentViewController(self)
+        av.didMove(toParentViewController:self)
     }
     
     func setUpChild() {
-        let url = NSBundle.mainBundle().URLForResource("ElMirage", withExtension:"mp4")!
-        let asset = AVURLAsset(URL:url, options:nil)
+        let url = NSBundle.main().urlForResource("ElMirage", withExtension:"mp4")!
+        let asset = AVURLAsset(url:url)
         let item = AVPlayerItem(asset:asset)
         let player = AVPlayer(playerItem:item)
         
         let av = AVPlayerViewController()
         av.player = player
-        av.view.frame = CGRectMake(10,10,300,200)
-        av.view.hidden = true // looks nicer if we don't show until ready
+        av.view.frame = CGRect(10, 10, 300, 200)
+        av.view.isHidden = true // looks nicer if we don't show until ready
         self.addChildViewController(av)
         self.view.addSubview(av.view)
-        av.didMoveToParentViewController(self)
+        av.didMove(toParentViewController:self)
         
         /*
         // just experimenting
@@ -85,18 +108,18 @@ class ViewController: UIViewController {
         }
         */
         
-        av.addObserver(self, forKeyPath: "readyForDisplay", options: .New, context: nil)
+        av.addObserver(self, forKeyPath: "readyForDisplay", options: .new, context:nil)
         
         return; // just proving you can swap out the player
         delay(3) {
-            let url = NSBundle.mainBundle().URLForResource("wilhelm", withExtension:"aiff")!
-            let player = AVPlayer(URL:url)
+            let url = NSBundle.main().urlForResource("wilhelm", withExtension:"aiff")!
+            let player = AVPlayer(url:url)
             av.player = player
         }
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?,
-        context: UnsafeMutablePointer<()>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [String : AnyObject]?,
+        context: UnsafeMutablePointer<()>?) {
             guard keyPath == "readyForDisplay" else {return}
             guard let vc = object as? AVPlayerViewController else {return}
             guard let ok = change?[NSKeyValueChangeNewKey] as? Bool else {return}
@@ -109,16 +132,16 @@ class ViewController: UIViewController {
     }
     
     
-    func finishConstructingInterface (vc:AVPlayerViewController) {
+    func finishConstructingInterface (_ vc:AVPlayerViewController) {
         print("finishing")
-        vc.view.hidden = false // hmm, maybe I should be animating the alpha instead
+        vc.view.isHidden = false // hmm, maybe I should be animating the alpha instead
     }
 }
 
 extension ViewController : UIVideoEditorControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
-    @IBAction func doEditorButton (sender:AnyObject!) {
-        let path = NSBundle.mainBundle().pathForResource("ElMirage", ofType: "mp4")!
-        let can = UIVideoEditorController.canEditVideoAtPath(path)
+    @IBAction func doEditorButton (_ sender:AnyObject!) {
+        let path = NSBundle.main().pathForResource("ElMirage", ofType: "mp4")!
+        let can = UIVideoEditorController.canEditVideo(atPath:path)
         if !can {
             print("can't edit this video")
             return
@@ -128,10 +151,10 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         vc.videoPath = path
         // must set to popover _manually_ on iPad! exception on presentation if you don't
         // could just set it; works fine as adaptive on iPhone
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            vc.modalPresentationStyle = .Popover
+        if UIDevice.current().userInterfaceIdiom == .pad {
+            vc.modalPresentationStyle = .popover
         }
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.present(vc, animated: true)
         print(vc.modalPresentationStyle.rawValue)
         if let pop = vc.popoverPresentationController {
             let v = sender as! UIView
@@ -144,7 +167,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         // with delegate methods, on the other hand, dismissing is up to you
     }
     
-    func videoEditorController(editor: UIVideoEditorController, didSaveEditedVideoToPath editedVideoPath: String) {
+    func videoEditorController(_ editor: UIVideoEditorController, didSaveEditedVideoToPath editedVideoPath: String) {
         print("saved to \(editedVideoPath)")
         if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(editedVideoPath) {
             print("saving to photos album")
@@ -154,7 +177,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         }
     }
     
-    func video(video:NSString!, savedWithError error:NSError!, ci:UnsafeMutablePointer<()>) {
+    func video(_ video:NSString!, savedWithError error:NSError!, ci:UnsafeMutablePointer<()>) {
         print("error:\(error)")
         /*
         Important to check for error, because user can deny access
@@ -162,20 +185,20 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         If that's the case, we will get error like this:
         Error Domain=ALAssetsLibraryErrorDomain Code=-3310 "Data unavailable" UserInfo=0x1d8355d0 {NSLocalizedRecoverySuggestion=Launch the Photos application, NSUnderlyingError=0x1d83d470 "Data unavailable", NSLocalizedDescription=Data unavailable}
         */
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated:true)
     }
     
-    func videoEditorControllerDidCancel(editor: UIVideoEditorController) {
+    func videoEditorControllerDidCancel(_ editor: UIVideoEditorController) {
         print("editor cancelled")
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated:true)
     }
     
-    func videoEditorController(editor: UIVideoEditorController, didFailWithError error: NSError) {
+    func videoEditorController(_ editor: UIVideoEditorController, didFailWithError error: NSError) {
         print("error: \(error.localizedDescription)")
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated:true)
     }
     
-    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         let vc = viewController as UIViewController
         vc.title = ""
         vc.navigationItem.title = ""
@@ -183,7 +206,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         // (so that it says Save instead of Use)
     }
     
-    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         print("editor popover dismissed")
     }
     

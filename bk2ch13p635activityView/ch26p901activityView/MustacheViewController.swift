@@ -16,11 +16,11 @@ class MustacheViewController: UIViewController {
         fatalError("NSCoding not supported")
     }
     
-    @IBAction func doCancel(sender:AnyObject) {
+    @IBAction func doCancel(_ sender:AnyObject) {
         self.activity?.activityDidFinish(false)
     }
     
-    @IBAction func doDone(sender:AnyObject) {
+    @IBAction func doDone(_ sender:AnyObject) {
         self.activity?.activityDidFinish(true)
     }
     

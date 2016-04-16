@@ -10,14 +10,16 @@ class Thing : NSObject, UIStateRestoring {
     
     var objectRestorationClass: AnyObject.Type? // unused
     
-    func encodeRestorableStateWithCoder(coder: NSCoder) {
+    @objc(encodeRestorableStateWithCoder:)
+    func encodeRestorableState(with coder: NSCoder) {
         print("thing encode")
-        coder.encodeObject(self.word, forKey:"word")
+        coder.encode(self.word as NSString, forKey:"word")
     }
     
-    func decodeRestorableStateWithCoder(coder: NSCoder) {
+    @objc(decodeRestorableStateWithCoder:)
+    func decodeRestorableState(with coder: NSCoder) {
         print("thing decode")
-        self.word = coder.decodeObjectForKey("word") as! String
+        self.word = coder.decodeObject(forKey:"word") as! String
     }
     
     func applicationFinishedRestoringState() {

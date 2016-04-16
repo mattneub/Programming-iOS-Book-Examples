@@ -10,54 +10,54 @@ class ViewController : UIViewController {
         
         let gr = UIView()
         gr.translatesAutoresizingMaskIntoConstraints = false
-        gr.backgroundColor = UIColor.greenColor()
+        gr.backgroundColor = UIColor.green()
         self.view.addSubview(gr)
         // not needed if we're already doing autolayout
         // [self.view setNeedsUpdateConstraints];
         
         var c = [NSLayoutConstraint]()
         // "g.r. is pinned to top and bottom of superview"
-        c.appendContentsOf(
-            NSLayoutConstraint.constraintsWithVisualFormat("V:|[gr]|",
+        c.append(contentsOf:
+            NSLayoutConstraint.constraints(withVisualFormat:"V:|[gr]|",
                 options:[], metrics:nil, views:["gr":gr])
         )
         // "g.r. is 1/3 the width of superview"
         c.append(
-            gr.widthAnchor.constraintEqualToAnchor(self.view.widthAnchor, multiplier: 1.0/3.0)
+            gr.widthAnchor.constraintEqual(toAnchor:self.view.widthAnchor, multiplier: 1.0/3.0)
         )
         
         // "onscreen, g.r.'s left is pinned to superview's left"
         let marrOn : [NSLayoutConstraint] =
-        NSLayoutConstraint.constraintsWithVisualFormat("H:|[gr]",
+        NSLayoutConstraint.constraints(withVisualFormat:"H:|[gr]",
             options:[], metrics:nil, views:["gr":gr])
         
         // "offscreen, g.r.'s right is pinned to superview's left"
         let marrOff : [NSLayoutConstraint] = [
-            gr.trailingAnchor.constraintEqualToAnchor(self.view.leadingAnchor)
+            gr.trailingAnchor.constraintEqual(to:self.view.leadingAnchor)
         ]
         
         self.greenRectConstraintsOnscreen = marrOn
         self.greenRectConstraintsOffscreen = marrOff
         // start out offscreen!
-        c.appendContentsOf(marrOff)
-        NSLayoutConstraint.activateConstraints(c)
-        self.adjustInterfaceForSize(self.view.bounds.size)
+        c.append(contentsOf:marrOff)
+        NSLayoutConstraint.activate(c)
+        self.adjustInterface(for:self.view.bounds.size)
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to:size, with: coordinator)
         if size != self.view.bounds.size {
-            self.adjustInterfaceForSize(size)
+            self.adjustInterface(for:size)
         }
     }
     
-    func adjustInterfaceForSize(size: CGSize) {
-        NSLayoutConstraint.deactivateConstraints(self.greenRectConstraintsOnscreen)
-        NSLayoutConstraint.deactivateConstraints(self.greenRectConstraintsOffscreen)
+    func adjustInterface(for size: CGSize) {
+        NSLayoutConstraint.deactivate(self.greenRectConstraintsOnscreen)
+        NSLayoutConstraint.deactivate(self.greenRectConstraintsOffscreen)
         if size.width > size.height {
-            NSLayoutConstraint.activateConstraints(self.greenRectConstraintsOnscreen)
+            NSLayoutConstraint.activate(self.greenRectConstraintsOnscreen)
         } else {
-            NSLayoutConstraint.activateConstraints(self.greenRectConstraintsOffscreen)
+            NSLayoutConstraint.activate(self.greenRectConstraintsOffscreen)
         }
     }
     

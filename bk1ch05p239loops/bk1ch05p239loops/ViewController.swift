@@ -3,9 +3,9 @@
 import UIKit
 
 enum Error {
-    case Number(Int)
-    case Message(String)
-    case Fatal
+    case number(Int)
+    case message(String)
+    case fatal
 }
 
 class ViewController: UIViewController {
@@ -70,15 +70,31 @@ class ViewController: UIViewController {
         }
         
         do {
+            let tvc = UITableViewCell()
+            let subview1 = UIView()
+            let subview2 = UITextField()
+            tvc.addSubview(subview1)
+            subview1.addSubview(subview2)
+            let textField = subview2
+            var v : UIView? = textField
+            repeat {v = v?.superview} while !(v is UITableViewCell || v == nil)
+            if let c = v as? UITableViewCell {
+                print("got it \(c)")
+            } else {
+                print("nope")
+            }
+        }
+        
+        do {
             let arr : [Error] = [
-                .Message("ouch"), .Message("yipes"), .Number(10),
-                .Number(-1), .Fatal
+                .message("ouch"), .message("yipes"), .number(10),
+                .number(-1), .fatal
             ]
             var i = 0
             // removed use of i++, deprecated in Swift 2.2, to be removed in Swift 3
-            while case let .Message(message) = arr[i]  {
-                i = i.successor()
+            while case let .message(message) = arr[i]  {
                 print(message)
+                i += 1
             }
             print(arr)
 
@@ -100,7 +116,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            for var i in 1...5 {
+            for var i in 1...5 { // for var still legal
                 // removed use of i++, deprecated in Swift 2.2, to be removed in Swift 3
                 i = i + 1
                 print(i)
@@ -109,7 +125,7 @@ class ViewController: UIViewController {
         
 
         do {
-            var g = (1...5).generate()
+            var g = (1...5).makeIterator()
             while let i = g.next() {
                 print(i)
             }
@@ -130,7 +146,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            for (i,v) in self.tiles.enumerate() {
+            for (i,v) in self.tiles.enumerated() {
                 v.center = self.centers[i]
             }
         }
@@ -142,13 +158,13 @@ class ViewController: UIViewController {
         }
         
         do {
-            for i in 10.stride(through: 0, by: -2) {
+            for i in stride(from:10, through: 0, by: -2) {
                 print(i) // 10, 8, 6, 4, 2, 0
             }
         }
         
         do {
-            let range = (0...10).reverse().filter{$0 % 2 == 0}
+            let range = (0...10).reversed().filter{$0 % 2 == 0}
             for i in range {
                 print(i) // 10, 8, 6, 4, 2, 0
             }
@@ -166,11 +182,18 @@ class ViewController: UIViewController {
         
         do {
             let arr : [Error] = [
-                .Message("ouch"), .Message("yipes"), .Number(10),
-                .Number(-1), .Fatal
+                .message("ouch"), .message("yipes"), .number(10),
+                .number(-1), .fatal
             ]
-            for case let .Number(i) in arr {
+            for case let .number(i) in arr {
                 print(i) // 10, -1
+            }
+        }
+        
+        do {
+            let arr : [AnyObject] = ["hey", 1, "ho"]
+            for case let s as String in arr {
+                print(s)
             }
         }
 
@@ -220,7 +243,7 @@ class ViewController: UIViewController {
         do {
             var values = [0.0]
             var direction = 1.0
-            for i in 20.stride(to: 60, by: 5) {
+            for i in stride(from: 20, to: 60, by: 5) {
                 values.append( direction * M_PI / Double(i) )
                 direction *= -1
             }
@@ -230,7 +253,7 @@ class ViewController: UIViewController {
         // this is Swiftier and tighter, but a lot harder to understand
         do {
             var values = [0.0]
-            for (ix,i) in 20.stride(to: 60, by: 5).enumerate() {
+            for (ix,i) in stride(from: 20, to: 60, by: 5).enumerated() {
                 values.append( (ix % 2 == 1 ? -1.0 : 1.0) * M_PI / Double(i) )
             }
             print(values)

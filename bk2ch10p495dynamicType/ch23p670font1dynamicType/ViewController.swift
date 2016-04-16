@@ -13,7 +13,7 @@ class ViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(doDynamicType), name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        NSNotificationCenter.default().addObserver(self, selector: #selector(doDynamicType), name: UIContentSizeCategoryDidChangeNotification, object: nil)
         
 //        UIFont.familyNames().map {UIFont.fontNamesForFamilyName($0)}
 //            .forEach {(n:[String]) in n.forEach {print($0)}}
@@ -103,8 +103,8 @@ class ViewController : UIViewController {
     }
     
     func doDynamicType(n:NSNotification) {
-        let style = self.lab.font.fontDescriptor().objectForKey(UIFontDescriptorTextStyleAttribute) as! String
-        self.lab.font = UIFont.preferredFontForTextStyle(style)
+        let style = self.lab.font.fontDescriptor().object(forKey:UIFontDescriptorTextStyleAttribute) as! String
+        self.lab.font = UIFont.preferredFont(forTextStyle:style)
     }
     
     

@@ -6,7 +6,7 @@ class Dog {}
 class NoisyDog : Dog {}
 
 extension Dictionary {
-    mutating func addEntriesFromDictionary(d:[Key:Value]) {
+    mutating func addEntries(from d:[Key:Value]) {
         for (k,v) in d {
             self[k] = v
         }
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
             let sum = d.values.reduce(0, combine:+) // ***
             print(sum)
             
-            let min = d.values.minElement()
+            let min = d.values.min()
             print(min) // Optional(1)
             
             let arr = Array(d.values.filter{$0 < 2})
@@ -86,24 +86,24 @@ class ViewController: UIViewController {
 
         UINavigationBar.appearance().titleTextAttributes = [
             NSFontAttributeName : UIFont(name: "ChalkboardSE-Bold", size: 20)!,
-            NSForegroundColorAttributeName : UIColor.darkTextColor(),
+            NSForegroundColorAttributeName : UIColor.darkText(),
             NSShadowAttributeName : {
                 let shad = NSShadow()
-                shad.shadowOffset = CGSizeMake(1.5,1.5)
+                shad.shadowOffset = CGSize(width:1.5,height:1.5)
                 return shad
             }()
         ]
         
-        let nc = NSNotificationCenter.defaultCenter()
+        let nc = NSNotificationCenter.default()
         // Cool and long-awaited new feature of Swift 2.2: no more string selectors
         // This means the compiler will form the actual selector for you
         // You don't even have to get it totally right! Here, I've used the bare name...
         // ...but Swift will still form the selector correctly for me
         // In other words, any valid reference to the method will do
         nc.addObserver(self, selector:#selector(notificationArrived), name: "test", object: nil)
-        nc.postNotificationName("test", object: self, userInfo: ["junk":"nonsense"])
-        nc.postNotificationName("test", object: self, userInfo: ["progress":"nonsense"])
-        nc.postNotificationName("test", object: self, userInfo: ["progress":3])
+        nc.post(name:"test", object: self, userInfo: ["junk":"nonsense"])
+        nc.post(name:"test", object: self, userInfo: ["progress":"nonsense"])
+        nc.post(name:"test", object: self, userInfo: ["progress":3])
         
         do {
             var d1 = ["NY":"New York", "CA":"California"]
@@ -111,7 +111,7 @@ class ViewController: UIViewController {
             // d1 += d2 // nope
             // d1.appendContentsOf(d2) // nope
             let mutd1 = NSMutableDictionary(dictionary:d1)
-            mutd1.addEntriesFromDictionary(d2)
+            mutd1.addEntries(from:d2)
             d1 = mutd1 as NSDictionary as! [String:String]
             // d1 is now ["MD": "Maryland", "NY": "New York", "CA": "California"]
             print(d1)
@@ -120,19 +120,25 @@ class ViewController: UIViewController {
         do {
             var d1 = ["NY":"New York", "CA":"California"]
             let d2 = ["MD":"Maryland"]
-            d1.addEntriesFromDictionary(d2)
+            d1.addEntries(from:d2)
             print(d1)
         }
 
     }
     
     func notificationArrived(n:NSNotification) {
-        let prog = n.userInfo?["progress"] as? NSNumber
+        let prog = (n.userInfo?["progress"] as? NSNumber)?.doubleValue
         if prog != nil {
-            self.progress = prog!.doubleValue
+            self.progress = prog!
             print("at last! \(self.progress)")
         } else {
             print("invalid notification")
+        }
+    }
+
+    func anotherWay(n:NSNotification) {
+        if let prog = n.userInfo?["progress"] as? Double { // chapter 10
+            self.progress = prog
         }
     }
 

@@ -12,20 +12,20 @@ class ViewController: UIViewController {
     var synth : AVSpeechSynthesizer!
     var del : MyDelegate! = MyDelegate()
 
-    @IBAction func doButton1(sender: AnyObject) {
+    @IBAction func doButton1(_ sender: AnyObject) {
         self.synth = AVSpeechSynthesizer()
         self.synth.delegate = self.del
     }
     
     let crash = true
     
-    @IBAction func doButton2(sender: AnyObject) {
+    @IBAction func doButton2(_ sender: AnyObject) {
         if crash {
             self.del = nil
         }
         if let s = self.synth {
             let utt = AVSpeechUtterance(string:"Hello, world!")
-            s.speakUtterance(utt)
+            s.speak(utt)
         }
     }
 

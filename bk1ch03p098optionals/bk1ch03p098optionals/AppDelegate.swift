@@ -10,14 +10,14 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     typealias RootViewController = ViewController
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]? = [:]) -> Bool {
     
         switch which {
         case 1:
             
             self.window = UIWindow()
             self.window!.rootViewController = RootViewController()
-            self.window!.backgroundColor = UIColor.whiteColor()
+            self.window!.backgroundColor = UIColor.white()
             self.window!.makeKeyAndVisible()
             
         case 2:
@@ -27,7 +27,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             self.window = UIWindow()
             let window = self.window!
             window.rootViewController = RootViewController()
-            window.backgroundColor = UIColor.whiteColor()
+            window.backgroundColor = UIColor.white()
             window.makeKeyAndVisible()
 
             

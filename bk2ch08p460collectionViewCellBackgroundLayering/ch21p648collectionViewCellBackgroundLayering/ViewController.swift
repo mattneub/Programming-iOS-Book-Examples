@@ -1,16 +1,39 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class ViewController : UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let layout = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSizeMake(150,50)
+        layout.itemSize = CGSize(150,50)
         
         let v = UIView()
-        v.backgroundColor = UIColor.yellowColor()
+        v.backgroundColor = UIColor.yellow()
         // next line makes the whole background yellow, covering the background color
         // self.collectionView.backgroundView = v
     }
@@ -19,11 +42,11 @@ class ViewController : UICollectionViewController {
         return true
     }
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 30
     }
     
@@ -41,14 +64,14 @@ class ViewController : UICollectionViewController {
     the content view and its contents are on top of that
     */
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell",
-        forIndexPath:indexPath)
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"Cell",
+        for: indexPath)
         if cell.backgroundView == nil { // brand new cell
-            cell.backgroundColor = UIColor.redColor()
+            cell.backgroundColor = UIColor.red()
             
             let v = UIImageView(frame:cell.bounds)
-            v.contentMode = .ScaleToFill
+            v.contentMode = .scaleToFill
             v.image = UIImage(named:"linen.png")
             cell.backgroundView = v
             
@@ -60,15 +83,15 @@ class ViewController : UICollectionViewController {
             lab.translatesAutoresizingMaskIntoConstraints = false
             lab.tag = 1
             cell.contentView.addSubview(lab)
-            NSLayoutConstraint.activateConstraints([
-                lab.centerXAnchor.constraintEqualToAnchor(cell.contentView.centerXAnchor),
-                lab.centerYAnchor.constraintEqualToAnchor(cell.contentView.centerYAnchor)
+            NSLayoutConstraint.activate([
+                lab.centerXAnchor.constraintEqual(to:cell.contentView.centerXAnchor),
+                lab.centerYAnchor.constraintEqual(to:cell.contentView.centerYAnchor)
             ])
-            lab.textColor = UIColor.blackColor()
-            lab.highlightedTextColor = UIColor.whiteColor()
-            lab.backgroundColor = UIColor.clearColor()
+            lab.textColor = UIColor.black()
+            lab.highlightedTextColor = UIColor.white()
+            lab.backgroundColor = UIColor.clear()
         }
-        let lab = cell.viewWithTag(1) as! UILabel
+        let lab = cell.withTag(1) as! UILabel
         lab.text = "Howdy there \(indexPath.item)"
         return cell
     }

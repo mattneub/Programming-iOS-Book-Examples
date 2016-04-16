@@ -9,13 +9,13 @@ class ViewController : UIViewController {
     @IBOutlet var outer : UIView!
     @IBOutlet var inner : UIView!
     
-    @IBAction func doButton(sender : AnyObject?) {
+    @IBAction func doButton(_ sender: AnyObject?) {
         self.animate()
     }
     
     func animate() {
-        let opts : UIViewAnimationOptions = .TransitionFlipFromLeft
-        UIView.transitionWithView(self.iv, duration: 0.8, options: opts,
+        let opts : UIViewAnimationOptions = .transitionFlipFromLeft
+        UIView.transition(with:self.iv, duration: 0.8, options: opts,
             animations: {
                 self.iv.image = UIImage(named:"Smiley")
             }, completion: nil)
@@ -23,15 +23,15 @@ class ViewController : UIViewController {
         // ======
         
         self.v.reverse = !self.v.reverse
-        UIView.transitionWithView(self.v, duration: 1, options: opts,
+        UIView.transition(with:self.v, duration: 1, options: opts,
             animations: {
                 self.v.setNeedsDisplay()
             }, completion: nil)
         
         // ======
         
-        let opts2 : UIViewAnimationOptions = [.TransitionFlipFromLeft, .AllowAnimatedContent]
-        UIView.transitionWithView(self.outer, duration: 1, options: opts2,
+        let opts2 : UIViewAnimationOptions = [.transitionFlipFromLeft, .allowAnimatedContent]
+        UIView.transition(with:self.outer, duration: 1, options: opts2,
             animations: {
                 var f = self.inner.frame
                 f.size.width = self.outer.frame.width

@@ -8,9 +8,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]? = [:]) -> Bool {
 
-        NSNotificationCenter.defaultCenter().addObserver(self,
+        NSNotificationCenter.default().addObserver(self,
             selector: #selector(cardTapped),
             name: "cardTapped",
             object: nil)

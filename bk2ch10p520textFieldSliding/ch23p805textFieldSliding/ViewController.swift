@@ -11,33 +11,33 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardShow), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardHide), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.default().addObserver(self, selector: #selector(keyboardShow), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.default().addObserver(self, selector: #selector(keyboardHide), name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    func textFieldDidBeginEditing(tf: UITextField) {
+    func textFieldDidBeginEditing(_ tf: UITextField) {
         print("did begin!")
         self.fr = tf // keep track of first responder
         
-//        let s = NSAttributedString(string: "this is a test", attributes: [NSForegroundColorAttributeName:UIColor.blueColor(), NSFontAttributeName:UIFont(name: "GillSans", size: 20)!])
+//        let s = NSAttributedString(string: "this is a test", attributes: [NSForegroundColorAttributeName:UIColor.blue(), NSFontAttributeName:UIFont(name: "GillSans", size: 20)!])
 //        tf.attributedText = s
-//        tf.textColor = UIColor.redColor()
+//        tf.textColor = UIColor.red()
 //        tf.text = "howdy"
 //        print(tf.attributedText)
 //        
 //        let lab = UILabel()
 //        lab.attributedText = s
-//        lab.textColor = UIColor.redColor()
+//        lab.textColor = UIColor.red()
 //        lab.text = "howdy"
 //        print(lab.attributedText)
         
-//        let s = NSAttributedString(string: "this is a test so let's see what happens when we do this", attributes: [NSForegroundColorAttributeName:UIColor.blueColor(), NSFontAttributeName:UIFont(name: "GillSans", size: 20)!])
+//        let s = NSAttributedString(string: "this is a test so let's see what happens when we do this", attributes: [NSForegroundColorAttributeName:UIColor.blue(), NSFontAttributeName:UIFont(name: "GillSans", size: 20)!])
 //        tf.adjustsFontSizeToFitWidth = false
 //        tf.minimumFontSize = 6
 //        tf.attributedPlaceholder = s
         
         // tf.borderStyle = .Bezel
-        // tf.backgroundColor = UIColor.redColor()
+        // tf.backgroundColor = UIColor.red()
         
 //        let t = UITextField()
 //        t.borderStyle = .RoundedRect
@@ -50,7 +50,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    func textFieldShouldReturn(tf: UITextField) -> Bool {
+    func textFieldShouldReturn(_ tf: UITextField) -> Bool {
         tf.resignFirstResponder()
         self.fr = nil
         return true
@@ -62,12 +62,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func keyboardShow(n:NSNotification) {
         print("show!")
-        let d = n.userInfo!
+        let d = n.userInfo as! [String:AnyObject]
         if let local = d[UIKeyboardIsLocalUserInfoKey] {
             print(local)
         }
-        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-        r = self.slidingView.convertRect(r, fromView:nil)
+        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue()
+        r = self.slidingView.convert(r, from:nil)
         if let f = self.fr?.frame {
             let y : CGFloat =
                 f.maxY + r.size.height - self.slidingView.bounds.height + 5
@@ -81,7 +81,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func keyboardHide(n:NSNotification) {
         print("hide!")
-        let d = n.userInfo!
+        let d = n.userInfo as! [String:AnyObject]
         if let local = d[UIKeyboardIsLocalUserInfoKey] {
             print(local)
         }

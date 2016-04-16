@@ -10,19 +10,19 @@ viewWillAppear (1st) and viewWillDisappear(2nd) are called...
 
 class FirstViewController : UIViewController {
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("\(self) " + #function)
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("\(self) " + #function)
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("\(self) " + #function)
     }
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("\(self) " + #function)
     }
@@ -31,7 +31,7 @@ class FirstViewController : UIViewController {
 }
 
 class SecondViewController : UIViewController {
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
@@ -39,7 +39,7 @@ class SecondViewController : UIViewController {
         }
 
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
@@ -47,7 +47,7 @@ class SecondViewController : UIViewController {
         }
 
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("\(self) " + #function)
         
@@ -56,7 +56,7 @@ class SecondViewController : UIViewController {
         }
         
     }
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {

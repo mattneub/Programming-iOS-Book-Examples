@@ -13,13 +13,13 @@ class ViewController: UIViewController {
         shape.frame = v.bounds
         v.layer.addSublayer(shape)
         
-        shape.fillColor = UIColor.clearColor().CGColor
-        shape.strokeColor = UIColor.redColor().CGColor
+        shape.fillColor = UIColor.clear().cgColor
+        shape.strokeColor = UIColor.red().cgColor
         
-        let path = CGPathCreateWithRect(shape.bounds, nil)
+        let path = CGPath(rect:shape.bounds, transform:nil)
         shape.path = path
         
-        let path2 = CGPathCreateWithEllipseInRect(shape.bounds, nil)
+        let path2 = CGPath(ellipseIn:shape.bounds, transform:nil)
         let ba = CABasicAnimation(keyPath: "path")
         ba.duration = 1
         ba.fromValue = path
@@ -27,13 +27,13 @@ class ViewController: UIViewController {
         
         shape.speed = 0
         shape.timeOffset = 0
-        shape.addAnimation(ba, forKey: nil)
+        shape.add(ba, forKey: nil)
         
         self.shape = shape
         
     }
     
-    @IBAction func doSlider(sender: AnyObject) {
+    @IBAction func doSlider(_ sender: AnyObject) {
         let slider = sender as! UISlider
         self.shape.timeOffset = Double(slider.value)
     }

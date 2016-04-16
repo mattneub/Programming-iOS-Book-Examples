@@ -14,13 +14,15 @@ class ViewController: UIViewController {
     
     * returns: A string containing dogs
      
-    * author: Who do you think?
      
     */
     
-    func dogMyCats(cats:String) -> String {
+    func dogMyCats(_ cats:String) -> String {
         return "Dogs"
     }
+    
+    // interesting to add: * author: Who do you think?
+
     
     /// Just showing that this gets Quick Help
     /// too.

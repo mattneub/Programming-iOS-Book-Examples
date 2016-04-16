@@ -4,14 +4,14 @@ import UIKit
 
 protocol ColorPickerDelegate : class {
     // color == nil on cancel
-    func colorPicker (picker:ColorPickerController,
+    func colorPicker (_ picker:ColorPickerController,
         didSetColorNamed theName:String?,
         toColor theColor:UIColor?)
 }
 
 class ColorPickerController : UIViewController {
     weak var delegate: ColorPickerDelegate?
-    var color = UIColor.redColor()
+    var color = UIColor.red()
     var colorName : String
     
     init(colorName:String, andColor:UIColor) {
@@ -24,10 +24,10 @@ class ColorPickerController : UIViewController {
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return .Portrait
+        return .portrait
     }
 
-    @IBAction func dismissColorPicker(sender: AnyObject?) {
+    @IBAction func dismissColorPicker(_ sender: AnyObject?) {
         let c : UIColor? = self.color
         self.delegate?.colorPicker(
             self, didSetColorNamed: self.colorName, toColor: c)

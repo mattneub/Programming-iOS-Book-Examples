@@ -10,7 +10,7 @@ class ViewController : UIViewController {
         self.pOrig = self.v.center
         self.pFinal = self.v.center
         self.pFinal.x += 100
-        UIView.animateWithDuration(4, animations: {
+        UIView.animate(withDuration:4, animations: {
             self.v.center = self.pFinal
             }, completion: {
                 _ in
@@ -27,8 +27,8 @@ class ViewController : UIViewController {
             self.v.layer.removeAllAnimations()
         case 2:
             // iOS 7 and before; no longer works in iOS 8
-            let opts = UIViewAnimationOptions.BeginFromCurrentState
-            UIView.animateWithDuration(0.1, delay:0.1, options:opts,
+            let opts = UIViewAnimationOptions.beginFromCurrentState
+            UIView.animate(withDuration:0.1, delay:0.1, options:opts,
                 animations: {
                     var p = self.pFinal!
                     p.x += 1
@@ -44,7 +44,7 @@ class ViewController : UIViewController {
             // to prevent that, we have to intervene directly
             self.v.layer.position = (self.v.layer.presentationLayer() as! CALayer).position
             self.v.layer.removeAllAnimations()
-            UIView.animateWithDuration(0.1, animations: {
+            UIView.animate(withDuration:0.1, animations: {
                 self.v.center = self.pFinal
                 }, completion: {
                     _ in
@@ -56,7 +56,7 @@ class ViewController : UIViewController {
             // unless we intervene directly
             self.v.layer.position = (self.v.layer.presentationLayer() as! CALayer).position
             self.v.layer.removeAllAnimations()
-            UIView.animateWithDuration(0.1, animations: {
+            UIView.animate(withDuration:0.1, animations: {
                 self.v.center = self.pOrig // need to have recorded original position
                 }, completion: {
                     _ in
@@ -70,11 +70,11 @@ class ViewController : UIViewController {
         }
     }
     
-    @IBAction func doStart(sender:AnyObject?) {
+    @IBAction func doStart(_ sender:AnyObject?) {
         self.animate()
     }
     
-    @IBAction func doStop(sender:AnyObject?) {
+    @IBAction func doStop(_ sender:AnyObject?) {
         self.cancel()
     }
     

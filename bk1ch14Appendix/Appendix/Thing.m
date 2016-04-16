@@ -26,4 +26,8 @@ void setState (State s) {
     Womble* womble = [[Womble alloc] init];
 }
 
+- (void) combineWithThing: (Thing*) otherThing {
+    
+}
+
 @end

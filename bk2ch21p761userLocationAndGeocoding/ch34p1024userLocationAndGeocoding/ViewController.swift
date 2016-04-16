@@ -4,7 +4,7 @@ import MapKit
 import AddressBookUI
 import Contacts
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -25,35 +25,35 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         
         let sb = UISearchBar()
         sb.sizeToFit()
-        sb.searchBarStyle = .Minimal
+        sb.searchBarStyle = .minimal
         sb.delegate = self
         self.navigationItem.titleView = sb
         
         self.map.delegate = self
     }
     
-    @IBAction func doButton (sender:AnyObject!) {
-        let mi = MKMapItem.mapItemForCurrentLocation()
+    @IBAction func doButton (_ sender:AnyObject!) {
+        let mi = MKMapItem.forCurrentLocation()
         // setting the span doesn't seem to work
         // let span = MKCoordinateSpanMake(0.0005, 0.0005)
-        mi.openInMapsWithLaunchOptions([
-            MKLaunchOptionsMapTypeKey: MKMapType.Standard.rawValue,
+        mi.openInMaps(launchOptions:[
+            MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue as NSNumber,
             // MKLaunchOptionsMapSpanKey: NSValue(MKCoordinateSpan:span)
             ])
     }
     
-    @IBAction func doButton2 (sender:AnyObject!) {
+    @IBAction func doButton2 (_ sender:AnyObject!) {
         // new in iOS 8, can't simply switch this on
         // must request authorization first
         // and this request will be ignored without a corresponding reason in the Info.plist
         // (see next chapter for full dance)
         self.locman.requestWhenInUseAuthorization()
         // self.map.showsUserLocation = true // otiose (I love that word)
-        self.map.userTrackingMode = .Follow // will cause map to zoom nicely to user location
+        self.map.userTrackingMode = .follow // will cause map to zoom nicely to user location
         // (the thing I was doing before, adjusting the map region manually, was just wrong)
     }
 
-    @IBAction func reportAddress (sender:AnyObject!) {
+    @IBAction func reportAddress (_ sender:AnyObject!) {
         guard let loc = self.map.userLocation.location else {
             print("I don't know where you are now")
             return
@@ -73,7 +73,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         }
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         let s = searchBar.text
         if s == nil || s!.characters.count < 5 { return }
@@ -95,7 +95,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         }
     }
     
-    @IBAction func thaiFoodNearMapLocation (sender:AnyObject!) {
+    @IBAction func thaiFoodNearMapLocation (_ sender:AnyObject!) {
         guard let loc = self.map.userLocation.location else {
             print("I don't know where you are now")
             return
@@ -104,7 +104,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         req.naturalLanguageQuery = "Thai restaurant"
         req.region = MKCoordinateRegionMake(loc.coordinate, MKCoordinateSpanMake(1,1))
         let search = MKLocalSearch(request:req)
-        search.startWithCompletionHandler() {
+        search.start {
             (response : MKLocalSearchResponse?, error : NSError?) in
             guard let response = response else {
                 print(error)
@@ -124,7 +124,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         }
     }
     
-    @IBAction func directionsToThaiFood (sender:AnyObject!) {
+    @IBAction func directionsToThaiFood (_ sender:AnyObject!) {
         let userLoc = self.map.userLocation
         let loc = userLoc.location
         if loc == nil {
@@ -135,7 +135,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         req.naturalLanguageQuery = "Thai restaurant"
         req.region = self.map.region
         let search = MKLocalSearch(request:req)
-        search.startWithCompletionHandler() {
+        search.start {
             (response : MKLocalSearchResponse?, error : NSError?) in
             guard let response = response else {
                 print(error)
@@ -144,10 +144,10 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             print("Got restaurant address")
             let mi = response.mapItems[0] // I'm still feeling lucky
             let req = MKDirectionsRequest()
-            req.source = MKMapItem.mapItemForCurrentLocation()
+            req.source = MKMapItem.forCurrentLocation()
             req.destination = mi
             let dir = MKDirections(request:req)
-            dir.calculateDirectionsWithCompletionHandler() {
+            dir.calculate {
                 (response:MKDirectionsResponse?, error:NSError?) in
                 guard let response = response else {
                     print(error)
@@ -156,7 +156,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
                 print("got directions")
                 let route = response.routes[0] // I'm feeling insanely lucky
                 let poly = route.polyline
-                self.map.addOverlay(poly)
+                self.map.add(poly)
                 for step in route.steps {
                     print("After \(step.distance) metres: \(step.instructions)")
                 }
@@ -164,10 +164,10 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         }
     }
 
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let overlay = overlay as? MKPolyline {
             let v = MKPolylineRenderer(polyline:overlay)
-            v.strokeColor = UIColor.blueColor().colorWithAlphaComponent(0.8)
+            v.strokeColor = UIColor.blue().withAlphaComponent(0.8)
             v.lineWidth = 2
             return v
         }

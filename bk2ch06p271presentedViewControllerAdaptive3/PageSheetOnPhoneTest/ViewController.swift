@@ -3,14 +3,14 @@
 import UIKit
 
 class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
-    var adaptiveType : UIModalPresentationStyle = .None
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    var adaptiveType : UIModalPresentationStyle = .none
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         print(controller.presentationStyle.rawValue)
         print(self.adaptiveType.rawValue)
         return self.adaptiveType
     }
     
-    func presentationController(presentationController: UIPresentationController, willPresentWithAdaptiveStyle style: UIModalPresentationStyle, transitionCoordinator: UIViewControllerTransitionCoordinator?) {
+    func presentationController(_ presentationController: UIPresentationController, willPresentWithAdaptiveStyle style: UIModalPresentationStyle, transitionCoordinator: UIViewControllerTransitionCoordinator?) {
         print(style.rawValue)
     }
     
@@ -18,21 +18,21 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     // you can adapt PageSheet to None and get a page sheet...
     // but if you adapt PageSheet to PageSheet you get FullScreen?????
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         let d = segue.destinationViewController
         if segue.identifier == "test1" {
-            self.adaptiveType = .None
+            self.adaptiveType = .none
             d.presentationController!.delegate = self
         }
         if segue.identifier == "test2" {
-            self.adaptiveType = .PageSheet
+            self.adaptiveType = .pageSheet
             d.presentationController!.delegate = self
         }
     }
     
 
-    @IBAction func doDismiss(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func doDismiss(_ sender: AnyObject) {
+        self.dismiss(animated:true, completion: nil)
     }
 }
 

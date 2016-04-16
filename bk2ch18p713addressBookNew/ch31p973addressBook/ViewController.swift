@@ -4,7 +4,7 @@ import Contacts
 import ContactsUI
 
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -18,43 +18,43 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     // authorization
     
     func determineStatus() -> Bool {
-        let status = CNContactStore.authorizationStatusForEntityType(.Contacts)
+        let status = CNContactStore.authorizationStatus(for:.contacts)
         switch status {
-        case .Authorized:
+        case .authorized:
             return true
-        case .NotDetermined:
-            CNContactStore().requestAccessForEntityType(.Contacts) {_ in}
+        case .notDetermined:
+            CNContactStore().requestAccess(for:.contacts) {_ in}
             return false
-        case .Restricted:
+        case .restricted:
             return false
-        case .Denied:
-            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Contacts?", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+        case .denied:
+            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Contacts?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "No", style: .cancel))
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
-                UIApplication.sharedApplication().openURL(url)
+                UIApplication.shared().open(url)
             }))
-            self.presentViewController(alert, animated:true, completion:nil)
+            self.present(alert, animated:true, completion:nil)
             return false
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.default().removeObserver(self)
     }
 
     //
     
-    @IBAction func doFindMoi (sender:AnyObject!) {
-        CNContactStore().requestAccessForEntityType(.Contacts) {
+    @IBAction func doFindMoi (_ sender:AnyObject!) {
+        CNContactStore().requestAccess(for:.contacts) {
             ok, err in
             guard ok else {
                 print("not authorized")
@@ -65,9 +65,9 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                 var premoi : CNContact!
                 switch which {
                 case 1:
-                    let pred = CNContact.predicateForContactsMatchingName("Matt")
-                    var matts = try CNContactStore().unifiedContactsMatchingPredicate(pred, keysToFetch: [
-                        CNContactFamilyNameKey, CNContactGivenNameKey
+                    let pred = CNContact.predicateForContacts(matchingName:"Matt")
+                    var matts = try CNContactStore().unifiedContacts(matching:pred, keysToFetch: [
+                        CNContactFamilyNameKey as NSString, CNContactGivenNameKey as NSString
                         ])
                     matts = matts.filter{$0.familyName == "Neuburg"}
                     guard let moi = matts.first else {
@@ -76,17 +76,17 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                     }
                     premoi = moi
                 case 2:
-                    let pred = CNContact.predicateForContactsMatchingName("Matt")
+                    let pred = CNContact.predicateForContacts(matchingName:"Matt")
                     let req = CNContactFetchRequest(keysToFetch: [
-                        CNContactFamilyNameKey, CNContactGivenNameKey
+                        CNContactFamilyNameKey as NSString, CNContactGivenNameKey as NSString
                         ])
                     req.predicate = pred
                     var matt : CNContact? = nil
-                    try CNContactStore().enumerateContactsWithFetchRequest(req) {
+                    try CNContactStore().enumerateContacts(with:req) {
                         con, stop in
                         if con.familyName == "Neuburg" {
                             matt = con
-                            stop.memory = true
+                            stop.pointee = true
                         }
                     }
                     guard let moi = matt else {
@@ -103,14 +103,14 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                 } else {
                     print("you haven't fetched emails yet")
                 }
-                moi = try CNContactStore().unifiedContactWithIdentifier(moi.identifier, keysToFetch: [CNContactFamilyNameKey, CNContactGivenNameKey, CNContactEmailAddressesKey])
+                moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [CNContactFamilyNameKey as NSString, CNContactGivenNameKey as NSString, CNContactEmailAddressesKey as NSString])
                 let emails = moi.emailAddresses
                 let workemails = emails.filter{$0.label == CNLabelWork}.map{$0.value}
                 print(workemails)
-                let full = CNContactFormatterStyle.FullName
-                let keys = CNContactFormatter.descriptorForRequiredKeysForStyle(full)
-                moi = try CNContactStore().unifiedContactWithIdentifier(moi.identifier, keysToFetch: [keys, CNContactEmailAddressesKey])
-                if let name = CNContactFormatter.stringFromContact(moi, style: full) {
+                let full = CNContactFormatterStyle.fullName
+                let keys = CNContactFormatter.descriptorForRequiredKeys(for:full)
+                moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [keys, CNContactEmailAddressesKey as NSString])
+                if let name = CNContactFormatter.string(from: moi, style: full) {
                     print("\(name): \(workemails[0])") // Matt Neuburg: matt@tidbits.com
                 }
             } catch {
@@ -120,7 +120,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     }
 
     
-    @IBAction func doCreateSnidely (sender:AnyObject!) {
+    @IBAction func doCreateSnidely (_ sender:AnyObject!) {
         let snidely = CNMutableContact()
         snidely.givenName = "Snidely"
         snidely.familyName = "Whiplash"
@@ -128,15 +128,15 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         snidely.emailAddresses.append(email)
         snidely.imageData = UIImagePNGRepresentation(UIImage(named:"snidely.jpg")!)
         let save = CNSaveRequest()
-        save.addContact(snidely, toContainerWithIdentifier: nil)
-        CNContactStore().requestAccessForEntityType(.Contacts) {
+        save.add(snidely, toContainerWithIdentifier: nil)
+        CNContactStore().requestAccess(for:.contacts) {
             ok, error in
             guard ok else {
                 print("not authorized")
                 return
             }
             do {
-                try CNContactStore().executeSaveRequest(save)
+                try CNContactStore().execute(save)
                 print("created snidely!")
             } catch {
                 print(error)
@@ -144,38 +144,38 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         }
     }
 
-    @IBAction func doPeoplePicker (sender:AnyObject!) {
+    @IBAction func doPeoplePicker (_ sender:AnyObject!) {
         let picker = CNContactPickerViewController()
         picker.delegate = self
         picker.displayedPropertyKeys = [CNContactEmailAddressesKey]
         picker.predicateForSelectionOfProperty = NSPredicate(format: "key == 'emailAddresses'")
         picker.predicateForEnablingContact = NSPredicate(format: "emailAddresses.@count > 0")
-        self.presentViewController(picker, animated:true, completion:nil)
+        self.present(picker, animated:true, completion:nil)
     }
     
-    func contactPicker(picker: CNContactPickerViewController, didSelectContactProperty prop: CNContactProperty) {
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect prop: CNContactProperty) {
         print(prop)
         print(prop.contact)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated:true, completion: nil)
     }
 
-    @IBAction func doViewPerson (sender:AnyObject!) {
+    @IBAction func doViewPerson (_ sender:AnyObject!) {
         
-        CNContactStore().requestAccessForEntityType(.Contacts) {
+        CNContactStore().requestAccess(for: .contacts) {
             ok, err in
             guard ok else {
                 print("not authorized")
                 return
             }
             do {
-                let pred = CNContact.predicateForContactsMatchingName("Snidely")
+                let pred = CNContact.predicateForContacts(matchingName: "Snidely")
                 let keys = CNContactViewController.descriptorForRequiredKeys()
-                let snides = try CNContactStore().unifiedContactsMatchingPredicate(pred, keysToFetch: [keys])
+                let snides = try CNContactStore().unifiedContacts(matching: pred, keysToFetch: [keys])
                 guard let snide = snides.first else {
                     print("no snidely")
                     return
                 }
-                let vc = CNContactViewController(forContact:snide)
+                let vc = CNContactViewController(for:snide)
                 vc.delegate = self
                 vc.message = "Nyah ah ahhh"
                 vc.allowsActions = false
@@ -189,24 +189,24 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         }
     }
 
-    func contactViewController(vc: CNContactViewController, didCompleteWithContact con: CNContact?) {
+    func contactViewController(_ vc: CNContactViewController, didCompleteWith con: CNContact?) {
         print(con)
     }
     
-    func contactViewController(vc: CNContactViewController, shouldPerformDefaultActionForContactProperty prop: CNContactProperty) -> Bool {
+    func contactViewController(_ vc: CNContactViewController, shouldPerformDefaultActionFor prop: CNContactProperty) -> Bool {
         return false
     }
 
-    @IBAction func doNewPerson (sender:AnyObject!) {
+    @IBAction func doNewPerson (_ sender:AnyObject!) {
         let con = CNMutableContact()
         con.givenName = "Dudley"
         con.familyName = "Doright"
         let npvc = CNContactViewController(forNewContact: con)
         npvc.delegate = self
-        self.presentViewController(UINavigationController(rootViewController: npvc), animated: true, completion:nil)
+        self.present(UINavigationController(rootViewController: npvc), animated: true, completion:nil)
     }
     
-    @IBAction func doUnknownPerson (sender:AnyObject!) {
+    @IBAction func doUnknownPerson (_ sender:AnyObject!) {
         let con = CNMutableContact()
         con.givenName = "Johnny"
         con.familyName = "Appleseed"
@@ -218,9 +218,9 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         unkvc.allowsActions = false
         self.navigationController?.pushViewController(unkvc, animated: true)
         // this doesn't work either
-        // self.presentViewController(UINavigationController(rootViewController: unkvc), animated:true, completion:nil)
+        // self.present(UINavigationController(rootViewController: unkvc), animated:true, completion:nil)
         // and this doesn't work either!
-        // self.presentViewController(unkvc, animated:true, completion:nil)
+        // self.present(unkvc, animated:true, completion:nil)
     }
 
 
@@ -245,11 +245,11 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
 
     // =========
     
-    @IBAction func doNewPerson (sender:AnyObject!) {
+    @IBAction func doNewPerson (_ sender:AnyObject!) {
         let npvc = ABNewPersonViewController()
         npvc.newPersonViewDelegate = self
         let nc = UINavigationController(rootViewController:npvc)
-        self.presentViewController(nc, animated:true, completion:nil)
+        self.present(nc, animated:true, completion:nil)
     }
     
 
@@ -263,12 +263,12 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
                 print("I have a person named \(name), not saving this person to the database")
                 // do something with new person
             }
-            self.dismissViewControllerAnimated(true, completion:nil)
+            self.dismiss(animated:true, completion:nil)
     }
     
     // =========
     
-    @IBAction func doUnknownPerson (sender:AnyObject!) {
+    @IBAction func doUnknownPerson (_ sender:AnyObject!) {
         let unk = ABUnknownPersonViewController()
         unk.message = "Person who really knows trees"
         unk.allowsAddingToAddressBook = true

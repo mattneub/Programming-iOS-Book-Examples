@@ -22,10 +22,10 @@ class ViewController : Base {
         super.viewDidLoad()
         
         self.swappers.append(self.childViewControllers[0])
-        self.swappers.append(self.storyboard!.instantiateViewControllerWithIdentifier("child2"))
+        self.swappers.append(self.storyboard!.instantiateViewController(withIdentifier: "child2"))
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if which == 2 {
             print("Forwarding manually!")
@@ -36,7 +36,7 @@ class ViewController : Base {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if which == 2 {
             let child = self.swappers[self.cur] 
@@ -46,7 +46,7 @@ class ViewController : Base {
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if which == 2 {
             let child = self.swappers[self.cur] 
@@ -56,7 +56,7 @@ class ViewController : Base {
         }
     }
 
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         if which == 2 {
             let child = self.swappers[self.cur] 
@@ -103,7 +103,7 @@ On flip we expect to see (ignoring parent messages):
 */
 
     
-    @IBAction func doFlip(sender:AnyObject?) {
+    @IBAction func doFlip(_ sender:AnyObject?) {
         let fromvc = self.swappers[cur]
         cur = cur == 0 ? 1 : 0
         let tovc = self.swappers[cur]
@@ -113,20 +113,20 @@ On flip we expect to see (ignoring parent messages):
         // must have both as children before we can transition between them
         self.addChildViewController(tovc) // "will" called for us
         // note: when we call remove, we must call "will" (with nil) beforehand
-        fromvc.willMoveToParentViewController(nil)
+        fromvc.willMove(toParentViewController: nil)
         
         switch which {
         case 1: // normal
-            self.transitionFromViewController(fromvc,
-                toViewController:tovc,
+            self.transition(from: fromvc,
+                to:tovc,
                 duration:0.4,
-                options:.TransitionFlipFromLeft,
+                options:.transitionFlipFromLeft,
                 animations:nil,
                 completion:{
                     _ in
                     // finally, finish up
                     // note: when we call add, we must call "did" afterwards
-                    tovc.didMoveToParentViewController(self)
+                    tovc.didMove(toParentViewController: self)
                     fromvc.removeFromParentViewController() // "did" called for us
                 })
         case 2: // manual forwarding of appearance messages
@@ -138,17 +138,17 @@ On flip we expect to see (ignoring parent messages):
             // it tries to manage begin/end appearance itself ("legacy")
             // we just perform an ordinary transition
             
-            UIView.transitionFromView(fromvc.view,
-                toView:tovc.view,
+            UIView.transition(from:fromvc.view,
+                to:tovc.view,
                 duration:0.4,
-                options:.TransitionFlipFromLeft,
+                options:.transitionFlipFromLeft,
                 completion:{
                     _ in
                     tovc.endAppearanceTransition() // *
                     fromvc.endAppearanceTransition() // *
                     
                     // note: when we call add, we must call "did" afterwards
-                    tovc.didMoveToParentViewController(self)
+                    tovc.didMove(toParentViewController: self)
                     fromvc.removeFromParentViewController() // "did" called for us
                 })
         default: break
@@ -164,10 +164,10 @@ NB The child is messaged on the first two _because_ the parent calls super
     Thus these, by calling super or not, are the equivalent
     of shouldAutomaticallyForwardRotationMethods and then forwarding or not
     
-    ViewController willTransitionToTraitCollection(_:withTransitionCoordinator:)
-    ChildViewController1 willTransitionToTraitCollection(_:withTransitionCoordinator:)
-    ViewController viewWillTransitionToSize(_:withTransitionCoordinator:)
-    ChildViewController1 viewWillTransitionToSize(_:withTransitionCoordinator:)
+    ViewController willTransition(to: _:withTransitionCoordinator:)
+    ChildViewController1 willTransition(to: _:withTransitionCoordinator:)
+    ViewController viewWillTransition(to: _:withTransitionCoordinator:)
+    ChildViewController1 viewWillTransition(to: _:withTransitionCoordinator:)
     
     ViewController updateViewConstraints()
     ViewController viewWillLayoutSubviews()

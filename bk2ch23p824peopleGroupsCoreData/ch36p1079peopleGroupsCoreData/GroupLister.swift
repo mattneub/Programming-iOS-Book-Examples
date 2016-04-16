@@ -7,7 +7,7 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
     var managedObjectContext : NSManagedObjectContext!
     lazy var frc : NSFetchedResultsController = {
         let req = NSFetchRequest()
-        let entity = NSEntityDescription.entityForName("Group", inManagedObjectContext:self.managedObjectContext)
+        let entity = NSEntityDescription.entity(forEntityName:"Group", in:self.managedObjectContext)
         req.entity = entity
         req.fetchBatchSize = 20
         let sortDescriptor = NSSortDescriptor(key:"timestamp", ascending:true)
@@ -31,9 +31,9 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(doAdd))
+        let b = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(doAdd))
         self.navigationItem.rightBarButtonItems = [b]
-        let b2 = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(doRefresh))
+        let b2 = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(doRefresh))
         self.navigationItem.leftBarButtonItems = [b2]
         self.title = "Groups"
         // no need to register cell, comes from storyboard
@@ -44,20 +44,17 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
     }
     
     func doAdd(_:AnyObject) {
-        let av = UIAlertController(title: "New Group", message: "Enter name:", preferredStyle: .Alert)
-        av.addTextFieldWithConfigurationHandler {
-            tf in
-            tf.autocapitalizationType = .Words
-        }
-        av.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        av.addAction(UIAlertAction(title: "OK", style: .Default) {
+        let av = UIAlertController(title: "New Group", message: "Enter name:", preferredStyle: .alert)
+        av.addTextField {$0.autocapitalizationType = .words}
+        av.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        av.addAction(UIAlertAction(title: "OK", style: .default) {
             _ in
             guard let name = av.textFields![0].text where !name.isEmpty else {return}
             let context = self.frc.managedObjectContext
             let entity = self.frc.fetchRequest.entity!
-            let mo = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext: context)
+            let mo = NSEntityDescription.insertNewObject(forEntityName:entity.name!, into: context)
             mo.name = name
-            mo.uuid = NSUUID().UUIDString
+            mo.uuid = NSUUID().uuidString
             mo.timestamp = NSDate()
             
             // save context
@@ -70,32 +67,32 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
             let pl = PeopleLister(groupManagedObject: mo)
             self.navigationController!.pushViewController(pl, animated: true)
             })
-        self.presentViewController(av, animated: true, completion: nil)
+        self.present(av, animated: true, completion: nil)
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return self.frc.sections!.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = self.frc.sections![section]
         return sectionInfo.numberOfObjects
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath)
-        cell.accessoryType = .DisclosureIndicator
-        let object = self.frc.objectAtIndexPath(indexPath) as! NSManagedObject
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
+        cell.accessoryType = .disclosureIndicator
+        let object = self.frc.object(at:indexPath) as! NSManagedObject
         cell.textLabel!.text = object.name
         return cell
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController) {
         self.tableView.reloadData()
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let pl = PeopleLister(groupManagedObject: self.frc.objectAtIndexPath(indexPath) as! NSManagedObject)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
+        let pl = PeopleLister(groupManagedObject: self.frc.object(at:indexPath) as! NSManagedObject)
         self.navigationController!.pushViewController(pl, animated: true)
     }
 

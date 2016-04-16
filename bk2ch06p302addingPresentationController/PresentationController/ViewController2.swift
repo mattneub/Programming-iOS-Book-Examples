@@ -18,19 +18,19 @@ class ViewController2: UIViewController {
         // customize presentation only on iPhone
         // how will we find out which it is? we have no traitCollection yet...
         // I know, let's ask the window
-        if UIApplication.sharedApplication().keyWindow!.traitCollection.userInterfaceIdiom == .Phone {
-            self.modalPresentationStyle = .Custom
+        if UIApplication.shared().keyWindow!.traitCollection.userInterfaceIdiom == .phone {
+            self.modalPresentationStyle = .custom
         }
     }
     
-    @IBAction func doButton(sender: AnyObject) {
-        self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func doButton(_ sender: AnyObject) {
+        self.presenting!.dismiss(animated:true, completion: nil)
     }
 }
 
 extension ViewController2 : UIViewControllerTransitioningDelegate {
-    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        let pc = MyPresentationController(presentedViewController: presented, presentingViewController: presenting)
+    func presentationController(forPresentedViewController presented: UIViewController, presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
+        let pc = MyPresentationController(presentedViewController: presented, presenting: presenting)
         return pc
     }
 }
@@ -58,9 +58,9 @@ extension MyPresentationController {
         let con = self.containerView!
         let shadow = UIView(frame:con.bounds)
         shadow.backgroundColor = UIColor(white:0, alpha:0.4)
-        con.insertSubview(shadow, atIndex: 0)
+        con.insertSubview(shadow, at: 0)
         // deal with what happens on rotation
-        shadow.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        shadow.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
 }
 
@@ -71,7 +71,7 @@ extension MyPresentationController {
         let con = self.containerView!
         let shadow = con.subviews[0]
         let tc = self.presentedViewController.transitionCoordinator()!
-        tc.animateAlongsideTransition({
+        tc.animate(alongsideTransition: {
             _ in
             shadow.alpha = 0
             }, completion: nil)
@@ -97,15 +97,15 @@ extension MyPresentationController {
 // ===========================
 
 extension MyPresentationController {
-    override func presentationTransitionDidEnd(completed: Bool) {
+    override func presentationTransitionDidEnd(_ completed: Bool) {
         let vc = self.presentingViewController
         let v = vc.view
-        v.tintAdjustmentMode = .Dimmed
+        v.tintAdjustmentMode = .dimmed
     }
-    override func dismissalTransitionDidEnd(completed: Bool) {
+    override func dismissalTransitionDidEnd(_ completed: Bool) {
         let vc = self.presentingViewController
         let v = vc.view
-        v.tintAdjustmentMode = .Automatic
+        v.tintAdjustmentMode = .automatic
     }
 }
 
@@ -113,37 +113,38 @@ extension MyPresentationController {
 // ==========================
 
 extension ViewController2 /* UIViewControllerTransitioningDelegate */ {
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    @objc(animationControllerForPresentedController:presentingController:sourceController:)
+    func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         // return nil
         return self
     }
 }
 
 extension ViewController2 : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.4
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        // let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
-        let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
+    func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+        // let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)
+        let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)
         
         let con = transitionContext.containerView()!
         
-        // let r1start = transitionContext.initialFrameForViewController(vc1!)
-        let r2end = transitionContext.finalFrameForViewController(vc2!)
+        // let r1start = transitionContext.initialFrame(for:vc1!)
+        let r2end = transitionContext.finalFrame(for:vc2!)
         
-        //let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)!
-        let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)!
+        //let v1 = transitionContext.view(forKey:UITransitionContextFromViewKey)!
+        let v2 = transitionContext.view(forKey:UITransitionContextToViewKey)!
         
         v2.frame = r2end
-        v2.transform = CGAffineTransformMakeScale(0.1, 0.1)
+        v2.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         v2.alpha = 0
         con.addSubview(v2)
         
-        UIView.animateWithDuration(0.4, animations: {
+        UIView.animate(withDuration:0.4, animations: {
             v2.alpha = 1
-            v2.transform = CGAffineTransformIdentity
+            v2.transform = CGAffineTransform.identity
             }, completion: {
                 _ in
                 transitionContext.completeTransition(true)
@@ -155,10 +156,10 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
 // =======
 
 extension ViewController2 {
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let tc = self.transitionCoordinator() {
-            tc.animateAlongsideTransition({
+            tc.animate(alongsideTransition:{
                 _ in
                 self.buttonTopConstraint.constant += 200
                 self.view.layoutIfNeeded()

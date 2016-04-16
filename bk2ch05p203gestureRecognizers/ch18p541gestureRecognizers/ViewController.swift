@@ -18,7 +18,7 @@ class ViewController : UIViewController {
         self.v.addGestureRecognizer(t2)
         
         let t1 = UITapGestureRecognizer(target:self, action:#selector(singleTap))
-        t1.requireGestureRecognizerToFail(t2)
+        t1.require(toFail:t2)
         self.v.addGestureRecognizer(t1)
 
         switch which {
@@ -45,12 +45,12 @@ class ViewController : UIViewController {
     func dragging(p : UIPanGestureRecognizer) {
         let v = p.view!
         switch p.state {
-        case .Began, .Changed:
-            let delta = p.translationInView(v.superview)
+        case .began, .changed:
+            let delta = p.translation(in:v.superview)
             var c = v.center
             c.x += delta.x; c.y += delta.y
             v.center = c
-            p.setTranslation(CGPointZero, inView: v.superview)
+            p.setTranslation(CGPoint.zero, in: v.superview)
         default: break
         }
     }

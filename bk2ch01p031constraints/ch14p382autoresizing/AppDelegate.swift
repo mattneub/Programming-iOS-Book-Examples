@@ -1,6 +1,6 @@
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -9,19 +9,19 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
-func dictionaryOfNames(arr:UIView...) -> [String:UIView] {
+func dictionaryOfNames(_ arr:UIView...) -> [String:UIView] {
     var d = [String:UIView]()
-    for (ix,v) in arr.enumerate() {
+    for (ix,v) in arr.enumerated() {
         d["v\(ix+1)"] = v
     }
     return d
 }
 
 extension NSLayoutConstraint {
-    class func reportAmbiguity (v:UIView?) {
+    class func reportAmbiguity (_ v:UIView?) {
         var v = v
         if v == nil {
-            v = UIApplication.sharedApplication().keyWindow
+            v = UIApplication.shared().keyWindow
         }
         for vv in v!.subviews {
             print("\(vv) \(vv.hasAmbiguousLayout())")
@@ -30,15 +30,15 @@ extension NSLayoutConstraint {
             }
         }
     }
-    class func listConstraints (v:UIView?) {
+    class func listConstraints (_ v:UIView?) {
         var v = v
         if v == nil {
-            v = UIApplication.sharedApplication().keyWindow
+            v = UIApplication.shared().keyWindow
         }
         for vv in v!.subviews {
-            let arr1 = vv.constraintsAffectingLayoutForAxis(.Horizontal)
-            let arr2 = vv.constraintsAffectingLayoutForAxis(.Vertical)
-            NSLog("\n\n%@\nH: %@\nV:%@", vv, arr1, arr2);
+            let arr1 = vv.constraintsAffectingLayout(for:.horizontal)
+            let arr2 = vv.constraintsAffectingLayout(for:.vertical)
+            NSLog("\n\n%@\nH: %@\nV:%@", vv, arr1 as NSArray, arr2 as NSArray);
             if vv.subviews.count > 0 {
                 self.listConstraints(vv)
             }
@@ -46,23 +46,30 @@ extension NSLayoutConstraint {
     }
 }
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+
+
 @UIApplicationMain class AppDelegate : UIResponder, UIApplicationDelegate {
     
     var window : UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow()
         
         self.window!.rootViewController = UIViewController()
         let mainview = self.window!.rootViewController!.view
         
-        let v1 = UIView(frame:CGRectMake(100, 111, 132, 194))
-        v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
+        let v1 = UIView(frame:CGRect(100, 111, 132, 194))
+        v1.backgroundColor = UIColor(red: 1 as CGFloat, green: 0.4, blue: 1, alpha: 1)
         let v2 = UIView()
-        v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
+        v2.backgroundColor = UIColor(red: 0.5 as CGFloat, green: 1, blue: 0, alpha: 1)
         let v3 = UIView()
-        v3.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+        v3.backgroundColor = UIColor(red: 1 as CGFloat, green: 0, blue: 0, alpha: 1)
         // v3.layer.setValue("littleRedSquare", forKey:"identifier")
         
         mainview.addSubview(v1)
@@ -72,89 +79,89 @@ extension NSLayoutConstraint {
         v2.translatesAutoresizingMaskIntoConstraints = false
         v3.translatesAutoresizingMaskIntoConstraints = false
         
-        var which : Int {return 3}
+        var which : Int {return 2}
         switch which {
         case 1:
             // the old way, and this is the last time I'm going to show this
             v1.addConstraint(
                 NSLayoutConstraint(item: v2,
-                    attribute: .Leading,
-                    relatedBy: .Equal,
+                    attribute: .leading,
+                    relatedBy: .equal,
                     toItem: v1,
-                    attribute: .Leading,
+                    attribute: .leading,
                     multiplier: 1, constant: 0)
             )
             v1.addConstraint(
                 NSLayoutConstraint(item: v2,
-                    attribute: .Trailing,
-                    relatedBy: .Equal,
+                    attribute: .trailing,
+                    relatedBy: .equal,
                     toItem: v1,
-                    attribute: .Trailing,
+                    attribute: .trailing,
                     multiplier: 1, constant: 0)
             )
             v1.addConstraint(
                 NSLayoutConstraint(item: v2,
-                    attribute: .Top,
-                    relatedBy: .Equal,
+                    attribute: .top,
+                    relatedBy: .equal,
                     toItem: v1,
-                    attribute: .Top,
+                    attribute: .top,
                     multiplier: 1, constant: 0)
             )
             v2.addConstraint(
                 NSLayoutConstraint(item: v2,
-                    attribute: .Height,
-                    relatedBy: .Equal,
+                    attribute: .height,
+                    relatedBy: .equal,
                     toItem: nil,
-                    attribute: .NotAnAttribute,
+                    attribute: .notAnAttribute,
                     multiplier: 1, constant: 10)
             )
             v3.addConstraint(
                 NSLayoutConstraint(item: v3,
-                    attribute: .Width,
-                    relatedBy: .Equal,
+                    attribute: .width,
+                    relatedBy: .equal,
                     toItem: nil,
-                    attribute: .NotAnAttribute,
+                    attribute: .notAnAttribute,
                     multiplier: 1, constant: 20)
             )
             v3.addConstraint(
                 NSLayoutConstraint(item: v3,
-                    attribute: .Height,
-                    relatedBy: .Equal,
+                    attribute: .height,
+                    relatedBy: .equal,
                     toItem: nil,
-                    attribute: .NotAnAttribute,
+                    attribute: .notAnAttribute,
                     multiplier: 1, constant: 20)
             )
             v1.addConstraint(
                 NSLayoutConstraint(item: v3,
-                    attribute: .Trailing,
-                    relatedBy: .Equal,
+                    attribute: .trailing,
+                    relatedBy: .equal,
                     toItem: v1,
-                    attribute: .Trailing,
+                    attribute: .trailing,
                     multiplier: 1, constant: 0)
             )
             v1.addConstraint(
                 NSLayoutConstraint(item: v3,
-                    attribute: .Bottom,
-                    relatedBy: .Equal,
+                    attribute: .bottom,
+                    relatedBy: .equal,
                     toItem: v1,
-                    attribute: .Bottom,
+                    attribute: .bottom,
                     multiplier: 1, constant: 0)
             )
         case 2: // new API in iOS 9 for making constraints individually
             // and we should now be activating constraints, not adding them...
             // to a specific view
             // whereever possible, activate all the constraints at once
-            NSLayoutConstraint.activateConstraints([
-                v2.leadingAnchor.constraintEqualToAnchor(v1.leadingAnchor),
-                v2.trailingAnchor.constraintEqualToAnchor(v1.trailingAnchor),
-                v2.topAnchor.constraintEqualToAnchor(v1.topAnchor),
-                v2.heightAnchor.constraintEqualToConstant(10),
-                v3.widthAnchor.constraintEqualToConstant(20),
-                v3.heightAnchor.constraintEqualToConstant(20),
-                v3.trailingAnchor.constraintEqualToAnchor(v1.trailingAnchor),
-                v3.bottomAnchor.constraintEqualToAnchor(v1.bottomAnchor)
-            ])
-
+            NSLayoutConstraint.activate([
+                    v2.leadingAnchor.constraintEqual(to:v1.leadingAnchor),
+                    v2.trailingAnchor.constraintEqual(to:v1.trailingAnchor),
+                    v2.topAnchor.constraintEqual(to:v1.topAnchor),
+                    v2.heightAnchor.constraintEqual(toConstant:10),
+                    v3.widthAnchor.constraintEqual(toConstant:20),
+                    v3.heightAnchor.constraintEqual(toConstant:20),
+                    v3.trailingAnchor.constraintEqual(to:v1.trailingAnchor),
+                    v3.bottomAnchor.constraintEqual(to:v1.bottomAnchor)
+                ])
+            
         case 3:
             
             // NSDictionaryOfVariableBindings(v2,v3) // it's a macro, no macros in Swift
@@ -163,18 +170,18 @@ extension NSLayoutConstraint {
             // okay, that's boring...
             // let's write our own Swift NSDictionaryOfVariableBindings substitute (sort of)
             let d = dictionaryOfNames(v1,v2,v3)
-            NSLayoutConstraint.activateConstraints([
-                NSLayoutConstraint.constraintsWithVisualFormat(
-                    "H:|[v2]|", options: [], metrics: nil, views: d),
-                NSLayoutConstraint.constraintsWithVisualFormat(
-                    "V:|[v2(10)]", options: [], metrics: nil, views: d),
-                NSLayoutConstraint.constraintsWithVisualFormat(
-                    "H:[v3(20)]|", options: [], metrics: nil, views: d),
-                NSLayoutConstraint.constraintsWithVisualFormat(
-                    "V:[v3(20)]|", options: [], metrics: nil, views: d),
+            NSLayoutConstraint.activate([
+                NSLayoutConstraint.constraints(withVisualFormat:
+                    "H:|[v2]|", metrics: nil, views: d),
+                NSLayoutConstraint.constraints(withVisualFormat:
+                    "V:|[v2(10)]", metrics: nil, views: d),
+                NSLayoutConstraint.constraints(withVisualFormat:
+                    "H:[v3(20)]|", metrics: nil, views: d),
+                NSLayoutConstraint.constraints(withVisualFormat:
+                    "V:[v3(20)]|", metrics: nil, views: d),
                 // uncomment me to form a conflict
-//                NSLayoutConstraint.constraintsWithVisualFormat(
-//                    "V:[v3(10)]|", options: [], metrics: nil, views: d),
+//                NSLayoutConstraint.constraints(withVisualFormat:
+//                    "V:[v3(10)]|", metrics: nil, views: d),
                 ].flatten().map{$0})
         default: break
         }
@@ -184,12 +191,12 @@ extension NSLayoutConstraint {
             v1.bounds.size.height -= 50
         }
         
-        self.window!.backgroundColor = UIColor.whiteColor()
+        self.window!.backgroundColor = UIColor.white()
         self.window!.makeKeyAndVisible()
         return true
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("here") // for debugging
     }
     

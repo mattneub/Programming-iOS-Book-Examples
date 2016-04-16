@@ -24,9 +24,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let f = NSBundle.mainBundle().pathForResource("states", ofType: "txt")!
+        let f = NSBundle.main().pathForResource("states", ofType: "txt")!
         let s = try! String(contentsOfFile: f, encoding: NSUTF8StringEncoding)
-        self.states = s.componentsSeparatedByString("\n")
+        self.states = s.components(separatedBy:"\n")
     }
     
     override func viewDidLayoutSubviews() {
@@ -38,12 +38,12 @@ class ViewController: UIViewController {
 extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     
     // returns the number of 'columns' to display.
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     // returns the # of rows in each component..
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 50
     }
     
@@ -51,20 +51,22 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     // the labels are not leaking (they are deallocated in good order)...
     // but they are not being reused either
     
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int,
-        forComponent component: Int, reusingView view: UIView?) -> UIView {
-            let lab : UILabel
-            if let label = view as? UILabel {
-                lab = label
-                print("reusing label")
-            } else {
-                lab = MyLabel()
-                print("making new label")
-            }
-            lab.text = self.states[row]
-            lab.backgroundColor = UIColor.clearColor()
-            lab.sizeToFit()
-            return lab
+    func pickerView(_ pickerView: UIPickerView,
+                    viewForRow row: Int,
+                    forComponent component: Int,
+                    reusing view: UIView?) -> UIView {
+        let lab : UILabel
+        if let label = view as? UILabel {
+            lab = label
+            print("reusing label")
+        } else {
+            lab = MyLabel()
+            print("making new label")
+        }
+        lab.text = self.states[row]
+        lab.backgroundColor = UIColor.clear()
+        lab.sizeToFit()
+        return lab
     }
 }
 

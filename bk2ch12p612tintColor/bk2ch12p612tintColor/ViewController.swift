@@ -6,16 +6,16 @@ class ViewController: UIViewController {
 
     var blue = true
     
-    @IBAction func doToggleTint(sender: AnyObject) {
+    @IBAction func doToggleTint(_ sender: AnyObject) {
         self.blue = !self.blue
-        self.view.tintColor = self.blue ? nil : UIColor.redColor()
+        self.view.tintColor = self.blue ? nil : UIColor.red()
     }
     
     var dim = false
 
-    @IBAction func doToggleDimming(sender: AnyObject) {
+    @IBAction func doToggleDimming(_ sender: AnyObject) {
         self.dim = !self.dim
-        self.view.tintAdjustmentMode = self.dim ? .Dimmed : .Automatic
+        self.view.tintAdjustmentMode = self.dim ? .dimmed : .automatic
     }
     
 }

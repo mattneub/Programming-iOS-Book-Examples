@@ -16,7 +16,7 @@ class CancelableTimer: NSObject {
         super.init()
     }
     
-    func startWithInterval(interval:Double) {
+    func start(interval:Double) {
         self.firsttime = true
         self.cancel()
         self.timer = dispatch_source_create(

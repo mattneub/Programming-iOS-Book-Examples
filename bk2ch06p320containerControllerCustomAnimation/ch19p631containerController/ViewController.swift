@@ -22,36 +22,36 @@ class ViewController : UIViewController {
         vc.view.frame = self.panel.bounds
         self.panel.addSubview(vc.view) // insert view into interface between "will" and "did"
         // note: when we call add, we must call "did" afterwards
-        vc.didMoveToParentViewController(self)
+        vc.didMove(toParentViewController: self)
         
         self.constrainInPanel(vc.view) // *
     }
     
-    @IBAction func doFlip(sender:AnyObject?) {
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+    @IBAction func doFlip(_ sender:AnyObject?) {
+        UIApplication.shared().beginIgnoringInteractionEvents()
         let fromvc = self.swappers[cur]
         cur = cur == 0 ? 1 : 0
         let tovc = self.swappers[cur]
         tovc.view.frame = self.panel.bounds
 
         UIGraphicsBeginImageContextWithOptions(tovc.view.bounds.size, true, 0)
-        tovc.view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
-        let im = UIGraphicsGetImageFromCurrentImageContext()
+        tovc.view.layer.render(in:UIGraphicsGetCurrentContext()!)
+        let im = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         let iv = UIImageView(image:im)
-        iv.frame = CGRectZero
+        iv.frame = CGRect.zero
         self.panel.addSubview(iv)
         tovc.view.alpha = 0
         
         // must have both as children before we can transition between them
         self.addChildViewController(tovc) // "will" called for us
         // note: when we call remove, we must call "will" (with nil) beforehand
-        fromvc.willMoveToParentViewController(nil)
+        fromvc.willMove(toParentViewController: nil)
         // then perform the transition
-        self.transitionFromViewController(fromvc,
-            toViewController:tovc,
+        self.transition(from:fromvc,
+            to:tovc,
             duration:0.4,
-            options:.TransitionNone,
+            options:[], // .transitionNone
             animations: {
                 iv.frame = self.panel.bounds // *
                 self.constrainInPanel(tovc.view) // *
@@ -62,18 +62,18 @@ class ViewController : UIViewController {
                 iv.removeFromSuperview()
                 // finally, finish up
                 // note: when we call add, we must call "did" afterwards
-                tovc.didMoveToParentViewController(self)
+                tovc.didMove(toParentViewController: self)
                 fromvc.removeFromParentViewController() // "did" called for us
-                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                UIApplication.shared().endIgnoringInteractionEvents()
             })
     }
     
-    func constrainInPanel(v:UIView) {
+    func constrainInPanel(_ v:UIView) {
         print("constrain")
         v.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([
-            NSLayoutConstraint.constraintsWithVisualFormat("H:|[v]|", options:[], metrics:nil, views:["v":v]),
-            NSLayoutConstraint.constraintsWithVisualFormat("V:|[v]|", options:[], metrics:nil, views:["v":v])
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|", options:[], metrics:nil, views:["v":v]),
+            NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|", options:[], metrics:nil, views:["v":v])
             ].flatten().map{$0})
     }
     

@@ -5,21 +5,21 @@ class MyTextContainer : NSTextContainer {
     // NB new in iOS 9, if we override this...
     // we should override simpleRectangularTextContainer
     
-    override var simpleRectangularTextContainer : Bool { return false } // *
+    override var isSimpleRectangularTextContainer : Bool { return false } // *
     
-    override func lineFragmentRectForProposedRect(proposedRect: CGRect, atIndex characterIndex: Int, writingDirection baseWritingDirection: NSWritingDirection, remainingRect: UnsafeMutablePointer<CGRect>) -> CGRect {
+    override func lineFragmentRect(forProposedRect proposedRect: CGRect, at characterIndex: Int, writingDirection baseWritingDirection: NSWritingDirection, remaining remainingRect: UnsafeMutablePointer<CGRect>?) -> CGRect {
         
-        var result = super.lineFragmentRectForProposedRect(proposedRect, atIndex:characterIndex, writingDirection:baseWritingDirection, remainingRect:remainingRect)
+        var result = super.lineFragmentRect(forProposedRect:proposedRect, at:characterIndex, writingDirection:baseWritingDirection, remaining:remainingRect)
         
         /*
-        let r = CGRectMake(0,0,self.size.width,self.size.height)
+        let r = CGRect(0,0,self.size.width,self.size.height)
         let circle = UIBezierPath(ovalInRect:r)
         
         while !circle.containsPoint(result.origin) {
             result.origin.x += 0.1
         }
         
-        while !circle.containsPoint(CGPointMake(result.maxX, result.origin.y)) {
+        while !circle.containsPoint(CGPoint(result.maxX, result.origin.y)) {
             result.size.width -= 0.1
         }
 */

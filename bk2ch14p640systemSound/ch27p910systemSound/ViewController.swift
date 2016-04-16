@@ -5,12 +5,11 @@ import AudioToolbox
 
 // can be top level...
 
-func soundFinished(snd:UInt32, _ c:UnsafeMutablePointer<Void>) -> Void {
+func soundFinished(_ snd:UInt32, _ c:UnsafeMutablePointer<Void>?) -> Void {
     print("finished!")
     AudioServicesRemoveSystemSoundCompletion(snd)
     AudioServicesDisposeSystemSoundID(snd)
 }
-
 
 
 class ViewController: UIViewController {
@@ -19,8 +18,8 @@ class ViewController: UIViewController {
     
     // NB AudioServicesPlaySystemSound will be deprecated! This is just to show the old way
 
-    @IBAction func doButton (sender:AnyObject!) {
-        let sndurl = NSBundle.mainBundle().URLForResource("test", withExtension: "aif")!
+    @IBAction func doButton (_ sender:AnyObject!) {
+        let sndurl = NSBundle.main().urlForResource("test", withExtension: "aif")!
         var snd : SystemSoundID = 0
         AudioServicesCreateSystemSoundID(sndurl, &snd)
         // ... or could be defined here
@@ -29,8 +28,8 @@ class ViewController: UIViewController {
         AudioServicesPlaySystemSound(snd)
     }
     
-    @IBAction func doButton2 (sender:AnyObject!) {
-        let sndurl = NSBundle.mainBundle().URLForResource("test", withExtension: "aif")!
+    @IBAction func doButton2 (_ sender:AnyObject!) {
+        let sndurl = NSBundle.main().urlForResource("test", withExtension: "aif")!
         var snd : SystemSoundID = 0
         AudioServicesCreateSystemSoundID(sndurl, &snd)
         // watch _this_ little move

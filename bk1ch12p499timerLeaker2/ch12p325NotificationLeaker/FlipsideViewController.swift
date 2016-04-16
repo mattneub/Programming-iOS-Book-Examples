@@ -3,7 +3,7 @@
 import UIKit
 
 protocol FlipsideViewControllerDelegate : class {
-    func flipsideViewControllerDidFinish(controller:FlipsideViewController)
+    func flipsideViewControllerDidFinish(_ controller:FlipsideViewController)
 }
 
 class FlipsideViewController: UIViewController {
@@ -20,14 +20,14 @@ class FlipsideViewController: UIViewController {
             self.dummy()
         }
         print("starting timer")
-        self.timer.startWithInterval(1)
+        self.timer.start(withInterval:1)
     }
     
     func dummy() {
         print("timer fired")
     }
     
-    @IBAction func done (sender:AnyObject!) {
+    @IBAction func done (_ sender:AnyObject!) {
         print("done")
         self.delegate?.flipsideViewControllerDidFinish(self)
     }
@@ -41,7 +41,7 @@ class FlipsideViewController: UIViewController {
 }
 
 extension FlipsideViewController : UIBarPositioningDelegate {
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
+    func position(forBar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 }

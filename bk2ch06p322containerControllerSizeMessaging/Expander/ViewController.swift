@@ -2,11 +2,34 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 // crude test example to demonstrate iOS 8 parent-child size-change messaging
 
 class ViewController: UIViewController {
     
-    var childsize = CGSizeZero
+    var childsize = CGSize.zero
                             
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,16 +43,16 @@ class ViewController: UIViewController {
         sz.height = min(sz.height, self.view.frame.height - 40*2)
         self.childsize = sz
         
-        child.view.frame = CGRect(origin: CGPointMake(40,40), size: sz)
+        child.view.frame = CGRect(origin: CGPoint(40,40), size: sz)
         child.view.translatesAutoresizingMaskIntoConstraints = true
-        child.view.autoresizingMask = [.FlexibleBottomMargin, .FlexibleRightMargin]
+        child.view.autoresizingMask = [.flexibleBottomMargin, .flexibleRightMargin]
         
         // can't call this because we have no transition coordinator (bug?)
-        // child.viewWillTransitionToSize(sz, withTransitionCoordinator: nil)
+        // child.viewWillTransition(to: sz, with: nil)
 
     }
     
-    override func preferredContentSizeDidChangeForChildContentContainer(container: UIContentContainer) {
+    override func preferredContentSizeDidChange(forChildContentContainer container: UIContentContainer) {
         let child = self.childViewControllers[0]
         if container as! UIViewController == child {
             var sz = child.preferredContentSize
@@ -38,18 +61,18 @@ class ViewController: UIViewController {
             sz.height = min(sz.height, self.view.frame.height - 40*2)
             
             // can't call this because we have no transition coordinator (bug?)
-            // child.viewWillTransitionToSize(sz, withTransitionCoordinator: nil)
+            // child.viewWillTransition(to: sz, with: nil)
             
-            child.view.frame = CGRect(origin: CGPointMake(40,40), size: sz)
+            child.view.frame = CGRect(origin: CGPoint(40,40), size: sz)
             self.childsize = sz
         }
     }
     
-    override func sizeForChildContentContainer(container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
+    override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
         return self.childsize
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         // are we rotating 90 degrees?
         let rot = coordinator.targetTransform()
         if !(rot.b == 0 && rot.c == 0) {
@@ -60,10 +83,10 @@ class ViewController: UIViewController {
             let f2 = self.view.bounds
             if f.origin.x + f.width > f2.height || f.origin.y + f.height > f2.width {
                 (self.childsize.width, self.childsize.height) = (self.childsize.height, self.childsize.width)
-                child.view.frame = CGRect(origin: CGPointMake(40,40), size:self.childsize)
+                child.view.frame = CGRect(origin: CGPoint(40,40), size:self.childsize)
             }
         }
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        super.viewWillTransition(to: size, with: coordinator)
     }
 
 

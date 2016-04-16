@@ -21,8 +21,8 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: NSBundle.mainBundle().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
-        let states = s.componentsSeparatedByString("\n")
+        let s = try! String(contentsOfFile: NSBundle.main().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
+        let states = s.components(separatedBy:"\n")
         var previous = ""
         for aState in states {
             // get the first letter
@@ -30,22 +30,22 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c
-                self.sectionNames.append( c.uppercaseString )
+                self.sectionNames.append( c.uppercased() )
                 // and in that case also add new subarray to our array of subarrays
                 self.sectionData.append( [String]() )
             }
             sectionData[sectionData.count-1].append( aState )
         }
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        self.tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
         
-        self.tableView.sectionIndexColor = UIColor.whiteColor()
-        self.tableView.sectionIndexBackgroundColor = UIColor.redColor()
-        // self.tableView.sectionIndexTrackingBackgroundColor = UIColor.blueColor()
-        self.tableView.backgroundColor = UIColor.yellowColor() // but the search bar covers that
+        self.tableView.sectionIndexColor = UIColor.white()
+        self.tableView.sectionIndexBackgroundColor = UIColor.red()
+        // self.tableView.sectionIndexTrackingBackgroundColor = UIColor.blue()
+        self.tableView.backgroundColor = UIColor.yellow() // but the search bar covers that
         self.tableView.backgroundView = { // this will fix it
             let v = UIView()
-            v.backgroundColor = UIColor.yellowColor()
+            v.backgroundColor = UIColor.yellow()
             return v
         }()
 
@@ -64,32 +64,32 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // (not used in this example; just showing the interface)
         // WARNING: do NOT call showsScopeBar! it messes things up!
         // (buttons will show during search if there are titles)
-        b.autocapitalizationType = .None
+        b.autocapitalizationType = .none
         self.tableView.tableHeaderView = b
         self.tableView.reloadData()
-        self.tableView.scrollToRowAtIndexPath(
+        self.tableView.scrollToRow(at:
             NSIndexPath(forRow: 0, inSection: 0),
-            atScrollPosition:.Top, animated:false)
+            at:.top, animated:false)
         // that's all! The rest is in SearchResultsController
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return self.sectionNames.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.sectionData[section].count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
         
         // this part is not in the book, it's just for fun
         var stateName = s
-        stateName = stateName.lowercaseString
-        stateName = stateName.stringByReplacingOccurrencesOfString(" ", withString:"")
+        stateName = stateName.lowercased()
+        stateName = stateName.replacingOccurrences(of:" ", with:"")
         stateName = "flag_\(stateName).gif"
         let im = UIImage(named: stateName)
         cell.imageView!.image = im
@@ -99,57 +99,57 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     
     /*
     
-    override func tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
+    override func tableView(_ tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
     return self.sectionNames[section]
     }
     
     */
     // this is more "interesting"
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView
-            .dequeueReusableHeaderFooterViewWithIdentifier("Header")!
-        if h.tintColor != UIColor.redColor() {
-            h.tintColor = UIColor.redColor() // invisible marker, tee-hee
+            .dequeueReusableHeaderFooterView(withIdentifier:"Header")!
+        if h.tintColor != UIColor.red() {
+            h.tintColor = UIColor.red() // invisible marker, tee-hee
             h.backgroundView = UIView()
-            h.backgroundView?.backgroundColor = UIColor.blackColor()
+            h.backgroundView?.backgroundColor = UIColor.black()
             let lab = UILabel()
             lab.tag = 1
             lab.font = UIFont(name:"Georgia-Bold", size:22)
-            lab.textColor = UIColor.greenColor()
-            lab.backgroundColor = UIColor.clearColor()
+            lab.textColor = UIColor.green()
+            lab.backgroundColor = UIColor.clear()
             h.contentView.addSubview(lab)
             let v = UIImageView()
             v.tag = 2
-            v.backgroundColor = UIColor.blackColor()
+            v.backgroundColor = UIColor.black()
             v.image = UIImage(named:"us_flag_small.gif")
             h.contentView.addSubview(v)
             lab.translatesAutoresizingMaskIntoConstraints = false
             v.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activateConstraints([
-                NSLayoutConstraint.constraintsWithVisualFormat(
+            NSLayoutConstraint.activate([
+                NSLayoutConstraint.constraints(withVisualFormat:
                     "H:|-5-[lab(25)]-10-[v(40)]",
                     options:[], metrics:nil, views:["v":v, "lab":lab]),
-                NSLayoutConstraint.constraintsWithVisualFormat(
+                NSLayoutConstraint.constraints(withVisualFormat:
                     "V:|[v]|",
                     options:[], metrics:nil, views:["v":v]),
-                NSLayoutConstraint.constraintsWithVisualFormat(
+                NSLayoutConstraint.constraints(withVisualFormat:
                     "V:|[lab]|",
                     options:[], metrics:nil, views:["lab":lab])
                 ].flatten().map{$0})
         }
-        let lab = h.contentView.viewWithTag(1) as! UILabel
+        let lab = h.contentView.withTag(1) as! UILabel
         lab.text = self.sectionNames[section]
         return h
         
     }
     
     /*
-    override func tableView(tableView: UITableView!, willDisplayHeaderView view: UIView!, forSection section: Int) {
+    override func tableView(_ tableView: UITableView!, willDisplayHeaderView view: UIView!, forSection section: Int) {
     println(view) // prove we are reusing header views
     }
     */
     
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return self.sectionNames
     }
 }

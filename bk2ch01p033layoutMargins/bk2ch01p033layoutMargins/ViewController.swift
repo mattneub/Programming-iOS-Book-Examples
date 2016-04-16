@@ -13,21 +13,21 @@ class ViewController: UIViewController {
         let mainview = self.view
         
         let v = UIView()
-        v.backgroundColor = UIColor.redColor()
+        v.backgroundColor = UIColor.red()
         v.translatesAutoresizingMaskIntoConstraints = false
         
         mainview.addSubview(v)
         
-        NSLayoutConstraint.activateConstraints([
-            NSLayoutConstraint.constraintsWithVisualFormat("H:|-(0)-[v]-(0)-|", options: [], metrics: nil, views: ["v":v]),
-            NSLayoutConstraint.constraintsWithVisualFormat("V:|-(0)-[v]-(0)-|", options: [], metrics: nil, views: ["v":v])
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint.constraints(withVisualFormat:"H:|-(0)-[v]-(0)-|", metrics: nil, views: ["v":v]),
+            NSLayoutConstraint.constraints(withVisualFormat:"V:|-(0)-[v]-(0)-|", metrics: nil, views: ["v":v])
             ].flatten().map{$0})
         
         // experiment by commenting out this line
         v.preservesSuperviewLayoutMargins = true
         
         let v1 = UIView()
-        v1.backgroundColor = UIColor.greenColor()
+        v1.backgroundColor = UIColor.green()
         v1.translatesAutoresizingMaskIntoConstraints = false
         v.addSubview(v1)
 
@@ -36,28 +36,28 @@ class ViewController: UIViewController {
             
         case 1:
             // no longer need delayed performance here
-            NSLayoutConstraint.activateConstraints([
-                NSLayoutConstraint.constraintsWithVisualFormat("H:|-[v1]-|", options: [], metrics: nil, views: ["v1":v1]),
-                NSLayoutConstraint.constraintsWithVisualFormat("V:|-[v1]-|", options: [], metrics: nil, views: ["v1":v1])
+            NSLayoutConstraint.activate([
+                NSLayoutConstraint.constraints(withVisualFormat:"H:|-[v1]-|", metrics: nil, views: ["v1":v1]),
+                NSLayoutConstraint.constraints(withVisualFormat:"V:|-[v1]-|", metrics: nil, views: ["v1":v1])
                 ].flatten().map{$0})
             
         case 2:
             // new notation treats margins as a pseudoview (UILayoutGuide)
-            NSLayoutConstraint.activateConstraints([
-                v1.topAnchor.constraintEqualToAnchor(v.layoutMarginsGuide.topAnchor),
-                v1.bottomAnchor.constraintEqualToAnchor(v.layoutMarginsGuide.bottomAnchor),
-                v1.trailingAnchor.constraintEqualToAnchor(v.layoutMarginsGuide.trailingAnchor),
-                v1.leadingAnchor.constraintEqualToAnchor(v.layoutMarginsGuide.leadingAnchor)
+            NSLayoutConstraint.activate([
+                v1.topAnchor.constraintEqual(to:v.layoutMarginsGuide.topAnchor),
+                v1.bottomAnchor.constraintEqual(to:v.layoutMarginsGuide.bottomAnchor),
+                v1.trailingAnchor.constraintEqual(to:v.layoutMarginsGuide.trailingAnchor),
+                v1.leadingAnchor.constraintEqual(to:v.layoutMarginsGuide.leadingAnchor)
                 ])
             
         case 3:
             // new kind of margin, "readable content"
             // particularly dramatic on iPad in landscape
-            NSLayoutConstraint.activateConstraints([
-                v1.topAnchor.constraintEqualToAnchor(v.readableContentGuide.topAnchor),
-                v1.bottomAnchor.constraintEqualToAnchor(v.readableContentGuide.bottomAnchor),
-                v1.trailingAnchor.constraintEqualToAnchor(v.readableContentGuide.trailingAnchor),
-                v1.leadingAnchor.constraintEqualToAnchor(v.readableContentGuide.leadingAnchor)
+            NSLayoutConstraint.activate([
+                v1.topAnchor.constraintEqual(to:v.readableContentGuide.topAnchor),
+                v1.bottomAnchor.constraintEqual(to:v.readableContentGuide.bottomAnchor),
+                v1.trailingAnchor.constraintEqual(to:v.readableContentGuide.trailingAnchor),
+                v1.leadingAnchor.constraintEqual(to:v.readableContentGuide.leadingAnchor)
                 ])
 
         default:break

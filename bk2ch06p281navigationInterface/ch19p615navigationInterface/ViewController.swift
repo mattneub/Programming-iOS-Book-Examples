@@ -8,13 +8,13 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         super.awakeFromNib()
         
         self.title = "First"
-        let b = UIBarButtonItem(image:UIImage(named:"key.png"), style:.Plain, target:self, action:#selector(navigate))
+        let b = UIBarButtonItem(image:UIImage(named:"key.png"), style:.plain, target:self, action:#selector(navigate))
         let b2 = UIBarButtonItem(image:UIImage(named:"files.png"),
-        style:.Plain, target:nil, action:nil)
+        style:.plain, target:nil, action:nil)
         self.navigationItem.rightBarButtonItems = [b, b2]
         
         // how to customize back button
-        let b3 = UIBarButtonItem(image:UIImage(named:"files.png"), style:.Plain, target:nil, action:nil)
+        let b3 = UIBarButtonItem(image:UIImage(named:"files.png"), style:.plain, target:nil, action:nil)
         self.navigationItem.backBarButtonItem = b3
 
     }
@@ -37,8 +37,8 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         // self.navigationController!.setNavigationBarHidden(true, animated: false)
     }
     
-    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> UIInterfaceOrientationMask {
-        return .Portrait
+    func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+        return .portrait
     }
     
 //    override func preferredStatusBarStyle() -> UIStatusBarStyle {

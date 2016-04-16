@@ -12,8 +12,8 @@ class MyPersonParser : MyXMLParserDelegate {
             self.makeChild(MyXMLParserDelegate.self, elementName: elementName, parser: parser)
     }
     
-    override func finishedChild(s: String) {
-        self.person.setValue(s, forKey:self.child.name)
+    override func finishedChild(_ s: String) {
+        self.person.setValue(s as NSString, forKey:self.child.name)
     }
     
 }

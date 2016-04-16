@@ -1,9 +1,10 @@
 
 
 import UIKit
+import Swift
 
-func f (i1:Int, _ i2:Int) -> () {}
-func f2 (i1 i1:Int, i2:Int) -> () {}
+func f (_ i1:Int, _ i2:Int) -> () {}
+func f2 (i1:Int, i2:Int) -> () {}
 
 
 class ViewController: UIViewController {
@@ -12,24 +13,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         do {
-            let pair : (Int, String) = (1, "One")
+            let pair : (Int, String) = (1, "Two")
             _ = pair
         }
         
         do {
-            let pair = (1, "One")
+            let pair = (1, "Two")
             _ = pair
         }
         
         do {
             var ix: Int
             var s: String
-            (ix, s) = (1, "One")
+            (ix, s) = (1, "Two")
             _ = ix; _ = s
         }
         
         do {
-            let (ix, s) = (1, "One") // can use let or var here
+            let (ix, s) = (1, "Two") // can use let or var here
             _ = ix; _ = s
         }
         
@@ -40,39 +41,39 @@ class ViewController: UIViewController {
         }
         
         do {
-            let pair = (1, "One")
-            let (_, s) = pair // now s is "One"
+            let pair = (1, "Two")
+            let (_, s) = pair // now s is "Two"
             _ = s
         }
         
         do {
             let s = "hello"
-            for (ix,c) in s.characters.enumerate() {
+            for (ix,c) in s.characters.enumerated() {
                 print("character \(ix) is \(c)")
             }
         }
         
         
         do {
-            var pair = (1, "One")
+            var pair = (1, "Two")
             let ix = pair.0 // now ix is 1
-            pair.0 = 2 // now pair is (2, "One")
+            pair.0 = 2 // now pair is (2, "Two")
             print(pair)
             _ = ix
         }
         
         do {
-            let pair : (first:Int, second:String) = (1, "One")
+            let pair : (first:Int, second:String) = (1, "Two")
             _ = pair
         }
         
         do {
-            let pair = (first:1, second:"One")
+            let pair = (first:1, second:"Two")
             _ = pair
         }
         
         do {
-            var pair = (first:1, second:"One")
+            var pair = (first:1, second:"Two")
             let x = pair.first // 1
             pair.first = 2
             let y = pair.0 // 2
@@ -80,7 +81,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let pair = (1, "One")
+            let pair = (1, "Two")
             let pairWithNames : (first:Int, second:String) = pair
             let ix = pairWithNames.first // 1
             _ = pair
@@ -89,7 +90,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            var pairWithoutNames = (1, "One")
+            var pairWithoutNames = (1, "Two")
             pairWithoutNames = (first:2, second:"Two")
             print(pairWithoutNames)
             // let ix = pairWithoutNames.first // compile error, we stripped the names
@@ -97,12 +98,13 @@ class ViewController: UIViewController {
         
         do {
             func tupleMaker() -> (first:Int, second:String) {
-                return (1, "One")
+                return (1, "Two")
             }
             let ix = tupleMaker().first // 1
             print(ix)
         }
 
+        /*
         
         // parameter list in function call is actually a tuple
         // however, new in Swift 2.2, these two calls now get a warning:
@@ -124,6 +126,8 @@ class ViewController: UIViewController {
 //            var tuple = (i1:1, i2:2)
 //            f2(tuple) // compile error
         }
+ 
+ */
         
         do { // examples from the dev forums
             
@@ -178,6 +182,8 @@ class ViewController: UIViewController {
             // OK - var tuple
             var var_tuple: (Int, Int) = (1, 1)
             array.append(var_tuple)
+            
+            print(array)
 
             // shut the compiler up
             int_var = 0

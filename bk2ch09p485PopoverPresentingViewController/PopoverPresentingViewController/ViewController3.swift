@@ -7,27 +7,27 @@ class ViewController3: UIViewController {
     
     var oldModal = false
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         // okay, this is really weird: you need _both_!
         // note that this works only on iOS 9! no effect on iOS 8
         if workaround {
-            if let pres = self.presentingViewController {
-                self.modalInPopover = true
-                self.oldModal = pres.modalInPopover
-                pres.modalInPopover = true
+            if let pres = self.presenting {
+                self.isModalInPopover = true
+                self.oldModal = pres.isModalInPopover
+                pres.isModalInPopover = true
             }
         }
     }
 
-    @IBAction func doDone(sender: AnyObject) {
+    @IBAction func doDone(_ sender: AnyObject) {
         // and then on dismissal must undo both!
         if workaround {
-            if let pres = self.presentingViewController {
-                self.modalInPopover = false
-                pres.modalInPopover = self.oldModal
+            if let pres = self.presenting {
+                self.isModalInPopover = false
+                pres.isModalInPopover = self.oldModal
             }
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated:true, completion: nil)
     }
 
     

@@ -13,7 +13,35 @@
 		3236A42C1AED4E39000A3679 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3236A42A1AED4E39000A3679 /* Main.storyboard */; };
 		3236A42E1AED4E39000A3679 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3236A42D1AED4E39000A3679 /* Assets.xcassets */; };
 		3236A4311AED4E39000A3679 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3236A42F1AED4E39000A3679 /* LaunchScreen.xib */; };
+		813F21CC1CCBE209009B20EA /* Simple.h in Headers */ = {isa = PBXBuildFile; fileRef = 813F21CB1CCBE209009B20EA /* Simple.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		813F21D01CCBE209009B20EA /* Simple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813F21C91CCBE209009B20EA /* Simple.framework */; };
+		813F21D11CCBE209009B20EA /* Simple.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 813F21C91CCBE209009B20EA /* Simple.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		813F21D71CCBE228009B20EA /* LegalFileSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813F21D61CCBE228009B20EA /* LegalFileSimple.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		813F21CE1CCBE209009B20EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3236A4191AED4E38000A3679 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 813F21C81CCBE209009B20EA;
+			remoteInfo = Simple;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		813F21D51CCBE209009B20EA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				813F21D11CCBE209009B20EA /* Simple.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		322DCCC61B3B238600CD85EC /* LegalFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalFile.swift; sourceTree = "<group>"; };
@@ -24,10 +52,22 @@
 		3236A42B1AED4E39000A3679 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3236A42D1AED4E39000A3679 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3236A4301AED4E39000A3679 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		813F21C91CCBE209009B20EA /* Simple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Simple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		813F21CB1CCBE209009B20EA /* Simple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Simple.h; sourceTree = "<group>"; };
+		813F21CD1CCBE209009B20EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		813F21D61CCBE228009B20EA /* LegalFileSimple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalFileSimple.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3236A41E1AED4E38000A3679 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				813F21D01CCBE209009B20EA /* Simple.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		813F21C51CCBE209009B20EA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				3236A4231AED4E39000A3679 /* bk1ch01p015yourFirstInstance */,
+				813F21CA1CCBE209009B20EA /* Simple */,
 				3236A4221AED4E39000A3679 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				3236A4211AED4E39000A3679 /* bk1ch01p015yourFirstInstance.app */,
+				813F21C91CCBE209009B20EA /* Simple.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,7 +109,28 @@
 			path = bk1ch01p015yourFirstInstance;
 			sourceTree = "<group>";
 		};
+		813F21CA1CCBE209009B20EA /* Simple */ = {
+			isa = PBXGroup;
+			children = (
+				813F21CB1CCBE209009B20EA /* Simple.h */,
+				813F21D61CCBE228009B20EA /* LegalFileSimple.swift */,
+				813F21CD1CCBE209009B20EA /* Info.plist */,
+			);
+			path = Simple;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		813F21C61CCBE209009B20EA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				813F21CC1CCBE209009B20EA /* Simple.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		3236A4201AED4E38000A3679 /* bk1ch01p015yourFirstInstance */ = {
@@ -77,15 +140,35 @@
 				3236A41D1AED4E38000A3679 /* Sources */,
 				3236A41E1AED4E38000A3679 /* Frameworks */,
 				3236A41F1AED4E38000A3679 /* Resources */,
+				813F21D51CCBE209009B20EA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				813F21CF1CCBE209009B20EA /* PBXTargetDependency */,
 			);
 			name = bk1ch01p015yourFirstInstance;
 			productName = bk1ch01p015yourFirstInstance;
 			productReference = 3236A4211AED4E39000A3679 /* bk1ch01p015yourFirstInstance.app */;
 			productType = "com.apple.product-type.application";
+		};
+		813F21C81CCBE209009B20EA /* Simple */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 813F21D21CCBE209009B20EA /* Build configuration list for PBXNativeTarget "Simple" */;
+			buildPhases = (
+				813F21C41CCBE209009B20EA /* Sources */,
+				813F21C51CCBE209009B20EA /* Frameworks */,
+				813F21C61CCBE209009B20EA /* Headers */,
+				813F21C71CCBE209009B20EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Simple;
+			productName = Simple;
+			productReference = 813F21C91CCBE209009B20EA /* Simple.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -93,12 +176,15 @@
 		3236A4191AED4E38000A3679 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					3236A4201AED4E38000A3679 = {
 						CreatedOnToolsVersion = 6.3.1;
+					};
+					813F21C81CCBE209009B20EA = {
+						CreatedOnToolsVersion = 7.3;
 					};
 				};
 			};
@@ -116,6 +202,7 @@
 			projectRoot = "";
 			targets = (
 				3236A4201AED4E38000A3679 /* bk1ch01p015yourFirstInstance */,
+				813F21C81CCBE209009B20EA /* Simple */,
 			);
 		};
 /* End PBXProject section */
@@ -128,6 +215,13 @@
 				3236A42C1AED4E39000A3679 /* Main.storyboard in Resources */,
 				3236A4311AED4E39000A3679 /* LaunchScreen.xib in Resources */,
 				3236A42E1AED4E39000A3679 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		813F21C71CCBE209009B20EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +238,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		813F21C41CCBE209009B20EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				813F21D71CCBE228009B20EA /* LegalFileSimple.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		813F21CF1CCBE209009B20EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 813F21C81CCBE209009B20EA /* Simple */;
+			targetProxy = 813F21CE1CCBE209009B20EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3236A42A1AED4E39000A3679 /* Main.storyboard */ = {
@@ -251,6 +361,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = bk1ch01p015yourFirstInstance/Info.plist;
@@ -264,12 +375,62 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = bk1ch01p015yourFirstInstance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		813F21D31CCBE209009B20EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTABILITY = YES;
+				INFOPLIST_FILE = Simple/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.Simple;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		813F21D41CCBE209009B20EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Simple/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.Simple;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -290,6 +451,15 @@
 			buildConfigurations = (
 				3236A4411AED4E39000A3679 /* Debug */,
 				3236A4421AED4E39000A3679 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		813F21D21CCBE209009B20EA /* Build configuration list for PBXNativeTarget "Simple" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				813F21D31CCBE209009B20EA /* Debug */,
+				813F21D41CCBE209009B20EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

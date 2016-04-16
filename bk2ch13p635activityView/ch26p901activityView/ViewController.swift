@@ -3,8 +3,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBAction func doButton (sender:AnyObject) {
-        let url = NSBundle.mainBundle().URLForResource("sunglasses", withExtension:"png")!
+    @IBAction func doButton (_ sender:AnyObject) {
+        let url = NSBundle.main().urlForResource("sunglasses", withExtension:"png")!
         let things = ["This is a cool picture", url]
         // let avc = UIActivityViewController(activityItems:things, applicationActivities:nil)
         let avc = UIActivityViewController(activityItems:things, applicationActivities:[MyCoolActivity(), MyElaborateActivity()])
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
             UIActivityTypeOpenInIBooks,
         ]
         // avc.excludedActivityTypes = nil
-        self.presentViewController(avc, animated:true, completion:nil)
+        self.present(avc, animated:true, completion:nil)
         // on iPad this will be an action sheet and will need a source view or bar button item
         if let pop = avc.popoverPresentationController {
             let v = sender as! UIView

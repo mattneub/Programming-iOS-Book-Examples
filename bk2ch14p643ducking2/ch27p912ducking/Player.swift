@@ -5,7 +5,7 @@ import AVFoundation
 import MediaPlayer
 
 protocol PlayerDelegate : class {
-    func soundFinished(sender : AnyObject)
+    func soundFinished(_ sender: AnyObject)
 }
 
 class Player : NSObject, AVAudioPlayerDelegate {
@@ -13,11 +13,11 @@ class Player : NSObject, AVAudioPlayerDelegate {
     var forever = false
     weak var delegate : PlayerDelegate?
 
-    func playFileAtPath(path:String) {
+    func playFile(atPath path:String) {
         self.player?.delegate = nil
         self.player?.stop()
         let fileURL = NSURL(fileURLWithPath: path)
-        guard let p = try? AVAudioPlayer(contentsOfURL: fileURL) else {return} // nicer
+        guard let p = try? AVAudioPlayer(contentsOf: fileURL) else {return} // nicer
         self.player = p
         // error-checking omitted
         self.player.prepareToPlay()
@@ -32,7 +32,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
         self.player.play()
         
         // cute little demo
-        let mpic = MPNowPlayingInfoCenter.defaultCenter()
+        let mpic = MPNowPlayingInfoCenter.default()
         mpic.nowPlayingInfo = [
             MPMediaItemPropertyTitle:"This Is a Test",
             MPMediaItemPropertyArtist:"Matt Neuburg"
@@ -41,7 +41,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
     
     // delegate method
     
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) { // *
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) { // *
         self.delegate?.soundFinished(self)
     }
     

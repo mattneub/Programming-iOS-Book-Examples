@@ -11,7 +11,7 @@ func +(lhs:Vial, rhs:Vial) -> Vial {
     let total = lhs.numberOfBacteria + rhs.numberOfBacteria
     return Vial(total)
 }
-func +=(inout lhs:Vial, rhs:Vial) {
+func +=(lhs: inout Vial, rhs:Vial) {
     let total = lhs.numberOfBacteria + rhs.numberOfBacteria
     lhs.numberOfBacteria = total
 }
@@ -29,7 +29,12 @@ func ^^(lhs:Int, rhs:Int) -> Int {
     return result
 }
 
+infix operator >>> {
+}
 
+func >>><Bound where Bound : Comparable, Bound.Stride : Integer>(maximum: Bound, minimum: Bound) -> ReversedRandomAccessCollection<CountableRange<Bound>> {
+        return (minimum..<maximum).reversed()
+}
 
 class ViewController: UIViewController {
 
@@ -48,13 +53,18 @@ class ViewController: UIViewController {
         print(ok)
         
         let arr = [v1,v2]
-        let ix = arr.indexOf(v1) // Optional wrapping 0
+        let ix = arr.index(of:v1) // Optional wrapping 0
         print(ix)
 
         print(2^^2) // 4
         print(2^^3) // 8
         print(3^^3) // 27
 
+        
+//        let r1 = 1<<<10
+        let r2 = 10>>>1
+//        for i in r1 {print(i)}
+        for i in r2 {print(i)}
     
     }
 

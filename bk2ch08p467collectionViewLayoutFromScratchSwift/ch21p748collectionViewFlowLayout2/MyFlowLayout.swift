@@ -7,7 +7,7 @@ class MyDynamicAnimator : UIDynamicAnimator {
     }
 }
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -21,15 +21,15 @@ class MyFlowLayout : UICollectionViewFlowLayout {
     var animating = false
     var animator : UIDynamicAnimator!
     
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        var arr = super.layoutAttributesForElementsInRect(rect)!
-        if let sup = super.layoutAttributesForElementsInRect(rect) {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        var arr = super.layoutAttributesForElements(in: rect)!
+        if let sup = super.layoutAttributesForElements(in: rect) {
             arr = sup.map {
                 atts in // remove (var atts)
                 var atts = atts
                 if atts.representedElementKind == nil {
                     let ip = atts.indexPath
-                    atts = self.layoutAttributesForItemAtIndexPath(ip)!
+                    atts = self.layoutAttributesForItem(at:ip)!
                 }
                 return atts
             }
@@ -42,16 +42,16 @@ class MyFlowLayout : UICollectionViewFlowLayout {
                 atts in
                 let path = atts.indexPath
                 switch atts.representedElementCategory {
-                case .Cell:
+                case .cell:
                     if let atts2 = self.animator?
-                        .layoutAttributesForCellAtIndexPath(path) {
+                        .layoutAttributesForCell(at: path) {
                             return atts2
                     }
-                case .SupplementaryView:
+                case .supplementaryView:
                     if let kind = atts.representedElementKind {
                         if let atts2 = self.animator?
-                            .layoutAttributesForSupplementaryViewOfKind(
-                                kind, atIndexPath:path) {
+                            .layoutAttributesForSupplementaryView(
+                                ofKind: kind, at:path) {
                                     return atts2
                         }
                     }
@@ -63,8 +63,8 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         return arr
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        var atts = super.layoutAttributesForItemAtIndexPath(indexPath)!
+    override func layoutAttributesForItem(at indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+        var atts = super.layoutAttributesForItem(at: indexPath)!
         if indexPath.item == 0 {
             return atts // degenerate case 1
         }
@@ -72,7 +72,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
             return atts // degenerate case 2
         }
         let ipPv = NSIndexPath(forItem:indexPath.item-1, inSection:indexPath.section)
-        let fPv = self.layoutAttributesForItemAtIndexPath(ipPv)!.frame
+        let fPv = self.layoutAttributesForItem(at: ipPv)!.frame
         let rightPv = fPv.origin.x + fPv.size.width + self.minimumInteritemSpacing
         atts = atts.copy() as! UICollectionViewLayoutAttributes
         atts.frame.origin.x = rightPv
@@ -80,13 +80,13 @@ class MyFlowLayout : UICollectionViewFlowLayout {
     }
     
     func flush () {
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        UIApplication.shared().beginIgnoringInteractionEvents()
         
         let visworld = self.collectionView!.bounds
         let anim = MyDynamicAnimator(collectionViewLayout:self)
         self.animator = anim
         
-        let atts = self.layoutAttributesForElementsInRect(visworld)!
+        let atts = self.layoutAttributesForElements(in:visworld)!
         self.animating = true
         
         // collision behavior: floor, with a hole at the left end
@@ -97,10 +97,10 @@ class MyFlowLayout : UICollectionViewFlowLayout {
             $0.representedElementKind == nil
         }
         let coll = UICollisionBehavior(items:items)
-        let p1 = CGPointMake(visworld.minX + 80, visworld.maxY)
-        let p2 = CGPointMake(visworld.maxX, visworld.maxY)
-        coll.addBoundaryWithIdentifier("bottom", fromPoint:p1, toPoint:p2)
-        coll.collisionMode = .Boundaries
+        let p1 = CGPoint(visworld.minX + 80, visworld.maxY)
+        let p2 = CGPoint(visworld.maxX, visworld.maxY)
+        coll.addBoundary(withIdentifier: "bottom", from:p1, to:p2)
+        coll.collisionMode = .boundaries
         coll.collisionDelegate = self
         anim.addBehavior(coll)
 
@@ -112,7 +112,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         let grav = UIGravityBehavior(items:atts)
         grav.magnitude = 0.8
         grav.action = {
-            let atts = self.animator.itemsInRect(visworld)
+            let atts = self.animator.items(in:visworld)
             if atts.count == 0 || anim.elapsedTime() > 4 {
                 print("done")
                 delay(0) { // memory management
@@ -122,7 +122,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
                 delay(0.4) { // looks better if there's a pause
                     self.animating = false
                     self.invalidateLayout()
-                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                    UIApplication.shared().endIgnoringInteractionEvents()
                 }
             }
         }
@@ -131,9 +131,9 @@ class MyFlowLayout : UICollectionViewFlowLayout {
 }
 
 extension MyFlowLayout : UICollisionBehaviorDelegate {
-    func collisionBehavior(behavior: UICollisionBehavior, beganContactForItem item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, atPoint p: CGPoint) {
+    func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
     
-        let push = UIPushBehavior(items:[item], mode:.Continuous)
+        let push = UIPushBehavior(items:[item], mode:.continuous)
         push.setAngle(3*CGFloat(M_PI)/4.0, magnitude:1.5)
         self.animator.addBehavior(push)
     }

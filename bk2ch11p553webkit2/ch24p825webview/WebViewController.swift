@@ -11,34 +11,34 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.restorationIdentifier = "wvc"
         self.restorationClass = self.dynamicType
-        self.edgesForExtendedLayout = .None // get accurate offset restoration
+        self.edgesForExtendedLayout = [] // none, get accurate offset restoration
     }
     
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
 
-    class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject], coder: NSCoder) -> UIViewController? {
+    class func viewController(withRestorationIdentifierPath identifierComponents: [AnyObject], coder: NSCoder) -> UIViewController? {
         return self.init(nibName:nil, bundle:nil)
     }
     
     // unfortunately I see no evidence that the web view is assisting us at all!
     // the view is not coming back with its URL restored etc, as a UIWebView does
 
-    override func decodeRestorableStateWithCoder(coder: NSCoder) {
+    override func decodeRestorableState(with coder: NSCoder) {
         print("decode")
         self.decoded = true
-        super.decodeRestorableStateWithCoder(coder)
+        super.decodeRestorableState(with:coder)
     }
     
-    override func encodeRestorableStateWithCoder(coder: NSCoder) {
+    override func encodeRestorableState(with coder: NSCoder) {
         print("encode")
-        super.encodeRestorableStateWithCoder(coder)
+        super.encodeRestorableState(with:coder)
     }
 
 
     override func applicationFinishedRestoringState() {
-        print("finished restoring state", self.wv.URL)
+        print("finished restoring state", self.wv.url)
     }
 
     override func loadView() {
@@ -51,15 +51,15 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         super.viewDidLoad()
         print("viewDidLoad")
                 
-        let wv = WKWebView(frame: CGRectZero)
+        let wv = WKWebView(frame: CGRect.zero)
         wv.restorationIdentifier = "wv"
         self.view.restorationIdentifier = "wvcontainer" // shouldn't be necessary...
-        wv.scrollView.backgroundColor = UIColor.blackColor() // web view alone, ineffective
+        wv.scrollView.backgroundColor = UIColor.black() // web view alone, ineffective
         self.view.addSubview(wv)
         wv.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([
-            NSLayoutConstraint.constraintsWithVisualFormat("H:|[wv]|", options: [], metrics: nil, views: ["wv":wv]),
-            NSLayoutConstraint.constraintsWithVisualFormat("V:|[wv]|", options: [], metrics: nil, views: ["wv":wv])
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint.constraints(withVisualFormat:"H:|[wv]|", options: [], metrics: nil, views: ["wv":wv]),
+            NSLayoutConstraint.constraints(withVisualFormat:"V:|[wv]|", options: [], metrics: nil, views: ["wv":wv])
             ].flatten().map{$0})
         self.wv = wv
                 
@@ -67,25 +67,25 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         wv.allowsBackForwardNavigationGestures = true
         
         // prepare nice activity indicator to cover loading
-        let act = UIActivityIndicatorView(activityIndicatorStyle:.WhiteLarge)
+        let act = UIActivityIndicatorView(activityIndicatorStyle:.whiteLarge)
         act.backgroundColor = UIColor(white:0.1, alpha:0.5)
         self.activity = act
         wv.addSubview(act)
         act.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([
-            act.centerXAnchor.constraintEqualToAnchor(wv.centerXAnchor),
-            act.centerYAnchor.constraintEqualToAnchor(wv.centerYAnchor)
+        NSLayoutConstraint.activate([
+            act.centerXAnchor.constraintEqual(to:wv.centerXAnchor),
+            act.centerYAnchor.constraintEqual(to:wv.centerYAnchor)
             ])
         // webkit uses KVO
-        wv.addObserver(self, forKeyPath: "loading", options: .New, context: nil)
+        wv.addObserver(self, forKeyPath: "loading", options: .new, context: nil)
         // cool feature, show title
-        wv.addObserver(self, forKeyPath: "title", options: .New, context: nil)
+        wv.addObserver(self, forKeyPath: "title", options: .new, context: nil)
         
         wv.navigationDelegate = self
         
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<()>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
             guard let _ = object as? WKWebView else {return}
             guard let keyPath = keyPath else {return}
             guard let change = change else {return}
@@ -107,11 +107,11 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
     }
     
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("view did appear, req: \(self.wv.URL)") // no evidence that restoration is being done for us
+        print("view did appear, req: \(self.wv.url)") // no evidence that restoration is being done for us
         
-        let b = UIBarButtonItem(title:"Back", style:.Plain, target:self, action:#selector(goBack))
+        let b = UIBarButtonItem(title:"Back", style:.plain, target:self, action:#selector(goBack))
         self.navigationItem.rightBarButtonItems = [b]
         
         if self.decoded {
@@ -119,7 +119,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         }
         
         let url = NSURL(string: "http://www.apeth.com/RubyFrontierDocs/default.html")!
-        self.wv.loadRequest(NSURLRequest(URL:url))
+        self.wv.load(NSURLRequest(url:url))
     }
     
 
@@ -132,7 +132,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         self.wv.stopLoading()
     }
         
-    func goBack(sender:AnyObject) {
+    func goBack(_ sender:AnyObject) {
         self.wv.goBack()
     }
     
@@ -140,24 +140,24 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
 }
 
 extension WebViewController : WKNavigationDelegate {
-    func webView(webView: WKWebView, didCommitNavigation navigation: WKNavigation) {
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation) {
         print("did commit \(navigation)")
     }
     
-    func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: NSError) {
         print("did fail")
     }
     
-    func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
         print("did fail provisional")
     }
     
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("did finish")
     }
     
-    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("did start")
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print("did start provisional")
     }
 }
 

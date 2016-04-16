@@ -6,6 +6,29 @@ import AVKit
 
 import CoreMedia
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class ViewController: UIViewController {
     @IBOutlet var player : AVPlayer!
     @IBOutlet var playerLayer : AVPlayerLayer!
@@ -16,28 +39,28 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let m = NSBundle.mainBundle().URLForResource("ElMirage", withExtension:"mp4")!
+        let m = NSBundle.main().urlForResource("ElMirage", withExtension:"mp4")!
         //        let p = AVPlayer(URL:m)!
-        let asset = AVURLAsset(URL:m, options:nil)
+        let asset = AVURLAsset(url:m)
         let item = AVPlayerItem(asset:asset)
         let p = AVPlayer(playerItem:item)
         self.player = p // might need a reference later
         let lay = AVPlayerLayer(player:p)
-        lay.frame = CGRectMake(10,10,300,200)
+        lay.frame = CGRect(10,10,300,200)
         self.playerLayer = lay
         
         if AVPictureInPictureController.isPictureInPictureSupported() {
             let pic = AVPictureInPictureController(playerLayer: lay)
             self.pic = pic
         } else {
-            self.picButton.hidden = true
+            self.picButton.isHidden = true
         }
         
         lay.addObserver(self, forKeyPath:"readyForDisplay", options:[], context:nil)
         
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<()>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
         if keyPath == "readyForDisplay" {
             dispatch_async(dispatch_get_main_queue(), {
                 self.finishConstructingInterface()
@@ -46,7 +69,7 @@ class ViewController: UIViewController {
     }
     
     func finishConstructingInterface () {
-        if (!self.playerLayer.readyForDisplay) {
+        if (!self.playerLayer.isReadyForDisplay) {
             return
         }
         
@@ -58,14 +81,14 @@ class ViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: [])
-        _ = try? AVAudioSession.sharedInstance().setActive(true, withOptions: [])
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        _ = try? AVAudioSession.sharedInstance().setActive(true)
     }
 
     
-    @IBAction func doButton (sender:AnyObject!) {
+    @IBAction func doButton (_ sender:AnyObject!) {
         let rate = self.player.rate
         if rate < 0.01 {
             self.player.rate = 1
@@ -75,13 +98,13 @@ class ViewController: UIViewController {
     }
 
     
-    @IBAction func restart (sender:AnyObject!) {
+    @IBAction func restart (_ sender:AnyObject!) {
         let item = self.player.currentItem! //
-        item.seekToTime(CMTimeMake(0, 1))
+        item.seek(to:CMTimeMake(0, 1))
     }
 
-    @IBAction func doPicInPic(sender: AnyObject) {
-        if self.pic.pictureInPicturePossible {
+    @IBAction func doPicInPic(_ sender: AnyObject) {
+        if self.pic.isPictureInPicturePossible {
             self.pic.startPictureInPicture()
         }
     }

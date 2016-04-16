@@ -10,14 +10,14 @@ class ViewController : UIViewController {
         // if we are called in portrait orientation, need to swap width and height
         // otherwise we get 1/3 of portrait width, and height for portrait height...
         // for a view that is supposed to fit correctly into landscape only
-        if self.traitCollection.verticalSizeClass != .Compact {
+        if self.traitCollection.verticalSizeClass != .compact {
             print("swapping")
             (f.size.width, f.size.height) = (f.size.height, f.size.width)
         }
         f.size.width /= 3.0
         f.origin.x = -f.size.width
         let gr = UIView(frame:f)
-        gr.backgroundColor = UIColor.greenColor()
+        gr.backgroundColor = UIColor.green()
         return gr
     }
     
@@ -33,12 +33,12 @@ class ViewController : UIViewController {
     */
         
 
-    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         print("will transition to trait collection")
-        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+        super.willTransition(to:newCollection, with:coordinator)
         let v = self.greenRect
         var newFrameOriginX = v.frame.origin.x
-        if newCollection.verticalSizeClass == .Compact { // landscape
+        if newCollection.verticalSizeClass == .compact { // landscape
             if v.superview == nil {
                 self.view.addSubview(v)
                 newFrameOriginX = 0 // set into variable so we can animate change
@@ -48,18 +48,18 @@ class ViewController : UIViewController {
                 newFrameOriginX = -v.frame.size.width // ditto
             }
         }
-        coordinator.animateAlongsideTransition({
+        coordinator.animate(alongsideTransition:{
             _ in
             v.frame.origin.x = newFrameOriginX // animate the change in position!
             }, completion: {
                 _ in
-                if newCollection.verticalSizeClass != .Compact {
+                if newCollection.verticalSizeClass != .compact {
                     self.greenRect.removeFromSuperview() // now offscreen, remove
                 }
             })
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         print("will transition to size")
     }
 

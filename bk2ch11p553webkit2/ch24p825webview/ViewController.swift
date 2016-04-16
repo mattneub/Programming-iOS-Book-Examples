@@ -3,7 +3,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBAction func doButton (sender:AnyObject!) {
+    @IBAction func doButton (_ sender:AnyObject!) {
         let wvc = WebViewController()
         self.navigationController!.pushViewController(wvc, animated:true)
     }
@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Start"
-        self.edgesForExtendedLayout = .None
+        self.edgesForExtendedLayout = [] // none
     }
 
 }

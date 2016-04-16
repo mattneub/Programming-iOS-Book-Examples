@@ -8,10 +8,10 @@ func lend<T where T:NSObject> (closure:(T)->()) -> T {
     return orig
 }
 
-func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()
+    let result = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return result
 }
@@ -33,14 +33,14 @@ class ViewController : UIViewController {
 
         let f = UIFont(name:"GillSans", size:20)!
         
-        let align : NSTextAlignment = .Left
-        let brk : NSLineBreakMode = .ByTruncatingMiddle
+        let align : NSTextAlignment = .left
+        let brk : NSLineBreakMode = .byTruncatingMiddle
         let numLines = 2
         let tighten = true
         
         let adjusts = false
         let min : CGFloat = 0.8
-        let base : UIBaselineAdjustment = .None
+        let base : UIBaselineAdjustment = .none
         
         self.lab1.adjustsFontSizeToFitWidth = adjusts
         self.lab2.adjustsFontSizeToFitWidth = adjusts
@@ -70,13 +70,13 @@ class ViewController : UIViewController {
             }
         ])
         mas.addAttribute(NSForegroundColorAttributeName,
-            value:UIColor.blueColor(),
-            range:(s as NSString).rangeOfString("poltergeists"))
+            value:UIColor.blue(),
+            range:(s as NSString).range(of:"poltergeists"))
         self.lab2.attributedText = mas
 
         let r = self.iv.bounds
         self.iv.image = imageOfSize(r.size) {
-            mas.drawInRect(r)
+            mas.draw(in:r)
         }
         
         

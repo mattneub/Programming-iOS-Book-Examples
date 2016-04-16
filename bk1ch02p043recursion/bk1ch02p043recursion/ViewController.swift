@@ -2,7 +2,7 @@
 
 import UIKit
 
-func countDownFrom(ix:Int) {
+func countDownFrom(_ ix:Int) {
     print(ix)
     if ix > 0 { // stopper
         countDownFrom(ix-1) // recurse!
@@ -12,7 +12,7 @@ func countDownFrom(ix:Int) {
 
 class ViewController: UIViewController {
     
-    func countDownFrom2(ix:Int) {
+    func countDownFrom2(_ ix:Int) {
         print(ix)
         if ix > 0 { // stopper
             countDownFrom2(ix-1) // legal
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
-        func countDownFrom3(ix:Int) {
+        func countDownFrom3(_ ix:Int) {
             print(ix)
             if ix > 0 { // stopper
                 countDownFrom3(ix-1) // new: legal in Swift 2.0

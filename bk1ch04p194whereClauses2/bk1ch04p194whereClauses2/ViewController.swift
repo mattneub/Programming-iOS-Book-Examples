@@ -15,7 +15,7 @@ struct Bird : Flier {
 struct Insect : Flier {
     typealias Other = Bird
 }
-func flockTogether<T:Flier where T.Other:Equatable> (f:T) {}
+func flockTogether<T:Flier where T.Other:Equatable> (_ f:T) {}
 
 // ==== colon and class
 
@@ -29,7 +29,7 @@ struct Pig : Flier {
 struct Pig2 : Flier {
     typealias Other = NoisyDog
 }
-func flockTogether2<T:Flier where T.Other:Dog> (f:T) {}
+func flockTogether2<T:Flier where T.Other:Dog> (_ f:T) {}
 
 // ==== equality and protocol
 
@@ -43,11 +43,11 @@ struct Bird3 : Flier {
 struct Insect3 : Flier {
     typealias Other = Walker
 }
-func flockTogether3<T:Flier where T.Other == Walker> (f:T) {}
+func flockTogether3<T:Flier where T.Other == Walker> (_ f:T) {}
 
 // ==== equality and class
 
-func flockTogether4<T:Flier where T.Other == Dog> (f:T) {}
+func flockTogether4<T:Flier where T.Other == Dog> (_ f:T) {}
 
 // ==== equality and two associated type chains
 
@@ -58,7 +58,7 @@ struct Insect4 : Flier {
     typealias Other = Int
 }
 func flockTwoTogether<T:Flier, U:Flier where T.Other == U.Other>
-    (f1:T, _ f2:U) {}
+    (_ f1:T, _ f2:U) {}
 
 
 class ViewController: UIViewController {
@@ -83,13 +83,13 @@ class ViewController: UIViewController {
         // flockTwoTogether(Bird4(), Insect4()) // nope
         
         var s = "hello"
-        s.appendContentsOf(" world".characters) // "hello world"
+        s.append(contentsOf: " world".characters) // "hello world"
         print(s)
-        s.appendContentsOf(["!" as Character])
-        print(s) // "hello world"
+        s.append(contentsOf: ["!" as Character])
+        print(s) // "hello world!"
         
         var arr = ["manny", "moe"]
-        arr.appendContentsOf(["jack"])
+        arr.append(contentsOf: ["jack"])
         // arr.appendContentsOf([1]) // nope
         
         

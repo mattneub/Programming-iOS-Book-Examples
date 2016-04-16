@@ -1,14 +1,18 @@
 
 import UIKit
 
-func doThis(f:()->()) {
+func say(_ s:String, times:Int) {}
+func say(_ s:String) {}
+let f = say as (String,Int) -> Void
+
+func doThis(_ f:()->()) {
     f()
 }
 
-func imageOfSize(size:CGSize, _ whatToDraw:() -> ()) -> UIImage {
+func imageOfSize(_ size:CGSize, _ whatToDraw:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     whatToDraw()
-    let result = UIGraphicsGetImageFromCurrentImageContext()
+    let result = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return result
 }
@@ -24,7 +28,7 @@ class Dog {
     func bark() {
         print("woof")
     }
-    func bark(loudly:Bool) {
+    func bark(_ loudly:Bool) {
         if loudly {
             print("WOOF")
         } else {
@@ -34,9 +38,9 @@ class Dog {
     func test() {
         // let barkFunction = bark
         let barkFunction1 = bark(_:)
-        let barkFunction2 = bark as Void -> Void
-        let barkFunction3 = bark as Bool -> Void
-        let barkFunction4 : Bool -> Void = bark
+        let barkFunction2 = bark as (Void) -> Void
+        let barkFunction3 = bark as (Bool) -> Void
+        let barkFunction4 : (Bool) -> Void = bark
         let barkFunction5 = self.bark(_:)
         
         let barkFunction6 = self.dynamicType.bark(_:)
@@ -83,15 +87,16 @@ class Dog2 {
     func bark() {
         
     }
-    func bark(loudly:Bool) {
+    func bark(_ loudly:Bool) {
         
     }
-    func bark(times:Int) {
+    func bark(_ times:Int) {
         
     }
     func test() {
-        // let barkFunction = bark(_:)
-        let barkFunction = bark(_:) as Int -> Void
+        // let barkFunction1 = bark // ambiguous
+        // let barkFunction2 = bark(_:) // still ambiguous
+        let barkFunction = bark as (Int) -> Void // NB
         _ = barkFunction
     }
 }
@@ -109,19 +114,29 @@ class ViewController: UIViewController {
             print("I did it")
         }
         doThis(whatToDo)
+        
+        do {
+            let size = CGSize(width:45, height:20)
+            UIGraphicsBeginImageContextWithOptions(size, false, 0)
+            let p = UIBezierPath(
+                roundedRect: CGRect(x:0, y:0, width:45, height:20), cornerRadius: 8)
+            p.stroke()
+            let result = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+        }
 
         
         func drawing() {
-            let p = UIBezierPath(
-                roundedRect: CGRectMake(0,0,45,20), cornerRadius: 8)
+            let p = UIBezierPath( // looks like they've finally cut me off from CGRectMake
+                roundedRect: CGRect(x:0, y:0, width:45, height:20), cornerRadius: 8)
             p.stroke()
         }
-        let image = imageOfSize(CGSizeMake(45,20), drawing)
+        let image = imageOfSize(CGSize(width:45, height:20), drawing)
         
         
         // here, I'll prove we really drew it :)
         let imageView = UIImageView(image:image)
-        imageView.frame.origin = CGPointMake(100,100)
+        imageView.frame.origin = CGPoint(x:100,y:100)
         self.view.addSubview(imageView)
         
     }
@@ -129,14 +144,14 @@ class ViewController: UIViewController {
     
     
     
-    @IBAction func moveMyButton (sender:AnyObject!) {
+    @IBAction func moveMyButton (_ sender:AnyObject!) {
         func whatToAnimate() { // self.myButton is a button in the interface
             self.myButton.frame.origin.y += 20
         }
         func whatToDoLater(finished:Bool) {
             print("finished: \(finished)")
         }
-        UIView.animateWithDuration(
+        UIView.animate(withDuration:
             0.4, animations: whatToAnimate, completion: whatToDoLater)
     }
     
@@ -145,7 +160,7 @@ class ViewController: UIViewController {
         func whatToDoLater() {
             print("I finished!")
         }
-        self.presentViewController(vc, animated:true, completion:whatToDoLater)
+        self.present(vc, animated:true, completion:whatToDoLater)
         
     }
 
@@ -178,20 +193,22 @@ class ViewController: UIViewController {
     }
     
     // I should probably now discuss #selector syntax at this point in the book
-    
+    let b = UIButton(type: .system)
     func testSelectorSyntax() {
-        let b = UIButton(type: .System)
-        b.addTarget(self, action: #selector(doButton), forControlEvents: .TouchUpInside)
+        // how to crash:
+        self.b.addTarget(self, action: "buttonPressed", for: .touchUpInside)
+        // the solution:
+        self.b.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         // or:
-        b.addTarget(self, action: #selector(doButton(_:)), forControlEvents: .TouchUpInside)
+        self.b.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         // or:
-        b.addTarget(self, action: #selector(ViewController.doButton(_:)), forControlEvents: .TouchUpInside)
+        self.b.addTarget(self, action: #selector(ViewController.buttonPressed(_:)), for: .touchUpInside)
         // and so on; but the point is, you just need to provide enough info ...
         // ... so that the compiler can resolve this method reference for you
         // and it will then form the actual Selector for you! no more "unrecognized selector"!
     }
     
-    func doButton(sender:AnyObject) { // must actually exist, or none of the above will compile
+    func buttonPressed(_ sender:AnyObject) { // must actually exist, or none of the above will compile
         
     }
 

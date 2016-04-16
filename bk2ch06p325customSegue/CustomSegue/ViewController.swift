@@ -6,8 +6,8 @@ class ViewController: UIViewController {
 }
 
 class ViewController2: UIViewController {
-    @IBAction func doDismiss(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func doDismiss(_ sender: AnyObject) {
+        self.dismiss(animated:true, completion: nil)
     }
 }
 
@@ -21,47 +21,49 @@ class ViewController2: UIViewController {
 class MyCoolSegue: UIStoryboardSegue {
     override func perform() {
         let dest = self.destinationViewController
-        dest.modalPresentationStyle = .Custom
+        dest.modalPresentationStyle = .custom
         dest.transitioningDelegate = self
         super.perform()
     }
 }
 extension MyCoolSegue: UIViewControllerTransitioningDelegate {
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    @objc(animationControllerForPresentedController:presentingController:sourceController:)
+    func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    @objc(animationControllerForDismissedController:)
+    func animationController(forDismissedController dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
 }
 extension MyCoolSegue: UIViewControllerAnimatedTransitioning {
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.8
     }
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-        let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+    func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+        let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)!
+        let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
         
         let con = transitionContext.containerView()!
         
-        let r1start = transitionContext.initialFrameForViewController(vc1)
-        let r2end = transitionContext.finalFrameForViewController(vc2)
+        let r1start = transitionContext.initialFrame(for:vc1)
+        let r2end = transitionContext.finalFrame(for:vc2)
         
-        if let v2 = transitionContext.viewForKey(UITransitionContextToViewKey) {
+        if let v2 = transitionContext.view(forKey:UITransitionContextToViewKey) {
             var r2start = r2end
             r2start.origin.y -= r2start.size.height
             v2.frame = r2start
             con.addSubview(v2)
-            UIView.animateWithDuration(0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: [], animations: {
+            UIView.animate(withDuration:0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: [], animations: {
                 v2.frame = r2end
                 }, completion: {
                     _ in
                     transitionContext.completeTransition(true)
             })
-        } else if let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey) {
+        } else if let v1 = transitionContext.view(forKey:UITransitionContextFromViewKey) {
             var r1end = r1start
             r1end.origin.y = -r1end.size.height
-            UIView.animateWithDuration(0.8, animations: {
+            UIView.animate(withDuration:0.8, animations: {
                 v1.frame = r1end
                 }, completion: {
                     _ in

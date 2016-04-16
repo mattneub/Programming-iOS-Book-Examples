@@ -14,41 +14,41 @@ class ViewController: UIViewController {
         
         switch which {
         case 1:
-            dp.datePickerMode = .Date
+            dp.datePickerMode = .date
             // dp.datePickerMode = .DateAndTime
             let dc = NSDateComponents()
             dc.year = 1954
             dc.month = 1
             dc.day = 1
             let c = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
-            let d1 = c.dateFromComponents(dc)!
+            let d1 = c.date(from: dc)!
             dp.minimumDate = d1
             dp.date = d1
             dc.year = 1955
-            let d2 = c.dateFromComponents(dc)!
+            let d2 = c.date(from: dc)!
             dp.maximumDate = d2
         case 2:
-            dp.datePickerMode = .CountDownTimer
+            dp.datePickerMode = .countDownTimer
         default: break
         }
 
     }
 
-    @IBAction func dateChanged(sender: AnyObject) {
+    @IBAction func dateChanged(_ sender: AnyObject) {
         let dp = sender as! UIDatePicker
-        if dp.datePickerMode != .CountDownTimer {
+        if dp.datePickerMode != .countDownTimer {
             let d = dp.date
             let df = NSDateFormatter()
-            df.timeStyle = .FullStyle
-            df.dateStyle = .FullStyle
-            print(df.stringFromDate(d))
+            df.timeStyle = .fullStyle
+            df.dateStyle = .fullStyle
+            print(df.string(from: d))
             // Tuesday, August 10, 1954 at 3:16:00 AM GMT-07:00
         } else {
             let t = dp.countDownDuration
             let f = NSDateComponentsFormatter()
-            f.allowedUnits = [.Hour, .Minute]
-            f.unitsStyle = .Abbreviated
-            if let s = f.stringFromTimeInterval(t) {
+            f.allowedUnits = [.hour, .minute]
+            f.unitsStyle = .abbreviated
+            if let s = f.string(from: t) {
                 print(s) // "1h 12m"
             }
 

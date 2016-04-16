@@ -1,24 +1,31 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
 
-    func application(application: UIApplication,
+    func application(_ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)
         -> Bool {
             self.window = UIWindow()
             self.window!.rootViewController = UIViewController()
             // here we can add subviews
             let mainview = self.window!.rootViewController!.view
-            let v = UIView(frame:CGRectMake(100,100,50,50))
-            v.backgroundColor = UIColor.redColor() // small red square
+            let v = UIView(frame:CGRect(100,100,50,50))
+            v.backgroundColor = UIColor.red() // small red square
             mainview.addSubview(v) // add it to main view
             // and the rest is as before...
-            self.window!.backgroundColor = UIColor.whiteColor()
+            self.window!.backgroundColor = UIColor.white()
             self.window!.makeKeyAndVisible()
             return true
     }

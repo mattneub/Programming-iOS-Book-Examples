@@ -1,15 +1,38 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 
 class ViewController : UIViewController {
-    @IBAction func doButton(sender:AnyObject?) {
+    @IBAction func doButton(_ sender:AnyObject?) {
         // for comparison purposes
 //        let alert = UIAlertController(title: "Howdy", message: "This is a test", preferredStyle: .Alert)
 //        alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-//        self.presentViewController(alert, animated:true, completion:nil)
+//        self.present(alert, animated:true, completion:nil)
 //        return;
-        self.presentViewController(ViewController2(), animated:true, completion:nil)
+        self.present(ViewController2(), animated:true, completion:nil)
     }
 }
 
@@ -18,29 +41,30 @@ class ViewController : UIViewController {
 class ViewController2 : UIViewController {
     @IBOutlet var button : UIButton!
     
-    @IBAction func doButton(sender:AnyObject?) {
-        self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func doButton(_ sender:AnyObject?) {
+        self.presenting!.dismiss(animated:true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.layer.borderColor = self.view.tintColor.CGColor
+        self.view.layer.borderColor = self.view.tintColor.cgColor
         self.view.layer.borderWidth = 2
         self.view.layer.cornerRadius = 10
         self.view.layer.masksToBounds = true
-        self.button.layer.borderColor = self.button.tintColor!.CGColor
+        self.button.layer.borderColor = self.button.tintColor!.cgColor
         self.button.layer.borderWidth = 1
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(10,10), false, 0)
-        CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext()!, UIColor(white:0.4, alpha:1.5).CGColor)
-        CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,0,10,10))
-        let im = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(CGSize(10,10), false, 0)
+        let con = UIGraphicsGetCurrentContext()!
+        con.setFillColor(UIColor(white:0.4, alpha:1.5).cgColor)
+        con.fill(CGRect(0,0,10,10))
+        let im = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        self.button.setBackgroundImage(im, forState:.Highlighted)
+        self.button.setBackgroundImage(im, for:.highlighted)
     }
     
     init() {
         super.init(nibName: "ViewController2", bundle: nil)
-        self.modalPresentationStyle = .Custom
+        self.modalPresentationStyle = .custom
         self.transitioningDelegate = self
     }
     
@@ -51,8 +75,8 @@ class ViewController2 : UIViewController {
 }
 
 extension ViewController2 : UIViewControllerTransitioningDelegate {
-    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return MyPresentationController(presentedViewController: presented, presentingViewController: presenting)
+    func presentationController(forPresentedViewController presented: UIViewController, presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
+        return MyPresentationController(presentedViewController: presented, presenting: presenting)
     }
 }
 
@@ -62,17 +86,17 @@ class MyPresentationController : UIPresentationController {
         let shadow = UIView(frame:con.bounds)
         shadow.backgroundColor = UIColor(white:0, alpha:0.4)
         shadow.alpha = 0
-        con.insertSubview(shadow, atIndex: 0)
-        shadow.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        con.insertSubview(shadow, at: 0)
+        shadow.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         let tc = self.presentedViewController.transitionCoordinator()!
-        tc.animateAlongsideTransition({
+        tc.animate(alongsideTransition:{
             _ in
             shadow.alpha = 1
             }, completion: {
                 _ in
                 let vc = self.presentingViewController
                 let v = vc.view
-                v.tintAdjustmentMode = .Dimmed
+                v.tintAdjustmentMode = .dimmed
             })
     }
     
@@ -80,14 +104,14 @@ class MyPresentationController : UIPresentationController {
         let con = self.containerView!
         let shadow = con.subviews[0]
         let tc = self.presentedViewController.transitionCoordinator()!
-        tc.animateAlongsideTransition({
+        tc.animate(alongsideTransition:{
             _ in
             shadow.alpha = 0
             }, completion: {
                 _ in
                 let vc = self.presentingViewController
                 let v = vc.view
-                v.tintAdjustmentMode = .Automatic
+                v.tintAdjustmentMode = .automatic
             })
     }
     
@@ -97,7 +121,7 @@ class MyPresentationController : UIPresentationController {
         // but here we just assume that it *is* its native size
         let v = self.presentedView()!
         let con = self.containerView!
-        v.center = CGPointMake(con.bounds.midX, con.bounds.midY)
+        v.center = CGPoint(con.bounds.midX, con.bounds.midY)
         return v.frame.integral
     }
     
@@ -105,39 +129,39 @@ class MyPresentationController : UIPresentationController {
         // deal with future rotation
         // again, I can think of more than one approach
         let v = self.presentedView()!
-        v.autoresizingMask = [.FlexibleTopMargin, .FlexibleBottomMargin,
-            .FlexibleLeftMargin, .FlexibleRightMargin]
+        v.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin,
+            .flexibleLeftMargin, .flexibleRightMargin]
     }
     
 }
 
 extension ViewController2 /* UIViewControllerTransitioningDelegate */ {
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    @objc(animationControllerForPresentedController:presentingController:sourceController:)
+    func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
-    
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissedController dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
 }
 
 extension ViewController2 : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?)
+    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?)
         -> NSTimeInterval {
             return 0.25
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        // let vc1 = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)
-        // let vc2 = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
+    func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+        // let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)
+        // let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)
         
         let con = transitionContext.containerView()!
         
-        // let r1start = transitionContext.initialFrameForViewController(vc1!)
-        // let r2end = transitionContext.finalFrameForViewController(vc2!)
+        // let r1start = transitionContext.initialFrame(for:vc1!)
+        // let r2end = transitionContext.finalFrame(for:vc2!)
         
-        let v1 = transitionContext.viewForKey(UITransitionContextFromViewKey)
-        let v2 = transitionContext.viewForKey(UITransitionContextToViewKey)
+        let v1 = transitionContext.view(forKey:UITransitionContextFromViewKey)
+        let v2 = transitionContext.view(forKey:UITransitionContextToViewKey)
         
         // we are using the same object (self) as animation controller
         // for both presentation and dismissal
@@ -145,18 +169,18 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
         
         if let v2 = v2 {
             con.addSubview(v2)
-            let scale = CGAffineTransformMakeScale(1.6,1.6)
+            let scale = CGAffineTransform(scaleX:1.6, y:1.6)
             v2.transform = scale
             v2.alpha = 0
-            UIView.animateWithDuration(0.25, animations: {
+            UIView.animate(withDuration:0.25, animations: {
                 v2.alpha = 1
-                v2.transform = CGAffineTransformIdentity
+                v2.transform = CGAffineTransform.identity
                 }, completion: {
                     _ in
                     transitionContext.completeTransition(true)
                 })
         } else if let v1 = v1 {
-            UIView.animateWithDuration(0.25, animations: {
+            UIView.animate(withDuration:0.25, animations: {
                 v1.alpha = 0
                 }, completion: {
                     _ in

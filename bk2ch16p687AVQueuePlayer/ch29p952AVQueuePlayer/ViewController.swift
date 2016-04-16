@@ -6,6 +6,29 @@ import AVFoundation
 import CoreMedia
 import AVKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 protocol PlayerPauser {
     var playing : Bool {get}
     func doPlay()
@@ -47,78 +70,78 @@ class ViewController: UIViewController {
     }
     
     func oneSong () -> NSURL? {
-        let query = MPMediaQuery.songsQuery()
+        let query = MPMediaQuery.songs()
         // always need to filter out songs that aren't present
         let isPresent = MPMediaPropertyPredicate(value:false,
             forProperty:MPMediaItemPropertyIsCloudItem,
-            comparisonType:.EqualTo)
+            comparisonType:.equalTo)
         query.addFilterPredicate(isPresent)
         return query.items?[0].assetURL
     }
     
-    @IBAction func doPlayOneSongAVAudioPlayer (sender:AnyObject!) {
+    @IBAction func doPlayOneSongAVAudioPlayer (_ sender:AnyObject!) {
         self.curplayer?.pause()
         if let url = self.oneSong() {
-            self.player.playFileAtURL(url)
+            self.player.playFile(at:url)
             self.curplayer = self.player.player
         }
     }
     
-    @IBAction func doPlayOneSongAVPlayer (sender:AnyObject!) {
+    @IBAction func doPlayOneSongAVPlayer (_ sender:AnyObject!) {
         self.curplayer?.pause()
         if let url = self.oneSong() {
-            self.avplayer = AVPlayer(URL:url)
+            self.avplayer = AVPlayer(url:url)
             self.avplayer.play()
             self.curplayer = self.avplayer
         }
     }
     
-    @IBAction func doPlayOneSongAVKit(sender: AnyObject) {
+    @IBAction func doPlayOneSongAVKit(_ sender: AnyObject) {
         self.curplayer?.pause()
         guard let url = self.oneSong() else {return}
-        let p = AVPlayer(URL:url)
+        let p = AVPlayer(url:url)
         let vc = AVPlayerViewController()
         vc.player = p
-        vc.view.frame = CGRectMake(20,-5,250,80) // no smaller height or we get constraint issues
-        vc.view.backgroundColor = UIColor.clearColor()
+        vc.view.frame = CGRect(20,-5,250,80) // no smaller height or we get constraint issues
+        vc.view.backgroundColor = UIColor.clear()
         // cover the black QuickTime background, heh heh
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
-        v.backgroundColor = UIColor.whiteColor()
+        v.backgroundColor = UIColor.white()
         vc.contentOverlayView!.addSubview(v)
         let c : [NSLayoutConstraint] = [
-            v.leadingAnchor.constraintEqualToAnchor(v.superview!.leadingAnchor),
-            v.trailingAnchor.constraintEqualToAnchor(v.superview!.trailingAnchor),
-            v.topAnchor.constraintEqualToAnchor(v.superview!.topAnchor),
-            v.bottomAnchor.constraintEqualToAnchor(v.superview!.bottomAnchor),
+            v.leadingAnchor.constraintEqual(to:v.superview!.leadingAnchor),
+            v.trailingAnchor.constraintEqual(to:v.superview!.trailingAnchor),
+            v.topAnchor.constraintEqual(to:v.superview!.topAnchor),
+            v.bottomAnchor.constraintEqual(to:v.superview!.bottomAnchor),
         ]
-        NSLayoutConstraint.activateConstraints(c)
+        NSLayoutConstraint.activate(c)
         let v2 = UIView()
         v2.translatesAutoresizingMaskIntoConstraints = false
-        v2.backgroundColor = UIColor.blackColor()
+        v2.backgroundColor = UIColor.black()
         vc.contentOverlayView!.addSubview(v2)
         let c2 : [NSLayoutConstraint] = [
-            v2.leadingAnchor.constraintEqualToAnchor(v2.superview!.leadingAnchor),
-            v2.trailingAnchor.constraintEqualToAnchor(v2.superview!.trailingAnchor),
-            v2.heightAnchor.constraintEqualToConstant(44),
-            v2.bottomAnchor.constraintEqualToAnchor(v2.superview!.bottomAnchor),
+            v2.leadingAnchor.constraintEqual(to:v2.superview!.leadingAnchor),
+            v2.trailingAnchor.constraintEqual(to:v2.superview!.trailingAnchor),
+            v2.heightAnchor.constraintEqual(toConstant:44),
+            v2.bottomAnchor.constraintEqual(to:v2.superview!.bottomAnchor),
         ]
-        NSLayoutConstraint.activateConstraints(c2)
+        NSLayoutConstraint.activate(c2)
         
         self.addChildViewController(vc)
         self.view.addSubview(vc.view)
-        vc.didMoveToParentViewController(self)
+        vc.didMove(toParentViewController: self)
         p.play()
         self.curplayer = p
     }
     
-    @IBAction func doPlayShortSongs (sender:AnyObject!) {
+    @IBAction func doPlayShortSongs (_ sender:AnyObject!) {
         self.curplayer?.pause()
-        let query = MPMediaQuery.songsQuery()
+        let query = MPMediaQuery.songs()
         // always need to filter out songs that aren't present
         let isPresent = MPMediaPropertyPredicate(value:false,
             forProperty:MPMediaItemPropertyIsCloudItem,
-            comparisonType:.EqualTo)
+            comparisonType:.equalTo)
         query.addFilterPredicate(isPresent)
         guard let items = query.items else {return}
         
@@ -134,7 +157,7 @@ class ViewController: UIViewController {
         
         self.items = shorties.map {
             let url = $0.assetURL!
-            let asset = AVAsset(URL:url)
+            let asset = AVAsset(url:url)
             return AVPlayerItem(
                 asset: asset, automaticallyLoadedAssetKeys: ["duration"])
             // duration needed later; this way, queue player will load it for us up front
@@ -148,21 +171,21 @@ class ViewController: UIViewController {
         }
         
         let seed = min(3,self.items.count)
-        self.qp = AVQueuePlayer(items:Array(self.items.prefixUpTo(seed)))
-        self.items = Array(self.items.suffixFrom(seed))
+        self.qp = AVQueuePlayer(items:Array(self.items.prefix(upTo:seed)))
+        self.items = Array(self.items.suffix(from:seed))
         
         // use .Initial option so that we get an observation for the first item
-        self.qp.addObserver(self, forKeyPath:"currentItem", options:.Initial, context:nil)
+        self.qp.addObserver(self, forKeyPath:"currentItem", options:.initial, context:nil)
         self.qp.play()
         self.curplayer = self.qp
         
-        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+        UIApplication.shared().beginReceivingRemoteControlEvents()
         
-        self.ob = self.qp.addPeriodicTimeObserverForInterval(CMTimeMakeWithSeconds(0.5, 600), queue: nil, usingBlock: self.timerFired)
+        self.ob = self.qp.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(0.5, 600), queue: nil, using: self.timerFired)
         
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<()>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
         if keyPath == "currentItem" {
             self.changed()
         }
@@ -172,43 +195,43 @@ class ViewController: UIViewController {
         guard let item = self.qp.currentItem else {return}
         self.curnum += 1
         var arr = item.asset.commonMetadata
-        arr = AVMetadataItem.metadataItemsFromArray(arr,
-            withKey:AVMetadataCommonKeyTitle,
+        arr = AVMetadataItem.metadataItems(from:arr,
+            withKey:AVMetadataCommonKeyTitle as NSString,
             keySpace:AVMetadataKeySpaceCommon)
         let met = arr[0]
-        met.loadValuesAsynchronouslyForKeys(["value"]) {
+        met.loadValuesAsynchronously(forKeys:["value"]) {
             // should always check for successful load of value
-            if met.statusOfValueForKey("value", error: nil) == .Loaded {
+            if met.statusOfValue(forKey:"value", error: nil) == .loaded {
                 // can't be sure what thread we're on ...
                 // ...or whether we'll be called back synchronously or asynchronously
                 // so I like to step out to the main thread just in case
                 guard let title = met.value as? String else {return}
                 dispatch_async(dispatch_get_main_queue()) {
                     self.label.text = "\(self.curnum) of \(self.total): \(title)"
-                    MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
-                        MPMediaItemPropertyTitle: title
+                    MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+                        MPMediaItemPropertyTitle: title as NSString
                     ]
                 }
             }
         }
         guard self.items.count > 0 else {return}
         let newItem = self.items.removeFirst()
-        self.qp.insertItem(newItem, afterItem:nil) // means "at end"
+        self.qp.insertItem(newItem, after:nil) // means "at end"
     }
     
     func timerFired(time:CMTime) {
         if let item = self.qp.currentItem {
             let asset = item.asset
-            if asset.statusOfValueForKey("duration", error: nil) == .Loaded {
+            if asset.statusOfValue(forKey:"duration", error: nil) == .loaded {
                 let dur = asset.duration
                 self.prog.setProgress(Float(time.seconds/dur.seconds), animated: false)
-                self.prog.hidden = false
+                self.prog.isHidden = false
             }
         } else {
             // none of this is executed; I need a way of learning when we are completely done
             // or else I can just forget this feature
             self.label.text = ""
-            self.prog.hidden = true
+            self.prog.isHidden = true
             self.qp.removeTimeObserver(self.ob)
             self.ob = nil
             print("removing observer")
@@ -223,25 +246,25 @@ class ViewController: UIViewController {
         return true
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
-        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+        UIApplication.shared().beginReceivingRemoteControlEvents()
     }
     
-    override func remoteControlReceivedWithEvent(event: UIEvent?) {
+    override func remoteControlReceived(with event: UIEvent?) {
         let rc = event!.subtype
         print("received remote control \(rc.rawValue)")
         
         let p = self.curplayer
         switch rc {
-        case .RemoteControlTogglePlayPause:
+        case .remoteControlTogglePlayPause:
             if p.playing { p.pause() } else { p.doPlay() }
-        case .RemoteControlPlay:
+        case .remoteControlPlay:
             p.doPlay()
-        case .RemoteControlPause:
+        case .remoteControlPause:
             p.pause()
-        case .RemoteControlNextTrack:
+        case .remoteControlNextTrack:
             if let p = p as? AVQueuePlayer {
                 p.advanceToNextItem()
             }

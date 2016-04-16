@@ -20,12 +20,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
                 
         let mc = MyClass()
-        if mc.respondsToSelector(#selector(Dummy.woohoo)) {
+        if mc.responds(to: #selector(Dummy.woohoo)) {
             print("here1")
             (mc as AnyObject).woohoo()
         }
         let mc2 = MyClass2()
-        if mc2.respondsToSelector(#selector(Dummy.woohoo)) {
+        if mc2.responds(to: #selector(Dummy.woohoo)) {
             print("here2")
             (mc2 as AnyObject).woohoo()
         }

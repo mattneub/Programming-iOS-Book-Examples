@@ -5,7 +5,7 @@ import AVFoundation
 import MediaPlayer
 
 protocol PlayerDelegate : class {
-    func soundFinished(sender : AnyObject)
+    func soundFinished(_ sender: AnyObject)
 }
 
 class Player : NSObject, AVAudioPlayerDelegate
@@ -14,10 +14,10 @@ class Player : NSObject, AVAudioPlayerDelegate
     var forever = false
     weak var delegate : PlayerDelegate?
 
-    func playFileAtURL(fileURL:NSURL) {
+    func playFile(at fileURL:NSURL) {
         player?.delegate = nil
         player?.stop()
-        player = try! AVAudioPlayer(contentsOfURL: fileURL)
+        player = try! AVAudioPlayer(contentsOf: fileURL)
         // error-checking omitted
         player.prepareToPlay()
         player.delegate = self
@@ -29,7 +29,7 @@ class Player : NSObject, AVAudioPlayerDelegate
     }
     
     // delegate method
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         delegate?.soundFinished(self)
     }
         

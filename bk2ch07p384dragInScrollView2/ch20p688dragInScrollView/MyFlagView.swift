@@ -1,26 +1,52 @@
 
+
 import UIKit
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
 
 
 class MyFlagView : UIImageView {
     // use our hit test from chapter 5 so that user must tap actual flag drawing
-    override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView? {
-        let inside = self.pointInside(point, withEvent:event)
+    override func hitTest(_ point: CGPoint, with event: UIEvent!) -> UIView? {
+        let inside = self.point(inside: point, with:event)
         if !inside { return nil }
         
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
         let lay = self.layer
-        lay.renderInContext(UIGraphicsGetCurrentContext()!)
-        let im = UIGraphicsGetImageFromCurrentImageContext()
+        lay.render(in:UIGraphicsGetCurrentContext()!)
+        let im = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        let info = CGImageAlphaInfo.Only.rawValue
-        let pixel = UnsafeMutablePointer<CUnsignedChar>.alloc(1)
+        let info = CGImageAlphaInfo.alphaOnly.rawValue
+        let pixel = UnsafeMutablePointer<CUnsignedChar>(allocatingCapacity:1)
+        defer {
+            pixel.deinitialize(count: 1)
+            pixel.deallocateCapacity(1)
+        }
         pixel[0] = 0
-        let context = CGBitmapContextCreate(pixel,
-            1, 1, 8, 1, nil, info)!
+        let context = CGContext(data: pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 1, space: nil, bitmapInfo: info, releaseCallback: nil, releaseInfo: nil)!
         UIGraphicsPushContext(context)
-        im.drawAtPoint(CGPointMake(-point.x, -point.y))
+        im.draw(at:CGPoint(-point.x, -point.y))
         UIGraphicsPopContext()
         let p = pixel[0]
         let alpha = Double(p)/255.0

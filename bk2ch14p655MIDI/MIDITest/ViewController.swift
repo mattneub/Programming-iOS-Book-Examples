@@ -9,28 +9,28 @@ class ViewController: UIViewController {
     var engine = AVAudioEngine()
     var seq : AVAudioSequencer!
 
-    @IBAction func doButton(sender: AnyObject) {
+    @IBAction func doButton(_ sender: AnyObject) {
         
-        let midurl = NSBundle.mainBundle().URLForResource("presto", withExtension: "mid")!
-        let sndurl = NSBundle.mainBundle().URLForResource("PianoBell", withExtension: "sf2")!
+        let midurl = NSBundle.main().urlForResource("presto", withExtension: "mid")!
+        let sndurl = NSBundle.main().urlForResource("PianoBell", withExtension: "sf2")!
         
         var which : Int { return 2 } // 1 or 2
         
         switch which {
         case 1:
-            self.player = try! AVMIDIPlayer(contentsOfURL: midurl, soundBankURL: sndurl)
+            self.player = try! AVMIDIPlayer(contentsOf: midurl, soundBankURL: sndurl)
             self.player.prepareToPlay()
             self.player.play(nil)
         case 2:
             let unit = AVAudioUnitSampler()
-            engine.attachNode(unit)
+            engine.attach(unit)
             let mixer = engine.outputNode
-            engine.connect(unit, to: mixer, format: mixer.outputFormatForBus(0))
+            engine.connect(unit, to: mixer, format: mixer.outputFormat(forBus:0))
             
-            try! unit.loadInstrumentAtURL(sndurl) // do this only after configuring engine
+            try! unit.loadInstrument(at:sndurl) // do this only after configuring engine
             
             self.seq = AVAudioSequencer(audioEngine: engine)
-            try! self.seq.loadFromURL(midurl, options: [])
+            try! self.seq.load(from:midurl)
             
             engine.prepare()
             try! engine.start()

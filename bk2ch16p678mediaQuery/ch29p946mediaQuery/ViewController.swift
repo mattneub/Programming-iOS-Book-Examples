@@ -3,10 +3,10 @@
 import UIKit
 import MediaPlayer
 
-func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()
+    let result = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return result
 }
@@ -16,6 +16,27 @@ NB New in iOS 7, MPMediaItem properties can be access directly
 But I never got the memo, so I'm behind on this change!
 Thus we can eliminate the use of valueForProperty throughout
 */
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
 
 
 
@@ -32,47 +53,47 @@ class ViewController: UIViewController {
         
         
         
-        let sz = CGSizeMake(20,20)
+        let sz = CGSize(20,20)
         UIGraphicsBeginImageContextWithOptions(
-            CGSizeMake(sz.height,sz.height), false, 0)
-        UIColor.blackColor().setFill()
-        UIBezierPath(ovalInRect:
-            CGRectMake(0,0,sz.height,sz.height)).fill()
-        let im1 = UIGraphicsGetImageFromCurrentImageContext()
-        UIColor.redColor().setFill()
-        UIBezierPath(ovalInRect:
-            CGRectMake(0,0,sz.height,sz.height)).fill()
-        let im2 = UIGraphicsGetImageFromCurrentImageContext()
-        UIColor.orangeColor().setFill()
-        UIBezierPath(ovalInRect:
-            CGRectMake(0,0,sz.height,sz.height)).fill()
-        let im3 = UIGraphicsGetImageFromCurrentImageContext()
+            CGSize(sz.height,sz.height), false, 0)
+        UIColor.black().setFill()
+        UIBezierPath(ovalIn:
+            CGRect(0,0,sz.height,sz.height)).fill()
+        let im1 = UIGraphicsGetImageFromCurrentImageContext()!
+        UIColor.red().setFill()
+        UIBezierPath(ovalIn:
+            CGRect(0,0,sz.height,sz.height)).fill()
+        let im2 = UIGraphicsGetImageFromCurrentImageContext()!
+        UIColor.orange().setFill()
+        UIBezierPath(ovalIn:
+            CGRect(0,0,sz.height,sz.height)).fill()
+        let im3 = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         self.vv.setMinimumVolumeSliderImage(
-            im1.resizableImageWithCapInsets(UIEdgeInsetsMake(9,9,9,9),
-                resizingMode:.Stretch),
-            forState:.Normal)
+            im1.resizableImage(withCapInsets:UIEdgeInsetsMake(9,9,9,9),
+                resizingMode:.stretch),
+            for:[])
         self.vv.setMaximumVolumeSliderImage(
-            im2.resizableImageWithCapInsets(UIEdgeInsetsMake(9,9,9,9),
-                resizingMode:.Stretch),
-            forState:.Normal)
+            im2.resizableImage(withCapInsets:UIEdgeInsetsMake(9,9,9,9),
+                resizingMode:.stretch),
+            for:[])
         // only for EU devices; to test, use the EU switch under Developer settings on device
         self.vv.volumeWarningSliderImage =
-            im3.resizableImageWithCapInsets(UIEdgeInsetsMake(9,9,9,9),
-                resizingMode:.Stretch)
+            im3.resizableImage(withCapInsets:UIEdgeInsetsMake(9,9,9,9),
+                resizingMode:.stretch)
         
-        let sz2 = CGSizeMake(40,40)
+        let sz2 = CGSize(40,40)
         let thumb = imageOfSize(sz2) {
-            UIImage(named:"SmileyRound.png")!.drawInRect(CGRectMake(0,0,sz2.width,sz2.height))
+            UIImage(named:"SmileyRound.png")!.draw(in:CGRect(0,0,sz2.width,sz2.height))
         }
-        self.vv.setVolumeThumbImage(thumb, forState:.Normal)
+        self.vv.setVolumeThumbImage(thumb, for:[])
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(wirelessChanged),
+        NSNotificationCenter.default().addObserver(self, selector:#selector(wirelessChanged),
             name:MPVolumeViewWirelessRoutesAvailableDidChangeNotification,
             object:nil)
-        NSNotificationCenter.defaultCenter().addObserver(self,
+        NSNotificationCenter.default().addObserver(self,
             selector:#selector(wirelessChanged2),
             name:MPVolumeViewWirelessRouteActiveDidChangeNotification,
             object:nil)
@@ -86,13 +107,13 @@ class ViewController: UIViewController {
         print("wireless active change \(n.userInfo)")
     }
     
-    @IBAction func doAllAlbumTitles (sender:AnyObject!) {
+    @IBAction func doAllAlbumTitles (_ sender:AnyObject!) {
         do {
             let query = MPMediaQuery() // just making sure this is legal
             let result = query.items
             _ = result
         }
-        let query = MPMediaQuery.albumsQuery()
+        let query = MPMediaQuery.albums()
         guard let result = query.collections else {return} //
         // prove we've performed the query, by logging the album titles
         for album in result {
@@ -102,16 +123,16 @@ class ViewController: UIViewController {
         // cloud item values are 0 and 1, meaning false and true
         for album in result {
             for song in album.items { //
-                print("\(song.cloudItem) \(song.assetURL) \(song.title)")
+                print("\(song.isCloudItem) \(song.assetURL) \(song.title)")
             }
         }
     }
     
-    @IBAction func doBeethovenAlbumTitles (sender:AnyObject!) {
-        let query = MPMediaQuery.albumsQuery()
+    @IBAction func doBeethovenAlbumTitles (_ sender:AnyObject!) {
+        let query = MPMediaQuery.albums()
         let hasBeethoven = MPMediaPropertyPredicate(value:"Beethoven",
             forProperty:MPMediaItemPropertyAlbumTitle,
-            comparisonType:.Contains)
+            comparisonType:.contains)
         query.addFilterPredicate(hasBeethoven)
         guard let result = query.collections else {return} //
         for album in result {
@@ -119,15 +140,15 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doSonataAlbumsOnDevice (sender:AnyObject!) {
-        let query = MPMediaQuery.albumsQuery()
+    @IBAction func doSonataAlbumsOnDevice (_ sender:AnyObject!) {
+        let query = MPMediaQuery.albums()
         let hasSonata = MPMediaPropertyPredicate(value:"Sonata",
             forProperty:MPMediaItemPropertyTitle,
-            comparisonType:.Contains)
+            comparisonType:.contains)
         query.addFilterPredicate(hasSonata)
         let isPresent = MPMediaPropertyPredicate(value:false,
             forProperty:MPMediaItemPropertyIsCloudItem, // string name of property incorrect in header
-            comparisonType:.EqualTo)
+            comparisonType:.equalTo)
         query.addFilterPredicate(isPresent)
         
         guard let result = query.collections else {return} //
@@ -142,12 +163,12 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doPlayShortSongs (sender:AnyObject!) {
-        let query = MPMediaQuery.songsQuery()
+    @IBAction func doPlayShortSongs (_ sender:AnyObject!) {
+        let query = MPMediaQuery.songs()
         // always need to filter out songs that aren't present
         let isPresent = MPMediaPropertyPredicate(value:false,
             forProperty:MPMediaItemPropertyIsCloudItem,
-            comparisonType:.EqualTo)
+            comparisonType:.equalTo)
         query.addFilterPredicate(isPresent)
         guard let items = query.items else {return} //
         
@@ -164,14 +185,14 @@ class ViewController: UIViewController {
         let queue = MPMediaItemCollection(items:shorties)
         let player = MPMusicPlayerController.applicationMusicPlayer()
         player.stop()
-        player.setQueueWithItemCollection(queue)
-        player.shuffleMode = .Songs
+        player.setQueueWith(queue)
+        player.shuffleMode = .songs
         player.beginGeneratingPlaybackNotifications()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changed), name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: player)
+        NSNotificationCenter.default().addObserver(self, selector: #selector(changed), name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: player)
         self.q = queue // retain a pointer to the queue
         player.play()
         
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimer(timeInterval:1, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
         self.timer.tolerance = 0.1
     }
     
@@ -190,11 +211,11 @@ class ViewController: UIViewController {
     
     func timerFired(_:AnyObject) {
         let player = MPMusicPlayerController.applicationMusicPlayer()
-        guard let item = player.nowPlayingItem where player.playbackState != .Stopped else {
-            self.prog.hidden = true
+        guard let item = player.nowPlayingItem where player.playbackState != .stopped else {
+            self.prog.isHidden = true
             return
         } //
-        self.prog.hidden = false
+        self.prog.isHidden = false
         let current = player.currentPlaybackTime
         let total = item.playbackDuration
         self.prog.progress = Float(current / total)
@@ -206,14 +227,14 @@ class ViewController: UIViewController {
 class MyVolumeView : MPVolumeView {
 
     
-    override func volumeSliderRectForBounds(bounds: CGRect) -> CGRect {
+    override func volumeSliderRect(forBounds bounds: CGRect) -> CGRect {
         print(bounds)
-        return super.volumeSliderRectForBounds(bounds)
+        return super.volumeSliderRect(forBounds: bounds)
     }
     
-    override func volumeThumbRectForBounds(bounds: CGRect, volumeSliderRect rect: CGRect, value: Float) -> CGRect {
+    override func volumeThumbRect(forBounds bounds: CGRect, volumeSliderRect rect: CGRect, value: Float) -> CGRect {
         print(value)
-        return super.volumeThumbRectForBounds(bounds, volumeSliderRect: rect, value: value)
+        return super.volumeThumbRect(forBounds: bounds, volumeSliderRect: rect, value: value)
     }
 
 }

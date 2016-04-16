@@ -35,19 +35,19 @@ class SearchResultsController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.filteredData.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
         cell.textLabel!.text = self.filteredData[indexPath.row]
         return cell
     }
@@ -63,14 +63,14 @@ and reload the table.
 */
 
 extension SearchResultsController : UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         print("update")
         let sb = searchController.searchBar
         let target = sb.text!
         self.filteredData = self.originalData.filter {
             s in
-            let options = NSStringCompareOptions.CaseInsensitiveSearch
-            let found = (s as NSString).rangeOfString(target, options: options).length
+            let options = NSStringCompareOptions.caseInsensitiveSearch
+            let found = (s as NSString).range(of: target, options: options).length
             return (found != 0)
         }
         self.tableView.reloadData()

@@ -1,5 +1,5 @@
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -16,10 +16,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBAction func doButton(sender: AnyObject) {
+    @IBAction func doButton(_ sender: AnyObject) {
         print(self.view.bounds.size)
         let nav = self.navigationController!
-        nav.navigationBarHidden = !nav.navigationBarHidden
+        nav.isNavigationBarHidden = !nav.isNavigationBarHidden
         delay(1) {
             print("size did in fact change")
             print(self.view.bounds.size)
@@ -32,19 +32,19 @@ class ViewController: UIViewController {
     }
 */
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to:size, with: coordinator)
         print("size will transition")
         print(size)
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         print("trait collection changed")
     }
     
-    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to:newCollection, with: coordinator)
         print("trait collection will transition")
     }
     

@@ -11,47 +11,47 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
-extension PHFetchResult: SequenceType {
-    public func generate() -> NSFastGenerator {
-        return NSFastGenerator(self)
+extension PHFetchResult: Sequence {
+    public func makeIterator() -> NSFastEnumerationIterator {
+        return NSFastEnumerationIterator(self)
     }
 }
 
 class ViewController: UIViewController {
-    var albums : PHFetchResult!
+    var albums : PHFetchResult<PHAssetCollection>!
 
     func determineStatus() -> Bool {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
-        case .Authorized:
+        case .authorized:
             return true
-        case .NotDetermined:
+        case .notDetermined:
             PHPhotoLibrary.requestAuthorization() {_ in}
             return false
-        case .Restricted:
+        case .restricted:
             return false
-        case .Denied:
-            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Photos library?", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+        case .denied:
+            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Photos library?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
-                UIApplication.sharedApplication().openURL(url)
+                UIApplication.shared().open(url)
             }))
-            self.presentViewController(alert, animated:true, completion:nil)
+            self.present(alert, animated:true, completion:nil)
             return false
         }
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
-        PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self) // *
+        NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        PHPhotoLibrary.shared().register(self) // *
     }
 
 
-    @IBAction func doButton(sender: AnyObject) {
+    @IBAction func doButton(_ sender: AnyObject) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -60,66 +60,66 @@ class ViewController: UIViewController {
         let opts = PHFetchOptions()
         let desc = NSSortDescriptor(key: "startDate", ascending: true)
         opts.sortDescriptors = [desc]
-        let result = PHCollectionList.fetchCollectionListsWithType(
-            .MomentList, subtype: .MomentListYear, options: opts)
+        let result = PHCollectionList.fetchCollectionLists(with:
+            .momentList, subtype: .momentListYear, options: opts)
         for obj in result {
             let list = obj as! PHCollectionList
             let f = NSDateFormatter()
             f.dateFormat = "yyyy"
-            print(f.stringFromDate(list.startDate!))
+            print(f.string(from:list.startDate!))
             // return;
-            if list.collectionListType == .MomentList {
-                let result = PHAssetCollection.fetchMomentsInMomentList(list, options: nil)
-                for (ix,obj) in result.enumerate() {
+            if list.collectionListType == .momentList {
+                let result = PHAssetCollection.fetchMoments(inMomentList:list, options: nil)
+                for (ix,obj) in result.enumerated() {
                     let coll = obj as! PHAssetCollection
                     if ix == 0 {
                         print("======= \(result.count) clusters")
                     }
                     f.dateFormat = ("yyyy-MM-dd")
-                    print("starting \(f.stringFromDate(coll.startDate!)): " + "\(coll.estimatedAssetCount)")
+                    print("starting \(f.string(from:coll.startDate!)): " + "\(coll.estimatedAssetCount)")
                 }
             }
             print("\n")
         }
     }
 
-    @IBAction func doButton2(sender: AnyObject) {
+    @IBAction func doButton2(_ sender: AnyObject) {
         if !self.determineStatus() {
             print("not authorized")
             return
         }
 
-        let result = PHAssetCollection.fetchAssetCollectionsWithType(
+        let result = PHAssetCollection.fetchAssetCollections(with:
             // let's examine albums synced onto the device from iPhoto
-            .Album, subtype: .AlbumSyncedAlbum, options: nil)
+            .album, subtype: .albumSyncedAlbum, options: nil)
         for obj in result {
             let album = obj as! PHAssetCollection
             print("\(album.localizedTitle): approximately \(album.estimatedAssetCount) photos")
         }
     }
     
-    @IBAction func doButton3(sender: AnyObject) {
+    @IBAction func doButton3(_ sender: AnyObject) {
         if !self.determineStatus() {
             print("not authorized")
             return
         }
 
-        let alert = UIAlertController(title: "Pick an album:", message: nil, preferredStyle: .ActionSheet)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        let result = PHAssetCollection.fetchAssetCollectionsWithType(
-            .Album, subtype: .AlbumSyncedAlbum, options: nil)
+        let alert = UIAlertController(title: "Pick an album:", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        let result = PHAssetCollection.fetchAssetCollections(with:
+            .album, subtype: .albumSyncedAlbum, options: nil)
         for obj in result {
             let album = obj as! PHAssetCollection
-            alert.addAction(UIAlertAction(title: album.localizedTitle, style: .Default, handler: {
+            alert.addAction(UIAlertAction(title: album.localizedTitle, style: .default, handler: {
                 (_:UIAlertAction!) in
-                let result = PHAsset.fetchAssetsInAssetCollection(album, options: nil)
+                let result = PHAsset.fetchAssets(in:album, options: nil)
                 for obj in result {
                     let asset = obj as! PHAsset
                     print(asset.localIdentifier)
                 }
             }))
         }
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         if let pop = alert.popoverPresentationController {
             if let v = sender as? UIView {
                 pop.sourceView = v
@@ -129,7 +129,7 @@ class ViewController: UIViewController {
     }
     
     var newAlbumId : String?
-    @IBAction func doButton4(sender: AnyObject) {
+    @IBAction func doButton4(_ sender: AnyObject) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -142,9 +142,9 @@ class ViewController: UIViewController {
         // we need a PHAssetCollectionChangeRequest
         // we can use this only inside a PHPhotoLibrary `performChanges` block
         var ph : PHObjectPlaceholder?
-        PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+        PHPhotoLibrary.shared().performChanges({
             let t = "TestAlbum"
-            let cr = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle(t)
+            let cr = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle:t)
             ph = cr.placeholderForCreatedAssetCollection
             }, completionHandler: {
                 // completion may take some considerable time (asynchronous)
@@ -157,7 +157,7 @@ class ViewController: UIViewController {
         })
     }
     
-    @IBAction func doButton5(sender: AnyObject) {
+    @IBAction func doButton5(_ sender: AnyObject) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -167,8 +167,8 @@ class ViewController: UIViewController {
         opts.wantsIncrementalChangeDetails = false // not used
         // imagine first that we are displaying a list of all regular albums...
         // ... so have performed a fetch request and are hanging on to the result
-        let alb = PHAssetCollection.fetchAssetCollectionsWithType(
-            .Album, subtype: .AlbumRegular, options: nil)
+        let alb = PHAssetCollection.fetchAssetCollections(with:
+            .album, subtype: .albumRegular, options: nil)
         self.albums = alb
         // and if we have an observer, it will automatically be sent PHChange messages
         // for this fetch request - if we wanted to prevent that,
@@ -176,27 +176,27 @@ class ViewController: UIViewController {
         
         
         // find Recently Added smart album
-        let result = PHAssetCollection.fetchAssetCollectionsWithType(
-            .SmartAlbum, subtype: .SmartAlbumRecentlyAdded, options: nil)
-        guard let rec = result.firstObject as? PHAssetCollection else {
+        let result = PHAssetCollection.fetchAssetCollections(with:
+            .smartAlbum, subtype: .smartAlbumRecentlyAdded, options: nil)
+        guard let rec = result.firstObject else {
             print("no recently added album")
             return
         }
         // find its first asset
-        let result2 = PHAsset.fetchAssetsInAssetCollection(rec, options: nil)
-        guard let asset1 = result2.firstObject as? PHAsset else {
+        let result2 = PHAsset.fetchAssets(in:rec, options: nil)
+        guard let asset1 = result2.firstObject else {
             print("no first item in recently added album")
             return
         }
         // find our newly created album by its local id
-        let result3 = PHAssetCollection.fetchAssetCollectionsWithLocalIdentifiers([self.newAlbumId!], options: nil)
-        guard let alb2 = result3.firstObject as? PHAssetCollection else {
+        let result3 = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [self.newAlbumId!], options: nil)
+        guard let alb2 = result3.firstObject else {
             print("no target album")
             return
         }
         
-        PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-            let cr = PHAssetCollectionChangeRequest(forAssetCollection: alb2)
+        PHPhotoLibrary.shared().performChanges({
+            let cr = PHAssetCollectionChangeRequest(for: alb2)
             cr?.addAssets([asset1])
             }, completionHandler: {
                 // completion may take some considerable time (asynchronous)
@@ -206,11 +206,13 @@ class ViewController: UIViewController {
     }
 }
 
+// but this cannot compile because generics are not covariant
+
 extension ViewController : PHPhotoLibraryChangeObserver {
-    func photoLibraryDidChange(changeInfo: PHChange) {
+    func photoLibraryDidChange(_ changeInfo: PHChange) {
         print(changeInfo)
         if self.albums !== nil {
-            if let details = changeInfo.changeDetailsForFetchResult(self.albums) {
+            if let details = changeInfo.changeDetails(for:self.albums) {
                 dispatch_async(dispatch_get_main_queue()) { // NB get on main queue if necessary
                     print("inserted: \(details.insertedObjects)")
                     print("changed: \(details.changedObjects)")

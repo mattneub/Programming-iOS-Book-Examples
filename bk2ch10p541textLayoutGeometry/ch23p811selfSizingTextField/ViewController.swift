@@ -7,6 +7,29 @@ func lend<T where T:NSObject> (closure:(T)->()) -> T {
     return orig
 }
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class ViewController: UIViewController {
     
     @IBOutlet var tv : UITextView!
@@ -14,9 +37,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let path = NSBundle.mainBundle().pathForResource("brillig", ofType: "txt")!
+        let path = NSBundle.main().pathForResource("brillig", ofType: "txt")!
         let s = try! String(contentsOfFile:path, encoding: NSUTF8StringEncoding)
-        let s2 = s.stringByReplacingOccurrencesOfString("\n", withString: "")
+        let s2 = s.replacingOccurrences(of:"\n", with: "")
         let mas = NSMutableAttributedString(string:s2 + " " + s2, attributes:[
             NSFontAttributeName: UIFont(name:"GillSans", size:20)!
             ])
@@ -24,8 +47,8 @@ class ViewController: UIViewController {
         mas.addAttribute(NSParagraphStyleAttributeName,
             value:lend(){
                 (para:NSMutableParagraphStyle) in
-                para.alignment = .Left
-                para.lineBreakMode = .ByWordWrapping
+                para.alignment = .left
+                para.lineBreakMode = .byWordWrapping
             },
             range:NSMakeRange(0,1))
 
@@ -42,17 +65,17 @@ class ViewController: UIViewController {
         self.tv = tv
         
         self.tv.attributedText = mas
-        self.tv.scrollEnabled = true
-        self.tv.backgroundColor = UIColor.yellowColor()
+        self.tv.isScrollEnabled = true
+        self.tv.backgroundColor = UIColor.yellow()
         self.tv.textContainerInset = UIEdgeInsetsMake(20,20,20,20)
-        self.tv.selectable = false
-        self.tv.editable = false
+        self.tv.isSelectable = false
+        self.tv.isEditable = false
                 
         self.tv.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([
-            NSLayoutConstraint.constraintsWithVisualFormat("H:|-(10)-[tv]-(10)-|",
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint.constraints(withVisualFormat:"H:|-(10)-[tv]-(10)-|",
                 options:[], metrics:nil, views:["tv":self.tv]),
-            NSLayoutConstraint.constraintsWithVisualFormat("V:[top][tv]-(10)-[bot]",
+            NSLayoutConstraint.constraints(withVisualFormat:"V:[top][tv]-(10)-[bot]",
                 options:[], metrics:nil, views:[
                     "tv":self.tv, "top":self.topLayoutGuide, "bot":self.bottomLayoutGuide
                 ])
@@ -60,27 +83,27 @@ class ViewController: UIViewController {
 
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.tv.contentOffset = CGPointZero
+        self.tv.contentOffset = CGPoint.zero
     }
 
-    @IBAction func doTest(sender:AnyObject) {
+    @IBAction func doTest(_ sender:AnyObject) {
         // how far am I scrolled?
         let off = self.tv.contentOffset
         // how far down is the top of the text container?
         let top = self.tv.textContainerInset.top
         // so here's the top-left point within the text container
-        var tctopleft = CGPointMake(0, off.y - top)
+        var tctopleft = CGPoint(0, off.y - top)
         // so what's the character index for that?
         //    NSUInteger ix = [self.tv.layoutManager characterIndexForPoint:tctopleft inTextContainer:self.tv.textContainer fractionOfDistanceBetweenInsertionPoints:nil];
-        var ix = self.tv.layoutManager.glyphIndexForPoint(tctopleft, inTextContainer:self.tv.textContainer, fractionOfDistanceThroughGlyph:nil)
-        let frag = self.tv.layoutManager.lineFragmentRectForGlyphAtIndex(ix, effectiveRange:nil)
+        var ix = self.tv.layoutManager.glyphIndex(for:tctopleft, in:self.tv.textContainer, fractionOfDistanceThroughGlyph:nil)
+        let frag = self.tv.layoutManager.lineFragmentRectForGlyph(at:ix, effectiveRange:nil)
         if tctopleft.y > frag.origin.y + 0.5*frag.size.height {
             tctopleft.y += frag.size.height
-            ix = self.tv.layoutManager.glyphIndexForPoint(tctopleft, inTextContainer:self.tv.textContainer, fractionOfDistanceThroughGlyph:nil)
+            ix = self.tv.layoutManager.glyphIndex(for:tctopleft, in:self.tv.textContainer, fractionOfDistanceThroughGlyph:nil)
         }
-        let charRange = self.tv.layoutManager.characterRangeForGlyphRange(NSMakeRange(ix,0), actualGlyphRange:nil)
+        let charRange = self.tv.layoutManager.characterRange(forGlyphRange: NSMakeRange(ix,0), actualGlyphRange:nil)
         ix = charRange.location
         
         
@@ -89,14 +112,14 @@ class ViewController: UIViewController {
         let t = NSLinguisticTagger(tagSchemes:[sch], options:0)
         t.string = self.tv.text
         var r : NSRange = NSMakeRange(0,0)
-        let tag = t.tagAtIndex(ix, scheme:sch, tokenRange:&r, sentenceRange:nil)
+        let tag = t.tag(at:ix, scheme:sch, tokenRange:&r, sentenceRange:nil)
         if tag == NSLinguisticTagWord {
-            print((self.tv.text as NSString).substringWithRange(r))
+            print((self.tv.text as NSString).substring(with:r))
         }
         
         let lm = self.tv.layoutManager as! MyLayoutManager
         lm.wordRange = r
-        lm.invalidateDisplayForCharacterRange(r)
+        lm.invalidateDisplay(forCharacterRange:r)
 
     }
 }

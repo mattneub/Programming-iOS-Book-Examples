@@ -33,8 +33,8 @@ class ViewController: UIViewController {
                 para.headIndent = 10
                 para.firstLineHeadIndent = 10
                 para.tailIndent = -10
-                para.lineBreakMode = .ByWordWrapping
-                para.alignment = .Justified
+                para.lineBreakMode = .byWordWrapping
+                para.alignment = .justified
                 para.lineHeightMultiple = 1.2
                 para.hyphenationFactor = 1.0
             },
@@ -44,14 +44,14 @@ class ViewController: UIViewController {
         let lab = UILabel() // preferredMaxLayoutWidth is 0
         print(lab.preferredMaxLayoutWidth)
         lab.numberOfLines = 0
-        lab.backgroundColor = UIColor.yellowColor()
+        lab.backgroundColor = UIColor.yellow()
         lab.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lab)
-        NSLayoutConstraint.activateConstraints([
-            NSLayoutConstraint.constraintsWithVisualFormat(
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint.constraints(withVisualFormat:
                 "H:|-(30)-[v]-(30)-|",
                 options: [], metrics: nil, views: ["v":lab]),
-            NSLayoutConstraint.constraintsWithVisualFormat(
+            NSLayoutConstraint.constraints(withVisualFormat:
                 "V:|-(30)-[v]",
                 options: [], metrics: nil, views: ["v":lab])
             ].flatten().map{$0})

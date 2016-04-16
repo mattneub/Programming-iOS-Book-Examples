@@ -10,8 +10,8 @@ class ViewController: UIViewController {
     
     // cool new iOS 9 way: pass the sound and the completion handler all in one call
 
-    @IBAction func doButton (sender:AnyObject!) {
-        let sndurl = NSBundle.mainBundle().URLForResource("test", withExtension: "aif")!
+    @IBAction func doButton (_ sender:AnyObject!) {
+        let sndurl = NSBundle.main().urlForResource("test", withExtension: "aif")!
         var snd : SystemSoundID = 0
         AudioServicesCreateSystemSoundID(sndurl, &snd)
         AudioServicesPlaySystemSoundWithCompletion(snd) {

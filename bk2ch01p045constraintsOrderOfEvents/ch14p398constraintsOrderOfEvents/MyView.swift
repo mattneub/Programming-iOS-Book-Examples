@@ -14,10 +14,10 @@ class MyView: UIView {
     @IBInspectable var myString : String = "howdy"
     @IBInspectable var myInt : Int? = 1
     @IBInspectable var myDouble : Double? = 1
-    @IBInspectable var myRect : CGRect? = CGRectZero
-    @IBInspectable var myPoint : CGPoint? = CGPointZero
-    @IBInspectable var mySize : CGSize? = CGSizeZero
-    @IBInspectable var myColor : UIColor? = UIColor.redColor()
+    @IBInspectable var myRect : CGRect? = CGRect.zero
+    @IBInspectable var myPoint : CGPoint? = CGPoint.zero
+    @IBInspectable var mySize : CGSize? = CGSize.zero
+    @IBInspectable var myColor : UIColor? = UIColor.red()
     @IBInspectable var myImage : UIImage?
 //    @IBInspectable var myRange : Range<Int>? = 1...3 // nope
 //    @IBInspectable var someView : UIView? // nope
@@ -32,8 +32,8 @@ class MyView: UIView {
     }
     
     // gets an extra cycle, I've no idea why
-    override func layoutSublayersOfLayer(layer: CALayer) {
-        super.layoutSublayersOfLayer(layer)
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of:layer)
         print("\(self)\n\(#function)\n")
     }
     
@@ -42,7 +42,7 @@ class MyView: UIView {
         print("\(self)\n\(#function)\n")
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         // super.traitCollectionDidChange(previousTraitCollection)
         print("\(self)\n\(#function)\n")
 //        let prev : UITraitCollection? = previousTraitCollection

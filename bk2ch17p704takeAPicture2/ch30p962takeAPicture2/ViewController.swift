@@ -5,13 +5,36 @@ import AVFoundation
 import AVKit
 import MobileCoreServices
 
-func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()
+    let result = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return result
 }
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
 
 class ViewController: UIViewController,
 UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -20,59 +43,59 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet var picker : UIImagePickerController!
     
     func determineStatus() -> Bool {
-        let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
+        let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
         switch status {
-        case .Authorized:
+        case .authorized:
             return true
-        case .NotDetermined:
-            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: nil)
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: nil)
             return false
-        case .Restricted:
+        case .restricted:
             return false
-        case .Denied:
+        case .denied:
             let alert = UIAlertController(
                 title: "Need Authorization",
                 message: "Wouldn't you like to authorize this app " +
                 "to use the camera?",
-                preferredStyle: .Alert)
+                preferredStyle: .alert)
             alert.addAction(UIAlertAction(
-                title: "No", style: .Cancel, handler: nil))
+                title: "No", style: .cancel))
             alert.addAction(UIAlertAction(
-                title: "OK", style: .Default, handler: {
+                title: "OK", style: .default, handler: {
                     _ in
                     let url = NSURL(string:UIApplicationOpenSettingsURLString)!
-                    UIApplication.sharedApplication().openURL(url)
+                    UIApplication.shared().open(url)
             }))
-            self.presentViewController(alert, animated:true, completion:nil)
+            self.present(alert, animated:true, completion:nil)
             return false
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.defaultCenter().addObserver(self,
+        NSNotificationCenter.default().addObserver(self,
             selector: #selector(determineStatus),
             name: UIApplicationWillEnterForegroundNotification,
             object: nil)
     }
 
     
-    @IBAction func doTake (sender:AnyObject!) {
-        let cam = UIImagePickerControllerSourceType.Camera
+    @IBAction func doTake (_ sender:AnyObject!) {
+        let cam = UIImagePickerControllerSourceType.camera
         let ok = UIImagePickerController.isSourceTypeAvailable(cam)
         if (!ok) {
             print("no camera")
             return
         }
-        let arr = UIImagePickerController.availableMediaTypesForSourceType(cam)
+        let arr = UIImagePickerController.availableMediaTypes(for: cam)
         let desiredType = kUTTypeImage as NSString as String
-        if arr?.indexOf(desiredType) == nil {
+        if arr?.index(of:desiredType) == nil {
             print("no stills")
             return
         }
         let picker = MyImagePickerController()
-        picker.sourceType = .Camera
+        picker.sourceType = .camera
         picker.mediaTypes = [desiredType]
         picker.allowsEditing = true
         picker.delegate = self
@@ -90,14 +113,14 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
         // user will get the "access the camera" system dialog at this point if necessary
         // if the user refuses, Very Weird Things happen...
-        self.presentViewController(picker, animated: true, completion: nil)
+        self.present(picker, animated: true, completion: nil)
     }
 
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated:true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let im = info[UIImagePickerControllerOriginalImage] as? UIImage
         if im == nil {
             return
@@ -110,40 +133,40 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         self.picker.takePicture()
     }
 
-    func navigationController(nc: UINavigationController, didShowViewController vc: UIViewController, animated: Bool) {
+    func navigationController(_ nc: UINavigationController, didShow vc: UIViewController, animated: Bool) {
         if vc is SecondViewController {
-            nc.toolbarHidden = true
+            nc.isToolbarHidden = true
             return
         }
-        nc.toolbarHidden = false
+        nc.isToolbarHidden = false
         
-        let sz = CGSizeMake(10,10)
+        let sz = CGSize(10,10)
         let im = imageOfSize(sz) {
-            UIColor.blackColor().colorWithAlphaComponent(0.1).setFill()
-            CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRect(origin: CGPoint(), size: sz))
+            UIColor.black().withAlphaComponent(0.1).setFill()
+            UIGraphicsGetCurrentContext()!.fill(CGRect(origin: CGPoint(), size: sz))
         }
-        nc.toolbar.setBackgroundImage(im, forToolbarPosition: .Any, barMetrics: .Default)
-        nc.toolbar.translucent = true
-        let b = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(doCancel))
+        nc.toolbar.setBackgroundImage(im, forToolbarPosition: .any, barMetrics: .default)
+        nc.toolbar.isTranslucent = true
+        let b = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(doCancel))
         let lab = UILabel()
         lab.text = "Double tap to take a picture"
-        lab.textColor = UIColor.whiteColor()
-        lab.backgroundColor = UIColor.clearColor()
+        lab.textColor = UIColor.white()
+        lab.backgroundColor = UIColor.clear()
         lab.sizeToFit()
         let b2 = UIBarButtonItem(customView: lab)
         nc.topViewController!.toolbarItems = [b,b2]
         nc.topViewController!.title = "Retake"
     }
 
-    func doCancel(sender:AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func doCancel(_ sender:AnyObject) {
+        self.dismiss(animated:true, completion: nil)
     }
     
-    func doUse(im:UIImage?) {
+    func doUse(_ im:UIImage?) {
         if im != nil {
             self.iv.image = im
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated:true, completion: nil)
     }
     
 }

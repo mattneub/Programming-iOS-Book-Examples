@@ -12,7 +12,7 @@ class ContainerViewController : UIViewController {
     @IBOutlet weak var containerView: UIView!
     var didInitialSetup = false
     
-    override func addChildViewController(childController: UIViewController) {
+    override func addChildViewController(_ childController: UIViewController) {
         super.addChildViewController(childController)
         if let svc = self.childViewControllers[0] as? UISplitViewController {
             svc.delegate = self // need to do this as early as humanly possible
@@ -27,9 +27,9 @@ class ContainerViewController : UIViewController {
     override func viewWillLayoutSubviews() {
         if !self.didInitialSetup {
             self.didInitialSetup = true
-            self.view.backgroundColor = UIColor.greenColor()
+            self.view.backgroundColor = UIColor.green()
             let svc = self.childViewControllers[0] as! UISplitViewController
-            svc.preferredDisplayMode = .AllVisible
+            svc.preferredDisplayMode = .allVisible
             // if not collapsed, always side by side
             // if you insert the display mode button, it gives the option to hide the master column
             // using a new icon which currently looks like the "fullscreen" icon
@@ -39,8 +39,8 @@ class ContainerViewController : UIViewController {
             
             // this is why we are here: we can prevent collapse entirely
             if which == 1 {
-                let traits = UITraitCollection(traitsFromCollections: [
-                    UITraitCollection(horizontalSizeClass: .Regular)
+                let traits = UITraitCollection(traitsFrom: [
+                    UITraitCollection(horizontalSizeClass: .regular)
                     ])
                 self.setOverrideTraitCollection(traits, forChildViewController: svc)
             }
@@ -51,20 +51,20 @@ class ContainerViewController : UIViewController {
     // another variant (see Apple's AdaptivePhotos example):
     // don't override traits on launch (so, portrait, collapsed)
     // but do override just in case we rotate to landscape
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         let svc = self.childViewControllers[0] as! UISplitViewController
         if which == 2 {
             if size.width > size.height {
                 // landscape
-                let traits = UITraitCollection(traitsFromCollections: [
-                    UITraitCollection(horizontalSizeClass: .Regular)
+                let traits = UITraitCollection(traitsFrom: [
+                    UITraitCollection(horizontalSizeClass: .regular)
                     ])
                 self.setOverrideTraitCollection(traits, forChildViewController: svc)
             } else {
                 self.setOverrideTraitCollection(nil, forChildViewController: svc)
             }
         }
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        super.viewWillTransition(to: size, with: coordinator)
     }
 }
 
@@ -72,7 +72,7 @@ extension ContainerViewController : UISplitViewControllerDelegate {
     // as in the template, we must take action to prevent the detail from being pushed and shown
     // in collapsed mode
     
-    func splitViewController(svc: UISplitViewController,
+    func splitViewController(_ svc: UISplitViewController,
         collapseSecondaryViewController vc2: UIViewController,
         ontoPrimaryViewController vc1: UIViewController) -> Bool {
             return true

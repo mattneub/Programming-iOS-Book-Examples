@@ -3,25 +3,25 @@
 import UIKit
 
 class Base : UIViewController {
-    override func willMoveToParentViewController(parent: UIViewController!) {
+    override func willMove(toParentViewController parent: UIViewController!) {
         print("\(self) \(#function) \(parent)")
     }
-    override func didMoveToParentViewController(parent: UIViewController!) {
+    override func didMove(toParentViewController parent: UIViewController!) {
         print("\(self) \(#function) \(parent)")
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("\(self) \(#function)")
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("\(self) \(#function)")
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("\(self) \(#function)")
     }
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("\(self) \(#function)")
     }
@@ -35,15 +35,15 @@ class Base : UIViewController {
         super.updateViewConstraints()
         print("\(self) \(#function)")
     }
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         print("\(self) \(#function)")
     }
-    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
         print("\(self) \(#function)")
     }
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         print("\(self) \(#function)")
     }
 }

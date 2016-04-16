@@ -2,7 +2,7 @@
 
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -14,39 +14,39 @@ func delay(delay:Double, closure:()->()) {
 class ViewController : UIViewController, UIToolbarDelegate {
     var oldChoice : Int = -1
 
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
+    func positionForBar(forBar bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         let dest = segue.destinationViewController
         if let pop = dest.popoverPresentationController {
             pop.delegate = self
         }
-        self.oldChoice = NSUserDefaults.standardUserDefaults().integerForKey("choice")
+        self.oldChoice = NSUserDefaults.standard().integer(forKey:"choice")
     }
     
-    @IBAction func unwind (sender:UIStoryboardSegue) {
+    @IBAction func unwind (_ sender:UIStoryboardSegue) {
         if sender.identifier == "cancel" {
-            NSUserDefaults.standardUserDefaults().setInteger(self.oldChoice, forKey: "choice")
+            NSUserDefaults.standard().set(self.oldChoice, forKey: "choice")
         }
     }
 }
 
 extension ViewController : UIPopoverPresentationControllerDelegate {
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         print("here3")
-        if traitCollection.horizontalSizeClass == .Compact {
-            return .FullScreen
+        if traitCollection.horizontalSizeClass == .compact {
+            return .fullScreen
         }
-        return .None
+        return .none
     }
     
     // but this doesn't work; my guess is that we have gone out of existence at this point
-    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         print("here4") // not called, this could be a bug
-        NSUserDefaults.standardUserDefaults().setInteger(self.oldChoice, forKey: "choice")
+        NSUserDefaults.standard().set(self.oldChoice, forKey: "choice")
     }
 
 }

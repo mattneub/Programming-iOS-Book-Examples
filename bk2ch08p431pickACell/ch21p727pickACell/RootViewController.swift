@@ -4,30 +4,30 @@ import UIKit
 
 class RootViewController : UITableViewController {
     
-    override func tableView(tv: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tv: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
         // we can still modify the cell as long as we fetch it from super
-        let cell = super.tableView(tv, cellForRowAtIndexPath:indexPath)
+        let cell = super.tableView(tv, cellForRowAt:indexPath)
         
         // supply checkmarks as necessary
-        let ud = NSUserDefaults.standardUserDefaults()
+        let ud = NSUserDefaults.standard()
         
-        NSLog("about to update %@", cell.textLabel!.text!)
-        cell.accessoryType = .None
-        if ud.valueForKey("Style") as? String == cell.textLabel!.text! ||
-            ud.valueForKey("Size") as? String == cell.textLabel!.text! {
-                cell.accessoryType = .Checkmark
+        NSLog("about to update %@", cell.textLabel!.text! as NSObject)
+        cell.accessoryType = .none
+        if ud.value(forKey:"Style") as? String == cell.textLabel!.text! ||
+            ud.value(forKey:"Size") as? String == cell.textLabel!.text! {
+                cell.accessoryType = .checkmark
         }
         return cell
     }
     
-    func log(tv tv:UITableView, ip:NSIndexPath, phrase:String) {
+    func log(tv:UITableView, ip:NSIndexPath, phrase:String) {
         NSLog("%@", "========")
-        NSLog("%@ %@", phrase, tv.cellForRowAtIndexPath(ip)!.textLabel!.text!)
-        NSLog("cell highlighted? %@", "\(tv.cellForRowAtIndexPath(ip)!.highlighted)")
-        NSLog("label highlighted? %@", "\(tv.cellForRowAtIndexPath(ip)!.textLabel!.highlighted)")
+        NSLog("%@ %@", phrase as NSObject, tv.cellForRow(at:ip)!.textLabel!.text! as NSObject)
+        NSLog("cell highlighted? %@", "\(tv.cellForRow(at:ip)!.isHighlighted)" as NSObject)
+        NSLog("label highlighted? %@", "\(tv.cellForRow(at:ip)!.textLabel!.isHighlighted)" as NSObject)
     }
     
-    override func tableView(tv: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tv: UITableView, shouldHighlightRowAt indexPath: NSIndexPath) -> Bool {
         log(tv: tv, ip: indexPath, phrase: "should highlight")
         
         dispatch_async(dispatch_get_main_queue(), {
@@ -37,11 +37,11 @@ class RootViewController : UITableViewController {
         return true // try false to test this feature
     }
     
-    override func tableView(tv: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tv: UITableView, didHighlightRowAt indexPath: NSIndexPath) {
         log(tv: tv, ip: indexPath, phrase: "did highlight")
     }
     
-    override func tableView(tv: UITableView, didUnhighlightRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tv: UITableView, didUnhighlightRowAt indexPath: NSIndexPath) {
         log(tv: tv, ip: indexPath, phrase: "did unhighlight")
         
         dispatch_async(dispatch_get_main_queue(), {
@@ -49,33 +49,33 @@ class RootViewController : UITableViewController {
             })
     }
     
-    override func tableView(tv: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    override func tableView(_ tv: UITableView, willSelectRowAt indexPath: NSIndexPath) -> NSIndexPath? {
         log(tv: tv, ip: indexPath, phrase: "will select")
         
         return indexPath
     }
     
-    override func tableView(tv: UITableView, willDeselectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    override func tableView(_ tv: UITableView, willDeselectRowAt indexPath: NSIndexPath) -> NSIndexPath? {
         log(tv: tv, ip: indexPath, phrase: "will deselect")
         
         return indexPath
     }
     
-    override func tableView(tv: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tv: UITableView, didSelectRowAt indexPath: NSIndexPath) {
         log(tv: tv, ip: indexPath, phrase: "did select")
         
-        let ud = NSUserDefaults.standardUserDefaults()
-        let setting = tv.cellForRowAtIndexPath(indexPath)!.textLabel!.text
+        let ud = NSUserDefaults.standard()
+        let setting = tv.cellForRow(at:indexPath)!.textLabel!.text
         let header = self.tableView(tv, titleForHeaderInSection:indexPath.section)!
-        ud.setValue(setting, forKey:header)
+        ud.setValue(setting! as AnyObject, forKey:header)
         
         NSLog("%@", "about to reload!")
         tv.reloadData() // deselect all cells, reassign checkmark as needed
 
     }
     
-    override func tableView(tv: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        NSLog("did deselect %@", tv.cellForRowAtIndexPath(indexPath)!.textLabel!.text!)
+    override func tableView(_ tv: UITableView, didDeselectRowAt indexPath: NSIndexPath) {
+        NSLog("did deselect %@", tv.cellForRow(at:indexPath)!.textLabel!.text! as NSObject)
     }
     
     // just proving this stuff works even in a grouped style table
@@ -83,22 +83,22 @@ class RootViewController : UITableViewController {
     /*
 
 
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView()
-        v.backgroundColor = UIColor.clearColor()
-        // v.backgroundColor = UIColor.yellowColor()
-        // tableView.backgroundColor = UIColor.greenColor()
+        v.backgroundColor = UIColor.clear()
+        // v.backgroundColor = UIColor.yellow()
+        // tableView.backgroundColor = UIColor.green()
         return v
     }
     
     
-    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let v = UIView()
-        v.backgroundColor = UIColor.blueColor()
+        v.backgroundColor = UIColor.blue()
         return v
     }
 
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 100
     }
 

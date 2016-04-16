@@ -1,7 +1,7 @@
 
 import UIKit
 import Photos
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -28,68 +28,68 @@ class RootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
+        PHPhotoLibrary.shared().register(self)
         self.setUpInterface()
     }
 
     func determineStatus() -> Bool {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
-        case .Authorized:
+        case .authorized:
             return true
-        case .NotDetermined:
+        case .notDetermined:
             PHPhotoLibrary.requestAuthorization() {_ in}
             return false
-        case .Restricted:
+        case .restricted:
             return false
-        case .Denied:
-            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Photos library?", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+        case .denied:
+            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Photos library?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
-                UIApplication.sharedApplication().openURL(url)
+                UIApplication.shared().open(url)
             }))
-            self.presentViewController(alert, animated:true, completion:nil)
+            self.present(alert, animated:true, completion:nil)
             return false
         }
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
 
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.default().removeObserver(self)
     }
     
     func tryToAddInitialPage() {
         self.modelController = ModelController()
-        if let dvc = self.modelController.viewControllerAtIndex(0, storyboard: self.storyboard!) {
+        if let dvc = self.modelController.viewController(at:0, storyboard: self.storyboard!) {
             let viewControllers = [dvc]
-            self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
+            self.pageViewController!.setViewControllers(viewControllers, direction: .forward, animated: false, completion: nil)
             self.pageViewController!.dataSource = self.modelController
         }
     }
     
     func setUpInterface() {
-        self.pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         self.pageViewController!.dataSource = nil
         self.tryToAddInitialPage() // if succeeds, will set data source for real
         
         self.addChildViewController(self.pageViewController!)
         self.view.addSubview(self.pageViewController!.view)
         self.pageViewController!.view.frame = self.view.bounds
-        self.pageViewController!.didMoveToParentViewController(self)
+        self.pageViewController!.didMove(toParentViewController: self)
     }
 }
 
 extension RootViewController : PHPhotoLibraryChangeObserver {
-    func photoLibraryDidChange(changeInfo: PHChange) {
-        if let ci = changeInfo.changeDetailsForFetchResult(self.modelController.recentAlbums) {
+    func photoLibraryDidChange(_ changeInfo: PHChange) {
+        if let ci = changeInfo.changeDetails(for:self.modelController.recentAlbums) {
             // if what just happened is: we went from nil to results (because user granted permission)...
             // then start over
             let oldResult = ci.fetchResultBeforeChanges
@@ -106,7 +106,7 @@ extension RootViewController : PHPhotoLibraryChangeObserver {
 }
 
 extension RootViewController {
-    @IBAction func doVignetteButton(sender: AnyObject) {
+    @IBAction func doVignetteButton(_ sender: AnyObject) {
         if !self.determineStatus() {
             print("not authorized")
             return

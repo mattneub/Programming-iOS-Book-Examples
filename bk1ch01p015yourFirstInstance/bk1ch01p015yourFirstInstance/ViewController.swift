@@ -27,6 +27,16 @@ func doGo() {
     go()
 }
 
+// let class = 1 // Keyword 'repeat' cannot be used as an identifier
+// func if() { } // Expected identifier in function declaration
+class `func` {
+    func `if`() {
+        let `class` = 1
+        _ = `class`
+    }
+}
+
+
 func silly() {
     if true {
         class Cat {}
@@ -39,7 +49,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         print("hello")
         print("world")
         print("hello"); print("world")
@@ -50,10 +60,10 @@ class ViewController: UIViewController {
         print("world") // this is a comment, so Swift ignores it
         
         let sum = 1 + 2
-        let x = 1.successor()
+        let s = 1.description
         
         _ = sum
-        _ = x
+        _ = s
         
         1.sayHello() // outputs: "Hello, I'm 1"
 

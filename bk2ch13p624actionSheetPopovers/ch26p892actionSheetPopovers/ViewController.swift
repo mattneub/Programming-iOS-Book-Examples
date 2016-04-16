@@ -1,6 +1,6 @@
 
 import UIKit
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -14,16 +14,16 @@ class ViewController: UIViewController {
 
     @IBOutlet var toolbar : UIToolbar!
     
-    @IBAction func doButton(sender:AnyObject) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+    @IBAction func doButton(_ sender:AnyObject) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         func handler(act:UIAlertAction!) {
             print("User tapped \(act.title)")
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: handler)) // not shown
-        alert.addAction(UIAlertAction(title: "Hey", style: .Default, handler: handler))
-        alert.addAction(UIAlertAction(title: "Ho", style: .Default, handler: handler))
-        alert.addAction(UIAlertAction(title: "Hey Nonny No", style: .Default, handler: handler))
-        self.presentViewController(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: handler)) // not shown
+        alert.addAction(UIAlertAction(title: "Hey", style: .default, handler: handler))
+        alert.addAction(UIAlertAction(title: "Ho", style: .default, handler: handler))
+        alert.addAction(UIAlertAction(title: "Hey Nonny No", style: .default, handler: handler))
+        self.present(alert, animated: true, completion: nil)
         // if we do no more than that, we'll crash with a helpful error message:
         // "UIPopoverPresentationController should have a non-nil sourceView or barButtonItem set before the presentation occurs"
         // so the runtime knows that on iPad this should be a popover, and has arranged it already
@@ -41,10 +41,10 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doOtherThing(sender:AnyObject) {
+    @IBAction func doOtherThing(_ sender:AnyObject) {
         let pvc = PopoverViewController(nibName: "PopoverViewController", bundle: nil)
-        pvc.modalPresentationStyle = .Popover
-        self.presentViewController(pvc, animated: true, completion: nil)
+        pvc.modalPresentationStyle = .popover
+        self.present(pvc, animated: true, completion: nil)
         if let pop = pvc.popoverPresentationController {
             let b = sender as! UIBarButtonItem
             pop.barButtonItem = b
@@ -62,14 +62,14 @@ class ViewController: UIViewController {
 
 extension ViewController : UIPopoverPresentationControllerDelegate {
     func popoverPresentationControllerShouldDismissPopover(
-        pop: UIPopoverPresentationController) -> Bool {
-            let ok = pop.presentedViewController.presentedViewController == nil
+        _ pop: UIPopoverPresentationController) -> Bool {
+            let ok = pop.presentedViewController.presented == nil
             return ok
     }
 }
 
 extension ViewController : UIToolbarDelegate {
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
+    func position(forBar bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 }

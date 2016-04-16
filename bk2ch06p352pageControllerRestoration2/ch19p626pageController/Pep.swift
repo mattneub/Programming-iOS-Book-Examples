@@ -20,30 +20,30 @@ class Pep: UIViewController {
         fatalError("NSCoding not supported")
     }
     
-    override func encodeRestorableStateWithCoder(coder: NSCoder) {
-        super.encodeRestorableStateWithCoder(coder)
+    override func encodeRestorableState(with coder: NSCoder) {
+        super.encodeRestorableState(with:coder)
         print("pep about to encode boy \(self.boy)")
-        coder.encodeObject(self.boy, forKey:"boy")
+        coder.encode(self.boy as NSString, forKey:"boy")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.name.text = self.boy
-        self.pic.image = UIImage(named:"\(self.boy.lowercaseString).jpg")
+        self.pic.image = UIImage(named:"\(self.boy.lowercased()).jpg")
     }
     
     override var description : String {
     return self.boy
     }
     
-    @IBAction func tap (sender: UIGestureRecognizer?) {
-        NSNotificationCenter.defaultCenter().postNotificationName("tap", object: sender)
+    @IBAction func tap (_ sender: UIGestureRecognizer?) {
+        NSNotificationCenter.default().post(name: "tap", object: sender)
     }
 }
 
 extension Pep : UIViewControllerRestoration {
-    class func viewControllerWithRestorationIdentifierPath(ip: [AnyObject], coder: NSCoder) -> UIViewController? {
-        let boy = coder.decodeObjectForKey("boy") as! String
+    class func viewController(withRestorationIdentifierPath ip: [AnyObject], coder: NSCoder) -> UIViewController? {
+        let boy = coder.decodeObject(forKey:"boy") as! String
         print("pep decoded boy \(boy)")
         return self.init(pepBoy: boy)
     }

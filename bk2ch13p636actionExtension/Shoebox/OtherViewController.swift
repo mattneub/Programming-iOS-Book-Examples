@@ -9,7 +9,7 @@ class OtherViewController: UIViewController {
     
     var s : String?
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let items = self.extensionContext!.inputItems
         // open the envelopes
@@ -19,7 +19,7 @@ class OtherViewController: UIViewController {
             else {
                 return
         }
-        provider.loadItemForTypeIdentifier(self.desiredType, options: nil) {
+        provider.loadItem(forTypeIdentifier: self.desiredType, options: nil) {
             (item:NSSecureCoding?, err:NSError!) -> () in
             dispatch_async(dispatch_get_main_queue()) {
                 self.s = item as? String
@@ -27,8 +27,8 @@ class OtherViewController: UIViewController {
         }
     }
     
-    @IBAction func doButton(sender: AnyObject) {
-        self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+    @IBAction func doButton(_ sender: AnyObject) {
+        self.extensionContext!.completeRequest(returningItems:[], completionHandler: nil)
     }
 
 }

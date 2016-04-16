@@ -6,7 +6,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var mv : MyMandelbrotView!
     
-    @IBAction func doButton (sender:AnyObject!) {
+    @IBAction func doButton (_ sender:AnyObject!) {
         self.mv.drawThatPuppy()
     }
 

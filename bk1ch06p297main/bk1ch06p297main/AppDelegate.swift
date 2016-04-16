@@ -8,10 +8,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     // look, ma, no storyboard!
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         self.window = UIWindow()
-        self.window!.backgroundColor = UIColor.whiteColor()
-        self.window!.rootViewController =
+        self.window!.backgroundColor = UIColor.red()
+        self.window!.rootViewController = // UIViewController()
             MyViewController(nibName:"MyViewController", bundle:nil)
         self.window!.makeKeyAndVisible()
         return true

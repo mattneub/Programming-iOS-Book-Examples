@@ -9,15 +9,15 @@ class StringDrawer : UIView {
         }
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let r = rect.offsetBy(dx: 0, dy: 2)
         // just proving it's now an OptionSetType
-        let opts : NSStringDrawingOptions = [.TruncatesLastVisibleLine, .UsesLineFragmentOrigin]
+        let opts : NSStringDrawingOptions = [.truncatesLastVisibleLine, .usesLineFragmentOrigin]
         
         let context = NSStringDrawingContext()
         context.minimumScaleFactor = 0.5 // does nothing
         
-        self.attributedText.drawWithRect(r, options: opts, context: context)
+        self.attributedText.draw(with:r, options: opts, context: context)
         
         print(context.totalBounds)
     }

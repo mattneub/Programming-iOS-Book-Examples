@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         do {
             let c = Character("h")
             print(c)
-            let s = (String(c)).uppercaseString
+            let s = (String(c)).uppercased()
             print(s)
         }
         
@@ -30,15 +30,15 @@ class ViewController: UIViewController {
         
         do {
             let s = "hello"
-            let firstL = s.characters.indexOf("l")
+            let firstL = s.characters.index(of:"l")
             print(firstL) // Optional(2), meaning the third character
-            let lastL = String(s.characters.reverse()).characters.indexOf("l")
+            let lastL = String(s.characters.reversed).characters.index(of:"l")
             print(lastL)
         }
         
         do {
             let s = "hello"
-            let firstSmall = s.characters.indexOf {$0 < "f"}
+            let firstSmall = s.characters.index {$0 < "f"}
             print(firstSmall)
         }
         
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
         
         do {
             let s = "hello"
-            let ok = s.characters.startsWith("hell".characters)
+            let ok = s.characters.starts(with: "hell".characters)
             print(ok)
         }
 
@@ -82,6 +82,7 @@ class ViewController: UIViewController {
             let s = "hello world"
             let arra = s.characters.split{$0 == " "}
             print(arra)
+            print(arra[0].dynamicType)
             let arr = s.characters.split{$0 == " "}.map{String($0)}
             print(arr)
         }
@@ -96,35 +97,30 @@ class ViewController: UIViewController {
         do {
             let s = "hello"
             let ix = s.startIndex
-            // "advance" is now an instance method "advancedBy"
-            let c = s[ix.advancedBy(1)] // "e"
+            let ix2 = s.index(ix, offsetBy:1)
+            // notion of "advance" now replaced by index after and index offset by
+            let c = s[ix2] // "e"
             print(c)
         }
         
-        // example removed: ++ operator deprecated in Swift 2.2, will be removed in Swift 3
-//        do {
-//            let s = "hello"
-//            var ix = s.startIndex
-//            let c = s[++ix] // "e"
-//            print(c)
-//        }
 
         
         do {
             let s = "hello"
             let ix = s.startIndex
-            let c = s[ix.successor()] // "e"
+            let c = s[s.index(after:ix)] // "e"
             print(c)
         }
         
         do {
             var s = "hello"
-            let ix = s.characters.startIndex.advancedBy(1)
+            let ix = s.index(s.startIndex, offsetBy:1)
             // "splice" is now "insertContentsOf"
-            s.insertContentsOf("ey, h".characters, at: ix)
+            s.insert(contentsOf:"ey, h".characters, at: ix)
             print(s)
         }
-                
+        
+        
         do {
             let s = "Ha\u{030A}kon"
             print(s.characters.count) // 5
@@ -132,13 +128,18 @@ class ViewController: UIViewController {
             let length2 = s.utf16.count
             print(length, length2) // 6
         }
+
         
         let _ = 1...3
-        let _ = -1000...(-1)
+        let _ = -1000 ... -1
         // let _ = 3...1 // legal but you'll crash
         
-        for ix in 1 ... 3 {
+        for ix in 1...3 {
             print(ix) // 1, then 2, then 3
+        }
+        
+        for ix in (1...3).reversed() {
+            print(ix)
         }
         
         do {
@@ -158,56 +159,67 @@ class ViewController: UIViewController {
         
         do {
             let s = "hello"
-            let r = s.rangeOfString("ell") // a Swift Range (wrapped in an Optional)
+            let r = s.range(of:"ell") // a Swift Range (wrapped in an Optional)
             print(r)
+            print(r?.lowerBound) // no longer called startIndex for a Range
         }
         
         do {
             let s = "hello"
-            let ix1 = s.startIndex.advancedBy(1)
-            let ix2 = ix1.advancedBy(2)
-            let s2 = s[ix1...ix2] // "ell"
+            let ix1 = s.index(s.startIndex, offsetBy:1)
+            let ix2 = s.index(ix1, offsetBy:3)
+            let r = ix1...ix2
+            // can't get this conversion to work
+            // let r2 = Range<String.CharacterView.Index>(r)
+            // let r3 = Range(r)
+        }
+        
+        
+        do {
+            let s = "hello"
+            let ix1 = s.index(s.startIndex, offsetBy:1)
+            let ix2 = s.index(ix1, offsetBy:3)
+            // interesting thing happens here: we can no longer subscript by a closed range
+            // must form the open range version instead
+            let s2 = s[ix1..<ix2] // "ell"
             print(s2)
         }
         
-        // removed ++ and -- from this example
-        do {
-            let s = "hello"
-            var r = s.characters.indices
-            r.startIndex = r.startIndex.successor()
-            r.endIndex = r.endIndex.predecessor()
-            let s2 = s[r] // "ell"
-            print(s2)
-        }
+        // cutting this whole approach; indexes doesn't give a mutable range any more
         
         /*
         
         do {
             let s = "hello"
             var r = s.characters.indices
-            r.startIndex++
-            r.endIndex--
-            let s2 = s.substringWithRange(r) // "ell"
-            print(s2)
+            r.startIndex = r.index(after:r.startIndex)
+            r.endIndex = r.index(before:r.endIndex)
+//            let s2 = s[r] // "ell"
+//            print(s2)
         }
-
-*/
-                
-        do {
-            var s = "hello"
-            let ix = s.startIndex
-            let r = ix.advancedBy(1)...ix.advancedBy(3)
-            s.replaceRange(r, with: "ipp") // s is now "hippo"
-            print(s)
-        }
+ 
+ */
+        
         
         do {
             var s = "hello"
             let ix = s.startIndex
-            let r = ix.advancedBy(1)...ix.advancedBy(3)
-            s.removeRange(r) // s is now "ho"
+            let r = s.index(ix, offsetBy:1)...s.index(ix, offsetBy:3)
+            s.replaceSubrange(r, with: "ipp") // s is now "hippo"
             print(s)
         }
+        
+
+        
+        do {
+            var s = "hello"
+            let ix = s.startIndex
+            let r = s.index(ix, offsetBy:1)...s.index(ix, offsetBy:3)
+            s.removeSubrange(r) // s is now "ho"
+            print(s)
+        }
+        
+
         
         do {
             let r = NSRange(2..<4)
@@ -215,6 +227,7 @@ class ViewController: UIViewController {
             let r2 = r.toRange()
             print(r2)
         }
+ 
         
     }
 

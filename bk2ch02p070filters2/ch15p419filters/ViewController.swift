@@ -11,14 +11,14 @@ class ViewController : UIViewController {
         
         let vig = MyVignetteFilter()
         let moici = CIImage(image: UIImage(named:"Moi")!)!
-        vig.setValuesForKeysWithDictionary([
+        vig.setValuesForKeys([
             "inputImage":moici,
             "inputPercentage":0.7
         ])
         let outim = vig.outputImage!
 
-        let outimcg = self.context.createCGImage(outim, fromRect: outim.extent)
-        self.iv.image = UIImage(CGImage: outimcg)
+        let outimcg = self.context.createCGImage(outim, from: outim.extent)
+        self.iv.image = UIImage(cgImage: outimcg)
     }
     
 }

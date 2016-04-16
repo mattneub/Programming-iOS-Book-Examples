@@ -8,6 +8,26 @@ func lend<T where T:NSObject> (closure:(T)->()) -> T {
     return orig
 }
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
 
 class ViewController: UIViewController {
 
@@ -19,7 +39,7 @@ class ViewController: UIViewController {
         // testing string measurement
         
         let s = self.makeAttributedString()
-        let r = s.boundingRectWithSize(CGSizeMake(400,10000), options: .UsesLineFragmentOrigin, context: con)
+        let r = s.boundingRect(with:CGSize(400,10000), options: .usesLineFragmentOrigin, context: con)
         print(r) // about 150 tall, sounds right to me :)
         print(con.totalBounds) // same answer
         
@@ -31,11 +51,11 @@ class ViewController: UIViewController {
                 let p = lend {
                     (p:NSMutableParagraphStyle) in
                     p.allowsDefaultTighteningForTruncation = false
-                    p.lineBreakMode = .ByTruncatingTail
+                    p.lineBreakMode = .byTruncatingTail
                 }
                 s2.addAttribute(NSParagraphStyleAttributeName, value: p, range: NSMakeRange(0,1))
                 con.minimumScaleFactor = 0.5
-                s2.boundingRectWithSize(CGSizeMake(CGFloat(w),10000), options: [.UsesLineFragmentOrigin], context: con)
+                s2.boundingRect(with:CGSize(CGFloat(w),10000), options: [.usesLineFragmentOrigin], context: con)
                 print(w, con.totalBounds, con.actualScaleFactor)
             }
         }
@@ -47,11 +67,11 @@ class ViewController: UIViewController {
                     (p:NSMutableParagraphStyle) in
                     // this new feature does make a difference, but not in the scale factor
                     p.allowsDefaultTighteningForTruncation = true
-                    p.lineBreakMode = .ByTruncatingTail
+                    p.lineBreakMode = .byTruncatingTail
                 }
                 s2.addAttribute(NSParagraphStyleAttributeName, value: p, range: NSMakeRange(0,1))
                 con.minimumScaleFactor = 0.5
-                s2.boundingRectWithSize(CGSizeMake(CGFloat(w),10000), options: [.UsesLineFragmentOrigin, .TruncatesLastVisibleLine], context: con)
+                s2.boundingRect(with:CGSize(CGFloat(w),10000), options: [.usesLineFragmentOrigin, .truncatesLastVisibleLine], context: con)
                 print(w, con.totalBounds, con.actualScaleFactor)
             }
         }
@@ -68,11 +88,11 @@ class ViewController: UIViewController {
         "(namely Thursday, November 19, 1863) by A. Lincoln"
         content = NSMutableAttributedString(string:s1, attributes:[
             NSFontAttributeName: UIFont(name:"Arial-BoldMT", size:15)!,
-            NSForegroundColorAttributeName: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
+            NSForegroundColorAttributeName: UIColor(red:0.251 as CGFloat, green:0.000, blue:0.502, alpha:1)]
         )
-        let r = (s1 as NSString).rangeOfString("Gettysburg Address")
+        let r = (s1 as NSString).range(of:"Gettysburg Address")
         let atts = [
-            NSStrokeColorAttributeName: UIColor.redColor(),
+            NSStrokeColorAttributeName: UIColor.red(),
             NSStrokeWidthAttributeName: -2.0
         ]
         content.addAttributes(atts, range: r)
@@ -83,8 +103,8 @@ class ViewController: UIViewController {
                 para.headIndent = 10
                 para.firstLineHeadIndent = 10
                 para.tailIndent = -10
-                para.lineBreakMode = .ByWordWrapping
-                para.alignment = .Center
+                para.lineBreakMode = .byWordWrapping
+                para.alignment = .center
                 para.paragraphSpacing = 15
             }, range:NSMakeRange(0,1))
         
@@ -106,15 +126,15 @@ class ViewController: UIViewController {
                 para2.headIndent = 10
                 para2.firstLineHeadIndent = 10
                 para2.tailIndent = -10
-                para2.lineBreakMode = .ByWordWrapping
-                para2.alignment = .Justified
+                para2.lineBreakMode = .byWordWrapping
+                para2.alignment = .justified
                 para2.lineHeightMultiple = 1.2
                 para2.hyphenationFactor = 1.0
             }, range:NSMakeRange(0,1))
         
         let end = content.length
-        content.replaceCharactersInRange(NSMakeRange(end, 0), withString:"\n")
-        content.appendAttributedString(content2)
+        content.replaceCharacters(in:NSMakeRange(end, 0), with:"\n")
+        content.append(content2)
         
         return content
         

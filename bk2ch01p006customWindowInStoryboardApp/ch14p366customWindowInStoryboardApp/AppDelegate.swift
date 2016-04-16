@@ -4,11 +4,9 @@ import UIKit
 
 @UIApplicationMain class AppDelegate : UIResponder, UIApplicationDelegate {
     
-    lazy var window : UIWindow? = {
-        return MyWindow()
-    }()
+    var window : UIWindow? = MyWindow() // seems this is all we need
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         return true
     }
     

@@ -9,26 +9,26 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(gotPicture), name: "GotPicture", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(gotProgress), name: "GotProgress", object: nil)
+        NSNotificationCenter.default().addObserver(self, selector: #selector(gotPicture), name: "GotPicture", object: nil)
+        NSNotificationCenter.default().addObserver(self, selector: #selector(gotProgress), name: "GotProgress", object: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NSLog("%@", "view did appear")
         self.grabPicture()
     }
         
-    @IBAction func doStart (sender:AnyObject!) {
+    @IBAction func doStart (_ sender:AnyObject!) {
         self.prog.progress = 0
         self.iv.image = nil
-        let del = UIApplication.sharedApplication().delegate as! AppDelegate
+        let del = UIApplication.shared().delegate as! AppDelegate
         del.startDownload(self)
     }
     
     func grabPicture () {
         NSLog("%@", "grabbing picture")
-        let del = UIApplication.sharedApplication().delegate as! AppDelegate
+        let del = UIApplication.shared().delegate as! AppDelegate
         self.iv.image = del.image
         del.image = nil
         if self.iv.image != nil {
@@ -36,11 +36,11 @@ class ViewController: UIViewController {
         }
     }
     
-    func gotPicture (n : NSNotification) {
+    func gotPicture (_ n : NSNotification) {
         self.grabPicture()
     }
     
-    func gotProgress (n : NSNotification) {
+    func gotProgress (_ n : NSNotification) {
         if let ui = n.userInfo {
             if let prog = ui["progress"] as? NSNumber {
                 self.prog.progress = Float(prog.doubleValue)
@@ -49,10 +49,10 @@ class ViewController: UIViewController {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.default().removeObserver(self)
     }
     
-    func crash (sender:AnyObject?) {
+    func crash (_ sender:AnyObject?) {
         _ = sender as! String
     }
 

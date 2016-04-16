@@ -2,7 +2,7 @@
 
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -21,26 +21,26 @@ class ViewController : UIViewController {
         self.sv.contentSize = self.map.bounds.size
     }
     
-    @IBAction func dragging (p : UIPanGestureRecognizer) {
+    @IBAction func dragging (_ p: UIPanGestureRecognizer) {
         let v = p.view!
         switch p.state {
-        case .Began, .Changed:
-            let delta = p.translationInView(v.superview!)
+        case .began, .changed:
+            let delta = p.translation(in:v.superview!)
             v.center.x += delta.x
             v.center.y += delta.y
-            p.setTranslation(CGPointZero, inView: v.superview)
-            if p.state == .Changed {fallthrough} // comment out to prevent autoscroll
-        case .Changed:
+            p.setTranslation(CGPoint.zero, in: v.superview)
+            if p.state == .changed {fallthrough} // comment out to prevent autoscroll
+        case .changed:
             // autoscroll
             let sv = self.sv
-            let loc = p.locationInView(sv)
+            let loc = p.location(in:sv)
             let f = sv.bounds
             var off = sv.contentOffset
             let sz = sv.contentSize
             var c = v.center
             // to the right
-            if loc.x > CGRectGetMaxX(f) - 30 {
-                let margin = sz.width - CGRectGetMaxX(sv.bounds)
+            if loc.x > f.maxX - 30 {
+                let margin = sz.width - sv.bounds.maxX
                 if margin > 6 {
                     off.x += 5
                     sv.contentOffset = off
@@ -61,8 +61,8 @@ class ViewController : UIViewController {
                 }
             }
             // to the bottom
-            if loc.y > CGRectGetMaxY(f) - 30 {
-                let margin = sz.height - CGRectGetMaxY(sv.bounds)
+            if loc.y > f.maxY - 30 {
+                let margin = sz.height - sv.bounds.maxY
                 if margin > 6 {
                     off.y += 5
                     sv.contentOffset = off
@@ -87,7 +87,7 @@ class ViewController : UIViewController {
         }
     }
     
-    func keepDragging (p : UIPanGestureRecognizer) {
+    func keepDragging (_ p: UIPanGestureRecognizer) {
         // the delay here, combined with the change in offset, determines the speed of autoscrolling
         let del = 0.1
         delay(del) {

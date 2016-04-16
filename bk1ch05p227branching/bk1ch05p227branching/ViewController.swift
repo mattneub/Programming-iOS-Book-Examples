@@ -21,8 +21,8 @@ class ViewController: UIViewController {
             
             // okay, we've tapped a tile; there are three cases
             if self.selectedTile == nil { // no selected tile: select and play this tile
-                self.selectTile(tile)
-                self.playTile(tile)
+                self.select(tile:tile)
+                self.play(tile:tile)
             } else if self.selectedTile == tile { // selected tile was tapped: deselect it and stop playing it
                 self.deselectAll()
                 self.player?.pause()
@@ -34,8 +34,8 @@ class ViewController: UIViewController {
             
             switch self.selectedTile { // use interesting new Swift 2.0 unwrapping syntax
             case nil: // no selected tile: select and play this tile
-                self.selectTile(tile)
-                self.playTile(tile)
+                self.select(tile:tile)
+                self.play(tile:tile)
             case tile?: // selected tile was tapped: deselect it and stop playing it
                 self.deselectAll()
                 self.player?.pause()
@@ -46,11 +46,11 @@ class ViewController: UIViewController {
         }
         
         
-        let nc = NSNotificationCenter.defaultCenter()
+        let nc = NSNotificationCenter.default()
         nc.addObserver(self, selector: #selector(notificationArrived), name: "test", object: nil)
-        nc.postNotificationName("test", object: self, userInfo: ["junk":"nonsense"])
-        nc.postNotificationName("test", object: self, userInfo: ["progress":"nonsense"])
-        nc.postNotificationName("test", object: self, userInfo: ["progress":3])
+        nc.post(name:"test", object: self, userInfo: ["junk":"nonsense"])
+        nc.post(name:"test", object: self, userInfo: ["progress":"nonsense"])
+        nc.post(name:"test", object: self, userInfo: ["progress":3])
     }
     
     func notificationArrived(n:NSNotification) {
@@ -96,23 +96,24 @@ class ViewController: UIViewController {
             self.progress = prog.doubleValue
         }
         
+        print(n)
 
     }
 
     
     // stubs, ignore
-    func selectTile(v:UIView) {}
+    func select(tile:UIView) {}
     func deselectAll() {}
-    func swap(v1:UIView, with v2:UIView, check:Bool, fence:Bool) {}
-    func playTile (tile:UIView) {}
+    func swap(_ v1:UIView, with v2:UIView, check:Bool, fence:Bool) {}
+    func play(tile:UIView) {}
 
 
 }
 
 class C1 : NSObject {
-    override func observeValueForKeyPath(keyPath: String?,
-        ofObject object: AnyObject?, change: [String : AnyObject]?,
-        context: UnsafeMutablePointer<()>) {
+    override func observeValue(forKeyPath keyPath: String?,
+        of object: AnyObject?, change: [String : AnyObject]?,
+        context: UnsafeMutablePointer<Void>?) {
             if keyPath == "readyForDisplay" {
                 if let obj = object as? AVPlayerViewController {
                     if let ok = change?[NSKeyValueChangeNewKey] as? Bool {
@@ -127,9 +128,9 @@ class C1 : NSObject {
 }
 
 class C2 : NSObject {
-    override func observeValueForKeyPath(keyPath: String?,
-        ofObject object: AnyObject?, change: [String : AnyObject]?,
-        context: UnsafeMutablePointer<()>) {
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: AnyObject?, change: [String : AnyObject]?,
+                               context: UnsafeMutablePointer<Void>?) {
             if keyPath == "readyForDisplay",
                 let obj = object as? AVPlayerViewController,
                 let ok = change?[NSKeyValueChangeNewKey] as? Bool where ok {
@@ -140,9 +141,9 @@ class C2 : NSObject {
 }
 
 class C3 : NSObject {
-    override func observeValueForKeyPath(keyPath: String?,
-        ofObject object: AnyObject?, change: [String : AnyObject]?,
-        context: UnsafeMutablePointer<()>) {
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: AnyObject?, change: [String : AnyObject]?,
+                               context: UnsafeMutablePointer<Void>?) {
             guard keyPath == "readyForDisplay" else {return}
             guard let obj = object as? AVPlayerViewController else {return}
             guard let ok = change?[NSKeyValueChangeNewKey] as? Bool else {return}

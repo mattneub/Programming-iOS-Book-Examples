@@ -1,25 +1,48 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class ViewController : UIViewController {
     var anim : UIDynamicAnimator!
     var att : UIAttachmentBehavior!
     
-    @IBAction func panning(g: UIPanGestureRecognizer) {
+    @IBAction func panning(_ g: UIPanGestureRecognizer) {
         switch g.state {
-        case .Began:
+        case .began:
             self.anim = UIDynamicAnimator(referenceView:self.view)
             self.anim.delegate = self
-            let loc = g.locationOfTouch(0, inView:g.view)
-            let cen = CGPointMake(g.view!.bounds.midX, g.view!.bounds.midY)
+            let loc = g.location(ofTouch:0, in:g.view)
+            let cen = CGPoint(g.view!.bounds.midX, g.view!.bounds.midY)
             let off = UIOffsetMake(loc.x-cen.x, loc.y-cen.y)
-            let anchor = g.locationOfTouch(0, inView:self.view)
+            let anchor = g.location(ofTouch:0, in:self.view)
             let att = UIAttachmentBehavior(item:g.view!,
                 offsetFromCenter:off, attachedToAnchor:anchor)
             self.anim.addBehavior(att)
             self.att = att
-        case .Changed:
-            self.att.anchorPoint = g.locationOfTouch(0, inView: self.view)
+        case .changed:
+            self.att.anchorPoint = g.location(ofTouch:0, in: self.view)
         default:
             print("done")
             self.anim = nil
@@ -28,10 +51,10 @@ class ViewController : UIViewController {
 }
 
 extension ViewController : UIDynamicAnimatorDelegate {
-    func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
+    func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
         print("pause")
     }
-    func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
+    func dynamicAnimatorWillResume(_ animator: UIDynamicAnimator) {
         print("resume")
     }
 
@@ -56,28 +79,28 @@ CGPoint p;
 UIOffset off;
 UIAttachmentBehavior* att;
 
-p = CGPointMake(CGRectGetMinX(r), CGRectGetMinY(r));
+p = CGPoint(CGRectGetMinX(r), CGRectGetMinY(r));
 off = UIOffsetMake(CGRectGetMinX(f)-cen.x, CGRectGetMinY(f)-cen.y);
 att = [[UIAttachmentBehavior alloc] initWithItem:g.view offsetFromCenter:off attachedToAnchor:p];
 att.damping = damp; att.frequency = freq;
 [self.anim addBehavior:att];
 [self.atts addObject: att];
 
-p = CGPointMake(CGRectGetMaxX(r), CGRectGetMaxY(r));
+p = CGPoint(CGRectGetMaxX(r), CGRectGetMaxY(r));
 off = UIOffsetMake(CGRectGetMaxX(f)-cen.x, CGRectGetMaxY(f)-cen.y);
 att = [[UIAttachmentBehavior alloc] initWithItem:g.view offsetFromCenter:off attachedToAnchor:p];
 att.damping = damp; att.frequency = freq;
 [self.anim addBehavior:att];
 [self.atts addObject: att];
 
-p = CGPointMake(CGRectGetMaxX(r), CGRectGetMinY(r));
+p = CGPoint(CGRectGetMaxX(r), CGRectGetMinY(r));
 off = UIOffsetMake(CGRectGetMaxX(f)-cen.x, CGRectGetMinY(f)-cen.y);
 att = [[UIAttachmentBehavior alloc] initWithItem:g.view offsetFromCenter:off attachedToAnchor:p];
 att.damping = damp; att.frequency = freq;
 [self.anim addBehavior:att];
 [self.atts addObject: att];
 
-p = CGPointMake(CGRectGetMinX(r), CGRectGetMaxY(r));
+p = CGPoint(CGRectGetMinX(r), CGRectGetMaxY(r));
 off = UIOffsetMake(CGRectGetMinX(f)-cen.x, CGRectGetMaxY(f)-cen.y);
 att = [[UIAttachmentBehavior alloc] initWithItem:g.view offsetFromCenter:off attachedToAnchor:p];
 att.damping = damp; att.frequency = freq;
@@ -94,7 +117,7 @@ CGPoint p = att.anchorPoint;
 p.x += delta.x; p.y += delta.y;
 att.anchorPoint = p;
 }
-[g setTranslation: CGPointZero inView: g.view.superview];
+[g setTranslation: CGPoint.zero inView: g.view.superview];
 }
 
 else {

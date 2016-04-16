@@ -2,7 +2,7 @@
 
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -24,21 +24,22 @@ class StyledText: UIView {
     var tc : NSTextContainer!
     var tc2 : NSTextContainer!
     var ts : NSTextStorage!
-    var r1 = CGRectZero
-    var r2 = CGRectZero
+    var r1 = CGRect.zero
+    var r2 = CGRect.zero
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let path = NSBundle.mainBundle().pathForResource("states", ofType: "txt")!
+        let path = NSBundle.main().pathForResource("states", ofType: "txt")!
         let s = try! String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
         
         let desc = UIFontDescriptor(name:"Didot", size:18)
-        let desc2 = desc.fontDescriptorByAddingAttributes(
-            [UIFontDescriptorFeatureSettingsAttribute:[[
-                UIFontFeatureTypeIdentifierKey:kLetterCaseType,
-                UIFontFeatureSelectorIdentifierKey:kSmallCapsSelector
-                ]]]
+        let atts = [
+            UIFontFeatureTypeIdentifierKey:kLetterCaseType,
+            UIFontFeatureSelectorIdentifierKey:kSmallCapsSelector
+        ] as AnyObject
+        let desc2 = desc.addingAttributes(
+            [UIFontDescriptorFeatureSettingsAttribute:[atts]]
         )
         let f = UIFont(descriptor: desc2, size: 0)
         
@@ -47,7 +48,7 @@ class StyledText: UIView {
         mas.addAttribute(NSParagraphStyleAttributeName,
             value: lend() {
                 (para:NSMutableParagraphStyle) in
-                para.alignment = .Center
+                para.alignment = .center
             },
             range: NSMakeRange(0,mas.length))
         self.text = mas
@@ -76,27 +77,27 @@ class StyledText: UIView {
         self.r1 = r1; self.r2 = r2
     }
     
-    override func drawRect(rect: CGRect) {
-        let range1 = self.lm.glyphRangeForTextContainer(self.tc)
-        self.lm.drawBackgroundForGlyphRange(range1, atPoint: self.r1.origin)
-        self.lm.drawGlyphsForGlyphRange(range1, atPoint: self.r1.origin)
-        let range2 = self.lm.glyphRangeForTextContainer(self.tc2)
-        self.lm.drawBackgroundForGlyphRange(range2, atPoint: self.r2.origin)
-        self.lm.drawGlyphsForGlyphRange(range2, atPoint: self.r2.origin)
+    override func draw(_ rect: CGRect) {
+        let range1 = self.lm.glyphRange(for:self.tc)
+        self.lm.drawBackground(forGlyphRange:range1, at: self.r1.origin)
+        self.lm.drawGlyphs(forGlyphRange:range1, at: self.r1.origin)
+        let range2 = self.lm.glyphRange(for:self.tc2)
+        self.lm.drawBackground(forGlyphRange:range2, at: self.r2.origin)
+        self.lm.drawGlyphs(forGlyphRange:range2, at: self.r2.origin)
     }
     
     func tapped (g : UIGestureRecognizer) {
         // which column is it in?
-        var p = g.locationInView(self)
+        var p = g.location(in:self)
         var tc = self.tc
-        if !CGRectContainsPoint(self.r1, p) {
+        if !self.r1.contains(p) {
             tc = self.tc2
             p.x -= self.r1.size.width
         }
         var f : CGFloat = 0
-        let ix = self.lm.glyphIndexForPoint(p, inTextContainer:tc, fractionOfDistanceThroughGlyph:&f)
+        let ix = self.lm.glyphIndex(for:p, in:tc, fractionOfDistanceThroughGlyph:&f)
         var glyphRange : NSRange = NSMakeRange(0,0)
-        self.lm.lineFragmentRectForGlyphAtIndex(ix, effectiveRange:&glyphRange)
+        self.lm.lineFragmentRectForGlyph(at:ix, effectiveRange:&glyphRange)
         // if ix is the first glyph of the line and f is 0...
         // or ix is the last glyph of the line and f is 1...
         // you missed the word entirely
@@ -109,27 +110,27 @@ class StyledText: UIView {
         // eliminate control character glyphs at end
         func lastCharIsControl () -> Bool {
             let lastCharRange = glyphRange.location + glyphRange.length - 1
-            let property = self.lm.propertyForGlyphAtIndex(lastCharRange)
+            let property = self.lm.propertyForGlyph(at:lastCharRange)
             // let ok = property.contains[.ControlCharacter]
             let mask1 = property.rawValue
-            let mask2 = NSGlyphProperty.ControlCharacter.rawValue
+            let mask2 = NSGlyphProperty.controlCharacter.rawValue
             return mask1 & mask2 != 0
         }
         while lastCharIsControl() {
             glyphRange.length -= 1
         }
         // okay, we've got the range!
-        let characterRange = self.lm.characterRangeForGlyphRange(glyphRange, actualGlyphRange:nil)
-        let s = (self.text.string as NSString).substringWithRange(characterRange) // state name
+        let characterRange = self.lm.characterRange(forGlyphRange:glyphRange, actualGlyphRange:nil)
+        let s = (self.text.string as NSString).substring(with:characterRange) // state name
         print("you tapped \(s)")
         let lm = self.lm as! MyLayoutManager
         lm.wordRange = characterRange
         self.setNeedsDisplay()
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        UIApplication.shared().beginIgnoringInteractionEvents()
         delay(0.3) {
             lm.wordRange = NSMakeRange(0, 0)
             self.setNeedsDisplay()
-            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            UIApplication.shared().endIgnoringInteractionEvents()
         }
     }
 

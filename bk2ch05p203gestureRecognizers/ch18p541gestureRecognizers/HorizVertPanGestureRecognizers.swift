@@ -7,25 +7,25 @@ import UIKit.UIGestureRecognizerSubclass
 class HorizPanGestureRecognizer : UIPanGestureRecognizer {
     var origLoc : CGPoint!
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent e: UIEvent) {
-        self.origLoc = touches.first!.locationInView(self.view!.superview)
-        super.touchesBegan(touches, withEvent:e)
+    override func touchesBegan(_ touches: Set<UITouch>, with e: UIEvent) {
+        self.origLoc = touches.first!.location(in:self.view!.superview)
+        super.touchesBegan(touches, with:e)
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent e: UIEvent) {
-        if self.state == .Possible {
-            let loc = touches.first!.locationInView(self.view!.superview)
+    override func touchesMoved(_ touches: Set<UITouch>, with e: UIEvent) {
+        if self.state == .possible {
+            let loc = touches.first!.location(in:self.view!.superview)
             let deltaX = fabs(loc.x - self.origLoc.x)
             let deltaY = fabs(loc.y - self.origLoc.y)
             if deltaY >= deltaX {
-                self.state = .Failed
+                self.state = .failed
             }
         }
-        super.touchesMoved(touches, withEvent:e)
+        super.touchesMoved(touches, with:e)
     }
     
-    override func translationInView(view: UIView?) -> CGPoint {
-        var proposedTranslation = super.translationInView(view)
+    override func translation(in view: UIView?) -> CGPoint {
+        var proposedTranslation = super.translation(in:view)
         proposedTranslation.y = 0
         return proposedTranslation
     }
@@ -35,25 +35,25 @@ class HorizPanGestureRecognizer : UIPanGestureRecognizer {
 class VertPanGestureRecognizer : UIPanGestureRecognizer {
     var origLoc : CGPoint!
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent e: UIEvent) {
-        self.origLoc = touches.first!.locationInView(self.view!.superview)
-        super.touchesBegan(touches, withEvent:e)
+    override func touchesBegan(_ touches: Set<UITouch>, with e: UIEvent) {
+        self.origLoc = touches.first!.location(in:self.view!.superview)
+        super.touchesBegan(touches, with:e)
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent e: UIEvent) {
-        if self.state == .Possible {
-            let loc = touches.first!.locationInView(self.view!.superview)
+    override func touchesMoved(_ touches: Set<UITouch>, with e: UIEvent) {
+        if self.state == .possible {
+            let loc = touches.first!.location(in:self.view!.superview)
             let deltaX = fabs(loc.x - self.origLoc.x)
             let deltaY = fabs(loc.y - self.origLoc.y)
             if deltaX >= deltaY {
-                self.state = .Failed
+                self.state = .failed
             }
         }
-        super.touchesMoved(touches, withEvent:e)
+        super.touchesMoved(touches, with:e)
     }
     
-    override func translationInView(view: UIView?) -> CGPoint {
-        var proposedTranslation = super.translationInView(view)
+    override func translation(in view: UIView?) -> CGPoint {
+        var proposedTranslation = super.translation(in:view)
         proposedTranslation.x = 0
         return proposedTranslation
     }

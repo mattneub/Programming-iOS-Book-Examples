@@ -11,11 +11,11 @@ class ViewController : UIViewController {
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         
-        print(UIApplication.sharedApplication().statusBarOrientation.rawValue)
+        print(UIApplication.shared().statusBarOrientation.rawValue)
         
-        print(UIDevice.currentDevice().orientation.rawValue)
+        print(UIDevice.current().orientation.rawValue)
         
-        let result = UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)
+        let result = UIDeviceOrientationIsLandscape(UIDevice.current().orientation)
         print(result)
         
         // more big news, this next line now won't compile! Swift protects you
@@ -27,7 +27,7 @@ class ViewController : UIViewController {
         // saying it in the supported interface orientations Info.plist key is ignored
         // return [.Portrait, .PortraitUpsideDown]
         
-        return .Portrait
+        return .portrait
     }
     
     

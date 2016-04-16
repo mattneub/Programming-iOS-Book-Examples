@@ -2,6 +2,23 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+
+
 class ViewController : UIViewController {
     @IBOutlet var iv1 : UIImageView!
     @IBOutlet var iv2 : UIImageView!
@@ -20,10 +37,10 @@ class ViewController : UIViewController {
             let mars = UIImage(named:"Mars")!
             let sz = mars.size
             UIGraphicsBeginImageContextWithOptions(
-                CGSizeMake(sz.width*2, sz.height), false, 0)
-            mars.drawAtPoint(CGPointMake(0,0))
-            mars.drawAtPoint(CGPointMake(sz.width,0))
-            let im = UIGraphicsGetImageFromCurrentImageContext()
+                CGSize(sz.width*2, sz.height), false, 0)
+            mars.draw(at:CGPoint(0,0))
+            mars.draw(at:CGPoint(sz.width,0))
+            let im = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
             self.iv1.image = im
         }
@@ -34,10 +51,10 @@ class ViewController : UIViewController {
             let mars = UIImage(named:"Mars")!
             let sz = mars.size
             UIGraphicsBeginImageContextWithOptions(
-                CGSizeMake(sz.width*2, sz.height*2), false, 0)
-            mars.drawInRect(CGRectMake(0,0,sz.width*2, sz.height*2))
-            mars.drawInRect(CGRectMake(sz.width/2.0, sz.height/2.0, sz.width, sz.height), blendMode: .Multiply, alpha: 1.0)
-            let im = UIGraphicsGetImageFromCurrentImageContext()
+                CGSize(sz.width*2, sz.height*2), false, 0)
+            mars.draw(in:CGRect(0,0,sz.width*2,sz.height*2))
+            mars.draw(in:CGRect(sz.width/2.0, sz.height/2.0, sz.width, sz.height), blendMode: .multiply, alpha: 1.0)
+            let im = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
             self.iv2.image = im
         }
@@ -48,9 +65,9 @@ class ViewController : UIViewController {
             let mars = UIImage(named:"Mars")!
             let sz = mars.size
             UIGraphicsBeginImageContextWithOptions(
-                CGSizeMake(sz.width/2.0, sz.height), false, 0)
-            mars.drawAtPoint(CGPointMake(-sz.width/2.0,0))
-            let im = UIGraphicsGetImageFromCurrentImageContext()
+                CGSize(sz.width/2.0, sz.height), false, 0)
+            mars.draw(at:CGPoint(-sz.width/2.0,0))
+            let im = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
             self.iv3.image = im
         }
@@ -60,23 +77,19 @@ class ViewController : UIViewController {
         do {
             let mars = UIImage(named:"Mars")!
             // extract each half as CGImage
-            let marsCG = mars.CGImage
+            let marsCG = mars.cgImage!
             let sz = mars.size
-            let marsLeft = CGImageCreateWithImageInRect(
-                marsCG,
-                CGRectMake(0,0,sz.width/2.0,sz.height))
-            let marsRight = CGImageCreateWithImageInRect(
-                marsCG,
-                CGRectMake(sz.width/2.0,0,sz.width/2.0,sz.height))
+            let marsLeft = marsCG.cropping(to:
+                CGRect(0,0,sz.width/2.0,sz.height))
+            let marsRight = marsCG.cropping(to: CGRect(sz.width/2.0,0,sz.width/2.0,sz.height))
             // draw each CGImage
             UIGraphicsBeginImageContextWithOptions(
-                CGSizeMake(sz.width*1.5, sz.height), false, 0)
+                CGSize(sz.width*1.5, sz.height), false, 0)
             let con = UIGraphicsGetCurrentContext()!
-            CGContextDrawImage(con,
-                CGRectMake(0,0,sz.width/2.0,sz.height), marsLeft)
-            CGContextDrawImage(con,
-                CGRectMake(sz.width,0,sz.width/2.0,sz.height), marsRight)
-            let im = UIGraphicsGetImageFromCurrentImageContext()
+            con.draw(in:CGRect(0,0,sz.width/2.0,sz.height), image: marsLeft)
+            con.draw(in:
+                CGRect(sz.width,0,sz.width/2.0,sz.height), image:marsRight)
+            let im = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
             // no memory management
             self.iv4.image = im
@@ -89,22 +102,18 @@ class ViewController : UIViewController {
             let mars = UIImage(named:"Mars")!
             // extract each half as CGImage
             let sz = mars.size
-            let marsCG = mars.CGImage
-            let marsLeft = CGImageCreateWithImageInRect(
-                marsCG,
-                CGRectMake(0,0,sz.width/2.0,sz.height))
-            let marsRight = CGImageCreateWithImageInRect(
-                marsCG,
-                CGRectMake(sz.width/2.0,0,sz.width/2.0,sz.height))
+            let marsCG = mars.cgImage!
+            let marsLeft = marsCG.cropping(to:CGRect(0,0,sz.width/2.0,sz.height))
+            let marsRight = marsCG.cropping(to: CGRect(sz.width/2.0,0,sz.width/2.0,sz.height))
             // draw each CGImage flipped
             UIGraphicsBeginImageContextWithOptions(
-                CGSizeMake(sz.width*1.5, sz.height), false, 0)
+                CGSize(sz.width*1.5, sz.height), false, 0)
             let con = UIGraphicsGetCurrentContext()!
-            CGContextDrawImage(con,
-                CGRectMake(0,0,sz.width/2.0,sz.height), flip(marsLeft!))
-            CGContextDrawImage(con,
-                CGRectMake(sz.width,0,sz.width/2.0,sz.height), flip(marsRight!))
-            let im = UIGraphicsGetImageFromCurrentImageContext()
+            con.draw(in:
+                CGRect(0,0,sz.width/2.0,sz.height), image:flip(marsLeft!))
+            con.draw(in:
+                CGRect(sz.width,0,sz.width/2.0,sz.height), image:flip(marsRight!))
+            let im = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
             // no memory management
             self.iv5.image = im
@@ -115,23 +124,21 @@ class ViewController : UIViewController {
         do {
             let mars = UIImage(named:"Mars")!
             let sz = mars.size
-            let marsCG = mars.CGImage
-            let szCG = CGSizeMake(CGFloat(CGImageGetWidth(marsCG)), CGFloat(CGImageGetHeight(marsCG)))
+            let marsCG = mars.cgImage!
+            let szCG = CGSize(CGFloat(marsCG.width), CGFloat(marsCG.height))
             let marsLeft =
-                CGImageCreateWithImageInRect(
-                    marsCG, CGRectMake(0,0,szCG.width/2.0,szCG.height))
+                marsCG.cropping(to:CGRect(0,0,szCG.width/2.0,szCG.height))
             let marsRight =
-                CGImageCreateWithImageInRect(
-                    marsCG, CGRectMake(szCG.width/2.0,0,szCG.width/2.0,szCG.height))
+                marsCG.cropping(to:CGRect(szCG.width/2.0,0,szCG.width/2.0,szCG.height))
             UIGraphicsBeginImageContextWithOptions(
-                CGSizeMake(sz.width*1.5, sz.height), false, 0)
+                CGSize(sz.width*1.5, sz.height), false, 0)
             // the rest as before, draw each CGImage flipped
             let con = UIGraphicsGetCurrentContext()!
-            CGContextDrawImage(con,
-                CGRectMake(0,0,sz.width/2.0,sz.height), flip(marsLeft!))
-            CGContextDrawImage(con,
-                CGRectMake(sz.width,0,sz.width/2.0,sz.height), flip(marsRight!))
-            let im = UIGraphicsGetImageFromCurrentImageContext()
+            con.draw(in:
+                CGRect(0,0,sz.width/2.0,sz.height), image:flip(marsLeft!))
+            con.draw(in:
+                CGRect(sz.width,0,sz.width/2.0,sz.height), image:flip(marsRight!))
+            let im = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
             // no memory management
             self.iv6.image = im
@@ -142,24 +149,22 @@ class ViewController : UIViewController {
         do {
             let mars = UIImage(named:"Mars")!
             let sz = mars.size
-            let marsCG = mars.CGImage
-            let szCG = CGSizeMake(CGFloat(CGImageGetWidth(marsCG)), CGFloat(CGImageGetHeight(marsCG)))
+            let marsCG = mars.cgImage!
+            let szCG = CGSize(CGFloat(marsCG.width), CGFloat(marsCG.height))
             let marsLeft =
-                CGImageCreateWithImageInRect(
-                    marsCG, CGRectMake(0,0,szCG.width/2.0,szCG.height))
+                marsCG.cropping(to:CGRect(0,0,szCG.width/2.0,szCG.height))
             let marsRight =
-                CGImageCreateWithImageInRect(
-                    marsCG, CGRectMake(szCG.width/2.0,0,szCG.width/2.0,szCG.height))
+                marsCG.cropping(to:CGRect(szCG.width/2.0,0,szCG.width/2.0,szCG.height))
             UIGraphicsBeginImageContextWithOptions(
-                CGSizeMake(sz.width*1.5, sz.height), false, 0)
+                CGSize(sz.width*1.5, sz.height), false, 0)
             // instead of calling flip, pass through UIImage
-            UIImage(CGImage: marsLeft!, scale: mars.scale,
+            UIImage(cgImage: marsLeft!, scale: mars.scale,
                 orientation: mars.imageOrientation)
-                .drawAtPoint(CGPointMake(0,0))
-            UIImage(CGImage: marsRight!, scale: mars.scale,
+                .draw(at:CGPoint(0,0))
+            UIImage(cgImage: marsRight!, scale: mars.scale,
                 orientation: mars.imageOrientation)
-                .drawAtPoint(CGPointMake(sz.width,0))
-            let im = UIGraphicsGetImageFromCurrentImageContext()
+                .draw(at:CGPoint(sz.width,0))
+            let im = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
             // no memory management
             self.iv7.image = im
@@ -169,12 +174,12 @@ class ViewController : UIViewController {
     
 }
 
-func flip (im: CGImage) -> CGImage {
-    let sz = CGSizeMake(CGFloat(CGImageGetWidth(im)), CGFloat(CGImageGetHeight(im)))
+func flip (_ im: CGImage) -> CGImage {
+    let sz = CGSize(CGFloat(im.width), CGFloat(im.height))
     UIGraphicsBeginImageContextWithOptions(sz, false, 0)
-    CGContextDrawImage(UIGraphicsGetCurrentContext()!,
-        CGRectMake(0, 0, sz.width, sz.height), im)
-    let result = UIGraphicsGetImageFromCurrentImageContext().CGImage
+    UIGraphicsGetCurrentContext()!.draw(in:
+        CGRect(0, 0, sz.width, sz.height), image:im)
+    let result = UIGraphicsGetImageFromCurrentImageContext()!.cgImage
     UIGraphicsEndImageContext()
     return result!
 }

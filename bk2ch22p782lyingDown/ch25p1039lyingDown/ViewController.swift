@@ -27,12 +27,12 @@ class ViewController: UIViewController {
         (oldX, oldY, oldZ, state) = (0,0,0,.Unknown)
     }
     
-    @IBAction func doButton (sender:AnyObject!) {
-        if self.motman.accelerometerActive {
+    @IBAction func doButton (_ sender:AnyObject!) {
+        if self.motman.isAccelerometerActive {
             self.stopAccelerometer()
             return
         }
-        guard self.motman.accelerometerAvailable else {
+        guard self.motman.isAccelerometerAvailable else {
             print("Oh, well")
             return
         }
@@ -42,35 +42,35 @@ class ViewController: UIViewController {
         switch which {
         case 1:
             self.motman.startAccelerometerUpdates()
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(self.motman.accelerometerUpdateInterval, target: self, selector: #selector(pollAccel), userInfo: nil, repeats: true)
+            self.timer = NSTimer.scheduledTimer(timeInterval:self.motman.accelerometerUpdateInterval, target: self, selector: #selector(pollAccel), userInfo: nil, repeats: true)
         case 2:
-            self.motman.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: {
+            self.motman.startAccelerometerUpdates(to: NSOperationQueue.main()) {
                 (accelerometerData:CMAccelerometerData?, error:NSError?) in
                 guard let dat = accelerometerData else {
                     print(error)
                     self.stopAccelerometer()
                     return
                 }
-                self.receiveAccel(dat)
-            })
+                self.receive(acceleration:dat)
+            }
         default:break
         }
     }
     
     func pollAccel (_:AnyObject!) {
         guard let dat = self.motman.accelerometerData else {return}
-        self.receiveAccel(dat)
+        self.receive(acceleration:dat)
     }
     
-    func addAcceleration(accel:CMAcceleration) {
+    func add(acceleration accel:CMAcceleration) {
         let alpha = 0.1
         self.oldX = accel.x * alpha + self.oldX * (1.0 - alpha)
         self.oldY = accel.y * alpha + self.oldY * (1.0 - alpha)
         self.oldZ = accel.z * alpha + self.oldZ * (1.0 - alpha)
     }
 
-    func receiveAccel (dat:CMAccelerometerData) {
-        self.addAcceleration(dat.acceleration)
+    func receive(acceleration dat:CMAccelerometerData) {
+        self.add(acceleration: dat.acceleration)
         let x = self.oldX
         let y = self.oldY
         let z = self.oldZ

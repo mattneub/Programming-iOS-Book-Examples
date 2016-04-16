@@ -17,10 +17,10 @@ class ViewController: UIViewController {
     @IBOutlet var redView : UIView!
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if self.traitCollection.userInterfaceIdiom == .Pad {
-            return .All
+        if self.traitCollection.userInterfaceIdiom == .pad {
+            return .all
         }
-        return .Landscape
+        return .landscape
     }
     
     func determineStatus() -> Bool {
@@ -30,24 +30,24 @@ class ViewController: UIViewController {
         // so it can look better to try to ascertain permission in advance
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
-        case .Authorized:
+        case .authorized:
             return true
-        case .NotDetermined:
+        case .notDetermined:
             PHPhotoLibrary.requestAuthorization() {_ in}
             return false
-        case .Restricted:
+        case .restricted:
             return false
-        case .Denied:
+        case .denied:
             // new iOS 8 feature: sane way of getting the user directly to the relevant prefs
             // I think the crash-in-background issue is now gone
-            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Photos library?", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Photos library?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "No", style: .cancel))
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
-                UIApplication.sharedApplication().openURL(url)
+                UIApplication.shared().open(url)
             }))
-            self.presentViewController(alert, animated:true, completion:nil)
+            self.present(alert, animated:true, completion:nil)
             return false
         }
     }
@@ -58,33 +58,33 @@ class ViewController: UIViewController {
     and when the user taps a button whose functionality needs authorization
     */
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.default().removeObserver(self)
     }
     
-    @IBAction func doPick (sender:AnyObject!) {
+    @IBAction func doPick (_ sender:AnyObject!) {
         if !self.determineStatus() {
             print("not authorized")
             return
         }
         
         // horrible
-        // let src = UIImagePickerControllerSourceType.SavedPhotosAlbum
-        let src = UIImagePickerControllerSourceType.PhotoLibrary
+        // let src = UIImagePickerControllerSourceType.savedPhotosAlbum
+        let src = UIImagePickerControllerSourceType.photoLibrary
         let ok = UIImagePickerController.isSourceTypeAvailable(src)
         if !ok {
             print("alas")
             return
         }
         
-        let arr = UIImagePickerController.availableMediaTypesForSourceType(src)
+        let arr = UIImagePickerController.availableMediaTypes(for:src)
         if arr == nil {
             print("no available types")
             return
@@ -97,10 +97,10 @@ class ViewController: UIViewController {
         picker.allowsEditing = false // try true
         
         // this will automatically be fullscreen on phone and pad, looks fine
-        // note that for .PhotoLibrary, iPhone app must permit portrait orientation
+        // note that for .photoLibrary, iPhone app must permit portrait orientation
         // if we want a popover, on pad, we can do that; just uncomment next line
-        picker.modalPresentationStyle = .Popover
-        self.presentViewController(picker, animated: true, completion: nil)
+        picker.modalPresentationStyle = .popover
+        self.present(picker, animated: true, completion: nil)
         // ignore:
         if let pop = picker.popoverPresentationController {
             let v = sender as! UIView
@@ -120,12 +120,12 @@ class ViewController: UIViewController {
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // this has no effect
-    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> UIInterfaceOrientationMask {
-        return .Landscape
+    func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+        return .landscape
     }
     
     
-    func imagePickerController(picker: UIImagePickerController,
+    func imagePickerController(_ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String : AnyObject]) { //
             print(info[UIImagePickerControllerReferenceURL])
             let url = info[UIImagePickerControllerMediaURL] as? NSURL
@@ -134,7 +134,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
             if edim != nil {
                 im = edim
             }
-            self.dismissViewControllerAnimated(true) {
+            self.dismiss(animated:true) {
                 let type = info[UIImagePickerControllerMediaType] as? String
                 if type != nil {
                     switch type! {
@@ -144,7 +144,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
                         }
                     case kUTTypeMovie as NSString as String:
                         if url != nil {
-                            self.showMovie(url!)
+                            self.showMovie(url:url!)
                         }
                     default:break
                     }
@@ -155,17 +155,17 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     func clearAll() {
         if self.childViewControllers.count > 0 {
             let av = self.childViewControllers[0] as! AVPlayerViewController
-            av.willMoveToParentViewController(nil)
+            av.willMove(toParentViewController: nil)
             av.view.removeFromSuperview()
             av.removeFromParentViewController()
         }
         self.redView.subviews.forEach { $0.removeFromSuperview() }
     }
     
-    func showImage(im:UIImage) {
+    func showImage(_ im:UIImage) {
         self.clearAll()
         let iv = UIImageView(image:im)
-        iv.contentMode = .ScaleAspectFit
+        iv.contentMode = .scaleAspectFit
         iv.frame = self.redView.bounds
         self.redView.addSubview(iv)
     }
@@ -173,13 +173,13 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     func showMovie(url:NSURL) {
         self.clearAll()
         let av = AVPlayerViewController()
-        let player = AVPlayer(URL:url)
+        let player = AVPlayer(url:url)
         av.player = player
         self.addChildViewController(av)
         av.view.frame = self.redView.bounds
         av.view.backgroundColor = self.redView.backgroundColor
         self.redView.addSubview(av.view)
-        av.didMoveToParentViewController(self)
+        av.didMove(toParentViewController: self)
     }
     
 }

@@ -4,26 +4,26 @@ import UIKit
 
 class RootViewController : UIViewController {
 
-    @IBAction func unwind(s:UIStoryboardSegue) {
+    @IBAction func unwind(_ seg:UIStoryboardSegue) {
         
     }
 
     // prove that the segue is not magically called during restoration
 
-    override func prepareForSegue(segue:UIStoryboardSegue, sender:AnyObject?) {
-        NSLog("%@", segue.identifier!)
+    override func prepare(for segue:UIStoryboardSegue, sender:AnyObject?) {
+        NSLog("%@", segue.identifier! as NSObject)
     }
 
 }
 
 class SecondViewController : UIViewController {
-    @IBAction func unwind(s:UIStoryboardSegue) {
+    @IBAction func unwind(_ seg:UIStoryboardSegue) {
         
     }
 }
 
 class PresentedViewController : UIViewController {
-    @IBAction func unwind(s:UIStoryboardSegue) {
+    @IBAction func unwind(_ seg:UIStoryboardSegue) {
         
     }
 }

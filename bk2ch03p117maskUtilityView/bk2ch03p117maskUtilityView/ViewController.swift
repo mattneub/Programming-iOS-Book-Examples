@@ -3,42 +3,55 @@
 import UIKit
 
 
-func maskOfSize(sz:CGSize, roundingCorners rad:CGFloat) -> CALayer {
-    let r = CGRect(origin:CGPointZero, size:sz)
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+
+
+func mask(size sz:CGSize, roundingCorners rad:CGFloat) -> CALayer {
+    let r = CGRect(origin:CGPoint.zero, size:sz)
     UIGraphicsBeginImageContextWithOptions(r.size, false, 0)
     let con = UIGraphicsGetCurrentContext()!
-    CGContextSetFillColorWithColor(
-        con, UIColor(white:0, alpha:0).CGColor)
-    CGContextFillRect(con, r)
-    CGContextSetFillColorWithColor(
-        con, UIColor(white:0, alpha:1).CGColor)
+    con.setFillColor(UIColor(white:0, alpha:0).cgColor)
+    con.fill(r)
+    con.setFillColor(UIColor(white:0, alpha:1).cgColor)
     let p = UIBezierPath(roundedRect:r, cornerRadius:rad)
     p.fill()
-    let im = UIGraphicsGetImageFromCurrentImageContext()
+    let im = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     let mask = CALayer()
     mask.frame = r
-    mask.contents = im.CGImage
+    mask.contents = im.cgImage
     return mask
 }
 
-func viewMaskOfSize(sz:CGSize, roundingCorners rad:CGFloat) -> UIView {
-    let r = CGRect(origin:CGPointZero, size:sz)
+func viewMask(size sz:CGSize, roundingCorners rad:CGFloat) -> UIView {
+    let r = CGRect(origin:CGPoint.zero, size:sz)
     UIGraphicsBeginImageContextWithOptions(r.size, false, 0)
     let con = UIGraphicsGetCurrentContext()!
-    CGContextSetFillColorWithColor(
-        con, UIColor(white:0, alpha:0).CGColor)
-    CGContextFillRect(con, r)
-    CGContextSetFillColorWithColor(
-        con, UIColor(white:0, alpha:1).CGColor)
+    con.setFillColor(UIColor(white:0, alpha:0).cgColor)
+    con.fill(r)
+    con.setFillColor(UIColor(white:0, alpha:1).cgColor)
     let p = UIBezierPath(roundedRect:r, cornerRadius:rad)
     p.fill()
-    let im = UIGraphicsGetImageFromCurrentImageContext()
+    let im = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     let iv = UIImageView(frame:CGRect(origin: CGPoint(), size: sz))
-    iv.contentMode = .ScaleToFill
+    iv.contentMode = .scaleToFill
     iv.image = im
-    iv.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+    iv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     return iv
 }
 
@@ -57,10 +70,10 @@ class MaskView : UIView {
         print("drawing")
         let con = UIGraphicsGetCurrentContext()!
         CGContextSetFillColorWithColor(
-            con, UIColor(white:0, alpha:0).CGColor)
+            con, UIColor(white:0, alpha:0).cgColor)
         CGContextFillRect(con, r)
         CGContextSetFillColorWithColor(
-            con, UIColor(white:0, alpha:1).CGColor)
+            con, UIColor(white:0, alpha:1).cgColor)
         let p = UIBezierPath(roundedRect:r, cornerRadius:rad)
         p.fill()
     }
@@ -70,19 +83,19 @@ class MaskView : UIView {
 class ViewController: UIViewController {
     @IBOutlet var iv: UIImageView!
 
-    let which = 1
+    let which = 2
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         switch which {
         case 1:
-            let mask = maskOfSize(self.iv.bounds.size, roundingCorners:20)
-            self.iv.layer.mask = mask
+            let theMask = mask(size:self.iv.bounds.size, roundingCorners:20)
+            self.iv.layer.mask = theMask
         case 2:
-            let mask = viewMaskOfSize(self.iv.bounds.size, roundingCorners:20)
+            let theMask = viewMask(size:self.iv.bounds.size, roundingCorners:20)
             print(self.iv.layer.mask)
 
-            self.iv.maskView = mask
+            self.iv.mask = theMask
             // same effect, but we've added a subview that does the masking
             // but this does not help, for instance, with the rotation problem
             // (the mask is not resized on rotation;

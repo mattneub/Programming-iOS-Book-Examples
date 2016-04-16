@@ -10,26 +10,27 @@ class ViewController: UIViewController {
         
         do {
             let s = "hello world"
-            let s2 = s.capitalizedString // "Hello World"
+            let s2 = s.capitalized // "Hello World"
             print(s2)
         }
 
         do {
             let s = "hello"
-            let range = s.rangeOfString("ell") // Optional(Range(1..<4))
+            let range = s.range(of:"ell") // Optional(Range(1..<4))
             print(range)
         }
         
         do {
             let s = "hello"
-            let range = (s as NSString).rangeOfString("ell") // (1,3), an NSRange
+            let range = (s as NSString).range(of:"ell") // (1,3), an NSRange
             print(range)
         }
         
         do {
             let s = "hello"
-            // let ss = s.substringWithRange(NSMakeRange(1,3)) // compile error
-            let ss = (s as NSString).substringWithRange(NSMakeRange(1,3))
+            // let sss = s.substring(with:NSMakeRange(1,3)) // compile error
+            // let ssss = s.substring(with:1...3)
+            let ss = (s as NSString).substring(with: NSRange(location: 1,length: 3))
             print(ss)
         }
         

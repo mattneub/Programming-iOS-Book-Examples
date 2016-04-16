@@ -2,93 +2,104 @@
 import UIKit
 
 enum Filter {
-    case Albums
-    case Playlists
-    case Podcasts
-    case Books
+    case albums
+    case playlists
+    case podcasts
+    case books
 }
 
-func filterExpecter(type:Filter) {
-    if type == .Albums {
+func filterExpecter(_ type:Filter) {
+    if type == .albums {
         print("it's albums")
         print(type) // now actually useful!
     }
 }
 
 enum Filter2 : Int {
-    case Albums
-    case Playlists
-    case Podcasts
-    case Books
+    case albums
+    case playlists
+    case podcasts
+    case books
 }
 
+enum Filter2b : String {
+    case albums
+    case playlists
+    case podcasts
+    case books
+}
+
+
 enum Filter3 : String {
-    case Albums = "Albums"
-    case Playlists = "Playlists"
-    case Podcasts = "Podcasts"
-    case Books = "Audiobooks"
+    case albums = "Albums"
+    case playlists = "Playlists"
+    case podcasts = "Podcasts"
+    case books = "Audiobooks"
 }
 
 enum Error {
-    case Number(Int)
-    case Message(String)
-    case Fatal
+    case number(Int)
+    case message(String)
+    case fatal
 }
 
 enum Error2 {
-    case Number(Int)
-    case Message(String)
-    case Fatal(n:Int, s:String)
+    case number(Int)
+    case message(String)
+    case fatal(n:Int, s:String)
 }
 
 
 
 class ViewController: UIViewController {
-    var err2 : Error2 = .Fatal(n:-12, s:"Oh the horror")
+    var err2 : Error2 = .fatal(n:-12, s:"Oh the horror")
     var s : String? = "howdy"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let type = Filter.Albums
-        let type2 : Filter = .Albums
-        filterExpecter(.Albums)
+        let type = Filter.albums
+        let type2 : Filter = .albums
+        filterExpecter(.albums)
 
         let v = UIView()
-        v.contentMode = .Center
+        v.contentMode = .center
         
-        let type3 = Filter3.Albums
+        let type2b = Filter2b.albums
+        print(type2b.rawValue) // albums (argh)
+        
+        let type3 = Filter3.albums
         print(type3.rawValue) // Albums
         
         let type4 = Filter3(rawValue:"Albums")
         // let type5 = Filter3("Albums") // nope
-        if type4 == .Albums { print("yep") }
+        if type4 == .albums { print("yep") }
 
-        let err : Error = .Number(4)
+        let err : Error = .number(4)
 
         let num = 4
-        let errr : Error = .Number(num)
+        let errr : Error = .number(num)
 
 
         switch err2 {
-        case .Number(let theNumber):
+        case .number(let theNumber):
             print("number: \(theNumber)")
-        case .Message(let theMessage):
+        case .message(let theMessage):
             print("message: \(theMessage)")
-        case .Fatal(let theNumber, let theMessage):
+        case .fatal(let theNumber, let theMessage):
             print("number: \(theNumber), message: \(theMessage)")
         }
         
         do {
-            let fatalMaker = Error2.Fatal
+            let fatalMaker = Error2.fatal
             let err = fatalMaker(n:-1000, s:"Unbelievably bad error")
             _ = err
         }
 
         switch s {
-        case .Some(let theString):
+        case .some(let theString):
             print(theString) // howdy
-        case .None:
+        case .none:
             print("it's nil")
         }
         

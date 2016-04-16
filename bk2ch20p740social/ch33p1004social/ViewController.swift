@@ -6,42 +6,42 @@ import Social
 
 class ViewController: UIViewController, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
 
-    @IBAction func doMail (sender:AnyObject!) {
+    @IBAction func doMail (_ sender:AnyObject!) {
         guard MFMailComposeViewController.canSendMail() else {
             print("no mail")
             return
         }
         let vc = MFMailComposeViewController()
         vc.mailComposeDelegate = self
-        self.presentViewController(vc, animated:true, completion:nil)
+        self.present(vc, animated:true, completion:nil)
     }
 
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: NSError?) {
         print("mail result: \(result.rawValue)")
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated:true, completion: nil)
     }
     
     // ================
     
-    @IBAction func doMessage (sender:AnyObject!) {
+    @IBAction func doMessage (_ sender:AnyObject!) {
         guard MFMessageComposeViewController.canSendText() else {
             print("no messages") // but this won't happen even if messages are not configured
             return
         }
         let vc = MFMessageComposeViewController()
         vc.messageComposeDelegate = self
-        self.presentViewController(vc, animated:true, completion:nil)
+        self.present(vc, animated:true, completion:nil)
     }
 
-    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         print("message result: \(result.rawValue)")
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated:true, completion: nil)
     }
     
     // ================
     
-    @IBAction func doTwitter (sender:AnyObject!) {
-        guard SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) else {
+    @IBAction func doTwitter (_ sender:AnyObject!) {
+        guard SLComposeViewController.isAvailable(forServiceType:SLServiceTypeTwitter) else {
             print("no tweeting") // e.g. user isn't signed up
             return
         }
@@ -51,9 +51,9 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, MFM
         vc.completionHandler = {
             (result:SLComposeViewControllerResult) in
             print("tweet result \(result.rawValue)")
-            self.dismissViewControllerAnimated(true, completion:nil)
+            self.dismiss(animated:true, completion:nil)
         };
-        self.presentViewController(vc, animated:true, completion:nil)
+        self.present(vc, animated:true, completion:nil)
     }
     
 

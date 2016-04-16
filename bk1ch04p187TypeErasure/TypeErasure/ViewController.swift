@@ -6,23 +6,23 @@ import UIKit
 
 protocol Flier {
     associatedtype Other
-    func flockTogetherWith(other:Other)
+    func flockTogetherWith(_ other:Other)
 }
 struct Bird : Flier {
     typealias Other = Insect
-    func flockTogetherWith(other:Other) {
+    func flockTogetherWith(_ other:Other) {
         print("tweet tweet, I'm flocking with some \(other.dynamicType)")
     }
 }
 struct Insect : Flier {
     typealias Other = Insect
-    func flockTogetherWith(other:Other) {
+    func flockTogetherWith(_ other:Other) {
         print("buzz buzz, I'm flocking with some \(other.dynamicType)")
     }
 }
 struct Helicopter : Flier {
     typealias Other = Helicopter
-    func flockTogetherWith(other:Other) {
+    func flockTogetherWith(_ other:Other) {
         print("whrrrrrrrrr!")
     }
 }
@@ -45,11 +45,11 @@ struct FlierStruct<T>:Flier {
     // let flierAdopter : Flier where T == FlierAdopter.Other // or like this
     // but we _can_ store a function reference taken from the init parameter Flier!
 
-    let flockFunction : T -> ()
+    let flockFunction : (T) -> ()
     init<FlierAdopter : Flier where FlierAdopter.Other == T>(_ flierAdopter:FlierAdopter) {
         self.flockFunction = flierAdopter.flockTogetherWith
     }
-    func flockTogetherWith(other:T) {
+    func flockTogetherWith(_ other:T) {
         self.flockFunction(other)
     }
 }
@@ -79,6 +79,7 @@ class ViewController: UIViewController {
             //fliers.forEach {$0.flockTogetherWith(Insect())}
             let fliers : [Any] = [Bird(), Insect()] // ... unless we throw away types completely
             // (in which case we can't send flockTogetherWith to it)
+            _ = fliers
         }
         
         

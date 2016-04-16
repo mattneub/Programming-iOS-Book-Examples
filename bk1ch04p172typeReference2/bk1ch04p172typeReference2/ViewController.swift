@@ -15,18 +15,18 @@ class Dog {
         let d = self.init(name:"Fido") // newly required in Swift 2.0
         return d
     }
-    func havePuppy(name name:String) -> Self {
+    func havePuppy(name:String) -> Self {
         return self.dynamicType.init(name:name) // ditto
     }
 }
 class NoisyDog : Dog {
 }
-func dogMakerAndNamer(whattype:Dog.Type) -> Dog {
+func dogMakerAndNamer(_ whattype:Dog.Type) -> Dog {
     let d = whattype.init(name:"Fido") // ditto; compile error, unless `init(name:)` is `required`
     return d
 }
 
-func typeTester(d:Dog, _ whattype:Dog.Type) {
+func typeTester(_ d:Dog, _ whattype:Dog.Type) {
     // if d.dynamicType is whattype { // compile error, "not a type" (i.e. a not a type literal)
     if d.dynamicType === whattype {
         print("yep")

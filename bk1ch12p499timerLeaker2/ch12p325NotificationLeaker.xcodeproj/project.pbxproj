@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3252F50F1A868943000BC6C7 /* CancelableTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3252F50E1A868943000BC6C7 /* CancelableTimer.swift */; };
-		3273F48B1BA64795002ECE6D /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3273F48A1BA64795002ECE6D /* MyView.swift */; settings = {ASSET_TAGS = (); }; };
+		3273F48B1BA64795002ECE6D /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3273F48A1BA64795002ECE6D /* MyView.swift */; };
 		32EF65231A86744C00E5150E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF65221A86744C00E5150E /* MainViewController.swift */; };
 		32EF65251A8676CF00E5150E /* FlipsideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF65241A8676CF00E5150E /* FlipsideViewController.swift */; };
 		32FFD3BF1B5AAFCC0055D1E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32FFD3BE1B5AAFCC0055D1E0 /* LaunchScreen.storyboard */; };

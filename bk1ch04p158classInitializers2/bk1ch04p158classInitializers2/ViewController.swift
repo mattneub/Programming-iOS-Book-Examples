@@ -66,14 +66,14 @@ class ViewController: UIViewController {
         self.toolbar.items = [lbbi]
         
         class MyBezierPath : UIBezierPath {}
-        let b = MyBezierPath(rect:CGRectZero) // bug in iOS 8 fixed in iOS 9
+        let b = MyBezierPath(rect:CGRect.zero) // bug in iOS 8 fixed in iOS 9
         _ = b
         
     }
 
-    @IBAction func doButton (sender:AnyObject!) {
+    @IBAction func doButton (_ sender:AnyObject!) {
         let tvc = MyTableViewController(greeting:"Hello there")
-        self.presentViewController(tvc, animated: true, completion: nil)
+        self.present(tvc, animated: true, completion: nil)
         // crashing bug in iOS 8 fixed in iOS 9;
         // it is now okay once again to subclass UITableViewController and instantiate it manually
     }

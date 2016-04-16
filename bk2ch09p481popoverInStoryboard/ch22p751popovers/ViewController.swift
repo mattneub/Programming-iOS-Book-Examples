@@ -2,7 +2,7 @@
 
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -14,17 +14,17 @@ func delay(delay:Double, closure:()->()) {
 class ViewController : UIViewController, UIToolbarDelegate {
     var oldChoice : Int = -1
     
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
+    func position(forBar bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
     
-    @IBAction func unwind (sender:UIStoryboardSegue) {
+    @IBAction func unwind (_ sender:UIStoryboardSegue) {
         if sender.identifier == "cancel" {
-            NSUserDefaults.standardUserDefaults().setInteger(self.oldChoice, forKey: "choice")
+            NSUserDefaults.standard().set(self.oldChoice, forKey: "choice")
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         print(segue)
         if segue.identifier == "MyPopover" {
             let dest = segue.destinationViewController
@@ -36,23 +36,23 @@ class ViewController : UIViewController, UIToolbarDelegate {
                 // pop.permittedArrowDirections = [.Up, .Down]
             }
         }
-        self.oldChoice = NSUserDefaults.standardUserDefaults().integerForKey("choice")
+        self.oldChoice = NSUserDefaults.standard().integer(forKey:"choice")
     }
 }
 
 extension ViewController : UIPopoverPresentationControllerDelegate {
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         // try swapping these; it works
-        if traitCollection.horizontalSizeClass == .Compact {
-            return .FullScreen
-            // return .None
+        if traitCollection.horizontalSizeClass == .compact {
+            return .fullScreen
+            // return .none
         }
-        return .None
+        return .none
     }
     
-    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
-        NSUserDefaults.standardUserDefaults().setInteger(self.oldChoice, forKey: "choice")
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        NSUserDefaults.standard().set(self.oldChoice, forKey: "choice")
     }
 
 }

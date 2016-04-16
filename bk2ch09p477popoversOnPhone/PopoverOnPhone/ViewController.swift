@@ -2,26 +2,49 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class ViewController: UIViewController {
                             
-    @IBAction func doButton(sender: AnyObject) {
+    @IBAction func doButton(_ sender: AnyObject) {
         let vc = UIViewController()
-        vc.preferredContentSize = CGSizeMake(400,500)
-        vc.modalPresentationStyle = .Popover
+        vc.preferredContentSize = CGSize(400,500)
+        vc.modalPresentationStyle = .popover
         
         // declare the delegate _before_ presentation!
         if let pres = vc.presentationController {
             pres.delegate = self // comment out to see what the defaults are
         }
 
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
 
         let wv = UIWebView()
-        wv.backgroundColor = UIColor.whiteColor()
+        wv.backgroundColor = UIColor.white()
         vc.view.addSubview(wv)
         wv.frame = vc.view.bounds
-        wv.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        let f = NSBundle.mainBundle().pathForResource("linkhelp", ofType: "html")
+        wv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        let f = NSBundle.main().pathForResource("linkhelp", ofType: "html")
         let s = try! String(contentsOfFile: f!, encoding: NSUTF8StringEncoding)
         wv.loadHTMLString(s, baseURL: nil)
         
@@ -29,7 +52,7 @@ class ViewController: UIViewController {
             print(pop)
             pop.sourceView = (sender as! UIView)
             pop.sourceRect = (sender as! UIView).bounds
-            pop.backgroundColor = UIColor.whiteColor()
+            pop.backgroundColor = UIColor.white()
         }
         
         // that alone is completely sufficient, on iOS 8, for iPad and iPhone!
@@ -48,31 +71,31 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
     
     // no need to call this any longer, though you can if you want to
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        if traitCollection.horizontalSizeClass == .Compact {
-            // return .None // permitted not to adapt even on iPhone
-            // return .FormSheet // can also cover partially on iPhone
-            return .FullScreen
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        if traitCollection.horizontalSizeClass == .compact {
+            // return .none // permitted not to adapt even on iPhone
+            // return .formSheet // can also cover partially on iPhone
+            return .fullScreen
         }
-        // return .FullScreen // permitted to adapt even on iPad
-        // return .FormSheet // can adapt to anything
-        return .None
+        // return .fullScreen // permitted to adapt even on iPad
+        // return .formSheet // can adapt to anything
+        return .none
     }
     
-    func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
+    func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
         // we actually get the chance to swap out the v.c. for another!
-        if style != .Popover {
+        if style != .popover {
             let vc = controller.presentedViewController
             let nav = UINavigationController(rootViewController: vc)
-            let b = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(dismissHelp))
+            let b = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissHelp))
             vc.navigationItem.rightBarButtonItem = b
             return nav
         }
         return nil
     }
     
-    func dismissHelp(sender:AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func dismissHelp(_ sender:AnyObject) {
+        self.dismiss(animated:true, completion: nil)
     }
     
     

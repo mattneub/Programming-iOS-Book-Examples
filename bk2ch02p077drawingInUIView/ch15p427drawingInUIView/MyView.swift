@@ -1,69 +1,86 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+
+
 class MyView : UIView {
     
     init() {
-        super.init(frame:CGRectZero)
-        self.opaque = false
+        super.init(frame:CGRect.zero)
+        self.isOpaque = false
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.opaque = false
+        self.isOpaque = false
     }
     
     override init(frame: CGRect) {
         super.init(frame:frame)
-        self.opaque = false
+        self.isOpaque = false
     }
     
-    let which = 1
+    let which = 6
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         switch which {
         case 1:
             let con = UIGraphicsGetCurrentContext()!
             
             // draw a black (by default) vertical line, the shaft of the arrow
-            CGContextMoveToPoint(con, 100, 100)
-            CGContextAddLineToPoint(con, 100, 19)
-            CGContextSetLineWidth(con, 20)
-            CGContextStrokePath(con)
+            con.moveTo(x: 100, y: 100)
+            con.addLineTo(x: 100, y: 19)
+            con.setLineWidth(20)
+            con.strokePath()
             
             // draw a red triangle, the point of the arrow
-            CGContextSetFillColorWithColor(con, UIColor.redColor().CGColor)
-            CGContextMoveToPoint(con, 80, 25)
-            CGContextAddLineToPoint(con, 100, 0)
-            CGContextAddLineToPoint(con, 120, 25)
-            CGContextFillPath(con)
+            con.setFillColor(UIColor.red().cgColor)
+            con.moveTo(x:80, y: 25)
+            con.addLineTo(x:100, y: 0)
+            con.addLineTo(x:120, y: 25)
+            con.fillPath()
             
             // snip a triangle out of the shaft by drawing in Clear blend mode
-            CGContextMoveToPoint(con, 90, 101)
-            CGContextAddLineToPoint(con, 100, 90)
-            CGContextAddLineToPoint(con, 110, 101)
-            CGContextSetBlendMode(con, .Clear)
-            CGContextFillPath(con)
+            con.moveTo(x:90, y: 101)
+            con.addLineTo(x:100, y: 90)
+            con.addLineTo(x:110, y: 101)
+            con.setBlendMode(.clear)
+            con.fillPath()
             
         case 2:
             let p = UIBezierPath()
-            p.moveToPoint(CGPointMake(100,100))
-            p.addLineToPoint(CGPointMake(100, 19))
+            p.move(to:CGPoint(100,100))
+            p.addLine(to:CGPoint(100, 19))
             p.lineWidth = 20
             p.stroke()
             
-            UIColor.redColor().set()
+            UIColor.red().set()
             p.removeAllPoints()
-            p.moveToPoint(CGPointMake(80,25))
-            p.addLineToPoint(CGPointMake(100, 0))
-            p.addLineToPoint(CGPointMake(120, 25))
+            p.move(to:CGPoint(80,25))
+            p.addLine(to:CGPoint(100, 0))
+            p.addLine(to:CGPoint(120, 25))
             p.fill()
             
             p.removeAllPoints()
-            p.moveToPoint(CGPointMake(90,101))
-            p.addLineToPoint(CGPointMake(100, 90))
-            p.addLineToPoint(CGPointMake(110, 101))
-            p.fillWithBlendMode(.Clear, alpha:1.0)
+            p.move(to:CGPoint(90,101))
+            p.addLine(to:CGPoint(100, 90))
+            p.addLine(to:CGPoint(110, 101))
+            p.fill(with:.clear, alpha:1.0)
             
         case 3:
             
@@ -71,45 +88,45 @@ class MyView : UIView {
             let con = UIGraphicsGetCurrentContext()!
             
             // punch triangular hole in context clipping region
-            CGContextMoveToPoint(con, 90, 100)
-            CGContextAddLineToPoint(con, 100, 90)
-            CGContextAddLineToPoint(con, 110, 100)
-            CGContextClosePath(con)
-            CGContextAddRect(con, CGContextGetClipBoundingBox(con))
-            CGContextEOClip(con)
+            con.moveTo(x: 90, y: 100)
+            con.addLineTo(x: 100, y: 90)
+            con.addLineTo(x: 110, y: 100)
+            con.closePath()
+            con.addRect(con.boundingBoxOfClipPath)
+            con.eoClip()
             
             // draw the vertical line
-            CGContextMoveToPoint(con, 100, 100)
-            CGContextAddLineToPoint(con, 100, 19)
-            CGContextSetLineWidth(con, 20)
-            CGContextStrokePath(con)
+            con.moveTo(x: 100, y: 100)
+            con.addLineTo(x: 100, y: 19)
+            con.setLineWidth(20)
+            con.strokePath()
             
             // draw the red triangle, the point of the arrow
-            CGContextSetFillColorWithColor(con, UIColor.redColor().CGColor)
-            CGContextMoveToPoint(con, 80, 25)
-            CGContextAddLineToPoint(con, 100, 0)
-            CGContextAddLineToPoint(con, 120, 25)
-            CGContextFillPath(con)
+            con.setFillColor(UIColor.red().cgColor)
+            con.moveTo(x: 80, y: 25)
+            con.addLineTo(x: 100, y: 0)
+            con.addLineTo(x: 120, y: 25)
+            con.fillPath()
             
         case 4:
             // obtain the current graphics context
             let con = UIGraphicsGetCurrentContext()!
-            CGContextSaveGState(con)
+            con.saveGState()
             
             // punch triangular hole in context clipping region
-            CGContextMoveToPoint(con, 90, 100)
-            CGContextAddLineToPoint(con, 100, 90)
-            CGContextAddLineToPoint(con, 110, 100)
-            CGContextClosePath(con)
-            CGContextAddRect(con, CGContextGetClipBoundingBox(con))
-            CGContextEOClip(con)
+            con.moveTo(x: 90, y: 100)
+            con.addLineTo(x: 100, y: 90)
+            con.addLineTo(x: 110, y: 100)
+            con.closePath()
+            con.addRect(con.boundingBoxOfClipPath)
+            con.eoClip()
             
             // draw the vertical line, add its shape to the clipping region
-            CGContextMoveToPoint(con, 100, 100)
-            CGContextAddLineToPoint(con, 100, 19)
-            CGContextSetLineWidth(con, 20)
-            CGContextReplacePathWithStrokedPath(con)
-            CGContextClip(con)
+            con.moveTo(x: 100, y: 100)
+            con.addLineTo(x: 100, y: 19)
+            con.setLineWidth(20)
+            con.replacePathWithStrokedPath()
+            con.clip()
             
             // draw the gradient
             let locs : [CGFloat] = [ 0.0, 0.5, 1.0 ]
@@ -121,38 +138,37 @@ class MyView : UIView {
             let sp = CGColorSpaceCreateDeviceGray()
             // print(CGColorSpaceGetNumberOfComponents(sp))
             let grad =
-                CGGradientCreateWithColorComponents (sp, colors, locs, 3)
-            CGContextDrawLinearGradient (
-                con, grad, CGPointMake(89,0), CGPointMake(111,0), [])
+                CGGradient(colorComponentsSpace:sp, components: colors, locations: locs, count: 3)
+            con.drawLinearGradient(grad, start: CGPoint(89,0), end: CGPoint(111,0), options:[])
             
-            CGContextRestoreGState(con) // done clipping
+            con.restoreGState() // done clipping
             
             // draw the red triangle, the point of the arrow
-            CGContextSetFillColorWithColor(con, UIColor.redColor().CGColor)
-            CGContextMoveToPoint(con, 80, 25)
-            CGContextAddLineToPoint(con, 100, 0)
-            CGContextAddLineToPoint(con, 120, 25)
-            CGContextFillPath(con)
+            con.setFillColor(UIColor.red().cgColor)
+            con.moveTo(x: 80, y: 25)
+            con.addLineTo(x: 100, y: 0)
+            con.addLineTo(x: 120, y: 25)
+            con.fillPath()
             
         case 5:
             // obtain the current graphics context
             let con = UIGraphicsGetCurrentContext()!
-            CGContextSaveGState(con)
+            con.saveGState()
             
             // punch triangular hole in context clipping region
-            CGContextMoveToPoint(con, 90, 100)
-            CGContextAddLineToPoint(con, 100, 90)
-            CGContextAddLineToPoint(con, 110, 100)
-            CGContextClosePath(con)
-            CGContextAddRect(con, CGContextGetClipBoundingBox(con))
-            CGContextEOClip(con)
+            con.moveTo(x: 90, y: 100)
+            con.addLineTo(x: 100, y: 90)
+            con.addLineTo(x: 110, y: 100)
+            con.closePath()
+            con.addRect(con.boundingBoxOfClipPath)
+            con.eoClip()
             
             // draw the vertical line, add its shape to the clipping region
-            CGContextMoveToPoint(con, 100, 100)
-            CGContextAddLineToPoint(con, 100, 19)
-            CGContextSetLineWidth(con, 20)
-            CGContextReplacePathWithStrokedPath(con)
-            CGContextClip(con)
+            con.moveTo(x: 100, y: 100)
+            con.addLineTo(x: 100, y: 19)
+            con.setLineWidth(20)
+            con.replacePathWithStrokedPath()
+            con.clip()
             
             // draw the gradient
             let locs : [CGFloat] = [ 0.0, 0.5, 1.0 ]
@@ -163,50 +179,49 @@ class MyView : UIView {
             ]
             let sp = CGColorSpaceCreateDeviceGray()
             let grad =
-            CGGradientCreateWithColorComponents (sp, colors, locs, 3)
-            CGContextDrawLinearGradient (
-                con, grad, CGPointMake(89,0), CGPointMake(111,0), [])
+                CGGradient(colorComponentsSpace:sp, components: colors, locations: locs, count: 3)
+            con.drawLinearGradient(grad, start: CGPoint(89,0), end: CGPoint(111,0), options: [])
             
-            CGContextRestoreGState(con) // done clipping
+            con.restoreGState() // done clipping
             
             // draw the red triangle, the point of the arrow
-            UIGraphicsBeginImageContextWithOptions(CGSizeMake(4,4), false, 0)
+            UIGraphicsBeginImageContextWithOptions(CGSize(4,4), false, 0)
             let imcon = UIGraphicsGetCurrentContext()!
-            CGContextSetFillColorWithColor(imcon, UIColor.redColor().CGColor)
-            CGContextFillRect(imcon, CGRectMake(0,0,4,4))
-            CGContextSetFillColorWithColor(imcon, UIColor.blueColor().CGColor)
-            CGContextFillRect(imcon, CGRectMake(0,0,4,2))
-            let stripes = UIGraphicsGetImageFromCurrentImageContext()
+            imcon.setFillColor(UIColor.red().cgColor)
+            imcon.fill(CGRect(0,0,4,4))
+            imcon.setFillColor(UIColor.blue().cgColor)
+            imcon.fill(CGRect(0,0,4,2))
+            let stripes = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
             
             let stripesPattern = UIColor(patternImage:stripes)
             stripesPattern.setFill()
             let p = UIBezierPath()
-            p.moveToPoint(CGPointMake(80,25))
-            p.addLineToPoint(CGPointMake(100,0))
-            p.addLineToPoint(CGPointMake(120,25))
+            p.move(to:CGPoint(80,25))
+            p.addLine(to:CGPoint(100,0))
+            p.addLine(to:CGPoint(120,25))
             p.fill()
             
         case 6:
             
             // obtain the current graphics context
             let con = UIGraphicsGetCurrentContext()!
-            CGContextSaveGState(con)
+            con.saveGState()
             
             // punch triangular hole in context clipping region
-            CGContextMoveToPoint(con, 90, 100)
-            CGContextAddLineToPoint(con, 100, 90)
-            CGContextAddLineToPoint(con, 110, 100)
-            CGContextClosePath(con)
-            CGContextAddRect(con, CGContextGetClipBoundingBox(con))
-            CGContextEOClip(con)
+            con.moveTo(x: 90, y: 100)
+            con.addLineTo(x: 100, y: 90)
+            con.addLineTo(x: 110, y: 100)
+            con.closePath()
+            con.addRect(con.boundingBoxOfClipPath)
+            con.eoClip()
             
             // draw the vertical line, add its shape to the clipping region
-            CGContextMoveToPoint(con, 100, 100)
-            CGContextAddLineToPoint(con, 100, 19)
-            CGContextSetLineWidth(con, 20)
-            CGContextReplacePathWithStrokedPath(con)
-            CGContextClip(con)
+            con.moveTo(x: 100, y: 100)
+            con.addLineTo(x: 100, y: 19)
+            con.setLineWidth(20)
+            con.replacePathWithStrokedPath()
+            con.clip()
             
             // draw the gradient
             let locs : [CGFloat] = [ 0.0, 0.5, 1.0 ]
@@ -217,38 +232,38 @@ class MyView : UIView {
             ]
             let sp = CGColorSpaceCreateDeviceGray()
             let grad =
-            CGGradientCreateWithColorComponents (sp, colors, locs, 3)
-            CGContextDrawLinearGradient (
-                con, grad, CGPointMake(89,0), CGPointMake(111,0), [])
+                CGGradient(colorComponentsSpace:sp, components: colors, locations: locs, count: 3)
+            con.drawLinearGradient (grad, start: CGPoint(89,0), end: CGPoint(111,0), options: [])
             
-            CGContextRestoreGState(con) // done clipping
+            con.restoreGState() // done clipping
             
             
             // draw the red triangle, the point of the arrow
-            let sp2 = CGColorSpaceCreatePattern(nil)
-            CGContextSetFillColorSpace(con, sp2)
+            let sp2 = CGColorSpace(patternBaseSpace:nil)
+            con.setFillColorSpace(sp2)
             // hooray for Swift 2.0!
             let drawStripes : CGPatternDrawPatternCallback = {
                 _, con in
-                CGContextSetFillColorWithColor(con!, UIColor.redColor().CGColor)
-                CGContextFillRect(con!, CGRectMake(0,0,4,4))
-                CGContextSetFillColorWithColor(con!, UIColor.blueColor().CGColor)
-                CGContextFillRect(con!, CGRectMake(0,0,4,2))
+                con?.setFillColor(UIColor.red().cgColor)
+                con?.fill(CGRect(0,0,4,4))
+                con?.setFillColor(UIColor.blue().cgColor)
+                con?.fill(CGRect(0,0,4,2))
             }
             var callbacks = CGPatternCallbacks(
                 version: 0, drawPattern: drawStripes, releaseInfo: nil)
-            let patt = CGPatternCreate(nil, CGRectMake(0,0,4,4),
-                CGAffineTransformIdentity, 4, 4,
-                .ConstantSpacingMinimalDistortion,
-                true, &callbacks)
+            let patt = CGPattern(info:nil, bounds: CGRect(0,0,4,4),
+                                 matrix: CGAffineTransform.identity,
+                                 xStep: 4, yStep: 4,
+                                 tiling: .constantSpacingMinimalDistortion,
+                                 isColored: true, callbacks: &callbacks)
             var alph : CGFloat = 1.0
-            CGContextSetFillPattern(con, patt, &alph)
+            con.setFillPattern(patt, colorComponents: &alph)
             
 
-            CGContextMoveToPoint(con, 80, 25)
-            CGContextAddLineToPoint(con, 100, 0)
-            CGContextAddLineToPoint(con, 120, 25)
-            CGContextFillPath(con)
+            con.moveTo(x: 80, y: 25)
+            con.addLineTo(x: 100, y: 0)
+            con.addLineTo(x: 120, y: 25)
+            con.fillPath()
             
             
         default: break

@@ -2,21 +2,21 @@
 import UIKit
 
 class ViewController : UIViewController {
-    @IBAction func doButton(sender:AnyObject?) {
+    @IBAction func doButton(_ sender:AnyObject?) {
         print("button tap!")
     }
     
-    @IBAction func tapped(g:UITapGestureRecognizer) {
-        let p = g.locationOfTouch(0, inView: g.view)
-        let v = g.view!.hitTest(p, withEvent: nil)
+    @IBAction func tapped(_ g:UITapGestureRecognizer) {
+        let p = g.location(ofTouch:0, in: g.view)
+        let v = g.view!.hitTest(p, with: nil)
         if let v = v as? UIImageView {
-            UIView.animateWithDuration(0.2, delay: 0,
-                options: .Autoreverse,
+            UIView.animate(withDuration:0.2, delay: 0,
+                options: .autoreverse,
                 animations: {
-                    v.transform = CGAffineTransformMakeScale(1.1, 1.1)
+                    v.transform = CGAffineTransform(scaleX:1.1, y:1.1)
                 }, completion: {
                     _ in
-                    v.transform = CGAffineTransformIdentity
+                    v.transform = CGAffineTransform.identity
                 })
         }
     }
@@ -34,13 +34,13 @@ class MyView : UIView {
     // this hitTest override makes it possible
     // try the example with hitTest commented out and with it restored to see the difference
 
-    override func hitTest(point: CGPoint, withEvent e: UIEvent?) -> UIView? {
-        if let result = super.hitTest(point, withEvent:e) {
+    override func hitTest(_ point: CGPoint, with e: UIEvent?) -> UIView? {
+        if let result = super.hitTest(point, with:e) {
             return result
         }
-        for sub in self.subviews.reverse() {
-            let pt = self.convertPoint(point, toView:sub)
-            if let result = sub.hitTest(pt, withEvent:e) {
+        for sub in self.subviews.reversed() {
+            let pt = self.convert(point, to:sub)
+            if let result = sub.hitTest(pt, with:e) {
                 return result
             }
         }

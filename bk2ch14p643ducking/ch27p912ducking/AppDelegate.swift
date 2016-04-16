@@ -6,16 +6,16 @@ import AVFoundation
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // new in iOS 9, can check beforehand
         let ok = AVAudioSession.sharedInstance().availableCategories.contains(AVAudioSessionCategoryAmbient)
         print(ok)
-        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, withOptions: [])
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
         
         // deliberate leak here
         
-        NSNotificationCenter.defaultCenter().addObserverForName(
+        NSNotificationCenter.default().addObserver(forName:
             AVAudioSessionRouteChangeNotification, object: nil, queue: nil) {
                 (note:NSNotification!) in
                 print("change route \(note.userInfo)")
@@ -24,21 +24,21 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // properly, if the route changes from some kind of Headphones to Built-In Speaker,
         // we should pause our sound (doesn't happen automatically)
         
-        NSNotificationCenter.defaultCenter().addObserverForName(
+        NSNotificationCenter.default().addObserver(forName:
             AVAudioSessionInterruptionNotification, object: nil, queue: nil) {
                 (n:NSNotification) in
                 guard let why =
-                    n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
+                    n.userInfo?[AVAudioSessionInterruptionTypeKey as NSString] as? UInt
                     else {return}
                 guard let type = AVAudioSessionInterruptionType(rawValue: why)
                     else {return}
-                if type == .Began {
+                if type == .began {
                     print("interruption began:\n\(n.userInfo!)")
                 } else {
                     print("interruption ended:\n\(n.userInfo!)")
-                    guard let opt = n.userInfo![AVAudioSessionInterruptionOptionKey] as? UInt else {return}
+                    guard let opt = n.userInfo![AVAudioSessionInterruptionOptionKey as NSString] as? UInt else {return}
                     let opts = AVAudioSessionInterruptionOptions(rawValue: opt)
-                    if opts.contains(.ShouldResume) {
+                    if opts.contains(.shouldResume) {
                         print("should resume")
                     } else {
                         print("not should resume")
@@ -48,12 +48,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         // use control center to test, e.g. start and stop a Music song
         
-        NSNotificationCenter.defaultCenter().addObserverForName(
+        NSNotificationCenter.default().addObserver(forName:
             AVAudioSessionSilenceSecondaryAudioHintNotification, object: nil, queue: nil) {
                 (n:NSNotification) in
-                guard let why = n.userInfo?[AVAudioSessionSilenceSecondaryAudioHintTypeKey] as? UInt else {return}
+                guard let why = n.userInfo?[AVAudioSessionSilenceSecondaryAudioHintTypeKey as NSString] as? UInt else {return}
                 guard let type = AVAudioSessionSilenceSecondaryAudioHintType(rawValue:why) else {return}
-                if type == .Begin {
+                if type == .begin {
                     print("silence hint begin:\n\(n.userInfo!)")
                 } else {
                     print("silence hint end:\n\(n.userInfo!)")
@@ -64,16 +64,16 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         print("app became active")
-        _ = try? AVAudioSession.sharedInstance().setActive(true, withOptions: [])
+        _ = try? AVAudioSession.sharedInstance().setActive(true)
     }
     
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         print("app will resign active")
     }
     
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         print("app did enter background")
     }
 }

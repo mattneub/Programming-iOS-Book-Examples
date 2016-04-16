@@ -5,7 +5,7 @@ import WebKit
 
 class HelpViewController: UIViewController {
     weak var wv : UIWebView?
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let wv = UIWebView(frame:self.view.bounds)
         // ... further configuration of wv here ...
@@ -21,14 +21,14 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior {
         self.v = v
         super.init()
     }
-    override func willMoveToAnimator(anim: UIDynamicAnimator!) {
+    override func willMove(to anim: UIDynamicAnimator!) {
         if anim == nil { return }
         let sup = self.v.superview!
         let grav = UIGravityBehavior()
         grav.action = {
             [unowned self] in
-            let items = anim.itemsInRect(sup.bounds) as! [UIView]
-            if items.indexOf(self.v) == nil {
+            let items = anim.items(in: sup.bounds) as! [UIView]
+            if items.index(of: self.v) == nil {
                 anim.removeBehavior(self)
                 self.v.removeFromSuperview()
             }
@@ -182,15 +182,15 @@ class ViewController: UIViewController {
         do {
             print(6)
             class FunctionHolder {
-                var function : (Void -> Void)?
+                var function : ((Void) -> Void)?
                 deinit {
                     print("farewell from FunctionHolder")
                 }
             }
             func testFunctionHolder() {
-                let f = FunctionHolder()
-                f.function = {
-                    print(f)
+                let fh = FunctionHolder()
+                fh.function = {
+                    print(fh)
                 }
             }
             testFunctionHolder() // nothing in console
@@ -199,18 +199,18 @@ class ViewController: UIViewController {
         do {
             print(7)
             class FunctionHolder {
-                var function : (Void -> Void)?
+                var function : ((Void) -> Void)?
                 deinit {
                     print("farewell from FunctionHolder")
                 }
             }
             func testFunctionHolder() {
-                let f = FunctionHolder()
-                f.function = {
-                    [weak f] in
-                    print(f)
+                let fh = FunctionHolder()
+                fh.function = {
+                    [weak fh] in
+                    print(fh)
                 }
-                f.function!() // proving that what's printed is Optional
+                fh.function!() // proving that what's printed is Optional
             }
             testFunctionHolder() // farewell from FunctionHolder
         }
@@ -218,19 +218,19 @@ class ViewController: UIViewController {
         do {
             print(8)
             class FunctionHolder {
-                var function : (Void -> Void)?
+                var function : ((Void) -> Void)?
                 deinit {
                     print("farewell from FunctionHolder")
                 }
             }
             func testFunctionHolder() {
-                let f = FunctionHolder()
-                f.function = {      // here comes the weak–strong dance
-                    [weak f] in     // weak
-                    guard let f = f else { return }
-                    print(f)        // strong
+                let fh = FunctionHolder()
+                fh.function = {      // here comes the weak–strong dance
+                    [weak fh] in     // weak
+                    guard let fh = fh else { return }
+                    print(fh)        // strong
                 }
-                f.function!() // proving that what's printed is non-Optional
+                fh.function!() // proving that what's printed is non-Optional
             }
             testFunctionHolder() // farewell from FunctionHolder
         }

@@ -8,8 +8,8 @@ class ExtraViewController : UIViewController {
         return true
     }
     
-    @IBAction func doButton (sender : AnyObject) {
-        print("presented vc's presenting vc: \(self.presentingViewController)")
-        self.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func doButton (_ sender: AnyObject) {
+        print("presented vc's presenting vc: \(self.presenting)")
+        self.presenting!.dismiss(animated:true, completion: nil)
     }
 }

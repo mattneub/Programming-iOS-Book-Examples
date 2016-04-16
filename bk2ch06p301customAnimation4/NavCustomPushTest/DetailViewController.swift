@@ -9,14 +9,14 @@ class DetailViewController : UIViewController {
         self.detailDescriptionLabel.text = "\(self.detailItem)"
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
             print(tc)
         }
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
@@ -24,7 +24,7 @@ class DetailViewController : UIViewController {
         }
         
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("\(self) " + #function)
         
@@ -33,7 +33,7 @@ class DetailViewController : UIViewController {
         }
         
     }
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {

@@ -2,17 +2,40 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 
 class ViewController: UIViewController {
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         let lay = CAReplicatorLayer()
-        lay.frame = CGRectMake(0,0,100,20)
+        lay.frame = CGRect(0,0,100,20)
         let bar = CALayer()
-        bar.frame = CGRectMake(0,0,10,20)
-        bar.backgroundColor = UIColor.redColor().CGColor
+        bar.frame = CGRect(0,0,10,20)
+        bar.backgroundColor = UIColor.red().cgColor
         lay.addSublayer(bar)
         lay.instanceCount = 5
         lay.instanceTransform = CATransform3DMakeTranslation(20, 0, 0)
@@ -21,10 +44,10 @@ class ViewController: UIViewController {
         anim.toValue = 0.2
         anim.duration = 1
         anim.repeatCount = Float.infinity
-        bar.addAnimation(anim, forKey: nil)
+        bar.add(anim, forKey: nil)
         lay.instanceDelay = anim.duration / Double(lay.instanceCount)
         self.view.layer.addSublayer(lay)
-        lay.position = CGPointMake(self.view.layer.bounds.midX, self.view.layer.bounds.midY)
+        lay.position = CGPoint(self.view.layer.bounds.midX, self.view.layer.bounds.midY)
         
     }
 

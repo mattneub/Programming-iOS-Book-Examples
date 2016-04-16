@@ -3,6 +3,24 @@
 import UIKit
 import AVFoundation
 
+func imageOfSize(_ size:CGSize, _ whatToDraw:() -> ()) -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(size, false, 0)
+    whatToDraw()
+    let result = UIGraphicsGetImageFromCurrentImageContext()!
+    UIGraphicsEndImageContext()
+    return result
+}
+
+
+class RootViewController : UITableViewController {
+    let cellBackgroundImage : UIImage = {
+        return imageOfSize(CGSize(width:320, height:44)) {
+            // ... drawing goes here ...
+        }
+    }()
+}
+
+
 class ViewController: UIViewController {
     
     var dothis = false
@@ -16,9 +34,9 @@ class ViewController: UIViewController {
         let thing = arr[0] // in Swift 1.2 and before we'd get a warning here
         _ = thing
         
-        // var opts = [.Autoreverse, .Repeat] // compile error
+        // var opts = [.autoreverse, .repeat] // compile error
         
-        let opts : UIViewAnimationOptions = [.Autoreverse, .Repeat]
+        let opts : UIViewAnimationOptions = [.autoreverse, .repeat]
         _ = opts
         
         if dothis {
@@ -64,27 +82,27 @@ class ViewController: UIViewController {
     func btiExample() {
         /*
         do {
-            let bti = UIApplication.sharedApplication()
-                .beginBackgroundTaskWithExpirationHandler({
-                    UIApplication.sharedApplication().endBackgroundTask(bti)
-                }) // error: variable used within its own initial value
+            let bti = UIApplication.shared()
+                .beginBackgroundTask {
+                    UIApplication.shared().endBackgroundTask(bti)
+                } // error: variable used within its own initial value
         }
 */
         /*
         do {
             var bti : UIBackgroundTaskIdentifier
-            bti = UIApplication.sharedApplication()
-                .beginBackgroundTaskWithExpirationHandler({
-                    UIApplication.sharedApplication().endBackgroundTask(bti)
-                }) // error: variable captured by a closure before being initialized
+            bti = UIApplication.shared()
+                .beginBackgroundTask {
+                    UIApplication.shared().endBackgroundTask(bti)
+                } // error: variable captured by a closure before being initialized
         }
 */
         do {
             var bti : UIBackgroundTaskIdentifier = 0
-            bti = UIApplication.sharedApplication()
-                .beginBackgroundTaskWithExpirationHandler({
-                    UIApplication.sharedApplication().endBackgroundTask(bti)
-                })
+            bti = UIApplication.shared()
+                .beginBackgroundTask {
+                    UIApplication.shared().endBackgroundTask(bti)
+                }
 
         }
 

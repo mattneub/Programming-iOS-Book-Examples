@@ -11,26 +11,26 @@ class SecondViewController: UIViewController {
         self.image = im
         super.init(nibName: "SecondViewController", bundle: nil)
         self.title = "Decide"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Use", style: .Plain, target: self, action: #selector(doUse))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Use", style: .plain, target: self, action: #selector(doUse))
     }
     
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.iv.image = self.image
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    func doUse(sender:AnyObject) {
-        let vc = self.presentingViewController as! ViewController
+    func doUse(_ sender:AnyObject) {
+        let vc = self.presenting as! ViewController
         vc.doUse(self.image)
     }
 }

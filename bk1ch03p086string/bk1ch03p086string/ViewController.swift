@@ -25,9 +25,9 @@ class ViewController: UIViewController {
         }
         
         do {
-            let ud = NSUserDefaults.standardUserDefaults()
+            let ud = NSUserDefaults.standard()
             // let s = "You have \(ud.integerForKey("widgets")) widgets." // compile error
-            let n = ud.integerForKey("widgets")
+            let n = ud.integer(forKey:"widgets")
             let s = "You have \(n) widgets."
             print(s)
         }
@@ -43,7 +43,8 @@ class ViewController: UIViewController {
             var s = "hello"
             let s2 = " world"
             // "extend" has changed to "appendContentsOf"
-            s.appendContentsOf(s2) // or: sss += sss2
+            // and again to "append", sheesh
+            s.append(s2) // or: sss += sss2
             print(s)
         }
 
@@ -52,7 +53,8 @@ class ViewController: UIViewController {
             let s2 = "world"
             let space = " "
             // "join" has changed to "joinWithSeparator", which works the other way round
-            let greeting = [s,s2].joinWithSeparator(space)
+            // and now to "joined(separator:)", yipes
+            let greeting = [s,s2].joined(separator: space)
             print(greeting)
         }
         

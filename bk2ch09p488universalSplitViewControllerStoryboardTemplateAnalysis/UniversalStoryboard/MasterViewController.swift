@@ -15,7 +15,7 @@ class MasterViewController: UITableViewController {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+        if UIDevice.current().userInterfaceIdiom == .pad {
             self.clearsSelectionOnViewWillAppear = false
             // not sure what this next line does, if anything
             self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
@@ -26,7 +26,7 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(insertNewObject))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject))
         self.navigationItem.rightBarButtonItem = addButton
         // these next lines do not actually do anything, 
         // so I've taken them out as they are just confusing
@@ -40,15 +40,15 @@ class MasterViewController: UITableViewController {
 //        }
     }
     
-    func insertNewObject(sender: AnyObject) {
-        objects.insert(NSDate(), atIndex: 0)
+    func insertNewObject(_ sender: AnyObject) {
+        objects.insert(NSDate(), at: 0)
         let ip = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([ip], withRowAnimation: .Automatic)
+        self.tableView.insertRows(at:[ip], with: .automatic)
     }
     
     // MARK: - Segues
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             let ip = self.tableView.indexPathForSelectedRow!
             let object = objects[ip.row] as NSDate
@@ -68,49 +68,49 @@ class MasterViewController: UITableViewController {
 
     // MARK: - Table View
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return objects.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
         let object = objects[indexPath.row] as NSDate
         cell.textLabel!.text = object.description
         return cell
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: NSIndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            objects.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: NSIndexPath) {
+        if editingStyle == .delete {
+            objects.remove(at:indexPath.row)
+            tableView.deleteRows(at:[indexPath], with: .fade)
         }
     }
 }
 
 extension MasterViewController {
-    override func collapseSecondaryViewController(secondaryViewController: UIViewController, forSplitViewController splitViewController: UISplitViewController) {
+    override func collapseSecondaryViewController(_ secondaryViewController: UIViewController, for splitViewController: UISplitViewController) {
         print("master view controller collapse")
-        super.collapseSecondaryViewController(secondaryViewController, forSplitViewController: splitViewController)
+        super.collapseSecondaryViewController(secondaryViewController, for: splitViewController)
     }
     
-    override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
+    override func targetViewController(forAction action: Selector, sender: AnyObject?) -> UIViewController? {
         print("master view controller target for \(action) \(sender)...")
-        let result = super.targetViewControllerForAction(action, sender: sender)
+        let result = super.targetViewController(forAction: action, sender: sender)
         print("master view controller target for \(action), returning \(result)")
         return result
     }
     
-    override func showViewController(vc: UIViewController, sender: AnyObject?) {
+    override func show(_ vc: UIViewController, sender: AnyObject?) {
         print("master view controller showViewController")
-        super.showViewController(vc, sender: sender)
+        super.show(vc, sender: sender)
     }
     
     // NB it turns out it's important NOT to implement showDetailViewController here at all!
@@ -119,20 +119,20 @@ extension MasterViewController {
     // The whole point of targetViewControllerForAction here is that we want it to find
     // the split view controller
     
-    override func showDetailViewController(vc: UIViewController, sender: AnyObject?) {
+    override func showDetailViewController(_ vc: UIViewController, sender: AnyObject?) {
         print("master view controller showDetailViewController")
         super.showDetailViewController(vc, sender: sender)
     }
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
-        let ok = super.respondsToSelector(aSelector)
+    override func responds(to aSelector: Selector) -> Bool {
+        let ok = super.responds(to:aSelector)
         if aSelector == #selector(showDetailViewController) {
             print("master responds? \(ok)")
         }
         return ok
     }
     
-    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
         var ok = super.canPerformAction(action, withSender:sender)
         if action == #selector(showDetailViewController) {
             ok = false

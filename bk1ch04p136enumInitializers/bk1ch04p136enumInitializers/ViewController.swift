@@ -3,11 +3,11 @@
 import UIKit
 
 enum Filter : String {
-    case Albums = "Albums"
-    case Playlists = "Playlists"
-    case Podcasts = "Podcasts"
-    case Books = "Audiobooks"
-    static var cases : [Filter] = [Albums, Playlists, Podcasts, Books]
+    case albums = "Albums"
+    case playlists = "Playlists"
+    case podcasts = "Podcasts"
+    case books = "Audiobooks"
+    static var cases : [Filter] = [albums, playlists, podcasts, books]
     init!(_ ix:Int) {
         if !(0...3).contains(ix) {
             return nil
@@ -25,7 +25,7 @@ enum Filter : String {
         set {}
     }
     mutating func advance() {
-        var ix = Filter.cases.indexOf(self)!
+        var ix = Filter.cases.index(of:self)!
         ix = (ix + 1) % 4
         self = Filter.cases[ix]
     }
@@ -33,21 +33,21 @@ enum Filter : String {
 }
 
 enum ShapeMaker {
-    case Rectangle
-    case Ellipse
-    case Diamond
-    func drawShape (p: CGMutablePath, inRect r : CGRect) -> () {
+    case rectangle
+    case ellipse
+    case diamond
+    func addShape (toPath p: CGMutablePath, inRect r : CGRect) -> () {
         switch self {
-        case Rectangle:
-            CGPathAddRect(p, nil, r)
-        case Ellipse:
-            CGPathAddEllipseInRect(p, nil, r)
-        case Diamond:
-            CGPathMoveToPoint(p, nil, r.minX, r.midY)
-            CGPathAddLineToPoint(p, nil, r.midX, r.minY)
-            CGPathAddLineToPoint(p, nil, r.maxX, r.midY)
-            CGPathAddLineToPoint(p, nil, r.midX, r.maxY)
-            CGPathCloseSubpath(p)
+        case rectangle:
+            p.addRect(nil, rect:r)
+        case ellipse:
+            p.addEllipseIn(nil, rect:r)
+        case diamond:
+            p.moveTo(nil, x:r.minX, y:r.midY)
+            p.addLineTo(nil, x: r.midX, y: r.minY)
+            p.addLineTo(nil, x: r.maxX, y: r.midY)
+            p.addLineTo(nil, x: r.midX, y: r.maxY)
+            p.closeSubpath()
         }
     }
 }
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let type1 = Filter.Albums
+        let type1 = Filter.albums
         let type2 = Filter(rawValue:"Playlists")!
         let type3 = Filter(2) // .Podcasts
 
@@ -67,14 +67,14 @@ class ViewController: UIViewController {
         
         let type5 = Filter("Playlists")
         
-        print(type5.description)
+        print(type5?.description)
         
         // type5.s = "test" // compile error
         var type6 = type5
-        type6.s = "test"
+        type6?.s = "test"
         
-        var type7 = Filter.Books
-        type7.advance() // Filter.Albums
+        var type7 = Filter.books
+        type7.advance() // Filter.albums
         print(type7)
 
         _ = type1

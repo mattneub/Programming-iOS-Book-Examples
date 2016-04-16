@@ -124,7 +124,7 @@ struct Digit2 { // I regard the legality of this as a compiler bug
 class DogFailable {
     let name : String
     let license : Int
-    init!(name:String, license:Int) {
+    init?(name:String, license:Int) {
         if name.isEmpty {
             return nil // early exit is legal for a class in Swift 2.2
         }
@@ -190,7 +190,11 @@ class ViewController: UIViewController {
         // let puff7 = DogReal()
         
         let fido8 = DogFailable(name:"", license:0)
-        let name = fido8.name // crash
+        let name = fido8?.name
+        // NB there is now no such thing as init!() - if you write that, it's just as if
+        // you had written init?()
+        // i.e. you get an Optional, not an implicitly unwrapped Optional
+        // this will simplify things considerably
         
         let im = UIImage(named:"dummy")
 

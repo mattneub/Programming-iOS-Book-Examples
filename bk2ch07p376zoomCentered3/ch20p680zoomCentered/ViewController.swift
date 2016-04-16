@@ -9,6 +9,29 @@ Same as previous example, proving that it works under autolayout
 
 */
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class ViewController : UIViewController, UIScrollViewDelegate {
     @IBOutlet var sv : UIScrollView!
     @IBOutlet var iv : UIImageView!
@@ -16,7 +39,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     var oldBounces = false
     
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !self.didSetup {
             self.didSetup = true
@@ -26,50 +49,50 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     }
     
     
-    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
+    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
         self.oldBounces = scrollView.bounces
         scrollView.bounces = false
     }
     
-    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
+    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
         scrollView.bounces = self.oldBounces
     }
     
     func centerView() {
         let sv = self.sv
-        let v = self.viewForZoomingInScrollView(sv)!
+        let v = self.viewForZooming(in:sv)!
         // normal result is that iv.center should be center of v
-        var c = CGPointMake(v.bounds.midX,v.bounds.midY)
+        var c = CGPoint(v.bounds.midX,v.bounds.midY)
         // but if dimension is smaller, we will move to center of scroll view
-        let csv = CGPointMake(sv.bounds.midX,sv.bounds.midY)
+        let csv = CGPoint(sv.bounds.midX,sv.bounds.midY)
         // for x, center in s.v. only if width is smaller
         if sv.contentSize.width < sv.bounds.width {
-            let c2 = v.convertPoint(csv, fromView: sv)
+            let c2 = v.convert(csv, from: sv)
             c.x = c2.x
         } else {
             // offset content to be horizontally centered itself
             sv.contentOffset.x = (sv.contentSize.width - sv.bounds.width) / 2.0
         }
         // for y, always keep centered
-        let c2 = v.convertPoint(csv, fromView: sv)
+        let c2 = v.convert(csv, from: sv)
         c.y = c2.y
         // and set image view's center
         iv.center = c
     }
     
-    func scrollViewDidZoom(scrollView: UIScrollView) {
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
         self.centerView()
     }
     
     // image view is zoomable
 
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return scrollView.viewWithTag(999)
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return scrollView.withTag(999)
     }
     
     // image view is also zoomable by double-tapping
     
-    @IBAction func tapped(tap : UIGestureRecognizer) {
+    @IBAction func tapped(_ tap : UIGestureRecognizer) {
         let sv = self.sv
         if sv.zoomScale < 1 {
             sv.setZoomScale(1, animated:true)
@@ -86,13 +109,13 @@ class ViewController : UIViewController, UIScrollViewDelegate {
 }
 
 class MyTappableView : UIView {
-    override func hitTest(point: CGPoint, withEvent event: UIEvent!) -> UIView? {
-        if let result = super.hitTest(point, withEvent:event) {
+    override func hitTest(_ point: CGPoint, with event: UIEvent!) -> UIView? {
+        if let result = super.hitTest(point, with:event) {
             return result
         }
-        for sub in self.subviews.reverse() {
-            let pt = self.convertPoint(point, toView:sub)
-            if let result = sub.hitTest(pt, withEvent:event) {
+        for sub in self.subviews.reversed() {
+            let pt = self.convert(point, to:sub)
+            if let result = sub.hitTest(pt, with:event) {
                 return result
             }
         }

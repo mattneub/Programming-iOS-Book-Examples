@@ -5,7 +5,7 @@ import AVFoundation
 import MediaPlayer
 
 protocol PlayerDelegate : class {
-    func soundFinished(sender : AnyObject)
+    func soundFinished(_ sender: AnyObject)
 }
 
 class Player : NSObject, AVAudioPlayerDelegate {
@@ -15,17 +15,17 @@ class Player : NSObject, AVAudioPlayerDelegate {
     var observer : NSObjectProtocol!
     var observer2 : NSObjectProtocol!
     
-    func playFileAtPath(path:String) {
+    func playFile(atPath path:String) {
         self.player?.delegate = nil
         self.player?.stop()
         let fileURL = NSURL(fileURLWithPath: path)
-        guard let p = try? AVAudioPlayer(contentsOfURL: fileURL) else {return} // nicer
+        guard let p = try? AVAudioPlayer(contentsOf: fileURL) else {return} // nicer
         self.player = p
         // error-checking omitted
         
         // switch to playback category while playing, interrupt background audio
-        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: [])
-        _ = try? AVAudioSession.sharedInstance().setActive(true, withOptions: [])
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        _ = try? AVAudioSession.sharedInstance().setActive(true)
         
         self.player.prepareToPlay()
         self.player.delegate = self
@@ -33,13 +33,13 @@ class Player : NSObject, AVAudioPlayerDelegate {
         print("interrupter trying to play \(path): \(ok)")
     }
     
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) { // *
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) { // *
         let sess = AVAudioSession.sharedInstance()
         // this is the key move
-        _ = try? sess.setActive(false, withOptions: .NotifyOthersOnDeactivation)
+        _ = try? sess.setActive(false, with: .notifyOthersOnDeactivation)
         // now go back to ambient
-        _ = try? sess.setCategory(AVAudioSessionCategoryAmbient, withOptions: [])
-        _ = try? sess.setActive(true, withOptions: [])
+        _ = try? sess.setCategory(AVAudioSessionCategoryAmbient)
+        _ = try? sess.setActive(true)
         delegate?.soundFinished(self)
     }
     

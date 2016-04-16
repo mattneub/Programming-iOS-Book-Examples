@@ -9,21 +9,21 @@ class ViewController: UIViewController, NSURLSessionDataDelegate {
     var data = NSMutableData()
     
     lazy var session : NSURLSession = {
-        let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+        let config = NSURLSessionConfiguration.ephemeral()
         config.allowsCellularAccess = false
-        let session = NSURLSession(configuration: config, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
+        let session = NSURLSession(configuration: config, delegate: self, delegateQueue: NSOperationQueue.main())
         return session
         }()
     
-    @IBAction func doHTTP (sender:AnyObject!) {
+    @IBAction func doHTTP (_ sender:AnyObject!) {
         if self.task != nil {
             return
         }
         
         let s = "http://www.apeth.net/matt/images/phoenixnewest.jpg"
         let url = NSURL(string:s)!
-        let req = NSMutableURLRequest(URL:url)
-        let task = self.session.dataTaskWithRequest(req) // *
+        let req = NSMutableURLRequest(url:url)
+        let task = self.session.dataTask(with:req) // *
         self.task = task
         self.iv.image = nil
         self.data.length = 0 // *
@@ -31,14 +31,14 @@ class ViewController: UIViewController, NSURLSessionDataDelegate {
         
     }
     
-    func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+    func urlSession(_ session: NSURLSession, dataTask: NSURLSessionDataTask, didReceive data: NSData) {
         print("received \(data.length) bytes of data")
         // do something with the data here!
-        self.data.appendData(data)
+        self.data.append(data)
     }
     
     
-    func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+    func urlSession(_ session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
         print("completed: error: \(error)")
         self.task = nil
         if error == nil {
@@ -46,7 +46,7 @@ class ViewController: UIViewController, NSURLSessionDataDelegate {
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.session.finishTasksAndInvalidate()
         self.task = nil

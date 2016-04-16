@@ -5,7 +5,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     var didChooseDetail = false
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
         self.window = UIWindow()
 
@@ -21,10 +21,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let b = svc.displayModeButtonItem()
         detail.navigationItem.leftBarButtonItem = b
         
-        self.window!.backgroundColor = UIColor.whiteColor()
+        self.window!.backgroundColor = UIColor.white()
         self.window!.makeKeyAndVisible()
         
-//        let tc = UIScreen.mainScreen().traitCollection
+//        let tc = UIScreen.main().traitCollection
 //        if tc.horizontalSizeClass == .Regular {
 //            self.didExpand = true
 //        }
@@ -33,11 +33,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate : UISplitViewControllerDelegate {
-    func splitViewController(svc: UISplitViewController, separateSecondaryViewControllerFromPrimaryViewController vc1: UIViewController) -> UIViewController? {
+    func splitViewController(_ svc: UISplitViewController, separateSecondaryViewControllerFromPrimaryViewController vc1: UIViewController) -> UIViewController? {
         print("expanding")
         return nil
     }
-    func splitViewController(svc: UISplitViewController, collapseSecondaryViewController vc2: UIViewController, ontoPrimaryViewController vc1: UIViewController) -> Bool {
+    func splitViewController(_ svc: UISplitViewController, collapseSecondaryViewController vc2: UIViewController, ontoPrimaryViewController vc1: UIViewController) -> Bool {
         print("collapsing")
         return !self.didChooseDetail
     }

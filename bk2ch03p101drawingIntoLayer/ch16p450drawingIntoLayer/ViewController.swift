@@ -5,12 +5,12 @@ class ViewController : UIViewController {
     @IBOutlet var views: NSArray?
     var smilers = [Smiler(), Smiler2()] // to serve as delegates
     
-    func makeLayerOfClass(klass:CALayer.Type, andAddToView ix:Int) -> CALayer {
+    func makeLayerOfClass(_ klass:CALayer.Type, andAddToView ix:Int) -> CALayer {
         let lay = klass.init()
-        lay.contentsScale = UIScreen.mainScreen().scale
+        lay.contentsScale = UIScreen.main().scale
         //    lay.contentsGravity = kCAGravityBottom
-        //    lay.contentsRect = CGRectMake(0.2,0.2,0.5,0.5)
-        //    lay.contentsCenter = CGRectMake(0.0, 0.4, 1.0, 0.6)
+        //    lay.contentsRect = CGRect(0.2,0.2,0.5,0.5)
+        //    lay.contentsCenter = CGRect(0.0, 0.4, 1.0, 0.6)
         let v = (self.views! as! [UIView])[ix]
         lay.frame = v.layer.bounds
         v.layer.addSublayer(lay)
@@ -21,10 +21,10 @@ class ViewController : UIViewController {
         let tlay = CATextLayer()
         tlay.frame = lay.bounds
         lay.addSublayer(tlay)
-        tlay.string = "\(ix)"
+        tlay.string = "\(ix)" as NSString
         tlay.fontSize = 30
         tlay.alignmentMode = kCAAlignmentCenter
-        tlay.foregroundColor = UIColor.greenColor().CGColor
+        tlay.foregroundColor = UIColor.green().cgColor
         
         return lay;
     }

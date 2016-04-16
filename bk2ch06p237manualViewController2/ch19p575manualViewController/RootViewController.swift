@@ -26,16 +26,16 @@ class RootViewController: UIViewController {
         
         let v = self.view
         
-        v.backgroundColor = UIColor.greenColor()
+        v.backgroundColor = UIColor.green()
         
         let label = UILabel()
         v.addSubview(label)
         label.text = "Hello, World!"
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([
-            label.centerXAnchor.constraintEqualToAnchor(v.centerXAnchor),
-            label.centerYAnchor.constraintEqualToAnchor(v.centerYAnchor),
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraintEqual(to:v.centerXAnchor),
+            label.centerYAnchor.constraintEqual(to:v.centerYAnchor),
             ])
 
     }

@@ -2,15 +2,22 @@
 import UIKit
 import Foundation
 
+@objc protocol Dummy {
+    func _performMemoryWarning() // shut the compiler up
+}
+
 class ViewController : UIViewController {
     
     // ignore; just making sure it compiles
     
+    // NSCache now comes across as a true Swift generic!
+    // so you have to resolve those generics explicitly
+    // feels like a bug to me, but whatever
     
-    let cache = NSCache()
+    let cache = NSCache<NSString, AnyObject>()
     var cachedData : NSData {
-        let key = "somekey"
-        var data = self.cache.objectForKey(key) as? NSData
+        let key = "somekey" as NSString
+        var data = self.cache.object(forKey:key) as? NSData
         if data != nil {
             return data!
         }
@@ -47,12 +54,12 @@ class ViewController : UIViewController {
         get {
             if myBigDataReal == nil {
                 let fm = NSFileManager()
-                let f = (NSTemporaryDirectory() as NSString).stringByAppendingPathComponent("myBigData")
-                if fm.fileExistsAtPath(f) {
+                let f = (NSTemporaryDirectory() as NSString).appendingPathComponent("myBigData")
+                if fm.fileExists(atPath:f) {
                     print("loading big data from disk")
                     self.myBigDataReal = NSData(contentsOfFile: f)
                     do {
-                        try fm.removeItemAtPath(f)
+                        try fm.removeItem(atPath:f)
                         print("deleted big data from disk")
                     } catch {
                         print("Couldn't remove temp file")
@@ -66,16 +73,16 @@ class ViewController : UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         // wow, this is some big data!
-        self.myBigData = "howdy".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        self.myBigData = "howdy".data(using:NSUTF8StringEncoding, allowLossyConversion: false)
     }
     
     // tap button to prove we've got big data
     
-    @IBAction func doButton (sender:AnyObject?) {
+    @IBAction func doButton (_ sender:AnyObject?) {
         let s = NSString(data: self.myBigData, encoding: NSUTF8StringEncoding) as! String
-        let av = UIAlertController(title: "Got big data, and it says:", message: s, preferredStyle: .Alert)
-        av.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-        self.presentViewController(av, animated: true, completion: nil)
+        let av = UIAlertController(title: "Got big data, and it says:", message: s, preferredStyle: .alert)
+        av.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(av, animated: true, completion: nil)
     }
     
     // to test, run the app in the simulator and trigger a memory warning
@@ -83,8 +90,8 @@ class ViewController : UIViewController {
     func saveAndReleaseMyBigData() {
         if let myBigData = self.myBigData {
             print("unloading big data")
-            let f = (NSTemporaryDirectory() as NSString).stringByAppendingPathComponent("myBigData")
-            myBigData.writeToFile(f, atomically:false)
+            let f = (NSTemporaryDirectory() as NSString).appendingPathComponent("myBigData")
+            myBigData.write(toFile:f, atomically:false)
             self.myBigData = nil
         }
     }
@@ -96,22 +103,22 @@ class ViewController : UIViewController {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.default().removeObserver(self)
     }
     
     // on device
     
     // ignore compiler warning, it's private API (you'd have to remove it from shipping code)
     
-    @IBAction func doButton2(sender: AnyObject) {
-        UIApplication.sharedApplication().performSelector(Selector("_performMemoryWarning"))
+    @IBAction func doButton2(_ sender: AnyObject) {
+        UIApplication.shared().perform(#selector(Dummy._performMemoryWarning))
     }
     
     // backgrounding
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(backgrounding), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.default().addObserver(self, selector: #selector(backgrounding), name: UIApplicationDidEnterBackgroundNotification, object: nil)
     }
     
     func backgrounding(n:NSNotification) {

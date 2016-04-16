@@ -1,20 +1,43 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class RootViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
         // self.tableView.rowHeight = 58 // *
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
     
@@ -25,9 +48,9 @@ class RootViewController : UITableViewController {
     in a previous call to cellForRow).
 */
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath)
-        if cell.viewWithTag(1) == nil {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
+        if cell.withTag(1) == nil {
             let iv = UIImageView()
             iv.tag = 1
             cell.contentView.addSubview(iv)
@@ -45,40 +68,40 @@ class RootViewController : UITableViewController {
             var con = [NSLayoutConstraint]()
             // image view is vertically centered
             con.append(
-                iv.centerYAnchor.constraintEqualToAnchor(cell.contentView.centerYAnchor))
+                iv.centerYAnchor.constraintEqual(to:cell.contentView.centerYAnchor))
             // it's a square
             con.append(
-                iv.widthAnchor.constraintEqualToAnchor(iv.heightAnchor))
+                iv.widthAnchor.constraintEqual(to:iv.heightAnchor))
             // label has height pinned to superview
-            con.appendContentsOf(
-                NSLayoutConstraint.constraintsWithVisualFormat("V:|[lab]|",
+            con.append(contentsOf:
+                NSLayoutConstraint.constraints(withVisualFormat:"V:|[lab]|",
                 options:[], metrics:nil, views:d))
             // horizontal margins
-            con.appendContentsOf(
-                NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[lab]-15-[iv]-15-|",
+            con.append(contentsOf:
+                NSLayoutConstraint.constraints(withVisualFormat:"H:|-15-[lab]-15-[iv]-15-|",
                 options:[], metrics:nil, views:d))
-            NSLayoutConstraint.activateConstraints(con)
+            NSLayoutConstraint.activate(con)
             
             
             lab.font = UIFont(name:"Helvetica-Bold", size:16)
-            lab.lineBreakMode = .ByWordWrapping
+            lab.lineBreakMode = .byWordWrapping
             lab.numberOfLines = 2
             
         }
         // can refer to subviews by their tags
         
-        let lab = cell.viewWithTag(2) as! UILabel
+        let lab = cell.withTag(2) as! UILabel
         lab.text = "The author of this book, who would rather be out dirt biking"
         
-        let iv = cell.viewWithTag(1) as! UIImageView
+        let iv = cell.withTag(1) as! UIImageView
         // shrink apparent size of image
         let im = UIImage(named:"moi.png")!
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(36,36), true, 0.0)
-        im.drawInRect(CGRectMake(0,0,36,36))
-        let im2 = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(CGSize(36,36), true, 0.0)
+        im.draw(in:CGRect(0,0,36,36))
+        let im2 = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         iv.image = im2
-        iv.contentMode = .Center
+        iv.contentMode = .center
         
 //        let s = NSStringFromUIEdgeInsets(cell.separatorInset)
 //        println(s)

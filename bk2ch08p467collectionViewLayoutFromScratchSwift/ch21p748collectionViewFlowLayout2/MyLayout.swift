@@ -3,12 +3,12 @@ import UIKit
 
 class MyLayout : UICollectionViewLayout {
     
-    var sz = CGSizeZero
+    var sz = CGSize.zero
     var atts = [NSIndexPath:UICollectionViewLayoutAttributes]()
     
     // absolute rock-bottom layout from scratch, shows minimal responsibilities
     
-    override func prepareLayout() {
+    override func prepare() {
         print("prepare")
         let sections = self.collectionView!.numberOfSections()
         
@@ -30,12 +30,12 @@ class MyLayout : UICollectionViewLayout {
         var y = 0
         var atts = [UICollectionViewLayoutAttributes]()
         for i in 0 ..< sections {
-            let jj = self.collectionView!.numberOfItemsInSection(i)
+            let jj = self.collectionView!.numberOfItems(inSection:i)
             for j in 0 ..< jj {
                 let att = UICollectionViewLayoutAttributes(
-                    forCellWithIndexPath:
+                    forCellWith:
                     NSIndexPath(forItem:j, inSection:i))
-                att.frame = CGRectMake(CGFloat(x)*cellside,CGFloat(y)*cellside,cellside,cellside)
+                att.frame = CGRect(CGFloat(x)*cellside,CGFloat(y)*cellside,cellside,cellside)
                 atts += [att]
                 x += 1
                 if CGFloat(x) >= shortside {
@@ -48,7 +48,7 @@ class MyLayout : UICollectionViewLayout {
             self.atts[att.indexPath] = att
         }
         let fluff = (x == 0) ? 0 : 1
-        self.sz = CGSizeMake(width, CGFloat(y+fluff) * cellside)
+        self.sz = CGSize(width, CGFloat(y+fluff) * cellside)
     }
     
     override func collectionViewContentSize() -> CGSize {
@@ -56,18 +56,18 @@ class MyLayout : UICollectionViewLayout {
         return self.sz
     }
     
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         let ok = newBounds.size.width != self.sz.width
         print("should \(ok)")
         return ok
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    override func layoutAttributesForItem(at indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         print("atts")
         return self.atts[indexPath]
     }
     
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         //        println("rect")
         return Array(self.atts.values)
     }

@@ -14,9 +14,9 @@ class ViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let path = NSBundle.mainBundle().pathForResource("brillig", ofType: "txt")!
+        let path = NSBundle.main().pathForResource("brillig", ofType: "txt")!
         let s = try! String(contentsOfFile:path, encoding: NSUTF8StringEncoding)
-        let s2 = s.stringByReplacingOccurrencesOfString("\n", withString: "")
+        let s2 = s.replacingOccurrences(of:"\n", with: "")
         let mas = NSMutableAttributedString(string:s2, attributes:[
             NSFontAttributeName: UIFont(name:"GillSans", size:20)!
             ])
@@ -24,17 +24,17 @@ class ViewController: UIViewController, UITextViewDelegate {
         mas.addAttribute(NSParagraphStyleAttributeName,
             value:lend(){
                 (para:NSMutableParagraphStyle) in
-                para.alignment = .Left
-                para.lineBreakMode = .ByWordWrapping
+                para.alignment = .left
+                para.lineBreakMode = .byWordWrapping
             },
             range:NSMakeRange(0,1))
         
         self.tv.attributedText = mas
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardShow), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardHide), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.default().addObserver(self, selector: #selector(keyboardShow), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.default().addObserver(self, selector: #selector(keyboardHide), name: UIKeyboardWillHideNotification, object: nil)
         
-        self.tv.keyboardDismissMode = .Interactive
+        self.tv.keyboardDismissMode = .interactive
 
     }
     
@@ -49,9 +49,9 @@ class ViewController: UIViewController, UITextViewDelegate {
     func keyboardShow(n:NSNotification) {
         print("show")
         
-        let d = n.userInfo!
-        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-        r = self.tv.convertRect(r, fromView:nil)
+        let d = n.userInfo as! [String:AnyObject]
+        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue()
+        r = self.tv.convert(r, from:nil)
         self.tv.contentInset.bottom = r.size.height
         self.tv.scrollIndicatorInsets.bottom = r.size.height
         
@@ -70,7 +70,7 @@ class ViewController: UIViewController, UITextViewDelegate {
 
     }
 
-    func doDone(sender:AnyObject) {
+    func doDone(_ sender:AnyObject) {
         self.view.endEditing(false)
     }
 

@@ -1,7 +1,7 @@
 
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -9,6 +9,23 @@ func delay(delay:Double, closure:()->()) {
         ),
         dispatch_get_main_queue(), closure)
 }
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+
 
 class MyGravityBehavior : UIGravityBehavior {
     deinit {
@@ -19,11 +36,11 @@ class MyGravityBehavior : UIGravityBehavior {
 class MyImageView : UIImageView {
     // new in iOS 9, we can describe the shape of our image view for collisions
     override var collisionBoundsType: UIDynamicItemCollisionBoundsType {
-        return .Ellipse
+        return .ellipse
     }
     
     
-    override func willMoveToWindow(newWindow: UIWindow?) {
+    override func willMove(to newWindow: UIWindow?) {
         print("image view move to \(newWindow)")
     }
     deinit {
@@ -45,8 +62,8 @@ class ViewController : UIViewController {
     
     let which = 3
 
-    @IBAction func doButton(sender:AnyObject?) {
-        (sender as! UIButton).enabled = false
+    @IBAction func doButton(_ sender:AnyObject?) {
+        (sender as! UIButton).isEnabled = false
         
         let grav = MyGravityBehavior()
         
@@ -59,8 +76,8 @@ class ViewController : UIViewController {
         case 1:
             // leak! neither the image view nor the gravity behavior is released
             grav.action = {
-                let items = self.anim.itemsInRect(self.view.bounds) as! [UIView]
-                let ix = items.indexOf(self.iv)
+                let items = self.anim.items(in:self.view.bounds) as! [UIView]
+                let ix = items.index(of:self.iv)
                 if ix == nil {
                     self.anim.removeAllBehaviors()
                     self.iv.removeFromSuperview()
@@ -69,8 +86,8 @@ class ViewController : UIViewController {
             }
         case 2:
             grav.action = {
-                let items = self.anim.itemsInRect(self.view.bounds) as! [UIView]
-                let ix = items.indexOf(self.iv)
+                let items = self.anim.items(in:self.view.bounds) as! [UIView]
+                let ix = items.index(of:self.iv)
                 if ix == nil {
                     self.anim.removeAllBehaviors()
                     self.iv.removeFromSuperview()
@@ -80,8 +97,8 @@ class ViewController : UIViewController {
             }
         case 3:
             grav.action = {
-                let items = self.anim.itemsInRect(self.view.bounds) as! [UIView]
-                let ix = items.indexOf(self.iv)
+                let items = self.anim.items(in:self.view.bounds) as! [UIView]
+                let ix = items.index(of:self.iv)
                 if ix == nil {
                     delay(0) { // * both are released
                         self.anim.removeAllBehaviors()
@@ -94,8 +111,8 @@ class ViewController : UIViewController {
             grav.action = {
                 [weak grav] in // *
                 if let grav = grav {
-                    let items = self.anim.itemsInRect(self.view.bounds) as! [UIView]
-                    let ix = items.indexOf(self.iv)
+                    let items = self.anim.items(in:self.view.bounds) as! [UIView]
+                    let ix = items.index(of:self.iv)
                     if ix == nil {
                         self.anim.removeBehavior(grav) // * grav is released, iv is not!
                         self.anim.removeAllBehaviors() // probably because of the other behaviors
@@ -112,19 +129,19 @@ class ViewController : UIViewController {
         
         // ========
         
-        let push = UIPushBehavior(items:[self.iv], mode:.Instantaneous)
-        push.pushDirection = CGVectorMake(1, 0)
+        let push = UIPushBehavior(items:[self.iv], mode:.instantaneous)
+        push.pushDirection = CGVector(dx:1, dy:0)
         //push.setTargetOffsetFromCenter(UIOffsetMake(0,-200), forItem: self.iv)
         self.anim.addBehavior(push)
 
         // ========
         
         let coll = UICollisionBehavior()
-        coll.collisionMode = .Boundaries
+        coll.collisionMode = .boundaries
         coll.collisionDelegate = self
-        coll.addBoundaryWithIdentifier("floor",
-            fromPoint:CGPointMake(0, self.view.bounds.maxY),
-            toPoint:CGPointMake(self.view.bounds.maxX,
+        coll.addBoundary(withIdentifier:"floor",
+            from:CGPoint(0, self.view.bounds.maxY),
+            to:CGPoint(self.view.bounds.maxX,
                 self.view.bounds.maxY))
         self.anim.addBehavior(coll)
         coll.addItem(self.iv)
@@ -144,28 +161,28 @@ class ViewController : UIViewController {
 
 extension ViewController : UIDynamicAnimatorDelegate, UICollisionBehaviorDelegate {
     
-    func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
+    func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
         print("pause")
     }
     
-    func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
+    func dynamicAnimatorWillResume(_ animator: UIDynamicAnimator) {
         print("resume")
     }
     
-    func collisionBehavior(behavior: UICollisionBehavior,
-        beganContactForItem item: UIDynamicItem,
+    @objc func collisionBehavior(_ behavior: UICollisionBehavior,
+        beganContactFor item: UIDynamicItem,
         withBoundaryIdentifier identifier: NSCopying?,
-        atPoint p: CGPoint) {
+        at p: CGPoint) {
             print(p)
             // look for the dynamic item behavior
             let b = self.anim.behaviors
-            if let ix = b.indexOf({$0 is UIDynamicItemBehavior}) {
+        if let ix = b.index(where:{$0 is UIDynamicItemBehavior}) {
                 let bounce = b[ix] as! UIDynamicItemBehavior
-                let v = bounce.angularVelocityForItem(item)
+                let v = bounce.angularVelocity(for:item)
                 print(v)
                 if v <= 6 {
                     print("adding angular velocity")
-                    bounce.addAngularVelocity(6, forItem:item)
+                    bounce.addAngularVelocity(6, for:item)
                 }
             }
     }

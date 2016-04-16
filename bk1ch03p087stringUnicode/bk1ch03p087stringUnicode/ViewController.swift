@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let s = flag("DE")
+            let s = flag(country:"DE")
             print(s)
         }
 

@@ -7,7 +7,7 @@ class SecondViewController : UIViewController {
         print(self, terminator: "")
         print(" ", terminator: "")
         print(#function)
-        return .Landscape // called, but pointless
+        return .landscape // called, but pointless
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -15,7 +15,7 @@ class SecondViewController : UIViewController {
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+        return .lightContent
     }
     
 

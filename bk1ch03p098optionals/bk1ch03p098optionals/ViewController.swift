@@ -2,14 +2,28 @@
 
 import UIKit
 
-func optionalExpecter(s:String?) { print(s) }
-func realStringExpecter(s:String) {}
+func optionalExpecter(_ s:String?) { print(s) }
+func realStringExpecter(_ s:String) {}
+
+// I guess I was hoping there was a new feature
+// where an incoming Optional could be unwrapped before the body
+// but that's not what's happening; the default is wrapped as an Optional
+func optionalExpecter2(_ s:String? = "") {print("expecter2 got", s)}
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // better example would be to start with a view controller:
+        let f = self.view.window?.rootViewController?.view.frame
+        
+        self.navigationController?.hidesBarsOnTap = true
+        let ok : Void? = self.navigationController?.hidesBarsOnTap = true
+        if ok != nil {
+            // it worked
+        }
 
         var stringMaybe = Optional("howdy")
         stringMaybe = Optional("farewell")
@@ -25,7 +39,7 @@ class ViewController: UIViewController {
         realStringExpecter(stringMaybe!)
         
         // let upper = stringMaybe.uppercaseString // compile error
-        let upper = stringMaybe!.uppercaseString
+        let upper = stringMaybe!.uppercased()
 
         let stringMaybe3 : ImplicitlyUnwrappedOptional<String> = "howdy"
         realStringExpecter(stringMaybe3) // no problem
@@ -68,6 +82,12 @@ class ViewController: UIViewController {
             // shut the compiler up
             stringMaybe = "howdy"
         }
+        
+        do {
+            optionalExpecter2("howdy")
+            optionalExpecter2(nil)
+            optionalExpecter2()
+        }
 
 
         // shut the compiler up
@@ -81,7 +101,6 @@ class ViewController: UIViewController {
         _ = stringMaybe7
     
     }
-
 
 
 }

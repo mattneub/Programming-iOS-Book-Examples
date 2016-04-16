@@ -1,10 +1,10 @@
 
 import UIKit
 
-func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()
+    let result = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return result
 }
@@ -15,13 +15,35 @@ func lend<T where T:NSObject> (closure:(T)->()) -> T {
     return orig
 }
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
 
 class ViewController: UIViewController {
     
     @IBOutlet var stepper : UIStepper!
     @IBOutlet var prog : UIProgressView!
     
-    @IBAction func doStep(sender:AnyObject!) {
+    @IBAction func doStep(_ sender:AnyObject!) {
         let step = sender as! UIStepper
         self.prog.setProgress(Float(step.value / (step.maximumValue - step.minimumValue)), animated:true)
     }
@@ -29,108 +51,108 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.stepper.tintColor = UIColor.yellowColor()
+        self.stepper.tintColor = UIColor.yellow()
         
         let imdis = UIImage(named: "pic2.png")!
-            .resizableImageWithCapInsets(
-                UIEdgeInsetsMake(1, 1, 1, 1), resizingMode:.Stretch)
-        self.stepper.setBackgroundImage(imdis, forState:.Disabled)
+            .resizableImage(withCapInsets:
+                UIEdgeInsetsMake(1, 1, 1, 1), resizingMode:.stretch)
+        self.stepper.setBackgroundImage(imdis, for:.disabled)
         
         let imnorm = UIImage(named: "pic1.png")!
-            .resizableImageWithCapInsets(
-                UIEdgeInsetsMake(1, 1, 1, 1), resizingMode:.Stretch)
-        self.stepper.setBackgroundImage(imnorm, forState:.Normal)
+            .resizableImage(withCapInsets:
+                UIEdgeInsetsMake(1, 1, 1, 1), resizingMode:.stretch)
+        self.stepper.setBackgroundImage(imnorm, for:[])
         
-        let tint = imageOfSize(CGSizeMake(3,3)) {
+        let tint = imageOfSize(CGSize(3,3)) {
             self.stepper.tintColor.setFill()
-            CGContextFillRect(UIGraphicsGetCurrentContext()!, CGRectMake(0,0,3,3))
-        }.resizableImageWithCapInsets(
-            UIEdgeInsetsMake(1, 1, 1, 1), resizingMode:.Stretch)
-        self.stepper.setDividerImage(tint, forLeftSegmentState:.Normal, rightSegmentState:.Normal)
-        self.stepper.setDividerImage(tint, forLeftSegmentState:.Highlighted, rightSegmentState:.Normal)
-        self.stepper.setDividerImage(tint, forLeftSegmentState:.Normal, rightSegmentState:.Highlighted)
+            UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,3,3))
+        }.resizableImage(withCapInsets:
+            UIEdgeInsetsMake(1, 1, 1, 1), resizingMode:.stretch)
+        self.stepper.setDividerImage(tint, forLeftSegmentState:[], rightSegmentState:[])
+        self.stepper.setDividerImage(tint, forLeftSegmentState:.highlighted, rightSegmentState:[])
+        self.stepper.setDividerImage(tint, forLeftSegmentState:[], rightSegmentState:.highlighted)
 
         // image (treated as template by default)
         
-        let imleft = imageOfSize(CGSizeMake(45,29)) {
+        let imleft = imageOfSize(CGSize(45,29)) {
             NSAttributedString(string:"\u{21DA}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
-                NSForegroundColorAttributeName: UIColor.whiteColor(),
+                NSForegroundColorAttributeName: UIColor.white(),
                 NSParagraphStyleAttributeName: lend {
                     (para : NSMutableParagraphStyle) in
-                    para.alignment = .Center
+                    para.alignment = .center
                     }
-                ]).drawInRect(CGRectMake(0,-5,45,29))
-        }.imageWithRenderingMode(.AlwaysOriginal)
-        self.stepper.setDecrementImage(imleft, forState:.Normal)
+                ]).draw(in:CGRect(0,-5,45,29))
+        }.withRenderingMode(.alwaysOriginal)
+        self.stepper.setDecrementImage(imleft, for:[])
         
-        let imleftblack = imageOfSize(CGSizeMake(45,29)) {
+        let imleftblack = imageOfSize(CGSize(45,29)) {
             NSAttributedString(string:"\u{21DA}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
-                NSForegroundColorAttributeName: UIColor.blackColor(),
+                NSForegroundColorAttributeName: UIColor.black(),
                 NSParagraphStyleAttributeName: lend {
                     (para : NSMutableParagraphStyle) in
-                    para.alignment = .Center
+                    para.alignment = .center
                 }
-                ]).drawInRect(CGRectMake(0,-5,45,29))
-            }.imageWithRenderingMode(.AlwaysOriginal)
-        self.stepper.setDecrementImage(imleftblack, forState:.Disabled)
+                ]).draw(in:CGRect(0,-5,45,29))
+            }.withRenderingMode(.alwaysOriginal)
+        self.stepper.setDecrementImage(imleftblack, for:.disabled)
 
-        let imlefttint = imageOfSize(CGSizeMake(45,29)) {
+        let imlefttint = imageOfSize(CGSize(45,29)) {
             NSAttributedString(string:"\u{21DA}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: self.stepper.tintColor,
                 NSParagraphStyleAttributeName: lend {
                     (para : NSMutableParagraphStyle) in
-                    para.alignment = .Center
+                    para.alignment = .center
                 }
-                ]).drawInRect(CGRectMake(0,-5,45,29))
-            }.imageWithRenderingMode(.AlwaysOriginal)
-        self.stepper.setDecrementImage(imlefttint, forState:.Highlighted)
+                ]).draw(in:CGRect(0,-5,45,29))
+            }.withRenderingMode(.alwaysOriginal)
+        self.stepper.setDecrementImage(imlefttint, for:.highlighted)
 
-        let imright = imageOfSize(CGSizeMake(45,29)) {
+        let imright = imageOfSize(CGSize(45,29)) {
             NSAttributedString(string:"\u{21DB}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
-                NSForegroundColorAttributeName: UIColor.whiteColor(),
+                NSForegroundColorAttributeName: UIColor.white(),
                 NSParagraphStyleAttributeName: lend {
                     (para : NSMutableParagraphStyle) in
-                    para.alignment = .Center
+                    para.alignment = .center
                 }
-                ]).drawInRect(CGRectMake(0,-5,45,29))
-            }.imageWithRenderingMode(.AlwaysOriginal)
-        self.stepper.setIncrementImage(imright, forState:.Normal)
+                ]).draw(in:CGRect(0,-5,45,29))
+            }.withRenderingMode(.alwaysOriginal)
+        self.stepper.setIncrementImage(imright, for:[])
         
-        let imrightblack = imageOfSize(CGSizeMake(45,29)) {
+        let imrightblack = imageOfSize(CGSize(45,29)) {
             NSAttributedString(string:"\u{21DB}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
-                NSForegroundColorAttributeName: UIColor.blackColor(),
+                NSForegroundColorAttributeName: UIColor.black(),
                 NSParagraphStyleAttributeName: lend {
                     (para : NSMutableParagraphStyle) in
-                    para.alignment = .Center
+                    para.alignment = .center
                 }
-                ]).drawInRect(CGRectMake(0,-5,45,29))
-            }.imageWithRenderingMode(.AlwaysOriginal)
-        self.stepper.setIncrementImage(imrightblack, forState:.Disabled)
+                ]).draw(in:CGRect(0,-5,45,29))
+            }.withRenderingMode(.alwaysOriginal)
+        self.stepper.setIncrementImage(imrightblack, for:.disabled)
         
-        let imrighttint = imageOfSize(CGSizeMake(45,29)) {
+        let imrighttint = imageOfSize(CGSize(45,29)) {
             NSAttributedString(string:"\u{21DB}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: self.stepper.tintColor,
                 NSParagraphStyleAttributeName: lend {
                     (para : NSMutableParagraphStyle) in
-                    para.alignment = .Center
+                    para.alignment = .center
                 }
-                ]).drawInRect(CGRectMake(0,-5,45,29))
-            }.imageWithRenderingMode(.AlwaysOriginal)
-        self.stepper.setIncrementImage(imrighttint, forState:.Highlighted)
+                ]).draw(in:CGRect(0,-5,45,29))
+            }.withRenderingMode(.alwaysOriginal)
+        self.stepper.setIncrementImage(imrighttint, for:.highlighted)
 
         return; // interesting effect: remove overlay entirely if disabled
         
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(45,29), false, 0)
-        let emptyim = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsBeginImageContextWithOptions(CGSize(45,29), false, 0)
+        let emptyim = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext();
-        self.stepper.setDecrementImage(emptyim, forState:.Disabled)
-        self.stepper.setIncrementImage(emptyim, forState:.Disabled)
+        self.stepper.setDecrementImage(emptyim, for:.disabled)
+        self.stepper.setIncrementImage(emptyim, for:.disabled)
         
     }
 

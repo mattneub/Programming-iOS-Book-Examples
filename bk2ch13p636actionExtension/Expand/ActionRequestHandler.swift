@@ -6,9 +6,9 @@ import MobileCoreServices
 class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
     
     let list : [String] = {
-        let path = NSBundle.mainBundle().URLForResource("abbreviations", withExtension:"txt")!
-        let s = try! String(contentsOfURL:path, encoding:NSUTF8StringEncoding)
-        return s.componentsSeparatedByString("\n")
+        let path = NSBundle.main().urlForResource("abbreviations", withExtension:"txt")!
+        let s = try! String(contentsOf:path, encoding:NSUTF8StringEncoding)
+        return s.components(separatedBy:"\n")
         }()
     
     var extensionContext: NSExtensionContext?
@@ -16,7 +16,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
     
     let desiredType = kUTTypePlainText as String
     
-    func beginRequestWithExtensionContext(context: NSExtensionContext) {
+    func beginRequest(with context: NSExtensionContext) {
         // Do not call super in an Action extension with no user interface
         self.extensionContext = context
         let items = self.extensionContext!.inputItems
@@ -25,37 +25,37 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
             let provider = extensionItem.attachments?[0] as? NSItemProvider
             where provider.hasItemConformingToTypeIdentifier(self.desiredType)
             else {
-                return self.processItem(nil)
+                return self.process(item:nil)
         }
-        provider.loadItemForTypeIdentifier(self.desiredType, options: nil) {
+        provider.loadItem(forTypeIdentifier: self.desiredType, options: nil) {
             (item:NSSecureCoding?, err:NSError!) -> () in
             dispatch_async(dispatch_get_main_queue()) {
-                self.processItem(item as? String)
+                self.process(item:item as? String)
             }
         }
     }
     
-    func stateForAbbrev(abbrev:String) -> String? {
-        let ix = list.indexOf(abbrev.uppercaseString)
+    func state(forAbbrev abbrev:String) -> String? {
+        let ix = list.index(of:abbrev.uppercased())
         return ix != nil ? list[ix!+1] : nil
     }
     
-    func stuffThatEnvelope(item:String) -> [NSExtensionItem] {
+    func stuffThatEnvelope(_ item:String) -> [NSExtensionItem] {
         // everything has to get stuck back into the right sort of envelope
         let extensionItem = NSExtensionItem()
-        let itemProvider = NSItemProvider(item: item, typeIdentifier: desiredType)
+        let itemProvider = NSItemProvider(item: item as NSString, typeIdentifier: desiredType)
         extensionItem.attachments = [itemProvider]
         return [extensionItem]
     }
     
-    func processItem(item:String?) {
+    func process(item:String?) {
         var result : [NSExtensionItem]? = nil
         if let item = item,
-            let abbrev = self.stateForAbbrev(item) {
+            let abbrev = self.state(forAbbrev:item) {
                 result = self.stuffThatEnvelope(abbrev)
         }
-        self.extensionContext?.completeRequestReturningItems(
-            result, completionHandler: nil)
+        self.extensionContext?.completeRequest(
+            returningItems: result, completionHandler: nil)
         self.extensionContext = nil
     }
     

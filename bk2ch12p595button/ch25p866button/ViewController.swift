@@ -12,37 +12,37 @@ class ViewController: UIViewController {
 
         let im = UIImage(named:"coin2.png")!
         let sz = im.size
-        let im2 = im.resizableImageWithCapInsets(UIEdgeInsetsMake(
+        let im2 = im.resizableImage(withCapInsets:UIEdgeInsetsMake(
             sz.height/2, sz.width/2, sz.height/2, sz.width/2),
-            resizingMode: .Stretch)
-        self.button.setBackgroundImage(im2, forState: .Normal)
-        self.button.backgroundColor = UIColor.clearColor()
-        self.button.setImage(im2, forState: .Normal)
+            resizingMode: .stretch)
+        self.button.setBackgroundImage(im2, for: [])
+        self.button.backgroundColor = UIColor.clear()
+        self.button.setImage(im2, for: [])
         
         let mas = NSMutableAttributedString(string: "Pay Tribute", attributes: [
             NSFontAttributeName: UIFont(name:"GillSans-Bold", size:16)!,
-            NSForegroundColorAttributeName: UIColor.purpleColor(),
+            NSForegroundColorAttributeName: UIColor.purple(),
             // in iOS 8.3 can comment out next line; bug is fixed
             // NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleNone.rawValue
             ])
         mas.addAttributes([
-            NSStrokeColorAttributeName: UIColor.redColor(),
+            NSStrokeColorAttributeName: UIColor.red(),
             NSStrokeWidthAttributeName: -2,
-            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue as NSNumber
             ], range: NSMakeRange(4, mas.length-4))
-        self.button.setAttributedTitle(mas, forState: .Normal)
+        self.button.setAttributedTitle(mas, for: [])
         
         let mas2 = mas.mutableCopy() as! NSMutableAttributedString
         mas2.addAttributes([
-            NSForegroundColorAttributeName: UIColor.whiteColor()
+            NSForegroundColorAttributeName: UIColor.white()
             ], range: NSMakeRange(0, mas2.length))
-        self.button.setAttributedTitle(mas2, forState: .Highlighted)
+        self.button.setAttributedTitle(mas2, for: .highlighted)
         
         self.button.adjustsImageWhenHighlighted = true
         
         self.button2.titleLabel!.numberOfLines = 2
-        self.button2.titleLabel!.textAlignment = .Center
-        self.button2.setTitle("Button with a title that wraps", forState: .Normal)
+        self.button2.titleLabel!.textAlignment = .center
+        self.button2.setTitle("Button with a title that wraps", for: [])
     }
 
 

@@ -297,6 +297,7 @@
 				32A79EAA1B4C283C0096ECAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

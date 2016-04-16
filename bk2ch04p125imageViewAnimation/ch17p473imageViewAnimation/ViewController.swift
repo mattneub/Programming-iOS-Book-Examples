@@ -1,6 +1,6 @@
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -9,10 +9,27 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+
+
 class ViewController : UIViewController {
     
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         delay(1.0) {self.animate()}
     }
@@ -29,7 +46,7 @@ class ViewController : UIViewController {
             UIGraphicsEndImageContext()
             let arr = [mars, empty, mars, empty, mars]
             let iv = UIImageView(image:empty)
-            iv.frame.origin = CGPointMake(100,100)
+            iv.frame.origin = CGPoint(100,100)
             self.view.addSubview(iv)
             
             iv.animationImages = arr
@@ -44,29 +61,29 @@ class ViewController : UIViewController {
             var arr = [UIImage]()
             let w : CGFloat = 18
             for i in 0 ..< 6 {
-                UIGraphicsBeginImageContextWithOptions(CGSizeMake(w,w), false, 0)
+                UIGraphicsBeginImageContextWithOptions(CGSize(w,w), false, 0)
                 let con = UIGraphicsGetCurrentContext()!
-                CGContextSetFillColorWithColor(con, UIColor.redColor().CGColor)
+                con.setFillColor(UIColor.red().cgColor)
                 let ii = CGFloat(i)
-                CGContextAddEllipseInRect(con, CGRectMake(0+ii,0+ii,w-ii*2,w-ii*2))
-                CGContextFillPath(con)
-                let im = UIGraphicsGetImageFromCurrentImageContext()
+                con.addEllipse(inRect:CGRect(0+ii,0+ii,w-ii*2,w-ii*2))
+                con.fillPath()
+                let im = UIGraphicsGetImageFromCurrentImageContext()!
                 UIGraphicsEndImageContext()
                 arr += [im]
             }
-            let im = UIImage.animatedImageWithImages(arr, duration:0.5)
-            let b = UIButton(type:.System)
-            b.setTitle("Howdy", forState:.Normal)
-            b.setImage(im, forState:.Normal)
-            b.center = CGPointMake(100,200)
+            let im = UIImage.animatedImage(with:arr, duration:0.5)
+            let b = UIButton(type:.system)
+            b.setTitle("Howdy", for:[])
+            b.setImage(im, for:[])
+            b.center = CGPoint(100,200)
             b.sizeToFit()
             self.view.addSubview(b)
 
         case 3:
             let im = UIImage.animatedImageNamed("pac", duration:1)
-            let b = UIButton(type:.System)
-            b.setImage(im, forState:.Normal)
-            b.center = CGPointMake(100,200)
+            let b = UIButton(type:.system)
+            b.setImage(im, for:[])
+            b.center = CGPoint(100,200)
             b.sizeToFit()
             self.view.addSubview(b)
 

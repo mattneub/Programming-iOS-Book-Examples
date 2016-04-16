@@ -16,31 +16,31 @@ class ViewController : UIViewController {
         
         switch which {
         case 1:
-            marsTiled = mars.resizableImageWithCapInsets(UIEdgeInsetsZero, resizingMode: .Tile)
+            marsTiled = mars.resizableImage(withCapInsets:UIEdgeInsets.zero, resizingMode: .tile)
         case 2:
-            marsTiled = mars.resizableImageWithCapInsets(
+            marsTiled = mars.resizableImage(withCapInsets:
                 UIEdgeInsetsMake(
                     mars.size.height / 4.0,
                     mars.size.width / 4.0,
                     mars.size.height / 4.0,
                     mars.size.width / 4.0
-                ), resizingMode: .Tile)
+                ), resizingMode: .tile)
         case 3:
-            marsTiled = mars.resizableImageWithCapInsets(
+            marsTiled = mars.resizableImage(withCapInsets:
                 UIEdgeInsetsMake(
                     mars.size.height / 4.0,
                     mars.size.width / 4.0,
                     mars.size.height / 4.0,
                     mars.size.width / 4.0
-                ), resizingMode: .Stretch)
+                ), resizingMode: .stretch)
         case 4:
-            marsTiled = mars.resizableImageWithCapInsets(
+            marsTiled = mars.resizableImage(withCapInsets:
                 UIEdgeInsetsMake(
                     mars.size.height / 2.0 - 1,
                     mars.size.width / 2.0 - 1,
                     mars.size.height / 2.0 - 1,
                     mars.size.width / 2.0 - 1
-                ), resizingMode: .Stretch)
+                ), resizingMode: .stretch)
         default: break
         }
         

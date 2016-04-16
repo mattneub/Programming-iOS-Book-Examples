@@ -9,14 +9,14 @@ class ViewController  : UIViewController {
     
     func longPress(lp:UILongPressGestureRecognizer) {
         switch lp.state {
-        case .Began:
+        case .began:
             let anim = CABasicAnimation(keyPath: "transform")
-            anim.toValue = NSValue(CATransform3D:CATransform3DMakeScale(1.1, 1.1, 1))
-            anim.fromValue = NSValue(CATransform3D:CATransform3DIdentity)
+            anim.toValue = NSValue(caTransform3D:CATransform3DMakeScale(1.1, 1.1, 1))
+            anim.fromValue = NSValue(caTransform3D:CATransform3DIdentity)
             anim.repeatCount = Float.infinity
             anim.autoreverses = true
-            lp.view!.layer.addAnimation(anim, forKey:nil)
-        case .Ended, .Cancelled:
+            lp.view!.layer.add(anim, forKey:nil)
+        case .ended, .cancelled:
             lp.view!.layer.removeAllAnimations()
         default: break
         }
@@ -25,29 +25,29 @@ class ViewController  : UIViewController {
     func dragging(p : UIPanGestureRecognizer) {
         let vv = p.view!
         switch p.state {
-        case .Began, .Changed:
-            let delta = p.translationInView(vv.superview!)
+        case .began, .changed:
+            let delta = p.translation(in:vv.superview!)
             var c = vv.center
             c.x += delta.x; c.y += delta.y
             vv.center = c
-            p.setTranslation(CGPointZero, inView: vv.superview)
+            p.setTranslation(CGPoint.zero, in: vv.superview)
         default: break
         }
     }
 }
 
 extension ViewController : UIGestureRecognizerDelegate {
-    func gestureRecognizerShouldBegin(g: UIGestureRecognizer) -> Bool {
+    func gestureRecognizerShouldBegin(_ g: UIGestureRecognizer) -> Bool {
         // g is the pan gesture recognizer
         switch self.longPresser.state {
-        case .Possible, .Failed:
+        case .possible, .failed:
             return false
         default:
             return true
         }
     }
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         print("sim")
         return true
     }

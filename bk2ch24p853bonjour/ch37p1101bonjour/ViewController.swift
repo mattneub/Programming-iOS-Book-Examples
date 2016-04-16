@@ -9,12 +9,12 @@ class ViewController: UIViewController, NSNetServiceBrowserDelegate, NSNetServic
     var nsb : NSNetServiceBrowser!
     var services = [NSNetService]()
     
-    @IBAction func doButton (sender:AnyObject!) {
+    @IBAction func doButton (_ sender:AnyObject!) {
         print("listening for services...")
         self.services.removeAll()
         self.nsb = NSNetServiceBrowser()
         self.nsb.delegate = self
-        self.nsb.searchForServicesOfType("_daap._tcp", inDomain: "")
+        self.nsb.searchForServices(ofType:"_daap._tcp", inDomain: "")
     }
     
     func updateInterface () {
@@ -23,7 +23,7 @@ class ViewController: UIViewController, NSNetServiceBrowserDelegate, NSNetServic
                 print("service \(service.name) of type \(service.type)" +
                     " not yet resolved")
                 service.delegate = self
-                service.resolveWithTimeout(10)
+                service.resolve(withTimeout:10)
             } else {
                 print("service \(service.name) of type \(service.type)," +
                     "port \(service.port), addresses \(service.addresses)")
@@ -31,11 +31,11 @@ class ViewController: UIViewController, NSNetServiceBrowserDelegate, NSNetServic
         }
     }
 
-    func netServiceDidResolveAddress(sender: NSNetService) {
+    func netServiceDidResolveAddress(_ sender: NSNetService) {
         self.updateInterface()
     }
     
-    func netServiceBrowser(aNetServiceBrowser: NSNetServiceBrowser, didFindService aNetService: NSNetService, moreComing: Bool) {
+    func netServiceBrowser(_ aNetServiceBrowser: NSNetServiceBrowser, didFind aNetService: NSNetService, moreComing: Bool) {
         print("adding a service")
         self.services.append(aNetService)
         if !moreComing {
@@ -43,9 +43,9 @@ class ViewController: UIViewController, NSNetServiceBrowserDelegate, NSNetServic
         }
     }
     
-    func netServiceBrowser(aNetServiceBrowser: NSNetServiceBrowser, didRemoveService aNetService: NSNetService, moreComing: Bool) {
-        if let ix = self.services.indexOf(aNetService) {
-            self.services.removeAtIndex(ix)
+    func netServiceBrowser(_ aNetServiceBrowser: NSNetServiceBrowser, didRemove aNetService: NSNetService, moreComing: Bool) {
+        if let ix = self.services.index(of:aNetService) {
+            self.services.remove(at:ix)
             print("removing a service")
             if !moreComing {
                 self.updateInterface()

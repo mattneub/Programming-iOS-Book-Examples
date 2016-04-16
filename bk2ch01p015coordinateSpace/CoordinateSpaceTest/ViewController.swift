@@ -1,38 +1,28 @@
 
 import UIKit
 
-extension UICoordinateSpace {
-    static func convertRect(r:CGRect,
-        fromCoordinateSpace s1:UICoordinateSpace,
-        toCoordinateSpace s2:UICoordinateSpace) -> CGRect {
-            return s1.convertRect(r, toCoordinateSpace:s2)
-    }
-}
+// interesting only when rotated to landscape
 
 class ViewController: UIViewController {
 
-    @IBAction func doButton1(sender: UIButton) {
+    @IBAction func doButton1(_ sender: UIButton) {
         let v = sender
-        let r = v.superview!.convertRect(
-            v.frame, toCoordinateSpace: UIScreen.mainScreen().fixedCoordinateSpace)
+        let r = v.superview!.convert(v.frame, to: UIScreen.main().fixedCoordinateSpace)
         print(r)
         print(v.frame)
         do {
-            let r = v.superview!.convertRect(
-                v.frame, toCoordinateSpace: UIScreen.mainScreen().coordinateSpace)
+            let r = v.superview!.convert(v.frame, to: UIScreen.main().coordinateSpace)
             print(r)
             print(v.frame)
         }
     }
-    @IBAction func doButton2(sender: UIButton) {
+    @IBAction func doButton2(_ sender: UIButton) {
         let v = sender
-        let r = v.superview!.convertRect(
-            v.frame, toCoordinateSpace: UIScreen.mainScreen().fixedCoordinateSpace)
+        let r = v.superview!.convert(v.frame, to: UIScreen.main().fixedCoordinateSpace)
         print(r)
         print(v.frame)
         do {
-            let r = v.superview!.convertRect(
-                v.frame, toCoordinateSpace: UIScreen.mainScreen().coordinateSpace)
+            let r = v.superview!.convert(v.frame, to: UIScreen.main().coordinateSpace)
             print(r)
             print(v.frame)
         }

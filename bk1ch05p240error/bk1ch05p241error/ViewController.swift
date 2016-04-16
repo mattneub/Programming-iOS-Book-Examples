@@ -2,22 +2,27 @@
 
 import UIKit
 
-enum MyFirstError : ErrorType {
-    case FirstMinorMistake
-    case FirstMajorMistake
-    case FirstFatalMistake
+enum MyFirstError : ErrorProtocol {
+    case firstMinorMistake
+    case firstMajorMistake
+    case firstFatalMistake
 }
-enum MySecondError : ErrorType {
-    case SecondMinorMistake(i:Int)
-    case SecondMajorMistake(s:String)
-    case SecondFatalMistake
+enum MySecondError : ErrorProtocol {
+    case secondMinorMistake(i:Int)
+    case secondMajorMistake(s:String)
+    case secondFatalMistake
 }
 
-struct SomeStruct : ErrorType {
-
-}
-struct SomeClass : ErrorType {
+struct SomeStruct : ErrorProtocol {
     
+}
+struct SomeClass : ErrorProtocol {
+    
+}
+
+struct SomeStruct2 : ErrorProtocol {
+    let name : String
+    static var someError: SomeStruct2 { return SomeStruct2(name:"howdy") }
 }
 
 
@@ -41,7 +46,17 @@ class ViewController: UIViewController {
             let f = "nonexistent" // path to some file, maybe
             let s = try String(contentsOfFile: f, encoding: NSUTF8StringEncoding)
             print(s) // we won't get here
-        } catch NSCocoaError.FileReadNoSuchFileError {
+        } catch {
+            print((error as NSError).localizedDescription)
+            print(error)
+        }
+
+        
+        do {
+            let f = "nonexistent" // path to some file, maybe
+            let s = try String(contentsOfFile: f, encoding: NSUTF8StringEncoding)
+            print(s) // we won't get here
+        } catch NSCocoaError.fileReadNoSuchFileError {
             print("no such file")
         } catch {
             print(error)
@@ -60,7 +75,7 @@ class ViewController: UIViewController {
         
         lab: do {
             // okay, I'm sick of failing, let's succeed for once :)
-            let f = NSBundle.mainBundle().pathForResource("testing", ofType: "txt")!
+            let f = NSBundle.main().pathForResource("testing", ofType: "txt")!
             guard let s = try? String(contentsOfFile: f, encoding: NSUTF8StringEncoding)
                 else {print("still no file"); break lab}
             print(s)
@@ -71,6 +86,16 @@ class ViewController: UIViewController {
         print(err._domain)
         print(err._code)
         
+        let err2 = SomeStruct2.someError
+        print(err2._domain)
+        print(err2._code)
+        
+        let err3 = MyFirstError.firstMinorMistake
+        print(err3._domain)
+        print(err3._code)
+        print(err3 as NSError)
+
+        
     }
     
     func test() {
@@ -78,26 +103,27 @@ class ViewController: UIViewController {
             do {
                 print("throwing!")
                 switch what {
-                case 1: throw MyFirstError.FirstMinorMistake
-                case 2: throw MyFirstError.FirstMajorMistake
-                case 3: throw MyFirstError.FirstFatalMistake
-                case 4: throw MySecondError.SecondMinorMistake(i:-3)
-                case 5: throw MySecondError.SecondMinorMistake(i:4)
-                case 6: throw MySecondError.SecondMajorMistake(s:"ouch")
-                case 7: throw MySecondError.SecondFatalMistake
+                case 1: throw MyFirstError.firstMinorMistake
+                case 2: throw MyFirstError.firstMajorMistake
+                case 3: throw MyFirstError.firstFatalMistake
+                case 4: throw MySecondError.secondMinorMistake(i:-3)
+                case 5: throw MySecondError.secondMinorMistake(i:4)
+                case 6: throw MySecondError.secondMajorMistake(s:"ouch")
+                case 7: throw MySecondError.secondFatalMistake
                 default: break
                 }
-            } catch MyFirstError.FirstMinorMistake {
+            } catch MyFirstError.firstMinorMistake {
                 print("first minor mistake")
             } catch let err as MyFirstError {
                 // will never be called, just testing the syntax
                 print("first mistake, not minor \(err)")
-            } catch MySecondError.SecondMinorMistake(let i) where i < 0 {
+            } catch MySecondError.secondMinorMistake(let i) where i < 0 {
                 print("my second minor mistake \(i)")
             } catch {
-                if case let MySecondError.SecondMajorMistake(s) = error {
+                if case let MySecondError.secondMajorMistake(s) = error {
                     print("my second major mistake \(s)")
                 } else {
+                    print(error)
                     print(error as NSError) // showing how it appears to Objective-C
                 }
                 // the integer correlative of the case is the code number
@@ -107,13 +133,13 @@ class ViewController: UIViewController {
         }
     }
     
-    enum NotLongEnough : ErrorType {
-        case ISaidLongIMeantLong
+    enum NotLongEnough : ErrorProtocol {
+        case iSaidLongIMeantLong
     }
 
-    func giveMeALongString(s:String) throws {
+    func giveMeALongString(_ s:String) throws {
         if s.characters.count < 5 {
-            throw NotLongEnough.ISaidLongIMeantLong
+            throw NotLongEnough.iSaidLongIMeantLong
         }
         print("thanks for the string")
         
@@ -124,10 +150,10 @@ class ViewController: UIViewController {
             guard s.characters.count >= 10 else {
                 break test // guard is legal with shortcircuiting
             }
-            throw NotLongEnough.ISaidLongIMeantLong
+            throw NotLongEnough.iSaidLongIMeantLong
         }
         guard s.characters.count >= 5 else {
-            throw NotLongEnough.ISaidLongIMeantLong // guard is legal with throwing
+            throw NotLongEnough.iSaidLongIMeantLong // guard is legal with throwing
         }
         guard s.characters.count >= 5 else {
             print("I'm out of here")
@@ -160,7 +186,7 @@ class ViewController: UIViewController {
     
     // ===== just testing the call syntax and legality
     
-    func receiveThrower(f:(String) throws -> ()) {
+    func receiveThrower(_ f:(String) throws -> ()) {
     }
     
     func callReceiveThrower() {
@@ -169,9 +195,9 @@ class ViewController: UIViewController {
     
     func callReceiveThrowerr() {
         receiveThrower {
-            s in
+            s in // can say "s throws in" but no need
             if s.characters.count < 5 {
-                throw NotLongEnough.ISaidLongIMeantLong
+                throw NotLongEnough.iSaidLongIMeantLong
             }
             print("thanks for the string")
         }
@@ -179,10 +205,10 @@ class ViewController: UIViewController {
     
     // ===== now let's show how it works with an actual call
     
-    func receiveThrower2(f:(String) throws -> ()) throws {
+    func receiveThrower2(_ f:(String) throws -> ()) throws {
         try f("ok?")
     }
-    func receiveThrower3(f:(String) throws -> ()) rethrows {
+    func receiveThrower3(_ f:(String) throws -> ()) rethrows {
         try f("ok?")
     }
 
@@ -196,7 +222,7 @@ class ViewController: UIViewController {
         try receiveThrower2 {
             s in
             if s.characters.count < 5 {
-                throw NotLongEnough.ISaidLongIMeantLong
+                throw NotLongEnough.iSaidLongIMeantLong
             }
             print("thanks for the string")
         }
@@ -204,6 +230,17 @@ class ViewController: UIViewController {
             s in
             print("thanks for the string")
         }
+    }
+    
+    // ===== an interesting problem with guard
+    
+    func howMany() -> Int {return 7}
+    func testf() {
+        guard howMany() > 10 else {return}
+        //
+        // guard let howMany = howMany() where howMany > 10 else {return}
+        guard let output1 = Optional(howMany()) where output1 > 10 else {return}
+        guard case let output2 = howMany() where output2 > 10 else {return}
     }
 
 

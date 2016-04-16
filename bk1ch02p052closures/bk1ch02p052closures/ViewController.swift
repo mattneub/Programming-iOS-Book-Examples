@@ -15,33 +15,33 @@ struct Dog2 {
     }
 }
 
-func doThis(f : Void -> Void) {
+func doThis(_ f : (Void) -> Void) {
     f()
 }
 
-func imageOfSize(size:CGSize, _ whatToDraw:() -> ()) -> UIImage {
+func imageOfSize(_ size:CGSize, _ whatToDraw:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     whatToDraw()
-    let result = UIGraphicsGetImageFromCurrentImageContext()
+    let result = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return result
 }
 
-func makeRoundedRectangle(sz:CGSize) -> UIImage {
+func makeRoundedRectangle(_ sz:CGSize) -> UIImage {
     let image = imageOfSize(sz) {
         let p = UIBezierPath(
-            roundedRect: CGRect(origin:CGPointZero, size:sz),
+            roundedRect: CGRect(origin:CGPoint.zero, size:sz),
             cornerRadius: 8)
         p.stroke()
     }
     return image
 }
 
-func makeRoundedRectangleMakerPrelim(sz:CGSize) -> () -> UIImage {
+func makeRoundedRectangleMakerPrelim(_ sz:CGSize) -> () -> UIImage {
     func f () -> UIImage {
         let im = imageOfSize(sz) {
             let p = UIBezierPath(
-                roundedRect: CGRect(origin:CGPointZero, size:sz),
+                roundedRect: CGRect(origin:CGPoint.zero, size:sz),
                 cornerRadius: 8)
             p.stroke()
         }
@@ -50,11 +50,11 @@ func makeRoundedRectangleMakerPrelim(sz:CGSize) -> () -> UIImage {
     return f
 }
 
-func makeRoundedRectangleMakerPrelim2(sz:CGSize) -> () -> UIImage {
+func makeRoundedRectangleMakerPrelim2(_ sz:CGSize) -> () -> UIImage {
     func f () -> UIImage {
         return imageOfSize(sz) {
             let p = UIBezierPath(
-                roundedRect: CGRect(origin:CGPointZero, size:sz),
+                roundedRect: CGRect(origin:CGPoint.zero, size:sz),
                 cornerRadius: 8)
             p.stroke()
         }
@@ -62,22 +62,22 @@ func makeRoundedRectangleMakerPrelim2(sz:CGSize) -> () -> UIImage {
     return f
 }
 
-func makeRoundedRectangleMakerPrelim3(sz:CGSize) -> () -> UIImage {
+func makeRoundedRectangleMakerPrelim3(_ sz:CGSize) -> () -> UIImage {
     return {
         return imageOfSize(sz) {
             let p = UIBezierPath(
-                roundedRect: CGRect(origin:CGPointZero, size:sz),
+                roundedRect: CGRect(origin:CGPoint.zero, size:sz),
                 cornerRadius: 8)
             p.stroke()
         }
     }
 }
 
-func makeRoundedRectangleMaker(sz:CGSize) -> () -> UIImage {
+func makeRoundedRectangleMaker(_ sz:CGSize) -> () -> UIImage {
     return {
         imageOfSize(sz) {
             let p = UIBezierPath(
-                roundedRect: CGRect(origin:CGPointZero, size:sz),
+                roundedRect: CGRect(origin:CGPoint.zero, size:sz),
                 cornerRadius: 8)
             p.stroke()
         }
@@ -85,11 +85,11 @@ func makeRoundedRectangleMaker(sz:CGSize) -> () -> UIImage {
 }
 
 // stop hard-coding the radius
-func makeRoundedRectangleMaker2(sz:CGSize, _ r:CGFloat) -> () -> UIImage {
+func makeRoundedRectangleMaker2(_ sz:CGSize, _ r:CGFloat) -> () -> UIImage {
     return {
         imageOfSize(sz) {
             let p = UIBezierPath(
-                roundedRect: CGRect(origin:CGPointZero, size:sz),
+                roundedRect: CGRect(origin:CGPoint.zero, size:sz),
                 cornerRadius: r)
             p.stroke()
         }
@@ -97,12 +97,12 @@ func makeRoundedRectangleMaker2(sz:CGSize, _ r:CGFloat) -> () -> UIImage {
 }
 
 // explicit curry
-func makeRoundedRectangleMaker3(sz:CGSize) -> (CGFloat) -> UIImage {
+func makeRoundedRectangleMaker3(_ sz:CGSize) -> (CGFloat) -> UIImage {
     return {
         r in
         imageOfSize(sz) {
             let p = UIBezierPath(
-                roundedRect: CGRect(origin:CGPointZero, size:sz),
+                roundedRect: CGRect(origin:CGPoint.zero, size:sz),
                 cornerRadius: r)
             p.stroke()
         }
@@ -170,52 +170,52 @@ class ViewController: UIViewController {
         do {
             func drawing() {
                 let p = UIBezierPath(
-                    roundedRect: CGRectMake(0,0,45,20), cornerRadius: 8)
+                    roundedRect: CGRect(x:0,y:0,width:45,height:20), cornerRadius: 8)
                 p.stroke()
             }
-            let image = imageOfSize(CGSizeMake(45,20), drawing)
+            let image = imageOfSize(CGSize(width:45,height:20), drawing)
             _ = image
         }
         
         do {
-            let image = imageOfSize(CGSizeMake(45,20)) {
+            let image = imageOfSize(CGSize(width:45,height:20)) {
                 let p = UIBezierPath(
-                    roundedRect: CGRectMake(0,0,45,20), cornerRadius: 8)
+                    roundedRect: CGRect(x:0,y:0,width:45,height:20), cornerRadius: 8)
                 p.stroke()
             }
             _ = image
         }
 
         do {
-            let sz = CGSizeMake(45,20)
+            let sz = CGSize(width:45,height:20)
             let image = imageOfSize(sz) {
                 let p = UIBezierPath(
-                    roundedRect: CGRect(origin:CGPointZero, size:sz), cornerRadius: 8)
+                    roundedRect: CGRect(origin:CGPoint.zero, size:sz), cornerRadius: 8)
                 p.stroke()
             }
             _ = image
         }
         
 
-        self.myImageView.image = makeRoundedRectangle(CGSizeMake(45,20))
+        self.myImageView.image = makeRoundedRectangle(CGSize(width:45,height:20))
         
         do {
-            let maker = makeRoundedRectangleMakerPrelim(CGSizeMake(45,20))
+            let maker = makeRoundedRectangleMakerPrelim(CGSize(width:45,height:20))
             _ = maker
         }
 
         
-        let maker = makeRoundedRectangleMaker(CGSizeMake(45,20))
+        let maker = makeRoundedRectangleMaker(CGSize(width:45,height:20))
         self.myImageView2.image = maker()
         
         
-        let maker2 = makeRoundedRectangleMaker2(CGSizeMake(45,20), 8)
+        let maker2 = makeRoundedRectangleMaker2(CGSize(width:45,height:20), 8)
         _ = maker2
         
-        let maker3 = makeRoundedRectangleMaker3(CGSizeMake(45,20))
+        let maker3 = makeRoundedRectangleMaker3(CGSize(width:45,height:20))
         self.myImageView.image = maker3(8)
 
-        let image1 = makeRoundedRectangleMaker3(CGSizeMake(45,20))(8)
+        let image1 = makeRoundedRectangleMaker3(CGSize(width:45,height:20))(8)
         _ = image1
         
 //        let maker4 = makeRoundedRectangleMaker4(CGSizeMake(45,20))

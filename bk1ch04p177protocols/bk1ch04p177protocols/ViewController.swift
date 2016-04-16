@@ -15,20 +15,20 @@ struct Bee {
     func fly() {
     }
 }
-func tellToFly(f:Flier) {
+func tellToFly(_ f:Flier) {
     f.fly()
 }
 enum Filter : String, CustomStringConvertible {
-    case Albums = "Albums"
-    case Playlists = "Playlists"
-    case Podcasts = "Podcasts"
-    case Books = "Audiobooks"
+    case albums = "Albums"
+    case playlists = "Playlists"
+    case podcasts = "Podcasts"
+    case books = "Audiobooks"
     var description : String { return self.rawValue }
 }
-func isBird(f:Flier) -> Bool {
+func isBird(_ f:Flier) -> Bool {
     return f is Bird
 }
-func tellGetWorm(f:Flier) {
+func tellGetWorm(_ f:Flier) {
     (f as? Bird)?.getWorm()
 }
 struct Insect : Flier {
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         let b2 = Bee()
         // tellToFly(b2) // compile error
         
-        let type = Filter.Albums
+        let type = Filter.albums
         print(type) // Albums
         print("It is \(type)") // It is Albums
         

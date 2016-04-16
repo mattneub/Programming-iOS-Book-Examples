@@ -3,26 +3,26 @@
 import UIKit
 
 class ViewController: UIViewController {
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         print("prepare")
         if segue.identifier == "embed" {
-            NSLog("%@ %@ %@", segue.identifier!, segue.sourceViewController, segue.destinationViewController)
-            NSLog("%d", segue.destinationViewController.isViewLoaded())
-            NSLog("%@", segue.sourceViewController.childViewControllers)
-            NSLog("%@", self.childViewControllers)
+            NSLog("%@ %@ %@", segue.identifier! as NSObject, segue.sourceViewController, segue.destinationViewController)
+            NSLog("%d", segue.destinationViewController.isViewLoaded() as NSNumber)
+            NSLog("%@", segue.sourceViewController.childViewControllers as NSObject)
+            NSLog("%@", self.childViewControllers as NSObject)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("did load %@ %@", self.view, self.childViewControllers)
+        NSLog("did load %@ %@", self.view, self.childViewControllers as NSObject)
         // NSLog(@"%d", [self.childViewControllers[0] isViewLoaded]);
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NSLog("did appear %@ %@", self.view, self.childViewControllers)
+        NSLog("did appear %@ %@", self.view, self.childViewControllers as NSObject)
     }
 
 }
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
 class ChildViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("child did load %@ %@", self.view, self.childViewControllers)
+        NSLog("child did load %@ %@", self.view, self.childViewControllers as NSObject)
         // NSLog(@"%d", [self.childViewControllers[0] isViewLoaded]);
         
     }

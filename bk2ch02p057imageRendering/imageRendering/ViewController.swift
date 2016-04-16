@@ -8,14 +8,14 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         
         
-        if let window = UIApplication.sharedApplication().delegate!.window! {
-            window.tintColor = UIColor.redColor()
+        if let window = UIApplication.shared().delegate!.window! {
+            window.tintColor = UIColor.red()
         }
         
-        let im = UIImage(named:"Smiley")!.imageWithRenderingMode(.AlwaysTemplate)
-        self.b.setBackgroundImage(im, forState: .Normal)
+        let im = UIImage(named:"Smiley")!.withRenderingMode(.alwaysTemplate)
+        self.b.setBackgroundImage(im, for: [])
         
-        let im2 = UIImage(named:"smiley2")!.imageWithRenderingMode(.AlwaysOriginal)
+        let im2 = UIImage(named:"smiley2")!.withRenderingMode(.alwaysOriginal)
         self.tbi.image = im2
         
         // but with Xcode 6, this sort of thing is usually unnecessary!
@@ -30,13 +30,13 @@ class ViewController : UIViewController {
         // (haven't figured this out yet)
         
         
-        let im3 = UIImage(named:"photo")!.imageWithAlignmentRectInsets(UIEdgeInsetsMake(0, 0, 24, 0))
+        let im3 = UIImage(named:"photo")!.withAlignmentRectInsets(UIEdgeInsetsMake(0, 0, 24, 0))
         let iv = UIImageView(image:im3)
         self.view.addSubview(iv)
         iv.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([
-            iv.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor),
-            iv.bottomAnchor.constraintEqualToAnchor(self.view.bottomAnchor)
+        NSLayoutConstraint.activate([
+            iv.leadingAnchor.constraintEqual(to:self.view.leadingAnchor),
+            iv.bottomAnchor.constraintEqual(to:self.view.bottomAnchor)
             ])
         
         // the previous code aligns to bottom correctly
@@ -49,9 +49,9 @@ class ViewController : UIViewController {
         let iv2 = UIImageView(image:im4)
         self.view.addSubview(iv2)
         iv2.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([
-            iv2.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor),
-            iv2.bottomAnchor.constraintEqualToAnchor(self.view.bottomAnchor)
+        NSLayoutConstraint.activate([
+            iv2.trailingAnchor.constraintEqual(to:self.view.trailingAnchor),
+            iv2.bottomAnchor.constraintEqual(to:self.view.bottomAnchor)
             ])
 
         // In the asset catalog, it is the Top, not the Bottom, that I have set
@@ -65,8 +65,8 @@ class ViewController : UIViewController {
         /*
         let im5 = UIImage(named:"smiley2")!
         let b = UIButton(type: .System)
-        b.setImage(im5.imageWithAlignmentRectInsets(UIEdgeInsetsMake(0, 0, 40, 0)), forState: .Normal)
-        b.setTitle("Howdy", forState:.Normal)
+        b.setImage(im5.withAlignmentRectInsets(UIEdgeInsetsMake(0, 0, 40, 0)), forState: .Normal)
+        b.setTitle("Howdy", for:[])
         b.sizeToFit()
         self.view.addSubview(b)
 */

@@ -24,7 +24,7 @@ class Dog {
 }
 
 class Dog2 {
-    func say(s:String, times:Int) {
+    func say(_ s:String, times:Int) {
         for _ in 1...times {
             print(s)
         }
@@ -51,7 +51,7 @@ class Dog3 {
 
 class MyClass {
     var s = ""
-    func store(s:String) {
+    func store(_ s:String) {
         self.s = s
     }
 }

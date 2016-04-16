@@ -20,15 +20,15 @@ class Pep: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.name.text = self.boy
-        self.pic.image = UIImage(named:"\(self.boy.lowercaseString).jpg")
+        self.pic.image = UIImage(named:"\(self.boy.lowercased()).jpg")
     }
     
     override var description : String {
     return self.boy
     }
     
-    @IBAction func tap (sender: UIGestureRecognizer?) {
-        NSNotificationCenter.defaultCenter().postNotificationName("tap", object: sender)
+    @IBAction func tap (_ sender: UIGestureRecognizer?) {
+        NSNotificationCenter.default().post(name:"tap", object: sender)
     }
 
 

@@ -9,15 +9,15 @@ func doThis(f:()->()) {
 func sayHowdy() -> String {
     return "Howdy"
 }
-func performAndPrint(f:()->String) {
+func performAndPrint(_ f:()->String) {
     let s = f()
     print(s)
 }
 
-func imageOfSize(size:CGSize, _ whatToDraw:() -> ()) -> UIImage {
+func imageOfSize(_ size:CGSize, _ whatToDraw:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     whatToDraw()
-    let result = UIGraphicsGetImageFromCurrentImageContext()
+    let result = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return result
 }
@@ -36,9 +36,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let image = imageOfSize(CGSizeMake(45,20), {
+        let image = imageOfSize(CGSize(width:45, height:20), {
             let p = UIBezierPath(
-                roundedRect: CGRectMake(0,0,45,20), cornerRadius: 8)
+                roundedRect: CGRect(x:0,y:0,width:45,height:20), cornerRadius: 8)
             p.stroke()
         })
         
@@ -70,10 +70,10 @@ class ViewController: UIViewController {
         
     }
 
-    @IBAction func doButton(sender: AnyObject) {
+    @IBAction func doButton(_ sender: AnyObject) {
         
         
-        UIView.animateWithDuration(0.4, animations: {
+        UIView.animate(withDuration:0.4, animations: {
             () -> () in
             self.myButton.frame.origin.y += 20
             }, completion: {
@@ -84,11 +84,11 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func doButton2(sender: AnyObject) {
+    @IBAction func doButton2(_ sender: AnyObject) {
         
         // showing some serious compression of the above syntax
         
-        UIView.animateWithDuration(0.4, animations: {
+        UIView.animate(withDuration:0.4, animations: {
             self.myButton2.frame.origin.y += 20
             }) {
                 print("finished: \($0)") // must have either "_ in" or "$0"

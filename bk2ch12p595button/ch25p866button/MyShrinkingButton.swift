@@ -2,17 +2,40 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
 extension CGSize {
-    func sizeByDelta(dw dw:CGFloat, dh:CGFloat) -> CGSize {
-        return CGSizeMake(self.width + dw, self.height + dh)
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
+extension CGSize {
+    func sizeByDelta(dw:CGFloat, dh:CGFloat) -> CGSize {
+        return CGSize(self.width + dw, self.height + dh)
     }
 }
 
 class MyShrinkingButton: UIButton {
 
-    override func backgroundRectForBounds(bounds: CGRect) -> CGRect {
-        var result = super.backgroundRectForBounds(bounds)
-        if self.highlighted {
+    override func backgroundRect(forBounds bounds: CGRect) -> CGRect {
+        var result = super.backgroundRect(forBounds:bounds)
+        if self.isHighlighted {
             result.insetInPlace(dx: 3, dy: 3)
         }
         return result

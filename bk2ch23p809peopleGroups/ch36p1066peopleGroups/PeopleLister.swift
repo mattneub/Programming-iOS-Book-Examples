@@ -27,11 +27,11 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = (self.fileURL.lastPathComponent! as NSString).stringByDeletingPathExtension
-        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(doAdd))
+        self.title = (self.fileURL.lastPathComponent! as NSString).deletingPathExtension
+        let b = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(doAdd))
         self.navigationItem.rightBarButtonItems = [b]
         
-        self.tableView.registerNib(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "Person")
+        self.tableView.register(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "Person")
         
         let fm = NSFileManager()
         self.doc = PeopleDocument(fileURL:self.fileURL)
@@ -42,31 +42,31 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
                 self.tableView.reloadData()
             }
         }
-        if !fm.fileExistsAtPath(self.fileURL.path!) {
-            self.doc.saveToURL(self.doc.fileURL,
-                forSaveOperation: .ForCreating,
+        if !fm.fileExists(atPath:self.fileURL.path!) {
+            self.doc.save(to:self.doc.fileURL,
+                for: .forCreating,
                 completionHandler: listPeople)
         } else {
-            self.doc.openWithCompletionHandler(listPeople)
+            self.doc.open(completionHandler:listPeople)
         }
     }
     
-    func doAdd (sender:AnyObject) {
+    func doAdd (_ sender:AnyObject) {
         self.tableView.endEditing(true)
         let newP = Person(firstName: "", lastName: "")
         self.people.append(newP)
         let ct = self.people.count
         let ix = NSIndexPath(forRow:ct-1, inSection:0)
         self.tableView.reloadData()
-        self.tableView.scrollToRowAtIndexPath(ix, atScrollPosition:.Bottom, animated:true)
-        let cell = self.tableView.cellForRowAtIndexPath(ix)!
-        let tf = cell.viewWithTag(1) as! UITextField
+        self.tableView.scrollToRow(at:ix, at:.bottom, animated:true)
+        let cell = self.tableView.cellForRow(at:ix)!
+        let tf = cell.withTag(1) as! UITextField
         tf.becomeFirstResponder()
         
-        self.doc.updateChangeCount(.Done)
+        self.doc.updateChangeCount(.done)
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if self.doc == nil {
             print("doc was nil")
             return 0
@@ -74,15 +74,15 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("self.people was \(self.people)")
         return self.people.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Person", forIndexPath:indexPath)
-        let first = cell.viewWithTag(1) as! UITextField
-        let last = cell.viewWithTag(2) as! UITextField
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Person", for: indexPath)
+        let first = cell.withTag(1) as! UITextField
+        let last = cell.withTag(2) as! UITextField
         let p = self.people[indexPath.row]
         first.text = p.firstName
         last.text = p.lastName
@@ -91,46 +91,46 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         return cell
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         print("did end editing")
         var v = textField.superview!
         while !(v is UITableViewCell) {v = v.superview!}
         let cell = v as! UITableViewCell
-        let ip = self.tableView.indexPathForCell(cell)!
+        let ip = self.tableView.indexPath(for:cell)!
         let row = ip.row
         let p = self.people[row]
-        p.setValue(textField.text, forKey: textField.tag == 1 ? "firstName" : "lastName")
+        p.setValue(textField.text! as NSString, forKey: textField.tag == 1 ? "firstName" : "lastName")
         
-        self.doc.updateChangeCount(.Done)
+        self.doc.updateChangeCount(.done)
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: NSIndexPath) {
         self.tableView.endEditing(true)
-        self.people.removeAtIndex(indexPath.row)
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation:.Automatic)
+        self.people.remove(at:indexPath.row)
+        tableView.deleteRows(at:[indexPath], with:.automatic)
         
-        self.doc.updateChangeCount(.Done)
+        self.doc.updateChangeCount(.done)
     }
     
     func forceSave(_:AnyObject?) {
         print("force save")
         self.tableView.endEditing(true)
-        self.doc.saveToURL(self.doc.fileURL, forSaveOperation:.ForOverwriting, completionHandler:nil)
+        self.doc.save(to:self.doc.fileURL, for:.forOverwriting, completionHandler:nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(forceSave), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.default().addObserver(self, selector: #selector(forceSave), name: UIApplicationDidEnterBackgroundNotification, object: nil)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.forceSave(nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.default().removeObserver(self)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.default().removeObserver(self)
     }
 
 }

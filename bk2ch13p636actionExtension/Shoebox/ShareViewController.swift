@@ -21,17 +21,19 @@ class ShareViewController: SLComposeServiceViewController, SizeDelegate {
     
         let s = self.contentText // and do something with it
         
-        self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+        self.extensionContext!.completeRequest(returningItems:[], completionHandler: nil)
+        
+        _ = s
     }
 
     override func configurationItems() -> [AnyObject]! {
         // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
-        let c = SLComposeSheetConfigurationItem()
+        let c = SLComposeSheetConfigurationItem()!
         c.title = "Size"
         c.value = self.selectedText
         c.tapHandler = {
             [unowned self] in
-            let tvc = TableViewController(style: .Grouped)
+            let tvc = TableViewController(style: .grouped)
             tvc.selectedSize = self.selectedText
             tvc.delegate = self
             self.pushConfigurationViewController(tvc)

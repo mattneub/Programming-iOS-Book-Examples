@@ -38,12 +38,12 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     func determineStatus() -> Bool {
         let status = ABAddressBookGetAuthorizationStatus()
         switch status {
-        case .Authorized:
+        case .authorized:
             return self.createAddressBook()
-        case .NotDetermined:
+        case .notDetermined:
             var ok = false
             ABAddressBookRequestAccessWithCompletion(nil) {
-                (granted:Bool, err:CFError!) in
+                (granted:Bool, err:CFError?) in
                 dispatch_async(dispatch_get_main_queue()) {
                     if granted {
                         ok = self.createAddressBook()
@@ -55,33 +55,33 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
             }
             self.adbk = nil
             return false
-        case .Restricted:
+        case .restricted:
             self.adbk = nil
             return false
-        case .Denied:
+        case .denied:
             // new iOS 8 feature: sane way of getting the user directly to the relevant prefs
             // I think the crash-in-background issue is now gone
-            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Contacts?", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Contacts?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
-                UIApplication.sharedApplication().openURL(url)
+                UIApplication.shared().open(url)
             }))
-            self.presentViewController(alert, animated:true, completion:nil)
+            self.present(alert, animated:true, completion:nil)
             self.adbk = nil
             return false
         }
     }
 
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
-    @IBAction func doFindMoi (sender:AnyObject!) {
+    @IBAction func doFindMoi (_ sender:AnyObject!) {
         
         if !self.determineStatus() {
             print("not authorized")
@@ -113,7 +113,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         }
     }
 
-    @IBAction func doCreateSnidely (sender:AnyObject!) {
+    @IBAction func doCreateSnidely (_ sender:AnyObject!) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -132,24 +132,24 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     // ============
     
-    @IBAction func doPeoplePicker (sender:AnyObject!) {
+    @IBAction func doPeoplePicker (_ sender:AnyObject!) {
         let picker = ABPeoplePickerNavigationController()
         picker.peoplePickerDelegate = self
-        picker.displayedProperties = [Int(kABPersonEmailProperty)]
+        picker.displayedProperties = [Int(kABPersonEmailProperty) as NSNumber]
         // new iOS 8 features: instead of delegate "continueAfter" methods
         // picker.predicateForEnablingPerson = NSPredicate(format: "%K like %@", ABPersonFamilyNameProperty, "Neuburg")
         picker.predicateForSelectionOfPerson = NSPredicate(value:false) // display additional info for all persons
         picker.predicateForSelectionOfProperty = NSPredicate(value:true) // call delegate method for all properties
-        self.presentViewController(picker, animated:true, completion:nil)
+        self.present(picker, animated:true, completion:nil)
     }
     
-    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController, didSelectPerson person: ABRecord) {
+    func peoplePickerNavigationController(_ peoplePicker: ABPeoplePickerNavigationController, didSelectPerson person: ABRecord) {
         print("person")
         print(person)
     }
     
-    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController,
-        didSelectPerson person: ABRecordRef,
+    func peoplePickerNavigationController(_ peoplePicker: ABPeoplePickerNavigationController,
+        didSelectPerson person: ABRecord,
         property: ABPropertyID,
         identifier: ABMultiValueIdentifier) {
             print("person and property")
@@ -164,12 +164,12 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
             let ix = ABMultiValueGetIndexForIdentifier(emails, identifier)
             let email = ABMultiValueCopyValueAtIndex(emails, ix).takeRetainedValue() as! String
             print(email) // do something with the email here
-            // self.dismissViewControllerAnimated(true, completion: nil)
+            // self.dismiss(animated:true, completion: nil)
     }
     
     // =========
     
-    @IBAction func doViewPerson (sender:AnyObject!) {
+    @IBAction func doViewPerson (_ sender:AnyObject!) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -186,13 +186,13 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         pvc.addressBook = self.adbk
         pvc.displayedPerson = snidely
         pvc.personViewDelegate = self
-        pvc.displayedProperties = [Int(kABPersonEmailProperty)]
+        pvc.displayedProperties = [Int(kABPersonEmailProperty) as NSNumber]
         pvc.allowsEditing = false
         pvc.allowsActions = false
-        self.showViewController(pvc, sender:self) // push onto navigation controller
+        self.show(pvc, sender:self) // push onto navigation controller
     }
     
-    func personViewController(personViewController: ABPersonViewController,
+    func personViewController(_ personViewController: ABPersonViewController,
         shouldPerformDefaultActionForPerson person: ABRecord,
         property: ABPropertyID, identifier: ABMultiValueIdentifier) -> Bool {
             return false // if true, email tap launches email etc.
@@ -200,15 +200,15 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
 
     // =========
     
-    @IBAction func doNewPerson (sender:AnyObject!) {
+    @IBAction func doNewPerson (_ sender:AnyObject!) {
         let npvc = ABNewPersonViewController()
         npvc.newPersonViewDelegate = self
         let nc = UINavigationController(rootViewController:npvc)
-        self.presentViewController(nc, animated:true, completion:nil)
+        self.present(nc, animated:true, completion:nil)
     }
     
 
-    func newPersonViewController(newPersonView: ABNewPersonViewController, didCompleteWithNewPerson person: ABRecord?) {
+    func newPersonViewController(_ newPersonView: ABNewPersonViewController, didCompleteWithNewPerson person: ABRecord?) {
             if person != nil {
                 // if we didn't have access, we wouldn't be here!
                 // if we do not delete the person, the person will stay in the contacts database automatically!
@@ -218,12 +218,12 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
                 print("I have a person named \(name), not saving this person to the database")
                 // do something with new person
             }
-            self.dismissViewControllerAnimated(true, completion:nil)
+            self.dismiss(animated:true, completion:nil)
     }
     
     // =========
     
-    @IBAction func doUnknownPerson (sender:AnyObject!) {
+    @IBAction func doUnknownPerson (_ sender:AnyObject!) {
         let unk = ABUnknownPersonViewController()
         unk.message = "Person who really knows trees"
         unk.allowsAddingToAddressBook = true
@@ -237,11 +237,11 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         ABRecordSetValue(person, kABPersonEmailProperty, addr, nil)
         unk.displayedPerson = person
         unk.unknownPersonViewDelegate = self
-        self.showViewController(unk, sender:self) // push onto navigation controller
+        self.show(unk, sender:self) // push onto navigation controller
     }
 
     func unknownPersonViewController(
-        unknownCardViewController: ABUnknownPersonViewController,
+        _ unknownCardViewController: ABUnknownPersonViewController,
         didResolveToPerson person: ABRecord?) {
             if let person:ABRecord = person {
                 let name = ABRecordCopyCompositeName(person).takeRetainedValue()

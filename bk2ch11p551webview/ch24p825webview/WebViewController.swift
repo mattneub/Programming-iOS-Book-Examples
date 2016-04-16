@@ -16,9 +16,9 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.restorationIdentifier = "wvc"
         self.restorationClass = self.dynamicType
-        let b = UIBarButtonItem(title:"Back", style:.Plain, target:self, action:#selector(goBack))
+        let b = UIBarButtonItem(title:"Back", style:.plain, target:self, action:#selector(goBack))
         self.navigationItem.rightBarButtonItem = b
-        self.edgesForExtendedLayout = .None // get accurate offset restoration
+        self.edgesForExtendedLayout = [] // none; get accurate offset restoration
     }
     
     convenience init() {
@@ -29,7 +29,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         fatalError("NSCoding not supported")
     }
     
-    class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject], coder: NSCoder) -> UIViewController? {
+    class func viewController(withRestorationIdentifierPath identifierComponents: [AnyObject], coder: NSCoder) -> UIViewController? {
         return self.init(nibName:nil, bundle:nil)
     }
     
@@ -37,19 +37,19 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
     // note that I don't touch the web view at this point: just an ivar
     // we don't have any web content yet!
 
-    override func decodeRestorableStateWithCoder(coder: NSCoder) {
+    override func decodeRestorableState(with coder: NSCoder) {
         print("decode")
-        super.decodeRestorableStateWithCoder(coder)
-        self.oldOffset = coder.decodeObjectForKey("oldOffset") as? NSValue // for local example
+        super.decodeRestorableState(with:coder)
+        self.oldOffset = coder.decodeObject(forKey:"oldOffset") as? NSValue // for local example
     }
     
-    override func encodeRestorableStateWithCoder(coder: NSCoder) {
+    override func encodeRestorableState(with coder: NSCoder) {
         print("encode")
-        super.encodeRestorableStateWithCoder(coder)
+        super.encodeRestorableState(with:coder)
         if !self.canNavigate { // local example; we have to manage offset ourselves
             print("saving offset")
             let off = self.wv.scrollView.contentOffset
-            coder.encodeObject(NSValue(CGPoint:off), forKey:"oldOffset")
+            coder.encode(NSValue(cgPoint:off), forKey:"oldOffset")
         }
     }
     
@@ -69,7 +69,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
     override func loadView() {
         let wv = UIWebView()
         wv.restorationIdentifier = "wv"
-        wv.backgroundColor = UIColor.blackColor()
+        wv.backgroundColor = UIColor.black()
         self.view = wv
         wv.delegate = self
         
@@ -79,20 +79,20 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         
         // prove that we can attach gesture recognizer to web view's scroll view
         let swipe = UISwipeGestureRecognizer(target:self, action:#selector(swiped))
-        swipe.direction = .Left
+        swipe.direction = .left
         wv.scrollView.addGestureRecognizer(swipe)
         
         // prepare nice activity indicator to cover loading
-        let act = UIActivityIndicatorView(activityIndicatorStyle:.WhiteLarge)
+        let act = UIActivityIndicatorView(activityIndicatorStyle:.whiteLarge)
         act.backgroundColor = UIColor(white:0.1, alpha:0.5)
         self.activity = act
         wv.addSubview(act)
         act.translatesAutoresizingMaskIntoConstraints = false
         self.view.addConstraint(
-            NSLayoutConstraint(item: act, attribute: .CenterX, relatedBy: .Equal, toItem: wv, attribute: .CenterX, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: act, attribute: .centerX, relatedBy: .equal, toItem: wv, attribute: .centerX, multiplier: 1, constant: 0)
         )
         self.view.addConstraint(
-            NSLayoutConstraint(item: act, attribute: .CenterY, relatedBy: .Equal, toItem: wv, attribute: .CenterY, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: act, attribute: .centerY, relatedBy: .equal, toItem: wv, attribute: .centerY, multiplier: 1, constant: 0)
         )
     }
     
@@ -103,7 +103,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
     let LOADREQ = 1 // 0, or try 1 for a different application...
     // one that loads an actual request and lets you experiment with state saving and restoration
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("view did appear, req: \(self.wv.request)")
         
@@ -113,71 +113,71 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
                 return
             }
             let url = NSURL(string: "http://www.apeth.com/RubyFrontierDocs/default.html")!
-            self.wv.loadRequest(NSURLRequest(URL:url))
+            self.wv.loadRequest(NSURLRequest(url:url))
             return
         }
         
         var which : Int {return 1}
         switch which {
         case 1:
-            let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")!
-            let base = NSURL.fileURLWithPath(path)
+            let path = NSBundle.main().pathForResource("htmlbody", ofType:"txt")!
+            let base = NSURL.fileURL(withPath:path)
             let ss = try! String(contentsOfFile:path, encoding:NSUTF8StringEncoding)
             
-            let path2 = NSBundle.mainBundle().pathForResource("htmlTemplate", ofType:"txt")!
+            let path2 = NSBundle.main().pathForResource("htmlTemplate", ofType:"txt")!
             var s = try! String(contentsOfFile:path2, encoding:NSUTF8StringEncoding)
             
-            s = s.stringByReplacingOccurrencesOfString("<maximagewidth>", withString:"80%")
-            s = s.stringByReplacingOccurrencesOfString("<fontsize>", withString:"18")
-            s = s.stringByReplacingOccurrencesOfString("<margin>", withString:"10")
-            s = s.stringByReplacingOccurrencesOfString("<guid>", withString:"http://tidbits.com/article/12228")
-            s = s.stringByReplacingOccurrencesOfString("<ourtitle>", withString:"Lion Details Revealed with Shipping Date and Price")
-            s = s.stringByReplacingOccurrencesOfString("<playbutton>", withString:"<img src=\"listen.png\" onclick=\"document.location='play:me'\">")
-            s = s.stringByReplacingOccurrencesOfString("<author>", withString:"TidBITS Staff")
-            s = s.stringByReplacingOccurrencesOfString("<date>", withString:"Mon, 06 Jun 2011 13:00:39 PDT")
-            s = s.stringByReplacingOccurrencesOfString("<content>", withString:ss)
+            s = s.replacingOccurrences(of:"<maximagewidth>", with:"80%")
+            s = s.replacingOccurrences(of:"<fontsize>", with:"18")
+            s = s.replacingOccurrences(of:"<margin>", with:"10")
+            s = s.replacingOccurrences(of:"<guid>", with:"http://tidbits.com/article/12228")
+            s = s.replacingOccurrences(of:"<ourtitle>", with:"Lion Details Revealed with Shipping Date and Price")
+            s = s.replacingOccurrences(of:"<playbutton>", with:"<img src=\"listen.png\" onclick=\"document.location='play:me'\">")
+            s = s.replacingOccurrences(of:"<author>", with:"TidBITS Staff")
+            s = s.replacingOccurrences(of:"<date>", with:"Mon, 06 Jun 2011 13:00:39 PDT")
+            s = s.replacingOccurrences(of:"<content>", with:ss)
             
             self.wv.loadHTMLString(s, baseURL:base)
         case 2:
-            let path = NSBundle.mainBundle().pathForResource("release", ofType:"pdf")! // works in simulator, works in device
-            let url = NSURL.fileURLWithPath(path)
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.main().pathForResource("release", ofType:"pdf")! // works in simulator, works in device
+            let url = NSURL.fileURL(withPath:path)
+            self.wv.loadRequest(NSURLRequest(url: url))
         case 3:
-            let path = NSBundle.mainBundle().pathForResource("testing", ofType:"pdf")! // works in simulator, works in device
-            let url = NSURL.fileURLWithPath(path)
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.main().pathForResource("testing", ofType:"pdf")! // works in simulator, works in device
+            let url = NSURL.fileURL(withPath:path)
+            self.wv.loadRequest(NSURLRequest(url: url))
         case 4:
-            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtf")! // works in simulator, works in device (iOS 8.3, I think it was fixed in 8.1)
-            let url = NSURL.fileURLWithPath(path)
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.main().pathForResource("test", ofType:"rtf")! // works in simulator, works in device (iOS 8.3, I think it was fixed in 8.1)
+            let url = NSURL.fileURL(withPath:path)
+            self.wv.loadRequest(NSURLRequest(url: url))
         case 5:
-            let path = NSBundle.mainBundle().pathForResource("test", ofType:"doc")! // works in simulator, works on device!
-            let url = NSURL.fileURLWithPath(path)
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.main().pathForResource("test", ofType:"doc")! // works in simulator, works on device!
+            let url = NSURL.fileURL(withPath:path)
+            self.wv.loadRequest(NSURLRequest(url: url))
         case 6:
-            let path = NSBundle.mainBundle().pathForResource("test", ofType:"docx")!  // works in simulator, works on device
-            let url = NSURL.fileURLWithPath(path)
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.main().pathForResource("test", ofType:"docx")!  // works in simulator, works on device
+            let url = NSURL.fileURL(withPath:path)
+            self.wv.loadRequest(NSURLRequest(url: url))
         case 7:
-            let path = NSBundle.mainBundle().pathForResource("test", ofType:"pages")! // blank in simulator, blank on device, no message :(
-            let url = NSURL.fileURLWithPath(path)
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.main().pathForResource("test", ofType:"pages")! // blank in simulator, blank on device, no message :(
+            let url = NSURL.fileURL(withPath:path)
+            self.wv.loadRequest(NSURLRequest(url: url))
         case 8:
-            let path = NSBundle.mainBundle().pathForResource("test.pages", ofType:"zip")! // works in simulator! works on device, but unbelievably slow
-            let url = NSURL.fileURLWithPath(path)
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.main().pathForResource("test.pages", ofType:"zip")! // works in simulator! works on device, but unbelievably slow
+            let url = NSURL.fileURL(withPath:path)
+            self.wv.loadRequest(NSURLRequest(url: url))
         case 9:
-            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtfd")! // blank in simulator, blank on device, no message
-            let url = NSURL.fileURLWithPath(path)
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.main().pathForResource("test", ofType:"rtfd")! // blank in simulator, blank on device, no message
+            let url = NSURL.fileURL(withPath:path)
+            self.wv.loadRequest(NSURLRequest(url: url))
         case 10:
-            let path = NSBundle.mainBundle().pathForResource("test", ofType:"rtfd.zip")! // blank in simulator, blank on device, "Unable to read document" displayed
-            let url = NSURL.fileURLWithPath(path)
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.main().pathForResource("test", ofType:"rtfd.zip")! // blank in simulator, blank on device, "Unable to read document" displayed
+            let url = NSURL.fileURL(withPath:path)
+            self.wv.loadRequest(NSURLRequest(url: url))
         case 11:
-            let path = NSBundle.mainBundle().pathForResource("htmlbody", ofType:"txt")! // works in simulator, works in device (as text, of course)
-            let url = NSURL.fileURLWithPath(path)
-            self.wv.loadRequest(NSURLRequest(URL: url))
+            let path = NSBundle.main().pathForResource("htmlbody", ofType:"txt")! // works in simulator, works in device (as text, of course)
+            let url = NSURL.fileURL(withPath:path)
+            self.wv.loadRequest(NSURLRequest(url: url))
         default:break
         }
 
@@ -185,42 +185,42 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
 
     }
     
-    func webViewDidStartLoad(wv: UIWebView) {
+    func webViewDidStartLoad(_ wv: UIWebView) {
         self.activity.startAnimating()
     }
     
-    func webViewDidFinishLoad(wv: UIWebView) {
+    func webViewDidFinishLoad(_ wv: UIWebView) {
         self.activity.stopAnimating()
         // for our *local* example, restoring offset is up to us
         if self.oldOffset != nil && !self.canNavigate { // local example
             print("restoring offset")
-            wv.scrollView.contentOffset = self.oldOffset!.CGPointValue()
+            wv.scrollView.contentOffset = self.oldOffset!.cgPointValue()
         }
         self.oldOffset = nil
     }
     
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+    func webView(_ webView: UIWebView, didFailLoadWithError error: NSError?) {
         self.activity.stopAnimating()
     }
     
-    func webView(webView: UIWebView, shouldStartLoadWithRequest r: NSURLRequest, navigationType nt: UIWebViewNavigationType) -> Bool {
-        if let scheme = r.URL?.scheme where scheme == "play" {
+    func webView(_ webView: UIWebView, shouldStartLoadWith r: NSURLRequest, navigationType nt: UIWebViewNavigationType) -> Bool {
+        if let scheme = r.url?.scheme where scheme == "play" {
             print("user would like to hear the podcast")
             return false
         }
-        if nt == .LinkClicked { // disable link-clicking
+        if nt == .linkClicked { // disable link-clicking
             if self.canNavigate {
                 return true
             }
-            print("user would like to navigate to \(r.URL)")
+            print("user would like to navigate to \(r.url)")
             // this is how you would open in Mobile Safari
-            // UIApplication.sharedApplication().openURL(r.URL)
+            // UIApplication.shared().openURL(r.URL)
             return false
         }
         return true
     }
     
-    func goBack(sender:AnyObject) {
+    func goBack(_ sender:AnyObject) {
         if self.wv.canGoBack {
             self.wv.goBack()
         }

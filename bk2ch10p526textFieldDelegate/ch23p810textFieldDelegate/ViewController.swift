@@ -12,12 +12,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.tf.allowsEditingTextAttributes = true
         
         let mi = UIMenuItem(title:"Expand", action:#selector(MyTextField.expand))
-        let mc = UIMenuController.sharedMenuController()
+        let mc = UIMenuController.shared()
         mc.menuItems = [mi]
 
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         print("here '\(string)'")
         
         if string == "\n" {
@@ -26,17 +26,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // force user to type in red, underlined, lowercase only
         
-        let lc = string.lowercaseString
-        textField.text = (textField.text! as NSString).stringByReplacingCharactersInRange(range,
-                withString:lc)
+        let lc = string.lowercased()
+        textField.text = (textField.text! as NSString).replacingCharacters(in:range,
+                with:lc)
         
         // not very satisfactory but it does show the result
         
         let md = (textField.typingAttributes! as NSDictionary).mutableCopy() as! NSMutableDictionary
-        md.addEntriesFromDictionary([
-            NSForegroundColorAttributeName: UIColor.redColor(),
-            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue
-        ])
+        let d : [String:AnyObject] = [
+            NSForegroundColorAttributeName:
+                UIColor.red(),
+            NSUnderlineStyleAttributeName:
+                NSUnderlineStyle.styleSingle.rawValue as NSNumber
+        ]
+        md.addEntries(from:d)
         textField.typingAttributes = md.copy() as! NSDictionary as? [String:AnyObject]
         
         return false

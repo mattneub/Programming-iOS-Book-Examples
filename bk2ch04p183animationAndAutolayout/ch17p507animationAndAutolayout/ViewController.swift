@@ -2,7 +2,7 @@
 
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -18,16 +18,16 @@ class ViewController : UIViewController {
     
     let which = 8
 
-    @IBAction func doButton(sender:AnyObject?) {
+    @IBAction func doButton(_ sender:AnyObject?) {
     
         switch which {
         case 1:
-            UIView.animateWithDuration(1, animations:{
+            UIView.animate(withDuration:1, animations:{
                 self.v.center.x += 100
                 }) // everything *looks* okay, but it isn't
             
         case 2:
-            UIView.animateWithDuration(1, animations:{
+            UIView.animate(withDuration:1, animations:{
                 self.v.center.x += 100
                 }, completion: {
                     _ in
@@ -39,17 +39,17 @@ class ViewController : UIViewController {
         case 3:
             let con = self.v_horizontalPositionConstraint
             con.constant += 100
-            UIView.animateWithDuration(1, animations:{
+            UIView.animate(withDuration:1, animations:{
                 self.v.superview!.layoutIfNeeded()
                 }, completion: nil)
             
         case 4:
             // this works fine in iOS 8! does not trigger spurious layout
-            UIView.animateWithDuration(0.3, delay: 0, options: .Autoreverse, animations: {
-                self.v.transform = CGAffineTransformMakeScale(1.1, 1.1)
+            UIView.animate(withDuration:0.3, delay: 0, options: .autoreverse, animations: {
+                self.v.transform = CGAffineTransform(scaleX:1.1, y:1.1)
                 }, completion: {
                     _ in
-                    self.v.transform = CGAffineTransformIdentity
+                    self.v.transform = CGAffineTransform.identity
                 })
 
         case 5:
@@ -57,40 +57,40 @@ class ViewController : UIViewController {
             let ba = CABasicAnimation(keyPath:"transform")
             ba.autoreverses = true
             ba.duration = 0.3
-            ba.toValue = NSValue(CATransform3D:CATransform3DMakeScale(1.1, 1.1, 1))
-            self.v.layer.addAnimation(ba, forKey:nil)
+            ba.toValue = NSValue(caTransform3D:CATransform3DMakeScale(1.1, 1.1, 1))
+            self.v.layer.add(ba, forKey:nil)
             
         case 6:
             // general solution to all such problems: animate a temporary snapshot instead!
-            let snap = self.v.snapshotViewAfterScreenUpdates(false)
+            let snap = self.v.snapshotView(afterScreenUpdates:false)
             snap.frame = self.v.frame
             self.v.superview!.addSubview(snap)
-            self.v.hidden = true
-            UIView.animateWithDuration(0.3, delay:0, options:.Autoreverse,
+            self.v.isHidden = true
+            UIView.animate(withDuration:0.3, delay:0, options:.autoreverse,
                 animations:{
-                    snap.transform = CGAffineTransformMakeScale(1.1, 1.1)
+                    snap.transform = CGAffineTransform(scaleX:1.1, y:1.1)
                 }, completion: {
                     _ in
                     // sometimes there is a flash; I may be able to prevent it with a delay
                     //delay(0) {
-                        self.v.hidden = false
+                        self.v.isHidden = false
                         snap.removeFromSuperview()
                     //}
                 })
 
         case 7:
-            let snap = self.v.snapshotViewAfterScreenUpdates(false)
+            let snap = self.v.snapshotView(afterScreenUpdates:false)
             snap.frame = self.v.frame
             self.v.superview!.addSubview(snap)
-            self.v.hidden = true
-            UIView.animateWithDuration(1, animations:{
+            self.v.isHidden = true
+            UIView.animate(withDuration:1, animations:{
                 snap.center.x += 100
                 })
             
         case 8:
             // don't try this one: it may appear to work but it causes a constraint conflict
             self.v.translatesAutoresizingMaskIntoConstraints = true
-            UIView.animateWithDuration(1, animations:{
+            UIView.animate(withDuration:1, animations:{
                 self.v.center.x += 100
                 }, completion: {
                     _ in

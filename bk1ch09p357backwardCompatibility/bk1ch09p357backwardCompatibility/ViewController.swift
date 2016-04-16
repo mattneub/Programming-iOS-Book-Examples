@@ -5,8 +5,12 @@ import Photos
 
 class ViewController: UIViewController {
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // oddly, we now have to cast this one
+        NSLog("%@", NSStringFromCGRect(self.view.frame) as NSString)
+
         
         // new availability checking in Xcode 7
         
@@ -28,7 +32,7 @@ class ViewController: UIViewController {
         } else {
         }
         
-        let v = UIDevice.currentDevice().systemVersion
+        let v = UIDevice.current().systemVersion
         print(v)
         
 //        if self.respondsToSelector("traitCollection") {

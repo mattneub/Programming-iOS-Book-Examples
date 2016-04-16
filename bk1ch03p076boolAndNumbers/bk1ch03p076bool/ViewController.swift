@@ -10,9 +10,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if self.traitCollection.horizontalSizeClass == .Compact {}
+        if self.traitCollection.horizontalSizeClass == .compact {}
     
-        let comp = self.traitCollection.horizontalSizeClass == .Compact
+        let comp = self.traitCollection.horizontalSizeClass == .compact
         if comp {}
         
         let what = 0x10
@@ -59,12 +59,13 @@ class ViewController: UIViewController {
         
         do {
             if let mars = UIImage(named:"Mars") {
-                let marsCG = mars.CGImage
-                let szCG = CGSizeMake(
+                let marsCG = mars.cgImage!
+                let szCG = CGSize(
                     // CGImageGetWidth(marsCG),
                     // CGImageGetHeight(marsCG)
-                    CGFloat(CGImageGetWidth(marsCG)),
-                    CGFloat(CGImageGetHeight(marsCG))
+                    // legal because there is an Int initializer
+                    width:marsCG.width,
+                    height:marsCG.height
                 )
                 _ = szCG
             }
@@ -74,7 +75,7 @@ class ViewController: UIViewController {
             let s = UISlider()
             let g = UIGestureRecognizer()
             
-            let pt = g.locationInView(s)
+            let pt = g.location(in:s)
             let percentage = pt.x / s.bounds.size.width
             // let delta = percentage * (s.maximumValue - s.minimumValue) // compile error
             let delta = Float(percentage) * (s.maximumValue - s.minimumValue)
@@ -123,7 +124,7 @@ class ViewController: UIViewController {
 
 extension ViewController {
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
+        return UIInterfaceOrientationMask.portrait
     }
 }
 
@@ -132,7 +133,7 @@ extension ViewController {
 extension ViewController {
     func test () {
         // how to make a bitmask
-        let opts : UIViewAnimationOptions = [.Autoreverse, .Repeat]
+        let opts : UIViewAnimationOptions = [.autoreverse, .`repeat`]
         
         _ = opts
     }
@@ -140,8 +141,8 @@ extension ViewController {
 
 class MyTableViewCell : UITableViewCell {
     // how to test a bit in a bitmask
-    override func didTransitionToState(state: UITableViewCellStateMask) {
-        if state.contains(.ShowingEditControlMask) {
+    override func didTransition(to state: UITableViewCellStateMask) {
+        if state.contains(.showingEditControlMask) {
             // ... the ShowingEditControlMask bit is set ...
         }
     }

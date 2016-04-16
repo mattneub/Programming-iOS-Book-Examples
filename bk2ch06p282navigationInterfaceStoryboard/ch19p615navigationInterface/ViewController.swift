@@ -20,7 +20,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
 */
         
         // how to customize back button
-        let b3 = UIBarButtonItem(image:UIImage(named:"files.png"), style:.Plain, target:nil, action:nil)
+        let b3 = UIBarButtonItem(image:UIImage(named:"files.png"), style:.plain, target:nil, action:nil)
         self.navigationItem.backBarButtonItem = b3
 
     }
@@ -38,8 +38,8 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         self.navigationController!.delegate = self
     }
     
-    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController) -> UIInterfaceOrientationMask {
-        return .Portrait
+    func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+        return .portrait
     }
     
 }

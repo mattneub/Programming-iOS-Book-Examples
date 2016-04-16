@@ -1,7 +1,7 @@
 
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -21,13 +21,13 @@ class ViewController : UIViewController {
         mv.translatesAutoresizingMaskIntoConstraints = false
         
         mv.superview!.addConstraints(
-            NSLayoutConstraint.constraintsWithVisualFormat("H:|-25-[v]-25-|", options: [], metrics: nil, views: ["v":mv])
+            NSLayoutConstraint.constraints(withVisualFormat:"H:|-25-[v]-25-|", metrics: nil, views: ["v":mv])
         )
         mv.superview!.addConstraints(
-            NSLayoutConstraint.constraintsWithVisualFormat("V:[v(150)]", options: [], metrics: nil, views: ["v":mv])
+            NSLayoutConstraint.constraints(withVisualFormat:"V:[v(150)]", metrics: nil, views: ["v":mv])
         )
         mv.superview!.addConstraint(
-            NSLayoutConstraint(item: mv, attribute: .CenterY, relatedBy: .Equal, toItem: mv.superview, attribute: .CenterY, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: mv, attribute: .centerY, relatedBy: .equal, toItem: mv.superview, attribute: .centerY, multiplier: 1, constant: 0)
         )
         
         return; // comment out to experiment with resizing

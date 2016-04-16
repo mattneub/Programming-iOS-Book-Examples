@@ -8,21 +8,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var con2: NSLayoutConstraint!
 
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         print("trait collection did change")
         let tc = self.traitCollection
         print(tc)
-        if tc.horizontalSizeClass == .Regular {
+        if tc.horizontalSizeClass == .regular {
             print("regular")
             if self.con1 != nil {
                 print("changing constraints")
-                NSLayoutConstraint.deactivateConstraints([self.con1, self.con2])
-                NSLayoutConstraint.activateConstraints([
-                    NSLayoutConstraint.constraintsWithVisualFormat("V:[tg]-[lab]", options: [], metrics: nil, views: ["tg":self.topLayoutGuide, "lab":self.lab]),
-                    [self.lab.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor)]
+                NSLayoutConstraint.deactivate([self.con1, self.con2])
+                NSLayoutConstraint.activate([
+                    NSLayoutConstraint.constraints(withVisualFormat:"V:[tg]-[lab]", metrics: nil, views: ["tg":self.topLayoutGuide, "lab":self.lab]),
+                    [self.lab.centerXAnchor.constraintEqual(to:self.view.centerXAnchor)]
                     ].flatten().map{$0})
                 let sz = self.lab.font.pointSize * 2
-                self.lab.font = self.lab.font.fontWithSize(sz)
+                self.lab.font = self.lab.font.withSize(sz)
             }
         }
     }

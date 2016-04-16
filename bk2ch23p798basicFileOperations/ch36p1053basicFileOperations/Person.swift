@@ -16,15 +16,15 @@ class Person: NSObject, NSCoding {
         super.init()
     }
     
-    func encodeWithCoder(coder: NSCoder) {
+    func encode(with coder: NSCoder) {
         // do not call super in this case
-        coder.encodeObject(self.lastName, forKey: "last")
-        coder.encodeObject(self.firstName, forKey: "first")
+        coder.encode(self.lastName as NSString, forKey: "last")
+        coder.encode(self.firstName as NSString, forKey: "first")
     }
     
     required init(coder: NSCoder) {
-        self.lastName = coder.decodeObjectForKey("last") as! String
-        self.firstName = coder.decodeObjectForKey("first") as! String
+        self.lastName = coder.decodeObject(forKey:"last") as! String
+        self.firstName = coder.decodeObject(forKey:"first") as! String
         // do not call super init(coder:) in this case
         super.init()
     }

@@ -10,31 +10,31 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // configure accessory view
-        let arr = UINib(nibName:"AccessoryView", bundle:nil).instantiateWithOwner(nil, options:nil)
+        let arr = UINib(nibName:"AccessoryView", bundle:nil).instantiate(withOwner:nil, options:nil)
         self.accessoryView = arr[0] as! UIView
         let b = self.accessoryView.subviews[0] as! UIButton
-        b.addTarget(self, action:#selector(doNextButton), forControlEvents:.TouchUpInside)
+        b.addTarget(self, action:#selector(doNextButton), for:.touchUpInside)
         
     }
     
 
 
-    func textFieldDidBeginEditing(tf: UITextField) {
+    func textFieldDidBeginEditing(_ tf: UITextField) {
         self.fr = tf // keep track of first responder
         tf.inputAccessoryView = self.accessoryView
-        tf.keyboardAppearance = .Dark
+        tf.keyboardAppearance = .dark
         
         
     }
 
-    func textFieldShouldReturn(tf: UITextField) -> Bool {
+    func textFieldShouldReturn(_ tf: UITextField) -> Bool {
         tf.resignFirstResponder()
         self.fr = nil
         return true
     }
     
-    func doNextButton(sender:AnyObject) {
-        var ix = self.textFields.indexOf(self.fr as! UITextField)!
+    func doNextButton(_ sender:AnyObject) {
+        var ix = self.textFields.index(of:self.fr as! UITextField)!
         ix = (ix + 1) % self.textFields.count
         let v = self.textFields[ix]
         v.becomeFirstResponder()

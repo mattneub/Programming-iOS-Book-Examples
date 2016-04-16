@@ -1,17 +1,17 @@
 import UIKit
 
 
-public func imageOfSize(size:CGSize, closure:() -> ()) -> UIImage {
+public func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()
+    let result = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return result
 }
 
 // NB this bug is fixed in iOS 9
 
-// work around odd behavior (bug?) where CIColor(color:UIColor.whiteColor()) gives transparent, not white
+// work around odd behavior (bug?) where CIColor(color:UIColor.white()) gives transparent, not white
 public extension CIColor {
     convenience init(uicolor:UIColor) {
         var red : CGFloat = 0, green : CGFloat = 0, blue : CGFloat = 0, alpha : CGFloat = 0
@@ -41,16 +41,16 @@ public class VignetteFilter : CIFilter {
         let largerDimension = max(extent.width, extent.height)
         
         grad.setValue(center, forKey:"inputCenter")
-        grad.setValue(smallerDimension/2.0 * CGFloat(inputPercentage), forKey:"inputRadius0")
-        grad.setValue(largerDimension/2.0, forKey:"inputRadius1")
-        grad.setValue(CIColor(color: UIColor.whiteColor()), forKey:"inputColor0")
-        grad.setValue(CIColor(color: UIColor.clearColor()), forKey:"inputColor1")
+        grad.setValue(smallerDimension/2.0 * CGFloat(inputPercentage) as NSNumber, forKey:"inputRadius0")
+        grad.setValue(largerDimension/2.0 as NSNumber, forKey:"inputRadius1")
+        grad.setValue(CIColor(color: UIColor.white()), forKey:"inputColor0")
+        grad.setValue(CIColor(color: UIColor.clear()), forKey:"inputColor1")
         let gradimage = grad.outputImage
         
         let blend = CIFilter(name: "CIBlendWithAlphaMask")!
         blend.setValue(self.inputImage, forKey: "inputImage")
-        let background = CIImage(color: CIColor(uicolor: UIColor.whiteColor()))
-        let background2 = background.imageByCroppingToRect(extent)
+        let background = CIImage(color: CIColor(uicolor: UIColor.white()))
+        let background2 = background.cropping(to:extent)
         blend.setValue(background2, forKey:"inputBackgroundImage")
         blend.setValue(gradimage, forKey: "inputMaskImage")
         

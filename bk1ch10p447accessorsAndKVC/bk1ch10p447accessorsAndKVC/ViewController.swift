@@ -24,8 +24,9 @@ class MyClass : NSObject {
     func countOfPepBoys() -> Int {
         return self.theData.count
     }
-    func objectInPepBoysAtIndex(ix:Int) -> AnyObject {
-        return self.theData[ix]
+    // the _ is, uh, really important
+    func objectInPepBoysAtIndex(_ ix:Int) -> AnyObject {
+        return self.theData[ix] as AnyObject
     }
 
 }
@@ -36,7 +37,7 @@ class ViewController: UIViewController {
     var color : UIColor {
         get {
             print("someone called the color getter")
-            return UIColor.redColor()
+            return UIColor.red()
         }
         set {
             print("someone called the color setter")
@@ -60,7 +61,7 @@ class ViewController: UIViewController {
     @objc(hue) var color2 : UIColor {
         get {
             print("someone called the color2 getter")
-            return UIColor.redColor()
+            return UIColor.red()
         }
         set {
             print("someone called the color2 setter")
@@ -90,7 +91,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         Thing().test()
         Thing().test2()
         Thing().test3()
@@ -103,16 +104,16 @@ class ViewController: UIViewController {
         d.setValue("Fido", forKey:"name") // no crash!
         print(d.name) // "Fido" - it worked!
 
-        let c = self.valueForKey("hue") as? UIColor // "someone called the getter"
+        let c = self.value(forKey:"hue") as? UIColor // "someone called the getter"
         print(c) // Optional(UIDeviceRGBColorSpace 1 0 0 1)
         
         let myObject = MyClass()
-        let arr = myObject.valueForKeyPath("theData.name") as! [String]
+        let arr = myObject.value(forKeyPath:"theData.name") as! [String]
         print(arr)
         do {
-            let arr : AnyObject = myObject.valueForKey("pepBoys")!
+            let arr : AnyObject = myObject.value(forKey:"pepBoys")!
             print(arr)
-            let arr2 : AnyObject = myObject.valueForKeyPath("pepBoys.name")!
+            let arr2 : AnyObject = myObject.value(forKeyPath:"pepBoys.name")!
             print(arr2)
         }
         

@@ -1,25 +1,48 @@
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        self.window!.tintColor = UIColor.orangeColor() // gag... Just proving this is inherited
+        self.window!.tintColor = UIColor.orange() // gag... Just proving this is inherited
         
         // nav bar is configured (horribly) in the storyboard
         
         // and now for some even more disgusting decoration
         
         let im = UIImage(named:"linen.png")!
-        let sz = CGSizeMake(5,34)
+        let sz = CGSize(5,34)
         UIGraphicsBeginImageContextWithOptions(sz, false, 0)
-        im.drawAtPoint(CGPointMake(-55,-55))
-        let im2 = UIGraphicsGetImageFromCurrentImageContext()
+        im.draw(at:CGPoint(-55,-55))
+        let im2 = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        let im3 = im2.resizableImageWithCapInsets(UIEdgeInsetsMake(0,0,0,0), resizingMode:.Tile)
-        UIBarButtonItem.appearance().setBackgroundImage(im3, forState:.Normal, barMetrics:.Default)
+        let im3 = im2.resizableImage(withCapInsets:UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0), resizingMode:.tile)
+        UIBarButtonItem.appearance().setBackgroundImage(im3, for:[], barMetrics:.default)
         
         
         // if the back button is assigned a background image, the chevron is removed entirely

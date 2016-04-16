@@ -9,6 +9,27 @@ class Dog {
     }
 }
 
+func doThis(_ f:()->String?) {
+    let s = f()
+    print(s)
+}
+
+func optionalStringMaker() -> String! {
+    return Optional("Howdy")
+}
+
+func doThis2(_ f:()->String!) {
+    let s = f()
+    print(s)
+}
+
+func optionalStringMaker2() -> String? {
+    return Optional("Howdy")
+}
+
+
+var ios : String! = "howdy"
+var opt : String? = "howdy"
 
 class ViewController: UIViewController {
     
@@ -17,23 +38,30 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // type substitution works only one way
+        doThis(optionalStringMaker)
+        // doThis2(optionalStringMaker2) // no
+        
+        // value substitution, works both ways
+        ios = opt
+        opt = ios
     
         let stringMaybe : String? = "howdy"
-        let upper = stringMaybe!.uppercaseString // legal but dangerous
+        let upper = stringMaybe!.uppercased() // legal but dangerous
         // let upper2 = stringMaybe.uppercaseString // compile error
-        let upper3 = stringMaybe?.uppercaseString
+        let upper3 = stringMaybe?.uppercased()
         print(upper3)
         
         let stringMaybe2 : String? = nil
-        let upper4 = stringMaybe2?.uppercaseString // no crash!
+        let upper4 = stringMaybe2?.uppercased() // no crash!
         print(upper4)
         
         // longer chain - still just one Optional results
         let f = self.view.window?.rootViewController?.view.frame
 
         let d = Dog()
-        let bigname = d.speak()?.uppercaseString
+        let bigname = d.speak()?.uppercased()
 
         let s : String? = "Howdy"
         if s == "Howdy" { print("equal") }
@@ -41,11 +69,12 @@ class ViewController: UIViewController {
         if i < 3 { print("less") }
 
         let arr = [1,2,3]
-        let ix = (arr as NSArray).indexOfObject(4)
+        let ix = (arr as NSArray).index(of:4)
+        print(ix)
         if ix == NSNotFound { print("not found") }
         
         let arr2 = [1,2,3]
-        let ix2 = arr2.indexOf(4)
+        let ix2 = arr2.index(of:4)
         if ix2 == nil { print("not found") }
 
 
@@ -55,21 +84,21 @@ class ViewController: UIViewController {
         
         let v = UIView()
         let c = v.backgroundColor
-        // let c2 = c.colorWithAlphaComponent(0.5) // compile error
-        let c2 = c?.colorWithAlphaComponent(0.5)
+        // let c2 = c.withAlphaComponent(0.5) // compile error
+        let c2 = c?.withAlphaComponent(0.5)
         
         _ = c2
 
 
     
     }
-
+    
 }
 
 // they fixed this API!
 
 class MyLayer : CALayer {
-    override func drawInContext(ctx: CGContext) {
+    override func draw(in: CGContext) {
         //
     }
 }

@@ -20,19 +20,19 @@ class ViewController: UIViewController {
         
         // configure the stack view
 
-        sv.axis = .Vertical
-        sv.alignment = .Fill
-        sv.distribution = .EqualSpacing
+        sv.axis = .vertical
+        sv.alignment = .fill
+        sv.distribution = .equalSpacing
         
         // constrain the stack view
 
         sv.translatesAutoresizingMaskIntoConstraints = false
         mainview.addSubview(sv)
-        NSLayoutConstraint.activateConstraints([
-            sv.topAnchor.constraintEqualToAnchor(self.topLayoutGuide.bottomAnchor),
-            sv.leadingAnchor.constraintEqualToAnchor(mainview.leadingAnchor),
-            sv.trailingAnchor.constraintEqualToAnchor(mainview.trailingAnchor),
-            sv.bottomAnchor.constraintEqualToAnchor(mainview.bottomAnchor),
+        NSLayoutConstraint.activate([
+            sv.topAnchor.constraintEqual(to:self.topLayoutGuide.bottomAnchor),
+            sv.leadingAnchor.constraintEqual(to:mainview.leadingAnchor),
+            sv.trailingAnchor.constraintEqual(to:mainview.trailingAnchor),
+            sv.bottomAnchor.constraintEqual(to:mainview.bottomAnchor),
         ])
         
 

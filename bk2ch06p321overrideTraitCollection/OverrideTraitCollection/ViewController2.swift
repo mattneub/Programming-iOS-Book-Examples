@@ -4,8 +4,8 @@ import UIKit
 
 class ViewController2: UIViewController {
 
-    @IBAction func doDismiss(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func doDismiss(_ sender: AnyObject) {
+        self.dismiss(animated:true, completion: nil)
     }
 
     

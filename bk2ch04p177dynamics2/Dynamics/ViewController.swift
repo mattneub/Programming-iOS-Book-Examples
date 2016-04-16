@@ -4,9 +4,9 @@ import UIKit
 
 class MyImageView : UIImageView {
     override var collisionBoundsType: UIDynamicItemCollisionBoundsType {
-        return .Ellipse
+        return .ellipse
     }
-    override func willMoveToWindow(newWindow: UIWindow?) {
+    override func willMove(to newWindow: UIWindow?) {
         print("image view move to \(newWindow)")
     }
     deinit {
@@ -24,16 +24,16 @@ class ViewController : UIViewController, UIDynamicAnimatorDelegate {
         self.anim.delegate = self
     }
     
-    @IBAction func doButton(sender:AnyObject?) {
-        (sender as! UIButton).enabled = false
+    @IBAction func doButton(_ sender:AnyObject?) {
+        (sender as! UIButton).isEnabled = false
         self.anim.addBehavior(MyDropBounceAndRollBehavior(view:self.iv))
     }
     
-    func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
+    func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
         print("pause")
     }
     
-    func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
+    func dynamicAnimatorWillResume(_ animator: UIDynamicAnimator) {
         print("resume")
     }
 

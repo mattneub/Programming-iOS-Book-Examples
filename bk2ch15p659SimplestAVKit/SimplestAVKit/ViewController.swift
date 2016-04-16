@@ -6,48 +6,48 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: [])
-        _ = try? AVAudioSession.sharedInstance().setActive(true, withOptions: [])
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        _ = try? AVAudioSession.sharedInstance().setActive(true)
     }
 
 
     let which = 1
     
-    @IBAction func doPresent(sender: AnyObject) {
+    @IBAction func doPresent(_ sender: AnyObject) {
         switch which {
         case 1:
             let av = AVPlayerViewController()
-            let url = NSBundle.mainBundle().URLForResource("ElMirage", withExtension: "mp4")!
-            // let url = NSBundle.mainBundle().URLForResource("wilhelm", withExtension: "aiff")!
-            let player = AVPlayer(URL: url)
+            let url = NSBundle.main().urlForResource("ElMirage", withExtension: "mp4")!
+            // let url = NSBundle.main().urlForResource("wilhelm", withExtension: "aiff")!
+            let player = AVPlayer(url: url)
             av.player = player
-            self.presentViewController(av, animated: true, completion: {
+            self.present(av, animated: true, completion: {
                 _ in
-                // av.view.backgroundColor = UIColor.greenColor()
+                // av.view.backgroundColor = UIColor.green()
             })
 //            let iv = UIImageView(image:UIImage(named:"smiley")!)
 //            av.contentOverlayView!.addSubview(iv)
 //            let v = iv.superview!
 //            iv.translatesAutoresizingMaskIntoConstraints = false
-//            NSLayoutConstraint.activateConstraints([
-//                iv.bottomAnchor.constraintEqualToAnchor(v.bottomAnchor),
-//                iv.topAnchor.constraintEqualToAnchor(v.topAnchor),
-//                iv.leadingAnchor.constraintEqualToAnchor(v.leadingAnchor),
-//                iv.trailingAnchor.constraintEqualToAnchor(v.trailingAnchor),
+//            NSLayoutConstraint.activate([
+//                iv.bottomAnchor.constraintEqual(to:v.bottomAnchor),
+//                iv.topAnchor.constraintEqual(to:v.topAnchor),
+//                iv.leadingAnchor.constraintEqual(to:v.leadingAnchor),
+//                iv.trailingAnchor.constraintEqual(to:v.trailingAnchor),
 //                ])
 
             av.delegate = self
             av.allowsPictureInPicturePlayback = true
         case 2:
             let av = AVPlayerViewController()
-            av.edgesForExtendedLayout = .None
-            let url = NSBundle.mainBundle().URLForResource("ElMirage", withExtension: "mp4")!
-            // let url = NSBundle.mainBundle().URLForResource("wilhelm", withExtension: "aiff")!
-            let player = AVPlayer(URL: url)
+            av.edgesForExtendedLayout = []
+            let url = NSBundle.main().urlForResource("ElMirage", withExtension: "mp4")!
+            // let url = NSBundle.main().urlForResource("wilhelm", withExtension: "aiff")!
+            let player = AVPlayer(url: url)
             av.player = player
-            self.showViewController(av, sender: self)
+            self.show(av, sender: self)
         default: break
         }
         
@@ -55,12 +55,14 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : AVPlayerViewControllerDelegate {
-    func playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStartNOT(playerViewController: AVPlayerViewController) -> Bool {
+    /*
+    func playerViewControllerShouldAutomaticallyDismissAtPicture(inPictureStart playerViewController: AVPlayerViewController) -> Bool {
         return false
     }
+ */
     
-    func playerViewController(pvc: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler ch: (Bool) -> Void) {
-        self.presentViewController(pvc, animated:true) {
+    func playerViewController(_ pvc: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler ch: (Bool) -> Void) {
+        self.present(pvc, animated:true) {
             _ in
             ch(true)
         }

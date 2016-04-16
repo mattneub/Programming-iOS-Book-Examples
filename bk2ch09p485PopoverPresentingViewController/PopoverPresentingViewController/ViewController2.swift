@@ -8,7 +8,7 @@ class ViewController2: UIViewController, UIPopoverPresentationControllerDelegate
 
     let workaround = false
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if let pop = self.popoverPresentationController {
             if workaround {
                 print("del")
@@ -22,7 +22,7 @@ class ViewController2: UIViewController, UIPopoverPresentationControllerDelegate
     // works on iOS 9 and 8, restoring the iOS 7 behavior
     
     func popoverPresentationControllerShouldDismissPopover(pop: UIPopoverPresentationController) -> Bool {
-        let ok = pop.presentedViewController.presentedViewController == nil
+        let ok = pop.presentedViewController.presented == nil
         print(ok)
         return ok
     }

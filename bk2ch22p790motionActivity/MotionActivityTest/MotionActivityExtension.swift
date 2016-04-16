@@ -3,7 +3,7 @@ import UIKit
 import CoreMotion
 
 extension CMMotionActivity {
-    private func tf(b:Bool) -> String {
+    private func tf(_ b:Bool) -> String {
         return b ? "t" : "f"
     }
     func overallAct() -> String {

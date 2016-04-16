@@ -23,7 +23,7 @@ class ViewController : UIViewController {
         // self.tv.textContainer.lineFragmentPadding = 0 // make it just like the label
         // to show that under identical conditions they do draw identically
 
-        self.tv.scrollEnabled = false // in case setting in the nib doesn't work
+        self.tv.isScrollEnabled = false // in case setting in the nib doesn't work
         
         var content : NSMutableAttributedString!
         var content2 : NSMutableAttributedString!
@@ -34,11 +34,11 @@ class ViewController : UIViewController {
                 "(namely Thursday, November 19, 1863) by A. Lincoln"
             content = NSMutableAttributedString(string:s1, attributes:[
                 NSFontAttributeName: UIFont(name:"Arial-BoldMT", size:15)!,
-                NSForegroundColorAttributeName: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)
+                NSForegroundColorAttributeName: UIColor(red:0.251 as CGFloat, green:0.000, blue:0.502, alpha:1)
                 ])
-            let r = (s1 as NSString).rangeOfString("Gettysburg Address")
+            let r = (s1 as NSString).range(of:"Gettysburg Address")
             content.addAttributes([
-                NSStrokeColorAttributeName: UIColor.redColor(),
+                NSStrokeColorAttributeName: UIColor.red(),
                 NSStrokeWidthAttributeName: -2.0
                 ], range: r)
             self.lab.attributedText = content
@@ -50,8 +50,8 @@ class ViewController : UIViewController {
             para.headIndent = 10
             para.firstLineHeadIndent = 10
             para.tailIndent = -10
-            para.lineBreakMode = .ByWordWrapping
-            para.alignment = .Center
+            para.lineBreakMode = .byWordWrapping
+            para.alignment = .center
             para.paragraphSpacing = 15
             content.addAttribute(
                 NSParagraphStyleAttributeName,
@@ -85,8 +85,8 @@ class ViewController : UIViewController {
                     para.headIndent = 10
                     para.firstLineHeadIndent = 10
                     para.tailIndent = -10
-                    para.lineBreakMode = .ByWordWrapping
-                    para.alignment = .Justified
+                    para.lineBreakMode = .byWordWrapping
+                    para.alignment = .justified
                     para.lineHeightMultiple = 1.2
                     para.hyphenationFactor = 1.0
                 }, range:NSMakeRange(0,1))
@@ -96,19 +96,18 @@ class ViewController : UIViewController {
             if which > 3 {fallthrough}
         case 4, 5:
             let end = content.length
-            content.replaceCharactersInRange(NSMakeRange(end, 0), withString:"\n")
-            content.appendAttributedString(content2)
+            content.replaceCharacters(in:NSMakeRange(end, 0), with:"\n")
+            content.append(content2)
             self.lab.attributedText = content
             self.tv.attributedText = content
             self.tv.textContainerInset = UIEdgeInsetsMake(20,0,0,0)
             if which > 4 {fallthrough}
         case 5:
             // demonstrating efficient cycling through style runs
-            let opts : NSAttributedStringEnumerationOptions = .LongestEffectiveRangeNotRequired
+            let opts : NSAttributedStringEnumerationOptions = .longestEffectiveRangeNotRequired
             content.enumerateAttribute(NSFontAttributeName,
-                inRange:NSMakeRange(0,content.length),
-                options:opts,
-                usingBlock: {
+                in:NSMakeRange(0,content.length),
+                options:opts) {
                     value, range, stop in
                     print(range)
                     let font = value as! UIFont
@@ -117,7 +116,7 @@ class ViewController : UIViewController {
                             value:UIFont(name: "Arial-BoldMT", size:20)!,
                             range:range)
                     }
-                })
+                }
             self.lab.attributedText = content
             self.tv.attributedText = content
             self.tv.textContainerInset = UIEdgeInsetsMake(0,0,0,0)

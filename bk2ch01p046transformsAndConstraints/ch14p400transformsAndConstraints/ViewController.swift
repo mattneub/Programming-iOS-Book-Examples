@@ -23,9 +23,9 @@ class ViewController : UIViewController {
         self.noConstraintsView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    @IBAction func doButton(g:UIGestureRecognizer) {
-        let p = g.locationInView(g.view)
-        if let v = g.view!.hitTest(p, withEvent: nil) {
+    @IBAction func doButton(_ g:UIGestureRecognizer) {
+        let p = g.location(in: g.view)
+        if let v = g.view!.hitTest(p, with: nil) {
             if v == g.view { return }
             if v is MyView { return }
             dispatch_async(dispatch_get_main_queue()) {
@@ -34,13 +34,13 @@ class ViewController : UIViewController {
         }
     }
     
-    func grow(v:UIView) {
+    func grow(_ v:UIView) {
         print("grow \(v)")
-        v.transform = CGAffineTransformScale(v.transform, 1.2, 1.2)
+        v.transform = v.transform.scaleBy(x: 1.2, y:1.2)
         
     }
     
-    @IBAction func growLayer(g:UIGestureRecognizer) {
+    @IBAction func growLayer(_ g:UIGestureRecognizer) {
         print("growLayer")
         let v = g.view!
         v.layer.transform = CATransform3DScale(v.layer.transform, 1.2, 1.2, 1)

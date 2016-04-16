@@ -18,24 +18,24 @@ class ViewController: UIViewController {
         // that was cool enough, but...
         // hold my beer and watch this!
         
-        let tcdisp = UITraitCollection(displayScale: UIScreen.mainScreen().scale)
-        let tcphone = UITraitCollection(userInterfaceIdiom: .Phone)
-        let tcreg = UITraitCollection(verticalSizeClass: .Regular)
-        let tc1 = UITraitCollection(traitsFromCollections: [tcdisp, tcphone, tcreg])
-        let tccom = UITraitCollection(verticalSizeClass: .Compact)
-        let tc2 = UITraitCollection(traitsFromCollections: [tcdisp, tcphone, tccom])
+        let tcdisp = UITraitCollection(displayScale: UIScreen.main().scale)
+        let tcphone = UITraitCollection(userInterfaceIdiom: .phone)
+        let tcreg = UITraitCollection(verticalSizeClass: .regular)
+        let tc1 = UITraitCollection(traitsFrom: [tcdisp, tcphone, tcreg])
+        let tccom = UITraitCollection(verticalSizeClass: .compact)
+        let tc2 = UITraitCollection(traitsFrom: [tcdisp, tcphone, tccom])
         let moods = UIImageAsset()
-        let frowney = UIImage(named:"frowney")!.imageWithRenderingMode(.AlwaysOriginal)
-        let smiley = UIImage(named:"smiley")!.imageWithRenderingMode(.AlwaysOriginal)
-        moods.registerImage(frowney, withTraitCollection: tc1)
-        moods.registerImage(smiley, withTraitCollection: tc2)
+        let frowney = UIImage(named:"frowney")!.withRenderingMode(.alwaysOriginal)
+        let smiley = UIImage(named:"smiley")!.withRenderingMode(.alwaysOriginal)
+        moods.register(frowney, with: tc1)
+        moods.register(smiley, with: tc2)
         
         let tc = self.traitCollection
-        let im = moods.imageWithTraitCollection(tc)
+        let im = moods.image(with: tc)
         self.iv2.image = im
         
-        self.b.setImage(im, forState: .Normal)
-        self.b.setImage(im, forState: .Highlighted)
+        self.b.setImage(im, for: [])
+        self.b.setImage(im, for: .highlighted)
         
         self.v.image = im
 

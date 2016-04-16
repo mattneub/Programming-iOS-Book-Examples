@@ -1,35 +1,35 @@
 
 import UIKit
 
+// recast using pure Objective-C interface to FMDB, so that we are not dependent
+// on any particular incarnation of Swift in FMDB itself
+
 class ViewController: UIViewController {
     
     var dbpath : String {
         get {
-            let docsdir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).last!
-            return (docsdir as NSString).stringByAppendingPathComponent("people.db")
+            let docsdir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!
+            return (docsdir as NSString).appendingPathComponent("people.db")
         }
     }
 
-    @IBAction func doButton (sender:AnyObject!) {
+    @IBAction func doButton (_ sender:AnyObject!) {
         
         do {
             let fm = NSFileManager()
-            try fm.removeItemAtPath(self.dbpath) // in case we did this once already
+            try fm.removeItem(atPath:self.dbpath) // in case we did this once already
         } catch {}
         
-        let db = FMDatabase(path:self.dbpath)
-        if !db.open() {
-            print("Oooops")
-            return
-        }
+        guard let db = FMDatabase(path:self.dbpath) where db.open()
+            else {print("Ooooops"); return}
         
-        db.executeUpdate("create table people (lastname text, firstname text)")
+        db.executeUpdate("create table people (lastname text, firstname text)", withArgumentsIn:[])
         
         db.beginTransaction()
         
-        db.executeUpdate("insert into people (firstname, lastname) values (?,?)", "Matt", "Neuburg")
-        db.executeUpdate("insert into people (firstname, lastname) values (?,?)", "Snidely", "Whiplash")
-        db.executeUpdate("insert into people (firstname, lastname) values (?,?)", "Dudley", "Doright")
+        db.executeUpdate("insert into people (firstname, lastname) values (?,?)", withArgumentsIn:["Matt", "Neuburg"])
+        db.executeUpdate("insert into people (firstname, lastname) values (?,?)", withArgumentsIn:["Snidely", "Whiplash"])
+        db.executeUpdate("insert into people (firstname, lastname) values (?,?)", withArgumentsIn:["Dudley", "Doright"])
         db.commit()
         
         print("I think I created it")
@@ -37,14 +37,11 @@ class ViewController: UIViewController {
 
     }
     
-    @IBAction func doButton2 (sender:AnyObject!) {
-        let db = FMDatabase(path:self.dbpath)
-        if !db.open() {
-            print("Oooops")
-            return
-        }
+    @IBAction func doButton2 (_ sender:AnyObject!) {
+        guard let db = FMDatabase(path:self.dbpath) where db.open()
+            else {print("Ooooops"); return}
         
-        if let rs = db.executeQuery("select * from people") {
+        if let rs = db.executeQuery("select * from people", withArgumentsIn:[]) {
             while rs.next() {
                 print(rs["firstname"], rs["lastname"])
             }

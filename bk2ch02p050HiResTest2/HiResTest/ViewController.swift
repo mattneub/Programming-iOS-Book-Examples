@@ -26,10 +26,10 @@ class ViewController: UIViewController {
         self.iv3.image = UIImage(named:"one")
         self.iv4.image = UIImage(named:"uno")
         
-        if let s = NSBundle.mainBundle().pathForResource("one", ofType: "png") {
+        if let s = NSBundle.main().pathForResource("one", ofType: "png") {
             self.iv5.image = UIImage(contentsOfFile: s)
         }
-        if let s2 = NSBundle.mainBundle().pathForResource("uno", ofType: "png") {
+        if let s2 = NSBundle.main().pathForResource("uno", ofType: "png") {
             self.iv6.image = UIImage(contentsOfFile: s2)
         } else {
             print("looking for smiley")

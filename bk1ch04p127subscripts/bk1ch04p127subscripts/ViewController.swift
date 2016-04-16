@@ -10,12 +10,12 @@ struct Digit {
     subscript(ix:Int) -> Int {
         get {
             let s = String(self.number)
-            return Int(String(s[s.startIndex.advancedBy(ix)]))!
+            return Int(String(s[s.index(s.startIndex, offsetBy:ix)]))!
         }
         set {
             var s = String(self.number)
-            let i = s.startIndex.advancedBy(ix)
-            s.replaceRange(i...i, with: String(newValue))
+            let i = s.index(s.startIndex, offsetBy:ix)
+            s.replaceSubrange(i...i, with: String(newValue))
             self.number = Int(s)!
         }
     }
@@ -58,15 +58,15 @@ class ViewController: UIViewController {
 
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let app = UIApplication.sharedApplication()
+        let app = UIApplication.shared()
         let window = app.keyWindow
         let vc = window?.rootViewController
         print(vc)
         
-        let vc2 = UIApplication.sharedApplication().keyWindow?.rootViewController
+        let vc2 = UIApplication.shared().keyWindow?.rootViewController
         print(vc2)
 
 

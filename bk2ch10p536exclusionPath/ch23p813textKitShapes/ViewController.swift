@@ -8,6 +8,29 @@ func lend<T where T:NSObject> (closure:(T)->()) -> T {
     return orig
 }
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class ViewController: UIViewController {
     
     @IBOutlet var tv : UITextView!
@@ -15,9 +38,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let path = NSBundle.mainBundle().pathForResource("brillig", ofType: "txt")!
+        let path = NSBundle.main().pathForResource("brillig", ofType: "txt")!
         let s = try! String(contentsOfFile:path, encoding: NSUTF8StringEncoding)
-        let s2 = s.stringByReplacingOccurrencesOfString("\n", withString: "")
+        let s2 = s.replacingOccurrences(of:"\n", with: "")
         let mas = NSMutableAttributedString(string:s2, attributes:[
             NSFontAttributeName: UIFont(name:"GillSans", size:14)!
             ])
@@ -25,8 +48,8 @@ class ViewController: UIViewController {
         mas.addAttribute(NSParagraphStyleAttributeName,
             value:lend(){
                 (para:NSMutableParagraphStyle) in
-                para.alignment = .Left
-                para.lineBreakMode = .ByWordWrapping
+                para.alignment = .left
+                para.lineBreakMode = .byWordWrapping
                 para.hyphenationFactor = 1
             },
             range:NSMakeRange(0,1))
@@ -34,19 +57,19 @@ class ViewController: UIViewController {
         self.tv.attributedText = mas
         
         self.tv.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 0)
-        self.tv.scrollEnabled = false
+        self.tv.isScrollEnabled = false
 
     }
     
     override func viewDidLayoutSubviews() {
         let sz = self.tv.textContainer.size
         let p = UIBezierPath()
-        p.moveToPoint(CGPointMake(sz.width/4.0,0))
-        p.addLineToPoint(CGPointMake(sz.width,0))
-        p.addLineToPoint(CGPointMake(sz.width,sz.height))
-        p.addLineToPoint(CGPointMake(sz.width/4.0,sz.height))
-        p.addLineToPoint(CGPointMake(sz.width,sz.height/2.0))
-        p.closePath()
+        p.move(to: CGPoint(sz.width/4.0,0))
+        p.addLine(to: CGPoint(sz.width,0))
+        p.addLine(to: CGPoint(sz.width,sz.height))
+        p.addLine(to: CGPoint(sz.width/4.0,sz.height))
+        p.addLine(to: CGPoint(sz.width,sz.height/2.0))
+        p.close()
         self.tv.textContainer.exclusionPaths = [p]
     }
 }

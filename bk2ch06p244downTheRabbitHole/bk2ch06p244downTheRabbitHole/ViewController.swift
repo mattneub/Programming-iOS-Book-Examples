@@ -3,7 +3,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBAction func unwind (sender:UIStoryboardSegue) {
+    @IBAction func unwind (_ sender:UIStoryboardSegue) {
         
     }
 

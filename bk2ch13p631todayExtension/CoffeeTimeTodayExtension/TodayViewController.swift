@@ -14,26 +14,26 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func awakeFromNib() {
         NSLog("awake")
         super.awakeFromNib()
-        // self.preferredContentSize = CGSizeMake(320,113)
+        // self.preferredContentSize = CGSize(320,113)
         // let v = UIVisualEffectView(effect: UIVibrancyEffect.notificationCenterVibrancyEffect())
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // self.preferredContentSize = CGSizeMake(320,113)
-        self.iv.image = UIImage(named:"cup.png")?.imageWithRenderingMode(.AlwaysTemplate)
+        // self.preferredContentSize = CGSize(320,113)
+        self.iv.image = UIImage(named:"cup.png")?.withRenderingMode(.alwaysTemplate)
     }
         
-    @IBAction func doButton(sender: AnyObject) {
+    @IBAction func doButton(_ sender: AnyObject) {
         NSLog("doButton")
         let v = sender as! UIView
         let comp = NSURLComponents()
         comp.scheme = "coffeetime"
         comp.host = String(v.tag) // tag is number of minutes
-        if let url = comp.URLRelativeToURL(nil) {
-            NSLog("%@", "\(url)")
-            self.extensionContext?.openURL(url, completionHandler: nil)
+        if let url = comp.url(relativeTo:nil) {
+            NSLog("%@", "\(url)" as NSObject)
+            self.extensionContext?.open(url, completionHandler: nil)
         }
     }
     
@@ -49,7 +49,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
 
-        completionHandler(NCUpdateResult.NewData)
+        completionHandler(NCUpdateResult.newData)
     }
     
 }

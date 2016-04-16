@@ -2,6 +2,29 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class ViewController : UIViewController, UIScrollViewDelegate {
     @IBOutlet var sv : UIScrollView!
     @IBOutlet var iv : UIImageView!
@@ -19,30 +42,30 @@ class ViewController : UIViewController, UIScrollViewDelegate {
             // turn off auto layout and assign content size manually
             // even in seed 5 I can't get this entire example to work at all in iOS 8...
             // ...if auto layout is on
-            self.sv.contentSize = CGSizeMake(400,300)
+            self.sv.contentSize = CGSize(400,300)
             
             // nice to have horizontal centering at startup
             // the scroll view layout goes first, gives us vertical centering
-            let pt = CGPointMake((self.iv.bounds.width - self.sv.bounds.width)/2.0,0)
+            let pt = CGPoint((self.iv.bounds.width - self.sv.bounds.width)/2.0,0)
             self.sv.setContentOffset(pt, animated:false)
         }
     }
     
     
-    func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
+    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
         self.oldBounces = scrollView.bounces
         scrollView.bounces = false
     }
     
-    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
+    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
         scrollView.bounces = self.oldBounces
     }
 
     
     // image view is zoomable
 
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return scrollView.viewWithTag(999)
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return scrollView.withTag(999)
     }
     
     // image view is also zoomable by double-tapping
@@ -52,12 +75,12 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     // but it seems a pity to have to do that
     
     let anim = true
-    @IBAction func tapped(tap : UIGestureRecognizer) {
+    @IBAction func tapped(_ tap : UIGestureRecognizer) {
         let v = tap.view!
         let sv = v.superview as! UIScrollView
         if sv.zoomScale < 1 {
             sv.setZoomScale(1, animated:anim)
-            let pt = CGPointMake((v.bounds.width - sv.bounds.width)/2.0,0)
+            let pt = CGPoint((v.bounds.width - sv.bounds.width)/2.0,0)
             sv.setContentOffset(pt, animated:false)
         }
         else if sv.zoomScale < sv.maximumZoomScale {
@@ -77,7 +100,7 @@ class MyScrollView : UIScrollView {
         // comment this out and zoom the bird image smaller to see the difference
         // print("layout")
         super.layoutSubviews()
-        if let v = self.delegate?.viewForZoomingInScrollView?(self) {
+        if let v = self.delegate?.viewForZooming?(in:self) {
             let svw = self.bounds.width
             let svh = self.bounds.height
             let vw = v.frame.width

@@ -12,25 +12,25 @@ class ChildViewController2 : Base {
 }
 
 class Base : UIViewController {
-    override func willMoveToParentViewController(parent: UIViewController!) {
+    override func willMove(toParentViewController parent: UIViewController!) {
         print("\(self.dynamicType) \(#function) \(parent)")
     }
-    override func didMoveToParentViewController(parent: UIViewController!) {
+    override func didMove(toParentViewController parent: UIViewController!) {
         print("\(self.dynamicType) \(#function) \(parent)")
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         print("\(self.dynamicType) \(#function)")
         super.viewWillAppear(animated)
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         print("\(self.dynamicType) \(#function)")
         super.viewDidAppear(animated)
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         print("\(self.dynamicType) \(#function)")
         super.viewWillDisappear(animated)
     }
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         print("\(self.dynamicType) \(#function)")
         super.viewDidDisappear(animated)
     }
@@ -44,13 +44,13 @@ class Base : UIViewController {
         print("\(self.dynamicType) \(#function)")
         super.updateViewConstraints()
     }
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         print("\(self.dynamicType) \(#function)")
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        super.viewWillTransition(to: size, with: coordinator)
     }
-    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         print("\(self.dynamicType) \(#function)")
-        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+        super.willTransition(to: newCollection, with: coordinator)
     }
 }
 

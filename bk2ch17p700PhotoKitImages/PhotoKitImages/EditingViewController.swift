@@ -9,7 +9,7 @@ import AVFoundation
 import VignetteFilter
 
 protocol EditingViewControllerDelegate : class {
-    func finishEditingWithVignette(vignette:Double)
+    func finishEditing(vignette:Double)
 }
 
 
@@ -40,34 +40,34 @@ class EditingViewController: UIViewController, GLKViewDelegate {
         
         self.slider.value = Float(self.initialVignette)
         
-        self.edgesForExtendedLayout = UIRectEdge.None
+        self.edgesForExtendedLayout = []
         
-        let cancel = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(doCancel))
+        let cancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(doCancel))
         self.navigationItem.leftBarButtonItem = cancel
-        let done = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(doDone))
+        let done = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doDone))
         self.navigationItem.rightBarButtonItem = done
         
         if self.canUndo {
-            let undo = UIBarButtonItem(title: "Remove", style: .Plain, target: self, action: #selector(doUndo))
+            let undo = UIBarButtonItem(title: "Remove", style: .plain, target: self, action: #selector(doUndo))
             self.navigationItem.rightBarButtonItems = [done, undo]
         }
         
-        let eaglcontext = EAGLContext(API:.OpenGLES2)
+        let eaglcontext = EAGLContext(api:.openGLES2)!
         self.glkview.context = eaglcontext
         self.glkview.delegate = self
         
-        self.context = CIContext(EAGLContext: self.glkview.context)
+        self.context = CIContext(eaglContext: self.glkview.context)
         
         self.glkview.display()
     }
     
-    func glkView(view: GLKView, drawInRect rect: CGRect) {
+    func glkView(_ view: GLKView, drawIn rect: CGRect) {
         glClearColor(1.0, 1.0, 1.0, 1.0)
         glClear(UInt32(GL_COLOR_BUFFER_BIT))
         
         self.vig.setValue(self.displayImage, forKey: "inputImage")
         let val = Double(self.slider.value)
-        self.vig.setValue(val, forKey:"inputPercentage")
+        self.vig.setValue(val as NSNumber, forKey:"inputPercentage")
         let output = self.vig.outputImage!
         
         var r = self.glkview.bounds
@@ -76,33 +76,33 @@ class EditingViewController: UIViewController, GLKViewDelegate {
 
         r = AVMakeRectWithAspectRatioInsideRect(output.extent.size, r)
         
-        self.context.drawImage(output, inRect: r, fromRect: output.extent)
+        self.context.draw(output, in: r, from: output.extent)
     }
 
     
-    func doCancel (sender:AnyObject?) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func doCancel (_ sender:AnyObject?) {
+        self.dismiss(animated:true, completion: nil)
     }
     
-    func doDone (sender:AnyObject?) {
-        self.dismissViewControllerAnimated(true) {
+    func doDone (_ sender:AnyObject?) {
+        self.dismiss(animated:true) {
             _ in
             delay(0.1) {
-                self.delegate?.finishEditingWithVignette(Double(self.slider.value))
+                self.delegate?.finishEditing(vignette:Double(self.slider.value))
             }
         }
     }
     
-    func doUndo (sender:AnyObject?) {
-        self.dismissViewControllerAnimated(true) {
+    func doUndo (_ sender:AnyObject?) {
+        self.dismiss(animated:true) {
             _ in
             delay(0.1) {
-                self.delegate?.finishEditingWithVignette(-1) // signal for removal
+                self.delegate?.finishEditing(vignette:-1) // signal for removal
             }
         }
     }
 
-    @IBAction func doSlider(sender: AnyObject?) {
+    @IBAction func doSlider(_ sender: AnyObject?) {
         self.glkview.display()
     }
     

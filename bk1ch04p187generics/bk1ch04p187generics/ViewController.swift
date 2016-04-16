@@ -6,23 +6,23 @@ import UIKit
 let s : Optional<String> = "howdy"
 
 protocol Flier {
-    func flockTogetherWith(f:Self)
+    func flockTogetherWith(_ f:Self)
 }
 struct Bird : Flier {
-    func flockTogetherWith(f:Bird) {}
+    func flockTogetherWith(_ f:Bird) {}
 }
 
 protocol Flier2 {
     associatedtype Other
-    func flockTogetherWith(f:Self.Other) // just showing that this is legal
+    func flockTogetherWith(_ f:Self.Other) // just showing that this is legal
     func mateWith(f:Other)
 }
 struct Bird2 : Flier2 {
-    func flockTogetherWith(f:Bird2) {}
+    func flockTogetherWith(_ f:Bird2) {}
     func mateWith(f:Bird2) {}
 }
 
-func takeAndReturnSameThing<T> (t:T) -> T {
+func takeAndReturnSameThing<T> (_ t:T) -> T {
     return t
 }
 let thing = takeAndReturnSameThing("howdy")
@@ -37,11 +37,12 @@ struct HolderOfTwoSameThings<T> {
 }
 let holder = HolderOfTwoSameThings(thingOne:"howdy", thingTwo:"getLost")
 
-func flockTwoTogether<T, U>(f1:T, _ f2:U) {}
+func flockTwoTogether<T, U>(_ f1:T, _ f2:U) {}
 let vd : Void = flockTwoTogether("hey", 1)
 
 // illegal in Xcode 7 beta 5!
 // still illegal in Swift 2.2, it seems
+// still illegal in Swift 3 toolchain
 
 /*
 
@@ -78,12 +79,12 @@ struct Insect3 : Flier3 {
 //*/
 
 
-func flockTwoTogether2<T:Flier3>(f1:T, _ f2:T) {}
+func flockTwoTogether2<T:Flier3>(_ f1:T, _ f2:T) {}
 let vd2 : Void = flockTwoTogether2(Bird3(), Bird3())
 // let vd3 : Void = flockTwoTogether2(Bird3(), Insect3())
 // let vd4 : Void = flockTwoTogether2("hey", "ho")
 
-func myMin<T:Comparable>(things:T...) -> T {
+func myMin<T:Comparable>(_ things:T...) -> T {
     var minimum = things[0]
     for ix in 1..<things.count {
         if things[ix] < minimum { // compile error if you remove Comparable constraint
@@ -131,6 +132,9 @@ struct Wrapper<T> {
 }
 struct Wrapper2<T> {
     var thing : T
+    init(_ thing : T) {
+        self.thing = thing
+    }
 }
 class Cat {
 }
@@ -156,7 +160,8 @@ func flockTwoTogether6<T1:Flier6, T2:Flier6>(f1:T1, _ f2:T2) {
 
 // just testing: this one actually segfaults
 // but not any more! In Swift 2.2 (Xcode 7.3b) this is fine; not sure when that happened
-class Dog2<T:Dog2> {}
+// but in Swift 3 is segfaults again, taking it back out
+// class Dog2<T:Dog2> {}
 
 
 
@@ -170,13 +175,23 @@ class ViewController: UIViewController {
         
         do {
             // let w : Wrapper<Cat> = Wrapper<CalicoCat>() // error
-            var w2 : Wrapper2<Cat> = Wrapper2(thing:CalicoCat()) // fine
-            let w3 = Wrapper2(thing:CalicoCat())
+            var w2 : Wrapper2<Cat> = Wrapper2(CalicoCat()) // fine
+            let w3 = Wrapper2(CalicoCat())
             // w2 = w3 // error
             // ==== shut up the compiler
-            w2 = Wrapper2(thing:CalicoCat())
+            w2 = Wrapper2(CalicoCat())
             _ = w2
             _ = w3
+        }
+        
+        do {
+            var o = Optional(Cat())
+            let o2 = Optional(CalicoCat())
+            o = o2 // yep
+            var w = Wrapper2(Cat())
+            let w2 = Wrapper2(CalicoCat())
+            // w = w2 // nope
+            _ = (o, w, w2)
         }
         
     }

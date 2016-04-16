@@ -13,46 +13,46 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     weak var picker : UIImagePickerController?
     
     func determineStatus() -> Bool {
-        let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
+        let status = AVCaptureDevice.authorizationStatus(forMediaType:AVMediaTypeVideo)
         switch status {
-        case .Authorized:
+        case .authorized:
             return true
-        case .NotDetermined:
-            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: nil)
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeVideo, completionHandler: nil)
             return false
-        case .Restricted:
+        case .restricted:
             return false
-        case .Denied:
+        case .denied:
             let alert = UIAlertController(
                 title: "Need Authorization",
                 message: "Wouldn't you like to authorize this app " +
                 "to use the camera?",
-                preferredStyle: .Alert)
+                preferredStyle: .alert)
             alert.addAction(UIAlertAction(
-                title: "No", style: .Cancel, handler: nil))
+                title: "No", style: .cancel, handler: nil))
             alert.addAction(UIAlertAction(
-                title: "OK", style: .Default, handler: {
+                title: "OK", style: .default, handler: {
                     _ in
                     let url = NSURL(string:UIApplicationOpenSettingsURLString)!
-                    UIApplication.sharedApplication().openURL(url)
+                    UIApplication.shared().open(url)
             }))
-            self.presentViewController(alert, animated:true, completion:nil)
+            self.present(alert, animated:true, completion:nil)
             return false
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.defaultCenter().addObserver(self,
+        NSNotificationCenter.default().addObserver(self,
             selector: #selector(determineStatus),
             name: UIApplicationWillEnterForegroundNotification,
             object: nil)
     }
     
     
-    @IBAction func doTake (sender:AnyObject!) {
-        let cam = UIImagePickerControllerSourceType.Camera
+    @IBAction func doTake (_ sender:AnyObject!) {
+        let cam = UIImagePickerControllerSourceType.camera
         let ok = UIImagePickerController.isSourceTypeAvailable(cam)
         if (!ok) {
             print("no camera")
@@ -60,14 +60,14 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         }
         let desiredType = kUTTypeImage as NSString as String
         // let desiredType = kUTTypeMovie as NSString as String
-        let arr = UIImagePickerController.availableMediaTypesForSourceType(cam)
+        let arr = UIImagePickerController.availableMediaTypes(for:cam)
         print(arr)
-        if arr?.indexOf(desiredType) == nil {
+        if arr?.index(of:desiredType) == nil {
             print("no capture")
             return
         }
         let picker = UIImagePickerController()
-        picker.sourceType = .Camera
+        picker.sourceType = .camera
         picker.mediaTypes = [desiredType]
         // picker.allowsEditing = true
         picker.delegate = self
@@ -76,14 +76,14 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         // if the user refuses, Very Weird Things happen...
         // better to get authorization beforehand
         
-        self.presentViewController(picker, animated: true, completion: nil)
+        self.present(picker, animated: true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated:true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController,
+    func imagePickerController(_ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String : AnyObject]) {
             print(info[UIImagePickerControllerReferenceURL])
             let url = info[UIImagePickerControllerMediaURL] as? NSURL
@@ -92,7 +92,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             if edim != nil {
                 im = edim
             }
-            self.dismissViewControllerAnimated(true) {
+            self.dismiss(animated:true) {
                 let type = info[UIImagePickerControllerMediaType] as? String
                 if type != nil {
                     switch type! {
@@ -100,9 +100,9 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                         if im != nil {
                             self.showImage(im!)
                             // showing how simple it is to save into the Camera Roll
-                            let lib = PHPhotoLibrary.sharedPhotoLibrary()
+                            let lib = PHPhotoLibrary.shared()
                             lib.performChanges({
-                                PHAssetChangeRequest.creationRequestForAssetFromImage(im!)
+                                PHAssetChangeRequest.creationRequestForAsset(from: im!)
                                 }, completionHandler: nil)
                         }
                     case kUTTypeMovie as NSString as String:
@@ -118,31 +118,31 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func clearAll() {
         if self.childViewControllers.count > 0 {
             let av = self.childViewControllers[0] as! AVPlayerViewController
-            av.willMoveToParentViewController(nil)
+            av.willMove(toParentViewController: nil)
             av.view.removeFromSuperview()
             av.removeFromParentViewController()
         }
         self.redView.subviews.forEach { $0.removeFromSuperview() }
     }
     
-    func showImage(im:UIImage) {
+    func showImage(_ im:UIImage) {
         self.clearAll()
         let iv = UIImageView(image:im)
-        iv.contentMode = .ScaleAspectFit
+        iv.contentMode = .scaleAspectFit
         iv.frame = self.redView.bounds
         self.redView.addSubview(iv)
     }
     
-    func showMovie(url:NSURL) {
+    func showMovie(_ url:NSURL) {
         self.clearAll()
         let av = AVPlayerViewController()
-        let player = AVPlayer(URL:url)
+        let player = AVPlayer(url:url)
         av.player = player
         self.addChildViewController(av)
         av.view.frame = self.redView.bounds
         av.view.backgroundColor = self.redView.backgroundColor
         self.redView.addSubview(av.view)
-        av.didMoveToParentViewController(self)
+        av.didMove(toParentViewController: self)
     }
     
     func tap (g:UIGestureRecognizer) {

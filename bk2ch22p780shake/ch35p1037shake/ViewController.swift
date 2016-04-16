@@ -10,16 +10,16 @@ class ViewController: UIViewController {
         return true
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
     }
     
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if self.isFirstResponder() {
             print("hey, you shook me!")
         } else {
-            super.motionEnded(motion, withEvent: event)
+            super.motionEnded(motion, with: event)
         }
     }
     

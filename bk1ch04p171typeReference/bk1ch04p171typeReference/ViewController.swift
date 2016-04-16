@@ -15,7 +15,7 @@ class NoisyDog : Dog {
     }
 }
 
-func typeExpecter(whattype:Dog.Type) {
+func dogTypeExpecter(_ whattype:Dog.Type) {
 }
 
 
@@ -32,12 +32,19 @@ class ViewController: UIViewController {
         nd.bark() // Woof woof woof
         print(nd.dynamicType)
     
-        typeExpecter(Dog)
-        typeExpecter(Dog.self)
-        typeExpecter(d.dynamicType)
-        typeExpecter(d.dynamicType.self)
-        typeExpecter(nd.dynamicType)
-        typeExpecter(nd.dynamicType.self)
+        dogTypeExpecter(Dog)
+        dogTypeExpecter(Dog.self)
+        dogTypeExpecter(NoisyDog)
+        dogTypeExpecter(NoisyDog.self)
+        dogTypeExpecter(d.dynamicType)
+        dogTypeExpecter(d.dynamicType.self)
+        dogTypeExpecter(nd.dynamicType)
+        dogTypeExpecter(nd.dynamicType.self)
+        
+        let ddd = Dog.self
+        let dddd = ddd.dynamicType
+        print(ddd == Dog.self)
+        print(dddd == Dog.self.dynamicType) // oooookay...
 
 
     }

@@ -1,7 +1,7 @@
 
 
 import UIKit
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -9,6 +9,29 @@ func delay(delay:Double, closure:()->()) {
         ),
         dispatch_get_main_queue(), closure)
 }
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
 
 class RootViewController: UITableViewController {
     
@@ -21,29 +44,29 @@ class RootViewController: UITableViewController {
         
         // uncomment to show that the refresh control is hidden behind the background view
 //        let v = UIView()
-//        v.backgroundColor = UIColor.yellowColor()
+//        v.backgroundColor = UIColor.yellow()
 //        self.tableView.backgroundView = v
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if self.pep == nil {
             return 0
         }
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.pep.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
 
         cell.textLabel!.text = pep[indexPath.row]
         return cell
     }
 
-    @IBAction func doRefresh(sender: AnyObject) {
+    @IBAction func doRefresh(_ sender: AnyObject) {
         print("refreshing...")
         delay(3) {
             (sender as! UIRefreshControl).endRefreshing()
@@ -51,9 +74,9 @@ class RootViewController: UITableViewController {
         }
     }
 
-    @IBAction func doRefreshManually(sender: AnyObject) {
+    @IBAction func doRefreshManually(_ sender: AnyObject) {
         self.tableView.setContentOffset(
-            CGPointMake(0, -self.refreshControl!.bounds.height),
+            CGPoint(0, -self.refreshControl!.bounds.height),
             animated:true)
         self.refreshControl!.beginRefreshing()
         self.doRefresh(self.refreshControl!)

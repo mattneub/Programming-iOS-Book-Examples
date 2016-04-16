@@ -8,7 +8,7 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
     let groupObject : NSManagedObject
     lazy var frc : NSFetchedResultsController = {
         let req = NSFetchRequest()
-        let entity = NSEntityDescription.entityForName("Person", inManagedObjectContext:self.groupObject.managedObjectContext!)
+        let entity = NSEntityDescription.entity(forEntityName:"Person", in:self.groupObject.managedObjectContext!)
         req.entity = entity
         req.fetchBatchSize = 20
         let sortDescriptor = NSSortDescriptor(key:"timestamp", ascending:true)
@@ -44,26 +44,26 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         super.viewDidLoad()
         
         self.title = self.groupObject.name
-        let b = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(doAdd))
+        let b = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(doAdd))
         self.navigationItem.rightBarButtonItems = [b]
         
-        self.tableView.registerNib(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "Person")
+        self.tableView.register(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "Person")
     }
         
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return self.frc.sections!.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = self.frc.sections![section]
         return sectionInfo.numberOfObjects
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Person", forIndexPath:indexPath)
-        let object = self.frc.objectAtIndexPath(indexPath) as! NSManagedObject
-        let first = cell.viewWithTag(1) as! UITextField
-        let last = cell.viewWithTag(2) as! UITextField
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Person", for: indexPath)
+        let object = self.frc.object(at:indexPath) as! NSManagedObject
+        let first = cell.withTag(1) as! UITextField
+        let last = cell.withTag(2) as! UITextField
         first.text = object.firstName
         last.text = object.lastName
         first.delegate = self; last.delegate = self
@@ -74,7 +74,7 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         self.tableView.endEditing(true)
         let context = self.frc.managedObjectContext
         let entity = self.frc.fetchRequest.entity!
-        let mo = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext:context)
+        let mo = NSEntityDescription.insertNewObject(forEntityName:entity.name!, into:context)
         mo.group = self.groupObject
         mo.lastName = ""
         mo.firstName = ""
@@ -89,14 +89,14 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         // and the rest is in the update delegate messages
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         print("did end editing")
         var v = textField.superview!
         while !(v is UITableViewCell) {v = v.superview!}
         let cell = v as! UITableViewCell
-        let ip = self.tableView.indexPathForCell(cell)!
-        let object = self.frc.objectAtIndexPath(ip) as! NSManagedObject
-        object.setValue(textField.text, forKey: ((textField.tag == 1) ? "firstName" : "lastName"))
+        let ip = self.tableView.indexPath(for:cell)!
+        let object = self.frc.object(at:ip) as! NSManagedObject
+        object.setValue(textField.text! as NSString, forKey: ((textField.tag == 1) ? "firstName" : "lastName"))
         
         // save context
         do {
@@ -108,7 +108,7 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
 
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         let context = self.frc.managedObjectContext
         // save context
@@ -122,24 +122,24 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
     
     // === content update ===
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController) {
         self.tableView.beginUpdates()
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController,
-        didChangeObject anObject: AnyObject,
-        atIndexPath indexPath: NSIndexPath?,
-        forChangeType type: NSFetchedResultsChangeType,
+    func controller(_ controller: NSFetchedResultsController,
+        didChange anObject: AnyObject,
+        at indexPath: NSIndexPath?,
+        for type: NSFetchedResultsChangeType,
         newIndexPath: NSIndexPath?) {
-            if type == .Insert {
-                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+            if type == .insert {
+                self.tableView.insertRows(at:[newIndexPath!], with: .automatic)
                 dispatch_async(dispatch_get_main_queue()) { // wait for interface to settle
-                    let cell = self.tableView.cellForRowAtIndexPath(newIndexPath!)!
-                    let tf = cell.viewWithTag(1) as! UITextField
+                    let cell = self.tableView.cellForRow(at:newIndexPath!)!
+                    let tf = cell.withTag(1) as! UITextField
                     tf.becomeFirstResponder()
                 }
             }

@@ -18,10 +18,10 @@ class ViewController: UIViewController {
         svc.viewControllers = [PrimaryViewController(), SecondaryViewController()]
         self.addChildViewController(svc)
         self.view.addSubview(svc.view)
-        svc.didMoveToParentViewController(self)
+        svc.didMove(toParentViewController: self)
         
         svc.presentsWithGesture = false
-        svc.preferredDisplayMode = .PrimaryHidden
+        svc.preferredDisplayMode = .primaryHidden
     }
     
     // demonstration of how to implement your own logic for targetViewControllerForAction
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     // In this way, the Secondary can message the Primary completely agnostically!
     // This is the kind of "loose coupling" that Apple is after here
     
-    override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
+    override func targetViewController(forAction action: Selector, sender: AnyObject?) -> UIViewController? {
         if action == #selector(showHide) {
             let svc = self.childViewControllers[0] as! UISplitViewController
             let primary = svc.viewControllers[0] 
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
                 return primary
             }
         }
-        return super.targetViewControllerForAction(action, sender: sender)
+        return super.targetViewController(forAction:action, sender: sender)
     }
     
 }

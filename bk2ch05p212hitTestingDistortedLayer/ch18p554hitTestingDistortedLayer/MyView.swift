@@ -2,6 +2,29 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 
 // hit-testing on the non-transparent portion of a drawing
 // (here, it's the black ellipse)
@@ -21,41 +44,46 @@ class MyView : UIView {
         print("tap")
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         guard let subs = self.layer.sublayers else {return}
         let lay = subs[subs.count-1]
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
         let con = UIGraphicsGetCurrentContext()!
         let r = self.bounds.insetBy(dx: 30, dy: 30)
-        CGContextSaveGState(con)
-        CGContextTranslateCTM(con, self.bounds.width/2.0, self.bounds.height/2.0)
-        CGContextRotateCTM(con, CGFloat(M_PI)/10.0)
-        CGContextTranslateCTM(con, -self.bounds.size.width/2.0, -self.bounds.size.height/2.0)
-        CGContextFillEllipseInRect(con, r)
-        CGContextRestoreGState(con)
-        let im = UIGraphicsGetImageFromCurrentImageContext()
+        con.saveGState()
+        con.translate(x: self.bounds.width/2.0, y: self.bounds.height/2.0)
+        con.rotate(byAngle: CGFloat(M_PI)/10.0)
+        con.translate(x: -self.bounds.size.width/2.0, y: -self.bounds.size.height/2.0)
+        con.fillEllipse(in:r)
+        con.restoreGState()
+        let im = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        lay.contents = im.CGImage
+        lay.contents = im.cgImage
     }
     
-    override func hitTest(point: CGPoint, withEvent e: UIEvent?) -> UIView? {
-        let inside = self.pointInside(point, withEvent:e)
+    override func hitTest(_ point: CGPoint, with e: UIEvent?) -> UIView? {
+        let inside = self.point(inside:point, with:e)
         if !inside { return nil }
         
         guard let subs = self.layer.sublayers else {return nil}
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
         let lay = subs[subs.count-1]
-        lay.renderInContext(UIGraphicsGetCurrentContext()!)
-        let im = UIGraphicsGetImageFromCurrentImageContext()
+        lay.render(in:UIGraphicsGetCurrentContext()!)
+        let im = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        let info = CGImageAlphaInfo.Only.rawValue
-        let pixel = UnsafeMutablePointer<CUnsignedChar>.alloc(1)
+        let info = CGImageAlphaInfo.alphaOnly.rawValue
+        let pixel = UnsafeMutablePointer<CUnsignedChar>(allocatingCapacity:1)
+        defer {
+            pixel.deinitialize(count: 1)
+            pixel.deallocateCapacity(1)
+        }
         pixel[0] = 0
-        let context = CGBitmapContextCreate(pixel,
-            1, 1, 8, 1, nil, info)!
+        let context = CGContext(data: pixel,
+            width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 1,
+            space: nil, bitmapInfo: info, releaseCallback:nil, releaseInfo: nil)!
         UIGraphicsPushContext(context)
-        im.drawAtPoint(CGPointMake(-point.x, -point.y))
+        im.draw(at:CGPoint(-point.x, -point.y))
         UIGraphicsPopContext()
         let p = pixel[0]
         let alpha = Double(p)/255.0

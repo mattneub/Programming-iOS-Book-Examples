@@ -10,22 +10,22 @@ class ViewController: UIViewController {
     @IBOutlet var v : MyView!
     var ref : CMAttitude!
     
-    @IBAction func doButton (sender:AnyObject!) {
+    @IBAction func doButton (_ sender:AnyObject!) {
         self.ref = nil // start over if user presses button again
-        guard self.motman.deviceMotionAvailable else {
+        guard self.motman.isDeviceMotionAvailable else {
             print("oh well")
             return
         }
-        let ref = CMAttitudeReferenceFrame.XArbitraryCorrectedZVertical
+        let ref = CMAttitudeReferenceFrame.xArbitraryCorrectedZVertical
         let avail = CMMotionManager.availableAttitudeReferenceFrames()
         guard avail.contains(ref) else {
             print("darn")
             return
         }
         self.motman.deviceMotionUpdateInterval = 1.0 / 20.0
-        self.motman.startDeviceMotionUpdatesUsingReferenceFrame(ref)
+        self.motman.startDeviceMotionUpdates(using: ref)
         let t = 1.0 / 10.0
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(t, target:self, selector:#selector(pollAttitude),userInfo:nil, repeats:true)
+        self.timer = NSTimer.scheduledTimer(timeInterval:t, target:self, selector:#selector(pollAttitude),userInfo:nil, repeats:true)
     }
     
     func pollAttitude(_:AnyObject!) {
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
             print("got ref \(att.pitch), \(att.roll), \(att.yaw)")
             return
         }
-        att.multiplyByInverseOfAttitude(self.ref)
+        att.multiply(byInverseOf: self.ref)
         let r = att.rotationMatrix
         
         var t = CATransform3DIdentity

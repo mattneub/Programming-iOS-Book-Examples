@@ -5,7 +5,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     var window : UIWindow?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         self.window = UIWindow()
         
@@ -25,7 +25,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         self.window!.rootViewController = theRVC
         
-        self.window!.backgroundColor = UIColor.whiteColor()
+        self.window!.backgroundColor = UIColor.white()
         self.window!.makeKeyAndVisible()
         return true
         

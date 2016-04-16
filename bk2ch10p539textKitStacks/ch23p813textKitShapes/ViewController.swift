@@ -18,9 +18,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let path = NSBundle.mainBundle().pathForResource("brillig", ofType: "txt")!
+        let path = NSBundle.main().pathForResource("brillig", ofType: "txt")!
         let s = try! String(contentsOfFile:path, encoding: NSUTF8StringEncoding)
-        let s2 = s.stringByReplacingOccurrencesOfString("\n", withString: "")
+        let s2 = s.replacingOccurrences(of:"\n", with: "")
         let mas = NSMutableAttributedString(string:s2, attributes:[
             NSFontAttributeName: UIFont(name:"GillSans", size:14)!
             ])
@@ -28,8 +28,8 @@ class ViewController: UIViewController {
         mas.addAttribute(NSParagraphStyleAttributeName,
             value:lend(){
                 (para:NSMutableParagraphStyle) in
-                para.alignment = .Left
-                para.lineBreakMode = .ByWordWrapping
+                para.alignment = .left
+                para.lineBreakMode = .byWordWrapping
                 para.hyphenationFactor = 1
             },
             range:NSMakeRange(0,1))
@@ -56,8 +56,8 @@ class ViewController: UIViewController {
             
             self.tv.removeFromSuperview()
             self.tv2.removeFromSuperview()
-            tv.backgroundColor = UIColor.yellowColor()
-            tv2.backgroundColor = UIColor.yellowColor()
+            tv.backgroundColor = UIColor.yellow()
+            tv2.backgroundColor = UIColor.yellow()
             self.view.addSubview(tv)
             self.view.addSubview(tv2)
             self.tv = tv
@@ -83,8 +83,8 @@ class ViewController: UIViewController {
 
             self.tv.removeFromSuperview()
             self.tv2.removeFromSuperview()
-            tv.backgroundColor = UIColor.yellowColor()
-            tv2.backgroundColor = UIColor.yellowColor()
+            tv.backgroundColor = UIColor.yellow()
+            tv2.backgroundColor = UIColor.yellow()
             self.view.addSubview(tv)
             self.view.addSubview(tv2)
             self.tv = tv

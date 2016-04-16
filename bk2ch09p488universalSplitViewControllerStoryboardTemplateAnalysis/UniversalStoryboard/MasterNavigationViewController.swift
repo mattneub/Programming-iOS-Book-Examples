@@ -1,7 +1,7 @@
 
 
 import UIKit
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -21,17 +21,17 @@ class MasterNavigationViewController : UINavigationController {
     // it turns around and sends showViewController to the nav controller in the primary!
     // thus it gets pushed onto the stack
     
-    override func showViewController(vc: UIViewController, sender: AnyObject?) {
+    override func show(_ vc: UIViewController, sender: AnyObject?) {
         print("master NAV view controller showViewController: \(vc)")
-        super.showViewController(vc, sender: sender)
+        super.show(vc, sender: sender)
         delay(1) {
             print(self.viewControllers)
         }
     }
     
-    override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
+    override func targetViewController(forAction action: Selector, sender: AnyObject?) -> UIViewController? {
         print("master NAV view controller target for \(action) \(sender)...")
-        let result = super.targetViewControllerForAction(action, sender: sender)
+        let result = super.targetViewController(forAction: action, sender: sender)
         print("master NAV view controller target for \(action), returning \(result)")
         return result
     }
@@ -40,15 +40,15 @@ class MasterNavigationViewController : UINavigationController {
         return true // no effect
     }
     
-    override func respondsToSelector(aSelector: Selector) -> Bool {
-        let ok = super.respondsToSelector(aSelector)
+    override func responds(to aSelector: Selector) -> Bool {
+        let ok = super.responds(to:aSelector)
         if aSelector == #selector(showDetailViewController) {
             print("master NAV responds? \(ok)")
         }
         return ok
     }
     
-    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
         let ok = super.canPerformAction(action, withSender:sender)
         if action == #selector(showDetailViewController) {
             print("master NAV can perform? \(ok)")

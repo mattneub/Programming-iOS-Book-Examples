@@ -1,6 +1,29 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class ViewController: UIViewController {
     
     @IBOutlet var prog1 : UIProgressView!
@@ -8,22 +31,22 @@ class ViewController: UIViewController {
     @IBOutlet var prog3 : MyProgressView!
     @IBOutlet var prog4: MyCircularProgressButton!
 
-    @IBAction func doButton (sender:AnyObject) {
+    @IBAction func doButton (_ sender:AnyObject) {
         self.prog1.progress = 0
         self.prog2.progress = 0
         self.prog3.value = 0
         self.prog3.setNeedsDisplay()
         self.prog4.progress = 0
-        NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: #selector(inc), userInfo: nil, repeats: true)
+        NSTimer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(inc), userInfo: nil, repeats: true)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         /*
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(9,9), NO, 0);
+        UIGraphicsBeginImageContextWithOptions(CGSize(9,9), NO, 0);
         CGContextRef con = UIGraphicsGetCurrentContext()!;
-        CGContextSetFillColorWithColor(con, [UIColor blackColor].CGColor);
+        CGContextSetFillColorWithColor(con, [UIColor blackColor].cgColor);
         CGContextMoveToPoint(con, 0, 4.5);
         CGContextAddLineToPoint(con, 4.5, 9);
         CGContextAddLineToPoint(con, 9, 4.5);
@@ -31,11 +54,11 @@ class ViewController: UIViewController {
         CGContextClosePath(con);
         CGPathRef p = CGContextCopyPath(con);
         CGContextFillPath(con);
-        UIImage* im = UIGraphicsGetImageFromCurrentImageContext();
-        CGContextSetFillColorWithColor(con, [UIColor whiteColor].CGColor);
+        UIImage* im = UIGraphicsGetImageFromCurrentImageContext()!;
+        CGContextSetFillColorWithColor(con, [UIColor whiteColor].cgColor);
         CGContextAddPath(con, p);
         CGContextFillPath(con);
-        UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext();
+        UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext()!;
         CGPathRelease(p);
         UIGraphicsEndImageContext();
         im = [im resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)
@@ -46,19 +69,19 @@ class ViewController: UIViewController {
         self.prog2.progressImage = im2;
         */
 
-        self.prog2.backgroundColor = UIColor.blackColor()
-        self.prog2.trackTintColor = UIColor.blackColor()
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(10,10), true, 0)
+        self.prog2.backgroundColor = UIColor.black()
+        self.prog2.trackTintColor = UIColor.black()
+        UIGraphicsBeginImageContextWithOptions(CGSize(10,10), true, 0)
         let con = UIGraphicsGetCurrentContext()!
-        CGContextSetFillColorWithColor(con, UIColor.yellowColor().CGColor)
-        CGContextFillRect(con, CGRectMake(0, 0, 10, 10))
-        let r = CGRectInset(CGContextGetClipBoundingBox(con),1,1)
-        CGContextSetLineWidth(con, 2)
-        CGContextSetStrokeColorWithColor(con, UIColor.blackColor().CGColor)
-        CGContextStrokeRect(con, r)
-        CGContextStrokeEllipseInRect(con, r)
+        con.setFillColor(UIColor.yellow().cgColor)
+        con.fill(CGRect(0, 0, 10, 10))
+        let r = con.boundingBoxOfClipPath.insetBy(dx: 1,dy: 1)
+        con.setLineWidth(2)
+        con.setStrokeColor(UIColor.black().cgColor)
+        con.stroke(r)
+        con.strokeEllipse(in: r)
         let im =
-            UIGraphicsGetImageFromCurrentImageContext().resizableImageWithCapInsets(UIEdgeInsetsMake(4, 4, 4, 4), resizingMode:.Stretch)
+            UIGraphicsGetImageFromCurrentImageContext()!.resizableImage(withCapInsets:UIEdgeInsetsMake(4, 4, 4, 4), resizingMode:.stretch)
         UIGraphicsEndImageContext()
         self.prog2.progressImage = im
         

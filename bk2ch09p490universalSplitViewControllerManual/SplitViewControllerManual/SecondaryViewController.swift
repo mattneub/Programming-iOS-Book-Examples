@@ -7,20 +7,20 @@ class SecondaryViewController : UIViewController {
     // configure our interface
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.redColor()
-        let b = UIButton(type:.System)
-        b.setTitle("Configure", forState: .Normal)
-        b.backgroundColor = UIColor.yellowColor()
-        b.addTarget(self, action: #selector(callShowHide), forControlEvents: .TouchUpInside)
+        self.view.backgroundColor = UIColor.red()
+        let b = UIButton(type:.system)
+        b.setTitle("Configure", for: []) // normal
+        b.backgroundColor = UIColor.yellow()
+        b.addTarget(self, action: #selector(callShowHide), for: .touchUpInside)
         self.view.addSubview(b)
         b.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([
-            NSLayoutConstraint.constraintsWithVisualFormat("H:[b]-|", options: [], metrics: nil, views: ["b":b]),
-            NSLayoutConstraint.constraintsWithVisualFormat("V:[b]-|", options: [], metrics: nil, views: ["b":b])
+        NSLayoutConstraint.activate([
+            NSLayoutConstraint.constraints(withVisualFormat:"H:[b]-|", options: [], metrics: nil, views: ["b":b]),
+            NSLayoutConstraint.constraints(withVisualFormat:"V:[b]-|", options: [], metrics: nil, views: ["b":b])
             ].flatten().map{$0})
     }
     
-    func callShowHide(sender:AnyObject?) {
+    func callShowHide(_ sender:AnyObject?) {
         // this intermediate method is unnecessary; it's just so I can log the call
         print("calling showHide on self")
         self.showHide(sender)

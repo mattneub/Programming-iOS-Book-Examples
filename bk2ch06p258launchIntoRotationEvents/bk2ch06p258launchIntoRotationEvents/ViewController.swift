@@ -20,7 +20,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return super.supportedInterfaceOrientations()
-        return .Landscape
+        return .landscape
     }
     
 //    func navigationControllerSupportedInterfaceOrientations(navigationController: UINavigationController!) -> Int {
@@ -35,7 +35,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         print("viewDidLoad reports \(self.traitCollection)")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("will appear \(self.view.bounds.size)")
     }
@@ -48,24 +48,24 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         print("didLayout \(self.view.bounds.size)")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("did appear \(self.view.bounds.size)")
     }
     
-    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         print("willTransition trait")
         print(newCollection)
-        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+        super.willTransition(to: newCollection, with: coordinator)
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         print("willTransition size")
         print(size)
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        super.viewWillTransition(to: size, with: coordinator)
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         print("trait collection did change")
     }
 

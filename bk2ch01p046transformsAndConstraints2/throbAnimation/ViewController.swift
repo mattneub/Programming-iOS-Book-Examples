@@ -24,20 +24,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func doTest(sender:AnyObject?) {
+    @IBAction func doTest(_ sender:AnyObject?) {
 //        self.v2.setTranslatesAutoresizingMaskIntoConstraints(true)
 //        self.constraints = self.v2.constraints() as NSLayoutConstraint[]
 //        self.v2.removeConstraints(self.constraints)
 
-        UIView.animateWithDuration(0.4, delay: 0,
-            options: .Autoreverse,
+        UIView.animate(withDuration:0.4, delay: 0,
+            options: .autoreverse,
             animations: {
-            self.v1.transform = CGAffineTransformMakeScale(1.1, 1.1)
-            self.v2.transform = CGAffineTransformMakeScale(1.1, 1.1)
+                self.v1.transform = CGAffineTransform(scaleX:1.1, y:1.1)
+                self.v2.transform = CGAffineTransform(scaleX:1.1, y:1.1)
             }, completion: {
                 _ in
-                self.v1.transform = CGAffineTransformIdentity
-                self.v2.transform = CGAffineTransformIdentity
+                self.v1.transform = CGAffineTransform.identity
+                self.v2.transform = CGAffineTransform.identity
 
 //                self.v2.addConstraints(self.constraints)
 //                self.v2.setTranslatesAutoresizingMaskIntoConstraints(false)

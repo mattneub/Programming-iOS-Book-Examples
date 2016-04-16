@@ -4,7 +4,7 @@ import AVFoundation
 
 // nb test on device
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -18,29 +18,29 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     var timer : NSTimer?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, withOptions: [])
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
         
         return true
     }
     
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         print("bp in \(#function)")
         return; // comment out to perform timer experiment
         
         self.timer?.invalidate()
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(fired(_:)), userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimer(timeInterval:1, target: self, selector: #selector(fired), userInfo: nil, repeats: true)
     }
     
     // timer fires while we are in background, provided
     // (1) we scheduled it before going into the background
     // (2) we are running in the background (i.e. playing)
-    func fired(timer:NSTimer) {
+    func fired(_ timer:NSTimer) {
         print("bp timer fired")
     }
     
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         print("bp in \(#function)")
         print("bp state while entering background: \(application.applicationState.rawValue)")
         return; // comment out to experiment with background app performing immediate local notification
@@ -55,24 +55,24 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     // we never receive this (if we are in background at the time)
     // but the notification does appear as banner/alert and in the notification center
-    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
         print("bp got local notification reading \(notification.alertBody)")
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         print("bp in \(#function)")
     }
     
     // we are a player app, we activate playback category only when we actually start playing
     // the rest of the time we use ambient just so we have an active category
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         print("bp in \(#function)")
         
-        let types : UIUserNotificationType = .Alert
+        let types : UIUserNotificationType = .alert
         let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
-        application.registerUserNotificationSettings(settings)
+        application.register(settings)
         
-        _ = try? AVAudioSession.sharedInstance().setActive(true, withOptions: [])
+        _ = try? AVAudioSession.sharedInstance().setActive(true)
         // new iOS 8 feature
         let mute = AVAudioSession.sharedInstance().secondaryAudioShouldBeSilencedHint
         let s = mute ? "to" : "not"
@@ -82,7 +82,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // trying killing app from app switcher while playing in background;
     // we receive this!
     
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         print("bp in \(#function)")
     }
 }

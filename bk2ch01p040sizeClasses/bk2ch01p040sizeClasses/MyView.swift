@@ -14,11 +14,11 @@ class MyView: UIView {
     var c2 : NSLayoutConstraint!
         
     func configure() {
-        self.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
+        self.backgroundColor = UIColor(red: 1 as CGFloat, green: 0.4, blue: 1, alpha: 1)
         let v2 = UIView()
-        v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
+        v2.backgroundColor = UIColor(red: 0.5 as CGFloat, green: 1, blue: 0, alpha: 1)
         let v3 = UIView()
-        v3.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+        v3.backgroundColor = UIColor(red: 1 as CGFloat, green: 0, blue: 0, alpha: 1)
         
         v2.translatesAutoresizingMaskIntoConstraints = false
         v3.translatesAutoresizingMaskIntoConstraints = false
@@ -26,26 +26,26 @@ class MyView: UIView {
         self.addSubview(v3)
         
         
-        self.c1 = v2.heightAnchor.constraintEqualToConstant(0) // not really
-        self.c2 = v3.widthAnchor.constraintEqualToConstant(0) // not really
-        NSLayoutConstraint.activateConstraints([
+        self.c1 = v2.heightAnchor.constraintEqual(toConstant:0) // not really
+        self.c2 = v3.widthAnchor.constraintEqual(toConstant:0) // not really
+        NSLayoutConstraint.activate([
             c1,
             c2,
-            v2.leftAnchor.constraintEqualToAnchor(self.leftAnchor),
-            v2.rightAnchor.constraintEqualToAnchor(self.rightAnchor),
-            v2.topAnchor.constraintEqualToAnchor(self.topAnchor),
-            v3.heightAnchor.constraintEqualToAnchor(v3.widthAnchor),
-            v3.rightAnchor.constraintEqualToAnchor(self.rightAnchor),
-            v3.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor),
+            v2.leftAnchor.constraintEqual(to:self.leftAnchor),
+            v2.rightAnchor.constraintEqual(to:self.rightAnchor),
+            v2.topAnchor.constraintEqual(to:self.topAnchor),
+            v3.heightAnchor.constraintEqual(to:v3.widthAnchor),
+            v3.rightAnchor.constraintEqual(to:self.rightAnchor),
+            v3.bottomAnchor.constraintEqual(to:self.bottomAnchor),
         ])
     }
     
-    override func willMoveToSuperview(newSuperview: UIView!) {
+    override func willMove(toSuperview newSuperview: UIView!) {
         self.configure()
     }
     
     override func updateConstraints() {
-        let comp = self.traitCollection.horizontalSizeClass == .Compact
+        let comp = self.traitCollection.horizontalSizeClass == .compact
         let d1 : CGFloat = comp ? 10 : 40
         let d2 : CGFloat = comp ? 20 : 80
         self.c1.constant = d1
@@ -54,7 +54,7 @@ class MyView: UIView {
         super.updateConstraints()
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         print("did change")
         self.setNeedsUpdateConstraints()
     }

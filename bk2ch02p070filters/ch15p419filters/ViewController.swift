@@ -21,12 +21,12 @@ class ViewController : UIViewController {
         // first filter
         let grad = CIFilter(name: "CIRadialGradient")!
         grad.setValue(center, forKey:"inputCenter")
-        grad.setValue(smallerDimension/2.0 * 0.85, forKey:"inputRadius0")
-        grad.setValue(largerDimension/2.0, forKey:"inputRadius1")
+        grad.setValue(smallerDimension/2.0 * 0.85 as AnyObject, forKey:"inputRadius0")
+        grad.setValue(largerDimension/2.0 as AnyObject, forKey:"inputRadius1")
         let gradimage = grad.outputImage!
 
         // second filter
-        let blendimage = moici.imageByApplyingFilter(
+        let blendimage = moici.applyingFilter(
             "CIBlendWithMask", withInputParameters: [
                 "inputMaskImage":gradimage
             ])
@@ -37,16 +37,16 @@ class ViewController : UIViewController {
         
         switch which {
         case 1:
-            let moicg = self.context.createCGImage(blendimage, fromRect: moiextent)
-            self.iv.image = UIImage(CGImage: moicg)
+            let moicg = self.context.createCGImage(blendimage, from: moiextent)
+            self.iv.image = UIImage(cgImage: moicg)
         case 2:
             UIGraphicsBeginImageContextWithOptions(moiextent.size, false, 0)
-            UIImage(CIImage: blendimage).drawInRect(moiextent)
-            let im = UIGraphicsGetImageFromCurrentImageContext()
+            UIImage(ciImage: blendimage).draw(in:moiextent)
+            let im = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
             self.iv.image = im
         case 3:
-            self.iv.image = UIImage(CIImage: blendimage) // nope
+            self.iv.image = UIImage(ciImage: blendimage) // nope
         default: break
         }
         

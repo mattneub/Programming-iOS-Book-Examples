@@ -27,12 +27,12 @@ class MyView : UIView {
     
     // invocation variant
     
-    func setCenterUndoably (newCenter:CGPoint) { // *
-        self.undoer.prepareWithInvocationTarget(self).setCenterUndoably(self.center) // *
+    func setCenterUndoably (_ newCenter:CGPoint) { // *
+        self.undoer.prepare(withInvocationTarget:self).setCenterUndoably(self.center) // *
         self.undoer.setActionName("Move")
-        if self.undoer.undoing || self.undoer.redoing {
+        if self.undoer.isUndoing || self.undoer.isRedoing {
             print("undoing or redoing")
-            UIView.animateWithDuration(0.4, delay: 0.1, options: [], animations: {
+            UIView.animate(withDuration:0.4, delay: 0.1, options: [], animations: {
                 self.center = newCenter // *
             }, completion: nil)
         } else {
@@ -42,18 +42,18 @@ class MyView : UIView {
         }
     }
     
-    func dragging (p : UIPanGestureRecognizer) {
+    func dragging (_ p : UIPanGestureRecognizer) {
         switch p.state {
-        case .Began:
+        case .began:
             self.undoer.beginUndoGrouping()
             fallthrough
-        case .Began, .Changed:
-            let delta = p.translationInView(self.superview!)
+        case .began, .changed:
+            let delta = p.translation(in:self.superview!)
             var c = self.center
             c.x += delta.x; c.y += delta.y
             self.setCenterUndoably(c) // *
-            p.setTranslation(CGPointZero, inView: self.superview!)
-        case .Ended, .Cancelled:
+            p.setTranslation(CGPoint.zero, in: self.superview!)
+        case .ended, .cancelled:
             self.undoer.endUndoGrouping()
             self.becomeFirstResponder()
         default:break
@@ -62,10 +62,10 @@ class MyView : UIView {
     
     // ===== press-and-hold, menu
 
-    func longPress (g : UIGestureRecognizer) {
-        if g.state == .Began {
-            let m = UIMenuController.sharedMenuController()
-            m.setTargetRect(self.bounds, inView: self)
+    func longPress (_ g : UIGestureRecognizer) {
+        if g.state == .began {
+            let m = UIMenuController.shared()
+            m.setTargetRect(self.bounds, in: self)
             let mi1 = UIMenuItem(title: self.undoer.undoMenuItemTitle, action: #selector(undo))
             let mi2 = UIMenuItem(title: self.undoer.redoMenuItemTitle, action: #selector(redo))
             m.menuItems = [mi1, mi2]
@@ -73,7 +73,7 @@ class MyView : UIView {
         }
     }
     
-    override func canPerformAction(action: Selector, withSender sender: AnyObject!) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: AnyObject!) -> Bool {
         if action == #selector(undo) {
             return self.undoer.canUndo
         }

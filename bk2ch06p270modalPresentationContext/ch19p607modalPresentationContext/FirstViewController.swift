@@ -5,19 +5,19 @@ class FirstViewController : UIViewController {
     
     
     let which = 3
-    @IBAction func doPresent(sender:AnyObject?) {
+    @IBAction func doPresent(_ sender:AnyObject?) {
         switch which {
         case 1:
             let vc = ExtraViewController(nibName: "ExtraViewController", bundle: nil)
-            self.presentViewController(vc, animated: true, completion: nil)
+            self.present(vc, animated: true, completion: nil)
             
         case 2:
             // in iOS 8/9, this works on iPhone as well as iPad!
             // presented vc appears over first vc *inside* tabbed interface
             let vc = ExtraViewController(nibName: "ExtraViewController", bundle: nil)
             self.definesPresentationContext = true
-            vc.modalPresentationStyle = .CurrentContext
-            self.presentViewController(vc, animated: true, completion: nil)
+            vc.modalPresentationStyle = .currentContext
+            self.present(vc, animated: true, completion: nil)
 
         case 3:
             let vc = ExtraViewController(nibName: "ExtraViewController", bundle: nil)
@@ -25,13 +25,13 @@ class FirstViewController : UIViewController {
             self.definesPresentationContext = true
             // comment out next line to see the difference
             self.providesPresentationContextTransitionStyle = true
-            self.modalTransitionStyle = .CoverVertical
-            vc.modalPresentationStyle = .CurrentContext
-            vc.modalTransitionStyle = .FlipHorizontal // this will be overridden
+            self.modalTransitionStyle = .coverVertical
+            vc.modalPresentationStyle = .currentContext
+            vc.modalTransitionStyle = .flipHorizontal // this will be overridden
             
             vc.modalPresentationCapturesStatusBarAppearance = true
             
-            self.presentViewController(vc, animated: true, completion: nil)
+            self.present(vc, animated: true, completion: nil)
 
             
             
@@ -57,7 +57,7 @@ The following code stops the user from doing that, and so avoids the bug
 */
 
 extension FirstViewController : UITabBarControllerDelegate {
-    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
-        return self.presentedViewController == nil
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        return self.presented == nil
     }
 }

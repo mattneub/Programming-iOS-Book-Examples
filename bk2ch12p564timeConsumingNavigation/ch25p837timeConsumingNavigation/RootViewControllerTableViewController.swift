@@ -2,7 +2,7 @@
 
 import UIKit
 
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -13,26 +13,26 @@ func delay(delay:Double, closure:()->()) {
 
 class RootViewController: UITableViewController {
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
         cell.textLabel!.text = "Let’s go!"
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
         // there must be at least _some_ delay, to let the spinner start spinning
         // in this case I also use the delay to simulate a time-consuming preparation process
         delay (2) {
             let detail = ViewController()
-            self.tableView.selectRowAtIndexPath(nil, animated: false, scrollPosition: .None)
+            self.tableView.selectRow(at:nil, animated: false, scrollPosition: .none)
             self.navigationController!.pushViewController(detail, animated: true)
         }
     }

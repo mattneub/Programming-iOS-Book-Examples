@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // basically, this is pure template code
     // I have neatened it up, shortened some names, and commented on it (and added logging)
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         let svc = self.window!.rootViewController as! UISplitViewController
         // place button in detail controller's nav bar
@@ -46,12 +46,12 @@ extension AppDelegate: UISplitViewControllerDelegate {
     // with a nav interface, what's appropriate is:
     // discard the 2nd nav controller, push 2nd v.c. onto 1st nav controller
     
-    func primaryViewControllerForCollapsingSplitViewController(splitViewController: UISplitViewController) -> UIViewController? {
+    func primaryViewController(forCollapsing splitViewController: UISplitViewController) -> UIViewController? {
         print("delegate primary view for collapsing, returning nil")
         return nil // means just do what you would normally do
     }
 
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController vc2:UIViewController, ontoPrimaryViewController vc1:UIViewController) -> Bool {
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondaryViewController vc2:UIViewController, ontoPrimaryViewController vc1:UIViewController) -> Bool {
         print("begin delegate collapse")
         if let vc2 = vc2 as? UINavigationController {
             if let detail = vc2.topViewController as? DetailViewController {
@@ -72,20 +72,20 @@ extension AppDelegate: UISplitViewControllerDelegate {
 
     func targetDisplayModeForActionInSplitViewController(svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
         print("mode?")
-        return .Automatic
+        return .automatic
     }
     
     
-    func splitViewController(svc: UISplitViewController, willChangeToDisplayMode displayMode: UISplitViewControllerDisplayMode) {
+    func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewControllerDisplayMode) {
         print("changing to mode: \(displayMode.rawValue)")
     }
     
-    func splitViewController(splitViewController: UISplitViewController, showViewController vc: UIViewController, sender: AnyObject?) -> Bool {
+    func splitViewController(_ splitViewController: UISplitViewController, show vc: UIViewController, sender: AnyObject?) -> Bool {
         print("svc show vc")
         return false
     }
     
-    func splitViewController(splitViewController: UISplitViewController, showDetailViewController vc: UIViewController, sender: AnyObject?) -> Bool {
+    func splitViewController(_ splitViewController: UISplitViewController, showDetailViewController vc: UIViewController, sender: AnyObject?) -> Bool {
         print("svc show detail vc")
         return false
     }

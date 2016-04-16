@@ -299,6 +299,7 @@
 				32EC6B781B542BC600F0589B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

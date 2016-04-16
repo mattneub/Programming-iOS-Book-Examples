@@ -2,7 +2,7 @@
 
 import UIKit
 import MobileCoreServices
-func delay(delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:()->()) {
     dispatch_after(
         dispatch_time(
             DISPATCH_TIME_NOW,
@@ -21,7 +21,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.tf.allowsEditingTextAttributes = false
     }
     
-    @IBAction func doShare(sender: AnyObject) {
+    @IBAction func doShare(_ sender: AnyObject) {
         self.view.endEditing(true)
         delay(0.2) {
             self.showActivityView()
@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func showActivityView() {
         let things = self.tf.text!
-        let avc = UIActivityViewController(activityItems:[things], applicationActivities:nil)
+        let avc = UIActivityViewController(activityItems:[things as NSObject], applicationActivities:nil)
         // just showing it can be done this way
         /*
         let p = NSItemProvider()
@@ -54,7 +54,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     else {
                         return
                 }
-                provider.loadItemForTypeIdentifier(self.desiredType, options: nil) {
+                provider.loadItem(forTypeIdentifier: self.desiredType, options: nil) {
                     (item:NSSecureCoding?, err:NSError!) -> () in
                     dispatch_async(dispatch_get_main_queue()) {
                         if let s = item as? String {
@@ -81,7 +81,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             UIActivityTypeAirDrop,
             UIActivityTypeOpenInIBooks,
         ]
-        self.presentViewController(avc, animated:true, completion:nil)
+        self.present(avc, animated:true, completion:nil)
 
     }
     

@@ -7,7 +7,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     var talker = AVSpeechSynthesizer()
 
-    @IBAction func talk (sender:AnyObject!) {
+    @IBAction func talk (_ sender:AnyObject!) {
         let utter = AVSpeechUtterance(string:"Polly, want a cracker?")
         // print(AVSpeechSynthesisVoice.speechVoices())
         let v = AVSpeechSynthesisVoice(language: "en-US")
@@ -16,22 +16,22 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
 //        rate = rate * 0.15 + AVSpeechUtteranceMinimumSpeechRate
 //        utter.rate = rate
         self.talker.delegate = self
-        self.talker.speakUtterance(utter)
+        self.talker.speak(utter)
         
         print(v?.identifier)
         print(v?.quality.rawValue)
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         print("starting")
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         print("finished")
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
-        let s = (utterance.speechString as NSString).substringWithRange(characterRange)
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
+        let s = (utterance.speechString as NSString).substring(with:characterRange)
         print("about to say \(s)")
     }
     

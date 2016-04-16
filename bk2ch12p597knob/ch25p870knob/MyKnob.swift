@@ -10,50 +10,50 @@ class MyKnob: UIControl {
             if self.angle > 5 {
                 self.angle = 5
             }
-            self.transform = CGAffineTransformMakeRotation(self.angle)
+            self.transform = CGAffineTransform(rotationAngle: self.angle)
         }
     }
     var continuous = false
     private var initialAngle : CGFloat = 0
 
-    func pToA (touch:UITouch) -> CGFloat {
-        let loc = touch.locationInView(self)
-        let c = CGPointMake(self.bounds.midX, self.bounds.midY)
+    func pToA (_ touch:UITouch) -> CGFloat {
+        let loc = touch.location(in: self)
+        let c = CGPoint(x:self.bounds.midX, y:self.bounds.midY)
         return atan2(loc.y - c.y, loc.x - c.x)
     }
     
-    override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
+    override func beginTracking(with touch: UITouch, with event: UIEvent?) -> Bool {
         self.initialAngle = pToA(touch)
         return true
     }
     
-    override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
+    override func continueTracking(with touch: UITouch, with event: UIEvent?) -> Bool {
         let ang = pToA(touch) - self.initialAngle
         let absoluteAngle = self.angle + ang
         switch absoluteAngle { // how to do inequalities in a Swift switch statement
         case -CGFloat.max...0:
             self.angle = 0
-            self.sendActionsForControlEvents(.ValueChanged)
+            self.sendActions(for: .valueChanged)
             return false
         case 5...CGFloat.max:
             self.angle = 5
-            self.sendActionsForControlEvents(.ValueChanged)
+            self.sendActions(for: .valueChanged)
             return false
         default:
             self.angle = absoluteAngle
             if self.continuous {
-                self.sendActionsForControlEvents(.ValueChanged)
+                self.sendActions(for: .valueChanged)
             }
             return true
         }
     }
     
-    override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
-        self.sendActionsForControlEvents(.ValueChanged)
+    override func endTracking(with touch: UITouch?, with event: UIEvent?) {
+        self.sendActions(for: .valueChanged)
     }
     
-    override func drawRect(rect: CGRect) {
-        UIImage(named:"knob.png")!.drawInRect(rect)
+    override func draw(_ rect: CGRect) {
+        UIImage(named:"knob.png")!.draw(in: rect)
     }
     
 }

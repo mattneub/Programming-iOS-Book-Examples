@@ -3,6 +3,29 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class MyMandelbrotView : UIView {
 
     // best to run on device, because we want a slow processor in order to see the delay
@@ -19,9 +42,9 @@ class MyMandelbrotView : UIView {
     
     // jumping-off point: draw the Mandelbrot set
     func drawThatPuppy () {
-        self.makeBitmapContext(self.bounds.size)
-        let center = CGPointMake(self.bounds.midX, self.bounds.midY)
-        self.drawAtCenter(center, zoom:1)
+        self.makeBitmapContext(size: self.bounds.size)
+        let center = CGPoint(self.bounds.midX, self.bounds.midY)
+        self.draw(center: center, zoom:1)
         self.setNeedsDisplay()
     }
     
@@ -30,14 +53,14 @@ class MyMandelbrotView : UIView {
         var bitmapBytesPerRow = Int(size.width * 4)
         bitmapBytesPerRow += (16 - (bitmapBytesPerRow % 16)) % 16
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let prem = CGImageAlphaInfo.PremultipliedLast.rawValue
-        let context = CGBitmapContextCreate(nil, Int(size.width), Int(size.height), 8, bitmapBytesPerRow, colorSpace, prem)
+        let prem = CGImageAlphaInfo.premultipliedLast.rawValue
+        let context = CGContext(data: nil, width: Int(size.width), height: Int(size.height), bitsPerComponent: 8, bytesPerRow: bitmapBytesPerRow, space: colorSpace, bitmapInfo: prem, releaseCallback: nil, releaseInfo: nil)
         self.bitmapContext = context
     }
     
     // draw pixels of bitmap context
-    func drawAtCenter(center:CGPoint, zoom:CGFloat) {
-        func isInMandelbrotSet(re:Float, _ im:Float) -> Bool {
+    func draw(center:CGPoint, zoom:CGFloat) {
+        func isInMandelbrotSet(_ re:Float, _ im:Float) -> Bool {
             var fl = true
             var (x, y, nx, ny) : (Float,Float,Float,Float) = (0,0,0,0)
             for _ in 0 ..< MANDELBROT_STEPS {
@@ -52,8 +75,8 @@ class MyMandelbrotView : UIView {
             }
             return fl
         }
-        CGContextSetAllowsAntialiasing(self.bitmapContext, false)
-        CGContextSetRGBFillColor(self.bitmapContext, 0, 0, 0, 1)
+        self.bitmapContext.setAllowsAntialiasing(false)
+        self.bitmapContext.setFillColor(red: 0, green: 0, blue: 0, alpha: 1)
         var re : CGFloat
         var im : CGFloat
         let maxi = Int(self.bounds.size.width)
@@ -65,20 +88,20 @@ class MyMandelbrotView : UIView {
                 re /= zoom
                 im /= zoom
                 if (isInMandelbrotSet(Float(re), Float(im))) {
-                    CGContextFillRect (self.bitmapContext, CGRectMake(CGFloat(i), CGFloat(j), 1.0, 1.0))
+                    self.bitmapContext.fill (CGRect(CGFloat(i), CGFloat(j), 1.0, 1.0))
                 }
             }
         }
     }
     
     // turn pixels of bitmap context into CGImage, draw into ourselves
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         if self.bitmapContext != nil {
             let context = UIGraphicsGetCurrentContext()!
-            let im = CGBitmapContextCreateImage(self.bitmapContext)
-            CGContextDrawImage(context, self.bounds, im)
+            let im = self.bitmapContext.makeImage()
+            context.draw(in: self.bounds, image: im)
             self.odd = !self.odd
-            self.backgroundColor = self.odd ? UIColor.greenColor() : UIColor.redColor()
+            self.backgroundColor = self.odd ? UIColor.green() : UIColor.red()
         }
     }
 

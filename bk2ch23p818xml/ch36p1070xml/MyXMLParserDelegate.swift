@@ -15,23 +15,23 @@ class MyXMLParserDelegate : NSObject {
         super.init()
     }
     
-    func makeChild(klass:MyXMLParserDelegate.Type, elementName:String, parser:NSXMLParser) {
+    func makeChild(_ klass:MyXMLParserDelegate.Type, elementName:String, parser:NSXMLParser) {
         let del = klass.init(name:elementName, parent:self)
         self.child = del
         parser.delegate = del
     }
-    func finishedChild(s:String) {
+    func finishedChild(_ s:String) {
         fatalError("Subclass must implement finishedChild:!")
     }
     
 }
 
 extension MyXMLParserDelegate : NSXMLParserDelegate {
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
+    func parser(_ parser: NSXMLParser, foundCharacters string: String) {
         self.text = self.text + string
     }
     
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if self.parent != nil {
             self.parent!.finishedChild(self.text)
             parser.delegate = self.parent

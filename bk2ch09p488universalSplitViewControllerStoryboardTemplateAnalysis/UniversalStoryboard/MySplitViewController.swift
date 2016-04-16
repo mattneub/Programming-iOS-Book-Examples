@@ -4,14 +4,14 @@ import UIKit
 
 class MySplitViewController: UISplitViewController {
     
-    override func targetViewControllerForAction(action: Selector, sender: AnyObject?) -> UIViewController? {
+    override func targetViewController(forAction action: Selector, sender: AnyObject?) -> UIViewController? {
         print("split view controller target for \(action) \(sender)...")
-        let result = super.targetViewControllerForAction(action, sender: sender)
+        let result = super.targetViewController(forAction: action, sender: sender)
         print("split view controller target for \(action), returning \(result)")
         return result
     }
     
-    override func showDetailViewController(vc: UIViewController, sender: AnyObject?) {
+    override func showDetailViewController(_ vc: UIViewController, sender: AnyObject?) {
         print("split view controller showDetailViewController")
         super.showDetailViewController(vc, sender: sender)
     }
@@ -29,15 +29,15 @@ class MySplitViewController: UISplitViewController {
     }
 
 
-    override func respondsToSelector(aSelector: Selector) -> Bool {
-        let ok = super.respondsToSelector(aSelector)
+    override func responds(to aSelector: Selector) -> Bool {
+        let ok = super.responds(to:aSelector)
         if aSelector == #selector(showDetailViewController) {
             print("svc responds? \(ok)")
         }
         return ok
     }
 
-    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
         let ok = super.canPerformAction(action, withSender:sender)
         if action == #selector(showDetailViewController) {
             print("svc can perform? \(ok)")

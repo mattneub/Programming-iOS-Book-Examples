@@ -12,9 +12,17 @@ class Dog {
 }
 class Cat {}
 
+class Dog2 : NSObject {
+    
+}
+
+@objc protocol P {
+    func meow()
+}
+
 class NoisyDog : Dog {}
 
-func anyExpecter(a:Any) {}
+func anyExpecter(_ a:Any) {}
 
 protocol Flier {
     associatedtype Other
@@ -25,7 +33,7 @@ struct Bird : Flier {
 struct Insect : Flier {
     typealias Other = Bird
 }
-func flockTwoTogether<T:Flier>(flier:T, _ other:Any) {
+func flockTwoTogether<T:Flier>(_ flier:T, _ other:Any) {
     if other is T.Other {
         print("they can flock together")
     } else {
@@ -33,7 +41,7 @@ func flockTwoTogether<T:Flier>(flier:T, _ other:Any) {
     }
 }
 
-func typeTester(d:Dog, _ whattype:Dog.Type) {
+func typeTester(_ d:Dog, _ whattype:Dog.Type) {
     // if d.dynamicType is whattype {} // compile error, "not a type" (i.e. a not a type literal)
     if d.dynamicType === whattype {
         print("yep")
@@ -68,22 +76,38 @@ class ViewController: UIViewController {
         
         do {
             let s = "howdy"
-            let any : AnyObject = s // implicitly casts to NSString
+            let any = s as AnyObject // implicitly casts to NSString
+            // can also say:
+            let anyy : AnyObject = s as NSString
             let s2 = any as! String
             let i = 1
-            let any2 : AnyObject = i // implicitly casts to NSNumber
+            let any2 = i as AnyObject // implicitly casts to NSNumber
+            // can also say:
+            let anyy2 : AnyObject = i as NSNumber
             let i2 = any2 as! Int
+            print(s2, i2)
         
             _ = s2
             _ = i2
+            _ = anyy
+            _ = anyy2
+        }
+        
+        do {
+            // simpler
+            let s : AnyObject = "howdy" // String to NSString to AnyObject
+            let i : AnyObject = 1 // Int to NSNumber to AnyObject
+            let ss = s as! NSString as String
+            let sss = s as! String
+            _ = (s,i, ss, sss)
         }
         
         do {
             // common ways to encounter an AnyObject (wrapped in an Optional)
-            let any1 = NSUserDefaults.standardUserDefaults().objectForKey("myObject")
-            let any2 = self.view.valueForKey("backgroundColor")
-            let c = NSKeyedUnarchiver(forReadingWithData: NSData())
-            let any3 = c.decodeObjectForKey("myKey")
+            let any1 = NSUserDefaults.standard().object(forKey: "myObject")
+            let any2 = self.view.value(forKey:"backgroundColor")
+            let c = NSKeyedUnarchiver(forReadingWith: NSData())
+            let any3 = c.decodeObject(forKey:"myKey")
 
             _ = any1
             _ = any2
@@ -99,6 +123,12 @@ class ViewController: UIViewController {
             
             _ = s
             _ = s2
+            
+            let d : AnyObject = Dog()
+            let ss = d.noise
+            print(ss)
+            
+
         }
 
         do {
@@ -115,6 +145,13 @@ class ViewController: UIViewController {
             let s = c.whatADogSays
             
             _ = s
+        }
+        
+        do {
+            let d : AnyObject = Dog2()
+            d.meow?()
+            // let a : AnyObject = d.copy()
+
         }
         
         do {

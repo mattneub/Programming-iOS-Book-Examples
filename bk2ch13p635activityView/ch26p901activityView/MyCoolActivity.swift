@@ -1,32 +1,55 @@
 
 import UIKit
-func imageOfSize(size:CGSize, _ opaque:Bool = false, _ closure:() -> ()) -> UIImage {
+func imageOfSize(_ size:CGSize, _ opaque:Bool = false, _ closure:() -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
     closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()
+    let result = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return result
 }
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
 
 class MyCoolActivity : UIActivity {
     var items : [AnyObject]?
     var image : UIImage
     
     override init() {
-        let idiom = UIScreen.mainScreen().traitCollection.userInterfaceIdiom
-        var scale : CGFloat = (idiom == .Pad ? 76 : 60) - 10
+        let idiom = UIScreen.main().traitCollection.userInterfaceIdiom
+        var scale : CGFloat = (idiom == .pad ? 76 : 60) - 10
         let im = UIImage(named:"sunglasses.png")!
         let largerSize = fmax(im.size.height, im.size.width)
         scale /= largerSize
-        let sz = CGSizeMake(im.size.width*scale, im.size.height*scale)
+        let sz = CGSize(im.size.width*scale, im.size.height*scale)
         self.image = imageOfSize(sz) {
-            im.drawInRect(CGRect(origin: CGPoint(), size: sz))
+            im.draw(in:CGRect(origin: CGPoint(), size: sz))
         }
         super.init()
     }
     
     override class func activityCategory() -> UIActivityCategory {
-        return .Action // the default
+        return .action // the default
     }
     
     override func activityType() -> String? {
@@ -41,7 +64,7 @@ class MyCoolActivity : UIActivity {
         return self.image
     }
     
-    override func canPerformWithActivityItems(activityItems: [AnyObject]) -> Bool {
+    override func canPerform(withActivityItems activityItems: [AnyObject]) -> Bool {
         print("cool can perform \(activityItems)")
         for obj in activityItems {
             if obj is String {
@@ -53,12 +76,12 @@ class MyCoolActivity : UIActivity {
         return false
     }
     
-    override func prepareWithActivityItems(activityItems: [AnyObject]) {
+    override func prepare(withActivityItems activityItems: [AnyObject]) {
         print("cool prepare \(activityItems)")
         self.items = activityItems
     }
     
-    override func performActivity() {
+    override func perform() {
         print("cool performing \(self.items)")
         self.activityDidFinish(true)
     }

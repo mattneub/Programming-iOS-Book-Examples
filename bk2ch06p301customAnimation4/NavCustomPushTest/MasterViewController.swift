@@ -5,29 +5,29 @@ class MasterViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let b = UIBarButtonItem(title: "Push", style: .Plain, target: self, action: #selector(doPush))
+        let b = UIBarButtonItem(title: "Push", style: .plain, target: self, action: #selector(doPush))
         self.navigationItem.rightBarButtonItem = b
     }
     
-    func doPush(sender:AnyObject?) {
-        self.performSegueWithIdentifier("showDetail", sender: self)
+    func doPush(_ sender:AnyObject?) {
+        self.performSegue(withIdentifier:"showDetail", sender: self)
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 0
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "showDetail" {
             (segue.destinationViewController as! DetailViewController).detailItem = NSDate()
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
@@ -35,7 +35,7 @@ class MasterViewController : UITableViewController {
         }
         guard let tc = self.transitionCoordinator() else {return}
         guard tc.initiallyInteractive() else {return}
-        tc.notifyWhenInteractionEndsUsingBlock {
+        tc.notifyWhenInteractionEnds {
             context in
             if context.isCancelled() {
                 print("we got cancelled")
@@ -43,7 +43,7 @@ class MasterViewController : UITableViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {
@@ -51,7 +51,7 @@ class MasterViewController : UITableViewController {
         }
         
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("\(self) " + #function)
         
@@ -60,7 +60,7 @@ class MasterViewController : UITableViewController {
         }
         
     }
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("\(self) " + #function)
         if let tc = self.transitionCoordinator() {

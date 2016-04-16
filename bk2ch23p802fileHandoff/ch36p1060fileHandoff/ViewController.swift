@@ -14,7 +14,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
     func displayDoc (url:NSURL) {
         print("displayDoc: \(url)")
         self.doc = url
-        let req = NSURLRequest(URL: url)
+        let req = NSURLRequest(url: url)
         self.wv.loadRequest(req)
     }
     
@@ -22,8 +22,8 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         var url : NSURL? = nil
         do {
             let fm = NSFileManager()
-            let docsurl = try fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
-            let dir = fm.enumeratorAtURL(docsurl, includingPropertiesForKeys: nil, options: [], errorHandler: nil)!
+            let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let dir = fm.enumerator(at: docsurl, includingPropertiesForKeys: nil, options: [], errorHandler: nil)!
             for case let f as NSURL in dir {
                 if self.exts.contains(f.pathExtension!) {
                     url = f
@@ -36,7 +36,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         return url
     }
     
-    @IBAction func doDisplayDoc(sender: AnyObject) {
+    @IBAction func doDisplayDoc(_ sender: AnyObject) {
         var url = self.doc
         if url == nil {
             url = self.locateDoc()
@@ -45,10 +45,10 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
             print("no doc")
             return
         }
-        self.displayDoc(url)
+        self.displayDoc(url:url)
     }
     
-    @IBAction func doHandOffDoc (sender:AnyObject) {
+    @IBAction func doHandOffDoc (_ sender:AnyObject) {
         var url = self.doc
         if url == nil {
             url = self.locateDoc()
@@ -57,17 +57,17 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
             print("no doc")
             return
         }
-        self.dic.URL = url
+        self.dic.url = url
         let v = sender as! UIView
         self.dic.delegate = self
-        let ok = self.dic.presentOpenInMenuFromRect(v.bounds, inView: v, animated: true)
+        let ok = self.dic.presentOpenInMenu(from:v.bounds, in: v, animated: true)
         // let ok = self.dic.presentOptionsMenuFromRect(v.bounds, inView: v, animated: true)
         if !ok {
             print("That didn't work out")
         }
     }
     
-    @IBAction func doPreview (sender:AnyObject!) {
+    @IBAction func doPreview (_ sender:AnyObject!) {
         var url = self.doc
         if url == nil {
             url = self.locateDoc()
@@ -77,21 +77,21 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
             return
         }
         print(url)
-        self.dic.URL = url
+        self.dic.url = url
         self.dic.delegate = self
-        self.dic.presentPreviewAnimated(true)
+        self.dic.presentPreview(animated:true)
     }
     
-    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
+    func documentInteractionControllerViewController(forPreview controller: UIDocumentInteractionController) -> UIViewController {
         return self
     }
     
-    @IBAction func doPreviewMultipleUsingQuickLook (sender:AnyObject!) {
+    @IBAction func doPreviewMultipleUsingQuickLook (_ sender:AnyObject!) {
         self.docs = [NSURL]()
         do {
             let fm = NSFileManager()
-            let docsurl = try fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
-            let dir = fm.enumeratorAtURL(docsurl, includingPropertiesForKeys: nil, options: [], errorHandler: nil)!
+            let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let dir = fm.enumerator(at: docsurl, includingPropertiesForKeys: nil, options: [], errorHandler: nil)!
             for case let f as NSURL in dir {
                 if self.exts.contains(f.pathExtension!) {
                     if QLPreviewController.canPreviewItem(f) {
@@ -108,7 +108,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
             let preview = QLPreviewController()
             preview.dataSource = self
             preview.currentPreviewItemIndex = 0
-            self.presentViewController(preview, animated: true, completion: nil)
+            self.present(preview, animated: true, completion: nil)
         } catch {
             print(error)
         }
@@ -116,11 +116,11 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
     
     
     
-    func numberOfPreviewItemsInPreviewController(controller: QLPreviewController) -> Int {
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
         return self.docs.count
     }
     
-    func previewController(controller: QLPreviewController, previewItemAtIndex index: Int) -> QLPreviewItem {
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
         return self.docs[index]
     }
 
