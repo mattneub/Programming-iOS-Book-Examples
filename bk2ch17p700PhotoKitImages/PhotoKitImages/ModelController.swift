@@ -29,7 +29,7 @@ class ModelController: NSObject {
             return nil
         }
         let dvc = storyboard.instantiateViewController(withIdentifier: "DataViewController") as! DataViewController
-        dvc.asset = self.photos[index] // as! PHAsset
+        dvc.asset = self.photos.object(at:index) // as! PHAsset
         // dvc.index = index
         return dvc
     }

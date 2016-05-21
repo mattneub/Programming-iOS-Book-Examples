@@ -11,11 +11,11 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
-extension PHFetchResult: Sequence {
-    public func makeIterator() -> NSFastEnumerationIterator {
-        return NSFastEnumerationIterator(self)
-    }
-}
+//extension PHFetchResult: Sequence {
+//    public func makeIterator() -> NSFastEnumerationIterator {
+//        return NSFastEnumerationIterator(self)
+//    }
+//}
 
 class ViewController: UIViewController {
     var albums : PHFetchResult<PHAssetCollection>!
@@ -62,16 +62,16 @@ class ViewController: UIViewController {
         opts.sortDescriptors = [desc]
         let result = PHCollectionList.fetchCollectionLists(with:
             .momentList, subtype: .momentListYear, options: opts)
-        for obj in result {
-            let list = obj as! PHCollectionList
+        for ix in 0..<result.count {
+            let list = result.object(at:ix)
             let f = NSDateFormatter()
             f.dateFormat = "yyyy"
             print(f.string(from:list.startDate!))
             // return;
             if list.collectionListType == .momentList {
                 let result = PHAssetCollection.fetchMoments(inMomentList:list, options: nil)
-                for (ix,obj) in result.enumerated() {
-                    let coll = obj as! PHAssetCollection
+                for ix in 0 ..< result.count {
+                    let coll = result.object(at:ix)
                     if ix == 0 {
                         print("======= \(result.count) clusters")
                     }
@@ -92,8 +92,8 @@ class ViewController: UIViewController {
         let result = PHAssetCollection.fetchAssetCollections(with:
             // let's examine albums synced onto the device from iPhoto
             .album, subtype: .albumSyncedAlbum, options: nil)
-        for obj in result {
-            let album = obj as! PHAssetCollection
+        for ix in 0 ..< result.count {
+            let album = result.object(at:ix)
             print("\(album.localizedTitle): approximately \(album.estimatedAssetCount) photos")
         }
     }
@@ -108,13 +108,13 @@ class ViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         let result = PHAssetCollection.fetchAssetCollections(with:
             .album, subtype: .albumSyncedAlbum, options: nil)
-        for obj in result {
-            let album = obj as! PHAssetCollection
+        for ix in 0 ..< result.count {
+            let album = result.object(at:ix)
             alert.addAction(UIAlertAction(title: album.localizedTitle, style: .default, handler: {
                 (_:UIAlertAction!) in
                 let result = PHAsset.fetchAssets(in:album, options: nil)
-                for obj in result {
-                    let asset = obj as! PHAsset
+                for ix in 0 ..< result.count {
+                    let asset = result.object(at:ix)
                     print(asset.localIdentifier)
                 }
             }))
@@ -212,11 +212,11 @@ extension ViewController : PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInfo: PHChange) {
         print(changeInfo)
         if self.albums !== nil {
-            if let details = changeInfo.changeDetails(for:self.albums) {
+            if let details = changeInfo.changeDetails(for:unsafeBitCast(self.albums, to: PHFetchResult<AnyObject>.self)) {
                 dispatch_async(dispatch_get_main_queue()) { // NB get on main queue if necessary
                     print("inserted: \(details.insertedObjects)")
                     print("changed: \(details.changedObjects)")
-                    self.albums = details.fetchResultAfterChanges
+                    self.albums = unsafeBitCast(details.fetchResultAfterChanges, to: PHFetchResult<PHAssetCollection>.self)
                     // and you can imagine that if we had an interface...
                     // we might change it to reflect these changes
                 }

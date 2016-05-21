@@ -89,7 +89,7 @@ class RootViewController: UIViewController {
 
 extension RootViewController : PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInfo: PHChange) {
-        if let ci = changeInfo.changeDetails(for:self.modelController.recentAlbums) {
+        if let ci = changeInfo.changeDetails(for:unsafeBitCast(self.modelController.recentAlbums, to:PHFetchResult<AnyObject>.self)) {
             // if what just happened is: we went from nil to results (because user granted permission)...
             // then start over
             let oldResult = ci.fetchResultBeforeChanges
