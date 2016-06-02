@@ -170,6 +170,39 @@ class ViewController: UIViewController {
             }
         }
         
+        // new in Swift 3 is "sequence"; it generates the next based on the current
+        // it is lazy and theoretically infinite...
+        // so either take a prefix or return nil to stop it
+        
+        do {
+            let seq = sequence(first:1) {$0 >= 10 ? nil : $0 + 1}
+            print(Array(seq))
+            for i in seq {
+                print(i)
+            }
+            print(Array(seq.prefix(5)))
+        }
+        
+        do {
+            // form 1
+            let directions = sequence(first:1) {$0 * -1}
+            print(Array(directions.prefix(10)))
+            // [1, -1, 1, -1, 1, -1, 1, -1, 1, -1]
+            // i.e. first 10 elements of an infinite series alternating between 1 and -1
+            
+            // form 2; the state is an inout param to the function
+            // in this example we use it as a scratchpad to maintain the most recent pair
+            let fib = sequence(state:(0,1)) {
+                (pair: inout (Int,Int)) -> Int in
+                let n = pair.0 + pair.1
+                pair = (pair.1,n)
+                return n
+            }
+            print(Array(fib.prefix(10)))
+            // i.e. the first 10 elements of the fibonacci sequence
+        }
+        
+        
         do {
             let arr1 = ["CA", "MD", "NY", "AZ"]
             let arr2 = ["California", "Maryland", "New York"]
@@ -259,6 +292,15 @@ class ViewController: UIViewController {
             print(values)
         }
         
+        // perhaps this is clearest
+        // we can use sequence to generate the alternating positive-negative
+        do {
+            let directions = sequence(first:1) {$0 * -1}
+            let bases = stride(from: 20, to: 60, by: 5)
+            let values = zip(bases, directions).map {Double($1) * M_PI / Double($0)}
+            print(values) // same as previous but without the initial 0.0
+        }
+        
         do {
             for i in 1...5 {
                 for j in 1...5 {
@@ -295,8 +337,7 @@ class ViewController: UIViewController {
             print("step two")
         }
         
-
-
+        
     }
 
 

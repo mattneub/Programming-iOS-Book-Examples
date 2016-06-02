@@ -398,7 +398,8 @@ class ViewController: UIViewController {
             let arr = [String?]()
             // let arr2 = arr.map{if $0 == nil {return NSNull()} else {return $0!}} // compile error
             // let arr2 = arr.map{s -> AnyObject in if s == nil {return NSNull()} else {return s!}}
-            let arr2 : [AnyObject] = arr.map{if $0 == nil {return NSNull()} else {return $0! as AnyObject}}
+            let arr2 : [AnyObject] =
+                arr.map {if $0 != nil {return $0!} else {return NSNull()}}
             _ = arr2
         }
         

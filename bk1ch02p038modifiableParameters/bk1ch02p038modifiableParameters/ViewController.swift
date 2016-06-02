@@ -88,7 +88,7 @@ class ViewController: UIViewController {
         // proving that the inout parameter is _always_ changed
         
         var ss = "testing" {didSet {print("did")}}
-        remove(from:&ss, character:Character("X")) // "did", even though no change
+        _ = remove(from:&ss, character:Character("X")) // "did", even though no change
         
         let rect = CGRect.zero
         var arrow = CGRect.zero

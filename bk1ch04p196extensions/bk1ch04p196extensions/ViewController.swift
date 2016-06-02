@@ -36,7 +36,8 @@ extension CGSize {
 extension UIColor {
     class func myGolden() -> UIColor {
         // weird, it lost its ability to coerce a literal to the expected type
-        return self.init(red:CGFloat(1.000), green:CGFloat(0.894), blue:CGFloat(0.541), alpha:CGFloat(0.900))
+        // okay, it regained that ability
+        return self.init(red:1.000, green:0.894, blue:0.541, alpha:0.900)
     }
 }
 

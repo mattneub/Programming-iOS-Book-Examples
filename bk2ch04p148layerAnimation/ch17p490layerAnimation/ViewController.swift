@@ -6,7 +6,7 @@ import UIKit
 class ViewController : UIViewController {
     @IBOutlet var compassView : CompassView!
     
-    let which = 9
+    let which = 10
 
     @IBAction func doButton(_ sender:AnyObject?) {
         let c = self.compassView.layer as! CompassLayer
@@ -110,9 +110,10 @@ class ViewController : UIViewController {
 
         case 9:
             var values = [0.0]
-            // work around loss of C for loop, but sorry to see it go
-            for (ix,i) in stride(from:20, to: 60, by: 5).enumerated() {
-                values.append( (ix % 2 == 1 ? -1.0 : 1.0) * M_PI / Double(i) )
+            let directions = sequence(first:1) {$0 * -1}
+            let bases = stride(from: 20, to: 60, by: 5)
+            for (base, dir) in zip(bases, directions) {
+                values.append(Double(dir) * M_PI / Double(base))
             }
             values.append(0.0)
             print(values)
@@ -142,9 +143,10 @@ class ViewController : UIViewController {
 
             // second animation (waggle)
             var values = [0.0]
-            // work around loss of C for loop, but sorry to see it go
-            for (ix,i) in stride(from:20, to: 60, by: 5).enumerated() {
-                values.append( (ix % 2 == 1 ? -1.0 : 1.0) * M_PI / Double(i) )
+            let directions = sequence(first:1) {$0 * -1}
+            let bases = stride(from: 20, to: 60, by: 5)
+            for (base, dir) in zip(bases, directions) {
+                values.append(Double(dir) * M_PI / Double(base))
             }
             values.append(0.0)
             let anim2 = CAKeyframeAnimation(keyPath:"transform")

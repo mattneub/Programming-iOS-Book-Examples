@@ -178,10 +178,10 @@ class ViewController: UIViewController {
         do {
             let s = "hello"
             let ix1 = s.index(s.startIndex, offsetBy:1)
-            let ix2 = s.index(ix1, offsetBy:3)
+            let ix2 = s.index(ix1, offsetBy:2)
             // interesting thing happens here: we can no longer subscript by a closed range
             // must form the open range version instead
-            let s2 = s[ix1..<ix2] // "ell"
+            let s2 = s[ix1...ix2] // "ell"
             print(s2)
         }
         

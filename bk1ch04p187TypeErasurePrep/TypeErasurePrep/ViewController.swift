@@ -48,7 +48,7 @@ struct Insect2 : Flier2 {
 }
 
 struct FlierStruct2<Other> {
-    let flierAdopterFlockMethod : Other -> Void
+    let flierAdopterFlockMethod : (Other) -> Void
     init<FlierAdopter:Flier2 where Other == FlierAdopter.Other>(_ flierAdopter:FlierAdopter) {
         self.flierAdopterFlockMethod = flierAdopter.flockTogetherWith
     }
@@ -81,6 +81,7 @@ class ViewController: UIViewController {
             // f.flockTogetherWith(Bird2()) // and this correctly fails to compile! hoorah!
             let arr = [FlierStruct2(Bird2()), FlierStruct2(Bird2())]
             // let arr2 = [FlierStruct2(Bird2()), FlierStruct2(Insect2())]
+            _ = arr
         }
     }
 

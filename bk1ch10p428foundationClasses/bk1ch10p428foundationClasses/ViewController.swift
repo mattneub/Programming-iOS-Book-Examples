@@ -230,7 +230,7 @@ class ViewController: UIViewController {
 
             let pep = ["Manny", "Moe", "Jack"] as NSArray
             
-            // filed a bug
+            // filed a bug: "ambiguous" without the []
             
             let ems = pep.objects(
                 at: pep.indexesOfObjects([], passingTest: {

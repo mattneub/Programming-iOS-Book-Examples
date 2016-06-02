@@ -161,7 +161,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let col = UIColor(red: CGFloat(0.5), green: CGFloat(0.6), blue: CGFloat(0.7), alpha: CGFloat(1.0))
+            let col = UIColor(red: 0.5, green: 0.6, blue: 0.7, alpha: 1.0)
             if let comp = col.cgColor.components, // * now Optional
                 let sp = col.cgColor.colorSpace
                 where sp.model == .RGB {

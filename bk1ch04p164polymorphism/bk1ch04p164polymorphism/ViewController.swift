@@ -114,7 +114,7 @@ class ViewController: UIViewController {
             // ... from being able to call setObject:forKey: with a number
             let ud = NSUserDefaults.standard()
             let iii = 1
-            let ii : NSNumber = iii as NSNumber // explicit "as" now required
+            let ii : NSNumber = iii // as NSNumber // explicit "as" now required // no it isn't
             ud.set(ii, forKey: "Test")
             let i = ud.object(forKey: "Test") as! Int
             _ = i

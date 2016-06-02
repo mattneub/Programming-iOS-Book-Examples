@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         
         do {
             var opts = UIViewAnimationOptions.autoreverse
-            opts.insert(.repeat)
+            _ = opts.insert(.repeat) // why does compiler complain here but not later?
             print(opts)
         }
         
