@@ -43,7 +43,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
     func stuffThatEnvelope(_ item:String) -> [NSExtensionItem] {
         // everything has to get stuck back into the right sort of envelope
         let extensionItem = NSExtensionItem()
-        let itemProvider = NSItemProvider(item: item as NSString, typeIdentifier: desiredType)
+        let itemProvider = NSItemProvider(item: item, typeIdentifier: desiredType)
         extensionItem.attachments = [itemProvider]
         return [extensionItem]
     }

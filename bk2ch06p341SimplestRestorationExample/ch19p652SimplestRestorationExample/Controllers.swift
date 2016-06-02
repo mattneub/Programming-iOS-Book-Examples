@@ -11,7 +11,7 @@ class RootViewController : UIViewController {
     // prove that the segue is not magically called during restoration
 
     override func prepare(for segue:UIStoryboardSegue, sender:AnyObject?) {
-        NSLog("%@", segue.identifier! as NSObject)
+        NSLog("%@", segue.identifier!)
     }
 
 }

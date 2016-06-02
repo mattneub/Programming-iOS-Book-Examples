@@ -22,7 +22,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
             AVAudioSessionInterruptionNotification, object: nil, queue: nil) {
                 [weak self](n:NSNotification) in
                 guard let why =
-                    n.userInfo?[AVAudioSessionInterruptionTypeKey as NSString] as? UInt
+                    n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
                     else {return}
                 guard let type = AVAudioSessionInterruptionType(rawValue: why)
                     else {return}
@@ -30,7 +30,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
                     print("interruption began:\n\(n.userInfo!)")
                 } else {
                     print("interruption ended:\n\(n.userInfo!)")
-                    guard let opt = n.userInfo![AVAudioSessionInterruptionOptionKey as NSString] as? UInt else {return}
+                    guard let opt = n.userInfo![AVAudioSessionInterruptionOptionKey] as? UInt else {return}
                     let opts = AVAudioSessionInterruptionOptions(rawValue: opt)
                     if opts.contains(.shouldResume) {
                         print("should resume")

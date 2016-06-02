@@ -96,7 +96,7 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         let cell = v as! UITableViewCell
         let ip = self.tableView.indexPath(for:cell)!
         let object = self.frc.object(at:ip) as! NSManagedObject
-        object.setValue(textField.text! as NSString, forKey: ((textField.tag == 1) ? "firstName" : "lastName"))
+        object.setValue(textField.text!, forKey: ((textField.tag == 1) ? "firstName" : "lastName"))
         
         // save context
         do {

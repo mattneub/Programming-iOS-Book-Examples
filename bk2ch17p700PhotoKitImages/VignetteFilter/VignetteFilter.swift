@@ -41,8 +41,8 @@ public class VignetteFilter : CIFilter {
         let largerDimension = max(extent.width, extent.height)
         
         grad.setValue(center, forKey:"inputCenter")
-        grad.setValue(smallerDimension/2.0 * CGFloat(inputPercentage) as NSNumber, forKey:"inputRadius0")
-        grad.setValue(largerDimension/2.0 as NSNumber, forKey:"inputRadius1")
+        grad.setValue(smallerDimension/2.0 * CGFloat(inputPercentage), forKey:"inputRadius0")
+        grad.setValue(largerDimension/2.0, forKey:"inputRadius1")
         grad.setValue(CIColor(color: UIColor.white()), forKey:"inputColor0")
         grad.setValue(CIColor(color: UIColor.clear()), forKey:"inputColor1")
         let gradimage = grad.outputImage

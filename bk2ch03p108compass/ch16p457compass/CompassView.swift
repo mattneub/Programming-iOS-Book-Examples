@@ -72,7 +72,7 @@ class CompassLayer : CALayer {
         let circle = CAShapeLayer()
         circle.contentsScale = UIScreen.main().scale
         circle.lineWidth = 2.0
-        circle.fillColor = UIColor(red:0.9 as CGFloat, green:0.95, blue:0.93, alpha:0.9).cgColor
+        circle.fillColor = UIColor(red:0.9, green:0.95, blue:0.93, alpha:0.9).cgColor
         circle.strokeColor = UIColor.gray().cgColor
         let p = CGMutablePath()
         p.addEllipseIn(nil, rect: self.bounds.insetBy(dx: 3, dy: 3))
@@ -86,7 +86,7 @@ class CompassLayer : CALayer {
         for (ix,c) in pts.characters.enumerated() {
             let t = CATextLayer()
             t.contentsScale = UIScreen.main().scale
-            t.string = String(c) as NSString
+            t.string = String(c)
             t.bounds = CGRect(0,0,40,40)
             t.position = circle.bounds.center
             let vert = circle.bounds.midY / t.bounds.height

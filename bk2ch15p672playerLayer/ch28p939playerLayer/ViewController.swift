@@ -56,7 +56,7 @@ class ViewController: UIViewController {
             self.picButton.isHidden = true
         }
         
-        lay.addObserver(self, forKeyPath:"readyForDisplay", options:[], context:nil)
+        lay.addObserver(self, forKeyPath:"readyForDisplay", context:nil)
         
     }
     

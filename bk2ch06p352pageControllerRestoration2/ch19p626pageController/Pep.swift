@@ -23,7 +23,7 @@ class Pep: UIViewController {
     override func encodeRestorableState(with coder: NSCoder) {
         super.encodeRestorableState(with:coder)
         print("pep about to encode boy \(self.boy)")
-        coder.encode(self.boy as NSString, forKey:"boy")
+        coder.encode(self.boy, forKey:"boy")
     }
 
     override func viewDidLoad() {

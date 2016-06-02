@@ -118,7 +118,7 @@ class ViewController: UIViewController {
                 shad.shadowColor = UIColor.gray()
                 shad.shadowOffset = CGSize(2,2)
             },
-            NSUnderlineStyleAttributeName: NSUnderlineStyle.styleDouble.rawValue as NSNumber
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.styleDouble.rawValue
         ]
         self.sb.setScopeBarButtonTitleTextAttributes(atts, for:[])
         self.sb.setScopeBarButtonTitleTextAttributes(atts, for:.selected)

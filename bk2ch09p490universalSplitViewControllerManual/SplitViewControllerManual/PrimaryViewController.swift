@@ -71,9 +71,9 @@ class PrimaryViewController : UIViewController {
         
         vc2.view.translatesAutoresizingMaskIntoConstraints = false
         self.verticalConstraints =
-            NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|", options: [], metrics: nil, views: ["v":vc2.view])
+            NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|", metrics: nil, views: ["v":vc2.view])
         NSLayoutConstraint.activate([
-            NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|", options: [], metrics: nil, views: ["v":vc2.view]),
+            NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|", metrics: nil, views: ["v":vc2.view]),
             self.verticalConstraints!
         ].flatten().map{$0})
     }
@@ -130,7 +130,7 @@ extension PrimaryViewController {
             self.exposed = !self.exposed
             self.view.removeConstraints(self.verticalConstraints!)
             self.verticalConstraints =
-                NSLayoutConstraint.constraints(withVisualFormat:"V:|-(minuscon)-[v]-(con)-|", options: [], metrics: ["con":con as NSNumber, "minuscon":-con as NSNumber], views: ["v":vc2.view])
+                NSLayoutConstraint.constraints(withVisualFormat:"V:|-(minuscon)-[v]-(con)-|", metrics: ["con":con, "minuscon":-con], views: ["v":vc2.view])
             NSLayoutConstraint.activate(self.verticalConstraints!)
             UIView.animate(withDuration:0.25, animations: {
                 self.view.layoutIfNeeded()

@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         // showing that it is necessary to use freaking bitwise-or to form this bitmask still
         let under = NSUnderlineStyle.styleThick.rawValue | NSUnderlineStyle.patternDash.rawValue
         mas.addAttributes([
-            NSUnderlineStyleAttributeName: under as NSNumber
+            NSUnderlineStyleAttributeName: under
             ], range: NSMakeRange(4, mas.length-4))
 
         

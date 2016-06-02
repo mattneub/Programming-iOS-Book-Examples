@@ -147,7 +147,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             interval:2, // no, every *two* years
             daysOfTheWeek:[everySunday],
             daysOfTheMonth:nil,
-            monthsOfTheYear:[january as NSNumber],
+            monthsOfTheYear:[january],
             weeksOfTheYear:nil,
             daysOfTheYear:nil,
             setPositions: nil,

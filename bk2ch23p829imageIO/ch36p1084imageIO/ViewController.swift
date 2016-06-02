@@ -27,9 +27,9 @@ class ViewController: UIViewController {
             kCGImageSourceShouldAllowFloat : true,
             kCGImageSourceCreateThumbnailWithTransform : true,
             kCGImageSourceCreateThumbnailFromImageAlways : true,
-            kCGImageSourceThumbnailMaxPixelSize : w as NSNumber
+            kCGImageSourceThumbnailMaxPixelSize : w
         ]
-        let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d as CFDictionary)!
+        let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d)!
         let im = UIImage(cgImage: imref, scale: scale, orientation: .up)
         self.iv.image = im
         print(im)

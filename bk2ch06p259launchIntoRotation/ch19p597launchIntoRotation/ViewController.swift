@@ -63,7 +63,7 @@ class ViewController : UIViewController {
                 ])
             con.append(contentsOf:
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|[square(side)]",
-                    options:[], metrics:["side":side as NSNumber],
+                    metrics:["side":side],
                     views:["square":square]))
             NSLayoutConstraint.activate(con)
         }

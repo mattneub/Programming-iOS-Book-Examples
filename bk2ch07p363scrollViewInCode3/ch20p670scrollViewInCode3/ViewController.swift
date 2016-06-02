@@ -50,12 +50,12 @@ class ViewController : UIViewController {
         con.append(contentsOf:
             NSLayoutConstraint.constraints(withVisualFormat:
                 "H:|[sv]|",
-                options:[], metrics:nil,
+                metrics:nil,
                 views:["sv":sv]))
         con.append(contentsOf:
             NSLayoutConstraint.constraints(withVisualFormat:
                 "V:|[sv]|",
-                options:[], metrics:nil,
+                metrics:nil,
                 views:["sv":sv]))
         
         let v = UIView() // content view
@@ -102,10 +102,10 @@ class ViewController : UIViewController {
             v.translatesAutoresizingMaskIntoConstraints = false
             con.append(contentsOf:
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|[v(y)]|",
-                    options:[], metrics:["y":y as NSNumber], views:["v":v]))
+                    metrics:["y":y], views:["v":v]))
             con.append(contentsOf:
                 NSLayoutConstraint.constraints(withVisualFormat:"H:|[v(0)]|",
-                    options:[], metrics:nil, views:["v":v]))
+                    metrics:nil, views:["v":v]))
             NSLayoutConstraint.activate(con)
 
             
@@ -123,19 +123,19 @@ class ViewController : UIViewController {
                 con.append(contentsOf: // *
                     NSLayoutConstraint.constraints(withVisualFormat:
                         "H:|-(10)-[lab]",
-                        options:[], metrics:nil,
+                        metrics:nil,
                         views:["lab":lab]))
                 if previousLab == nil { // first one, pin to top
                     con.append(contentsOf: // *
                         NSLayoutConstraint.constraints(withVisualFormat:
                             "V:|-(10)-[lab]",
-                            options:[], metrics:nil,
+                            metrics:nil,
                             views:["lab":lab]))
                 } else { // all others, pin to previous
                     con.append(contentsOf: // *
                         NSLayoutConstraint.constraints(withVisualFormat:
                             "V:[prev]-(10)-[lab]",
-                            options:[], metrics:nil,
+                            metrics:nil,
                             views:["lab":lab, "prev":previousLab!]))
                 }
                 previousLab = lab
@@ -145,7 +145,7 @@ class ViewController : UIViewController {
             con.append(contentsOf: // *
                 NSLayoutConstraint.constraints(withVisualFormat:
                     "V:[lab]-(10)-|",
-                    options:[], metrics:nil,
+                    metrics:nil,
                     views:["lab":previousLab!]))
 
             
@@ -154,10 +154,10 @@ class ViewController : UIViewController {
             v.translatesAutoresizingMaskIntoConstraints = false
             con.append(contentsOf:
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|",
-                    options:[], metrics:nil, views:["v":v])) // *
+                    metrics:nil, views:["v":v])) // *
             con.append(contentsOf:
                 NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|",
-                    options:[], metrics:nil, views:["v":v])) // *
+                    metrics:nil, views:["v":v])) // *
             NSLayoutConstraint.activate(con)
 
             
@@ -175,19 +175,19 @@ class ViewController : UIViewController {
                 con.append(contentsOf: // *
                     NSLayoutConstraint.constraints(withVisualFormat:
                         "H:|-(10)-[lab]",
-                        options:[], metrics:nil,
+                        metrics:nil,
                         views:["lab":lab]))
                 if previousLab == nil { // first one, pin to top
                     con.append(contentsOf: // *
                         NSLayoutConstraint.constraints(withVisualFormat:
                             "V:|-(10)-[lab]",
-                            options:[], metrics:nil,
+                            metrics:nil,
                             views:["lab":lab]))
                 } else { // all others, pin to previous
                     con.append(contentsOf: // *
                         NSLayoutConstraint.constraints(withVisualFormat:
                             "V:[prev]-(10)-[lab]",
-                            options:[], metrics:nil,
+                            metrics:nil,
                             views:["lab":lab, "prev":previousLab!]))
                 }
                 previousLab = lab
@@ -197,7 +197,7 @@ class ViewController : UIViewController {
             con.append(contentsOf: // *
                 NSLayoutConstraint.constraints(withVisualFormat:
                     "V:[lab]-(10)-|",
-                    options:[], metrics:nil,
+                    metrics:nil,
                     views:["lab":previousLab!]))
             NSLayoutConstraint.activate(con)
             

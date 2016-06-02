@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         mas.addAttributes([
             NSStrokeColorAttributeName: UIColor.red(),
             NSStrokeWidthAttributeName: -2,
-            NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue as NSNumber
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue
             ], range: NSMakeRange(4, mas.length-4))
         self.button.setAttributedTitle(mas, for: [])
         

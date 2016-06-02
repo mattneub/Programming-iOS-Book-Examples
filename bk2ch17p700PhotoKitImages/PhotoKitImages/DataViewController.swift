@@ -136,7 +136,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             if vignette >= 0.0 {
                 let vig = VignetteFilter()
                 vig.setValue(ci, forKey: "inputImage")
-                vig.setValue(vignette as NSNumber, forKey: "inputPercentage")
+                vig.setValue(vignette, forKey: "inputPercentage")
                 ci = vig.outputImage!
             }
             return CIContext(options: nil).createCGImage(ci, from: ci.extent)
@@ -148,7 +148,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             ] as CFDictionary)
         CGImageDestinationFinalize(dest)
 
-        let data = NSKeyedArchiver.archivedData(withRootObject: vignette as NSNumber)
+        let data = NSKeyedArchiver.archivedData(withRootObject: vignette)
         output.adjustmentData = PHAdjustmentData(
             formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
 

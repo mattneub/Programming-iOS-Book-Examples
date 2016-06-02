@@ -15,8 +15,8 @@ class SecondaryViewController : UIViewController {
         self.view.addSubview(b)
         b.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            NSLayoutConstraint.constraints(withVisualFormat:"H:[b]-|", options: [], metrics: nil, views: ["b":b]),
-            NSLayoutConstraint.constraints(withVisualFormat:"V:[b]-|", options: [], metrics: nil, views: ["b":b])
+            NSLayoutConstraint.constraints(withVisualFormat:"H:[b]-|", metrics: nil, views: ["b":b]),
+            NSLayoutConstraint.constraints(withVisualFormat:"V:[b]-|", metrics: nil, views: ["b":b])
             ].flatten().map{$0})
     }
     

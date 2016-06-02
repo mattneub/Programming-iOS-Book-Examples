@@ -89,8 +89,8 @@ class ViewController : UIViewController {
             anim.isAdditive = true
             anim.valueFunction = CAValueFunction(
                 name:kCAValueFunctionRotateZ)
-            anim.fromValue = M_PI/40 as NSNumber
-            anim.toValue = -M_PI/40 as NSNumber
+            anim.fromValue = M_PI/40
+            anim.toValue = -M_PI/40
             arrow.add(anim, forKey:nil)
             
         case 8:
@@ -102,7 +102,7 @@ class ViewController : UIViewController {
             anim.duration = 0.8
             let clunk = CAMediaTimingFunction(controlPoints:0.9, 0.1, 0.7, 0.9)
             anim.timingFunction = clunk
-            anim.fromValue = -rot as NSNumber
+            anim.fromValue = -rot
             anim.toValue = 0
             anim.isAdditive = true
             anim.valueFunction = CAValueFunction(name:kCAValueFunctionRotateZ)
@@ -130,15 +130,15 @@ class ViewController : UIViewController {
             let rot = M_PI/4.0
             CATransaction.setDisableActions(true)
             let current = arrow.value(forKeyPath:"transform.rotation.z") as! Double
-            arrow.setValue(current + rot as AnyObject, forKeyPath:"transform.rotation.z")
+            arrow.setValue(current + rot, forKeyPath:"transform.rotation.z")
 
             // first animation (rotate and clunk)
             let anim1 = CABasicAnimation(keyPath:"transform")
             anim1.duration = 0.8
             let clunk = CAMediaTimingFunction(controlPoints:0.9, 0.1, 0.7, 0.9)
             anim1.timingFunction = clunk
-            anim1.fromValue = current as NSNumber
-            anim1.toValue = current + rot as NSNumber
+            anim1.fromValue = current
+            anim1.toValue = current + rot
             anim1.valueFunction = CAValueFunction(name:kCAValueFunctionRotateZ)
 
             // second animation (waggle)

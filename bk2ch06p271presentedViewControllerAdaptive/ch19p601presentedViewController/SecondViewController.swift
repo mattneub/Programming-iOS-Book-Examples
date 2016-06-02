@@ -23,7 +23,7 @@ class SecondViewController : UIViewController {
         // logging to show relationships
         print(self.presenting!)
         print(self.presenting!.presented)
-        let vc = self.delegate! as AnyObject as! UIViewController
+        let vc = self.delegate as! UIViewController
         print(vc.presented)
         
         

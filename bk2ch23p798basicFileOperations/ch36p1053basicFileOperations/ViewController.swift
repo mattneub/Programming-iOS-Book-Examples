@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         do {
             let fm = NSFileManager()
             let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let arr = try fm.contentsOfDirectory(at:docsurl, includingPropertiesForKeys: nil, options: [])
+            let arr = try fm.contentsOfDirectory(at:docsurl, includingPropertiesForKeys: nil)
             arr.forEach{print($0.lastPathComponent!)}
             // ======
     //        self.query.enumerateResultsUsingBlock {
@@ -75,7 +75,7 @@ class ViewController: UIViewController {
         do {
             let fm = NSFileManager()
             let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let dir = fm.enumerator(at:docsurl, includingPropertiesForKeys: nil, options: [], errorHandler: nil)!
+            let dir = fm.enumerator(at:docsurl, includingPropertiesForKeys: nil)!
             for case let f as NSURL in dir where f.pathExtension == "txt" {
                 print(f.lastPathComponent!)
             }
@@ -100,7 +100,7 @@ class ViewController: UIViewController {
             case 2:
                 // ==== the NSFileCoordinator way
                 let fc = NSFileCoordinator()
-                let intent = NSFileAccessIntent.writingIntent(with:moifile, options: [])
+                let intent = NSFileAccessIntent.writingIntent(with:moifile)
                 fc.coordinate(with:[intent], queue: NSOperationQueue.main()) {
                     (err:NSError?) in
                     // compiler gets confused if a one-liner returns a BOOL result
@@ -126,7 +126,7 @@ class ViewController: UIViewController {
             case 2:
                 // ==== the NSFileCoordinator way
                 let fc = NSFileCoordinator()
-                let intent = NSFileAccessIntent.readingIntent(with: moifile, options: [])
+                let intent = NSFileAccessIntent.readingIntent(with: moifile)
                 fc.coordinate(with: [intent], queue: NSOperationQueue.main()) {
                     (err:NSError?) in
                     let persondata = NSData(contentsOf: intent.url)!

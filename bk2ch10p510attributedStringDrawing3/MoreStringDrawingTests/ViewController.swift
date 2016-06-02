@@ -88,7 +88,7 @@ class ViewController: UIViewController {
         "(namely Thursday, November 19, 1863) by A. Lincoln"
         content = NSMutableAttributedString(string:s1, attributes:[
             NSFontAttributeName: UIFont(name:"Arial-BoldMT", size:15)!,
-            NSForegroundColorAttributeName: UIColor(red:0.251 as CGFloat, green:0.000, blue:0.502, alpha:1)]
+            NSForegroundColorAttributeName: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
         )
         let r = (s1 as NSString).range(of:"Gettysburg Address")
         let atts = [

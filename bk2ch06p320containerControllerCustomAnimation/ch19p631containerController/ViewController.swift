@@ -51,7 +51,7 @@ class ViewController : UIViewController {
         self.transition(from:fromvc,
             to:tovc,
             duration:0.4,
-            options:[], // .transitionNone
+            // .transitionNone
             animations: {
                 iv.frame = self.panel.bounds // *
                 self.constrainInPanel(tovc.view) // *
@@ -72,8 +72,8 @@ class ViewController : UIViewController {
         print("constrain")
         v.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|", options:[], metrics:nil, views:["v":v]),
-            NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|", options:[], metrics:nil, views:["v":v])
+            NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|", metrics:nil, views:["v":v]),
+            NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|", metrics:nil, views:["v":v])
             ].flatten().map{$0})
     }
     

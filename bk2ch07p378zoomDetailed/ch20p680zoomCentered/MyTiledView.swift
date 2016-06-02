@@ -55,7 +55,7 @@ class MyTiledView : UIView {
                 im.draw(in:CGRect(0,0,sz.width,sz.height))
                 self.currentImage = UIGraphicsGetImageFromCurrentImageContext()!
                 UIGraphicsEndImageContext()
-                NSLog("created image at size %@", NSStringFromCGSize(sz) as NSObject) // only three times
+                NSLog("created image at size %@", NSStringFromCGSize(sz)) // only three times
             }
             self.currentImage.draw(in:self.bounds)
             

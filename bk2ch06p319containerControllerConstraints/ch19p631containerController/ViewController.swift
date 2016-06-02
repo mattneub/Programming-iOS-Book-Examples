@@ -60,8 +60,8 @@ class ViewController : UIViewController {
         print("constrain")
         v.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|", options:[], metrics:nil, views:["v":v]),
-            NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|", options:[], metrics:nil, views:["v":v])
+            NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|", metrics:nil, views:["v":v]),
+            NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|", metrics:nil, views:["v":v])
             ].flatten().map{$0})
     }
     
@@ -80,8 +80,8 @@ class ViewController : UIViewController {
         v.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.deactivate(self.constraints)
         self.constraints.removeAll()
-        self.constraints.append(contentsOf:NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|", options:[], metrics:nil, views:["v":v]))
-        self.constraints.append(contentsOf:NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|", options:[], metrics:nil, views:["v":v]))
+        self.constraints.append(contentsOf:NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|", metrics:nil, views:["v":v]))
+        self.constraints.append(contentsOf:NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|", metrics:nil, views:["v":v]))
         NSLayoutConstraint.activate(self.constraints)
     }
 }

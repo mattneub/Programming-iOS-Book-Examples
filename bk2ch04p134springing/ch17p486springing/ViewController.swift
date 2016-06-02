@@ -12,7 +12,6 @@ class ViewController : UIViewController {
             UIView.animate(withDuration:0.8, delay: 0,
                 usingSpringWithDamping: 0.7,
                 initialSpringVelocity: 20,
-                options: [],
                 animations: {
                     self.v.center.y += 100
                 }, completion: nil)

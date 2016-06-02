@@ -135,7 +135,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     @IBAction func doPeoplePicker (_ sender:AnyObject!) {
         let picker = ABPeoplePickerNavigationController()
         picker.peoplePickerDelegate = self
-        picker.displayedProperties = [Int(kABPersonEmailProperty) as NSNumber]
+        picker.displayedProperties = [Int(kABPersonEmailProperty)]
         // new iOS 8 features: instead of delegate "continueAfter" methods
         // picker.predicateForEnablingPerson = NSPredicate(format: "%K like %@", ABPersonFamilyNameProperty, "Neuburg")
         picker.predicateForSelectionOfPerson = NSPredicate(value:false) // display additional info for all persons
@@ -186,7 +186,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         pvc.addressBook = self.adbk
         pvc.displayedPerson = snidely
         pvc.personViewDelegate = self
-        pvc.displayedProperties = [Int(kABPersonEmailProperty) as NSNumber]
+        pvc.displayedProperties = [Int(kABPersonEmailProperty)]
         pvc.allowsEditing = false
         pvc.allowsActions = false
         self.show(pvc, sender:self) // push onto navigation controller

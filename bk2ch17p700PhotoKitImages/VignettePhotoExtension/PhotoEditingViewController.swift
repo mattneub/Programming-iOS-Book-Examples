@@ -81,7 +81,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
                     
                     self.vig.setValue(output, forKey: "inputImage")
                     let val = Double(self.slider.value)
-                    self.vig.setValue(val as NSNumber, forKey:"inputPercentage")
+                    self.vig.setValue(val, forKey:"inputPercentage")
                     output = self.vig.outputImage!
                     if !self.seg.isHidden {
                         output = output.applyingOrientation(orient)
@@ -154,7 +154,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
                 if vignette >= 0.0 {
                     let vig = VignetteFilter()
                     vig.setValue(ci, forKey: "inputImage")
-                    vig.setValue(vignette as NSNumber, forKey: "inputPercentage")
+                    vig.setValue(vignette, forKey: "inputPercentage")
                     ci = vig.outputImage!
                 }
                 let outimcg = CIContext().createCGImage(ci, from: ci.extent)
@@ -163,11 +163,11 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
             
             let dest = CGImageDestinationCreateWithURL(outurl, kUTTypeJPEG, 1, nil)!
             CGImageDestinationAddImage(dest, outcgimage, [
-                kCGImageDestinationLossyCompressionQuality as String:1 as NSNumber
+                kCGImageDestinationLossyCompressionQuality as String:1
                 ] as CFDictionary)
             CGImageDestinationFinalize(dest)
             
-            let data = NSKeyedArchiver.archivedData(withRootObject:vignette as NSNumber)
+            let data = NSKeyedArchiver.archivedData(withRootObject:vignette)
             output.adjustmentData = PHAdjustmentData(
                 formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
             

@@ -126,9 +126,9 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 lab.translatesAutoresizingMaskIntoConstraints = false
                 NSLayoutConstraint.activate([
                     NSLayoutConstraint.constraints(withVisualFormat:"H:|-10-[lab(35)]",
-                        options:[], metrics:nil, views:["lab":lab]),
+                        metrics:nil, views:["lab":lab]),
                     NSLayoutConstraint.constraints(withVisualFormat:"V:[lab(30)]-5-|",
-                    options:[], metrics:nil, views:["lab":lab])
+                    metrics:nil, views:["lab":lab])
                 ].flatten().map{$0})
             }
             let lab = v.subviews[0] as! UILabel

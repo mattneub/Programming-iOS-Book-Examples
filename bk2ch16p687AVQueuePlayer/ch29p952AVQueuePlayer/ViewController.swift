@@ -196,7 +196,7 @@ class ViewController: UIViewController {
         self.curnum += 1
         var arr = item.asset.commonMetadata
         arr = AVMetadataItem.metadataItems(from:arr,
-            withKey:AVMetadataCommonKeyTitle as NSString,
+            withKey:AVMetadataCommonKeyTitle,
             keySpace:AVMetadataKeySpaceCommon)
         let met = arr[0]
         met.loadValuesAsynchronously(forKeys:["value"]) {
@@ -209,7 +209,7 @@ class ViewController: UIViewController {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.label.text = "\(self.curnum) of \(self.total): \(title)"
                     MPNowPlayingInfoCenter.default().nowPlayingInfo = [
-                        MPMediaItemPropertyTitle: title as NSString
+                        MPMediaItemPropertyTitle: title
                     ]
                 }
             }

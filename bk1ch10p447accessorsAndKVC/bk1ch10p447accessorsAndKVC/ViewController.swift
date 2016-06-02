@@ -26,7 +26,7 @@ class MyClass : NSObject {
     }
     // the _ is, uh, really important
     func objectInPepBoysAtIndex(_ ix:Int) -> AnyObject {
-        return self.theData[ix] as AnyObject
+        return self.theData[ix]
     }
 
 }

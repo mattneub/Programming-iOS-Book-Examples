@@ -28,7 +28,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             AVAudioSessionInterruptionNotification, object: nil, queue: nil) {
                 (n:NSNotification) in
                 guard let why =
-                    n.userInfo?[AVAudioSessionInterruptionTypeKey as NSString] as? UInt
+                    n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
                     else {return}
                 guard let type = AVAudioSessionInterruptionType(rawValue: why)
                     else {return}
@@ -36,7 +36,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
                     print("interruption began:\n\(n.userInfo!)")
                 } else {
                     print("interruption ended:\n\(n.userInfo!)")
-                    guard let opt = n.userInfo![AVAudioSessionInterruptionOptionKey as NSString] as? UInt else {return}
+                    guard let opt = n.userInfo![AVAudioSessionInterruptionOptionKey] as? UInt else {return}
                     let opts = AVAudioSessionInterruptionOptions(rawValue: opt)
                     if opts.contains(.shouldResume) {
                         print("should resume")
@@ -51,7 +51,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         NSNotificationCenter.default().addObserver(forName:
             AVAudioSessionSilenceSecondaryAudioHintNotification, object: nil, queue: nil) {
                 (n:NSNotification) in
-                guard let why = n.userInfo?[AVAudioSessionSilenceSecondaryAudioHintTypeKey as NSString] as? UInt else {return}
+                guard let why = n.userInfo?[AVAudioSessionSilenceSecondaryAudioHintTypeKey] as? UInt else {return}
                 guard let type = AVAudioSessionSilenceSecondaryAudioHintType(rawValue:why) else {return}
                 if type == .begin {
                     print("silence hint begin:\n\(n.userInfo!)")

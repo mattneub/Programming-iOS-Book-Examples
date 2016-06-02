@@ -50,10 +50,10 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             NSLayoutConstraint.constraints(withVisualFormat:
                 "H:|-(30)-[v]-(30)-|",
-                options: [], metrics: nil, views: ["v":lab]),
+                metrics: nil, views: ["v":lab]),
             NSLayoutConstraint.constraints(withVisualFormat:
                 "V:|-(30)-[v]",
-                options: [], metrics: nil, views: ["v":lab])
+                metrics: nil, views: ["v":lab])
             ].flatten().map{$0})
         lab.attributedText = content2
 

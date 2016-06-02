@@ -18,8 +18,8 @@ class Person: NSObject, NSCoding {
     
     func encode(with coder: NSCoder) {
         // do not call super in this case
-        coder.encode(self.lastName as NSString, forKey: "last")
-        coder.encode(self.firstName as NSString, forKey: "first")
+        coder.encode(self.lastName, forKey: "last")
+        coder.encode(self.firstName, forKey: "first")
     }
     
     required init(coder: NSCoder) {

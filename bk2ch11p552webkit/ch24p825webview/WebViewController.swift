@@ -104,7 +104,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         print("saving offset \(off)")
         coder.encode(NSValue(cgPoint:off), forKey:"oldOffset")
         coder.encode(self.fontsize, forKey:"fontsize")
-        coder.encode(self.oldHTMLString as NSString?, forKey:"oldHTMLString")
+        coder.encode(self.oldHTMLString, forKey:"oldHTMLString")
         coder.encode(self.oldBase, forKey:"oldBase")
     }
     
@@ -151,8 +151,8 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         self.view.addSubview(wv)
         wv.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            NSLayoutConstraint.constraints(withVisualFormat:"H:|[wv]|", options: [], metrics: nil, views: ["wv":wv]),
-            NSLayoutConstraint.constraints(withVisualFormat:"V:|[wv]|", options: [], metrics: nil, views: ["wv":wv])
+            NSLayoutConstraint.constraints(withVisualFormat:"H:|[wv]|", metrics: nil, views: ["wv":wv]),
+            NSLayoutConstraint.constraints(withVisualFormat:"V:|[wv]|", metrics: nil, views: ["wv":wv])
             ].flatten().map{$0})
         wv.navigationDelegate = self
         

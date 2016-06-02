@@ -11,7 +11,7 @@ class RootViewController : UITableViewController {
         // supply checkmarks as necessary
         let ud = NSUserDefaults.standard()
         
-        NSLog("about to update %@", cell.textLabel!.text! as NSObject)
+        NSLog("about to update %@", cell.textLabel!.text!)
         cell.accessoryType = .none
         if ud.value(forKey:"Style") as? String == cell.textLabel!.text! ||
             ud.value(forKey:"Size") as? String == cell.textLabel!.text! {
@@ -22,9 +22,9 @@ class RootViewController : UITableViewController {
     
     func log(tv:UITableView, ip:NSIndexPath, phrase:String) {
         NSLog("%@", "========")
-        NSLog("%@ %@", phrase as NSObject, tv.cellForRow(at:ip)!.textLabel!.text! as NSObject)
-        NSLog("cell highlighted? %@", "\(tv.cellForRow(at:ip)!.isHighlighted)" as NSObject)
-        NSLog("label highlighted? %@", "\(tv.cellForRow(at:ip)!.textLabel!.isHighlighted)" as NSObject)
+        NSLog("%@ %@", phrase, tv.cellForRow(at:ip)!.textLabel!.text!)
+        NSLog("cell highlighted? %@", "\(tv.cellForRow(at:ip)!.isHighlighted)")
+        NSLog("label highlighted? %@", "\(tv.cellForRow(at:ip)!.textLabel!.isHighlighted)")
     }
     
     override func tableView(_ tv: UITableView, shouldHighlightRowAt indexPath: NSIndexPath) -> Bool {
@@ -67,7 +67,7 @@ class RootViewController : UITableViewController {
         let ud = NSUserDefaults.standard()
         let setting = tv.cellForRow(at:indexPath)!.textLabel!.text
         let header = self.tableView(tv, titleForHeaderInSection:indexPath.section)!
-        ud.setValue(setting! as AnyObject, forKey:header)
+        ud.setValue(setting!, forKey:header)
         
         NSLog("%@", "about to reload!")
         tv.reloadData() // deselect all cells, reassign checkmark as needed
@@ -75,7 +75,7 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(_ tv: UITableView, didDeselectRowAt indexPath: NSIndexPath) {
-        NSLog("did deselect %@", tv.cellForRow(at:indexPath)!.textLabel!.text! as NSObject)
+        NSLog("did deselect %@", tv.cellForRow(at:indexPath)!.textLabel!.text!)
     }
     
     // just proving this stuff works even in a grouped style table

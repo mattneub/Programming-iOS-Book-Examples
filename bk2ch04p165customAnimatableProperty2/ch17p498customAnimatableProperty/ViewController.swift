@@ -12,7 +12,7 @@ class ViewController : UIViewController {
         CATransaction.setDisableActions(true)
         lay.thickness = val
         let ba = CABasicAnimation(keyPath:"thickness")
-        ba.fromValue = cur as NSNumber
+        ba.fromValue = cur
         lay.add(ba, forKey:nil)
     }
     

@@ -18,7 +18,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             AVAudioSessionInterruptionNotification, object: nil, queue: nil) {
                 (n:NSNotification) in
                 guard let why =
-                    n.userInfo?[AVAudioSessionInterruptionTypeKey as NSString] as? UInt
+                    n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
                     else {return}
                 guard let type = AVAudioSessionInterruptionType(rawValue: why)
                     else {return}

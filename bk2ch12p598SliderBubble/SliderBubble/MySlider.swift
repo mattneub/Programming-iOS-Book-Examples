@@ -81,7 +81,7 @@ class MySlider: UISlider {
         let bool = super.beginTracking(with:touch, with: event)
         if bool {
             self.addSubview(self.bubbleView)
-            self.label?.text = self.formatter.string(from:self.value as NSNumber)
+            self.label?.text = self.formatter.string(from:self.value)
         }
         return bool
     }
@@ -89,7 +89,7 @@ class MySlider: UISlider {
     override func continueTracking(with touch: UITouch, with event: UIEvent?) -> Bool {
         let bool = super.continueTracking(with:touch, with:event)
         if bool {
-            self.label?.text = self.formatter.string(from:self.value as NSNumber)
+            self.label?.text = self.formatter.string(from:self.value)
         }
         return bool
     }

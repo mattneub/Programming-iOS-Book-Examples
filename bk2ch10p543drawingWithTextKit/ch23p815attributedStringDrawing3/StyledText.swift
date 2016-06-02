@@ -37,7 +37,7 @@ class StyledText: UIView {
         let atts = [
             UIFontFeatureTypeIdentifierKey:kLetterCaseType,
             UIFontFeatureSelectorIdentifierKey:kSmallCapsSelector
-        ] as AnyObject
+        ]
         let desc2 = desc.addingAttributes(
             [UIFontDescriptorFeatureSettingsAttribute:[atts]]
         )

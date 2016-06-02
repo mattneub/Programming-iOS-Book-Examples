@@ -32,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSURLSessionDownloadDeleg
 
     func urlSession(_ session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         let prog = Double(totalBytesWritten)/Double(totalBytesExpectedToWrite)
-        NSLog("%@", "downloaded \(100.0*prog)%" as NSString)
-        NSNotificationCenter.default().post(name: "GotProgress", object:self, userInfo:["progress":prog as NSNumber])
+        NSLog("%@", "downloaded \(100.0*prog)%")
+        NSNotificationCenter.default().post(name: "GotProgress", object:self, userInfo:["progress":prog])
     }
     
     func urlSession(_ session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingTo location: NSURL) {
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSURLSessionDownloadDeleg
     }
     
     func urlSession(_ session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
-        NSLog("%@", "completed; error: \(error)" as NSString)
+        NSLog("%@", "completed; error: \(error)")
     }
     
     // === this is the Really Interesting Part

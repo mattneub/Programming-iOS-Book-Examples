@@ -42,7 +42,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.determineStatus()
+        _ = self.determineStatus()
         NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
@@ -67,7 +67,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                 case 1:
                     let pred = CNContact.predicateForContacts(matchingName:"Matt")
                     var matts = try CNContactStore().unifiedContacts(matching:pred, keysToFetch: [
-                        CNContactFamilyNameKey as NSString, CNContactGivenNameKey as NSString
+                        CNContactFamilyNameKey, CNContactGivenNameKey
                         ])
                     matts = matts.filter{$0.familyName == "Neuburg"}
                     guard let moi = matts.first else {
@@ -78,7 +78,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                 case 2:
                     let pred = CNContact.predicateForContacts(matchingName:"Matt")
                     let req = CNContactFetchRequest(keysToFetch: [
-                        CNContactFamilyNameKey as NSString, CNContactGivenNameKey as NSString
+                        CNContactFamilyNameKey, CNContactGivenNameKey
                         ])
                     req.predicate = pred
                     var matt : CNContact? = nil
@@ -103,13 +103,13 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                 } else {
                     print("you haven't fetched emails yet")
                 }
-                moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [CNContactFamilyNameKey as NSString, CNContactGivenNameKey as NSString, CNContactEmailAddressesKey as NSString])
+                moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [CNContactFamilyNameKey, CNContactGivenNameKey, CNContactEmailAddressesKey])
                 let emails = moi.emailAddresses
                 let workemails = emails.filter{$0.label == CNLabelWork}.map{$0.value}
                 print(workemails)
                 let full = CNContactFormatterStyle.fullName
                 let keys = CNContactFormatter.descriptorForRequiredKeys(for:full)
-                moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [keys, CNContactEmailAddressesKey as NSString])
+                moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [keys, CNContactEmailAddressesKey])
                 if let name = CNContactFormatter.string(from: moi, style: full) {
                     print("\(name): \(workemails[0])") // Matt Neuburg: matt@tidbits.com
                 }

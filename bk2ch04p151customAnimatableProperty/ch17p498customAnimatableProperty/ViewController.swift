@@ -11,7 +11,7 @@ class ViewController : UIViewController {
         let val : CGFloat = cur == 10 ? 0 : 10
         lay.thickness = val
         let ba = CABasicAnimation(keyPath:"thickness")
-        ba.fromValue = cur as NSNumber
+        ba.fromValue = cur
         lay.add(ba, forKey:nil)
     }
     

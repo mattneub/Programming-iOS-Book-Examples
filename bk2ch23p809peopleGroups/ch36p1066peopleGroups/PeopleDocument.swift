@@ -21,7 +21,7 @@ class PeopleDocument: UIDocument {
     
     override func contents(forType typeName: String) throws -> AnyObject {
         print("archiving \(typeName)")
-        let data = NSKeyedArchiver.archivedData(withRootObject: self.people as AnyObject)
+        let data = NSKeyedArchiver.archivedData(withRootObject: self.people)
         return data
     }
     

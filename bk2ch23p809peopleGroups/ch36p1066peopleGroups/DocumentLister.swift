@@ -38,7 +38,7 @@ class DocumentLister: UITableViewController {
         do {
             let fm = NSFileManager()
             self.files = try fm.contentsOfDirectory(at:
-                self.docsurl, includingPropertiesForKeys: nil, options: [])
+                self.docsurl, includingPropertiesForKeys: nil)
                 .filter {
                     print($0)
                     if fm.isUbiquitousItem(at:$0) {

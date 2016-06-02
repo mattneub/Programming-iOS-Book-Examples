@@ -203,7 +203,7 @@ extension ViewController {
         if key == kCAOnOrderIn {
             let anim1 = CABasicAnimation(keyPath:"opacity")
             anim1.fromValue = 0.0
-            anim1.toValue = layer.opacity as NSNumber
+            anim1.toValue = layer.opacity
             let anim2 = CABasicAnimation(keyPath:"transform")
             anim2.toValue = NSValue(caTransform3D:
                 CATransform3DScale(layer.transform, 1.2, 1.2, 1.0))
@@ -219,7 +219,7 @@ extension ViewController {
         if key == "opacity" {
             if CATransaction.value(forKey:"bye") != nil {
                 let anim1 = CABasicAnimation(keyPath:"opacity")
-                anim1.fromValue = layer.opacity as NSNumber
+                anim1.fromValue = layer.opacity
                 anim1.toValue = 0.0
                 let anim2 = CABasicAnimation(keyPath:"transform")
                 anim2.toValue = NSValue(caTransform3D:
@@ -235,7 +235,7 @@ extension ViewController {
         // supersedes previous
         if key == "farewell" {
             let anim1 = CABasicAnimation(keyPath:"opacity")
-            anim1.fromValue = layer.opacity as NSNumber
+            anim1.fromValue = layer.opacity
             anim1.toValue = 0.0
             let anim2 = CABasicAnimation(keyPath:"transform")
             anim2.toValue = NSValue(caTransform3D:

@@ -102,10 +102,10 @@ class ViewController : UICollectionViewController {
                 lab.translatesAutoresizingMaskIntoConstraints = false
                 v.addConstraints(
                     NSLayoutConstraint.constraints(withVisualFormat:"H:|-10-[lab(35)]",
-                        options:[], metrics:nil, views:["lab":lab]))
+                        metrics:nil, views:["lab":lab]))
                 v.addConstraints(
                     NSLayoutConstraint.constraints(withVisualFormat:"V:[lab(30)]-5-|",
-                        options:[], metrics:nil, views:["lab":lab]))
+                        metrics:nil, views:["lab":lab]))
             }
             let lab = v.subviews[0] as! UILabel
             lab.text = self.sectionNames[indexPath.section]

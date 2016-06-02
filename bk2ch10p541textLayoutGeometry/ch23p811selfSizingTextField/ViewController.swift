@@ -74,9 +74,9 @@ class ViewController: UIViewController {
         self.tv.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             NSLayoutConstraint.constraints(withVisualFormat:"H:|-(10)-[tv]-(10)-|",
-                options:[], metrics:nil, views:["tv":self.tv]),
+                metrics:nil, views:["tv":self.tv]),
             NSLayoutConstraint.constraints(withVisualFormat:"V:[top][tv]-(10)-[bot]",
-                options:[], metrics:nil, views:[
+                metrics:nil, views:[
                     "tv":self.tv, "top":self.topLayoutGuide, "bot":self.bottomLayoutGuide
                 ])
             ].flatten().map{$0})

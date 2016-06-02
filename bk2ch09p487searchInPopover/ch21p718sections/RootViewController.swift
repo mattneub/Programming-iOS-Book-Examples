@@ -146,11 +146,11 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
             v.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 NSLayoutConstraint.constraints(withVisualFormat:"H:|-5-[lab(25)]-10-[v(40)]",
-                    options:[], metrics:nil, views:["v":v, "lab":lab]),
+                    metrics:nil, views:["v":v, "lab":lab]),
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|",
-                    options:[], metrics:nil, views:["v":v]),
+                    metrics:nil, views:["v":v]),
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|[lab]|",
-                    options:[], metrics:nil, views:["lab":lab])
+                    metrics:nil, views:["lab":lab])
             ].flatten().map{$0})
         }
         let lab = h.contentView.withTag(1) as! UILabel

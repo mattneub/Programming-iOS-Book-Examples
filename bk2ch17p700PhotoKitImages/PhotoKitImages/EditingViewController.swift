@@ -67,7 +67,7 @@ class EditingViewController: UIViewController, GLKViewDelegate {
         
         self.vig.setValue(self.displayImage, forKey: "inputImage")
         let val = Double(self.slider.value)
-        self.vig.setValue(val as NSNumber, forKey:"inputPercentage")
+        self.vig.setValue(val, forKey:"inputPercentage")
         let output = self.vig.outputImage!
         
         var r = self.glkview.bounds

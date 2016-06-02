@@ -16,7 +16,7 @@ class ViewController : UIViewController {
     
     let cache = NSCache<NSString, AnyObject>()
     var cachedData : NSData {
-        let key = "somekey" as NSString
+        let key = "somekey"
         var data = self.cache.object(forKey:key) as? NSData
         if data != nil {
             return data!

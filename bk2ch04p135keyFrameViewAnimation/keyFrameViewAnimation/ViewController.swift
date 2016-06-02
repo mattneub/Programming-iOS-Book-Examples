@@ -11,7 +11,7 @@ class ViewController : UIViewController {
         var p = self.v.center
         var opts : UIViewKeyframeAnimationOptions = [] // calculationModeLinear
         let opt2 : UIViewAnimationOptions = .curveLinear
-        opts.insert(UIViewKeyframeAnimationOptions(rawValue:opt2.rawValue))
+        _ = opts.insert(UIViewKeyframeAnimationOptions(rawValue:opt2.rawValue))
         let dur = 0.25
         var start = 0.0
         let dx : CGFloat = 100

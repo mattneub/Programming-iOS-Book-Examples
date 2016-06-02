@@ -48,8 +48,8 @@ class ViewController: UIViewController {
         self.sess.sessionPreset = AVCaptureSessionPreset640x480
         self.snapper = AVCaptureStillImageOutput()
         self.snapper.outputSettings = [
-            AVVideoCodecKey as NSString: AVVideoCodecJPEG as NSString,
-            AVVideoQualityKey as NSString: 0.6
+            AVVideoCodecKey: AVVideoCodecJPEG,
+            AVVideoQualityKey: 0.6
             ]
         self.sess.addOutput(self.snapper)
         

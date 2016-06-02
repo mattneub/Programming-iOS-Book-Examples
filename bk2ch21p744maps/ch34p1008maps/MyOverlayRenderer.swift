@@ -16,7 +16,7 @@ class MyOverlayRenderer : MKOverlayRenderer {
         // print isn't thread-safe
         // MKStringFromMapRect isn't available in Swift
         let s = "\(mapRect.origin.x) \(mapRect.origin.y) \(mapRect.size.width) \(mapRect.size.height)"
-        NSLog("draw this: %@", s as NSString)
+        NSLog("draw this: %@", s)
         context.setStrokeColor(UIColor.black().cgColor)
         context.setFillColor(UIColor.red().withAlphaComponent(0.2).cgColor)
         context.setLineWidth(1.2/zoomScale)

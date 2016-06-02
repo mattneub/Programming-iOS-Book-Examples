@@ -23,7 +23,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         do {
             let fm = NSFileManager()
             let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let dir = fm.enumerator(at: docsurl, includingPropertiesForKeys: nil, options: [], errorHandler: nil)!
+            let dir = fm.enumerator(at: docsurl, includingPropertiesForKeys: nil)!
             for case let f as NSURL in dir {
                 if self.exts.contains(f.pathExtension!) {
                     url = f
@@ -91,7 +91,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         do {
             let fm = NSFileManager()
             let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let dir = fm.enumerator(at: docsurl, includingPropertiesForKeys: nil, options: [], errorHandler: nil)!
+            let dir = fm.enumerator(at: docsurl, includingPropertiesForKeys: nil)!
             for case let f as NSURL in dir {
                 if self.exts.contains(f.pathExtension!) {
                     if QLPreviewController.canPreviewItem(f) {

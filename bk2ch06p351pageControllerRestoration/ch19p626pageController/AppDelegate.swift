@@ -47,7 +47,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, willEncodeRestorableStateWith coder: NSCoder) {
         let pvc = self.window!.rootViewController as! UIPageViewController
-        let boy = (pvc.viewControllers![0] as! Pep).boy as NSString
+        let boy = (pvc.viewControllers![0] as! Pep).boy
         coder.encode(boy, forKey:"boy")
     }
     

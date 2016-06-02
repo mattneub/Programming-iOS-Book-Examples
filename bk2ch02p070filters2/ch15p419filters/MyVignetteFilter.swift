@@ -27,8 +27,8 @@ class MyVignetteFilter : CIFilter {
         let largerDimension = max(extent.width, extent.height)
         
         grad.setValue(center, forKey:"inputCenter")
-        grad.setValue(smallerDimension/2.0 * CGFloat(inputPercentage) as AnyObject, forKey:"inputRadius0")
-        grad.setValue(largerDimension/2.0 as AnyObject, forKey:"inputRadius1")
+        grad.setValue(smallerDimension/2.0 * CGFloat(inputPercentage), forKey:"inputRadius0")
+        grad.setValue(largerDimension/2.0, forKey:"inputRadius1")
         
         let blend = CIFilter(name: "CIBlendWithMask")!
         blend.setValue(inputImage, forKey: "inputImage")

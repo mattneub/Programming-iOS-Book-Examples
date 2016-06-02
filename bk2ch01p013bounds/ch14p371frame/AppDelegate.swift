@@ -23,17 +23,17 @@ extension CGRect {
         switch which {
         case 1:
             let v1 = UIView(frame:CGRect(113, 111, 132, 194))
-            v1.backgroundColor = UIColor(red: 1 as CGFloat, green: 0.4, blue: 1, alpha: 1)
+            v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
             let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10))
-            v2.backgroundColor = UIColor(red: 0.5 as CGFloat, green: 1, blue: 0, alpha: 1)
+            v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
             mainview.addSubview(v1)
             v1.addSubview(v2)
             
         case 2:
             let v1 = UIView(frame:CGRect(113, 111, 132, 194))
-            v1.backgroundColor = UIColor(red: 1 as CGFloat, green: 0.4, blue: 1, alpha: 1)
+            v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
             let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10))
-            v2.backgroundColor = UIColor(red: 0.5 as CGFloat, green: 1, blue: 0, alpha: 1)
+            v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
             mainview.addSubview(v1)
             v1.addSubview(v2)
 
@@ -42,9 +42,9 @@ extension CGRect {
             
         case 3:
             let v1 = UIView(frame:CGRect(113, 111, 132, 194))
-            v1.backgroundColor = UIColor(red: 1 as CGFloat, green: 0.4, blue: 1, alpha: 1)
+            v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
             let v2 = UIView(frame:v1.bounds.insetBy(dx: 10, dy: 10))
-            v2.backgroundColor = UIColor(red: 0.5 as CGFloat, green: 1, blue: 0, alpha: 1)
+            v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
             mainview.addSubview(v1)
             v1.addSubview(v2)
             

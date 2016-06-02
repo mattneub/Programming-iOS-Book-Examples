@@ -21,7 +21,7 @@ class ViewController : UIViewController {
         let tlay = CATextLayer()
         tlay.frame = lay.bounds
         lay.addSublayer(tlay)
-        tlay.string = "\(ix)" as NSString
+        tlay.string = "\(ix)"
         tlay.fontSize = 30
         tlay.alignmentMode = kCAAlignmentCenter
         tlay.foregroundColor = UIColor.green().cgColor
@@ -39,9 +39,9 @@ class ViewController : UIViewController {
         // 1: delegate sets contents
         self.makeLayerOfClass(CALayer.self, andAddToView:1).delegate = self.smilers[1]
         // 2: subclass draws
-        self.makeLayerOfClass(SmilerLayer.self, andAddToView:2)
+        _ = self.makeLayerOfClass(SmilerLayer.self, andAddToView:2)
         // 3: subclass sets contents
-        self.makeLayerOfClass(SmilerLayer2.self, andAddToView:3)
+        _ = self.makeLayerOfClass(SmilerLayer2.self, andAddToView:3)
 
     }
 

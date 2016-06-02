@@ -13,7 +13,7 @@ class MyPersonParser : MyXMLParserDelegate {
     }
     
     override func finishedChild(_ s: String) {
-        self.person.setValue(s as NSString, forKey:self.child.name)
+        self.person.setValue(s, forKey:self.child.name)
     }
     
 }

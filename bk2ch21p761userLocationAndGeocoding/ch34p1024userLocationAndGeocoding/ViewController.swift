@@ -37,7 +37,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         // setting the span doesn't seem to work
         // let span = MKCoordinateSpanMake(0.0005, 0.0005)
         mi.openInMaps(launchOptions:[
-            MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue as NSNumber,
+            MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
             // MKLaunchOptionsMapSpanKey: NSValue(MKCoordinateSpan:span)
             ])
     }

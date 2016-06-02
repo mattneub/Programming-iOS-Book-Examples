@@ -18,12 +18,12 @@ class ViewController : UIViewController {
         con.append(contentsOf:
             NSLayoutConstraint.constraints(withVisualFormat:
                 "H:|[sv]|",
-                options:[], metrics:nil,
+                metrics:nil,
                 views:["sv":sv]))
         con.append(contentsOf:
             NSLayoutConstraint.constraints(withVisualFormat:
                 "V:|[sv]|",
-                options:[], metrics:nil,
+                metrics:nil,
                 views:["sv":sv]))
         var previousLab : UILabel? = nil
         for i in 0 ..< 30 {
@@ -35,19 +35,19 @@ class ViewController : UIViewController {
             con.append(contentsOf:
                 NSLayoutConstraint.constraints(withVisualFormat:
                     "H:|-(10)-[lab]",
-                    options:[], metrics:nil,
+                    metrics:nil,
                     views:["lab":lab]))
             if previousLab == nil { // first one, pin to top
                 con.append(contentsOf:
                     NSLayoutConstraint.constraints(withVisualFormat:
                         "V:|-(10)-[lab]",
-                        options:[], metrics:nil,
+                        metrics:nil,
                         views:["lab":lab]))
             } else { // all others, pin to previous
                 con.append(contentsOf:
                     NSLayoutConstraint.constraints(withVisualFormat:
                         "V:[prev]-(10)-[lab]",
-                        options:[], metrics:nil,
+                        metrics:nil,
                         views:["lab":lab, "prev":previousLab!]))
             }
             previousLab = lab
@@ -57,7 +57,7 @@ class ViewController : UIViewController {
         con.append(contentsOf:
             NSLayoutConstraint.constraints(withVisualFormat:
                 "V:[lab]-(10)-|",
-                options:[], metrics:nil,
+                metrics:nil,
                 views:["lab":previousLab!]))
         NSLayoutConstraint.activate(con)
         

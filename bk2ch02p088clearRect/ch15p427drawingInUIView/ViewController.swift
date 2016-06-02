@@ -11,10 +11,10 @@ class ViewController : UIViewController {
         mv.translatesAutoresizingMaskIntoConstraints = false
         
         mv.superview!.addConstraints(
-            NSLayoutConstraint.constraints(withVisualFormat:"H:|-25-[v(100)]", options: [], metrics: nil, views: ["v":mv])
+            NSLayoutConstraint.constraints(withVisualFormat:"H:|-25-[v(100)]", metrics: nil, views: ["v":mv])
         )
         mv.superview!.addConstraints(
-            NSLayoutConstraint.constraints(withVisualFormat:"V:[v(100)]", options: [], metrics: nil, views: ["v":mv])
+            NSLayoutConstraint.constraints(withVisualFormat:"V:[v(100)]", metrics: nil, views: ["v":mv])
         )
         mv.superview!.addConstraint(
             NSLayoutConstraint(item: mv, attribute: .centerY, relatedBy: .equal, toItem: mv.superview, attribute: .centerY, multiplier: 1, constant: 0)

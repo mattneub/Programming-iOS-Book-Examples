@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func showActivityView() {
         let things = self.tf.text!
-        let avc = UIActivityViewController(activityItems:[things as NSObject], applicationActivities:nil)
+        let avc = UIActivityViewController(activityItems:[things], applicationActivities:nil)
         // just showing it can be done this way
         /*
         let p = NSItemProvider()

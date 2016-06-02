@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         let asset = AVURLAsset(url:m, options:nil)
         let item = AVPlayerItem(asset:asset)
         let p = AVPlayer(playerItem:item)
-        p.addObserver(self, forKeyPath:"status", options:[], context:nil)
+        p.addObserver(self, forKeyPath:"status", context:nil)
         let vc = AVPlayerViewController()
         vc.player = p
         vc.view.frame = CGRect(10,10,300,200)

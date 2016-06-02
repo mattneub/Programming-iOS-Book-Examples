@@ -35,15 +35,15 @@ class ViewController : UIViewController {
         
         NSLayoutConstraint.activate([
             NSLayoutConstraint.constraints(withVisualFormat:
-                "V:|-20-[v1]", options: [], metrics: nil, views: d),
+                "V:|-20-[v1]", metrics: nil, views: d),
             NSLayoutConstraint.constraints(withVisualFormat:
-                "V:|-20-[v2]", options: [], metrics: nil, views: d),
+                "V:|-20-[v2]", metrics: nil, views: d),
             NSLayoutConstraint.constraints(withVisualFormat:
-                "H:|-20-[v1]", options: [], metrics: nil, views: d),
+                "H:|-20-[v1]", metrics: nil, views: d),
             NSLayoutConstraint.constraints(withVisualFormat:
-                "H:[v2]-20-|", options: [], metrics: nil, views: d),
+                "H:[v2]-20-|", metrics: nil, views: d),
             NSLayoutConstraint.constraints(withVisualFormat:
-                "H:[v1(>=100)]-(>=20)-[v2(>=100)]", options: [], metrics: nil, views: d)
+                "H:[v1(>=100)]-(>=20)-[v2(>=100)]", metrics: nil, views: d)
             ].flatten().map{$0})
         // added width shrinkage limit to both labels, so neither gets driven down to invisibility
         
@@ -66,7 +66,7 @@ class ViewController : UIViewController {
         let d2 = dictionaryOfNames(button, label)
         NSLayoutConstraint.activate([
             NSLayoutConstraint.constraints(withVisualFormat:
-                "V:[v1]-(112)-|", options: [], metrics: nil, views: d2),
+                "V:[v1]-(112)-|", metrics: nil, views: d2),
             NSLayoutConstraint.constraints(withVisualFormat:
                 "H:|-(>=10)-[v2]-[v1]-(>=10)-|",
                 options: NSLayoutFormatOptions.alignAllBaseline,

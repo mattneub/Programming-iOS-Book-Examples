@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         engine.attach(player)
         engine.connect(player, to: mixer, format: f.processingFormat)
         // schedule the file on the player
-        player.scheduleFile(f, at: nil, completionHandler:{print("done")})
+        player.scheduleFile(f, at: nil) {print("done")}
         // start the engine
         engine.prepare()
         do {
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         let mixer = engine.mainMixerNode
         engine.connect(player2, to: mixer, format: f2.processingFormat)
 
-        player2.scheduleBuffer(buffer, at: nil, options: [], completionHandler: nil)
+        player2.scheduleBuffer(buffer)
         
         engine.prepare()
         
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         let mixer = engine.mainMixerNode
         engine.attach(player)
         engine.connect(player, to: mixer, format: f.processingFormat)
-        player.scheduleFile(f, at: nil, completionHandler:{print("done")})
+        player.scheduleFile(f, at: nil) {print("done")}
         engine.prepare()
         do {
             try engine.start()
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
         let player2 = AVAudioPlayerNode()
         engine.attach(player2)
         engine.connect(player2, to: mixer, format: f2.processingFormat)
-        player2.scheduleBuffer(buffer, at: nil, options: .loops, completionHandler: nil)
+        player2.scheduleBuffer(buffer, at: nil, options: .loops)
         // mix down a little
         player2.volume = 0.5
         player2.play()
@@ -116,7 +116,7 @@ class ViewController: UIViewController {
         // patch last node into engine mixer and start playing first sound
         let mixer = engine.mainMixerNode
         engine.connect(effect2, to: mixer, format: f.processingFormat)
-        player.scheduleFile(f, at: nil, completionHandler:{print("done")})
+        player.scheduleFile(f, at: nil) {print("done")}
         engine.prepare()
         do {
             try engine.start()
@@ -131,7 +131,7 @@ class ViewController: UIViewController {
         let player2 = AVAudioPlayerNode()
         engine.attach(player2)
         engine.connect(player2, to: mixer, format: f2.processingFormat)
-        player2.scheduleBuffer(buffer, at: nil, options: .loops, completionHandler: nil)
+        player2.scheduleBuffer(buffer, at: nil, options: .loops)
         
         // mix down a little, start playing second sound
         player.pan = -0.5
@@ -176,7 +176,7 @@ class ViewController: UIViewController {
         // patch both effect nodes into the mixer
         engine.connect(effect, to: mixer, format: f.processingFormat)
         engine.connect(effect2, to: mixer, format: f.processingFormat)
-        player.scheduleFile(f, at: nil, completionHandler:{print("done")})
+        player.scheduleFile(f, at: nil) {print("done")}
         engine.prepare()
         do {
             try engine.start()
@@ -248,7 +248,7 @@ class ViewController: UIViewController {
                 print(error)
             }
         }
-        player2.scheduleBuffer(buffer, at: nil, options: []) {
+        player2.scheduleBuffer(buffer) {
             done = true
         }
 

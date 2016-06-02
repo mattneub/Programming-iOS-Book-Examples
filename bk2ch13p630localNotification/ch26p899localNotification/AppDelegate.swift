@@ -16,9 +16,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         print("start \(#function)")
-        NSLog("%@ %@", "\(#function)" as NSObject, "\(launchOptions)" as NSObject)
+        NSLog("%@ %@", "\(#function)", "\(launchOptions)")
 
-        if let n = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey as NSObject] as? UILocalNotification {
+        if let n = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
             delay(0.5) {
                 self.doAlert(n)
             }
@@ -51,7 +51,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // we will receive this call if we are in the foreground when a local notification fires
     func application(_ application: UIApplication, didReceive n: UILocalNotification) {
         print("start \(#function)")
-        NSLog("%@", "\(#function)" as NSObject)
+        NSLog("%@", "\(#function)")
         self.doAlert(n)
         print("end \(#function)")
     }
@@ -75,9 +75,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // new in iOS 9, same as in iOS 8 except that now we have `responseInfo` dictionary coming in
     func application(_ application: UIApplication, handleActionWithIdentifier id: String?, for n: UILocalNotification, withResponseInfo d: [NSObject : AnyObject], completionHandler: () -> Void) {
         print("start \(#function)")
-        NSLog("%@", "\(#function)" as NSObject)
+        NSLog("%@", "\(#function)")
         print("user tapped \(id)")
-        if let s = d[UIUserNotificationActionResponseTypedTextKey as NSObject] as? String {
+        if let s = d[UIUserNotificationActionResponseTypedTextKey] as? String {
             print(s)
         }
         // you _must_ call the completion handler to tell the runtime you did this!

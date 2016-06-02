@@ -58,8 +58,8 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         self.view.addSubview(wv)
         wv.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            NSLayoutConstraint.constraints(withVisualFormat:"H:|[wv]|", options: [], metrics: nil, views: ["wv":wv]),
-            NSLayoutConstraint.constraints(withVisualFormat:"V:|[wv]|", options: [], metrics: nil, views: ["wv":wv])
+            NSLayoutConstraint.constraints(withVisualFormat:"H:|[wv]|", metrics: nil, views: ["wv":wv]),
+            NSLayoutConstraint.constraints(withVisualFormat:"V:|[wv]|", metrics: nil, views: ["wv":wv])
             ].flatten().map{$0})
         self.wv = wv
                 

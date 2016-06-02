@@ -101,7 +101,7 @@ class CompassLayer : CALayer {
         let circle = CAShapeLayer()
         circle.contentsScale = UIScreen.main().scale
         circle.lineWidth = 2.0
-        circle.fillColor = UIColor(red:0.9 as CGFloat, green:0.95, blue:0.93, alpha:0.9).cgColor
+        circle.fillColor = UIColor(red:0.9 , green:0.95, blue:0.93, alpha:0.9).cgColor
         circle.strokeColor = UIColor.gray().cgColor
         let p = CGMutablePath()
         p.addEllipseIn(nil, rect: self.bounds.insetBy(dx: 3, dy: 3))
@@ -115,7 +115,7 @@ class CompassLayer : CALayer {
         for (ix,c) in pts.characters.enumerated() {
             let t = CATextLayer()
             t.contentsScale = UIScreen.main().scale
-            t.string = String(c) as NSString
+            t.string = String(c)
             t.bounds = CGRect(0,0,40,40)
             t.position = circle.bounds.center
             let vert = circle.bounds.midY / t.bounds.height
@@ -154,12 +154,12 @@ class CompassLayer : CALayer {
         let p2 = CGMutablePath()
         p2.addRect(nil, rect: peg.bounds)
         peg.path = p2
-        peg.fillColor = UIColor(red:1.0 as CGFloat, green:0.95, blue:1.0, alpha:0.95).cgColor
+        peg.fillColor = UIColor(red:1.0, green:0.95, blue:1.0, alpha:0.95).cgColor
         peg.anchorPoint = CGPoint(0.5,0.5)
         peg.position = master.bounds.center
         master.addSublayer(peg)
-        peg.setValue(M_PI/2 as AnyObject, forKeyPath:"transform.rotation.x")
-        peg.setValue(M_PI/2 as AnyObject, forKeyPath:"transform.rotation.z")
+        peg.setValue(M_PI/2, forKeyPath:"transform.rotation.x")
+        peg.setValue(M_PI/2, forKeyPath:"transform.rotation.z")
         peg.zPosition = 15
         
 

@@ -65,7 +65,7 @@ class TiledView : UIView {
         dispatch_sync(drawQueue!, { // work around nasty thread issue...
             // we are called twice simultaneously on two different background threads!
             
-            NSLog("%@", "drawRect: \(r)" as NSObject)
+            NSLog("%@", "drawRect: \(r)")
             
             let tile = r
             let x = Int(tile.origin.x/kTILESIZE)

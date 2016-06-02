@@ -19,7 +19,7 @@ class ViewController : UIViewController {
         // "g.r. is pinned to top and bottom of superview"
         c.append(contentsOf:
             NSLayoutConstraint.constraints(withVisualFormat:"V:|[gr]|",
-                options:[], metrics:nil, views:["gr":gr])
+                metrics:nil, views:["gr":gr])
         )
         // "g.r. is 1/3 the width of superview"
         c.append(
@@ -29,7 +29,7 @@ class ViewController : UIViewController {
         // "onscreen, g.r.'s left is pinned to superview's left"
         let marrOn : [NSLayoutConstraint] =
         NSLayoutConstraint.constraints(withVisualFormat:"H:|[gr]",
-            options:[], metrics:nil, views:["gr":gr])
+            metrics:nil, views:["gr":gr])
         
         // "offscreen, g.r.'s right is pinned to superview's left"
         let marrOff : [NSLayoutConstraint] = [

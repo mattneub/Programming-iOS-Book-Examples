@@ -38,12 +38,12 @@ class ViewController : UIViewController, UIScrollViewDelegate {
         con.append(contentsOf:
             NSLayoutConstraint.constraints(withVisualFormat:
                 "H:|[sv]|",
-                options:[], metrics:nil,
+                metrics:nil,
                 views:["sv":sv]))
         con.append(contentsOf:
             NSLayoutConstraint.constraints(withVisualFormat:
                 "V:|[sv]|",
-                options:[], metrics:nil,
+                metrics:nil,
                 views:["sv":sv]))
         
         let v = UIView() // content view
