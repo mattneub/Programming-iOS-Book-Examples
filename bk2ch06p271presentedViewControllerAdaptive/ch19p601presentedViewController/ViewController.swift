@@ -15,7 +15,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
 
         svc.presentationController!.delegate = self // *
         
-        self.present(svc, animated:true, completion:nil)
+        self.present(svc, animated:true)
     }
     
     func accept(data:AnyObject!) {

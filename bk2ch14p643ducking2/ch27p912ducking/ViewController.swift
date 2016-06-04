@@ -33,8 +33,8 @@ class ViewController: UIViewController, PlayerDelegate {
             print("secondary hint: \(hint)")
             if !oth {
                 let alert = UIAlertController(title: "Pointless", message: "You won't get the point of the example unless some other audio is already playing!", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                self.present(alert, animated: true)
                 return
             }
             print("ducking")
@@ -95,15 +95,15 @@ class ViewController: UIViewController, PlayerDelegate {
     
     // these are used only in case 0
     
-    func doPlayPause(event:MPRemoteCommandEvent) {
+    func doPlayPause(_ event:MPRemoteCommandEvent) {
         let p = self.player.player
         if p.isPlaying { p.pause() } else { p.play() }
     }
-    func doPlay(event:MPRemoteCommandEvent) {
+    func doPlay(_ event:MPRemoteCommandEvent) {
         let p = self.player.player
         p.play()
     }
-    func doPause(event:MPRemoteCommandEvent) {
+    func doPause(_ event:MPRemoteCommandEvent) {
         let p = self.player.player
         p.pause()
     }

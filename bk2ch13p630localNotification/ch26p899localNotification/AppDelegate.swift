@@ -42,9 +42,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let alert = UIAlertController(title: "Hey",
             message: "While \(s), I received a local notification: \(n.alertBody)",
             preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.window!.rootViewController!.present(alert,
-            animated: true, completion: nil)
+            animated: true)
     }
     
     // even if user refused to allow alert and sounds etc.,

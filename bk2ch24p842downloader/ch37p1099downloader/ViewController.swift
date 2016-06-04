@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     @IBAction func doDownload (_ sender:AnyObject!) {
         self.iv.image = nil
         let s = "http://www.nasa.gov/sites/default/files/styles/1600x1200_autoletterbox/public/pia17474_1.jpg"
-        self.downloader.download(s) {
+        _ = self.downloader.download(s) {
             url in
             if url == nil {
                 return

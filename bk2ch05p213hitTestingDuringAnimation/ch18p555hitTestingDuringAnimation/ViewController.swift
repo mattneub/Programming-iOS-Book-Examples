@@ -52,7 +52,7 @@ class ViewController : UIViewController {
             UIView.animate(withDuration:10, delay: 0, options: opt,
                 animations: {
                     self.button.center = goal
-                }, completion: nil)
+                })
         case 2:
             let ba = CABasicAnimation(keyPath:"position")
             ba.duration = 10

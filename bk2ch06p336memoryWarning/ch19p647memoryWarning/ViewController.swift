@@ -81,8 +81,8 @@ class ViewController : UIViewController {
     @IBAction func doButton (_ sender:AnyObject?) {
         let s = NSString(data: self.myBigData, encoding: NSUTF8StringEncoding) as! String
         let av = UIAlertController(title: "Got big data, and it says:", message: s, preferredStyle: .alert)
-        av.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(av, animated: true, completion: nil)
+        av.addAction(UIAlertAction(title: "OK", style: .cancel))
+        self.present(av, animated: true)
     }
     
     // to test, run the app in the simulator and trigger a memory warning
@@ -121,7 +121,7 @@ class ViewController : UIViewController {
         NSNotificationCenter.default().addObserver(self, selector: #selector(backgrounding), name: UIApplicationDidEnterBackgroundNotification, object: nil)
     }
     
-    func backgrounding(n:NSNotification) {
+    func backgrounding(_ n:NSNotification) {
         self.saveAndReleaseMyBigData()
     }
     

@@ -147,7 +147,7 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
             sc.modalPresentationStyle = .custom // ?
         default: break
         }
-        self.present(sc, animated: true, completion: nil)
+        self.present(sc, animated: true)
     }
     
     func presentationController(forPresentedViewController presented: UIViewController, presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {

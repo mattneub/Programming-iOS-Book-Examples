@@ -321,7 +321,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func notificationArrived(n:NSNotification) {
+    func notificationArrived(_ n:NSNotification) {
         switch n.userInfo?["progress"] {
         case let prog as Double:
             self.progress = prog

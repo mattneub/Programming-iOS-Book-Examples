@@ -44,13 +44,13 @@ class RootViewController: UIViewController {
             return false
         case .denied:
             let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Photos library?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel))
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
             }))
-            self.present(alert, animated:true, completion:nil)
+            self.present(alert, animated:true)
             return false
         }
     }
@@ -70,7 +70,7 @@ class RootViewController: UIViewController {
         self.modelController = ModelController()
         if let dvc = self.modelController.viewController(at:0, storyboard: self.storyboard!) {
             let viewControllers = [dvc]
-            self.pageViewController!.setViewControllers(viewControllers, direction: .forward, animated: false, completion: nil)
+            self.pageViewController!.setViewControllers(viewControllers, direction: .forward, animated: false)
             self.pageViewController!.dataSource = self.modelController
         }
     }

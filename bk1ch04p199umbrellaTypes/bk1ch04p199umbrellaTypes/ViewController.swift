@@ -174,7 +174,7 @@ class ViewController: UIViewController {
         
     }
     
-    func changed(n:NSNotification) {
+    func changed(_ n:NSNotification) {
         let player = MPMusicPlayerController.applicationMusicPlayer()
         if n.object === player { // ...
         }

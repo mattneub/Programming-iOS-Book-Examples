@@ -41,7 +41,7 @@ class ViewController : UIViewController {
             con.constant += 100
             UIView.animate(withDuration:1, animations:{
                 self.v.superview!.layoutIfNeeded()
-                }, completion: nil)
+                })
             
         case 4:
             // this works fine in iOS 8! does not trigger spurious layout

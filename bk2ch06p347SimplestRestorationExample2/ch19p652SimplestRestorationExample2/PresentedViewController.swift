@@ -41,7 +41,7 @@ class PresentedViewController : UIViewController {
     }
     
     func doDismiss(_ sender:AnyObject?) {
-        self.presenting!.dismiss(animated:true, completion: nil)
+        self.presenting!.dismiss(animated:true)
     }
     
 }

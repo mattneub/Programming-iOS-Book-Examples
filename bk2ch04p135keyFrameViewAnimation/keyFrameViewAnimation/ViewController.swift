@@ -48,7 +48,7 @@ class ViewController : UIViewController {
                         p.x += dx*dir; p.y += dy
                         self.v.center = p
                     })
-            }, completion: nil)
+            })
         
     }
     

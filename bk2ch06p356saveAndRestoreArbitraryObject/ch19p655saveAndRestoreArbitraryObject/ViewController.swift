@@ -26,19 +26,19 @@ class ViewController : UIViewController {
     
     @IBAction func doRead(_ sender:AnyObject?) {
         let alert = UIAlertController(title: "Read", message: self.thing.word, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style:.cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "OK", style:.cancel))
+        self.present(alert, animated: true)
     }
         
     @IBAction func doWrite(_ sender:AnyObject?) {
         let alert = UIAlertController(title: "Write", message: nil, preferredStyle: .alert)
         alert.addTextField { tf in tf.text = self.thing.word }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             _ in
             self.thing.word = alert.textFields![0].text!
             }))
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true)
     }
     
     deinit {

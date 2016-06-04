@@ -40,13 +40,13 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             // new iOS 8 feature: sane way of getting the user directly to the relevant prefs
             // I think the crash-in-background issue is now gone
             let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Calendar?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel))
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
             }))
-            self.present(alert, animated:true, completion:nil)
+            self.present(alert, animated:true)
             return false
         }
     }
@@ -54,7 +54,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.determineStatus()
+        _ = self.determineStatus()
         NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
@@ -237,7 +237,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         self.navigationController?.pushViewController(evc, animated: true)
 //        let nav = UINavigationController(rootViewController: evc)
 //        nav.modalPresentationStyle = .popover
-//        self.present(nav, animated: true, completion: nil)
+//        self.present(nav, animated: true)
 //        if let pop = nav.popoverPresentationController {
 //            if let v = sender as? UIView {
 //                pop.sourceView = v
@@ -250,7 +250,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         didCompleteWith action: EKEventViewAction) {
             print("did complete with action \(action.rawValue)")
             if action == .deleted {
-                self.navigationController?.popViewController(animated:true)
+                _ = self.navigationController?.popViewController(animated:true)
             }
     }
 
@@ -264,7 +264,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         evc.eventStore = self.database
         evc.editViewDelegate = self
         evc.modalPresentationStyle = .popover
-        self.present(evc, animated: true, completion: nil)
+        self.present(evc, animated: true)
         if let pop = evc.popoverPresentationController {
             if let v = sender as? UIView {
                 pop.sourceView = v
@@ -276,7 +276,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     func eventEditViewController(_ controller: EKEventEditViewController,
         didCompleteWith action: EKEventEditViewAction) {
             print("did complete: \(action.rawValue), \(controller.event)")
-            self.dismiss(animated:true, completion: nil)
+            self.dismiss(animated:true)
     }
     
     func eventEditViewControllerDefaultCalendar(forNewEvents controller: EKEventEditViewController) -> EKCalendar {
@@ -298,7 +298,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         choo.delegate = self
         let nav = UINavigationController(rootViewController: choo)
         nav.modalPresentationStyle = .popover
-        self.present(nav, animated: true, completion: nil)
+        self.present(nav, animated: true)
         if let pop = nav.popoverPresentationController {
             if let v = sender as? UIView {
                 pop.sourceView = v
@@ -310,14 +310,14 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     // need delegate methods in order to dismiss
 
     func calendarChooserDidCancel(_ calendarChooser: EKCalendarChooser) {
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
     
     func calendarChooserDidFinish(_ chooser: EKCalendarChooser) {
         // up to us to respond
         let cals = chooser.selectedCalendars
         guard cals.count > 0 else {
-            self.dismiss(animated:true, completion:nil)
+            self.dismiss(animated:true)
             return
         }
         let calsToDelete = cals.map {$0.calendarIdentifier}
@@ -331,9 +331,9 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
                 }
             }
             // dismiss *everything*
-            self.dismiss(animated:true, completion: nil)
+            self.dismiss(animated:true)
         }))
         // alert sheet inside presented-or-popover
-        chooser.present(alert, animated: true, completion: nil)
+        chooser.present(alert, animated: true)
     }
 }

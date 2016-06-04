@@ -49,7 +49,7 @@ class SecondViewController : UIViewController {
     
     func doPresent(_ sender:AnyObject?) {
         let pvc = self.dynamicType.makePresentedViewController()
-        self.present(pvc, animated:true, completion:nil)
+        self.present(pvc, animated:true)
     }
 }
 

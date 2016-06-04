@@ -8,7 +8,7 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
         pvc.dataSource = self
         let page = MyPage()
         page.num = 1
-        pvc.setViewControllers([page], direction:.forward, animated:false, completion:nil)
+        pvc.setViewControllers([page], direction:.forward, animated:false)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -45,7 +45,7 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
             // workaround:
             /*
             dispatch_async(dispatch_get_main_queue()) {
-                // pvc.setViewControllers([page], direction: .Forward, animated: false, completion: nil)
+                // pvc.setViewControllers([page], direction: .Forward, animated: false)
             }
             */
             })

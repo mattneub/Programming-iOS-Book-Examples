@@ -13,12 +13,12 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, MFM
         }
         let vc = MFMailComposeViewController()
         vc.mailComposeDelegate = self
-        self.present(vc, animated:true, completion:nil)
+        self.present(vc, animated:true)
     }
 
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: NSError?) {
         print("mail result: \(result.rawValue)")
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
     
     // ================
@@ -30,12 +30,12 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, MFM
         }
         let vc = MFMessageComposeViewController()
         vc.messageComposeDelegate = self
-        self.present(vc, animated:true, completion:nil)
+        self.present(vc, animated:true)
     }
 
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         print("message result: \(result.rawValue)")
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
     
     // ================
@@ -51,9 +51,9 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, MFM
         vc.completionHandler = {
             (result:SLComposeViewControllerResult) in
             print("tweet result \(result.rawValue)")
-            self.dismiss(animated:true, completion:nil)
+            self.dismiss(animated:true)
         };
-        self.present(vc, animated:true, completion:nil)
+        self.present(vc, animated:true)
     }
     
 

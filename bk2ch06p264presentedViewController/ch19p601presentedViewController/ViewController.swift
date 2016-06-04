@@ -45,7 +45,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         default: break
         }
         
-        self.present(svc, animated:true, completion:nil)
+        self.present(svc, animated:true)
         // self.showViewController(svc, sender:self) // ooops! we're in a nav interface, uses that :)
     }
     

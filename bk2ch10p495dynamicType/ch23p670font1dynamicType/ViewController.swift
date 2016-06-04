@@ -102,7 +102,7 @@ class ViewController : UIViewController {
         
     }
     
-    func doDynamicType(n:NSNotification) {
+    func doDynamicType(_ n:NSNotification) {
         let style = self.lab.font.fontDescriptor().object(forKey:UIFontDescriptorTextStyleAttribute) as! String
         self.lab.font = UIFont.preferredFont(forTextStyle:style)
     }

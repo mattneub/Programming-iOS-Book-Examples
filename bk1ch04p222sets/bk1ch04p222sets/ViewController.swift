@@ -61,7 +61,7 @@ class ViewController: UIViewController {
             UIView.animate(withDuration:0.4, delay: 0, options: [.autoreverse, .repeat],
                 animations: {
                     // ...
-                }, completion: nil)
+                })
         }
 
         

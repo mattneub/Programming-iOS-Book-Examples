@@ -48,7 +48,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
 
         svc.presentationController!.delegate = self // *
         
-        self.present(svc, animated:true, completion:nil)
+        self.present(svc, animated:true)
         
         // just for the one case 7/-1 we will get a real popover: we have rules about that sort of thing!
         

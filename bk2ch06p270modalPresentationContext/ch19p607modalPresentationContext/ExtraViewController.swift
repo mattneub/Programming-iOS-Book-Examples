@@ -10,6 +10,6 @@ class ExtraViewController : UIViewController {
     
     @IBAction func doButton (_ sender: AnyObject) {
         print("presented vc's presenting vc: \(self.presenting)")
-        self.presenting!.dismiss(animated:true, completion: nil)
+        self.presenting!.dismiss(animated:true)
     }
 }

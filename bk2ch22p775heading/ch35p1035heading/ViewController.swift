@@ -37,7 +37,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.doStop(nil)
     }
 
-    func locationManager(_ manager: CLLocationManager, didUpdate newHeading: CLHeading) {
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         var h = newHeading.magneticHeading
         let h2 = newHeading.trueHeading // will be -1 if we have no location info
         print("\(h) \(h2) ")

@@ -81,7 +81,7 @@ class EditingViewController: UIViewController, GLKViewDelegate {
 
     
     func doCancel (_ sender:AnyObject?) {
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
     
     func doDone (_ sender:AnyObject?) {

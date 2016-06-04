@@ -53,7 +53,7 @@ class ViewController: UIViewController {
         nc.post(name:"test", object: self, userInfo: ["progress":3])
     }
     
-    func notificationArrived(n:NSNotification) {
+    func notificationArrived(_ n:NSNotification) {
         do {
             let prog = n.userInfo?["progress"] as? NSNumber
             if prog != nil {

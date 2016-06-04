@@ -2,7 +2,7 @@ import UIKit
 
 class ViewController2 : UIViewController {
     @IBAction func doButton(_ sender:AnyObject?) {
-        self.presenting!.dismiss(animated:true, completion: nil)
+        self.presenting!.dismiss(animated:true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         self.lab.adjustsFontSizeToFitWidth = true
         self.lab.minimumScaleFactor = 0.7
         
-        // self.lab.lineBreakMode = .ByWordWrapping
+        // self.lab.lineBreakMode = .byWordWrapping
         
         // self.lab.numberOfLines = 1
         

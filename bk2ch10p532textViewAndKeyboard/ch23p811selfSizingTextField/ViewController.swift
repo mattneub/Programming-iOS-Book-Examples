@@ -46,7 +46,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     // iOS 8 will play its part (scroll cursor to visible)
     // and we don't have to animate
     
-    func keyboardShow(n:NSNotification) {
+    func keyboardShow(_ n:NSNotification) {
         print("show")
         
         let d = n.userInfo as! [String:AnyObject]
@@ -60,7 +60,7 @@ class ViewController: UIViewController, UITextViewDelegate {
 
     }
     
-    func keyboardHide(n:NSNotification) {
+    func keyboardHide(_ n:NSNotification) {
         print("hide")
         
         self.tv.contentInset = UIEdgeInsetsZero

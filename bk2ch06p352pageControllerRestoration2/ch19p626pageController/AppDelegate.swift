@@ -32,7 +32,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         // give it an initial page
         let page = Pep(pepBoy: self.pep[0])
-        pvc.setViewControllers([page], direction: .forward, animated: false, completion: nil)
+        pvc.setViewControllers([page], direction: .forward, animated: false)
         // give it a data source
         pvc.dataSource = self
         // stick it in the interface
@@ -62,7 +62,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         print("app delegate decoding \(pep)")
         if let pep = pep as? Pep {
             let pvc = self.window!.rootViewController as! UIPageViewController
-            pvc.setViewControllers([pep], direction: .forward, animated: false, completion: nil)
+            pvc.setViewControllers([pep], direction: .forward, animated: false)
         }
     }
 }

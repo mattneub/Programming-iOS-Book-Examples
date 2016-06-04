@@ -143,7 +143,7 @@ class ViewController: UIViewController {
                     UIView.animate(withDuration:1, delay: 0, options: [],
                         animations: {
                             self.v.center.y += 100
-                        }, completion: nil)
+                        })
                 }
             default:break
             }

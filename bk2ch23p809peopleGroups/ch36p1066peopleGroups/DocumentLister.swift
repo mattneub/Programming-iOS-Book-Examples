@@ -56,7 +56,7 @@ class DocumentLister: UITableViewController {
     func doAdd (_:AnyObject?) {
         let av = UIAlertController(title: "New Group", message: "Enter name:", preferredStyle: .alert)
         av.addTextField {$0.autocapitalizationType = .words}
-        av.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        av.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         av.addAction(UIAlertAction(title: "OK", style: .default) {
             _ in
             guard let name = av.textFields![0].text where !name.isEmpty else {return}
@@ -65,7 +65,7 @@ class DocumentLister: UITableViewController {
             let pl = PeopleLister(fileURL: url)
             self.navigationController!.pushViewController(pl, animated: true)
         })
-        self.present(av, animated: true, completion: nil)
+        self.present(av, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

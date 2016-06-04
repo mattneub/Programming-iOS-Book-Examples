@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Hey", style: .default, handler: handler))
         alert.addAction(UIAlertAction(title: "Ho", style: .default, handler: handler))
         alert.addAction(UIAlertAction(title: "Hey Nonny No", style: .default, handler: handler))
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true)
         // if we do no more than that, we'll crash with a helpful error message:
         // "UIPopoverPresentationController should have a non-nil sourceView or barButtonItem set before the presentation occurs"
         // so the runtime knows that on iPad this should be a popover, and has arranged it already
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     @IBAction func doOtherThing(_ sender:AnyObject) {
         let pvc = PopoverViewController(nibName: "PopoverViewController", bundle: nil)
         pvc.modalPresentationStyle = .popover
-        self.present(pvc, animated: true, completion: nil)
+        self.present(pvc, animated: true)
         if let pop = pvc.popoverPresentationController {
             let b = sender as! UIBarButtonItem
             pop.barButtonItem = b

@@ -28,11 +28,11 @@ class SecondViewController : UIViewController {
         
         
         // just proving it works
-        // self.dismiss(animated:true, completion: nil)
-        // vc.dismiss(animated:true, completion: nil)
+        // self.dismiss(animated:true)
+        // vc.dismiss(animated:true)
         // return;
         
-        self.presenting!.dismiss(animated:true, completion: nil)
+        self.presenting!.dismiss(animated:true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

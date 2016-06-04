@@ -18,8 +18,6 @@ A simple no-navigation web view - we just show our own custom content and that's
 Demonstrates basic web kit configuration and some cool features.
 */
 
-// can't get this to compile!
-
 class MyMessageHandler : NSObject, WKScriptMessageHandler {
     weak var delegate : WKScriptMessageHandler?
     init(delegate:WKScriptMessageHandler) {
@@ -360,7 +358,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                 // this is how to use the new Safari view controller
                 let svc = SFSafariViewController(url: url)
                 // svc.delegate = self
-                self.present(svc, animated: true, completion: nil)
+                self.present(svc, animated: true)
                 decisionHandler(.cancel)
                 return
             }
@@ -375,7 +373,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
 
     
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
     
     func safariViewController(_ controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {

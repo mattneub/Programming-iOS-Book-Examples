@@ -66,14 +66,14 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                     let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                     UIApplication.shared().open(url)
             }))
-            self.present(alert, animated:true, completion:nil)
+            self.present(alert, animated:true)
             return false
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.determineStatus()
+        _ = self.determineStatus()
         NSNotificationCenter.default().addObserver(self,
             selector: #selector(determineStatus),
             name: UIApplicationWillEnterForegroundNotification,
@@ -113,11 +113,11 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
         // user will get the "access the camera" system dialog at this point if necessary
         // if the user refuses, Very Weird Things happen...
-        self.present(picker, animated: true, completion: nil)
+        self.present(picker, animated: true)
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
@@ -159,14 +159,14 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     }
 
     func doCancel(_ sender:AnyObject) {
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
     
     func doUse(_ im:UIImage?) {
         if im != nil {
             self.iv.image = im
         }
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
     
 }

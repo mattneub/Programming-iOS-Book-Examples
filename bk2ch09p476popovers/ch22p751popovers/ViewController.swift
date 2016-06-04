@@ -39,7 +39,7 @@ class ViewController : UIViewController {
         //print(nav.presentationController)
         nav.modalPresentationStyle = .popover
         //print(nav.presentationController)
-        self.present(nav, animated: true, completion: nil)
+        self.present(nav, animated: true)
         
         // where's the configuration for the popover controller?
         // we can do it _after_ presentation
@@ -67,12 +67,12 @@ class ViewController : UIViewController {
     // state saving and button dismissal; dismiss = dismiss presented view controller
     
     func cancelPop1(_ sender:AnyObject) {
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
         NSUserDefaults.standard().set(self.oldChoice, forKey: "choice")
     }
     
     func savePop1(_ sender:AnyObject) {
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
     
     // presented view controller inside popover; just use .CurrentContext
@@ -83,7 +83,7 @@ class ViewController : UIViewController {
         // this is because the popover controller is a UIContentContainer...
         // and can respond to preferred size changes from its child
         let evc = ExtraViewController(nibName: nil, bundle: nil)
-        self.presented!.present(evc, animated: true, completion: nil)
+        self.presented!.present(evc, animated: true)
     }
     
     // demonstrating how to summon a popover attached to an ordinary view
@@ -94,7 +94,7 @@ class ViewController : UIViewController {
         let v = sender as! UIView
         let vc = UIViewController()
         vc.modalPresentationStyle = .popover
-        self.present(vc, animated: true, completion: nil)
+        self.present(vc, animated: true)
         if let pop = vc.popoverPresentationController {
             pop.sourceView = v
             pop.sourceRect = v.bounds
@@ -112,7 +112,7 @@ class ViewController : UIViewController {
         // vc.isModalInPopover = true
         print(vc.popoverPresentationController) // NB valid here, we could configure here
         
-        self.present(vc, animated: true, completion: nil)
+        self.present(vc, animated: true)
         // vc's view is now loaded and we are free to configure it further
         vc.view.frame = CGRect(0,0,300,300)
         vc.view.backgroundColor = UIColor.green()

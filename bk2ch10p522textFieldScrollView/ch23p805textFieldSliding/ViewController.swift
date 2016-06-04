@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         return !self.keyboardShowing
     }
 
-    func keyboardShow(n:NSNotification) {
+    func keyboardShow(_ n:NSNotification) {
         self.oldContentInset = self.scrollView.contentInset
         self.oldIndicatorInset = self.scrollView.scrollIndicatorInsets
         self.oldOffset = self.scrollView.contentOffset
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         self.keyboardShowing = true
     }
     
-    func keyboardHide(n:NSNotification) {
+    func keyboardHide(_ n:NSNotification) {
         print("hide")
         self.scrollView.bounds.origin = self.oldOffset
         self.scrollView.scrollIndicatorInsets = self.oldIndicatorInset

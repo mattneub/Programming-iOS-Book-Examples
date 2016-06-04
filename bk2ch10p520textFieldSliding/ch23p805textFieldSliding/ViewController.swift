@@ -60,7 +60,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return self.fr == nil
     }
     
-    func keyboardShow(n:NSNotification) {
+    func keyboardShow(_ n:NSNotification) {
         print("show!")
         let d = n.userInfo as! [String:AnyObject]
         if let local = d[UIKeyboardIsLocalUserInfoKey] {
@@ -79,7 +79,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    func keyboardHide(n:NSNotification) {
+    func keyboardHide(_ n:NSNotification) {
         print("hide!")
         let d = n.userInfo as! [String:AnyObject]
         if let local = d[UIKeyboardIsLocalUserInfoKey] {

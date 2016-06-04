@@ -47,7 +47,7 @@ class ViewController: UIViewController {
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
             }))
-            self.present(alert, animated:true, completion:nil)
+            self.present(alert, animated:true)
             return false
         }
     }
@@ -100,7 +100,7 @@ class ViewController: UIViewController {
         // note that for .photoLibrary, iPhone app must permit portrait orientation
         // if we want a popover, on pad, we can do that; just uncomment next line
         picker.modalPresentationStyle = .popover
-        self.present(picker, animated: true, completion: nil)
+        self.present(picker, animated: true)
         // ignore:
         if let pop = picker.popoverPresentationController {
             let v = sender as! UIView

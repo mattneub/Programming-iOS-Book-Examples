@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         // but new in iOS 9, seems to boldify the designated button title instead
         alert.preferredAction = alert.actions[2]
 
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true)
         // dismissal is automatic when a button is tapped
     }
     
@@ -45,10 +45,10 @@ class ViewController: UIViewController {
             let tf = alert.textFields![0] 
             print("User entered \(tf.text), tapped \(act.title)")
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: handler))
         alert.actions[1].isEnabled = false
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true)
     }
     
     func textChanged(_ sender:AnyObject) {
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
             action.addAction(UIAlertAction(title: s, style: .default, handler: handler))
         }
         // action.view.tintColor = UIColor.yellow()
-        self.present(action, animated: true, completion: nil)
+        self.present(action, animated: true)
         if let pop = action.popoverPresentationController {
             let v = sender as! UIView
             pop.sourceView = v

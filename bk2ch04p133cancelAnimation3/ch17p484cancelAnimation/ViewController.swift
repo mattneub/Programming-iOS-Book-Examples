@@ -10,7 +10,7 @@ class ViewController : UIViewController {
         UIView.animate(withDuration:1, delay: 0, options: opts,
             animations: {
                 self.v.center.x += 100
-            }, completion: nil)
+            })
     }
     
     func cancel() {
@@ -22,7 +22,7 @@ class ViewController : UIViewController {
                 if let val = self.v.layer.value(forKey:"pOrig") as? NSValue {
                     self.v.center = val.cgPointValue()
                 }
-            }, completion:nil)
+            })
     }
     
     @IBAction func doStart(_ sender:AnyObject?) {

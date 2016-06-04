@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton(_ sender: AnyObject) {
         if self.presenting != nil {
-            self.dismiss(animated:true, completion:nil)
+            self.dismiss(animated:true)
         } else {
             print("window bounds are \(self.view.window!.bounds)")
             print("screen bounds are \(UIScreen.main().bounds)")
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
             default: break
             }
             vc.presentationController!.delegate = self
-            self.present(vc, animated:true, completion:nil)
+            self.present(vc, animated:true)
 
         }
     }

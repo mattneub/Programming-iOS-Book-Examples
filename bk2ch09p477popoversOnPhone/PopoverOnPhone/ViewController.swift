@@ -37,7 +37,7 @@ class ViewController: UIViewController {
             pres.delegate = self // comment out to see what the defaults are
         }
 
-        self.present(vc, animated: true, completion: nil)
+        self.present(vc, animated: true)
 
         let wv = UIWebView()
         wv.backgroundColor = UIColor.white()
@@ -95,7 +95,7 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
     }
     
     func dismissHelp(_ sender:AnyObject) {
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
     
     

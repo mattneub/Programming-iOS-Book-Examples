@@ -30,7 +30,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let pvc = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         // give it an initial page
         let page = Pep(pepBoy: self.pep[0])
-        pvc.setViewControllers([page], direction: .forward, animated: false, completion: nil)
+        pvc.setViewControllers([page], direction: .forward, animated: false)
         // give it a data source
         pvc.dataSource = self
         // stick it in the interface
@@ -56,7 +56,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         if let boy = boy as? String {
             let pvc = self.window!.rootViewController as! UIPageViewController
             let pep = Pep(pepBoy: boy)
-            pvc.setViewControllers([pep], direction: .forward, animated: false, completion: nil)
+            pvc.setViewControllers([pep], direction: .forward, animated: false)
         }
     }
 }

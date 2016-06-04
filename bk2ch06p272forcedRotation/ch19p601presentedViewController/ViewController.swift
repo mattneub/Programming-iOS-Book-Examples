@@ -10,7 +10,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         svc.delegate = self
 //        svc.view.alpha = 0.5
 //        svc.modalPresentationStyle = .OverFullScreen
-        self.present(svc, animated:true, completion:nil)
+        self.present(svc, animated:true)
         
     }
     

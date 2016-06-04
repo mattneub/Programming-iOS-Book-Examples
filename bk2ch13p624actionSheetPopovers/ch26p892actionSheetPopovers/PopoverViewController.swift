@@ -41,7 +41,7 @@ class PopoverViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Ho", style: .default, handler: handler))
         alert.addAction(UIAlertAction(title: "Hey Nonny No", style: .default, handler: handler))
         // .OverCurrentContext is the default, so no need to specify! just show it
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true)
         // tapping outside the sheet but inside the containing popover dismisses the sheet
         // tapping outside the containing popover dismisses the popover
         // to prevent that, you have to take charge of dismissal

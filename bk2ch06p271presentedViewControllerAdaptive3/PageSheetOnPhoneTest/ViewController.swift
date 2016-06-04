@@ -32,7 +32,7 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     
 
     @IBAction func doDismiss(_ sender: AnyObject) {
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
 }
 

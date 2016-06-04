@@ -255,7 +255,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 self.sectionData.remove(at:empties)
                 self.collectionView!.deleteSections(emptyset)
             }
-            }, completion: nil)
+            })
     }
     
     // menu =================

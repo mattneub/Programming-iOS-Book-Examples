@@ -73,7 +73,7 @@ class ViewController: UIViewController {
 
     @IBAction func doButton (_ sender:AnyObject!) {
         let tvc = MyTableViewController(greeting:"Hello there")
-        self.present(tvc, animated: true, completion: nil)
+        self.present(tvc, animated: true)
         // crashing bug in iOS 8 fixed in iOS 9;
         // it is now okay once again to subclass UITableViewController and instantiate it manually
     }

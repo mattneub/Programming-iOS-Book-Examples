@@ -27,7 +27,7 @@ class ViewController3: UIViewController {
                 pres.isModalInPopover = self.oldModal
             }
         }
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
 
     

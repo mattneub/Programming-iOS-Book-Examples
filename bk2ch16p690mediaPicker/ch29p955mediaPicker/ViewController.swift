@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         picker.allowsPickingMultipleItems = true
         picker.modalPresentationStyle = .popover
         picker.preferredContentSize = CGSize(500,600)
-        self.present(picker, animated: true, completion: nil)
+        self.present(picker, animated: true)
         if let pop = picker.popoverPresentationController {
             if let b = sender as? UIBarButtonItem {
                 pop.barButtonItem = b
@@ -56,12 +56,12 @@ extension ViewController : MPMediaPickerControllerDelegate {
         let player = MPMusicPlayerController.applicationMusicPlayer()
         player.setQueueWith(mediaItemCollection)
         player.play()
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
     
     func mediaPickerDidCancel(mediaPicker: MPMediaPickerController) {
         print("cancel")
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
 
 }

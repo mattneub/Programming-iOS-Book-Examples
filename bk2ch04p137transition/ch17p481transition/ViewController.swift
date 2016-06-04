@@ -18,7 +18,7 @@ class ViewController : UIViewController {
         UIView.transition(with:self.iv, duration: 0.8, options: opts,
             animations: {
                 self.iv.image = UIImage(named:"Smiley")
-            }, completion: nil)
+            })
         
         // ======
         
@@ -26,7 +26,7 @@ class ViewController : UIViewController {
         UIView.transition(with:self.v, duration: 1, options: opts,
             animations: {
                 self.v.setNeedsDisplay()
-            }, completion: nil)
+            })
         
         // ======
         
@@ -37,7 +37,7 @@ class ViewController : UIViewController {
                 f.size.width = self.outer.frame.width
                 f.origin.x = 0
                 self.inner.frame = f
-            }, completion: nil)
+            })
         
     }
     

@@ -45,7 +45,7 @@ class MyMandelbrotView : UIView {
     }
     
     // warning! called on background thread
-    func operationFinished(n:NSNotification) {
+    func operationFinished(_ n:NSNotification) {
         if let op = n.object as? MyMandelbrotOperation {
             dispatch_async(dispatch_get_main_queue()) {
                 NSNotificationCenter.default().removeObserver(self, name: "MyMandelbrotOperationFinished", object: op)

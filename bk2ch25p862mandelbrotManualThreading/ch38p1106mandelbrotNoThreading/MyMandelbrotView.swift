@@ -59,8 +59,8 @@ class MyMandelbrotView : UIView {
         UIApplication.shared().beginIgnoringInteractionEvents()
         self.makeBitmapContext(size:self.bounds.size)
         let center = CGPoint(self.bounds.midX, self.bounds.midY)
-        let d : [NSObject:AnyObject] = ["center":NSValue(cgPoint: center), "zoom":CGFloat(1)]
-        self.performSelector(inBackground: #selector(reallyDraw), with: d as NSDictionary)
+        let d = ["center":NSValue(cgPoint: center), "zoom":CGFloat(1)]
+        self.performSelector(inBackground: #selector(reallyDraw), with: d)
     }
     
     // trampoline, background thread entry point

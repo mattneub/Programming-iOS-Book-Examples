@@ -108,7 +108,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
             let preview = QLPreviewController()
             preview.dataSource = self
             preview.currentPreviewItemIndex = 0
-            self.present(preview, animated: true, completion: nil)
+            self.present(preview, animated: true)
         } catch {
             print(error)
         }

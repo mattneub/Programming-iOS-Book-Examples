@@ -14,7 +14,7 @@ class ViewController : UIViewController {
                 initialSpringVelocity: 20,
                 animations: {
                     self.v.center.y += 100
-                }, completion: nil)
+                })
         case 2:
             // new in iOS 9, springing is exposed at layer level
             CATransaction.setDisableActions(true)

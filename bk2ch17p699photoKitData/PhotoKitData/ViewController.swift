@@ -11,6 +11,9 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
+// this crashes the compiler, so I'm forced to enumerate results "by hand"
+// seems unfair that PHFetchResult adopts NSFastEnumeration in Objective-C but can't say for...in in Swift
+
 //extension PHFetchResult: Sequence {
 //    public func makeIterator() -> NSFastEnumerationIterator {
 //        return NSFastEnumerationIterator(self)
@@ -32,20 +35,20 @@ class ViewController: UIViewController {
             return false
         case .denied:
             let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Photos library?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel))
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
             }))
-            self.present(alert, animated:true, completion:nil)
+            self.present(alert, animated:true)
             return false
         }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.determineStatus()
+        _ = self.determineStatus()
         NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
         PHPhotoLibrary.shared().register(self) // *
     }
@@ -63,7 +66,7 @@ class ViewController: UIViewController {
         let result = PHCollectionList.fetchCollectionLists(with:
             .momentList, subtype: .momentListYear, options: opts)
         for ix in 0..<result.count {
-            let list = result.object(at:ix)
+            let list = result[ix]
             let f = NSDateFormatter()
             f.dateFormat = "yyyy"
             print(f.string(from:list.startDate!))
@@ -71,7 +74,7 @@ class ViewController: UIViewController {
             if list.collectionListType == .momentList {
                 let result = PHAssetCollection.fetchMoments(inMomentList:list, options: nil)
                 for ix in 0 ..< result.count {
-                    let coll = result.object(at:ix)
+                    let coll = result[ix]
                     if ix == 0 {
                         print("======= \(result.count) clusters")
                     }
@@ -93,7 +96,7 @@ class ViewController: UIViewController {
             // let's examine albums synced onto the device from iPhoto
             .album, subtype: .albumSyncedAlbum, options: nil)
         for ix in 0 ..< result.count {
-            let album = result.object(at:ix)
+            let album = result[ix]
             print("\(album.localizedTitle): approximately \(album.estimatedAssetCount) photos")
         }
     }
@@ -105,21 +108,21 @@ class ViewController: UIViewController {
         }
 
         let alert = UIAlertController(title: "Pick an album:", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         let result = PHAssetCollection.fetchAssetCollections(with:
             .album, subtype: .albumSyncedAlbum, options: nil)
         for ix in 0 ..< result.count {
-            let album = result.object(at:ix)
+            let album = result[ix]
             alert.addAction(UIAlertAction(title: album.localizedTitle, style: .default, handler: {
                 (_:UIAlertAction!) in
                 let result = PHAsset.fetchAssets(in:album, options: nil)
                 for ix in 0 ..< result.count {
-                    let asset = result.object(at:ix)
+                    let asset = result[ix]
                     print(asset.localIdentifier)
                 }
             }))
         }
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true)
         if let pop = alert.popoverPresentationController {
             if let v = sender as? UIView {
                 pop.sourceView = v
@@ -206,7 +209,8 @@ class ViewController: UIViewController {
     }
 }
 
-// but this cannot compile because generics are not covariant
+// PHFetchResult is now generic, but generics are not covariant / castable
+// thus we are compelled to use unsafeBitCast to go between PHFetchResult<AnyObject> and PHFetchResult<PHAssetCollection>
 
 extension ViewController : PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInfo: PHChange) {

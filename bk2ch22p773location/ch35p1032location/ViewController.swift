@@ -31,13 +31,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let message = "Wouldn't you like to authorize" +
             "this app to use Location Services?"
             let alert = UIAlertController(title: "Need Authorization", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel))
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
             }))
-            self.present(alert, animated:true, completion:nil)
+            self.present(alert, animated:true)
             return false
         }
     }
@@ -95,7 +95,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let REQ_ACC : CLLocationAccuracy = 10
     let REQ_TIME : NSTimeInterval = 10
     
-    func locationManager(_ manager: CLLocationManager, didUpdate locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         switch which {
         case 1:
             print("did update location ")

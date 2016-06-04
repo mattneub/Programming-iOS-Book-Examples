@@ -29,10 +29,10 @@ class ViewController : UIViewController {
     @IBAction func doButton(_ sender:AnyObject?) {
         // for comparison purposes
 //        let alert = UIAlertController(title: "Howdy", message: "This is a test", preferredStyle: .Alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-//        self.present(alert, animated:true, completion:nil)
+//        alert.addAction(UIAlertAction(title: "OK", style: .Cancel))
+//        self.present(alert, animated:true)
 //        return;
-        self.present(ViewController2(), animated:true, completion:nil)
+        self.present(ViewController2(), animated:true)
     }
 }
 
@@ -42,7 +42,7 @@ class ViewController2 : UIViewController {
     @IBOutlet var button : UIButton!
     
     @IBAction func doButton(_ sender:AnyObject?) {
-        self.presenting!.dismiss(animated:true, completion: nil)
+        self.presenting!.dismiss(animated:true)
     }
     
     override func viewDidLoad() {

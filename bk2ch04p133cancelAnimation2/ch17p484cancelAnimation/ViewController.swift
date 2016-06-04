@@ -10,7 +10,7 @@ class ViewController : UIViewController {
         UIView.animate(withDuration:1, delay: 0, options: opts,
             animations: {
                 self.v.center.x += 100
-            }, completion: nil)
+            })
     }
     
     
@@ -21,7 +21,7 @@ class ViewController : UIViewController {
             options:.beginFromCurrentState,
             animations: {
                 self.v.center = self.pOrig
-            }, completion:nil)
+            })
     }
     
     @IBAction func doStart(_ sender:AnyObject?) {

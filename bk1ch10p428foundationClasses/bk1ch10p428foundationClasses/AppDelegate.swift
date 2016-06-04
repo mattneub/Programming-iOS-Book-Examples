@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func doProg(n:NSNotification) {
+    func doProg(_ n:NSNotification) {
         if let prog = n.userInfo?["progress"] as? Double {
             self.progress = prog
         }

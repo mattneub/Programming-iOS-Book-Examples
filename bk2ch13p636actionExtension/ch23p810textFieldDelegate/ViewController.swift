@@ -81,7 +81,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             UIActivityTypeAirDrop,
             UIActivityTypeOpenInIBooks,
         ]
-        self.present(avc, animated:true, completion:nil)
+        self.present(avc, animated:true)
 
     }
     

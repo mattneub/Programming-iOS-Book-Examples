@@ -29,21 +29,21 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                 "to use the camera?",
                 preferredStyle: .alert)
             alert.addAction(UIAlertAction(
-                title: "No", style: .cancel, handler: nil))
+                title: "No", style: .cancel))
             alert.addAction(UIAlertAction(
                 title: "OK", style: .default, handler: {
                     _ in
                     let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                     UIApplication.shared().open(url)
             }))
-            self.present(alert, animated:true, completion:nil)
+            self.present(alert, animated:true)
             return false
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.determineStatus()
+        _ = self.determineStatus()
         NSNotificationCenter.default().addObserver(self,
             selector: #selector(determineStatus),
             name: UIApplicationWillEnterForegroundNotification,
@@ -76,11 +76,11 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         // if the user refuses, Very Weird Things happen...
         // better to get authorization beforehand
         
-        self.present(picker, animated: true, completion: nil)
+        self.present(picker, animated: true)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController,

@@ -126,7 +126,7 @@ class ViewController: UIViewController {
 
     }
     
-    func notificationArrived(n:NSNotification) {
+    func notificationArrived(_ n:NSNotification) {
         let prog = (n.userInfo?["progress"] as? NSNumber)?.doubleValue
         if prog != nil {
             self.progress = prog!

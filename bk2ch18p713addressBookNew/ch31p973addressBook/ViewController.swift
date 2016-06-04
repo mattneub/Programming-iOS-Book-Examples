@@ -35,7 +35,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
             }))
-            self.present(alert, animated:true, completion:nil)
+            self.present(alert, animated:true)
             return false
         }
     }
@@ -150,13 +150,13 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         picker.displayedPropertyKeys = [CNContactEmailAddressesKey]
         picker.predicateForSelectionOfProperty = NSPredicate(format: "key == 'emailAddresses'")
         picker.predicateForEnablingContact = NSPredicate(format: "emailAddresses.@count > 0")
-        self.present(picker, animated:true, completion:nil)
+        self.present(picker, animated:true)
     }
     
     func contactPicker(_ picker: CNContactPickerViewController, didSelect prop: CNContactProperty) {
         print(prop)
         print(prop.contact)
-        self.dismiss(animated:true, completion: nil)
+        self.dismiss(animated:true)
     }
 
     @IBAction func doViewPerson (_ sender:AnyObject!) {
@@ -203,7 +203,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         con.familyName = "Doright"
         let npvc = CNContactViewController(forNewContact: con)
         npvc.delegate = self
-        self.present(UINavigationController(rootViewController: npvc), animated: true, completion:nil)
+        self.present(UINavigationController(rootViewController: npvc), animated: true)
     }
     
     @IBAction func doUnknownPerson (_ sender:AnyObject!) {
@@ -218,9 +218,9 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         unkvc.allowsActions = false
         self.navigationController?.pushViewController(unkvc, animated: true)
         // this doesn't work either
-        // self.present(UINavigationController(rootViewController: unkvc), animated:true, completion:nil)
+        // self.present(UINavigationController(rootViewController: unkvc), animated:true)
         // and this doesn't work either!
-        // self.present(unkvc, animated:true, completion:nil)
+        // self.present(unkvc, animated:true)
     }
 
 
@@ -249,7 +249,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         let npvc = ABNewPersonViewController()
         npvc.newPersonViewDelegate = self
         let nc = UINavigationController(rootViewController:npvc)
-        self.present(nc, animated:true, completion:nil)
+        self.present(nc, animated:true)
     }
     
 
@@ -263,7 +263,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
                 print("I have a person named \(name), not saving this person to the database")
                 // do something with new person
             }
-            self.dismiss(animated:true, completion:nil)
+            self.dismiss(animated:true)
     }
     
     // =========

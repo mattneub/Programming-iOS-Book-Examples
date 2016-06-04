@@ -24,7 +24,7 @@ class ViewController2: UIViewController {
     }
     
     @IBAction func doButton(_ sender: AnyObject) {
-        self.presenting!.dismiss(animated:true, completion: nil)
+        self.presenting!.dismiss(animated:true)
     }
 }
 
@@ -74,7 +74,7 @@ extension MyPresentationController {
         tc.animate(alongsideTransition: {
             _ in
             shadow.alpha = 0
-            }, completion: nil)
+            })
     }
 }
 
@@ -163,7 +163,7 @@ extension ViewController2 {
                 _ in
                 self.buttonTopConstraint.constant += 200
                 self.view.layoutIfNeeded()
-            }, completion: nil)
+            })
         }
     }
 }

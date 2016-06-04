@@ -24,12 +24,12 @@ class ModelController: NSObject {
         self.tryToGetStarted()
     }
 
-    func viewController(at index: Int, storyboard: UIStoryboard) -> DataViewController? {
-        if self.photos == nil || self.photos.count == 0 || index >= self.photos.count {
+    func viewController(at ix: Int, storyboard: UIStoryboard) -> DataViewController? {
+        if self.photos == nil || self.photos.count == 0 || ix >= self.photos.count {
             return nil
         }
         let dvc = storyboard.instantiateViewController(withIdentifier: "DataViewController") as! DataViewController
-        dvc.asset = self.photos.object(at:index) // as! PHAsset
+        dvc.asset = Optional(self.photos[ix]) // work around compiler crash
         // dvc.index = index
         return dvc
     }

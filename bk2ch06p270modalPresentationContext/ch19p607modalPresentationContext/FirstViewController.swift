@@ -9,7 +9,7 @@ class FirstViewController : UIViewController {
         switch which {
         case 1:
             let vc = ExtraViewController(nibName: "ExtraViewController", bundle: nil)
-            self.present(vc, animated: true, completion: nil)
+            self.present(vc, animated: true)
             
         case 2:
             // in iOS 8/9, this works on iPhone as well as iPad!
@@ -17,7 +17,7 @@ class FirstViewController : UIViewController {
             let vc = ExtraViewController(nibName: "ExtraViewController", bundle: nil)
             self.definesPresentationContext = true
             vc.modalPresentationStyle = .currentContext
-            self.present(vc, animated: true, completion: nil)
+            self.present(vc, animated: true)
 
         case 3:
             let vc = ExtraViewController(nibName: "ExtraViewController", bundle: nil)
@@ -31,7 +31,7 @@ class FirstViewController : UIViewController {
             
             vc.modalPresentationCapturesStatusBarAppearance = true
             
-            self.present(vc, animated: true, completion: nil)
+            self.present(vc, animated: true)
 
             
             

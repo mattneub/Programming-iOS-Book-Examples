@@ -62,13 +62,13 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
             // new iOS 8 feature: sane way of getting the user directly to the relevant prefs
             // I think the crash-in-background issue is now gone
             let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Contacts?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel))
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
             }))
-            self.present(alert, animated:true, completion:nil)
+            self.present(alert, animated:true)
             self.adbk = nil
             return false
         }
@@ -77,7 +77,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.determineStatus()
+        _ = self.determineStatus()
         NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
@@ -140,7 +140,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         // picker.predicateForEnablingPerson = NSPredicate(format: "%K like %@", ABPersonFamilyNameProperty, "Neuburg")
         picker.predicateForSelectionOfPerson = NSPredicate(value:false) // display additional info for all persons
         picker.predicateForSelectionOfProperty = NSPredicate(value:true) // call delegate method for all properties
-        self.present(picker, animated:true, completion:nil)
+        self.present(picker, animated:true)
     }
     
     func peoplePickerNavigationController(_ peoplePicker: ABPeoplePickerNavigationController, didSelectPerson person: ABRecord) {
@@ -164,7 +164,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
             let ix = ABMultiValueGetIndexForIdentifier(emails, identifier)
             let email = ABMultiValueCopyValueAtIndex(emails, ix).takeRetainedValue() as! String
             print(email) // do something with the email here
-            // self.dismiss(animated:true, completion: nil)
+            // self.dismiss(animated:true)
     }
     
     // =========
@@ -204,7 +204,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         let npvc = ABNewPersonViewController()
         npvc.newPersonViewDelegate = self
         let nc = UINavigationController(rootViewController:npvc)
-        self.present(nc, animated:true, completion:nil)
+        self.present(nc, animated:true)
     }
     
 
@@ -218,7 +218,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
                 print("I have a person named \(name), not saving this person to the database")
                 // do something with new person
             }
-            self.dismiss(animated:true, completion:nil)
+            self.dismiss(animated:true)
     }
     
     // =========

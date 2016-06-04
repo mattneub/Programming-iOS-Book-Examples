@@ -100,10 +100,10 @@ class ViewController: UIViewController {
         
     }
     
-    func wirelessChanged(n:NSNotification) {
+    func wirelessChanged(_ n:NSNotification) {
         print("wireless change \(n.userInfo)")
     }
-    func wirelessChanged2(n:NSNotification) {
+    func wirelessChanged2(_ n:NSNotification) {
         print("wireless active change \(n.userInfo)")
     }
     
@@ -196,7 +196,7 @@ class ViewController: UIViewController {
         self.timer.tolerance = 0.1
     }
     
-    func changed(n:NSNotification) {
+    func changed(_ n:NSNotification) {
         defer {
             self.timer?.fire() // looks better if we fire timer now
         }

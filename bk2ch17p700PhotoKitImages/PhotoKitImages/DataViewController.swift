@@ -117,7 +117,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
                 }
             }
             let nav = UINavigationController(rootViewController: evc)
-            self.present(nav, animated: true, completion: nil)
+            self.present(nav, animated: true)
         })
     }
     
