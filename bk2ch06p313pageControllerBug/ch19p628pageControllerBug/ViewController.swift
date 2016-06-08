@@ -40,7 +40,7 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
         let page = MyPage()
         page.num = 8
         let pvc = self.childViewControllers[0] as! UIPageViewController
-        pvc.setViewControllers([page], direction: .forward, animated: true, completion: {
+        pvc.setViewControllers([page], direction: .forward, animated: true) {
             _ in
             // workaround:
             /*
@@ -48,7 +48,7 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
                 // pvc.setViewControllers([page], direction: .Forward, animated: false)
             }
             */
-            })
+            }
     }
     
 }

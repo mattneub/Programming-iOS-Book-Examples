@@ -34,10 +34,10 @@ class ViewController : UIViewController {
         let alert = UIAlertController(title: "Write", message: nil, preferredStyle: .alert)
         alert.addTextField { tf in tf.text = self.thing.word }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+        alert.addAction(UIAlertAction(title: "OK", style: .default) {
             _ in
             self.thing.word = alert.textFields![0].text!
-            }))
+        })
         self.present(alert, animated: true)
     }
     

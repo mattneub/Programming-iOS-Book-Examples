@@ -31,11 +31,11 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         case .denied:
             let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Contacts?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "No", style: .cancel))
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            alert.addAction(UIAlertAction(title: "OK", style: .default) {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
-            }))
+            })
             self.present(alert, animated:true)
             return false
         }

@@ -62,11 +62,11 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             alert.addAction(UIAlertAction(
                 title: "No", style: .cancel))
             alert.addAction(UIAlertAction(
-                title: "OK", style: .default, handler: {
+                title: "OK", style: .default) {
                     _ in
                     let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                     UIApplication.shared().open(url)
-            }))
+            })
             self.present(alert, animated:true)
             return false
         }

@@ -89,10 +89,10 @@ extension AppDelegate : UIPageViewControllerDataSource {
                 }
                 let dir : UIPageViewControllerNavigationDirection = which == 0 ? .reverse : .forward
                 UIApplication.shared().beginIgnoringInteractionEvents()
-                pvc.setViewControllers([vc!], direction: dir, animated: true, completion: {
+                pvc.setViewControllers([vc!], direction: dir, animated: true) {
                     _ in
                     UIApplication.shared().endIgnoringInteractionEvents()
-                })
+                }
             })
         }
     }

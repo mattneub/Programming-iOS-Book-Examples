@@ -77,7 +77,9 @@ class ViewController: UIViewController {
                         self.v.removeFromSuperview()
                 })
             case 4:
-                UIView.perform(.delete, on: [self.v], animations: nil, completion: {_ in print(self.v.superview)})
+                UIView.perform(.delete, on: [self.v], animations: nil) {
+                    _ in print(self.v.superview)
+                }
             case 5:
                 UIView.animate(withDuration:1, animations: {
                     self.v.backgroundColor = UIColor.red()

@@ -165,7 +165,7 @@ class ViewController : UIViewController {
         vc.modalTransitionStyle = .flipHorizontal // wow, this looks really cool
         
         let presenter = self.presented!
-        presenter.present(vc, animated:true, completion:{
+        presenter.present(vc, animated:true) {
             _ in
             print("presented")
             
@@ -173,7 +173,7 @@ class ViewController : UIViewController {
             // presenter.isModalInPopover = true // no, has no effect
             // vc.isModalInPopover = true // no, unnecessary: it now _will_ be modal!
             // (and in fact you can't prevent it)
-        })
+        }
         
         // change in iOS 8.3!
         // I was trying to show that even though presented-in-popover v.c. _is_ modal in popover...
@@ -193,9 +193,9 @@ class ViewController : UIViewController {
     func done (_ sender:UIResponder) {
         var r : UIResponder! = sender
         repeat { r = r.next() } while !(r is UIViewController)
-        (r as! UIViewController).dismiss(animated:true, completion: {
+        (r as! UIViewController).dismiss(animated:true) {
             print("dismissed")
-            })
+        }
     }
 }
 

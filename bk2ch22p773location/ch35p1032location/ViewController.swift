@@ -33,11 +33,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             "this app to use Location Services?"
             let alert = UIAlertController(title: "Need Authorization", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "No", style: .cancel))
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            alert.addAction(UIAlertAction(title: "OK", style: .default) {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
-            }))
+            })
             self.present(alert, animated:true)
             return false
         }

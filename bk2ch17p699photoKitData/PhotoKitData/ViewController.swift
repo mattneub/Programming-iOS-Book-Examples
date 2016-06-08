@@ -37,11 +37,11 @@ class ViewController: UIViewController {
         case .denied:
             let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Photos library?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "No", style: .cancel))
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            alert.addAction(UIAlertAction(title: "OK", style: .default) {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
-            }))
+            })
             self.present(alert, animated:true)
             return false
         }
@@ -114,14 +114,14 @@ class ViewController: UIViewController {
             .album, subtype: .albumSyncedAlbum, options: nil)
         for ix in 0 ..< result.count {
             let album = result[ix]
-            alert.addAction(UIAlertAction(title: album.localizedTitle, style: .default, handler: {
+            alert.addAction(UIAlertAction(title: album.localizedTitle, style: .default) {
                 (_:UIAlertAction!) in
                 let result = PHAsset.fetchAssets(in:album, options: nil)
                 for ix in 0 ..< result.count {
                     let asset = result[ix]
                     print(asset.localIdentifier)
                 }
-            }))
+            })
         }
         self.present(alert, animated: true)
         if let pop = alert.popoverPresentationController {

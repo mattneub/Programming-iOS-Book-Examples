@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         case .authorized:
             return true
         case .notDetermined:
-            database.requestAccess(to:type, completion:{_ in})
+            database.requestAccess(to:type) {_ in}
             return false
         case .restricted:
             return false
@@ -34,11 +34,11 @@ class ViewController: UIViewController {
             // I think the crash-in-background issue is now gone
             let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Calendar?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "No", style: .cancel))
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            alert.addAction(UIAlertAction(title: "OK", style: .default) {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
-            }))
+            })
             self.present(alert, animated:true)
             return false
         }

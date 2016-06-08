@@ -31,7 +31,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         case .authorized:
             return true
         case .notDetermined:
-            self.database.requestAccess(to:type, completion:{_,_ in})
+            self.database.requestAccess(to:type){_ in}
             return false
         case .restricted:
             return false
@@ -40,11 +40,11 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             // I think the crash-in-background issue is now gone
             let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Calendar?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "No", style: .cancel))
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            alert.addAction(UIAlertAction(title: "OK", style: .default) {
                 _ in
                 let url = NSURL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
-            }))
+            })
             self.present(alert, animated:true)
             return false
         }
@@ -322,7 +322,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         let calsToDelete = cals.map {$0.calendarIdentifier}
         let alert = UIAlertController(title: "Delete selected calendar?", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive) {
             _ in
             for id in calsToDelete {
                 if let cal = self.database.calendar(withIdentifier:id) {
@@ -331,7 +331,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             }
             // dismiss *everything*
             self.dismiss(animated:true)
-        }))
+        })
         // alert sheet inside presented-or-popover
         chooser.present(alert, animated: true)
     }

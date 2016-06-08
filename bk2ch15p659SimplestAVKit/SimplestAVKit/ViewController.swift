@@ -23,10 +23,10 @@ class ViewController: UIViewController {
             // let url = NSBundle.main().urlForResource("wilhelm", withExtension: "aiff")!
             let player = AVPlayer(url: url)
             av.player = player
-            self.present(av, animated: true, completion: {
+            self.present(av, animated: true) {
                 _ in
                 // av.view.backgroundColor = UIColor.green()
-            })
+            }
 //            let iv = UIImageView(image:UIImage(named:"smiley")!)
 //            av.contentOverlayView!.addSubview(iv)
 //            let v = iv.superview!

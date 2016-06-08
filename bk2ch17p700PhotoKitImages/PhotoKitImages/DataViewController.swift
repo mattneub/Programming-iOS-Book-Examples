@@ -80,7 +80,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             return adjustmentData.formatIdentifier == self.myidentifier
         }
         var id : PHContentEditingInputRequestID = 0
-        id = self.asset.requestContentEditingInput(with: options, completionHandler: {
+        id = self.asset.requestContentEditingInput(with: options) {
             (input:PHContentEditingInput?, info:[NSObject : AnyObject]) in
             guard let input = input else {
                 self.asset.cancelContentEditingInputRequest(id)
@@ -117,7 +117,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             }
             let nav = UINavigationController(rootViewController: evc)
             self.present(nav, animated: true)
-        })
+        }
     }
     
     func finishEditing(vignette:Double) {

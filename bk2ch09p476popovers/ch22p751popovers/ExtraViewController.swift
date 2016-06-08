@@ -19,9 +19,9 @@ class ExtraViewController : UIViewController {
     
     @IBAction func doButton(_ sender:AnyObject) {
         print("extra view controller view frame: \(self.view.frame)")
-        self.dismiss(animated:true, completion:{
+        self.dismiss(animated:true) {
             print("dismissed")
-            })
+        }
     }
     
     override func viewDidLoad() {

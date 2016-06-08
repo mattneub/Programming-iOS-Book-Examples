@@ -22,7 +22,7 @@ class CancelableTimer: NSObject {
             dispatch_walltime(nil, 0),
             UInt64(interval * Double(NSEC_PER_SEC)),
             UInt64(0.05 * Double(NSEC_PER_SEC)))
-        dispatch_source_set_event_handler(self.timer, {
+        dispatch_source_set_event_handler(self.timer) {
             if self.firsttime {
                 self.firsttime = false
                 return
@@ -31,7 +31,7 @@ class CancelableTimer: NSObject {
             if self.once {
                 self.cancel()
             }
-        })
+        }
         dispatch_resume(self.timer)
     }
     func cancel() {
