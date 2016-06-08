@@ -51,11 +51,11 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
         self.flag.frame.origin.x -= self.flag.bounds.size.width
         self.flag.isHidden = false
         
-        UIView.animate(withDuration:0.25, animations:{
+        UIView.animate(withDuration:0.25) {
             self.flag.frame.origin.x = p.x
             // thanks for the flag, now stop operating altogether
             g.isEnabled = false
-            })
+        }
     }
     
     @IBAction func dragging (_  p: UIPanGestureRecognizer) {

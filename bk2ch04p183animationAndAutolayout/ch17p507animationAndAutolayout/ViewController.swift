@@ -22,9 +22,9 @@ class ViewController : UIViewController {
     
         switch which {
         case 1:
-            UIView.animate(withDuration:1, animations:{
+            UIView.animate(withDuration:1) {
                 self.v.center.x += 100
-                }) // everything *looks* okay, but it isn't
+            } // everything *looks* okay, but it isn't
             
         case 2:
             UIView.animate(withDuration:1, animations:{
@@ -39,9 +39,9 @@ class ViewController : UIViewController {
         case 3:
             let con = self.v_horizontalPositionConstraint!
             con.constant += 100
-            UIView.animate(withDuration:1, animations:{
+            UIView.animate(withDuration:1) {
                 self.v.superview!.layoutIfNeeded()
-                })
+            }
             
         case 4:
             // this works fine in iOS 8! does not trigger spurious layout
@@ -83,9 +83,9 @@ class ViewController : UIViewController {
             snap.frame = self.v.frame
             self.v.superview!.addSubview(snap)
             self.v.isHidden = true
-            UIView.animate(withDuration:1, animations:{
+            UIView.animate(withDuration:1) {
                 snap.center.x += 100
-                })
+            }
             
         case 8:
             // don't try this one: it may appear to work but it causes a constraint conflict

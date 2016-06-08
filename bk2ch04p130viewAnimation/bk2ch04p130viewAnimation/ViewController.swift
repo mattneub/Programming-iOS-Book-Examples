@@ -55,14 +55,14 @@ class ViewController: UIViewController {
             print(self.v.center.y)
             switch which {
             case 1:
-                UIView.animate(withDuration:0.4, animations: {
+                UIView.animate(withDuration:0.4) {
                     self.v.backgroundColor = UIColor.red()
-                })
+                }
             case 2:
-                UIView.animate(withDuration:0.4, animations: {
+                UIView.animate(withDuration:0.4) {
                     self.v.backgroundColor = UIColor.red()
                     self.v.center.y += 100
-                })
+                }
             case 3:
                 let v2 = UIView()
                 v2.backgroundColor = UIColor.black()
@@ -81,12 +81,12 @@ class ViewController: UIViewController {
                     _ in print(self.v.superview)
                 }
             case 5:
-                UIView.animate(withDuration:1, animations: {
+                UIView.animate(withDuration:1) {
                     self.v.backgroundColor = UIColor.red()
                     UIView.performWithoutAnimation {
                         self.v.center.y += 100
                     }
-                })
+                }
             case 6:
                 func report(_ ix:Int) {
                     let pres = (self.v.layer.presentationLayer() as! CALayer).position.y
@@ -129,13 +129,13 @@ class ViewController: UIViewController {
                         self.v.center.x = xorig
                 })
             case 11:
-                UIView.animate(withDuration:1, animations: {
+                UIView.animate(withDuration:1) {
                     self.v.center.x += 100
-                })
+                }
                 // let opts = UIViewAnimationOptions.beginFromCurrentState
-                UIView.animate(withDuration:1, animations: {
+                UIView.animate(withDuration:1) {
                         self.v.center.y += 100
-                })
+                }
             case 12:
                 UIView.animate(withDuration:2, animations: {
                     self.v.center.x += 100

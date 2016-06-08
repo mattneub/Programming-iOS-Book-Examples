@@ -52,9 +52,9 @@ class ViewController: UIViewController {
         
         self.seg.layer.speed = 0.2
         delay(1) {
-            UIView.animate(withDuration:0.4, animations: {
+            UIView.animate(withDuration:0.4) {
                 self.seg.selectedSegmentIndex = 1
-            })
+            }
         }
 
 //        self.seg.tintColor = UIColor.red()

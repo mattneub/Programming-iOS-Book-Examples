@@ -114,9 +114,9 @@ extension PrimaryViewController {
             switch svc.displayMode {
             case .primaryHidden:
                 // changing display mode is animatable!
-                UIView.animate(withDuration:0.2, animations: {
+                UIView.animate(withDuration:0.2) {
                     svc.preferredDisplayMode = .primaryOverlay
-                    })
+                }
             default:
                 svc.preferredDisplayMode = .automatic
             }
@@ -132,9 +132,9 @@ extension PrimaryViewController {
             self.verticalConstraints =
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|-(minuscon)-[v]-(con)-|", metrics: ["con":con, "minuscon":-con], views: ["v":vc2.view])
             NSLayoutConstraint.activate(self.verticalConstraints!)
-            UIView.animate(withDuration:0.25, animations: {
+            UIView.animate(withDuration:0.25) {
                 self.view.layoutIfNeeded()
-                })
+            }
         }
     }
 }
