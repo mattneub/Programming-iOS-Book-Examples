@@ -47,10 +47,10 @@ class RootViewController : UITableViewController {
         // can refer to subviews by their tags
         // subview positioning configured by constraints in the nib!
         
-        let lab = cell.theLabel // *
+        let lab = cell.theLabel! // *
         lab.text = "The author of this book, who would rather be out dirt biking"
         
-        let iv = cell.theImageView // *
+        let iv = cell.theImageView! // *
         // shrink apparent size of image
         let im = UIImage(named:"moi.png")!
         UIGraphicsBeginImageContextWithOptions(CGSize(36,36), true, 0.0)

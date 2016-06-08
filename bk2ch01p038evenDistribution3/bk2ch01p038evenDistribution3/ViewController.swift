@@ -8,7 +8,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let mainview = self.view
+        let mainview = self.view!
         
         // do manually what UIStackView does: make distributing UILayoutGuide objects
         

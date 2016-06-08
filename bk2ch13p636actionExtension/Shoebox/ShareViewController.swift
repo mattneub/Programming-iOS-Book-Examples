@@ -21,7 +21,7 @@ class ShareViewController: SLComposeServiceViewController, SizeDelegate {
     
         let s = self.contentText // and do something with it
         
-        self.extensionContext!.completeRequest(returningItems:[], completionHandler: nil)
+        self.extensionContext!.completeRequest(returningItems:[])
         
         _ = s
     }

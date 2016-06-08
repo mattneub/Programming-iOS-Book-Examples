@@ -17,6 +17,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     
     // authorization
     
+    @discardableResult
     func determineStatus() -> Bool {
         let status = CNContactStore.authorizationStatus(for:.contacts)
         switch status {
@@ -42,7 +43,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        _ = self.determineStatus()
+        self.determineStatus()
         NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
@@ -96,7 +97,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                     premoi = moi
                 default:break
                 }
-                var moi = premoi
+                var moi = premoi!
                 print(moi)
                 if moi.isKeyAvailable(CNContactEmailAddressesKey) {
                     print(moi.emailAddresses)

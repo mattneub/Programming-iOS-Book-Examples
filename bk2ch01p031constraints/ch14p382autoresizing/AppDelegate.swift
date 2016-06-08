@@ -38,7 +38,7 @@ extension NSLayoutConstraint {
         for vv in v!.subviews {
             let arr1 = vv.constraintsAffectingLayout(for:.horizontal)
             let arr2 = vv.constraintsAffectingLayout(for:.vertical)
-            NSLog("\n\n%@\nH: %@\nV:%@", vv, arr1 as NSArray, arr2 as NSArray);
+            NSLog("\n\n%@\nH: %@\nV:%@", vv, arr1, arr2);
             if vv.subviews.count > 0 {
                 self.listConstraints(vv)
             }
@@ -62,7 +62,7 @@ extension CGRect {
         self.window = UIWindow()
         
         self.window!.rootViewController = UIViewController()
-        let mainview = self.window!.rootViewController!.view
+        let mainview = self.window!.rootViewController!.view!
         
         let v1 = UIView(frame:CGRect(100, 111, 132, 194))
         v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)

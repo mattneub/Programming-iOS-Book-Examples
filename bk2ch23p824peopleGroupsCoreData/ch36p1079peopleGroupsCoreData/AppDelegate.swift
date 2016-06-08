@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.appendingPathComponent("ch36p1079peopleGroupsCoreData.sqlite")
         do {
-            try coordinator!.addPersistentStore(ofType:NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+            try coordinator!.addPersistentStore(ofType:NSSQLiteStoreType, configurationName: nil, at: url)
         } catch {
             print("Unresolved error \(error)")
             fatalError("Terminating with unresolved error")

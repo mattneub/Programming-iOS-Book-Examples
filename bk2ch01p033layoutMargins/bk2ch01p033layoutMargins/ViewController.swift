@@ -10,7 +10,7 @@ class ViewController: UIViewController {
         if self.didSetup {return}
         self.didSetup = true
         
-        let mainview = self.view
+        let mainview = self.view!
         
         let v = UIView()
         v.backgroundColor = UIColor.red()

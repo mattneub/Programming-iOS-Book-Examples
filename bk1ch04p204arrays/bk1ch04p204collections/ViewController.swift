@@ -246,14 +246,16 @@ class ViewController: UIViewController {
             arr.insert(contentsOf:[10,9,8], at:1)
             print(arr)
             let i = arr.remove(at:3)
-            let ii = arr.removeLast()
-            let iii = arr.removeFirst()
-            let iiib = arr.removeFirst(1)
+            let ii = arr.removeLast() // returns a result
+            arr.removeLast(1) // doesn't return a result
+            let iii = arr.removeFirst() // returns a result
+            arr.removeFirst(1) // doesn't return a result
             let iiii = arr.popLast()
+            // arr.popLast(1) // nope, no such thing
             // let iiiii = arr.popFirst()
             print(arr)
             do {
-                // let iiii = arr.popFirst() // not sure what happened to this
+                // let iiii = arr.popFirst() // nope
                 var arrslice = arr[arr.indices] // is this weird or what
                 let i = arrslice.popFirst()
                 // let ii = arrslice.popFirst(1)
@@ -272,6 +274,7 @@ class ViewController: UIViewController {
             _ = slice
             _ = slice2
             _ = slice3
+            _ = iiii
         }
         
         do {

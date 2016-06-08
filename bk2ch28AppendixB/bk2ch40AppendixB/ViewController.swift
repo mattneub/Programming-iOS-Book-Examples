@@ -73,7 +73,7 @@ extension NSLayoutConstraint {
         for vv in v!.subviews {
             let arr1 = vv.constraintsAffectingLayout(for:.horizontal)
             let arr2 = vv.constraintsAffectingLayout(for:.vertical)
-            NSLog("\n\n%@\nH: %@\nV:%@", vv, arr1 as NSArray, arr2 as NSArray);
+            NSLog("\n\n%@\nH: %@\nV:%@", vv, arr1, arr2);
             if vv.subviews.count > 0 {
                 self.listConstraints(vv)
             }

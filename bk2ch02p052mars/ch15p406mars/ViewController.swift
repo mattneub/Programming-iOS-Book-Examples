@@ -23,7 +23,7 @@ class ViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let mainview = self.view
+        let mainview = self.view!
         
         let iv = UIImageView(image:UIImage(named:"Mars")) // asset catalog
         mainview.addSubview(iv)

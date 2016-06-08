@@ -7,7 +7,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
     var window : UIWindow?
     var rightEdger : UIScreenEdgePanGestureRecognizer!
     var leftEdger : UIScreenEdgePanGestureRecognizer!
-    var context : UIViewControllerContextTransitioning!
+    var context : UIViewControllerContextTransitioning? // * phasing out misuse of IUO
     var interacting = false
     var r1end = CGRect.zero
     var r2start = CGRect.zero
@@ -76,7 +76,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
         var v2 : UIView!
         
         let tc = self.context
-        if tc != nil {
+        if let tc = tc {
             
             vc1 = tc.viewController(forKey:UITransitionContextFromViewControllerKey)!
             vc2 = tc.viewController(forKey:UITransitionContextToViewControllerKey)!
@@ -108,7 +108,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             r2start.origin.x += (r2end.origin.x-r2start.origin.x)*percent
             v2.frame = r2start
             
-            tc.updateInteractiveTransition(percent)
+            tc?.updateInteractiveTransition(percent)
             
         case .ended:
             
@@ -117,8 +117,8 @@ extension AppDelegate : UIGestureRecognizerDelegate {
                     v1.frame = self.r1end
                     v2.frame = r2end
                     }, completion: { _ in
-                        tc.finishInteractiveTransition()
-                        tc.completeTransition(true)
+                        tc?.finishInteractiveTransition()
+                        tc?.completeTransition(true)
                 })
             }
             else {
@@ -126,8 +126,8 @@ extension AppDelegate : UIGestureRecognizerDelegate {
                     v1.frame = r1start
                     v2.frame = self.r2start
                     }, completion: { _ in
-                        tc.cancelInteractiveTransition()
-                        tc.completeTransition(false)
+                        tc?.cancelInteractiveTransition()
+                        tc?.completeTransition(false)
                 })
             }
             
@@ -138,8 +138,8 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             v1.frame = r1start
             v2.frame = r2start
             
-            tc.cancelInteractiveTransition()
-            tc.completeTransition(false)
+            tc?.cancelInteractiveTransition()
+            tc?.completeTransition(false)
             self.interacting = false
             self.context = nil
         default: break

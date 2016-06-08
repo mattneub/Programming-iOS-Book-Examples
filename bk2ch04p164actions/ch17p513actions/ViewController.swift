@@ -73,7 +73,7 @@ class ViewController : UIViewController {
     let which = 10
     
     @IBAction func doButton(_ sender:AnyObject?) {
-        let layer = self.layer
+        let layer = self.layer!
         
         switch which {
         case 1:

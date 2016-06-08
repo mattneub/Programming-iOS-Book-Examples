@@ -27,7 +27,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
             else {
                 return self.process(item:nil)
         }
-        provider.loadItem(forTypeIdentifier: self.desiredType, options: nil) {
+        provider.loadItem(forTypeIdentifier: self.desiredType) {
             (item:NSSecureCoding?, err:NSError!) -> () in
             dispatch_async(dispatch_get_main_queue()) {
                 self.process(item:item as? String)
@@ -55,7 +55,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
                 result = self.stuffThatEnvelope(abbrev)
         }
         self.extensionContext?.completeRequest(
-            returningItems: result, completionHandler: nil)
+            returningItems: result)
         self.extensionContext = nil
     }
     

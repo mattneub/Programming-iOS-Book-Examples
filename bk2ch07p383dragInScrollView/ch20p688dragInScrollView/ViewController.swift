@@ -32,7 +32,7 @@ class ViewController : UIViewController {
             if p.state == .changed {fallthrough} // comment out to prevent autoscroll
         case .changed:
             // autoscroll
-            let sv = self.sv
+            let sv = self.sv!
             let loc = p.location(in:sv)
             let f = sv.bounds
             var off = sv.contentOffset

@@ -18,7 +18,7 @@ extension CGRect {
         self.window = UIWindow()
         
         self.window!.rootViewController = UIViewController()
-        let mainview = self.window!.rootViewController!.view
+        let mainview = self.window!.rootViewController!.view!
         
         let v1 = UIView(frame:CGRect(113, 111, 132, 194))
         v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)

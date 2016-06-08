@@ -42,6 +42,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet var iv : UIImageView!
     @IBOutlet var picker : UIImagePickerController!
     
+    @discardableResult
     func determineStatus() -> Bool {
         let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
         switch status {
@@ -73,7 +74,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        _ = self.determineStatus()
+        self.determineStatus()
         NSNotificationCenter.default().addObserver(self,
             selector: #selector(determineStatus),
             name: UIApplicationWillEnterForegroundNotification,

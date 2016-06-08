@@ -19,7 +19,7 @@ class OtherViewController: UIViewController {
             else {
                 return
         }
-        provider.loadItem(forTypeIdentifier: self.desiredType, options: nil) {
+        provider.loadItem(forTypeIdentifier: self.desiredType) {
             (item:NSSecureCoding?, err:NSError!) -> () in
             dispatch_async(dispatch_get_main_queue()) {
                 self.s = item as? String
@@ -28,7 +28,7 @@ class OtherViewController: UIViewController {
     }
     
     @IBAction func doButton(_ sender: AnyObject) {
-        self.extensionContext!.completeRequest(returningItems:[], completionHandler: nil)
+        self.extensionContext!.completeRequest(returningItems:[])
     }
 
 }

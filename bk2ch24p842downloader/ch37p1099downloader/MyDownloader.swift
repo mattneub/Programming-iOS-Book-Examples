@@ -24,6 +24,7 @@ class MyDownloader: NSObject, NSURLSessionDownloadDelegate {
         super.init()
     }
     
+    @discardableResult
     func download(_ s:String, completionHandler ch : MyDownloaderCompletion) -> NSURLSessionTask {
         let url = NSURL(string:s)!
         let req = NSMutableURLRequest(url:url)

@@ -107,8 +107,7 @@ class ViewController : UIViewController {
     }
     
     // on device
-    
-    // ignore compiler warning, it's private API (you'd have to remove it from shipping code)
+    // private API (you'd have to remove it from shipping code)
     
     @IBAction func doButton2(_ sender: AnyObject) {
         UIApplication.shared().perform(#selector(Dummy._performMemoryWarning))

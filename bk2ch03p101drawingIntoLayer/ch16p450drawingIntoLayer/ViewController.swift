@@ -5,6 +5,7 @@ class ViewController : UIViewController {
     @IBOutlet var views: NSArray?
     var smilers = [Smiler(), Smiler2()] // to serve as delegates
     
+    @discardableResult
     func makeLayerOfClass(_ klass:CALayer.Type, andAddToView ix:Int) -> CALayer {
         let lay = klass.init()
         lay.contentsScale = UIScreen.main().scale
@@ -39,9 +40,9 @@ class ViewController : UIViewController {
         // 1: delegate sets contents
         self.makeLayerOfClass(CALayer.self, andAddToView:1).delegate = self.smilers[1]
         // 2: subclass draws
-        _ = self.makeLayerOfClass(SmilerLayer.self, andAddToView:2)
+        self.makeLayerOfClass(SmilerLayer.self, andAddToView:2)
         // 3: subclass sets contents
-        _ = self.makeLayerOfClass(SmilerLayer2.self, andAddToView:3)
+        self.makeLayerOfClass(SmilerLayer2.self, andAddToView:3)
 
     }
 

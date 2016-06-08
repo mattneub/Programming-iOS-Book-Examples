@@ -20,7 +20,7 @@ extension CGRect {
         self.window = UIWindow()
         
         self.window!.rootViewController = UIViewController()
-        let mainview = self.window!.rootViewController!.view
+        let mainview = self.window!.rootViewController!.view!
         
         switch which {
         case 1:

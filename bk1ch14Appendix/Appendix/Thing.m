@@ -24,6 +24,7 @@ void setState (State s) {
 
 - (void) justTesting {
     Womble* womble = [[Womble alloc] init];
+    womble = womble; // silence compiler
 }
 
 - (void) combineWithThing: (Thing*) otherThing {

@@ -35,6 +35,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         return true
     }
     
+    @discardableResult
     func determineStatus() -> Bool {
         let status = ABAddressBookGetAuthorizationStatus()
         switch status {
@@ -77,7 +78,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        _ = self.determineStatus()
+        self.determineStatus()
         NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     

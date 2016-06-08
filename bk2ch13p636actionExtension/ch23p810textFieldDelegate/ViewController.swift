@@ -54,7 +54,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     else {
                         return
                 }
-                provider.loadItem(forTypeIdentifier: self.desiredType, options: nil) {
+                provider.loadItem(forTypeIdentifier: self.desiredType) {
                     (item:NSSecureCoding?, err:NSError!) -> () in
                     dispatch_async(dispatch_get_main_queue()) {
                         if let s = item as? String {

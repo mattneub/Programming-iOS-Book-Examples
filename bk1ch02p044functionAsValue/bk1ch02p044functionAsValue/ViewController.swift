@@ -195,7 +195,7 @@ class ViewController: UIViewController {
     // I should probably now discuss #selector syntax at this point in the book
     let b = UIButton(type: .system)
     func testSelectorSyntax() {
-        // how to crash:
+        // how to crash (hey, the compiler warned you, you're a fool for not listening):
         self.b.addTarget(self, action: "buttonPressed", for: .touchUpInside)
         // the solution:
         self.b.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)

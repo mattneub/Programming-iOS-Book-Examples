@@ -96,7 +96,7 @@ class MyPresentationController : UIPresentationController {
                 _ in
                 let vc = self.presentingViewController
                 let v = vc.view
-                v.tintAdjustmentMode = .dimmed
+                v?.tintAdjustmentMode = .dimmed
             })
     }
     
@@ -111,7 +111,7 @@ class MyPresentationController : UIPresentationController {
                 _ in
                 let vc = self.presentingViewController
                 let v = vc.view
-                v.tintAdjustmentMode = .automatic
+                v?.tintAdjustmentMode = .automatic
             })
     }
     

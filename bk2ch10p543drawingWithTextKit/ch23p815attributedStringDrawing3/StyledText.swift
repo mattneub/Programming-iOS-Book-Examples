@@ -89,9 +89,9 @@ class StyledText: UIView {
     func tapped (g : UIGestureRecognizer) {
         // which column is it in?
         var p = g.location(in:self)
-        var tc = self.tc
+        var tc = self.tc!
         if !self.r1.contains(p) {
-            tc = self.tc2
+            tc = self.tc2!
             p.x -= self.r1.size.width
         }
         var f : CGFloat = 0

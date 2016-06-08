@@ -79,12 +79,11 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             // return false // just testing
             return adjustmentData.formatIdentifier == self.myidentifier
         }
-        let asset = self.asset
         var id : PHContentEditingInputRequestID = 0
-        id = asset.requestContentEditingInput(with: options, completionHandler: {
+        id = self.asset.requestContentEditingInput(with: options, completionHandler: {
             (input:PHContentEditingInput?, info:[NSObject : AnyObject]) in
             guard let input = input else {
-                asset.cancelContentEditingInputRequest(id)
+                self.asset.cancelContentEditingInputRequest(id)
                 return
             }
             self.input = input
@@ -124,10 +123,9 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
     func finishEditing(vignette:Double) {
         // part two: obtain PHContentEditingOutput...
         // and apply editing to actual full size image
-        let input = self.input
-        let inurl = input.fullSizeImageURL!
-        let inorient = input.fullSizeImageOrientation
-        let output = PHContentEditingOutput(contentEditingInput: input)
+        let inurl = self.input.fullSizeImageURL!
+        let inorient = self.input.fullSizeImageOrientation
+        let output = PHContentEditingOutput(contentEditingInput:self.input)
         let outurl = output.renderedContentURL
         
         let outcgimage = {
@@ -139,7 +137,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
                 vig.setValue(vignette, forKey: "inputPercentage")
                 ci = vig.outputImage!
             }
-            return CIContext(options: nil).createCGImage(ci, from: ci.extent)
+            return CIContext().createCGImage(ci, from: ci.extent)
         }()
         
         let dest = CGImageDestinationCreateWithURL(outurl, kUTTypeJPEG, 1, nil)!
@@ -155,8 +153,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         // now we must tell the photo library to pick up the edited image
         PHPhotoLibrary.shared().performChanges({
             print("finishing")
-            let asset = self.asset
-            let req = PHAssetChangeRequest(for: asset)
+            let req = PHAssetChangeRequest(for: self.asset)
             req.contentEditingOutput = output
             }, completionHandler: {
                 (ok:Bool, err:NSError?) in

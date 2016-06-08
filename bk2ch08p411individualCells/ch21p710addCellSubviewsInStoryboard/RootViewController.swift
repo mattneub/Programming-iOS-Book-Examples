@@ -45,7 +45,7 @@ class RootViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) as! MyCell
 
-        let lab = cell.theLabel
+        let lab = cell.theLabel!
         // prove that many rows does not mean many cell objects
         lab.text = "Row \(indexPath.row) of section \(indexPath.section)"
         if lab.tag != 999 {
@@ -54,7 +54,7 @@ class RootViewController : UITableViewController {
         }
 
         
-        let iv = cell.theImageView
+        let iv = cell.theImageView!
         // shrink apparent size of image
         let im = UIImage(named:"moi.png")!
         UIGraphicsBeginImageContextWithOptions(CGSize(36,36), true, 0.0)

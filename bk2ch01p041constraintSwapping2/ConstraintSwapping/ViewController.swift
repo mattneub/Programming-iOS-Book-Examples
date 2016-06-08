@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let mainview = self.view
+        let mainview = self.view!
         
         let v1 = UIView()
         v1.backgroundColor = UIColor.red()
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     }
     
     func doSwap() {
-        let mainview = self.view
+        let mainview = self.view!
         if self.v2.superview != nil {
             self.v2.removeFromSuperview()
             NSLayoutConstraint.deactivate(self.constraintsWith)

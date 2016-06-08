@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         return .landscape
     }
     
+    @discardableResult
     func determineStatus() -> Bool {
         // access permission dialog will appear automatically if necessary...
         // ...when we try to present the UIImagePickerController

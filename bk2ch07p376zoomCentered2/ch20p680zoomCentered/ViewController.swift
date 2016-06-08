@@ -65,7 +65,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     }
     
     func centerView() {
-        let sv = self.sv
+        let sv = self.sv!
         let v = self.viewForZooming(in:sv)!
         // normal result is that iv.center should be center of v
         var c = CGPoint(v.bounds.midX,v.bounds.midY)
@@ -99,7 +99,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     // image view is also zoomable by double-tapping
     
     @IBAction func tapped(_ tap : UIGestureRecognizer) {
-        let sv = self.sv
+        let sv = self.sv!
         if sv.zoomScale < 1 {
             sv.setZoomScale(1, animated:true)
         }

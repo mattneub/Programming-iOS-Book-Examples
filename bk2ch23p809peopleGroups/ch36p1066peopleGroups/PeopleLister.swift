@@ -115,7 +115,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     func forceSave(_:AnyObject?) {
         print("force save")
         self.tableView.endEditing(true)
-        self.doc.save(to:self.doc.fileURL, for:.forOverwriting, completionHandler:nil)
+        self.doc.save(to:self.doc.fileURL, for:.forOverwriting)
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mainview = self.view
+        let mainview = self.view!
         let v1 = UIView(frame:CGRect(113, 111, 132, 194))
         v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
         let v2 = UIView(frame:CGRect(41, 56, 132, 194))

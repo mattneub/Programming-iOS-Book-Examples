@@ -332,7 +332,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             self.fontsize = 20
         }
         let s = self.cssrule
-        self.wv.evaluateJavaScript(s, completionHandler: nil)
+        self.wv.evaluateJavaScript(s)
     }
     
     deinit {

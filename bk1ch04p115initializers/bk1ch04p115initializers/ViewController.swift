@@ -156,7 +156,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Dog() // silly - compiler now warns
+        Dog() // silly - compiler warns
         let fido = Dog()
         
         let fido2 = Dog2(name:"Fido")

@@ -38,7 +38,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     var sectionData = [[String]]()
     lazy var modelCell : Cell = { // load lazily from nib
         () -> Cell in
-        let arr = UINib(nibName:"Cell", bundle:nil).instantiate(withOwner:nil, options:nil)
+        let arr = UINib(nibName:"Cell", bundle:nil).instantiate(withOwner:nil)
         return arr[0] as! Cell
         }()
     

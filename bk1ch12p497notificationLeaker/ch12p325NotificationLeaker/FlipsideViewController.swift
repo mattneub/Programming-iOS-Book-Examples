@@ -21,13 +21,13 @@ class FlipsideViewController: UIViewController {
             self.observer = NSNotificationCenter.default().addObserver(
                 forName: "woohoo", object:nil, queue:nil) {
                     _ in
-                    self.description // leak me, leak me
+                    _ = self.description // leak me, leak me
             }
         case 1:
             self.observer = NSNotificationCenter.default().addObserver(
                 forName: "woohoo", object:nil, queue:nil) {
                     [unowned self] _ in // ha ha, fixed it
-                    self.description
+                    _ = self.description
             }
         default:break
         }

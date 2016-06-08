@@ -39,7 +39,7 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mainview = self.view
+        let mainview = self.view!
         let lay = CALayer()
         lay.frame = mainview.layer.bounds
         mainview.layer.addSublayer(lay)

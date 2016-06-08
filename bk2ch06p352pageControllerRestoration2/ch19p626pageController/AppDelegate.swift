@@ -27,7 +27,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     func setUpPageViewController() {
         self.pep = ["Manny", "Moe", "Jack"]
         // make a page view controller
-        let pvc = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        let pvc = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         pvc.restorationIdentifier = "pvc" // * crucial!
         
         // give it an initial page

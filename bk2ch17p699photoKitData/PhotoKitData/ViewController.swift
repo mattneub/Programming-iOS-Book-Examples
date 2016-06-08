@@ -23,6 +23,7 @@ func delay(delay:Double, closure:()->()) {
 class ViewController: UIViewController {
     var albums : PHFetchResult<PHAssetCollection>!
 
+    @discardableResult
     func determineStatus() -> Bool {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
@@ -48,7 +49,7 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        _ = self.determineStatus()
+        self.determineStatus()
         NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
         PHPhotoLibrary.shared().register(self) // *
     }

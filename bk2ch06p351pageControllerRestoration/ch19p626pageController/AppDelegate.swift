@@ -27,7 +27,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     func setUpPageViewController() {
         self.pep = ["Manny", "Moe", "Jack"]
         // make a page view controller
-        let pvc = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        let pvc = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         // give it an initial page
         let page = Pep(pepBoy: self.pep[0])
         pvc.setViewControllers([page], direction: .forward, animated: false)

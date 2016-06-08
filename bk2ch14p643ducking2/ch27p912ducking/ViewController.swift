@@ -73,19 +73,19 @@ class ViewController: UIViewController, PlayerDelegate {
         case 1:
             opaques["playPause"] = scc.togglePlayPauseCommand.addTarget {
                 [unowned self] _ in
-                let p = self.player.player
+                let p = self.player.player!
                 if p.isPlaying { p.pause() } else { p.play() }
                 return .success
             }
             opaques["play"] = scc.playCommand.addTarget {
                 [unowned self] _ in
-                let p = self.player.player
+                let p = self.player.player!
                 p.play()
                 return .success
             }
             opaques["pause"] = scc.pauseCommand.addTarget {
                 [unowned self] _ in
-                let p = self.player.player
+                let p = self.player.player!
                 p.pause()
                 return .success
             }
@@ -96,15 +96,15 @@ class ViewController: UIViewController, PlayerDelegate {
     // these are used only in case 0
     
     func doPlayPause(_ event:MPRemoteCommandEvent) {
-        let p = self.player.player
+        let p = self.player.player!
         if p.isPlaying { p.pause() } else { p.play() }
     }
     func doPlay(_ event:MPRemoteCommandEvent) {
-        let p = self.player.player
+        let p = self.player.player!
         p.play()
     }
     func doPause(_ event:MPRemoteCommandEvent) {
-        let p = self.player.player
+        let p = self.player.player!
         p.pause()
     }
 

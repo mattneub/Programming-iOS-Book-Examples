@@ -8,8 +8,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // oddly, we now have to cast this one
-        NSLog("%@", NSStringFromCGRect(self.view.frame) as NSString)
+        NSLog("%@", NSStringFromCGRect(self.view.frame))
 
         
         // new availability checking in Xcode 7

@@ -45,7 +45,7 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
 //    }
     
     @IBAction func swiped (_ g: UISwipeGestureRecognizer) {
-        let sv = self.sv
+        let sv = self.sv!
         let p = sv.contentOffset
         self.flag.frame.origin = p
         self.flag.frame.origin.x -= self.flag.bounds.size.width
@@ -69,7 +69,7 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
             if p.state == .changed {fallthrough} // comment out to prevent autoscroll
         case .changed:
             // autoscroll
-            let sv = self.sv
+            let sv = self.sv!
             let loc = p.location(in:sv)
             let f = sv.bounds
             var off = sv.contentOffset

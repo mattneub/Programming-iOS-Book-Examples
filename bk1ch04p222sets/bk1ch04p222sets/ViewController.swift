@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         do {
             var s = Set<Int>()
             s.insert(1)
-            let arr = Array(s) as NSArray // doesn't crash, but how did Array<Int> cross the bridge?
+            let arr = Array(s) as NSArray
             print(arr)
         }
         
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
             Int(arc4random_uniform(UInt32(legalNumbers.count)))
         ]
         forbiddenNumbers.insert(newNumber)
-        ud.set(Array(forbiddenNumbers) as NSArray, forKey:RECENTS)
+        ud.set(Array(forbiddenNumbers), forKey:RECENTS)
     }
 
 

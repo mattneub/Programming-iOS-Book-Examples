@@ -37,7 +37,7 @@ class ViewController : UIViewController {
                 })
 
         case 3:
-            let con = self.v_horizontalPositionConstraint
+            let con = self.v_horizontalPositionConstraint!
             con.constant += 100
             UIView.animate(withDuration:1, animations:{
                 self.v.superview!.layoutIfNeeded()

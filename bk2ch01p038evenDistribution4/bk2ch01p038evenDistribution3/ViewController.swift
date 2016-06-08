@@ -8,7 +8,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let mainview = self.view
+        let mainview = self.view!
         
         for v in views {
             v.removeFromSuperview()

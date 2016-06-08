@@ -23,9 +23,8 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     let database = EKEventStore()
     var napid : String!
 
+    @discardableResult
     func determineStatus() -> Bool {
-        
-        
         let type = EKEntityType.event
         let stat = EKEventStore.authorizationStatus(for:type)
         switch stat {
@@ -54,7 +53,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        _ = self.determineStatus()
+        self.determineStatus()
         NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
@@ -249,7 +248,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     func eventViewController(_ controller: EKEventViewController,
         didCompleteWith action: EKEventViewAction) {
             print("did complete with action \(action.rawValue)")
-            if action == .deleted {
+            if action == .deleted { // _ = in next line is due to bug, will be removable soon
                 _ = self.navigationController?.popViewController(animated:true)
             }
     }

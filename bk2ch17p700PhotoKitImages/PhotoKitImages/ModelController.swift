@@ -37,8 +37,7 @@ class ModelController: NSObject {
 
     func indexOfViewController(_ dvc: DataViewController) -> Int {
         // return dvc.index
-        let asset = dvc.asset
-        let ix = self.photos.index(of:asset)
+        let ix = self.photos.index(of:dvc.asset)
         return ix
     }
 }

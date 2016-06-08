@@ -34,7 +34,7 @@ class CompassView : UIView {
     @IBAction func tapped(_ t:UITapGestureRecognizer) {
         let p = t.location(ofTouch:0, in: self.superview)
         let hitLayer = self.layer.hitTest(p)
-        let arrow = (self.layer as! CompassLayer).arrow
+        let arrow = (self.layer as! CompassLayer).arrow!
         if hitLayer == arrow {
             arrow.transform = CATransform3DRotate(
                 arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)

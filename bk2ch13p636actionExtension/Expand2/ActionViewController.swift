@@ -31,7 +31,7 @@ class ActionViewController: UIViewController {
             else {
                 return
         }
-        provider.loadItem(forTypeIdentifier: self.desiredType, options: nil) {
+        provider.loadItem(forTypeIdentifier: self.desiredType) {
             (item:NSSecureCoding?, err:NSError!) -> () in
             dispatch_async(dispatch_get_main_queue()) {
                 if let orig = item as? String {
@@ -61,12 +61,12 @@ class ActionViewController: UIViewController {
     
     @IBAction func cancel(_ sender: AnyObject) {
         self.extensionContext?.completeRequest(
-            returningItems: nil, completionHandler: nil)
+            returningItems: nil)
     }
     
     @IBAction func done(_ sender: AnyObject) {
         self.extensionContext?.completeRequest(
-            returningItems: self.stuffThatEnvelope(self.expansion!), completionHandler: nil)
+            returningItems: self.stuffThatEnvelope(self.expansion!))
     }
     
 }

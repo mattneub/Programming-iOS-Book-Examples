@@ -24,7 +24,7 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let v = self.view
+        let v = self.view!
         
         v.backgroundColor = UIColor.green()
         

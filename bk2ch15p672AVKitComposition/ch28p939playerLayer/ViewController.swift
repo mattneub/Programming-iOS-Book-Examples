@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let m = NSBundle.main().urlForResource("ElMirage", withExtension:"mp4")!
-        let asset = AVURLAsset(url:m, options:nil)
+        let asset = AVURLAsset(url:m)
         let item = AVPlayerItem(asset:asset)
         let p = AVPlayer(playerItem:item)
         p.addObserver(self, forKeyPath:"status", context:nil)

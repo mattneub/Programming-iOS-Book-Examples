@@ -3,7 +3,7 @@ import UIKit
 
 class ViewController : UIViewController {
     @IBOutlet var iv : UIImageView!
-    let context = CIContext(options:nil)
+    let context = CIContext()
     
     
     override func viewDidLoad() {

@@ -256,7 +256,7 @@ class ViewController: UIViewController {
         let rc = event!.subtype
         print("received remote control \(rc.rawValue)")
         
-        let p = self.curplayer
+        let p = self.curplayer!
         switch rc {
         case .remoteControlTogglePlayPause:
             if p.playing { p.pause() } else { p.doPlay() }

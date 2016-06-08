@@ -29,7 +29,7 @@ class ViewController : UIViewController {
         
         self.tran = tran
         self.timestamp = 0.0 // signal that we are starting
-        self.context = CIContext(options:nil)
+        self.context = CIContext()
         
         dispatch_async(dispatch_get_main_queue()) {
         

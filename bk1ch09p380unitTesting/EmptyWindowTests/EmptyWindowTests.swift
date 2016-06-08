@@ -12,7 +12,7 @@ class EmptyWindowTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let b = NSBundle(for:self.dynamicType) // just testing
-
+        _ = b
     }
     
     override func tearDown() {

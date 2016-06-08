@@ -11,7 +11,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         self.window = UIWindow()
         
         let arr = UINib(nibName: "Main", bundle: nil)
-            .instantiate(withOwner:nil, options: nil)
+            .instantiate(withOwner:nil)
         self.window!.rootViewController = arr[0] as? UIViewController
         
         self.window!.backgroundColor = UIColor.white()

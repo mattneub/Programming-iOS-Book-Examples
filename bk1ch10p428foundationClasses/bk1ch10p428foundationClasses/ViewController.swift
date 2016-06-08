@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         do {
             // let obj = NSObject().copy(with:nil) // compile error
             let s = "hello".copy(with:nil)
+            _ = s
         }
 
         do {
@@ -69,6 +70,7 @@ class ViewController: UIViewController {
             let ss2 = (s as NSString).substring(to:4)
             _ = s2
             _ = ss2
+            _ = ix
         }
         
         do {

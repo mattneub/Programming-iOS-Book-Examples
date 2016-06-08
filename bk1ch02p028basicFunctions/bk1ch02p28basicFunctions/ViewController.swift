@@ -15,7 +15,9 @@ func say3(_ s:String) { print(s) }
 
 // crazy but true
 
+@discardableResult // this is how to prevent the unused result warning
 func greet1(_ unused:Void) -> String { return "howdy" }
+@discardableResult
 func greet2() -> String { return "howdy" }
 
 func greeet1(_ unused:Void) -> Void { print("howdy") }
@@ -41,7 +43,7 @@ class ViewController: UIViewController {
         
         print(z)
         
-        sum(4,5)
+        sum(4,5) // compiler warns
         
         // let _ = sum(4,5) + "howdy" // compile error
         

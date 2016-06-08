@@ -12,6 +12,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var trying = false
     var doThisWhenAuthorized : (() -> ())?
     
+    @discardableResult
     func determineStatus() -> Bool {
         guard CLLocationManager.locationServicesEnabled() else {
             self.locman.startUpdatingLocation() // might get "enable" dialog
@@ -42,7 +43,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didChange status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("did change auth: \(status.rawValue)")
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:

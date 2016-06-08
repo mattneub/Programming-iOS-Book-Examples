@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     
     let database = EKEventStore()
 
+    @discardableResult
     func determineStatus() -> Bool {
         let type = EKEntityType.reminder // *
         let stat = EKEventStore.authorizationStatus(for:type)
@@ -46,7 +47,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        _ = self.determineStatus()
+        self.determineStatus()
         NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
 

@@ -16,7 +16,7 @@ class SearchResultsController : UIViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         self.view.backgroundColor = UIColor.clear()
         self.addChildViewController(self.child)
-        let v = self.child.view
+        let v = self.child.view!
         self.view.addSubview(self.child.view)
         v.layer.cornerRadius = 15
         v.translatesAutoresizingMaskIntoConstraints = false

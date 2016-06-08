@@ -100,12 +100,12 @@ extension MyPresentationController {
     override func presentationTransitionDidEnd(_ completed: Bool) {
         let vc = self.presentingViewController
         let v = vc.view
-        v.tintAdjustmentMode = .dimmed
+        v?.tintAdjustmentMode = .dimmed
     }
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         let vc = self.presentingViewController
         let v = vc.view
-        v.tintAdjustmentMode = .automatic
+        v?.tintAdjustmentMode = .automatic
     }
 }
 

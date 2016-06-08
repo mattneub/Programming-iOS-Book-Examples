@@ -33,7 +33,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         comp.host = String(v.tag) // tag is number of minutes
         if let url = comp.url(relativeTo:nil) {
             NSLog("%@", "\(url)")
-            self.extensionContext?.open(url, completionHandler: nil)
+            self.extensionContext?.open(url)
         }
     }
     

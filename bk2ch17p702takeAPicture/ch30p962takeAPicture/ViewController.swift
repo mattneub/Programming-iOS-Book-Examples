@@ -12,13 +12,14 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet weak var redView: UIView!
     weak var picker : UIImagePickerController?
     
+    @discardableResult
     func determineStatus() -> Bool {
         let status = AVCaptureDevice.authorizationStatus(forMediaType:AVMediaTypeVideo)
         switch status {
         case .authorized:
             return true
         case .notDetermined:
-            AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeVideo, completionHandler: nil)
+            AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeVideo, completionHandler:nil)
             return false
         case .restricted:
             return false
@@ -43,7 +44,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        _ = self.determineStatus()
+        self.determineStatus()
         NSNotificationCenter.default().addObserver(self,
             selector: #selector(determineStatus),
             name: UIApplicationWillEnterForegroundNotification,
@@ -103,7 +104,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                             let lib = PHPhotoLibrary.shared()
                             lib.performChanges({
                                 PHAssetChangeRequest.creationRequestForAsset(from: im!)
-                                }, completionHandler: nil)
+                                })
                         }
                     case kUTTypeMovie as NSString as String:
                         if url != nil {

@@ -45,7 +45,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
             print("no doc")
             return
         }
-        self.displayDoc(url:url)
+        self.displayDoc(url:url!)
     }
     
     @IBAction func doHandOffDoc (_ sender:AnyObject) {

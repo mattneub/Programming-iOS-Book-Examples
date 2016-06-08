@@ -172,6 +172,7 @@ class ViewController: UIViewController {
             // can't get this conversion to work
             // let r2 = Range<String.CharacterView.Index>(r)
             // let r3 = Range(r)
+            _ = r
         }
         
         
