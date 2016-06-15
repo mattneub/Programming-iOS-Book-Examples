@@ -5,12 +5,10 @@ import UIKit
 // Do not run this project! It's here purely for the compilation check
 
 func delay(_ delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+    let when = DispatchTime.now()
+        + Double(Int64(delay * Double(NSEC_PER_SEC)))
+        / Double(NSEC_PER_SEC)
+    DispatchQueue.main.after(when: when, execute: closure)
 }
 
 class MyCell : UITableViewCell {
@@ -37,7 +35,7 @@ class TracksViewController : UIViewController {
 class ViewController: UITableViewController {
     let albums = [String]()
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delay(0.1) {
         let t = TracksViewController(
             mediaItemCollection: self.albums[indexPath.row])

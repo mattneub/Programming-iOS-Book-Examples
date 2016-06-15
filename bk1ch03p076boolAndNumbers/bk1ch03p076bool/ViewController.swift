@@ -53,7 +53,7 @@ class ViewController: UIViewController {
         }
         
         let cdub = CDouble(1.2)
-        let ti = NSTimeInterval(2.0)
+        let ti = TimeInterval(2.0)
         _ = cdub
         _ = ti
         

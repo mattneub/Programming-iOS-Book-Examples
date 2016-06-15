@@ -35,7 +35,7 @@ enum Error {
 }
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIBarPositioningDelegate {
     
     var navbar = UINavigationBar()
     var toolbar = UIToolbar()
@@ -304,16 +304,17 @@ class ViewController: UIViewController {
 
 
 
-        let nc = NSNotificationCenter.default()
+        let nc = NotificationCenter.default()
         nc.addObserver(self, selector: #selector(notificationArrived), name: "test", object: nil)
-        nc.post(name:"test", object: self, userInfo: ["junk":"nonsense"])
-        nc.post(name:"test", object: self, userInfo: ["progress":"nonsense"])
-        nc.post(name:"test", object: self, userInfo: ["progress":3])
+        let test = "test" as Notification.Name
+        nc.post(name:test, object: self, userInfo: ["junk":"nonsense"])
+        nc.post(name:test, object: self, userInfo: ["progress":"nonsense"])
+        nc.post(name:test, object: self, userInfo: ["progress":3])
     
 
     }
     
-    func position(forBar bar: UIBarPositioning) -> UIBarPosition {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
         switch true {
         case bar === self.navbar:  return .topAttached
         case bar === self.toolbar: return .bottom

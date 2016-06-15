@@ -32,6 +32,10 @@ class ViewController: UIViewController {
     
     // how "lazy" is implemented
     
+    // had to remove this section because they made dispatch_once unavailable!
+    
+    /*
+    
     private var lazyOncer : dispatch_once_t = 0
     private var lazyBacker : Int = 0
     var lazyFront : Int {
@@ -49,6 +53,7 @@ class ViewController: UIViewController {
         }
     }
 
+ */
     
     
     override func viewDidLoad() {

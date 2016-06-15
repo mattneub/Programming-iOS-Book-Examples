@@ -85,7 +85,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
             guard let _ = object as? WKWebView else {return}
             guard let keyPath = keyPath else {return}
             guard let change = change else {return}

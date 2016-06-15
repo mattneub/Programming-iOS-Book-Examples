@@ -99,7 +99,8 @@ class ViewController: UIViewController {
             let i1 = 1
             let i2 = 2
             let i3 = 3
-            if [1,2,3] == [i1,i2,i3] { // they are equal!
+            let arr : [Int] = [1,2,3]
+            if arr == [i1,i2,i3] { // they are equal!
                 print("equal")
             }
             
@@ -333,8 +334,8 @@ class ViewController: UIViewController {
         do {
             let sec = 0
             let ct = 10
-            _ = Array(0..<ct).map {NSIndexPath(forRow:$0, inSection:sec)}
-            _ = (0..<ct).map {NSIndexPath(forRow:$0, inSection:sec)}
+            _ = Array(0..<ct).map {IndexPath(row:$0, section:sec)}
+            _ = (0..<ct).map {IndexPath(row:$0, section:sec)}
 
         }
         
@@ -361,7 +362,7 @@ class ViewController: UIViewController {
             let target = "m"
             let arr2 = arr.map {
                 $0.filter {
-                    let options = NSStringCompareOptions.caseInsensitiveSearch
+                    let options = String.CompareOptions.caseInsensitiveSearch
                     let found = $0.range(of:target, options: options)
                     return (found != nil)
                 }

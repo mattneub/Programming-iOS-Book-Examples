@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     
     // without this override, AppDelegate won't compile:
     
-    override init(nibName: String?, bundle: NSBundle?) {
+    override init(nibName: String?, bundle: Bundle?) {
         super.init(nibName:nibName, bundle:bundle)
     }
 

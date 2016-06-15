@@ -1,6 +1,7 @@
 
 
 import UIKit
+import UserNotifications
 
 class ViewController: UIViewController {
 
@@ -63,16 +64,6 @@ class ViewController: UIViewController {
                     // ...
                 })
         }
-
-        
-        do {
-            let types : UIUserNotificationType = [.alert, .sound]
-            let category = UIMutableUserNotificationCategory()
-            category.identifier = "coffee"
-            // ...
-            let settings = UIUserNotificationSettings(forTypes: types, categories: [category])
-            print(settings)
-        }
         
         do {
             var s = Set<Int>()
@@ -91,7 +82,7 @@ class ViewController: UIViewController {
     let RECENTS = "recents"
     let PIXCOUNT = 20
     func test() {
-        let ud = NSUserDefaults.standard()
+        let ud = UserDefaults.standard()
         var recents = ud.object(forKey:RECENTS) as? [Int]
         if recents == nil {
             recents = []

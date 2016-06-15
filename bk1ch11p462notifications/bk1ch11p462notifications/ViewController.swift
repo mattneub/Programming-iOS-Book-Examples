@@ -19,16 +19,16 @@ class ViewController: UIViewController {
         switch which {
         case 1:
             
-            NSNotificationCenter.default().addObserver(self,
+            NotificationCenter.default().addObserver(self,
                 selector: #selector(nowPlayingItemChanged),
-                name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification,
+                name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange,
                 object: nil)
             
         case 2:
             
-            let ob = NSNotificationCenter.default()
+            let ob = NotificationCenter.default()
                 .addObserver(forName:
-                    MPMusicPlayerControllerNowPlayingItemDidChangeNotification,
+                    NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange,
                     object: nil, queue: nil) {
                         _ in
                         print("changed")
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         
     }
     
-    func nowPlayingItemChanged (_ n:NSNotification) {
+    func nowPlayingItemChanged (_ n:Notification) {
         print("changed")
     }
     
@@ -51,12 +51,12 @@ class ViewController: UIViewController {
         switch which {
         case 1:
             
-            NSNotificationCenter.default().removeObserver(self)
+            NotificationCenter.default().removeObserver(self)
             
         case 2:
             
             for ob in self.observers {
-                NSNotificationCenter.default().removeObserver(ob)
+                NotificationCenter.default().removeObserver(ob)
             }
             self.observers.removeAll()
             
@@ -68,8 +68,8 @@ class ViewController: UIViewController {
     }
     
     func singleTap(_:AnyObject) {
-        NSNotificationCenter.default()
-            .post(name: "cardTapped", object: self)
+        NotificationCenter.default()
+            .post(name: "cardTapped" as NSNotification.Name, object: self)
     }
 
 

@@ -46,11 +46,12 @@ class ViewController: UIViewController {
         }
         
         
-        let nc = NSNotificationCenter.default()
+        let nc = NotificationCenter.default()
         nc.addObserver(self, selector: #selector(notificationArrived), name: "test", object: nil)
-        nc.post(name:"test", object: self, userInfo: ["junk":"nonsense"])
-        nc.post(name:"test", object: self, userInfo: ["progress":"nonsense"])
-        nc.post(name:"test", object: self, userInfo: ["progress":3])
+        let test = "test" as Notification.Name
+        nc.post(name:test, object: self, userInfo: ["junk":"nonsense"])
+        nc.post(name:test, object: self, userInfo: ["progress":"nonsense"])
+        nc.post(name:test, object: self, userInfo: ["progress":3])
     }
     
     func notificationArrived(_ n:NSNotification) {
@@ -112,11 +113,11 @@ class ViewController: UIViewController {
 
 class C1 : NSObject {
     override func observeValue(forKeyPath keyPath: String?,
-        of object: AnyObject?, change: [String : AnyObject]?,
+        of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?,
         context: UnsafeMutablePointer<Void>?) {
             if keyPath == "readyForDisplay" {
                 if let obj = object as? AVPlayerViewController {
-                    if let ok = change?[NSKeyValueChangeNewKey] as? Bool {
+                    if let ok = change?[.newKey] as? Bool {
                         if ok {
                             // ...
                             print(obj)
@@ -129,11 +130,11 @@ class C1 : NSObject {
 
 class C2 : NSObject {
     override func observeValue(forKeyPath keyPath: String?,
-                               of object: AnyObject?, change: [String : AnyObject]?,
+                               of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?,
                                context: UnsafeMutablePointer<Void>?) {
             if keyPath == "readyForDisplay",
                 let obj = object as? AVPlayerViewController,
-                let ok = change?[NSKeyValueChangeNewKey] as? Bool where ok {
+                let ok = change?[.newKey] as? Bool where ok {
                     // ...
                     print(obj)
             }
@@ -142,11 +143,11 @@ class C2 : NSObject {
 
 class C3 : NSObject {
     override func observeValue(forKeyPath keyPath: String?,
-                               of object: AnyObject?, change: [String : AnyObject]?,
+                               of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?,
                                context: UnsafeMutablePointer<Void>?) {
             guard keyPath == "readyForDisplay" else {return}
             guard let obj = object as? AVPlayerViewController else {return}
-            guard let ok = change?[NSKeyValueChangeNewKey] as? Bool else {return}
+            guard let ok = change?[.newKey] as? Bool else {return}
             guard ok else {return}
             // ...
             print(obj)

@@ -24,13 +24,13 @@ import WebKit
  */
 
 class MyClass {
-    var timer : NSTimer?
+    var timer : Timer?
     func startTimer() {
-        self.timer = NSTimer.scheduledTimer(timeInterval: 1,
+        self.timer = Timer.scheduledTimer(timeInterval: 1,
             target: self, selector: #selector(timerFired),
             userInfo: nil, repeats: true)
     }
-    @objc func timerFired(t:NSTimer) { // will crash without @objc
+    @objc func timerFired(t:Timer) { // will crash without @objc
         print("timer fired")
         self.timer?.invalidate()
     }
@@ -86,13 +86,13 @@ class ViewController: UIViewController {
         
             // conversion of String to C string
             
-            let q = dispatch_queue_create("MyQueue", nil)
-            
-            let s = "MyQueue"
-            let qq = dispatch_queue_create(s, nil)
+//            let q = DispatchQueue(label:"MyQueue")
+//            
+//            let s = "MyQueue"
+//            let qq = DispatchQueue(label:s)
 
             let cs = "hello".utf8String // UnsafePointer<Int8>? // *
-            if let cs2 = "hello".cString(using: NSUTF8StringEncoding) { // [CChar]?
+            if let cs2 = "hello".cString(using: String.Encoding.utf8) { // [CChar]?
                 let ss = String(validatingUTF8: cs2)
                 print(ss)
             }
@@ -105,8 +105,8 @@ class ViewController: UIViewController {
                 }
             }
             
-            _ = q
-            _ = qq
+//            _ = q
+//            _ = qq
             _ = cs
             
         }

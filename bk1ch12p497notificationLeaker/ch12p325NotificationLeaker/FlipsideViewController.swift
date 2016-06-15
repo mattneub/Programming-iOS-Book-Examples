@@ -18,14 +18,14 @@ class FlipsideViewController: UIViewController {
         super.viewWillAppear(animated)
         switch which {
         case 0:
-            self.observer = NSNotificationCenter.default().addObserver(
-                forName: "woohoo", object:nil, queue:nil) {
+            self.observer = NotificationCenter.default().addObserver(
+                forName: "woohoo" as Notification.Name, object:nil, queue:nil) {
                     _ in
                     _ = self.description // leak me, leak me
             }
         case 1:
-            self.observer = NSNotificationCenter.default().addObserver(
-                forName: "woohoo", object:nil, queue:nil) {
+            self.observer = NotificationCenter.default().addObserver(
+                forName: "woohoo" as Notification.Name, object:nil, queue:nil) {
                     [unowned self] _ in // ha ha, fixed it
                     _ = self.description
             }
@@ -36,7 +36,7 @@ class FlipsideViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("unregister")
-        NSNotificationCenter.default().removeObserver(self.observer)
+        NotificationCenter.default().removeObserver(self.observer)
     }
     
     @IBAction func done (_ sender:AnyObject!) {
@@ -52,7 +52,7 @@ class FlipsideViewController: UIViewController {
 }
 
 extension FlipsideViewController : UIBarPositioningDelegate {
-    func position(forBar: UIBarPositioning) -> UIBarPosition {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }
 }

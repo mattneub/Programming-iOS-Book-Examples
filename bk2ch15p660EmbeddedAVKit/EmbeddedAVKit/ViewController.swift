@@ -118,7 +118,7 @@ class ViewController: UIViewController {
         }
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [String : AnyObject]?,
+    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?,
         context: UnsafeMutablePointer<()>?) {
             guard keyPath == "readyForDisplay" else {return}
             guard let vc = object as? AVPlayerViewController else {return}

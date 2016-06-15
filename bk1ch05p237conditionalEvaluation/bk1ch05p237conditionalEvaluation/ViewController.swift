@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         print(title) // shut up compiler
 
         let cell = UITableViewCell()
-        let ix = NSIndexPath(forRow: 0, inSection: 0)
+        let ix = IndexPath(row: 0, section: 0)
         cell.accessoryType =
             ix.row == self.currow ? .checkmark : .disclosureIndicator
 

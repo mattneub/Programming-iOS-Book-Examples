@@ -4,7 +4,7 @@ import UIKit
 // showing how a private façade can make a publicly immutable class mutable internally
 
 class StringDrawer {
-    @NSCopying var attributedString : NSAttributedString!
+    @NSCopying var attributedString : AttributedString!
     private var mutableAttributedString : NSMutableAttributedString! {
         get {
             if self.attributedString == nil {return nil}
@@ -32,7 +32,7 @@ class MyView : UIView {
         ]
         let sp = CGColorSpaceCreateDeviceGray()
         let grad = CGGradient(colorComponentsSpace: sp, components: colors, locations: locs, count: 3)
-        con.drawLinearGradient(grad, start: CGPoint(x:89,y:0), end: CGPoint(x:111,y:0), options:[])
+        con.drawLinearGradient(grad!, start: CGPoint(x:89,y:0), end: CGPoint(x:111,y:0), options:[])
 
     }
 }

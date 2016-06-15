@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         vc.didMove(toParentViewController: self)
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
         if keyPath == "status" {
             dispatch_async(dispatch_get_main_queue(), {
                 self.finishConstructingInterface()

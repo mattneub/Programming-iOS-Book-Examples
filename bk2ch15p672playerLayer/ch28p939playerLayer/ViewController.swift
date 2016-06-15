@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
         if keyPath == "readyForDisplay" {
             dispatch_async(dispatch_get_main_queue(), {
                 self.finishConstructingInterface()

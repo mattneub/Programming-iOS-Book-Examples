@@ -104,9 +104,9 @@ class ViewController: UIViewController {
         
         do {
             // common ways to encounter an AnyObject (wrapped in an Optional)
-            let any1 = NSUserDefaults.standard().object(forKey: "myObject")
+            let any1 = UserDefaults.standard().object(forKey: "myObject")
             let any2 = self.view.value(forKey:"backgroundColor")
-            let c = NSKeyedUnarchiver(forReadingWith: NSData())
+            let c = NSKeyedUnarchiver(forReadingWith: Data())
             let any3 = c.decodeObject(forKey:"myKey")
 
             _ = any1
@@ -174,7 +174,7 @@ class ViewController: UIViewController {
         
     }
     
-    func changed(_ n:NSNotification) {
+    func changed(_ n:Notification) {
         let player = MPMusicPlayerController.applicationMusicPlayer()
         if n.object === player { // ...
         }

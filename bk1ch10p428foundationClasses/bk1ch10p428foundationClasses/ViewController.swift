@@ -91,7 +91,7 @@ class ViewController: UIViewController {
         
         do {
             let s = NSMutableString(string:"hello world, go to hell")
-            let r = try! NSRegularExpression(
+            let r = try! RegularExpression(
                 pattern: "\\bhell\\b",
                 options: .caseInsensitive)
             r.replaceMatches(
@@ -102,41 +102,41 @@ class ViewController: UIViewController {
         }
         
         do {
-            let greg = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
-            let comp = NSDateComponents()
+            let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
+            var comp = DateComponents()
             comp.year = 2016
             comp.month = 8
             comp.day = 10
             comp.hour = 15
-            let d = greg.date(from: comp) // Optional wrapping NSDate
+            let d = greg.date(from: comp) // Optional wrapping Date
             if let d = d {
                 print(d)
-                print(d.description(with:NSLocale.current()))
+                print(d.description(with:Locale.current()))
             }
 
         }
         
         do {
-            let d = NSDate() // or whatever
-            let comp = NSDateComponents()
+            let d = Date() // or whatever
+            var comp = DateComponents()
             comp.month = 1
-            let greg = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
+            let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
             let d2 = greg.date(byAdding: comp, to:d)
             _ = d2
         }
         
         do {
-            let df = NSDateFormatter()
-            let format = NSDateFormatter.dateFormat(
+            let df = DateFormatter()
+            let format = DateFormatter.dateFormat(
                 fromTemplate:"dMMMMyyyyhmmaz", options:0,
-                locale:NSLocale.current())
+                locale:Locale.current())
             df.dateFormat = format
-            let s = df.string(from: NSDate()) // just now
+            let s = df.string(from: Date()) // just now
             print(s)
         }
         
         do {
-            NSUserDefaults.standard().set(1, forKey: "Score")
+            UserDefaults.standard().set(1, forKey: "Score")
             // wow - unable to call setObject:forKey: while supplying a number!
             // ud.set(object: 0, forKey: "Score")
             let n = 1 as NSNumber
@@ -162,7 +162,7 @@ class ViewController: UIViewController {
         
         do {
             // perhaps the first example is more convincing if we use a variable
-            let ud = NSUserDefaults.standard()
+            let ud = UserDefaults.standard()
             let i = 0
             ud.set(i, forKey: "Score")
             // ud.setObject(i, forKey: "Score")
@@ -186,7 +186,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let ud = NSUserDefaults.standard()
+            let ud = UserDefaults.standard()
             let c = UIColor.blue()
             let cdata = NSKeyedArchiver.archivedData(withRootObject:c)
             ud.set(cdata, forKey: "myColor")
@@ -217,9 +217,9 @@ class ViewController: UIViewController {
         
         do {
             let arr = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
-            let ixs = NSMutableIndexSet()
-            ixs.add(in: NSRange(1..<5))
-            ixs.add(in: NSRange(8..<11))
+            var ixs = IndexSet()
+            ixs.insert(integersIn: 1..<5)
+            ixs.insert(integersIn: 8..<11)
             let arr2 = (arr as NSArray).objects(at:ixs)
             print(arr2)
         }

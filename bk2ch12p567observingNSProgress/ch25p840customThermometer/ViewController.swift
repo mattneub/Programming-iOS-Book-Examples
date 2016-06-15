@@ -80,7 +80,7 @@ class ViewController: UIViewController {
         self.op3!.start()
 
     }
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
         if let _ = object as? NSProgress {
             if let frac = change?[NSKeyValueChangeNewKey] as? CGFloat {
                 self.prog3.value = frac

@@ -14,7 +14,7 @@ class ViewController : UIViewController {
     // so you have to resolve those generics explicitly
     // feels like a bug to me, but whatever
     
-    let cache = NSCache<NSString, AnyObject>()
+    let cache = Cache<NSString, AnyObject>()
     var cachedData : NSData {
         let key = "somekey"
         var data = self.cache.object(forKey:key) as? NSData
@@ -36,7 +36,7 @@ class ViewController : UIViewController {
             return result
         } else {
             // ... recreate data here ...
-            let data = NSData() // recreated data
+            let data = Data() // recreated data
             self.purgeable = NSPurgeableData(data:data)
             self.purgeable.endContentAccess() // must call "end"!
             return data
@@ -46,20 +46,20 @@ class ViewController : UIViewController {
 
     // this is the actual example
     
-    private var myBigDataReal : NSData! = nil
-    var myBigData : NSData! {
+    private var myBigDataReal : Data! = nil
+    var myBigData : Data! {
         set (newdata) {
             self.myBigDataReal = newdata
         }
         get {
             if myBigDataReal == nil {
-                let fm = NSFileManager()
-                let f = (NSTemporaryDirectory() as NSString).appendingPathComponent("myBigData")
-                if fm.fileExists(atPath:f) {
-                    print("loading big data from disk")
-                    self.myBigDataReal = NSData(contentsOfFile: f)
+                let fm = FileManager()
+                let f = try! URL.init(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
+                if let d = try? Data(contentsOf:f) {
+                    print("loaded big data from disk")
+                    self.myBigDataReal = d
                     do {
-                        try fm.removeItem(atPath:f)
+                        try fm.removeItem(at:f)
                         print("deleted big data from disk")
                     } catch {
                         print("Couldn't remove temp file")
@@ -73,13 +73,13 @@ class ViewController : UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         // wow, this is some big data!
-        self.myBigData = "howdy".data(using:NSUTF8StringEncoding, allowLossyConversion: false)
+        self.myBigData = "howdy".data(using:String.Encoding.utf8, allowLossyConversion: false)
     }
     
     // tap button to prove we've got big data
     
     @IBAction func doButton (_ sender:AnyObject?) {
-        let s = NSString(data: self.myBigData, encoding: NSUTF8StringEncoding) as! String
+        let s = String(data: self.myBigData, encoding: String.Encoding.utf8)
         let av = UIAlertController(title: "Got big data, and it says:", message: s, preferredStyle: .alert)
         av.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(av, animated: true)
@@ -90,8 +90,8 @@ class ViewController : UIViewController {
     func saveAndReleaseMyBigData() {
         if let myBigData = self.myBigData {
             print("unloading big data")
-            let f = (NSTemporaryDirectory() as NSString).appendingPathComponent("myBigData")
-            myBigData.write(toFile:f, atomically:false)
+            let f = try! URL.init(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
+            _ = try? myBigData.write(to:f)
             self.myBigData = nil
         }
     }
@@ -103,7 +103,7 @@ class ViewController : UIViewController {
     }
     
     deinit {
-        NSNotificationCenter.default().removeObserver(self)
+        NotificationCenter.default().removeObserver(self)
     }
     
     // on device
@@ -117,7 +117,7 @@ class ViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.default().addObserver(self, selector: #selector(backgrounding), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(backgrounding), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
     
     func backgrounding(_ n:NSNotification) {

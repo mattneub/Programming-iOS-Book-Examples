@@ -180,7 +180,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         wv.addObserver(self, forKeyPath: "title", options: .new, context: nil)
         
     }
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
         guard let wv = object as? WKWebView else {return}
         guard let keyPath = keyPath else {return}
         guard let change = change else {return}

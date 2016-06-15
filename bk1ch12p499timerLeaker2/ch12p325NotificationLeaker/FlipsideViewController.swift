@@ -41,7 +41,7 @@ class FlipsideViewController: UIViewController {
 }
 
 extension FlipsideViewController : UIBarPositioningDelegate {
-    func position(forBar: UIBarPositioning) -> UIBarPosition {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }
 }

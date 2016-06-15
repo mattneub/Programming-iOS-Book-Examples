@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let ud = NSUserDefaults.standard()
+            let ud = UserDefaults.standard()
             // let s = "You have \(ud.integerForKey("widgets")) widgets." // compile error
             let n = ud.integer(forKey:"widgets")
             let s = "You have \(n) widgets."

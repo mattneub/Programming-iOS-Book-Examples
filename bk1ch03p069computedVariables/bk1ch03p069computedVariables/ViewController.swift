@@ -5,7 +5,7 @@ import MediaPlayer
 
 var now : String {
     get {
-        return NSDate().description
+        return Date().description
     }
     set {
         print(newValue)
@@ -13,7 +13,7 @@ var now : String {
 }
 
 var now2 : String { // showing you can omit "get" if there is no "set"
-    return NSDate().description
+    return Date().description
 }
 
 
@@ -64,20 +64,20 @@ class ViewController: UIViewController {
     
     }
     
-    private var myBigDataReal : NSData! = nil
-    var myBigData : NSData! {
+    private var myBigDataReal : Data! = nil
+    var myBigData : Data! {
         set (newdata) {
             self.myBigDataReal = newdata
         }
         get {
             if myBigDataReal == nil {
-                let fm = NSFileManager()
-                let f = (NSTemporaryDirectory() as NSString).appendingPathComponent("myBigData")
-                if fm.fileExists(atPath:f) {
-                    print("loading big data from disk")
-                    self.myBigDataReal = NSData(contentsOfFile: f)
+                let fm = FileManager()
+                let f = try! URL.init(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
+                if let d = try? Data(contentsOf:f) {
+                    print("loaded big data from disk")
+                    self.myBigDataReal = d
                     do {
-                        try fm.removeItem(atPath:f)
+                        try fm.removeItem(at:f)
                         print("deleted big data from disk")
                     } catch {
                         print("Couldn't remove temp file")

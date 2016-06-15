@@ -10,16 +10,16 @@ class FlipsideViewController: UIViewController {
     
     weak var delegate : FlipsideViewControllerDelegate!
     
-    var timer : NSTimer!
+    var timer : Timer!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("starting timer")
-        self.timer = NSTimer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(dummy), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(dummy), userInfo: nil, repeats: true)
         self.timer.tolerance = 0.1
     }
     
-    func dummy(_ t:NSTimer) {
+    func dummy(_ t:Timer) {
         print("timer fired")
     }
     
@@ -43,7 +43,7 @@ class FlipsideViewController: UIViewController {
 }
 
 extension FlipsideViewController : UIBarPositioningDelegate {
-    func position(forBar: UIBarPositioning) -> UIBarPosition {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }
 }
