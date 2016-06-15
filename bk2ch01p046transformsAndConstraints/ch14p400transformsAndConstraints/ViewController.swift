@@ -28,7 +28,7 @@ class ViewController : UIViewController {
         if let v = g.view!.hitTest(p, with: nil) {
             if v == g.view { return }
             if v is MyView { return }
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.grow(v)
             }
         }

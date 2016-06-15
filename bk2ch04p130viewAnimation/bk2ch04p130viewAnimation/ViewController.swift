@@ -2,24 +2,20 @@
 
 import UIKit
 func delay(_ delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
 
 extension UIView {
     class func animate(times:Int,
-        duration dur: NSTimeInterval,
-        delay del: NSTimeInterval,
+        duration dur: TimeInterval,
+        delay del: TimeInterval,
         options opts: UIViewAnimationOptions,
         animations anim: () -> Void,
         completion comp: ((Bool) -> Void)?) {
             func helper(_ t:Int,
-                _ dur: NSTimeInterval,
-                _ del: NSTimeInterval,
+                _ dur: TimeInterval,
+                _ del: TimeInterval,
                 _ opt: UIViewAnimationOptions,
                 _ anim: () -> Void,
                 _ com: ((Bool) -> Void)?) {
@@ -89,7 +85,8 @@ class ViewController: UIViewController {
                 }
             case 6:
                 func report(_ ix:Int) {
-                    let pres = (self.v.layer.presentationLayer() as! CALayer).position.y
+                    // at last, the presentation layer comes to you as a CALayer (Optional)
+                    let pres = self.v.layer.presentation()!.position.y
                     let model = self.v.center.y
                     print("step \(ix): presentation \(pres), model \(model)")
                 }

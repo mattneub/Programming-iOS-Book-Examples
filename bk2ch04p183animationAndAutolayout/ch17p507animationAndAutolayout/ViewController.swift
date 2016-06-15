@@ -3,12 +3,8 @@
 import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
 
 
@@ -62,7 +58,7 @@ class ViewController : UIViewController {
             
         case 6:
             // general solution to all such problems: animate a temporary snapshot instead!
-            let snap = self.v.snapshotView(afterScreenUpdates:false)
+            let snap = self.v.snapshotView(afterScreenUpdates:false)!
             snap.frame = self.v.frame
             self.v.superview!.addSubview(snap)
             self.v.isHidden = true
@@ -79,7 +75,7 @@ class ViewController : UIViewController {
                 })
 
         case 7:
-            let snap = self.v.snapshotView(afterScreenUpdates:false)
+            let snap = self.v.snapshotView(afterScreenUpdates:false)!
             snap.frame = self.v.frame
             self.v.superview!.addSubview(snap)
             self.v.isHidden = true

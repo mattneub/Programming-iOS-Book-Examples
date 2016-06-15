@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         get {
             if myBigDataReal == nil {
                 let fm = FileManager()
-                let f = try! URL.init(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
+                let f = try! URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
                 if let d = try? Data(contentsOf:f) {
                     print("loaded big data from disk")
                     self.myBigDataReal = d

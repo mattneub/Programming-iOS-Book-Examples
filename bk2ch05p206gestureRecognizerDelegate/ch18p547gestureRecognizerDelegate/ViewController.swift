@@ -19,7 +19,7 @@ class ViewController  : UIViewController {
         p.delegate = self
     }
     
-    func longPress(lp:UILongPressGestureRecognizer) {
+    func longPress(_ lp:UILongPressGestureRecognizer) {
         switch lp.state {
         case .began:
             let anim = CABasicAnimation(keyPath: "transform")
@@ -34,7 +34,7 @@ class ViewController  : UIViewController {
         }
     }
     
-    func dragging(p : UIPanGestureRecognizer) {
+    func dragging(_ p : UIPanGestureRecognizer) {
         let vv = p.view!
         switch p.state {
         case .began, .changed:

@@ -32,10 +32,10 @@ class ViewController: UIViewController {
 //            let v = iv.superview!
 //            iv.translatesAutoresizingMaskIntoConstraints = false
 //            NSLayoutConstraint.activate([
-//                iv.bottomAnchor.constraintEqual(to:v.bottomAnchor),
-//                iv.topAnchor.constraintEqual(to:v.topAnchor),
-//                iv.leadingAnchor.constraintEqual(to:v.leadingAnchor),
-//                iv.trailingAnchor.constraintEqual(to:v.trailingAnchor),
+//                iv.bottomAnchor.constraint(equalTo:v.bottomAnchor),
+//                iv.topAnchor.constraint(equalTo:v.topAnchor),
+//                iv.leadingAnchor.constraint(equalTo:v.leadingAnchor),
+//                iv.trailingAnchor.constraint(equalTo:v.trailingAnchor),
 //                ])
 
             av.delegate = self

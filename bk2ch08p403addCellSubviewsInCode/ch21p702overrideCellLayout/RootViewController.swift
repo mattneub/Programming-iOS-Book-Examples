@@ -68,10 +68,10 @@ class RootViewController : UITableViewController {
             var con = [NSLayoutConstraint]()
             // image view is vertically centered
             con.append(
-                iv.centerYAnchor.constraintEqual(to:cell.contentView.centerYAnchor))
+                iv.centerYAnchor.constraint(equalTo:cell.contentView.centerYAnchor))
             // it's a square
             con.append(
-                iv.widthAnchor.constraintEqual(to:iv.heightAnchor))
+                iv.widthAnchor.constraint(equalTo:iv.heightAnchor))
             // label has height pinned to superview
             con.append(contentsOf:
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|[lab]|",

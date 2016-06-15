@@ -31,8 +31,8 @@ class PrimaryViewController : UIViewController {
         self.view.addSubview(seg)
         seg.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            seg.centerXAnchor.constraintEqual(to:self.view.centerXAnchor),
-            seg.bottomAnchor.constraintEqual(to:self.view.bottomAnchor, constant:-50)
+            seg.centerXAnchor.constraint(equalTo:self.view.centerXAnchor),
+            seg.bottomAnchor.constraint(equalTo:self.view.bottomAnchor, constant:-50)
         ])
         seg.addTarget(self, action: #selector(change), for: .valueChanged)
     }

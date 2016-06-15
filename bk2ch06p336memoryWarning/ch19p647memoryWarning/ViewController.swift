@@ -15,23 +15,23 @@ class ViewController : UIViewController {
     // feels like a bug to me, but whatever
     
     let cache = Cache<NSString, AnyObject>()
-    var cachedData : NSData {
+    var cachedData : Data {
         let key = "somekey"
-        var data = self.cache.object(forKey:key) as? NSData
+        var data = self.cache.object(forKey:key) as? Data
         if data != nil {
             return data!
         }
         // ... recreate data here ...
-        data = NSData() // recreated data
+        data = Data() // recreated data
         self.cache.setObject(data!, forKey: key)
         return data!
     }
     
     var purgeable = NSPurgeableData()
-    var purgeabledata : NSData {
+    var purgeabledata : Data {
         // surprisingly tricky to get content access barriers correct
         if self.purgeable.beginContentAccess() && self.purgeable.length > 0 {
-            let result = self.purgeable.copy() as! NSData
+            let result = self.purgeable.copy() as! Data
             self.purgeable.endContentAccess()
             return result
         } else {
@@ -54,7 +54,7 @@ class ViewController : UIViewController {
         get {
             if myBigDataReal == nil {
                 let fm = FileManager()
-                let f = try! URL.init(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
+                let f = try! URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
                 if let d = try? Data(contentsOf:f) {
                     print("loaded big data from disk")
                     self.myBigDataReal = d
@@ -90,7 +90,7 @@ class ViewController : UIViewController {
     func saveAndReleaseMyBigData() {
         if let myBigData = self.myBigData {
             print("unloading big data")
-            let f = try! URL.init(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
+            let f = try! URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
             _ = try? myBigData.write(to:f)
             self.myBigData = nil
         }

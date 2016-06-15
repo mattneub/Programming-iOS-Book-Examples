@@ -40,7 +40,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
         return self.interacting ? self : nil
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         // no interaction if we didn't use g.r.
         return self.interacting ? self : nil
     }
@@ -61,7 +61,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
         return result
     }
     
-    func pan(g:UIScreenEdgePanGestureRecognizer) {
+    func pan(_ g:UIScreenEdgePanGestureRecognizer) {
         let v = g.view!
         let tbc = self.window!.rootViewController as! UITabBarController
         let delta = g.translation(in:v)
@@ -156,7 +156,7 @@ extension AppDelegate : UIViewControllerInteractiveTransitioning {
         let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)!
         let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
         
-        let con = transitionContext.containerView()!
+        let con = transitionContext.containerView()
         
         let r1start = transitionContext.initialFrame(for:vc1)
         let r2end = transitionContext.finalFrame(for:vc2)
@@ -185,7 +185,7 @@ extension AppDelegate : UIViewControllerInteractiveTransitioning {
 
 extension AppDelegate : UIViewControllerAnimatedTransitioning {
     
-    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.4
     }
     

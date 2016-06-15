@@ -3,12 +3,8 @@
 import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
 
 class MyView0 : UIView {
@@ -66,7 +62,7 @@ class MyView1 : UIView {
 }
 
 class MyView2 : UIView {
-    var time : NSTimeInterval!
+    var time : TimeInterval!
     var single = false
     
     /*

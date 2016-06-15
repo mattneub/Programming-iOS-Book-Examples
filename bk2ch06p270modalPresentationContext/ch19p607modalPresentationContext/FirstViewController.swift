@@ -58,6 +58,6 @@ The following code stops the user from doing that, and so avoids the bug
 
 extension FirstViewController : UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        return self.presented == nil
+        return self.presentedViewController == nil
     }
 }

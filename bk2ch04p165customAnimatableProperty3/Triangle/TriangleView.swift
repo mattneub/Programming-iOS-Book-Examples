@@ -60,10 +60,10 @@ class TriangleLayer : CALayer {
     }
         
     override func action(forKey key: String) -> CAAction? {
-        if self.presentationLayer() != nil {
+        if self.presentation() != nil {
             if key == "v1x" || key == "v1y" {
                 let ba = CABasicAnimation(keyPath: key)
-                ba.fromValue = (self.presentationLayer() as! CALayer).value(forKey:key)
+                ba.fromValue = self.presentation()!.value(forKey:key)
                 return ba
             }
         }

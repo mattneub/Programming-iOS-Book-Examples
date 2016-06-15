@@ -58,8 +58,8 @@ class ViewController : UIViewController {
             let side : CGFloat = 10
             var con = [NSLayoutConstraint]()
             con.append(contentsOf:[
-                square.widthAnchor.constraintEqual(toConstant:side),
-                square.centerXAnchor.constraintEqual(to:self.view.centerXAnchor)
+                square.widthAnchor.constraint(equalToConstant:side),
+                square.centerXAnchor.constraint(equalTo:self.view.centerXAnchor)
                 ])
             con.append(contentsOf:
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|[square(side)]",

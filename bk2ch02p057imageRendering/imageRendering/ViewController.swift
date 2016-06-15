@@ -35,8 +35,8 @@ class ViewController : UIViewController {
         self.view.addSubview(iv)
         iv.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            iv.leadingAnchor.constraintEqual(to:self.view.leadingAnchor),
-            iv.bottomAnchor.constraintEqual(to:self.view.bottomAnchor)
+            iv.leadingAnchor.constraint(equalTo:self.view.leadingAnchor),
+            iv.bottomAnchor.constraint(equalTo:self.view.bottomAnchor)
             ])
         
         // the previous code aligns to bottom correctly
@@ -50,8 +50,8 @@ class ViewController : UIViewController {
         self.view.addSubview(iv2)
         iv2.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            iv2.trailingAnchor.constraintEqual(to:self.view.trailingAnchor),
-            iv2.bottomAnchor.constraintEqual(to:self.view.bottomAnchor)
+            iv2.trailingAnchor.constraint(equalTo:self.view.trailingAnchor),
+            iv2.bottomAnchor.constraint(equalTo:self.view.bottomAnchor)
             ])
 
         // In the asset catalog, it is the Top, not the Bottom, that I have set

@@ -18,8 +18,8 @@ class ViewController: UIViewController {
         
         let contentView = self.scrollView.subviews[0]
         NSLayoutConstraint.activate([
-            contentView.widthAnchor.constraintEqual(to:self.scrollView.widthAnchor),
-            contentView.heightAnchor.constraintEqual(to:self.scrollView.heightAnchor),
+            contentView.widthAnchor.constraint(equalTo:self.scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalTo:self.scrollView.heightAnchor),
         ])
         
         self.scrollView.keyboardDismissMode = .interactive

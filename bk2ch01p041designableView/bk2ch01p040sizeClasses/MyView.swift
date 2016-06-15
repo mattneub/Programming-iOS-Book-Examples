@@ -38,14 +38,14 @@ The representation is not perfect but it's pretty good.
         self.addSubview(v3)
         
         NSLayoutConstraint.activate([
-            v2.leftAnchor.constraintEqual(to:self.leftAnchor),
-            v2.rightAnchor.constraintEqual(to:self.rightAnchor),
-            v2.topAnchor.constraintEqual(to:self.topAnchor),
-            v2.heightAnchor.constraintEqual(toConstant:10),
-            v3.widthAnchor.constraintEqual(toConstant:20),
-            v3.heightAnchor.constraintEqual(to:v3.widthAnchor),
-            v3.rightAnchor.constraintEqual(to:self.rightAnchor),
-            v3.bottomAnchor.constraintEqual(to:self.bottomAnchor),
+            v2.leftAnchor.constraint(equalTo:self.leftAnchor),
+            v2.rightAnchor.constraint(equalTo:self.rightAnchor),
+            v2.topAnchor.constraint(equalTo:self.topAnchor),
+            v2.heightAnchor.constraint(equalToConstant:10),
+            v3.widthAnchor.constraint(equalToConstant:20),
+            v3.heightAnchor.constraint(equalTo:v3.widthAnchor),
+            v3.rightAnchor.constraint(equalTo:self.rightAnchor),
+            v3.bottomAnchor.constraint(equalTo:self.bottomAnchor),
         ])
     }
     

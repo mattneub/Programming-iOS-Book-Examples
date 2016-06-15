@@ -2,12 +2,8 @@
 import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
 
 extension CGRect {
@@ -38,9 +34,7 @@ class MyImageView : UIImageView {
     override var collisionBoundsType: UIDynamicItemCollisionBoundsType {
         return .ellipse
     }
-    
-    
-    override func willMove(to newWindow: UIWindow?) {
+    override func willMove(toWindow newWindow: UIWindow?) {
         print("image view move to \(newWindow)")
     }
     deinit {

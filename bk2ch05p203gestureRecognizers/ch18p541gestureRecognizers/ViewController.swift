@@ -42,7 +42,7 @@ class ViewController : UIViewController {
         print("double tap")
     }
     
-    func dragging(p : UIPanGestureRecognizer) {
+    func dragging(_ p : UIPanGestureRecognizer) {
         let v = p.view!
         switch p.state {
         case .began, .changed:

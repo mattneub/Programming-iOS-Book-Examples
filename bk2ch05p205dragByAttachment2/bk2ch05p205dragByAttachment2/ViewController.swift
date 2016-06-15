@@ -74,7 +74,7 @@ class ViewController: UIViewController, UIDynamicAnimatorDelegate {
             
             // make a "cushion" at the floor
             let coll = UICollisionBehavior(items: [self.redView])
-            coll.setTranslatesReferenceBoundsIntoBoundaryWith(
+            coll.setTranslatesReferenceBoundsIntoBoundary(with:
                 UIEdgeInsets(top: -1, left: -1, bottom: -1, right: -1))
             self.anim.addBehavior(coll)
             

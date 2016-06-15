@@ -14,9 +14,9 @@ class ViewController: UIViewController {
         let c = self.oldConstraint.constant
         NSLayoutConstraint.deactivate([self.oldConstraint])
         let newConstraint = c > 0 ?
-            v.trailingAnchor.constraintEqual(to:self.view.layoutMarginsGuide.trailingAnchor, constant:-c) :
-            v.leadingAnchor.constraintEqual(to:self.view.layoutMarginsGuide.leadingAnchor, constant:-c)
-        NSLayoutConstraint.activate([newConstraint!])
+            v.trailingAnchor.constraint(equalTo:self.view.layoutMarginsGuide.trailingAnchor, constant:-c) :
+            v.leadingAnchor.constraint(equalTo:self.view.layoutMarginsGuide.leadingAnchor, constant:-c)
+        NSLayoutConstraint.activate([newConstraint])
         self.oldConstraint = newConstraint
         UIView.animate(withDuration:0.4) {
             v.superview!.layoutIfNeeded()

@@ -6,7 +6,7 @@ class MyImageView : UIImageView {
     override var collisionBoundsType: UIDynamicItemCollisionBoundsType {
         return .ellipse
     }
-    override func willMove(to newWindow: UIWindow?) {
+    override func willMove(toWindow newWindow: UIWindow?) {
         print("image view move to \(newWindow)")
     }
     deinit {

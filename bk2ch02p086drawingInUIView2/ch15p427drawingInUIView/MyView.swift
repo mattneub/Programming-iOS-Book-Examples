@@ -62,7 +62,7 @@ class MyView : UIView {
         ]
         let sp = CGColorSpaceCreateDeviceGray()
         let grad =
-            CGGradient(colorComponentsSpace:sp, components: colors, locations: locs, count: 3)
+            CGGradient(colorComponentsSpace:sp, components: colors, locations: locs, count: 3)!
         con.drawLinearGradient(grad, start: CGPoint(9,0), end: CGPoint(31,0), options: [])
         
         con.restoreGState() // done clipping

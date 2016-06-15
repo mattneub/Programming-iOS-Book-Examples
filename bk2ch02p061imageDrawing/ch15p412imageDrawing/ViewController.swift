@@ -80,8 +80,8 @@ class ViewController : UIViewController {
             let marsCG = mars.cgImage!
             let sz = mars.size
             let marsLeft = marsCG.cropping(to:
-                CGRect(0,0,sz.width/2.0,sz.height))
-            let marsRight = marsCG.cropping(to: CGRect(sz.width/2.0,0,sz.width/2.0,sz.height))
+                CGRect(0,0,sz.width/2.0,sz.height))!
+            let marsRight = marsCG.cropping(to: CGRect(sz.width/2.0,0,sz.width/2.0,sz.height))!
             // draw each CGImage
             UIGraphicsBeginImageContextWithOptions(
                 CGSize(sz.width*1.5, sz.height), false, 0)

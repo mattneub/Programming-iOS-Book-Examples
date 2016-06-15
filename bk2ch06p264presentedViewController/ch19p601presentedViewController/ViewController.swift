@@ -10,8 +10,8 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     @IBAction func doPresent(_ sender:AnyObject?) {
         
         // logging to prove these are normally nil
-        print(self.presenting)
-        print(self.presented)
+        print(self.presentingViewController)
+        print(self.presentedViewController)
         
         let svc = SecondViewController(nibName: "SecondViewController", bundle: nil)
         svc.data = "This is very important data!"
@@ -61,7 +61,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         print("vc did disappear")
     }
     
-    override func dismiss(animated: Bool, completion: (() -> Void)!) {
+    override func dismiss(animated: Bool, completion: (() -> Void)?) {
         print("here") // prove that this is called by clicking on curl
         super.dismiss(animated:animated, completion: completion)
     }

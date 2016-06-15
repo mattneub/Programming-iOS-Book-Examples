@@ -4,12 +4,8 @@ import WebKit
 import SafariServices
 
 func delay(_ delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
 
 
@@ -171,8 +167,8 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         wv.addSubview(act)
         act.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            act.centerXAnchor.constraintEqual(to:wv.centerXAnchor),
-            act.centerYAnchor.constraintEqual(to:wv.centerYAnchor)
+            act.centerXAnchor.constraint(equalTo:wv.centerXAnchor),
+            act.centerYAnchor.constraint(equalTo:wv.centerYAnchor)
             ])
         // webkit uses KVO
         wv.addObserver(self, forKeyPath: "loading", options: .new, context: nil)

@@ -17,7 +17,7 @@ class ViewController : UIViewController {
         ])
         let outim = vig.outputImage!
 
-        let outimcg = self.context.createCGImage(outim, from: outim.extent)
+        let outimcg = self.context.createCGImage(outim, from: outim.extent)!
         self.iv.image = UIImage(cgImage: outimcg)
     }
     

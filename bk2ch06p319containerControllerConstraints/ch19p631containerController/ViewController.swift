@@ -75,7 +75,7 @@ class ViewController : UIViewController {
         // self.constrainInPanel2(self.panel.subviews[0] as UIView)
     }
     
-    func constrainInPanel2(v:UIView) {
+    func constrainInPanel2(_ v:UIView) {
         print("constrain2")
         v.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.deactivate(self.constraints)

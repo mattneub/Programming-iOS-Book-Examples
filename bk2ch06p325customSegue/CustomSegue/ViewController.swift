@@ -37,14 +37,14 @@ extension MyCoolSegue: UIViewControllerTransitioningDelegate {
     }
 }
 extension MyCoolSegue: UIViewControllerAnimatedTransitioning {
-    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.8
     }
     func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
         let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)!
         let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
         
-        let con = transitionContext.containerView()!
+        let con = transitionContext.containerView()
         
         let r1start = transitionContext.initialFrame(for:vc1)
         let r2end = transitionContext.finalFrame(for:vc2)

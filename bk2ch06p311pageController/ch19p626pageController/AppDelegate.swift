@@ -69,7 +69,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
     
     // =======
     
-    func messWithGestureRecognizers(pvc:UIPageViewController) {
+    func messWithGestureRecognizers(_ pvc:UIPageViewController) {
         if pvc.transitionStyle == .pageCurl { // does nothing for .scroll
             for g in pvc.gestureRecognizers {
                 if let g = g as? UITapGestureRecognizer {
@@ -78,7 +78,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
             }
         }
         else { // not needed for .PageCurl
-            NSNotificationCenter.default().addObserver(forName:"tap", object: nil, queue: NSOperationQueue.main(), using: {
+            NotificationCenter.default().addObserver(forName:"tap" as Notification.Name, object: nil, queue: OperationQueue.main(), using: {
                 n in
                 let g = n.object as! UIGestureRecognizer
                 let which = g.view!.tag

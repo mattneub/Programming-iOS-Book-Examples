@@ -31,10 +31,10 @@ class ViewController : UIViewController {
         self.timestamp = 0.0 // signal that we are starting
         self.context = CIContext()
         
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
         
             let link = CADisplayLink(target:self, selector:#selector(self.nextFrame))
-            link.add(to:NSRunLoop.main(), forMode:NSDefaultRunLoopMode)
+            link.add(to:RunLoop.main(), forMode:RunLoopMode.defaultRunLoopMode.rawValue)
         
         }
         

@@ -3,7 +3,7 @@ import UIKit
 
 class View2Controller : UIViewController {
     
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.title = "Second"
         // whoa, check this out: the image comes right out of the asset catalog as a template image!

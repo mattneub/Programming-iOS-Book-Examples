@@ -3,12 +3,8 @@
 import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
 
 extension CGRect {
@@ -93,7 +89,7 @@ class ViewController: UIViewController {
             anch.isAnchored = true
             self.anim.addBehavior(anch)
             
-            let b = UIFieldBehavior.linearGravityField(with:CGVector(dx:0,dy:1))
+            let b = UIFieldBehavior.linearGravityField(direction:CGVector(dx:0,dy:1))
             b.addItem(v)
             b.strength = 2
             self.anim.addBehavior(b)

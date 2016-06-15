@@ -70,10 +70,10 @@ class ViewController: UIViewController {
         let g = UILayoutGuide()
         self.view.addLayoutGuide(g)
         NSLayoutConstraint.activate([
-            g.topAnchor.constraintEqual(to:self.topLayoutGuide.bottomAnchor),
-            g.leftAnchor.constraintEqual(to:self.view.leftAnchor),
-            g.widthAnchor.constraintEqual(toConstant:100),
-            g.heightAnchor.constraintEqual(toConstant:100)
+            g.topAnchor.constraint(equalTo:self.topLayoutGuide.bottomAnchor),
+            g.leftAnchor.constraint(equalTo:self.view.leftAnchor),
+            g.widthAnchor.constraint(equalToConstant:100),
+            g.heightAnchor.constraint(equalToConstant:100)
             ])
         
         // still experimenting
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
             "V:[tlg]-0-[v]", metrics: nil,
             views: ["tlg":self.topLayoutGuide, "v":v])
         let tlg = self.topLayoutGuide
-        let c = v.topAnchor.constraintEqual(to:tlg.bottomAnchor)
+        let c = v.topAnchor.constraint(equalTo:tlg.bottomAnchor)
         
         // still experimenting
         NSLayoutConstraint.activate(

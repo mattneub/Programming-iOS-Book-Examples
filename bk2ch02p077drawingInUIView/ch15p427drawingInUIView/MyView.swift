@@ -138,7 +138,7 @@ class MyView : UIView {
             let sp = CGColorSpaceCreateDeviceGray()
             // print(CGColorSpaceGetNumberOfComponents(sp))
             let grad =
-                CGGradient(colorComponentsSpace:sp, components: colors, locations: locs, count: 3)
+                CGGradient(colorComponentsSpace:sp, components: colors, locations: locs, count: 3)!
             con.drawLinearGradient(grad, start: CGPoint(89,0), end: CGPoint(111,0), options:[])
             
             con.restoreGState() // done clipping
@@ -179,7 +179,7 @@ class MyView : UIView {
             ]
             let sp = CGColorSpaceCreateDeviceGray()
             let grad =
-                CGGradient(colorComponentsSpace:sp, components: colors, locations: locs, count: 3)
+                CGGradient(colorComponentsSpace:sp, components: colors, locations: locs, count: 3)!
             con.drawLinearGradient(grad, start: CGPoint(89,0), end: CGPoint(111,0), options: [])
             
             con.restoreGState() // done clipping
@@ -232,22 +232,22 @@ class MyView : UIView {
             ]
             let sp = CGColorSpaceCreateDeviceGray()
             let grad =
-                CGGradient(colorComponentsSpace:sp, components: colors, locations: locs, count: 3)
+                CGGradient(colorComponentsSpace:sp, components: colors, locations: locs, count: 3)!
             con.drawLinearGradient (grad, start: CGPoint(89,0), end: CGPoint(111,0), options: [])
             
             con.restoreGState() // done clipping
             
             
             // draw the red triangle, the point of the arrow
-            let sp2 = CGColorSpace(patternBaseSpace:nil)
+            let sp2 = CGColorSpace(patternBaseSpace:nil)!
             con.setFillColorSpace(sp2)
             // hooray for Swift 2.0!
             let drawStripes : CGPatternDrawPatternCallback = {
                 _, con in
-                con?.setFillColor(UIColor.red().cgColor)
-                con?.fill(CGRect(0,0,4,4))
-                con?.setFillColor(UIColor.blue().cgColor)
-                con?.fill(CGRect(0,0,4,2))
+                con.setFillColor(UIColor.red().cgColor)
+                con.fill(CGRect(0,0,4,4))
+                con.setFillColor(UIColor.blue().cgColor)
+                con.fill(CGRect(0,0,4,2))
             }
             var callbacks = CGPatternCallbacks(
                 version: 0, drawPattern: drawStripes, releaseInfo: nil)
@@ -255,7 +255,7 @@ class MyView : UIView {
                                  matrix: CGAffineTransform.identity,
                                  xStep: 4, yStep: 4,
                                  tiling: .constantSpacingMinimalDistortion,
-                                 isColored: true, callbacks: &callbacks)
+                                 isColored: true, callbacks: &callbacks)!
             var alph : CGFloat = 1.0
             con.setFillPattern(patt, colorComponents: &alph)
             

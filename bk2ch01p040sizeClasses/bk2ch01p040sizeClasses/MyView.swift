@@ -26,17 +26,17 @@ class MyView: UIView {
         self.addSubview(v3)
         
         
-        self.c1 = v2.heightAnchor.constraintEqual(toConstant:0) // not really
-        self.c2 = v3.widthAnchor.constraintEqual(toConstant:0) // not really
+        self.c1 = v2.heightAnchor.constraint(equalToConstant:0) // not really
+        self.c2 = v3.widthAnchor.constraint(equalToConstant:0) // not really
         NSLayoutConstraint.activate([
             c1,
             c2,
-            v2.leftAnchor.constraintEqual(to:self.leftAnchor),
-            v2.rightAnchor.constraintEqual(to:self.rightAnchor),
-            v2.topAnchor.constraintEqual(to:self.topAnchor),
-            v3.heightAnchor.constraintEqual(to:v3.widthAnchor),
-            v3.rightAnchor.constraintEqual(to:self.rightAnchor),
-            v3.bottomAnchor.constraintEqual(to:self.bottomAnchor),
+            v2.leftAnchor.constraint(equalTo:self.leftAnchor),
+            v2.rightAnchor.constraint(equalTo:self.rightAnchor),
+            v2.topAnchor.constraint(equalTo:self.topAnchor),
+            v3.heightAnchor.constraint(equalTo:v3.widthAnchor),
+            v3.rightAnchor.constraint(equalTo:self.rightAnchor),
+            v3.bottomAnchor.constraint(equalTo:self.bottomAnchor),
         ])
     }
     

@@ -24,12 +24,12 @@ class ViewController2: UIViewController {
     }
     
     @IBAction func doButton(_ sender: AnyObject) {
-        self.presenting!.dismiss(animated:true)
+        self.presentingViewController!.dismiss(animated:true)
     }
 }
 
 extension ViewController2 : UIViewControllerTransitioningDelegate {
-    func presentationController(forPresentedViewController presented: UIViewController, presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
+    func presentationController(forPresentedViewController presented: UIViewController, presenting: UIViewController?, sourceViewController source: UIViewController) -> UIPresentationController? {
         let pc = MyPresentationController(presentedViewController: presented, presenting: presenting)
         return pc
     }
@@ -121,7 +121,7 @@ extension ViewController2 /* UIViewControllerTransitioningDelegate */ {
 }
 
 extension ViewController2 : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.4
     }
     
@@ -129,7 +129,7 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
         // let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)
         let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)
         
-        let con = transitionContext.containerView()!
+        let con = transitionContext.containerView()
         
         // let r1start = transitionContext.initialFrame(for:vc1!)
         let r2end = transitionContext.finalFrame(for:vc2!)

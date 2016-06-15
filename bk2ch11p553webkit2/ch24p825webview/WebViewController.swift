@@ -73,8 +73,8 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         wv.addSubview(act)
         act.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            act.centerXAnchor.constraintEqual(to:wv.centerXAnchor),
-            act.centerYAnchor.constraintEqual(to:wv.centerYAnchor)
+            act.centerXAnchor.constraint(equalTo:wv.centerXAnchor),
+            act.centerYAnchor.constraint(equalTo:wv.centerYAnchor)
             ])
         // webkit uses KVO
         wv.addObserver(self, forKeyPath: "loading", options: .new, context: nil)

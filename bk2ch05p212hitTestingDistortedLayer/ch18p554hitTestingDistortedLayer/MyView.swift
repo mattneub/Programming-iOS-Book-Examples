@@ -79,9 +79,10 @@ class MyView : UIView {
             pixel.deallocateCapacity(1)
         }
         pixel[0] = 0
+        let sp = CGColorSpaceCreateDeviceGray()
         let context = CGContext(data: pixel,
             width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 1,
-            space: nil, bitmapInfo: info, releaseCallback:nil, releaseInfo: nil)!
+            space: sp, bitmapInfo: info, releaseCallback:nil, releaseInfo: nil)!
         UIGraphicsPushContext(context)
         im.draw(at:CGPoint(-point.x, -point.y))
         UIGraphicsPopContext()

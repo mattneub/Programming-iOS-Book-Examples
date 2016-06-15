@@ -3,12 +3,8 @@
 import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
 
 @UIApplicationMain
@@ -46,7 +42,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
         return self
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         let result : UIViewControllerInteractiveTransitioning? = self.interacting ? self.inter : nil
         // no interaction if we didn't use g.r.
         return result
@@ -108,7 +104,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
 
 extension AppDelegate : UIViewControllerAnimatedTransitioning {
 
-    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.4
     }
     
@@ -117,7 +113,7 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)!
         let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
         
-        let con = transitionContext.containerView()!
+        let con = transitionContext.containerView()
         
         let r1start = transitionContext.initialFrame(for:vc1)
         let r2end = transitionContext.finalFrame(for:vc2)

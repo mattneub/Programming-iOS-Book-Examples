@@ -37,7 +37,7 @@ class ViewController : UIViewController {
         
         switch which {
         case 1:
-            let moicg = self.context.createCGImage(blendimage, from: moiextent)
+            let moicg = self.context.createCGImage(blendimage, from: moiextent)!
             self.iv.image = UIImage(cgImage: moicg)
         case 2:
             UIGraphicsBeginImageContextWithOptions(moiextent.size, false, 0)

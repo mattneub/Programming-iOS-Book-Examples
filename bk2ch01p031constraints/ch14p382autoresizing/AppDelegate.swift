@@ -1,13 +1,10 @@
 import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
+
 
 func dictionaryOfNames(_ arr:UIView...) -> [String:UIView] {
     var d = [String:UIView]()
@@ -152,14 +149,14 @@ extension CGRect {
             // to a specific view
             // whereever possible, activate all the constraints at once
             NSLayoutConstraint.activate([
-                    v2.leadingAnchor.constraintEqual(to:v1.leadingAnchor),
-                    v2.trailingAnchor.constraintEqual(to:v1.trailingAnchor),
-                    v2.topAnchor.constraintEqual(to:v1.topAnchor),
-                    v2.heightAnchor.constraintEqual(toConstant:10),
-                    v3.widthAnchor.constraintEqual(toConstant:20),
-                    v3.heightAnchor.constraintEqual(toConstant:20),
-                    v3.trailingAnchor.constraintEqual(to:v1.trailingAnchor),
-                    v3.bottomAnchor.constraintEqual(to:v1.bottomAnchor)
+                    v2.leadingAnchor.constraint(equalTo:v1.leadingAnchor),
+                    v2.trailingAnchor.constraint(equalTo:v1.trailingAnchor),
+                    v2.topAnchor.constraint(equalTo:v1.topAnchor),
+                    v2.heightAnchor.constraint(equalToConstant:10),
+                    v3.widthAnchor.constraint(equalToConstant:20),
+                    v3.heightAnchor.constraint(equalToConstant:20),
+                    v3.trailingAnchor.constraint(equalTo:v1.trailingAnchor),
+                    v3.bottomAnchor.constraint(equalTo:v1.bottomAnchor)
                 ])
             
         case 3:

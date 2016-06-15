@@ -24,7 +24,7 @@ class MyAction : NSObject, CAAction {
             anim.duration = 5
             let lay = anObject as! CALayer
             let newP = lay.value(forKey:event)
-            let oldP = (lay.presentationLayer() as! CALayer).value(forKey:event)
+            let oldP = lay.presentation()!.value(forKey:event)
             print("from \(oldP) to \(newP)")
             lay.add(anim, forKey:nil)
     }
@@ -35,7 +35,7 @@ class MyWagglePositionAction : NSObject, CAAction {
         arguments dict: [NSObject : AnyObject]?) {
             let lay = anObject as! CALayer
             let newP = (lay.value(forKey:event) as! NSValue).cgPointValue()
-            let oldP = ((lay.presentationLayer() as! CALayer).value(forKey:event) as! NSValue).cgPointValue()
+            let oldP = (lay.presentation()!.value(forKey:event) as! NSValue).cgPointValue()
 
             let d = sqrt(pow(oldP.x - newP.x, 2) + pow(oldP.y - newP.y, 2))
             let r = Double(d/3.0)

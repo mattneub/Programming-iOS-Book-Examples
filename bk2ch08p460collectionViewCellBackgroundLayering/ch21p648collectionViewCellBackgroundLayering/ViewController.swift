@@ -84,8 +84,8 @@ class ViewController : UICollectionViewController {
             lab.tag = 1
             cell.contentView.addSubview(lab)
             NSLayoutConstraint.activate([
-                lab.centerXAnchor.constraintEqual(to:cell.contentView.centerXAnchor),
-                lab.centerYAnchor.constraintEqual(to:cell.contentView.centerYAnchor)
+                lab.centerXAnchor.constraint(equalTo:cell.contentView.centerXAnchor),
+                lab.centerYAnchor.constraint(equalTo:cell.contentView.centerYAnchor)
             ])
             lab.textColor = UIColor.black()
             lab.highlightedTextColor = UIColor.white()

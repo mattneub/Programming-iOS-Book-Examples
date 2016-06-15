@@ -23,7 +23,7 @@ class MasterViewController : UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "showDetail" {
-            (segue.destinationViewController as! DetailViewController).detailItem = NSDate()
+            (segue.destinationViewController as! DetailViewController).detailItem = Date()
         }
     }
     
@@ -35,7 +35,7 @@ class MasterViewController : UITableViewController {
         }
         guard let tc = self.transitionCoordinator() else {return}
         guard tc.initiallyInteractive() else {return}
-        tc.notifyWhenInteractionEnds {
+        tc.notifyWhenInteractionChanges { // "changes" instead of "ends"
             context in
             if context.isCancelled() {
                 print("we got cancelled")

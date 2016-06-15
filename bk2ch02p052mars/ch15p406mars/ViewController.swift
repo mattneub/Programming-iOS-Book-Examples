@@ -6,12 +6,8 @@ extension CGRect {
     }
 }
 func delay(_ delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
 
 
@@ -49,8 +45,8 @@ class ViewController : UIViewController {
             // position using constraints
             iv.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                iv.centerXAnchor.constraintEqual(to:iv.superview!.centerXAnchor),
-                iv.centerYAnchor.constraintEqual(to:iv.superview!.centerYAnchor)
+                iv.centerXAnchor.constraint(equalTo:iv.superview!.centerXAnchor),
+                iv.centerYAnchor.constraint(equalTo:iv.superview!.centerYAnchor)
                 ])
         default: break
         }

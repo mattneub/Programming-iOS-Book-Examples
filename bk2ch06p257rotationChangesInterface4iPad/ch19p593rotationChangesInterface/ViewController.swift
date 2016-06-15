@@ -23,7 +23,7 @@ class ViewController : UIViewController {
         )
         // "g.r. is 1/3 the width of superview"
         c.append(
-            gr.widthAnchor.constraintEqual(toAnchor:self.view.widthAnchor, multiplier: 1.0/3.0)
+            gr.widthAnchor.constraint(equalTo:self.view.widthAnchor, multiplier: 1.0/3.0)
         )
         
         // "onscreen, g.r.'s left is pinned to superview's left"
@@ -33,7 +33,7 @@ class ViewController : UIViewController {
         
         // "offscreen, g.r.'s right is pinned to superview's left"
         let marrOff : [NSLayoutConstraint] = [
-            gr.trailingAnchor.constraintEqual(to:self.view.leadingAnchor)
+            gr.trailingAnchor.constraint(equalTo:self.view.leadingAnchor)
         ]
         
         self.greenRectConstraintsOnscreen = marrOn

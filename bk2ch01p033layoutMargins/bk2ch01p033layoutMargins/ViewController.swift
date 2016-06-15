@@ -44,20 +44,20 @@ class ViewController: UIViewController {
         case 2:
             // new notation treats margins as a pseudoview (UILayoutGuide)
             NSLayoutConstraint.activate([
-                v1.topAnchor.constraintEqual(to:v.layoutMarginsGuide.topAnchor),
-                v1.bottomAnchor.constraintEqual(to:v.layoutMarginsGuide.bottomAnchor),
-                v1.trailingAnchor.constraintEqual(to:v.layoutMarginsGuide.trailingAnchor),
-                v1.leadingAnchor.constraintEqual(to:v.layoutMarginsGuide.leadingAnchor)
+                v1.topAnchor.constraint(equalTo:v.layoutMarginsGuide.topAnchor),
+                v1.bottomAnchor.constraint(equalTo:v.layoutMarginsGuide.bottomAnchor),
+                v1.trailingAnchor.constraint(equalTo:v.layoutMarginsGuide.trailingAnchor),
+                v1.leadingAnchor.constraint(equalTo:v.layoutMarginsGuide.leadingAnchor)
                 ])
             
         case 3:
             // new kind of margin, "readable content"
             // particularly dramatic on iPad in landscape
             NSLayoutConstraint.activate([
-                v1.topAnchor.constraintEqual(to:v.readableContentGuide.topAnchor),
-                v1.bottomAnchor.constraintEqual(to:v.readableContentGuide.bottomAnchor),
-                v1.trailingAnchor.constraintEqual(to:v.readableContentGuide.trailingAnchor),
-                v1.leadingAnchor.constraintEqual(to:v.readableContentGuide.leadingAnchor)
+                v1.topAnchor.constraint(equalTo:v.readableContentGuide.topAnchor),
+                v1.bottomAnchor.constraint(equalTo:v.readableContentGuide.bottomAnchor),
+                v1.trailingAnchor.constraint(equalTo:v.readableContentGuide.trailingAnchor),
+                v1.leadingAnchor.constraint(equalTo:v.readableContentGuide.leadingAnchor)
                 ])
 
         default:break

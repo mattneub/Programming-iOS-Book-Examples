@@ -6,9 +6,9 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
     
     func gestureRecognizer(_ g: UIGestureRecognizer, shouldRequireFailureOf og: UIGestureRecognizer) -> Bool {
         
-        let s1 = NSString(cString: object_getClassName(g), encoding: NSUTF8StringEncoding)
+        let s1 = NSString(cString: object_getClassName(g), encoding: String.Encoding.utf8.rawValue)
         let s2 = NSString(format:"%p", g.view!)
-        let s3 = NSString(cString: object_getClassName(og), encoding: NSUTF8StringEncoding)
+        let s3 = NSString(cString: object_getClassName(og), encoding: String.Encoding.utf8.rawValue)
         let s4 = NSString(format:"%p", og.view!)
         
         // I'd rather not see these, thanks (interesting though)
@@ -24,9 +24,9 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
     
     func gestureRecognizer(_ g: UIGestureRecognizer, shouldBeRequiredToFailBy og: UIGestureRecognizer) -> Bool {
         
-        let s1 = NSString(cString: object_getClassName(g), encoding: NSUTF8StringEncoding)
+        let s1 = NSString(cString: object_getClassName(g), encoding: String.Encoding.utf8.rawValue)
         let s2 = NSString(format:"%p", g.view!)
-        let s3 = NSString(cString: object_getClassName(og), encoding: NSUTF8StringEncoding)
+        let s3 = NSString(cString: object_getClassName(og), encoding: String.Encoding.utf8.rawValue)
         let s4 = NSString(format:"%p", og.view!)
         
         if s1 == "_UISystemGestureGateGestureRecognizer" { return false }

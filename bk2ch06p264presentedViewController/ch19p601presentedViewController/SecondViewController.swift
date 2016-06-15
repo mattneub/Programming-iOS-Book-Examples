@@ -21,10 +21,10 @@ class SecondViewController : UIViewController {
     
     @IBAction func doDismiss(_ sender:AnyObject?) {
         // logging to show relationships
-        print(self.presenting!)
-        print(self.presenting!.presented)
+        print(self.presentingViewController!)
+        print(self.presentingViewController!.presentedViewController)
         let vc = self.delegate as! UIViewController
-        print(vc.presented)
+        print(vc.presentedViewController)
         
         
         // just proving it works
@@ -32,7 +32,7 @@ class SecondViewController : UIViewController {
         // vc.dismiss(animated:true)
         // return;
         
-        self.presenting!.dismiss(animated:true)
+        self.presentingViewController!.dismiss(animated:true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

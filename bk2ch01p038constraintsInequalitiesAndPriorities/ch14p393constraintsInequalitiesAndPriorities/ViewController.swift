@@ -69,11 +69,11 @@ class ViewController : UIViewController {
                 "V:[v1]-(112)-|", metrics: nil, views: d2),
             NSLayoutConstraint.constraints(withVisualFormat:
                 "H:|-(>=10)-[v2]-[v1]-(>=10)-|",
-                options: NSLayoutFormatOptions.alignAllBaseline,
+                options: NSLayoutFormatOptions.alignAllLastBaseline,
                 metrics: nil, views: d2)
             ].flatten().map{$0})
         
-        let con = button.centerXAnchor.constraintEqual(to:self.view.centerXAnchor)!
+        let con = button.centerXAnchor.constraint(equalTo:self.view.centerXAnchor)
         con.priority = 700 // try commenting this out to see the difference in behavior
         NSLayoutConstraint.activate([con])
 

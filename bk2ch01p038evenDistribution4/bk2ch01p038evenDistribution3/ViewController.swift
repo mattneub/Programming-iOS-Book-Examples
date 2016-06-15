@@ -29,10 +29,10 @@ class ViewController: UIViewController {
         sv.translatesAutoresizingMaskIntoConstraints = false
         mainview.addSubview(sv)
         NSLayoutConstraint.activate([
-            sv.topAnchor.constraintEqual(to:self.topLayoutGuide.bottomAnchor),
-            sv.leadingAnchor.constraintEqual(to:mainview.leadingAnchor),
-            sv.trailingAnchor.constraintEqual(to:mainview.trailingAnchor),
-            sv.bottomAnchor.constraintEqual(to:mainview.bottomAnchor),
+            sv.topAnchor.constraint(equalTo:self.topLayoutGuide.bottomAnchor),
+            sv.leadingAnchor.constraint(equalTo:mainview.leadingAnchor),
+            sv.trailingAnchor.constraint(equalTo:mainview.trailingAnchor),
+            sv.bottomAnchor.constraint(equalTo:mainview.bottomAnchor),
         ])
         
 

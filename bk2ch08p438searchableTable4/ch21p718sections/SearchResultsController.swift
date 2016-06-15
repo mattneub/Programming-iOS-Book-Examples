@@ -21,10 +21,10 @@ class SearchResultsController : UIViewController {
         v.layer.cornerRadius = 15
         v.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            v.heightAnchor.constraintEqual(toConstant:400),
-            v.widthAnchor.constraintEqual(toConstant:400),
-            v.topAnchor.constraintEqual(to:self.view.topAnchor, constant: 50),
-            v.centerXAnchor.constraintEqual(to:self.view.centerXAnchor)
+            v.heightAnchor.constraint(equalToConstant:400),
+            v.widthAnchor.constraint(equalToConstant:400),
+            v.topAnchor.constraint(equalTo:self.view.topAnchor, constant: 50),
+            v.centerXAnchor.constraint(equalTo:self.view.centerXAnchor)
         ])
         self.child.didMove(toParentViewController: self)
         let t = UITapGestureRecognizer(target: self, action: #selector(tap))

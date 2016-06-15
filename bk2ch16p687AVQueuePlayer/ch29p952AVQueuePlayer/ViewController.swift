@@ -110,10 +110,10 @@ class ViewController: UIViewController {
         v.backgroundColor = UIColor.white()
         vc.contentOverlayView!.addSubview(v)
         let c : [NSLayoutConstraint] = [
-            v.leadingAnchor.constraintEqual(to:v.superview!.leadingAnchor),
-            v.trailingAnchor.constraintEqual(to:v.superview!.trailingAnchor),
-            v.topAnchor.constraintEqual(to:v.superview!.topAnchor),
-            v.bottomAnchor.constraintEqual(to:v.superview!.bottomAnchor),
+            v.leadingAnchor.constraint(equalTo:v.superview!.leadingAnchor),
+            v.trailingAnchor.constraint(equalTo:v.superview!.trailingAnchor),
+            v.topAnchor.constraint(equalTo:v.superview!.topAnchor),
+            v.bottomAnchor.constraint(equalTo:v.superview!.bottomAnchor),
         ]
         NSLayoutConstraint.activate(c)
         let v2 = UIView()
@@ -121,10 +121,10 @@ class ViewController: UIViewController {
         v2.backgroundColor = UIColor.black()
         vc.contentOverlayView!.addSubview(v2)
         let c2 : [NSLayoutConstraint] = [
-            v2.leadingAnchor.constraintEqual(to:v2.superview!.leadingAnchor),
-            v2.trailingAnchor.constraintEqual(to:v2.superview!.trailingAnchor),
-            v2.heightAnchor.constraintEqual(toConstant:44),
-            v2.bottomAnchor.constraintEqual(to:v2.superview!.bottomAnchor),
+            v2.leadingAnchor.constraint(equalTo:v2.superview!.leadingAnchor),
+            v2.trailingAnchor.constraint(equalTo:v2.superview!.trailingAnchor),
+            v2.heightAnchor.constraint(equalToConstant:44),
+            v2.bottomAnchor.constraint(equalTo:v2.superview!.bottomAnchor),
         ]
         NSLayoutConstraint.activate(c2)
         

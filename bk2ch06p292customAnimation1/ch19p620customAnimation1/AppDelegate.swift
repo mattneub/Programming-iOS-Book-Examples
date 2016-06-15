@@ -26,7 +26,7 @@ extension AppDelegate : UITabBarControllerDelegate {
 
 extension AppDelegate : UIViewControllerAnimatedTransitioning {
     
-    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.4
     }
     
@@ -35,7 +35,7 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)!
         let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
         
-        let con = transitionContext.containerView()!
+        let con = transitionContext.containerView()
         print(con)
         
         let r1start = transitionContext.initialFrame(for:vc1)

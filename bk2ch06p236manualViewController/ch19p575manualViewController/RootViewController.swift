@@ -51,8 +51,8 @@ class RootViewController: UIViewController {
         case 2:
             label.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                label.centerXAnchor.constraintEqual(to:self.view.centerXAnchor),
-                label.centerYAnchor.constraintEqual(to:self.view.centerYAnchor),
+                label.centerXAnchor.constraint(equalTo:self.view.centerXAnchor),
+                label.centerYAnchor.constraint(equalTo:self.view.centerYAnchor),
                 ])
         default: break
         }

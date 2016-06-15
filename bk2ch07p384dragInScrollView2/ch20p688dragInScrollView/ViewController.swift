@@ -3,12 +3,8 @@
 import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
 
 class ViewController : UIViewController, UIGestureRecognizerDelegate {
@@ -28,8 +24,8 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
         self.sv.addSubview(iv)
         let sup = self.sv.superview!
         NSLayoutConstraint.activate([
-            iv.rightAnchor.constraintEqual(to:sup.rightAnchor, constant: -5),
-            iv.topAnchor.constraintEqual(to:sup.topAnchor, constant: 25)
+            iv.rightAnchor.constraint(equalTo:sup.rightAnchor, constant: -5),
+            iv.topAnchor.constraint(equalTo:sup.topAnchor, constant: 25)
             ])
     }
     

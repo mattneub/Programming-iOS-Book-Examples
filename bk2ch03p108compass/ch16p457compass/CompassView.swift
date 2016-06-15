@@ -4,12 +4,8 @@ import UIKit
 
 
 func delay(_ delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
 
 extension CGRect {
@@ -112,10 +108,10 @@ class CompassLayer : CALayer {
         arrow.setNeedsDisplay() // draw, please
         
         // uncomment next line (only) for contentsCenter and contentsGravity
-        // delay (0.4) {self.resizeArrowLayer(arrow)}
+        // delay (0.4) {self.resizeArrowLayer(arrow:arrow)}
 
         // uncomment next line (only) for layer mask
-        // self.mask(arrow)
+        // self.mask(arrow:arrow)
 
         
         self.arrow = arrow
