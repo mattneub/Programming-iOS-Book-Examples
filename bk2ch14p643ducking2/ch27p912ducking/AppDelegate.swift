@@ -15,18 +15,18 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         // deliberate leak here
         
-        NSNotificationCenter.default().addObserver(forName:
-            AVAudioSessionRouteChangeNotification, object: nil, queue: nil) {
-                (note:NSNotification!) in
-                print("change route \(note.userInfo)")
+        NotificationCenter.default().addObserver(forName:
+            Notification.Name.AVAudioSessionRouteChange, object: nil, queue: nil) {
+                n in
+                print("change route \(n.userInfo)")
                 print("current route \(AVAudioSession.sharedInstance().currentRoute)")
         }
         // properly, if the route changes from some kind of Headphones to Built-In Speaker,
         // we should pause our sound (doesn't happen automatically)
         
-        NSNotificationCenter.default().addObserver(forName:
-            AVAudioSessionInterruptionNotification, object: nil, queue: nil) {
-                (n:NSNotification) in
+        NotificationCenter.default().addObserver(forName:
+            Notification.Name.AVAudioSessionInterruption, object: nil, queue: nil) {
+                n in
                 guard let why =
                     n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
                     else {return}
@@ -48,9 +48,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         // use control center to test, e.g. start and stop a Music song
         
-        NSNotificationCenter.default().addObserver(forName:
-            AVAudioSessionSilenceSecondaryAudioHintNotification, object: nil, queue: nil) {
-                (n:NSNotification) in
+        NotificationCenter.default().addObserver(forName:
+            Notification.Name.AVAudioSessionSilenceSecondaryAudioHint, object: nil, queue: nil) {
+                n in
                 guard let why = n.userInfo?[AVAudioSessionSilenceSecondaryAudioHintTypeKey] as? UInt else {return}
                 guard let type = AVAudioSessionSilenceSecondaryAudioHintType(rawValue:why) else {return}
                 if type == .begin {

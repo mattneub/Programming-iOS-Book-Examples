@@ -7,7 +7,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
     weak var wv : WKWebView!
     var decoded = false
     
-    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.restorationIdentifier = "wvc"
         self.restorationClass = self.dynamicType
@@ -91,7 +91,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
             guard let change = change else {return}
             switch keyPath {
             case "loading": // new:1 or 0
-                if let val = change[NSKeyValueChangeNewKey] as? Bool {
+                if let val = change[NSKeyValueChangeKey.newKey] as? Bool {
                     if val {
                         self.activity.startAnimating()
                     } else {
@@ -99,7 +99,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
                     }
                 }
             case "title": // not actually showing it in this example
-                if let val = change[NSKeyValueChangeNewKey] as? String {
+                if let val = change[NSKeyValueChangeKey.newKey] as? String {
                     self.navigationItem.title = val
                 }
             default:break
@@ -118,8 +118,8 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
             // return // forget it, just trying to see if I was in restoration's way, but I'm not
         }
         
-        let url = NSURL(string: "http://www.apeth.com/RubyFrontierDocs/default.html")!
-        self.wv.load(NSURLRequest(url:url))
+        let url = URL(string: "http://www.apeth.com/RubyFrontierDocs/default.html")!
+        self.wv.load(URLRequest(url:url))
     }
     
 

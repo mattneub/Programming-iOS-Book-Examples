@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3207E386198B09BA008A779B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3207E385198B09BA008A779B /* ViewController.swift */; };
-		322C69B81B94E18A0021A09F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 322C69B71B94E18A0021A09F /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		322C69BA1B94E1940021A09F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322C69B91B94E1940021A09F /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		322C69B81B94E18A0021A09F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 322C69B71B94E18A0021A09F /* LaunchScreen.storyboard */; };
+		322C69BA1B94E1940021A09F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322C69B91B94E1940021A09F /* AppDelegate.swift */; };
 		C9DDA0F0180DC5E900E9E0CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9DDA0EE180DC5E900E9E0CC /* Main.storyboard */; };
 		C9DDA0F5180DC5E900E9E0CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9DDA0F4180DC5E900E9E0CC /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -94,6 +94,11 @@
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					C9DDA0D8180DC5E900E9E0CC = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = C9DDA0D4180DC5E900E9E0CC /* Build configuration list for PBXProject "ch23p770font4fontDescriptor2" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -183,7 +188,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -216,7 +221,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -235,6 +240,7 @@
 				PRODUCT_NAME = ch23p770font4fontDescriptor2;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -251,6 +257,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ch23p770font4fontDescriptor2;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

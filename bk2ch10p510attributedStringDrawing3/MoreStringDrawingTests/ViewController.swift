@@ -80,7 +80,7 @@ class ViewController: UIViewController {
         
     }
     
-    func makeAttributedString() -> NSAttributedString {
+    func makeAttributedString() -> AttributedString {
         var content : NSMutableAttributedString!
         var content2 : NSMutableAttributedString!
         

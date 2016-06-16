@@ -4,7 +4,7 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
-    var objects = NSMutableArray()
+    var objects = [NSDate]()
 
 
     override func awakeFromNib() {
@@ -22,8 +22,8 @@ class MasterViewController: UITableViewController {
 
 
     func insertNewObject(_ sender: AnyObject) {
-        objects.insert(NSDate(), at: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        objects.insert(Date(), at: 0)
+        let indexPath = IndexPath(row: 0, section: 0)
         self.tableView.insertRows(at:[indexPath], with: .automatic)
     }
 
@@ -32,7 +32,7 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             let indexPath = self.tableView.indexPathForSelectedRow!
-            let object = objects[indexPath.row] as! NSDate
+            let object = objects[indexPath.row]
             (segue.destinationViewController as! DetailViewController).detailItem = object
         }
     }
@@ -57,22 +57,22 @@ class MasterViewController: UITableViewController {
     it doesn't have special knowledge that dynamic type is actually being used.
     */
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
 
-        let object = objects[indexPath.row] as! NSDate
+        let object = objects[indexPath.row]
         cell.textLabel!.text = object.description
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.removeObject(at:indexPath.row)
+            objects.remove(at:indexPath.row)
             tableView.deleteRows(at:[indexPath], with: .fade)
         }
     }

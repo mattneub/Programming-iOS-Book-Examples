@@ -3,14 +3,11 @@ import UIKit
 import AddressBook
 import AddressBookUI
 
-func delay(delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+func delay(_ delay:Double, closure:()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
+
 
 class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelegate, ABPersonViewControllerDelegate, ABNewPersonViewControllerDelegate, ABUnknownPersonViewControllerDelegate {
 
@@ -45,7 +42,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
             var ok = false
             ABAddressBookRequestAccessWithCompletion(nil) {
                 (granted:Bool, err:CFError?) in
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     if granted {
                         ok = self.createAddressBook()
                     }
@@ -66,7 +63,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
             alert.addAction(UIAlertAction(title: "No", style: .cancel))
             alert.addAction(UIAlertAction(title: "OK", style: .default) {
                 _ in
-                let url = NSURL(string:UIApplicationOpenSettingsURLString)!
+                let url = URL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
             })
             self.present(alert, animated:true)
@@ -79,7 +76,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
     }
     
     @IBAction func doFindMoi (_ sender:AnyObject!) {
@@ -139,8 +136,8 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         picker.displayedProperties = [Int(kABPersonEmailProperty)]
         // new iOS 8 features: instead of delegate "continueAfter" methods
         // picker.predicateForEnablingPerson = NSPredicate(format: "%K like %@", ABPersonFamilyNameProperty, "Neuburg")
-        picker.predicateForSelectionOfPerson = NSPredicate(value:false) // display additional info for all persons
-        picker.predicateForSelectionOfProperty = NSPredicate(value:true) // call delegate method for all properties
+        picker.predicateForSelectionOfPerson = Predicate(value:false) // display additional info for all persons
+        picker.predicateForSelectionOfProperty = Predicate(value:true) // call delegate method for all properties
         self.present(picker, animated:true)
     }
     

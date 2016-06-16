@@ -12,7 +12,7 @@
 		3228D4B61B910B47008538B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3228D4B41B910B47008538B3 /* Main.storyboard */; };
 		3228D4B81B910B47008538B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3228D4B71B910B47008538B3 /* Assets.xcassets */; };
 		3228D4BB1B910B47008538B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3228D4B91B910B47008538B3 /* LaunchScreen.storyboard */; };
-		3228D4C31B91234D008538B3 /* LaunchScreenXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3228D4C21B91234D008538B3 /* LaunchScreenXib.xib */; settings = {ASSET_TAGS = (); }; };
+		3228D4C31B91234D008538B3 /* LaunchScreenXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3228D4C21B91234D008538B3 /* LaunchScreenXib.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +98,7 @@
 				TargetAttributes = {
 					3228D4AC1B910B47008538B3 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -201,7 +202,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -240,7 +241,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -253,10 +254,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TestingMultitasking/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.TestingMultitasking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -265,10 +267,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TestingMultitasking/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.TestingMultitasking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

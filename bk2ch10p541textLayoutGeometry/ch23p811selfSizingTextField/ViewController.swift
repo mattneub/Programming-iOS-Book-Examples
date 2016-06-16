@@ -37,8 +37,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let path = NSBundle.main().pathForResource("brillig", ofType: "txt")!
-        let s = try! String(contentsOfFile:path, encoding: NSUTF8StringEncoding)
+        let path = Bundle.main().pathForResource("brillig", ofType: "txt")!
+        let s = try! String(contentsOfFile:path, encoding: String.Encoding.utf8)
         let s2 = s.replacingOccurrences(of:"\n", with: "")
         let mas = NSMutableAttributedString(string:s2 + " " + s2, attributes:[
             NSFontAttributeName: UIFont(name:"GillSans", size:20)!
@@ -98,7 +98,7 @@ class ViewController: UIViewController {
         // so what's the character index for that?
         //    NSUInteger ix = [self.tv.layoutManager characterIndexForPoint:tctopleft inTextContainer:self.tv.textContainer fractionOfDistanceBetweenInsertionPoints:nil];
         var ix = self.tv.layoutManager.glyphIndex(for:tctopleft, in:self.tv.textContainer, fractionOfDistanceThroughGlyph:nil)
-        let frag = self.tv.layoutManager.lineFragmentRectForGlyph(at:ix, effectiveRange:nil)
+        let frag = self.tv.layoutManager.lineFragmentRect(forGlyphAt:ix, effectiveRange:nil)
         if tctopleft.y > frag.origin.y + 0.5*frag.size.height {
             tctopleft.y += frag.size.height
             ix = self.tv.layoutManager.glyphIndex(for:tctopleft, in:self.tv.textContainer, fractionOfDistanceThroughGlyph:nil)

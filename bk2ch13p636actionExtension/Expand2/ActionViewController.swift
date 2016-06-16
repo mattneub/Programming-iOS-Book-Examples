@@ -7,8 +7,8 @@ class ActionViewController: UIViewController {
     @IBOutlet weak var lab: UILabel!
     
     let list : [String] = {
-        let path = NSBundle.main().urlForResource("abbreviations", withExtension:"txt")!
-        let s = try! String(contentsOf:path, encoding:NSUTF8StringEncoding)
+        let path = Bundle.main().urlForResource("abbreviations", withExtension:"txt")!
+        let s = try! String(contentsOf:path, encoding:String.Encoding.utf8)
         return s.components(separatedBy:"\n")
         }()
     
@@ -33,7 +33,7 @@ class ActionViewController: UIViewController {
         }
         provider.loadItem(forTypeIdentifier: self.desiredType) {
             (item:NSSecureCoding?, err:NSError!) -> () in
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 if let orig = item as? String {
                     self.orig = orig
                     if let exp = self.state(forAbbrev:orig) {

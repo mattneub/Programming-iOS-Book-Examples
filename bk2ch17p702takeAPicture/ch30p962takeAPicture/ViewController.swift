@@ -34,7 +34,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             alert.addAction(UIAlertAction(
                 title: "OK", style: .default) {
                     _ in
-                    let url = NSURL(string:UIApplicationOpenSettingsURLString)!
+                    let url = URL(string:UIApplicationOpenSettingsURLString)!
                     UIApplication.shared().open(url)
             })
             self.present(alert, animated:true)
@@ -45,9 +45,9 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.default().addObserver(self,
+        NotificationCenter.default().addObserver(self,
             selector: #selector(determineStatus),
-            name: UIApplicationWillEnterForegroundNotification,
+            name: Notification.Name.UIApplicationWillEnterForeground,
             object: nil)
     }
     
@@ -87,7 +87,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String : AnyObject]) {
             print(info[UIImagePickerControllerReferenceURL])
-            let url = info[UIImagePickerControllerMediaURL] as? NSURL
+            let url = info[UIImagePickerControllerMediaURL] as? URL
             var im = info[UIImagePickerControllerOriginalImage] as? UIImage
             let edim = info[UIImagePickerControllerEditedImage] as? UIImage
             if edim != nil {
@@ -134,7 +134,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         self.redView.addSubview(iv)
     }
     
-    func showMovie(_ url:NSURL) {
+    func showMovie(_ url:URL) {
         self.clearAll()
         let av = AVPlayerViewController()
         let player = AVPlayer(url:url)

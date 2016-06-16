@@ -15,7 +15,7 @@
 		32335DA518328E6A00B84460 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32335DA218328E6A00B84460 /* PersonCell.xib */; };
 		32335DA718328FA400B84460 /* PeopleLister.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32335DA618328FA400B84460 /* PeopleLister.xib */; };
 		325156CF19AFEED100BE7C83 /* DocumentLister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325156CE19AFEED100BE7C83 /* DocumentLister.swift */; };
-		328BA2A31BCAC810005A17A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BA2A21BCAC810005A17A9 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		328BA2A31BCAC810005A17A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BA2A21BCAC810005A17A9 /* LaunchScreen.storyboard */; };
 		32B5FA9419B0D77D00BA7DFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B5FA9319B0D77D00BA7DFC /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +113,7 @@
 				TargetAttributes = {
 					32335D5F18328D8100B84460 = {
 						DevelopmentTeam = W3LHX5RGV2;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 0;
@@ -214,7 +215,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -247,7 +248,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -268,6 +269,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -286,6 +288,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

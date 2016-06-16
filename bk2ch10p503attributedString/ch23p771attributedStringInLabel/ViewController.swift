@@ -104,7 +104,7 @@ class ViewController : UIViewController {
             if which > 4 {fallthrough}
         case 5:
             // demonstrating efficient cycling through style runs
-            let opts : NSAttributedStringEnumerationOptions = .longestEffectiveRangeNotRequired
+            let opts : AttributedString.EnumerationOptions = .longestEffectiveRangeNotRequired
             content.enumerateAttribute(NSFontAttributeName,
                 in:NSMakeRange(0,content.length),
                 options:opts) {

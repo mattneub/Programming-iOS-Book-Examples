@@ -28,7 +28,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         return self.numbers.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell",
             for: indexPath) as! MyCell
         
@@ -44,7 +44,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         if indexPath.section == 1 {
             let ct = self.tableView(tableView, numberOfRowsInSection:indexPath.section)
             if ct-1 == indexPath.row {
@@ -84,36 +84,36 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         }
     }
     
-    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         if indexPath.section == 1 {
             return true
         }
         return false
     }
     
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: NSIndexPath, to toIndexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
         let s = self.numbers[fromIndexPath.row]
         self.numbers.remove(at:fromIndexPath.row)
         self.numbers.insert(s, at: toIndexPath.row)
         tableView.reloadData() // to get plus and minus buttons to redraw themselves
     }
     
-    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
+    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         tableView.endEditing(true)
         if proposedDestinationIndexPath.section == 0 {
-            return NSIndexPath(forRow:0, inSection:1)
+            return IndexPath(row:0, section:1)
         }
         return proposedDestinationIndexPath
     }
     
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         if indexPath.section == 1 && self.numbers.count > 1 {
             return true
         }
         return false
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         tableView.endEditing(true) // user can click minus/plus while still editing
         // so we must force saving to the model
         if editingStyle == .insert {
@@ -121,15 +121,15 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
             let ct = self.numbers.count
             tableView.beginUpdates()
             tableView.insertRows(at:
-                [NSIndexPath(forRow:ct-1, inSection:1)],
+                [IndexPath(row:ct-1, section:1)],
                 with:.automatic)
             tableView.reloadRows(at:
-                [NSIndexPath(forRow:ct-2, inSection:1)],
+                [IndexPath(row:ct-2, section:1)],
                 with:.automatic)
             tableView.endUpdates()
             // crucial that this next bit be *outside* the update block
             let cell = self.tableView.cellForRow(at:
-                NSIndexPath(forRow:ct-1, inSection:1))
+                IndexPath(row:ct-1, section:1))
             (cell as! MyCell).textField.becomeFirstResponder()
         }
         if editingStyle == .delete {
@@ -138,7 +138,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
             tableView.deleteRows(at:
                 [indexPath], with:.automatic)
             tableView.reloadSections(
-                NSIndexSet(index:1), with:.automatic)
+                IndexSet(integer:1), with:.automatic)
             tableView.endUpdates()
         }
     }

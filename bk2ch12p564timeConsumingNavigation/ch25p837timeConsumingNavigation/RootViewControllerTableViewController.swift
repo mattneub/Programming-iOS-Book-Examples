@@ -17,13 +17,13 @@ class RootViewController: UITableViewController {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
         cell.textLabel!.text = "Let’s go!"
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // there must be at least _some_ delay, to let the spinner start spinning
         // in this case I also use the delay to simulate a time-consuming preparation process
         delay (2) {

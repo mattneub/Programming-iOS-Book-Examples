@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let m = NSBundle.main().urlForResource("ElMirage", withExtension:"mp4")!
+        let m = Bundle.main().urlForResource("ElMirage", withExtension:"mp4")!
         let asset = AVURLAsset(url:m)
         let item = AVPlayerItem(asset:asset)
         let p = AVPlayer(playerItem:item)
@@ -51,9 +51,9 @@ class ViewController: UIViewController {
     
     override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
         if keyPath == "status" {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async {
                 self.finishConstructingInterface()
-            })
+            }
         }
     }
     
@@ -131,7 +131,7 @@ class ViewController: UIViewController {
         
         
         let type3 = AVMediaTypeAudio
-        let s = NSBundle.main().urlForResource("aboutTiagol", withExtension:"m4a")!
+        let s = Bundle.main().urlForResource("aboutTiagol", withExtension:"m4a")!
         let asset = AVURLAsset(url:s)
         let arr3 = asset.tracks(withMediaType: type3)
         let track3 = arr3.last! //
@@ -141,7 +141,7 @@ class ViewController: UIViewController {
         
         let params = AVMutableAudioMixInputParameters(track:comptrack3)
         params.setVolume(1, at:CMTimeMakeWithSeconds(0,600))
-        params.setVolumeRampFromStartVolume(1, toEndVolume:0, timeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(7,600), CMTimeMakeWithSeconds(3,600)))
+        params.setVolumeRamp(fromStartVolume: 1, toEndVolume:0, timeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(7,600), CMTimeMakeWithSeconds(3,600)))
         let mix = AVMutableAudioMix()
         mix.inputParameters = [params]
         

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		324DB95C19AF6AAB0024663E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324DB95B19AF6AAB0024663E /* ViewController.swift */; };
 		324DB95E19AF6B750024663E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324DB95D19AF6B750024663E /* AppDelegate.swift */; };
-		328BA2A11BC9FF89005A17A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BA2A01BC9FF89005A17A9 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		328BA2A11BC9FF89005A17A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BA2A01BC9FF89005A17A9 /* LaunchScreen.storyboard */; };
 		32E7ECF5183165DD004222AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32E7ECF3183165DD004222AB /* Main.storyboard */; };
 		32E7ECFA183165DD004222AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32E7ECF9183165DD004222AB /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -93,6 +93,11 @@
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					32E7ECDD183165DD004222AB = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = 32E7ECD9183165DD004222AB /* Build configuration list for PBXProject "ch36p1060fileHandoff" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -182,7 +187,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -215,7 +220,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -234,6 +239,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -250,6 +256,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

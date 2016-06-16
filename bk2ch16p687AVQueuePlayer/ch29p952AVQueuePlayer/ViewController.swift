@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         return true
     }
     
-    func oneSong () -> NSURL? {
+    func oneSong () -> URL? {
         let query = MPMediaQuery.songs()
         // always need to filter out songs that aren't present
         let isPresent = MPMediaPropertyPredicate(value:false,
@@ -206,7 +206,7 @@ class ViewController: UIViewController {
                 // ...or whether we'll be called back synchronously or asynchronously
                 // so I like to step out to the main thread just in case
                 guard let title = met.value as? String else {return}
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     self.label.text = "\(self.curnum) of \(self.total): \(title)"
                     MPNowPlayingInfoCenter.default().nowPlayingInfo = [
                         MPMediaItemPropertyTitle: title
@@ -216,7 +216,7 @@ class ViewController: UIViewController {
         }
         guard self.items.count > 0 else {return}
         let newItem = self.items.removeFirst()
-        self.qp.insertItem(newItem, after:nil) // means "at end"
+        self.qp.insert(newItem, after:nil) // means "at end"
     }
     
     func timerFired(time:CMTime) {

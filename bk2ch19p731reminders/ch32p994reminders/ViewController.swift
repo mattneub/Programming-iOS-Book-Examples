@@ -3,13 +3,9 @@
 import UIKit
 import EventKit
 
-func delay(delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+func delay(_ delay:Double, closure:()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
 
 
@@ -36,7 +32,7 @@ class ViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "No", style: .cancel))
             alert.addAction(UIAlertAction(title: "OK", style: .default) {
                 _ in
-                let url = NSURL(string:UIApplicationOpenSettingsURLString)!
+                let url = URL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
             })
             self.present(alert, animated:true)
@@ -48,7 +44,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
     }
 
     @IBAction func doNewReminder (_ sender:AnyObject!) {
@@ -65,10 +61,10 @@ class ViewController: UIViewController {
         
         // reminder can have due date
         // let's make it today
-        let today = NSDate()
-        let greg = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
+        let today = Date()
+        let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
         // day without time means "all day"
-        let comps : NSCalendarUnit = [.year, .month, .day]
+        let comps : Calendar.Unit = [.year, .month, .day]
         // start date not needed on iOS
         // rem.startDateComponents = [greg components:comps fromDate:today];
         rem.dueDateComponents = greg.components(comps, from:today)

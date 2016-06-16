@@ -11,7 +11,7 @@ class RootViewController : UITableViewController {
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: NSBundle.main().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
+        let s = try! String(contentsOfFile: Bundle.main().pathForResource("states", ofType: "txt")!, encoding: String.Encoding.utf8)
         let states = s.components(separatedBy:"\n")
         var previous = ""
         for aState in states {
@@ -44,7 +44,7 @@ class RootViewController : UITableViewController {
         return self.sectionData[section].count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
@@ -102,7 +102,7 @@ class RootViewController : UITableViewController {
 //            print(b.tintColor)
 //            h.addSubview(b)
         }
-        let lab = h.contentView.withTag(1) as! UILabel
+        let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
         return h
         

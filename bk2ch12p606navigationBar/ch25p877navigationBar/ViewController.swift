@@ -92,12 +92,12 @@ class ViewController: UIViewController {
                 title:"Chance", style: .plain, target:self, action:#selector(pushNext))
             ni.rightBarButtonItem = b
         }
-        self.navbar.push(ni, animated:true)
+        self.navbar.pushItem(ni, animated:true)
     }
 }
 
 extension ViewController : UIBarPositioningDelegate {
-    func position(forBar bar: UIBarPositioning) -> UIBarPosition {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }
 }

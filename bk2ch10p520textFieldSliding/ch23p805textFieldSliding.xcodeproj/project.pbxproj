@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		327D80C6198BF8CA009909ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D80C5198BF8CA009909ED /* ViewController.swift */; };
-		32D1718E1B97368C00D583AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D1718D1B97368C00D583AF /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		32D171901B9736A000D583AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1718F1B9736A000D583AF /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		32D171921B97458F00D583AF /* yellowsilk4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D171911B97458F00D583AF /* yellowsilk4@2x.png */; settings = {ASSET_TAGS = (); }; };
+		32D1718E1B97368C00D583AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D1718D1B97368C00D583AF /* LaunchScreen.storyboard */; };
+		32D171901B9736A000D583AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D1718F1B9736A000D583AF /* AppDelegate.swift */; };
+		32D171921B97458F00D583AF /* yellowsilk4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D171911B97458F00D583AF /* yellowsilk4@2x.png */; };
 		C9101B0D1811F74900933D85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9101B0B1811F74900933D85 /* Main.storyboard */; };
 		C9101B121811F74900933D85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9101B111811F74900933D85 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -96,6 +96,11 @@
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					C9101AF51811F74900933D85 = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = C9101AF11811F74900933D85 /* Build configuration list for PBXProject "ch23p805textFieldSliding" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -186,7 +191,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -219,7 +224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -238,6 +243,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -255,6 +261,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

@@ -15,7 +15,7 @@ func lend<T where T:NSObject> (closure:(T)->()) -> T {
 
 class StyledText: UIView {
     
-    @NSCopying var text = NSAttributedString() // shut up the compiler
+    @NSCopying var text = AttributedString() // shut up the compiler
     var lm : NSLayoutManager!
     var tc : NSTextContainer!
     var tc2 : NSTextContainer!
@@ -26,8 +26,8 @@ class StyledText: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let path = NSBundle.main().pathForResource("states", ofType: "txt")!
-        let s = try! String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+        let path = Bundle.main().pathForResource("states", ofType: "txt")!
+        let s = try! String(contentsOfFile: path, encoding: String.Encoding.utf8)
         
         let desc = UIFontDescriptor(name:"Didot", size:18)
         let atts = [
@@ -82,7 +82,7 @@ class StyledText: UIView {
         self.lm.drawGlyphs(forGlyphRange:range2, at: self.r2.origin)
     }
     
-    func tapped (g : UIGestureRecognizer) {
+    func tapped (_ g : UIGestureRecognizer) {
         // which column is it in?
         var p = g.location(in:self)
         var tc = self.tc!
@@ -93,7 +93,7 @@ class StyledText: UIView {
         var f : CGFloat = 0
         let ix = self.lm.glyphIndex(for:p, in:tc, fractionOfDistanceThroughGlyph:&f)
         var glyphRange : NSRange = NSMakeRange(0,0)
-        self.lm.lineFragmentRectForGlyph(at:ix, effectiveRange:&glyphRange)
+        self.lm.lineFragmentRect(forGlyphAt:ix, effectiveRange:&glyphRange)
         // if ix is the first glyph of the line and f is 0...
         // or ix is the last glyph of the line and f is 1...
         // you missed the word entirely

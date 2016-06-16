@@ -41,16 +41,16 @@ class RootViewController : UITableViewController {
         return 20
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
 
         // can refer to subviews by their tags
         // subview positioning configured by constraints in the nib!
         
-        let lab = cell.withTag(2) as! UILabel
+        let lab = cell.viewWithTag(2) as! UILabel
         lab.text = "The author of this book, who would rather be out dirt biking"
         
-        let iv = cell.withTag(1) as! UIImageView
+        let iv = cell.viewWithTag(1) as! UIImageView
         // shrink apparent size of image
         let im = UIImage(named:"moi.png")!
         UIGraphicsBeginImageContextWithOptions(CGSize(36,36), true, 0.0)

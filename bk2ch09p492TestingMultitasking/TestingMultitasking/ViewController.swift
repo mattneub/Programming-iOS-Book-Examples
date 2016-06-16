@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
         NSLog("%@", #function)
-        if self.presenting != nil {
+        if self.presentingViewController != nil {
             self.view.backgroundColor = UIColor.yellow()
         }
     }
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func doButton(_ sender: AnyObject) {
-        if self.presenting != nil {
+        if self.presentingViewController != nil {
             self.dismiss(animated:true)
         } else {
             print("window bounds are \(self.view.window!.bounds)")
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     let which = 2
     
     @IBAction func doButton2(_ sender: AnyObject) {
-        if self.presenting != nil {
+        if self.presentingViewController != nil {
             return
         }
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "VC") {

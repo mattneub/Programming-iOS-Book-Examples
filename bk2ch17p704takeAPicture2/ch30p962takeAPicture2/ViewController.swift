@@ -64,7 +64,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             alert.addAction(UIAlertAction(
                 title: "OK", style: .default) {
                     _ in
-                    let url = NSURL(string:UIApplicationOpenSettingsURLString)!
+                    let url = URL(string:UIApplicationOpenSettingsURLString)!
                     UIApplication.shared().open(url)
             })
             self.present(alert, animated:true)
@@ -75,9 +75,9 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.default().addObserver(self,
+        NotificationCenter.default().addObserver(self,
             selector: #selector(determineStatus),
-            name: UIApplicationWillEnterForegroundNotification,
+            name: Notification.Name.UIApplicationWillEnterForeground,
             object: nil)
     }
 

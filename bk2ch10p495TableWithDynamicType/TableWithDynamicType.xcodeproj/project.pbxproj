@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		322C69AE1B94D42F0021A09F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 322C69AD1B94D42F0021A09F /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		322C69AE1B94D42F0021A09F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 322C69AD1B94D42F0021A09F /* LaunchScreen.storyboard */; };
 		328BC5A7198AB6F20062D99A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BC5A6198AB6F20062D99A /* AppDelegate.swift */; };
 		328BC5A9198AB6F20062D99A /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BC5A8198AB6F20062D99A /* MasterViewController.swift */; };
 		328BC5AB198AB6F20062D99A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BC5AA198AB6F20062D99A /* DetailViewController.swift */; };
@@ -99,6 +99,7 @@
 				TargetAttributes = {
 					328BC5A0198AB6F20062D99A = {
 						CreatedOnToolsVersion = 6.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -192,7 +193,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -228,7 +229,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -242,6 +243,7 @@
 				INFOPLIST_FILE = TableWithDynamicType/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -252,6 +254,7 @@
 				INFOPLIST_FILE = TableWithDynamicType/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

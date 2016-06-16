@@ -49,7 +49,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     }
 
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return scrollView.withTag(999)
+        return scrollView.viewWithTag(999)
     }
     
     // same annoying "jump" bug in iOS 8

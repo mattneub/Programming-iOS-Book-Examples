@@ -137,7 +137,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
                 vig.setValue(vignette, forKey: "inputPercentage")
                 ci = vig.outputImage!
             }
-            return CIContext().createCGImage(ci, from: ci.extent)
+            return CIContext().createCGImage(ci, from: ci.extent)!
         }()
         
         let dest = CGImageDestinationCreateWithURL(outurl, kUTTypeJPEG, 1, nil)!

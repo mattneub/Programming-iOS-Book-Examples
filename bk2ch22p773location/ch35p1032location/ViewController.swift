@@ -8,7 +8,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locman.delegate = self
         return locman
     }()
-    var startTime : NSDate!
+    var startTime : Date!
     var trying = false
     var doThisWhenAuthorized : (() -> ())?
     
@@ -35,7 +35,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             alert.addAction(UIAlertAction(title: "No", style: .cancel))
             alert.addAction(UIAlertAction(title: "OK", style: .default) {
                 _ in
-                let url = NSURL(string:UIApplicationOpenSettingsURLString)!
+                let url = URL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
             })
             self.present(alert, animated:true)
@@ -94,7 +94,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     let REQ_ACC : CLLocationAccuracy = 10
-    let REQ_TIME : NSTimeInterval = 10
+    let REQ_TIME : TimeInterval = 10
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         switch which {
@@ -105,7 +105,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let time = loc.timestamp
             let coord = loc.coordinate
             if self.startTime == nil {
-                self.startTime = NSDate()
+                self.startTime = Date()
                 return // ignore first attempt
             }
             print(acc)

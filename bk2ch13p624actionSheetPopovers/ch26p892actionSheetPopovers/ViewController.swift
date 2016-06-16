@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton(_ sender:AnyObject) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        func handler(act:UIAlertAction!) {
+        func handler(_ act:UIAlertAction!) {
             print("User tapped \(act.title)")
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: handler)) // not shown
@@ -59,13 +59,13 @@ class ViewController: UIViewController {
 extension ViewController : UIPopoverPresentationControllerDelegate {
     func popoverPresentationControllerShouldDismissPopover(
         _ pop: UIPopoverPresentationController) -> Bool {
-            let ok = pop.presentedViewController.presented == nil
+            let ok = pop.presentedViewController.presentedViewController == nil
             return ok
     }
 }
 
 extension ViewController : UIToolbarDelegate {
-    func position(forBar bar: UIBarPositioning) -> UIBarPosition {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }
 }

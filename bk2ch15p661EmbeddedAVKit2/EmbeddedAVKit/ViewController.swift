@@ -50,14 +50,14 @@ class ViewController: UIViewController {
     }
     
     func setUpChild() {
-        let url = NSBundle.main().urlForResource("ElMirage", withExtension:"mp4")!
+        let url = Bundle.main().urlForResource("ElMirage", withExtension:"mp4")!
         let asset = AVURLAsset(url:url)
         asset.loadValuesAsynchronously(forKeys:["tracks"]) {
             let status = asset.statusOfValue(forKey:"tracks", error: nil)
             if status == .loaded {
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async {
                     self.getVideoTrack(asset)
-                })
+                }
             }
         }
     }
@@ -69,9 +69,9 @@ class ViewController: UIViewController {
         vtrack.loadValuesAsynchronously(forKeys: ["naturalSize"]) {
             let status = vtrack.statusOfValue(forKey: "naturalSize", error: nil)
             if status == .loaded {
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async {
                     self.getNaturalSize(vtrack, asset)
-                })
+                }
             }
         }
     }
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
         let item = AVPlayerItem(asset:asset)
         let player = AVPlayer(playerItem:item)
         let av = AVPlayerViewController()
-        av.view.frame = AVMakeRectWithAspectRatioInsideRect(sz, CGRect(10,10,300,200))
+        av.view.frame = AVMakeRect(aspectRatio: sz, insideRect: CGRect(10,10,300,200))
         av.player = player
         self.addChildViewController(av)
         av.view.isHidden = true
@@ -95,12 +95,12 @@ class ViewController: UIViewController {
     override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
             guard keyPath == "readyForDisplay" else {return}
             guard let vc = object as? AVPlayerViewController else {return}
-            guard let ok = change?[NSKeyValueChangeNewKey] as? Bool else {return}
+            guard let ok = change?[NSKeyValueChangeKey.newKey] as? Bool else {return}
             guard ok else {return}
             vc.removeObserver(self, forKeyPath:"readyForDisplay")
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async {
                 self.finishConstructingInterface(vc)
-            })
+            }
     }
 
     

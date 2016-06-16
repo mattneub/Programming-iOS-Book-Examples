@@ -8,7 +8,7 @@ class ViewController: UIViewController {
     @IBOutlet var iv : UIImageView!
     
     @IBAction func doButton (_ sender:AnyObject!) {
-        let url = NSBundle.main().urlForResource("colson", withExtension: "jpg")!
+        let url = Bundle.main().urlForResource("colson", withExtension: "jpg")!
         let src = CGImageSourceCreateWithURL(url, nil)!
         let result = CGImageSourceCopyPropertiesAtIndex(src, 0, nil)! as [NSObject:AnyObject]
         print(result)
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func doButton2 (_ sender:AnyObject!) {
-        let url = NSBundle.main().urlForResource("colson", withExtension: "jpg")!
+        let url = Bundle.main().urlForResource("colson", withExtension: "jpg")!
         let src = CGImageSourceCreateWithURL(url, nil)!
         let scale = UIScreen.main().scale
         let w = self.iv.bounds.width * scale
@@ -37,11 +37,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction func doButton3 (_ sender:AnyObject!) {
-        let url = NSBundle.main().urlForResource("colson", withExtension: "jpg")!
+        let url = Bundle.main().urlForResource("colson", withExtension: "jpg")!
         let src = CGImageSourceCreateWithURL(url, nil)!
-        let fm = NSFileManager()
+        let fm = FileManager()
         let suppurl = try! fm.urlForDirectory(.applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        let tiff = suppurl.appendingPathComponent("mytiff.tiff")
+        let tiff = try! suppurl.appendingPathComponent("mytiff.tiff")
         let dest = CGImageDestinationCreateWithURL(tiff, kUTTypeTIFF, 1, nil)!
         CGImageDestinationAddImageFromSource(dest, src, 0, nil)
         let ok = CGImageDestinationFinalize(dest)

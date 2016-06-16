@@ -14,7 +14,7 @@ class Player : NSObject, AVAudioPlayerDelegate
     var forever = false
     weak var delegate : PlayerDelegate?
 
-    func playFile(at fileURL:NSURL) {
+    func playFile(at fileURL:URL) {
         player?.delegate = nil
         player?.stop()
         player = try! AVAudioPlayer(contentsOf: fileURL)

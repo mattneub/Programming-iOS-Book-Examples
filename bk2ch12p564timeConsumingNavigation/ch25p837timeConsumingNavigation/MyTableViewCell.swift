@@ -33,7 +33,7 @@ class MyTableViewCell: UITableViewCell {
         if selected {
             let v = UIActivityIndicatorView(activityIndicatorStyle:.whiteLarge)
             v.color = UIColor.yellow()
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 v.backgroundColor = UIColor(white:0.2, alpha:0.6)
             }
             v.layer.cornerRadius = 10
@@ -46,7 +46,7 @@ class MyTableViewCell: UITableViewCell {
             v.startAnimating()
 
         } else {
-            if let v = self.withTag(1001) {
+            if let v = self.viewWithTag(1001) {
                 v.removeFromSuperview()
             }
         }

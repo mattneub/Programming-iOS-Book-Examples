@@ -18,9 +18,9 @@ class Player : NSObject, AVAudioPlayerDelegate {
         super.init()
         // interruption notification
         // note (irrelevant for bk 2, but useful for bk 1) how to prevent retain cycle
-        self.observer = NSNotificationCenter.default().addObserver(forName:
-            AVAudioSessionInterruptionNotification, object: nil, queue: nil) {
-                [weak self](n:NSNotification) in
+        self.observer = NotificationCenter.default().addObserver(forName:
+            Notification.Name.AVAudioSessionInterruption, object: nil, queue: nil) {
+                [weak self] n in
                 guard let why =
                     n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
                     else {return}
@@ -47,7 +47,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
     func playFile(atPath path:String) {
         self.player?.delegate = nil
         self.player?.stop()
-        let fileURL = NSURL(fileURLWithPath: path)
+        let fileURL = URL(fileURLWithPath: path)
         print("bp making a new Player")
         guard let p = try? AVAudioPlayer(contentsOf: fileURL) else {return} // nicer
         self.player = p
@@ -85,7 +85,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
     deinit {
         print("bp player dealloc")
         if self.observer != nil {
-            NSNotificationCenter.default().removeObserver(self.observer)
+            NotificationCenter.default().removeObserver(self.observer)
         }
         self.player?.delegate = nil
     }

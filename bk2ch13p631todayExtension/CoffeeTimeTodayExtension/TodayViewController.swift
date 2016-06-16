@@ -28,7 +28,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBAction func doButton(_ sender: AnyObject) {
         NSLog("doButton")
         let v = sender as! UIView
-        let comp = NSURLComponents()
+        var comp = URLComponents()
         comp.scheme = "coffeetime"
         comp.host = String(v.tag) // tag is number of minutes
         if let url = comp.url(relativeTo:nil) {
@@ -37,11 +37,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         }
     }
     
-    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0,16,0,16)
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
+    func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
         NSLog("performUpdate")
         // Perform any setup necessary in order to update the view.
 

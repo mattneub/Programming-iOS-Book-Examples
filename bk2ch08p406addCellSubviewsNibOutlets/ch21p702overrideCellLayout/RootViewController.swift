@@ -41,7 +41,7 @@ class RootViewController : UITableViewController {
         return 20
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) as! MyCell
 
         // can refer to subviews by their tags

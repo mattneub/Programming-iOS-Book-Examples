@@ -43,7 +43,8 @@ class MyFlagView : UIImageView {
             pixel.deallocateCapacity(1)
         }
         pixel[0] = 0
-        let context = CGContext(data: pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 1, space: nil, bitmapInfo: info, releaseCallback: nil, releaseInfo: nil)!
+        let sp = CGColorSpaceCreateDeviceGray()
+        let context = CGContext(data: pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 1, space: sp, bitmapInfo: info, releaseCallback: nil, releaseInfo: nil)!
         UIGraphicsPushContext(context)
         im.draw(at:CGPoint(-point.x, -point.y))
         UIGraphicsPopContext()

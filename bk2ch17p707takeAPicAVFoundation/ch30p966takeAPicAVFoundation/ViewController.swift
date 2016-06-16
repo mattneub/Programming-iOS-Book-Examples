@@ -74,7 +74,7 @@ class ViewController: UIViewController {
             (buf:CMSampleBuffer?, err:NSError?) in
             let data = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buf)
             let im = UIImage(data:data!)
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 
                 self.previewLayer.removeFromSuperlayer()
                 self.sess.stopRunning()

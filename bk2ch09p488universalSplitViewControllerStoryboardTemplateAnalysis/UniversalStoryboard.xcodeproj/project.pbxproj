@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3204D07C1B90B64E00C1E937 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3204D07B1B90B64E00C1E937 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		3204D07C1B90B64E00C1E937 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3204D07B1B90B64E00C1E937 /* LaunchScreen.storyboard */; };
 		3221E4E21989D155000E7842 /* MasterNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221E4E11989D155000E7842 /* MasterNavigationViewController.swift */; };
 		325AD0F119E5A72E004492B2 /* MySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325AD0F019E5A72E004492B2 /* MySplitViewController.swift */; };
 		32A356CB19886D6B00515592 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A356CA19886D6B00515592 /* AppDelegate.swift */; };
@@ -105,6 +105,7 @@
 				TargetAttributes = {
 					32A356C419886D6B00515592 = {
 						CreatedOnToolsVersion = 6.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -200,7 +201,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -237,7 +238,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -252,6 +253,7 @@
 				INFOPLIST_FILE = UniversalStoryboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -262,6 +264,7 @@
 				INFOPLIST_FILE = UniversalStoryboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -6,7 +6,7 @@ import CoreMotion
 class ViewController: UIViewController {
 
     var motman = CMMotionManager()
-    var timer : NSTimer!
+    var timer : Timer!
     
     @IBAction func doButton (_ sender:AnyObject!) {
         guard self.motman.isDeviceMotionAvailable else {
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         self.motman.deviceMotionUpdateInterval = 1.0 / 30.0
         self.motman.startDeviceMotionUpdates(using: ref)
         let t = self.motman.deviceMotionUpdateInterval * 10
-        self.timer = NSTimer.scheduledTimer(timeInterval:t, target:self, selector:#selector(pollAttitude),userInfo:nil, repeats:true)
+        self.timer = Timer.scheduledTimer(timeInterval:t, target:self, selector:#selector(pollAttitude),userInfo:nil, repeats:true)
         
         print("starting")
     }

@@ -95,18 +95,18 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
                 r.size.width = CGFloat(self.glkview.drawableWidth)
                 r.size.height = CGFloat(self.glkview.drawableHeight)
                 
-                r = AVMakeRectWithAspectRatioInsideRect(output.extent.size, r)
+                r = AVMakeRect(aspectRatio: output.extent.size, insideRect: r)
                 
                 self.context?.draw(output, in: r, from: output.extent)
         }
         
     }
 
-    func canHandle(_ adjustmentData: PHAdjustmentData?) -> Bool {
-        return adjustmentData?.formatIdentifier == myidentifier
+    func canHandle(_ adjustmentData: PHAdjustmentData) -> Bool {
+        return adjustmentData.formatIdentifier == myidentifier
     }
 
-    func startContentEditing(with contentEditingInput: PHContentEditingInput?, placeholderImage: UIImage) {
+    func startContentEditing(with contentEditingInput: PHContentEditingInput, placeholderImage: UIImage) {
         // Present content for editing, and keep the contentEditingInput for use when closing the edit session.
         // If you returned true from canHandleAdjustmentData:, contentEditingInput has the original image and adjustment data.
         // If you returned false, the contentEditingInput has past edits "baked in".
@@ -135,12 +135,13 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         self.glkview.display()
 
     }
-
-    func finishContentEditing(completionHandler: ((PHContentEditingOutput?) -> Void)?) {
+    
+    func finishContentEditing(completionHandler: (PHContentEditingOutput) -> Void) {
         // Update UI to reflect that editing has finished and output is being rendered.
         
         // Render and provide output on a background queue.
-        dispatch_async(dispatch_get_global_queue(CLong(DISPATCH_QUEUE_PRIORITY_DEFAULT), 0)) {
+        let q = DispatchQueue.GlobalAttributes.qosDefault
+        DispatchQueue.global(attributes: q).async {
             let vignette = self.seg.selectedSegmentIndex == 0 ? Double(self.slider.value) : -1.0
             let input = self.input!
             let inurl = input.fullSizeImageURL!
@@ -157,7 +158,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
                     vig.setValue(vignette, forKey: "inputPercentage")
                     ci = vig.outputImage!
                 }
-                let outimcg = CIContext().createCGImage(ci, from: ci.extent)
+                let outimcg = CIContext().createCGImage(ci, from: ci.extent)!
                 return outimcg
                 }()
             
@@ -172,7 +173,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
                 formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
             
             // Call completion handler to commit edit to Photos.
-            completionHandler?(output)
+            completionHandler(output)
             
             // Clean up temporary files, etc.
         }

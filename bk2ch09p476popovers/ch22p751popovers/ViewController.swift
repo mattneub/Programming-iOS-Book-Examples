@@ -64,7 +64,7 @@ class ViewController : UIViewController {
     
     func cancelPop1(_ sender:AnyObject) {
         self.dismiss(animated:true)
-        NSUserDefaults.standard().set(self.oldChoice, forKey: "choice")
+        UserDefaults.standard().set(self.oldChoice, forKey: "choice")
     }
     
     func savePop1(_ sender:AnyObject) {
@@ -79,7 +79,7 @@ class ViewController : UIViewController {
         // this is because the popover controller is a UIContentContainer...
         // and can respond to preferred size changes from its child
         let evc = ExtraViewController(nibName: nil, bundle: nil)
-        self.presented!.present(evc, animated: true)
+        self.presentedViewController!.present(evc, animated: true)
     }
     
     // demonstrating how to summon a popover attached to an ordinary view
@@ -160,7 +160,7 @@ class ViewController : UIViewController {
         // previously, only coverVertical was legal, but this restriction is lifted
         vc.modalTransitionStyle = .flipHorizontal // wow, this looks really cool
         
-        let presenter = self.presented!
+        let presenter = self.presentedViewController!
         presenter.present(vc, animated:true) {
             _ in
             print("presented")
@@ -208,18 +208,18 @@ extension ViewController : UINavigationControllerDelegate {
 
 extension ViewController : UIPopoverPresentationControllerDelegate {
     
-    func prepare(forPopoverPresentation pop: UIPopoverPresentationController) {
+    func prepareForPopoverPresentation(_ pop: UIPopoverPresentationController) {
         if pop.presentedViewController is UINavigationController {
             // this is a popover where the user can make changes but then cancel them
             // thus we need to preserve the current values in case we have to revert (cancel) later
-            self.oldChoice = NSUserDefaults.standard().integer(forKey:"choice")
+            self.oldChoice = UserDefaults.standard().integer(forKey:"choice")
         }
     }
     
     func popoverPresentationControllerDidDismissPopover(_ pop: UIPopoverPresentationController) {
         if pop.presentedViewController is UINavigationController {
             // user cancelled, restore defaults
-            NSUserDefaults.standard().set(self.oldChoice, forKey: "choice")
+            UserDefaults.standard().set(self.oldChoice, forKey: "choice")
         }
     }
     
@@ -236,7 +236,7 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
     
     func popoverPresentationControllerShouldDismissPopover(
         _ pop: UIPopoverPresentationController) -> Bool {
-            let ok = pop.presentedViewController.presented == nil
+            let ok = pop.presentedViewController.presentedViewController == nil
             return ok
     }
 
@@ -247,7 +247,7 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
 // in Xcode 5 you couldn't do that; you had to arrange it in code
 
 extension ViewController : UIToolbarDelegate {
-    func position(forBar bar: UIBarPositioning) -> UIBarPosition {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }
 }

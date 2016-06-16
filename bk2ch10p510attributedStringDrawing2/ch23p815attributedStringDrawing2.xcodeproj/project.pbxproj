@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		328BBD391B962BC4009CBAA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BBD381B962BC4009CBAA2 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		328BBD3B1B962BD9009CBAA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BBD3A1B962BD9009CBAA2 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		328BBD391B962BC4009CBAA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BBD381B962BC4009CBAA2 /* LaunchScreen.storyboard */; };
+		328BBD3B1B962BD9009CBAA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BBD3A1B962BD9009CBAA2 /* AppDelegate.swift */; };
 		32C95B72198BC18100708AC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C95B71198BC18100708AC3 /* ViewController.swift */; };
 		32C95B74198BC1E700708AC3 /* StringDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C95B73198BC1E700708AC3 /* StringDrawer.swift */; };
 		C9A50D7C180F835200F5B6CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A50D7A180F835200F5B6CE /* Main.storyboard */; };
@@ -97,6 +97,11 @@
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					C9A50D64180F835200F5B6CE = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = C9A50D60180F835200F5B6CE /* Build configuration list for PBXProject "ch23p815attributedStringDrawing2" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -187,7 +192,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -220,7 +225,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -240,6 +245,7 @@
 				PRODUCT_NAME = ch23p815attributedStringDrawing2;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -257,6 +263,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch23p815attributedStringDrawing2;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

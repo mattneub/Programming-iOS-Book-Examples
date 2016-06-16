@@ -38,7 +38,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             alert.addAction(UIAlertAction(title: "No", style: .cancel))
             alert.addAction(UIAlertAction(title: "OK", style: .default) {
                 _ in
-                let url = NSURL(string:UIApplicationOpenSettingsURLString)!
+                let url = URL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
             })
             self.present(alert, animated:true)
@@ -50,12 +50,12 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NSNotificationCenter.default().removeObserver(self)
+        NotificationCenter.default().removeObserver(self)
     }
 
     @IBAction func createCalendar (_ sender:AnyObject!) {
@@ -98,11 +98,11 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             return
         }
         
-        let greg = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
-        let comp = NSDateComponents()
+        let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
+        var comp = DateComponents()
         (comp.year, comp.month, comp.day, comp.hour) = (2016,8,10,15)
         let d1 = greg.date(from:comp)!
-        comp.hour = comp.hour + 1
+        comp.hour = comp.hour! + 1
         let d2 = greg.date(from:comp)!
         
         let ev = EKEvent(eventStore:self.database)
@@ -153,8 +153,8 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         ev.addRecurrenceRule(recur)
         ev.calendar = cal
         // need a start date and end date
-        let greg = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
-        let comp = NSDateComponents()
+        let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
+        var comp = DateComponents()
         comp.year = 2016
         comp.month = 1
         comp.weekday = 1 // Sunday
@@ -185,15 +185,16 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             return
         }
         
-        let d1 = NSDate() // today
-        let greg = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
+        let d1 = Date() // today
+        let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
         let d2 = greg.date(byAdding: lend {
             (comp:NSDateComponents) in comp.year = 2
-            }, to:d1)!
+            } as DateComponents, to:d1)!
         let pred = self.database.predicateForEvents(withStart:
             d1, end:d2, calendars:[cal])
         var events = [EKEvent]()
-        dispatch_async(dispatch_get_global_queue(0, 0)) {
+        let q = DispatchQueue.GlobalAttributes.qosDefault
+        DispatchQueue.global(attributes: q).async {
             self.database.enumerateEvents(matching:pred) {
                 (event:EKEvent, stop:UnsafeMutablePointer<ObjCBool>) in
                 events += [event]

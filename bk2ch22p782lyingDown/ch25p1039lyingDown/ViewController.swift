@@ -6,25 +6,25 @@ import CoreMotion
 class ViewController: UIViewController {
     
     enum State {
-        case Unknown
-        case LyingDown
-        case NotLyingDown
+        case unknown
+        case lyingDown
+        case notLyingDown
     }
 
     let motman = CMMotionManager()
-    var timer : NSTimer!
+    var timer : Timer!
     @IBOutlet var label : UILabel!
     var oldX = 0.0
     var oldY = 0.0
     var oldZ = 0.0
-    var state = State.Unknown
+    var state = State.unknown
     
     func stopAccelerometer () {
         self.timer?.invalidate()
         self.timer = nil
         self.motman.stopAccelerometerUpdates()
         self.label.text = ""
-        (oldX, oldY, oldZ, state) = (0,0,0,.Unknown)
+        (oldX, oldY, oldZ, state) = (0,0,0,.unknown)
     }
     
     @IBAction func doButton (_ sender:AnyObject!) {
@@ -42,9 +42,9 @@ class ViewController: UIViewController {
         switch which {
         case 1:
             self.motman.startAccelerometerUpdates()
-            self.timer = NSTimer.scheduledTimer(timeInterval:self.motman.accelerometerUpdateInterval, target: self, selector: #selector(pollAccel), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval:self.motman.accelerometerUpdateInterval, target: self, selector: #selector(pollAccel), userInfo: nil, repeats: true)
         case 2:
-            self.motman.startAccelerometerUpdates(to: NSOperationQueue.main()) {
+            self.motman.startAccelerometerUpdates(to: OperationQueue.main()) {
                 (accelerometerData:CMAccelerometerData?, error:NSError?) in
                 guard let dat = accelerometerData else {
                     print(error)
@@ -76,13 +76,13 @@ class ViewController: UIViewController {
         let z = self.oldZ
         let accu = 0.08
         if abs(x) < accu && abs(y) < accu && z < -0.5 {
-            if self.state == .Unknown || self.state == .NotLyingDown {
-                self.state = .LyingDown
+            if self.state == .unknown || self.state == .notLyingDown {
+                self.state = .lyingDown
                 self.label.text = "I'm lying on my back... ahhh..."
             }
         } else {
-            if self.state == .Unknown || self.state == .LyingDown {
-                self.state = .NotLyingDown
+            if self.state == .unknown || self.state == .lyingDown {
+                self.state = .notLyingDown
                 self.label.text = "Hey, put me back down on the table!"
             }
         }

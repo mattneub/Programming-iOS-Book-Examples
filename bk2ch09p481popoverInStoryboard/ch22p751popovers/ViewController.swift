@@ -10,13 +10,13 @@ func delay(_ delay:Double, closure:()->()) {
 class ViewController : UIViewController, UIToolbarDelegate {
     var oldChoice : Int = -1
     
-    func position(forBar bar: UIBarPositioning) -> UIBarPosition {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }
     
     @IBAction func unwind (_ sender:UIStoryboardSegue) {
         if sender.identifier == "cancel" {
-            NSUserDefaults.standard().set(self.oldChoice, forKey: "choice")
+            UserDefaults.standard().set(self.oldChoice, forKey: "choice")
         }
     }
     
@@ -32,7 +32,7 @@ class ViewController : UIViewController, UIToolbarDelegate {
                 // pop.permittedArrowDirections = [.Up, .Down]
             }
         }
-        self.oldChoice = NSUserDefaults.standard().integer(forKey:"choice")
+        self.oldChoice = UserDefaults.standard().integer(forKey:"choice")
     }
 }
 
@@ -48,7 +48,7 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
     }
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        NSUserDefaults.standard().set(self.oldChoice, forKey: "choice")
+        UserDefaults.standard().set(self.oldChoice, forKey: "choice")
     }
 
 }

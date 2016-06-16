@@ -4,12 +4,12 @@ import UIKit
 
 class RootViewController : UITableViewController {
     
-    override func tableView(_ tv: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tv: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // we can still modify the cell as long as we fetch it from super
         let cell = super.tableView(tv, cellForRowAt:indexPath)
         
         // supply checkmarks as necessary
-        let ud = NSUserDefaults.standard()
+        let ud = UserDefaults.standard()
         
         NSLog("about to update %@", cell.textLabel!.text!)
         cell.accessoryType = .none
@@ -20,51 +20,51 @@ class RootViewController : UITableViewController {
         return cell
     }
     
-    func log(tv:UITableView, ip:NSIndexPath, phrase:String) {
+    func log(tv:UITableView, ip:IndexPath, phrase:String) {
         NSLog("%@", "========")
         NSLog("%@ %@", phrase, tv.cellForRow(at:ip)!.textLabel!.text!)
         NSLog("cell highlighted? %@", "\(tv.cellForRow(at:ip)!.isHighlighted)")
         NSLog("label highlighted? %@", "\(tv.cellForRow(at:ip)!.textLabel!.isHighlighted)")
     }
     
-    override func tableView(_ tv: UITableView, shouldHighlightRowAt indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tv: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         log(tv: tv, ip: indexPath, phrase: "should highlight")
         
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async {
             NSLog("%@", "callback from should highlight")
-            })
+            }
         
         return true // try false to test this feature
     }
     
-    override func tableView(_ tv: UITableView, didHighlightRowAt indexPath: NSIndexPath) {
+    override func tableView(_ tv: UITableView, didHighlightRowAt indexPath: IndexPath) {
         log(tv: tv, ip: indexPath, phrase: "did highlight")
     }
     
-    override func tableView(_ tv: UITableView, didUnhighlightRowAt indexPath: NSIndexPath) {
+    override func tableView(_ tv: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
         log(tv: tv, ip: indexPath, phrase: "did unhighlight")
         
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async {
             NSLog("%@", "callback from did unhighlight")
-            })
+            }
     }
     
-    override func tableView(_ tv: UITableView, willSelectRowAt indexPath: NSIndexPath) -> NSIndexPath? {
+    override func tableView(_ tv: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         log(tv: tv, ip: indexPath, phrase: "will select")
         
         return indexPath
     }
     
-    override func tableView(_ tv: UITableView, willDeselectRowAt indexPath: NSIndexPath) -> NSIndexPath? {
+    override func tableView(_ tv: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
         log(tv: tv, ip: indexPath, phrase: "will deselect")
         
         return indexPath
     }
     
-    override func tableView(_ tv: UITableView, didSelectRowAt indexPath: NSIndexPath) {
+    override func tableView(_ tv: UITableView, didSelectRowAt indexPath: IndexPath) {
         log(tv: tv, ip: indexPath, phrase: "did select")
         
-        let ud = NSUserDefaults.standard()
+        let ud = UserDefaults.standard()
         let setting = tv.cellForRow(at:indexPath)!.textLabel!.text
         let header = self.tableView(tv, titleForHeaderInSection:indexPath.section)!
         ud.setValue(setting!, forKey:header)
@@ -74,7 +74,7 @@ class RootViewController : UITableViewController {
 
     }
     
-    override func tableView(_ tv: UITableView, didDeselectRowAt indexPath: NSIndexPath) {
+    override func tableView(_ tv: UITableView, didDeselectRowAt indexPath: IndexPath) {
         NSLog("did deselect %@", tv.cellForRow(at:indexPath)!.textLabel!.text!)
     }
     

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		327D195A1995202600C0EF59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D19591995202600C0EF59 /* ViewController.swift */; };
 		327D195C199520E500C0EF59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D195B199520E500C0EF59 /* AppDelegate.swift */; };
-		32D62FFC1BB074ED00028D0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D62FFB1BB074ED00028D0D /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		32D62FFC1BB074ED00028D0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D62FFB1BB074ED00028D0D /* LaunchScreen.storyboard */; };
 		C97D40B51822A25A002DFE75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97D40B31822A25A002DFE75 /* Main.storyboard */; };
 		C97D40BA1822A25A002DFE75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97D40B91822A25A002DFE75 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -93,6 +93,11 @@
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					C97D409D1822A25A002DFE75 = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = C97D40991822A259002DFE75 /* Build configuration list for PBXProject "CoffeeTime" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -182,7 +187,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -215,7 +220,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -234,6 +239,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = CoffeeTime;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -250,6 +256,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = CoffeeTime;
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -4,7 +4,7 @@ import UIKit
 class MyLayout : UICollectionViewLayout {
     
     var sz = CGSize.zero
-    var atts = [NSIndexPath:UICollectionViewLayoutAttributes]()
+    var atts = [IndexPath:UICollectionViewLayoutAttributes]()
     
     // absolute rock-bottom layout from scratch, shows minimal responsibilities
     
@@ -34,7 +34,7 @@ class MyLayout : UICollectionViewLayout {
             for j in 0 ..< jj {
                 let att = UICollectionViewLayoutAttributes(
                     forCellWith:
-                    NSIndexPath(forItem:j, inSection:i))
+                    IndexPath(item:j, section:i))
                 att.frame = CGRect(CGFloat(x)*cellside,CGFloat(y)*cellside,cellside,cellside)
                 atts += [att]
                 x += 1
@@ -62,7 +62,7 @@ class MyLayout : UICollectionViewLayout {
         return ok
     }
     
-    override func layoutAttributesForItem(at indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         print("atts")
         return self.atts[indexPath]
     }

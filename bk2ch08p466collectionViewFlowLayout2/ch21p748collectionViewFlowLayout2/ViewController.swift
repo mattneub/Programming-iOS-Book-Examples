@@ -47,7 +47,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: NSBundle.main().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
+        let s = try! String(contentsOfFile: Bundle.main().pathForResource("states", ofType: "txt")!, encoding: String.Encoding.utf8)
         let states = s.components(separatedBy:"\n")
         var previous = ""
         for aState in states {
@@ -107,7 +107,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     // headers
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: NSIndexPath) -> UICollectionReusableView {
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         var v : UICollectionReusableView! = nil
         if kind == UICollectionElementKindSectionHeader {
@@ -139,7 +139,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     // cells
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"Cell", for: indexPath) as! Cell
         if cell.lab.text == "Label" { // new cell
@@ -156,7 +156,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             shadow.shadowOffset = CGSize(2,2)
             shadow.shadowBlurRadius = 4
             let check2 =
-            NSAttributedString(string:"\u{2714}", attributes:[
+            AttributedString(string:"\u{2714}", attributes:[
                 NSFontAttributeName: UIFont(name:"ZapfDingbatsITC", size:24)!,
                 NSForegroundColorAttributeName: UIColor.green(),
                 NSStrokeColorAttributeName: UIColor.red(),
@@ -191,7 +191,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // simply turning on estimatedItemSize should do it for me (sizing according to constraints)
     // but I have not been able to get that feature to work
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // note; this approach didn't work on iOS 8...
         // ...until I introduced the "container" view
         // systemLayoutSize works on the container view but not on the cell itself in iOS 8
@@ -233,27 +233,22 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             return
         }
         // sort
-        let arr2 = ((arr as NSArray).sortedArray(using:#selector(NSIndexPath.compare(_:))) as! [NSIndexPath])
+        let arr2 = ((arr as NSArray).sortedArray(using:#selector(NSIndexPath.compare(_:))) as! [IndexPath])
         // delete data
-        var empties = [Int]() // keep track of what sections get emptied
+        var empties : Set<Int> = [] // keep track of what sections get emptied
         for ip in arr2.reversed() {
-            self.sectionData[ip.section].remove(at:ip.item)
+            self.sectionData[ip.section].remove(at:ip.item!)
             if self.sectionData[ip.section].count == 0 {
-                empties += [ip.section]
+                empties.insert(ip.section)
             }
-        }
-        // will need an NSIndexSet version of that empties list
-        let emptyset = NSMutableIndexSet()
-        for i in empties {
-            emptyset.add(i)
         }
         // request the deletion from the view; notice the slick automatic animation
         self.collectionView!.performBatchUpdates({
             self.collectionView!.deleteItems(at:arr2)
             if empties.count > 0 { // delete empty sections
-                self.sectionNames.remove(at:empties) // see utility function at top of file
-                self.sectionData.remove(at:empties)
-                self.collectionView!.deleteSections(emptyset)
+                self.sectionNames.remove(at:Array(empties)) // see utility function at top of file
+                self.sectionData.remove(at:Array(empties))
+                self.collectionView!.deleteSections(IndexSet(empties)) // Set turns directly into IndexSet!
             }
             })
     }
@@ -262,17 +257,17 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     // exactly as for table views
     
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: NSIndexPath) -> Bool {
+    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
         let mi = UIMenuItem(title:"Capital", action:#selector(Cell.capital))
         UIMenuController.shared().menuItems = [mi]
         return true
     }
     
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
+    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: AnyObject?) -> Bool {
         return (action == #selector(copy(_:))) || (action == #selector(Cell.capital))
     }
     
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: NSIndexPath, withSender sender: AnyObject?) {
+    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: AnyObject?) {
         // in real life, would do something here
         let state = self.sectionData[indexPath.section][indexPath.row]
         if action == #selector(copy(_:)) {

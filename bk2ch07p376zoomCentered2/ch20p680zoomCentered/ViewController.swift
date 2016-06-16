@@ -93,7 +93,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     // image view is zoomable
 
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return scrollView.withTag(999)
+        return scrollView.viewWithTag(999)
     }
     
     // image view is also zoomable by double-tapping

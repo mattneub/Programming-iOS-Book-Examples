@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     
     var q : MPMediaItemCollection!
     @IBOutlet var label : UILabel!
-    var timer : NSTimer!
+    var timer : Timer!
     @IBOutlet var prog : UIProgressView!
     @IBOutlet var vv : MPVolumeView!
     
@@ -90,12 +90,12 @@ class ViewController: UIViewController {
         self.vv.setVolumeThumbImage(thumb, for:[])
         
         
-        NSNotificationCenter.default().addObserver(self, selector:#selector(wirelessChanged),
-            name:MPVolumeViewWirelessRoutesAvailableDidChangeNotification,
+        NotificationCenter.default().addObserver(self, selector:#selector(wirelessChanged),
+            name:Notification.Name.MPVolumeViewWirelessRoutesAvailableDidChange,
             object:nil)
-        NSNotificationCenter.default().addObserver(self,
+        NotificationCenter.default().addObserver(self,
             selector:#selector(wirelessChanged2),
-            name:MPVolumeViewWirelessRouteActiveDidChangeNotification,
+            name:Notification.Name.MPVolumeViewWirelessRouteActiveDidChange,
             object:nil)
         
     }
@@ -185,14 +185,14 @@ class ViewController: UIViewController {
         let queue = MPMediaItemCollection(items:shorties)
         let player = MPMusicPlayerController.applicationMusicPlayer()
         player.stop()
-        player.setQueueWith(queue)
+        player.setQueue(with:queue)
         player.shuffleMode = .songs
         player.beginGeneratingPlaybackNotifications()
-        NSNotificationCenter.default().addObserver(self, selector: #selector(changed), name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification, object: player)
+        NotificationCenter.default().addObserver(self, selector: #selector(changed), name: Notification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: player)
         self.q = queue // retain a pointer to the queue
         player.play()
         
-        self.timer = NSTimer.scheduledTimer(timeInterval:1, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
         self.timer.tolerance = 0.1
     }
     

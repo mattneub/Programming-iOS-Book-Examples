@@ -21,10 +21,10 @@ class RootViewController: UITableViewController {
     // the black label text turns red when the cell is selected
     // but the blue label text does not - highlightedTextColor does not work on it
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
         
-        if cell.contentView.withTag(1) == nil {
+        if cell.contentView.viewWithTag(1) == nil {
             let lab = UILabel()
             print(lab.lineBreakMode.rawValue)
             let color = indexPath.row == 0 ? UIColor.black() : UIColor.blue()

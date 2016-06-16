@@ -7,7 +7,7 @@ class MyTiledView : UIView {
     var currentImage : UIImage!
     var currentSize = CGSize.zero
     
-    var drawQueue : dispatch_queue_t = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL)
+    var drawQueue : DispatchQueue = DispatchQueue(label: "drawQueue", attributes: DispatchQueueAttributes.serial)
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
@@ -31,7 +31,7 @@ class MyTiledView : UIView {
         
         
         
-        dispatch_sync(drawQueue, { // work around nasty thread issue...
+        drawQueue.sync { // work around nasty thread issue...
             // we are called twice simultaneously on two different background threads!
 
             let oldSize = self.currentSize
@@ -48,7 +48,7 @@ class MyTiledView : UIView {
                 let sc = tr.a/lay.contentsScale
                 let scale = sc/4.0
                 
-                let path = NSBundle.main().pathForResource("earthFromSaturn", ofType:"png")!
+                let path = Bundle.main().pathForResource("earthFromSaturn", ofType:"png")!
                 let im = UIImage(contentsOfFile:path)!
                 let sz = CGSize(im.size.width * scale, im.size.height * scale)
                 UIGraphicsBeginImageContextWithOptions(sz, true, 1)
@@ -65,7 +65,7 @@ class MyTiledView : UIView {
             UIColor.white().setStroke()
             bp.stroke()
             
-        })
+        }
     }
 }
 

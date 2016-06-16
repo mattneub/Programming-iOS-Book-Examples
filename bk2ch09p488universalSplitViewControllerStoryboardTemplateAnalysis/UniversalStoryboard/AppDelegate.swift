@@ -51,7 +51,7 @@ extension AppDelegate: UISplitViewControllerDelegate {
         return nil // means just do what you would normally do
     }
 
-    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondaryViewController vc2:UIViewController, ontoPrimaryViewController vc1:UIViewController) -> Bool {
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary vc2:UIViewController, onto vc1:UIViewController) -> Bool {
         print("begin delegate collapse")
         if let vc2 = vc2 as? UINavigationController {
             if let detail = vc2.topViewController as? DetailViewController {
@@ -70,7 +70,7 @@ extension AppDelegate: UISplitViewControllerDelegate {
     }
     
 
-    func targetDisplayModeForActionInSplitViewController(svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
+    func targetDisplayModeForAction(in svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
         print("mode?")
         return .automatic
     }
@@ -85,7 +85,7 @@ extension AppDelegate: UISplitViewControllerDelegate {
         return false
     }
     
-    func splitViewController(_ splitViewController: UISplitViewController, showDetailViewController vc: UIViewController, sender: AnyObject?) -> Bool {
+    func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: AnyObject?) -> Bool {
         print("svc show detail vc")
         return false
     }

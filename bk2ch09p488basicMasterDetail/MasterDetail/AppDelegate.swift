@@ -33,11 +33,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate : UISplitViewControllerDelegate {
-    func splitViewController(_ svc: UISplitViewController, separateSecondaryViewControllerFromPrimaryViewController vc1: UIViewController) -> UIViewController? {
+    func splitViewController(_ svc: UISplitViewController, separateSecondaryFrom vc1: UIViewController) -> UIViewController? {
         print("expanding")
         return nil
     }
-    func splitViewController(_ svc: UISplitViewController, collapseSecondaryViewController vc2: UIViewController, ontoPrimaryViewController vc1: UIViewController) -> Bool {
+    func splitViewController(_ svc: UISplitViewController, collapseSecondary vc2: UIViewController, onto vc1: UIViewController) -> Bool {
         print("collapsing")
         return !self.didChooseDetail
     }

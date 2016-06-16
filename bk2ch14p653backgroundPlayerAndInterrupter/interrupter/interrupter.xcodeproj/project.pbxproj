@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		323EA993199915A600FB4834 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323EA992199915A600FB4834 /* ViewController.swift */; };
 		323EA9951999182C00FB4834 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323EA9941999182C00FB4834 /* AppDelegate.swift */; };
-		3244D72C1BB6222800E9CE06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3244D72B1BB6222800E9CE06 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		3244D72C1BB6222800E9CE06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3244D72B1BB6222800E9CE06 /* LaunchScreen.storyboard */; };
 		327755D919F7FB7A00C5598F /* Hooded.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 327755D819F7FB7A00C5598F /* Hooded.aiff */; };
 		32A1DFBD19991B2400CD6491 /* Player2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A1DFBC19991B2400CD6491 /* Player2.swift */; };
 		C9A8A9151823E6F100E9D48D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A8A9141823E6F100E9D48D /* Main.storyboard */; };
@@ -95,6 +95,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0420;
+				TargetAttributes = {
+					A4196FA014D366BA00D827A7 = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = A4196F9B14D366BA00D827A7 /* Build configuration list for PBXProject "interrupter" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -161,7 +166,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -180,7 +185,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -194,10 +199,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "interrupter/interrupter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -210,9 +216,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "interrupter/interrupter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

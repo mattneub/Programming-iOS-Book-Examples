@@ -31,7 +31,7 @@ extension CGVector {
 class ViewController : UIViewController {
     @IBOutlet var drawer : StringDrawer!
     @IBOutlet var iv : UIImageView!
-    lazy var content : NSAttributedString = self.makeAttributedString()
+    lazy var content : AttributedString = self.makeAttributedString()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,7 @@ class ViewController : UIViewController {
         
     }
     
-    func makeAttributedString() -> NSAttributedString {
+    func makeAttributedString() -> AttributedString {
         var content : NSMutableAttributedString!
         var content2 : NSMutableAttributedString!
         

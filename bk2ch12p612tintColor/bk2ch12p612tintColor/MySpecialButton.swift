@@ -4,8 +4,8 @@ import UIKit
 
 class MySpecialButton : UIButton {
     
-    var originalTitle : NSAttributedString?
-    var dimmedTitle : NSAttributedString?
+    var originalTitle : AttributedString?
+    var dimmedTitle : AttributedString?
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -12,7 +12,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(_ app: UIApplication, open url: NSURL, options: [String : AnyObject]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [String : AnyObject]) -> Bool {
         print("start \(#function)")
         print(url)
         

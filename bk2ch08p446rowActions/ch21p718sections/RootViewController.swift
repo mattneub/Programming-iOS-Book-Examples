@@ -11,7 +11,7 @@ class RootViewController : UITableViewController {
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: NSBundle.main().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
+        let s = try! String(contentsOfFile: Bundle.main().pathForResource("states", ofType: "txt")!, encoding: String.Encoding.utf8)
         let states = s.components(separatedBy:"\n")
         var previous = ""
         for aState in states {
@@ -60,7 +60,7 @@ class RootViewController : UITableViewController {
         return self.sectionData[section].count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
@@ -107,7 +107,7 @@ class RootViewController : UITableViewController {
                     metrics:nil, views:["lab":lab])
                 ].flatten().map{$0})
         }
-        let lab = h.contentView.withTag(1) as! UILabel
+        let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
         return h
         
@@ -118,14 +118,14 @@ class RootViewController : UITableViewController {
         return self.sectionNames
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt ip: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt ip: IndexPath) {
         self.sectionData[ip.section].remove(at:ip.row)
         switch editingStyle {
         case .delete:
             if self.sectionData[ip.section].count == 0 {
                 self.sectionData.remove(at:ip.section)
                 self.sectionNames.remove(at:ip.section)
-                tableView.deleteSections(NSIndexSet(index: ip.section),
+                tableView.deleteSections(IndexSet(integer: ip.section),
                     with:.automatic)
                 tableView.reloadSectionIndexTitles()
             } else {
@@ -136,7 +136,7 @@ class RootViewController : UITableViewController {
         }
     }
         
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let act = UITableViewRowAction(style: .normal, title: "Mark") {
             action, ip in
             print("Mark") // in real life, do something here

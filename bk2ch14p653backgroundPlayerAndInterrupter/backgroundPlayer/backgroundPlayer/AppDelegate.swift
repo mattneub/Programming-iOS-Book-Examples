@@ -12,7 +12,7 @@ func delay(_ delay:Double, closure:()->()) {
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
-    var timer : NSTimer?
+    var timer : Timer?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -26,13 +26,13 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         return; // comment out to perform timer experiment
         
         self.timer?.invalidate()
-        self.timer = NSTimer.scheduledTimer(timeInterval:1, target: self, selector: #selector(fired), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(fired), userInfo: nil, repeats: true)
     }
     
     // timer fires while we are in background, provided
     // (1) we scheduled it before going into the background
     // (2) we are running in the background (i.e. playing)
-    func fired(_ timer:NSTimer) {
+    func fired(_ timer:Timer) {
         print("bp timer fired")
     }
     
@@ -65,8 +65,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         print("bp in \(#function)")
         
         let types : UIUserNotificationType = .alert
-        let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
-        application.register(settings)
+        let settings = UIUserNotificationSettings(types: types, categories: nil)
+        application.registerUserNotificationSettings(settings)
         
         _ = try? AVAudioSession.sharedInstance().setActive(true)
         // new iOS 8 feature

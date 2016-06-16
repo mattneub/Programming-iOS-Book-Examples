@@ -21,7 +21,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: NSBundle.main().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
+        let s = try! String(contentsOfFile: Bundle.main().pathForResource("states", ofType: "txt")!, encoding: String.Encoding.utf8)
         let states = s.components(separatedBy:"\n")
         var previous = ""
         for aState in states {
@@ -70,7 +70,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         self.tableView.tableHeaderView = b
         self.tableView.reloadData()
         self.tableView.scrollToRow(at:
-            NSIndexPath(forRow: 0, inSection: 0),
+            IndexPath(row: 0, section: 0),
             at:.top, animated:false)
     }
     
@@ -82,7 +82,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         return self.sectionData[section].count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
@@ -130,7 +130,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
                     metrics:nil, views:["lab":lab])
                 ].flatten().map{$0})
         }
-        let lab = h.contentView.withTag(1) as! UILabel
+        let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
         return h
     }
@@ -143,10 +143,10 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
 
 extension RootViewController : UISearchControllerDelegate {
     // flag for whoever needs it (in this case, sectionIndexTitles...)
-    func willPresent(_ searchController: UISearchController) {
+    func willPresentSearchController(_ searchController: UISearchController) {
         self.searching = true
     }
-    func willDismiss(_ searchController: UISearchController) {
+    func willDismissSearchController(_ searchController: UISearchController) {
         self.searching = false
     }
 }
@@ -164,7 +164,7 @@ extension RootViewController : UISearchResultsUpdating {
         // we have a target string
         self.sectionData = self.originalSectionData.map {
             $0.filter {
-                let options = NSStringCompareOptions.caseInsensitiveSearch
+                let options = NSString.CompareOptions.caseInsensitiveSearch
                 let found = $0.range(of:target, options: options)
                 return (found != nil)
             }

@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		320EA0981BB382A200D56478 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320EA0971BB382A200D56478 /* OtherViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		320EA0981BB382A200D56478 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320EA0971BB382A200D56478 /* OtherViewController.swift */; };
 		32316DDA198C2D3E00DE5423 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32316DD9198C2D3E00DE5423 /* ViewController.swift */; };
-		3232B8661BB235FD00ECAD1E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3232B8651BB235FD00ECAD1E /* Media.xcassets */; settings = {ASSET_TAGS = (); }; };
-		3232B8681BB2376F00ECAD1E /* Media2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3232B8671BB2376F00ECAD1E /* Media2.xcassets */; settings = {ASSET_TAGS = (); }; };
-		32715C441BB1D31F000EC1B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32715C431BB1D31F000EC1B2 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		3232B8661BB235FD00ECAD1E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3232B8651BB235FD00ECAD1E /* Media.xcassets */; };
+		3232B8681BB2376F00ECAD1E /* Media2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3232B8671BB2376F00ECAD1E /* Media2.xcassets */; };
+		32715C441BB1D31F000EC1B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32715C431BB1D31F000EC1B2 /* LaunchScreen.storyboard */; };
 		32CBE1271BB3049C0067CB21 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CBE1261BB3049C0067CB21 /* ShareViewController.swift */; };
 		32CBE12A1BB3049C0067CB21 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CBE1281BB3049C0067CB21 /* MainInterface.storyboard */; };
 		32CBE12E1BB3049C0067CB21 /* Shoebox.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 32CBE1241BB3049C0067CB21 /* Shoebox.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		32CBE1341BB308480067CB21 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CBE1321BB308480067CB21 /* TableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		32CBE1341BB308480067CB21 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CBE1321BB308480067CB21 /* TableViewController.swift */; };
 		32F09C19199A5EAC00806131 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F09C18199A5EAC00806131 /* ActionViewController.swift */; };
 		32F09C1B199A5EAC00806131 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F09C1A199A5EAC00806131 /* MainInterface.storyboard */; };
 		32F09C1E199A5EAC00806131 /* Expand2.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 32F09C14199A5EAC00806131 /* Expand2.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -300,12 +300,18 @@
 				TargetAttributes = {
 					32CBE1231BB3049C0067CB21 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 					32F09C13199A5EAC00806131 = {
 						CreatedOnToolsVersion = 6.0;
+						LastSwiftMigration = 0800;
 					};
 					32F34C8319992BE700EED43C = {
 						CreatedOnToolsVersion = 6.0;
+						LastSwiftMigration = 0800;
+					};
+					C9F3DE261812D0DF001483A1 = {
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -472,6 +478,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -490,6 +497,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk2ch13p636actionExtension.Shoebox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -510,6 +518,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -525,6 +534,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -545,6 +555,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -560,6 +571,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -596,7 +608,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -629,7 +641,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -649,6 +661,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = bk2ch13p636actionExtension;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -666,6 +679,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = bk2ch13p636actionExtension;
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

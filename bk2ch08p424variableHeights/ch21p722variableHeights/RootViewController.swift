@@ -16,8 +16,8 @@ class RootViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = NSBundle.main().urlForResource("trivia", withExtension: "txt")
-        let s = try! String(contentsOf:url!, encoding: NSUTF8StringEncoding)
+        let url = Bundle.main().urlForResource("trivia", withExtension: "txt")
+        let s = try! String(contentsOf:url!, encoding: String.Encoding.utf8)
         var arr = s.components(separatedBy:"\n")
         arr.removeLast()
         self.trivia = arr
@@ -35,14 +35,14 @@ class RootViewController : UITableViewController {
         return self.trivia.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) as! Cell
         cell.backgroundColor = UIColor.white()
         cell.lab.text = self.trivia[indexPath.row]
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: NSIndexPath) -> NSIndexPath? {
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if tableView.indexPathForSelectedRow == indexPath {
             tableView.deselectRow(at:indexPath, animated:false)
             return nil

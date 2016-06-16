@@ -64,7 +64,7 @@ class ViewController : UICollectionViewController {
     the content view and its contents are on top of that
     */
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"Cell",
         for: indexPath)
         if cell.backgroundView == nil { // brand new cell
@@ -91,7 +91,7 @@ class ViewController : UICollectionViewController {
             lab.highlightedTextColor = UIColor.white()
             lab.backgroundColor = UIColor.clear()
         }
-        let lab = cell.withTag(1) as! UILabel
+        let lab = cell.viewWithTag(1) as! UILabel
         lab.text = "Howdy there \(indexPath.item)"
         return cell
     }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3204D07E1B90B7DF00C1E937 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3204D07D1B90B7DF00C1E937 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		3204D07E1B90B7DF00C1E937 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3204D07D1B90B7DF00C1E937 /* LaunchScreen.storyboard */; };
 		322E869A1989349E0076FE3E /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E86991989349E0076FE3E /* ContainerViewController.swift */; };
 		32A356CB19886D6B00515592 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A356CA19886D6B00515592 /* AppDelegate.swift */; };
 		32A356CD19886D6B00515592 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A356CC19886D6B00515592 /* MasterViewController.swift */; };
@@ -102,6 +102,7 @@
 				TargetAttributes = {
 					32A356C419886D6B00515592 = {
 						CreatedOnToolsVersion = 6.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -196,7 +197,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -233,7 +234,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -248,6 +249,7 @@
 				INFOPLIST_FILE = UniversalStoryboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = UniversalStoryboard2;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -259,6 +261,7 @@
 				INFOPLIST_FILE = UniversalStoryboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = UniversalStoryboard2;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

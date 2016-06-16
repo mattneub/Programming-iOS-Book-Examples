@@ -41,7 +41,7 @@ class MySlider: UISlider {
         return sz
     }
     
-    func tapped(g:UIGestureRecognizer) {
+    func tapped(_ g:UIGestureRecognizer) {
         let s = g.view as! UISlider
         if s.isHighlighted {
             return // tap on thumb, let slider deal with it
@@ -60,6 +60,7 @@ class MySlider: UISlider {
         // animation broken in iOS 7
         // still broken in iOS 8
         // still broken in iOS 9
+        // still broken in iOS 10
     }
     
     override func maximumValueImageRect(forBounds bounds: CGRect) -> CGRect {

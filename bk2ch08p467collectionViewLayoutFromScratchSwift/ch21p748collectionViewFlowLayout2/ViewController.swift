@@ -41,7 +41,7 @@ class ViewController : UICollectionViewController {
         }()
 
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: NSBundle.main().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
+        let s = try! String(contentsOfFile: Bundle.main().pathForResource("states", ofType: "txt")!, encoding: String.Encoding.utf8)
         let states = s.components(separatedBy:"\n")
         var previous = ""
         for aState in states {
@@ -83,7 +83,7 @@ class ViewController : UICollectionViewController {
     
     // headers
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: NSIndexPath) -> UICollectionReusableView {
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         var v : UICollectionReusableView! = nil
         if kind == UICollectionElementKindSectionHeader {
@@ -115,7 +115,7 @@ class ViewController : UICollectionViewController {
     
     // cells
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"Cell", for: indexPath) as! Cell
         if cell.lab.text == "Label" { // new cell
@@ -132,7 +132,7 @@ class ViewController : UICollectionViewController {
             shadow.shadowOffset = CGSize(2,2)
             shadow.shadowBlurRadius = 4
             let check2 =
-            NSAttributedString(string:"\u{2714}", attributes:[
+            AttributedString(string:"\u{2714}", attributes:[
                 NSFontAttributeName: UIFont(name:"ZapfDingbatsITC", size:24)!,
                 NSForegroundColorAttributeName: UIColor.green(),
                 NSStrokeColorAttributeName: UIColor.red(),
@@ -161,7 +161,7 @@ class ViewController : UICollectionViewController {
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         self.modelCell.lab.text = self.sectionData[indexPath.section][indexPath.row]
         var sz = self.modelCell.container.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)

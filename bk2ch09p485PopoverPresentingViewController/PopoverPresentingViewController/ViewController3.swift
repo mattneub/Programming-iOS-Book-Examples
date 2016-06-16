@@ -11,7 +11,7 @@ class ViewController3: UIViewController {
         // okay, this is really weird: you need _both_!
         // note that this works only on iOS 9! no effect on iOS 8
         if workaround {
-            if let pres = self.presenting {
+            if let pres = self.presentingViewController {
                 self.isModalInPopover = true
                 self.oldModal = pres.isModalInPopover
                 pres.isModalInPopover = true
@@ -22,7 +22,7 @@ class ViewController3: UIViewController {
     @IBAction func doDone(_ sender: AnyObject) {
         // and then on dismissal must undo both!
         if workaround {
-            if let pres = self.presenting {
+            if let pres = self.presentingViewController {
                 self.isModalInPopover = false
                 pres.isModalInPopover = self.oldModal
             }

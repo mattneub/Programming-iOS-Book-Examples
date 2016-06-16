@@ -18,7 +18,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
     func playFile(atPath path:String) {
         self.player?.delegate = nil
         self.player?.stop()
-        let fileURL = NSURL(fileURLWithPath: path)
+        let fileURL = URL(fileURLWithPath: path)
         guard let p = try? AVAudioPlayer(contentsOf: fileURL) else {return} // nicer
         self.player = p
         // error-checking omitted

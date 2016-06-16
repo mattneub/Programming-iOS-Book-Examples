@@ -44,7 +44,7 @@ class ViewController : UIViewController {
             NSFontAttributeName:UIFont(name:"GillSans", size:15)!,
             NSParagraphStyleAttributeName:lend {
                 (p:NSMutableParagraphStyle) in
-                let terms = NSTextTab.columnTerminators(for:NSLocale.current())
+                let terms = NSTextTab.columnTerminators(for:Locale.current())
                 let tab = NSTextTab(textAlignment:.right, location:170, options:[NSTabColumnTerminatorsAttributeName:terms])
                 var which : Int { return 2 }
                 switch which {
@@ -71,28 +71,28 @@ class ViewController : UIViewController {
         let onionatt = NSTextAttachment()
         onionatt.image = onions
         onionatt.bounds = CGRect(0,-5,onions.size.width,onions.size.height)
-        let onionattchar = NSAttributedString(attachment:onionatt)
+        let onionattchar = AttributedString(attachment:onionatt)
         
         let pepperatt = NSTextAttachment()
         pepperatt.image = peppers
         pepperatt.bounds = CGRect(0,-1,peppers.size.width,peppers.size.height)
-        let pepperattchar = NSAttributedString(attachment:pepperatt)
+        let pepperattchar = AttributedString(attachment:pepperatt)
         
         let r = (mas.string as NSString).range(of:"Onions")
         mas.insert(onionattchar, at:(r.location + r.length))
         let r2 = (mas.string as NSString).range(of:"Peppers")
         mas.insert(pepperattchar, at:(r2.location + r2.length))
         
-        mas.append(NSAttributedString(string: "\n\n", attributes:nil))
-        mas.append(NSAttributedString(string: "LINK", attributes: [
-            NSLinkAttributeName : NSURL(string: "http://www.apple.com")!
+        mas.append(AttributedString(string: "\n\n", attributes:nil))
+        mas.append(AttributedString(string: "LINK", attributes: [
+            NSLinkAttributeName : URL(string: "http://www.apple.com")!
             ]))
-        mas.append(NSAttributedString(string: "\n\n", attributes:nil))
-        mas.append(NSAttributedString(string: "(805)-123-4567", attributes: nil))
-        mas.append(NSAttributedString(string: "\n\n", attributes:nil))
-        mas.append(NSAttributedString(string: "123 Main Street, Anytown, CA 91234", attributes: nil))
-        mas.append(NSAttributedString(string: "\n\n", attributes:nil))
-        mas.append(NSAttributedString(string: "tomorrow at 4 PM", attributes: nil))
+        mas.append(AttributedString(string: "\n\n", attributes:nil))
+        mas.append(AttributedString(string: "(805)-123-4567", attributes: nil))
+        mas.append(AttributedString(string: "\n\n", attributes:nil))
+        mas.append(AttributedString(string: "123 Main Street, Anytown, CA 91234", attributes: nil))
+        mas.append(AttributedString(string: "\n\n", attributes:nil))
+        mas.append(AttributedString(string: "tomorrow at 4 PM", attributes: nil))
 
         
         self.tv.attributedText = mas
@@ -106,7 +106,7 @@ class ViewController : UIViewController {
     }
     
     func thumbnailOfImage(name:String, extension ext: String) -> UIImage {
-        let url = NSBundle.main().urlForResource(name,
+        let url = Bundle.main().urlForResource(name,
                 withExtension:ext)!
         let src = CGImageSourceCreateWithURL(url, nil)!
         let scale = UIScreen.main().scale
@@ -130,7 +130,7 @@ extension ViewController : UITextViewDelegate {
         return true
     }
     
-    func textView(_ textView: UITextView, shouldInteractWith URL: NSURL, in characterRange: NSRange) -> Bool {
+    func textView(_ textView: UITextView, shouldInteractWith URL: Foundation.URL, in characterRange: NSRange) -> Bool {
         print(URL)
         print((textView.text as NSString).substring(with:characterRange))
         return true

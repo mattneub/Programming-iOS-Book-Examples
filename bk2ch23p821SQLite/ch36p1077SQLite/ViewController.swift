@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBAction func doButton (_ sender:AnyObject!) {
         
         do {
-            let fm = NSFileManager()
+            let fm = FileManager()
             try fm.removeItem(atPath:self.dbpath) // in case we did this once already
         } catch {}
         

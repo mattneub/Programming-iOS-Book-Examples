@@ -30,7 +30,7 @@ class SearchResultsController : UITableViewController {
         return self.filteredData.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
         cell.textLabel!.text = self.filteredData[indexPath.row]
         return cell
@@ -45,7 +45,7 @@ extension SearchResultsController : UISearchResultsUpdating {
         let target = sb.text!
         self.filteredData = self.originalData.filter {
             s in
-            var options = NSStringCompareOptions.caseInsensitiveSearch
+            var options = NSString.CompareOptions.caseInsensitiveSearch
             // we now have scope buttons; 0 means "starts with"
             if searchController.searchBar.selectedScopeButtonIndex == 0 {
                 _ = options.insert(.anchoredSearch) // bug?

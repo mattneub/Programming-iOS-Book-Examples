@@ -6,7 +6,7 @@ class MyPeopleParser : MyXMLParserDelegate {
     
     var people = [Person]()
     
-    func parser(parser: NSXMLParser, didStartElement elementName: String,
+    func parser(_ parser: XMLParser, didStartElement elementName: String,
         namespaceURI: String?, qualifiedName qName: String?,
         attributes attributeDict: [NSObject : AnyObject]) {
             if elementName == "person" {

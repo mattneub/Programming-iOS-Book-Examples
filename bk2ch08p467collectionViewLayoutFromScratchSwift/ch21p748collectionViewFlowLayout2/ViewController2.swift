@@ -48,9 +48,9 @@ class ViewController2 : UICollectionViewController {
     // (this is what I couldn't get Apple to understand; how can the data source and delegate be different?)
     // so I forward delegation back to the other view controller
     
-    func collectionView(collectionView: UICollectionView,
+    func collectionView(_ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
             let cv = self.navigationController!.viewControllers[0] as! ViewController
             let result = cv.collectionView(collectionView, layout:collectionViewLayout,
                 sizeForItemAt:indexPath)

@@ -73,8 +73,8 @@ extension ContainerViewController : UISplitViewControllerDelegate {
     // in collapsed mode
     
     func splitViewController(_ svc: UISplitViewController,
-        collapseSecondaryViewController vc2: UIViewController,
-        ontoPrimaryViewController vc1: UIViewController) -> Bool {
+        collapseSecondary vc2: UIViewController,
+        onto vc1: UIViewController) -> Bool {
             return true
     }
 

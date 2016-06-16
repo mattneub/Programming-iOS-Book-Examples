@@ -74,7 +74,7 @@ class EditingViewController: UIViewController, GLKViewDelegate {
         r.size.width = CGFloat(self.glkview.drawableWidth)
         r.size.height = CGFloat(self.glkview.drawableHeight)
 
-        r = AVMakeRectWithAspectRatioInsideRect(output.extent.size, r)
+        r = AVMakeRect(aspectRatio: output.extent.size, insideRect: r)
         
         self.context.draw(output, in: r, from: output.extent)
     }
@@ -97,7 +97,7 @@ class EditingViewController: UIViewController, GLKViewDelegate {
         self.dismiss(animated:true) {
             _ in
             delay(0.1) {
-                self.delegate?.finishEditing(vignette:-1) // signal for removal
+                self.delegate?.finishEditing(vignette: -1) // signal for removal
             }
         }
     }

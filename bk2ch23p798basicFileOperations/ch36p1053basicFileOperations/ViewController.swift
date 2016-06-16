@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton2 (_ sender:AnyObject!) {
         do {
-            let fm = NSFileManager()
+            let fm = FileManager()
             let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             print(docsurl)
         } catch {
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
 
     @IBAction func doButton3 (_ sender:AnyObject!) {
         do {
-            let fm = NSFileManager()
+            let fm = FileManager()
             let suppurl = try fm.urlForDirectory(.applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             print(suppurl)
         } catch {
@@ -39,16 +39,16 @@ class ViewController: UIViewController {
 
     @IBAction func doButton4 (_ sender:AnyObject!) {
         do {
-            let fm = NSFileManager()
+            let fm = FileManager()
             let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let myfolder = docsurl.appendingPathComponent("MyFolder")
+            let myfolder = try docsurl.appendingPathComponent("MyFolder")
             
             try fm.createDirectory(at:myfolder, withIntermediateDirectories: true, attributes: nil)
 
             // if we get here, myfolder exists
             // let's put a couple of files into it
-            try "howdy".write(to: myfolder.appendingPathComponent("file1.txt"), atomically: true, encoding: NSUTF8StringEncoding)
-            try "greetings".write(to: myfolder.appendingPathComponent("file2.txt"), atomically: true, encoding: NSUTF8StringEncoding)
+            try "howdy".write(to: myfolder.appendingPathComponent("file1.txt"), atomically: true, encoding: String.Encoding.utf8)
+            try "greetings".write(to: myfolder.appendingPathComponent("file2.txt"), atomically: true, encoding: String.Encoding.utf8)
             print("ok")
         } catch {
             print(error)
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
 
     @IBAction func doButton5 (_ sender:AnyObject!) {
         do {
-            let fm = NSFileManager()
+            let fm = FileManager()
             let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let arr = try fm.contentsOfDirectory(at:docsurl, includingPropertiesForKeys: nil)
             arr.forEach{print($0.lastPathComponent!)}
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton7 (_ sender:AnyObject!) {
         do {
-            let fm = NSFileManager()
+            let fm = FileManager()
             let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let dir = fm.enumerator(at:docsurl, includingPropertiesForKeys: nil)!
             for case let f as NSURL in dir where f.pathExtension == "txt" {
@@ -88,23 +88,29 @@ class ViewController: UIViewController {
     
     @IBAction func doButton8 (_ sender:AnyObject!) {
         do {
-            let fm = NSFileManager()
+            let fm = FileManager()
             let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let moi = Person(firstName: "Matt", lastName: "Neuburg")
             let moidata = NSKeyedArchiver.archivedData(withRootObject: moi)
-            let moifile = docsurl.appendingPathComponent("moi.txt")
+            var moifile = try docsurl.appendingPathComponent("moi.txt")
             switch which {
             case 1:
-                moidata.write(to: moifile, atomically: true)
-                try moifile.setResourceValue(true, forKey: NSURLIsExcludedFromBackupKey)
+                try moidata.write(to: moifile, options: NSData.WritingOptions.dataWritingAtomic)
+                var rv = URLResourceValues() // * new way, very nice
+                rv.isExcludedFromBackup = true
+                try moifile.setResourceValues(rv)
             case 2:
                 // ==== the NSFileCoordinator way
                 let fc = NSFileCoordinator()
                 let intent = NSFileAccessIntent.writingIntent(with:moifile)
-                fc.coordinate(with:[intent], queue: NSOperationQueue.main()) {
+                fc.coordinate(with:[intent], queue: OperationQueue.main()) {
                     (err:NSError?) in
                     // compiler gets confused if a one-liner returns a BOOL result
-                    moidata.write(to: intent.url, atomically: true)
+                    do {
+                        try moidata.write(to: intent.url, options: NSData.WritingOptions.dataWritingAtomic)
+                    } catch {
+                        print(error)
+                    }
                 }
             default:break
             }
@@ -115,23 +121,27 @@ class ViewController: UIViewController {
     
     @IBAction func doButton9 (_ sender:AnyObject!) {
         do {
-            let fm = NSFileManager()
+            let fm = FileManager()
             let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let moifile = docsurl.appendingPathComponent("moi.txt")
+            let moifile = try docsurl.appendingPathComponent("moi.txt")
             switch which {
             case 1:
-                let persondata = NSData(contentsOf: moifile)!
+                let persondata = try Data(contentsOf: moifile)
                 let person = NSKeyedUnarchiver.unarchiveObject(with: persondata) as! Person
                 print(person)
             case 2:
                 // ==== the NSFileCoordinator way
                 let fc = NSFileCoordinator()
                 let intent = NSFileAccessIntent.readingIntent(with: moifile)
-                fc.coordinate(with: [intent], queue: NSOperationQueue.main()) {
+                fc.coordinate(with: [intent], queue: OperationQueue.main()) {
                     (err:NSError?) in
-                    let persondata = NSData(contentsOf: intent.url)!
-                    let person = NSKeyedUnarchiver.unarchiveObject(with: persondata) as! Person
-                    print(person)
+                    do {
+                        let persondata = try Data(contentsOf: intent.url)
+                        let person = NSKeyedUnarchiver.unarchiveObject(with: persondata) as! Person
+                        print(person)
+                    } catch {
+                        print(error)
+                    }
                 }
             default:break
             }

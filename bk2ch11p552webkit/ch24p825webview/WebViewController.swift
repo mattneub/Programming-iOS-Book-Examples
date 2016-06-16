@@ -34,7 +34,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     var activity = UIActivityIndicatorView()
     var oldOffset : NSValue? // use nil as indicator
     var oldHTMLString : String?
-    var oldBase : NSURL?
+    var oldBase : URL?
     
     var fontsize = 18
     var cssrule : String {
@@ -47,7 +47,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     }
     weak var wv : WKWebView!
     
-    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.restorationIdentifier = "wvc"
         self.restorationClass = self.dynamicType
@@ -85,7 +85,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         if let oldHTMLString = coder.decodeObject(forKey:"oldHTMLString") as? String {
             self.oldHTMLString = oldHTMLString
         }
-        if let oldBase = coder.decodeObject(forKey:"oldBase") as? NSURL {
+        if let oldBase = coder.decodeObject(forKey:"oldBase") as? URL {
             self.oldBase = oldBase
         }
     }
@@ -182,7 +182,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         guard let change = change else {return}
         switch keyPath {
         case "loading": // new:1 or 0
-            if let val = change[NSKeyValueChangeNewKey] as? Bool {
+            if let val = change[NSKeyValueChangeKey.newKey] as? Bool {
                 if val {
                     self.activity.startAnimating()
                 } else {
@@ -201,14 +201,14 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                 }
             }
         case "title": // not actually showing it in this example
-            if let val = change[NSKeyValueChangeNewKey] as? String {
+            if let val = change[NSKeyValueChangeKey.newKey] as? String {
                 print(val)
             }
         default:break
         }
     }
     
-    func swiped(g:UIGestureRecognizer) {
+    func swiped(_ g:UIGestureRecognizer) {
         print("swiped") // okay, you proved it!
     }
     
@@ -232,12 +232,12 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                 return
             }
             
-            let bodypath = NSBundle.main().pathForResource("htmlbody", ofType:"txt")!
-            let ss = try! String(contentsOfFile:bodypath, encoding:NSUTF8StringEncoding)
+            let bodypath = Bundle.main().pathForResource("htmlbody", ofType:"txt")!
+            let ss = try! String(contentsOfFile:bodypath, encoding:String.Encoding.utf8)
             
-            let templatepath = NSBundle.main().pathForResource("htmlTemplate", ofType:"txt")!
-            let base = NSURL.fileURL(withPath:templatepath)
-            var s = try! String(contentsOfFile:templatepath, encoding:NSUTF8StringEncoding)
+            let templatepath = Bundle.main().pathForResource("htmlTemplate", ofType:"txt")!
+            let base = URL(fileURLWithPath:templatepath)
+            var s = try! String(contentsOfFile:templatepath, encoding:String.Encoding.utf8)
             
             s = s.replacingOccurrences(of:"<maximagewidth>", with:"80%")
             s = s.replacingOccurrences(of:"<margin>", with:"10")
@@ -253,66 +253,66 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             self.oldHTMLString = s
             self.oldBase = base
         case 2:
-            let path = NSBundle.main().pathForResource("release", ofType:"pdf")!
-            let url = NSURL.fileURL(withPath:path)
+            let path = Bundle.main().pathForResource("release", ofType:"pdf")!
+            let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 3:
-            let path = NSBundle.main().pathForResource("testing", ofType:"pdf")!
-            let url = NSURL.fileURL(withPath:path)
+            let path = Bundle.main().pathForResource("testing", ofType:"pdf")!
+            let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 4:
-            let path = NSBundle.main().pathForResource("test", ofType:"rtf")!
-            let url = NSURL.fileURL(withPath:path)
+            let path = Bundle.main().pathForResource("test", ofType:"rtf")!
+            let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 5:
-            let path = NSBundle.main().pathForResource("test", ofType:"doc")!
-            let url = NSURL.fileURL(withPath:path)
+            let path = Bundle.main().pathForResource("test", ofType:"doc")!
+            let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 6:
-            let path = NSBundle.main().pathForResource("test", ofType:"docx")!
-            let url = NSURL.fileURL(withPath:path)
+            let path = Bundle.main().pathForResource("test", ofType:"docx")!
+            let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 7:
-            let path = NSBundle.main().pathForResource("test", ofType:"pages")! // blank on device
-            let url = NSURL.fileURL(withPath:path)
+            let path = Bundle.main().pathForResource("test", ofType:"pages")! // blank on device
+            let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 8:
-            let path = NSBundle.main().pathForResource("test.pages", ofType:"zip")! // slow, but it does work!
-            let url = NSURL.fileURL(withPath:path)
+            let path = Bundle.main().pathForResource("test.pages", ofType:"zip")! // slow, but it does work!
+            let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 9:
-            let path = NSBundle.main().pathForResource("test", ofType:"rtfd")! // blank on device
-            let url = NSURL.fileURL(withPath:path)
+            let path = Bundle.main().pathForResource("test", ofType:"rtfd")! // blank on device
+            let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 10:
-            let path = NSBundle.main().pathForResource("test.rtfd", ofType:"zip")! // displays "Unable to Read Document."
-            let url = NSURL.fileURL(withPath:path)
+            let path = Bundle.main().pathForResource("test.rtfd", ofType:"zip")! // displays "Unable to Read Document."
+            let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 11:
-            let path = NSBundle.main().pathForResource("htmlbody", ofType:"txt")!
-            let url = NSURL.fileURL(withPath:path)
+            let path = Bundle.main().pathForResource("htmlbody", ofType:"txt")!
+            let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 12:
-            let url = NSURL(string: "http://www.apeth.com/rez/release.pdf")!
-            self.wv.load(NSURLRequest(url: url))
+            let url = URL(string: "http://www.apeth.com/rez/release.pdf")!
+            self.wv.load(URLRequest(url: url))
         case 13:
-            let url = NSURL(string: "http://www.apeth.com/rez/testing.pdf")!
-            self.wv.load(NSURLRequest(url: url))
+            let url = URL(string: "http://www.apeth.com/rez/testing.pdf")!
+            self.wv.load(URLRequest(url: url))
         case 14:
-            let url = NSURL(string: "http://www.apeth.com/rez/test.rtf")!
-            self.wv.load(NSURLRequest(url: url))
+            let url = URL(string: "http://www.apeth.com/rez/test.rtf")!
+            self.wv.load(URLRequest(url: url))
         case 15:
-            let url = NSURL(string: "http://www.apeth.com/rez/test.doc")!
-            self.wv.load(NSURLRequest(url: url))
+            let url = URL(string: "http://www.apeth.com/rez/test.doc")!
+            self.wv.load(URLRequest(url: url))
         case 16:
-            let url = NSURL(string: "http://www.apeth.com/rez/test.docx")!
-            self.wv.load(NSURLRequest(url: url))
+            let url = URL(string: "http://www.apeth.com/rez/test.docx")!
+            self.wv.load(URLRequest(url: url))
         case 17:
-            let url = NSURL(string: "http://www.apeth.com/rez/test.pages.zip")!
-            self.wv.load(NSURLRequest(url: url))
+            let url = URL(string: "http://www.apeth.com/rez/test.pages.zip")!
+            self.wv.load(URLRequest(url: url))
         case 18:
-            let url = NSURL(string: "http://www.apeth.com/rez/test.rtfd.zip")! // nope :(
-            self.wv.load(NSURLRequest(url: url))
+            let url = URL(string: "http://www.apeth.com/rez/test.rtfd.zip")! // nope :(
+            self.wv.load(URLRequest(url: url))
 
         default: break
         }

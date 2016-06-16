@@ -2,14 +2,12 @@
 
 import UIKit
 import Photos
-func delay(delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+
+func delay(_ delay:Double, closure:()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
+
 
 // this crashes the compiler, so I'm forced to enumerate results "by hand"
 // seems unfair that PHFetchResult adopts NSFastEnumeration in Objective-C but can't say for...in in Swift
@@ -39,7 +37,7 @@ class ViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "No", style: .cancel))
             alert.addAction(UIAlertAction(title: "OK", style: .default) {
                 _ in
-                let url = NSURL(string:UIApplicationOpenSettingsURLString)!
+                let url = URL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
             })
             self.present(alert, animated:true)
@@ -50,7 +48,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
         PHPhotoLibrary.shared().register(self) // *
     }
 
@@ -62,13 +60,13 @@ class ViewController: UIViewController {
         }
         
         let opts = PHFetchOptions()
-        let desc = NSSortDescriptor(key: "startDate", ascending: true)
+        let desc = SortDescriptor(key: "startDate", ascending: true)
         opts.sortDescriptors = [desc]
         let result = PHCollectionList.fetchCollectionLists(with:
             .momentList, subtype: .momentListYear, options: opts)
         for ix in 0..<result.count {
             let list = result[ix]
-            let f = NSDateFormatter()
+            let f = DateFormatter()
             f.dateFormat = "yyyy"
             print(f.string(from:list.startDate!))
             // return;
@@ -218,7 +216,8 @@ extension ViewController : PHPhotoLibraryChangeObserver {
         print(changeInfo)
         if self.albums !== nil {
             if let details = changeInfo.changeDetails(for:unsafeBitCast(self.albums, to: PHFetchResult<AnyObject>.self)) {
-                dispatch_async(dispatch_get_main_queue()) { // NB get on main queue if necessary
+                // NB get on main queue if necessary
+                DispatchQueue.main.async {
                     print("inserted: \(details.insertedObjects)")
                     print("changed: \(details.changedObjects)")
                     self.albums = unsafeBitCast(details.fetchResultAfterChanges, to: PHFetchResult<PHAssetCollection>.self)

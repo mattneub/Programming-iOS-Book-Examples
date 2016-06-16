@@ -42,7 +42,7 @@ class RootViewController : UITableViewController {
         return 1000 // make a lot of rows this time!
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) as! MyCell
 
         let lab = cell.theLabel!

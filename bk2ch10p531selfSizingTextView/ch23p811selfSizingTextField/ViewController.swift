@@ -35,7 +35,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         self.tv.attributedText = mas
         
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             self.adjustHeight(self.tv)
         }
         

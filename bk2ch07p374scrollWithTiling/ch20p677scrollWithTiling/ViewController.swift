@@ -46,7 +46,7 @@ class ViewController : UIViewController {
 
 class TiledView : UIView {
     
-    let drawQueue = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL)
+    let drawQueue = DispatchQueue(label: "drawQueue", attributes: DispatchQueueAttributes.serial)
 
     
     override class func layerClass() -> AnyClass {
@@ -62,7 +62,7 @@ class TiledView : UIView {
     */
     
     override func draw(_ r: CGRect) {
-        dispatch_sync(drawQueue!, { // work around nasty thread issue...
+        drawQueue.sync { // work around nasty thread issue...
             // we are called twice simultaneously on two different background threads!
             
             NSLog("%@", "drawRect: \(r)")
@@ -71,7 +71,7 @@ class TiledView : UIView {
             let x = Int(tile.origin.x/kTILESIZE)
             let y = Int(tile.origin.y/kTILESIZE)
             let tileName = String(format:"CuriousFrog_500_\(x+3)_\(y)")
-            let path = NSBundle.main().pathForResource(tileName, ofType:"png")!
+            let path = Bundle.main().pathForResource(tileName, ofType:"png")!
             let image = UIImage(contentsOfFile:path)!
             
             image.draw(at:CGPoint(CGFloat(x)*kTILESIZE,CGFloat(y)*kTILESIZE))
@@ -81,7 +81,7 @@ class TiledView : UIView {
             let bp = UIBezierPath(rect: r)
             UIColor.white().setStroke()
             bp.stroke()
-        })
+        }
     }
 }
 

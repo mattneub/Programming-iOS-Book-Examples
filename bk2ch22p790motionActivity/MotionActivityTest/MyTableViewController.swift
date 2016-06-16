@@ -8,7 +8,7 @@ class MyTableViewController: UITableViewController {
     let actman = CMMotionActivityManager()
     var authorized = false
     var data : [CMMotionActivity]!
-    var queue = NSOperationQueue()
+    var queue = OperationQueue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +38,8 @@ class MyTableViewController: UITableViewController {
         // there is no direct authorization check
         // instead, we attempt to "tickle" the activity manager and see if we get an error
         // this will cause the system authorization dialog to be presented if necessary
-        let now = NSDate()
-        self.actman.queryActivityStarting(from: now, to:now, to:NSOperationQueue.main()) {
+        let now = Date()
+        self.actman.queryActivityStarting(from: now, to:now, to:OperationQueue.main()) {
             (arr:[CMMotionActivity]?, err:NSError?) in
             let notauth = Int(CMErrorMotionActivityNotAuthorized.rawValue)
             if err != nil && err!.code == notauth {
@@ -59,7 +59,7 @@ class MyTableViewController: UITableViewController {
         }
         // there are two approaches: live and historical
         // collect historical data
-        let now = NSDate()
+        let now = Date()
         let yester = now.addingTimeInterval(-60*60*24)
         self.actman.queryActivityStarting(from: yester, to: now, to: self.queue) {
             (arr:[CMMotionActivity]?, err:NSError?) -> Void in
@@ -75,7 +75,7 @@ class MyTableViewController: UITableViewController {
                     acts.remove(at:i)
                 }
             }
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.data = acts
                 self.tableView.reloadData()
             }
@@ -108,11 +108,11 @@ class MyTableViewController: UITableViewController {
         return 0
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
 
         let act = self.data[indexPath.row]
-        let format = NSDateFormatter()
+        let format = DateFormatter()
         format.dateFormat = "MMM d, HH:mm:ss"
         cell.textLabel!.text = format.string(from: act.startDate)
         cell.detailTextLabel!.text = act.overallAct()

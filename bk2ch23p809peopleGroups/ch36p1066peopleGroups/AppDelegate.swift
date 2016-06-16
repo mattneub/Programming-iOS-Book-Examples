@@ -13,7 +13,7 @@ So how do you enable it for iCloud? Just turn on iCloud under Capabilities.
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
-    var ubiq : NSURL!
+    var ubiq : URL!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // this is the other part of iCloud-enablement
@@ -21,11 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // other classes will see that we have set ubiq and will use it
         // NB should start by asking for the file manager's ubiquityIdentityToken
         // if it doesn't exist, there is no iCloud account
-        dispatch_async(dispatch_get_global_queue(0, 0)) {
-            let fm = NSFileManager()
+        let q = DispatchQueue.GlobalAttributes.qosDefault
+        DispatchQueue.global(attributes: q).async {
+            let fm = FileManager()
             let ubiq = fm.urlForUbiquityContainerIdentifier(nil)
             print("ubiq: \(ubiq)")
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.ubiq = ubiq
             }
         }

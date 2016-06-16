@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		326181121BB7525A00A86328 /* PianoBell.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 326181111BB7525A00A86328 /* PianoBell.sf2 */; settings = {ASSET_TAGS = (); }; };
+		326181121BB7525A00A86328 /* PianoBell.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 326181111BB7525A00A86328 /* PianoBell.sf2 */; };
 		32D5254C1BB7294900AC8363 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D5254B1BB7294900AC8363 /* AppDelegate.swift */; };
 		32D5254E1BB7294900AC8363 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D5254D1BB7294900AC8363 /* ViewController.swift */; };
 		32D525511BB7294900AC8363 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D5254F1BB7294900AC8363 /* Main.storyboard */; };
 		32D525531BB7294900AC8363 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32D525521BB7294900AC8363 /* Assets.xcassets */; };
 		32D525561BB7294900AC8363 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D525541BB7294900AC8363 /* LaunchScreen.storyboard */; };
-		32D5255E1BB7296900AC8363 /* presto.mid in Resources */ = {isa = PBXBuildFile; fileRef = 32D5255D1BB7296900AC8363 /* presto.mid */; settings = {ASSET_TAGS = (); }; };
+		32D5255E1BB7296900AC8363 /* presto.mid in Resources */ = {isa = PBXBuildFile; fileRef = 32D5255D1BB7296900AC8363 /* presto.mid */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +101,7 @@
 				TargetAttributes = {
 					32D525471BB7294900AC8363 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -205,7 +206,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -243,7 +244,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -258,6 +259,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.MIDITest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -269,6 +271,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.MIDITest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

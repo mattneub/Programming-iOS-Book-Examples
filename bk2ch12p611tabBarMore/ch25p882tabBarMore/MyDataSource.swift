@@ -21,7 +21,7 @@ class MyDataSource: NSObject, UITableViewDataSource {
         return self.originalDataSource.tableView(tv, numberOfRowsInSection: sec)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // this is why we are here
         let cell = self.originalDataSource.tableView(tableView, cellForRowAt: indexPath)
         cell.textLabel!.font = UIFont(name: "GillSans-Bold", size: 14)!

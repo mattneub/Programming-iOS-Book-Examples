@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		32A579381993EB3200221E36 /* MyShrinkingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A579371993EB3200221E36 /* MyShrinkingButton.swift */; };
 		32A5793A1993ED8300221E36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A579391993ED8300221E36 /* ViewController.swift */; };
-		32AF53AA1B9F960200CFCD3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AF53A91B9F960200CFCD3E /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		32AF53AC1B9F960600CFCD3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF53AB1B9F960600CFCD3E /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		32AF53AA1B9F960200CFCD3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AF53A91B9F960200CFCD3E /* LaunchScreen.storyboard */; };
+		32AF53AC1B9F960600CFCD3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF53AB1B9F960600CFCD3E /* AppDelegate.swift */; };
 		C9166623181ED1D700D07DE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9166621181ED1D700D07DE8 /* Main.storyboard */; };
 		C9166628181ED1D700D07DE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9166627181ED1D700D07DE8 /* Images.xcassets */; };
 		C9166645181ED20D00D07DE8 /* coin2.png in Resources */ = {isa = PBXBuildFile; fileRef = C9166644181ED20D00D07DE8 /* coin2.png */; };
@@ -99,6 +99,11 @@
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					C916660B181ED1D700D07DE8 = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = C9166607181ED1D700D07DE8 /* Build configuration list for PBXProject "ch25p866button" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -190,7 +195,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -223,7 +228,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -242,6 +247,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -258,6 +264,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

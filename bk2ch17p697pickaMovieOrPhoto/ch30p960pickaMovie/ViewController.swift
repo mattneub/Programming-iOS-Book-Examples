@@ -4,14 +4,12 @@ import UIKit
 import MobileCoreServices
 import Photos
 import AVKit
-func delay(delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+
+func delay(_ delay:Double, closure:()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
 }
+
 
 class ViewController: UIViewController {
     @IBOutlet var redView : UIView!
@@ -45,7 +43,7 @@ class ViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "No", style: .cancel))
             alert.addAction(UIAlertAction(title: "OK", style: .default) {
                 _ in
-                let url = NSURL(string:UIApplicationOpenSettingsURLString)!
+                let url = URL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
             })
             self.present(alert, animated:true)
@@ -62,12 +60,12 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NSNotificationCenter.default().removeObserver(self)
+        NotificationCenter.default().removeObserver(self)
     }
     
     @IBAction func doPick (_ sender:AnyObject!) {
@@ -129,7 +127,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     func imagePickerController(_ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String : AnyObject]) { //
             print(info[UIImagePickerControllerReferenceURL])
-            let url = info[UIImagePickerControllerMediaURL] as? NSURL
+            let url = info[UIImagePickerControllerMediaURL] as? URL
             var im = info[UIImagePickerControllerOriginalImage] as? UIImage
             let edim = info[UIImagePickerControllerEditedImage] as? UIImage
             if edim != nil {
@@ -171,7 +169,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         self.redView.addSubview(iv)
     }
     
-    func showMovie(url:NSURL) {
+    func showMovie(url:URL) {
         self.clearAll()
         let av = AVPlayerViewController()
         let player = AVPlayer(url:url)

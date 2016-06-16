@@ -30,7 +30,7 @@ class SecondViewController: UIViewController {
     }
     
     func doUse(_ sender:AnyObject) {
-        let vc = self.presenting as! ViewController
+        let vc = self.presentingViewController as! ViewController
         vc.doUse(self.image)
     }
 }

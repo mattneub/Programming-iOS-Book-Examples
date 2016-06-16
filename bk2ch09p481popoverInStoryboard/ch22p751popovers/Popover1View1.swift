@@ -46,12 +46,12 @@ class Popover1View1 : UITableViewController {
         return result
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
         
         let section = indexPath.section
         let row = indexPath.row
-        let choice = NSUserDefaults.standard().integer(forKey:"choice")
+        let choice = UserDefaults.standard().integer(forKey:"choice")
         switch section {
         case 0:
             switch row {
@@ -69,12 +69,12 @@ class Popover1View1 : UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = indexPath.section
         let row = indexPath.row
         switch section {
         case 0:
-            NSUserDefaults.standard().set(row, forKey:"choice")
+            UserDefaults.standard().set(row, forKey:"choice")
             tableView.reloadData()
         default:break
         }

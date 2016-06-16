@@ -11,7 +11,7 @@
 		328BBD6C1B967EF6009CBAA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BBD6A1B967EF6009CBAA2 /* Main.storyboard */; };
 		328BBD6E1B967EF6009CBAA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 328BBD6D1B967EF6009CBAA2 /* Assets.xcassets */; };
 		328BBD711B967EF6009CBAA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BBD6F1B967EF6009CBAA2 /* LaunchScreen.storyboard */; };
-		328BBD7B1B968043009CBAA2 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BBD7A1B968043009CBAA2 /* RootViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		328BBD7B1B968043009CBAA2 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BBD7A1B968043009CBAA2 /* RootViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +95,7 @@
 				TargetAttributes = {
 					328BBD621B967EF6009CBAA2 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -197,7 +198,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -235,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -250,6 +251,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.LabelTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -261,6 +263,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.LabelTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -283,6 +286,7 @@
 				328BBD771B967EF6009CBAA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

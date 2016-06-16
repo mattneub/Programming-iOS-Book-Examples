@@ -13,7 +13,7 @@ class RootViewController : UITableViewController {
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: NSBundle.main().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
+        let s = try! String(contentsOfFile: Bundle.main().pathForResource("states", ofType: "txt")!, encoding: String.Encoding.utf8)
         let states = s.components(separatedBy:"\n")
         var previous = ""
         for aState in states {
@@ -44,7 +44,7 @@ class RootViewController : UITableViewController {
         return self.sectionData[section].count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) as! MyCell // *
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
@@ -92,7 +92,7 @@ class RootViewController : UITableViewController {
                     metrics:nil, views:["lab":lab])
                 ].flatten().map{$0})
         }
-        let lab = h.contentView.withTag(1) as! UILabel
+        let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
         return h
         
@@ -104,17 +104,17 @@ class RootViewController : UITableViewController {
     
     // menu handling ==========
     
-    override func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
         let mi = UIMenuItem(title: "Abbrev", action: #selector(MyCell.abbrev))
         UIMenuController.shared().menuItems = [mi]
         return true
     }
     
-    override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
+    override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: AnyObject?) -> Bool {
         return action == #selector(copy(_:)) || action == #selector(MyCell.abbrev)
     }
     
-    override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: NSIndexPath, withSender sender: AnyObject?) {
+    override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: AnyObject?) {
         if action == #selector(copy(_:)) {
             // ... do whatever copying consists of ...
             print("copying \(self.sectionData[indexPath.section][indexPath.row])")

@@ -19,8 +19,8 @@ class MyTextField: UITextField {
     // func dummy(_:AnyObject) {}
     
     let list : [String] = {
-        let path = NSBundle.main().urlForResource("abbreviations", withExtension:"txt")!
-        let s = try! String(contentsOf:path, encoding:NSUTF8StringEncoding)
+        let path = Bundle.main().urlForResource("abbreviations", withExtension:"txt")!
+        let s = try! String(contentsOf:path, encoding:String.Encoding.utf8)
         return s.components(separatedBy:"\n")
         }()
     

@@ -31,7 +31,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     var searcher : UISearchController!
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: NSBundle.main().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
+        let s = try! String(contentsOfFile: Bundle.main().pathForResource("states", ofType: "txt")!, encoding: String.Encoding.utf8)
         let states = s.components(separatedBy:"\n")
         var previous = ""
         for aState in states {
@@ -100,7 +100,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         return self.sectionData[section].count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
@@ -153,7 +153,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
                     metrics:nil, views:["lab":lab])
             ].flatten().map{$0})
         }
-        let lab = h.contentView.withTag(1) as! UILabel
+        let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
         return h
         
@@ -172,16 +172,16 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
 }
 
 extension RootViewController : UISearchControllerDelegate {
-    func present(_ searchController: UISearchController) { print(#function) }
-    func willPresent(_ searchController: UISearchController) { print(#function) }
-    func didPresent(_ searchController: UISearchController) { print(#function) }
+    func presentSearchController(_ searchController: UISearchController) { print(#function) }
+    func willPresentSearchController(_ searchController: UISearchController) { print(#function) }
+    func didPresentSearchController(_ searchController: UISearchController) { print(#function) }
     // these next functions are not called, I regard this as a bug
-    func willDismiss(_ searchController: UISearchController) { print(#function) }
-    func didDismiss(_ searchController: UISearchController) { print(#function) }
+    func willDismissSearchController(_ searchController: UISearchController) { print(#function) }
+    func didDismissSearchController(_ searchController: UISearchController) { print(#function) }
 }
 
 extension RootViewController : UIPopoverPresentationControllerDelegate {
-    func prepare(forPopoverPresentation pop: UIPopoverPresentationController) {
+    func prepareForPopoverPresentation(_ pop: UIPopoverPresentationController) {
         print("prepare")
 //        print(pop.sourceView)
 //        print(pop.passthroughViews)

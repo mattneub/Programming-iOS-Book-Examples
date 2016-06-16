@@ -38,7 +38,7 @@ extension SearchResultsController : UISearchResultsUpdating {
     }
 }
 extension SearchResultsController : UIGestureRecognizerDelegate {
-    func tap(g:UITapGestureRecognizer) {
+    func tap(_ g:UITapGestureRecognizer) {
         // find the UISearchController and dismiss it
         var r : UIResponder = g.view!
         while !(r is UISearchController) {r = r.next()!}
@@ -85,7 +85,7 @@ class ChildViewController : UITableViewController {
         return self.filteredData.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
         cell.textLabel!.text = self.filteredData[indexPath.row]
         return cell
@@ -108,7 +108,7 @@ extension ChildViewController : UISearchResultsUpdating {
         let target = sb.text!
         self.filteredData = self.originalData.filter {
             s in
-            let options = NSStringCompareOptions.caseInsensitiveSearch
+            let options = NSString.CompareOptions.caseInsensitiveSearch
             let found = s.range(of:target, options: options)
             return (found != nil)
         }

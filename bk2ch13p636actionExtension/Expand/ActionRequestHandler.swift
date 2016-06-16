@@ -6,8 +6,8 @@ import MobileCoreServices
 class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
     
     let list : [String] = {
-        let path = NSBundle.main().urlForResource("abbreviations", withExtension:"txt")!
-        let s = try! String(contentsOf:path, encoding:NSUTF8StringEncoding)
+        let path = Bundle.main().urlForResource("abbreviations", withExtension:"txt")!
+        let s = try! String(contentsOf:path, encoding:String.Encoding.utf8)
         return s.components(separatedBy:"\n")
         }()
     
@@ -29,8 +29,8 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
         }
         provider.loadItem(forTypeIdentifier: self.desiredType) {
             (item:NSSecureCoding?, err:NSError!) -> () in
-            dispatch_async(dispatch_get_main_queue()) {
-                self.process(item:item as? String)
+            DispatchQueue.main.async {
+                self.process(item: item as? String)
             }
         }
     }

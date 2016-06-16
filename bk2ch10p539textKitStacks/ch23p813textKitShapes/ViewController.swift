@@ -18,8 +18,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let path = NSBundle.main().pathForResource("brillig", ofType: "txt")!
-        let s = try! String(contentsOfFile:path, encoding: NSUTF8StringEncoding)
+        let path = Bundle.main().pathForResource("brillig", ofType: "txt")!
+        let s = try! String(contentsOfFile:path, encoding: String.Encoding.utf8)
         let s2 = s.replacingOccurrences(of:"\n", with: "")
         let mas = NSMutableAttributedString(string:s2, attributes:[
             NSFontAttributeName: UIFont(name:"GillSans", size:14)!

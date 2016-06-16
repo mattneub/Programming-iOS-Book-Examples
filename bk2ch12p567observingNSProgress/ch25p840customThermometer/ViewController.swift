@@ -25,14 +25,14 @@ extension CGVector {
 
 
 class ProgressingOperation {
-    let progress : NSProgress
+    let progress : Progress
     init(units:Int) {
-        self.progress = NSProgress(totalUnitCount: Int64(units))
+        self.progress = Progress(totalUnitCount: Int64(units))
     }
     func start() {
-        NSTimer.scheduledTimer(timeInterval:0.4, target: self, selector: #selector(inc), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval:0.4, target: self, selector: #selector(inc), userInfo: nil, repeats: true)
     }
-    @objc func inc(t:NSTimer) {
+    @objc func inc(_ t:Timer) {
         self.progress.completedUnitCount += 1
         if self.progress.fractionCompleted >= 1.0 {
             t.invalidate()
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
 
         // architecture 2: progress view's observedProgress is parent of distant NSProgress
         
-        self.prog2.observedProgress = NSProgress.discreteProgress(totalUnitCount: 10)
+        self.prog2.observedProgress = Progress.discreteProgress(totalUnitCount: 10)
         self.prog2.observedProgress?.becomeCurrent(withPendingUnitCount: 10)
         self.op2 = ProgressingOperation(units:10) // automatically becomes child!
         self.prog2.observedProgress?.resignCurrent()
@@ -81,8 +81,8 @@ class ViewController: UIViewController {
 
     }
     override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
-        if let _ = object as? NSProgress {
-            if let frac = change?[NSKeyValueChangeNewKey] as? CGFloat {
+        if let _ = object as? Progress {
+            if let frac = change?[NSKeyValueChangeKey.newKey] as? CGFloat {
                 self.prog3.value = frac
                 self.prog3.setNeedsDisplay()
             }

@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		324675ED18A5516B009EFE78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 324675EB18A5516B009EFE78 /* Main.storyboard */; };
 		324675F218A5516B009EFE78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 324675F118A5516B009EFE78 /* Assets.xcassets */; };
-		328BBD311B962345009CBAA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BBD301B962345009CBAA2 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		328BBD331B96235D009CBAA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BBD321B96235D009CBAA2 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		328BBD311B962345009CBAA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BBD301B962345009CBAA2 /* LaunchScreen.storyboard */; };
+		328BBD331B96235D009CBAA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BBD321B96235D009CBAA2 /* AppDelegate.swift */; };
 		32C3F5A519E9A2F90043C7F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C3F5A419E9A2F90043C7F6 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +93,11 @@
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					324675D518A5516A009EFE78 = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = 324675D118A5516A009EFE78 /* Build configuration list for PBXProject "AttributedTextAsSecretMarking" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -181,7 +186,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -213,7 +218,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -230,6 +235,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -244,6 +250,7 @@
 				INFOPLIST_FILE = "AttributedTextAsSecretMarking/AttributedTextAsSecretMarking-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

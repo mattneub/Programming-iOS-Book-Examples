@@ -11,13 +11,13 @@ class ViewController: UIViewController {
     }
 
     let motman = CMMotionManager()
-    var polltimer : NSTimer!
+    var polltimer : Timer!
     var canceltimer : CancelableTimer!
     
     var oldX = 0.0
     var oldY = 0.0
     var oldZ = 0.0
-    var oldTime : NSTimeInterval = 0
+    var oldTime : TimeInterval = 0
     var lastSlap = Slap.unknown
     
     @IBAction func doButton (_ sender:AnyObject!) {
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         print("starting")
         self.motman.accelerometerUpdateInterval = 1.0 / 30.0
         self.motman.startAccelerometerUpdates()
-        self.polltimer = NSTimer.scheduledTimer(timeInterval:self.motman.accelerometerUpdateInterval, target: self, selector: #selector(pollAccel), userInfo: nil, repeats: true)
+        self.polltimer = Timer.scheduledTimer(timeInterval:self.motman.accelerometerUpdateInterval, target: self, selector: #selector(pollAccel), userInfo: nil, repeats: true)
     }
     
     func add(acceleration accel:CMAcceleration) {
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
                 self.canceltimer = CancelableTimer(once: true) {
                     print("left")
                 }
-                self.canceltimer.start(interval:0.5)
+                self.canceltimer.start(withInterval:0.5)
             }
         } else if x > thresh {
             if dat.timestamp - self.oldTime > 0.5 || self.lastSlap == .left {
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
                 self.canceltimer = CancelableTimer(once: true) {
                     print("right")
                 }
-                self.canceltimer.start(interval:0.5)
+                self.canceltimer.start(withInterval:0.5)
             }
         }
     }

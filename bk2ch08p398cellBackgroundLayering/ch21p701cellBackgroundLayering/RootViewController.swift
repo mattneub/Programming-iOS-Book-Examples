@@ -34,7 +34,7 @@ class RootViewController : UITableViewController {
     has none of those issues, and the cell will never be an Optional (or nil) ever again.
 */
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell : UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         if cell == nil {
             cell = UITableViewCell(style:.default, reuseIdentifier:cellIdentifier)

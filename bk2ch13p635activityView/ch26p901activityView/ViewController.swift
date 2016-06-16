@@ -4,10 +4,10 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBAction func doButton (_ sender:AnyObject) {
-        let url = NSBundle.main().urlForResource("sunglasses", withExtension:"png")!
+        let url = Bundle.main().urlForResource("sunglasses", withExtension:"png")!
         let things = ["This is a cool picture", url]
         // let avc = UIActivityViewController(activityItems:things, applicationActivities:nil)
-        let avc = UIActivityViewController(activityItems:things, applicationActivities:[MyCoolActivity(), MyElaborateActivity()])
+        let avc = UIActivityViewController(activityItems:things as [AnyObject], applicationActivities:[MyCoolActivity(), MyElaborateActivity()])
         // new in iOS 8, completionHander replaced by completionWithItemsHandlers
         // the reason is that an extension, using this same API, can return values
         avc.completionWithItemsHandler = {

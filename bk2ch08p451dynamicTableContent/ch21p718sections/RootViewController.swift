@@ -25,7 +25,7 @@ class RootViewController : UITableViewController {
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: NSBundle.main().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
+        let s = try! String(contentsOfFile: Bundle.main().pathForResource("states", ofType: "txt")!, encoding: String.Encoding.utf8)
         let states = s.components(separatedBy:"\n")
         var previous = ""
         for aState in states {
@@ -64,7 +64,7 @@ class RootViewController : UITableViewController {
         return self.sectionData[section].count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
@@ -116,7 +116,7 @@ class RootViewController : UITableViewController {
             tap.numberOfTapsRequired = 2 // *
             h.addGestureRecognizer(tap) // *
         }
-        let lab = h.contentView.withTag(1) as! UILabel
+        let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
         h.section = section // *
         return h
@@ -126,11 +126,11 @@ class RootViewController : UITableViewController {
         return self.sectionNames
     }
     
-    func tapped (g : UIGestureRecognizer) {
+    func tapped (_ g : UIGestureRecognizer) {
         let v = g.view as! MyHeaderView
         let sec = v.section
         let ct = self.sectionData[sec].count
-        let arr = (0..<ct).map {NSIndexPath(forRow:$0, inSection:sec)} // whoa! ***
+        let arr = (0..<ct).map {IndexPath(row:$0, section:sec)} // whoa! ***
         if self.hiddenSections.contains(sec) {
             self.hiddenSections.remove(sec)
             self.tableView.beginUpdates()

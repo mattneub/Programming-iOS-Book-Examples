@@ -33,7 +33,7 @@ class PopoverViewController: UIViewController {
     
     @IBAction func showOptions(_ sender:AnyObject) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        func handler(act:UIAlertAction!) {
+        func handler(_ act:UIAlertAction!) {
             print("User tapped \(act.title)")
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: handler))

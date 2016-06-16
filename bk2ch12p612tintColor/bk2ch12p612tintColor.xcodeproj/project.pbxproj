@@ -12,7 +12,7 @@
 		3211D32E1BA0D66B00ACCB9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3211D32C1BA0D66B00ACCB9F /* Main.storyboard */; };
 		3211D3301BA0D66B00ACCB9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3211D32F1BA0D66B00ACCB9F /* Assets.xcassets */; };
 		3211D3331BA0D66B00ACCB9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3211D3311BA0D66B00ACCB9F /* LaunchScreen.storyboard */; };
-		3211D33B1BA0D8D800ACCB9F /* MySpecialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3211D33A1BA0D8D800ACCB9F /* MySpecialButton.swift */; settings = {ASSET_TAGS = (); }; };
+		3211D33B1BA0D8D800ACCB9F /* MySpecialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3211D33A1BA0D8D800ACCB9F /* MySpecialButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +98,7 @@
 				TargetAttributes = {
 					3211D3241BA0D66B00ACCB9F = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -201,7 +202,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -239,7 +240,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -254,6 +255,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk2ch12p612tintColor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -265,6 +267,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk2ch12p612tintColor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -287,6 +290,7 @@
 				3211D3391BA0D66B00ACCB9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

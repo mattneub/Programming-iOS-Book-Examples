@@ -48,7 +48,7 @@ class RootViewController : UITableViewController {
     in a previous call to cellForRow).
 */
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) as! MyCell
         if cell.textLabel!.numberOfLines != 2 { // never previously configured
             cell.textLabel!.font = UIFont(name:"Helvetica-Bold", size:16)

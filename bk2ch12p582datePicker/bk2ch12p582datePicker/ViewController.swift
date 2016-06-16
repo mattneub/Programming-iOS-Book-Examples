@@ -16,11 +16,11 @@ class ViewController: UIViewController {
         case 1:
             dp.datePickerMode = .date
             // dp.datePickerMode = .DateAndTime
-            let dc = NSDateComponents()
+            var dc = DateComponents()
             dc.year = 1954
             dc.month = 1
             dc.day = 1
-            let c = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)!
+            let c = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
             let d1 = c.date(from: dc)!
             dp.minimumDate = d1
             dp.date = d1
@@ -38,14 +38,14 @@ class ViewController: UIViewController {
         let dp = sender as! UIDatePicker
         if dp.datePickerMode != .countDownTimer {
             let d = dp.date
-            let df = NSDateFormatter()
+            let df = DateFormatter()
             df.timeStyle = .fullStyle
             df.dateStyle = .fullStyle
             print(df.string(from: d))
             // Tuesday, August 10, 1954 at 3:16:00 AM GMT-07:00
         } else {
             let t = dp.countDownDuration
-            let f = NSDateComponentsFormatter()
+            let f = DateComponentsFormatter()
             f.allowedUnits = [.hour, .minute]
             f.unitsStyle = .abbreviated
             if let s = f.string(from: t) {

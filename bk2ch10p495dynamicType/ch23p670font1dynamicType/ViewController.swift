@@ -13,7 +13,7 @@ class ViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.default().addObserver(self, selector: #selector(doDynamicType), name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(doDynamicType), name: Notification.Name.UIContentSizeCategoryDidChange, object: nil)
         
 //        UIFont.familyNames().map {UIFont.fontNamesForFamilyName($0)}
 //            .forEach {(n:[String]) in n.forEach {print($0)}}

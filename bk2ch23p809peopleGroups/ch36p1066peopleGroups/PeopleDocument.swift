@@ -9,7 +9,7 @@ class PeopleDocument: UIDocument {
     override func load(fromContents contents: AnyObject,
         ofType typeName: String?) throws {
             print("loading \(typeName)")
-            if let contents = contents as? NSData {
+            if let contents = contents as? Data {
                 if let arr = NSKeyedUnarchiver.unarchiveObject(with: contents) as? [Person] {
                     self.people = arr
                     print("loaded \(self.people)")

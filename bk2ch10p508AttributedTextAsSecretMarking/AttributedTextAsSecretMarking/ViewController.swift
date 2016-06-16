@@ -10,7 +10,7 @@ class ViewController: UIViewController {
         let r = (mas.string as NSString).range(of:"^0")
         if r.length > 0 {
             mas.addAttribute("HERE", value: 1, range: r)
-            mas.replaceCharacters(in:r, with: NSDate().description)
+            mas.replaceCharacters(in:r, with: Date().description)
         } else {
             mas.enumerateAttribute("HERE", in: NSMakeRange(0, mas.length)) {
                 value, r, stop in

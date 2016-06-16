@@ -58,7 +58,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     }
 
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return scrollView.withTag(999)
+        return scrollView.viewWithTag(999)
     }
     
     @IBAction func tapped(_ tap : UIGestureRecognizer) {

@@ -52,15 +52,15 @@ class ViewController: UIViewController {
         }
         
         category.setActions([action1, action2], for: .default) // can have 4 for default, 2 for minimal
-        let settings = UIUserNotificationSettings(forTypes: types, categories: [category])
+        let settings = UIUserNotificationSettings(types: types, categories: [category])
         // prepare to proceed to next step
         var ob : NSObjectProtocol! = nil
-        ob = NSNotificationCenter.default().addObserver(forName: "didRegisterUserNotificationSettings", object: nil, queue: nil) {
+        ob = NotificationCenter.default().addObserver(forName: "didRegisterUserNotificationSettings" as Notification.Name, object: nil, queue: nil) {
             _ in
-            NSNotificationCenter.default().removeObserver(ob)
+            NotificationCenter.default().removeObserver(ob)
             self.createLocalNotification()
         }
-        UIApplication.shared().register(settings)
+        UIApplication.shared().registerUserNotificationSettings(settings)
         // if this app has never requested this registration,
         // it will put up a dialog asking if we can present alerts etc.
         // when the user accepts or refuses,
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
         ln.alertBody = "Time for another cup of coffee!"
         ln.category = self.categoryIdentifier // causes Options button to spring magically to life in alert
         // Options button will offer Open, action buttons, Close
-        ln.fireDate = NSDate(timeIntervalSinceNow:15)
+        ln.fireDate = NSDate(timeIntervalSinceNow:15) as Date
         ln.soundName = UILocalNotificationDefaultSoundName
         // ln.repeatInterval = .Minute
         UIApplication.shared().scheduleLocalNotification(ln)

@@ -52,7 +52,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 }
                 provider.loadItem(forTypeIdentifier: self.desiredType) {
                     (item:NSSecureCoding?, err:NSError!) -> () in
-                    dispatch_async(dispatch_get_main_queue()) {
+                    DispatchQueue.main.async {
                         if let s = item as? String {
                             self.tf.text = s
                         }

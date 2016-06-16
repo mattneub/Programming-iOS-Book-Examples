@@ -12,7 +12,7 @@ class ViewController : UIViewController {
     
     @IBOutlet var lab : UILabel!
     
-    func doDynamicType(_ n:NSNotification!) {
+    func doDynamicType(_ n:Notification!) {
         self.lab.font = UIFont.preferredFont(forTextStyle:UIFontTextStyleHeadline)
     }
     
@@ -52,13 +52,13 @@ class ViewController : UIViewController {
                     NSLog("%@", "downloading failed")
                 case .didFinish:
                     NSLog("%@", "matching did finish")
-                    dispatch_async(dispatch_get_main_queue(), {
+                    DispatchQueue.main.async {
                         let f : UIFont! = UIFont(name:name, size:size)
                         if f != nil {
                             NSLog("%@", "got the font!")
                             self.lab.font = f
                         }
-                        })
+                        }
                 default:break
                 }
                 return true

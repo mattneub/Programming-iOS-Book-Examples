@@ -21,7 +21,7 @@ class OtherViewController: UIViewController {
         }
         provider.loadItem(forTypeIdentifier: self.desiredType) {
             (item:NSSecureCoding?, err:NSError!) -> () in
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.s = item as? String
             }
         }

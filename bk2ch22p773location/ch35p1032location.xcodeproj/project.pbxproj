@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		3231507B182E903500B03F54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32315079182E903500B03F54 /* Main.storyboard */; };
 		32315080182E903500B03F54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3231507F182E903500B03F54 /* Assets.xcassets */; };
-		3267F4551BC8106600DF4F84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3267F4541BC8106600DF4F84 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		3267F4571BC8106A00DF4F84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3267F4561BC8106A00DF4F84 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		3267F4551BC8106600DF4F84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3267F4541BC8106600DF4F84 /* LaunchScreen.storyboard */; };
+		3267F4571BC8106A00DF4F84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3267F4561BC8106A00DF4F84 /* AppDelegate.swift */; };
 		32D6E5D719A8FE7000CA10C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D6E5D619A8FE7000CA10C7 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +95,7 @@
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					32315063182E903500B03F54 = {
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -191,7 +192,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -224,7 +225,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -243,6 +244,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -259,6 +261,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

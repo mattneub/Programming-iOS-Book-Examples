@@ -4,15 +4,15 @@ import UIKit
 
 class DocumentLister: UITableViewController {
     
-    var files = [NSURL]()
-    var docsurl : NSURL {
-        var url = NSURL()
+    var files = [URL]()
+    var docsurl : URL {
+        var url = NSURL() as URL // stopgap
         let del = UIApplication.shared().delegate
         if let ubiq = (del as! AppDelegate).ubiq {
             url = ubiq
         } else {
             do {
-                let fm = NSFileManager()
+                let fm = FileManager()
                 url = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             } catch {
                 print(error)
@@ -36,7 +36,7 @@ class DocumentLister: UITableViewController {
     func doRefresh (_:AnyObject?) {
         print("refreshing")
         do {
-            let fm = NSFileManager()
+            let fm = FileManager()
             self.files = try fm.contentsOfDirectory(at:
                 self.docsurl, includingPropertiesForKeys: nil)
                 .filter {
@@ -60,7 +60,7 @@ class DocumentLister: UITableViewController {
         av.addAction(UIAlertAction(title: "OK", style: .default) {
             _ in
             guard let name = av.textFields![0].text where !name.isEmpty else {return}
-            let url = self.docsurl.appendingPathComponent((name as NSString).appendingPathExtension("pplgrp")!)
+            let url = try! self.docsurl.appendingPathComponent((name as NSString).appendingPathExtension("pplgrp")!)
             // really should check to see if file by this name exists
             let pl = PeopleLister(fileURL: url)
             self.navigationController!.pushViewController(pl, animated: true)
@@ -81,7 +81,7 @@ class DocumentLister: UITableViewController {
         return self.files.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
         let fileURL = self.files[indexPath.row]
         cell.textLabel!.text = (fileURL.lastPathComponent! as NSString).deletingPathExtension
@@ -89,7 +89,7 @@ class DocumentLister: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pl = PeopleLister(fileURL: self.files[indexPath.row])
         self.navigationController!.pushViewController(pl, animated: true)
     }

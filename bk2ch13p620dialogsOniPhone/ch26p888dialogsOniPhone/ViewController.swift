@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         // no delegate needed merely to catch which button was tapped;
         // a UIAlertAction has a handler
         // here's a general handler (though none is needed if you want to ignore)
-        func handler(act:UIAlertAction!) {
+        func handler(_ act:UIAlertAction!) {
             print("User tapped \(act.title)")
         }
         // illustrating the three button styles
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
             tf.keyboardType = .numberPad
             tf.addTarget(self, action: #selector(self.textChanged), for: .editingChanged)
         }
-        func handler(act:UIAlertAction) {
+        func handler(_ act:UIAlertAction) {
             // it's a closure so we have a reference to the alert
             let tf = alert.textFields![0] 
             print("User entered \(tf.text), tapped \(act.title)")
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
     func doActionSheet(_ sender:AnyObject) {
         let action = UIAlertController(title: "Choose New Layout", message: nil, preferredStyle: .actionSheet)
         action.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in print("Cancel")}))
-        func handler(act:UIAlertAction) {
+        func handler(_ act:UIAlertAction) {
             print(act.title)
         }
         for s in ["3 by 3", "4 by 3", "4 by 4", "5 by 4", "5 by 5"] {

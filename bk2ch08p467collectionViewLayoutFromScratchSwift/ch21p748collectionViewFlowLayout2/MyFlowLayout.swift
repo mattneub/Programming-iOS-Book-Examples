@@ -59,7 +59,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         return arr
     }
     
-    override func layoutAttributesForItem(at indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         var atts = super.layoutAttributesForItem(at: indexPath)!
         if indexPath.item == 0 {
             return atts // degenerate case 1
@@ -67,7 +67,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         if atts.frame.origin.x - 1 <= self.sectionInset.left {
             return atts // degenerate case 2
         }
-        let ipPv = NSIndexPath(forItem:indexPath.item-1, inSection:indexPath.section)
+        let ipPv = IndexPath(item:indexPath.row-1, section:indexPath.section)
         let fPv = self.layoutAttributesForItem(at: ipPv)!.frame
         let rightPv = fPv.origin.x + fPv.size.width + self.minimumInteritemSpacing
         atts = atts.copy() as! UICollectionViewLayoutAttributes

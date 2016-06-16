@@ -75,7 +75,7 @@ class ViewController: UIViewController {
         // image (treated as template by default)
         
         let imleft = imageOfSize(CGSize(45,29)) {
-            NSAttributedString(string:"\u{21DA}", attributes:[
+            AttributedString(string:"\u{21DA}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: UIColor.white(),
                 NSParagraphStyleAttributeName: lend {
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         self.stepper.setDecrementImage(imleft, for:[])
         
         let imleftblack = imageOfSize(CGSize(45,29)) {
-            NSAttributedString(string:"\u{21DA}", attributes:[
+            AttributedString(string:"\u{21DA}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: UIColor.black(),
                 NSParagraphStyleAttributeName: lend {
@@ -99,7 +99,7 @@ class ViewController: UIViewController {
         self.stepper.setDecrementImage(imleftblack, for:.disabled)
 
         let imlefttint = imageOfSize(CGSize(45,29)) {
-            NSAttributedString(string:"\u{21DA}", attributes:[
+            AttributedString(string:"\u{21DA}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: self.stepper.tintColor,
                 NSParagraphStyleAttributeName: lend {
@@ -111,7 +111,7 @@ class ViewController: UIViewController {
         self.stepper.setDecrementImage(imlefttint, for:.highlighted)
 
         let imright = imageOfSize(CGSize(45,29)) {
-            NSAttributedString(string:"\u{21DB}", attributes:[
+            AttributedString(string:"\u{21DB}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: UIColor.white(),
                 NSParagraphStyleAttributeName: lend {
@@ -123,7 +123,7 @@ class ViewController: UIViewController {
         self.stepper.setIncrementImage(imright, for:[])
         
         let imrightblack = imageOfSize(CGSize(45,29)) {
-            NSAttributedString(string:"\u{21DB}", attributes:[
+            AttributedString(string:"\u{21DB}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: UIColor.black(),
                 NSParagraphStyleAttributeName: lend {
@@ -135,7 +135,7 @@ class ViewController: UIViewController {
         self.stepper.setIncrementImage(imrightblack, for:.disabled)
         
         let imrighttint = imageOfSize(CGSize(45,29)) {
-            NSAttributedString(string:"\u{21DB}", attributes:[
+            AttributedString(string:"\u{21DB}", attributes:[
                 NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
                 NSForegroundColorAttributeName: self.stepper.tintColor,
                 NSParagraphStyleAttributeName: lend {

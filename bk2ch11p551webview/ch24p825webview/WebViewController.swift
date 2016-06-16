@@ -12,7 +12,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         return self.view as! UIWebView
     }
     
-    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.restorationIdentifier = "wvc"
         self.restorationClass = self.dynamicType
@@ -96,7 +96,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         )
     }
     
-    func swiped(g:UIGestureRecognizer) {
+    func swiped(_ g:UIGestureRecognizer) {
         print("swiped") // okay, you proved it
     }
     
@@ -112,20 +112,20 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
             if self.wv.request != nil { // let applicationFinished handle reloading
                 return
             }
-            let url = NSURL(string: "http://www.apeth.com/RubyFrontierDocs/default.html")!
-            self.wv.loadRequest(NSURLRequest(url:url))
+            let url = URL(string: "http://www.apeth.com/RubyFrontierDocs/default.html")!
+            self.wv.loadRequest(URLRequest(url:url))
             return
         }
         
         var which : Int {return 1}
         switch which {
         case 1:
-            let path = NSBundle.main().pathForResource("htmlbody", ofType:"txt")!
-            let base = NSURL.fileURL(withPath:path)
-            let ss = try! String(contentsOfFile:path, encoding:NSUTF8StringEncoding)
+            let path = Bundle.main().pathForResource("htmlbody", ofType:"txt")!
+            let base = URL(fileURLWithPath:path)
+            let ss = try! String(contentsOfFile:path, encoding:String.Encoding.utf8)
             
-            let path2 = NSBundle.main().pathForResource("htmlTemplate", ofType:"txt")!
-            var s = try! String(contentsOfFile:path2, encoding:NSUTF8StringEncoding)
+            let path2 = Bundle.main().pathForResource("htmlTemplate", ofType:"txt")!
+            var s = try! String(contentsOfFile:path2, encoding:String.Encoding.utf8)
             
             s = s.replacingOccurrences(of:"<maximagewidth>", with:"80%")
             s = s.replacingOccurrences(of:"<fontsize>", with:"18")
@@ -139,45 +139,45 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
             
             self.wv.loadHTMLString(s, baseURL:base)
         case 2:
-            let path = NSBundle.main().pathForResource("release", ofType:"pdf")! // works in simulator, works in device
-            let url = NSURL.fileURL(withPath:path)
-            self.wv.loadRequest(NSURLRequest(url: url))
+            let path = Bundle.main().pathForResource("release", ofType:"pdf")! // works in simulator, works in device
+            let url = URL(fileURLWithPath:path)
+            self.wv.loadRequest(URLRequest(url: url))
         case 3:
-            let path = NSBundle.main().pathForResource("testing", ofType:"pdf")! // works in simulator, works in device
-            let url = NSURL.fileURL(withPath:path)
-            self.wv.loadRequest(NSURLRequest(url: url))
+            let path = Bundle.main().pathForResource("testing", ofType:"pdf")! // works in simulator, works in device
+            let url = URL(fileURLWithPath:path)
+            self.wv.loadRequest(URLRequest(url: url))
         case 4:
-            let path = NSBundle.main().pathForResource("test", ofType:"rtf")! // works in simulator, works in device (iOS 8.3, I think it was fixed in 8.1)
-            let url = NSURL.fileURL(withPath:path)
-            self.wv.loadRequest(NSURLRequest(url: url))
+            let path = Bundle.main().pathForResource("test", ofType:"rtf")! // works in simulator, works in device (iOS 8.3, I think it was fixed in 8.1)
+            let url = URL(fileURLWithPath:path)
+            self.wv.loadRequest(URLRequest(url: url))
         case 5:
-            let path = NSBundle.main().pathForResource("test", ofType:"doc")! // works in simulator, works on device!
-            let url = NSURL.fileURL(withPath:path)
-            self.wv.loadRequest(NSURLRequest(url: url))
+            let path = Bundle.main().pathForResource("test", ofType:"doc")! // works in simulator, works on device!
+            let url = URL(fileURLWithPath:path)
+            self.wv.loadRequest(URLRequest(url: url))
         case 6:
-            let path = NSBundle.main().pathForResource("test", ofType:"docx")!  // works in simulator, works on device
-            let url = NSURL.fileURL(withPath:path)
-            self.wv.loadRequest(NSURLRequest(url: url))
+            let path = Bundle.main().pathForResource("test", ofType:"docx")!  // works in simulator, works on device
+            let url = URL(fileURLWithPath:path)
+            self.wv.loadRequest(URLRequest(url: url))
         case 7:
-            let path = NSBundle.main().pathForResource("test", ofType:"pages")! // blank in simulator, blank on device, no message :(
-            let url = NSURL.fileURL(withPath:path)
-            self.wv.loadRequest(NSURLRequest(url: url))
+            let path = Bundle.main().pathForResource("test", ofType:"pages")! // blank in simulator, blank on device, no message :(
+            let url = URL(fileURLWithPath:path)
+            self.wv.loadRequest(URLRequest(url: url))
         case 8:
-            let path = NSBundle.main().pathForResource("test.pages", ofType:"zip")! // works in simulator! works on device, but unbelievably slow
-            let url = NSURL.fileURL(withPath:path)
-            self.wv.loadRequest(NSURLRequest(url: url))
+            let path = Bundle.main().pathForResource("test.pages", ofType:"zip")! // works in simulator! works on device, but unbelievably slow
+            let url = URL(fileURLWithPath:path)
+            self.wv.loadRequest(URLRequest(url: url))
         case 9:
-            let path = NSBundle.main().pathForResource("test", ofType:"rtfd")! // blank in simulator, blank on device, no message
-            let url = NSURL.fileURL(withPath:path)
-            self.wv.loadRequest(NSURLRequest(url: url))
+            let path = Bundle.main().pathForResource("test", ofType:"rtfd")! // blank in simulator, blank on device, no message
+            let url = URL(fileURLWithPath:path)
+            self.wv.loadRequest(URLRequest(url: url))
         case 10:
-            let path = NSBundle.main().pathForResource("test", ofType:"rtfd.zip")! // blank in simulator, blank on device, "Unable to read document" displayed
-            let url = NSURL.fileURL(withPath:path)
-            self.wv.loadRequest(NSURLRequest(url: url))
+            let path = Bundle.main().pathForResource("test", ofType:"rtfd.zip")! // blank in simulator, blank on device, "Unable to read document" displayed
+            let url = URL(fileURLWithPath:path)
+            self.wv.loadRequest(URLRequest(url: url))
         case 11:
-            let path = NSBundle.main().pathForResource("htmlbody", ofType:"txt")! // works in simulator, works in device (as text, of course)
-            let url = NSURL.fileURL(withPath:path)
-            self.wv.loadRequest(NSURLRequest(url: url))
+            let path = Bundle.main().pathForResource("htmlbody", ofType:"txt")! // works in simulator, works in device (as text, of course)
+            let url = URL(fileURLWithPath:path)
+            self.wv.loadRequest(URLRequest(url: url))
         default:break
         }
 
@@ -203,7 +203,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         self.activity.stopAnimating()
     }
     
-    func webView(_ webView: UIWebView, shouldStartLoadWith r: NSURLRequest, navigationType nt: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith r: URLRequest, navigationType nt: UIWebViewNavigationType) -> Bool {
         if let scheme = r.url?.scheme where scheme == "play" {
             print("user would like to hear the podcast")
             return false

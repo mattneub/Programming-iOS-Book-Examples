@@ -35,7 +35,7 @@ class ViewController : UICollectionViewController {
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: NSBundle.main().pathForResource("states", ofType: "txt")!, encoding: NSUTF8StringEncoding)
+        let s = try! String(contentsOfFile: Bundle.main().pathForResource("states", ofType: "txt")!, encoding: String.Encoding.utf8)
         let states = s.components(separatedBy:"\n")
         var previous = ""
         for aState in states {
@@ -71,7 +71,7 @@ class ViewController : UICollectionViewController {
     
     // headers 
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: NSIndexPath) -> UICollectionReusableView {
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var v : UICollectionReusableView! = nil
         if kind == UICollectionElementKindSectionHeader {
             v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", for: indexPath) 
@@ -87,13 +87,13 @@ class ViewController : UICollectionViewController {
     
     // cells
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"Cell", for: indexPath) 
         if cell.contentView.subviews.count == 0 {
             cell.contentView.addSubview(UILabel(frame:CGRect(0,0,30,30)))
         }
         let lab = cell.contentView.subviews[0] as! UILabel
-        lab.text = (self.sectionData)[indexPath.section][indexPath.item] // "item" synonym for "row"
+        lab.text = (self.sectionData)[indexPath.section][indexPath.row] // "item" synonym for "row"
         lab.sizeToFit()
         return cell
 
@@ -105,10 +105,10 @@ class ViewController : UICollectionViewController {
 // adjust the size of each cell, as a UICollectionViewDelegateFlowLayout
 
 extension ViewController : UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // note horrible duplication of code here
         let lab = UILabel(frame:CGRect(0,0,30,30))
-        lab.text = (self.sectionData)[indexPath.section][indexPath.item]
+        lab.text = (self.sectionData)[indexPath.section][indexPath.row]
         lab.sizeToFit()
         return lab.bounds.size
     }

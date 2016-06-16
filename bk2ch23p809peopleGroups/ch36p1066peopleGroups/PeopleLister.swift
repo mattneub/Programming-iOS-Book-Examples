@@ -4,7 +4,7 @@ import UIKit
 
 class PeopleLister: UITableViewController, UITextFieldDelegate {
     
-    let fileURL : NSURL
+    let fileURL : URL
     var doc : PeopleDocument!
     var people : [Person] { // front end for the document's model object
         get {
@@ -15,7 +15,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         }
     }
 
-    init(fileURL:NSURL) {
+    init(fileURL:URL) {
         self.fileURL = fileURL
         super.init(nibName: "PeopleLister", bundle: nil)
     }
@@ -33,7 +33,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         
         self.tableView.register(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "Person")
         
-        let fm = NSFileManager()
+        let fm = FileManager()
         self.doc = PeopleDocument(fileURL:self.fileURL)
         
         func listPeople(success:Bool) {
@@ -56,11 +56,11 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         let newP = Person(firstName: "", lastName: "")
         self.people.append(newP)
         let ct = self.people.count
-        let ix = NSIndexPath(forRow:ct-1, inSection:0)
+        let ix = IndexPath(row:ct-1, section:0)
         self.tableView.reloadData()
         self.tableView.scrollToRow(at:ix, at:.bottom, animated:true)
         let cell = self.tableView.cellForRow(at:ix)!
-        let tf = cell.withTag(1) as! UITextField
+        let tf = cell.viewWithTag(1) as! UITextField
         tf.becomeFirstResponder()
         
         self.doc.updateChangeCount(.done)
@@ -79,10 +79,10 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         return self.people.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Person", for: indexPath)
-        let first = cell.withTag(1) as! UITextField
-        let last = cell.withTag(2) as! UITextField
+        let first = cell.viewWithTag(1) as! UITextField
+        let last = cell.viewWithTag(2) as! UITextField
         let p = self.people[indexPath.row]
         first.text = p.firstName
         last.text = p.lastName
@@ -104,7 +104,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         self.doc.updateChangeCount(.done)
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         self.tableView.endEditing(true)
         self.people.remove(at:indexPath.row)
         tableView.deleteRows(at:[indexPath], with:.automatic)
@@ -120,17 +120,17 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NSNotificationCenter.default().addObserver(self, selector: #selector(forceSave), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(forceSave), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.forceSave(nil)
-        NSNotificationCenter.default().removeObserver(self)
+        NotificationCenter.default().removeObserver(self)
     }
     
     deinit {
-        NSNotificationCenter.default().removeObserver(self)
+        NotificationCenter.default().removeObserver(self)
     }
 
 }

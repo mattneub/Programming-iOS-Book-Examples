@@ -51,15 +51,15 @@ class ViewController: UIViewController {
 extension ViewController : MPMediaPickerControllerDelegate {
     // must implement these, as there is no automatic dismissal
     
-    func mediaPicker(mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
+    func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
         print("did pick")
         let player = MPMusicPlayerController.applicationMusicPlayer()
-        player.setQueueWith(mediaItemCollection)
+        player.setQueue(with:mediaItemCollection)
         player.play()
         self.dismiss(animated:true)
     }
     
-    func mediaPickerDidCancel(mediaPicker: MPMediaPickerController) {
+    func mediaPickerDidCancel(_ mediaPicker: MPMediaPickerController) {
         print("cancel")
         self.dismiss(animated:true)
     }

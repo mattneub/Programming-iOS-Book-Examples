@@ -28,7 +28,7 @@ class Pep: UIViewController {
     }
     
     @IBAction func tap (_ sender: UIGestureRecognizer?) {
-        NotificationCenter.default().post(name: "tap" as NSNotification.Name, object: sender)
+        NotificationCenter.default().post(name: "tap" as Notification.Name, object: sender)
     }
 
 

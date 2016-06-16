@@ -21,14 +21,14 @@ class ViewController: UIViewController {
             
             NotificationCenter.default().addObserver(self,
                 selector: #selector(nowPlayingItemChanged),
-                name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange,
+                name: Notification.Name.MPMusicPlayerControllerNowPlayingItemDidChange,
                 object: nil)
             
         case 2:
             
             let ob = NotificationCenter.default()
                 .addObserver(forName:
-                    NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange,
+                    Notification.Name.MPMusicPlayerControllerNowPlayingItemDidChange,
                     object: nil, queue: nil) {
                         _ in
                         print("changed")
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     
     func singleTap(_:AnyObject) {
         NotificationCenter.default()
-            .post(name: "cardTapped" as NSNotification.Name, object: self)
+            .post(name: "cardTapped" as Notification.Name, object: self)
     }
 
 

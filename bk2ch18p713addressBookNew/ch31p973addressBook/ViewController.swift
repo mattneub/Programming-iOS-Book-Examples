@@ -29,7 +29,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
             alert.addAction(UIAlertAction(title: "No", style: .cancel))
             alert.addAction(UIAlertAction(title: "OK", style: .default) {
                 _ in
-                let url = NSURL(string:UIApplicationOpenSettingsURLString)!
+                let url = URL(string:UIApplicationOpenSettingsURLString)!
                 UIApplication.shared().open(url)
             })
             self.present(alert, animated:true)
@@ -40,12 +40,12 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NSNotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NSNotificationCenter.default().removeObserver(self)
+        NotificationCenter.default().removeObserver(self)
     }
 
     //
@@ -145,8 +145,8 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         let picker = CNContactPickerViewController()
         picker.delegate = self
         picker.displayedPropertyKeys = [CNContactEmailAddressesKey]
-        picker.predicateForSelectionOfProperty = NSPredicate(format: "key == 'emailAddresses'")
-        picker.predicateForEnablingContact = NSPredicate(format: "emailAddresses.@count > 0")
+        picker.predicateForSelectionOfProperty = Predicate(format: "key == 'emailAddresses'")
+        picker.predicateForEnablingContact = Predicate(format: "emailAddresses.@count > 0")
         self.present(picker, animated:true)
     }
     
@@ -177,7 +177,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                 vc.message = "Nyah ah ahhh"
                 vc.allowsActions = false
                 vc.contactStore = CNContactStore()
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             } catch {

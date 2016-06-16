@@ -33,8 +33,8 @@ extension CGVector {
 class MySlider: UISlider {
     var bubbleView : UIView!
     weak var label : UILabel?
-    let formatter : NSNumberFormatter = {
-        let n = NSNumberFormatter()
+    let formatter : NumberFormatter = {
+        let n = NumberFormatter()
         n.maximumFractionDigits = 1
         return n
     }()
@@ -77,8 +77,8 @@ class MySlider: UISlider {
         return r
     }
     
-    override func beginTracking(with touch: UITouch, with event: UIEvent?) -> Bool {
-        let bool = super.beginTracking(with:touch, with: event)
+    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let bool = super.beginTracking(touch, with: event)
         if bool {
             self.addSubview(self.bubbleView)
             self.label?.text = self.formatter.string(from:self.value)
@@ -86,17 +86,17 @@ class MySlider: UISlider {
         return bool
     }
     
-    override func continueTracking(with touch: UITouch, with event: UIEvent?) -> Bool {
-        let bool = super.continueTracking(with:touch, with:event)
+    override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let bool = super.continueTracking(touch, with:event)
         if bool {
             self.label?.text = self.formatter.string(from:self.value)
         }
         return bool
     }
     
-    override func endTracking(with touch: UITouch?, with event: UIEvent?) {
+    override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         self.bubbleView?.removeFromSuperview()
-        super.endTracking(with:touch, with: event)
+        super.endTracking(touch, with: event)
     }
     
     override func cancelTracking(with event: UIEvent?) {

@@ -80,7 +80,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : UIBarPositioningDelegate {
-    func position(forBar bar: UIBarPositioning) -> UIBarPosition {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
         switch true { // another (old) trick for special switch situations
         case bar === self.navbar: return .topAttached
         case bar === self.toolbar: return .bottom

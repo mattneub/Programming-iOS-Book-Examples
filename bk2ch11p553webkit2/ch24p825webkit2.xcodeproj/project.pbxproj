@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		326041181B9BBF470006348B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 326041171B9BBF470006348B /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		3260411A1B9BBF690006348B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326041191B9BBF690006348B /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		3260411C1B9BBF7A0006348B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260411B1B9BBF7A0006348B /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		326041181B9BBF470006348B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 326041171B9BBF470006348B /* LaunchScreen.storyboard */; };
+		3260411A1B9BBF690006348B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326041191B9BBF690006348B /* AppDelegate.swift */; };
+		3260411C1B9BBF7A0006348B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260411B1B9BBF7A0006348B /* ViewController.swift */; };
 		3297F7CC198D7C0300C4BE9B /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3297F7CB198D7C0300C4BE9B /* WebViewController.swift */; };
 		C9EC6B611819AB4000606A3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9EC6B5F1819AB4000606A3A /* Main.storyboard */; };
 		C9EC6B661819AB4000606A3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9EC6B651819AB4000606A3A /* Assets.xcassets */; };
@@ -105,6 +105,11 @@
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					C9EC6B491819AB3F00606A3A = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = C9EC6B451819AB3F00606A3A /* Build configuration list for PBXProject "ch24p825webkit2" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -198,7 +203,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -231,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -250,6 +255,7 @@
 				PRODUCT_NAME = ch24p825webkit2;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -266,6 +272,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ch24p825webkit2;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

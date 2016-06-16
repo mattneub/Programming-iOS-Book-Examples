@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         self.prog3.value = 0
         self.prog3.setNeedsDisplay()
         self.prog4.progress = 0
-        NSTimer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(inc), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(inc), userInfo: nil, repeats: true)
     }
     
     override func viewDidLayoutSubviews() {
@@ -96,7 +96,7 @@ class ViewController: UIViewController {
 
     }
     
-    func inc(t:NSTimer) {
+    func inc(_ t:Timer) {
         var val = Float(self.prog3.value)
         val += 0.1
         self.prog1.setProgress(val, animated:true) // bug fixed in iOS 7.1
