@@ -8,8 +8,8 @@ class ViewController : UIViewController {
 
 class MyView : UIView {
     
-    let undoer = NSUndoManager()
-    override var undoManager : NSUndoManager? {
+    let undoer = UndoManager()
+    override var undoManager : UndoManager? {
         return self.undoer
     }
     

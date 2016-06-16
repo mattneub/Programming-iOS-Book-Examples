@@ -6,8 +6,8 @@ class ViewController: UIViewController {
     
     @IBOutlet var iv : UIImageView!
     
-    lazy var configuration : NSURLSessionConfiguration = {
-        let config = NSURLSessionConfiguration.ephemeral()
+    lazy var configuration : URLSessionConfiguration = {
+        let config = URLSessionConfiguration.ephemeral()
         config.allowsCellularAccess = false
         config.urlCache = nil
         return config
@@ -26,9 +26,9 @@ class ViewController: UIViewController {
             if url == nil {
                 return
             }
-            if let d = NSData(contentsOf: url) {
+            if let d = try? Data(contentsOf: url) {
                 let im = UIImage(data:d)
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     self.iv.image = im
                 }
             }

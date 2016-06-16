@@ -99,7 +99,7 @@ class MyMandelbrotView : UIView {
         if self.bitmapContext != nil {
             let context = UIGraphicsGetCurrentContext()!
             let im = self.bitmapContext.makeImage()
-            context.draw(in: self.bounds, image: im)
+            context.draw(in: self.bounds, image: im!)
             self.odd = !self.odd
             self.backgroundColor = self.odd ? UIColor.green() : UIColor.red()
         }

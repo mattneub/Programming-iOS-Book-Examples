@@ -12,8 +12,8 @@
 		32625B4619B37D48005B6531 /* MyDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32625B4519B37D48005B6531 /* MyDownloader.swift */; };
 		32625BA119B394FE005B6531 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32625BA019B394FE005B6531 /* ViewController.swift */; };
 		32625BA319B397C6005B6531 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32625BA219B397C6005B6531 /* MyTableViewController.swift */; };
-		3294B62F1BCC44DD00AF7E0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3294B62E1BCC44DD00AF7E0F /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		3294B6311BCC44EA00AF7E0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3294B6301BCC44EA00AF7E0F /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		3294B62F1BCC44DD00AF7E0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3294B62E1BCC44DD00AF7E0F /* LaunchScreen.storyboard */; };
+		3294B6311BCC44EA00AF7E0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3294B6301BCC44EA00AF7E0F /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +99,11 @@
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					3213105E1835486E0091B292 = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = 3213105A1835486E0091B292 /* Build configuration list for PBXProject "ch37p1099downloader" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -190,7 +195,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -223,7 +228,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -242,6 +247,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -258,6 +264,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

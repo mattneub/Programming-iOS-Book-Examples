@@ -2,7 +2,7 @@
 
 import UIKit
 
-class MyMandelbrotOperation : NSOperation {
+class MyMandelbrotOperation : Operation {
     private let size : CGSize
     private let center : CGPoint
     private let zoom : CGFloat
@@ -71,7 +71,7 @@ class MyMandelbrotOperation : NSOperation {
         self.makeBitmapContext(size:self.size)
         self.draw(center: self.center, zoom: self.zoom)
         if !self.isCancelled {
-            NSNotificationCenter.default().post(name: "MyMandelbrotOperationFinished", object: self)
+            NotificationCenter.default().post(name: "MyMandelbrotOperationFinished" as Notification.Name, object: self)
         }
     }
 

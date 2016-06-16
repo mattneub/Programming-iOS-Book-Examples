@@ -5,14 +5,14 @@ import UIKit
 // tap button, watch console when you turn on Sharing in iTunes
 
 
-class ViewController: UIViewController, NSNetServiceBrowserDelegate, NSNetServiceDelegate {
-    var nsb : NSNetServiceBrowser!
-    var services = [NSNetService]()
+class ViewController: UIViewController, NetServiceBrowserDelegate, NetServiceDelegate {
+    var nsb : NetServiceBrowser!
+    var services = [NetService]()
     
     @IBAction func doButton (_ sender:AnyObject!) {
         print("listening for services...")
         self.services.removeAll()
-        self.nsb = NSNetServiceBrowser()
+        self.nsb = NetServiceBrowser()
         self.nsb.delegate = self
         self.nsb.searchForServices(ofType:"_daap._tcp", inDomain: "")
     }
@@ -31,11 +31,11 @@ class ViewController: UIViewController, NSNetServiceBrowserDelegate, NSNetServic
         }
     }
 
-    func netServiceDidResolveAddress(_ sender: NSNetService) {
+    func netServiceDidResolveAddress(_ sender: NetService) {
         self.updateInterface()
     }
     
-    func netServiceBrowser(_ aNetServiceBrowser: NSNetServiceBrowser, didFind aNetService: NSNetService, moreComing: Bool) {
+    func netServiceBrowser(_ aNetServiceBrowser: NetServiceBrowser, didFind aNetService: NetService, moreComing: Bool) {
         print("adding a service")
         self.services.append(aNetService)
         if !moreComing {
@@ -43,7 +43,7 @@ class ViewController: UIViewController, NSNetServiceBrowserDelegate, NSNetServic
         }
     }
     
-    func netServiceBrowser(_ aNetServiceBrowser: NSNetServiceBrowser, didRemove aNetService: NSNetService, moreComing: Bool) {
+    func netServiceBrowser(_ aNetServiceBrowser: NetServiceBrowser, didRemove aNetService: NetService, moreComing: Bool) {
         if let ix = self.services.index(of:aNetService) {
             self.services.remove(at:ix)
             print("removing a service")

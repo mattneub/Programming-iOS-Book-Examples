@@ -8,48 +8,48 @@ class Wrapper<T> {
 }
 
 // must be @objc_block or we won't get memory management on background thread
-typealias MyDownloaderCompletion = @convention(block) (NSURL!) -> ()
+typealias MyDownloaderCompletion = @convention(block) (URL!) -> ()
 
-class MyDownloader: NSObject, NSURLSessionDownloadDelegate {
-    let config : NSURLSessionConfiguration
-    let q = NSOperationQueue()
+class MyDownloader: NSObject, URLSessionDownloadDelegate {
+    let config : URLSessionConfiguration
+    let q = OperationQueue()
     let main = true // try false to move delegate methods onto a background thread
-    lazy var session : NSURLSession = {
-        let queue = (self.main ? NSOperationQueue.main() : self.q)
-        return NSURLSession(configuration:self.config, delegate:self, delegateQueue:queue)
+    lazy var session : URLSession = {
+        let queue = (self.main ? OperationQueue.main() : self.q)
+        return URLSession(configuration:self.config, delegate:self, delegateQueue:queue)
     }()
     
-    init(configuration config:NSURLSessionConfiguration) {
+    init(configuration config:URLSessionConfiguration) {
         self.config = config
         super.init()
     }
     
     @discardableResult
-    func download(_ s:String, completionHandler ch : MyDownloaderCompletion) -> NSURLSessionTask {
-        let url = NSURL(string:s)!
+    func download(_ s:String, completionHandler ch : MyDownloaderCompletion) -> URLSessionTask {
+        let url = URL(string:s)!
         let req = NSMutableURLRequest(url:url)
-        NSURLProtocol.setProperty(Wrapper(ch), forKey:"ch", in:req)
-        let task = self.session.downloadTask(with:req)
+        URLProtocol.setProperty(Wrapper(ch), forKey:"ch", in:req)
+        let task = self.session.downloadTask(with:req as URLRequest)
         task.resume()
         return task
     }
     
-    func urlSession(_ session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten writ: Int64, totalBytesExpectedToWrite exp: Int64) {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten writ: Int64, totalBytesExpectedToWrite exp: Int64) {
         print("downloaded \(100*writ/exp)%")
     }
     
-    func urlSession(_ session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
         // unused in this example
         print("did resume")
     }
 
-    func urlSession(_ session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingTo location: NSURL) {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         let req = downloadTask.originalRequest!
-        let ch : AnyObject = NSURLProtocol.property(forKey:"ch", in:req)!
-        let response = downloadTask.response as! NSHTTPURLResponse
+        let ch : AnyObject = URLProtocol.property(forKey:"ch", in:req)!
+        let response = downloadTask.response as! HTTPURLResponse
         let stat = response.statusCode
         print("status \(stat)")
-        var url : NSURL! = nil
+        var url : URL! = nil
         if stat == 200 {
             url = location
             print("download \(req.url!.lastPathComponent)")
@@ -58,7 +58,7 @@ class MyDownloader: NSObject, NSURLSessionDownloadDelegate {
         if self.main {
             ch2(url)
         } else {
-            dispatch_sync(dispatch_get_main_queue()) {
+            DispatchQueue.main.sync {
                 ch2(url)
             }
         }

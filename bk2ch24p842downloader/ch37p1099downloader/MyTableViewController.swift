@@ -4,8 +4,8 @@ import UIKit
 
 class MyTableViewController: UITableViewController {
 
-    lazy var configuration : NSURLSessionConfiguration = {
-        let config = NSURLSessionConfiguration.ephemeral()
+    lazy var configuration : URLSessionConfiguration = {
+        let config = URLSessionConfiguration.ephemeral()
         config.allowsCellularAccess = false
         config.urlCache = nil
         return config
@@ -49,7 +49,7 @@ class MyTableViewController: UITableViewController {
         return self.model.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
         let m = self.model[indexPath.row]
         cell.textLabel!.text = m.text
@@ -65,11 +65,12 @@ class MyTableViewController: UITableViewController {
                     if url == nil {
                         return
                     }
-                    let data = NSData(contentsOf: url)!
-                    let im = UIImage(data:data)
-                    m.im = im
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self!.tableView.reloadRows(at:[indexPath], with: .none)
+                    if let data = try? Data(contentsOf: url) {
+                        let im = UIImage(data:data)
+                        m.im = im
+                        DispatchQueue.main.async {
+                            self!.tableView.reloadRows(at:[indexPath], with: .none)
+                        }
                     }
                 }
             }
@@ -77,8 +78,8 @@ class MyTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: NSIndexPath) {
-        let m = self.model[indexPath.row]
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let m = self.model[(indexPath as NSIndexPath).row]
         if let task = m.task {
             if task.state == .running {
                 task.cancel()
@@ -104,5 +105,5 @@ class Model {
     var text : String!
     var im : UIImage!
     var picurl : String!
-    var task : NSURLSessionTask!
+    var task : URLSessionTask!
 }

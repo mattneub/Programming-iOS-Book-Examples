@@ -31,8 +31,8 @@ class MyMandelbrotView : UIView {
     var bitmapContext: CGContext!
     var odd = false
     
-    let queue : NSOperationQueue = {
-        let q = NSOperationQueue()
+    let queue : OperationQueue = {
+        let q = OperationQueue()
         q.maxConcurrentOperationCount = 1
         return q
     }()
@@ -40,15 +40,15 @@ class MyMandelbrotView : UIView {
     func drawThatPuppy () {
         let center = CGPoint(self.bounds.midX, self.bounds.midY)
         let op = MyMandelbrotOperation(size: self.bounds.size, center: center, zoom: 1)
-        NSNotificationCenter.default().addObserver(self, selector: #selector(operationFinished), name: "MyMandelbrotOperationFinished", object: op)
+        NotificationCenter.default().addObserver(self, selector: #selector(operationFinished), name: "MyMandelbrotOperationFinished", object: op)
         self.queue.addOperation(op)
     }
     
     // warning! called on background thread
     func operationFinished(_ n:NSNotification) {
         if let op = n.object as? MyMandelbrotOperation {
-            dispatch_async(dispatch_get_main_queue()) {
-                NSNotificationCenter.default().removeObserver(self, name: "MyMandelbrotOperationFinished", object: op)
+            DispatchQueue.main.async {
+                NotificationCenter.default().removeObserver(self, name: "MyMandelbrotOperationFinished" as Notification.Name, object: op)
                 self.bitmapContext = op.bitmapContext
                 self.setNeedsDisplay()
             }
@@ -60,7 +60,7 @@ class MyMandelbrotView : UIView {
         if self.bitmapContext != nil {
             let context = UIGraphicsGetCurrentContext()!
             let im = self.bitmapContext.makeImage()
-            context.draw(in: self.bounds, image: im)
+            context.draw(in: self.bounds, image: im!)
             self.odd = !self.odd
             self.backgroundColor = self.odd ? UIColor.green() : UIColor.red()
         }

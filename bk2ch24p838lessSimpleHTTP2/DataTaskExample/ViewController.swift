@@ -2,16 +2,16 @@
 
 import UIKit
 
-class ViewController: UIViewController, NSURLSessionDataDelegate {
+class ViewController: UIViewController, URLSessionDataDelegate {
 
     @IBOutlet var iv : UIImageView!
-    var task : NSURLSessionDataTask!
-    var data = NSMutableData()
+    var task : URLSessionDataTask!
+    var data = Data()
     
-    lazy var session : NSURLSession = {
-        let config = NSURLSessionConfiguration.ephemeral()
+    lazy var session : URLSession = {
+        let config = URLSessionConfiguration.ephemeral()
         config.allowsCellularAccess = false
-        let session = NSURLSession(configuration: config, delegate: self, delegateQueue: NSOperationQueue.main())
+        let session = URLSession(configuration: config, delegate: self, delegateQueue: OperationQueue.main())
         return session
         }()
     
@@ -21,24 +21,24 @@ class ViewController: UIViewController, NSURLSessionDataDelegate {
         }
         
         let s = "http://www.apeth.net/matt/images/phoenixnewest.jpg"
-        let url = NSURL(string:s)!
-        let req = NSMutableURLRequest(url:url)
+        let url = URL(string:s)!
+        let req = URLRequest(url:url)
         let task = self.session.dataTask(with:req) // *
         self.task = task
         self.iv.image = nil
-        self.data.length = 0 // *
+        self.data.count = 0 // *
         task.resume()
         
     }
     
-    func urlSession(_ session: NSURLSession, dataTask: NSURLSessionDataTask, didReceive data: NSData) {
-        print("received \(data.length) bytes of data")
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+        print("received \(data.count) bytes of data")
         // do something with the data here!
         self.data.append(data)
     }
     
     
-    func urlSession(_ session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: NSError?) {
         print("completed: error: \(error)")
         self.task = nil
         if error == nil {

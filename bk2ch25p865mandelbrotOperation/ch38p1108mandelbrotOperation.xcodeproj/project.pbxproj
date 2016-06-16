@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		3247F33B1837BBA300A9162F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3247F3391837BBA300A9162F /* Main.storyboard */; };
 		3247F3401837BBA300A9162F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3247F33F1837BBA300A9162F /* Assets.xcassets */; };
-		3285142E1BCEA9B20078B9DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3285142D1BCEA9B20078B9DD /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		328514301BCEA9B50078B9DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285142F1BCEA9B50078B9DD /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		3285142E1BCEA9B20078B9DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3285142D1BCEA9B20078B9DD /* LaunchScreen.storyboard */; };
+		328514301BCEA9B50078B9DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285142F1BCEA9B50078B9DD /* AppDelegate.swift */; };
 		3289AB3D19B4190100937D0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289AB3C19B4190100937D0C /* ViewController.swift */; };
 		3289AB3F19B4191500937D0C /* MyMandelbrotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289AB3E19B4191500937D0C /* MyMandelbrotView.swift */; };
 		3289AB4119B4193900937D0C /* MyMandelbrotOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289AB4019B4193900937D0C /* MyMandelbrotOperation.swift */; };
@@ -100,6 +100,11 @@
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					3247F3231837BBA300A9162F = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = 3247F31F1837BBA300A9162F /* Build configuration list for PBXProject "ch38p1108mandelbrotOperation" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -191,7 +196,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -224,7 +229,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -243,6 +248,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch38p1108mandelbrotOperation;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -259,6 +265,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ch38p1108mandelbrotOperation;
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

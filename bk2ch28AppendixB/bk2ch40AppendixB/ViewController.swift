@@ -88,14 +88,14 @@ func imageOfSize(_ size:CGSize, _ opaque:Bool = false, _ closure: @noescape () -
 
 extension UIView {
     class func animate(times:Int,
-                       duration dur: NSTimeInterval,
-                       delay del: NSTimeInterval,
+                       duration dur: TimeInterval,
+                       delay del: TimeInterval,
                        options opts: UIViewAnimationOptions,
                        animations anim: () -> Void,
                        completion comp: ((Bool) -> Void)?) {
         func helper(_ t:Int,
-                    _ dur: NSTimeInterval,
-                    _ del: NSTimeInterval,
+                    _ dur: TimeInterval,
+                    _ del: TimeInterval,
                     _ opt: UIViewAnimationOptions,
                     _ anim: () -> Void,
                     _ com: ((Bool) -> Void)?) {

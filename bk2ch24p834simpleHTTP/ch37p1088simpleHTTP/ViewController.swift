@@ -9,26 +9,27 @@ class ViewController: UIViewController {
     @IBAction func doSimpleHTTP (_ sender:AnyObject!) {
         self.iv.image = nil
         let s = "http://www.apeth.net/matt/images/phoenixnewest.jpg"
-        let url = NSURL(string:s)!
-        let session = NSURLSession.shared()
+        let url = URL(string:s)!
+        let session = URLSession.shared()
         let task = session.downloadTask(with:url) {
-            (loc:NSURL?, response:NSURLResponse?, error:NSError?) in
+            (loc:URL?, response:URLResponse?, error:NSError?) in
             print("here")
             if error != nil {
                 print(error)
                 return
             }
-            let status = (response as! NSHTTPURLResponse).statusCode
+            let status = (response as! HTTPURLResponse).statusCode
             print("response status: \(status)")
             if status != 200 {
                 print("oh well")
                 return
             }
-            let d = NSData(contentsOf:loc!)!
-            let im = UIImage(data:d)
-            dispatch_async(dispatch_get_main_queue()) {
-                self.iv.image = im
-                print("done")
+            if let d = try? Data(contentsOf:loc!) {
+                let im = UIImage(data:d)
+                DispatchQueue.main.async {
+                    self.iv.image = im
+                    print("done")
+                }
             }
         }
         task.resume()

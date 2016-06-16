@@ -2,17 +2,16 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, NSURLSessionDownloadDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegate {
                             
     var window: UIWindow?
     var image : UIImage!
-    lazy var session : NSURLSession = {
-        let config = NSURLSessionConfiguration.backgroundSessionConfiguration(withIdentifier:
-            "com.neuburg.matt.ch37backgroundDownload")
+    lazy var session : URLSession = {
+        let config = URLSessionConfiguration.background(withIdentifier: "com.neuburg.matt.ch37backgroundDownload")
         config.allowsCellularAccess = false
         // could set config.discretionary here
-        let sess = NSURLSession(
-            configuration: config, delegate: self, delegateQueue: NSOperationQueue.main())
+        let sess = URLSession(
+            configuration: config, delegate: self, delegateQueue: OperationQueue.main())
         return sess
     }()
     var ch : (() -> ())!
@@ -26,27 +25,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSURLSessionDownloadDeleg
     
     func startDownload (_:AnyObject?) {
         let s = "http://www.nasa.gov/sites/default/files/styles/1600x1200_autoletterbox/public/pia17474_1.jpg"
-        let task = self.session.downloadTask(with:NSURL(string:s)!)
+        let task = self.session.downloadTask(with:URL(string:s)!)
         task.resume()
     }
 
-    func urlSession(_ session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         let prog = Double(totalBytesWritten)/Double(totalBytesExpectedToWrite)
         NSLog("%@", "downloaded \(100.0*prog)%")
-        NSNotificationCenter.default().post(name: "GotProgress", object:self, userInfo:["progress":prog])
+        NotificationCenter.default().post(name: "GotProgress" as Notification.Name, object:self, userInfo:["progress":prog])
     }
     
-    func urlSession(_ session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingTo location: NSURL) {
-        guard let d = NSData(contentsOf: location) else {return}
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        guard let d = try? Data(contentsOf: location) else {return}
         let im = UIImage(data:d)
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             NSLog("%@", "finished; posting notification")
             self.image = im
-            NSNotificationCenter.default().post(name: "GotPicture", object: self)
+            NotificationCenter.default().post(name: "GotPicture" as Notification.Name, object: self)
         }
     }
     
-    func urlSession(_ session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: NSError?) {
         NSLog("%@", "completed; error: \(error)")
     }
     
@@ -58,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSURLSessionDownloadDeleg
         let _ = self.session // make sure we have one
     }
     
-    func urlSessionDidFinishEvents(forBackgroundURLSession session: NSURLSession) {
+    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
         NSLog("%@", "calling completion handler")
         if self.ch != nil {
             self.ch()
