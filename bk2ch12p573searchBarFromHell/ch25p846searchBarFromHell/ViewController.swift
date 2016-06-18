@@ -2,13 +2,19 @@
 
 import UIKit
 
-func imageFromContextOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(size, false, 0)
-    closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
-    return result
+func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
+    let r = UIGraphicsImageRenderer(size:size)
+    return r.image {
+        _ in closure()
+    }
 }
+
+//    UIGraphicsBeginImageContextWithOptions(size, false, 0)
+//    closure()
+//    let result = UIGraphicsGetImageFromCurrentImageContext()!
+//    UIGraphicsEndImageContext()
+//    return result
+
 
 func lend<T where T:NSObject> (closure:(T)->()) -> T {
     let orig = T()
@@ -59,7 +65,7 @@ class ViewController: UIViewController {
         self.sb.setBackgroundImage(linim, for:.any, barMetrics:.default)
         self.sb.setBackgroundImage(linim, for:.any, barMetrics:.defaultPrompt)
         
-        let sepim = imageFromContextOfSize(CGSize(320,20)) {
+        let sepim = imageOfSize(CGSize(320,20)) {
             UIBezierPath(roundedRect:CGRect(5,0,320-5*2,20), cornerRadius:8).addClip()
             UIImage(named:"sepia.jpg")!.draw(in:CGRect(0,0,320,20))
         }
@@ -85,13 +91,13 @@ class ViewController: UIViewController {
         
         let manny = UIImage(named:"manny.jpg")!
         self.sb.setImage(manny, for:.search, state:[])
-        let mannyim = imageFromContextOfSize(CGSize(20,20)) {
+        let mannyim = imageOfSize(CGSize(20,20)) {
             manny.draw(in:CGRect(0,0,20,20))
         }
         self.sb.setImage(mannyim, for:.clear, state:[])
         
         let moe = UIImage(named:"moe.jpg")!
-        let moeim = imageFromContextOfSize(CGSize(20,20)) {
+        let moeim = imageOfSize(CGSize(20,20)) {
             moe.draw(in:CGRect(0,0,20,20))
         }
         self.sb.setImage(moeim, for:.clear, state:.highlighted)
@@ -103,7 +109,7 @@ class ViewController: UIViewController {
         
         self.sb.setScopeBarButtonBackgroundImage(linim, for:[])
 
-        let divim = imageFromContextOfSize(CGSize(2,2)) {
+        let divim = imageOfSize(CGSize(2,2)) {
             UIColor.white().setFill()
             UIBezierPath(rect:CGRect(0,0,2,2)).fill()
         }

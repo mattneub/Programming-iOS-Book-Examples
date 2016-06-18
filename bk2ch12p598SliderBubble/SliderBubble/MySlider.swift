@@ -42,18 +42,31 @@ class MySlider: UISlider {
     override func didMoveToSuperview() {
         self.bubbleView = UIView(frame: CGRect(0,0,100,100))
         
-        UIGraphicsBeginImageContextWithOptions(CGSize(100,100), false, 0)
-        let con = UIGraphicsGetCurrentContext()!
+        let r = UIGraphicsImageRenderer(size:CGSize(100,100))
+        let im = r.image {
+            ctx in let con = ctx.cgContext
+            let p = UIBezierPath(roundedRect: CGRect(0,0,100,80), cornerRadius: 10)
+            p.move(to: CGPoint(45,80))
+            p.addLine(to: CGPoint(50,100))
+            p.addLine(to: CGPoint(55,80))
+            con.addPath(p.cgPath)
+            UIColor.blue().setFill()
+            con.fillPath()
+        }
+
         
-        let p = UIBezierPath(roundedRect: CGRect(0,0,100,80), cornerRadius: 10)
-        p.move(to: CGPoint(45,80))
-        p.addLine(to: CGPoint(50,100))
-        p.addLine(to: CGPoint(55,80))
-        con.addPath(p.cgPath)
-        UIColor.blue().setFill()
-        con.fillPath()
-        let im = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+//        UIGraphicsBeginImageContextWithOptions(CGSize(100,100), false, 0)
+//        let con = UIGraphicsGetCurrentContext()!
+//        
+//        let p = UIBezierPath(roundedRect: CGRect(0,0,100,80), cornerRadius: 10)
+//        p.move(to: CGPoint(45,80))
+//        p.addLine(to: CGPoint(50,100))
+//        p.addLine(to: CGPoint(55,80))
+//        con.addPath(p.cgPath)
+//        UIColor.blue().setFill()
+//        con.fillPath()
+//        let im = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
         
         let iv = UIImageView(image: im)
         self.bubbleView.addSubview(iv)

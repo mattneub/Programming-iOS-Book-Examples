@@ -53,12 +53,20 @@ class ViewController2 : UIViewController {
         self.view.layer.masksToBounds = true
         self.button.layer.borderColor = self.button.tintColor!.cgColor
         self.button.layer.borderWidth = 1
-        UIGraphicsBeginImageContextWithOptions(CGSize(10,10), false, 0)
-        let con = UIGraphicsGetCurrentContext()!
-        con.setFillColor(UIColor(white:0.4, alpha:1.5).cgColor)
-        con.fill(CGRect(0,0,10,10))
-        let im = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+        let r = UIGraphicsImageRenderer(size:CGSize(10,10))
+        let im = r.image {
+            ctx in let con = ctx.cgContext
+            con.setFillColor(UIColor(white:0.4, alpha:1.5).cgColor)
+            con.fill(CGRect(0,0,10,10))
+        }
+
+//        UIGraphicsBeginImageContextWithOptions(CGSize(10,10), false, 0)
+//        let con = UIGraphicsGetCurrentContext()!
+//        con.setFillColor(UIColor(white:0.4, alpha:1.5).cgColor)
+//        con.fill(CGRect(0,0,10,10))
+//        let im = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+        
         self.button.setBackgroundImage(im, for:.highlighted)
     }
     

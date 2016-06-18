@@ -20,7 +20,13 @@ extension CGPoint {
 
 class MyView : UIView {
     
-    lazy var arrow : UIImage = self.arrowImage()
+    lazy var arrow : UIImage = {
+        let r = UIGraphicsImageRenderer(size:CGSize(40,100))
+        return r.image {
+            _ in
+            self.arrowImage()
+        }
+    }()
     
     override init (frame:CGRect) {
         super.init(frame:frame)
@@ -31,8 +37,8 @@ class MyView : UIView {
         fatalError("NSCoding not supported")
     }
     
-    func arrowImage () -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(40,100), false, 0.0)
+    func arrowImage () {
+        //UIGraphicsBeginImageContextWithOptions(CGSize(40,100), false, 0.0)
         
         // obtain the current graphics context
         let con = UIGraphicsGetCurrentContext()!
@@ -68,14 +74,15 @@ class MyView : UIView {
         con.restoreGState() // done clipping
         
         // draw the red triangle, the point of the arrow
-        UIGraphicsBeginImageContextWithOptions(CGSize(4,4), false, 0)
-        let imcon = UIGraphicsGetCurrentContext()!
-        imcon.setFillColor(UIColor.red().cgColor)
-        imcon.fill(CGRect(0,0,4,4))
-        imcon.setFillColor(UIColor.blue().cgColor)
-        imcon.fill(CGRect(0,0,4,2))
-        let stripes = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+        let r = UIGraphicsImageRenderer(size:CGSize(4,4))
+        let stripes = r.image {
+            ctx in
+            let imcon = ctx.cgContext
+            imcon.setFillColor(UIColor.red().cgColor)
+            imcon.fill(CGRect(0,0,4,4))
+            imcon.setFillColor(UIColor.blue().cgColor)
+            imcon.fill(CGRect(0,0,4,2))
+        }
         
         let stripesPattern = UIColor(patternImage:stripes)
         stripesPattern.setFill()
@@ -85,11 +92,11 @@ class MyView : UIView {
         p.addLine(to:CGPoint(40,25))
         p.fill()
         
-        let im = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-
-        return im
-
+//        let im = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+//
+//        return im
+//
     }
     
     let which = 2

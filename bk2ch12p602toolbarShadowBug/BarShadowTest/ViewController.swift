@@ -1,13 +1,21 @@
 
 import UIKit
 
-func imageOfSize(_ size:CGSize, _ opaque:Bool = false, _ closure:() -> ()) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
-    closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
-    return result
+//func imageOfSize(_ size:CGSize, _ opaque:Bool = false, _ closure:() -> ()) -> UIImage {
+//    UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
+//    closure()
+//    let result = UIGraphicsGetImageFromCurrentImageContext()!
+//    UIGraphicsEndImageContext()
+//    return result
+//}
+
+func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
+    let r = UIGraphicsImageRenderer(size:size)
+    return r.image {
+        _ in closure()
+    }
 }
+
 
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
@@ -44,7 +52,7 @@ class ViewController: UIViewController {
         
         let sz = CGSize(20,20)
         
-        self.navbar.setBackgroundImage(imageOfSize(sz, false) {
+        self.navbar.setBackgroundImage(imageOfSize(sz) {
             UIColor(white:0.95, alpha:0.85).setFill()
             //UIColor(red: 1, green: 0, blue: 0, alpha: 1).setFill()
             UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,20,20))

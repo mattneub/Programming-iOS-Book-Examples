@@ -43,13 +43,24 @@ class MyView4 : UIView {
 class MyImageView1 : UIImageView {
     override func awakeFromNib() {
         super.awakeFromNib()
-        UIGraphicsBeginImageContextWithOptions(CGSize(width:100,height:100), false, 0)
-        let p = UIBezierPath(ovalIn: CGRect(0,0,100,100))
-        UIColor.blue().setFill()
-        p.fill()
-        let im = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        self.image = im
+        let f = UIGraphicsImageRendererFormat()
+        // scale defaults to main screen scale
+        // opaque defaults to false
+        // extendedRange defaults to whatever hardware supposes
+        _ = f // thus, usually no need for an explicit format!
+        let r = UIGraphicsImageRenderer(size:CGSize(width:100,height:100))
+        self.image = r.image { _ in
+            let p = UIBezierPath(ovalIn: CGRect(0,0,100,100))
+            UIColor.blue().setFill()
+            p.fill()
+        }
+//        UIGraphicsBeginImageContextWithOptions(CGSize(width:100,height:100), false, 0)
+//        let p = UIBezierPath(ovalIn: CGRect(0,0,100,100))
+//        UIColor.blue().setFill()
+//        p.fill()
+//        let im = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+//        self.image = im
     }
 }
 class MyImageView2 : UIImageView {
@@ -63,8 +74,31 @@ class MyImageView2 : UIImageView {
 //        let im = UIGraphicsGetImageFromCurrentImageContext()!
 //        UIGraphicsEndImageContext()
         
-        self.image = imageOfSize(CGSize(width:100,height:100)) {
-            let con = UIGraphicsGetCurrentContext()!
+//        self.image = imageOfSize(CGSize(width:100,height:100)) {
+//            let con = UIGraphicsGetCurrentContext()!
+//            con.addEllipse(inRect:CGRect(0,0,100,100))
+//            con.setFillColor(UIColor.blue().cgColor)
+//            con.fillPath()
+//        }
+        
+        // okay, here's the deal:
+        // the context passed into the function is not a CGContext
+        // but it _has_ a CGContext, and we are _in_ that context
+        
+        // alternatively, it has its own elementary fill, stroke, and clip methods
+//        public func fill(_ rect: CGRect)
+//        public func fill(_ rect: CGRect, blendMode: CGBlendMode)
+//        public func stroke(_ rect: CGRect)
+//        public func stroke(_ rect: CGRect, blendMode: CGBlendMode)
+//        public func clip(to rect: CGRect)
+        
+        // here, though, I want to show the full CGContext way of drawing
+        
+        let r = UIGraphicsImageRenderer(size:CGSize(width:100,height:100))
+        self.image = r.image {ctx in
+            let con = ctx.cgContext
+            // NB: we are _in_ this context, so could say instead:
+            // let con = UIGraphicsGetCurrentContext()!
             con.addEllipse(inRect:CGRect(0,0,100,100))
             con.setFillColor(UIColor.blue().cgColor)
             con.fillPath()
@@ -72,6 +106,8 @@ class MyImageView2 : UIImageView {
         
     }
 }
+
+// Well, I guess we won't be needing _this_ any more! :)
 
 /*
 NOTE: This structured dance is boring, distracting, confusing (when reading), and error-prone:

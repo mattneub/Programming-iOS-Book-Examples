@@ -55,12 +55,20 @@ class RootViewController : UITableViewController {
 
         
         let iv = cell.theImageView!
+        
         // shrink apparent size of image
         let im = UIImage(named:"moi.png")!
-        UIGraphicsBeginImageContextWithOptions(CGSize(36,36), true, 0.0)
-        im.draw(in:CGRect(0,0,36,36))
-        let im2 = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+        
+        let r = UIGraphicsImageRenderer(size:CGSize(36,36))
+        let im2 = r.image {
+            _ in im.draw(in:CGRect(0,0,36,36))
+        }
+        
+//                UIGraphicsBeginImageContextWithOptions(CGSize(36,36), true, 0.0)
+//                im.draw(in:CGRect(0,0,36,36))
+//                let im2 = UIGraphicsGetImageFromCurrentImageContext()!
+//                UIGraphicsEndImageContext()
+        
         iv.image = im2
         iv.contentMode = .center
 

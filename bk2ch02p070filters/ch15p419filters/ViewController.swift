@@ -40,11 +40,17 @@ class ViewController : UIViewController {
             let moicg = self.context.createCGImage(blendimage, from: moiextent)!
             self.iv.image = UIImage(cgImage: moicg)
         case 2:
-            UIGraphicsBeginImageContextWithOptions(moiextent.size, false, 0)
-            UIImage(ciImage: blendimage).draw(in:moiextent)
-            let im = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext()
-            self.iv.image = im
+            let r = UIGraphicsImageRenderer(size:moiextent.size)
+            self.iv.image = r.image {
+                _ in
+                UIImage(ciImage: blendimage).draw(in:moiextent)
+            }
+
+//            UIGraphicsBeginImageContextWithOptions(moiextent.size, false, 0)
+//            UIImage(ciImage: blendimage).draw(in:moiextent)
+//            let im = UIGraphicsGetImageFromCurrentImageContext()!
+//            UIGraphicsEndImageContext()
+//            self.iv.image = im
         case 3:
             self.iv.image = UIImage(ciImage: blendimage) // nope
         default: break

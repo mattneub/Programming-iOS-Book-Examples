@@ -47,17 +47,17 @@ class MyView : UIView {
     override func draw(_ rect: CGRect) {
         guard let subs = self.layer.sublayers else {return}
         let lay = subs[subs.count-1]
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
-        let con = UIGraphicsGetCurrentContext()!
-        let r = self.bounds.insetBy(dx: 30, dy: 30)
-        con.saveGState()
-        con.translate(x: self.bounds.width/2.0, y: self.bounds.height/2.0)
-        con.rotate(byAngle: CGFloat(M_PI)/10.0)
-        con.translate(x: -self.bounds.size.width/2.0, y: -self.bounds.size.height/2.0)
-        con.fillEllipse(in:r)
-        con.restoreGState()
-        let im = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+        let r = UIGraphicsImageRenderer(size:self.bounds.size)
+        let im = r.image {
+            ctx in let con = ctx.cgContext
+            let r = self.bounds.insetBy(dx: 30, dy: 30)
+            con.saveGState()
+            con.translate(x: self.bounds.width/2.0, y: self.bounds.height/2.0)
+            con.rotate(byAngle: CGFloat(M_PI)/10.0)
+            con.translate(x: -self.bounds.size.width/2.0, y: -self.bounds.size.height/2.0)
+            con.fillEllipse(in:r)
+            con.restoreGState()
+        }
         lay.contents = im.cgImage
     }
     
@@ -66,11 +66,12 @@ class MyView : UIView {
         if !inside { return nil }
         
         guard let subs = self.layer.sublayers else {return nil}
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0)
-        let lay = subs[subs.count-1]
-        lay.render(in:UIGraphicsGetCurrentContext()!)
-        let im = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+        let r = UIGraphicsImageRenderer(size:self.bounds.size)
+        let im = r.image {
+            ctx in let con = ctx.cgContext
+            let lay = subs[subs.count-1]
+            lay.render(in:con)
+        }
         
         let info = CGImageAlphaInfo.alphaOnly.rawValue
         let pixel = UnsafeMutablePointer<CUnsignedChar>(allocatingCapacity:1)

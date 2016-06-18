@@ -22,18 +22,28 @@ extension CGPoint {
 
 class ViewController : UIViewController {
     
-    let which = 4
+    let which = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIGraphicsBeginImageContextWithOptions(CGSize(10,10), false, 1)
-        let con = UIGraphicsGetCurrentContext()!
-        con.addEllipse(inRect:CGRect(0,0,10,10))
-        con.setFillColor(UIColor.gray().cgColor)
-        con.fillPath()
-        let im = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+        let f = UIGraphicsImageRendererFormat()
+        f.scale = 1
+        let r = UIGraphicsImageRenderer(size:CGSize(10,10), format:f)
+        let im = r.image {
+            ctx in let con = ctx.cgContext
+            con.addEllipse(inRect:CGRect(0,0,10,10))
+            con.setFillColor(UIColor.gray().cgColor)
+            con.fillPath()
+        }
+
+//        UIGraphicsBeginImageContextWithOptions(CGSize(10,10), false, 1)
+//        let con = UIGraphicsGetCurrentContext()!
+//        con.addEllipse(inRect:CGRect(0,0,10,10))
+//        con.setFillColor(UIColor.gray().cgColor)
+//        con.fillPath()
+//        let im = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
         
         let cell = CAEmitterCell()
         cell.birthRate = 5

@@ -1,6 +1,12 @@
 
 import UIKit
 
+func lend<T where T:NSObject> (closure:(T)->()) -> T {
+    let orig = T()
+    closure(orig)
+    return orig
+}
+
 
 class MyTiledView : UIView {
     
@@ -51,10 +57,24 @@ class MyTiledView : UIView {
                 let path = Bundle.main().pathForResource("earthFromSaturn", ofType:"png")!
                 let im = UIImage(contentsOfFile:path)!
                 let sz = CGSize(im.size.width * scale, im.size.height * scale)
-                UIGraphicsBeginImageContextWithOptions(sz, true, 1)
-                im.draw(in:CGRect(0,0,sz.width,sz.height))
-                self.currentImage = UIGraphicsGetImageFromCurrentImageContext()!
-                UIGraphicsEndImageContext()
+                
+                
+                let r = UIGraphicsImageRenderer(size: sz, format: lend {
+                    (f : UIGraphicsImageRendererFormat) in
+                    f.opaque = true
+                    f.scale = 1
+                })
+                self.currentImage = r.image {
+                    _ in
+                    im.draw(in:CGRect(0,0,sz.width,sz.height))
+                }
+
+                
+//                UIGraphicsBeginImageContextWithOptions(sz, true, 1)
+//                im.draw(in:CGRect(0,0,sz.width,sz.height))
+//                self.currentImage = UIGraphicsGetImageFromCurrentImageContext()!
+//                UIGraphicsEndImageContext()
+                
                 NSLog("created image at size %@", NSStringFromCGSize(sz)) // only three times
             }
             self.currentImage.draw(in:self.bounds)

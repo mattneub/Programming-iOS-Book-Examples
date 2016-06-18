@@ -1,13 +1,14 @@
 
 
 import UIKit
+
 func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(size, false, 0)
-    closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
-    return result
+    let r = UIGraphicsImageRenderer(size:size)
+    return r.image {
+        _ in closure()
+    }
 }
+
 
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {

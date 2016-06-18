@@ -38,12 +38,21 @@ class ViewController : UIViewController {
         
         // draw into 280 x 250 image
         let rect = CGRect(0,0,280,250)
-        UIGraphicsBeginImageContextWithOptions(rect.size, true, 0)
-        UIColor.white().setFill()
-        UIGraphicsGetCurrentContext()!.fill(rect)
-        content.draw(in:rect) // draw attributed string
-        let im = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+        
+        let r = UIGraphicsImageRenderer(size:rect.size)
+        let im = r.image {
+            ctx in let con = ctx.cgContext
+            UIColor.white().setFill()
+            con.fill(rect)
+            content.draw(in:rect) // draw attributed string
+        }
+
+//        UIGraphicsBeginImageContextWithOptions(rect.size, true, 0)
+//        UIColor.white().setFill()
+//        UIGraphicsGetCurrentContext()!.fill(rect)
+//        content.draw(in:rect) // draw attributed string
+//        let im = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
         
         // display the image
         

@@ -138,15 +138,16 @@ class CompassLayer : CALayer {
             con.strokePath()
         
         // draw the triangle, the point of the arrow
-            UIGraphicsBeginImageContextWithOptions(CGSize(4,4), false, 0)
-            let imcon = UIGraphicsGetCurrentContext()!
+        let r = UIGraphicsImageRenderer(size:CGSize(4,4))
+        let stripes = r.image {
+            ctx in
+            let imcon = ctx.cgContext
             imcon.setFillColor(UIColor.red().cgColor)
             imcon.fill(CGRect(0,0,4,4))
             imcon.setFillColor(UIColor.blue().cgColor)
             imcon.fill(CGRect(0,0,4,2))
-            let stripes = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext()
-            
+        }
+        
             let stripesPattern = UIColor(patternImage:stripes)
         
         UIGraphicsPushContext(con)

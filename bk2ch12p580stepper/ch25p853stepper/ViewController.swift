@@ -2,11 +2,10 @@
 import UIKit
 
 func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(size, false, 0)
-    closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
-    return result
+    let r = UIGraphicsImageRenderer(size:size)
+    return r.image {
+        _ in closure()
+    }
 }
 
 func lend<T where T:NSObject> (closure:(T)->()) -> T {
@@ -148,9 +147,11 @@ class ViewController: UIViewController {
 
         return; // interesting effect: remove overlay entirely if disabled
         
-        UIGraphicsBeginImageContextWithOptions(CGSize(45,29), false, 0)
-        let emptyim = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext();
+        let emptyim = imageOfSize(CGSize(45,29)) {}
+        
+//        UIGraphicsBeginImageContextWithOptions(CGSize(45,29), false, 0)
+//        let emptyim = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext();
         self.stepper.setDecrementImage(emptyim, for:.disabled)
         self.stepper.setIncrementImage(emptyim, for:.disabled)
         

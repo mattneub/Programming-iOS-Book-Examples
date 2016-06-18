@@ -25,20 +25,12 @@ class ViewController : UIViewController {
     
     func makeImages () -> [UIImage] {
         var arr = [UIImage]()
-        // replace C for loops by stride
-        for i in stride(from:0, to: 3, by: 1) { // (var i = 0; i < 3; i++) {
-            UIGraphicsBeginImageContextWithOptions(CGSize(24,24), true, 0)
-            UIImage(named: "sprites.png")!.draw(at:CGPoint(CGFloat(-(5+i)*24), -4*24))
-            let im = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext()
-            arr += [im]
-        }
-        for i in stride(from:1, through: 0, by: -1) { // (var i = 1; i >= 0; i--) {
-            UIGraphicsBeginImageContextWithOptions(CGSize(24,24), true, 0)
-            UIImage(named: "sprites.png")!.draw(at:CGPoint(CGFloat(-(5+i)*24),-4*24))
-            let im = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext()
-            arr += [im]
+
+        for i in [0,1,2,1,0] {
+            let r = UIGraphicsImageRenderer(size:CGSize(24,24))
+            arr += [r.image { _ in
+                UIImage(named: "sprites.png")!.draw(at:CGPoint(CGFloat(-(5+i)*24), -4*24))
+            }]
         }
         return arr
     }

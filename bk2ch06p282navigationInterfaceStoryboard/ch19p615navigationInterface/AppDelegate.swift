@@ -37,10 +37,16 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         let im = UIImage(named:"linen.png")
         let sz = CGSize(5,34)
-        UIGraphicsBeginImageContextWithOptions(sz, false, 0)
-        im!.draw(at:CGPoint(-55,-55))
-        let im2 = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+        let r = UIGraphicsImageRenderer(size:sz)
+        let im2 = r.image {
+            _ in im!.draw(at:CGPoint(-55,-55))
+        }
+
+//        UIGraphicsBeginImageContextWithOptions(sz, false, 0)
+//        im!.draw(at:CGPoint(-55,-55))
+//        let im2 = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+        
         let im3 = im2.resizableImage(withCapInsets:UIEdgeInsetsMake(0,0,0,0), resizingMode:.tile)
         UIBarButtonItem.appearance().setBackgroundImage(im3, for:[], barMetrics:.default)
         

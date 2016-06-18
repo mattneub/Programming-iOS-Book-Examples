@@ -8,15 +8,6 @@ func lend<T where T:NSObject> (closure:(T)->()) -> T {
     return orig
 }
 
-func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(size, false, 0)
-    closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
-    return result
-}
-
-
 class ViewController : UIViewController {
     
     @IBOutlet var lab1 : UILabel!
@@ -75,9 +66,13 @@ class ViewController : UIViewController {
         self.lab2.attributedText = mas
 
         let r = self.iv.bounds
-        self.iv.image = imageOfSize(r.size) {
-            mas.draw(in:r)
+        self.iv.image = UIGraphicsImageRenderer(size:r.size).image {
+            _ in mas.draw(in:r)
         }
+
+//        self.iv.image = imageOfSize(r.size) {
+//            mas.draw(in:r)
+//        }
         
         
     }

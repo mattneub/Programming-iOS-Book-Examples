@@ -21,33 +21,58 @@ extension CGPoint {
 
 
 func mask(size sz:CGSize, roundingCorners rad:CGFloat) -> CALayer {
-    let r = CGRect(origin:CGPoint.zero, size:sz)
-    UIGraphicsBeginImageContextWithOptions(r.size, false, 0)
-    let con = UIGraphicsGetCurrentContext()!
-    con.setFillColor(UIColor(white:0, alpha:0).cgColor)
-    con.fill(r)
-    con.setFillColor(UIColor(white:0, alpha:1).cgColor)
-    let p = UIBezierPath(roundedRect:r, cornerRadius:rad)
-    p.fill()
-    let im = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
+    let rect = CGRect(origin:CGPoint.zero, size:sz)
+    let r = UIGraphicsImageRenderer(bounds:rect)
+    let im = r.image {
+        ctx in
+        let con = ctx.cgContext
+        con.setFillColor(UIColor(white:0, alpha:0).cgColor)
+        con.fill(rect)
+        con.setFillColor(UIColor(white:0, alpha:1).cgColor)
+        let p = UIBezierPath(roundedRect:rect, cornerRadius:rad)
+        p.fill()
+    }
+
+    
+//    UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
+//    let con = UIGraphicsGetCurrentContext()!
+//    con.setFillColor(UIColor(white:0, alpha:0).cgColor)
+//    con.fill(rect)
+//    con.setFillColor(UIColor(white:0, alpha:1).cgColor)
+//    let p = UIBezierPath(roundedRect:rect, cornerRadius:rad)
+//    p.fill()
+//    let im = UIGraphicsGetImageFromCurrentImageContext()!
+//    UIGraphicsEndImageContext()
+    
     let mask = CALayer()
-    mask.frame = r
+    mask.frame = rect
     mask.contents = im.cgImage
     return mask
 }
 
 func viewMask(size sz:CGSize, roundingCorners rad:CGFloat) -> UIView {
-    let r = CGRect(origin:CGPoint.zero, size:sz)
-    UIGraphicsBeginImageContextWithOptions(r.size, false, 0)
-    let con = UIGraphicsGetCurrentContext()!
-    con.setFillColor(UIColor(white:0, alpha:0).cgColor)
-    con.fill(r)
-    con.setFillColor(UIColor(white:0, alpha:1).cgColor)
-    let p = UIBezierPath(roundedRect:r, cornerRadius:rad)
-    p.fill()
-    let im = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
+    let rect = CGRect(origin:CGPoint.zero, size:sz)
+    let r = UIGraphicsImageRenderer(bounds:rect)
+    let im = r.image {
+        ctx in
+        let con = ctx.cgContext
+        con.setFillColor(UIColor(white:0, alpha:0).cgColor)
+        con.fill(rect)
+        con.setFillColor(UIColor(white:0, alpha:1).cgColor)
+        let p = UIBezierPath(roundedRect:rect, cornerRadius:rad)
+        p.fill()
+    }
+    
+//    UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
+//    let con = UIGraphicsGetCurrentContext()!
+//    con.setFillColor(UIColor(white:0, alpha:0).cgColor)
+//    con.fill(rect)
+//    con.setFillColor(UIColor(white:0, alpha:1).cgColor)
+//    let p = UIBezierPath(roundedRect:rect, cornerRadius:rad)
+//    p.fill()
+//    let im = UIGraphicsGetImageFromCurrentImageContext()!
+//    UIGraphicsEndImageContext()
+    
     let iv = UIImageView(frame:CGRect(origin: CGPoint(), size: sz))
     iv.contentMode = .scaleToFill
     iv.image = im

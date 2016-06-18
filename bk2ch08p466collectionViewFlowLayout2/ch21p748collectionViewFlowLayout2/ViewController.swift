@@ -149,24 +149,44 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             cell.backgroundColor = UIColor.gray()
             
             // checkmark in top left corner when selected
-            UIGraphicsBeginImageContextWithOptions(cell.bounds.size, false, 0)
-            let con = UIGraphicsGetCurrentContext()!
-            let shadow = NSShadow()
-            shadow.shadowColor = UIColor.darkGray()
-            shadow.shadowOffset = CGSize(2,2)
-            shadow.shadowBlurRadius = 4
-            let check2 =
-            AttributedString(string:"\u{2714}", attributes:[
-                NSFontAttributeName: UIFont(name:"ZapfDingbatsITC", size:24)!,
-                NSForegroundColorAttributeName: UIColor.green(),
-                NSStrokeColorAttributeName: UIColor.red(),
-                NSStrokeWidthAttributeName: -4,
-                NSShadowAttributeName: shadow
-                ])
-            con.scale(x:1.1, y:1)
-            check2.draw(at:CGPoint(2,0))
-            let im = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext()
+            let r = UIGraphicsImageRenderer(size:cell.bounds.size)
+            let im = r.image {
+                ctx in let con = ctx.cgContext
+                let shadow = NSShadow()
+                shadow.shadowColor = UIColor.darkGray()
+                shadow.shadowOffset = CGSize(2,2)
+                shadow.shadowBlurRadius = 4
+                let check2 =
+                    AttributedString(string:"\u{2714}", attributes:[
+                        NSFontAttributeName: UIFont(name:"ZapfDingbatsITC", size:24)!,
+                        NSForegroundColorAttributeName: UIColor.green(),
+                        NSStrokeColorAttributeName: UIColor.red(),
+                        NSStrokeWidthAttributeName: -4,
+                        NSShadowAttributeName: shadow
+                        ])
+                con.scale(x:1.1, y:1)
+                check2.draw(at:CGPoint(2,0))
+            }
+
+//            UIGraphicsBeginImageContextWithOptions(cell.bounds.size, false, 0)
+//            let con = UIGraphicsGetCurrentContext()!
+//            let shadow = NSShadow()
+//            shadow.shadowColor = UIColor.darkGray()
+//            shadow.shadowOffset = CGSize(2,2)
+//            shadow.shadowBlurRadius = 4
+//            let check2 =
+//            AttributedString(string:"\u{2714}", attributes:[
+//                NSFontAttributeName: UIFont(name:"ZapfDingbatsITC", size:24)!,
+//                NSForegroundColorAttributeName: UIColor.green(),
+//                NSStrokeColorAttributeName: UIColor.red(),
+//                NSStrokeWidthAttributeName: -4,
+//                NSShadowAttributeName: shadow
+//                ])
+//            con.scale(x:1.1, y:1)
+//            check2.draw(at:CGPoint(2,0))
+//            let im = UIGraphicsGetImageFromCurrentImageContext()!
+//            UIGraphicsEndImageContext()
+            
             let iv = UIImageView(image:nil, highlightedImage:im)
             iv.isUserInteractionEnabled = false
             cell.addSubview(iv)

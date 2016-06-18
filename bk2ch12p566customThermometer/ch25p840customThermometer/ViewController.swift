@@ -71,18 +71,32 @@ class ViewController: UIViewController {
 
         self.prog2.backgroundColor = UIColor.black()
         self.prog2.trackTintColor = UIColor.black()
-        UIGraphicsBeginImageContextWithOptions(CGSize(10,10), true, 0)
-        let con = UIGraphicsGetCurrentContext()!
-        con.setFillColor(UIColor.yellow().cgColor)
-        con.fill(CGRect(0, 0, 10, 10))
-        let r = con.boundingBoxOfClipPath.insetBy(dx: 1,dy: 1)
-        con.setLineWidth(2)
-        con.setStrokeColor(UIColor.black().cgColor)
-        con.stroke(r)
-        con.strokeEllipse(in: r)
-        let im =
-            UIGraphicsGetImageFromCurrentImageContext()!.resizableImage(withCapInsets:UIEdgeInsetsMake(4, 4, 4, 4), resizingMode:.stretch)
-        UIGraphicsEndImageContext()
+        
+        let r = UIGraphicsImageRenderer(size:CGSize(10,10))
+        let im = r.image {
+            ctx in let con = ctx.cgContext
+            con.setFillColor(UIColor.yellow().cgColor)
+            con.fill(CGRect(0, 0, 10, 10))
+            let r = con.boundingBoxOfClipPath.insetBy(dx: 1,dy: 1)
+            con.setLineWidth(2)
+            con.setStrokeColor(UIColor.black().cgColor)
+            con.stroke(r)
+            con.strokeEllipse(in: r)
+        }.resizableImage(withCapInsets:UIEdgeInsetsMake(4, 4, 4, 4), resizingMode:.stretch)
+
+//        UIGraphicsBeginImageContextWithOptions(CGSize(10,10), true, 0)
+//        let con = UIGraphicsGetCurrentContext()!
+//        con.setFillColor(UIColor.yellow().cgColor)
+//        con.fill(CGRect(0, 0, 10, 10))
+//        let r = con.boundingBoxOfClipPath.insetBy(dx: 1,dy: 1)
+//        con.setLineWidth(2)
+//        con.setStrokeColor(UIColor.black().cgColor)
+//        con.stroke(r)
+//        con.strokeEllipse(in: r)
+//        let im =
+//            UIGraphicsGetImageFromCurrentImageContext()!.resizableImage(withCapInsets:UIEdgeInsetsMake(4, 4, 4, 4), resizingMode:.stretch)
+//        UIGraphicsEndImageContext()
+        
         self.prog2.progressImage = im
         
         // but this code, which worked fine for years including iOS 7.0, was broken by iOS 7.1

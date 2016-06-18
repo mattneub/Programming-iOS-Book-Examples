@@ -77,14 +77,24 @@ extension NSLayoutConstraint {
     }
 }
 
-func imageOfSize(_ size:CGSize, _ opaque:Bool = false, _ closure: @noescape () -> ())
-    -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
-        closure()
-        let result = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return result
+//func imageOfSize(_ size:CGSize, _ opaque:Bool = false, _ closure: @noescape () -> ())
+//    -> UIImage {
+//        UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
+//        closure()
+//        let result = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+//        return result
+//}
+
+func imageOfSize(_ size:CGSize, opaque:Bool = false, closure: @noescape () -> ()) -> UIImage {
+    let r = UIGraphicsImageRenderer(size: size, format: lend {
+        (f:UIGraphicsImageRendererFormat) in f.opaque = opaque
+    })
+    return r.image {
+        _ in closure()
+    }
 }
+
 
 extension UIView {
     class func animate(times:Int,
@@ -163,7 +173,7 @@ class ViewController: UIViewController {
             con.fillPath()
         }
         
-        let _ = imageOfSize(CGSize(100,100), true) {
+        let _ = imageOfSize(CGSize(100,100), opaque:true) {
             let con = UIGraphicsGetCurrentContext()!
             con.addEllipse(inRect: CGRect(0,0,100,100))
             con.setFillColor(UIColor.blue().cgColor)

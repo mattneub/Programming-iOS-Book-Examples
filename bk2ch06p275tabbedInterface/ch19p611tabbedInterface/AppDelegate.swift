@@ -43,17 +43,32 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 
         
         let ding = UIFont(name:"ZapfDingbatsITC", size:40)!
-        UIGraphicsBeginImageContextWithOptions(CGSize(100,40), false, 0)
-        let s = "\u{2713}"
-        let p = NSMutableParagraphStyle()
-        p.alignment = .right
-        s.draw(in:CGRect(0,0,100,40),
-            withAttributes:[
-                NSFontAttributeName:ding,
-                NSParagraphStyleAttributeName:p,
-                NSForegroundColorAttributeName:UIColor.red()])
-        let im = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+        let r = UIGraphicsImageRenderer(size:CGSize(100,40))
+        let im = r.image {
+            _ in
+            let s = "\u{2713}"
+            let p = NSMutableParagraphStyle()
+            p.alignment = .right
+            s.draw(in:CGRect(0,0,100,40),
+                   withAttributes:[
+                    NSFontAttributeName:ding,
+                    NSParagraphStyleAttributeName:p,
+                    NSForegroundColorAttributeName:UIColor.red()])
+        }
+
+        
+//        UIGraphicsBeginImageContextWithOptions(CGSize(100,40), false, 0)
+//        let s = "\u{2713}"
+//        let p = NSMutableParagraphStyle()
+//        p.alignment = .right
+//        s.draw(in:CGRect(0,0,100,40),
+//            withAttributes:[
+//                NSFontAttributeName:ding,
+//                NSParagraphStyleAttributeName:p,
+//                NSForegroundColorAttributeName:UIColor.red()])
+//        let im = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+        
         UITabBar.appearance().selectionIndicatorImage = im
         
         

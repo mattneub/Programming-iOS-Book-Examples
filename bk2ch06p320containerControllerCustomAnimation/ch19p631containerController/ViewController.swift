@@ -34,10 +34,18 @@ class ViewController : UIViewController {
         let tovc = self.swappers[cur]
         tovc.view.frame = self.panel.bounds
 
-        UIGraphicsBeginImageContextWithOptions(tovc.view.bounds.size, true, 0)
-        tovc.view.layer.render(in:UIGraphicsGetCurrentContext()!)
-        let im = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+        let r = UIGraphicsImageRenderer(size:tovc.view.bounds.size)
+        let im = r.image {
+            ctx in let con = ctx.cgContext
+            tovc.view.layer.render(in:con)
+        }
+
+        
+//        UIGraphicsBeginImageContextWithOptions(tovc.view.bounds.size, true, 0)
+//        tovc.view.layer.render(in:UIGraphicsGetCurrentContext()!)
+//        let im = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+        
         let iv = UIImageView(image:im)
         iv.frame = CGRect.zero
         self.panel.addSubview(iv)

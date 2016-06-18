@@ -1,12 +1,10 @@
 import UIKit
 
-
 public func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(size, false, 0)
-    closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
-    return result
+    let r = UIGraphicsImageRenderer(size:size)
+    return r.image {
+        _ in closure()
+    }
 }
 
 // NB this bug is fixed in iOS 9

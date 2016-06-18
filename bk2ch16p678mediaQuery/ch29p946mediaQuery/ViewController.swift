@@ -4,12 +4,12 @@ import UIKit
 import MediaPlayer
 
 func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(size, false, 0)
-    closure()
-    let result = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
-    return result
+    let r = UIGraphicsImageRenderer(size:size)
+    return r.image {
+        _ in closure()
+    }
 }
+
 
 /*
 NB New in iOS 7, MPMediaItem properties can be access directly
@@ -54,21 +54,43 @@ class ViewController: UIViewController {
         
         
         let sz = CGSize(20,20)
-        UIGraphicsBeginImageContextWithOptions(
-            CGSize(sz.height,sz.height), false, 0)
-        UIColor.black().setFill()
-        UIBezierPath(ovalIn:
-            CGRect(0,0,sz.height,sz.height)).fill()
-        let im1 = UIGraphicsGetImageFromCurrentImageContext()!
-        UIColor.red().setFill()
-        UIBezierPath(ovalIn:
-            CGRect(0,0,sz.height,sz.height)).fill()
-        let im2 = UIGraphicsGetImageFromCurrentImageContext()!
-        UIColor.orange().setFill()
-        UIBezierPath(ovalIn:
-            CGRect(0,0,sz.height,sz.height)).fill()
-        let im3 = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+        let r = UIGraphicsImageRenderer(size:sz)
+        let im1 = r.image {
+            _ in
+            UIColor.black().setFill()
+            UIBezierPath(ovalIn:
+                CGRect(0,0,sz.height,sz.height)).fill()
+        }
+        let im2 = r.image {
+            _ in
+            UIColor.red().setFill()
+            UIBezierPath(ovalIn:
+                CGRect(0,0,sz.height,sz.height)).fill()
+        }
+        let im3 = r.image {
+            _ in
+            UIColor.orange().setFill()
+            UIBezierPath(ovalIn:
+                CGRect(0,0,sz.height,sz.height)).fill()
+        }
+
+        
+        
+//        UIGraphicsBeginImageContextWithOptions(
+//            CGSize(sz.height,sz.height), false, 0)
+//        UIColor.black().setFill()
+//        UIBezierPath(ovalIn:
+//            CGRect(0,0,sz.height,sz.height)).fill()
+//        let im1 = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIColor.red().setFill()
+//        UIBezierPath(ovalIn:
+//            CGRect(0,0,sz.height,sz.height)).fill()
+//        let im2 = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIColor.orange().setFill()
+//        UIBezierPath(ovalIn:
+//            CGRect(0,0,sz.height,sz.height)).fill()
+//        let im3 = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
         
         self.vv.setMinimumVolumeSliderImage(
             im1.resizableImage(withCapInsets:UIEdgeInsetsMake(9,9,9,9),
