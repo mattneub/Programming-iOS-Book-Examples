@@ -103,12 +103,8 @@ class ViewController: UIViewController {
         
         do {
             let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
-            var comp = DateComponents()
-            comp.year = 2016
-            comp.month = 8
-            comp.day = 10
-            comp.hour = 15
-            let d = greg.date(from: comp) // Optional wrapping Date
+            let comp = DateComponents(calendar: greg, year: 2016, month: 8, day: 10, hour: 15)
+            let d = comp.date // Optional wrapping Date
             if let d = d {
                 print(d)
                 print(d.description(with:Locale.current()))
@@ -118,11 +114,10 @@ class ViewController: UIViewController {
         
         do {
             let d = Date() // or whatever
-            var comp = DateComponents()
-            comp.month = 1
+            let comp = DateComponents(month:1)
             let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
-            let d2 = greg.date(byAdding: comp, to:d)
-            _ = d2
+            let d2 = greg.date(byAdding: comp, to:d) // Optional wrapping Date
+            print("one month from now:", d2)
         }
         
         do {
@@ -246,17 +241,6 @@ class ViewController: UIViewController {
             print(ems)
         }
         
-        do {
-            // looking to see whether struct Data is implemented yet!
-            // https://github.com/apple/swift-evolution/blob/master/proposals/0069-swift-mutability-for-foundation.md
-            // var d = Data()
-//            class MyData : NSMutableData { }
-//            
-//            func myData() -> Data {
-//                return MyData() as Data
-//            }
-
-        }
         
     }
 

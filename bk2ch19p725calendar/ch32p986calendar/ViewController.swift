@@ -99,8 +99,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         }
         
         let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
-        var comp = DateComponents()
-        (comp.year, comp.month, comp.day, comp.hour) = (2016,8,10,15)
+        var comp = DateComponents(year:1016, month:8, day:10, hour:15)
         let d1 = greg.date(from:comp)!
         comp.hour = comp.hour! + 1
         let d2 = greg.date(from:comp)!
@@ -154,12 +153,9 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         ev.calendar = cal
         // need a start date and end date
         let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
-        var comp = DateComponents()
-        comp.year = 2016
-        comp.month = 1
+        var comp = DateComponents(year:2016, month:1, hour:10)
         comp.weekday = 1 // Sunday
         comp.weekdayOrdinal = 1 // *first* Sunday
-        comp.hour = 10
         ev.startDate = greg.date(from:comp)!
         comp.hour = 11
         ev.endDate = greg.date(from:comp)!

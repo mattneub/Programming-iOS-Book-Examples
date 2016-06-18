@@ -60,7 +60,7 @@ class MyTableViewController: UITableViewController {
         // there are two approaches: live and historical
         // collect historical data
         let now = Date()
-        let yester = now.addingTimeInterval(-60*60*24)
+        let yester = now + (-60*60*24) // !
         self.actman.queryActivityStarting(from: yester, to: now, to: self.queue) {
             (arr:[CMMotionActivity]?, err:NSError?) -> Void in
             guard var acts = arr else {return}
