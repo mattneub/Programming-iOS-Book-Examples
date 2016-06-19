@@ -7,7 +7,7 @@ enum Filter : String {
     case playlists = "Playlists"
     case podcasts = "Podcasts"
     case books = "Audiobooks"
-    static var cases : [Filter] = [albums, playlists, podcasts, books]
+    static var cases : [Filter] = [.albums, .playlists, .podcasts, .books]
     init!(_ ix:Int) {
         if !(0...3).contains(ix) {
             return nil
@@ -38,11 +38,11 @@ enum ShapeMaker {
     case diamond
     func addShape (toPath p: CGMutablePath, inRect r : CGRect) -> () {
         switch self {
-        case rectangle:
+        case .rectangle:
             p.addRect(nil, rect:r)
-        case ellipse:
+        case .ellipse:
             p.addEllipseIn(nil, rect:r)
-        case diamond:
+        case .diamond:
             p.moveTo(nil, x:r.minX, y:r.midY)
             p.addLineTo(nil, x: r.midX, y: r.minY)
             p.addLineTo(nil, x: r.maxX, y: r.midY)
