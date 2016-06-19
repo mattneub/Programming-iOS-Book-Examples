@@ -48,8 +48,8 @@ class MyMandelbrotView : UIView {
     
     var bitmapContext: CGContext!
     let draw_queue : DispatchQueue = {
-        let q = DispatchQueue(label: qVal, attributes: [])
-        q.setSpecific(key: qKey, value: qVal)
+        let q = DispatchQueue(label: qVal)
+        // q.setSpecific(key: qKey, value: qVal) // no need, there is now a better way
         return q
     }()
     
@@ -72,6 +72,9 @@ class MyMandelbrotView : UIView {
             let bitmap = self.makeBitmapContext(size: self.bounds.size)
             self.draw(center: center, zoom:1, context:bitmap)
             DispatchQueue.main.async {
+                // testing crash
+                // self.assertOnBackgroundThread() // crash! :)
+
                 self.bitmapContext = bitmap
                 self.setNeedsDisplay()
                 UIApplication.shared().endBackgroundTask(bti)
@@ -82,8 +85,12 @@ class MyMandelbrotView : UIView {
     // ==== this material is called on background thread
     
     func assertOnBackgroundThread() {
-        let s = DispatchQueue.getSpecific(key: qKey)
-        assert(s == qVal)
+//        let s = DispatchQueue.getSpecific(key: qKey)
+//        assert(s == qVal)
+        
+        // woohoo! much nicer way to do this, we can drop use of setSpecific and getSpecific
+        
+        dispatchPrecondition(condition: .onQueue(draw_queue))
     }
 
     
