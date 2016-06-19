@@ -182,7 +182,7 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
             v2.alpha = 0
             UIView.animate(withDuration:0.25, animations: {
                 v2.alpha = 1
-                v2.transform = CGAffineTransform.identity
+                v2.transform = .identity
                 }, completion: {
                     _ in
                     transitionContext.completeTransition(true)

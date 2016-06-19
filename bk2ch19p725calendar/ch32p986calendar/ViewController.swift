@@ -189,8 +189,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         let pred = self.database.predicateForEvents(withStart:
             d1, end:d2, calendars:[cal])
         var events = [EKEvent]()
-        let q = DispatchQueue.GlobalAttributes.qosDefault
-        DispatchQueue.global(attributes: q).async {
+        DispatchQueue.global(attributes:.qosDefault).async {
             self.database.enumerateEvents(matching:pred) {
                 (event:EKEvent, stop:UnsafeMutablePointer<ObjCBool>) in
                 events += [event]

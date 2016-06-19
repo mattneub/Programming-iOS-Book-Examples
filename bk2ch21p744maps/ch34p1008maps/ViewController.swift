@@ -239,7 +239,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
                     aView.alpha = 0
                     UIView.animate(withDuration:0.8) {
                         aView.alpha = 1
-                        aView.transform = CGAffineTransform.identity
+                        aView.transform = .identity
                     }
                 }
             }

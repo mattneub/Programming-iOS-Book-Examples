@@ -21,8 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // other classes will see that we have set ubiq and will use it
         // NB should start by asking for the file manager's ubiquityIdentityToken
         // if it doesn't exist, there is no iCloud account
-        let q = DispatchQueue.GlobalAttributes.qosDefault
-        DispatchQueue.global(attributes: q).async {
+        DispatchQueue.global(attributes:.qosDefault).async {
             let fm = FileManager()
             let ubiq = fm.urlForUbiquityContainerIdentifier(nil)
             print("ubiq: \(ubiq)")

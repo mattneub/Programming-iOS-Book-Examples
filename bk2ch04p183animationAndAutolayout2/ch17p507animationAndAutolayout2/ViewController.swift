@@ -23,7 +23,7 @@ class ViewController : UIViewController {
                         self.v.transform = CGAffineTransform(scaleX:1.1, y:1.1)
                     }, completion: {
                         _ in
-                        self.v.transform = CGAffineTransform.identity
+                        self.v.transform = .identity
                         self.v.superview!.setNeedsLayout()
                         self.v.superview!.layoutIfNeeded() // no violation of constraints
                     })

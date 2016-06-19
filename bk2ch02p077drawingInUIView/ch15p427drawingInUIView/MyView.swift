@@ -262,7 +262,7 @@ class MyView : UIView {
             var callbacks = CGPatternCallbacks(
                 version: 0, drawPattern: drawStripes, releaseInfo: nil)
             let patt = CGPattern(info:nil, bounds: CGRect(0,0,4,4),
-                                 matrix: CGAffineTransform.identity,
+                                 matrix: .identity,
                                  xStep: 4, yStep: 4,
                                  tiling: .constantSpacingMinimalDistortion,
                                  isColored: true, callbacks: &callbacks)!

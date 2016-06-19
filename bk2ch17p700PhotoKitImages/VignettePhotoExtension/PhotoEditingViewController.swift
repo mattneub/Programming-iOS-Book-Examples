@@ -140,8 +140,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         // Update UI to reflect that editing has finished and output is being rendered.
         
         // Render and provide output on a background queue.
-        let q = DispatchQueue.GlobalAttributes.qosDefault
-        DispatchQueue.global(attributes: q).async {
+        DispatchQueue.global(attributes:.qosDefault).async {
             let vignette = self.seg.selectedSegmentIndex == 0 ? Double(self.slider.value) : -1.0
             let input = self.input!
             let inurl = input.fullSizeImageURL!

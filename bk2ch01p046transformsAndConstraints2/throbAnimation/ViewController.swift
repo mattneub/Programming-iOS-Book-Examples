@@ -36,8 +36,8 @@ class ViewController: UIViewController {
                 self.v2.transform = CGAffineTransform(scaleX:1.1, y:1.1)
             }, completion: {
                 _ in
-                self.v1.transform = CGAffineTransform.identity
-                self.v2.transform = CGAffineTransform.identity
+                self.v1.transform = .identity
+                self.v2.transform = .identity
 
 //                self.v2.addConstraints(self.constraints)
 //                self.v2.setTranslatesAutoresizingMaskIntoConstraints(false)

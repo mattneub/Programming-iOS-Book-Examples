@@ -16,7 +16,7 @@ class ViewController : UIViewController {
                     v.transform = CGAffineTransform(scaleX:1.1, y:1.1)
                 }, completion: {
                     _ in
-                    v.transform = CGAffineTransform.identity
+                    v.transform = .identity
                 })
         }
     }
