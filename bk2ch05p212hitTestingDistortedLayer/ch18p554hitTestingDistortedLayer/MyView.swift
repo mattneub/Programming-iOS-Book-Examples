@@ -53,7 +53,7 @@ class MyView : UIView {
             let r = self.bounds.insetBy(dx: 30, dy: 30)
             con.saveGState()
             con.translate(x: self.bounds.width/2.0, y: self.bounds.height/2.0)
-            con.rotate(byAngle: CGFloat(M_PI)/10.0)
+            con.rotate(byAngle: .pi/10.0)
             con.translate(x: -self.bounds.size.width/2.0, y: -self.bounds.size.height/2.0)
             con.fillEllipse(in:r)
             con.restoreGState()

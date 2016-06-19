@@ -277,7 +277,7 @@ class ViewController: UIViewController {
             var values = [0.0]
             var direction = 1.0
             for i in stride(from: 20, to: 60, by: 5) {
-                values.append( direction * M_PI / Double(i) )
+                values.append( direction * .pi / Double(i) )
                 direction *= -1
             }
             print(values)
@@ -287,7 +287,7 @@ class ViewController: UIViewController {
         do {
             var values = [0.0]
             for (ix,i) in stride(from: 20, to: 60, by: 5).enumerated() {
-                values.append( (ix % 2 == 1 ? -1.0 : 1.0) * M_PI / Double(i) )
+                values.append( (ix % 2 == 1 ? -1.0 : 1.0) * .pi / Double(i) )
             }
             print(values)
         }
@@ -297,7 +297,7 @@ class ViewController: UIViewController {
         do {
             let directions = sequence(first:1) {$0 * -1}
             let bases = stride(from: 20, to: 60, by: 5)
-            let values = zip(bases, directions).map {Double($1) * M_PI / Double($0)}
+            let values = zip(bases, directions).map {Double($1) * .pi / Double($0)}
             print(values) // same as previous but without the initial 0.0
         }
         

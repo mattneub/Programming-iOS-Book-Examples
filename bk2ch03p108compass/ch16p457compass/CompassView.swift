@@ -90,7 +90,7 @@ class CompassLayer : CALayer {
             //print(t.anchorPoint)
             t.alignmentMode = kCAAlignmentCenter
             t.foregroundColor = UIColor.black().cgColor
-            t.setAffineTransform(CGAffineTransform(rotationAngle:CGFloat(ix)*CGFloat(M_PI)/2.0))
+            t.setAffineTransform(CGAffineTransform(rotationAngle:CGFloat(ix) * .pi/2.0))
             circle.addSublayer(t)
         }
 
@@ -103,7 +103,7 @@ class CompassLayer : CALayer {
         arrow.anchorPoint = CGPoint(0.5, 0.8)
         arrow.delegate = self // we will draw the arrow in the delegate method
         // in Swift, not a property:
-        arrow.setAffineTransform(CGAffineTransform(rotationAngle:CGFloat(M_PI)/5.0))
+        arrow.setAffineTransform(CGAffineTransform(rotationAngle:.pi/5.0))
         self.addSublayer(arrow)
         arrow.setNeedsDisplay() // draw, please
         

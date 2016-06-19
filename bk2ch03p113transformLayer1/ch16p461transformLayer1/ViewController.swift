@@ -56,7 +56,7 @@ class ViewController : UIViewController {
         lay1.addSublayer(lay3)
 
         delay(2) {
-            lay1.transform = CATransform3DMakeRotation(CGFloat(M_PI), 0, 1, 0)
+            lay1.transform = CATransform3DMakeRotation(.pi, 0, 1, 0)
         }
     }
     

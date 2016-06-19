@@ -15,17 +15,17 @@ class ViewController : UIViewController {
         switch which {
         case 1:
             arrow.transform = CATransform3DRotate(
-                arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)
+                arrow.transform, .pi/4.0, 0, 0, 1)
             
         case 2:
             CATransaction.setAnimationDuration(0.8)
             arrow.transform = CATransform3DRotate(
-                arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)
+                arrow.transform, .pi/4.0, 0, 0, 1)
             
         case 3:
             let clunk = CAMediaTimingFunction(controlPoints: 0.9, 0.1, 0.7, 0.9)
             CATransaction.setAnimationTimingFunction(clunk)
-            arrow.transform = CATransform3DRotate(arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)
+            arrow.transform = CATransform3DRotate(arrow.transform, .pi/4.0, 0, 0, 1)
 
         case 4:
             // proving that the completion block works
@@ -36,7 +36,7 @@ class ViewController : UIViewController {
             // capture the start and end values
             let startValue = arrow.transform
             let endValue = CATransform3DRotate(
-                startValue, CGFloat(M_PI)/4.0, 0, 0, 1)
+                startValue, .pi/4.0, 0, 0, 1)
             // change the layer, without implicit animation
             CATransaction.setDisableActions(true)
             arrow.transform = endValue
@@ -53,7 +53,7 @@ class ViewController : UIViewController {
         case 5:
             CATransaction.setDisableActions(true)
             arrow.transform = CATransform3DRotate(
-                arrow.transform, CGFloat(M_PI)/4.0, 0, 0, 1)
+                arrow.transform, .pi/4.0, 0, 0, 1)
             let anim = CABasicAnimation(keyPath:"transform")
             anim.duration = 0.8
             let clunk = CAMediaTimingFunction(controlPoints:0.9, 0.1, 0.7, 0.9)
@@ -64,9 +64,9 @@ class ViewController : UIViewController {
             // capture the start and end values
             let nowValue = arrow.transform
             let startValue = CATransform3DRotate(
-                nowValue, CGFloat(M_PI)/40.0, 0, 0, 1)
+                nowValue, .pi/40.0, 0, 0, 1)
             let endValue = CATransform3DRotate(
-                nowValue, CGFloat(-M_PI)/40.0, 0, 0, 1)
+                nowValue, -.pi/40.0, 0, 0, 1)
             // construct the explicit animation
             let anim = CABasicAnimation(keyPath:"transform")
             anim.duration = 0.05
@@ -89,12 +89,12 @@ class ViewController : UIViewController {
             anim.isAdditive = true
             anim.valueFunction = CAValueFunction(
                 name:kCAValueFunctionRotateZ)
-            anim.fromValue = M_PI/40
-            anim.toValue = -M_PI/40
+            anim.fromValue = Float.pi/40
+            anim.toValue = -Float.pi/40
             arrow.add(anim, forKey:nil)
             
         case 8:
-            let rot = CGFloat(M_PI)/4.0
+            let rot = CGFloat.pi/4.0
             CATransaction.setDisableActions(true)
             arrow.transform = CATransform3DRotate(arrow.transform, rot, 0, 0, 1)
             // construct animation additively
@@ -113,7 +113,7 @@ class ViewController : UIViewController {
             let directions = sequence(first:1) {$0 * -1}
             let bases = stride(from: 20, to: 60, by: 5)
             for (base, dir) in zip(bases, directions) {
-                values.append(Double(dir) * M_PI / Double(base))
+                values.append(Double(dir) * .pi / Double(base))
             }
             values.append(0.0)
             print(values)
@@ -127,7 +127,7 @@ class ViewController : UIViewController {
             // put them all together, they spell Mother...
             
             // capture current value, set final value
-            let rot = M_PI/4.0
+            let rot = .pi/4.0
             CATransaction.setDisableActions(true)
             let current = arrow.value(forKeyPath:"transform.rotation.z") as! Double
             arrow.setValue(current + rot, forKeyPath:"transform.rotation.z")
@@ -146,7 +146,7 @@ class ViewController : UIViewController {
             let directions = sequence(first:1) {$0 * -1}
             let bases = stride(from: 20, to: 60, by: 5)
             for (base, dir) in zip(bases, directions) {
-                values.append(Double(dir) * M_PI / Double(base))
+                values.append(Double(dir) * .pi / Double(base))
             }
             values.append(0.0)
             let anim2 = CAKeyframeAnimation(keyPath:"transform")

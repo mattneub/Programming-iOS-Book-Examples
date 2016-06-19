@@ -130,7 +130,7 @@ extension MyFlowLayout : UICollisionBehaviorDelegate {
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
     
         let push = UIPushBehavior(items:[item], mode:.continuous)
-        push.setAngle(3*CGFloat(M_PI)/4.0, magnitude:1.5)
+        push.setAngle(3 * .pi/4.0, magnitude:1.5)
         self.animator.addBehavior(push)
     }
 

@@ -27,7 +27,7 @@ class MyCircularProgressButton : UIButton {
         layer.zPosition = -1
         layer.strokeStart = 0
         layer.strokeEnd = 0
-        layer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(-M_PI/2.0)))
+        layer.setAffineTransform(CGAffineTransform(rotationAngle: -.pi/2.0))
         self.shapelayer = layer
         
     }

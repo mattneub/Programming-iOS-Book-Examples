@@ -54,13 +54,13 @@ class ViewController : UIViewController {
         anim1.path = path
         anim1.calculationMode = kCAAnimationPaced
         
-        let revs = [0.0, M_PI, 0.0, M_PI]
+        let revs = [0.0, .pi, 0.0, .pi]
         let anim2 = CAKeyframeAnimation(keyPath:"transform")
         anim2.values = revs
         anim2.valueFunction = CAValueFunction(name:kCAValueFunctionRotateY)
         anim2.calculationMode = kCAAnimationDiscrete
 
-        let pitches = [0.0, M_PI/60.0, 0.0, -M_PI/60.0, 0.0]
+        let pitches = [0.0, .pi/60.0, 0.0, -.pi/60.0, 0.0]
         let anim3 = CAKeyframeAnimation(keyPath:"transform")
         anim3.values = pitches
         anim3.repeatCount = Float.infinity

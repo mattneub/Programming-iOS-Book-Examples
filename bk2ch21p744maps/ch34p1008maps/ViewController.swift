@@ -120,7 +120,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             ]
             // rotate the arrow around its center
             let t1 = CGAffineTransform(translationX: unit*2, y: unit*2)
-            let t2 = t1.rotate(CGFloat(-M_PI)/3.5)
+            let t2 = t1.rotate(-.pi/3.5)
             var t3 = t2.translateBy(x: -unit*2, y: -unit*2)
             p.addLines(&t3, between: &points, count: 7)
             p.closeSubpath()
@@ -271,7 +271,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         if which == 10 {
             if overlay is MyOverlay {
-                let v = MyOverlayRenderer(overlay:overlay, angle: -CGFloat(M_PI)/3.5)
+                let v = MyOverlayRenderer(overlay:overlay, angle: -.pi/3.5)
                 return v
             }
         }

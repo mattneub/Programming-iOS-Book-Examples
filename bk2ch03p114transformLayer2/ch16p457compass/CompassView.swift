@@ -48,7 +48,7 @@ class CompassLayer : CALayer {
 
         self.rotationLayer.anchorPoint = CGPoint(1,0.5)
         self.rotationLayer.position = CGPoint(self.bounds.maxX, self.bounds.midY)
-        self.rotationLayer.transform = CATransform3DMakeRotation(CGFloat(M_PI)/4.0, 0, 1, 0)
+        self.rotationLayer.transform = CATransform3DMakeRotation(.pi/4.0, 0, 1, 0)
 
     
     }
@@ -119,7 +119,7 @@ class CompassLayer : CALayer {
             //print(t.anchorPoint)
             t.alignmentMode = kCAAlignmentCenter
             t.foregroundColor = UIColor.black().cgColor
-            t.setAffineTransform(CGAffineTransform(rotationAngle:CGFloat(ix)*CGFloat(M_PI)/2.0))
+            t.setAffineTransform(CGAffineTransform(rotationAngle:CGFloat(ix) * .pi/2.0))
             circle.addSublayer(t)
         }
 
@@ -132,7 +132,7 @@ class CompassLayer : CALayer {
         arrow.anchorPoint = CGPoint(0.5, 0.8)
         arrow.delegate = self // we will draw the arrow in the delegate method
         // in Swift, not a property:
-        arrow.setAffineTransform(CGAffineTransform(rotationAngle:CGFloat(M_PI)/5.0))
+        arrow.setAffineTransform(CGAffineTransform(rotationAngle:.pi/5.0))
         master.addSublayer(arrow) //
         arrow.setNeedsDisplay() // draw, please
         
@@ -154,8 +154,8 @@ class CompassLayer : CALayer {
         peg.anchorPoint = CGPoint(0.5,0.5)
         peg.position = master.bounds.center
         master.addSublayer(peg)
-        peg.setValue(M_PI/2, forKeyPath:"transform.rotation.x")
-        peg.setValue(M_PI/2, forKeyPath:"transform.rotation.z")
+        peg.setValue(Float.pi/2, forKeyPath:"transform.rotation.x")
+        peg.setValue(Float.pi/2, forKeyPath:"transform.rotation.z")
         peg.zPosition = 15
         
 

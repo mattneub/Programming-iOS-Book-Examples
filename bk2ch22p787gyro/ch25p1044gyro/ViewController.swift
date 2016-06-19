@@ -38,7 +38,7 @@ class ViewController: UIViewController {
             return // not ready yet
         }
         let att = mot.attitude
-        let to_deg = 180.0 / M_PI
+        let to_deg = 180.0 / .pi
         print("\(att.pitch * to_deg), \(att.roll * to_deg), \(att.yaw * to_deg)")
         let g = mot.gravity
         let whichway = g.z > 0 ? "forward" : "back"

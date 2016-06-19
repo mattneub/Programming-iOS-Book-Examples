@@ -109,7 +109,7 @@ class MyView : UIView {
             self.arrow.draw(at:CGPoint(0,0))
             for _ in 0..<3 {
                 con.translate(x: 20, y: 100)
-                con.rotate(byAngle: 30 * CGFloat(M_PI)/180.0)
+                con.rotate(byAngle: 30 * .pi/180.0)
                 con.translate(x: -20, y: -100)
                 self.arrow.draw(at:CGPoint(0,0))
             }
@@ -121,7 +121,7 @@ class MyView : UIView {
             self.arrow.draw(at:CGPoint(0,0))
             for _ in 0..<3 {
                 con.translate(x: 20, y: 100)
-                con.rotate(byAngle: 30 * CGFloat(M_PI)/180.0)
+                con.rotate(byAngle: 30 * .pi/180.0)
                 con.translate(x: -20, y: -100)
                 self.arrow.draw(at:CGPoint(0,0))
             }
@@ -134,7 +134,7 @@ class MyView : UIView {
             self.arrow.draw(at:CGPoint(0,0))
             for _ in 0..<3 {
                 con.translate(x: 20, y: 100)
-                con.rotate(byAngle: 30 * CGFloat(M_PI)/180.0)
+                con.rotate(byAngle: 30 * .pi/180.0)
                 con.translate(x: -20, y: -100)
                 self.arrow.draw(at:CGPoint(0,0))
             }

@@ -31,7 +31,7 @@ extension CGRect {
             mainview.addSubview(v1)
             v1.addSubview(v2)
             
-            v1.transform = CGAffineTransform(rotationAngle:45 * CGFloat(M_PI)/180.0)
+            v1.transform = CGAffineTransform(rotationAngle:45 * .pi/180.0)
             print(v1.frame)
             
         case 2:
@@ -53,7 +53,7 @@ extension CGRect {
             v1.addSubview(v2)
             
             v2.transform = CGAffineTransform(translationX:100, y:0)
-            v2.transform = v2.transform.rotate(45 * CGFloat(M_PI)/180.0)
+            v2.transform = v2.transform.rotate(45 * .pi/180.0)
             
         case 4:
             let v1 = UIView(frame:CGRect(20, 111, 132, 194))
@@ -63,7 +63,7 @@ extension CGRect {
             mainview.addSubview(v1)
             v1.addSubview(v2)
             
-            v2.transform = CGAffineTransform(rotationAngle:45 * CGFloat(M_PI)/180.0)
+            v2.transform = CGAffineTransform(rotationAngle:45 * .pi/180.0)
             v2.transform = v2.transform.translateBy(x: 100, y: 0)
             
         case 5: // same as case 4 but using concat
@@ -74,7 +74,7 @@ extension CGRect {
             mainview.addSubview(v1)
             v1.addSubview(v2)
             
-            let r = CGAffineTransform(rotationAngle:45 * CGFloat(M_PI)/180.0)
+            let r = CGAffineTransform(rotationAngle:45 * .pi/180.0)
             let t = CGAffineTransform(translationX:100, y:0)
             v2.transform = t.concat(r) // not r.concat(t)
             
@@ -86,7 +86,7 @@ extension CGRect {
             mainview.addSubview(v1)
             v1.addSubview(v2)
 
-            let r = CGAffineTransform(rotationAngle:45 * CGFloat(M_PI)/180.0)
+            let r = CGAffineTransform(rotationAngle:45 * .pi/180.0)
             let t = CGAffineTransform(translationX:100, y:0)
             v2.transform = t.concat(r)
             v2.transform = r.invert().concat(v2.transform)

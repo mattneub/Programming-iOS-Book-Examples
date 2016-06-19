@@ -66,7 +66,7 @@ class ViewController : UIViewController {
             cell.birthRate = 100
             cell.lifetime = 1.5
             cell.velocity = 100
-            cell.emissionRange = CGFloat(M_PI)/5.0
+            cell.emissionRange = .pi/5.0
             
             cell.xAcceleration = -40
             cell.yAcceleration = 200
@@ -104,7 +104,7 @@ class ViewController : UIViewController {
             let cell2 = CAEmitterCell()
             cell.emitterCells = [cell2]
             cell2.contents = im.cgImage
-            cell2.emissionRange = CGFloat(M_PI)
+            cell2.emissionRange = .pi
             cell2.birthRate = 200
             cell2.lifetime = 0.4
             cell2.velocity = 200
@@ -134,7 +134,7 @@ class ViewController : UIViewController {
             emit.emitterSize = CGSize(100,100)
             emit.emitterShape = kCAEmitterLayerLine
             emit.emitterMode = kCAEmitterLayerOutline
-            cell.emissionLongitude = 3*CGFloat(M_PI)/4
+            cell.emissionLongitude = 3 * .pi/4
             
             // might also be fun to animate position of source back and forth
             let ba2 = CABasicAnimation(keyPath:"emitterPosition")

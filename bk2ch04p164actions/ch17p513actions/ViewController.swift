@@ -40,7 +40,7 @@ class MyWagglePositionAction : NSObject, CAAction {
             let d = sqrt(pow(oldP.x - newP.x, 2) + pow(oldP.y - newP.y, 2))
             let r = Double(d/3.0)
             let theta = Double(atan2(newP.y - oldP.y, newP.x - oldP.x))
-            let wag = 10*M_PI/180.0
+            let wag = 10 * .pi/180.0
             let p1 = CGPoint(
                 oldP.x + CGFloat(r*cos(theta+wag)),
                 oldP.y + CGFloat(r*sin(theta+wag)))
