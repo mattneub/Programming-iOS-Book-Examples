@@ -17,7 +17,7 @@ class ViewController: UIViewController {
             dp.datePickerMode = .date
             // dp.datePickerMode = .DateAndTime
             var dc = DateComponents(year:1954, month:1, day:1)
-            let c = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
+            let c = Calendar(calendarIdentifier:.gregorian)!
             let d1 = c.date(from: dc)!
             dp.minimumDate = d1
             dp.date = d1

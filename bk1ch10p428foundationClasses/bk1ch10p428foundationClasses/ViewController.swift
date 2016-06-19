@@ -102,7 +102,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
+            let greg = Calendar(calendarIdentifier:.gregorian)!
             let comp = DateComponents(calendar: greg, year: 2016, month: 8, day: 10, hour: 15)
             let d = comp.date // Optional wrapping Date
             if let d = d {
@@ -115,7 +115,7 @@ class ViewController: UIViewController {
         do {
             let d = Date() // or whatever
             let comp = DateComponents(month:1)
-            let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
+            let greg = Calendar(calendarIdentifier:.gregorian)!
             let d2 = greg.date(byAdding: comp, to:d) // Optional wrapping Date
             print("one month from now:", d2)
         }

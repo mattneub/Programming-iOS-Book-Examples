@@ -98,7 +98,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             return
         }
         
-        let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
+        let greg = Calendar(calendarIdentifier:.gregorian)!
         var comp = DateComponents(year:1016, month:8, day:10, hour:15)
         let d1 = greg.date(from:comp)!
         comp.hour = comp.hour! + 1
@@ -152,7 +152,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         ev.addRecurrenceRule(recur)
         ev.calendar = cal
         // need a start date and end date
-        let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
+        let greg = Calendar(calendarIdentifier:.gregorian)!
         var comp = DateComponents(year:2016, month:1, hour:10)
         comp.weekday = 1 // Sunday
         comp.weekdayOrdinal = 1 // *first* Sunday
@@ -182,7 +182,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         }
         
         let d1 = Date() // today
-        let greg = Calendar(calendarIdentifier:Calendar.Identifier.gregorian)!
+        let greg = Calendar(calendarIdentifier:.gregorian)!
         let d2 = greg.date(byAdding: lend {
             (comp:NSDateComponents) in comp.year = 2
             } as DateComponents, to:d1)!
