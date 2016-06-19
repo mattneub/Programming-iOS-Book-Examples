@@ -45,10 +45,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         objectA = MyClass1()
         objectB = MyClass2()
         let opts : NSKeyValueObservingOptions = [.new, .old]
-        objectA.addObserver(objectB, forKeyPath: "value", options: opts, context: &con)
+        // NB can use new syntax here, because it's a property
+        objectA.addObserver(objectB, forKeyPath: #keyPath(MyClass1.value), options: opts, context: &con)
         (objectA as! MyClass1).value = true
         // comment out next line if you wish to crash
-        objectA.removeObserver(objectB, forKeyPath: "value")
+        objectA.removeObserver(objectB, forKeyPath: #keyPath(MyClass1.value))
         objectA = nil
         
         return true

@@ -109,6 +109,8 @@ class ViewController: UIViewController {
         
         let myObject = MyClass()
         let arr = myObject.value(forKeyPath:"theData.name") as! [String]
+        // NB can't do this, because Swift doesn't know about this path
+        // let arr2 = myObject.value(forKeyPath:#keyPath(MyClass.theData.name))
         print(arr)
         do {
             let arr : AnyObject = myObject.value(forKey:"pepBoys")!

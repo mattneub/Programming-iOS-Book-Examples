@@ -154,7 +154,7 @@ class CompassLayer : CALayer {
         peg.anchorPoint = CGPoint(0.5,0.5)
         peg.position = master.bounds.center
         master.addSublayer(peg)
-        peg.setValue(Float.pi/2, forKeyPath:"transform.rotation.x")
+        peg.setValue(Float.pi/2, forKeyPath:"transform.rotation.x") // can't use #keyPath here??
         peg.setValue(Float.pi/2, forKeyPath:"transform.rotation.z")
         peg.zPosition = 15
         
