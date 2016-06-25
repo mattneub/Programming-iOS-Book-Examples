@@ -47,14 +47,14 @@ class ViewController: UIViewController {
         
         
         let nc = NotificationCenter.default()
-        nc.addObserver(self, selector: #selector(notificationArrived), name: "test", object: nil)
         let test = "test" as Notification.Name
+        nc.addObserver(self, selector: #selector(notificationArrived), name:test, object: nil)
         nc.post(name:test, object: self, userInfo: ["junk":"nonsense"])
         nc.post(name:test, object: self, userInfo: ["progress":"nonsense"])
         nc.post(name:test, object: self, userInfo: ["progress":3])
     }
     
-    func notificationArrived(_ n:NSNotification) {
+    func notificationArrived(_ n:Notification) {
         do {
             let prog = n.userInfo?["progress"] as? NSNumber
             if prog != nil {

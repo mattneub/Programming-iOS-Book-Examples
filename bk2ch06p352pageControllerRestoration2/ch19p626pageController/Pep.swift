@@ -36,9 +36,6 @@ class Pep: UIViewController {
     return self.boy
     }
     
-    @IBAction func tap (_ sender: UIGestureRecognizer?) {
-        NotificationCenter.default().post(name: "tap" as Notification.Name, object: sender)
-    }
 }
 
 extension Pep : UIViewControllerRestoration {

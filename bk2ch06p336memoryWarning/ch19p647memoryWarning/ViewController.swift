@@ -117,10 +117,10 @@ class ViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default().addObserver(self, selector: #selector(backgrounding), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(backgrounding), name: .UIApplicationDidEnterBackground, object: nil)
     }
     
-    func backgrounding(_ n:NSNotification) {
+    func backgrounding(_ n:Notification) {
         self.saveAndReleaseMyBigData()
     }
     

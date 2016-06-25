@@ -11,8 +11,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default().addObserver(self, selector: #selector(keyboardShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default().addObserver(self, selector: #selector(keyboardHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(keyboardShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
     }
     
     func textFieldDidBeginEditing(_ tf: UITextField) {
@@ -60,7 +60,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return self.fr == nil
     }
     
-    func keyboardShow(_ n:NSNotification) {
+    func keyboardShow(_ n:Notification) {
         print("show!")
         let d = n.userInfo as! [String:AnyObject]
         if let local = d[UIKeyboardIsLocalUserInfoKey] {
@@ -79,7 +79,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    func keyboardHide(_ n:NSNotification) {
+    func keyboardHide(_ n:Notification) {
         print("hide!")
         let d = n.userInfo as! [String:AnyObject]
         if let local = d[UIKeyboardIsLocalUserInfoKey] {

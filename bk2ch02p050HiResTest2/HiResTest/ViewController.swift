@@ -23,7 +23,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         print(self.iv.image!.scale)
         
-        self.iv3.image = UIImage(named:"one")
+        // let's try out the new image literal feature
+        // ooh, it works with code completion; you just type the name
+        
+        self.iv3.image = #imageLiteral(resourceName: "one") // behind the scenes: #imageLiteral with resourceName: param
         self.iv4.image = UIImage(named:"uno")
         
         if let s = Bundle.main().pathForResource("one", ofType: "png") {

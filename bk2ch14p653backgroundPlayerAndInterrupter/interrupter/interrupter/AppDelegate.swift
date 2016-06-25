@@ -15,7 +15,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
         
         NotificationCenter.default().addObserver(forName:
-            Notification.Name.AVAudioSessionInterruption, object: nil, queue: nil) {
+            .AVAudioSessionInterruption, object: nil, queue: nil) {
                 n in
                 guard let why =
                     n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt

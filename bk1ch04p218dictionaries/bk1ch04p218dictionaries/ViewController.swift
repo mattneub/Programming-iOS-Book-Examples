@@ -100,8 +100,8 @@ class ViewController: UIViewController {
         // You don't even have to get it totally right! Here, I've used the bare name...
         // ...but Swift will still form the selector correctly for me
         // In other words, any valid reference to the method will do
-        nc.addObserver(self, selector:#selector(notificationArrived), name: "test", object: nil)
         let test = Notification.Name("test")
+        nc.addObserver(self, selector:#selector(notificationArrived), name: test, object: nil)
         nc.post(name:test, object: self, userInfo: ["junk":"nonsense"])
         nc.post(name:test, object: self, userInfo: ["progress":"nonsense"])
         nc.post(name:test, object: self, userInfo: ["progress":3])
@@ -127,7 +127,7 @@ class ViewController: UIViewController {
 
     }
     
-    func notificationArrived(_ n:NSNotification) {
+    func notificationArrived(_ n:Notification) {
         let prog = (n.userInfo?["progress"] as? NSNumber)?.doubleValue
         if prog != nil {
             self.progress = prog!
@@ -137,7 +137,7 @@ class ViewController: UIViewController {
         }
     }
 
-    func anotherWay(n:NSNotification) {
+    func anotherWay(n:Notification) {
         if let prog = n.userInfo?["progress"] as? Double { // chapter 10
             self.progress = prog
         }

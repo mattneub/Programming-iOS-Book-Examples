@@ -12,13 +12,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         NotificationCenter.default().addObserver(self,
             selector: #selector(cardTapped),
-            name: "cardTapped",
+            name: .cardTapped,
             object: nil)
         
         return true
     }
     
-    func cardTapped(_ n:NSNotification) {
+    func cardTapped(_ n:Notification) {
         print("card tapped: \(n.object)")
     }
     

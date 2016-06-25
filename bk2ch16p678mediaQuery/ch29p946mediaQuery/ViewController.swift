@@ -113,19 +113,19 @@ class ViewController: UIViewController {
         
         
         NotificationCenter.default().addObserver(self, selector:#selector(wirelessChanged),
-            name:Notification.Name.MPVolumeViewWirelessRoutesAvailableDidChange,
+            name:.MPVolumeViewWirelessRoutesAvailableDidChange,
             object:nil)
         NotificationCenter.default().addObserver(self,
             selector:#selector(wirelessChanged2),
-            name:Notification.Name.MPVolumeViewWirelessRouteActiveDidChange,
+            name:.MPVolumeViewWirelessRouteActiveDidChange,
             object:nil)
         
     }
     
-    func wirelessChanged(_ n:NSNotification) {
+    func wirelessChanged(_ n:Notification) {
         print("wireless change \(n.userInfo)")
     }
-    func wirelessChanged2(_ n:NSNotification) {
+    func wirelessChanged2(_ n:Notification) {
         print("wireless active change \(n.userInfo)")
     }
     
@@ -210,7 +210,7 @@ class ViewController: UIViewController {
         player.setQueue(with:queue)
         player.shuffleMode = .songs
         player.beginGeneratingPlaybackNotifications()
-        NotificationCenter.default().addObserver(self, selector: #selector(changed), name: Notification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: player)
+        NotificationCenter.default().addObserver(self, selector: #selector(changed), name: .MPMusicPlayerControllerNowPlayingItemDidChange, object: player)
         self.q = queue // retain a pointer to the queue
         player.play()
         
@@ -218,7 +218,7 @@ class ViewController: UIViewController {
         self.timer.tolerance = 0.1
     }
     
-    func changed(_ n:NSNotification) {
+    func changed(_ n:Notification) {
         defer {
             self.timer?.fire() // looks better if we fire timer now
         }

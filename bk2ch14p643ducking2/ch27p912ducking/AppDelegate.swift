@@ -16,7 +16,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // deliberate leak here
         
         NotificationCenter.default().addObserver(forName:
-            Notification.Name.AVAudioSessionRouteChange, object: nil, queue: nil) {
+            .AVAudioSessionRouteChange, object: nil, queue: nil) {
                 n in
                 print("change route \(n.userInfo)")
                 print("current route \(AVAudioSession.sharedInstance().currentRoute)")
@@ -25,7 +25,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // we should pause our sound (doesn't happen automatically)
         
         NotificationCenter.default().addObserver(forName:
-            Notification.Name.AVAudioSessionInterruption, object: nil, queue: nil) {
+            .AVAudioSessionInterruption, object: nil, queue: nil) {
                 n in
                 guard let why =
                     n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
@@ -49,7 +49,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // use control center to test, e.g. start and stop a Music song
         
         NotificationCenter.default().addObserver(forName:
-            Notification.Name.AVAudioSessionSilenceSecondaryAudioHint, object: nil, queue: nil) {
+            .AVAudioSessionSilenceSecondaryAudioHint, object: nil, queue: nil) {
                 n in
                 guard let why = n.userInfo?[AVAudioSessionSilenceSecondaryAudioHintTypeKey] as? UInt else {return}
                 guard let type = AVAudioSessionSilenceSecondaryAudioHintType(rawValue:why) else {return}

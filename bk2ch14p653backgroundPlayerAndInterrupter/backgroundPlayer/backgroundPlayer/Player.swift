@@ -19,7 +19,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
         // interruption notification
         // note (irrelevant for bk 2, but useful for bk 1) how to prevent retain cycle
         self.observer = NotificationCenter.default().addObserver(forName:
-            Notification.Name.AVAudioSessionInterruption, object: nil, queue: nil) {
+            .AVAudioSessionInterruption, object: nil, queue: nil) {
                 [weak self] n in
                 guard let why =
                     n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt

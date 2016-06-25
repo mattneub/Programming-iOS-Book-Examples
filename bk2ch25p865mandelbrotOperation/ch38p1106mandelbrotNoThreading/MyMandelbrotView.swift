@@ -3,6 +3,11 @@
 
 import UIKit
 
+extension Notification.Name {
+    static let mandelOpFinished = Notification.Name("mandelOpFinished")
+}
+
+
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)
@@ -40,15 +45,15 @@ class MyMandelbrotView : UIView {
     func drawThatPuppy () {
         let center = CGPoint(self.bounds.midX, self.bounds.midY)
         let op = MyMandelbrotOperation(size: self.bounds.size, center: center, zoom: 1)
-        NotificationCenter.default().addObserver(self, selector: #selector(operationFinished), name: "MyMandelbrotOperationFinished", object: op)
+        NotificationCenter.default().addObserver(self, selector: #selector(operationFinished), name: .mandelOpFinished, object: op)
         self.queue.addOperation(op)
     }
     
     // warning! called on background thread
-    func operationFinished(_ n:NSNotification) {
+    func operationFinished(_ n:Notification) {
         if let op = n.object as? MyMandelbrotOperation {
             DispatchQueue.main.async {
-                NotificationCenter.default().removeObserver(self, name: "MyMandelbrotOperationFinished" as Notification.Name, object: op)
+                NotificationCenter.default().removeObserver(self, name: .mandelOpFinished, object: op)
                 self.bitmapContext = op.bitmapContext
                 self.setNeedsDisplay()
             }

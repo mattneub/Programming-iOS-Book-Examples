@@ -40,7 +40,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: .UIApplicationWillEnterForeground, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {

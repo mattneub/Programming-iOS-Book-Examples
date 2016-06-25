@@ -76,7 +76,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         self.determineStatus()
         NotificationCenter.default().addObserver(self,
             selector: #selector(determineStatus),
-            name: Notification.Name.UIApplicationWillEnterForeground,
+            name: .UIApplicationWillEnterForeground,
             object: nil)
     }
 

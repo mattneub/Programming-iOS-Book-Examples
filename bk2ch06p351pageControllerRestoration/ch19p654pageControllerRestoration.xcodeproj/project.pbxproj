@@ -28,8 +28,6 @@
 		C94F83E517CFACA600DA797B /* jack.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jack.jpg; sourceTree = "<group>"; };
 		C94F83E617CFACA600DA797B /* manny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = manny.jpg; sourceTree = "<group>"; };
 		C94F83E717CFACA600DA797B /* moe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moe.jpg; sourceTree = "<group>"; };
-		C94F83EB17CFACB400DA797B /* Pep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pep.h; sourceTree = "<group>"; };
-		C94F83EC17CFACB400DA797B /* Pep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pep.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +64,6 @@
 				C94F83E517CFACA600DA797B /* jack.jpg */,
 				C94F83E617CFACA600DA797B /* manny.jpg */,
 				C94F83E717CFACA600DA797B /* moe.jpg */,
-				C94F83EB17CFACB400DA797B /* Pep.h */,
-				C94F83EC17CFACB400DA797B /* Pep.m */,
 				327D4ED41991E8E000B95C4F /* Pep.swift */,
 				327D4ED61991E8EC00B95C4F /* Pep.xib */,
 				C94F83C817CFAC7A00DA797B /* Assets.xcassets */,

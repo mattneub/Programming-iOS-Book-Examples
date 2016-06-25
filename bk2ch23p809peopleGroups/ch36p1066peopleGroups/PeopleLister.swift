@@ -120,7 +120,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default().addObserver(self, selector: #selector(forceSave), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(forceSave), name: .UIApplicationDidEnterBackground, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

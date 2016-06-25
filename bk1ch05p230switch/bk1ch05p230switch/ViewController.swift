@@ -305,8 +305,8 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
 
 
         let nc = NotificationCenter.default()
-        nc.addObserver(self, selector: #selector(notificationArrived), name: "test", object: nil)
         let test = "test" as Notification.Name
+        nc.addObserver(self, selector: #selector(notificationArrived), name: test, object: nil)
         nc.post(name:test, object: self, userInfo: ["junk":"nonsense"])
         nc.post(name:test, object: self, userInfo: ["progress":"nonsense"])
         nc.post(name:test, object: self, userInfo: ["progress":3])
@@ -322,7 +322,7 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
         }
     }
     
-    func notificationArrived(_ n:NSNotification) {
+    func notificationArrived(_ n:Notification) {
         switch n.userInfo?["progress"] {
         case let prog as Double:
             self.progress = prog

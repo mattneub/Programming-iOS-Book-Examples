@@ -31,8 +31,8 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         self.tv.attributedText = mas
 
-        NotificationCenter.default().addObserver(self, selector: #selector(keyboardShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default().addObserver(self, selector: #selector(keyboardHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(keyboardShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
         
         self.tv.keyboardDismissMode = .interactive
 
@@ -46,7 +46,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     // iOS 8 will play its part (scroll cursor to visible)
     // and we don't have to animate
     
-    func keyboardShow(_ n:NSNotification) {
+    func keyboardShow(_ n:Notification) {
         print("show")
         
         let d = n.userInfo as! [String:AnyObject]
@@ -60,7 +60,7 @@ class ViewController: UIViewController, UITextViewDelegate {
 
     }
     
-    func keyboardHide(_ n:NSNotification) {
+    func keyboardHide(_ n:Notification) {
         print("hide")
         
         self.tv.contentInset = UIEdgeInsetsZero

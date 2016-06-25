@@ -13,8 +13,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default().addObserver(self, selector: #selector(keyboardShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default().addObserver(self, selector: #selector(keyboardHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(keyboardShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
         
         let contentView = self.scrollView.subviews[0]
         NSLayoutConstraint.activate([
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         return !self.keyboardShowing
     }
 
-    func keyboardShow(_ n:NSNotification) {
+    func keyboardShow(_ n:Notification) {
         self.oldContentInset = self.scrollView.contentInset
         self.oldIndicatorInset = self.scrollView.scrollIndicatorInsets
         self.oldOffset = self.scrollView.contentOffset
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         self.keyboardShowing = true
     }
     
-    func keyboardHide(_ n:NSNotification) {
+    func keyboardHide(_ n:Notification) {
         print("hide")
         self.scrollView.bounds.origin = self.oldOffset
         self.scrollView.scrollIndicatorInsets = self.oldIndicatorInset

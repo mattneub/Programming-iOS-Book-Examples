@@ -9,8 +9,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default().addObserver(self, selector: #selector(gotPicture), name: "GotPicture", object: nil)
-        NotificationCenter.default().addObserver(self, selector: #selector(gotProgress), name: "GotProgress", object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(gotPicture), name: .gotPicture, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(gotProgress), name: .gotProgress, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,11 +36,11 @@ class ViewController: UIViewController {
         }
     }
     
-    func gotPicture (_ n : NSNotification) {
+    func gotPicture (_ n : Notification) {
         self.grabPicture()
     }
     
-    func gotProgress (_ n : NSNotification) {
+    func gotProgress (_ n : Notification) {
         if let ui = n.userInfo {
             if let prog = ui["progress"] as? NSNumber {
                 self.prog.progress = Float(prog.doubleValue)

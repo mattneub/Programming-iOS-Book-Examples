@@ -6,6 +6,10 @@ protocol FlipsideViewControllerDelegate : class {
     func flipsideViewControllerDidFinish(_ controller:FlipsideViewController)
 }
 
+extension Notification.Name {
+    static let woohoo = Notification.Name("woohoo")
+}
+
 class FlipsideViewController: UIViewController {
     
     weak var delegate : FlipsideViewControllerDelegate!
@@ -19,13 +23,13 @@ class FlipsideViewController: UIViewController {
         switch which {
         case 0:
             self.observer = NotificationCenter.default().addObserver(
-                forName: "woohoo" as Notification.Name, object:nil, queue:nil) {
+                forName: .woohoo, object:nil, queue:nil) {
                     _ in
                     _ = self.description // leak me, leak me
             }
         case 1:
             self.observer = NotificationCenter.default().addObserver(
-                forName: "woohoo" as Notification.Name, object:nil, queue:nil) {
+                forName: .woohoo, object:nil, queue:nil) {
                     [unowned self] _ in // ha ha, fixed it
                     _ = self.description
             }

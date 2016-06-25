@@ -4,6 +4,12 @@ import MediaPlayer
 
 let which = 1 // 1 or 2
 
+// right way to define a notification name
+
+extension Notification.Name {
+    static let cardTapped = Notification.Name("cardTapped")
+}
+
 class ViewController: UIViewController {
     
     var observers = Set<NSObject>()
@@ -21,14 +27,14 @@ class ViewController: UIViewController {
             
             NotificationCenter.default().addObserver(self,
                 selector: #selector(nowPlayingItemChanged),
-                name: Notification.Name.MPMusicPlayerControllerNowPlayingItemDidChange,
+                name: .MPMusicPlayerControllerNowPlayingItemDidChange,
                 object: nil)
             
         case 2:
             
             let ob = NotificationCenter.default()
                 .addObserver(forName:
-                    Notification.Name.MPMusicPlayerControllerNowPlayingItemDidChange,
+                    .MPMusicPlayerControllerNowPlayingItemDidChange,
                     object: nil, queue: nil) {
                         _ in
                         print("changed")
@@ -69,7 +75,7 @@ class ViewController: UIViewController {
     
     func singleTap(_:AnyObject) {
         NotificationCenter.default()
-            .post(name: "cardTapped" as Notification.Name, object: self)
+            .post(name: .cardTapped, object: self)
     }
 
 
