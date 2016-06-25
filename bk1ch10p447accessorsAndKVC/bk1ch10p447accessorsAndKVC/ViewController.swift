@@ -6,6 +6,10 @@ class Dog : NSObject {
     var name : String = ""
 }
 
+class DogOwner : NSObject {
+    var dogs = [Dog]()
+}
+
 class MyClass : NSObject {
     var theData = [
         [
@@ -121,8 +125,20 @@ class ViewController: UIViewController {
         
         _ = obj
         
-
+        print(#selector(setter:color2)) // setHue:
         
+        let owner = DogOwner()
+        let dog1 = Dog()
+        dog1.name = "Fido"
+        let dog2 = Dog()
+        dog2.name = "Rover"
+        owner.dogs = [dog1, dog2]
+        let names = owner.value(forKeyPath:#keyPath(DogOwner.dogs.name)) as! [String] // ["Fido", "Rover"]
+        let dog1name = dog1.value(forKey:#keyPath(Dog.name)) as! String
+        
+
+        print(names)
+        print(dog1name)
     }
 
 
