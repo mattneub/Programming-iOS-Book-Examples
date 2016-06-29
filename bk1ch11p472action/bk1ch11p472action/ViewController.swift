@@ -10,7 +10,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.button.addTarget(self,
+        self.button.addTarget(self, // change self to self.button to crash
             action: #selector(buttonPressed),
             for: .touchUpInside)
         

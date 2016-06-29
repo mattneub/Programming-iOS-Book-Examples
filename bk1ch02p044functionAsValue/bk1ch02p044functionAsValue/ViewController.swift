@@ -206,6 +206,12 @@ class ViewController: UIViewController {
         // and so on; but the point is, you just need to provide enough info ...
         // ... so that the compiler can resolve this method reference for you
         // and it will then form the actual Selector for you! no more "unrecognized selector"!
+        
+        // WARNING: Okay, yes, you can still crash: just specify the wrong target!
+        // this compiles:
+        self.b.addTarget(self.b, action: #selector(ViewController.buttonPressed(_:)), for: .touchUpInside)
+        // but it would crash if you ran it and tapped the button
+
     }
     
     func buttonPressed(_ sender:AnyObject) { // must actually exist, or none of the above will compile

@@ -30,32 +30,6 @@ class ViewController: UIViewController {
     }()
     
     
-    // how "lazy" is implemented
-    
-    // had to remove this section because they made dispatch_once unavailable!
-    
-    /*
-    
-    private var lazyOncer : dispatch_once_t = 0
-    private var lazyBacker : Int = 0
-    var lazyFront : Int {
-        get {
-            dispatch_once(&self.lazyOncer) {
-                self.lazyBacker = 42 // expensive initial value
-            }
-            return self.lazyBacker
-        }
-        set {
-            dispatch_once(&self.lazyOncer) {}
-            // will set
-            self.lazyBacker = newValue
-            // did set
-        }
-    }
-
- */
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -64,8 +38,12 @@ class ViewController: UIViewController {
         class MyDynamicAnimator : UIDynamicAnimator {}
         let anim2 = MyDynamicAnimator(collectionViewLayout:layout)
         _ = anim2
+        
+        
 
     }
+    
+
     
     
 }
