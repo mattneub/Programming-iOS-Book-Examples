@@ -122,10 +122,10 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         case 1:
             let path = Bundle.main().pathForResource("htmlbody", ofType:"txt")!
             let base = URL(fileURLWithPath:path)
-            let ss = try! String(contentsOfFile:path, encoding:String.Encoding.utf8)
+            let ss = try! String(contentsOfFile:path, encoding:.utf8)
             
             let path2 = Bundle.main().pathForResource("htmlTemplate", ofType:"txt")!
-            var s = try! String(contentsOfFile:path2, encoding:String.Encoding.utf8)
+            var s = try! String(contentsOfFile:path2, encoding:.utf8)
             
             s = s.replacingOccurrences(of:"<maximagewidth>", with:"80%")
             s = s.replacingOccurrences(of:"<fontsize>", with:"18")

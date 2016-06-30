@@ -32,3 +32,12 @@ void setState (State s) {
 }
 
 @end
+
+@implementation Thing2
+
+- (void) giveMeAThing:(nonnull id)anObject {
+    
+}
+
+@end
+

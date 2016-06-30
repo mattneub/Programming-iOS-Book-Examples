@@ -25,3 +25,11 @@ NS_ASSUME_NONNULL_END
 
 
 @end
+
+// showing that lightweight generics are imported as generics
+
+@interface Thing2<ObjectType> : NSObject
+
+- (void) giveMeAThing:(nonnull ObjectType)anObject;
+
+@end

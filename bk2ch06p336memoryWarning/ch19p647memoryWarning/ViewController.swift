@@ -73,13 +73,13 @@ class ViewController : UIViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         // wow, this is some big data!
-        self.myBigData = "howdy".data(using:String.Encoding.utf8, allowLossyConversion: false)
+        self.myBigData = "howdy".data(using:.utf8, allowLossyConversion: false)
     }
     
     // tap button to prove we've got big data
     
     @IBAction func doButton (_ sender:AnyObject?) {
-        let s = String(data: self.myBigData, encoding: String.Encoding.utf8)
+        let s = String(data: self.myBigData, encoding: .utf8)
         let av = UIAlertController(title: "Got big data, and it says:", message: s, preferredStyle: .alert)
         av.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(av, animated: true)

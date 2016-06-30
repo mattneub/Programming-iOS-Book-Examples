@@ -2,6 +2,8 @@
 
 import UIKit
 import WebKit
+import AudioToolbox
+import ImageIO
 
 
 @objc enum Star : Int {
@@ -30,7 +32,7 @@ class MyClass {
             target: self, selector: #selector(timerFired),
             userInfo: nil, repeats: true)
     }
-    @objc func timerFired(_ t:Timer) { // will crash without @objc
+    @objc func timerFired(_ t:Timer) { // will crash without @objc; #selector prevents with compiler error
         print("timer fired")
         self.timer?.invalidate()
     }
@@ -58,6 +60,8 @@ class Womble : NSObject {
 
 class ViewController: UIViewController {
     
+    var myOptionalInt : Int? // Objective-C cannot see this
+    
     typealias MyStringExpecter = (String) -> ()
     class StringExpecterHolder : NSObject {
         var f : MyStringExpecter!
@@ -71,8 +75,6 @@ class ViewController: UIViewController {
     // overloading while hiding
     @nonobjc func dismissViewControllerAnimated(_ flag: Int, completion: (() -> Void)?) {}
     
-    func say(string s:String) {}
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,24 +86,17 @@ class ViewController: UIViewController {
         
         do {
         
-            // conversion of String to C string
-            
-//            let q = DispatchQueue(label:"MyQueue")
-//            
-//            let s = "MyQueue"
-//            let qq = DispatchQueue(label:s)
-
             let cs = "hello".utf8String // UnsafePointer<Int8>? // *
-            if let cs2 = "hello".cString(using: String.Encoding.utf8) { // [CChar]?
+            if let cs2 = "hello".cString(using: .utf8) { // [CChar]
                 let ss = String(validatingUTF8: cs2)
                 print(ss)
             }
             
-            let _ : Void = "hello".withCString {
+            "hello".withCString {
                 var cs = $0
                 while cs.pointee != 0 {
                     print(cs.pointee)
-                    cs = cs.successor()
+                    cs += 1 // or: cs = cs.successor()
                 }
             }
             
@@ -186,6 +181,12 @@ class ViewController: UIViewController {
 
         }
         
+        if false {
+            let sndurl = Bundle.main().urlForResource("test", withExtension: "aif")!
+            var snd : SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(sndurl, &snd)
+        }
+        
         do {
             let s = "hello"
             let s2 = s.replacingOccurrences(of: "ell", with:"ipp")
@@ -261,6 +262,14 @@ class ViewController: UIViewController {
 
         }
         
+        
+        self.reportSelectors()
+        
+        do {
+            let t = Thing2<NSString>()
+            t.giveMeAThing("howdy")
+        }
+        
     }
     
     func inverting(_:ViewController) -> ViewController {
@@ -302,6 +311,28 @@ class ViewController: UIViewController {
         self.myclass.startTimer()
     }
 
+    func sayHello() -> String // "sayHello"
+    { return "ha"}
+    
+    func say(_ s:String) // "say:"
+    {}
+    
+    func say(string s:String) // "sayWithString:"
+    {}
+    
+    func say(_ s:String, times n:Int) // "say:times:"
+    {}
+
+    func say(of s:String, loudly:Bool)
+    {}
+    
+    func reportSelectors() {
+        print(#selector(self.sayHello))
+        print(#selector(self.say(_:)))
+        print(#selector(self.say(string:)))
+        print(#selector(self.say(_:times:)))
+        print(#selector(self.say(of:loudly:)))
+    }
 
 
 }

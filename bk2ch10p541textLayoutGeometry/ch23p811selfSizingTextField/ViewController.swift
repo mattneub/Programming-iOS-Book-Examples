@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         let path = Bundle.main().pathForResource("brillig", ofType: "txt")!
-        let s = try! String(contentsOfFile:path, encoding: String.Encoding.utf8)
+        let s = try! String(contentsOfFile:path, encoding: .utf8)
         let s2 = s.replacingOccurrences(of:"\n", with: "")
         let mas = NSMutableAttributedString(string:s2 + " " + s2, attributes:[
             NSFontAttributeName: UIFont(name:"GillSans", size:20)!
