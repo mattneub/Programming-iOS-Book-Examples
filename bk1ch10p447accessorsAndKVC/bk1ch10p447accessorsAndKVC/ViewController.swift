@@ -41,7 +41,7 @@ class ViewController: UIViewController {
     var color : UIColor {
         get {
             print("someone called the color getter")
-            return UIColor.red()
+            return .red()
         }
         set {
             print("someone called the color setter")
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
     @objc(hue) var color2 : UIColor {
         get {
             print("someone called the color2 getter")
-            return UIColor.red()
+            return .red()
         }
         set {
             print("someone called the color2 setter")

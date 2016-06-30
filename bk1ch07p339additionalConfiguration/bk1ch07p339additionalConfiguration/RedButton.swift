@@ -32,6 +32,6 @@ class RedButton: UIButton {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.red()
+        self.backgroundColor = .red()
     }
 }

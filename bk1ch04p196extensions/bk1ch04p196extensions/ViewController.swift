@@ -35,8 +35,6 @@ extension CGSize {
 
 extension UIColor {
     class func myGolden() -> UIColor {
-        // weird, it lost its ability to coerce a literal to the expected type
-        // okay, it regained that ability
         return self.init(red:1.000, green:0.894, blue:0.541, alpha:0.900)
     }
 }
@@ -221,7 +219,7 @@ class ViewController: UIViewController {
         let t = CGAffineTransform(rotationAngle:2)
         print(t)
         
-        self.view.backgroundColor = UIColor.myGolden()
+        self.view.backgroundColor = .myGolden()
         
         let d = Digit(number:42)
         let d2 = Digit()

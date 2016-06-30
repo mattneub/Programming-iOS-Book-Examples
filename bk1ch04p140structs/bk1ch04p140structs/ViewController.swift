@@ -32,10 +32,10 @@ struct Digit6 {
     let number = 42
 }
 
-struct Thing {
-    var rawValue : Int = 0
-    static var one : Thing = Thing(rawValue:1)
-    static var two : Thing = Thing(rawValue:2)
+struct Thing : RawRepresentable {
+    let rawValue : Int
+    static let one : Thing = Thing(rawValue:1)
+    static let two : Thing = Thing(rawValue:2)
 }
 
 struct DigitReplacer {
@@ -75,6 +75,7 @@ class ViewController: UIViewController {
         print(d7.number)
         
         let thing : Thing = .one // no need to say Thing.one here
+        print(thing)
 
         _ = d
         _ = d2

@@ -20,7 +20,7 @@ class MyView : UIView {
 class ViewController: UIViewController {
     
     lazy var prog : UIProgressView = {
-        let p = UIProgressView(progressViewStyle: .`default`)
+        let p = UIProgressView(progressViewStyle: .default)
         p.alpha = 0.7
         p.trackTintColor = UIColor.clear()
         p.progressTintColor = UIColor.black()
