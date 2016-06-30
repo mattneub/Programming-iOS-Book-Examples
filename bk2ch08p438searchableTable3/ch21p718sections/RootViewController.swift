@@ -164,8 +164,7 @@ extension RootViewController : UISearchResultsUpdating {
         // we have a target string
         self.sectionData = self.originalSectionData.map {
             $0.filter {
-                let options = NSString.CompareOptions.caseInsensitiveSearch
-                let found = $0.range(of:target, options: options)
+                let found = $0.range(of:target, options: .caseInsensitiveSearch)
                 return (found != nil)
             }
         }.filter {$0.count > 0} // is Swift cool or what?

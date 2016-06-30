@@ -69,9 +69,8 @@ extension SearchResultsController : UISearchResultsUpdating {
         let target = sb.text!
         self.filteredData = self.originalData.filter {
             s in
-            let options = NSString.CompareOptions.caseInsensitiveSearch
-            let found = (s as NSString).range(of: target, options: options).length
-            return (found != 0)
+            let found = s.range(of: target, options: .caseInsensitiveSearch)
+            return (found != nil)
         }
         self.tableView.reloadData()
     }

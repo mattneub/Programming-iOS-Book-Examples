@@ -95,7 +95,7 @@ class ViewController: UIViewController {
             var moifile = try docsurl.appendingPathComponent("moi.txt")
             switch which {
             case 1:
-                try moidata.write(to: moifile, options: NSData.WritingOptions.dataWritingAtomic)
+                try moidata.write(to: moifile, options: .dataWritingAtomic)
                 var rv = URLResourceValues() // * new way, very nice
                 rv.isExcludedFromBackup = true
                 try moifile.setResourceValues(rv)
@@ -107,7 +107,7 @@ class ViewController: UIViewController {
                     (err:NSError?) in
                     // compiler gets confused if a one-liner returns a BOOL result
                     do {
-                        try moidata.write(to: intent.url, options: NSData.WritingOptions.dataWritingAtomic)
+                        try moidata.write(to: intent.url, options: .dataWritingAtomic)
                     } catch {
                         print(error)
                     }
