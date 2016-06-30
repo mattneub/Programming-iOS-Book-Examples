@@ -30,7 +30,7 @@ class MyClass {
             target: self, selector: #selector(timerFired),
             userInfo: nil, repeats: true)
     }
-    @objc func timerFired(t:Timer) { // will crash without @objc
+    @objc func timerFired(_ t:Timer) { // will crash without @objc
         print("timer fired")
         self.timer?.invalidate()
     }
@@ -63,13 +63,13 @@ class ViewController: UIViewController {
         var f : MyStringExpecter!
     }
 
-    func blockTaker(f:()->()) {}
+    func blockTaker(_ f:()->()) {}
     // - (void)blockTaker:(void (^ __nonnull)(void))f;
-    func functionTaker(f:@convention(c)() -> ()) {}
+    func functionTaker(_ f:@convention(c)() -> ()) {}
     // - (void)functionTaker:(void (* __nonnull)(void))f;
     
     // overloading while hiding
-    @nonobjc func dismissViewControllerAnimated(flag: Int, completion: (() -> Void)?) {}
+    @nonobjc func dismissViewControllerAnimated(_ flag: Int, completion: (() -> Void)?) {}
     
     func say(string s:String) {}
 
@@ -238,7 +238,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            func f (s:String) {print(s)}
+            func f (_ s:String) {print(s)}
             // let thing = f as! AnyObject // crash
             let holder = StringExpecterHolder()
             holder.f = f
