@@ -36,7 +36,7 @@ func removeFromStringNot(_ s:String, character c:Character) -> Int {
     var s = s
     var howMany = 0
     while let ix = s.characters.index(of:c) {
-        s.removeSubrange(ix...ix)
+        s.remove(at:ix)
         howMany += 1
     }
     return howMany
@@ -47,7 +47,7 @@ func removeFromStringNot(_ s:String, character c:Character) -> Int {
 func remove(from s: inout String, character c:Character) -> Int {
     var howMany = 0
     while let ix = s.characters.index(of:c) {
-        s.removeSubrange(ix...ix)
+        s.remove(at:ix)
         howMany += 1
     }
     return howMany
@@ -75,20 +75,20 @@ class ViewController: UIViewController {
         
         do {
             let s = "hello"
-            let result = removeFromStringNot(s, character:Character("l"))
+            let result = removeFromStringNot(s, character:"l")
             print(result)
             print(s) // no effect on s
         }
         
         var s = "hello"
-        let result = remove(from:&s, character:Character("l"))
+        let result = remove(from:&s, character:"l")
         print(result)
         print(s) // this is the important part!
         
         // proving that the inout parameter is _always_ changed
         
         var ss = "testing" {didSet {print("did")}}
-        _ = remove(from:&ss, character:Character("X")) // "did", even though no change
+        _ = remove(from:&ss, character:"X") // "did", even though no change
         
         let rect = CGRect.zero
         var arrow = CGRect.zero
