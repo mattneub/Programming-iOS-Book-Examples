@@ -57,8 +57,8 @@ class Dog {
     var name = ""
 }
 
-func changeName(ofDog d:Dog, to tostring:String) {
-    d.name = tostring // no "var", no "inout" needed
+func changeName(of d:Dog, to newName:String) {
+    d.name = newName // no "var", no "inout" needed
 }
 
 
@@ -107,7 +107,7 @@ class ViewController: UIViewController {
         let d = Dog()
         d.name = "Fido"
         print(d.name) // "Fido"
-        changeName(ofDog:d, to:"Rover")
+        changeName(of:d, to:"Rover")
         print(d.name) // "Rover"
         
         
