@@ -19,7 +19,7 @@ func doThis(_ f : (Void) -> Void) {
     f()
 }
 
-func imageOfSize(_ size:CGSize, _ whatToDraw:() -> ()) -> UIImage {
+func imageOfSize(_ size:CGSize, _ whatToDraw: @noescape () -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     whatToDraw()
     let result = UIGraphicsGetImageFromCurrentImageContext()!
@@ -138,6 +138,7 @@ class ViewController: UIViewController {
         // There is a difference in what "capture" means
         // depending on whether the surrounding is a value type or a reference type
         // I don't bring this out in the book, unfortunately
+        // the tests below are much more extensive than anything I discuss in the book
 
         do {
         
@@ -145,11 +146,14 @@ class ViewController: UIViewController {
             
             let d = Dog()
             d.whatThisDogSays = "arf"
-            let f = d.bark
-            doThis(f) // arf
+            let barkFunction = d.bark
+            doThis(barkFunction) // arf
+            doThis(d.bark) // arf
 
             d.whatThisDogSays = "ruff"
-            doThis(f) // ruff
+            doThis(barkFunction) // ruff
+            doThis(d.bark) // ruff
+
             
         }
         
@@ -159,11 +163,15 @@ class ViewController: UIViewController {
             
             var d = Dog2()
             d.whatThisDogSays = "arf"
-            let f = d.bark
-            doThis(f) // arf
+            let barkFunction = d.bark
+            doThis(barkFunction) // arf
+            doThis(d.bark) // arf
+
             
-            d.whatThisDogSays = "ruff"
-            doThis(f) // "arf"
+            d.whatThisDogSays = "ruff" // makes a _different dog_
+            doThis(barkFunction) // arf // the old dog is still captured in the closure
+            doThis(d.bark) // ruff, because we are now fetching the new dog
+
             
         }
         

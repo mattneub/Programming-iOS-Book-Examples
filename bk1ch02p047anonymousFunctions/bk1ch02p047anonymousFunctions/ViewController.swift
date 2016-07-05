@@ -64,8 +64,14 @@ class ViewController: UIViewController {
         let arr2 = arr.map(doubleMe) // [4, 8, 12, 16]
         print(arr2)
         
-        let arr3 = arr.map {$0*2} // it doesn't get any Swiftier than this
+        let arr3 = arr.map ({
+            (i:Int) -> Int in
+            return i*2
+        })
         print(arr3)
+        
+        let arr4 = arr.map {$0*2} // it doesn't get any Swiftier than this
+        print(arr4)
 
         
     }

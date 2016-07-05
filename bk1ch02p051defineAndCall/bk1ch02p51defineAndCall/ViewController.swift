@@ -19,8 +19,8 @@ class ViewController: UIViewController {
         // ... more configuration of para ...
         content.addAttribute(
             NSParagraphStyleAttributeName,
-            value:para, range:NSMakeRange(0,1))
-        
+            value:para,
+            range:NSMakeRange(0,1))
     }
     
     func functional() {
