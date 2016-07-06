@@ -82,7 +82,7 @@ class ViewController: UIViewController {
     let RECENTS = "recents"
     let PIXCOUNT = 20
     func test() {
-        let ud = UserDefaults.standard()
+        let ud = UserDefaults.standard
         var recents = ud.object(forKey:RECENTS) as? [Int]
         if recents == nil {
             recents = []

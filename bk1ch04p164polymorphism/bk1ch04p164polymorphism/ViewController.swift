@@ -112,7 +112,7 @@ class ViewController: UIViewController {
         do {
             // my old example here no longer works, because renamification has cut me off...
             // ... from being able to call setObject:forKey: with a number
-            let ud = UserDefaults.standard()
+            let ud = UserDefaults.standard
             let iii = 1
             let ii : NSNumber = iii // as NSNumber // explicit "as" now required // no it isn't
             ud.set(ii, forKey: "Test")
@@ -124,7 +124,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let ud = UserDefaults.standard()
+            let ud = UserDefaults.standard
             ud.set("howdy", forKey:"Test")
             let test = ud.object(forKey:"Test") as! String
             print(test)

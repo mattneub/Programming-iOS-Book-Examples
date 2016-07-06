@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         let thing = arr[0] // in Swift 1.2 and before we'd get a warning here
         _ = thing
         
-        // var opts = [.autoreverse, .repeat] // compile error
+        // var opts1 = [.autoreverse, .repeat] // compile error
         
         let opts : UIViewAnimationOptions = [.autoreverse, .repeat]
         _ = opts

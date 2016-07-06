@@ -64,18 +64,18 @@ class ViewController: UIViewController {
     
     }
     
-    private var myBigDataReal : Data! = nil
+    private var _myBigData : Data! = nil
     var myBigData : Data! {
         set (newdata) {
-            self.myBigDataReal = newdata
+            self._myBigData = newdata
         }
         get {
-            if myBigDataReal == nil {
+            if _myBigData == nil {
                 let fm = FileManager()
                 let f = try! URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
                 if let d = try? Data(contentsOf:f) {
                     print("loaded big data from disk")
-                    self.myBigDataReal = d
+                    self._myBigData = d
                     do {
                         try fm.removeItem(at:f)
                         print("deleted big data from disk")
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
                     }
                 }
             }
-            return self.myBigDataReal
+            return self._myBigData
         }
     }
 

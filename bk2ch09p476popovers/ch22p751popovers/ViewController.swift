@@ -64,7 +64,7 @@ class ViewController : UIViewController {
     
     func cancelPop1(_ sender:AnyObject) {
         self.dismiss(animated:true)
-        UserDefaults.standard().set(self.oldChoice, forKey: "choice")
+        UserDefaults.standard.set(self.oldChoice, forKey: "choice")
     }
     
     func savePop1(_ sender:AnyObject) {
@@ -212,14 +212,14 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
         if pop.presentedViewController is UINavigationController {
             // this is a popover where the user can make changes but then cancel them
             // thus we need to preserve the current values in case we have to revert (cancel) later
-            self.oldChoice = UserDefaults.standard().integer(forKey:"choice")
+            self.oldChoice = UserDefaults.standard.integer(forKey:"choice")
         }
     }
     
     func popoverPresentationControllerDidDismissPopover(_ pop: UIPopoverPresentationController) {
         if pop.presentedViewController is UINavigationController {
             // user cancelled, restore defaults
-            UserDefaults.standard().set(self.oldChoice, forKey: "choice")
+            UserDefaults.standard.set(self.oldChoice, forKey: "choice")
         }
     }
     

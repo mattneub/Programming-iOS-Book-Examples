@@ -6,7 +6,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        UserDefaults.standard().register(["choice": 0])
+        UserDefaults.standard.register(["choice": 0])
 
         
         return true

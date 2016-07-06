@@ -16,7 +16,7 @@ class ViewController : UIViewController, UIToolbarDelegate {
     
     @IBAction func unwind (_ sender:UIStoryboardSegue) {
         if sender.identifier == "cancel" {
-            UserDefaults.standard().set(self.oldChoice, forKey: "choice")
+            UserDefaults.standard.set(self.oldChoice, forKey: "choice")
         }
     }
     
@@ -32,7 +32,7 @@ class ViewController : UIViewController, UIToolbarDelegate {
                 // pop.permittedArrowDirections = [.Up, .Down]
             }
         }
-        self.oldChoice = UserDefaults.standard().integer(forKey:"choice")
+        self.oldChoice = UserDefaults.standard.integer(forKey:"choice")
     }
 }
 
@@ -48,7 +48,7 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
     }
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        UserDefaults.standard().set(self.oldChoice, forKey: "choice")
+        UserDefaults.standard.set(self.oldChoice, forKey: "choice")
     }
 
 }

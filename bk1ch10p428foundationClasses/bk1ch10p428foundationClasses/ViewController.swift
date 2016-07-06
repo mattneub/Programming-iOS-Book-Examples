@@ -131,7 +131,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            UserDefaults.standard().set(1, forKey: "Score")
+            UserDefaults.standard.set(1, forKey: "Score")
             // wow - unable to call setObject:forKey: while supplying a number!
             // ud.set(object: 0, forKey: "Score")
             let n = 1 as NSNumber
@@ -157,7 +157,7 @@ class ViewController: UIViewController {
         
         do {
             // perhaps the first example is more convincing if we use a variable
-            let ud = UserDefaults.standard()
+            let ud = UserDefaults.standard
             let i = 0
             ud.set(i, forKey: "Score")
             // ud.setObject(i, forKey: "Score")
@@ -181,7 +181,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let ud = UserDefaults.standard()
+            let ud = UserDefaults.standard
             let c = UIColor.blue()
             let cdata = NSKeyedArchiver.archivedData(withRootObject:c)
             ud.set(cdata, forKey: "myColor")

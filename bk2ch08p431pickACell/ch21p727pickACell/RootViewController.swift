@@ -9,7 +9,7 @@ class RootViewController : UITableViewController {
         let cell = super.tableView(tv, cellForRowAt:indexPath)
         
         // supply checkmarks as necessary
-        let ud = UserDefaults.standard()
+        let ud = UserDefaults.standard
         
         NSLog("about to update %@", cell.textLabel!.text!)
         cell.accessoryType = .none
@@ -64,7 +64,7 @@ class RootViewController : UITableViewController {
     override func tableView(_ tv: UITableView, didSelectRowAt indexPath: IndexPath) {
         log(tv: tv, ip: indexPath, phrase: "did select")
         
-        let ud = UserDefaults.standard()
+        let ud = UserDefaults.standard
         let setting = tv.cellForRow(at:indexPath)!.textLabel!.text
         let header = self.tableView(tv, titleForHeaderInSection:indexPath.section)!
         ud.setValue(setting!, forKey:header)

@@ -51,7 +51,7 @@ class Popover1View1 : UITableViewController {
         
         let section = indexPath.section
         let row = indexPath.row
-        let choice = UserDefaults.standard().integer(forKey: "choice")
+        let choice = UserDefaults.standard.integer(forKey: "choice")
         switch section {
         case 0:
             switch row {
@@ -74,7 +74,7 @@ class Popover1View1 : UITableViewController {
         let row = indexPath.row
         switch section {
         case 0:
-            UserDefaults.standard().set(row, forKey:"choice")
+            UserDefaults.standard.set(row, forKey:"choice")
             tableView.reloadData()
         default:break
         }
