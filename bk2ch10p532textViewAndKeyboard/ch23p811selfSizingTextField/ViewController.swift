@@ -31,8 +31,8 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         self.tv.attributedText = mas
 
-        NotificationCenter.default().addObserver(self, selector: #selector(keyboardShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default().addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
         
         self.tv.keyboardDismissMode = .interactive
 

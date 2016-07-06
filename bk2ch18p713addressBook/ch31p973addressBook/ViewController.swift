@@ -76,7 +76,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(determineStatus), name: .UIApplicationWillEnterForeground, object: nil)
     }
     
     @IBAction func doFindMoi (_ sender:AnyObject!) {

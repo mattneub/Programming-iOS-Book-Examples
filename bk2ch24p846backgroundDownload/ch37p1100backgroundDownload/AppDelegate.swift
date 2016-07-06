@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         let prog = Double(totalBytesWritten)/Double(totalBytesExpectedToWrite)
         NSLog("%@", "downloaded \(100.0*prog)%")
-        NotificationCenter.default().post(name: .gotProgress, object:self, userInfo:["progress":prog])
+        NotificationCenter.default.post(name: .gotProgress, object:self, userInfo:["progress":prog])
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         DispatchQueue.main.async {
             NSLog("%@", "finished; posting notification")
             self.image = im
-            NotificationCenter.default().post(name: .gotPicture, object: self)
+            NotificationCenter.default.post(name: .gotPicture, object: self)
         }
     }
     

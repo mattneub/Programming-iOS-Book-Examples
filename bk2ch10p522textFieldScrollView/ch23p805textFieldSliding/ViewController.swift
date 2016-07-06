@@ -13,8 +13,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default().addObserver(self, selector: #selector(keyboardShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default().addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
         
         let contentView = self.scrollView.subviews[0]
         NSLayoutConstraint.activate([

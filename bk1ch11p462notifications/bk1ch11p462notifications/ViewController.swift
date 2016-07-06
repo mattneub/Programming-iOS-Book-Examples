@@ -25,14 +25,14 @@ class ViewController: UIViewController {
         switch which {
         case 1:
             
-            NotificationCenter.default().addObserver(self,
+            NotificationCenter.default.addObserver(self,
                 selector: #selector(nowPlayingItemChanged),
                 name: .MPMusicPlayerControllerNowPlayingItemDidChange,
                 object: nil)
             
         case 2:
             
-            let ob = NotificationCenter.default()
+            let ob = NotificationCenter.default
                 .addObserver(forName:
                     .MPMusicPlayerControllerNowPlayingItemDidChange,
                     object: nil, queue: nil) {
@@ -57,12 +57,12 @@ class ViewController: UIViewController {
         switch which {
         case 1:
             
-            NotificationCenter.default().removeObserver(self)
+            NotificationCenter.default.removeObserver(self)
             
         case 2:
             
             for ob in self.observers {
-                NotificationCenter.default().removeObserver(ob)
+                NotificationCenter.default.removeObserver(ob)
             }
             self.observers.removeAll()
             
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
     }
     
     func singleTap(_:AnyObject) {
-        NotificationCenter.default()
+        NotificationCenter.default
             .post(name: .cardTapped, object: self)
     }
 

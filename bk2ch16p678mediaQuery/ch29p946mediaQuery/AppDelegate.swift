@@ -7,7 +7,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        NotificationCenter.default().addObserver(forName:.MPMediaLibraryDidChange, object: nil, queue: nil) {
+        NotificationCenter.default.addObserver(forName:.MPMediaLibraryDidChange, object: nil, queue: nil) {
             _ in
             print("library changed!")
             print("library last modified \(MPMediaLibrary.default().lastModifiedDate)")

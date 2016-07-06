@@ -94,7 +94,7 @@ class ViewController: UIViewController {
             }()
         ]
         
-        let nc = NotificationCenter.default()
+        let nc = NotificationCenter.default
         // Cool and long-awaited new feature of Swift 2.2: no more string selectors
         // This means the compiler will form the actual selector for you
         // You don't even have to get it totally right! Here, I've used the bare name...

@@ -22,13 +22,13 @@ class FlipsideViewController: UIViewController {
         super.viewWillAppear(animated)
         switch which {
         case 0:
-            self.observer = NotificationCenter.default().addObserver(
+            self.observer = NotificationCenter.default.addObserver(
                 forName: .woohoo, object:nil, queue:nil) {
                     _ in
                     _ = self.description // leak me, leak me
             }
         case 1:
-            self.observer = NotificationCenter.default().addObserver(
+            self.observer = NotificationCenter.default.addObserver(
                 forName: .woohoo, object:nil, queue:nil) {
                     [unowned self] _ in // ha ha, fixed it
                     _ = self.description
@@ -40,7 +40,7 @@ class FlipsideViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("unregister")
-        NotificationCenter.default().removeObserver(self.observer)
+        NotificationCenter.default.removeObserver(self.observer)
     }
     
     @IBAction func done (_ sender:AnyObject!) {

@@ -304,7 +304,7 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
 
 
 
-        let nc = NotificationCenter.default()
+        let nc = NotificationCenter.default
         let test = "test" as Notification.Name
         nc.addObserver(self, selector: #selector(notificationArrived), name: test, object: nil)
         nc.post(name:test, object: self, userInfo: ["junk":"nonsense"])

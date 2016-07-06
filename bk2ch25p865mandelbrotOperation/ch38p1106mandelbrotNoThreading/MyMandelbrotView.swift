@@ -45,7 +45,7 @@ class MyMandelbrotView : UIView {
     func drawThatPuppy () {
         let center = CGPoint(self.bounds.midX, self.bounds.midY)
         let op = MyMandelbrotOperation(size: self.bounds.size, center: center, zoom: 1)
-        NotificationCenter.default().addObserver(self, selector: #selector(operationFinished), name: .mandelOpFinished, object: op)
+        NotificationCenter.default.addObserver(self, selector: #selector(operationFinished), name: .mandelOpFinished, object: op)
         self.queue.addOperation(op)
     }
     
@@ -53,7 +53,7 @@ class MyMandelbrotView : UIView {
     func operationFinished(_ n:Notification) {
         if let op = n.object as? MyMandelbrotOperation {
             DispatchQueue.main.async {
-                NotificationCenter.default().removeObserver(self, name: .mandelOpFinished, object: op)
+                NotificationCenter.default.removeObserver(self, name: .mandelOpFinished, object: op)
                 self.bitmapContext = op.bitmapContext
                 self.setNeedsDisplay()
             }

@@ -28,7 +28,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegister settings: UIUserNotificationSettings) {
         print("did register \(settings)")
         // do not change registration here, you'll get a vicious circle
-        NotificationCenter.default().post(name: "didRegisterUserNotificationSettings" as Notification.Name, object: self)
+        NotificationCenter.default.post(name: "didRegisterUserNotificationSettings" as Notification.Name, object: self)
     }
     
     func doAlert(_ n:UILocalNotification) {

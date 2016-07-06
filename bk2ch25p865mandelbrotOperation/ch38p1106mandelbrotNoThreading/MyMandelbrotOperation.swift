@@ -71,7 +71,7 @@ class MyMandelbrotOperation : Operation {
         self.makeBitmapContext(size:self.size)
         self.draw(center: self.center, zoom: self.zoom)
         if !self.isCancelled {
-            NotificationCenter.default().post(name: .mandelOpFinished, object: self)
+            NotificationCenter.default.post(name: .mandelOpFinished, object: self)
         }
     }
 

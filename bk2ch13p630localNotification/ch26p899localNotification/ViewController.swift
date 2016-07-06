@@ -55,9 +55,9 @@ class ViewController: UIViewController {
         let settings = UIUserNotificationSettings(types: types, categories: [category])
         // prepare to proceed to next step
         var ob : NSObjectProtocol! = nil
-        ob = NotificationCenter.default().addObserver(forName: "didRegisterUserNotificationSettings" as Notification.Name, object: nil, queue: nil) {
+        ob = NotificationCenter.default.addObserver(forName: "didRegisterUserNotificationSettings" as Notification.Name, object: nil, queue: nil) {
             _ in
-            NotificationCenter.default().removeObserver(ob)
+            NotificationCenter.default.removeObserver(ob)
             self.createLocalNotification()
         }
         UIApplication.shared().registerUserNotificationSettings(settings)

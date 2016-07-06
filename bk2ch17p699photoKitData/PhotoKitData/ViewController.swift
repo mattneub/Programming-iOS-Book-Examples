@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.determineStatus()
-        NotificationCenter.default().addObserver(self, selector: #selector(determineStatus), name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(determineStatus), name: .UIApplicationWillEnterForeground, object: nil)
         PHPhotoLibrary.shared().register(self) // *
     }
 

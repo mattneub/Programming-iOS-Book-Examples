@@ -18,7 +18,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
         super.init()
         // interruption notification
         // note (irrelevant for bk 2, but useful for bk 1) how to prevent retain cycle
-        self.observer = NotificationCenter.default().addObserver(forName:
+        self.observer = NotificationCenter.default.addObserver(forName:
             .AVAudioSessionInterruption, object: nil, queue: nil) {
                 [weak self] n in
                 guard let why =
@@ -85,7 +85,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
     deinit {
         print("bp player dealloc")
         if self.observer != nil {
-            NotificationCenter.default().removeObserver(self.observer)
+            NotificationCenter.default.removeObserver(self.observer)
         }
         self.player?.delegate = nil
     }
