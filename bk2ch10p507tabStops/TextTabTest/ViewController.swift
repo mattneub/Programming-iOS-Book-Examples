@@ -106,7 +106,7 @@ class ViewController : UIViewController {
     }
     
     func thumbnailOfImage(name:String, extension ext: String) -> UIImage {
-        let url = Bundle.main().urlForResource(name,
+        let url = Bundle.main.urlForResource(name,
                 withExtension:ext)!
         let src = CGImageSourceCreateWithURL(url, nil)!
         let scale = UIScreen.main().scale

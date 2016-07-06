@@ -71,7 +71,7 @@ class TiledView : UIView {
             let x = Int(tile.origin.x/kTILESIZE)
             let y = Int(tile.origin.y/kTILESIZE)
             let tileName = String(format:"CuriousFrog_500_\(x+3)_\(y)")
-            let path = Bundle.main().pathForResource(tileName, ofType:"png")!
+            let path = Bundle.main.pathForResource(tileName, ofType:"png")!
             let image = UIImage(contentsOfFile:path)!
             
             image.draw(at:CGPoint(CGFloat(x)*kTILESIZE,CGFloat(y)*kTILESIZE))

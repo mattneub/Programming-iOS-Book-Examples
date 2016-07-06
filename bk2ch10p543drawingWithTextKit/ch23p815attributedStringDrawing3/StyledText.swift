@@ -26,7 +26,7 @@ class StyledText: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let path = Bundle.main().pathForResource("states", ofType: "txt")!
+        let path = Bundle.main.pathForResource("states", ofType: "txt")!
         let s = try! String(contentsOfFile: path, encoding: .utf8)
         
         let desc = UIFontDescriptor(name:"Didot", size:18)

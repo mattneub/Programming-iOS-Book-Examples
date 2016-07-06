@@ -120,11 +120,11 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         var which : Int {return 1}
         switch which {
         case 1:
-            let path = Bundle.main().pathForResource("htmlbody", ofType:"txt")!
+            let path = Bundle.main.pathForResource("htmlbody", ofType:"txt")!
             let base = URL(fileURLWithPath:path)
             let ss = try! String(contentsOfFile:path, encoding:.utf8)
             
-            let path2 = Bundle.main().pathForResource("htmlTemplate", ofType:"txt")!
+            let path2 = Bundle.main.pathForResource("htmlTemplate", ofType:"txt")!
             var s = try! String(contentsOfFile:path2, encoding:.utf8)
             
             s = s.replacingOccurrences(of:"<maximagewidth>", with:"80%")
@@ -139,43 +139,43 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
             
             self.wv.loadHTMLString(s, baseURL:base)
         case 2:
-            let path = Bundle.main().pathForResource("release", ofType:"pdf")! // works in simulator, works in device
+            let path = Bundle.main.pathForResource("release", ofType:"pdf")! // works in simulator, works in device
             let url = URL(fileURLWithPath:path)
             self.wv.loadRequest(URLRequest(url: url))
         case 3:
-            let path = Bundle.main().pathForResource("testing", ofType:"pdf")! // works in simulator, works in device
+            let path = Bundle.main.pathForResource("testing", ofType:"pdf")! // works in simulator, works in device
             let url = URL(fileURLWithPath:path)
             self.wv.loadRequest(URLRequest(url: url))
         case 4:
-            let path = Bundle.main().pathForResource("test", ofType:"rtf")! // works in simulator, works in device (iOS 8.3, I think it was fixed in 8.1)
+            let path = Bundle.main.pathForResource("test", ofType:"rtf")! // works in simulator, works in device (iOS 8.3, I think it was fixed in 8.1)
             let url = URL(fileURLWithPath:path)
             self.wv.loadRequest(URLRequest(url: url))
         case 5:
-            let path = Bundle.main().pathForResource("test", ofType:"doc")! // works in simulator, works on device!
+            let path = Bundle.main.pathForResource("test", ofType:"doc")! // works in simulator, works on device!
             let url = URL(fileURLWithPath:path)
             self.wv.loadRequest(URLRequest(url: url))
         case 6:
-            let path = Bundle.main().pathForResource("test", ofType:"docx")!  // works in simulator, works on device
+            let path = Bundle.main.pathForResource("test", ofType:"docx")!  // works in simulator, works on device
             let url = URL(fileURLWithPath:path)
             self.wv.loadRequest(URLRequest(url: url))
         case 7:
-            let path = Bundle.main().pathForResource("test", ofType:"pages")! // blank in simulator, blank on device, no message :(
+            let path = Bundle.main.pathForResource("test", ofType:"pages")! // blank in simulator, blank on device, no message :(
             let url = URL(fileURLWithPath:path)
             self.wv.loadRequest(URLRequest(url: url))
         case 8:
-            let path = Bundle.main().pathForResource("test.pages", ofType:"zip")! // works in simulator! works on device, but unbelievably slow
+            let path = Bundle.main.pathForResource("test.pages", ofType:"zip")! // works in simulator! works on device, but unbelievably slow
             let url = URL(fileURLWithPath:path)
             self.wv.loadRequest(URLRequest(url: url))
         case 9:
-            let path = Bundle.main().pathForResource("test", ofType:"rtfd")! // blank in simulator, blank on device, no message
+            let path = Bundle.main.pathForResource("test", ofType:"rtfd")! // blank in simulator, blank on device, no message
             let url = URL(fileURLWithPath:path)
             self.wv.loadRequest(URLRequest(url: url))
         case 10:
-            let path = Bundle.main().pathForResource("test", ofType:"rtfd.zip")! // blank in simulator, blank on device, "Unable to read document" displayed
+            let path = Bundle.main.pathForResource("test", ofType:"rtfd.zip")! // blank in simulator, blank on device, "Unable to read document" displayed
             let url = URL(fileURLWithPath:path)
             self.wv.loadRequest(URLRequest(url: url))
         case 11:
-            let path = Bundle.main().pathForResource("htmlbody", ofType:"txt")! // works in simulator, works in device (as text, of course)
+            let path = Bundle.main.pathForResource("htmlbody", ofType:"txt")! // works in simulator, works in device (as text, of course)
             let url = URL(fileURLWithPath:path)
             self.wv.loadRequest(URLRequest(url: url))
         default:break

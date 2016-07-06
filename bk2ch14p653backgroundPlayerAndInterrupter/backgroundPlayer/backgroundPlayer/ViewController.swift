@@ -10,7 +10,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton (_ sender:AnyObject!) {
         // start over
-        let path = Bundle.main().pathForResource("aboutTiagol", ofType: "m4a")!
+        let path = Bundle.main.pathForResource("aboutTiagol", ofType: "m4a")!
         self.player = Player() // just testing for leakage / retain cycle
         self.player.playFile(atPath:path)
         

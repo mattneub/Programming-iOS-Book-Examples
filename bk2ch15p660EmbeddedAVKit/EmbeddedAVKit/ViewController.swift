@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     }
     
     func setUpChildSimple() {
-        let url = Bundle.main().urlForResource(
+        let url = Bundle.main.urlForResource(
             "ElMirage", withExtension:"mp4")!
         let player = AVPlayer(url:url)
         let av = AVPlayerViewController()
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
     }
     
     func setUpChild() {
-        let url = Bundle.main().urlForResource("ElMirage", withExtension:"mp4")!
+        let url = Bundle.main.urlForResource("ElMirage", withExtension:"mp4")!
         let asset = AVURLAsset(url:url)
         let item = AVPlayerItem(asset:asset)
         let player = AVPlayer(playerItem:item)
@@ -108,7 +108,7 @@ class ViewController: UIViewController {
         
         return; // just proving you can swap out the player
         delay(3) {
-            let url = Bundle.main().urlForResource("wilhelm", withExtension:"aiff")!
+            let url = Bundle.main.urlForResource("wilhelm", withExtension:"aiff")!
             let player = AVPlayer(url:url)
             av.player = player
         }
@@ -136,7 +136,7 @@ class ViewController: UIViewController {
 
 extension ViewController : UIVideoEditorControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
     @IBAction func doEditorButton (_ sender:AnyObject!) {
-        let path = Bundle.main().pathForResource("ElMirage", ofType: "mp4")!
+        let path = Bundle.main.pathForResource("ElMirage", ofType: "mp4")!
         let can = UIVideoEditorController.canEditVideo(atPath:path)
         if !can {
             print("can't edit this video")

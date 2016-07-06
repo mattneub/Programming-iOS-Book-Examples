@@ -19,8 +19,8 @@ class ViewController: UIViewController {
         switch which {
         case 1:
             let av = AVPlayerViewController()
-            let url = Bundle.main().urlForResource("ElMirage", withExtension: "mp4")!
-            // let url = NSBundle.main().urlForResource("wilhelm", withExtension: "aiff")!
+            let url = Bundle.main.urlForResource("ElMirage", withExtension: "mp4")!
+            // let url = NSBundle.main.urlForResource("wilhelm", withExtension: "aiff")!
             let player = AVPlayer(url: url)
             av.player = player
             self.present(av, animated: true) {
@@ -43,8 +43,8 @@ class ViewController: UIViewController {
         case 2:
             let av = AVPlayerViewController()
             av.edgesForExtendedLayout = []
-            let url = Bundle.main().urlForResource("ElMirage", withExtension: "mp4")!
-            // let url = NSBundle.main().urlForResource("wilhelm", withExtension: "aiff")!
+            let url = Bundle.main.urlForResource("ElMirage", withExtension: "mp4")!
+            // let url = NSBundle.main.urlForResource("wilhelm", withExtension: "aiff")!
             let player = AVPlayer(url: url)
             av.player = player
             self.show(av, sender: self)

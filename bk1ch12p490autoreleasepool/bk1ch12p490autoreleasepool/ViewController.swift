@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     // ignore warnings
     
     func test() {
-        let path = Bundle.main().pathForResource("001", ofType: "png")!
+        let path = Bundle.main.pathForResource("001", ofType: "png")!
         for j in 0 ..< 50 {
             for i in 0 ..< 100 {
                 let im = UIImage(contentsOfFile: path)
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
     
     func test2() {
-        let path = Bundle.main().pathForResource("001", ofType: "png")!
+        let path = Bundle.main.pathForResource("001", ofType: "png")!
         for j in 0 ..< 50 {
             autoreleasepool {
                 for i in 0 ..< 100 {

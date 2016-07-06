@@ -54,7 +54,7 @@ class MyTiledView : UIView {
                 let sc = tr.a/lay.contentsScale
                 let scale = sc/4.0
                 
-                let path = Bundle.main().pathForResource("earthFromSaturn", ofType:"png")!
+                let path = Bundle.main.pathForResource("earthFromSaturn", ofType:"png")!
                 let im = UIImage(contentsOfFile:path)!
                 let sz = CGSize(im.size.width * scale, im.size.height * scale)
                 

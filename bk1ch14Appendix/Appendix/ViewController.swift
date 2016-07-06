@@ -182,7 +182,7 @@ class ViewController: UIViewController {
         }
         
         if false {
-            let sndurl = Bundle.main().urlForResource("test", withExtension: "aif")!
+            let sndurl = Bundle.main.urlForResource("test", withExtension: "aif")!
             var snd : SystemSoundID = 0
             AudioServicesCreateSystemSoundID(sndurl, &snd)
         }

@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         vc.view.addSubview(wv)
         wv.frame = vc.view.bounds
         wv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        let f = Bundle.main().pathForResource("linkhelp", ofType: "html")
+        let f = Bundle.main.pathForResource("linkhelp", ofType: "html")
         let s = try! String(contentsOfFile: f!, encoding: .utf8)
         wv.loadHTMLString(s, baseURL: nil)
         

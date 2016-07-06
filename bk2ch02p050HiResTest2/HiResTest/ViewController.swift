@@ -29,10 +29,10 @@ class ViewController: UIViewController {
         self.iv3.image = #imageLiteral(resourceName: "one") // behind the scenes: #imageLiteral with resourceName: param
         self.iv4.image = UIImage(named:"uno")
         
-        if let s = Bundle.main().pathForResource("one", ofType: "png") {
+        if let s = Bundle.main.pathForResource("one", ofType: "png") {
             self.iv5.image = UIImage(contentsOfFile: s)
         }
-        if let s2 = Bundle.main().pathForResource("uno", ofType: "png") {
+        if let s2 = Bundle.main.pathForResource("uno", ofType: "png") {
             self.iv6.image = UIImage(contentsOfFile: s2)
         } else {
             print("looking for smiley")

@@ -75,7 +75,7 @@ class ViewController: UIViewController {
         
         lab: do {
             // okay, I'm sick of failing, let's succeed for once :)
-            let f = Bundle.main().pathForResource("testing", ofType: "txt")!
+            let f = Bundle.main.pathForResource("testing", ofType: "txt")!
             guard let s = try? String(contentsOfFile: f, encoding: .utf8)
                 else {print("still no file"); break lab}
             print(s)

@@ -232,10 +232,10 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                 return
             }
             
-            let bodypath = Bundle.main().pathForResource("htmlbody", ofType:"txt")!
+            let bodypath = Bundle.main.pathForResource("htmlbody", ofType:"txt")!
             let ss = try! String(contentsOfFile:bodypath, encoding:.utf8)
             
-            let templatepath = Bundle.main().pathForResource("htmlTemplate", ofType:"txt")!
+            let templatepath = Bundle.main.pathForResource("htmlTemplate", ofType:"txt")!
             let base = URL(fileURLWithPath:templatepath)
             var s = try! String(contentsOfFile:templatepath, encoding:.utf8)
             
@@ -253,43 +253,43 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             self.oldHTMLString = s
             self.oldBase = base
         case 2:
-            let path = Bundle.main().pathForResource("release", ofType:"pdf")!
+            let path = Bundle.main.pathForResource("release", ofType:"pdf")!
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 3:
-            let path = Bundle.main().pathForResource("testing", ofType:"pdf")!
+            let path = Bundle.main.pathForResource("testing", ofType:"pdf")!
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 4:
-            let path = Bundle.main().pathForResource("test", ofType:"rtf")!
+            let path = Bundle.main.pathForResource("test", ofType:"rtf")!
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 5:
-            let path = Bundle.main().pathForResource("test", ofType:"doc")!
+            let path = Bundle.main.pathForResource("test", ofType:"doc")!
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 6:
-            let path = Bundle.main().pathForResource("test", ofType:"docx")!
+            let path = Bundle.main.pathForResource("test", ofType:"docx")!
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 7:
-            let path = Bundle.main().pathForResource("test", ofType:"pages")! // blank on device
+            let path = Bundle.main.pathForResource("test", ofType:"pages")! // blank on device
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 8:
-            let path = Bundle.main().pathForResource("test.pages", ofType:"zip")! // slow, but it does work!
+            let path = Bundle.main.pathForResource("test.pages", ofType:"zip")! // slow, but it does work!
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 9:
-            let path = Bundle.main().pathForResource("test", ofType:"rtfd")! // blank on device
+            let path = Bundle.main.pathForResource("test", ofType:"rtfd")! // blank on device
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 10:
-            let path = Bundle.main().pathForResource("test.rtfd", ofType:"zip")! // displays "Unable to Read Document."
+            let path = Bundle.main.pathForResource("test.rtfd", ofType:"zip")! // displays "Unable to Read Document."
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 11:
-            let path = Bundle.main().pathForResource("htmlbody", ofType:"txt")!
+            let path = Bundle.main.pathForResource("htmlbody", ofType:"txt")!
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 12:

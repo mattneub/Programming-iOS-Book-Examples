@@ -16,7 +16,7 @@ class RootViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = Bundle.main().urlForResource("trivia", withExtension: "txt")
+        let url = Bundle.main.urlForResource("trivia", withExtension: "txt")
         let s = try! String(contentsOf:url!, encoding: .utf8)
         var arr = s.components(separatedBy:"\n")
         arr.removeLast()

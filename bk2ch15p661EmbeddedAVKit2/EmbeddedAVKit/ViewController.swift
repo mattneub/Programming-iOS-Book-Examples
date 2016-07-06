@@ -50,7 +50,7 @@ class ViewController: UIViewController {
     }
     
     func setUpChild() {
-        let url = Bundle.main().urlForResource("ElMirage", withExtension:"mp4")!
+        let url = Bundle.main.urlForResource("ElMirage", withExtension:"mp4")!
         let asset = AVURLAsset(url:url)
         asset.loadValuesAsynchronously(forKeys:["tracks"]) {
             let status = asset.statusOfValue(forKey:"tracks", error: nil)

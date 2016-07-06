@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let m = Bundle.main().urlForResource("ElMirage", withExtension:"mp4")!
+        let m = Bundle.main.urlForResource("ElMirage", withExtension:"mp4")!
         //        let p = AVPlayer(URL:m)!
         let asset = AVURLAsset(url:m)
         let item = AVPlayerItem(asset:asset)

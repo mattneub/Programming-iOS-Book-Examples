@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let m = Bundle.main().urlForResource("ElMirage", withExtension:"mp4")!
+        let m = Bundle.main.urlForResource("ElMirage", withExtension:"mp4")!
         let asset = AVURLAsset(url:m)
         let item = AVPlayerItem(asset:asset)
         let p = AVPlayer(playerItem:item)
@@ -131,7 +131,7 @@ class ViewController: UIViewController {
         
         
         let type3 = AVMediaTypeAudio
-        let s = Bundle.main().urlForResource("aboutTiagol", withExtension:"m4a")!
+        let s = Bundle.main.urlForResource("aboutTiagol", withExtension:"m4a")!
         let asset = AVURLAsset(url:s)
         let arr3 = asset.tracks(withMediaType: type3)
         let track3 = arr3.last! //

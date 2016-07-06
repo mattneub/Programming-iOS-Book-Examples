@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     // NB AudioServicesPlaySystemSound will be deprecated! This is just to show the old way
 
     @IBAction func doButton (_ sender:AnyObject!) {
-        let sndurl = Bundle.main().urlForResource("test", withExtension: "aif")!
+        let sndurl = Bundle.main.urlForResource("test", withExtension: "aif")!
         var snd : SystemSoundID = 0
         AudioServicesCreateSystemSoundID(sndurl, &snd)
         // ... or could be defined here
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func doButton2 (_ sender:AnyObject!) {
-        let sndurl = Bundle.main().urlForResource("test", withExtension: "aif")!
+        let sndurl = Bundle.main.urlForResource("test", withExtension: "aif")!
         var snd : SystemSoundID = 0
         AudioServicesCreateSystemSoundID(sndurl, &snd)
         // watch _this_ little move

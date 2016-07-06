@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         // take out a player node
         let player = AVAudioPlayerNode()
         // open a file to play on the player node
-        let url = Bundle.main().urlForResource("aboutTiagol", withExtension: "m4a")!
+        let url = Bundle.main.urlForResource("aboutTiagol", withExtension: "m4a")!
         let f = try! AVAudioFile(forReading: url)
         // hook the player's output to the engine's mixer node
         // alternatively, could use the engine's output node (mixer is hooked to output already)
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         engine.stop()
         
         // simplest possible "play a buffer" scenario
-        let url2 = Bundle.main().urlForResource("Hooded", withExtension: "mp3")!
+        let url2 = Bundle.main.urlForResource("Hooded", withExtension: "mp3")!
         let f2 = try! AVAudioFile(forReading: url2)
         let buffer = AVAudioPCMBuffer(pcmFormat: f2.processingFormat, frameCapacity: UInt32(f2.length/3)) // only need 1/3 of the original recording
         try! f2.read(into:buffer)
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         engine.stop()
         
         let player = AVAudioPlayerNode()
-        let url = Bundle.main().urlForResource("aboutTiagol", withExtension: "m4a")!
+        let url = Bundle.main.urlForResource("aboutTiagol", withExtension: "m4a")!
         let f = try! AVAudioFile(forReading: url)
         let mixer = engine.mainMixerNode
         engine.attach(player)
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
             player.play()
         } catch {return}
         
-        let url2 = Bundle.main().urlForResource("Hooded", withExtension: "mp3")!
+        let url2 = Bundle.main.urlForResource("Hooded", withExtension: "mp3")!
         let f2 = try! AVAudioFile(forReading: url2)
         let buffer = AVAudioPCMBuffer(pcmFormat: f2.processingFormat, frameCapacity: UInt32(f2.length/3))
         try! f2.read(into:buffer)
@@ -97,7 +97,7 @@ class ViewController: UIViewController {
         
         // first sound
         let player = AVAudioPlayerNode()
-        let url = Bundle.main().urlForResource("aboutTiagol", withExtension: "m4a")!
+        let url = Bundle.main.urlForResource("aboutTiagol", withExtension: "m4a")!
         let f = try! AVAudioFile(forReading: url)
         engine.attach(player)
 
@@ -124,7 +124,7 @@ class ViewController: UIViewController {
         } catch { return }
         
         // second sound; loop it this time
-        let url2 = Bundle.main().urlForResource("Hooded", withExtension: "mp3")!
+        let url2 = Bundle.main.urlForResource("Hooded", withExtension: "mp3")!
         let f2 = try! AVAudioFile(forReading: url2)
         let buffer = AVAudioPCMBuffer(pcmFormat: f2.processingFormat, frameCapacity: UInt32(f2.length/3))
         try! f2.read(into:buffer)
@@ -149,7 +149,7 @@ class ViewController: UIViewController {
         
         // first sound
         let player = AVAudioPlayerNode()
-        let url = Bundle.main().urlForResource("aboutTiagol", withExtension: "m4a")!
+        let url = Bundle.main.urlForResource("aboutTiagol", withExtension: "m4a")!
         let f = try! AVAudioFile(forReading: url)
         engine.attach(player)
         
@@ -195,7 +195,7 @@ class ViewController: UIViewController {
         // also, it's a little disappointing to find that you must _play_ the sound...
         // you can't just process it directly into a file, which is what I was hoping to do
         
-        let url2 = Bundle.main().urlForResource("Hooded", withExtension: "mp3")!
+        let url2 = Bundle.main.urlForResource("Hooded", withExtension: "mp3")!
         let f2 = try! AVAudioFile(forReading: url2)
         let buffer = AVAudioPCMBuffer(pcmFormat: f2.processingFormat, frameCapacity: UInt32(f2.length/3)) // only need 1/3 of the original recording
         try! f2.read(into:buffer)
