@@ -39,7 +39,7 @@ class MyTableViewController: UITableViewController {
         // instead, we attempt to "tickle" the activity manager and see if we get an error
         // this will cause the system authorization dialog to be presented if necessary
         let now = Date()
-        self.actman.queryActivityStarting(from: now, to:now, to:OperationQueue.main()) {
+        self.actman.queryActivityStarting(from: now, to:now, to:.main) {
             (arr:[CMMotionActivity]?, err:NSError?) in
             let notauth = Int(CMErrorMotionActivityNotAuthorized.rawValue)
             if err != nil && err!.code == notauth {

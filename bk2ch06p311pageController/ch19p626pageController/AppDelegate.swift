@@ -83,7 +83,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
             }
         }
         else { // not needed for .PageCurl
-            NotificationCenter.default.addObserver(forName:.tap, object: nil, queue: OperationQueue.main(), using: {
+            NotificationCenter.default.addObserver(forName:.tap, object: nil, queue: .main, using: {
                 n in
                 let g = n.object as! UIGestureRecognizer
                 let which = g.view!.tag

@@ -13,9 +13,9 @@ typealias MyDownloaderCompletion = @convention(block) (URL!) -> ()
 class MyDownloader: NSObject, URLSessionDownloadDelegate {
     let config : URLSessionConfiguration
     let q = OperationQueue()
-    let main = true // try false to move delegate methods onto a background thread
+    let isMain = true // try false to move delegate methods onto a background thread
     lazy var session : URLSession = {
-        let queue = (self.main ? OperationQueue.main() : self.q)
+        let queue = (self.isMain ? .main : self.q)
         return URLSession(configuration:self.config, delegate:self, delegateQueue:queue)
     }()
     
@@ -55,7 +55,7 @@ class MyDownloader: NSObject, URLSessionDownloadDelegate {
             print("download \(req.url!.lastPathComponent)")
         }
         let ch2 = (ch as! Wrapper).p as MyDownloaderCompletion
-        if self.main {
+        if self.isMain {
             ch2(url)
         } else {
             DispatchQueue.main.sync {

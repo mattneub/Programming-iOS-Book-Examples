@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         config.allowsCellularAccess = false
         // could set config.discretionary here
         let sess = URLSession(
-            configuration: config, delegate: self, delegateQueue: OperationQueue.main())
+            configuration: config, delegate: self, delegateQueue: .main)
         return sess
     }()
     var ch : (() -> ())!

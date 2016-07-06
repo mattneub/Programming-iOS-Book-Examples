@@ -103,7 +103,7 @@ class ViewController: UIViewController {
                 // ==== the NSFileCoordinator way
                 let fc = NSFileCoordinator()
                 let intent = NSFileAccessIntent.writingIntent(with:moifile)
-                fc.coordinate(with:[intent], queue: OperationQueue.main()) {
+                fc.coordinate(with:[intent], queue: .main) {
                     (err:NSError?) in
                     // compiler gets confused if a one-liner returns a BOOL result
                     do {
@@ -133,7 +133,7 @@ class ViewController: UIViewController {
                 // ==== the NSFileCoordinator way
                 let fc = NSFileCoordinator()
                 let intent = NSFileAccessIntent.readingIntent(with: moifile)
-                fc.coordinate(with: [intent], queue: OperationQueue.main()) {
+                fc.coordinate(with: [intent], queue: .main) {
                     (err:NSError?) in
                     do {
                         let persondata = try Data(contentsOf: intent.url)

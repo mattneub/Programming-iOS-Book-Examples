@@ -9,9 +9,9 @@ class ViewController: UIViewController, URLSessionDataDelegate {
     var data = Data()
     
     lazy var session : URLSession = {
-        let config = URLSessionConfiguration.ephemeral()
+        let config = URLSessionConfiguration.ephemeral
         config.allowsCellularAccess = false
-        let session = URLSession(configuration: config, delegate: self, delegateQueue: OperationQueue.main())
+        let session = URLSession(configuration: config, delegate: self, delegateQueue: .main)
         return session
         }()
     

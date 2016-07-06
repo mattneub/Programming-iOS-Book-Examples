@@ -362,7 +362,7 @@ class ViewController: UIViewController {
             let target = "m"
             let arr2 = arr.map {
                 $0.filter {
-                    let found = $0.range(of:target, options: .caseInsensitiveSearch)
+                    let found = $0.range(of:target, options: .caseInsensitive)
                     return (found != nil)
                 }
                 }.filter {$0.count > 0}

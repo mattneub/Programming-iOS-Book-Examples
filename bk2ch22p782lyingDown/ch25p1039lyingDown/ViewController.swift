@@ -44,7 +44,7 @@ class ViewController: UIViewController {
             self.motman.startAccelerometerUpdates()
             self.timer = Timer.scheduledTimer(timeInterval:self.motman.accelerometerUpdateInterval, target: self, selector: #selector(pollAccel), userInfo: nil, repeats: true)
         case 2:
-            self.motman.startAccelerometerUpdates(to: OperationQueue.main()) {
+            self.motman.startAccelerometerUpdates(to: .main) {
                 (accelerometerData:CMAccelerometerData?, error:NSError?) in
                 guard let dat = accelerometerData else {
                     print(error)

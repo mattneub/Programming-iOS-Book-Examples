@@ -41,8 +41,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let d = dogMakerAndNamer(Dog) // d is a Dog named Fido
-        let d2 = dogMakerAndNamer(NoisyDog) // d2 is a NoisyDog named Fido
+        let d = dogMakerAndNamer(Dog.self) // d is a Dog named Fido
+        let d2 = dogMakerAndNamer(NoisyDog.self) // d2 is a NoisyDog named Fido
 
         let dd = Dog.makeAndName() // d is a Dog named Fido
         let dd2 = NoisyDog.makeAndName() // d2 is a NoisyDog named Fido - but typed as Dog

@@ -233,7 +233,7 @@ class ViewController: UIViewController {
                 at: pep.indexesOfObjects([]) {
                     (obj, idx, stop) -> Bool in
                     return (obj as! NSString).range(
-                        of: "m", options:.caseInsensitiveSearch
+                        of: "m", options:.caseInsensitive
                         ).location == 0
                 }
             ) // ["Manny", "Moe"]

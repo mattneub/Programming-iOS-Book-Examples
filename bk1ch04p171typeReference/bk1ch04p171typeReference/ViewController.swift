@@ -32,9 +32,9 @@ class ViewController: UIViewController {
         nd.bark() // Woof woof woof
         print(nd.dynamicType)
     
-        dogTypeExpecter(Dog)
+        dogTypeExpecter(Dog) // oooh, compiler now warns
         dogTypeExpecter(Dog.self)
-        dogTypeExpecter(NoisyDog)
+        dogTypeExpecter(NoisyDog) // ditto
         dogTypeExpecter(NoisyDog.self)
         dogTypeExpecter(d.dynamicType)
         dogTypeExpecter(d.dynamicType.self)

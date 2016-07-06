@@ -108,7 +108,7 @@ extension ChildViewController : UISearchResultsUpdating {
         let target = sb.text!
         self.filteredData = self.originalData.filter {
             s in
-            let found = s.range(of:target, options: .caseInsensitiveSearch)
+            let found = s.range(of:target, options: .caseInsensitive)
             return (found != nil)
         }
         self.tableView.reloadData()

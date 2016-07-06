@@ -163,9 +163,9 @@ class ViewController: UIViewController {
         
         
         anyExpecter("howdy") // a struct instance
-        anyExpecter(String) // a struct
+        anyExpecter(String.self) // a struct
         anyExpecter(Dog()) // a class instance
-        anyExpecter(Dog) // a class
+        anyExpecter(Dog.self) // a class
         anyExpecter(anyExpecter) // a function
         
         flockTwoTogether(Bird(), Insect())

@@ -5,7 +5,7 @@ import UIKit
 class MyTableViewController: UITableViewController {
 
     lazy var configuration : URLSessionConfiguration = {
-        let config = URLSessionConfiguration.ephemeral()
+        let config = URLSessionConfiguration.ephemeral
         config.allowsCellularAccess = false
         config.urlCache = nil
         return config
