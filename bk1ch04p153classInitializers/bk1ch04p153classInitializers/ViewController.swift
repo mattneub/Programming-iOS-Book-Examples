@@ -7,6 +7,17 @@ class Dog {
 class Dog2 {
     var name = "Fido"
 }
+class Dog2b {
+    var name = "Fido"
+    init(name:String) {self.name = name}
+}
+class Dog2c {
+    var name = "Fido"
+    convenience init(name:String) {
+        self.init()
+        self.name = name
+    }
+}
 class Dog3 {
     var name : String
     var license : Int
@@ -170,10 +181,24 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let d = Dog()
-        let d2 = Dog2()
-        let d3 = Dog3(name:"Rover", license:42)
-        let d4 = Dog4()
+        do {
+            let d = Dog()
+            let d2 = Dog2()
+            // let d2b = Dog2b() // nope, lost the implicit initializer
+            let d2b = Dog2b(name:"Rover")
+            let d2c = Dog2c() // kept the implicit initializer
+            let d2c2 = Dog2c(name:"Rover")
+            let d3 = Dog3(name:"Rover", license:42)
+            let d4 = Dog4()
+            
+            _ = d
+            _ = d2
+            _ = d3
+            _ = d4
+            _ = d2b
+            _ = d2c
+            _ = d2c2
+        }
         
         do {
             let nd1 = NoisyDog5(name:"Fido", license:1)
@@ -217,10 +242,6 @@ class ViewController: UIViewController {
             _ = nd
         }
     
-        _ = d
-        _ = d2
-        _ = d3
-        _ = d4
         
         
     }

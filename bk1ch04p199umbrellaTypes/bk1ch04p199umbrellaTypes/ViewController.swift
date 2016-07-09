@@ -119,7 +119,9 @@ class ViewController: UIViewController {
             let c : AnyObject = Cat()
             let s = c.noise
             let s2 = c.bark?()
-            // let s3 = c.bark() // legal, but we will crash
+            if false {
+                let s3 = c.bark() // legal, but we will crash
+            }
             
             _ = s
             _ = s2

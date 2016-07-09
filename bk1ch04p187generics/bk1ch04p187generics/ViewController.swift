@@ -141,6 +141,9 @@ class Cat {
 class CalicoCat : Cat {
 }
 
+protocol Walker {}
+struct Quadruped : Walker {}
+
 protocol Flier6 {
     associatedtype Other
     func fly()
@@ -182,6 +185,10 @@ class ViewController: UIViewController {
             w2 = Wrapper2(CalicoCat())
             _ = w2
             _ = w3
+        }
+        
+        do { // same thing as before except with a protocol and struct
+            // let w : Wrapper<Walker> = Wrapper<Quadruped>() // error
         }
         
         do {

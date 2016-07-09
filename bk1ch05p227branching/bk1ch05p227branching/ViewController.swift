@@ -78,12 +78,20 @@ class ViewController: UIViewController {
             self.progress = prog
         }
 
+        // whoa — when did Notification's userInfo become a [String:Any]?
+        // I think I'll just skirt the whole issue...
 
+//        if let ui = n.userInfo {
+//            if let prog : AnyObject = ui["progress"] {
+//                if let prog = prog as? NSNumber {
+//                    self.progress = prog.doubleValue
+//                }
+//            }
+//        }
+        
         if let ui = n.userInfo {
-            if let prog : AnyObject = ui["progress"] {
-                if let prog = prog as? NSNumber {
-                    self.progress = prog.doubleValue
-                }
+            if let prog = ui["progress"] as? NSNumber {
+                self.progress = prog.doubleValue
             }
         }
         
@@ -134,7 +142,8 @@ class C2 : NSObject {
                                context: UnsafeMutablePointer<Void>?) {
             if keyPath == "readyForDisplay",
                 let obj = object as? AVPlayerViewController,
-                let ok = change?[.newKey] as? Bool where ok {
+                let ok = change?[.newKey] as? Bool
+                where ok {
                     // ...
                     print(obj)
             }
@@ -152,6 +161,21 @@ class C3 : NSObject {
             // ...
             print(obj)
     }
-
 }
+
+// this is legal, but I don't see its advantage over the C2 form and I don't mention it in the book:
+
+class C4 : NSObject {
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?,
+                               context: UnsafeMutablePointer<Void>?) {
+        guard keyPath == "readyForDisplay",
+        let obj = object as? AVPlayerViewController,
+        let ok = change?[.newKey] as? Bool
+        where ok else {return}
+        // ...
+        print(obj)
+    }
+}
+
 

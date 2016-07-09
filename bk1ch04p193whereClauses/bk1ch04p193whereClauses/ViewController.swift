@@ -67,9 +67,11 @@ class ViewController: UIViewController {
         
         var c = Camp<Soldier>()
         c.spy = Archer()
+        // c.spy = Soldier() // nope
         
         var c2 = Camp<Archer>()
         c2.spy = Soldier()
+        // c2.spy = Archer()
         
 
         

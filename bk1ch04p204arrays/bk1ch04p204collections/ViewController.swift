@@ -42,7 +42,7 @@ class ViewController: UIViewController {
                 let arr2 : [Flier] = [Insect()]
                 // WARNING next line is legal (compiles) but you'll crash at runtime
                 // can't use array-casting to cast down from protocol type to adopter type
-                // let arr3 = arr2 as! [Insect]
+                //let arr3 = arr2 as! [Insect]
                 _ = arr2
             }
             
@@ -128,6 +128,11 @@ class ViewController: UIViewController {
             arr[1..<2] = [7,8] // arr is now [1,7,8,3]
             arr[1..<2] = [] // arr is now [1,8,3]
             arr[1..<1] = [10] // arr is now [1,10,8,3] (no element was removed!)
+            let arr2 = [20,21]
+            // arr[1..<1] = arr2 // compile error!
+            arr[1..<1] = ArraySlice(arr2)
+            print("after all that:", arr)
+
 
             let slice = arr[1..<2]
             _ = slice
@@ -173,7 +178,7 @@ class ViewController: UIViewController {
             
             do {
                 let arr = [1,2,3]
-                let slice = arr[arr.startIndex-2..<arr.endIndex] // [2,3]
+                let slice = arr[arr.endIndex-2..<arr.endIndex] // [2,3]
                 print(slice)
                 print(slice.indices)
                 print(slice.startIndex)
@@ -194,6 +199,8 @@ class ViewController: UIViewController {
             let ok = arr.contains(2) // ***
             let okk = arr.contains {$0 > 3} // false
             let ix = arr.index(of:2) // *** Optional wrapping 1
+            let which = arr.index(where:{$0>2})
+            let which2 = arr.first(where:{$0>2})
             
             let aviary = [Bird(name:"Tweety"), Bird(name:"Flappy"), Bird(name:"Lady")]
             let ix2 = aviary.index {$0.name.characters.count < 5} // index(where:)
@@ -217,6 +224,7 @@ class ViewController: UIViewController {
             _ = ok
             _ = okk
             _ = ix
+            _ = (which, which2)
         }
 
         do {
@@ -282,10 +290,12 @@ class ViewController: UIViewController {
             let arr = [[1,2], [3,4], [5,6]]
             let joined = arr.joined(separator: [10,11]) // [1, 2, 10, 11, 3, 4, 10, 11, 5, 6]
             let joined2 = arr.joined(separator: []) // [1, 2, 3, 4, 5, 6]
+            let joined3 = arr.joined(separator: 8...9) // just proving that other sequences are legal
             let arr4 = arr.flatMap {$0} // new in Swift 1.2
             let arr5 = Array(arr.flatten()) // new in Xcode 7 beta 6
             _ = joined
             _ = joined2
+            _ = joined3
             _ = arr4
             _ = arr5
         }
@@ -452,6 +462,16 @@ class ViewController: UIViewController {
             let nsarr2 = arr2 as NSArray
             print(nsarr2)
             
+        }
+        
+        do {
+            // showing one common way to lose element typing
+            let arr = [1,2,3]
+            let fm = FileManager()
+            let f = try! fm.temporaryDirectory.appendingPathComponent("test.plist")
+            (arr as NSArray).write(to: f, atomically: true)
+            let arr2 = NSArray(contentsOf: f)
+            print(arr2.dynamicType)
         }
 
     }

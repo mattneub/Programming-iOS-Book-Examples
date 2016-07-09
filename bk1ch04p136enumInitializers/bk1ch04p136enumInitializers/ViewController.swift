@@ -1,6 +1,7 @@
 
 
 import UIKit
+import MediaPlayer
 
 enum Filter : String {
     case albums = "Albums"
@@ -8,13 +9,13 @@ enum Filter : String {
     case podcasts = "Podcasts"
     case books = "Audiobooks"
     static var cases : [Filter] = [.albums, .playlists, .podcasts, .books]
-    init!(_ ix:Int) {
+    init?(_ ix:Int) { // let's not encourage init! as I was doing before
         if !(0...3).contains(ix) {
             return nil
         }
         self = Filter.cases[ix]
     }
-    init!(_ rawValue:String) {
+    init?(_ rawValue:String) {
         self.init(rawValue:rawValue)
     }
     var description : String { return self.rawValue }
@@ -29,10 +30,23 @@ enum Filter : String {
         ix = (ix + 1) % 4
         self = Filter.cases[ix]
     }
+    var query : MPMediaQuery {
+        switch self {
+        case .albums:
+            return .albums()
+        case .playlists:
+            return .playlists()
+        case .podcasts:
+            return .podcasts()
+        case .books:
+            return .audiobooks()
+        }
+    }
+
 
 }
 
-enum ShapeMaker {
+enum Shape {
     case rectangle
     case ellipse
     case diamond
@@ -61,7 +75,7 @@ class ViewController: UIViewController {
 
         let type1 = Filter.albums
         let type2 = Filter(rawValue:"Playlists")!
-        let type3 = Filter(2) // .Podcasts
+        let type3 = Filter(2) // .Podcasts, wrapped in a Optional
 
         let type4 = Filter(5) // nil
         
