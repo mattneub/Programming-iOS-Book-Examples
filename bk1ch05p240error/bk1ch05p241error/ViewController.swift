@@ -16,9 +16,16 @@ enum MySecondError : ErrorProtocol {
 struct SomeStruct : ErrorProtocol {
     
 }
-struct SomeClass : ErrorProtocol {
+class SomeClass : ErrorProtocol {
     
 }
+
+class MyClassyError : ErrorProtocol {
+    init() {
+        // self._code = 666 // nope, it's immutable
+    }
+}
+
 
 struct SomeStruct2 : ErrorProtocol {
     let name : String
@@ -94,7 +101,7 @@ class ViewController: UIViewController {
         print(err3._domain)
         print(err3._code)
         print(err3 as NSError)
-
+        
         
     }
     

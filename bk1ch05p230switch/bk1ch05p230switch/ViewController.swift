@@ -213,7 +213,7 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
         }
 
         switch err {
-        case .number(1..<Int.max):
+        case .number(1...Int.max):
             print("It's a positive error number")
         case .number(Int.min...(-1)):
             print("It's a negative error number")

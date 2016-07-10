@@ -21,8 +21,8 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior {
         self.v = v
         super.init()
     }
-    override func willMove(to anim: UIDynamicAnimator!) {
-        if anim == nil { return }
+    override func willMove(to anim: UIDynamicAnimator?) {
+        guard let anim = anim else { return }
         let sup = self.v.superview!
         let grav = UIGravityBehavior()
         grav.action = {
@@ -45,7 +45,7 @@ class SecondViewController : UIViewController {
     // ...
 }
 protocol SecondViewControllerDelegate : class {
-    func acceptData(data:AnyObject!)
+    func accept(data:AnyObject!)
 }
 
 

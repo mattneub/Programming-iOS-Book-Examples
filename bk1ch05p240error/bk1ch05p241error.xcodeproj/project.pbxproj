@@ -13,6 +13,7 @@
 		32F8A8B81B385DBA0042B53B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F8A8B61B385DBA0042B53B /* Main.storyboard */; };
 		32F8A8BA1B385DBA0042B53B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32F8A8B91B385DBA0042B53B /* Assets.xcassets */; };
 		32F8A8BD1B385DBA0042B53B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F8A8BB1B385DBA0042B53B /* LaunchScreen.storyboard */; };
+		81668A631D315F1300EC7B6E /* Thing.m in Sources */ = {isa = PBXBuildFile; fileRef = 81668A621D315F1300EC7B6E /* Thing.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		32F8A8B91B385DBA0042B53B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32F8A8BC1B385DBA0042B53B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32F8A8BE1B385DBA0042B53B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81668A601D315F1300EC7B6E /* bk1ch05p241error-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bk1ch05p241error-Bridging-Header.h"; sourceTree = "<group>"; };
+		81668A611D315F1300EC7B6E /* Thing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thing.h; sourceTree = "<group>"; };
+		81668A621D315F1300EC7B6E /* Thing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Thing.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +62,14 @@
 			children = (
 				32F8A8B21B385DBA0042B53B /* AppDelegate.swift */,
 				32F8A8B41B385DBA0042B53B /* ViewController.swift */,
+				81668A611D315F1300EC7B6E /* Thing.h */,
+				81668A621D315F1300EC7B6E /* Thing.m */,
 				3269B3121B8D39B3009950F2 /* testing.txt */,
 				32F8A8B61B385DBA0042B53B /* Main.storyboard */,
 				32F8A8B91B385DBA0042B53B /* Assets.xcassets */,
 				32F8A8BB1B385DBA0042B53B /* LaunchScreen.storyboard */,
 				32F8A8BE1B385DBA0042B53B /* Info.plist */,
+				81668A601D315F1300EC7B6E /* bk1ch05p241error-Bridging-Header.h */,
 			);
 			path = bk1ch05p241error;
 			sourceTree = "<group>";
@@ -139,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81668A631D315F1300EC7B6E /* Thing.m in Sources */,
 				32F8A8B51B385DBA0042B53B /* ViewController.swift in Sources */,
 				32F8A8B31B385DBA0042B53B /* AppDelegate.swift in Sources */,
 			);
@@ -251,10 +259,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = bk1ch05p241error/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk1ch05p241error;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bk1ch05p241error/bk1ch05p241error-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -263,10 +274,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = bk1ch05p241error/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk1ch05p241error;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bk1ch05p241error/bk1ch05p241error-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -176,11 +176,13 @@ class ViewController: UIViewController {
         
         do {
             let seq = sequence(first:1) {$0 >= 10 ? nil : $0 + 1}
-            print(Array(seq))
             for i in seq {
-                print(i)
+                print(i) // 1,2,3,4,5,6,7,8,9,10
             }
-            print(Array(seq.prefix(5)))
+            let seq2 = sequence(first:1) {$0 + 1}
+            for i in seq2.prefix(5) {
+                print(i) // 1,2,3,4,5
+            }
         }
         
         do {
@@ -198,7 +200,9 @@ class ViewController: UIViewController {
                 pair = (pair.1,n)
                 return n
             }
-            print(Array(fib.prefix(10)))
+            for i in fib.prefix(10) {
+                print(i)
+            }
             // i.e. the first 10 elements of the fibonacci sequence
         }
         
