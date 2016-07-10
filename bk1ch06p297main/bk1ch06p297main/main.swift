@@ -31,6 +31,6 @@ import UIKit
 // Jordan Rose at Apple says to use this:
 
 UIApplicationMain(
-    Process.argc, UnsafeMutablePointer<UnsafeMutablePointer<CChar>>(Process.unsafeArgv), nil, NSStringFromClass(AppDelegate)
+    Process.argc, UnsafeMutablePointer<UnsafeMutablePointer<CChar>>(Process.unsafeArgv), nil, NSStringFromClass(AppDelegate.self)
 )
 
