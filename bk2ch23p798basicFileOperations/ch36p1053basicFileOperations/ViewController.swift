@@ -47,8 +47,8 @@ class ViewController: UIViewController {
 
             // if we get here, myfolder exists
             // let's put a couple of files into it
-            try "howdy".write(to: myfolder.appendingPathComponent("file1.txt"), atomically: true, encoding: .utf8)
-            try "greetings".write(to: myfolder.appendingPathComponent("file2.txt"), atomically: true, encoding: .utf8)
+            try "howdy".write(to: myfolder.appendingPathComponent("file1.txt"), atomically: true, encoding:.utf8)
+            try "greetings".write(to: myfolder.appendingPathComponent("file2.txt"), atomically: true, encoding:.utf8)
             print("ok")
         } catch {
             print(error)
@@ -95,7 +95,7 @@ class ViewController: UIViewController {
             var moifile = try docsurl.appendingPathComponent("moi.txt")
             switch which {
             case 1:
-                try moidata.write(to: moifile, options: .dataWritingAtomic)
+                try moidata.write(to: moifile, options: .atomic)
                 var rv = URLResourceValues() // * new way, very nice
                 rv.isExcludedFromBackup = true
                 try moifile.setResourceValues(rv)
@@ -107,7 +107,7 @@ class ViewController: UIViewController {
                     (err:NSError?) in
                     // compiler gets confused if a one-liner returns a BOOL result
                     do {
-                        try moidata.write(to: intent.url, options: .dataWritingAtomic)
+                        try moidata.write(to: intent.url, options: .atomic)
                     } catch {
                         print(error)
                     }

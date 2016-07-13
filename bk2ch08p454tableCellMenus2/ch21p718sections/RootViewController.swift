@@ -13,7 +13,7 @@ class RootViewController : UITableViewController {
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: Bundle.main.pathForResource("states", ofType: "txt")!, encoding: .utf8)
+        let s = try! String(contentsOfFile: Bundle.main.pathForResource("states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         var previous = ""
         for aState in states {

@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         wv.frame = vc.view.bounds
         wv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         let f = Bundle.main.pathForResource("linkhelp", ofType: "html")
-        let s = try! String(contentsOfFile: f!, encoding: .utf8)
+        let s = try! String(contentsOfFile: f!)
         wv.loadHTMLString(s, baseURL: nil)
         
         if let pop = vc.popoverPresentationController {

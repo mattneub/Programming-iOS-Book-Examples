@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         
         do {
             let f = "nonexistent" // path to some file, maybe
-            let s = try String(contentsOfFile: f, encoding: .utf8)
+            let s = try String(contentsOfFile: f)
             print(s) // we won't get here
         } catch {
             print((error as NSError).localizedDescription)
@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         
         do {
             let f = "nonexistent" // path to some file, maybe
-            let s = try String(contentsOfFile: f, encoding: .utf8)
+            let s = try String(contentsOfFile: f)
             print(s) // we won't get here
         } catch NSCocoaError.fileReadNoSuchFileError {
             print("no such file")
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         
         do {
             let f = "nonexistent" // path to some file, maybe
-            if let s = try? String(contentsOfFile: f, encoding: .utf8) {
+            if let s = try? String(contentsOfFile: f) {
                 print(s) // won't happen
             } else {
                 print("I guess there was no such file, eh?")
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
         lab: do {
             // okay, I'm sick of failing, let's succeed for once :)
             let f = Bundle.main.pathForResource("testing", ofType: "txt")!
-            guard let s = try? String(contentsOfFile: f, encoding: .utf8)
+            guard let s = try? String(contentsOfFile: f)
                 else {print("still no file"); break lab}
             print(s)
             // if we get here, s is our string

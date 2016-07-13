@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let f = Bundle.main.pathForResource("states", ofType: "txt")!
-        let s = try! String(contentsOfFile: f, encoding: .utf8)
+        let s = try! String(contentsOfFile: f)
         self.states = s.components(separatedBy:"\n")
     }
     

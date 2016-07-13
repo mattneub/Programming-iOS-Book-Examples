@@ -7,7 +7,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
     
     let list : [String] = {
         let path = Bundle.main.urlForResource("abbreviations", withExtension:"txt")!
-        let s = try! String(contentsOf:path, encoding:.utf8)
+        let s = try! String(contentsOf:path)
         return s.components(separatedBy:"\n")
         }()
     

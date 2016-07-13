@@ -27,7 +27,7 @@ class StyledText: UIView {
         super.awakeFromNib()
         
         let path = Bundle.main.pathForResource("states", ofType: "txt")!
-        let s = try! String(contentsOfFile: path, encoding: .utf8)
+        let s = try! String(contentsOfFile: path)
         
         let desc = UIFontDescriptor(name:"Didot", size:18)
         let atts = [

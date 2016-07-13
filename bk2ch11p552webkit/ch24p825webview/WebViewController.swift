@@ -233,11 +233,11 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             }
             
             let bodypath = Bundle.main.pathForResource("htmlbody", ofType:"txt")!
-            let ss = try! String(contentsOfFile:bodypath, encoding:.utf8)
+            let ss = try! String(contentsOfFile:bodypath)
             
             let templatepath = Bundle.main.pathForResource("htmlTemplate", ofType:"txt")!
             let base = URL(fileURLWithPath:templatepath)
-            var s = try! String(contentsOfFile:templatepath, encoding:.utf8)
+            var s = try! String(contentsOfFile:templatepath)
             
             s = s.replacingOccurrences(of:"<maximagewidth>", with:"80%")
             s = s.replacingOccurrences(of:"<margin>", with:"10")
