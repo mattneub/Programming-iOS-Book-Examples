@@ -6,7 +6,7 @@ protocol ColorPickerDelegate : class {
     // color == nil on cancel
     func colorPicker (_ picker:ColorPickerController,
         didSetColorNamed theName:String?,
-        toColor theColor:UIColor?)
+        to theColor:UIColor?)
 }
 
 class ColorPickerController : UIViewController {
@@ -14,7 +14,7 @@ class ColorPickerController : UIViewController {
     var color = UIColor.red()
     var colorName : String
     
-    init(colorName:String, andColor:UIColor) {
+    init(colorName:String, color:UIColor) {
         self.colorName = colorName
         super.init(nibName: "ColorPicker", bundle: nil)
     }
@@ -30,6 +30,6 @@ class ColorPickerController : UIViewController {
     @IBAction func dismissColorPicker(_ sender: AnyObject?) {
         let c : UIColor? = self.color
         self.delegate?.colorPicker(
-            self, didSetColorNamed: self.colorName, toColor: c)
+            self, didSetColorNamed: self.colorName, to: c)
     }
 }

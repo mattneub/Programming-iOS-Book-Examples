@@ -126,18 +126,14 @@ class ViewController: UIViewController {
                 else {return}
             vc.removeObserver(
                 self,
-                forKeyPath:#keyPath(AVPlayerViewController.isReadyForDisplay))
-            
+                forKeyPath:keyPath!)
             DispatchQueue.main.async {
-                self.finishConstructingInterface(vc)
+                print("finishing")
+                vc.view.isHidden = false // hmm, maybe I should be animating the alpha instead
             }
     }
     
     
-    func finishConstructingInterface (_ vc:AVPlayerViewController) {
-        print("finishing")
-        vc.view.isHidden = false // hmm, maybe I should be animating the alpha instead
-    }
 }
 
 extension ViewController : UIVideoEditorControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {

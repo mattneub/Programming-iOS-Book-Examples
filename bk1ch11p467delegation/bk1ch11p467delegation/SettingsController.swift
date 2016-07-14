@@ -27,7 +27,7 @@ extension SettingsController : ColorPickerDelegate {
     func showColorPicker() {
         let colorName = "MyColor"
         let c = UIColor.blue()
-        let cpc = ColorPickerController(colorName:colorName, andColor:c)
+        let cpc = ColorPickerController(colorName:colorName, color:c)
         cpc.delegate = self
         self.present(cpc, animated: true)
     }
@@ -36,7 +36,7 @@ extension SettingsController : ColorPickerDelegate {
     
     func colorPicker (_ picker:ColorPickerController,
         didSetColorNamed theName:String?,
-        toColor theColor:UIColor?) {
+        to theColor:UIColor?) {
             print("the delegate method was called")
             delay(0.1) {
                 picker.dismiss(animated: true)
