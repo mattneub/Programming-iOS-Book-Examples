@@ -104,7 +104,7 @@ class ViewController: UIViewController {
         }
         */
         
-        av.addObserver(self, forKeyPath: "readyForDisplay", options: .new, context:nil)
+        av.addObserver(self, forKeyPath: #keyPath(AVPlayerViewController.isReadyForDisplay), options: .new, context:nil)
         
         return; // just proving you can swap out the player
         delay(3) {
@@ -116,11 +116,17 @@ class ViewController: UIViewController {
     
     override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?,
         context: UnsafeMutablePointer<()>?) {
-            guard keyPath == "readyForDisplay" else {return}
-            guard let vc = object as? AVPlayerViewController else {return}
-            guard let ok = change?[NSKeyValueChangeKey.newKey] as? Bool else {return}
-            guard ok else {return}
-            vc.removeObserver(self, forKeyPath:"readyForDisplay")
+            guard keyPath == #keyPath(AVPlayerViewController.isReadyForDisplay)
+                else {return}
+            guard let vc = object as? AVPlayerViewController
+                else {return}
+            guard let ok = change?[NSKeyValueChangeKey.newKey] as? Bool
+                else {return}
+            guard ok
+                else {return}
+            vc.removeObserver(
+                self,
+                forKeyPath:#keyPath(AVPlayerViewController.isReadyForDisplay))
             
             DispatchQueue.main.async {
                 self.finishConstructingInterface(vc)

@@ -77,9 +77,9 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
             act.centerYAnchor.constraint(equalTo:wv.centerYAnchor)
             ])
         // webkit uses KVO
-        wv.addObserver(self, forKeyPath: "loading", options: .new, context: nil)
+        wv.addObserver(self, forKeyPath: #keyPath(WKWebView.loading), options: .new, context: nil)
         // cool feature, show title
-        wv.addObserver(self, forKeyPath: "title", options: .new, context: nil)
+        wv.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
         
         wv.navigationDelegate = self
         
@@ -126,8 +126,8 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
     deinit {
         print("dealloc")
         // using KVO, always tear down, take no chances
-        self.wv.removeObserver(self, forKeyPath: "loading")
-        self.wv.removeObserver(self, forKeyPath: "title")
+        self.wv.removeObserver(self, forKeyPath: #keyPath(WKWebView.loading))
+        self.wv.removeObserver(self, forKeyPath: #keyPath(WKWebView.title))
         // with webkit, probably no need for this, but no harm done
         self.wv.stopLoading()
     }

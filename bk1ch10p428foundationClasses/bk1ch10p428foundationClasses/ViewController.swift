@@ -32,8 +32,11 @@ class ViewController: UIViewController {
         }
         
         do {
-            let r = NSRange(Range<Int>(1...3))
+            // let rr = NSRange(1...3)
+            let r = NSRange(Range(1...3))
             print(r)
+            debugPrint(r) // that didn't help
+            print(NSStringFromRange(r))
             let r2 = r.toRange()
             print(r2)
             // let r3 = Range(r)
@@ -107,7 +110,7 @@ class ViewController: UIViewController {
             let d = comp.date // Optional wrapping Date
             if let d = d {
                 print(d)
-                print(d.description(with:Locale.current()))
+                print(d.description(with:Locale.current))
             }
 
         }
@@ -121,10 +124,22 @@ class ViewController: UIViewController {
         }
         
         do {
+            let greg = Calendar(calendarIdentifier:.gregorian)!
+            let d1 = DateComponents(calendar: greg,
+                                    year: 2016, month: 1, day: 1, hour: 0).date!
+            let d2 = DateComponents(calendar: greg,
+                                    year: 2016, month: 8, day: 10, hour: 15).date!
+            let di = DateInterval(start: d1, end: d2)
+            if di.contains(Date()) { // are we currently between those two dates?
+                print("yep")
+            }
+        }
+        
+        do {
             let df = DateFormatter()
             let format = DateFormatter.dateFormat(
                 fromTemplate:"dMMMMyyyyhmmaz", options:0,
-                locale:Locale.current())
+                locale:Locale.current)
             df.dateFormat = format
             let s = df.string(from: Date()) // just now
             print(s)
@@ -188,6 +203,19 @@ class ViewController: UIViewController {
         }
         
         do {
+            let m1 = Measurement(value:5, unit: UnitLength.miles)
+            let m2 = Measurement(value:6, unit: UnitLength.kilometers)
+            let total = m1 + m2
+            print(total)
+            let totalFeet = total.converted(to: .feet).value // 46084.9737532808
+            print(totalFeet)
+            let total2 = Measurement<Unit>(value:total.value, unit:total.unit)
+            let mf = MeasurementFormatter()
+            let s = mf.string(from:total2) // "8.728 mi"
+            print(s)
+        }
+        
+        do {
             let n1 = NSNumber(value:1)
             let n2 = NSNumber(value:2)
             let n3 = NSNumber(value:3)
@@ -211,10 +239,11 @@ class ViewController: UIViewController {
         }
         
         do {
-            let arr = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+            let arr = ["zero", "one", "two", "three", "four", "five",
+                       "six", "seven", "eight", "nine", "ten"]
             var ixs = IndexSet()
-            ixs.insert(integersIn: 1..<5)
-            ixs.insert(integersIn: 8..<11)
+            ixs.insert(integersIn: Range(1...4))
+            ixs.insert(integersIn: Range(8...10))
             let arr2 = (arr as NSArray).objects(at:ixs)
             print(arr2)
         }
@@ -230,7 +259,7 @@ class ViewController: UIViewController {
             // filed a bug: "ambiguous" without the []
             
             let ems = pep.objects(
-                at: pep.indexesOfObjects([]) {
+                at: pep.indexesOfObjects(options:[]) {
                     (obj, idx, stop) -> Bool in
                     return (obj as! NSString).range(
                         of: "m", options:.caseInsensitive

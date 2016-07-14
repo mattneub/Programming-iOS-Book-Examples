@@ -19,7 +19,8 @@ class ViewController : UIViewController {
             // new in iOS 9, springing is exposed at layer level
             CATransaction.setDisableActions(true)
             self.v.layer.position.y += 100
-            let anim = CASpringAnimation(keyPath: "position")
+            // note to self, need to use #keyPath throughout
+            let anim = CASpringAnimation(keyPath: #keyPath(CALayer.position))
             anim.damping = 0.7
             anim.initialVelocity = 20
             anim.mass = 0.04

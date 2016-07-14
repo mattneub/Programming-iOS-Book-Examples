@@ -171,9 +171,9 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             act.centerYAnchor.constraint(equalTo:wv.centerYAnchor)
             ])
         // webkit uses KVO
-        wv.addObserver(self, forKeyPath: "loading", options: .new, context: nil)
+        wv.addObserver(self, forKeyPath: #keyPath(WKWebView.loading), options: .new, context: nil)
         // cool feature, show title
-        wv.addObserver(self, forKeyPath: "title", options: .new, context: nil)
+        wv.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
         
     }
     override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
@@ -334,8 +334,8 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     deinit {
         print("dealloc")
         // using KVO, always tear down, take no chances
-        self.wv.removeObserver(self, forKeyPath: "loading")
-        self.wv.removeObserver(self, forKeyPath: "title")
+        self.wv.removeObserver(self, forKeyPath: #keyPath(WKWebView.loading))
+        self.wv.removeObserver(self, forKeyPath: #keyPath(WKWebView.title))
         // with webkit, probably no need for this, but no harm done
         self.wv.stopLoading()
         // break all retains

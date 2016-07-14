@@ -159,7 +159,7 @@ class ViewController: UIViewController {
             let url = $0.assetURL!
             let asset = AVAsset(url:url)
             return AVPlayerItem(
-                asset: asset, automaticallyLoadedAssetKeys: ["duration"])
+                asset: asset, automaticallyLoadedAssetKeys: [#keyPath(AVAsset.duration)])
             // duration needed later; this way, queue player will load it for us up front
         }
         
@@ -175,7 +175,7 @@ class ViewController: UIViewController {
         self.items = Array(self.items.suffix(from:seed))
         
         // use .Initial option so that we get an observation for the first item
-        self.qp.addObserver(self, forKeyPath:"currentItem", options:.initial, context:nil)
+        self.qp.addObserver(self, forKeyPath:#keyPath(AVQueuePlayer.currentItem), options:.initial, context:nil)
         self.qp.play()
         self.curplayer = self.qp
         
@@ -186,7 +186,7 @@ class ViewController: UIViewController {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
-        if keyPath == "currentItem" {
+        if keyPath == #keyPath(AVQueuePlayer.currentItem) {
             self.changed()
         }
     }
@@ -199,9 +199,10 @@ class ViewController: UIViewController {
             withKey:AVMetadataCommonKeyTitle,
             keySpace:AVMetadataKeySpaceCommon)
         let met = arr[0]
-        met.loadValuesAsynchronously(forKeys:["value"]) {
+        let valueKey = #keyPath(AVMetadataItem.value)
+        met.loadValuesAsynchronously(forKeys:[valueKey]) {
             // should always check for successful load of value
-            if met.statusOfValue(forKey:"value", error: nil) == .loaded {
+            if met.statusOfValue(forKey:valueKey, error: nil) == .loaded {
                 // can't be sure what thread we're on ...
                 // ...or whether we'll be called back synchronously or asynchronously
                 // so I like to step out to the main thread just in case
@@ -222,7 +223,7 @@ class ViewController: UIViewController {
     func timerFired(time:CMTime) {
         if let item = self.qp.currentItem {
             let asset = item.asset
-            if asset.statusOfValue(forKey:"duration", error: nil) == .loaded {
+            if asset.statusOfValue(forKey:#keyPath(AVAsset.duration), error: nil) == .loaded {
                 let dur = asset.duration
                 self.prog.setProgress(Float(time.seconds/dur.seconds), animated: false)
                 self.prog.isHidden = false

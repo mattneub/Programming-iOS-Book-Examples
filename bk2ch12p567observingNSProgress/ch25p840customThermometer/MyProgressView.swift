@@ -11,7 +11,7 @@ class MyProgressView: UIView {
         let ins : CGFloat = 2.0
         let r = self.bounds.insetBy(dx: ins, dy: ins)
         let radius : CGFloat = r.size.height / 2.0
-        let mpi = .pi
+        let mpi = CGFloat.pi
         let path = CGMutablePath()
         path.moveTo(nil, x: r.maxX - radius, y: ins)
         path.addArc(nil,

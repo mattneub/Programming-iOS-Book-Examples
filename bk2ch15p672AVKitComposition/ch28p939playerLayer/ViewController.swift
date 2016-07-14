@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         let asset = AVURLAsset(url:m)
         let item = AVPlayerItem(asset:asset)
         let p = AVPlayer(playerItem:item)
-        p.addObserver(self, forKeyPath:"status", context:nil)
+        p.addObserver(self, forKeyPath:#keyPath(AVPlayer.status), context:nil)
         let vc = AVPlayerViewController()
         vc.player = p
         vc.view.frame = CGRect(10,10,300,200)
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
-        if keyPath == "status" {
+        if keyPath == #keyPath(AVPlayer.status) {
             DispatchQueue.main.async {
                 self.finishConstructingInterface()
             }
@@ -63,7 +63,7 @@ class ViewController: UIViewController {
         if p.status != .readyToPlay {
             return
         }
-        p.removeObserver(self, forKeyPath:"status")
+        p.removeObserver(self, forKeyPath:#keyPath(AVPlayer.status))
         vc.view.isHidden = false
         
         // absolutely no reason why we shouldn't have a synch layer if we want one
@@ -150,7 +150,7 @@ class ViewController: UIViewController {
         
         // note this cool trick! the status won't change, so to trigger a KVO notification,
         // ...we supply the .Initial option
-        p.addObserver(self, forKeyPath:"status", options:.initial, context:nil)
+        p.addObserver(self, forKeyPath:#keyPath(AVPlayer.status), options:.initial, context:nil)
         p.replaceCurrentItem(with: item)
         (sender as! UIControl).isEnabled = false
     }

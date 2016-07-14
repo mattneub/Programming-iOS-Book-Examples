@@ -44,7 +44,7 @@ class ViewController : UIViewController {
             NSFontAttributeName:UIFont(name:"GillSans", size:15)!,
             NSParagraphStyleAttributeName:lend {
                 (p:NSMutableParagraphStyle) in
-                let terms = NSTextTab.columnTerminators(for:Locale.current())
+                let terms = NSTextTab.columnTerminators(for:Locale.current)
                 let tab = NSTextTab(textAlignment:.right, location:170, options:[NSTabColumnTerminatorsAttributeName:terms])
                 var which : Int { return 2 }
                 switch which {

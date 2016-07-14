@@ -76,7 +76,7 @@ class ViewController: UIViewController {
         // architecture 3: explicit KVO on an NSProgress, update progress view manually
         
         self.op3 = ProgressingOperation(units:10)
-        self.op3!.progress.addObserver(self, forKeyPath: "fractionCompleted", options: [.new], context: nil)
+        self.op3!.progress.addObserver(self, forKeyPath: #keyPath(Progress.fractionCompleted), options: [.new], context: nil)
         self.op3!.start()
 
     }
