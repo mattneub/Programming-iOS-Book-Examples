@@ -15,19 +15,16 @@ class FlipsideViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("starting timer")
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fired), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
+            [unowned self] // comment out and we will leak
+            t in
+            self.fired(t)
+        }
         self.timer.tolerance = 0.1
     }
     
     func fired(_ t:Timer) {
         print("timer fired")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        // return; // uncomment and we will leak
-        print("invalidate")
-        self.timer.invalidate()
     }
     
     @IBAction func done (_ sender:AnyObject!) {
@@ -37,6 +34,7 @@ class FlipsideViewController: UIViewController {
     
     // if deinit is not called when you tap Done, we are leaking
     deinit {
+        self.timer.invalidate()
         print("deinit")
     }
     

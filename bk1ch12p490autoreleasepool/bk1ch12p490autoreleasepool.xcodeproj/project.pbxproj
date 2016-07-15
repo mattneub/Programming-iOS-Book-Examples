@@ -98,6 +98,8 @@
 				TargetAttributes = {
 					32FFD39E1B5A9B080055D1E0 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = W3LHX5RGV2;
+						DevelopmentTeamName = "Matt Neuburg";
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -252,6 +254,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = bk1ch12p490autoreleasepool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk1ch12p490autoreleasepool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -264,6 +267,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = bk1ch12p490autoreleasepool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk1ch12p490autoreleasepool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
