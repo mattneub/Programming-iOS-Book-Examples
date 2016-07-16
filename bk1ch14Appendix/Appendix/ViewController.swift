@@ -25,7 +25,8 @@ import ImageIO
 
  */
 
-class MyClass {
+public class MyClass {
+    var name : String?
     var timer : Timer?
     func startTimer() {
         self.timer = Timer.scheduledTimer(timeInterval: 1,
@@ -74,6 +75,9 @@ class ViewController: UIViewController {
     
     // overloading while hiding
     @nonobjc func dismissViewControllerAnimated(_ flag: Int, completion: (() -> Void)?) {}
+    
+    func testVisibility1(what:Int) {}
+    func testVisibility2(what:MyClass) {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -185,6 +189,30 @@ class ViewController: UIViewController {
             let sndurl = Bundle.main.urlForResource("test", withExtension: "aif")!
             var snd : SystemSoundID = 0
             AudioServicesCreateSystemSoundID(sndurl, &snd)
+        }
+        
+        do {
+            class MyClass2 /*: NSObject*/ {
+                var name : String?
+            }
+            let c = MyClass2()
+            c.name = "cool"
+            let arr = [c]
+            let arr2 = arr as NSArray
+            let name = (arr2[0] as? MyClass2)?.name
+            print(name)
+        }
+        
+        do {
+            let lay = CALayer()
+            class MyClass2 /*: NSObject*/ {
+                var name : String?
+            }
+            let c = MyClass2()
+            c.name = "cool"
+            lay.setValue(c, forKey: "c")
+            let name = (lay.value(forKey: "c") as? MyClass2)?.name
+            print(name)
         }
         
         do {
@@ -306,7 +334,7 @@ class ViewController: UIViewController {
     func testDefault(_ what: Int = 42) {}
 
 
-    var myclass = MyClass()
+    var myclass = MyClass() // Objective-C can't see this
     func testTimer() {
         self.myclass.startTimer()
     }
