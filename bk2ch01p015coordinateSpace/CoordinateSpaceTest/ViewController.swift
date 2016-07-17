@@ -7,7 +7,8 @@ class ViewController: UIViewController {
 
     @IBAction func doButton1(_ sender: UIButton) {
         let v = sender
-        let r = v.superview!.convert(v.frame, to: UIScreen.main().fixedCoordinateSpace)
+        let screen = UIScreen.main().fixedCoordinateSpace
+        let r = v.superview!.convert(v.frame, to: screen)
         print(r)
         print(v.frame)
         do {
@@ -18,7 +19,8 @@ class ViewController: UIViewController {
     }
     @IBAction func doButton2(_ sender: UIButton) {
         let v = sender
-        let r = v.superview!.convert(v.frame, to: UIScreen.main().fixedCoordinateSpace)
+        let screen = UIScreen.main().fixedCoordinateSpace
+        let r = v.superview!.convert(v.frame, to: screen)
         print(r)
         print(v.frame)
         do {

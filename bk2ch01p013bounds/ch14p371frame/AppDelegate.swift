@@ -11,7 +11,7 @@ extension CGRect {
     
     var window : UIWindow?
     
-    let which = 1
+    let which = 4
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -50,6 +50,17 @@ extension CGRect {
             
             v1.bounds.origin.x += 10
             v1.bounds.origin.y += 10
+            
+        case 4:
+            // showing how to center a view in its superview
+            let v1 = UIView(frame:CGRect(113, 111, 132, 194))
+            v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
+            let v2 = UIView(frame:CGRect(0,0,20,20))
+            v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
+            mainview.addSubview(v1)
+            v1.addSubview(v2)
+            v2.center = v1.convert(v1.center, from:v1.superview)
+
 
         default: break
         }

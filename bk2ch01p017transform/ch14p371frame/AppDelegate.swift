@@ -8,12 +8,11 @@ extension CGRect {
     }
 }
 
-
 @UIApplicationMain class AppDelegate : UIResponder, UIApplicationDelegate {
     
     var window : UIWindow?
     
-    let which = 6
+    let which = 4
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -31,7 +30,7 @@ extension CGRect {
             mainview.addSubview(v1)
             v1.addSubview(v2)
             
-            v1.transform = CGAffineTransform(rotationAngle:45 * .pi/180.0)
+            v1.transform = CGAffineTransform(rotationAngle:45 * .pi/180)
             print(v1.frame)
             
         case 2:
@@ -52,7 +51,7 @@ extension CGRect {
             mainview.addSubview(v1)
             v1.addSubview(v2)
             
-            v2.transform = CGAffineTransform(translationX:100, y:0).rotate(45 * .pi/180.0)
+            v2.transform = CGAffineTransform(translationX:100, y:0).rotate(45 * .pi/180)
             
         case 4:
             let v1 = UIView(frame:CGRect(20, 111, 132, 194))
@@ -62,7 +61,7 @@ extension CGRect {
             mainview.addSubview(v1)
             v1.addSubview(v2)
             
-            v2.transform = CGAffineTransform(rotationAngle:45 * .pi/180.0).translateBy(x: 100, y: 0)
+            v2.transform = CGAffineTransform(rotationAngle:45 * .pi/180).translateBy(x: 100, y: 0)
             
         case 5: // same as case 4 but using concat
             let v1 = UIView(frame:CGRect(20, 111, 132, 194))
@@ -72,7 +71,7 @@ extension CGRect {
             mainview.addSubview(v1)
             v1.addSubview(v2)
             
-            let r = CGAffineTransform(rotationAngle:45 * .pi/180.0)
+            let r = CGAffineTransform(rotationAngle:45 * .pi/180)
             let t = CGAffineTransform(translationX:100, y:0)
             v2.transform = t.concat(r) // not r.concat(t)
             
@@ -84,7 +83,7 @@ extension CGRect {
             mainview.addSubview(v1)
             v1.addSubview(v2)
 
-            let r = CGAffineTransform(rotationAngle:45 * .pi/180.0)
+            let r = CGAffineTransform(rotationAngle:45 * .pi/180)
             let t = CGAffineTransform(translationX:100, y:0)
             v2.transform = t.concat(r)
             v2.transform = r.invert().concat(v2.transform)
