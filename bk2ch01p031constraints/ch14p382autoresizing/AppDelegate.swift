@@ -76,7 +76,7 @@ extension CGRect {
         v2.translatesAutoresizingMaskIntoConstraints = false
         v3.translatesAutoresizingMaskIntoConstraints = false
         
-        var which : Int {return 2}
+        var which : Int {return 3}
         switch which {
         case 1:
             // the old way, and this is the last time I'm going to show this
@@ -174,6 +174,7 @@ extension CGRect {
                     "V:|[v2(10)]", metrics: nil, views: d),
                 NSLayoutConstraint.constraints(withVisualFormat:
                     "H:[v3(20)]|", metrics: nil, views: d),
+                // comment me out to form an ambiguity
                 NSLayoutConstraint.constraints(withVisualFormat:
                     "V:[v3(20)]|", metrics: nil, views: d),
                 // uncomment me to form a conflict
