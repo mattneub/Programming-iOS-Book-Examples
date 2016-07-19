@@ -61,7 +61,7 @@ class ViewController: UIViewController {
             let textField = subview2
             var v : UIView = textField
             // v = tvc // try this to prove that we can cycle up to the top safely
-            while let vv = v.superview where !(vv is UITableViewCell) {v = vv}
+            while let vv = v.superview, !(vv is UITableViewCell) {v = vv}
             if let c = v.superview as? UITableViewCell {
                 print("got it \(c)")
             } else {

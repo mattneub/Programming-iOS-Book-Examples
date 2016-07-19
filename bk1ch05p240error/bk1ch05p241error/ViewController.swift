@@ -246,8 +246,8 @@ class ViewController: UIViewController {
         guard howMany() > 10 else {return}
         //
         // guard let howMany = howMany() where howMany > 10 else {return}
-        guard let output1 = Optional(howMany()) where output1 > 10 else {return}
-        guard case let output2 = howMany() where output2 > 10 else {return}
+        guard let output1 = Optional(howMany()), output1 > 10 else {return}
+        guard case let output2 = howMany(), output2 > 10 else {return}
     }
 
 

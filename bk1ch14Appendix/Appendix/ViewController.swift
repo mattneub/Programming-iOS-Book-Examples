@@ -162,8 +162,8 @@ class ViewController: UIViewController {
         do {
             let col = UIColor(red: 0.5, green: 0.6, blue: 0.7, alpha: 1.0)
             if let comp = col.cgColor.components, // * now Optional
-                let sp = col.cgColor.colorSpace
-                where sp.model == .RGB {
+                let sp = col.cgColor.colorSpace,
+                sp.model == .RGB {
                 let red = comp[0]
                 let green = comp[1]
                 let blue = comp[2]
@@ -282,7 +282,7 @@ class ViewController: UIViewController {
             let r = NSMakeRange(0,0) // not really, just making sure we compile
             mas.enumerateAttribute("HERE", in: r) {
                 value, r, stop in
-                if let value = value as? Int where value == 1  {
+                if let value = value as? Int, value == 1  {
                     // ...
                     stop.pointee = true
                 }

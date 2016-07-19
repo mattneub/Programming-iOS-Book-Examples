@@ -238,7 +238,7 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
         if case let .number(n) = err {
             print("The error number is \(n)")
         }
-        if case let .number(n) = err where n < 0 {
+        if case let .number(n) = err, n < 0 {
             print("The negative error number is \(n)")
         }
         

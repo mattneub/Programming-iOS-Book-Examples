@@ -80,6 +80,9 @@ class ViewController: UIViewController {
         av.didMove(toParentViewController:self)
     }
     
+    let readyForDisplay = #keyPath(AVPlayerViewController.isReadyForDisplay)
+
+    
     func setUpChild() {
         let url = Bundle.main.urlForResource("ElMirage", withExtension:"mp4")!
         let asset = AVURLAsset(url:url)
@@ -104,7 +107,7 @@ class ViewController: UIViewController {
         }
         */
         
-        av.addObserver(self, forKeyPath: #keyPath(AVPlayerViewController.isReadyForDisplay), options: .new, context:nil)
+        av.addObserver(self, forKeyPath: readyForDisplay, options: .new, context:nil)
         
         return; // just proving you can swap out the player
         delay(3) {
@@ -116,7 +119,7 @@ class ViewController: UIViewController {
     
     override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?,
         context: UnsafeMutablePointer<()>?) {
-            guard keyPath == #keyPath(AVPlayerViewController.isReadyForDisplay)
+            guard keyPath == readyForDisplay
                 else {return}
             guard let vc = object as? AVPlayerViewController
                 else {return}

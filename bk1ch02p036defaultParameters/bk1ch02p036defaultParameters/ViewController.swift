@@ -42,8 +42,7 @@ class ViewController: UIViewController {
         d.say("woof") // same as saying d.say("woof", times:1)
         d.say("woof", times:3)
         
-        doThing(b:5, a:10) // legal but don't
-        // I have a sense that this will soon become illegal anyway
+        // doThing(b:5, a:10) // illegal at long last
         
         sayStrings("hey", "ho", "nonny nonny no")
         
