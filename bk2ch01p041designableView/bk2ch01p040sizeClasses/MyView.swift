@@ -15,15 +15,15 @@ The representation is not perfect but it's pretty good.
     
     @IBInspectable var name : String!
     
-    override init(frame: CGRect) {
-        super.init(frame:frame)
-        self.configure()
-    }
+//    override init(frame: CGRect) {
+//        super.init(frame:frame)
+//        self.configure()
+//    }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
-        self.configure()
-    }
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder:aDecoder)
+//        self.configure()
+//    }
     
     func configure() {
         self.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
@@ -41,7 +41,7 @@ The representation is not perfect but it's pretty good.
             v2.leftAnchor.constraint(equalTo:self.leftAnchor),
             v2.rightAnchor.constraint(equalTo:self.rightAnchor),
             v2.topAnchor.constraint(equalTo:self.topAnchor),
-            v2.heightAnchor.constraint(equalToConstant:10),
+            v2.heightAnchor.constraint(equalToConstant:20),
             v3.widthAnchor.constraint(equalToConstant:20),
             v3.heightAnchor.constraint(equalTo:v3.widthAnchor),
             v3.rightAnchor.constraint(equalTo:self.rightAnchor),
@@ -53,6 +53,7 @@ The representation is not perfect but it's pretty good.
         // IB-only preparations can go here
         // typically this will involve supplying stub data
         self.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
+        return;
         let lab = UILabel()
         lab.text = self.name
         lab.sizeToFit()
@@ -60,8 +61,18 @@ The representation is not perfect but it's pretty good.
     }
     
     override func willMove(toSuperview newSuperview: UIView!) {
-        // self.configure()
+        self.configure()
     }
     
-    
+}
+
+@IBDesignable class MyButton : UIButton {
+    @IBInspectable var borderWidth : Int {
+        set {
+            self.layer.borderWidth = CGFloat(newValue)
+        }
+        get {
+            return Int(self.layer.borderWidth)
+        }
+    }
 }
