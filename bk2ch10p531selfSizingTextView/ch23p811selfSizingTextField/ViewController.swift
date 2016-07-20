@@ -62,14 +62,14 @@ class ViewController: UIViewController, UITextViewDelegate {
     // this is my attempt to get it right
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        let sel = textView.selectedRange
-        textView.text = (textView.text as NSString).replacingCharacters(in:range,
-            with:text)
+//        let sel = textView.selectedRange
+//        textView.text = (textView.text as NSString).replacingCharacters(in:range,
+//            with:text)
         self.adjustHeight(textView)
-        textView.selectedRange =
-            text.isEmpty && sel.length == 0 ?
-                NSMakeRange(sel.location - 1,0) : NSMakeRange(sel.location + text.utf16.count, 0)
-        return false
+//        textView.selectedRange =
+//            text.isEmpty && sel.length == 0 ?
+//                NSMakeRange(sel.location - 1,0) : NSMakeRange(sel.location + text.utf16.count, 0)
+        return true
     }
     
     
