@@ -9,7 +9,7 @@ class SearchResultsController : UITableViewController {
         
     func take(data:[[String]]) {
         // we don't use sections, so flatten the data into a single array of strings
-        self.originalData = data.flatten().map{$0}
+        self.originalData = data.flatMap{$0}
     }
     
     override func viewDidLoad() {

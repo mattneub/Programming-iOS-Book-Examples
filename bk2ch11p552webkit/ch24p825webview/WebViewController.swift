@@ -147,7 +147,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         NSLayoutConstraint.activate([
             NSLayoutConstraint.constraints(withVisualFormat:"H:|[wv]|", metrics: nil, views: ["wv":wv]),
             NSLayoutConstraint.constraints(withVisualFormat:"V:|[wv]|", metrics: nil, views: ["wv":wv])
-            ].flatten().map{$0})
+            ].flatMap{$0})
         wv.navigationDelegate = self
         
         // sorry, missing this feature

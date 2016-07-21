@@ -60,7 +60,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         NSLayoutConstraint.activate([
             NSLayoutConstraint.constraints(withVisualFormat:"H:|[wv]|", metrics: nil, views: ["wv":wv]),
             NSLayoutConstraint.constraints(withVisualFormat:"V:|[wv]|", metrics: nil, views: ["wv":wv])
-            ].flatten().map{$0})
+            ].flatMap{$0})
         self.wv = wv
                 
         // take advantage of built-in "back" and "forward" swipe gestures

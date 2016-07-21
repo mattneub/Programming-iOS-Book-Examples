@@ -105,7 +105,7 @@ class RootViewController : UITableViewController {
                 NSLayoutConstraint.constraints(withVisualFormat:
                     "V:|[lab]|",
                     metrics:nil, views:["lab":lab])
-                ].flatten().map{$0})
+                ].flatMap{$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]

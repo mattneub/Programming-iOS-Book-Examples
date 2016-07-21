@@ -180,7 +180,7 @@ extension CGRect {
                 // uncomment me to form a conflict
 //                NSLayoutConstraint.constraints(withVisualFormat:
 //                    "V:[v3(10)]|", metrics: nil, views: d),
-                ].flatten().map{$0})
+                ].flatMap{$0})
         default: break
         }
         

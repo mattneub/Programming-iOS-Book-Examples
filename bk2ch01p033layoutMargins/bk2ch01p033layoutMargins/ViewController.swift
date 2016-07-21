@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             NSLayoutConstraint.constraints(withVisualFormat:"H:|-(0)-[v]-(0)-|", metrics: nil, views: ["v":v]),
             NSLayoutConstraint.constraints(withVisualFormat:"V:|-(0)-[v]-(0)-|", metrics: nil, views: ["v":v])
-            ].flatten().map{$0})
+            ].flatMap{$0})
         
         // experiment by commenting out this line
         v.preservesSuperviewLayoutMargins = true
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
             NSLayoutConstraint.activate([
                 NSLayoutConstraint.constraints(withVisualFormat:"H:|-[v1]-|", metrics: nil, views: ["v1":v1]),
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|-[v1]-|", metrics: nil, views: ["v1":v1])
-                ].flatten().map{$0})
+                ].flatMap{$0})
             
         case 2:
             // new notation treats margins as a pseudoview (UILayoutGuide)

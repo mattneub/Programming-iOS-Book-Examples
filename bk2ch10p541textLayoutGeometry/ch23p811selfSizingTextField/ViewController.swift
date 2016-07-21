@@ -79,7 +79,7 @@ class ViewController: UIViewController {
                 metrics:nil, views:[
                     "tv":self.tv, "top":self.topLayoutGuide, "bot":self.bottomLayoutGuide
                 ])
-            ].flatten().map{$0})
+            ].flatMap{$0})
 
     }
     

@@ -20,7 +20,7 @@ class ViewController: UIViewController {
                 NSLayoutConstraint.activate([
                     NSLayoutConstraint.constraints(withVisualFormat:"V:[tg]-[lab]", metrics: nil, views: ["tg":self.topLayoutGuide, "lab":self.lab]),
                     [self.lab.centerXAnchor.constraint(equalTo:self.view.centerXAnchor)]
-                    ].flatten().map{$0})
+                    ].flatMap{$0})
                 let sz = self.lab.font.pointSize * 2
                 self.lab.font = self.lab.font.withSize(sz)
             }

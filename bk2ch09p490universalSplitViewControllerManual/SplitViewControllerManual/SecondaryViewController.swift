@@ -17,7 +17,7 @@ class SecondaryViewController : UIViewController {
         NSLayoutConstraint.activate([
             NSLayoutConstraint.constraints(withVisualFormat:"H:[b]-|", metrics: nil, views: ["b":b]),
             NSLayoutConstraint.constraints(withVisualFormat:"V:[b]-|", metrics: nil, views: ["b":b])
-            ].flatten().map{$0})
+            ].flatMap{$0})
     }
     
     func callShowHide(_ sender:AnyObject?) {

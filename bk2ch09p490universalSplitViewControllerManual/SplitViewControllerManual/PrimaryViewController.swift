@@ -75,7 +75,7 @@ class PrimaryViewController : UIViewController {
         NSLayoutConstraint.activate([
             NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|", metrics: nil, views: ["v":vc2.view]),
             self.verticalConstraints!
-        ].flatten().map{$0})
+        ].flatMap{$0})
     }
 }
 

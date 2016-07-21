@@ -93,7 +93,7 @@ class RootViewController : UITableViewController {
                     metrics:nil, views:["v":v]),
                 NSLayoutConstraint.constraints(withVisualFormat:"V:|[lab]|",
                     metrics:nil, views:["lab":lab])
-                ].flatten().map{$0})
+                ].flatMap{$0})
             
             // uncomment to see bug where button does not inherit superview's tint color
 //            let b = UIButton(type:.System)

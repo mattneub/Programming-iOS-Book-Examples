@@ -61,7 +61,7 @@ class ChildViewController : UITableViewController {
     
     init(data:[[String]]) {
         // we don't use sections, so flatten the data into a single array of strings
-        self.originalData = data.flatten().map{$0}
+        self.originalData = data.flatMap{$0}
         super.init(nibName: nil, bundle: nil)
         // self.preferredContentSize = CGSize(300,400)
     }
