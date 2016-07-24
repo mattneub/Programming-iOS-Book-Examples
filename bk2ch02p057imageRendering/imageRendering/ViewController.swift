@@ -54,12 +54,12 @@ class ViewController : UIViewController {
             iv2.bottomAnchor.constraint(equalTo:self.view.bottomAnchor)
             ])
 
-        // In the asset catalog, it is the Top, not the Bottom, that I have set
-        // Moreover, if I don't also set the Left, nothing happens at all; 
+        // In the asset catalog, if I don't also set the Left, nothing happens at all;
         // a Left of 0 turns off the whole thing
+        // I have a long-standing bug filed on this
+        // (also the top and bottom used to be reversed)
         
-        print(im4.alignmentRectInsets) // C.UIEdgeInsets(top: 0.0, left: 0.5, bottom: 24.0, right: 0.0)
-        // but what I set was the top!
+        print(im4.alignmentRectInsets)
         print(iv2.alignmentRectInsets())
         
         /*

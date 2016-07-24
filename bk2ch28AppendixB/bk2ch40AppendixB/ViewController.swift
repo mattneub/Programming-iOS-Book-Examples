@@ -77,21 +77,25 @@ extension NSLayoutConstraint {
     }
 }
 
-//func imageOfSize(_ size:CGSize, _ opaque:Bool = false, _ closure: @noescape () -> ())
-//    -> UIImage {
-//        UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
-//        closure()
-//        let result = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIGraphicsEndImageContext()
-//        return result
-//}
+
+func lend<T where T:NSObject> (closure: @noescape (T)->()) -> T {
+    let orig = T()
+    closure(orig)
+    return orig
+}
 
 func imageOfSize(_ size:CGSize, opaque:Bool = false, closure: @noescape () -> ()) -> UIImage {
-    let r = UIGraphicsImageRenderer(size: size, format: lend {
-        (f:UIGraphicsImageRendererFormat) in f.opaque = opaque
-    })
-    return r.image {
-        _ in closure()
+    if #available(iOS 10.0, *) {
+        let f = UIGraphicsImageRendererFormat.default()
+        f.opaque = opaque
+        let r = UIGraphicsImageRenderer(size: size, format: f)
+        return r.image {_ in closure()}
+    } else {
+        UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
+        closure()
+        let result = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return result
     }
 }
 
@@ -133,12 +137,6 @@ extension Array {
             self.remove(at:i)
         }
     }
-}
-
-func lend<T where T:NSObject> (closure: @noescape (T)->()) -> T {
-    let orig = T()
-    closure(orig)
-    return orig
 }
 
 class Wrapper<T> {

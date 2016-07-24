@@ -12,7 +12,6 @@
 		320E8DB71B6459F700031E7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 320E8DB51B6459F700031E7A /* Main.storyboard */; };
 		320E8DB91B6459F700031E7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 320E8DB81B6459F700031E7A /* Assets.xcassets */; };
 		320E8DBC1B6459F700031E7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 320E8DBA1B6459F700031E7A /* LaunchScreen.storyboard */; };
-		320E8DC41B645A5200031E7A /* finder.png in Resources */ = {isa = PBXBuildFile; fileRef = 320E8DC31B645A5200031E7A /* finder.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +22,6 @@
 		320E8DB81B6459F700031E7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		320E8DBB1B6459F700031E7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		320E8DBD1B6459F700031E7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		320E8DC31B645A5200031E7A /* finder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finder.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +59,6 @@
 				320E8DB51B6459F700031E7A /* Main.storyboard */,
 				320E8DB81B6459F700031E7A /* Assets.xcassets */,
 				320E8DBA1B6459F700031E7A /* LaunchScreen.storyboard */,
-				320E8DC31B645A5200031E7A /* finder.png */,
 				320E8DBD1B6459F700031E7A /* Info.plist */,
 			);
 			path = bk2ch02p052ImageReversal;
@@ -126,7 +123,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				320E8DBC1B6459F700031E7A /* LaunchScreen.storyboard in Resources */,
-				320E8DC41B645A5200031E7A /* finder.png in Resources */,
 				320E8DB91B6459F700031E7A /* Assets.xcassets in Resources */,
 				320E8DB71B6459F700031E7A /* Main.storyboard in Resources */,
 			);

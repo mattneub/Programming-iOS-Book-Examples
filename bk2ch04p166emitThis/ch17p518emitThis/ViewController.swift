@@ -27,7 +27,7 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let f = UIGraphicsImageRendererFormat()
+        let f = UIGraphicsImageRendererFormat.default()
         f.scale = 1
         let r = UIGraphicsImageRenderer(size:CGSize(10,10), format:f)
         let im = r.image {

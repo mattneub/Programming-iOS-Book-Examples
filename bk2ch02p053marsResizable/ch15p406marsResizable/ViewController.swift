@@ -16,7 +16,7 @@ class ViewController : UIViewController {
         
         switch which {
         case 1:
-            marsTiled = mars.resizableImage(withCapInsets:UIEdgeInsets.zero, resizingMode: .tile)
+            marsTiled = mars.resizableImage(withCapInsets:.zero, resizingMode: .tile)
         case 2:
             marsTiled = mars.resizableImage(withCapInsets:
                 UIEdgeInsetsMake(

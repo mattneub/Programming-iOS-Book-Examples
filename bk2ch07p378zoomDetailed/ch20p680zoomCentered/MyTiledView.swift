@@ -28,12 +28,14 @@ class MyTiledView : UIView {
         return CATiledLayer.self
     }
     
+    // THIS IS NOT WORKING - need to figure out why not
+    
     override func draw(_ rect: CGRect) {
-        //    NSLog(@"rect %@", NSStringFromCGRect(rect));
-        //    NSLog(@"bounds %@", NSStringFromCGRect(self.bounds));
-        //    NSLog(@"contents scale %f", self.layer.contentsScale);
-        //    NSLog(@"%@", NSStringFromCGAffineTransform(CGContextGetCTM(UIGraphicsGetCurrentContext()!)));
-        //    NSLog(@"%@", NSStringFromCGRect(CGContextGetClipBoundingBox(UIGraphicsGetCurrentContext()!)));
+        NSLog("rect %@", NSStringFromCGRect(rect));
+        NSLog("bounds %@", NSStringFromCGRect(self.bounds));
+        NSLog("contents scale %f", self.layer.contentsScale);
+        NSLog("%@", NSStringFromCGAffineTransform(UIGraphicsGetCurrentContext()!.ctm));
+        NSLog("%@", NSStringFromCGRect(UIGraphicsGetCurrentContext()!.boundingBoxOfClipPath));
         
         
         
@@ -59,25 +61,25 @@ class MyTiledView : UIView {
                 let sz = CGSize(im.size.width * scale, im.size.height * scale)
                 
                 
-                let r = UIGraphicsImageRenderer(size: sz, format: lend {
-                    (f : UIGraphicsImageRendererFormat) in
-                    f.opaque = true
-                    f.scale = 1
-                })
-                self.currentImage = r.image {
-                    _ in
-                    im.draw(in:CGRect(0,0,sz.width,sz.height))
-                }
+//                let f = UIGraphicsImageRendererFormat.default()
+//                f.opaque = true
+//                f.scale = 1
+//
+//                let r = UIGraphicsImageRenderer(size: sz, format: f)
+//                self.currentImage = r.image {
+//                    _ in
+//                    im.draw(in:CGRect(0,0,sz.width,sz.height))
+//                }
 
                 
-//                UIGraphicsBeginImageContextWithOptions(sz, true, 1)
-//                im.draw(in:CGRect(0,0,sz.width,sz.height))
-//                self.currentImage = UIGraphicsGetImageFromCurrentImageContext()!
-//                UIGraphicsEndImageContext()
+                UIGraphicsBeginImageContextWithOptions(sz, true, 1)
+                im.draw(in:CGRect(0,0,sz.width,sz.height))
+                self.currentImage = UIGraphicsGetImageFromCurrentImageContext()!
+                UIGraphicsEndImageContext()
                 
                 NSLog("created image at size %@", NSStringFromCGSize(sz)) // only three times
             }
-            self.currentImage.draw(in:self.bounds)
+            self.currentImage?.draw(in:self.bounds)
             
             // comment out the following! it's here just so we can see the tile boundaries
             

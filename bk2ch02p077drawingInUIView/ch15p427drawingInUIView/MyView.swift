@@ -64,18 +64,19 @@ class MyView : UIView {
             
         case 2:
             let p = UIBezierPath()
+            // shaft
             p.move(to:CGPoint(100,100))
             p.addLine(to:CGPoint(100, 19))
             p.lineWidth = 20
             p.stroke()
-            
+            // point
             UIColor.red().set()
             p.removeAllPoints()
             p.move(to:CGPoint(80,25))
             p.addLine(to:CGPoint(100, 0))
             p.addLine(to:CGPoint(120, 25))
             p.fill()
-            
+            // snip
             p.removeAllPoints()
             p.move(to:CGPoint(90,101))
             p.addLine(to:CGPoint(100, 90))

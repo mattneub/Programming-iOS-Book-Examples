@@ -245,8 +245,7 @@ func flip (_ im: CGImage) -> CGImage {
 //    UIGraphicsEndImageContext()
     
     let r = UIGraphicsImageRenderer(size:sz)
-    return r.image {
-        ctx in
+    return r.image { ctx in
         ctx.cgContext.draw(in:
             CGRect(0, 0, sz.width, sz.height), image:im)
     }.cgImage!

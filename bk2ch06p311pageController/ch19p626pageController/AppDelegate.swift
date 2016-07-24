@@ -5,6 +5,7 @@ extension Notification.Name {
     static let tap = Notification.Name("tap")
 }
 
+let pepboy : UIImage = #imageLiteral(resourceName: "pepBoy") // just showing an image literal
 
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {

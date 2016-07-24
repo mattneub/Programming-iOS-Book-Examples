@@ -21,7 +21,7 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         let mainview = self.view!
         
-        let iv = UIImageView(image:UIImage(named:"Mars")) // asset catalog
+        let iv = UIImageView(image:UIImage(named:"Mars"))
         mainview.addSubview(iv)
         
         iv.clipsToBounds = true // default is false...

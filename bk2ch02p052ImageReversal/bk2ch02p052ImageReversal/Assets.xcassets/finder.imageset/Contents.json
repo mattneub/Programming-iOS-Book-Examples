@@ -2,17 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "finder.png",
       "scale" : "1x"
     },
     {
-      "alignment-insets" : {
-        "top" : 0,
-        "left" : 2,
-        "bottom" : 48,
-        "right" : 0
-      },
       "idiom" : "universal",
-      "filename" : "photo.png",
       "scale" : "2x"
     },
     {
