@@ -30,15 +30,17 @@ class ViewController : UIViewController {
         return lay;
     }
     
+    // Big change in iOS 10: CALayerDelegate is a real protocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // four ways of getting content into a layer
         
         // 0: delegate draws
-        self.makeLayerOfClass(CALayer.self, andAddToView:0).delegate = self.smilers[0]
+        self.makeLayerOfClass(CALayer.self, andAddToView:0).delegate = self.smilers[0] as? CALayerDelegate
         // 1: delegate sets contents
-        self.makeLayerOfClass(CALayer.self, andAddToView:1).delegate = self.smilers[1]
+        self.makeLayerOfClass(CALayer.self, andAddToView:1).delegate = self.smilers[1] as? CALayerDelegate
         // 2: subclass draws
         self.makeLayerOfClass(SmilerLayer.self, andAddToView:2)
         // 3: subclass sets contents

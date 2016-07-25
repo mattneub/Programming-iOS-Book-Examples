@@ -2,9 +2,10 @@
 
 import UIKit
 
+// Big change in iOS 10: CALayerDelegate is a real protocol!
 
-class Smiler:NSObject {
-    override func draw(_ layer: CALayer, in ctx: CGContext) {
+class Smiler:NSObject, CALayerDelegate {
+    func draw(_ layer: CALayer, in ctx: CGContext) {
         UIGraphicsPushContext(ctx)
         //[[UIImage imageNamed: @"smiley"] drawInRect:CGContextGetClipBoundingBox(ctx)];
         UIImage(named:"smiley")!.draw(at:CGPoint())
@@ -14,8 +15,8 @@ class Smiler:NSObject {
     }
 }
 
-class Smiler2:NSObject {
-    override func display(_ layer: CALayer) {
+class Smiler2:NSObject, CALayerDelegate {
+    func display(_ layer: CALayer) {
         layer.contents = UIImage(named:"smiley")!.cgImage
         print("\(#function)")
         print(layer.contentsGravity)

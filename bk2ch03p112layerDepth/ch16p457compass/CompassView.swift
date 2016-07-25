@@ -38,7 +38,7 @@ class CompassView : UIView {
     }
 }
 
-class CompassLayer : CALayer {
+class CompassLayer : CALayer, CALayerDelegate {
     var arrow : CALayer?
     var rotationLayer : CALayer!
     var didSetup = false
@@ -137,7 +137,7 @@ class CompassLayer : CALayer {
 
     }
     
-    override func draw(_ layer: CALayer, in con: CGContext) {
+    func draw(_ layer: CALayer, in con: CGContext) {
         print("drawLayer:inContext: for arrow")
         
         // Questa poi la conosco pur troppo!

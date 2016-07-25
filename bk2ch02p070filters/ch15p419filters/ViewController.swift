@@ -53,6 +53,7 @@ class ViewController : UIViewController {
 //            self.iv.image = im
         case 3:
             self.iv.image = UIImage(ciImage: blendimage) // nope
+            self.iv.setNeedsDisplay() // nope
         default: break
         }
         
