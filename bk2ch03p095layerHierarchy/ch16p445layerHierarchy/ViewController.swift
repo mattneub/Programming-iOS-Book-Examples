@@ -1,5 +1,11 @@
 import UIKit
 
+func delay(_ delay:Double, closure:()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
+}
+
+
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)
@@ -63,6 +69,22 @@ class ViewController : UIViewController {
 //        let iv = UIImageView(image:UIImage(named:"smiley"))
 //        mainview.addSubview(iv)
 //        iv.frame.origin = CGPoint(180,180)
+
+        lay1.name = "manny"
+        lay2.name = "moe"
+        lay3.name = "jack"
+        delay(2) {
+            print(self.view.layer.sublayers?.map{$0.name})
+        }
+        
+        lay1.setValue("manny", forKey: "pepboy")
+        lay2.setValue("moe", forKey: "pepboy")
+        lay3.setValue("jack", forKey: "pepboy")
+        delay(2) {
+            self.view.layer.sublayers?.forEach {
+                print($0.value(forKey: "pepboy"))
+            }
+        }
 
 
     }

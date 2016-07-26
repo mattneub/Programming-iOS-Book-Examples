@@ -43,7 +43,7 @@ class CompassLayer : CALayer, CALayerDelegate {
     var rotationLayer : CALayer!
     var didSetup = false
     
-    let which = 2
+    let which = 1
 
     func doRotate () {
         print("rotate")
@@ -52,8 +52,9 @@ class CompassLayer : CALayer, CALayerDelegate {
             self.rotationLayer.anchorPoint = CGPoint(1,0.5)
             self.rotationLayer.position = CGPoint(self.bounds.maxX, self.bounds.midY)
             self.rotationLayer.transform = CATransform3DMakeRotation(.pi/4.0, 0, 1, 0)
-//             self.rotationLayer.setValue(M_PI/4, forKeyPath:"transform.rotation.y")
-//             self.rotationLayer.transform.rotation.y = M_PI/4 // nope, sorry
+//          self.rotationLayer.setValue(.pi/4.0, forKeyPath:"transform.rotation.y")
+//          self.rotationLayer.transform.rotation.y = M_PI/4 // nope, sorry
+//          self.rotationLayer.setValue(.pi/4.0, forKeyPath:#keyPath(CALayer.transform.rotation.y)) // nope
         case 2:
             self.rotationLayer.anchorPoint = CGPoint(1,0.5)
             self.rotationLayer.position = CGPoint(self.bounds.maxX, self.bounds.midY)
