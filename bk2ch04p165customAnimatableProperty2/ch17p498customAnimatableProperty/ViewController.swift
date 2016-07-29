@@ -11,7 +11,7 @@ class ViewController : UIViewController {
         let val : CGFloat = cur == 10 ? 0 : 10
         CATransaction.setDisableActions(true)
         lay.thickness = val
-        let ba = CABasicAnimation(keyPath:"thickness")
+        let ba = CABasicAnimation(keyPath:#keyPath(MyLayer.thickness))
         ba.fromValue = cur
         lay.add(ba, forKey:nil)
     }
@@ -20,6 +20,6 @@ class ViewController : UIViewController {
         let lay = self.v.layer as! MyLayer
         let cur = lay.thickness
         let val : CGFloat = cur == 10 ? 0 : 10
-        lay.thickness = val // implicit
+        lay.thickness = val // implicit animation
     }
 }

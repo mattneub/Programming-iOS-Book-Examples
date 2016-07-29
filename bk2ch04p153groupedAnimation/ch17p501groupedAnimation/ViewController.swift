@@ -50,7 +50,7 @@ class ViewController : UIViewController {
                 cp2x: next.x, cp2y: next.y-30,
                 endingAtX: next.x, y: next.y)
         }
-        let anim1 = CAKeyframeAnimation(keyPath:"position")
+        let anim1 = CAKeyframeAnimation(keyPath:#keyPath(CALayer.position))
         anim1.path = path
         anim1.calculationMode = kCAAnimationPaced
         
@@ -61,7 +61,7 @@ class ViewController : UIViewController {
         anim2.calculationMode = kCAAnimationDiscrete
 
         let pitches = [0.0, .pi/60.0, 0.0, -.pi/60.0, 0.0]
-        let anim3 = CAKeyframeAnimation(keyPath:"transform")
+        let anim3 = CAKeyframeAnimation(keyPath:#keyPath(CALayer.transform))
         anim3.values = pitches
         anim3.repeatCount = Float.infinity
         anim3.duration = 0.5

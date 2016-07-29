@@ -48,14 +48,14 @@ class ViewController : UIViewController {
     
     @IBAction func doButton(_ sender:AnyObject?) {
 
-        let anim = CAKeyframeAnimation(keyPath:"contents")
+        let anim = CAKeyframeAnimation(keyPath:#keyPath(CALayer.contents))
         anim.values = self.images.map {$0.cgImage!}
         anim.keyTimes = [0.0, 0.25, 0.5, 0.75, 1.0]
         anim.calculationMode = kCAAnimationDiscrete
         anim.duration = 1.5
         anim.repeatCount = Float.infinity
         
-        let anim2 = CABasicAnimation(keyPath:"position")
+        let anim2 = CABasicAnimation(keyPath:#keyPath(CALayer.position))
         anim2.duration = 10
         anim2.toValue = NSValue(cgPoint: CGPoint(350,30))
         

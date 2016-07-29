@@ -32,7 +32,7 @@ class MyLayer : CALayer {
     // ...which can only be made in Objective-C
     
     override class func needsDisplay(forKey key: String) -> Bool {
-        if key == "thickness" {
+        if key == #keyPath(thickness) {
             return true
         }
         return super.needsDisplay(forKey:key)
@@ -51,7 +51,7 @@ class MyLayer : CALayer {
     // this is something the book has always been wrong about
     
     override func action(forKey key: String) -> CAAction? {
-        if key == "thickness" {
+        if key == #keyPath(thickness) {
             let ba = CABasicAnimation(keyPath: key)
             // stolen directly from Apple's sample code:
             // sorry, guys, but I would never have thought of this!

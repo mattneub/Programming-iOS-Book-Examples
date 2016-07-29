@@ -2,6 +2,12 @@
 
 import UIKit
 
+func delay(_ delay:Double, closure:()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
+}
+
+
 class ViewController : UIViewController {
     
     @IBOutlet var iv : UIImageView!
@@ -9,8 +15,23 @@ class ViewController : UIViewController {
     @IBOutlet var outer : UIView!
     @IBOutlet var inner : UIView!
     
+    var useAnimator = false
+    
     @IBAction func doButton(_ sender: AnyObject?) {
-        self.animate()
+        switch useAnimator {
+        case false:
+            self.animate()
+        case true:
+            let anim = UIViewPropertyAnimator(duration: 4, curve: .linear) {
+                self.animate()
+            }
+            anim.startAnimation()
+            delay(2) {
+                anim.pauseAnimation()
+                anim.isReversed = true
+                anim.startAnimation() // crash! Okay, that's what I wanted to know, thanks
+            }
+        }
     }
     
     func animate() {
@@ -29,7 +50,7 @@ class ViewController : UIViewController {
             })
         
         // ======
-        
+                
         let opts2 : UIViewAnimationOptions = [.transitionFlipFromLeft, .allowAnimatedContent]
         UIView.transition(with:self.outer, duration: 1, options: opts2,
             animations: {

@@ -34,7 +34,7 @@ class ViewController : UIViewController {
         DispatchQueue.main.async {
         
             let link = CADisplayLink(target:self, selector:#selector(self.nextFrame))
-            link.add(to:RunLoop.main(), forMode:RunLoopMode.defaultRunLoopMode.rawValue)
+            link.add(to:.main, forMode:.defaultRunLoopMode)
         
         }
         

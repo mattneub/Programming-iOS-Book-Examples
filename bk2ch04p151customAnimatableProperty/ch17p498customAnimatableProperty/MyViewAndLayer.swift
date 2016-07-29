@@ -15,7 +15,7 @@ class MyLayer : CALayer {
     var thickness : CGFloat = 0
     
     override class func needsDisplay(forKey key: String) -> Bool {
-        if key == "thickness" {
+        if key == #keyPath(thickness) {
             return true
         }
         return super.needsDisplay(forKey:key)

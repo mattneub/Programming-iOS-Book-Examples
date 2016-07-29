@@ -1,53 +1,70 @@
 import UIKit
 
+func delay(_ delay:Double, closure:()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
+}
+
 class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     
+    var useAnimator = true
+    
     @IBAction func doButton(_ sender: AnyObject?) {
-        self.animate()
+        switch useAnimator {
+        case false:
+            self.animate()
+        case true:
+            let anim = UIViewPropertyAnimator(duration: 4, curve: .linear) {
+                self.animate()
+            }
+            anim.startAnimation()
+            delay(2) { // prove that we are pausable / reversible
+                anim.pauseAnimation()
+                anim.isReversed = true
+                anim.startAnimation()
+            }
+        }
     }
     
     func animate() {
         var p = self.v.center
         var opts : UIViewKeyframeAnimationOptions = [] // calculationModeLinear
         let opt2 : UIViewAnimationOptions = .curveLinear
-        _ = opts.insert(UIViewKeyframeAnimationOptions(rawValue:opt2.rawValue))
+        opts.insert(UIViewKeyframeAnimationOptions(rawValue:opt2.rawValue))
         let dur = 0.25
         var start = 0.0
         let dx : CGFloat = 100
         let dy : CGFloat = 50
         var dir : CGFloat = 1
         UIView.animateKeyframes(withDuration:4,
-            delay: 0, options: opts,
+            delay: 0,
+            // options: opts, // comment in or out
             animations: {
                 // self.v.alpha = 0
                 UIView.addKeyframe(withRelativeStartTime:start,
-                    relativeDuration: dur,
-                    animations: {
+                    relativeDuration: dur) {
                         p.x += dx*dir; p.y += dy
                         self.v.center = p
-                    })
+                    }
                 start += dur; dir *= -1
                 UIView.addKeyframe(withRelativeStartTime:start,
-                    relativeDuration: dur,
-                    animations: {
+                    relativeDuration: dur) {
                         p.x += dx*dir; p.y += dy
                         self.v.center = p
-                    })
+                    }
                 start += dur; dir *= -1
                 UIView.addKeyframe(withRelativeStartTime:start,
-                    relativeDuration: dur,
-                    animations: {
+                    relativeDuration: dur) {
                         p.x += dx*dir; p.y += dy
                         self.v.center = p
-                    })
+                    }
                 start += dur; dir *= -1
                 UIView.addKeyframe(withRelativeStartTime:start,
-                    relativeDuration: dur,
-                    animations: {
+                    relativeDuration: dur) {
                         p.x += dx*dir; p.y += dy
                         self.v.center = p
-                    })
+                    }
             })
         
     }

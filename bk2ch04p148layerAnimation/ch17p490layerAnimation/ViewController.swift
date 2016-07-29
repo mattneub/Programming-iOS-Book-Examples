@@ -14,13 +14,11 @@ class ViewController : UIViewController {
         
         switch which {
         case 1:
-            arrow.transform = CATransform3DRotate(
-                arrow.transform, .pi/4.0, 0, 0, 1)
+            arrow.transform = CATransform3DRotate(arrow.transform, .pi/4.0, 0, 0, 1)
             
         case 2:
             CATransaction.setAnimationDuration(0.8)
-            arrow.transform = CATransform3DRotate(
-                arrow.transform, .pi/4.0, 0, 0, 1)
+            arrow.transform = CATransform3DRotate(arrow.transform, .pi/4.0, 0, 0, 1)
             
         case 3:
             let clunk = CAMediaTimingFunction(controlPoints: 0.9, 0.1, 0.7, 0.9)
@@ -35,13 +33,12 @@ class ViewController : UIViewController {
             
             // capture the start and end values
             let startValue = arrow.transform
-            let endValue = CATransform3DRotate(
-                startValue, .pi/4.0, 0, 0, 1)
+            let endValue = CATransform3DRotate(startValue, .pi/4.0, 0, 0, 1)
             // change the layer, without implicit animation
             CATransaction.setDisableActions(true)
             arrow.transform = endValue
             // construct the explicit animation
-            let anim = CABasicAnimation(keyPath:"transform")
+            let anim = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
             anim.duration = 0.8
             let clunk = CAMediaTimingFunction(controlPoints:0.9, 0.1, 0.7, 0.9)
             anim.timingFunction = clunk
@@ -52,9 +49,8 @@ class ViewController : UIViewController {
             
         case 5:
             CATransaction.setDisableActions(true)
-            arrow.transform = CATransform3DRotate(
-                arrow.transform, .pi/4.0, 0, 0, 1)
-            let anim = CABasicAnimation(keyPath:"transform")
+            arrow.transform = CATransform3DRotate(arrow.transform, .pi/4.0, 0, 0, 1)
+            let anim = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
             anim.duration = 0.8
             let clunk = CAMediaTimingFunction(controlPoints:0.9, 0.1, 0.7, 0.9)
             anim.timingFunction = clunk
@@ -63,12 +59,10 @@ class ViewController : UIViewController {
         case 6:
             // capture the start and end values
             let nowValue = arrow.transform
-            let startValue = CATransform3DRotate(
-                nowValue, .pi/40.0, 0, 0, 1)
-            let endValue = CATransform3DRotate(
-                nowValue, -.pi/40.0, 0, 0, 1)
+            let startValue = CATransform3DRotate(nowValue, .pi/40.0, 0, 0, 1)
+            let endValue = CATransform3DRotate(nowValue, -.pi/40.0, 0, 0, 1)
             // construct the explicit animation
-            let anim = CABasicAnimation(keyPath:"transform")
+            let anim = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
             anim.duration = 0.05
             anim.timingFunction = CAMediaTimingFunction(
                 name:kCAMediaTimingFunctionLinear)
@@ -80,15 +74,14 @@ class ViewController : UIViewController {
             arrow.add(anim, forKey:nil)
             
         case 7:
-            let anim = CABasicAnimation(keyPath:"transform")
+            let anim = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
             anim.duration = 0.05
-            anim.timingFunction = CAMediaTimingFunction(
-                name:kCAMediaTimingFunctionLinear)
+            anim.timingFunction =
+                CAMediaTimingFunction(name:kCAMediaTimingFunctionLinear)
             anim.repeatCount = 3
             anim.autoreverses = true
             anim.isAdditive = true
-            anim.valueFunction = CAValueFunction(
-                name:kCAValueFunctionRotateZ)
+            anim.valueFunction = CAValueFunction(name:kCAValueFunctionRotateZ)
             anim.fromValue = Float.pi/40
             anim.toValue = -Float.pi/40
             arrow.add(anim, forKey:nil)
@@ -98,7 +91,7 @@ class ViewController : UIViewController {
             CATransaction.setDisableActions(true)
             arrow.transform = CATransform3DRotate(arrow.transform, rot, 0, 0, 1)
             // construct animation additively
-            let anim = CABasicAnimation(keyPath:"transform")
+            let anim = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
             anim.duration = 0.8
             let clunk = CAMediaTimingFunction(controlPoints:0.9, 0.1, 0.7, 0.9)
             anim.timingFunction = clunk
@@ -117,7 +110,7 @@ class ViewController : UIViewController {
             }
             values.append(0.0)
             print(values)
-            let anim = CAKeyframeAnimation(keyPath:"transform")
+            let anim = CAKeyframeAnimation(keyPath:#keyPath(CALayer.transform))
             anim.values = values
             anim.isAdditive = true
             anim.valueFunction = CAValueFunction(name: kCAValueFunctionRotateZ)
@@ -133,7 +126,7 @@ class ViewController : UIViewController {
             arrow.setValue(current + rot, forKeyPath:"transform.rotation.z")
 
             // first animation (rotate and clunk)
-            let anim1 = CABasicAnimation(keyPath:"transform")
+            let anim1 = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
             anim1.duration = 0.8
             let clunk = CAMediaTimingFunction(controlPoints:0.9, 0.1, 0.7, 0.9)
             anim1.timingFunction = clunk
@@ -149,7 +142,7 @@ class ViewController : UIViewController {
                 values.append(Double(dir) * .pi / Double(base))
             }
             values.append(0.0)
-            let anim2 = CAKeyframeAnimation(keyPath:"transform")
+            let anim2 = CAKeyframeAnimation(keyPath:#keyPath(CALayer.transform))
             anim2.values = values
             anim2.duration = 0.25
             anim2.isAdditive = true

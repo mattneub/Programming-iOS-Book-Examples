@@ -22,14 +22,15 @@ extension CGPoint {
 
 class ViewController : UIViewController {
     
-    let which = 0
+    let which = 4
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let f = UIGraphicsImageRendererFormat.default()
-        f.scale = 1
-        let r = UIGraphicsImageRenderer(size:CGSize(10,10), format:f)
+        // no longer needed; we now have a contentsScale! (starting in iOS 9)
+//        let f = UIGraphicsImageRendererFormat.default()
+//        f.scale = 1
+        let r = UIGraphicsImageRenderer(size:CGSize(10,10))
         let im = r.image {
             ctx in let con = ctx.cgContext
             con.addEllipse(inRect:CGRect(0,0,10,10))
@@ -46,6 +47,7 @@ class ViewController : UIViewController {
 //        UIGraphicsEndImageContext()
         
         let cell = CAEmitterCell()
+        cell.contentsScale = UIScreen.main().scale // new in iOS 9
         cell.birthRate = 5
         cell.lifetime = 1
         cell.velocity = 100
@@ -123,7 +125,7 @@ class ViewController : UIViewController {
             
             // interestingly, it looks about right on iOS 7...
             // ... if we double the beginTime and halve the duration
-            
+
             cell2.beginTime = 1.4
             cell2.duration = 0.4
             

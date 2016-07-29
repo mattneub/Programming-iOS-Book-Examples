@@ -35,7 +35,8 @@ class MyWagglePositionAction : NSObject, CAAction {
         arguments dict: [NSObject : AnyObject]?) {
             let lay = anObject as! CALayer
             let newP = (lay.value(forKey:event) as! NSValue).cgPointValue()
-            let oldP = (lay.presentation()!.value(forKey:event) as! NSValue).cgPointValue()
+            let val = lay.presentation()!.value(forKey:event) as! NSValue
+            let oldP = val.cgPointValue()
 
             let d = sqrt(pow(oldP.x - newP.x, 2) + pow(oldP.y - newP.y, 2))
             let r = Double(d/3.0)
@@ -70,7 +71,7 @@ class ViewController : UIViewController {
         self.layer = layer
     }
     
-    let which = 10
+    let which = 2
     
     @IBAction func doButton(_ sender:AnyObject?) {
         let layer = self.layer!
@@ -191,10 +192,10 @@ class MyLayer : CALayer {
     
 }
 
-extension ViewController {
+extension ViewController : CALayerDelegate, CAAnimationDelegate {
     
     // on implicit "position" animation, do a little waggle
-    override func action(for layer: CALayer, forKey key: String) -> CAAction? {
+    func action(for layer: CALayer, forKey key: String) -> CAAction? {
         if key == "position" {
             return MyWagglePositionAction()
         }
@@ -252,7 +253,7 @@ extension ViewController {
         return nil
     }
     
-    override func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let layer = anim.value(forKey:"remove") as? CALayer {
             layer.removeFromSuperlayer()
         }

@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         shape.path = path
         
         let path2 = CGPath(ellipseIn:shape.bounds, transform:nil)
-        let ba = CABasicAnimation(keyPath: "path")
+        let ba = CABasicAnimation(keyPath:#keyPath(CAShapeLayer.path))
         ba.duration = 1
         ba.fromValue = path
         ba.toValue = path2
@@ -33,8 +33,7 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func doSlider(_ sender: AnyObject) {
-        let slider = sender as! UISlider
+    @IBAction func doSlider(_ slider: UISlider) {
         self.shape.timeOffset = Double(slider.value)
     }
 

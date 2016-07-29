@@ -1,10 +1,18 @@
 import UIKit
 
+func delay(_ delay:Double, closure:()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.after(when: when, execute: closure)
+}
+
 
 class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     var pOrig : CGPoint!
     var pFinal : CGPoint!
+    
+    var useAnimator = true
+    var anim : UIViewPropertyAnimator!
     
     func animate() {
         self.pOrig = self.v.center
@@ -18,13 +26,26 @@ class ViewController : UIViewController {
         })
     }
     
-    let which = 5
+    func animate2() {
+        self.anim = UIViewPropertyAnimator(duration: 4, timingParameters: UICubicTimingParameters())
+        self.anim.addAnimations {
+            self.v.center.x += 100
+        }
+        self.anim.addCompletion {
+            finish in
+            print(finish.rawValue)
+        }
+        self.anim.startAnimation()
+    }
+    
+    let which = 4
 
     func cancel() {
         switch which {
         case 1:
             // simplest possible solution: just kill it dead
             self.v.layer.removeAllAnimations()
+            /*
         case 2:
             // iOS 7 and before; no longer works in iOS 8
             let opts = UIViewAnimationOptions.beginFromCurrentState
@@ -37,32 +58,27 @@ class ViewController : UIViewController {
                     _ in
                     self.v.center = self.pFinal
             })
-        case 3:
+ */
+        case 2:
             // comment out the first two lines here to see what "additive" means
             // the new animation does not remove the original animation...
             // so the new animation just completes and the original proceeds as before
             // to prevent that, we have to intervene directly
             self.v.layer.position = self.v.layer.presentation()!.position
             self.v.layer.removeAllAnimations()
-            UIView.animate(withDuration:0.1, animations: {
+            UIView.animate(withDuration:0.1) {
                 self.v.center = self.pFinal
-                }, completion: {
-                    _ in
-                    print ("finished second animation")
-            })
-        case 4:
+            }
+        case 3:
             // same thing except this time we decide to return to the original position
             // we will get there, but it will take us the rest of the original 4 seconds...
             // unless we intervene directly
             self.v.layer.position = self.v.layer.presentation()!.position
             self.v.layer.removeAllAnimations()
-            UIView.animate(withDuration:0.1, animations: {
+            UIView.animate(withDuration:0.1) {
                 self.v.center = self.pOrig // need to have recorded original position
-                }, completion: {
-                    _ in
-                    print ("finished second animation")
-            })
-        case 5:
+            }
+        case 4:
             // cancel just means stop where you are
             self.v.layer.position = self.v.layer.presentation()!.position
             self.v.layer.removeAllAnimations()
@@ -70,12 +86,37 @@ class ViewController : UIViewController {
         }
     }
     
+    func cancel2() {
+        switch which {
+        case 2: // hurry to end position
+            print("hurry to end")
+            self.anim.pauseAnimation()
+            self.anim.continueAnimation(withTimingParameters: UICubicTimingParameters(animationCurve:.easeOut), durationFactor: 0.1)
+        case 3: // hurry to start position
+            print("hurry to start")
+            self.anim.pauseAnimation()
+            self.anim.isReversed = true
+            self.anim.continueAnimation(withTimingParameters: UICubicTimingParameters(animationCurve:.easeOut), durationFactor: 0.1)
+        case 4:
+            self.anim.stopAnimation(false) // means allow me to finish
+            self.anim.finishAnimation(at: .current)
+        default: break
+        }
+    }
+    
     @IBAction func doStart(_ sender:AnyObject?) {
-        self.animate()
+        switch useAnimator {
+        case false: self.animate()
+        case true: self.animate2()
+        }
+        
     }
     
     @IBAction func doStop(_ sender:AnyObject?) {
-        self.cancel()
+        switch useAnimator {
+        case false: self.cancel()
+        case true: self.cancel2()
+        }
     }
     
     

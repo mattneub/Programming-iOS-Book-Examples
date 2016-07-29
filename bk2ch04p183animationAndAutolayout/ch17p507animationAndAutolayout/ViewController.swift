@@ -12,7 +12,7 @@ class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     @IBOutlet var v_horizontalPositionConstraint : NSLayoutConstraint!
     
-    let which = 8
+    let which = 7
 
     @IBAction func doButton(_ sender:AnyObject?) {
     
@@ -31,14 +31,40 @@ class ViewController : UIViewController {
                     self.v.superview!.setNeedsLayout()
                     self.v.superview!.layoutIfNeeded() // this is what will happen at layout time
                 })
-
         case 3:
-            let con = self.v_horizontalPositionConstraint!
-            con.constant += 100
-            UIView.animate(withDuration:1) {
-                self.v.superview!.layoutIfNeeded()
+            // just proving that using a property animator 
+            // doesn't magically solve this problem
+            let anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
+                self.v.center.x += 100
+            }
+            anim.addCompletion {
+                _ in
+                self.v.superview!.setNeedsLayout()
+                self.v.superview!.layoutIfNeeded() // this is what will happen at layout time
+            }
+            anim.startAnimation()
+
+            
+        case 4:
+            if let con = self.v_horizontalPositionConstraint {
+                con.constant += 100
+                UIView.animate(withDuration:1) {
+                    self.v.superview!.layoutIfNeeded()
+                }
             }
             
+        case 5:
+            // same thing with property animator
+            if let con = self.v_horizontalPositionConstraint {
+                con.constant += 100
+                let anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
+                    self.v.superview!.layoutIfNeeded()
+                }
+                anim.startAnimation()
+            }
+
+            
+        /*
         case 4:
             // this works fine in iOS 8! does not trigger spurious layout
             UIView.animate(withDuration:0.3, delay: 0, options: .autoreverse, animations: {
@@ -55,6 +81,7 @@ class ViewController : UIViewController {
             ba.duration = 0.3
             ba.toValue = NSValue(caTransform3D:CATransform3DMakeScale(1.1, 1.1, 1))
             self.v.layer.add(ba, forKey:nil)
+ */
             
         case 6:
             // general solution to all such problems: animate a temporary snapshot instead!

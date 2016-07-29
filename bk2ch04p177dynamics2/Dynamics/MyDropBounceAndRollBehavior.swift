@@ -16,6 +16,12 @@ extension CGPoint {
         self.init(x:x, y:y)
     }
 }
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
 
 
 class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelegate {
@@ -50,7 +56,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
         grav.addItem(self.v)
 
         let push = UIPushBehavior(items:[self.v], mode:.instantaneous)
-        push.pushDirection = CGVector(dx:1, dy:0)
+        push.pushDirection = CGVector(1,0)
         //push.setTargetOffsetFromCenter(UIOffsetMake(0,-200), forItem: self.iv)
         self.addChildBehavior(push)
 
@@ -70,7 +76,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
 
     }
     
-    @objc func collisionBehavior(_ behavior: UICollisionBehavior,
+    func collisionBehavior(_ behavior: UICollisionBehavior,
                                  beganContactFor item: UIDynamicItem,
                                  withBoundaryIdentifier identifier: NSCopying?,
                                  at p: CGPoint) {

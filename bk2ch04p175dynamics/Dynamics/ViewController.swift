@@ -21,6 +21,13 @@ extension CGPoint {
         self.init(x:x, y:y)
     }
 }
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
 
 
 class MyGravityBehavior : UIGravityBehavior {
@@ -124,8 +131,8 @@ class ViewController : UIViewController {
         // ========
         
         let push = UIPushBehavior(items:[self.iv], mode:.instantaneous)
-        push.pushDirection = CGVector(dx:1, dy:0)
-        //push.setTargetOffsetFromCenter(UIOffsetMake(0,-200), forItem: self.iv)
+        push.pushDirection = CGVector(1,0)
+        // push.setTargetOffsetFromCenter(UIOffsetMake(0,-200), for: self.iv)
         self.anim.addBehavior(push)
 
         // ========
@@ -163,7 +170,7 @@ extension ViewController : UIDynamicAnimatorDelegate, UICollisionBehaviorDelegat
         print("resume")
     }
     
-    @objc func collisionBehavior(_ behavior: UICollisionBehavior,
+    func collisionBehavior(_ behavior: UICollisionBehavior,
         beganContactFor item: UIDynamicItem,
         withBoundaryIdentifier identifier: NSCopying?,
         at p: CGPoint) {

@@ -22,17 +22,34 @@ extension CGPoint {
         self.init(x:x, y:y)
     }
 }
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
 
 
 class MyDelayedFieldBehavior : UIFieldBehavior {
+    
+    // ignore, just testing the syntax
+    let b = UIFieldBehavior.field {
+        (beh, pt, v, m, c, t) -> CGVector in
+        if t > 0.25 {
+            return CGVector(-v.dx, -v.dy)
+        }
+        return CGVector(0,0)
+    }
+
+    
     var delay = 0.0
     class func dragField(delay del:Double) -> Self {
         let f = self.field {
             (beh, pt, v, m, c, t) -> CGVector in
             if t > (beh as! MyDelayedFieldBehavior).delay {
-                return CGVector(dx:-v.dx, dy:-v.dy)
+                return CGVector(-v.dx, -v.dy)
             }
-            return CGVector(dx:0,dy:0)
+            return CGVector(0,0)
         }
         f.delay = del
         return f
@@ -44,30 +61,30 @@ class ViewController: UIViewController {
     
     var anim : UIDynamicAnimator!
     
-    let which = 3
+    let which = 1
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.anim = UIDynamicAnimator(referenceView: self.view)
         
         let v = UIView(frame:CGRect(0,0,50,50))
-        v.backgroundColor = UIColor.black()
+        v.backgroundColor = .black()
         self.view.addSubview(v)
         
         switch which {
         case 1:
             let v2 = UIView(frame:CGRect(200,0,50,50))
-            v2.backgroundColor = UIColor.red()
+            v2.backgroundColor = .red()
             self.view.addSubview(v2)
             
-            let a = UIAttachmentBehavior.slidingAttachment(with:v, attachedTo: v2, attachmentAnchor: CGPoint(125,25), axisOfTranslation: CGVector(dx:0,dy:1))
+            let a = UIAttachmentBehavior.slidingAttachment(with:v, attachedTo: v2, attachmentAnchor: CGPoint(125,25), axisOfTranslation: CGVector(0,1))
             a.attachmentRange = UIFloatRangeMake(-200,200)
             self.anim.addBehavior(a)
             
             delay(2) {
                 print("push")
                 let p = UIPushBehavior(items: [v], mode: .continuous)
-                p.pushDirection = CGVector(dx:0,dy:0.05)
+                p.pushDirection = CGVector(0,0.05)
                 self.anim.addBehavior(p)
             }
         case 2:
@@ -78,7 +95,7 @@ class ViewController: UIViewController {
             self.anim.addBehavior(b)
             
             let p = UIPushBehavior(items: [v], mode: .instantaneous)
-            p.pushDirection = CGVector(dx:0.5, dy:0.5)
+            p.pushDirection = CGVector(0.5, 0.5)
             self.anim.addBehavior(p)
         case 3:
             let v2 = UIView(frame:CGRect(200,0,50,50))
@@ -89,7 +106,7 @@ class ViewController: UIViewController {
             anch.isAnchored = true
             self.anim.addBehavior(anch)
             
-            let b = UIFieldBehavior.linearGravityField(direction:CGVector(dx:0,dy:1))
+            let b = UIFieldBehavior.linearGravityField(direction:CGVector(0,1))
             b.addItem(v)
             b.strength = 2
             self.anim.addBehavior(b)
@@ -109,6 +126,7 @@ class ViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("here")
+        self.anim.perform(Selector("setDebugEnabled:"), with:true)
     }
 
 }
