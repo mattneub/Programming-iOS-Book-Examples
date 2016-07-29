@@ -1,7 +1,7 @@
 
 These are the **complete downloadable code examples** for my books, _iOS 9 Programming Fundamentals With Swift_ (<http://shop.oreilly.com/product/0636920044345.do>) and _Programming iOS 9_ (<http://shop.oreilly.com/product/0636920044352.do>).
 
-You are looking at the Swift 3 branch. **All code compiles for Xcode 8 Preview 1 (Version 8.0 beta (8S128d)) and its version of Swift 3!** Please note that for Book 2 this does *not* mean that there has been revision for iOS 10; in general, that hasn't happened yet. So I don't guarantee that every example actually runs correctly (though, on the whole, they should).
+You are looking at the Swift 3 branch. To date, I have revised the book 1 examples, and the book 2 examples up through book 2 chapter 4, against Xcode version 8.0 beta 3 (8S174q). Later chapters will probably compile as well, but they might not, and I don't guarantee that they will run correctly; I haven't gotten to them yet!
 
 If you find these examples helpful and you haven't purchased the books, please consider doing so.
 
