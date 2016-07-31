@@ -15,11 +15,12 @@ class ViewController : UIViewController {
         case false:
             self.animate()
         case true:
-            let anim = UIViewPropertyAnimator(duration: 4, curve: .linear) {
+            let anim = UIViewPropertyAnimator(duration: 4, curve: .easeInOut) {}
+            anim.addAnimations {
                 self.animate()
             }
             anim.startAnimation()
-            delay(2) { // prove that we are pausable / reversible
+            delay(3) { // prove that we are pausable / reversible
                 anim.pauseAnimation()
                 anim.isReversed = true
                 anim.startAnimation()

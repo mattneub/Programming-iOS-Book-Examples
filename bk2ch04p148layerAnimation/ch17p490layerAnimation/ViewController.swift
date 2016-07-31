@@ -6,7 +6,7 @@ import UIKit
 class ViewController : UIViewController {
     @IBOutlet var compassView : CompassView!
     
-    let which = 10
+    let which = 5
 
     @IBAction func doButton(_ sender:AnyObject?) {
         let c = self.compassView.layer as! CompassLayer

@@ -5,6 +5,28 @@ func delay(_ delay:Double, closure:()->()) {
     DispatchQueue.main.after(when: when, execute: closure)
 }
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
 
 class ViewController : UIViewController {
     @IBOutlet var v : UIView!
@@ -97,7 +119,14 @@ class ViewController : UIViewController {
             self.anim.pauseAnimation()
             self.anim.isReversed = true
             self.anim.continueAnimation(withTimingParameters: UICubicTimingParameters(animationCurve:.easeOut), durationFactor: 0.1)
-        case 4:
+        case 4: // hurry to anywhere you like!
+            print("hurry to somewhere else")
+            self.anim.pauseAnimation()
+            self.anim.addAnimations {
+                self.v.center = CGPoint(-200,-200)
+            }
+            self.anim.continueAnimation(withTimingParameters: UICubicTimingParameters(animationCurve:.easeOut), durationFactor: 0.1)
+        case 5:
             self.anim.stopAnimation(false) // means allow me to finish
             self.anim.finishAnimation(at: .current)
         default: break

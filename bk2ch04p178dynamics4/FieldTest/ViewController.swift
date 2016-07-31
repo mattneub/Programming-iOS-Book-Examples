@@ -62,9 +62,9 @@ class ViewController: UIViewController {
             self.anim.addBehavior(f)
         }
         
-//        delay(0.3) {
-//            self.anim.perform(Selector("setDebugEnabled:"), with:true)
-//        }
+        delay(0.3) {
+            self.anim.perform(Selector("setDebugEnabled:"), with:true)
+        }
         
     }
     

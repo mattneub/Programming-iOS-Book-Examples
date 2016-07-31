@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func doSlider(_ slider: UISlider) {
-        anim.fractionComplete = CGFloat(slider.value)
+        self.anim.fractionComplete = CGFloat(slider.value)
     }
 
 }
