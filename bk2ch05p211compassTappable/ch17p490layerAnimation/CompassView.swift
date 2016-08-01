@@ -35,14 +35,14 @@ class CompassView : UIView {
         let p = t.location(ofTouch:0, in: self.superview)
         let hitLayer = self.layer.hitTest(p)
         let arrow = (self.layer as! CompassLayer).arrow!
-        if hitLayer == arrow {
+        if hitLayer == arrow { // respond to touch
             arrow.transform = CATransform3DRotate(
                 arrow.transform, .pi/4.0, 0, 0, 1)
         }
     }
 }
 
-class CompassLayer : CALayer {
+class CompassLayer : CALayer, CALayerDelegate {
     var arrow : CALayer!
     var rotationLayer : CALayer!
     var didSetup = false
@@ -141,7 +141,7 @@ class CompassLayer : CALayer {
 
     }
     
-    override func draw(_ layer: CALayer, in con: CGContext) {
+    func draw(_ layer: CALayer, in con: CGContext) {
         print("drawLayer:inContext: for arrow")
         
         // Questa poi la conosco pur troppo!

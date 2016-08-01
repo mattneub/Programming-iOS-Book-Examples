@@ -61,18 +61,16 @@ class MyView1 : UIView {
     }
 }
 
-class MyView2 : UIView {
+class MyView2Not : UIView {
     var time : TimeInterval!
-    var single = false
+
     
-    /*
-    
-    override func touchesBegan(_ touches: NSSet, with event: UIEvent) {
-        self.time = (touches.anyObject() as UITouch).timestamp
+    override func touchesBegan(_ touches: Set<UITouch>, with e: UIEvent?) {
+        self.time = touches.first!.timestamp
     }
     
-    override func touchesEnded(_ touches: NSSet, with event: UIEvent) {
-        let diff = event.timestamp - self.time
+    override func touchesEnded(_ touches: Set<UITouch>, with e: UIEvent?) {
+        let diff = e!.timestamp - self.time
         if (diff < 0.4) {
             print("short")
         } else {
@@ -80,7 +78,12 @@ class MyView2 : UIView {
         }
     }
 
-*/
+}
+
+class MyView2 : UIView {
+    var time : TimeInterval!
+    var single = false
+
     
     // see 54cf020903 for an earlier, overblown attempt using timer dispatch source
     // (because they can be cancelled, unlike dispatch_after)

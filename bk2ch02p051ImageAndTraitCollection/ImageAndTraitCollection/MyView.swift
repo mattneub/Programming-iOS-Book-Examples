@@ -15,7 +15,7 @@ class MyView: UIView {
             if let asset = self.image.imageAsset {
                 im = asset.image(with:self.traitCollection)
             }
-            im.draw(at:CGPoint.zero)
+            im.draw(at:.zero)
         }
     }
 }

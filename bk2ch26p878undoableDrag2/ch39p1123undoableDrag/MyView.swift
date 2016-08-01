@@ -52,7 +52,7 @@ class MyView : UIView {
             var c = self.center
             c.x += delta.x; c.y += delta.y
             self.setCenterUndoably(c) // *
-            p.setTranslation(CGPoint.zero, in: self.superview!)
+            p.setTranslation(.zero, in: self.superview!)
         case .ended, .cancelled:
             self.undoer.endUndoGrouping()
             self.becomeFirstResponder()

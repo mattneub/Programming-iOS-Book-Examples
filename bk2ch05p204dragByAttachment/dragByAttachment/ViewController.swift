@@ -28,21 +28,21 @@ class ViewController : UIViewController {
     var anim : UIDynamicAnimator!
     var att : UIAttachmentBehavior!
     
-    @IBAction func panning(_ g: UIPanGestureRecognizer) {
-        switch g.state {
+    @IBAction func dragging(_ p: UIPanGestureRecognizer) {
+        switch p.state {
         case .began:
             self.anim = UIDynamicAnimator(referenceView:self.view)
             self.anim.delegate = self
-            let loc = g.location(ofTouch:0, in:g.view)
-            let cen = CGPoint(g.view!.bounds.midX, g.view!.bounds.midY)
+            let loc = p.location(ofTouch:0, in:p.view)
+            let cen = CGPoint(p.view!.bounds.midX, p.view!.bounds.midY)
             let off = UIOffsetMake(loc.x-cen.x, loc.y-cen.y)
-            let anchor = g.location(ofTouch:0, in:self.view)
-            let att = UIAttachmentBehavior(item:g.view!,
+            let anchor = p.location(ofTouch:0, in:self.view)
+            let att = UIAttachmentBehavior(item:p.view!,
                 offsetFromCenter:off, attachedToAnchor:anchor)
             self.anim.addBehavior(att)
             self.att = att
         case .changed:
-            self.att.anchorPoint = g.location(ofTouch:0, in: self.view)
+            self.att.anchorPoint = p.location(ofTouch:0, in: self.view)
         default:
             print("done")
             self.anim = nil

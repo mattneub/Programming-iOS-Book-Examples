@@ -85,7 +85,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.tv.contentOffset = CGPoint.zero
+        self.tv.contentOffset = .zero
     }
 
     @IBAction func doTest(_ sender:AnyObject) {

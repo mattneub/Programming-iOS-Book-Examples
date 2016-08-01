@@ -22,7 +22,7 @@ class ViewController  : UIViewController {
     func longPress(_ lp:UILongPressGestureRecognizer) {
         switch lp.state {
         case .began:
-            let anim = CABasicAnimation(keyPath: "transform")
+            let anim = CABasicAnimation(keyPath: #keyPath(CALayer.transform))
             anim.toValue = NSValue(caTransform3D:CATransform3DMakeScale(1.1, 1.1, 1))
             anim.fromValue = NSValue(caTransform3D:CATransform3DIdentity)
             anim.repeatCount = Float.infinity
@@ -42,7 +42,7 @@ class ViewController  : UIViewController {
             var c = vv.center
             c.x += delta.x; c.y += delta.y
             vv.center = c
-            p.setTranslation(CGPoint.zero, in: vv.superview)
+            p.setTranslation(.zero, in: vv.superview)
         default: break
         }
     }
@@ -50,7 +50,6 @@ class ViewController  : UIViewController {
 
 extension ViewController : UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ g: UIGestureRecognizer) -> Bool {
-        // g is the pan gesture recognizer
         switch self.longPresser.state {
         case .possible, .failed:
             return false

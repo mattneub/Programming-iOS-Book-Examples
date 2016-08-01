@@ -18,7 +18,7 @@ class ViewController : UIViewController {
         self.v.addGestureRecognizer(t2)
         
         let t1 = UITapGestureRecognizer(target:self, action:#selector(singleTap))
-        t1.require(toFail:t2)
+        t1.require(toFail:t2) // *
         self.v.addGestureRecognizer(t1)
 
         switch which {
@@ -50,7 +50,7 @@ class ViewController : UIViewController {
             var c = v.center
             c.x += delta.x; c.y += delta.y
             v.center = c
-            p.setTranslation(CGPoint.zero, in: v.superview)
+            p.setTranslation(.zero, in: v.superview)
         default: break
         }
     }

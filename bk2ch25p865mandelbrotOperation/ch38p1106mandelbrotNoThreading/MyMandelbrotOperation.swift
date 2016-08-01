@@ -23,7 +23,7 @@ class MyMandelbrotOperation : Operation {
         bitmapBytesPerRow += (16 - (bitmapBytesPerRow % 16)) % 16
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let prem = CGImageAlphaInfo.premultipliedLast.rawValue
-        let context = CGContext(data: nil, width: Int(size.width), height: Int(size.height), bitsPerComponent: 8, bytesPerRow: bitmapBytesPerRow, space: colorSpace, bitmapInfo: prem, releaseCallback: nil, releaseInfo: nil)
+        let context = CGContext(data: nil, width: Int(size.width), height: Int(size.height), bitsPerComponent: 8, bytesPerRow: bitmapBytesPerRow, space: colorSpace, bitmapInfo: prem)
         self.bitmapContext = context
     }
     

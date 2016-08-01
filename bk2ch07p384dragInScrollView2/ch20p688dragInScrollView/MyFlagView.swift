@@ -45,14 +45,14 @@ class MyFlagView : UIImageView {
         //        UIGraphicsEndImageContext()
         
         let info = CGImageAlphaInfo.alphaOnly.rawValue
-        let pixel = UnsafeMutablePointer<CUnsignedChar>(allocatingCapacity:1)
+        let pixel = UnsafeMutablePointer<UInt8>(allocatingCapacity:1)
         defer {
             pixel.deinitialize(count: 1)
             pixel.deallocateCapacity(1)
         }
         pixel[0] = 0
         let sp = CGColorSpaceCreateDeviceGray()
-        let context = CGContext(data: pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 1, space: sp, bitmapInfo: info, releaseCallback: nil, releaseInfo: nil)!
+        let context = CGContext(data: pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 1, space: sp, bitmapInfo: info)!
         UIGraphicsPushContext(context)
         im.draw(at:CGPoint(-point.x, -point.y))
         UIGraphicsPopContext()

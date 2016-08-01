@@ -20,7 +20,7 @@ extension CGPoint {
 class ViewController : UIViewController {
     
     func mask(size sz:CGSize, roundingCorners rad:CGFloat) -> CALayer {
-        let rect = CGRect(origin:CGPoint.zero, size:sz)
+        let rect = CGRect(origin:.zero, size:sz)
         let r = UIGraphicsImageRenderer(bounds:rect)
         let im = r.image {
             ctx in

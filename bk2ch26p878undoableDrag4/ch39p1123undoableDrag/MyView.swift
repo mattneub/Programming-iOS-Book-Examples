@@ -49,7 +49,7 @@ class MyView : UIView {
             }
             registerForUndo()
             self.center = c // *
-            p.setTranslation(CGPoint.zero, in: self.superview!)
+            p.setTranslation(.zero, in: self.superview!)
         case .ended, .cancelled:
             self.undoer.endUndoGrouping()
             self.becomeFirstResponder()

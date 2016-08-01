@@ -30,7 +30,7 @@ class ViewController  : UIViewController {
             var c = vv.center
             c.x += delta.x; c.y += delta.y
             vv.center = c
-            p.setTranslation(CGPoint.zero, in: vv.superview)
+            p.setTranslation(.zero, in: vv.superview)
         default: break
         }
     }

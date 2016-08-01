@@ -24,7 +24,7 @@ class ViewController : UIViewController {
             let delta = p.translation(in:v.superview!)
             v.center.x += delta.x
             v.center.y += delta.y
-            p.setTranslation(CGPoint.zero, in: v.superview)
+            p.setTranslation(.zero, in: v.superview)
             if p.state == .changed {fallthrough} // comment out to prevent autoscroll
         case .changed:
             // autoscroll
