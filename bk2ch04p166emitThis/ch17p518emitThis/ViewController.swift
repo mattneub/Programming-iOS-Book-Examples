@@ -34,7 +34,7 @@ class ViewController : UIViewController {
         let im = r.image {
             ctx in let con = ctx.cgContext
             con.addEllipse(inRect:CGRect(0,0,10,10))
-            con.setFillColor(UIColor.gray().cgColor)
+            con.setFillColor(UIColor.gray.cgColor)
             con.fillPath()
         }
 
@@ -47,7 +47,7 @@ class ViewController : UIViewController {
 //        UIGraphicsEndImageContext()
         
         let cell = CAEmitterCell()
-        cell.contentsScale = UIScreen.main().scale // new in iOS 9
+        cell.contentsScale = UIScreen.main.scale // new in iOS 9
         cell.birthRate = 5
         cell.lifetime = 1
         cell.velocity = 100
@@ -78,7 +78,7 @@ class ViewController : UIViewController {
             cell.scaleRange = 0.2
             cell.scaleSpeed = 0.2
             
-            cell.color = UIColor.blue().cgColor
+            cell.color = UIColor.blue.cgColor
             cell.greenRange = 0.5
             cell.greenSpeed = 0.75
             

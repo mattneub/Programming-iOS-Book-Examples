@@ -14,13 +14,13 @@ class ViewController: UIViewController {
         let mainview = self.view!
         
         let v1 = UIView()
-        v1.backgroundColor = UIColor.red()
+        v1.backgroundColor = .red
         v1.translatesAutoresizingMaskIntoConstraints = false
         let v2 = UIView()
-        v2.backgroundColor = UIColor.yellow()
+        v2.backgroundColor = .yellow
         v2.translatesAutoresizingMaskIntoConstraints = false
         let v3 = UIView()
-        v3.backgroundColor = UIColor.blue()
+        v3.backgroundColor = .blue
         v3.translatesAutoresizingMaskIntoConstraints = false
         
         mainview.addSubview(v1)

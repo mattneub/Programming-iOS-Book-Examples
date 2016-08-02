@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         // hold my beer and watch this!
         
         do {
-            let tcdisp = UITraitCollection(displayScale: UIScreen.main().scale)
+            let tcdisp = UITraitCollection(displayScale: UIScreen.main.scale)
             let tcphone = UITraitCollection(userInterfaceIdiom: .phone)
             let tcreg = UITraitCollection(verticalSizeClass: .regular)
             let tc1 = UITraitCollection(traitsFrom: [tcdisp, tcphone, tcreg])

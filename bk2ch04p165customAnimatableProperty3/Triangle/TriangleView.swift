@@ -31,7 +31,7 @@ class TriangleView: UIView {
         lay.v1x = 0
         lay.v1y = 100
     }
-    override class func layerClass() -> AnyClass {
+    override class var layerClass : AnyClass {
         return TriangleLayer.self
     }
     override func draw(_ rect: CGRect) {}
@@ -46,7 +46,7 @@ class TriangleLayer : CALayer {
         con.moveTo(x: 0, y: 0)
         con.addLineTo(x: self.bounds.size.width, y: 0)
         con.addLineTo(x: self.v1x, y: self.v1y)
-        con.setFillColor(UIColor.blue().cgColor)
+        con.setFillColor(UIColor.blue.cgColor)
         con.fillPath()
         // println(self)
         // interesting, self is actually a different presentation layer per frame

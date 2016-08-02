@@ -4,7 +4,7 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 extension CGRect {
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         self.anim = UIDynamicAnimator(referenceView: self.view)
         
         let v = UIView(frame:CGRect(100,0,50,50))
-        v.backgroundColor = UIColor.black()
+        v.backgroundColor = UIColor.black
         self.view.addSubview(v)
         
         delay(1) {

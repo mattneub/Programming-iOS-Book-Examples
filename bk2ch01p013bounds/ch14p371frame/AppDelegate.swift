@@ -67,7 +67,7 @@ extension CGRect {
         
         
         
-        self.window!.backgroundColor = UIColor.white()
+        self.window!.backgroundColor = .white
         self.window!.makeKeyAndVisible()
         return true
     }

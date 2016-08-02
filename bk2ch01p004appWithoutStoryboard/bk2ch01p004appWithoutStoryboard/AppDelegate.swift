@@ -11,8 +11,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         -> Bool {
             self.window = UIWindow()
             self.window!.rootViewController = UIViewController()
-            self.window!.backgroundColor = UIColor.white()
-            self.window!.backgroundColor = UIColor.red() // prove it works
+            self.window!.backgroundColor = .white
+            self.window!.backgroundColor = .red // prove it works
             self.window!.makeKeyAndVisible()
             return true
     }

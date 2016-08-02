@@ -1,9 +1,10 @@
 
 
 import UIKit
+
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 extension UIView {
@@ -54,16 +55,16 @@ class ViewController: UIViewController {
             case 0:
                 UIView.beginAnimations(nil, context: nil)
                 UIView.setAnimationDuration(1)
-                self.v.backgroundColor = UIColor.red()
+                self.v.backgroundColor = .red
                 UIView.commitAnimations()
             case 1:
                 UIView.animate(withDuration:1) {
-                    self.v.backgroundColor = UIColor.red()
+                    self.v.backgroundColor = .red
                 }
             case 2:
                 let anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
                     print("starting the animation (not really)")
-                    self.v.backgroundColor = UIColor.red()
+                    self.v.backgroundColor = .red
                     print("ending the animation (not really)")
                 }
                 anim.startAnimation() // retains the animator, don't worry
@@ -76,14 +77,14 @@ class ViewController: UIViewController {
                 // startAnimation, as the logging here shows
             case 3:
                 let anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
-                    self.v.backgroundColor = UIColor.red()
+                    self.v.backgroundColor = .red
                     self.v.center.y += 100
                 }
                 anim.startAnimation()
             case 4:
                 let anim = UIViewPropertyAnimator(duration: 1, timingParameters: UICubicTimingParameters(animationCurve:.linear))
                 anim.addAnimations {
-                    self.v.backgroundColor = UIColor.red()
+                    self.v.backgroundColor = .red
                 }
                 anim.addAnimations {
                     self.v.center.y += 100
@@ -91,7 +92,7 @@ class ViewController: UIViewController {
                 anim.startAnimation()
             case 5:
                 let v2 = UIView()
-                v2.backgroundColor = .black()
+                v2.backgroundColor = .black
                 v2.alpha = 0
                 v2.frame = self.v.frame
                 self.v.superview!.addSubview(v2)
@@ -113,7 +114,7 @@ class ViewController: UIViewController {
                 }
             case 7:
                 let anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
-                    self.v.backgroundColor = UIColor.red()
+                    self.v.backgroundColor = .red
                     UIView.performWithoutAnimation {
                         self.v.center.y += 100
                     }

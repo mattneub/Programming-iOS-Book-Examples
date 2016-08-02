@@ -52,9 +52,9 @@ class MyView : UIView {
             ctx in let con = ctx.cgContext
             let r = self.bounds.insetBy(dx: 30, dy: 30)
             con.saveGState()
-            con.translate(x: self.bounds.width/2.0, y: self.bounds.height/2.0)
-            con.rotate(byAngle: .pi/10.0)
-            con.translate(x: -self.bounds.size.width/2.0, y: -self.bounds.size.height/2.0)
+            con.translateBy(x: self.bounds.width/2.0, y: self.bounds.height/2.0)
+            con.rotate(by: .pi/10.0)
+            con.translateBy(x: -self.bounds.size.width/2.0, y: -self.bounds.size.height/2.0)
             con.fillEllipse(in:r)
             con.restoreGState()
         }
@@ -74,10 +74,10 @@ class MyView : UIView {
         }
         
         let info = CGImageAlphaInfo.alphaOnly.rawValue
-        let pixel = UnsafeMutablePointer<UInt8>(allocatingCapacity:1)
+        let pixel = UnsafeMutablePointer<UInt8>.allocate(capacity:1)
         defer {
             pixel.deinitialize(count: 1)
-            pixel.deallocateCapacity(1)
+            pixel.deallocate(capacity:1)
         }
         pixel[0] = 0
         let sp = CGColorSpaceCreateDeviceGray()

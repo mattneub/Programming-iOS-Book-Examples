@@ -15,8 +15,8 @@ class ViewController: UIViewController {
         shape.frame = v.bounds
         v.layer.addSublayer(shape)
         
-        shape.fillColor = UIColor.clear().cgColor
-        shape.strokeColor = UIColor.red().cgColor
+        shape.fillColor = UIColor.clear.cgColor
+        shape.strokeColor = UIColor.red.cgColor
         
         let path = CGPath(rect:shape.bounds, transform:nil)
         shape.path = path

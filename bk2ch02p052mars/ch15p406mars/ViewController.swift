@@ -5,9 +5,10 @@ extension CGRect {
         return CGPoint(x:self.midX, y:self.midY)
     }
 }
+
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 
@@ -33,14 +34,14 @@ class ViewController : UIViewController {
 //        println(iv.contentMode.rawValue)
         
         // just to clarify boundaries of image view
-        iv.layer.borderColor = UIColor.black().cgColor
+        iv.layer.borderColor = UIColor.black.cgColor
         iv.layer.borderWidth = 2
         
         switch which {
         case 1:
             // position using autoresizing-type behavior
             iv.center = iv.superview!.bounds.center // see above
-            iv.frame.makeIntegralInPlace()
+            iv.frame = iv.frame.integral
         case 2:
             // position using constraints
             iv.translatesAutoresizingMaskIntoConstraints = false

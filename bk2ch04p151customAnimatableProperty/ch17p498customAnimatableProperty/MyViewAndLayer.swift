@@ -4,7 +4,7 @@ import UIKit
 
 
 class MyView : UIView { // exists purely to host MyLayer
-    override class func layerClass() -> AnyClass {
+    override class var layerClass : AnyClass {
         return MyLayer.self
     }
     override func draw(_ rect: CGRect) {} // so that layer will draw itself
@@ -23,7 +23,7 @@ class MyLayer : CALayer {
     
     override func draw(in con: CGContext) {
         let r = self.bounds.insetBy(dx:20, dy:20)
-        con.setFillColor(UIColor.red().cgColor)
+        con.setFillColor(UIColor.red.cgColor)
         con.fill(r)
         con.setLineWidth(self.thickness)
         con.stroke(r)

@@ -78,9 +78,9 @@ class MyView : UIView {
         let stripes = r.image {
             ctx in
             let imcon = ctx.cgContext
-            imcon.setFillColor(UIColor.red().cgColor)
+            imcon.setFillColor(UIColor.red.cgColor)
             imcon.fill(CGRect(0,0,4,4))
-            imcon.setFillColor(UIColor.blue().cgColor)
+            imcon.setFillColor(UIColor.blue.cgColor)
             imcon.fill(CGRect(0,0,4,2))
         }
         
@@ -108,9 +108,9 @@ class MyView : UIView {
             let con = UIGraphicsGetCurrentContext()!
             self.arrow.draw(at:CGPoint(0,0))
             for _ in 0..<3 {
-                con.translate(x: 20, y: 100)
-                con.rotate(byAngle: 30 * .pi/180.0)
-                con.translate(x: -20, y: -100)
+                con.translateBy(x: 20, y: 100)
+                con.rotate(by: 30 * .pi/180.0)
+                con.translateBy(x: -20, y: -100)
                 self.arrow.draw(at:CGPoint(0,0))
             }
             
@@ -120,9 +120,9 @@ class MyView : UIView {
             
             self.arrow.draw(at:CGPoint(0,0))
             for _ in 0..<3 {
-                con.translate(x: 20, y: 100)
-                con.rotate(byAngle: 30 * .pi/180.0)
-                con.translate(x: -20, y: -100)
+                con.translateBy(x: 20, y: 100)
+                con.rotate(by: 30 * .pi/180.0)
+                con.translateBy(x: -20, y: -100)
                 self.arrow.draw(at:CGPoint(0,0))
             }
             
@@ -133,9 +133,9 @@ class MyView : UIView {
             con.beginTransparencyLayer(auxiliaryInfo: nil)
             self.arrow.draw(at:CGPoint(0,0))
             for _ in 0..<3 {
-                con.translate(x: 20, y: 100)
-                con.rotate(byAngle: 30 * .pi/180.0)
-                con.translate(x: -20, y: -100)
+                con.translateBy(x: 20, y: 100)
+                con.rotate(by: 30 * .pi/180.0)
+                con.translateBy(x: -20, y: -100)
                 self.arrow.draw(at:CGPoint(0,0))
             }
             con.endTransparencyLayer()

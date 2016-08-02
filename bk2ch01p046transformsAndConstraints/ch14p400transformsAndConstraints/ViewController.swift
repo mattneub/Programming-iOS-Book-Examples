@@ -36,7 +36,7 @@ class ViewController : UIViewController {
     
     func grow(_ v:UIView) {
         print("grow \(v)")
-        v.transform = v.transform.scaleBy(x: 1.2, y:1.2)
+        v.transform = v.transform.scaledBy(x: 1.2, y:1.2)
         
     }
     

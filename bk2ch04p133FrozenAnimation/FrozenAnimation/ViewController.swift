@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         
         self.anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
             self.v.center.x = self.pTarget.x
-            self.v.backgroundColor = .green()
+            self.v.backgroundColor = .green
         }
 
     }

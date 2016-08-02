@@ -8,7 +8,7 @@ class ViewController : UIViewController {
     @discardableResult
     func makeLayerOfClass(_ klass:CALayer.Type, andAddToView ix:Int) -> CALayer {
         let lay = klass.init()
-        lay.contentsScale = UIScreen.main().scale
+        lay.contentsScale = UIScreen.main.scale
         //    lay.contentsGravity = kCAGravityBottom
         //    lay.contentsRect = CGRect(0.2,0.2,0.5,0.5)
         //    lay.contentsCenter = CGRect(0.0, 0.4, 1.0, 0.6)
@@ -25,7 +25,7 @@ class ViewController : UIViewController {
         tlay.string = "\(ix)"
         tlay.fontSize = 30
         tlay.alignmentMode = kCAAlignmentCenter
-        tlay.foregroundColor = UIColor.green().cgColor
+        tlay.foregroundColor = UIColor.green.cgColor
         
         return lay;
     }

@@ -17,7 +17,7 @@ class ViewController : UIViewController {
         self.moiextent = moi.extent
         
         let col = CIFilter(name:"CIConstantColorGenerator")!
-        let cicol = CIColor(color:UIColor.red())
+        let cicol = CIColor(color:.red)
         col.setValue(cicol, forKey:"inputColor")
         let colorimage = col.value(forKey:"outputImage") as! CIImage
         

@@ -2,7 +2,7 @@
 import UIKit
 
 class ViewController : UIViewController {
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     

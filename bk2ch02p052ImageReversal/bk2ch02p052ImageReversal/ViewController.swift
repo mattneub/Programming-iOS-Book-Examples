@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         print(v4.traitCollection.layoutDirection.rawValue)
         
         print("user interface layout directions")
-        let appdir = UIApplication.shared().userInterfaceLayoutDirection
+        let appdir = UIApplication.shared.userInterfaceLayoutDirection
         print(appdir.rawValue)
         print(v1.effectiveUserInterfaceLayoutDirection.rawValue)
         print(v2.effectiveUserInterfaceLayoutDirection.rawValue)

@@ -34,9 +34,9 @@ class MyWagglePositionAction : NSObject, CAAction {
     func run(forKey event: String, object anObject: AnyObject,
         arguments dict: [NSObject : AnyObject]?) {
             let lay = anObject as! CALayer
-            let newP = (lay.value(forKey:event) as! NSValue).cgPointValue()
+            let newP = (lay.value(forKey:event) as! NSValue).cgPointValue
             let val = lay.presentation()!.value(forKey:event) as! NSValue
-            let oldP = val.cgPointValue()
+            let oldP = val.cgPointValue
 
             let d = sqrt(pow(oldP.x - newP.x, 2) + pow(oldP.y - newP.y, 2))
             let r = Double(d/3.0)

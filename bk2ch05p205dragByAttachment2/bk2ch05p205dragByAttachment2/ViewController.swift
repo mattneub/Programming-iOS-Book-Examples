@@ -85,7 +85,7 @@ class ViewController: UIViewController, UIDynamicAnimatorDelegate {
             
             // and when we're all done...
             self.anim.delegate = self
-            UIApplication.shared().beginIgnoringInteractionEvents()
+            UIApplication.shared.beginIgnoringInteractionEvents()
             
         default:break
         }
@@ -93,7 +93,7 @@ class ViewController: UIViewController, UIDynamicAnimatorDelegate {
     
     func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
         // ...clean everything up, restore original layout
-        UIApplication.shared().endIgnoringInteractionEvents()
+        UIApplication.shared.endIgnoringInteractionEvents()
         self.anim = nil
         self.redView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(self.constraints)

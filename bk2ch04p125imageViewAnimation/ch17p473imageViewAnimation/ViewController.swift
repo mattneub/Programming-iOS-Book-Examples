@@ -2,7 +2,7 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 extension CGRect {
@@ -65,7 +65,7 @@ class ViewController : UIViewController {
                 arr += [r.image {
                     ctx in
                     let con = ctx.cgContext
-                    con.setFillColor(UIColor.red().cgColor)
+                    con.setFillColor(UIColor.red.cgColor)
                     let ii = CGFloat(i)
                     con.addEllipse(inRect:CGRect(0+ii,0+ii,w-ii*2,w-ii*2))
                     con.fillPath()

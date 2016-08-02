@@ -49,7 +49,7 @@ class MyView : UIView {
             con.strokePath()
             
             // draw a red triangle, the point of the arrow
-            con.setFillColor(UIColor.red().cgColor)
+            con.setFillColor(UIColor.red.cgColor)
             con.moveTo(x:80, y: 25)
             con.addLineTo(x:100, y: 0)
             con.addLineTo(x:120, y: 25)
@@ -70,7 +70,7 @@ class MyView : UIView {
             p.lineWidth = 20
             p.stroke()
             // point
-            UIColor.red().set()
+            UIColor.red.set()
             p.removeAllPoints()
             p.move(to:CGPoint(80,25))
             p.addLine(to:CGPoint(100, 0))
@@ -103,7 +103,7 @@ class MyView : UIView {
             con.strokePath()
             
             // draw the red triangle, the point of the arrow
-            con.setFillColor(UIColor.red().cgColor)
+            con.setFillColor(UIColor.red.cgColor)
             con.moveTo(x: 80, y: 25)
             con.addLineTo(x: 100, y: 0)
             con.addLineTo(x: 120, y: 25)
@@ -145,7 +145,7 @@ class MyView : UIView {
             con.restoreGState() // done clipping
             
             // draw the red triangle, the point of the arrow
-            con.setFillColor(UIColor.red().cgColor)
+            con.setFillColor(UIColor.red.cgColor)
             con.moveTo(x: 80, y: 25)
             con.addLineTo(x: 100, y: 0)
             con.addLineTo(x: 120, y: 25)
@@ -190,9 +190,9 @@ class MyView : UIView {
             let stripes = r.image {
                 ctx in
                 let imcon = ctx.cgContext
-                imcon.setFillColor(UIColor.red().cgColor)
+                imcon.setFillColor(UIColor.red.cgColor)
                 imcon.fill(CGRect(0,0,4,4))
-                imcon.setFillColor(UIColor.blue().cgColor)
+                imcon.setFillColor(UIColor.blue.cgColor)
                 imcon.fill(CGRect(0,0,4,2))
             }
             
@@ -255,9 +255,9 @@ class MyView : UIView {
             // hooray for Swift 2.0!
             let drawStripes : CGPatternDrawPatternCallback = {
                 _, con in
-                con.setFillColor(UIColor.red().cgColor)
+                con.setFillColor(UIColor.red.cgColor)
                 con.fill(CGRect(0,0,4,4))
-                con.setFillColor(UIColor.blue().cgColor)
+                con.setFillColor(UIColor.blue.cgColor)
                 con.fill(CGRect(0,0,4,2))
             }
             var callbacks = CGPatternCallbacks(

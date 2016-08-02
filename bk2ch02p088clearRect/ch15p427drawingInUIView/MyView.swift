@@ -23,7 +23,7 @@ class MyView : UIView {
     override init (frame:CGRect) {
         super.init(frame:frame)
         self.isOpaque = false
-        self.backgroundColor = UIColor.red()
+        self.backgroundColor = .red
         // clearRect will cause a black square
         self.backgroundColor = self.backgroundColor!.withAlphaComponent(1)
         // but uncomment the next line: clearRect will cause a clear square!
@@ -38,7 +38,7 @@ class MyView : UIView {
     
     override func draw(_ rect: CGRect) {
         let con = UIGraphicsGetCurrentContext()!
-        con.setFillColor(UIColor.blue().cgColor)
+        con.setFillColor(UIColor.blue.cgColor)
         con.fill(rect)
         con.clear(CGRect(0,0,30,30))
 

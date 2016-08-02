@@ -48,8 +48,10 @@ protocol Generic {
     associatedtype U : Dog, Flier // legal: this is basically an inheritance declaration!
 }
 func flyAndWalk<T> (_ f:T) where T:Walker, T:Flier {}
+func flyAndWalkBis<T> (_ f:T) where T:Walker & Flier {}
 func flyAndWalk2<T : Walker & Flier> (_ f:T) {}
 func flyAndWalk3<T> (_ f:T) where T:Flier, T:Dog {}
+// func flyAndWalk3Bis<T> (_ f:T) where T:Flier & Dog {} // no, not two protocols
 // func flyAndWalk4<T where T == Dog> (f:T) {}
 
 struct Bird : Flier, Walker {}

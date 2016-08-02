@@ -20,7 +20,7 @@ class ViewController : UIViewController {
             options:.beginFromCurrentState,
             animations: {
                 if let val = self.v.layer.value(forKey:"pOrig") as? NSValue {
-                    self.v.center = val.cgPointValue()
+                    self.v.center = val.cgPointValue
                 }
             })
     }

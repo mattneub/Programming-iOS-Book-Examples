@@ -4,7 +4,7 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 extension CGRect {
@@ -68,13 +68,13 @@ class ViewController: UIViewController {
         self.anim = UIDynamicAnimator(referenceView: self.view)
         
         let v = UIView(frame:CGRect(0,0,50,50))
-        v.backgroundColor = .black()
+        v.backgroundColor = .black
         self.view.addSubview(v)
         
         switch which {
         case 1:
             let v2 = UIView(frame:CGRect(200,0,50,50))
-            v2.backgroundColor = .red()
+            v2.backgroundColor = .red
             self.view.addSubview(v2)
             
             let a = UIAttachmentBehavior.slidingAttachment(with:v, attachedTo: v2, attachmentAnchor: CGPoint(125,25), axisOfTranslation: CGVector(0,1))
@@ -99,7 +99,7 @@ class ViewController: UIViewController {
             self.anim.addBehavior(p)
         case 3:
             let v2 = UIView(frame:CGRect(200,0,50,50))
-            v2.backgroundColor = UIColor.red()
+            v2.backgroundColor = UIColor.red
             self.view.addSubview(v2)
             
             let anch = UIDynamicItemBehavior(items: [v2])

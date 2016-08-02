@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         let mainview = self.view!
         
         let v = UIView()
-        v.backgroundColor = UIColor.red()
+        v.backgroundColor = .red
         v.translatesAutoresizingMaskIntoConstraints = false
         
         mainview.addSubview(v)
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         v.preservesSuperviewLayoutMargins = true
         
         let v1 = UIView()
-        v1.backgroundColor = UIColor.green()
+        v1.backgroundColor = .green
         v1.translatesAutoresizingMaskIntoConstraints = false
         v.addSubview(v1)
 

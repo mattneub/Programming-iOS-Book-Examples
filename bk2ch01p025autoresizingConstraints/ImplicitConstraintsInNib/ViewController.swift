@@ -4,7 +4,7 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 
@@ -33,10 +33,10 @@ extension NSLayoutConstraint {
     class func reportAmbiguity (_ v:UIView?) {
         var v = v
         if v == nil {
-            v = UIApplication.shared().keyWindow
+            v = UIApplication.shared.keyWindow
         }
         for vv in v!.subviews {
-            print("\(vv) \(vv.hasAmbiguousLayout())")
+            print("\(vv) \(vv.hasAmbiguousLayout)")
             if vv.subviews.count > 0 {
                 self.reportAmbiguity(vv)
             }
@@ -45,7 +45,7 @@ extension NSLayoutConstraint {
     class func listConstraints (_ v:UIView?) {
         var v = v
         if v == nil {
-            v = UIApplication.shared().keyWindow
+            v = UIApplication.shared.keyWindow
         }
         for vv in v!.subviews {
             let arr1 = vv.constraintsAffectingLayout(for:.horizontal)
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
     weak var lab1: UILabel!
     weak var lab2: UILabel!
 
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         return .allButUpsideDown
     }
         

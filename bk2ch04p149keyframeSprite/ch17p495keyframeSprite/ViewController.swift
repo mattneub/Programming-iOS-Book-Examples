@@ -40,7 +40,7 @@ class ViewController : UIViewController {
         
         self.sprite = CALayer()
         self.sprite.frame = CGRect(30,30,24,24)
-        self.sprite.contentsScale = UIScreen.main().scale
+        self.sprite.contentsScale = UIScreen.main.scale
         self.view.layer.addSublayer(self.sprite)
         self.sprite.contents = self.images[0].cgImage
         

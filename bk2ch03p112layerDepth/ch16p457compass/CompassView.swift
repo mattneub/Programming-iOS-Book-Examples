@@ -4,8 +4,9 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
+
 
 extension CGRect {
     var center : CGPoint {
@@ -33,7 +34,7 @@ extension CGPoint {
 
 // view exists solely to host layer
 class CompassView : UIView {
-    override class func layerClass() -> AnyClass {
+    override class var layerClass : AnyClass {
         return CompassLayer.self
     }
 }
@@ -81,21 +82,21 @@ class CompassLayer : CALayer, CALayerDelegate {
         
         // the gradient
         let g = CAGradientLayer()
-        g.contentsScale = UIScreen.main().scale
+        g.contentsScale = UIScreen.main.scale
         g.frame = self.bounds
         g.colors = [
-            UIColor.black().cgColor,
-            UIColor.red().cgColor
+            UIColor.black.cgColor,
+            UIColor.red.cgColor
             ]
         g.locations = [0.0,1.0]
         self.addSublayer(g)
 
         // the circle
         let circle = CAShapeLayer()
-        circle.contentsScale = UIScreen.main().scale
+        circle.contentsScale = UIScreen.main.scale
         circle.lineWidth = 2.0
         circle.fillColor = UIColor(red:0.9, green:0.95, blue:0.93, alpha:0.9).cgColor
-        circle.strokeColor = UIColor.gray().cgColor
+        circle.strokeColor = UIColor.gray.cgColor
         let p = CGMutablePath()
         p.addEllipseIn(nil, rect: self.bounds.insetBy(dx: 3, dy: 3))
         circle.path = p
@@ -107,7 +108,7 @@ class CompassLayer : CALayer, CALayerDelegate {
         let pts = "NESW"
         for (ix,c) in pts.characters.enumerated() {
             let t = CATextLayer()
-            t.contentsScale = UIScreen.main().scale
+            t.contentsScale = UIScreen.main.scale
             t.string = String(c)
             t.bounds = CGRect(0,0,40,40)
             t.position = circle.bounds.center
@@ -115,7 +116,7 @@ class CompassLayer : CALayer, CALayerDelegate {
             t.anchorPoint = CGPoint(0.5, vert)
             //print(t.anchorPoint)
             t.alignmentMode = kCAAlignmentCenter
-            t.foregroundColor = UIColor.black().cgColor
+            t.foregroundColor = UIColor.black.cgColor
             t.setAffineTransform(CGAffineTransform(rotationAngle:CGFloat(ix) * .pi/2.0))
             circle.addSublayer(t)
         }
@@ -123,7 +124,7 @@ class CompassLayer : CALayer, CALayerDelegate {
         
         // the arrow
         let arrow = CALayer()
-        arrow.contentsScale = UIScreen.main().scale
+        arrow.contentsScale = UIScreen.main.scale
         arrow.bounds = CGRect(0, 0, 40, 100)
         arrow.position = self.bounds.center
         arrow.anchorPoint = CGPoint(0.5, 0.8)
@@ -162,9 +163,9 @@ class CompassLayer : CALayer, CALayerDelegate {
         let stripes = r.image {
             ctx in
             let imcon = ctx.cgContext
-            imcon.setFillColor(UIColor.red().cgColor)
+            imcon.setFillColor(UIColor.red.cgColor)
             imcon.fill(CGRect(0,0,4,4))
-            imcon.setFillColor(UIColor.blue().cgColor)
+            imcon.setFillColor(UIColor.blue.cgColor)
             imcon.fill(CGRect(0,0,4,2))
         }
         

@@ -8,8 +8,8 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         
         
-        if let window = UIApplication.shared().delegate!.window! {
-            window.tintColor = UIColor.red()
+        if let window = UIApplication.shared.delegate!.window! {
+            window.tintColor = UIColor.red
         }
         
         let im = UIImage(named:"Smiley")!.withRenderingMode(.alwaysTemplate)
@@ -60,7 +60,7 @@ class ViewController : UIViewController {
         // (also the top and bottom used to be reversed)
         
         print(im4.alignmentRectInsets)
-        print(iv2.alignmentRectInsets())
+        print(iv2.alignmentRectInsets)
         
         /*
         let im5 = UIImage(named:"smiley2")!

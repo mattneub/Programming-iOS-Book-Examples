@@ -3,8 +3,9 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
+
 
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
@@ -47,11 +48,11 @@ class ViewController : UIViewController {
         
         let lay2 = CALayer()
         lay2.frame = f
-        lay2.backgroundColor = UIColor.blue().cgColor
+        lay2.backgroundColor = UIColor.blue.cgColor
         lay1.addSublayer(lay2)
         let lay3 = CALayer()
         lay3.frame = f.offsetBy(dx: 20, dy: 30)
-        lay3.backgroundColor = UIColor.green().cgColor
+        lay3.backgroundColor = UIColor.green.cgColor
         lay3.zPosition = 10
         lay1.addSublayer(lay3)
 

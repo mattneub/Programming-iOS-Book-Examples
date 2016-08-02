@@ -51,7 +51,7 @@ extension CGRect {
             mainview.addSubview(v1)
             v1.addSubview(v2)
             
-            v2.transform = CGAffineTransform(translationX:100, y:0).rotate(45 * .pi/180)
+            v2.transform = CGAffineTransform(translationX:100, y:0).rotated(by: 45 * .pi/180)
             
         case 4:
             let v1 = UIView(frame:CGRect(20, 111, 132, 194))
@@ -61,7 +61,7 @@ extension CGRect {
             mainview.addSubview(v1)
             v1.addSubview(v2)
             
-            v2.transform = CGAffineTransform(rotationAngle:45 * .pi/180).translateBy(x: 100, y: 0)
+            v2.transform = CGAffineTransform(rotationAngle:45 * .pi/180).translatedBy(x: 100, y: 0)
             
         case 5: // same as case 4 but using concat
             let v1 = UIView(frame:CGRect(20, 111, 132, 194))
@@ -73,7 +73,7 @@ extension CGRect {
             
             let r = CGAffineTransform(rotationAngle:45 * .pi/180)
             let t = CGAffineTransform(translationX:100, y:0)
-            v2.transform = t.concat(r) // not r.concat(t)
+            v2.transform = t.concatenating(r) // not r.concat(t)
             
         case 6:
             let v1 = UIView(frame:CGRect(20, 111, 132, 194))
@@ -85,8 +85,8 @@ extension CGRect {
 
             let r = CGAffineTransform(rotationAngle:45 * .pi/180)
             let t = CGAffineTransform(translationX:100, y:0)
-            v2.transform = t.concat(r)
-            v2.transform = r.invert().concat(v2.transform)
+            v2.transform = t.concatenating(r)
+            v2.transform = r.inverted().concatenating(v2.transform)
             
         case 7:
             let v1 = UIView(frame:CGRect(113, 111, 132, 194))
@@ -103,7 +103,7 @@ extension CGRect {
         
         
         
-        self.window!.backgroundColor = UIColor.white()
+        self.window!.backgroundColor = .white
         self.window!.makeKeyAndVisible()
         return true
     }

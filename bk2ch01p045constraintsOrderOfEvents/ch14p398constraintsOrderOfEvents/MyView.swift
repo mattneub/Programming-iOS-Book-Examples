@@ -14,10 +14,10 @@ class MyView: UIView {
     @IBInspectable var myString : String = "howdy"
     @IBInspectable var myInt : Int? = 1
     @IBInspectable var myDouble : Double? = 1
-    @IBInspectable var myRect : CGRect? = CGRect.zero
-    @IBInspectable var myPoint : CGPoint? = CGPoint.zero
-    @IBInspectable var mySize : CGSize? = CGSize.zero
-    @IBInspectable var myColor : UIColor? = UIColor.red()
+    @IBInspectable var myRect : CGRect? = .zero
+    @IBInspectable var myPoint : CGPoint? = .zero
+    @IBInspectable var mySize : CGSize? = .zero
+    @IBInspectable var myColor : UIColor? = .red
     @IBInspectable var myImage : UIImage?
 //    @IBInspectable var myRange : Range<Int>? = 1...3 // nope
 //    @IBInspectable var someView : UIView? // nope
@@ -53,7 +53,7 @@ class MyView: UIView {
 //        print("old: \(previousTraitCollection ?? none)\n")
     }
     
-    override class func layerClass() -> AnyClass {
+    override class var layerClass : AnyClass {
         return MyLoggingLayer.self
     }
 }
