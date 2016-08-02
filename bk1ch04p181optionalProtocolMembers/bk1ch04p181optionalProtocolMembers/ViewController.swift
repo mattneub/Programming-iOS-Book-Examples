@@ -33,7 +33,7 @@ final class Bird3 : Flier2 {
     init() {}
 }
 
-struct Nest : IntegerLiteralConvertible {
+struct Nest : ExpressibleByIntegerLiteral {
     var eggCount : Int = 0
     init() {}
     init(integerLiteral val: Int) {

@@ -144,10 +144,10 @@ class ViewController: UIViewController {
         do {
             UIGraphicsBeginImageContext(CGSize(width:200,height:200))
             let c = UIGraphicsGetCurrentContext()!
-            let arr = UnsafeMutablePointer<CGPoint>(allocatingCapacity:4)
+            let arr = UnsafeMutablePointer<CGPoint>.allocate(capacity:4)
             defer {
                 arr.deinitialize()
-                arr.deallocateCapacity(4)
+                arr.deallocate(capacity:4)
             }
             arr[0] = CGPoint(x:0,y:0)
             arr[1] = CGPoint(x:50,y:50)
@@ -161,7 +161,7 @@ class ViewController: UIViewController {
         
         do {
             let col = UIColor(red: 0.5, green: 0.6, blue: 0.7, alpha: 1.0)
-            if let comp = col.cgColor.components, // * now Optional
+            if let comp = col.cgColor.__unsafeComponents, // *
                 let sp = col.cgColor.colorSpace,
                 sp.model == .RGB {
                 let red = comp[0]
@@ -180,13 +180,13 @@ class ViewController: UIViewController {
             let myRect = CGRect(x: 10, y: 10, width: 100, height: 100)
             var arrow = CGRect.zero
             var body = CGRect.zero
-            myRect.divide(
-                slice: &arrow, remainder: &body, amount: Arrow.ARHEIGHT, edge: .minYEdge)
+            myRect.divided(
+                slice: &arrow, remainder: &body, atDistance: Arrow.ARHEIGHT, from: .minYEdge)
 
         }
         
         if false {
-            let sndurl = Bundle.main.urlForResource("test", withExtension: "aif")!
+            let sndurl = Bundle.main.url(forResource:"test", withExtension: "aif")!
             var snd : SystemSoundID = 0
             AudioServicesCreateSystemSoundID(sndurl, &snd)
         }
@@ -259,9 +259,9 @@ class ViewController: UIViewController {
         do {
             let grad = CAGradientLayer()
             grad.colors = [
-                UIColor.lightGray().cgColor,
-                UIColor.lightGray().cgColor,
-                UIColor.blue().cgColor
+                UIColor.lightGray.cgColor,
+                UIColor.lightGray.cgColor,
+                UIColor.blue.cgColor
             ]
 
         }

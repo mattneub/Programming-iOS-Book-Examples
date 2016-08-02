@@ -11,7 +11,7 @@ protocol ColorPickerDelegate : class {
 
 class ColorPickerController : UIViewController {
     weak var delegate: ColorPickerDelegate?
-    var color = UIColor.red()
+    var color = UIColor.red
     var colorName : String
     
     init(colorName:String, color:UIColor) {
@@ -23,7 +23,7 @@ class ColorPickerController : UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         return .portrait
     }
 

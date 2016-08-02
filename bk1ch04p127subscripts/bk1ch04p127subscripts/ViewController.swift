@@ -61,12 +61,12 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let app = UIApplication.shared()
+        let app = UIApplication.shared
         let window = app.keyWindow
         let vc = window?.rootViewController
         print(vc)
         
-        let vc2 = UIApplication.shared().keyWindow?.rootViewController
+        let vc2 = UIApplication.shared.keyWindow?.rootViewController
         print(vc2)
 
 

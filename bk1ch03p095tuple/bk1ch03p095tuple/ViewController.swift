@@ -98,7 +98,7 @@ class ViewController: UIViewController {
         
         do {
             func tupleMaker() -> (first:Int, second:String) {
-                return (1, "Two")
+                return (1, "Two") // no labels here
             }
             let ix = tupleMaker().first // 1
             print(ix)

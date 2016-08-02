@@ -22,8 +22,8 @@ class ViewController: UIViewController {
     lazy var prog : UIProgressView = {
         let p = UIProgressView(progressViewStyle: .default)
         p.alpha = 0.7
-        p.trackTintColor = UIColor.clear()
-        p.progressTintColor = UIColor.black()
+        p.trackTintColor = UIColor.clear
+        p.progressTintColor = UIColor.black
         p.frame = CGRect(x:0, y:0, width:self.view.bounds.size.width, height:20)
         p.progress = 1.0
         return p

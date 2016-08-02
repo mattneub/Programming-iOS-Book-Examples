@@ -55,8 +55,8 @@ class ViewController: UIViewController {
         cell.accessoryType =
             ix.row == self.currow ? .checkmark : .disclosureIndicator
 
-        let purple = UIColor.purple()
-        let beige = UIColor.brown()
+        let purple = UIColor.purple
+        let beige = UIColor.brown
         UIGraphicsBeginImageContext(CGSize(width:10,height:10))
         let context = UIGraphicsGetCurrentContext()!
         context.setFillColor(self.hilite ? purple.cgColor : beige.cgColor)

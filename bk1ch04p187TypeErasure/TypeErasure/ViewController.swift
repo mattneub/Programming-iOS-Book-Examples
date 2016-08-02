@@ -35,7 +35,7 @@ struct FlierStruct1<T> {
 }
 
 struct FlierStruct2<T> {
-    init<FlierAdopter:Flier where T == FlierAdopter.Other>(_ flierAdopter:FlierAdopter) {
+    init<FlierAdopter:Flier>(_ flierAdopter:FlierAdopter) where T == FlierAdopter.Other {
     }
 }
 
@@ -46,7 +46,7 @@ struct FlierStruct<T>:Flier {
     // but we _can_ store a function reference taken from the init parameter Flier!
 
     let flockFunction : (T) -> ()
-    init<FlierAdopter : Flier where FlierAdopter.Other == T>(_ flierAdopter:FlierAdopter) {
+    init<FlierAdopter : Flier>(_ flierAdopter:FlierAdopter) where FlierAdopter.Other == T {
         self.flockFunction = flierAdopter.flockTogetherWith
     }
     func flockTogetherWith(_ other:T) {
@@ -113,7 +113,7 @@ class ViewController: UIViewController {
             let arrayOfInt = [4,5,6]
             // let arrr : [SequenceType] = [rangeOfInt, arrayOfInt]
             let arr = [AnySequence(rangeOfInt), AnySequence(arrayOfInt)]
-            let sums = arr.map {$0.reduce(0,combine:+)}
+            let sums = arr.map {$0.reduce(0,+)}
             print(sums)
         }
     

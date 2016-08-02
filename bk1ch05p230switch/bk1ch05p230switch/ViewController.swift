@@ -16,13 +16,13 @@ enum Filter : CustomStringConvertible {
     case books
     var description : String {
         switch self {
-        case albums:
+        case .albums:
             return "Albums"
-        case playlists:
+        case .playlists:
             return "Playlists"
-        case podcasts:
+        case .podcasts:
             return "Podcasts"
-        case books:
+        case .books:
             return "Books"
         }
     }

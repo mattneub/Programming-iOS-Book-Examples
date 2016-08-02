@@ -6,7 +6,7 @@ class MyHorizLine: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
-        self.backgroundColor = .clear()
+        self.backgroundColor = .clear
     }
     override func draw(_ rect: CGRect) {
         let c = UIGraphicsGetCurrentContext()!

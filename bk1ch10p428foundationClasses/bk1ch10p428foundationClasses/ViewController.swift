@@ -94,7 +94,7 @@ class ViewController: UIViewController {
         
         do {
             let s = NSMutableString(string:"hello world, go to hell")
-            let r = try! RegularExpression(
+            let r = try! NSRegularExpression(
                 pattern: "\\bhell\\b",
                 options: .caseInsensitive)
             r.replaceMatches(
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let greg = Calendar(calendarIdentifier:.gregorian)!
+            let greg = Calendar(identifier:.gregorian)
             let comp = DateComponents(calendar: greg, year: 2016, month: 8, day: 10, hour: 15)
             let d = comp.date // Optional wrapping Date
             if let d = d {
@@ -118,13 +118,13 @@ class ViewController: UIViewController {
         do {
             let d = Date() // or whatever
             let comp = DateComponents(month:1)
-            let greg = Calendar(calendarIdentifier:.gregorian)!
+            let greg = Calendar(identifier:.gregorian)
             let d2 = greg.date(byAdding: comp, to:d) // Optional wrapping Date
             print("one month from now:", d2)
         }
         
         do {
-            let greg = Calendar(calendarIdentifier:.gregorian)!
+            let greg = Calendar(identifier:.gregorian)
             let d1 = DateComponents(calendar: greg,
                                     year: 2016, month: 1, day: 1, hour: 0).date!
             let d2 = DateComponents(calendar: greg,
@@ -197,7 +197,7 @@ class ViewController: UIViewController {
         
         do {
             let ud = UserDefaults.standard
-            let c = UIColor.blue()
+            let c = UIColor.blue
             let cdata = NSKeyedArchiver.archivedData(withRootObject:c)
             ud.set(cdata, forKey: "myColor")
         }

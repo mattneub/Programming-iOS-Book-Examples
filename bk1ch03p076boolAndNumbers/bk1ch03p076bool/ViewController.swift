@@ -123,7 +123,7 @@ class ViewController: UIViewController {
 // This API has now been fixed!
 
 extension ViewController {
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
     }
 }
@@ -133,7 +133,7 @@ extension ViewController {
 extension ViewController {
     func test () {
         // how to make a bitmask
-        let opts : UIViewAnimationOptions = [.autoreverse, .`repeat`]
+        let opts : UIViewAnimationOptions = [.autoreverse, .repeat]
         
         _ = opts
     }

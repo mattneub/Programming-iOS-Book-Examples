@@ -4,7 +4,7 @@ import UIKit
 // showing how a private façade can make a publicly immutable class mutable internally
 
 class StringDrawer {
-    @NSCopying var attributedString : AttributedString!
+    @NSCopying var attributedString : NSAttributedString!
     private var mutableAttributedString : NSMutableAttributedString! {
         get {
             if self.attributedString == nil {return nil}

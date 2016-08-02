@@ -19,7 +19,7 @@ class EmptyWindowTests: XCTestCase {
     
     func testDogMyCats() {
         if let viewController =
-            (UIApplication.shared().delegate as? AppDelegate)?
+            (UIApplication.shared.delegate as? AppDelegate)?
                 .window?.rootViewController as? ViewController {
             print(viewController)
         }

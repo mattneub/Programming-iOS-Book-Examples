@@ -15,7 +15,7 @@ extension Array {
 extension Array {
     mutating func removeAtIndexes (ixs:[Int]) -> () {
         // for i in ixs.sorted().reversed() { // this might be clearer
-        for i in ixs.sorted(isOrderedBefore:>) { // required param label
+        for i in ixs.sorted(by:>) { // required param label
             self.remove(at:i)
         }
     }
@@ -110,7 +110,7 @@ extension Array where Element : NSObject {
 
 extension Sequence where Iterator.Element == Int {
     func sum() -> Int {
-        return self.reduce(0, combine: +)
+        return self.reduce(0, +)
     }
 }
 

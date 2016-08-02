@@ -34,7 +34,7 @@ class ViewController: UIViewController {
 
     @IBAction func showResponderChain(_ sender: UIResponder) {
         var r : UIResponder! = sender
-        repeat { print(r, "\n"); r = r.next() } while r != nil
+        repeat { print(r, "\n"); r = r.next } while r != nil
     }
 
 }

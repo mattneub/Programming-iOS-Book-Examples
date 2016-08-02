@@ -8,7 +8,7 @@ class MainViewController: UIViewController, FlipsideViewControllerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showAlternate" {
-            if let dest = segue.destinationViewController as? FlipsideViewController {
+            if let dest = segue.destination as? FlipsideViewController {
                 dest.delegate = self
             }
         }

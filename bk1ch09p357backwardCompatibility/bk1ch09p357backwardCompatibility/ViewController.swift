@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         } else {
         }
         
-        let v = UIDevice.current().systemVersion
+        let v = UIDevice.current.systemVersion
         print(v)
         
 //        if self.respondsToSelector("traitCollection") {

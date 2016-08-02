@@ -47,9 +47,9 @@ protocol Generic {
     // associatedtype U where U:Flier // no where clauses on associatedtype
     associatedtype U : Dog, Flier // legal: this is basically an inheritance declaration!
 }
-func flyAndWalk<T where T:Walker, T:Flier> (_ f:T) {}
-func flyAndWalk2<T : protocol<Walker, Flier>> (_ f:T) {}
-func flyAndWalk3<T where T:Flier, T:Dog> (_ f:T) {}
+func flyAndWalk<T> (_ f:T) where T:Walker, T:Flier {}
+func flyAndWalk2<T : Walker & Flier> (_ f:T) {}
+func flyAndWalk3<T> (_ f:T) where T:Flier, T:Dog {}
 // func flyAndWalk4<T where T == Dog> (f:T) {}
 
 struct Bird : Flier, Walker {}

@@ -2,32 +2,32 @@
 
 import UIKit
 
-enum MyFirstError : ErrorProtocol {
+enum MyFirstError : Error {
     case firstMinorMistake
     case firstMajorMistake
     case firstFatalMistake
 }
-enum MySecondError : ErrorProtocol {
+enum MySecondError : Error {
     case secondMinorMistake(i:Int)
     case secondMajorMistake(s:String)
     case secondFatalMistake
 }
 
-struct SomeStruct : ErrorProtocol {
+struct SomeStruct : Error {
     
 }
-class SomeClass : ErrorProtocol {
+class SomeClass : Error {
     
 }
 
-class MyClassyError : ErrorProtocol {
+class MyClassyError : Error {
     init() {
         // self._code = 666 // nope, it's immutable
     }
 }
 
 
-struct SomeStruct2 : ErrorProtocol {
+struct SomeStruct2 : Error {
     let name : String
     static var someError: SomeStruct2 { return SomeStruct2(name:"howdy") }
 }
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
             let s = try String(contentsOfFile: f)
             print(s) // we won't get here
         } catch {
-            print((error as NSError).localizedDescription)
+            print(error.localizedDescription) // * no need to cast to NSError
             print(error)
         }
 
@@ -63,7 +63,7 @@ class ViewController: UIViewController {
             let f = "nonexistent" // path to some file, maybe
             let s = try String(contentsOfFile: f)
             print(s) // we won't get here
-        } catch NSCocoaError.fileReadNoSuchFileError {
+        } catch CocoaError.fileReadNoSuchFileError {
             print("no such file")
         } catch {
             print(error)
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
         
         lab: do {
             // okay, I'm sick of failing, let's succeed for once :)
-            let f = Bundle.main.pathForResource("testing", ofType: "txt")!
+            let f = Bundle.main.path(forResource:"testing", ofType: "txt")!
             guard let s = try? String(contentsOfFile: f)
                 else {print("still no file"); break lab}
             print(s)
@@ -140,7 +140,7 @@ class ViewController: UIViewController {
         }
     }
     
-    enum NotLongEnough : ErrorProtocol {
+    enum NotLongEnough : Error {
         case iSaidLongIMeantLong
     }
 

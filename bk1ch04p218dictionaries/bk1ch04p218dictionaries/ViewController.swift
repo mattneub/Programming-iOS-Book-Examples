@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         
         do {
             let d : [String:Int] = ["one":1, "two":2]
-            let sum = d.values.reduce(0, combine:+) // ***
+            let sum = d.values.reduce(0, +) // ***
             print(sum)
             
             let min = d.values.min()
@@ -86,7 +86,7 @@ class ViewController: UIViewController {
 
         UINavigationBar.appearance().titleTextAttributes = [
             NSFontAttributeName : UIFont(name: "ChalkboardSE-Bold", size: 20)!,
-            NSForegroundColorAttributeName : UIColor.darkText(),
+            NSForegroundColorAttributeName : UIColor.darkText,
             NSShadowAttributeName : {
                 let shad = NSShadow()
                 shad.shadowOffset = CGSize(width:1.5,height:1.5)

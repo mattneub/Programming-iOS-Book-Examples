@@ -209,7 +209,7 @@ class ViewController: UIViewController {
             do {
                 let ok = arr.starts(with:[1,2])
                 let ok2 = arr.starts(with:[1,2]) {$0 == $1} // ***
-                let ok3 = arr.starts(with:[1,2], isEquivalent:==) // ***
+                let ok3 = arr.starts(with:[1,2], by:==) // ***
                 let ok4 = arr.starts(with:[1,2])
                 let ok5 = arr.starts(with:1...2)
                 let ok6 = arr.starts(with:[1,-2]) {abs($0) == abs($1)}
@@ -305,7 +305,7 @@ class ViewController: UIViewController {
             arr.sort()
             arr.sort {$0 > $1} // *** [1, 2, 3, 4, 5, 6]
             arr = [4,3,5,2,6,1]
-            arr.sort(isOrderedBefore: >) // *** [1, 2, 3, 4, 5, 6]
+            arr.sort(by:>) // *** [1, 2, 3, 4, 5, 6]
             
         }
         
@@ -333,7 +333,7 @@ class ViewController: UIViewController {
 
         let arrr = [1, 4, 9, 13, 112]
         let sum = arrr.reduce(0) {$0 + $1} // 139
-        let sum2 = arrr.reduce(0, combine:+)
+        let sum2 = arrr.reduce(0, +)
 
         _ = arr2
         _ = arr3
@@ -351,7 +351,7 @@ class ViewController: UIViewController {
         
         do {
             let arr = [[1,2], [3,4], [5,6]]
-            let flat = arr.reduce([], combine:+) // [1, 2, 3, 4, 5, 6]
+            let flat = arr.reduce([], +) // [1, 2, 3, 4, 5, 6]
             _ = flat
             
             let arr2 = [[1,2], [3,4], [5,6], 7]
@@ -418,7 +418,7 @@ class ViewController: UIViewController {
         
         do {
             // the API is fixed!
-            let arr = UIFont.familyNames().map {
+            let arr = UIFont.familyNames.map {
                 UIFont.fontNames(forFamilyName: $0)
             }
             print(arr)
@@ -468,7 +468,7 @@ class ViewController: UIViewController {
             // showing one common way to lose element typing
             let arr = [1,2,3]
             let fm = FileManager()
-            let f = try! fm.temporaryDirectory.appendingPathComponent("test.plist")
+            let f = fm.temporaryDirectory.appendingPathComponent("test.plist")
             (arr as NSArray).write(to: f, atomically: true)
             let arr2 = NSArray(contentsOf: f)
             print(arr2.dynamicType)

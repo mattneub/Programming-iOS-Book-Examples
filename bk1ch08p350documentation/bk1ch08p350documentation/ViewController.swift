@@ -24,10 +24,10 @@ class ViewController: UIViewController {
     // interesting to add: * author: Who do you think?
 
     
-    /// Just showing that this gets Quick Help
-    /// too.
     
-    func anotherMethod() {
+    func anotherMethod(_ thing:String) -> Int { // select in this line,
+        // generate documentation automatically
+        return 0
     }
     
     override func viewDidLoad() {

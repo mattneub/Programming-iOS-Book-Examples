@@ -90,7 +90,7 @@ class ViewController: UIViewController {
         var ss = "testing" {didSet {print("did")}}
         _ = remove(from:&ss, character:"X") // "did", even though no change
         
-        let rect = CGRect.zero
+        let myRect = CGRect.zero
         var arrow = CGRect.zero
         var body = CGRect.zero
         struct Arrow {
@@ -100,7 +100,8 @@ class ViewController: UIViewController {
         // as they may be blocking access to the original C functions entirely
         // but they do seem to let me access it as a kind of method!
         // CGRectDivide(rect, &arrow, &body, Arrow.ARHEIGHT, .MinYEdge)
-        rect.divide(slice: &arrow, remainder: &body, amount: Arrow.ARHEIGHT, edge: .minYEdge)
+        // seed 4, dodged a bullet; they renamified it but they didn't kill it
+        myRect.divided(slice: &arrow, remainder: &body, atDistance: Arrow.ARHEIGHT, from: .minYEdge)
         
         // proving that a class instance parameter is mutable in a function without "inout"
         

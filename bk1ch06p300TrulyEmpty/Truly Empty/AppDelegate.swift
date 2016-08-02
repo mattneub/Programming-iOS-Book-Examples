@@ -8,7 +8,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?)
         -> Bool {
             self.window = UIWindow()
-            self.window!.backgroundColor = UIColor.white()
+            self.window!.backgroundColor = .white
             self.window!.rootViewController = ViewController()
             self.window!.makeKeyAndVisible()
             return true

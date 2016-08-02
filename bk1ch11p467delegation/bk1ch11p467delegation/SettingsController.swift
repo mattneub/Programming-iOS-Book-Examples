@@ -3,7 +3,7 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 
@@ -26,7 +26,7 @@ class SettingsController: UIViewController, UINavigationControllerDelegate {
 extension SettingsController : ColorPickerDelegate {
     func showColorPicker() {
         let colorName = "MyColor"
-        let c = UIColor.blue()
+        let c = UIColor.blue
         let cpc = ColorPickerController(colorName:colorName, color:c)
         cpc.delegate = self
         self.present(cpc, animated: true)

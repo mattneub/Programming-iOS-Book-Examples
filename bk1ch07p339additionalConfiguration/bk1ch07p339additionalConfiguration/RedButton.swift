@@ -24,7 +24,7 @@ class RedButton: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
-        self.layer.shadowColor = UIColor.gray().cgColor
+        self.layer.shadowColor = UIColor.gray.cgColor
         self.layer.shadowOffset = CGSize(width:2,height:2)
         self.layer.shadowOpacity = 0.7
     }
@@ -32,6 +32,6 @@ class RedButton: UIButton {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = .red()
+        self.backgroundColor = .red
     }
 }

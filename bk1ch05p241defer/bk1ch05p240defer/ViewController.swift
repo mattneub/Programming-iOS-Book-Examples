@@ -81,27 +81,27 @@ class ViewController: UIViewController {
     }
     
     func doSomethingTimeConsuming() {
-        UIApplication.shared().beginIgnoringInteractionEvents()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         // ... do stuff ...
-        UIApplication.shared().endIgnoringInteractionEvents()
+        UIApplication.shared.endIgnoringInteractionEvents()
     }
     
     var somethingHappened = true
     func doSomethingTimeConsuming2() {
-        UIApplication.shared().beginIgnoringInteractionEvents()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         // ... do stuff ...
         if somethingHappened {
             return
         }
         // ... do more stuff ...
-        UIApplication.shared().endIgnoringInteractionEvents()
+        UIApplication.shared.endIgnoringInteractionEvents()
     }
 
     func doSomethingTimeConsuming3() {
         defer {
-            UIApplication.shared().endIgnoringInteractionEvents()
+            UIApplication.shared.endIgnoringInteractionEvents()
         }
-        UIApplication.shared().beginIgnoringInteractionEvents()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         // ... do stuff ...
         if somethingHappened {
             return

@@ -1,5 +1,6 @@
 
 import UIKit
+import Swift
 
 struct Vial {
     var numberOfBacteria : Int
@@ -7,32 +8,37 @@ struct Vial {
         self.numberOfBacteria = n
     }
 }
-func +(lhs:Vial, rhs:Vial) -> Vial {
-    let total = lhs.numberOfBacteria + rhs.numberOfBacteria
-    return Vial(total)
-}
-func +=(lhs: inout Vial, rhs:Vial) {
-    let total = lhs.numberOfBacteria + rhs.numberOfBacteria
-    lhs.numberOfBacteria = total
-}
+extension Vial : Equatable {
+    static func +(lhs:Vial, rhs:Vial) -> Vial {
+        let total = lhs.numberOfBacteria + rhs.numberOfBacteria
+        return Vial(total)
+    }
+    static func +=(lhs: inout Vial, rhs:Vial) {
+        let total = lhs.numberOfBacteria + rhs.numberOfBacteria
+        lhs.numberOfBacteria = total
+    }
 
-func ==(lhs:Vial, rhs:Vial) -> Bool {
-    return lhs.numberOfBacteria == rhs.numberOfBacteria
+    static func ==(lhs:Vial, rhs:Vial) -> Bool {
+        return lhs.numberOfBacteria == rhs.numberOfBacteria
+    }
 }
-extension Vial:Equatable{}
 
 infix operator ^^ {
 }
-func ^^(lhs:Int, rhs:Int) -> Int {
-    var result = lhs
-    for _ in 1..<rhs {result *= lhs}
-    return result
+extension Int {
+    static func ^^(lhs:Int, rhs:Int) -> Int {
+        var result = lhs
+        for _ in 1..<rhs {result *= lhs}
+        return result
+    }
 }
 
 infix operator >>> {
 }
 
-func >>><Bound where Bound : Comparable, Bound.Stride : Integer>(maximum: Bound, minimum: Bound) -> ReversedRandomAccessCollection<CountableRange<Bound>> {
+func >>><Bound>(maximum: Bound, minimum: Bound)
+    -> ReversedRandomAccessCollection<CountableRange<Bound>>
+    where Bound : Comparable & Strideable, Bound.Stride : Integer {
         return (minimum..<maximum).reversed()
 }
 
