@@ -237,7 +237,7 @@ class ViewController: UIViewController {
             let dataptr = dataptrptr.pointee
             let datum = dataptr[Int(buffer.frameLength) - 1]
             // stop when input is empty and sound is very quiet
-            if done && fabs(datum) < 0.000001 {
+            if done && abs(datum) < 0.000001 {
                 print("stopping")
                 self.engine.stop()
                 return

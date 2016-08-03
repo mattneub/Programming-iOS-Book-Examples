@@ -69,7 +69,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
         let v = g.view!
         let tbc = self.window!.rootViewController as! UITabBarController
         let delta = g.translation(in:v)
-        let percent = fabs(delta.x/v.bounds.size.width)
+        let percent = abs(delta.x/v.bounds.size.width)
         switch g.state {
         case .began:
             self.inter = UIPercentDrivenInteractiveTransition()

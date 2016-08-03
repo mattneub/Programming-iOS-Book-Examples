@@ -15,8 +15,8 @@ class HorizPanGestureRecognizer : UIPanGestureRecognizer {
     override func touchesMoved(_ touches: Set<UITouch>, with e: UIEvent) {
         if self.state == .possible {
             let loc = touches.first!.location(in:self.view!.superview)
-            let deltaX = fabs(loc.x - self.origLoc.x)
-            let deltaY = fabs(loc.y - self.origLoc.y)
+            let deltaX = abs(loc.x - self.origLoc.x)
+            let deltaY = abs(loc.y - self.origLoc.y)
             if deltaY >= deltaX {
                 self.state = .failed
             }
@@ -43,8 +43,8 @@ class VertPanGestureRecognizer : UIPanGestureRecognizer {
     override func touchesMoved(_ touches: Set<UITouch>, with e: UIEvent) {
         if self.state == .possible {
             let loc = touches.first!.location(in:self.view!.superview)
-            let deltaX = fabs(loc.x - self.origLoc.x)
-            let deltaY = fabs(loc.y - self.origLoc.y)
+            let deltaX = abs(loc.x - self.origLoc.x)
+            let deltaY = abs(loc.y - self.origLoc.y)
             if deltaX >= deltaY {
                 self.state = .failed
             }

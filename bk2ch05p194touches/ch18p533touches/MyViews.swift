@@ -43,8 +43,8 @@ class MyView1 : UIView {
             self.decided = true
             let then = t.previousLocation(in:self)
             let now = t.location(in:self)
-            let deltaX = fabs(then.x - now.x)
-            let deltaY = fabs(then.y - now.y)
+            let deltaX = abs(then.x - now.x)
+            let deltaY = abs(then.y - now.y)
             self.horiz = deltaX >= deltaY
         }
         
@@ -178,8 +178,8 @@ class MyView3 : UIView {
             self.decidedDirection = true
             let then = t.previousLocation(in:self)
             let now = t.location(in:self)
-            let deltaX = fabs(then.x - now.x)
-            let deltaY = fabs(then.y - now.y)
+            let deltaX = abs(then.x - now.x)
+            let deltaY = abs(then.y - now.y)
             self.horiz = deltaX >= deltaY
         }
         let loc = t.location(in:self.superview)

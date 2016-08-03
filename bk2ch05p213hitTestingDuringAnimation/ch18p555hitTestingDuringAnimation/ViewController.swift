@@ -39,7 +39,7 @@ class ViewController : UIViewController {
         print("tap! (the button's action method)")
     }
     
-    let which = 2 // no diff, just proving it's the same for both ways of animating
+    let which = 1 // no diff, just proving it's the same for both ways of animating
     
     @IBAction func start(_ sender:AnyObject?) {
         print("you tapped Start")

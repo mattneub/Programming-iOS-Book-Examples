@@ -69,7 +69,7 @@ class CompassLayer : CALayer, CALayerDelegate {
             path.addLineTo(nil, x: 40, y: 25)
             path.closeSubpath()
             if !path.containsPoint(nil, point: pt, eoFill: false) {
-                lay = nil;
+                lay = nil
             }
             let result = lay != nil ? "hit" : "missed"
             print("\(result) arrow at \(pt)")

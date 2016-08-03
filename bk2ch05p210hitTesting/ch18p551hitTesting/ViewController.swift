@@ -8,7 +8,7 @@ class ViewController : UIViewController {
     
     @IBAction func tapped(_ g:UITapGestureRecognizer) {
         let p = g.location(ofTouch:0, in: g.view)
-        let v = g.view!.hitTest(p, with: nil)
+        let v = g.view?.hitTest(p, with: nil)
         if let v = v as? UIImageView {
             UIView.animate(withDuration:0.2, delay: 0,
                 options: .autoreverse,
