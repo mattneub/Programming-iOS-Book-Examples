@@ -20,31 +20,29 @@ class ViewController2: UIViewController {
 
 class MyCoolSegue: UIStoryboardSegue {
     override func perform() {
-        let dest = self.destinationViewController
+        let dest = self.destination
         dest.modalPresentationStyle = .custom
         dest.transitioningDelegate = self
         super.perform()
     }
 }
 extension MyCoolSegue: UIViewControllerTransitioningDelegate {
-    @objc(animationControllerForPresentedController:presentingController:sourceController:)
-    func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
-    @objc(animationControllerForDismissedController:)
-    func animationController(forDismissedController dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
 }
 extension MyCoolSegue: UIViewControllerAnimatedTransitioning {
-    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.8
     }
-    func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)!
         let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
         
-        let con = transitionContext.containerView()
+        let con = transitionContext.containerView
         
         let r1start = transitionContext.initialFrame(for:vc1)
         let r2end = transitionContext.finalFrame(for:vc2)

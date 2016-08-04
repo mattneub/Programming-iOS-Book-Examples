@@ -22,21 +22,20 @@ extension ViewController2 {
 }
 
 extension ViewController2 : UIViewControllerTransitioningDelegate {
-    @objc(animationControllerForPresentedController:presentingController:sourceController:)
-    func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
 }
 
 extension ViewController2 : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.8
     }
     
-    func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
         
-        let con = transitionContext.containerView()
+        let con = transitionContext.containerView
         
         let r2end = transitionContext.finalFrame(for:vc2)
         

@@ -28,7 +28,7 @@ class PresentedViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("view did load \(self.dynamicType)")
-        self.view.backgroundColor = UIColor.blue()
+        self.view.backgroundColor = .blue
         let button = UIButton(type:.system)
         button.setTitle("Dismiss", for:[])
         button.addTarget(self,

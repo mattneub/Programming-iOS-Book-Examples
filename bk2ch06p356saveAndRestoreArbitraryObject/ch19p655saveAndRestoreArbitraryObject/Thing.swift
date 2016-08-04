@@ -8,7 +8,7 @@ class Thing : NSObject, UIStateRestoring {
     
     var restorationParent: UIStateRestoring? // unused
     
-    var objectRestorationClass: AnyObject.Type? // unused
+    var objectRestorationClass: UIObjectRestoration.Type? // unused
     
     @objc(encodeRestorableStateWithCoder:)
     func encodeRestorableState(with coder: NSCoder) {

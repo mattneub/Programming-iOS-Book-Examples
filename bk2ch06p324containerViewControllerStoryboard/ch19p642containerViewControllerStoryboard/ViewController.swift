@@ -6,9 +6,9 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         print("prepare")
         if segue.identifier == "embed" {
-            NSLog("%@ %@ %@", segue.identifier!, segue.sourceViewController, segue.destinationViewController)
-            NSLog("%d", segue.destinationViewController.isViewLoaded())
-            NSLog("%@", segue.sourceViewController.childViewControllers)
+            NSLog("%@ %@ %@", segue.identifier!, segue.source, segue.destination)
+            NSLog("%d", segue.destination.isViewLoaded)
+            NSLog("%@", segue.source.childViewControllers)
             NSLog("%@", self.childViewControllers)
         }
     }

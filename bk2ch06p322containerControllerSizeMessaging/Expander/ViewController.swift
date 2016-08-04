@@ -74,7 +74,7 @@ class ViewController: UIViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         // are we rotating 90 degrees?
-        let rot = coordinator.targetTransform()
+        let rot = coordinator.targetTransform
         if !(rot.b == 0 && rot.c == 0) {
             // would our subview be too big for the new orientation?
             let child = self.childViewControllers[0]

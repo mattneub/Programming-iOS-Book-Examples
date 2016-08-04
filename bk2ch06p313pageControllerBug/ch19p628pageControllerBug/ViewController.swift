@@ -4,7 +4,7 @@ import UIKit
 class ViewController : UIViewController, UIPageViewControllerDataSource {
     
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject!) {
-        let pvc = segue.destinationViewController as! UIPageViewController
+        let pvc = segue.destination as! UIPageViewController
         pvc.dataSource = self
         let page = MyPage()
         page.num = 1

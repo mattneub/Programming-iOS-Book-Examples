@@ -10,7 +10,7 @@ class ViewController : Base {
     // you will see that the messages to the child are the same either way,
     // thus proving we're doing manual forwarding correctly
     
-    override func shouldAutomaticallyForwardAppearanceMethods() -> Bool {
+    override var shouldAutomaticallyForwardAppearanceMethods : Bool {
         var result = true
         if which == 2 {
             result = false
@@ -30,7 +30,7 @@ class ViewController : Base {
         if which == 2 {
             print("Forwarding manually!")
             let child = self.swappers[self.cur] 
-            if child.isViewLoaded() && child.view.superview != nil {
+            if child.isViewLoaded && child.view.superview != nil {
                 child.beginAppearanceTransition(true, animated: true)
             }
         }
@@ -40,7 +40,7 @@ class ViewController : Base {
         super.viewDidAppear(animated)
         if which == 2 {
             let child = self.swappers[self.cur] 
-            if child.isViewLoaded() && child.view.superview != nil {
+            if child.isViewLoaded && child.view.superview != nil {
                 child.endAppearanceTransition()
             }
         }
@@ -50,7 +50,7 @@ class ViewController : Base {
         super.viewWillDisappear(animated)
         if which == 2 {
             let child = self.swappers[self.cur] 
-            if child.isViewLoaded() && child.view.superview != nil {
+            if child.isViewLoaded && child.view.superview != nil {
                 child.beginAppearanceTransition(false, animated: true)
             }
         }
@@ -60,7 +60,7 @@ class ViewController : Base {
         super.viewDidDisappear(animated)
         if which == 2 {
             let child = self.swappers[self.cur] 
-            if child.isViewLoaded() && child.view.superview != nil {
+            if child.isViewLoaded && child.view.superview != nil {
                 child.endAppearanceTransition()
             }
         }

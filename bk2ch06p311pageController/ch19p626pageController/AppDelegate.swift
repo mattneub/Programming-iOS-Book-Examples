@@ -35,9 +35,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         self.window!.rootViewController = pvc
         
         let proxy = UIPageControl.appearance()
-        proxy.pageIndicatorTintColor = UIColor.red().withAlphaComponent(0.6)
-        proxy.currentPageIndicatorTintColor = UIColor.red()
-        proxy.backgroundColor = UIColor.yellow()
+        proxy.pageIndicatorTintColor = UIColor.red.withAlphaComponent(0.6)
+        proxy.currentPageIndicatorTintColor = .red
+        proxy.backgroundColor = .yellow
         
         // self.messWithGestureRecognizers(pvc) // uncomment to try it
     }

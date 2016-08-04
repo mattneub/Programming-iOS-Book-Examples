@@ -14,7 +14,7 @@ class ViewController : UIViewController {
     // so you have to resolve those generics explicitly
     // feels like a bug to me, but whatever
     
-    let cache = Cache<NSString, AnyObject>()
+    let cache = NSCache<NSString, AnyObject>()
     var cachedData : Data {
         let key = "somekey"
         var data = self.cache.object(forKey:key) as? Data
@@ -54,7 +54,7 @@ class ViewController : UIViewController {
         get {
             if _myBigData == nil {
                 let fm = FileManager()
-                let f = try! URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
+                let f = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
                 if let d = try? Data(contentsOf:f) {
                     print("loaded big data from disk")
                     self._myBigData = d
@@ -90,7 +90,7 @@ class ViewController : UIViewController {
     func saveAndReleaseMyBigData() {
         if let myBigData = self.myBigData {
             print("unloading big data")
-            let f = try! URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
+            let f = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
             _ = try? myBigData.write(to:f)
             self.myBigData = nil
         }

@@ -29,7 +29,7 @@ class RootViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("view did load \(self.dynamicType)")
-        self.view.backgroundColor = UIColor.green()
+        self.view.backgroundColor = .green
         let b = UIBarButtonItem(title:"Push",
             style:.plain, target:self, action:#selector(doPush))
         self.navigationItem.rightBarButtonItem = b

@@ -29,7 +29,7 @@ class SecondViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("view did load \(self.dynamicType)")
-        self.view.backgroundColor = UIColor.yellow()
+        self.view.backgroundColor = .yellow
         let button = UIButton(type:.system)
         button.setTitle("Present", for:[])
         button.addTarget(self,
