@@ -41,11 +41,11 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         return .portrait
     }
     
-//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+//    override var preferredStatusBarStyle : UIStatusBarStyle {
 //        return .LightContent
 //    }
     
-//    override func prefersStatusBarHidden() -> Bool {
+//    override var prefersStatusBarHidden : Bool {
 //        return true
 //    }
 

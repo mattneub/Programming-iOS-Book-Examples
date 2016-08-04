@@ -11,7 +11,7 @@ class MasterViewController: UITableViewController {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        if UIDevice.current().userInterfaceIdiom == .pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             self.clearsSelectionOnViewWillAppear = false
             // not sure what this next line does, if anything
             // self.preferredContentSize = CGSize(width: 320.0, height: 600.0)

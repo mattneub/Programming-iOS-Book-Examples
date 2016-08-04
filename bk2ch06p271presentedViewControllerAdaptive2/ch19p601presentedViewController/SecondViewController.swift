@@ -37,7 +37,7 @@ class SecondViewController : UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if self.isBeingDismissed() {
+        if self.isBeingDismissed {
             self.delegate?.accept(data:"Even more important data!")
         }
     }

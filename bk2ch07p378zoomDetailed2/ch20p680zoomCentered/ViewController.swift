@@ -53,7 +53,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
         if let view = view {
             scrollView.bounces = self.oldBounces
-            view.contentScaleFactor = scale * UIScreen.main().scale // *
+            view.contentScaleFactor = scale * UIScreen.main.scale // *
         }
     }
 

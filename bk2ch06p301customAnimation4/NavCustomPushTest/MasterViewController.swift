@@ -23,21 +23,21 @@ class MasterViewController : UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "showDetail" {
-            (segue.destinationViewController as! DetailViewController).detailItem = Date()
+            (segue.destination as! DetailViewController).detailItem = Date()
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("\(self) " + #function)
-        if let tc = self.transitionCoordinator() {
+        if let tc = self.transitionCoordinator {
             print(tc)
         }
-        guard let tc = self.transitionCoordinator() else {return}
-        guard tc.initiallyInteractive() else {return}
+        guard let tc = self.transitionCoordinator else {return}
+        guard tc.initiallyInteractive else {return}
         tc.notifyWhenInteractionChanges { // "changes" instead of "ends"
             context in
-            if context.isCancelled() {
+            if context.isCancelled {
                 print("we got cancelled")
             }
         }
@@ -46,7 +46,7 @@ class MasterViewController : UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("\(self) " + #function)
-        if let tc = self.transitionCoordinator() {
+        if let tc = self.transitionCoordinator {
             print(tc)
         }
         
@@ -55,7 +55,7 @@ class MasterViewController : UITableViewController {
         super.viewWillDisappear(animated)
         print("\(self) " + #function)
         
-        if let tc = self.transitionCoordinator() {
+        if let tc = self.transitionCoordinator {
             print(tc)
         }
         
@@ -63,7 +63,7 @@ class MasterViewController : UITableViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("\(self) " + #function)
-        if let tc = self.transitionCoordinator() {
+        if let tc = self.transitionCoordinator {
             print(tc)
         }
         

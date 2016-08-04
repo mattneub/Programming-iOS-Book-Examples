@@ -14,7 +14,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             .instantiate(withOwner:nil)
         self.window!.rootViewController = arr[0] as? UIViewController
         
-        self.window!.backgroundColor = UIColor.white()
+        self.window!.backgroundColor = UIColor.white
         self.window!.makeKeyAndVisible()
         return true
     }

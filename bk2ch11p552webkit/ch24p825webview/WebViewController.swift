@@ -5,7 +5,7 @@ import SafariServices
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 
@@ -350,7 +350,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             if let url = navigationAction.request.url {
                 print("user would like to navigate to \(url)")
                 // this is how you would open in Mobile Safari
-                // UIApplication.shared().openURL(url)
+                // UIApplication.shared.openURL(url)
                 // this is how to use the new Safari view controller
                 let svc = SFSafariViewController(url: url)
                 // svc.delegate = self

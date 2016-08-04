@@ -59,7 +59,7 @@ class ViewController : UICollectionViewController {
         self.navigationItem.title = "States"
         let bb = UIBarButtonItem(title:"Push", style:.plain, target:self, action:#selector(doPush))
         self.navigationItem.rightBarButtonItem = bb
-        self.collectionView!.backgroundColor = UIColor.white()
+        self.collectionView!.backgroundColor = .white
         self.collectionView!.allowsMultipleSelection = true
         
         // register cell, comes from a nib even though we are using a storyboard

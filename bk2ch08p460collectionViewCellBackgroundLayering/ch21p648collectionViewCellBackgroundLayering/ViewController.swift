@@ -38,7 +38,7 @@ class ViewController : UICollectionViewController {
         // self.collectionView.backgroundView = v
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     

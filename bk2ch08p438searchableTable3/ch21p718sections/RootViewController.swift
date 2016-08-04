@@ -3,7 +3,7 @@
 import UIKit
 
 class MySearchController : UISearchController {
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 }
@@ -16,7 +16,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     var searcher : UISearchController!
     var searching = false
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     

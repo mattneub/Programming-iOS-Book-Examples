@@ -214,7 +214,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
             }
             print("user would like to navigate to \(r.url)")
             // this is how you would open in Mobile Safari
-            // UIApplication.shared().openURL(r.URL)
+            // UIApplication.shared.openURL(r.URL)
             return false
         }
         return true

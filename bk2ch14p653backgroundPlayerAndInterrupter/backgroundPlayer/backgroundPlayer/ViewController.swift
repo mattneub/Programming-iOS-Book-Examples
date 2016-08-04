@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
-        UIApplication.shared().beginReceivingRemoteControlEvents()
+        UIApplication.shared.beginReceivingRemoteControlEvents()
     }
     
     override func remoteControlReceived(with event: UIEvent?) {

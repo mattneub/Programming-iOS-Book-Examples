@@ -31,7 +31,7 @@ class RootViewController: UIViewController {
     
     override func loadView() {
         let v = UIView()
-        v.backgroundColor = UIColor.green()
+        v.backgroundColor = .green
         self.view = v
         let label = UILabel()
         v.addSubview(label)
@@ -46,7 +46,7 @@ class RootViewController: UIViewController {
                 .flexibleRightMargin]
             label.sizeToFit()
             label.center = CGPoint(v.bounds.midX, v.bounds.midY)
-            label.frame.makeIntegralInPlace()
+            label.frame = label.frame.integral
 
         case 2:
             label.translatesAutoresizingMaskIntoConstraints = false

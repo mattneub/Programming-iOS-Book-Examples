@@ -9,13 +9,13 @@ class MasterViewController: UITableViewController {
     // var detail: DetailViewController? = nil
     var objects = [Date]()
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true // no effect
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        if UIDevice.current().userInterfaceIdiom == .pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             self.clearsSelectionOnViewWillAppear = false
             // not sure what this next line does, if anything
             self.preferredContentSize = CGSize(width: 320.0, height: 600.0)

@@ -6,7 +6,7 @@ import UIKit
 // other than to write my own UISearchController subclass
 
 class MySearchController : UISearchController {
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 }
@@ -16,7 +16,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     var sectionData = [[String]]()
     var searcher : UISearchController!
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     

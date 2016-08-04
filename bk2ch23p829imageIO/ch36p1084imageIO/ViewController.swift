@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     @IBAction func doButton2 (_ sender:AnyObject!) {
         let url = Bundle.main.urlForResource("colson", withExtension: "jpg")!
         let src = CGImageSourceCreateWithURL(url, nil)!
-        let scale = UIScreen.main().scale
+        let scale = UIScreen.main.scale
         let w = self.iv.bounds.width * scale
         let d : [NSObject:AnyObject] = [
             kCGImageSourceShouldAllowFloat : true,

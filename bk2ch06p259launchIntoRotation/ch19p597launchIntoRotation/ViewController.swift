@@ -44,7 +44,7 @@ class ViewController : UIViewController {
             // in iOS 9, this approach won't work on an iPhone held in landscape at launch...
             // ...unless we add autoresizing
             let square = UIView(frame:CGRect(0,0,10,10))
-            square.backgroundColor = UIColor.black()
+            square.backgroundColor = .black
             square.center = CGPoint(self.view.bounds.midX,5) // top center?
             //square.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin, .FlexibleBottomMargin]
             self.view.addSubview(square)
@@ -52,7 +52,7 @@ class ViewController : UIViewController {
             // on the other hand, using constraints and no hard numbers is most reliable
             // and of course it has the advantage of being adaptable into future rotations
             let square = UIView()
-            square.backgroundColor = UIColor.black()
+            square.backgroundColor = .black
             self.view.addSubview(square)
             square.translatesAutoresizingMaskIntoConstraints = false
             let side : CGFloat = 10
@@ -79,7 +79,7 @@ class ViewController : UIViewController {
             if !self.viewInitializationDone {
                 self.viewInitializationDone = true
                 let square = UIView(frame:CGRect(0,0,10,10))
-                square.backgroundColor = UIColor.black()
+                square.backgroundColor = .black
                 square.center = CGPoint(self.view.bounds.midX,5)
                 self.view.addSubview(square)
             }
@@ -91,7 +91,7 @@ class ViewController : UIViewController {
             if !self.viewInitializationDone {
                 self.viewInitializationDone = true
                 let square = UIView(frame:CGRect(0,0,10,10))
-                square.backgroundColor = UIColor.black()
+                square.backgroundColor = .black
                 square.center = CGPoint(self.view.bounds.midX,5)
                 self.view.addSubview(square)
             }

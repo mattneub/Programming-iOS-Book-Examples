@@ -11,7 +11,7 @@ class ViewController : UIViewController {
         sv.scrollIndicatorInsets = sv.contentInset
         
         
-        sv.backgroundColor = UIColor.white()
+        sv.backgroundColor = .white
         sv.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sv)
         var con = [NSLayoutConstraint]()

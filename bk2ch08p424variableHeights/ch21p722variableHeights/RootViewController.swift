@@ -9,7 +9,7 @@ class Cell : UITableViewCell {
 class RootViewController : UITableViewController {
     var trivia : [String]!
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
@@ -37,7 +37,7 @@ class RootViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) as! Cell
-        cell.backgroundColor = UIColor.white()
+        cell.backgroundColor = .white
         cell.lab.text = self.trivia[indexPath.row]
         return cell
     }

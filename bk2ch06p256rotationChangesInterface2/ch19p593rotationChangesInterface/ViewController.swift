@@ -10,7 +10,7 @@ class ViewController : UIViewController {
         
         let gr = UIView()
         gr.translatesAutoresizingMaskIntoConstraints = false
-        gr.backgroundColor = UIColor.green()
+        gr.backgroundColor = UIColor.green
         self.view.addSubview(gr)
         // not needed if we're already doing autolayout
         // [self.view setNeedsUpdateConstraints];

@@ -96,7 +96,7 @@ class MyPresentationController : UIPresentationController {
         shadow.alpha = 0
         con.insertSubview(shadow, at: 0)
         shadow.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        let tc = self.presentedViewController.transitionCoordinator()!
+        let tc = self.presentedViewController.transitionCoordinator!
         tc.animate(alongsideTransition:{
             _ in
             shadow.alpha = 1
@@ -111,7 +111,7 @@ class MyPresentationController : UIPresentationController {
     override func dismissalTransitionWillBegin() {
         let con = self.containerView!
         let shadow = con.subviews[0]
-        let tc = self.presentedViewController.transitionCoordinator()!
+        let tc = self.presentedViewController.transitionCoordinator!
         tc.animate(alongsideTransition:{
             _ in
             shadow.alpha = 0
@@ -123,11 +123,11 @@ class MyPresentationController : UIPresentationController {
             })
     }
     
-    override func frameOfPresentedViewInContainerView() -> CGRect {
+    override var frameOfPresentedViewInContainerView : CGRect {
         // we want to center the presented view at its "native" size
         // I can think of a lot of ways to do this,
         // but here we just assume that it *is* its native size
-        let v = self.presentedView()!
+        let v = self.presentedView!
         let con = self.containerView!
         v.center = CGPoint(con.bounds.midX, con.bounds.midY)
         return v.frame.integral
@@ -136,7 +136,7 @@ class MyPresentationController : UIPresentationController {
     override func containerViewWillLayoutSubviews() {
         // deal with future rotation
         // again, I can think of more than one approach
-        let v = self.presentedView()!
+        let v = self.presentedView!
         v.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin,
             .flexibleLeftMargin, .flexibleRightMargin]
     }
@@ -145,25 +145,26 @@ class MyPresentationController : UIPresentationController {
 
 extension ViewController2 /* UIViewControllerTransitioningDelegate */ {
     @objc(animationControllerForPresentedController:presentingController:sourceController:)
-    func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
-    func animationController(forDismissedController dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    @objc(animationControllerForDismissedController:)
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
 }
 
 extension ViewController2 : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?)
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?)
         -> TimeInterval {
             return 0.25
     }
     
-    func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         // let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)
         // let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)
         
-        let con = transitionContext.containerView()
+        let con = transitionContext.containerView
         
         // let r1start = transitionContext.initialFrame(for:vc1!)
         // let r2end = transitionContext.finalFrame(for:vc2!)

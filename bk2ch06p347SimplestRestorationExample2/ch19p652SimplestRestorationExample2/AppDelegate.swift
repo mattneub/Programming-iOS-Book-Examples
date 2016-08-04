@@ -17,7 +17,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         nav.restorationIdentifier = "nav"
         
         self.window!.rootViewController = nav
-        self.window!.backgroundColor = UIColor.white()
+        self.window!.backgroundColor = .white
         self.window!.restorationIdentifier = "window"
         self.window!.makeKeyAndVisible()
         return true

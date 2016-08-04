@@ -22,13 +22,13 @@ class ViewController: UIViewController {
     @IBAction func doStart (_ sender:AnyObject!) {
         self.prog.progress = 0
         self.iv.image = nil
-        let del = UIApplication.shared().delegate as! AppDelegate
+        let del = UIApplication.shared.delegate as! AppDelegate
         del.startDownload(self)
     }
     
     func grabPicture () {
         NSLog("%@", "grabbing picture")
-        let del = UIApplication.shared().delegate as! AppDelegate
+        let del = UIApplication.shared.delegate as! AppDelegate
         self.iv.image = del.image
         del.image = nil
         if self.iv.image != nil {

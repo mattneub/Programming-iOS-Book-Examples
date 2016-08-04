@@ -3,7 +3,7 @@
 import UIKit
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 func lend<T where T:NSObject> (closure:(T)->()) -> T {
     let orig = T()

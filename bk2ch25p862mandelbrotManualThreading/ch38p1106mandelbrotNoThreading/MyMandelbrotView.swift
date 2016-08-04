@@ -56,7 +56,7 @@ class MyMandelbrotView : UIView {
     
     // jumping-off point: draw the Mandelbrot set
     func drawThatPuppy () {
-        UIApplication.shared().beginIgnoringInteractionEvents()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         self.makeBitmapContext(size:self.bounds.size)
         let center = CGPoint(self.bounds.midX, self.bounds.midY)
         let d = ["center":NSValue(cgPoint: center), "zoom":CGFloat(1)]
@@ -74,7 +74,7 @@ class MyMandelbrotView : UIView {
     // called on main thread! background thread exit point
     func allDone() {
         self.setNeedsDisplay()
-        UIApplication.shared().endIgnoringInteractionEvents()
+        UIApplication.shared.endIgnoringInteractionEvents()
     }
     
     // ==== changes end

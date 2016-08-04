@@ -10,7 +10,7 @@ class ViewController: UIViewController {
     
     var hide = false
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return self.hide
     }
 

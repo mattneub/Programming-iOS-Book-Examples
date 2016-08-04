@@ -17,7 +17,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         self.setUpPageViewController()
         
-        self.window!.backgroundColor = UIColor.white()
+        self.window!.backgroundColor = .white
         self.window!.makeKeyAndVisible()
         return true
     }
@@ -94,10 +94,10 @@ extension AppDelegate : UIPageViewControllerDataSource {
                     return
                 }
                 let dir : UIPageViewControllerNavigationDirection = which == 0 ? .reverse : .forward
-                UIApplication.shared().beginIgnoringInteractionEvents()
+                UIApplication.shared.beginIgnoringInteractionEvents()
                 pvc.setViewControllers([vc!], direction: dir, animated: true) {
                     _ in
-                    UIApplication.shared().endIgnoringInteractionEvents()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                 }
             })
         }

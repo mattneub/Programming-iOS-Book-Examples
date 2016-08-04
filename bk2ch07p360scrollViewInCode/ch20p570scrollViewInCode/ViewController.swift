@@ -3,7 +3,7 @@
 import UIKit
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 extension CGRect {
@@ -37,7 +37,7 @@ class ViewController : UIViewController {
         let sv = UIScrollView(frame: self.view.bounds)
         sv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(sv)
-        sv.backgroundColor = UIColor.white()
+        sv.backgroundColor = .white
         var y : CGFloat = 10
         for i in 0 ..< 30 {
             let lab = UILabel()

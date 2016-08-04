@@ -19,7 +19,7 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     // but if you adapt PageSheet to PageSheet you get FullScreen?????
     
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
-        let d = segue.destinationViewController
+        let d = segue.destination
         if segue.identifier == "test1" {
             self.adaptiveType = .none
             d.presentationController!.delegate = self

@@ -4,7 +4,7 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 func lend<T where T:NSObject> (closure:(T)->()) -> T {
@@ -122,11 +122,11 @@ class StyledText: UIView {
         let lm = self.lm as! MyLayoutManager
         lm.wordRange = characterRange
         self.setNeedsDisplay()
-        UIApplication.shared().beginIgnoringInteractionEvents()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         delay(0.3) {
             lm.wordRange = NSMakeRange(0, 0)
             self.setNeedsDisplay()
-            UIApplication.shared().endIgnoringInteractionEvents()
+            UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
 

@@ -65,7 +65,7 @@ class ViewController: UIViewController {
     
     var curplayer : PlayerPauser!
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
@@ -107,7 +107,7 @@ class ViewController: UIViewController {
         // cover the black QuickTime background, heh heh
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
-        v.backgroundColor = UIColor.white()
+        v.backgroundColor = .white
         vc.contentOverlayView!.addSubview(v)
         let c : [NSLayoutConstraint] = [
             v.leadingAnchor.constraint(equalTo:v.superview!.leadingAnchor),
@@ -179,7 +179,7 @@ class ViewController: UIViewController {
         self.qp.play()
         self.curplayer = self.qp
         
-        UIApplication.shared().beginReceivingRemoteControlEvents()
+        UIApplication.shared.beginReceivingRemoteControlEvents()
         
         self.ob = self.qp.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(0.5, 600), queue: nil, using: self.timerFired)
         
@@ -250,7 +250,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
-        UIApplication.shared().beginReceivingRemoteControlEvents()
+        UIApplication.shared.beginReceivingRemoteControlEvents()
     }
     
     override func remoteControlReceived(with event: UIEvent?) {

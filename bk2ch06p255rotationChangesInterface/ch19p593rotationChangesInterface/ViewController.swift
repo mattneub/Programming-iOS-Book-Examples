@@ -17,7 +17,7 @@ class ViewController : UIViewController {
         f.size.width /= 3.0
         f.origin.x = -f.size.width
         let gr = UIView(frame:f)
-        gr.backgroundColor = UIColor.green()
+        gr.backgroundColor = UIColor.green
         return gr
     }
     

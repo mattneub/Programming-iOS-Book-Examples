@@ -3,7 +3,7 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 @UIApplicationMain
@@ -33,7 +33,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func doAlert(_ n:UILocalNotification) {
         print("creating alert")
-        let inactive = UIApplication.shared().applicationState == .inactive
+        let inactive = UIApplication.shared.applicationState == .inactive
         let s = inactive ? "inactive" : "active"
         let alert = UIAlertController(title: "Hey",
             message: "While \(s), I received a local notification: \(n.alertBody)",

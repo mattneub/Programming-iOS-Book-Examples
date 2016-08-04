@@ -42,7 +42,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         return arr[0] as! Cell
         }()
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
@@ -69,7 +69,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         let b2 = UIBarButtonItem(title:"Delete", style:.plain, target:self, action:#selector(doDelete(_:)))
         self.navigationItem.rightBarButtonItem = b2
         
-        self.collectionView!.backgroundColor = UIColor.white()
+        self.collectionView!.backgroundColor = .white
         self.collectionView!.allowsMultipleSelection = true
         
         // register cell, comes from a nib even though we are using a storyboard

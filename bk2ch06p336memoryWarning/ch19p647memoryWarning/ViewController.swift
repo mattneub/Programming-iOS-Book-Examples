@@ -110,7 +110,7 @@ class ViewController : UIViewController {
     // private API (you'd have to remove it from shipping code)
     
     @IBAction func doButton2(_ sender: AnyObject) {
-        UIApplication.shared().perform(#selector(Dummy._performMemoryWarning))
+        UIApplication.shared.perform(#selector(Dummy._performMemoryWarning))
     }
     
     // backgrounding

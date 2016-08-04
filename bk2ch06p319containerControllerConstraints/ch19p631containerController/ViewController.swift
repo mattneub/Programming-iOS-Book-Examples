@@ -28,7 +28,7 @@ class ViewController : UIViewController {
     }
     
     @IBAction func doFlip(_ sender:AnyObject?) {
-        UIApplication.shared().beginIgnoringInteractionEvents()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         let fromvc = self.swappers[cur]
         cur = cur == 0 ? 1 : 0
         let tovc = self.swappers[cur]
@@ -52,7 +52,7 @@ class ViewController : UIViewController {
                 // note: when we call add, we must call "did" afterwards
                 tovc.didMove(toParentViewController: self)
                 fromvc.removeFromParentViewController() // "did" called for us
-                UIApplication.shared().endIgnoringInteractionEvents()
+                UIApplication.shared.endIgnoringInteractionEvents()
             })
     }
     

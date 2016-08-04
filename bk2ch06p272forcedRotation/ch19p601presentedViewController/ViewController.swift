@@ -26,7 +26,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         print("vc did disappear")
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask  {
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask  {
         print("first supported")
         return .portrait
     }

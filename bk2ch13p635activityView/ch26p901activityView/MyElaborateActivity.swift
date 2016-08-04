@@ -7,7 +7,7 @@ class MyElaborateActivity : UIActivity {
     var image : UIImage
     
     override init() {
-        let idiom = UIScreen.main().traitCollection.userInterfaceIdiom
+        let idiom = UIScreen.main.traitCollection.userInterfaceIdiom
         var scale : CGFloat = (idiom == .pad ? 76 : 60) - 10
         let im = UIImage(named:"sunglasses.png")!
         let largerSize = fmax(im.size.height, im.size.width)

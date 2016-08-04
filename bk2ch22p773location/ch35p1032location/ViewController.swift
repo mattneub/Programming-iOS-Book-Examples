@@ -36,7 +36,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: .default) {
                 _ in
                 let url = URL(string:UIApplicationOpenSettingsURLString)!
-                UIApplication.shared().open(url)
+                UIApplication.shared.open(url)
             })
             self.present(alert, animated:true)
             return false

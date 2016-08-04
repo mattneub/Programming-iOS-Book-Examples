@@ -9,13 +9,13 @@ class ViewController : UIViewController {
     
     // big news, this API is now much nicer
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         
-        print(UIApplication.shared().statusBarOrientation.rawValue)
+        print(UIApplication.shared.statusBarOrientation.rawValue)
         
-        print(UIDevice.current().orientation.rawValue)
+        print(UIDevice.current.orientation.rawValue)
         
-        let result = UIDeviceOrientationIsLandscape(UIDevice.current().orientation)
+        let result = UIDeviceOrientationIsLandscape(UIDevice.current.orientation)
         print(result)
         
         // more big news, this next line now won't compile! Swift protects you

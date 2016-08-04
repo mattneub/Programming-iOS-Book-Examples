@@ -14,7 +14,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let theRVC = RootViewController()
         self.window!.rootViewController = theRVC
         
-        self.window!.backgroundColor = UIColor.white()
+        self.window!.backgroundColor = .white
         self.window!.makeKeyAndVisible()
         return true
         

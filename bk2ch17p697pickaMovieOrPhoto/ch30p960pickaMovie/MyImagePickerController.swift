@@ -4,7 +4,7 @@ import UIKit
 
 class MyImagePickerController: UIImagePickerController {
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         return self.presentingViewController!.supportedInterfaceOrientations()
     }
 

@@ -4,7 +4,7 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 class MyHeaderView : UITableViewHeaderFooterView {
@@ -20,7 +20,7 @@ class RootViewController : UITableViewController {
     var sectionData = [[String]]()
     var hiddenSections = Set<Int>()
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     

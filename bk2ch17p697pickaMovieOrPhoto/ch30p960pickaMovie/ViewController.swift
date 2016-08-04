@@ -7,14 +7,14 @@ import AVKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 
 class ViewController: UIViewController {
     @IBOutlet var redView : UIView!
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         if self.traitCollection.userInterfaceIdiom == .pad {
             return .all
         }
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default) {
                 _ in
                 let url = URL(string:UIApplicationOpenSettingsURLString)!
-                UIApplication.shared().open(url)
+                UIApplication.shared.open(url)
             })
             self.present(alert, animated:true)
             return false

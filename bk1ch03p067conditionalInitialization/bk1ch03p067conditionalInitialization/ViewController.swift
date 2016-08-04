@@ -82,16 +82,16 @@ class ViewController: UIViewController {
     func btiExample() {
         /*
         do {
-            let bti = UIApplication.shared().beginBackgroundTask {
-                    UIApplication.shared().endBackgroundTask(bti)
+            let bti = UIApplication.shared.beginBackgroundTask {
+                    UIApplication.shared.endBackgroundTask(bti)
                 } // error: variable used within its own initial value
         }
 */
         /*
         do {
             var bti : UIBackgroundTaskIdentifier
-            bti = UIApplication.shared().beginBackgroundTask {
-                    UIApplication.shared().endBackgroundTask(bti)
+            bti = UIApplication.shared.beginBackgroundTask {
+                    UIApplication.shared.endBackgroundTask(bti)
                 } // error: variable captured by a closure before being initialized
         }
 */

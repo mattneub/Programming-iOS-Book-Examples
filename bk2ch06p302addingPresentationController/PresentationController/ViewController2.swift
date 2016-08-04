@@ -18,7 +18,7 @@ class ViewController2: UIViewController {
         // customize presentation only on iPhone
         // how will we find out which it is? we have no traitCollection yet...
         // I know, let's ask the window
-        if UIApplication.shared().keyWindow!.traitCollection.userInterfaceIdiom == .phone {
+        if UIApplication.shared.keyWindow!.traitCollection.userInterfaceIdiom == .phone {
             self.modalPresentationStyle = .custom
         }
     }
@@ -29,15 +29,15 @@ class ViewController2: UIViewController {
 }
 
 extension ViewController2 : UIViewControllerTransitioningDelegate {
-    func presentationController(forPresentedViewController presented: UIViewController, presenting: UIViewController?, sourceViewController source: UIViewController) -> UIPresentationController? {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         let pc = MyPresentationController(presentedViewController: presented, presenting: presenting)
         return pc
     }
 }
 
 class MyPresentationController : UIPresentationController {
-    override func frameOfPresentedViewInContainerView() -> CGRect {
-        return super.frameOfPresentedViewInContainerView().insetBy(dx: 40, dy: 40)
+    override var frameOfPresentedViewInContainerView : CGRect {
+        return super.frameOfPresentedViewInContainerView.insetBy(dx: 40, dy: 40)
     }
 }
 
@@ -70,7 +70,7 @@ extension MyPresentationController {
     override func dismissalTransitionWillBegin() {
         let con = self.containerView!
         let shadow = con.subviews[0]
-        let tc = self.presentedViewController.transitionCoordinator()!
+        let tc = self.presentedViewController.transitionCoordinator!
         tc.animate(alongsideTransition: {
             _ in
             shadow.alpha = 0
@@ -82,8 +82,8 @@ extension MyPresentationController {
 // ===========================
 
 extension MyPresentationController {
-    override func presentedView() -> UIView? {
-        let v = super.presentedView()!
+    override var presentedView : UIView? {
+        let v = super.presentedView!
         v.layer.cornerRadius = 6
         v.layer.masksToBounds = true
         return v
@@ -114,22 +114,22 @@ extension MyPresentationController {
 
 extension ViewController2 /* UIViewControllerTransitioningDelegate */ {
     @objc(animationControllerForPresentedController:presentingController:sourceController:)
-    func animationController(forPresentedController presented: UIViewController, presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         // return nil
         return self
     }
 }
 
 extension ViewController2 : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.4
     }
     
-    func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         // let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)
         let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)
         
-        let con = transitionContext.containerView()
+        let con = transitionContext.containerView
         
         // let r1start = transitionContext.initialFrame(for:vc1!)
         let r2end = transitionContext.finalFrame(for:vc2!)
@@ -158,7 +158,7 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
 extension ViewController2 {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let tc = self.transitionCoordinator() {
+        if let tc = self.transitionCoordinator {
             tc.animate(alongsideTransition:{
                 _ in
                 self.buttonTopConstraint.constant += 200

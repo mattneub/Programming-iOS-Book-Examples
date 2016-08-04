@@ -60,9 +60,9 @@ class MyMandelbrotView : UIView {
         let center = CGPoint(self.bounds.midX, self.bounds.midY)
         // to test, increase MANDELBROT_STEPS and suspend while still calculating
         var bti : UIBackgroundTaskIdentifier = 0
-        bti = UIApplication.shared()
+        bti = UIApplication.shared
             .beginBackgroundTask {
-                UIApplication.shared().endBackgroundTask(bti)
+                UIApplication.shared.endBackgroundTask(bti)
             }
         if bti == UIBackgroundTaskInvalid {
             return
@@ -76,7 +76,7 @@ class MyMandelbrotView : UIView {
 
                 self.bitmapContext = bitmap
                 self.setNeedsDisplay()
-                UIApplication.shared().endBackgroundTask(bti)
+                UIApplication.shared.endBackgroundTask(bti)
             }
         }
     }

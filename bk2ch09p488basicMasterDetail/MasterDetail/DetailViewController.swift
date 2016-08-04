@@ -38,7 +38,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white()
+        self.view.backgroundColor = .white
         let lab = UILabel(frame:CGRect(100,100,100,30))
         self.view.addSubview(lab)
         self.lab = lab

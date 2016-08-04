@@ -25,7 +25,7 @@ class SecondViewController : UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if self.isBeingDismissed() {
+        if self.isBeingDismissed {
             self.delegate?.accept(data:"Even more important data!")
         }
     }
@@ -35,16 +35,16 @@ class SecondViewController : UIViewController {
     missing in initial seeds of iOS 8, restored in seed 4
 */
 
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return true
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         print("second supported")
         return .landscape
     }
     
-    override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
+    override var preferredInterfaceOrientationForPresentation : UIInterfaceOrientation {
         return .landscapeLeft
     }
     

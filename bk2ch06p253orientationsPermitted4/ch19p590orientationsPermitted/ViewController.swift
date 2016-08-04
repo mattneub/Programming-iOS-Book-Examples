@@ -3,8 +3,9 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
+
 
 class ViewController : UIViewController {
     @IBOutlet var lab: UILabel!
@@ -20,31 +21,31 @@ class ViewController : UIViewController {
         self.adjustLabel()
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         
         // aha, this explains why we are called so many times;
         // at first, the device doesn't have an orientation yet
-        let orientation = UIDevice.current().orientation
+        let orientation = UIDevice.current.orientation
         print("supported, device \(orientation.rawValue)")
         
         if orientation != .unknown {
             print("self \(self.interfaceOrientation.rawValue)")
             // but the above is deprecated in iOS 8
-            print("status bar \(UIApplication.shared().statusBarOrientation.rawValue)")
+            print("status bar \(UIApplication.shared.statusBarOrientation.rawValue)")
         }
         // return super.supportedInterfaceOrientations()
         return .all // this includes upside down if info.plist includes it
     }
     
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         
-        let orientation = UIDevice.current().orientation
+        let orientation = UIDevice.current.orientation
         print("should, device \(orientation.rawValue)")
         
         if orientation != .unknown {
             print("self \(self.interfaceOrientation.rawValue)")
             // but the above is deprecated in iOS 8
-            print("status bar \(UIApplication.shared().statusBarOrientation.rawValue)")
+            print("status bar \(UIApplication.shared.statusBarOrientation.rawValue)")
         }
         // return true
         return self.shouldRotate
@@ -72,14 +73,14 @@ class ViewController : UIViewController {
         // call super
         super.viewWillTransition(to:size, with: coordinator)
         print("will transition size change to \(size)")
-        print("with target transform \(coordinator.targetTransform())") // *
+        print("with target transform \(coordinator.targetTransform)") // *
         // apparently does not mean that anyone will actually have this transform ultimately
         // it's just a way of describing what the effective rotation is?
-        print("screen bounds: \(UIScreen.main().bounds)")
-        print("screen native bounds: \(UIScreen.main().nativeBounds)")
-        print("screen coord space bounds: \(UIScreen.main().coordinateSpace.bounds)") // *
-        print("screen fixed space bounds: \(UIScreen.main().fixedCoordinateSpace.bounds)") // *
-        let r = self.view.convert(self.lab.frame, to: UIScreen.main().fixedCoordinateSpace)
+        print("screen bounds: \(UIScreen.main.bounds)")
+        print("screen native bounds: \(UIScreen.main.nativeBounds)")
+        print("screen coord space bounds: \(UIScreen.main.coordinateSpace.bounds)") // *
+        print("screen fixed space bounds: \(UIScreen.main.fixedCoordinateSpace.bounds)") // *
+        let r = self.view.convert(self.lab.frame, to: UIScreen.main.fixedCoordinateSpace)
         print("label's frame converted into fixed space: \(r)")
         print("window frame: \(self.view.window!.frame)")
         print("window bounds: \(self.view.window!.bounds)")
@@ -89,19 +90,19 @@ class ViewController : UIViewController {
             _ in
             print("transitioning size change to \(size)")
             // arrow keeps pointing to physical top of device
-            self.v.transform = coordinator.targetTransform().invert().concat(self.v.transform)
+            self.v.transform = coordinator.targetTransform.inverted().concatenating(self.v.transform)
             }, completion: {
                 _ in
                 // showing that in iOS 8 the screen itself changes "size"
                 print("did transition size change to \(size)")
-                print("screen bounds: \(UIScreen.main().bounds)")
-                print("screen native bounds: \(UIScreen.main().nativeBounds)")
+                print("screen bounds: \(UIScreen.main.bounds)")
+                print("screen native bounds: \(UIScreen.main.nativeBounds)")
                 // screen native bounds do not change and are expressed in scale resolution
-                print("screen coord space bounds: \(UIScreen.main().coordinateSpace.bounds)")
-                print("screen fixed space bounds: \(UIScreen.main().fixedCoordinateSpace.bounds)")
+                print("screen coord space bounds: \(UIScreen.main.coordinateSpace.bounds)")
+                print("screen fixed space bounds: \(UIScreen.main.fixedCoordinateSpace.bounds)")
                 // concentrate on the green label and think about these numbers:
                 // the fixed coordinate space's top left is glued to the top left of the physical device
-                let r = self.view.convert(self.lab.frame, to: UIScreen.main().fixedCoordinateSpace)
+                let r = self.view.convert(self.lab.frame, to: UIScreen.main.fixedCoordinateSpace)
                 print("label's frame converted into fixed space: \(r)")
                 print("window frame: \(self.view.window!.frame)")
                 print("window bounds: \(self.view.window!.bounds)")

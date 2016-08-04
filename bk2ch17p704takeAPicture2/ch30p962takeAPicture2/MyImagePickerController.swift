@@ -3,7 +3,7 @@
 import UIKit
 
 class MyImagePickerController : UIImagePickerController {
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     override func childViewControllerForStatusBarHidden() -> UIViewController? {

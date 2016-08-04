@@ -156,7 +156,7 @@ extension AppDelegate : UIViewControllerInteractiveTransitioning {
         let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)!
         let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
         
-        let con = transitionContext.containerView()
+        let con = transitionContext.containerView
         
         let r1start = transitionContext.initialFrame(for:vc1)
         let r2end = transitionContext.finalFrame(for:vc2)
@@ -185,11 +185,11 @@ extension AppDelegate : UIViewControllerInteractiveTransitioning {
 
 extension AppDelegate : UIViewControllerAnimatedTransitioning {
     
-    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.4
     }
     
-    func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
     }
 }

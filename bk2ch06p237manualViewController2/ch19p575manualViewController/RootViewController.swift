@@ -26,7 +26,7 @@ class RootViewController: UIViewController {
         
         let v = self.view!
         
-        v.backgroundColor = UIColor.green()
+        v.backgroundColor = UIColor.green
         
         let label = UILabel()
         v.addSubview(label)

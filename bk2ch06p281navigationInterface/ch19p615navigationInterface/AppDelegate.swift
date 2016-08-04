@@ -29,7 +29,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        self.window!.tintColor = UIColor.orange() // gag... Just proving this is inherited
+        self.window!.tintColor = .orange // gag... Just proving this is inherited
         
         // nav bar is configured (horribly) in the storyboard
         

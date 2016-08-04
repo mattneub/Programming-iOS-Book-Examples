@@ -9,7 +9,7 @@ class MyDynamicAnimator : UIDynamicAnimator {
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 class MyFlowLayout : UICollectionViewFlowLayout {
@@ -76,7 +76,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
     }
     
     func flush () {
-        UIApplication.shared().beginIgnoringInteractionEvents()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         
         let visworld = self.collectionView!.bounds
         let anim = MyDynamicAnimator(collectionViewLayout:self)
@@ -118,7 +118,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
                 delay(0.4) { // looks better if there's a pause
                     self.animating = false
                     self.invalidateLayout()
-                    UIApplication.shared().endIgnoringInteractionEvents()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                 }
             }
         }

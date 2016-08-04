@@ -12,7 +12,7 @@ class ViewController : UIViewController {
         let sv = UIScrollView()
         self.sv = sv
         
-        sv.backgroundColor = UIColor.white()
+        sv.backgroundColor = .white
         sv.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sv)
         var con = [NSLayoutConstraint]()

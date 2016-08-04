@@ -109,7 +109,7 @@ class ViewController : UIViewController {
         let url = Bundle.main.urlForResource(name,
                 withExtension:ext)!
         let src = CGImageSourceCreateWithURL(url, nil)!
-        let scale = UIScreen.main().scale
+        let scale = UIScreen.main.scale
         let w : CGFloat = 20 * scale
         let d : [NSObject:AnyObject] = [
             kCGImageSourceShouldAllowFloat : true,

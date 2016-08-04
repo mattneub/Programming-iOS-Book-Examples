@@ -4,7 +4,7 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 extension CGRect {
@@ -38,7 +38,7 @@ class ViewController : UIViewController {
         super.viewDidLoad()
         
         let sv = UIScrollView()
-        sv.backgroundColor = UIColor.white()
+        sv.backgroundColor = .white
         sv.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sv)
         var con = [NSLayoutConstraint]()

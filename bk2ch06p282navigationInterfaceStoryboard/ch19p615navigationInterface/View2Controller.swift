@@ -15,7 +15,7 @@ class View2Controller : UIViewController {
     }
     
     override func viewDidLoad() {
-        self.view.backgroundColor = UIColor.red() // just so we know we're here
+        self.view.backgroundColor = .red // just so we know we're here
     }
     
     // with a back button, we get "pop" for free, both by tapping the button...

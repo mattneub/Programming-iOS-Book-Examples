@@ -7,7 +7,7 @@ class DocumentLister: UITableViewController {
     var files = [URL]()
     var docsurl : URL {
         var url = NSURL() as URL // stopgap
-        let del = UIApplication.shared().delegate
+        let del = UIApplication.shared.delegate
         if let ubiq = (del as! AppDelegate).ubiq {
             url = ubiq
         } else {

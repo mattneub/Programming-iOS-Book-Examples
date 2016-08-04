@@ -18,8 +18,8 @@ I can think of various ways we can wind up launching into landscape:
 
 class ViewController: UIViewController, UINavigationControllerDelegate {
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return super.supportedInterfaceOrientations()
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return super.supportedInterfaceOrientations
         return .landscape
     }
     

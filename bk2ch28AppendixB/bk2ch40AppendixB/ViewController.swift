@@ -4,7 +4,7 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 extension CGRect {
@@ -52,7 +52,7 @@ extension NSLayoutConstraint {
     class func reportAmbiguity (_ v:UIView?) {
         var v = v
         if v == nil {
-            v = UIApplication.shared().keyWindow
+            v = UIApplication.shared.keyWindow
         }
         for vv in v!.subviews {
             print("\(vv) \(vv.hasAmbiguousLayout())")
@@ -64,7 +64,7 @@ extension NSLayoutConstraint {
     class func listConstraints (_ v:UIView?) {
         var v = v
         if v == nil {
-            v = UIApplication.shared().keyWindow
+            v = UIApplication.shared.keyWindow
         }
         for vv in v!.subviews {
             let arr1 = vv.constraintsAffectingLayout(for:.horizontal)

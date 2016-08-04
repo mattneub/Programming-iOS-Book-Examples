@@ -31,7 +31,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        self.window!.tintColor = UIColor.red() // prove that bar item tint color is inherited
+        self.window!.tintColor = .red // prove that bar item tint color is inherited
         
         UITabBarItem.appearance().setTitleTextAttributes([
             NSFontAttributeName:UIFont(name:"Avenir-Heavy", size:14)!
@@ -53,7 +53,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
                    withAttributes:[
                     NSFontAttributeName:ding,
                     NSParagraphStyleAttributeName:p,
-                    NSForegroundColorAttributeName:UIColor.red()])
+                    NSForegroundColorAttributeName:UIColor.red])
         }
 
         

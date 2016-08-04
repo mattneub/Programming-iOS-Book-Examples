@@ -8,7 +8,7 @@ class RootViewController : UITableViewController {
     var sectionNames = [String]()
     var sectionData = [[String]]()
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     

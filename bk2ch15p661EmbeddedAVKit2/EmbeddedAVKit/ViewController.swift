@@ -31,11 +31,11 @@ class ViewController: UIViewController {
     
     var didInitialLayout = false
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 
-//    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+//    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
 //        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
 //            return UIInterfaceOrientationMask.All
 //        }

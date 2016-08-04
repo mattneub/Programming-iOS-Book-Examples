@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     func registerMyNotification() {
         print("checking for notification permissions")
-        if let settings = UIApplication.shared().currentUserNotificationSettings() {
+        if let settings = UIApplication.shared.currentUserNotificationSettings() {
             if let cats = settings.categories {
                 for cat in cats {
                     if cat.identifier == self.categoryIdentifier { // we are already registered
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
             NotificationCenter.default.removeObserver(ob)
             self.createLocalNotification()
         }
-        UIApplication.shared().registerUserNotificationSettings(settings)
+        UIApplication.shared.registerUserNotificationSettings(settings)
         // if this app has never requested this registration,
         // it will put up a dialog asking if we can present alerts etc.
         // when the user accepts or refuses,
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
         ln.fireDate = NSDate(timeIntervalSinceNow:15) as Date
         ln.soundName = UILocalNotificationDefaultSoundName
         // ln.repeatInterval = .Minute
-        UIApplication.shared().scheduleLocalNotification(ln)
+        UIApplication.shared.scheduleLocalNotification(ln)
     }
     /*
     If user has denied alerts/sounds, trying to schedule the above notification...

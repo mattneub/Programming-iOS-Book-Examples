@@ -29,19 +29,19 @@ extension CGVector {
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 class ViewController: UIViewController {
     
     var didInitialLayout = false
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.current().userInterfaceIdiom == .pad {
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             return .all
         }
         return .landscape
@@ -152,7 +152,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         vc.videoPath = path
         // must set to popover _manually_ on iPad! exception on presentation if you don't
         // could just set it; works fine as adaptive on iPhone
-        if UIDevice.current().userInterfaceIdiom == .pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             vc.modalPresentationStyle = .popover
         }
         self.present(vc, animated: true)

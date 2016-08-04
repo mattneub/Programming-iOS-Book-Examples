@@ -11,7 +11,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let nav = UINavigationController(rootViewController:
             RootViewController(nibName: "RootViewController", bundle: nil))
         self.window!.rootViewController = nav
-        self.window!.backgroundColor = UIColor.white()
+        self.window!.backgroundColor = .white
         self.window!.makeKeyAndVisible()
         return true
     }

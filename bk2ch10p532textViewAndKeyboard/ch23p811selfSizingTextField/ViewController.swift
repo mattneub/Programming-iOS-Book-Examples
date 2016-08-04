@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITextViewDelegate {
 
     }
     
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return !self.keyboardShowing
     }
     

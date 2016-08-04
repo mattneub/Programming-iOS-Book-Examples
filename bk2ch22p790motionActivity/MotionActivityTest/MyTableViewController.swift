@@ -117,7 +117,7 @@ class MyTableViewController: UITableViewController {
         cell.textLabel!.text = format.string(from: act.startDate)
         cell.detailTextLabel!.text = act.overallAct()
         
-        cell.backgroundColor = UIColor.white()
+        cell.backgroundColor = .white
         if act.automotive {
             cell.backgroundColor = UIColor.red()
         }

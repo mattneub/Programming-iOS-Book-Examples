@@ -4,7 +4,7 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 @UIApplicationMain
@@ -104,16 +104,16 @@ extension AppDelegate : UIGestureRecognizerDelegate {
 
 extension AppDelegate : UIViewControllerAnimatedTransitioning {
 
-    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.4
     }
     
-    func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
         let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)!
         let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
         
-        let con = transitionContext.containerView()
+        let con = transitionContext.containerView
         
         let r1start = transitionContext.initialFrame(for:vc1)
         let r2end = transitionContext.finalFrame(for:vc2)
@@ -139,7 +139,7 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         let opts : UIViewAnimationOptions = self.interacting ? .curveLinear : []
         
         if !self.interacting {
-            UIApplication.shared().beginIgnoringInteractionEvents()
+            UIApplication.shared.beginIgnoringInteractionEvents()
         }
         UIView.animate(withDuration:0.4, delay:0, options:opts, animations: {
             v1.frame = r1end
@@ -147,10 +147,10 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
             }, completion: {
                 _ in
                 delay (0.1) { // needed to solve "black ghost" problem after partial gesture
-                    let cancelled = transitionContext.transitionWasCancelled()
+                    let cancelled = transitionContext.transitionWasCancelled
                     transitionContext.completeTransition(!cancelled)
-                    if UIApplication.shared().isIgnoringInteractionEvents() {
-                        UIApplication.shared().endIgnoringInteractionEvents()
+                    if UIApplication.shared.isIgnoringInteractionEvents {
+                        UIApplication.shared.endIgnoringInteractionEvents()
                     }
                 }
             })

@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return self.fr == nil
     }
     

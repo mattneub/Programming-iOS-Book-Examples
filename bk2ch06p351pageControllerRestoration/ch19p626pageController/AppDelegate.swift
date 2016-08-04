@@ -11,7 +11,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         self.setUpPageViewController()
         
-        self.window!.backgroundColor = UIColor.white()
+        self.window!.backgroundColor = .white
         self.window!.makeKeyAndVisible()
         return true
     }

@@ -36,7 +36,7 @@ class PresentedViewController : UIViewController {
             for:.touchUpInside)
         button.sizeToFit()
         button.center = self.view.center
-        button.backgroundColor = UIColor.white()
+        button.backgroundColor = .white
         self.view.addSubview(button)
     }
     

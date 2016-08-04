@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         self.present(vc, animated: true)
 
         let wv = UIWebView()
-        wv.backgroundColor = UIColor.white()
+        wv.backgroundColor = .white
         vc.view.addSubview(wv)
         wv.frame = vc.view.bounds
         wv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
             print(pop)
             pop.sourceView = (sender as! UIView)
             pop.sourceRect = (sender as! UIView).bounds
-            pop.backgroundColor = UIColor.white()
+            pop.backgroundColor = .white
         }
         
         // that alone is completely sufficient, on iOS 8, for iPad and iPhone!

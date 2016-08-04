@@ -26,16 +26,16 @@ extension AppDelegate : UITabBarControllerDelegate {
 
 extension AppDelegate : UIViewControllerAnimatedTransitioning {
     
-    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.4
     }
     
-    func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
         let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)!
         let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
         
-        let con = transitionContext.containerView()
+        let con = transitionContext.containerView
         print(con)
         
         let r1start = transitionContext.initialFrame(for:vc1)
@@ -58,14 +58,14 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         v2.frame = r2start
         con.addSubview(v2)
         
-        UIApplication.shared().beginIgnoringInteractionEvents()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         UIView.animate(withDuration:0.4, animations: {
             v1.frame = r1end
             v2.frame = r2end
             }, completion: {
                 _ in
                 transitionContext.completeTransition(true)
-                UIApplication.shared().endIgnoringInteractionEvents()
+                UIApplication.shared.endIgnoringInteractionEvents()
             })
     }
 }

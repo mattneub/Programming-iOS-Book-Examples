@@ -21,10 +21,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let b = svc.displayModeButtonItem()
         detail.navigationItem.leftBarButtonItem = b
         
-        self.window!.backgroundColor = UIColor.white()
+        self.window!.backgroundColor = .white
         self.window!.makeKeyAndVisible()
         
-//        let tc = UIScreen.main().traitCollection
+//        let tc = UIScreen.main.traitCollection
 //        if tc.horizontalSizeClass == .Regular {
 //            self.didExpand = true
 //        }

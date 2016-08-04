@@ -49,7 +49,7 @@ class PrimaryViewController : UIViewController {
         let seg = sender as! UISegmentedControl
         switch seg.selectedSegmentIndex {
         case 0:
-            vc.view.backgroundColor = UIColor.white()
+            vc.view.backgroundColor = .white
         case 1:
             vc.view.backgroundColor = UIColor.red()
         default:break

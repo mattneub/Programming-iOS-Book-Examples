@@ -3,7 +3,7 @@ import UIKit
 
 func delay(_ delay:Double, closure:()->()) {
     let when = DispatchTime.now() + delay
-    DispatchQueue.main.after(when: when, execute: closure)
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
 class ViewController : UIViewController {
@@ -146,7 +146,7 @@ class ViewController : UIViewController {
         let vc = UIViewController()
         vc.modalPresentationStyle = .currentContext // oooh
         vc.view.frame = CGRect(0,0,300,300)
-        vc.view.backgroundColor = UIColor.white()
+        vc.view.backgroundColor = .white
         vc.preferredContentSize = vc.view.bounds.size
         let b = UIButton(type:.system)
         b.setTitle("Done", for:[])

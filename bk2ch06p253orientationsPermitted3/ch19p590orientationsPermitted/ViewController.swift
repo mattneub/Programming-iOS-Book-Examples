@@ -9,7 +9,7 @@ class ViewController : UIViewController {
     // if the app delegate says Landscape,
     // the view controller can't say Portrait
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         // uncomment next line to crash
         // "Supported orientations has no common orientation with the application, and shouldAutorotate is returning YES"
         // return .Portrait
