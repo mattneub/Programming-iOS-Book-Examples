@@ -34,8 +34,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             let b = UIBarButtonItem()
             b.title = "Back"
             list.navigationItem.backBarButtonItem = b // so user can navigation back
-            more.navigationBar.barTintColor = UIColor.red() // ooooh
-            more.navigationBar.tintColor = UIColor.white() // oooh oooh
+            more.navigationBar.barTintColor = .red // ooooh
+            more.navigationBar.tintColor = .white // oooh oooh
             
             let tv = list.view as! UITableView
             let mds = MyDataSource(originalDataSource: tv.dataSource!)
