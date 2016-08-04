@@ -73,7 +73,7 @@ class ViewController : UIViewController {
                 self.configAnimator()
             }
             if anim.state == .active {
-                anim.pauseAnimation()
+                anim.stopAnimation(true)
             }
             fallthrough
         case .changed:
@@ -84,10 +84,6 @@ class ViewController : UIViewController {
             v.center = c
             p.setTranslation(.zero, in: v.superview)
         case .ended:
-            if anim.state == .active {
-                anim.stopAnimation(false)
-                anim.finishAnimation(at: .current)
-            }
             // how far are we from the goal relative to original distance?
             func pyth(_ pt1:CGPoint, _ pt2:CGPoint) -> CGFloat {
                 let x = pt1.x - pt2.x
