@@ -4,7 +4,7 @@ import UIKit
 
 class RootViewController: UIViewController {
     
-    let which = 2
+    let which = 1
     
     override func loadView() {
         switch which {
@@ -35,7 +35,7 @@ class RootViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo:v.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo:v.centerYAnchor),
+            label.centerYAnchor.constraint(equalTo:v.centerYAnchor)
             ])
 
     }

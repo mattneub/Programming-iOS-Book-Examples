@@ -9,7 +9,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        self.window = UIWindow()
+        self.window = self.window ?? UIWindow()
         
         let theRVC = RootViewController()
         self.window!.rootViewController = theRVC
