@@ -4,8 +4,18 @@ import UIKit
 
 class ViewController : UIViewController {
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        print(size)
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .all
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        //print("transition to size", size)
+        NSLog("transition to size %@", NSStringFromCGSize(size))
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        // print("transition to tc", newCollection)
+        NSLog("transition to tc %@ from %@", newCollection, self.traitCollection)
+
+    }
 }

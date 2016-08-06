@@ -20,7 +20,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // we launch upside down and then rotate
         // moreover, behind the scenes there is an extra rotation regardless in iOS 9
         // (we are back to launching always into portrait if we can, even if the user doesn't see it)
-        // return .Landscape
+        // return .landscape
         
         // launch into portrait, then rotate if user is holding in landscape
         return .all // still excludes upside-down

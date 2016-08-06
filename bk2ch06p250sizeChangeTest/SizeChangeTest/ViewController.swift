@@ -53,6 +53,10 @@ class ViewController: UIViewController {
         print("will layout")
     }
 
+    override func viewDidLayoutSubviews() {
+        print("did layout")
+    }
+
 
 }
 

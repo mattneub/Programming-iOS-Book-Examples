@@ -8,7 +8,7 @@ class ViewController: UIViewController {
         print(self.navigationController!.view.bounds.size)
     }
     
-    var hide = false
+    private var hide = false
     
     override var prefersStatusBarHidden : Bool {
         return self.hide
