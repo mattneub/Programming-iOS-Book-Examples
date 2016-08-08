@@ -29,6 +29,23 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
+        switch which {
+        case 0:
+            let v = UIView()
+            v.translatesAutoresizingMaskIntoConstraints = false
+            v.backgroundColor = .black
+            self.view.addSubview(v)
+            self.blackSquare = v
+            NSLayoutConstraint.activate([
+                v.widthAnchor.constraint(equalToConstant: 10),
+                v.heightAnchor.constraint(equalToConstant: 10),
+                v.topAnchor.constraint(equalTo: self.view.topAnchor),
+                v.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            ])
+        default:break
+        }
+ */
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -58,28 +75,19 @@ class ViewController: UIViewController {
     
     let which = 3
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to:size, with:coordinator)
-        if size != self.view.bounds.size {
+    override func viewWillTransition(to sz: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to:sz, with:coordinator)
+        if sz != self.view.bounds.size {
             switch which {
-            case 1:
-                // this one isn't going to work; we haven't changed size yet!
-                if let v = self.blackSquare {
-                    v.center = CGPoint(self.view.bounds.width/2,5)
-                }
-            case 2:
-                // this better, but if we rotate, we see a blip as the square jumps
+            case 1: // too early
+                self.blackSquare?.center = CGPoint(sz.width/2,5)
+            case 2: // too late
                 coordinator.animate(alongsideTransition: nil) { _ in
-                    if let v = self.blackSquare {
-                        v.center = CGPoint(self.view.bounds.width/2,5)
-                    }
+                    self.blackSquare?.center = CGPoint(sz.width/2,5)
                 }
-            case 3:
-                // ahh, just right
+            case 3: // just right
                 coordinator.animate(alongsideTransition:{ _ in
-                    if let v = self.blackSquare {
-                        v.center = CGPoint(self.view.bounds.width/2,5)
-                    }
+                    self.blackSquare?.center = CGPoint(sz.width/2,5)
                 })
             default:break
             }

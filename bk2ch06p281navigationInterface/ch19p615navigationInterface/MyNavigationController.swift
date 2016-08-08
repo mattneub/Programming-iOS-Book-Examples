@@ -5,11 +5,10 @@ import UIKit
 class MyNavigationController: UINavigationController {
 
 //    override var preferredStatusBarStyle : UIStatusBarStyle {
-//        return .LightContent
+//        return .lightContent
 //    }
     
-//    override func childViewControllerForStatusBarStyle() -> UIViewController? {
-//        let vc = super.childViewControllerForStatusBarStyle()
+//    override var childViewControllerForStatusBarStyle : UIViewController? {
 //        return self.topViewController
 //    }
 

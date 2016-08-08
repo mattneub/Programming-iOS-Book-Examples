@@ -8,13 +8,13 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         super.awakeFromNib()
         
         self.title = "First"
-        let b = UIBarButtonItem(image:UIImage(named:"key.png"), style:.plain, target:self, action:#selector(navigate))
-        let b2 = UIBarButtonItem(image:UIImage(named:"files.png"),
+        let b = UIBarButtonItem(image:UIImage(named:"key"), style:.plain, target:self, action:#selector(navigate))
+        let b2 = UIBarButtonItem(image:UIImage(named:"files"),
         style:.plain, target:nil, action:nil)
         self.navigationItem.rightBarButtonItems = [b, b2]
         
         // how to customize back button
-        let b3 = UIBarButtonItem(image:UIImage(named:"files.png"), style:.plain, target:nil, action:nil)
+        let b3 = UIBarButtonItem(image:UIImage(named:"files"), style:.plain, target:nil, action:nil)
         self.navigationItem.backBarButtonItem = b3
 
     }
@@ -42,7 +42,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
     }
     
 //    override var preferredStatusBarStyle : UIStatusBarStyle {
-//        return .LightContent
+//        return .lightContent
 //    }
     
 //    override var prefersStatusBarHidden : Bool {

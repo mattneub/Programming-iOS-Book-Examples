@@ -8,19 +8,19 @@ class FirstViewController : UIViewController {
     @IBAction func doPresent(_ sender:AnyObject?) {
         switch which {
         case 1:
-            let vc = ExtraViewController(nibName: "ExtraViewController", bundle: nil)
+            let vc = ExtraViewController(nibName: nil, bundle: nil)
             self.present(vc, animated: true)
             
         case 2:
             // in iOS 8/9, this works on iPhone as well as iPad!
             // presented vc appears over first vc *inside* tabbed interface
-            let vc = ExtraViewController(nibName: "ExtraViewController", bundle: nil)
+            let vc = ExtraViewController(nibName: nil, bundle: nil)
             self.definesPresentationContext = true
             vc.modalPresentationStyle = .currentContext
             self.present(vc, animated: true)
 
         case 3:
-            let vc = ExtraViewController(nibName: "ExtraViewController", bundle: nil)
+            let vc = ExtraViewController(nibName: nil, bundle: nil)
             
             self.definesPresentationContext = true
             // comment out next line to see the difference
@@ -59,5 +59,6 @@ The following code stops the user from doing that, and so avoids the bug
 extension FirstViewController : UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         return self.presentedViewController == nil
+        return true
     }
 }

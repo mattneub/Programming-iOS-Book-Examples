@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     var firstTime = true
     var nextTraitCollection = UITraitCollection()
     // iPhone 6 plus is the oddball here
-    func greenViewShouldAppear(size sz : CGSize) -> Bool {
+    func greenViewShouldAppear(size sz: CGSize) -> Bool {
         let tc = self.nextTraitCollection
         if tc.horizontalSizeClass == .regular {
             if sz.width > sz.height {
@@ -66,6 +66,8 @@ class ViewController: UIViewController {
     // we _know_ we will get this on rotation and splitscreen changes even on iPad
     override func viewWillTransition(to sz: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to:sz, with:coordinator)
+//        print (self.nextTraitCollection)
+//        print (self.traitCollection)
         if sz != self.view.bounds.size {
             // there are three theoretical possibilities:
             // view is present and needs to disappear
@@ -86,8 +88,7 @@ class ViewController: UIViewController {
                         self.greenView.frame = CGRect(-sz.width/3,0,sz.width/3,sz.height)
                     })
                 }
-            }
-            if self.greenView.window == nil {
+            } else {
                 if self.greenViewShouldAppear(size:sz) {
                     self.greenView.frame = CGRect(-sz.width/3,0,sz.width/3,sz.height)
                     self.view.addSubview(self.greenView)

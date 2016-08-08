@@ -7,11 +7,11 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     @IBAction func doPresent(_ sender:AnyObject?) {
         
         
-        let svc = SecondViewController(nibName: "SecondViewController", bundle: nil)
+        let svc = SecondViewController(nibName: nil, bundle: nil)
         svc.data = "This is very important data!"
         svc.delegate = self
         
-        svc.modalPresentationStyle = .formSheet
+        svc.modalPresentationStyle = .pageSheet
 
         svc.presentationController!.delegate = self // *
         
@@ -48,12 +48,13 @@ extension ViewController : UIAdaptivePresentationControllerDelegate {
         print("adapt!")
         if traitCollection.horizontalSizeClass == .compact {
             return .overFullScreen
+            return .none // try this for a weird result
         }
-        return .none // don't adapt, thank you
+        return .none // don't adapt
     }
     
-    func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
-        let newvc = ThirdViewController(nibName: "ThirdViewController", bundle: nil)
+    func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle: UIModalPresentationStyle) -> UIViewController? {
+        let newvc = ThirdViewController(nibName: nil, bundle: nil)
         newvc.data = "This is very important data!"
         newvc.delegate = self
 

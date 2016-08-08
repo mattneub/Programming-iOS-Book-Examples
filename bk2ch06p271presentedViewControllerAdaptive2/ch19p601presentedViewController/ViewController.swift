@@ -40,7 +40,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         print(adaptive.rawValue, terminator: "")
         print("\t", terminator: "")
 
-        let svc = SecondViewController(nibName: "SecondViewController", bundle: nil)
+        let svc = SecondViewController(nibName: nil, bundle: nil)
         svc.data = "This is very important data!"
         svc.delegate = self
         
@@ -86,7 +86,7 @@ extension ViewController : UIAdaptivePresentationControllerDelegate {
     }
     
     func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
-        let newvc = ThirdViewController(nibName: "ThirdViewController", bundle: nil)
+        let newvc = ThirdViewController(nibName: nil, bundle: nil)
         newvc.data = "This is very important data!"
         newvc.delegate = self
 

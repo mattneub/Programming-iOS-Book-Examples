@@ -28,6 +28,7 @@ class FirstViewController : UIViewController, UITabBarControllerDelegate {
     override var prefersStatusBarHidden : Bool {
         return true
     }
+    
 
     
 }
