@@ -5,43 +5,34 @@ import UIKit
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
     var window : UIWindow?
-    var rightEdger : UIScreenEdgePanGestureRecognizer!
-    var leftEdger : UIScreenEdgePanGestureRecognizer!
     var context : UIViewControllerContextTransitioning? // * phasing out misuse of IUO
     var interacting = false
-    var r1end = CGRect.zero
-    var r2start = CGRect.zero
+    var anim : UIViewImplicitlyAnimating? // cannot be weak, vanishes before end of gesture
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         let tbc = self.window!.rootViewController as! UITabBarController
         tbc.delegate = self
         
-        // keep ref to g.r.s, because can't learn which one it is by asking for "edges" later
-        // (always comes back as None)
         
         let sep = UIScreenEdgePanGestureRecognizer(target:self, action:#selector(pan))
         sep.edges = UIRectEdge.right
         tbc.view.addGestureRecognizer(sep)
         sep.delegate = self
-        self.rightEdger = sep
         
         let sep2 = UIScreenEdgePanGestureRecognizer(target:self, action:#selector(pan))
         sep2.edges = UIRectEdge.left
         tbc.view.addGestureRecognizer(sep2)
         sep2.delegate = self
-        self.leftEdger = sep2
         
         return true
     }
     
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        // for this example, we are interactive _only_, and _we_ are the interactor
-        return self.interacting ? self : nil
+        return self
     }
     
     func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        // no interaction if we didn't use g.r.
         return self.interacting ? self : nil
     }
 }
@@ -52,7 +43,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
         let tbc = self.window!.rootViewController as! UITabBarController
         var result = false
         
-        if g == self.rightEdger {
+        if (g as! UIScreenEdgePanGestureRecognizer).edges == .right {
             result = (tbc.selectedIndex < tbc.viewControllers!.count - 1)
         }
         else {
@@ -62,107 +53,91 @@ extension AppDelegate : UIGestureRecognizerDelegate {
     }
     
     func pan(_ g:UIScreenEdgePanGestureRecognizer) {
-        let v = g.view!
-        let tbc = self.window!.rootViewController as! UITabBarController
-        let delta = g.translation(in:v)
-        let percent = abs(delta.x/v.bounds.size.width)
-        
-        var vc1 : UIViewController!
-        var vc2 : UIViewController!
-        // var con : UIView!
-        var r1start : CGRect!
-        var r2end : CGRect!
-        var v1 : UIView!
-        var v2 : UIView!
-        
-        let tc = self.context
-        if let tc = tc {
-            
-            vc1 = tc.viewController(forKey:UITransitionContextFromViewControllerKey)!
-            vc2 = tc.viewController(forKey:UITransitionContextToViewControllerKey)!
-            
-            // con = tc.containerView()!
-            
-            r1start = tc.initialFrame(for:vc1)
-            r2end = tc.finalFrame(for:vc2)
-            
-            v1 = tc.view(forKey:UITransitionContextFromViewKey)!
-            v2 = tc.view(forKey:UITransitionContextToViewKey)!
-            
-        }
         
         switch g.state {
         case .began:
             self.interacting = true
-            if g == self.rightEdger {
+            let tbc = self.window!.rootViewController as! UITabBarController
+            if g.edges == .right {
                 tbc.selectedIndex = tbc.selectedIndex + 1
             } else {
                 tbc.selectedIndex = tbc.selectedIndex - 1
             }
         case .changed:
-            
-            r1start.origin.x += (r1end.origin.x-r1start.origin.x)*percent
-            v1.frame = r1start
-            
-            var r2start = self.r2start // copy
-            r2start.origin.x += (r2end.origin.x-r2start.origin.x)*percent
-            v2.frame = r2start
-            
-            tc?.updateInteractiveTransition(percent)
+            let v = g.view!
+            let delta = g.translation(in:v)
+            let percent = abs(delta.x/v.bounds.size.width)
+
+            self.anim?.fractionComplete = percent
+            self.context?.updateInteractiveTransition(percent)
             
         case .ended:
             
-            if percent > 0.5 {
-                UIView.animate(withDuration:0.2, animations:{
-                    v1.frame = self.r1end
-                    v2.frame = r2end
-                    }, completion: { _ in
-                        tc?.finishInteractiveTransition()
-                        tc?.completeTransition(true)
-                })
-            }
-            else {
-                UIView.animate(withDuration:0.2, animations:{
-                    v1.frame = r1start
-                    v2.frame = self.r2start
-                    }, completion: { _ in
-                        tc?.cancelInteractiveTransition()
-                        tc?.completeTransition(false)
-                })
-            }
+            // this is the money shot!
+            // with a property animator, the whole notion of "hurry home" is easy -
+            // including "hurry back to start"
             
-            self.interacting = false
-            self.context = nil
+            let anim = self.anim as! UIViewPropertyAnimator
+            anim.pauseAnimation()
+
+            if self.anim?.fractionComplete < 0.5 {
+                anim.isReversed = true
+            }
+            anim.continueAnimation(
+                withTimingParameters:
+                UICubicTimingParameters(animationCurve:.linear),
+                durationFactor: self.anim!.fractionComplete/4)
+
         case .cancelled:
             
-            v1.frame = r1start
-            v2.frame = r2start
+            self.anim?.pauseAnimation()
+            self.anim?.stopAnimation(false)
+            self.anim?.finishAnimation(at: .start)
             
-            tc?.cancelInteractiveTransition()
-            tc?.completeTransition(false)
-            self.interacting = false
-            self.context = nil
         default: break
         }
     }
 }
 
 extension AppDelegate : UIViewControllerInteractiveTransitioning {
-    func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning){
+    
+    // called if we are interactive
+    // (because we now have no percent driver)
+    func startInteractiveTransition(_ ctx: UIViewControllerContextTransitioning){
+        print("startInteractiveTransition")
         // store transition context so the gesture recognizer can get at it
-        self.context = transitionContext
+        self.context = ctx
         
-        // set up initial conditions
-        let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)!
-        let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
+        // store the animator so the gesture recognizer can get at it
+        self.anim = self.interruptibleAnimator(using: ctx)
         
-        let con = transitionContext.containerView
+        // I don't like having to store them both
+        // I could make this look neater with a "helper object"
+        // but really, they ought to give me nicer way
         
-        let r1start = transitionContext.initialFrame(for:vc1)
-        let r2end = transitionContext.finalFrame(for:vc2)
+    }
+}
+
+extension AppDelegate : UIViewControllerAnimatedTransitioning {
+    
+    func interruptibleAnimator(using ctx: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
+        print("interruptibleAnimator")
         
-        // let v1 = transitionContext.view(forKey:UITransitionContextFromViewKey)!
-        let v2 = transitionContext.view(forKey:UITransitionContextToViewKey)!
+        if self.anim != nil {
+            return self.anim!
+        }
+        
+        let vc1 = ctx.viewController(forKey:UITransitionContextFromViewControllerKey)!
+        let vc2 = ctx.viewController(forKey:UITransitionContextToViewControllerKey)!
+        
+        let con = ctx.containerView
+        
+        let r1start = ctx.initialFrame(for:vc1)
+        let r2end = ctx.finalFrame(for:vc2)
+        
+        // new in iOS 8, use these instead of assuming that the views are the views of the vcs
+        let v1 = ctx.view(forKey:UITransitionContextFromViewKey)!
+        let v2 = ctx.view(forKey:UITransitionContextToViewKey)!
         
         // which way we are going depends on which vc is which
         // the most general way to express this is in terms of index number
@@ -177,19 +152,44 @@ extension AppDelegate : UIViewControllerInteractiveTransitioning {
         v2.frame = r2start
         con.addSubview(v2)
         
-        // record initial conditions so the gesture recognizer can get at them
-        self.r1end = r1end
-        self.r2start = r2start
+        let anim = UIViewPropertyAnimator(duration: 0.4, curve: .linear) {
+            v1.frame = r1end
+            v2.frame = r2end
+        }
+        anim.addCompletion { finish in 
+            if finish == .end {
+                ctx.finishInteractiveTransition()
+                ctx.completeTransition(true)
+            } else {
+                ctx.cancelInteractiveTransition()
+                ctx.completeTransition(false)
+            }
+        }
+        
+        self.anim = anim
+        print("creating animator")
+        return anim
     }
-}
-
-extension AppDelegate : UIViewControllerAnimatedTransitioning {
     
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    func transitionDuration(using ctx: UIViewControllerContextTransitioning?) -> TimeInterval {
+        print("transitionDuration")
         return 0.4
     }
     
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    // called if we are not interactive
+    func animateTransition(using ctx: UIViewControllerContextTransitioning) {
+        print("animateTransition")
         
+        let anim = self.interruptibleAnimator(using: ctx)
+        anim.startAnimation()
+        
+    }
+    
+    func animationEnded(_ transitionCompleted: Bool) {
+        print("animation ended")
+        // reset everything
+        self.interacting = false
+        self.context = nil
+        self.anim = nil
     }
 }

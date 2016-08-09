@@ -4,11 +4,7 @@ import UIKit
 class DetailViewController : UIViewController {
     var detailItem : AnyObject?
     @IBOutlet var detailDescriptionLabel : UILabel!
-    
-    override func viewDidLoad() {
-        self.detailDescriptionLabel.text = "\(self.detailItem)"
-    }
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("\(self) " + #function)

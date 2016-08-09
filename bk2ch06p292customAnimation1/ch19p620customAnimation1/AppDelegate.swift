@@ -8,12 +8,20 @@ class SecondViewController : UIViewController {}
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
+    var anim : UIViewImplicitlyAnimating?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         (self.window!.rootViewController as! UITabBarController).delegate = self
         
         return true
+    }
+}
+
+extension AppDelegate {
+    func buttonTap(_ sender : AnyObject) {
+        print("tap!") // testing whether user can interact during animation
+        // nope, looks like everything is okay
     }
 }
 
@@ -26,24 +34,28 @@ extension AppDelegate : UITabBarControllerDelegate {
 
 extension AppDelegate : UIViewControllerAnimatedTransitioning {
     
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.4
-    }
-    
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    func interruptibleAnimator(using ctx: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
         
-        let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)!
-        let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
+        // the trick is that this method may be called multiple times
+        // (it won't be in this example, but I'm trying to establish a general use pattern)
+        // so we use a property self.anim to establish a singleton for the life of the animation
         
-        let con = transitionContext.containerView
+        if self.anim != nil {
+            return self.anim! // *
+        }
+        
+        let vc1 = ctx.viewController(forKey:UITransitionContextFromViewControllerKey)! // 3
+        let vc2 = ctx.viewController(forKey:UITransitionContextToViewControllerKey)!
+        
+        let con = ctx.containerView
         print(con)
         
-        let r1start = transitionContext.initialFrame(for:vc1)
-        let r2end = transitionContext.finalFrame(for:vc2)
+        let r1start = ctx.initialFrame(for:vc1)
+        let r2end = ctx.finalFrame(for:vc2)
         
         // new in iOS 8, use these instead of assuming that the views are the views of the vcs
-        let v1 = transitionContext.view(forKey:UITransitionContextFromViewKey)!
-        let v2 = transitionContext.view(forKey:UITransitionContextToViewKey)!
+        let v1 = ctx.view(forKey:UITransitionContextFromViewKey)!
+        let v2 = ctx.view(forKey:UITransitionContextToViewKey)!
         
         // which way we are going depends on which vc is which
         // the most general way to express this is in terms of index number
@@ -57,15 +69,33 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         r2start.origin.x += r2start.size.width * dir
         v2.frame = r2start
         con.addSubview(v2)
-        
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        UIView.animate(withDuration:0.4, animations: {
+
+        let anim = UIViewPropertyAnimator(duration: 0.4, curve: .linear) {
             v1.frame = r1end
             v2.frame = r2end
-            }, completion: {
-                _ in
-                transitionContext.completeTransition(true)
-                UIApplication.shared.endIgnoringInteractionEvents()
-            })
+        }
+        anim.addCompletion { _ in
+            ctx.completeTransition(true)
+        }
+        
+        self.anim = anim // *
+        print("creating animator")
+        return anim
+    }
+
+    
+    func transitionDuration(using ctx: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 0.4 // 1
+    }
+    
+    func animateTransition(using ctx: UIViewControllerContextTransitioning) {
+        let anim = self.interruptibleAnimator(using: ctx) // 2
+        anim.startAnimation()
+    }
+    
+    func animationEnded(_ transitionCompleted: Bool) {
+        print("ended") // called twice??
+        // cleanup!
+        self.anim = nil
     }
 }
