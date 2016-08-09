@@ -5,6 +5,7 @@ import UIKit
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     var anim : UIViewImplicitlyAnimating?
+    var r2end = CGRect.zero
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
@@ -23,23 +24,51 @@ extension AppDelegate : UINavigationControllerDelegate {
     }
 }
 
+// simple example of interruptibility
+// user can grab image as it grows and drag it around
+// we just resume when user lets go
+extension AppDelegate {
+    func drag (_ g : UIPanGestureRecognizer) {
+        let v = g.view!
+        switch g.state {
+        case .began:
+            self.anim?.pauseAnimation()
+            fallthrough
+        case .changed:
+            let delta = g.translation(in:v.superview)
+            var c = v.center
+            c.x += delta.x; c.y += delta.y
+            v.center = c
+            g.setTranslation(.zero, in: v.superview)
+        case .ended:
+            let anim = self.anim as! UIViewPropertyAnimator
+            anim.addAnimations {
+                v.frame = self.r2end
+            }
+            let factor = 1 - anim.fractionComplete
+            anim.continueAnimation(withTimingParameters: nil, durationFactor: factor)
+        default:break
+        }
+    }
+}
+
 extension AppDelegate : UIViewControllerAnimatedTransitioning {
     
-    func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
+    func interruptibleAnimator(using ctx: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
         
         if self.anim != nil {
             return self.anim!
         }
         
-        let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)!
-        let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
-        let con = transitionContext.containerView
-        let r2end = transitionContext.finalFrame(for:vc2)
-        let v2 = transitionContext.view(forKey:UITransitionContextToViewKey)!
+        let vc1 = ctx.viewController(forKey:UITransitionContextFromViewControllerKey)!
+        let vc2 = ctx.viewController(forKey:UITransitionContextToViewControllerKey)!
+        let con = ctx.containerView
+        let r2end = ctx.finalFrame(for:vc2)
+        let v2 = ctx.view(forKey:UITransitionContextToViewKey)!
         
         
-        let tvc = vc1 as! UITableViewController
-        let tv = tvc.tableView!
+        let mvc = vc1 as! MasterViewController
+        let tv = mvc.tableView!
         let r = tv.rectForRow(at: IndexPath(row: 0, section: 0))
         let r2 = con.convert(r, from: tv)
         
@@ -47,14 +76,9 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         
         con.addSubview(v2)
         
-        
-        
-        let rr = UIGraphicsImageRenderer(bounds: v2.frame)
-        let im = rr.image { ctx in
-            v2.layer.render(in: ctx.cgContext)
-        }
-        let snapshot = UIImageView(image:im)
-        snapshot.contentMode = .scaleToFill
+        let cm = mvc.model[mvc.lastSelection.row]
+        let snapshot = UIImageView(image:UIImage(named:cm.name))
+        snapshot.contentMode = .scaleAspectFill
         snapshot.clipsToBounds = true
         
         snapshot.frame = r2
@@ -63,29 +87,33 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         
         v2.alpha = 0
         
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(drag))
+        snapshot.addGestureRecognizer(pan)
+        snapshot.isUserInteractionEnabled = true
         
-        let anim = UIViewPropertyAnimator(duration: 0.6, curve: .linear) {
-            snapshot.frame = r2end
+        let anim = UIViewPropertyAnimator(duration: 2, curve: .linear) {
+            snapshot.frame = r2end // I'm sort of cheating; I know it will fill its superview
         }
         
         anim.addCompletion { _ in
-            transitionContext.completeTransition(true)
+            ctx.completeTransition(true)
             v2.alpha = 1
             snapshot.removeFromSuperview()
         }
         
-        
         self.anim = anim
         print("creating animator")
+        // also conserve r2end so that we can be interrupted and resumed
+        self.r2end = r2end
         return anim
     }
     
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval{
-        return 0.6
+    func transitionDuration(using ctx: UIViewControllerContextTransitioning?) -> TimeInterval{
+        return 2
     }
     
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let anim = self.interruptibleAnimator(using: transitionContext)
+    func animateTransition(using ctx: UIViewControllerContextTransitioning) {
+        let anim = self.interruptibleAnimator(using: ctx)
         anim.startAnimation()
     }
     

@@ -80,13 +80,13 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             let anim = self.anim as! UIViewPropertyAnimator
             anim.pauseAnimation()
 
-            if self.anim?.fractionComplete < 0.5 {
+            if anim.fractionComplete < 0.5 {
                 anim.isReversed = true
             }
             anim.continueAnimation(
                 withTimingParameters:
                 UICubicTimingParameters(animationCurve:.linear),
-                durationFactor: self.anim!.fractionComplete/4)
+                durationFactor: 0.2)
 
         case .cancelled:
             
