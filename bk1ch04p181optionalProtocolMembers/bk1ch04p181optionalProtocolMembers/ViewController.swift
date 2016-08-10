@@ -97,7 +97,7 @@ class ViewController: UIViewController {
     
     }
     
-    func f(f:protocol<CustomStringConvertible, CustomDebugStringConvertible>) {} // just showing the notation
+    func f(f: CustomStringConvertible & CustomDebugStringConvertible) {} // just showing the notation
 
 
 

@@ -13,7 +13,7 @@ class ViewController : UIViewController {
         }
         
         let im = UIImage(named:"Smiley")!.withRenderingMode(.alwaysTemplate)
-        self.b.setBackgroundImage(im, for: [])
+        self.b.setBackgroundImage(im, for: .normal)
         
         let im2 = UIImage(named:"smiley2")!.withRenderingMode(.alwaysOriginal)
         self.tbi.image = im2
@@ -66,7 +66,7 @@ class ViewController : UIViewController {
         let im5 = UIImage(named:"smiley2")!
         let b = UIButton(type: .System)
         b.setImage(im5.withAlignmentRectInsets(UIEdgeInsetsMake(0, 0, 40, 0)), forState: .Normal)
-        b.setTitle("Howdy", for:[])
+        b.setTitle("Howdy", for:.normal)
         b.sizeToFit()
         self.view.addSubview(b)
 */

@@ -184,8 +184,8 @@ class ViewController: UIViewController {
                 slice: &arrow, remainder: &body, atDistance: Arrow.ARHEIGHT, from: .minYEdge)
 
         }
-        
-        if false {
+        var which : Bool {return false}
+        if which {
             let sndurl = Bundle.main.url(forResource:"test", withExtension: "aif")!
             var snd : SystemSoundID = 0
             AudioServicesCreateSystemSoundID(sndurl, &snd)

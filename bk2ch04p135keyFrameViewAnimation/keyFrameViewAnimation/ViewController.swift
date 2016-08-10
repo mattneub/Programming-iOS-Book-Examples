@@ -31,7 +31,7 @@ class ViewController : UIViewController {
     
     func animate() {
         var p = self.v.center
-        var opts : UIViewKeyframeAnimationOptions = [] // calculationModeLinear
+        var opts : UIViewKeyframeAnimationOptions = .calculationModeLinear
         let opt2 : UIViewAnimationOptions = .curveLinear
         opts.insert(UIViewKeyframeAnimationOptions(rawValue:opt2.rawValue))
         let dur = 0.25

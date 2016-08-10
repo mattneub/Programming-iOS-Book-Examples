@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         let im = moods.image(with: tc)
         self.iv2.image = im
         
-        self.b.setImage(im, for: [])
+        self.b.setImage(im, for: .normal)
         self.b.setImage(im, for: .highlighted)
         
         // actually any of these will do; that's the Really Amazing Part

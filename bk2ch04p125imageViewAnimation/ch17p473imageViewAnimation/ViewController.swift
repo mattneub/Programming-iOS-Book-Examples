@@ -83,8 +83,8 @@ class ViewController : UIViewController {
             }
             let im = UIImage.animatedImage(with:arr, duration:0.5)
             let b = UIButton(type:.system)
-            b.setTitle("Howdy", for:[])
-            b.setImage(im, for:[])
+            b.setTitle("Howdy", for:.normal)
+            b.setImage(im, for:.normal)
             b.center = CGPoint(100,200)
             b.sizeToFit()
             self.view.addSubview(b)
@@ -92,7 +92,7 @@ class ViewController : UIViewController {
         case 3:
             let im = UIImage.animatedImageNamed("pac", duration:1)
             let b = UIButton(type:.system)
-            b.setImage(im, for:[])
+            b.setImage(im, for:.normal)
             b.center = CGPoint(100,200)
             b.sizeToFit()
             self.view.addSubview(b)

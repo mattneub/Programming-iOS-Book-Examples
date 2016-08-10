@@ -10,7 +10,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         for (ix,b) in (self.coolviews as! [UIButton]).enumerated() {
-            b.setTitle("B\(ix+1)", for:[]) // huh
+            b.setTitle("B\(ix+1)", for:.normal)
         }
     }
     

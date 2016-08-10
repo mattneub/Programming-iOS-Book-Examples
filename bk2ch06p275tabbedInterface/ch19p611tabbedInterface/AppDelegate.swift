@@ -36,7 +36,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         UITabBarItem.appearance().setTitleTextAttributes([
             NSFontAttributeName:UIFont(name:"Avenir-Heavy", size:14)!
             ],
-            for:[])
+                                                         for:.normal)
         
 //        UIFont.familyNames()
 //            .map{UIFont.fontNamesForFamilyName($0 as String)}.map(println)
