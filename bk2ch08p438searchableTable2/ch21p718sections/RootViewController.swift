@@ -150,7 +150,7 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
         self.present(sc, animated: true)
     }
     
-    func presentationController(forPresentedViewController presented: UIViewController, presenting: UIViewController?, sourceViewController source: UIViewController) -> UIPresentationController? {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         let p = UIPresentationController(presentedViewController: presented, presenting: presenting)
         print("wow") // never called, sorry
         return p

@@ -67,6 +67,7 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         r1end.origin.x -= r1end.size.width * dir
         var r2start = r2end
         r2start.origin.x += r2start.size.width * dir
+        
         v2.frame = r2start
         con.addSubview(v2)
 

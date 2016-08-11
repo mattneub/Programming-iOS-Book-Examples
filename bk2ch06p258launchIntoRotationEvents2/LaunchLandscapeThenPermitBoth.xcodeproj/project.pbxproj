@@ -95,6 +95,7 @@
 				TargetAttributes = {
 					3269A7791B73C5E800FB6321 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = W3LHX5RGV2;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -247,6 +248,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				INFOPLIST_FILE = LaunchLandscapeThenPermitBoth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.LaunchLandscapeThenPermitBoth;
@@ -259,6 +261,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				INFOPLIST_FILE = LaunchLandscapeThenPermitBoth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.LaunchLandscapeThenPermitBoth;

@@ -8,6 +8,8 @@ class ViewController2: UIViewController {
     
     @IBOutlet weak var button: UIButton!
     
+    var anim : UIViewImplicitlyAnimating?
+    
     // important: viewDidLoad() is too late for this sort of thing
     // must be done before presentation even has a chance to start
     required init?(coder aDecoder: NSCoder) {
@@ -121,35 +123,53 @@ extension ViewController2 /* UIViewControllerTransitioningDelegate */ {
 }
 
 extension ViewController2 : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.4
-    }
     
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        // let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)
-        let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)
+    func interruptibleAnimator(using ctx: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
+    
+        if self.anim != nil {
+            return self.anim!
+        }
         
-        let con = transitionContext.containerView
+        // let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)
+        let vc2 = ctx.viewController(forKey:UITransitionContextToViewControllerKey)
+        
+        let con = ctx.containerView
         
         // let r1start = transitionContext.initialFrame(for:vc1!)
-        let r2end = transitionContext.finalFrame(for:vc2!)
+        let r2end = ctx.finalFrame(for:vc2!)
         
         //let v1 = transitionContext.view(forKey:UITransitionContextFromViewKey)!
-        let v2 = transitionContext.view(forKey:UITransitionContextToViewKey)!
+        let v2 = ctx.view(forKey:UITransitionContextToViewKey)!
         
         v2.frame = r2end
         v2.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         v2.alpha = 0
         con.addSubview(v2)
         
-        UIView.animate(withDuration:0.4, animations: {
+        let anim = UIViewPropertyAnimator(duration: 0.4, curve: .linear) {
             v2.alpha = 1
             v2.transform = .identity
-            }, completion: {
-                _ in
-                transitionContext.completeTransition(true)
-            })
+        }
+        anim.addCompletion { _ in
+            ctx.completeTransition(true)
+        }
         
+        self.anim = anim
+        return anim
+    
+    }
+    
+    func transitionDuration(using ctx: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 0.4
+    }
+    
+    func animateTransition(using ctx: UIViewControllerContextTransitioning) {
+        let anim = self.interruptibleAnimator(using: ctx)
+        anim.startAnimation()
+    }
+    
+    func animationEnded(_ transitionCompleted: Bool) {
+        self.anim = nil
     }
 }
 
@@ -161,8 +181,8 @@ extension ViewController2 {
         if let tc = self.transitionCoordinator {
             tc.animate(alongsideTransition:{
                 _ in
-                self.buttonTopConstraint.constant += 200
-                self.view.layoutIfNeeded()
+//                self.buttonTopConstraint.constant += 200
+//                self.view.layoutIfNeeded()
             })
         }
     }

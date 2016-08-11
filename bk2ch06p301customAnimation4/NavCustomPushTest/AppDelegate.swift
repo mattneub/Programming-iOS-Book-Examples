@@ -22,6 +22,9 @@ extension AppDelegate : UINavigationControllerDelegate {
         }
         return nil
     }
+//    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+//        return nil
+//    }
 }
 
 // simple example of interruptibility
@@ -105,6 +108,7 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         print("creating animator")
         // also conserve r2end so that we can be interrupted and resumed
         self.r2end = r2end
+        
         return anim
     }
     

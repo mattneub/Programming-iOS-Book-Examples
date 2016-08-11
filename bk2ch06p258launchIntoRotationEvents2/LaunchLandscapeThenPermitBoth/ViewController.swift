@@ -1,6 +1,24 @@
 
 import UIKit
 
+extension UIUserInterfaceSizeClass : CustomStringConvertible {
+    public var description : String {
+        if self == .compact {return "compact"}
+        if self == .regular {return "regular"}
+        return "unknown"
+    }
+}
+
+extension UITraitCollection {
+    public override var description : String {
+        return "\(self.horizontalSizeClass) \(self.verticalSizeClass)"
+    }
+    public override var debugDescription : String {
+        return "\(self.horizontalSizeClass) \(self.verticalSizeClass)"
+    }
+}
+
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -30,14 +48,12 @@ class ViewController: UIViewController {
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        print("willTransition trait")
-        print(newCollection)
+        print("willTransition trait", newCollection)
         super.willTransition(to: newCollection, with: coordinator)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        print("willTransition size")
-        print(size)
+        print("willTransition size", size)
         super.viewWillTransition(to: size, with: coordinator)
     }
     

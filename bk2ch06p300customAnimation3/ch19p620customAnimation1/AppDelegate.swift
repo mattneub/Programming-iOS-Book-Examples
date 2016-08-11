@@ -29,10 +29,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
     }
     
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        print("animation controller")
         return self
     }
     
     func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        print("interaction controller")
         return self.interacting ? self : nil
     }
 }
@@ -67,10 +69,8 @@ extension AppDelegate : UIGestureRecognizerDelegate {
             let v = g.view!
             let delta = g.translation(in:v)
             let percent = abs(delta.x/v.bounds.size.width)
-
             self.anim?.fractionComplete = percent
             self.context?.updateInteractiveTransition(percent)
-            
         case .ended:
             
             // this is the money shot!
