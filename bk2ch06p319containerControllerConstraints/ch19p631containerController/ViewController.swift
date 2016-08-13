@@ -36,24 +36,22 @@ class ViewController : UIViewController {
         
         // must have both as children before we can transition between them
         self.addChildViewController(tovc) // "will" called for us
-        // note: when we call remove, we must call "will" (with nil) beforehand
+        // when we call remove, we must call "will" (with nil) beforehand
         fromvc.willMove(toParentViewController: nil)
         // then perform the transition
-        self.transition(from:fromvc,
+        self.transition(
+            from:fromvc,
             to:tovc,
             duration:0.4,
             options:.transitionFlipFromLeft,
             animations: {
                 self.constrainInPanel(tovc.view) // *
-            },
-            completion:{
-                _ in
-                // finally, finish up
-                // note: when we call add, we must call "did" afterwards
-                tovc.didMove(toParentViewController: self)
-                fromvc.removeFromParentViewController() // "did" called for us
-                UIApplication.shared.endIgnoringInteractionEvents()
-            })
+        }) { _ in
+            // when we call add, we must call "did" afterwards
+            tovc.didMove(toParentViewController: self)
+            fromvc.removeFromParentViewController() // "did" called for us
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }
     }
     
     func constrainInPanel(_ v:UIView) {

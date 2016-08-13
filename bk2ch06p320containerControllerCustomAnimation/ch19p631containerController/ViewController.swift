@@ -35,45 +35,38 @@ class ViewController : UIViewController {
         tovc.view.frame = self.panel.bounds
 
         let r = UIGraphicsImageRenderer(size:tovc.view.bounds.size)
-        let im = r.image {
-            ctx in let con = ctx.cgContext
+        let im = r.image { ctx in
+            let con = ctx.cgContext
             tovc.view.layer.render(in:con)
         }
 
         
-//        UIGraphicsBeginImageContextWithOptions(tovc.view.bounds.size, true, 0)
-//        tovc.view.layer.render(in:UIGraphicsGetCurrentContext()!)
-//        let im = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIGraphicsEndImageContext()
-        
         let iv = UIImageView(image:im)
         iv.frame = CGRect.zero
         self.panel.addSubview(iv)
-        tovc.view.alpha = 0
+        tovc.view.alpha = 0 // hide the real view
         
         // must have both as children before we can transition between them
         self.addChildViewController(tovc) // "will" called for us
-        // note: when we call remove, we must call "will" (with nil) beforehand
+        // when we call remove, we must call "will" (with nil) beforehand
         fromvc.willMove(toParentViewController: nil)
         // then perform the transition
-        self.transition(from:fromvc,
+        self.transition(
+            from:fromvc,
             to:tovc,
             duration:0.4,
-            // .transitionNone
+            // no options:
             animations: {
                 iv.frame = self.panel.bounds // *
                 self.constrainInPanel(tovc.view) // *
-            },
-            completion:{
-                _ in
-                tovc.view.alpha = 1
-                iv.removeFromSuperview()
-                // finally, finish up
-                // note: when we call add, we must call "did" afterwards
-                tovc.didMove(toParentViewController: self)
-                fromvc.removeFromParentViewController() // "did" called for us
-                UIApplication.shared.endIgnoringInteractionEvents()
-            })
+        }) { _ in
+            tovc.view.alpha = 1
+            iv.removeFromSuperview()
+            // when we call add, we must call "did" afterwards
+            tovc.didMove(toParentViewController: self)
+            fromvc.removeFromParentViewController() // "did" called for us
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }
     }
     
     func constrainInPanel(_ v:UIView) {

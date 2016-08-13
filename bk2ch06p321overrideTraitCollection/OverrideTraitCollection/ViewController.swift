@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "vc2")
         self.addChildViewController(vc) // "will" called for us
         let tc = UITraitCollection(horizontalSizeClass: .compact)
-        self.setOverrideTraitCollection(tc, forChildViewController: vc)
+        self.setOverrideTraitCollection(tc, forChildViewController: vc) // heh heh
         vc.view.frame = CGRect(100,100,200,200)
         self.view.addSubview(vc.view)
         vc.didMove(toParentViewController: self)
