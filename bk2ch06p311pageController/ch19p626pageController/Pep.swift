@@ -20,7 +20,7 @@ class Pep: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.name.text = self.boy
-        self.pic.image = UIImage(named:"\(self.boy.lowercased()).jpg")
+        self.pic.image = UIImage(named:self.boy.lowercased())
     }
     
     override var description : String {

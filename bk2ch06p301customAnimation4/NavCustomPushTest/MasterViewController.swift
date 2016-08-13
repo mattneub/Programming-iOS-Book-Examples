@@ -69,14 +69,15 @@ class MasterViewController : UITableViewController {
         if let tc = self.transitionCoordinator {
             print(tc)
         }
-        guard let tc = self.transitionCoordinator else {return}
-        guard tc.initiallyInteractive else {return}
-        tc.notifyWhenInteractionChanges { // "changes" instead of "ends"
-            context in
-            if context.isCancelled {
+        
+        // to see this, turn off our animation and use the pop gesture
+        let tc = self.transitionCoordinator
+        tc?.notifyWhenInteractionChanges { ctx in
+            if ctx.isCancelled {
                 print("we got cancelled")
             }
         }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -155,22 +155,22 @@ extension ViewController2 /* UIViewControllerTransitioningDelegate */ {
 }
 
 extension ViewController2 : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?)
+    func transitionDuration(using ctx: UIViewControllerContextTransitioning?)
         -> TimeInterval {
             return 0.25
     }
     
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        // let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)
-        // let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)
+    func animateTransition(using ctx: UIViewControllerContextTransitioning) {
+        // let vc1 = ctx.viewController(forKey:UITransitionContextFromViewControllerKey)
+        // let vc2 = ctx.viewController(forKey:UITransitionContextToViewControllerKey)
         
-        let con = transitionContext.containerView
+        let con = ctx.containerView
         
-        // let r1start = transitionContext.initialFrame(for:vc1!)
-        // let r2end = transitionContext.finalFrame(for:vc2!)
+        // let r1start = ctx.initialFrame(for:vc1!)
+        // let r2end = ctx.finalFrame(for:vc2!)
         
-        let v1 = transitionContext.view(forKey:UITransitionContextFromViewKey)
-        let v2 = transitionContext.view(forKey:UITransitionContextToViewKey)
+        let v1 = ctx.view(forKey:UITransitionContextFromViewKey)
+        let v2 = ctx.view(forKey:UITransitionContextToViewKey)
         
         // we are using the same object (self) as animation controller
         // for both presentation and dismissal
@@ -186,14 +186,14 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
                 v2.transform = .identity
                 }, completion: {
                     _ in
-                    transitionContext.completeTransition(true)
+                    ctx.completeTransition(true)
                 })
         } else if let v1 = v1 {
             UIView.animate(withDuration:0.25, animations: {
                 v1.alpha = 0
                 }, completion: {
                     _ in
-                    transitionContext.completeTransition(true)
+                    ctx.completeTransition(true)
                 })
         }
         

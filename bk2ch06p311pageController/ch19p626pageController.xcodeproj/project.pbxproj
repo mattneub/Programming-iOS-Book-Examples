@@ -11,9 +11,6 @@
 		3208B9761979B243005695E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3208B9751979B243005695E6 /* AppDelegate.swift */; };
 		32F99CD51B7915980056D3FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F99CD41B7915980056D3FD /* LaunchScreen.storyboard */; };
 		C94F83C917CFAC7A00DA797B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C94F83C817CFAC7A00DA797B /* Assets.xcassets */; };
-		C94F83E817CFACA600DA797B /* jack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C94F83E517CFACA600DA797B /* jack.jpg */; };
-		C94F83E917CFACA600DA797B /* manny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C94F83E617CFACA600DA797B /* manny.jpg */; };
-		C94F83EA17CFACA600DA797B /* moe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C94F83E717CFACA600DA797B /* moe.jpg */; };
 		C94F83EF17CFACB400DA797B /* Pep.xib in Resources */ = {isa = PBXBuildFile; fileRef = C94F83ED17CFACB400DA797B /* Pep.xib */; };
 /* End PBXBuildFile section */
 
@@ -24,9 +21,6 @@
 		C94F83B317CFAC7A00DA797B /* ch19p626pageController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p626pageController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94F83BE17CFAC7A00DA797B /* ch19p626pageController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p626pageController-Info.plist"; sourceTree = "<group>"; };
 		C94F83C817CFAC7A00DA797B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C94F83E517CFACA600DA797B /* jack.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jack.jpg; sourceTree = "<group>"; };
-		C94F83E617CFACA600DA797B /* manny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = manny.jpg; sourceTree = "<group>"; };
-		C94F83E717CFACA600DA797B /* moe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moe.jpg; sourceTree = "<group>"; };
 		C94F83ED17CFACB400DA797B /* Pep.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Pep.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,9 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				3208B9751979B243005695E6 /* AppDelegate.swift */,
-				C94F83E517CFACA600DA797B /* jack.jpg */,
-				C94F83E617CFACA600DA797B /* manny.jpg */,
-				C94F83E717CFACA600DA797B /* moe.jpg */,
 				3208B9731979B0AA005695E6 /* Pep.swift */,
 				C94F83ED17CFACB400DA797B /* Pep.xib */,
 				C94F83C817CFAC7A00DA797B /* Assets.xcassets */,
@@ -130,12 +121,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C94F83E817CFACA600DA797B /* jack.jpg in Resources */,
-				C94F83EA17CFACA600DA797B /* moe.jpg in Resources */,
 				C94F83EF17CFACB400DA797B /* Pep.xib in Resources */,
 				32F99CD51B7915980056D3FD /* LaunchScreen.storyboard in Resources */,
 				C94F83C917CFAC7A00DA797B /* Assets.xcassets in Resources */,
-				C94F83E917CFACA600DA797B /* manny.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
