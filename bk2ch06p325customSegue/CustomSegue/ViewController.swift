@@ -3,6 +3,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("did disappear")
+    }
 }
 
 class ViewController2: UIViewController {
@@ -21,7 +25,7 @@ class ViewController2: UIViewController {
 class MyCoolSegue: UIStoryboardSegue {
     override func perform() {
         let dest = self.destination
-        dest.modalPresentationStyle = .custom
+        dest.modalPresentationStyle = .custom // teehee
         dest.transitioningDelegate = self
         super.perform()
     }
@@ -33,21 +37,32 @@ extension MyCoolSegue: UIViewControllerTransitioningDelegate {
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        print("just checking")
+        return nil
+    }
+
 }
 extension MyCoolSegue: UIViewControllerAnimatedTransitioning {
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    func transitionDuration(using ctx: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.8
     }
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)!
-        let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
+    func animateTransition(using ctx: UIViewControllerContextTransitioning) {
+        let vc1 = ctx.viewController(forKey:UITransitionContextFromViewControllerKey)!
+        let vc2 = ctx.viewController(forKey:UITransitionContextToViewControllerKey)!
         
-        let con = transitionContext.containerView
+        let con = ctx.containerView
         
-        let r1start = transitionContext.initialFrame(for:vc1)
-        let r2end = transitionContext.finalFrame(for:vc2)
+        let r1start = ctx.initialFrame(for:vc1)
+        let r2end = ctx.finalFrame(for:vc2)
         
-        if let v2 = transitionContext.view(forKey:UITransitionContextToViewKey) {
+        if let v2 = ctx.view(forKey:UITransitionContextToViewKey) {
+            print(vc2.modalPresentationStyle.rawValue)
+            let p = vc2.presentationController!
+            print(p.presentationStyle.rawValue)
+            print(p.adaptivePresentationStyle.rawValue)
+            print(p.shouldPresentInFullscreen)
+            
             var r2start = r2end
             r2start.origin.y -= r2start.size.height
             v2.frame = r2start
@@ -56,16 +71,16 @@ extension MyCoolSegue: UIViewControllerAnimatedTransitioning {
                 v2.frame = r2end
                 }, completion: {
                     _ in
-                    transitionContext.completeTransition(true)
+                    ctx.completeTransition(true)
             })
-        } else if let v1 = transitionContext.view(forKey:UITransitionContextFromViewKey) {
+        } else if let v1 = ctx.view(forKey:UITransitionContextFromViewKey) {
             var r1end = r1start
             r1end.origin.y = -r1end.size.height
             UIView.animate(withDuration:0.8, animations: {
                 v1.frame = r1end
                 }, completion: {
                     _ in
-                    transitionContext.completeTransition(true)
+                    ctx.completeTransition(true)
             })
         }
     }

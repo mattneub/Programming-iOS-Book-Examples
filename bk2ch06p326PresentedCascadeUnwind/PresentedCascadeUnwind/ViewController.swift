@@ -35,6 +35,26 @@ ViewController1 dismiss(animated:_:completion:)
 
 */
 
+/*
+ Okay, I guess it was a bug, because they fixed it! In iOS 10, you get exactly what you would expect:
+ 
+ ViewController4 shouldPerformSegue(withIdentifier:sender:) true
+ ViewController4 allowedChildViewControllersForUnwinding(from:) []
+ ViewController4 canPerformUnwindSegueAction(_:from:withSender:) unwind: false
+ ViewController3 allowedChildViewControllersForUnwinding(from:) []
+ ViewController3 canPerformUnwindSegueAction(_:from:withSender:) unwind: false
+ ViewController2 allowedChildViewControllersForUnwinding(from:) []
+ ViewController2 canPerformUnwindSegueAction(_:from:withSender:) unwind: false
+ ViewController1 allowedChildViewControllersForUnwinding(from:) []
+ ViewController1 canPerformUnwindSegueAction(_:from:withSender:) unwind: true
+ 
+ ViewController4 prepare(for:sender:)
+ ViewController1 unwind
+ ViewController1 dismiss(animated:completion:)
+
+ */
+
+
 class ViewController1: UIViewController {
 
     @IBAction func unwind (_ sender:UIStoryboardSegue) {

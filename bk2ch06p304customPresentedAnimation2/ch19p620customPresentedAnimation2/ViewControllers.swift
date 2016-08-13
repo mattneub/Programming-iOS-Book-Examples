@@ -23,15 +23,15 @@ extension CGVector {
 }
 
 
-
-
-class ViewController : UIViewController {
-    @IBAction func doButton(_ sender:AnyObject?) {
-        // for comparison purposes
+// for comparison purposes
 //        let alert = UIAlertController(title: "Howdy", message: "This is a test", preferredStyle: .Alert)
 //        alert.addAction(UIAlertAction(title: "OK", style: .Cancel))
 //        self.present(alert, animated:true)
 //        return;
+
+
+class ViewController : UIViewController {
+    @IBAction func doButton(_ sender:AnyObject?) {
         self.present(ViewController2(), animated:true)
     }
 }
@@ -146,10 +146,12 @@ class MyPresentationController : UIPresentationController {
 extension ViewController2 /* UIViewControllerTransitioningDelegate */ {
     @objc(animationControllerForPresentedController:presentingController:sourceController:)
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        print("providing presentation animation controller")
         return self
     }
     @objc(animationControllerForDismissedController:)
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        print("providing dismissal animation controller")
         return self
     }
 }
@@ -161,8 +163,10 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
     }
     
     func animateTransition(using ctx: UIViewControllerContextTransitioning) {
-        // let vc1 = ctx.viewController(forKey:UITransitionContextFromViewControllerKey)
-        // let vc2 = ctx.viewController(forKey:UITransitionContextToViewControllerKey)
+        // just for logging purposes
+        let vc1 = ctx.viewController(forKey:UITransitionContextFromViewControllerKey)
+        let vc2 = ctx.viewController(forKey:UITransitionContextToViewControllerKey)
+        print("vc1 is", vc1!.dynamicType, "\nvc2 is", vc2!.dynamicType)
         
         let con = ctx.containerView
         
@@ -175,8 +179,10 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
         // we are using the same object (self) as animation controller
         // for both presentation and dismissal
         // so we have to distinguish the two cases
+        // warning: this trick works only for non-fullscreen
         
-        if let v2 = v2 {
+        if let v2 = v2 { // presenting
+            print("presentation animation")
             con.addSubview(v2)
             let scale = CGAffineTransform(scaleX:1.6, y:1.6)
             v2.transform = scale
@@ -188,7 +194,8 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
                     _ in
                     ctx.completeTransition(true)
                 })
-        } else if let v1 = v1 {
+        } else if let v1 = v1 { // dismissing
+            print("dismissal animation")
             UIView.animate(withDuration:0.25, animations: {
                 v1.alpha = 0
                 }, completion: {
