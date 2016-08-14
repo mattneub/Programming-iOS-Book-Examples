@@ -13,45 +13,52 @@ How on earth is this possible?! There's no code at all (except for the unwind-to
 Logging reveals the sequence:
 
 // prelude: source gets a chance to veto the whole thing
-ExtraViewController shouldPerformSegueWithIdentifier(_:sender:) true
+ ExtraViewController2 shouldPerformSegue(withIdentifier:sender:) true
 
 // === first we establish the path from the source to the destination
 // === we also establish _who_ is the destination; note that we only ask "can perform" if you have no eligible children
 // (makes perfect sense: having eligible children already means "it's not me")
 
 // I have no children and it isn't me
-SecondViewController allowedChildViewControllersForUnwindingFromSource []
-SecondViewController canPerformUnwindSegueAction(_:fromViewController:withSender:) false
+ SecondViewController allowedChildViewControllersForUnwinding(from:) []
+ SecondViewController canPerformUnwindSegueAction(_:from:withSender:) iAmFirst: false
 
 // I have no children and it isn't me
 This one looks like a bug to me: why do we go _down_ into a child when we were told there were no eligible children?
-ExtraViewController allowedChildViewControllersForUnwindingFromSource []
-ExtraViewController canPerformUnwindSegueAction(_:fromViewController:withSender:) false
+ ExtraViewController2 allowedChildViewControllersForUnwinding(from:) []
+ ExtraViewController2 canPerformUnwindSegueAction(_:from:withSender:) iAmFirst: false
 
 // I have one! it's the nav controller in the first tab
-MyTabBarController allowedChildViewControllersForUnwindingFromSource [<TabbedUnwind.MyNavController: 0x7fbb5c817600>]
+ MyTabBarController allowedChildViewControllersForUnwinding(from:) [<TabbedUnwind.MyNavController: 0x7f9319023600>]
 
 // I have two!
-MyNavController allowedChildViewControllersForUnwindingFromSource [<TabbedUnwind.ExtraViewController: 0x7fbb5bc0b4d0>, <TabbedUnwind.FirstViewController: 0x7fbb5bd13e00>]
+ MyNavController allowedChildViewControllersForUnwinding(from:) [<TabbedUnwind.ExtraViewController: 0x7f931850b6a0>, <TabbedUnwind.FirstViewController: 0x7f931b00b2e0>]
 
 // I have no children and it isn't me
-ExtraViewController allowedChildViewControllersForUnwindingFromSource []
-ExtraViewController canPerformUnwindSegueAction(_:fromViewController:withSender:) false
+ ExtraViewController allowedChildViewControllersForUnwinding(from:) []
+ ExtraViewController canPerformUnwindSegueAction(_:from:withSender:) iAmFirst: false
 
 I have no children and it _is_ me!
-FirstViewController allowedChildViewControllersForUnwindingFromSource []
-FirstViewController canPerformUnwindSegueAction(_:fromViewController:withSender:) true
+ FirstViewController allowedChildViewControllersForUnwinding(from:) []
+ FirstViewController canPerformUnwindSegueAction(_:from:withSender:) iAmFirst: true
 
 // === we have now established the path; now we perform the unwind in stages
 // === note that MyTabBarController is told to unwind to the nav controller; the nav controller is told to unwind to the root vc
 
-FirstViewController iAmFirst // the marker method is called
+ ExtraViewController2 prepare(for:sender:)
+ FirstViewController iAmFirst // the marker method is called
 
-MyTabBarController dismiss(animated:_:completion:)
+ MyTabBarController dismiss(animated:completion:)
 
-MyTabBarController unwindForSegue(_:towardsViewController:) <TabbedUnwind.MyNavController: 0x7fbb5c817600>
+ MyTabBarController unwind(for:towardsViewController:) <TabbedUnwind.MyNavController: 0x7f9319023600>
+ MyTabBarController set selectedViewController // responds by switching tabs
+ 
+ MyNavController unwind(for:towardsViewController:) <TabbedUnwind.FirstViewController: 0x7f931b00b2e0>
+ MyNavController popToViewController(_:animated:) // responds by popping
+ 
+ farewell from ExtraViewController
+ farewell from ExtraViewController2
 
-MyNavController unwindForSegue(_:towardsViewController:) <TabbedUnwind.FirstViewController: 0x7fbb5bd13e00>
 
 */
 

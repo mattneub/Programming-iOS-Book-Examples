@@ -11,7 +11,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // new in iOS 9, can check beforehand
         let ok = AVAudioSession.sharedInstance().availableCategories.contains(AVAudioSessionCategoryAmbient)
         print(ok)
-        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
         
         // deliberate leak here
         
@@ -66,7 +66,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         print("app became active")
-        _ = try? AVAudioSession.sharedInstance().setActive(true)
+        try? AVAudioSession.sharedInstance().setActive(true)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

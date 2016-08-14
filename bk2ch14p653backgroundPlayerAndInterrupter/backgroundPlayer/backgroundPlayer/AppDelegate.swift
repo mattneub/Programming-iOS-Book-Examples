@@ -16,7 +16,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
         
         return true
     }
@@ -68,7 +68,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let settings = UIUserNotificationSettings(types: types, categories: nil)
         application.registerUserNotificationSettings(settings)
         
-        _ = try? AVAudioSession.sharedInstance().setActive(true)
+        try? AVAudioSession.sharedInstance().setActive(true)
         // new iOS 8 feature
         let mute = AVAudioSession.sharedInstance().secondaryAudioShouldBeSilencedHint
         let s = mute ? "to" : "not"

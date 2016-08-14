@@ -318,7 +318,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             _ in
             for id in calsToDelete {
                 if let cal = self.database.calendar(withIdentifier:id) {
-                    _ = try? self.database.removeCalendar(cal, commit: true)
+                    try? self.database.removeCalendar(cal, commit: true)
                 }
             }
             // dismiss *everything*

@@ -23,37 +23,42 @@ class ViewController : UIViewController {
     
     override func allowedChildViewControllersForUnwinding(from source: UIStoryboardUnwindSegueSource) -> [UIViewController] {
         let result = super.allowedChildViewControllersForUnwinding(from: source)
-        print("\(self.dynamicType) \(#function) \(result)")
+        print("\(self) \(#function) \(result)")
         return result
     }
     
     override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
-        print("\(self.dynamicType) \(#function) \(subsequentVC)")
+        print("\(self) \(#function) \(subsequentVC)")
         super.unwind(for: unwindSegue, towardsViewController: subsequentVC)
     }
     
     override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
-        let result = super.canPerformUnwindSegueAction(action, from: fromViewController, withSender: sender)
-        print("\(self.dynamicType) \(#function) \(action) \(result)")
+        var result = super.canPerformUnwindSegueAction(action, from: fromViewController, withSender: sender)
+        
+        // uncomment this to do a grand unwind to root
+        // result = self.description == "View Controller 1"
+
+        print("\(self) \(#function) \(action) \(result)")
+        
         return result
     }
     
     override func dismiss(animated: Bool, completion: (() -> Void)?) {
-        print("\(self.dynamicType) \(#function)")
+        print("\(self) \(#function)")
         super.dismiss(animated:animated, completion: completion)
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: AnyObject?) -> Bool {
         let result = super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
         if identifier == "unwind" {
-            print("\(self.dynamicType) \(#function) \(result)")
+            print("\(self) \(#function) \(result)")
         }
         return result
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "unwind" {
-            print("\(self.dynamicType) \(#function)")
+            print("\(self) \(#function)")
         }
     }
 

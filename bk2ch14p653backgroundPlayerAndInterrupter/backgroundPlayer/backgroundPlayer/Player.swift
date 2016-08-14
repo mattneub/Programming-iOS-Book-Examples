@@ -53,13 +53,13 @@ class Player : NSObject, AVAudioPlayerDelegate {
         self.player = p
         // error-checking omitted
         
-        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         
         // try this, to prove that mixable _background_ sound is not interrupted by nonmixable foreground sound
         // I find this kind of weird; you aren't allowed to interrupt any sound you want to interrupt?
-        // _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: .MixWithOthers)
+        // try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: .MixWithOthers)
 
-        _ = try? AVAudioSession.sharedInstance().setActive(true)
+        try? AVAudioSession.sharedInstance().setActive(true)
         
         
         self.player.prepareToPlay()
@@ -70,9 +70,9 @@ class Player : NSObject, AVAudioPlayerDelegate {
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) { // *
         let sess = AVAudioSession.sharedInstance()
-        _ = try? sess.setActive(false, with: .notifyOthersOnDeactivation)
-        _ = try? sess.setCategory(AVAudioSessionCategoryAmbient)
-        _ = try? sess.setActive(true)
+        try? sess.setActive(false, with: .notifyOthersOnDeactivation)
+        try? sess.setCategory(AVAudioSessionCategoryAmbient)
+        try? sess.setActive(true)
         delegate?.soundFinished(self)
     }
     

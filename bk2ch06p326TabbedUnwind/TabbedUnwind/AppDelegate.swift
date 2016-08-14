@@ -49,6 +49,16 @@ class MyTabBarController : UITabBarController {
             print("\(self.dynamicType) \(#function)")
         }
     }
+    
+    override var selectedViewController: UIViewController? {
+        get {
+            return super.selectedViewController
+        }
+        set {
+            print("\(self.dynamicType) set \(#function)")
+            super.selectedViewController = newValue
+        }
+    }
 
 
 }
@@ -88,6 +98,11 @@ class MyNavController : UINavigationController {
         if segue.identifier == "unwind" {
             print("\(self.dynamicType) \(#function)")
         }
+    }
+        
+    override func popToViewController(_ viewController: UIViewController, animated: Bool) -> [UIViewController]? {
+        print("\(self.dynamicType) \(#function)")
+        return super.popToViewController(viewController, animated:animated)
     }
 
 

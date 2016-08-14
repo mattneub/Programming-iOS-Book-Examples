@@ -12,7 +12,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
         
         NotificationCenter.default.addObserver(forName:
             .AVAudioSessionInterruption, object: nil, queue: nil) {
@@ -23,7 +23,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
                 guard let type = AVAudioSessionInterruptionType(rawValue: why)
                     else {return}
                 if type == .ended {
-                    _ = try? AVAudioSession.sharedInstance().setActive(true)
+                    try? AVAudioSession.sharedInstance().setActive(true)
                 }
         }
 
@@ -33,7 +33,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         print("interrupter in \(#function)")
-        _ = try? AVAudioSession.sharedInstance().setActive(true)
+        try? AVAudioSession.sharedInstance().setActive(true)
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

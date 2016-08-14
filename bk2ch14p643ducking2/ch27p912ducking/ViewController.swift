@@ -22,7 +22,7 @@ class ViewController: UIViewController, PlayerDelegate {
         let path = Bundle.main.pathForResource("test", ofType: "aif")!
         if (sender as! UIButton).currentTitle == "Forever" {
             // for remote control to work, our audio session policy must be Playback
-            _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             self.player.forever = true
         } else {
             // example works better if there is some background audio already playing
@@ -38,7 +38,7 @@ class ViewController: UIViewController, PlayerDelegate {
                 return
             }
             print("ducking")
-            _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, with: .duckOthers)
+            try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, with: .duckOthers)
             self.player.forever = false
         }
         self.player.playFile(atPath:path)
@@ -51,9 +51,9 @@ class ViewController: UIViewController, PlayerDelegate {
     func unduck() {
         print("unducking")
         let sess = AVAudioSession.sharedInstance()
-        _ = try? sess.setActive(false)
-        _ = try? sess.setCategory(AVAudioSessionCategoryAmbient)
-        _ = try? sess.setActive(true)
+        try? sess.setActive(false)
+        try? sess.setCategory(AVAudioSessionCategoryAmbient)
+        try? sess.setActive(true)
     }
     
     // ======== respond to remote controls

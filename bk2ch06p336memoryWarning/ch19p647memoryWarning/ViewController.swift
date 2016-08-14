@@ -14,31 +14,31 @@ class ViewController : UIViewController {
     // so you have to resolve those generics explicitly
     // feels like a bug to me, but whatever
     
-    let cache = NSCache<NSString, AnyObject>()
+    private let _cache = NSCache<NSString, AnyObject>()
     var cachedData : Data {
         let key = "somekey"
-        var data = self.cache.object(forKey:key) as? Data
+        var data = self._cache.object(forKey:key) as? Data
         if data != nil {
             return data!
         }
         // ... recreate data here ...
-        data = Data() // recreated data
-        self.cache.setObject(data!, forKey: key)
+        data = Data(bytes:[1,2,3,4]) // recreated data
+        self._cache.setObject(data!, forKey: key)
         return data!
     }
     
-    var purgeable = NSPurgeableData()
+    private var _purgeable = NSPurgeableData()
     var purgeabledata : Data {
         // surprisingly tricky to get content access barriers correct
-        if self.purgeable.beginContentAccess() && self.purgeable.length > 0 {
-            let result = self.purgeable.copy() as! Data
-            self.purgeable.endContentAccess()
+        if self._purgeable.beginContentAccess() && self._purgeable.length > 0 {
+            let result = self._purgeable.copy() as! Data
+            self._purgeable.endContentAccess()
             return result
         } else {
             // ... recreate data here ...
-            let data = Data() // recreated data
-            self.purgeable = NSPurgeableData(data:data)
-            self.purgeable.endContentAccess() // must call "end"!
+            let data = Data(bytes:[6,7,8,9]) // recreated data
+            self._purgeable = NSPurgeableData(data:data)
+            self._purgeable.endContentAccess() // must call "end"!
             return data
         }
     }
@@ -54,7 +54,8 @@ class ViewController : UIViewController {
         get {
             if _myBigData == nil {
                 let fm = FileManager()
-                let f = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
+                let f = URL(fileURLWithPath: NSTemporaryDirectory())
+                    .appendingPathComponent("myBigData")
                 if let d = try? Data(contentsOf:f) {
                     print("loaded big data from disk")
                     self._myBigData = d
@@ -91,7 +92,7 @@ class ViewController : UIViewController {
         if let myBigData = self.myBigData {
             print("unloading big data")
             let f = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
-            _ = try? myBigData.write(to:f)
+            try? myBigData.write(to:f)
             self.myBigData = nil
         }
     }
@@ -113,6 +114,10 @@ class ViewController : UIViewController {
         UIApplication.shared.perform(#selector(Dummy._performMemoryWarning))
     }
     
+    @IBAction func testCaches(_ sender: AnyObject) {
+        print(self.cachedData)
+        print(self.purgeabledata)
+    }
     // backgrounding
     
     override func viewDidLoad() {

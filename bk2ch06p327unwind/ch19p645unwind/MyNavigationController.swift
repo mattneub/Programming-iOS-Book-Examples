@@ -46,6 +46,12 @@ class MyNavigationController : UINavigationController {
         }
     }
     
+    override func popToViewController(_ viewController: UIViewController, animated: Bool) -> [UIViewController]? {
+        print("\(self.dynamicType) \(#function)")
+        return super.popToViewController(viewController, animated:animated)
+    }
+
+    
     /*
     
     override func viewControllerForUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject!) -> UIViewController? {

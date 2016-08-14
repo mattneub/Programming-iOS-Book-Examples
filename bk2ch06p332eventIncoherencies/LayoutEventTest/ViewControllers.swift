@@ -48,7 +48,7 @@ class Base : UIViewController {
     }
 }
 
-class ViewController : Base {
+class ViewController1 : Base {
     
 }
 

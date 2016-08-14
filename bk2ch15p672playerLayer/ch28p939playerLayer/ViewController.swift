@@ -83,8 +83,8 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-        _ = try? AVAudioSession.sharedInstance().setActive(true)
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        try? AVAudioSession.sharedInstance().setActive(true)
     }
 
     
