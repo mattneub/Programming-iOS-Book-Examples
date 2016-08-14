@@ -4,7 +4,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
-    var pep : [String]!
+    let pep = ["Manny", "Moe", "Jack"]
+
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window = UIWindow()
@@ -25,7 +26,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func setUpPageViewController() {
-        self.pep = ["Manny", "Moe", "Jack"]
         // make a page view controller
         let pvc = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         // give it an initial page
@@ -52,26 +52,25 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didDecodeRestorableStateWith coder: NSCoder) {
-        let boy: AnyObject? = coder.decodeObject(forKey:"boy")
-        if let boy = boy as? String {
-            let pvc = self.window!.rootViewController as! UIPageViewController
-            let pep = Pep(pepBoy: boy)
-            pvc.setViewControllers([pep], direction: .forward, animated: false)
-        }
+        let boyMaybe = coder.decodeObject(forKey:"boy")
+        guard let boy = boyMaybe as? String else {return}
+        let pvc = self.window!.rootViewController as! UIPageViewController
+        let pep = Pep(pepBoy: boy)
+        pvc.setViewControllers([pep], direction: .forward, animated: false)
     }
 }
 
 extension AppDelegate : UIPageViewControllerDataSource {
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let boy = (viewController as! Pep).boy
+    func pageViewController(_ pvc: UIPageViewController, viewControllerAfter vc: UIViewController) -> UIViewController? {
+        let boy = (vc as! Pep).boy
         let ix = self.pep.index(of:boy)! + 1
         if ix >= self.pep.count {
             return nil
         }
         return Pep(pepBoy: self.pep[ix])
     }
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        let boy = (viewController as! Pep).boy
+    func pageViewController(_ pvc: UIPageViewController, viewControllerBefore vc: UIViewController) -> UIViewController? {
+        let boy = (vc as! Pep).boy
         let ix = self.pep.index(of:boy)! - 1
         if ix < 0 {
             return nil

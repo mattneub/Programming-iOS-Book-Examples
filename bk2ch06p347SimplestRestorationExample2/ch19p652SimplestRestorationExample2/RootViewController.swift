@@ -34,7 +34,7 @@ class RootViewController : UIViewController {
             style:.plain, target:self, action:#selector(doPush))
         self.navigationItem.rightBarButtonItem = b
         let button = UIButton(type:.system)
-        button.setTitle("Present", for:[])
+        button.setTitle("Present", for:.normal)
         button.addTarget(self,
             action:#selector(doPresent),
             for:.touchUpInside)

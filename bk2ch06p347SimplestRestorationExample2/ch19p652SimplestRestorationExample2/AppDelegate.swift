@@ -9,7 +9,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        self.window = UIWindow()
+        self.window = self.window ?? UIWindow()
         
         let rvc = RootViewController()
         rvc.restorationIdentifier = "root"
@@ -26,15 +26,15 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
         print("app should restore \(coder)")
         // how to examine the coder
-        if let idiomraw = coder.decodeObject(
-            forKey: UIApplicationStateRestorationUserInterfaceIdiomKey) as? Int {
-                if let idiom = UIUserInterfaceIdiom(rawValue:idiomraw) {
-                    if idiom == .phone {
-                        print("phone")
-                    } else {
-                        print("pad")
-                    }
+        let key = UIApplicationStateRestorationUserInterfaceIdiomKey
+        if let idiomraw = coder.decodeObject(forKey: key) as? Int {
+            if let idiom = UIUserInterfaceIdiom(rawValue:idiomraw) {
+                if idiom == .phone {
+                    print("phone")
+                } else {
+                    print("pad")
                 }
+            }
         }
         return true
     }
@@ -53,21 +53,18 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     /*
-    
     func application(_ application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [AnyObject], coder: NSCoder) -> UIViewController? {
-        
         print("app delegate \(ip) \(coder)")
-        let last = ip.last as String
+        let last = ip.last as! String
         if last == "nav" {
             return self.window!.rootViewController
         }
         if last == "root" {
-            return (self.window!.rootViewController as UINavigationController).viewControllers[0] as? UIViewController
+            return (self.window!.rootViewController as! UINavigationController).viewControllers[0]
         }
         return nil // shouldn't happen; the others all have restoration classes
     }
-
-*/
+    */
 
     
 }

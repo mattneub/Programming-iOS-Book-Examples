@@ -5,6 +5,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        self.window?.restorationIdentifier = "window"
         self.window?.makeKeyAndVisible()
         return true
     }

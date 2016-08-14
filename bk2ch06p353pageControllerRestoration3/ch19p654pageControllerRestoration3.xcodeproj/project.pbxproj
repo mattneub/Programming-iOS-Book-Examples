@@ -12,9 +12,6 @@
 		327D4EDB1991E9E900B95C4F /* Pep.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327D4EDA1991E9E900B95C4F /* Pep.xib */; };
 		328480D01B7FE2E9008DBAD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328480CF1B7FE2E9008DBAD3 /* LaunchScreen.storyboard */; };
 		C94F83C917CFAC7A00DA797B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C94F83C817CFAC7A00DA797B /* Assets.xcassets */; };
-		C94F83E817CFACA600DA797B /* jack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C94F83E517CFACA600DA797B /* jack.jpg */; };
-		C94F83E917CFACA600DA797B /* manny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C94F83E617CFACA600DA797B /* manny.jpg */; };
-		C94F83EA17CFACA600DA797B /* moe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C94F83E717CFACA600DA797B /* moe.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,9 +22,6 @@
 		C94F83B317CFAC7A00DA797B /* ch19p654pageControllerRestoration3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch19p654pageControllerRestoration3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94F83BE17CFAC7A00DA797B /* ch19p654pageControllerRestoration3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch19p654pageControllerRestoration3-Info.plist"; sourceTree = "<group>"; };
 		C94F83C817CFAC7A00DA797B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C94F83E517CFACA600DA797B /* jack.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jack.jpg; sourceTree = "<group>"; };
-		C94F83E617CFACA600DA797B /* manny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = manny.jpg; sourceTree = "<group>"; };
-		C94F83E717CFACA600DA797B /* moe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = moe.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				327856B9197CB47E00BD83B9 /* AppDelegate.swift */,
-				C94F83E517CFACA600DA797B /* jack.jpg */,
-				C94F83E617CFACA600DA797B /* manny.jpg */,
-				C94F83E717CFACA600DA797B /* moe.jpg */,
 				327856BB197CB48900BD83B9 /* Pep.swift */,
 				327D4EDA1991E9E900B95C4F /* Pep.xib */,
 				C94F83C817CFAC7A00DA797B /* Assets.xcassets */,
@@ -131,11 +122,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				327D4EDB1991E9E900B95C4F /* Pep.xib in Resources */,
-				C94F83E817CFACA600DA797B /* jack.jpg in Resources */,
-				C94F83EA17CFACA600DA797B /* moe.jpg in Resources */,
 				328480D01B7FE2E9008DBAD3 /* LaunchScreen.storyboard in Resources */,
 				C94F83C917CFAC7A00DA797B /* Assets.xcassets in Resources */,
-				C94F83E917CFACA600DA797B /* manny.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

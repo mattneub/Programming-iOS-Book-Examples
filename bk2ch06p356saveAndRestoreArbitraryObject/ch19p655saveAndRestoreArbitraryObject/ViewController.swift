@@ -1,6 +1,18 @@
 
 import UIKit
 
+/*
+ Launch the app, push, and Write a value into our Thing.
+ Now background the app and relaunch it.
+ We restore state, so we are still in the pushed v.c....
+ ...and now Read and you will see that the text of the Thing has been restored.
+ That's because Thing is itself an archivable object.
+ 
+ However, if you pop so that the ViewController is lost,
+ then of course there is no Thing any more either.
+ So if you push again, the Thing has been cleaned out, as expected.
+ */
+
 class ViewController : UIViewController {
     
     var thing : Thing!
@@ -10,10 +22,6 @@ class ViewController : UIViewController {
         self.thing = self.dynamicType.makeThing()
     }
     
-    // This is not being called, and I don't know why
-    // as a result, the example is not working
-    
-    @objc(encodeRestorableStateWithCoder:)
     override func encodeRestorableState(with coder: NSCoder) {
         super.encodeRestorableState(with:coder)
         coder.encode(self.thing, forKey: "mything") // must show this object to the archiver
@@ -42,12 +50,12 @@ class ViewController : UIViewController {
     }
     
     deinit {
-        print("farewell")
+        print("farewell from ViewController")
     }
     
 }
 
-extension ViewController : UIObjectRestoration {
+extension ViewController /* : UIObjectRestoration */ {
     
     class func makeThing () -> Thing {
         let thing = Thing()
@@ -57,11 +65,13 @@ extension ViewController : UIObjectRestoration {
     }
     
     // unused, no actual restoration, just showing it can be done
+    /*
     class func object(withRestorationIdentifierPath ip: [String],
         coder: NSCoder) -> UIStateRestoring? {
             print(ip)
             let thing = self.makeThing()
             return thing
     }
+ */
     
 }

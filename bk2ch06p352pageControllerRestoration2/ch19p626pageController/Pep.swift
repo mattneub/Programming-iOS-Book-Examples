@@ -11,7 +11,7 @@ class Pep: UIViewController {
     // we add "required" to satisfy the compiler's worry that class's "self" might be a subclass
     required init(pepBoy boy:String) {
         self.boy = boy
-        super.init(nibName: "Pep", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
         self.restorationIdentifier = "pep" // *
         self.restorationClass = self.dynamicType // *
     }
@@ -29,7 +29,7 @@ class Pep: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.name.text = self.boy
-        self.pic.image = UIImage(named:"\(self.boy.lowercased()).jpg")
+        self.pic.image = UIImage(named:self.boy.lowercased())
     }
     
     override var description : String {

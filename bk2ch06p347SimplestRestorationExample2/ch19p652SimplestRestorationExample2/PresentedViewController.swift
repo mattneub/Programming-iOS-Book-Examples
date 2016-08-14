@@ -30,7 +30,7 @@ class PresentedViewController : UIViewController {
         print("view did load \(self.dynamicType)")
         self.view.backgroundColor = .blue
         let button = UIButton(type:.system)
-        button.setTitle("Dismiss", for:[])
+        button.setTitle("Dismiss", for:.normal)
         button.addTarget(self,
             action:#selector(doDismiss),
             for:.touchUpInside)

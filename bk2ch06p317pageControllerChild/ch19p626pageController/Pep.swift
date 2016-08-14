@@ -10,7 +10,7 @@ class Pep: UIViewController {
     
     init(pepBoy boy:String) {
         self.boy = boy
-        super.init(nibName: "Pep", bundle: nil)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init(coder: NSCoder) {

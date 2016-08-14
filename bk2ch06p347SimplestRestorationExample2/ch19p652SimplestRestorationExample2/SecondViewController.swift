@@ -31,7 +31,7 @@ class SecondViewController : UIViewController {
         print("view did load \(self.dynamicType)")
         self.view.backgroundColor = .yellow
         let button = UIButton(type:.system)
-        button.setTitle("Present", for:[])
+        button.setTitle("Present", for:.normal)
         button.addTarget(self,
             action:#selector(doPresent),
             for:.touchUpInside)
