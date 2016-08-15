@@ -9,7 +9,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]? = [:]) -> Bool {
     
-        self.window = UIWindow()
+        self.window = self.window ?? UIWindow()
         
         // how to check whether assignment into an optional chain worked
         let ok : Void? = self.window?.rootViewController = ViewController()

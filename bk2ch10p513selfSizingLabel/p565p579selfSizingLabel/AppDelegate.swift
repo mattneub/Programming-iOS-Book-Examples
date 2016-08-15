@@ -6,7 +6,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
-        self.window = UIWindow()
+        self.window = self.window ?? UIWindow()
         self.window!.rootViewController = ViewController(nibName: "ViewController", bundle: nil)
         self.window!.backgroundColor = .white
         self.window!.makeKeyAndVisible()

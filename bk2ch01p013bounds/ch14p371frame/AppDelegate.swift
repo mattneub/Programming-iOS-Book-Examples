@@ -15,7 +15,7 @@ extension CGRect {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        self.window = UIWindow()
+        self.window = self.window ?? UIWindow()
         
         self.window!.rootViewController = UIViewController()
         let mainview = self.window!.rootViewController!.view!

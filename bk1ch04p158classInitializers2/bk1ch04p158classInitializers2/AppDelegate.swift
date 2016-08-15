@@ -8,7 +8,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]? = [:]) -> Bool {
     
-        self.window = UIWindow()
+        self.window = self.window ?? UIWindow()
         let vc = ViewController(nibName:"MyNib", bundle:nil) // compile error
         self.window!.rootViewController = vc
         self.window!.backgroundColor = UIColor.white

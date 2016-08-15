@@ -8,7 +8,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        self.window = UIWindow()
+        self.window = self.window ?? UIWindow()
         
         self.setUpPageViewController()
         

@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)
         -> Bool {
-            self.window = UIWindow()
+            self.window = self.window ?? UIWindow()
             self.window!.rootViewController = UIViewController()
             // here we can add subviews
             let mainview = self.window!.rootViewController!.view! // new in Swift 3 of 6/6, IUO does not propagate
