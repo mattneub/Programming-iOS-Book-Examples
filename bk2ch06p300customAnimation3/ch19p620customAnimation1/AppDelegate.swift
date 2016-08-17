@@ -9,7 +9,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
     var interacting = false
     var anim : UIViewImplicitlyAnimating? // cannot be weak, vanishes before end of gesture
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
         
         let tbc = self.window!.rootViewController as! UITabBarController
         tbc.delegate = self

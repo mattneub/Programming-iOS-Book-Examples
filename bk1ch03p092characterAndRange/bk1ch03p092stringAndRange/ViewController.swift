@@ -32,8 +32,9 @@ class ViewController: UIViewController {
             let s = "hello"
             let firstL = s.characters.index(of:"l")
             print(firstL) // Optional(2), meaning the third character
-            let lastL = String(s.characters.reversed).characters.index(of:"l")
+            let lastL = String(s.characters.reversed()).characters.index(of:"l")
             print(lastL)
+
         }
         
         do {
@@ -82,7 +83,7 @@ class ViewController: UIViewController {
             let s = "hello world"
             let arra = s.characters.split{$0 == " "}
             print(arra)
-            print(arra[0].dynamicType)
+            print(type(of:arra[0]))
             let arr = s.characters.split{$0 == " "}.map{String($0)}
             print(arr)
         }

@@ -4,11 +4,11 @@ import UIKit
 
 func flag(country:String) -> String {
     let base : UInt32 = 127397
-    var s = ""
+    var s = String.UnicodeScalarView()
     for v in country.unicodeScalars {
-        s.append(UnicodeScalar(base + v.value))
+        s.append(UnicodeScalar(base + v.value)!)
     }
-    return s
+    return String(s)
 }
 
 class ViewController: UIViewController {

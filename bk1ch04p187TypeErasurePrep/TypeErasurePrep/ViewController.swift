@@ -40,7 +40,7 @@ struct Bird2 : Flier2 {
     typealias Other2 = Insect2
     func fly() { print(self.noise) }
     func flockTogetherWith(other:Other2) {
-        print("\(self.noise), I'm flocking with some \(other.dynamicType)")
+        print("\(self.noise), I'm flocking with some \(type(of:other))")
     }
 }
 struct Insect2 : Flier2 {
@@ -48,14 +48,14 @@ struct Insect2 : Flier2 {
     typealias Other2 = Bird2
     func fly() { print(self.noise) }
     func flockTogetherWith(other:Other2) {
-        print("\(self.noise), I'm flocking with some \(other.dynamicType)")
+        print("\(self.noise), I'm flocking with some \(type(of:other))")
     }
 }
 
 struct FlierStruct2<Other2> : Flier2 {
     let flierAdopterFlyMethod : (Void) -> Void
     let flierAdopterFlockMethod : (Other2) -> Void
-    init<FlierAdopter:Flier2 where Other2 == FlierAdopter.Other2>(_ flierAdopter:FlierAdopter) {
+    init<FlierAdopter:Flier2>(_ flierAdopter:FlierAdopter) where Other2 == FlierAdopter.Other2 {
         self.flierAdopterFlyMethod = flierAdopter.fly
         self.flierAdopterFlockMethod = flierAdopter.flockTogetherWith
     }

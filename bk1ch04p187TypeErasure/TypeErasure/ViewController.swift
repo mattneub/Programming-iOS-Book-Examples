@@ -11,13 +11,13 @@ protocol Flier {
 struct Bird : Flier {
     typealias Other = Insect
     func flockTogetherWith(_ other:Other) {
-        print("tweet tweet, I'm flocking with some \(other.dynamicType)")
+        print("tweet tweet, I'm flocking with some \(type(of:other))")
     }
 }
 struct Insect : Flier {
     typealias Other = Insect
     func flockTogetherWith(_ other:Other) {
-        print("buzz buzz, I'm flocking with some \(other.dynamicType)")
+        print("buzz buzz, I'm flocking with some \(type(of:other))")
     }
 }
 struct Helicopter : Flier {

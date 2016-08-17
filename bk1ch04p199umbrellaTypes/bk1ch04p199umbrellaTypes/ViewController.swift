@@ -43,7 +43,7 @@ func flockTwoTogether<T:Flier>(_ flier:T, _ other:Any) {
 
 func typeTester(_ d:Dog, _ whattype:Dog.Type) {
     // if d.dynamicType is whattype {} // compile error, "not a type" (i.e. a not a type literal)
-    if d.dynamicType === whattype {
+    if type(of:d) === whattype {
         print("yep")
     } else {
         print("nope")
@@ -68,11 +68,22 @@ class ViewController: UIViewController {
         
         do {
             let d = Dog()
-            let any : AnyObject = d
-            let d2 = any as! Dog
+            let anyo : AnyObject = d
+            let d2 = anyo as! Dog
             
             _ = d2
         }
+        
+        // but...
+        
+        do {
+            let s = "howdy"
+            let anyo : AnyObject = s as AnyObject
+            let s2 = anyo as! String
+            
+            _ = s2
+        }
+
         
         do {
             let s = "howdy"
@@ -94,9 +105,14 @@ class ViewController: UIViewController {
         }
         
         do {
-            // simpler
-            let s : AnyObject = "howdy" // String to NSString to AnyObject
-            let i : AnyObject = 1 // Int to NSNumber to AnyObject
+            let r = CGRect() as AnyObject
+            print(type(of:r))
+        }
+        
+        do {
+            // assigning nonclass to AnyObject type now requires a cast *
+            let s : AnyObject = "howdy" as AnyObject // String to NSString to AnyObject
+            let i : AnyObject = 1 as AnyObject // Int to NSNumber to AnyObject
             let ss = s as! NSString as String
             let sss = s as! String
             _ = (s,i, ss, sss)
@@ -171,15 +187,50 @@ class ViewController: UIViewController {
         anyExpecter(Dog.self) // a class
         anyExpecter(anyExpecter) // a function
         
+        do {
+        
+            let anything : Any = "howdy"
+            if anything is String {
+                let s = anything as! String
+                print(s) // howdy
+            }
+            if anything is NSString {
+                let s = anything as! NSString
+                print(s) // howdy
+            }
+            
+        }
+        
+        do {
+            let anything : Any = anyExpecter
+            let anyobject = anything as AnyObject
+            let anyobject2 : AnyObject = anything as AnyObject
+            print(anyobject)
+        }
+        
         flockTwoTogether(Bird(), Insect())
         flockTwoTogether(Bird(), String())
+        
+        do {
+            let d1 = Dog()
+            let d2 : Dog? = nil
+            let any : Any? = d2
+            print(any as AnyObject? === d1) // false
+            
+            let any2 : Any? = d1
+            print(any2 as AnyObject === d1) // false! huh?
+            print(any2 as AnyObject? === d1) // true
+            
+            let any3 : Any = d1
+            print(any3 as AnyObject === d1) // true
+        }
         
         
     }
     
     func changed(_ n:Notification) {
         let player = MPMusicPlayerController.applicationMusicPlayer()
-        if n.object === player { // ...
+        if n.object as AnyObject? === player { // *
         }
     }
 

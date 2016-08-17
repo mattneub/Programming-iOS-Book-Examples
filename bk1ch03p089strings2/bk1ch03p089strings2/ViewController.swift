@@ -23,7 +23,8 @@ class ViewController: UIViewController {
         do {
             let s = "hello"
             let range = (s as NSString).range(of:"ell") // (1,3), an NSRange
-            print(range)
+            print(range) // why have they lost the ability to show me an NSRange?
+            print(NSStringFromRange(range))
         }
         
         do {

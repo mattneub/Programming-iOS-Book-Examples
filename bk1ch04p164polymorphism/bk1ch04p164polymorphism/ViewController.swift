@@ -18,7 +18,6 @@ class NoisyDog : Dog {
     }
 }
 
-
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -114,8 +113,9 @@ class ViewController: UIViewController {
             // ... from being able to call setObject:forKey: with a number
             let ud = UserDefaults.standard
             let iii = 1
-            let ii : NSNumber = iii // as NSNumber // explicit "as" now required // no it isn't
+            let ii : NSNumber = iii as NSNumber // explicit "as" now required // no it isn't // yes it is, I wish they would make up their minds
             ud.set(ii, forKey: "Test")
+            ud.set(iii, forKey: "Test") // this is legal because this is now Any
             let i = ud.object(forKey: "Test") as! Int
             _ = i
             let s : NSString = "howdy" // so why isn't it required here???
@@ -124,10 +124,72 @@ class ViewController: UIViewController {
         }
         
         do {
+            // wait, maybe that was because it's a literal;
+            // what if it's a variable?
+            let s = "howdy"
+            let s2 : NSString = s as NSString // yes, must say "as NSString"
+            let any : Any = s
+            _ = (s2, any)
+        }
+        
+        do {
             let ud = UserDefaults.standard
-            ud.set("howdy", forKey:"Test")
+            let s = "howdy"
+            ud.set(s, forKey:"Test")
             let test = ud.object(forKey:"Test") as! String
             print(test)
+            let test2 = ud.object(forKey:"Test") as AnyObject // no forced cast needed
+            let test3 = test2 as! String
+        }
+        
+        do {
+            let s = "howdy"
+            let any : Any = s
+            print(type(of:any)) // merely casting / typing as Any does nothing
+            let anyo = any as AnyObject
+            print(type(of:anyo)) // but casting to AnyObject crosses the bridge
+            
+            let r = CGRect.zero
+            let any2 : Any = r
+            print(type(of:any2)) // merely casting / typing as Any does nothing
+            let anyo2 = any2 as AnyObject
+            print(type(of:anyo2)) // but casting to AnyObject crosses the bridge
+
+        }
+        
+        do {
+            NotificationCenter.default.addObserver(forName: Notification.Name("test"), object: nil, queue: nil) { n in
+                print(type(of:n.object!)) // here, it will have crossed the bridge
+            }
+            let n1 = Notification(name: Notification.Name("test"), object: CGRect.zero, userInfo: nil)
+            print(type(of:n1.object!)) // CGRect; it hasn't crossed the bridge yet
+            let n2 = Notification(name: Notification.Name("test"), object: Dog(), userInfo:nil)
+            print(type(of:n2.object!))
+            let n3 = Notification(name: Notification.Name("test"), object: 1, userInfo:nil)
+            print(type(of:n3.object!))
+            let n4 = Notification(name: Notification.Name("test"), object: [CGRect.zero], userInfo:nil)
+            print(type(of:n4.object!))
+
+            
+            
+            NotificationCenter.default.post(n1)
+            NotificationCenter.default.post(n2)
+            NotificationCenter.default.post(n3)
+            NotificationCenter.default.post(n4)
+            
+        }
+        
+        do {
+            // what about AnyObject?
+            let s = "howdy"
+            let any1 : AnyObject = s as AnyObject // must cast
+            print(type(of:any1)) // some special bridging type
+            let i = 1
+            let any2 : AnyObject = i as AnyObject // must cast
+            print(type(of:any2)) // some special bridging type
+            
+            let any3 : Any = i
+            print(type(of:any3)) // Int
         }
         
         do {

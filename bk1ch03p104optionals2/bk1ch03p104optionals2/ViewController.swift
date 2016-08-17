@@ -65,8 +65,19 @@ class ViewController: UIViewController {
 
         let s : String? = "Howdy"
         if s == "Howdy" { print("equal") }
-        let i : Int? = 2
-        if i < 3 { print("less") }
+        
+        // becomes illegal in seed 6
+        // equality still works with Optional, but comparison does not
+//        let i : Int? = 2
+//        if i < 3 { print("less") }
+        // you can, however, say this (though of course you can crash if i is nil):
+        let i : Int! = 2
+        if i < 3 { print("less") } // involves forced unwrapping
+        
+        let ii : Int? = 2
+        if ii != nil && ii! < 3 {
+            print("less")
+        }
 
         let arr = [1,2,3]
         let ix = (arr as NSArray).index(of:4)

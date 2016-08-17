@@ -43,7 +43,7 @@ class Dog {
         let barkFunction4 : (Bool) -> Void = bark
         let barkFunction5 = self.bark(_:)
         
-        let barkFunction6 = self.dynamicType.bark(_:)
+        let barkFunction6 = type(of:self).bark(_:)
         let barkFunction7 = Dog.bark(_:)
         
         _ = barkFunction1

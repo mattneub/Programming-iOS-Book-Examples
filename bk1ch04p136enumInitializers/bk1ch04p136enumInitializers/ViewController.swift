@@ -50,17 +50,17 @@ enum Shape {
     case rectangle
     case ellipse
     case diamond
-    func addShape (toPath p: CGMutablePath, inRect r : CGRect) -> () {
+    func addShape (to p: CGMutablePath, in r : CGRect) -> () {
         switch self {
         case .rectangle:
-            p.addRect(nil, rect:r)
+            p.addRect(r)
         case .ellipse:
-            p.addEllipseIn(nil, rect:r)
+            p.addEllipse(in:r)
         case .diamond:
-            p.moveTo(nil, x:r.minX, y:r.midY)
-            p.addLineTo(nil, x: r.midX, y: r.minY)
-            p.addLineTo(nil, x: r.maxX, y: r.midY)
-            p.addLineTo(nil, x: r.midX, y: r.maxY)
+            p.move(to: CGPoint(x:r.minX, y:r.midY))
+            p.addLine(to: CGPoint(x: r.midX, y: r.minY))
+            p.addLine(to: CGPoint(x: r.maxX, y: r.midY))
+                p.addLine(to: CGPoint(x: r.midX, y: r.maxY))
             p.closeSubpath()
         }
     }

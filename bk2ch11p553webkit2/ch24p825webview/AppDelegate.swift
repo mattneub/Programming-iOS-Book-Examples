@@ -4,7 +4,7 @@ import UIKit
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
         self.window?.backgroundColor = UIColor.green()
         self.window?.makeKeyAndVisible()
         return true

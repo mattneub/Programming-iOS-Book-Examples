@@ -66,7 +66,7 @@ func changeName(of d:Dog, to newName:String) {
 
 
 class ViewController: UIViewController {
-    
+    var button : UIButton!
     var button2 : UIButton!
 
     override func viewDidLoad() {
@@ -98,10 +98,14 @@ class ViewController: UIViewController {
         }
         // but the whole example may fall to the ground...
         // as they may be blocking access to the original C functions entirely
+        // the won't let me write this:
+        
+        // let r = CGRectDivide(myRect, &arrow, &body, Arrow.ARHEIGHT, .minYEdge)
+
         // but they do seem to let me access it as a kind of method!
-        // CGRectDivide(rect, &arrow, &body, Arrow.ARHEIGHT, .MinYEdge)
         // seed 4, dodged a bullet; they renamified it but they didn't kill it
-        myRect.divided(slice: &arrow, remainder: &body, atDistance: Arrow.ARHEIGHT, from: .minYEdge)
+        // seed 6, they renamified it further; I hope they don't totally kill it...
+        myRect.__divided(slice: &arrow, remainder: &body, atDistance: Arrow.ARHEIGHT, from: .minYEdge)
         
         // proving that a class instance parameter is mutable in a function without "inout"
         
@@ -119,9 +123,12 @@ class ViewController: UIViewController {
 
 
 extension ViewController : UIPopoverPresentationControllerDelegate {
-    @objc(popoverPresentationController:willRepositionPopoverToRect:inView:)
     func popoverPresentationController(_ popoverPresentationController: UIPopoverPresentationController, willRepositionPopoverTo rect: UnsafeMutablePointer<CGRect>, in view: AutoreleasingUnsafeMutablePointer<UIView>) {
-
+        print("reposition")
+        if view.pointee == self.button {
+            rect.pointee = self.button2.bounds
+            view.pointee = self.button2
+        }
     }
 }
  

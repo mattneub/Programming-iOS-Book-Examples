@@ -6,7 +6,7 @@ class Dog {
         return "Woof"
     }
     func bark() {
-        print(self.dynamicType.whatDogsSay)
+        print(type(of:self).whatDogsSay)
     }
 }
 class NoisyDog : Dog {
@@ -30,21 +30,21 @@ class ViewController: UIViewController {
         d.bark()
         let nd = NoisyDog()
         nd.bark() // Woof woof woof
-        print(nd.dynamicType)
+        print(type(of:nd))
     
         dogTypeExpecter(Dog) // oooh, compiler now warns
         dogTypeExpecter(Dog.self)
         dogTypeExpecter(NoisyDog) // ditto
         dogTypeExpecter(NoisyDog.self)
-        dogTypeExpecter(d.dynamicType)
-        dogTypeExpecter(d.dynamicType.self)
-        dogTypeExpecter(nd.dynamicType)
-        dogTypeExpecter(nd.dynamicType.self)
+        dogTypeExpecter(type(of:d))
+        dogTypeExpecter(type(of:d).self)
+        dogTypeExpecter(type(of:nd))
+        dogTypeExpecter(type(of:nd).self)
         
         let ddd = Dog.self
-        let dddd = ddd.dynamicType
+        let dddd = type(of:ddd)
         print(ddd == Dog.self)
-        print(dddd == Dog.self.dynamicType) // oooookay...
+        print(dddd == type(of:Dog.self)) // oooookay...
 
 
     }

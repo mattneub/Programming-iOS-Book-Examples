@@ -9,11 +9,19 @@ struct Bird : Flier {
 }
 struct Insect : Flier {
 }
-class Dog {
+class DogNOT : Equatable { // WHOA! New in seed 6, we are not automatically equatable
+    // we can make ourselves equatable easily enough
+    static func ==(lhs:DogNOT, rhs:DogNOT) -> Bool {
+        return lhs === rhs
+    }
 }
-class NoisyDog : Dog {
+class NoisyDogNOT : DogNOT {
 }
 
+// however, even though that works, for teaching purposes I'm going to use NSObject to solve it
+
+class Dog : NSObject {}
+class NoisyDog : Dog {}
 
 class ViewController: UIViewController {
 
@@ -34,7 +42,7 @@ class ViewController: UIViewController {
         
         do {
             let dogs = [Dog(), NoisyDog()]
-            let objs = [1, "howdy"]
+            let objs = [1, "howdy"] as [Any] // explicit type annotation needed *
             // let arrr = [Insect(), Bird()] // compile error
             let arr : [Flier] = [Insect(), Bird()]
             
@@ -42,10 +50,13 @@ class ViewController: UIViewController {
                 let arr2 : [Flier] = [Insect()]
                 // WARNING next line is legal (compiles) but you'll crash at runtime
                 // can't use array-casting to cast down from protocol type to adopter type
-                //let arr3 = arr2 as! [Insect]
-                _ = arr2
+                // Wait, they fixed that in Xcode 8 seed 6!
+                let arr3 = arr2 as! [Insect]
+                print("I didn't crash! I kiss the sweet ground...")
+                _ = (arr2, arr3)
             }
             
+            /*
             do {
                 let arr2 : [Flier] = [Insect()]
                 // instead of above, to cast down, must cast individual elements down
@@ -53,6 +64,7 @@ class ViewController: UIViewController {
                 _ = arr2
                 _ = arr3
             }
+ */
             
             let rs = Array(1...3)
             print(rs)
@@ -91,8 +103,7 @@ class ViewController: UIViewController {
             let arr2 = arr as? [NoisyDog] // Optional wrapping an array of NoisyDog
             let arr3 = [dog2, dog3]
             let arr4 = arr3 as? [NoisyDog] // nil
-            _ = arr2
-            _ = arr4
+            print(arr2, arr4)
         }
         
         do {
@@ -292,7 +303,7 @@ class ViewController: UIViewController {
             let joined2 = arr.joined(separator: []) // [1, 2, 3, 4, 5, 6]
             let joined3 = arr.joined(separator: 8...9) // just proving that other sequences are legal
             let arr4 = arr.flatMap {$0} // new in Swift 1.2
-            let arr5 = Array(arr.flatten()) // new in Xcode 7 beta 6
+            let arr5 = Array(arr.joined()) // renamed in Xcode 8 seed 6 *
             _ = joined
             _ = joined2
             _ = joined3
@@ -354,9 +365,15 @@ class ViewController: UIViewController {
             let flat = arr.reduce([], +) // [1, 2, 3, 4, 5, 6]
             _ = flat
             
-            let arr2 = [[1,2], [3,4], [5,6], 7]
+            let arr2 : [Any] = [[1,2], [3,4], [5,6], 7] // must be explicit [Any]
             let arr3 = arr2.flatMap {$0}
             print(arr3)
+        }
+        
+        do {
+            let arr = [[1, 2], [3, 4]]
+            let arr2 = arr.flatMap{$0.map{String($0)}} // ["1", "2", "3", "4"]
+            print(arr2)
         }
         
         // flatMap has another use that I really should talk about:
@@ -365,6 +382,14 @@ class ViewController: UIViewController {
             let arr : [String?] = ["Manny", nil, nil, "Moe", nil, "Jack", nil]
             let arr2 = arr.flatMap{$0}
             print(arr2)
+        }
+        
+        do {
+            let arr : [Any] = [1, "hey", 2, "ho"] // NOT AnyObject! No automatic bridge-crossing
+            let arr2 = arr.flatMap{$0 as? String} // ["hey", "ho"]
+            print(arr2)
+            
+            // let arrr : [AnyObject] = ["howdy"] // illegal
         }
         
         do {
@@ -386,6 +411,20 @@ class ViewController: UIViewController {
         }
         
         do {
+            let lay = CAGradientLayer()
+            lay.locations = [0.25, 0.5, 0.75]
+        }
+        
+        do {
+            let anim = CAKeyframeAnimation(keyPath:"position") // dummy
+            let (oldP,p1,p2,newP) = (CGPoint.zero,CGPoint.zero,CGPoint.zero,CGPoint.zero) // dummy
+            let points = [oldP,p1,p2,newP]
+            anim.values = points.map {NSValue(cgPoint:$0)}
+            // this, on the other hand, is _legal_, but it isn't going to work:
+            anim.values = points
+        }
+        
+        do {
             var arr = ["Manny", "Moe", "Jack"]
             // let ss = arr.componentsJoined(by:", ") // compile error
             let s = (arr as NSArray).componentsJoined(by:", ")
@@ -399,20 +438,19 @@ class ViewController: UIViewController {
         }
         
         do {
-            let arrCGPoints = [CGPoint]()
-            // let arrr = arrCGPoints as NSArray // compiler stops you
-            let arrNSValues = arrCGPoints.map { NSValue(cgPoint:$0) }
-            let arr = arrNSValues as NSArray
-            _ = arrNSValues
-            _ = arr
+            let arrCGPoints = [CGPoint()]
+            let arr = arrCGPoints as NSArray // this is now LEGAL (Xcode 8, seed 6)
+            // let arrNSValues = arrCGPoints.map { NSValue(cgPoint:$0) }
+            // let arr = arrNSValues as NSArray
+            print(arr)
         }
         
         do {
             let arr = [String?]()
             // let arr2 = arr.map{if $0 == nil {return NSNull()} else {return $0!}} // compile error
             // let arr2 = arr.map{s -> AnyObject in if s == nil {return NSNull()} else {return s!}}
-            let arr2 : [AnyObject] =
-                arr.map {if $0 != nil {return $0!} else {return NSNull()}}
+            let arr2 : [Any] =
+                arr.map {if $0 != nil {return $0!} else {return NSNull()}} // * NB change to [Any]
             _ = arr2
         }
         
@@ -448,6 +486,7 @@ class ViewController: UIViewController {
         do {
             // there seems to be some doubt now as to whether the medium of exchange...
             // ... is AnyObject or NSObject
+            // ooooookay, in Xcode 8 seed 6, the matter is settled — it's Any
             let s = "howdy" as NSObject
             let s2 = "howdy" as AnyObject
             let s3 = s as! String
@@ -458,10 +497,17 @@ class ViewController: UIViewController {
             // there is no problem even if it is NOT an NSObject, so what's the big deal?
             print(nsarr.object(at:0))
             
-            let arr2 = ["howdy", Dog()]
+            let arr2 : [Any] = ["howdy", Dog()]
             let nsarr2 = arr2 as NSArray
             print(nsarr2)
             
+        }
+        
+        do {
+            let arr : [Any] = [1,2,3]
+            let arr2 = arr as NSArray // no downcast; they are equivalent
+            let arr3 = arr as! [Int] // downcast needed
+            let _ = (arr, arr2, arr3)
         }
         
         do {
@@ -471,7 +517,14 @@ class ViewController: UIViewController {
             let f = fm.temporaryDirectory.appendingPathComponent("test.plist")
             (arr as NSArray).write(to: f, atomically: true)
             let arr2 = NSArray(contentsOf: f)
-            print(arr2.dynamicType)
+            print(type(of:arr2))
+        }
+        
+        do {
+            class Cat {}
+            let cat1 = Cat()
+            let cat2 = Cat()
+            let ok = cat1 === cat2 // but `==` no longer compiles
         }
 
     }

@@ -19,7 +19,7 @@ func doThis(_ f : (Void) -> Void) {
     f()
 }
 
-func imageOfSize(_ size:CGSize, _ whatToDraw: @noescape () -> ()) -> UIImage {
+func imageOfSize(_ size:CGSize, _ whatToDraw: () -> ()) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
     whatToDraw()
     let result = UIGraphicsGetImageFromCurrentImageContext()!

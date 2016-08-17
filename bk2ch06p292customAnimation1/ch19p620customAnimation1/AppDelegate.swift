@@ -10,7 +10,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     var anim : UIViewImplicitlyAnimating?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
         
         (self.window!.rootViewController as! UITabBarController).delegate = self
         

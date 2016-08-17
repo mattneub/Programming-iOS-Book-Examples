@@ -7,7 +7,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     var anim : UIViewImplicitlyAnimating?
     var r2end = CGRect.zero
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
     
         (self.window!.rootViewController as! UINavigationController).delegate = self
         return true

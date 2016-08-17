@@ -16,7 +16,7 @@ class Dog {
         return d
     }
     func havePuppy(name:String) -> Self {
-        return self.dynamicType.init(name:name) // ditto
+        return type(of:self).init(name:name) // ditto
     }
 }
 class NoisyDog : Dog {
@@ -27,8 +27,8 @@ func dogMakerAndNamer(_ whattype:Dog.Type) -> Dog {
 }
 
 func typeTester(_ d:Dog, _ whattype:Dog.Type) {
-    // if d.dynamicType is whattype { // compile error, "not a type" (i.e. a not a type literal)
-    if d.dynamicType === whattype {
+    // if type(of:d) is whattype {} // compile error, undeclared type
+    if type(of:d) === whattype {
         print("yep")
     } else {
         print("nope")
