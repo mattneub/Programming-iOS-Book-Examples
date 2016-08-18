@@ -27,10 +27,13 @@ import UIKit
 //    Process.argc, Process.unsafeArgv, nil, NSStringFromClass(AppDelegate)
 //)
 
-
-// Jordan Rose at Apple says to use this:
+// This compiles and runs, but heaven knows if it's right
 
 UIApplicationMain(
-    Process.argc, UnsafeMutablePointer<UnsafeMutablePointer<CChar>>(Process.unsafeArgv), nil, NSStringFromClass(AppDelegate.self)
+    CommandLine.argc,
+    UnsafeMutableRawPointer(CommandLine.unsafeArgv)
+        .bindMemory(to: UnsafeMutablePointer<Int8>.self, capacity: 1),
+    nil,
+    NSStringFromClass(AppDelegate.self)
 )
 

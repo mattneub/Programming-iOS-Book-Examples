@@ -9,7 +9,7 @@ class EmptyWindowTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        let b = Bundle(for:self.dynamicType) // just testing
+        let b = Bundle(for:type(of: self)) // just testing
         _ = b
     }
     

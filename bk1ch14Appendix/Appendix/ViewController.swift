@@ -42,7 +42,7 @@ public class MyClass {
 class MyOtherClass : NSObject, WKNavigationDelegate {
     func webView(_ webView: WKWebView,
                  decidePolicyFor navigationAction: WKNavigationAction,
-                 decisionHandler: (WKNavigationActionPolicy) -> Swift.Void) {
+                 decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void) {
         decisionHandler(.allow)
     }
 }
@@ -90,14 +90,14 @@ class ViewController: UIViewController {
         
         do {
         
-            let cs = "hello".utf8String // UnsafePointer<Int8>? // *
+            let cs = "hello".utf8CString // oooh, now a ContiguousArray
             if let cs2 = "hello".cString(using: .utf8) { // [CChar]
                 let ss = String(validatingUTF8: cs2)
                 print(ss)
             }
             
             "hello".withCString {
-                var cs = $0
+                var cs = $0 // UnsafePointer<Int8>
                 while cs.pointee != 0 {
                     print(cs.pointee)
                     cs += 1 // or: cs = cs.successor()
@@ -137,7 +137,7 @@ class ViewController: UIViewController {
                 CGPoint(x:50,y:50),
                 CGPoint(x:0,y:100),
             ]
-            c.strokeLineSegments(between: arr, count: arr.count)
+            c.__strokeLineSegments(between: arr, count: 4)
             UIGraphicsEndImageContext()
         }
         
@@ -153,7 +153,7 @@ class ViewController: UIViewController {
             arr[1] = CGPoint(x:50,y:50)
             arr[2] = CGPoint(x:50,y:50)
             arr[3] = CGPoint(x:0,y:100)
-            c.strokeLineSegments(between: arr, count: 4)
+            c.__strokeLineSegments(between: arr, count:4)
             let im = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
             self.view.addSubview(UIImageView(image:im)) // just checking :)
@@ -163,7 +163,7 @@ class ViewController: UIViewController {
             let col = UIColor(red: 0.5, green: 0.6, blue: 0.7, alpha: 1.0)
             if let comp = col.cgColor.__unsafeComponents, // *
                 let sp = col.cgColor.colorSpace,
-                sp.model == .RGB {
+                sp.model == .rgb {
                 let red = comp[0]
                 let green = comp[1]
                 let blue = comp[2]
@@ -180,15 +180,16 @@ class ViewController: UIViewController {
             let myRect = CGRect(x: 10, y: 10, width: 100, height: 100)
             var arrow = CGRect.zero
             var body = CGRect.zero
-            myRect.divided(
+            myRect.__divided(
                 slice: &arrow, remainder: &body, atDistance: Arrow.ARHEIGHT, from: .minYEdge)
+            let (arrowRect, bodyRect) = myRect.divided(atDistance: Arrow.ARHEIGHT, from: .minYEdge)
 
         }
         var which : Bool {return false}
         if which {
             let sndurl = Bundle.main.url(forResource:"test", withExtension: "aif")!
             var snd : SystemSoundID = 0
-            AudioServicesCreateSystemSoundID(sndurl, &snd)
+            AudioServicesCreateSystemSoundID(sndurl as CFURL, &snd)
         }
         
         do {
@@ -216,6 +217,16 @@ class ViewController: UIViewController {
         }
         
         do {
+            let lay = CALayer()
+            lay.setValue(CGPoint(x:100,y:100), forKey: "point")
+            lay.setValue([CGPoint(x:100,y:100)], forKey: "pointArray")
+            let point = lay.value(forKey:"point")
+            let pointArray = lay.value(forKey:"pointArray")
+            print(type(of:point!))
+            print(type(of:pointArray!))
+        }
+        
+        do {
             let s = "hello"
             let s2 = s.replacingOccurrences(of: "ell", with:"ipp")
             // s2 is now "hippo"
@@ -237,18 +248,19 @@ class ViewController: UIViewController {
             // hold my beer and watch _this_!
             
             let arr = ["Mannyz", "Moey", "Jackx"]
-            func sortByLastCharacter(_ s1:AnyObject,
-                _ s2:AnyObject, _ context: UnsafeMutablePointer<Void>?) -> Int { // *
-                    let c1 = (s1 as! String).characters.last
-                    let c2 = (s2 as! String).characters.last
+            // @convention(c) (Any, Any, UnsafeMutableRawPointer?) -> Int, context: UnsafeMutableRawPointer?) -> [Any]
+            func sortByLastCharacter(_ s1:Any,
+                _ s2:Any, _ context: UnsafeMutableRawPointer?) -> Int { // *
+                    let c1 = (s1 as! String).characters.last!
+                    let c2 = (s2 as! String).characters.last!
                     return ((String(c1)).compare(String(c2))).rawValue
             }
             let arr2 = (arr as NSArray).sortedArray(sortByLastCharacter, context: nil)
             print(arr2)
             let arr3 = (arr as NSArray).sortedArray({
                 s1, s2, context in
-                let c1 = (s1 as! String).characters.last
-                let c2 = (s2 as! String).characters.last
+                let c1 = (s1 as! String).characters.last!
+                let c2 = (s2 as! String).characters.last!
                 return ((String(c1)).compare(String(c2))).rawValue
             }, context:nil)
             print(arr3)
@@ -316,12 +328,12 @@ class ViewController: UIViewController {
         
     }
     
-    override func prepare(for war: UIStoryboardSegue, sender trebuchet: AnyObject?) {
+    override func prepare(for war: UIStoryboardSegue, sender trebuchet: Any?) {
         // ...
     }
     
     override func canPerformAction(_ action: Selector,
-        withSender sender: AnyObject!) -> Bool {
+        withSender sender: Any?) -> Bool {
             if action == #selector(undo) {
             }
             return true

@@ -10,15 +10,15 @@ class MyClass1 : NSObject {
 }
 
 class MyClass2: NSObject {
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+        
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
             print("I heard about the change!")
             if let keyPath = keyPath {
-                print(object?.value?(forKeyPath:keyPath))
+                print((object as AnyObject?)?.value?(forKeyPath:keyPath))
             }
             print(change)
             print(context == &con) // aha
-            let c = UnsafeMutablePointer<String>(context)
+            let c = context?.bindMemory(to: String.self, capacity: 1)
             if let s = c?.pointee {
                 print(s)
             }

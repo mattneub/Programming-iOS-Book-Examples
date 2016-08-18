@@ -10,8 +10,8 @@ class MyHorizLine: UIView {
     }
     override func draw(_ rect: CGRect) {
         let c = UIGraphicsGetCurrentContext()!
-        c.moveTo(x: 0, y: 0)
-        c.addLineTo(x: self.bounds.size.width, y: 0)
+        c.move(to:CGPoint(x: 0, y: 0))
+        c.addLine(to:CGPoint(x: self.bounds.size.width, y: 0))
         c.strokePath()
     }
 

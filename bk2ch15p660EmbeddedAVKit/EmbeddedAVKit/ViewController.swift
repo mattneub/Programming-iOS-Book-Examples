@@ -27,7 +27,7 @@ extension CGVector {
 
 
 
-func delay(_ delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
@@ -69,8 +69,8 @@ class ViewController: UIViewController {
     }
     
     func setUpChildSimple() {
-        let url = Bundle.main.urlForResource(
-            "ElMirage", withExtension:"mp4")!
+        let url = Bundle.main.url(
+            forResource:"ElMirage", withExtension:"mp4")!
         let player = AVPlayer(url:url)
         let av = AVPlayerViewController()
         av.player = player
@@ -84,12 +84,15 @@ class ViewController: UIViewController {
 
     
     func setUpChild() {
-        let url = Bundle.main.urlForResource("ElMirage", withExtension:"mp4")!
+
+        
+        let url = Bundle.main.url(forResource:"ElMirage", withExtension:"mp4")!
         let asset = AVURLAsset(url:url)
         let item = AVPlayerItem(asset:asset)
         let player = AVPlayer(playerItem:item)
         
         let av = AVPlayerViewController()
+        
         av.player = player
         av.view.frame = CGRect(10, 10, 300, 200)
         av.view.isHidden = true // looks nicer if we don't show until ready
@@ -111,14 +114,16 @@ class ViewController: UIViewController {
         
         return; // just proving you can swap out the player
         delay(3) {
-            let url = Bundle.main.urlForResource("wilhelm", withExtension:"aiff")!
+            let url = Bundle.main.url(forResource:"wilhelm", withExtension:"aiff")!
             let player = AVPlayer(url:url)
             av.player = player
         }
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?,
-        context: UnsafeMutablePointer<()>?) {
+    // ??? But this code is now not being called, and I don't know why
+    // is it that our key path is failing to change?
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
             guard keyPath == readyForDisplay
                 else {return}
             guard let vc = object as? AVPlayerViewController
@@ -141,7 +146,7 @@ class ViewController: UIViewController {
 
 extension ViewController : UIVideoEditorControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
     @IBAction func doEditorButton (_ sender:AnyObject!) {
-        let path = Bundle.main.pathForResource("ElMirage", ofType: "mp4")!
+        let path = Bundle.main.path(forResource:"ElMirage", ofType: "mp4")!
         let can = UIVideoEditorController.canEditVideo(atPath:path)
         if !can {
             print("can't edit this video")
@@ -178,7 +183,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         }
     }
     
-    func video(_ video:NSString!, savedWithError error:NSError!, ci:UnsafeMutablePointer<()>) {
+    func video(_ video:NSString!, savedWithError error:NSError!, ci:UnsafeMutableRawPointer) {
         print("error:\(error)")
         /*
         Important to check for error, because user can deny access
@@ -194,7 +199,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         self.dismiss(animated:true)
     }
     
-    func videoEditorController(_ editor: UIVideoEditorController, didFailWithError error: NSError) {
+    func videoEditorController(_ editor: UIVideoEditorController, didFailWithError error: Error) {
         print("error: \(error.localizedDescription)")
         self.dismiss(animated:true)
     }

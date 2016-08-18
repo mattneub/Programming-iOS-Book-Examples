@@ -19,8 +19,10 @@ class ViewController: UIViewController {
         
         do {
             // let obj = NSObject().copy(with:nil) // compile error
-            let s = "hello".copy(with:nil)
+            let s = "hello".copy()
             _ = s
+            let s2 = ("hello" as NSString).copy(with: nil)
+            _ = s2
         }
 
         do {
@@ -209,9 +211,8 @@ class ViewController: UIViewController {
             print(total)
             let totalFeet = total.converted(to: .feet).value // 46084.9737532808
             print(totalFeet)
-            let total2 = Measurement<Unit>(value:total.value, unit:total.unit)
             let mf = MeasurementFormatter()
-            let s = mf.string(from:total2) // "8.728 mi"
+            let s = mf.string(from:total) // "8.728 mi"
             print(s)
         }
         
@@ -251,8 +252,12 @@ class ViewController: UIViewController {
         do {
             let marr = NSMutableArray()
             marr.add(1) // an NSNumber
-            marr.add(2) // an NSNumber
+            marr.add(1) // an NSNumber
+            print(type(of:marr[0]))
             let arr = marr as NSArray as! [Int]
+            let arr2 = marr as! [Int] // warns, but it _looks_ like it succeeds...
+            print(arr2)
+            print(type(of:arr2[0]))
 
             let pep = ["Manny", "Moe", "Jack"] as NSArray
             
@@ -268,6 +273,9 @@ class ViewController: UIViewController {
             ) // ["Manny", "Moe"]
             _ = arr
             print(ems)
+            
+            let arr3 = marr.copy()
+            _ = arr3
         }
         
         

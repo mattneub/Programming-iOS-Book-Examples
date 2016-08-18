@@ -4,7 +4,7 @@ import UIKit
 
 // Do not run this project! It's here purely for the compilation check
 
-func delay(_ delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }

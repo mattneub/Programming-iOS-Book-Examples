@@ -29,7 +29,7 @@ class MyClass : NSObject {
         return self.theData.count
     }
     // the _ is, uh, really important
-    func objectInPepBoysAtIndex(_ ix:Int) -> AnyObject {
+    func objectInPepBoysAtIndex(_ ix:Int) -> Any {
         return self.theData[ix]
     }
 
@@ -117,10 +117,12 @@ class ViewController: UIViewController {
         // let arr2 = myObject.value(forKeyPath:#keyPath(MyClass.theData.name))
         print(arr)
         do {
-            let arr : AnyObject = myObject.value(forKey:"pepBoys")!
+            let arr = myObject.value(forKey:"pepBoys")!
             print(arr)
-            let arr2 : AnyObject = myObject.value(forKeyPath:"pepBoys.name")!
+            print(type(of:arr))
+            let arr2 = myObject.value(forKeyPath:"pepBoys.name")!
             print(arr2)
+            print(type(of:arr2))
         }
         
         _ = obj

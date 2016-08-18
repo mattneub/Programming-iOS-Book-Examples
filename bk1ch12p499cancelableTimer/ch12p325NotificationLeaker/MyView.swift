@@ -31,7 +31,7 @@ class MyView : UIView {
             0.8, 0.4, // ending color, transparent light gray
         ]
         let sp = CGColorSpaceCreateDeviceGray()
-        let grad = CGGradient(colorComponentsSpace: sp, components: colors, locations: locs, count: 3)
+        let grad = CGGradient(colorSpace: sp, colorComponents: colors, locations: locs, count: 3)
         con.drawLinearGradient(grad!, start: CGPoint(x:89,y:0), end: CGPoint(x:111,y:0), options:[])
 
     }

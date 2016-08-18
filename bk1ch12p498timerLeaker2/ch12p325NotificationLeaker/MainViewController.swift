@@ -6,7 +6,7 @@ class MainViewController: UIViewController, FlipsideViewControllerDelegate {
         self.dismiss(animated: true)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAlternate" {
             if let dest = segue.destination as? FlipsideViewController {
                 dest.delegate = self

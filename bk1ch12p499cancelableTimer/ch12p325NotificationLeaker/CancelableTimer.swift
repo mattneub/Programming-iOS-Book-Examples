@@ -7,7 +7,7 @@ class CancelableTimer: NSObject {
     private var firsttime = true
     private var once : Bool
     private var handler : () -> ()
-    init(once:Bool, handler:()->()) {
+    init(once:Bool, handler:@escaping ()->()) {
         self.once = once
         self.handler = handler
         super.init()
