@@ -1,3 +1,4 @@
+import UIKit
 
 class Dog {
     var name = ""
@@ -7,6 +8,8 @@ class Dog {
     }
     func nameCat(cat:Cat) {
         cat.secretName = "Lazybones" // legal: same file
+        let k = Kangaroo()
+        _ = k
     }
     func nameCat2(cat:Cat2) {
         // cat.secretName = "Lazybones" // illegal: different file
@@ -14,6 +17,12 @@ class Dog {
 }
 
 class Cat {
-    private var secretName : String?
+    fileprivate var secretName : String?
+    private(set) var color : UIColor?
+    fileprivate(set) var length : Double?
+}
+
+private class Kangaroo {
+    
 }
 

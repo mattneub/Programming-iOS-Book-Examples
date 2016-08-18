@@ -64,16 +64,17 @@ class ViewController: UIViewController {
         
         do {
             let arr : [String?] = ["manny", nil, "jack"]
+            
             do {
-                let arr2 : [AnyObject] = arr.map {if $0 != nil {return $0!} else {return NSNull()}}
+                let arr2 = arr.map{s->Any in if s != nil {return s!} else {return NSNull()}}
                 print(arr2)
             }
             do {
-                let arr2 = arr.map{ $0 != nil ? $0! : NSNull() }
+                let arr2 = arr.map{s->Any in s != nil ? s! : NSNull() }
                 print(arr2)
             }
             do {
-                let arr2 = arr.map{ $0 ?? NSNull() }
+                let arr2 = arr.map{s->Any in s ?? NSNull() }
                 print(arr2)
             }
         }
@@ -96,8 +97,8 @@ class ViewController: UIViewController {
             }
         }
 
-        let i1 : AnyObject = 1
-        let i2 : AnyObject = 2
+        let i1 : Any = 1
+        let i2 : Any = 2
         let someNumber = i1 as? Int ?? i2 as? Int ?? 0
         print(someNumber)
 

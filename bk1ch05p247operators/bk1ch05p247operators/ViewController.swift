@@ -23,8 +23,7 @@ extension Vial : Equatable {
     }
 }
 
-infix operator ^^ {
-}
+infix operator ^^
 extension Int {
     static func ^^(lhs:Int, rhs:Int) -> Int {
         var result = lhs
@@ -33,9 +32,7 @@ extension Int {
     }
 }
 
-infix operator >>> {
-}
-
+infix operator >>> : RangeFormationPrecedence
 func >>><Bound>(maximum: Bound, minimum: Bound)
     -> ReversedRandomAccessCollection<CountableRange<Bound>>
     where Bound : Comparable & Strideable, Bound.Stride : Integer {

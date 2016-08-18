@@ -55,7 +55,7 @@ enum Archive : String {
 }
 
 extension NSCoder {
-    func encode(_ objv: AnyObject?, forKey key: Archive) {
+    func encode(_ objv: Any?, forKey key: Archive) {
         self.encode(objv, forKey:key.rawValue)
     }
 }

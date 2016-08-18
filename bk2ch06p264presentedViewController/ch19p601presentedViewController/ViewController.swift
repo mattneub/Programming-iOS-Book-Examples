@@ -49,7 +49,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         // self.showViewController(svc, sender:self) // ooops! we're in a nav interface, uses that :)
     }
     
-    func accept(data:AnyObject!) {
+    func accept(data:Any!) {
         // do something with data here
         
         // prove that you received data

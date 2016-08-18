@@ -46,7 +46,7 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
     
     var i = 1
     var ii : Int? = nil
-    var iii : AnyObject = 1
+    var iii : Any = 1
     
     var type : Filter = .albums
     
@@ -174,7 +174,7 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
 
 
         do {
-            let d : [NSObject:AnyObject] = [:]
+            let d : [String:Any] = ["size":10, "descc":"cool"]
             switch (d["size"], d["desc"]) {
             case let (size as Int, desc as String):
                 print("You have size \(size) and it is \(desc)")
@@ -305,7 +305,7 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
 
 
         let nc = NotificationCenter.default
-        let test = "test" as Notification.Name
+        let test = Notification.Name("test")
         nc.addObserver(self, selector: #selector(notificationArrived), name: test, object: nil)
         nc.post(name:test, object: self, userInfo: ["junk":"nonsense"])
         nc.post(name:test, object: self, userInfo: ["progress":"nonsense"])

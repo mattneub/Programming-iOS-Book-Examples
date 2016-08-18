@@ -34,6 +34,11 @@ class ViewController: UIViewController {
         let thing = arr[0] // in Swift 1.2 and before we'd get a warning here
         _ = thing
         
+        // however, the universal type is now Any (Xcode 8, seed 6)
+        let arr2 : [Any] = [1,"howdy"]
+        let thing2 = arr2[0] // no warning, it's okay
+        _ = thing2
+        
         // var opts1 = [.autoreverse, .repeat] // compile error
         
         let opts : UIViewAnimationOptions = [.autoreverse, .repeat]

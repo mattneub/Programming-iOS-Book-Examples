@@ -14,7 +14,35 @@
 		32EF942B1AFBD455004E706B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32EF94291AFBD455004E706B /* LaunchScreen.xib */; };
 		32EF94411AFBD4E0004E706B /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF94401AFBD4E0004E706B /* Dog.swift */; };
 		32EF94431AFBD5BE004E706B /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EF94421AFBD5BE004E706B /* Cat.swift */; };
+		818A867A1D65351600F736BE /* MyCoolModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 818A86781D65351600F736BE /* MyCoolModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		818A867D1D65351600F736BE /* MyCoolModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818A86761D65351600F736BE /* MyCoolModule.framework */; };
+		818A867E1D65351600F736BE /* MyCoolModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 818A86761D65351600F736BE /* MyCoolModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		818A86841D65355600F736BE /* Warthog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A86831D65355600F736BE /* Warthog.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		818A867B1D65351600F736BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 32EF94131AFBD455004E706B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 818A86751D65351600F736BE;
+			remoteInfo = MyCoolModule;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		818A86821D65351600F736BE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				818A867E1D65351600F736BE /* MyCoolModule.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		32EF941B1AFBD455004E706B /* bk1ch05p247privacy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk1ch05p247privacy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,10 +54,22 @@
 		32EF942A1AFBD455004E706B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		32EF94401AFBD4E0004E706B /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		32EF94421AFBD5BE004E706B /* Cat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
+		818A86761D65351600F736BE /* MyCoolModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyCoolModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		818A86781D65351600F736BE /* MyCoolModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCoolModule.h; sourceTree = "<group>"; };
+		818A86791D65351600F736BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		818A86831D65355600F736BE /* Warthog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Warthog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		32EF94181AFBD455004E706B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				818A867D1D65351600F736BE /* MyCoolModule.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		818A86721D65351600F736BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				32EF941D1AFBD455004E706B /* bk1ch05p247privacy */,
+				818A86771D65351600F736BE /* MyCoolModule */,
 				32EF941C1AFBD455004E706B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				32EF941B1AFBD455004E706B /* bk1ch05p247privacy.app */,
+				818A86761D65351600F736BE /* MyCoolModule.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,7 +112,28 @@
 			path = bk1ch05p247privacy;
 			sourceTree = "<group>";
 		};
+		818A86771D65351600F736BE /* MyCoolModule */ = {
+			isa = PBXGroup;
+			children = (
+				818A86781D65351600F736BE /* MyCoolModule.h */,
+				818A86831D65355600F736BE /* Warthog.swift */,
+				818A86791D65351600F736BE /* Info.plist */,
+			);
+			path = MyCoolModule;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		818A86731D65351600F736BE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				818A867A1D65351600F736BE /* MyCoolModule.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		32EF941A1AFBD455004E706B /* bk1ch05p247privacy */ = {
@@ -80,15 +143,35 @@
 				32EF94171AFBD455004E706B /* Sources */,
 				32EF94181AFBD455004E706B /* Frameworks */,
 				32EF94191AFBD455004E706B /* Resources */,
+				818A86821D65351600F736BE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				818A867C1D65351600F736BE /* PBXTargetDependency */,
 			);
 			name = bk1ch05p247privacy;
 			productName = bk1ch05p247privacy;
 			productReference = 32EF941B1AFBD455004E706B /* bk1ch05p247privacy.app */;
 			productType = "com.apple.product-type.application";
+		};
+		818A86751D65351600F736BE /* MyCoolModule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 818A86811D65351600F736BE /* Build configuration list for PBXNativeTarget "MyCoolModule" */;
+			buildPhases = (
+				818A86711D65351600F736BE /* Sources */,
+				818A86721D65351600F736BE /* Frameworks */,
+				818A86731D65351600F736BE /* Headers */,
+				818A86741D65351600F736BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyCoolModule;
+			productName = MyCoolModule;
+			productReference = 818A86761D65351600F736BE /* MyCoolModule.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -103,6 +186,11 @@
 					32EF941A1AFBD455004E706B = {
 						CreatedOnToolsVersion = 6.3.1;
 						LastSwiftMigration = 0800;
+					};
+					818A86751D65351600F736BE = {
+						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -120,6 +208,7 @@
 			projectRoot = "";
 			targets = (
 				32EF941A1AFBD455004E706B /* bk1ch05p247privacy */,
+				818A86751D65351600F736BE /* MyCoolModule */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +221,13 @@
 				32EF94261AFBD455004E706B /* Main.storyboard in Resources */,
 				32EF942B1AFBD455004E706B /* LaunchScreen.xib in Resources */,
 				32EF94281AFBD455004E706B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		818A86741D65351600F736BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +245,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		818A86711D65351600F736BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				818A86841D65355600F736BE /* Warthog.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		818A867C1D65351600F736BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 818A86751D65351600F736BE /* MyCoolModule */;
+			targetProxy = 818A867B1D65351600F736BE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		32EF94241AFBD455004E706B /* Main.storyboard */ = {
@@ -255,6 +367,7 @@
 		32EF943B1AFBD455004E706B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = bk1ch05p247privacy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -266,11 +379,71 @@
 		32EF943C1AFBD455004E706B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = bk1ch05p247privacy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		818A867F1D65351600F736BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTABILITY = YES;
+				INFOPLIST_FILE = MyCoolModule/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.MyCoolModule;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		818A86801D65351600F736BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = MyCoolModule/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.MyCoolModule;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -294,6 +467,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		818A86811D65351600F736BE /* Build configuration list for PBXNativeTarget "MyCoolModule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				818A867F1D65351600F736BE /* Debug */,
+				818A86801D65351600F736BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

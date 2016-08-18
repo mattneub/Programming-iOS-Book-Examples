@@ -47,7 +47,8 @@ class ViewController: UIViewController {
         
         
         let nc = NotificationCenter.default
-        let test = "test" as Notification.Name
+        // let test = "test" as Notification.Name
+        let test = Notification.Name("test")
         nc.addObserver(self, selector: #selector(notificationArrived), name:test, object: nil)
         nc.post(name:test, object: self, userInfo: ["junk":"nonsense"])
         nc.post(name:test, object: self, userInfo: ["progress":"nonsense"])
@@ -78,16 +79,6 @@ class ViewController: UIViewController {
             self.progress = prog
         }
 
-        // whoa — when did Notification's userInfo become a [String:Any]?
-        // I think I'll just skirt the whole issue...
-
-//        if let ui = n.userInfo {
-//            if let prog : AnyObject = ui["progress"] {
-//                if let prog = prog as? NSNumber {
-//                    self.progress = prog.doubleValue
-//                }
-//            }
-//        }
         
         if let ui = n.userInfo {
             if let prog = ui["progress"] as? NSNumber {
@@ -121,10 +112,10 @@ class ViewController: UIViewController {
 
 let readyForDisplay = #keyPath(AVPlayerViewController.isReadyForDisplay)
 
+// func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
+
 class C1 : NSObject {
-    override func observeValue(forKeyPath keyPath: String?,
-        of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?,
-        context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
             if keyPath == readyForDisplay {
                 if let obj = object as? AVPlayerViewController {
                     if let ok = change?[.newKey] as? Bool {
@@ -139,9 +130,7 @@ class C1 : NSObject {
 }
 
 class C2 : NSObject {
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?,
-                               context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
             if keyPath == readyForDisplay,
                 let obj = object as? AVPlayerViewController,
                 let ok = change?[.newKey] as? Bool,
@@ -153,9 +142,7 @@ class C2 : NSObject {
 }
 
 class C3 : NSObject {
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?,
-                               context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
             guard keyPath == readyForDisplay else {return}
             guard let obj = object as? AVPlayerViewController else {return}
             guard let ok = change?[.newKey] as? Bool else {return}
@@ -168,9 +155,7 @@ class C3 : NSObject {
 // this is legal, but I don't see its advantage over the C2 form and I don't mention it in the book:
 
 class C4 : NSObject {
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?,
-                               context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard keyPath == readyForDisplay,
         let obj = object as? AVPlayerViewController,
         let ok = change?[.newKey] as? Bool,

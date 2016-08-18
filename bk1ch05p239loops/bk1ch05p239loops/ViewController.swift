@@ -228,7 +228,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let arr : [AnyObject] = ["hey", 1, "ho"]
+            let arr : [Any] = ["hey", 1, "ho"]
             for case let s as String in arr {
                 print(s)
             }

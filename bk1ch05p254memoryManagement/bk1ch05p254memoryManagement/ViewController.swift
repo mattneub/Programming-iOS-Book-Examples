@@ -45,7 +45,7 @@ class SecondViewController : UIViewController {
     // ...
 }
 protocol SecondViewControllerDelegate : class {
-    func accept(data:AnyObject!)
+    func accept(data:Any!)
 }
 
 

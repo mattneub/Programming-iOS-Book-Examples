@@ -3,7 +3,7 @@
 import UIKit
 
 class Dog {
-    @objc func debugQuickLookObject() -> AnyObject {
+    @objc func debugQuickLookObject() -> Any {
         // displaying a dog as a square
         return UIBezierPath(rect:CGRect(x:0, y:0, width:100, height:100))
     }
