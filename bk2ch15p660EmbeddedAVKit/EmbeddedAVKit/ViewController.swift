@@ -80,8 +80,9 @@ class ViewController: UIViewController {
         av.didMove(toParentViewController:self)
     }
     
-    let readyForDisplay = #keyPath(AVPlayerViewController.isReadyForDisplay)
-
+    // is this a bug? We can't use `isReadyForDisplay` here
+    // presumably because that is only the getter
+    let readyForDisplay = #keyPath(AVPlayerViewController.readyForDisplay)
     
     func setUpChild() {
 
@@ -119,9 +120,6 @@ class ViewController: UIViewController {
             av.player = player
         }
     }
-    
-    // ??? But this code is now not being called, and I don't know why
-    // is it that our key path is failing to change?
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
             guard keyPath == readyForDisplay

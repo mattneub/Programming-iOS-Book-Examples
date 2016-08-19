@@ -56,12 +56,12 @@ class ViewController: UIViewController {
             self.picButton.isHidden = true
         }
         
-        lay.addObserver(self, forKeyPath:#keyPath(AVPlayerLayer.isReadyForDisplay), context:nil)
+        lay.addObserver(self, forKeyPath:#keyPath(AVPlayerLayer.readyForDisplay), context:nil)
         
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
-        if keyPath == #keyPath(AVPlayerLayer.isReadyForDisplay) {
+        if keyPath == #keyPath(AVPlayerLayer.readyForDisplay) {
             DispatchQueue.main.async {
                 self.finishConstructingInterface()
             }
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
             return
         }
         
-        self.playerLayer.removeObserver(self, forKeyPath:#keyPath(AVPlayerLayer.isReadyForDisplay))
+        self.playerLayer.removeObserver(self, forKeyPath:#keyPath(AVPlayerLayer.readyForDisplay))
         
         if self.playerLayer.superlayer == nil {
             self.view.layer.addSublayer(self.playerLayer)

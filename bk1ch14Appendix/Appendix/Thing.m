@@ -22,6 +22,10 @@ void setState (State s) {
     return @[@"Manny", @"Moe", @"Jack"];
 }
 
+- (NSArray*) pepBoysBad {
+    return @[@"Manny", @"Moe", @"Jack"];
+}
+
 - (void) justTesting {
     Womble* womble = [[Womble alloc] init];
     womble = womble; // silence compiler

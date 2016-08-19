@@ -14,9 +14,9 @@ class FlipsideViewController: UIViewController {
     
     weak var delegate : FlipsideViewControllerDelegate!
     
-    var observer : AnyObject!
+    var observer : Any!
     
-    let which = 0
+    let which = 1
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

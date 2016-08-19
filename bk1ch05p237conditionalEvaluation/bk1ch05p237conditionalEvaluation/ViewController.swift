@@ -66,15 +66,15 @@ class ViewController: UIViewController {
             let arr : [String?] = ["manny", nil, "jack"]
             
             do {
-                let arr2 = arr.map{s->Any in if s != nil {return s!} else {return NSNull()}}
+                let arr2:[Any] = arr.map {if $0 != nil {return $0!} else {return NSNull()}}
                 print(arr2)
             }
             do {
-                let arr2 = arr.map{s->Any in s != nil ? s! : NSNull() }
+                let arr2 = arr.map {$0 != nil ? $0! : NSNull() as Any }
                 print(arr2)
             }
             do {
-                let arr2 = arr.map{s->Any in s ?? NSNull() }
+                let arr2 = arr.map {$0 ?? NSNull() as Any}
                 print(arr2)
             }
         }

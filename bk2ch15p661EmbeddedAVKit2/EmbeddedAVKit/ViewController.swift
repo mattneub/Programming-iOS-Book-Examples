@@ -89,15 +89,15 @@ class ViewController: UIViewController {
         self.view.addSubview(av.view)
         av.didMove(toParentViewController: self)
         av.addObserver(
-            self, forKeyPath: #keyPath(AVPlayerViewController.isReadyForDisplay), options: .new, context: nil)
+            self, forKeyPath: #keyPath(AVPlayerViewController.readyForDisplay), options: .new, context: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
-            guard keyPath == #keyPath(AVPlayerViewController.isReadyForDisplay) else {return}
+            guard keyPath == #keyPath(AVPlayerViewController.readyForDisplay) else {return}
             guard let vc = object as? AVPlayerViewController else {return}
             guard let ok = change?[NSKeyValueChangeKey.newKey] as? Bool else {return}
             guard ok else {return}
-            vc.removeObserver(self, forKeyPath:#keyPath(AVPlayerViewController.isReadyForDisplay))
+            vc.removeObserver(self, forKeyPath:#keyPath(AVPlayerViewController.readyForDisplay))
             DispatchQueue.main.async {
                 self.finishConstructingInterface(vc)
             }

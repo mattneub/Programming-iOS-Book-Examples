@@ -18,7 +18,7 @@ class ViewController: UIViewController, PlayerDelegate {
 
     @IBAction func doButton (_ sender:AnyObject!) {
         self.player.delegate = self
-        let path = Bundle.main.pathForResource("test", ofType: "aif")!
+        let path = Bundle.main.path(forResource:"test", ofType: "aif")!
         if (sender as! UIButton).currentTitle == "Forever" {
             // for remote control to work, our audio session policy must be Playback
             try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
@@ -57,7 +57,7 @@ class ViewController: UIViewController, PlayerDelegate {
     
     // ======== respond to remote controls
     
-    override func canBecomeFirstResponder() -> Bool {
+    override var canBecomeFirstResponder : Bool {
         return true
     }
     

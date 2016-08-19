@@ -90,7 +90,8 @@ class ViewController: UIViewController {
         
         do {
         
-            let cs = "hello".utf8CString // oooh, now a ContiguousArray
+            let cs = ("hello" as NSString).utf8String
+            let csArray = "hello".utf8CString
             if let cs2 = "hello".cString(using: .utf8) { // [CChar]
                 let ss = String(validatingUTF8: cs2)
                 print(ss)

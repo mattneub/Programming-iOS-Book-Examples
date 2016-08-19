@@ -3,6 +3,17 @@ import UIKit
 import ImageIO
 import MobileCoreServices
 
+// temporary workaround from Joe Groff at Apple
+extension CFString: Hashable {
+    public var hashValue: Int {
+        return Int(bitPattern: CFHash(self))
+    }
+    public static func ==(a: CFString, b: CFString) -> Bool {
+        return CFEqual(a, b)
+    }
+}
+
+
 class ViewController: UIViewController {
 
     @IBOutlet var iv : UIImageView!
@@ -23,14 +34,15 @@ class ViewController: UIViewController {
         let src = CGImageSourceCreateWithURL(url as CFURL, nil)!
         let scale = UIScreen.main.scale
         let w = self.iv.bounds.width * scale
-        let d = [
-            kCGImageSourceShouldAllowFloat as String : true as NSNumber,
-            kCGImageSourceCreateThumbnailWithTransform as String : true as NSNumber,
-            kCGImageSourceCreateThumbnailFromImageAlways as String : true as NSNumber,
-            kCGImageSourceThumbnailMaxPixelSize as String : w as NSNumber
+        // have to cross over to Objective-C manually
+        let d : [CFString:Any] = [
+            kCGImageSourceShouldAllowFloat : true as NSNumber,
+            kCGImageSourceCreateThumbnailWithTransform : true as NSNumber,
+            kCGImageSourceCreateThumbnailFromImageAlways : true as NSNumber,
+            kCGImageSourceThumbnailMaxPixelSize : w as NSNumber
         ]
-        let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d as CFDictionary)
-        let im = UIImage(cgImage: imref!, scale: scale, orientation: .up)
+        let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d as CFDictionary)!
+        let im = UIImage(cgImage: imref, scale: scale, orientation: .up)
         self.iv.image = im
         print(im)
         print(im.size)

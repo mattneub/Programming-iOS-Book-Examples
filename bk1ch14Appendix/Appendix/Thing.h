@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString*) badMethod: (NSString*) s;
 - (nullable NSString*) goodMethod: (NSString*) s;
 - (NSArray<NSString*>*) pepBoys;
+- (NSArray*) pepBoysBad;
 
 - (void) combineWithThing: (Thing*) otherThing;
 // generated interface is: public func combine(with otherThing: Thing)

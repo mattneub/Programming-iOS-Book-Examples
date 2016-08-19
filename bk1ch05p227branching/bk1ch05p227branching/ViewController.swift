@@ -110,7 +110,7 @@ class ViewController: UIViewController {
 
 }
 
-let readyForDisplay = #keyPath(AVPlayerViewController.isReadyForDisplay)
+let readyForDisplay = #keyPath(AVPlayerViewController.readyForDisplay)
 
 // func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
 

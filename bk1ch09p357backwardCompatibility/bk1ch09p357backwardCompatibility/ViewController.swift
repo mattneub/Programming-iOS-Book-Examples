@@ -3,10 +3,20 @@
 import UIKit
 import Photos
 
+func print(_ item: @autoclosure () -> Any,
+           separator: String = " ", terminator: String = "\n") {
+    #if DEBUG
+        Swift.print(item(), separator:separator, terminator: terminator)
+    #endif
+}
+
+
 class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+                
+        print("howdy")
         
         NSLog("%@", NSStringFromCGRect(self.view.frame))
 
