@@ -3,11 +3,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("prepare")
         if segue.identifier == "embed" {
             NSLog("%@ %@ %@", segue.identifier!, segue.source, segue.destination)
-            NSLog("%d", segue.destination.isViewLoaded)
+            NSLog("%@", segue.destination.isViewLoaded as NSNumber)
             NSLog("%@", segue.source.childViewControllers)
             NSLog("%@", self.childViewControllers)
         }

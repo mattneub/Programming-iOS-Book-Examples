@@ -53,7 +53,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     /*
-    func application(_ application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [AnyObject], coder: NSCoder) -> UIViewController? {
+    func application(_ application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [Any], coder: NSCoder) -> UIViewController? {
         print("app delegate \(ip) \(coder)")
         let last = ip.last as! String
         if last == "nav" {

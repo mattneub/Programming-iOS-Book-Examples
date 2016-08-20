@@ -10,7 +10,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
     required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.restorationIdentifier = "wvc"
-        self.restorationClass = self.dynamicType
+        self.restorationClass = type(of:self)
         self.edgesForExtendedLayout = [] // none, get accurate offset restoration
     }
     
@@ -18,7 +18,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         fatalError("NSCoding not supported")
     }
 
-    class func viewController(withRestorationIdentifierPath identifierComponents: [AnyObject], coder: NSCoder) -> UIViewController? {
+    class func viewController(withRestorationIdentifierPath identifierComponents: [Any], coder: NSCoder) -> UIViewController? {
         return self.init(nibName:nil, bundle:nil)
     }
     

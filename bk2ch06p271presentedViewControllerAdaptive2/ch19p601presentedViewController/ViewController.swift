@@ -61,7 +61,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         
     }
     
-    func accept(data:AnyObject!) {
+    func accept(data:Any!) {
     }
     
     override func viewDidDisappear(_ animated: Bool) {

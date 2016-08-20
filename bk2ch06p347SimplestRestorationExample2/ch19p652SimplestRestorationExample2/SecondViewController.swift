@@ -6,29 +6,29 @@ class SecondViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("\(self.dynamicType) will appear")
+        print("\(type(of:self)) will appear")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("\(self.dynamicType) did appear")
+        print("\(type(of:self)) did appear")
     }
 
     override func encodeRestorableState(with coder: NSCoder) {
-        print("\(self.dynamicType) encode \(coder)")
+        print("\(type(of:self)) encode \(coder)")
     }
     
     override func decodeRestorableState(with coder: NSCoder) {
-        print("\(self.dynamicType) decode \(coder)")
+        print("\(type(of:self)) decode \(coder)")
     }
     
     override func applicationFinishedRestoringState() {
-        print("finished \(self.dynamicType)")
+        print("finished \(type(of:self))")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("view did load \(self.dynamicType)")
+        print("view did load \(type(of:self))")
         self.view.backgroundColor = .yellow
         let button = UIButton(type:.system)
         button.setTitle("Present", for:.normal)
@@ -48,7 +48,7 @@ class SecondViewController : UIViewController {
     }
     
     func doPresent(_ sender:AnyObject?) {
-        let pvc = self.dynamicType.makePresentedViewController()
+        let pvc = type(of:self).makePresentedViewController()
         self.present(pvc, animated:true)
     }
 }
@@ -60,7 +60,7 @@ class SecondViewController : UIViewController {
 // "Warning: restoration class for view controller does not conform to UIViewControllerRestoration protocol: Class is ..."
 
 extension SecondViewController : UIViewControllerRestoration {
-    class func viewController(withRestorationIdentifierPath ip: [AnyObject],
+    class func viewController(withRestorationIdentifierPath ip: [Any],
         coder: NSCoder) -> UIViewController? {
             print("vcwithrip \(NSStringFromClass(self)) \(ip) \(coder)")
             var vc : UIViewController? = nil

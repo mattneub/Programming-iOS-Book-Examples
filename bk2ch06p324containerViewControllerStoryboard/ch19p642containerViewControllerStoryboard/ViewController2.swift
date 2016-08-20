@@ -33,13 +33,13 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
+        let vc2 = transitionContext.viewController(forKey:.to)!
         
         let con = transitionContext.containerView
         
         let r2end = transitionContext.finalFrame(for:vc2)
         
-        let v2 = transitionContext.view(forKey:UITransitionContextToViewKey)!
+        let v2 = transitionContext.view(forKey:.to)!
                 
         var r2start = r2end
         r2start.origin.y -= r2start.size.height

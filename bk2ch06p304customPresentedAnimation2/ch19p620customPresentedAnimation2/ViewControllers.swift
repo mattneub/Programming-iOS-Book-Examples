@@ -164,17 +164,17 @@ extension ViewController2 : UIViewControllerAnimatedTransitioning {
     
     func animateTransition(using ctx: UIViewControllerContextTransitioning) {
         // just for logging purposes
-        let vc1 = ctx.viewController(forKey:UITransitionContextFromViewControllerKey)
-        let vc2 = ctx.viewController(forKey:UITransitionContextToViewControllerKey)
-        print("vc1 is", vc1!.dynamicType, "\nvc2 is", vc2!.dynamicType)
+        let vc1 = ctx.viewController(forKey:.from)
+        let vc2 = ctx.viewController(forKey:.to)
+        print("vc1 is", type(of: vc1!), "\nvc2 is", type(of: vc2!))
         
         let con = ctx.containerView
         
         // let r1start = ctx.initialFrame(for:vc1!)
         // let r2end = ctx.finalFrame(for:vc2!)
         
-        let v1 = ctx.view(forKey:UITransitionContextFromViewKey)
-        let v2 = ctx.view(forKey:UITransitionContextToViewKey)
+        let v1 = ctx.view(forKey:.from)
+        let v2 = ctx.view(forKey:.to)
         
         // we are using the same object (self) as animation controller
         // for both presentation and dismissal

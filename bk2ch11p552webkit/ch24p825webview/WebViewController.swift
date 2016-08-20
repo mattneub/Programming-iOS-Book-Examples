@@ -50,7 +50,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.restorationIdentifier = "wvc"
-        self.restorationClass = self.dynamicType
+        self.restorationClass = type(of:self)
         self.edgesForExtendedLayout = [] // none, get accurate offset restoration
     }
     
@@ -59,7 +59,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     }
 
     
-    class func viewController(withRestorationIdentifierPath identifierComponents: [AnyObject], coder: NSCoder) -> UIViewController? {
+    class func viewController(withRestorationIdentifierPath identifierComponents: [Any], coder: NSCoder) -> UIViewController? {
         let id = identifierComponents.last as! String
         if id == "wvc" {
             print("recreating wvc view controller")

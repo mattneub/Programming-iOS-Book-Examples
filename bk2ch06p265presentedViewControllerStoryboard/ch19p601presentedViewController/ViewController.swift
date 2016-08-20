@@ -10,7 +10,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     // thus we need another place to configure
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "present" { // it will be
             let svc = segue.destination as! SecondViewController
             svc.data = "This is very important data!"
@@ -18,7 +18,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         }
     }
     
-    func accept(data:AnyObject!) {
+    func accept(data:Any!) {
         // do something with data here
         
         // prove that you received data

@@ -13,7 +13,7 @@ class Pep: UIViewController {
         self.boy = boy
         super.init(nibName: nil, bundle: nil)
         self.restorationIdentifier = "pep" // *
-        self.restorationClass = self.dynamicType // *
+        self.restorationClass = type(of:self) // *
     }
     
     required init(coder: NSCoder) {
@@ -39,7 +39,7 @@ class Pep: UIViewController {
 }
 
 extension Pep : UIViewControllerRestoration {
-    class func viewController(withRestorationIdentifierPath ip: [AnyObject], coder: NSCoder) -> UIViewController? {
+    class func viewController(withRestorationIdentifierPath ip: [Any], coder: NSCoder) -> UIViewController? {
         let boy = coder.decodeObject(forKey:"boy") as! String
         print("pep decoded boy \(boy)")
         return self.init(pepBoy: boy)

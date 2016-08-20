@@ -10,12 +10,12 @@ Standard architecture for handing info from vc to presented vc...
 */
 
 protocol SecondViewControllerDelegate : class {
-    func accept(data:AnyObject!)
+    func accept(data:Any!)
 }
 
 class SecondViewController : UIViewController {
     
-    var data : AnyObject?
+    var data : Any?
     
     weak var delegate : SecondViewControllerDelegate?
     

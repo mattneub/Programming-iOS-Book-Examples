@@ -47,7 +47,7 @@ class MasterViewController : UITableViewController {
         self.performSegue(withIdentifier: "showDetail", sender: self)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print(self.tableView.indexPathForSelectedRow)
         if let dest = segue.destination as? DetailViewController {
             let cm = self.model[self.lastSelection.row]

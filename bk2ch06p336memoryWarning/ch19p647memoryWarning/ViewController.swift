@@ -14,16 +14,16 @@ class ViewController : UIViewController {
     // so you have to resolve those generics explicitly
     // feels like a bug to me, but whatever
     
-    private let _cache = NSCache<NSString, AnyObject>()
+    private let _cache = NSCache<NSString, NSData>()
     var cachedData : Data {
-        let key = "somekey"
+        let key = "somekey" as NSString
         var data = self._cache.object(forKey:key) as? Data
         if data != nil {
             return data!
         }
         // ... recreate data here ...
         data = Data(bytes:[1,2,3,4]) // recreated data
-        self._cache.setObject(data!, forKey: key)
+        self._cache.setObject(data! as NSData, forKey: key)
         return data!
     }
     

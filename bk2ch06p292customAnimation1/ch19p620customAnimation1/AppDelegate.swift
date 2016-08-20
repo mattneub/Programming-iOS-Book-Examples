@@ -44,8 +44,8 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
             return self.anim! // *
         }
         
-        let vc1 = ctx.viewController(forKey:UITransitionContextFromViewControllerKey)! // 3
-        let vc2 = ctx.viewController(forKey:UITransitionContextToViewControllerKey)!
+        let vc1 = ctx.viewController(forKey:.from)! // 3
+        let vc2 = ctx.viewController(forKey:.to)!
         
         let con = ctx.containerView
         print(con)
@@ -54,8 +54,8 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         let r2end = ctx.finalFrame(for:vc2)
         
         // new in iOS 8, use these instead of assuming that the views are the views of the vcs
-        let v1 = ctx.view(forKey:UITransitionContextFromViewKey)!
-        let v2 = ctx.view(forKey:UITransitionContextToViewKey)!
+        let v1 = ctx.view(forKey:.from)!
+        let v2 = ctx.view(forKey:.to)!
         
         // which way we are going depends on which vc is which
         // the most general way to express this is in terms of index number

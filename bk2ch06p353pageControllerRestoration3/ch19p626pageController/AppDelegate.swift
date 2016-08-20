@@ -49,7 +49,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // to do this, first we restore the whole interface;
     // all restorable view controllers already exist, so we just point to them
     
-    func application(_ application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [AnyObject], coder: NSCoder) -> UIViewController? {
+    func application(_ application: UIApplication, viewControllerWithRestorationIdentifierPath ip: [Any], coder: NSCoder) -> UIViewController? {
         let last = (ip as NSArray).lastObject as! String
         var result : UIViewController? = nil
         switch last {

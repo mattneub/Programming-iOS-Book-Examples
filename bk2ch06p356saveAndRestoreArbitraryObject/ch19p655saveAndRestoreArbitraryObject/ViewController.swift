@@ -19,7 +19,7 @@ class ViewController : UIViewController {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.thing = self.dynamicType.makeThing()
+        self.thing = type(of:self).makeThing()
     }
     
     override func encodeRestorableState(with coder: NSCoder) {
@@ -55,7 +55,7 @@ class ViewController : UIViewController {
     
 }
 
-extension ViewController /* : UIObjectRestoration */ {
+extension ViewController /*: UIObjectRestoration*/ {
     
     class func makeThing () -> Thing {
         let thing = Thing()

@@ -4,12 +4,12 @@ import UIKit
 
 
 protocol SecondViewControllerDelegate : class {
-    func accept(data:AnyObject!)
+    func accept(data:Any!)
 }
 
 class SecondViewController : UIViewController {
     
-    var data : AnyObject?
+    var data : Any?
     
     weak var delegate : SecondViewControllerDelegate?
     

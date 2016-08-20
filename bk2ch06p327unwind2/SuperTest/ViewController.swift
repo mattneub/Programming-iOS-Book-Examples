@@ -32,7 +32,7 @@ class ViewController : UIViewController {
         super.unwind(for: unwindSegue, towardsViewController: subsequentVC)
     }
     
-    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
+    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
         var result = super.canPerformUnwindSegueAction(action, from: fromViewController, withSender: sender)
         
         // uncomment this to do a grand unwind to root
@@ -48,7 +48,7 @@ class ViewController : UIViewController {
         super.dismiss(animated:animated, completion: completion)
     }
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         let result = super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
         if identifier == "unwind" {
             print("\(self) \(#function) \(result)")
@@ -56,7 +56,7 @@ class ViewController : UIViewController {
         return result
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwind" {
             print("\(self) \(#function)")
         }

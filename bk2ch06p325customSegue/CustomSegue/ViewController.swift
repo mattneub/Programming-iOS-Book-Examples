@@ -48,15 +48,15 @@ extension MyCoolSegue: UIViewControllerAnimatedTransitioning {
         return 0.8
     }
     func animateTransition(using ctx: UIViewControllerContextTransitioning) {
-        let vc1 = ctx.viewController(forKey:UITransitionContextFromViewControllerKey)!
-        let vc2 = ctx.viewController(forKey:UITransitionContextToViewControllerKey)!
+        let vc1 = ctx.viewController(forKey:.from)!
+        let vc2 = ctx.viewController(forKey:.to)!
         
         let con = ctx.containerView
         
         let r1start = ctx.initialFrame(for:vc1)
         let r2end = ctx.finalFrame(for:vc2)
         
-        if let v2 = ctx.view(forKey:UITransitionContextToViewKey) {
+        if let v2 = ctx.view(forKey:.to) {
             print(vc2.modalPresentationStyle.rawValue)
             let p = vc2.presentationController!
             print(p.presentationStyle.rawValue)
@@ -73,7 +73,7 @@ extension MyCoolSegue: UIViewControllerAnimatedTransitioning {
                     _ in
                     ctx.completeTransition(true)
             })
-        } else if let v1 = ctx.view(forKey:UITransitionContextFromViewKey) {
+        } else if let v1 = ctx.view(forKey:.from) {
             var r1end = r1start
             r1end.origin.y = -r1end.size.height
             UIView.animate(withDuration:0.8, animations: {

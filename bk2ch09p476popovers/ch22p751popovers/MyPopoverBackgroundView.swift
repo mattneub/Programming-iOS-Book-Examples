@@ -55,7 +55,7 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
         if propX < limit {
             propX = limit
         }
-        let klass = self.dynamicType
+        let klass = type(of:self)
         con.translate(x: rect.size.width/2.0 + propX - klass.ARBASE/2.0, y: 0)
         con.moveTo(x: 0, y: klass.ARHEIGHT)
         con.addLineTo(x: klass.ARBASE / 2.0, y: 0)

@@ -64,11 +64,11 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
             return self.anim!
         }
         
-        let vc1 = ctx.viewController(forKey:UITransitionContextFromViewControllerKey)!
-        let vc2 = ctx.viewController(forKey:UITransitionContextToViewControllerKey)!
+        let vc1 = ctx.viewController(forKey:.from)!
+        let vc2 = ctx.viewController(forKey:.to)!
         let con = ctx.containerView
         let r2end = ctx.finalFrame(for:vc2)
-        let v2 = ctx.view(forKey:UITransitionContextToViewKey)!
+        let v2 = ctx.view(forKey:.to)!
         
         
         let mvc = vc1 as! MasterViewController

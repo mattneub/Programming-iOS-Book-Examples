@@ -169,16 +169,16 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
     }
     
     func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
-        let vc1 = transitionContext.viewController(forKey:UITransitionContextFromViewControllerKey)!
-        let vc2 = transitionContext.viewController(forKey:UITransitionContextToViewControllerKey)!
+        let vc1 = transitionContext.viewController(forKey:.from)!
+        let vc2 = transitionContext.viewController(forKey:.to)!
         
         let con = transitionContext.containerView()
         
         // let r1start = transitionContext.initialFrame(for:vc1)
         let r2end = transitionContext.finalFrame(for:vc2)
         
-        // let v1 = transitionContext.view(forKey:UITransitionContextFromViewKey)
-        let v2 = transitionContext.view(forKey:UITransitionContextToViewKey)
+        // let v1 = transitionContext.view(forKey:.from)
+        let v2 = transitionContext.view(forKey:.to)
 
         if let v2 = v2 { // presenting, vc2 is the search controller
             

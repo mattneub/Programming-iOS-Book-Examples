@@ -13,7 +13,7 @@ class Pep: UIViewController {
         self.boy = boy
         super.init(nibName: nil, bundle: nil)
         self.restorationIdentifier = "pep" // *
-        // self.restorationClass = self.dynamicType // * no restoration class, let app delegate point
+        // self.restorationClass = type(of:self) // * no restoration class, let app delegate point
     }
     
     required init(coder: NSCoder) {
@@ -30,7 +30,7 @@ class Pep: UIViewController {
     
     override func decodeRestorableState(with coder: NSCoder) {
         // super.decodeRestorableStateWithCoder(coder)
-        let boy : AnyObject? = coder.decodeObject(forKey:"boy")
+        let boy = coder.decodeObject(forKey:"boy")
         print("pep about to decode boy \(boy)")
         if let boy = boy as? String {
             self.boy = boy

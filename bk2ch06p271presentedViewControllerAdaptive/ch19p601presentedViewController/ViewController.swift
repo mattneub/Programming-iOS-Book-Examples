@@ -18,7 +18,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         self.present(svc, animated:true)
     }
     
-    func accept(data:AnyObject!) {
+    func accept(data:Any!) {
         // do something with data here
         
         // prove that you received data

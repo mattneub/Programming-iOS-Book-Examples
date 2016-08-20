@@ -11,10 +11,10 @@ extension UIUserInterfaceSizeClass : CustomStringConvertible {
 }
 
 extension UITraitCollection {
-    public override var description : String {
+    open override var description : String {
         return "\(self.horizontalSizeClass) \(self.verticalSizeClass)"
     }
-    public override var debugDescription : String {
+    open override var debugDescription : String {
         return "\(self.horizontalSizeClass) \(self.verticalSizeClass)"
     }
 }

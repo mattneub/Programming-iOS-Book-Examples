@@ -14,7 +14,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         
     }
     
-    func accept(data:AnyObject!) {
+    func accept(data:Any!) {
         // do something with data here
         
         // prove that you received data
