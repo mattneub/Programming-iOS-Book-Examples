@@ -1,6 +1,6 @@
 import UIKit
 
-func delay(_ delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
@@ -67,7 +67,7 @@ class ViewController : UIViewController {
                     let con = ctx.cgContext
                     con.setFillColor(UIColor.red.cgColor)
                     let ii = CGFloat(i)
-                    con.addEllipse(inRect:CGRect(0+ii,0+ii,w-ii*2,w-ii*2))
+                    con.addEllipse(in:CGRect(0+ii,0+ii,w-ii*2,w-ii*2))
                     con.fillPath()
                 }]
 

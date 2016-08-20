@@ -40,15 +40,14 @@ class ViewController : UIViewController {
         var leftright : CGFloat = 1
         var next : CGPoint = self.v.layer.position
         var pos : CGPoint
-        path.moveTo(nil, x: next.x, y: next.y)
+        path.move(to:CGPoint(x: next.x, y: next.y))
         for _ in 0 ..< 4 {
             pos = next
             leftright *= -1
             next = CGPoint(pos.x+h*leftright, pos.y+v)
-            path.addCurve(nil,
-                cp1x: pos.x, cp1y: pos.y+30,
-                cp2x: next.x, cp2y: next.y-30,
-                endingAtX: next.x, y: next.y)
+            path.addCurve(to:CGPoint(next.x, next.y),
+                control1: CGPoint(pos.x, pos.y+30),
+                control2: CGPoint(next.x, next.y-30))
         }
         let anim1 = CAKeyframeAnimation(keyPath:#keyPath(CALayer.position))
         anim1.path = path

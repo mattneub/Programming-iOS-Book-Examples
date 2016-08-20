@@ -18,8 +18,8 @@ extension CGPoint {
 
 
 class MyAction : NSObject, CAAction {
-    func run(forKey event: String, object anObject: AnyObject,
-        arguments dict: [NSObject : AnyObject]?) {
+    func run(forKey event: String, object anObject: Any,
+        arguments dict: [AnyHashable : Any]?) {
             let anim = CABasicAnimation(keyPath: event)
             anim.duration = 5
             let lay = anObject as! CALayer
@@ -31,8 +31,8 @@ class MyAction : NSObject, CAAction {
 }
 
 class MyWagglePositionAction : NSObject, CAAction {
-    func run(forKey event: String, object anObject: AnyObject,
-        arguments dict: [NSObject : AnyObject]?) {
+    func run(forKey event: String, object anObject: Any,
+        arguments dict: [AnyHashable : Any]?) {
             let lay = anObject as! CALayer
             let newP = (lay.value(forKey:event) as! NSValue).cgPointValue
             let val = lay.presentation()!.value(forKey:event) as! NSValue

@@ -63,7 +63,7 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
         let coll = UICollisionBehavior()
         coll.collisionMode = .boundaries
         coll.collisionDelegate = self
-        coll.addBoundary(withIdentifier:"floor",
+        coll.addBoundary(withIdentifier:"floor" as NSString,
                          from:CGPoint(0, sup.bounds.maxY),
                          to:CGPoint(sup.bounds.maxX, sup.bounds.maxY))
         self.addChildBehavior(coll)

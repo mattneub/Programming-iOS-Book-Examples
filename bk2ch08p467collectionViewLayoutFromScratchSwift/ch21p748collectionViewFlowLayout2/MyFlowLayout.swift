@@ -7,7 +7,7 @@ class MyDynamicAnimator : UIDynamicAnimator {
     }
 }
 
-func delay(_ delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }

@@ -3,7 +3,7 @@
 import UIKit
 
 
-func delay(_ delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
@@ -72,7 +72,7 @@ class CompassLayer : CALayer, CALayerDelegate {
         circle.fillColor = UIColor(red:0.9, green:0.95, blue:0.93, alpha:0.9).cgColor
         circle.strokeColor = UIColor.gray.cgColor
         let p = CGMutablePath()
-        p.addEllipseIn(nil, rect: self.bounds.insetBy(dx: 3, dy: 3))
+        p.addEllipse(in: self.bounds.insetBy(dx: 3, dy: 3))
         circle.path = p
         self.addSublayer(circle)
         circle.bounds = self.bounds
@@ -125,18 +125,18 @@ class CompassLayer : CALayer, CALayerDelegate {
         // Questa poi la conosco pur troppo!
         
         // punch triangular hole in context clipping region
-            con.moveTo(x: 10, y: 100)
-            con.addLineTo(x: 20, y: 90)
-            con.addLineTo(x: 30, y: 100)
-            con.closePath()
-            con.addRect(con.boundingBoxOfClipPath)
-            con.eoClip()
+        con.move(to: CGPoint(x: 10, y: 100))
+        con.addLine(to: CGPoint(x: 20, y: 90))
+        con.addLine(to: CGPoint(x: 30, y: 100))
+        con.closePath()
+        con.addRect(con.boundingBoxOfClipPath)
+        con.clip(using: .evenOdd)
         
         // draw the vertical line, add its shape to the clipping region
-            con.moveTo(x: 20, y: 100)
-            con.addLineTo(x: 20, y: 19)
-            con.setLineWidth(20)
-            con.strokePath()
+        con.move(to: CGPoint(x: 20, y: 100))
+        con.addLine(to: CGPoint(x: 20, y: 19))
+        con.setLineWidth(20)
+        con.strokePath()
         
         // draw the triangle, the point of the arrow
         let r = UIGraphicsImageRenderer(size:CGSize(4,4))
@@ -149,15 +149,17 @@ class CompassLayer : CALayer, CALayerDelegate {
             imcon.fill(CGRect(0,0,4,2))
         }
         
-            let stripesPattern = UIColor(patternImage:stripes)
+        let stripesPattern = UIColor(patternImage:stripes)
         
         UIGraphicsPushContext(con)
+        do {
             stripesPattern.setFill()
             let p = UIBezierPath()
             p.move(to:CGPoint(0,25))
             p.addLine(to:CGPoint(20,0))
             p.addLine(to:CGPoint(40,25))
             p.fill()
+        }
         UIGraphicsPopContext()
 
     }
@@ -174,7 +176,7 @@ class CompassLayer : CALayer, CALayerDelegate {
         let mask = CAShapeLayer()
         mask.frame = arrow.bounds
         let path = CGMutablePath()
-        path.addEllipseIn(nil, rect: mask.bounds.insetBy(dx: 10, dy: 10))
+        path.addEllipse(in: mask.bounds.insetBy(dx: 10, dy: 10))
         mask.strokeColor = UIColor(white:0.0, alpha:0.5).cgColor
         mask.lineWidth = 20
         mask.path = path

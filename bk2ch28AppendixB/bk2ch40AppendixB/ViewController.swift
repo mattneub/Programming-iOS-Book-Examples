@@ -2,7 +2,7 @@
 
 import UIKit
 
-func delay(_ delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
@@ -78,13 +78,13 @@ extension NSLayoutConstraint {
 }
 
 
-func lend<T where T:NSObject> (closure: @noescape (T)->()) -> T {
+func lend<T where T:NSObject> (closure: (T)->()) -> T {
     let orig = T()
     closure(orig)
     return orig
 }
 
-func imageOfSize(_ size:CGSize, opaque:Bool = false, closure: @noescape () -> ()) -> UIImage {
+func imageOfSize(_ size:CGSize, opaque:Bool = false, closure: () -> ()) -> UIImage {
     if #available(iOS 10.0, *) {
         let f = UIGraphicsImageRendererFormat.default()
         f.opaque = opaque

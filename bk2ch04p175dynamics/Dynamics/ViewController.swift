@@ -1,7 +1,7 @@
 
 import UIKit
 
-func delay(_ delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
@@ -140,7 +140,7 @@ class ViewController : UIViewController {
         let coll = UICollisionBehavior()
         coll.collisionMode = .boundaries
         coll.collisionDelegate = self
-        coll.addBoundary(withIdentifier:"floor",
+        coll.addBoundary(withIdentifier:"floor" as NSString,
             from:CGPoint(0, self.view.bounds.maxY),
             to:CGPoint(self.view.bounds.maxX,
                 self.view.bounds.maxY))

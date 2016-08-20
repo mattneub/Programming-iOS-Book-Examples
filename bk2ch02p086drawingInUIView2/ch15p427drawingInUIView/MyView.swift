@@ -45,16 +45,16 @@ class MyView : UIView {
         con.saveGState()
         
         // punch triangular hole in context clipping region
-        con.moveTo(x: 10, y: 100)
-        con.addLineTo(x: 20, y: 90)
-        con.addLineTo(x: 30, y: 100)
+        con.move(to: CGPoint(x: 10, y: 100))
+        con.addLine(to: CGPoint(x: 20, y: 90))
+        con.addLine(to: CGPoint(x: 30, y: 100))
         con.closePath()
         con.addRect(con.boundingBoxOfClipPath)
-        con.eoClip()
+        con.clip(using: .evenOdd)
         
         // draw the vertical line, add its shape to the clipping region
-        con.moveTo(x: 20, y: 100)
-        con.addLineTo(x: 20, y: 19)
+        con.move(to: CGPoint(x: 20, y: 100))
+        con.addLine(to: CGPoint(x: 20, y: 19))
         con.setLineWidth(20)
         con.replacePathWithStrokedPath()
         con.clip()
@@ -68,7 +68,7 @@ class MyView : UIView {
         ]
         let sp = CGColorSpaceCreateDeviceGray()
         let grad =
-            CGGradient(colorComponentsSpace:sp, components: colors, locations: locs, count: 3)!
+            CGGradient(colorSpace:sp, colorComponents: colors, locations: locs, count: 3)!
         con.drawLinearGradient(grad, start: CGPoint(9,0), end: CGPoint(31,0), options: [])
         
         con.restoreGState() // done clipping
@@ -99,7 +99,7 @@ class MyView : UIView {
 //
     }
     
-    let which = 2
+    let which = 3
 
     override func draw(_ rect: CGRect) {
 

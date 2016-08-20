@@ -3,7 +3,7 @@
 import UIKit
 
 
-func delay(_ delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
@@ -89,8 +89,8 @@ class CompassLayer : CALayer, CALayerDelegate {
         g.contentsScale = UIScreen.main.scale
         g.frame = self.bounds
         g.colors = [
-                       UIColor.black.cgColor,
-                       UIColor.red.cgColor
+           UIColor.black.cgColor,
+           UIColor.red.cgColor
         ]
         g.locations = [0.0,1.0]
         master.addSublayer(g) //
@@ -102,7 +102,7 @@ class CompassLayer : CALayer, CALayerDelegate {
         circle.fillColor = UIColor(red:0.9 , green:0.95, blue:0.93, alpha:0.9).cgColor
         circle.strokeColor = UIColor.gray.cgColor
         let p = CGMutablePath()
-        p.addEllipseIn(nil, rect: self.bounds.insetBy(dx: 3, dy: 3))
+        p.addEllipse(in: self.bounds.insetBy(dx: 3, dy: 3))
         circle.path = p
         master.addSublayer(circle) //
         circle.bounds = self.bounds
@@ -150,7 +150,7 @@ class CompassLayer : CALayer, CALayerDelegate {
         peg.contentsScale = UIScreen.main.scale // probably pointless
         peg.bounds = CGRect(0,0,3.5,50)
         let p2 = CGMutablePath()
-        p2.addRect(nil, rect: peg.bounds)
+        p2.addRect(peg.bounds)
         peg.path = p2
         peg.fillColor = UIColor(red:1.0, green:0.95, blue:1.0, alpha:0.95).cgColor
         peg.anchorPoint = CGPoint(0.5,0.5)
@@ -170,16 +170,16 @@ class CompassLayer : CALayer, CALayerDelegate {
         // Questa poi la conosco pur troppo!
         
         // punch triangular hole in context clipping region
-        con.moveTo(x: 10, y: 100)
-        con.addLineTo(x: 20, y: 90)
-        con.addLineTo(x: 30, y: 100)
+        con.move(to: CGPoint(x: 10, y: 100))
+        con.addLine(to: CGPoint(x: 20, y: 90))
+        con.addLine(to: CGPoint(x: 30, y: 100))
         con.closePath()
         con.addRect(con.boundingBoxOfClipPath)
-        con.eoClip()
+        con.clip(using: .evenOdd)
         
         // draw the vertical line, add its shape to the clipping region
-        con.moveTo(x: 20, y: 100)
-        con.addLineTo(x: 20, y: 19)
+        con.move(to: CGPoint(x: 20, y: 100))
+        con.addLine(to: CGPoint(x: 20, y: 19))
         con.setLineWidth(20)
         con.strokePath()
         

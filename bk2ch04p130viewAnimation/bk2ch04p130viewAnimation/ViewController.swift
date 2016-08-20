@@ -2,7 +2,7 @@
 
 import UIKit
 
-func delay(_ delay:Double, closure:()->()) {
+func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
@@ -12,13 +12,13 @@ extension UIView {
         duration dur: TimeInterval,
         delay del: TimeInterval,
         options opts: UIViewAnimationOptions,
-        animations anim: () -> Void,
+        animations anim: @escaping () -> Void,
         completion comp: ((Bool) -> Void)?) {
             func helper(_ t:Int,
                 _ dur: TimeInterval,
                 _ del: TimeInterval,
                 _ opt: UIViewAnimationOptions,
-                _ anim: () -> Void,
+                _ anim: @escaping () -> Void,
                 _ com: ((Bool) -> Void)?) {
                     UIView.animate(withDuration: dur,
                         delay: del, options: opt,

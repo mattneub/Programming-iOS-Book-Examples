@@ -115,9 +115,9 @@ class ViewController : UIViewController {
             let r = UIGraphicsImageRenderer(size:CGSize(sz.width*1.5, sz.height))
             self.iv4.image = r.image { ctx in
                 let con = ctx.cgContext
-                con.draw(in:CGRect(0,0,sz.width/2.0,sz.height), image: marsLeft)
-                con.draw(in:
-                    CGRect(sz.width,0,sz.width/2.0,sz.height), image:marsRight)
+                con.draw(marsLeft, in:CGRect(0,0,sz.width/2.0,sz.height))
+                con.draw(marsRight, in:
+                    CGRect(sz.width,0,sz.width/2.0,sz.height))
             }
             // flipped!
         }
@@ -149,10 +149,10 @@ class ViewController : UIViewController {
             self.iv5.image = r.image {
                 ctx in
                 let con = ctx.cgContext
-                con.draw(in:
-                    CGRect(0,0,sz.width/2.0,sz.height), image:flip(marsLeft!))
-                con.draw(in:
-                    CGRect(sz.width,0,sz.width/2.0,sz.height), image:flip(marsRight!))
+                con.draw(flip(marsLeft!), in:
+                    CGRect(0,0,sz.width/2.0,sz.height))
+                con.draw(flip(marsRight!), in:
+                    CGRect(sz.width,0,sz.width/2.0,sz.height))
             }
         }
         
@@ -186,10 +186,10 @@ class ViewController : UIViewController {
             self.iv6.image = r.image {
                 ctx in
                 let con = ctx.cgContext
-                con.draw(in:
-                    CGRect(0,0,sz.width/2.0,sz.height), image:flip(marsLeft!))
-                con.draw(in:
-                    CGRect(sz.width,0,sz.width/2.0,sz.height), image:flip(marsRight!))
+                con.draw(flip(marsLeft!), in:
+                    CGRect(0,0,sz.width/2.0,sz.height))
+                con.draw(flip(marsRight!), in:
+                    CGRect(sz.width,0,sz.width/2.0,sz.height))
             }
         }
         
@@ -246,7 +246,7 @@ func flip (_ im: CGImage) -> CGImage {
     
     let r = UIGraphicsImageRenderer(size:sz)
     return r.image { ctx in
-        ctx.cgContext.draw(in:
-            CGRect(0, 0, sz.width, sz.height), image:im)
+        ctx.cgContext.draw(im, in:
+            CGRect(0, 0, sz.width, sz.height))
     }.cgImage!
 }

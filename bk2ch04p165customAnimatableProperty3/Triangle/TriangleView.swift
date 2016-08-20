@@ -43,9 +43,9 @@ class TriangleLayer : CALayer {
     @NSManaged var v1y : CGFloat
     
     override func draw(in con: CGContext) {
-        con.moveTo(x: 0, y: 0)
-        con.addLineTo(x: self.bounds.size.width, y: 0)
-        con.addLineTo(x: self.v1x, y: self.v1y)
+        con.move(to:CGPoint(x: 0, y: 0))
+        con.addLine(to:CGPoint(x: self.bounds.size.width, y: 0))
+        con.addLine(to:CGPoint(x: self.v1x, y: self.v1y))
         con.setFillColor(UIColor.blue.cgColor)
         con.fillPath()
         // println(self)

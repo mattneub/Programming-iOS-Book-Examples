@@ -1,6 +1,6 @@
 import UIKit
 
-func imageOfSize(_ size:CGSize, opaque:Bool = false, closure: @noescape () -> ()) -> UIImage {
+func imageOfSize(_ size:CGSize, opaque:Bool = false, closure: () -> ()) -> UIImage {
     if #available(iOS 10.0, *) {
         let f = UIGraphicsImageRendererFormat.default()
         f.opaque = opaque
@@ -48,7 +48,7 @@ class MyView1 : UIView {
 class MyView2 : UIView {
     override func draw(_ rect: CGRect) {
         let con = UIGraphicsGetCurrentContext()!
-        con.addEllipse(inRect:CGRect(0,0,100,100))
+        con.addEllipse(in:CGRect(0,0,100,100))
         con.setFillColor(UIColor.blue.cgColor)
         con.fillPath()
     }
@@ -66,7 +66,7 @@ class MyView3 : UIView {
 class MyView4 : UIView {
     override func draw(_ rect: CGRect) {}
     override func draw(_ layer: CALayer, in con: CGContext) {
-        con.addEllipse(inRect:CGRect(0,0,100,100))
+        con.addEllipse(in:CGRect(0,0,100,100))
         con.setFillColor(UIColor.blue.cgColor)
         con.fillPath()
     }
@@ -110,14 +110,14 @@ class MyImageView2 : UIImageView {
                 // let con = ctx.cgContext
                 // could say that, but the old way works still
                 let con = UIGraphicsGetCurrentContext()!
-                con.addEllipse(inRect:CGRect(0,0,100,100))
+                con.addEllipse(in:CGRect(0,0,100,100))
                 con.setFillColor(UIColor.blue.cgColor)
                 con.fillPath()
             }
         case 1: // just showing how to use my utility
             self.image = imageOfSize(CGSize(100, 100)) {
                 let con = UIGraphicsGetCurrentContext()!
-                con.addEllipse(inRect:CGRect(0,0,100,100))
+                con.addEllipse(in:CGRect(0,0,100,100))
                 con.setFillColor(UIColor.blue.cgColor)
                 con.fillPath()
             }

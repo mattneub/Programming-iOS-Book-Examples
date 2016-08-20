@@ -33,7 +33,7 @@ class ViewController : UIViewController {
         let r = UIGraphicsImageRenderer(size:CGSize(10,10))
         let im = r.image {
             ctx in let con = ctx.cgContext
-            con.addEllipse(inRect:CGRect(0,0,10,10))
+            con.addEllipse(in:CGRect(0,0,10,10))
             con.setFillColor(UIColor.gray.cgColor)
             con.fillPath()
         }
