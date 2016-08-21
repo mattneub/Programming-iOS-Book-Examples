@@ -12,22 +12,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
     
     var prev : UIPreviewInteraction! // *
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
         
         let tbc = self.window!.rootViewController as! UITabBarController
         tbc.delegate = self
         
-        let sep = UIScreenEdgePanGestureRecognizer(target:self, action:#selector(pan))
-        sep.edges = UIRectEdge.right
-        tbc.view.addGestureRecognizer(sep)
-        sep.delegate = self
-        
-        let sep2 = UIScreenEdgePanGestureRecognizer(target:self, action:#selector(pan))
-        sep2.edges = UIRectEdge.left
-        tbc.view.addGestureRecognizer(sep2)
-        sep2.delegate = self
-        
-        let prev = UIPreviewInteraction(view: tbc.view)
+        let prev = UIPreviewInteraction(view: tbc.tabBar)
         prev.delegate = self
         self.prev = prev
         
@@ -49,10 +39,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
 extension AppDelegate : UIPreviewInteractionDelegate {
     func previewInteractionShouldBegin(_ previewInteraction: UIPreviewInteraction) -> Bool {
         let tbc = self.window!.rootViewController as! UITabBarController
-        let loc = previewInteraction.location(in:tbc.view)
-        if tbc.tabBar.frame.contains(loc) {
-            return false // don't conflict with buttons
-        }
+        let loc = previewInteraction.location(in:tbc.tabBar)
         if loc.x > tbc.view!.bounds.midX {
             if tbc.selectedIndex < tbc.viewControllers!.count - 1 {
                 self.interacting = true
@@ -107,67 +94,6 @@ extension AppDelegate : UIPreviewInteractionDelegate {
 
 }
 
-extension AppDelegate : UIGestureRecognizerDelegate {
-    
-    func gestureRecognizerShouldBegin(_ g: UIGestureRecognizer) -> Bool {
-        return false // turn this off entirely
-        let tbc = self.window!.rootViewController as! UITabBarController
-        var result = false
-        
-        if (g as! UIScreenEdgePanGestureRecognizer).edges == .right {
-            result = (tbc.selectedIndex < tbc.viewControllers!.count - 1)
-        }
-        else {
-            result = (tbc.selectedIndex > 0)
-        }
-        return result
-    }
-    
-    func pan(_ g:UIScreenEdgePanGestureRecognizer) {
-        
-        switch g.state {
-        case .began:
-            self.interacting = true
-            let tbc = self.window!.rootViewController as! UITabBarController
-            if g.edges == .right {
-                tbc.selectedIndex = tbc.selectedIndex + 1
-            } else {
-                tbc.selectedIndex = tbc.selectedIndex - 1
-            }
-        case .changed:
-            let v = g.view!
-            let delta = g.translation(in:v)
-            let percent = abs(delta.x/v.bounds.size.width)
-            self.anim?.fractionComplete = percent
-            self.context?.updateInteractiveTransition(percent)
-        case .ended:
-            
-            // this is the money shot!
-            // with a property animator, the whole notion of "hurry home" is easy -
-            // including "hurry back to start"
-            
-            let anim = self.anim as! UIViewPropertyAnimator
-            anim.pauseAnimation()
-
-            if anim.fractionComplete < 0.5 {
-                anim.isReversed = true
-            }
-            anim.continueAnimation(
-                withTimingParameters:
-                UICubicTimingParameters(animationCurve:.linear),
-                durationFactor: 0.2)
-
-        case .cancelled:
-            
-            self.anim?.pauseAnimation()
-            self.anim?.stopAnimation(false)
-            self.anim?.finishAnimation(at: .start)
-            
-        default: break
-        }
-    }
-}
-
 extension AppDelegate : UIViewControllerInteractiveTransitioning {
     
     // called if we are interactive
@@ -196,8 +122,8 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
             return self.anim!
         }
         
-        let vc1 = ctx.viewController(forKey:UITransitionContextFromViewControllerKey)!
-        let vc2 = ctx.viewController(forKey:UITransitionContextToViewControllerKey)!
+        let vc1 = ctx.viewController(forKey:.from)!
+        let vc2 = ctx.viewController(forKey:.to)!
         
         let con = ctx.containerView
         
@@ -205,8 +131,8 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         let r2end = ctx.finalFrame(for:vc2)
         
         // new in iOS 8, use these instead of assuming that the views are the views of the vcs
-        let v1 = ctx.view(forKey:UITransitionContextFromViewKey)!
-        let v2 = ctx.view(forKey:UITransitionContextToViewKey)!
+        let v1 = ctx.view(forKey:.from)!
+        let v2 = ctx.view(forKey:.to)!
         
         // which way we are going depends on which vc is which
         // the most general way to express this is in terms of index number
