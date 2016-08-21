@@ -53,7 +53,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         
         // if the back button is assigned a background image, the chevron is removed entirely
-        // UIBarButtonItem.appearance().setBackButtonBackgroundImage(im3, forState: .Normal, barMetrics: .Default)
+        // UIBarButtonItem.appearance().setBackButtonBackgroundImage(im3, for: .normal, barMetrics: .default)
 
         // also, note that if the back button is assigned a background image,
         // it is not vertically resized

@@ -53,7 +53,7 @@ class ViewController : UIViewController {
         anim.keyTimes = [0.0, 0.25, 0.5, 0.75, 1.0]
         anim.calculationMode = kCAAnimationDiscrete
         anim.duration = 1.5
-        anim.repeatCount = Float.infinity
+        anim.repeatCount = .infinity
         
         let anim2 = CABasicAnimation(keyPath:#keyPath(CALayer.position))
         anim2.duration = 10

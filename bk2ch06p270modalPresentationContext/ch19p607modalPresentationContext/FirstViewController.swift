@@ -9,25 +9,26 @@ class FirstViewController : UIViewController {
         switch which {
         case 1:
             let vc = ExtraViewController(nibName: nil, bundle: nil)
+            vc.modalTransitionStyle = .flipHorizontal
             self.present(vc, animated: true)
             
         case 2:
             // in iOS 8/9, this works on iPhone as well as iPad!
             // presented vc appears over first vc *inside* tabbed interface
             let vc = ExtraViewController(nibName: nil, bundle: nil)
+            vc.modalTransitionStyle = .flipHorizontal
             self.definesPresentationContext = true
             vc.modalPresentationStyle = .currentContext
             self.present(vc, animated: true)
 
         case 3:
             let vc = ExtraViewController(nibName: nil, bundle: nil)
-            
+            vc.modalTransitionStyle = .flipHorizontal
             self.definesPresentationContext = true
             // comment out next line to see the difference
             self.providesPresentationContextTransitionStyle = true
             self.modalTransitionStyle = .coverVertical
             vc.modalPresentationStyle = .currentContext
-            vc.modalTransitionStyle = .flipHorizontal // this will be overridden
             
             vc.modalPresentationCapturesStatusBarAppearance = true
             

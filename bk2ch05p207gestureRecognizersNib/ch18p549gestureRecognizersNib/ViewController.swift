@@ -13,7 +13,7 @@ class ViewController  : UIViewController {
             let anim = CABasicAnimation(keyPath: "transform")
             anim.toValue = NSValue(caTransform3D:CATransform3DMakeScale(1.1, 1.1, 1))
             anim.fromValue = NSValue(caTransform3D:CATransform3DIdentity)
-            anim.repeatCount = Float.infinity
+            anim.repeatCount = .infinity
             anim.autoreverses = true
             lp.view!.layer.add(anim, forKey:nil)
         case .ended, .cancelled:

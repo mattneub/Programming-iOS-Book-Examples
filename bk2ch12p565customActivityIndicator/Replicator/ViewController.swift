@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         anim.fromValue = 1.0
         anim.toValue = 0.2
         anim.duration = 1
-        anim.repeatCount = Float.infinity
+        anim.repeatCount = .infinity
         bar.add(anim, forKey: nil)
         lay.instanceDelay = anim.duration / Double(lay.instanceCount)
         self.view.layer.addSublayer(lay)

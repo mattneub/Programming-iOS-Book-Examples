@@ -62,7 +62,7 @@ class ViewController : UIViewController {
         let pitches = [0.0, .pi/60.0, 0.0, -.pi/60.0, 0.0]
         let anim3 = CAKeyframeAnimation(keyPath:#keyPath(CALayer.transform))
         anim3.values = pitches
-        anim3.repeatCount = Float.infinity
+        anim3.repeatCount = .infinity
         anim3.duration = 0.5
         anim3.isAdditive = true
         anim3.valueFunction = CAValueFunction(name:kCAValueFunctionRotateZ)
