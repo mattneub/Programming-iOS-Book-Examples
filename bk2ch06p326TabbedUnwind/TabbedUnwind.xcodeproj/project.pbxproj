@@ -101,6 +101,7 @@
 				TargetAttributes = {
 					328C1A9F1B7ABFF9001DA214 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = W3LHX5RGV2;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -255,6 +256,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				INFOPLIST_FILE = TabbedUnwind/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.TabbedUnwind;
@@ -267,6 +269,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				INFOPLIST_FILE = TabbedUnwind/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.TabbedUnwind;
