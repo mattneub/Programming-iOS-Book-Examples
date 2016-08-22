@@ -8,7 +8,7 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 
 class RootViewController: UIViewController {
                             
-    var pageViewController: UIPageViewController?
+    var pvc: UIPageViewController?
     var modelController : ModelController!
 
     
@@ -67,26 +67,26 @@ class RootViewController: UIViewController {
         self.modelController = ModelController()
         if let dvc = self.modelController.viewController(at:0, storyboard: self.storyboard!) {
             let viewControllers = [dvc]
-            self.pageViewController!.setViewControllers(viewControllers, direction: .forward, animated: false)
-            self.pageViewController!.dataSource = self.modelController
+            self.pvc!.setViewControllers(viewControllers, direction: .forward, animated: false)
+            self.pvc!.dataSource = self.modelController
         }
     }
     
     func setUpInterface() {
-        self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-        self.pageViewController!.dataSource = nil
+        self.pvc = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        self.pvc!.dataSource = nil
         self.tryToAddInitialPage() // if succeeds, will set data source for real
         
-        self.addChildViewController(self.pageViewController!)
-        self.view.addSubview(self.pageViewController!.view)
-        self.pageViewController!.view.frame = self.view.bounds
-        self.pageViewController!.didMove(toParentViewController: self)
+        self.addChildViewController(self.pvc!)
+        self.view.addSubview(self.pvc!.view)
+        self.pvc!.view.frame = self.view.bounds
+        self.pvc!.didMove(toParentViewController: self)
     }
 }
 
 extension RootViewController : PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInfo: PHChange) {
-        if let ci = changeInfo.changeDetails(for:unsafeBitCast(self.modelController.recentAlbums, to:PHFetchResult<AnyObject>.self)) {
+        if let ci = changeInfo.changeDetails(for:self.modelController.recentAlbums) {
             // if what just happened is: we went from nil to results (because user granted permission)...
             // then start over
             let oldResult = ci.fetchResultBeforeChanges
@@ -109,7 +109,7 @@ extension RootViewController {
             return
         }
 
-        if let dvc = self.pageViewController?.viewControllers?[0] as? DataViewController {
+        if let dvc = self.pvc?.viewControllers?[0] as? DataViewController {
             dvc.doVignette()
         }
     }

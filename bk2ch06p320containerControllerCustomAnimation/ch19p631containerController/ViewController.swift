@@ -57,7 +57,7 @@ class ViewController : UIViewController {
             duration:0.4,
             // no options:
             animations: {
-                iv.frame = self.panel.bounds // *
+                iv.frame = tovc.view.frame // *
                 self.constrainInPanel(tovc.view) // *
         }) { _ in
             tovc.view.alpha = 1

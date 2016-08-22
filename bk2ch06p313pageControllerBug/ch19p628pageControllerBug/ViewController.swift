@@ -11,7 +11,7 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
         pvc.setViewControllers([page], direction:.forward, animated:false)
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pvc: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let page = viewController as! MyPage
         let num = page.num
         if num == 10 { return nil }
@@ -20,7 +20,7 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
         return page2
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pvc: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         let page = viewController as! MyPage
         let num = page.num
         if num == 1 { return nil }

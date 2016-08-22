@@ -121,7 +121,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
 
             self.displayImage = CIImage(image:im2)
             let adj : PHAdjustmentData? = self.input?.adjustmentData
-            if let adj = adj where adj.formatIdentifier == self.myidentifier {
+            if let adj = adj, adj.formatIdentifier == self.myidentifier {
                 if let vigAmount = NSKeyedUnarchiver.unarchiveObject(with:adj.data) as? Double {
                     if vigAmount >= 0.0 {
                         self.slider.value = Float(vigAmount)
@@ -136,11 +136,11 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
 
     }
     
-    func finishContentEditing(completionHandler: (PHContentEditingOutput) -> Void) {
+    func finishContentEditing(completionHandler: @escaping (PHContentEditingOutput?) -> Void) {
         // Update UI to reflect that editing has finished and output is being rendered.
         
         // Render and provide output on a background queue.
-        DispatchQueue.global(attributes:.qosDefault).async {
+        DispatchQueue.global(qos:.default).async {
             let vignette = self.seg.selectedSegmentIndex == 0 ? Double(self.slider.value) : -1.0
             let input = self.input!
             let inurl = input.fullSizeImageURL!
@@ -161,7 +161,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
                 return outimcg
                 }()
             
-            let dest = CGImageDestinationCreateWithURL(outurl, kUTTypeJPEG, 1, nil)!
+            let dest = CGImageDestinationCreateWithURL(outurl as CFURL, kUTTypeJPEG, 1, nil)!
             CGImageDestinationAddImage(dest, outcgimage, [
                 kCGImageDestinationLossyCompressionQuality as String:1
                 ] as CFDictionary)

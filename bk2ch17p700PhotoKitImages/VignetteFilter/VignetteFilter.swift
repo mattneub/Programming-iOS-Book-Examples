@@ -41,13 +41,13 @@ public class VignetteFilter : CIFilter {
         grad.setValue(center, forKey:"inputCenter")
         grad.setValue(smallerDimension/2.0 * CGFloat(inputPercentage), forKey:"inputRadius0")
         grad.setValue(largerDimension/2.0, forKey:"inputRadius1")
-        grad.setValue(CIColor(color: UIColor.white()), forKey:"inputColor0")
-        grad.setValue(CIColor(color: UIColor.clear()), forKey:"inputColor1")
+        grad.setValue(CIColor(color: .white), forKey:"inputColor0")
+        grad.setValue(CIColor(color: .clear), forKey:"inputColor1")
         let gradimage = grad.outputImage
         
         let blend = CIFilter(name: "CIBlendWithAlphaMask")!
         blend.setValue(self.inputImage, forKey: "inputImage")
-        let background = CIImage(color: CIColor(uicolor: UIColor.white()))
+        let background = CIImage(color: CIColor(uicolor: .white))
         let background2 = background.cropping(to:extent)
         blend.setValue(background2, forKey:"inputBackgroundImage")
         blend.setValue(gradimage, forKey: "inputMaskImage")

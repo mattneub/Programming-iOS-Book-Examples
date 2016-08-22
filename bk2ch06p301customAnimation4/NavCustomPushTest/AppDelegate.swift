@@ -5,7 +5,7 @@ import UIKit
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     var anim : UIViewImplicitlyAnimating?
-    var r2end = CGRect.zero
+    var context : UIViewControllerContextTransitioning?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
     
@@ -46,8 +46,10 @@ extension AppDelegate {
             g.setTranslation(.zero, in: v.superview)
         case .ended:
             let anim = self.anim as! UIViewPropertyAnimator
+            let ctx = self.context!
             anim.addAnimations {
-                v.frame = self.r2end
+                let vc2 = ctx.viewController(forKey:.to)!
+                v.frame = ctx.finalFrame(for: vc2)
             }
             let factor = 1 - anim.fractionComplete
             anim.continueAnimation(withTimingParameters: nil, durationFactor: factor)
@@ -107,8 +109,7 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
         
         self.anim = anim
         print("creating animator")
-        // also conserve r2end so that we can be interrupted and resumed
-        self.r2end = r2end
+        self.context = ctx
         
         return anim
     }
@@ -125,6 +126,7 @@ extension AppDelegate : UIViewControllerAnimatedTransitioning {
     func animationEnded(_ transitionCompleted: Bool) {
         print("animation ended")
         self.anim = nil
+        self.context = nil
     }
 
 }

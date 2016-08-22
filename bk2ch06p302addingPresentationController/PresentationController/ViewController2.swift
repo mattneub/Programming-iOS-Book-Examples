@@ -35,6 +35,13 @@ extension ViewController2 : UIViewControllerTransitioningDelegate {
         let pc = MyPresentationController(presentedViewController: presented, presenting: presenting)
         return pc
     }
+
+    // I would have liked to put this in a different extension, but if I do it doesn't compile
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        // return nil
+        return self
+    }
+
 }
 
 class MyPresentationController : UIPresentationController {
@@ -114,12 +121,13 @@ extension MyPresentationController {
 
 // ==========================
 
+// had to move this earlier or it wouldn't compile without the `@objc`
 extension ViewController2 /* UIViewControllerTransitioningDelegate */ {
-    @objc(animationControllerForPresentedController:presentingController:sourceController:)
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        // return nil
-        return self
-    }
+//    @objc(animationControllerForPresentedController:presentingController:sourceController:)
+//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        // return nil
+//        return self
+//    }
 }
 
 extension ViewController2 : UIViewControllerAnimatedTransitioning {

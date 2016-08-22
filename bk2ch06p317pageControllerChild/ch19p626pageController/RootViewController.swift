@@ -37,7 +37,7 @@ class RootViewController: UIViewController, UIPageViewControllerDataSource {
     
 
 
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter vc: UIViewController) -> UIViewController? {
+    func pageViewController(_ pvc: UIPageViewController, viewControllerAfter vc: UIViewController) -> UIViewController? {
         let boy = (vc as! Pep).boy
         let ix = self.pep.index(of:boy)! + 1
         if ix >= self.pep.count {
@@ -45,7 +45,7 @@ class RootViewController: UIViewController, UIPageViewControllerDataSource {
         }
         return Pep(pepBoy: self.pep[ix])
     }
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore vc: UIViewController) -> UIViewController? {
+    func pageViewController(_ pvc: UIPageViewController, viewControllerBefore vc: UIViewController) -> UIViewController? {
         let boy = (vc as! Pep).boy
         let ix = self.pep.index(of:boy)! - 1
         if ix < 0 {
@@ -56,7 +56,7 @@ class RootViewController: UIViewController, UIPageViewControllerDataSource {
     
     // if these methods are implemented, page indicator appears
     
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+    func presentationCount(for pvc: UIPageViewController) -> Int {
         return self.pep.count
     }
     func presentationIndex(for pvc: UIPageViewController) -> Int {

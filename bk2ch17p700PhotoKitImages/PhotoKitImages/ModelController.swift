@@ -13,7 +13,7 @@ class ModelController: NSObject {
             .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
         guard let rec = self.recentAlbums.firstObject else {return}
         let options = PHFetchOptions() // photos only, please
-        let pred = Predicate(format: "mediaType = %@", NSNumber(
+        let pred = NSPredicate(format: "mediaType = %@", NSNumber(
             value:PHAssetMediaType.image.rawValue))
         options.predicate = pred
         self.photos = PHAsset.fetchAssets(in:rec, options: options)
@@ -44,7 +44,7 @@ class ModelController: NSObject {
 
 extension ModelController : UIPageViewControllerDataSource {
 
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pvc: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         let ix = self.indexOfViewController(viewController as! DataViewController)
         if ix == 0 {
             return nil
@@ -52,7 +52,7 @@ extension ModelController : UIPageViewControllerDataSource {
         return self.viewController(at:ix-1, storyboard:viewController.storyboard!)
     }
 
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pvc: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let ix = self.indexOfViewController(viewController as! DataViewController)
         if ix + 1 >= self.photos.count {
             return nil

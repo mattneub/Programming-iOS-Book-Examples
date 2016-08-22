@@ -54,7 +54,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         // okay, this is why we are here! fetch the image data!!!!!
         // we have to say quite specifically what "view" of image we want
         PHImageManager.default().requestImage(for: asset, targetSize: CGSize(300,300), contentMode: .aspectFit, options: nil) {
-            (im:UIImage?, info:[NSObject : AnyObject]?) in
+            (im:UIImage?, info:[AnyHashable : Any]?) in
             // this block can be called multiple times
             // and you can see why: initially we might get a degraded version of the image
             // and in fact we do, as I show with logging
@@ -81,7 +81,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         }
         var id : PHContentEditingInputRequestID = 0
         id = self.asset.requestContentEditingInput(with: options) {
-            (input:PHContentEditingInput?, info:[NSObject : AnyObject]) in
+            (input:PHContentEditingInput?, info:[AnyHashable:Any]) in
             guard let input = input else {
                 self.asset.cancelContentEditingInputRequest(id)
                 return
@@ -107,7 +107,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
 //                asset.cancelContentEditingInputRequest(id)
 //                return
 //            }
-            if let adj = adj where adj.formatIdentifier == self.myidentifier {
+            if let adj = adj, adj.formatIdentifier == self.myidentifier {
                 if let vigAmount = NSKeyedUnarchiver.unarchiveObject(with: adj.data) as? Double {
                     if vigAmount >= 0.0 {
                         evc.initialVignette = vigAmount
@@ -140,7 +140,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             return CIContext().createCGImage(ci, from: ci.extent)!
         }()
         
-        let dest = CGImageDestinationCreateWithURL(outurl, kUTTypeJPEG, 1, nil)!
+        let dest = CGImageDestinationCreateWithURL(outurl as CFURL, kUTTypeJPEG, 1, nil)!
         CGImageDestinationAddImage(dest, outcgimage, [
             kCGImageDestinationLossyCompressionQuality as String:1
             ] as CFDictionary)
@@ -156,7 +156,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             let req = PHAssetChangeRequest(for: self.asset)
             req.contentEditingOutput = output
             }, completionHandler: {
-                (ok:Bool, err:NSError?) in
+                (ok:Bool, err:Error?) in
                 print("in completion handler")
                 // at the last minute, the user will get a special "modify?" dialog
                 // if the user refuses, we will receive "false"
