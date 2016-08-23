@@ -76,7 +76,7 @@ class MyScrollView : UIScrollView {
         var which : Int {return 1}
         switch which {
         case 1:
-            print("layout")
+            // print("layout")
             super.layoutSubviews()
             if let v = self.delegate?.viewForZooming?(in:self) {
                 let svw = self.bounds.width

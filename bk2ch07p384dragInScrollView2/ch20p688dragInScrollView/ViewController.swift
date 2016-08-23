@@ -44,7 +44,7 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
         let sv = self.sv!
         let p = sv.contentOffset
         self.flag.frame.origin = p
-        self.flag.frame.origin.x -= self.flag.bounds.size.width
+        self.flag.frame.origin.x -= self.flag.bounds.width
         self.flag.isHidden = false
         
         UIView.animate(withDuration:0.25) {
