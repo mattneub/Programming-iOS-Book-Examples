@@ -29,7 +29,7 @@ class ViewController : UIViewController {
         var previousLab : UILabel? = nil
         for i in 0 ..< 30 {
             let lab = UILabel()
-            // lab.backgroundColor = UIColor.red()
+            // lab.backgroundColor = .red
             lab.translatesAutoresizingMaskIntoConstraints = false
             lab.text = "This is label \(i+1)"
             sv.addSubview(lab)

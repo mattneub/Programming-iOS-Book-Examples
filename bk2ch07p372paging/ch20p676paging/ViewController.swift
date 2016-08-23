@@ -34,7 +34,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
         if !self.didLayout {
             self.didLayout = true
             let sz = self.sv.bounds.size
-            let colors = [UIColor.red(), UIColor.green(), UIColor.yellow()]
+            let colors : [UIColor] = [.red, .green, .yellow]
             for i in 0 ..< 3 {
                 let v = UIView(frame:CGRect(sz.width*CGFloat(i),0,sz.width,sz.height))
                 v.backgroundColor = colors[i]

@@ -79,18 +79,22 @@ class ViewController : UIViewController, UIScrollViewDelegate {
         return scrollView.viewWithTag(999)
     }
     
-    /*
     
-    func scrollViewDidZoom(scrollView: UIScrollView) {
-        print(scrollView.bounds.size) // this is constant
-        print(scrollView.contentSize) // this is changing
-        let v = self.viewForZoomingInScrollView(scrollView)!
-        print(v.bounds.size) // this is constant
-        print(v.frame.size) // this is changing (and here it matches the content size)
-        print()
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        var which : Int {return 0} // 1 to add some interesting logging :)
+        switch which {
+        case 1:
+            print(scrollView.bounds.size) // this is constant
+            print(scrollView.contentSize) // this is changing
+            let v = self.viewForZooming(in:scrollView)!
+            print(v.bounds.size) // this is constant
+            print(v.frame.size) // this is changing (and here it matches the content size)
+            print()
+        default : break
+        }
     }
 
-*/
     
     
 }

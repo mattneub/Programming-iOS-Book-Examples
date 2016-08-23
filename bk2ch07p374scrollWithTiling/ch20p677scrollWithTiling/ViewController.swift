@@ -24,16 +24,16 @@ extension CGVector {
 
 
 
-let kTILESIZE : CGFloat = 256
+let TILESIZE : CGFloat = 256
 
 class ViewController : UIViewController {
     @IBOutlet var sv : UIScrollView!
     @IBOutlet var content : TiledView!
     
     override func viewDidLoad() {
-        let f = CGRect(0,0,3*kTILESIZE,3*kTILESIZE)
+        let f = CGRect(0,0,3*TILESIZE,3*TILESIZE)
         let content = TiledView(frame:f)
-        let tsz = kTILESIZE * content.layer.contentsScale
+        let tsz = TILESIZE * content.layer.contentsScale
         (content.layer as! CATiledLayer).tileSize = CGSize(tsz, tsz)
         self.sv.addSubview(content)
         self.sv.contentSize = f.size
@@ -46,10 +46,10 @@ class ViewController : UIViewController {
 
 class TiledView : UIView {
     
-    let drawQueue = DispatchQueue(label: "drawQueue", attributes: DispatchQueueAttributes.serial)
+    let drawQueue = DispatchQueue(label: "drawQueue")
 
     
-    override class func layerClass() -> AnyClass {
+    override class var layerClass : AnyClass {
         return CATiledLayer.self
     }
     
@@ -64,23 +64,25 @@ class TiledView : UIView {
     override func draw(_ r: CGRect) {
         drawQueue.sync { // work around nasty thread issue...
             // we are called twice simultaneously on two different background threads!
-            
-            NSLog("%@", "drawRect: \(r)")
+            // logging to prove we have in fact worked around it
+            NSLog("%@", "starting drawRect: \(r)")
             
             let tile = r
-            let x = Int(tile.origin.x/kTILESIZE)
-            let y = Int(tile.origin.y/kTILESIZE)
+            let x = Int(tile.origin.x/TILESIZE)
+            let y = Int(tile.origin.y/TILESIZE)
             let tileName = String(format:"CuriousFrog_500_\(x+3)_\(y)")
-            let path = Bundle.main.pathForResource(tileName, ofType:"png")!
+            let path = Bundle.main.path(forResource: tileName, ofType:"png")!
             let image = UIImage(contentsOfFile:path)!
             
-            image.draw(at:CGPoint(CGFloat(x)*kTILESIZE,CGFloat(y)*kTILESIZE))
+            image.draw(at:CGPoint(CGFloat(x)*TILESIZE,CGFloat(y)*TILESIZE))
             
             // in real life, comment out the following! it's here just so we can see the tile boundaries
             
             let bp = UIBezierPath(rect: r)
-            UIColor.white().setStroke()
+            UIColor.white.setStroke()
             bp.stroke()
+            
+            NSLog("%@", "finished drawRect: \(r)")
         }
     }
 }

@@ -74,8 +74,9 @@ class ViewController : UIViewController, UIScrollViewDelegate {
     // we can prevent this by setting animated: to false throughout
     // but it seems a pity to have to do that
     
-    let anim = true
     @IBAction func tapped(_ tap : UIGestureRecognizer) {
+        let anim = true
+
         let v = tap.view!
         let sv = v.superview as! UIScrollView
         if sv.zoomScale < 1 {
@@ -97,26 +98,30 @@ class MyScrollView : UIScrollView {
     
     override func layoutSubviews() {
         // see WWDC 2010 video on this topic
-        // comment this out and zoom the bird image smaller to see the difference
-        // print("layout")
-        super.layoutSubviews()
-        if let v = self.delegate?.viewForZooming?(in:self) {
-            let svw = self.bounds.width
-            let svh = self.bounds.height
-            let vw = v.frame.width
-            let vh = v.frame.height
-            var f = v.frame
-            if vw < svw {
-                f.origin.x = (svw - vw) / 2.0
-            } else {
-                f.origin.x = 0
+        var which : Int {return 1}
+        switch which {
+        case 1:
+            print("layout")
+            super.layoutSubviews()
+            if let v = self.delegate?.viewForZooming?(in:self) {
+                let svw = self.bounds.width
+                let svh = self.bounds.height
+                let vw = v.frame.width
+                let vh = v.frame.height
+                var f = v.frame
+                if vw < svw {
+                    f.origin.x = (svw - vw) / 2.0
+                } else {
+                    f.origin.x = 0
+                }
+                if vh < svh {
+                    f.origin.y = (svh - vh) / 2.0
+                } else {
+                    f.origin.y = 0
+                }
+                v.frame = f
             }
-            if vh < svh {
-                f.origin.y = (svh - vh) / 2.0
-            } else {
-                f.origin.y = 0
-            }
-            v.frame = f
+        default:break
         }
     }
     

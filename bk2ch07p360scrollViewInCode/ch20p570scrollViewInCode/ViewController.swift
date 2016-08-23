@@ -48,9 +48,9 @@ class ViewController : UIViewController {
             y += lab.bounds.size.height + 10
             
             // uncomment
-//            lab.frame.size.width = self.view.bounds.size.width - 20
-//            lab.backgroundColor = UIColor.red() // make label bounds visible
-//            lab.autoresizingMask = .FlexibleWidth
+//            lab.frame.size.width = self.view.bounds.width - 20
+//            lab.backgroundColor = .red // make label bounds visible
+//            lab.autoresizingMask = .flexibleWidth
             
         }
         var sz = sv.bounds.size

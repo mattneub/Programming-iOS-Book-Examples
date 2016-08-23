@@ -1,7 +1,7 @@
 
 import UIKit
 
-func lend<T where T:NSObject> (closure:(T)->()) -> T {
+func lend<T> (closure:(T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
     return orig
@@ -13,7 +13,7 @@ class MyTiledView : UIView {
     var currentImage : UIImage!
     var currentSize = CGSize.zero
     
-    var drawQueue : DispatchQueue = DispatchQueue(label: "drawQueue", attributes: DispatchQueueAttributes.serial)
+    var drawQueue : DispatchQueue = DispatchQueue(label: "drawQueue")
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
@@ -24,7 +24,7 @@ class MyTiledView : UIView {
         lay.levelsOfDetailBias = 2
     }
     
-    override class func layerClass() -> AnyClass {
+    override class var layerClass : AnyClass {
         return CATiledLayer.self
     }
     
@@ -56,7 +56,7 @@ class MyTiledView : UIView {
                 let sc = tr.a/lay.contentsScale
                 let scale = sc/4.0
                 
-                let path = Bundle.main.pathForResource("earthFromSaturn", ofType:"png")!
+                let path = Bundle.main.path(forResource: "earthFromSaturn", ofType:"png")!
                 let im = UIImage(contentsOfFile:path)!
                 let sz = CGSize(im.size.width * scale, im.size.height * scale)
                 
@@ -84,7 +84,7 @@ class MyTiledView : UIView {
             // comment out the following! it's here just so we can see the tile boundaries
             
             let bp = UIBezierPath(rect: rect)
-            UIColor.white().setStroke()
+            UIColor.white.setStroke()
             bp.stroke()
             
         }

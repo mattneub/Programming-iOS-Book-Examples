@@ -45,10 +45,10 @@ class MyFlagView : UIImageView {
         //        UIGraphicsEndImageContext()
         
         let info = CGImageAlphaInfo.alphaOnly.rawValue
-        let pixel = UnsafeMutablePointer<UInt8>(allocatingCapacity:1)
+        let pixel = UnsafeMutablePointer<UInt8>.allocate(capacity:1)
         defer {
             pixel.deinitialize(count: 1)
-            pixel.deallocateCapacity(1)
+            pixel.deallocate(capacity:1)
         }
         pixel[0] = 0
         let sp = CGColorSpaceCreateDeviceGray()
