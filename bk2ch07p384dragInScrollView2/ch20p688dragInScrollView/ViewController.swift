@@ -27,6 +27,10 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
             iv.rightAnchor.constraint(equalTo:sup.rightAnchor, constant: -5),
             iv.topAnchor.constraint(equalTo:sup.topAnchor, constant: 25)
             ])
+        
+//        delay(2) {
+//            print(self.view.subviews)
+//        }
     }
     
     // delegate of flag's pan gesture recognizer
