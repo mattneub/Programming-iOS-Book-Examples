@@ -1,6 +1,12 @@
 
 import UIKit
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
 class ViewController: UIViewController {
     
     var didSetup = false
@@ -12,11 +18,18 @@ class ViewController: UIViewController {
         
         let mainview = self.view!
         
-        let v = UIView()
+        // ok, I proved what I wanted to prove: it really _is_ whether it's a vc's main view
+//        let vc = UIViewController()
+//        self.addChildViewController(vc)
+        
+         let v = UIView()
+//        let v = vc.view!
         v.backgroundColor = .red
         v.translatesAutoresizingMaskIntoConstraints = false
         
         mainview.addSubview(v)
+        
+        // vc.didMove(toParentViewController: self)
         
         NSLayoutConstraint.activate([
             NSLayoutConstraint.constraints(withVisualFormat:"H:|-(0)-[v]-(0)-|", metrics: nil, views: ["v":v]),
@@ -24,7 +37,17 @@ class ViewController: UIViewController {
             ].flatMap{$0})
         
         // experiment by commenting out this line
-        v.preservesSuperviewLayoutMargins = true
+        // v.preservesSuperviewLayoutMargins = true
+        delay(1) {
+            // print(mainview.layoutMargins)
+            // 20 on iPad Pro large
+            // 20 on iPhone 6s Plus
+            // 20 on iPad Air 2
+            // 16 on iPhone 5s
+            // 16 on iPhone 6s
+            print(v.layoutMargins)
+            // print(v.window!.layoutMargins)
+        }
         
         let v1 = UIView()
         v1.backgroundColor = .green
