@@ -7,10 +7,10 @@ class SecondaryViewController : UIViewController {
     // configure our interface
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.red()
+        self.view.backgroundColor = .red
         let b = UIButton(type:.system)
         b.setTitle("Configure", for: []) // normal
-        b.backgroundColor = UIColor.yellow()
+        b.backgroundColor = .yellow
         b.addTarget(self, action: #selector(callShowHide), for: .touchUpInside)
         self.view.addSubview(b)
         b.translatesAutoresizingMaskIntoConstraints = false

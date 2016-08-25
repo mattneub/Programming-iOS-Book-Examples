@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         NSLog("%@", #function)
         if self.presentingViewController != nil {
-            self.view.backgroundColor = UIColor.yellow()
+            self.view.backgroundColor = .yellow
         }
     }
     

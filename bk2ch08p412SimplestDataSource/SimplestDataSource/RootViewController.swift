@@ -40,7 +40,7 @@ class RootViewController: UITableViewController {
         
         // uncomment to show that the refresh control is hidden behind the background view
 //        let v = UIView()
-//        v.backgroundColor = UIColor.yellow()
+//        v.backgroundColor = .yellow
 //        self.tableView.backgroundView = v
     }
 

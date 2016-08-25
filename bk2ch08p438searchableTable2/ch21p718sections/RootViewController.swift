@@ -18,7 +18,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: Bundle.main.pathForResource("states", ofType: "txt")!)
+        let s = try! String(contentsOfFile: Bundle.main.path(forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         var previous = ""
         for aState in states {
@@ -36,13 +36,13 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
         
-        self.tableView.sectionIndexColor = UIColor.white()
-        self.tableView.sectionIndexBackgroundColor = UIColor.red()
-        // self.tableView.sectionIndexTrackingBackgroundColor = UIColor.blue()
-        // self.tableView.backgroundColor = UIColor.yellow()
+        self.tableView.sectionIndexColor = .white
+        self.tableView.sectionIndexBackgroundColor = .red
+        // self.tableView.sectionIndexTrackingBackgroundColor = .blue
+        // self.tableView.backgroundColor = .yellow
         self.tableView.backgroundView = {
             let v = UIView()
-            v.backgroundColor = UIColor.yellow()
+            v.backgroundColor = .yellow
             return v
             }()
         
@@ -89,19 +89,19 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView
             .dequeueReusableHeaderFooterView(withIdentifier:"Header")!
-        if h.tintColor != UIColor.red() {
-            h.tintColor = UIColor.red() // invisible marker, tee-hee
+        if h.tintColor != .red {
+            h.tintColor = .red // invisible marker, tee-hee
             h.backgroundView = UIView()
-            h.backgroundView?.backgroundColor = UIColor.black()
+            h.backgroundView?.backgroundColor = .black
             let lab = UILabel()
             lab.tag = 1
             lab.font = UIFont(name:"Georgia-Bold", size:22)
-            lab.textColor = UIColor.green()
-            lab.backgroundColor = UIColor.clear()
+            lab.textColor = .green
+            lab.backgroundColor = .clear
             h.contentView.addSubview(lab)
             let v = UIImageView()
             v.tag = 2
-            v.backgroundColor = UIColor.black()
+            v.backgroundColor = .black
             v.image = UIImage(named:"us_flag_small.gif")
             h.contentView.addSubview(v)
             lab.translatesAutoresizingMaskIntoConstraints = false
@@ -160,19 +160,19 @@ extension RootViewController : UISearchControllerDelegate, UIViewControllerTrans
         return self
     }
     
-    func animationController(forDismissedController dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
     
-    func transitionDuration(_ transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
     }
     
-    func animateTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let vc1 = transitionContext.viewController(forKey:.from)!
         let vc2 = transitionContext.viewController(forKey:.to)!
         
-        let con = transitionContext.containerView()
+        let con = transitionContext.containerView
         
         // let r1start = transitionContext.initialFrame(for:vc1)
         let r2end = transitionContext.finalFrame(for:vc2)

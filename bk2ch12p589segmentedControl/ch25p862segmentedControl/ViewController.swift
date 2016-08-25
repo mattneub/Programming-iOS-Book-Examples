@@ -51,7 +51,7 @@ class ViewController: UIViewController {
             }
         }
 
-//        self.seg.tintColor = UIColor.red()
+//        self.seg.tintColor = .red
 //        return
         
         // background, set desired height but make width resizable

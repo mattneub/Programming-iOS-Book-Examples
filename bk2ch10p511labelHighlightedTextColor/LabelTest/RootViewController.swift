@@ -34,7 +34,7 @@ class RootViewController: UITableViewController {
             lab.attributedText = s
             lab.sizeToFit()
             lab.tag = 1
-            lab.highlightedTextColor = UIColor.red()
+            lab.highlightedTextColor = .red
             cell.contentView.addSubview(lab)
         }
 

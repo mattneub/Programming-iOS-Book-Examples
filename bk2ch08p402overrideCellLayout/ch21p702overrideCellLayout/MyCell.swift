@@ -2,14 +2,15 @@
 import UIKit
 
 class MyCell : UITableViewCell {
-    /*
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style:.Subtitle, reuseIdentifier: reuseIdentifier)
+        super.init(style:.default, reuseIdentifier: reuseIdentifier)
+        // change .default to another built-in style if desired
     }
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
     }
-*/
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         let cvb = self.contentView.bounds

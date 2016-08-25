@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         let lab = UILabel() // preferredMaxLayoutWidth is 0
         print(lab.preferredMaxLayoutWidth)
         lab.numberOfLines = 0
-        lab.backgroundColor = UIColor.yellow()
+        lab.backgroundColor = .yellow
         lab.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lab)
         NSLayoutConstraint.activate([

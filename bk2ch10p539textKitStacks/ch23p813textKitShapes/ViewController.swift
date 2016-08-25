@@ -56,8 +56,8 @@ class ViewController: UIViewController {
             
             self.tv.removeFromSuperview()
             self.tv2.removeFromSuperview()
-            tv.backgroundColor = UIColor.yellow()
-            tv2.backgroundColor = UIColor.yellow()
+            tv.backgroundColor = .yellow
+            tv2.backgroundColor = .yellow
             self.view.addSubview(tv)
             self.view.addSubview(tv2)
             self.tv = tv
@@ -83,8 +83,8 @@ class ViewController: UIViewController {
 
             self.tv.removeFromSuperview()
             self.tv2.removeFromSuperview()
-            tv.backgroundColor = UIColor.yellow()
-            tv2.backgroundColor = UIColor.yellow()
+            tv.backgroundColor = .yellow
+            tv2.backgroundColor = .yellow
             self.view.addSubview(tv)
             self.view.addSubview(tv2)
             self.tv = tv

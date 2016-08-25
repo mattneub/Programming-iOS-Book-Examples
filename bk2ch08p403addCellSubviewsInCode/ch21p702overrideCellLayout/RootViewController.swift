@@ -50,7 +50,7 @@ class RootViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
-        if cell.viewWithTag(1) == nil {
+        if cell.viewWithTag(1) == nil { // no subviews! add them
             let iv = UIImageView()
             iv.tag = 1
             cell.contentView.addSubview(iv)
@@ -59,7 +59,7 @@ class RootViewController : UITableViewController {
             lab.tag = 2
             cell.contentView.addSubview(lab)
             
-            // since we are now adding the views ourselves (not reusing the default views),
+            // since we are now adding the views ourselves,
             // we can use autolayout to lay them out
             
             let d = ["iv":iv, "lab":lab]

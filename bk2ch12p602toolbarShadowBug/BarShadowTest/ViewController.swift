@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
 
-        self.view.backgroundColor = UIColor.yellow()
+        self.view.backgroundColor = .yellow
         
         let sz = CGSize(20,20)
         

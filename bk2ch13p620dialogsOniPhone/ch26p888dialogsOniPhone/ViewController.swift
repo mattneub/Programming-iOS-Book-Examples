@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         for s in ["3 by 3", "4 by 3", "4 by 4", "5 by 4", "5 by 5"] {
             action.addAction(UIAlertAction(title: s, style: .default, handler: handler))
         }
-        // action.view.tintColor = UIColor.yellow()
+        // action.view.tintColor = .yellow
         self.present(action, animated: true)
         if let pop = action.popoverPresentationController {
             let v = sender as! UIView

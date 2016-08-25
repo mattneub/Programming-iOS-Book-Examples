@@ -21,13 +21,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
 //        let s = NSAttributedString(string: "this is a test", attributes: [NSForegroundColorAttributeName:UIColor.blue(), NSFontAttributeName:UIFont(name: "GillSans", size: 20)!])
 //        tf.attributedText = s
-//        tf.textColor = UIColor.red()
+//        tf.textColor = .red
 //        tf.text = "howdy"
 //        print(tf.attributedText)
 //        
 //        let lab = UILabel()
 //        lab.attributedText = s
-//        lab.textColor = UIColor.red()
+//        lab.textColor = .red
 //        lab.text = "howdy"
 //        print(lab.attributedText)
         
@@ -37,7 +37,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //        tf.attributedPlaceholder = s
         
         // tf.borderStyle = .Bezel
-        // tf.backgroundColor = UIColor.red()
+        // tf.backgroundColor = .red
         
 //        let t = UITextField()
 //        t.borderStyle = .RoundedRect

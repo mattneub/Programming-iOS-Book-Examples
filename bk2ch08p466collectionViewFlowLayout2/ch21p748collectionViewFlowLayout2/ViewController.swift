@@ -3,7 +3,7 @@ import UIKit
 
 extension Array {
     mutating func remove(at ixs:[Int]) -> () {
-        for i in ixs.sorted(isOrderedBefore:>) {
+        for i in ixs.sorted(by:>) {
             self.remove(at:i)
         }
     }
@@ -47,7 +47,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: Bundle.main.pathForResource("states", ofType: "txt")!)
+        let s = try! String(contentsOfFile: Bundle.main.path(forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
         var previous = ""
         for aState in states {
@@ -118,11 +118,11 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 lab.textAlignment = .center
                 // look nicer
                 lab.font = UIFont(name:"Georgia-Bold", size:22)
-                lab.backgroundColor = UIColor.lightGray()
+                lab.backgroundColor = .lightGray
                 lab.layer.cornerRadius = 8
                 lab.layer.borderWidth = 2
                 lab.layer.masksToBounds = true // has to be added for iOS 8 label
-                lab.layer.borderColor = UIColor.black().cgColor
+                lab.layer.borderColor = UIColor.black.cgColor
                 lab.translatesAutoresizingMaskIntoConstraints = false
                 NSLayoutConstraint.activate([
                     NSLayoutConstraint.constraints(withVisualFormat:"H:|-10-[lab(35)]",
@@ -146,25 +146,25 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             cell.layer.cornerRadius = 8
             cell.layer.borderWidth = 2
             
-            cell.backgroundColor = UIColor.gray()
+            cell.backgroundColor = .gray
             
             // checkmark in top left corner when selected
             let r = UIGraphicsImageRenderer(size:cell.bounds.size)
             let im = r.image {
                 ctx in let con = ctx.cgContext
                 let shadow = NSShadow()
-                shadow.shadowColor = UIColor.darkGray()
+                shadow.shadowColor = UIColor.darkGray
                 shadow.shadowOffset = CGSize(2,2)
                 shadow.shadowBlurRadius = 4
                 let check2 =
-                    AttributedString(string:"\u{2714}", attributes:[
+                    NSAttributedString(string:"\u{2714}", attributes:[
                         NSFontAttributeName: UIFont(name:"ZapfDingbatsITC", size:24)!,
-                        NSForegroundColorAttributeName: UIColor.green(),
-                        NSStrokeColorAttributeName: UIColor.red(),
+                        NSForegroundColorAttributeName: UIColor.green,
+                        NSStrokeColorAttributeName: UIColor.red,
                         NSStrokeWidthAttributeName: -4,
                         NSShadowAttributeName: shadow
                         ])
-                con.scale(x:1.1, y:1)
+                con.scaleBy(x:1.1, y:1)
                 check2.draw(at:CGPoint(2,0))
             }
 
@@ -248,7 +248,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // deletion, really quite similar to a table view
     
     func doDelete(_ sender:AnyObject) { // button, delete selected cells
-        let arr = self.collectionView!.indexPathsForSelectedItems()!
+        let arr = self.collectionView!.indexPathsForSelectedItems!
         if arr.count == 0 {
             return
         }
@@ -257,7 +257,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // delete data
         var empties : Set<Int> = [] // keep track of what sections get emptied
         for ip in arr2.reversed() {
-            self.sectionData[ip.section].remove(at:ip.item!)
+            self.sectionData[ip.section].remove(at:ip.item)
             if self.sectionData[ip.section].count == 0 {
                 empties.insert(ip.section)
             }
@@ -279,15 +279,15 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
         let mi = UIMenuItem(title:"Capital", action:#selector(Cell.capital))
-        UIMenuController.shared().menuItems = [mi]
+        UIMenuController.shared.menuItems = [mi]
         return true
     }
     
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: AnyObject?) -> Bool {
+    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         return (action == #selector(copy(_:))) || (action == #selector(Cell.capital))
     }
     
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: AnyObject?) {
+    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
         // in real life, would do something here
         let state = self.sectionData[indexPath.section][indexPath.row]
         if action == #selector(copy(_:)) {

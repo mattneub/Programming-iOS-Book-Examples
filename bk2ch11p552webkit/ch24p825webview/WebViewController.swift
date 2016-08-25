@@ -141,7 +141,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         
         
         wv.restorationIdentifier = "wv"
-        wv.scrollView.backgroundColor = UIColor.black() // web view alone, ineffective
+        wv.scrollView.backgroundColor = .black // web view alone, ineffective
         self.view.addSubview(wv)
         wv.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

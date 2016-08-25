@@ -10,7 +10,7 @@ class MyLayout : UICollectionViewLayout {
     
     override func prepare() {
         print("prepare")
-        let sections = self.collectionView!.numberOfSections()
+        let sections = self.collectionView!.numberOfSections
         
         /*
         // how many items are there in total?
@@ -51,7 +51,7 @@ class MyLayout : UICollectionViewLayout {
         self.sz = CGSize(width, CGFloat(y+fluff) * cellside)
     }
     
-    override func collectionViewContentSize() -> CGSize {
+    override var collectionViewContentSize : CGSize {
         //        println("size")
         return self.sz
     }

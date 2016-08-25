@@ -40,7 +40,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.map.tintColor = UIColor.green()
+        self.map.tintColor = .green
         
         let loc = CLLocationCoordinate2DMake(34.927752,-120.217608)
         let span = MKCoordinateSpanMake(0.015, 0.015)
@@ -264,7 +264,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 let v = MKOverlayPathRenderer(overlay:overlay)
                 v.path = overlay.path.cgPath
                 v.fillColor = UIColor.red().withAlphaComponent(0.2)
-                v.strokeColor = UIColor.black()
+                v.strokeColor = .black
                 v.lineWidth = 2
                 return v
             }

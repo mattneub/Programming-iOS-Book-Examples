@@ -103,7 +103,7 @@ class ViewController: UIViewController {
         let vc = AVPlayerViewController()
         vc.player = p
         vc.view.frame = CGRect(20,-5,250,80) // no smaller height or we get constraint issues
-        vc.view.backgroundColor = UIColor.clear()
+        vc.view.backgroundColor = .clear
         // cover the black QuickTime background, heh heh
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -118,7 +118,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate(c)
         let v2 = UIView()
         v2.translatesAutoresizingMaskIntoConstraints = false
-        v2.backgroundColor = UIColor.black()
+        v2.backgroundColor = .black
         vc.contentOverlayView!.addSubview(v2)
         let c2 : [NSLayoutConstraint] = [
             v2.leadingAnchor.constraint(equalTo:v2.superview!.leadingAnchor),

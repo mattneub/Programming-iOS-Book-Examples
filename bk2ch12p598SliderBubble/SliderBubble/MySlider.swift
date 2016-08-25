@@ -75,7 +75,7 @@ class MySlider: UISlider {
         lab.numberOfLines = 1
         lab.textAlignment = .center
         lab.font = UIFont(name:"GillSans-Bold", size:20)
-        lab.textColor = UIColor.white()
+        lab.textColor = .white
         self.bubbleView.addSubview(lab)
         self.label = lab
         

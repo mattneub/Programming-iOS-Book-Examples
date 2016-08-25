@@ -16,7 +16,7 @@ class ViewController: UIViewController {
             sz.height/2, sz.width/2, sz.height/2, sz.width/2),
             resizingMode: .stretch)
         self.button.setBackgroundImage(im2, for: [])
-        self.button.backgroundColor = UIColor.clear()
+        self.button.backgroundColor = .clear
         self.button.setImage(im2, for: [])
         
         let mas = NSMutableAttributedString(string: "Pay Tribute", attributes: [

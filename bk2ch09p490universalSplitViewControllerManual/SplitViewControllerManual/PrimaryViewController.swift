@@ -25,7 +25,7 @@ class PrimaryViewController : UIViewController {
         super.viewDidLoad()
         
         // configure our view
-        self.view.backgroundColor = UIColor.green()
+        self.view.backgroundColor = .green
         let seg = UISegmentedControl(items: ["White","Red"])
         seg.selectedSegmentIndex = 1
         self.view.addSubview(seg)
@@ -51,7 +51,7 @@ class PrimaryViewController : UIViewController {
         case 0:
             vc.view.backgroundColor = .white
         case 1:
-            vc.view.backgroundColor = UIColor.red()
+            vc.view.backgroundColor = .red
         default:break
         }
     }

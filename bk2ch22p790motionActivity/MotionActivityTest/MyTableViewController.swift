@@ -119,10 +119,10 @@ class MyTableViewController: UITableViewController {
         
         cell.backgroundColor = .white
         if act.automotive {
-            cell.backgroundColor = UIColor.red()
+            cell.backgroundColor = .red
         }
         if act.walking || act.running {
-            cell.backgroundColor = UIColor.green()
+            cell.backgroundColor = .green
         }
 
         return cell

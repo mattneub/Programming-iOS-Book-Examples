@@ -25,7 +25,7 @@ class ViewController: UIViewController {
             av.player = player
             self.present(av, animated: true) {
                 _ in
-                // av.view.backgroundColor = UIColor.green()
+                // av.view.backgroundColor = .green
             }
 //            let iv = UIImageView(image:UIImage(named:"smiley")!)
 //            av.contentOverlayView!.addSubview(iv)

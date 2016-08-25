@@ -39,7 +39,7 @@ class RootViewController : UITableViewController {
         if cell == nil {
             cell = UITableViewCell(style:.default, reuseIdentifier:cellIdentifier)
             
-            cell.textLabel!.textColor = UIColor.white()
+            cell.textLabel!.textColor = .white
             
             let v = UIImageView() // no need to set frame
             v.contentMode = .scaleToFill
@@ -47,20 +47,21 @@ class RootViewController : UITableViewController {
             cell.backgroundView = v
             
             let v2 = UIView() // no need to set frame
-            v2.backgroundColor = UIColor.blue().withAlphaComponent(0.2)
+            v2.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
             cell.selectedBackgroundView = v2
             // next line no longer necessary in iOS 7!
-            // cell.textLabel.backgroundColor = UIColor.clear()
+            // cell.textLabel.backgroundColor = .clear
             
             // next line didn't work until iOS 7!
-            cell.backgroundColor = UIColor.red()
+            cell.backgroundColor = .red
             
-//            let b = UIButton(type:.System)
-//            b.setTitle("Tap Me", for:[])
+//            let b = UIButton(type:.system)
+//            b.setTitle("Tap Me", for:.normal)
 //            b.sizeToFit()
+//            // ... add action and target here ...
 //            cell.accessoryView = b
             
-            // cell.textLabel!.font = UIFont(name:"Helvetica-Bold", size:12.0)
+//             cell.textLabel!.font = UIFont(name:"Helvetica-Bold", size:12.0)
 
             
         }

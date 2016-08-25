@@ -14,7 +14,7 @@ class SearchResultsController : UIViewController {
     }
     override func viewDidLoad() {
         self.automaticallyAdjustsScrollViewInsets = false
-        self.view.backgroundColor = UIColor.clear()
+        self.view.backgroundColor = .clear
         self.addChildViewController(self.child)
         let v = self.child.view!
         self.view.addSubview(self.child.view)
@@ -41,7 +41,7 @@ extension SearchResultsController : UIGestureRecognizerDelegate {
     func tap(_ g:UITapGestureRecognizer) {
         // find the UISearchController and dismiss it
         var r : UIResponder = g.view!
-        while !(r is UISearchController) {r = r.next()!}
+        while !(r is UISearchController) {r = r.next!}
         (r as! UISearchController).isActive = false
     }
     func gestureRecognizerShouldBegin(_ g: UIGestureRecognizer) -> Bool {

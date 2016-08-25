@@ -57,8 +57,8 @@ class ViewController: UIViewController {
         self.sb.searchBarStyle = .default
         self.sb.barStyle = .default
         self.sb.isTranslucent = true
-        self.sb.barTintColor = UIColor.green() // unseen in this example
-        // self.sb.backgroundColor = UIColor.red()
+        self.sb.barTintColor = .green // unseen in this example
+        // self.sb.backgroundColor = .red
         
         let lin = UIImage(named:"linen.png")!
         let linim = lin.resizableImage(withCapInsets:UIEdgeInsetsMake(1,1,1,1), resizingMode:.stretch)
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         for v in self.sb.subviews[0].subviews {
             if let tf = v as? UITextField {
                 print("got that puppy")
-                tf.textColor = UIColor.white()
+                tf.textColor = .white
                 // tf.enabled = false
                 break
             }

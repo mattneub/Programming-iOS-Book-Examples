@@ -54,7 +54,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         let wv = WKWebView(frame: CGRect.zero)
         wv.restorationIdentifier = "wv"
         self.view.restorationIdentifier = "wvcontainer" // shouldn't be necessary...
-        wv.scrollView.backgroundColor = UIColor.black() // web view alone, ineffective
+        wv.scrollView.backgroundColor = .black // web view alone, ineffective
         self.view.addSubview(wv)
         wv.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

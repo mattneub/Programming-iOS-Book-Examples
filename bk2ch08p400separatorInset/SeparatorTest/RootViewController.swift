@@ -2,7 +2,7 @@
 
 import UIKit
 
-// Not in book: how to get separator to run from edge to edge
+// how to get separator to run from edge to edge
 
 class RootViewController: UITableViewController {
 
@@ -18,8 +18,10 @@ class RootViewController: UITableViewController {
         
         // must set all three of these:
         print(cell.separatorInset)
-        cell.separatorInset = UIEdgeInsetsZero
-        cell.layoutMargins = UIEdgeInsetsZero
+        cell.separatorInset = .zero
+        
+        // NO! they fixed this too
+//        cell.layoutMargins = .zero
         
         // NO! They fixed this!!!!! No need for this trick any longer
         //cell.preservesSuperviewLayoutMargins = false

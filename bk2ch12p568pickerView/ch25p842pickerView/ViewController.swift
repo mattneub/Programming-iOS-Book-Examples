@@ -64,7 +64,7 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
             print("making new label")
         }
         lab.text = self.states[row]
-        lab.backgroundColor = UIColor.clear()
+        lab.backgroundColor = .clear
         lab.sizeToFit()
         return lab
     }

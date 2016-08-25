@@ -69,8 +69,8 @@ class ViewController: UIViewController {
         self.prog2.progressImage = im2;
         */
 
-        self.prog2.backgroundColor = UIColor.black()
-        self.prog2.trackTintColor = UIColor.black()
+        self.prog2.backgroundColor = .black
+        self.prog2.trackTintColor = .black
         
         let r = UIGraphicsImageRenderer(size:CGSize(10,10))
         let im = r.image {

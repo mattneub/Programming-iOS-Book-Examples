@@ -33,7 +33,7 @@ class ViewController : UICollectionViewController {
         layout.itemSize = CGSize(150,50)
         
         let v = UIView()
-        v.backgroundColor = UIColor.yellow()
+        v.backgroundColor = .yellow
         // next line makes the whole background yellow, covering the background color
         // self.collectionView.backgroundView = v
     }
@@ -68,7 +68,7 @@ class ViewController : UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"Cell",
         for: indexPath)
         if cell.backgroundView == nil { // brand new cell
-            cell.backgroundColor = UIColor.red()
+            cell.backgroundColor = .red
             
             let v = UIImageView(frame:cell.bounds)
             v.contentMode = .scaleToFill
@@ -87,9 +87,9 @@ class ViewController : UICollectionViewController {
                 lab.centerXAnchor.constraint(equalTo:cell.contentView.centerXAnchor),
                 lab.centerYAnchor.constraint(equalTo:cell.contentView.centerYAnchor)
             ])
-            lab.textColor = UIColor.black()
-            lab.highlightedTextColor = UIColor.white()
-            lab.backgroundColor = UIColor.clear()
+            lab.textColor = .black
+            lab.highlightedTextColor = .white
+            lab.backgroundColor = .clear
         }
         let lab = cell.viewWithTag(1) as! UILabel
         lab.text = "Howdy there \(indexPath.item)"

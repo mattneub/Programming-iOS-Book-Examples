@@ -150,8 +150,8 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         let b = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(doCancel))
         let lab = UILabel()
         lab.text = "Double tap to take a picture"
-        lab.textColor = UIColor.white()
-        lab.backgroundColor = UIColor.clear()
+        lab.textColor = .white
+        lab.backgroundColor = .clear
         lab.sizeToFit()
         let b2 = UIBarButtonItem(customView: lab)
         nc.topViewController!.toolbarItems = [b,b2]

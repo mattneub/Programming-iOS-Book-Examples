@@ -32,7 +32,7 @@ class MyTableViewCell: UITableViewCell {
         
         if selected {
             let v = UIActivityIndicatorView(activityIndicatorStyle:.whiteLarge)
-            v.color = UIColor.yellow()
+            v.color = .yellow
             DispatchQueue.main.async {
                 v.backgroundColor = UIColor(white:0.2, alpha:0.6)
             }

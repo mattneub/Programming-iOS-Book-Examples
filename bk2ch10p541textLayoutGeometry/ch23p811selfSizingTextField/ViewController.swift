@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         
         self.tv.attributedText = mas
         self.tv.isScrollEnabled = true
-        self.tv.backgroundColor = UIColor.yellow()
+        self.tv.backgroundColor = .yellow
         self.tv.textContainerInset = UIEdgeInsetsMake(20,20,20,20)
         self.tv.isSelectable = false
         self.tv.isEditable = false

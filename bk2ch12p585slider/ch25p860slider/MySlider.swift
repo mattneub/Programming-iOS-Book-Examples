@@ -21,22 +21,30 @@ class MySlider: UISlider {
         let t = UITapGestureRecognizer(target: self, action: #selector(tapped))
         self.addGestureRecognizer(t)
         
-        //    self.superview.tintColor = UIColor.red()
-        //    self.minimumTrackTintColor = UIColor.yellow()
-        //    self.maximumTrackTintColor = UIColor.green()
+        //    self.superview.tintColor = .red
+        //    self.minimumTrackTintColor = .yellow
+        //    self.maximumTrackTintColor = .green
         //    self.thumbTintColor = UIColor.orange()
         
         self.setThumbImage(UIImage(named:"moneybag1.png")!, for: [])
+        
+        
+        
         let coinEnd = UIImage(named:"coin2.png")!.resizableImage(withCapInsets:
             UIEdgeInsetsMake(0,7,0,7), resizingMode: .stretch)
+        
+        
         self.setMinimumTrackImage(coinEnd, for: [])
         self.setMaximumTrackImage(coinEnd, for: [])
         
         // self.bounds.size.height += 30
     }
     
-    override func intrinsicContentSize() -> CGSize {
-        var sz = super.intrinsicContentSize()
+    // supply sufficient height to make new thumb image touchable
+    // we are using autolayout so this works
+    // otherwise we'd use the bound, above
+    override var intrinsicContentSize : CGSize {
+        var sz = super.intrinsicContentSize
         sz.height += 30
         return sz
     }
@@ -55,12 +63,10 @@ class MySlider: UISlider {
         let delta = Float(percentage) * (s.maximumValue - s.minimumValue)
         let value = s.minimumValue + delta
         delay(0.1) {
-            s.setValue(value, animated:true)
+            UIView.animate(withDuration: 0.15) {
+                s.setValue(value, animated:true) // NB behold the secret of getting animation
+            }
         }
-        // animation broken in iOS 7
-        // still broken in iOS 8
-        // still broken in iOS 9
-        // still broken in iOS 10
     }
     
     override func maximumValueImageRect(forBounds bounds: CGRect) -> CGRect {
@@ -83,5 +89,15 @@ class MySlider: UISlider {
             bounds, trackRect: rect, value: value)
             .offsetBy(dx: 0, dy: -7)
     }
+    
+
+//    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+//        let tr = self.trackRect(forBounds: self.bounds)
+//        if tr.contains(point) { return self }
+//        let r = self.thumbRect(forBounds: self.bounds, trackRect: tr, value: self.value)
+//        if r.contains(point) { return self }
+//        return nil
+//    }
+    
 
 }

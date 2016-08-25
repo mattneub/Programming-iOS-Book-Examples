@@ -51,11 +51,11 @@ class ViewController : UIViewController {
                 pop.passthroughViews = nil
             }
             // just playing with appearance; try it with and without
-            pop.backgroundColor = UIColor.yellow() // visible as arrow color
+            pop.backgroundColor = .yellow // visible as arrow color
         }
-        nav.navigationBar.barTintColor = UIColor.red() // works in iOS 8
-        //nav.navigationBar.backgroundColor = UIColor.red()
-        nav.navigationBar.tintColor = UIColor.white()
+        nav.navigationBar.barTintColor = .red // works in iOS 8
+        //nav.navigationBar.backgroundColor = .red
+        nav.navigationBar.tintColor = .white
         
         nav.delegate = self // workaround for content size changing bug
     }
@@ -111,7 +111,7 @@ class ViewController : UIViewController {
         self.present(vc, animated: true)
         // vc's view is now loaded and we are free to configure it further
         vc.view.frame = CGRect(0,0,300,300)
-        vc.view.backgroundColor = UIColor.green()
+        vc.view.backgroundColor = .green
         vc.preferredContentSize = CGSize(300,300)
         let label = UILabel()
         label.text = "I am a very silly popover!"

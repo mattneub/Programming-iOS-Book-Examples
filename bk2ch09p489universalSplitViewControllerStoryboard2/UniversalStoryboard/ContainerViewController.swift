@@ -27,7 +27,7 @@ class ContainerViewController : UIViewController {
     override func viewWillLayoutSubviews() {
         if !self.didInitialSetup {
             self.didInitialSetup = true
-            self.view.backgroundColor = UIColor.green()
+            self.view.backgroundColor = .green
             let svc = self.childViewControllers[0] as! UISplitViewController
             svc.preferredDisplayMode = .allVisible
             // if not collapsed, always side by side

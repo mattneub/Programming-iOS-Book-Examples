@@ -69,7 +69,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
     override func loadView() {
         let wv = UIWebView()
         wv.restorationIdentifier = "wv"
-        wv.backgroundColor = UIColor.black()
+        wv.backgroundColor = .black
         self.view = wv
         wv.delegate = self
         

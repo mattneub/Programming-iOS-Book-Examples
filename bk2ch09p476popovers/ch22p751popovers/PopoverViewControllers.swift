@@ -93,7 +93,7 @@ class Popover1View1 : UITableViewController {
 class Popover1View2 : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.red()
+        self.view.backgroundColor = .red
         self.preferredContentSize = CGSize(400,400)
     }
 }

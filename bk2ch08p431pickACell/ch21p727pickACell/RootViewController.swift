@@ -85,16 +85,16 @@ class RootViewController : UITableViewController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView()
-        v.backgroundColor = UIColor.clear()
-        // v.backgroundColor = UIColor.yellow()
-        // tableView.backgroundColor = UIColor.green()
+        v.backgroundColor = .clear
+        // v.backgroundColor = .yellow
+        // tableView.backgroundColor = .green
         return v
     }
     
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let v = UIView()
-        v.backgroundColor = UIColor.blue()
+        v.backgroundColor = .blue
         return v
     }
 

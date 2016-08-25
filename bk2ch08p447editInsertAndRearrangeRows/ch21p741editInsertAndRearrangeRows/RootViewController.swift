@@ -9,7 +9,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.name = "Matt Neuburg"
         self.numbers = ["(123) 456-7890"]
         self.tableView.allowsSelection = false

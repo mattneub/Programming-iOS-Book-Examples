@@ -95,7 +95,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         let coll = UICollisionBehavior(items:items)
         let p1 = CGPoint(visworld.minX + 80, visworld.maxY)
         let p2 = CGPoint(visworld.maxX, visworld.maxY)
-        coll.addBoundary(withIdentifier: "bottom", from:p1, to:p2)
+        coll.addBoundary(withIdentifier: "bottom" as NSString, from:p1, to:p2)
         coll.collisionMode = .boundaries
         coll.collisionDelegate = self
         anim.addBehavior(coll)
@@ -109,7 +109,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         grav.magnitude = 0.8
         grav.action = {
             let atts = self.animator.items(in:visworld)
-            if atts.count == 0 || anim.elapsedTime() > 4 {
+            if atts.count == 0 || anim.elapsedTime > 4 {
                 print("done")
                 delay(0) { // memory management
                     self.animator.removeAllBehaviors()

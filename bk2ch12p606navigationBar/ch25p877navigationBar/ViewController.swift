@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.yellow() // demonstrate translucency
+        self.view.backgroundColor = .yellow // demonstrate translucency
         
         // new iOS 7 feature: replace the left-pointing chevron
         // very simple example
