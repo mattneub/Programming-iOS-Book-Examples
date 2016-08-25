@@ -9,7 +9,7 @@ class SecondaryViewController : UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .red
         let b = UIButton(type:.system)
-        b.setTitle("Configure", for: []) // normal
+        b.setTitle("Configure", for:.normal) // normal
         b.backgroundColor = .yellow
         b.addTarget(self, action: #selector(callShowHide), for: .touchUpInside)
         self.view.addSubview(b)

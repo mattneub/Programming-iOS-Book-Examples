@@ -35,13 +35,26 @@ class RootViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.refreshControl = UIRefreshControl()
-//        self.refreshControl!.addTarget(self, action: "doRefresh", forControlEvents: .ValueChanged)
         
-        // uncomment to show that the refresh control is hidden behind the background view
-//        let v = UIView()
-//        v.backgroundColor = .yellow
-//        self.tableView.backgroundView = v
+        // so this is still legal; you can give a tvc a refresh control in iOS 10
+        // however, what's new is that this is _actually_ the table's refresh control
+//        self.refreshControl = UIRefreshControl()
+//        self.refreshControl!.addTarget(self, action: #selector(doRefresh), for: .valueChanged)
+//        print(self.tableView!.refreshControl)
+        
+        // so you can write it like this instead:
+        
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl!.addTarget(self, action: #selector(doRefresh), for: .valueChanged)
+        
+        // moreover, when you do, your code just keeps on working;
+        // this is also still the table view controller's refresh control!
+        
+        // showing that the refresh control's background color covers the table's background
+        let v = UIView()
+        v.backgroundColor = .yellow
+        self.tableView.backgroundView = v
+        self.tableView.refreshControl?.backgroundColor = .green
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -71,6 +84,7 @@ class RootViewController: UITableViewController {
     }
 
     @IBAction func doRefreshManually(_ sender: AnyObject) {
+        // all this talk of `self.refreshControl` works, even though we didn't assign this way
         self.tableView.setContentOffset(
             CGPoint(0, -self.refreshControl!.bounds.height),
             animated:true)

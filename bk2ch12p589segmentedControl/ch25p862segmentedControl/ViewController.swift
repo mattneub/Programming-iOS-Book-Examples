@@ -62,7 +62,7 @@ class ViewController: UIViewController {
             UIImage(named:"linen.png")!.draw(in:CGRect(origin: CGPoint(), size: sz))
             }.resizableImage(withCapInsets:
                 UIEdgeInsetsMake(0,10,0,10), resizingMode: .stretch)
-        self.seg.setBackgroundImage(im, for: [], barMetrics: .default)
+        self.seg.setBackgroundImage(im, for:.normal, barMetrics: .default)
         
         // segment images, redraw at final size
         let pep = ["manny", "moe", "jack"].map {$0 + ".jpg"}

@@ -126,9 +126,9 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     // this is more "interesting"
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView.dequeueReusableHeaderFooterView(withIdentifier:"Header")!
-        if h.tintColor != .red {
+        if h.viewWithTag(1) == nil {
             // print("configuring a new header view") // only called about 7 times
-            h.tintColor = .red // invisible marker, tee-hee
+            
             h.backgroundView = UIView()
             h.backgroundView!.backgroundColor = .black
             let lab = UILabel()

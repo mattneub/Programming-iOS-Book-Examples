@@ -68,9 +68,9 @@ class RootViewController : UITableViewController {
     // this is more "interesting"
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView.dequeueReusableHeaderFooterView(withIdentifier:"Header")!
-        if h.tintColor != .red {
-            print("configuring a new header view") // only called about 7 times
-            h.tintColor = .red // invisible marker, tee-hee
+        if h.viewWithTag(1) == nil {
+            print("configuring a new header view") // only called about 8 times
+
             h.backgroundView = UIView()
             h.backgroundView?.backgroundColor = .black
             let lab = UILabel()
@@ -96,14 +96,15 @@ class RootViewController : UITableViewController {
                 ].flatMap{$0})
             
             // uncomment to see bug where button does not inherit superview's tint color
-//            let b = UIButton(type:.System)
-//            b.setTitle("Howdy", for:[])
+//            let b = UIButton(type:.system)
+//            b.setTitle("Howdy", for:.normal)
 //            b.sizeToFit()
 //            print(b.tintColor)
 //            h.addSubview(b)
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]
+        // print(h.backgroundView?.backgroundColor)
         return h
         
     }

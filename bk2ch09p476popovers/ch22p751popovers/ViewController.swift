@@ -149,7 +149,7 @@ class ViewController : UIViewController {
         vc.view.backgroundColor = .white
         vc.preferredContentSize = vc.view.bounds.size
         let b = UIButton(type:.system)
-        b.setTitle("Done", for:[])
+        b.setTitle("Done", for:.normal)
         b.sizeToFit()
         b.center = CGPoint(150,150)
         b.frame = b.frame.integral

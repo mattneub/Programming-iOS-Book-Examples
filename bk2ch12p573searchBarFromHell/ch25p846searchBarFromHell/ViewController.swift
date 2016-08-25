@@ -69,7 +69,7 @@ class ViewController: UIViewController {
             UIBezierPath(roundedRect:CGRect(5,0,320-5*2,20), cornerRadius:8).addClip()
             UIImage(named:"sepia.jpg")!.draw(in:CGRect(0,0,320,20))
         }
-        self.sb.setSearchFieldBackgroundImage(sepim, for:[])
+        self.sb.setSearchFieldBackgroundImage(sepim, for:.normal)
         // just to show what it does:
         self.sb.searchFieldBackgroundPositionAdjustment = UIOffsetMake(0, -10) // up from center
         
@@ -107,7 +107,7 @@ class ViewController: UIViewController {
         
         self.sb.scopeBarBackgroundImage = UIImage(named:"sepia.jpg")
         
-        self.sb.setScopeBarButtonBackgroundImage(linim, for:[])
+        self.sb.setScopeBarButtonBackgroundImage(linim, for:.normal)
 
         let divim = imageOfSize(CGSize(2,2)) {
             UIColor.white().setFill()
@@ -126,7 +126,7 @@ class ViewController: UIViewController {
             },
             NSUnderlineStyleAttributeName: NSUnderlineStyle.styleDouble.rawValue
         ]
-        self.sb.setScopeBarButtonTitleTextAttributes(atts, for:[])
+        self.sb.setScopeBarButtonTitleTextAttributes(atts, for:.normal)
         self.sb.setScopeBarButtonTitleTextAttributes(atts, for:.selected)
         
     }

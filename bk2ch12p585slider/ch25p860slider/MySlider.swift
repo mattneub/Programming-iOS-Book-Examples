@@ -26,7 +26,7 @@ class MySlider: UISlider {
         //    self.maximumTrackTintColor = .green
         //    self.thumbTintColor = UIColor.orange()
         
-        self.setThumbImage(UIImage(named:"moneybag1.png")!, for: [])
+        self.setThumbImage(UIImage(named:"moneybag1.png")!, for:.normal)
         
         
         
@@ -34,8 +34,8 @@ class MySlider: UISlider {
             UIEdgeInsetsMake(0,7,0,7), resizingMode: .stretch)
         
         
-        self.setMinimumTrackImage(coinEnd, for: [])
-        self.setMaximumTrackImage(coinEnd, for: [])
+        self.setMinimumTrackImage(coinEnd, for:.normal)
+        self.setMaximumTrackImage(coinEnd, for:.normal)
         
         // self.bounds.size.height += 30
     }

@@ -95,11 +95,11 @@ class ViewController: UIViewController {
         self.vv.setMinimumVolumeSliderImage(
             im1.resizableImage(withCapInsets:UIEdgeInsetsMake(9,9,9,9),
                 resizingMode:.stretch),
-            for:[])
+            for:.normal)
         self.vv.setMaximumVolumeSliderImage(
             im2.resizableImage(withCapInsets:UIEdgeInsetsMake(9,9,9,9),
                 resizingMode:.stretch),
-            for:[])
+            for:.normal)
         // only for EU devices; to test, use the EU switch under Developer settings on device
         self.vv.volumeWarningSliderImage =
             im3.resizableImage(withCapInsets:UIEdgeInsetsMake(9,9,9,9),
@@ -109,7 +109,7 @@ class ViewController: UIViewController {
         let thumb = imageOfSize(sz2) {
             UIImage(named:"SmileyRound.png")!.draw(in:CGRect(0,0,sz2.width,sz2.height))
         }
-        self.vv.setVolumeThumbImage(thumb, for:[])
+        self.vv.setVolumeThumbImage(thumb, for:.normal)
         
         
         NotificationCenter.default.addObserver(self, selector:#selector(wirelessChanged),

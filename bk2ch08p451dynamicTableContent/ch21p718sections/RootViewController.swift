@@ -83,8 +83,8 @@ class RootViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView
             .dequeueReusableHeaderFooterView(withIdentifier:"Header") as! MyHeaderView
-        if h.tintColor != .red {
-            h.tintColor = .red // invisible marker, tee-hee
+        if h.viewWithTag(1) == nil {
+            
             h.backgroundView = UIView()
             h.backgroundView?.backgroundColor = .black
             let lab = UILabel()

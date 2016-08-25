@@ -48,7 +48,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 //        UIGraphicsEndImageContext()
         
         let im3 = im2.resizableImage(withCapInsets:UIEdgeInsetsMake(0,0,0,0), resizingMode:.tile)
-        UIBarButtonItem.appearance().setBackgroundImage(im3, for:[], barMetrics:.default)
+        UIBarButtonItem.appearance().setBackgroundImage(im3, for:.normal, barMetrics:.default)
         
         
         // if the back button is assigned a background image, the chevron is removed entirely
