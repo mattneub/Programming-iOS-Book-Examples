@@ -2,7 +2,7 @@
 
 import UIKit
 
-// I don't see how else to asset that the status bar should be hidden,
+// I don't see how else to assert that the status bar should be hidden,
 // other than to write my own UISearchController subclass
 
 class MySearchController : UISearchController {

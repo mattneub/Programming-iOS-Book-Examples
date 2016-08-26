@@ -4,18 +4,22 @@ import UIKit
 
 class RootViewController : UITableViewController {
     
-    override func tableView(_ tv: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tv: UITableView, cellForRowAt ix: IndexPath) -> UITableViewCell {
+        
         // we can still modify the cell as long as we fetch it from super
-        let cell = super.tableView(tv, cellForRowAt:indexPath)
+        let cell = super.tableView(tv, cellForRowAt:ix)
         
         // supply checkmarks as necessary
         let ud = UserDefaults.standard
         
         NSLog("about to update %@", cell.textLabel!.text!)
         cell.accessoryType = .none
-        if ud.value(forKey:"Style") as? String == cell.textLabel!.text! ||
-            ud.value(forKey:"Size") as? String == cell.textLabel!.text! {
-                cell.accessoryType = .checkmark
+        if let title = self.tableView(tv, titleForHeaderInSection:ix.section) {
+            if let label = ud.value(forKey:title) as? String {
+                if label == cell.textLabel!.text {
+                    cell.accessoryType = .checkmark
+                }
+            }
         }
         return cell
     }
@@ -61,13 +65,13 @@ class RootViewController : UITableViewController {
         return indexPath
     }
     
-    override func tableView(_ tv: UITableView, didSelectRowAt indexPath: IndexPath) {
-        log(tv: tv, ip: indexPath, phrase: "did select")
+    override func tableView(_ tv: UITableView, didSelectRowAt ix: IndexPath) {
+        log(tv: tv, ip: ix, phrase: "did select")
         
         let ud = UserDefaults.standard
-        let setting = tv.cellForRow(at:indexPath)!.textLabel!.text
-        let header = self.tableView(tv, titleForHeaderInSection:indexPath.section)!
-        ud.setValue(setting!, forKey:header)
+        let setting = tv.cellForRow(at:ix)!.textLabel!.text
+        let header = self.tableView(tv, titleForHeaderInSection:ix.section)!
+        ud.setValue(setting, forKey:header)
         
         NSLog("%@", "about to reload!")
         tv.reloadData() // deselect all cells, reassign checkmark as needed

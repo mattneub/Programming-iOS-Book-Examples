@@ -63,7 +63,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         self.searcher = searcher
         // no effect in this situation:
         searcher.hidesNavigationBarDuringPresentation = false
-        // searcher.dimsBackgroundDuringPresentation = false
+        // searcher.obscuresBackgroundDuringPresentation = false
         // make it a popover!
         self.definesPresentationContext = true
         searcher.modalPresentationStyle = .popover

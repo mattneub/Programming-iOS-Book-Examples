@@ -131,7 +131,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
 
 extension RootViewController : UISearchControllerDelegate, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
-    var which : Int {return 1}
+    var which : Int {return 0} // case 1 has broken, ignore
     func presentSearchController(_ sc: UISearchController) {
         print("search!")
         // good opportunity to control timing of search results controller configuration

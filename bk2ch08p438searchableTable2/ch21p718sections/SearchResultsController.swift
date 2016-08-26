@@ -48,7 +48,7 @@ extension SearchResultsController : UISearchResultsUpdating {
             var options = String.CompareOptions.caseInsensitive
             // we now have scope buttons; 0 means "starts with"
             if searchController.searchBar.selectedScopeButtonIndex == 0 {
-                _ = options.insert(.anchored) // bug?
+                options.insert(.anchored)
             }
             let found = s.range(of:target, options: options)
             return (found != nil)

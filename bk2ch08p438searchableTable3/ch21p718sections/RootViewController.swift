@@ -60,7 +60,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         self.originalSectionNames = self.sectionNames
         let searcher = MySearchController(searchResultsController:nil)
         self.searcher = searcher
-        searcher.dimsBackgroundDuringPresentation = false
+        searcher.obscuresBackgroundDuringPresentation = false
         searcher.searchResultsUpdater = self
         searcher.delegate = self
         // put the search controller's search bar into the interface
