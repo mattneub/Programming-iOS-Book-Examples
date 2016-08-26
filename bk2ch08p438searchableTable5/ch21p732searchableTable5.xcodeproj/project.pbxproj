@@ -72,8 +72,8 @@
 		323D12DB198064B400390109 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		323D12E01980708A00390109 /* SearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		3245180B1B862DC300C57133 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C9333F1217E676F90060FC39 /* ch21p732searchableTable4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch21p732searchableTable4.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9333F1D17E676F90060FC39 /* ch21p732searchableTable4-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch21p732searchableTable4-Info.plist"; sourceTree = "<group>"; };
+		C9333F1217E676F90060FC39 /* ch21p732searchableTable5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch21p732searchableTable5.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9333F1D17E676F90060FC39 /* ch21p732searchableTable5-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch21p732searchableTable5-Info.plist"; sourceTree = "<group>"; };
 		C9333F2717E676F90060FC39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9333F4617E677570060FC39 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		C9333F4917E677890060FC39 /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = states.txt; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		C9333F1317E676F90060FC39 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C9333F1217E676F90060FC39 /* ch21p732searchableTable4.app */,
+				C9333F1217E676F90060FC39 /* ch21p732searchableTable5.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,7 +168,7 @@
 				C9333F4B17E67ED00060FC39 /* flags */,
 				C9333F2717E676F90060FC39 /* Assets.xcassets */,
 				3245180B1B862DC300C57133 /* LaunchScreen.storyboard */,
-				C9333F1D17E676F90060FC39 /* ch21p732searchableTable4-Info.plist */,
+				C9333F1D17E676F90060FC39 /* ch21p732searchableTable5-Info.plist */,
 			);
 			path = ch21p718sections;
 			sourceTree = "<group>";
@@ -234,9 +234,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C9333F1117E676F90060FC39 /* ch21p732searchableTable4 */ = {
+		C9333F1117E676F90060FC39 /* ch21p732searchableTable5 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9333F3E17E676F90060FC39 /* Build configuration list for PBXNativeTarget "ch21p732searchableTable4" */;
+			buildConfigurationList = C9333F3E17E676F90060FC39 /* Build configuration list for PBXNativeTarget "ch21p732searchableTable5" */;
 			buildPhases = (
 				C9333F0E17E676F90060FC39 /* Sources */,
 				C9333F0F17E676F90060FC39 /* Frameworks */,
@@ -246,9 +246,9 @@
 			);
 			dependencies = (
 			);
-			name = ch21p732searchableTable4;
+			name = ch21p732searchableTable5;
 			productName = ch21p718sections;
-			productReference = C9333F1217E676F90060FC39 /* ch21p732searchableTable4.app */;
+			productReference = C9333F1217E676F90060FC39 /* ch21p732searchableTable5.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -266,7 +266,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C9333F0D17E676F90060FC39 /* Build configuration list for PBXProject "ch21p732searchableTable4" */;
+			buildConfigurationList = C9333F0D17E676F90060FC39 /* Build configuration list for PBXProject "ch21p732searchableTable5" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -278,7 +278,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C9333F1117E676F90060FC39 /* ch21p732searchableTable4 */,
+				C9333F1117E676F90060FC39 /* ch21p732searchableTable5 */,
 			);
 		};
 /* End PBXProject section */
@@ -442,13 +442,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "ch21p718sections/ch21p732searchableTable4-Info.plist";
+				INFOPLIST_FILE = "ch21p718sections/ch21p732searchableTable5-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = ch21p732searchableTable4;
+				PRODUCT_NAME = ch21p732searchableTable5;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -461,12 +460,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "ch21p718sections/ch21p732searchableTable4-Info.plist";
+				INFOPLIST_FILE = "ch21p718sections/ch21p732searchableTable5-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = ch21p732searchableTable4;
+				PRODUCT_NAME = ch21p732searchableTable5;
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -474,7 +472,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C9333F0D17E676F90060FC39 /* Build configuration list for PBXProject "ch21p732searchableTable4" */ = {
+		C9333F0D17E676F90060FC39 /* Build configuration list for PBXProject "ch21p732searchableTable5" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9333F3C17E676F90060FC39 /* Debug */,
@@ -483,7 +481,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9333F3E17E676F90060FC39 /* Build configuration list for PBXNativeTarget "ch21p732searchableTable4" */ = {
+		C9333F3E17E676F90060FC39 /* Build configuration list for PBXNativeTarget "ch21p732searchableTable5" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9333F3F17E676F90060FC39 /* Debug */,

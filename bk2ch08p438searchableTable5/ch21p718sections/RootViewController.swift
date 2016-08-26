@@ -2,16 +2,103 @@
 
 import UIKit
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
+// I don't see how else to assert that the status bar should be hidden,
+// other than to write my own UISearchController subclass
+
 class MySearchController : UISearchController {
     override var prefersStatusBarHidden : Bool {
         return true
     }
 }
 
+class MySearchContainerViewController : UISearchContainerViewController {
+    override func viewDidLayoutSubviews() {
+        print("here")
+        //self.searchController.searchBar.frame = CGRect(x: 0, y: 40, width: 300, height: 100)
+
+    }
+}
+
+class MyParentViewController : UIViewController {
+    var didSetup = false
+    let searcher : UISearchController
+    init(searcher:UISearchController) {
+        self.searcher = searcher
+        super.init(nibName:nil, bundle:nil)
+        self.edgesForExtendedLayout = []
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !didSetup {
+            didSetup = true
+            let scvc = UISearchContainerViewController(searchController: self.searcher)
+            self.addChildViewController(scvc)
+            scvc.view.frame = self.view.bounds
+            scvc.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            self.view.addSubview(scvc.view)
+            let sb = searcher.searchBar
+            sb.translatesAutoresizingMaskIntoConstraints = false
+            sb.sizeToFit()
+            sb.autocapitalizationType = .none
+            scvc.view.addSubview(sb)
+            
+
+            // hmm, this actually causes presentation and I can't seem to prevent it
+            // scvc.didMove(toParentViewController: self)
+        }
+    }
+    // just making sure it's all in order
+    override func viewWillDisappear(_ animated: Bool) {
+        print("disappear")
+    }
+    deinit {
+        print("bye")
+    }
+
+}
+
 class RootViewController : UITableViewController, UISearchBarDelegate {
     var sectionNames = [String]()
     var sectionData = [[String]]()
-    var searcher : UISearchController!
+    // var searcher : UISearchController!
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        let b = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(doSearch))
+        self.navigationItem.rightBarButtonItem = b
+    }
+    
+    func doSearch(_ sender: AnyObject) {
+        // construct container view controller
+
+        let src = SearchResultsController(data: self.sectionData)
+        // instantiate a search controller and keep it alive
+        let searcher = MySearchController(searchResultsController: src)
+        // specify who the search controller should notify when the search bar changes
+        searcher.searchResultsUpdater = src
+        searcher.hidesNavigationBarDuringPresentation = false
+        searcher.obscuresBackgroundDuringPresentation = false
+        let vc = MyParentViewController(searcher:searcher)
+        
+        
+        
+        
+        self.navigationController!.pushViewController(vc, animated:true)
+        // self.present(vc, animated:true)
+    }
+        
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override var prefersStatusBarHidden : Bool {
         return true
@@ -40,30 +127,44 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         self.tableView.sectionIndexBackgroundColor = .red
         // self.tableView.sectionIndexTrackingBackgroundColor = .blue
         self.tableView.backgroundColor = .yellow // but the search bar covers that
+        self.tableView.backgroundView = { // this will fix it
+            let v = UIView()
+            v.backgroundColor = .yellow
+            return v
+        }()
         
-        
+        /*
+
+        // most rudimentary possible search interface
+        // instantiate a view controller that will present the search results
         let src = SearchResultsController(data: self.sectionData)
+        // instantiate a search controller and keep it alive
         let searcher = MySearchController(searchResultsController: src)
         self.searcher = searcher
         // specify who the search controller should notify when the search bar changes
         searcher.searchResultsUpdater = src
+        
+        searcher.hidesNavigationBarDuringPresentation = false
+        searcher.obscuresBackgroundDuringPresentation = false
+ 
+ */
+        
+        /*
         // put the search controller's search bar into the interface
         let b = searcher.searchBar
-        b.sizeToFit()
+        b.sizeToFit() // crucial, trust me on this one
+        // b.scopeButtonTitles = ["Hey", "Ho"] // shows during search only; uncomment to see
+        // (not used in this example; just showing the interface)
+        // WARNING: do NOT call showsScopeBar! it messes things up!
+        // (buttons will show during search if there are titles)
         b.autocapitalizationType = .none
-        
-        // how to to put search bar into navigation bar
-        self.navigationItem.titleView = b // *
-        searcher.hidesNavigationBarDuringPresentation = false // *
-        self.definesPresentationContext = true // *
-        
-        // searcher.delegate = self
-        searcher.modalPresentationStyle = .popover
-        
+        self.tableView.tableHeaderView = b
         self.tableView.reloadData()
         self.tableView.scrollToRow(at:
             IndexPath(row: 0, section: 0),
             at:.top, animated:false)
+        // that's all! The rest is in SearchResultsController
+ */
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -75,7 +176,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
         let s = self.sectionData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
         
@@ -145,7 +246,4 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return self.sectionNames
     }
-}
-
-extension RootViewController : UISearchControllerDelegate {
 }

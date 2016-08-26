@@ -3,7 +3,14 @@
 import UIKit
 import Swift
 
+/*
+No law whatever says that the search results controller must be a table view controller,
+or that the search results must be shown in a table;
+it's just a convenient thing to do.
 
+This is the rock-bottom simplest implementation I could think of:
+a default table with the search results in each cell's textLabel.
+*/
 
 class SearchResultsController : UITableViewController {
     var originalData : [String]
@@ -52,7 +59,7 @@ and reload the table.
 
 extension SearchResultsController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        // print("here \(searchController.presentationController!.adaptivePresentationStyle().rawValue)")
+        print("here")
         let sb = searchController.searchBar
         let target = sb.text!
         self.filteredData = self.originalData.filter {

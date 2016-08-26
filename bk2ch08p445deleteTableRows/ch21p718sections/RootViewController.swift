@@ -10,6 +10,8 @@ class RootViewController : UITableViewController {
         return true
     }
     
+    let which = 1 // 0 for manual, 1 for built-in edit button
+    
     override func viewDidLoad() {
         let s = try! String(contentsOfFile: Bundle.main.path(forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
@@ -33,24 +35,30 @@ class RootViewController : UITableViewController {
         self.tableView.sectionIndexBackgroundColor = .red
         self.tableView.sectionIndexTrackingBackgroundColor = .blue
         
-//        let b = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: "doEdit:")
-//        self.navigationItem.rightBarButtonItem = b
+        switch which {
+        case 0:
+            let b = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(doEdit))
+            self.navigationItem.rightBarButtonItem = b
+        case 1:
+            self.navigationItem.rightBarButtonItem = self.editButtonItem // badda-bing, badda-boom
+        default:break
+        }
         
-        self.navigationItem.rightBarButtonItem = self.editButtonItem // badda-bing, badda-boom
+        
     }
     
-//    func doEdit(_ sender:AnyObject?) {
-//        var which : UIBarButtonSystemItem
-//        if !self.tableView.editing {
-//            self.tableView.setEditing(true, animated:true)
-//            which = .Done
-//        } else {
-//            self.tableView.setEditing(false, animated:true)
-//            which = .Edit
-//        }
-//        let b = UIBarButtonItem(barButtonSystemItem: which, target: self, action: "doEdit:")
-//        self.navigationItem.rightBarButtonItem = b
-//    }
+    func doEdit(_ sender:AnyObject?) {
+        var which : UIBarButtonSystemItem
+        if !self.tableView.isEditing {
+            self.tableView.setEditing(true, animated:true)
+            which = .done
+        } else {
+            self.tableView.setEditing(false, animated:true)
+            which = .edit
+        }
+        let b = UIBarButtonItem(barButtonSystemItem: which, target: self, action: #selector(doEdit))
+        self.navigationItem.rightBarButtonItem = b
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return self.sectionNames.count
@@ -117,24 +125,25 @@ class RootViewController : UITableViewController {
         return self.sectionNames
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt ip: IndexPath) {
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt ip: IndexPath) {
         self.sectionData[ip.section].remove(at:ip.row)
         if self.sectionData[ip.section].count == 0 {
             self.sectionData.remove(at:ip.section)
             self.sectionNames.remove(at:ip.section)
-            tableView.deleteSections(IndexSet(integer: ip.section),
-                with:.automatic)
+            tableView.deleteSections(
+                IndexSet(integer: ip.section), with:.automatic)
             tableView.reloadSectionIndexTitles()
         } else {
-            tableView.deleteRows(at:[ip],
-                with:.automatic)
+            tableView.deleteRows(at:[ip], with:.automatic)
         }
     }
     
     // prevent swipe-to-edit
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return self.isEditing ? .delete : .none
+            return tableView.isEditing ? .delete : .none
     }
     
 }

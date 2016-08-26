@@ -134,17 +134,13 @@ class RootViewController : UITableViewController {
         if self.hiddenSections.contains(sec) {
             self.hiddenSections.remove(sec)
             self.tableView.beginUpdates()
-            self.tableView.insertRows(at:arr,
-                with:.automatic)
+            self.tableView.insertRows(at:arr, with:.automatic)
             self.tableView.endUpdates()
-            self.tableView.scrollToRow(at:arr[ct-1],
-                at:.none,
-                animated:true)
+            self.tableView.scrollToRow(at:arr[ct-1], at:.none, animated:true)
         } else {
             self.hiddenSections.insert(sec)
             self.tableView.beginUpdates()
-            self.tableView.deleteRows(at:arr,
-                with:.automatic)
+            self.tableView.deleteRows(at:arr, with:.automatic)
             self.tableView.endUpdates()
         }
 
