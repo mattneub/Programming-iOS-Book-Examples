@@ -4,7 +4,7 @@ import UIKit
 
 class MyCell : UITableViewCell {
     
-    func abbrev(_ sender:AnyObject!) {
+    func abbrev(_ sender:AnyObject?) {
         // find my table view
         var v : UIView = self
         repeat {v = v.superview!} while !(v is UITableView)

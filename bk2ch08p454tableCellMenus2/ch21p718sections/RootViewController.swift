@@ -104,22 +104,23 @@ class RootViewController : UITableViewController {
     
     // menu handling ==========
     
+    @nonobjc let copy = #selector(UIResponderStandardEditActions.copy)
+    @nonobjc let abbrev = #selector(MyCell.abbrev)
     override func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
-        let mi = UIMenuItem(title: "Abbrev", action: #selector(MyCell.abbrev))
+        let mi = UIMenuItem(title: "Abbrev", action: abbrev)
         UIMenuController.shared.menuItems = [mi]
         return true
     }
-    
     override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return action == #selector(copy(_:)) || action == #selector(MyCell.abbrev)
+        return action == copy || action == abbrev
     }
     
     override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
-        if action == #selector(copy(_:)) {
+        if action == copy {
             // ... do whatever copying consists of ...
             print("copying \(self.sectionData[indexPath.section][indexPath.row])")
         }
-        if action == #selector(MyCell.abbrev) {
+        if action == abbrev {
             // ... do whatever abbreviating consists of ...
             print("abbreviating \(self.sectionData[indexPath.section][indexPath.row])")
         }
