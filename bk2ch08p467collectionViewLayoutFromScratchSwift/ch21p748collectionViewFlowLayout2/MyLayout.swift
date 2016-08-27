@@ -9,7 +9,8 @@ class MyLayout : UICollectionViewLayout {
     // absolute rock-bottom layout from scratch, shows minimal responsibilities
     
     override func prepare() {
-        print("prepare")
+        
+        //print("prepare1")
         let sections = self.collectionView!.numberOfSections
         
         /*
@@ -23,11 +24,10 @@ class MyLayout : UICollectionViewLayout {
         let sz = self.collectionView!.bounds.size
         let width = sz.width
         let shortside = floor(width/50.0)
-        let cellside = width/shortside
+        let side = width/shortside
         
         // generate attributes for all cells
-        var x = 0
-        var y = 0
+        var (x,y) = (0,0)
         var atts = [UICollectionViewLayoutAttributes]()
         for i in 0 ..< sections {
             let jj = self.collectionView!.numberOfItems(inSection:i)
@@ -35,12 +35,11 @@ class MyLayout : UICollectionViewLayout {
                 let att = UICollectionViewLayoutAttributes(
                     forCellWith:
                     IndexPath(item:j, section:i))
-                att.frame = CGRect(CGFloat(x)*cellside,CGFloat(y)*cellside,cellside,cellside)
+                att.frame = CGRect(CGFloat(x)*side,CGFloat(y)*side,side,side)
                 atts += [att]
                 x += 1
                 if CGFloat(x) >= shortside {
-                    x = 0
-                    y += 1
+                    x = 0; y += 1
                 }
             }
         }
@@ -48,27 +47,33 @@ class MyLayout : UICollectionViewLayout {
             self.atts[att.indexPath] = att
         }
         let fluff = (x == 0) ? 0 : 1
-        self.sz = CGSize(width, CGFloat(y+fluff) * cellside)
+        self.sz = CGSize(width, CGFloat(y+fluff) * side)
     }
     
     override var collectionViewContentSize : CGSize {
-        //        println("size")
+        //print("size1")
         return self.sz
     }
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         let ok = newBounds.size.width != self.sz.width
-        print("should \(ok)")
+        //print("should1 \(ok)")
         return ok
     }
     
+    // sigh... okay, but now we are being called even when the _other_ layout is supposed to be in charge
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        print("atts")
+        
+        //print("atts1")
+        //print("layout is \(self.collectionView!.collectionViewLayout)")
+
         return self.atts[indexPath]
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        //        println("rect")
+        //print("rect1")
         return Array(self.atts.values)
     }
+    
+
 }

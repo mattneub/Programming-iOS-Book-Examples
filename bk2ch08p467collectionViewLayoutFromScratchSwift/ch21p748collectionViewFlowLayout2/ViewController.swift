@@ -124,6 +124,7 @@ class ViewController : UICollectionViewController {
             
             cell.backgroundColor = .gray
             
+            /*
             // checkmark in top left corner when selected
             let r = UIGraphicsImageRenderer(size:cell.bounds.size)
             let im = r.image {
@@ -143,6 +144,7 @@ class ViewController : UICollectionViewController {
                 con.scaleBy(x:1.1, y:1)
                 check2.draw(at:CGPoint(2,0))
             }
+ */
             
             //            UIGraphicsBeginImageContextWithOptions(cell.bounds.size, false, 0)
             //            let con = UIGraphicsGetCurrentContext()!
@@ -163,9 +165,9 @@ class ViewController : UICollectionViewController {
             //            let im = UIGraphicsGetImageFromCurrentImageContext()!
             //            UIGraphicsEndImageContext()
 
-            let iv = UIImageView(image:nil, highlightedImage:im)
-            iv.isUserInteractionEnabled = false
-            cell.addSubview(iv)
+            // let iv = UIImageView(image:nil, highlightedImage:im)
+//            iv.isUserInteractionEnabled = false
+//            cell.addSubview(iv)
         }
         cell.lab.text = self.sectionData[indexPath.section][indexPath.row]
         var stateName = cell.lab.text!
@@ -181,15 +183,18 @@ class ViewController : UICollectionViewController {
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func doPush(_ sender:AnyObject?) {
+        self.performSegue(withIdentifier:"push", sender: self)
+    }
+}
+
+extension ViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         self.modelCell.lab.text = self.sectionData[indexPath.section][indexPath.row]
         var sz = self.modelCell.container.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)
         return sz
     }
-
-    func doPush(_ sender:AnyObject?) {
-        self.performSegue(withIdentifier:"push", sender: self)
-    }
-
 }

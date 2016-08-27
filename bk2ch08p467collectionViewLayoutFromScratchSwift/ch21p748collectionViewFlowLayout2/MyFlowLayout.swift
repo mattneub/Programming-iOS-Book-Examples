@@ -13,12 +13,15 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 }
 
 class MyFlowLayout : UICollectionViewFlowLayout {
-    
+        
     var animating = false
     var animator : UIDynamicAnimator!
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        var arr = super.layoutAttributesForElements(in: rect)!
+        //print("attsforelements2")
+        //print("layout is \(self.collectionView!.collectionViewLayout)")
+        let arr = super.layoutAttributesForElements(in: rect)!
+        /*
         if let sup = super.layoutAttributesForElements(in: rect) {
             arr = sup.map {
                 atts in // remove (var atts)
@@ -30,12 +33,12 @@ class MyFlowLayout : UICollectionViewFlowLayout {
                 return atts
             }
         }
+ */
         
         // secret sauce for getting animation to work with a layout // *
         // for each attribute, if it can come from the animator, use that attribute instead
         if self.animating {
-            return arr.map {
-                atts in
+            return arr.map { atts in
                 let path = atts.indexPath
                 switch atts.representedElementCategory {
                 case .cell:
@@ -58,9 +61,13 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         }
         return arr
     }
-    
+        
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        //print("attsforitem2")
+        //print("layout is \(self.collectionView!.collectionViewLayout)")
+
         var atts = super.layoutAttributesForItem(at: indexPath)!
+        //print(atts.size)
         if indexPath.item == 0 {
             return atts // degenerate case 1
         }
@@ -81,9 +88,9 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         let visworld = self.collectionView!.bounds
         let anim = MyDynamicAnimator(collectionViewLayout:self)
         self.animator = anim
+        self.animating = true
         
         let atts = self.layoutAttributesForElements(in:visworld)!
-        self.animating = true
         
         // collision behavior: floor, with a hole at the left end
         // we do not want the headers to be part of this collision behavior...
@@ -110,7 +117,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         grav.action = {
             let atts = self.animator.items(in:visworld)
             if atts.count == 0 || anim.elapsedTime > 4 {
-                print("done")
+                //print("done")
                 delay(0) { // memory management
                     self.animator.removeAllBehaviors()
                     self.animator = nil
@@ -124,6 +131,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         }
         anim.addBehavior(grav)
     }
+    
 }
 
 extension MyFlowLayout : UICollisionBehaviorDelegate {

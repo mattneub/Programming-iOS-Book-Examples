@@ -31,30 +31,41 @@ class ViewController2 : UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        return;
-        print("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
+        // return;
+        //print(self, #function)
+        //print("layout is \(self.collectionView!.collectionViewLayout)")
+        //print("data source is \(self.collectionView!.dataSource)")
+        //print("delegate is \(self.collectionView!.delegate)")
     }
     
     override func viewDidAppear(_ animated: Bool)  {
         super.viewDidAppear(animated)
-        return;
-        print("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
+        // return;
+        //print(self, #function)
+        //print("layout is \(self.collectionView!.collectionViewLayout)")
+        //print("data source is \(self.collectionView!.dataSource)")
+        //print("delegate is \(self.collectionView!.delegate)")
         delay(2) {
-            print("\(self.collectionView!.dataSource) \(self.collectionView!.delegate)")
+            //print("two seconds later")
+            //print("layout is \(self.collectionView!.collectionViewLayout)")
+            //print("data source is \(self.collectionView!.dataSource)")
+            //print("delegate is \(self.collectionView!.delegate)")
         }
     }
-    
+}
+
+extension ViewController2 : UICollectionViewDelegateFlowLayout {
     // but I don't want to be the delegate, because I need the data for that, and I don't have it!
     // (this is what I couldn't get Apple to understand; how can the data source and delegate be different?)
     // so I forward delegation back to the other view controller
     
     func collectionView(_ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-            let cv = self.navigationController!.viewControllers[0] as! ViewController
-            let result = cv.collectionView(collectionView, layout:collectionViewLayout,
-                sizeForItemAt:indexPath)
-            return result
+        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // print("forwarding to the other view controller")
+        let cv = self.navigationController!.viewControllers[0] as! ViewController
+        let result = cv.collectionView(collectionView, layout:collectionViewLayout,
+                                       sizeForItemAt:indexPath)
+        return result
     }
-    
 }

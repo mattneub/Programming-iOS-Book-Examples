@@ -16,5 +16,24 @@ class Cell : UICollectionViewCell {
         // relay to its delegate
         cv.delegate?.collectionView?(cv, performAction:#selector(capital), forItemAt: ip, withSender: sender)
     }
+    
+    /*
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        var sz = self.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        sz.width = ceil(sz.width); sz.height = ceil(sz.height)
+        return sz
+    }
+ */
+    
+    /*
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        var sz = self.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        sz.width = ceil(sz.width); sz.height = ceil(sz.height)
+        let atts = layoutAttributes.copy() as! UICollectionViewLayoutAttributes
+        atts.size = sz
+        return atts
+    }
+ */
+
 }
 

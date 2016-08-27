@@ -94,7 +94,10 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // flow.sectionHeadersPinToVisibleBounds = true // try cool new iOS 9 feature
         
         // uncomment to crash
-        // flow.estimatedItemSize = CGSize(100,30)
+        // cripes, now we don't crash, but the layout is wrong! can these guys never get this implemented???
+        // also tried doing this by overriding sizeThatFits in the cell, but with the same wrong layout
+        // also tried doing it by overriding preferredAttributes in the cell, same wrong layout
+        // flow.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -211,6 +214,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // simply turning on estimatedItemSize should do it for me (sizing according to constraints)
     // but I have not been able to get that feature to work
     
+//    /*
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // note; this approach didn't work on iOS 8...
         // ...until I introduced the "container" view
@@ -224,6 +228,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)
         return sz
     }
+// */
+ 
     
     // selection: nothing to do!
     // we get automatic highlighting of whatever can be highlighted (i.e. our UILabel)
@@ -247,16 +253,14 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     // deletion, really quite similar to a table view
     
-    func doDelete(_ sender:AnyObject) { // button, delete selected cells
-        let arr = self.collectionView!.indexPathsForSelectedItems!
-        if arr.count == 0 {
-            return
-        }
+    @IBAction func doDelete(_ sender:AnyObject) { // button, delete selected cells
+        guard var arr = self.collectionView!.indexPathsForSelectedItems,
+            arr.count > 0 else {return}
         // sort
-        let arr2 = ((arr as NSArray).sortedArray(using:#selector(NSIndexPath.compare(_:))) as! [IndexPath])
+        arr.sort()
         // delete data
         var empties : Set<Int> = [] // keep track of what sections get emptied
-        for ip in arr2.reversed() {
+        for ip in arr.reversed() {
             self.sectionData[ip.section].remove(at:ip.item)
             if self.sectionData[ip.section].count == 0 {
                 empties.insert(ip.section)
@@ -264,36 +268,39 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         }
         // request the deletion from the view; notice the slick automatic animation
         self.collectionView!.performBatchUpdates({
-            self.collectionView!.deleteItems(at:arr2)
+            self.collectionView!.deleteItems(at:arr)
             if empties.count > 0 { // delete empty sections
                 self.sectionNames.remove(at:Array(empties)) // see utility function at top of file
                 self.sectionData.remove(at:Array(empties))
                 self.collectionView!.deleteSections(IndexSet(empties)) // Set turns directly into IndexSet!
             }
-            })
+        })
     }
     
     // menu =================
     
     // exactly as for table views
     
+    @nonobjc private let capital = #selector(Cell.capital)
+    @nonobjc private let copy = #selector(UIResponderStandardEditActions.copy)
+    
     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        let mi = UIMenuItem(title:"Capital", action:#selector(Cell.capital))
+        let mi = UIMenuItem(title:"Capital", action:capital)
         UIMenuController.shared.menuItems = [mi]
         return true
     }
     
     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return (action == #selector(copy(_:))) || (action == #selector(Cell.capital))
+        return (action == copy) || (action == capital)
     }
     
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
         // in real life, would do something here
         let state = self.sectionData[indexPath.section][indexPath.row]
-        if action == #selector(copy(_:)) {
+        if action == copy {
             print ("copying \(state)")
         }
-        else if action == #selector(Cell.capital) {
+        else if action == capital {
             print ("fetching the capital of \(state)")
         }
     }
