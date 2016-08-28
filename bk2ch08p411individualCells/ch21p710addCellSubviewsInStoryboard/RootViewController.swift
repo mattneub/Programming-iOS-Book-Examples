@@ -32,6 +32,8 @@ class RootViewController : UITableViewController {
         super.viewDidLoad()
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
         self.tableView.rowHeight = 58 // *
+        
+        self.tableView.prefetchDataSource = self
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,7 +44,16 @@ class RootViewController : UITableViewController {
         return 1000 // make a lot of rows this time!
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("will", indexPath.row)
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("did end", indexPath.row)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("cell", indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) as! MyCell
 
         let lab = cell.theLabel!
@@ -77,5 +88,10 @@ class RootViewController : UITableViewController {
     }
     
     
+}
 
+extension RootViewController : UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        print("prefetch", indexPaths)
+    }
 }

@@ -40,20 +40,22 @@ class ViewController2 : UICollectionViewController {
     
     override func viewDidAppear(_ animated: Bool)  {
         super.viewDidAppear(animated)
-        // return;
-        //print(self, #function)
-        //print("layout is \(self.collectionView!.collectionViewLayout)")
-        //print("data source is \(self.collectionView!.dataSource)")
-        //print("delegate is \(self.collectionView!.delegate)")
-        delay(2) {
-            //print("two seconds later")
-            //print("layout is \(self.collectionView!.collectionViewLayout)")
-            //print("data source is \(self.collectionView!.dataSource)")
-            //print("delegate is \(self.collectionView!.delegate)")
+//        print(self, #function)
+//        print("layout is \(self.collectionView!.collectionViewLayout)")
+//        print("data source is \(self.collectionView!.dataSource)")
+//        print("delegate is \(self.collectionView!.delegate)")
+        let oldDelegate = self.collectionView!.delegate
+        DispatchQueue.main.async {
+//            print("right after")
+//            print("layout is \(self.collectionView!.collectionViewLayout)")
+//            print("data source is \(self.collectionView!.dataSource)")
+//            print("delegate is \(self.collectionView!.delegate)")
+            self.collectionView!.delegate = oldDelegate
         }
     }
 }
 
+/*
 extension ViewController2 : UICollectionViewDelegateFlowLayout {
     // but I don't want to be the delegate, because I need the data for that, and I don't have it!
     // (this is what I couldn't get Apple to understand; how can the data source and delegate be different?)
@@ -62,10 +64,11 @@ extension ViewController2 : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // print("forwarding to the other view controller")
+        print("forwarding to the other view controller")
         let cv = self.navigationController!.viewControllers[0] as! ViewController
         let result = cv.collectionView(collectionView, layout:collectionViewLayout,
                                        sizeForItemAt:indexPath)
         return result
     }
 }
+ */
