@@ -86,6 +86,16 @@ extension ViewController2 : UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return MyPresentationController(presentedViewController: presented, presenting: presenting)
     }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        print("providing presentation animation controller")
+        return self
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        print("providing dismissal animation controller")
+        return self
+    }
+
 }
 
 class MyPresentationController : UIPresentationController {
@@ -144,16 +154,17 @@ class MyPresentationController : UIPresentationController {
 }
 
 extension ViewController2 /* UIViewControllerTransitioningDelegate */ {
-    @objc(animationControllerForPresentedController:presentingController:sourceController:)
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        print("providing presentation animation controller")
-        return self
-    }
-    @objc(animationControllerForDismissedController:)
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        print("providing dismissal animation controller")
-        return self
-    }
+    // had to move these earlier because of the objc bug
+//    @objc(animationControllerForPresentedController:presentingController:sourceController:)
+//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        print("providing presentation animation controller")
+//        return self
+//    }
+//    @objc(animationControllerForDismissedController:)
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        print("providing dismissal animation controller")
+//        return self
+//    }
 }
 
 extension ViewController2 : UIViewControllerAnimatedTransitioning {

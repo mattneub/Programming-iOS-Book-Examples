@@ -287,6 +287,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
         let mi = UIMenuItem(title:"Capital", action:capital)
         UIMenuController.shared.menuItems = [mi]
+        // return false // uncomment to do dragging; you can't have both menus and dragging
+        // (because they both use the long press gesture, I presume)
         return true
     }
     
@@ -304,4 +306,34 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             print ("fetching the capital of \(state)")
         }
     }
+    
+    // dragging ===============
+    
+    // on by default; data source merely has to permit
+    
+    // -------- interactive moving, data source methods
+    
+    override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func collectionView(_ cv: UICollectionView, moveItemAt source: IndexPath, to dest: IndexPath) {
+        // rearrange model
+        swap(&self.sectionData[source.section][source.item], &self.sectionData[dest.section][dest.item])
+        // reload
+        cv.reloadSections(IndexSet(integer:source.section))
+    }
+    
+    // modify using delegate methods
+    // here, prevent moving outside your own section
+    
+    override func collectionView(_ collectionView: UICollectionView, targetIndexPathForMoveFromItemAt orig: IndexPath, toProposedIndexPath prop: IndexPath) -> IndexPath {
+        if orig.section != prop.section {
+            return orig
+        }
+        return prop
+    }
+
+    
+
 }

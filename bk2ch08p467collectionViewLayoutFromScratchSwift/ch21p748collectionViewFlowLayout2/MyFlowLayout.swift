@@ -20,8 +20,10 @@ class MyFlowLayout : UICollectionViewFlowLayout {
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         //print("attsforelements2")
         //print("layout is \(self.collectionView!.collectionViewLayout)")
-        let arr = super.layoutAttributesForElements(in: rect)!
-        /*
+        var arr = super.layoutAttributesForElements(in: rect)!
+        
+        // in the book, omit this part and change var to let above
+        // this part is just to get our left-justified layout
         if let sup = super.layoutAttributesForElements(in: rect) {
             arr = sup.map {
                 atts in // remove (var atts)
@@ -33,7 +35,6 @@ class MyFlowLayout : UICollectionViewFlowLayout {
                 return atts
             }
         }
- */
         
         // secret sauce for getting animation to work with a layout // *
         // for each attribute, if it can come from the animator, use that attribute instead

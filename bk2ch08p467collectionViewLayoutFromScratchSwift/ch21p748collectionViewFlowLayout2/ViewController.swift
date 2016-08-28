@@ -70,6 +70,7 @@ class ViewController : UICollectionViewController {
             withReuseIdentifier:"Header")
 
         // no supplementary views or anything
+        
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -186,6 +187,7 @@ class ViewController : UICollectionViewController {
     func doPush(_ sender:AnyObject?) {
         self.performSegue(withIdentifier:"push", sender: self)
     }
+    
 }
 
 extension ViewController : UICollectionViewDelegateFlowLayout {
