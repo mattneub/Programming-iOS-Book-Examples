@@ -83,8 +83,13 @@ class RootViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView
             .dequeueReusableHeaderFooterView(withIdentifier:"Header") as! MyHeaderView
-        if h.viewWithTag(1) == nil {
-            
+        if h.gestureRecognizers == nil {
+            print("nil")
+            // add tap g.r.
+            let tap = UITapGestureRecognizer(target: self, action: #selector(tapped)) // *
+            tap.numberOfTapsRequired = 2 // *
+            h.addGestureRecognizer(tap) // *
+
             h.backgroundView = UIView()
             h.backgroundView?.backgroundColor = .black
             let lab = UILabel()
@@ -111,10 +116,6 @@ class RootViewController : UITableViewController {
                     "V:|[lab]|",
                     metrics:nil, views:["lab":lab])
                 ].flatMap{$0})
-            // add tap g.r.
-            let tap = UITapGestureRecognizer(target: self, action: #selector(tapped)) // *
-            tap.numberOfTapsRequired = 2 // *
-            h.addGestureRecognizer(tap) // *
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
         lab.text = self.sectionNames[section]

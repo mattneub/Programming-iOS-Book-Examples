@@ -45,11 +45,11 @@ class MyParentViewController : UIViewController {
             scvc.view.frame = self.view.bounds
             scvc.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             self.view.addSubview(scvc.view)
-            let sb = searcher.searchBar
-            sb.translatesAutoresizingMaskIntoConstraints = false
-            sb.sizeToFit()
-            sb.autocapitalizationType = .none
-            scvc.view.addSubview(sb)
+            let b = searcher.searchBar
+            b.sizeToFit()
+            b.autoresizingMask = [.flexibleWidth]
+            b.autocapitalizationType = .none
+            scvc.view.addSubview(b)
             
 
             // hmm, this actually causes presentation and I can't seem to prevent it

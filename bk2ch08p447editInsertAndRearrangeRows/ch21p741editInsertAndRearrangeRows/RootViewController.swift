@@ -127,7 +127,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
                 [IndexPath(row:ct-2, section:1)],
                 with:.automatic)
             tableView.endUpdates()
-            // crucial that this next bit be *outside* the update block
+            // crucial that this next bit be *outside* the updates block
             let cell = self.tableView.cellForRow(at:
                 IndexPath(row:ct-1, section:1))
             (cell as! MyCell).textField.becomeFirstResponder()
