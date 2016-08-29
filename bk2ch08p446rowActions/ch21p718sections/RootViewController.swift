@@ -4,7 +4,7 @@ import UIKit
 class RootViewController : UITableViewController {
     
     var sectionNames = [String]()
-    var sectionData = [[String]]()
+    var cellData = [[String]]()
     
     override var prefersStatusBarHidden : Bool {
         return true
@@ -20,11 +20,11 @@ class RootViewController : UITableViewController {
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c
-                self.sectionNames.append( c.uppercased() )
+                self.sectionNames.append(c.uppercased())
                 // and in that case also add new subarray to our array of subarrays
-                self.sectionData.append( [String]() )
+                self.cellData.append([String]())
             }
-            sectionData[sectionData.count-1].append( aState )
+            self.cellData[self.cellData.count-1].append(aState)
         }
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
@@ -57,12 +57,12 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sectionData[section].count
+        return self.cellData[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
-        let s = self.sectionData[indexPath.section][indexPath.row]
+        let s = self.cellData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
         
         var stateName = s
@@ -119,11 +119,11 @@ class RootViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt ip: IndexPath) {
-        self.sectionData[ip.section].remove(at:ip.row)
+        self.cellData[ip.section].remove(at:ip.row)
         switch editingStyle {
         case .delete:
-            if self.sectionData[ip.section].count == 0 {
-                self.sectionData.remove(at:ip.section)
+            if self.cellData[ip.section].count == 0 {
+                self.cellData.remove(at:ip.section)
                 self.sectionNames.remove(at:ip.section)
                 tableView.deleteSections(IndexSet(integer: ip.section),
                     with:.automatic)

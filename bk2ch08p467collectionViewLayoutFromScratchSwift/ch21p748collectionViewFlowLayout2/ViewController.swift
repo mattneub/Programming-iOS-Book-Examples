@@ -33,7 +33,7 @@ extension CGVector {
 class ViewController : UICollectionViewController {
     
     var sectionNames = [String]()
-    var sectionData = [[String]]()
+    var cellData = [[String]]()
     lazy var modelCell : Cell = { // load lazily from nib
         () -> Cell in
         let arr = UINib(nibName:"Cell", bundle:nil).instantiate(withOwner:nil)
@@ -50,11 +50,11 @@ class ViewController : UICollectionViewController {
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c
-                self.sectionNames.append( c.uppercased() )
+                self.sectionNames.append(c.uppercased())
                 // and in that case also add new subarray to our array of subarrays
-                self.sectionData.append( [String]() )
+                self.cellData.append([String]())
             }
-            sectionData[sectionData.count-1].append( aState )
+            self.cellData[self.cellData.count-1].append(aState)
         }
         self.navigationItem.title = "States"
         let bb = UIBarButtonItem(title:"Push", style:.plain, target:self, action:#selector(doPush))
@@ -78,7 +78,7 @@ class ViewController : UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.sectionData[section].count
+        return self.cellData[section].count
     }
 
     
@@ -170,7 +170,7 @@ class ViewController : UICollectionViewController {
 //            iv.isUserInteractionEnabled = false
 //            cell.addSubview(iv)
         }
-        cell.lab.text = self.sectionData[indexPath.section][indexPath.row]
+        cell.lab.text = self.cellData[indexPath.section][indexPath.row]
         var stateName = cell.lab.text!
         // flag in background! very cute
         stateName = stateName.lowercased()
@@ -194,7 +194,7 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        self.modelCell.lab.text = self.sectionData[indexPath.section][indexPath.row]
+        self.modelCell.lab.text = self.cellData[indexPath.section][indexPath.row]
         var sz = self.modelCell.container.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)
         return sz

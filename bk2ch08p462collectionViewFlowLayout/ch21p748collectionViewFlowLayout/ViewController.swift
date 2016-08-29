@@ -28,7 +28,7 @@ extension CGVector {
 class ViewController : UICollectionViewController {
     
     var sectionNames = [String]()
-    var sectionData = [[String]]()
+    var cellData = [[String]]()
     
     override var prefersStatusBarHidden : Bool {
         return true
@@ -44,11 +44,11 @@ class ViewController : UICollectionViewController {
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c
-                self.sectionNames.append( c.uppercased() )
+                self.sectionNames.append(c.uppercased())
                 // and in that case also add new subarray to our array of subarrays
-                self.sectionData.append( [String]() )
+                self.cellData.append([String]())
             }
-            sectionData[sectionData.count-1].append( aState )
+            self.cellData[self.cellData.count-1].append(aState)
         }
         self.navigationItem.title = "States"
         
@@ -64,7 +64,7 @@ class ViewController : UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.sectionData[section].count
+        return self.cellData[section].count
     }
     
     // minimal formatting; this is just to prove we can show the data at all
@@ -93,7 +93,7 @@ class ViewController : UICollectionViewController {
             cell.contentView.addSubview(UILabel(frame:CGRect(0,0,30,30)))
         }
         let lab = cell.contentView.subviews[0] as! UILabel
-        lab.text = (self.sectionData)[indexPath.section][indexPath.row] // "item" synonym for "row"
+        lab.text = (self.cellData)[indexPath.section][indexPath.row] // "item" synonym for "row"
         lab.sizeToFit()
         return cell
 
@@ -108,7 +108,7 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // note horrible duplication of code here
         let lab = UILabel(frame:CGRect(0,0,30,30))
-        lab.text = (self.sectionData)[indexPath.section][indexPath.row]
+        lab.text = (self.cellData)[indexPath.section][indexPath.row]
         lab.sizeToFit()
         return lab.bounds.size
     }

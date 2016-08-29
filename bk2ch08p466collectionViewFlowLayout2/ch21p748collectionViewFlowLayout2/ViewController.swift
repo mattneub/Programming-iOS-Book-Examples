@@ -35,7 +35,7 @@ extension CGVector {
 class ViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var sectionNames = [String]()
-    var sectionData = [[String]]()
+    var cellData = [[String]]()
     lazy var modelCell : Cell = { // load lazily from nib
         () -> Cell in
         let arr = UINib(nibName:"Cell", bundle:nil).instantiate(withOwner:nil)
@@ -56,11 +56,11 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c
-                self.sectionNames.append( c.uppercased() )
+                self.sectionNames.append(c.uppercased())
                 // and in that case also add new subarray to our array of subarrays
-                self.sectionData.append( [String]() )
+                self.cellData.append([String]())
             }
-            sectionData[sectionData.count-1].append( aState )
+            self.cellData[self.cellData.count-1].append(aState)
         }
         
         let b = UIBarButtonItem(title:"Switch", style:.plain, target:self, action:#selector(doSwitch(_:)))
@@ -105,7 +105,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.sectionData[section].count
+        return self.cellData[section].count
     }
     
     // headers
@@ -194,7 +194,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             iv.isUserInteractionEnabled = false
             cell.addSubview(iv)
         }
-        cell.lab.text = self.sectionData[indexPath.section][indexPath.row]
+        cell.lab.text = self.cellData[indexPath.section][indexPath.row]
         var stateName = cell.lab.text!
         // flag in background! very cute
         stateName = stateName.lowercased()
@@ -221,7 +221,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // systemLayoutSize works on the container view but not on the cell itself in iOS 8
         // (perhaps because the nib lacks a contentView)
         // Oooh, fixed (6.1)!
-        self.modelCell.lab.text = self.sectionData[indexPath.section][indexPath.row]
+        self.modelCell.lab.text = self.cellData[indexPath.section][indexPath.row]
         //the "container" workaround is no longer needed
         //var sz = self.modelCell.container.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         var sz = self.modelCell.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
@@ -261,8 +261,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // delete data
         var empties : Set<Int> = [] // keep track of what sections get emptied
         for ip in arr.reversed() {
-            self.sectionData[ip.section].remove(at:ip.item)
-            if self.sectionData[ip.section].count == 0 {
+            self.cellData[ip.section].remove(at:ip.item)
+            if self.cellData[ip.section].count == 0 {
                 empties.insert(ip.section)
             }
         }
@@ -271,7 +271,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             self.collectionView!.deleteItems(at:arr)
             if empties.count > 0 { // delete empty sections
                 self.sectionNames.remove(at:Array(empties)) // see utility function at top of file
-                self.sectionData.remove(at:Array(empties))
+                self.cellData.remove(at:Array(empties))
                 self.collectionView!.deleteSections(IndexSet(empties)) // Set turns directly into IndexSet!
             }
         })
@@ -298,7 +298,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
         // in real life, would do something here
-        let state = self.sectionData[indexPath.section][indexPath.row]
+        let state = self.cellData[indexPath.section][indexPath.row]
         if action == copy {
             print ("copying \(state)")
         }
@@ -319,7 +319,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     override func collectionView(_ cv: UICollectionView, moveItemAt source: IndexPath, to dest: IndexPath) {
         // rearrange model
-        swap(&self.sectionData[source.section][source.item], &self.sectionData[dest.section][dest.item])
+        swap(&self.cellData[source.section][source.item], &self.cellData[dest.section][dest.item])
         // reload
         cv.reloadSections(IndexSet(integer:source.section))
     }

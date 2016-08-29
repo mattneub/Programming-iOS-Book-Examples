@@ -270,7 +270,7 @@ class ViewController: UIViewController {
         do {
             var values = [0.0]
             for (var i = 20, direction = 1.0; i < 60; i += 5, direction *= -1) {
-                values.append( direction * M_PI / Double(i) )
+                values.append(direction * M_PI / Double(i))
             }
             print(values) // [0.0, 0.15707963267948966, -0.12566370614359174, 0.10471975511965977, -0.089759790102565518, 0.078539816339744828, -0.069813170079773182, 0.062831853071795868, -0.057119866428905326]
         }
@@ -281,7 +281,7 @@ class ViewController: UIViewController {
             var values = [0.0]
             var direction = 1.0
             for i in stride(from: 20, to: 60, by: 5) {
-                values.append( direction * .pi / Double(i) )
+                values.append(direction * .pi / Double(i))
                 direction *= -1
             }
             print(values)
@@ -291,7 +291,7 @@ class ViewController: UIViewController {
         do {
             var values = [0.0]
             for (ix,i) in stride(from: 20, to: 60, by: 5).enumerated() {
-                values.append( (ix % 2 == 1 ? -1.0 : 1.0) * .pi / Double(i) )
+                values.append((ix % 2 == 1 ? -1.0 : 1.0) * .pi / Double(i))
             }
             print(values)
         }

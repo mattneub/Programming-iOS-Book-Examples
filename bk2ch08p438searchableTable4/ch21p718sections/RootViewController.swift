@@ -10,7 +10,7 @@ class MySearchController : UISearchController {
 
 class RootViewController : UITableViewController, UISearchBarDelegate {
     var sectionNames = [String]()
-    var sectionData = [[String]]()
+    var cellData = [[String]]()
     var searcher : UISearchController!
     
     override var prefersStatusBarHidden : Bool {
@@ -27,11 +27,11 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
             // only add a letter to sectionNames when it's a different letter
             if c != previous {
                 previous = c
-                self.sectionNames.append( c.uppercased() )
+                self.sectionNames.append(c.uppercased())
                 // and in that case also add new subarray to our array of subarrays
-                self.sectionData.append( [String]() )
+                self.cellData.append([String]())
             }
-            sectionData[sectionData.count-1].append( aState )
+            self.cellData[self.cellData.count-1].append(aState)
         }
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
@@ -42,7 +42,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         self.tableView.backgroundColor = .yellow // but the search bar covers that
         
         
-        let src = SearchResultsController(data: self.sectionData)
+        let src = SearchResultsController(data: self.cellData)
         let searcher = MySearchController(searchResultsController: src)
         self.searcher = searcher
         // specify who the search controller should notify when the search bar changes
@@ -71,12 +71,12 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sectionData[section].count
+        return self.cellData[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
-        let s = self.sectionData[indexPath.section][indexPath.row]
+        let s = self.cellData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
         
         // this part is not in the book, it's just for fun
