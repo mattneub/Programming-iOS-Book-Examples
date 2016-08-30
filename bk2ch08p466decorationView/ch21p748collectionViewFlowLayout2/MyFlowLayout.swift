@@ -16,8 +16,8 @@ class MyTitleView : UICollectionReusableView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
-        if let atts = layoutAttributes as? MyTitleViewLayoutAttributes {
+    override func apply(_ atts: UICollectionViewLayoutAttributes) {
+        if let atts = atts as? MyTitleViewLayoutAttributes {
             self.lab.text = atts.title
         }
     }
@@ -114,5 +114,6 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         }
         return nil
     }
+    
 
 }
