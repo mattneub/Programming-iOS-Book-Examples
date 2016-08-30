@@ -11,7 +11,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         return arr.map {
             atts in // remove (var atts)
             var atts = atts
-            if atts.representedElementKind == nil {
+            if atts.representedElementCategory == .cell {
                 let ip = atts.indexPath
                 atts = self.layoutAttributesForItem(at:ip)!
             }

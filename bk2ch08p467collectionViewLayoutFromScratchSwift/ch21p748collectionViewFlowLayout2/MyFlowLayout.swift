@@ -28,7 +28,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
             arr = sup.map {
                 atts in // remove (var atts)
                 var atts = atts
-                if atts.representedElementKind == nil {
+                if atts.representedElementCategory == .cell {
                     let ip = atts.indexPath
                     atts = self.layoutAttributesForItem(at:ip)!
                 }
@@ -98,7 +98,7 @@ class MyFlowLayout : UICollectionViewFlowLayout {
         // because they stretch all the way across the screen and won't fall through
         
         let items = atts.filter {
-            $0.representedElementKind == nil
+            $0.representedElementCategory == .cell
         }
         let coll = UICollisionBehavior(items:items)
         let p1 = CGPoint(visworld.minX + 80, visworld.maxY)
