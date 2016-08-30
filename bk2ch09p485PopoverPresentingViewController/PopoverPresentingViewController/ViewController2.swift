@@ -6,9 +6,9 @@ class ViewController2: UIViewController, UIPopoverPresentationControllerDelegate
     
     // showing how behavior of modalInPopover for presented-inside-popover has changed from iOS 7
 
-    let workaround = false
+    let workaround = true
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let pop = self.popoverPresentationController {
             if workaround {
                 print("del")

@@ -30,7 +30,7 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detail = DetailViewController()
         detail.boy = model[indexPath.row]
-        let b = self.splitViewController?.displayModeButtonItem()
+        let b = self.splitViewController?.displayModeButtonItem
         detail.navigationItem.leftBarButtonItem = b
         detail.navigationItem.leftItemsSupplementBackButton = true
         

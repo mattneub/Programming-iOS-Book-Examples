@@ -3,7 +3,7 @@ import UIKit
 
 class ViewController3: UIViewController {
     
-    let workaround = true
+    let workaround = false
     
     var oldModal = false
     

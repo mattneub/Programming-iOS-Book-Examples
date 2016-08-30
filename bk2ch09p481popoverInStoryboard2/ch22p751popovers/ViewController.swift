@@ -14,8 +14,8 @@ class ViewController : UIViewController, UIToolbarDelegate {
         return .topAttached
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
-        let dest = segue.destinationViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dest = segue.destination
         if let pop = dest.popoverPresentationController {
             pop.delegate = self
         }

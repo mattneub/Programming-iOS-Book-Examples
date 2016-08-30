@@ -29,8 +29,8 @@ class MyTitleViewLayoutAttributes : UICollectionViewLayoutAttributes {
 
 class MyFlowLayout : UICollectionViewFlowLayout {
     
-    private let titleHeight : CGFloat = 50
     private let titleKind = "title"
+    private let titleHeight : CGFloat = 50
     private var titleRect : CGRect {
         return CGRect(10,0,200,self.titleHeight)
     }

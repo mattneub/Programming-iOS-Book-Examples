@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // but what if the split view appears _originally_ in portrait so there is no master?
         // then if we don't also added the button here, there is no button
         // the user can summon with swipe but might not realize that
-        nav.topViewController?.navigationItem.leftBarButtonItem = svc.displayModeButtonItem()
+        nav.topViewController?.navigationItem.leftBarButtonItem = svc.displayModeButtonItem
         svc.delegate = self
         return true
     }
@@ -80,12 +80,12 @@ extension AppDelegate: UISplitViewControllerDelegate {
         print("changing to mode: \(displayMode.rawValue)")
     }
     
-    func splitViewController(_ splitViewController: UISplitViewController, show vc: UIViewController, sender: AnyObject?) -> Bool {
+    func splitViewController(_ splitViewController: UISplitViewController, show vc: UIViewController, sender: Any?) -> Bool {
         print("svc show vc")
         return false
     }
     
-    func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: AnyObject?) -> Bool {
+    func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: Any?) -> Bool {
         print("svc show detail vc")
         return false
     }

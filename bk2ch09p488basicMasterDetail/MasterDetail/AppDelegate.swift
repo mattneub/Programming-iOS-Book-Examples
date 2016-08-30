@@ -18,7 +18,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let nav2 = UINavigationController(rootViewController:detail)
         svc.viewControllers = [nav1, nav2]
         self.window!.rootViewController = svc
-        let b = svc.displayModeButtonItem()
+        let b = svc.displayModeButtonItem
         detail.navigationItem.leftBarButtonItem = b
         
         self.window!.backgroundColor = .white

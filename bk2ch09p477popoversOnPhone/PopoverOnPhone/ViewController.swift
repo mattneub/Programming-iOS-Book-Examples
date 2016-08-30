@@ -24,11 +24,27 @@ extension CGVector {
 }
 
 
+class MyViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let wv = UIWebView()
+        wv.backgroundColor = .white
+        self.view.addSubview(wv)
+        wv.frame = self.view.bounds
+        wv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        let f = Bundle.main.path(forResource: "linkhelp", ofType: "html")
+        let s = try! String(contentsOfFile: f!)
+        wv.loadHTMLString(s, baseURL: nil)
+
+    }
+}
+
 
 class ViewController: UIViewController {
                             
     @IBAction func doButton(_ sender: AnyObject) {
-        let vc = UIViewController()
+        let vc = MyViewController()
         vc.preferredContentSize = CGSize(400,500)
         vc.modalPresentationStyle = .popover
         
@@ -38,15 +54,6 @@ class ViewController: UIViewController {
         }
 
         self.present(vc, animated: true)
-
-        let wv = UIWebView()
-        wv.backgroundColor = .white
-        vc.view.addSubview(wv)
-        wv.frame = vc.view.bounds
-        wv.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        let f = Bundle.main.pathForResource("linkhelp", ofType: "html")
-        let s = try! String(contentsOfFile: f!)
-        wv.loadHTMLString(s, baseURL: nil)
         
         if let pop = vc.popoverPresentationController {
             print(pop)

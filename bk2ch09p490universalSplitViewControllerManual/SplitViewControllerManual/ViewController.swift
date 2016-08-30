@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     // In this way, the Secondary can message the Primary completely agnostically!
     // This is the kind of "loose coupling" that Apple is after here
     
-    override func targetViewController(forAction action: Selector, sender: AnyObject?) -> UIViewController? {
+    override func targetViewController(forAction action: Selector, sender: Any?) -> UIViewController? {
         if action == #selector(showHide) {
             let svc = self.childViewControllers[0] as! UISplitViewController
             let primary = svc.viewControllers[0] 

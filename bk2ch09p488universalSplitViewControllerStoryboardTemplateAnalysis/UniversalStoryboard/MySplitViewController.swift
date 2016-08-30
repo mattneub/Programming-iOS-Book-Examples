@@ -4,26 +4,26 @@ import UIKit
 
 class MySplitViewController: UISplitViewController {
     
-    override func targetViewController(forAction action: Selector, sender: AnyObject?) -> UIViewController? {
+    override func targetViewController(forAction action: Selector, sender: Any?) -> UIViewController? {
         print("split view controller target for \(action) \(sender)...")
         let result = super.targetViewController(forAction: action, sender: sender)
         print("split view controller target for \(action), returning \(result)")
         return result
     }
     
-    override func showDetailViewController(_ vc: UIViewController, sender: AnyObject?) {
+    override func showDetailViewController(_ vc: UIViewController, sender: Any?) {
         print("split view controller showDetailViewController")
         super.showDetailViewController(vc, sender: sender)
     }
     
-    override func childViewControllerForStatusBarHidden() -> UIViewController? {
-        let vc = super.childViewControllerForStatusBarHidden()
+    override var childViewControllerForStatusBarHidden : UIViewController? {
+        let vc = super.childViewControllerForStatusBarHidden
         print("hidden: \(vc)")
         return vc
     }
     
-    override func childViewControllerForStatusBarStyle() -> UIViewController? {
-        let vc = super.childViewControllerForStatusBarStyle()
+    override var childViewControllerForStatusBarStyle : UIViewController? {
+        let vc = super.childViewControllerForStatusBarStyle
         print("style: \(vc)")
         return vc
     }
@@ -37,7 +37,7 @@ class MySplitViewController: UISplitViewController {
         return ok
     }
 
-    override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         let ok = super.canPerformAction(action, withSender:sender)
         if action == #selector(showDetailViewController) {
             print("svc can perform? \(ok)")

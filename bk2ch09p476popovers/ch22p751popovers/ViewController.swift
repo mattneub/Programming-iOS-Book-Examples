@@ -96,7 +96,12 @@ class ViewController : UIViewController {
             pop.sourceRect = v.bounds
             pop.delegate = self
             // not working here either
-            pop.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 30)
+            pop.popoverLayoutMargins = UIEdgeInsetsMake(100,100,100,100)
+            // new in iOS 9
+            pop.canOverlapSourceViewRect = true
+            
+            vc.preferredContentSize = CGSize(200,500)
+
         }
     }
     
@@ -188,7 +193,7 @@ class ViewController : UIViewController {
     
     func done (_ sender:UIResponder) {
         var r : UIResponder! = sender
-        repeat { r = r.next() } while !(r is UIViewController)
+        repeat { r = r.next } while !(r is UIViewController)
         (r as! UIViewController).dismiss(animated:true) {
             print("dismissed")
         }

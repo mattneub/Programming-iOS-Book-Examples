@@ -17,7 +17,7 @@ class MasterNavigationViewController : UINavigationController {
     // it turns around and sends showViewController to the nav controller in the primary!
     // thus it gets pushed onto the stack
     
-    override func show(_ vc: UIViewController, sender: AnyObject?) {
+    override func show(_ vc: UIViewController, sender: Any?) {
         print("master NAV view controller showViewController: \(vc)")
         super.show(vc, sender: sender)
         delay(1) {
@@ -25,7 +25,7 @@ class MasterNavigationViewController : UINavigationController {
         }
     }
     
-    override func targetViewController(forAction action: Selector, sender: AnyObject?) -> UIViewController? {
+    override func targetViewController(forAction action: Selector, sender: Any?) -> UIViewController? {
         print("master NAV view controller target for \(action) \(sender)...")
         let result = super.targetViewController(forAction: action, sender: sender)
         print("master NAV view controller target for \(action), returning \(result)")
@@ -44,7 +44,7 @@ class MasterNavigationViewController : UINavigationController {
         return ok
     }
     
-    override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         let ok = super.canPerformAction(action, withSender:sender)
         if action == #selector(showDetailViewController) {
             print("master NAV can perform? \(ok)")

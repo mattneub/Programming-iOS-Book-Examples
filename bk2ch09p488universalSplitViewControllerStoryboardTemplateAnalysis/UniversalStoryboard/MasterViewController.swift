@@ -25,7 +25,7 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject))
         self.navigationItem.rightBarButtonItem = addButton
         // these next lines do not actually do anything, 
@@ -48,19 +48,19 @@ class MasterViewController: UITableViewController {
     
     // MARK: - Segues
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let ip = self.tableView.indexPathForSelectedRow!
             let object = objects[ip.row]
-            let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+            let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
             print("prepare for segue")
             print("object: \(object)")
-            controller.detailItem = object
+            controller.detailItem = object as AnyObject
             // again, duplication from AppDelegate
             // the problem is that if we do this segue...
             // the detail view navigation controller is completely replaced,
             // so we must re-add the button
-            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+            controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
             controller.navigationItem.leftItemsSupplementBackButton = true
 
         }
@@ -101,14 +101,14 @@ extension MasterViewController {
         super.collapseSecondaryViewController(secondaryViewController, for: splitViewController)
     }
     
-    override func targetViewController(forAction action: Selector, sender: AnyObject?) -> UIViewController? {
+    override func targetViewController(forAction action: Selector, sender: Any?) -> UIViewController? {
         print("master view controller target for \(action) \(sender)...")
         let result = super.targetViewController(forAction: action, sender: sender)
         print("master view controller target for \(action), returning \(result)")
         return result
     }
     
-    override func show(_ vc: UIViewController, sender: AnyObject?) {
+    override func show(_ vc: UIViewController, sender: Any?) {
         print("master view controller showViewController")
         super.show(vc, sender: sender)
     }
@@ -119,7 +119,7 @@ extension MasterViewController {
     // The whole point of targetViewControllerForAction here is that we want it to find
     // the split view controller
     
-    override func showDetailViewController(_ vc: UIViewController, sender: AnyObject?) {
+    override func showDetailViewController(_ vc: UIViewController, sender: Any?) {
         print("master view controller showDetailViewController")
         super.showDetailViewController(vc, sender: sender)
     }
@@ -132,7 +132,7 @@ extension MasterViewController {
         return ok
     }
     
-    override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         var ok = super.canPerformAction(action, withSender:sender)
         if action == #selector(showDetailViewController) {
             ok = false

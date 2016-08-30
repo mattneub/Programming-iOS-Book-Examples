@@ -21,7 +21,7 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject))
         self.navigationItem.rightBarButtonItem = addButton
         // these next lines do not actually do anything, 
@@ -44,14 +44,14 @@ class MasterViewController: UITableViewController {
     
     // MARK: - Segues
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let ip = self.tableView.indexPathForSelectedRow!
             let object = objects[ip.row]
-            let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+            let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
             print("prepare for segue")
             print(object)
-            controller.detailItem = object
+            controller.detailItem = object as AnyObject
             // just proving that when collapsed, svc has just the one child
             // basically that child is now in total charge of the interface
             print("children of svc: \(self.splitViewController!.viewControllers)")
