@@ -39,8 +39,13 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        let lab = UILabel(frame:CGRect(100,100,100,30))
+        let lab = UILabel()
+        lab.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lab)
+        NSLayoutConstraint.activate([
+            lab.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100),
+            lab.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ])
         self.lab = lab
         self.lab.text = self.boy
     }

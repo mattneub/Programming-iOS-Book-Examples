@@ -1,6 +1,11 @@
 
 import UIKit
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
 
 class ViewController: UIViewController {
     
@@ -26,6 +31,7 @@ class ViewController: UIViewController {
         if self.presentingViewController != nil {
             self.dismiss(animated:true)
         } else {
+            print("window frame is \(self.view.window!.frame)")
             print("window bounds are \(self.view.window!.bounds)")
             print("screen bounds are \(UIScreen.main.bounds)")
             let v = sender as! UIView
@@ -62,13 +68,23 @@ class ViewController: UIViewController {
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        print(#function, size, terminator:"\n\n")
+        let larger = max(size.width, size.height)
+        let smaller = min(size.width, size.height)
+        print(#function, size, larger/smaller, terminator:"\n\n")
         super.viewWillTransition(to: size, with: coordinator)
+        delay(1) {
+            let ok = self.traitCollection.horizontalSizeClass == .compact
+            print("compact?", ok, terminator:"\n\n")
+        }
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         print(#function, newCollection, terminator:"\n\n")
         super.willTransition(to: newCollection, with: coordinator)
+        delay(1) {
+            let ok = self.traitCollection.horizontalSizeClass == .compact
+            print("compact?", ok, terminator:"\n\n")
+        }
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
