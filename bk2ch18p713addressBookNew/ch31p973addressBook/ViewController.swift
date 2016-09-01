@@ -41,6 +41,8 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         super.viewDidAppear(animated)
         self.determineStatus()
         NotificationCenter.default.addObserver(self, selector: #selector(determineStatus), name: .UIApplicationWillEnterForeground, object: nil)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Ignore Me", style: .plain, target: nil, action: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -64,7 +66,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                 case 1:
                     let pred = CNContact.predicateForContacts(matchingName:"Matt")
                     var matts = try CNContactStore().unifiedContacts(matching:pred, keysToFetch: [
-                        CNContactFamilyNameKey, CNContactGivenNameKey
+                        CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor
                         ])
                     matts = matts.filter{$0.familyName == "Neuburg"}
                     guard let moi = matts.first else {
@@ -75,7 +77,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                 case 2:
                     let pred = CNContact.predicateForContacts(matchingName:"Matt")
                     let req = CNContactFetchRequest(keysToFetch: [
-                        CNContactFamilyNameKey, CNContactGivenNameKey
+                        CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor
                         ])
                     req.predicate = pred
                     var matt : CNContact? = nil
@@ -100,13 +102,13 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                 } else {
                     print("you haven't fetched emails yet")
                 }
-                moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [CNContactFamilyNameKey, CNContactGivenNameKey, CNContactEmailAddressesKey])
+                moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor, CNContactEmailAddressesKey as CNKeyDescriptor])
                 let emails = moi.emailAddresses
                 let workemails = emails.filter{$0.label == CNLabelWork}.map{$0.value}
                 print(workemails)
                 let full = CNContactFormatterStyle.fullName
                 let keys = CNContactFormatter.descriptorForRequiredKeys(for:full)
-                moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [keys, CNContactEmailAddressesKey])
+                moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [keys, CNContactEmailAddressesKey as CNKeyDescriptor])
                 if let name = CNContactFormatter.string(from: moi, style: full) {
                     print("\(name): \(workemails[0])") // Matt Neuburg: matt@tidbits.com
                 }
@@ -121,7 +123,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         let snidely = CNMutableContact()
         snidely.givenName = "Snidely"
         snidely.familyName = "Whiplash"
-        let email = CNLabeledValue(label: CNLabelHome, value: "snidely@villains.com")
+        let email = CNLabeledValue(label: CNLabelHome, value: "snidely@villains.com" as NSString)
         snidely.emailAddresses.append(email)
         snidely.imageData = UIImagePNGRepresentation(UIImage(named:"snidely.jpg")!)
         let save = CNSaveRequest()
@@ -145,8 +147,8 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         let picker = CNContactPickerViewController()
         picker.delegate = self
         picker.displayedPropertyKeys = [CNContactEmailAddressesKey]
-        picker.predicateForSelectionOfProperty = Predicate(format: "key == 'emailAddresses'")
-        picker.predicateForEnablingContact = Predicate(format: "emailAddresses.@count > 0")
+        picker.predicateForSelectionOfProperty = NSPredicate(format: "key == 'emailAddresses'")
+        picker.predicateForEnablingContact = NSPredicate(format: "emailAddresses.@count > 0")
         self.present(picker, animated:true)
     }
     
@@ -218,6 +220,9 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         // self.present(UINavigationController(rootViewController: unkvc), animated:true)
         // and this doesn't work either!
         // self.present(unkvc, animated:true)
+        
+        // unkvc.navigationController?.navigationBar.tintColor = .red
+
     }
 
 
