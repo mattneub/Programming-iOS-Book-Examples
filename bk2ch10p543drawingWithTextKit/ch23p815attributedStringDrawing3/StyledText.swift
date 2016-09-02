@@ -7,7 +7,7 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
-func lend<T where T:NSObject> (closure:(T)->()) -> T {
+func lend<T> (closure:(T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
     return orig
@@ -15,7 +15,7 @@ func lend<T where T:NSObject> (closure:(T)->()) -> T {
 
 class StyledText: UIView {
     
-    @NSCopying var text = AttributedString() // shut up the compiler
+    @NSCopying var text = NSAttributedString() // shut up the compiler
     var lm : NSLayoutManager!
     var tc : NSTextContainer!
     var tc2 : NSTextContainer!
@@ -26,7 +26,7 @@ class StyledText: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let path = Bundle.main.pathForResource("states", ofType: "txt")!
+        let path = Bundle.main.path(forResource: "states", ofType: "txt")!
         let s = try! String(contentsOfFile: path)
         
         let desc = UIFontDescriptor(name:"Didot", size:18)

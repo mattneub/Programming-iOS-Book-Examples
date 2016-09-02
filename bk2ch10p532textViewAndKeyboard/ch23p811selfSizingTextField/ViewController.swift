@@ -1,7 +1,7 @@
 
 import UIKit
 
-func lend<T where T:NSObject> (closure:(T)->()) -> T {
+func lend<T> (closure:(T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
     return orig
@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let path = Bundle.main.pathForResource("brillig", ofType: "txt")!
+        let path = Bundle.main.path(forResource: "brillig", ofType: "txt")!
         let s = try! String(contentsOfFile:path)
         let s2 = s.replacingOccurrences(of:"\n", with: "")
         let mas = NSMutableAttributedString(string:s2, attributes:[
@@ -49,8 +49,8 @@ class ViewController: UIViewController, UITextViewDelegate {
     func keyboardShow(_ n:Notification) {
         print("show")
         
-        let d = n.userInfo as! [String:AnyObject]
-        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue()
+        let d = n.userInfo!
+        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         r = self.tv.convert(r, from:nil)
         self.tv.contentInset.bottom = r.size.height
         self.tv.scrollIndicatorInsets.bottom = r.size.height
@@ -63,8 +63,8 @@ class ViewController: UIViewController, UITextViewDelegate {
     func keyboardHide(_ n:Notification) {
         print("hide")
         
-        self.tv.contentInset = UIEdgeInsetsZero
-        self.tv.scrollIndicatorInsets = UIEdgeInsetsZero
+        self.tv.contentInset = .zero
+        self.tv.scrollIndicatorInsets = .zero
         
         self.keyboardShowing = false
 

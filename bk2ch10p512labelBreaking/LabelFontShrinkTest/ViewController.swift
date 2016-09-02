@@ -2,7 +2,7 @@
 
 import UIKit
 
-func lend<T where T:NSObject> (closure:(T)->()) -> T {
+func lend<T> (closure:(T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
     return orig
@@ -61,7 +61,7 @@ class ViewController : UIViewController {
             }
         ])
         mas.addAttribute(NSForegroundColorAttributeName,
-            value:UIColor.blue(),
+            value:UIColor.blue,
             range:(s as NSString).range(of:"poltergeists"))
         self.lab2.attributedText = mas
 

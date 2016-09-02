@@ -11,7 +11,7 @@ class ViewController : UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(doDynamicType), name: .UIContentSizeCategoryDidChange, object: nil)
         
         let f = UIFont(name: "Avenir", size: 15)!
-        let desc = f.fontDescriptor()
+        let desc = f.fontDescriptor
         let desc2 = desc.withSymbolicTraits(.traitItalic)
         let f2 = UIFont(descriptor: desc2!, size: 0)
         print(f)
@@ -27,7 +27,7 @@ class ViewController : UIViewController {
         var femphasis : UIFont!
         switch which {
         case 1:
-            let body = UIFontDescriptor.preferredFontDescriptor(withTextStyle:UIFontTextStyleBody)
+            let body = UIFontDescriptor.preferredFontDescriptor(withTextStyle:.body)
             let emphasis = body.withSymbolicTraits(.traitItalic)!
             fbody = UIFont(descriptor: body, size: 0)
             femphasis = UIFont(descriptor: emphasis, size: 0)
@@ -35,7 +35,7 @@ class ViewController : UIViewController {
         case 2:
             // starting in iOS 8.3, this works
             let body = UIFont(name: "GillSans", size: 15)!
-            let emphasis = body.fontDescriptor().withSymbolicTraits(.traitItalic)!
+            let emphasis = body.fontDescriptor.withSymbolicTraits(.traitItalic)!
             fbody = body
             femphasis = UIFont(descriptor: emphasis, size: 0)
         case 3:

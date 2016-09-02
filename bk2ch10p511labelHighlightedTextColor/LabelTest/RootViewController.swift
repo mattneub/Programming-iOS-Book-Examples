@@ -27,7 +27,7 @@ class RootViewController: UITableViewController {
         if cell.contentView.viewWithTag(1) == nil {
             let lab = UILabel()
             print(lab.lineBreakMode.rawValue)
-            let color = indexPath.row == 0 ? UIColor.black() : UIColor.blue()
+            let color = indexPath.row == 0 ? UIColor.black : UIColor.blue
             let s = NSMutableAttributedString(string: "This is\n a test", attributes: [
                 NSForegroundColorAttributeName : color
             ])

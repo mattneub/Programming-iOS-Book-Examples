@@ -3,7 +3,7 @@
 import UIKit
 
 class StringDrawer : UIView {
-    @NSCopying var attributedText : AttributedString! {
+    @NSCopying var attributedText : NSAttributedString! {
         didSet {
             self.setNeedsDisplay()
         }

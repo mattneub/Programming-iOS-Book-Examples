@@ -5,8 +5,8 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet var scrollView : UIScrollView!
     // var fr : UIView?
-    var oldContentInset = UIEdgeInsetsZero
-    var oldIndicatorInset = UIEdgeInsetsZero
+    var oldContentInset = UIEdgeInsets.zero
+    var oldIndicatorInset = UIEdgeInsets.zero
     var oldOffset = CGPoint.zero
     var keyboardShowing = false
 
@@ -46,8 +46,8 @@ class ViewController: UIViewController {
         self.oldIndicatorInset = self.scrollView.scrollIndicatorInsets
         self.oldOffset = self.scrollView.contentOffset
         
-        let d = n.userInfo as! [String:AnyObject]
-        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue()
+        let d = n.userInfo!
+        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         r = self.scrollView.convert(r, from:nil)
         // no need to scroll, as the scroll view will do it for us
         // so all we have to do is adjust the inset

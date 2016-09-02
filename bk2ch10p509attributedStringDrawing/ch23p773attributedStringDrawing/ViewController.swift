@@ -1,7 +1,7 @@
 
 import UIKit
 
-func lend<T where T:NSObject> (closure:(T)->()) -> T {
+func lend<T> (closure:(T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
     return orig
@@ -33,7 +33,7 @@ extension CGVector {
 class ViewController : UIViewController {
     @IBOutlet var drawer : StringDrawer!
     @IBOutlet var iv : UIImageView!
-    lazy var content : AttributedString = self.makeAttributedString()
+    lazy var content : NSAttributedString = self.makeAttributedString()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ class ViewController : UIViewController {
         let r = UIGraphicsImageRenderer(size:rect.size)
         let im = r.image {
             ctx in let con = ctx.cgContext
-            UIColor.white().setFill()
+            UIColor.white.setFill()
             con.fill(rect)
             content.draw(in:rect) // draw attributed string
         }
@@ -66,7 +66,7 @@ class ViewController : UIViewController {
         
     }
     
-    func makeAttributedString() -> AttributedString {
+    func makeAttributedString() -> NSAttributedString {
         var content : NSMutableAttributedString!
         var content2 : NSMutableAttributedString!
         
@@ -79,7 +79,7 @@ class ViewController : UIViewController {
 
         let r = (s1 as NSString).range(of:"Gettysburg Address")
         content.addAttributes([
-            NSStrokeColorAttributeName: UIColor.red(),
+            NSStrokeColorAttributeName: UIColor.red,
             NSStrokeWidthAttributeName: -2.0
         ], range: r)
         

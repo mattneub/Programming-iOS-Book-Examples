@@ -14,7 +14,7 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject))
         self.navigationItem.rightBarButtonItem = addButton
@@ -22,18 +22,18 @@ class MasterViewController: UITableViewController {
 
 
     func insertNewObject(_ sender: AnyObject) {
-        objects.insert(Date(), at: 0)
+        objects.insert(Date() as NSDate, at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         self.tableView.insertRows(at:[indexPath], with: .automatic)
     }
 
     // MARK: - Segues
 
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let indexPath = self.tableView.indexPathForSelectedRow!
             let object = objects[indexPath.row]
-            (segue.destinationViewController as! DetailViewController).detailItem = object
+            (segue.destination as! DetailViewController).detailItem = object
         }
     }
 

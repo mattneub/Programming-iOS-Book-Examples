@@ -20,10 +20,10 @@ class MyLayoutManager : NSLayoutManager {
             var r = self.boundingRect(forGlyphRange:range, in:tc)
             r.origin.x += origin.x
             r.origin.y += origin.y
-            r.insetInPlace(dx: -2, dy: 0)
+            r = r.insetBy(dx: -2, dy: 0)
             let c = UIGraphicsGetCurrentContext()!
             c.saveGState()
-            c.setStrokeColor(UIColor.black().cgColor)
+            c.setStrokeColor(UIColor.black.cgColor)
             c.setLineWidth(1.0)
             c.stroke(r)
             c.restoreGState()

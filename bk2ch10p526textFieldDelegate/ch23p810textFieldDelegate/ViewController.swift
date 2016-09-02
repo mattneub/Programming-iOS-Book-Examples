@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.tf.allowsEditingTextAttributes = true
         
         let mi = UIMenuItem(title:"Expand", action:#selector(MyTextField.expand))
-        let mc = UIMenuController.shared()
+        let mc = UIMenuController.shared
         mc.menuItems = [mi]
 
     }
@@ -33,9 +33,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // not very satisfactory but it does show the result
         
         let md = (textField.typingAttributes! as NSDictionary).mutableCopy() as! NSMutableDictionary
-        let d = [
+        let d : [String:Any] = [
             NSForegroundColorAttributeName:
-                UIColor.red(),
+                UIColor.red,
             NSUnderlineStyleAttributeName:
                 NSUnderlineStyle.styleSingle.rawValue
         ]

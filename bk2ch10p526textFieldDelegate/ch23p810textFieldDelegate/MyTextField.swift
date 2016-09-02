@@ -19,7 +19,7 @@ class MyTextField: UITextField {
     // func dummy(_:AnyObject) {}
     
     let list : [String] = {
-        let path = Bundle.main.urlForResource("abbreviations", withExtension:"txt")!
+        let path = Bundle.main.url(forResource:"abbreviations", withExtension:"txt")!
         let s = try! String(contentsOf:path)
         return s.components(separatedBy:"\n")
         }()
@@ -30,7 +30,7 @@ class MyTextField: UITextField {
     }
     
     
-    override func canPerformAction(_ action: Selector, withSender sender: AnyObject?) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(expand), let r = self.selectedTextRange,
             let s = self.text(in:r) {
             return s.characters.count == 2 && self.state(forAbbrev:s) != nil
@@ -45,9 +45,9 @@ class MyTextField: UITextField {
         }
     }
     
-    override func copy(_ sender:AnyObject?) {
+    override func copy(_ sender:Any?) {
         super.copy(sender)
-        let pb = UIPasteboard.general()
+        let pb = UIPasteboard.general
         if let s = pb.string {
             // ... alter s here ...
             let ss = s + "surprise!"

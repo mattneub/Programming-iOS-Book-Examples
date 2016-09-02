@@ -21,7 +21,7 @@ class MyLayoutManager : NSLayoutManager {
             r.origin.y += origin.y
             let c = UIGraphicsGetCurrentContext()!
             c.saveGState()
-            c.setStrokeColor(UIColor.black().cgColor)
+            c.setStrokeColor(UIColor.black.cgColor)
             c.setLineWidth(1.0)
             c.stroke(r)
             c.restoreGState()

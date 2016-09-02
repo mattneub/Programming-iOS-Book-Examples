@@ -14,8 +14,8 @@ class ViewController: UIViewController {
         } else {
             mas.enumerateAttribute("HERE", in: NSMakeRange(0, mas.length)) {
                 value, r, stop in
-                if let value = value as? Int where value == 1 {
-                    mas.replaceCharacters(in:r, with: NSDate().description)
+                if let value = value as? Int, value == 1 {
+                    mas.replaceCharacters(in:r, with: Date().description)
                     stop.pointee = true
                 }
             }

@@ -2,7 +2,7 @@
 
 import UIKit
 
-func lend<T where T:NSObject> (closure:(T)->()) -> T {
+func lend<T> (closure:(T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
     return orig
@@ -80,7 +80,7 @@ class ViewController: UIViewController {
         
     }
     
-    func makeAttributedString() -> AttributedString {
+    func makeAttributedString() -> NSAttributedString {
         var content : NSMutableAttributedString!
         var content2 : NSMutableAttributedString!
         
@@ -91,8 +91,8 @@ class ViewController: UIViewController {
             NSForegroundColorAttributeName: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
         )
         let r = (s1 as NSString).range(of:"Gettysburg Address")
-        let atts = [
-            NSStrokeColorAttributeName: UIColor.red(),
+        let atts : [String:Any] = [
+            NSStrokeColorAttributeName: UIColor.red,
             NSStrokeWidthAttributeName: -2.0
         ]
         content.addAttributes(atts, range: r)

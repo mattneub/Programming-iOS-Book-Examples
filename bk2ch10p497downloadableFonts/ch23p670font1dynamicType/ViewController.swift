@@ -13,7 +13,7 @@ class ViewController : UIViewController {
     @IBOutlet var lab : UILabel!
     
     func doDynamicType(_ n:Notification!) {
-        self.lab.font = UIFont.preferredFont(forTextStyle:UIFontTextStyleHeadline)
+        self.lab.font = UIFont.preferredFont(forTextStyle:.headline)
     }
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class ViewController : UIViewController {
         print("attempting to download font")
         let desc = UIFontDescriptor(name:name, size:size)
         CTFontDescriptorMatchFontDescriptorsWithProgressHandler(
-            [desc], nil, {
+            [desc] as CFArray, nil, {
                 (state:CTFontDescriptorMatchingState, prog:CFDictionary!) -> Bool in
                 switch state {
                 case .didBegin:
@@ -42,7 +42,7 @@ class ViewController : UIViewController {
                 case .downloading:
                     let d = prog as NSDictionary
                     let key = kCTFontDescriptorMatchingPercentage
-                    let cur : AnyObject? = d[key as NSString]
+                    let cur = d[key] // wow, no cast needed
                     if let cur = cur as? NSNumber {
                         NSLog("progress: %@%%", cur)
                     }

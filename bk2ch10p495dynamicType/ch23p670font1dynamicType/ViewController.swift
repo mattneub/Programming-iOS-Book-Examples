@@ -13,10 +13,14 @@ class ViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(doDynamicType), name: .UIContentSizeCategoryDidChange, object: nil)
         
-//        UIFont.familyNames().map {UIFont.fontNamesForFamilyName($0)}
-//            .forEach {(n:[String]) in n.forEach {print($0)}}
+        // not any more!
+//        NotificationCenter.default.addObserver(self, selector: #selector(doDynamicType), name: .UIContentSizeCategoryDidChange, object: nil)
+        // hold my beer, and watch THIS!
+        self.lab.adjustsFontForContentSizeCategory = true // ta-daaaaaa!
+        
+        UIFont.familyNames.map {UIFont.fontNames(forFamilyName: $0)}
+            .forEach {(n:[String]) in n.forEach {print($0)}}
         
         // that's not what I actually used to get this list:
 
@@ -102,10 +106,12 @@ class ViewController : UIViewController {
         
     }
     
-    func doDynamicType(_ n:Notification) {
-        let style = self.lab.font.fontDescriptor().object(forKey:UIFontDescriptorTextStyleAttribute) as! String
-        self.lab.font = UIFont.preferredFont(forTextStyle:style)
-    }
+    // new in iOS 10, we don't have to do this any more! dynamic type is dynamic!
+    
+//    func doDynamicType(_ n:Notification) {
+//        let style = self.lab.font.fontDescriptor.object(forKey:UIFontDescriptorTextStyleAttribute) as! String
+//        self.lab.font = UIFont.preferredFont(forTextStyle:UIFontTextStyle(style))
+//    }
     
     
 }

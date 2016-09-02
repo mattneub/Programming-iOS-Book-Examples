@@ -4,7 +4,7 @@ import UIKit
 // useful little utility for encapsulation of "lend me" objects like
 // NSMutableParagraphStyle and NSShadow
 
-func lend<T where T:NSObject> (closure:(T)->()) -> T {
+func lend<T> (closure:(T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
     return orig
@@ -38,7 +38,7 @@ class ViewController : UIViewController {
                 ])
             let r = (s1 as NSString).range(of:"Gettysburg Address")
             content.addAttributes([
-                NSStrokeColorAttributeName: UIColor.red(),
+                NSStrokeColorAttributeName: UIColor.red,
                 NSStrokeWidthAttributeName: -2.0
                 ], range: r)
             self.lab.attributedText = content
@@ -104,7 +104,7 @@ class ViewController : UIViewController {
             if which > 4 {fallthrough}
         case 5:
             // demonstrating efficient cycling through style runs
-            let opts : AttributedString.EnumerationOptions = .longestEffectiveRangeNotRequired
+            let opts : NSAttributedString.EnumerationOptions = .longestEffectiveRangeNotRequired
             content.enumerateAttribute(NSFontAttributeName,
                 in:NSMakeRange(0,content.length),
                 options:opts) {

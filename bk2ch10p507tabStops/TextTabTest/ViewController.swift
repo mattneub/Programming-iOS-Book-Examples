@@ -26,7 +26,7 @@ extension CGVector {
 
 
 
-func lend<T where T:NSObject> (closure:(T)->()) -> T {
+func lend<T> (closure:(T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
     return orig
@@ -71,28 +71,28 @@ class ViewController : UIViewController {
         let onionatt = NSTextAttachment()
         onionatt.image = onions
         onionatt.bounds = CGRect(0,-5,onions.size.width,onions.size.height)
-        let onionattchar = AttributedString(attachment:onionatt)
+        let onionattchar = NSAttributedString(attachment:onionatt)
         
         let pepperatt = NSTextAttachment()
         pepperatt.image = peppers
         pepperatt.bounds = CGRect(0,-1,peppers.size.width,peppers.size.height)
-        let pepperattchar = AttributedString(attachment:pepperatt)
+        let pepperattchar = NSAttributedString(attachment:pepperatt)
         
         let r = (mas.string as NSString).range(of:"Onions")
         mas.insert(onionattchar, at:(r.location + r.length))
         let r2 = (mas.string as NSString).range(of:"Peppers")
         mas.insert(pepperattchar, at:(r2.location + r2.length))
         
-        mas.append(AttributedString(string: "\n\n", attributes:nil))
-        mas.append(AttributedString(string: "LINK", attributes: [
+        mas.append(NSAttributedString(string: "\n\n", attributes:nil))
+        mas.append(NSAttributedString(string: "LINK", attributes: [
             NSLinkAttributeName : URL(string: "http://www.apple.com")!
             ]))
-        mas.append(AttributedString(string: "\n\n", attributes:nil))
-        mas.append(AttributedString(string: "(805)-123-4567", attributes: nil))
-        mas.append(AttributedString(string: "\n\n", attributes:nil))
-        mas.append(AttributedString(string: "123 Main Street, Anytown, CA 91234", attributes: nil))
-        mas.append(AttributedString(string: "\n\n", attributes:nil))
-        mas.append(AttributedString(string: "tomorrow at 4 PM", attributes: nil))
+        mas.append(NSAttributedString(string: "\n\n", attributes:nil))
+        mas.append(NSAttributedString(string: "(805)-123-4567", attributes: nil))
+        mas.append(NSAttributedString(string: "\n\n", attributes:nil))
+        mas.append(NSAttributedString(string: "123 Main Street, Anytown, CA 91234", attributes: nil))
+        mas.append(NSAttributedString(string: "\n\n", attributes:nil))
+        mas.append(NSAttributedString(string: "tomorrow at 4 PM", attributes: nil))
 
         
         self.tv.attributedText = mas
@@ -106,12 +106,12 @@ class ViewController : UIViewController {
     }
     
     func thumbnailOfImage(name:String, extension ext: String) -> UIImage {
-        let url = Bundle.main.urlForResource(name,
+        let url = Bundle.main.url(forResource:name,
                 withExtension:ext)!
-        let src = CGImageSourceCreateWithURL(url, nil)!
+        let src = CGImageSourceCreateWithURL(url as CFURL, nil)!
         let scale = UIScreen.main.scale
         let w : CGFloat = 20 * scale
-        let d : [NSObject:AnyObject] = [
+        let d : NSDictionary = [
             kCGImageSourceShouldAllowFloat : true,
             kCGImageSourceCreateThumbnailWithTransform: true,
             kCGImageSourceCreateThumbnailFromImageAlways: true,

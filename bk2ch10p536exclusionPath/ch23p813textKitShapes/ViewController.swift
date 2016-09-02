@@ -2,7 +2,7 @@
 
 import UIKit
 
-func lend<T where T:NSObject> (closure:(T)->()) -> T {
+func lend<T> (closure:(T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
     return orig
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let path = Bundle.main.pathForResource("brillig", ofType: "txt")!
+        let path = Bundle.main.path(forResource: "brillig", ofType: "txt")!
         let s = try! String(contentsOfFile:path)
         let s2 = s.replacingOccurrences(of:"\n", with: "")
         let mas = NSMutableAttributedString(string:s2, attributes:[

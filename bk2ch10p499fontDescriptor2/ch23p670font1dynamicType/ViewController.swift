@@ -25,9 +25,9 @@ class ViewController : UIViewController {
         
         do {
         
-            var f = UIFont.preferredFont(forTextStyle:UIFontTextStyleTitle2)
+            var f = UIFont.preferredFont(forTextStyle:.title2)
             
-            let desc = f.fontDescriptor()
+            let desc = f.fontDescriptor
             let d = [
                 UIFontFeatureTypeIdentifierKey:kStylisticAlternativesType,
                 UIFontFeatureSelectorIdentifierKey:kStylisticAltOneOnSelector

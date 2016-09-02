@@ -62,11 +62,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func keyboardShow(_ n:Notification) {
         print("show!")
-        let d = n.userInfo as! [String:AnyObject]
+        let d = n.userInfo!
         if let local = d[UIKeyboardIsLocalUserInfoKey] {
             print(local)
         }
-        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue()
+        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         r = self.slidingView.convert(r, from:nil)
         if let f = self.fr?.frame {
             let y : CGFloat =
@@ -81,7 +81,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func keyboardHide(_ n:Notification) {
         print("hide!")
-        let d = n.userInfo as! [String:AnyObject]
+        let d = n.userInfo!
         if let local = d[UIKeyboardIsLocalUserInfoKey] {
             print(local)
         }
