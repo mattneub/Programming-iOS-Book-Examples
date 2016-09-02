@@ -11,7 +11,7 @@ class StringDrawer : UIView {
     
     override func draw(_ rect: CGRect) {
         let r = rect.offsetBy(dx: 0, dy: 2)
-        // just proving it's now an OptionSetType
+        // just proving it's now an Option Set
         let opts : NSStringDrawingOptions = [.truncatesLastVisibleLine, .usesLineFragmentOrigin]
         
         let context = NSStringDrawingContext()

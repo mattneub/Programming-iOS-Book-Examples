@@ -99,6 +99,7 @@
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					C9DDA0D8180DC5E900E9E0CC = {
+						DevelopmentTeam = W3LHX5RGV2;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -237,6 +238,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch23p670font1dynamicType/ch23p770font2downloadableFont-Prefix.pch";
 				INFOPLIST_FILE = "ch23p670font1dynamicType/ch23p770font2downloadableFont-Info.plist";
@@ -254,6 +256,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch23p670font1dynamicType/ch23p770font2downloadableFont-Prefix.pch";
 				INFOPLIST_FILE = "ch23p670font1dynamicType/ch23p770font2downloadableFont-Info.plist";

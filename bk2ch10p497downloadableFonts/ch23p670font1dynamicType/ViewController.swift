@@ -32,8 +32,7 @@ class ViewController : UIViewController {
         print("attempting to download font")
         let desc = UIFontDescriptor(name:name, size:size)
         CTFontDescriptorMatchFontDescriptorsWithProgressHandler(
-            [desc] as CFArray, nil, {
-                (state:CTFontDescriptorMatchingState, prog:CFDictionary!) -> Bool in
+            [desc] as CFArray, nil, { state, prog in
                 switch state {
                 case .didBegin:
                     NSLog("%@", "matching did begin")
@@ -58,7 +57,7 @@ class ViewController : UIViewController {
                             NSLog("%@", "got the font!")
                             self.lab.font = f
                         }
-                        }
+                    }
                 default:break
                 }
                 return true

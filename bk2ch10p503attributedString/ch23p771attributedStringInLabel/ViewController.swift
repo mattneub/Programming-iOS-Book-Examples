@@ -15,7 +15,7 @@ class ViewController : UIViewController {
     @IBOutlet var lab : UILabel!
     @IBOutlet var tv : UITextView!
     
-    let which = 4 // 0 ... 5
+    let which = 5 // 0 ... 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +62,8 @@ class ViewController : UIViewController {
             if which >= 4 {fallthrough}
         case 2, 3, 4, 5:
             let s2 = "Fourscore and seven years ago, our fathers brought forth " +
-                "upon this continent a new nation, conceived in liberty and dedicated " +
-                "to the proposition that all men are created equal."
+                "upon this continent a new nation, conceived in liberty and " +
+                "dedicated to the proposition that all men are created equal."
             content2 = NSMutableAttributedString(string:s2, attributes: [
                 NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:16)!
             ])
@@ -101,13 +101,19 @@ class ViewController : UIViewController {
             self.lab.attributedText = content
             self.tv.attributedText = content
             self.tv.textContainerInset = UIEdgeInsetsMake(20,0,0,0)
+            
+            // need this for a different book example
+            var range : NSRange = NSMakeRange(0,0)
+            let d = content.attributes(at:content.length-1, effectiveRange:&range)
+            _ = d
+            
             if which > 4 {fallthrough}
         case 5:
             // demonstrating efficient cycling through style runs
-            let opts : NSAttributedString.EnumerationOptions = .longestEffectiveRangeNotRequired
+            
             content.enumerateAttribute(NSFontAttributeName,
                 in:NSMakeRange(0,content.length),
-                options:opts) {
+                options:.longestEffectiveRangeNotRequired) {
                     value, range, stop in
                     print(range)
                     let font = value as! UIFont

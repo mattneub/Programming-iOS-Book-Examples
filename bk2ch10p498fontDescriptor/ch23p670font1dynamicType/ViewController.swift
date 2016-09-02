@@ -7,8 +7,7 @@ class ViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.doDynamicType(nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(doDynamicType), name: .UIContentSizeCategoryDidChange, object: nil)
+        self.lab.adjustsFontForContentSizeCategory = true
         
         let f = UIFont(name: "Avenir", size: 15)!
         let desc = f.fontDescriptor
@@ -20,37 +19,29 @@ class ViewController : UIViewController {
         print(f2)
     }
     
-    let which = 1
-
-    func doDynamicType(_ n:Notification!) {
+    override func traitCollectionDidChange(_ ptc: UITraitCollection?) {
+        let tc = self.traitCollection
+        if ptc == nil ||
+        ptc!.preferredContentSizeCategory != tc.preferredContentSizeCategory {
+            self.doDynamicType()
+        }
+    }
+    
+    func doDynamicType() {
         var fbody : UIFont!
         var femphasis : UIFont!
-        switch which {
-        case 1:
-            let body = UIFontDescriptor.preferredFontDescriptor(withTextStyle:.body)
-            let emphasis = body.withSymbolicTraits(.traitItalic)!
-            fbody = UIFont(descriptor: body, size: 0)
-            femphasis = UIFont(descriptor: emphasis, size: 0)
-            print(fbody)
-        case 2:
-            // starting in iOS 8.3, this works
-            let body = UIFont(name: "GillSans", size: 15)!
-            let emphasis = body.fontDescriptor.withSymbolicTraits(.traitItalic)!
-            fbody = body
-            femphasis = UIFont(descriptor: emphasis, size: 0)
-        case 3:
-            // the workaround in iOS 8.2 and before is drop down to Core Text
-            let body = UIFont(name: "GillSans", size: 15)!
-            let result = CTFontCreateCopyWithSymbolicTraits(body as CTFont, 0, nil, .italicTrait, .italicTrait)!
-            fbody = body
-            femphasis = result as UIFont
-        default:break
-        }
+        
+        let body = UIFontDescriptor.preferredFontDescriptor(withTextStyle:.body)
+        let emphasis = body.withSymbolicTraits(.traitItalic)!
+        fbody = UIFont(descriptor: body, size: 0)
+        femphasis = UIFont(descriptor: emphasis, size: 0)
+        print(fbody)
         
         let s = self.lab.text!
         let mas = NSMutableAttributedString(string: s, attributes: [NSFontAttributeName:fbody])
         mas.addAttribute(NSFontAttributeName, value: femphasis, range: (s as NSString).range(of:"wild"))
         self.lab.attributedText = mas
+        
     }
     
 }
