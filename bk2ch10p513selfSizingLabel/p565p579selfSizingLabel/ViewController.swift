@@ -14,7 +14,7 @@ class ViewController : UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let showTheBug = true // set to true and run on iPhone 4s to see the bug
+        let showTheBug = true // set to true and run on iPhone 5s to see the bug
         switch showTheBug {
         case true:
             let att = self.theLabel.attributedText!.mutableCopy() as! NSMutableAttributedString

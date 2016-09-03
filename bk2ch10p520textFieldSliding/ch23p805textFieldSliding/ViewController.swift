@@ -51,8 +51,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ tf: UITextField) -> Bool {
+        self.fr = nil // * let's reverse these
         tf.resignFirstResponder()
-        self.fr = nil
         return true
     }
     
@@ -84,6 +84,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let d = n.userInfo!
         if let local = d[UIKeyboardIsLocalUserInfoKey] {
             print(local)
+        }
+        do { // work around bug
+            let beginning = (d[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+            let ending = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+            if beginning == ending {print("bail!"); return}
         }
         self.topConstraint.constant = 0
         self.bottomConstraint.constant = 0

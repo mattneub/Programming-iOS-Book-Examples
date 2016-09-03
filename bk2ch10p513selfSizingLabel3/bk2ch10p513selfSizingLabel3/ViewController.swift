@@ -24,8 +24,8 @@ class ViewController: UIViewController {
         content2.addAttributes([
             NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:24)!,
             NSExpansionAttributeName: 0.3,
-            NSKernAttributeName: -4 // negative kerning bug fixed in iOS 8, broken again in iOS 8.3
-            ], range:NSMakeRange(0,1))
+            NSKernAttributeName: -4
+        ], range:NSMakeRange(0,1))
         
         content2.addAttribute(NSParagraphStyleAttributeName,
             value: lend {

@@ -16,31 +16,33 @@ class MyTextField: UITextField {
             nil, action:#selector(Dummy.dummy), for:.editingDidEndOnExit)
     }
     
-    // func dummy(_:AnyObject) {}
-    
-    let list : [String] = {
+    let list : [String:String] = {
         let path = Bundle.main.url(forResource:"abbreviations", withExtension:"txt")!
         let s = try! String(contentsOf:path)
-        return s.components(separatedBy:"\n")
-        }()
+        let arr = s.components(separatedBy:"\n")
+        var result : [String:String] = [:]
+        stride(from: 0, to: arr.count, by: 2).map{($0,$0+1)}.forEach {
+            result[arr[$0.0]] = arr[$0.1]
+        }
+        return result
+    }()
     
-    func state(forAbbrev abbrev:String) -> String? {
-        let ix = self.list.index(of:abbrev.uppercased())
-        return ix != nil ? list[ix!+1] : nil
+    func state(for abbrev:String) -> String? {
+        return list[abbrev.uppercased()]
     }
     
-    
+
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(expand), let r = self.selectedTextRange,
             let s = self.text(in:r) {
-            return s.characters.count == 2 && self.state(forAbbrev:s) != nil
+            return s.characters.count == 2 && self.state(for:s) != nil
         }
         return super.canPerformAction(action, withSender:sender)
     }
     
     func expand(_ sender:AnyObject?) {
         if let r = self.selectedTextRange, let s = self.text(in:r),
-            let ss = self.state(forAbbrev:s) {
+            let ss = self.state(for:s) {
             self.replace(r, withText:ss)
         }
     }

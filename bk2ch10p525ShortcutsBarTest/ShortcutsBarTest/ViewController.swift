@@ -11,6 +11,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // iPad only
+        
         switch which {
         case 1:
             let bbi = UIBarButtonItem(

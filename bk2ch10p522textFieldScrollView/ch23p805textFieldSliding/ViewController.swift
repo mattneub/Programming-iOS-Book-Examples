@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
         
+        // content view's width and height constraints in storyboard are placeholders
         let contentView = self.scrollView.subviews[0]
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo:self.scrollView.widthAnchor),
@@ -32,8 +33,8 @@ class ViewController: UIViewController {
     
     func textFieldShouldReturn(_ tf: UITextField) -> Bool {
         print("return")
-        tf.resignFirstResponder()
         // self.fr = nil
+        tf.resignFirstResponder()
         return true
     }
     
@@ -42,6 +43,13 @@ class ViewController: UIViewController {
     }
 
     func keyboardShow(_ n:Notification) {
+        if self.keyboardShowing {
+            return
+        }
+        self.keyboardShowing = true
+        
+        print("show")
+
         self.oldContentInset = self.scrollView.contentInset
         self.oldIndicatorInset = self.scrollView.scrollIndicatorInsets
         self.oldOffset = self.scrollView.contentOffset
@@ -54,17 +62,26 @@ class ViewController: UIViewController {
         self.scrollView.contentInset.bottom = r.size.height
         self.scrollView.scrollIndicatorInsets.bottom = r.size.height
         
-        self.keyboardShowing = true
     }
     
     func keyboardHide(_ n:Notification) {
+        if !self.keyboardShowing {
+            return
+        }
+        self.keyboardShowing = false
+
         print("hide")
+//        do { // work around bug
+//            let d = n.userInfo!
+//            let beginning = (d[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+//            let ending = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+//            if beginning == ending {print("bail!"); return}
+//        }
         self.scrollView.bounds.origin = self.oldOffset
         self.scrollView.scrollIndicatorInsets = self.oldIndicatorInset
         self.scrollView.contentInset = self.oldContentInset
 //        self.fr?.resignFirstResponder()
 //        self.fr = nil
-        self.keyboardShowing = false
 
     }
 

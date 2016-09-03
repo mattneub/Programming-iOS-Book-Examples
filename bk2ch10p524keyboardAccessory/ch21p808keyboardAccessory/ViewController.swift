@@ -14,7 +14,6 @@ class ViewController: UIViewController {
         self.accessoryView = arr[0] as! UIView
         let b = self.accessoryView.subviews[0] as! UIButton
         b.addTarget(self, action:#selector(doNextButton), for:.touchUpInside)
-        
     }
     
 
@@ -28,8 +27,8 @@ class ViewController: UIViewController {
     }
 
     func textFieldShouldReturn(_ tf: UITextField) -> Bool {
-        tf.resignFirstResponder()
         self.fr = nil
+        tf.resignFirstResponder()
         return true
     }
     

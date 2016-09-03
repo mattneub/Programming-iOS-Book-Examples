@@ -27,8 +27,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // force user to type in red, underlined, lowercase only
         
         let lc = string.lowercased()
-        textField.text = (textField.text! as NSString).replacingCharacters(in:range,
-                with:lc)
+        textField.text = (textField.text! as NSString)
+            .replacingCharacters(in:range, with:lc)
         
         // not very satisfactory but it does show the result
         

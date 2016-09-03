@@ -27,6 +27,9 @@ class RootViewController: UITableViewController {
         if cell.contentView.viewWithTag(1) == nil {
             let lab = UILabel()
             print(lab.lineBreakMode.rawValue)
+            lab.textColor = .blue // see if this makes any difference
+            //lab.textColor = .black // yes it does! the text color must be black too
+            // no! the rule is that the attributed text color must _match_ the textColor
             let color = indexPath.row == 0 ? UIColor.black : UIColor.blue
             let s = NSMutableAttributedString(string: "This is\n a test", attributes: [
                 NSForegroundColorAttributeName : color
