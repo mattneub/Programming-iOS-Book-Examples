@@ -126,13 +126,15 @@ class ViewController : UIViewController {
 }
 
 extension ViewController : UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
+    func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction:UITextItemInteraction) -> Bool {
+        print(interaction.rawValue)
         return true
     }
     
-    func textView(_ textView: UITextView, shouldInteractWith URL: Foundation.URL, in characterRange: NSRange) -> Bool {
+    func textView(_ textView: UITextView, shouldInteractWith URL: Foundation.URL, in characterRange: NSRange, interaction:UITextItemInteraction) -> Bool {
         print(URL)
         print((textView.text as NSString).substring(with:characterRange))
+        print(interaction.rawValue)
         return true
     }
 }

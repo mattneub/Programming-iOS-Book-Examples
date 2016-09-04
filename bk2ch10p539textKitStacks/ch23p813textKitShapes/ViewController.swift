@@ -34,7 +34,7 @@ class ViewController: UIViewController {
             },
             range:NSMakeRange(0,1))
         
-        var which : Int { return 2 }
+        var which : Int { return 1 }
         switch which {
         case 1:
             

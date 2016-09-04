@@ -24,7 +24,7 @@ class StringDrawer : UIView {
             ts.addLayoutManager(lm)
             let tc = NSTextContainer(size:rect.size)
             lm.addTextContainer(tc)
-            tc.lineBreakMode = .byTruncatingTail
+            tc.lineBreakMode = .byTruncatingTail //
             tc.lineFragmentPadding = 0
             let r = lm.glyphRange(for:tc)
             lm.drawBackground(forGlyphRange:r, at:CGPoint(0,2))

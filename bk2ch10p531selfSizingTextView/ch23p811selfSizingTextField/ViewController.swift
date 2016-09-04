@@ -42,17 +42,15 @@ class ViewController: UIViewController, UITextViewDelegate {
     }
     
     func adjustHeight(_ tv:UITextView) {
-//        let sz = self.tv.sizeThatFits(CGSize(self.tv.bounds.width, 10000))
-//        self.heightConstraint.constant = ceil(sz.height)
         self.heightConstraint.constant = ceil(tv.contentSize.height)
     }
     
-//    func textViewDidChange(textView: UITextView) {
-//        delay(0.05) {
+//    func textViewDidChange(_ textView: UITextView) {
+//        delay(0.1) {
 //            self.adjustHeight(textView)
 //        }
 //    }
-    
+//    
     // textViewDidChange is happening too late;
     // by that time, the text view has scrolled if necessary
     // hence the delay
@@ -61,14 +59,19 @@ class ViewController: UIViewController, UITextViewDelegate {
     // and then I have to put it back, and it's not obvious what the algorithm is
     // this is my attempt to get it right
 
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,
+                  replacementText text: String) -> Bool {
 //        let sel = textView.selectedRange
-//        textView.text = (textView.text as NSString).replacingCharacters(in:range,
-//            with:text)
-        self.adjustHeight(textView)
+//        textView.text = (textView.text as NSString)
+//            .replacingCharacters(in: range, with:text)
+        delay(0.1) {
+            self.adjustHeight(textView)
+            textView.contentOffset = .zero
+        }
 //        textView.selectedRange =
 //            text.isEmpty && sel.length == 0 ?
-//                NSMakeRange(sel.location - 1,0) : NSMakeRange(sel.location + text.utf16.count, 0)
+//                NSMakeRange(sel.location - 1,0) :
+//            NSMakeRange(sel.location + text.utf16.count, 0)
         return true
     }
     

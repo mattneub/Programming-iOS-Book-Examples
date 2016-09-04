@@ -47,6 +47,12 @@ class ViewController: UIViewController, UITextViewDelegate {
     // and we don't have to animate
     
     func keyboardShow(_ n:Notification) {
+        if self.keyboardShowing {
+            return
+        }
+        self.keyboardShowing = true
+
+        
         print("show")
         
         let d = n.userInfo!
@@ -55,18 +61,21 @@ class ViewController: UIViewController, UITextViewDelegate {
         self.tv.contentInset.bottom = r.size.height
         self.tv.scrollIndicatorInsets.bottom = r.size.height
         
-        self.keyboardShowing = true
         
 
     }
     
     func keyboardHide(_ n:Notification) {
+        if !self.keyboardShowing {
+            return
+        }
+        self.keyboardShowing = false
+
         print("hide")
         
         self.tv.contentInset = .zero
         self.tv.scrollIndicatorInsets = .zero
         
-        self.keyboardShowing = false
 
     }
 

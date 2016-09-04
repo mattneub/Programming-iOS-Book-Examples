@@ -96,7 +96,10 @@ class ViewController: UIViewController {
         // so here's the top-left point within the text container
         var tctopleft = CGPoint(0, off.y - top)
         // so what's the character index for that?
-        //    NSUInteger ix = [self.tv.layoutManager characterIndexForPoint:tctopleft inTextContainer:self.tv.textContainer fractionOfDistanceBetweenInsertionPoints:nil];
+        // this doesn't give quite the right answer
+        let ixx = self.tv.layoutManager.characterIndex(for:tctopleft, in:self.tv.textContainer, fractionOfDistanceBetweenInsertionPoints:nil)
+        _ = ixx
+        // this is better
         var ix = self.tv.layoutManager.glyphIndex(for:tctopleft, in:self.tv.textContainer, fractionOfDistanceThroughGlyph:nil)
         let frag = self.tv.layoutManager.lineFragmentRect(forGlyphAt:ix, effectiveRange:nil)
         if tctopleft.y > frag.origin.y + 0.5*frag.size.height {

@@ -58,6 +58,18 @@ class ViewController: UIViewController {
         
         self.tv.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 0)
         self.tv.isScrollEnabled = false
+        
+        do {
+            // just making sure this compiles
+            let r = CGRect(0,0,500,500)
+            let lm = NSLayoutManager()
+            let ts = NSTextStorage()
+            ts.addLayoutManager(lm)
+            let tc = NSTextContainer(size:CGSize(r.width, .greatestFiniteMagnitude))
+            lm.addTextContainer(tc)
+            let tv = UITextView(frame:r, textContainer:tc)
+            _ = tv
+        }
 
     }
     
