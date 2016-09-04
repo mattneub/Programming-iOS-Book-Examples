@@ -1,5 +1,6 @@
 
 import UIKit
+import CoreText
 
 class ViewController : UIViewController {
     
@@ -100,6 +101,15 @@ class ViewController : UIViewController {
             
 //            self.lab2.font = UIFont(name: "Papyrus", size: 20)
 //            self.lab2.text = "offloading fistfights"
+            
+            do {
+                let desc = UIFontDescriptor(name: "Didot", size: 20) as CTFontDescriptor
+                let f = CTFontCreateWithFontDescriptor(desc,0,nil)
+                let arr = CTFontCopyFeatures(f)
+                print(arr)
+                
+                
+            }
         
         }
     }

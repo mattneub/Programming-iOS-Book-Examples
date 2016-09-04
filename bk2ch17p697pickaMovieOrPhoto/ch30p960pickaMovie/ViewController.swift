@@ -125,7 +125,7 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     
     
     func imagePickerController(_ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [String : AnyObject]) { //
+        didFinishPickingMediaWithInfo info: [String : Any]) { //
             print(info[UIImagePickerControllerReferenceURL])
             let url = info[UIImagePickerControllerMediaURL] as? URL
             var im = info[UIImagePickerControllerOriginalImage] as? UIImage
