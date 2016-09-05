@@ -85,13 +85,13 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
             guard let _ = object as? WKWebView else {return}
             guard let keyPath = keyPath else {return}
             guard let change = change else {return}
             switch keyPath {
             case "loading": // new:1 or 0
-                if let val = change[NSKeyValueChangeKey.newKey] as? Bool {
+                if let val = change[.newKey] as? Bool {
                     if val {
                         self.activity.startAnimating()
                     } else {
@@ -99,7 +99,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
                     }
                 }
             case "title": // not actually showing it in this example
-                if let val = change[NSKeyValueChangeKey.newKey] as? String {
+                if let val = change[.newKey] as? String {
                     self.navigationItem.title = val
                 }
             default:break
@@ -144,11 +144,11 @@ extension WebViewController : WKNavigationDelegate {
         print("did commit \(navigation)")
     }
     
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: NSError) {
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         print("did fail")
     }
     
-    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         print("did fail provisional")
     }
     

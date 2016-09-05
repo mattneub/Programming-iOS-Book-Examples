@@ -20,9 +20,9 @@ class MyMessageHandler : NSObject, WKScriptMessageHandler {
         self.delegate = delegate
         super.init()
     }
-    func userContentController(_ userContentController: WKUserContentController,
+    func userContentController(_ ucc: WKUserContentController,
         didReceive message: WKScriptMessage) {
-            delegate?.userContentController(userContentController, didReceive: message)
+            self.delegate?.userContentController(ucc, didReceive: message)
     }
     deinit {
         print("message handler dealloc")
@@ -115,7 +115,11 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         // alternatively, to use a default configuration, use frame alone
         
         // here, frame unimportant, we will be sized automatically
-        let wv = WKWebView(frame: CGRect.zero)
+//        let config = WKWebViewConfiguration()
+//        let wv = WKWebView(frame: .zero, configuration:config)
+        
+        let wv = WKWebView(frame: .zero)
+        
         self.wv = wv
         
         // inject a CSS rule (example taken from WWDC 2014 video)
@@ -176,14 +180,15 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         wv.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
         
     }
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard let wv = object as? WKWebView else {return}
         guard let keyPath = keyPath else {return}
         guard let change = change else {return}
         switch keyPath {
         case "loading": // new:1 or 0
-            if let val = change[NSKeyValueChangeKey.newKey] as? Bool {
+            if let val = change[.newKey] as? Bool {
                 if val {
+                    print("starting animating")
                     self.activity.startAnimating()
                 } else {
                     self.activity.stopAnimating()
@@ -193,7 +198,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                         if wv.estimatedProgress == 1 {
                             delay(0.1) { // had to introduce delay; there's a flash but there's nothing I can do
                                 print("finished loading! restoring offset")
-                                wv.scrollView.contentOffset = self.oldOffset!.cgPointValue()
+                                wv.scrollView.contentOffset = self.oldOffset!.cgPointValue
                                 self.oldOffset = nil
                             }
                         }
@@ -201,7 +206,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                 }
             }
         case "title": // not actually showing it in this example
-            if let val = change[NSKeyValueChangeKey.newKey] as? String {
+            if let val = change[.newKey] as? String {
                 print(val)
             }
         default:break
@@ -216,7 +221,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         super.viewDidAppear(animated)
         print("view did appear, req: \(self.wv.url)")
 
-        if !self.isMovingToParentViewController() {
+        if !self.isMovingToParentViewController {
             return // so we don't do this again when a presented view controller is dismissed
         }
         
@@ -232,10 +237,10 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                 return
             }
             
-            let bodypath = Bundle.main.pathForResource("htmlbody", ofType:"txt")!
+            let bodypath = Bundle.main.path(forResource: "htmlbody", ofType:"txt")!
             let ss = try! String(contentsOfFile:bodypath)
             
-            let templatepath = Bundle.main.pathForResource("htmlTemplate", ofType:"txt")!
+            let templatepath = Bundle.main.path(forResource: "htmlTemplate", ofType:"txt")!
             let base = URL(fileURLWithPath:templatepath)
             var s = try! String(contentsOfFile:templatepath)
             
@@ -253,43 +258,43 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             self.oldHTMLString = s
             self.oldBase = base
         case 2:
-            let path = Bundle.main.pathForResource("release", ofType:"pdf")!
+            let path = Bundle.main.path(forResource: "release", ofType:"pdf")!
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 3:
-            let path = Bundle.main.pathForResource("testing", ofType:"pdf")!
+            let path = Bundle.main.path(forResource: "testing", ofType:"pdf")!
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 4:
-            let path = Bundle.main.pathForResource("test", ofType:"rtf")!
+            let path = Bundle.main.path(forResource: "test", ofType:"rtf")!
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 5:
-            let path = Bundle.main.pathForResource("test", ofType:"doc")!
+            let path = Bundle.main.path(forResource: "test", ofType:"doc")!
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 6:
-            let path = Bundle.main.pathForResource("test", ofType:"docx")!
+            let path = Bundle.main.path(forResource: "test", ofType:"docx")!
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 7:
-            let path = Bundle.main.pathForResource("test", ofType:"pages")! // blank on device
+            let path = Bundle.main.path(forResource: "test", ofType:"pages")! // blank on device
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 8:
-            let path = Bundle.main.pathForResource("test.pages", ofType:"zip")! // slow, but it does work!
+            let path = Bundle.main.path(forResource: "test.pages", ofType:"zip")! // slow, but it does work!
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 9:
-            let path = Bundle.main.pathForResource("test", ofType:"rtfd")! // blank on device
+            let path = Bundle.main.path(forResource: "test", ofType:"rtfd")! // blank on device
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 10:
-            let path = Bundle.main.pathForResource("test.rtfd", ofType:"zip")! // displays "Unable to Read Document."
+            let path = Bundle.main.path(forResource: "test.rtfd", ofType:"zip")! // displays (new in iOS 10), but not the image
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 11:
-            let path = Bundle.main.pathForResource("htmlbody", ofType:"txt")!
+            let path = Bundle.main.path(forResource: "htmlbody", ofType:"txt")!
             let url = URL(fileURLWithPath:path)
             self.wv.loadFileURL(url, allowingReadAccessTo: url)
         case 12:
@@ -311,7 +316,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             let url = URL(string: "http://www.apeth.com/rez/test.pages.zip")!
             self.wv.load(URLRequest(url: url))
         case 18:
-            let url = URL(string: "http://www.apeth.com/rez/test.rtfd.zip")! // nope :(
+            let url = URL(string: "http://www.apeth.com/rez/test.rtfd.zip")! // iOS 10, text but not image
             self.wv.load(URLRequest(url: url))
 
         default: break
@@ -345,18 +350,27 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             .removeScriptMessageHandler(forName:"playbutton")
     }
     
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: ((WKNavigationActionPolicy) -> Void)) {
+    let whichNav = 1
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void) {
         if navigationAction.navigationType == .linkActivated {
             if let url = navigationAction.request.url {
                 print("user would like to navigate to \(url)")
                 // this is how you would open in Mobile Safari
-                // UIApplication.shared.openURL(url)
-                // this is how to use the new Safari view controller
-                let svc = SFSafariViewController(url: url)
-                // svc.delegate = self
-                self.present(svc, animated: true)
-                decisionHandler(.cancel)
-                return
+                switch whichNav {
+                case 0:
+                    UIApplication.shared.open(url)
+                    decisionHandler(.cancel)
+                    return
+                case 1:
+                    // this is how to use the new Safari view controller
+                    let svc = SFSafariViewController(url: url)
+                    // svc.delegate = self
+                    self.present(svc, animated: true)
+                    decisionHandler(.cancel)
+                    return
+                default:break
+                }
             }
         }
         // must always call _something_

@@ -95,7 +95,7 @@ class ViewController: UIViewController {
     override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
             guard keyPath == #keyPath(AVPlayerViewController.readyForDisplay) else {return}
             guard let vc = object as? AVPlayerViewController else {return}
-            guard let ok = change?[NSKeyValueChangeKey.newKey] as? Bool else {return}
+            guard let ok = change?[.newKey] as? Bool else {return}
             guard ok else {return}
             vc.removeObserver(self, forKeyPath:#keyPath(AVPlayerViewController.readyForDisplay))
             DispatchQueue.main.async {

@@ -126,7 +126,7 @@ class ViewController: UIViewController {
                 else {return}
             guard let vc = object as? AVPlayerViewController
                 else {return}
-            guard let ok = change?[NSKeyValueChangeKey.newKey] as? Bool
+            guard let ok = change?[.newKey] as? Bool
                 else {return}
             guard ok
                 else {return}
