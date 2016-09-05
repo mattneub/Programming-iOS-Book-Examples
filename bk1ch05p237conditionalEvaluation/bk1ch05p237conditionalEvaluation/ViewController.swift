@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     var hilite = false
     
     var type = Filter.albums
+    
+    var firstRed = false
 
 
     override func viewDidLoad() {
@@ -61,6 +63,10 @@ class ViewController: UIViewController {
         let context = UIGraphicsGetCurrentContext()!
         context.setFillColor(self.hilite ? purple.cgColor : beige.cgColor)
         UIGraphicsEndImageContext()
+        
+        let v1 = UIView()
+        let v2 = UIView()
+        (self.firstRed ? v1 : v2).backgroundColor = .red
         
         do {
             let arr : [String?] = ["manny", nil, "jack"]

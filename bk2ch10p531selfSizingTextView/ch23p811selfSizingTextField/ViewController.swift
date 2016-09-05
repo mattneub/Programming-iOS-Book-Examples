@@ -35,10 +35,14 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         self.tv.attributedText = mas
         
-        DispatchQueue.main.async {
-            self.adjustHeight(self.tv)
-        }
+//        DispatchQueue.main.async {
+//            self.adjustHeight(self.tv)
+//        }
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.adjustHeight(self.tv)
     }
     
     func adjustHeight(_ tv:UITextView) {
@@ -64,9 +68,12 @@ class ViewController: UIViewController, UITextViewDelegate {
 //        let sel = textView.selectedRange
 //        textView.text = (textView.text as NSString)
 //            .replacingCharacters(in: range, with:text)
+//        delay(0.1) {
+////            self.adjustHeight(textView)
+////            textView.contentOffset = .zero
+//        }
         delay(0.1) {
-            self.adjustHeight(textView)
-            textView.contentOffset = .zero
+        self.view.setNeedsLayout()
         }
 //        textView.selectedRange =
 //            text.isEmpty && sel.length == 0 ?

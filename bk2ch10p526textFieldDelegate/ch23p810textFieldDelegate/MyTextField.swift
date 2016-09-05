@@ -33,7 +33,8 @@ class MyTextField: UITextField {
     
 
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if action == #selector(expand), let r = self.selectedTextRange,
+        if action == #selector(expand),
+            let r = self.selectedTextRange,
             let s = self.text(in:r) {
             return s.characters.count == 2 && self.state(for:s) != nil
         }

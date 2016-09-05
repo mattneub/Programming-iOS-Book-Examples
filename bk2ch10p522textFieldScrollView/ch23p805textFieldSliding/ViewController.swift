@@ -77,7 +77,7 @@ class ViewController: UIViewController {
 //            let ending = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
 //            if beginning == ending {print("bail!"); return}
 //        }
-        self.scrollView.bounds.origin = self.oldOffset
+        self.scrollView.contentOffset = self.oldOffset
         self.scrollView.scrollIndicatorInsets = self.oldIndicatorInset
         self.scrollView.contentInset = self.oldContentInset
 //        self.fr?.resignFirstResponder()
