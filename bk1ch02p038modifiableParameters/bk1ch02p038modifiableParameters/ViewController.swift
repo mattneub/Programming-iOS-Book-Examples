@@ -107,6 +107,16 @@ class ViewController: UIViewController {
         // seed 6, they renamified it further; I hope they don't totally kill it...
         myRect.__divided(slice: &arrow, remainder: &body, atDistance: Arrow.ARHEIGHT, from: .minYEdge)
         
+        // hmm, maybe I can subsitute this example:
+        
+        let c = UIColor.purple
+        var r : CGFloat = 0
+        var g : CGFloat = 0
+        var b : CGFloat = 0
+        var a : CGFloat = 0
+        c.getRed(&r, green: &g, blue: &b, alpha: &a)
+        print(r,g,b,a)
+        
         // proving that a class instance parameter is mutable in a function without "inout"
         
         let d = Dog()
