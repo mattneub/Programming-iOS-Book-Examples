@@ -34,7 +34,6 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     var activity = UIActivityIndicatorView()
     var oldOffset : NSValue? // use nil as indicator
     var oldHTMLString : String?
-    var oldBase : URL?
     
     var fontsize = 18
     var cssrule : String {
@@ -79,14 +78,12 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             print("retrieved old offset as \(oldOffset)")
             self.oldOffset = oldOffset // for local example
         }
-        if let fontsize = coder.decodeObject(forKey:"fontsize") as? Int {
-            self.fontsize = fontsize
-        }
+        
+        let fontsize = coder.decodeInteger(forKey:"fontsize")
+        self.fontsize = fontsize
+        
         if let oldHTMLString = coder.decodeObject(forKey:"oldHTMLString") as? String {
             self.oldHTMLString = oldHTMLString
-        }
-        if let oldBase = coder.decodeObject(forKey:"oldBase") as? URL {
-            self.oldBase = oldBase
         }
     }
     
@@ -99,7 +96,6 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         coder.encode(NSValue(cgPoint:off), forKey:"oldOffset")
         coder.encode(self.fontsize, forKey:"fontsize")
         coder.encode(self.oldHTMLString, forKey:"oldHTMLString")
-        coder.encode(self.oldBase, forKey:"oldBase")
     }
     
     override func applicationFinishedRestoringState() {
@@ -122,25 +118,20 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         
         self.wv = wv
         
-        // inject a CSS rule (example taken from WWDC 2014 video)
-        // (instead of body style containing font-size:<fontsize>px; in template)
-
-        let s = self.cssrule
-        let script = WKUserScript(source: s, injectionTime: .atDocumentStart, forMainFrameOnly: true)
-        self.wv.configuration.userContentController.addUserScript(script)
-
         // prepare to receive messages under the "playbutton" name
         // unfortunately there's a bug: the script message handler cannot be self,
         // or we will leak
         
+        
         var leak : Bool { return false }
         switch leak {
         case true:
-            self.wv.configuration.userContentController.add(
-                self, name: "playbutton")
+            let config = self.wv.configuration
+            config.userContentController.add(self, name: "playbutton")
         case false:
-            self.wv.configuration.userContentController.add(
-                MyMessageHandler(delegate:self), name: "playbutton")
+            let config = self.wv.configuration
+            let handler = MyMessageHandler(delegate:self)
+            config.userContentController.add(handler, name: "playbutton")
         }
         
         
@@ -231,8 +222,25 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             let b = UIBarButtonItem(title: "Size", style: .plain, target: self, action: #selector(doDecreaseSize))
             self.navigationItem.rightBarButtonItems = [b]
             
-            if let oldHTMLString = self.oldHTMLString, let oldBase = self.oldBase {
+            // inject a CSS rule (example taken from WWDC 2014 video)
+            // (instead of body style containing font-size:<fontsize>px; in template)
+            
+            do {
+                let rule = self.cssrule
+                let script = WKUserScript(source: rule, injectionTime: .atDocumentStart, forMainFrameOnly: true)
+                let config = self.wv.configuration
+                config.userContentController.addUserScript(script)
+            }
+
+            
+            if let oldHTMLString = self.oldHTMLString {
                 print("restoring html")
+                
+                let templatepath = Bundle.main.path(forResource: "htmlTemplate", ofType:"txt")!
+                let oldBase = URL(fileURLWithPath:templatepath)
+                
+                
+
                 self.wv.loadHTMLString(oldHTMLString, baseURL:oldBase)
                 return
             }
@@ -256,7 +264,6 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             
             self.wv.loadHTMLString(s, baseURL:base) // works in iOS 9! local and remote images are loading
             self.oldHTMLString = s
-            self.oldBase = base
         case 2:
             let path = Bundle.main.path(forResource: "release", ofType:"pdf")!
             let url = URL(fileURLWithPath:path)
@@ -344,10 +351,9 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         // with webkit, probably no need for this, but no harm done
         self.wv.stopLoading()
         // break all retains
-        self.wv.configuration.userContentController
-            .removeAllUserScripts()
-        self.wv.configuration.userContentController
-            .removeScriptMessageHandler(forName:"playbutton")
+        let ucc = self.wv.configuration.userContentController
+        ucc.removeAllUserScripts()
+        ucc.removeScriptMessageHandler(forName:"playbutton")
     }
     
     let whichNav = 1
@@ -359,12 +365,17 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                 // this is how you would open in Mobile Safari
                 switch whichNav {
                 case 0:
-                    UIApplication.shared.open(url)
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url)
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
                     decisionHandler(.cancel)
                     return
                 case 1:
                     // this is how to use the new Safari view controller
                     let svc = SFSafariViewController(url: url)
+                    svc.restorationIdentifier = "sf" // doesn't help
                     // svc.delegate = self
                     self.present(svc, animated: true)
                     decisionHandler(.cancel)

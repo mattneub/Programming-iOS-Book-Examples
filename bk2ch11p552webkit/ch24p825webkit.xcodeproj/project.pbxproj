@@ -289,6 +289,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch24p825webview/ch24p825webkit-Prefix.pch";
 				INFOPLIST_FILE = "ch24p825webview/ch24p825webkit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ch24p825webkit;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -308,6 +309,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch24p825webview/ch24p825webkit-Prefix.pch";
 				INFOPLIST_FILE = "ch24p825webview/ch24p825webkit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ch24p825webkit;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
