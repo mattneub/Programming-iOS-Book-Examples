@@ -8,7 +8,7 @@ class ViewController: UIViewController {
     
     @IBAction func doToggleTint(_ sender: AnyObject) {
         self.blue = !self.blue
-        self.view.tintColor = self.blue ? nil : UIColor.red()
+        self.view.tintColor = self.blue ? nil : UIColor.red
     }
     
     var dim = false

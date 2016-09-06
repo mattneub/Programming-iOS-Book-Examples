@@ -40,7 +40,7 @@ class MyTableViewCell: UITableViewCell {
             v.frame = v.frame.insetBy(dx: -10, dy: -10)
             let cf = self.contentView.convert(self.bounds, from:self)
             v.center = CGPoint(cf.midX, cf.midY);
-            v.frame.makeIntegralInPlace() // ?
+            v.frame = v.frame.integral // ?
             v.tag = 1001
             self.contentView.addSubview(v)
             v.startAnimating()

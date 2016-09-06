@@ -78,7 +78,7 @@ class ViewController: UIViewController {
         // divider, set at desired width, sufficient to set for Normal only
         let sz2 = CGSize(2,10)
         let div = imageOfSize(sz2) {
-            UIColor.white().set()
+            UIColor.white.set()
             UIGraphicsGetCurrentContext()!.fill(CGRect(origin: CGPoint(), size: sz2))
         }
         self.seg.setDividerImage(div, forLeftSegmentState: [], rightSegmentState: [], barMetrics: .default)

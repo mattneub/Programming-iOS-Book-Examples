@@ -80,7 +80,7 @@ class ViewController: UIViewController {
         self.op3!.start()
 
     }
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let _ = object as? Progress {
             if let frac = change?[.newKey] as? CGFloat {
                 self.prog3.value = frac
@@ -102,11 +102,11 @@ class ViewController: UIViewController {
         let r = UIGraphicsImageRenderer(size:CGSize(10,10))
         let im = r.image {
             ctx in let con = ctx.cgContext
-            con.setFillColor(UIColor.yellow().cgColor)
+            con.setFillColor(UIColor.yellow.cgColor)
             con.fill(CGRect(0, 0, 10, 10))
             let r = con.boundingBoxOfClipPath.insetBy(dx: 1,dy: 1)
             con.setLineWidth(2)
-            con.setStrokeColor(UIColor.black().cgColor)
+            con.setStrokeColor(UIColor.black.cgColor)
             con.stroke(r)
             con.strokeEllipse(in: r)
         }.resizableImage(withCapInsets:UIEdgeInsetsMake(4, 4, 4, 4), resizingMode:.stretch)

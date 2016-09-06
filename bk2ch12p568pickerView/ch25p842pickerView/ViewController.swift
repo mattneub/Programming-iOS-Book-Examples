@@ -3,12 +3,12 @@ import UIKit
 
 class MyPickerView : UIPickerView {
     
-    override func intrinsicContentSize() -> CGSize {
-        return super.intrinsicContentSize()
+    override var intrinsicContentSize : CGSize {
+        return super.intrinsicContentSize
         
         // no need for trickery or testing; in iOS 9 you can just set the height constraint
         print("intrinsic")
-        var sz = super.intrinsicContentSize()
+        var sz = super.intrinsicContentSize
         let h : CGFloat = 140
         print("trying to set to \(h)")
         sz.height = h // but it only goes down to 162, maximum 180
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let f = Bundle.main.pathForResource("states", ofType: "txt")!
+        let f = Bundle.main.path(forResource: "states", ofType: "txt")!
         let s = try! String(contentsOfFile: f)
         self.states = s.components(separatedBy:"\n")
     }

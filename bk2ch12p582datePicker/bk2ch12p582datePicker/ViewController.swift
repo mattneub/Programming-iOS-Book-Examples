@@ -17,7 +17,7 @@ class ViewController: UIViewController {
             dp.datePickerMode = .date
             // dp.datePickerMode = .DateAndTime
             var dc = DateComponents(year:1954, month:1, day:1)
-            let c = Calendar(calendarIdentifier:.gregorian)!
+            let c = Calendar(identifier:.gregorian)
             let d1 = c.date(from: dc)!
             dp.minimumDate = d1
             dp.date = d1
@@ -36,8 +36,8 @@ class ViewController: UIViewController {
         if dp.datePickerMode != .countDownTimer {
             let d = dp.date
             let df = DateFormatter()
-            df.timeStyle = .fullStyle
-            df.dateStyle = .fullStyle
+            df.timeStyle = .full
+            df.dateStyle = .full
             print(df.string(from: d))
             // Tuesday, August 10, 1954 at 3:16:00 AM GMT-07:00
         } else {

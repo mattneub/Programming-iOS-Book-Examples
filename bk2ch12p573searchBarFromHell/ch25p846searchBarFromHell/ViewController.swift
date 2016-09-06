@@ -16,7 +16,7 @@ func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
 //    return result
 
 
-func lend<T where T:NSObject> (closure:(T)->()) -> T {
+func lend<T> (closure:(T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
     return orig
@@ -110,18 +110,18 @@ class ViewController: UIViewController {
         self.sb.setScopeBarButtonBackgroundImage(linim, for:.normal)
 
         let divim = imageOfSize(CGSize(2,2)) {
-            UIColor.white().setFill()
+            UIColor.white.setFill()
             UIBezierPath(rect:CGRect(0,0,2,2)).fill()
         }
         self.sb.setScopeBarButtonDividerImage(divim,
             forLeftSegmentState:[], rightSegmentState:[])
 
-        let atts : [String : AnyObject] = [
+        let atts : [String : Any] = [
             NSFontAttributeName: UIFont(name:"GillSans-Bold", size:16)!,
-            NSForegroundColorAttributeName: UIColor.white(),
+            NSForegroundColorAttributeName: UIColor.white,
             NSShadowAttributeName: lend {
                 (shad:NSShadow) in
-                shad.shadowColor = UIColor.gray()
+                shad.shadowColor = UIColor.gray
                 shad.shadowOffset = CGSize(2,2)
             },
             NSUnderlineStyleAttributeName: NSUnderlineStyle.styleDouble.rawValue

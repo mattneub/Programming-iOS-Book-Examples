@@ -20,7 +20,7 @@ class MyCircularProgressButton : UIButton {
         layer.frame = CGRect(0,0,60,60)
         layer.lineWidth = 2
         layer.fillColor = nil
-        layer.strokeColor = UIColor.red().cgColor
+        layer.strokeColor = UIColor.red.cgColor
         let b = UIBezierPath(ovalIn: CGRect(3,3,57,57))
         layer.path = b.cgPath
         self.layer.addSublayer(layer)

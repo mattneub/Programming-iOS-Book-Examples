@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         lay.frame = CGRect(0,0,100,20)
         let bar = CALayer()
         bar.frame = CGRect(0,0,10,20)
-        bar.backgroundColor = UIColor.red().cgColor
+        bar.backgroundColor = UIColor.red.cgColor
         lay.addSublayer(bar)
         lay.instanceCount = 5
         lay.instanceTransform = CATransform3DMakeTranslation(20, 0, 0)

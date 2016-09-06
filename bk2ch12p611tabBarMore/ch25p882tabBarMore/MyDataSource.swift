@@ -9,7 +9,7 @@ class MyDataSource: NSObject, UITableViewDataSource {
         self.originalDataSource = originalDataSource
     }
         
-    override func forwardingTarget(for aSelector: Selector) -> AnyObject? {
+    override func forwardingTarget(for aSelector: Selector) -> Any? {
         if self.originalDataSource.responds(to:aSelector) {
             return self.originalDataSource
         }

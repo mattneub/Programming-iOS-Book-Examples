@@ -67,15 +67,15 @@ class ViewController: UIViewController {
             let sz = CGSize(4,4)
             
             self.navbar.shadowImage = imageOfSize(sz) {
-                UIColor.gray().withAlphaComponent(0.3).setFill()
+                UIColor.gray.withAlphaComponent(0.3).setFill()
                 UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,4,2))
-                UIColor.gray().withAlphaComponent(0.15).setFill()
+                UIColor.gray.withAlphaComponent(0.15).setFill()
                 UIGraphicsGetCurrentContext()!.fill(CGRect(0,2,4,2))
             }
             self.toolbar.setShadowImage( imageOfSize(sz) {
-                UIColor.gray().withAlphaComponent(0.3).setFill()
+                UIColor.gray.withAlphaComponent(0.3).setFill()
                 UIGraphicsGetCurrentContext()!.fill(CGRect(0,2,4,2))
-                UIColor.gray().withAlphaComponent(0.15).setFill()
+                UIColor.gray.withAlphaComponent(0.15).setFill()
                 UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,4,2))
                 }, forToolbarPosition:.any )
         }

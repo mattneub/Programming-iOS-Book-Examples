@@ -50,7 +50,7 @@ class MySlider: UISlider {
             p.addLine(to: CGPoint(50,100))
             p.addLine(to: CGPoint(55,80))
             con.addPath(p.cgPath)
-            UIColor.blue().setFill()
+            UIColor.blue.setFill()
             con.fillPath()
         }
 
@@ -94,7 +94,7 @@ class MySlider: UISlider {
         let bool = super.beginTracking(touch, with: event)
         if bool {
             self.addSubview(self.bubbleView)
-            self.label?.text = self.formatter.string(from:self.value)
+            self.label?.text = self.formatter.string(from:self.value as NSNumber)
         }
         return bool
     }
@@ -102,7 +102,7 @@ class MySlider: UISlider {
     override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         let bool = super.continueTracking(touch, with:event)
         if bool {
-            self.label?.text = self.formatter.string(from:self.value)
+            self.label?.text = self.formatter.string(from:self.value as NSNumber)
         }
         return bool
     }
