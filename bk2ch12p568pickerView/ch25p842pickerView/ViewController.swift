@@ -44,7 +44,7 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     
     // returns the # of rows in each component..
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 50
+        return self.states.count
     }
     
     // bug: no views are reused

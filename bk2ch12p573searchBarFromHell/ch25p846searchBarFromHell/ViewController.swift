@@ -78,7 +78,7 @@ class ViewController: UIViewController {
             if let tf = v as? UITextField {
                 print("got that puppy")
                 tf.textColor = .white
-                // tf.enabled = false
+                tf.isEnabled = false
                 break
             }
         }
@@ -90,11 +90,11 @@ class ViewController: UIViewController {
         //    self.sb.searchResultsButtonSelected = true
         
         let manny = UIImage(named:"manny.jpg")!
-        self.sb.setImage(manny, for:.search, state:[])
+        self.sb.setImage(manny, for:.search, state:.normal)
         let mannyim = imageOfSize(CGSize(20,20)) {
             manny.draw(in:CGRect(0,0,20,20))
         }
-        self.sb.setImage(mannyim, for:.clear, state:[])
+        self.sb.setImage(mannyim, for:.clear, state:.normal)
         
         let moe = UIImage(named:"moe.jpg")!
         let moeim = imageOfSize(CGSize(20,20)) {
@@ -114,7 +114,7 @@ class ViewController: UIViewController {
             UIBezierPath(rect:CGRect(0,0,2,2)).fill()
         }
         self.sb.setScopeBarButtonDividerImage(divim,
-            forLeftSegmentState:[], rightSegmentState:[])
+            forLeftSegmentState:.normal, rightSegmentState:.normal)
 
         let atts : [String : Any] = [
             NSFontAttributeName: UIFont(name:"GillSans-Bold", size:16)!,

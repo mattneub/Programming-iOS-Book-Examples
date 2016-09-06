@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         lay.addSublayer(bar)
         lay.instanceCount = 5
         lay.instanceTransform = CATransform3DMakeTranslation(20, 0, 0)
-        let anim = CABasicAnimation(keyPath: "opacity")
+        let anim = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
         anim.fromValue = 1.0
         anim.toValue = 0.2
         anim.duration = 1

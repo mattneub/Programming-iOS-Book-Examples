@@ -23,8 +23,7 @@ class MyProgressView: UIView {
         c.strokePath()
         c.addPath(path)
         c.clip()
-        c.fill(CGRect(
-            r.origin.x, r.origin.y, r.size.width * self.value, r.size.height))
+        c.fill(CGRect(r.origin.x, r.origin.y, r.width * self.value, r.height))
     }
 
 }
