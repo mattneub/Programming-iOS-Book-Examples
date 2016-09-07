@@ -78,7 +78,7 @@ class ViewController: UIViewController {
             if let tf = v as? UITextField {
                 print("got that puppy")
                 tf.textColor = .white
-                tf.isEnabled = false
+                // tf.isEnabled = false
                 break
             }
         }

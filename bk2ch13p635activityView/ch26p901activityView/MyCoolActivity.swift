@@ -51,7 +51,7 @@ class MyCoolActivity : UIActivity {
         scale /= largerSize
         let sz = CGSize(im.size.width*scale, im.size.height*scale)
         self.image = imageOfSize(sz) {
-            im.draw(in:CGRect(origin: CGPoint(), size: sz))
+            im.draw(in:CGRect(origin: .zero, size: sz))
         }
         super.init()
     }

@@ -73,7 +73,7 @@ func viewMask(size sz:CGSize, roundingCorners rad:CGFloat) -> UIView {
 //    let im = UIGraphicsGetImageFromCurrentImageContext()!
 //    UIGraphicsEndImageContext()
     
-    let iv = UIImageView(frame:CGRect(origin: CGPoint(), size: sz))
+    let iv = UIImageView(frame:CGRect(origin: .zero, size: sz))
     iv.contentMode = .scaleToFill
     iv.image = im
     iv.autoresizingMask = [.flexibleWidth, .flexibleHeight]

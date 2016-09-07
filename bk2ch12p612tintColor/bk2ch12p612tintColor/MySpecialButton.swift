@@ -4,19 +4,20 @@ import UIKit
 
 class MySpecialButton : UIButton {
     
-    var originalTitle : NSAttributedString?
-    var dimmedTitle : NSAttributedString?
+    var orig : NSAttributedString?
+    var dim : NSAttributedString?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.originalTitle = self.attributedTitle(for:.normal)!
+        self.orig = self.attributedTitle(for:.normal)!
         let t = NSMutableAttributedString(attributedString: self.attributedTitle(for:.normal)!)
         t.addAttribute(NSForegroundColorAttributeName, value: UIColor.gray, range: NSMakeRange(0,t.length))
-        self.dimmedTitle = t
+        self.dim = t
     }
     override func tintColorDidChange() {
         self.setAttributedTitle(
-            self.tintAdjustmentMode == .dimmed ? self.dimmedTitle : self.originalTitle,
+           self.tintAdjustmentMode == .dimmed ? self.dim : self.orig,
             for:.normal)
+
     }
 }

@@ -7,13 +7,6 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
-func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
-    let r = UIGraphicsImageRenderer(size:size)
-    return r.image {
-        _ in closure()
-    }
-}
-
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)
@@ -58,18 +51,18 @@ class ViewController: UIViewController {
         // sufficient to set for Normal only
         
         let sz = CGSize(100,60)
-        let im = imageOfSize(sz) {
-            UIImage(named:"linen.png")!.draw(in:CGRect(origin: CGPoint(), size: sz))
+        let im = UIGraphicsImageRenderer(size:sz).image {_ in
+            UIImage(named:"linen")!.draw(in:CGRect(origin: .zero, size: sz))
             }.resizableImage(withCapInsets:
                 UIEdgeInsetsMake(0,10,0,10), resizingMode: .stretch)
         self.seg.setBackgroundImage(im, for:.normal, barMetrics: .default)
         
         // segment images, redraw at final size
-        let pep = ["manny", "moe", "jack"].map {$0 + ".jpg"}
+        let pep = ["manny", "moe", "jack"]
         for (i, boy) in pep.enumerated() {
             let sz = CGSize(30,30)
-            let im = imageOfSize(sz) {
-                UIImage(named:boy)!.draw(in:CGRect(origin: CGPoint(), size: sz))
+            let im = UIGraphicsImageRenderer(size:sz).image {_ in
+                UIImage(named:boy)!.draw(in:CGRect(origin: .zero, size: sz))
                 }.withRenderingMode(.alwaysOriginal)
             self.seg.setImage(im, forSegmentAt: i)
             self.seg.setWidth(80, forSegmentAt: i)
@@ -77,9 +70,9 @@ class ViewController: UIViewController {
         
         // divider, set at desired width, sufficient to set for Normal only
         let sz2 = CGSize(2,10)
-        let div = imageOfSize(sz2) {
+        let div = UIGraphicsImageRenderer(size:sz2).image { _ in
             UIColor.white.set()
-            UIGraphicsGetCurrentContext()!.fill(CGRect(origin: CGPoint(), size: sz2))
+            UIGraphicsGetCurrentContext()!.fill(CGRect(origin: .zero, size: sz2))
         }
         self.seg.setDividerImage(div, forLeftSegmentState: [], rightSegmentState: [], barMetrics: .default)
         

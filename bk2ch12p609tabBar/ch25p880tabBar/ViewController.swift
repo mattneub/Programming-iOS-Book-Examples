@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.tabbar.items = Array(self.items[0..<4]) + [UITabBarItem(tabBarSystemItem: .more, tag: 0)]
         self.tabbar.selectedItem = self.tabbar.items![0]
+        self.tabbar.delegate = self
     }
 }
 

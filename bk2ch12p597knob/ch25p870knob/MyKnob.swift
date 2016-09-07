@@ -13,22 +13,22 @@ class MyKnob: UIControl {
             self.transform = CGAffineTransform(rotationAngle: self.angle)
         }
     }
-    var continuous = false
+    var isContinuous = false
     private var initialAngle : CGFloat = 0
 
-    func pToA (_ touch:UITouch) -> CGFloat {
-        let loc = touch.location(in: self)
+    func pToA (_ t:UITouch) -> CGFloat {
+        let loc = t.location(in: self)
         let c = CGPoint(x:self.bounds.midX, y:self.bounds.midY)
         return atan2(loc.y - c.y, loc.x - c.x)
     }
     
-    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-        self.initialAngle = pToA(touch)
+    override func beginTracking(_ t: UITouch, with _: UIEvent?) -> Bool {
+        self.initialAngle = pToA(t)
         return true
     }
     
-    override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-        let ang = pToA(touch) - self.initialAngle
+    override func continueTracking(_ t: UITouch, with _: UIEvent?) -> Bool {
+        let ang = pToA(t) - self.initialAngle
         let absoluteAngle = self.angle + ang
         switch absoluteAngle { // how to do inequalities in a Swift switch statement
         case -CGFloat.infinity...0:
@@ -41,19 +41,21 @@ class MyKnob: UIControl {
             return false
         default:
             self.angle = absoluteAngle
-            if self.continuous {
+            if self.isContinuous {
                 self.sendActions(for: .valueChanged)
             }
             return true
         }
+        // ignore, just checking syntax
+        // self.transform = self.transform.rotated(by: ang)
     }
     
-    override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+    override func endTracking(_: UITouch?, with _: UIEvent?) {
         self.sendActions(for: .valueChanged)
     }
     
     override func draw(_ rect: CGRect) {
-        UIImage(named:"knob.png")!.draw(in: rect)
+        UIImage(named:"knob")!.draw(in: rect)
     }
     
 }

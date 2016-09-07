@@ -2,12 +2,6 @@
 
 import UIKit
 
-func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
-    let r = UIGraphicsImageRenderer(size:size)
-    return r.image {
-        _ in closure()
-    }
-}
 
 
 extension CGRect {
@@ -44,18 +38,23 @@ class ViewController: UIViewController {
         // new iOS 7 feature: replace the left-pointing chevron
         // very simple example
 
-        self.navbar.backIndicatorImage =
-            imageOfSize(CGSize(10,20)) {
-                UIGraphicsGetCurrentContext()!.fill(CGRect(6,0,4,20))
+        do {
+        
+            let sz = CGSize(10,20)
+            self.navbar.backIndicatorImage =
+                UIGraphicsImageRenderer(size:sz).image { _ in
+                    UIGraphicsGetCurrentContext()!.fill(CGRect(6,0,4,20))
+            }
+            self.navbar.backIndicatorTransitionMaskImage =
+                UIGraphicsImageRenderer(size:sz).image {_ in}
+                
         }
-        self.navbar.backIndicatorTransitionMaskImage =
-            imageOfSize(CGSize(10,20)) {}
         
         // shadow, as in previous example
         
         let sz = CGSize(20,20)
         
-        self.navbar.setBackgroundImage(imageOfSize(sz) {
+        self.navbar.setBackgroundImage(UIGraphicsImageRenderer(size:sz).image { _ in
             UIColor(white:0.95, alpha:0.85).setFill()
             UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,20,20))
             }, for:.any, barMetrics: .default)
@@ -64,7 +63,7 @@ class ViewController: UIViewController {
         
             let sz = CGSize(4,4)
             
-            self.navbar.shadowImage = imageOfSize(sz) {
+            self.navbar.shadowImage = UIGraphicsImageRenderer(size:sz).image { _ in
                 UIColor.gray.withAlphaComponent(0.3).setFill()
                 UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,4,2))
                 UIColor.gray.withAlphaComponent(0.15).setFill()

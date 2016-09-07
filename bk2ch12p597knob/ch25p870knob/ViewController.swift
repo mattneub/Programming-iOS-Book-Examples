@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // uncomment to see the difference
-        // self.knob.continuous = true
+        // self.knob.isContinuous = true
 
     }
     

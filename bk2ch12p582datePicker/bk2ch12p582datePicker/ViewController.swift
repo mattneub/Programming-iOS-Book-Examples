@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         switch which {
         case 1:
             dp.datePickerMode = .date
-            // dp.datePickerMode = .DateAndTime
+            // dp.datePickerMode = .dateAndTime
             var dc = DateComponents(year:1954, month:1, day:1)
             let c = Calendar(identifier:.gregorian)
             let d1 = c.date(from: dc)!

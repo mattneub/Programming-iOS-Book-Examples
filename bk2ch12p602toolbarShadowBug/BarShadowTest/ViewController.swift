@@ -1,22 +1,6 @@
 
 import UIKit
 
-//func imageOfSize(_ size:CGSize, _ opaque:Bool = false, _ closure:() -> ()) -> UIImage {
-//    UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
-//    closure()
-//    let result = UIGraphicsGetImageFromCurrentImageContext()!
-//    UIGraphicsEndImageContext()
-//    return result
-//}
-
-func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
-    let r = UIGraphicsImageRenderer(size:size)
-    return r.image {
-        _ in closure()
-    }
-}
-
-
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)
@@ -51,14 +35,15 @@ class ViewController: UIViewController {
         self.view.backgroundColor = .yellow
         
         let sz = CGSize(20,20)
+        let r = UIGraphicsImageRenderer(size:sz)
         
-        self.navbar.setBackgroundImage(imageOfSize(sz) {
+        self.navbar.setBackgroundImage( r.image { _ in
             UIColor(white:0.95, alpha:0.85).setFill()
             //UIColor(red: 1, green: 0, blue: 0, alpha: 1).setFill()
             UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,20,20))
             }, for:.any, barMetrics: .default)
         
-        self.toolbar.setBackgroundImage(imageOfSize(sz) {
+        self.toolbar.setBackgroundImage( r.image { _ in
             UIColor(white:0.95, alpha:0.85).setFill()
             UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,20,20))
             }, forToolbarPosition:.any, barMetrics: .default)
@@ -66,13 +51,14 @@ class ViewController: UIViewController {
         do {
             let sz = CGSize(4,4)
             
-            self.navbar.shadowImage = imageOfSize(sz) {
+            let r = UIGraphicsImageRenderer(size:sz)
+            self.navbar.shadowImage = r.image { _ in
                 UIColor.gray.withAlphaComponent(0.3).setFill()
                 UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,4,2))
                 UIColor.gray.withAlphaComponent(0.15).setFill()
                 UIGraphicsGetCurrentContext()!.fill(CGRect(0,2,4,2))
             }
-            self.toolbar.setShadowImage( imageOfSize(sz) {
+            self.toolbar.setShadowImage( r.image { _ in
                 UIColor.gray.withAlphaComponent(0.3).setFill()
                 UIGraphicsGetCurrentContext()!.fill(CGRect(0,2,4,2))
                 UIColor.gray.withAlphaComponent(0.15).setFill()

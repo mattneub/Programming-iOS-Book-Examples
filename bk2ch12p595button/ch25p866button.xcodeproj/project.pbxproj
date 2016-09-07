@@ -12,8 +12,7 @@
 		32AF53AA1B9F960200CFCD3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AF53A91B9F960200CFCD3E /* LaunchScreen.storyboard */; };
 		32AF53AC1B9F960600CFCD3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF53AB1B9F960600CFCD3E /* AppDelegate.swift */; };
 		C9166623181ED1D700D07DE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9166621181ED1D700D07DE8 /* Main.storyboard */; };
-		C9166628181ED1D700D07DE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9166627181ED1D700D07DE8 /* Images.xcassets */; };
-		C9166645181ED20D00D07DE8 /* coin2.png in Resources */ = {isa = PBXBuildFile; fileRef = C9166644181ED20D00D07DE8 /* coin2.png */; };
+		C9166628181ED1D700D07DE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9166627181ED1D700D07DE8 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +23,7 @@
 		C916660C181ED1D700D07DE8 /* ch25p866button.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch25p866button.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9166617181ED1D700D07DE8 /* ch25p866button-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch25p866button-Info.plist"; sourceTree = "<group>"; };
 		C9166622181ED1D700D07DE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C9166627181ED1D700D07DE8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9166644181ED20D00D07DE8 /* coin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin2.png; sourceTree = "<group>"; };
+		C9166627181ED1D700D07DE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +60,7 @@
 				C9166621181ED1D700D07DE8 /* Main.storyboard */,
 				32A579391993ED8300221E36 /* ViewController.swift */,
 				32A579371993EB3200221E36 /* MyShrinkingButton.swift */,
-				C9166644181ED20D00D07DE8 /* coin2.png */,
-				C9166627181ED1D700D07DE8 /* Images.xcassets */,
+				C9166627181ED1D700D07DE8 /* Assets.xcassets */,
 				32AF53A91B9F960200CFCD3E /* LaunchScreen.storyboard */,
 				C9166617181ED1D700D07DE8 /* ch25p866button-Info.plist */,
 			);
@@ -128,10 +125,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9166628181ED1D700D07DE8 /* Images.xcassets in Resources */,
+				C9166628181ED1D700D07DE8 /* Assets.xcassets in Resources */,
 				32AF53AA1B9F960200CFCD3E /* LaunchScreen.storyboard in Resources */,
 				C9166623181ED1D700D07DE8 /* Main.storyboard in Resources */,
-				C9166645181ED20D00D07DE8 /* coin2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

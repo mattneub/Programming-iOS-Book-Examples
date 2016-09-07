@@ -10,7 +10,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let im = UIImage(named:"coin2.png")!
+        let im = UIImage(named:"coin")!
         let sz = im.size
         let im2 = im.resizableImage(withCapInsets:UIEdgeInsetsMake(
             sz.height/2, sz.width/2, sz.height/2, sz.width/2),

@@ -23,9 +23,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         self.tabBarController.viewControllers = vcs
         self.window!.rootViewController = self.tabBarController
         
-        let ok = true
-        var customize : Bool { return ok }
+        var customize : Bool { return true }
         
+        doneCustomizing:
         if customize {
             
             let more = self.tabBarController.moreNavigationController
@@ -36,6 +36,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             list.navigationItem.backBarButtonItem = b // so user can navigation back
             more.navigationBar.barTintColor = .red // ooooh
             more.navigationBar.tintColor = .white // oooh oooh
+            
+            // break doneCustomizing
             
             let tv = list.view as! UITableView
             let mds = MyDataSource(originalDataSource: tv.dataSource!)

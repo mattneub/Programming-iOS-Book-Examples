@@ -8,7 +8,7 @@ class Smiler:NSObject, CALayerDelegate {
     func draw(_ layer: CALayer, in ctx: CGContext) {
         UIGraphicsPushContext(ctx)
         //[[UIImage imageNamed: @"smiley"] drawInRect:CGContextGetClipBoundingBox(ctx)];
-        UIImage(named:"smiley")!.draw(at:CGPoint())
+        UIImage(named:"smiley")!.draw(at: .zero)
         UIGraphicsPopContext()
         print("\(#function)")
         print(layer.contentsGravity)
@@ -27,7 +27,7 @@ class SmilerLayer:CALayer {
     override func draw(in ctx: CGContext) {
         UIGraphicsPushContext(ctx)
         //[[UIImage imageNamed: @"smiley"] drawInRect:CGContextGetClipBoundingBox(ctx)];
-        UIImage(named:"smiley")!.draw(at:CGPoint())
+        UIImage(named:"smiley")!.draw(at: .zero)
         UIGraphicsPopContext()
         print("\(#function)")
         print(self.contentsGravity)
