@@ -1,6 +1,29 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class MyKnob: UIControl {
     var angle : CGFloat = 0 {
         didSet {
@@ -18,7 +41,7 @@ class MyKnob: UIControl {
 
     func pToA (_ t:UITouch) -> CGFloat {
         let loc = t.location(in: self)
-        let c = CGPoint(x:self.bounds.midX, y:self.bounds.midY)
+        let c = CGPoint(self.bounds.midX, self.bounds.midY)
         return atan2(loc.y - c.y, loc.x - c.x)
     }
     

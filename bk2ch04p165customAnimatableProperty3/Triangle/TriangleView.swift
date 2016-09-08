@@ -2,6 +2,29 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class TriangleView: UIView {
     
     var v1x : CGFloat {
@@ -43,9 +66,9 @@ class TriangleLayer : CALayer {
     @NSManaged var v1y : CGFloat
     
     override func draw(in con: CGContext) {
-        con.move(to:CGPoint(x: 0, y: 0))
-        con.addLine(to:CGPoint(x: self.bounds.size.width, y: 0))
-        con.addLine(to:CGPoint(x: self.v1x, y: self.v1y))
+        con.move(to:CGPoint(0,0))
+        con.addLine(to:CGPoint(self.bounds.size.width, 0))
+        con.addLine(to:CGPoint(self.v1x, self.v1y))
         con.setFillColor(UIColor.blue.cgColor)
         con.fillPath()
         // println(self)

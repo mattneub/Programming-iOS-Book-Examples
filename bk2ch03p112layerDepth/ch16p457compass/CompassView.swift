@@ -98,7 +98,7 @@ class CompassLayer : CALayer, CALayerDelegate {
         circle.fillColor = UIColor(red:0.9, green:0.95, blue:0.93, alpha:0.9).cgColor
         circle.strokeColor = UIColor.gray.cgColor
         let p = CGMutablePath()
-        p.addEllipseIn(nil, rect: self.bounds.insetBy(dx: 3, dy: 3))
+        p.addEllipse(in: self.bounds.insetBy(dx: 3, dy: 3))
         circle.path = p
         g.addSublayer(circle)
         circle.bounds = self.bounds
@@ -145,18 +145,18 @@ class CompassLayer : CALayer, CALayerDelegate {
         // Questa poi la conosco pur troppo!
         
         // punch triangular hole in context clipping region
-            con.moveTo(x: 10, y: 100)
-            con.addLineTo(x: 20, y: 90)
-            con.addLineTo(x: 30, y: 100)
-            con.closePath()
-            con.addRect(con.boundingBoxOfClipPath)
-            con.eoClip()
+        con.move(to: CGPoint(10, 100))
+        con.addLine(to: CGPoint(20, 90))
+        con.addLine(to: CGPoint(30, 100))
+        con.closePath()
+        con.addRect(con.boundingBoxOfClipPath)
+        con.clip(using:.evenOdd)
         
         // draw the vertical line, add its shape to the clipping region
-            con.moveTo(x: 20, y: 100)
-            con.addLineTo(x: 20, y: 19)
-            con.setLineWidth(20)
-            con.strokePath()
+        con.move(to: CGPoint(20, 100))
+        con.addLine(to: CGPoint(20, 19))
+        con.setLineWidth(20)
+        con.strokePath()
         
         // draw the triangle, the point of the arrow
         let r = UIGraphicsImageRenderer(size:CGSize(4,4))

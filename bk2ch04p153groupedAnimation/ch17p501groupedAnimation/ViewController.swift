@@ -40,7 +40,7 @@ class ViewController : UIViewController {
         var leftright : CGFloat = 1
         var next : CGPoint = self.v.layer.position
         var pos : CGPoint
-        path.move(to:CGPoint(x: next.x, y: next.y))
+        path.move(to:CGPoint(next.x, next.y))
         for _ in 0 ..< 4 {
             pos = next
             leftright *= -1

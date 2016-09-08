@@ -64,9 +64,9 @@ class CompassLayer : CALayer, CALayerDelegate {
             let pt = self.arrow.convert(p, from:self.superlayer)
             let path = CGMutablePath()
             path.addRect(CGRect(10,20,20,80))
-            path.move(to:CGPoint(x: 0, y: 25))
-            path.addLine(to:CGPoint(x: 20, y: 0))
-            path.addLine(to:CGPoint(x: 40, y: 25))
+            path.move(to:CGPoint(0,25))
+            path.addLine(to:CGPoint(20,0))
+            path.addLine(to:CGPoint(40,25))
             path.closeSubpath()
             if !path.contains(pt, using: .winding) {
                 lay = nil
@@ -147,16 +147,16 @@ class CompassLayer : CALayer, CALayerDelegate {
         // Questa poi la conosco pur troppo!
         
         // punch triangular hole in context clipping region
-        con.move(to: CGPoint(x: 10, y: 100))
-        con.addLine(to: CGPoint(x: 20, y: 90))
-        con.addLine(to: CGPoint(x: 30, y: 100))
+        con.move(to: CGPoint(10,100))
+        con.addLine(to: CGPoint(20,90))
+        con.addLine(to: CGPoint(30,100))
         con.closePath()
         con.addRect(con.boundingBoxOfClipPath)
         con.clip(using: .evenOdd)
         
         // draw the vertical line, add its shape to the clipping region
-        con.move(to: CGPoint(x: 20, y: 100))
-        con.addLine(to: CGPoint(x: 20, y: 19))
+        con.move(to: CGPoint(20,100))
+        con.addLine(to: CGPoint(20,19))
         con.setLineWidth(20)
         con.strokePath()
         

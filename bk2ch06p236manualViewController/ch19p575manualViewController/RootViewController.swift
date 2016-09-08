@@ -2,6 +2,27 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
 
 
 class RootViewController: UIViewController {
@@ -24,7 +45,7 @@ class RootViewController: UIViewController {
                 .flexibleBottomMargin,
                 .flexibleRightMargin]
             label.sizeToFit()
-            label.center = CGPoint(x:v.bounds.midX, y:v.bounds.midY)
+            label.center = CGPoint(v.bounds.midX, v.bounds.midY)
             label.frame = label.frame.integral
 
         case 2:

@@ -43,22 +43,22 @@ class MyView : UIView {
             let con = UIGraphicsGetCurrentContext()!
             
             // draw a black (by default) vertical line, the shaft of the arrow
-            con.move(to:CGPoint(x: 100, y: 100))
-            con.addLine(to:CGPoint(x: 100, y: 19))
+            con.move(to:CGPoint(100, 100))
+            con.addLine(to:CGPoint(100, 19))
             con.setLineWidth(20)
             con.strokePath()
             
             // draw a red triangle, the point of the arrow
             con.setFillColor(UIColor.red.cgColor)
-            con.move(to:CGPoint(x:80, y: 25))
-            con.addLine(to:CGPoint(x:100, y: 0))
-            con.addLine(to:CGPoint(x:120, y: 25))
+            con.move(to:CGPoint(80, 25))
+            con.addLine(to:CGPoint(100, 0))
+            con.addLine(to:CGPoint(120, 25))
             con.fillPath()
             
             // snip a triangle out of the shaft by drawing in Clear blend mode
-            con.move(to:CGPoint(x:90, y: 101))
-            con.addLine(to:CGPoint(x:100, y: 90))
-            con.addLine(to:CGPoint(x:110, y: 101))
+            con.move(to:CGPoint(90, 101))
+            con.addLine(to:CGPoint(100, 90))
+            con.addLine(to:CGPoint(110, 101))
             con.setBlendMode(.clear)
             con.fillPath()
             
@@ -89,24 +89,24 @@ class MyView : UIView {
             let con = UIGraphicsGetCurrentContext()!
             
             // punch triangular hole in context clipping region
-            con.move(to:CGPoint(x: 90, y: 100))
-            con.addLine(to:CGPoint(x: 100, y: 90))
-            con.addLine(to:CGPoint(x: 110, y: 100))
+            con.move(to:CGPoint(90, 100))
+            con.addLine(to:CGPoint(100, 90))
+            con.addLine(to:CGPoint(110, 100))
             con.closePath()
             con.addRect(con.boundingBoxOfClipPath)
             con.clip(using:.evenOdd)
             
             // draw the vertical line
-            con.move(to:CGPoint(x: 100, y: 100))
-            con.addLine(to:CGPoint(x: 100, y: 19))
+            con.move(to:CGPoint(100, 100))
+            con.addLine(to:CGPoint(100, 19))
             con.setLineWidth(20)
             con.strokePath()
             
             // draw the red triangle, the point of the arrow
             con.setFillColor(UIColor.red.cgColor)
-            con.move(to:CGPoint(x:80, y: 25))
-            con.addLine(to:CGPoint(x:100, y: 0))
-            con.addLine(to:CGPoint(x:120, y: 25))
+            con.move(to:CGPoint(80, 25))
+            con.addLine(to:CGPoint(100, 0))
+            con.addLine(to:CGPoint(120, 25))
             con.fillPath()
             
         case 4:
@@ -115,16 +115,16 @@ class MyView : UIView {
             con.saveGState()
             
             // punch triangular hole in context clipping region
-            con.move(to:CGPoint(x: 90, y: 100))
-            con.addLine(to:CGPoint(x: 100, y: 90))
-            con.addLine(to:CGPoint(x: 110, y: 100))
+            con.move(to:CGPoint(90, 100))
+            con.addLine(to:CGPoint(100, 90))
+            con.addLine(to:CGPoint(110, 100))
             con.closePath()
             con.addRect(con.boundingBoxOfClipPath)
             con.clip(using:.evenOdd)
             
             // draw the vertical line, add its shape to the clipping region
-            con.move(to:CGPoint(x: 100, y: 100))
-            con.addLine(to:CGPoint(x: 100, y: 19))
+            con.move(to:CGPoint(100, 100))
+            con.addLine(to:CGPoint(100, 19))
             con.setLineWidth(20)
             con.replacePathWithStrokedPath()
             con.clip()
@@ -146,9 +146,9 @@ class MyView : UIView {
             
             // draw the red triangle, the point of the arrow
             con.setFillColor(UIColor.red.cgColor)
-            con.move(to:CGPoint(x:80, y: 25))
-            con.addLine(to:CGPoint(x:100, y: 0))
-            con.addLine(to:CGPoint(x:120, y: 25))
+            con.move(to:CGPoint(80, 25))
+            con.addLine(to:CGPoint(100, 0))
+            con.addLine(to:CGPoint(120, 25))
             con.fillPath()
             
         case 5:
@@ -157,16 +157,16 @@ class MyView : UIView {
             con.saveGState()
             
             // punch triangular hole in context clipping region
-            con.move(to:CGPoint(x: 90, y: 100))
-            con.addLine(to:CGPoint(x: 100, y: 90))
-            con.addLine(to:CGPoint(x: 110, y: 100))
+            con.move(to:CGPoint(90, 100))
+            con.addLine(to:CGPoint(100, 90))
+            con.addLine(to:CGPoint(110, 100))
             con.closePath()
             con.addRect(con.boundingBoxOfClipPath)
             con.clip(using:.evenOdd)
             
             // draw the vertical line, add its shape to the clipping region
-            con.move(to:CGPoint(x: 100, y: 100))
-            con.addLine(to:CGPoint(x: 100, y: 19))
+            con.move(to:CGPoint(100, 100))
+            con.addLine(to:CGPoint(100, 19))
             con.setLineWidth(20)
             con.replacePathWithStrokedPath()
             con.clip()
@@ -220,16 +220,16 @@ class MyView : UIView {
             con.saveGState()
             
             // punch triangular hole in context clipping region
-            con.move(to:CGPoint(x: 90, y: 100))
-            con.addLine(to:CGPoint(x: 100, y: 90))
-            con.addLine(to:CGPoint(x: 110, y: 100))
+            con.move(to:CGPoint(90, 100))
+            con.addLine(to:CGPoint(100, 90))
+            con.addLine(to:CGPoint(110, 100))
             con.closePath()
             con.addRect(con.boundingBoxOfClipPath)
             con.clip(using:.evenOdd)
             
             // draw the vertical line, add its shape to the clipping region
-            con.move(to:CGPoint(x: 100, y: 100))
-            con.addLine(to:CGPoint(x: 100, y: 19))
+            con.move(to:CGPoint(100, 100))
+            con.addLine(to:CGPoint(100, 19))
             con.setLineWidth(20)
             con.replacePathWithStrokedPath()
             con.clip()
@@ -271,9 +271,9 @@ class MyView : UIView {
             con.setFillPattern(patt, colorComponents: &alph)
             
 
-            con.move(to:CGPoint(x:80, y: 25))
-            con.addLine(to:CGPoint(x:100, y: 0))
-            con.addLine(to:CGPoint(x:120, y: 25))
+            con.move(to:CGPoint(80, 25))
+            con.addLine(to:CGPoint(100, 0))
+            con.addLine(to:CGPoint(120, 25))
             con.fillPath()
             
             
