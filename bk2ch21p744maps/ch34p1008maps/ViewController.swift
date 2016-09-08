@@ -278,7 +278,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         return MKOverlayRenderer() // ???? why did they make this non-nil?
     }
     
-    @IBAction func showPOIinMapsApp (_ sender:AnyObject) {
+    @IBAction func showPOIinMapsApp (_ sender: Any) {
         let p = MKPlacemark(coordinate:self.annloc, addressDictionary:nil)
         let mi = MKMapItem(placemark: p)
         mi.name = "A Great Place to Dirt Bike" // label to appear in Maps app

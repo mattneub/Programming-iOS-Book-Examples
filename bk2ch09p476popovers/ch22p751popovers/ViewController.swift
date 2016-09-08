@@ -16,7 +16,7 @@ class ViewController : UIViewController {
     // ...and to configure/modify it,
     // you use the popover presentation controller and act as its delegate
     
-    @IBAction func doPopover1(_ sender:AnyObject?) {
+    @IBAction func doPopover1(_ sender: Any?) {
         let vc = Popover1View1()
         // vc.isModalInPopover = true
         let nav = UINavigationController(rootViewController: vc)
@@ -62,18 +62,18 @@ class ViewController : UIViewController {
     
     // state saving and button dismissal; dismiss = dismiss presented view controller
     
-    func cancelPop1(_ sender:AnyObject) {
+    func cancelPop1(_ sender: Any) {
         self.dismiss(animated:true)
         UserDefaults.standard.set(self.oldChoice, forKey: "choice")
     }
     
-    func savePop1(_ sender:AnyObject) {
+    func savePop1(_ sender: Any) {
         self.dismiss(animated:true)
     }
     
     // presented view controller inside popover; just use .CurrentContext
     
-    func doPresent(_ sender:AnyObject) {
+    func doPresent(_ sender: Any) {
         // referring to the popover is now much easier!
         // also, note that automatic size adjustment now just works
         // this is because the popover controller is a UIContentContainer...
@@ -86,7 +86,7 @@ class ViewController : UIViewController {
     // also, playing with the ability to move a popover from one source rect to another;
     // show the popover (lower right button) and then rotate the interface
     
-    @IBAction func doButton(_ sender:AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         let v = sender as! UIView
         let vc = UIViewController()
         vc.modalPresentationStyle = .popover
@@ -107,7 +107,7 @@ class ViewController : UIViewController {
     
     // second popover, demonstrating some additional configuration features
     
-    @IBAction func doPopover2 (_ sender:AnyObject) {
+    @IBAction func doPopover2 (_ sender: Any) {
         let vc = UIViewController()
         vc.modalPresentationStyle = .popover
         // vc.isModalInPopover = true
@@ -146,7 +146,7 @@ class ViewController : UIViewController {
 
     }
     
-    func tapped (_ sender:AnyObject) {
+    func tapped (_ sender: Any) {
         print("tap")
         let vc = UIViewController()
         vc.modalPresentationStyle = .currentContext // oooh

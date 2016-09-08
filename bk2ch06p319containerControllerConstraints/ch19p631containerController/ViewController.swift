@@ -27,7 +27,7 @@ class ViewController : UIViewController {
         self.constrainInPanel(vc.view) // *
     }
     
-    @IBAction func doFlip(_ sender:AnyObject?) {
+    @IBAction func doFlip(_ sender: Any?) {
         UIApplication.shared.beginIgnoringInteractionEvents()
         let fromvc = self.swappers[cur]
         cur = cur == 0 ? 1 : 0

@@ -12,7 +12,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBAction func doButton(_ sender: AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         print(self.view.bounds.size)
         let nav = self.navigationController!
         nav.isNavigationBarHidden = !nav.isNavigationBarHidden

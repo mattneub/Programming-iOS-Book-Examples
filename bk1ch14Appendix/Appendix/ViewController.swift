@@ -317,7 +317,7 @@ class ViewController: UIViewController {
         return ViewController()
     }
     
-    @IBAction func doButton(_ sender:AnyObject?) {
+    @IBAction func doButton(_ sender: Any?) {
     
     }
     

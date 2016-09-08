@@ -7,7 +7,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     let which = 2
     let which2 = 4
 
-    @IBAction func doPresent(_ sender:AnyObject?) {
+    @IBAction func doPresent(_ sender: Any?) {
         
         // logging to prove these are normally nil
         print(self.presentingViewController)

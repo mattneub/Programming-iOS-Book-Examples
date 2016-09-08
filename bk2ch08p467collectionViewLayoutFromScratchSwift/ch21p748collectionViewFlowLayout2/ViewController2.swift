@@ -20,7 +20,7 @@ class ViewController2 : UICollectionViewController {
         self.collectionView!.reloadData()
     }
     
-    func doFlush (_ sender:AnyObject) {
+    func doFlush (_ sender: Any) {
         if let layout = self.collectionView!.collectionViewLayout as? MyFlowLayout {
             layout.flush()
         }

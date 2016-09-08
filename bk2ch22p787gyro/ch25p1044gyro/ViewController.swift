@@ -8,7 +8,7 @@ class ViewController: UIViewController {
     var motman = CMMotionManager()
     var timer : Timer!
     
-    @IBAction func doButton (_ sender:AnyObject!) {
+    @IBAction func doButton (_ sender: Any!) {
         guard self.motman.isDeviceMotionAvailable else {
             print("Oh, well")
             return
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         print("starting")
     }
     
-    func pollAttitude(_:AnyObject!) {
+    func pollAttitude(_: Any!) {
         guard let mot = self.motman.deviceMotion else {return}
         // more idiotic Swift numeric foo
         let acc = mot.magneticField.accuracy.rawValue

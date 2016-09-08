@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     // MyView presents a facade where its "swing" property is view-animatable
     
-    @IBAction func doButton(_ sender: AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         
         UIView.animate(withDuration:1) {
             self.v.swing = !self.v.swing // "animatable" Bool property

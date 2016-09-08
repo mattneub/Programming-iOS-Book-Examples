@@ -17,7 +17,7 @@ class ViewController: UIViewController, PlayerDelegate {
     // feel free to experiment further; if you set audio background mode in Info.plist,
     // then Forever even plays when we are in the background
 
-    @IBAction func doButton (_ sender:AnyObject!) {
+    @IBAction func doButton (_ sender: Any!) {
         self.player.delegate = self
         let path = Bundle.main.pathForResource("test", ofType: "aif")!
         if (sender as! UIButton).currentTitle == "Forever" {
@@ -44,7 +44,7 @@ class ViewController: UIViewController, PlayerDelegate {
         self.player.playFile(atPath:path)
     }
     
-    func soundFinished(_ sender: AnyObject) { // delegate message from Player
+    func soundFinished(_ sender: Any) { // delegate message from Player
         self.unduck()
     }
     

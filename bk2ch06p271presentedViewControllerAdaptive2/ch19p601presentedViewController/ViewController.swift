@@ -26,14 +26,14 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         self.navigationController!.definesPresentationContext = true
     }
     
-    @IBAction func doAdvance(_ sender: AnyObject) {
+    @IBAction func doAdvance(_ sender: Any) {
         let pair = self.pairs[self.ix]
         self.original = UIModalPresentationStyle(rawValue:pair.0)!
         self.adaptive = UIModalPresentationStyle(rawValue:pair.1)!
         self.ix += 1
     }
     
-    @IBAction func doPresent(_ sender:AnyObject?) {
+    @IBAction func doPresent(_ sender: Any?) {
         
         print(original.rawValue, terminator: "")
         print("\t", terminator: "")

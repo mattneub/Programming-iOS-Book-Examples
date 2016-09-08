@@ -5,7 +5,7 @@ class FirstViewController : UIViewController {
     
     
     let which = 3
-    @IBAction func doPresent(_ sender:AnyObject?) {
+    @IBAction func doPresent(_ sender: Any?) {
         switch which {
         case 1:
             let vc = ExtraViewController(nibName: nil, bundle: nil)

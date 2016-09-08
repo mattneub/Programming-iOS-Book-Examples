@@ -53,7 +53,7 @@ class ViewController : UIViewController {
     
     // rotate and tap the button to test attemptRotation and shouldAutorotate
     
-    @IBAction func doButton(_ sender:AnyObject?) {
+    @IBAction func doButton(_ sender: Any?) {
         self.shouldRotate = !self.shouldRotate
         self.adjustLabel()
         delay(0.1) {

@@ -14,7 +14,7 @@ class ViewController : UIViewController {
     
     let which = 7
 
-    @IBAction func doButton(_ sender:AnyObject?) {
+    @IBAction func doButton(_ sender: Any?) {
     
         switch which {
         case 1:

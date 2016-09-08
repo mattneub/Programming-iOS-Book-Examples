@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         self.grabPicture()
     }
         
-    @IBAction func doStart (_ sender:AnyObject!) {
+    @IBAction func doStart (_ sender: Any!) {
         self.prog.progress = 0
         self.iv.image = nil
         let del = UIApplication.shared.delegate as! AppDelegate
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func crash (_ sender:AnyObject?) {
+    func crash (_ sender: Any?) {
         _ = sender as! String
     }
 

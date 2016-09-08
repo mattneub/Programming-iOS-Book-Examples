@@ -54,7 +54,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let which = 2 // 1 is old way, 2 is new way
     
-    @IBAction func doFindMe (_ sender:AnyObject!) {
+    @IBAction func doFindMe (_ sender: Any!) {
         self.doThisWhenAuthorized = {
             [unowned self] in
             print("resuming")

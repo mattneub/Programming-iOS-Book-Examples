@@ -29,7 +29,7 @@ class ViewController : UIViewController {
         self.v.layer.contentsGravity = kCAGravityResizeAspectFill
     }
     
-    @IBAction func doButton (_ sender: AnyObject?) {
+    @IBAction func doButton (_ sender: Any?) {
         self.animate()
     }
     

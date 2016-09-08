@@ -9,7 +9,7 @@ class ViewController: UIViewController {
         return "dogs"
     }
 
-    @IBAction func buttonPressed(_ sender:AnyObject) {
+    @IBAction func buttonPressed(_ sender: Any) {
         let alert = UIAlertController(
             title: "Howdy!", message: "You tapped me!", preferredStyle: .alert)
         alert.addAction(

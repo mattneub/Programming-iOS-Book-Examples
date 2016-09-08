@@ -63,7 +63,7 @@ class ViewController : UIViewController {
     
     let which = 3
 
-    @IBAction func doButton(_ sender:AnyObject?) {
+    @IBAction func doButton(_ sender: Any?) {
         (sender as! UIButton).isEnabled = false
         
         let grav = MyGravityBehavior()

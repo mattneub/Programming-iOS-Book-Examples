@@ -39,7 +39,7 @@ class RootViewController : UITableViewController {
         self.navigationItem.rightBarButtonItem = self.editButtonItem // badda-bing, badda-boom
     }
     
-//    func doEdit(_ sender:AnyObject?) {
+//    func doEdit(_ sender: Any?) {
 //        var which : UIBarButtonSystemItem
 //        if !self.tableView.editing {
 //            self.tableView.setEditing(true, animated:true)

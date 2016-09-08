@@ -9,7 +9,7 @@ class ViewController: UIViewController {
     
     var engine = AVAudioEngine()
     
-    @IBAction func doButton(_ sender: AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         engine.stop()
         
         // simplest possible "play a file" scenario
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     }
 
     
-    @IBAction func doButton2(_ sender: AnyObject) {
+    @IBAction func doButton2(_ sender: Any) {
         engine.stop()
         
         // simplest possible "play a buffer" scenario
@@ -61,7 +61,7 @@ class ViewController: UIViewController {
     
 
 
-    @IBAction func doButton3(_ sender: AnyObject) {
+    @IBAction func doButton3(_ sender: Any) {
         engine.stop()
         
         let player = AVAudioPlayerNode()
@@ -92,7 +92,7 @@ class ViewController: UIViewController {
     
 
     
-    @IBAction func doButton4(_ sender: AnyObject) {
+    @IBAction func doButton4(_ sender: Any) {
         engine.stop()
         
         // first sound
@@ -144,7 +144,7 @@ class ViewController: UIViewController {
     
     // new iOS 9 feature: split node
     
-    @IBAction func doButton4a(_ sender: AnyObject) {
+    @IBAction func doButton4a(_ sender: Any) {
         engine.stop()
         
         // first sound
@@ -187,7 +187,7 @@ class ViewController: UIViewController {
     }
 
     
-    @IBAction func doButton5(_ sender: AnyObject) {
+    @IBAction func doButton5(_ sender: Any) {
         engine.stop()
         
         // simple minimal file-writing example
@@ -260,7 +260,7 @@ class ViewController: UIViewController {
     }
 
     
-    @IBAction func doStop(_ sender: AnyObject) {
+    @IBAction func doStop(_ sender: Any) {
         engine.stop()
         engine.reset()
     }

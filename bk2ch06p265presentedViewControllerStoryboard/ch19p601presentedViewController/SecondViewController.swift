@@ -23,7 +23,7 @@ class SecondViewController : UIViewController {
     // could alternatively use an "unwind" segue here
     // I'll show that later
     
-    @IBAction func doDismiss(_ sender:AnyObject?) {
+    @IBAction func doDismiss(_ sender: Any?) {
         self.presentingViewController!.dismiss(animated:true)
     }
     

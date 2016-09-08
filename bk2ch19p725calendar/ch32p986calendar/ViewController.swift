@@ -58,7 +58,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         NotificationCenter.default.removeObserver(self)
     }
 
-    @IBAction func createCalendar (_ sender:AnyObject!) {
+    @IBAction func createCalendar (_ sender: Any!) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -87,7 +87,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         return cals.filter {$0.title == name}.first
     }
     
-    @IBAction func createSimpleEvent (_ sender:AnyObject!) {
+    @IBAction func createSimpleEvent (_ sender: Any!) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -123,7 +123,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
         print("no errors")
     }
 
-    @IBAction func createRecurringEvent (_ sender:AnyObject!) {
+    @IBAction func createRecurringEvent (_ sender: Any!) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -170,7 +170,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
 
     }
     
-    @IBAction func searchByRange (_ sender:AnyObject!) {
+    @IBAction func searchByRange (_ sender: Any!) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -209,7 +209,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     
     // ========
 
-    @IBAction func showEventUI (_ sender:AnyObject!) {
+    @IBAction func showEventUI (_ sender: Any!) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -250,7 +250,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
     // like the photo interface, if there is no access
     // this interface will appear with a lock icon and the user must cancel
 
-    @IBAction func editEvent (_ sender:AnyObject!) {
+    @IBAction func editEvent (_ sender: Any!) {
         let evc = EKEventEditViewController()
         evc.eventStore = self.database
         evc.editViewDelegate = self
@@ -278,7 +278,7 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
 
     // this one too
 
-    @IBAction func deleteCalendar (_ sender:AnyObject!) {
+    @IBAction func deleteCalendar (_ sender: Any!) {
         let choo = EKCalendarChooser(
             selectionStyle:.single,
             displayStyle:.allCalendars,

@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     var op2 : ProgressingOperation?
     var op3 : ProgressingOperation?
     
-    @IBAction func doButton (_ sender:AnyObject) {
+    @IBAction func doButton (_ sender: Any) {
         self.prog1.progress = 0
         self.prog2.progress = 0
         self.prog3.value = 0

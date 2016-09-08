@@ -79,7 +79,7 @@ class ViewController : UIViewController {
     
     // tap button to prove we've got big data
     
-    @IBAction func doButton (_ sender:AnyObject?) {
+    @IBAction func doButton (_ sender: Any?) {
         let s = String(data: self.myBigData, encoding:.utf8)
         let av = UIAlertController(title: "Got big data, and it says:", message: s, preferredStyle: .alert)
         av.addAction(UIAlertAction(title: "OK", style: .cancel))
@@ -110,11 +110,11 @@ class ViewController : UIViewController {
     // on device
     // private API (you'd have to remove it from shipping code)
     
-    @IBAction func doButton2(_ sender: AnyObject) {
+    @IBAction func doButton2(_ sender: Any) {
         UIApplication.shared.perform(#selector(Dummy._performMemoryWarning))
     }
     
-    @IBAction func testCaches(_ sender: AnyObject) {
+    @IBAction func testCaches(_ sender: Any) {
         print(self.cachedData)
         print(self.purgeabledata)
     }

@@ -31,7 +31,7 @@ class ViewController: UIViewController {
 
     }
 
-    @IBAction func dateChanged(_ sender: AnyObject) {
+    @IBAction func dateChanged(_ sender: Any) {
         let dp = sender as! UIDatePicker
         if dp.datePickerMode != .countDownTimer {
             let d = dp.date

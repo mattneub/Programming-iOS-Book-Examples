@@ -35,13 +35,13 @@ class ViewController : UIViewController {
         self.oldButtonCenter = self.button.center // so we can test repeatedly
     }
     
-    @IBAction func tapme(_ sender:AnyObject?) {
+    @IBAction func tapme(_ sender: Any?) {
         print("tap! (the button's action method)")
     }
     
     let which = 1 // no diff, just proving it's the same for both ways of animating
     
-    @IBAction func start(_ sender:AnyObject?) {
+    @IBAction func start(_ sender: Any?) {
         print("you tapped Start")
         let goal = CGPoint(100,400)
         self.button.center = self.oldButtonCenter

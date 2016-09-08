@@ -6,7 +6,7 @@ class ViewController: UIViewController {
     
     let categoryIdentifier = "coffee"
 
-    @IBAction func doButton(_ sender:AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         self.registerMyNotification()
     }
     

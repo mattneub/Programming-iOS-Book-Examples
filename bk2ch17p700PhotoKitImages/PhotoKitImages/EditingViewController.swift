@@ -80,11 +80,11 @@ class EditingViewController: UIViewController, GLKViewDelegate {
     }
 
     
-    func doCancel (_ sender:AnyObject?) {
+    func doCancel (_ sender: Any?) {
         self.dismiss(animated:true)
     }
     
-    func doDone (_ sender:AnyObject?) {
+    func doDone (_ sender: Any?) {
         self.dismiss(animated:true) {
             _ in
             delay(0.1) {
@@ -93,7 +93,7 @@ class EditingViewController: UIViewController, GLKViewDelegate {
         }
     }
     
-    func doUndo (_ sender:AnyObject?) {
+    func doUndo (_ sender: Any?) {
         self.dismiss(animated:true) {
             _ in
             delay(0.1) {
@@ -102,7 +102,7 @@ class EditingViewController: UIViewController, GLKViewDelegate {
         }
     }
 
-    @IBAction func doSlider(_ sender: AnyObject?) {
+    @IBAction func doSlider(_ sender: Any?) {
         self.glkview.display()
     }
     

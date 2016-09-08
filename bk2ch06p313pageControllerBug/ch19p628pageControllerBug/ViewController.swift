@@ -36,7 +36,7 @@ class ViewController : UIViewController, UIPageViewControllerDataSource {
     // it is page 1!
     // that's the bug; the page view controller has not updated its internal state
 
-    func jumpTo8(_ sender:AnyObject?) {
+    func jumpTo8(_ sender: Any?) {
         let page = MyPage()
         page.num = 8
         let pvc = self.childViewControllers[0] as! UIPageViewController

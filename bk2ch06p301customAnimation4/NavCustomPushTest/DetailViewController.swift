@@ -2,7 +2,7 @@
 import UIKit
 
 class DetailViewController : UIViewController {
-    var detailItem : AnyObject?
+    var detailItem : Any?
     @IBOutlet var iv : UIImageView!
         
     override func viewWillAppear(_ animated: Bool) {

@@ -18,7 +18,7 @@ class ViewController : UIViewController {
     @IBOutlet var label : UILabel!
     @IBOutlet var button : UIButton!
     
-    @IBAction func doWiden(_ sender:AnyObject?) {
+    @IBAction func doWiden(_ sender: Any?) {
         self.lab1.text = self.lab1.text! + "xxxxx"
         self.lab2.text = self.lab2.text! + "xxxxx"
         self.label.text = self.label.text! + "xxxxx"

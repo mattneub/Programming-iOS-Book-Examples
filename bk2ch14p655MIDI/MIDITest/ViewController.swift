@@ -9,7 +9,7 @@ class ViewController: UIViewController {
     var engine = AVAudioEngine()
     var seq : AVAudioSequencer!
 
-    @IBAction func doButton(_ sender: AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         
         let midurl = Bundle.main.urlForResource("presto", withExtension: "mid")!
         let sndurl = Bundle.main.urlForResource("PianoBell", withExtension: "sf2")!

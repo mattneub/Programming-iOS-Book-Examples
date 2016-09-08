@@ -6,7 +6,7 @@ class Cell : UICollectionViewCell {
     @IBOutlet var lab : UILabel!
     @IBOutlet var container : UIView!
     
-    func capital(_ sender:AnyObject!) {
+    func capital(_ sender: Any!) {
         // find my collection view
         var v : UIView = self
         repeat { v = v.superview! } while !(v is UICollectionView)

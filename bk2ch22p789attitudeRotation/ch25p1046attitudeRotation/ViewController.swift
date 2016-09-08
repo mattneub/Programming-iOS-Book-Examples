@@ -10,7 +10,7 @@ class ViewController: UIViewController {
     @IBOutlet var v : MyView!
     var ref : CMAttitude!
     
-    @IBAction func doButton (_ sender:AnyObject!) {
+    @IBAction func doButton (_ sender: Any!) {
         self.ref = nil // start over if user presses button again
         guard self.motman.isDeviceMotionAvailable else {
             print("oh well")
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         self.timer = Timer.scheduledTimer(timeInterval:t, target:self, selector:#selector(pollAttitude),userInfo:nil, repeats:true)
     }
     
-    func pollAttitude(_:AnyObject!) {
+    func pollAttitude(_: Any!) {
         guard let mot = self.motman.deviceMotion else {return}
         let att = mot.attitude
         if self.ref == nil {

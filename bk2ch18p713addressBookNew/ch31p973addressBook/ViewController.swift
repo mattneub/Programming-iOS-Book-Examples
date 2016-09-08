@@ -52,7 +52,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
 
     //
     
-    @IBAction func doFindMoi (_ sender:AnyObject!) {
+    @IBAction func doFindMoi (_ sender: Any!) {
         CNContactStore().requestAccess(for:.contacts) {
             ok, err in
             guard ok else {
@@ -119,7 +119,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     }
 
     
-    @IBAction func doCreateSnidely (_ sender:AnyObject!) {
+    @IBAction func doCreateSnidely (_ sender: Any!) {
         let snidely = CNMutableContact()
         snidely.givenName = "Snidely"
         snidely.familyName = "Whiplash"
@@ -143,7 +143,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         }
     }
 
-    @IBAction func doPeoplePicker (_ sender:AnyObject!) {
+    @IBAction func doPeoplePicker (_ sender: Any!) {
         let picker = CNContactPickerViewController()
         picker.delegate = self
         picker.displayedPropertyKeys = [CNContactEmailAddressesKey]
@@ -158,7 +158,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         self.dismiss(animated:true)
     }
 
-    @IBAction func doViewPerson (_ sender:AnyObject!) {
+    @IBAction func doViewPerson (_ sender: Any!) {
         
         CNContactStore().requestAccess(for: .contacts) {
             ok, err in
@@ -196,7 +196,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         return false
     }
 
-    @IBAction func doNewPerson (_ sender:AnyObject!) {
+    @IBAction func doNewPerson (_ sender: Any!) {
         let con = CNMutableContact()
         con.givenName = "Dudley"
         con.familyName = "Doright"
@@ -205,7 +205,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         self.present(UINavigationController(rootViewController: npvc), animated: true)
     }
     
-    @IBAction func doUnknownPerson (_ sender:AnyObject!) {
+    @IBAction func doUnknownPerson (_ sender: Any!) {
         let con = CNMutableContact()
         con.givenName = "Johnny"
         con.familyName = "Appleseed"
@@ -247,7 +247,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
 
     // =========
     
-    @IBAction func doNewPerson (_ sender:AnyObject!) {
+    @IBAction func doNewPerson (_ sender: Any!) {
         let npvc = ABNewPersonViewController()
         npvc.newPersonViewDelegate = self
         let nc = UINavigationController(rootViewController:npvc)
@@ -270,7 +270,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     // =========
     
-    @IBAction func doUnknownPerson (_ sender:AnyObject!) {
+    @IBAction func doUnknownPerson (_ sender: Any!) {
         let unk = ABUnknownPersonViewController()
         unk.message = "Person who really knows trees"
         unk.allowsAddingToAddressBook = true

@@ -5,7 +5,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var lab : UILabel!
     
-    @IBAction func doUpdateLabel(_ sender:AnyObject?) {
+    @IBAction func doUpdateLabel(_ sender: Any?) {
         let mas = self.lab.attributedText!.mutableCopy() as! NSMutableAttributedString
         let r = (mas.string as NSString).range(of:"^0")
         if r.length > 0 {

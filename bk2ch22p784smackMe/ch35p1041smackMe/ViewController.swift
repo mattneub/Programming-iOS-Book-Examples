@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     var oldTime : TimeInterval = 0
     var lastSlap = Slap.unknown
     
-    @IBAction func doButton (_ sender:AnyObject!) {
+    @IBAction func doButton (_ sender: Any!) {
         if !self.motman.isAccelerometerAvailable {
             print("Oh, well")
             return
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         self.oldZ = accel.z - ((accel.z * alpha) + (self.oldZ * (1.0 - alpha)))
     }
     
-    func pollAccel(_:AnyObject!) {
+    func pollAccel(_: Any!) {
         guard let dat = self.motman.accelerometerData else {return}
         self.add(acceleration: dat.acceleration)
         let x = self.oldX

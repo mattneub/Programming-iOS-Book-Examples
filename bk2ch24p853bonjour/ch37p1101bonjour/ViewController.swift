@@ -9,7 +9,7 @@ class ViewController: UIViewController, NetServiceBrowserDelegate, NetServiceDel
     var nsb : NetServiceBrowser!
     var services = [NetService]()
     
-    @IBAction func doButton (_ sender:AnyObject!) {
+    @IBAction func doButton (_ sender: Any!) {
         print("listening for services...")
         self.services.removeAll()
         self.nsb = NetServiceBrowser()

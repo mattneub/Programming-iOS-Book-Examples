@@ -40,7 +40,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 NSUnderlineStyle.styleSingle.rawValue
         ]
         md.addEntries(from:d)
-        textField.typingAttributes = md.copy() as? [String:AnyObject]
+        textField.typingAttributes = md.copy() as? [String:Any]
         
         return false
 

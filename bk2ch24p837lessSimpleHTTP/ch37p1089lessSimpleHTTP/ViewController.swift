@@ -18,7 +18,7 @@ class ViewController: UIViewController, URLSessionDownloadDelegate {
 
     
     
-    @IBAction func doElaborateHTTP (_ sender:AnyObject!) {
+    @IBAction func doElaborateHTTP (_ sender: Any!) {
         if self.task != nil {
             return
         }

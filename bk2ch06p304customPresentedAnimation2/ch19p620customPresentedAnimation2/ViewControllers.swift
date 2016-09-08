@@ -31,7 +31,7 @@ extension CGVector {
 
 
 class ViewController : UIViewController {
-    @IBAction func doButton(_ sender:AnyObject?) {
+    @IBAction func doButton(_ sender: Any?) {
         self.present(ViewController2(), animated:true)
     }
 }
@@ -41,7 +41,7 @@ class ViewController : UIViewController {
 class ViewController2 : UIViewController {
     @IBOutlet var button : UIButton!
     
-    @IBAction func doButton(_ sender:AnyObject?) {
+    @IBAction func doButton(_ sender: Any?) {
         self.presentingViewController!.dismiss(animated:true)
     }
     

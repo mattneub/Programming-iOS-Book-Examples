@@ -144,7 +144,7 @@ class ViewController: UIViewController {
     
     
     
-    @IBAction func moveMyButton (_ sender:AnyObject!) {
+    @IBAction func moveMyButton (_ sender:Any!) {
         func whatToAnimate() { // self.myButton is a button in the interface
             self.myButton.frame.origin.y += 20
         }
@@ -214,7 +214,7 @@ class ViewController: UIViewController {
 
     }
     
-    func buttonPressed(_ sender:AnyObject) { // must actually exist, or none of the above will compile
+    func buttonPressed(_ sender:Any) { // must actually exist, or none of the above will compile
         
     }
 

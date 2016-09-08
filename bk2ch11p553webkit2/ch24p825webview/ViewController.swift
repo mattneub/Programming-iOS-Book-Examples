@@ -3,7 +3,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBAction func doButton (_ sender:AnyObject!) {
+    @IBAction func doButton (_ sender: Any!) {
         let wvc = WebViewController()
         self.navigationController!.pushViewController(wvc, animated:true)
     }

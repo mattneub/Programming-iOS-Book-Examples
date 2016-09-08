@@ -31,7 +31,7 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     }
     
 
-    @IBAction func doDismiss(_ sender: AnyObject) {
+    @IBAction func doDismiss(_ sender: Any) {
         self.dismiss(animated:true)
     }
 }

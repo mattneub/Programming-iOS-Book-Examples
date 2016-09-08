@@ -133,7 +133,7 @@ class ViewController : UIViewController {
         }
     }
     
-    @IBAction func doStart(_ sender:AnyObject?) {
+    @IBAction func doStart(_ sender: Any?) {
         switch useAnimator {
         case false: self.animate()
         case true: self.animate2()
@@ -141,7 +141,7 @@ class ViewController : UIViewController {
         
     }
     
-    @IBAction func doStop(_ sender:AnyObject?) {
+    @IBAction func doStop(_ sender: Any?) {
         switch useAnimator {
         case false: self.cancel()
         case true: self.cancel2()

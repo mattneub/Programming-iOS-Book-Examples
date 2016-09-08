@@ -35,7 +35,7 @@ class ViewController: UIViewController {
 
     let previewRect = CGRect(10,30,300,300)
     
-    @IBAction func doStart (_ sender:AnyObject!) {
+    @IBAction func doStart (_ sender: Any!) {
         if self.sess != nil && self.sess.isRunning {
             self.sess.stopRunning()
             self.previewLayer.removeFromSuperlayer()
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         self.sess.startRunning()
     }
     
-    @IBAction func doSnap (_ sender:AnyObject!) {
+    @IBAction func doSnap (_ sender: Any!) {
         if self.sess == nil || !self.sess.isRunning {
             return
         }

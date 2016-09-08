@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func doButton (_ sender:AnyObject!) {
+    @IBAction func doButton (_ sender: Any!) {
         
         do {
             let fm = FileManager()
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
 
     }
     
-    @IBAction func doButton2 (_ sender:AnyObject!) {
+    @IBAction func doButton2 (_ sender: Any!) {
         guard let db = FMDatabase(path:self.dbpath) where db.open()
             else {print("Ooooops"); return}
         

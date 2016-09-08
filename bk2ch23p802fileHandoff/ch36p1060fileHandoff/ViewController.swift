@@ -36,7 +36,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         return url
     }
     
-    @IBAction func doDisplayDoc(_ sender: AnyObject) {
+    @IBAction func doDisplayDoc(_ sender: Any) {
         var url = self.doc
         if url == nil {
             url = self.locateDoc()
@@ -48,7 +48,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         self.displayDoc(url: url!)
     }
     
-    @IBAction func doHandOffDoc (_ sender:AnyObject) {
+    @IBAction func doHandOffDoc (_ sender: Any) {
         var url = self.doc
         if url == nil {
             url = self.locateDoc()
@@ -67,7 +67,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         }
     }
     
-    @IBAction func doPreview (_ sender:AnyObject!) {
+    @IBAction func doPreview (_ sender: Any!) {
         var url = self.doc
         if url == nil {
             url = self.locateDoc()
@@ -86,7 +86,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         return self
     }
     
-    @IBAction func doPreviewMultipleUsingQuickLook (_ sender:AnyObject!) {
+    @IBAction func doPreviewMultipleUsingQuickLook (_ sender: Any!) {
         self.docs = [URL]()
         do {
             let fm = FileManager()

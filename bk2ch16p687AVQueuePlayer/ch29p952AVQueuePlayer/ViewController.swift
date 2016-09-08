@@ -79,7 +79,7 @@ class ViewController: UIViewController {
         return query.items?[0].assetURL
     }
     
-    @IBAction func doPlayOneSongAVAudioPlayer (_ sender:AnyObject!) {
+    @IBAction func doPlayOneSongAVAudioPlayer (_ sender: Any!) {
         self.curplayer?.pause()
         if let url = self.oneSong() {
             self.player.playFile(at:url)
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doPlayOneSongAVPlayer (_ sender:AnyObject!) {
+    @IBAction func doPlayOneSongAVPlayer (_ sender: Any!) {
         self.curplayer?.pause()
         if let url = self.oneSong() {
             self.avplayer = AVPlayer(url:url)
@@ -96,7 +96,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doPlayOneSongAVKit(_ sender: AnyObject) {
+    @IBAction func doPlayOneSongAVKit(_ sender: Any) {
         self.curplayer?.pause()
         guard let url = self.oneSong() else {return}
         let p = AVPlayer(url:url)
@@ -135,7 +135,7 @@ class ViewController: UIViewController {
         self.curplayer = p
     }
     
-    @IBAction func doPlayShortSongs (_ sender:AnyObject!) {
+    @IBAction func doPlayShortSongs (_ sender: Any!) {
         self.curplayer?.pause()
         let query = MPMediaQuery.songs()
         // always need to filter out songs that aren't present

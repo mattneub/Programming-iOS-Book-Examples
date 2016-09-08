@@ -15,7 +15,7 @@ class ViewControllerChild: UIViewController {
         fatalError("NSCoding not supported")
     }
     
-    @IBAction func doButton(_ sender: AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         // magically trigger communication with parent
         print("child setting preferred content size")
         self.preferredContentSize = self.expanded ? CGSize(250,250) : CGSize(350,350)

@@ -27,7 +27,7 @@ class ColorPickerController : UIViewController {
         return .portrait
     }
 
-    @IBAction func dismissColorPicker(_ sender: AnyObject?) {
+    @IBAction func dismissColorPicker(_ sender: Any?) {
         let c : UIColor? = self.color
         self.delegate?.colorPicker(
             self, didSetColorNamed: self.colorName, to: c)

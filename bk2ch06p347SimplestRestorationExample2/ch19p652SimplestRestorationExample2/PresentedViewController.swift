@@ -40,7 +40,7 @@ class PresentedViewController : UIViewController {
         self.view.addSubview(button)
     }
     
-    func doDismiss(_ sender:AnyObject?) {
+    func doDismiss(_ sender: Any?) {
         self.presentingViewController!.dismiss(animated:true)
     }
     

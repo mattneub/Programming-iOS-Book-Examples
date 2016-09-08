@@ -43,7 +43,7 @@ class MyViewController: UIViewController {
 
 class ViewController: UIViewController {
                             
-    @IBAction func doButton(_ sender: AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         let vc = MyViewController()
         vc.preferredContentSize = CGSize(400,500)
         vc.modalPresentationStyle = .popover
@@ -101,7 +101,7 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
         return nil
     }
     
-    func dismissHelp(_ sender:AnyObject) {
+    func dismissHelp(_ sender: Any) {
         self.dismiss(animated:true)
     }
     

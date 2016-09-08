@@ -3,7 +3,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBAction func doButton (_ sender:AnyObject) {
+    @IBAction func doButton (_ sender: Any) {
         let url = Bundle.main.urlForResource("sunglasses", withExtension:"png")!
         let things = ["This is a cool picture", url]
         // let avc = UIActivityViewController(activityItems:things, applicationActivities:nil)

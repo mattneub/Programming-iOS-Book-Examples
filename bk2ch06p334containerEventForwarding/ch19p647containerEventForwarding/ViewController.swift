@@ -103,7 +103,7 @@ On flip we expect to see (ignoring parent messages):
 */
 
     
-    @IBAction func doFlip(_ sender:AnyObject?) {
+    @IBAction func doFlip(_ sender: Any?) {
         let fromvc = self.swappers[cur]
         cur = cur == 0 ? 1 : 0
         let tovc = self.swappers[cur]

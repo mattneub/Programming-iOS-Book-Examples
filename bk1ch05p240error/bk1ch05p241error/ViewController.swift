@@ -63,7 +63,7 @@ class ViewController: UIViewController {
             let f = "nonexistent" // path to some file, maybe
             let s = try String(contentsOfFile: f)
             print(s) // we won't get here
-        } catch CocoaError.fileReadNoSuchFileError {
+        } catch CocoaError.fileReadNoSuchFile {
             print("no such file")
         } catch {
             print(error)

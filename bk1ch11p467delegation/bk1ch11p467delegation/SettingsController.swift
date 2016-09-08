@@ -18,7 +18,7 @@ class SettingsController: UIViewController, UINavigationControllerDelegate {
             return .portrait
     }
 
-    @IBAction func doButton(_ sender: AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         self.showColorPicker()
     }
 }

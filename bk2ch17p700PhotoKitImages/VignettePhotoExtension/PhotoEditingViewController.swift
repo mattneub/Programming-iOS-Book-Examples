@@ -46,10 +46,10 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
     let vig = VignetteFilter()
 
     
-    @IBAction func doSlider(_ sender: AnyObject) {
+    @IBAction func doSlider(_ sender: Any) {
         self.glkview.display()
     }
-    @IBAction func doSegmentedControl(_ sender: AnyObject) {
+    @IBAction func doSegmentedControl(_ sender: Any) {
         self.glkview.display()
     }
 

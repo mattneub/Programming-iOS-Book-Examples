@@ -52,7 +52,7 @@ class MyTableViewController: UITableViewController {
         }
     }
     
-    func doStart(_ sender:AnyObject!) {
+    func doStart(_ sender: Any!) {
         if !self.authorized {
             self.checkAuthorization()
             return

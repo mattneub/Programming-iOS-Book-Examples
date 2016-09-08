@@ -132,7 +132,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         self.wv.stopLoading()
     }
         
-    func goBack(_ sender:AnyObject) {
+    func goBack(_ sender: Any) {
         self.wv.goBack()
     }
     

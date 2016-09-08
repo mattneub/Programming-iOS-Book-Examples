@@ -12,7 +12,7 @@ class ViewController : UIViewController {
     var timestamp: CFTimeInterval!
     var context : CIContext!
     
-    @IBAction func doButton (_ sender:AnyObject) {
+    @IBAction func doButton (_ sender: Any) {
         let moi = CIImage(image:UIImage(named:"moi")!)!
         self.moiextent = moi.extent
         

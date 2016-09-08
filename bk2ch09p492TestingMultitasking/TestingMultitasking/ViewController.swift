@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         NSLog("%@", #function)
     }
     
-    @IBAction func doButton(_ sender: AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         if self.presentingViewController != nil {
             self.dismiss(animated:true)
         } else {
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     
     let which = 2
     
-    @IBAction func doButton2(_ sender: AnyObject) {
+    @IBAction func doButton2(_ sender: Any) {
         if self.presentingViewController != nil {
             return
         }

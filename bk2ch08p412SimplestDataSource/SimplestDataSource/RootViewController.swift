@@ -76,7 +76,7 @@ class RootViewController: UITableViewController {
         return cell
     }
 
-    @IBAction func doRefresh(_ sender: AnyObject) {
+    @IBAction func doRefresh(_ sender: Any) {
         print("refreshing...")
         delay(3) {
             (sender as! UIRefreshControl).endRefreshing()
@@ -84,7 +84,7 @@ class RootViewController: UITableViewController {
         }
     }
 
-    @IBAction func doRefreshManually(_ sender: AnyObject) {
+    @IBAction func doRefreshManually(_ sender: Any) {
         // all this talk of `self.refreshControl` works, even though we didn't assign this way
         self.tableView.setContentOffset(
             CGPoint(0, -self.refreshControl!.bounds.height),

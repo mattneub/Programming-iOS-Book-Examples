@@ -143,7 +143,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : UIVideoEditorControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
-    @IBAction func doEditorButton (_ sender:AnyObject!) {
+    @IBAction func doEditorButton (_ sender: Any!) {
         let path = Bundle.main.path(forResource:"ElMirage", ofType: "mp4")!
         let can = UIVideoEditorController.canEditVideo(atPath:path)
         if !can {

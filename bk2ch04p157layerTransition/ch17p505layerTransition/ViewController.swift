@@ -20,7 +20,7 @@ class ViewController : UIViewController {
         
     }
     
-    @IBAction func doButton(_ sender:AnyObject?) {
+    @IBAction func doButton(_ sender: Any?) {
         let lay = self.v.layer.sublayers![0]
         let t = CATransition()
         t.type = kCATransitionPush

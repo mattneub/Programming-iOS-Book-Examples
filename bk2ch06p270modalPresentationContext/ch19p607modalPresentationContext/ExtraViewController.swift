@@ -8,7 +8,7 @@ class ExtraViewController : UIViewController {
         return true
     }
     
-    @IBAction func doButton (_ sender: AnyObject) {
+    @IBAction func doButton (_ sender: Any) {
         print("presented vc's presenting vc: \(self.presentingViewController)")
         self.presentingViewController!.dismiss(animated:true)
     }

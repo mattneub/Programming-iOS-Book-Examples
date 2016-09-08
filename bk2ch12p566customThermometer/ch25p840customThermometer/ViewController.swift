@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     @IBOutlet var prog3 : MyProgressView!
     @IBOutlet var prog4: MyCircularProgressButton!
 
-    @IBAction func doButton (_ sender:AnyObject) {
+    @IBAction func doButton (_ sender: Any) {
         self.prog1.progress = 0
         self.prog2.progress = 0
         self.prog3.value = 0

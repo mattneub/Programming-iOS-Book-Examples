@@ -18,7 +18,7 @@ class ViewController : UIViewController {
     
     var useAnimator = false
     
-    @IBAction func doButton(_ sender: AnyObject?) {
+    @IBAction func doButton(_ sender: Any?) {
         switch useAnimator {
         case false:
             self.animate()

@@ -88,7 +88,7 @@ class ViewController: UIViewController {
         self.tv.contentOffset = .zero
     }
 
-    @IBAction func doTest(_ sender:AnyObject) {
+    @IBAction func doTest(_ sender: Any) {
         // how far am I scrolled?
         let off = self.tv.contentOffset
         // how far down is the top of the text container?

@@ -28,7 +28,7 @@ class DetailViewController: UIViewController {
         // ... because we don't know the order of events:
         // could be detailItem first, then viewDidLoad
         // in portrait view, it is; on iPhone it is
-        if let detail: AnyObject = self.detailItem {
+        if let detail = self.detailItem {
             if let label = self.detailDescriptionLabel {
                 label.text = detail.description
             }

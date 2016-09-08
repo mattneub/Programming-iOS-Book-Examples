@@ -33,7 +33,7 @@ class DocumentLister: UITableViewController {
         
     }
     
-    func doRefresh (_:AnyObject?) {
+    func doRefresh (_: Any?) {
         print("refreshing")
         do {
             let fm = FileManager()
@@ -53,7 +53,7 @@ class DocumentLister: UITableViewController {
         }
     }
     
-    func doAdd (_:AnyObject?) {
+    func doAdd (_: Any?) {
         let av = UIAlertController(title: "New Group", message: "Enter name:", preferredStyle: .alert)
         av.addTextField {$0.autocapitalizationType = .words}
         av.addAction(UIAlertAction(title: "Cancel", style: .cancel))

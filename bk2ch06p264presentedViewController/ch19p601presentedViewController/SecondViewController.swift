@@ -19,7 +19,7 @@ class SecondViewController : UIViewController {
     
     weak var delegate : SecondViewControllerDelegate?
     
-    @IBAction func doDismiss(_ sender:AnyObject?) {
+    @IBAction func doDismiss(_ sender: Any?) {
         // logging to show relationships
         print(self.presentingViewController!)
         print(self.presentingViewController!.presentedViewController)

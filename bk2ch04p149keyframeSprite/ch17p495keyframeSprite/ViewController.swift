@@ -46,7 +46,7 @@ class ViewController : UIViewController {
         
     }
     
-    @IBAction func doButton(_ sender:AnyObject?) {
+    @IBAction func doButton(_ sender: Any?) {
 
         let anim = CAKeyframeAnimation(keyPath:#keyPath(CALayer.contents))
         anim.values = self.images.map {$0.cgImage!}

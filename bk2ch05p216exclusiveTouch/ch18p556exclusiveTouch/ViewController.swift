@@ -9,11 +9,11 @@ class ViewController : UIViewController {
         return true
     }
     
-    @IBAction func pinch(_ sender:AnyObject?) {
+    @IBAction func pinch(_ sender: Any?) {
         print("pinch")
     }
     
-    @IBAction func switched(_ sender: AnyObject) {
+    @IBAction func switched(_ sender: Any) {
         let sw = sender as! UISwitch
         for v in self.view.subviews {
             if v is MyView || v is UIButton {

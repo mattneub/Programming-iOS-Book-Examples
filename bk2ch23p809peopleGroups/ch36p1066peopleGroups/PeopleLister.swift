@@ -51,7 +51,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    func doAdd (_ sender:AnyObject) {
+    func doAdd (_ sender: Any) {
         self.tableView.endEditing(true)
         let newP = Person(firstName: "", lastName: "")
         self.people.append(newP)
@@ -112,7 +112,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         self.doc.updateChangeCount(.done)
     }
     
-    func forceSave(_:AnyObject?) {
+    func forceSave(_: Any?) {
         print("force save")
         self.tableView.endEditing(true)
         self.doc.save(to:self.doc.fileURL, for:.forOverwriting)

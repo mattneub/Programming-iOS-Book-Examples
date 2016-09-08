@@ -89,7 +89,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         self.navigationItem.rightBarButtonItem = b
     }
     
-    func doSearch(_ sender: AnyObject) {
+    func doSearch(_ sender: Any) {
         // construct container view controller
 
         let src = SearchResultsController(data: self.cellData)

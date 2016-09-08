@@ -18,7 +18,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var iv : UIImageView!
     
-    @IBAction func doButton (_ sender:AnyObject!) {
+    @IBAction func doButton (_ sender: Any!) {
         let url = Bundle.main.url(forResource:"colson", withExtension: "jpg")!
         let src = CGImageSourceCreateWithURL(url as CFURL, nil)!
         let result = CGImageSourceCopyPropertiesAtIndex(src, 0, nil)! as NSDictionary
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         print("\(width) by \(height)")
     }
 
-    @IBAction func doButton2 (_ sender:AnyObject!) {
+    @IBAction func doButton2 (_ sender: Any!) {
         let url = Bundle.main.url(forResource:"colson", withExtension: "jpg")!
         let src = CGImageSourceCreateWithURL(url as CFURL, nil)!
         let scale = UIScreen.main.scale
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         print(im.size)
     }
 
-    @IBAction func doButton3 (_ sender:AnyObject!) {
+    @IBAction func doButton3 (_ sender: Any!) {
         let url = Bundle.main.url(forResource:"colson", withExtension: "jpg")!
         let src = CGImageSourceCreateWithURL(url as CFURL, nil)!
         let fm = FileManager()

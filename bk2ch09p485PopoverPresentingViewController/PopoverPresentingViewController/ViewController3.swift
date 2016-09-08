@@ -19,7 +19,7 @@ class ViewController3: UIViewController {
         }
     }
 
-    @IBAction func doDone(_ sender: AnyObject) {
+    @IBAction func doDone(_ sender: Any) {
         // and then on dismissal must undo both!
         if workaround {
             if let pres = self.presentingViewController {

@@ -24,7 +24,7 @@ class ViewController : UIViewController {
         vc.didMove(toParentViewController: self)
     }
     
-    @IBAction func doFlip(_ sender:AnyObject?) {
+    @IBAction func doFlip(_ sender: Any?) {
         UIApplication.shared.beginIgnoringInteractionEvents()
         let fromvc = self.swappers[cur]
         cur = cur == 0 ? 1 : 0

@@ -52,7 +52,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     }
     
     
-    @IBAction func doTake (_ sender:AnyObject!) {
+    @IBAction func doTake (_ sender: Any!) {
         let cam = UIImagePickerControllerSourceType.camera
         let ok = UIImagePickerController.isSourceTypeAvailable(cam)
         if (!ok) {

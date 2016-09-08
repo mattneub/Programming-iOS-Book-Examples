@@ -6,7 +6,7 @@ class ViewController : UIViewController {
     
     @IBOutlet var lab : UILabel!
     
-    @IBAction func doButton(_ sender:AnyObject?) {
+    @IBAction func doButton(_ sender: Any?) {
         self.animate()
     }
     

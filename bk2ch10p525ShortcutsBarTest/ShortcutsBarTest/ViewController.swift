@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         
     }
     
-    func doCamera(_ sender:AnyObject) {
+    func doCamera(_ sender: Any) {
         print("do camera")
     }
  

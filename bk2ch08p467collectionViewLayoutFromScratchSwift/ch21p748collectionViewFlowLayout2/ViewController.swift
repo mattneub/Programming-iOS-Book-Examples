@@ -184,7 +184,7 @@ class ViewController : UICollectionViewController {
         return cell
     }
     
-    func doPush(_ sender:AnyObject?) {
+    func doPush(_ sender: Any?) {
         self.performSegue(withIdentifier:"push", sender: self)
     }
     

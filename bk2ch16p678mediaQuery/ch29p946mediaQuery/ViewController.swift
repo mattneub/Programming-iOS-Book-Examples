@@ -129,7 +129,7 @@ class ViewController: UIViewController {
         print("wireless active change \(n.userInfo)")
     }
     
-    @IBAction func doAllAlbumTitles (_ sender:AnyObject!) {
+    @IBAction func doAllAlbumTitles (_ sender: Any!) {
         do {
             let query = MPMediaQuery() // just making sure this is legal
             let result = query.items
@@ -150,7 +150,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doBeethovenAlbumTitles (_ sender:AnyObject!) {
+    @IBAction func doBeethovenAlbumTitles (_ sender: Any!) {
         let query = MPMediaQuery.albums()
         let hasBeethoven = MPMediaPropertyPredicate(value:"Beethoven",
             forProperty:MPMediaItemPropertyAlbumTitle,
@@ -162,7 +162,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doSonataAlbumsOnDevice (_ sender:AnyObject!) {
+    @IBAction func doSonataAlbumsOnDevice (_ sender: Any!) {
         let query = MPMediaQuery.albums()
         let hasSonata = MPMediaPropertyPredicate(value:"Sonata",
             forProperty:MPMediaItemPropertyTitle,
@@ -185,7 +185,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doPlayShortSongs (_ sender:AnyObject!) {
+    @IBAction func doPlayShortSongs (_ sender: Any!) {
         let query = MPMediaQuery.songs()
         // always need to filter out songs that aren't present
         let isPresent = MPMediaPropertyPredicate(value:false,
@@ -231,7 +231,7 @@ class ViewController: UIViewController {
         self.label.text = "\(ix+1) of \(self.q.count): \(title)"
     }
     
-    func timerFired(_:AnyObject) {
+    func timerFired(_: Any) {
         let player = MPMusicPlayerController.applicationMusicPlayer()
         guard let item = player.nowPlayingItem where player.playbackState != .stopped else {
             self.prog.isHidden = true

@@ -3,7 +3,7 @@
 import UIKit
 
 @objc protocol Dummy {
-    func dummy(_ sender:AnyObject?)
+    func dummy(_ sender: Any?)
 }
 
 
@@ -41,7 +41,7 @@ class MyTextField: UITextField {
         return super.canPerformAction(action, withSender:sender)
     }
     
-    func expand(_ sender:AnyObject?) {
+    func expand(_ sender: Any?) {
         if let r = self.selectedTextRange, let s = self.text(in:r),
             let ss = self.state(for:s) {
             self.replace(r, withText:ss)

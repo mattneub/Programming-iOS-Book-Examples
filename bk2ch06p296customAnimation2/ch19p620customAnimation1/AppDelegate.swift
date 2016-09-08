@@ -34,7 +34,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
         return true
     }
     
-    func doButton(_ sender: AnyObject) {
+    func doButton(_ sender: Any) {
         print("button tap!")
     }
     

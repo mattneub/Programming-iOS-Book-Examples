@@ -53,7 +53,7 @@ class ViewController: UIViewController {
     }
 
 
-    @IBAction func doButton(_ sender: AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -85,7 +85,7 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func doButton2(_ sender: AnyObject) {
+    @IBAction func doButton2(_ sender: Any) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -100,7 +100,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doButton3(_ sender: AnyObject) {
+    @IBAction func doButton3(_ sender: Any) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -131,7 +131,7 @@ class ViewController: UIViewController {
     }
     
     var newAlbumId : String?
-    @IBAction func doButton4(_ sender: AnyObject) {
+    @IBAction func doButton4(_ sender: Any) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -159,7 +159,7 @@ class ViewController: UIViewController {
         })
     }
     
-    @IBAction func doButton5(_ sender: AnyObject) {
+    @IBAction func doButton5(_ sender: Any) {
         if !self.determineStatus() {
             print("not authorized")
             return

@@ -83,7 +83,7 @@ class ViewController: UIViewController {
         self.navbar.items = [ni]
     }
     
-    func pushNext(_ sender:AnyObject) {
+    func pushNext(_ sender: Any) {
         let oldb = sender as! UIBarButtonItem
         let s = oldb.title! // *
         let ni = UINavigationItem(title:s)

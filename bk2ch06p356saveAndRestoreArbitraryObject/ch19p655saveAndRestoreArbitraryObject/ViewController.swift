@@ -32,13 +32,13 @@ class ViewController : UIViewController {
         // self.thing.restorationParent = self
     }
     
-    @IBAction func doRead(_ sender:AnyObject?) {
+    @IBAction func doRead(_ sender: Any?) {
         let alert = UIAlertController(title: "Read", message: self.thing.word, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style:.cancel))
         self.present(alert, animated: true)
     }
         
-    @IBAction func doWrite(_ sender:AnyObject?) {
+    @IBAction func doWrite(_ sender: Any?) {
         let alert = UIAlertController(title: "Write", message: nil, preferredStyle: .alert)
         alert.addTextField { tf in tf.text = self.thing.word }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))

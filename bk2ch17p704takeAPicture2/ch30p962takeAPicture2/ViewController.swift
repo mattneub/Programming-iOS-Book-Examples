@@ -81,7 +81,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     }
 
     
-    @IBAction func doTake (_ sender:AnyObject!) {
+    @IBAction func doTake (_ sender: Any!) {
         let cam = UIImagePickerControllerSourceType.camera
         let ok = UIImagePickerController.isSourceTypeAvailable(cam)
         if (!ok) {
@@ -158,7 +158,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         nc.topViewController!.title = "Retake"
     }
 
-    func doCancel(_ sender:AnyObject) {
+    func doCancel(_ sender: Any) {
         self.dismiss(animated:true)
     }
     

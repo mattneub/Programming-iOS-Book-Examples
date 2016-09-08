@@ -10,7 +10,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var toolbar : UIToolbar!
     
-    @IBAction func doButton(_ sender:AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         func handler(_ act:UIAlertAction!) {
             print("User tapped \(act.title)")
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func doOtherThing(_ sender:AnyObject) {
+    @IBAction func doOtherThing(_ sender: Any) {
         let pvc = PopoverViewController(nibName: "PopoverViewController", bundle: nil)
         pvc.modalPresentationStyle = .popover
         self.present(pvc, animated: true)

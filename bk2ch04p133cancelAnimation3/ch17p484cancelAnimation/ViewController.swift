@@ -25,11 +25,11 @@ class ViewController : UIViewController {
             })
     }
     
-    @IBAction func doStart(_ sender:AnyObject?) {
+    @IBAction func doStart(_ sender: Any?) {
         self.animate()
     }
     
-    @IBAction func doStop(_ sender:AnyObject?) {
+    @IBAction func doStop(_ sender: Any?) {
         self.cancel()
     }
     

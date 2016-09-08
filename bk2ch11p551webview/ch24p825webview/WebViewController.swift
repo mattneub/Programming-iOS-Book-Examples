@@ -224,7 +224,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         return true
     }
     
-    func goBack(_ sender:AnyObject) {
+    func goBack(_ sender: Any) {
         if self.wv.canGoBack {
             self.wv.goBack()
         }

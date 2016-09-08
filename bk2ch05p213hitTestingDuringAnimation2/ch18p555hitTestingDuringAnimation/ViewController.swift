@@ -50,11 +50,11 @@ class ViewController : UIViewController {
         }
     }
     
-    @IBAction func tapme(_ sender:AnyObject?) {
+    @IBAction func tapme(_ sender: Any?) {
         print("tap! (the button's action method)")
     }
     
-    @IBAction func start(_ sender:AnyObject?) {
+    @IBAction func start(_ sender: Any?) {
         print("you tapped Start")
         if anim.state == .active {
             anim.stopAnimation(false)

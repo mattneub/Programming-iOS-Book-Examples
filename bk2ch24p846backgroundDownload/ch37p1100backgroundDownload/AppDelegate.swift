@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         return true
     }
     
-    func startDownload (_:AnyObject?) {
+    func startDownload (_: Any?) {
         let s = "http://www.nasa.gov/sites/default/files/styles/1600x1200_autoletterbox/public/pia17474_1.jpg"
         let task = self.session.downloadTask(with:URL(string:s)!)
         task.resume()

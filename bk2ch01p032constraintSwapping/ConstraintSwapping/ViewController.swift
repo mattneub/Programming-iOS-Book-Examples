@@ -93,7 +93,7 @@ class ViewController: UIViewController {
 */
     }
 
-    @IBAction func doSwap(_ sender: AnyObject) {
+    @IBAction func doSwap(_ sender: Any) {
         let mainview = self.view!
         if self.v2.superview != nil {
             self.v2.removeFromSuperview()

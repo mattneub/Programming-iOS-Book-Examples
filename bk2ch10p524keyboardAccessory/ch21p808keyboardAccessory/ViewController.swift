@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         return true
     }
     
-    func doNextButton(_ sender:AnyObject) {
+    func doNextButton(_ sender: Any) {
         var ix = self.textFields.index(of:self.fr as! UITextField)!
         ix = (ix + 1) % self.textFields.count
         let v = self.textFields[ix]

@@ -43,7 +43,7 @@ class FlipsideViewController: UIViewController {
         NotificationCenter.default.removeObserver(self.observer)
     }
     
-    @IBAction func done (_ sender:AnyObject!) {
+    @IBAction func done (_ sender: Any!) {
         print("done")
         self.delegate?.flipsideViewControllerDidFinish(self)
     }

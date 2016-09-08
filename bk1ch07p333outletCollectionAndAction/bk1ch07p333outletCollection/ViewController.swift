@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func buttonPressed(_ sender:AnyObject) { // underscore is crucial
+    @IBAction func buttonPressed(_ sender: Any) { // underscore is crucial
         let alert = UIAlertController(
             title: "Howdy!", message: "You tapped me!", preferredStyle: .alert)
         alert.addAction(

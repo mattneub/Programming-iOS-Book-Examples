@@ -13,7 +13,7 @@ class ViewController : UIViewController {
         // (and v's constraints in the nib are all placeholders, so they've been deleted)
     }
     
-    @IBAction func doButton(_ sender:AnyObject?) {
+    @IBAction func doButton(_ sender: Any?) {
         UIView.animate(withDuration:1, animations: {
             self.v.center.x += 100
             }, completion: {

@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.tf.allowsEditingTextAttributes = false
     }
     
-    @IBAction func doShare(_ sender: AnyObject) {
+    @IBAction func doShare(_ sender: Any) {
         self.view.endEditing(true)
         delay(0.2) {
             self.showActivityView()

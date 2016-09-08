@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(determineStatus), name: .UIApplicationWillEnterForeground, object: nil)
     }
 
-    @IBAction func doNewReminder (_ sender:AnyObject!) {
+    @IBAction func doNewReminder (_ sender: Any!) {
         if !self.determineStatus() {
             print("not authorized")
             return

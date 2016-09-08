@@ -36,7 +36,7 @@ class MasterViewController: UITableViewController {
 //        }
     }
     
-    func insertNewObject(_ sender: AnyObject) {
+    func insertNewObject(_ sender: Any) {
         objects.insert(Date(), at: 0)
         let ip = IndexPath(row: 0, section: 0)
         self.tableView.insertRows(at:[ip], with: .automatic)

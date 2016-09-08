@@ -7,7 +7,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     var talker = AVSpeechSynthesizer()
 
-    @IBAction func talk (_ sender:AnyObject!) {
+    @IBAction func talk (_ sender: Any!) {
         let utter = AVSpeechUtterance(string:"Polly, want a cracker?")
         // print(AVSpeechSynthesisVoice.speechVoices())
         let v = AVSpeechSynthesisVoice(language: "en-US")

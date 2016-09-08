@@ -8,7 +8,7 @@ class ViewController: UIViewController {
 
     var player = Player()
     
-    @IBAction func doButton (_ sender:AnyObject!) {
+    @IBAction func doButton (_ sender: Any!) {
         // start over
         let path = Bundle.main.pathForResource("aboutTiagol", ofType: "m4a")!
         self.player = Player() // just testing for leakage / retain cycle

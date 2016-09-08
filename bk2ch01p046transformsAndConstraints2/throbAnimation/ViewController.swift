@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func doTest(_ sender:AnyObject?) {
+    @IBAction func doTest(_ sender: Any?) {
 //        self.v2.setTranslatesAutoresizingMaskIntoConstraints(true)
 //        self.constraints = self.v2.constraints() as NSLayoutConstraint[]
 //        self.v2.removeConstraints(self.constraints)

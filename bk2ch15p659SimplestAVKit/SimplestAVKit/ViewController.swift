@@ -15,7 +15,7 @@ class ViewController: UIViewController {
 
     let which = 1
     
-    @IBAction func doPresent(_ sender: AnyObject) {
+    @IBAction func doPresent(_ sender: Any) {
         switch which {
         case 1:
             let av = AVPlayerViewController()

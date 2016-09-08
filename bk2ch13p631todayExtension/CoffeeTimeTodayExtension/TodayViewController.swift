@@ -25,7 +25,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         self.iv.image = UIImage(named:"cup.png")?.withRenderingMode(.alwaysTemplate)
     }
         
-    @IBAction func doButton(_ sender: AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         NSLog("doButton")
         let v = sender as! UIView
         var comp = URLComponents()

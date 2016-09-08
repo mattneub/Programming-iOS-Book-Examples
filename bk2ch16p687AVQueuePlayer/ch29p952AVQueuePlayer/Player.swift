@@ -5,7 +5,7 @@ import AVFoundation
 import MediaPlayer
 
 protocol PlayerDelegate : class {
-    func soundFinished(_ sender: AnyObject)
+    func soundFinished(_ sender: Any)
 }
 
 class Player : NSObject, AVAudioPlayerDelegate

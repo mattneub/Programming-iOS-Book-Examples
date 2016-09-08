@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         return self.hide
     }
 
-    @IBAction func doButton(_ sender: AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         self.hide = !self.hide
         UIView.animate(withDuration:0.4) {
             self.setNeedsStatusBarAppearanceUpdate()

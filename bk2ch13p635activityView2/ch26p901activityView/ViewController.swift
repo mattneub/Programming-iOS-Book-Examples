@@ -10,7 +10,7 @@ class MyProvider : UIActivityItemProvider {
 }
 
 class ViewController: UIViewController {
-    @IBAction func doButton (_ sender:AnyObject) {
+    @IBAction func doButton (_ sender: Any) {
         // supply `self` so we will be queried separately for the item
         // let avc = UIActivityViewController(activityItems:[self], applicationActivities:nil)
         // supply an item provider so it can supply the data lazily

@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         mp.endGeneratingPlaybackNotifications()
     }
     
-    func singleTap(_:AnyObject) {
+    func singleTap(_: Any) {
         NotificationCenter.default
             .post(name: .cardTapped, object: self)
     }

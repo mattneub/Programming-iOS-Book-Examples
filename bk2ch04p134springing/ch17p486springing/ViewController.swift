@@ -6,7 +6,7 @@ class ViewController : UIViewController {
     
     let which = 2
     
-    @IBAction func doButton(_ sender: AnyObject?) {
+    @IBAction func doButton(_ sender: Any?) {
         switch which {
         case 1:
             UIView.animate(withDuration:0.8, delay: 0,

@@ -47,7 +47,7 @@ class SecondViewController : UIViewController {
         return pvc
     }
     
-    func doPresent(_ sender:AnyObject?) {
+    func doPresent(_ sender: Any?) {
         let pvc = type(of:self).makePresentedViewController()
         self.present(pvc, animated:true)
     }

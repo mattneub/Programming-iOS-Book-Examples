@@ -334,7 +334,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     
     // showing how to inject JavaScript dynamically (as opposed to at page-load time)
     
-    func doDecreaseSize (_ sender:AnyObject) {
+    func doDecreaseSize (_ sender: Any) {
         self.fontsize -= 1
         if self.fontsize < 10 {
             self.fontsize = 20

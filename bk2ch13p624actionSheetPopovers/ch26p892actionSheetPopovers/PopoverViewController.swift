@@ -31,7 +31,7 @@ class PopoverViewController: UIViewController {
         self.preferredContentSize = CGSize(320,300)
     }
     
-    @IBAction func showOptions(_ sender:AnyObject) {
+    @IBAction func showOptions(_ sender: Any) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         func handler(_ act:UIAlertAction!) {
             print("User tapped \(act.title)")

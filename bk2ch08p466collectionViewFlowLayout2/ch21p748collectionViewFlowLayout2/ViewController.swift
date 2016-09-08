@@ -238,7 +238,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // =======================
     
     // can just change layouts on the fly! with built-in animation!!!
-    func doSwitch(_ sender:AnyObject!) { // button
+    func doSwitch(_ sender: Any!) { // button
         // new iOS 7 property collectionView.collectionViewLayout points to *original* layout, which is preserved
         let oldLayout = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
         var newLayout = self.collectionViewLayout as! UICollectionViewFlowLayout
@@ -253,7 +253,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     // deletion, really quite similar to a table view
     
-    @IBAction func doDelete(_ sender:AnyObject) { // button, delete selected cells
+    @IBAction func doDelete(_ sender: Any) { // button, delete selected cells
         guard var arr = self.collectionView!.indexPathsForSelectedItems,
             arr.count > 0 else {return}
         // sort

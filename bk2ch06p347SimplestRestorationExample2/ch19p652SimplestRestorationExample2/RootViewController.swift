@@ -57,12 +57,12 @@ class RootViewController : UIViewController {
         return svc
     }
     
-    func doPresent(_ sender:AnyObject?) {
+    func doPresent(_ sender: Any?) {
         let pvc = type(of:self).makePresentedViewController()
         self.present(pvc, animated:true)
     }
     
-    func doPush(_ sender:AnyObject?) {
+    func doPush(_ sender: Any?) {
         let svc = type(of:self).makeSecondViewController()
         self.navigationController!.pushViewController(svc, animated:true)
     }

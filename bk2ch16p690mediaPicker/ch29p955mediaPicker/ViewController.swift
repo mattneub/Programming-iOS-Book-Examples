@@ -28,11 +28,11 @@ extension CGVector {
 
 class ViewController: UIViewController {
     
-    @IBAction func doGo (_ sender:AnyObject!) {
+    @IBAction func doGo (_ sender: Any!) {
         self.presentPicker(sender)
     }
     
-    func presentPicker (_ sender:AnyObject) {
+    func presentPicker (_ sender: Any) {
         let picker = MPMediaPickerController(mediaTypes:.music)
         picker.showsCloudItems = false
         picker.delegate = self

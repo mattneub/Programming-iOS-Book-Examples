@@ -76,7 +76,7 @@ class ViewController: UIViewController {
         
     }
 
-    @IBAction func doButton(_ sender: AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         
         
         UIView.animate(withDuration:0.4, animations: {
@@ -90,7 +90,7 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func doButton2(_ sender: AnyObject) {
+    @IBAction func doButton2(_ sender: Any) {
         
         // showing some serious compression of the above syntax
         

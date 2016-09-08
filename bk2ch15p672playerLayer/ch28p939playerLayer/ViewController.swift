@@ -88,7 +88,7 @@ class ViewController: UIViewController {
     }
 
     
-    @IBAction func doButton (_ sender:AnyObject!) {
+    @IBAction func doButton (_ sender: Any!) {
         let rate = self.player.rate
         if rate < 0.01 {
             self.player.rate = 1
@@ -98,12 +98,12 @@ class ViewController: UIViewController {
     }
 
     
-    @IBAction func restart (_ sender:AnyObject!) {
+    @IBAction func restart (_ sender: Any!) {
         let item = self.player.currentItem! //
         item.seek(to:CMTimeMake(0, 1))
     }
 
-    @IBAction func doPicInPic(_ sender: AnyObject) {
+    @IBAction func doPicInPic(_ sender: Any) {
         if self.pic.isPictureInPicturePossible {
             self.pic.startPictureInPicture()
         }

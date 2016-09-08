@@ -8,7 +8,7 @@ class ViewController: UIViewController {
     
     var alertString = ""
     
-    @IBAction func doAlertView(_ sender:AnyObject) {
+    @IBAction func doAlertView(_ sender: Any) {
         let alert = UIAlertController(title: "Not So Fast!",
             message: "Do you really want to do this " +
             "tremendously destructive thing?",
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     
     // =====
     
-    @IBAction func doAlertView2(_ sender:AnyObject) {
+    @IBAction func doAlertView2(_ sender: Any) {
         let alert = UIAlertController(title: "Enter a number:", message: nil, preferredStyle: .alert)
         alert.addTextField {
             (tf:UITextField) in
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    func textChanged(_ sender:AnyObject) {
+    func textChanged(_ sender: Any) {
         let tf = sender as! UITextField
         // enable OK button only if there is text
         // hold my beer and watch this: how to get a reference to the alert
@@ -63,7 +63,7 @@ class ViewController: UIViewController {
     
     // =====
     
-    func doActionSheet(_ sender:AnyObject) {
+    func doActionSheet(_ sender: Any) {
         let action = UIAlertController(title: "Choose New Layout", message: nil, preferredStyle: .actionSheet)
         action.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in print("Cancel")}))
         func handler(_ act:UIAlertAction) {

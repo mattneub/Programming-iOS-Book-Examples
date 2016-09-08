@@ -17,7 +17,7 @@ class ExtraViewController : UIViewController {
         fatalError("NSCoding not supported")
     }
     
-    @IBAction func doButton(_ sender:AnyObject) {
+    @IBAction func doButton(_ sender: Any) {
         print("extra view controller view frame: \(self.view.frame)")
         self.dismiss(animated:true) {
             print("dismissed")

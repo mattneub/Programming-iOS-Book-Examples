@@ -30,7 +30,7 @@ class FlipsideViewController: UIViewController {
         self.timer.invalidate()
     }
     
-    @IBAction func done (_ sender:AnyObject!) {
+    @IBAction func done (_ sender: Any!) {
         print("done")
         self.delegate?.flipsideViewControllerDidFinish(self)
     }

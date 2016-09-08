@@ -56,7 +56,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
         self.pager.currentPage = Int(x/w)
     }
     
-    @IBAction func userDidPage(_ sender:AnyObject?) {
+    @IBAction func userDidPage(_ sender: Any?) {
         let p = self.pager.currentPage
         let w = self.sv.bounds.size.width
         self.sv.setContentOffset(CGPoint(CGFloat(p)*w,0), animated:true)

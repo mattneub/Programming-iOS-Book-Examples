@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @IBAction func doPick (_ sender:AnyObject!) {
+    @IBAction func doPick (_ sender: Any!) {
         if !self.determineStatus() {
             print("not authorized")
             return

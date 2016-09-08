@@ -79,7 +79,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         NotificationCenter.default.addObserver(self, selector: #selector(determineStatus), name: .UIApplicationWillEnterForeground, object: nil)
     }
     
-    @IBAction func doFindMoi (_ sender:AnyObject!) {
+    @IBAction func doFindMoi (_ sender: Any!) {
         
         if !self.determineStatus() {
             print("not authorized")
@@ -111,7 +111,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
         }
     }
 
-    @IBAction func doCreateSnidely (_ sender:AnyObject!) {
+    @IBAction func doCreateSnidely (_ sender: Any!) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -130,7 +130,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     // ============
     
-    @IBAction func doPeoplePicker (_ sender:AnyObject!) {
+    @IBAction func doPeoplePicker (_ sender: Any!) {
         let picker = ABPeoplePickerNavigationController()
         picker.peoplePickerDelegate = self
         picker.displayedProperties = [Int(kABPersonEmailProperty)]
@@ -167,7 +167,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     // =========
     
-    @IBAction func doViewPerson (_ sender:AnyObject!) {
+    @IBAction func doViewPerson (_ sender: Any!) {
         if !self.determineStatus() {
             print("not authorized")
             return
@@ -198,7 +198,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
 
     // =========
     
-    @IBAction func doNewPerson (_ sender:AnyObject!) {
+    @IBAction func doNewPerson (_ sender: Any!) {
         let npvc = ABNewPersonViewController()
         npvc.newPersonViewDelegate = self
         let nc = UINavigationController(rootViewController:npvc)
@@ -221,7 +221,7 @@ class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelega
     
     // =========
     
-    @IBAction func doUnknownPerson (_ sender:AnyObject!) {
+    @IBAction func doUnknownPerson (_ sender: Any!) {
         let unk = ABUnknownPersonViewController()
         unk.message = "Person who really knows trees"
         unk.allowsAddingToAddressBook = true

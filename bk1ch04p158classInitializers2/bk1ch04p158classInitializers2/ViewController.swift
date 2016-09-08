@@ -71,7 +71,7 @@ class ViewController: UIViewController {
         
     }
 
-    @IBAction func doButton (_ sender:AnyObject!) {
+    @IBAction func doButton (_ sender: Any!) {
         let tvc = MyTableViewController(greeting:"Hello there")
         self.present(tvc, animated: true)
         // crashing bug in iOS 8 fixed in iOS 9;

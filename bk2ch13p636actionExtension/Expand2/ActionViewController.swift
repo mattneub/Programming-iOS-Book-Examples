@@ -59,12 +59,12 @@ class ActionViewController: UIViewController {
         return [extensionItem]
     }
     
-    @IBAction func cancel(_ sender: AnyObject) {
+    @IBAction func cancel(_ sender: Any) {
         self.extensionContext?.completeRequest(
             returningItems: nil)
     }
     
-    @IBAction func done(_ sender: AnyObject) {
+    @IBAction func done(_ sender: Any) {
         self.extensionContext?.completeRequest(
             returningItems: self.stuffThatEnvelope(self.expansion!))
     }

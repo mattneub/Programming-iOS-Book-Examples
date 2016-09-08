@@ -29,7 +29,7 @@ class SecondViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    func doUse(_ sender:AnyObject) {
+    func doUse(_ sender: Any) {
         let vc = self.presentingViewController as! ViewController
         vc.doUse(self.image)
     }

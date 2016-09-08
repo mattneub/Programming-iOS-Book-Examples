@@ -103,7 +103,7 @@ extension RootViewController : PHPhotoLibraryChangeObserver {
 }
 
 extension RootViewController {
-    @IBAction func doVignetteButton(_ sender: AnyObject) {
+    @IBAction func doVignetteButton(_ sender: Any) {
         if !self.determineStatus() {
             print("not authorized")
             return

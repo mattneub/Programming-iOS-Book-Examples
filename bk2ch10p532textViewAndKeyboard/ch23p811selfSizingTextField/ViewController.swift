@@ -79,7 +79,7 @@ class ViewController: UIViewController, UITextViewDelegate {
 
     }
 
-    func doDone(_ sender:AnyObject) {
+    func doDone(_ sender: Any) {
         self.view.endEditing(false)
     }
 

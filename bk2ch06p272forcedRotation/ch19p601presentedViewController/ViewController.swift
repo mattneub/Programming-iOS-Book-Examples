@@ -4,7 +4,7 @@ import UIKit
 
 class ViewController : UIViewController, SecondViewControllerDelegate {
     
-    @IBAction func doPresent(_ sender:AnyObject?) {
+    @IBAction func doPresent(_ sender: Any?) {
         let svc = SecondViewController(nibName:"SecondViewController", bundle:nil)
         svc.data = "This is very important data!"
         svc.delegate = self

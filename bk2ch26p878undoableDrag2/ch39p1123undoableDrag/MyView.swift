@@ -73,7 +73,7 @@ class MyView : UIView {
         }
     }
     
-    override func canPerformAction(_ action: Selector, withSender sender: AnyObject!) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: Any!) -> Bool {
         if action == #selector(undo) {
             return self.undoer.canUndo
         }
@@ -83,11 +83,11 @@ class MyView : UIView {
         return super.canPerformAction(action, withSender: sender)
     }
     
-    func undo(_:AnyObject?) {
+    func undo(_: Any?) {
         self.undoer.undo()
     }
     
-    func redo(_:AnyObject?) {
+    func redo(_: Any?) {
         self.undoer.redo()
     }
 }
