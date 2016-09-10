@@ -6,7 +6,7 @@ func doThis(f:()->()) {
     f()
 }
 
-func sayHowdy() -> String {
+func greeting() -> String {
     return "Howdy"
 }
 func performAndPrint(_ f:()->String) {
@@ -37,8 +37,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let image = imageOfSize(CGSize(width:45, height:20), {
+            () -> () in // included deliberately for book example
             let p = UIBezierPath(
-                roundedRect: CGRect(x:0,y:0,width:45,height:20), cornerRadius: 8)
+                roundedRect: CGRect(x:0,y:0,width:45,height:20),
+                cornerRadius: 8)
             p.stroke()
         })
         
@@ -53,7 +55,7 @@ class ViewController: UIViewController {
         }
         
         performAndPrint {
-            sayHowdy() // meaning: return sayHowdy()
+            greeting() // meaning: return greeting()
         }
 
         let arr = [2, 4, 6, 8]
