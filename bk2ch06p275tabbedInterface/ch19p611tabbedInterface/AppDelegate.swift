@@ -34,13 +34,16 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         self.window!.tintColor = .red // prove that bar item tint color is inherited
         
         UITabBarItem.appearance().setTitleTextAttributes([
-            NSFontAttributeName:UIFont(name:"Avenir-Heavy", size:14)!
-            ],
-                                                         for:.normal)
-        
-//        UIFont.familyNames()
-//            .map{UIFont.fontNamesForFamilyName($0 as String)}.map(println)
+            NSFontAttributeName:UIFont(name:"Avenir-Heavy", size:14)!,
+            NSForegroundColorAttributeName:UIColor.green
+            ], for:.normal)
+        // I am curious but yellow
+        UITabBarItem.appearance().setTitleTextAttributes([
+            NSFontAttributeName:UIFont(name:"Avenir-Heavy", size:14)!,
+            NSForegroundColorAttributeName:UIColor.yellow
+            ], for:.selected)
 
+        
         
         let ding = UIFont(name:"ZapfDingbatsITC", size:40)!
         let r = UIGraphicsImageRenderer(size:CGSize(100,40))
@@ -55,19 +58,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
                     NSParagraphStyleAttributeName:p,
                     NSForegroundColorAttributeName:UIColor.red])
         }
-
         
-//        UIGraphicsBeginImageContextWithOptions(CGSize(100,40), false, 0)
-//        let s = "\u{2713}"
-//        let p = NSMutableParagraphStyle()
-//        p.alignment = .right
-//        s.draw(in:CGRect(0,0,100,40),
-//            withAttributes:[
-//                NSFontAttributeName:ding,
-//                NSParagraphStyleAttributeName:p,
-//                NSForegroundColorAttributeName:UIColor.red()])
-//        let im = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIGraphicsEndImageContext()
         
         UITabBar.appearance().selectionIndicatorImage = im
         

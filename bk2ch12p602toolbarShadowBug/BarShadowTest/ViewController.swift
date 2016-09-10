@@ -34,6 +34,8 @@ class ViewController: UIViewController {
 
         self.view.backgroundColor = .yellow
         
+        do {
+        
         let sz = CGSize(20,20)
         let r = UIGraphicsImageRenderer(size:sz)
         
@@ -47,6 +49,8 @@ class ViewController: UIViewController {
             UIColor(white:0.95, alpha:0.85).setFill()
             UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,20,20))
             }, forToolbarPosition:.any, barMetrics: .default)
+            
+        }
         
         do {
             let sz = CGSize(4,4)
