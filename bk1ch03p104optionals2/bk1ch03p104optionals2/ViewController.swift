@@ -74,10 +74,22 @@ class ViewController: UIViewController {
         let i : Int! = 2
         if i < 3 { print("less") } // involves forced unwrapping
         
-        let ii : Int? = 2
-        if ii != nil && ii! < 3 {
-            print("less")
+        do {
+            let i : Int? = 2
+            if i != nil && i! < 3 {
+                print("less")
+            }
         }
+        
+        var crash : Bool {return false}
+        if crash {
+            let c : UIColor! = nil
+            if c != .red { // crash at runtime
+                // and if you change it to == you'll crash the compiler!'
+                print("it is not red")
+            }
+        }
+
 
         let arr = [1,2,3]
         let ix = (arr as NSArray).index(of:4)
