@@ -34,14 +34,13 @@ class ViewController: UIViewController {
         let src = CGImageSourceCreateWithURL(url as CFURL, nil)!
         let scale = UIScreen.main.scale
         let w = self.iv.bounds.width * scale
-        // have to cross over to Objective-C manually
-        let d : [CFString:Any] = [
-            kCGImageSourceShouldAllowFloat : true as NSNumber,
-            kCGImageSourceCreateThumbnailWithTransform : true as NSNumber,
-            kCGImageSourceCreateThumbnailFromImageAlways : true as NSNumber,
-            kCGImageSourceThumbnailMaxPixelSize : w as NSNumber
+        let d : NSDictionary = [
+            kCGImageSourceShouldAllowFloat : true ,
+            kCGImageSourceCreateThumbnailWithTransform : true ,
+            kCGImageSourceCreateThumbnailFromImageAlways : true ,
+            kCGImageSourceThumbnailMaxPixelSize : w
         ]
-        let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d as CFDictionary)!
+        let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d)!
         let im = UIImage(cgImage: imref, scale: scale, orientation: .up)
         self.iv.image = im
         print(im)
