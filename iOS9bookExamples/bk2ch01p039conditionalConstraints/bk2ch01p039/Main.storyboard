@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VVW-Se-F96">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="xPt-U6-3uM">
+            <objects>
+                <viewController id="VVW-Se-F96" customClass="ViewController" customModule="bk2ch01p039" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xw6-Hq-5Mc"/>
+                        <viewControllerLayoutGuide type="bottom" id="80q-ON-3Qr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5gY-C0-vrx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2fb-3o-L5c">
+                                <rect key="frame" x="100" y="120" width="400" height="380"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5R-Vb-EhZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="40"/>
+                                        <color key="backgroundColor" red="0.50076308139534886" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="poL-6e-BTC">
+                                                <variation key="widthClass=compact" constant="20"/>
+                                            </constraint>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTD-Ex-zne">
+                                        <rect key="frame" x="320" y="300" width="80" height="80"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="rTD-Ex-zne" secondAttribute="height" id="3oO-hT-MSP"/>
+                                            <constraint firstAttribute="width" constant="80" id="hfi-Yr-7se">
+                                                <variation key="widthClass=compact" constant="40"/>
+                                            </constraint>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.43529412150382996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="O5R-Vb-EhZ" firstAttribute="leading" secondItem="2fb-3o-L5c" secondAttribute="leading" id="6T2-JR-9XC"/>
+                                    <constraint firstAttribute="trailing" secondItem="O5R-Vb-EhZ" secondAttribute="trailing" id="IXJ-bu-Giu"/>
+                                    <constraint firstAttribute="bottom" secondItem="rTD-Ex-zne" secondAttribute="bottom" id="b5E-PU-T6u"/>
+                                    <constraint firstAttribute="trailing" secondItem="rTD-Ex-zne" secondAttribute="trailing" id="ulT-QE-pEQ"/>
+                                    <constraint firstItem="O5R-Vb-EhZ" firstAttribute="top" secondItem="2fb-3o-L5c" secondAttribute="top" id="xCT-M7-lBz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2fb-3o-L5c" firstAttribute="leading" secondItem="5gY-C0-vrx" secondAttribute="leading" constant="100" id="4nr-OS-ubc">
+                                <variation key="widthClass=compact" constant="30"/>
+                            </constraint>
+                            <constraint firstItem="2fb-3o-L5c" firstAttribute="top" secondItem="xw6-Hq-5Mc" secondAttribute="bottom" constant="100" id="R3J-QW-xBn">
+                                <variation key="heightClass=compact-widthClass=compact" constant="50"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="2fb-3o-L5c" secondAttribute="trailing" constant="100" id="uRQ-Hy-fad">
+                                <variation key="widthClass=compact" constant="30"/>
+                            </constraint>
+                            <constraint firstItem="80q-ON-3Qr" firstAttribute="top" secondItem="2fb-3o-L5c" secondAttribute="bottom" constant="100" id="xj6-mR-pWV">
+                                <variation key="heightClass=compact-widthClass=compact" constant="50"/>
+                            </constraint>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bxI-0T-YEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="487.5" y="382.81690140845069"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="bk2ch05p205dragByAttachment2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ZH-Vf-ObH">
+                                <rect key="frame" x="0.0" y="472" width="600" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lift and drop me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYk-pz-SsI">
+                                        <rect key="frame" x="237" y="53" width="126" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.30690508239999997" blue="0.33035034009999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="9lo-os-5dY"/>
+                                    <constraint firstItem="uYk-pz-SsI" firstAttribute="centerY" secondItem="8ZH-Vf-ObH" secondAttribute="centerY" id="lvE-gY-w3r"/>
+                                    <constraint firstItem="uYk-pz-SsI" firstAttribute="centerX" secondItem="8ZH-Vf-ObH" secondAttribute="centerX" id="uM7-vE-mrC"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="JHw-tw-x46" appends="YES" id="iYl-Xk-hYA"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8ZH-Vf-ObH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="Rjh-Em-e8q"/>
+                            <constraint firstItem="8ZH-Vf-ObH" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="lyb-BD-s2w"/>
+                            <constraint firstItem="8ZH-Vf-ObH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pW5-1o-yNo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="redView" destination="8ZH-Vf-ObH" id="fvy-E9-lpQ"/>
+                        <outletCollection property="constraints" destination="Rjh-Em-e8q" collectionClass="NSMutableArray" id="Z6q-bY-Rcv"/>
+                        <outletCollection property="constraints" destination="pW5-1o-yNo" collectionClass="NSMutableArray" id="qJD-6F-GKV"/>
+                        <outletCollection property="constraints" destination="lyb-BD-s2w" collectionClass="NSMutableArray" id="mVL-tw-wiD"/>
+                        <outletCollection property="constraints" destination="9lo-os-5dY" collectionClass="NSMutableArray" id="WUx-Bg-h2I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="JHw-tw-x46">
+                    <connections>
+                        <action selector="drag:" destination="BYZ-38-t0r" id="a8l-02-hRX"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+        </scene>
+    </scenes>
+</document>

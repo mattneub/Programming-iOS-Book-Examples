@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch25p840customThermometer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X4O-ot-uIK"/>
+                        <viewControllerLayoutGuide type="bottom" id="KV0-NR-Xu7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zOz-Ky-Vjs">
+                                <rect key="frame" x="85" y="56" width="150" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="XhK-Rg-dwZ"/>
+                                </constraints>
+                            </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gx8-VP-Ybz">
+                                <rect key="frame" x="85" y="117" width="150" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="3lJ-4t-TrD"/>
+                                </constraints>
+                            </progressView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCK-Do-u01" customClass="MyProgressView" customModule="ch25p840customThermometer" customModuleProvider="target">
+                                <rect key="frame" x="85" y="180" width="150" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="iup-LO-RqU"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2p-m8-tnW">
+                                <rect key="frame" x="251" y="518" width="49" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="hA8-4e-xdj"/>
+                                </constraints>
+                                <state key="normal" title="Start">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JbQ-WR-TpW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FbH-bB-0xj" customClass="MyCircularProgressButton" customModule="ch25p840customThermometer" customModuleProvider="target">
+                                <rect key="frame" x="102" y="279" width="27" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="3eE-cv-BhD"/>
+                                    <constraint firstAttribute="width" constant="60" id="QAm-NJ-XCk"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="pause.png"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="UCK-Do-u01" secondAttribute="trailing" constant="85" id="0tp-IQ-ORx"/>
+                            <constraint firstItem="gx8-VP-Ybz" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="85" id="CTL-qB-6Qf"/>
+                            <constraint firstItem="zOz-Ky-Vjs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="85" id="H7G-Sc-moR"/>
+                            <constraint firstItem="UCK-Do-u01" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="85" id="JQy-xc-68z"/>
+                            <constraint firstItem="FbH-bB-0xj" firstAttribute="top" secondItem="UCK-Do-u01" secondAttribute="bottom" constant="32" id="Koi-E2-n1Y"/>
+                            <constraint firstAttribute="trailing" secondItem="zOz-Ky-Vjs" secondAttribute="trailing" constant="85" id="Xe8-dG-q4L"/>
+                            <constraint firstItem="KV0-NR-Xu7" firstAttribute="top" secondItem="R2p-m8-tnW" secondAttribute="bottom" constant="20" id="f8H-d1-eN4"/>
+                            <constraint firstItem="FbH-bB-0xj" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="85" id="klI-l9-K1r"/>
+                            <constraint firstItem="zOz-Ky-Vjs" firstAttribute="top" secondItem="X4O-ot-uIK" secondAttribute="bottom" constant="36" id="pbA-tn-Bnx"/>
+                            <constraint firstAttribute="trailing" secondItem="R2p-m8-tnW" secondAttribute="trailing" constant="20" id="tMS-NR-Xjz"/>
+                            <constraint firstItem="UCK-Do-u01" firstAttribute="top" secondItem="X4O-ot-uIK" secondAttribute="bottom" constant="160" id="u2F-nu-7BG"/>
+                            <constraint firstItem="gx8-VP-Ybz" firstAttribute="top" secondItem="X4O-ot-uIK" secondAttribute="bottom" constant="97" id="w6I-BQ-K2J"/>
+                            <constraint firstAttribute="trailing" secondItem="gx8-VP-Ybz" secondAttribute="trailing" constant="85" id="zAO-vd-pzH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="prog1" destination="zOz-Ky-Vjs" id="MVX-t4-Bvs"/>
+                        <outlet property="prog2" destination="gx8-VP-Ybz" id="NcU-OQ-QLY"/>
+                        <outlet property="prog3" destination="UCK-Do-u01" id="0bS-iT-aXr"/>
+                        <outlet property="prog4" destination="FbH-bB-0xj" id="wmZ-Ho-ReK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="241" y="414"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pause.png" width="27" height="26"/>
+    </resources>
+</document>

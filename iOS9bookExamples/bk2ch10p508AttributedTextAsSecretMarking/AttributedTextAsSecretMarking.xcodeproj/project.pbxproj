@@ -1,0 +1,275 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		324675ED18A5516B009EFE78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 324675EB18A5516B009EFE78 /* Main.storyboard */; };
+		324675F218A5516B009EFE78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 324675F118A5516B009EFE78 /* Assets.xcassets */; };
+		328BBD311B962345009CBAA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BBD301B962345009CBAA2 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		328BBD331B96235D009CBAA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328BBD321B96235D009CBAA2 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		32C3F5A519E9A2F90043C7F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C3F5A419E9A2F90043C7F6 /* ViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		324675D618A5516A009EFE78 /* AttributedTextAsSecretMarking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AttributedTextAsSecretMarking.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		324675E118A5516A009EFE78 /* AttributedTextAsSecretMarking-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AttributedTextAsSecretMarking-Info.plist"; sourceTree = "<group>"; };
+		324675EC18A5516B009EFE78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		324675F118A5516B009EFE78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		328BBD301B962345009CBAA2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		328BBD321B96235D009CBAA2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		32C3F5A419E9A2F90043C7F6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		324675D318A5516A009EFE78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		324675CD18A5516A009EFE78 = {
+			isa = PBXGroup;
+			children = (
+				324675DF18A5516A009EFE78 /* AttributedTextAsSecretMarking */,
+				324675D718A5516A009EFE78 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		324675D718A5516A009EFE78 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				324675D618A5516A009EFE78 /* AttributedTextAsSecretMarking.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		324675DF18A5516A009EFE78 /* AttributedTextAsSecretMarking */ = {
+			isa = PBXGroup;
+			children = (
+				324675EB18A5516B009EFE78 /* Main.storyboard */,
+				328BBD321B96235D009CBAA2 /* AppDelegate.swift */,
+				32C3F5A419E9A2F90043C7F6 /* ViewController.swift */,
+				324675F118A5516B009EFE78 /* Assets.xcassets */,
+				328BBD301B962345009CBAA2 /* LaunchScreen.storyboard */,
+				324675E118A5516A009EFE78 /* AttributedTextAsSecretMarking-Info.plist */,
+			);
+			path = AttributedTextAsSecretMarking;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		324675D518A5516A009EFE78 /* AttributedTextAsSecretMarking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3246760818A5516B009EFE78 /* Build configuration list for PBXNativeTarget "AttributedTextAsSecretMarking" */;
+			buildPhases = (
+				324675D218A5516A009EFE78 /* Sources */,
+				324675D318A5516A009EFE78 /* Frameworks */,
+				324675D418A5516A009EFE78 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AttributedTextAsSecretMarking;
+			productName = AttributedTextAsSecretMarking;
+			productReference = 324675D618A5516A009EFE78 /* AttributedTextAsSecretMarking.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		324675CE18A5516A009EFE78 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Matt Neuburg";
+			};
+			buildConfigurationList = 324675D118A5516A009EFE78 /* Build configuration list for PBXProject "AttributedTextAsSecretMarking" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 324675CD18A5516A009EFE78;
+			productRefGroup = 324675D718A5516A009EFE78 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				324675D518A5516A009EFE78 /* AttributedTextAsSecretMarking */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		324675D418A5516A009EFE78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				328BBD311B962345009CBAA2 /* LaunchScreen.storyboard in Resources */,
+				324675F218A5516B009EFE78 /* Assets.xcassets in Resources */,
+				324675ED18A5516B009EFE78 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		324675D218A5516A009EFE78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				328BBD331B96235D009CBAA2 /* AppDelegate.swift in Sources */,
+				32C3F5A519E9A2F90043C7F6 /* ViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		324675EB18A5516B009EFE78 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				324675EC18A5516B009EFE78 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3246760618A5516B009EFE78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3246760718A5516B009EFE78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3246760918A5516B009EFE78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AttributedTextAsSecretMarking/AttributedTextAsSecretMarking-Prefix.pch";
+				INFOPLIST_FILE = "AttributedTextAsSecretMarking/AttributedTextAsSecretMarking-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3246760A18A5516B009EFE78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AttributedTextAsSecretMarking/AttributedTextAsSecretMarking-Prefix.pch";
+				INFOPLIST_FILE = "AttributedTextAsSecretMarking/AttributedTextAsSecretMarking-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		324675D118A5516A009EFE78 /* Build configuration list for PBXProject "AttributedTextAsSecretMarking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3246760618A5516B009EFE78 /* Debug */,
+				3246760718A5516B009EFE78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3246760818A5516B009EFE78 /* Build configuration list for PBXNativeTarget "AttributedTextAsSecretMarking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3246760918A5516B009EFE78 /* Debug */,
+				3246760A18A5516B009EFE78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 324675CE18A5516A009EFE78 /* Project object */;
+}

@@ -1,0 +1,247 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3244D72E1BB6225400E9CE06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3244D72D1BB6225400E9CE06 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		3280FA671997EDD500EA8B8B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA661997EDD500EA8B8B /* Player.swift */; };
+		3280FA691998095100EA8B8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA681998095100EA8B8B /* ViewController.swift */; };
+		3280FA6B19980B5700EA8B8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA6A19980B5700EA8B8B /* AppDelegate.swift */; };
+		A4196FFB14D36B9700D827A7 /* aboutTiagol.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */; };
+		C9A8A9131823E65600E9D48D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A8A9121823E65600E9D48D /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3244D72D1BB6225400E9CE06 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3280FA661997EDD500EA8B8B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		3280FA681998095100EA8B8B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3280FA6A19980B5700EA8B8B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A4196FCD14D366D900D827A7 /* backgroundPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = backgroundPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4196FD914D366D900D827A7 /* backgroundPlayer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "backgroundPlayer-Info.plist"; sourceTree = "<group>"; };
+		A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = aboutTiagol.m4a; sourceTree = "<group>"; };
+		C9A8A9121823E65600E9D48D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4196FCA14D366D900D827A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4196FC214D366D800D827A7 = {
+			isa = PBXGroup;
+			children = (
+				A4196FD714D366D900D827A7 /* backgroundPlayer */,
+				A4196FCE14D366D900D827A7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4196FCE14D366D900D827A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4196FCD14D366D900D827A7 /* backgroundPlayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4196FD714D366D900D827A7 /* backgroundPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				3280FA6A19980B5700EA8B8B /* AppDelegate.swift */,
+				3280FA681998095100EA8B8B /* ViewController.swift */,
+				C9A8A9121823E65600E9D48D /* Main.storyboard */,
+				3280FA661997EDD500EA8B8B /* Player.swift */,
+				A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */,
+				A4196FD914D366D900D827A7 /* backgroundPlayer-Info.plist */,
+				3244D72D1BB6225400E9CE06 /* LaunchScreen.storyboard */,
+			);
+			path = backgroundPlayer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A4196FCC14D366D900D827A7 /* backgroundPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4196FEB14D366D900D827A7 /* Build configuration list for PBXNativeTarget "backgroundPlayer" */;
+			buildPhases = (
+				A4196FC914D366D900D827A7 /* Sources */,
+				A4196FCA14D366D900D827A7 /* Frameworks */,
+				A4196FCB14D366D900D827A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = backgroundPlayer;
+			productName = backgroundPlayer;
+			productReference = A4196FCD14D366D900D827A7 /* backgroundPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4196FC414D366D800D827A7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A4196FC714D366D800D827A7 /* Build configuration list for PBXProject "backgroundPlayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A4196FC214D366D800D827A7;
+			productRefGroup = A4196FCE14D366D900D827A7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4196FCC14D366D900D827A7 /* backgroundPlayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4196FCB14D366D900D827A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3244D72E1BB6225400E9CE06 /* LaunchScreen.storyboard in Resources */,
+				A4196FFB14D36B9700D827A7 /* aboutTiagol.m4a in Resources */,
+				C9A8A9131823E65600E9D48D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4196FC914D366D900D827A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3280FA691998095100EA8B8B /* ViewController.swift in Sources */,
+				3280FA6B19980B5700EA8B8B /* AppDelegate.swift in Sources */,
+				3280FA671997EDD500EA8B8B /* Player.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A4196FE914D366D900D827A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A4196FEA14D366D900D827A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A4196FEC14D366D900D827A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "backgroundPlayer/backgroundPlayer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A4196FED14D366D900D827A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "backgroundPlayer/backgroundPlayer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4196FC714D366D800D827A7 /* Build configuration list for PBXProject "backgroundPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4196FE914D366D900D827A7 /* Debug */,
+				A4196FEA14D366D900D827A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4196FEB14D366D900D827A7 /* Build configuration list for PBXNativeTarget "backgroundPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4196FEC14D366D900D827A7 /* Debug */,
+				A4196FED14D366D900D827A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4196FC414D366D800D827A7 /* Project object */;
+}

@@ -1,0 +1,278 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		320229F41B5D61ED00976D91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 320229F31B5D61ED00976D91 /* LaunchScreen.storyboard */; };
+		32C081B019B7909B0027DCB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C081AF19B7909B0027DCB2 /* AppDelegate.swift */; };
+		32C081B219B7909B0027DCB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C081B119B7909B0027DCB2 /* ViewController.swift */; };
+		32C081B519B7909B0027DCB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C081B319B7909B0027DCB2 /* Main.storyboard */; };
+		32C081B719B7909B0027DCB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C081B619B7909B0027DCB2 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		320229F31B5D61ED00976D91 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		32C081AA19B7909B0027DCB2 /* EvenDistribution.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EvenDistribution.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		32C081AE19B7909B0027DCB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32C081AF19B7909B0027DCB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		32C081B119B7909B0027DCB2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32C081B419B7909B0027DCB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		32C081B619B7909B0027DCB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		32C081A719B7909B0027DCB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		32C081A119B7909B0027DCB2 = {
+			isa = PBXGroup;
+			children = (
+				32C081AC19B7909B0027DCB2 /* EvenDistribution */,
+				32C081AB19B7909B0027DCB2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		32C081AB19B7909B0027DCB2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				32C081AA19B7909B0027DCB2 /* EvenDistribution.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32C081AC19B7909B0027DCB2 /* EvenDistribution */ = {
+			isa = PBXGroup;
+			children = (
+				32C081AF19B7909B0027DCB2 /* AppDelegate.swift */,
+				32C081B119B7909B0027DCB2 /* ViewController.swift */,
+				32C081B319B7909B0027DCB2 /* Main.storyboard */,
+				32C081B619B7909B0027DCB2 /* Assets.xcassets */,
+				320229F31B5D61ED00976D91 /* LaunchScreen.storyboard */,
+				32C081AE19B7909B0027DCB2 /* Info.plist */,
+			);
+			path = EvenDistribution;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		32C081A919B7909B0027DCB2 /* EvenDistribution */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32C081C619B7909B0027DCB2 /* Build configuration list for PBXNativeTarget "EvenDistribution" */;
+			buildPhases = (
+				32C081A619B7909B0027DCB2 /* Sources */,
+				32C081A719B7909B0027DCB2 /* Frameworks */,
+				32C081A819B7909B0027DCB2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EvenDistribution;
+			productName = EvenDistribution;
+			productReference = 32C081AA19B7909B0027DCB2 /* EvenDistribution.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		32C081A219B7909B0027DCB2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					32C081A919B7909B0027DCB2 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 32C081A519B7909B0027DCB2 /* Build configuration list for PBXProject "EvenDistribution" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 32C081A119B7909B0027DCB2;
+			productRefGroup = 32C081AB19B7909B0027DCB2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				32C081A919B7909B0027DCB2 /* EvenDistribution */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		32C081A819B7909B0027DCB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				320229F41B5D61ED00976D91 /* LaunchScreen.storyboard in Resources */,
+				32C081B519B7909B0027DCB2 /* Main.storyboard in Resources */,
+				32C081B719B7909B0027DCB2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		32C081A619B7909B0027DCB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32C081B219B7909B0027DCB2 /* ViewController.swift in Sources */,
+				32C081B019B7909B0027DCB2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		32C081B319B7909B0027DCB2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32C081B419B7909B0027DCB2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		32C081C419B7909B0027DCB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		32C081C519B7909B0027DCB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		32C081C719B7909B0027DCB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = EvenDistribution/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		32C081C819B7909B0027DCB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = EvenDistribution/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		32C081A519B7909B0027DCB2 /* Build configuration list for PBXProject "EvenDistribution" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32C081C419B7909B0027DCB2 /* Debug */,
+				32C081C519B7909B0027DCB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32C081C619B7909B0027DCB2 /* Build configuration list for PBXNativeTarget "EvenDistribution" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32C081C719B7909B0027DCB2 /* Debug */,
+				32C081C819B7909B0027DCB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 32C081A219B7909B0027DCB2 /* Project object */;
+}

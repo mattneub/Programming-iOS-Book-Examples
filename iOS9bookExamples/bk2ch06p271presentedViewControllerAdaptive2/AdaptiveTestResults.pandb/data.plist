@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CurrentFieldNumber</key>
+	<integer>2</integer>
+	<key>CurrentRecord</key>
+	<integer>0</integer>
+	<key>DataSheetAdornmentOptions</key>
+	<integer>0</integer>
+	<key>DataSheetRectangle</key>
+	<string>{{101, 23}, {1415, 1141}}</string>
+	<key>ExcludeFromRecent</key>
+	<false/>
+	<key>GroupFieldNames</key>
+	<array>
+		<string></string>
+		<string></string>
+	</array>
+	<key>LastTimeWindowInFront</key>
+	<integer>3521967766</integer>
+	<key>NextAutoNumber</key>
+	<integer>0</integer>
+	<key>NextRecordID</key>
+	<integer>168</integer>
+	<key>OpenWindows</key>
+	<array>
+		<string>DATASHEET</string>
+	</array>
+	<key>RecordCount</key>
+	<integer>168</integer>
+	<key>SelectedRecordCount</key>
+	<integer>168</integer>
+	<key>SelectedSummaryCount</key>
+	<string>168,0,0,0,0,0,0,0</string>
+	<key>SummaryCount</key>
+	<string>168,0,0,0,0,0,0,0</string>
+	<key>VisibleRecordCount</key>
+	<integer>168</integer>
+	<key>VisibleSummaryCount</key>
+	<string>168,0,0,0,0,0,0,0</string>
+</dict>
+</plist>

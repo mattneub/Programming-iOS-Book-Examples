@@ -1,0 +1,295 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3227F822198DBFA400D05958 /* MyProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227F821198DBFA400D05958 /* MyProgressView.swift */; };
+		3227F824198DC0A700D05958 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227F823198DC0A600D05958 /* ViewController.swift */; };
+		3289DEF51BAF1CD100180826 /* MyCircularProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3289DEF41BAF1CD100180826 /* MyCircularProgressButton.swift */; settings = {ASSET_TAGS = (); }; };
+		3289DEF71BAF1F1600180826 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 3289DEF61BAF1F1600180826 /* pause.png */; settings = {ASSET_TAGS = (); }; };
+		32E568B61B9DFB7100581B97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32E568B51B9DFB7100581B97 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		32E568B81B9DFB7700581B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E568B71B9DFB7700581B97 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		C9F271C4181C1A80003FCBA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F271C2181C1A80003FCBA0 /* Main.storyboard */; };
+		C9F271C9181C1A80003FCBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9F271C8181C1A80003FCBA0 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3227F821198DBFA400D05958 /* MyProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProgressView.swift; sourceTree = "<group>"; };
+		3227F823198DC0A600D05958 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3289DEF41BAF1CD100180826 /* MyCircularProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCircularProgressButton.swift; sourceTree = "<group>"; };
+		3289DEF61BAF1F1600180826 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		32E568B51B9DFB7100581B97 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		32E568B71B9DFB7700581B97 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C9F271AD181C1A80003FCBA0 /* ch25p840customThermometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch25p840customThermometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9F271B8181C1A80003FCBA0 /* ch25p840customThermometer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch25p840customThermometer-Info.plist"; sourceTree = "<group>"; };
+		C9F271C3181C1A80003FCBA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C9F271C8181C1A80003FCBA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C9F271AA181C1A80003FCBA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C9F271A4181C1A80003FCBA0 = {
+			isa = PBXGroup;
+			children = (
+				C9F271B6181C1A80003FCBA0 /* ch25p840customThermometer */,
+				C9F271AE181C1A80003FCBA0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C9F271AE181C1A80003FCBA0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9F271AD181C1A80003FCBA0 /* ch25p840customThermometer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C9F271B6181C1A80003FCBA0 /* ch25p840customThermometer */ = {
+			isa = PBXGroup;
+			children = (
+				32E568B71B9DFB7700581B97 /* AppDelegate.swift */,
+				C9F271C2181C1A80003FCBA0 /* Main.storyboard */,
+				3227F823198DC0A600D05958 /* ViewController.swift */,
+				3227F821198DBFA400D05958 /* MyProgressView.swift */,
+				3289DEF41BAF1CD100180826 /* MyCircularProgressButton.swift */,
+				32E568B51B9DFB7100581B97 /* LaunchScreen.storyboard */,
+				3289DEF61BAF1F1600180826 /* pause.png */,
+				C9F271C8181C1A80003FCBA0 /* Assets.xcassets */,
+				C9F271B8181C1A80003FCBA0 /* ch25p840customThermometer-Info.plist */,
+			);
+			path = ch25p840customThermometer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C9F271AC181C1A80003FCBA0 /* ch25p840customThermometer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9F271DF181C1A80003FCBA0 /* Build configuration list for PBXNativeTarget "ch25p840customThermometer" */;
+			buildPhases = (
+				C9F271A9181C1A80003FCBA0 /* Sources */,
+				C9F271AA181C1A80003FCBA0 /* Frameworks */,
+				C9F271AB181C1A80003FCBA0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ch25p840customThermometer;
+			productName = ch25p840customThermometer;
+			productReference = C9F271AD181C1A80003FCBA0 /* ch25p840customThermometer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C9F271A5181C1A80003FCBA0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Matt Neuburg";
+			};
+			buildConfigurationList = C9F271A8181C1A80003FCBA0 /* Build configuration list for PBXProject "ch25p840customThermometer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C9F271A4181C1A80003FCBA0;
+			productRefGroup = C9F271AE181C1A80003FCBA0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C9F271AC181C1A80003FCBA0 /* ch25p840customThermometer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9F271AB181C1A80003FCBA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32E568B61B9DFB7100581B97 /* LaunchScreen.storyboard in Resources */,
+				C9F271C9181C1A80003FCBA0 /* Assets.xcassets in Resources */,
+				3289DEF71BAF1F1600180826 /* pause.png in Resources */,
+				C9F271C4181C1A80003FCBA0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C9F271A9181C1A80003FCBA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32E568B81B9DFB7700581B97 /* AppDelegate.swift in Sources */,
+				3289DEF51BAF1CD100180826 /* MyCircularProgressButton.swift in Sources */,
+				3227F824198DC0A700D05958 /* ViewController.swift in Sources */,
+				3227F822198DBFA400D05958 /* MyProgressView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C9F271C2181C1A80003FCBA0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9F271C3181C1A80003FCBA0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C9F271DD181C1A80003FCBA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C9F271DE181C1A80003FCBA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C9F271E0181C1A80003FCBA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ch25p840customThermometer/ch25p840customThermometer-Prefix.pch";
+				INFOPLIST_FILE = "ch25p840customThermometer/ch25p840customThermometer-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C9F271E1181C1A80003FCBA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ch25p840customThermometer/ch25p840customThermometer-Prefix.pch";
+				INFOPLIST_FILE = "ch25p840customThermometer/ch25p840customThermometer-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C9F271A8181C1A80003FCBA0 /* Build configuration list for PBXProject "ch25p840customThermometer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9F271DD181C1A80003FCBA0 /* Debug */,
+				C9F271DE181C1A80003FCBA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9F271DF181C1A80003FCBA0 /* Build configuration list for PBXNativeTarget "ch25p840customThermometer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9F271E0181C1A80003FCBA0 /* Debug */,
+				C9F271E1181C1A80003FCBA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C9F271A5181C1A80003FCBA0 /* Project object */;
+}

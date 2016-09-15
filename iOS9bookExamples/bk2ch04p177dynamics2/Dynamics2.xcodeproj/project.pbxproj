@@ -1,0 +1,279 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		326CB95F1B6959E600D1DC41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 326CB95E1B6959E600D1DC41 /* LaunchScreen.storyboard */; };
+		326CB9611B695A0500D1DC41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326CB9601B695A0500D1DC41 /* AppDelegate.swift */; };
+		3283079C197199B8002B6BFF /* MyDropBounceAndRollBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283079B197199B8002B6BFF /* MyDropBounceAndRollBehavior.swift */; };
+		3283079E1971A5AF002B6BFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283079D1971A5AF002B6BFF /* ViewController.swift */; };
+		C906E77E17B7DDA800AA51E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C906E77C17B7DDA800AA51E8 /* Main.storyboard */; };
+		C906E78317B7DDA800AA51E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C906E78217B7DDA800AA51E8 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		326CB95E1B6959E600D1DC41 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		326CB9601B695A0500D1DC41 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3283079B197199B8002B6BFF /* MyDropBounceAndRollBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDropBounceAndRollBehavior.swift; sourceTree = "<group>"; };
+		3283079D1971A5AF002B6BFF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C906E76717B7DDA800AA51E8 /* Dynamics2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dynamics2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C906E77217B7DDA800AA51E8 /* Dynamics2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dynamics2-Info.plist"; sourceTree = "<group>"; };
+		C906E77D17B7DDA800AA51E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C906E78217B7DDA800AA51E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C906E76417B7DDA800AA51E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C906E75E17B7DDA800AA51E8 = {
+			isa = PBXGroup;
+			children = (
+				C906E77017B7DDA800AA51E8 /* Dynamics */,
+				C906E76817B7DDA800AA51E8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C906E76817B7DDA800AA51E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C906E76717B7DDA800AA51E8 /* Dynamics2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C906E77017B7DDA800AA51E8 /* Dynamics */ = {
+			isa = PBXGroup;
+			children = (
+				C906E77C17B7DDA800AA51E8 /* Main.storyboard */,
+				3283079D1971A5AF002B6BFF /* ViewController.swift */,
+				326CB9601B695A0500D1DC41 /* AppDelegate.swift */,
+				3283079B197199B8002B6BFF /* MyDropBounceAndRollBehavior.swift */,
+				C906E78217B7DDA800AA51E8 /* Assets.xcassets */,
+				C906E77217B7DDA800AA51E8 /* Dynamics2-Info.plist */,
+				326CB95E1B6959E600D1DC41 /* LaunchScreen.storyboard */,
+			);
+			path = Dynamics;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C906E76617B7DDA800AA51E8 /* Dynamics2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C906E79917B7DDA900AA51E8 /* Build configuration list for PBXNativeTarget "Dynamics2" */;
+			buildPhases = (
+				C906E76317B7DDA800AA51E8 /* Sources */,
+				C906E76417B7DDA800AA51E8 /* Frameworks */,
+				C906E76517B7DDA800AA51E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dynamics2;
+			productName = Dynamics;
+			productReference = C906E76717B7DDA800AA51E8 /* Dynamics2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C906E75F17B7DDA800AA51E8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Matt Neuburg";
+			};
+			buildConfigurationList = C906E76217B7DDA800AA51E8 /* Build configuration list for PBXProject "Dynamics2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C906E75E17B7DDA800AA51E8;
+			productRefGroup = C906E76817B7DDA800AA51E8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C906E76617B7DDA800AA51E8 /* Dynamics2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C906E76517B7DDA800AA51E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C906E78317B7DDA800AA51E8 /* Assets.xcassets in Resources */,
+				326CB95F1B6959E600D1DC41 /* LaunchScreen.storyboard in Resources */,
+				C906E77E17B7DDA800AA51E8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C906E76317B7DDA800AA51E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				326CB9611B695A0500D1DC41 /* AppDelegate.swift in Sources */,
+				3283079E1971A5AF002B6BFF /* ViewController.swift in Sources */,
+				3283079C197199B8002B6BFF /* MyDropBounceAndRollBehavior.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C906E77C17B7DDA800AA51E8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C906E77D17B7DDA800AA51E8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C906E79717B7DDA900AA51E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C906E79817B7DDA900AA51E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C906E79A17B7DDA900AA51E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dynamics/Dynamics2-Prefix.pch";
+				INFOPLIST_FILE = "Dynamics/Dynamics2-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = Dynamics2;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C906E79B17B7DDA900AA51E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dynamics/Dynamics2-Prefix.pch";
+				INFOPLIST_FILE = "Dynamics/Dynamics2-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = Dynamics2;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C906E76217B7DDA800AA51E8 /* Build configuration list for PBXProject "Dynamics2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C906E79717B7DDA900AA51E8 /* Debug */,
+				C906E79817B7DDA900AA51E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C906E79917B7DDA900AA51E8 /* Build configuration list for PBXNativeTarget "Dynamics2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C906E79A17B7DDA900AA51E8 /* Debug */,
+				C906E79B17B7DDA900AA51E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C906E75F17B7DDA800AA51E8 /* Project object */;
+}

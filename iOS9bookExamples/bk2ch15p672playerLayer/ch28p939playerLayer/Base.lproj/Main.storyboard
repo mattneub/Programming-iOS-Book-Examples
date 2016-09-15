@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch28p939playerLayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SV5-Mz-2BS"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dec-OH-OaT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1o-Pv-d6I">
+                                <rect key="frame" x="20" y="259" width="172" height="41"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="172" id="0aJ-no-2Ak"/>
+                                    <constraint firstAttribute="height" constant="41" id="UAi-1D-ENt"/>
+                                </constraints>
+                                <state key="normal" title="Play/Pause">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ykc-H2-i8E"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNo-9f-IuW">
+                                <rect key="frame" x="483" y="39" width="50" height="30"/>
+                                <state key="normal" title="Restart">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="restart:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="fOJ-AM-DKh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCk-N2-XnM">
+                                <rect key="frame" x="416" y="98" width="117" height="30"/>
+                                <state key="normal" title="Picture in Picture"/>
+                                <connections>
+                                    <action selector="doPicInPic:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Nio-FE-qfc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Dec-OH-OaT" firstAttribute="top" secondItem="f1o-Pv-d6I" secondAttribute="bottom" constant="20" id="6XQ-6Q-A8N"/>
+                            <constraint firstItem="aCk-N2-XnM" firstAttribute="top" secondItem="NNo-9f-IuW" secondAttribute="bottom" constant="29" id="8BA-mE-A3q"/>
+                            <constraint firstAttribute="trailing" secondItem="aCk-N2-XnM" secondAttribute="trailing" constant="35" id="EB0-vu-Nx3"/>
+                            <constraint firstItem="f1o-Pv-d6I" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="TEK-Md-K35"/>
+                            <constraint firstItem="NNo-9f-IuW" firstAttribute="top" secondItem="SV5-Mz-2BS" secondAttribute="bottom" constant="19" id="XiM-6H-7CS"/>
+                            <constraint firstAttribute="trailing" secondItem="NNo-9f-IuW" secondAttribute="trailing" constant="35" id="xNd-vn-1hA"/>
+                        </constraints>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="picButton" destination="aCk-N2-XnM" id="T2z-IO-Zwf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

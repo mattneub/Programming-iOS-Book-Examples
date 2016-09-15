@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8121.20" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController" customModule="bk1ch04p158classInitializers2" customModuleProvider="target">
+            <connections>
+                <outlet property="toolbar" destination="ZAd-tv-xL2" id="mOQ-wI-QyO"/>
+                <outlet property="view" destination="iN0-l3-epB" id="e8Z-9X-hPO"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fug-Bv-Wq9">
+                    <rect key="frame" x="28" y="33" width="46" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="doButton:" destination="-1" eventType="touchUpInside" id="ZsZ-3x-fgi"/>
+                    </connections>
+                </button>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZAd-tv-xL2">
+                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <items/>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.30690508239999997" blue="0.33035034009999997" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ZAd-tv-xL2" secondAttribute="trailing" id="1Hx-4a-ZQx"/>
+                <constraint firstItem="ZAd-tv-xL2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="90Z-JU-t3A"/>
+                <constraint firstAttribute="bottom" secondItem="ZAd-tv-xL2" secondAttribute="bottom" id="SaM-Ec-EKN"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

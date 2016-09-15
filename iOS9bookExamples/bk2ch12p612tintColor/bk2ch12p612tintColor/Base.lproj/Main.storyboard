@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="bk2ch12p612tintColor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5x-cM-O3p">
+                                <rect key="frame" x="20" y="20" width="177" height="30"/>
+                                <state key="normal" title="Toggle Window Tint Color"/>
+                                <connections>
+                                    <action selector="doToggleTint:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jty-Yz-OzW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just a label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQI-ro-AdY">
+                                <rect key="frame" x="493" y="29" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UA4-Rk-yMa">
+                                <rect key="frame" x="20" y="74" width="171" height="30"/>
+                                <state key="normal" title="Toggle Window Dimming"/>
+                                <connections>
+                                    <action selector="doToggleDimming:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SuS-ea-bQY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g25-6I-7ZL" customClass="MySpecialButton" customModule="bk2ch12p612tintColor" customModuleProvider="target">
+                                <rect key="frame" x="20" y="141" width="174" height="29"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="I am a very special Button">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="g25-6I-7ZL" secondAttribute="leading" id="CRc-HR-O82"/>
+                            <constraint firstItem="R5x-cM-O3p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="KWF-s6-UHa"/>
+                            <constraint firstItem="UA4-Rk-yMa" firstAttribute="top" secondItem="R5x-cM-O3p" secondAttribute="bottom" constant="24" id="VYe-Sl-mHp"/>
+                            <constraint firstItem="g25-6I-7ZL" firstAttribute="top" secondItem="UA4-Rk-yMa" secondAttribute="bottom" constant="37" id="WMD-xl-S16"/>
+                            <constraint firstItem="AQI-ro-AdY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="9" id="aKh-y9-phP"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="R5x-cM-O3p" secondAttribute="leading" id="j2K-Mh-qA6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AQI-ro-AdY" secondAttribute="trailing" id="oB7-kK-mm5"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="UA4-Rk-yMa" secondAttribute="leading" id="pra-GF-vMS"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

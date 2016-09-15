@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="BarShadowTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cuK-dS-RxL"/>
+                        <viewControllerLayoutGuide type="bottom" id="brl-Gx-leQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZL-dL-2lS">
+                                <rect key="frame" x="20" y="39" width="164" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6d-k0-U1h">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="cHu-F0-NMe"/>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="JNd-af-BNd"/>
+                                </connections>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I38-Bf-l2a">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="Item" id="LyH-3g-5qx"/>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="lkf-FH-kLG"/>
+                                </connections>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="brl-Gx-leQ" firstAttribute="top" secondItem="I38-Bf-l2a" secondAttribute="bottom" id="6Ka-yR-yUg"/>
+                            <constraint firstItem="L6d-k0-U1h" firstAttribute="top" secondItem="cuK-dS-RxL" secondAttribute="bottom" id="GF4-8X-FKC"/>
+                            <constraint firstAttribute="trailing" secondItem="L6d-k0-U1h" secondAttribute="trailing" id="b9U-UZ-Ojq"/>
+                            <constraint firstItem="L6d-k0-U1h" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="bsC-vF-wCg"/>
+                            <constraint firstItem="I38-Bf-l2a" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="lWj-WP-GTf"/>
+                            <constraint firstAttribute="trailing" secondItem="I38-Bf-l2a" secondAttribute="trailing" id="wMR-ZL-Q5j"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="navbar" destination="L6d-k0-U1h" id="ABI-Bq-u6Q"/>
+                        <outlet property="toolbar" destination="I38-Bf-l2a" id="YJB-FJ-Frh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="258" y="399"/>
+        </scene>
+    </scenes>
+</document>

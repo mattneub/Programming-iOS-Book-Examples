@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="CoffeeTimeTodayExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MWp-nU-YYy"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ejx-GH-bCR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="113"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Coffee Time:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="139" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
+                                <rect key="frame" x="71" y="8" width="139" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLg-y4-zTG">
+                                <rect key="frame" x="95" y="70" width="131" height="30"/>
+                                <color key="backgroundColor" red="0.13468386630000001" green="0.43529412150000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <state key="normal" title=" In Fifteen Minutes ">
+                                    <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="doButton:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="TMc-vT-IxV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBn-In-fKP">
+                                <rect key="frame" x="105" y="34" width="111" height="30"/>
+                                <color key="backgroundColor" red="0.13468386630000001" green="0.43529412150000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <state key="normal" title=" In Five Minutes ">
+                                    <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="doButton:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="lA0-DR-X58"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cup.png" translatesAutoresizingMaskIntoConstraints="NO" id="ULC-4o-MCI">
+                                <rect key="frame" x="0.0" y="40" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="5OZ-tQ-jC6"/>
+                                    <constraint firstAttribute="width" constant="60" id="GlN-Kf-mbD"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="ULC-4o-MCI" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="2Fl-WA-4pu"/>
+                            <constraint firstItem="PBn-In-fKP" firstAttribute="firstBaseline" secondItem="GcN-lo-r42" secondAttribute="firstBaseline" constant="30" id="MKL-b3-e4l"/>
+                            <constraint firstAttribute="centerX" secondItem="GcN-lo-r42" secondAttribute="centerX" constant="20" id="SAj-Tp-cwT"/>
+                            <constraint firstItem="nLg-y4-zTG" firstAttribute="bottom" secondItem="ULC-4o-MCI" secondAttribute="bottom" id="TqV-7b-1h7"/>
+                            <constraint firstItem="nLg-y4-zTG" firstAttribute="firstBaseline" secondItem="PBn-In-fKP" secondAttribute="firstBaseline" constant="36" id="aRJ-bB-Ra0"/>
+                            <constraint firstAttribute="centerX" secondItem="PBn-In-fKP" secondAttribute="centerX" id="dHf-lW-6iY"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="MWp-nU-YYy" secondAttribute="bottom" constant="8" id="i4x-5r-Dky"/>
+                            <constraint firstItem="Ejx-GH-bCR" firstAttribute="top" secondItem="nLg-y4-zTG" secondAttribute="bottom" constant="13" id="ndF-nL-rxo"/>
+                            <constraint firstAttribute="centerX" secondItem="nLg-y4-zTG" secondAttribute="centerX" id="ph5-EF-Gb9"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="113"/>
+                    <connections>
+                        <outlet property="iv" destination="ULC-4o-MCI" id="PKI-99-W8B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="368" y="249.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cup.png" width="50" height="58"/>
+    </resources>
+</document>

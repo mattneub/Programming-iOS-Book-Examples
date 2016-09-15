@@ -1,0 +1,443 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3219EB201BB0E01B0037939C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3219EB1F1BB0E01B0037939C /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		3219EB381BB0E8200037939C /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3219EB371BB0E8200037939C /* NotificationCenter.framework */; };
+		322C932019F557A500036BE0 /* cup.png in Resources */ = {isa = PBXBuildFile; fileRef = 322C931F19F557A500036BE0 /* cup.png */; };
+		323FD2D11996BD5200C0A682 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323FD2D01996BD5200C0A682 /* TodayViewController.swift */; };
+		323FD2D31996BD5200C0A682 /* CoffeeTimeToday.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 323FD2D21996BD5200C0A682 /* CoffeeTimeToday.storyboard */; };
+		323FD2D61996BD5200C0A682 /* CoffeeTimeTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 323FD2CA1996BD5200C0A682 /* CoffeeTimeTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		327D195A1995202600C0EF59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D19591995202600C0EF59 /* ViewController.swift */; };
+		327D195C199520E500C0EF59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D195B199520E500C0EF59 /* AppDelegate.swift */; };
+		C97D40B51822A25A002DFE75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97D40B31822A25A002DFE75 /* Main.storyboard */; };
+		C97D40BA1822A25A002DFE75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97D40B91822A25A002DFE75 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		323FD2D41996BD5200C0A682 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C97D40961822A259002DFE75 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 323FD2C91996BD5200C0A682;
+			remoteInfo = CoffeeTimeTodayExtension;
+		};
+		323FD2D71996BD5200C0A682 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C97D40961822A259002DFE75 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 323FD2C91996BD5200C0A682;
+			remoteInfo = CoffeeTimeTodayExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		323FD2DC1996BD5200C0A682 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				323FD2D61996BD5200C0A682 /* CoffeeTimeTodayExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3219EB1F1BB0E01B0037939C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3219EB371BB0E8200037939C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		322C931F19F557A500036BE0 /* cup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cup.png; sourceTree = "<group>"; };
+		323FD2CA1996BD5200C0A682 /* CoffeeTimeTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CoffeeTimeTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		323FD2CF1996BD5200C0A682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		323FD2D01996BD5200C0A682 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		323FD2D21996BD5200C0A682 /* CoffeeTimeToday.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CoffeeTimeToday.storyboard; sourceTree = "<group>"; };
+		327D19591995202600C0EF59 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		327D195B199520E500C0EF59 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C97D409E1822A25A002DFE75 /* bk2ch13p631todayExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk2ch13p631todayExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C97D40A91822A25A002DFE75 /* bk2ch13p631todayExtension-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bk2ch13p631todayExtension-Info.plist"; sourceTree = "<group>"; };
+		C97D40B41822A25A002DFE75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C97D40B91822A25A002DFE75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		323FD2C71996BD5200C0A682 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3219EB381BB0E8200037939C /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C97D409B1822A25A002DFE75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		323FD2CD1996BD5200C0A682 /* CoffeeTimeTodayExtension */ = {
+			isa = PBXGroup;
+			children = (
+				323FD2D01996BD5200C0A682 /* TodayViewController.swift */,
+				322C931F19F557A500036BE0 /* cup.png */,
+				323FD2D21996BD5200C0A682 /* CoffeeTimeToday.storyboard */,
+				323FD2CF1996BD5200C0A682 /* Info.plist */,
+				3219EB371BB0E8200037939C /* NotificationCenter.framework */,
+			);
+			path = CoffeeTimeTodayExtension;
+			sourceTree = "<group>";
+		};
+		C97D40951822A259002DFE75 = {
+			isa = PBXGroup;
+			children = (
+				C97D40A71822A25A002DFE75 /* ch26p899localNotification */,
+				323FD2CD1996BD5200C0A682 /* CoffeeTimeTodayExtension */,
+				C97D409F1822A25A002DFE75 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C97D409F1822A25A002DFE75 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C97D409E1822A25A002DFE75 /* bk2ch13p631todayExtension.app */,
+				323FD2CA1996BD5200C0A682 /* CoffeeTimeTodayExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C97D40A71822A25A002DFE75 /* ch26p899localNotification */ = {
+			isa = PBXGroup;
+			children = (
+				327D195B199520E500C0EF59 /* AppDelegate.swift */,
+				C97D40B31822A25A002DFE75 /* Main.storyboard */,
+				327D19591995202600C0EF59 /* ViewController.swift */,
+				3219EB1F1BB0E01B0037939C /* LaunchScreen.storyboard */,
+				C97D40B91822A25A002DFE75 /* Assets.xcassets */,
+				C97D40A91822A25A002DFE75 /* bk2ch13p631todayExtension-Info.plist */,
+			);
+			path = ch26p899localNotification;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		323FD2C91996BD5200C0A682 /* CoffeeTimeTodayExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 323FD2D91996BD5200C0A682 /* Build configuration list for PBXNativeTarget "CoffeeTimeTodayExtension" */;
+			buildPhases = (
+				323FD2C61996BD5200C0A682 /* Sources */,
+				323FD2C71996BD5200C0A682 /* Frameworks */,
+				323FD2C81996BD5200C0A682 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoffeeTimeTodayExtension;
+			productName = CoffeeTimeTodayExtension;
+			productReference = 323FD2CA1996BD5200C0A682 /* CoffeeTimeTodayExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C97D409D1822A25A002DFE75 /* bk2ch13p631todayExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C97D40D01822A25A002DFE75 /* Build configuration list for PBXNativeTarget "bk2ch13p631todayExtension" */;
+			buildPhases = (
+				C97D409A1822A25A002DFE75 /* Sources */,
+				C97D409B1822A25A002DFE75 /* Frameworks */,
+				C97D409C1822A25A002DFE75 /* Resources */,
+				323FD2DC1996BD5200C0A682 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				323FD2D51996BD5200C0A682 /* PBXTargetDependency */,
+				323FD2D81996BD5200C0A682 /* PBXTargetDependency */,
+			);
+			name = bk2ch13p631todayExtension;
+			productName = ch26p899localNotification;
+			productReference = C97D409E1822A25A002DFE75 /* bk2ch13p631todayExtension.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C97D40961822A259002DFE75 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Matt Neuburg";
+				TargetAttributes = {
+					323FD2C91996BD5200C0A682 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = C97D40991822A259002DFE75 /* Build configuration list for PBXProject "bk2ch13p631todayExtension" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C97D40951822A259002DFE75;
+			productRefGroup = C97D409F1822A25A002DFE75 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C97D409D1822A25A002DFE75 /* bk2ch13p631todayExtension */,
+				323FD2C91996BD5200C0A682 /* CoffeeTimeTodayExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		323FD2C81996BD5200C0A682 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				322C932019F557A500036BE0 /* cup.png in Resources */,
+				323FD2D31996BD5200C0A682 /* CoffeeTimeToday.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C97D409C1822A25A002DFE75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3219EB201BB0E01B0037939C /* LaunchScreen.storyboard in Resources */,
+				C97D40BA1822A25A002DFE75 /* Assets.xcassets in Resources */,
+				C97D40B51822A25A002DFE75 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		323FD2C61996BD5200C0A682 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				323FD2D11996BD5200C0A682 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C97D409A1822A25A002DFE75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				327D195C199520E500C0EF59 /* AppDelegate.swift in Sources */,
+				327D195A1995202600C0EF59 /* ViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		323FD2D51996BD5200C0A682 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 323FD2C91996BD5200C0A682 /* CoffeeTimeTodayExtension */;
+			targetProxy = 323FD2D41996BD5200C0A682 /* PBXContainerItemProxy */;
+		};
+		323FD2D81996BD5200C0A682 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 323FD2C91996BD5200C0A682 /* CoffeeTimeTodayExtension */;
+			targetProxy = 323FD2D71996BD5200C0A682 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C97D40B31822A25A002DFE75 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C97D40B41822A25A002DFE75 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		323FD2DA1996BD5200C0A682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = CoffeeTimeTodayExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		323FD2DB1996BD5200C0A682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = CoffeeTimeTodayExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C97D40CE1822A25A002DFE75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C97D40CF1822A25A002DFE75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C97D40D11822A25A002DFE75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ch26p899localNotification/CoffeeTime-Prefix.pch";
+				INFOPLIST_FILE = "ch26p899localNotification/bk2ch13p631todayExtension-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = bk2ch13p631todayExtension;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C97D40D21822A25A002DFE75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ch26p899localNotification/CoffeeTime-Prefix.pch";
+				INFOPLIST_FILE = "ch26p899localNotification/bk2ch13p631todayExtension-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = bk2ch13p631todayExtension;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		323FD2D91996BD5200C0A682 /* Build configuration list for PBXNativeTarget "CoffeeTimeTodayExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				323FD2DA1996BD5200C0A682 /* Debug */,
+				323FD2DB1996BD5200C0A682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C97D40991822A259002DFE75 /* Build configuration list for PBXProject "bk2ch13p631todayExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C97D40CE1822A25A002DFE75 /* Debug */,
+				C97D40CF1822A25A002DFE75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C97D40D01822A25A002DFE75 /* Build configuration list for PBXNativeTarget "bk2ch13p631todayExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C97D40D11822A25A002DFE75 /* Debug */,
+				C97D40D21822A25A002DFE75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C97D40961822A259002DFE75 /* Project object */;
+}
