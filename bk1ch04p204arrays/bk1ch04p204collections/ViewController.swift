@@ -131,6 +131,8 @@ class ViewController: UIViewController {
             print("slice:", slice[1]) // moe
             let arr2 = Array(slice)
             print("array:", arr2[1]) // jack
+//            let base = slice.base
+//            print("base:", slice.base)
         }
         
         do {
@@ -351,6 +353,32 @@ class ViewController: UIViewController {
         _ = arr4
         _ = sum
         _ = sum2
+        
+        do {
+            // interesting misuse of `reduce`: implement each_cons
+            // this is probably incredibly inefficient but it was fun to write
+            let arr = [1,2,3,4,5,6,7,8]
+            let clump = 2
+            let cons : [[Int]] = arr.reduce([[Int]]()) {
+                memo, cur in
+                var memo = memo
+                if memo.count == 0 {
+                    return [[cur]]
+                }
+                if memo.count < arr.count - clump + 1 {
+                    memo.append([])
+                }
+                return memo.map {
+                    if $0.count == clump {
+                        return $0
+                    }
+                    var arr = $0
+                    arr.append(cur)
+                    return arr
+                }
+            }
+            print(cons)
+        }
 
         do {
             let sec = 0
