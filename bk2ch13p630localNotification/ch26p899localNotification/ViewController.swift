@@ -1,92 +1,218 @@
 
 
 import UIKit
+import UserNotifications
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
+class MyUserNotificationHelper : NSObject {
+    let categoryIdentifier = "coffee"
+
+    func kickThingsOff() {
+        // artificially, I'm going to start by clearing out any categories
+        // otherwise, it's hard to test, because even after deleting the app...
+        // the categories stick around and continue to be used
+        let center = UNUserNotificationCenter.current()
+        center.setNotificationCategories([])
+        
+        // not so artificially, before we do anything else let's clear out all notifications
+        // cool new iOS 10 feature, let's use it
+        center.removeAllDeliveredNotifications()
+        center.removeAllPendingNotificationRequests()
+        
+        // start the process
+        self.checkAuthorization()
+    }
+    
+    private func checkAuthorization() {
+        print("checking for notification permissions")
+        
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings {
+            settings in
+            switch settings.authorizationStatus {
+            case .notDetermined:
+                self.doAuthorization()
+            case .denied:
+                print("denied, giving up")
+            break // nothing to do, pointless to go on
+            default:
+                self.checkCategories() // prepare create notification
+            }
+        }
+    }
+    
+    private func doAuthorization() {
+        print("asking for authorization")
+        
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { ok, err in
+            if let err = err {
+                print(err)
+                return
+            }
+            if ok {
+                self.checkCategories()
+            } else {
+                print("user refused authorization")
+            }
+        }
+    }
+    
+    private func checkCategories() {
+        print("checking categories")
+        
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationCategories {
+            cats in
+            if cats.count == 0 {
+                self.configureCategory()
+            }
+            self.createNotification()
+        }
+    }
+    
+    private func configureCategory() {
+        // return; // see what it's like if there's no category
+        print("configuring category")
+        
+        // create actions
+        // options are:
+        // foreground (if not, background)
+        // destructive (if not, normal appearance)
+        // authenticationRequired (if so, cannot just do directly from lock screen)
+        let action1 = UNNotificationAction(identifier: "snooze",
+                                           title: "Snooze", options: [])
+        let action2 = UNNotificationAction(identifier: "reconfigure",
+                                           title: "Reconfigure", options: [.foreground])
+        let action3 = UNTextInputNotificationAction(identifier: "message", title: "Message", options: [], textInputButtonTitle: "Message", textInputPlaceholder: "message")
+        
+        // combine actions into category
+        // the key option here is customDismissAction
+        // allows us to hear about it if user dismisses
+        // to put it another way: if we don't have this, we won't hear about it when user dismisses
+        var customDismiss : Bool { return false }
+        let cat = UNNotificationCategory(identifier: self.categoryIdentifier, actions: [action1, action2], intentIdentifiers: [], options: customDismiss ? [.customDismissAction] : [])
+        let center = UNUserNotificationCenter.current()
+        center.setNotificationCategories([cat])
+        
+        _ = action3
+    }
+    
+    fileprivate func createNotification() {
+        print("creating notification")
+        
+        // need trigger
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        // need content
+        let content = UNMutableNotificationContent()
+        content.title = "Caffeine!" // title now always appears
+        // content.subtitle = "whatever" // new
+        content.body = "Time for another cup of coffee!"
+        content.sound = UNNotificationSound.default()
+        
+        // if we want to see actions, we must add category identifier
+        content.categoryIdentifier = self.categoryIdentifier
+        
+        // new iOS 10 feature: attachments! AIFF, JPEG, or MPEG
+        let url = Bundle.main.url(forResource: "cup", withExtension: "jpg")!
+        // a failed experiment
+//        let rect = CGRect(0,0,1,1).dictionaryRepresentation
+//        let dict : [AnyHashable:Any] = [UNNotificationAttachmentOptionsThumbnailClippingRectKey:rect]
+        if let att = try? UNNotificationAttachment(identifier: "cup", url: url, options:nil) {
+            content.attachments = [att]
+        } else {
+            print("failed to make attachment")
+        }
+        
+        // combine them into a request
+        let req = UNNotificationRequest(identifier: "coffeeNotification", content: content, trigger: trigger)
+        let center = UNUserNotificationCenter.current()
+        center.add(req)
+    }
+}
+
+extension MyUserNotificationHelper : UNUserNotificationCenterDelegate {
+    
+    // just two optional methods
+    
+    // called if we are in the foreground when our notification fires
+    // new in iOS 10, we have the option to have system present the notification!
+    // one way or another, however, we _must_ call completionHandler
+    
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        print("received notification while active")
+        
+        completionHandler([.sound, .alert]) // go for it, system!
+        
+        // oooh oooh I accidentally learned something
+        // if Do Not Disturb is on, no notifications interrupt
+        // they go in notification center but they don't appear in normal interface
+        
+    }
+    
+    // everything else that happens is funneled through here
+    // we can find out everything we need to know by examining the response
+    // one way or another, we must _must_ call completionHandler
+    // need to be fast, esp. as we may have been woken in the background to handle this
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        let id = response.actionIdentifier // can be default, dismiss, or one of ours
+        print("user action was: \(id)")
+        
+        if id == "snooze" {
+            self.createNotification()
+        }
+        
+        // if we need more info, we can also fetch response.notification
+        
+        // if this was text input, the response will be a UNTextInputNotificationAction
+        
+        if let textresponse = response as? UNTextInputNotificationResponse {
+            let text = textresponse.userText
+            print("user text was \(text)")
+        }
+        
+        
+        completionHandler()
+    }
+    
+}
+
 
 class ViewController: UIViewController {
     
-    let categoryIdentifier = "coffee"
 
     @IBAction func doButton(_ sender: Any) {
-        self.registerMyNotification()
+        let del = UIApplication.shared.delegate as! AppDelegate
+        del.notifHelper.kickThingsOff()
     }
     
-    func registerMyNotification() {
-        print("checking for notification permissions")
-        if let settings = UIApplication.shared.currentUserNotificationSettings() {
-            if let cats = settings.categories {
-                for cat in cats {
-                    if cat.identifier == self.categoryIdentifier { // we are already registered
-                        self.createLocalNotification()
-                        return
-                    }
-                }
-            }
-        }
-        
-        let types : UIUserNotificationType = [.alert, .sound]
-        // if we want custom actions in our alert, we must create them when we register
-        let category = UIMutableUserNotificationCategory()
-        category.identifier = self.categoryIdentifier // will need this at notification creation time!
-        let action1 = UIMutableUserNotificationAction()
-        action1.identifier = "yum"
-        action1.title = "Yum" // user will see this
-        action1.isDestructive = false // the default, I'm just setting it to call attention to its existence
-        action1.activationMode = .foreground // if .Background, app just stays in the background! cool
-        // if .Background, should also set authenticationRequired to say what to do from lock screen
-        
-        let action2 = UIMutableUserNotificationAction()
-        var which : Int {return 2} // try 1 and 2
-        switch which {
-        case 1:
-            action2.identifier = "ohno"
-            action2.title = "Oh, No!" // user will see this
-            action2.isDestructive = false // the default, I'm just setting it to call attention to its existence
-            action2.activationMode = .background // if .Background, app just stays in the background! cool
-            // if .Background, should also set authenticationRequired to say what to do from lock screen
-        case 2:
-            action2.identifier = "message"
-            action2.title = "Message"
-            action2.activationMode = .background
-            action2.behavior = .textInput // new in iOS 9!
-        default: break
-        }
-        
-        category.setActions([action1, action2], for: .default) // can have 4 for default, 2 for minimal
-        let settings = UIUserNotificationSettings(types: types, categories: [category])
-        // prepare to proceed to next step
-        var ob : NSObjectProtocol! = nil
-        ob = NotificationCenter.default.addObserver(forName: "didRegisterUserNotificationSettings" as Notification.Name, object: nil, queue: nil) {
-            _ in
-            NotificationCenter.default.removeObserver(ob)
-            self.createLocalNotification()
-        }
-        UIApplication.shared.registerUserNotificationSettings(settings)
-        // if this app has never requested this registration,
-        // it will put up a dialog asking if we can present alerts etc.
-        // when the user accepts or refuses,
-        // will cause us to receive application:didRegisterUserNotificationSettings:
-        // can also check at any time with currentUserNotificationSettings
-        
-        // unfortunately if the user accepts, the default is banner, not alert :(
-        print("end of registerMyNotification")
-    }
-    
-    func createLocalNotification() {
-        
-        print("creating local notification")
-        let ln = UILocalNotification()
-        // ln.alertTitle = "Caffeine!" // I see; it's for the Apple Watch
-        ln.alertBody = "Time for another cup of coffee!"
-        ln.category = self.categoryIdentifier // causes Options button to spring magically to life in alert
-        // Options button will offer Open, action buttons, Close
-        ln.fireDate = NSDate(timeIntervalSinceNow:15) as Date
-        ln.soundName = UILocalNotificationDefaultSoundName
-        // ln.repeatInterval = .Minute
-        UIApplication.shared.scheduleLocalNotification(ln)
-    }
-    /*
-    If user has denied alerts/sounds, trying to schedule the above notification...
-    ...will log in the console for each of those, but no harm done
-    */
     
 }
