@@ -3,6 +3,8 @@
 import UIKit
 import UserNotifications
 
+
+
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)
@@ -92,6 +94,12 @@ class MyUserNotificationHelper : NSObject {
             self.createNotification()
         }
     }
+    
+    // how action buttons are displayed:
+    // if the device has 3D touch, must 3D touch
+    // otherwise:
+    // for a banner/alert: there is a "drag" bar and you drag downward
+    // in the notification center: you drag left and there is a View button, tap it
     
     private func configureCategory() {
         // return; // see what it's like if there's no category
@@ -187,7 +195,9 @@ extension MyUserNotificationHelper : UNUserNotificationCenterDelegate {
         print("user action was: \(id)")
         
         if id == "snooze" {
-            self.createNotification()
+            delay(1) { // because otherwise the image doesn't show
+                self.createNotification()
+            }
         }
         
         // if we need more info, we can also fetch response.notification

@@ -24,6 +24,21 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         print("start \(#function)")
         print("end \(#function)")
     }
+    
+    // cute feature, but it's a pity we can't prevent ourselves from being activated
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        if shortcutItem.type == "coffee.schedule" {
+            if let d = shortcutItem.userInfo {
+                if let time = d["time"] as? Int {
+                    // for debugging purposes, let's show an actual alert
+                    let alert = UIAlertController(title: "Coffee!", message: "Coffee reminder scheduled in \(time) minutes", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.window!.rootViewController?.present(alert, animated: true)
+                }
+            }
+        }
+    }
 
 }
 

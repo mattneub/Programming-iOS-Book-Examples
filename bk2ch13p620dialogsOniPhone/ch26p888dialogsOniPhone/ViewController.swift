@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: "Enter a number:", message: nil, preferredStyle: .alert)
         alert.addTextField {
             (tf:UITextField) in
-            tf.keyboardType = .numberPad
+            tf.keyboardType = .numberPad // ??? not on iPad
             tf.addTarget(self, action: #selector(self.textChanged), for: .editingChanged)
         }
         func handler(_ act:UIAlertAction) {
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         // enable OK button only if there is text
         // hold my beer and watch this: how to get a reference to the alert
         var resp : UIResponder! = tf
-        while !(resp is UIAlertController) { resp = resp.next() }
+        while !(resp is UIAlertController) { resp = resp.next }
         let alert = resp as! UIAlertController
         alert.actions[1].isEnabled = (tf.text != "")
     }

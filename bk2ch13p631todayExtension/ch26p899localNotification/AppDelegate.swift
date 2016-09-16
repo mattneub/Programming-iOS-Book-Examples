@@ -15,11 +15,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [String : AnyObject]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
         let scheme = url.scheme
         let host = url.host
         if scheme == "coffeetime" {
-            if let host = host, min = Int(host) {
+            if let host = host, let min = Int(host) {
                 print("got \(min) from our today extension")
                 return true
             }

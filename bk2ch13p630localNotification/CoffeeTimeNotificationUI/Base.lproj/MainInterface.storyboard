@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,26 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3fh-7a-Meo">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="2ca-8w-CjZ"/>
+                                    <constraint firstAttribute="height" constant="40" id="yBi-Xt-MIo"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time for a cup of coffee!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
                                 <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3fh-7a-Meo">
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="3fh-7a-Meo" secondAttribute="height" multiplier="1:1" id="j1q-l5-dnQ"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="bottom" constant="8" symbolic="YES" id="0Q0-KW-PJ6"/>
                             <constraint firstItem="GcN-lo-r42" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="20" symbolic="YES" id="6Vq-gs-PHe"/>
-                            <constraint firstAttribute="bottom" secondItem="3fh-7a-Meo" secondAttribute="bottom" id="GdM-zq-kFG"/>
-                            <constraint firstAttribute="top" secondItem="3fh-7a-Meo" secondAttribute="top" id="HVv-iV-vMK"/>
                             <constraint firstAttribute="trailing" secondItem="GcN-lo-r42" secondAttribute="trailing" constant="20" symbolic="YES" id="L8K-9R-egU"/>
                             <constraint firstItem="3fh-7a-Meo" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="bYs-5x-TIF"/>
                             <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" symbolic="YES" id="mYS-Cv-VNx"/>
+                            <constraint firstItem="3fh-7a-Meo" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="yML-oy-LfU"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>

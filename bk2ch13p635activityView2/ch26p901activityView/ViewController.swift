@@ -3,11 +3,13 @@
 import UIKit
 
 class MyProvider : UIActivityItemProvider {
-    override func item() -> AnyObject {
+    override var item : Any {
         // time-consuming operation goes here
         return "Coolness"
     }
 }
+
+// test on device
 
 class ViewController: UIViewController {
     @IBAction func doButton (_ sender: Any) {
@@ -17,26 +19,26 @@ class ViewController: UIViewController {
         let avc = UIActivityViewController(activityItems:[MyProvider(placeholderItem: "")], applicationActivities:nil)
 
         avc.completionWithItemsHandler = {
-            (s: String?, ok: Bool, items: [AnyObject]?, err:NSError?) -> Void in
-            print("completed \(s) \(ok) \(items) \(err)")
+            (type: UIActivityType?, ok: Bool, items: [Any]?, err:Error?) -> Void in
+            print("completed \(type) \(ok) \(items) \(err)")
         }
         avc.excludedActivityTypes = [
-            UIActivityTypePostToFacebook,
-            UIActivityTypePostToTwitter,
-            UIActivityTypePostToWeibo,
-            UIActivityTypeMessage,
-            // UIActivityTypeMail,
-            UIActivityTypePrint,
-            UIActivityTypeCopyToPasteboard,
-            UIActivityTypeAssignToContact,
-            UIActivityTypeSaveToCameraRoll,
-            UIActivityTypeAddToReadingList,
-            UIActivityTypePostToFlickr,
-            UIActivityTypePostToVimeo,
-            UIActivityTypePostToTencentWeibo,
-            UIActivityTypeAirDrop,
-            UIActivityTypeOpenInIBooks,
-            "com.apple.mobilenotes.SharingExtension" // nope, can't exclude a sharing extension
+            .postToFacebook,
+            .postToTwitter,
+            .postToWeibo,
+            .message,
+            // .mail
+            .print,
+            .copyToPasteboard,
+            .assignToContact,
+            .saveToCameraRoll,
+            .addToReadingList,
+            .postToFlickr,
+            .postToVimeo,
+            .postToTencentWeibo,
+            .airDrop,
+            .openInIBooks,
+            UIActivityType("com.apple.mobilenotes.SharingExtension") // nope, can't exclude a sharing extension
         ]
         // avc.excludedActivityTypes = nil
         self.present(avc, animated:true)
@@ -52,19 +54,19 @@ class ViewController: UIViewController {
 extension ViewController : UIActivityItemSource {
     func activityViewControllerPlaceholderItem(
         _ activityViewController: UIActivityViewController)
-        -> AnyObject {
+        -> Any {
             return ""
     }
     func activityViewController(
         _ activityViewController: UIActivityViewController,
-        itemForActivityType activityType: String)
-        -> AnyObject? {
+        itemForActivityType activityType: UIActivityType)
+        -> Any? {
             print(activityType)
             return "Coolness"
     }
     func activityViewController(
         _ activityViewController: UIActivityViewController,
-        subjectForActivityType activityType: String?) -> String {
+        subjectForActivityType activityType: UIActivityType?) -> String {
             return "This is cool"
     }
 }

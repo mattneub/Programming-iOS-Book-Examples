@@ -40,7 +40,7 @@ extension CGVector {
 
 
 class MyCoolActivity : UIActivity {
-    var items : [AnyObject]?
+    var items : [Any]?
     var image : UIImage
     
     override init() {
@@ -56,23 +56,23 @@ class MyCoolActivity : UIActivity {
         super.init()
     }
     
-    override class func activityCategory() -> UIActivityCategory {
+    override class var activityCategory : UIActivityCategory {
         return .action // the default
     }
     
-    override func activityType() -> String? {
-        return "com.neuburg.matt.coolActivity"
+    override var activityType : UIActivityType { // *
+        return UIActivityType("com.neuburg.matt.coolActivity") // *
     }
     
-    override func activityTitle() -> String? {
+    override var activityTitle : String? {
         return "Be Cool"
     }
     
-    override func activityImage() -> UIImage? {
+    override var activityImage : UIImage? {
         return self.image
     }
     
-    override func canPerform(withActivityItems activityItems: [AnyObject]) -> Bool {
+    override func canPerform(withActivityItems activityItems: [Any]) -> Bool {
         print("cool can perform \(activityItems)")
         for obj in activityItems {
             if obj is String {
@@ -84,7 +84,7 @@ class MyCoolActivity : UIActivity {
         return false
     }
     
-    override func prepare(withActivityItems activityItems: [AnyObject]) {
+    override func prepare(withActivityItems activityItems: [Any]) {
         print("cool prepare \(activityItems)")
         self.items = activityItems
     }

@@ -4,9 +4,9 @@ import UIKit
 class MustacheViewController: UIViewController {
 
     weak var activity : UIActivity?
-    var items: [AnyObject]
+    var items: [Any]
 
-    init(activity:UIActivity, items:[AnyObject]) {
+    init(activity:UIActivity, items:[Any]) {
         self.activity = activity
         self.items = items
         super.init(nibName: "MustacheViewController", bundle: nil)

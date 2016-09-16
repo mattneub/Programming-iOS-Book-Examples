@@ -38,20 +38,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
 */
         
         avc.completionWithItemsHandler = {
-            (s: String?, ok: Bool, items: [AnyObject]?, err:NSError?) -> Void in
-            print("completed \(s) \(ok) \(items) \(err)")
+            (type: UIActivityType?, ok: Bool, items: [Any]?, err:Error?) -> Void in
+            print("completed \(type) \(ok) \(items) \(err)")
             if ok {
-                guard let items = items where items.count > 0 else {
+                guard let items = items, items.count > 0 else {
                     return
                 }
                 guard let extensionItem = items[0] as? NSExtensionItem,
-                    let provider = extensionItem.attachments?[0] as? NSItemProvider
-                    where provider.hasItemConformingToTypeIdentifier(self.desiredType)
+                    let provider = extensionItem.attachments?[0] as? NSItemProvider,
+                    provider.hasItemConformingToTypeIdentifier(self.desiredType)
                     else {
                         return
                 }
                 provider.loadItem(forTypeIdentifier: self.desiredType) {
-                    (item:NSSecureCoding?, err:NSError!) -> () in
+                    (item:NSSecureCoding?, err:Error!) -> () in
                     DispatchQueue.main.async {
                         if let s = item as? String {
                             self.tf.text = s
@@ -61,21 +61,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         }
         avc.excludedActivityTypes = [
-            UIActivityTypePostToFacebook,
-            UIActivityTypePostToTwitter,
-            UIActivityTypePostToWeibo,
-            UIActivityTypeMessage,
-            UIActivityTypeMail,
-            UIActivityTypePrint,
+            .postToFacebook,
+            .postToTwitter,
+            .postToWeibo,
+            .message,
+            .mail,
+            .print,
             // UIActivityTypeCopyToPasteboard,
-            UIActivityTypeAssignToContact,
-            UIActivityTypeSaveToCameraRoll,
-            UIActivityTypeAddToReadingList,
-            UIActivityTypePostToFlickr,
-            UIActivityTypePostToVimeo,
-            UIActivityTypePostToTencentWeibo,
-            UIActivityTypeAirDrop,
-            UIActivityTypeOpenInIBooks,
+            .assignToContact,
+            .saveToCameraRoll,
+            .addToReadingList,
+            .postToFlickr,
+            .postToVimeo,
+            .postToTencentWeibo,
+            .airDrop,
+            .openInIBooks,
         ]
         self.present(avc, animated:true)
 

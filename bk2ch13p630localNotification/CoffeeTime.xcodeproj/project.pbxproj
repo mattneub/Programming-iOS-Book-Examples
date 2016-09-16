@@ -10,12 +10,12 @@
 		327D195A1995202600C0EF59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D19591995202600C0EF59 /* ViewController.swift */; };
 		327D195C199520E500C0EF59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D195B199520E500C0EF59 /* AppDelegate.swift */; };
 		32D62FFC1BB074ED00028D0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D62FFB1BB074ED00028D0D /* LaunchScreen.storyboard */; };
-		81A60CC51D8B1D3100D13CA0 /* cup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81A60CC41D8B1D3100D13CA0 /* cup.jpg */; };
 		81BA4B591D8B5412003771C1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA4B581D8B5412003771C1 /* UserNotifications.framework */; };
 		81BA4B5B1D8B5412003771C1 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA4B5A1D8B5412003771C1 /* UserNotificationsUI.framework */; };
 		81BA4B5E1D8B5412003771C1 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA4B5D1D8B5412003771C1 /* NotificationViewController.swift */; };
 		81BA4B611D8B5412003771C1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81BA4B5F1D8B5412003771C1 /* MainInterface.storyboard */; };
 		81BA4B651D8B5412003771C1 /* CoffeeTimeNotificationUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 81BA4B561D8B5412003771C1 /* CoffeeTimeNotificationUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		81BC63A81D8C1C1B00F82C82 /* cup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81BC63A71D8C1C1B00F82C82 /* cup.jpg */; };
 		C97D40B51822A25A002DFE75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97D40B31822A25A002DFE75 /* Main.storyboard */; };
 		C97D40BA1822A25A002DFE75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97D40B91822A25A002DFE75 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -48,13 +48,13 @@
 		327D19591995202600C0EF59 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		327D195B199520E500C0EF59 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32D62FFB1BB074ED00028D0D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		81A60CC41D8B1D3100D13CA0 /* cup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cup.jpg; sourceTree = "<group>"; };
 		81BA4B561D8B5412003771C1 /* CoffeeTimeNotificationUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CoffeeTimeNotificationUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		81BA4B581D8B5412003771C1 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		81BA4B5A1D8B5412003771C1 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		81BA4B5D1D8B5412003771C1 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		81BA4B601D8B5412003771C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		81BA4B621D8B5412003771C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81BC63A71D8C1C1B00F82C82 /* cup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cup.jpg; sourceTree = "<group>"; };
 		C97D409E1822A25A002DFE75 /* CoffeeTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97D40A91822A25A002DFE75 /* CoffeeTime-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoffeeTime-Info.plist"; sourceTree = "<group>"; };
 		C97D40B41822A25A002DFE75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -103,6 +103,7 @@
 		C97D40951822A259002DFE75 = {
 			isa = PBXGroup;
 			children = (
+				81BC63A71D8C1C1B00F82C82 /* cup.jpg */,
 				C97D40A71822A25A002DFE75 /* ch26p899localNotification */,
 				81BA4B5C1D8B5412003771C1 /* CoffeeTimeNotificationUI */,
 				81BA4B571D8B5412003771C1 /* Frameworks */,
@@ -125,7 +126,6 @@
 				327D195B199520E500C0EF59 /* AppDelegate.swift */,
 				C97D40B31822A25A002DFE75 /* Main.storyboard */,
 				327D19591995202600C0EF59 /* ViewController.swift */,
-				81A60CC41D8B1D3100D13CA0 /* cup.jpg */,
 				C97D40B91822A25A002DFE75 /* Assets.xcassets */,
 				32D62FFB1BB074ED00028D0D /* LaunchScreen.storyboard */,
 				C97D40A91822A25A002DFE75 /* CoffeeTime-Info.plist */,
@@ -227,7 +227,7 @@
 			files = (
 				32D62FFC1BB074ED00028D0D /* LaunchScreen.storyboard in Resources */,
 				C97D40BA1822A25A002DFE75 /* Assets.xcassets in Resources */,
-				81A60CC51D8B1D3100D13CA0 /* cup.jpg in Resources */,
+				81BC63A81D8C1C1B00F82C82 /* cup.jpg in Resources */,
 				C97D40B51822A25A002DFE75 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +454,7 @@
 				81BA4B671D8B5412003771C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C97D40991822A259002DFE75 /* Build configuration list for PBXProject "CoffeeTime" */ = {
 			isa = XCConfigurationList;

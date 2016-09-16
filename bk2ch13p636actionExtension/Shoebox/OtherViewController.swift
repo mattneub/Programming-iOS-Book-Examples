@@ -14,13 +14,13 @@ class OtherViewController: UIViewController {
         let items = self.extensionContext!.inputItems
         // open the envelopes
         guard let extensionItem = items[0] as? NSExtensionItem,
-            let provider = extensionItem.attachments?[0] as? NSItemProvider
-            where provider.hasItemConformingToTypeIdentifier(self.desiredType)
+            let provider = extensionItem.attachments?[0] as? NSItemProvider,
+            provider.hasItemConformingToTypeIdentifier(self.desiredType)
             else {
                 return
         }
         provider.loadItem(forTypeIdentifier: self.desiredType) {
-            (item:NSSecureCoding?, err:NSError!) -> () in
+            (item:NSSecureCoding?, err:Error!) -> () in
             DispatchQueue.main.async {
                 self.s = item as? String
             }

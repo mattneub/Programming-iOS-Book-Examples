@@ -26,7 +26,7 @@ class ShareViewController: SLComposeServiceViewController, SizeDelegate {
         _ = s
     }
 
-    override func configurationItems() -> [AnyObject]! {
+    override func configurationItems() -> [Any]! {
         // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
         let c = SLComposeSheetConfigurationItem()!
         c.title = "Size"

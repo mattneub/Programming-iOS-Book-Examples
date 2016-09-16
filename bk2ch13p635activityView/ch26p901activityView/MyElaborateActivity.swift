@@ -3,7 +3,7 @@ import UIKit
 
 class MyElaborateActivity : UIActivity {
     
-    var items : [AnyObject]?
+    var items : [Any]?
     var image : UIImage
     
     override init() {
@@ -19,34 +19,34 @@ class MyElaborateActivity : UIActivity {
         super.init()
     }
     
-    override class func activityCategory() -> UIActivityCategory {
+    override class var activityCategory : UIActivityCategory {
         return .action // the default
     }
     
-    override func activityType() -> String? {
-        return "com.neuburg.matt.elaborateActivity"
+    override var activityType : UIActivityType? {
+        return UIActivityType("com.neuburg.matt.elaborateActivity")
     }
     
-    override func activityTitle() -> String? {
+    override var activityTitle : String? {
         return "Elaborate"
     }
     
-    override func activityImage() -> UIImage? {
+    override var activityImage : UIImage? {
         return self.image
     }
     
-    override func canPerform(withActivityItems activityItems: [AnyObject]) -> Bool {
+    override func canPerform(withActivityItems activityItems: [Any]) -> Bool {
         print("elaborate can perform \(activityItems)")
         print("returning true")
         return true
     }
     
-    override func prepare(withActivityItems activityItems: [AnyObject]) {
+    override func prepare(withActivityItems activityItems: [Any]) {
         print("elaborate prepare \(activityItems)")
         self.items = activityItems
     }
     
-    override func activityViewController() -> UIViewController? {
+    override var activityViewController : UIViewController? {
         let mvc = MustacheViewController(activity: self, items: self.items!)
         return mvc
     }

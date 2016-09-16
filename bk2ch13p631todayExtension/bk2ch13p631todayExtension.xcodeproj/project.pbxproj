@@ -15,6 +15,7 @@
 		323FD2D61996BD5200C0A682 /* CoffeeTimeTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 323FD2CA1996BD5200C0A682 /* CoffeeTimeTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		327D195A1995202600C0EF59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D19591995202600C0EF59 /* ViewController.swift */; };
 		327D195C199520E500C0EF59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D195B199520E500C0EF59 /* AppDelegate.swift */; };
+		81BC63AA1D8C204400F82C82 /* cup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81BC63A91D8C204400F82C82 /* cup.jpg */; };
 		C97D40B51822A25A002DFE75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97D40B31822A25A002DFE75 /* Main.storyboard */; };
 		C97D40BA1822A25A002DFE75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97D40B91822A25A002DFE75 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		323FD2D21996BD5200C0A682 /* CoffeeTimeToday.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CoffeeTimeToday.storyboard; sourceTree = "<group>"; };
 		327D19591995202600C0EF59 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		327D195B199520E500C0EF59 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		81BC63A91D8C204400F82C82 /* cup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cup.jpg; sourceTree = "<group>"; };
 		C97D409E1822A25A002DFE75 /* bk2ch13p631todayExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk2ch13p631todayExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97D40A91822A25A002DFE75 /* bk2ch13p631todayExtension-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bk2ch13p631todayExtension-Info.plist"; sourceTree = "<group>"; };
 		C97D40B41822A25A002DFE75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				323FD2D01996BD5200C0A682 /* TodayViewController.swift */,
+				81BC63A91D8C204400F82C82 /* cup.jpg */,
 				322C931F19F557A500036BE0 /* cup.png */,
 				323FD2D21996BD5200C0A682 /* CoffeeTimeToday.storyboard */,
 				323FD2CF1996BD5200C0A682 /* Info.plist */,
@@ -180,9 +183,11 @@
 				TargetAttributes = {
 					323FD2C91996BD5200C0A682 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = W3LHX5RGV2;
 						LastSwiftMigration = 0800;
 					};
 					C97D409D1822A25A002DFE75 = {
+						DevelopmentTeam = W3LHX5RGV2;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -211,6 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81BC63AA1D8C204400F82C82 /* cup.jpg in Resources */,
 				322C932019F557A500036BE0 /* cup.png in Resources */,
 				323FD2D31996BD5200C0A682 /* CoffeeTimeToday.storyboard in Resources */,
 			);
@@ -277,6 +283,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -297,6 +304,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = CoffeeTimeTodayExtension/Info.plist;
@@ -386,6 +394,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch26p899localNotification/CoffeeTime-Prefix.pch";
 				INFOPLIST_FILE = "ch26p899localNotification/bk2ch13p631todayExtension-Info.plist";
@@ -404,6 +413,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch26p899localNotification/CoffeeTime-Prefix.pch";
 				INFOPLIST_FILE = "ch26p899localNotification/bk2ch13p631todayExtension-Info.plist";

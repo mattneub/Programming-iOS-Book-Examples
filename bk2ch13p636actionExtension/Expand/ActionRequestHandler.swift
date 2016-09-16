@@ -6,7 +6,7 @@ import MobileCoreServices
 class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
     
     let list : [String] = {
-        let path = Bundle.main.urlForResource("abbreviations", withExtension:"txt")!
+        let path = Bundle.main.url(forResource:"abbreviations", withExtension:"txt")!
         let s = try! String(contentsOf:path)
         return s.components(separatedBy:"\n")
         }()
@@ -22,13 +22,13 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
         let items = self.extensionContext!.inputItems
         // open the envelopes
         guard let extensionItem = items[0] as? NSExtensionItem,
-            let provider = extensionItem.attachments?[0] as? NSItemProvider
-            where provider.hasItemConformingToTypeIdentifier(self.desiredType)
+            let provider = extensionItem.attachments?[0] as? NSItemProvider,
+            provider.hasItemConformingToTypeIdentifier(self.desiredType)
             else {
                 return self.process(item:nil)
         }
         provider.loadItem(forTypeIdentifier: self.desiredType) {
-            (item:NSSecureCoding?, err:NSError!) -> () in
+            (item:NSSecureCoding?, err:Error!) -> () in
             DispatchQueue.main.async {
                 self.process(item: item as? String)
             }
@@ -43,7 +43,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
     func stuffThatEnvelope(_ item:String) -> [NSExtensionItem] {
         // everything has to get stuck back into the right sort of envelope
         let extensionItem = NSExtensionItem()
-        let itemProvider = NSItemProvider(item: item, typeIdentifier: desiredType)
+        let itemProvider = NSItemProvider(item: item as NSString, typeIdentifier: desiredType)
         extensionItem.attachments = [itemProvider]
         return [extensionItem]
     }

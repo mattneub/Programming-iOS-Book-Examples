@@ -3,6 +3,9 @@
 import UIKit
 import NotificationCenter
 
+// NB The widget is automatically used as a home screen shortcut!
+// Since our widget is interactive, no need for anything else: it just works!
+
 class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var iv: UIImageView!
     
@@ -22,7 +25,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidLoad() {
         super.viewDidLoad()
         // self.preferredContentSize = CGSize(320,113)
-        self.iv.image = UIImage(named:"cup.png")?.withRenderingMode(.alwaysTemplate)
+        self.iv.image = UIImage(named:"cup.jpg")
     }
         
     @IBAction func doButton(_ sender: Any) {
@@ -41,7 +44,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         return UIEdgeInsetsMake(0,16,0,16)
     }
     
-    func widgetPerformUpdate(completionHandler: ((NCUpdateResult) -> Void)) {
+    func widgetPerformUpdate(completionHandler: @escaping (NCUpdateResult) -> Void) {
         NSLog("performUpdate")
         // Perform any setup necessary in order to update the view.
 

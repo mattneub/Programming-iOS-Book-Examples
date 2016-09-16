@@ -98,6 +98,7 @@
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					C97D40DE1822B36D002DFE75 = {
+						DevelopmentTeam = W3LHX5RGV2;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -236,6 +237,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch26p901activityView/ch26p901activityView-Prefix.pch";
 				INFOPLIST_FILE = "ch26p901activityView/ch26p901activityView-Info.plist";
@@ -256,6 +258,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch26p901activityView/ch26p901activityView-Prefix.pch";
 				INFOPLIST_FILE = "ch26p901activityView/ch26p901activityView-Info.plist";

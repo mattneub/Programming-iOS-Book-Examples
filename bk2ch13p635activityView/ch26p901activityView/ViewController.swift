@@ -4,32 +4,33 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBAction func doButton (_ sender: Any) {
-        let url = Bundle.main.urlForResource("sunglasses", withExtension:"png")!
-        let things = ["This is a cool picture", url]
+        let url = Bundle.main.url(forResource:"sunglasses", withExtension:"png")!
+        let things : [Any] = ["This is a cool picture", url]
         // let avc = UIActivityViewController(activityItems:things, applicationActivities:nil)
         let avc = UIActivityViewController(activityItems:things as [AnyObject], applicationActivities:[MyCoolActivity(), MyElaborateActivity()])
         // new in iOS 8, completionHander replaced by completionWithItemsHandlers
         // the reason is that an extension, using this same API, can return values
+        // type is (UIActivityType?, Bool, [Any]?, Error?) -> Swift.Void
         avc.completionWithItemsHandler = {
-            (s: String?, ok: Bool, items: [AnyObject]?, err:NSError?) -> Void in
-            print("completed \(s) \(ok) \(items) \(err)")
+            (type: UIActivityType?, ok: Bool, items: [Any]?, err:Error?) -> Void in
+            print("completed \(type) \(ok) \(items) \(err)")
         }
         avc.excludedActivityTypes = [
-            UIActivityTypePostToFacebook,
-            UIActivityTypePostToTwitter,
-            UIActivityTypePostToWeibo,
-            UIActivityTypeMessage,
-            UIActivityTypeMail,
-            UIActivityTypePrint,
-            UIActivityTypeCopyToPasteboard,
-            UIActivityTypeAssignToContact,
-            UIActivityTypeSaveToCameraRoll,
-            UIActivityTypeAddToReadingList,
-            UIActivityTypePostToFlickr,
-            UIActivityTypePostToVimeo,
-            UIActivityTypePostToTencentWeibo,
-            UIActivityTypeAirDrop,
-            UIActivityTypeOpenInIBooks,
+            .postToFacebook,
+            .postToTwitter,
+            .postToWeibo,
+            .message,
+            .mail,
+            .print,
+            .copyToPasteboard,
+            .assignToContact,
+            .saveToCameraRoll,
+            .addToReadingList,
+            .postToFlickr,
+            .postToVimeo,
+            .postToTencentWeibo,
+            .airDrop,
+            .openInIBooks,
         ]
         // avc.excludedActivityTypes = nil
         self.present(avc, animated:true)
