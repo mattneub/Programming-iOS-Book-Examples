@@ -35,8 +35,7 @@ class ViewController: UIViewController {
     
     @IBAction func doAlertView2(_ sender: Any) {
         let alert = UIAlertController(title: "Enter a number:", message: nil, preferredStyle: .alert)
-        alert.addTextField {
-            (tf:UITextField) in
+        alert.addTextField { tf in
             tf.keyboardType = .numberPad // ??? not on iPad
             tf.addTarget(self, action: #selector(self.textChanged), for: .editingChanged)
         }

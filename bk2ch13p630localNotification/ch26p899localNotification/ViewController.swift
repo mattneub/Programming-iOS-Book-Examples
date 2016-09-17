@@ -144,12 +144,20 @@ class MyUserNotificationHelper : NSObject {
         content.categoryIdentifier = self.categoryIdentifier
         
         // new iOS 10 feature: attachments! AIFF, JPEG, or MPEG
-        let url = Bundle.main.url(forResource: "cup", withExtension: "jpg")!
+        let url = Bundle.main.url(forResource: "cup2", withExtension: "jpg")!
         // a failed experiment
 //        let rect = CGRect(0,0,1,1).dictionaryRepresentation
 //        let dict : [AnyHashable:Any] = [UNNotificationAttachmentOptionsThumbnailClippingRectKey:rect]
+        
         if let att = try? UNNotificationAttachment(identifier: "cup", url: url, options:nil) {
             content.attachments = [att]
+//            let url = Bundle.main.url(forResource: "test", withExtension: "aif")!
+//            if let att2 = try? UNNotificationAttachment(identifier: "test", url: url) {
+//                content.attachments = [att2] // I tried [att, att2] but there was no interface for the sound
+//                // so, despite the name, I suggest having only one attachment!
+//            } else {
+//                print("failed to make second attachment")
+//            }
         } else {
             print("failed to make attachment")
         }
@@ -224,5 +232,16 @@ class ViewController: UIViewController {
         del.notifHelper.kickThingsOff()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // pretend that we allow the user to set a reminder interval...
+        // ... and that we permit the user to have a favorite interval
+        // we can added that to our app's quick actions
+        let subtitle = "In 1 hour..."
+        let time = 60
+        let item = UIApplicationShortcutItem(type: "coffee.schedule", localizedTitle: "Coffee Reminder", localizedSubtitle: subtitle, icon: UIApplicationShortcutIcon(templateImageName: "cup"), userInfo: ["time":time])
+        UIApplication.shared.shortcutItems = [item]
+        
+    }
     
 }

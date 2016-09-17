@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>Coffee Time!</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
@@ -24,19 +24,17 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>cup</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>In 5 minutes...</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Coffee in 5 Minutes</string>
+			<string>Coffee Reminder</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>coffee.schedule</string>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeTime</string>
 			<key>UIApplicationShortcutItemUserInfo</key>
 			<dict>
 				<key>time</key>
@@ -44,12 +42,14 @@
 			</dict>
 		</dict>
 		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>cup</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>In 15 minutes...</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Coffee in 15 Minutes</string>
+			<string>Coffee Reminder</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>coffee.schedule</string>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeTime</string>
 			<key>UIApplicationShortcutItemUserInfo</key>
 			<dict>
 				<key>time</key>
@@ -57,6 +57,10 @@
 			</dict>
 		</dict>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

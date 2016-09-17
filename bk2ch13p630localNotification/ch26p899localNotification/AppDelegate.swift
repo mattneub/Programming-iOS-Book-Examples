@@ -35,9 +35,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
                     let alert = UIAlertController(title: "Coffee!", message: "Coffee reminder scheduled in \(time) minutes", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default))
                     self.window!.rootViewController?.present(alert, animated: true)
+                    completionHandler(true)
                 }
             }
         }
+        completionHandler(false) // really not sure what the point is
     }
 
 }

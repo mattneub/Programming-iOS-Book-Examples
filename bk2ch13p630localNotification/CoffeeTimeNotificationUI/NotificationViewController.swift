@@ -31,12 +31,14 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
         let req = notification.request
         let content = req.content
         let atts = content.attachments
-        if let att = atts.first {
+        if let att = atts.first, att.identifier == "cup" {
             if att.url.startAccessingSecurityScopedResource() { // system has copy!
-                self.imageView.image = UIImage(contentsOfFile:att.url.path)
+                if let data = try? Data(contentsOf: att.url) {
+                    self.imageView.image = UIImage(data: data)
+                }
                 att.url.stopAccessingSecurityScopedResource()
             }
         }
+        self.view.setNeedsLayout() // seems to help things along
     }
-
 }

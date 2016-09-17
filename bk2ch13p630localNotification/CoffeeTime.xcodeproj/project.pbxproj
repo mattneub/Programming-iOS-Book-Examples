@@ -15,7 +15,9 @@
 		81BA4B5E1D8B5412003771C1 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA4B5D1D8B5412003771C1 /* NotificationViewController.swift */; };
 		81BA4B611D8B5412003771C1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81BA4B5F1D8B5412003771C1 /* MainInterface.storyboard */; };
 		81BA4B651D8B5412003771C1 /* CoffeeTimeNotificationUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 81BA4B561D8B5412003771C1 /* CoffeeTimeNotificationUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		81BC63A81D8C1C1B00F82C82 /* cup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81BC63A71D8C1C1B00F82C82 /* cup.jpg */; };
+		81BC63A81D8C1C1B00F82C82 /* cup2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81BC63A71D8C1C1B00F82C82 /* cup2.jpg */; };
+		81C989101D8D9FD900929505 /* cup.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C9890F1D8D9FD900929505 /* cup.png */; };
+		81C989121D8DD0ED00929505 /* test.aif in Resources */ = {isa = PBXBuildFile; fileRef = 81C989111D8DD0ED00929505 /* test.aif */; };
 		C97D40B51822A25A002DFE75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97D40B31822A25A002DFE75 /* Main.storyboard */; };
 		C97D40BA1822A25A002DFE75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C97D40B91822A25A002DFE75 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -54,7 +56,9 @@
 		81BA4B5D1D8B5412003771C1 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		81BA4B601D8B5412003771C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		81BA4B621D8B5412003771C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		81BC63A71D8C1C1B00F82C82 /* cup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cup.jpg; sourceTree = "<group>"; };
+		81BC63A71D8C1C1B00F82C82 /* cup2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cup2.jpg; path = ../cup2.jpg; sourceTree = "<group>"; };
+		81C9890F1D8D9FD900929505 /* cup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cup.png; sourceTree = "<group>"; };
+		81C989111D8DD0ED00929505 /* test.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.aif; sourceTree = "<group>"; };
 		C97D409E1822A25A002DFE75 /* CoffeeTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97D40A91822A25A002DFE75 /* CoffeeTime-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoffeeTime-Info.plist"; sourceTree = "<group>"; };
 		C97D40B41822A25A002DFE75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -103,7 +107,6 @@
 		C97D40951822A259002DFE75 = {
 			isa = PBXGroup;
 			children = (
-				81BC63A71D8C1C1B00F82C82 /* cup.jpg */,
 				C97D40A71822A25A002DFE75 /* ch26p899localNotification */,
 				81BA4B5C1D8B5412003771C1 /* CoffeeTimeNotificationUI */,
 				81BA4B571D8B5412003771C1 /* Frameworks */,
@@ -123,7 +126,10 @@
 		C97D40A71822A25A002DFE75 /* ch26p899localNotification */ = {
 			isa = PBXGroup;
 			children = (
+				81BC63A71D8C1C1B00F82C82 /* cup2.jpg */,
 				327D195B199520E500C0EF59 /* AppDelegate.swift */,
+				81C9890F1D8D9FD900929505 /* cup.png */,
+				81C989111D8DD0ED00929505 /* test.aif */,
 				C97D40B31822A25A002DFE75 /* Main.storyboard */,
 				327D19591995202600C0EF59 /* ViewController.swift */,
 				C97D40B91822A25A002DFE75 /* Assets.xcassets */,
@@ -227,8 +233,10 @@
 			files = (
 				32D62FFC1BB074ED00028D0D /* LaunchScreen.storyboard in Resources */,
 				C97D40BA1822A25A002DFE75 /* Assets.xcassets in Resources */,
-				81BC63A81D8C1C1B00F82C82 /* cup.jpg in Resources */,
+				81BC63A81D8C1C1B00F82C82 /* cup2.jpg in Resources */,
 				C97D40B51822A25A002DFE75 /* Main.storyboard in Resources */,
+				81C989121D8DD0ED00929505 /* test.aif in Resources */,
+				81C989101D8D9FD900929505 /* cup.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
