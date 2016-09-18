@@ -3,6 +3,29 @@ import UIKit
 import UserNotifications
 import UserNotificationsUI
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 // Info.plist must contain these keys:
 
 // UNNotificationExtensionCategory
@@ -15,18 +38,11 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
     @IBOutlet var label: UILabel?
     @IBOutlet weak var imageView: UIImageView!
     
-    override var preferredContentSize: CGSize {
-        get {
-            return CGSize(width: 320, height: 80)
-        }
-        set {}
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.preferredContentSize = CGSize(320, 80)
     }
     
-    @objc(didReceiveNotification:)
     func didReceive(_ notification: UNNotification) {
         let req = notification.request
         let content = req.content

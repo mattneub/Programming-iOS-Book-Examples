@@ -59,7 +59,7 @@ class MyUserNotificationHelper : NSObject {
             case .denied:
                 print("denied, giving up")
             break // nothing to do, pointless to go on
-            default:
+            case .authorized:
                 self.checkCategories() // prepare create notification
             }
         }
@@ -110,8 +110,7 @@ class MyUserNotificationHelper : NSObject {
         // foreground (if not, background)
         // destructive (if not, normal appearance)
         // authenticationRequired (if so, cannot just do directly from lock screen)
-        let action1 = UNNotificationAction(identifier: "snooze",
-                                           title: "Snooze", options: [])
+        let action1 = UNNotificationAction(identifier: "snooze", title: "Snooze")
         let action2 = UNNotificationAction(identifier: "reconfigure",
                                            title: "Reconfigure", options: [.foreground])
         let action3 = UNTextInputNotificationAction(identifier: "message", title: "Message", options: [], textInputButtonTitle: "Message", textInputPlaceholder: "message")
