@@ -5,11 +5,16 @@ import MobileCoreServices
 
 class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
     
-    let list : [String] = {
+    let list : [String:String] = {
         let path = Bundle.main.url(forResource:"abbreviations", withExtension:"txt")!
         let s = try! String(contentsOf:path)
-        return s.components(separatedBy:"\n")
-        }()
+        let arr = s.components(separatedBy:"\n")
+        var result : [String:String] = [:]
+        stride(from: 0, to: arr.count, by: 2).map{($0,$0+1)}.forEach {
+            result[arr[$0.0]] = arr[$0.1]
+        }
+        return result
+    }()
     
     var extensionContext: NSExtensionContext?
     // NSObject has no magically acquired extension context, we must keep a reference
@@ -28,18 +33,17 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
                 return self.process(item:nil)
         }
         provider.loadItem(forTypeIdentifier: self.desiredType) {
-            (item:NSSecureCoding?, err:Error!) -> () in
+            item, err in
             DispatchQueue.main.async {
                 self.process(item: item as? String)
             }
         }
     }
     
-    func state(forAbbrev abbrev:String) -> String? {
-        let ix = list.index(of:abbrev.uppercased())
-        return ix != nil ? list[ix!+1] : nil
+    func state(for abbrev:String) -> String? {
+        return self.list[abbrev.uppercased()]
     }
-    
+
     func stuffThatEnvelope(_ item:String) -> [NSExtensionItem] {
         // everything has to get stuck back into the right sort of envelope
         let extensionItem = NSExtensionItem()
@@ -51,11 +55,10 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
     func process(item:String?) {
         var result : [NSExtensionItem]? = nil
         if let item = item,
-            let abbrev = self.state(forAbbrev:item) {
+            let abbrev = self.state(for:item) {
                 result = self.stuffThatEnvelope(abbrev)
         }
-        self.extensionContext?.completeRequest(
-            returningItems: result)
+        self.extensionContext?.completeRequest(returningItems: result)
         self.extensionContext = nil
     }
     

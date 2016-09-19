@@ -1,20 +1,5 @@
 
 import UIKit
-//func imageOfSize(_ size:CGSize, _ opaque:Bool = false, _ closure:() -> ()) -> UIImage {
-//    UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
-//    closure()
-//    let result = UIGraphicsGetImageFromCurrentImageContext()!
-//    UIGraphicsEndImageContext()
-//    return result
-//}
-
-func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
-    let r = UIGraphicsImageRenderer(size:size)
-    return r.image {
-        _ in closure()
-    }
-}
-
 
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
@@ -50,7 +35,8 @@ class MyCoolActivity : UIActivity {
         let largerSize = fmax(im.size.height, im.size.width)
         scale /= largerSize
         let sz = CGSize(im.size.width*scale, im.size.height*scale)
-        self.image = imageOfSize(sz) {
+        let r = UIGraphicsImageRenderer(size:sz)
+        self.image = r.image { _ in
             im.draw(in:CGRect(origin: .zero, size: sz))
         }
         super.init()

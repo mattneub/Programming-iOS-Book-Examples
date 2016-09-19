@@ -5,12 +5,13 @@ import Social
 
 class ShareViewController: SLComposeServiceViewController, SizeDelegate {
     
+    weak var config : SLComposeSheetConfigurationItem?
     var selectedText = "Large" {
         didSet {
             self.config?.value = self.selectedText
         }
     }
-    weak var config : SLComposeSheetConfigurationItem?
+
 
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
@@ -21,7 +22,7 @@ class ShareViewController: SLComposeServiceViewController, SizeDelegate {
     
         let s = self.contentText // and do something with it
         
-        self.extensionContext!.completeRequest(returningItems:[])
+        self.extensionContext?.completeRequest(returningItems:[])
         
         _ = s
     }
@@ -31,8 +32,7 @@ class ShareViewController: SLComposeServiceViewController, SizeDelegate {
         let c = SLComposeSheetConfigurationItem()!
         c.title = "Size"
         c.value = self.selectedText
-        c.tapHandler = {
-            [unowned self] in
+        c.tapHandler = { [unowned self] in
             let tvc = TableViewController(style: .grouped)
             tvc.selectedSize = self.selectedText
             tvc.delegate = self

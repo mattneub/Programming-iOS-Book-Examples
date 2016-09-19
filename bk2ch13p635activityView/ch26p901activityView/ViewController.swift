@@ -7,12 +7,12 @@ class ViewController: UIViewController {
         let url = Bundle.main.url(forResource:"sunglasses", withExtension:"png")!
         let things : [Any] = ["This is a cool picture", url]
         // let avc = UIActivityViewController(activityItems:things, applicationActivities:nil)
-        let avc = UIActivityViewController(activityItems:things as [AnyObject], applicationActivities:[MyCoolActivity(), MyElaborateActivity()])
+        let avc = UIActivityViewController(activityItems:things, applicationActivities:[MyCoolActivity(), MyElaborateActivity()])
         // new in iOS 8, completionHander replaced by completionWithItemsHandlers
         // the reason is that an extension, using this same API, can return values
         // type is (UIActivityType?, Bool, [Any]?, Error?) -> Swift.Void
         avc.completionWithItemsHandler = {
-            (type: UIActivityType?, ok: Bool, items: [Any]?, err:Error?) -> Void in
+            type, ok, items, err in
             print("completed \(type) \(ok) \(items) \(err)")
         }
         avc.excludedActivityTypes = [
@@ -43,20 +43,3 @@ class ViewController: UIViewController {
     }
 }
 
-// forget it, I can't figure this out
-/*
-
-extension ViewController : UIActivityItemSource {
-    func activityViewController(activityViewController: UIActivityViewController, subjectForActivityType activityType: String?) -> String {
-        print("here")
-        return "This is cool"
-    }
-    func activityViewControllerPlaceholderItem(activityViewController: UIActivityViewController) -> AnyObject {
-        return NSObject.init()
-    }
-    func activityViewController(activityViewController: UIActivityViewController, itemForActivityType activityType: String) -> AnyObject? {
-        return nil
-    }
-}
-
-*/

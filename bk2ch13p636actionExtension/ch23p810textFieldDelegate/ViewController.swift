@@ -37,8 +37,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let avc = UIActivityViewController(activityItems:[p], applicationActivities:nil)
 */
         
-        avc.completionWithItemsHandler = {
-            (type: UIActivityType?, ok: Bool, items: [Any]?, err:Error?) -> Void in
+        avc.completionWithItemsHandler = { type, ok, items, err in
             print("completed \(type) \(ok) \(items) \(err)")
             if ok {
                 guard let items = items, items.count > 0 else {
@@ -50,8 +49,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     else {
                         return
                 }
-                provider.loadItem(forTypeIdentifier: self.desiredType) {
-                    (item:NSSecureCoding?, err:Error!) -> () in
+                provider.loadItem(forTypeIdentifier: self.desiredType) { item, err in
                     DispatchQueue.main.async {
                         if let s = item as? String {
                             self.tf.text = s

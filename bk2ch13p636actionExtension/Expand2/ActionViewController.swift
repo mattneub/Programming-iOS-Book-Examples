@@ -6,11 +6,16 @@ class ActionViewController: UIViewController {
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var lab: UILabel!
     
-    let list : [String] = {
+    let list : [String:String] = {
         let path = Bundle.main.url(forResource:"abbreviations", withExtension:"txt")!
         let s = try! String(contentsOf:path)
-        return s.components(separatedBy:"\n")
-        }()
+        let arr = s.components(separatedBy:"\n")
+        var result : [String:String] = [:]
+        stride(from: 0, to: arr.count, by: 2).map{($0,$0+1)}.forEach {
+            result[arr[$0.0]] = arr[$0.1]
+        }
+        return result
+    }()
     
     let desiredType = kUTTypePlainText as String
     var orig : String?
@@ -36,7 +41,7 @@ class ActionViewController: UIViewController {
             DispatchQueue.main.async {
                 if let orig = item as? String {
                     self.orig = orig
-                    if let exp = self.state(forAbbrev:orig) {
+                    if let exp = self.state(for:orig) {
                         self.expansion = exp
                         self.lab.text = "Can expand to \(exp)."
                         self.doneButton.isEnabled = true
@@ -46,9 +51,8 @@ class ActionViewController: UIViewController {
         }
     }
     
-    func state(forAbbrev abbrev:String) -> String? {
-        let ix = list.index(of:abbrev.uppercased())
-        return ix != nil ? list[ix!+1] : nil
+    func state(for abbrev:String) -> String? {
+        return self.list[abbrev.uppercased()]
     }
     
     func stuffThatEnvelope(_ item:String) -> [NSExtensionItem] {
@@ -60,8 +64,7 @@ class ActionViewController: UIViewController {
     }
     
     @IBAction func cancel(_ sender: Any) {
-        self.extensionContext?.completeRequest(
-            returningItems: nil)
+        self.extensionContext?.completeRequest(returningItems: nil)
     }
     
     @IBAction func done(_ sender: Any) {

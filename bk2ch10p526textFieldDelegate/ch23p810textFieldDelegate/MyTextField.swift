@@ -28,7 +28,7 @@ class MyTextField: UITextField {
     }()
     
     func state(for abbrev:String) -> String? {
-        return list[abbrev.uppercased()]
+        return self.list[abbrev.uppercased()]
     }
     
 
