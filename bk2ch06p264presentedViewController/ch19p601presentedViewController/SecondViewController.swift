@@ -39,6 +39,8 @@ class SecondViewController : UIViewController {
         super.viewDidAppear(animated)
         // prove you've got data
         print(self.data)
+        // also explore size class situation
+        print(self.traitCollection)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

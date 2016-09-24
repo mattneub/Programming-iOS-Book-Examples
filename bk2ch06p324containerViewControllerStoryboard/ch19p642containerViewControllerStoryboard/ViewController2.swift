@@ -8,6 +8,11 @@ class ViewController2 : UIViewController {
         super.viewDidLoad()
         print("vc2 view did load")
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print(self.traitCollection)
+        
+    }
 }
 
 // ===== the rest of the example actually demonstrates something else entirely,

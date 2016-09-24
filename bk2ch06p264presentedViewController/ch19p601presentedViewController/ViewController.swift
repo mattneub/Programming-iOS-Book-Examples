@@ -5,7 +5,7 @@ import UIKit
 class ViewController : UIViewController, SecondViewControllerDelegate {
     
     let which = 2
-    let which2 = 4
+    let which2 = 3
 
     @IBAction func doPresent(_ sender: Any?) {
         
