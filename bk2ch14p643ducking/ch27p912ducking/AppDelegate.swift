@@ -18,7 +18,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(forName:
             .AVAudioSessionRouteChange, object: nil, queue: nil) {
                 n in
-                print("change route \(n.userInfo)")
+                NSLog("change route %@", n.userInfo!)
                 print("current route \(AVAudioSession.sharedInstance().currentRoute)")
         }
         // properly, if the route changes from some kind of Headphones to Built-In Speaker,
@@ -27,18 +27,14 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(forName:
             .AVAudioSessionInterruption, object: nil, queue: nil) {
                 n in
-                guard let why =
-                    n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
-                    else {return}
-                guard let type = AVAudioSessionInterruptionType(rawValue: why)
-                    else {return}
-                if type == .began {
+                let why = AVAudioSessionInterruptionType(rawValue:
+                    n.userInfo![AVAudioSessionInterruptionTypeKey] as! UInt)!
+                if why == .began {
                     print("interruption began:\n\(n.userInfo!)")
                 } else {
                     print("interruption ended:\n\(n.userInfo!)")
                     guard let opt = n.userInfo![AVAudioSessionInterruptionOptionKey] as? UInt else {return}
-                    let opts = AVAudioSessionInterruptionOptions(rawValue: opt)
-                    if opts.contains(.shouldResume) {
+                    if AVAudioSessionInterruptionOptions(rawValue:opt).contains(.shouldResume) {
                         print("should resume")
                     } else {
                         print("not should resume")
@@ -51,9 +47,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(forName:
             .AVAudioSessionSilenceSecondaryAudioHint, object: nil, queue: nil) {
                 n in
-                guard let why = n.userInfo?[AVAudioSessionSilenceSecondaryAudioHintTypeKey] as? UInt else {return}
-                guard let type = AVAudioSessionSilenceSecondaryAudioHintType(rawValue:why) else {return}
-                if type == .begin {
+                let why = AVAudioSessionSilenceSecondaryAudioHintType(rawValue: n.userInfo![AVAudioSessionSilenceSecondaryAudioHintTypeKey] as! UInt)!
+                if why == .begin {
                     print("silence hint begin:\n\(n.userInfo!)")
                 } else {
                     print("silence hint end:\n\(n.userInfo!)")

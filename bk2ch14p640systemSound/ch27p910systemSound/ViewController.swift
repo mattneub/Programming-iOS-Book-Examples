@@ -13,9 +13,7 @@ func soundFinished(_ snd:UInt32, _ c:UnsafeMutableRawPointer?) -> Void {
 
 
 class ViewController: UIViewController {
-    
-    // test on device (doesn't work in simulator)
-    
+        
     // NB AudioServicesPlaySystemSound will be deprecated! This is just to show the old way
 
     @IBAction func doButton (_ sender: Any!) {

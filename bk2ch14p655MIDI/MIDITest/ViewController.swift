@@ -11,8 +11,8 @@ class ViewController: UIViewController {
 
     @IBAction func doButton(_ sender: Any) {
         
-        let midurl = Bundle.main.urlForResource("presto", withExtension: "mid")!
-        let sndurl = Bundle.main.urlForResource("PianoBell", withExtension: "sf2")!
+        let midurl = Bundle.main.url(forResource:"presto", withExtension: "mid")!
+        let sndurl = Bundle.main.url(forResource:"PianoBell", withExtension: "sf2")!
         
         var which : Int { return 2 } // 1 or 2
         

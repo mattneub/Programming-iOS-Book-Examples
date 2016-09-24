@@ -17,11 +17,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(forName:
             .AVAudioSessionInterruption, object: nil, queue: nil) {
                 n in
-                guard let why =
-                    n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
-                    else {return}
-                guard let type = AVAudioSessionInterruptionType(rawValue: why)
-                    else {return}
+                let why = n.userInfo![AVAudioSessionInterruptionTypeKey] as! UInt
+                let type = AVAudioSessionInterruptionType(rawValue: why)!
                 if type == .ended {
                     try? AVAudioSession.sharedInstance().setActive(true)
                 }

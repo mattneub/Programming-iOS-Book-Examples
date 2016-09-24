@@ -11,9 +11,7 @@ class ViewController: UIViewController, PlayerDelegate {
     // tap the Once button to experience ducking
     
     // now tap the Forever button; we loop forever
-    // switch out to the remote controls to stop play (see p. 650)
-    
-    // feel free to experiment further; if you set audio background mode in Info.plist,
+    // if you set audio background mode in Info.plist,
     // then Forever even plays when we are in the background
 
     @IBAction func doButton (_ sender: Any!) {
@@ -37,7 +35,11 @@ class ViewController: UIViewController, PlayerDelegate {
                 return
             }
             print("ducking")
-            try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient, with: .duckOthers)
+            let sess = AVAudioSession.sharedInstance()
+            try? sess.setActive(false)
+            let opts = sess.categoryOptions.union(.duckOthers)
+            try? sess.setCategory(sess.category, mode: sess.mode, options: opts)
+            try? sess.setActive(true)
             self.player.forever = false
         }
         self.player.playFile(atPath:path)
@@ -51,11 +53,14 @@ class ViewController: UIViewController, PlayerDelegate {
         print("unducking")
         let sess = AVAudioSession.sharedInstance()
         try? sess.setActive(false)
-        try? sess.setCategory(AVAudioSessionCategoryAmbient)
+        let opts = sess.categoryOptions.symmetricDifference(.duckOthers)
+        try? sess.setCategory(sess.category, mode: sess.mode, options:opts)
         try? sess.setActive(true)
     }
     
     // ======== respond to remote controls
+    
+    /*
     
     override var canBecomeFirstResponder : Bool {
         return true
@@ -82,6 +87,8 @@ class ViewController: UIViewController, PlayerDelegate {
         }
 
     }
+ 
+ */
 
     
 }

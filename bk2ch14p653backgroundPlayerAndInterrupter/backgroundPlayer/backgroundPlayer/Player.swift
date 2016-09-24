@@ -21,11 +21,8 @@ class Player : NSObject, AVAudioPlayerDelegate {
         self.observer = NotificationCenter.default.addObserver(forName:
             .AVAudioSessionInterruption, object: nil, queue: nil) {
                 [weak self] n in
-                guard let why =
-                    n.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
-                    else {return}
-                guard let type = AVAudioSessionInterruptionType(rawValue: why)
-                    else {return}
+                let why = n.userInfo![AVAudioSessionInterruptionTypeKey] as! UInt
+                let type = AVAudioSessionInterruptionType(rawValue: why)!
                 if type == .began {
                     print("interruption began:\n\(n.userInfo!)")
                 } else {
@@ -57,7 +54,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
         
         // try this, to prove that mixable _background_ sound is not interrupted by nonmixable foreground sound
         // I find this kind of weird; you aren't allowed to interrupt any sound you want to interrupt?
-        // try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: .MixWithOthers)
+        // try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
 
         try? AVAudioSession.sharedInstance().setActive(true)
         

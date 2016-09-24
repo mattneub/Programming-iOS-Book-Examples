@@ -15,6 +15,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
 //        var rate = AVSpeechUtteranceMaximumSpeechRate - AVSpeechUtteranceMinimumSpeechRate
 //        rate = rate * 0.15 + AVSpeechUtteranceMinimumSpeechRate
 //        utter.rate = rate
+        // self.talker = AVSpeechSynthesizer()
         self.talker.delegate = self
         self.talker.speak(utter)
         

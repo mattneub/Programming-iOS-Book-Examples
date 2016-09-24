@@ -23,7 +23,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func applicationWillResignActive(_ application: UIApplication) {
         print("bp in \(#function)")
-        return; // comment out to perform timer experiment
+        //return; // comment out to perform timer experiment
         
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(fired), userInfo: nil, repeats: true)
@@ -41,19 +41,19 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         print("bp state while entering background: \(application.applicationState.rawValue)")
         return; // comment out to experiment with background app performing immediate local notification
         
-        delay(2) {
-            print("bp trying to fire local notification")
-            let ln = UILocalNotification()
-            ln.alertBody = "Testing"
-            application.presentLocalNotificationNow(ln)
-        }
+//        delay(2) {
+//            print("bp trying to fire local notification")
+//            let ln = UILocalNotification()
+//            ln.alertBody = "Testing"
+//            application.presentLocalNotificationNow(ln)
+//        }
     }
     
     // we never receive this (if we are in background at the time)
     // but the notification does appear as banner/alert and in the notification center
-    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-        print("bp got local notification reading \(notification.alertBody)")
-    }
+//    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+//        print("bp got local notification reading \(notification.alertBody)")
+//    }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         print("bp in \(#function)")
@@ -64,9 +64,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         print("bp in \(#function)")
         
-        let types : UIUserNotificationType = .alert
-        let settings = UIUserNotificationSettings(types: types, categories: nil)
-        application.registerUserNotificationSettings(settings)
+//        let types : UIUserNotificationType = .alert
+//        let settings = UIUserNotificationSettings(types: types, categories: nil)
+//        application.registerUserNotificationSettings(settings)
         
         try? AVAudioSession.sharedInstance().setActive(true)
         // new iOS 8 feature

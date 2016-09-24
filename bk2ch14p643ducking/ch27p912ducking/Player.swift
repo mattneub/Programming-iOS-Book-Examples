@@ -44,20 +44,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) { // *
         self.delegate?.soundFinished(self)
     }
-    
-    /* 
-    NB! delegate interruption methods deprecated in iOS 8
-    
-    func audioPlayerBeginInterruption(player: AVAudioPlayer!) {
-        print("audio player interrupted")
-    }
-    
-    func audioPlayerEndInterruption(player: AVAudioPlayer!, withOptions flags: Int) {
-        print("audio player ended interruption, options \(flags)")
-    }
-
-    */
-    
+        
     func stop () {
         self.player?.pause()
     }
