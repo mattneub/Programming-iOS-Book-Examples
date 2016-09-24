@@ -81,6 +81,9 @@ class ViewController: UIViewController {
             
             let arr = Array(d.values.filter{$0 < 2})
             print(arr)
+            
+            let keysSorted = d.keys.sorted()
+            print(keysSorted)
         }
         
 
