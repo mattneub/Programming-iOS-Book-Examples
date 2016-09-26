@@ -50,7 +50,7 @@ class ViewController: UIViewController {
     }
     
     func setUpChild() {
-        let url = Bundle.main.urlForResource("ElMirage", withExtension:"mp4")!
+        let url = Bundle.main.url(forResource:"ElMirage", withExtension:"mp4")!
         let asset = AVURLAsset(url:url)
         asset.loadValuesAsynchronously(forKeys:["tracks"]) {
             let status = asset.statusOfValue(forKey:"tracks", error: nil)
@@ -92,7 +92,7 @@ class ViewController: UIViewController {
             self, forKeyPath: #keyPath(AVPlayerViewController.readyForDisplay), options: .new, context: nil)
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
             guard keyPath == #keyPath(AVPlayerViewController.readyForDisplay) else {return}
             guard let vc = object as? AVPlayerViewController else {return}
             guard let ok = change?[.newKey] as? Bool else {return}

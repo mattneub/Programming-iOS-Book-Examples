@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         switch which {
         case 1:
             let av = AVPlayerViewController()
-            let url = Bundle.main.urlForResource("ElMirage", withExtension: "mp4")!
+            let url = Bundle.main.url(forResource:"ElMirage", withExtension: "mp4")!
             // let url = NSBundle.main.urlForResource("wilhelm", withExtension: "aiff")!
             let player = AVPlayer(url: url)
             av.player = player
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         case 2:
             let av = AVPlayerViewController()
             av.edgesForExtendedLayout = []
-            let url = Bundle.main.urlForResource("ElMirage", withExtension: "mp4")!
+            let url = Bundle.main.url(forResource:"ElMirage", withExtension: "mp4")!
             // let url = NSBundle.main.urlForResource("wilhelm", withExtension: "aiff")!
             let player = AVPlayer(url: url)
             av.player = player
@@ -56,12 +56,12 @@ class ViewController: UIViewController {
 
 extension ViewController : AVPlayerViewControllerDelegate {
     /*
-    func playerViewControllerShouldAutomaticallyDismissAtPicture(inPictureStart playerViewController: AVPlayerViewController) -> Bool {
+    func playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart(_ playerViewController: AVPlayerViewController) -> Bool {
         return false
     }
  */
     
-    func playerViewController(_ pvc: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler ch: (Bool) -> Void) {
+    func playerViewController(_ pvc: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler ch: @escaping (Bool) -> Void) {
         self.present(pvc, animated:true) {
             _ in
             ch(true)

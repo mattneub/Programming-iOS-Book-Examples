@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let m = Bundle.main.urlForResource("ElMirage", withExtension:"mp4")!
+        let m = Bundle.main.url(forResource:"ElMirage", withExtension:"mp4")!
         //        let p = AVPlayer(URL:m)!
         let asset = AVURLAsset(url:m)
         let item = AVPlayerItem(asset:asset)
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == #keyPath(AVPlayerLayer.readyForDisplay) {
             DispatchQueue.main.async {
                 self.finishConstructingInterface()

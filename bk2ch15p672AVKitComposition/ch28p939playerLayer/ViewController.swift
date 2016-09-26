@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let m = Bundle.main.urlForResource("ElMirage", withExtension:"mp4")!
+        let m = Bundle.main.url(forResource:"ElMirage", withExtension:"mp4")!
         let asset = AVURLAsset(url:m)
         let item = AVPlayerItem(asset:asset)
         let p = AVPlayer(playerItem:item)
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         vc.didMove(toParentViewController: self)
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == #keyPath(AVPlayer.status) {
             DispatchQueue.main.async {
                 self.finishConstructingInterface()
@@ -78,11 +78,11 @@ class ViewController: UIViewController {
         let item = p.currentItem! //
         let syncLayer = AVSynchronizedLayer(playerItem:item)
         syncLayer.frame = CGRect(10,220,300,10)
-        syncLayer.backgroundColor = UIColor.lightGray().cgColor
+        syncLayer.backgroundColor = UIColor.lightGray.cgColor
         self.view.layer.addSublayer(syncLayer)
         // give synch layer a sublayer
         let subLayer = CALayer()
-        subLayer.backgroundColor = UIColor.black().cgColor
+        subLayer.backgroundColor = UIColor.black.cgColor
         subLayer.frame = CGRect(0,0,10,10)
         syncLayer.addSublayer(subLayer)
         // animate the sublayer
@@ -131,7 +131,7 @@ class ViewController: UIViewController {
         
         
         let type3 = AVMediaTypeAudio
-        let s = Bundle.main.urlForResource("aboutTiagol", withExtension:"m4a")!
+        let s = Bundle.main.url(forResource:"aboutTiagol", withExtension:"m4a")!
         let asset = AVURLAsset(url:s)
         let arr3 = asset.tracks(withMediaType: type3)
         let track3 = arr3.last! //
