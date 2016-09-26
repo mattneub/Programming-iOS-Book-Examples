@@ -9,10 +9,11 @@ class ViewController: UIViewController {
     
     var audioPlayer : AVAudioPlayer!
     
-    let engine = AVAudioEngine()
+    var engine = AVAudioEngine()
     
     @IBAction func doButton(_ sender: Any) {
         self.engine.stop()
+        self.engine = AVAudioEngine()
         
         // simplest possible "play a file" scenario
         // construct a graph
@@ -30,15 +31,14 @@ class ViewController: UIViewController {
         player.scheduleFile(f, at:nil)
         // start the self.engine
         self.engine.prepare()
-        do {
-            try self.engine.start()
-            player.play()
-        } catch {}
+        try! self.engine.start()
+        player.play()
     }
 
     
     @IBAction func doButton2(_ sender: Any) {
         self.engine.stop()
+        self.engine = AVAudioEngine()
         
         // simplest possible "play a buffer" scenario
         let url2 = Bundle.main.url(forResource:"Hooded", withExtension: "mp3")!
@@ -55,16 +55,15 @@ class ViewController: UIViewController {
         
         self.engine.prepare()
         
-        do {
-            try self.engine.start()
-            player2.play()
-        } catch {}
+        try! self.engine.start()
+        player2.play()
     }
     
 
 
     @IBAction func doButton3(_ sender: Any) {
         self.engine.stop()
+        self.engine = AVAudioEngine()
         
         let player = AVAudioPlayerNode()
         let url = Bundle.main.url(forResource:"aboutTiagol", withExtension: "m4a")!
@@ -74,10 +73,8 @@ class ViewController: UIViewController {
         self.engine.connect(player, to: mixer, format: f.processingFormat)
         player.scheduleFile(f, at: nil) {print("done")}
         self.engine.prepare()
-        do {
-            try self.engine.start()
-            player.play()
-        } catch {return}
+        try! self.engine.start()
+        player.play()
         
         let url2 = Bundle.main.url(forResource:"Hooded", withExtension: "mp3")!
         let f2 = try! AVAudioFile(forReading: url2)
@@ -96,6 +93,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton4(_ sender: Any) {
         self.engine.stop()
+        self.engine = AVAudioEngine()
         
         // first sound
         let player = AVAudioPlayerNode()
@@ -120,10 +118,8 @@ class ViewController: UIViewController {
         self.engine.connect(effect2, to: mixer, format: f.processingFormat)
         player.scheduleFile(f, at: nil)
         self.engine.prepare()
-        do {
-            try self.engine.start()
-            player.play()
-        } catch { return }
+        try! self.engine.start()
+        player.play()
         
         // second sound; loop it this time
         let url2 = Bundle.main.url(forResource:"Hooded", withExtension: "mp3")!
@@ -148,6 +144,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton4a(_ sender: Any) {
         self.engine.stop()
+        self.engine = AVAudioEngine()
         
         // first sound
         let player = AVAudioPlayerNode()
@@ -180,10 +177,8 @@ class ViewController: UIViewController {
         self.engine.connect(effect2, to: mixer, format: f.processingFormat)
         player.scheduleFile(f, at: nil)
         self.engine.prepare()
-        do {
-            try self.engine.start()
-            player.play()
-        } catch { return }
+        try! self.engine.start()
+        player.play()
         
         print(player.volume)
     }
@@ -191,6 +186,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton5(_ sender: Any) {
         self.engine.stop()
+        self.engine = AVAudioEngine()
         
         // simple minimal file-writing example
         // not difficult, but you have to form a valid file format or you'll get an error up front
@@ -258,16 +254,14 @@ class ViewController: UIViewController {
         }
 
         self.engine.prepare()
-        do {
-            try self.engine.start()
-            player2.play()
-        } catch { print("failed to start engine")}
+        try! self.engine.start()
+        player2.play()
     }
 
     
     @IBAction func doStop(_ sender: Any) {
         self.engine.stop()
-        self.engine.reset()
+        self.engine = AVAudioEngine()
     }
     
     func playSound(_ url:URL) {

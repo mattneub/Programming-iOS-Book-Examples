@@ -101,12 +101,7 @@ class ViewController: UIViewController {
             self.req.append(buffer)
         }
         self.engine.prepare()
-        do {
-            try self.engine.start()
-        } catch {
-            print("couldn't start engine")
-            return
-        }
+        try! self.engine.start()
         // same as before
         print("starting live recognition")
         rec.recognitionTask(with: self.req) { result, err in
