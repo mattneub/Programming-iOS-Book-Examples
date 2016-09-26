@@ -35,6 +35,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // just playing around
+        let t = CMTime(seconds:2.5, preferredTimescale:600)
+        print(t)
+        
         let m = Bundle.main.url(forResource:"ElMirage", withExtension:"mp4")!
         let asset = AVURLAsset(url:m)
         let item = AVPlayerItem(asset:asset)
@@ -86,7 +90,7 @@ class ViewController: UIViewController {
         subLayer.frame = CGRect(0,0,10,10)
         syncLayer.addSublayer(subLayer)
         // animate the sublayer
-        let anim = CABasicAnimation(keyPath:"position")
+        let anim = CABasicAnimation(keyPath:#keyPath(CALayer.position))
         anim.fromValue = NSValue(cgPoint: subLayer.position)
         anim.toValue = NSValue(cgPoint: CGPoint(295,5))
         anim.isRemovedOnCompletion = false
@@ -118,16 +122,16 @@ class ViewController: UIViewController {
         let comptrack = comp.addMutableTrack(withMediaType: type,
             preferredTrackID: Int32(kCMPersistentTrackID_Invalid))
         
-        try! comptrack.insertTimeRange(CMTimeRangeMake(CMTimeMakeWithSeconds(0,600), CMTimeMakeWithSeconds(5,600)), of:track, at:CMTimeMakeWithSeconds(0,600))
-        try! comptrack.insertTimeRange(CMTimeRangeMake(CMTimeSubtract(duration, CMTimeMakeWithSeconds(5,600)), CMTimeMakeWithSeconds(5,600)), of:track, at:CMTimeMakeWithSeconds(5,600))
+        try! comptrack.insertTimeRange(CMTimeRange(start: CMTime(seconds:0, preferredTimescale:600), duration: CMTime(seconds:5, preferredTimescale:600)), of:track, at:CMTime(seconds:0, preferredTimescale:600))
+        try! comptrack.insertTimeRange(CMTimeRange(start: CMTimeSubtract(duration, CMTime(seconds:5, preferredTimescale:600)), duration: CMTime(seconds:5, preferredTimescale:600)), of:track, at:CMTime(seconds:5, preferredTimescale:600))
         
         let type2 = AVMediaTypeAudio
         let arr2 = oldAsset.tracks(withMediaType: type2)
         let track2 = arr2.last! //
         let comptrack2 = comp.addMutableTrack(withMediaType: type2, preferredTrackID:Int32(kCMPersistentTrackID_Invalid))
         
-        try! comptrack2.insertTimeRange(CMTimeRangeMake(CMTimeMakeWithSeconds(0,600), CMTimeMakeWithSeconds(5,600)), of:track2, at:CMTimeMakeWithSeconds(0,600))
-        try! comptrack2.insertTimeRange(CMTimeRangeMake(CMTimeSubtract(duration, CMTimeMakeWithSeconds(5,600)), CMTimeMakeWithSeconds(5,600)), of:track2, at:CMTimeMakeWithSeconds(5,600))
+        try! comptrack2.insertTimeRange(CMTimeRange(start: CMTime(seconds:0, preferredTimescale:600), duration: CMTime(seconds:5, preferredTimescale:600)), of:track2, at:CMTime(seconds:0, preferredTimescale:600))
+        try! comptrack2.insertTimeRange(CMTimeRange(start: CMTimeSubtract(duration, CMTime(seconds:5, preferredTimescale:600)), duration: CMTime(seconds:5, preferredTimescale:600)), of:track2, at:CMTime(seconds:5, preferredTimescale:600))
         
         
         let type3 = AVMediaTypeAudio
@@ -137,11 +141,11 @@ class ViewController: UIViewController {
         let track3 = arr3.last! //
         
         let comptrack3 = comp.addMutableTrack(withMediaType: type3, preferredTrackID:Int32(kCMPersistentTrackID_Invalid))
-        try! comptrack3.insertTimeRange(CMTimeRangeMake(CMTimeMakeWithSeconds(0,600), CMTimeMakeWithSeconds(10,600)), of:track3, at:CMTimeMakeWithSeconds(0,600))
+        try! comptrack3.insertTimeRange(CMTimeRange(start: CMTime(seconds:0, preferredTimescale:600), duration: CMTime(seconds:10, preferredTimescale:600)), of:track3, at:CMTime(seconds:0, preferredTimescale:600))
         
         let params = AVMutableAudioMixInputParameters(track:comptrack3)
-        params.setVolume(1, at:CMTimeMakeWithSeconds(0,600))
-        params.setVolumeRamp(fromStartVolume: 1, toEndVolume:0, timeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(7,600), CMTimeMakeWithSeconds(3,600)))
+        params.setVolume(1, at:CMTime(seconds:0, preferredTimescale:600))
+        params.setVolumeRamp(fromStartVolume: 1, toEndVolume:0, timeRange:CMTimeRange(start: CMTime(seconds:7, preferredTimescale:600), duration: CMTime(seconds:3, preferredTimescale:600)))
         let mix = AVMutableAudioMix()
         mix.inputParameters = [params]
         

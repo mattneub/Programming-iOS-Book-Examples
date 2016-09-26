@@ -69,8 +69,7 @@ class ViewController: UIViewController {
     }
     
     func setUpChildSimple() {
-        let url = Bundle.main.url(
-            forResource:"ElMirage", withExtension:"mp4")!
+        let url = Bundle.main.url(forResource:"ElMirage", withExtension:"mp4")!
         let player = AVPlayer(url:url)
         let av = AVPlayerViewController()
         av.player = player
@@ -136,6 +135,10 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 print("finishing")
                 vc.view.isHidden = false // hmm, maybe I should be animating the alpha instead
+                // just playing, pay no attention
+                let player = vc.player!
+                let item = player.currentItem!
+                print(CMTimebaseGetRate(item.timebase!))
             }
     }
     
