@@ -174,18 +174,23 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         // with delegate methods, on the other hand, dismissing is up to you
     }
     
-    func videoEditorController(_ editor: UIVideoEditorController, didSaveEditedVideoToPath editedVideoPath: String) {
-        print("saved to \(editedVideoPath)")
-        if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(editedVideoPath) {
+    func videoEditorController(_ editor: UIVideoEditorController, didSaveEditedVideoToPath path: String) {
+        print("saved to \(path)")
+        if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path) {
             print("saving to photos album")
-            UISaveVideoAtPathToSavedPhotosAlbum(editedVideoPath, self, #selector(video(_:savedWithError:ci:)), nil)
+            UISaveVideoAtPathToSavedPhotosAlbum(path, self, #selector(savedVideo), nil)
         } else {
             print("can't save to photos album, need to think of something else")
         }
     }
     
-    func video(_ video:NSString!, savedWithError error:NSError!, ci:UnsafeMutableRawPointer) {
-        print("error:\(error)")
+    func savedVideo(at path:String, withError error:Error?, ci:UnsafeMutableRawPointer) {
+        print(path)
+        if let error = error {
+            print("error: \(error)")
+        } else {
+            print("success!")
+        }
         /*
         Important to check for error, because user can deny access
         to Photos library

@@ -36,27 +36,47 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var picButton: UIButton!
     
+    let which = 2
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let m = Bundle.main.url(forResource:"ElMirage", withExtension:"mp4")!
-        //        let p = AVPlayer(URL:m)!
-        let asset = AVURLAsset(url:m)
-        let item = AVPlayerItem(asset:asset)
-        let p = AVPlayer(playerItem:item)
-        self.player = p // might need a reference later
-        let lay = AVPlayerLayer(player:p)
-        lay.frame = CGRect(10,10,300,200)
-        self.playerLayer = lay
+        switch which {
+        case 1:
+            let m = Bundle.main.url(forResource:"ElMirage", withExtension:"mp4")!
+            //        let p = AVPlayer(URL:m)!
+            let asset = AVURLAsset(url:m)
+            let item = AVPlayerItem(asset:asset)
+            let p = AVPlayer(playerItem:item)
+            self.player = p // might need a reference later
+            let lay = AVPlayerLayer(player:p)
+            lay.frame = CGRect(10,10,300,200)
+            self.playerLayer = lay // might need a reference later
+            // self.view.layer.addSublayer(lay)
+        case 2:
+            let m = Bundle.main.url(forResource:"ElMirage", withExtension:"mp4")!
+            let asset = AVURLAsset(url:m)
+            let item = AVPlayerItem(asset:asset)
+            let p = AVPlayer() // *
+            self.player = p
+            let lay = AVPlayerLayer(player:p)
+            lay.frame = CGRect(10,10,300,200)
+            self.playerLayer = lay
+            p.replaceCurrentItem(with: item) // *
+            // self.view.layer.addSublayer(lay)
+        default:break
+        }
+        
+
         
         if AVPictureInPictureController.isPictureInPictureSupported() {
-            let pic = AVPictureInPictureController(playerLayer: lay)
+            let pic = AVPictureInPictureController(playerLayer: self.playerLayer)
             self.pic = pic
         } else {
             self.picButton.isHidden = true
         }
         
-        lay.addObserver(self, forKeyPath:#keyPath(AVPlayerLayer.readyForDisplay), context:nil)
+        self.playerLayer.addObserver(self, forKeyPath:#keyPath(AVPlayerLayer.readyForDisplay), context:nil)
         
     }
     
@@ -90,17 +110,13 @@ class ViewController: UIViewController {
     
     @IBAction func doButton (_ sender: Any!) {
         let rate = self.player.rate
-        if rate < 0.01 {
-            self.player.rate = 1
-        } else {
-            self.player.rate = 0
-        }
+        self.player.rate = rate < 0.01 ? 1 : 0
     }
 
     
     @IBAction func restart (_ sender: Any!) {
         let item = self.player.currentItem! //
-        item.seek(to:CMTimeMake(0, 1))
+        item.seek(to:CMTime(seconds:0, preferredTimescale:600))
     }
 
     @IBAction func doPicInPic(_ sender: Any) {
@@ -110,4 +126,13 @@ class ViewController: UIViewController {
     }
 
     
+}
+
+extension ViewController : AVPictureInPictureControllerDelegate {
+    
+    // this is the nuttiest bit of renamification!
+    func picture(_ pictureInPictureController: AVPictureInPictureController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @ escaping (Bool) -> Void) {
+        
+    }
+
 }
