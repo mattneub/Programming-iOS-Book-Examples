@@ -74,8 +74,7 @@ extension ViewController : AVPlayerViewControllerDelegate {
     
     
     func playerViewController(_ pvc: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler ch: @escaping (Bool) -> Void) {
-        self.present(pvc, animated:true) {
-            _ in
+        self.present(pvc, animated:true) { _ in
             ch(true)
         }
     }

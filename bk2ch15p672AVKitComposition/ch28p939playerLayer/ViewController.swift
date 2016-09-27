@@ -110,10 +110,10 @@ class ViewController: UIViewController {
         let p = vc.player! //
         p.pause()
         
-        let oldAsset = p.currentItem!.asset //
+        let asset1 = p.currentItem!.asset //
         
         let type = AVMediaTypeVideo
-        let arr = oldAsset.tracks(withMediaType: type)
+        let arr = asset1.tracks(withMediaType: type)
         let track = arr.last! //
         
         let duration : CMTime = track.timeRange.duration
@@ -126,7 +126,7 @@ class ViewController: UIViewController {
         try! comptrack.insertTimeRange(CMTimeRange(start: CMTimeSubtract(duration, CMTime(seconds:5, preferredTimescale:600)), duration: CMTime(seconds:5, preferredTimescale:600)), of:track, at:CMTime(seconds:5, preferredTimescale:600))
         
         let type2 = AVMediaTypeAudio
-        let arr2 = oldAsset.tracks(withMediaType: type2)
+        let arr2 = asset1.tracks(withMediaType: type2)
         let track2 = arr2.last! //
         let comptrack2 = comp.addMutableTrack(withMediaType: type2, preferredTrackID:Int32(kCMPersistentTrackID_Invalid))
         
@@ -136,8 +136,8 @@ class ViewController: UIViewController {
         
         let type3 = AVMediaTypeAudio
         let s = Bundle.main.url(forResource:"aboutTiagol", withExtension:"m4a")!
-        let asset = AVURLAsset(url:s)
-        let arr3 = asset.tracks(withMediaType: type3)
+        let asset2 = AVURLAsset(url:s)
+        let arr3 = asset2.tracks(withMediaType: type3)
         let track3 = arr3.last! //
         
         let comptrack3 = comp.addMutableTrack(withMediaType: type3, preferredTrackID:Int32(kCMPersistentTrackID_Invalid))
