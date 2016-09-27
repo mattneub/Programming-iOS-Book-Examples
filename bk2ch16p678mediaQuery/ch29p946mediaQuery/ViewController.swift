@@ -57,19 +57,19 @@ class ViewController: UIViewController {
         let r = UIGraphicsImageRenderer(size:sz)
         let im1 = r.image {
             _ in
-            UIColor.black().setFill()
+            UIColor.black.setFill()
             UIBezierPath(ovalIn:
                 CGRect(0,0,sz.height,sz.height)).fill()
         }
         let im2 = r.image {
             _ in
-            UIColor.red().setFill()
+            UIColor.red.setFill()
             UIBezierPath(ovalIn:
                 CGRect(0,0,sz.height,sz.height)).fill()
         }
         let im3 = r.image {
             _ in
-            UIColor.orange().setFill()
+            UIColor.orange.setFill()
             UIBezierPath(ovalIn:
                 CGRect(0,0,sz.height,sz.height)).fill()
         }
@@ -224,7 +224,7 @@ class ViewController: UIViewController {
         }
         self.label.text = ""
         let player = MPMusicPlayerController.applicationMusicPlayer()
-        guard n.object === player else { return } // just playing safe
+        guard (n.object as AnyObject) === player else { return } // just playing safe
         guard let title = player.nowPlayingItem?.title else {return}
         let ix = player.indexOfNowPlayingItem
         guard ix != NSNotFound else {return}
@@ -233,7 +233,7 @@ class ViewController: UIViewController {
     
     func timerFired(_: Any) {
         let player = MPMusicPlayerController.applicationMusicPlayer()
-        guard let item = player.nowPlayingItem where player.playbackState != .stopped else {
+        guard let item = player.nowPlayingItem, player.playbackState != .stopped else {
             self.prog.isHidden = true
             return
         } //

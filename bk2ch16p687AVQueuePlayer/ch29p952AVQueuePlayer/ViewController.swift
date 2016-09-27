@@ -56,7 +56,7 @@ class ViewController: UIViewController {
     var avplayer : AVPlayer!
     var qp : AVQueuePlayer!
     var items = [AVPlayerItem]()
-    var ob : AnyObject!
+    var ob : Any!
     @IBOutlet var prog : UIProgressView!
     @IBOutlet var label : UILabel!
     
@@ -185,7 +185,7 @@ class ViewController: UIViewController {
         
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == #keyPath(AVQueuePlayer.currentItem) {
             self.changed()
         }
@@ -243,37 +243,37 @@ class ViewController: UIViewController {
     
     // ======== respond to remote controls
     
-    override func canBecomeFirstResponder() -> Bool {
-        return true
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let scc = MPRemoteCommandCenter.shared()
+        scc.togglePlayPauseCommand.addTarget(self, action: #selector(doPlayPause))
+        scc.playCommand.addTarget(self, action:#selector(doPlay))
+        scc.pauseCommand.addTarget(self, action:#selector(doPause))
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.becomeFirstResponder()
-        UIApplication.shared.beginReceivingRemoteControlEvents()
+
+    func doPlayPause(_ event:MPRemoteCommandEvent) {
+        print("playpause")
+        let p = self.player.player!
+        if p.isPlaying { p.pause() } else { p.play() }
     }
-    
-    override func remoteControlReceived(with event: UIEvent?) {
-        let rc = event!.subtype
-        print("received remote control \(rc.rawValue)")
-        
-        let p = self.curplayer!
-        switch rc {
-        case .remoteControlTogglePlayPause:
-            if p.playing { p.pause() } else { p.doPlay() }
-        case .remoteControlPlay:
-            p.doPlay()
-        case .remoteControlPause:
-            p.pause()
-        case .remoteControlNextTrack:
-            if let p = p as? AVQueuePlayer {
-                p.advanceToNextItem()
-            }
-        default:break
-        }
-        
+    func doPlay(_ event:MPRemoteCommandEvent) {
+        print("play")
+        let p = self.player.player!
+        p.play()
     }
-    
-    
-    
+    func doPause(_ event:MPRemoteCommandEvent) {
+        print("pause")
+        let p = self.player.player!
+        p.pause()
+    }
+
+    deinit {
+        let scc = MPRemoteCommandCenter.shared()
+        scc.togglePlayPauseCommand.removeTarget(self)
+        scc.playCommand.removeTarget(self)
+        scc.pauseCommand.removeTarget(self)
+    }
+
+
+
 }
