@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         scc.togglePlayPauseCommand.addTarget(self, action: #selector(doPlayPause))
         scc.playCommand.addTarget(self, action:#selector(doPlay))
         scc.pauseCommand.addTarget(self, action:#selector(doPause))
-        scc.changePlaybackRateCommand.isEnabled = false
+        scc.changePlaybackPositionCommand.isEnabled = false
     }
     
     func doPlayPause(_ event:MPRemoteCommandEvent) {
