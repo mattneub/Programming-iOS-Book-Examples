@@ -14,22 +14,34 @@ class ViewController: UIViewController {
         scc.togglePlayPauseCommand.addTarget(self, action: #selector(doPlayPause))
         scc.playCommand.addTarget(self, action:#selector(doPlay))
         scc.pauseCommand.addTarget(self, action:#selector(doPause))
+        scc.changePlaybackRateCommand.isEnabled = false
     }
     
     func doPlayPause(_ event:MPRemoteCommandEvent) {
         print("playpause")
         let p = self.player.player!
-        if p.isPlaying { p.pause() } else { p.play() }
+        if p.isPlaying { self.doPause(event) } else { self.doPlay(event) }
     }
     func doPlay(_ event:MPRemoteCommandEvent) {
         print("play")
         let p = self.player.player!
         p.play()
+        let mpic = MPNowPlayingInfoCenter.default()
+        if var d = mpic.nowPlayingInfo {
+            d[MPNowPlayingInfoPropertyPlaybackRate] = 1
+            mpic.nowPlayingInfo = d
+        }
     }
     func doPause(_ event:MPRemoteCommandEvent) {
         print("pause")
         let p = self.player.player!
         p.pause()
+        let mpic = MPNowPlayingInfoCenter.default()
+        if var d = mpic.nowPlayingInfo {
+            d[MPNowPlayingInfoPropertyPlaybackRate] = 0
+            d[MPNowPlayingInfoPropertyElapsedPlaybackTime] = p.currentTime // *
+            mpic.nowPlayingInfo = d
+        }
     }
     
     deinit {
@@ -50,7 +62,10 @@ class ViewController: UIViewController {
         let mpic = MPNowPlayingInfoCenter.default()
         mpic.nowPlayingInfo = [
             MPMediaItemPropertyArtist: "Matt Neuburg",
-            MPMediaItemPropertyTitle: "About Tiagol"
+            MPMediaItemPropertyTitle: "About Tiagol",
+            MPMediaItemPropertyPlaybackDuration: self.player.player.duration,
+            MPNowPlayingInfoPropertyElapsedPlaybackTime: 0,
+            MPNowPlayingInfoPropertyPlaybackRate: 1
         ]
     }
 

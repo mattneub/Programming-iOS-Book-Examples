@@ -23,7 +23,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func applicationWillResignActive(_ application: UIApplication) {
         print("bp in \(#function)")
-        //return; // comment out to perform timer experiment
+        return; // comment out to perform timer experiment
         
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(fired), userInfo: nil, repeats: true)
