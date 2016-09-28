@@ -6,6 +6,12 @@ import AVFoundation
 import CoreMedia
 import AVKit
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)
@@ -30,7 +36,7 @@ extension CGVector {
 
 
 protocol PlayerPauser {
-    var playing : Bool {get}
+    var isPlaying : Bool {get}
     func doPlay()
     func pause()
 }
@@ -42,11 +48,31 @@ extension AVAudioPlayer : PlayerPauser {
 }
 
 extension AVPlayer : PlayerPauser {
-    var playing : Bool {
+    var isPlaying : Bool {
         return self.rate > 0.1
     }
     func doPlay() {
         self.play()
+    }
+}
+
+func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
+    let status = MPMediaLibrary.authorizationStatus()
+    switch status {
+    case .authorized:
+        f?()
+    case .notDetermined:
+        MPMediaLibrary.requestAuthorization() { status in
+            if status == .authorized {
+                f?()
+            }
+        }
+    case .restricted:
+        // do nothing
+        break
+    case .denied:
+        // do nothing, or beg the user to authorize us in Settings
+        break
     }
 }
 
@@ -79,64 +105,84 @@ class ViewController: UIViewController {
         return query.items?[0].assetURL
     }
     
-    @IBAction func doPlayOneSongAVAudioPlayer (_ sender: Any!) {
+    func reset() {
         self.curplayer?.pause()
-        if let url = self.oneSong() {
-            self.player.playFile(at:url)
-            self.curplayer = self.player.player
+        self.curplayer = nil
+        if self.childViewControllers.count > 0 {
+            let vc = self.childViewControllers[0]
+            vc.willMove(toParentViewController: nil)
+            vc.removeFromParentViewController()
+        }
+        let scc = MPRemoteCommandCenter.shared()
+        scc.togglePlayPauseCommand.removeTarget(nil)
+        scc.playCommand.removeTarget(nil)
+        scc.pauseCommand.removeTarget(nil)
+        scc.nextTrackCommand.removeTarget(nil)
+        // let scc = MPRemoteCommandCenter.shared()
+        scc.togglePlayPauseCommand.addTarget(self, action: #selector(doPlayPause))
+        scc.playCommand.addTarget(self, action:#selector(doPlay))
+        scc.pauseCommand.addTarget(self, action:#selector(doPause))
+        scc.nextTrackCommand.addTarget(self, action:#selector(doNextTrack))
+        scc.changePlaybackPositionCommand.addTarget(self, action:#selector(doNextTrack))
+        delay(1) { // we somehow get disabled after removing our player v.c.
+            scc.togglePlayPauseCommand.isEnabled = true
+            scc.playCommand.isEnabled = true
+            scc.pauseCommand.isEnabled = true
+            scc.nextTrackCommand.isEnabled = true
+        }
+    }
+    
+    @IBAction func doPlayOneSongAVAudioPlayer (_ sender: Any!) {
+        self.reset()
+        checkForMusicLibraryAccess {
+            if let url = self.oneSong() {
+                self.player.playFile(at:url)
+                self.curplayer = self.player.player
+//                MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+//                    MPMediaItemPropertyTitle : "Some Song",
+//                    MPMediaItemPropertyPlaybackDuration : self.player.player.duration,
+//                    MPNowPlayingInfoPropertyElapsedPlaybackTime : 0,
+//                    MPNowPlayingInfoPropertyPlaybackRate : 1
+//                ]
+
+            }
         }
     }
     
     @IBAction func doPlayOneSongAVPlayer (_ sender: Any!) {
-        self.curplayer?.pause()
-        if let url = self.oneSong() {
-            self.avplayer = AVPlayer(url:url)
-            self.avplayer.play()
-            self.curplayer = self.avplayer
+        self.reset()
+        checkForMusicLibraryAccess {
+            self.curplayer?.pause()
+            if let url = self.oneSong() {
+                self.avplayer = AVPlayer(url:url)
+                self.avplayer.play()
+                self.curplayer = self.avplayer
+            }
         }
     }
     
     @IBAction func doPlayOneSongAVKit(_ sender: Any) {
-        self.curplayer?.pause()
-        guard let url = self.oneSong() else {return}
-        let p = AVPlayer(url:url)
-        let vc = AVPlayerViewController()
-        vc.player = p
-        vc.view.frame = CGRect(20,-5,250,80) // no smaller height or we get constraint issues
-        vc.view.backgroundColor = .clear
-        // cover the black QuickTime background, heh heh
-        let v = UIView()
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.backgroundColor = .white
-        vc.contentOverlayView!.addSubview(v)
-        let c : [NSLayoutConstraint] = [
-            v.leadingAnchor.constraint(equalTo:v.superview!.leadingAnchor),
-            v.trailingAnchor.constraint(equalTo:v.superview!.trailingAnchor),
-            v.topAnchor.constraint(equalTo:v.superview!.topAnchor),
-            v.bottomAnchor.constraint(equalTo:v.superview!.bottomAnchor),
-        ]
-        NSLayoutConstraint.activate(c)
-        let v2 = UIView()
-        v2.translatesAutoresizingMaskIntoConstraints = false
-        v2.backgroundColor = .black
-        vc.contentOverlayView!.addSubview(v2)
-        let c2 : [NSLayoutConstraint] = [
-            v2.leadingAnchor.constraint(equalTo:v2.superview!.leadingAnchor),
-            v2.trailingAnchor.constraint(equalTo:v2.superview!.trailingAnchor),
-            v2.heightAnchor.constraint(equalToConstant:44),
-            v2.bottomAnchor.constraint(equalTo:v2.superview!.bottomAnchor),
-        ]
-        NSLayoutConstraint.activate(c2)
-        
-        self.addChildViewController(vc)
-        self.view.addSubview(vc.view)
-        vc.didMove(toParentViewController: self)
-        p.play()
-        self.curplayer = p
+        self.reset()
+        checkForMusicLibraryAccess {
+            self.curplayer?.pause()
+            guard let url = self.oneSong() else {return}
+            let p = AVPlayer(url:url)
+            let vc = AVPlayerViewController()
+            // vc.updatesNowPlayingInfoCenter = false
+            vc.player = p
+            self.addChildViewController(vc)
+            vc.didMove(toParentViewController: self)
+            p.play()
+            self.curplayer = p
+        }
     }
     
     @IBAction func doPlayShortSongs (_ sender: Any!) {
-        self.curplayer?.pause()
+        self.reset()
+        checkForMusicLibraryAccess(andThen: self.reallyPlayShortSongs)
+    }
+    
+    func reallyPlayShortSongs() {
         let query = MPMediaQuery.songs()
         // always need to filter out songs that aren't present
         let isPresent = MPMediaPropertyPredicate(value:false,
@@ -174,14 +220,14 @@ class ViewController: UIViewController {
         self.qp = AVQueuePlayer(items:Array(self.items.prefix(upTo:seed)))
         self.items = Array(self.items.suffix(from:seed))
         
-        // use .Initial option so that we get an observation for the first item
+        // use .initial option so that we get an observation for the first item
         self.qp.addObserver(self, forKeyPath:#keyPath(AVQueuePlayer.currentItem), options:.initial, context:nil)
         self.qp.play()
         self.curplayer = self.qp
         
         UIApplication.shared.beginReceivingRemoteControlEvents()
         
-        self.ob = self.qp.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(0.5, 600), queue: nil, using: self.timerFired)
+        self.ob = self.qp.addPeriodicTimeObserver(forInterval: CMTime(seconds:0.5, preferredTimescale:600), queue: nil, using: self.timerFired)
         
     }
     
@@ -199,10 +245,10 @@ class ViewController: UIViewController {
             withKey:AVMetadataCommonKeyTitle,
             keySpace:AVMetadataKeySpaceCommon)
         let met = arr[0]
-        let valueKey = #keyPath(AVMetadataItem.value)
-        met.loadValuesAsynchronously(forKeys:[valueKey]) {
+        let value = #keyPath(AVMetadataItem.value)
+        met.loadValuesAsynchronously(forKeys:[value]) {
             // should always check for successful load of value
-            if met.statusOfValue(forKey:valueKey, error: nil) == .loaded {
+            if met.statusOfValue(forKey:value, error: nil) == .loaded {
                 // can't be sure what thread we're on ...
                 // ...or whether we'll be called back synchronously or asynchronously
                 // so I like to step out to the main thread just in case
@@ -223,7 +269,8 @@ class ViewController: UIViewController {
     func timerFired(time:CMTime) {
         if let item = self.qp.currentItem {
             let asset = item.asset
-            if asset.statusOfValue(forKey:#keyPath(AVAsset.duration), error: nil) == .loaded {
+            let dur = #keyPath(AVAsset.duration)
+            if asset.statusOfValue(forKey:dur, error: nil) == .loaded {
                 let dur = asset.duration
                 self.prog.setProgress(Float(time.seconds/dur.seconds), animated: false)
                 self.prog.isHidden = false
@@ -242,36 +289,44 @@ class ViewController: UIViewController {
     
     
     // ======== respond to remote controls
+    // but the AVPlayerViewController of itself has full r.c. support!
+    // that is a huge advantage
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let scc = MPRemoteCommandCenter.shared()
-        scc.togglePlayPauseCommand.addTarget(self, action: #selector(doPlayPause))
-        scc.playCommand.addTarget(self, action:#selector(doPlay))
-        scc.pauseCommand.addTarget(self, action:#selector(doPause))
     }
 
-    func doPlayPause(_ event:MPRemoteCommandEvent) {
+    func doPlayPause(_ event:MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
         print("playpause")
-        let p = self.player.player!
-        if p.isPlaying { p.pause() } else { p.play() }
+        if let p = self.curplayer {
+            if p.isPlaying { p.pause() } else { p.doPlay() }
+            return .success
+        }
+        return .noSuchContent
     }
-    func doPlay(_ event:MPRemoteCommandEvent) {
+    func doPlay(_ event:MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
         print("play")
-        let p = self.player.player!
-        p.play()
+        if let p = self.curplayer {
+            p.doPlay()
+            return .success
+        }
+        return .noSuchContent
     }
-    func doPause(_ event:MPRemoteCommandEvent) {
+    func doPause(_ event:MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
         print("pause")
-        let p = self.player.player!
-        p.pause()
+        if let p = self.curplayer {
+            p.pause()
+            return .success
+        }
+        return .noSuchContent
     }
-
-    deinit {
-        let scc = MPRemoteCommandCenter.shared()
-        scc.togglePlayPauseCommand.removeTarget(self)
-        scc.playCommand.removeTarget(self)
-        scc.pauseCommand.removeTarget(self)
+    func doNextTrack(_ event:MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        print("next")
+        if let p = self.curplayer as? AVQueuePlayer {
+            p.advanceToNextItem()
+            return .success
+        }
+        return .noSuchContent
     }
 
 

@@ -3,16 +3,8 @@
 import UIKit
 import MediaPlayer
 
-func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
-    let r = UIGraphicsImageRenderer(size:size)
-    return r.image {
-        _ in closure()
-    }
-}
-
-
 /*
-NB New in iOS 7, MPMediaItem properties can be access directly
+NB New in iOS 7, MPMediaItem properties can be accessed directly
 But I never got the memo, so I'm behind on this change!
 Thus we can eliminate the use of valueForProperty throughout
 */
@@ -38,7 +30,27 @@ extension CGVector {
     }
 }
 
+// general solution to the access problem
 
+func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
+    let status = MPMediaLibrary.authorizationStatus()
+    switch status {
+    case .authorized:
+        f?()
+    case .notDetermined:
+        MPMediaLibrary.requestAuthorization() { status in
+            if status == .authorized {
+                f?()
+            }
+        }
+    case .restricted:
+        // do nothing
+        break
+    case .denied:
+        // do nothing, or beg the user to authorize us in Settings
+        break
+    }
+}
 
 class ViewController: UIViewController {
     
@@ -50,7 +62,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         
         let sz = CGSize(20,20)
@@ -74,24 +85,6 @@ class ViewController: UIViewController {
                 CGRect(0,0,sz.height,sz.height)).fill()
         }
 
-        
-        
-//        UIGraphicsBeginImageContextWithOptions(
-//            CGSize(sz.height,sz.height), false, 0)
-//        UIColor.black().setFill()
-//        UIBezierPath(ovalIn:
-//            CGRect(0,0,sz.height,sz.height)).fill()
-//        let im1 = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIColor.red().setFill()
-//        UIBezierPath(ovalIn:
-//            CGRect(0,0,sz.height,sz.height)).fill()
-//        let im2 = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIColor.orange().setFill()
-//        UIBezierPath(ovalIn:
-//            CGRect(0,0,sz.height,sz.height)).fill()
-//        let im3 = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIGraphicsEndImageContext()
-        
         self.vv.setMinimumVolumeSliderImage(
             im1.resizableImage(withCapInsets:UIEdgeInsetsMake(9,9,9,9),
                 resizingMode:.stretch),
@@ -106,8 +99,9 @@ class ViewController: UIViewController {
                 resizingMode:.stretch)
         
         let sz2 = CGSize(40,40)
-        let thumb = imageOfSize(sz2) {
-            UIImage(named:"SmileyRound.png")!.draw(in:CGRect(0,0,sz2.width,sz2.height))
+        let r2 = UIGraphicsImageRenderer(size:sz2)
+        let thumb = r2.image {_ in
+            UIImage(named:"SmileyRound.png")!.draw(in:CGRect(origin:.zero,size:sz2))
         }
         self.vv.setVolumeThumbImage(thumb, for:.normal)
         
@@ -129,93 +123,107 @@ class ViewController: UIViewController {
         print("wireless active change \(n.userInfo)")
     }
     
+    func dummy() {
+        
+    }
+    
     @IBAction func doAllAlbumTitles (_ sender: Any!) {
-        do {
-            let query = MPMediaQuery() // just making sure this is legal
-            let result = query.items
-            _ = result
-        }
-        let query = MPMediaQuery.albums()
-        guard let result = query.collections else {return} //
-        // prove we've performed the query, by logging the album titles
-        for album in result {
-            print(album.representativeItem!.albumTitle!) //
-        }
-        return; // testing
-        // cloud item values are 0 and 1, meaning false and true
-        for album in result {
-            for song in album.items { //
-                print("\(song.isCloudItem) \(song.assetURL) \(song.title)")
+//        checkForMusicLibraryAccess()
+//        checkForMusicLibraryAccess(andThen:self.dummy)
+        checkForMusicLibraryAccess {
+            do {
+                let query = MPMediaQuery() // just making sure this is legal
+                let result = query.items
+                _ = result
+            }
+            let query = MPMediaQuery.albums()
+            guard let result = query.collections else {return} //
+            // prove we've performed the query, by logging the album titles
+            for album in result {
+                print(album.representativeItem!.albumTitle!) //
+            }
+            return; // testing
+            // cloud item values are 0 and 1, meaning false and true
+            for album in result {
+                for song in album.items { //
+                    print("\(song.isCloudItem) \(song.assetURL) \(song.title)")
+                }
             }
         }
     }
     
     @IBAction func doBeethovenAlbumTitles (_ sender: Any!) {
-        let query = MPMediaQuery.albums()
-        let hasBeethoven = MPMediaPropertyPredicate(value:"Beethoven",
-            forProperty:MPMediaItemPropertyAlbumTitle,
-            comparisonType:.contains)
-        query.addFilterPredicate(hasBeethoven)
-        guard let result = query.collections else {return} //
-        for album in result {
-            print(album.representativeItem!.albumTitle!) //
+        checkForMusicLibraryAccess {
+            let query = MPMediaQuery.albums()
+            let hasBeethoven = MPMediaPropertyPredicate(value:"Beethoven",
+                forProperty:MPMediaItemPropertyAlbumTitle,
+                comparisonType:.contains)
+            query.addFilterPredicate(hasBeethoven)
+            guard let result = query.collections else {return} //
+            for album in result {
+                print(album.representativeItem!.albumTitle!) //
+            }
         }
     }
     
     @IBAction func doSonataAlbumsOnDevice (_ sender: Any!) {
-        let query = MPMediaQuery.albums()
-        let hasSonata = MPMediaPropertyPredicate(value:"Sonata",
-            forProperty:MPMediaItemPropertyTitle,
-            comparisonType:.contains)
-        query.addFilterPredicate(hasSonata)
-        let isPresent = MPMediaPropertyPredicate(value:false,
-            forProperty:MPMediaItemPropertyIsCloudItem, // string name of property incorrect in header
-            comparisonType:.equalTo)
-        query.addFilterPredicate(isPresent)
-        
-        guard let result = query.collections else {return} //
-        for album in result {
-            print(album.representativeItem!.albumTitle!)
-        }
-        // and here are the songs in the first of those albums
-        guard result.count > 0 else {print("No sonatas"); return}
-        let album = result[0]
-        for song in album.items { //
-            print(song.title!)
+        checkForMusicLibraryAccess {
+            let query = MPMediaQuery.albums()
+            let hasSonata = MPMediaPropertyPredicate(value:"Sonata",
+                forProperty:MPMediaItemPropertyTitle,
+                comparisonType:.contains)
+            query.addFilterPredicate(hasSonata)
+            let isPresent = MPMediaPropertyPredicate(value:false,
+                forProperty:MPMediaItemPropertyIsCloudItem, // string name of property incorrect in header
+                comparisonType:.equalTo)
+            query.addFilterPredicate(isPresent)
+            
+            guard let result = query.collections else {return} //
+            for album in result {
+                print(album.representativeItem!.albumTitle!)
+            }
+            // and here are the songs in the first of those albums
+            guard result.count > 0 else {print("No sonatas"); return}
+            let album = result[0]
+            for song in album.items { //
+                print(song.title!)
+            }
         }
     }
     
     @IBAction func doPlayShortSongs (_ sender: Any!) {
-        let query = MPMediaQuery.songs()
-        // always need to filter out songs that aren't present
-        let isPresent = MPMediaPropertyPredicate(value:false,
-            forProperty:MPMediaItemPropertyIsCloudItem,
-            comparisonType:.equalTo)
-        query.addFilterPredicate(isPresent)
-        guard let items = query.items else {return} //
-        
-        let shorties = items.filter { //
-            let dur = $0.playbackDuration
-            return dur < 30
+        checkForMusicLibraryAccess {
+            let query = MPMediaQuery.songs()
+            // always need to filter out songs that aren't present
+            let isPresent = MPMediaPropertyPredicate(value:false,
+                forProperty:MPMediaItemPropertyIsCloudItem,
+                comparisonType:.equalTo)
+            query.addFilterPredicate(isPresent)
+            guard let items = query.items else {return} //
+            
+            let shorties = items.filter { //
+                let dur = $0.playbackDuration
+                return dur < 30
+            }
+            
+            guard shorties.count > 0 else {
+                print("no songs that short!")
+                return
+            }
+            print("got \(shorties.count) short songs")
+            let queue = MPMediaItemCollection(items:shorties)
+            let player = MPMusicPlayerController.applicationMusicPlayer()
+            player.stop()
+            player.setQueue(with:queue)
+            player.shuffleMode = .songs
+            player.beginGeneratingPlaybackNotifications()
+            NotificationCenter.default.addObserver(self, selector: #selector(self.changed), name: .MPMusicPlayerControllerNowPlayingItemDidChange, object: player)
+            self.q = queue // retain a pointer to the queue
+            player.play()
+            
+            self.timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(self.timerFired), userInfo: nil, repeats: true)
+            self.timer.tolerance = 0.1
         }
-        
-        guard shorties.count > 0 else {
-            print("no songs that short!")
-            return
-        }
-        print("got \(shorties.count) short songs")
-        let queue = MPMediaItemCollection(items:shorties)
-        let player = MPMusicPlayerController.applicationMusicPlayer()
-        player.stop()
-        player.setQueue(with:queue)
-        player.shuffleMode = .songs
-        player.beginGeneratingPlaybackNotifications()
-        NotificationCenter.default.addObserver(self, selector: #selector(changed), name: .MPMusicPlayerControllerNowPlayingItemDidChange, object: player)
-        self.q = queue // retain a pointer to the queue
-        player.play()
-        
-        self.timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
-        self.timer.tolerance = 0.1
     }
     
     func changed(_ n:Notification) {
@@ -224,7 +232,7 @@ class ViewController: UIViewController {
         }
         self.label.text = ""
         let player = MPMusicPlayerController.applicationMusicPlayer()
-        guard (n.object as AnyObject) === player else { return } // just playing safe
+        guard let obj = n.object, obj as AnyObject === player else { return } // just playing safe
         guard let title = player.nowPlayingItem?.title else {return}
         let ix = player.indexOfNowPlayingItem
         guard ix != NSNotFound else {return}
@@ -250,12 +258,12 @@ class MyVolumeView : MPVolumeView {
 
     
     override func volumeSliderRect(forBounds bounds: CGRect) -> CGRect {
-        print(bounds)
+        print("slider rect", bounds)
         return super.volumeSliderRect(forBounds: bounds)
     }
     
     override func volumeThumbRect(forBounds bounds: CGRect, volumeSliderRect rect: CGRect, value: Float) -> CGRect {
-        print(value)
+        print("thumb rect", value)
         return super.volumeThumbRect(forBounds: bounds, volumeSliderRect: rect, value: value)
     }
 

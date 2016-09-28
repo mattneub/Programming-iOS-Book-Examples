@@ -24,7 +24,25 @@ extension CGVector {
     }
 }
 
-
+func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
+    let status = MPMediaLibrary.authorizationStatus()
+    switch status {
+    case .authorized:
+        f?()
+    case .notDetermined:
+        MPMediaLibrary.requestAuthorization() { status in
+            if status == .authorized {
+                f?()
+            }
+        }
+    case .restricted:
+        // do nothing
+        break
+    case .denied:
+        // do nothing, or beg the user to authorize us in Settings
+        break
+    }
+}
 
 class ViewController: UIViewController {
     
@@ -33,16 +51,18 @@ class ViewController: UIViewController {
     }
     
     func presentPicker (_ sender: Any) {
-        let picker = MPMediaPickerController(mediaTypes:.music)
-        picker.showsCloudItems = false
-        picker.delegate = self
-        picker.allowsPickingMultipleItems = true
-        picker.modalPresentationStyle = .popover
-        picker.preferredContentSize = CGSize(500,600)
-        self.present(picker, animated: true)
-        if let pop = picker.popoverPresentationController {
-            if let b = sender as? UIBarButtonItem {
-                pop.barButtonItem = b
+        checkForMusicLibraryAccess {
+            let picker = MPMediaPickerController(mediaTypes:.music)
+            picker.showsCloudItems = false
+            picker.delegate = self
+            picker.allowsPickingMultipleItems = true
+            picker.modalPresentationStyle = .popover
+            picker.preferredContentSize = CGSize(500,600)
+            self.present(picker, animated: true)
+            if let pop = picker.popoverPresentationController {
+                if let b = sender as? UIBarButtonItem {
+                    pop.barButtonItem = b
+                }
             }
         }
     }
