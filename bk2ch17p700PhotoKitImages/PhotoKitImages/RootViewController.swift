@@ -6,62 +6,47 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
+func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
+    let status = PHPhotoLibrary.authorizationStatus()
+    switch status {
+    case .authorized:
+        f?()
+    case .notDetermined:
+        PHPhotoLibrary.requestAuthorization() { status in
+            if status == .authorized {
+                f?()
+            }
+        }
+    case .restricted:
+        // do nothing
+        break
+    case .denied:
+        // do nothing, or beg the user to authorize us in Settings
+        break
+    }
+}
+
+
 class RootViewController: UIViewController {
                             
     var pvc: UIPageViewController?
     var modelController : ModelController!
 
-    
-    /*
-    Because authorization is asynchronous, we face an interesting problem:
-    if we get the authorization dialog, even if the user accepts,
-    our setup code will have returned without succeededing in getting an initial image
-    
-    So what we'd like to do in that case is try again;
-    thus we want to be notified if authorization happens.
-    The way to detect that is to observe that we now have images where previously we had none
-*/
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        PHPhotoLibrary.shared().register(self)
-        self.setUpInterface()
+        checkForPhotoLibraryAccess(andThen: self.setUpInterface)
     }
 
-    @discardableResult
-    func determineStatus() -> Bool {
-        let status = PHPhotoLibrary.authorizationStatus()
-        switch status {
-        case .authorized:
-            return true
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization() {_ in}
-            return false
-        case .restricted:
-            return false
-        case .denied:
-            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Photos library?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "No", style: .cancel))
-            alert.addAction(UIAlertAction(title: "OK", style: .default) {
-                _ in
-                let url = URL(string:UIApplicationOpenSettingsURLString)!
-                UIApplication.shared.open(url)
-            })
-            self.present(alert, animated:true)
-            return false
-        }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.determineStatus()
-        NotificationCenter.default.addObserver(self, selector: #selector(determineStatus), name: .UIApplicationWillEnterForeground, object: nil)
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        self.determineStatus()
+//        NotificationCenter.default.addObserver(self, selector: #selector(determineStatus), name: .UIApplicationWillEnterForeground, object: nil)
+//    }
+//
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        NotificationCenter.default.removeObserver(self)
+//    }
     
     func tryToAddInitialPage() {
         self.modelController = ModelController()
@@ -84,6 +69,8 @@ class RootViewController: UIViewController {
     }
 }
 
+/*
+
 extension RootViewController : PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInfo: PHChange) {
         if let ci = changeInfo.changeDetails(for:self.modelController.recentAlbums) {
@@ -101,13 +88,11 @@ extension RootViewController : PHPhotoLibraryChangeObserver {
         }
     }
 }
+ 
+ */
 
 extension RootViewController {
     @IBAction func doVignetteButton(_ sender: Any) {
-        if !self.determineStatus() {
-            print("not authorized")
-            return
-        }
 
         if let dvc = self.pvc?.viewControllers?[0] as? DataViewController {
             dvc.doVignette()

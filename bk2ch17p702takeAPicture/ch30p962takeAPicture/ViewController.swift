@@ -6,52 +6,83 @@ import AVKit
 import MobileCoreServices
 import Photos
 
+func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
+    let status = PHPhotoLibrary.authorizationStatus()
+    switch status {
+    case .authorized:
+        f?()
+    case .notDetermined:
+        PHPhotoLibrary.requestAuthorization() { status in
+            if status == .authorized {
+                f?()
+            }
+        }
+    case .restricted:
+        // do nothing
+        break
+    case .denied:
+        // do nothing, or beg the user to authorize us in Settings
+        break
+    }
+}
+
+func checkForMicrophoneAccess(andThen f:(()->())? = nil) {
+    let status = AVAudioSession.sharedInstance().recordPermission()
+    switch status {
+    case [.granted]:
+        f?()
+    case [.undetermined]:
+        AVAudioSession.sharedInstance().requestRecordPermission { granted in
+            if granted {
+                f?()
+            }
+        }
+    default:break;
+    }
+}
+
+
+func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
+    let status = AVCaptureDevice.authorizationStatus(forMediaType:AVMediaTypeVideo)
+    switch status {
+    case .authorized:
+        f?()
+    case .notDetermined:
+        AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeVideo) { granted in
+            if granted {
+                f?()
+            }
+        }
+    case .restricted:
+        // do nothing
+        break
+    case .denied:
+        let alert = UIAlertController(
+            title: "Need Authorization",
+            message: "Wouldn't you like to authorize this app " +
+            "to use the camera?",
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(
+            title: "No", style: .cancel))
+        alert.addAction(UIAlertAction(
+        title: "OK", style: .default) {
+            _ in
+            let url = URL(string:UIApplicationOpenSettingsURLString)!
+            UIApplication.shared.open(url)
+        })
+        UIApplication.shared.delegate!.window!!.rootViewController!.present(alert, animated:true)
+    }
+}
+
+
+
+
 class ViewController: UIViewController,
 UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var redView: UIView!
     weak var picker : UIImagePickerController?
-    
-    @discardableResult
-    func determineStatus() -> Bool {
-        let status = AVCaptureDevice.authorizationStatus(forMediaType:AVMediaTypeVideo)
-        switch status {
-        case .authorized:
-            return true
-        case .notDetermined:
-            AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeVideo, completionHandler:nil)
-            return false
-        case .restricted:
-            return false
-        case .denied:
-            let alert = UIAlertController(
-                title: "Need Authorization",
-                message: "Wouldn't you like to authorize this app " +
-                "to use the camera?",
-                preferredStyle: .alert)
-            alert.addAction(UIAlertAction(
-                title: "No", style: .cancel))
-            alert.addAction(UIAlertAction(
-                title: "OK", style: .default) {
-                    _ in
-                    let url = URL(string:UIApplicationOpenSettingsURLString)!
-                    UIApplication.shared.open(url)
-            })
-            self.present(alert, animated:true)
-            return false
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.determineStatus()
-        NotificationCenter.default.addObserver(self,
-            selector: #selector(determineStatus),
-            name: .UIApplicationWillEnterForeground,
-            object: nil)
-    }
-    
-    
+        
     @IBAction func doTake (_ sender: Any!) {
         let cam = UIImagePickerControllerSourceType.camera
         let ok = UIImagePickerController.isSourceTypeAvailable(cam)
@@ -85,7 +116,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        didFinishPickingMediaWithInfo info: [String : Any]) {
             print(info[UIImagePickerControllerReferenceURL])
             let url = info[UIImagePickerControllerMediaURL] as? URL
             var im = info[UIImagePickerControllerOriginalImage] as? UIImage

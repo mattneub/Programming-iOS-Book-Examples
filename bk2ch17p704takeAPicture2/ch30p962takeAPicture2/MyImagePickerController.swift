@@ -6,7 +6,7 @@ class MyImagePickerController : UIImagePickerController {
     override var prefersStatusBarHidden : Bool {
         return true
     }
-    override func childViewControllerForStatusBarHidden() -> UIViewController? {
+    override var childViewControllerForStatusBarHidden : UIViewController? {
         return nil
     }
 }
