@@ -16,7 +16,9 @@ func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
     case .notDetermined:
         PHPhotoLibrary.requestAuthorization() { status in
             if status == .authorized {
-                f?()
+                DispatchQueue.main.async {
+                	f?()
+				}
             }
         }
     case .restricted:
@@ -29,10 +31,10 @@ func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
 }
 
 
-// this crashes the compiler, so I'm forced to enumerate results "by hand"
+// this no longer works because PHFetchResult is now a generic, so I'm forced to enumerate results "by hand"
 // seems unfair that PHFetchResult adopts NSFastEnumeration in Objective-C but can't say for...in in Swift
 
-//extension PHFetchResult: Sequence {
+//extension PHFetchResult : Sequence {
 //    public func makeIterator() -> NSFastEnumerationIterator {
 //        return NSFastEnumerationIterator(self)
 //    }
@@ -43,7 +45,6 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // PHPhotoLibrary.shared().register(self) // *
     }
 
 
@@ -88,7 +89,8 @@ class ViewController: UIViewController {
                 .album, subtype: .albumSyncedAlbum, options: nil)
             for ix in 0 ..< result.count {
                 let album = result[ix]
-                print("\(album.localizedTitle): approximately \(album.estimatedAssetCount) photos")
+                print("\(album.localizedTitle): " +
+                    "approximately \(album.estimatedAssetCount) photos")
             }
             
         }
@@ -135,20 +137,40 @@ class ViewController: UIViewController {
             // or to alter what assets it contains,
             // we need a PHAssetCollectionChangeRequest
             // we can use this only inside a PHPhotoLibrary `performChanges` block
-            var ph : PHObjectPlaceholder?
-            PHPhotoLibrary.shared().performChanges({
-                let t = "TestAlbum"
-                let cr = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle:t)
-                ph = cr.placeholderForCreatedAssetCollection
-                }, completionHandler: {
+            
+            var which : Int {return 2}
+            
+            
+            switch which {
+            case 1:
+                typealias Req = PHAssetCollectionChangeRequest
+                PHPhotoLibrary.shared().performChanges({
+                    let t = "TestAlbum"
+                    Req.creationRequestForAssetCollection(withTitle:t)
+                })
+
+                
+            case 2:
+                
+                var ph : PHObjectPlaceholder?
+                typealias Req = PHAssetCollectionChangeRequest
+                PHPhotoLibrary.shared().performChanges({
+                    let t = "TestAlbum"
+                    let cr = Req.creationRequestForAssetCollection(withTitle:t)
+                    ph = cr.placeholderForCreatedAssetCollection
+                }) { ok, err in
                     // completion may take some considerable time (asynchronous)
-                    (ok:Bool, err:Error?) in
                     print("created TestAlbum: \(ok)")
-                    if let ph = ph {
+                    if ok, let ph = ph {
                         print("and its id is \(ph.localIdentifier)")
                         self.newAlbumId = ph.localIdentifier
                     }
-            })
+                }
+
+                
+            default: break
+            }
+            
             
         }
     }
@@ -156,34 +178,35 @@ class ViewController: UIViewController {
     @IBAction func doButton5(_ sender: Any) {
         
         checkForPhotoLibraryAccess {
+            
+            PHPhotoLibrary.shared().register(self) // *
 
             let opts = PHFetchOptions()
-            opts.wantsIncrementalChangeDetails = false // not used
+            opts.wantsIncrementalChangeDetails = false
+            // use this opts to prevent extra PHChange messages
+            
             // imagine first that we are displaying a list of all regular albums...
             // ... so have performed a fetch request and are hanging on to the result
             let alb = PHAssetCollection.fetchAssetCollections(with:
                 .album, subtype: .albumRegular, options: nil)
             self.albums = alb
-            // and if we have an observer, it will automatically be sent PHChange messages
-            // for this fetch request - if we wanted to prevent that,
-            // we would have included the option above
-            
             
             // find Recently Added smart album
             let result = PHAssetCollection.fetchAssetCollections(with:
-                .smartAlbum, subtype: .smartAlbumRecentlyAdded, options: nil)
+                .smartAlbum, subtype: .smartAlbumRecentlyAdded, options: opts)
             guard let rec = result.firstObject else {
                 print("no recently added album")
                 return
             }
             // find its first asset
-            let result2 = PHAsset.fetchAssets(in:rec, options: nil)
+            let result2 = PHAsset.fetchAssets(in:rec, options: opts)
             guard let asset1 = result2.firstObject else {
                 print("no first item in recently added album")
                 return
             }
             // find our newly created album by its local id
-            let result3 = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [self.newAlbumId!], options: nil)
+            let result3 = PHAssetCollection.fetchAssetCollections(
+                withLocalIdentifiers: [self.newAlbumId!], options: opts)
             guard let alb2 = result3.firstObject else {
                 print("no target album")
                 return
@@ -211,7 +234,12 @@ extension ViewController : PHPhotoLibraryChangeObserver {
                 DispatchQueue.main.async {
                     print("inserted: \(details.insertedObjects)")
                     print("changed: \(details.changedObjects)")
-                    self.albums = details.fetchResultAfterChanges
+                    print("removed: \(details.removedObjects)")
+                    if details.removedObjects.count > 0 ||
+                        details.insertedObjects.count > 0 {
+                            print("someone created or removed an album!")
+                            self.albums = details.fetchResultAfterChanges
+                    }
                     // and you can imagine that if we had an interface...
                     // we might change it to reflect these changes
                 }

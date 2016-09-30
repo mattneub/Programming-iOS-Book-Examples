@@ -14,7 +14,9 @@ func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
     case .notDetermined:
         PHPhotoLibrary.requestAuthorization() { status in
             if status == .authorized {
-                f?()
+                DispatchQueue.main.async {
+                	f?()
+				}
             }
         }
     case .restricted:
@@ -34,7 +36,9 @@ func checkForMicrophoneAccess(andThen f:(()->())? = nil) {
     case [.undetermined]:
         AVAudioSession.sharedInstance().requestRecordPermission { granted in
             if granted {
-                f?()
+                DispatchQueue.main.async {
+                	f?()
+				}
             }
         }
     default:break;
@@ -50,7 +54,9 @@ func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
     case .notDetermined:
         AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeVideo) { granted in
             if granted {
-                f?()
+                DispatchQueue.main.async {
+                	f?()
+				}
             }
         }
     case .restricted:

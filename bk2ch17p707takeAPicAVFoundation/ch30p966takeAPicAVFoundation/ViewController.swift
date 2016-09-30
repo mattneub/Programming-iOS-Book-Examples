@@ -32,7 +32,9 @@ func checkForMicrophoneAccess(andThen f:(()->())? = nil) {
     case [.undetermined]:
         AVAudioSession.sharedInstance().requestRecordPermission { granted in
             if granted {
-                f?()
+                DispatchQueue.main.async {
+                	f?()
+				}
             }
         }
     default:break;
@@ -48,7 +50,9 @@ func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
     case .notDetermined:
         AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeVideo) { granted in
             if granted {
-                f?()
+                DispatchQueue.main.async {
+                	f?()
+				}
             }
         }
     case .restricted:

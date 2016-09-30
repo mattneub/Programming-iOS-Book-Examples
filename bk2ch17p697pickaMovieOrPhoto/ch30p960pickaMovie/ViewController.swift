@@ -18,7 +18,9 @@ func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
     case .notDetermined:
         PHPhotoLibrary.requestAuthorization() { status in
             if status == .authorized {
-                f?()
+                DispatchQueue.main.async {
+                    f?()
+                }
             }
         }
     case .restricted:
@@ -57,23 +59,16 @@ class ViewController: UIViewController {
             // horrible
             // let src = UIImagePickerControllerSourceType.savedPhotosAlbum
             let src = UIImagePickerControllerSourceType.photoLibrary
-            let ok = UIImagePickerController.isSourceTypeAvailable(src)
-            if !ok {
-                print("alas")
-                return
-            }
-            
-            let arr = UIImagePickerController.availableMediaTypes(for:src)
-            if arr == nil {
-                print("no available types")
-                return
-            }
-            let picker = MyImagePickerController() // see comments below for reason
+            guard UIImagePickerController.isSourceTypeAvailable(src)
+                else { print("alas"); return }
+            guard let arr = UIImagePickerController.availableMediaTypes(for:src)
+                else { print("no available types"); return }
+            let picker = MyImagePickerController()
             picker.sourceType = src
-            picker.mediaTypes = arr!
+            picker.mediaTypes = arr
             picker.delegate = self
             
-            picker.allowsEditing = false // try true
+            picker.allowsEditing = true // try true
             
             // this will automatically be fullscreen on phone and pad, looks fine
             // note that for .photoLibrary, iPhone app must permit portrait orientation
@@ -96,7 +91,7 @@ class ViewController: UIViewController {
 // if we do nothing about what was chosen, cancel automatically but of course now we have no access
 
 // interesting problem is that we have no control over permitted orientations of picker
-// seems like a bug; can work around this by subclassing
+// that's why I subclass for the sake of the example
 
 extension ViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -111,22 +106,22 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
             print(info[UIImagePickerControllerReferenceURL])
             let url = info[UIImagePickerControllerMediaURL] as? URL
             var im = info[UIImagePickerControllerOriginalImage] as? UIImage
-            let edim = info[UIImagePickerControllerEditedImage] as? UIImage
-            if edim != nil {
-                im = edim
+            if let ed = info[UIImagePickerControllerEditedImage] as? UIImage {
+                im = ed
             }
             self.dismiss(animated:true) {
-                if let type = info[UIImagePickerControllerMediaType] as? NSString {
-                    switch type {
-                    case kUTTypeImage:
-                        if im != nil {
-                            self.showImage(im!)
-                        }
-                    case kUTTypeMovie:
-                        if url != nil {
-                            self.showMovie(url:url!)
-                        }
-                    default:break
+                if let mediatype = info[UIImagePickerControllerMediaType],
+                    let type = mediatype as? NSString {
+                        switch type {
+                        case kUTTypeImage:
+                            if im != nil {
+                                self.showImage(im!)
+                            }
+                        case kUTTypeMovie:
+                            if url != nil {
+                                self.showMovie(url:url!)
+                            }
+                        default:break
                 }
             }
         }
