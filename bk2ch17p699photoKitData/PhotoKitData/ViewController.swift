@@ -227,22 +227,12 @@ class ViewController: UIViewController {
 
 extension ViewController : PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInfo: PHChange) {
-        print(changeInfo)
         if self.albums !== nil {
-            if let details = changeInfo.changeDetails(for:self.albums) {
-                // NB get on main queue if necessary
-                DispatchQueue.main.async {
-                    print("inserted: \(details.insertedObjects)")
-                    print("changed: \(details.changedObjects)")
-                    print("removed: \(details.removedObjects)")
-                    if details.removedObjects.count > 0 ||
-                        details.insertedObjects.count > 0 {
-                            print("someone created or removed an album!")
-                            self.albums = details.fetchResultAfterChanges
-                    }
-                    // and you can imagine that if we had an interface...
-                    // we might change it to reflect these changes
-                }
+            let details = changeInfo.changeDetails(for:self.albums)
+            print(details)
+            if details !== nil {
+                self.albums = details!.fetchResultAfterChanges
+                // ... and adjust interface if needed ...
             }
         }
     }

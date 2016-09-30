@@ -74,7 +74,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         
         // orientation stuff worked out experimentally; I have no idea if it's right
         
-        if let output = self.displayImage, // removed if var, perhaps unnecessarily but it's clearer without
+        if let output = self.displayImage,
             let orient = self.input?.fullSizeImageOrientation {
                 var output = output
                 if self.seg.selectedSegmentIndex == 0 {
@@ -95,7 +95,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
                 r.size.width = CGFloat(self.glkview.drawableWidth)
                 r.size.height = CGFloat(self.glkview.drawableHeight)
                 
-                r = AVMakeRect(aspectRatio: output.extent.size, insideRect: r)
+                r = AVMakeRect(aspectRatio: output.extent.size, insideRect: r.insetBy(dx: -1, dy: -1))
                 
                 self.context?.draw(output, in: r, from: output.extent)
         }
@@ -107,21 +107,24 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
     }
 
     func startContentEditing(with contentEditingInput: PHContentEditingInput, placeholderImage: UIImage) {
+        
         // Present content for editing, and keep the contentEditingInput for use when closing the edit session.
         // If you returned true from canHandleAdjustmentData:, contentEditingInput has the original image and adjustment data.
         // If you returned false, the contentEditingInput has past edits "baked in".
+        
         self.input = contentEditingInput
         if let im = self.input?.displaySizeImage {
             let scale = max(im.size.width/self.glkview.bounds.width, im.size.height/self.glkview.bounds.height)
             let sz = CGSize(im.size.width/scale, im.size.height/scale)
-            let im2 = imageOfSize(sz) {
+            let r = UIGraphicsImageRenderer(size:sz)
+            let im2 = r.image { _ in
                 // perhaps no need for this, but the image they give us is much larger than we need
                 im.draw(in:CGRect(origin: .zero, size: sz))
             }
 
             self.displayImage = CIImage(image:im2)
-            let adj : PHAdjustmentData? = self.input?.adjustmentData
-            if let adj = adj, adj.formatIdentifier == self.myidentifier {
+            if let adj = self.input?.adjustmentData,
+                adj.formatIdentifier == self.myidentifier {
                 if let vigAmount = NSKeyedUnarchiver.unarchiveObject(with:adj.data) as? Double {
                     if vigAmount >= 0.0 {
                         self.slider.value = Float(vigAmount)
@@ -142,30 +145,21 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
         // Render and provide output on a background queue.
         DispatchQueue.global(qos:.default).async {
             let vignette = self.seg.selectedSegmentIndex == 0 ? Double(self.slider.value) : -1.0
-            let input = self.input!
-            let inurl = input.fullSizeImageURL!
-            let inorient = input.fullSizeImageOrientation
-            let output = PHContentEditingOutput(contentEditingInput: input)
+            let inurl = self.input!.fullSizeImageURL!
+            let inorient = self.input!.fullSizeImageOrientation
+            let output = PHContentEditingOutput(contentEditingInput:self.input!)
             let outurl = output.renderedContentURL
+            var ci = CIImage(contentsOf: inurl)!.applyingOrientation(inorient)
+            let space = ci.colorSpace!
             
-            let outcgimage = {
-                () -> CGImage in
-                var ci = CIImage(contentsOf: inurl)!.applyingOrientation(inorient)
-                if vignette >= 0.0 {
-                    let vig = VignetteFilter()
-                    vig.setValue(ci, forKey: "inputImage")
-                    vig.setValue(vignette, forKey: "inputPercentage")
-                    ci = vig.outputImage!
-                }
-                let outimcg = CIContext().createCGImage(ci, from: ci.extent)!
-                return outimcg
-                }()
-            
-            let dest = CGImageDestinationCreateWithURL(outurl as CFURL, kUTTypeJPEG, 1, nil)!
-            CGImageDestinationAddImage(dest, outcgimage, [
-                kCGImageDestinationLossyCompressionQuality as String:1
-                ] as CFDictionary)
-            CGImageDestinationFinalize(dest)
+            if vignette >= 0.0 {
+                let vig = VignetteFilter()
+                vig.setValue(ci, forKey: "inputImage")
+                vig.setValue(vignette, forKey: "inputPercentage")
+                ci = vig.outputImage!
+            }
+            try! CIContext().writeJPEGRepresentation(
+                of: ci, to: outurl, colorSpace: space)
             
             let data = NSKeyedArchiver.archivedData(withRootObject:vignette)
             output.adjustmentData = PHAdjustmentData(

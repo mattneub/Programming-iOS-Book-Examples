@@ -38,6 +38,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
     // var index : Int = -1
     var input : PHContentEditingInput!
     let myidentifier = "com.neuburg.matt.PhotoKitImages.vignette"
+    let cicontext = CIContext()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +54,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         self.dataLabel.text = asset.description
         // okay, this is why we are here! fetch the image data!!!!!
         // we have to say quite specifically what "view" of image we want
-        PHImageManager.default().requestImage(for: asset, targetSize: CGSize(300,300), contentMode: .aspectFit, options: nil) {
-            (im:UIImage?, info:[AnyHashable : Any]?) in
+        PHImageManager.default().requestImage(for: asset, targetSize: CGSize(300,300), contentMode: .aspectFit, options: nil) { im, info in
             // this block can be called multiple times
             // and you can see why: initially we might get a degraded version of the image
             // and in fact we do, as I show with logging
@@ -73,15 +73,14 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
         let options = PHContentEditingInputRequestOptions()
         // note that if we reply true to canHandle..., then we will be handed the *original* photo + data
         // thus we can continue our edit where we left off, or remove it (and I illustrate both here)
-        options.canHandleAdjustmentData = {
-            (adjustmentData : PHAdjustmentData!) in
+        options.canHandleAdjustmentData = { adjustmentData in
             // print("here")
             // return false // just testing
             return adjustmentData.formatIdentifier == self.myidentifier
         }
         var id : PHContentEditingInputRequestID = 0
         id = self.asset.requestContentEditingInput(with: options) {
-            (input:PHContentEditingInput?, info:[AnyHashable:Any]) in
+            input, info in
             guard let input = input else {
                 self.asset.cancelContentEditingInputRequest(id)
                 return
@@ -93,7 +92,8 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             
             let im = input.displaySizeImage!
             let sz = CGSize(im.size.width/4.0, im.size.height/4.0)
-            let im2 = imageOfSize(sz) {
+            let r = UIGraphicsImageRenderer(size:sz)
+            let im2 = r.image { _ in
                 // perhaps no need for this, but the image they give us is much larger than we need
                 im.draw(in:CGRect(origin: .zero, size: sz))
             }
@@ -101,13 +101,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             let evc = EditingViewController(displayImage:CIImage(image:im2)!)
             
             evc.delegate = self
-            let adj : PHAdjustmentData? = input.adjustmentData
-            print(adj)
-//            do {
-//                asset.cancelContentEditingInputRequest(id)
-//                return
-//            }
-            if let adj = adj, adj.formatIdentifier == self.myidentifier {
+            if let adj = input.adjustmentData, adj.formatIdentifier == self.myidentifier {
                 if let vigAmount = NSKeyedUnarchiver.unarchiveObject(with: adj.data) as? Double {
                     if vigAmount >= 0.0 {
                         evc.initialVignette = vigAmount
@@ -123,51 +117,58 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
     func finishEditing(vignette:Double) {
         // part two: obtain PHContentEditingOutput...
         // and apply editing to actual full size image
-        let inurl = self.input.fullSizeImageURL!
-        let inorient = self.input.fullSizeImageOrientation
-        let output = PHContentEditingOutput(contentEditingInput:self.input)
-        let outurl = output.renderedContentURL
         
-        let outcgimage = {
-            () -> CGImage in
+        let act = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        act.backgroundColor = .darkGray
+        act.layer.cornerRadius = 3
+        act.center = self.view.center
+        self.view.addSubview(act)
+        act.startAnimating()
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+
+            let inurl = self.input.fullSizeImageURL!
+            let inorient = self.input.fullSizeImageOrientation
+            let output = PHContentEditingOutput(contentEditingInput:self.input)
+            let outurl = output.renderedContentURL
             var ci = CIImage(contentsOf: inurl)!.applyingOrientation(inorient)
+            let space = ci.colorSpace!
             if vignette >= 0.0 {
                 let vig = VignetteFilter()
                 vig.setValue(ci, forKey: "inputImage")
                 vig.setValue(vignette, forKey: "inputPercentage")
                 ci = vig.outputImage!
             }
-            return CIContext().createCGImage(ci, from: ci.extent)!
-        }()
-        
-        let dest = CGImageDestinationCreateWithURL(outurl as CFURL, kUTTypeJPEG, 1, nil)!
-        CGImageDestinationAddImage(dest, outcgimage, [
-            kCGImageDestinationLossyCompressionQuality as String:1
-            ] as CFDictionary)
-        CGImageDestinationFinalize(dest)
+            // new in iOS 10
+            // warning: this is time-consuming! (even more than how I was doing it before)
+            try! CIContext().writeJPEGRepresentation(of: ci, to: outurl, colorSpace: space)
 
-        let data = NSKeyedArchiver.archivedData(withRootObject: vignette)
-        output.adjustmentData = PHAdjustmentData(
-            formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
+            let data = NSKeyedArchiver.archivedData(withRootObject: vignette)
+            output.adjustmentData = PHAdjustmentData(
+                formatIdentifier: self.myidentifier, formatVersion: "1.0", data: data)
 
-        // now we must tell the photo library to pick up the edited image
-        PHPhotoLibrary.shared().performChanges({
-            print("finishing")
-            let req = PHAssetChangeRequest(for: self.asset)
-            req.contentEditingOutput = output
-            }, completionHandler: {
-                (ok:Bool, err:Error?) in
-                print("in completion handler")
-                // at the last minute, the user will get a special "modify?" dialog
-                // if the user refuses, we will receive "false"
-                if ok {
-                    // in our case, since are already displaying this photo...
-                    // ...we should now reload it
-                    self.setUpInterface()
-                } else {
-                    print("phasset change request error: \(err)")
+            // now we must tell the photo library to pick up the edited image
+            PHPhotoLibrary.shared().performChanges({
+                print("finishing")
+                let req = PHAssetChangeRequest(for: self.asset)
+                req.contentEditingOutput = output
+            }) { ok, err in
+                DispatchQueue.main.async {
+                    act.removeFromSuperview()
+                    print("in completion handler")
+                    // at the last minute, the user will get a special "modify?" dialog
+                    // if the user refuses, we will receive "false"
+                    if ok {
+                        // in our case, since are already displaying this photo...
+                        // ...we should now reload it
+                        self.setUpInterface()
+                    } else {
+                        print("phasset change request error: \(err)")
+                    }
                 }
-        })
+            }
+            
+        }
     }
     
 }
