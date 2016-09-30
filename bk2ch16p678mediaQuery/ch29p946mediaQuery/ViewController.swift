@@ -40,7 +40,9 @@ func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
     case .notDetermined:
         MPMediaLibrary.requestAuthorization() { status in
             if status == .authorized {
-                f?()
+                DispatchQueue.main.async {
+                	f?()
+				}
             }
         }
     case .restricted:

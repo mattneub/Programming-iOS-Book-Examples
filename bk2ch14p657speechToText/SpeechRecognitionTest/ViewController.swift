@@ -13,7 +13,11 @@ class ViewController: UIViewController {
         switch status {
         case .notDetermined:
             SFSpeechRecognizer.requestAuthorization {status2 in
-                if status2 == .authorized {f?()}
+                if status2 == .authorized {
+					DispatchQueue.main.async {
+						f?()
+					}
+                }
             }
         case .authorized:
             f?()
@@ -30,7 +34,11 @@ class ViewController: UIViewController {
         switch status { // ??? why is this an option set? I've filed a bug
         case [.undetermined]:
             sess.requestRecordPermission {ok in
-                if ok {f?()}
+                if ok {
+					DispatchQueue.main.async {
+						f?()
+					}
+                }
             }
         case [.granted]:
             f?()
