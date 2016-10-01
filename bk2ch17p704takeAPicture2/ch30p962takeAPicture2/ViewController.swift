@@ -5,13 +5,6 @@ import AVFoundation
 import AVKit
 import MobileCoreServices
 
-func imageOfSize(_ size:CGSize, closure:() -> ()) -> UIImage {
-    let r = UIGraphicsImageRenderer(size:size)
-    return r.image {
-        _ in closure()
-    }
-}
-
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)
@@ -34,24 +27,6 @@ extension CGVector {
 }
 
 
-func checkForMicrophoneAccess(andThen f:(()->())? = nil) {
-    let status = AVAudioSession.sharedInstance().recordPermission()
-    switch status {
-    case [.granted]:
-        f?()
-    case [.undetermined]:
-        AVAudioSession.sharedInstance().requestRecordPermission { granted in
-            if granted {
-                DispatchQueue.main.async {
-                	f?()
-				}
-            }
-        }
-    default:break;
-    }
-}
-
-
 func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
     let status = AVCaptureDevice.authorizationStatus(forMediaType:AVMediaTypeVideo)
     switch status {
@@ -61,8 +36,8 @@ func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
         AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeVideo) { granted in
             if granted {
                 DispatchQueue.main.async {
-                	f?()
-				}
+                    f?()
+                }
             }
         }
     case .restricted:
@@ -98,21 +73,19 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     
     @IBAction func doTake (_ sender: Any!) {
-        let cam = UIImagePickerControllerSourceType.camera
-        let ok = UIImagePickerController.isSourceTypeAvailable(cam)
-        if (!ok) {
-            print("no camera")
-            return
-        }
-        let arr = UIImagePickerController.availableMediaTypes(for: cam)
-        let desiredType = kUTTypeImage as NSString as String
-        if arr?.index(of:desiredType) == nil {
-            print("no stills")
-            return
-        }
-        let picker = MyImagePickerController()
-        picker.sourceType = .camera
-        picker.mediaTypes = [desiredType]
+        checkForMovieCaptureAccess(andThen: self.reallyTake)
+    }
+    
+    
+    func reallyTake() {
+        let src = UIImagePickerControllerSourceType.camera
+        guard UIImagePickerController.isSourceTypeAvailable(src) else {return}
+
+        guard let arr = UIImagePickerController.availableMediaTypes(for:src) else {return}
+
+        let picker = UIImagePickerController()
+        picker.sourceType = src
+        picker.mediaTypes = [kUTTypeImage as String]
         picker.allowsEditing = true
         picker.delegate = self
         
@@ -120,15 +93,10 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         picker.showsCameraControls = false
         let f = self.view.window!.bounds
         let v = UIView(frame:f)
-        let t = UITapGestureRecognizer(target:self, action:#selector(tap))
-        t.numberOfTapsRequired = 2
-        v.addGestureRecognizer(t)
         
         picker.cameraOverlayView = v
         self.picker = picker
 
-        // user will get the "access the camera" system dialog at this point if necessary
-        // if the user refuses, Very Weird Things happen...
         self.present(picker, animated: true)
     }
 
@@ -137,15 +105,13 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let im = info[UIImagePickerControllerOriginalImage] as? UIImage
-        if im == nil {
-            return
-        }
-        let svc = SecondViewController(image:im)
-        picker.pushViewController(svc, animated: true)
+            guard let im = info[UIImagePickerControllerOriginalImage] as? UIImage
+                else {return}
+            let svc = SecondViewController(image:im)
+            picker.pushViewController(svc, animated: true)
     }
     
-    func tap (g:UIGestureRecognizer) {
+    func tap (_ g:UIGestureRecognizer) {
         self.picker.takePicture()
     }
 
@@ -157,7 +123,8 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         nc.isToolbarHidden = false
         
         let sz = CGSize(10,10)
-        let im = imageOfSize(sz) {
+        let r = UIGraphicsImageRenderer(size:sz)
+        let im = r.image { _ in
             UIColor.black.withAlphaComponent(0.1).setFill()
             UIGraphicsGetCurrentContext()!.fill(CGRect(origin: .zero, size: sz))
         }
@@ -172,6 +139,10 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         let b2 = UIBarButtonItem(customView: lab)
         nc.topViewController!.toolbarItems = [b,b2]
         nc.topViewController!.title = "Retake"
+        
+        let t = UITapGestureRecognizer(target:self, action:#selector(tap))
+        t.numberOfTapsRequired = 2
+        nc.topViewController!.view.addGestureRecognizer(t)
     }
 
     func doCancel(_ sender: Any) {

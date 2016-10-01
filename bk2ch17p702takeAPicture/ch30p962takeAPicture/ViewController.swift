@@ -28,22 +28,40 @@ func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
     }
 }
 
-func checkForMicrophoneAccess(andThen f:(()->())? = nil) {
-    let status = AVAudioSession.sharedInstance().recordPermission()
+func checkForMicrophoneCaptureAccess(andThen f:(()->())? = nil) {
+    let status = AVCaptureDevice.authorizationStatus(forMediaType:AVMediaTypeAudio)
     switch status {
-    case [.granted]:
+    case .authorized:
         f?()
-    case [.undetermined]:
-        AVAudioSession.sharedInstance().requestRecordPermission { granted in
+    case .notDetermined:
+        AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeAudio) { granted in
             if granted {
                 DispatchQueue.main.async {
-                	f?()
-				}
+                    f?()
+                }
             }
         }
-    default:break;
+    case .restricted:
+        // do nothing
+        break
+    case .denied:
+        let alert = UIAlertController(
+            title: "Need Authorization",
+            message: "Wouldn't you like to authorize this app " +
+            "to use the microphone?",
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(
+            title: "No", style: .cancel))
+        alert.addAction(UIAlertAction(
+        title: "OK", style: .default) {
+            _ in
+            let url = URL(string:UIApplicationOpenSettingsURLString)!
+            UIApplication.shared.open(url)
+        })
+        UIApplication.shared.delegate!.window!!.rootViewController!.present(alert, animated:true)
     }
 }
+
 
 
 func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
@@ -90,29 +108,40 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     weak var picker : UIImagePickerController?
         
     @IBAction func doTake (_ sender: Any!) {
-        let cam = UIImagePickerControllerSourceType.camera
-        let ok = UIImagePickerController.isSourceTypeAvailable(cam)
-        if (!ok) {
-            print("no camera")
-            return
-        }
-        let desiredType = kUTTypeImage as NSString as String
-        // let desiredType = kUTTypeMovie as NSString as String
-        let arr = UIImagePickerController.availableMediaTypes(for:cam)
-        print(arr)
-        if arr?.index(of:desiredType) == nil {
-            print("no capture")
-            return
-        }
+        checkForMovieCaptureAccess(andThen: self.micCheck)
+    }
+    
+    func micCheck() {
+        checkForMicrophoneCaptureAccess(andThen:self.reallyTake)
+    }
+    
+    func reallyTake() {
+        let src = UIImagePickerControllerSourceType.camera
+        guard UIImagePickerController.isSourceTypeAvailable(src) else {return}
+        
+        var which : Int {return 0} // 1, 2, 3, 4
+        var desiredTypes : [String] = {
+            switch which {
+            case 1: return [kUTTypeImage as String]
+            case 2: return [kUTTypeMovie as String]
+            case 3: return [kUTTypeImage as String, kUTTypeMovie as String]
+            case 4: return [kUTTypeImage as String, kUTTypeLivePhoto as String] // nope
+            default: return [kUTTypeImage as String, kUTTypeMovie as String, kUTTypeLivePhoto as String] // nope
+            }
+        }()
+        // so I think what this proves is that they are not going to let me take a live photo this way
+        
+        guard let arr = UIImagePickerController.availableMediaTypes(for:src) else {return}
+        desiredTypes = desiredTypes.filter {arr.contains($0)}
+        guard desiredTypes.count > 0 else {return}
+        
+        
         let picker = UIImagePickerController()
-        picker.sourceType = .camera
-        picker.mediaTypes = [desiredType]
+        picker.sourceType = src
+        picker.mediaTypes = desiredTypes
+        picker.mediaTypes = arr // instead of desiredTypes; that was just for testing
         // picker.allowsEditing = true
         picker.delegate = self
-        
-        // user will get the "access the camera" system dialog at this point if necessary
-        // if the user refuses, Very Weird Things happen...
-        // better to get authorization beforehand
         
         self.present(picker, animated: true)
     }
@@ -126,24 +155,29 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             print(info[UIImagePickerControllerReferenceURL])
             let url = info[UIImagePickerControllerMediaURL] as? URL
             var im = info[UIImagePickerControllerOriginalImage] as? UIImage
-            let edim = info[UIImagePickerControllerEditedImage] as? UIImage
-            if edim != nil {
-                im = edim
+            if let ed = info[UIImagePickerControllerEditedImage] as? UIImage {
+                im = ed
+            }
+            if let live = info[UIImagePickerControllerLivePhoto] {
+                print("I got a live photo!") // nope
             }
             self.dismiss(animated:true) {
-                let type = info[UIImagePickerControllerMediaType] as? String
-                if type != nil {
-                    switch type! {
-                    case kUTTypeImage as NSString as String:
+                let type = info[UIImagePickerControllerMediaType]
+                if let type = type as? NSString {
+                    switch type {
+                    case kUTTypeImage:
                         if im != nil {
                             self.showImage(im!)
                             // showing how simple it is to save into the Camera Roll
-                            let lib = PHPhotoLibrary.shared()
-                            lib.performChanges({
-                                PHAssetChangeRequest.creationRequestForAsset(from: im!)
+                            checkForPhotoLibraryAccess {
+                                let lib = PHPhotoLibrary.shared()
+                                typealias Req = PHAssetChangeRequest
+                                lib.performChanges({
+                                    Req.creationRequestForAsset(from: im!)
                                 })
+                            }
                         }
-                    case kUTTypeMovie as NSString as String:
+                    case kUTTypeMovie:
                         if url != nil {
                             self.showMovie(url!)
                         }
