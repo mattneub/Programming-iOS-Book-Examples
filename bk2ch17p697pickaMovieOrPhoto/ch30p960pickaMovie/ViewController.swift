@@ -63,9 +63,11 @@ class ViewController: UIViewController {
                 else { print("alas"); return }
             guard let arr = UIImagePickerController.availableMediaTypes(for:src)
                 else { print("no available types"); return }
-            let picker = MyImagePickerController()
+            let picker = UIImagePickerController()
             picker.sourceType = src
             picker.mediaTypes = arr
+            // uncomment next line to try live photos; I see no evident that this is working as advertised
+            // picker.mediaTypes = [kUTTypeLivePhoto as String, kUTTypeImage as String]
             picker.delegate = self
             
             picker.allowsEditing = true // try true
@@ -108,6 +110,9 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
             var im = info[UIImagePickerControllerOriginalImage] as? UIImage
             if let ed = info[UIImagePickerControllerEditedImage] as? UIImage {
                 im = ed
+            }
+            if let live = info[UIImagePickerControllerLivePhoto] {
+                print("got a live photo!")
             }
             self.dismiss(animated:true) {
                 if let mediatype = info[UIImagePickerControllerMediaType],
