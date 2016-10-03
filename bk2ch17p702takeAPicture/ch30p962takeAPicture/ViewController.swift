@@ -140,7 +140,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         picker.sourceType = src
         picker.mediaTypes = desiredTypes
         picker.mediaTypes = arr // instead of desiredTypes; that was just for testing
-        // picker.allowsEditing = true
+        picker.allowsEditing = false
         picker.delegate = self
         
         self.present(picker, animated: true)
@@ -171,9 +171,10 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                             // showing how simple it is to save into the Camera Roll
                             checkForPhotoLibraryAccess {
                                 let lib = PHPhotoLibrary.shared()
-                                typealias Req = PHAssetChangeRequest
                                 lib.performChanges({
-                                    Req.creationRequestForAsset(from: im!)
+                                    typealias Req = PHAssetChangeRequest
+                                    let req = Req.creationRequestForAsset(from: im!)
+                                    // apply metadata info here, as desired
                                 })
                             }
                         }

@@ -143,9 +143,9 @@ class ViewController: UIViewController {
             
             switch which {
             case 1:
-                typealias Req = PHAssetCollectionChangeRequest
                 PHPhotoLibrary.shared().performChanges({
                     let t = "TestAlbum"
+                    typealias Req = PHAssetCollectionChangeRequest
                     Req.creationRequestForAssetCollection(withTitle:t)
                 })
 
@@ -153,9 +153,9 @@ class ViewController: UIViewController {
             case 2:
                 
                 var ph : PHObjectPlaceholder?
-                typealias Req = PHAssetCollectionChangeRequest
                 PHPhotoLibrary.shared().performChanges({
                     let t = "TestAlbum"
+                    typealias Req = PHAssetCollectionChangeRequest
                     let cr = Req.creationRequestForAssetCollection(withTitle:t)
                     ph = cr.placeholderForCreatedAssetCollection
                 }) { ok, err in
@@ -213,7 +213,8 @@ class ViewController: UIViewController {
             }
             
             PHPhotoLibrary.shared().performChanges({
-                let cr = PHAssetCollectionChangeRequest(for: alb2)
+                typealias Req = PHAssetCollectionChangeRequest
+                let cr = Req(for: alb2)
                 cr?.addAssets([asset1] as NSArray)
                 }, completionHandler: {
                     // completion may take some considerable time (asynchronous)

@@ -3,6 +3,7 @@
 import UIKit
 import MobileCoreServices
 import Photos
+import PhotosUI
 import AVKit
 
 func delay(_ delay:Double, closure:@escaping ()->()) {
@@ -65,12 +66,10 @@ class ViewController: UIViewController {
                 else { print("no available types"); return }
             let picker = UIImagePickerController()
             picker.sourceType = src
-            picker.mediaTypes = arr
-            // uncomment next line to try live photos; I see no evident that this is working as advertised
-            // picker.mediaTypes = [kUTTypeLivePhoto as String, kUTTypeImage as String]
+            picker.mediaTypes = [kUTTypeLivePhoto as String, kUTTypeImage as String, kUTTypeMovie as String]
             picker.delegate = self
             
-            picker.allowsEditing = true // try true
+            picker.allowsEditing = false // try true
             
             // this will automatically be fullscreen on phone and pad, looks fine
             // note that for .photoLibrary, iPhone app must permit portrait orientation
@@ -111,13 +110,15 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
             if let ed = info[UIImagePickerControllerEditedImage] as? UIImage {
                 im = ed
             }
-            if let live = info[UIImagePickerControllerLivePhoto] {
-                print("got a live photo!")
-            }
+            let live = info[UIImagePickerControllerLivePhoto] as? PHLivePhoto
             self.dismiss(animated:true) {
                 if let mediatype = info[UIImagePickerControllerMediaType],
                     let type = mediatype as? NSString {
                         switch type {
+                        case kUTTypeLivePhoto:
+                            if live != nil {
+                                self.showLivePhoto(live!)
+                            }
                         case kUTTypeImage:
                             if im != nil {
                                 self.showImage(im!)
@@ -160,6 +161,14 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         av.view.backgroundColor = self.redView.backgroundColor
         self.redView.addSubview(av.view)
         av.didMove(toParentViewController: self)
+    }
+    
+    func showLivePhoto(_ ph:PHLivePhoto) {
+        self.clearAll()
+        let v = PHLivePhotoView(frame:self.redView.bounds)
+        v.contentMode = .scaleAspectFit
+        v.livePhoto = ph
+        self.redView.addSubview(v)
     }
     
 }

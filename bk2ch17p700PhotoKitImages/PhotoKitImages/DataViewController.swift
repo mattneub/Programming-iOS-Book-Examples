@@ -150,7 +150,8 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             // now we must tell the photo library to pick up the edited image
             PHPhotoLibrary.shared().performChanges({
                 print("finishing")
-                let req = PHAssetChangeRequest(for: self.asset)
+                typealias Req = PHAssetChangeRequest
+                let req = Req(for: self.asset)
                 req.contentEditingOutput = output
             }) { ok, err in
                 DispatchQueue.main.async {
