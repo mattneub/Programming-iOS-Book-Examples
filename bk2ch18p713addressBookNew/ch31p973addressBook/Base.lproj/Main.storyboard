@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="R14-du-zMI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="R14-du-zMI">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,71 +16,85 @@
                         <viewControllerLayoutGuide type="bottom" id="60E-aI-5Fr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHG-mr-r5m">
-                                <rect key="frame" x="20" y="20" width="99" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHG-mr-r5m">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Find Myself">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="doFindMoi:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jU5-dx-hsv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNI-pc-EuW">
-                                <rect key="frame" x="20" y="64" width="124" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNI-pc-EuW">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Create Snidely">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="doCreateSnidely:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5pr-wH-qFZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gur-67-UpL">
-                                <rect key="frame" x="20" y="108" width="118" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gur-67-UpL">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="People Picker">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="doPeoplePicker:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BV3-rw-fm2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAO-wA-SQE">
-                                <rect key="frame" x="20" y="154" width="109" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAO-wA-SQE">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="View Snidely">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="doViewPerson:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dFM-rx-r4C"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fb5-kp-GR8">
-                                <rect key="frame" x="20" y="199" width="99" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fb5-kp-GR8">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="New Person">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="doNewPerson:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Joc-0y-qFW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZJ-9Q-jlk">
-                                <rect key="frame" x="20" y="247" width="133" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZJ-9Q-jlk">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Unknown Person">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="doUnknownPerson:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kPF-48-a9n"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FZJ-9Q-jlk" firstAttribute="top" secondItem="Fb5-kp-GR8" secondAttribute="bottom" constant="30" id="0qm-ma-DKS"/>
+                            <constraint firstItem="FZJ-9Q-jlk" firstAttribute="leading" secondItem="CHG-mr-r5m" secondAttribute="leading" id="4PJ-ID-QBf"/>
+                            <constraint firstItem="rNI-pc-EuW" firstAttribute="leading" secondItem="CHG-mr-r5m" secondAttribute="leading" id="5WR-bH-AVw"/>
+                            <constraint firstItem="Fb5-kp-GR8" firstAttribute="top" secondItem="sAO-wA-SQE" secondAttribute="bottom" constant="30" id="BMd-36-Ac3"/>
+                            <constraint firstItem="sAO-wA-SQE" firstAttribute="top" secondItem="Gur-67-UpL" secondAttribute="bottom" constant="30" id="LIw-Gg-vdV"/>
+                            <constraint firstItem="Gur-67-UpL" firstAttribute="leading" secondItem="CHG-mr-r5m" secondAttribute="leading" id="VMg-hn-1Pz"/>
+                            <constraint firstItem="CHG-mr-r5m" firstAttribute="top" secondItem="84y-En-Ix4" secondAttribute="bottom" constant="20" id="ZQs-bh-VVf"/>
+                            <constraint firstItem="Fb5-kp-GR8" firstAttribute="leading" secondItem="CHG-mr-r5m" secondAttribute="leading" id="bFy-bZ-leP"/>
+                            <constraint firstItem="rNI-pc-EuW" firstAttribute="top" secondItem="CHG-mr-r5m" secondAttribute="bottom" constant="30" id="gZO-fV-GH7"/>
+                            <constraint firstItem="sAO-wA-SQE" firstAttribute="leading" secondItem="CHG-mr-r5m" secondAttribute="leading" id="jBG-Th-oEe"/>
+                            <constraint firstItem="Gur-67-UpL" firstAttribute="top" secondItem="rNI-pc-EuW" secondAttribute="bottom" constant="30" id="nss-wx-Gpf"/>
+                            <constraint firstItem="CHG-mr-r5m" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="pVJ-5X-RBT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OZT-8r-mbx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="699" y="20"/>
+            <point key="canvasLocation" x="930" y="28"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TYd-FM-z9G">
@@ -95,7 +112,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J42-nE-MfU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="516" y="40"/>
+            <point key="canvasLocation" x="464" y="28"/>
         </scene>
     </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
 </document>

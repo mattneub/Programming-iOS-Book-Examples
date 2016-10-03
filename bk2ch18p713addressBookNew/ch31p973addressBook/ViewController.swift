@@ -9,38 +9,32 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
-class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewControllerDelegate {
-    
-    // authorization
-    
-    @discardableResult
-    func determineStatus() -> Bool {
-        let status = CNContactStore.authorizationStatus(for:.contacts)
-        switch status {
-        case .authorized:
-            return true
-        case .notDetermined:
-            CNContactStore().requestAccess(for:.contacts) {_ in}
-            return false
-        case .restricted:
-            return false
-        case .denied:
-            let alert = UIAlertController(title: "Need Authorization", message: "Wouldn't you like to authorize this app to use your Contacts?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "No", style: .cancel))
-            alert.addAction(UIAlertAction(title: "OK", style: .default) {
-                _ in
-                let url = URL(string:UIApplicationOpenSettingsURLString)!
-                UIApplication.shared.open(url)
-            })
-            self.present(alert, animated:true)
-            return false
+func checkForContactsAccess(andThen f:(()->())? = nil) {
+    let status = CNContactStore.authorizationStatus(for:.contacts)
+    switch status {
+    case .authorized:
+        f?()
+    case .notDetermined:
+        CNContactStore().requestAccess(for:.contacts) { ok, err in
+            if ok {
+                DispatchQueue.main.async {
+                    f?()
+                }
+            }
         }
+    case .restricted:
+        // do nothing
+        break
+    case .denied:
+        // do nothing, or beg the user to authorize us in Settings
+        break
     }
+}
+
+class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewControllerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.determineStatus()
-        NotificationCenter.default.addObserver(self, selector: #selector(determineStatus), name: .UIApplicationWillEnterForeground, object: nil)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Ignore Me", style: .plain, target: nil, action: nil)
     }
@@ -53,73 +47,72 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     //
     
     @IBAction func doFindMoi (_ sender: Any!) {
-        CNContactStore().requestAccess(for:.contacts) {
-            ok, err in
-            guard ok else {
-                print("not authorized")
-                return
-            }
-            var which : Int {return 2} // 1 or 2
-            do {
-                var premoi : CNContact!
-                switch which {
-                case 1:
-                    let pred = CNContact.predicateForContacts(matchingName:"Matt")
-                    var matts = try CNContactStore().unifiedContacts(matching:pred, keysToFetch: [
-                        CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor
-                        ])
-                    matts = matts.filter{$0.familyName == "Neuburg"}
-                    guard let moi = matts.first else {
-                        print("couldn't find myself")
-                        return
-                    }
-                    premoi = moi
-                case 2:
-                    let pred = CNContact.predicateForContacts(matchingName:"Matt")
-                    let req = CNContactFetchRequest(keysToFetch: [
-                        CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor
-                        ])
-                    req.predicate = pred
-                    var matt : CNContact? = nil
-                    try CNContactStore().enumerateContacts(with:req) {
-                        con, stop in
-                        if con.familyName == "Neuburg" {
-                            matt = con
-                            stop.pointee = true
+        checkForContactsAccess {
+            DispatchQueue.global(qos: .userInitiated).async {
+                var which : Int {return 2} // 1 or 2
+                do {
+                    var premoi : CNContact!
+                    switch which {
+                    case 1:
+                        let pred = CNContact.predicateForContacts(matchingName:"Matt")
+                        var matts = try CNContactStore().unifiedContacts(matching:pred, keysToFetch: [
+                            CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor
+                            ])
+                        matts = matts.filter{$0.familyName == "Neuburg"}
+                        guard let moi = matts.first else {
+                            print("couldn't find myself")
+                            return
                         }
+                        premoi = moi
+                    case 2:
+                        let pred = CNContact.predicateForContacts(matchingName:"Matt")
+                        let req = CNContactFetchRequest(keysToFetch: [
+                            CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor
+                            ])
+                        req.predicate = pred
+                        var matt : CNContact? = nil
+                        try CNContactStore().enumerateContacts(with:req) {
+                            con, stop in
+                            if con.familyName == "Neuburg" {
+                                matt = con
+                                stop.pointee = true
+                            }
+                        }
+                        guard let moi = matt else {
+                            print("couldn't find myself")
+                            return
+                        }
+                        premoi = moi
+                    default:break
                     }
-                    guard let moi = matt else {
-                        print("couldn't find myself")
-                        return
+                    var moi = premoi!
+                    print(moi)
+                    if moi.isKeyAvailable(CNContactEmailAddressesKey) {
+                        print(moi.emailAddresses)
+                    } else {
+                        print("you haven't fetched emails yet")
                     }
-                    premoi = moi
-                default:break
+                    moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor, CNContactEmailAddressesKey as CNKeyDescriptor])
+                    let emails = moi.emailAddresses
+                    let workemails = emails.filter{$0.label == CNLabelWork}.map{$0.value}
+                    print(workemails)
+                    let full = CNContactFormatterStyle.fullName
+                    let keys = CNContactFormatter.descriptorForRequiredKeys(for:full)
+                    moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [keys, CNContactEmailAddressesKey as CNKeyDescriptor])
+                    if let name = CNContactFormatter.string(from: moi, style: full) {
+                        print("\(name): \(workemails[0])") // Matt Neuburg: matt@tidbits.com
+                    }
+                } catch {
+                    print(error)
                 }
-                var moi = premoi!
-                print(moi)
-                if moi.isKeyAvailable(CNContactEmailAddressesKey) {
-                    print(moi.emailAddresses)
-                } else {
-                    print("you haven't fetched emails yet")
-                }
-                moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor, CNContactEmailAddressesKey as CNKeyDescriptor])
-                let emails = moi.emailAddresses
-                let workemails = emails.filter{$0.label == CNLabelWork}.map{$0.value}
-                print(workemails)
-                let full = CNContactFormatterStyle.fullName
-                let keys = CNContactFormatter.descriptorForRequiredKeys(for:full)
-                moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [keys, CNContactEmailAddressesKey as CNKeyDescriptor])
-                if let name = CNContactFormatter.string(from: moi, style: full) {
-                    print("\(name): \(workemails[0])") // Matt Neuburg: matt@tidbits.com
-                }
-            } catch {
-                print(error)
             }
         }
     }
 
     
     @IBAction func doCreateSnidely (_ sender: Any!) {
+        checkForContactsAccess {
+
         let snidely = CNMutableContact()
         snidely.givenName = "Snidely"
         snidely.familyName = "Whiplash"
@@ -128,12 +121,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         snidely.imageData = UIImagePNGRepresentation(UIImage(named:"snidely.jpg")!)
         let save = CNSaveRequest()
         save.add(snidely, toContainerWithIdentifier: nil)
-        CNContactStore().requestAccess(for:.contacts) {
-            ok, error in
-            guard ok else {
-                print("not authorized")
-                return
-            }
+        checkForContactsAccess {
             do {
                 try CNContactStore().execute(save)
                 print("created snidely!")
@@ -141,15 +129,21 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                 print(error)
             }
         }
+            
+        }
     }
 
     @IBAction func doPeoplePicker (_ sender: Any!) {
+        checkForContactsAccess {
+
         let picker = CNContactPickerViewController()
         picker.delegate = self
         picker.displayedPropertyKeys = [CNContactEmailAddressesKey]
         picker.predicateForSelectionOfProperty = NSPredicate(format: "key == 'emailAddresses'")
         picker.predicateForEnablingContact = NSPredicate(format: "emailAddresses.@count > 0")
         self.present(picker, animated:true)
+            
+        }
     }
     
     func contactPicker(_ picker: CNContactPickerViewController, didSelect prop: CNContactProperty) {
@@ -160,12 +154,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
 
     @IBAction func doViewPerson (_ sender: Any!) {
         
-        CNContactStore().requestAccess(for: .contacts) {
-            ok, err in
-            guard ok else {
-                print("not authorized")
-                return
-            }
+        checkForContactsAccess {
             do {
                 let pred = CNContact.predicateForContacts(matchingName: "Snidely")
                 let keys = CNContactViewController.descriptorForRequiredKeys()
@@ -196,6 +185,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         return false
     }
 
+    // still totally unusable
     @IBAction func doNewPerson (_ sender: Any!) {
         let con = CNMutableContact()
         con.givenName = "Dudley"
@@ -228,76 +218,4 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
 
 
 }
-
-/*
-
-func delay(delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
-}
-
-class ViewController: UIViewController, ABPeoplePickerNavigationControllerDelegate, ABPersonViewControllerDelegate, ABNewPersonViewControllerDelegate, ABUnknownPersonViewControllerDelegate {
-
-
-
-
-    // =========
-    
-    @IBAction func doNewPerson (_ sender: Any!) {
-        let npvc = ABNewPersonViewController()
-        npvc.newPersonViewDelegate = self
-        let nc = UINavigationController(rootViewController:npvc)
-        self.present(nc, animated:true)
-    }
-    
-
-    func newPersonViewController(newPersonView: ABNewPersonViewController, didCompleteWithNewPerson person: ABRecord?) {
-            if person != nil {
-                // if we didn't have access, we wouldn't be here!
-                // if we do not delete the person, the person will stay in the contacts database automatically!
-                ABAddressBookRemoveRecord(self.adbk, person, nil)
-                ABAddressBookSave(self.adbk, nil)
-                let name = ABRecordCopyCompositeName(person).takeRetainedValue()
-                print("I have a person named \(name), not saving this person to the database")
-                // do something with new person
-            }
-            self.dismiss(animated:true)
-    }
-    
-    // =========
-    
-    @IBAction func doUnknownPerson (_ sender: Any!) {
-        let unk = ABUnknownPersonViewController()
-        unk.message = "Person who really knows trees"
-        unk.allowsAddingToAddressBook = true
-        unk.allowsActions = true // user can tap an email address to switch to mail, for example
-        let person:ABRecord = ABPersonCreate().takeRetainedValue()
-        ABRecordSetValue(person, kABPersonFirstNameProperty, "Johnny", nil)
-        ABRecordSetValue(person, kABPersonLastNameProperty, "Appleseed", nil)
-        let addr:ABMutableMultiValue = ABMultiValueCreateMutable(
-            ABPropertyType(kABStringPropertyType)).takeRetainedValue()
-        ABMultiValueAddValueAndLabel(addr, "johnny@seeds.com", kABHomeLabel, nil)
-        ABRecordSetValue(person, kABPersonEmailProperty, addr, nil)
-        unk.displayedPerson = person
-        unk.unknownPersonViewDelegate = self
-        self.showViewController(unk, sender:self) // push onto navigation controller
-    }
-
-    func unknownPersonViewController(
-        unknownCardViewController: ABUnknownPersonViewController,
-        didResolveToPerson person: ABRecord?) {
-            if let person:ABRecord = person {
-                let name = ABRecordCopyCompositeName(person).takeRetainedValue()
-                print("user did something with \(name)") // only implementing this to shut the compiler up
-            }
-    }
-    
-    
-}
-
-*/
 
