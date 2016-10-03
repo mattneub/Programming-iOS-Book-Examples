@@ -3,7 +3,6 @@
 import UIKit
 import AVFoundation
 
-import CoreMedia
 import AVKit
 
 extension CGRect {

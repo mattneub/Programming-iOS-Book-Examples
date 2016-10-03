@@ -3,7 +3,6 @@
 import UIKit
 import MediaPlayer
 import AVFoundation
-import CoreMedia
 import AVKit
 
 func delay(_ delay:Double, closure:@escaping ()->()) {
