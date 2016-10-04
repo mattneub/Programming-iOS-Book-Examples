@@ -200,7 +200,8 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
             let vc = CNContactViewController(for:snide)
             vc.delegate = self
             vc.message = "Nyah ah ahhh"
-            vc.allowsActions = true
+            vc.allowsActions = false
+            //vc.highlightProperty(withKey: CNContactEmailAddressesKey, identifier: CNLabelHome)
             vc.contactStore = nil // no effect, can't prevent saving
             DispatchQueue.main.async {
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -212,7 +213,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
 
     func contactViewController(_ vc: CNContactViewController, didCompleteWith con: CNContact?) {
         print(con)
-        self.dismiss(animated: true)
+        self.dismiss(animated: true) // needed for `forNewContact`, does no harm in the others
     }
     
     func contactViewController(_ vc: CNContactViewController, shouldPerformDefaultActionFor prop: CNContactProperty) -> Bool {
@@ -238,7 +239,8 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         unkvc.message = "He knows his trees"
         unkvc.contactStore = CNContactStore()
         unkvc.delegate = self
-        unkvc.allowsActions = false
+        unkvc.allowsActions = true
+        // unkvc.displayedPropertyKeys = []
         self.navigationController?.pushViewController(unkvc, animated: true)
     }
 
