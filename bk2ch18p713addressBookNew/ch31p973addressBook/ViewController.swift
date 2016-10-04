@@ -27,6 +27,7 @@ func checkForContactsAccess(andThen f:(()->())? = nil) {
         break
     case .denied:
         // do nothing, or beg the user to authorize us in Settings
+        print("denied")
         break
     }
 }
@@ -112,87 +113,120 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     
     @IBAction func doCreateSnidely (_ sender: Any!) {
         checkForContactsAccess {
-
-        let snidely = CNMutableContact()
-        snidely.givenName = "Snidely"
-        snidely.familyName = "Whiplash"
-        let email = CNLabeledValue(label: CNLabelHome, value: "snidely@villains.com" as NSString)
-        snidely.emailAddresses.append(email)
-        snidely.imageData = UIImagePNGRepresentation(UIImage(named:"snidely.jpg")!)
-        let save = CNSaveRequest()
-        save.add(snidely, toContainerWithIdentifier: nil)
-        checkForContactsAccess {
-            do {
-                try CNContactStore().execute(save)
-                print("created snidely!")
-            } catch {
-                print(error)
+            DispatchQueue.global(qos: .userInitiated).async {
+                do {
+                    let snidely = CNMutableContact()
+                    snidely.givenName = "Snidely"
+                    snidely.familyName = "Whiplash"
+                    let email = CNLabeledValue(label: CNLabelHome, value: "snidely@villains.com" as NSString)
+                    snidely.emailAddresses.append(email)
+                    snidely.imageData = UIImagePNGRepresentation(UIImage(named:"snidely")!)
+                    let save = CNSaveRequest()
+                    save.add(snidely, toContainerWithIdentifier: nil)
+                    try CNContactStore().execute(save)
+                    print("created snidely!")
+                } catch {
+                    print(error)
+                }
             }
-        }
-            
         }
     }
 
     @IBAction func doPeoplePicker (_ sender: Any!) {
-        checkForContactsAccess {
+        // checkForContactsAccess {
 
         let picker = CNContactPickerViewController()
         picker.delegate = self
-        picker.displayedPropertyKeys = [CNContactEmailAddressesKey]
-        picker.predicateForSelectionOfProperty = NSPredicate(format: "key == 'emailAddresses'")
-        picker.predicateForEnablingContact = NSPredicate(format: "emailAddresses.@count > 0")
+        do {
+            picker.displayedPropertyKeys = [CNContactEmailAddressesKey]
+//            picker.predicateForSelectionOfProperty = NSPredicate(format: "key == 'emailAddresses'")
+            picker.predicateForEnablingContact = NSPredicate(format: "emailAddresses.@count > 0")
+//            picker.predicateForSelectionOfContact = NSPredicate(format: "emailAddresses.@count > 0")
+        }
         self.present(picker, animated:true)
             
-        }
+        //}
     }
     
+//    func contactPicker(_ picker: CNContactPickerViewController, didSelect con: CNContact) {
+//        print("con")
+//        print(con)
+//    }
+    
     func contactPicker(_ picker: CNContactPickerViewController, didSelect prop: CNContactProperty) {
+        print("prop")
         print(prop)
-        print(prop.contact)
-        self.dismiss(animated:true)
     }
 
+
     @IBAction func doViewPerson (_ sender: Any!) {
+        // let's do an experiment:
+        // if we have authorization, get the contact from the database
+        // if we don't, get it from user defaults
+        // in this way, we discover whether the view controller can be used without authorization
+        // hint: yes it can
         
-        checkForContactsAccess {
-            do {
-                let pred = CNContact.predicateForContacts(matchingName: "Snidely")
-                let keys = CNContactViewController.descriptorForRequiredKeys()
-                let snides = try CNContactStore().unifiedContacts(matching: pred, keysToFetch: [keys])
-                guard let snide = snides.first else {
-                    print("no snidely")
-                    return
+        DispatchQueue.global(qos: .userInitiated).async {
+            var snide : CNContact!
+            let status = CNContactStore.authorizationStatus(for:.contacts)
+            if status == .authorized {
+                print("getting from store")
+                do {
+                    let pred = CNContact.predicateForContacts(matchingName: "Snidely")
+                    let keys = CNContactViewController.descriptorForRequiredKeys()
+                    let snides = try CNContactStore().unifiedContacts(matching: pred, keysToFetch: [keys])
+                    guard let snide1 = snides.first else {
+                        print("no snidely")
+                        return
+                    }
+                    snide = snide1
+                    let d = NSKeyedArchiver.archivedData(withRootObject: snide)
+                    let ud = UserDefaults.standard
+                    ud.set(d, forKey:"snide")
+                } catch {
+                    print (error)
                 }
-                let vc = CNContactViewController(for:snide)
-                vc.delegate = self
-                vc.message = "Nyah ah ahhh"
-                vc.allowsActions = false
-                vc.contactStore = CNContactStore()
-                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            } catch {
-                print(error)
             }
+            else {
+                print("getting from defaults")
+                let ud = UserDefaults.standard
+                if let d = ud.object(forKey: "snide") as? Data {
+                    if let snide1 = NSKeyedUnarchiver.unarchiveObject(with: d) as? CNContact {
+                        snide = snide1
+                    }
+                }
+            }
+            
+            let vc = CNContactViewController(for:snide)
+            vc.delegate = self
+            vc.message = "Nyah ah ahhh"
+            vc.allowsActions = true
+            vc.contactStore = nil // no effect, can't prevent saving
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+
         }
+        
     }
 
     func contactViewController(_ vc: CNContactViewController, didCompleteWith con: CNContact?) {
         print(con)
+        self.dismiss(animated: true)
     }
     
     func contactViewController(_ vc: CNContactViewController, shouldPerformDefaultActionFor prop: CNContactProperty) -> Bool {
+        print("tapped \(prop)")
         return false
     }
 
-    // still totally unusable
     @IBAction func doNewPerson (_ sender: Any!) {
         let con = CNMutableContact()
         con.givenName = "Dudley"
         con.familyName = "Doright"
         let npvc = CNContactViewController(forNewContact: con)
         npvc.delegate = self
-        self.present(UINavigationController(rootViewController: npvc), animated: true)
+        self.present(UINavigationController(rootViewController: npvc), animated:true)
     }
     
     @IBAction func doUnknownPerson (_ sender: Any!) {
@@ -206,13 +240,6 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
         unkvc.delegate = self
         unkvc.allowsActions = false
         self.navigationController?.pushViewController(unkvc, animated: true)
-        // this doesn't work either
-        // self.present(UINavigationController(rootViewController: unkvc), animated:true)
-        // and this doesn't work either!
-        // self.present(unkvc, animated:true)
-        
-        // unkvc.navigationController?.navigationBar.tintColor = .red
-
     }
 
 

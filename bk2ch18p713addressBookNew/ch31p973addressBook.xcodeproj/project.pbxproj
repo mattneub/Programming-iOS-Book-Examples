@@ -10,7 +10,6 @@
 		324DD41E19A4F82500E85278 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324DD41D19A4F82500E85278 /* ViewController.swift */; };
 		32B1342E1BB9823500B0BD94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32B1342D1BB9823500B0BD94 /* LaunchScreen.storyboard */; };
 		32B134301BB9824500B0BD94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B1342F1BB9824500B0BD94 /* AppDelegate.swift */; };
-		32FCD3621BC2A0F100B28678 /* snidely.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32FCD3611BC2A0F100B28678 /* snidely.jpg */; };
 		C9D7D14518293B1800476387 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9D7D14318293B1800476387 /* Main.storyboard */; };
 		C9D7D14A18293B1800476387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9D7D14918293B1800476387 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -19,7 +18,6 @@
 		324DD41D19A4F82500E85278 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32B1342D1BB9823500B0BD94 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32B1342F1BB9824500B0BD94 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		32FCD3611BC2A0F100B28678 /* snidely.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snidely.jpg; sourceTree = "<group>"; };
 		C9D7D12E18293B1800476387 /* ch31p973addressBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch31p973addressBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D7D13918293B1800476387 /* ch31p973addressBook-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch31p973addressBook-Info.plist"; sourceTree = "<group>"; };
 		C9D7D14418293B1800476387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -59,7 +57,6 @@
 				32B1342F1BB9824500B0BD94 /* AppDelegate.swift */,
 				C9D7D14318293B1800476387 /* Main.storyboard */,
 				324DD41D19A4F82500E85278 /* ViewController.swift */,
-				32FCD3611BC2A0F100B28678 /* snidely.jpg */,
 				32B1342D1BB9823500B0BD94 /* LaunchScreen.storyboard */,
 				C9D7D14918293B1800476387 /* Assets.xcassets */,
 				C9D7D13918293B1800476387 /* ch31p973addressBook-Info.plist */,
@@ -128,7 +125,6 @@
 			files = (
 				32B1342E1BB9823500B0BD94 /* LaunchScreen.storyboard in Resources */,
 				C9D7D14A18293B1800476387 /* Assets.xcassets in Resources */,
-				32FCD3621BC2A0F100B28678 /* snidely.jpg in Resources */,
 				C9D7D14518293B1800476387 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +237,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch31p973addressBook/ch31p973addressBook-Prefix.pch";
 				INFOPLIST_FILE = "ch31p973addressBook/ch31p973addressBook-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -261,6 +258,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch31p973addressBook/ch31p973addressBook-Prefix.pch";
 				INFOPLIST_FILE = "ch31p973addressBook/ch31p973addressBook-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
