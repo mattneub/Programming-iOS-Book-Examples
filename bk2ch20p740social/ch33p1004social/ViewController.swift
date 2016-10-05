@@ -16,7 +16,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, MFM
         self.present(vc, animated:true)
     }
 
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         print("mail result: \(result.rawValue)")
         self.dismiss(animated:true)
     }
@@ -48,8 +48,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, MFM
         guard let vc = SLComposeViewController(forServiceType:SLServiceTypeTwitter) else {
             return
         }
-        vc.completionHandler = {
-            (result:SLComposeViewControllerResult) in
+        vc.completionHandler = { result in // SLComposeViewControllerResult
             print("tweet result \(result.rawValue)")
             self.dismiss(animated:true)
         };
