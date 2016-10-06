@@ -34,7 +34,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         // let span = MKCoordinateSpanMake(0.0005, 0.0005)
         mi.openInMaps(launchOptions:[
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
-            // MKLaunchOptionsMapSpanKey: NSValue(MKCoordinateSpan:span)
+            // MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan:span)
             ])
     }
     
@@ -55,9 +55,8 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             return
         }
         let geo = CLGeocoder()
-        geo.reverseGeocodeLocation(loc) {
-            (placemarks : [CLPlacemark]?, error : NSError?) in
-            guard let ps = placemarks where ps.count > 0 else {return}
+        geo.reverseGeocodeLocation(loc) { placemarks, error in
+            guard let ps = placemarks, ps.count > 0 else {return}
             let p = ps[0]
             if let d = p.addressDictionary {
                 if let add = d["FormattedAddressLines"] as? [String] {
@@ -74,8 +73,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         let s = searchBar.text
         if s == nil || s!.characters.count < 5 { return }
         let geo = CLGeocoder()
-        geo.geocodeAddressString(s!) {
-            (placemarks : [CLPlacemark]?, error : NSError?) in
+        geo.geocodeAddressString(s!) { placemarks, error in
             guard let placemarks = placemarks else {
                 print(error?.localizedDescription)
                 return
@@ -100,8 +98,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         req.naturalLanguageQuery = "Thai restaurant"
         req.region = MKCoordinateRegionMake(loc.coordinate, MKCoordinateSpanMake(1,1))
         let search = MKLocalSearch(request:req)
-        search.start {
-            (response : MKLocalSearchResponse?, error : NSError?) in
+        search.start { response, error in
             guard let response = response else {
                 print(error)
                 return
@@ -131,8 +128,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         req.naturalLanguageQuery = "Thai restaurant"
         req.region = self.map.region
         let search = MKLocalSearch(request:req)
-        search.start {
-            (response : MKLocalSearchResponse?, error : NSError?) in
+        search.start { response, error in
             guard let response = response else {
                 print(error)
                 return
@@ -143,8 +139,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             req.source = MKMapItem.forCurrentLocation()
             req.destination = mi
             let dir = MKDirections(request:req)
-            dir.calculate {
-                (response:MKDirectionsResponse?, error:NSError?) in
+            dir.calculate { response, error in
                 guard let response = response else {
                     print(error)
                     return
@@ -163,7 +158,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let overlay = overlay as? MKPolyline {
             let v = MKPolylineRenderer(polyline:overlay)
-            v.strokeColor = UIColor.blue().withAlphaComponent(0.8)
+            v.strokeColor = UIColor.blue.withAlphaComponent(0.8)
             v.lineWidth = 2
             return v
         }

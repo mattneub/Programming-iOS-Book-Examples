@@ -46,12 +46,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let span = MKCoordinateSpanMake(0.015, 0.015)
         let reg = MKCoordinateRegionMake(loc, span)
         // or ...
-        // let reg = MKCoordinateRegionMakeWithDistance(loc, 1200, 1200)
+        //let reg = MKCoordinateRegionMakeWithDistance(loc, 1200, 1200)
         self.map.region = reg
         //  or ...
-//                let pt = MKMapPointForCoordinate(loc)
-//                let w = MKMapPointsPerMeterAtLatitude(loc.latitude) * 1200
-//                self.map.visibleMapRect = MKMapRectMake(pt.x - w/2.0, pt.y - w/2.0, w, w)
+//        let pt = MKMapPointForCoordinate(loc)
+//        let w = MKMapPointsPerMeterAtLatitude(loc.latitude) * 1200
+//        self.map.visibleMapRect = MKMapRectMake(pt.x - w/2.0, pt.y - w/2.0, w, w)
         
         self.annloc = CLLocationCoordinate2DMake(34.923964,-120.219558)
         
@@ -115,14 +115,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
             let p4 = CGPoint(p2.x, p2.y+unit*3)
             let p5 = CGPoint(p4.x, p4.y-unit)
             let p6 = CGPoint(p5.x-2*unit, p5.y)
-            var points = [
+            let points = [
                 start, p1, p2, p3, p4, p5, p6
             ]
             // rotate the arrow around its center
             let t1 = CGAffineTransform(translationX: unit*2, y: unit*2)
-            let t2 = t1.rotate(-.pi/3.5)
-            var t3 = t2.translateBy(x: -unit*2, y: -unit*2)
-            p.addLines(&t3, between: &points, count: 7)
+            let t2 = t1.rotated(by:-.pi/3.5)
+            let t3 = t2.translatedBy(x: -unit*2, y: -unit*2)
+            p.addLines(between: points, transform: t3)
             p.closeSubpath()
             // create the overlay and give it the path
             let over = MyOverlay(rect:mr)
@@ -153,7 +153,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if which == 3 {
             var v : MKAnnotationView! = nil
-            if let t = annotation.title where t == "Park here" {
+            if let t = annotation.title, t == "Park here" {
                 let ident = "greenPin"
                 v = mapView.dequeueReusableAnnotationView(withIdentifier:ident)
                 if v == nil {
@@ -169,7 +169,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         if which == 4 {
             var v : MKAnnotationView! = nil
-            if let t = annotation.title where t == "Park here" {
+            if let t = annotation.title, t == "Park here" {
                 let ident = "bike"
                 v = mapView.dequeueReusableAnnotationView(withIdentifier:ident)
                 if v == nil {
@@ -186,7 +186,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         if which == 5 {
             var v : MKAnnotationView! = nil
-            if let t = annotation.title where t == "Park here" {
+            if let t = annotation.title, t == "Park here" {
                 let ident = "bike"
                 v = mapView.dequeueReusableAnnotationView(withIdentifier:ident)
                 if v == nil {
@@ -246,15 +246,15 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    // hmm, now returns non-nil MKOverlayRenderer
+    // hmm, now returns non-nil MKOverlayRenderer [I've filed a bug]
     // this changes the structure of my code
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if which == 8 {
             if let overlay = overlay as? MKPolygon {
                 let v = MKPolygonRenderer(polygon:overlay)
-                v.fillColor = UIColor.red().withAlphaComponent(0.1)
-                v.strokeColor = UIColor.red().withAlphaComponent(0.8)
+                v.fillColor = UIColor.red.withAlphaComponent(0.1)
+                v.strokeColor = UIColor.red.withAlphaComponent(0.8)
                 v.lineWidth = 2
                 return v
             }
@@ -263,7 +263,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             if let overlay = overlay as? MyOverlay {
                 let v = MKOverlayPathRenderer(overlay:overlay)
                 v.path = overlay.path.cgPath
-                v.fillColor = UIColor.red().withAlphaComponent(0.2)
+                v.fillColor = UIColor.red.withAlphaComponent(0.2)
                 v.strokeColor = .black
                 v.lineWidth = 2
                 return v
@@ -283,10 +283,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let mi = MKMapItem(placemark: p)
         mi.name = "A Great Place to Dirt Bike" // label to appear in Maps app
         // setting the span seems to have no effect
-        let opts = [
+        let opts : [String:Any] = [
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
-//            MKLaunchOptionsMapCenterKey: NSValue(MKCoordinate:self.map.region.center),
-//            MKLaunchOptionsMapSpanKey: NSValue(MKCoordinateSpan:self.map.region.span)
+//            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate:self.map.region.center),
+//            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan:self.map.region.span)
         ]
         mi.openInMaps(launchOptions:opts)
         

@@ -12,14 +12,15 @@ class MyOverlayRenderer : MKOverlayRenderer {
         super.init(overlay:overlay)
     }
     
-    override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext) {
+    override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in con: CGContext) {
         // print isn't thread-safe
         // MKStringFromMapRect isn't available in Swift
         let s = "\(mapRect.origin.x) \(mapRect.origin.y) \(mapRect.size.width) \(mapRect.size.height)"
         NSLog("draw this: %@", s)
-        context.setStrokeColor(UIColor.black().cgColor)
-        context.setFillColor(UIColor.red().withAlphaComponent(0.2).cgColor)
-        context.setLineWidth(1.2/zoomScale)
+        NSLog("testing: %@", MKStringFromMapRect(mapRect))
+        con.setStrokeColor(UIColor.black.cgColor)
+        con.setFillColor(UIColor.red.withAlphaComponent(0.2).cgColor)
+        con.setLineWidth(1.2/zoomScale)
         
         let unit = CGFloat(MKMapRectGetWidth(self.overlay.boundingMapRect)/4.0)
         
@@ -36,14 +37,14 @@ class MyOverlayRenderer : MKOverlayRenderer {
         ]
         // rotate the arrow around its center
         let t1 = CGAffineTransform(translationX: unit*2, y: unit*2)
-        let t2 = t1.rotate(self.angle)
-        var t3 = t2.translateBy(x: -unit*2, y: -unit*2)
+        let t2 = t1.rotated(by:self.angle)
+        let t3 = t2.translatedBy(x: -unit*2, y: -unit*2)
         // passing a Swift array of CGPoint where C expects a pointer to C array of CGPoint just works
-        p.addLines(&t3, between: points, count: 7)
+        p.addLines(between: points, transform: t3)
         p.closeSubpath()
         
-        context.addPath(p)
-        context.drawPath(using: .fillStroke)
+        con.addPath(p)
+        con.drawPath(using: .fillStroke)
     }
 }
 
