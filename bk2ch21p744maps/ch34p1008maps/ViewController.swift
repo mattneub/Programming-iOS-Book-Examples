@@ -293,7 +293,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
-        switch (newState) {
+        switch newState {
         case .starting:
             view.dragState = .dragging
         case .ending, .canceling:

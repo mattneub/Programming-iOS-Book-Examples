@@ -1,8 +1,6 @@
 
 import UIKit
 import MapKit
-import AddressBookUI
-import Contacts
 
 func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
