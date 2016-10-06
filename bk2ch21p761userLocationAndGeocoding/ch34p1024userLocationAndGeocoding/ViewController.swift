@@ -68,10 +68,10 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        let s = searchBar.text
-        if s == nil || s!.characters.count < 5 { return }
+        guard let s = searchBar.text else { return }
+        guard s.characters.count > 5 else { return }
         let geo = CLGeocoder()
-        geo.geocodeAddressString(s!) { placemarks, error in
+        geo.geocodeAddressString(s) { placemarks, error in
             guard let placemarks = placemarks else {
                 print(error?.localizedDescription)
                 return

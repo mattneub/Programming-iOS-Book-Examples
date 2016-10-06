@@ -129,7 +129,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             over.path = UIBezierPath(cgPath:p)
             // add the overlay to the map
             self.map.add(over)
-            // println(self.map.overlays)
+            // print(self.map.overlays)
         }
         if which == 10 {
             
@@ -283,12 +283,11 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let mi = MKMapItem(placemark: p)
         mi.name = "A Great Place to Dirt Bike" // label to appear in Maps app
         // setting the span seems to have no effect
-        let opts : [String:Any] = [
+        mi.openInMaps(launchOptions:[
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
 //            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate:self.map.region.center),
 //            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan:self.map.region.span)
-        ]
-        mi.openInMaps(launchOptions:opts)
+        ])
         
     }
     

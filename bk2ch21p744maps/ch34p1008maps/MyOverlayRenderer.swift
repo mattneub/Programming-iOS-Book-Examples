@@ -39,7 +39,6 @@ class MyOverlayRenderer : MKOverlayRenderer {
         let t1 = CGAffineTransform(translationX: unit*2, y: unit*2)
         let t2 = t1.rotated(by:self.angle)
         let t3 = t2.translatedBy(x: -unit*2, y: -unit*2)
-        // passing a Swift array of CGPoint where C expects a pointer to C array of CGPoint just works
         p.addLines(between: points, transform: t3)
         p.closeSubpath()
         
