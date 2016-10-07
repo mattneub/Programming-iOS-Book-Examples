@@ -13,11 +13,15 @@ class MyOverlayRenderer : MKOverlayRenderer {
     }
     
     override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in con: CGContext) {
+        // we are being bombarded with four simultaneous threads!
+        // however, I'm just ignoring that, and the incoming mapRect
+        
         // print isn't thread-safe
-        // MKStringFromMapRect isn't available in Swift
-        let s = "\(mapRect.origin.x) \(mapRect.origin.y) \(mapRect.size.width) \(mapRect.size.height)"
-        NSLog("draw this: %@", s)
-        NSLog("testing: %@", MKStringFromMapRect(mapRect))
+        // we are already clipping to the mapRect equivalent
+        NSLog("draw this: %@", MKStringFromMapRect(mapRect))
+        NSLog("converts to: %@", NSStringFromCGRect(self.rect(for:mapRect)))
+        NSLog("currently clipping to: %@", NSStringFromCGRect(con.boundingBoxOfClipPath))
+
         con.setStrokeColor(UIColor.black.cgColor)
         con.setFillColor(UIColor.red.withAlphaComponent(0.2).cgColor)
         con.setLineWidth(1.2/zoomScale)
