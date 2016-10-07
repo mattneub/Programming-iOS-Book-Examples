@@ -95,6 +95,7 @@
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					32315063182E903500B03F54 = {
+						DevelopmentTeam = W3LHX5RGV2;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -237,6 +238,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch35p1032location/ch35p1032location-Prefix.pch";
 				INFOPLIST_FILE = "ch35p1032location/ch35p1032location-Info.plist";
@@ -255,6 +257,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch35p1032location/ch35p1032location-Prefix.pch";
 				INFOPLIST_FILE = "ch35p1032location/ch35p1032location-Info.plist";

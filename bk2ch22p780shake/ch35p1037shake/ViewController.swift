@@ -6,7 +6,7 @@ class ViewController: UIViewController {
     // shake device (or simulator), watch console for response
     // note that this does not disable Undo by shaking in text field
     
-    override func canBecomeFirstResponder() -> Bool {
+    override var canBecomeFirstResponder : Bool {
         return true
     }
     
@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     }
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        if self.isFirstResponder() {
+        if self.isFirstResponder {
             print("hey, you shook me!")
         } else {
             super.motionEnded(motion, with: event)

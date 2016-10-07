@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         guard let mot = self.motman.deviceMotion else {return}
         // more idiotic Swift numeric foo
         let acc = mot.magneticField.accuracy.rawValue
-        if acc <= CMMagneticFieldCalibrationAccuracyLow.rawValue {
+        if acc <= CMMagneticFieldCalibrationAccuracy.low.rawValue {
             print(acc)
             return // not ready yet
         }

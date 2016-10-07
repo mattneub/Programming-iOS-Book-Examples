@@ -6,7 +6,7 @@ import CoreMotion
 class MyTableViewController: UITableViewController {
     
     let actman = CMMotionActivityManager()
-    var authorized = false
+    var isAuthorized = false
     var data : [CMMotionActivity]!
     var queue = OperationQueue()
 
@@ -30,7 +30,7 @@ class MyTableViewController: UITableViewController {
     }
     
     func checkAuthorization() {
-        if !CMMotionActivityManager.isActivityAvailable() {
+        guard CMMotionActivityManager.isActivityAvailable() else {
             print("darn")
             return
         }
@@ -39,30 +39,29 @@ class MyTableViewController: UITableViewController {
         // instead, we attempt to "tickle" the activity manager and see if we get an error
         // this will cause the system authorization dialog to be presented if necessary
         let now = Date()
-        self.actman.queryActivityStarting(from: now, to:now, to:.main) {
-            (arr:[CMMotionActivity]?, err:NSError?) in
+        self.actman.queryActivityStarting(from: now, to:now, to:.main) { arr, err in
+            // such Swift numeric barf you could plotz
             let notauth = Int(CMErrorMotionActivityNotAuthorized.rawValue)
-            if err != nil && err!.code == notauth {
+            if err != nil && (err! as NSError).code == notauth {
                 print("no authorization")
-                self.authorized = false
+                self.isAuthorized = false
             } else {
                 print("authorized")
-                self.authorized = true
+                self.isAuthorized = true
             }
         }
     }
     
     func doStart(_ sender: Any!) {
-        if !self.authorized {
+        if !self.isAuthorized {
             self.checkAuthorization()
             return
         }
         // there are two approaches: live and historical
         // collect historical data
         let now = Date()
-        let yester = now + (-60*60*24) // !
-        self.actman.queryActivityStarting(from: yester, to: now, to: self.queue) {
-            (arr:[CMMotionActivity]?, err:NSError?) -> Void in
+        let yester = now - (60*60*24) // !
+        self.actman.queryActivityStarting(from: yester, to: now, to: self.queue) { arr, err in
             guard var acts = arr else {return}
             // crude filter: eliminate empties, low-confidence, and successive duplicates
             let blank = "f f f f f f"
@@ -80,14 +79,14 @@ class MyTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
             /*
-            let format = NSDateFormatter()
+            let format = DateFormatter()
             format.dateFormat = "MMM d, HH:mm:ss"
             
             for act in acts {
                 print("=======")
-                print(format.stringFromDate(act.startDate))
+                print(format.string(from:act.startDate))
                 print("S W R A U")
-                print(self.overallAct(act))
+                // print(self.overallAct(act))
             }
             */
             

@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     let motman = CMMotionManager()
     var polltimer : Timer!
-    var canceltimer : CancelableTimer!
+    var canceltimer : Timer!
     
     var oldX = 0.0
     var oldY = 0.0
@@ -39,32 +39,32 @@ class ViewController: UIViewController {
     }
     
     func pollAccel(_: Any!) {
-        guard let dat = self.motman.accelerometerData else {return}
-        self.add(acceleration: dat.acceleration)
+        guard let data = self.motman.accelerometerData else {return}
+        self.add(acceleration: data.acceleration)
         let x = self.oldX
         let thresh = 1.0
         if x < -thresh || x > thresh {
             // print(x)
         }
         if x < -thresh {
-            if dat.timestamp - self.oldTime > 0.5 || self.lastSlap == .right {
-                self.oldTime = dat.timestamp
+            if data.timestamp - self.oldTime > 0.5 || self.lastSlap == .right {
+                self.oldTime = data.timestamp
                 self.lastSlap = .left
-                self.canceltimer?.cancel()
-                self.canceltimer = CancelableTimer(once: true) {
-                    print("left")
+                //print("invalidating")
+                self.canceltimer?.invalidate()
+                self.canceltimer = .scheduledTimer(withTimeInterval:0.5, repeats: false) {
+                    _ in print("left")
                 }
-                self.canceltimer.start(withInterval:0.5)
             }
         } else if x > thresh {
-            if dat.timestamp - self.oldTime > 0.5 || self.lastSlap == .left {
-                self.oldTime = dat.timestamp
+            if data.timestamp - self.oldTime > 0.5 || self.lastSlap == .left {
+                self.oldTime = data.timestamp
                 self.lastSlap = .right
-                self.canceltimer?.cancel()
-                self.canceltimer = CancelableTimer(once: true) {
-                    print("right")
+                //print("invalidating")
+                self.canceltimer?.invalidate()
+                self.canceltimer = .scheduledTimer(withTimeInterval:0.5, repeats: false) {
+                    _ in print("right")
                 }
-                self.canceltimer.start(withInterval:0.5)
             }
         }
     }

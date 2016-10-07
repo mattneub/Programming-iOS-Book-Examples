@@ -8,7 +8,7 @@ class CancelableTimer: NSObject {
     private var firsttime = true
     private var once : Bool
     private var handler : () -> ()
-    init(once:Bool, handler:()->()) {
+    init(once:Bool, handler:@escaping ()->()) {
         self.once = once
         self.handler = handler
         super.init()
@@ -16,8 +16,9 @@ class CancelableTimer: NSObject {
     func start(withInterval interval:Double) {
         self.firsttime = true
         self.cancel()
-        self.timer = DispatchSource.timer(queue: self.q)
-        self.timer.scheduleRepeating(wallDeadline: DispatchWallTime.now(), interval: interval)
+        self.timer = DispatchSource.makeTimerSource(queue: self.q)
+        self.timer.scheduleRepeating(wallDeadline: .now(), interval: interval)
+        // self.timer.scheduleRepeating(deadline: .now(), interval: 1, leeway: .milliseconds(1))
         self.timer.setEventHandler {
             if self.firsttime {
                 self.firsttime = false

@@ -6,16 +6,14 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet var lab : UILabel!
-    lazy var locman : CLLocationManager = {
-        let locman = CLLocationManager()
-        locman.delegate = self
-        return locman
-        }()
+    let locman = CLLocationManager()
     var updating = false
     
     @IBAction func doStart (_ sender: Any!) {
-        guard CLLocationManager.headingAvailable() else {return} // lacking hardware
+        guard CLLocationManager.headingAvailable() else {return} // no hardware
         if self.updating {return}
+        if self.locman.delegate == nil {self.locman.delegate = self}
+
         print("starting")
         self.locman.headingFilter = 5
         self.locman.headingOrientation = .portrait
@@ -33,13 +31,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.updating = false
     }
 
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         self.doStop(nil)
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         var h = newHeading.magneticHeading
-        let h2 = newHeading.trueHeading // will be -1 if we have no location info
+        let h2 = newHeading.trueHeading // -1 if no location info
         print("\(h) \(h2) ")
         if h2 >= 0 {
             h = h2
@@ -59,8 +57,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {
+        print("he asked me, he asked me")
         return true // if you want the calibration dialog to be able to appear
-        // I did in fact see it appear, so this works in iOS 8.3 at least
     }
 
 

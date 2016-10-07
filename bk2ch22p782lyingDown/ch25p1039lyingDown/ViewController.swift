@@ -44,22 +44,21 @@ class ViewController: UIViewController {
             self.motman.startAccelerometerUpdates()
             self.timer = Timer.scheduledTimer(timeInterval:self.motman.accelerometerUpdateInterval, target: self, selector: #selector(pollAccel), userInfo: nil, repeats: true)
         case 2:
-            self.motman.startAccelerometerUpdates(to: .main) {
-                (accelerometerData:CMAccelerometerData?, error:NSError?) in
-                guard let dat = accelerometerData else {
-                    print(error)
+            self.motman.startAccelerometerUpdates(to: .main) { data, err in
+                guard let data = data else {
+                    print(err)
                     self.stopAccelerometer()
                     return
                 }
-                self.receive(acceleration:dat)
+                self.receive(acceleration:data)
             }
         default:break
         }
     }
     
     func pollAccel (_: Any!) {
-        guard let dat = self.motman.accelerometerData else {return}
-        self.receive(acceleration:dat)
+        guard let data = self.motman.accelerometerData else {return}
+        self.receive(acceleration:data)
     }
     
     func add(acceleration accel:CMAcceleration) {
@@ -69,8 +68,8 @@ class ViewController: UIViewController {
         self.oldZ = accel.z * alpha + self.oldZ * (1.0 - alpha)
     }
 
-    func receive(acceleration dat:CMAccelerometerData) {
-        self.add(acceleration: dat.acceleration)
+    func receive(acceleration data:CMAccelerometerData) {
+        self.add(acceleration: data.acceleration)
         let x = self.oldX
         let y = self.oldY
         let z = self.oldZ

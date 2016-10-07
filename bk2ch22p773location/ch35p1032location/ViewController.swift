@@ -2,85 +2,97 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
-    lazy var locman : CLLocationManager = {
-        let locman = CLLocationManager()
-        locman.delegate = self
-        return locman
-    }()
-    var startTime : Date!
-    var trying = false
+class ManagerHolder {
+    let locman = CLLocationManager()
+    var delegate : CLLocationManagerDelegate? {
+        get {
+            return self.locman.delegate
+        }
+        set {
+            // set delegate _once_
+            if self.locman.delegate == nil && newValue != nil {
+                self.locman.delegate = newValue
+                print("setting delegate!")
+            }
+        }
+    }
     var doThisWhenAuthorized : (() -> ())?
-    
-    @discardableResult
-    func determineStatus() -> Bool {
+    func checkForLocationAccess(always:Bool = false, andThen f: (()->())? = nil) {
+        // no services? fail but try get alert
         guard CLLocationManager.locationServicesEnabled() else {
-            self.locman.startUpdatingLocation() // might get "enable" dialog
-            return false
+            print("no location services")
+            self.locman.startUpdatingLocation()
+            return
         }
         let status = CLLocationManager.authorizationStatus()
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
-            return true
+            f?()
         case .notDetermined:
-            self.locman.requestWhenInUseAuthorization()
-            // locman.requestAlwaysAuthorization()
-            return false
+            self.doThisWhenAuthorized = f
+            always ?
+                self.locman.requestAlwaysAuthorization() :
+                self.locman.requestWhenInUseAuthorization()
         case .restricted:
-            return false
+            // do nothing
+            break
         case .denied:
-            let message = "Wouldn't you like to authorize" +
-            "this app to use Location Services?"
-            let alert = UIAlertController(title: "Need Authorization", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "No", style: .cancel))
-            alert.addAction(UIAlertAction(title: "OK", style: .default) {
-                _ in
-                let url = URL(string:UIApplicationOpenSettingsURLString)!
-                UIApplication.shared.open(url)
-            })
-            self.present(alert, animated:true)
-            return false
+            print("denied")
+            // do nothing, or beg the user to authorize us in Settings
+            break
         }
     }
+}
+
+
+
+class ViewController: UIViewController, CLLocationManagerDelegate {
+    let managerHolder = ManagerHolder()
+    var locman : CLLocationManager {
+        return self.managerHolder.locman
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder:aDecoder)
+        self.managerHolder.delegate = self
+    }
+    
+    var startTime : Date!
+    var trying = false
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("did change auth: \(status.rawValue)")
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
-            self.doThisWhenAuthorized?()
+            self.managerHolder.doThisWhenAuthorized?()
+            self.managerHolder.doThisWhenAuthorized = nil
         default: break
         }
     }
     
-    let which = 2 // 1 is old way, 2 is new way
+    let which = 2 // 1 or 2
     
     @IBAction func doFindMe (_ sender: Any!) {
-        self.doThisWhenAuthorized = {
-            [unowned self] in
-            print("resuming")
-            self.doFindMe(sender)
-        }
-        guard self.determineStatus() else {
-            print("not authorized")
-            return
-        }
-        self.doThisWhenAuthorized = nil
-        
-        switch which {
-        case 1:
-            if self.trying { return }
-            self.trying = true
-            self.locman.desiredAccuracy = kCLLocationAccuracyBest
-            self.locman.activityType = .fitness
-            self.startTime = nil
-            print("starting")
-            self.locman.startUpdatingLocation()
-        case 2:
-            self.locman.desiredAccuracy = kCLLocationAccuracyBest
-            self.locman.requestLocation()
-        default: break
+        self.managerHolder.checkForLocationAccess {
+            switch self.which {
+            case 1:
+                if self.trying { return }
+                self.trying = true
+                self.locman.desiredAccuracy = kCLLocationAccuracyBest
+                self.locman.activityType = .fitness
+                self.startTime = nil
+                print("starting")
+                self.locman.startUpdatingLocation()
+            case 2:
+                print("requesting")
+                self.locman.desiredAccuracy = kCLLocationAccuracyBest
+                self.locman.requestLocation()
+            default: break
+            }
         }
     }
+    
+    
     
     func stopTrying () {
         self.locman.stopUpdatingLocation()
@@ -88,7 +100,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.trying = false
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("failed: \(error)")
         self.stopTrying()
     }
@@ -125,6 +137,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let loc = locations.last!
             let coord = loc.coordinate
             print("The quick way: You are at \(coord.latitude) \(coord.longitude)")
+            // bug: can be called twice in quick succession
         default: break
         }
     }
