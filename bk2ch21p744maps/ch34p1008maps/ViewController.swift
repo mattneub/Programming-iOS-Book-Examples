@@ -282,11 +282,11 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let p = MKPlacemark(coordinate:self.annloc, addressDictionary:nil)
         let mi = MKMapItem(placemark: p)
         mi.name = "A Great Place to Dirt Bike" // label to appear in Maps app
-        // setting the span seems to have no effect
+        // this now works!
         mi.openInMaps(launchOptions:[
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
-//            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate:self.map.region.center),
-//            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan:self.map.region.span)
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate:self.map.region.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan:self.map.region.span)
         ])
         
     }

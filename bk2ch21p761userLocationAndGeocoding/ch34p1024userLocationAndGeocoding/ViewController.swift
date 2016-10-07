@@ -28,12 +28,12 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     
     @IBAction func doButton (_ sender: Any!) {
         let mi = MKMapItem.forCurrentLocation()
-        // setting the span doesn't seem to work
-        // let span = MKCoordinateSpanMake(0.0005, 0.0005)
+        // here, however, it seems that we cannot set the span...?
+        let span = MKCoordinateSpanMake(0.0005, 0.0005)
         mi.openInMaps(launchOptions:[
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
             // MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan:span)
-            ])
+        ])
     }
     
     @IBAction func doButton2 (_ sender: Any!) {
