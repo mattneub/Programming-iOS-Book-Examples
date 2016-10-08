@@ -56,6 +56,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.init(coder:aDecoder)
         self.managerHolder.delegate = self
     }
+    @IBOutlet weak var tv: UITextView!
     
     var startTime : Date!
     var trying = false
@@ -70,76 +71,80 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    let which = 1 // 1 or 2
-    
     @IBAction func doFindMe (_ sender: Any!) {
         self.managerHolder.checkForLocationAccess {
-            switch self.which {
-            case 1:
-                if self.trying { return }
-                self.trying = true
-                self.locman.desiredAccuracy = kCLLocationAccuracyBest
-                self.locman.activityType = .fitness
-                self.startTime = nil
-                print("starting")
-                self.locman.startUpdatingLocation()
-            case 2:
-                print("requesting")
-                self.locman.desiredAccuracy = kCLLocationAccuracyBest
-                self.locman.requestLocation()
-            default: break
+            if self.trying { return }
+            self.trying = true
+            self.locman.desiredAccuracy = kCLLocationAccuracyBest
+            self.locman.activityType = .other
+            self.locman.distanceFilter = kCLDistanceFilterNone
+            self.startTime = nil
+            self.locman.allowsBackgroundLocationUpdates = true
+            self.print("starting")
+            self.locman.startUpdatingLocation()
+            self.s = ""
+            var ob : Any = ""
+            ob = NotificationCenter.default.addObserver(forName: .UIApplicationDidEnterBackground, object: nil, queue: OperationQueue.main) {
+                _ in
+                NotificationCenter.default.removeObserver(ob)
+                if CLLocationManager.deferredLocationUpdatesAvailable() {
+                    self.print("going into background: deferring")
+                    self.locman.allowDeferredLocationUpdates(untilTraveled: CLLocationDistanceMax, timeout: 15)
+                } else {
+                    self.print("going into background but couldn't defer")
+                }
+
             }
+            
         }
     }
     
-    
-    
-    func stopTrying () {
+    @IBAction func stopTrying () {
         self.locman.stopUpdatingLocation()
         self.startTime = nil
         self.trying = false
+        self.tv.text = self.s
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("failed: \(error)")
-        self.stopTrying()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
+        if let error = error {
+            print(error)
+        }
+        let state = UIApplication.shared.applicationState
+        if state == .background {
+            if CLLocationManager.deferredLocationUpdatesAvailable() {
+                print("deferring")
+                self.locman.allowDeferredLocationUpdates(untilTraveled: CLLocationDistanceMax, timeout: 15)
+            } else {
+                print("not able to defer")
+            }
+        }
     }
     
     let REQ_ACC : CLLocationAccuracy = 10
-    let REQ_TIME : TimeInterval = 10
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        switch which {
-        case 1:
-            print("did update location ")
-            let loc = locations.last!
-            let acc = loc.horizontalAccuracy
-            let time = loc.timestamp
-            let coord = loc.coordinate
-            if self.startTime == nil {
-                self.startTime = Date()
-                return // ignore first attempt
-            }
-            print(acc)
-            let elapsed = time.timeIntervalSince(self.startTime)
-            if elapsed > REQ_TIME {
-                print("This is taking too long")
-                self.stopTrying()
-                return
-            }
-            if acc < 0 || acc > REQ_ACC {
-                return // wait for the next one
-            }
-            // got it
-            print("You are at \(coord.latitude) \(coord.longitude)")
-            self.stopTrying()
-        case 2:
-            let loc = locations.last!
-            let coord = loc.coordinate
-            print("The quick way: You are at \(coord.latitude) \(coord.longitude)")
-            // bug: can be called twice in quick succession
-        default: break
+        print("did update location ")
+        let loc = locations.last!
+        let acc = loc.horizontalAccuracy
+        let coord = loc.coordinate
+        print(acc)
+        if acc < 0 || acc > REQ_ACC {
+            return // wait for the next one
         }
+        // got it
+        print("\(Date()): You are at \(coord.latitude) \(coord.longitude)")
     }
+    
+    var s = ""
+    
+    func print(_ s: Any) {
+        self.s = self.s + "\n" + String(describing:s)
+    }
+
 
 }
