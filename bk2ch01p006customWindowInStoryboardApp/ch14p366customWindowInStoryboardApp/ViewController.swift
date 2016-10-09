@@ -20,11 +20,10 @@ class ViewController : UIViewController {
     // for end of chapter 5 example
     
     override func viewDidLoad() {
-        let mainview = self.view! // new in Swift 3 of 6/6, IUO does not propagate
         let lay1 = CALayer()
         lay1.backgroundColor = UIColor(red: 1.0, green: 0.4, blue: 1, alpha: 1).cgColor
         lay1.frame = CGRect(113, 111, 132, 194)
-        mainview.layer.addSublayer(lay1)
+        self.view.layer.addSublayer(lay1)
         let lay2 = CALayer()
         lay2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1).cgColor
         lay2.frame = CGRect(41, 56, 132, 194)
@@ -32,7 +31,7 @@ class ViewController : UIViewController {
         let lay3 = CALayer()
         lay3.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor
         lay3.frame = CGRect(43, 197, 160, 230)
-        mainview.layer.addSublayer(lay3)
+        self.view.layer.addSublayer(lay3)
 
     }
 }

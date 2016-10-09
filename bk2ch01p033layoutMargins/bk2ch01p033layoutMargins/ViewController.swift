@@ -15,9 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         if self.didSetup {return}
         self.didSetup = true
-        
-        let mainview = self.view!
-        
+                
         // ok, I proved what I wanted to prove: it really _is_ whether it's a vc's main view
 //        let vc = UIViewController()
 //        self.addChildViewController(vc)
@@ -27,7 +25,7 @@ class ViewController: UIViewController {
         v.backgroundColor = .red
         v.translatesAutoresizingMaskIntoConstraints = false
         
-        mainview.addSubview(v)
+        self.view.addSubview(v)
         
         // vc.didMove(toParentViewController: self)
         
@@ -39,7 +37,7 @@ class ViewController: UIViewController {
         // experiment by commenting out this line
         // v.preservesSuperviewLayoutMargins = true
         delay(1) {
-            // print(mainview.layoutMargins)
+            // print(self.view.layoutMargins)
             // 20 on iPad Pro large
             // 20 on iPhone 6s Plus
             // 20 on iPad Air 2

@@ -52,10 +52,9 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mainview = self.view!
         let lay = CALayer()
-        lay.frame = mainview.layer.bounds
-        mainview.layer.addSublayer(lay)
+        lay.frame = self.view.layer.bounds
+        self.view.layer.addSublayer(lay)
 
         let lay1 = CALayer()
         lay1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1).cgColor

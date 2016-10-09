@@ -8,19 +8,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let mainview = self.view!
         
         // do manually what UIStackView does: make distributing UILayoutGuide objects
         
         let guides = [UILayoutGuide(), UILayoutGuide(), UILayoutGuide()]
         for guide in guides {
-            mainview.addLayoutGuide(guide)
+            self.view.addLayoutGuide(guide)
         }
         NSLayoutConstraint.activate([
             // guide left is arbitrary, let's say superview margin
-            guides[0].leadingAnchor.constraint(equalTo:mainview.leadingAnchor),
-            guides[1].leadingAnchor.constraint(equalTo:mainview.leadingAnchor),
-            guides[2].leadingAnchor.constraint(equalTo:mainview.leadingAnchor),
+            guides[0].leadingAnchor.constraint(equalTo:self.view.leadingAnchor),
+            guides[1].leadingAnchor.constraint(equalTo:self.view.leadingAnchor),
+            guides[2].leadingAnchor.constraint(equalTo:self.view.leadingAnchor),
             // guide widths are arbitrary, let's say 10
             guides[0].widthAnchor.constraint(equalToConstant:10),
             guides[1].widthAnchor.constraint(equalToConstant:10),

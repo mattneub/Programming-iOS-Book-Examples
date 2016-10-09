@@ -43,18 +43,17 @@ class ViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let mainview = self.view!
         
         let iv = UIImageView(image:UIImage(named:"Mars"))
-        mainview.addSubview(iv)
+        self.view.addSubview(iv)
         
         iv.clipsToBounds = true // default is false...
         // though this won't matter unless you also play with the content mode
         iv.contentMode = .scaleAspectFit // default is .ScaleToFill...
         // ... which fits but doesn't preserve aspect
         
-//        println(iv.clipsToBounds)
-//        println(iv.contentMode.rawValue)
+//        print(iv.clipsToBounds)
+//        print(iv.contentMode.rawValue)
         
         // just to clarify boundaries of image view
         iv.layer.borderColor = UIColor.black.cgColor

@@ -8,7 +8,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let mainview = self.view!
         
         for v in views {
             v.removeFromSuperview()
@@ -27,13 +26,13 @@ class ViewController: UIViewController {
         // constrain the stack view
 
         sv.translatesAutoresizingMaskIntoConstraints = false
-        mainview.addSubview(sv)
-        let marg = mainview.layoutMarginsGuide
+        self.view.addSubview(sv)
+        let marg = self.view.layoutMarginsGuide
         NSLayoutConstraint.activate([
             sv.topAnchor.constraint(equalTo:self.topLayoutGuide.bottomAnchor),
             sv.leadingAnchor.constraint(equalTo:marg.leadingAnchor),
             sv.trailingAnchor.constraint(equalTo:marg.trailingAnchor),
-            sv.bottomAnchor.constraint(equalTo:mainview.bottomAnchor),
+            sv.bottomAnchor.constraint(equalTo:self.view.bottomAnchor),
         ])
         
 

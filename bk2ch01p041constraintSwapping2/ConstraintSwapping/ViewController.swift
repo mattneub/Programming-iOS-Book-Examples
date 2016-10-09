@@ -11,7 +11,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let mainview = self.view!
         
         let v1 = UIView()
         v1.backgroundColor = .red
@@ -23,9 +22,9 @@ class ViewController: UIViewController {
         v3.backgroundColor = .blue
         v3.translatesAutoresizingMaskIntoConstraints = false
         
-        mainview.addSubview(v1)
-        mainview.addSubview(v2)
-        mainview.addSubview(v3)
+        self.view.addSubview(v1)
+        self.view.addSubview(v2)
+        self.view.addSubview(v3)
         
         self.v1 = v1
         self.v2 = v2
@@ -52,13 +51,12 @@ class ViewController: UIViewController {
     }
     
     func doSwap() {
-        let mainview = self.view!
         if self.v2.superview != nil {
             self.v2.removeFromSuperview()
             NSLayoutConstraint.deactivate(self.constraintsWith)
             NSLayoutConstraint.activate(self.constraintsWithout)
         } else {
-            mainview.addSubview(v2)
+            self.view.addSubview(v2)
             NSLayoutConstraint.deactivate(self.constraintsWithout)
             NSLayoutConstraint.activate(self.constraintsWith)
         }

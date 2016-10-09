@@ -29,12 +29,10 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mainview = self.view!
-        
         let lay1 = CALayer()
         lay1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1).cgColor
         lay1.frame = CGRect(113, 111, 132, 194)
-        mainview.layer.addSublayer(lay1)
+        self.view.layer.addSublayer(lay1)
         let lay2 = CALayer()
         lay2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1).cgColor
         lay2.frame = CGRect(41, 56, 132, 194)
@@ -44,7 +42,7 @@ class ViewController : UIViewController {
         case 1:
             // a view can be interspersed with sibling layers
             let iv = UIImageView(image:UIImage(named:"smiley"))
-            mainview.addSubview(iv)
+            self.view.addSubview(iv)
             // iv.layer.zPosition = 1
             iv.frame.origin = CGPoint(180,180)
         case 2:
@@ -55,7 +53,7 @@ class ViewController : UIViewController {
             lay4.contents = im.cgImage // no need to remember to cast to id
             // but you do still need to remember to take the CGImage
             // a UIImage still gets no error but no image
-            mainview.layer.addSublayer(lay4)
+            self.view.layer.addSublayer(lay4)
 
         default: break
         }
@@ -63,10 +61,10 @@ class ViewController : UIViewController {
         let lay3 = CALayer()
         lay3.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor
         lay3.frame = CGRect(43, 197, 160, 230)
-        mainview.layer.addSublayer(lay3)
+        self.view.layer.addSublayer(lay3)
         
 //        let iv = UIImageView(image:UIImage(named:"smiley"))
-//        mainview.addSubview(iv)
+//        self.view.addSubview(iv)
 //        iv.frame.origin = CGPoint(180,180)
 
         lay1.name = "manny"
