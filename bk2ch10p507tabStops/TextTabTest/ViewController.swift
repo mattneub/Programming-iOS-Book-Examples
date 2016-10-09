@@ -85,7 +85,8 @@ class ViewController : UIViewController {
         
         mas.append(NSAttributedString(string: "\n\n", attributes:nil))
         mas.append(NSAttributedString(string: "LINK", attributes: [
-            NSLinkAttributeName : URL(string: "http://www.apple.com")!
+            NSLinkAttributeName : URL(string: "https://www.apple.com")!,
+            NSForegroundColorAttributeName : UIColor.orange, // not working
             ]))
         mas.append(NSAttributedString(string: "\n\n", attributes:nil))
         mas.append(NSAttributedString(string: "(805)-123-4567", attributes: nil))
@@ -97,8 +98,11 @@ class ViewController : UIViewController {
         
         self.tv.attributedText = mas
         
-//        println(NSAttachmentCharacter)
-//        println(0xFFFC)
+        // this works but it applies to all links
+        //self.tv.linkTextAttributes = [NSForegroundColorAttributeName : UIColor.orange]
+        
+//        print(NSAttachmentCharacter)
+//        print(0xFFFC)
         
         self.tv.isSelectable = true
         self.tv.isEditable = false
@@ -125,6 +129,7 @@ class ViewController : UIViewController {
     
 }
 
+@available(iOS 10.0, *)
 extension ViewController : UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction:UITextItemInteraction) -> Bool {
         print(interaction.rawValue)
