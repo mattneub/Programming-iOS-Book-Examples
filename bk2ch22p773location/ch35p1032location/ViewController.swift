@@ -4,18 +4,6 @@ import CoreLocation
 
 class ManagerHolder {
     let locman = CLLocationManager()
-    var delegate : CLLocationManagerDelegate? {
-        get {
-            return self.locman.delegate
-        }
-        set {
-            // set delegate _once_
-            if self.locman.delegate == nil && newValue != nil {
-                self.locman.delegate = newValue
-                print("setting delegate!")
-            }
-        }
-    }
     var doThisWhenAuthorized : (() -> ())?
     func checkForLocationAccess(always:Bool = false, andThen f: (()->())? = nil) {
         // no services? fail but try get alert
@@ -54,7 +42,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
-        self.managerHolder.delegate = self
+        self.locman.delegate = self
     }
     
     var startTime : Date!
