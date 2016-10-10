@@ -27,7 +27,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = (self.fileURL.lastPathComponent! as NSString).deletingPathExtension
+        self.title = (self.fileURL.lastPathComponent as NSString).deletingPathExtension
         let b = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(doAdd))
         self.navigationItem.rightBarButtonItems = [b]
         
@@ -42,7 +42,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
                 self.tableView.reloadData()
             }
         }
-        if !fm.fileExists(atPath:self.fileURL.path!) {
+        if !fm.fileExists(atPath:self.fileURL.path) {
             self.doc.save(to:self.doc.fileURL,
                 for: .forCreating,
                 completionHandler: listPeople)

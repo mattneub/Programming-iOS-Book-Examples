@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     @IBAction func doButton2 (_ sender: Any!) {
         do {
             let fm = FileManager()
-            let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             print(docsurl)
         } catch {
             print(error)
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     @IBAction func doButton3 (_ sender: Any!) {
         do {
             let fm = FileManager()
-            let suppurl = try fm.urlForDirectory(.applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let suppurl = try fm.url(for:.applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             print(suppurl)
         } catch {
             print(error)
@@ -40,8 +40,8 @@ class ViewController: UIViewController {
     @IBAction func doButton4 (_ sender: Any!) {
         do {
             let fm = FileManager()
-            let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let myfolder = try docsurl.appendingPathComponent("MyFolder")
+            let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let myfolder = docsurl.appendingPathComponent("MyFolder")
             
             try fm.createDirectory(at:myfolder, withIntermediateDirectories: true, attributes: nil)
 
@@ -58,9 +58,9 @@ class ViewController: UIViewController {
     @IBAction func doButton5 (_ sender: Any!) {
         do {
             let fm = FileManager()
-            let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let arr = try fm.contentsOfDirectory(at:docsurl, includingPropertiesForKeys: nil)
-            arr.forEach{print($0.lastPathComponent!)}
+            arr.forEach{print($0.lastPathComponent)}
             // ======
     //        self.query.enumerateResultsUsingBlock {
     //            obj, ix, stop in
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
     @IBAction func doButton7 (_ sender: Any!) {
         do {
             let fm = FileManager()
-            let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let dir = fm.enumerator(at:docsurl, includingPropertiesForKeys: nil)!
             for case let f as NSURL in dir where f.pathExtension == "txt" {
                 print(f.lastPathComponent!)
@@ -89,10 +89,10 @@ class ViewController: UIViewController {
     @IBAction func doButton8 (_ sender: Any!) {
         do {
             let fm = FileManager()
-            let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let moi = Person(firstName: "Matt", lastName: "Neuburg")
             let moidata = NSKeyedArchiver.archivedData(withRootObject: moi)
-            var moifile = try docsurl.appendingPathComponent("moi.txt")
+            var moifile = docsurl.appendingPathComponent("moi.txt")
             switch which {
             case 1:
                 try moidata.write(to: moifile, options: .atomic)
@@ -103,8 +103,7 @@ class ViewController: UIViewController {
                 // ==== the NSFileCoordinator way
                 let fc = NSFileCoordinator()
                 let intent = NSFileAccessIntent.writingIntent(with:moifile)
-                fc.coordinate(with:[intent], queue: .main) {
-                    (err:NSError?) in
+                fc.coordinate(with:[intent], queue: .main) { err in
                     // compiler gets confused if a one-liner returns a BOOL result
                     do {
                         try moidata.write(to: intent.url, options: .atomic)
@@ -122,8 +121,8 @@ class ViewController: UIViewController {
     @IBAction func doButton9 (_ sender: Any!) {
         do {
             let fm = FileManager()
-            let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let moifile = try docsurl.appendingPathComponent("moi.txt")
+            let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let moifile = docsurl.appendingPathComponent("moi.txt")
             switch which {
             case 1:
                 let persondata = try Data(contentsOf: moifile)
@@ -133,8 +132,7 @@ class ViewController: UIViewController {
                 // ==== the NSFileCoordinator way
                 let fc = NSFileCoordinator()
                 let intent = NSFileAccessIntent.readingIntent(with: moifile)
-                fc.coordinate(with: [intent], queue: .main) {
-                    (err:NSError?) in
+                fc.coordinate(with: [intent], queue: .main) { err in
                     do {
                         let persondata = try Data(contentsOf: intent.url)
                         let person = NSKeyedUnarchiver.unarchiveObject(with: persondata) as! Person

@@ -6,8 +6,8 @@ import QuickLook
 class ViewController: UIViewController, UIDocumentInteractionControllerDelegate, QLPreviewControllerDataSource {
 
     @IBOutlet var wv : UIWebView!
-    var doc : URL!
-    var docs : [URL]!
+    var doc : URL?
+    var docs : [URL]?
     let dic = UIDocumentInteractionController()
     let exts : Set<String> = ["pdf", "txt"]
     
@@ -22,10 +22,10 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         var url : URL? = nil
         do {
             let fm = FileManager()
-            let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let dir = fm.enumerator(at: docsurl, includingPropertiesForKeys: nil)!
             for case let f as URL in dir {
-                if self.exts.contains(f.pathExtension!) {
+                if self.exts.contains(f.pathExtension) {
                     url = f
                     break
                 }
@@ -90,17 +90,17 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         self.docs = [URL]()
         do {
             let fm = FileManager()
-            let docsurl = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let dir = fm.enumerator(at: docsurl, includingPropertiesForKeys: nil)!
             for case let f as URL in dir {
-                if self.exts.contains(f.pathExtension!) {
-                    if QLPreviewController.canPreview(f) {
+                if self.exts.contains(f.pathExtension) {
+                    if QLPreviewController.canPreview(f as QLPreviewItem) {
                         print("adding \(f)")
-                        self.docs.append(f)
+                        self.docs!.append(f)
                     }
                 }
             }
-            guard self.docs.count > 0 else {
+            guard self.docs!.count > 0 else {
                 print("no docs")
                 return
             }
@@ -117,11 +117,11 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
     
     
     func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
-        return self.docs.count
+        return self.docs!.count
     }
     
     func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        return self.docs[index]
+        return self.docs![index] as QLPreviewItem
     }
 
 

@@ -13,7 +13,7 @@ class DocumentLister: UITableViewController {
         } else {
             do {
                 let fm = FileManager()
-                url = try fm.urlForDirectory(.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                url = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             } catch {
                 print(error)
             }
@@ -45,7 +45,7 @@ class DocumentLister: UITableViewController {
                         print("trying to download \($0)")
                         try fm.startDownloadingUbiquitousItem(at:$0)
                     }
-                    return $0.pathExtension! == "pplgrp"
+                    return $0.pathExtension == "pplgrp"
             }
             self.tableView.reloadData()
         } catch {
@@ -59,8 +59,8 @@ class DocumentLister: UITableViewController {
         av.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         av.addAction(UIAlertAction(title: "OK", style: .default) {
             _ in
-            guard let name = av.textFields![0].text where !name.isEmpty else {return}
-            let url = try! self.docsurl.appendingPathComponent((name as NSString).appendingPathExtension("pplgrp")!)
+            guard let name = av.textFields![0].text, !name.isEmpty else {return}
+            let url = self.docsurl.appendingPathComponent((name as NSString).appendingPathExtension("pplgrp")!)
             // really should check to see if file by this name exists
             let pl = PeopleLister(fileURL: url)
             self.navigationController!.pushViewController(pl, animated: true)
@@ -84,7 +84,7 @@ class DocumentLister: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
         let fileURL = self.files[indexPath.row]
-        cell.textLabel!.text = (fileURL.lastPathComponent! as NSString).deletingPathExtension
+        cell.textLabel!.text = (fileURL.lastPathComponent as NSString).deletingPathExtension
         cell.accessoryType = .disclosureIndicator
         return cell
     }

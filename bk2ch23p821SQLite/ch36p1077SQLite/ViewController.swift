@@ -20,7 +20,7 @@ class ViewController: UIViewController {
             try fm.removeItem(atPath:self.dbpath) // in case we did this once already
         } catch {}
         
-        guard let db = FMDatabase(path:self.dbpath) where db.open()
+        guard let db = FMDatabase(path:self.dbpath), db.open()
             else {print("Ooooops"); return}
         
         db.executeUpdate("create table people (lastname text, firstname text)", withArgumentsIn:[])
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func doButton2 (_ sender: Any!) {
-        guard let db = FMDatabase(path:self.dbpath) where db.open()
+        guard let db = FMDatabase(path:self.dbpath), db.open()
             else {print("Ooooops"); return}
         
         if let rs = db.executeQuery("select * from people", withArgumentsIn:[]) {
