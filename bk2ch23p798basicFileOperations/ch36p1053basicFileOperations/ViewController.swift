@@ -43,8 +43,8 @@ class ViewController: UIViewController {
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let myfolder = docsurl.appendingPathComponent("MyFolder")
             
-            try fm.createDirectory(at:myfolder, withIntermediateDirectories: true, attributes: nil)
-
+            try fm.createDirectory(at:myfolder, withIntermediateDirectories: true)
+            
             // if we get here, myfolder exists
             // let's put a couple of files into it
             try "howdy".write(to: myfolder.appendingPathComponent("file1.txt"), atomically: true, encoding:.utf8)
@@ -76,8 +76,8 @@ class ViewController: UIViewController {
             let fm = FileManager()
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let dir = fm.enumerator(at:docsurl, includingPropertiesForKeys: nil)!
-            for case let f as NSURL in dir where f.pathExtension == "txt" {
-                print(f.lastPathComponent!)
+            for case let f as URL in dir where f.pathExtension == "txt" {
+                print(f.lastPathComponent)
             }
         } catch {
             print(error)
@@ -92,13 +92,14 @@ class ViewController: UIViewController {
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let moi = Person(firstName: "Matt", lastName: "Neuburg")
             let moidata = NSKeyedArchiver.archivedData(withRootObject: moi)
-            var moifile = docsurl.appendingPathComponent("moi.txt")
+            let moifile = docsurl.appendingPathComponent("moi.txt")
             switch which {
             case 1:
                 try moidata.write(to: moifile, options: .atomic)
+                var moifilevar = moifile // NB we need a var here
                 var rv = URLResourceValues() // * new way, very nice
                 rv.isExcludedFromBackup = true
-                try moifile.setResourceValues(rv)
+                try moifilevar.setResourceValues(rv)
             case 2:
                 // ==== the NSFileCoordinator way
                 let fc = NSFileCoordinator()

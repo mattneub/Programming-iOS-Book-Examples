@@ -6,19 +6,18 @@ class DocumentLister: UITableViewController {
     
     var files = [URL]()
     var docsurl : URL {
-        var url = NSURL() as URL // stopgap
         let del = UIApplication.shared.delegate
         if let ubiq = (del as! AppDelegate).ubiq {
-            url = ubiq
+            return ubiq
         } else {
             do {
                 let fm = FileManager()
-                url = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                return try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             } catch {
                 print(error)
             }
         }
-        return url
+        return NSURL() as URL // shouldn't happen
     }
 
     override func viewDidLoad() {
@@ -37,9 +36,7 @@ class DocumentLister: UITableViewController {
         print("refreshing")
         do {
             let fm = FileManager()
-            self.files = try fm.contentsOfDirectory(at:
-                self.docsurl, includingPropertiesForKeys: nil)
-                .filter {
+            self.files = try fm.contentsOfDirectory(at: self.docsurl, includingPropertiesForKeys: nil).filter {
                     print($0)
                     if fm.isUbiquitousItem(at:$0) {
                         print("trying to download \($0)")

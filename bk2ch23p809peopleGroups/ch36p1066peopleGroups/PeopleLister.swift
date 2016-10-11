@@ -6,13 +6,9 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     
     let fileURL : URL
     var doc : PeopleDocument!
-    var people : [Person] { // front end for the document's model object
-        get {
-            return self.doc.people
-        }
-        set (val) {
-            self.doc.people = val
-        }
+    var people : [Person] { // point to the document's model object
+        get { return self.doc.people }
+        set { self.doc.people = newValue }
     }
 
     init(fileURL:URL) {
@@ -27,7 +23,8 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = (self.fileURL.lastPathComponent as NSString).deletingPathExtension
+        self.title = (self.fileURL.lastPathComponent as NSString)
+            .deletingPathExtension
         let b = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(doAdd))
         self.navigationItem.rightBarButtonItems = [b]
         
@@ -36,7 +33,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         let fm = FileManager()
         self.doc = PeopleDocument(fileURL:self.fileURL)
         
-        func listPeople(success:Bool) {
+        func listPeople(_ success:Bool) {
             if success {
                 // self.people = self.doc.people as NSArray as [Person]
                 self.tableView.reloadData()

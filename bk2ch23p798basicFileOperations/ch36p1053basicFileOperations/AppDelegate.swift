@@ -6,6 +6,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
         
+        // just testing this syntax
+        NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification, object: nil, queue: nil) {_ in}
+        
         return true
     }
 }
