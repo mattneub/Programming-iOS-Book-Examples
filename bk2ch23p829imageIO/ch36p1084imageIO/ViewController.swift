@@ -3,15 +3,15 @@ import UIKit
 import ImageIO
 import MobileCoreServices
 
-// temporary workaround from Joe Groff at Apple
-extension CFString: Hashable {
-    public var hashValue: Int {
-        return Int(bitPattern: CFHash(self))
-    }
-    public static func ==(a: CFString, b: CFString) -> Bool {
-        return CFEqual(a, b)
-    }
-}
+//// temporary workaround from Joe Groff at Apple
+//extension CFString: Hashable {
+//    public var hashValue: Int {
+//        return Int(bitPattern: CFHash(self))
+//    }
+//    public static func ==(a: CFString, b: CFString) -> Bool {
+//        return CFEqual(a, b)
+//    }
+//}
 
 
 class ViewController: UIViewController {
