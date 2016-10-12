@@ -93,6 +93,7 @@ class ViewController: UIViewController {
             let moi = Person(firstName: "Matt", lastName: "Neuburg")
             let moidata = NSKeyedArchiver.archivedData(withRootObject: moi)
             let moifile = docsurl.appendingPathComponent("moi.txt")
+            
             switch which {
             case 1:
                 try moidata.write(to: moifile, options: .atomic)
@@ -114,6 +115,16 @@ class ViewController: UIViewController {
                 }
             default:break
             }
+            
+            // note that you still can't save an array of Person as a plist,
+            // even though Person adopts NSCoding
+            // it won't turn itself automagically into a Data object
+            
+            let arr = [moi]
+            let arrfile = docsurl.appendingPathComponent("arr.plist")
+            let ok = (arr as NSArray).write(to: arrfile, atomically: true)
+            print(ok) // false
+            
         } catch {
             print(error)
         }
@@ -144,6 +155,11 @@ class ViewController: UIViewController {
                 }
             default:break
             }
+
+//            let arrfile = docsurl.appendingPathComponent("arr.plist")
+//            let arr = NSArray(contentsOf: arrfile)
+//            print(arr)
+
         } catch {
             print(error)
         }
