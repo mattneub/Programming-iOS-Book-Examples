@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3223A4F61832FB3B00F6FED0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3223A4F41832FB3B00F6FED0 /* Main.storyboard */; };
-		3223A4F91832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3223A4F71832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.xcdatamodeld */; };
+		3223A4F91832FB3B00F6FED0 /* PeopleGroupsCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3223A4F71832FB3B00F6FED0 /* PeopleGroupsCoreData.xcdatamodeld */; };
 		3223A5011832FB3B00F6FED0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3223A5001832FB3B00F6FED0 /* Assets.xcassets */; };
 		3223A5261832FBD600F6FED0 /* PeopleLister.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3223A5221832FBD600F6FED0 /* PeopleLister.xib */; };
 		3223A5271832FBD600F6FED0 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3223A5231832FBD600F6FED0 /* PersonCell.xib */; };
@@ -22,7 +22,7 @@
 		3223A4DD1832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch36p1079peopleGroupsCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3223A4EA1832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch36p1079peopleGroupsCoreData-Info.plist"; sourceTree = "<group>"; };
 		3223A4F51832FB3B00F6FED0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3223A4F81832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ch36p1079peopleGroupsCoreData.xcdatamodel; sourceTree = "<group>"; };
+		3223A4F81832FB3B00F6FED0 /* PeopleGroupsCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PeopleGroupsCoreData.xcdatamodel; sourceTree = "<group>"; };
 		3223A5001832FB3B00F6FED0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3223A5221832FBD600F6FED0 /* PeopleLister.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleLister.xib; sourceTree = "<group>"; };
 		3223A5231832FBD600F6FED0 /* PersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 				3223A5231832FBD600F6FED0 /* PersonCell.xib */,
 				3223A5001832FB3B00F6FED0 /* Assets.xcassets */,
 				32D7150A1BCB2BD8005CFAFE /* LaunchScreen.storyboard */,
-				3223A4F71832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.xcdatamodeld */,
+				3223A4F71832FB3B00F6FED0 /* PeopleGroupsCoreData.xcdatamodeld */,
 				3223A4EA1832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData-Info.plist */,
 			);
 			path = ch36p1079peopleGroupsCoreData;
@@ -152,7 +152,7 @@
 				326C01C019B236C7004331C7 /* PeopleLister.swift in Sources */,
 				329B44B219B24C610086C7A6 /* GroupLister.swift in Sources */,
 				329B44E419B252C70086C7A6 /* AppDelegate.swift in Sources */,
-				3223A4F91832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.xcdatamodeld in Sources */,
+				3223A4F91832FB3B00F6FED0 /* PeopleGroupsCoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,13 +301,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3223A4F71832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.xcdatamodeld */ = {
+		3223A4F71832FB3B00F6FED0 /* PeopleGroupsCoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				3223A4F81832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.xcdatamodel */,
+				3223A4F81832FB3B00F6FED0 /* PeopleGroupsCoreData.xcdatamodel */,
 			);
-			currentVersion = 3223A4F81832FB3B00F6FED0 /* ch36p1079peopleGroupsCoreData.xcdatamodel */;
-			path = ch36p1079peopleGroupsCoreData.xcdatamodeld;
+			currentVersion = 3223A4F81832FB3B00F6FED0 /* PeopleGroupsCoreData.xcdatamodel */;
+			path = PeopleGroupsCoreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

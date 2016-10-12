@@ -10,36 +10,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let navigationController = self.window!.rootViewController as! UINavigationController
-        let controller = navigationController.topViewController as! GroupLister
-        controller.managedObjectContext = self.persistentContainer.viewContext
+        let nav = self.window!.rootViewController as! UINavigationController
+        let tvc = nav.topViewController as! GroupLister
+        tvc.managedObjectContext = self.persistentContainer.viewContext
         return true
     }
     
-    
-    // MARK: - Core Data stack
-    
     lazy var persistentContainer: NSPersistentContainer = {
-        let con = NSPersistentContainer(name: "ch36p1079peopleGroupsCoreData")
+        let con = NSPersistentContainer(name: "PeopleGroupsCoreData")
         con.loadPersistentStores { desc, err in
+            print(desc)
             if let err = err {
                 fatalError("Unresolved error \(err)")
             }
         }
         return con
     }()
-
-    // MARK: - Core Data Saving support
-    
-    func saveContext () {
-        let con = persistentContainer.viewContext
-        if con.hasChanges {
-            do {
-                try con.save()
-            } catch {
-                fatalError("Unresolved error \(error)")
-            }
-        }
-    }
     
 }

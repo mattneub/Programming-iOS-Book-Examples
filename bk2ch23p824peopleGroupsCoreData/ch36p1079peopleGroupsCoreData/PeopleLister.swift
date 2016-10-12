@@ -22,15 +22,12 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         let sortDescriptor = NSSortDescriptor(key:"timestamp", ascending:true)
         req.sortDescriptors = [sortDescriptor]
 
-        // req.entity = Person.entity()
-
         let pred = NSPredicate(format:"group = %@", self.group)
         req.predicate = pred
         
         let afrc = NSFetchedResultsController(fetchRequest:req,
             managedObjectContext:self.group.managedObjectContext!,
-            sectionNameKeyPath:nil,
-            cacheName:self.group.uuid) // prevent cache name conflicts
+            sectionNameKeyPath:nil, cacheName:nil)
         afrc.delegate = self
         
         do {
@@ -66,8 +63,7 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         let person = self.frc.object(at:indexPath)
         let first = cell.viewWithTag(1) as! UITextField
         let last = cell.viewWithTag(2) as! UITextField
-        first.text = person.firstName
-        last.text = person.lastName
+        first.text = person.firstName; last.text = person.lastName
         first.delegate = self; last.delegate = self
         return cell
     }
@@ -75,14 +71,11 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
     func doAdd(_:AnyObject) {
         self.tableView.endEditing(true)
         let context = self.frc.managedObjectContext
-//        let entity = self.frc.fetchRequest.entity!
-//        let mo = NSEntityDescription.insertNewObject(forEntityName:entity.name!, into:context) as! Person
-        let person = Person()
+        let person = Person(context:context)
         person.group = self.group
         person.lastName = ""
         person.firstName = ""
-        person.timestamp = Date() as NSDate
-        context.insert(person)
+        person.timestamp = NSDate()
         // save context
         do {
             try context.save()
@@ -95,8 +88,8 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("did end editing")
-        var v = textField.superview!
-        while !(v is UITableViewCell) {v = v.superview!}
+        var v : UIView = textField
+        repeat { v = v.superview! } while !(v is UITableViewCell)
         let cell = v as! UITableViewCell
         let ip = self.tableView.indexPath(for:cell)!
         let object = self.frc.object(at:ip)

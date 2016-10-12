@@ -15,8 +15,7 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
         let afrc = NSFetchedResultsController(
             fetchRequest:req,
             managedObjectContext:self.managedObjectContext,
-            sectionNameKeyPath:nil,
-            cacheName:"Groups")
+            sectionNameKeyPath:nil, cacheName:nil)
         afrc.delegate = self
         do {
             try afrc.performFetch()
@@ -47,17 +46,13 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
         let av = UIAlertController(title: "New Group", message: "Enter name:", preferredStyle: .alert)
         av.addTextField {$0.autocapitalizationType = .words}
         av.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        av.addAction(UIAlertAction(title: "OK", style: .default) {
-            _ in
-            guard let name = av.textFields![0].text , !name.isEmpty else {return}
+        av.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            guard let name = av.textFields![0].text, !name.isEmpty else {return}
             let context = self.frc.managedObjectContext
-            // let entity = self.frc.fetchRequest.entity!
-            // let mo = NSEntityDescription.insertNewObject(forEntityName:entity.name!, into: context) as! Group
-            let group = Group()
+            let group = Group(context: context)
             group.name = name
             group.uuid = NSUUID().uuidString
             group.timestamp = NSDate()
-            context.insert(group)
             
             // save context
             do {
@@ -84,8 +79,8 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
         cell.accessoryType = .disclosureIndicator
-        let object = self.frc.object(at:indexPath)
-        cell.textLabel!.text = object.name
+        let group = self.frc.object(at:indexPath)
+        cell.textLabel!.text = group.name
         return cell
     }
     
