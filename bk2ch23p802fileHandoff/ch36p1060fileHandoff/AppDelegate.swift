@@ -28,7 +28,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         if dir == "Inbox" {
             do {
                 print("inbox")
-                let fm = NSFileManager()
+                let fm = FileManager.default
                 let docsurl = try fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
                 let dest = docsurl.URLByAppendingPathComponent(url.lastPathComponent!)
                 print("copying")

@@ -53,7 +53,7 @@ class ViewController : UIViewController {
         }
         get {
             if _myBigData == nil {
-                let fm = FileManager()
+                let fm = FileManager.default
                 let f = URL(fileURLWithPath: NSTemporaryDirectory())
                     .appendingPathComponent("myBigData")
                 if let d = try? Data(contentsOf:f) {

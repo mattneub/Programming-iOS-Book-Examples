@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton2 (_ sender: Any!) {
         do {
-            let fm = FileManager()
+            let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             print(docsurl)
         } catch {
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
 
     @IBAction func doButton3 (_ sender: Any!) {
         do {
-            let fm = FileManager()
+            let fm = FileManager.default
             let suppurl = try fm.url(for:.applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             print(suppurl)
         } catch {
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
 
     @IBAction func doButton4 (_ sender: Any!) {
         do {
-            let fm = FileManager()
+            let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let myfolder = docsurl.appendingPathComponent("MyFolder")
             
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
 
     @IBAction func doButton5 (_ sender: Any!) {
         do {
-            let fm = FileManager()
+            let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let arr = try fm.contentsOfDirectory(at:docsurl, includingPropertiesForKeys: nil)
             arr.forEach{print($0.lastPathComponent)}
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton7 (_ sender: Any!) {
         do {
-            let fm = FileManager()
+            let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let dir = fm.enumerator(at:docsurl, includingPropertiesForKeys: nil)!
             for case let f as URL in dir where f.pathExtension == "txt" {
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton8 (_ sender: Any!) {
         do {
-            let fm = FileManager()
+            let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let moi = Person(firstName: "Matt", lastName: "Neuburg")
             let moidata = NSKeyedArchiver.archivedData(withRootObject: moi)
@@ -132,7 +132,7 @@ class ViewController: UIViewController {
     
     @IBAction func doButton9 (_ sender: Any!) {
         do {
-            let fm = FileManager()
+            let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let moifile = docsurl.appendingPathComponent("moi.txt")
             switch which {

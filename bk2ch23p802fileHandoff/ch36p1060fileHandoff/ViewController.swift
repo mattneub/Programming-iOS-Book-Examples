@@ -21,7 +21,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
     func locateDoc () -> URL? {
         var url : URL? = nil
         do {
-            let fm = FileManager()
+            let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let dir = fm.enumerator(at: docsurl, includingPropertiesForKeys: nil)!
             for case let f as URL in dir {
@@ -89,7 +89,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
     @IBAction func doPreviewMultipleUsingQuickLook (_ sender: Any!) {
         self.docs = [URL]()
         do {
-            let fm = FileManager()
+            let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let dir = fm.enumerator(at: docsurl, includingPropertiesForKeys: nil)!
             for case let f as URL in dir {

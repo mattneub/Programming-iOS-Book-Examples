@@ -30,7 +30,7 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         
         self.tableView.register(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "Person")
         
-        let fm = FileManager()
+        let fm = FileManager.default
         self.doc = PeopleDocument(fileURL:self.fileURL)
         
         func listPeople(_ success:Bool) {

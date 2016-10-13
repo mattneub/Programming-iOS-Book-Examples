@@ -541,7 +541,7 @@ class ViewController: UIViewController {
         do {
             // showing one common way to lose element typing
             let arr = [1,2,3]
-            let fm = FileManager()
+            let fm = FileManager.default
             let f = fm.temporaryDirectory.appendingPathComponent("test.plist")
             (arr as NSArray).write(to: f, atomically: true)
             let arr2 = NSArray(contentsOf: f)

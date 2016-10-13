@@ -11,7 +11,7 @@ class DocumentLister: UITableViewController {
             return ubiq
         } else {
             do {
-                let fm = FileManager()
+                let fm = FileManager.default
                 return try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             } catch {
                 print(error)
@@ -35,7 +35,7 @@ class DocumentLister: UITableViewController {
     func doRefresh (_: Any?) {
         print("refreshing")
         do {
-            let fm = FileManager()
+            let fm = FileManager.default
             self.files = try fm.contentsOfDirectory(at: self.docsurl, includingPropertiesForKeys: nil).filter {
                     print($0)
                     if fm.isUbiquitousItem(at:$0) {

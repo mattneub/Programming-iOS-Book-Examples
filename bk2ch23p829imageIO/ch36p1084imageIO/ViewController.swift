@@ -50,7 +50,7 @@ class ViewController: UIViewController {
     @IBAction func doButton3 (_ sender: Any!) {
         let url = Bundle.main.url(forResource:"colson", withExtension: "jpg")!
         let src = CGImageSourceCreateWithURL(url as CFURL, nil)!
-        let fm = FileManager()
+        let fm = FileManager.default
         let suppurl = try! fm.url(for:.applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let tiff = suppurl.appendingPathComponent("mytiff.tiff")
         let dest = CGImageDestinationCreateWithURL(tiff as CFURL, kUTTypeTIFF, 1, nil)!

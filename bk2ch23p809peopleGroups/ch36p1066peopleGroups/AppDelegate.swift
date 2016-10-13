@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // NB should start by asking for the file manager's ubiquityIdentityToken
         // if it doesn't exist, there is no iCloud account
         DispatchQueue.global(qos:.default).async {
-            let fm = FileManager()
+            let fm = FileManager.default
             let ubiq = fm.url(forUbiquityContainerIdentifier:nil)
             print("ubiq: \(ubiq)")
             DispatchQueue.main.async {
