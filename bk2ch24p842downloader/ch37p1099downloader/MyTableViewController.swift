@@ -2,7 +2,7 @@
 
 import UIKit
 
-class MyTableViewController: UITableViewController {
+class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
 
     lazy var configuration : URLSessionConfiguration = {
         let config = URLSessionConfiguration.ephemeral
@@ -16,9 +16,9 @@ class MyTableViewController: UITableViewController {
         }()
 
     var model : [Model] = {
-        let mannyurl = "http://www.apeth.com/pep/manny.jpg"
-        let jackurl = "http://www.apeth.com/pep/jack.jpg"
-        let moeurl = "http://www.apeth.com/pep/moe.jpg"
+        let mannyurl = "https://www.apeth.com/pep/manny.jpg"
+        let jackurl = "https://www.apeth.com/pep/jack.jpg"
+        let moeurl = "https://www.apeth.com/pep/moe.jpg"
         var arr = [Model]()
         for _ in 0 ..< 15 {
             let m = Model()
@@ -41,6 +41,24 @@ class MyTableViewController: UITableViewController {
         return arr
     }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.prefetchDataSource = self // turn on prefetching
+    }
+    
+    var didSetup = false
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // work around bug: prefetch is not called for the initially visible rows!
+        if !didSetup {
+            didSetup = true
+            if let ips = self.tableView.indexPathsForVisibleRows {
+                self.tableView.prefetchDataSource?.tableView(self.tableView, prefetchRowsAt: ips)
+            }
+        }
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -49,32 +67,30 @@ class MyTableViewController: UITableViewController {
         return self.model.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
-        let m = self.model[indexPath.row]
-        cell.textLabel!.text = m.text
-        // have we got a picture?
-        if let im = m.im {
-            cell.imageView!.image = im
-        } else {
-            if m.task == nil { // no task? start one!
-                cell.imageView!.image = nil
-                m.task = self.downloader.download(m.picurl) { // *
-                    [weak self] url in // *
-                    m.task = nil // *
-                    if url == nil {
-                        return
-                    }
-                    if let data = try? Data(contentsOf: url) {
-                        let im = UIImage(data:data)
-                        m.im = im
-                        DispatchQueue.main.async {
-                            self!.tableView.reloadRows(at:[indexPath], with: .none)
-                        }
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for ip in indexPaths {
+            let m = self.model[ip.row]
+            guard m.im == nil else { print("nop \(ip)"); return } // we have a picture, nothing to do
+            guard m.task == nil else { print("nop2 \(ip)"); return } // we're already downloading
+            print("prefetching for \(ip)")
+            m.task = self.downloader.download(m.picurl) { url in
+                m.task = nil
+                guard let url = url else { return }
+                if let data = try? Data(contentsOf: url) {
+                    m.im = UIImage(data:data)
+                    DispatchQueue.main.async {
+                        tableView.reloadRows(at:[ip], with: .none)
                     }
                 }
             }
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
+        let m = self.model[indexPath.row]
+        cell.textLabel!.text = m.text
+        cell.imageView!.image = m.im // picture or nil
         return cell
     }
     

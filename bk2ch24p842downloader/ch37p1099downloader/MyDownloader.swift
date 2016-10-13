@@ -2,6 +2,7 @@
 
 import UIKit
 
+// tried to get rid of Wrapper, but failed
 class Wrapper<T> {
     let p:T
     init(_ p:T){self.p = p}
@@ -45,7 +46,7 @@ class MyDownloader: NSObject, URLSessionDownloadDelegate {
 
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         let req = downloadTask.originalRequest!
-        let ch : AnyObject = URLProtocol.property(forKey:"ch", in:req)!
+        let ch = URLProtocol.property(forKey:"ch", in:req)!
         let response = downloadTask.response as! HTTPURLResponse
         let stat = response.statusCode
         print("status \(stat)")
