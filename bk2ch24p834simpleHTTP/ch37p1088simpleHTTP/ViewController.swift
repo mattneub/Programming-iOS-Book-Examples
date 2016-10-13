@@ -8,23 +8,22 @@ class ViewController: UIViewController {
     
     @IBAction func doSimpleHTTP (_ sender: Any!) {
         self.iv.image = nil
-        let s = "http://www.apeth.net/matt/images/phoenixnewest.jpg"
+        let s = "https://www.apeth.net/matt/images/phoenixnewest.jpg"
         let url = URL(string:s)!
-        let session = URLSession.shared()
-        let task = session.downloadTask(with:url) {
-            (loc:URL?, response:URLResponse?, error:NSError?) in
+        let session = URLSession.shared
+        let task = session.downloadTask(with:url) { loc, resp, err in
             print("here")
-            if error != nil {
-                print(error)
+            guard err == nil else {
+                print(err)
                 return
             }
-            let status = (response as! HTTPURLResponse).statusCode
+            let status = (resp as! HTTPURLResponse).statusCode
             print("response status: \(status)")
-            if status != 200 {
-                print("oh well")
+            guard status == 200 else {
+                print(status)
                 return
             }
-            if let d = try? Data(contentsOf:loc!) {
+            if let loc = loc, let d = try? Data(contentsOf:loc) {
                 let im = UIImage(data:d)
                 DispatchQueue.main.async {
                     self.iv.image = im
@@ -32,6 +31,8 @@ class ViewController: UIViewController {
                 }
             }
         }
+        // just demonstrating syntax
+        task.priority = URLSessionTask.defaultPriority
         task.resume()
     }
 }

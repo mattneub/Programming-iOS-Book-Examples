@@ -20,7 +20,7 @@ class ViewController: UIViewController, URLSessionDataDelegate {
             return
         }
         
-        let s = "http://www.apeth.net/matt/images/phoenixnewest.jpg"
+        let s = "https://www.apeth.net/matt/images/phoenixnewest.jpg"
         let url = URL(string:s)!
         let req = URLRequest(url:url)
         let task = self.session.dataTask(with:req) // *
@@ -32,17 +32,19 @@ class ViewController: UIViewController, URLSessionDataDelegate {
     }
     
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-        print("received \(data.count) bytes of data")
         // do something with the data here!
         self.data.append(data)
+        print("received \(data.count) bytes of data; total \(self.data.count)")
     }
     
     
-    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: NSError?) {
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         print("completed: error: \(error)")
         self.task = nil
         if error == nil {
-            self.iv.image = UIImage(data:self.data)
+            DispatchQueue.main.async {
+                self.iv.image = UIImage(data:self.data)
+            }
         }
     }
     
