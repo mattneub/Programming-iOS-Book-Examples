@@ -52,8 +52,8 @@ class ViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func crash (_ sender: Any?) {
-        _ = sender as! String
+    @IBAction func crash(_ sender: Any?) {
+        fatalError("kaboom")
     }
 
 
