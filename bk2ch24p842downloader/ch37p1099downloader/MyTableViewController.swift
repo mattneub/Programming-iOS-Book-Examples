@@ -66,11 +66,9 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
             m.task = self.downloader.download(url:url) { url in
                 m.task = nil
                 if let url = url, let data = try? Data(contentsOf: url) {
-                    DispatchQueue.main.async {
-                        print("got \(ip)")
-                        m.im = UIImage(data:data)
-                        tableView.reloadRows(at:[ip], with: .none)
-                    }
+                    print("got \(ip)")
+                    m.im = UIImage(data:data)
+                    tableView.reloadRows(at:[ip], with: .none)
                 }
             }
         }
@@ -88,7 +86,7 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
     }
     
     // uncomment to try expunging
-    /*
+   /*
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let m = self.model[(indexPath as NSIndexPath).row]
         if m.task == nil && m.im != nil {
