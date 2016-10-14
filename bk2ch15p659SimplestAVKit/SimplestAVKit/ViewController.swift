@@ -28,7 +28,6 @@ class ViewController: UIViewController {
             let player = AVPlayer(url: url)
             av.player = player
             self.present(av, animated: true) {
-                _ in
                 // av.view.backgroundColor = .green
             }
 //            let iv = UIImageView(image:UIImage(named:"smiley")!)
@@ -74,7 +73,7 @@ extension ViewController : AVPlayerViewControllerDelegate {
     
     
     func playerViewController(_ pvc: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler ch: @escaping (Bool) -> Void) {
-        self.present(pvc, animated:true) { _ in
+        self.present(pvc, animated:true) { 
             ch(true)
         }
     }

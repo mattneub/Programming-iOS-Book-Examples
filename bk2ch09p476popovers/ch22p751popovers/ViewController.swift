@@ -167,7 +167,6 @@ class ViewController : UIViewController {
         
         let presenter = self.presentedViewController!
         presenter.present(vc, animated:true) {
-            _ in
             print("presented")
             
             // long-standing problem of how we want this to be dismissable
