@@ -48,17 +48,6 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
     
     var didSetup = false
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        // work around bug: prefetch is not called for the initially visible rows!
-        if !didSetup {
-            didSetup = true
-            if let ips = self.tableView.indexPathsForVisibleRows {
-                self.tableView.prefetchDataSource?.tableView(self.tableView, prefetchRowsAt: ips)
-            }
-        }
-    }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -73,12 +62,13 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
             guard m.im == nil else { print("nop \(ip)"); return } // we have a picture, nothing to do
             guard m.task == nil else { print("nop2 \(ip)"); return } // we're already downloading
             print("prefetching for \(ip)")
-            m.task = self.downloader.download(m.picurl) { url in
+            let url = URL(string:m.picurl)!
+            m.task = self.downloader.download(url:url) { url in
                 m.task = nil
-                guard let url = url else { return }
-                if let data = try? Data(contentsOf: url) {
-                    m.im = UIImage(data:data)
+                if let url = url, let data = try? Data(contentsOf: url) {
                     DispatchQueue.main.async {
+                        print("got \(ip)")
+                        m.im = UIImage(data:data)
                         tableView.reloadRows(at:[ip], with: .none)
                     }
                 }
@@ -91,19 +81,21 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
         let m = self.model[indexPath.row]
         cell.textLabel!.text = m.text
         cell.imageView!.image = m.im // picture or nil
+        if m.task == nil && m.im == nil {
+            self.tableView(tableView, prefetchRowsAt:[indexPath])
+        }
         return cell
     }
     
+    // uncomment to try expunging
+    /*
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let m = self.model[(indexPath as NSIndexPath).row]
-        if let task = m.task {
-            if task.state == .running {
-                task.cancel()
-                print("cancel task for row \(indexPath.row)")
-                m.task = nil
-            }
+        if m.task == nil && m.im != nil {
+            m.im = nil // expunge
         }
     }
+ */
     
     deinit {
         self.downloader.cancelAllTasks()

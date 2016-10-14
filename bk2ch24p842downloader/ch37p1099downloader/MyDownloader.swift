@@ -26,8 +26,7 @@ class MyDownloader: NSObject, URLSessionDownloadDelegate {
     }
     
     @discardableResult
-    func download(_ s:String, completionHandler ch : MyDownloaderCompletion) -> URLSessionTask {
-        let url = URL(string:s)!
+    func download(url:URL, completionHandler ch : MyDownloaderCompletion) -> URLSessionTask {
         let req = NSMutableURLRequest(url:url)
         URLProtocol.setProperty(Wrapper(ch), forKey:"ch", in:req)
         let task = self.session.downloadTask(with:req as URLRequest)
@@ -35,32 +34,25 @@ class MyDownloader: NSObject, URLSessionDownloadDelegate {
         return task
     }
     
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten writ: Int64, totalBytesExpectedToWrite exp: Int64) {
-        print("downloaded \(100*writ/exp)%")
-    }
-    
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
-        // unused in this example
-        print("did resume")
-    }
-
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo url: URL) {
         let req = downloadTask.originalRequest!
-        let ch = URLProtocol.property(forKey:"ch", in:req)!
-        let response = downloadTask.response as! HTTPURLResponse
-        let stat = response.statusCode
-        print("status \(stat)")
-        var url : URL! = nil
-        if stat == 200 {
-            url = location
-            print("download \(req.url!.lastPathComponent)")
-        }
-        let ch2 = (ch as! Wrapper).p as MyDownloaderCompletion
-        if self.isMain {
-            ch2(url)
-        } else {
-            DispatchQueue.main.sync {
-                ch2(url)
+        let w = URLProtocol.property(forKey:"ch", in:req)!
+//        let response = downloadTask.response as! HTTPURLResponse
+//        let stat = response.statusCode
+//        print("status \(stat)")
+//        var url : URL! = nil
+//        if stat == 200 {
+//            url = location
+//            print("download \(req.url!.lastPathComponent)")
+//        }
+        if let w = (w as? Wrapper<MyDownloaderCompletion>) {
+            let ch = w.p
+            if self.isMain {
+                ch(url)
+            } else {
+                DispatchQueue.main.sync {
+                    ch(url)
+                }
             }
         }
     }

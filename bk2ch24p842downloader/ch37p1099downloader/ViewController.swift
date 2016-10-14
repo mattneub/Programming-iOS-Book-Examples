@@ -21,7 +21,8 @@ class ViewController: UIViewController {
     @IBAction func doDownload (_ sender: Any!) {
         self.iv.image = nil
         let s = "https://www.nasa.gov/sites/default/files/styles/1600x1200_autoletterbox/public/pia17474_1.jpg"
-        self.downloader.download(s) { url in
+        let url = URL(string:s)!
+        self.downloader.download(url:url) { url in
             if let url = url, let d = try? Data(contentsOf: url) {
                 let im = UIImage(data:d)
                 DispatchQueue.main.async {
