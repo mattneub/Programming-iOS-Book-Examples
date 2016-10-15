@@ -13,7 +13,7 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
     
     lazy var downloader : MyDownloader = {
         return MyDownloader(configuration:self.configuration)
-        }()
+    }()
 
     var model : [Model] = {
         let mannyurl = "https://www.apeth.com/pep/manny.jpg"
@@ -96,7 +96,7 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
  */
     
     deinit {
-        self.downloader.cancelAllTasks()
+        // self.downloader.cancelAllTasks()
         print("table view controller dealloc")
     }
 

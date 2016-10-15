@@ -2,17 +2,17 @@
 
 import UIKit
 
+let isMain = false // try false to move delegate methods onto a background thread
+
 typealias MyDownloaderCompletion = (URL!) -> ()
 
-class MyDownloader: NSObject, URLSessionDownloadDelegate {
+class MyDownloader: NSObject {
     let config : URLSessionConfiguration
     let q = OperationQueue()
-    let isMain = false // try false to move delegate methods onto a background thread
     lazy var session : URLSession = {
-        let queue = (self.isMain ? .main : self.q)
-        return URLSession(configuration:self.config, delegate:self, delegateQueue:queue)
+        let queue = (isMain ? .main : self.q)
+        return URLSession(configuration:self.config, delegate:MyDownloaderDelegate(), delegateQueue:queue)
     }()
-    
     init(configuration config:URLSessionConfiguration) {
         self.config = config
         super.init()
@@ -27,21 +27,27 @@ class MyDownloader: NSObject, URLSessionDownloadDelegate {
         return task
     }
     
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo url: URL) {
-        let req = downloadTask.originalRequest!
-        let ch = URLProtocol.property(forKey:"ch", in:req) as! MyDownloaderCompletion
-        if self.isMain {
-            ch(url)
-        } else {
-            DispatchQueue.main.sync {
+    private class MyDownloaderDelegate : NSObject, URLSessionDownloadDelegate {
+        func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo url: URL) {
+            let req = downloadTask.originalRequest!
+            let ch = URLProtocol.property(forKey:"ch", in:req) as! MyDownloaderCompletion
+            if isMain {
                 ch(url)
+            } else {
+                DispatchQueue.main.sync {
+                    ch(url)
+                }
             }
         }
+        deinit {
+            print("farewell from Delegate")
+        }
     }
+
     
-    func cancelAllTasks() {
-        self.session.invalidateAndCancel()
-    }
+//    func cancelAllTasks() {
+//        self.session.invalidateAndCancel()
+//    }
     
     deinit {
         print("farewell from MyDownloader")

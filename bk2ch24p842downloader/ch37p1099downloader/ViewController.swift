@@ -14,8 +14,7 @@ class ViewController: UIViewController {
         }()
     
     lazy var downloader : MyDownloader = {
-        let d : MyDownloader = MyDownloader(configuration:self.configuration)
-        return d
+        return MyDownloader(configuration:self.configuration)
         }()
     
     @IBAction func doDownload (_ sender: Any!) {
@@ -33,7 +32,7 @@ class ViewController: UIViewController {
     }
     
     deinit {
-        self.downloader.cancelAllTasks()
+        // self.downloader.cancelAllTasks()
         print("view controller dealloc")
     }
     
