@@ -9,6 +9,10 @@ class ViewController: UIViewController {
     @IBAction func testForTubby() {
         let im = UIImage(named:"tubby")
         print("tubby is", im)
+        let c2 = NSDataAsset(name: "control2")
+        print("control2 is", c2)
+        print(Bundle.main.url(forResource: "control", withExtension: "mp3"))
+        print(tubbyRequest?.bundle.url(forResource: "control", withExtension: "mp3"))
         print("frac is", self.tubbyRequest?.progress.fractionCompleted)
     }
     

@@ -22,7 +22,7 @@ class ViewController: UIViewController, URLSessionDownloadDelegate {
         if self.task != nil {
             return
         }
-        
+        self.iv.image = nil
         let s = "https://www.apeth.net/matt/images/phoenixnewest.jpg"
         let url = URL(string:s)!
         switch which {
@@ -30,7 +30,6 @@ class ViewController: UIViewController, URLSessionDownloadDelegate {
             let req = URLRequest(url:url)
             let task = self.session.downloadTask(with:req)
             self.task = task
-            self.iv.image = nil
             task.resume()
 
         case 1:
@@ -38,7 +37,6 @@ class ViewController: UIViewController, URLSessionDownloadDelegate {
             URLProtocol.setProperty("howdy", forKey:"greeting", in:req)
             let task = self.session.downloadTask(with:req as URLRequest)
             self.task = task
-            self.iv.image = nil
             task.resume()
 
         default:break

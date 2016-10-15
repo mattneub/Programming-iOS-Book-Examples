@@ -12,6 +12,7 @@
 		812930C11DB1A439007806F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 812930BF1DB1A439007806F6 /* Main.storyboard */; };
 		812930C31DB1A439007806F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 812930C21DB1A439007806F6 /* Assets.xcassets */; };
 		812930C61DB1A439007806F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 812930C41DB1A439007806F6 /* LaunchScreen.storyboard */; };
+		817466231DB28A9E001B8AFB /* control.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 817466221DB28A9E001B8AFB /* control.mp3 */; settings = {ASSET_TAGS = (tubby, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		812930C21DB1A439007806F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		812930C51DB1A439007806F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		812930C71DB1A439007806F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		817466221DB28A9E001B8AFB /* control.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = control.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				812930BB1DB1A439007806F6 /* AppDelegate.swift */,
 				812930BD1DB1A439007806F6 /* ViewController.swift */,
 				812930BF1DB1A439007806F6 /* Main.storyboard */,
+				817466221DB28A9E001B8AFB /* control.mp3 */,
 				812930C21DB1A439007806F6 /* Assets.xcassets */,
 				812930C41DB1A439007806F6 /* LaunchScreen.storyboard */,
 				812930C71DB1A439007806F6 /* Info.plist */,
@@ -91,6 +94,7 @@
 			isa = PBXProject;
 			attributes = {
 				KnownAssetTags = (
+					test,
 					tubby,
 				);
 				LastSwiftUpdateCheck = 0800;
@@ -129,6 +133,7 @@
 			files = (
 				812930C61DB1A439007806F6 /* LaunchScreen.storyboard in Resources */,
 				812930C31DB1A439007806F6 /* Assets.xcassets in Resources */,
+				817466231DB28A9E001B8AFB /* control.mp3 in Resources */,
 				812930C11DB1A439007806F6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +308,7 @@
 				812930CC1DB1A439007806F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

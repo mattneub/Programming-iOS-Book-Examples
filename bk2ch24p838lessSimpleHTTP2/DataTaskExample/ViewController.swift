@@ -19,14 +19,13 @@ class ViewController: UIViewController, URLSessionDataDelegate {
         if self.task != nil {
             return
         }
-        
+        self.iv.image = nil
+        self.data.count = 0 // *
         let s = "https://www.apeth.net/matt/images/phoenixnewest.jpg"
         let url = URL(string:s)!
         let req = URLRequest(url:url)
         let task = self.session.dataTask(with:req) // *
         self.task = task
-        self.iv.image = nil
-        self.data.count = 0 // *
         task.resume()
         
     }
