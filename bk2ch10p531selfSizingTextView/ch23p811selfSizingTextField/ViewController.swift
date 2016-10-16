@@ -19,6 +19,10 @@ class ViewController: UIViewController, UITextViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tv.isScrollEnabled = false // *
+        self.heightConstraint.isActive = false // *
+        
         let s = "Twas brillig, and the slithy toves did gyre and gimble in the wabe; " +
             "all mimsy were the borogoves, and the mome raths outgrabe."
         
@@ -35,52 +39,19 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         self.tv.attributedText = mas
         
-//        DispatchQueue.main.async {
-//            self.adjustHeight(self.tv)
-//        }
-        
     }
     
     override func viewDidLayoutSubviews() {
-        self.adjustHeight(self.tv)
-    }
-    
-    func adjustHeight(_ tv:UITextView) {
-        self.heightConstraint.constant = ceil(tv.contentSize.height)
-    }
-    
-//    func textViewDidChange(_ textView: UITextView) {
-//        delay(0.1) {
-//            self.adjustHeight(textView)
-//        }
-//    }
-//    
-    // textViewDidChange is happening too late;
-    // by that time, the text view has scrolled if necessary
-    // hence the delay
-    // so I prefer a solution using shouldChangeTextInRange but the problem is...
-    // if I return false, I also end up shifting the selection in weird ways
-    // and then I have to put it back, and it's not obvious what the algorithm is
-    // this is my attempt to get it right
-
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,
-                  replacementText text: String) -> Bool {
-//        let sel = textView.selectedRange
-//        textView.text = (textView.text as NSString)
-//            .replacingCharacters(in: range, with:text)
-//        delay(0.1) {
-////            self.adjustHeight(textView)
-////            textView.contentOffset = .zero
-//        }
-        delay(0.1) {
-        self.view.setNeedsLayout()
+        let h = self.tv.contentSize.height
+        let limit : CGFloat = 200 // or whatever
+        if h > limit && !self.tv.isScrollEnabled {
+            self.tv.isScrollEnabled = true
+            self.heightConstraint.constant = limit
+            self.heightConstraint.isActive = true
+        } else if h < limit && self.tv.isScrollEnabled {
+            self.tv.isScrollEnabled = false
+            self.heightConstraint.isActive = false
         }
-//        textView.selectedRange =
-//            text.isEmpty && sel.length == 0 ?
-//                NSMakeRange(sel.location - 1,0) :
-//            NSMakeRange(sel.location + text.utf16.count, 0)
-        return true
     }
-    
-    
+
 }
