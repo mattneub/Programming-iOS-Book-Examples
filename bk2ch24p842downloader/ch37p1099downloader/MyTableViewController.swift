@@ -96,7 +96,6 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
  */
     
     deinit {
-        // self.downloader.cancelAllTasks()
         print("table view controller dealloc")
     }
 

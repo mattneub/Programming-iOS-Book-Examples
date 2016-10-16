@@ -51,6 +51,7 @@ class MyDownloader: NSObject {
     
     deinit {
         print("farewell from MyDownloader")
+        self.session.invalidateAndCancel()
     }
     
 }

@@ -24,9 +24,7 @@ class ViewController: UIViewController {
         self.downloader.download(url:url) { url in
             if let url = url, let d = try? Data(contentsOf: url) {
                 let im = UIImage(data:d)
-                DispatchQueue.main.async {
-                    self.iv.image = im
-                }
+                self.iv.image = im
             }
         }
     }
