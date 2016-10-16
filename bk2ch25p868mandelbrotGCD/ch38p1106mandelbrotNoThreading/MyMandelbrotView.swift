@@ -38,12 +38,8 @@ let qKey = DispatchSpecificKey<String>()
 let qVal = "com.neuburg.mandeldraw"
 
 class MyMandelbrotView : UIView {
-
-    // best to run on device, because we want a slow processor in order to see the delay
-    // you can increase the size of MANDELBROT_STEPS to make even more of a delay
-    // but on my device, there's plenty of delay as is!
     
-    let MANDELBROT_STEPS = 200
+    let MANDELBROT_STEPS = 1000
     
     var bitmapContext: CGContext!
     let draw_queue : DispatchQueue = {
@@ -156,9 +152,9 @@ class MyMandelbrotView : UIView {
         if self.bitmapContext != nil {
             let context = UIGraphicsGetCurrentContext()!
             let im = self.bitmapContext.makeImage()
-            context.draw(in: self.bounds, image: im!)
+            context.draw(im!, in: self.bounds)
             self.odd = !self.odd
-            self.backgroundColor = self.odd ? UIColor.green() : UIColor.red()
+            self.backgroundColor = self.odd ? .green : .red
         }
     }
     

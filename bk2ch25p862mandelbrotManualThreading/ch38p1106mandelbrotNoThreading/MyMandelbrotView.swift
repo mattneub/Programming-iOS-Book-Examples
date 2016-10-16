@@ -32,10 +32,7 @@ class MyMandelbrotView : UIView {
     // you can increase the size of MANDELBROT_STEPS to make even more of a delay
     // but on my device, there's plenty of delay as is!
     
-    // actually, in Swift, this is way slow in simulator, and WAY slow on device
-    // good indication of Swift performance
-    
-    let MANDELBROT_STEPS = 200
+    let MANDELBROT_STEPS = 1000
     
     var bitmapContext: CGContext!
     var odd = false
@@ -59,14 +56,14 @@ class MyMandelbrotView : UIView {
         UIApplication.shared.beginIgnoringInteractionEvents()
         self.makeBitmapContext(size:self.bounds.size)
         let center = CGPoint(self.bounds.midX, self.bounds.midY)
-        let d = ["center":NSValue(cgPoint: center), "zoom":CGFloat(1)]
+        let d : [AnyHashable:Any] = ["center":center, "zoom":CGFloat(1)]
         self.performSelector(inBackground: #selector(reallyDraw), with: d)
     }
     
     // trampoline, background thread entry point
-    func reallyDraw(_ d:[NSObject:AnyObject]) {
+    func reallyDraw(_ d: [AnyHashable:Any]) {
         autoreleasepool {
-            self.draw(center:(d["center"] as! NSValue).cgPointValue(), zoom: d["zoom"] as! CGFloat)
+            self.draw(center:d["center"] as! CGPoint, zoom: d["zoom"] as! CGFloat)
             self.performSelector(onMainThread: #selector(allDone), with: nil, waitUntilDone: false)
         }
     }
@@ -134,9 +131,9 @@ class MyMandelbrotView : UIView {
         if self.bitmapContext != nil {
             let context = UIGraphicsGetCurrentContext()!
             let im = self.bitmapContext.makeImage()
-            context.draw(in: self.bounds, image: im!)
+            context.draw(im!, in: self.bounds)
             self.odd = !self.odd
-            self.backgroundColor = self.odd ? UIColor.green() : UIColor.red()
+            self.backgroundColor = self.odd ? .green : .red
         }
     }
 
