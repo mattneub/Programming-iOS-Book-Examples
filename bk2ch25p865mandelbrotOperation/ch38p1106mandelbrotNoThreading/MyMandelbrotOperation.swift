@@ -65,9 +65,7 @@ class MyMandelbrotOperation : Operation {
     }
     
     override func main() {
-        if self.isCancelled {
-            return
-        }
+        guard !self.isCancelled else {return}
         self.makeBitmapContext(size:self.size)
         self.draw(center: self.center, zoom: self.zoom)
         if !self.isCancelled {
