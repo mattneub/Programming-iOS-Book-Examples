@@ -21,7 +21,7 @@ class MyView : UIView {
         self.addGestureRecognizer(l)
     }
     
-    override func canBecomeFirstResponder() -> Bool {
+    override var canBecomeFirstResponder : Bool {
         return true
     }
     
@@ -38,7 +38,7 @@ class MyView : UIView {
             c.x += delta.x; c.y += delta.y
             func registerForUndo() {
                 let oldCenter = self.center
-                self.undoer.registerUndoWithTarget(self) {
+                self.undoer.registerUndo(withTarget: self) {
                     v in
                     UIView.animate(withDuration:0.4, delay: 0.1, animations: {
                         v.center = oldCenter
@@ -61,7 +61,7 @@ class MyView : UIView {
 
     func longPress (_ g : UIGestureRecognizer) {
         if g.state == .began {
-            let m = UIMenuController.shared()
+            let m = UIMenuController.shared
             m.setTargetRect(self.bounds, in: self)
             let mi1 = UIMenuItem(title: self.undoer.undoMenuItemTitle, action: #selector(undo))
             let mi2 = UIMenuItem(title: self.undoer.redoMenuItemTitle, action: #selector(redo))
