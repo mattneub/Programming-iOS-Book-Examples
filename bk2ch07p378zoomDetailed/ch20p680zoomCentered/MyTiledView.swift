@@ -6,7 +6,7 @@ class MyTiledView : UIView {
     var currentImage : UIImage!
     var currentSize : CGSize = .zero
     
-    var drawQueue : DispatchQueue = DispatchQueue(label: "drawQueue")
+    let drawQueue = DispatchQueue(label: "drawQueue")
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
