@@ -27,20 +27,37 @@ class MyView : UIView {
     
     // handler variant (new in iOS 9)
     
+    let which = 2 // 1 or 2
+    
     func setCenterUndoably (_ newCenter:CGPoint) {
-        let oldCenter = self.center
-        self.undoer.registerUndo(withTarget: self) {
-            v in
-            v.setCenterUndoably(oldCenter)
-        }
-        self.undoer.setActionName("Move")
-        if self.undoer.isUndoing || self.undoer.isRedoing {
-            UIView.animate(withDuration:0.4, delay: 0.1, animations: {
+        switch which {
+        case 1:
+            let oldCenter = self.center
+            self.undoer.registerUndo(withTarget: self) {
+                $0.setCenterUndoably(oldCenter)
+            }
+            self.undoer.setActionName("Move")
+            if self.undoer.isUndoing || self.undoer.isRedoing {
+                UIView.animate(withDuration:0.4, delay: 0.1, animations: {
+                    self.center = newCenter
+                })
+            } else { // just do it
                 self.center = newCenter
-            })
-        } else {
-            // just do it
-            self.center = newCenter
+            }
+        case 2:
+            let oldCenter = self.center
+            self.undoer.registerUndo(withTarget: self) {
+                let v = $0
+                UIView.animate(withDuration:0.4, delay: 0.1, animations: {
+                    v.center = oldCenter
+                })
+                $0.setCenterUndoably(oldCenter)
+            }
+            self.undoer.setActionName("Move")
+            if !(self.undoer.isUndoing || self.undoer.isRedoing) { // just do it
+                self.center = newCenter
+            }
+        default: break
         }
     }
     

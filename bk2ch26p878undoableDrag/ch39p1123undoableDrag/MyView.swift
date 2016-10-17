@@ -34,8 +34,7 @@ class MyView : UIView {
             UIView.animate(withDuration:0.4, delay: 0.1, animations: {
                 self.center = newCenter.cgPointValue
             })
-        } else {
-            // just do it
+        } else { // just do it
             self.center = newCenter.cgPointValue
         }
     }

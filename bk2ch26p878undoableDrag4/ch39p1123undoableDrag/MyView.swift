@@ -39,15 +39,15 @@ class MyView : UIView {
             func registerForUndo() {
                 let oldCenter = self.center
                 self.undoer.registerUndo(withTarget: self) {
-                    v in
+                    let v = $0
                     UIView.animate(withDuration:0.4, delay: 0.1, animations: {
                         v.center = oldCenter
-                        })
+                    })
                     registerForUndo()
                 }
                 self.undoer.setActionName("Move")
             }
-            registerForUndo()
+            registerForUndo() // *
             self.center = c // *
             p.setTranslation(.zero, in: self.superview!)
         case .ended, .cancelled:
@@ -70,7 +70,7 @@ class MyView : UIView {
         }
     }
     
-    override func canPerformAction(_ action: Selector, withSender sender: Any!) -> Bool {
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(undo) {
             return self.undoer.canUndo
         }
