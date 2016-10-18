@@ -4,19 +4,17 @@ import UIKit
 
 class ViewController : UIViewController {
     
-    /*
-    The problem is that dynamic type is not actually dynamic!
-    Updating the interface is up to you.
-*/
-    
     @IBOutlet var lab : UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        NotificationCenter.default.addObserver(forName: .UIApplicationDidBecomeActive, object: nil, queue: nil) { _ in
-//            print(UIFont.preferredFont(forTextStyle: .headline))
-//        }
+        // just testing, pay no attention
+        NotificationCenter.default.addObserver(forName: .UIApplicationDidBecomeActive, object: nil, queue: nil) { _ in
+            print(UIFont.preferredFont(forTextStyle: .headline))
+            print(UIFont.buttonFontSize)
+            print(UIFont.labelFontSize)
+        }
         
         // hold my beer, and watch THIS!
         self.lab.adjustsFontForContentSizeCategory = true // ta-daaaaaa!

@@ -14,6 +14,11 @@ class ViewController: UIViewController {
         self.accessoryView = arr[0] as! UIView
         let b = self.accessoryView.subviews[0] as! UIButton
         b.addTarget(self, action:#selector(doNextButton), for:.touchUpInside)
+        // new iOS 10 feature, just testing
+        // didn't behave well, not documenting
+//        for tf in self.textFields {
+//            tf.textContentType = .emailAddress
+//        }
     }
     
 

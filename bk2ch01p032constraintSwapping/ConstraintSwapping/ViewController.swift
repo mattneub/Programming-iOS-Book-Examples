@@ -90,6 +90,13 @@ class ViewController: UIViewController {
         )
 
 */
+        // ignore, just testing new iOS 10 read-only properties
+        do {
+            let c = self.constraintsWith[0]
+            print(c.firstItem)
+            print(c.firstAnchor)
+        }
+        
     }
 
     @IBAction func doSwap(_ sender: Any) {
