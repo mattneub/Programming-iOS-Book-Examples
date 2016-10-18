@@ -7,21 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		32478C071BD025770059FBF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32478C061BD025770059FBF5 /* AppDelegate.swift */; };
 		32478C091BD025770059FBF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32478C081BD025770059FBF5 /* ViewController.swift */; };
 		32478C0C1BD025770059FBF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32478C0A1BD025770059FBF5 /* Main.storyboard */; };
 		32478C0E1BD025770059FBF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32478C0D1BD025770059FBF5 /* Assets.xcassets */; };
 		32478C111BD025770059FBF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32478C0F1BD025770059FBF5 /* LaunchScreen.storyboard */; };
+		818C3C371DB5C9D90075BE93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 818C3C361DB5C9D90075BE93 /* AppDelegate.m */; };
+		818C3C391DB5C9FB0075BE93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 818C3C381DB5C9FB0075BE93 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		32478C031BD025770059FBF5 /* bk2ch40AppendixB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bk2ch40AppendixB.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		32478C061BD025770059FBF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32478C081BD025770059FBF5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32478C0B1BD025770059FBF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32478C0D1BD025770059FBF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32478C101BD025770059FBF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32478C121BD025770059FBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		818C3C341DB5C9D80075BE93 /* bk2ch40AppendixB-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bk2ch40AppendixB-Bridging-Header.h"; sourceTree = "<group>"; };
+		818C3C351DB5C9D90075BE93 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		818C3C361DB5C9D90075BE93 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		818C3C381DB5C9FB0075BE93 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +58,15 @@
 		32478C051BD025770059FBF5 /* bk2ch40AppendixB */ = {
 			isa = PBXGroup;
 			children = (
-				32478C061BD025770059FBF5 /* AppDelegate.swift */,
+				818C3C351DB5C9D90075BE93 /* AppDelegate.h */,
+				818C3C361DB5C9D90075BE93 /* AppDelegate.m */,
 				32478C081BD025770059FBF5 /* ViewController.swift */,
 				32478C0A1BD025770059FBF5 /* Main.storyboard */,
 				32478C0D1BD025770059FBF5 /* Assets.xcassets */,
 				32478C0F1BD025770059FBF5 /* LaunchScreen.storyboard */,
 				32478C121BD025770059FBF5 /* Info.plist */,
+				818C3C341DB5C9D80075BE93 /* bk2ch40AppendixB-Bridging-Header.h */,
+				818C3C381DB5C9FB0075BE93 /* main.m */,
 			);
 			path = bk2ch40AppendixB;
 			sourceTree = "<group>";
@@ -95,6 +102,7 @@
 				TargetAttributes = {
 					32478C021BD025770059FBF5 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = W3LHX5RGV2;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -136,7 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				32478C091BD025770059FBF5 /* ViewController.swift in Sources */,
-				32478C071BD025770059FBF5 /* AppDelegate.swift in Sources */,
+				818C3C391DB5C9FB0075BE93 /* main.m in Sources */,
+				818C3C371DB5C9D90075BE93 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,11 +256,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				INFOPLIST_FILE = bk2ch40AppendixB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk2ch40AppendixB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bk2ch40AppendixB/bk2ch40AppendixB-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -260,11 +273,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				INFOPLIST_FILE = bk2ch40AppendixB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.bk2ch40AppendixB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "bk2ch40AppendixB/bk2ch40AppendixB-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

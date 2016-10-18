@@ -7,6 +7,7 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
+
 extension CGRect {
     init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
         self.init(x:x, y:y, width:w, height:h)
@@ -55,7 +56,7 @@ extension NSLayoutConstraint {
             v = UIApplication.shared.keyWindow
         }
         for vv in v!.subviews {
-            print("\(vv) \(vv.hasAmbiguousLayout())")
+            print("\(vv) \(vv.hasAmbiguousLayout)")
             if vv.subviews.count > 0 {
                 self.reportAmbiguity(vv)
             }
@@ -77,8 +78,7 @@ extension NSLayoutConstraint {
     }
 }
 
-
-func lend<T where T:NSObject> (closure: (T)->()) -> T {
+func lend<T> (_ closure: (T)->()) -> T where T:NSObject {
     let orig = T()
     closure(orig)
     return orig
@@ -105,13 +105,13 @@ extension UIView {
                        duration dur: TimeInterval,
                        delay del: TimeInterval,
                        options opts: UIViewAnimationOptions,
-                       animations anim: () -> Void,
+                       animations anim: @escaping () -> Void,
                        completion comp: ((Bool) -> Void)?) {
         func helper(_ t:Int,
                     _ dur: TimeInterval,
                     _ del: TimeInterval,
                     _ opt: UIViewAnimationOptions,
-                    _ anim: () -> Void,
+                    _ anim: @escaping () -> Void,
                     _ com: ((Bool) -> Void)?) {
             UIView.animate(withDuration: dur,
                            delay: del, options: opt,
@@ -133,7 +133,7 @@ extension UIView {
 
 extension Array {
     mutating func remove(at ixs:[Int]) -> () {
-        for i in ixs.sorted(isOrderedBefore:>) {
+        for i in ixs.sorted(by:>) {
             self.remove(at:i)
         }
     }
@@ -150,8 +150,21 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var v: UIView!
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NSLog("%@", #function)
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NSLog("%@", #function)
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSLog("%@", #function)
         
         delay(0.4) {
             // do something here
@@ -166,15 +179,15 @@ class ViewController: UIViewController {
         
         let _ = imageOfSize(CGSize(100,100)) {
             let con = UIGraphicsGetCurrentContext()!
-            con.addEllipse(inRect: CGRect(0,0,100,100))
-            con.setFillColor(UIColor.blue().cgColor)
+            con.addEllipse(in: CGRect(0,0,100,100))
+            con.setFillColor(UIColor.blue.cgColor)
             con.fillPath()
         }
         
         let _ = imageOfSize(CGSize(100,100), opaque:true) {
             let con = UIGraphicsGetCurrentContext()!
-            con.addEllipse(inRect: CGRect(0,0,100,100))
-            con.setFillColor(UIColor.blue().cgColor)
+            con.addEllipse(in: CGRect(0,0,100,100))
+            con.setFillColor(UIColor.blue.cgColor)
             con.fillPath()
         }
 
@@ -183,8 +196,7 @@ class ViewController: UIViewController {
         let xorig = self.v.center.x
         UIView.animate(times:3, duration:1, delay:0, options:opts, animations:{
             self.v.center.x += 100
-            }, completion:{
-                _ in
+            }, completion:{ _ in
                 self.v.center.x = xorig
         })
         
@@ -192,6 +204,19 @@ class ViewController: UIViewController {
         arr.remove(at:[0,2])
         print(arr)
 
+        do { // without lend
+            let content = NSMutableAttributedString(string:"Ho de ho")
+            let para = NSMutableParagraphStyle()
+            para.headIndent = 10
+            para.firstLineHeadIndent = 10
+            para.tailIndent = -10
+            para.lineBreakMode = .byWordWrapping
+            para.alignment = .center
+            para.paragraphSpacing = 15
+            content.addAttribute(
+                NSParagraphStyleAttributeName,
+                value:para, range:NSMakeRange(0,1))
+        }
 
         let content = NSMutableAttributedString(string:"Ho de ho")
         content.addAttribute(NSParagraphStyleAttributeName,
