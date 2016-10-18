@@ -33,8 +33,8 @@ class MyView : UIView {
         switch which {
         case 1:
             let oldCenter = self.center
-            self.undoer.registerUndo(withTarget: self) {
-                $0.setCenterUndoably(oldCenter)
+            self.undoer.registerUndo(withTarget: self) { myself in
+                myself.setCenterUndoably(oldCenter)
             }
             self.undoer.setActionName("Move")
             if self.undoer.isUndoing || self.undoer.isRedoing {
@@ -46,12 +46,11 @@ class MyView : UIView {
             }
         case 2:
             let oldCenter = self.center
-            self.undoer.registerUndo(withTarget: self) {
-                let v = $0
+            self.undoer.registerUndo(withTarget: self) { myself in
                 UIView.animate(withDuration:0.4, delay: 0.1, animations: {
-                    v.center = oldCenter
+                    myself.center = oldCenter
                 })
-                $0.setCenterUndoably(oldCenter)
+                myself.setCenterUndoably(oldCenter)
             }
             self.undoer.setActionName("Move")
             if !(self.undoer.isUndoing || self.undoer.isRedoing) { // just do it

@@ -25,17 +25,17 @@ class MyView : UIView {
         return true
     }
     
-    func setCenterUndoably (_ newCenter:NSValue) {
+    func setCenterUndoably (_ newCenter:Any) {
         self.undoer.registerUndo(withTarget: self,
             selector: #selector(setCenterUndoably),
-            object: NSValue(cgPoint:self.center))
+            object: self.center)
         self.undoer.setActionName("Move")
         if self.undoer.isUndoing || self.undoer.isRedoing {
             UIView.animate(withDuration:0.4, delay: 0.1, animations: {
-                self.center = newCenter.cgPointValue
+                self.center = newCenter as! CGPoint
             })
         } else { // just do it
-            self.center = newCenter.cgPointValue
+            self.center = newCenter as! CGPoint
         }
     }
     
@@ -48,7 +48,8 @@ class MyView : UIView {
             let delta = p.translation(in:self.superview!)
             var c = self.center
             c.x += delta.x; c.y += delta.y
-            self.setCenterUndoably(NSValue(cgPoint:c))
+            // self.center = c
+            self.setCenterUndoably(c)
             p.setTranslation(.zero, in: self.superview!)
         case .ended, .cancelled:
             self.undoer.endUndoGrouping()
