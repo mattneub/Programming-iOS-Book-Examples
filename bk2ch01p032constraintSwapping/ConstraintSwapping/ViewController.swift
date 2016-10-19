@@ -3,9 +3,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var v1 : UIView!
     var v2 : UIView!
-    var v3 : UIView!
     var constraintsWith = [NSLayoutConstraint]()
     var constraintsWithout = [NSLayoutConstraint]()
     
@@ -31,9 +29,7 @@ class ViewController: UIViewController {
         self.view.addSubview(v2)
         self.view.addSubview(v3)
         
-        self.v1 = v1
-        self.v2 = v2
-        self.v3 = v3
+        self.v2 = v2 // retain, because we'll remove it from the interface later
         
         // construct constraints
 
