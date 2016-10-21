@@ -1,6 +1,12 @@
 
 import UIKit
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
 class ViewController : UIViewController {
     @IBOutlet var iv : UIImageView!
     let context = CIContext()
@@ -45,15 +51,12 @@ class ViewController : UIViewController {
                 _ in
                 UIImage(ciImage: blendimage).draw(in:moiextent)
             }
-
-//            UIGraphicsBeginImageContextWithOptions(moiextent.size, false, 0)
-//            UIImage(ciImage: blendimage).draw(in:moiextent)
-//            let im = UIGraphicsGetImageFromCurrentImageContext()!
-//            UIGraphicsEndImageContext()
-//            self.iv.image = im
         case 3:
-            self.iv.image = UIImage(ciImage: blendimage) // nope
-            self.iv.setNeedsDisplay() // nope
+            self.iv.image = UIImage(ciImage: blendimage, scale: 1, orientation: .up) // nope
+            delay(0.1) {
+                self.iv.setNeedsDisplay() // nope
+                self.iv.layer.displayIfNeeded() // nope
+            }
         default: break
         }
         
