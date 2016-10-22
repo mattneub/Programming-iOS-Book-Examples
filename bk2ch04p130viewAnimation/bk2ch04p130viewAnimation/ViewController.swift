@@ -159,7 +159,7 @@ class ViewController: UIViewController {
                 print(anim.isManualHitTestingEnabled)
                 print("start")
             case 11:
-                let opts : UIViewAnimationOptions = [.autoreverse]
+                let opts : UIViewAnimationOptions = .autoreverse
                 let xorig = self.v.center.x
                 UIView.animate(withDuration:1, delay: 0, options: opts, animations: {
                     self.v.center.x += 100
@@ -169,7 +169,7 @@ class ViewController: UIViewController {
                 })
                 // can't figure out how to reproduce that using property animator
             case 12:
-                let opts : UIViewAnimationOptions = [.autoreverse]
+                let opts : UIViewAnimationOptions = .autoreverse
                 let xorig = self.v.center.x
                 UIView.animate(withDuration:1, delay: 0, options: opts, animations: {
                     UIView.setAnimationRepeatCount(3) // *
