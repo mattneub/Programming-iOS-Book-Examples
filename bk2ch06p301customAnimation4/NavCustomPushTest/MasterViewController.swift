@@ -48,7 +48,7 @@ class MasterViewController : UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(self.tableView.indexPathForSelectedRow)
+        print(self.tableView.indexPathForSelectedRow as Any)
         if let dest = segue.destination as? DetailViewController {
             let cm = self.model[self.lastSelection.row]
             dest.detailItem = UIImage(named:cm.name)

@@ -54,8 +54,7 @@ class ViewController : UIViewController {
         get {
             if _myBigData == nil {
                 let fm = FileManager.default
-                let f = URL(fileURLWithPath: NSTemporaryDirectory())
-                    .appendingPathComponent("myBigData")
+                let f = fm.temporaryDirectory.appendingPathComponent("myBigData")
                 if let d = try? Data(contentsOf:f) {
                     print("loaded big data from disk")
                     self._myBigData = d
@@ -91,7 +90,8 @@ class ViewController : UIViewController {
     func saveAndReleaseMyBigData() {
         if let myBigData = self.myBigData {
             print("unloading big data")
-            let f = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("myBigData")
+            let fm = FileManager.default
+            let f = fm.temporaryDirectory.appendingPathComponent("myBigData")
             try? myBigData.write(to:f)
             self.myBigData = nil
         }

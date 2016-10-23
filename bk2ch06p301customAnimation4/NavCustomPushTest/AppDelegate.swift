@@ -47,8 +47,8 @@ extension AppDelegate {
         case .ended:
             let anim = self.anim as! UIViewPropertyAnimator
             let ctx = self.context!
+            let vc2 = ctx.viewController(forKey:.to)!
             anim.addAnimations {
-                let vc2 = ctx.viewController(forKey:.to)!
                 v.frame = ctx.finalFrame(for: vc2)
             }
             let factor = 1 - anim.fractionComplete
