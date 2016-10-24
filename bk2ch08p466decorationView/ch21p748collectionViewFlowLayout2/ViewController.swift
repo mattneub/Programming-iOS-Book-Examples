@@ -2,8 +2,8 @@
 import UIKit
 
 extension Array {
-    mutating func remove(at ixs:[Int]) -> () {
-        for i in ixs.sorted(by:>) {
+    mutating func remove(at ixs:Set<Int>) -> () {
+        for i in Array<Int>(ixs).sorted(by:>) {
             self.remove(at:i)
         }
     }
@@ -268,8 +268,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         self.collectionView!.performBatchUpdates({
             self.collectionView!.deleteItems(at:arr)
             if empties.count > 0 { // delete empty sections
-                self.sectionNames.remove(at:Array(empties)) // see utility function at top of file
-                self.cellData.remove(at:Array(empties))
+                self.sectionNames.remove(at:empties) // see utility function at top of file
+                self.cellData.remove(at:empties)
                 self.collectionView!.deleteSections(IndexSet(empties)) // Set turns directly into IndexSet!
             }
         })

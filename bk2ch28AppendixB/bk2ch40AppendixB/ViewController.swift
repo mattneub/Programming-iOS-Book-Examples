@@ -132,8 +132,8 @@ extension UIView {
 }
 
 extension Array {
-    mutating func remove(at ixs:[Int]) -> () {
-        for i in ixs.sorted(by:>) {
+    mutating func remove(at ixs:Set<Int>) -> () {
+        for i in Array<Int>(ixs).sorted(by:>) {
             self.remove(at:i)
         }
     }
