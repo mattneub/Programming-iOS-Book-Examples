@@ -124,9 +124,9 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         
         let sz = CGSize(10,10)
         let r = UIGraphicsImageRenderer(size:sz)
-        let im = r.image { _ in
+        let im = r.image { ctx in
             UIColor.black.withAlphaComponent(0.1).setFill()
-            UIGraphicsGetCurrentContext()!.fill(CGRect(origin: .zero, size: sz))
+            ctx.fill(CGRect(origin: .zero, size: sz))
         }
         nc.toolbar.setBackgroundImage(im, forToolbarPosition: .any, barMetrics: .default)
         nc.toolbar.isTranslucent = true

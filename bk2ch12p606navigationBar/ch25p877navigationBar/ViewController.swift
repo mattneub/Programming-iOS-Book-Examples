@@ -42,8 +42,8 @@ class ViewController: UIViewController {
         
             let sz = CGSize(10,20)
             self.navbar.backIndicatorImage =
-                UIGraphicsImageRenderer(size:sz).image { _ in
-                    UIGraphicsGetCurrentContext()!.fill(CGRect(6,0,4,20))
+                UIGraphicsImageRenderer(size:sz).image { ctx in
+                    ctx.fill(CGRect(6,0,4,20))
             }
             self.navbar.backIndicatorTransitionMaskImage =
                 UIGraphicsImageRenderer(size:sz).image {_ in}
@@ -54,20 +54,20 @@ class ViewController: UIViewController {
         
         let sz = CGSize(20,20)
         
-        self.navbar.setBackgroundImage(UIGraphicsImageRenderer(size:sz).image { _ in
+        self.navbar.setBackgroundImage(UIGraphicsImageRenderer(size:sz).image { ctx in
             UIColor(white:0.95, alpha:0.85).setFill()
-            UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,20,20))
+            ctx.fill(CGRect(0,0,20,20))
             }, for:.any, barMetrics: .default)
         
         do {
         
             let sz = CGSize(4,4)
             
-            self.navbar.shadowImage = UIGraphicsImageRenderer(size:sz).image { _ in
+            self.navbar.shadowImage = UIGraphicsImageRenderer(size:sz).image { ctx in
                 UIColor.gray.withAlphaComponent(0.3).setFill()
-                UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,4,2))
+                ctx.fill(CGRect(0,0,4,2))
                 UIColor.gray.withAlphaComponent(0.15).setFill()
-                UIGraphicsGetCurrentContext()!.fill(CGRect(0,2,4,2))
+                ctx.fill(CGRect(0,2,4,2))
             }
             
         }

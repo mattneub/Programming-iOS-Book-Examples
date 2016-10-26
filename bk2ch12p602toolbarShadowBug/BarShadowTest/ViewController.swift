@@ -39,15 +39,14 @@ class ViewController: UIViewController {
         let sz = CGSize(20,20)
         let r = UIGraphicsImageRenderer(size:sz)
         
-        self.navbar.setBackgroundImage( r.image { _ in
+        self.navbar.setBackgroundImage( r.image { ctx in
             UIColor(white:0.95, alpha:0.85).setFill()
-            //UIColor(red: 1, green: 0, blue: 0, alpha: 1).setFill()
-            UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,20,20))
+            ctx.fill(CGRect(0,0,20,20))
             }, for:.any, barMetrics: .default)
         
-        self.toolbar.setBackgroundImage( r.image { _ in
+        self.toolbar.setBackgroundImage( r.image { ctx in
             UIColor(white:0.95, alpha:0.85).setFill()
-            UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,20,20))
+            ctx.fill(CGRect(0,0,20,20))
             }, forToolbarPosition:.any, barMetrics: .default)
             
         }
@@ -56,17 +55,17 @@ class ViewController: UIViewController {
             let sz = CGSize(4,4)
             
             let r = UIGraphicsImageRenderer(size:sz)
-            self.navbar.shadowImage = r.image { _ in
+            self.navbar.shadowImage = r.image { ctx in
                 UIColor.gray.withAlphaComponent(0.3).setFill()
-                UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,4,2))
+                ctx.fill(CGRect(0,0,4,2))
                 UIColor.gray.withAlphaComponent(0.15).setFill()
-                UIGraphicsGetCurrentContext()!.fill(CGRect(0,2,4,2))
+                ctx.fill(CGRect(0,2,4,2))
             }
-            self.toolbar.setShadowImage( r.image { _ in
+            self.toolbar.setShadowImage( r.image { ctx in
                 UIColor.gray.withAlphaComponent(0.3).setFill()
-                UIGraphicsGetCurrentContext()!.fill(CGRect(0,2,4,2))
+                ctx.fill(CGRect(0,2,4,2))
                 UIColor.gray.withAlphaComponent(0.15).setFill()
-                UIGraphicsGetCurrentContext()!.fill(CGRect(0,0,4,2))
+                ctx.fill(CGRect(0,0,4,2))
                 }, forToolbarPosition:.any )
         }
         

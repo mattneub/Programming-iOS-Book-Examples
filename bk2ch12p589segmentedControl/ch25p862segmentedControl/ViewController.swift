@@ -70,11 +70,11 @@ class ViewController: UIViewController {
         
         // divider, set at desired width, sufficient to set for Normal only
         let sz2 = CGSize(2,10)
-        let div = UIGraphicsImageRenderer(size:sz2).image { _ in
+        let div = UIGraphicsImageRenderer(size:sz2).image { ctx in
             UIColor.white.set()
-            UIGraphicsGetCurrentContext()!.fill(CGRect(origin: .zero, size: sz2))
+            ctx.fill(CGRect(origin: .zero, size: sz2))
         }
-        self.seg.setDividerImage(div, forLeftSegmentState: [], rightSegmentState: [], barMetrics: .default)
+        self.seg.setDividerImage(div, forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
         
         let seg = UISegmentedControl(
             items: [
