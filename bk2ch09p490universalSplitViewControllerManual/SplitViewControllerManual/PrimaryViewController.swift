@@ -90,9 +90,9 @@ extension UIViewController {
         // how to use targetViewControllerForAction to look up the hierarchy
         // we don't know who implements showHide or where he is in the hierarchy,
         // and we don't care! agnostic messaging up the hierarchy
-        let target = self.targetViewController(forAction:#selector(showHide), sender: sender)
-        if target != nil {
-            target!.showHide(self)
+        if let target = self.targetViewController(
+            forAction:#selector(showHide), sender: sender) {
+                target.showHide(self)
         }
     }
 }

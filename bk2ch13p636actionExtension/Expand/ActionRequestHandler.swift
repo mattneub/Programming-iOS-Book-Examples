@@ -29,9 +29,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
         guard let extensionItem = items[0] as? NSExtensionItem,
             let provider = extensionItem.attachments?[0] as? NSItemProvider,
             provider.hasItemConformingToTypeIdentifier(self.desiredType)
-            else {
-                return self.process(item:nil)
-        }
+            else { self.process(item:nil); return }
         provider.loadItem(forTypeIdentifier: self.desiredType) {
             item, err in
             DispatchQueue.main.async {

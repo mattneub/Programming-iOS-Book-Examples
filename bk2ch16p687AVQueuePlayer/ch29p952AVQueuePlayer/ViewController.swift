@@ -233,9 +233,8 @@ class ViewController: UIViewController {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == #keyPath(AVQueuePlayer.currentItem) {
-            self.changed()
-        }
+        guard keyPath == #keyPath(AVQueuePlayer.currentItem) else {return}
+        self.changed()
     }
     
     func changed() {
