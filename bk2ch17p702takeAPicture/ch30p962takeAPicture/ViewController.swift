@@ -162,28 +162,27 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
                 print("I got a live photo!") // nope
             }
             self.dismiss(animated:true) {
-                let type = info[UIImagePickerControllerMediaType]
-                if let type = type as? NSString {
-                    switch type {
-                    case kUTTypeImage:
-                        if im != nil {
-                            self.showImage(im!)
-                            // showing how simple it is to save into the Camera Roll
-                            checkForPhotoLibraryAccess {
-                                let lib = PHPhotoLibrary.shared()
-                                lib.performChanges({
-                                    typealias Req = PHAssetChangeRequest
-                                    let req = Req.creationRequestForAsset(from: im!)
-                                    // apply metadata info here, as desired
-                                })
-                            }
+                let mediatype = info[UIImagePickerControllerMediaType]
+                guard let type = mediatype as? NSString else {return}
+                switch type {
+                case kUTTypeImage:
+                    if im != nil {
+                        self.showImage(im!)
+                        // showing how simple it is to save into the Camera Roll
+                        checkForPhotoLibraryAccess {
+                            let lib = PHPhotoLibrary.shared()
+                            lib.performChanges({
+                                typealias Req = PHAssetChangeRequest
+                                let req = Req.creationRequestForAsset(from: im!)
+                                // apply metadata info here, as desired
+                            })
                         }
-                    case kUTTypeMovie:
-                        if url != nil {
-                            self.showMovie(url!)
-                        }
-                    default:break
                     }
+                case kUTTypeMovie:
+                    if url != nil {
+                        self.showMovie(url!)
+                    }
+                default:break
                 }
             }
     }
