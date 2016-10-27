@@ -177,12 +177,8 @@ class ViewController: UIViewController, EKEventViewDelegate, EKEventEditViewDele
             
             let greg = Calendar(identifier:.gregorian)
             let d = Date() // today
-            let d1 = greg.date(byAdding: lend {
-                (comp:NSDateComponents) in comp.year = -1
-            } as DateComponents, to:d)!
-            let d2 = greg.date(byAdding: lend {
-                (comp:NSDateComponents) in comp.year = 2
-            } as DateComponents, to:d1)!
+            let d1 = greg.date(byAdding:DateComponents(year:-1), to:d)!
+            let d2 = greg.date(byAdding:DateComponents(year:2), to:d)!
             let pred = self.database.predicateForEvents(withStart:
                 d1, end:d2, calendars:[cal])
             DispatchQueue.global(qos:.default).async {
