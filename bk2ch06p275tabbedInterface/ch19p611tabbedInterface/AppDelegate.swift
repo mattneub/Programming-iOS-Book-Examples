@@ -33,6 +33,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         self.window!.tintColor = .red // prove that bar item tint color is inherited
         
+        UITabBar.appearance().unselectedItemTintColor = .black // new in iOS 10
+        // interesting: this seems to override my title text attributes for .normal
+
+        
         UITabBarItem.appearance().setTitleTextAttributes([
             NSFontAttributeName:UIFont(name:"Avenir-Heavy", size:14)!,
             NSForegroundColorAttributeName:UIColor.green
@@ -61,6 +65,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         
         UITabBar.appearance().selectionIndicatorImage = im
+        
         
         
         return true
