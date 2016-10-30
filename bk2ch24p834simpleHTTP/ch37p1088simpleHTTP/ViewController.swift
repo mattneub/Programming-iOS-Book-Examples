@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         let task = session.downloadTask(with:url) { loc, resp, err in
             print("here")
             guard err == nil else {
-                print(err)
+                print(err as Any)
                 return
             }
             let status = (resp as! HTTPURLResponse).statusCode

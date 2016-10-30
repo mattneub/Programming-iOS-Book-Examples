@@ -10,7 +10,7 @@ class MyWindow: UIWindow {
         let lay = self.layer.hitTest(point)
         // ... possibly do something with that information
         // print(lay)
-        print(lay?.backgroundColor)
+        print(lay?.backgroundColor as Any)
         // print(self)
         return super.hitTest(point, with:e)
     }

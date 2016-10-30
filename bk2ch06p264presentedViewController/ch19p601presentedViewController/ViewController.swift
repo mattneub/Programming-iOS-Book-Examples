@@ -10,8 +10,8 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
     @IBAction func doPresent(_ sender: Any?) {
         
         // logging to prove these are normally nil
-        print(self.presentingViewController)
-        print(self.presentedViewController)
+        print(self.presentingViewController as Any)
+        print(self.presentedViewController as Any)
         
         let svc = SecondViewController(nibName: nil, bundle: nil)
         svc.data = "This is very important data!"

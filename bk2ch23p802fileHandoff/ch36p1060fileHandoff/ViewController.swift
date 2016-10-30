@@ -76,7 +76,7 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
             print("no doc")
             return
         }
-        print(url)
+        print(url as Any)
         self.dic.url = url
         self.dic.delegate = self
         self.dic.presentPreview(animated:true)

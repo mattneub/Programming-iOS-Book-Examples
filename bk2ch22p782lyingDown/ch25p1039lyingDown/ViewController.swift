@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         case 2:
             self.motman.startAccelerometerUpdates(to: .main) { data, err in
                 guard let data = data else {
-                    print(err)
+                    print(err as Any)
                     self.stopAccelerometer()
                     return
                 }

@@ -4,7 +4,7 @@ class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     
     func animate() {
-        let val = NSValue(cgPoint:self.v.center)
+        let val = self.v.center
         self.v.layer.setValue(val, forKey:"pOrig")
         let opts : UIViewAnimationOptions = [.autoreverse, .repeat]
         UIView.animate(withDuration:1, delay: 0, options: opts,
@@ -19,8 +19,8 @@ class ViewController : UIViewController {
         UIView.animate(withDuration:0.1, delay:0,
             options:.beginFromCurrentState,
             animations: {
-                if let val = self.v.layer.value(forKey:"pOrig") as? NSValue {
-                    self.v.center = val.cgPointValue
+                if let val = self.v.layer.value(forKey:"pOrig") as? CGPoint {
+                    self.v.center = val
                 }
             })
     }

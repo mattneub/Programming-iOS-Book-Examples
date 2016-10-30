@@ -66,7 +66,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if let local = d[UIKeyboardIsLocalUserInfoKey] {
             print(local)
         }
-        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        var r = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
         r = self.slidingView.convert(r, from:nil)
         if let f = self.fr?.frame {
             let y : CGFloat =
@@ -86,8 +86,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             print(local)
         }
         do { // work around bug
-            let beginning = (d[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-            let ending = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+            let beginning = d[UIKeyboardFrameBeginUserInfoKey] as! CGRect
+            let ending = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
             if beginning == ending {print("bail!"); return}
         }
         self.topConstraint.constant = 0

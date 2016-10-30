@@ -69,7 +69,7 @@ class ViewController: UIViewController {
                 opts.deliveryMode = .highQualityFormat
                 PHImageManager.default().requestLivePhoto(for: photo, targetSize: CGSize(300,300), contentMode: .aspectFit, options: opts) {
                     photo, info in
-                    print(photo?.size)
+                    print(photo?.size as Any)
                     let v = PHLivePhotoView(frame: CGRect(20,20,300,300))
                     v.contentMode = .scaleAspectFit
                     v.livePhoto = photo

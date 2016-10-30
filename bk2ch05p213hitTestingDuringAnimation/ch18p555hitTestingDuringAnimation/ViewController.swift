@@ -56,8 +56,8 @@ class ViewController : UIViewController {
         case 2:
             let ba = CABasicAnimation(keyPath:"position")
             ba.duration = 10
-            ba.fromValue = NSValue(cgPoint:self.oldButtonCenter)
-            ba.toValue = NSValue(cgPoint:goal)
+            ba.fromValue = self.oldButtonCenter
+            ba.toValue = goal
             self.button.layer.add(ba, forKey:nil)
             self.button.layer.position = goal
         default: break

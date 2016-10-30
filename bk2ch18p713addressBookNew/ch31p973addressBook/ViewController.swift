@@ -212,7 +212,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     }
 
     func contactViewController(_ vc: CNContactViewController, didCompleteWith con: CNContact?) {
-        print(con)
+        print(con as Any)
         self.dismiss(animated: true) // needed for `forNewContact`, does no harm in the others
     }
     

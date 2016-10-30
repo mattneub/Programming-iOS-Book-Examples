@@ -38,7 +38,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
 
 
     override func applicationFinishedRestoringState() {
-        print("finished restoring state", self.wv.url)
+        print("finished restoring state", self.wv.url as Any)
     }
 
     override func loadView() {

@@ -118,7 +118,7 @@ class ViewController: UIViewController {
             self.iv.layer.mask = theMask
         case 2:
             let theMask = viewMask(size:self.iv.bounds.size, roundingCorners:20)
-            print(self.iv.layer.mask)
+            print(self.iv.layer.mask as Any)
 
             self.iv.mask = theMask
             // same effect, but we've added a subview that does the masking
@@ -126,7 +126,7 @@ class ViewController: UIViewController {
             // (the mask is not resized on rotation;
             // in fact, as far as I can tell, autoresizing doesn't work on the mask view)
             
-            print(self.iv.layer.mask)
+            print(self.iv.layer.mask as Any)
         default: break
         }
     }

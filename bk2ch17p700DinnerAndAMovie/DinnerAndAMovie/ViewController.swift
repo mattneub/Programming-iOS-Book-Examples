@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         let asset = result[0]
         PHImageManager.default().requestPlayerItem(forVideo: asset, options: nil) {
             item, info in
-            print(item)
+            print(item as Any)
             if let item = item {
                 DispatchQueue.main.async {
                     self.display(item:item)

@@ -217,7 +217,7 @@ class ViewController: UIViewController {
         let outurl = doc.appendingPathComponent("myfile.aac", isDirectory:false)
         
         let outfile = try! AVAudioFile(forWriting: outurl, settings: [
-            AVFormatIDKey : NSNumber(value:kAudioFormatMPEG4AAC),
+            AVFormatIDKey : kAudioFormatMPEG4AAC,
             AVNumberOfChannelsKey : 1,
             AVSampleRateKey : 22050,
         ])

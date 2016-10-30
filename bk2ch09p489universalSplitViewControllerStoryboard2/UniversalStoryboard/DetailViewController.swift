@@ -28,7 +28,7 @@ class DetailViewController: UIViewController {
         print("configureView")
         if let detail: AnyObject = self.detailItem {
             if let label = self.detailDescriptionLabel {
-                print(self.detailItem)
+                print(self.detailItem as Any)
                 print(self.detailDescriptionLabel)
                 label.text = detail.description
             }

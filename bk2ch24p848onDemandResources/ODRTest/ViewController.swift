@@ -8,12 +8,12 @@ class ViewController: UIViewController {
 
     @IBAction func testForTubby() {
         let im = UIImage(named:"tubby")
-        print("tubby is", im)
+        print("tubby is", im as Any)
         let c2 = NSDataAsset(name: "control2")
-        print("control2 is", c2)
-        print(Bundle.main.url(forResource: "control", withExtension: "mp3"))
-        print(tubbyRequest?.bundle.url(forResource: "control", withExtension: "mp3"))
-        print("frac is", self.tubbyRequest?.progress.fractionCompleted)
+        print("control2 is", c2 as Any)
+        print(Bundle.main.url(forResource: "control", withExtension: "mp3") as Any)
+        print(tubbyRequest?.bundle.url(forResource: "control", withExtension: "mp3") as Any)
+        print("frac is", self.tubbyRequest?.progress.fractionCompleted as Any)
     }
     
     @IBAction func startUsingTubby() {
@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         self.tubbyRequest = NSBundleResourceRequest(tags: ["tubby"])
         self.tubbyRequest!.addObserver(self, forKeyPath: #keyPath(NSBundleResourceRequest.progress.fractionCompleted), options:[.new], context: nil)
         self.tubbyRequest!.beginAccessingResources { err in
-            guard err == nil else {print(err); return}
+            guard err == nil else {print(err as Any); return}
             DispatchQueue.main.async {
                 let im = UIImage(named:"tubby")
                 self.iv.image = im
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        print(change)
+        print(change as Any)
     }
     
 

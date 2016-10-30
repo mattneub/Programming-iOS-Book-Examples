@@ -230,7 +230,7 @@ extension ViewController : PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInfo: PHChange) {
         if self.albums !== nil {
             let details = changeInfo.changeDetails(for:self.albums)
-            print(details)
+            print(details as Any)
             if details !== nil {
                 self.albums = details!.fetchResultAfterChanges
                 // ... and adjust interface if needed ...

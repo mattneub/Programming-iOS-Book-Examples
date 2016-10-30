@@ -34,9 +34,8 @@ class MyWagglePositionAction : NSObject, CAAction {
     func run(forKey event: String, object anObject: Any,
         arguments dict: [AnyHashable : Any]?) {
             let lay = anObject as! CALayer
-            let newP = (lay.value(forKey:event) as! NSValue).cgPointValue
-            let val = lay.presentation()!.value(forKey:event) as! NSValue
-            let oldP = val.cgPointValue
+            let newP = lay.value(forKey:event) as! CGPoint
+            let oldP = lay.presentation()!.value(forKey:event) as! CGPoint
 
             let d = sqrt(pow(oldP.x - newP.x, 2) + pow(oldP.y - newP.y, 2))
             let r = Double(d/3.0)
@@ -49,7 +48,7 @@ class MyWagglePositionAction : NSObject, CAAction {
                 oldP.x + CGFloat(r*2*cos(theta-wag)),
                 oldP.y + CGFloat(r*2*sin(theta-wag)))
             let anim = CAKeyframeAnimation(keyPath: event)
-            anim.values = [oldP,p1,p2,newP].map{NSValue(cgPoint:$0)}
+            anim.values = [oldP,p1,p2,newP]
             anim.calculationMode = kCAAnimationCubic
             
             lay.add(anim, forKey:nil)
@@ -71,7 +70,7 @@ class ViewController : UIViewController {
         self.layer = layer
     }
     
-    let which = 2
+    let which = 10 // 1...10
     
     @IBAction func doButton(_ sender: Any?) {
         let layer = self.layer!
@@ -206,8 +205,7 @@ extension ViewController : CALayerDelegate, CAAnimationDelegate {
             anim1.fromValue = 0.0
             anim1.toValue = layer.opacity
             let anim2 = CABasicAnimation(keyPath:"transform")
-            anim2.toValue = NSValue(caTransform3D:
-                CATransform3DScale(layer.transform, 1.2, 1.2, 1.0))
+            anim2.toValue = CATransform3DScale(layer.transform, 1.2, 1.2, 1.0)
             anim2.autoreverses = true
             anim2.duration = 0.1
             let group = CAAnimationGroup()
@@ -223,8 +221,7 @@ extension ViewController : CALayerDelegate, CAAnimationDelegate {
                 anim1.fromValue = layer.opacity
                 anim1.toValue = 0.0
                 let anim2 = CABasicAnimation(keyPath:"transform")
-                anim2.toValue = NSValue(caTransform3D:
-                    CATransform3DScale(layer.transform, 0.1, 0.1, 1.0))
+                anim2.toValue = CATransform3DScale(layer.transform, 0.1, 0.1, 1.0)
                 let group = CAAnimationGroup()
                 group.animations = [anim1, anim2]
                 group.duration = 0.2
@@ -239,8 +236,7 @@ extension ViewController : CALayerDelegate, CAAnimationDelegate {
             anim1.fromValue = layer.opacity
             anim1.toValue = 0.0
             let anim2 = CABasicAnimation(keyPath:"transform")
-            anim2.toValue = NSValue(caTransform3D:
-                CATransform3DScale(layer.transform, 0.1, 0.1, 1.0))
+            anim2.toValue = CATransform3DScale(layer.transform, 0.1, 0.1, 1.0)
             let group = CAAnimationGroup()
             group.animations = [anim1, anim2]
             group.duration = 0.2

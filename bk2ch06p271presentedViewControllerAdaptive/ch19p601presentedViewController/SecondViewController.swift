@@ -22,9 +22,9 @@ class SecondViewController : UIViewController {
     @IBAction func doDismiss(_ sender: Any?) {
         // logging to show relationships
         print(self.presentingViewController!)
-        print(self.presentingViewController!.presentedViewController)
+        print(self.presentingViewController!.presentedViewController as Any)
         let vc = self.delegate as! UIViewController
-        print(vc.presentedViewController)
+        print(vc.presentedViewController as Any)
         
         
         // just proving it works
@@ -38,7 +38,7 @@ class SecondViewController : UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // prove you've got data
-        print(self.data)
+        print(self.data as Any)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

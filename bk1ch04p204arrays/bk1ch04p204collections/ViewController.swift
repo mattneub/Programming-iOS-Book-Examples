@@ -450,6 +450,7 @@ class ViewController: UIViewController {
             anim.values = points.map {NSValue(cgPoint:$0)}
             // this, on the other hand, is _legal_, but it isn't going to work:
             anim.values = points
+            // FLASH! New in Xcode 8.1 it _is_ going to work
         }
         
         do {

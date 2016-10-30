@@ -6,7 +6,7 @@ import UIKit
 class ViewController : UIViewController {
     @IBOutlet var compassView : CompassView!
     
-    let which = 5
+    let which = 6
 
     @IBAction func doButton(_ sender: Any?) {
         let c = self.compassView.layer as! CompassLayer
@@ -42,8 +42,8 @@ class ViewController : UIViewController {
             anim.duration = 0.8
             let clunk = CAMediaTimingFunction(controlPoints:0.9, 0.1, 0.7, 0.9)
             anim.timingFunction = clunk
-            anim.fromValue = NSValue(caTransform3D:startValue)
-            anim.toValue = NSValue(caTransform3D:endValue)
+            anim.fromValue = startValue
+            anim.toValue = endValue
             // ask for the explicit animation
             arrow.add(anim, forKey:nil)
             
@@ -68,8 +68,8 @@ class ViewController : UIViewController {
                 name:kCAMediaTimingFunctionLinear)
             anim.repeatCount = 3
             anim.autoreverses = true
-            anim.fromValue = NSValue(caTransform3D:startValue)
-            anim.toValue = NSValue(caTransform3D:endValue)
+            anim.fromValue = startValue
+            anim.toValue = endValue
             // ask for the explicit animation
             arrow.add(anim, forKey:nil)
             

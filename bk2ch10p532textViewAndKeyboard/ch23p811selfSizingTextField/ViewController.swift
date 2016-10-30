@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         print("show")
         
         let d = n.userInfo!
-        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        var r = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
         r = self.tv.convert(r, from:nil)
         self.tv.contentInset.bottom = r.size.height
         self.tv.scrollIndicatorInsets.bottom = r.size.height

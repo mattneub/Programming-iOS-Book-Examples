@@ -47,7 +47,7 @@ class ViewController : UIViewController {
             // I find this annoying; why does the toolbar default to being active?
             // pop.passthroughViews = nil // too soon, has no effect
             delay(0.1) {
-                print(pop.passthroughViews)
+                print(pop.passthroughViews as Any)
                 pop.passthroughViews = nil
             }
             // just playing with appearance; try it with and without
@@ -111,7 +111,7 @@ class ViewController : UIViewController {
         let vc = UIViewController()
         vc.modalPresentationStyle = .popover
         // vc.isModalInPopover = true
-        print(vc.popoverPresentationController) // NB valid here, we could configure here
+        print(vc.popoverPresentationController as Any) // NB valid here, we could configure here
         
         self.present(vc, animated: true)
         // vc's view is now loaded and we are free to configure it further

@@ -106,7 +106,7 @@ class ViewController : UIViewController {
                 let desc = UIFontDescriptor(name: "Didot", size: 20) as CTFontDescriptor
                 let f = CTFontCreateWithFontDescriptor(desc,0,nil)
                 let arr = CTFontCopyFeatures(f)
-                print(arr)
+                print(arr as Any)
                 
                 
             }

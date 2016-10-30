@@ -71,7 +71,7 @@ class ViewController : UIViewController {
         lay2.name = "moe"
         lay3.name = "jack"
         delay(2) {
-            print(self.view.layer.sublayers?.map{$0.name})
+            print(self.view.layer.sublayers?.map{$0.name} as Any)
         }
         
         lay1.setValue("manny", forKey: "pepboy")
@@ -79,7 +79,7 @@ class ViewController : UIViewController {
         lay3.setValue("jack", forKey: "pepboy")
         delay(2) {
             self.view.layer.sublayers?.forEach {
-                print($0.value(forKey: "pepboy"))
+                print($0.value(forKey: "pepboy") as Any)
             }
         }
 

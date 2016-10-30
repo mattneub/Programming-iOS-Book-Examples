@@ -8,7 +8,7 @@ import UIKit
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
         print("enter")
-        print(self.window?.rootViewController)
+        print(self.window?.rootViewController as Any)
         defer {
             print("exit") // appears _before_ symbolic breakpoint on `makeKeyAndVisible`
         }

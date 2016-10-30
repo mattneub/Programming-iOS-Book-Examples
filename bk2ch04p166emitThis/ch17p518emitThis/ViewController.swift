@@ -22,7 +22,7 @@ extension CGPoint {
 
 class ViewController : UIViewController {
     
-    let which = 4
+    let which = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -140,8 +140,8 @@ class ViewController : UIViewController {
             
             // might also be fun to animate position of source back and forth
             let ba2 = CABasicAnimation(keyPath:"emitterPosition")
-            ba2.fromValue = NSValue(cgPoint:CGPoint(30,100))
-            ba2.toValue = NSValue(cgPoint:CGPoint(200,100))
+            ba2.fromValue = CGPoint(30,100)
+            ba2.toValue = CGPoint(200,100)
             ba2.duration = 6
             ba2.autoreverses = true
             ba2.repeatCount = .infinity

@@ -126,7 +126,7 @@ class ViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("here")
-        self.anim.perform(Selector("setDebugEnabled:"), with:true)
+        self.anim.perform(Selector(("setDebugEnabled:")), with:true)
     }
 
 }

@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         let action = UIAlertController(title: "Choose New Layout", message: nil, preferredStyle: .actionSheet)
         action.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in print("Cancel")}))
         func handler(_ act:UIAlertAction) {
-            print(act.title)
+            print(act.title as Any)
         }
         for s in ["3 by 3", "4 by 3", "4 by 4", "5 by 4", "5 by 5"] {
             action.addAction(UIAlertAction(title: s, style: .default, handler: handler))

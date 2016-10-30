@@ -285,8 +285,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // this now works!
         mi.openInMaps(launchOptions:[
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
-            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate:self.map.region.center),
-            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan:self.map.region.span)
+            MKLaunchOptionsMapCenterKey: self.map.region.center,
+            MKLaunchOptionsMapSpanKey: self.map.region.span
         ])
         
     }

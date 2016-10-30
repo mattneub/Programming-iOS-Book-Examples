@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         self.oldOffset = self.scrollView.contentOffset
         
         let d = n.userInfo!
-        var r = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        var r = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
         r = self.scrollView.convert(r, from:nil)
         // no need to scroll, as the scroll view will do it for us
         // so all we have to do is adjust the inset
@@ -73,8 +73,8 @@ class ViewController: UIViewController {
         print("hide")
 //        do { // work around bug
 //            let d = n.userInfo!
-//            let beginning = (d[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-//            let ending = (d[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+//            let beginning = d[UIKeyboardFrameBeginUserInfoKey] as! CGRect
+//            let ending = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
 //            if beginning == ending {print("bail!"); return}
 //        }
         self.scrollView.contentOffset = self.oldOffset

@@ -57,7 +57,7 @@ class ViewController : UIViewController {
         
         let anim2 = CABasicAnimation(keyPath:#keyPath(CALayer.position))
         anim2.duration = 10
-        anim2.toValue = NSValue(cgPoint: CGPoint(350,30))
+        anim2.toValue = CGPoint(350,30)
         
         let group = CAAnimationGroup()
         group.animations = [anim, anim2]

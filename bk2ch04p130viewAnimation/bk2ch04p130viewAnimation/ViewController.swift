@@ -110,7 +110,7 @@ class ViewController: UIViewController {
                 anim.startAnimation()
             case 6:
                 UIView.perform(.delete, on: [self.v], animations: nil) {
-                    _ in print(self.v.superview)
+                    _ in print(self.v.superview as Any)
                 }
             case 7:
                 let anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {

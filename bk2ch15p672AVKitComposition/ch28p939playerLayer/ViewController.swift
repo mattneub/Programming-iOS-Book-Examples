@@ -90,8 +90,8 @@ class ViewController: UIViewController {
         syncLayer.addSublayer(subLayer)
         // animate the sublayer
         let anim = CABasicAnimation(keyPath:#keyPath(CALayer.position))
-        anim.fromValue = NSValue(cgPoint: subLayer.position)
-        anim.toValue = NSValue(cgPoint: CGPoint(295,5))
+        anim.fromValue = subLayer.position
+        anim.toValue = CGPoint(295,5)
         anim.isRemovedOnCompletion = false
         anim.beginTime = AVCoreAnimationBeginTimeAtZero // important trick
         anim.duration = CMTimeGetSeconds(item.asset.duration)

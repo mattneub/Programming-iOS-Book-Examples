@@ -32,7 +32,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         let span = MKCoordinateSpanMake(0.0005, 0.0005)
         mi.openInMaps(launchOptions:[
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
-            // MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan:span)
+            // MKLaunchOptionsMapSpanKey: mkCoordinateSpan:span
         ])
     }
     
@@ -73,7 +73,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         let geo = CLGeocoder()
         geo.geocodeAddressString(s) { placemarks, error in
             guard let placemarks = placemarks else {
-                print(error?.localizedDescription)
+                print(error?.localizedDescription as Any)
                 return
             }
             self.map.showsUserLocation = false
@@ -98,7 +98,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         let search = MKLocalSearch(request:req)
         search.start { response, error in
             guard let response = response else {
-                print(error)
+                print(error as Any)
                 return
             }
             self.map.showsUserLocation = false
@@ -128,7 +128,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         let search = MKLocalSearch(request:req)
         search.start { response, error in
             guard let response = response else {
-                print(error)
+                print(error as Any)
                 return
             }
             print("Got restaurant address")
@@ -139,7 +139,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             let dir = MKDirections(request:req)
             dir.calculate { response, error in
                 guard let response = response else {
-                    print(error)
+                    print(error as Any)
                     return
                 }
                 print("got directions")

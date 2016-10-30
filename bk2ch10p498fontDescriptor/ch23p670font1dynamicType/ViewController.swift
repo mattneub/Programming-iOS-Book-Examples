@@ -15,7 +15,7 @@ class ViewController : UIViewController {
         let f2 = UIFont(descriptor: desc2!, size: 0)
         print(f)
         print(desc)
-        print(desc2)
+        print(desc2 as Any)
         print(f2)
     }
     

@@ -79,7 +79,7 @@ class ViewController : UIViewController {
             let ba = CABasicAnimation(keyPath:"transform")
             ba.autoreverses = true
             ba.duration = 0.3
-            ba.toValue = NSValue(caTransform3D:CATransform3DMakeScale(1.1, 1.1, 1))
+            ba.toValue = CATransform3DMakeScale(1.1, 1.1, 1)
             self.v.layer.add(ba, forKey:nil)
  */
             

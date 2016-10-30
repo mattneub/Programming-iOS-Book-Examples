@@ -19,8 +19,8 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
         self.talker.delegate = self
         self.talker.speak(utter)
         
-        print(v?.identifier)
-        print(v?.quality.rawValue)
+        print(v?.identifier as Any)
+        print(v?.quality.rawValue as Any)
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {

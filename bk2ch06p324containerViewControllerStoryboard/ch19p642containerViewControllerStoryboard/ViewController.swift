@@ -16,8 +16,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("did load", self.view, self.childViewControllers)
-        print("child's view:", self.childViewControllers[0].viewIfLoaded)
-        print("child's view's superview:", self.childViewControllers[0].viewIfLoaded?.superview)
+        print("child's view:", self.childViewControllers[0].viewIfLoaded as Any)
+        print("child's view's superview:", self.childViewControllers[0].viewIfLoaded?.superview as Any)
         // NSLog(@"%d", [self.childViewControllers[0] isViewLoaded]);
         
     }
