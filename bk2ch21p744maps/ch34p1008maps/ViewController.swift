@@ -252,27 +252,27 @@ class ViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if which == 8 {
             if let overlay = overlay as? MKPolygon {
-                let v = MKPolygonRenderer(polygon:overlay)
-                v.fillColor = UIColor.red.withAlphaComponent(0.1)
-                v.strokeColor = UIColor.red.withAlphaComponent(0.8)
-                v.lineWidth = 2
-                return v
+                let r = MKPolygonRenderer(polygon:overlay)
+                r.fillColor = UIColor.red.withAlphaComponent(0.1)
+                r.strokeColor = UIColor.red.withAlphaComponent(0.8)
+                r.lineWidth = 2
+                return r
             }
         }
         if which == 9 {
             if let overlay = overlay as? MyOverlay {
-                let v = MKOverlayPathRenderer(overlay:overlay)
-                v.path = overlay.path.cgPath
-                v.fillColor = UIColor.red.withAlphaComponent(0.2)
-                v.strokeColor = .black
-                v.lineWidth = 2
-                return v
+                let r = MKOverlayPathRenderer(overlay:overlay)
+                r.path = overlay.path.cgPath
+                r.fillColor = UIColor.red.withAlphaComponent(0.2)
+                r.strokeColor = .black
+                r.lineWidth = 2
+                return r
             }
         }
         if which == 10 {
             if overlay is MyOverlay {
-                let v = MyOverlayRenderer(overlay:overlay, angle: -.pi/3.5)
-                return v
+                let r = MyOverlayRenderer(overlay:overlay, angle: -.pi/3.5)
+                return r
             }
         }
         return MKOverlayRenderer() // ???? why did they make this non-nil?

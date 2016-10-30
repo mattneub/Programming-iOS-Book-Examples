@@ -155,10 +155,10 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
 
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let overlay = overlay as? MKPolyline {
-            let v = MKPolylineRenderer(polyline:overlay)
-            v.strokeColor = UIColor.blue.withAlphaComponent(0.8)
-            v.lineWidth = 2
-            return v
+            let r = MKPolylineRenderer(polyline:overlay)
+            r.strokeColor = UIColor.blue.withAlphaComponent(0.8)
+            r.lineWidth = 2
+            return r
         }
         return MKOverlayRenderer()
     }
