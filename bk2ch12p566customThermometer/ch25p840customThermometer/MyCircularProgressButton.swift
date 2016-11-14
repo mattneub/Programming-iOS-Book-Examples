@@ -13,15 +13,19 @@ class MyCircularProgressButton : UIButton {
     }
     
     private var shapelayer : CAShapeLayer!
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    private var didLayout = false
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
+        guard !self.didLayout else {return}
+        self.didLayout = true
+        print(self.bounds)
         let layer = CAShapeLayer()
-        layer.frame = CGRect(0,0,60,60)
+        layer.frame = self.bounds
         layer.lineWidth = 2
         layer.fillColor = nil
         layer.strokeColor = UIColor.red.cgColor
-        let b = UIBezierPath(ovalIn: CGRect(3,3,57,57))
+        let b = UIBezierPath(ovalIn: self.bounds.insetBy(dx: 3, dy: 3))
         layer.path = b.cgPath
         self.layer.addSublayer(layer)
         layer.zPosition = -1
