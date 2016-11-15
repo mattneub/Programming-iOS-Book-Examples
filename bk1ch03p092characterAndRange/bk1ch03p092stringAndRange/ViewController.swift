@@ -170,10 +170,13 @@ class ViewController: UIViewController {
             let ix1 = s.index(s.startIndex, offsetBy:1)
             let ix2 = s.index(ix1, offsetBy:3)
             let r = ix1...ix2
-            // can't get this conversion to work
+            // can't get this conversion to work (range must be open, not closed)
             // let r2 = Range<String.CharacterView.Index>(r)
             // let r3 = Range(r)
             _ = r
+            let r2 = ix1..<ix2
+            let r3 = Range(r2) // no problem
+            _ = r3
         }
         
         
@@ -181,10 +184,11 @@ class ViewController: UIViewController {
             let s = "hello"
             let ix1 = s.index(s.startIndex, offsetBy:1)
             let ix2 = s.index(ix1, offsetBy:2)
-            // interesting thing happens here: we can no longer subscript by a closed range
-            // must form the open range version instead
+            // can subscript with either type
             let s2 = s[ix1...ix2] // "ell"
             print(s2)
+            let s3 = s[ix1..<ix2] // "el"
+            print(s3)
         }
         
         // cutting this whole approach; indexes doesn't give a mutable range any more
