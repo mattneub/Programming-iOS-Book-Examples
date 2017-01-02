@@ -21,7 +21,7 @@ class MyDownloader: NSObject {
     @discardableResult
     func download(url:URL, completionHandler ch : @escaping MyDownloaderCompletion) -> URLSessionTask {
         let req = NSMutableURLRequest(url:url)
-        URLProtocol.setProperty(ch as Any, forKey:"ch", in:req)
+        URLProtocol.setProperty(ch, forKey:"ch", in:req)
         let task = self.session.downloadTask(with:req as URLRequest)
         task.resume()
         return task
