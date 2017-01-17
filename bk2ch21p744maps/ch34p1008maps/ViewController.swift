@@ -32,7 +32,7 @@ extension CGVector {
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
-    let which = 1 // 1...10
+    let which = 6 // 1...10
     
     @IBOutlet var map : MKMapView!
     var annloc : CLLocationCoordinate2D!
@@ -75,6 +75,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
                     loc.latitude = loc.latitude + 0.0005
                     loc.longitude = loc.longitude + 0.001
                     ann.coordinate = loc
+                    ann.title = "I mean here" // testing whether callout sees change
+                    // ok, I see what Rob means http://stackoverflow.com/questions/41469459/can-i-assign-different-images-to-every-pin-in-the-map/41469583#comment70150742_41469583
+                    // it's only an issue if the callout is _open_ when title changes
+                    // for that to work, title must be declared dynamic
                 }
             }
         }

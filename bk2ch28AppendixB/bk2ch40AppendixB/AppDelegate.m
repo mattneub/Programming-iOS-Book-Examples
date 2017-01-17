@@ -11,9 +11,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"%@", NSStringFromSelector(_cmd));
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(terminateNotif:) name:UIApplicationWillTerminateNotification object:nil];
     return YES;
 }
 
+// someone claimed that we get the notification even if we don't get the event
+// I see no evidence of this
+
+- (void) terminateNotif: (id) notif {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     NSLog(@"%@", NSStringFromSelector(_cmd));
