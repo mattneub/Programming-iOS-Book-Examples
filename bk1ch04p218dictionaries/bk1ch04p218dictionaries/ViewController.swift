@@ -59,6 +59,10 @@ class ViewController: UIViewController {
             for (abbrev, state) in d {
                 print("\(abbrev) stands for \(state)")
             }
+            
+            for pair in d {
+                print("\(pair.key) stands for \(pair.value)")
+            }
 
             let arr = Array(d) // [("NY", "New York"), ("CA", "California")]
             print(arr)
