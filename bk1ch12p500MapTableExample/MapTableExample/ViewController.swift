@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     // code based on http://stackoverflow.com/a/33310021/341994
     
     func addToArray(_ obj:SomeDelegate) {
-        let ptr = UnsafeMutableRawPointer(Unmanaged<AnyObject>.passUnretained(obj).toOpaque())
+        let ptr = Unmanaged<AnyObject>.passUnretained(obj).toOpaque()
         self.parr.addPointer(ptr)
     }
     func fetchFromArray(at ix:Int) -> SomeDelegate? {
