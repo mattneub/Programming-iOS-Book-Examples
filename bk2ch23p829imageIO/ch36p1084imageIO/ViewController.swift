@@ -27,6 +27,18 @@ class ViewController: UIViewController {
         let width = result[kCGImagePropertyPixelWidth] as! CGFloat
         let height = result[kCGImagePropertyPixelHeight] as! CGFloat
         print("\(width) by \(height)")
+        
+        // another way; no one in his right mind would do this, though
+        do {
+            let result = CGImageSourceCopyPropertiesAtIndex(src, 0, nil)!
+            let key = kCGImagePropertyPixelWidth // CFString
+            let p1 = Unmanaged.passUnretained(key).toOpaque() // UnsafeMutableRawPointer
+            let p2 = CFDictionaryGetValue(result, p1) // UnsafeRawPointer
+            let n = Unmanaged<CFNumber>.fromOpaque(p2!).takeUnretainedValue() // CFNumber
+            var width : CGFloat = 0
+            CFNumberGetValue(n, .cgFloatType, &width) // width is now 640.0
+            print(width)
+        }
     }
 
     @IBAction func doButton2 (_ sender: Any!) {
