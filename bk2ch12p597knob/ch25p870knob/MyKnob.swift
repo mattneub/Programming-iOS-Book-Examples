@@ -27,12 +27,7 @@ extension CGVector {
 class MyKnob: UIControl {
     var angle : CGFloat = 0 {
         didSet {
-            if self.angle < 0 {
-                self.angle = 0
-            }
-            if self.angle > 5 {
-                self.angle = 5
-            }
+            self.angle = min(max(self.angle, 0), 5) // clamp
             self.transform = CGAffineTransform(rotationAngle: self.angle)
         }
     }

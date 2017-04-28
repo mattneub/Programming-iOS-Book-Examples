@@ -78,8 +78,9 @@ class MyPopoverBackgroundView : UIPopoverBackgroundView {
             var propX = self.arrowOffset
             let limit : CGFloat = 22.0
             let maxX = rect.size.width/2.0 - limit
-            if propX > maxX { propX = maxX }
-            if propX < limit { propX = limit }
+//            if propX > maxX { propX = maxX }
+//            if propX < limit { propX = limit }
+            propX = min(max(propX, limit), maxX)
             let klass = type(of:self)
             con.translateBy(x: rect.size.width/2.0 + propX - klass.ARBASE/2.0, y: 0)
             con.move(to:CGPoint(0, klass.ARHEIGHT))

@@ -89,10 +89,7 @@ class CircleView: UIView, UIPreviewInteractionDelegate {
     func previewInteraction(_ prev: UIPreviewInteraction,
                             didUpdatePreviewTransition prog: CGFloat,
                             ended: Bool) {
-        var prog = prog
-        if prog < 0.05 {prog = 0.05}
-        if prog > 0.95 {prog = 0.95}
-        self.anim.fractionComplete = prog
+        self.anim.fractionComplete = min(max(prog, 0.05), 0.95)
         if ended {
             self.anim.stopAnimation(false)
             self.anim.finishAnimation(at: .end)
