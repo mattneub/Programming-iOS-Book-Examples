@@ -23,6 +23,17 @@ class NoisyDogNOT : DogNOT {
 class Dog : NSObject {}
 class NoisyDog : Dog {}
 
+// not in the book, just a useful extension I got off Stack Overflow http://stackoverflow.com/a/38156873/341994
+
+extension Array {
+    func chunked(by chunkSize: Int) -> [[Element]] {
+        return stride(from: 0, to: self.count, by: chunkSize).map {
+            Array(self[$0 ..< Swift.min($0 + chunkSize, self.count)])
+        }
+    }
+}
+
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -554,6 +565,13 @@ class ViewController: UIViewController {
             let cat1 = Cat()
             let cat2 = Cat()
             let ok = cat1 === cat2 // but `==` no longer compiles
+        }
+        
+        do {
+            // using the array extension shown at the top
+            let arr = [1,2,3,4,5]
+            let chunked = arr.chunked(by: 2)
+            print(chunked) // [[1, 2], [3, 4], [5]]
         }
 
     }
