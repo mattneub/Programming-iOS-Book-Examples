@@ -20,6 +20,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         self.window!.rootViewController = svc
         let b = svc.displayModeButtonItem
         detail.navigationItem.leftBarButtonItem = b
+        detail.navigationItem.leftItemsSupplementBackButton = true
         
         self.window!.backgroundColor = .white
         self.window!.makeKeyAndVisible()
