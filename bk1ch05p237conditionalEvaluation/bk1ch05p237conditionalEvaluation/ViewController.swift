@@ -85,6 +85,15 @@ class ViewController: UIViewController {
             }
         }
         
+        // however, I'm pretty sure the above is unnecessary now,
+        // as we will bridge that way automatically
+        
+        do {
+            let arr : [String?] = ["manny", nil, "jack"]
+            let arr2 = arr as AnyObject
+            print(arr2) // yep, looks like it
+        }
+        
         do {
             let arr : [AnyObject] = []
             do {
@@ -107,8 +116,15 @@ class ViewController: UIViewController {
         let i2 : Any = 2
         let someNumber = i1 as? Int ?? i2 as? Int ?? 0
         print(someNumber)
-
     
+    }
+
+}
+
+class MyClass : UITableViewController {
+    var titles : [String]?
+    override func tableView(_ tv: UITableView, numberOfRowsInSection sec: Int) -> Int {
+        return self.titles?.count ?? 0
     }
 
 }

@@ -23,10 +23,13 @@ class Dog3 {
     var license : Int
     init(name:String, license:Int) {
         self.name = name
+        let whatever = self.name
+        _ = whatever
         self.license = license
     }
 }
 class Dog4 {
+    var testing = "testing"
     var name : String
     var license : Int
     init(name:String, license:Int) {
@@ -37,6 +40,7 @@ class Dog4 {
         self.init(name:"Fido", license:license)
     }
     convenience init() {
+        // print(self.testing) // illegal
         self.init(license:1)
     }
 }

@@ -6,6 +6,35 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        func f() {
+            // literal multiline strings new in Swift 4
+            // indentation is gauged by the indentation of the second triple
+            // it is a compile error if all lines are not indented that much
+            // so the following has no white space before any line
+            let s = """
+            Line 1
+                Line 2
+            Line 3
+            """
+            print(s)
+            print(Array(s).filter{$0 == "\n"}.count)
+        }
+        f()
+        
+        do {
+            // literal multiline strings new in Swift 4
+            // indentation is gauged by the indentation of the line containing the triple
+            // so the following has no white space before any line
+            // Multi-line string literal content must begin on a new line
+//            let s = """Line 1
+//            Line 2
+//            Line 3"""
+            // Multi-line string literal closing delimiter must begin on a new line
+//            print(s)
+//            print(Array(s).filter{$0 == "\n"}.count)
+        }
+        
 
         do {
             let greeting = "hello"
@@ -78,30 +107,32 @@ class ViewController: UIViewController {
         do {
             let s = "31"
             let i = Int(s) // Optional(31)
-            print(i)
+            print(i as Any)
         }
         
         do {
             let s = "1f"
             let i = Int(s, radix:16) // Optional(31)
-            print(i)
+            print(i as Any)
         }
         
         do {
             let s = "31.34"
             let i = Int(s) // nil because it wasn't an Int; you don't get magical double-coercion
-            print(i)
+            print(i as Any)
         }
+        
+        // note elimination of characters from next two examples
         
         do {
             let s = "hello"
-            let length = s.characters.count // 5
+            let length = s.count // 5
             print(length)
         }
         
         do {
             let s = "hello"
-            for c in s.characters {
+            for c in s {
                 print(c) // print each Character on its own line
             }
         }

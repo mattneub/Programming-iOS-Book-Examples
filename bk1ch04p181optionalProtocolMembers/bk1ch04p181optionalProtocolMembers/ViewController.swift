@@ -8,14 +8,16 @@ import UIKit
     @objc optional func sing()
     @objc optional func sing2() -> String
 }
+// NB no longer necessary to repeat `@objc` in the Bird declaration
 class Bird : Flier {
-    @objc func sing() {
+    func sing() {
         print("tweet")
     }
-    @objc func sing2() -> String {
+    func sing2() -> String {
         return "warble"
     }
-    @objc var song2 : String = "gobble gobble"
+    // var song3 : String? = "ooga ooga"
+    var song2 : String = "gobble gobble"
 }
 
 class Insect : Flier {
@@ -39,7 +41,15 @@ struct Nest : ExpressibleByIntegerLiteral {
     init(integerLiteral val: Int) {
         self.eggCount = val
     }
+    init?(_ s:String) {
+        if let i = Int(s) {
+            self.eggCount = i
+        } else {
+            return nil
+        }
+    }
 }
+
 func reportEggs(_ nest:Nest) {
     print("this nest contains \(nest.eggCount) eggs")
 }
@@ -69,12 +79,12 @@ class ViewController: UIViewController {
 
         let f : Flier = Bird()
         let s = f.song // s is an Optional wrapping a String
-        print(s)
+        print(s as Any)
         let sss = f.song3 // sss is an Optional wrapping an Optional wrapping a String
-        print(sss)
+        print(sss as Any)
         f.sing?()
         let s2 = f.sing2?()
-        print(s2)
+        print(s2 as Any)
 
 //        var f2 : Flier = Bird()
 //        f2.song2 = "woof" // compile error
@@ -82,10 +92,10 @@ class ViewController: UIViewController {
         do {
             let i : Flier = Insect()
             let s = i.song
-            print(s) // nil
+            print(s as Any) // nil
             i.sing?() // safe but nothing happens
             let s2 = i.sing2?() // nil
-            print(s2)
+            print(s2 as Any)
             
             // i.sing!() // legal but we will crash
         }
@@ -93,11 +103,13 @@ class ViewController: UIViewController {
         
         
         reportEggs(4) // this nest contains 4 eggs
+        if let n = Nest("4") {
+            reportEggs(n)
+        }
 
     
     }
     
-    func f(f: CustomStringConvertible & CustomDebugStringConvertible) {} // just showing the notation
 
 
 

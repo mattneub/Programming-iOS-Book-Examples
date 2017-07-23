@@ -12,6 +12,7 @@
 		3214AC2A1AF99B23000CD470 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3214AC281AF99B23000CD470 /* Main.storyboard */; };
 		3214AC2C1AF99B23000CD470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3214AC2B1AF99B23000CD470 /* Assets.xcassets */; };
 		3214AC2F1AF99B23000CD470 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3214AC2D1AF99B23000CD470 /* LaunchScreen.xib */; };
+		81EFD4601F21412300909ADA /* states.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81EFD45F1F21412300909ADA /* states.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		3214AC291AF99B23000CD470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3214AC2B1AF99B23000CD470 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3214AC2E1AF99B23000CD470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		81EFD45F1F21412300909ADA /* states.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = states.txt; path = ../../bk2ch08p416sections/ch21p718sections/states.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				3214AC241AF99B23000CD470 /* AppDelegate.swift */,
 				3214AC261AF99B23000CD470 /* ViewController.swift */,
 				3214AC281AF99B23000CD470 /* Main.storyboard */,
+				81EFD45F1F21412300909ADA /* states.txt */,
 				3214AC2B1AF99B23000CD470 /* Assets.xcassets */,
 				3214AC2D1AF99B23000CD470 /* LaunchScreen.xib */,
 				3214AC231AF99B23000CD470 /* Info.plist */,
@@ -96,7 +99,7 @@
 				TargetAttributes = {
 					3214AC1E1AF99B23000CD470 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
@@ -123,6 +126,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81EFD4601F21412300909ADA /* states.txt in Resources */,
 				3214AC2A1AF99B23000CD470 /* Main.storyboard in Resources */,
 				3214AC2F1AF99B23000CD470 /* LaunchScreen.xib in Resources */,
 				3214AC2C1AF99B23000CD470 /* Assets.xcassets in Resources */,
@@ -251,7 +255,7 @@
 				INFOPLIST_FILE = bk1ch04p218dictionaries/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -262,7 +266,7 @@
 				INFOPLIST_FILE = bk1ch04p218dictionaries/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

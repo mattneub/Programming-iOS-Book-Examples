@@ -21,7 +21,7 @@ var now2 : String { // showing you can omit "get" if there is no "set"
 class ViewController: UIViewController {
     
     var mp : MPMusicPlayerController {
-        return MPMusicPlayerController.systemMusicPlayer()
+        return MPMusicPlayerController.systemMusicPlayer // NB no longer a method
     }
 
     

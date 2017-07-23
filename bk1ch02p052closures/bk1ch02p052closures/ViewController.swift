@@ -15,7 +15,7 @@ struct Dog2 {
     }
 }
 
-func doThis(_ f : (Void) -> Void) {
+func doThis(_ f : () -> ()) {
     f()
 }
 

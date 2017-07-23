@@ -7,84 +7,161 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // the term .characters is deleted throughout for Swift 4
+        
         do {
             let s = "hello"
-            for c in s.characters {
+            for c in s {
                 print(c) // print each Character on its own line
             }
+        }
+        
+        do { // demonstrates what appears to me to be a bug in the new Character unicodeScalars property
+            // except that in beta 3 the bug is now in the String property????
+            let c = Character("a\u{030A}")
+            print(c)
+            print(String(c).count)
+            for sc in c.unicodeScalars {
+                print(sc.utf16)
+            }
+            for sc in String(c).unicodeScalars {
+                print(sc.utf16)
+            }
+            for sc in Array(c.unicodeScalars) {
+                print(sc.utf16)
+            }
+            var i = String(c).unicodeScalars.makeIterator()
+            print(i.next()!.value)  //
+            print(i.next()!.value)  //
+            var ii = c.unicodeScalars.makeIterator()
+            print(ii.next()!.value)  //
+            print(ii.next()!.value)  //
+
         }
         
         do {
             let c = Character("h")
             print(c)
+            // let ss = c.uppercased()
             let s = (String(c)).uppercased()
             print(s)
         }
         
+        // the old way
+        
+        do {
+            let moi = "Matt Neuburg"
+            let moichars = moi.characters
+            let sp = moichars.index(of:" ")!
+            // it was possible to take a range of a string rather than a character view...
+            // ...but you could do the character view as well
+            let firstnamechars = moichars[moichars.startIndex..<sp]
+            let firstname = String(firstnamechars)
+            print(firstnamechars)
+            print(firstname)
+        }
+        
+        // more old way
+        
         do {
             let s = "hello"
-            let c1 = s.characters.first
-            let c2 = s.characters.last
-            print(c1,c2)
+            let schars = s.characters
+            let ell = Character("l")
+            let s2chars = schars.filter {$0 != ell}
+            let s2 = String(s2chars)
+            print(s2)
+        }
+        
+        // the new way to do that
+        
+        do {
+            let s = "hello"
+            let ell = Character("l")
+            let s2 = s.filter {$0 != ell}
+            print(s2)
+        }
+        
+        
+        do {
+            let s = "hello"
+            let c1 = s.first
+            let c2 = s.last
+            print(c1 as Any, c2 as Any)
         }
         
         do {
             let s = "hello"
-            let firstL = s.characters.index(of:"l")
-            print(firstL) // Optional(2), meaning the third character
-            let lastL = String(s.characters.reversed()).characters.index(of:"l")
-            print(lastL)
-
+            let firstL = s.index(of:"l")
+            print(firstL as Any) // Optional(2), meaning the third character
+            let lastL = String(s.reversed()).index(of:"l")
+            print(lastL as Any)
         }
         
+        do {
+            let s = "hello"
+            let firstSmall = s.index {$0 < "f"}
+            print(firstSmall) // bug in Swift 4????
+        }
+        
+        // workaround
         do {
             let s = "hello"
             let firstSmall = s.characters.index {$0 < "f"}
-            print(firstSmall)
+            print(firstSmall as Any)
+        }
+        
+        // another workaround
+        do {
+            let s = "hello"
+            let firstSmall = s.index(where: {$0 < "f"})
+            print(firstSmall as Any)
         }
         
         do {
             let s = "hello"
-            let ok = s.characters.contains("o") // true
+            let ok = s.contains("o") // true
             print(ok)
         }
         
         do {
             let s = "hello"
-            let ok = s.characters.contains {"aeiou".characters.contains($0)} // true
+            let ok = s.contains {"aeiou".contains($0)} // true
             print(ok)
         }
         
         do {
             let s = "hello"
-            let s2 = String(s.characters.filter {"aeiou".characters.contains($0)})
+            let s2 = s.filter {"aeiou".contains($0)}
             print(s2) // "eo"
         }
         
         do {
             let s = "hello"
-            let ok = s.characters.starts(with: "hell".characters)
+            let ok = s.starts(with: "hell")
             print(ok)
         }
 
         do {
-            let s = "hello"
-            let s2 = String(s.characters.dropFirst())
+            var s = "hello"
+            let s2 = s.dropFirst()
             print(s2)
+            print(s2.startIndex)
+            // s = s2
+            s = String(s2)
         }
         
         do {
-            let s = "hello"
-            let s2 = String(s.characters.prefix(4)) // "hell"
-            print(s2)
+            var s = "hello"
+            s = String(s.prefix(4)) // "hell"
+            print(s)
         }
         
         do {
             let s = "hello world"
-            let arra = s.characters.split{$0 == " "}
+            let arra = s.split{$0 == " "}
             print(arra)
             print(type(of:arra[0]))
-            let arr = s.characters.split{$0 == " "}.map{String($0)}
+            let arr = s.split{$0 == " "}.map{String($0)}
             print(arr)
         }
         
@@ -114,17 +191,39 @@ class ViewController: UIViewController {
         }
         
         do {
+            let s = "hello"
+            let s2 = s.dropFirst()
+            let last = s2.index(of:"o")
+            print(last as Any) // 4, not 3
+        }
+        
+        do {
             var s = "hello"
             let ix = s.index(s.startIndex, offsetBy:1)
             // "splice" is now "insertContentsOf"
-            s.insert(contentsOf:"ey, h".characters, at: ix)
+            s.insert(contentsOf:"ey, h", at: ix)
             print(s)
         }
         
+        do {
+            var s = "hello"
+            var s2 = s.dropLast()
+            let ix = s2.startIndex
+            s2.insert(contentsOf:"s", at:ix)
+            do {
+                let ix = s.index(s.startIndex, offsetBy:1)
+                s.insert(contentsOf:"ey, h", at: ix)
+            }
+            print(s2)
+            print(s)
+            print(type(of:s2))
+            // I presume what happens here is that the original "hello" lives on as storage for s2,
+            // but independently of the pointer "s"
+        }
         
         do {
             let s = "Ha\u{030A}kon"
-            print(s.characters.count) // 5
+            print(s.count) // 5
             let length = (s as NSString).length // or:
             let length2 = s.utf16.count
             print(length, length2) // 6
@@ -152,7 +251,7 @@ class ViewController: UIViewController {
         
         do {
             let s = "hello"
-            let arr = Array(s.characters)
+            let arr = Array(s.characters) // need this one :)
             let result = arr[1...3]
             let s2 = String(result)
             print(s2)
@@ -161,8 +260,8 @@ class ViewController: UIViewController {
         do {
             let s = "hello"
             let r = s.range(of:"ell") // a Swift Range (wrapped in an Optional)
-            print(r)
-            print(r?.lowerBound) // no longer called startIndex for a Range
+            print(r as Any)
+            print(r?.lowerBound as Any) // no longer called startIndex for a Range
         }
         
         do {
@@ -206,6 +305,12 @@ class ViewController: UIViewController {
  
  */
         
+        do { // example of a partial range
+            let s = "hello"
+            let ix2 = s.index(before: s.endIndex)
+            let s2 = s[..<ix2] // "hell"
+            print(s2)
+        }
         
         do {
             var s = "hello"
@@ -214,8 +319,6 @@ class ViewController: UIViewController {
             s.replaceSubrange(r, with: "ipp") // s is now "hippo"
             print(s)
         }
-        
-
         
         do {
             var s = "hello"
@@ -230,8 +333,8 @@ class ViewController: UIViewController {
         do {
             let r = NSRange(2..<4)
             print(r)
-            let r2 = r.toRange()
-            print(r2)
+            let r2 = Range(r) // NB this change! toRange is deprecated
+            print(r2 as Any)
         }
  
         

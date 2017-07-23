@@ -36,8 +36,25 @@ struct Insect : Flier {
     }
 }
 
+func f(_ x: CustomStringConvertible & CustomDebugStringConvertible) {
+    
+}
+
+protocol MyViewProtocol : class {
+    func doSomethingCool()
+}
+
+class MyView : UIView, MyViewProtocol {
+    func doSomethingCool() {}
+}
+
+extension UIButton : MyViewProtocol {
+    func doSomethingCool() {}
+}
 
 class ViewController: UIViewController {
+    
+    var delegate : (UIView & MyViewProtocol)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +74,9 @@ class ViewController: UIViewController {
         print(ok2)
 
         _ = b2
+        
+        self.delegate = MyView()
+        self.delegate = UIButton()
     
     }
 

@@ -74,7 +74,7 @@ class ViewController: UIViewController {
     // - (void)functionTaker:(void (* __nonnull)(void))f;
     
     // overloading while hiding
-    @nonobjc func dismissViewControllerAnimated(_ flag: Int, completion: (() -> Void)?) {}
+    @nonobjc func dismissViewControllerAnimated(_ flag: Int, completion: (() -> ())?) {}
     
     func testVisibility1(what:Int) {}
     func testVisibility2(what:MyClass) {}
@@ -237,9 +237,9 @@ class ViewController: UIViewController {
         do {
             let sel = #selector(doButton)
             print(sel)
-            let sel2 = #selector(makeHash as ([String]) -> Void)
+            let sel2 = #selector(makeHash as ([String]) -> ())
             print(sel2)
-            let sel3 = #selector(makeHash as ([Int]) -> Void)
+            let sel3 = #selector(makeHash as ([Int]) -> ())
             print(sel3)
             
             let arr = NSArray(objects:1,2,3)

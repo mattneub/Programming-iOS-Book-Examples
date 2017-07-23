@@ -64,10 +64,10 @@ class ViewController: UIViewController {
         let app = UIApplication.shared
         let window = app.keyWindow
         let vc = window?.rootViewController
-        print(vc)
+        print(vc as Any)
         
         let vc2 = UIApplication.shared.keyWindow?.rootViewController
-        print(vc2)
+        print(vc2 as Any)
 
 
     }

@@ -2,6 +2,9 @@
 
 import UIKit
 
+func otherFunction(_ f: /*@escaping*/ ()->()) { // uncomment escaping and we won't compile
+}
+
 struct Digit {
     var number : Int
     init(_ n:Int) {
@@ -16,6 +19,11 @@ struct Digit {
         self.number = n // compile error
     }
 */
+    mutating func callAnotherFunction() {
+        otherFunction {
+            self.changeNumberTo(345)
+        }
+    }
 }
 
 class Dog {
@@ -133,8 +141,12 @@ class ViewController: UIViewController {
             print(fido.name) // "Rover"
             
         }
+        
+        
     }
 
 
 }
+
+
 

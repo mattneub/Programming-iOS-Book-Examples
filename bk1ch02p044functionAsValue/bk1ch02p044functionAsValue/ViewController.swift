@@ -3,7 +3,7 @@ import UIKit
 
 func say(_ s:String, times:Int) {}
 func say(_ s:String) {}
-let f = say as (String,Int) -> Void
+let f = say as (String,Int) -> ()
 
 func doThis(_ f:()->()) {
     f()
@@ -38,11 +38,11 @@ class Dog {
     func test() {
         // let barkFunction = bark
         let barkFunction1 = bark(_:)
-        let barkFunction2 = bark as (Void) -> Void
-        let barkFunction3 = bark as (Bool) -> Void
-        let barkFunction4 : (Bool) -> Void = bark
+        let barkFunction2 = bark as () -> ()
+        let barkFunction3 = bark as (Bool) -> ()
+        let barkFunction4 : (Bool) -> () = bark
         let barkFunction5 = self.bark(_:)
-        
+                
         let barkFunction6 = type(of:self).bark(_:)
         let barkFunction7 = Dog.bark(_:)
         
@@ -96,7 +96,7 @@ class Dog2 {
     func test() {
         // let barkFunction1 = bark // ambiguous
         // let barkFunction2 = bark(_:) // still ambiguous
-        let barkFunction = bark as (Int) -> Void // NB
+        let barkFunction = bark as (Int) -> () // NB
         _ = barkFunction
     }
 }
@@ -214,7 +214,9 @@ class ViewController: UIViewController {
 
     }
     
-    func buttonPressed(_ sender:Any) { // must actually exist, or none of the above will compile
+    // Note use of @objc! This is easy: the compiler will enforce it
+    // The reason is that selectors are an Objective-C feature
+    @objc func buttonPressed(_ sender:Any) { // must actually exist, or none of the above will compile
         
     }
 

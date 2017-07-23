@@ -35,7 +35,8 @@ extension Int {
 infix operator >>> : RangeFormationPrecedence
 func >>><Bound>(maximum: Bound, minimum: Bound)
     -> ReversedRandomAccessCollection<CountableRange<Bound>>
-    where Bound : Comparable & Strideable, Bound.Stride : Integer {
+    where Bound : Comparable & Strideable { // NB! Integer conformance no longer needed
+        // in fact, Integer no longer exists
         return (minimum..<maximum).reversed()
 }
 
@@ -57,7 +58,7 @@ class ViewController: UIViewController {
         
         let arr = [v1,v2]
         let ix = arr.index(of:v1) // Optional wrapping 0
-        print(ix)
+        print(ix as Any)
 
         print(2^^2) // 4
         print(2^^3) // 8

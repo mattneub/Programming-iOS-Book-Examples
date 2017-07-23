@@ -1,6 +1,7 @@
 
 
 #import "Thing.h"
+#import "bk1ch05p241error-Swift.h"
 
 @implementation Thing
 
@@ -17,8 +18,17 @@
         NSLog(@"%@", err);
     }
     
-    
-    
 }
+
+- (void) testThrower {
+    ThrowerClass* t = [ThrowerClass new];
+    NSError* err = nil;
+    [t throwerFuncAndReturnError:&err];
+    NSLog(@"%@", err);
+    // Error Domain=MyDomain Code=-666 "(null)"
+    // this proves that Objective-C receives this info from Swift in good order!
+}
+
+
 
 @end

@@ -19,7 +19,7 @@ struct Insect : Flier {
 }
 
 struct FlierStruct /* : Flier */ {
-    let flierAdopterFlyMethod : (Void) -> Void
+    let flierAdopterFlyMethod : () -> ()
     init<FlierAdopter:Flier>(_ flierAdopter:FlierAdopter) {
         self.flierAdopterFlyMethod = flierAdopter.fly
     }
@@ -53,8 +53,8 @@ struct Insect2 : Flier2 {
 }
 
 struct FlierStruct2<Other2> : Flier2 {
-    let flierAdopterFlyMethod : (Void) -> Void
-    let flierAdopterFlockMethod : (Other2) -> Void
+    let flierAdopterFlyMethod : () -> ()
+    let flierAdopterFlockMethod : (Other2) -> ()
     init<FlierAdopter:Flier2>(_ flierAdopter:FlierAdopter) where Other2 == FlierAdopter.Other2 {
         self.flierAdopterFlyMethod = flierAdopter.fly
         self.flierAdopterFlockMethod = flierAdopter.flockTogetherWith

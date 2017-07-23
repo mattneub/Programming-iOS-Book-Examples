@@ -35,6 +35,19 @@ func typeTester(_ d:Dog, _ whattype:Dog.Type) {
     }
 }
 
+// just for completeness, this is how you solve the "return Self" problem for the global function
+// but we aren't ready for that until we discuss generics
+func dogMakerAndNamer2<WhatType:Dog>(_:WhatType.Type) -> WhatType {
+    let d = WhatType.init(name:"Fido")
+    return d
+}
+
+// pseudocode: this is what the generic turns into if NoisyDog.self is passed as parameter
+func dogMakerAndNamer3(_:NoisyDog.Type) -> NoisyDog {
+    let d = NoisyDog.init(name:"Fido")
+    return d
+}
+
 
 class ViewController: UIViewController {
 
@@ -42,7 +55,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         let d = dogMakerAndNamer(Dog.self) // d is a Dog named Fido
-        let d2 = dogMakerAndNamer(NoisyDog.self) // d2 is a NoisyDog named Fido
+        let d2 = dogMakerAndNamer(NoisyDog.self) // d2 is a NoisyDog named Fido - but typed as Dog
+        
+        do { // d2 is typed by inference as a NoisyDog
+            let d = dogMakerAndNamer2(Dog.self) // d is a Dog named Fido
+            print(d, d.name)
+            let d2 = dogMakerAndNamer2(NoisyDog.self) // d2 is a NoisyDog named Fido
+            print(d2, d2.name)
+        }
 
         let dd = Dog.makeAndName() // d is a Dog named Fido
         let dd2 = NoisyDog.makeAndName() // d2 is a NoisyDog named Fido - but typed as Dog

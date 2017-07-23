@@ -1,6 +1,13 @@
 
 
 import UIKit
+import Swift
+
+let sss : NSString = "howdy"
+
+let gOne = 1
+var gTwo = 2
+// gTwo = gOne // "Expressions are not allowed at the top level"
 
 class Dog {
     func bark() {
@@ -21,14 +28,18 @@ func go() {
     var two = 2
     two = one
     let _ = (one,two)
+    
+    let three = 3
+    // three = one // compile error
+    _ = three
 }
 
 func doGo() {
     go()
 }
 
-// let class = 1 // Keyword 'repeat' cannot be used as an identifier
-// func if() { } // Expected identifier in function declaration
+// let class = 1 // Keyword 'class' cannot be used as an identifier here
+// func if() { } // Keyword 'if' cannot be used as an identifier here
 class `func` {
     func `if`() {
         let `class` = 1
@@ -46,7 +57,9 @@ func silly() {
 }
 
 class ViewController: UIViewController {
-
+    
+    // gTwo = gOne // "Expected declaration"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 

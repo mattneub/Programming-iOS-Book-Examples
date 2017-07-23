@@ -43,19 +43,29 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior {
 class SecondViewController : UIViewController {
     weak var delegate : SecondViewControllerDelegate?
     // ...
+    weak var delegate2 : (NSObject & SecondViewControllerDelegate2)?
 }
 protocol SecondViewControllerDelegate : class {
     func accept(data:Any!)
 }
 
+protocol SecondViewControllerDelegate2 {
+    func accept(data:Any!)
+}
 
-
+extension UIColor {
+    func getRedGreenBlueAlpha() -> [CGFloat] {
+        var (r,g,b,a) = (CGFloat(0),CGFloat(0),CGFloat(0),CGFloat(0))
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        return [r,g,b,a]
+    }
+}
 
 class ViewController: UIViewController {
     
     weak var delegate : WKScriptMessageHandler?
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -174,7 +184,7 @@ class ViewController: UIViewController {
                 let d2 = Dog(boy: b2!)
                 b2 = nil // destroy the Boy behind the Dog's back
                 print(d2.boy) // crash
-
+                
             }
             testUnowned() // farewell from Boy, farewell from Dog
         }
@@ -182,7 +192,7 @@ class ViewController: UIViewController {
         do {
             print(6)
             class FunctionHolder {
-                var function : ((Void) -> Void)?
+                var function : (() -> ())?
                 deinit {
                     print("farewell from FunctionHolder")
                 }
@@ -199,7 +209,7 @@ class ViewController: UIViewController {
         do {
             print(7)
             class FunctionHolder {
-                var function : ((Void) -> Void)?
+                var function : (() -> ())?
                 deinit {
                     print("farewell from FunctionHolder")
                 }
@@ -208,7 +218,7 @@ class ViewController: UIViewController {
                 let fh = FunctionHolder()
                 fh.function = {
                     [weak fh] in
-                    print(fh)
+                    print(fh as Any)
                 }
                 fh.function!() // proving that what's printed is Optional
             }
@@ -218,7 +228,7 @@ class ViewController: UIViewController {
         do {
             print(8)
             class FunctionHolder {
-                var function : ((Void) -> Void)?
+                var function : (() -> ())?
                 deinit {
                     print("farewell from FunctionHolder")
                 }
@@ -235,9 +245,53 @@ class ViewController: UIViewController {
             testFunctionHolder() // farewell from FunctionHolder
         }
         
+        self.test()
     }
+    
+    
+    func test() {
+        let c = UIColor.purple
+        var components = Array(repeating: CGFloat(0), count: 4)
+        // this is illegal?
+        // c.getRed(&components[0], green: &components[1], blue: &components[2], alpha: &components[3])
+        var (dummy1, dummy2, dummy3) = (CGFloat(0), CGFloat(0), CGFloat(0))
+        c.getRed(&components[0], green: &dummy1, blue: &dummy2, alpha: &dummy3) // ok, i.e. it's the repeat of `&components`
 
+        // workaround
+        components = Array(repeating: CGFloat(0), count: 4)
+        components = c.getRedGreenBlueAlpha()
+        print(components)
+        
+        components = Array(repeating: CGFloat(0), count: 4)
+        components.withUnsafeMutableBufferPointer { ptr -> Void in
+            c.getRed(&ptr[0], green: &ptr[1], blue: &ptr[2], alpha: &ptr[3])
+        }
+        print(components)
+        
+        // another example
+        func change(_ p:inout Person, _ s:inout String) {}
+        var p = Person(firstName: "Matt")
+        var p2 = Person(firstName: "Matt")
+        change(&p, &p2.firstName) // change &p2 to &p and we are stopped
+        print(p)
+        
+        var x = 0
+        // x.assignResultOf { x + 1 }
 
+    }
+    
+    
+}
 
+struct Person {
+    var firstName : String
+}
+
+// example from swift evolution
+
+extension Int {
+    mutating func assignResultOf(_ function: () -> Int) {
+        self = function()
+    }
 }
 

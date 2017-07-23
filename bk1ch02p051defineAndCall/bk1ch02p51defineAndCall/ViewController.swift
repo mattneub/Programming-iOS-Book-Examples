@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         para.firstLineHeadIndent = 10
         // ... more configuration of para ...
         content.addAttribute(
-            NSParagraphStyleAttributeName,
+            .paragraphStyle,
             value:para,
             range:NSMakeRange(0,1))
     }
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     func functional() {
         
         content.addAttribute(
-            NSParagraphStyleAttributeName,
+            .paragraphStyle,
             value: {
                 let para = NSMutableParagraphStyle()
                 para.headIndent = 10

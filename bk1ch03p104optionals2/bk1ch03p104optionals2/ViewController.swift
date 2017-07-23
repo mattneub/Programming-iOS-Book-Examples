@@ -11,7 +11,7 @@ class Dog {
 
 func doThis(_ f:()->String?) {
     let s = f()
-    print(s)
+    print(s as Any)
 }
 
 func optionalStringMaker() -> String! {
@@ -20,7 +20,7 @@ func optionalStringMaker() -> String! {
 
 func doThis2(_ f:()->String!) {
     let s = f()
-    print(s)
+    print(s as Any)
 }
 
 func optionalStringMaker2() -> String? {
@@ -51,11 +51,11 @@ class ViewController: UIViewController {
         let upper = stringMaybe!.uppercased() // legal but dangerous
         // let upper2 = stringMaybe.uppercaseString // compile error
         let upper3 = stringMaybe?.uppercased()
-        print(upper3)
+        print(upper3 as Any)
         
         let stringMaybe2 : String? = nil
         let upper4 = stringMaybe2?.uppercased() // no crash!
-        print(upper4)
+        print(upper4 as Any)
         
         // longer chain - still just one Optional results
         let f = self.view.window?.rootViewController?.view.frame
@@ -84,9 +84,8 @@ class ViewController: UIViewController {
         var crash : Bool {return false}
         if crash {
             let c : UIColor! = nil
-            if c != .red { // crash at runtime
-                // and if you change it to == you'll crash the compiler!'
-                print("it is not red")
+            if c == .red { // crash at runtime
+                print("it is red")
             }
         }
 

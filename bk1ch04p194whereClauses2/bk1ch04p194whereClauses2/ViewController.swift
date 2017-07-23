@@ -15,7 +15,8 @@ struct Bird : Flier {
 struct Insect : Flier {
     typealias Other = Bird
 }
-func flockTogether<T:Flier> (_ f:T) where T.Other:Equatable {}
+// the convention now seems to be to put everything in the where clause
+func flockTogether<T> (_ f:T) where T:Flier, T.Other:Equatable {}
 
 // ==== colon and class
 
@@ -29,7 +30,7 @@ struct Pig : Flier {
 struct Pig2 : Flier {
     typealias Other = NoisyDog
 }
-func flockTogether2<T:Flier> (_ f:T) where T.Other:Dog {}
+func flockTogether2<T> (_ f:T) where T:Flier, T.Other:Dog {}
 
 // ==== equality and protocol
 
@@ -43,11 +44,11 @@ struct Bird3 : Flier {
 struct Insect3 : Flier {
     typealias Other = Walker
 }
-func flockTogether3<T:Flier> (_ f:T) where T.Other == Walker {}
+func flockTogether3<T> (_ f:T) where T:Flier, T.Other == Walker {}
 
 // ==== equality and class
 
-func flockTogether4<T:Flier> (_ f:T) where T.Other == Dog {}
+func flockTogether4<T> (_ f:T) where T:Flier, T.Other == Dog {}
 
 // ==== equality and two associated type chains
 
@@ -57,8 +58,8 @@ struct Bird4 : Flier {
 struct Insect4 : Flier {
     typealias Other = Int
 }
-func flockTwoTogether<T:Flier, U:Flier> (_ f1:T, _ f2:U)
-    where T.Other == U.Other {}
+func flockTwoTogether<T,U> (_ f1:T, _ f2:U)
+    where T:Flier, U:Flier, T.Other == U.Other {}
 
 // ==== with a struct (just testing the outside-the-angle-brackets syntax)
 
@@ -89,12 +90,17 @@ class ViewController: UIViewController {
         var s = "hello"
         s.append(contentsOf: " world".characters) // "hello world"
         print(s)
-        s.append(contentsOf: ["!" as Character])
-        print(s) // "hello world!"
+        s.append(contentsOf: ["!" as Character, "?" as Character])
+        print(s) // "hello world!?"
+        
+        s = "hello"
+        s.append(" world") // "hello world"
+        print(s)
+
         
         var arr = ["manny", "moe"]
         arr.append(contentsOf: ["jack"])
-        // arr.appendContentsOf([1]) // nope
+        // arr.append(contentsOf: [1]) // nope
         
         
     }

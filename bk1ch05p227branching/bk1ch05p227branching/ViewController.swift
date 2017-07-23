@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         nc.post(name:test, object: self, userInfo: ["progress":3])
     }
     
-    func notificationArrived(_ n:Notification) {
+    @objc func notificationArrived(_ n:Notification) {
         do {
             let prog = n.userInfo?["progress"] as? NSNumber
             if prog != nil {
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
             self.progress = prog
         }
 
-        // chapter 10
+        // chapter 10, but I'm moving this up to chapter 5
         if let prog = n.userInfo?["progress"] as? Double {
             self.progress = prog
         }
@@ -92,9 +92,31 @@ class ViewController: UIViewController {
             }
         }
         
+        if let ui = n.userInfo {
+            if let prog = ui["progress"] as? Double {
+                self.progress = prog
+            }
+        }
+
+        
         if let ui = n.userInfo, let prog = ui["progress"] as? NSNumber {
             self.progress = prog.doubleValue
         }
+        
+        if let ui = n.userInfo, let prog = ui["progress"] as? Double {
+            self.progress = prog
+        }
+        
+        if let ui = n.userInfo, let prog = ui["progress"], prog is Double {
+            self.progress = prog as! Double
+        }
+
+        do {
+            guard let ui = n.userInfo else {return}
+            guard let prog = ui["progress"] as? Double else {return}
+            self.progress = prog
+        }
+
         
         print(n)
 
@@ -110,7 +132,11 @@ class ViewController: UIViewController {
 
 }
 
-let readyForDisplay = #keyPath(AVPlayerViewController.readyForDisplay)
+// NOTE! In Swift 4, all this changes: new key path syntax, new KVO syntax
+
+// let readyForDisplay = #keyPath(AVPlayerViewController.readyForDisplay)
+
+/*
 
 // func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
 
@@ -164,5 +190,27 @@ class C4 : NSObject {
         print(obj)
     }
 }
+
+ */
+
+// this shows why the whole example largely falls
+// the only thing now worth testing is the change object
+// there's little doubt what the object would be
+
+class C1 : NSObject {
+    let avpvc = AVPlayerViewController()
+    func test() {
+        let obs = self.avpvc.observe(\.readyForDisplay, options:[.new]) { (obj, ch) in
+            if let ok = ch.newValue, ok {
+                // do work here ...
+                // obs.invalidate() // illegal, but we also get a warning if we don't capture the result
+            }
+        }
+        obs.invalidate() // probably if we do this we'll never even get the notification
+    }
+}
+
+// ... though I _suppose_ can imagine passing multiple calls thru the same code in which case we'd test the object too
+// but then wouldn't that make the whole closure-based structure pointless?
 
 

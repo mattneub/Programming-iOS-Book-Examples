@@ -95,6 +95,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     self.locman.allowDeferredLocationUpdates(untilTraveled: CLLocationDistanceMax, timeout: self.deferInterval)
                 } else {
                     self.print("going into background but couldn't defer")
+//                    self.print("but trying anyway")
+//                    self.locman.allowDeferredLocationUpdates(untilTraveled: CLLocationDistanceMax, timeout: self.deferInterval)
+
                 }
 
             }
@@ -124,6 +127,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 self.locman.allowDeferredLocationUpdates(untilTraveled: CLLocationDistanceMax, timeout: self.deferInterval)
             } else {
                 print("not able to defer")
+                // if we try anyway, we just get error code 11
+//                self.print("but trying anyway")
+//                self.locman.allowDeferredLocationUpdates(untilTraveled: CLLocationDistanceMax, timeout: self.deferInterval)
             }
         }
     }

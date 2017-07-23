@@ -27,6 +27,8 @@ class NoisyDog : Dog {
     var obedient = false
     init(obedient:Bool) {
         self.obedient = obedient
+        print(self.obedient) // legal
+        // print(self.name) // illegal, because it's inherited
         super.init(name:"Fido")
     }
     // without this override, NoisyDog won't compile

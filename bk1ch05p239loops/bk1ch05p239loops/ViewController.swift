@@ -2,7 +2,7 @@
 
 import UIKit
 
-enum Error {
+enum MyError {
     case number(Int)
     case message(String)
     case fatal
@@ -86,7 +86,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let arr : [Error] = [
+            let arr : [MyError] = [
                 .message("ouch"), .message("yipes"), .number(10),
                 .number(-1), .fatal
             ]
@@ -132,6 +132,12 @@ class ViewController: UIViewController {
         }
         
         do {
+            for c in "howdy" {
+                print(c)
+            }
+        }
+        
+        do {
             for v in self.boardView.subviews {
                 v.removeFromSuperview()
             }
@@ -148,6 +154,12 @@ class ViewController: UIViewController {
         do {
             for (i,v) in self.tiles.enumerated() {
                 v.center = self.centers[i]
+            }
+        }
+        
+        do {
+            for case let b as UIButton in self.boardView.subviews {
+                b.isHidden = true
             }
         }
         
@@ -218,7 +230,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let arr : [Error] = [
+            let arr : [MyError] = [
                 .message("ouch"), .message("yipes"), .number(10),
                 .number(-1), .fatal
             ]
@@ -298,10 +310,12 @@ class ViewController: UIViewController {
         
         // perhaps this is clearest
         // we can use sequence to generate the alternating positive-negative
+        // NOTE change in Swift 4 to tuple!
+        // (however, the example is no longer in the book)
         do {
             let directions = sequence(first:1) {$0 * -1}
             let bases = stride(from: 20, to: 60, by: 5)
-            let values = zip(bases, directions).map {Double($1) * .pi / Double($0)}
+            let values = zip(bases, directions).map {Double($0.1) * .pi / Double($0.0)} // *
             print(values) // same as previous but without the initial 0.0
         }
         

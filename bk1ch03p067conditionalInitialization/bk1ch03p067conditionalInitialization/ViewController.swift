@@ -107,6 +107,17 @@ class ViewController: UIViewController {
                 }
 
         }
+        
+        // but Joe Groff points out that this might be a better way to write it
+        
+        do {
+            var bti : UIBackgroundTaskIdentifier?
+            bti = UIApplication.shared.beginBackgroundTask {
+                UIApplication.shared.endBackgroundTask(bti!)
+            }
+            
+        }
+
 
     }
     

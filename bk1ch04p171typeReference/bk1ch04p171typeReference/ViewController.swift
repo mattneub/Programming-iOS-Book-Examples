@@ -30,11 +30,12 @@ class ViewController: UIViewController {
         d.bark()
         let nd = NoisyDog()
         nd.bark() // Woof woof woof
+        print(nd)
         print(type(of:nd))
     
-        dogTypeExpecter(Dog) // oooh, compiler now warns
+        // dogTypeExpecter(Dog) // oooh, compiler now warns // now an error! beta 3
         dogTypeExpecter(Dog.self)
-        dogTypeExpecter(NoisyDog) // ditto
+        // dogTypeExpecter(NoisyDog) // ditto // now an error! beta 3
         dogTypeExpecter(NoisyDog.self)
         dogTypeExpecter(type(of:d))
         dogTypeExpecter(type(of:d).self)

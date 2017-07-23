@@ -9,14 +9,53 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         if self.traitCollection.horizontalSizeClass == .compact {}
     
         let comp = self.traitCollection.horizontalSizeClass == .compact
         if comp {}
         
         let what = 0x10
+        print(what)
         _ = what
+        
+        do {
+            print(Int.max)
+            print(pow(2,63)-1)
+            print(Int.min)
+            print(0-pow(2,63))
+        }
+        
+        do {
+            print(Int8.max)
+            // let i : Int8 = 128
+            let i : Int16 = 128
+            // let ii = Int8(i)
+            let ii = Int8(exactly:i)
+            print(ii as Any)
+            _ = ii
+        }
+        
+        do {
+            let i : Int16 = 128
+            let ii = Int8(clamping:i)
+            print(ii)
+            _ = ii
+        }
+        
+        do {
+            let i : Int16 = 128
+//            let ii : Int8 = numericCast(i)
+//            print(ii)
+//            _ = ii
+            _ = i
+        }
+        
+        do {
+            let ii = Int8(127.9)
+            print(ii)
+            _ = ii
+        }
         
         if 3e2 == 300 {
             print("yep")
@@ -92,8 +131,13 @@ class ViewController: UIViewController {
         
         do {
             let i = Int.max - 2
-            // let j = i + 12/2 // crash
-            let (j, over) = Int.addWithOverflow(i,12/2)
+            do {
+//                let j = i + 12/2 // crash
+                let j = i &+ 12/2
+                print(j)
+                _ = j
+            }
+            let (j, over) = i.addingReportingOverflow(12/2) // NB now an instance method
             print(j)
             print(over)
         }
@@ -103,6 +147,7 @@ class ViewController: UIViewController {
             let j = 6
             print(abs(i)) // 7
             print(max(i,j)) // 6
+            
         }
         
         do {
@@ -111,6 +156,27 @@ class ViewController: UIViewController {
             let n = 10
             let i = Int(arc4random())%n
             print(i)
+            
+            print(2.squareRoot()) // legal because Swift coerces to Double
+            let two = 2
+            // print(two.squareRoot())
+            print(Double(two).squareRoot())
+            print(2.0.squareRoot())
+        }
+        
+        do {
+            let d = 2.0
+            let dd = 2.1
+            print(Double.maximum(d, dd))
+            //print(Double.abs(d))
+            print(d.squareRoot())
+            print(dd.rounded())
+        }
+        
+        do {
+            let d1 = 0.3333333333333
+            let d2 = 1.0/3.0
+            print(Int(abs(d1-d2) / Double.ulpOfOne))
         }
 
 

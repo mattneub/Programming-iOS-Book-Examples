@@ -26,10 +26,38 @@ class MyClassyError : Error {
     }
 }
 
+enum MyBetterError : CustomNSError, LocalizedError {
+    case oops
+    static var errorDomain : String { return "MyDomain" }
+    var errorCode : Int { return -666 }
+    var errorUserInfo: [String : Any] { return ["Hey":"Ho"] };
+    
+    var errorDescription: String? { return "This sucks" } // localized description!
+    var failureReason: String? { return "Because it sucks" }
+    var recoverySuggestion: String? { return "Give up" }
+
+}
+
+class ThrowerClass : NSObject {
+    @objc func throwerFunc() throws -> NSNumber {
+        throw MyBetterError.oops
+        // return false
+    }
+    // bridges as
+    // - (NSNumber * _Nullable)throwerFuncAndReturnError:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+    // under the name throwerFuncAndReturnError
+}
 
 struct SomeStruct2 : Error {
     let name : String
     static var someError: SomeStruct2 { return SomeStruct2(name:"howdy") }
+}
+
+class Dog {
+    func f(_ f: () -> ()) {}
+}
+class NoisyDog : Dog {
+    override func f(_ f: () throws -> ()) {}
 }
 
 
@@ -39,6 +67,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let t = Thing()
+        t.testThrower()
         
         test: do {
             break test // labeled break to a do is legal
@@ -55,7 +86,7 @@ class ViewController: UIViewController {
             print(s) // we won't get here
         } catch {
             print(error.localizedDescription) // * no need to cast to NSError
-            print(error)
+            // print((error as! CustomNSError).errorCode)
         }
 
         
@@ -102,6 +133,23 @@ class ViewController: UIViewController {
         print(err3._code)
         print(err3 as NSError)
         
+        // illustrates some uses of try
+        
+        do {
+            let s = try self.canThrowOrReturnString(shouldThrow: true)
+            print(s)
+        } catch {
+            print(error)
+        }
+        
+        let s = try! self.canThrowOrReturnString(shouldThrow: false)
+        print(s)
+        
+        if let s = try? self.canThrowOrReturnString(shouldThrow: true) {
+            print(s)
+        } else {
+            print("failed")
+        }
         
     }
     
@@ -250,6 +298,15 @@ class ViewController: UIViewController {
         guard case let output2 = howMany(), output2 > 10 else {return}
     }
 
+    func canThrowOrReturnString(shouldThrow:Bool) throws -> String {
+        enum Whoops : Error {
+            case oops
+        }
+        if shouldThrow {
+            throw Whoops.oops
+        }
+        return "Howdy"
+    }
 
 }
 

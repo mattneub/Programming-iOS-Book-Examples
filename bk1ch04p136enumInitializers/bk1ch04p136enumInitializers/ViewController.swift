@@ -10,7 +10,7 @@ enum Filter : String {
     case books = "Audiobooks"
     static var cases : [Filter] = [.albums, .playlists, .podcasts, .books]
     init?(_ ix:Int) { // let's not encourage init! as I was doing before
-        if !(0...3).contains(ix) {
+        if !(0...3).contains(ix) { // in real life might say Filter.cases.indices.contains
             return nil
         }
         self = Filter.cases[ix]
@@ -50,7 +50,7 @@ enum Shape {
     case rectangle
     case ellipse
     case diamond
-    func addShape (to p: CGMutablePath, in r : CGRect) -> () {
+    func addShape (to p: CGMutablePath, in r: CGRect) -> () {
         switch self {
         case .rectangle:
             p.addRect(r)
@@ -60,7 +60,7 @@ enum Shape {
             p.move(to: CGPoint(x:r.minX, y:r.midY))
             p.addLine(to: CGPoint(x: r.midX, y: r.minY))
             p.addLine(to: CGPoint(x: r.maxX, y: r.midY))
-                p.addLine(to: CGPoint(x: r.midX, y: r.maxY))
+            p.addLine(to: CGPoint(x: r.midX, y: r.maxY))
             p.closeSubpath()
         }
     }
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
         
         let type5 = Filter("Playlists")
         
-        print(type5?.description)
+        print(type5?.description as Any)
         
         // type5.s = "test" // compile error
         var type6 = type5

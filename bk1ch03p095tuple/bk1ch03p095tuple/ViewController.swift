@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         
         do {
             let s = "hello"
-            for (ix,c) in s.characters.enumerated() {
+            for (ix,c) in s.enumerated() {
                 print("character \(ix) is \(c)")
             }
         }

@@ -2,16 +2,21 @@
 
 import UIKit
 
-func optionalExpecter(_ s:String?) { print(s) }
+let v : () = ()
+let vv : Void = ()
+
+func optionalExpecter(_ s:String?) { print(s as Any) }
 func realStringExpecter(_ s:String) {}
 
 // I guess I was hoping there was a new feature
 // where an incoming Optional could be unwrapped before the body
 // but that's not what's happening; the default is wrapped as an Optional
-func optionalExpecter2(_ s:String? = "") {print("expecter2 got", s)}
+func optionalExpecter2(_ s:String? = "") {print("expecter2 got", s as Any)}
 
 
 class ViewController: UIViewController, UINavigationControllerDelegate {
+    
+    // let testing : String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +31,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         }
 
         var stringMaybe = Optional("howdy")
+        print(stringMaybe)
         stringMaybe = Optional("farewell")
         // stringMaybe = Optional(123) // compile error
         stringMaybe = "farewell" // wrapped implicitly as it is assigned
@@ -35,10 +41,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         optionalExpecter(stringMaybe)
         optionalExpecter("howdy") // wrapped implicitly as it is passed
 
-        // realStringExpecter(stringMaybe) // compile error, no implicit unwrapping
+        //realStringExpecter(stringMaybe) // compile error, no implicit unwrapping
         realStringExpecter(stringMaybe!)
         
-        // let upper = stringMaybe.uppercaseString // compile error
+        // let upperr = stringMaybe.uppercased() // compile error
         let upper = stringMaybe!.uppercased()
 
         let stringMaybe3 : ImplicitlyUnwrappedOptional<String> = "howdy"
@@ -47,12 +53,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         realStringExpecter(stringMaybe4)
 
         var stringMaybe5 : String? = "Howdy"
-        print(stringMaybe5) // Optional("Howdy")
+        print(stringMaybe5 as Any) // Optional("Howdy")
         if stringMaybe5 == nil {
             print("it is empty") // does not print
         }
         stringMaybe5 = nil
-        print(stringMaybe5) // nil
+        print(stringMaybe5 as Any) // nil
         if stringMaybe5 == nil {
             print("it is empty") // prints
         }
@@ -88,6 +94,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
             optionalExpecter2(nil)
             optionalExpecter2()
         }
+        
+        do { // showing nonpropagation of implicit unwrapping
+            let v = UIView()
+            self.view.addSubview(v)
+            let mainview = self.view
+            // mainview.addSubview(v) // compile error
+            _ = mainview
+        }
 
 
         // shut the compiler up
@@ -99,7 +113,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         _ = upper
         stringMaybe7 = "howdy"
         _ = stringMaybe7
-    
+        
+        
     }
 
 

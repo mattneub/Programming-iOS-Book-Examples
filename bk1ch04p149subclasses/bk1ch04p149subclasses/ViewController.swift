@@ -18,8 +18,15 @@ class Dog : Quadruped {
         self.bark()
         self.walk()
     }
+    func barkAt(cat:Kitten) {}
+    func barkAt1(cat:Kitten) {}
+    //func barkAt2(cat:Cat) {}
+    func barkAt2(cat:Cat) {}
+    func barkAt3(cat:Kitten?) {}
+
 }
 class Cat : Quadruped {}
+class Kitten : Cat {}
 class NoisyDog : Dog {
     override func bark () {
         print("woof woof woof")
@@ -29,6 +36,11 @@ class NoisyDog : Dog {
             super.bark()
         }
     }
+    override func barkAt(cat:Cat) {}
+    override func barkAt1(cat:Cat?) {}
+    //override func barkAt2(cat:Kitten) {}
+    override func barkAt2(cat:Cat?) {}
+    override func barkAt3(cat:Cat?) {}
 }
 
 

@@ -26,9 +26,12 @@ func giveMeAString(_ s:String) {
 class ViewController: UIViewController {
     
     // if you delete `@nonobjc`, this is not legal, because Objective-C can't deal with it:
+    // okay, that's no longer true; in Swift 4, we are NOT automatically exposed!
+    // thus I have deleted @nonobjc from both pairs; we are non-objc by default
+    
     func sayy (what:String) {
     }
-    @nonobjc func sayy (what:Int) {
+    func sayy (what:Int) {
     }
 
     

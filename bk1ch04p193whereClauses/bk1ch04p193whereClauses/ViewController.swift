@@ -44,20 +44,42 @@ protocol Walker {
 }
 protocol Generic {
     associatedtype T : Flier, Walker // T must adopt Flier and Walker
-    // associatedtype U where U:Flier // no where clauses on associatedtype
+    associatedtype UU where UU:Flier // STOP PRESS! this is legal in Swift 4!
+    // and == would have been legal here too!
     associatedtype U : Dog, Flier // legal: this is basically an inheritance declaration!
 }
-func flyAndWalk<T> (_ f:T) where T:Walker, T:Flier {}
+protocol JustKidding {
+    func flyAndWalk<T> (_ f:T) -> String where T:Walker, T:Flier
+}
+
+struct JustTesting {
+    func flyAndWalk<T: Flier> (_ f:T) {}
+    func flyAndWalk2<T: Flier & Walker> (_ f:T) {}
+    func flyAndWalk3<T: Flier & Dog> (_ f:T) {}
+}
+
+struct JustTesting2 {
+    func flyAndWalk<T> (_ f:T) where T: Flier {}
+    func flyAndWalk2<T> (_ f:T) where T: Flier & Walker {}
+    func flyAndWalk2a<T> (_ f:T) where T: Flier, T: Walker {}
+    func flyAndWalk3<T> (_ f:T) where T: Flier & Dog {}
+    func flyAndWalk3a<T> (_ f:T) where T: Flier, T: Dog {}
+}
+
+func flyAndWalk<T> (_ f:T) -> String where T:Walker, T:Flier {return "ha"}
+// func flyAndWalkNOT<T:Walker, T: Flier>(_ f: T) {}
 func flyAndWalkBis<T> (_ f:T) where T:Walker & Flier {}
 func flyAndWalk2<T : Walker & Flier> (_ f:T) {}
 func flyAndWalk3<T> (_ f:T) where T:Flier, T:Dog {}
-// func flyAndWalk3Bis<T> (_ f:T) where T:Flier & Dog {} // no, not two protocols
+func flyAndWalk3Bis<T> (_ f:T) where T:Flier & Dog {} // Legal in Swift 4!
+func flyAndWalk3BisBis<T: Flier & Dog> (_ f:T) {} // Legal in Swift 4!
 // func flyAndWalk4<T where T == Dog> (f:T) {}
 
 struct Bird : Flier, Walker {}
 struct Kiwi : Walker {}
 struct S : Generic {
     typealias T = Bird
+    typealias UU = Bird
     typealias U = FlyingDog
 }
 

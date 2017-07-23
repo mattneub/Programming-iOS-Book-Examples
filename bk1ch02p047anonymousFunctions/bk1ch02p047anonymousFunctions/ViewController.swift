@@ -45,7 +45,10 @@ class ViewController: UIViewController {
         })
         
         test {
-            _ in // showing that _ can mean "ignore _all_ parameters"
+            // _ in // showing that _ can mean "ignore _all_ parameters"
+            // okay, again, that's no longer legal, and for the same reason as the (Void):
+            // you can no longer slide between 3 params and 1 tuple
+            _,_,_ in
             return 0
         }
 
@@ -57,6 +60,8 @@ class ViewController: UIViewController {
         performAndPrint {
             greeting() // meaning: return greeting()
         }
+        
+        
 
         let arr = [2, 4, 6, 8]
         
@@ -81,9 +86,10 @@ class ViewController: UIViewController {
     @IBAction func doButton(_ sender: Any) {
         
         
-        UIView.animate(withDuration:0.4, animations: {
-            () -> () in
-            self.myButton.frame.origin.y += 20
+        UIView.animate(withDuration:0.4,
+            animations: {
+                () -> () in
+                self.myButton.frame.origin.y += 20
             }, completion: {
                 (finished:Bool) -> () in
                 print("finished: \(finished)")
@@ -96,12 +102,20 @@ class ViewController: UIViewController {
         
         // showing some serious compression of the above syntax
         
-        UIView.animate(withDuration:0.4, animations: {
-            self.myButton2.frame.origin.y += 20
+        UIView.animate(withDuration:0.4,
+            animations: {
+                self.myButton2.frame.origin.y += 20
             }) {
                 print("finished: \($0)") // must have either "_ in" or "$0"
         }
-
+        
+        UIView.animate(withDuration:0.4,
+            animations: {
+                self.myButton2.frame.origin.y += 20
+            }) { _ in
+                print("finished") // must have either "_ in" or "$0"
+        }
+        
         
     }
     

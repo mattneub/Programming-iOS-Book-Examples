@@ -4,7 +4,7 @@ import UIKit
 // the rule for @escaping is about a function passed in and then passed out
 // so, this is legal:
 
-func funcCaller(f:()->()) {
+func funcCaller(f:() -> ()) {
     f()
 }
 
@@ -16,9 +16,13 @@ func funcMaker() -> () -> () {
 
 // but this is not legal, without @escaping
 
-func funcPasser(f:@escaping ()->()) -> () -> () {
+func funcPasser(f:@escaping () -> ()) -> () -> () {
     return f
 }
+//func funcPasser2(f:() -> ()) -> () -> () {
+//    return f
+//}
+
 class MyClass {
     var name = "matt"
     func test() {
@@ -46,13 +50,13 @@ class ViewController: UIViewController {
     
     func test() {
         func f() {
-            print(presentingViewController)
+            print(presentingViewController as Any)
         }
         funcCaller(f:f) // okay
         let f2 = funcPasser(f:f) // okay, even though f doesn't say "self"
         // I regard that as a bug (and I think so does Jordan Rose)
         let f3 = funcPasser {
-            print(self.presentingViewController) // self required
+            print(self.presentingViewController as Any) // self required
         }
         
         let _ = (f2,f3)

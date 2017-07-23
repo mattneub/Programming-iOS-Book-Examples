@@ -3,7 +3,7 @@
 import UIKit
 import MediaPlayer
 
-class Dog {
+class Dog : Codable {
     @objc var noise : String = "woof"
     @objc func bark() -> String {
         return "woof"
@@ -62,9 +62,16 @@ func typeTester(_ d:Dog, _ whattype:Dog.Type) {
 
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var button: UIButton!
+    @IBAction func doButton(_ sender: Any) {
+        NotificationCenter.default.post(name: Notification.Name("changed"), object: sender)
+        NotificationCenter.default.post(name: Notification.Name("changed"), object: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(changed), name: NSNotification.Name("changed"), object: nil)
         
         do {
             let d = Dog()
@@ -132,6 +139,25 @@ class ViewController: UIViewController {
         }
         
         do {
+            // but it is better to fetch from UserDefaults using a convenience method
+            UserDefaults.standard.set(7, forKey: "Test")
+            let s = UserDefaults.standard.string(forKey:"Test")
+            print(s as Any)
+        }
+        
+        // not ready for prime time??? see https://github.com/apple/swift-evolution/blob/master/proposals/0167-swift-encoders.md
+        
+        /*
+        do {
+            // try to round-trip a Dog into coding
+            let c1 = NSKeyedArchiver()
+            let d = Dog()
+            c1.encodeCodable(d, forKey: "Dog")
+            print(c1)
+        }
+ */
+        
+        do {
             let c : AnyObject = Cat()
             let s = c.noise
             let s2 = c.bark?()
@@ -145,7 +171,7 @@ class ViewController: UIViewController {
             
             let d : AnyObject = Dog()
             let ss = d.noise
-            print(ss)
+            print(ss as Any)
             
 
         }
@@ -206,6 +232,7 @@ class ViewController: UIViewController {
             let anyobject = anything as AnyObject
             let anyobject2 : AnyObject = anything as AnyObject
             print(anyobject)
+            _ = anyobject2
         }
         
         flockTwoTogether(Bird(), Insect())
@@ -228,10 +255,18 @@ class ViewController: UIViewController {
         
     }
     
-    func changed(_ n:Notification) {
-        let player = MPMusicPlayerController.applicationMusicPlayer()
+    @objc func changed(_ n:Notification) {
+        let player = MPMusicPlayerController.applicationMusicPlayer // * no longer a func
         if n.object as AnyObject? === player { // *
+            print("same")
         }
+        if n.object as AnyObject === self.button {
+            print("really same")
+        }
+        if n.object as AnyObject? === self.button {
+            print("really same 2")
+        }
+
     }
 
 

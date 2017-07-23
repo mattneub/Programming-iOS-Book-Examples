@@ -16,6 +16,12 @@ class Dog {
     }
 }
 
+extension Dog {
+    func speak() {
+        print(self.whatADogSays)
+    }
+}
+
 class Cat {
     fileprivate var secretName : String?
     private(set) var color : UIColor?

@@ -3,6 +3,15 @@
 import UIKit
 import UserNotifications
 
+struct Dog : Hashable {
+    let name : String
+    let license : Int
+    static func ==(lhs:Dog, rhs:Dog) -> Bool {
+        return lhs.name == rhs.name
+    }
+    var hashValue: Int { return name.hashValue }
+}
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -32,8 +41,24 @@ class ViewController: UIViewController {
         }
         
         do {
+            let set : Set = [1,2,3,4,5]
+            let set2 = set.filter {$0>3}
+            print(set2)
+        }
+        
+        do {
             let opts = UIViewAnimationOptions(rawValue:0b00011000)
             _ = opts
+        }
+        
+        do {
+            // showing the difference between insert and update
+            var set : Set = [Dog(name:"Fido", license:1)]
+            let d = Dog(name:"Fido", license:2)
+            set.insert(d) // [Dog(name: "Fido", license: 1)]
+            print(set)
+            set.update(with:d) // [Dog(name: "Fido", license: 2)]
+            print(set)
         }
         
         do {
@@ -49,7 +74,7 @@ class ViewController: UIViewController {
         
         do {
             var opts = UIViewAnimationOptions.autoreverse
-            _ = opts.insert(.repeat) // why does compiler complain here but not later?
+            opts.insert(.repeat) // compiler no longer complains
             print(opts)
         }
         
@@ -76,7 +101,7 @@ class ViewController: UIViewController {
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let t = touches.first // an Optional wrapping a UITouch
-        print(t)
+        print(t as Any)
     }
     
     let RECENTS = "recents"

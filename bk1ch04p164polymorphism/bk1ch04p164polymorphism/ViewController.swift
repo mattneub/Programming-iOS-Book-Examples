@@ -140,6 +140,7 @@ class ViewController: UIViewController {
             print(test)
             let test2 = ud.object(forKey:"Test") as AnyObject // no forced cast needed
             let test3 = test2 as! String
+            _ = test3
         }
         
         do {

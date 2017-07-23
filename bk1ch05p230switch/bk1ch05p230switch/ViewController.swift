@@ -28,7 +28,7 @@ enum Filter : CustomStringConvertible {
     }
 }
 
-enum Error {
+enum MyError {
     case number(Int)
     case message(String)
     case fatal
@@ -50,7 +50,7 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
     
     var type : Filter = .albums
     
-    var err = Error.number(-6)
+    var err = MyError.number(-6)
     
     var pep = "Groucho"
 
@@ -139,6 +139,17 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
             print("i is 0")
         default:break
         }
+        
+        // new in Swift 4, use partial range
+        switch i {
+        case ..<0:
+            print("i is negative")
+        case 1...:
+            print("i is positive")
+        case 0:
+            print("i is 0")
+        default:break
+        }
 
         switch d {
         case is NoisyDog:
@@ -212,10 +223,11 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
         default:break
         }
 
+        // swift 4, use partial range again
         switch err {
-        case .number(1...Int.max):
+        case .number(1...):
             print("It's a positive error number")
-        case .number(Int.min...(-1)):
+        case .number(..<0):
             print("It's a negative error number")
         case .number(0):
             print("It's a zero error number")
@@ -322,7 +334,7 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
         }
     }
     
-    func notificationArrived(_ n:Notification) {
+    @objc func notificationArrived(_ n:Notification) {
         switch n.userInfo?["progress"] {
         case let prog as Double:
             self.progress = prog
@@ -333,6 +345,7 @@ class ViewController: UIViewController, UIBarPositioningDelegate {
         if let prog = n.userInfo?["progress"] as? Double {
             self.progress = prog
         }
+        // still, it shows the syntax
         
         print(n)
     }

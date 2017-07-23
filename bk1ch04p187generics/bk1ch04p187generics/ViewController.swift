@@ -40,9 +40,23 @@ let holder = HolderOfTwoSameThings(thingOne:"howdy", thingTwo:"getLost")
 func flockTwoTogether<T, U>(_ f1:T, _ f2:U) {}
 let vd : Void = flockTwoTogether("hey", 1)
 
+// WHOA! Using a `where` clause in Swift 4 works around the weird rule where you can't say Other : Flier3a
+// however, I'm told that's a bug; recursive constraints are not ready for prime time and this should not have been allowed
+
+protocol Flier3a {
+    associatedtype Other where Other : Flier3a
+    func flockTogetherWith(f:Other)
+}
+
+struct Bird3a : Flier3a {
+    func flockTogetherWith(f:Bird3a) {}
+}
+
+
 // illegal in Xcode 7 beta 5!
 // still illegal in Swift 2.2, it seems
 // still illegal in Swift 3 toolchain
+// still illegal in Swift 4
 
 /*
 
@@ -78,6 +92,21 @@ struct Insect3 : Flier3 {
 
 //*/
 
+// okay but I'm sort of sorry I used that example at all; here's something a bit clearer that avoids the whole self-reference issue:
+
+protocol Flier7 {
+    func fly()
+}
+protocol Flocker7 {
+    associatedtype Other : Flier7
+    func flockTogetherWith(f:Other)
+}
+struct Bird7 : Flocker7, Flier7 {
+    func fly() {}
+    func flockTogetherWith(f:Bird7) {}
+}
+
+// ========
 
 func flockTwoTogether2<T:Flier3>(_ f1:T, _ f2:T) {}
 let vd2 : Void = flockTwoTogether2(Bird3(), Bird3())
@@ -106,7 +135,7 @@ struct Bird4 : Flier4 {
 }
 
 class Dog<T> {
-    var name : T?
+    func speak(_ what:T) {}
 }
 let d = Dog<String>()
 
@@ -123,8 +152,12 @@ struct FlierMaker<T:Flier5> {
 }
 let f = FlierMaker<Bird5>.makeFlier() // returns a Bird5
 
-class NoisyDog : Dog<String> {} // yes! This is new in Swift 2.0
-class NoisyDog2<T> : Dog<T> {} // and this is also legal!
+class NoisyDog : Dog<String> {
+    override func speak(_ what:String) {} // this is new in Swift 4? or maybe just non-crashing is what's new?
+} // yes! This is new in Swift 2.0
+class NoisyDog2<T> : Dog<T> {
+    override func speak(_ what:T) {}
+} // and this is also legal!
 // class NoisyDog3 : Dog<T> {} // but this is not; the superclass generic must be resolved somehow
 
 struct Wrapper<T> {
@@ -164,6 +197,7 @@ func flockTwoTogether6<T1:Flier6, T2:Flier6>(f1:T1, _ f2:T2) {
 // just testing: this one actually segfaults
 // but not any more! In Swift 2.2 (Xcode 7.3b) this is fine; not sure when that happened
 // but in Swift 3 is segfaults again, taking it back out
+// in Swift 4 it errors coherently as being "recursive"
 // class Dog2<T:Dog2> {}
 
 

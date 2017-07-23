@@ -7,7 +7,8 @@ extension Array {
         for i in (0..<self.count).reversed() {
             let ix1 = i
             let ix2 = Int(arc4random_uniform(UInt32(i+1)))
-            (self[ix1], self[ix2]) = (self[ix2], self[ix1])
+            // (self[ix1], self[ix2]) = (self[ix2], self[ix1])
+            self.swapAt(ix1, ix2) // new way in Swift 4
         }
     }
 }
@@ -60,6 +61,8 @@ extension NSCoder {
     }
 }
 
+// okay, but the problem solved by the above can now be solved another way,
+// because we have key value types? need to check that
 
 class Dog<T> {
     var name : T?
@@ -76,7 +79,7 @@ extension Dog where T : Equatable {
 func myMin<T:Comparable>(_ things:T...) -> T {
     var minimum = things[0]
     for ix in 1..<things.count {
-        if things[ix] < minimum { // compile error
+        if things[ix] < minimum { // compile error without Comparable
             minimum = things[ix]
         }
     }
@@ -108,7 +111,7 @@ extension Array where Element : NSObject {
     
 }
 
-extension Sequence where Iterator.Element == Int {
+extension Sequence where Element == Int {
     func sum() -> Int {
         return self.reduce(0, +)
     }

@@ -33,6 +33,13 @@ extension Array {
     }
 }
 
+struct Dog2 : Equatable {
+    let name : String
+    static func ==(lhs:Dog2,rhs:Dog2) -> Bool {
+        return lhs.name == rhs.name
+    }
+}
+
 
 class ViewController: UIViewController {
 
@@ -53,7 +60,8 @@ class ViewController: UIViewController {
         
         do {
             let dogs = [Dog(), NoisyDog()]
-            let objs = [1, "howdy"] as [Any] // explicit type annotation needed *
+            // let objs2 = [1, "howdy"] // compile error
+            let objs : [Any] = [1, "howdy"] // explicit type annotation needed
             // let arrr = [Insect(), Bird()] // compile error
             let arr : [Flier] = [Insect(), Bird()]
             
@@ -114,7 +122,7 @@ class ViewController: UIViewController {
             let arr2 = arr as? [NoisyDog] // Optional wrapping an array of NoisyDog
             let arr3 = [dog2, dog3]
             let arr4 = arr3 as? [NoisyDog] // nil
-            print(arr2, arr4)
+            print(arr2 as Any, arr4 as Any)
         }
         
         do {
@@ -163,16 +171,29 @@ class ViewController: UIViewController {
         }
         
         do {
+            var arr = [1,2,3]
+            print(arr[1...])
+            print(arr[...1])
+            arr[1...] = [4,5]
+            print(arr)
+        }
+        
+        do {
             var arr = [[1,2,3], [4,5,6], [7,8,9]]
             let i = arr[1][1] // 5
             arr[1][1] = 100
+            print(arr)
             _ = i
+            let arr2 = [[1,2]]
+            // let ok = arr == arr2 // compile error
+            let ok = arr.elementsEqual(arr2, by:==)
+            print(ok)
         }
         
         do {
             let arr = [1,2,3]
-            print(arr.first)
-            print(arr.last)
+            print(arr.first as Any)
+            print(arr.last as Any)
             let slice = arr[arr.count-2...arr.count-1] // [2,3]
             let slice2 = arr.suffix(2) // [2,3]
             let slice3 = arr.suffix(10) // [1,2,3] with no penalty
@@ -184,10 +205,12 @@ class ViewController: UIViewController {
             do {
                 let slice = arr.suffix(from:1)
                 print(slice)
-                let slice2 = arr.prefix(upTo:1)
+                let slice2 = arr[1...]
                 print(slice2)
-                let slice3 = arr.prefix(through:1)
+                let slice3 = arr.prefix(upTo:1)
                 print(slice3)
+                let slice4 = arr.prefix(through:1)
+                print(slice4)
             }
             
             // let arr5 = arr[0..<10]
@@ -227,8 +250,9 @@ class ViewController: UIViewController {
             let which2 = arr.first(where:{$0>2})
             
             let aviary = [Bird(name:"Tweety"), Bird(name:"Flappy"), Bird(name:"Lady")]
+            // let ixxxx = aviary.index(of:Bird(name:"Tweety"))
             let ix2 = aviary.index {$0.name.characters.count < 5} // index(where:)
-            print(ix2)
+            print(ix2 as Any)
             
             do {
                 let ok = arr.starts(with:[1,2])
@@ -250,13 +274,27 @@ class ViewController: UIViewController {
             _ = ix
             _ = (which, which2)
         }
+        
+        do {
+            let arr = [1,2,3]
+            let r = 1...3
+            let ok = arr.elementsEqual(r) // no need to specify ==, Int is Equatable
+            print(ok)
+        }
+        
+        do {
+            let arr1 = [Dog2(name:"Fido"), Dog2(name:"Rover")]
+            let arr2 = [Dog2(name:"Fido"), Dog2(name:"Rover")]
+            let ok = arr1.elementsEqual(arr2) {$0.name == $1.name}
+            print(ok)
+        }
 
         do {
             let arr = [3,1,-2]
             let min = arr.min() // *** -2
-            print(min)
+            print(min as Any)
             let min2 = arr.min {abs($0)<abs($1)}
-            print(min2)
+            print(min2 as Any)
         }
         
         do {
@@ -292,7 +330,7 @@ class ViewController: UIViewController {
                 var arrslice = arr[arr.indices] // is this weird or what
                 let i = arrslice.popFirst()
                 // let ii = arrslice.popFirst(1)
-                print(i)
+                print(i as Any)
                 print(arrslice)
                 print(arr) // untouched, of course
             }
@@ -317,6 +355,7 @@ class ViewController: UIViewController {
             let joined3 = arr.joined(separator: 8...9) // just proving that other sequences are legal
             let arr4 = arr.flatMap {$0} // new in Swift 1.2
             let arr5 = Array(arr.joined()) // renamed in Xcode 8 seed 6 *
+            // let arr6 = Array(arr.flatten())
             _ = joined
             _ = joined2
             _ = joined3
@@ -339,6 +378,12 @@ class ViewController: UIViewController {
             print(arr2)
             _ = arr2
         }
+        
+        do {
+            var arr = [1,2,3]
+            arr.swapAt(0,2) // [3,2,1]
+            print(arr)
+        }
 
         let pepboys = ["Manny", "Moe", "Jack"]
         for pepboy in pepboys {
@@ -353,7 +398,17 @@ class ViewController: UIViewController {
         pepboys.forEach {print($0)} // prints Manny, then Moe, then Jack
         pepboys.enumerated().forEach {print("Pep boy \($0.0) is \($0.1)")}
         // pepboys.map(print) // no longer compiles
-        let arr4 = pepboys.filter{$0.hasPrefix("M")} // [Manny, Moe]
+        let arr4 = pepboys.filter{$0.hasPrefix("M")} // ["Manny", "Moe"]
+        
+        do {
+            let pepboys = ["Manny", "Jack", "Moe"]
+            let arr1 = pepboys.filter{$0.hasPrefix("M")} // ["Manny", "Moe"]
+            let arr2 = pepboys.prefix{$0.hasPrefix("M")} // ["Manny"]
+            let arr3 = pepboys.drop{$0.hasPrefix("M")} // ["Jack", "Moe"]
+            print(arr1)
+            print(arr2)
+            print(arr3)
+        }
 
         let arrr = [1, 4, 9, 13, 112]
         let sum = arrr.reduce(0) {$0 + $1} // 139
@@ -470,7 +525,7 @@ class ViewController: UIViewController {
             let s = (arr as NSArray).componentsJoined(by:", ")
             let arr2 = NSMutableArray(array:arr)
             arr2.remove("Moe")
-            arr = arr2 as NSArray as! [String]
+            arr = arr2 as! [String] // double cast no longer needed!
             print(arr)
             
             _ = s
@@ -565,6 +620,7 @@ class ViewController: UIViewController {
             let cat1 = Cat()
             let cat2 = Cat()
             let ok = cat1 === cat2 // but `==` no longer compiles
+            _ = ok
         }
         
         do {
