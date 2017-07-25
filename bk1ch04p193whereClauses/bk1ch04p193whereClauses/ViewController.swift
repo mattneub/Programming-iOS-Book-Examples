@@ -101,7 +101,7 @@ class ViewController: UIViewController {
         
         // flyAndWalk(Kiwi())
         // flyAndWalk2(Kiwi())
-        flyAndWalk(Bird())
+        _ = flyAndWalk(Bird())
         flyAndWalk2(Bird())
         flyAndWalk3(FlyingDog())
         

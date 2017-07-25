@@ -110,7 +110,7 @@ class ViewController: UIViewController {
         
         do {
             let fatalMaker = MyError2.fatal
-            // let err = fatalMaker(n:-1000, s:"Unbelievably bad error")
+            // let errr = fatalMaker(n:-1000, s:"Unbelievably bad error")
             // Xcode 9 beta 2 change: must omit the labels? But only in the initializer????
             let err = fatalMaker(-1000, "Unbelievably bad error") // labels must be omitted; the inconsistency is surely a bug
             _ = err

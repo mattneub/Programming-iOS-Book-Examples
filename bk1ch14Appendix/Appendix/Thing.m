@@ -35,6 +35,34 @@ void setState (State s) {
     
 }
 
+- (void) take1Bool: (BOOL) yn {
+    NSLog(@"%d", yn);
+}
+
+- (void) take1Number: (NSNumber*) n {
+    NSLog(@"%@", n);
+}
+
+- (void) take1Value: (NSValue*) v {
+    NSLog(@"%@", v);
+}
+
+- (void) take1Array: (NSArray*) arr {
+    NSLog(@"%@", arr);
+    for (id e in arr) {
+        NSLog(@"%@: %@", NSStringFromClass([e class]), e);
+    }
+}
+
+- (void) take1id: (id) anid {
+    NSLog(@"%@: %@", NSStringFromClass([anid class]), anid);
+}
+
+- (void) take1id2: (id) anid {
+    NSLog(@"%@: %@", NSStringFromClass([anid class]), @"cannot NSLog directly");
+}
+
+
 @end
 
 @implementation Thing2

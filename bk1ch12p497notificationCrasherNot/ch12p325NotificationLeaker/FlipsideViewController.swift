@@ -31,7 +31,7 @@ class FlipsideViewController: UIViewController {
 
     }
     
-    func woohooWasCalled() {
+    @objc func woohooWasCalled() {
         print("woohoo")
     }
     

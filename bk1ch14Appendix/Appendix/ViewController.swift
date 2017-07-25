@@ -4,6 +4,7 @@ import UIKit
 import WebKit
 import AudioToolbox
 import ImageIO
+import AVFoundation
 
 
 @objc enum Star : Int {
@@ -35,6 +36,7 @@ public class MyClass {
     }
     @objc func timerFired(_ t:Timer) { // will crash without @objc; #selector prevents with compiler error
         print("timer fired")
+        print("invalidating timer")
         self.timer?.invalidate()
     }
 }
@@ -52,16 +54,45 @@ struct Pair {
     let y : Int
 }
 
-class Womble : NSObject {
+class Womble : NSObject { // Objective-C sees this automatically
     override init() {
         super.init()
     }
 }
 
+@objc protocol Proto {
+    var protovar : String {get}
+}
 
-class ViewController: UIViewController {
+// @objc class Warble {} // illegal
+
+class Warble : Proto {
+    @objc var protovar: String = "howdy" // legal, but no automatic exposure because Warble is not exposed
+}
+
+struct Person {
+    let firstName : String
+    let lastName: String
+}
+
+class ViewController: UIViewController, Proto { // Objective-C can see this because it comes from NSObject
     
-    var myOptionalInt : Int? // Objective-C cannot see this
+    var myOptionalInt : Int? // Objective-C cannot be made to see this
+    
+    var myClass = MyClass() // Objective-C cannot be made to see this
+    
+    @objc var myThing = Thing() // Objective-C can see this only if marked with @objc
+    
+    @objc var myWomble = Womble() // Objective-C can see this only if marked with @objc
+    
+    var protovar = "howdy" // Objective-C can see this because it fulfills an @objc protocol
+    
+    init() { // Objective-C can see this because it's an override of an Objective-C method
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder:NSCoder) { // Objective-C can see this because it implements an Objective-C protocol
+        super.init(coder:coder)
+    }
     
     typealias MyStringExpecter = (String) -> ()
     class StringExpecterHolder : NSObject {
@@ -79,13 +110,79 @@ class ViewController: UIViewController {
     func testVisibility1(what:Int) {}
     func testVisibility2(what:MyClass) {}
     
-    override func viewDidLoad() {
+    let lm = NSLayoutManager()
+    
+    override func viewDidLoad() { // Objective-C can see this because it's an override of an Objective-C method
         super.viewDidLoad()
+        
+        do {
+            let t = Thing()
+            t.take1Bool(true) // no need for ObjCBool here; we just supply a Swift Bool
+            // but you can still need an ObjCBool, as here
+            var isDir : ObjCBool = false
+            let ok = FileManager.default.fileExists(atPath: "yoho", isDirectory: &isDir)
+            
+            let ns = "howdy" as NSString
+            let s = ns as String
+        }
+        
+        do {
+            let t = Thing()
+            t.take1Number(1) // legal
+            let i = UInt8(1)
+            // t.take1Number(i) // nope, still can't do that
+            t.take1Number(i as NSNumber) // but you can do that!
+            
+            let n = i as NSNumber
+            let ii = n as! UInt8
+        }
         
         do {
             // proving that Swift structs don't get the zeroing initializer
             // let p = Pair()
             let pp = CGPoint()
+            let v = pp as NSValue // legal
+            let pp2 = v as! CGPoint
+            
+            let t = Thing()
+            // t.take1Value(pp) // nope
+            t.take1Value(pp as NSValue)
+        }
+        
+        do {
+            let t = Thing()
+            let arr = [1,2,3]
+            t.take1Array(arr)
+            t.take1Array(arr as [NSNumber]) // same
+            let arr2 = [UInt8(1)]
+            t.take1Array(arr2)
+            let arr3 = [CGPoint()]
+            t.take1Array(arr3)
+            let arr4 = [Data([1,2,3]) as NSData]
+            t.take1Array(arr4)
+            
+        }
+        
+        do { // passing to an Any (id) to see how we cross the bridge
+            let t = Thing()
+            t.take1id("howdy")
+            t.take1id(1)
+            t.take1id(UInt8(1))
+            t.take1id(CGPoint())
+            t.take1id([1,2,3]) // SwiftDeferredNSArray
+            t.take1id([1,2,3] as [NSNumber]) // ContiguousArrayStorage
+            let arr : [Int?] = [1, nil, 2]
+            t.take1id(arr)
+            t.take1id(["hey":"ho"])
+            t.take1id(["hey":"ho"] as NSDictionary)
+            t.take1id(Date())
+            t.take1id(IndexPath(row: 1, section: 1))
+            
+            t.take1id(Person(firstName: "Matt", lastName: "Neuburg"))
+            // t.take1id(MyClass()) // crash!
+            // the crash is not because a MyClass can't cross the bridge...
+            // but because my Objective-C code is attempting to look in the box by logging
+            t.take1id2(MyClass()) // solves the problem; we can call `class` on this thing at least
         }
         
         do {
@@ -94,7 +191,7 @@ class ViewController: UIViewController {
             let csArray = "hello".utf8CString
             if let cs2 = "hello".cString(using: .utf8) { // [CChar]
                 let ss = String(validatingUTF8: cs2)
-                print(ss)
+                print(ss as Any)
             }
             
             "hello".withCString {
@@ -119,15 +216,45 @@ class ViewController: UIViewController {
             setState(kAlive)
             setState(State(rawValue:2)) // Swift can't stop you
             
+            var anim = UIStatusBarAnimation.fade
+            anim = .slide
+            anim = .none // this is a case where .none still exists separately
+            
             self.view.autoresizingMask = .flexibleWidth
             self.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             
         }
         
         do {
+            let lastCharRange = 0
+            
+            let property = self.lm.propertyForGlyph(at:lastCharRange)
+            let mask1 = property.rawValue
+            let mask2 = NSLayoutManager.GlyphProperty.controlCharacter.rawValue
+            let ok = mask1 & mask2 != 0 // can't say .contains here
+            // let ok2 = property.contains(.controlCharacter)
+        }
+        
+        do {
+            try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+        }
+        
+        do {
             // structs have suppressed the functions
             // CGPoint.make(CGFloat(0), CGFloat(0))
             let ok = CGPoint(x:1, y:2).equalTo(CGPoint(x:1.0, y:2.0))
+            let z = CGPoint.zero
+        }
+        
+        do {
+            let c = UIColor.purple
+            
+            var r : CGFloat = 0
+            var g : CGFloat = 0
+            var b : CGFloat = 0
+            var a : CGFloat = 0
+            c.getRed(&r, green: &g, blue: &b, alpha: &a)
+
         }
         
         do {
@@ -162,7 +289,7 @@ class ViewController: UIViewController {
         
         do {
             let col = UIColor(red: 0.5, green: 0.6, blue: 0.7, alpha: 1.0)
-            if let comp = col.cgColor.__unsafeComponents, // *
+            if let comp = col.cgColor.__unsafeComponents,
                 let sp = col.cgColor.colorSpace,
                 sp.model == .rgb {
                 let red = comp[0]
@@ -202,7 +329,24 @@ class ViewController: UIViewController {
             let arr = [c]
             let arr2 = arr as NSArray
             let name = (arr2[0] as? MyClass2)?.name
-            print(name)
+            print(name as Any)
+        }
+        
+        do {
+            let lay = CALayer()
+            
+            let p = Person(firstName: "Matt", lastName: "Neuburg")
+            lay.setValue(p, forKey: "person")
+            // ... time passes ...
+            if let p2 = lay.value(forKey: "person") as? Person {
+                print(p2.firstName, p.lastName) // Matt Neuburg
+            }
+            
+            let mc = MyClass()
+            lay.setValue(mc, forKey:"myclass")
+            if let mc3 = lay.value(forKey:"myclass") as? MyClass {
+                print("all is well")
+            }
         }
         
         do {
@@ -214,7 +358,7 @@ class ViewController: UIViewController {
             c.name = "cool"
             lay.setValue(c, forKey: "c")
             let name = (lay.value(forKey: "c") as? MyClass2)?.name
-            print(name)
+            print(name as Any)
         }
         
         do {
@@ -247,26 +391,26 @@ class ViewController: UIViewController {
         
         do {
             // hold my beer and watch _this_!
+            // big cleanup here
             
             let arr = ["Mannyz", "Moey", "Jackx"]
-            // @convention(c) (Any, Any, UnsafeMutableRawPointer?) -> Int, context: UnsafeMutableRawPointer?) -> [Any]
-            func sortByLastCharacter(_ s1:Any,
-                _ s2:Any, _ context: UnsafeMutableRawPointer?) -> Int { // *
-                    let c1 = (s1 as! String).characters.last!
-                    let c2 = (s2 as! String).characters.last!
-                    return ((String(c1)).compare(String(c2))).rawValue
+
+            func sortByLastCharacter(_ s1:Any, _ s2:Any) -> ComparisonResult { // *
+                let c1 = String((s1 as! String).last!)
+                let c2 = String((s2 as! String).last!)
+                return c1.compare(c2)
             }
-            let arr2 = (arr as NSArray).sortedArray(sortByLastCharacter, context: nil)
+            let arr2 = (arr as NSArray).sortedArray(comparator:sortByLastCharacter)
             print(arr2)
-            let arr3 = (arr as NSArray).sortedArray({
-                s1, s2, context in
-                let c1 = (s1 as! String).characters.last!
-                let c2 = (s2 as! String).characters.last!
-                return ((String(c1)).compare(String(c2))).rawValue
-            }, context:nil)
+            let arr3 = (arr as NSArray).sortedArray { s1, s2 in
+                let c1 = String((s1 as! String).last!)
+                let c2 = String((s2 as! String).last!)
+                return c1.compare(c2)
+            }
             print(arr3)
         }
 
+        print("testing timer")
         self.testTimer()
         
         do {
@@ -293,7 +437,7 @@ class ViewController: UIViewController {
         do {
             let mas = NSMutableAttributedString()
             let r = NSMakeRange(0,0) // not really, just making sure we compile
-            mas.enumerateAttribute("HERE", in: r) {
+            mas.enumerateAttribute(.font, in: r) { // *
                 value, r, stop in
                 if let value = value as? Int, value == 1  {
                     // ...
@@ -321,11 +465,13 @@ class ViewController: UIViewController {
     
     }
     
-    func makeHash(ingredients stuff:[String]) {
+    // lots of new objc explicit here
+    
+    @objc func makeHash(ingredients stuff:[String]) {
         
     }
     
-    func makeHash(of stuff:[Int]) {
+    @objc func makeHash(of stuff:[Int]) {
         
     }
     
@@ -340,7 +486,7 @@ class ViewController: UIViewController {
             return true
     }
     
-    func undo () {}
+    @objc func undo () {}
     
     func testVariadic(_ stuff: Int ...) {}
     
@@ -352,19 +498,19 @@ class ViewController: UIViewController {
         self.myclass.startTimer()
     }
 
-    func sayHello() -> String // "sayHello"
+    @objc func sayHello() -> String // "sayHello"
     { return "ha"}
     
-    func say(_ s:String) // "say:"
+    @objc func say(_ s:String) // "say:"
     {}
     
-    func say(string s:String) // "sayWithString:"
+    @objc func say(string s:String) // "sayWithString:"
     {}
     
-    func say(_ s:String, times n:Int) // "say:times:"
+    @objc func say(_ s:String, times n:Int) // "say:times:"
     {}
 
-    func say(of s:String, loudly:Bool)
+    @objc func say(of s:String, loudly:Bool)
     {}
     
     func reportSelectors() {
@@ -377,4 +523,28 @@ class ViewController: UIViewController {
 
 
 }
+
+extension ViewController : AVCapturePhotoCaptureDelegate {
+    
+    // this is just so I can show a raw buffer
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto sampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+        if let prev = previewPhotoSampleBuffer {
+            if let buff = CMSampleBufferGetImageBuffer(prev) {
+                
+                // buff is a CVImageBuffer
+                if let baseAddress = CVPixelBufferGetBaseAddress(buff) {
+                    // baseAddress is an UnsafeMutableRawPointer
+                    let addrptr = baseAddress.assumingMemoryBound(to: UInt8.self)
+                    // addrptr is an UnsafeMutablePointer<UInt8>
+                    let addr = addrptr.pointee // now we have a UInt8
+                    _ = addr
+                }
+
+                
+            }
+        }
+    }
+}
+
 

@@ -19,7 +19,7 @@ class FlipsideViewController: UIViewController {
         self.timer.tolerance = 0.1
     }
     
-    func fired(_ t:Timer) {
+    @objc func fired(_ t:Timer) {
         print("timer fired")
     }
     

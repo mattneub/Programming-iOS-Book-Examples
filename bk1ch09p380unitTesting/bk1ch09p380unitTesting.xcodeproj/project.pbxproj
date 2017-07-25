@@ -193,12 +193,13 @@
 				TargetAttributes = {
 					32080BEF1AFE632800DB7A17 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 					814A1AA11D109B13008F3FF6 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = W3LHX5RGV2;
 						DevelopmentTeamName = "Matt Neuburg";
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 32080BEF1AFE632800DB7A17;
 					};
@@ -206,6 +207,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = W3LHX5RGV2;
 						DevelopmentTeamName = "Matt Neuburg";
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 32080BEF1AFE632800DB7A17;
 					};
@@ -408,7 +410,7 @@
 				INFOPLIST_FILE = bk1ch09p380unitTesting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -420,7 +422,7 @@
 				INFOPLIST_FILE = bk1ch09p380unitTesting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -436,7 +438,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.EmptyWindowUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = EmptyWindow;
 			};
 			name = Debug;
@@ -451,7 +453,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.EmptyWindowUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = EmptyWindow;
 			};
 			name = Release;
@@ -469,7 +471,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.EmptyWindowTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmptyWindow.app/EmptyWindow";
 			};
 			name = Debug;
@@ -485,7 +487,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.EmptyWindowTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmptyWindow.app/EmptyWindow";
 			};
 			name = Release;
@@ -518,6 +520,7 @@
 				814A1AAA1D109B13008F3FF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		814A1AB71D109C1F008F3FF6 /* Build configuration list for PBXNativeTarget "EmptyWindowTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +529,7 @@
 				814A1AB91D109C1F008F3FF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

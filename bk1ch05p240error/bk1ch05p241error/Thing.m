@@ -23,7 +23,7 @@
 - (void) testThrower {
     ThrowerClass* t = [ThrowerClass new];
     NSError* err = nil;
-    [t throwerFuncAndReturnError:&err];
+    id dummy __attribute__((unused)) = [t throwerFuncAndReturnError:&err];
     NSLog(@"%@", err);
     // Error Domain=MyDomain Code=-666 "(null)"
     // this proves that Objective-C receives this info from Swift in good order!

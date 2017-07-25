@@ -21,11 +21,12 @@ class ViewController: UIViewController {
     @IBAction func doButton (_ sender: Any!) {
         let url = Bundle.main.url(forResource:"colson", withExtension: "jpg")!
         let src = CGImageSourceCreateWithURL(url as CFURL, nil)!
-        let result = CGImageSourceCopyPropertiesAtIndex(src, 0, nil)! as NSDictionary
-        print(result)
+        let result = CGImageSourceCopyPropertiesAtIndex(src, 0, nil)!
+        let d = result as! [AnyHashable:Any] // :) works because CFString is now AnyHashable
+        print(d)
         // just proving it really is a dictionary
-        let width = result[kCGImagePropertyPixelWidth] as! CGFloat
-        let height = result[kCGImagePropertyPixelHeight] as! CGFloat
+        let width = d[kCGImagePropertyPixelWidth] as! CGFloat
+        let height = d[kCGImagePropertyPixelHeight] as! CGFloat
         print("\(width) by \(height)")
         
         // another way; no one in his right mind would do this, though
@@ -46,13 +47,13 @@ class ViewController: UIViewController {
         let src = CGImageSourceCreateWithURL(url as CFURL, nil)!
         let scale = UIScreen.main.scale
         let w = self.iv.bounds.width * scale
-        let d : NSDictionary = [
+        let d : [AnyHashable:Any] = [
             kCGImageSourceShouldAllowFloat : true ,
             kCGImageSourceCreateThumbnailWithTransform : true ,
             kCGImageSourceCreateThumbnailFromImageAlways : true ,
             kCGImageSourceThumbnailMaxPixelSize : w
         ]
-        let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d)!
+        let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d as CFDictionary)!
         let im = UIImage(cgImage: imref, scale: scale, orientation: .up)
         self.iv.image = im
         print(im)

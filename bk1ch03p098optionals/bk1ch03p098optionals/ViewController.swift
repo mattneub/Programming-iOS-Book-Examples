@@ -31,7 +31,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         }
 
         var stringMaybe = Optional("howdy")
-        print(stringMaybe)
+        print(stringMaybe as Any)
         stringMaybe = Optional("farewell")
         // stringMaybe = Optional(123) // compile error
         stringMaybe = "farewell" // wrapped implicitly as it is assigned

@@ -225,10 +225,11 @@ class ViewController: UIViewController {
         }
         
         // yeccccccch!!!!!! Forced to take raw values because titleTextAttributes keys are String, not NSAttributedStringKey
+        // yay!!!!! fixed in beta 4
         UINavigationBar.appearance().titleTextAttributes = [
-            NSAttributedStringKey.font.rawValue : UIFont(name: "ChalkboardSE-Bold", size: 20)!,
-            NSAttributedStringKey.foregroundColor.rawValue : UIColor.darkText,
-            NSAttributedStringKey.shadow.rawValue : {
+            .font : UIFont(name: "ChalkboardSE-Bold", size: 20)!,
+            .foregroundColor : UIColor.darkText,
+            .shadow : {
                 let shad = NSShadow()
                 shad.shadowOffset = CGSize(width:1.5,height:1.5)
                 return shad
@@ -248,6 +249,9 @@ class ViewController: UIViewController {
         nc.post(name:test, object: self, userInfo: ["progress":3]) // not a double
         nc.post(name:test, object: self, userInfo: ["progress":3 as NSNumber]) // okay! that's kind of weird, eh
         nc.post(name:test, object: self, userInfo: ["progress":3.0]) // okay!
+        
+        // testing what Itai Ferber says about not crossing the bridge
+        nc.post(name:test, object: self, userInfo: ["progress":Dog2.init(name: "Fido")])
 
         // but this next example should prove unnecessary, I'm pretty sure; we can now append directly
         
@@ -276,11 +280,17 @@ class ViewController: UIViewController {
         // however, note that this will not catch e.g. 3, whereas NSNumber doubleValue does, either in post or like this:
         // let prog = n.userInfo?["progress"] as? NSNumber as? Double
         // I've reported this as a bug; at the very least, it's likely to catch someone out
+        // https://bugs.swift.org/browse/SR-5525
+        // however, Itai Ferber says it's not a bug because `["progress":3]` never crossed the bridge in the first place
         if prog != nil {
             self.progress = prog!
             print("at last! \(self.progress)")
         } else {
             print("invalid notification")
+        }
+        let prog2 = n.userInfo?["progress"] as? Dog2 // proving that we are boxed
+        if prog2 != nil {
+            print("I got \(prog2!.name)")
         }
     }
 

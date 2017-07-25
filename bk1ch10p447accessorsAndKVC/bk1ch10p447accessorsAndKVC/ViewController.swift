@@ -3,11 +3,11 @@
 import UIKit
 
 class Dog : NSObject {
-    var name : String = ""
+    @objc var name : String = ""
 }
 
 class DogOwner : NSObject {
-    var dogs = [Dog]()
+    @objc var dogs = [Dog]()
 }
 
 class MyClass : NSObject {
@@ -38,7 +38,7 @@ class MyClass : NSObject {
 
 class ViewController: UIViewController {
     
-    var color : UIColor {
+    @objc var color : UIColor { // must expose explicitly
         get {
             print("someone called the color getter")
             return .red
@@ -109,7 +109,7 @@ class ViewController: UIViewController {
         print(d.name) // "Fido" - it worked!
 
         let c = self.value(forKey:"hue") as? UIColor // "someone called the getter"
-        print(c) // Optional(UIDeviceRGBColorSpace 1 0 0 1)
+        print(c as Any) // Optional(UIDeviceRGBColorSpace 1 0 0 1)
         
         let myObject = MyClass()
         let arr = myObject.value(forKeyPath:"theData.name") as! [String]

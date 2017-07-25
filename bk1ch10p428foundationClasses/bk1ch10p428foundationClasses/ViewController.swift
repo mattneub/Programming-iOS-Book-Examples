@@ -39,8 +39,8 @@ class ViewController: UIViewController {
             print(r)
             debugPrint(r) // that didn't help
             print(NSStringFromRange(r))
-            let r2 = r.toRange()
-            print(r2)
+            let r2 = Range(r) // *
+            print(r2 as Any)
             // let r3 = Range(r)
             // print(r3)
         }
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
             let s2 = (s as NSString).appendingPathExtension("txt")
             // let s3 = s.stringByAppendingPathExtension("txt") // compile error
 
-            print(s2)
+            print(s2 as Any)
         }
         
         do {
@@ -122,7 +122,7 @@ class ViewController: UIViewController {
             let comp = DateComponents(month:1)
             let greg = Calendar(identifier:.gregorian)
             let d2 = greg.date(byAdding: comp, to:d) // Optional wrapping Date
-            print("one month from now:", d2)
+            print("one month from now:", d2 as Any)
         }
         
         do {
@@ -228,7 +228,7 @@ class ViewController: UIViewController {
             let ok4 = n1.compare(n2) == .orderedAscending // true
             print(ok)
             print(ok2)
-            print(ix)
+            print(ix as Any)
             print(ok4)
         }
         

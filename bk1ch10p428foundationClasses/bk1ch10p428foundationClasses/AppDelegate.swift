@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func doProg(_ n:Notification) {
+    @objc func doProg(_ n:Notification) {
         if let prog = n.userInfo?["progress"] as? Double {
             self.progress = prog
         }

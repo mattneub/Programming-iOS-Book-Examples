@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func cardTapped(_ n:Notification) {
-        print("card tapped: \(n.object)")
+    @objc func cardTapped(_ n:Notification) {
+        print("card tapped: \(n.object ?? "nil")")
     }
     
 

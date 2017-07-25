@@ -5,8 +5,8 @@ import UIKit
 // both objects must derive from NSObject
 
 class MyClass1 : NSObject {
-    // absolutely crucial to say "dynamic" or this won't work
-    dynamic var value : Bool = false
+    // absolutely crucial to say "dynamic" or this won't work (and now objc too)
+    @objc dynamic var value : Bool = false
 }
 
 class MyClass2: NSObject {
@@ -14,9 +14,9 @@ class MyClass2: NSObject {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
             print("I heard about the change!")
             if let keyPath = keyPath {
-                print((object as AnyObject?)?.value?(forKeyPath:keyPath))
+                print((object as AnyObject?)?.value?(forKeyPath:keyPath) as Any)
             }
-            print(change)
+            print(change as Any)
             print(context == &con) // aha
             let c = context?.bindMemory(to: String.self, capacity: 1)
             if let s = c?.pointee {

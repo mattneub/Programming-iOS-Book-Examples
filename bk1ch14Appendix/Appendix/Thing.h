@@ -22,6 +22,13 @@ NS_ASSUME_NONNULL_BEGIN
 // generated interface is: public func combine(with otherThing: Thing)
 // thus showing that we get renamification on our own methods
 
+- (void) take1Bool: (BOOL) yn;
+- (void) take1Number: (NSNumber*) n;
+- (void) take1Value: (NSValue*) v;
+- (void) take1Array: (NSArray*) arr;
+- (void) take1id: (id) anid;
+- (void) take1id2: (id) anid;
+
 NS_ASSUME_NONNULL_END
 
 

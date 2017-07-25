@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         
         self.singleTap(self)
         
-        let mp = MPMusicPlayerController.systemMusicPlayer()
+        let mp = MPMusicPlayerController.systemMusicPlayer
         mp.beginGeneratingPlaybackNotifications()
         
         switch which {
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         
     }
     
-    func nowPlayingItemChanged (_ n:Notification) {
+    @objc func nowPlayingItemChanged (_ n:Notification) {
         print("changed")
     }
     
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         default:break
         }
         
-        let mp = MPMusicPlayerController.systemMusicPlayer()
+        let mp = MPMusicPlayerController.systemMusicPlayer
         mp.endGeneratingPlaybackNotifications()
     }
     
