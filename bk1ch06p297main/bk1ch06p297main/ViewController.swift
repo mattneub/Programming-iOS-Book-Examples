@@ -4,12 +4,14 @@ import UIKit
 import Coolness
 import AVFoundation
 
-class MyViewController: UIViewController {
+class ViewController: UIViewController {
     
     var player : AVAudioPlayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = .red
         
         let d = Dog()
         d.bark()
