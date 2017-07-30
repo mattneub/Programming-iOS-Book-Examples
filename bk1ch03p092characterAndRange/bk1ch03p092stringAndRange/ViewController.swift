@@ -332,10 +332,13 @@ class ViewController: UIViewController {
 
         
         do {
-            let r = NSRange(2..<4)
-            print(r)
-            let r2 = Range(r) // NB this change! toRange is deprecated
-            print(r2 as Any)
+            let r = 2..<4
+            let nsr = NSRange(r)
+            print(nsr) // {2,2}
+            
+            let nsr2 = NSRange(location: 2, length: 2)
+            let r2 = Range.init(nsr2) // NB this change! toRange is deprecated
+            print(r2 as Any) // Optional(Range(2..<4))
         }
  
         

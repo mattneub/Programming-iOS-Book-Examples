@@ -20,7 +20,7 @@ class ViewController: UIViewController {
             print(range as Any)
         }
         
-        do {
+        do { // cast is not needed in Swift 4
             let s = "hello"
             let range = (s as NSString).range(of:"ell") // (1,3), an NSRange
             print(range) // why have they lost the ability to show me an NSRange?
@@ -28,13 +28,26 @@ class ViewController: UIViewController {
             // print(NSStringFromRange(range))
         }
         
-        do {
+        do { // cast is not needed in Swift 4
             let s = "hello"
             // let sss = s.substring(with:NSMakeRange(1,3)) // compile error
             // let ssss = s.substring(with:1...3)
             // let sssss = s.substring(with: NSRange(location: 1,length: 3))
             let ss = (s as NSString).substring(with: NSRange(location: 1,length: 3))
             print(ss)
+        }
+        
+        do { // if an NSRange comes from an NSString, use Range.init(_:in:) to get the Range
+            let range = NSRange(location: 1, length: 3)
+            let r = Range(range, in:"hello")
+            print(r as Any)
+        }
+        
+        // New in Swift 4, get the NSRange without casting to NSString!
+        do {
+            let s = "hello"
+            let range = NSRange(s.range(of:"ell")!, in: s)
+            print(range) // {1,3}, an NSRange
         }
         
         // New in Swift 4, slice right into the string to get a substring
