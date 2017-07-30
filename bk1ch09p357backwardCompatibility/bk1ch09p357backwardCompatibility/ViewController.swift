@@ -2,6 +2,7 @@
 
 import UIKit
 import Photos
+import ARKit
 
 func print(_ item: @autoclosure () -> Any,
            separator: String = " ", terminator: String = "\n") {
@@ -14,11 +15,34 @@ func print(_ item: @autoclosure () -> Any,
 class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-                
-        print("howdy")
         
-        NSLog("%@", NSStringFromCGRect(self.view.frame))
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        
+        super.viewDidAppear(animated)
+        
+        print(self.view)
+        NSLog("the view: %@", self.view)
+        
+        print("howdy")
+        // space below is intentional
+        
+        
+        
+        
+        
+        
+        let r = self.view.frame
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        print(r)
+        NSLog("%@", NSStringFromCGRect(r))
 
         
         // new availability checking in Xcode 7
@@ -41,8 +65,12 @@ class ViewController: UIViewController {
         } else {
         }
         
-        let v = UIDevice.current.systemVersion
-        print(v)
+        if #available(iOS 11.0, *) {
+            let dei = NSDirectionalEdgeInsets()
+            _ = dei
+        } else {
+            // Fallback on earlier versions
+        }
         
 //        if self.respondsToSelector("traitCollection") {
 //            let tc = self.traitCollection
