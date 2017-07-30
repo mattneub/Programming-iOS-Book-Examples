@@ -49,6 +49,12 @@ class MyOtherClass : NSObject, WKNavigationDelegate {
     }
 }
 
+@objcMembers class MyThirdClass {
+    @nonobjc func testing() {
+        
+    }
+}
+
 struct Pair {
     let x : Int
     let y : Int
