@@ -191,6 +191,31 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
             t.take1id2(MyClass()) // solves the problem; we can call `class` on this thing at least
         }
         
+        // another way of looking at the question
+        do {
+            func test(_ x:Any) {
+                let lay = CALayer()
+                lay.setValue(x, forKey:"test")
+                let xx = lay.value(forKey:"test")!
+                print(type(of:xx))
+            }
+            // these all cross the bridge except as marked
+            test("howdy")
+            test(1)
+            test(UInt8(1))
+            test(CGPoint())
+            test([1,2,3]) // doesn't cross bridge for Ints
+            test([1,2,3] as [NSNumber])
+            test(["hey":1]) // doesn't cross bridge for 1
+            test(["hey":1] as NSDictionary)
+            test(Date())
+            test(IndexPath(row: 1, section: 1))
+            test(Person(firstName: "Matt", lastName: "Neuburg")) // hidden in a SwiftValue
+            test(MyClass()) // solves the problem; we can call `class` on this thing at least
+
+            
+        }
+        
         do {
         
             let cs = ("hello" as NSString).utf8String

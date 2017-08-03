@@ -92,6 +92,10 @@ class ViewController: UIViewController {
             let arr : [String?] = ["manny", nil, "jack"]
             let arr2 = arr as AnyObject
             print(arr2) // yep, looks like it
+            let marr = NSMutableArray(array:arr as NSArray)
+            marr.add("moe")
+            let arr3 = marr as! [String?]
+            print(arr3)
         }
         
         do {

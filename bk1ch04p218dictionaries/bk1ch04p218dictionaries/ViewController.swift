@@ -244,10 +244,15 @@ class ViewController: UIViewController {
         // In other words, any valid reference to the method will do
         let test = Notification.Name("test")
         nc.addObserver(self, selector:#selector(notificationArrived), name: test, object: nil)
+        print("posting junk")
         nc.post(name:test, object: self, userInfo: ["junk":3.0]) // not progress
+        print("posting string")
         nc.post(name:test, object: self, userInfo: ["progress":"nonsense"]) // not a number
+        print("posting 3")
         nc.post(name:test, object: self, userInfo: ["progress":3]) // not a double
+        print("posting 3 as NSNumber")
         nc.post(name:test, object: self, userInfo: ["progress":3 as NSNumber]) // okay! that's kind of weird, eh
+        print("posting 3.0")
         nc.post(name:test, object: self, userInfo: ["progress":3.0]) // okay!
         
         // testing what Itai Ferber says about not crossing the bridge
@@ -276,6 +281,10 @@ class ViewController: UIViewController {
     }
     
     @objc func notificationArrived(_ n:Notification) {
+        // track bridge crossing
+        if let prog = n.userInfo?["progress"] {
+            print(type(of:prog))
+        }
         let prog = n.userInfo?["progress"] as? Double // no double cast needed so let's just cast all the way
         // however, note that this will not catch e.g. 3, whereas NSNumber doubleValue does, either in post or like this:
         // let prog = n.userInfo?["progress"] as? NSNumber as? Double
