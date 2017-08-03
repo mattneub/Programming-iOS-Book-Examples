@@ -23,24 +23,49 @@ class FlipsideViewController: UIViewController {
         switch which {
         case 0:
             self.observer = NotificationCenter.default.addObserver(
-                forName: .woohoo, object:nil, queue:nil) {
-                    _ in
-                    _ = self.description // leak me, leak me
+            forName: .woohoo, object:nil, queue:nil) {
+                _ in
+                print("The observer still exists!")
+                _ = self.description // leak me, leak me
             }
+            // do we still leak if we _don't_ retain the observer? yes
+            // (and so does the observer of course)
+            self.observer = nil
         case 1:
             self.observer = NotificationCenter.default.addObserver(
-                forName: .woohoo, object:nil, queue:nil) {
-                    [unowned self] _ in // ha ha, fixed it
-                    _ = self.description
+            forName: .woohoo, object:nil, queue:nil) {
+                [unowned self] _ in // ha ha, fixed it
+                print("The observer still exists!")
+                _ = self.description
             }
+            // do we still leak if we _don't_ retain the observer? no,
+            // but the observer has leaked!
+            // and now we are in a very dangerous situation...
+            // because the observer has a danging pointer to self;
+            // we will crash if the notification is posted
+            // self.observer = nil
+        case 2:
+            self.observer = NotificationCenter.default.addObserver(
+            forName: .woohoo, object:nil, queue:nil) {
+                [weak self] _ in
+                print("The observer still exists!")
+                // try weak instead
+                _ = self?.description
+            }
+            // now do we still leak if don't retain the observer?
+            // no, but the observer has leaked
+            // however, at least this is safe because the observer will not do anything
+            self.observer = nil
         default:break
         }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        print("unregister")
-        NotificationCenter.default.removeObserver(self.observer)
+        if let ob = self.observer {
+            print("unregister")
+            NotificationCenter.default.removeObserver(ob)
+        }
     }
     
     @IBAction func done (_ sender: Any!) {

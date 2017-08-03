@@ -1,20 +1,22 @@
 
 
 import UIKit
-import AVFoundation
+import CoreLocation
 
-class MyDelegate : NSObject, AVSpeechSynthesizerDelegate {
+// to test, first reset simulator's content and settings
+
+class MyDelegate : NSObject, CLLocationManagerDelegate {
     
 }
 
 class ViewController: UIViewController {
     
-    var synth : AVSpeechSynthesizer!
+    var locman : CLLocationManager!
     var del : MyDelegate! = MyDelegate()
 
     @IBAction func doButton1(_ sender: Any) {
-        self.synth = AVSpeechSynthesizer()
-        self.synth.delegate = self.del
+        self.locman = CLLocationManager()
+        self.locman.delegate = self.del
     }
     
     let crash = true
@@ -23,9 +25,8 @@ class ViewController: UIViewController {
         if crash {
             self.del = nil
         }
-        if let s = self.synth {
-            let utt = AVSpeechUtterance(string:"Hello, world!")
-            s.speak(utt)
+        if let loc = self.locman {
+            loc.requestAlwaysAuthorization()
         }
     }
 

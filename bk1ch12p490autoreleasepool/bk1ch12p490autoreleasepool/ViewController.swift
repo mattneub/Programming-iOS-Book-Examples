@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // ignore warnings
+    // warnings suppressed
     
     func test() {
         let path = Bundle.main.path(forResource: "001", ofType: "png")!
