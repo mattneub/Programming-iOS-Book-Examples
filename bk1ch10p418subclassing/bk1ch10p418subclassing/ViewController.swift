@@ -13,6 +13,37 @@ class MyClass2 : NSObject {
     func woohoo()
 }
 
+protocol ButtonLike {
+    func behaveInButtonLikeWay()
+}
+extension ButtonLike {
+    func behaveInButtonLikeWay() {
+        // ...
+    }
+}
+extension UIButton : ButtonLike {}
+extension UIBarButtonItem : ButtonLike {}
+
+
+class NewGameController : UIViewController {
+    weak var tableView : UITableView?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView?.dataSource = self
+        // ...
+    }
+}
+extension NewGameController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // ...
+        let cell = UITableViewCell() // just so the example will compile
+        return cell
+    }
+}
+
 
 class ViewController: UIViewController {
 

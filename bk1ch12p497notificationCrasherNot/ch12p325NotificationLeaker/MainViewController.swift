@@ -14,4 +14,8 @@ class MainViewController: UIViewController, FlipsideViewControllerDelegate {
         }
     }
     
+    @IBAction func doButton(_ sender : Any) {
+        NotificationCenter.default.post(name: .woohoo, object: nil)
+    }
+    
 }

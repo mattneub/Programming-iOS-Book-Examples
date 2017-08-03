@@ -22,13 +22,19 @@ class FlipsideViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // type 1
         NotificationCenter.default.addObserver(self, selector: #selector(woohooWasCalled), name: .woohoo, object: nil)
+        // type 2
+        NotificationCenter.default.addObserver(forName: .woohoo, object: nil, queue: nil) { _ in
+            print("woohoo2")
+            // print(self) // comment out to leak as well
+        }
         print("testing the notification while we exist")
         print("wait one second please")
         delay(1) {
             NotificationCenter.default.post(name: .woohoo, object: nil)
         }
-
+        
     }
     
     @objc func woohooWasCalled() {
@@ -37,6 +43,9 @@ class FlipsideViewController: UIViewController {
     
     // proving that we do not crash when the NC posts to an object
     // ...that was never unregistered
+    
+    // however, we still do have to worry about the observer object from the second type
+    // it leaks if not unregistered (_we_ don't leak as long as we don't retain self, but _it_ does)
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)

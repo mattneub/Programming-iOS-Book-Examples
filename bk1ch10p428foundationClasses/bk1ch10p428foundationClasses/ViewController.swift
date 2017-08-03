@@ -34,7 +34,8 @@ class ViewController: UIViewController {
         }
         
         do {
-            // let rr = NSRange(1...3)
+            // the following now works!
+            let rr = NSRange(1...3)
             let r = NSRange(Range(1...3))
             print(r)
             debugPrint(r) // that didn't help
@@ -43,6 +44,7 @@ class ViewController: UIViewController {
             print(r2 as Any)
             // let r3 = Range(r)
             // print(r3)
+            print(rr)
         }
 
         do {
@@ -70,9 +72,11 @@ class ViewController: UIViewController {
         do {
             let s = "hello"
             let ix = "hello".startIndex
-            // let s2a = s.substringToIndex(4) // compile error
+            // let s2a = s.substring(to:4) // compile error
             let s2 = s.substring(to:s.index(s.startIndex, offsetBy:4))
             let ss2 = (s as NSString).substring(to:4)
+            let ss3 = s.prefix(4)
+            print(s2, ss3)
             _ = s2
             _ = ss2
             _ = ix
@@ -95,26 +99,34 @@ class ViewController: UIViewController {
         }
         
         do {
-            let s = NSMutableString(string:"hello world, go to hell")
+            var s = "hello world, go to hell"
             let r = try! NSRegularExpression(
                 pattern: "\\bhell\\b",
                 options: .caseInsensitive)
-            r.replaceMatches(
-                in: s, range: NSRange(location:0, length:s.length),
+            s = r.stringByReplacingMatches(
+                in: s,
+                range: NSRange(s.startIndex..<s.endIndex, in:s),
                 withTemplate: "heaven")
             // I loooove being able to omit the options: parameter!
             print(s)
         }
         
         do {
+            let sc = Scanner()
+            _ = sc
+        }
+        
+        do {
             let greg = Calendar(identifier:.gregorian)
-            let comp = DateComponents(calendar: greg, year: 2016, month: 8, day: 10, hour: 15)
+            let comp = DateComponents(calendar: greg, year: 2017, month: 8, day: 10, hour: 15)
             let d = comp.date // Optional wrapping Date
             if let d = d {
                 print(d)
                 print(d.description(with:Locale.current))
+                let d2 = d + 4
+                _ = d2
             }
-
+            
         }
         
         do {
@@ -128,13 +140,20 @@ class ViewController: UIViewController {
         do {
             let greg = Calendar(identifier:.gregorian)
             let d1 = DateComponents(calendar: greg,
-                                    year: 2016, month: 1, day: 1, hour: 0).date!
+                                    year: 2017, month: 1, day: 1, hour: 0).date!
             let d2 = DateComponents(calendar: greg,
-                                    year: 2016, month: 8, day: 10, hour: 15).date!
+                                    year: 2017, month: 8, day: 10, hour: 15).date!
             let di = DateInterval(start: d1, end: d2)
             if di.contains(Date()) { // are we currently between those two dates?
                 print("yep")
             }
+        }
+        
+        do {
+            let df = DateFormatter()
+            df.dateFormat = "M/d/y"
+            let s = df.string(from: Date()) // 7/31/2017
+            print(s)
         }
         
         do {
@@ -148,15 +167,33 @@ class ViewController: UIViewController {
         }
         
         do {
+            let df = DateFormatter()
+            df.dateFormat = "M/d/y"
+            let d = df.date(from: "31/7/2017")
+            print(d as Any)
+        }
+
+        
+        do {
             UserDefaults.standard.set(1, forKey: "Score")
-            // wow - unable to call setObject:forKey: while supplying a number!
-            // ud.set(object: 0, forKey: "Score")
-            let n = 1 as NSNumber
-            // similarly, unable to call NSNumber initWithFloat:
-            // instead we just supply a float and let it disambiguate
-            let i : UInt8 = 1
-            // let n2 = i as NSNumber // not bridged
-            let n2 = NSNumber(value:i)
+            let n = UserDefaults.standard.value(forKey:"Score")
+            // prove that we crossed the bridge
+            print(type(of:n!)) // __NSCFNumber
+            let i = n as! Int
+            let ii = n as! Double
+            let _ = (i,ii)
+            
+            do {
+                // wow - unable to call setObject:forKey: while supplying a number!
+                // ud.set(object: 0, forKey: "Score")
+                let n = 1 as NSNumber
+                // similarly, unable to call NSNumber initWithFloat:
+                // instead we just supply a float and let it disambiguate
+                let i : UInt8 = 1
+                // let n2 = i as NSNumber // not bridged
+                let n2 = NSNumber(value:i)
+                _ = (n2,n)
+            }
             
             do {
                 // I regard these as bugs
@@ -168,7 +205,6 @@ class ViewController: UIViewController {
             let dec2 = NSDecimalNumber(value: 5.0)
             let sum = dec1.adding(dec2) // 9.0
             _ = n
-            _ = n2
             _ = sum
         }
         
@@ -183,14 +219,27 @@ class ViewController: UIViewController {
         
         
         do {
+            /*
             let goal = CGPoint.zero // dummy
             let ba = CABasicAnimation(keyPath:"position")
             ba.duration = 10
             ba.fromValue = NSValue(cgPoint:self.oldButtonCenter)
             ba.toValue = NSValue(cgPoint:goal)
             self.button.layer.add(ba, forKey:nil)
+ */
+            // but that is no longer needed! now we can say:
+            let goal = CGPoint.zero // dummy
+            let ba = CABasicAnimation(keyPath:"position")
+            ba.duration = 10
+            ba.fromValue = self.oldButtonCenter
+            ba.toValue = goal
+            self.button.layer.add(ba, forKey:nil)
+            // we have been wrapped in NSValue as we crossed the bridge:
+            print(type(of:ba.fromValue!), type(of:ba.toValue!))
+
         }
         
+        // this is no longer needed either
         do {
             let anim = CAKeyframeAnimation(keyPath:"position") // dummy
             let (oldP,p1,p2,newP) = (CGPoint.zero,CGPoint.zero,CGPoint.zero,CGPoint.zero) // dummy
@@ -254,7 +303,7 @@ class ViewController: UIViewController {
             marr.add(1) // an NSNumber
             marr.add(1) // an NSNumber
             print(type(of:marr[0]))
-            let arr = marr as NSArray as! [Int]
+            // this now works and no longer warns
             let arr2 = marr as! [Int] // warns, but it _looks_ like it succeeds...
             print(arr2)
             print(type(of:arr2[0]))
@@ -264,19 +313,35 @@ class ViewController: UIViewController {
             // filed a bug: "ambiguous" without the []
             
             let ems = pep.objects(
-                at: pep.indexesOfObjects(options:[]) {
-                    (obj, idx, stop) -> Bool in
+                at: pep.indexesOfObjects { (obj, idx, stop) -> Bool in
                     return (obj as! NSString).range(
                         of: "m", options:.caseInsensitive
                         ).location == 0
                 }
             ) // ["Manny", "Moe"]
-            _ = arr
             print(ems)
             
             let arr3 = marr.copy()
             _ = arr3
         }
+        
+        do {
+            let ms = NSMutableSet(set:[1,2,3])
+            // ... do stuff to ms ...
+            let s = ms as! Set<Int>
+            print(s)
+            
+            let cs = NSCountedSet(set:[1,2,3])
+            cs.add(1)
+            print(cs)
+            print(cs.count(for: 1))
+            let s2 = cs as! Set<Int>
+            print(s2)
+            let arr = cs.allObjects as! Array<Int>
+            print(arr)
+            // does not magically add "1" twice just because its count is 2
+        }
+        
         
         
     }

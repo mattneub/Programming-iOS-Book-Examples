@@ -35,8 +35,7 @@ class ViewController: UIViewController {
             let ob = NotificationCenter.default
                 .addObserver(forName:
                     .MPMusicPlayerControllerNowPlayingItemDidChange,
-                    object: nil, queue: nil) {
-                        _ in
+                    object: nil, queue: nil) { _ in
                         print("changed")
             }
             self.observers.insert(ob as! NSObject)

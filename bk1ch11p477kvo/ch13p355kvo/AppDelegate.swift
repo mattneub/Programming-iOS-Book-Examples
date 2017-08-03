@@ -2,27 +2,59 @@
 
 import UIKit
 
-// both objects must derive from NSObject
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
 
+
+// observed object must derive from NSObject
 class MyClass1 : NSObject {
     // absolutely crucial to say "dynamic" or this won't work (and now objc too)
     @objc dynamic var value : Bool = false
+    deinit {
+        print("farewell from MyClass1")
+    }
 }
 
-class MyClass2: NSObject {
-        
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-            print("I heard about the change!")
-            if let keyPath = keyPath {
-                print((object as AnyObject?)?.value?(forKeyPath:keyPath) as Any)
+// the observer no longer has to derive from NSObject, or even be a class instance!
+// that's because it isn't the observer; the real observer is the NSKeyValueObservation object
+class MyClass2 {
+    
+// failed experiment
+    
+//    func registerWith(_ mc : MyClass1, keyPath : PartialKeyPath<MyClass1>) {
+//        let opts : NSKeyValueObservingOptions = [.new, .old]
+//        mc.observe(keyPath, options: opts) { a, b in }
+//    }
+    
+    var tokens = Set<NSKeyValueObservation>()
+    
+    func registerWith(_ mc:MyClass1) {
+        let opts : NSKeyValueObservingOptions = [.old, .new]
+        let token = mc.observe(\.value, options: opts) { obj, change in
+            // obj is the observed object
+            // change is an NSKeyValueObservedChange
+            if let oldValue = change.oldValue {
+                print("old value was \(oldValue)")
             }
-            print(change as Any)
-            print(context == &con) // aha
-            let c = context?.bindMemory(to: String.self, capacity: 1)
-            if let s = c?.pointee {
-                print(s)
+            if let newValue = change.newValue {
+                print("new value is \(newValue)")
             }
+            // but is there a danger of a retain cycle???? to find out, let's refer to self
+            print(self)
+            // yes, we can leak if we don't say unowned self
         }
+        // the token must live long enough for the function to be executed
+        tokens.insert(token)
+    }
+
+    
+    
+    deinit {
+        print("farewell from MyClass2")
+    }
+
     
 }
 
@@ -30,8 +62,8 @@ private var con = "ObserveValue"
 
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
-    var objectA : NSObject!
-    var objectB : NSObject!
+    var objectA : MyClass1!
+    var objectB : MyClass2!
     var window : UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
@@ -42,15 +74,60 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         self.window!.makeKeyAndVisible()
         
         
+        
         objectA = MyClass1()
         objectB = MyClass2()
-        let opts : NSKeyValueObservingOptions = [.new, .old]
-        // NB can use new syntax here, because it's a property
-        objectA.addObserver(objectB, forKeyPath: #keyPath(MyClass1.value), options: opts, context: &con)
-        (objectA as! MyClass1).value = true
-        // comment out next line if you wish to crash
-        objectA.removeObserver(objectB, forKeyPath: #keyPath(MyClass1.value))
-        objectA = nil
+        // step one: registration
+        let kp = \MyClass1.value
+        // objectB.registerWith(objectA, keyPath:kp)
+        objectB.registerWith(objectA)
+        
+        // step two: make a change in a KVO compatible way
+        objectA.value = true
+        
+        // look ma, no memory management! no unregistration!
+        // I can safely destroy one or both objects, in either order
+        // no crash, even if the observer doesn't exist when the value changes
+        
+        var which : Int { return 1 }
+        switch which {
+        case 0:
+            // A then B
+            objectA = nil
+            objectB = nil
+            // but that _will_ crash in iOS 10 or before!
+        case 1:
+            // B then A, with observed change
+            objectB = nil
+            // ha ha! when objectB goes out of existence, so does the token!
+            // thus the observation stops
+            objectA.value = false
+            objectA = nil
+            // but that last line will crash in iOS 10 if the notification function mentions self
+            // and even in iOS 11, objectB is leaking if the notification function mentions self
+            // solution is to use unowned self in the notification function
+        case 2:
+            // premature deregistration 1
+            objectB.tokens.removeAll()
+            objectA.value = false
+        case 3:
+            // premature deregistration 2
+            objectB.tokens.forEach {$0.invalidate()}
+            objectA.value = false
+        case 4:
+            // let's artificially keep the observer alive and see what happens
+            let tokens = objectB.tokens
+            objectB = nil
+            delay(1) {
+                let tokens2 = tokens // ensure life
+                self.objectA.value = false
+                _ = tokens2
+            }
+            // crash because of the unowned self, as expected
+        default:
+            // just proving that this would have worked if we had done nothing
+            objectA.value = false
+        }
         
         return true
     }

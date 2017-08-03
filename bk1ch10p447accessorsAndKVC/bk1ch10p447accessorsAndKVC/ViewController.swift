@@ -10,8 +10,13 @@ class DogOwner : NSObject {
     @objc var dogs = [Dog]()
 }
 
+//@objc protocol Named {
+//    var name : String {get}
+//}
+
 class MyClass : NSObject {
-    var theData = [
+    // must mark @objc! otherwise Objective-C can't see this stuff
+    @objc var theData = [
         [
             "description" : "The one with glasses.",
             "name" : "Manny"
@@ -25,14 +30,18 @@ class MyClass : NSObject {
             "name" : "Jack"
         ]
     ]
-    func countOfPepBoys() -> Int {
+    @objc func countOfPepBoys() -> Int {
         return self.theData.count
     }
     // the _ is, uh, really important
-    func objectInPepBoysAtIndex(_ ix:Int) -> Any {
+    @objc func objectInPepBoysAtIndex(_ ix:Int) -> Any {
         return self.theData[ix]
     }
-
+    @objc var theDogs : [Dog] = {
+        let d1 = Dog(); d1.name = "Fido"
+        let d2 = Dog(); d2.name = "Rover"
+        return [d1,d2]
+    }()
 }
 
 
@@ -103,19 +112,32 @@ class ViewController: UIViewController {
         let obj = NSObject()
         // uncomment the next line to crash
         // obj.setValue("howdy", forKey:"keyName") // crash
+        // won't even compile
+        // obj.setValue("howdy", forKey: #keyPath(NSObject.keyName))
 
         let d = Dog()
         d.setValue("Fido", forKey:"name") // no crash!
         print(d.name) // "Fido" - it worked!
+        
+        d.setValue("Sandy", forKey:#keyPath(Dog.name))
+        
+        // no way; cannot substitute Swift keypath for a string
+        // d.setValue("Rover", forKey:\Dog.name)
+        // can of course use Swift
+        d[keyPath:\Dog.name] = "Rover"
+        print(d.name)
 
         let c = self.value(forKey:"hue") as? UIColor // "someone called the getter"
         print(c as Any) // Optional(UIDeviceRGBColorSpace 1 0 0 1)
         
         let myObject = MyClass()
         let arr = myObject.value(forKeyPath:"theData.name") as! [String]
-        // NB can't do this, because Swift doesn't know about this path
-        // let arr2 = myObject.value(forKeyPath:#keyPath(MyClass.theData.name))
         print(arr)
+        // can't do this because Swift doesn't know about this path
+        // let arr2 = myObject.value(forKeyPath:#keyPath(MyClass.theData.name))
+        let arr3 = myObject.value(forKeyPath:#keyPath(MyClass.theDogs.name))
+        print(arr3 as Any)
+
         do {
             let arr = myObject.value(forKey:"pepBoys")!
             print(arr)
