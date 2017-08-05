@@ -129,8 +129,8 @@ func makeRoundedRectangleMaker4(sz:CGSize)(_ r:CGFloat) -> UIImage {
 
 class ViewController: UIViewController {
     
-    @IBOutlet var myImageView : UIImageView!
-    @IBOutlet weak var myImageView2: UIImageView!
+    @IBOutlet var iv : UIImageView!
+    @IBOutlet weak var iv2: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -205,7 +205,7 @@ class ViewController: UIViewController {
         }
         
 
-        self.myImageView.image = makeRoundedRectangle(CGSize(width:45,height:20))
+        self.iv.image = makeRoundedRectangle(CGSize(width:45,height:20))
         
         do {
             let maker = makeRoundedRectangleMakerPrelim(CGSize(width:45,height:20))
@@ -214,14 +214,14 @@ class ViewController: UIViewController {
 
         
         let maker = makeRoundedRectangleMaker(CGSize(width:45,height:20))
-        self.myImageView2.image = maker()
+        self.iv2.image = maker()
         
         
         let maker2 = makeRoundedRectangleMaker2(CGSize(width:45,height:20), 8)
         _ = maker2
         
         let maker3 = makeRoundedRectangleMaker3(CGSize(width:45,height:20))
-        self.myImageView.image = maker3(8)
+        self.iv.image = maker3(8)
 
         let image1 = makeRoundedRectangleMaker3(CGSize(width:45,height:20))(8)
         _ = image1

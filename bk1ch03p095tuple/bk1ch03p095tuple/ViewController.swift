@@ -23,14 +23,14 @@ class ViewController: UIViewController {
         }
         
         do {
-            var ix: Int
-            var s: String
+            let ix: Int
+            let s: String
             (ix, s) = (1, "Two")
             _ = ix; _ = s
         }
         
         do {
-            let (ix, s) = (1, "Two") // can use let or var here
+            let (ix, s) = (1, "Two")
             _ = ix; _ = s
         }
         
