@@ -12,7 +12,9 @@ class Dog {
 }
 class NoisyDog : Dog {
     override func bark() {
-        super.bark(); super.bark()
+        for _ in 1...3 {
+            super.bark()
+        }
     }
     func beQuiet() {
         self.bark()
@@ -30,16 +32,16 @@ class ViewController: UIViewController {
             }
             var d : Dog
             d = NoisyDog()
-            tellToBark(d) // woof woof
+            tellToBark(d) // woof woof woof
             let nd : NoisyDog = NoisyDog()
-            tellToBark(nd) // woof woof
+            tellToBark(nd) // woof woof woof
         }
 
         do {
             let nd : NoisyDog = NoisyDog()
-            nd.speak() // woof woof
+            nd.speak() // woof woof woof
             let d : Dog = NoisyDog()
-            d.speak() // woof woof
+            d.speak() // woof woof woof
         }
         
         do {

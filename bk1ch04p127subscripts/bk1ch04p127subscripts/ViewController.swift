@@ -23,7 +23,7 @@ struct Digit {
 
 class Dog {
     struct Noise {
-        static var noise = "Woof"
+        static var noise = "woof"
     }
     func bark() {
         print(Dog.Noise.noise)
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         let w = What()
         print(w[1,2]) // compiles; there are still too dang-blasted many externalization rules
 
-        Dog.Noise.noise = "Arf"
+        Dog.Noise.noise = "arf"
         Dog().bark()
         
 

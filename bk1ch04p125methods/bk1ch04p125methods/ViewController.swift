@@ -5,7 +5,7 @@ import UIKit
 class Dog {
     let name : String
     let license : Int
-    let whatDogsSay = "Woof"
+    let whatDogsSay = "woof"
     init(name:String, license:Int) {
         self.name = name
         self.license = license
@@ -43,7 +43,7 @@ struct Greeting {
 }
 
 class Dog3 {
-    static var whatDogsSay = "Woof"
+    static var whatDogsSay = "woof"
     func bark() {
         print(Dog3.whatDogsSay)
     }
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         let fido = Dog(name:"Fido", license:1234)
-        fido.speak() // Woof I'm Fido
+        fido.speak() // woof I'm Fido
 
         let d = Dog2()
         d.say("woof", times:3)
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         Greeting.beFriendly() // hello there
 
         let fido3 = Dog3()
-        fido3.bark() // Woof
+        fido3.bark() // woof
 
         let m = MyClass()
         let f = MyClass.store(m) // what just happened!?

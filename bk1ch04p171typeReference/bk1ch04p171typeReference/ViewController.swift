@@ -3,7 +3,7 @@ import UIKit
 
 class Dog {
     class var whatDogsSay : String {
-        return "Woof"
+        return "woof"
     }
     func bark() {
         print(type(of:self).whatDogsSay)
@@ -11,7 +11,7 @@ class Dog {
 }
 class NoisyDog : Dog {
     override class var whatDogsSay : String {
-        return "Woof woof woof"
+        return "woof woof woof"
     }
 }
 
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         let d = Dog()
         d.bark()
         let nd = NoisyDog()
-        nd.bark() // Woof woof woof
+        nd.bark() // woof woof woof
         print(nd)
         print(type(of:nd))
     

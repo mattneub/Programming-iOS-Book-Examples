@@ -67,6 +67,8 @@ class ViewController: UIViewController {
         let type = Filter.albums
         print(type) // Albums
         print("It is \(type)") // It is Albums
+        let s = String(describing:type) // Albums
+        print(s)
         
         let ok = isBird(Bird())
         print(ok)

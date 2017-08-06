@@ -496,6 +496,8 @@ class ViewController: UIViewController {
                 }
                 }.filter {$0.count > 0}
             print(arr2)
+            // [["Manny", "Moe"]]
+
         }
         
         do {

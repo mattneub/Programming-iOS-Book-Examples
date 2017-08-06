@@ -14,6 +14,8 @@ import AVFoundation
     case red
 }
 
+struct Bird {}
+
 /*
  despite the Swift 3 small-letter convention, this is rendered as:
  
@@ -47,6 +49,10 @@ class MyOtherClass : NSObject, WKNavigationDelegate {
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void) {
         decisionHandler(.allow)
     }
+}
+
+@objc class MyClass2 : NSObject {
+    
 }
 
 @objcMembers class MyThirdClass {
@@ -169,6 +175,20 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
             
         }
         
+        // example for the Any section
+        do {
+            
+            let t = Thing()
+            
+            t.take1id("howdy")
+            t.take1id(1)
+            t.take1id(CGRect())
+            t.take1id(Date())
+            t.take1id(Bird())
+            
+
+        }
+        
         do { // passing to an Any (id) to see how we cross the bridge
             let t = Thing()
             t.take1id("howdy")
@@ -189,6 +209,7 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
             // the crash is not because a MyClass can't cross the bridge...
             // but because my Objective-C code is attempting to look in the box by logging
             t.take1id2(MyClass()) // solves the problem; we can call `class` on this thing at least
+            t.take1id(MyClass2()) // objc
         }
         
         // another way of looking at the question
