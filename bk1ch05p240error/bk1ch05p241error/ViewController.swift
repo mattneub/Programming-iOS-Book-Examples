@@ -71,9 +71,17 @@ class ViewController: UIViewController {
         let t = Thing()
         t.testThrower()
         
-        test: do {
-            break test // labeled break to a do is legal
+        out: do {
+            // ...
+            print("starting")
+            let somethingBadHappened = true
+            if somethingBadHappened {
+                break out
+            }
+            // ...
+            print("finishing")
         }
+        // jump to here if somethingBadHappened
         
         self.test()
         
