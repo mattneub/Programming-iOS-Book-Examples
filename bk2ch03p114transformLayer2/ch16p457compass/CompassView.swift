@@ -99,7 +99,7 @@ class CompassLayer : CALayer, CALayerDelegate {
         let circle = CAShapeLayer()
         circle.contentsScale = UIScreen.main.scale
         circle.lineWidth = 2.0
-        circle.fillColor = UIColor(red:0.9 , green:0.95, blue:0.93, alpha:0.9).cgColor
+        circle.fillColor = UIColor(red:0.9, green:0.95, blue:0.93, alpha:0.9).cgColor
         circle.strokeColor = UIColor.gray.cgColor
         let p = CGMutablePath()
         p.addEllipse(in: self.bounds.insetBy(dx: 3, dy: 3))

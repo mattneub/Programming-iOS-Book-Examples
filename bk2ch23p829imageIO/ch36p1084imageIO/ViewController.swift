@@ -48,9 +48,9 @@ class ViewController: UIViewController {
         let scale = UIScreen.main.scale
         let w = self.iv.bounds.width * scale
         let d : [AnyHashable:Any] = [
-            kCGImageSourceShouldAllowFloat : true ,
-            kCGImageSourceCreateThumbnailWithTransform : true ,
-            kCGImageSourceCreateThumbnailFromImageAlways : true ,
+            kCGImageSourceShouldAllowFloat : true,
+            kCGImageSourceCreateThumbnailWithTransform : true,
+            kCGImageSourceCreateThumbnailFromImageAlways : true,
             kCGImageSourceThumbnailMaxPixelSize : w
         ]
         let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d as CFDictionary)!

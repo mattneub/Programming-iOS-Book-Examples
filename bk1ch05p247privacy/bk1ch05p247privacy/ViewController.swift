@@ -17,7 +17,7 @@ struct Dog2 : CustomStringConvertible {
         for (k,v) in mirror.children {
             desc.append("\(k!): \(v), ")
         }
-        return String(desc.dropLast(2)) + ")"
+        return desc.dropLast(2) + ")"
     }
 }
 

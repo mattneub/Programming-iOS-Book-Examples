@@ -354,15 +354,18 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
         }
         
         do {
-            struct Arrow {
-                static let ARHEIGHT : CGFloat = 20
-            }
-            let myRect = CGRect(x: 10, y: 10, width: 100, height: 100)
+//            struct Arrow {
+//                static let ARHEIGHT : CGFloat = 20
+//            }
+            let arrowHeight : CGFloat = 20
+            let rect = CGRect(x: 10, y: 10, width: 100, height: 100)
             var arrow = CGRect.zero
             var body = CGRect.zero
-            myRect.__divided(
-                slice: &arrow, remainder: &body, atDistance: Arrow.ARHEIGHT, from: .minYEdge)
-            let (arrowRect, bodyRect) = myRect.divided(atDistance: Arrow.ARHEIGHT, from: .minYEdge)
+            rect.__divided(
+                slice: &arrow, remainder: &body, atDistance: arrowHeight, from: .minYEdge)
+            do {
+                let (arrow, body) = rect.divided(atDistance: arrowHeight, from: .minYEdge)
+            }
 
         }
         var which : Bool {return false}
@@ -487,11 +490,14 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
         }
         
         do {
-            let mas = NSMutableAttributedString()
-            let r = NSMakeRange(0,0) // not really, just making sure we compile
+            // let mas = NSMutableAttributedString()
+            let f = UIFont(name: "Helvetica", size: 12)!
+            let mas = NSMutableAttributedString(string: "howdy", attributes: [.font : f])
+            let r = NSMakeRange(0,1)
             mas.enumerateAttribute(.font, in: r) { // *
                 value, r, stop in
-                if let value = value as? Int, value == 1  {
+                if let value = value as? UIFont, value == f  {
+                    print("got the font")
                     // ...
                     stop.pointee = true
                 }

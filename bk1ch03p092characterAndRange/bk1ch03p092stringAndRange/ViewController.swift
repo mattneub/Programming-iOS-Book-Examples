@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         do { // demonstrates what appears to me to be a bug in the new Character unicodeScalars property
             // except that in beta 3 the bug is now in the String property????
             // https://bugs.swift.org/browse/SR-5401
+            // bug fixed! beta 5
             let c = Character("a\u{030A}")
             print(c)
             print(String(c).count)

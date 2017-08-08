@@ -24,7 +24,7 @@ class ViewController : UIViewController {
                     para.headIndent = 20;
                     para.firstLineHeadIndent = 20
                     para.tailIndent = -20
-                } ,
+                },
                 range:NSMakeRange(0,1))
             self.theLabel.attributedText = att
 

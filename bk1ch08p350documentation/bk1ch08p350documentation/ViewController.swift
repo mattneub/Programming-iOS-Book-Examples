@@ -2,22 +2,22 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     /**
-    Many people would like to dog their cats. So it is *perfectly*
-    reasonable to supply a convenience method to do so:
-    
-    * Because it's cool.
-    * Because it's there.
+     Many people would like to dog their cats. So it is *perfectly*
+     reasonable to supply a convenience method to do so:
      
-    * parameter cats: A string containing cats
-    
-    * returns: A string containing dogs
+     * Because it's cool.
+     * Because it's there.
+     
+     * parameter cats: A string containing cats
+     
+     * returns: A string containing dogs
      
      
-    */
-    
-    func dogMyCats(_ cats:String) -> String {
+     */
+
+    func dogMyCats(_ cats:String) throws -> String {
         return "Dogs"
     }
     
