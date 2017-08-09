@@ -185,25 +185,32 @@ class ViewController: UIViewController {
             
             do {
                 // wow - unable to call setObject:forKey: while supplying a number!
-                // ud.set(object: 0, forKey: "Score")
+                // UserDefaults.standard.set(object: 0, forKey: "Score")
                 let n = 1 as NSNumber
                 // similarly, unable to call NSNumber initWithFloat:
                 // instead we just supply a float and let it disambiguate
                 let i : UInt8 = 1
-                // let n2 = i as NSNumber // not bridged
-                let n2 = NSNumber(value:i)
-                _ = (n2,n)
+                let n2 = i as NSNumber // not bridged // * okay, now bridged!
+                let n3 = NSNumber(value:i)
+                _ = (n3, n2,n)
             }
             
             do {
                 // I regard these as bugs
-                // let n = UInt32(0) as NSNumber // compile error
-                // let i = n as! UInt32 // "always fails"
+                // fixed!
+                let n = UInt32(0) as NSNumber // compile error // not any more
+                let i = n as! UInt32 // "always fails" // not any more
+                _ = i
             }
             
-            let dec1 = NSDecimalNumber(value: 4.0)
-            let dec2 = NSDecimalNumber(value: 5.0)
+            do {
+                _ = true as NSNumber
+            }
+            
+            let dec1 = 4.0 as NSDecimalNumber
+            let dec2 = 5.0 as NSDecimalNumber
             let sum = dec1.adding(dec2) // 9.0
+            print(sum)
             _ = n
             _ = sum
         }
@@ -266,11 +273,11 @@ class ViewController: UIViewController {
         }
         
         do {
-            let n1 = NSNumber(value:1)
-            let n2 = NSNumber(value:2)
-            let n3 = NSNumber(value:3)
+            let n1 = 1 as NSNumber
+            let n2 = 2 as NSNumber
+            let n3 = 3 as NSNumber
             let ok = n2 == 2 // true
-            let ok2 = n2 == NSNumber(value:2) // true
+            let ok2 = n2 == 2 as NSNumber // true
             let ix = [n1,n2,n3].index(of:2) // Optional wrapping 1
             
             // let ok3 = n1 < n2 // compile error
