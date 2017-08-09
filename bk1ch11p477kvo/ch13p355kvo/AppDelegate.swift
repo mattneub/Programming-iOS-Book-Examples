@@ -28,11 +28,11 @@ class MyClass2 {
 //        mc.observe(keyPath, options: opts) { a, b in }
 //    }
     
-    var tokens = Set<NSKeyValueObservation>()
+    var obs = Set<NSKeyValueObservation>()
     
     func registerWith(_ mc:MyClass1) {
         let opts : NSKeyValueObservingOptions = [.old, .new]
-        let token = mc.observe(\.value, options: opts) { obj, change in
+        let ob = mc.observe(\.value, options: opts) { obj, change in
             // obj is the observed object
             // change is an NSKeyValueObservedChange
             if let oldValue = change.oldValue {
@@ -45,8 +45,8 @@ class MyClass2 {
             print(self)
             // yes, we can leak if we don't say unowned self
         }
-        // the token must live long enough for the function to be executed
-        tokens.insert(token)
+        // the observer must live long enough for the function to be executed
+        obs.insert(ob)
     }
 
     
@@ -99,7 +99,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         case 1:
             // B then A, with observed change
             objectB = nil
-            // ha ha! when objectB goes out of existence, so does the token!
+            // ha ha! when objectB goes out of existence, so does the observer!
             // thus the observation stops
             objectA.value = false
             objectA = nil
@@ -108,20 +108,20 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             // solution is to use unowned self in the notification function
         case 2:
             // premature deregistration 1
-            objectB.tokens.removeAll()
+            objectB.obs.removeAll()
             objectA.value = false
         case 3:
             // premature deregistration 2
-            objectB.tokens.forEach {$0.invalidate()}
+            objectB.obs.forEach {$0.invalidate()}
             objectA.value = false
         case 4:
             // let's artificially keep the observer alive and see what happens
-            let tokens = objectB.tokens
+            let obs = objectB.obs
             objectB = nil
             delay(1) {
-                let tokens2 = tokens // ensure life
+                let obs2 = obs // ensure life
                 self.objectA.value = false
-                _ = tokens2
+                _ = obs2
             }
             // crash because of the unowned self, as expected
         default:
