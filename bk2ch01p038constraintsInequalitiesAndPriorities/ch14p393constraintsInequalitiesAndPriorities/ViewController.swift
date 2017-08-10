@@ -9,6 +9,14 @@ func dictionaryOfNames(_ arr:UIView...) -> [String:UIView] {
     return d
 }
 
+// I think this will prove useful
+extension UILayoutPriority {
+    static func +(lhs: UILayoutPriority, rhs: Float) -> UILayoutPriority {
+        let raw = lhs.rawValue + rhs
+        return UILayoutPriority(rawValue:raw)
+    }
+}
+
 
 class ViewController : UIViewController {
     
@@ -51,7 +59,7 @@ class ViewController : UIViewController {
         // one way to solve: different compression resistance priorities
         
         let p = self.lab2.contentCompressionResistancePriority(for:.horizontal)
-        self.lab1.setContentCompressionResistancePriority(p+1, for: .horizontal)
+        self.lab1.setContentCompressionResistancePriority(p+1, for: .horizontal) // * see extension
 //        println(self.lab1.contentCompressionResistancePriorityForAxis(.Horizontal))
 //        println(self.lab2.contentCompressionResistancePriorityForAxis(.Horizontal))
 //        println(self.lab1.contentHuggingPriorityForAxis(.Horizontal))
@@ -74,7 +82,7 @@ class ViewController : UIViewController {
             ].flatMap{$0})
         
         let con = button.centerXAnchor.constraint(equalTo:self.view.centerXAnchor)
-        con.priority = 700 // try commenting this out to see the difference in behavior
+        con.priority = UILayoutPriority(rawValue: 700) // try commenting this out to see the difference in behavior
         NSLayoutConstraint.activate([con])
 
 

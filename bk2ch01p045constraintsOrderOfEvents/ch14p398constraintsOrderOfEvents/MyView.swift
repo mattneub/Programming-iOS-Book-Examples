@@ -12,11 +12,11 @@ class MyView: UIView {
     // Bool, number, String, CGRect, CGPoint, CGSize, UIColor, NSRange, or an Optional
     @IBInspectable var myBool : Bool = false
     @IBInspectable var myString : String = "howdy"
-    @IBInspectable var myInt : Int? = 1
-    @IBInspectable var myDouble : Double? = 1
-    @IBInspectable var myRect : CGRect? = .zero
-    @IBInspectable var myPoint : CGPoint? = .zero
-    @IBInspectable var mySize : CGSize? = .zero
+    @IBInspectable var myInt : Int = 1
+    @IBInspectable var myDouble : Double = 1
+    @IBInspectable var myRect : CGRect = .zero
+    @IBInspectable var myPoint : CGPoint = .zero
+    @IBInspectable var mySize : CGSize = .zero
     @IBInspectable var myColor : UIColor? = .red
     @IBInspectable var myImage : UIImage?
 //    @IBInspectable var myRange : Range<Int>? = 1...3 // nope

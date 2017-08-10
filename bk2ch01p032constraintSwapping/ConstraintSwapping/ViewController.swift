@@ -89,7 +89,7 @@ class ViewController: UIViewController {
         // ignore, just testing new iOS 10 read-only properties
         do {
             let c = self.constraintsWith[0]
-            print(c.firstItem)
+            print(c.firstItem as Any)
             print(c.firstAnchor)
         }
         
