@@ -4,6 +4,8 @@ import UIKit
 // interesting only when rotated to landscape
 
 class ViewController: UIViewController {
+    
+    override var prefersStatusBarHidden: Bool { return true }
 
     @IBAction func doButton1(_ sender: UIButton) {
         let v = sender

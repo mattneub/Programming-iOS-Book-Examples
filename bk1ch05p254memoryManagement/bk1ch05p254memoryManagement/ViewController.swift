@@ -263,7 +263,7 @@ class ViewController: UIViewController {
         print(components)
         
         components = Array(repeating: CGFloat(0), count: 4)
-        components.withUnsafeMutableBufferPointer { ptr -> Void in
+        components.withUnsafeMutableBufferPointer { ptr -> () in
             c.getRed(&ptr[0], green: &ptr[1], blue: &ptr[2], alpha: &ptr[3])
         }
         print(components)

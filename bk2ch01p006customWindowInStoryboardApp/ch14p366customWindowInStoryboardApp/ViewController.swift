@@ -32,6 +32,5 @@ class ViewController : UIViewController {
         lay3.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor
         lay3.frame = CGRect(43, 197, 160, 230)
         self.view.layer.addSublayer(lay3)
-
     }
 }

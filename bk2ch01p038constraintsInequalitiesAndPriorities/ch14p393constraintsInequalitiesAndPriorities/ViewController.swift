@@ -30,7 +30,7 @@ class ViewController : UIViewController {
         self.lab1.text = self.lab1.text! + "xxxxx"
         self.lab2.text = self.lab2.text! + "xxxxx"
         self.label.text = self.label.text! + "xxxxx"
-        
+        print(self.lab1.hasAmbiguousLayout || self.lab2.hasAmbiguousLayout || self.label.hasAmbiguousLayout)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,10 +60,10 @@ class ViewController : UIViewController {
         
         let p = self.lab2.contentCompressionResistancePriority(for:.horizontal)
         self.lab1.setContentCompressionResistancePriority(p+1, for: .horizontal) // * see extension
-//        println(self.lab1.contentCompressionResistancePriorityForAxis(.Horizontal))
-//        println(self.lab2.contentCompressionResistancePriorityForAxis(.Horizontal))
-//        println(self.lab1.contentHuggingPriorityForAxis(.Horizontal))
-//        println(self.lab2.contentHuggingPriorityForAxis(.Horizontal))
+        print(self.lab1.contentCompressionResistancePriority(for: .horizontal))
+        print(self.lab2.contentCompressionResistancePriority(for: .horizontal))
+        print(self.lab1.contentHuggingPriority(for: .horizontal))
+        print(self.lab2.contentHuggingPriority(for: .horizontal))
 
         
         // =====================================

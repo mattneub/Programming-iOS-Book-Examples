@@ -3,7 +3,6 @@
 import UIKit
 
 /*
-Similar to previous example, but constraints are conditionally set in code.
 We use the new iOS 8 size classes to set the constants of our constraints.
 In a more elaborate situation we could actually remove and add entire constraints.
 */

@@ -59,33 +59,7 @@ class ViewController: UIViewController {
 
         NSLayoutConstraint.activate(self.constraintsWith)
         
-        /*
-        
-        // just experimenting, pay no attention
-        let g = UILayoutGuide()
-        self.view.addLayoutGuide(g)
-        NSLayoutConstraint.activate([
-            g.topAnchor.constraint(equalTo:self.topLayoutGuide.bottomAnchor),
-            g.leftAnchor.constraint(equalTo:self.view.leftAnchor),
-            g.widthAnchor.constraint(equalToConstant:100),
-            g.heightAnchor.constraint(equalToConstant:100)
-            ])
-        
-        // still experimenting
-        let v = UIView()
-        let arr = NSLayoutConstraint.constraints(withVisualFormat:
-            "V:[tlg]-0-[v]", metrics: nil,
-            views: ["tlg":self.topLayoutGuide, "v":v])
-        let tlg = self.topLayoutGuide
-        let c = v.topAnchor.constraint(equalTo:tlg.bottomAnchor)
-        
-        // still experimenting
-        NSLayoutConstraint.activate(
-            NSLayoutConstraint.constraints(withVisualFormat:
-                "V:|-0-[v]", metrics: nil, views: ["v":v])
-        )
 
-*/
         // ignore, just testing new iOS 10 read-only properties
         do {
             let c = self.constraintsWith[0]
@@ -100,10 +74,12 @@ class ViewController: UIViewController {
             self.v2.removeFromSuperview()
             NSLayoutConstraint.deactivate(self.constraintsWith)
             NSLayoutConstraint.activate(self.constraintsWithout)
+
         } else {
             self.view.addSubview(v2)
             NSLayoutConstraint.deactivate(self.constraintsWithout)
             NSLayoutConstraint.activate(self.constraintsWith)
+
         }
     }
 }

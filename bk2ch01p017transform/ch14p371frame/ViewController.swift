@@ -7,7 +7,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var which : Int {return 1}
+        var which : Int {return 6}
         
         switch which {
         case 1:

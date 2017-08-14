@@ -12,7 +12,8 @@ class ViewController: UIViewController {
         v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
         let v2 = UIView(frame:CGRect(0, 0, 132, 10))
         v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
-        let v3 = UIView(frame:CGRect(v1.bounds.width-20, v1.bounds.height-20, 20, 20))
+        let v1b = v1.bounds
+        let v3 = UIView(frame:CGRect(v1b.width-20, v1b.height-20, 20, 20))
         v3.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
         self.view.addSubview(v1)
         v1.addSubview(v2)

@@ -2,6 +2,7 @@
 
 import UIKit
 
+@objc(ViewController)
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -90,6 +91,7 @@ class ViewController: UIViewController {
                                    attribute: .bottom,
                                    multiplier: 1, constant: 0)
             )
+            
         case 2: // new API in iOS 9 for making constraints individually
             // and we should now be activating constraints, not adding them...
             // to a specific view
@@ -124,8 +126,8 @@ class ViewController: UIViewController {
                 NSLayoutConstraint.constraints(withVisualFormat:
                     "V:[v3(20)]|", metrics: nil, views: d),
                 // uncomment me to form a conflict
-                //                NSLayoutConstraint.constraints(withVisualFormat:
-                //                    "V:[v3(10)]|", metrics: nil, views: d),
+//                NSLayoutConstraint.constraints(withVisualFormat:
+//                    "V:[v3(10)]|", metrics: nil, views: d),
                 ].flatMap{$0})
         default: break
         }

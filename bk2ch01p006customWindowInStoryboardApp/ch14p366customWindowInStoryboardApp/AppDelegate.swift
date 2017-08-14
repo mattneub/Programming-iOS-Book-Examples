@@ -12,6 +12,8 @@ import UIKit
         defer {
             print("exit") // appears _before_ symbolic breakpoint on `makeKeyAndVisible`
         }
+        // experiment: if we call makeKeyAndVisible, is it called twice? NO!
+        // self.window!.makeKeyAndVisible()
         return true
     }
     

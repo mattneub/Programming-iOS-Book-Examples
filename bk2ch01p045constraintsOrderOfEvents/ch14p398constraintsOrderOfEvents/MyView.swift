@@ -19,11 +19,17 @@ class MyView: UIView {
     @IBInspectable var mySize : CGSize = .zero
     @IBInspectable var myColor : UIColor? = .red
     @IBInspectable var myImage : UIImage?
-//    @IBInspectable var myRange : Range<Int>? = 1...3 // nope
-//    @IBInspectable var someView : UIView? // nope
+//    @IBInspectable var myRange : Range<Int> = 1...3 // nope
+    // Apple _claims_ that ranges work, but the above doesn't compile
+    @IBInspectable var someView : UIView? // compiles but doesn't work
     
     override var description : String {
         return super.description + "\n" + (self.name ?? "noname")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.preservesSuperviewLayoutMargins = true // so that we inherit margin changes
     }
     
     override func updateConstraints() {
@@ -31,14 +37,24 @@ class MyView: UIView {
         print("\(self)\n\(#function)\n")
     }
     
-    // gets an extra cycle, I've no idea why
+    // layout gets an extra cycle, I've no idea why
     override func layoutSublayers(of layer: CALayer) {
-        super.layoutSublayers(of:layer)
+        super.layoutSublayers(of:layer) // essential, we get wrong layout otherwise
         print("\(self)\n\(#function)\n")
     }
     
     override func layoutSubviews() {
-        super.layoutSubviews()
+        super.layoutSubviews() // not essential, but removing makes no difference
+        print("\(self)\n\(#function)\n")
+    }
+    
+    override func layoutMarginsDidChange() {
+        super.layoutMarginsDidChange()
+        print("\(self)\n\(#function)\n")
+    }
+    
+    override func safeAreaInsetsDidChange() {
+        super.safeAreaInsetsDidChange()
         print("\(self)\n\(#function)\n")
     }
     
@@ -60,7 +76,7 @@ class MyView: UIView {
 
 class MyLoggingLayer : CALayer {
     override func layoutSublayers() {
-        super.layoutSublayers()
+        super.layoutSublayers() // essential, we get wrong layout otherwise
         guard let del = self.delegate else {return}
         print("layer of \(del)\n\(#function)\n")
     }

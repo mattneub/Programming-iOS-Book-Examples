@@ -28,8 +28,9 @@ class ViewController: UIViewController {
         sv.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sv)
         let marg = self.view.layoutMarginsGuide
+        let safe = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            sv.topAnchor.constraint(equalTo:self.topLayoutGuide.bottomAnchor),
+            sv.topAnchor.constraint(equalTo:safe.topAnchor),
             sv.leadingAnchor.constraint(equalTo:marg.leadingAnchor),
             sv.trailingAnchor.constraint(equalTo:marg.trailingAnchor),
             sv.bottomAnchor.constraint(equalTo:self.view.bottomAnchor),
