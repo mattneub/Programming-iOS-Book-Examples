@@ -112,7 +112,7 @@ class MyView : UIView {
         case 4:
             // obtain the current graphics context
             let con = UIGraphicsGetCurrentContext()!
-            con.saveGState()
+            //con.saveGState()
             
             // punch triangular hole in context clipping region
             con.move(to:CGPoint(90, 100))
@@ -142,7 +142,8 @@ class MyView : UIView {
                 CGGradient(colorSpace:sp, colorComponents: colors, locations: locs, count: 3)!
             con.drawLinearGradient(grad, start: CGPoint(89,0), end: CGPoint(111,0), options:[])
             
-            con.restoreGState() // done clipping
+            //con.restoreGState() // done clipping
+            con.resetClip() // new in iOS 11? but works in iOS 10 too so maybe always existed?
             
             // draw the red triangle, the point of the arrow
             con.setFillColor(UIColor.red.cgColor)
@@ -250,6 +251,7 @@ class MyView : UIView {
             
             
             // draw the red triangle, the point of the arrow
+            con.saveGState()
             let sp2 = CGColorSpace(patternBaseSpace:nil)!
             con.setFillColorSpace(sp2)
             // hooray for Swift 2.0!
@@ -275,6 +277,7 @@ class MyView : UIView {
             con.addLine(to:CGPoint(100, 0))
             con.addLine(to:CGPoint(120, 25))
             con.fillPath()
+            con.restoreGState()
             
             
         default: break

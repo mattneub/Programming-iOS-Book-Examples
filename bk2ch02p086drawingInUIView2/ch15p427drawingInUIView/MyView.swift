@@ -99,7 +99,7 @@ class MyView : UIView {
 //
     }
     
-    let which = 3
+    let which = 1
 
     override func draw(_ rect: CGRect) {
 

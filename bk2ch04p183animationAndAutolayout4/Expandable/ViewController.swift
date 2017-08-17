@@ -22,14 +22,14 @@ class ViewController : UIViewController {
         self.collapsed = !self.collapsed
         if self.collapsed {
             self.sectionHeightConstraint.constant = 10
-            self.sectionHeightConstraint.priority = 999
+            self.sectionHeightConstraint.priority = UILayoutPriority(rawValue: 999)
             NSLayoutConstraint.deactivate([self.bottomInternalConstraint])
             UIView.animate(withDuration:1) {
                 self.view.layoutIfNeeded()
             }
             
         } else {
-            self.sectionHeightConstraint.priority = 250
+            self.sectionHeightConstraint.priority = UILayoutPriority(rawValue: 250)
             NSLayoutConstraint.activate([self.bottomInternalConstraint])
             UIView.animate(withDuration:1) {
                 self.view.layoutIfNeeded()

@@ -25,10 +25,7 @@ class ViewController : UIViewController {
         // also demonstrated, another new Xcode 6 feature: vector art in the asset catalog! 
         // one size fits all, without rasterization
         // apparently only vector PDFs are acceptable
-        
-        // not demonstrated: setting alignment rectangle in asset catalog
-        // (haven't figured this out yet)
-        
+                
         
         let im3 = UIImage(named:"photo")!.withAlignmentRectInsets(UIEdgeInsetsMake(0, 0, 24, 0))
         let iv = UIImageView(image:im3)
@@ -44,6 +41,7 @@ class ViewController : UIViewController {
         // then I should be able to make the same setting in the asset catalog
         // and then I would just fetch the image directly
         // but it doesn't work, as I shall now show
+        // OK, in Xcode 9 / iOS 11 this seems to be fixed!
         
         let im4 = UIImage(named:"photo")! // trying to use asset catalog alignment
         let iv2 = UIImageView(image:im4)
@@ -53,14 +51,18 @@ class ViewController : UIViewController {
             iv2.trailingAnchor.constraint(equalTo:self.view.trailingAnchor),
             iv2.bottomAnchor.constraint(equalTo:self.view.bottomAnchor)
             ])
-
+        
+        print(im4.alignmentRectInsets)
+        print(iv2.alignmentRectInsets)
+        
         // In the asset catalog, if I don't also set the Left, nothing happens at all;
         // a Left of 0 turns off the whole thing
         // I have a long-standing bug filed on this
         // (also the top and bottom used to be reversed)
-        
-        print(im4.alignmentRectInsets)
-        print(iv2.alignmentRectInsets)
+        // OK, in Xcode 9 this seems to be fixed!
+
+        let immm = UIImage(named:"photo2")!
+        print(immm.alignmentRectInsets)
         
         /*
         let im5 = UIImage(named:"smiley2")!

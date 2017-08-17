@@ -44,7 +44,7 @@ class CompassLayer : CALayer, CALayerDelegate {
     var rotationLayer : CALayer!
     var didSetup = false
     
-    let which = 1
+    let which = 2
 
     func doRotate () {
         print("rotate")

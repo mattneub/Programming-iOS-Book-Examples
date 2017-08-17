@@ -25,7 +25,7 @@ class MyAction : NSObject, CAAction {
             let lay = anObject as! CALayer
             let newP = lay.value(forKey:event)
             let oldP = lay.presentation()!.value(forKey:event)
-            print("from \(oldP) to \(newP)")
+            print("from \(oldP as Any) to \(newP as Any)")
             lay.add(anim, forKey:nil)
     }
 }

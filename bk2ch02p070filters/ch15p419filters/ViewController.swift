@@ -33,13 +33,13 @@ class ViewController : UIViewController {
 
         // second filter
         let blendimage = moici.applyingFilter(
-            "CIBlendWithMask", withInputParameters: [
+            "CIBlendWithMask", parameters: [
                 "inputMaskImage":gradimage
             ])
         
         // two ways to obtain final bitmap; third way, claimed to work, does not
         
-        var which : Int { return 2 }
+        var which : Int { return 1 }
         
         switch which {
         case 1:

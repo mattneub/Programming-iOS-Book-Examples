@@ -7,7 +7,7 @@ class MyView: UIView {
     var image : UIImage!
     
     override func traitCollectionDidChange(_: UITraitCollection?) {
-        self.setNeedsDisplay() // causes drawRect to be called
+        self.setNeedsDisplay() // causes draw(_:) to be called
     }
     
     override func draw(_ rect: CGRect) {

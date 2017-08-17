@@ -18,6 +18,7 @@
 		323C4EDC1B63EF760021117E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		323C4EDE1B63EF890021117E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32CECA7D196DA37F00879D68 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		81B24D761F44A82200E84750 /* filterList.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = filterList.txt; sourceTree = "<group>"; };
 		C9E679C317B00E820062A15F /* ch15p419filters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch15p419filters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E679CE17B00E820062A15F /* ch15p419filters-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch15p419filters-Info.plist"; sourceTree = "<group>"; };
 		C9E679D917B00E820062A15F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 				323C4EDE1B63EF890021117E /* AppDelegate.swift */,
 				32CECA7D196DA37F00879D68 /* ViewController.swift */,
 				C9E679DE17B00E820062A15F /* Assets.xcassets */,
+				81B24D761F44A82200E84750 /* filterList.txt */,
 				323C4EDC1B63EF760021117E /* LaunchScreen.storyboard */,
 				C9E679CE17B00E820062A15F /* ch15p419filters-Info.plist */,
 			);
@@ -95,7 +97,7 @@
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					C9E679C217B00E820062A15F = {
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
@@ -235,7 +237,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -252,7 +255,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

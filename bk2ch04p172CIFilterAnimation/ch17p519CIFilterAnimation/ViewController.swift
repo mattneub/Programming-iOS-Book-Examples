@@ -43,7 +43,7 @@ class ViewController : UIViewController {
     let SCALE = 1.0 // 0.2 for slow motion, looks a bit better in simulator
     // but really you need to test on device
     
-    func nextFrame(_ sender:CADisplayLink) {
+    @objc func nextFrame(_ sender:CADisplayLink) {
         if self.timestamp < 0.01 { // pick up and store first timestamp
             self.timestamp = sender.timestamp
             self.frame = 0.0

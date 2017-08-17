@@ -12,7 +12,7 @@ class MyView : UIView { // exists purely to host MyLayer
 
 class MyLayer : CALayer {
     
-    var thickness : CGFloat = 0
+    @objc var thickness : CGFloat = 0
     
     override class func needsDisplay(forKey key: String) -> Bool {
         if key == #keyPath(thickness) {

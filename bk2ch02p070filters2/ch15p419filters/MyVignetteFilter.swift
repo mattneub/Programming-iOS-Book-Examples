@@ -2,8 +2,8 @@
 import UIKit
 
 class MyVignetteFilter : CIFilter {
-    var inputImage : CIImage?
-    var inputPercentage : NSNumber? = 1.0
+    @objc var inputImage : CIImage?
+    @objc var inputPercentage : NSNumber? = 1.0
     
     override var outputImage : CIImage? {
         return self.makeOutputImage()
@@ -27,7 +27,7 @@ class MyVignetteFilter : CIFilter {
         let largerDimension = max(extent.width, extent.height)
         
         grad.setValue(center, forKey:"inputCenter")
-        grad.setValue(smallerDimension/2.0 * CGFloat(inputPercentage), forKey:"inputRadius0")
+        grad.setValue(smallerDimension/2.0 * (inputPercentage as! CGFloat), forKey:"inputRadius0")
         grad.setValue(largerDimension/2.0, forKey:"inputRadius1")
         
         let blend = CIFilter(name: "CIBlendWithMask")!

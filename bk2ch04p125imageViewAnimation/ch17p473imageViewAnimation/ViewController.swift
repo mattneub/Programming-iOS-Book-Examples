@@ -30,7 +30,7 @@ class ViewController : UIViewController {
         delay(1.0) {self.animate()}
     }
     
-    let which = 3
+    let which = 5
 
     func animate () {
         
@@ -96,6 +96,42 @@ class ViewController : UIViewController {
             b.center = CGPoint(100,200)
             b.sizeToFit()
             self.view.addSubview(b)
+            
+        case 4:
+            let im = UIImage(named:"wireframe.gif")!
+            let iv = UIImageView(image:im)
+            iv.animationImages = [im] // didn't help
+            iv.frame.origin = CGPoint(0,100)
+            // iv.frame.size = im.size
+            self.view.addSubview(iv)
+            delay(2) {
+                iv.startAnimating() // nope
+                // so works in Photos (in iOS 11) but not in an image view???
+            }
+            
+        case 5:
+            // so you are forced to "analyze" the gif yourself
+            // for AnimatedImage, see https://developer.apple.com/library/content/samplecode/UsingPhotosFramework/Listings/Shared_AnimatedImage_swift.html
+            let url = Bundle.main.url(forResource: "wireframe", withExtension: "gif")!
+            let anim = AnimatedImage(url: url)!
+            var arr = [CGImage]()
+            for ix in 0..<anim.frameCount {
+                arr.append(anim.imageAtIndex(index: ix)!)
+            }
+            var arr2 = arr.map {UIImage(cgImage:$0)}
+            let iv = UIImageView()
+            iv.animationImages = arr2
+            iv.animationDuration = anim.duration
+            iv.frame.origin = CGPoint(0,100)
+            iv.frame.size = arr2[0].size
+            self.view.addSubview(iv)
+            delay(2) {
+                iv.startAnimating() // nope
+                // so works in Photos (in iOS 11) but not in an image view???
+            }
+
+            
+
 
         default: break
         }

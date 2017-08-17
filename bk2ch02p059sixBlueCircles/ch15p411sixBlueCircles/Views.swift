@@ -77,8 +77,14 @@ class MyImageView1 : UIImageView {
         let f = UIGraphicsImageRendererFormat.default()
         // scale defaults to main screen scale
         // opaque defaults to false
+        print(f.scale)
+        print(f.opaque)
         // extendedRange defaults to whatever hardware supposes
         _ = f // thus, usually no need for an explicit format!
+        // new in iOS 11:
+        let f2 = UIGraphicsImageRendererFormat(for: self.traitCollection)
+        print(f2.scale)
+        print(f2.opaque)
         let r = UIGraphicsImageRenderer(size:CGSize(100,100))
         self.image = r.image { _ in
             let p = UIBezierPath(ovalIn: CGRect(0,0,100,100))

@@ -10,6 +10,8 @@
 		328279B9196F5FB0005E15EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328279B8196F5FB0005E15EF /* ViewController.swift */; };
 		3296028C1B685FF400EF762F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3296028B1B685FF400EF762F /* LaunchScreen.storyboard */; };
 		3296028E1B68600600EF762F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3296028D1B68600600EF762F /* AppDelegate.swift */; };
+		817974771F463F3C00168C8D /* wireframe.gif in Resources */ = {isa = PBXBuildFile; fileRef = 817974761F463E4F00168C8D /* wireframe.gif */; };
+		817974791F4641CD00168C8D /* AnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817974781F4641CD00168C8D /* AnimatedImage.swift */; };
 		C9C94FEB17B5621400719F08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C94FE917B5621400719F08 /* Main.storyboard */; };
 		C9C94FF017B5621400719F08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C94FEF17B5621400719F08 /* Assets.xcassets */; };
 		C9E0197D17B574EB00EC8C95 /* Pacman.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9E0197C17B574EB00EC8C95 /* Pacman.xcassets */; };
@@ -19,6 +21,8 @@
 		328279B8196F5FB0005E15EF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3296028B1B685FF400EF762F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3296028D1B68600600EF762F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		817974761F463E4F00168C8D /* wireframe.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = wireframe.gif; sourceTree = "<group>"; };
+		817974781F4641CD00168C8D /* AnimatedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImage.swift; sourceTree = "<group>"; };
 		C9C94FD417B5621300719F08 /* ch17p473imageViewAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch17p473imageViewAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C94FDF17B5621300719F08 /* ch17p473imageViewAnimation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch17p473imageViewAnimation-Info.plist"; sourceTree = "<group>"; };
 		C9C94FEA17B5621400719F08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,9 +62,11 @@
 			children = (
 				C9C94FE917B5621400719F08 /* Main.storyboard */,
 				328279B8196F5FB0005E15EF /* ViewController.swift */,
+				817974781F4641CD00168C8D /* AnimatedImage.swift */,
 				3296028D1B68600600EF762F /* AppDelegate.swift */,
 				C9C94FEF17B5621400719F08 /* Assets.xcassets */,
 				C9E0197C17B574EB00EC8C95 /* Pacman.xcassets */,
+				817974761F463E4F00168C8D /* wireframe.gif */,
 				3296028B1B685FF400EF762F /* LaunchScreen.storyboard */,
 				C9C94FDF17B5621300719F08 /* ch17p473imageViewAnimation-Info.plist */,
 			);
@@ -98,7 +104,7 @@
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					C9C94FD317B5621300719F08 = {
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
@@ -125,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				817974771F463F3C00168C8D /* wireframe.gif in Resources */,
 				C9C94FF017B5621400719F08 /* Assets.xcassets in Resources */,
 				3296028C1B685FF400EF762F /* LaunchScreen.storyboard in Resources */,
 				C9C94FEB17B5621400719F08 /* Main.storyboard in Resources */,
@@ -141,6 +148,7 @@
 			files = (
 				3296028E1B68600600EF762F /* AppDelegate.swift in Sources */,
 				328279B9196F5FB0005E15EF /* ViewController.swift in Sources */,
+				817974791F4641CD00168C8D /* AnimatedImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +247,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -256,7 +265,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

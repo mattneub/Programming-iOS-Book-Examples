@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func drag(_ p : UIPanGestureRecognizer) {
+    @objc func drag(_ p : UIPanGestureRecognizer) {
         let v = p.view!
         switch p.state {
         case .began, .changed:
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         }
     }
 
-    func crop(_ t : UITapGestureRecognizer) {
+    @objc func crop(_ t : UITapGestureRecognizer) {
         let imsize = iv.image!.size
         let ivsize = iv.bounds.size
         

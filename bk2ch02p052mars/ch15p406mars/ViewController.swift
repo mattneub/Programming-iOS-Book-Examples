@@ -44,7 +44,8 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let iv = UIImageView(image:UIImage(named:"Mars"))
+        
+        let iv = UIImageView(image:UIImage(named:"Mars")!)
         self.view.addSubview(iv)
         
         iv.clipsToBounds = true // default is false...

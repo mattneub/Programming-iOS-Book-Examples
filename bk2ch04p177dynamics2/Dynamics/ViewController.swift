@@ -7,7 +7,7 @@ class MyImageView : UIImageView {
         return .ellipse
     }
     override func willMove(toWindow newWindow: UIWindow?) {
-        print("image view move to \(newWindow)")
+        print("image view move to \(newWindow as Any)")
     }
     deinit {
         print("farewell from image view")
