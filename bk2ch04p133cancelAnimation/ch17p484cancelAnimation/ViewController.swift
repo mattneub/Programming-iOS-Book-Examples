@@ -60,7 +60,7 @@ class ViewController : UIViewController {
         self.anim.startAnimation()
     }
     
-    let which = 4
+    let which = 5
 
     func cancel() {
         switch which {
@@ -113,19 +113,20 @@ class ViewController : UIViewController {
         case 2: // hurry to end position
             print("hurry to end")
             self.anim.pauseAnimation()
-            self.anim.continueAnimation(withTimingParameters: UICubicTimingParameters(animationCurve:.easeOut), durationFactor: 0.1)
+            self.anim.continueAnimation(withTimingParameters: nil, durationFactor: 0.1)
         case 3: // hurry to start position
             print("hurry to start")
+            self.anim.scrubsLinearly = false // I regard the need to add this as a bug
             self.anim.pauseAnimation()
             self.anim.isReversed = true
-            self.anim.continueAnimation(withTimingParameters: UICubicTimingParameters(animationCurve:.easeOut), durationFactor: 0.1)
+            self.anim.continueAnimation(withTimingParameters: nil, durationFactor: 0.1)
         case 4: // hurry to anywhere you like!
             print("hurry to somewhere else")
             self.anim.pauseAnimation()
             self.anim.addAnimations {
                 self.v.center = CGPoint(-200,-200)
             }
-            self.anim.continueAnimation(withTimingParameters: UICubicTimingParameters(animationCurve:.easeOut), durationFactor: 0.1)
+            self.anim.continueAnimation(withTimingParameters: nil, durationFactor: 0.1)
         case 5:
             self.anim.stopAnimation(false) // means allow me to finish
             self.anim.finishAnimation(at: .current)

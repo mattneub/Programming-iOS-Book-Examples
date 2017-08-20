@@ -15,19 +15,21 @@ class ViewController: UIViewController {
     
     @IBAction func doButton(_ sender: Any) {
         
-        UIView.animate(withDuration:1) {
-            self.v.swing = !self.v.swing // "animatable" Bool property
-        }
+//        UIView.animate(withDuration:1) {
+//            self.v.swing = !self.v.swing // "animatable" Bool property
+//        }
 
         // can use a property animator here
-//        let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
-//            self.v.swing = !self.v.swing
-//        }
-//        anim.startAnimation()
-        // use pause to prove it's an interruptible animation
-//        delay(0.5) {
-//            anim.pauseAnimation()
-//        }
+        let anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
+            self.v.swing = !self.v.swing
+        }
+        anim.startAnimation()
+        delay(0.5) {
+            anim.pauseAnimation()  // to prove it's an interruptible animation
+            // but in iOS 11 we then crash because you can't release a paused animator...
+            // ... so I'd better stop it too
+            anim.stopAnimation(true)
+        }
     }
     
     

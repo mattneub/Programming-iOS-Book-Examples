@@ -4,7 +4,7 @@ class ViewController : UIViewController {
     
     @IBOutlet var v : UIView!
     
-    let which = 2
+    let which = 1
     
     @IBAction func doButton(_ sender: Any?) {
         switch which {

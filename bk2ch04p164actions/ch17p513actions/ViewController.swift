@@ -163,7 +163,7 @@ class MyLayer : CALayer {
     // layer whose response to contents setting is automatic push from left
     
     override class func defaultAction(forKey key: String) -> CAAction? {
-        if key == "contents" {
+        if key == #keyPath(contents) {
             let tr = CATransition()
             tr.type = kCATransitionPush
             tr.subtype = kCATransitionFromLeft
@@ -175,7 +175,7 @@ class MyLayer : CALayer {
     // layer whose implicit position animation can be turned off
     
     override func action(forKey key: String) -> CAAction? {
-        if key == "position" {
+        if key == #keyPath(position) {
             if self.value(forKey:"suppressPositionAnimation") != nil {
                 return nil
             }
@@ -195,16 +195,16 @@ extension ViewController : CALayerDelegate, CAAnimationDelegate {
     
     // on implicit "position" animation, do a little waggle
     func action(for layer: CALayer, forKey key: String) -> CAAction? {
-        if key == "position" {
+        if key == #keyPath(CALayer.position) {
             return MyWagglePositionAction()
         }
         
         // on layer addition (addSublayer this layer), "pop" into view
         if key == kCAOnOrderIn {
-            let anim1 = CABasicAnimation(keyPath:"opacity")
+            let anim1 = CABasicAnimation(keyPath:#keyPath(CALayer.opacity))
             anim1.fromValue = 0.0
             anim1.toValue = layer.opacity
-            let anim2 = CABasicAnimation(keyPath:"transform")
+            let anim2 = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
             anim2.toValue = CATransform3DScale(layer.transform, 1.2, 1.2, 1.0)
             anim2.autoreverses = true
             anim2.duration = 0.1
@@ -215,12 +215,12 @@ extension ViewController : CALayerDelegate, CAAnimationDelegate {
         }
         
         // on opacity change with "bye" key, "pop" out of sight
-        if key == "opacity" {
+        if key == #keyPath(CALayer.opacity) {
             if CATransaction.value(forKey:"bye") != nil {
-                let anim1 = CABasicAnimation(keyPath:"opacity")
+                let anim1 = CABasicAnimation(keyPath:#keyPath(CALayer.opacity))
                 anim1.fromValue = layer.opacity
                 anim1.toValue = 0.0
-                let anim2 = CABasicAnimation(keyPath:"transform")
+                let anim2 = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
                 anim2.toValue = CATransform3DScale(layer.transform, 0.1, 0.1, 1.0)
                 let group = CAAnimationGroup()
                 group.animations = [anim1, anim2]
@@ -232,10 +232,10 @@ extension ViewController : CALayerDelegate, CAAnimationDelegate {
         // on "farewell" key setting, "pop" out of sight and remove from superlayer
         // supersedes previous
         if key == "farewell" {
-            let anim1 = CABasicAnimation(keyPath:"opacity")
+            let anim1 = CABasicAnimation(keyPath:#keyPath(CALayer.opacity))
             anim1.fromValue = layer.opacity
             anim1.toValue = 0.0
-            let anim2 = CABasicAnimation(keyPath:"transform")
+            let anim2 = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
             anim2.toValue = CATransform3DScale(layer.transform, 0.1, 0.1, 1.0)
             let group = CAAnimationGroup()
             group.animations = [anim1, anim2]

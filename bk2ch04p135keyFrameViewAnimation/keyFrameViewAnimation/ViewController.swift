@@ -16,11 +16,13 @@ class ViewController : UIViewController {
         case false:
             self.animate()
         case true:
-            let anim = UIViewPropertyAnimator(duration: 4, curve: .easeInOut) {}
+            // prove that this overrides whatever the UIView.animate... says
+            let anim = UIViewPropertyAnimator(duration: 8, curve: .easeInOut) {}
             anim.addAnimations {
                 self.animate()
             }
             anim.startAnimation()
+            return;
             delay(3) { // prove that we are pausable / reversible
                 anim.pauseAnimation()
                 anim.isReversed = true
@@ -33,6 +35,7 @@ class ViewController : UIViewController {
         var p = self.v.center
         var opts : UIViewKeyframeAnimationOptions = .calculationModeLinear
         let opt2 : UIViewAnimationOptions = .curveLinear
+        // opts.insert(opt2)
         opts.insert(UIViewKeyframeAnimationOptions(rawValue:opt2.rawValue))
         let dur = 0.25
         var start = 0.0
@@ -41,7 +44,7 @@ class ViewController : UIViewController {
         var dir : CGFloat = 1
         UIView.animateKeyframes(withDuration:4,
             delay: 0,
-            // options: opts, // comment in or out
+            options: opts, // comment in or out
             animations: {
                 // self.v.alpha = 0
                 UIView.addKeyframe(withRelativeStartTime:start,

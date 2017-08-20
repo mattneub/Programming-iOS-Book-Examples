@@ -512,7 +512,7 @@ class ViewController: UIViewController {
         }
         
         do {
-            let anim = CAKeyframeAnimation(keyPath:"position") // dummy
+            let anim = CAKeyframeAnimation(keyPath:#keyPath(CALayer.position)) // dummy
             let (oldP,p1,p2,newP) = (CGPoint.zero,CGPoint.zero,CGPoint.zero,CGPoint.zero) // dummy
             let points = [oldP,p1,p2,newP]
             anim.values = points.map {NSValue(cgPoint:$0)}

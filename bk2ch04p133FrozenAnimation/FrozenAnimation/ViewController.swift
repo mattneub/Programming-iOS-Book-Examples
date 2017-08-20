@@ -55,9 +55,13 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
+        self.anim = UIViewPropertyAnimator(duration: 1, curve: .easeInOut) {
             self.v.center.x = self.pTarget.x
             self.v.backgroundColor = .green
+        }
+        // uncomment to see the point of this property
+        if #available(iOS 11.0, *) {
+            // self.anim.scrubsLinearly = false
         }
 
     }

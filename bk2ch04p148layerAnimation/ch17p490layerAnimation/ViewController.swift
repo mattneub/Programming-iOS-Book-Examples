@@ -6,7 +6,7 @@ import UIKit
 class ViewController : UIViewController {
     @IBOutlet var compassView : CompassView!
     
-    let which = 6
+    let which = 11
 
     @IBAction func doButton(_ sender: Any?) {
         let c = self.compassView.layer as! CompassLayer
@@ -14,18 +14,38 @@ class ViewController : UIViewController {
         
         switch which {
         case 1:
+            // proving that cornerRadius is _not_ implicitly animatable
+            c.masksToBounds = true
+            c.cornerRadius = 50
+
+            // this is actual content of the example
             arrow.transform = CATransform3DRotate(arrow.transform, .pi/4.0, 0, 0, 1)
-            
+
         case 2:
+            // new in iOS 11, corner radius is animatable under view animation
+            // but only if it is a view's layer
+            // and nothing else seems to be; it's some kind of special dispensation
+            // note e.g. that the arrow is animated too, but not over the 5-second duration
+            c.masksToBounds = true
+            arrow.masksToBounds = true
+            let anim = UIViewPropertyAnimator(duration: 5, timingParameters: UICubicTimingParameters())
+            anim.addAnimations {
+                arrow.transform = CATransform3DRotate(arrow.transform, .pi/4.0, 0, 0, 1)
+                arrow.cornerRadius = 50
+                c.cornerRadius = 50
+            }
+            anim.startAnimation()
+            
+        case 3:
             CATransaction.setAnimationDuration(0.8)
             arrow.transform = CATransform3DRotate(arrow.transform, .pi/4.0, 0, 0, 1)
             
-        case 3:
+        case 4:
             let clunk = CAMediaTimingFunction(controlPoints: 0.9, 0.1, 0.7, 0.9)
             CATransaction.setAnimationTimingFunction(clunk)
             arrow.transform = CATransform3DRotate(arrow.transform, .pi/4.0, 0, 0, 1)
 
-        case 4:
+        case 5:
             // proving that the completion block works
             CATransaction.setCompletionBlock({
                 print("done")
@@ -47,7 +67,7 @@ class ViewController : UIViewController {
             // ask for the explicit animation
             arrow.add(anim, forKey:nil)
             
-        case 5:
+        case 6:
             CATransaction.setDisableActions(true)
             arrow.transform = CATransform3DRotate(arrow.transform, .pi/4.0, 0, 0, 1)
             let anim = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
@@ -56,7 +76,7 @@ class ViewController : UIViewController {
             anim.timingFunction = clunk
             arrow.add(anim, forKey:nil)
             
-        case 6:
+        case 7:
             // capture the start and end values
             let nowValue = arrow.transform
             let startValue = CATransform3DRotate(nowValue, .pi/40.0, 0, 0, 1)
@@ -73,7 +93,7 @@ class ViewController : UIViewController {
             // ask for the explicit animation
             arrow.add(anim, forKey:nil)
             
-        case 7:
+        case 8:
             let anim = CABasicAnimation(keyPath:#keyPath(CALayer.transform))
             anim.duration = 0.05
             anim.timingFunction =
@@ -86,7 +106,7 @@ class ViewController : UIViewController {
             anim.toValue = -Float.pi/40
             arrow.add(anim, forKey:nil)
             
-        case 8:
+        case 9:
             let rot = CGFloat.pi/4.0
             CATransaction.setDisableActions(true)
             arrow.transform = CATransform3DRotate(arrow.transform, rot, 0, 0, 1)
@@ -101,7 +121,7 @@ class ViewController : UIViewController {
             anim.valueFunction = CAValueFunction(name:kCAValueFunctionRotateZ)
             arrow.add(anim, forKey:nil)
 
-        case 9:
+        case 10:
             var values = [0.0]
             let directions = sequence(first:1) {$0 * -1}
             let bases = stride(from: 20, to: 60, by: 5)
@@ -116,7 +136,7 @@ class ViewController : UIViewController {
             anim.valueFunction = CAValueFunction(name: kCAValueFunctionRotateZ)
             arrow.add(anim, forKey:nil)
 
-        case 10:
+        case 11:
             // put them all together, they spell Mother...
             
             // capture current value, set final value
@@ -154,6 +174,17 @@ class ViewController : UIViewController {
             group.animations = [anim1, anim2]
             group.duration = anim1.duration + anim2.duration
             arrow.add(group, forKey:nil)
+
+        case 12:
+            // proving that cornerRadius was always explicitly animatable
+            CATransaction.setDisableActions(true)
+            c.masksToBounds = true
+            c.cornerRadius = 50
+            let anim = CABasicAnimation(keyPath:#keyPath(CALayer.cornerRadius))
+            anim.duration = 5
+            anim.fromValue = 0
+            anim.toValue = 50
+            c.add(anim, forKey:nil)
 
             
         default: break

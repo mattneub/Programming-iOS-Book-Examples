@@ -54,7 +54,7 @@ class ViewController : UIViewController {
                     self.button.center = goal
                 })
         case 2:
-            let ba = CABasicAnimation(keyPath:"position")
+            let ba = CABasicAnimation(keyPath:#keyPath(CALayer.position))
             ba.duration = 10
             ba.fromValue = self.oldButtonCenter
             ba.toValue = goal

@@ -50,20 +50,21 @@ class ViewController: UIViewController {
             self.anim.addBehavior(p)
             
             let b = UIDynamicItemBehavior(items:[v])
-            b.charge = 10
+            b.charge = 0.2
             self.anim.addBehavior(b)
 
-            let f = UIFieldBehavior.electricField()
-            // let f = UIFieldBehavior.magneticField()
+            // let f = UIFieldBehavior.electricField()
+            let f = UIFieldBehavior.magneticField()
             let r = self.anim.referenceView!.bounds
             f.position = CGPoint(r.midX, r.midY)
+            f.falloff = 1
             f.strength = 1
             f.addItem(v)
             self.anim.addBehavior(f)
         }
         
         delay(0.3) {
-            self.anim.perform(Selector(("setDebugEnabled:")), with:true)
+            // self.anim.perform(Selector(("setDebugEnabled:")), with:true)
         }
         
     }

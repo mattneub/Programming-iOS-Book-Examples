@@ -9,7 +9,9 @@ class MyClass {
 }
 
 class MyView : UIView {
-    lazy var arrow : UIImage = self.arrowImage()
+    // lazy var arrow : UIImage = self.arrowImage()
+    // explicit type not required if not using define-and-call
+    lazy var arrow = self.arrowImage()
     func arrowImage () -> UIImage {
         // ... big image-generating code goes here ...
         return UIImage() // stub

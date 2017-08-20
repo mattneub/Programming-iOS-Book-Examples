@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         self.view.addSubview(v)
         
         let e = UIVisualEffectView(effect: nil)
-        e.frame = CGRect(50,50,200,50)
+        e.frame = CGRect(0,50,300,50)
         self.view.addSubview(e)
         
         delay(4) {
@@ -42,10 +42,10 @@ class ViewController: UIViewController {
             UIView.animate(withDuration:4, animations: {
                 e.effect = UIBlurEffect(style:.light)
             }, completion: {
-                _ in
-                UIView.animate(withDuration:4) {
-                    e.frame = CGRect(50,50,0,0)
-                }
+                _ in // yuckkk
+//                UIView.animate(withDuration:4) {
+//                    e.frame = CGRect(50,50,0,0)
+//                }
             })
         }
         

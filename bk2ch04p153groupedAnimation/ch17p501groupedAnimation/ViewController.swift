@@ -54,7 +54,7 @@ class ViewController : UIViewController {
         anim1.calculationMode = kCAAnimationPaced
         
         let revs = [0.0, .pi, 0.0, .pi]
-        let anim2 = CAKeyframeAnimation(keyPath:"transform")
+        let anim2 = CAKeyframeAnimation(keyPath:#keyPath(CALayer.transform))
         anim2.values = revs
         anim2.valueFunction = CAValueFunction(name:kCAValueFunctionRotateY)
         anim2.calculationMode = kCAAnimationDiscrete

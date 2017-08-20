@@ -115,6 +115,7 @@ class ViewController: UIViewController {
             // okay, that's boring...
             // let's write our own Swift NSDictionaryOfVariableBindings substitute (sort of)
             let d = dictionaryOfNames(v1,v2,v3)
+            // could write activate(c + c + c) instead
             NSLayoutConstraint.activate([
                 NSLayoutConstraint.constraints(withVisualFormat:
                     "H:|[v2]|", metrics: nil, views: d),

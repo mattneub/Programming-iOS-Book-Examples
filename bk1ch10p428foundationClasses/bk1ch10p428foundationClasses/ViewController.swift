@@ -228,7 +228,7 @@ class ViewController: UIViewController {
         do {
             /*
             let goal = CGPoint.zero // dummy
-            let ba = CABasicAnimation(keyPath:"position")
+            let ba = CABasicAnimation(keyPath:#keyPath(CALayer.position))
             ba.duration = 10
             ba.fromValue = NSValue(cgPoint:self.oldButtonCenter)
             ba.toValue = NSValue(cgPoint:goal)
@@ -236,7 +236,7 @@ class ViewController: UIViewController {
  */
             // but that is no longer needed! now we can say:
             let goal = CGPoint.zero // dummy
-            let ba = CABasicAnimation(keyPath:"position")
+            let ba = CABasicAnimation(keyPath:#keyPath(CALayer.position))
             ba.duration = 10
             ba.fromValue = self.oldButtonCenter
             ba.toValue = goal
@@ -248,7 +248,7 @@ class ViewController: UIViewController {
         
         // this is no longer needed either
         do {
-            let anim = CAKeyframeAnimation(keyPath:"position") // dummy
+            let anim = CAKeyframeAnimation(keyPath:#keyPath(CALayer.position)) // dummy
             let (oldP,p1,p2,newP) = (CGPoint.zero,CGPoint.zero,CGPoint.zero,CGPoint.zero) // dummy
             anim.values = [oldP,p1,p2,newP].map {NSValue(cgPoint:$0)}
         }

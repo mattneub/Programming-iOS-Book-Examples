@@ -76,7 +76,7 @@ class TriangleLayer : CALayer {
     }
         
     override class func needsDisplay(forKey key: String) -> Bool {
-        if key == "v1x" || key == "v1y" {
+        if key == #keyPath(v1x) || key == #keyPath(v1y) {
             return true
         }
         return super.needsDisplay(forKey:key)
@@ -84,7 +84,7 @@ class TriangleLayer : CALayer {
         
     override func action(forKey key: String) -> CAAction? {
         if self.presentation() != nil {
-            if key == "v1x" || key == "v1y" {
+            if key == #keyPath(v1x) || key == #keyPath(v1y) {
                 let ba = CABasicAnimation(keyPath: key)
                 ba.fromValue = self.presentation()!.value(forKey:key)
                 return ba

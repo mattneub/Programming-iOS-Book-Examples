@@ -30,7 +30,9 @@ class ViewController : UIViewController {
             delay(2) {
                 anim.pauseAnimation()
                 anim.isReversed = true
-                anim.startAnimation() // crash! Okay, that's what I wanted to know, thanks
+                anim.startAnimation()
+                // interesting; it reverses the flip but not the contents change
+                // on the whole, not likely to be a useful technique?
             }
         }
     }

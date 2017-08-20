@@ -20,7 +20,7 @@ class Moi2 {
 class Moi3 {
     let first = "Matt"
     let last = "Neuburg"
-    lazy var whole : String = self.first + " " + self.last
+    lazy var whole = self.first + " " + self.last // can omit self here
 }
 
 class Moi4 {
@@ -44,7 +44,7 @@ class Moi5 {
 class Moi6 {
     let first = "Matt"
     let last = "Neuburg"
-    lazy var whole : String = self.wholeName()
+    lazy var whole = self.wholeName()
     func wholeName() -> String {
         return self.first + " " + self.last
     }

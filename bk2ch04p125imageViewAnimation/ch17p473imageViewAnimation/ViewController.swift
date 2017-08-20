@@ -30,15 +30,14 @@ class ViewController : UIViewController {
         delay(1.0) {self.animate()}
     }
     
-    let which = 5
+    let which = 3
 
     func animate () {
         
         switch which {
         case 1:
             let mars = UIImage(named: "Mars")!
-            let r = UIGraphicsImageRenderer(size:mars.size)
-            let empty = r.image {_ in}
+            let empty = UIGraphicsImageRenderer(size:mars.size).image {_ in}
             
 //            UIGraphicsBeginImageContextWithOptions(mars.size, false, 0)
 //            let empty = UIGraphicsGetImageFromCurrentImageContext()!
@@ -101,6 +100,7 @@ class ViewController : UIViewController {
             let im = UIImage(named:"wireframe.gif")!
             let iv = UIImageView(image:im)
             iv.animationImages = [im] // didn't help
+            iv.image = UIImage.animatedImage(with: [im], duration: 2) // nope
             iv.frame.origin = CGPoint(0,100)
             // iv.frame.size = im.size
             self.view.addSubview(iv)

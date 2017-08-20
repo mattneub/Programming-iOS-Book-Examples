@@ -49,6 +49,18 @@ class MyImageView : UIImageView {
     }
 }
 
+extension UIDynamicAnimator {
+    // work around absolutely unbelievable iOS 11 bug
+    // we should be able to say let items = anim.items(in: sup.bounds) as! UIView
+    // but a collision behavior has fallen into the array, so we crash if we say that
+    // in fact, we can't even fetch items(in:) as a Swift array at all
+    func views(in rect: CGRect) -> [UIView] {
+        let nsitems = self.items(in: rect) as NSArray
+        return nsitems.flatMap{$0 as? UIView ?? nil}
+    }
+}
+
+
 class ViewController : UIViewController {
     
     @IBOutlet weak var iv : UIImageView!
@@ -77,7 +89,7 @@ class ViewController : UIViewController {
         case 1:
             // leak! neither the image view nor the gravity behavior is released
             grav.action = {
-                let items = self.anim.items(in:self.view.bounds) as! [UIView]
+                let items = self.anim.views(in:self.view.bounds)
                 let ix = items.index(of:self.iv)
                 if ix == nil {
                     self.anim.removeAllBehaviors()
@@ -87,7 +99,7 @@ class ViewController : UIViewController {
             }
         case 2:
             grav.action = {
-                let items = self.anim.items(in:self.view.bounds) as! [UIView]
+                let items = self.anim.views(in:self.view.bounds)
                 let ix = items.index(of:self.iv)
                 if ix == nil {
                     self.anim.removeAllBehaviors()
@@ -98,7 +110,7 @@ class ViewController : UIViewController {
             }
         case 3:
             grav.action = {
-                let items = self.anim.items(in:self.view.bounds) as! [UIView]
+                let items = self.anim.views(in:self.view.bounds)
                 let ix = items.index(of:self.iv)
                 if ix == nil {
                     delay(0) { // * both are released
@@ -112,7 +124,7 @@ class ViewController : UIViewController {
             grav.action = {
                 [weak grav] in // *
                 if let grav = grav {
-                    let items = self.anim.items(in:self.view.bounds) as! [UIView]
+                    let items = self.anim.views(in:self.view.bounds)
                     let ix = items.index(of:self.iv)
                     if ix == nil {
                         self.anim.removeBehavior(grav) // * grav is released, iv is not!

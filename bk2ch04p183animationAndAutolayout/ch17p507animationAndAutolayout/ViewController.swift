@@ -12,7 +12,7 @@ class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     @IBOutlet var v_horizontalPositionConstraint : NSLayoutConstraint!
     
-    let which = 7
+    let which = 1
 
     @IBAction func doButton(_ sender: Any?) {
     
@@ -64,44 +64,10 @@ class ViewController : UIViewController {
             }
 
             
-        /*
-        case 4:
-            // this works fine in iOS 8! does not trigger spurious layout
-            UIView.animate(withDuration:0.3, delay: 0, options: .autoreverse, animations: {
-                self.v.transform = CGAffineTransform(scaleX:1.1, y:1.1)
-                }, completion: {
-                    _ in
-                    self.v.transform = .identity
-                })
 
-        case 5:
-            // this works in iOS 7 as well; layer animation does not trigger spurious layout there
-            let ba = CABasicAnimation(keyPath:"transform")
-            ba.autoreverses = true
-            ba.duration = 0.3
-            ba.toValue = CATransform3DMakeScale(1.1, 1.1, 1)
-            self.v.layer.add(ba, forKey:nil)
- */
-            
         case 6:
-            // general solution to all such problems: animate a temporary snapshot instead!
-            let snap = self.v.snapshotView(afterScreenUpdates:false)!
-            snap.frame = self.v.frame
-            self.v.superview!.addSubview(snap)
-            self.v.isHidden = true
-            UIView.animate(withDuration:0.3, delay:0, options:.autoreverse,
-                animations:{
-                    snap.transform = CGAffineTransform(scaleX:1.1, y:1.1)
-                }, completion: {
-                    _ in
-                    // sometimes there is a flash; I may be able to prevent it with a delay
-                    //delay(0) {
-                        self.v.isHidden = false
-                        snap.removeFromSuperview()
-                    //}
-                })
-
-        case 7:
+            // can animate a snapshot instead, but this leaves open the question...
+            // ...of what will happen when the snapshot needs to be removed
             let snap = self.v.snapshotView(afterScreenUpdates:false)!
             snap.frame = self.v.frame
             self.v.superview!.addSubview(snap)
@@ -109,6 +75,15 @@ class ViewController : UIViewController {
             UIView.animate(withDuration:1) {
                 snap.center.x += 100
             }
+            
+        case 7:
+            UIView.animate(withDuration:1, animations: {
+                self.v.transform = CGAffineTransform(translationX: 100, y: 0)
+            }, completion: { _ in
+                self.v.superview!.setNeedsLayout()
+                self.v.superview!.layoutIfNeeded() // prove that nothing bad happens
+            })
+
             
         case 8:
             // don't try this one: it may appear to work but it causes a constraint conflict

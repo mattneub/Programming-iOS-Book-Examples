@@ -139,7 +139,7 @@ class ViewController : UIViewController {
             cell.emissionLongitude = 3 * .pi/4
             
             // might also be fun to animate position of source back and forth
-            let ba2 = CABasicAnimation(keyPath:"emitterPosition")
+            let ba2 = CABasicAnimation(keyPath:#keyPath(CAEmitterLayer.emitterPosition))
             ba2.fromValue = CGPoint(30,100)
             ba2.toValue = CGPoint(200,100)
             ba2.duration = 6

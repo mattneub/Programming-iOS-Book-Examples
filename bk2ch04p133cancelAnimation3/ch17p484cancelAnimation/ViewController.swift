@@ -3,6 +3,8 @@ import UIKit
 class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     
+    // same as previous example, but we store the original position in the layer! :)
+    
     func animate() {
         let val = self.v.center
         self.v.layer.setValue(val, forKey:"pOrig")

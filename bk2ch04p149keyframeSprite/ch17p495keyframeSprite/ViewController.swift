@@ -21,7 +21,7 @@ extension CGPoint {
 
 class ViewController : UIViewController {
     var sprite : CALayer!
-    lazy var images : [UIImage] = self.makeImages()
+    lazy var images = self.makeImages()
     
     func makeImages () -> [UIImage] {
         var arr = [UIImage]()
