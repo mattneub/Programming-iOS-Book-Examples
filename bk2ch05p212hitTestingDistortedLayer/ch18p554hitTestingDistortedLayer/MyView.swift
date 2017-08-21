@@ -40,7 +40,7 @@ class MyView : UIView {
         self.addGestureRecognizer(t)
     }
     
-    func tap() {
+    @objc func tap() {
         print("tap")
     }
     

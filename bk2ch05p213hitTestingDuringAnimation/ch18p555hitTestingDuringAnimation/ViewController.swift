@@ -39,13 +39,14 @@ class ViewController : UIViewController {
         print("tap! (the button's action method)")
     }
     
-    let which = 1 // no diff, just proving it's the same for both ways of animating
     
     @IBAction func start(_ sender: Any?) {
         print("you tapped Start")
         let goal = CGPoint(100,400)
         self.button.center = self.oldButtonCenter
         
+        var which : Int {return 1} // no diff, just proving it's the same for both ways of animating
+
         switch which {
         case 1:
             let opt = UIViewAnimationOptions.allowUserInteraction

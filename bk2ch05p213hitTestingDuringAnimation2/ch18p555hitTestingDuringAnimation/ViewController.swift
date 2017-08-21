@@ -45,7 +45,7 @@ class ViewController : UIViewController {
     
     func configAnimator() {
         self.anim = UIViewPropertyAnimator(duration: 10, curve: .linear) {}
-        anim.addAnimations {
+        self.anim.addAnimations {
             self.button.center = self.goal
         }
     }
@@ -56,24 +56,24 @@ class ViewController : UIViewController {
     
     @IBAction func start(_ sender: Any?) {
         print("you tapped Start")
-        if anim.state == .active {
-            anim.stopAnimation(false)
-            anim.finishAnimation(at: .current)
+        if self.anim.state == .active {
+            self.anim.stopAnimation(false)
+            self.anim.finishAnimation(at: .current)
         }
         self.button.center = self.oldButtonCenter
         self.configAnimator()
-        anim.startAnimation()
+        self.anim.startAnimation()
     }
     
-    func pan(_ p: UIPanGestureRecognizer) {
+    @objc func pan(_ p: UIPanGestureRecognizer) {
         let v = p.view!
         switch p.state {
         case .began:
-            if anim == nil || anim.state == .inactive {
+            if self.anim == nil || self.anim.state == .inactive {
                 self.configAnimator()
             }
-            if anim.state == .active {
-                anim.stopAnimation(true)
+            if self.anim.state == .active {
+                self.anim.stopAnimation(true)
             }
             fallthrough
         case .changed:
@@ -93,12 +93,16 @@ class ViewController : UIViewController {
             let origd = pyth(self.oldButtonCenter, self.goal)
             let curd = pyth(v.center, self.goal)
             let factor = curd/origd
-            anim.addAnimations {
+            self.anim.addAnimations {
                 self.button.center = self.goal
             }
-            anim.startAnimation()
-            anim.pauseAnimation()
-            anim.continueAnimation(withTimingParameters: anim.timingParameters, durationFactor: factor)
+            self.anim.startAnimation()
+            self.anim.pauseAnimation()
+            // I don't like this, because if the user brings the view near the goal...
+            // ...the duration should be very short
+            // self.anim.continueAnimation(withTimingParameters: nil, durationFactor:0)
+            // so that is what factor is for
+            anim.continueAnimation(withTimingParameters: nil, durationFactor: factor)
         default: break
         }
     }

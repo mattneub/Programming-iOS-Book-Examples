@@ -80,13 +80,13 @@ class CircleView: UIView, UIPreviewInteractionDelegate {
         self._prev.delegate = self
         self.makeAnimator()
     }
-    func previewInteractionDidCancel(_ prev: UIPreviewInteraction) {
+    func previewInteractionDidCancel(_ : UIPreviewInteraction) {
         self.anim.pauseAnimation()
         self.anim.isReversed = true
         self.anim.addCompletion {_ in self.makeAnimator() }
         self.anim.continueAnimation(withTimingParameters: nil, durationFactor: 0.01)
     }
-    func previewInteraction(_ prev: UIPreviewInteraction,
+    func previewInteraction(_ : UIPreviewInteraction,
                             didUpdatePreviewTransition prog: CGFloat,
                             ended: Bool) {
         self.anim.fractionComplete = min(max(prog, 0.05), 0.95)

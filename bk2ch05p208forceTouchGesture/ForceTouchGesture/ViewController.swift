@@ -71,11 +71,11 @@ class CircleView: UIView, UIPreviewInteractionDelegate {
         self.prev = UIPreviewInteraction(view: self)
         self.prev.delegate = self
     }
-    func previewInteractionDidCancel(_ prev: UIPreviewInteraction) {
+    func previewInteractionDidCancel(_ : UIPreviewInteraction) {
         self.transform = .identity
         self.alpha = 1
     }
-    func previewInteraction(_ prev: UIPreviewInteraction,
+    func previewInteraction(_ : UIPreviewInteraction,
                             didUpdatePreviewTransition prog: CGFloat,
                             ended: Bool) {
         let scale = prog + 1

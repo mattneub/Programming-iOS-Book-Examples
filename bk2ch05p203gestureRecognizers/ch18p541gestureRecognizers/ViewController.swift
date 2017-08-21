@@ -5,11 +5,19 @@ import UIKit
 class ViewController : UIViewController {
     @IBOutlet var v : UIView!
     
-    let which = 1
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // tests to prove that a multi-edge edge g.r. doesn't work at all
+        
+        let e = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(edge))
+        e.edges = [.bottom, .left]
+        // self.view.addGestureRecognizer(e)
+        
+        let e2 = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(edge2))
+        e2.edges = .left
+        self.view.addGestureRecognizer(e2)
+
         
         // view that can be single-tapped, double-tapped, or dragged
         
@@ -20,6 +28,8 @@ class ViewController : UIViewController {
         let t1 = UITapGestureRecognizer(target:self, action:#selector(singleTap))
         t1.require(toFail:t2) // *
         self.v.addGestureRecognizer(t1)
+        
+        var which : Int { return 2 }
 
         switch which {
         case 1:
@@ -35,14 +45,23 @@ class ViewController : UIViewController {
         }
     }
     
-    func singleTap () {
+    @objc func edge () {
+        print("edge")
+    }
+    
+    @objc func edge2 () {
+        print("edge2")
+    }
+
+    
+    @objc func singleTap () {
         print("single tap")
     }
-    func doubleTap () {
+    @objc func doubleTap () {
         print("double tap")
     }
     
-    func dragging(_ p : UIPanGestureRecognizer) {
+    @objc func dragging(_ p : UIPanGestureRecognizer) {
         let v = p.view!
         switch p.state {
         case .began, .changed:

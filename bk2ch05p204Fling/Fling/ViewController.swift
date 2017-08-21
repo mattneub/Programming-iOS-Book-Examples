@@ -34,9 +34,9 @@ class ViewController: UIViewController {
         self.v.addGestureRecognizer(p)
     }
     
-    let which = 1
+    let which = 2
 
-    func dragging(_ p : UIPanGestureRecognizer) {
+    @objc func dragging(_ p : UIPanGestureRecognizer) {
         let v = p.view!
         let dest = CGPoint(self.view.bounds.width/2, self.view.bounds.height - v.frame.height/2)
         switch p.state {
