@@ -46,7 +46,7 @@ class ViewController: UIViewController {
             c.x += delta.x; c.y += delta.y
             v.center = c
             p.setTranslation(.zero, in: v.superview)
-        case .ended:
+        case .ended, .cancelled:
             switch which {
             case 1:
                 let anim = UIViewPropertyAnimator(duration: 0.4, timingParameters: UISpringTimingParameters(dampingRatio: 0.6, initialVelocity: .zero))

@@ -68,7 +68,7 @@ class ViewController: UIViewController, UIDynamicAnimatorDelegate {
                 self.att.anchorPoint = pt
             }
             
-        case .ended:
+        case .ended, .cancelled:
             // user has let go! release red view
             self.anim.removeBehavior(self.att)
             

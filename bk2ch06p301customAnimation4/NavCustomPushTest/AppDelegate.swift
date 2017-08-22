@@ -44,7 +44,7 @@ extension AppDelegate {
             c.x += delta.x; c.y += delta.y
             v.center = c
             g.setTranslation(.zero, in: v.superview)
-        case .ended:
+        case .ended, .cancelled:
             let anim = self.anim as! UIViewPropertyAnimator
             let ctx = self.context!
             let vc2 = ctx.viewController(forKey:.to)!

@@ -28,7 +28,7 @@
                                                 <integer key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="w">
-                                                <real key="value" value="50"/>
+                                                <real key="value" value="150"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -40,20 +40,19 @@
                                                 <integer key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="w">
-                                                <real key="value" value="50"/>
+                                                <real key="value" value="150"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="20" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7z-SC-J82" customClass="MyView" customModule="StackViewTest" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="20" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7z-SC-J82" customClass="MyView" customModule="StackViewTest" customModuleProvider="target">
                                         <rect key="frame" x="243" y="15" width="100" height="20"/>
                                         <color key="backgroundColor" red="0.46053050290000003" green="1" blue="0.28614004459999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <viewLayoutGuide key="safeArea" id="fWR-Lk-bnD"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                 <integer key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="w">
-                                                <real key="value" value="50"/>
+                                                <real key="value" value="150"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -138,7 +137,6 @@
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="20" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7n-63-caH" customClass="MyView" customModule="StackViewTest" customModuleProvider="target">
                                         <rect key="frame" x="232" y="15" width="111" height="20"/>
                                         <color key="backgroundColor" red="0.46053050290000003" green="1" blue="0.28614004459999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <viewLayoutGuide key="safeArea" id="msv-Rz-95w"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                 <integer key="value" value="2"/>
@@ -193,7 +191,6 @@
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="20" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWX-tl-AG9" customClass="MyView" customModule="StackViewTest" customModuleProvider="target">
                                         <rect key="frame" x="243" y="15" width="100" height="20"/>
                                         <color key="backgroundColor" red="0.46053050290000003" green="1" blue="0.28614004459999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <viewLayoutGuide key="safeArea" id="KWY-jC-vt1"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                 <integer key="value" value="2"/>
@@ -248,7 +245,6 @@
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="20" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvA-cT-ueO" customClass="MyView" customModule="StackViewTest" customModuleProvider="target">
                                         <rect key="frame" x="243" y="15" width="100" height="20"/>
                                         <color key="backgroundColor" red="0.46053050290000003" green="1" blue="0.28614004459999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <viewLayoutGuide key="safeArea" id="ZDu-eZ-Okt"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                 <integer key="value" value="2"/>

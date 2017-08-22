@@ -43,9 +43,8 @@ class ViewController : UIViewController {
         self.button.addGestureRecognizer(p)
     }
     
-    func configAnimator() {
-        self.anim = UIViewPropertyAnimator(duration: 10, curve: .linear) {}
-        self.anim.addAnimations {
+    func configAnimator(factor:Double = 1) {
+        self.anim = UIViewPropertyAnimator(duration: 10 * factor, curve: .linear) {
             self.button.center = self.goal
         }
     }
@@ -57,8 +56,7 @@ class ViewController : UIViewController {
     @IBAction func start(_ sender: Any?) {
         print("you tapped Start")
         if self.anim.state == .active {
-            self.anim.stopAnimation(false)
-            self.anim.finishAnimation(at: .current)
+            self.anim.stopAnimation(true)
         }
         self.button.center = self.oldButtonCenter
         self.configAnimator()
@@ -69,9 +67,6 @@ class ViewController : UIViewController {
         let v = p.view!
         switch p.state {
         case .began:
-            if self.anim == nil || self.anim.state == .inactive {
-                self.configAnimator()
-            }
             if self.anim.state == .active {
                 self.anim.stopAnimation(true)
             }
@@ -83,7 +78,7 @@ class ViewController : UIViewController {
             c.x += delta.x; c.y += delta.y
             v.center = c
             p.setTranslation(.zero, in: v.superview)
-        case .ended:
+        case .ended, .cancelled:
             // how far are we from the goal relative to original distance?
             func pyth(_ pt1:CGPoint, _ pt2:CGPoint) -> CGFloat {
                 let x = pt1.x - pt2.x
@@ -93,16 +88,9 @@ class ViewController : UIViewController {
             let origd = pyth(self.oldButtonCenter, self.goal)
             let curd = pyth(v.center, self.goal)
             let factor = curd/origd
-            self.anim.addAnimations {
-                self.button.center = self.goal
-            }
+            // start over
+            self.configAnimator(factor:Double(factor))
             self.anim.startAnimation()
-            self.anim.pauseAnimation()
-            // I don't like this, because if the user brings the view near the goal...
-            // ...the duration should be very short
-            // self.anim.continueAnimation(withTimingParameters: nil, durationFactor:0)
-            // so that is what factor is for
-            anim.continueAnimation(withTimingParameters: nil, durationFactor: factor)
         default: break
         }
     }
