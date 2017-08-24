@@ -73,7 +73,7 @@ class ViewController: UIViewController {
             let s = "hello"
             let ix = "hello".startIndex
             // let s2a = s.substring(to:4) // compile error
-            let s2 = s.substring(to:s.index(s.startIndex, offsetBy:4))
+            // let s2 = s.substring(to:s.index(s.startIndex, offsetBy:4)) // deprecated
             let ss2 = (s as NSString).substring(to:4)
             let ss3 = s.prefix(4)
             print(s2, ss3)

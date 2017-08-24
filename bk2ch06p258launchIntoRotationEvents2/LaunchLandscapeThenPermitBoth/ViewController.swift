@@ -20,6 +20,10 @@ extension UITraitCollection {
 
 
 class ViewController: UIViewController {
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .landscape
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

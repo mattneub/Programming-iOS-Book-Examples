@@ -17,7 +17,7 @@ class ViewController : UIViewController {
     private let _cache = NSCache<NSString, NSData>()
     var cachedData : Data {
         let key = "somekey" as NSString
-        var data = self._cache.object(forKey:key) as? Data
+        var data = self._cache.object(forKey:key) as Data?
         if data != nil {
             return data!
         }
@@ -125,7 +125,7 @@ class ViewController : UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(backgrounding), name: .UIApplicationDidEnterBackground, object: nil)
     }
     
-    func backgrounding(_ n:Notification) {
+    @objc func backgrounding(_ n:Notification) {
         self.saveAndReleaseMyBigData()
     }
     

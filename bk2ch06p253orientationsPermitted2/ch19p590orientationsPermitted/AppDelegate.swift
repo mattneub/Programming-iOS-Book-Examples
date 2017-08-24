@@ -12,7 +12,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        print("supported") // whoa
+        print("supported") // whoa, call me 7 times why don't you
+        
+        // okay, all my comments in what follows are made wrong by iOS 11
+        // in iOS 11 we just launch straight into however the user is holding the device
         
         // uncomment next line to get a different answer...
         // NB in my tests this works even if portrait is first in the Info.plist in iOS 9!

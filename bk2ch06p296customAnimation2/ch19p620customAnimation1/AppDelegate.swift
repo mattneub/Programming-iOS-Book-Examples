@@ -62,7 +62,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
         return result
     }
     
-    func pan(_ g:UIScreenEdgePanGestureRecognizer) {
+    @objc func pan(_ g:UIScreenEdgePanGestureRecognizer) {
         let v = g.view!
         // according to the docs, calling self.inter.update(percent)
         // should update the percent driver's percentComplete

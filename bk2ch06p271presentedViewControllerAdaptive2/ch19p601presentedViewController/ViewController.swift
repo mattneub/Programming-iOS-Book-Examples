@@ -13,7 +13,7 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         var result = [(Int, Int)]()
         for i in arr1 {
             for j in arr2 {
-                result.append(i,j)
+                result.append((i,j))
             }
         }
         return result

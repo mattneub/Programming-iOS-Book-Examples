@@ -67,7 +67,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
         return result
     }
     
-    func pan(_ g:UIScreenEdgePanGestureRecognizer) {
+    @objc func pan(_ g:UIScreenEdgePanGestureRecognizer) {
         let v = g.view!
         let tbc = self.window!.rootViewController as! UITabBarController
         let delta = g.translation(in: v)

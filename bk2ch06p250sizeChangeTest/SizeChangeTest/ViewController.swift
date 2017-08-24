@@ -11,7 +11,7 @@ import UIKit
 // (i.e. rotation)
 
 class ViewController: UIViewController {
-
+    
     @IBAction func doButton(_ sender: Any) {
         print(self.view.bounds.size)
         let nav = self.navigationController!
@@ -22,11 +22,26 @@ class ViewController: UIViewController {
         }
     }
     
-    /*
-    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        print("will rotate") // not called if viewWillTransitionToSize is implemented
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            forName: .UIApplicationWillChangeStatusBarOrientation,
+            object: nil, queue: nil) { n in
+                print("status bar will change orientation from",
+                      UIApplication.shared.statusBarOrientation.rawValue,
+                      "to",
+                      n.userInfo?[UIApplicationStatusBarOrientationUserInfoKey] as Any)
+        }
+        NotificationCenter.default.addObserver(
+            forName: .UIApplicationDidChangeStatusBarOrientation,
+            object: nil, queue: nil) { n in
+                print("status bar did change orientation from",
+                      n.userInfo?[UIApplicationStatusBarOrientationUserInfoKey] as Any,
+                      "to",
+                      UIApplication.shared.statusBarOrientation.rawValue)
+        }
+        
     }
-*/
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to:size, with: coordinator)
@@ -52,11 +67,11 @@ class ViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         print("will layout")
     }
-
+    
     override func viewDidLayoutSubviews() {
         print("did layout")
     }
-
-
+    
+    
 }
 

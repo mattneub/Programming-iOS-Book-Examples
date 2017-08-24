@@ -9,7 +9,8 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         svc.data = "This is very important data!"
         svc.delegate = self
 //        svc.view.alpha = 0.5
-//        svc.modalPresentationStyle = .OverFullScreen
+//        svc.modalPresentationStyle = .overFullScreen
+//        svc.modalPresentationStyle = .formSheet
         self.present(svc, animated:true)
         
     }

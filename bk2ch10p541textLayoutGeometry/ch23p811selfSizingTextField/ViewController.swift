@@ -41,10 +41,10 @@ class ViewController: UIViewController {
         let s = try! String(contentsOfFile:path)
         let s2 = s.replacingOccurrences(of:"\n", with: "")
         let mas = NSMutableAttributedString(string:s2 + " " + s2, attributes:[
-            NSFontAttributeName: UIFont(name:"GillSans", size:20)!
+            .font: UIFont(name:"GillSans", size:20)!
             ])
         
-        mas.addAttribute(NSParagraphStyleAttributeName,
+        mas.addAttribute(.paragraphStyle,
             value:lend(){
                 (para:NSMutableParagraphStyle) in
                 para.alignment = .left
@@ -72,14 +72,11 @@ class ViewController: UIViewController {
         self.tv.isEditable = false
                 
         self.tv.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint.constraints(withVisualFormat:"H:|-(10)-[tv]-(10)-|",
-                metrics:nil, views:["tv":self.tv]),
-            NSLayoutConstraint.constraints(withVisualFormat:"V:[top][tv]-(10)-[bot]",
-                metrics:nil, views:[
-                    "tv":self.tv, "top":self.topLayoutGuide, "bot":self.bottomLayoutGuide
-                ])
-            ].flatMap{$0})
+        
+        self.tv.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        self.tv.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
+        NSLayoutConstraint.constraints(withVisualFormat:"H:|-(10)-[tv]-(10)-|",
+                                       metrics:nil, views:["tv":self.tv]).forEach{$0.isActive = true}
 
     }
     
@@ -87,6 +84,8 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         self.tv.contentOffset = .zero
     }
+    
+    // NOTE there's a bug: I'm not erasing the existing rectangle any longer
 
     @IBAction func doTest(_ sender: Any) {
         // how far am I scrolled?
@@ -111,12 +110,12 @@ class ViewController: UIViewController {
         
         
         // what word is that?
-        let sch = NSLinguisticTagSchemeTokenType
+        let sch = NSLinguisticTagScheme.tokenType
         let t = NSLinguisticTagger(tagSchemes:[sch], options:0)
         t.string = self.tv.text
         var r : NSRange = NSMakeRange(0,0)
         let tag = t.tag(at:ix, scheme:sch, tokenRange:&r, sentenceRange:nil)
-        if tag == NSLinguisticTagWord {
+        if tag == .word {
             print((self.tv.text as NSString).substring(with:r))
         }
         

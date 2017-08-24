@@ -2,6 +2,8 @@
 
 import UIKit
 
+// this example is no longer in the book; no one pulls a v.c. from a xib nowadays
+
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?

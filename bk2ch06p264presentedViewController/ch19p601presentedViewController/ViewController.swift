@@ -4,8 +4,6 @@ import UIKit
 
 class ViewController : UIViewController, SecondViewControllerDelegate {
     
-    let which = 2
-    let which2 = 3
 
     @IBAction func doPresent(_ sender: Any?) {
         
@@ -17,12 +15,13 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         svc.data = "This is very important data!"
         svc.delegate = self
         
+        var which : Int { return 1 }
         switch which {
         case 1: break // showing that .CoverVertical is the default
         case 2: svc.modalTransitionStyle = .coverVertical
         case 3: svc.modalTransitionStyle = .crossDissolve // wow, this looks like crap
         case 4: svc.modalTransitionStyle = .partialCurl
-            // partial curl is not partial in iOS 8/9/10; bug?
+            // partial curl is not partial in iOS 8/9/10/11; bug?
             // thus, the "click to dismiss" feature makes no sense
             // user taps background and presented vc just dismisses? weird; bug?
         case 5:
@@ -33,7 +32,8 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
         }
         
         print(self.traitCollection)
-
+        
+        var which2 : Int { return 4 }
         switch which2 {
         case 1: break // showing that .FullScreen is the default
         case 2: svc.modalPresentationStyle = .fullScreen

@@ -54,7 +54,7 @@ extension AppDelegate : UIGestureRecognizerDelegate {
         return result
     }
     
-    func pan(_ g:UIScreenEdgePanGestureRecognizer) {
+    @objc func pan(_ g:UIScreenEdgePanGestureRecognizer) {
         
         switch g.state {
         case .began:

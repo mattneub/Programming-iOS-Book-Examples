@@ -14,7 +14,7 @@ class ExtraViewController : UIViewController {
     }
     
     @IBAction func doButton (_ sender: Any) {
-        print("presented vc's presenting vc: \(self.presentingViewController)")
+        print("presented vc's presenting vc: \(self.presentingViewController as Any)")
         self.presentingViewController!.dismiss(animated:true)
     }
 }

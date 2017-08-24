@@ -19,7 +19,7 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         
     }
     
-    func navigate() {
+    @objc func navigate() {
         let v2c = View2Controller(nibName: nil, bundle: nil)
         self.navigationController!.pushViewController(v2c, animated: true)
         // alternatively, can use new way in iOS 8:

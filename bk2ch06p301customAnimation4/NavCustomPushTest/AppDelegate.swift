@@ -32,7 +32,7 @@ extension AppDelegate : UINavigationControllerDelegate {
 // user can grab image as it grows and drag it around
 // we just resume when user lets go
 extension AppDelegate {
-    func drag (_ g : UIPanGestureRecognizer) {
+    @objc func drag (_ g : UIPanGestureRecognizer) {
         let v = g.view!
         switch g.state {
         case .began:

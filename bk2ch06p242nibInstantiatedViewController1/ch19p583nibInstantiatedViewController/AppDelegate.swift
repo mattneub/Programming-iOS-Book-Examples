@@ -2,6 +2,8 @@
 
 import UIKit
 
+// no longer in book; an improbably scenario these days
+
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?

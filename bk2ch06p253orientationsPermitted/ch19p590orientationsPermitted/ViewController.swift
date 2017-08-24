@@ -7,6 +7,7 @@ class ViewController : UIViewController {
     // how to override the application's list of possible orientations
     // at the view controller level
     
+    
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         
         print(UIApplication.shared.statusBarOrientation.rawValue)
@@ -23,7 +24,7 @@ class ViewController : UIViewController {
         
         return .portrait
     }
-    
+ 
     
     // we are called *every time* the device rotates (twice, it seems)
 

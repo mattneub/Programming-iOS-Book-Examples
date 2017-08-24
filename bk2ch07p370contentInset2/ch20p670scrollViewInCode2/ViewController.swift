@@ -65,12 +65,13 @@ class ViewController : UIViewController {
     
     override func viewWillLayoutSubviews() {
         if let sv = self.sv {
-            let top = self.topLayoutGuide.length
-            let bot = self.bottomLayoutGuide.length
-            sv.contentInset = UIEdgeInsetsMake(top, 0, bot, 0)
-            sv.scrollIndicatorInsets = self.sv.contentInset
+//            let safe = self.view.safeAreaInsets
+//            sv.contentInset = UIEdgeInsetsMake(safe.top, 0, safe.bottom, 0)
+//            sv.scrollIndicatorInsets = self.sv.contentInset
+            print(sv.contentInset)
+            // new in iOS 11: content inset is zero...
+            // but we show properly anyway! scroll view obeys the safe area automatically
         }
-
     }
 
     

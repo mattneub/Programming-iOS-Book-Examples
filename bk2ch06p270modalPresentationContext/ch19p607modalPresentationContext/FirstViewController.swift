@@ -4,7 +4,7 @@ import UIKit
 class FirstViewController : UIViewController {
     
     
-    let which = 2
+    let which = 3
     @IBAction func doPresent(_ sender: Any?) {
         switch which {
         case 1:
@@ -53,7 +53,7 @@ start in First view, tap button to present
 switch to Second view
 switch back to First view, tap button to dismiss
 black view, that's the bug
-still there in iOS 9!
+still there in iOS 9! (still there in iOS 11)
 The following code stops the user from doing that, and so avoids the bug
 */
 

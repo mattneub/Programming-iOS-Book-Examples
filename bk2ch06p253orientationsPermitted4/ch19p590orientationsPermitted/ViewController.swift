@@ -89,6 +89,7 @@ class ViewController : UIViewController {
         coordinator.animate(alongsideTransition:{
             _ in
             print("transitioning size change to \(size)")
+            // assuming we originally launched into portrait...
             // arrow keeps pointing to physical top of device
             self.v.transform = coordinator.targetTransform.inverted().concatenating(self.v.transform)
             }, completion: {

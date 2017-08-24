@@ -59,7 +59,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             result = (self.window!.rootViewController as! UIPageViewController).viewControllers![0]
         default: break
         }
-        print("app delegate providing view controller \(result)")
+        print("app delegate providing view controller \(result as Any)")
         return result
     }
     

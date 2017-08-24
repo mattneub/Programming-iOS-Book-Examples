@@ -38,13 +38,13 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 
         
         UITabBarItem.appearance().setTitleTextAttributes([
-            NSFontAttributeName:UIFont(name:"Avenir-Heavy", size:14)!,
-            NSForegroundColorAttributeName:UIColor.green
+            .font:UIFont(name:"Avenir-Heavy", size:14)!,
+            .foregroundColor:UIColor.green
             ], for:.normal)
         // I am curious but yellow
         UITabBarItem.appearance().setTitleTextAttributes([
-            NSFontAttributeName:UIFont(name:"Avenir-Heavy", size:14)!,
-            NSForegroundColorAttributeName:UIColor.yellow
+            .font:UIFont(name:"Avenir-Heavy", size:14)!,
+            .foregroundColor:UIColor.yellow
             ], for:.selected)
 
         
@@ -58,9 +58,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             p.alignment = .right
             s.draw(in:CGRect(0,0,100,40),
                    withAttributes:[
-                    NSFontAttributeName:ding,
-                    NSParagraphStyleAttributeName:p,
-                    NSForegroundColorAttributeName:UIColor.red])
+                    .font:ding,
+                    .paragraphStyle:p,
+                    .foregroundColor:UIColor.red])
         }
         
         

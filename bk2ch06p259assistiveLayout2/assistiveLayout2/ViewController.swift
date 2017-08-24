@@ -23,7 +23,7 @@ extension CGVector {
     }
 }
 
-
+// run on iPad, or iPhone 6/7 plus
 
 class ViewController: UIViewController {
 
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     }()
     var firstTime = true
     var nextTraitCollection = UITraitCollection()
-    // iPhone 6 plus is the oddball here
+    // iPhone 6/7 plus is the oddball here
     func greenViewShouldAppear(size sz: CGSize) -> Bool {
         let tc = self.nextTraitCollection
         if tc.horizontalSizeClass == .regular {

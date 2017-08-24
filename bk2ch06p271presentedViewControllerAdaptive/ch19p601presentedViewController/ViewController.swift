@@ -39,10 +39,6 @@ class ViewController : UIViewController, SecondViewControllerDelegate {
 }
 
 extension ViewController : UIAdaptivePresentationControllerDelegate {
-//    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-//        print("adapt old!")
-//        return .overFullScreen
-//    }
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         print("adapt!")

@@ -30,13 +30,14 @@ I can think of various ways we can wind up launching into landscape:
 * The app (.plist) accepts any orientation, but landscape is first
 
 * The app accepts any orientation, but the view controller restricts it to landscape
+ 
 
 */
 
 class ViewController: UIViewController, UINavigationControllerDelegate {
     
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        return super.supportedInterfaceOrientations
+        // return super.supportedInterfaceOrientations
         return .landscape
     }
     
@@ -87,6 +88,65 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 }
 
 /*
+ 
+ iOS 11:
+ 
+ === normal launch into portrait
+ 
+ viewDidLoad
+ viewDidLoad reports (320.0, 568.0)
+ viewDidLoad reports compact regular
+ will appear (320.0, 568.0)
+ trait collection did change to compact regular
+ willLayout  (320.0, 568.0)
+ didLayout (320.0, 568.0)
+ did appear (320.0, 568.0)
+
+ === normal launch with device at landscape
+ 
+ viewDidLoad
+ viewDidLoad reports (568.0, 320.0)
+ viewDidLoad reports compact compact
+ will appear (568.0, 320.0)
+ trait collection did change to compact compact
+ willLayout  (568.0, 320.0)
+ didLayout (568.0, 320.0)
+ did appear (568.0, 320.0)
+
+ === app accepts only landscape
+ 
+ same as previous!
+ 
+ === app accepts any, but landscape is first, but device is held in portrait
+ 
+ same as first
+ 
+ ==== app accepts any, but view controller wants landscape
+ 
+ aha. Well, it depends. If the device is held in landscape, just like other landscape cases
+ 
+ but if the device is held in portrait, launch into portrait and rotate, it's like iOS 10:
+ 
+ viewDidLoad
+ viewDidLoad reports (320.0, 568.0)
+ viewDidLoad reports compact regular
+ will appear (320.0, 568.0) // proving that will appear can be too early for layout-related
+ willTransition trait compact compact
+ trait collection did change to compact compact
+ NO SIZE CHANGE NOTIFICATION
+ willLayout  (568.0, 320.0)
+ didLayout (568.0, 320.0)
+ did appear (568.0, 320.0)
+ 
+ but on iPad, there is no willTransition, because we did not change
+
+ 
+ */
+ 
+
+/*
+ 
+ iOS 10:
 
 === normal launch into portrait:
 
