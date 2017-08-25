@@ -35,6 +35,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         // and now for some even more disgusting decoration
         
+        return true;
+        
         let im = UIImage(named:"linen.png")!
         let sz = CGSize(5,34)
         let r = UIGraphicsImageRenderer(size:sz)

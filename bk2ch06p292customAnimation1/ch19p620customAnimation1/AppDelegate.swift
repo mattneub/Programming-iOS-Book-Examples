@@ -19,7 +19,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
-    func buttonTap(_ sender: Any) {
+    @objc func buttonTap(_ sender: Any) {
         print("tap!") // testing whether user can interact during animation
         // nope, looks like everything is okay
     }

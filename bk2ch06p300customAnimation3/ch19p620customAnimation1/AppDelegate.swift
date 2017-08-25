@@ -3,7 +3,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
+class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     var context : UIViewControllerContextTransitioning? // * phasing out misuse of IUO
     var interacting = false
@@ -27,6 +27,10 @@ class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelega
         
         return true
     }
+    
+}
+
+extension AppDelegate: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         print("animation controller")
@@ -105,11 +109,12 @@ extension AppDelegate : UIViewControllerInteractiveTransitioning {
     // (because we now have no percent driver)
     func startInteractiveTransition(_ ctx: UIViewControllerContextTransitioning){
         print("startInteractiveTransition")
-        // store transition context so the gesture recognizer can get at it
-        self.context = ctx
         
         // store the animator so the gesture recognizer can get at it
         self.anim = self.interruptibleAnimator(using: ctx)
+        
+        // store transition context so the gesture recognizer can get at it
+        self.context = ctx
         
         // I don't like having to store them both
         // I could make this look neater with a "helper object"

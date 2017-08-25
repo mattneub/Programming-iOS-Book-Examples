@@ -35,6 +35,9 @@ class ViewController : UIViewController, UINavigationControllerDelegate {
         // self.navigationController!.navigationBar.barStyle = .Black
         // uncomment to hide navigation bar
         // self.navigationController!.setNavigationBarHidden(true, animated: false)
+        
+        // large titles
+        self.navigationController!.navigationBar.prefersLargeTitles = true
     }
     
     func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
