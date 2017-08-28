@@ -2,8 +2,18 @@
 
 import UIKit
 
+/*
+ Cascade of presented view controller, the last of which is a 2-child tab bar controller
+ In iOS 10/11, very sensible:
+ child 1 checks child 2 or vice versa, then down the cascade one at a time to vc 1
+ */
+
 
 class ViewController1: UIViewController {
+    
+    // if you comment this out, no dismissal will take place because no unwind method is found
+    // that's not entirely boring; interesting just to see message log
+    @objc func unwind(_:UIStoryboardSegue) {}
 
     override func allowedChildViewControllersForUnwinding(from source: UIStoryboardUnwindSegueSource) -> [UIViewController] {
         let result = super.allowedChildViewControllersForUnwinding(from: source)

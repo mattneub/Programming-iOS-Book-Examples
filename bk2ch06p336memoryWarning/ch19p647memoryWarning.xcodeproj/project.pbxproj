@@ -95,6 +95,7 @@
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
 					C95EA6D017D416220080446B = {
+						DevelopmentTeam = W3LHX5RGV2;
 						LastSwiftMigration = 0900;
 					};
 				};
@@ -227,6 +228,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p647memoryWarning/ch19p647memoryWarning-Prefix.pch";
 				INFOPLIST_FILE = "ch19p647memoryWarning/ch19p647memoryWarning-Info.plist";
@@ -246,6 +248,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch19p647memoryWarning/ch19p647memoryWarning-Prefix.pch";
 				INFOPLIST_FILE = "ch19p647memoryWarning/ch19p647memoryWarning-Info.plist";

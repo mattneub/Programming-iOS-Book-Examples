@@ -2,10 +2,15 @@
 
 import UIKit
 
+// tested in iOS 11, all remains just the same
+// this is the example I use in the book
+
 /*
-Showing how iOS 9 performs a complex unwind involving multiple parent view controllers.
+Showing how iOS 9/10/11 performs a complex unwind involving multiple parent view controllers.
+ Instructions:
 In the first tab, do a push.
 Switch to the second tab. Do a present.
+ All four view controllers are now open, and we are in the second tab.
 Now unwind. We successfully unwind all the way back to the first tab!
 So the second tab dismisses, the tab controller switches to the first tab, and the first tab nav controller pops.
 How on earth is this possible?! There's no code at all (except for the unwind-to-here marker), but the right thing happens.
@@ -64,7 +69,7 @@ I have no children and it _is_ me!
 
 class FirstViewController: UIViewController {
     
-    @IBAction func iAmFirst (_ sender:UIStoryboardSegue!) {
+    @IBAction func iAmFirst (_ sender:UIStoryboardSegue) {
         print("\(type(of:self)) \(#function)")
     }
     

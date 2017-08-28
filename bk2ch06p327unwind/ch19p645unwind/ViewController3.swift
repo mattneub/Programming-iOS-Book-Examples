@@ -12,7 +12,7 @@ class ViewController3 : UIViewController {
     }
 
     
-    @IBAction func unwind(_ seg:UIStoryboardSegue!) {
+    @IBAction func unwind(_ seg:UIStoryboardSegue) {
         fatalError("view controller 3 unwind should never be called")
     }
     

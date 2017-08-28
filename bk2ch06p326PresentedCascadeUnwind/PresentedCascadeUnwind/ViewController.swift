@@ -2,41 +2,9 @@
 
 import UIKit
 
-/*
-
-Showing the recursive repetition of the walk from the bottom up, three times (once for each parent of a presented v.c., I suppose)
-I can't understand the purpose this, and I assume it's a bug, but I could be wrong
-
-ViewController4 shouldPerformSegueWithIdentifier(_:sender:) true
-
-ViewController4 allowedChildViewControllersForUnwindingFromSource []
-ViewController4 canPerformUnwindSegueAction(_:fromViewController:withSender:) unwind: false
-ViewController3 allowedChildViewControllersForUnwindingFromSource []
-ViewController3 canPerformUnwindSegueAction(_:fromViewController:withSender:) unwind: false
-ViewController4 allowedChildViewControllersForUnwindingFromSource []
-ViewController4 canPerformUnwindSegueAction(_:fromViewController:withSender:) unwind: false
-ViewController3 allowedChildViewControllersForUnwindingFromSource []
-ViewController3 canPerformUnwindSegueAction(_:fromViewController:withSender:) unwind: false
-ViewController2 allowedChildViewControllersForUnwindingFromSource []
-ViewController2 canPerformUnwindSegueAction(_:fromViewController:withSender:) unwind: false
-ViewController4 allowedChildViewControllersForUnwindingFromSource []
-ViewController4 canPerformUnwindSegueAction(_:fromViewController:withSender:) unwind: false
-ViewController3 allowedChildViewControllersForUnwindingFromSource []
-ViewController3 canPerformUnwindSegueAction(_:fromViewController:withSender:) unwind: false
-ViewController2 allowedChildViewControllersForUnwindingFromSource []
-ViewController2 canPerformUnwindSegueAction(_:fromViewController:withSender:) unwind: false
-ViewController1 allowedChildViewControllersForUnwindingFromSource []
-ViewController1 canPerformUnwindSegueAction(_:fromViewController:withSender:) unwind: true
-
-ViewController4 prepareForSegue(_:sender:)
-ViewController1 unwind
-ViewController1 dismiss(animated:_:completion:)
-
-
-*/
 
 /*
- Okay, I guess it was a bug, because they fixed it! In iOS 10, you get exactly what you would expect:
+ In iOS 10/11, you get exactly what you would expect:
  
  ViewController4 shouldPerformSegue(withIdentifier:sender:) true
  ViewController4 allowedChildViewControllersForUnwinding(from:) []

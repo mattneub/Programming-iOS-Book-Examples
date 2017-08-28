@@ -36,7 +36,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         proxy.currentPageIndicatorTintColor = .red
         proxy.backgroundColor = .yellow
         
-        // self.messWithGestureRecognizers(pvc) // uncomment to try it
+        self.messWithGestureRecognizers(pvc) // uncomment to try it
     }
     
 }
@@ -80,7 +80,7 @@ extension AppDelegate : UIPageViewControllerDataSource {
                 }
             }
         }
-        else { // not needed for .PageCurl
+        else { // not needed for .pageCurl
             NotificationCenter.default.addObserver(forName:.tap, object: nil, queue: .main) { n in
                 let g = n.object as! UIGestureRecognizer
                 let which = g.view!.tag

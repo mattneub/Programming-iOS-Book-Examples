@@ -8,23 +8,21 @@ import Foundation
 
 class ViewController : UIViewController {
     
-    // ignore; just making sure it compiles
-    
     // NSCache now comes across as a true Swift generic!
     // so you have to resolve those generics explicitly
     // feels like a bug to me, but whatever
+    // uses AnyObject, not Any, so we are forced to cross the bridge explicitly
     
     private let _cache = NSCache<NSString, NSData>()
     var cachedData : Data {
         let key = "somekey" as NSString
-        var data = self._cache.object(forKey:key) as Data?
-        if data != nil {
-            return data!
+        if let olddata = self._cache.object(forKey:key) {
+            return olddata as Data
         }
         // ... recreate data here ...
-        data = Data(bytes:[1,2,3,4]) // recreated data
-        self._cache.setObject(data! as NSData, forKey: key)
-        return data!
+        let newdata = Data(bytes:[1,2,3,4]) // recreated data
+        self._cache.setObject(newdata as NSData, forKey: key)
+        return newdata
     }
     
     private var _purgeable = NSPurgeableData()
@@ -42,10 +40,9 @@ class ViewController : UIViewController {
             return data
         }
     }
-    
-
+        
     // this is the actual example
-    
+    private let fnam = "myBigData"
     private var _myBigData : Data! = nil
     var myBigData : Data! {
         set (newdata) {
@@ -54,7 +51,7 @@ class ViewController : UIViewController {
         get {
             if _myBigData == nil {
                 let fm = FileManager.default
-                let f = fm.temporaryDirectory.appendingPathComponent("myBigData")
+                let f = fm.temporaryDirectory.appendingPathComponent(self.fnam)
                 if let d = try? Data(contentsOf:f) {
                     print("loaded big data from disk")
                     self._myBigData = d
@@ -91,9 +88,11 @@ class ViewController : UIViewController {
         if let myBigData = self.myBigData {
             print("unloading big data")
             let fm = FileManager.default
-            let f = fm.temporaryDirectory.appendingPathComponent("myBigData")
-            try? myBigData.write(to:f)
-            self.myBigData = nil
+            let f = fm.temporaryDirectory.appendingPathComponent(self.fnam)
+            if let _ = try? myBigData.write(to:f) {
+                print("resetting big data in memory")
+                self.myBigData = nil
+            }
         }
     }
     
@@ -112,6 +111,7 @@ class ViewController : UIViewController {
     
     @IBAction func doButton2(_ sender: Any) {
         UIApplication.shared.perform(#selector(Dummy._performMemoryWarning))
+        self._purgeable.discardContentIfPossible()
     }
     
     @IBAction func testCaches(_ sender: Any) {

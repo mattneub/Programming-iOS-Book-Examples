@@ -37,14 +37,13 @@ class ViewController : UIViewController {
         fromvc.willMove(toParentViewController: nil)
         // then perform the transition
         self.transition(
-            from:fromvc,
-            to:tovc,
-            duration:0.4,
-            options:.transitionFlipFromLeft,
+            from:fromvc, to:tovc,
+            duration:0.4, options:.transitionFlipFromLeft,
             animations:nil) { _ in
                 // when we call add, we must call "did" afterwards
                 tovc.didMove(toParentViewController: self)
                 fromvc.removeFromParentViewController() // "did" called for us
+                UIApplication.shared.endIgnoringInteractionEvents()
         }
         
     }

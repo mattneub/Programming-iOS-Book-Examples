@@ -14,7 +14,7 @@ class ViewController2 : UIViewController {
     }
 
 
-    @IBAction func unwindNOT(_ seg:UIStoryboardSegue!) {
+    @IBAction func unwindNOT(_ seg:UIStoryboardSegue) {
         print("view controller 2 unwind is called")
     }
     

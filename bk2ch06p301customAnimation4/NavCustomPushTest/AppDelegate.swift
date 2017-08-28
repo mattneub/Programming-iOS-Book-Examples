@@ -46,13 +46,15 @@ extension AppDelegate {
             g.setTranslation(.zero, in: v.superview)
         case .ended, .cancelled:
             let anim = self.anim as! UIViewPropertyAnimator
+            // this is the tricky part; the existing animation no longer works...
+            // ...because the snapshot view being animated has moved
+            // therefore we have to add a new animation that does the same thing from here
             let ctx = self.context!
             let vc2 = ctx.viewController(forKey:.to)!
             anim.addAnimations {
                 v.frame = ctx.finalFrame(for: vc2)
             }
-            let factor = 1 - anim.fractionComplete
-            anim.continueAnimation(withTimingParameters: nil, durationFactor: factor)
+            anim.continueAnimation(withTimingParameters: nil, durationFactor: 0)
         default:break
         }
     }

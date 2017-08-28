@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +14,6 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController1" customModule="PresentedCascadeUnwind" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,6 +35,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="PSY-RY-Flu"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -48,10 +46,6 @@
         <scene sceneID="po9-JY-OjZ">
             <objects>
                 <viewController id="Ygw-UY-jv6" customClass="ViewController2" customModule="PresentedCascadeUnwind" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XbU-eA-IcL"/>
-                        <viewControllerLayoutGuide type="bottom" id="tOL-bP-L2J"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="162-hp-KiH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,6 +67,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="mb0-gK-jfu"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ao0-i4-aIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -83,10 +78,6 @@
         <scene sceneID="rne-od-9hU">
             <objects>
                 <viewController id="BwV-Bv-oGE" customClass="ViewController3" customModule="PresentedCascadeUnwind" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cQ3-A4-NBD"/>
-                        <viewControllerLayoutGuide type="bottom" id="d5e-Z6-Kjp"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gWH-Vl-KCc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,6 +99,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="2Ah-J8-kkD"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTb-zG-R9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -118,10 +110,6 @@
         <scene sceneID="cZh-sS-OLz">
             <objects>
                 <viewController id="1Er-ex-c8n" customClass="TabChild2" customModule="PresentedCascadeUnwind" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="luk-Ch-Ewd"/>
-                        <viewControllerLayoutGuide type="bottom" id="rBg-q3-DK3"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="c8B-P2-dni">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,6 +124,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="x7d-C8-9L6"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="iNc-mL-Mok"/>
                 </viewController>
@@ -148,10 +137,6 @@
         <scene sceneID="lcb-Sq-xwj">
             <objects>
                 <viewController id="Bi2-GR-2Ly" customClass="TabChild1" customModule="PresentedCascadeUnwind" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="p02-5I-U6b"/>
-                        <viewControllerLayoutGuide type="bottom" id="HcT-zY-a1t"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="up4-Dv-49x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,6 +151,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="S17-dc-xRu"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="rlB-2S-lHc"/>
                 </viewController>

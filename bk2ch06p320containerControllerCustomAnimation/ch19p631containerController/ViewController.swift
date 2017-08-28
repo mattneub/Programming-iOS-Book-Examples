@@ -36,13 +36,12 @@ class ViewController : UIViewController {
 
         let r = UIGraphicsImageRenderer(size:tovc.view.bounds.size)
         let im = r.image { ctx in
-            let con = ctx.cgContext
-            tovc.view.layer.render(in:con)
+            tovc.view.layer.render(in:ctx.cgContext)
         }
 
         
         let iv = UIImageView(image:im)
-        iv.frame = CGRect.zero
+        iv.frame = .zero
         self.panel.addSubview(iv)
         tovc.view.alpha = 0 // hide the real view
         
@@ -52,12 +51,10 @@ class ViewController : UIViewController {
         fromvc.willMove(toParentViewController: nil)
         // then perform the transition
         self.transition(
-            from:fromvc,
-            to:tovc,
-            duration:0.4,
-            // no options:
+            from:fromvc, to:tovc,
+            duration:0.4, // no options:
             animations: {
-                iv.frame = tovc.view.frame // *
+                iv.frame = tovc.view.frame // animate bounds change
                 self.constrainInPanel(tovc.view) // *
         }) { _ in
             tovc.view.alpha = 1

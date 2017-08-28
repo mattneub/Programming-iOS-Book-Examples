@@ -1,6 +1,10 @@
 
 import UIKit
 
+struct S : Codable {
+    let name : String
+}
+
 class RootViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
@@ -16,10 +20,16 @@ class RootViewController : UIViewController {
     
     override func encodeRestorableState(with coder: NSCoder) {
         print("\(type(of:self)) encode \(coder)")
+        // watch _this_ little move
+        try! (coder as! NSKeyedArchiver).encodeEncodable(S(name:"matt"), forKey: "testing")
     }
     
     override func decodeRestorableState(with coder: NSCoder) {
         print("\(type(of:self)) decode \(coder)")
+        // ready? abracadabra!
+        if let m = (coder as! NSKeyedUnarchiver).decodeDecodable(S.self, forKey: "testing") {
+            print(m.name)
+        }
     }
     
     override func applicationFinishedRestoringState() {

@@ -3,28 +3,26 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    // the whole unwind architecture has been revamped (again) in iOS 9
-    // in this example, we now never get to the parent (view controller)
-    // we reach the contained vc (view controller 2) and all the work happens there
-    // thus the parent is not forced to answer the difficult question of who should do the segue
-    // but the parent still _does_ the segue! `unwindForSegue` is called, and now what happens is up to this parent
-    // but (although this example does not show it) the parent is _not alone_:
-    // _all_ parents along the way get a crack at this; thus each one gets an incremental `unwindForSegue` to mediate among his children
-    // (the second parameter, "subsequentVC", is one of its children, not necessarily the final destination)
-    
     // --> viewControllerForUnwindSegueAction deprecated
     // --> segueForUnwindingToViewController deprecated
     // replacements are:
     // allowedChildViewControllersForUnwindingFromSource
     // unwindForSegue
     
-    // The idea is that allowedChildViewControllers first should call childViewControllerContainingSegueSource and then...
-    // return a list of its own children _except_ for that one (we can't segue to it, it contains the source)
-    // The notion of the source relies on a new value class, UIStoryboardUnwindSegueSource
-    // lets you get sender, sourceViewController, unwindAction
-    
-    // This particular example is kind of pointless now,
+    // However, this particular example is kind of pointless now,
     // because `dismiss` is sent by the runtime and that's all it takes to do this particular unwind
+    // So in a way all it proves is that dismissal works fine to a child v.c.
+    
+    /*
+     ViewController3 shouldPerformSegue(withIdentifier:sender:) true
+     ViewController3 allowedChildViewControllersForUnwinding(from:) []
+     ViewController3 canPerformUnwindSegueAction(_:from:withSender:) unwind: false
+     ViewController2 allowedChildViewControllersForUnwinding(from:) []
+     ViewController2 canPerformUnwindSegueAction(_:from:withSender:) unwind: true
+     ViewController3 prepare(for:sender:)
+     vc 2 unwind
+     ViewController2 dismiss(animated:completion:)
+ */
 
 
     override func allowedChildViewControllersForUnwinding(from source: UIStoryboardUnwindSegueSource) -> [UIViewController] {

@@ -40,7 +40,7 @@ class ViewController2: UIViewController {
     }
 
     
-    @IBAction func unwind(_ segue:UIStoryboardSegue!) {
+    @IBAction func unwind(_ segue:UIStoryboardSegue) {
         print("vc 2 unwind")
     }
 

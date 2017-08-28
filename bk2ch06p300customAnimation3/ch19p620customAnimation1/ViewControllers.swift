@@ -14,7 +14,7 @@ class FirstViewController : UIViewController {
         super.viewWillAppear(animated)
         print("\(self) " + #function)
         
-        guard let tc = self.transitionCoordinator else {return}
+        guard let tc = self.transitionCoordinator else {print("no tc"); return}
         guard tc.initiallyInteractive else {return}
         tc.notifyWhenInteractionChanges { // "changes" instead of "ends"
             context in
@@ -28,7 +28,7 @@ class FirstViewController : UIViewController {
         super.viewDidAppear(animated)
         print("\(self) " + #function)
         
-        guard let tc = self.transitionCoordinator else {return}
+        guard let tc = self.transitionCoordinator else {print("no tc"); return}
         guard tc.initiallyInteractive else {return}
         tc.notifyWhenInteractionChanges { // "changes" instead of "ends"
             context in
@@ -42,7 +42,7 @@ class FirstViewController : UIViewController {
         super.viewWillDisappear(animated)
         print("\(self) " + #function)
         
-        guard let tc = self.transitionCoordinator else {return}
+        guard let tc = self.transitionCoordinator else {print("no tc"); return}
         guard tc.initiallyInteractive else {return}
         tc.notifyWhenInteractionChanges { // "changes" instead of "ends"
             context in
@@ -56,7 +56,7 @@ class FirstViewController : UIViewController {
         super.viewDidDisappear(animated)
         print("\(self) " + #function)
         
-        guard let tc = self.transitionCoordinator else {return}
+        guard let tc = self.transitionCoordinator else {print("no tc"); return}
         guard tc.initiallyInteractive else {return}
         tc.notifyWhenInteractionChanges { // "changes" instead of "ends"
             context in
