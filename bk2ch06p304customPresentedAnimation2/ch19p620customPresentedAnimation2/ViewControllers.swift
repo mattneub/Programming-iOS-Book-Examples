@@ -42,7 +42,7 @@ class ViewController2 : UIViewController {
     @IBOutlet var button : UIButton!
     
     @IBAction func doButton(_ sender: Any?) {
-        self.presentingViewController!.dismiss(animated:true)
+        self.presentingViewController?.dismiss(animated:true)
     }
     
     override func viewDidLoad() {

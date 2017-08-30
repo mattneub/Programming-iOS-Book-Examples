@@ -26,7 +26,7 @@ class ViewController2: UIViewController {
     }
     
     @IBAction func doButton(_ sender: Any) {
-        self.presentingViewController!.dismiss(animated:true)
+        self.presentingViewController?.dismiss(animated:true)
     }
 }
 

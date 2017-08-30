@@ -15,7 +15,7 @@ class RootViewController : UITableViewController {
         NSLog("about to update %@", cell.textLabel!.text!)
         cell.accessoryType = .none
         if let title = self.tableView(tv, titleForHeaderInSection:ix.section) {
-            if let label = ud.value(forKey:title) as? String {
+            if let label = ud.object(forKey:title) as? String {
                 if label == cell.textLabel!.text {
                     cell.accessoryType = .checkmark
                 }

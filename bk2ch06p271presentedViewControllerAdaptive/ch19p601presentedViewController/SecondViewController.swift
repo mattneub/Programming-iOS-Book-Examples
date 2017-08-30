@@ -32,7 +32,7 @@ class SecondViewController : UIViewController {
         // vc.dismiss(animated:true)
         // return;
         
-        self.presentingViewController!.dismiss(animated:true)
+        self.presentingViewController?.dismiss(animated:true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

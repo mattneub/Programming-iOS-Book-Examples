@@ -20,6 +20,7 @@ class SecondViewController : UIViewController {
     weak var delegate : SecondViewControllerDelegate?
     
     @IBAction func doDismiss(_ sender: Any?) {
+        print("dismiss button")
         // logging to show relationships
         print(self.presentingViewController!)
         print(self.presentingViewController!.presentedViewController as Any)
@@ -32,7 +33,7 @@ class SecondViewController : UIViewController {
         // vc.dismiss(animated:true)
         // return;
         
-        self.presentingViewController!.dismiss(animated:true)
+        self.presentingViewController?.dismiss(animated:true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,6 +42,16 @@ class SecondViewController : UIViewController {
         print(self.data as Any)
         // also explore size class situation
         print(self.traitCollection)
+        
+        // workaround for curl bug
+        if let grs = self.view.gestureRecognizers {
+            for g in grs {
+                if NSStringFromClass(type(of:g)).hasSuffix("CurlUpTapGestureRecognizer") {
+                    g.isEnabled = false
+                }
+            }
+        }
+        // print("parent", self.parent as Any)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
