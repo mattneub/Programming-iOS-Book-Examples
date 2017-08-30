@@ -1,9 +1,9 @@
 import UIKit
 
-class ExtraViewController: UIViewController {
+class PushedViewController: UIViewController {
     
     deinit {
-        print("farewell from ExtraViewController")
+        print("farewell from PushedViewController")
     }
     
     override func allowedChildViewControllersForUnwinding(from source: UIStoryboardUnwindSegueSource) -> [UIViewController] {
@@ -45,10 +45,10 @@ class ExtraViewController: UIViewController {
 
 }
 
-class ExtraViewController2: UIViewController {
+class PresentedViewController: UIViewController {
     
     deinit {
-        print("farewell from ExtraViewController2")
+        print("farewell from PresentedViewController")
     }
     
     override func allowedChildViewControllersForUnwinding(from source: UIStoryboardUnwindSegueSource) -> [UIViewController] {

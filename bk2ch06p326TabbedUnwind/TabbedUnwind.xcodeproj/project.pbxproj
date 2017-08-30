@@ -13,7 +13,7 @@
 		328C1AAB1B7ABFF9001DA214 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328C1AA91B7ABFF9001DA214 /* Main.storyboard */; };
 		328C1AAD1B7ABFF9001DA214 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 328C1AAC1B7ABFF9001DA214 /* Assets.xcassets */; };
 		328C1AB01B7ABFF9001DA214 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328C1AAE1B7ABFF9001DA214 /* LaunchScreen.storyboard */; };
-		328C1AB81B7AC074001DA214 /* ExtraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C1AB71B7AC074001DA214 /* ExtraViewController.swift */; };
+		328C1AB81B7AC074001DA214 /* PushedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C1AB71B7AC074001DA214 /* PushedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		328C1AAC1B7ABFF9001DA214 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		328C1AAF1B7ABFF9001DA214 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		328C1AB11B7ABFF9001DA214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		328C1AB71B7AC074001DA214 /* ExtraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraViewController.swift; sourceTree = "<group>"; };
+		328C1AB71B7AC074001DA214 /* PushedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,7 @@
 				328C1AA31B7ABFF9001DA214 /* AppDelegate.swift */,
 				328C1AA51B7ABFF9001DA214 /* FirstViewController.swift */,
 				328C1AA71B7ABFF9001DA214 /* SecondViewController.swift */,
-				328C1AB71B7AC074001DA214 /* ExtraViewController.swift */,
+				328C1AB71B7AC074001DA214 /* PushedViewController.swift */,
 				328C1AA91B7ABFF9001DA214 /* Main.storyboard */,
 				328C1AAC1B7ABFF9001DA214 /* Assets.xcassets */,
 				328C1AAE1B7ABFF9001DA214 /* LaunchScreen.storyboard */,
@@ -145,7 +145,7 @@
 				328C1AA81B7ABFF9001DA214 /* SecondViewController.swift in Sources */,
 				328C1AA41B7ABFF9001DA214 /* AppDelegate.swift in Sources */,
 				328C1AA61B7ABFF9001DA214 /* FirstViewController.swift in Sources */,
-				328C1AB81B7AC074001DA214 /* ExtraViewController.swift in Sources */,
+				328C1AB81B7AC074001DA214 /* PushedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

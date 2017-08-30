@@ -18,7 +18,7 @@ How on earth is this possible?! There's no code at all (except for the unwind-to
 Logging reveals the sequence:
 
 // prelude: source gets a chance to veto the whole thing
- ExtraViewController2 shouldPerformSegue(withIdentifier:sender:) true
+ PresentedViewController shouldPerformSegue(withIdentifier:sender:) true
 
 // === first we establish the path from the source to the destination
 // === we also establish _who_ is the destination; note that we only ask "can perform" if you have no eligible children
@@ -30,18 +30,18 @@ Logging reveals the sequence:
 
 // I have no children and it isn't me
 This one looks like a bug to me: why do we go _down_ into a child when we were told there were no eligible children?
- ExtraViewController2 allowedChildViewControllersForUnwinding(from:) []
- ExtraViewController2 canPerformUnwindSegueAction(_:from:withSender:) iAmFirst: false
+ PresentedViewController allowedChildViewControllersForUnwinding(from:) []
+ PresentedViewController canPerformUnwindSegueAction(_:from:withSender:) iAmFirst: false
 
 // I have one! it's the nav controller in the first tab
  MyTabBarController allowedChildViewControllersForUnwinding(from:) [<TabbedUnwind.MyNavController: 0x7f9319023600>]
 
 // I have two!
- MyNavController allowedChildViewControllersForUnwinding(from:) [<TabbedUnwind.ExtraViewController: 0x7f931850b6a0>, <TabbedUnwind.FirstViewController: 0x7f931b00b2e0>]
+ MyNavController allowedChildViewControllersForUnwinding(from:) [<TabbedUnwind.PushedViewController: 0x7f931850b6a0>, <TabbedUnwind.FirstViewController: 0x7f931b00b2e0>]
 
 // I have no children and it isn't me
- ExtraViewController allowedChildViewControllersForUnwinding(from:) []
- ExtraViewController canPerformUnwindSegueAction(_:from:withSender:) iAmFirst: false
+ PushedViewController allowedChildViewControllersForUnwinding(from:) []
+ PushedViewController canPerformUnwindSegueAction(_:from:withSender:) iAmFirst: false
 
 I have no children and it _is_ me!
  FirstViewController allowedChildViewControllersForUnwinding(from:) []
@@ -50,7 +50,7 @@ I have no children and it _is_ me!
 // === we have now established the path; now we perform the unwind in stages
 // === note that MyTabBarController is told to unwind to the nav controller; the nav controller is told to unwind to the root vc
 
- ExtraViewController2 prepare(for:sender:)
+ PresentedViewController prepare(for:sender:)
  FirstViewController iAmFirst // the marker method is called
 
  MyTabBarController dismiss(animated:completion:)
@@ -61,8 +61,8 @@ I have no children and it _is_ me!
  MyNavController unwind(for:towardsViewController:) <TabbedUnwind.FirstViewController: 0x7f931b00b2e0>
  MyNavController popToViewController(_:animated:) // responds by popping
  
- farewell from ExtraViewController
- farewell from ExtraViewController2
+ farewell from PushedViewController
+ farewell from PresentedViewController
 
 
 */
