@@ -60,6 +60,14 @@ class ViewController : UIViewController {
                 "V:[lab]-(10)-|",
                 metrics:nil,
                 views:["lab":previousLab!]))
+        // also need to dictate content size width
+        con.append(contentsOf:
+            NSLayoutConstraint.constraints(withVisualFormat:
+                "H:|-[lab]-|",
+               metrics:nil,
+               views:["lab":previousLab!]))
+
+        
         NSLayoutConstraint.activate(con)
     }
     
@@ -69,10 +77,13 @@ class ViewController : UIViewController {
 //            sv.contentInset = UIEdgeInsetsMake(safe.top, 0, safe.bottom, 0)
 //            sv.scrollIndicatorInsets = self.sv.contentInset
             print(sv.contentInset)
+            print(sv.adjustedContentInset)
             // new in iOS 11: content inset is zero...
             // but we show properly anyway! scroll view obeys the safe area automatically
+            // and the adjustedContentInset shows this
+            // interestingly this works even though we didn't set the behavior to .always
+            // is that because it works correctly for top bar but not for status bar alone?
         }
     }
-
     
 }

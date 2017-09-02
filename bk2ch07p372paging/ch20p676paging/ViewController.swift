@@ -41,6 +41,7 @@ class ViewController : UIViewController, UIScrollViewDelegate {
                 self.sv.addSubview(v)
             }
             self.sv.contentSize = CGSize(3*sz.width,sz.height)
+            self.sv.layer.borderWidth = 1 // just so we can see what's really going on
         }
     }
     

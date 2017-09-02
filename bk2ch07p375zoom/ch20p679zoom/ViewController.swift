@@ -79,8 +79,6 @@ class ViewController : UIViewController, UIScrollViewDelegate {
         return scrollView.viewWithTag(999)
     }
     
-    
-    
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         var which : Int {return 0} // 1 to add some interesting logging :)
         switch which {

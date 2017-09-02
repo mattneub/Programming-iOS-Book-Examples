@@ -16,6 +16,7 @@ class ViewController : UIViewController {
         }
     }
     
+    // iOS 10 way:
     // no code for content inset - automaticallyAdjustsScrollViewInsets takes care of it
 
 }

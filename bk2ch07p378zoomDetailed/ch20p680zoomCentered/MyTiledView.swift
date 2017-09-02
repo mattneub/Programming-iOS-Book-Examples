@@ -30,6 +30,16 @@ class MyTiledView : UIView {
         
         drawQueue.sync { // work around nasty thread issue...
             // we are called twice simultaneously on two different background threads!
+            
+            // gather needed info on main thread
+            // alas, I was always doing this wrong before; now thread checker has caught me!
+            var lay = CATiledLayer()
+            var bounds = CGRect.zero
+            DispatchQueue.main.sync {
+                lay = self.layer as! CATiledLayer
+                bounds = self.bounds
+            }
+
 
             let oldSize = self.currentSize
             // NSLog("oldSize %@", NSStringFromCGSize(oldSize))
@@ -39,7 +49,6 @@ class MyTiledView : UIView {
                 // make a new size
                 self.currentSize = rect.size
                 // make a new image
-                let lay = self.layer as! CATiledLayer
                 
                 let tr = UIGraphicsGetCurrentContext()!.ctm
                 let sc = tr.a/lay.contentsScale
@@ -66,7 +75,7 @@ class MyTiledView : UIView {
                 
                 NSLog("created image at size %@", NSStringFromCGSize(sz)) // only three times
             }
-            self.currentImage?.draw(in:self.bounds)
+            self.currentImage?.draw(in:bounds)
             
             // comment out the following! it's here just so we can see the tile boundaries
             

@@ -32,7 +32,6 @@ extension CGVector {
 
 class ViewController : UIViewController {
     
-    let which = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,22 +40,18 @@ class ViewController : UIViewController {
         sv.backgroundColor = .white
         sv.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sv)
-        var con = [NSLayoutConstraint]()
 
-        con.append(contentsOf:
-            NSLayoutConstraint.constraints(withVisualFormat:
-                "H:|[sv]|",
-                metrics:nil,
-                views:["sv":sv]))
-        con.append(contentsOf:
-            NSLayoutConstraint.constraints(withVisualFormat:
-                "V:|[sv]|",
-                metrics:nil,
-                views:["sv":sv]))
+        NSLayoutConstraint.activate([
+            sv.topAnchor.constraint(equalTo:self.view.topAnchor),
+            sv.bottomAnchor.constraint(equalTo:self.view.bottomAnchor),
+            sv.leadingAnchor.constraint(equalTo:self.view.leadingAnchor),
+            sv.trailingAnchor.constraint(equalTo:self.view.trailingAnchor),
+        ])
         
         let v = UIView() // content view
         sv.addSubview(v)
         
+        var which : Int { return 4 }
         switch which {
         case 1:
             
@@ -69,14 +64,13 @@ class ViewController : UIViewController {
                 lab.text = "This is label \(i+1)"
                 lab.sizeToFit()
                 lab.frame.origin = CGPoint(10,y)
-                v.addSubview(lab) // *
+                v.addSubview(lab)
                 y += lab.bounds.size.height + 10
             }
             
             // set content view frame and content size explicitly
             v.frame = CGRect(0,0,0,y)
             sv.contentSize = v.frame.size
-            NSLayoutConstraint.activate(con)
             
         case 2:
             
@@ -89,21 +83,24 @@ class ViewController : UIViewController {
                 lab.text = "This is label \(i+1)"
                 lab.sizeToFit()
                 lab.frame.origin = CGPoint(10,y)
-                v.addSubview(lab) // *
+                v.addSubview(lab)
                 y += lab.bounds.size.height + 10
             }
             
-            // set content view width, height, and frame-to-superview constraints
+            // set content view width, height, and edge constraints
             // content size is calculated for us
             v.translatesAutoresizingMaskIntoConstraints = false
-            con.append(contentsOf:
-                NSLayoutConstraint.constraints(withVisualFormat:"V:|[v(y)]|",
-                    metrics:["y":y], views:["v":v]))
-            con.append(contentsOf:
-                NSLayoutConstraint.constraints(withVisualFormat:"H:|[v(0)]|",
-                    metrics:nil, views:["v":v]))
-            NSLayoutConstraint.activate(con)
-
+            let svclg = sv.contentLayoutGuide
+            NSLayoutConstraint.activate([
+                v.widthAnchor.constraint(equalToConstant:0), 
+                v.heightAnchor.constraint(equalToConstant:y),
+                svclg.topAnchor.constraint(equalTo:v.topAnchor),
+                svclg.bottomAnchor.constraint(equalTo:v.bottomAnchor),
+                svclg.leadingAnchor.constraint(equalTo:v.leadingAnchor),
+                svclg.trailingAnchor.constraint(equalTo:v.trailingAnchor),
+            ])
+            
+            sv.contentInsetAdjustmentBehavior = .always // work around launch offset bug
             
         case 3:
             // content view uses explicit constraints
@@ -115,48 +112,37 @@ class ViewController : UIViewController {
                 // lab.backgroundColor = .red
                 lab.translatesAutoresizingMaskIntoConstraints = false
                 lab.text = "This is label \(i+1)"
-                v.addSubview(lab) // *
-                con.append(contentsOf: // *
-                    NSLayoutConstraint.constraints(withVisualFormat:
-                        "H:|-(10)-[lab]",
-                        metrics:nil,
-                        views:["lab":lab]))
-                if previousLab == nil { // first one, pin to top
-                    con.append(contentsOf: // *
-                        NSLayoutConstraint.constraints(withVisualFormat:
-                            "V:|-(10)-[lab]",
-                            metrics:nil,
-                            views:["lab":lab]))
-                } else { // all others, pin to previous
-                    con.append(contentsOf: // *
-                        NSLayoutConstraint.constraints(withVisualFormat:
-                            "V:[prev]-(10)-[lab]",
-                            metrics:nil,
-                            views:["lab":lab, "prev":previousLab!]))
-                }
+                v.addSubview(lab)
+                lab.leadingAnchor.constraint(
+                    equalTo: v.leadingAnchor,
+                    constant: 10).isActive = true
+                lab.topAnchor.constraint(
+                    // first one, pin to top; all others, pin to previous
+                    equalTo: previousLab?.bottomAnchor ?? v.topAnchor,
+                    constant: 10).isActive = true
                 previousLab = lab
             }
-            
+
             // last one, pin to bottom, this dictates content size height!
-            con.append(contentsOf: // *
-                NSLayoutConstraint.constraints(withVisualFormat:
-                    "V:[lab]-(10)-|",
-                    metrics:nil,
-                    views:["lab":previousLab!]))
+            v.bottomAnchor.constraint(
+                equalTo: previousLab!.bottomAnchor, constant: 10).isActive = true
+            // need to do something about width
+            v.widthAnchor.constraint(equalToConstant: 0).isActive = true
 
             
             // pin content view to scroll view, sized by its subview constraints
             // content size is calculated for us
             v.translatesAutoresizingMaskIntoConstraints = false
-            con.append(contentsOf:
-                NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|",
-                    metrics:nil, views:["v":v])) // *
-            con.append(contentsOf:
-                NSLayoutConstraint.constraints(withVisualFormat:"H:|[v]|",
-                    metrics:nil, views:["v":v])) // *
-            NSLayoutConstraint.activate(con)
-
+            let svclg = sv.contentLayoutGuide
+            NSLayoutConstraint.activate([
+                svclg.topAnchor.constraint(equalTo:v.topAnchor),
+                svclg.bottomAnchor.constraint(equalTo:v.bottomAnchor),
+                svclg.leadingAnchor.constraint(equalTo:v.leadingAnchor),
+                svclg.trailingAnchor.constraint(equalTo:v.trailingAnchor),
+            ])
             
+            sv.contentInsetAdjustmentBehavior = .always // work around launch offset bug
+
         case 4:
             // content view doesn't use explicit constraints
             // subviews do explicit constraints
@@ -167,42 +153,31 @@ class ViewController : UIViewController {
                 // lab.backgroundColor = .red
                 lab.translatesAutoresizingMaskIntoConstraints = false
                 lab.text = "This is label \(i+1)"
-                v.addSubview(lab) // *
-                con.append(contentsOf: // *
-                    NSLayoutConstraint.constraints(withVisualFormat:
-                        "H:|-(10)-[lab]",
-                        metrics:nil,
-                        views:["lab":lab]))
-                if previousLab == nil { // first one, pin to top
-                    con.append(contentsOf: // *
-                        NSLayoutConstraint.constraints(withVisualFormat:
-                            "V:|-(10)-[lab]",
-                            metrics:nil,
-                            views:["lab":lab]))
-                } else { // all others, pin to previous
-                    con.append(contentsOf: // *
-                        NSLayoutConstraint.constraints(withVisualFormat:
-                            "V:[prev]-(10)-[lab]",
-                            metrics:nil,
-                            views:["lab":lab, "prev":previousLab!]))
-                }
+                v.addSubview(lab)
+                lab.leadingAnchor.constraint(
+                    equalTo: v.leadingAnchor,
+                    constant: 10).isActive = true
+                lab.topAnchor.constraint(
+                    // first one, pin to top; all others, pin to previous
+                    equalTo: previousLab?.bottomAnchor ?? v.topAnchor,
+                    constant: 10).isActive = true
                 previousLab = lab
             }
             
             // last one, pin to bottom, this dictates content size height!
-            con.append(contentsOf: // *
-                NSLayoutConstraint.constraints(withVisualFormat:
-                    "V:[lab]-(10)-|",
-                    metrics:nil,
-                    views:["lab":previousLab!]))
-            NSLayoutConstraint.activate(con)
-            
+            v.bottomAnchor.constraint(
+                equalTo: previousLab!.bottomAnchor, constant: 10).isActive = true
+            // need to do something about width
+            v.widthAnchor.constraint(equalToConstant:0).isActive = true
+
+
             // autolayout helps us learn the consequences of those constraints
             
             let minsz = v.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             // set content view frame and content size explicitly
-            v.frame = CGRect(0,0,0,minsz.height)
-            sv.contentSize = v.frame.size
+            v.frame = CGRect(origin:.zero, size:minsz)
+            sv.contentSize = minsz
+            
 
         default: break
         }

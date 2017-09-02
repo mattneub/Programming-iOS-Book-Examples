@@ -15,6 +15,7 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.sv.contentSize = self.map.bounds.size
+        self.sv.contentInsetAdjustmentBehavior = .never
     }
     
     @IBAction func dragging (_ p: UIPanGestureRecognizer) {

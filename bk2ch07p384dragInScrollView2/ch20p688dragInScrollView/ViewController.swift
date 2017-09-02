@@ -22,10 +22,12 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
         let iv = UIImageView(image:UIImage(named:"smiley.png"))
         iv.translatesAutoresizingMaskIntoConstraints = false
         self.sv.addSubview(iv)
-        let sup = self.sv.superview!
+        // let sup = self.sv.superview!
+        // new in iOS 11, we have frame layout guide to pin to
+        let svflg = self.sv.frameLayoutGuide
         NSLayoutConstraint.activate([
-            iv.rightAnchor.constraint(equalTo:sup.rightAnchor, constant: -5),
-            iv.topAnchor.constraint(equalTo:sup.topAnchor, constant: 25)
+            iv.rightAnchor.constraint(equalTo:svflg.rightAnchor, constant: -5),
+            iv.topAnchor.constraint(equalTo:svflg.topAnchor, constant: 25)
             ])
         
 //        delay(2) {

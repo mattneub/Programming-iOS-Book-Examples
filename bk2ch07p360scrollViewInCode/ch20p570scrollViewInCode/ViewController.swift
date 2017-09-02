@@ -55,12 +55,49 @@ class ViewController : UIViewController {
         }
         var sz = sv.bounds.size
         sz.height = y
-        sv.contentSize = sz // This is the crucial line
+        // This is the crucial move
+        // note that in iOS 11 we can do this by setting the layout guide size _directly_
+        // this is one of the big advantages of the layout guide
+        if #available(iOS 11.0, *) {
+//            sv.contentLayoutGuide.widthAnchor.constraint(equalToConstant: sz.width).isActive = true
+//            sv.contentLayoutGuide.heightAnchor.constraint(equalToConstant: sz.height).isActive = true
+            sv.contentSize = sz
+        } else {
+            sv.contentSize = sz
+        }
+
+        
+        // this shows how we had to do this before iOS 11; we now get all this "for free"
+        // note that initial contentOffset must be adjusted to compensate for contentInset
+        if #available(iOS 11.0, *) {
+            // sv.contentInsetAdjustmentBehavior = .always
+        } else {
+            sv.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+            sv.scrollIndicatorInsets = sv.contentInset
+            // sv.contentOffset = CGPoint(x:0, y:-20)
+            // but a better way is:
+            sv.scrollRectToVisible(CGRect(0,0,1,1), animated: false)
+            // that way we don't have to calculate the offset
+        }
+
         
         print(sv.contentSize)
         
         delay(2) {
             print(sv.contentSize)
+            // new in iOS 11, we also get automatic insetting
+            // sv.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+            if #available(iOS 11.0, *) {
+                print(sv.adjustedContentInset)
+            } else {
+                // Fallback on earlier versions
+            } // inset 20 from the top
+            // affects both content and scroll indicators!
+            // the adjustedContentInset is _added_ to any content inset we explicitly provide
+            // thus in most cases the best option is to do nothing!
+            print(sv.contentInset) // zero
+            print(sv.scrollIndicatorInsets) // zero
+            print(sv.contentOffset) // 0, -20
         }
         
         

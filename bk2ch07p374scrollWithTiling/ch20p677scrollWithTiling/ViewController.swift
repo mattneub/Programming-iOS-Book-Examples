@@ -38,6 +38,11 @@ class ViewController : UIViewController {
         self.sv.addSubview(content)
         self.sv.contentSize = f.size
         self.content = content
+        
+        if #available(iOS 11.0, *) {
+            // must do this, or we won't be fullscreen as in iOS 10
+            self.sv.contentInsetAdjustmentBehavior = .never
+        }
     }
 }
 
@@ -62,6 +67,8 @@ class TiledView : UIView {
     */
     
     override func draw(_ r: CGRect) {
+        NSLog("%@", "outside sync: \(r)")
+
         drawQueue.sync { // work around nasty thread issue...
             // we are called twice simultaneously on two different background threads!
             // logging to prove we have in fact worked around it
