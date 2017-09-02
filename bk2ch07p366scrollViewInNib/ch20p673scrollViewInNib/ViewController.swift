@@ -31,8 +31,6 @@ class ViewController : UIViewController {
     @IBOutlet var cv : UIView!
     var didSetup = false
     
-    // storyboard doesn't use autolayout
-
     override func viewDidLayoutSubviews() {
         if !self.didSetup {
             self.didSetup = true
@@ -41,9 +39,10 @@ class ViewController : UIViewController {
             // can't do this in nib editor unless using autolayout in nib
             // self.sv.contentInsetAdjustmentBehavior = .never
             // I still like this trick better, as it says what it does
-            sv.scrollRectToVisible(CGRect(0,0,1,1), animated: false)
+            // sv.scrollRectToVisible(CGRect(0,0,1,1), animated: false)
 
         }
+        print(self.sv.contentSize)
     }
     
     

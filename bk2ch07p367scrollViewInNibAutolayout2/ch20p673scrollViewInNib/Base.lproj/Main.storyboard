@@ -22,10 +22,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4I0-0D-sN3" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="772"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6g-wg-JQb">
-                                                <rect key="frame" x="20" y="20" width="200" height="173"/>
+                                                <rect key="frame" x="60" y="0.0" width="200" height="173"/>
                                                 <color key="backgroundColor" red="1" green="0.21931261690000001" blue="0.45882864099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="doc-KO-IBi"/>
@@ -33,21 +33,21 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpl-LU-ADO">
-                                                <rect key="frame" x="20" y="213" width="200" height="173"/>
+                                                <rect key="frame" x="60" y="193" width="200" height="173"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgE-Zh-y4g">
-                                                <rect key="frame" x="20" y="406" width="200" height="173"/>
+                                                <rect key="frame" x="60" y="386" width="200" height="173"/>
                                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4a-62-Vaz">
-                                                <rect key="frame" x="20" y="599" width="200" height="173"/>
+                                                <rect key="frame" x="60" y="579" width="200" height="173"/>
                                                 <color key="backgroundColor" red="1" green="0.21931261690000001" blue="0.45882864099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="800" id="2Z0-P0-SuX"/>
+                                            <constraint firstAttribute="height" constant="772" id="2Z0-P0-SuX"/>
                                             <constraint firstItem="h6g-wg-JQb" firstAttribute="leading" secondItem="zgE-Zh-y4g" secondAttribute="leading" id="Csn-Ig-W4X"/>
                                             <constraint firstItem="h6g-wg-JQb" firstAttribute="width" secondItem="c4a-62-Vaz" secondAttribute="width" id="FEU-4e-YlW"/>
                                             <constraint firstItem="h6g-wg-JQb" firstAttribute="leading" secondItem="c4a-62-Vaz" secondAttribute="leading" id="N35-VN-H2X"/>
@@ -56,11 +56,11 @@
                                             <constraint firstItem="h6g-wg-JQb" firstAttribute="height" secondItem="c4a-62-Vaz" secondAttribute="height" id="Tih-gd-4lZ"/>
                                             <constraint firstItem="h6g-wg-JQb" firstAttribute="width" secondItem="zpl-LU-ADO" secondAttribute="width" id="Veg-IA-Ulb"/>
                                             <constraint firstItem="c4a-62-Vaz" firstAttribute="top" secondItem="zgE-Zh-y4g" secondAttribute="bottom" constant="20" id="WGK-IW-gTK"/>
-                                            <constraint firstItem="h6g-wg-JQb" firstAttribute="leading" secondItem="4I0-0D-sN3" secondAttribute="leading" constant="20" id="acf-Bw-8aU"/>
+                                            <constraint firstItem="h6g-wg-JQb" firstAttribute="centerX" secondItem="4I0-0D-sN3" secondAttribute="centerX" id="Wkp-1Y-IEb"/>
                                             <constraint firstItem="h6g-wg-JQb" firstAttribute="leading" secondItem="zpl-LU-ADO" secondAttribute="leading" id="atZ-iv-O0p"/>
                                             <constraint firstItem="zpl-LU-ADO" firstAttribute="top" secondItem="h6g-wg-JQb" secondAttribute="bottom" constant="20" id="bC5-zP-IiB"/>
                                             <constraint firstItem="h6g-wg-JQb" firstAttribute="width" secondItem="zgE-Zh-y4g" secondAttribute="width" id="bCx-uU-xVW"/>
-                                            <constraint firstItem="h6g-wg-JQb" firstAttribute="top" secondItem="4I0-0D-sN3" secondAttribute="top" constant="20" id="pi8-hA-taB"/>
+                                            <constraint firstItem="h6g-wg-JQb" firstAttribute="top" secondItem="4I0-0D-sN3" secondAttribute="top" id="pi8-hA-taB"/>
                                             <constraint firstItem="zgE-Zh-y4g" firstAttribute="top" secondItem="zpl-LU-ADO" secondAttribute="bottom" constant="20" id="qAU-7h-4lE"/>
                                             <constraint firstItem="h6g-wg-JQb" firstAttribute="height" secondItem="zpl-LU-ADO" secondAttribute="height" id="yrf-XG-xlc"/>
                                         </constraints>

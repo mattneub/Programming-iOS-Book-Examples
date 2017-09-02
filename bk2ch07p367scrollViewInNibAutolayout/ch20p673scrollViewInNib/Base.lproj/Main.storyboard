@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4I0-0D-sN3" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
+                                        <rect key="frame" x="0.0" y="-20" width="320" height="792"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6g-wg-JQb">
                                                 <rect key="frame" x="20" y="20" width="200" height="173"/>
@@ -58,7 +58,7 @@
                                             <constraint firstItem="h6g-wg-JQb" firstAttribute="leading" secondItem="zpl-LU-ADO" secondAttribute="leading" id="atZ-iv-O0p"/>
                                             <constraint firstItem="zpl-LU-ADO" firstAttribute="top" secondItem="h6g-wg-JQb" secondAttribute="bottom" constant="20" id="bC5-zP-IiB"/>
                                             <constraint firstItem="h6g-wg-JQb" firstAttribute="width" secondItem="zgE-Zh-y4g" secondAttribute="width" id="bCx-uU-xVW"/>
-                                            <constraint firstAttribute="bottom" secondItem="c4a-62-Vaz" secondAttribute="bottom" constant="28" id="e9T-ni-C8j"/>
+                                            <constraint firstAttribute="bottom" secondItem="c4a-62-Vaz" secondAttribute="bottom" constant="20" id="e9T-ni-C8j"/>
                                             <constraint firstItem="h6g-wg-JQb" firstAttribute="top" secondItem="4I0-0D-sN3" secondAttribute="top" constant="20" id="pi8-hA-taB"/>
                                             <constraint firstItem="zgE-Zh-y4g" firstAttribute="top" secondItem="zpl-LU-ADO" secondAttribute="bottom" constant="20" id="qAU-7h-4lE"/>
                                             <constraint firstAttribute="trailing" secondItem="h6g-wg-JQb" secondAttribute="trailing" constant="100" id="r3C-QQ-cSZ"/>
@@ -70,7 +70,7 @@
                                     <constraint firstAttribute="bottom" secondItem="4I0-0D-sN3" secondAttribute="bottom" id="Ep2-Ez-nsW"/>
                                     <constraint firstItem="4I0-0D-sN3" firstAttribute="leading" secondItem="OTT-9E-Etd" secondAttribute="leading" id="L2t-IO-69F"/>
                                     <constraint firstAttribute="trailing" secondItem="4I0-0D-sN3" secondAttribute="trailing" id="gJh-PH-hrN"/>
-                                    <constraint firstItem="4I0-0D-sN3" firstAttribute="top" secondItem="OTT-9E-Etd" secondAttribute="top" id="kLi-Pk-j8g"/>
+                                    <constraint firstItem="4I0-0D-sN3" firstAttribute="top" secondItem="OTT-9E-Etd" secondAttribute="top" constant="-20" id="kLi-Pk-j8g"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
