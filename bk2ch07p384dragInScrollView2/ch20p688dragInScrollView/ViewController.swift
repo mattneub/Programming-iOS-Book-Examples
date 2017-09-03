@@ -68,8 +68,6 @@ class ViewController : UIViewController, UIGestureRecognizerDelegate {
             v.center.x += delta.x
             v.center.y += delta.y
             p.setTranslation(.zero, in: v.superview)
-            if p.state == .changed {fallthrough} // comment out to prevent autoscroll
-        case .changed:
             // autoscroll
             let sv = self.sv!
             let loc = p.location(in:sv)
