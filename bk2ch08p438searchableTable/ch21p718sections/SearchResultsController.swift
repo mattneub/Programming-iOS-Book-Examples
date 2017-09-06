@@ -16,9 +16,9 @@ class SearchResultsController : UITableViewController {
     var originalData : [String]
     var filteredData = [String]()
     
-    init(data:[[String]]) {
+    init(data:[RootViewController.Section]) {
         // we don't use sections, so flatten the data into a single array of strings
-        self.originalData = data.flatMap{$0}
+        self.originalData = data.map{$0.rowData}.flatMap{$0}
         super.init(nibName: nil, bundle: nil)
     }
     

@@ -34,24 +34,19 @@ class ViewController : UIViewController, UIScrollViewDelegate {
         sv.backgroundColor = .white
         sv.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(sv)
-        var con = [NSLayoutConstraint]()
-        con.append(contentsOf:
-            NSLayoutConstraint.constraints(withVisualFormat:
-                "H:|[sv]|",
-                metrics:nil,
-                views:["sv":sv]))
-        con.append(contentsOf:
-            NSLayoutConstraint.constraints(withVisualFormat:
-                "V:|[sv]|",
-                metrics:nil,
-                views:["sv":sv]))
+        
+        NSLayoutConstraint.activate([
+            sv.topAnchor.constraint(equalTo:self.view.topAnchor),
+            sv.bottomAnchor.constraint(equalTo:self.view.bottomAnchor),
+            sv.leadingAnchor.constraint(equalTo:self.view.leadingAnchor),
+            sv.trailingAnchor.constraint(equalTo:self.view.trailingAnchor),
+            ])
         
         let v = UIView() // content view
         sv.addSubview(v)
-        NSLayoutConstraint.activate(con)
 
-        var w : CGFloat = 0
         var y : CGFloat = 10
+        var maxw : CGFloat = 0
         for i in 0 ..< 30 {
             let lab = UILabel()
             lab.text = "This is label \(i+1)"
@@ -59,20 +54,21 @@ class ViewController : UIViewController, UIScrollViewDelegate {
             lab.frame.origin = CGPoint(10,y)
             v.addSubview(lab)
             y += lab.bounds.size.height + 10
-            
-            if lab.bounds.width > w { // *
-                w = lab.bounds.width
-            }
+            maxw = max(maxw, lab.frame.maxX + 10)
         }
         
         // set content view frame and content size explicitly
-        v.frame = CGRect(0,0,w+20,y)
+        v.frame = CGRect(0,0,maxw,y)
         sv.contentSize = v.frame.size
 
+        
         v.tag = 999 // *
         sv.minimumZoomScale = 1.0
         sv.maximumZoomScale = 2.0
         sv.delegate = self
+        
+        sv.contentInsetAdjustmentBehavior = .always // work around launch offset bug
+
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {

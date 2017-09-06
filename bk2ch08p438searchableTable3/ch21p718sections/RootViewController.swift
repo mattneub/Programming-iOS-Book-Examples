@@ -9,10 +9,14 @@ class MySearchController : UISearchController {
 }
 
 class RootViewController : UITableViewController, UISearchBarDelegate {
-    var sectionNames = [String]()
-    var cellData = [[String]]()
-    var originalSectionNames = [String]()
-    var originalCellData = [[String]]()
+    struct Section {
+        var sectionName : String
+        var rowData : [String]
+    }
+    var sections : [Section]!
+
+    var originalSections : [Section]!
+    
     var searcher : UISearchController!
     var searching = false
     
@@ -21,21 +25,15 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: Bundle.main.path(forResource: "states", ofType: "txt")!)
+        let s = try! String(
+            contentsOfFile: Bundle.main.path(
+                forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
-        var previous = ""
-        for aState in states {
-            // get the first letter
-            let c = String(aState.characters.prefix(1))
-            // only add a letter to sectionNames when it's a different letter
-            if c != previous {
-                previous = c
-                self.sectionNames.append(c.uppercased())
-                // and in that case also add new subarray to our array of subarrays
-                self.cellData.append([String]())
-            }
-            self.cellData[self.cellData.count-1].append(aState)
+        let d = Dictionary(grouping: states) {String($0.prefix(1))}
+        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+            Section(sectionName: $0.key, rowData: $0.value)
         }
+
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
         
@@ -55,9 +53,8 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // to do so, pass nil as the search results controller,
         // and tell the search controller not to insert a dimming view
         
-        // keep copies of the original data
-        self.originalCellData = self.cellData
-        self.originalSectionNames = self.sectionNames
+        // keep copy of the original data
+        self.originalSections = self.sections
         let searcher = MySearchController(searchResultsController:nil)
         self.searcher = searcher
         searcher.obscuresBackgroundDuringPresentation = false
@@ -75,16 +72,16 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sectionNames.count
+        return self.sections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cellData[section].count
+        return self.sections[section].rowData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
-        let s = self.cellData[indexPath.section][indexPath.row]
+        let s = self.sections[indexPath.section].rowData[indexPath.row]
         cell.textLabel!.text = s
         
         // this part is not in the book, it's just for fun
@@ -131,13 +128,13 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
                 ].flatMap{$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
-        lab.text = self.sectionNames[section]
+        lab.text = self.sections[section].sectionName
         return h
     }
     
     // much nicer without section index during search
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return self.searching ? nil : self.sectionNames
+        return self.searching ? nil : self.sections.map{$0.sectionName}
     }
 }
 
@@ -156,19 +153,27 @@ extension RootViewController : UISearchResultsUpdating {
         let sb = searchController.searchBar
         let target = sb.text!
         if target == "" {
-            self.sectionNames = self.originalSectionNames
-            self.cellData = self.originalCellData
+            self.sections = self.originalSections
             self.tableView.reloadData()
             return
         }
         // we have a target string
-        self.cellData = self.originalCellData.map {
-            $0.filter {
-                let found = $0.range(of:target, options: .caseInsensitive)
-                return (found != nil)
+//        self.sections = self.originalSections.map {
+//            var section = $0
+//            section.rowData = section.rowData.filter {
+//                let found = $0.range(of:target, options: .caseInsensitive)
+//                return (found != nil)
+//            }
+//            return section
+//        }.filter {$0.rowData.count > 0}
+        self.sections = self.originalSections.reduce(into:[]) {acc, sec in
+            let rowData = sec.rowData.filter {
+                $0.range(of:target, options: .caseInsensitive) != nil
             }
-        }.filter {$0.count > 0} // is Swift cool or what?
-        self.sectionNames = self.cellData.map {String($0[0].characters.prefix(1))}
+            if rowData.count > 0 {
+                acc.append(Section(sectionName: sec.sectionName, rowData: rowData))
+            }
+        }
         self.tableView.reloadData()
     }
 }

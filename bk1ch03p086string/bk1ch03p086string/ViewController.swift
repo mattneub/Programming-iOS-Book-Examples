@@ -22,19 +22,15 @@ class ViewController: UIViewController {
         }
         f()
         
-        do {
-            // literal multiline strings new in Swift 4
-            // indentation is gauged by the indentation of the line containing the triple
-            // so the following has no white space before any line
-            // Multi-line string literal content must begin on a new line
-//            let s = """Line 1
-//            Line 2
-//            Line 3"""
-            // Multi-line string literal closing delimiter must begin on a new line
-//            print(s)
-//            print(Array(s).filter{$0 == "\n"}.count)
+        func g() {
+            let s = """
+            Line 1
+                Line 2 \
+            and this is still Line 2
+            """
+            print(s)
         }
-        
+        g()
 
         do {
             let greeting = "hello"

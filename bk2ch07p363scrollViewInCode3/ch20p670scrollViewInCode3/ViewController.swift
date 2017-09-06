@@ -59,6 +59,7 @@ class ViewController : UIViewController {
             // subviews don't use explicit constraints either
             
             var y : CGFloat = 10
+            var maxw : CGFloat = 0
             for i in 0 ..< 30 {
                 let lab = UILabel()
                 lab.text = "This is label \(i+1)"
@@ -66,10 +67,11 @@ class ViewController : UIViewController {
                 lab.frame.origin = CGPoint(10,y)
                 v.addSubview(lab)
                 y += lab.bounds.size.height + 10
+                maxw = max(maxw, lab.frame.maxX + 10)
             }
             
             // set content view frame and content size explicitly
-            v.frame = CGRect(0,0,0,y)
+            v.frame = CGRect(0,0,maxw,y)
             sv.contentSize = v.frame.size
             
         case 2:
@@ -78,6 +80,7 @@ class ViewController : UIViewController {
             // subviews don't use explicit constraints
             
             var y : CGFloat = 10
+            var maxw : CGFloat = 0
             for i in 0 ..< 30 {
                 let lab = UILabel()
                 lab.text = "This is label \(i+1)"
@@ -85,6 +88,7 @@ class ViewController : UIViewController {
                 lab.frame.origin = CGPoint(10,y)
                 v.addSubview(lab)
                 y += lab.bounds.size.height + 10
+                maxw = max(maxw, lab.frame.maxX + 10)
             }
             
             // set content view width, height, and edge constraints
@@ -92,7 +96,7 @@ class ViewController : UIViewController {
             v.translatesAutoresizingMaskIntoConstraints = false
             let svclg = sv.contentLayoutGuide
             NSLayoutConstraint.activate([
-                v.widthAnchor.constraint(equalToConstant:0), 
+                v.widthAnchor.constraint(equalToConstant:maxw),
                 v.heightAnchor.constraint(equalToConstant:y),
                 svclg.topAnchor.constraint(equalTo:v.topAnchor),
                 svclg.bottomAnchor.constraint(equalTo:v.bottomAnchor),
@@ -127,8 +131,8 @@ class ViewController : UIViewController {
             v.bottomAnchor.constraint(
                 equalTo: previousLab!.bottomAnchor, constant: 10).isActive = true
             // need to do something about width
-            v.widthAnchor.constraint(equalToConstant: 0).isActive = true
-
+            v.trailingAnchor.constraint(
+                equalTo: previousLab!.trailingAnchor, constant: 10).isActive = true
             
             // pin content view to scroll view, sized by its subview constraints
             // content size is calculated for us
@@ -168,11 +172,11 @@ class ViewController : UIViewController {
             v.bottomAnchor.constraint(
                 equalTo: previousLab!.bottomAnchor, constant: 10).isActive = true
             // need to do something about width
-            v.widthAnchor.constraint(equalToConstant:0).isActive = true
+            v.trailingAnchor.constraint(
+                equalTo: previousLab!.trailingAnchor, constant: 10).isActive = true
 
 
             // autolayout helps us learn the consequences of those constraints
-            
             let minsz = v.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             // set content view frame and content size explicitly
             v.frame = CGRect(origin:.zero, size:minsz)

@@ -3,36 +3,49 @@
 import UIKit
 
 class MySearchController : UISearchController {
-    override var prefersStatusBarHidden : Bool {
-        return true
-    }
+//    override var prefersStatusBarHidden : Bool {
+//        return true
+//    }
+    
+    // failed experiment
+    
+//    override init(searchResultsController: UIViewController?) {
+//        super.init(searchResultsController: searchResultsController)
+//        self.navigationItem.title = "Search"
+//    }
+//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+//        super.init(nibName:nibNameOrNil, bundle:nibBundleOrNil)
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
 }
 
 class RootViewController : UITableViewController, UISearchBarDelegate {
-    var sectionNames = [String]()
-    var cellData = [[String]]()
+    struct Section {
+        var sectionName : String
+        var rowData : [String]
+    }
+    var sections : [Section]!
+
     var searcher : UISearchController!
     
-    override var prefersStatusBarHidden : Bool {
-        return true
-    }
+    // looks better _with_ the status bar
+//    override var prefersStatusBarHidden : Bool {
+//        return true
+//    }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: Bundle.main.path(forResource: "states", ofType: "txt")!)
+        let s = try! String(
+            contentsOfFile: Bundle.main.path(
+                forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
-        var previous = ""
-        for aState in states {
-            // get the first letter
-            let c = String(aState.characters.prefix(1))
-            // only add a letter to sectionNames when it's a different letter
-            if c != previous {
-                previous = c
-                self.sectionNames.append(c.uppercased())
-                // and in that case also add new subarray to our array of subarrays
-                self.cellData.append([String]())
-            }
-            self.cellData[self.cellData.count-1].append(aState)
+        let d = Dictionary(grouping: states) {String($0.prefix(1))}
+        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+            Section(sectionName: $0.key, rowData: $0.value)
         }
+
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
         
@@ -42,7 +55,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         self.tableView.backgroundColor = .yellow // but the search bar covers that
         
         
-        let src = SearchResultsController(data: self.cellData)
+        let src = SearchResultsController(data: self.sections)
         let searcher = MySearchController(searchResultsController: src)
         self.searcher = searcher
         // specify who the search controller should notify when the search bar changes
@@ -53,12 +66,45 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         b.autocapitalizationType = .none
         
         // how to to put search bar into navigation bar
-        self.navigationItem.titleView = b // *
-        searcher.hidesNavigationBarDuringPresentation = false // *
-        self.definesPresentationContext = true // *
+        var which : Int { return 2 }
+        switch which {
+        case 1:
+            // this does still work in iOS 11
+            self.navigationItem.titleView = b // *
+            searcher.hidesNavigationBarDuringPresentation = false // *
+            self.definesPresentationContext = true // *
+        case 2:
+            if #available(iOS 11.0, *) {
+                // use new "stretchable" navigation bar
+                
+                // if true (default), user doesn't see search bar unless pulls down
+                // self.navigationItem.hidesSearchBarWhenScrolling = false
+
+                self.navigationItem.searchController = searcher
+                searcher.hidesNavigationBarDuringPresentation = true // crucial, it seems
+                self.definesPresentationContext = true // this doesn't seem to matter
+                self.navigationItem.title = "States" // looks better to have a title
+                // try with and without this
+                self.navigationController!.navigationBar.prefersLargeTitles = true
+                
+                // one point of this architecture: there's room for other stuff in navbar
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: nil, action: nil)
+                
+                // hey, check this out
+                b.scopeButtonTitles = ["Starts", "Contains"]
+                b.showsScopeBar = false
+                b.delegate = src
+            } else {
+                fatalError("don't do this except in iOS 11")
+            }
+        default: break
+        }
         
         // searcher.delegate = self
-        searcher.modalPresentationStyle = .popover
+        // not sure what this was for, but it was ruining everything
+        // searcher.modalPresentationStyle = .popover
+        // oh, okay, I see what it was for: it was intended as iPad only
+        // but it still ruins everything, alas
         
         self.tableView.reloadData()
         self.tableView.scrollToRow(at:
@@ -67,16 +113,16 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sectionNames.count
+        return self.sections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cellData[section].count
+        return self.sections[section].rowData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
-        let s = self.cellData[indexPath.section][indexPath.row]
+        let s = self.sections[indexPath.section].rowData[indexPath.row]
         cell.textLabel!.text = s
         
         // this part is not in the book, it's just for fun
@@ -131,7 +177,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
                 ].flatMap{$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
-        lab.text = self.sectionNames[section]
+        lab.text = self.sections[section].sectionName
         return h
         
     }
@@ -143,7 +189,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     */
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return self.sectionNames
+        return self.sections.map{$0.sectionName}
     }
 }
 

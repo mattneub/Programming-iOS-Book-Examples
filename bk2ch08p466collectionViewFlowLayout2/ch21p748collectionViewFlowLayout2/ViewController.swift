@@ -34,8 +34,12 @@ extension CGVector {
 
 class ViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var sectionNames = [String]()
-    var cellData = [[String]]()
+    struct Section {
+        var sectionName : String
+        var rowData : [String]
+    }
+    var sections : [Section]!
+
     lazy var modelCell : Cell = { // load lazily from nib
         () -> Cell in
         let arr = UINib(nibName:"Cell", bundle:nil).instantiate(withOwner:nil)
@@ -47,22 +51,15 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: Bundle.main.path(forResource: "states", ofType: "txt")!)
+        let s = try! String(
+            contentsOfFile: Bundle.main.path(
+                forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
-        var previous = ""
-        for aState in states {
-            // get the first letter
-            let c = String(aState.characters.prefix(1))
-            // only add a letter to sectionNames when it's a different letter
-            if c != previous {
-                previous = c
-                self.sectionNames.append(c.uppercased())
-                // and in that case also add new subarray to our array of subarrays
-                self.cellData.append([String]())
-            }
-            self.cellData[self.cellData.count-1].append(aState)
+        let d = Dictionary(grouping: states) {String($0.prefix(1))}
+        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+            Section(sectionName: $0.key, rowData: $0.value)
         }
-        
+
         let b = UIBarButtonItem(title:"Switch", style:.plain, target:self, action:#selector(doSwitch(_:)))
         self.navigationItem.leftBarButtonItem = b
         
@@ -101,11 +98,11 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.sectionNames.count
+        return self.sections.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.cellData[section].count
+        return self.sections[section].rowData.count
     }
     
     // headers
@@ -135,7 +132,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 ].flatMap{$0})
             }
             let lab = v.subviews[0] as! UILabel
-            lab.text = self.sectionNames[indexPath.section]
+            lab.text = self.sections[indexPath.section].sectionName
         }
         return v
     }
@@ -161,11 +158,11 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
                 shadow.shadowBlurRadius = 4
                 let check2 =
                     NSAttributedString(string:"\u{2714}", attributes:[
-                        NSFontAttributeName: UIFont(name:"ZapfDingbatsITC", size:24)!,
-                        NSForegroundColorAttributeName: UIColor.green,
-                        NSStrokeColorAttributeName: UIColor.red,
-                        NSStrokeWidthAttributeName: -4,
-                        NSShadowAttributeName: shadow
+                        .font: UIFont(name:"ZapfDingbatsITC", size:24)!,
+                        .foregroundColor: UIColor.green,
+                        .strokeColor: UIColor.red,
+                        .strokeWidth: -4,
+                        .shadow: shadow
                         ])
                 con.scaleBy(x:1.1, y:1)
                 check2.draw(at:CGPoint(2,0))
@@ -194,7 +191,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
             iv.isUserInteractionEnabled = false
             cell.addSubview(iv)
         }
-        cell.lab.text = self.cellData[indexPath.section][indexPath.row]
+        cell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
         var stateName = cell.lab.text!
         // flag in background! very cute
         stateName = stateName.lowercased()
@@ -221,7 +218,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // systemLayoutSize works on the container view but not on the cell itself in iOS 8
         // (perhaps because the nib lacks a contentView)
         // Oooh, fixed (6.1)!
-        self.modelCell.lab.text = self.cellData[indexPath.section][indexPath.row]
+        self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
         //the "container" workaround is no longer needed
         //var sz = self.modelCell.container.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         var sz = self.modelCell.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
@@ -238,7 +235,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     // =======================
     
     // can just change layouts on the fly! with built-in animation!!!
-    func doSwitch(_ sender: Any!) { // button
+    @objc func doSwitch(_ sender: Any!) { // button
         // new iOS 7 property collectionView.collectionViewLayout points to *original* layout, which is preserved
         let oldLayout = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
         var newLayout = self.collectionViewLayout as! UICollectionViewFlowLayout
@@ -261,8 +258,8 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         // delete data
         var empties : Set<Int> = [] // keep track of what sections get emptied
         for ip in arr.reversed() {
-            self.cellData[ip.section].remove(at:ip.item)
-            if self.cellData[ip.section].count == 0 {
+            self.sections[ip.section].rowData.remove(at:ip.item)
+            if self.sections[ip.section].rowData.count == 0 {
                 empties.insert(ip.section)
             }
         }
@@ -270,8 +267,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
         self.collectionView!.performBatchUpdates({
             self.collectionView!.deleteItems(at:arr)
             if empties.count > 0 { // delete empty sections
-                self.sectionNames.remove(at:empties) // see utility function at top of file
-                self.cellData.remove(at:empties)
+                self.sections.remove(at:empties) // see utility function at top of file
                 self.collectionView!.deleteSections(IndexSet(empties)) // Set turns directly into IndexSet!
             }
         })
@@ -287,7 +283,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
         let mi = UIMenuItem(title:"Capital", action:capital)
         UIMenuController.shared.menuItems = [mi]
-        // return false // uncomment to do dragging; you can't have both menus and dragging
+        return false // uncomment to do dragging; you can't have both menus and dragging
         // (because they both use the long press gesture, I presume)
         return true
     }
@@ -298,7 +294,7 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
         // in real life, would do something here
-        let state = self.cellData[indexPath.section][indexPath.row]
+        let state = self.sections[indexPath.section].rowData[indexPath.row]
         if action == copy {
             print ("copying \(state)")
         }
@@ -319,7 +315,14 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
     
     override func collectionView(_ cv: UICollectionView, moveItemAt source: IndexPath, to dest: IndexPath) {
         // rearrange model
-        swap(&self.cellData[source.section][source.item], &self.cellData[dest.section][dest.item])
+        if source.section == dest.section { // exclusive access
+            self.sections[source.section].rowData.swapAt(source.item, dest.item)
+        } else {
+            swap(
+                &self.sections[source.section].rowData[source.item],
+                &self.sections[dest.section].rowData[dest.item]
+            )
+        }
         // reload
         cv.reloadSections(IndexSet(integer:source.section))
     }

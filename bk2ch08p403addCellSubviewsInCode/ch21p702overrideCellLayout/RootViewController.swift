@@ -31,6 +31,10 @@ class RootViewController : UITableViewController {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
         // self.tableView.rowHeight = 58 // *
+        // row height is set in nib, and we do NOT opt out of Automatic in iOS 11
+//        if #available(iOS 11.0, *) {
+//            self.tableView.contentInsetAdjustmentBehavior = .never
+//        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -101,16 +105,9 @@ class RootViewController : UITableViewController {
             _ in im.draw(in:CGRect(0,0,36,36))
         }
         
-        //        UIGraphicsBeginImageContextWithOptions(CGSize(36,36), true, 0.0)
-        //        im.draw(in:CGRect(0,0,36,36))
-        //        let im2 = UIGraphicsGetImageFromCurrentImageContext()!
-        //        UIGraphicsEndImageContext()
-
         iv.image = im2
         iv.contentMode = .center
         
-//        let s = NSStringFromUIEdgeInsets(cell.separatorInset)
-//        println(s)
         
         return cell
     }

@@ -8,10 +8,11 @@ import Swift
 class SearchResultsController : UITableViewController {
     var originalData : [String]
     var filteredData = [String]()
+    weak var searchController : UISearchController?
     
-    init(data:[[String]]) {
+    init(data:[RootViewController.Section]) {
         // we don't use sections, so flatten the data into a single array of strings
-        self.originalData = data.flatMap{$0}
+        self.originalData = data.map{$0.rowData}.flatMap{$0}
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -52,21 +53,30 @@ and reload the table.
 
 extension SearchResultsController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        // print("here \(searchController.presentationController!.adaptivePresentationStyle().rawValue)")
+        print("update")
+        
+        self.searchController = searchController // keep a weak ref just in case
+
         let sb = searchController.searchBar
         let target = sb.text!
         self.filteredData = self.originalData.filter {
             s in
-            let found = s.range(of:target, options: .caseInsensitive)
+            var options = String.CompareOptions.caseInsensitive
+            // we now have scope buttons; 0 means "starts with"
+            if searchController.searchBar.selectedScopeButtonIndex == 0 {
+                options.insert(.anchored)
+            }
+            let found = s.range(of:target, options: options)
             return (found != nil)
         }
         self.tableView.reloadData()
     }
 }
 
-/*
-We are not _doing_ anything with the search results.
-We are not acting as the search controller's delegate.
-We are not even bothering to be the search bar's delegate.
-It's just a demonstration of super-basic use of a search controller.
-*/
+extension SearchResultsController : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        print("button")
+        self.updateSearchResults(for:self.searchController!)
+    }
+}
+

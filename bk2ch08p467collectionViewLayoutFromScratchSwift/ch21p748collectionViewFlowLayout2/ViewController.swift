@@ -32,8 +32,12 @@ extension CGVector {
 
 class ViewController : UICollectionViewController {
     
-    var sectionNames = [String]()
-    var cellData = [[String]]()
+    struct Section {
+        var sectionName : String
+        var rowData : [String]
+    }
+    var sections : [Section]!
+
     lazy var modelCell : Cell = { // load lazily from nib
         () -> Cell in
         let arr = UINib(nibName:"Cell", bundle:nil).instantiate(withOwner:nil)
@@ -41,21 +45,15 @@ class ViewController : UICollectionViewController {
         }()
 
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: Bundle.main.path(forResource: "states", ofType: "txt")!)
+        let s = try! String(
+            contentsOfFile: Bundle.main.path(
+                forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
-        var previous = ""
-        for aState in states {
-            // get the first letter
-            let c = String(aState.characters.prefix(1))
-            // only add a letter to sectionNames when it's a different letter
-            if c != previous {
-                previous = c
-                self.sectionNames.append(c.uppercased())
-                // and in that case also add new subarray to our array of subarrays
-                self.cellData.append([String]())
-            }
-            self.cellData[self.cellData.count-1].append(aState)
+        let d = Dictionary(grouping: states) {String($0.prefix(1))}
+        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+            Section(sectionName: $0.key, rowData: $0.value)
         }
+
         self.navigationItem.title = "States"
         let bb = UIBarButtonItem(title:"Push", style:.plain, target:self, action:#selector(doPush))
         self.navigationItem.rightBarButtonItem = bb
@@ -74,11 +72,11 @@ class ViewController : UICollectionViewController {
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.sectionNames.count
+        return self.sections.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.cellData[section].count
+        return self.sections[section].rowData.count
     }
 
     
@@ -109,7 +107,7 @@ class ViewController : UICollectionViewController {
                         metrics:nil, views:["lab":lab]))
             }
             let lab = v.subviews[0] as! UILabel
-            lab.text = self.sectionNames[indexPath.section]
+            lab.text = self.sections[indexPath.section].sectionName
         }
         return v
     }
@@ -170,7 +168,7 @@ class ViewController : UICollectionViewController {
 //            iv.isUserInteractionEnabled = false
 //            cell.addSubview(iv)
         }
-        cell.lab.text = self.cellData[indexPath.section][indexPath.row]
+        cell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
         var stateName = cell.lab.text!
         // flag in background! very cute
         stateName = stateName.lowercased()
@@ -184,7 +182,7 @@ class ViewController : UICollectionViewController {
         return cell
     }
     
-    func doPush(_ sender: Any?) {
+    @objc func doPush(_ sender: Any?) {
         self.performSegue(withIdentifier:"push", sender: self)
     }
     
@@ -194,7 +192,7 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        self.modelCell.lab.text = self.cellData[indexPath.section][indexPath.row]
+        self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
         var sz = self.modelCell.container.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         sz.width = ceil(sz.width); sz.height = ceil(sz.height)
         return sz

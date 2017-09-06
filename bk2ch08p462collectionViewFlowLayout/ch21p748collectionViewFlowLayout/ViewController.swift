@@ -27,29 +27,26 @@ extension CGVector {
 
 class ViewController : UICollectionViewController {
     
-    var sectionNames = [String]()
-    var cellData = [[String]]()
-    
+    struct Section {
+        var sectionName : String
+        var rowData : [String]
+    }
+    var sections : [Section]!
+
     override var prefersStatusBarHidden : Bool {
         return true
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: Bundle.main.path(forResource: "states", ofType: "txt")!)
+        let s = try! String(
+            contentsOfFile: Bundle.main.path(
+                forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
-        var previous = ""
-        for aState in states {
-            // get the first letter
-            let c = String(aState.characters.prefix(1))
-            // only add a letter to sectionNames when it's a different letter
-            if c != previous {
-                previous = c
-                self.sectionNames.append(c.uppercased())
-                // and in that case also add new subarray to our array of subarrays
-                self.cellData.append([String]())
-            }
-            self.cellData[self.cellData.count-1].append(aState)
+        let d = Dictionary(grouping: states) {String($0.prefix(1))}
+        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+            Section(sectionName: $0.key, rowData: $0.value)
         }
+        
         self.navigationItem.title = "States"
         
         self.collectionView!.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header")
@@ -60,11 +57,11 @@ class ViewController : UICollectionViewController {
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.sectionNames.count
+        return self.sections.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.cellData[section].count
+        return self.sections[section].rowData.count
     }
     
     // minimal formatting; this is just to prove we can show the data at all
@@ -79,7 +76,7 @@ class ViewController : UICollectionViewController {
                 v.addSubview(UILabel(frame:CGRect(0,0,30,30)))
             }
             let lab = v.subviews[0] as! UILabel
-            lab.text = (self.sectionNames)[indexPath.section]
+            lab.text = self.sections[indexPath.section].sectionName
             lab.textAlignment = .center
         }
         return v
@@ -93,7 +90,7 @@ class ViewController : UICollectionViewController {
             cell.contentView.addSubview(UILabel(frame:CGRect(0,0,30,30)))
         }
         let lab = cell.contentView.subviews[0] as! UILabel
-        lab.text = (self.cellData)[indexPath.section][indexPath.row] // "item" synonym for "row"
+        lab.text = self.sections[indexPath.section].rowData[indexPath.row] // "item" synonym for "row"
         lab.sizeToFit()
         return cell
 
@@ -101,14 +98,14 @@ class ViewController : UICollectionViewController {
 }
 
 // but the above is not sufficient to see the entire name of a state
-// the state names are stepping on each other; let's fix that
+// the state names are curtailed; let's fix that
 // adjust the size of each cell, as a UICollectionViewDelegateFlowLayout
 
 extension ViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // note horrible duplication of code here
         let lab = UILabel(frame:CGRect(0,0,30,30))
-        lab.text = (self.cellData)[indexPath.section][indexPath.row]
+        lab.text = self.sections[indexPath.section].rowData[indexPath.row]
         lab.sizeToFit()
         return lab.bounds.size
     }

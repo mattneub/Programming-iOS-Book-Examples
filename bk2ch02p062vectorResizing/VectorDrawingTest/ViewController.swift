@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         // but the image is not being enlarged!
         self.tabBarItem.largeContentSizeImage = UIImage(named: "rectangle")!
         // whoa, automatic resizing now works suddenly! beta 5
-        return; // comment out to see
+        return; // the following is no longer needed
         let im = UIImage(named:"rectangle")!
         let r = UIGraphicsImageRenderer(size:self.iv2.bounds.size)
         let im2 = r.image {

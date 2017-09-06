@@ -52,6 +52,11 @@ class RootViewController : UITableViewController {
         print("did end", indexPath.row)
     }
     
+    // cellForRowAt can be called even if we are not immediately about to show
+    // only will tells you that we are really about to show
+    // we can prefetch data for an entire screenfull of adjacent cells...
+    // but they are not created, and cellForRowAt will still need to configure them
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("cell", indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) as! MyCell
@@ -74,11 +79,6 @@ class RootViewController : UITableViewController {
         let im2 = r.image {
             _ in im.draw(in:CGRect(0,0,36,36))
         }
-        
-//                UIGraphicsBeginImageContextWithOptions(CGSize(36,36), true, 0.0)
-//                im.draw(in:CGRect(0,0,36,36))
-//                let im2 = UIGraphicsGetImageFromCurrentImageContext()!
-//                UIGraphicsEndImageContext()
         
         iv.image = im2
         iv.contentMode = .center

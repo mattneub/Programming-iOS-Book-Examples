@@ -55,7 +55,10 @@ class ViewController : UIViewController {
             equalTo: previousLab!.bottomAnchor, constant: 10).isActive = true
         
         // also need to disambiguate content size width; no scrolling, so anything will do
-        svclg.widthAnchor.constraint(equalToConstant:0).isActive = true
+        // svclg.widthAnchor.constraint(equalToConstant:0).isActive = true
+        // possibly better way to say this: make content width frame width!
+        let svflg = sv.frameLayoutGuide
+        svclg.widthAnchor.constraint(equalTo:svflg.widthAnchor).isActive = true
         
         delay(2) {
             print(sv.contentSize)
@@ -63,6 +66,16 @@ class ViewController : UIViewController {
             print(sv.contentOffset)
         }
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        delay(2) {
+            if let sv = self.view.subviews[0] as? UIScrollView {
+                print(sv.contentSize)
+                print(sv.contentLayoutGuide)
+                print(sv.contentOffset)
+            }
+        }
     }
     
 }

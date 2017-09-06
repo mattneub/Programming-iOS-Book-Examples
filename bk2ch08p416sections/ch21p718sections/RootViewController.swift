@@ -3,29 +3,26 @@
 import UIKit
 
 class RootViewController : UITableViewController {
-    var sectionNames = [String]()
-    var cellData = [[String]]()
+    struct Section {
+        var sectionName : String
+        var rowData : [String]
+    }
+    var sections : [Section]!
     
     override var prefersStatusBarHidden : Bool {
         return true
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: Bundle.main.path(forResource: "states", ofType: "txt")!)
+        let s = try! String(
+            contentsOfFile: Bundle.main.path(
+                forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
-        var previous = ""
-        for aState in states {
-            // get the first letter
-            let c = String(aState.characters.prefix(1))
-            // only add a letter to sectionNames when it's a different letter
-            if c != previous {
-                previous = c
-                self.sectionNames.append(c.uppercased())
-                // and in that case also add new subarray to our array of subarrays
-                self.cellData.append([String]())
-            }
-            self.cellData[self.cellData.count-1].append(aState)
+        let d = Dictionary(grouping: states) {String($0.prefix(1))}
+        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+            Section(sectionName: $0.key, rowData: $0.value)
         }
+        
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
         
@@ -37,16 +34,16 @@ class RootViewController : UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sectionNames.count
+        return self.sections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cellData[section].count
+        return self.sections[section].rowData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
-        let s = self.cellData[indexPath.section][indexPath.row]
+        let s = self.sections[indexPath.section].rowData[indexPath.row]
         cell.textLabel!.text = s
         
         // this part is not in the book, it's just for fun
@@ -103,12 +100,14 @@ class RootViewController : UITableViewController {
 //            h.addSubview(b)
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
-        lab.text = self.sectionNames[section]
+        lab.text = self.sections[section].sectionName
         // print(h.backgroundView?.backgroundColor)
         return h
         
     }
     
+    // this seems to be unnecessary!
+    // that's because it's configured in the nib
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 22
         return UITableViewAutomaticDimension
@@ -121,6 +120,6 @@ class RootViewController : UITableViewController {
     */
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return self.sectionNames
+        return self.sections.map{$0.sectionName}
     }
 }

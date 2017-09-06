@@ -69,7 +69,8 @@ class ViewController : UIViewController {
         
         svclg.bottomAnchor.constraint(
             equalTo: previousLab!.bottomAnchor, constant: 10).isActive = true
-        svclg.widthAnchor.constraint(equalToConstant:0).isActive = true
+        let svflg = sv.frameLayoutGuide
+        svclg.widthAnchor.constraint(equalTo:svflg.widthAnchor).isActive = true
         
         sv.delegate = self
         

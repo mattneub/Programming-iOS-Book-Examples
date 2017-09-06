@@ -5,29 +5,26 @@ import UIKit
 class RootViewController : UITableViewController {
     override var nibName : String { return "RootViewController" }
     
-    var sectionNames = [String]()
-    var cellData = [[String]]()
-    
+    struct Section {
+        var sectionName : String
+        var rowData : [String]
+    }
+    var sections : [Section]!
+
     override var prefersStatusBarHidden : Bool {
         return true
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: Bundle.main.path(forResource: "states", ofType: "txt")!)
+        let s = try! String(
+            contentsOfFile: Bundle.main.path(
+                forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
-        var previous = ""
-        for aState in states {
-            // get the first letter
-            let c = String(aState.characters.prefix(1))
-            // only add a letter to sectionNames when it's a different letter
-            if c != previous {
-                previous = c
-                self.sectionNames.append(c.uppercased())
-                // and in that case also add new subarray to our array of subarrays
-                self.cellData.append([String]())
-            }
-            self.cellData[self.cellData.count-1].append(aState)
+        let d = Dictionary(grouping: states) {String($0.prefix(1))}
+        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+            Section(sectionName: $0.key, rowData: $0.value)
         }
+
         self.tableView.register(MyCell.self, forCellReuseIdentifier: "Cell") // *
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
         
@@ -37,16 +34,16 @@ class RootViewController : UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sectionNames.count
+        return self.sections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cellData[section].count
+        return self.sections[section].rowData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) as! MyCell // *
-        let s = self.cellData[indexPath.section][indexPath.row]
+        let s = self.sections[indexPath.section].rowData[indexPath.row]
         cell.textLabel!.text = s
         
         // this part is not in the book, it's just for fun
@@ -66,7 +63,7 @@ class RootViewController : UITableViewController {
         if h.viewWithTag(1) == nil {
             
             h.backgroundView = UIView()
-            h.backgroundView?.backgroundColor = .black
+            h.backgroundView?.backgroundColor = .lightGray
             let lab = UILabel()
             lab.tag = 1
             lab.font = UIFont(name:"Georgia-Bold", size:22)
@@ -93,13 +90,13 @@ class RootViewController : UITableViewController {
                 ].flatMap{$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
-        lab.text = self.sectionNames[section]
+        lab.text = self.sections[section].sectionName
         return h
         
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return self.sectionNames
+        return self.sections.map{$0.sectionName}
     }
     
     // menu handling ==========
@@ -118,11 +115,11 @@ class RootViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
         if action == copy {
             // ... do whatever copying consists of ...
-            print("copying \(self.cellData[indexPath.section][indexPath.row])")
+            print("copying \(self.sections[indexPath.section].rowData[indexPath.row])")
         }
         if action == abbrev {
             // ... do whatever abbreviating consists of ...
-            print("abbreviating \(self.cellData[indexPath.section][indexPath.row])")
+            print("abbreviating \(self.sections[indexPath.section].rowData[indexPath.row])")
         }
 
     }

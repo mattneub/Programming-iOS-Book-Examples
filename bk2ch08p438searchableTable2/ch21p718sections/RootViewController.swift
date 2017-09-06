@@ -9,8 +9,11 @@ class MySearchController : UISearchController {
 }
 
 class RootViewController : UITableViewController, UISearchBarDelegate {
-    var sectionNames = [String]()
-    var cellData = [[String]]()
+    struct Section {
+        var sectionName : String
+        var rowData : [String]
+    }
+    var sections : [Section]!
     var searcher : UISearchController!
     
     override var prefersStatusBarHidden : Bool {
@@ -18,21 +21,15 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: Bundle.main.path(forResource: "states", ofType: "txt")!)
+        let s = try! String(
+            contentsOfFile: Bundle.main.path(
+                forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
-        var previous = ""
-        for aState in states {
-            // get the first letter
-            let c = String(aState.characters.prefix(1))
-            // only add a letter to sectionNames when it's a different letter
-            if c != previous {
-                previous = c
-                self.sectionNames.append(c.uppercased())
-                // and in that case also add new subarray to our array of subarrays
-                self.cellData.append([String]())
-            }
-            self.cellData[self.cellData.count-1].append(aState)
+        let d = Dictionary(grouping: states) {String($0.prefix(1))}
+        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+            Section(sectionName: $0.key, rowData: $0.value)
         }
+
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
         
@@ -54,8 +51,12 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // put the search controller's search bar into the interface
         let b = searcher.searchBar
         b.autocapitalizationType = .none
+        // I'm forced to give up on this example in iOS 11
+        // the search bar appears messed up in the search interface
+        // however, I demonstrate use of scope button titles in nav bar later
+        b.scopeButtonTitles = ["Starts", "Contains"]
+        b.showsScopeBar = false // prevent showing in the table
         b.sizeToFit()
-        b.scopeButtonTitles = ["Starts", "Contains"] // won't show in the table
         b.delegate = src
         self.tableView.tableHeaderView = b
         self.tableView.reloadData()
@@ -65,16 +66,16 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sectionNames.count
+        return self.sections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cellData[section].count
+        return self.sections[section].rowData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
-        let s = self.cellData[indexPath.section][indexPath.row]
+        let s = self.sections[indexPath.section].rowData[indexPath.row]
         cell.textLabel!.text = s
         
         // this part is not in the book, it's just for fun
@@ -121,13 +122,13 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
                 ].flatMap{$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
-        lab.text = self.sectionNames[section]
+        lab.text = self.sections[section].sectionName
         return h
         
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return self.sectionNames
+        return self.sections.map{$0.sectionName}
     }
 }
 
@@ -138,7 +139,7 @@ extension RootViewController : UISearchControllerDelegate {
     // *or* you implement willPresent etc.
     func willPresentSearchController(_ sc: UISearchController) {
         if let src = sc.searchResultsController as? SearchResultsController {
-            src.take(data:self.cellData)
+            src.take(data:self.sections)
         }
     }
     /*

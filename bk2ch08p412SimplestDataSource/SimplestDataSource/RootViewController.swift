@@ -55,6 +55,13 @@ class RootViewController: UITableViewController {
         v.backgroundColor = .yellow
         self.tableView.backgroundView = v
         self.tableView.refreshControl?.backgroundColor = .green
+        
+        self.edgesForExtendedLayout = .all
+        if #available(iOS 11.0, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .always
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = true
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -86,9 +93,25 @@ class RootViewController: UITableViewController {
 
     @IBAction func doRefreshManually(_ sender: Any) {
         // all this talk of `self.refreshControl` works, even though we didn't assign this way
-        self.tableView.setContentOffset(
-            CGPoint(0, -self.refreshControl!.bounds.height),
-            animated:true)
+        // NB I failed to notice that my old code wasn't working because of the content inset
+        // NB also iOS 10 vs iOS 11, in iOS 11 it's the adjusted content inset
+        
+        // another weird thing; it fails the second time, because after the first time...
+        // the refresh control seems to take on a zero height!
+        // okay, made it work by forcing the refresh control back to its real size
+        
+        if #available(iOS 11.0, *) {
+            self.refreshControl!.sizeToFit()
+            let top = self.tableView.adjustedContentInset.top
+            let y = self.refreshControl!.frame.maxY + top
+            self.tableView.setContentOffset(CGPoint(0, -y), animated:true)
+        } else {
+            self.refreshControl!.sizeToFit()
+            let top = self.tableView.contentInset.top
+            let y = self.refreshControl!.frame.maxY + top
+            self.tableView.setContentOffset(CGPoint(0, -y), animated:true)
+        }
+
         self.refreshControl!.beginRefreshing()
         self.doRefresh(self.refreshControl!)
     }

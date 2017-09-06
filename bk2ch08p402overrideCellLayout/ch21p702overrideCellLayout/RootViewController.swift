@@ -54,8 +54,6 @@ class RootViewController : UITableViewController {
             cell.textLabel!.font = UIFont(name:"Helvetica-Bold", size:16)
             cell.textLabel!.lineBreakMode = .byWordWrapping
             cell.textLabel!.numberOfLines = 2
-            // next line fails, I regard this as a bug
-            // cell.separatorInset = UIEdgeInsetsMake(0,0,0,0)
         }
         
         cell.textLabel!.text = "The author of this book, who would rather be out dirt biking"
@@ -68,13 +66,10 @@ class RootViewController : UITableViewController {
         }
 
         
-//        UIGraphicsBeginImageContextWithOptions(CGSize(36,36), true, 0.0)
-//        im.draw(in:CGRect(0,0,36,36))
-//        let im2 = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIGraphicsEndImageContext()
-        
         cell.imageView!.image = im2
         cell.imageView!.contentMode = .center
+        
+        print(cell.separatorInset)
         
         return cell
     }

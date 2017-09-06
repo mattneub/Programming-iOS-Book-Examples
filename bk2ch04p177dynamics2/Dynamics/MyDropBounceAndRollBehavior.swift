@@ -29,7 +29,7 @@ extension UIDynamicAnimator {
     // in fact, we can't even fetch items(in:) as a Swift array at all
     func views(in rect: CGRect) -> [UIView] {
         let nsitems = self.items(in: rect) as NSArray
-        return nsitems.flatMap{$0 as? UIView ?? nil}
+        return nsitems.flatMap{$0 as? UIView}
     }
 }
 

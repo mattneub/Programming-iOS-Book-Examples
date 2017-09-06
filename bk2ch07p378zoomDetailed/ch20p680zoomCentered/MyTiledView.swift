@@ -33,11 +33,9 @@ class MyTiledView : UIView {
             
             // gather needed info on main thread
             // alas, I was always doing this wrong before; now thread checker has caught me!
-            let (lay, bounds) = {
-                DispatchQueue.main.sync {
-                    return (self.layer as! CATiledLayer, self.bounds)
-                }
-            }()
+            let (lay, bounds) = DispatchQueue.main.sync {
+                return (self.layer as! CATiledLayer, self.bounds)
+            }
             let oldSize = self.currentSize
             // NSLog("oldSize %@", NSStringFromCGSize(oldSize))
             // NSLog("rect.size %@", NSStringFromCGSize(rect.size))

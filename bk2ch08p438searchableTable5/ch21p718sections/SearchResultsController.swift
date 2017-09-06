@@ -15,10 +15,11 @@ a default table with the search results in each cell's textLabel.
 class SearchResultsController : UITableViewController {
     var originalData : [String]
     var filteredData = [String]()
+    weak var searchController : UISearchController?
     
-    init(data:[[String]]) {
+    init(data:[RootViewController.Section]) {
         // we don't use sections, so flatten the data into a single array of strings
-        self.originalData = data.flatMap{$0}
+        self.originalData = data.map{$0.rowData}.flatMap{$0}
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -48,18 +49,12 @@ class SearchResultsController : UITableViewController {
     }
 }
 
-/*
-This is the only other interesting part!
-We are the searchResultsUpdater, which simply means that our
-updateSearchResultsForSearchController is called every time something happens
-in the search bar. So, every time it is called,
-filter the original data in accordance with what's in the search bar,
-and reload the table.
-*/
+
 
 extension SearchResultsController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        print("here")
+        print("update")
+        
         let sb = searchController.searchBar
         let target = sb.text!
         self.filteredData = self.originalData.filter {
@@ -71,9 +66,10 @@ extension SearchResultsController : UISearchResultsUpdating {
     }
 }
 
-/*
-We are not _doing_ anything with the search results.
-We are not acting as the search controller's delegate.
-We are not even bothering to be the search bar's delegate.
-It's just a demonstration of super-basic use of a search controller.
-*/
+
+extension SearchResultsController : UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.presentingViewController?.navigationController?.dismiss(animated:true)
+
+    }
+}

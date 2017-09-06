@@ -18,13 +18,20 @@ class RootViewController : UITableViewController {
         
         let url = Bundle.main.url(forResource:"trivia", withExtension: "txt")
         let s = try! String(contentsOf:url!)
-        var arr = s.components(separatedBy:"\n")
-        arr.removeLast()
-        self.trivia = arr
+        let arr = s.components(separatedBy:"\n")
+        self.trivia = Array(arr.dropLast())
         
         self.tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "Cell")
-        self.tableView.rowHeight = UITableViewAutomaticDimension // not actually necessary
-        self.tableView.estimatedRowHeight = 40 // turn on automatic cell variable sizing!
+        // both these lines are needed
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        // what's new in iOS 11 is that you don't even have to supply an estimated height!
+        // it too can be automatic
+        if #available(iOS 11.0, *) {
+            self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
+        } else {
+            self.tableView.estimatedRowHeight = 40
+        }
+        // basically, if the estimated height is zero, you have opted _out_ of variable height
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -119,27 +119,54 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         if editingStyle == .insert {
             self.numbers += [""]
             let ct = self.numbers.count
-            tableView.beginUpdates()
-            tableView.insertRows(at:
-                [IndexPath(row:ct-1, section:1)],
-                with:.automatic)
-            tableView.reloadRows(at:
-                [IndexPath(row:ct-2, section:1)],
-                with:.automatic)
-            tableView.endUpdates()
-            // crucial that this next bit be *outside* the updates block
-            let cell = self.tableView.cellForRow(at:
-                IndexPath(row:ct-1, section:1))
-            (cell as! MyCell).textField.becomeFirstResponder()
+            if #available(iOS 11.0, *) {
+                tableView.performBatchUpdates({
+                    tableView.insertRows(at:
+                        [IndexPath(row:ct-1, section:1)],
+                                         with:.automatic)
+                    tableView.reloadRows(at:
+                        [IndexPath(row:ct-2, section:1)],
+                                         with:.automatic)
+                }) { _ in
+                    let cell = self.tableView.cellForRow(at:
+                        IndexPath(row:ct-1, section:1))
+                    (cell as! MyCell).textField.becomeFirstResponder()
+                }
+            } else {
+                tableView.beginUpdates()
+                tableView.insertRows(at:
+                    [IndexPath(row:ct-1, section:1)],
+                                     with:.automatic)
+                tableView.reloadRows(at:
+                    [IndexPath(row:ct-2, section:1)],
+                                     with:.automatic)
+                tableView.endUpdates()
+                // crucial that this next bit be *outside* the updates block
+                let cell = self.tableView.cellForRow(at:
+                    IndexPath(row:ct-1, section:1))
+                (cell as! MyCell).textField.becomeFirstResponder()
+            }
         }
         if editingStyle == .delete {
+            
             self.numbers.remove(at:indexPath.row)
-            tableView.beginUpdates()
-            tableView.deleteRows(at:
-                [indexPath], with:.automatic)
-            tableView.reloadSections(
-                IndexSet(integer:1), with:.automatic)
-            tableView.endUpdates()
+
+            if #available(iOS 11.0, *) {
+                tableView.performBatchUpdates({
+                    tableView.deleteRows(at:
+                        [indexPath], with:.automatic)
+                    tableView.reloadSections(
+                        IndexSet(integer:1), with:.automatic)
+                })
+            } else {
+                tableView.beginUpdates()
+                tableView.deleteRows(at:
+                    [indexPath], with:.automatic)
+                tableView.reloadSections(
+                    IndexSet(integer:1), with:.automatic)
+                tableView.endUpdates()
+            }
+            
         }
     }
     

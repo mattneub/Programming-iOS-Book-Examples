@@ -4,6 +4,11 @@ import UIKit
 class RootViewController : UITableViewController {
     let cellIdentifier = "Cell"
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // self.tableView.contentInsetAdjustmentBehavior = .never
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -18,6 +23,7 @@ class RootViewController : UITableViewController {
     /*
     the window background never appears
     the table view background appears when you "bounce" the scroll beyond its limits
+    (in iOS 11 I'm letting it show behind the status bar initially)
     the red cell background color is behind the cell
     the linen cell background view is on top of that
     the (translucent, here) selected background view is on top of that

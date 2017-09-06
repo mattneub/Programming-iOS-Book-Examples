@@ -445,6 +445,34 @@ class ViewController: UIViewController {
             }
             print(cons)
         }
+        
+        // new in Xcode 9 beta 5, at last reduce(into:) comes into being!
+        do {
+            let arr = [("one",1), ("two",2), ("three",3)]
+            let (keys,values) : ([String], [Int]) = arr.reduce(into: ([],[])) {
+                acc, pair in acc.0.append(pair.0); acc.1.append(pair.1)
+            }
+            print(keys)
+            print(values)
+        }
+        
+        do {
+            // somewhat more efficient implementation of each_cons
+            let arr = [1,2,3,4,5,6,7,8,9]
+            let clump = 2
+            let cons : [[Int]] = arr.reduce(into:[]) {
+                memo, cur in
+                if memo.count == 0 {
+                    return memo.append([cur])
+                }
+                if memo.last!.count < clump {
+                    memo.append(memo.removeLast() + [cur])
+                } else {
+                    memo.append([cur])
+                }
+            }
+            print(cons)
+        }
 
         do {
             let sec = 0

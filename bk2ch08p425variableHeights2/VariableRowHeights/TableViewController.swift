@@ -5,7 +5,7 @@ import UIKit
 class MyView : UIView {
     var h : CGFloat = 200 {
         didSet {
-            self.invalidateIntrinsicContentSize()
+            self.invalidateIntrinsicContentSize() // *
         }
     }
     override var intrinsicContentSize: CGSize {
@@ -39,6 +39,7 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 150
+        self.tableView.allowsSelection = false
         self.tableView.register(MyCell.self, forCellReuseIdentifier: "Cell")
     }
 
