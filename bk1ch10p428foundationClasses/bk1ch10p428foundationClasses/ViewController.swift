@@ -316,9 +316,7 @@ class ViewController: UIViewController {
             print(type(of:arr2[0]))
 
             let pep = ["Manny", "Moe", "Jack"] as NSArray
-            
-            // filed a bug: "ambiguous" without the []
-            
+                        
             let ems = pep.objects(
                 at: pep.indexesOfObjects { (obj, idx, stop) -> Bool in
                     return (obj as! NSString).range(
