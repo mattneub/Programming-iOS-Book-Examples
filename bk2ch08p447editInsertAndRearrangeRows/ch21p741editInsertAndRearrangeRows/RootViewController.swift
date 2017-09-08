@@ -6,6 +6,8 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
     var numbers = [String]()
     var name = ""
     
+    let cellID = "Cell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -14,7 +16,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         self.numbers = ["(123) 456-7890"]
         self.tableView.allowsSelection = false
         
-        self.tableView.register(UINib(nibName: "MyCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        self.tableView.register(UINib(nibName: "MyCell", bundle: nil), forCellReuseIdentifier: self.cellID)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -29,7 +31,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell",
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID,
             for: indexPath) as! MyCell
         
         switch indexPath.section {

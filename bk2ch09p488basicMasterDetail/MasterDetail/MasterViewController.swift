@@ -6,9 +6,11 @@ class MasterViewController: UITableViewController {
     
     let model = ["Manny", "Moe", "Jack"]
     
+    let cellID = "Cell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
         
         print(self.splitViewController?.childViewControllers as Any)
     }
@@ -22,7 +24,7 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
         cell.textLabel!.text = model[indexPath.row]
         return cell
     }

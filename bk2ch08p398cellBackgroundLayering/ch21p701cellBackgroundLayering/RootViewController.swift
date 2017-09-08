@@ -2,7 +2,7 @@
 import UIKit
 
 class RootViewController : UITableViewController {
-    let cellIdentifier = "Cell"
+    let cellID = "Cell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +41,9 @@ class RootViewController : UITableViewController {
 */
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell : UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
+        var cell : UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellID)
         if cell == nil {
-            cell = UITableViewCell(style:.default, reuseIdentifier:cellIdentifier)
+            cell = UITableViewCell(style:.default, reuseIdentifier:cellID)
             
             cell.textLabel!.textColor = .white
             

@@ -13,6 +13,8 @@ class RootViewController : UITableViewController {
         return true
     }
     
+    let cellID = "Cell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,13 +23,14 @@ class RootViewController : UITableViewController {
         let arr = s.components(separatedBy:"\n")
         self.trivia = Array(arr.dropLast())
         
-        self.tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "Cell")
+        self.tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: self.cellID)
         // both these lines are needed
         self.tableView.rowHeight = UITableViewAutomaticDimension
         // what's new in iOS 11 is that you don't even have to supply an estimated height!
         // it too can be automatic
         if #available(iOS 11.0, *) {
             self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
+            print(self.tableView.estimatedRowHeight)
         } else {
             self.tableView.estimatedRowHeight = 40
         }
@@ -43,7 +46,7 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) as! Cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) as! Cell
         cell.backgroundColor = .white
         cell.lab.text = self.trivia[indexPath.row]
         return cell
@@ -56,5 +59,16 @@ class RootViewController : UITableViewController {
         }
         return indexPath
     }
+    
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        // return 30
+//        return UITableViewAutomaticDimension
+//    }
+//
+//    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 0
+////        return 100
+//        return UITableViewAutomaticDimension
+//    }
     
 }

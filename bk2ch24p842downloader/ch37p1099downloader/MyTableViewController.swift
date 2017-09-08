@@ -74,8 +74,9 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
         }
     }
     
+	let cellID = "Cell"
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
         let m = self.model[indexPath.row]
         cell.textLabel!.text = m.text
         cell.imageView!.image = m.im // picture or nil

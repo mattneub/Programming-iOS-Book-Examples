@@ -31,6 +31,8 @@ extension CGVector {
 
 class RootViewController: UITableViewController {
     
+    let cellID = "Cell"
+    
     var pep : [String]! = ["Manny", "Moe", "Jack"] // pretend model might not be ready
     
     override func viewDidLoad() {
@@ -56,6 +58,7 @@ class RootViewController: UITableViewController {
         self.tableView.backgroundView = v
         self.tableView.refreshControl?.backgroundColor = .green
         
+        // self.edgesForExtendedLayout = []
         self.edgesForExtendedLayout = .all
         if #available(iOS 11.0, *) {
             self.tableView.contentInsetAdjustmentBehavior = .always
@@ -77,7 +80,7 @@ class RootViewController: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) 
 
         cell.textLabel!.text = pep[indexPath.row]
         return cell

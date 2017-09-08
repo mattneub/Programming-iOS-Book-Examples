@@ -26,9 +26,11 @@ extension CGVector {
 
 class RootViewController : UITableViewController {
     
+    let cellID = "Cell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
         // self.tableView.rowHeight = 58 // *
         // row height is set in nib, and we do NOT opt out of Automatic in iOS 11
@@ -53,7 +55,7 @@ class RootViewController : UITableViewController {
 */
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
         if cell.viewWithTag(1) == nil { // no subviews! add them
             let iv = UIImageView()
             iv.tag = 1

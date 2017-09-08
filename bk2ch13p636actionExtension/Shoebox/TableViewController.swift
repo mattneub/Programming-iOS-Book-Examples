@@ -10,9 +10,11 @@ class TableViewController: UITableViewController {
     
     var selectedSize : String?
     weak var delegate : SizeDelegate?
+    
+    let cellID = "Cell"
         
     override func viewDidLoad() {
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
         self.tableView.isScrollEnabled = false
     }
     
@@ -25,7 +27,7 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
 
         cell.textLabel!.text = {
             switch indexPath.row {

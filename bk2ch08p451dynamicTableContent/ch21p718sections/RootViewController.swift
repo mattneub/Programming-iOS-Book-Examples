@@ -27,6 +27,9 @@ class RootViewController : UITableViewController {
         return true
     }
     
+    let cellID = "Cell"
+	let headerID = "Header"
+    
     override func viewDidLoad() {
         let s = try! String(
             contentsOfFile: Bundle.main.path(
@@ -37,9 +40,9 @@ class RootViewController : UITableViewController {
             Section(sectionName: $0.key, rowData: $0.value)
         }
 
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
         self.tableView.register(
-            MyHeaderView.self, forHeaderFooterViewReuseIdentifier: "Header") //*
+            MyHeaderView.self, forHeaderFooterViewReuseIdentifier: self.headerID) //*
         
         self.tableView.sectionIndexColor = .white
         self.tableView.sectionIndexBackgroundColor = .red
@@ -62,7 +65,7 @@ class RootViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
         let s = self.sections[indexPath.section].rowData[indexPath.row]
         cell.textLabel!.text = s
         
@@ -79,7 +82,7 @@ class RootViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView
-            .dequeueReusableHeaderFooterView(withIdentifier:"Header") as! MyHeaderView
+            .dequeueReusableHeaderFooterView(withIdentifier: self.headerID) as! MyHeaderView
         if h.gestureRecognizers == nil {
             print("nil")
             // add tap g.r.

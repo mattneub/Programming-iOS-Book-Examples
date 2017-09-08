@@ -17,8 +17,9 @@ class RootViewController: UITableViewController {
         return 1
     }
 
+    let cellID = "Cell"
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
         cell.textLabel!.text = "Let’s go!"
         return cell
     }

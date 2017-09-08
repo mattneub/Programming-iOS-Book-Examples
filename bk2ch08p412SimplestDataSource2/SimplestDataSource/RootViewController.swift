@@ -31,6 +31,8 @@ extension CGVector {
 
 class RootViewController: UITableViewController {
     
+    let cellID = "Cell"
+    
     var pep : [String]! = ["Manny", "Moe", "Jack"] // pretend model might not be ready
     
     override func viewDidLoad() {
@@ -58,8 +60,12 @@ class RootViewController: UITableViewController {
         
         self.tableView.contentInsetAdjustmentBehavior = .always
         
+        // self.navigationItem.largeTitleDisplayMode = .never
+        
         
     }
+    
+    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         if self.pep == nil {
@@ -74,7 +80,7 @@ class RootViewController: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) 
 
         cell.textLabel!.text = pep[indexPath.row]
         return cell
@@ -92,6 +98,7 @@ class RootViewController: UITableViewController {
         // I find it odd that you still have to do this, but hey
         // also bar stays too big; I don't like that but I don't see what I can do about it
         
+        self.refreshControl!.sizeToFit()
         let top = self.tableView.adjustedContentInset.top
         let y = self.refreshControl!.frame.maxY + top
         self.tableView.setContentOffset(CGPoint(0, -y), animated:true)

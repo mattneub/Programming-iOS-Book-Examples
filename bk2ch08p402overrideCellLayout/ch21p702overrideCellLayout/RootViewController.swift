@@ -25,10 +25,11 @@ extension CGVector {
 
 
 class RootViewController : UITableViewController {
-    
+    let cellID = "Cell"
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(MyCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(MyCell.self, forCellReuseIdentifier: self.cellID)
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
         self.tableView.rowHeight = 58
     }
@@ -49,7 +50,7 @@ class RootViewController : UITableViewController {
 */
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) as! MyCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) as! MyCell
         if cell.textLabel!.numberOfLines != 2 { // never previously configured
             cell.textLabel!.font = UIFont(name:"Helvetica-Bold", size:16)
             cell.textLabel!.lineBreakMode = .byWordWrapping

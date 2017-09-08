@@ -30,6 +30,9 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     var cellData = [[String]]()
     var searcher : UISearchController!
     
+    let cellID = "Cell"
+	let headerID = "Header"
+    
     override func viewDidLoad() {
         let s = try! String(contentsOfFile: Bundle.main.path(forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
@@ -46,8 +49,8 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
             }
             self.cellData[self.cellData.count-1].append(aState)
         }
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
+        self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: self.headerID)
         
         self.tableView.sectionIndexColor = .white
         self.tableView.sectionIndexBackgroundColor = .red
@@ -101,7 +104,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier:self.cellID, for: indexPath)
         let s = self.cellData[indexPath.section][indexPath.row]
         cell.textLabel!.text = s
         
@@ -125,7 +128,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     */
     // this is more "interesting"
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let h = tableView.dequeueReusableHeaderFooterView(withIdentifier:"Header")!
+        let h = tableView.dequeueReusableHeaderFooterView(withIdentifier: self.headerID)!
         if h.viewWithTag(1) == nil {
             // print("configuring a new header view") // only called about 7 times
             

@@ -29,9 +29,11 @@ class SearchResultsController : UITableViewController {
     
     // all boilerplate; note that our data is _filteredData_, which is initially empty
     
+    let cellID = "Cell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -43,7 +45,7 @@ class SearchResultsController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
         cell.textLabel!.text = self.filteredData[indexPath.row]
         return cell
     }

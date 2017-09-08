@@ -26,6 +26,8 @@ extension CGVector {
 
 class RootViewController : UITableViewController {
     
+    let cellID = "Cell"
+    
     var cells = 0
     
     override func viewDidLoad() {
@@ -59,7 +61,7 @@ class RootViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("cell", indexPath.row)
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) as! MyCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) as! MyCell
 
         let lab = cell.theLabel!
         // prove that many rows does not mean many cell objects

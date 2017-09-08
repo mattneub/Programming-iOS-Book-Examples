@@ -64,8 +64,10 @@ class ViewController : UICollectionViewController {
     the content view and its contents are on top of that
     */
     
+    let cellID = "Cell"
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"Cell",
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellID,
         for: indexPath)
         if cell.backgroundView == nil { // brand new cell
             cell.backgroundColor = .red

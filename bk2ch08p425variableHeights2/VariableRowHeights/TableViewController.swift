@@ -36,11 +36,13 @@ class MyCell : UITableViewCell {
 
 class TableViewController: UITableViewController {
     
+    let cellID = "Cell"
+    
     override func viewDidLoad() {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 150
         self.tableView.allowsSelection = false
-        self.tableView.register(MyCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(MyCell.self, forCellReuseIdentifier: self.cellID)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,7 +54,7 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) as! MyCell
         let even = indexPath.row % 2 == 0
         cell.v.backgroundColor = even ? .red : .green
         cell.v.h = even ? 40 : 80

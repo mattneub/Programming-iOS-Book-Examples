@@ -57,8 +57,9 @@ class MasterViewController: UITableViewController {
     it doesn't have special knowledge that dynamic type is actually being used.
     */
 
+	let cellID = "Cell"
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) 
 
         let object = objects[indexPath.row]
         cell.textLabel!.text = object.description

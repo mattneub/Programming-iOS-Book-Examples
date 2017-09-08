@@ -107,8 +107,9 @@ class MyTableViewController: UITableViewController {
         return 0
     }
 
+    let cellID = "Cell"
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) 
 
         let act = self.data[indexPath.row]
         let format = DateFormatter()

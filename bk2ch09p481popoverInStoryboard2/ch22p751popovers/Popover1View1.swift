@@ -25,11 +25,14 @@ extension CGVector {
 
 
 class Popover1View1 : UITableViewController {
+    
+    let cellID = "Cell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // as far as I can tell, this has to be determined experimentally
         self.preferredContentSize = CGSize(320,150)
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier:"Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier:self.cellID)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -47,7 +50,7 @@ class Popover1View1 : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier:self.cellID, for: indexPath) 
         
         let section = indexPath.section
         let row = indexPath.row

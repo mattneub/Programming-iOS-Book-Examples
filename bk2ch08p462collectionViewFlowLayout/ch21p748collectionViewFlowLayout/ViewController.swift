@@ -37,6 +37,8 @@ class ViewController : UICollectionViewController {
         return true
     }
     
+    let headerID = "Header"
+    
     override func viewDidLoad() {
         let s = try! String(
             contentsOfFile: Bundle.main.path(
@@ -49,7 +51,7 @@ class ViewController : UICollectionViewController {
         
         self.navigationItem.title = "States"
         
-        self.collectionView!.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header")
+        self.collectionView!.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: self.headerID)
         // if you don't do something about header size...
         // ...you won't see any headers
         let flow = self.collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
@@ -71,7 +73,7 @@ class ViewController : UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var v : UICollectionReusableView! = nil
         if kind == UICollectionElementKindSectionHeader {
-            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", for: indexPath) 
+            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: self.headerID, for: indexPath) 
             if v.subviews.count == 0 {
                 v.addSubview(UILabel(frame:CGRect(0,0,30,30)))
             }
@@ -84,8 +86,10 @@ class ViewController : UICollectionViewController {
     
     // cells
     
+	let cellID = "Cell"
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"Cell", for: indexPath) 
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellID, for: indexPath) 
         if cell.contentView.subviews.count == 0 {
             cell.contentView.addSubview(UILabel(frame:CGRect(0,0,30,30)))
         }

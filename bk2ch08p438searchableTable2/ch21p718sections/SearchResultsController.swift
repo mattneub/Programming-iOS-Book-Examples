@@ -12,10 +12,12 @@ class SearchResultsController : UITableViewController {
         self.originalData = data.map{$0.rowData}.flatMap{$0}
     }
     
+    let cellID = "Cell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("src view did load")
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
         
         // we are now in total charge of the interface...
         // ... so make room for the tall search bar
@@ -32,7 +34,7 @@ class SearchResultsController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
         cell.textLabel!.text = self.filteredData[indexPath.row]
         return cell
     }

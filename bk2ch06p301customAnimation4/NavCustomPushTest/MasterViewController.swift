@@ -13,6 +13,8 @@ class MyCell : UITableViewCell {
 
 class MasterViewController : UITableViewController {
     
+    let cellID = "Cell"
+    
     struct CellModel {
         let name = "poppy" // hard-coded; well it's only an example
         var visible = true
@@ -31,7 +33,7 @@ class MasterViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) as! MyCell
         let cm = self.model[indexPath.row]
         cell.iv.image = UIImage(named:cm.name)
         if !cm.visible {

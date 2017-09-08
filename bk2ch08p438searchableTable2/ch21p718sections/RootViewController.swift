@@ -20,6 +20,9 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         return true
     }
     
+    let cellID = "Cell"
+	let headerID = "Header"
+    
     override func viewDidLoad() {
         let s = try! String(
             contentsOfFile: Bundle.main.path(
@@ -30,8 +33,8 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
             Section(sectionName: $0.key, rowData: $0.value)
         }
 
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
+        self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: self.headerID)
         
         self.tableView.sectionIndexColor = .white
         self.tableView.sectionIndexBackgroundColor = .red
@@ -74,7 +77,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) 
         let s = self.sections[indexPath.section].rowData[indexPath.row]
         cell.textLabel!.text = s
         
@@ -91,7 +94,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView
-            .dequeueReusableHeaderFooterView(withIdentifier:"Header")!
+            .dequeueReusableHeaderFooterView(withIdentifier: self.headerID)!
         if h.viewWithTag(1) == nil {
             
             h.backgroundView = UIView()

@@ -43,6 +43,9 @@ class ViewController : UICollectionViewController {
         let arr = UINib(nibName:"Cell", bundle:nil).instantiate(withOwner:nil)
         return arr[0] as! Cell
         }()
+    
+    let cellID = "Cell"
+	let headerID = "Header"
 
     override func viewDidLoad() {
         let s = try! String(
@@ -61,11 +64,11 @@ class ViewController : UICollectionViewController {
         self.collectionView!.allowsMultipleSelection = true
         
         // register cell, comes from a nib even though we are using a storyboard
-        self.collectionView!.register(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier:"Cell")
+        self.collectionView!.register(UINib(nibName:"Cell", bundle:nil), forCellWithReuseIdentifier:self.cellID)
         // register headers (for the other view controller!)
         self.collectionView!.register(UICollectionReusableView.self,
             forSupplementaryViewOfKind:UICollectionElementKindSectionHeader,
-            withReuseIdentifier:"Header")
+            withReuseIdentifier: self.headerID)
 
         // no supplementary views or anything
         
@@ -86,7 +89,7 @@ class ViewController : UICollectionViewController {
         
         var v : UICollectionReusableView! = nil
         if kind == UICollectionElementKindSectionHeader {
-            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier:"Header", for: indexPath)
+            v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: self.headerID, for: indexPath)
             if v.subviews.count == 0 {
                 let lab = UILabel() // we will size it later
                 v.addSubview(lab)
@@ -116,7 +119,7 @@ class ViewController : UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"Cell", for: indexPath) as! Cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:self.cellID, for: indexPath) as! Cell
         if cell.lab.text == "Label" { // new cell
             cell.layer.cornerRadius = 8
             cell.layer.borderWidth = 2

@@ -19,6 +19,8 @@ class DocumentLister: UITableViewController {
         }
         return NSURL() as URL // shouldn't happen
     }
+    
+	let cellID = "Cell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,7 @@ class DocumentLister: UITableViewController {
         let b2 = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(doRefresh))
         self.navigationItem.leftBarButtonItems = [b2]
         self.title = "Groups"
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
         
     }
     
@@ -79,7 +81,7 @@ class DocumentLister: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:"Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
         let fileURL = self.files[indexPath.row]
         cell.textLabel!.text = (fileURL.lastPathComponent as NSString).deletingPathExtension
         cell.accessoryType = .disclosureIndicator
