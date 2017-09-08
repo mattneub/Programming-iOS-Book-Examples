@@ -99,6 +99,13 @@ class ViewController: UIViewController {
         }
         
         do {
+            let dogs = Array(repeating:Dog(), count:3)
+            print(dogs[0] === dogs[1])
+            let dogs2 = (0..<3).map{_ in Dog()}
+            print(dogs2[0] === dogs2[1])
+        }
+        
+        do {
             let arr : [Int?] = [1,2,3]
             print(arr) // [Optional(1), Optional(2), Optional(3)]
         }
