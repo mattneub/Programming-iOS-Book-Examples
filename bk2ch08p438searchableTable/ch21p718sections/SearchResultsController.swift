@@ -64,8 +64,7 @@ extension SearchResultsController : UISearchResultsUpdating {
         print("here")
         let sb = searchController.searchBar
         let target = sb.text!
-        self.filteredData = self.originalData.filter {
-            s in
+        self.filteredData = self.originalData.filter { s in
             let found = s.range(of:target, options: .caseInsensitive)
             return (found != nil)
         }

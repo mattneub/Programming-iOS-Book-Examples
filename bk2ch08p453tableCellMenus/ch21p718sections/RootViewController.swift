@@ -106,7 +106,7 @@ class RootViewController : UITableViewController {
         return true
     }
     
-    @nonobjc let copy = #selector(UIResponderStandardEditActions.copy)
+    let copy = #selector(UIResponderStandardEditActions.copy)
     
     override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         return action == copy

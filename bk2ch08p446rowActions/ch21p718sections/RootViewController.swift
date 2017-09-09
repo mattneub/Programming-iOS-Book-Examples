@@ -1,6 +1,29 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class RootViewController : UITableViewController {
     
     struct Section {
@@ -127,7 +150,7 @@ class RootViewController : UITableViewController {
     @available(iOS 11.0, *)
     override func tableView(_ tv: UITableView, leadingSwipeActionsConfigurationForRowAt ip: IndexPath) -> UISwipeActionsConfiguration? {
         // styles are .normal and .destructive
-        let markAction = UIContextualAction(style: .normal, title: "Mark") {
+        let m = UIContextualAction(style: .normal, title: "Mark") {
             action, view, completion in
             // parameters are: the contextual action itself;
             // the containing view; this will probably be useless
@@ -141,31 +164,44 @@ class RootViewController : UITableViewController {
             print(ip) // this is how you know where we are
             completion(true)
         }
-        markAction.backgroundColor = .blue
+        m.backgroundColor = .blue
         // can add an image instead of a title (title is just nil in that case)
-        let config = UISwipeActionsConfiguration(actions: [markAction])
+        let config = UISwipeActionsConfiguration(actions: [m])
         config.performsFirstActionWithFullSwipe = true // default is false
         return config
     }
     
     @available(iOS 11.0, *)
-    override func tableView(_ tv: UITableView, trailingSwipeActionsConfigurationForRowAt ip: IndexPath) -> UISwipeActionsConfiguration? {
-        let delAction = UIContextualAction(style: .destructive, title: "Delete") {
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt ip: IndexPath) -> UISwipeActionsConfiguration? {
+        let d = UIContextualAction(style: .normal, title: nil) {
             action, view, completion in
             // exactly the same as delete case of tableView:commit
             print("Delete in swipe action")
-            tv.beginUpdates()
             self.sections[ip.section].rowData.remove(at:ip.row)
-            tv.deleteRows(at:[ip], with:.left)
-            if self.sections[ip.section].rowData.count == 0 {
-                self.sections.remove(at:ip.section)
-                tv.deleteSections(
-                    IndexSet(integer: ip.section), with:.right)
+            tableView.performBatchUpdates({
+                tableView.deleteRows(at:[ip], with: .automatic)
+            }) {_ in
+                if self.sections[ip.section].rowData.count == 0 {
+                    self.sections.remove(at:ip.section)
+                    tableView.performBatchUpdates ({
+                        tableView.deleteSections(
+                            IndexSet(integer: ip.section), with:.fade)
+                    })
+                }
             }
-            tv.endUpdates()
             completion(true)
         }
-        let config = UISwipeActionsConfiguration(actions: [delAction])
+        d.image = UIGraphicsImageRenderer(size:CGSize(30,30)).image { _ in
+            UIImage(named:"trash")?.draw(in: CGRect(0,0,30,30))
+        }
+        let m = UIContextualAction(style: .normal, title: "Mark") {
+            action, view, completion in
+            print("Mark") // in real life, do something here
+            completion(true)
+        }
+        m.backgroundColor = .blue
+
+        let config = UISwipeActionsConfiguration(actions: [d,m])
         config.performsFirstActionWithFullSwipe = false // default is true
         return config
     }

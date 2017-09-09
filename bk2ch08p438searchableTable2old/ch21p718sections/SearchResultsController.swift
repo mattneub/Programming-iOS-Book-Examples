@@ -46,8 +46,7 @@ extension SearchResultsController : UISearchResultsUpdating {
         self.searchController = searchController // keep a weak ref just in case
         let sb = searchController.searchBar
         let target = sb.text!
-        self.filteredData = self.originalData.filter {
-            s in
+        self.filteredData = self.originalData.filter { s in
             var options = String.CompareOptions.caseInsensitive
             // we now have scope buttons; 0 means "starts with"
             if searchController.searchBar.selectedScopeButtonIndex == 0 {

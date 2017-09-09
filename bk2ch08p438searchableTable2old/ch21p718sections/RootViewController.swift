@@ -57,11 +57,25 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // I'm forced to give up on this example in iOS 11
         // the search bar appears messed up in the search interface
         // however, I demonstrate use of scope button titles in nav bar later
-        b.scopeButtonTitles = ["Starts", "Contains"]
-        b.showsScopeBar = false // prevent showing in the table
+//        b.scopeButtonTitles = ["Starts", "Contains"]
+//        b.showsScopeBar = false // prevent showing in the table
         b.sizeToFit()
         b.delegate = src
         self.tableView.tableHeaderView = b
+        
+        
+        // another failed experiment...
+//        let hfv = UITableViewHeaderFooterView()
+//        hfv.contentView.addSubview(b)
+//        hfv.bounds.size.height = b.bounds.height
+//        self.tableView.tableHeaderView = hfv
+//        NSLayoutConstraint.activate([
+//            b.topAnchor.constraint(equalTo:hfv.contentView.topAnchor),
+//            b.bottomAnchor.constraint(equalTo:hfv.contentView.bottomAnchor),
+//            b.leadingAnchor.constraint(equalTo:hfv.contentView.leadingAnchor),
+//            b.trailingAnchor.constraint(equalTo:hfv.contentView.trailingAnchor),
+//        ])
+        
         self.tableView.reloadData()
         self.tableView.scrollToRow(at:
             IndexPath(row: 0, section: 0),

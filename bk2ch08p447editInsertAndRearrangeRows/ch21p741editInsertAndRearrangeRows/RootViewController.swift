@@ -3,8 +3,8 @@
 import UIKit
 
 class RootViewController : UITableViewController, UITextFieldDelegate {
-    var numbers = [String]()
     var name = ""
+    var numbers = [String]()
     
     let cellID = "Cell"
     
@@ -96,7 +96,7 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
         let s = self.numbers[fromIndexPath.row]
         self.numbers.remove(at:fromIndexPath.row)
-        self.numbers.insert(s, at: toIndexPath.row)
+        self.numbers.insert(s, at:toIndexPath.row)
         tableView.reloadData() // to get plus and minus buttons to redraw themselves
     }
     
@@ -115,34 +115,32 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         return false
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        tableView.endEditing(true) // user can click minus/plus while still editing
+    override func tableView(_ tv: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt ip: IndexPath) {
+        tv.endEditing(true) // user can click minus/plus while still editing
         // so we must force saving to the model
         if editingStyle == .insert {
             self.numbers += [""]
             let ct = self.numbers.count
             if #available(iOS 11.0, *) {
-                tableView.performBatchUpdates({
-                    tableView.insertRows(at:
-                        [IndexPath(row:ct-1, section:1)],
-                                         with:.automatic)
-                    tableView.reloadRows(at:
-                        [IndexPath(row:ct-2, section:1)],
-                                         with:.automatic)
+                tv.performBatchUpdates({
+                    tv.insertRows(at:
+                        [IndexPath(row:ct-1, section:1)], with:.automatic)
+                    tv.reloadRows(at:
+                        [IndexPath(row:ct-2, section:1)], with:.automatic)
                 }) { _ in
                     let cell = self.tableView.cellForRow(at:
                         IndexPath(row:ct-1, section:1))
                     (cell as! MyCell).textField.becomeFirstResponder()
                 }
             } else {
-                tableView.beginUpdates()
-                tableView.insertRows(at:
+                tv.beginUpdates()
+                tv.insertRows(at:
                     [IndexPath(row:ct-1, section:1)],
                                      with:.automatic)
-                tableView.reloadRows(at:
+                tv.reloadRows(at:
                     [IndexPath(row:ct-2, section:1)],
                                      with:.automatic)
-                tableView.endUpdates()
+                tv.endUpdates()
                 // crucial that this next bit be *outside* the updates block
                 let cell = self.tableView.cellForRow(at:
                     IndexPath(row:ct-1, section:1))
@@ -151,22 +149,20 @@ class RootViewController : UITableViewController, UITextFieldDelegate {
         }
         if editingStyle == .delete {
             
-            self.numbers.remove(at:indexPath.row)
+            self.numbers.remove(at:ip.row)
 
             if #available(iOS 11.0, *) {
-                tableView.performBatchUpdates({
-                    tableView.deleteRows(at:
-                        [indexPath], with:.automatic)
-                    tableView.reloadSections(
-                        IndexSet(integer:1), with:.automatic)
+                tv.performBatchUpdates({
+                    tv.deleteRows(at:[ip], with:.automatic)
+                    tv.reloadSections(IndexSet(integer:1), with:.automatic)
                 })
             } else {
-                tableView.beginUpdates()
-                tableView.deleteRows(at:
-                    [indexPath], with:.automatic)
-                tableView.reloadSections(
+                tv.beginUpdates()
+                tv.deleteRows(at:
+                    [ip], with:.automatic)
+                tv.reloadSections(
                     IndexSet(integer:1), with:.automatic)
-                tableView.endUpdates()
+                tv.endUpdates()
             }
             
         }

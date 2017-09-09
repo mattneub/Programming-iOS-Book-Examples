@@ -56,8 +56,6 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // to do so, pass nil as the search results controller,
         // and tell the search controller not to insert a dimming view
         
-        // keep copy of the original data
-        self.originalSections = self.sections
         let searcher = MySearchController(searchResultsController:nil)
         self.searcher = searcher
         searcher.obscuresBackgroundDuringPresentation = false
@@ -144,6 +142,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
 extension RootViewController : UISearchControllerDelegate {
     // flag for whoever needs it (in this case, sectionIndexTitles...)
     func willPresentSearchController(_ searchController: UISearchController) {
+        self.originalSections = self.sections // keep copy of the original data
         self.searching = true
     }
     func willDismissSearchController(_ searchController: UISearchController) {
@@ -157,24 +156,14 @@ extension RootViewController : UISearchResultsUpdating {
         let target = sb.text!
         if target == "" {
             self.sections = self.originalSections
-            self.tableView.reloadData()
-            return
-        }
-        // we have a target string
-//        self.sections = self.originalSections.map {
-//            var section = $0
-//            section.rowData = section.rowData.filter {
-//                let found = $0.range(of:target, options: .caseInsensitive)
-//                return (found != nil)
-//            }
-//            return section
-//        }.filter {$0.rowData.count > 0}
-        self.sections = self.originalSections.reduce(into:[]) {acc, sec in
-            let rowData = sec.rowData.filter {
-                $0.range(of:target, options: .caseInsensitive) != nil
-            }
-            if rowData.count > 0 {
-                acc.append(Section(sectionName: sec.sectionName, rowData: rowData))
+        } else {
+            self.sections = self.originalSections.reduce(into:[]) {acc, sec in
+                let rowData = sec.rowData.filter {
+                    $0.range(of:target, options: .caseInsensitive) != nil
+                }
+                if rowData.count > 0 {
+                    acc.append(Section(sectionName: sec.sectionName, rowData: rowData))
+                }
             }
         }
         self.tableView.reloadData()

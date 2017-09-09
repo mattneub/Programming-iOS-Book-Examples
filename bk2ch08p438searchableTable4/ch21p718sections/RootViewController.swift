@@ -57,22 +57,26 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // self.tableView.sectionIndexTrackingBackgroundColor = .blue
         self.tableView.backgroundColor = .yellow // but the search bar covers that
         
-        
+        // how to to put search bar into navigation bar
+        var which : Int { return 2 }
+
         let src = SearchResultsController(data: self.sections)
         let searcher = MySearchController(searchResultsController: src)
-        self.searcher = searcher
+        switch which {
+        case 1:
+            self.searcher = searcher
+        default: break // no need to retain the search controller if using navigation item!
+        }
         // specify who the search controller should notify when the search bar changes
         searcher.searchResultsUpdater = src
         // put the search controller's search bar into the interface
-        let b = searcher.searchBar
-        b.sizeToFit()
-        b.autocapitalizationType = .none
         
-        // how to to put search bar into navigation bar
-        var which : Int { return 2 }
         switch which {
         case 1:
             // this does still work in iOS 11
+            let b = searcher.searchBar
+            b.sizeToFit()
+            b.autocapitalizationType = .none
             self.navigationItem.titleView = b // *
             searcher.hidesNavigationBarDuringPresentation = false // *
             self.definesPresentationContext = true // *
@@ -93,8 +97,9 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
                 // one point of this architecture: there's room for other stuff in navbar
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: nil, action: nil)
                 
+                let b = searcher.searchBar
                 // hey, check this out
-                b.scopeButtonTitles = ["Starts", "Contains"]
+                b.scopeButtonTitles = ["Contains", "Starts With"]
                 b.showsScopeBar = false
                 b.delegate = src
             } else {

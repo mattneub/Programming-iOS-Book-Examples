@@ -1,6 +1,12 @@
 
 import UIKit
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
 class RootViewController : UITableViewController {
     
     struct Section {
@@ -15,8 +21,6 @@ class RootViewController : UITableViewController {
     
     let cellID = "Cell"
 	let headerID = "Header"
-    
-    let which = 1 // 0 for manual, 1 for built-in edit button
     
     override func viewDidLoad() {
         let s = try! String(
@@ -35,11 +39,13 @@ class RootViewController : UITableViewController {
         self.tableView.sectionIndexBackgroundColor = .red
         self.tableView.sectionIndexTrackingBackgroundColor = .blue
         
+        var which : Int { return 1 } // 0 for manual, 1 for built-in edit button
         switch which {
         case 0:
             let b = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(doEdit))
             self.navigationItem.rightBarButtonItem = b
         case 1:
+            break
             self.navigationItem.rightBarButtonItem = self.editButtonItem // badda-bing, badda-boom
         default:break
         }
@@ -128,28 +134,46 @@ class RootViewController : UITableViewController {
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCellEditingStyle,
                             forRowAt ip: IndexPath) {
-        // revised slightly to clarify logic and order of operation, using batch update
-        // however, no matter _what_ I do, there is no section removal animation
-        // on iOS 11; I regard that as a bug, and have filed it
+        // had to split into two batches on iOS 11, filed a bug about that
         switch editingStyle {
         case .delete:
-            tableView.beginUpdates()
-            self.sections[ip.section].rowData.remove(at:ip.row)
-            tableView.deleteRows(at:[ip], with:.left)
-            if self.sections[ip.section].rowData.count == 0 {
-                self.sections.remove(at:ip.section)
-                tableView.deleteSections(
-                    IndexSet(integer: ip.section), with:.right)
+            if #available(iOS 11.0, *) {
+                self.sections[ip.section].rowData.remove(at:ip.row)
+                tableView.performBatchUpdates({
+                    tableView.deleteRows(at:[ip], with: .automatic)
+                }) {_ in
+                    if self.sections[ip.section].rowData.count == 0 {
+                        self.sections.remove(at:ip.section)
+                        tableView.performBatchUpdates ({
+                            tableView.deleteSections(
+                                IndexSet(integer: ip.section), with:.fade)
+                        })
+                    }
+                }
+            } else {
+                tableView.beginUpdates()
+                self.sections[ip.section].rowData.remove(at:ip.row)
+                tableView.deleteRows(at:[ip], with:.left)
+                if self.sections[ip.section].rowData.count == 0 {
+                    self.sections.remove(at:ip.section)
+                    tableView.deleteSections(
+                        IndexSet(integer: ip.section), with:.right)
+                }
+                tableView.endUpdates()
             }
-            tableView.endUpdates()
         default: break
         }
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // if indexPath.row == 0 { return false }
+        return true
+    }
+    
     // prevent swipe-to-edit
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-            return tableView.isEditing ? .delete : .none
-    }
+//    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+//            return tableView.isEditing ? .delete : .none
+//    }
     
 }

@@ -23,7 +23,7 @@ class MyLayout : UICollectionViewLayout {
         // work out cell size based on bounds size
         let sz = self.collectionView!.bounds.size
         let width = sz.width
-        let shortside = floor(width/50.0)
+        let shortside = (width/50.0).rounded(.down)
         let side = width/shortside
         
         // generate attributes for all cells
@@ -33,8 +33,7 @@ class MyLayout : UICollectionViewLayout {
             let jj = self.collectionView!.numberOfItems(inSection:i)
             for j in 0 ..< jj {
                 let att = UICollectionViewLayoutAttributes(
-                    forCellWith:
-                    IndexPath(item:j, section:i))
+                    forCellWith: IndexPath(item:j, section:i))
                 att.frame = CGRect(CGFloat(x)*side,CGFloat(y)*side,side,side)
                 atts += [att]
                 x += 1

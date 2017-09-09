@@ -197,7 +197,7 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         self.modelCell.lab.text = self.sections[indexPath.section].rowData[indexPath.row]
         var sz = self.modelCell.container.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-        sz.width = ceil(sz.width); sz.height = ceil(sz.height)
+        sz.width = sz.width.rounded(.up); sz.height = sz.height.rounded(.up)
         return sz
     }
 }

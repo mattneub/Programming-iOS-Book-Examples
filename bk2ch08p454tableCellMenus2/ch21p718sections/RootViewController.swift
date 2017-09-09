@@ -104,8 +104,8 @@ class RootViewController : UITableViewController {
     
     // menu handling ==========
     
-    @nonobjc let copy = #selector(UIResponderStandardEditActions.copy)
-    @nonobjc let abbrev = #selector(MyCell.abbrev)
+    let copy = #selector(UIResponderStandardEditActions.copy)
+    let abbrev = #selector(MyCell.abbrev)
     override func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
         let mi = UIMenuItem(title: "Abbrev", action: abbrev)
         UIMenuController.shared.menuItems = [mi]
