@@ -39,7 +39,7 @@ class SearchResultsController : UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.isHidden = false
+        self.view.isHidden = false
         print("appear")
     }
     
@@ -81,7 +81,7 @@ extension SearchResultsController : UISearchResultsUpdating {
         self.tableView.reloadData()
     }
     func updateSearchResults(for searchController: UISearchController) {
-        self.tableView.isHidden = false // *
+        self.view.isHidden = false // *
         self.doUpdate()
     }
     @objc func scopeChanged(_ sender : UISegmentedControl) {

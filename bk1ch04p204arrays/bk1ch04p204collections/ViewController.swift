@@ -464,10 +464,10 @@ class ViewController: UIViewController {
         }
         
         do {
-            // somewhat more efficient implementation of each_cons
+            // implementation of each_slice
             let arr = [1,2,3,4,5,6,7,8,9]
             let clump = 2
-            let cons : [[Int]] = arr.reduce(into:[]) {
+            let slices : [[Int]] = arr.reduce(into:[]) {
                 memo, cur in
                 if memo.count == 0 {
                     return memo.append([cur])
@@ -478,7 +478,7 @@ class ViewController: UIViewController {
                     memo.append([cur])
                 }
             }
-            print(cons)
+            print(slices)
         }
 
         do {

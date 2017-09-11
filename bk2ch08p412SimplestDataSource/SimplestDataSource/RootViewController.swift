@@ -65,6 +65,10 @@ class RootViewController: UITableViewController {
         } else {
             self.automaticallyAdjustsScrollViewInsets = true
         }
+        
+        self.tableView.tintColor = .red
+        // proving that the refresh control is unaffected
+        // self.tableView.refreshControl?.tintColor = .yellow
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
