@@ -17,7 +17,7 @@ class ViewController: UIViewController {
      
      */
 
-    func dogMyCats(_ cats:String) throws -> String {
+    func dogMyCats(_ cats:String) -> String {
         return "Dogs"
     }
     
