@@ -115,6 +115,8 @@ class ViewController: UIViewController {
         // another workaround
         do {
             let s = "hello"
+            // there's a bug where if you don't say `where` explicitly...
+            // ...the compiler thinks this is `index(ofAccessibilityElement:)` and you get a weird answer
             let firstSmall = s.index(where: {$0 < "f"})
             print(firstSmall as Any)
         }

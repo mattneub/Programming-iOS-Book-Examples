@@ -60,15 +60,15 @@ struct Bird3a : Flier3a {
 
 /*
 
-protocol Flier3a {
-    associatedtype Other : Flier3a
+protocol Flier3aa {
+    associatedtype Other : Flier3aa
     func flockTogetherWith(f:Other)
 }
-struct Bird3a : Flier3a {
-    func flockTogetherWith(f:Insect3a) {}
+struct Bird3aa : Flier3aa {
+    func flockTogetherWith(f:Insect3aa) {}
 }
-struct Insect3a : Flier3a {
-    func flockTogetherWith(f:Insect3a) {}
+struct Insect3aa : Flier3aa {
+    func flockTogetherWith(f:Insect3aa) {}
 }
 
 */

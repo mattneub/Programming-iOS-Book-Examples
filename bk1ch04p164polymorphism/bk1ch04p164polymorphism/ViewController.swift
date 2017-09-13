@@ -137,13 +137,19 @@ class ViewController: UIViewController {
         
         do {
             let ud = UserDefaults.standard
-            let s = "howdy"
-            ud.set(s, forKey:"Test")
-            let test = ud.object(forKey:"Test") as! String
+            ud.set("howdy", forKey:"greeting")
+            let test = ud.object(forKey:"greeting") as! String
             print(test)
-            let test2 = ud.object(forKey:"Test") as AnyObject // no forced cast needed
+            let test2 = ud.object(forKey:"greeting") as AnyObject // no forced cast needed
             let test3 = test2 as! String
             _ = test3
+        }
+        
+        do {
+            let ud = UserDefaults.standard
+            ud.set(Date(), forKey:"now")
+            let d = ud.object(forKey:"now") as! Date
+            print(d)
         }
         
         do {

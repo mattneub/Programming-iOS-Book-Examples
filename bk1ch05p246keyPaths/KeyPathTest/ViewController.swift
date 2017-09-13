@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         v2.translatesAutoresizingMaskIntoConstraints = false
         v1.addSubview(v2)
         
-        let which = 1
+        var which : Int { return 0 }
         switch which {
         case 0:
             let c1 = v2.topAnchor.constraint(equalTo:v1.topAnchor)

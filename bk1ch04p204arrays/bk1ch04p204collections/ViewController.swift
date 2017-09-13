@@ -258,7 +258,9 @@ class ViewController: UIViewController {
             
             let aviary = [Bird(name:"Tweety"), Bird(name:"Flappy"), Bird(name:"Lady")]
             // let ixxxx = aviary.index(of:Bird(name:"Tweety"))
-            let ix2 = aviary.index {$0.name.characters.count < 5} // index(where:)
+            // let ix2 = aviary.index {$0.name.characters.count < 5} // index(where:) works here,
+            // but I think for consistency I'd better say "where" explicitly
+            let ix2 = aviary.index(where: {$0.name.characters.count < 5})
             print(ix2 as Any)
             
             do {
