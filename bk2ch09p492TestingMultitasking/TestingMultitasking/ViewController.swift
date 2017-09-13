@@ -35,7 +35,7 @@ class ViewController: UIViewController {
             print("window bounds are \(self.view.window!.bounds)")
             print("screen bounds are \(UIScreen.main.bounds)")
             let v = sender as! UIView
-            let r = self.view.window?.convert(v.bounds, from: v)
+            let r = self.view.window!.convert(v.bounds, from: v)
             print("button in window is \(r)")
             let r2 = v.convert(v.bounds, to: UIScreen.main.coordinateSpace)
             print("button in screen is \(r2)")

@@ -26,9 +26,9 @@ class MasterNavigationViewController : UINavigationController {
     }
     
     override func targetViewController(forAction action: Selector, sender: Any?) -> UIViewController? {
-        print("master NAV view controller target for \(action) \(sender)...")
+        print("master NAV view controller target for \(action) \(sender as Any)...")
         let result = super.targetViewController(forAction: action, sender: sender)
-        print("master NAV view controller target for \(action), returning \(result)")
+        print("master NAV view controller target for \(action), returning \(result as Any)")
         return result
     }
     

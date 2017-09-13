@@ -17,7 +17,7 @@ class DetailViewController: UIViewController {
 
     func configureView() {
         print("detail view configureView")
-        print("detailItem: \(self.detailItem)")
+        print("detailItem: \(self.detailItem as Any)")
         print("label: \(self.detailDescriptionLabel)")
         // problem is that when user taps a date in the master view...
         // an entirely new detail view controller is created
@@ -44,9 +44,9 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController {
     override func targetViewController(forAction action: Selector, sender: Any?) -> UIViewController? {
-        print("detail view controller target for \(action) \(sender)...")
+        print("detail view controller target for \(action) \(sender as Any)...")
         let result = super.targetViewController(forAction: action, sender: sender)
-        print("detail view controller target for \(action), returning \(result)")
+        print("detail view controller target for \(action), returning \(result as Any)")
         return result
     }
     

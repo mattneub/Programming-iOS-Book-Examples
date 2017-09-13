@@ -5,9 +5,9 @@ import UIKit
 class MySplitViewController: UISplitViewController {
     
     override func targetViewController(forAction action: Selector, sender: Any?) -> UIViewController? {
-        print("split view controller target for \(action) \(sender)...")
+        print("split view controller target for \(action) \(sender as Any)...")
         let result = super.targetViewController(forAction: action, sender: sender)
-        print("split view controller target for \(action), returning \(result)")
+        print("split view controller target for \(action), returning \(result as Any)")
         return result
     }
     
@@ -18,13 +18,13 @@ class MySplitViewController: UISplitViewController {
     
     override var childViewControllerForStatusBarHidden : UIViewController? {
         let vc = super.childViewControllerForStatusBarHidden
-        print("hidden: \(vc)")
+        print("hidden: \(vc as Any)")
         return vc
     }
     
     override var childViewControllerForStatusBarStyle : UIViewController? {
         let vc = super.childViewControllerForStatusBarStyle
-        print("style: \(vc)")
+        print("style: \(vc as Any)")
         return vc
     }
 

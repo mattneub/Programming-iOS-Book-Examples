@@ -31,10 +31,11 @@ class ViewController : UIViewController {
         bb.sizeToFit()
         vc.navigationItem.titleView = bb
         //hmm, this feels like a bug: merely examining the presentation controller...
-        //freezes it so that it never becomes a popover presentation controller
+        //freezes it so that it never becomes a popover presentation controller!
         //print(nav.presentationController)
         nav.modalPresentationStyle = .popover
-        //print(nav.presentationController)
+        print(nav.presentationController as Any)
+        print(nav.popoverPresentationController as Any)
         self.present(nav, animated: true)
         
         // where's the configuration for the popover controller?
@@ -62,18 +63,18 @@ class ViewController : UIViewController {
     
     // state saving and button dismissal; dismiss = dismiss presented view controller
     
-    func cancelPop1(_ sender: Any) {
+    @objc func cancelPop1(_ sender: Any) {
         self.dismiss(animated:true)
         UserDefaults.standard.set(self.oldChoice, forKey: "choice")
     }
     
-    func savePop1(_ sender: Any) {
+    @objc func savePop1(_ sender: Any) {
         self.dismiss(animated:true)
     }
     
     // presented view controller inside popover; just use .CurrentContext
     
-    func doPresent(_ sender: Any) {
+    @objc func doPresent(_ sender: Any) {
         // referring to the popover is now much easier!
         // also, note that automatic size adjustment now just works
         // this is because the popover controller is a UIContentContainer...
@@ -146,7 +147,7 @@ class ViewController : UIViewController {
 
     }
     
-    func tapped (_ sender: Any) {
+    @objc func tapped (_ sender: Any) {
         print("tap")
         let vc = UIViewController()
         vc.modalPresentationStyle = .currentContext // oooh
@@ -190,7 +191,7 @@ class ViewController : UIViewController {
         
     }
     
-    func done (_ sender:UIResponder) {
+    @objc func done (_ sender:UIResponder) {
         var r : UIResponder! = sender
         repeat { r = r.next } while !(r is UIViewController)
         (r as! UIViewController).dismiss(animated:true) {

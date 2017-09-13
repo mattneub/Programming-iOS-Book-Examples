@@ -40,7 +40,7 @@ class MasterViewController: UITableViewController {
 //        }
     }
     
-    func insertNewObject(_ sender: Any) {
+    @objc func insertNewObject(_ sender: Any) {
         objects.insert(Date(), at: 0)
         let ip = IndexPath(row: 0, section: 0)
         self.tableView.insertRows(at:[ip], with: .automatic)
@@ -103,9 +103,9 @@ extension MasterViewController {
     }
     
     override func targetViewController(forAction action: Selector, sender: Any?) -> UIViewController? {
-        print("master view controller target for \(action) \(sender)...")
+        print("master view controller target for \(action) \(sender as Any)...")
         let result = super.targetViewController(forAction: action, sender: sender)
-        print("master view controller target for \(action), returning \(result)")
+        print("master view controller target for \(action), returning \(result as Any)")
         return result
     }
     

@@ -101,7 +101,7 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
         return nil
     }
     
-    func dismissHelp(_ sender: Any) {
+    @objc func dismissHelp(_ sender: Any) {
         self.dismiss(animated:true)
     }
     

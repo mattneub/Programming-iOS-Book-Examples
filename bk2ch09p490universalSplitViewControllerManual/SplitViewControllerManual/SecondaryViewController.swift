@@ -20,7 +20,7 @@ class SecondaryViewController : UIViewController {
             ].flatMap{$0})
     }
     
-    func callShowHide(_ sender: Any?) {
+    @objc func callShowHide(_ sender: Any?) {
         // this intermediate method is unnecessary; it's just so I can log the call
         print("calling showHide on self")
         self.showHide(sender)

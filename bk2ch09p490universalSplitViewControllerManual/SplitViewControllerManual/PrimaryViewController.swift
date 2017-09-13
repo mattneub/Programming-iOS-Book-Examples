@@ -37,7 +37,7 @@ class PrimaryViewController : UIViewController {
         seg.addTarget(self, action: #selector(change), for: .valueChanged)
     }
     
-    func change(_ sender: Any) {
+    @objc func change(_ sender: Any) {
         var vc : UIViewController
         // note this expression of the difference as to where the Secondary will be,
         // depending whether the svc is expanded or collapsed
@@ -86,7 +86,7 @@ class PrimaryViewController : UIViewController {
 // you need an extension to satisfy the compiler
 
 extension UIViewController {
-    func showHide(_ sender: Any?) {
+    @objc func showHide(_ sender: Any?) {
         // how to use targetViewControllerForAction to look up the hierarchy
         // we don't know who implements showHide or where he is in the hierarchy,
         // and we don't care! agnostic messaging up the hierarchy
