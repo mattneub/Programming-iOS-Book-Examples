@@ -199,6 +199,12 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
             t.take1id([1,2,3] as [NSNumber]) // ContiguousArrayStorage
             let arr : [Int?] = [1, nil, 2]
             t.take1id(arr)
+            let set : Set<Int> = [1,2,3]
+            t.take1id(set)
+            // okay, so for sets the matter doesn't arise, because it isn't hashable
+//            let set2 : Set<CGPoint> = [.zero]
+//            t.take1id(set2)
+
             t.take1id(["hey":"ho"])
             t.take1id(["hey":"ho"] as NSDictionary)
             t.take1id(Date())

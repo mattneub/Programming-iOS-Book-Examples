@@ -10,11 +10,9 @@ struct Sword : Wieldable {
 }
 struct Bow : Wieldable {
 }
-protocol Superfighter {
+protocol Fighter {
+    associatedtype Enemy where Enemy : Fighter
     associatedtype Weapon : Wieldable
-}
-protocol Fighter : Superfighter {
-    associatedtype Enemy : Superfighter
     func steal(weapon:Self.Enemy.Weapon, from:Self.Enemy)
 }
 struct Soldier : Fighter {

@@ -10,11 +10,9 @@ struct Sword : Wieldable {
 }
 struct Bow : Wieldable {
 }
-protocol Superfighter {
+protocol Fighter {
+    associatedtype Enemy where Enemy : Fighter
     associatedtype Weapon : Wieldable
-}
-protocol Fighter : Superfighter {
-    associatedtype Enemy : Superfighter
     associatedtype EnemyWeapon where EnemyWeapon == Enemy.Weapon // *
     func steal(weapon:EnemyWeapon, from:Enemy) // *
 }

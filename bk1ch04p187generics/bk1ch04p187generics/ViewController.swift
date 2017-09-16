@@ -235,6 +235,18 @@ class ViewController: UIViewController {
             _ = (o, w, w2)
         }
         
+        do {
+            // not in book, but I suppose it should be: how to check type of resolved generic placeholder
+            // From https://stackoverflow.com/a/46249717/341994
+            
+            func get<T>() -> T? {
+                if T.self is Int.Type { print("int") } // WOW!!!
+                return nil
+            }
+            let _ : Int? = get()
+            let _ : String? = get()
+        }
+        
     }
 }
 
