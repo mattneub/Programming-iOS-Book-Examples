@@ -39,9 +39,8 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
         return .none
     }
     
-    // but this doesn't work; my guess is that we have gone out of existence at this point
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        print("here4") // not called, this could be a bug
+        print("here4")
         UserDefaults.standard.set(self.oldChoice, forKey: "choice")
     }
 

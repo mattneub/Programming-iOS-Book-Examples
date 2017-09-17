@@ -99,7 +99,7 @@ class ViewController : UIViewController {
             // not working here either
             pop.popoverLayoutMargins = UIEdgeInsetsMake(100,100,100,100)
             // new in iOS 9
-            pop.canOverlapSourceViewRect = true
+            pop.canOverlapSourceViewRect = true // default is false
             
             vc.preferredContentSize = CGSize(200,500)
 
