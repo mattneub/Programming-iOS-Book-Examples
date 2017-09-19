@@ -2,27 +2,36 @@
 
 import UIKit
 
-func delay(_ delay:Double, closure:@escaping ()->()) {
-    let when = DispatchTime.now() + delay
-    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
-}
+// based on https://stackoverflow.com/a/46283774/341994
 
-
-class MySearchController : UISearchController {
-    deinit {
-        print("farewell from search controller")
+class SearchContainerVC: UISearchContainerViewController {
+    
+    init(data:[RootViewController.Section]) {
+        let src = SearchResultsController(data:data)
+        let searcher = UISearchController(searchResultsController: src)
+        super.init(searchController: searcher)
+        
+        searcher.searchResultsUpdater = src
+        searcher.hidesNavigationBarDuringPresentation = false
+        
+        self.navigationItem.searchController = searcher
+        
+        let b = searcher.searchBar
+        b.autocapitalizationType = .none
+        b.delegate = src
+        b.showsCancelButton = true
     }
-}
-
-class MySearchContainerViewController : UISearchContainerViewController {
-    deinit {
-        print("farewell from search container view controller")
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .white // ugly otherwise
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
-
-// Abandoned example, never got it to work satisfactorily, just looks like shit no matter what I try
-// I don't understand how the Apple example is supposed to work
-
 
 class RootViewController : UITableViewController, UISearchBarDelegate {
     struct Section {
@@ -30,49 +39,6 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         var rowData : [String]
     }
     var sections : [Section]!
-    // var searcher : UISearchController! // container will contain it
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        let b = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(doSearch))
-        self.navigationItem.rightBarButtonItem = b
-    }
-    
-    @objc func doSearch(_ sender: Any) {
-        // construct container view controller
-
-        let src = SearchResultsController(data: self.sections)
-        // instantiate a search controller and keep it alive
-        let searcher = MySearchController(searchResultsController: src)
-        src.searchController = searcher
-        // specify who the search controller should notify when the search bar changes
-        searcher.searchResultsUpdater = src
-        searcher.hidesNavigationBarDuringPresentation = false
-        searcher.obscuresBackgroundDuringPresentation = false
-        searcher.searchBar.placeholder = "Search"
-        searcher.searchBar.sizeToFit()
-        
-
-//        let vc = MySearchContainerViewController(searchController: searcher)
-//        vc.title = "Search"
-//        self.present(vc, animated: true)
-
-        //        if #available(iOS 11.0, *) {
-//            vc.navigationItem.searchController = searcher
-//        } else {
-//            // Fallback on earlier versions
-//        }
-
-//        searcher.searchBar.delegate = src
-//        self.navigationController!.pushViewController(vc, animated:true)
-//        let nav = UINavigationController(rootViewController: vc)
-////        nav.modalTransitionStyle = .crossDissolve
-//        self.present(nav, animated:true)
-    }
-        
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     let cellID = "Cell"
 	let headerID = "Header"
@@ -94,12 +60,19 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         self.tableView.sectionIndexBackgroundColor = .red
         // self.tableView.sectionIndexTrackingBackgroundColor = .blue
         self.tableView.backgroundColor = .yellow // but the search bar covers that
-        self.tableView.backgroundView = { // this will fix it
-            let v = UIView()
-            v.backgroundColor = .yellow
-            return v
-        }()
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(doSearch))
+        
+        self.tableView.reloadData()
+        self.tableView.scrollToRow(at:
+            IndexPath(row: 0, section: 0),
+            at:.top, animated:false)
+    }
+    
+    @objc func doSearch(_ sender : Any) {
+        let vc = SearchContainerVC(data:self.sections)
+        let nav = UINavigationController(rootViewController: vc)
+        self.present(nav, animated: true, completion: nil)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -126,6 +99,13 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         return cell
     }
     
+    /*
+    
+    override func tableView(_ tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
+    return self.sectionNames[section]
+    }
+    
+    */
     // this is more "interesting"
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let h = tableView
@@ -165,7 +145,16 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         
     }
     
+    /*
+    override func tableView(_ tableView: UITableView!, willDisplayHeaderView view: UIView!, forSection section: Int) {
+    println(view) // prove we are reusing header views
+    }
+    */
+    
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return self.sections.map{$0.sectionName}
     }
+}
+
+extension RootViewController : UISearchControllerDelegate {
 }

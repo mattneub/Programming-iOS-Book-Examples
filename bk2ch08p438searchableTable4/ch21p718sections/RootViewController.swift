@@ -102,6 +102,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
                 b.scopeButtonTitles = ["Contains", "Starts With"]
                 b.showsScopeBar = false
                 b.delegate = src
+                b.autocapitalizationType = .none
             } else {
                 fatalError("don't do this except in iOS 11")
             }

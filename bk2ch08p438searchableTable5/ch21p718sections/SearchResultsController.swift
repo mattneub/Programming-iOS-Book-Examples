@@ -3,19 +3,9 @@
 import UIKit
 import Swift
 
-/*
-No law whatever says that the search results controller must be a table view controller,
-or that the search results must be shown in a table;
-it's just a convenient thing to do.
-
-This is the rock-bottom simplest implementation I could think of:
-a default table with the search results in each cell's textLabel.
-*/
-
 class SearchResultsController : UITableViewController {
     var originalData : [String]
     var filteredData = [String]()
-    weak var searchController : UISearchController?
     
     init(data:[RootViewController.Section]) {
         // we don't use sections, so flatten the data into a single array of strings
@@ -34,6 +24,12 @@ class SearchResultsController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
+        self.view.isHidden = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.isHidden = false
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,15 +48,15 @@ class SearchResultsController : UITableViewController {
 }
 
 
-
 extension SearchResultsController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         print("update")
         
+        self.view.isHidden = false
+        
         let sb = searchController.searchBar
         let target = sb.text!
-        self.filteredData = self.originalData.filter {
-            s in
+        self.filteredData = self.originalData.filter { s in
             let found = s.range(of:target, options: .caseInsensitive)
             return (found != nil)
         }
@@ -68,10 +64,9 @@ extension SearchResultsController : UISearchResultsUpdating {
     }
 }
 
-
 extension SearchResultsController : UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.presentingViewController?.navigationController?.dismiss(animated:true)
-
+        self.dismiss(animated: true)
     }
 }
+

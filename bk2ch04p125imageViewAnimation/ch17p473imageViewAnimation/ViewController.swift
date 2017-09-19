@@ -30,7 +30,7 @@ class ViewController : UIViewController {
         delay(1.0) {self.animate()}
     }
     
-    let which = 3
+    let which = 5
 
     func animate () {
         
