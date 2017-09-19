@@ -27,6 +27,16 @@ extension CGVector {
 
 class DetailViewController: UIViewController {
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName:nibNameOrNil, bundle:nibBundleOrNil)
+        self.edgesForExtendedLayout = .all
+        self.extendedLayoutIncludesOpaqueBars = true
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     var lab : UILabel!
     var boy : String = "" {
         didSet {
@@ -43,7 +53,8 @@ class DetailViewController: UIViewController {
         lab.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lab)
         NSLayoutConstraint.activate([
-            lab.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100),
+            // lab.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100),
+            lab.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 100),
             lab.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
         self.lab = lab

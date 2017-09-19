@@ -26,29 +26,26 @@ extension CGVector {
 
 
 class RootViewController : UITableViewController, UISearchBarDelegate {
-    var sectionNames = [String]()
-    var cellData = [[String]]()
+    struct Section {
+        var sectionName : String
+        var rowData : [String]
+    }
+    var sections : [Section]!
     var searcher : UISearchController!
     
     let cellID = "Cell"
 	let headerID = "Header"
     
     override func viewDidLoad() {
-        let s = try! String(contentsOfFile: Bundle.main.path(forResource: "states", ofType: "txt")!)
+        let s = try! String(
+            contentsOfFile: Bundle.main.path(
+                forResource: "states", ofType: "txt")!)
         let states = s.components(separatedBy:"\n")
-        var previous = ""
-        for aState in states {
-            // get the first letter
-            let c = String(aState.characters.prefix(1))
-            // only add a letter to sectionNames when it's a different letter
-            if c != previous {
-                previous = c
-                self.sectionNames.append(c.uppercased())
-                // and in that case also add new subarray to our array of subarrays
-                self.cellData.append([String]())
-            }
-            self.cellData[self.cellData.count-1].append(aState)
+        let d = Dictionary(grouping: states) {String($0.prefix(1))}
+        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+            Section(sectionName: $0.key, rowData: $0.value)
         }
+
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: self.headerID)
         
@@ -60,10 +57,10 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // this is the only important part of this class! create popover searcher
         
         // instantiate a view controller that will present the search results
-        let src = SearchResultsController(data: self.cellData)
+        let src = SearchResultsController(data: self.sections)
         // instantiate a search controller and keep it alive
         let searcher = UISearchController(searchResultsController: src)
-        self.searcher = searcher
+        // self.searcher = searcher
         // no effect in this situation:
         searcher.hidesNavigationBarDuringPresentation = false
         // searcher.obscuresBackgroundDuringPresentation = false
@@ -78,8 +75,10 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
         // b.sizeToFit()
         // b.frame.size.width = 250
         b.autocapitalizationType = .none
-        self.navigationItem.titleView = b
-        b.showsCancelButton = true // no effect
+        // self.navigationItem.titleView = b
+        // b.showsCancelButton = true // no effect
+        self.navigationItem.searchController = searcher
+        self.navigationItem.hidesSearchBarWhenScrolling = false
 
         
         // could proceed to configure the UISearchController further...
@@ -96,16 +95,16 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sectionNames.count
+        return self.sections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cellData[section].count
+        return self.sections[section].rowData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:self.cellID, for: indexPath)
-        let s = self.cellData[indexPath.section][indexPath.row]
+        let s = self.sections[indexPath.section].rowData[indexPath.row]
         cell.textLabel!.text = s
         
         // this part is not in the book, it's just for fun
@@ -157,7 +156,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
             ].flatMap{$0})
         }
         let lab = h.contentView.viewWithTag(1) as! UILabel
-        lab.text = self.sectionNames[section]
+        lab.text = self.sections[section].sectionName
         return h
         
     }
@@ -169,7 +168,7 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
     */
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return self.sectionNames
+        return self.sections.map{$0.sectionName}
     }
     
 }
@@ -192,12 +191,12 @@ extension RootViewController : UIPopoverPresentationControllerDelegate {
     }
     func popoverPresentationControllerShouldDismissPopover(_ pop: UIPopoverPresentationController) -> Bool {
         print("pop should dismiss")
-        self.searcher.searchBar.text = nil // woo-hoo! fix dismissal failure to empty
+        self.navigationItem.searchController?.searchBar.text = "" // woo-hoo! fix dismissal failure to empty
         return true
     }
     func popoverPresentationControllerDidDismissPopover(_ pop: UIPopoverPresentationController) {
         print("pop dismiss")
-        self.searcher.presentationController?.delegate = self // this is the big bug fix
+        self.navigationItem.searchController?.presentationController?.delegate = self // this is the big bug fix
     }
 }
 

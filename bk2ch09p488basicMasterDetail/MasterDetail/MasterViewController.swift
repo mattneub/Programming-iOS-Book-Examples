@@ -8,6 +8,16 @@ class MasterViewController: UITableViewController {
     
     let cellID = "Cell"
     
+    override init(style: UITableViewStyle) {
+        super.init(style:style)
+        self.edgesForExtendedLayout = .all
+        self.extendedLayoutIncludesOpaqueBars = true
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
