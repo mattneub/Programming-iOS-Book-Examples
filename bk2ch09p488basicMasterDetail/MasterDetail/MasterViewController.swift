@@ -49,8 +49,9 @@ class MasterViewController: UITableViewController {
         let nav = UINavigationController(rootViewController: detail)
         self.showDetailViewController(nav, sender: self)
         
-        let del = UIApplication.shared.delegate as! AppDelegate
-        del.didChooseDetail = true
+        if let del = self.splitViewController?.delegate as? AppDelegate {
+            del.didChooseDetail = true
+        }
     }
     
     // ====

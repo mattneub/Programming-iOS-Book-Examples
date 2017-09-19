@@ -55,6 +55,15 @@ extension AppDelegate : UISplitViewControllerDelegate {
     }
     func splitViewController(_ svc: UISplitViewController, collapseSecondary vc2: UIViewController, onto vc1: UIViewController) -> Bool {
         print("collapsing")
-        return !self.didChooseDetail
+        if let nav = vc2 as? UINavigationController,
+            nav.topViewController is DetailViewController,
+            self.didChooseDetail {
+                return false
+        }
+        return true
+    }
+    func targetDisplayModeForAction(in svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
+        print("target display mode")
+        return .automatic
     }
 }

@@ -10,7 +10,6 @@ import UIKit
 class ContainerViewController : UIViewController {
     
     @IBOutlet weak var containerView: UIView!
-    var didInitialSetup = false
     
     override func addChildViewController(_ childController: UIViewController) {
         super.addChildViewController(childController)
@@ -22,8 +21,9 @@ class ContainerViewController : UIViewController {
     // as in comedy, timing is everything
     // this setup needs to be postponed to our initial layout (viewDidLoad is too soon)
     
-    let which = 2 // try 2, it's even more interesting
+    let which = 1 // try 2, it's even more interesting
     
+    var didInitialSetup = false
     override func viewWillLayoutSubviews() {
         if !self.didInitialSetup {
             self.didInitialSetup = true

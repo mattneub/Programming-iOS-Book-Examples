@@ -42,13 +42,13 @@ class ViewController: UIViewController {
         }
     }
     
-    let which = 2
     
     @IBAction func doButton2(_ sender: Any) {
         if self.presentingViewController != nil {
             return
         }
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "VC") {
+            var which : Int { return 1 }
             switch which {
             case 1:
                 vc.modalPresentationStyle = .formSheet
