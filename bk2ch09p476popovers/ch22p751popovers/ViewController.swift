@@ -36,21 +36,18 @@ class ViewController : UIViewController {
         nav.modalPresentationStyle = .popover
         print(nav.presentationController as Any)
         print(nav.popoverPresentationController as Any)
-        self.present(nav, animated: true)
+        self.present(nav, animated: true) {
+            // if you want to prevent toolbar buttons from being active
+            // by setting passthroughViews to nil, you must do it after presentation is complete
+            // I find this annoying; why does the toolbar default to being active?
+            nav.popoverPresentationController?.passthroughViews = nil
+        }
         
         // where's the configuration for the popover controller?
         // we can do it _after_ presentation
         if let pop = nav.popoverPresentationController { // self-contained; no need to retain or track!
             pop.barButtonItem = sender as? UIBarButtonItem // who arrow points to
             pop.delegate = self
-            // if you want to prevent toolbar buttons from being active
-            // by setting passthroughViews to nil, you must use non-zero delayed performance
-            // I find this annoying; why does the toolbar default to being active?
-            // pop.passthroughViews = nil // too soon, has no effect
-            delay(0.1) {
-                print(pop.passthroughViews as Any)
-                pop.passthroughViews = nil
-            }
             // just playing with appearance; try it with and without
             pop.backgroundColor = .yellow // visible as arrow color
         }
@@ -114,7 +111,9 @@ class ViewController : UIViewController {
         // vc.isModalInPopover = true
         print(vc.popoverPresentationController as Any) // NB valid here, we could configure here
         
-        self.present(vc, animated: true)
+        self.present(vc, animated: true) {
+            vc.popoverPresentationController?.passthroughViews = nil
+        }
         // vc's view is now loaded and we are free to configure it further
         vc.view.frame = CGRect(0,0,300,300)
         vc.view.backgroundColor = .green
@@ -140,9 +139,6 @@ class ViewController : UIViewController {
             // but it isn't working; this may be an iOS 8/9 bug
             pop.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 30)
             pop.delegate = self
-            delay(0.1) {
-                pop.passthroughViews = nil
-            }
         }
 
     }
@@ -241,8 +237,7 @@ extension ViewController : UIPopoverPresentationControllerDelegate {
     
     func popoverPresentationControllerShouldDismissPopover(
         _ pop: UIPopoverPresentationController) -> Bool {
-            let ok = pop.presentedViewController.presentedViewController == nil
-            return ok
+            return pop.presentedViewController.presentedViewController == nil
     }
 
 

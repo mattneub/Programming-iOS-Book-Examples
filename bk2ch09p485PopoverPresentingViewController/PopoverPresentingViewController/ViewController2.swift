@@ -27,9 +27,7 @@ class ViewController2: UIViewController, UIPopoverPresentationControllerDelegate
     // works on iOS 9 and 8, restoring the iOS 7 behavior
     
     func popoverPresentationControllerShouldDismissPopover(_ pop: UIPopoverPresentationController) -> Bool {
-        let ok = pop.presentedViewController.presentedViewController == nil
-        print(ok)
-        return ok
+        return pop.presentedViewController.presentedViewController == nil
     }
 
 }

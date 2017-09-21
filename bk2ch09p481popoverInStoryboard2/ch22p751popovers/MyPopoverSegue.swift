@@ -7,11 +7,14 @@ class MyPopoverSegue: UIStoryboardSegue {
         let dest = self.destination
         if let pop = dest.popoverPresentationController {
             // pop.delegate = self
-            delay(0.1) {
+        }
+        super.perform()
+        CATransaction.setCompletionBlock {
+            let dest = self.destination
+            if let pop = dest.popoverPresentationController {
                 pop.passthroughViews = nil
             }
         }
-        super.perform()
     }
 }
 
@@ -19,6 +22,8 @@ class MyPopoverSegue: UIStoryboardSegue {
 // the adaptive methods are called,
 // but, disappointingly, the dismissal methods weren't called
 // (I guess because the segue is no longer in existence)
+// I think I regard that as a bug; if I can't encapsulte this stuff,
+// what's the point of the custom segue?
 
 extension MyPopoverSegue : UIPopoverPresentationControllerDelegate {
     

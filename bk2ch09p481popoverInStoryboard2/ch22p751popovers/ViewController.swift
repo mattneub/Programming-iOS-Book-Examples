@@ -9,6 +9,11 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 
 class ViewController : UIViewController, UIToolbarDelegate {
     var oldChoice : Int = -1
+    
+    @IBAction func doTapItem(_ sender: Any) {
+        print("tap")
+    }
+    
 
     func positionForBar(forBar bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
