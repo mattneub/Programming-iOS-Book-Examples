@@ -72,6 +72,20 @@ class ViewController: UIViewController {
             print(s)
             
         }
+        
+        do {
+            let ud = UserDefaults.standard
+            
+            let p = Person(firstName: "Matt", lastName: "Neuburg")
+            let pdata = try! PropertyListEncoder().encode(p)
+            ud.set(pdata, forKey: "person")
+            
+            if let pdata = ud.object(forKey: "person") as? Data {
+                let p = try! PropertyListDecoder().decode(Person.self, from: pdata)
+                print(p)
+            }
+
+        }
 
 
     

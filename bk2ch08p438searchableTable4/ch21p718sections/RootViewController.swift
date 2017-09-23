@@ -89,6 +89,9 @@ class RootViewController : UITableViewController, UISearchBarDelegate {
 
                 self.navigationItem.searchController = searcher
                 searcher.hidesNavigationBarDuringPresentation = true // crucial, it seems
+                // hmm, but if we decide to hide the status bar, above needs to be false
+                // otherwise the search bar slams into the top of the screen
+                // searcher.hidesNavigationBarDuringPresentation = false
                 self.definesPresentationContext = true // this doesn't seem to matter
                 self.navigationItem.title = "States" // looks better to have a title
                 // try with and without this
