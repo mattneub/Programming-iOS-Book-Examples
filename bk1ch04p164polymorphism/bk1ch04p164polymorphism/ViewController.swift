@@ -122,6 +122,7 @@ class ViewController: UIViewController {
             let i = ud.object(forKey: "Test") as! Int
             _ = i
             let s : NSString = "howdy" // so why isn't it required here???
+            let iiii: NSNumber = 1 // it isn't required here either because it's a numeric literal
             // maybe it will be, but not now?
             _ = s
         }
