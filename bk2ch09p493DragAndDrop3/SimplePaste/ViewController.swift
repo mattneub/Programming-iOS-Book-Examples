@@ -2,6 +2,7 @@
 
 import UIKit
 import MobileCoreServices
+import Contacts
 
 final class Person : NSObject, Codable {
     
@@ -43,7 +44,7 @@ extension Person : NSItemProviderWriting {
 extension Person : NSItemProviderReading {
     
     // this means that a string can be dragged to where a Person is expected
-    static var readableTypeIdentifiersForItemProvider = ["neuburg.matt.person", kUTTypeUTF8PlainText as String]
+    static var readableTypeIdentifiersForItemProvider = ["neuburg.matt.person", kUTTypeVCard as String, kUTTypeUTF8PlainText as String]
     
     static func object(withItemProviderData data: Data, typeIdentifier typeid: String) throws -> Self {
         switch typeid {
@@ -62,6 +63,16 @@ extension Person : NSItemProviderReading {
                 return self.init(firstName: first, lastName: String(last))
             }
             throw MyError.oops
+        case kUTTypeVCard as NSString as String:
+            do {
+                let con = try CNContactVCardSerialization.contacts(with: data)[0]
+                if con.givenName.isEmpty && con.familyName.isEmpty {
+                    throw MyError.oops
+                }
+                return self.init(firstName: con.givenName, lastName: con.familyName)
+            } catch {
+                throw MyError.oops
+            }
         default: throw MyError.oops
         }
     }
