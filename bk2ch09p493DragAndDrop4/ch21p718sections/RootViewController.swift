@@ -51,6 +51,8 @@ class RootViewController : UITableViewController {
         // self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 50)
         
         self.tableView.dragDelegate = self
+        
+        self.tableView.dragInteractionEnabled = true // for iPhone
     }
     
     override func viewDidAppear(_ animated: Bool) {
