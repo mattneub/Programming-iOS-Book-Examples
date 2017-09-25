@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         
         func g() {
             let s = """
-            Line 1
+            Line "1"
                 Line 2 \
             and this is still Line 2
             """
