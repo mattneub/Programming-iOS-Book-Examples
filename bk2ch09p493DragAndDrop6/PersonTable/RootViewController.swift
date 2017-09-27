@@ -9,6 +9,29 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
 }
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 
 final class Person : NSObject, Codable {
     
@@ -124,63 +147,36 @@ class RootViewController: UITableViewController {
 
 extension RootViewController : UITableViewDropDelegate {
     func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath ip: IndexPath?) -> UITableViewDropProposal {
-        if ip == nil {
+        guard let ip = ip else {
             return UITableViewDropProposal(operation: .cancel)
         }
         if !session.canLoadObjects(ofClass: Person.self) {
             return UITableViewDropProposal(operation: .cancel)
         }
-        return UITableViewDropProposal(operation: .copy, intent: .insertAtDestinationIndexPath)
+        if session.localDragSession == nil {
+            return UITableViewDropProposal(operation: .cancel)
+        }
+        if ip.row >= self.sections[ip.section].rowData.count {
+            return UITableViewDropProposal(operation: .cancel)
+        }
+        return UITableViewDropProposal(operation: .copy, intent: .insertIntoDestinationIndexPath)
     }
     
     func tableView(_ tableView: UITableView, performDropWith coord: UITableViewDropCoordinator) {
-        var which : Int { return 1 }
-        switch which {
-        case 1:
-            if let ip = coord.destinationIndexPath {
-                coord.session.loadObjects(ofClass: Person.self) { persons in
-                    for person in (persons as! [Person]).reversed() {
-                        tableView.performBatchUpdates({
-                            self.sections[ip.section].rowData.insert(person, at: ip.row)
-                            tableView.insertRows(at: [ip], with: .none)
-                        })
-                    }
-                }
-            }
-        case 2:
-            guard let ip = coord.destinationIndexPath else {return}
-            for item in coord.items {
-                let item = item.dragItem
-                guard item.itemProvider.canLoadObject(ofClass: Person.self) else {continue}
-                let ph = UITableViewDropPlaceholder(
-                    insertionIndexPath: ip,
-                    reuseIdentifier: self.cellID,
-                    rowHeight: self.tableView.rowHeight)
-                ph.cellUpdateHandler = { cell in
-                    cell.textLabel?.text = "" // "Placeholder"
-                }
-                print("dropping to placeholder")
-                let con = coord.drop(item, to: ph)
-                print("about to load object")
-                item.itemProvider.loadObject(ofClass: Person.self) { p, err in
-                    DispatchQueue.main.async {
-                        // uncomment to see actual sequence of events unfold in so-mo
-                        // delay(2) {
-                        guard let p = p as? Person else {
-                            con.deletePlaceholder()
-                            return
-                        }
-                        print("object loaded, committing insertion")
-                        con.commitInsertion(dataSourceUpdates: {ip in
-                            tableView.performBatchUpdates({
-                                self.sections[ip.section].rowData.insert(p, at: ip.row)
-                            })
-                        })
-                        // }
-                    }
-                }
-            }
-        default: break
+        guard let ip = coord.destinationIndexPath else {return}
+        for item in coord.items {
+            let item = item.dragItem
+            guard let p = item.localObject as? Person else {continue}
+
+            // tableView.performBatchUpdates({
+            self.sections[ip.section].rowData[ip.row] = p
+            tableView.reloadRows(at: [ip], with: .none)
+            coord.drop(item, toRowAt: ip)
+            // })
+            // coord.drop(item, intoRowAt: ip, rect: tableView.cellForRow(at: ip)!.bounds)
+            // coord.drop(item, to: UIDragPreviewTarget(container: tableView, center: .zero))
+            
+
         }
     }
 }

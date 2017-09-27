@@ -17,24 +17,25 @@ final class Person : NSObject, Codable {
         return self.firstName + " " + self.lastName
     }
     enum MyError : Error { case oops }
+    static let personUTI = "neuburg.matt.person"
 }
 
 extension Person : NSItemProviderWriting {
     
     // this means that a Person can be dragged to where a string is expected
     static var writableTypeIdentifiersForItemProvider =
-        ["neuburg.matt.person", kUTTypeUTF8PlainText as String]
+        [personUTI, kUTTypeUTF8PlainText as String]
     
     func loadData(withTypeIdentifier typeid: String, forItemProviderCompletionHandler ch: @escaping (Data?, Error?) -> Void) -> Progress? {
         switch typeid {
-        case "neuburg.matt.person":
+        case type(of:self).personUTI:
             do {
                 ch(try PropertyListEncoder().encode(self), nil)
             } catch {
                 ch(nil, error)
             }
         case kUTTypeUTF8PlainText as NSString as String:
-            ch(self.description.data(using: .utf8), nil)
+            ch(self.description.data(using: .utf8)!, nil)
         default: ch(nil, MyError.oops)
         }
         return nil
@@ -44,11 +45,11 @@ extension Person : NSItemProviderWriting {
 extension Person : NSItemProviderReading {
     
     // this means that a string can be dragged to where a Person is expected
-    static var readableTypeIdentifiersForItemProvider = ["neuburg.matt.person", kUTTypeVCard as String, kUTTypeUTF8PlainText as String]
+    static var readableTypeIdentifiersForItemProvider = [personUTI, kUTTypeVCard as String, kUTTypeUTF8PlainText as String]
     
     static func object(withItemProviderData data: Data, typeIdentifier typeid: String) throws -> Self {
         switch typeid {
-        case "neuburg.matt.person":
+        case personUTI:
             do {
                 let p = try PropertyListDecoder().decode(self, from: data)
                 return p
@@ -57,7 +58,7 @@ extension Person : NSItemProviderReading {
             }
         case kUTTypeUTF8PlainText as NSString as String:
             if let s = String(data: data, encoding: .utf8) {
-                let arr = s.split(separator:" ") //.map{String($0)}
+                let arr = s.split(separator:" ")
                 let first = arr.dropLast().joined(separator: " ")
                 let last = arr.last ?? ""
                 return self.init(firstName: first, lastName: String(last))

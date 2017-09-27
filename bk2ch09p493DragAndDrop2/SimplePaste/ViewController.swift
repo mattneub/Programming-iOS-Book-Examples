@@ -62,6 +62,7 @@ extension ViewController : UIDragInteractionDelegate {
             return UIDragPreview(view: v)
         }
         di.previewProvider = nil // didn't like that effect
+        print("item provider going in", ip, session)
         return [di]
     }
     func dragInteraction(_ interaction: UIDragInteraction, previewForLifting item: UIDragItem, session: UIDragSession) -> UITargetedDragPreview? {
@@ -143,6 +144,7 @@ extension ViewController : UIDropInteractionDelegate {
         case 2:
             for item in session.items {
                 let ip = item.itemProvider
+                print("item provider coming out", ip, session)
                 ip.loadObject(ofClass: UIColor.self) { (color, error) in
                     if let color = color as? UIColor {
                         print(color)
