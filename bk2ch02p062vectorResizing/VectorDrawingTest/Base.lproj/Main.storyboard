@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eon-R2-aLH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eon-R2-aLH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,12 +27,25 @@
                                     <constraint firstAttribute="height" constant="218" id="jwk-SF-ogd"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kittens" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hy5-bB-eJr">
+                                <rect key="frame" x="43" y="290" width="137" height="111"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adjust accessibility dynamic text size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAj-G4-UzT">
+                                <rect key="frame" x="43" y="261" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="kM3-VL-1YF" secondAttribute="top" constant="5" id="HRD-mx-I0j"/>
+                            <constraint firstItem="Hy5-bB-eJr" firstAttribute="top" secondItem="kM3-VL-1YF" secondAttribute="bottom" constant="57" id="OGD-wD-GTX"/>
+                            <constraint firstItem="HAj-G4-UzT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="43" id="U96-tG-Cfz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kM3-VL-1YF" secondAttribute="trailing" constant="29" id="dwQ-LQ-Y3M"/>
                             <constraint firstItem="kM3-VL-1YF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="63" id="gls-8F-JBt"/>
+                            <constraint firstItem="HAj-G4-UzT" firstAttribute="top" secondItem="kM3-VL-1YF" secondAttribute="bottom" constant="28" id="w6g-jm-u6f"/>
+                            <constraint firstItem="Hy5-bB-eJr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="43" id="xos-bz-qQc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -43,7 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="694" y="164"/>
+            <point key="canvasLocation" x="693.60000000000002" y="163.26836581709148"/>
         </scene>
         <!--Item-->
         <scene sceneID="DwE-Yf-Eaf">
@@ -81,6 +94,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="kittens" width="137" height="111"/>
         <image name="rectangle" width="29" height="28"/>
     </resources>
 </document>
