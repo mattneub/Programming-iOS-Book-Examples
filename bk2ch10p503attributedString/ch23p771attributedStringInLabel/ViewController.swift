@@ -33,13 +33,13 @@ class ViewController : UIViewController {
             let s1 = "The Gettysburg Address, as delivered on a certain occasion " +
                 "(namely Thursday, November 19, 1863) by A. Lincoln"
             content = NSMutableAttributedString(string:s1, attributes:[
-                NSFontAttributeName: UIFont(name:"Arial-BoldMT", size:15)!,
-                NSForegroundColorAttributeName: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)
+                .font: UIFont(name:"Arial-BoldMT", size:15)!,
+                .foregroundColor: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)
                 ])
             let r = (s1 as NSString).range(of:"Gettysburg Address")
             content.addAttributes([
-                NSStrokeColorAttributeName: UIColor.red,
-                NSStrokeWidthAttributeName: -2.0
+                .strokeColor: UIColor.red,
+                .strokeWidth: -2.0
                 ], range: r)
             self.lab.attributedText = content
             self.tv.attributedText = content
@@ -54,7 +54,7 @@ class ViewController : UIViewController {
             para.alignment = .center
             para.paragraphSpacing = 15
             content.addAttribute(
-                NSParagraphStyleAttributeName,
+                .paragraphStyle,
                 value:para, range:NSMakeRange(0,1))
             self.lab.attributedText = content
             self.tv.attributedText = content
@@ -65,12 +65,12 @@ class ViewController : UIViewController {
                 "upon this continent a new nation, conceived in liberty and " +
                 "dedicated to the proposition that all men are created equal."
             content2 = NSMutableAttributedString(string:s2, attributes: [
-                NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:16)!
+                .font: UIFont(name:"HoeflerText-Black", size:16)!
             ])
             content2.addAttributes([
-                NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:24)!,
-                NSExpansionAttributeName: 0.3,
-                NSKernAttributeName: -4 // negative kerning bug fixed in iOS 8
+                .font: UIFont(name:"HoeflerText-Black", size:24)!,
+                .expansion: 0.3,
+                .kern: -4 // negative kerning bug fixed in iOS 8
                 // but they broke it again in iOS 8.3!
                 // but they fixed it again in iOS 9!
             ], range:NSMakeRange(0,1))
@@ -79,7 +79,7 @@ class ViewController : UIViewController {
             self.tv.textContainerInset = UIEdgeInsetsMake(30,0,0,0)
             if which > 2 {fallthrough}
         case 3, 4, 5:
-            content2.addAttribute(NSParagraphStyleAttributeName,
+            content2.addAttribute(.paragraphStyle,
                 value:lend {
                     (para:NSMutableParagraphStyle) in
                     para.headIndent = 10
@@ -111,14 +111,14 @@ class ViewController : UIViewController {
         case 5:
             // demonstrating efficient cycling through style runs
             
-            content.enumerateAttribute(NSFontAttributeName,
+            content.enumerateAttribute(.font,
                 in:NSMakeRange(0,content.length),
                 options:.longestEffectiveRangeNotRequired) {
                     value, range, stop in
                     print(range)
                     let font = value as! UIFont
                     if font.pointSize == 15 {
-                        content.addAttribute(NSFontAttributeName,
+                        content.addAttribute(.font,
                             value:UIFont(name: "Arial-BoldMT", size:20)!,
                             range:range)
                     }

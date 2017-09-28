@@ -12,38 +12,34 @@ class ViewController : UIViewController {
         
         let ff = UIFont(name: "GillSans-BoldItalic", size: 20)!
         let dd = ff.fontDescriptor
-        let vis = dd.object(forKey:UIFontDescriptorVisibleNameAttribute)!
+        let vis = dd.object(forKey:.visibleName)!
         print(vis)
         let traits = dd.symbolicTraits
         let isItalic = traits.contains(.traitItalic)
         let isBold = traits.contains(.traitBold)
         print(isItalic, isBold)
         
-        var which : Int { return 1 }
+        var which : Int { return 0 }
         
         switch which {
         case 0:
             let desc = UIFontDescriptor(name:"Didot", size:18)
             // print(desc.fontAttributes())
             let d = [
-                UIFontFeatureTypeIdentifierKey:kLetterCaseType,
-                UIFontFeatureSelectorIdentifierKey:kSmallCapsSelector
+                UIFontDescriptor.FeatureKey.featureIdentifier: kLetterCaseType,
+                UIFontDescriptor.FeatureKey.typeIdentifier: kSmallCapsSelector
             ]
-            let desc2 = desc.addingAttributes(
-                [UIFontDescriptorFeatureSettingsAttribute:[d]]
-            )
+            let desc2 = desc.addingAttributes([.featureSettings:[d]])
             let f = UIFont(descriptor: desc2, size: 0)
             self.lab.font = f
         case 1:
             let desc = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .headline)
             // print(desc.fontAttributes())
             let d = [
-                UIFontFeatureTypeIdentifierKey:kLowerCaseType,
-                UIFontFeatureSelectorIdentifierKey:kLowerCaseSmallCapsSelector
+                UIFontDescriptor.FeatureKey.featureIdentifier: kLowerCaseType,
+                UIFontDescriptor.FeatureKey.typeIdentifier: kLowerCaseSmallCapsSelector
             ]
-            let desc2 = desc.addingAttributes(
-                [UIFontDescriptorFeatureSettingsAttribute:[d]]
-            )
+            let desc2 = desc.addingAttributes([.featureSettings:[d]])
             let f = UIFont(descriptor: desc2, size: 0)
             self.lab.font = f
         default:break
@@ -62,12 +58,10 @@ class ViewController : UIViewController {
                 
                 let desc = f.fontDescriptor
                 let d = [
-                    UIFontFeatureTypeIdentifierKey:kStylisticAlternativesType,
-                    UIFontFeatureSelectorIdentifierKey:kStylisticAltOneOnSelector
+                    UIFontDescriptor.FeatureKey.featureIdentifier: kStylisticAlternativesType,
+                    UIFontDescriptor.FeatureKey.typeIdentifier: kStylisticAltOneOnSelector
                 ]
-                let desc2 = desc.addingAttributes(
-                    [UIFontDescriptorFeatureSettingsAttribute:[d]]
-                )
+                let desc2 = desc.addingAttributes([.featureSettings:[d]])
                 f = UIFont(descriptor: desc2, size: 0)
                 
                 self.lab2.font = f
@@ -78,12 +72,10 @@ class ViewController : UIViewController {
                 
                 let desc = f.fontDescriptor
                 let d = [
-                    UIFontFeatureTypeIdentifierKey:kStylisticAlternativesType,
-                    UIFontFeatureSelectorIdentifierKey:kStylisticAltSixOnSelector
+                    UIFontDescriptor.FeatureKey.featureIdentifier: kStylisticAlternativesType,
+                    UIFontDescriptor.FeatureKey.typeIdentifier: kStylisticAltSixOnSelector
                 ]
-                let desc2 = desc.addingAttributes(
-                    [UIFontDescriptorFeatureSettingsAttribute:[d]]
-                )
+                let desc2 = desc.addingAttributes([.featureSettings:[d]])
                 f = UIFont(descriptor: desc2, size: 0)
                 
                 self.lab2.text = "1234567890 Hill IO" // adds curvy ell

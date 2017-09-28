@@ -41,11 +41,11 @@ class ViewController : UIViewController {
         
         let s = "Onions\t$2.34\nPeppers\t$15.2\n"
         let mas = NSMutableAttributedString(string:s, attributes:[
-            NSFontAttributeName:UIFont(name:"GillSans", size:15)!,
-            NSParagraphStyleAttributeName:lend {
+            .font:UIFont(name:"GillSans", size:15)!,
+            .paragraphStyle:lend {
                 (p:NSMutableParagraphStyle) in
                 let terms = NSTextTab.columnTerminators(for:Locale.current)
-                let tab = NSTextTab(textAlignment:.right, location:170, options:[NSTabColumnTerminatorsAttributeName:terms])
+                let tab = NSTextTab(textAlignment:.right, location:170, options:[.columnTerminators:terms])
                 var which : Int { return 2 }
                 switch which {
                 case 1:
@@ -85,8 +85,8 @@ class ViewController : UIViewController {
         
         mas.append(NSAttributedString(string: "\n\n", attributes:nil))
         mas.append(NSAttributedString(string: "LINK", attributes: [
-            NSLinkAttributeName : URL(string: "https://www.apple.com")!,
-            NSForegroundColorAttributeName : UIColor.orange, // not working
+            NSAttributedStringKey.link : URL(string: "https://www.apple.com")!,
+            NSAttributedStringKey.foregroundColor : UIColor.orange, // not working
             ]))
         mas.append(NSAttributedString(string: "\n\n", attributes:nil))
         mas.append(NSAttributedString(string: "(805)-123-4567", attributes: nil))

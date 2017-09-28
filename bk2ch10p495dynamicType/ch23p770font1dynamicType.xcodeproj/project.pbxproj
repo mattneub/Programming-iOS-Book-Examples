@@ -97,7 +97,7 @@
 				TargetAttributes = {
 					C9DDA0D8180DC5E900E9E0CC = {
 						DevelopmentTeam = W3LHX5RGV2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0910;
 					};
 				};
 			};
@@ -241,7 +241,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ch23p770font1dynamicType;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -258,7 +259,8 @@
 				INFOPLIST_FILE = "ch23p670font1dynamicType/ch23p770font1dynamicType-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ch23p770font1dynamicType;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

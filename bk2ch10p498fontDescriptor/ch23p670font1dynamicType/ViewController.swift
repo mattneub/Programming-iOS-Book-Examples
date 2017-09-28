@@ -38,9 +38,9 @@ class ViewController : UIViewController {
         print(fbody)
         
         let s = self.lab.text!
-        let mas = NSMutableAttributedString(string: s, attributes: [NSFontAttributeName:fbody])
+        let mas = NSMutableAttributedString(string: s, attributes: [.font:fbody])
         // NOTE to self: need to change this to use Swift 4!
-        mas.addAttribute(NSFontAttributeName, value: femphasis, range: (s as NSString).range(of:"wild"))
+        mas.addAttribute(.font, value: femphasis, range: (s as NSString).range(of:"wild"))
         self.lab.attributedText = mas
         
     }
