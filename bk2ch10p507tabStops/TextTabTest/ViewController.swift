@@ -115,14 +115,14 @@ class ViewController : UIViewController {
         let src = CGImageSourceCreateWithURL(url as CFURL, nil)!
         let scale = UIScreen.main.scale
         let w : CGFloat = 20 * scale
-        let d : NSDictionary = [
+        let d : [CFString:Any] = [
             kCGImageSourceShouldAllowFloat : true,
             kCGImageSourceCreateThumbnailWithTransform: true,
             kCGImageSourceCreateThumbnailFromImageAlways: true,
             kCGImageSourceThumbnailMaxPixelSize: w
         ]
         let imref =
-        CGImageSourceCreateThumbnailAtIndex(src, 0, d)!
+        CGImageSourceCreateThumbnailAtIndex(src, 0, d as NSDictionary)!
         let im = UIImage(cgImage:imref, scale:scale, orientation:.up)
         return im
     }
