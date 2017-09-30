@@ -31,17 +31,16 @@ class StyledText: UIView {
         
         let desc = UIFontDescriptor(name:"Didot", size:18)
         let atts = [
-            UIFontFeatureTypeIdentifierKey:kLetterCaseType,
-            UIFontFeatureSelectorIdentifierKey:kSmallCapsSelector
+            UIFontDescriptor.FeatureKey.featureIdentifier:kLetterCaseType,
+            UIFontDescriptor.FeatureKey.typeIdentifier:kSmallCapsSelector
         ]
         let desc2 = desc.addingAttributes(
-            [UIFontDescriptorFeatureSettingsAttribute:[atts]]
+            [UIFontDescriptor.AttributeName.featureSettings:[atts]]
         )
         let f = UIFont(descriptor: desc2, size: 0)
         
-        let d = [NSFontAttributeName:f]
-        let mas = NSMutableAttributedString(string: s, attributes: d)
-        mas.addAttribute(NSParagraphStyleAttributeName,
+        let mas = NSMutableAttributedString(string: s, attributes: [.font:f])
+        mas.addAttribute(.paragraphStyle,
             value: lend() {
                 (para:NSMutableParagraphStyle) in
                 para.alignment = .center
@@ -82,7 +81,7 @@ class StyledText: UIView {
         self.lm.drawGlyphs(forGlyphRange:range2, at: self.r2.origin)
     }
     
-    func tapped (_ g : UIGestureRecognizer) {
+    @objc func tapped (_ g : UIGestureRecognizer) {
         // which column is it in?
         var p = g.location(in:self)
         var tc = self.tc!
@@ -109,7 +108,7 @@ class StyledText: UIView {
             let property = self.lm.propertyForGlyph(at:lastCharRange)
             // let ok = property.contains[.ControlCharacter]
             let mask1 = property.rawValue
-            let mask2 = NSGlyphProperty.controlCharacter.rawValue
+            let mask2 = NSLayoutManager.GlyphProperty.controlCharacter.rawValue
             return mask1 & mask2 != 0
         }
         while lastCharIsControl() {

@@ -45,7 +45,7 @@ class ViewController: UIViewController {
 //        self.tf.inputAccessoryView = b
     }
     
-    func doDone() {
+    @objc func doDone() {
         self.tf.resignFirstResponder()
     }
 }

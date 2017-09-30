@@ -42,10 +42,10 @@ class ViewController: UIViewController {
         let s = try! String(contentsOfFile:path)
         let s2 = s.replacingOccurrences(of:"\n", with: "")
         let mas = NSMutableAttributedString(string:s2, attributes:[
-            NSFontAttributeName: UIFont(name:"GillSans", size:14)!
+            .font: UIFont(name:"GillSans", size:14)!
             ])
         
-        mas.addAttribute(NSParagraphStyleAttributeName,
+        mas.addAttribute(.paragraphStyle,
             value:lend(){
                 (para:NSMutableParagraphStyle) in
                 para.alignment = .left

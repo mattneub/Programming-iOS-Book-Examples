@@ -36,12 +36,12 @@ class MyTextField: UITextField {
         if action == #selector(expand),
             let r = self.selectedTextRange,
             let s = self.text(in:r) {
-            return s.characters.count == 2 && self.state(for:s) != nil
+            return s.count == 2 && self.state(for:s) != nil
         }
         return super.canPerformAction(action, withSender:sender)
     }
     
-    func expand(_ sender: Any?) {
+    @objc func expand(_ sender: Any?) {
         if let r = self.selectedTextRange, let s = self.text(in:r),
             let ss = self.state(for:s) {
             self.replace(r, withText:ss)

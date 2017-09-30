@@ -14,11 +14,11 @@ class ViewController: UIViewController {
             "upon this continent a new nation, conceived in liberty and dedicated " +
             "to the proposition that all men are created equal."
         let content2 = NSMutableAttributedString(string:s2, attributes: [
-            NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:16)!
+            .font: UIFont(name:"HoeflerText-Black", size:16)!
         ])
         content2.addAttributes([
-            NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:24)!,
-            NSKernAttributeName: -4
+            .font: UIFont(name:"HoeflerText-Black", size:24)!,
+            .kern: -4
             ], range:NSMakeRange(0,1))
         
         self.lab.adjustsFontSizeToFitWidth = true

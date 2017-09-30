@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         print("did begin!")
         self.fr = tf // keep track of first responder
         
-//        let s = NSAttributedString(string: "this is a test", attributes: [NSForegroundColorAttributeName:UIColor.blue(), NSFontAttributeName:UIFont(name: "GillSans", size: 20)!])
+//        let s = NSAttributedString(string: "this is a test", attributes: [.foregroundColor:UIColor.blue(), .font:UIFont(name: "GillSans", size: 20)!])
 //        tf.attributedText = s
 //        tf.textColor = .red
 //        tf.text = "howdy"
@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //        lab.text = "howdy"
 //        print(lab.attributedText)
         
-//        let s = NSAttributedString(string: "this is a test so let's see what happens when we do this", attributes: [NSForegroundColorAttributeName:UIColor.blue(), NSFontAttributeName:UIFont(name: "GillSans", size: 20)!])
+//        let s = NSAttributedString(string: "this is a test so let's see what happens when we do this", attributes: [.foregroundColor:UIColor.blue(), .font:UIFont(name: "GillSans", size: 20)!])
 //        tf.adjustsFontSizeToFitWidth = false
 //        tf.minimumFontSize = 6
 //        tf.attributedPlaceholder = s
@@ -60,7 +60,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return self.fr == nil
     }
     
-    func keyboardShow(_ n:Notification) {
+    @objc func keyboardShow(_ n:Notification) {
         print("show!")
         let d = n.userInfo!
         if let local = d[UIKeyboardIsLocalUserInfoKey] {
@@ -79,7 +79,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    func keyboardHide(_ n:Notification) {
+    @objc func keyboardHide(_ n:Notification) {
         print("hide!")
         let d = n.userInfo!
         if let local = d[UIKeyboardIsLocalUserInfoKey] {

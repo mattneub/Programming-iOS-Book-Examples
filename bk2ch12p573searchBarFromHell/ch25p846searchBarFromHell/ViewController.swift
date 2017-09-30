@@ -116,19 +116,20 @@ class ViewController: UIViewController {
         self.sb.setScopeBarButtonDividerImage(divim,
             forLeftSegmentState:.normal, rightSegmentState:.normal)
 
+        // setScopeBar...Attributes expects string keys
+        // workaround is to convert to string, yecch
         let atts : [String : Any] = [
-            NSFontAttributeName: UIFont(name:"GillSans-Bold", size:16)!,
-            NSForegroundColorAttributeName: UIColor.white,
-            NSShadowAttributeName: lend {
+            NSAttributedStringKey.font.rawValue: UIFont(name:"GillSans-Bold", size:16)!,
+            NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
+            NSAttributedStringKey.shadow.rawValue: lend {
                 (shad:NSShadow) in
                 shad.shadowColor = UIColor.gray
                 shad.shadowOffset = CGSize(2,2)
             },
-            NSUnderlineStyleAttributeName: NSUnderlineStyle.styleDouble.rawValue
+            NSAttributedStringKey.underlineStyle.rawValue: NSUnderlineStyle.styleDouble.rawValue
         ]
         self.sb.setScopeBarButtonTitleTextAttributes(atts, for:.normal)
         self.sb.setScopeBarButtonTitleTextAttributes(atts, for:.selected)
-        
     }
 }
 

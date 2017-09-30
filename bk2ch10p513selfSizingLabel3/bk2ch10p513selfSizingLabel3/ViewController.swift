@@ -19,15 +19,15 @@ class ViewController: UIViewController {
             "upon this continent a new nation, conceived in liberty and dedicated " +
         "to the proposition that all men are created equal."
         let content2 = NSMutableAttributedString(string:s2, attributes: [
-            NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:16)!
+            .font: UIFont(name:"HoeflerText-Black", size:16)!
             ])
         content2.addAttributes([
-            NSFontAttributeName: UIFont(name:"HoeflerText-Black", size:24)!,
-            NSExpansionAttributeName: 0.3,
-            NSKernAttributeName: -4
+            .font: UIFont(name:"HoeflerText-Black", size:24)!,
+            .expansion: 0.3,
+            .kern: -4
         ], range:NSMakeRange(0,1))
         
-        content2.addAttribute(NSParagraphStyleAttributeName,
+        content2.addAttribute(.paragraphStyle,
             value: lend {
                 (para : NSMutableParagraphStyle) in
                 para.headIndent = 10

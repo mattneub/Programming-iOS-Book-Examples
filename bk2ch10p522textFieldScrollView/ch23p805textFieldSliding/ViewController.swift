@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         return !self.keyboardShowing
     }
 
-    func keyboardShow(_ n:Notification) {
+    @objc func keyboardShow(_ n:Notification) {
         if self.keyboardShowing {
             return
         }
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
         
     }
     
-    func keyboardHide(_ n:Notification) {
+    @objc func keyboardHide(_ n:Notification) {
         if !self.keyboardShowing {
             return
         }

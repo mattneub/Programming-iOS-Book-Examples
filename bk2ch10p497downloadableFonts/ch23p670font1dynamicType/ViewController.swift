@@ -11,14 +11,9 @@ class ViewController : UIViewController {
 */
     
     @IBOutlet var lab : UILabel!
-    
-    func doDynamicType(_ n:Notification!) {
-        self.lab.font = UIFont.preferredFont(forTextStyle:.headline)
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.doDynamicType(nil)
         
         // see http://support.apple.com/kb/HT5484 (? needs revision? is there a more recent version?)
         let name = "NanumBrush" // another one to try: YuppySC-Regular, also good old LucidaGrande
@@ -54,7 +49,7 @@ class ViewController : UIViewController {
                     DispatchQueue.main.async {
                         let f : UIFont! = UIFont(name:name, size:size)
                         if f != nil {
-                            NSLog("%@", "got the font!")
+                            NSLog("%@ %@", "got the font!", f)
                             self.lab.font = f
                         }
                     }

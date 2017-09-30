@@ -46,7 +46,7 @@ class ViewController : UIViewController {
                 (p:NSMutableParagraphStyle) in
                 let terms = NSTextTab.columnTerminators(for:Locale.current)
                 let tab = NSTextTab(textAlignment:.right, location:170, options:[.columnTerminators:terms])
-                var which : Int { return 2 }
+                var which : Int { return 1 }
                 switch which {
                 case 1:
                     p.tabStops = [tab]
@@ -99,7 +99,7 @@ class ViewController : UIViewController {
         self.tv.attributedText = mas
         
         // this works but it applies to all links
-        //self.tv.linkTextAttributes = [NSForegroundColorAttributeName : UIColor.orange]
+        //self.tv.linkTextAttributes = [.foregroundColor : UIColor.orange]
         
 //        print(NSAttachmentCharacter)
 //        print(0xFFFC)

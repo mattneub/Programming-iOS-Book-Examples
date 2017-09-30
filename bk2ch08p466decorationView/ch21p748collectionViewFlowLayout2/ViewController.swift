@@ -177,11 +177,11 @@ class ViewController : UICollectionViewController, UICollectionViewDelegateFlowL
 //            shadow.shadowBlurRadius = 4
 //            let check2 =
 //            AttributedString(string:"\u{2714}", attributes:[
-//                NSFontAttributeName: UIFont(name:"ZapfDingbatsITC", size:24)!,
-//                NSForegroundColorAttributeName: UIColor.green(),
-//                NSStrokeColorAttributeName: UIColor.red(),
-//                NSStrokeWidthAttributeName: -4,
-//                NSShadowAttributeName: shadow
+//                .font: UIFont(name:"ZapfDingbatsITC", size:24)!,
+//                .foregroundColor: UIColor.green(),
+//                .strokeColor: UIColor.red(),
+//                .strokeWidth: -4,
+//                .shadow: shadow
 //                ])
 //            con.scale(x:1.1, y:1)
 //            check2.draw(at:CGPoint(2,0))

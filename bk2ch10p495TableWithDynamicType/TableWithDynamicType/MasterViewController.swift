@@ -56,6 +56,8 @@ class MasterViewController: UITableViewController {
     The table is _always_ listening for the dynamic type notification;
     it doesn't have special knowledge that dynamic type is actually being used.
     */
+    
+    // in iOS 11 this feature seems badly behaved
 
 	let cellID = "Cell"
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,6 +65,7 @@ class MasterViewController: UITableViewController {
 
         let object = objects[indexPath.row]
         cell.textLabel!.text = object.description
+        cell.detailTextLabel!.text = "Detail"
         return cell
     }
 

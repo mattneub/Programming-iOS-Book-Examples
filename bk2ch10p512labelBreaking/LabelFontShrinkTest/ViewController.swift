@@ -52,15 +52,15 @@ class ViewController : UIViewController {
         
         
         let mas = NSMutableAttributedString(string:s, attributes:[
-            NSFontAttributeName:f,
-            NSParagraphStyleAttributeName: lend {
+            .font:f,
+            .paragraphStyle: lend {
                 (para : NSMutableParagraphStyle) in
                 para.alignment = align
                 para.lineBreakMode = brk
                 para.allowsDefaultTighteningForTruncation = tighten
             }
         ])
-        mas.addAttribute(NSForegroundColorAttributeName,
+        mas.addAttribute(.foregroundColor,
             value:UIColor.blue,
             range:(s as NSString).range(of:"poltergeists"))
         self.lab2.attributedText = mas

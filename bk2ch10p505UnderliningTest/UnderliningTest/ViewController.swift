@@ -10,14 +10,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
 //        let mas = NSMutableAttributedString(string: "Buy beer", attributes: [
-//            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleNone.rawValue
+//            .underlineStyle: NSUnderlineStyle.StyleNone.rawValue
 //            ])
         
         let mas = NSMutableAttributedString(string: "Buy beer")
 
         // this didn't work in iOS 8 until it was fixed in iOS 8.3
 //        mas.addAttributes([
-//            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue
+//            .underlineStyle: NSUnderlineStyle.StyleSingle.rawValue
 //            ], range: NSMakeRange(4, mas.length-4))
     
         // showing that it is necessary to use freaking bitwise-or to form this bitmask still

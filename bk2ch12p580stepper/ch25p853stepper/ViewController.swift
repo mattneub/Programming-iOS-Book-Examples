@@ -75,9 +75,9 @@ class ViewController: UIViewController {
         
         let imleft = imageOfSize(CGSize(45,29)) {
             NSAttributedString(string:"\u{21DA}", attributes:[
-                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
-                NSForegroundColorAttributeName: UIColor.white,
-                NSParagraphStyleAttributeName: lend {
+                .font: UIFont(name:"GillSans-Bold", size:30)!,
+                .foregroundColor: UIColor.white,
+                .paragraphStyle: lend {
                     (para : NSMutableParagraphStyle) in
                     para.alignment = .center
                     }
@@ -87,9 +87,9 @@ class ViewController: UIViewController {
         
         let imleftblack = imageOfSize(CGSize(45,29)) {
             NSAttributedString(string:"\u{21DA}", attributes:[
-                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
-                NSForegroundColorAttributeName: UIColor.black,
-                NSParagraphStyleAttributeName: lend {
+                .font: UIFont(name:"GillSans-Bold", size:30)!,
+                .foregroundColor: UIColor.black,
+                .paragraphStyle: lend {
                     (para : NSMutableParagraphStyle) in
                     para.alignment = .center
                 }
@@ -99,9 +99,9 @@ class ViewController: UIViewController {
 
         let imlefttint = imageOfSize(CGSize(45,29)) {
             NSAttributedString(string:"\u{21DA}", attributes:[
-                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
-                NSForegroundColorAttributeName: self.stepper.tintColor,
-                NSParagraphStyleAttributeName: lend {
+                .font: UIFont(name:"GillSans-Bold", size:30)!,
+                .foregroundColor: self.stepper.tintColor,
+                .paragraphStyle: lend {
                     (para : NSMutableParagraphStyle) in
                     para.alignment = .center
                 }
@@ -111,9 +111,9 @@ class ViewController: UIViewController {
 
         let imright = imageOfSize(CGSize(45,29)) {
             NSAttributedString(string:"\u{21DB}", attributes:[
-                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
-                NSForegroundColorAttributeName: UIColor.white,
-                NSParagraphStyleAttributeName: lend {
+                .font: UIFont(name:"GillSans-Bold", size:30)!,
+                .foregroundColor: UIColor.white,
+                .paragraphStyle: lend {
                     (para : NSMutableParagraphStyle) in
                     para.alignment = .center
                 }
@@ -123,9 +123,9 @@ class ViewController: UIViewController {
         
         let imrightblack = imageOfSize(CGSize(45,29)) {
             NSAttributedString(string:"\u{21DB}", attributes:[
-                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
-                NSForegroundColorAttributeName: UIColor.black,
-                NSParagraphStyleAttributeName: lend {
+                .font: UIFont(name:"GillSans-Bold", size:30)!,
+                .foregroundColor: UIColor.black,
+                .paragraphStyle: lend {
                     (para : NSMutableParagraphStyle) in
                     para.alignment = .center
                 }
@@ -135,9 +135,9 @@ class ViewController: UIViewController {
         
         let imrighttint = imageOfSize(CGSize(45,29)) {
             NSAttributedString(string:"\u{21DB}", attributes:[
-                NSFontAttributeName: UIFont(name:"GillSans-Bold", size:30)!,
-                NSForegroundColorAttributeName: self.stepper.tintColor,
-                NSParagraphStyleAttributeName: lend {
+                .font: UIFont(name:"GillSans-Bold", size:30)!,
+                .foregroundColor: self.stepper.tintColor,
+                .paragraphStyle: lend {
                     (para : NSMutableParagraphStyle) in
                     para.alignment = .center
                 }

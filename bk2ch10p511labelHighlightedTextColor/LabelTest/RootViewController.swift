@@ -33,7 +33,7 @@ class RootViewController: UITableViewController {
             // no! the rule is that the attributed text color must _match_ the textColor
             let color = indexPath.row == 0 ? UIColor.black : UIColor.blue
             let s = NSMutableAttributedString(string: "This is\n a test", attributes: [
-                NSForegroundColorAttributeName : color
+                .foregroundColor : color
             ])
             lab.attributedText = s
             lab.sizeToFit()

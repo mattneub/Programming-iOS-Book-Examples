@@ -214,12 +214,12 @@ class ViewController: UIViewController {
             para.alignment = .center
             para.paragraphSpacing = 15
             content.addAttribute(
-                NSParagraphStyleAttributeName,
+                .paragraphStyle,
                 value:para, range:NSMakeRange(0,1))
         }
 
         let content = NSMutableAttributedString(string:"Ho de ho")
-        content.addAttribute(NSParagraphStyleAttributeName,
+        content.addAttribute(.paragraphStyle,
             value:lend {
                 (para:NSMutableParagraphStyle) in
                 para.headIndent = 10

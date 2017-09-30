@@ -33,11 +33,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // not very satisfactory but it does show the result
         
         let md = (textField.typingAttributes! as NSDictionary).mutableCopy() as! NSMutableDictionary
-        let d : [String:Any] = [
-            NSForegroundColorAttributeName:
+        let d : [NSAttributedStringKey:Any] = [
+            .foregroundColor:
                 UIColor.red,
-            NSUnderlineStyleAttributeName:
-                NSUnderlineStyle.styleSingle.rawValue
+            .underlineStyle: NSUnderlineStyle.styleSingle.rawValue
         ]
         md.addEntries(from:d)
         textField.typingAttributes = md.copy() as? [String:Any]

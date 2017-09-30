@@ -18,7 +18,7 @@ class ViewController : UIViewController {
         switch showTheBug {
         case true:
             let att = self.theLabel.attributedText!.mutableCopy() as! NSMutableAttributedString
-            att.addAttribute(NSParagraphStyleAttributeName,
+            att.addAttribute(.paragraphStyle,
                 value: lend {
                     (para : NSMutableParagraphStyle) in
                     para.headIndent = 20;

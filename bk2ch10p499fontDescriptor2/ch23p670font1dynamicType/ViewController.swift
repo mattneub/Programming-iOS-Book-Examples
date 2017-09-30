@@ -10,11 +10,11 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let ff = UIFont(name: "GillSans-BoldItalic", size: 20)!
-        let dd = ff.fontDescriptor
-        let vis = dd.object(forKey:.visibleName)!
+        let f = UIFont(name: "GillSans-BoldItalic", size: 20)!
+        let d = f.fontDescriptor
+        let vis = d.object(forKey:.visibleName)!
         print(vis)
-        let traits = dd.symbolicTraits
+        let traits = d.symbolicTraits
         let isItalic = traits.contains(.traitItalic)
         let isBold = traits.contains(.traitBold)
         print(isItalic, isBold)
@@ -26,8 +26,8 @@ class ViewController : UIViewController {
             let desc = UIFontDescriptor(name:"Didot", size:18)
             // print(desc.fontAttributes())
             let d = [
-                UIFontDescriptor.FeatureKey.featureIdentifier: kLetterCaseType,
-                UIFontDescriptor.FeatureKey.typeIdentifier: kSmallCapsSelector
+                UIFontDescriptor.FeatureKey.featureIdentifier: kLowerCaseType,
+                UIFontDescriptor.FeatureKey.typeIdentifier: kLowerCaseSmallCapsSelector
             ]
             let desc2 = desc.addingAttributes([.featureSettings:[d]])
             let f = UIFont(descriptor: desc2, size: 0)
@@ -78,7 +78,7 @@ class ViewController : UIViewController {
                 let desc2 = desc.addingAttributes([.featureSettings:[d]])
                 f = UIFont(descriptor: desc2, size: 0)
                 
-                self.lab2.text = "1234567890 Hill IO" // adds curvy ell
+                self.lab2.text = "1234567890 Hill IO" // adds curvy ell, barred I, slashed zero
                 self.lab2.font = f
 
 
@@ -86,8 +86,8 @@ class ViewController : UIViewController {
             }
             
 //            let mas = NSMutableAttributedString(string: "offloading fistfights", attributes: [
-//                NSFontAttributeName:UIFont(name: "Didot", size: 20)!,
-//                NSLigatureAttributeName:0
+//                .font:UIFont(name: "Didot", size: 20)!,
+//                .ligature:0
 //                ])
 //            self.lab2.attributedText = mas
             
@@ -98,6 +98,7 @@ class ViewController : UIViewController {
                 let desc = UIFontDescriptor(name: "Didot", size: 20) as CTFontDescriptor
                 let f = CTFontCreateWithFontDescriptor(desc,0,nil)
                 let arr = CTFontCopyFeatures(f)
+                print("Didot features:")
                 print(arr as Any)
                 
                 

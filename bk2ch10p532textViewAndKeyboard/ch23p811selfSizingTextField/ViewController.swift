@@ -18,10 +18,10 @@ class ViewController: UIViewController, UITextViewDelegate {
         let s = try! String(contentsOfFile:path)
         let s2 = s.replacingOccurrences(of:"\n", with: "")
         let mas = NSMutableAttributedString(string:s2, attributes:[
-            NSFontAttributeName: UIFont(name:"GillSans", size:20)!
+            .font: UIFont(name:"GillSans", size:20)!
             ])
         
-        mas.addAttribute(NSParagraphStyleAttributeName,
+        mas.addAttribute(.paragraphStyle,
             value:lend(){
                 (para:NSMutableParagraphStyle) in
                 para.alignment = .left
@@ -46,7 +46,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     // iOS 8 will play its part (scroll cursor to visible)
     // and we don't have to animate
     
-    func keyboardShow(_ n:Notification) {
+    @objc func keyboardShow(_ n:Notification) {
         if self.keyboardShowing {
             return
         }
@@ -65,7 +65,7 @@ class ViewController: UIViewController, UITextViewDelegate {
 
     }
     
-    func keyboardHide(_ n:Notification) {
+    @objc func keyboardHide(_ n:Notification) {
         if !self.keyboardShowing {
             return
         }
