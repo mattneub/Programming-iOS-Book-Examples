@@ -42,9 +42,8 @@ class ViewController : UIViewController {
         let rect = CGRect(0,0,280,250)
         let r = UIGraphicsImageRenderer(size:rect.size)
         let im = r.image { ctx in 
-            let con = ctx.cgContext
             UIColor.white.setFill()
-            con.fill(rect)
+            ctx.cgContext.fill(rect)
             content.draw(in:rect) // draw attributed string
         }
 
@@ -77,7 +76,7 @@ class ViewController : UIViewController {
             NSAttributedStringKey.foregroundColor: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
         )
 
-        let r = (s1 as NSString).range(of:"Gettysburg Address")
+        let r = (content.string as NSString).range(of:"Gettysburg Address")
         content.addAttributes([
             NSAttributedStringKey.strokeColor: UIColor.red,
             NSAttributedStringKey.strokeWidth: -2.0

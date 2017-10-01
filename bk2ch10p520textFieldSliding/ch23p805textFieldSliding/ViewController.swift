@@ -13,41 +13,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardChange), name: .UIKeyboardWillChangeFrame, object: nil)
     }
     
     func textFieldDidBeginEditing(_ tf: UITextField) {
         print("did begin!")
         self.fr = tf // keep track of first responder
-        
-//        let s = NSAttributedString(string: "this is a test", attributes: [.foregroundColor:UIColor.blue(), .font:UIFont(name: "GillSans", size: 20)!])
-//        tf.attributedText = s
-//        tf.textColor = .red
-//        tf.text = "howdy"
-//        print(tf.attributedText)
-//        
-//        let lab = UILabel()
-//        lab.attributedText = s
-//        lab.textColor = .red
-//        lab.text = "howdy"
-//        print(lab.attributedText)
-        
-//        let s = NSAttributedString(string: "this is a test so let's see what happens when we do this", attributes: [.foregroundColor:UIColor.blue(), .font:UIFont(name: "GillSans", size: 20)!])
-//        tf.adjustsFontSizeToFitWidth = false
-//        tf.minimumFontSize = 6
-//        tf.attributedPlaceholder = s
-        
-        // tf.borderStyle = .Bezel
-        // tf.backgroundColor = .red
-        
-//        let t = UITextField()
-//        t.borderStyle = .RoundedRect
-//        t.text = "This is a test of what is going on"
-//        t.sizeToFit()
-//        self.view.addSubview(t)
-        
-//        tf.background = UIImage(named:"yellowsilk4")!
-//        tf.borderStyle = .Line
-
     }
     
     func textFieldShouldReturn(_ tf: UITextField) -> Bool {
@@ -68,12 +39,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         var r = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
         r = self.slidingView.convert(r, from:nil)
+        let h = self.slidingView.bounds.intersection(r).height
         if let f = self.fr?.frame {
-            let y : CGFloat =
-                f.maxY + r.size.height - self.slidingView.bounds.height + 5
             if r.origin.y < f.maxY {
-                self.topConstraint.constant = -y
-                self.bottomConstraint.constant = y
+                self.topConstraint.constant = -h
+                self.bottomConstraint.constant = h
                 self.view.layoutIfNeeded()
             }
         }
@@ -85,7 +55,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if let local = d[UIKeyboardIsLocalUserInfoKey] {
             print(local)
         }
-        do { // work around bug
+        do { // work around bug, may be fixed by now
             let beginning = d[UIKeyboardFrameBeginUserInfoKey] as! CGRect
             let ending = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
             if beginning == ending {print("bail!"); return}
@@ -95,6 +65,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.layoutIfNeeded()
         self.fr?.resignFirstResponder()
         self.fr = nil
+    }
+    
+    @objc func keyboardChange(_ n: Notification) {
+        print("change!")
+        let d = n.userInfo!
+        if let local = d[UIKeyboardIsLocalUserInfoKey] {
+            print(local)
+        }
+        do { // just in case
+            let beginning = d[UIKeyboardFrameBeginUserInfoKey] as! CGRect
+            let ending = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
+            if beginning == ending {print("bail!"); return}
+        }
+        // interesting only if top of frame is more than zero in both cases
+        let rold = d[UIKeyboardFrameBeginUserInfoKey] as! CGRect
+        let rnew = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
+        guard rold.minY > 0 && rnew.minY > 0 else { print("boring"); return }
+        let r = self.slidingView.convert(rnew, from:nil)
+        let h = self.slidingView.bounds.intersection(r).height
+        print(h)
     }
 
 }

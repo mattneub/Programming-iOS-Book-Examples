@@ -36,11 +36,11 @@ class ViewController : UIViewController {
                 .font: UIFont(name:"Arial-BoldMT", size:15)!,
                 .foregroundColor: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)
                 ])
-            let r = content.string.range(of:"Gettysburg Address")!
+            let r = (content.string as NSString).range(of:"Gettysburg Address")
             content.addAttributes([
                 .strokeColor: UIColor.red,
                 .strokeWidth: -2.0
-                ], range: NSRange(r, in:content.string))
+                ], range: r)
             self.lab.attributedText = content
             self.tv.attributedText = content
             self.tv.textContainerInset = UIEdgeInsetsMake(30,0,0,0)

@@ -74,7 +74,7 @@ class ViewController : UIViewController {
             .font: UIFont(name:"Arial-BoldMT", size:15)!,
             .foregroundColor: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
         )
-        let r = (s1 as NSString).range(of:"Gettysburg Address")
+        let r = (content.string as NSString).range(of:"Gettysburg Address")
         let atts : [NSAttributedStringKey:Any] = [
             .strokeColor: UIColor.red,
             .strokeWidth: -2.0

@@ -62,7 +62,7 @@ class ViewController : UIViewController {
         ])
         mas.addAttribute(.foregroundColor,
             value:UIColor.blue,
-            range:(s as NSString).range(of:"poltergeists"))
+            range:(mas.string as NSString).range(of:"poltergeists"))
         self.lab2.attributedText = mas
 
         let r = self.iv.bounds

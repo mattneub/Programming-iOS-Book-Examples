@@ -20,68 +20,68 @@ extension CGVector {
     }
 }
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
 
 
 import UIKit
 
-class ViewController: UIViewController {
-    
-    @IBOutlet weak var tf: UITextField!
+class MyDoneButtonViewController : UIInputViewController {
+    weak var delegate : UIViewController?
     override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tf.delegate = self
         
-//        let p = UIPickerView()
-//        p.delegate = self
-//        p.dataSource = self
-//
-//        self.tf.inputView = p
-//        //
-//        let b = UIButton(type: .system)
-//        b.setTitle("Done", for: .normal)
-//        b.sizeToFit()
-//        b.addTarget(self, action: #selector(doDone), for: .touchUpInside)
-//        b.backgroundColor = .lightGray
-//        self.tf.inputAccessoryView = b
-    }
-    
-    @objc func doDone() {
-        self.tf.resignFirstResponder()
-    }
-}
-
-extension ViewController: UITextFieldDelegate {
-    // this way works fine too
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        let p = UIPickerView()
-        p.delegate = self
-        p.dataSource = self
-        
-        // self.tf.inputView = p
-        
-        // or, better perhaps:
-        
-        let iv = UIInputView(frame: CGRect(origin:.zero, size:CGSize(200,200)), inputViewStyle: .keyboard)
-        iv.addSubview(p)
-        p.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            p.leadingAnchor.constraint(equalTo: iv.leadingAnchor),
-            p.trailingAnchor.constraint(equalTo: iv.trailingAnchor),
-            p.centerYAnchor.constraint(equalTo: iv.centerYAnchor)
-        ])
-        self.tf.inputView = iv
+        let iv = self.inputView!
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.allowsSelfSizing = true // crucial
 
         let b = UIButton(type: .system)
+        b.tintColor = .black
         b.setTitle("Done", for: .normal)
         b.sizeToFit()
         b.addTarget(self, action: #selector(doDone), for: .touchUpInside)
         b.backgroundColor = UIColor.lightGray
-        self.tf.inputAccessoryView = b
+        iv.addSubview(b)
+        b.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            b.topAnchor.constraint(equalTo: iv.topAnchor),
+            b.bottomAnchor.constraint(equalTo: iv.bottomAnchor),
+            b.leadingAnchor.constraint(equalTo: iv.leadingAnchor),
+            b.trailingAnchor.constraint(equalTo: iv.trailingAnchor),
+        ])
 
+        
+    }
+    
+    @objc func doDone() {
+        self.delegate?.view?.endEditing(false)
+    }
+
+
+}
+
+class MyPickerViewController : UIInputViewController {
+    override func viewDidLoad() {
+        
+        let iv = self.inputView!
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        
+        let p = UIPickerView()
+        p.delegate = self
+        p.dataSource = self
+        iv.addSubview(p)
+        p.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            p.topAnchor.constraint(equalTo: iv.topAnchor),
+            p.bottomAnchor.constraint(equalTo: iv.bottomAnchor),
+            p.leadingAnchor.constraint(equalTo: iv.leadingAnchor),
+            p.trailingAnchor.constraint(equalTo: iv.trailingAnchor),
+        ])
     }
 }
 
-extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
+extension MyPickerViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     var pep : [String] {return ["Manny", "Moe", "Jack"]}
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -93,8 +93,46 @@ extension ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
         return self.pep[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.tf.text = self.pep[row]
+        let doc = self.textDocumentProxy
+        if let s = doc.documentContextAfterInput {
+            doc.adjustTextPosition(byCharacterOffset: s.count)
+        }
+        delay(0.1) {
+            while doc.hasText {
+                doc.deleteBackward()
+            }
+            doc.insertText(self.pep[row])
+        }
     }
-
 }
+
+// just proving that this override is possible and actually works
+// we are asked for our own input accessory view controller
+// so input accessory view can be managed by one
+class MyTextField : UITextField {
+    var _iavc : UIInputViewController?
+    override var inputAccessoryViewController: UIInputViewController? {
+        get {
+            return self._iavc
+        }
+        set {
+            self._iavc = newValue
+        }
+    }
+}
+
+class ViewController: UIViewController {
+    
+    @IBOutlet weak var tf: UITextField!
+    let pvc = MyPickerViewController()
+    let mdbvc = MyDoneButtonViewController()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tf.inputView = self.pvc.inputView
+        (self.tf as! MyTextField).inputAccessoryViewController = mdbvc
+        self.mdbvc.delegate = self // for dismissal
+    }
+    
+}
+
 

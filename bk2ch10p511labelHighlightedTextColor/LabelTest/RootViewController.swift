@@ -18,9 +18,6 @@ class RootViewController: UITableViewController {
         return 2
     }
     
-    // the black label text turns red when the cell is selected
-    // but the blue label text does not - highlightedTextColor does not work on it
-
     let cellID = "Cell"
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
@@ -28,9 +25,12 @@ class RootViewController: UITableViewController {
         if cell.contentView.viewWithTag(1) == nil {
             let lab = UILabel()
             print(lab.lineBreakMode.rawValue)
-            lab.textColor = .blue // see if this makes any difference
-            //lab.textColor = .black // yes it does! the text color must be black too
-            // no! the rule is that the attributed text color must _match_ the textColor
+            // the rule is that in order for the highlighted text color to affect
+            // an attributed label,
+            // the attributed text color must _match the textColor_
+
+            lab.textColor = .blue
+            // lab.textColor = .black // reverses which cell turns red when highlighted
             let color = indexPath.row == 0 ? UIColor.black : UIColor.blue
             let s = NSMutableAttributedString(string: "This is\n a test", attributes: [
                 .foregroundColor : color
