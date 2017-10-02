@@ -9,7 +9,12 @@ func lend<T> (closure:(T)->()) -> T where T:NSObject {
 
 class ViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var tv : UITextView!
-    var keyboardShowing = false
+    var scrollView : UIScrollView! {
+        return self.tv
+    }
+    var oldContentInset = UIEdgeInsets.zero
+    var oldIndicatorInset = UIEdgeInsets.zero
+    var oldOffset = CGPoint.zero
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,48 +43,73 @@ class ViewController: UIViewController, UITextViewDelegate {
 
     }
     
-    override var shouldAutorotate : Bool {
-        return !self.keyboardShowing
-    }
-    
     // as long as you play your part (adjust content offset),
-    // iOS 8 will play its part (scroll cursor to visible)
+    // iOS will play its part (scroll cursor to visible)
     // and we don't have to animate
     
-    @objc func keyboardShow(_ n:Notification) {
-        if self.keyboardShowing {
-            return
+    // code identical to scroll view example, because a text view _is_ a scroll view
+    
+    enum KeyboardState {
+        case unknown
+        case entering
+        case exiting
+    }
+    
+    func keyboardState(for d:[AnyHashable:Any], in v:UIView?) -> (KeyboardState, CGRect?) {
+        var rold = d[UIKeyboardFrameBeginUserInfoKey] as! CGRect
+        var rnew = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
+        var ks : KeyboardState = .unknown
+        var newRect : CGRect? = nil
+        if let v = v {
+            let co = UIScreen.main.coordinateSpace
+            rold = co.convert(rold, to:v)
+            rnew = co.convert(rnew, to:v)
+            newRect = rnew
+            if !rold.intersects(v.bounds) && rnew.intersects(v.bounds) {
+                ks = .entering
+            }
+            if rold.intersects(v.bounds) && !rnew.intersects(v.bounds) {
+                ks = .exiting
+            }
         }
-        self.keyboardShowing = true
-
-        
-        print("show")
-        
+        return (ks, newRect)
+    }
+    
+    @objc func keyboardShow(_ n:Notification) {
         let d = n.userInfo!
-        var r = d[UIKeyboardFrameEndUserInfoKey] as! CGRect
-        r = self.tv.convert(r, from:nil)
-        self.tv.contentInset.bottom = r.size.height
-        self.tv.scrollIndicatorInsets.bottom = r.size.height
-        
-        
-
+        let (state, rnew) = keyboardState(for:d, in:self.scrollView)
+        if state == .entering {
+            print("really showing")
+            self.oldContentInset = self.scrollView.contentInset
+            self.oldIndicatorInset = self.scrollView.scrollIndicatorInsets
+            self.oldOffset = self.scrollView.contentOffset
+        }
+        print("show")
+        // no need to scroll, as the scroll view will do it for us
+        // so all we have to do is adjust the inset
+        if let rnew = rnew {
+            let h = rnew.intersection(self.scrollView.bounds).height
+            self.scrollView.contentInset.bottom = h
+            self.scrollView.scrollIndicatorInsets.bottom = h
+        }
     }
     
     @objc func keyboardHide(_ n:Notification) {
-        if !self.keyboardShowing {
-            return
+        let d = n.userInfo!
+        let (state, _) = keyboardState(for:d, in:self.scrollView)
+        if state == .exiting {
+            print("really hiding")
+            // restore original setup
+            // we _don't_ do this; let the text view position itself
+            // self.scrollView.contentOffset = self.oldOffset
+            self.scrollView.scrollIndicatorInsets = self.oldIndicatorInset
+            self.scrollView.contentInset = self.oldContentInset
         }
-        self.keyboardShowing = false
-
-        print("hide")
-        
-        self.tv.contentInset = .zero
-        self.tv.scrollIndicatorInsets = .zero
-        
-
     }
 
-    func doDone(_ sender: Any) {
+    
+
+    @objc func doDone(_ sender: Any) {
         self.view.endEditing(false)
     }
 

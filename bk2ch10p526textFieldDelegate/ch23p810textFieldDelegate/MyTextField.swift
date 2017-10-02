@@ -16,6 +16,7 @@ class MyTextField: UITextField {
             nil, action:#selector(Dummy.dummy), for:.editingDidEndOnExit)
     }
     
+    
     let list : [String:String] = {
         let path = Bundle.main.url(forResource:"abbreviations", withExtension:"txt")!
         let s = try! String(contentsOf:path)
@@ -33,28 +34,29 @@ class MyTextField: UITextField {
     
 
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if action == #selector(expand),
-            let r = self.selectedTextRange,
-            let s = self.text(in:r) {
-            return s.count == 2 && self.state(for:s) != nil
+        if action == #selector(expand) {
+            if let r = self.selectedTextRange, let s = self.text(in:r) {
+                return (s.count == 2 && self.state(for:s) != nil)
+            }
         }
         return super.canPerformAction(action, withSender:sender)
     }
     
     @objc func expand(_ sender: Any?) {
-        if let r = self.selectedTextRange, let s = self.text(in:r),
-            let ss = self.state(for:s) {
-            self.replace(r, withText:ss)
+        if let r = self.selectedTextRange, let s = self.text(in:r) {
+            if let ss = self.state(for:s) {
+                self.replace(r, withText:ss)
+            }
         }
     }
     
     override func copy(_ sender:Any?) {
         super.copy(sender)
         let pb = UIPasteboard.general
-        if let s = pb.string {
+        if var s = pb.string {
             // ... alter s here ...
-            let ss = s + "surprise!"
-            pb.string = ss
+            // s = s + "surprise!"
+            pb.string = s
         }
     }
 }

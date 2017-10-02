@@ -31,8 +31,8 @@ class StyledText: UIView {
         
         let desc = UIFontDescriptor(name:"Didot", size:18)
         let atts = [
-            UIFontDescriptor.FeatureKey.featureIdentifier:kLetterCaseType,
-            UIFontDescriptor.FeatureKey.typeIdentifier:kSmallCapsSelector
+            UIFontDescriptor.FeatureKey.featureIdentifier: kLowerCaseType,
+            UIFontDescriptor.FeatureKey.typeIdentifier: kLowerCaseSmallCapsSelector
         ]
         let desc2 = desc.addingAttributes(
             [UIFontDescriptor.AttributeName.featureSettings:[atts]]
@@ -107,6 +107,7 @@ class StyledText: UIView {
             let lastCharRange = glyphRange.location + glyphRange.length - 1
             let property = self.lm.propertyForGlyph(at:lastCharRange)
             // let ok = property.contains[.ControlCharacter]
+            // incredible kerfuffle needed because this is not an Option Set
             let mask1 = property.rawValue
             let mask2 = NSLayoutManager.GlyphProperty.controlCharacter.rawValue
             return mask1 & mask2 != 0
@@ -116,8 +117,12 @@ class StyledText: UIView {
         }
         // okay, we've got the range!
         let characterRange = self.lm.characterRange(forGlyphRange:glyphRange, actualGlyphRange:nil)
-        let s = (self.text.string as NSString).substring(with:characterRange) // state name
-        print("you tapped \(s)")
+        let s = self.text.string
+        if let r = Range(characterRange, in:s) {
+            let stateName = s[r]
+            print("you tapped \(stateName)")
+        }
+        
         let lm = self.lm as! MyLayoutManager
         lm.wordRange = characterRange
         self.setNeedsDisplay()

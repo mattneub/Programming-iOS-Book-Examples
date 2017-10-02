@@ -6,6 +6,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var tf : UITextField!
     
+    // how to make keyboard initially appear in Russian if enabled
+    override var textInputMode: UITextInputMode? {
+        print("get")
+        // return super.textInputMode
+        
+        for tim in UITextInputMode.activeInputModes {
+            if tim.primaryLanguage == "ru-RU" {
+                return tim
+            }
+        }
+        print("super", super.textInputMode?.primaryLanguage as Any)
+        return super.textInputMode
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,29 +32,44 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     }
     
+    func beRed(_ textField : UITextField) {
+        // user's text is always red, underlined
+        if var md = textField.typingAttributes {
+            let d : [String:Any] = [
+                NSAttributedStringKey.foregroundColor.rawValue:
+                    UIColor.red,
+                NSAttributedStringKey.underlineStyle.rawValue: NSUnderlineStyle.styleSingle.rawValue
+            ]
+            md.merge(d) {_,new in new}
+            textField.typingAttributes = md
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print(textField.textInputMode?.primaryLanguage as Any) // wrong
+
+        self.beRed(textField)
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print("here '\(string)'")
+        // print("here '\(string)'")
         
         if string == "\n" {
             return true // otherwise, our automatic keyboard dismissal trick won't work
         }
         
-        // force user to type in red, underlined, lowercase only
-        
+        // backspace
+        if string.isEmpty {
+            return true
+        }
+        // user can enter lowercase only
         let lc = string.lowercased()
-        textField.text = (textField.text! as NSString)
-            .replacingCharacters(in:range, with:lc)
+        textField.insertText(lc) // from UIKeyInput protocol
+
+        self.beRed(textField)
         
-        // not very satisfactory but it does show the result
-        
-        let md = (textField.typingAttributes! as NSDictionary).mutableCopy() as! NSMutableDictionary
-        let d : [NSAttributedStringKey:Any] = [
-            .foregroundColor:
-                UIColor.red,
-            .underlineStyle: NSUnderlineStyle.styleSingle.rawValue
-        ]
-        md.addEntries(from:d)
-        textField.typingAttributes = md.copy() as? [String:Any]
+        print(textField.textInputMode?.primaryLanguage as Any) // right
+
         
         return false
 

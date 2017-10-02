@@ -21,7 +21,7 @@
 		322C69B11B94D72D0021A09F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		328BC5C5198ABB690062D99A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C9DDA0D9180DC5E900E9E0CC /* ch23p770font2downloadableFont.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch23p770font2downloadableFont.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9DDA0E4180DC5E900E9E0CC /* ch23p770font2downloadableFont-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch23p770font2downloadableFont-Info.plist"; sourceTree = "<group>"; };
+		C9DDA0E4180DC5E900E9E0CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9DDA0EF180DC5E900E9E0CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9DDA0F4180DC5E900E9E0CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,7 +62,7 @@
 				C9DDA0F4180DC5E900E9E0CC /* Assets.xcassets */,
 				322C69AF1B94D7060021A09F /* LaunchScreen.storyboard */,
 				32299BE5198AD45900017BF4 /* SourceCodePro-Regular.ttf */,
-				C9DDA0E4180DC5E900E9E0CC /* ch23p770font2downloadableFont-Info.plist */,
+				C9DDA0E4180DC5E900E9E0CC /* Info.plist */,
 			);
 			name = ch23p770font1dynamicType;
 			path = ch23p670font1dynamicType;

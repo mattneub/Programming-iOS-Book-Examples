@@ -85,8 +85,6 @@ class ViewController: UIViewController {
         self.tv.contentOffset = .zero
     }
     
-    // NOTE there's a bug: I'm not erasing the existing rectangle any longer
-
     @IBAction func doTest(_ sender: Any) {
         // how far am I scrolled?
         let off = self.tv.contentOffset
@@ -116,9 +114,15 @@ class ViewController: UIViewController {
         var r : NSRange = NSMakeRange(0,0)
         let tag = t.tag(at:ix, scheme:sch, tokenRange:&r, sentenceRange:nil)
         if tag == .word {
-            print((self.tv.text as NSString).substring(with:r))
+            if let s = self.tv.text {
+                if let range = Range(r, in: s) {
+                    let word = s[range]
+                    print(word)
+                }
+            }
         }
         
+        // NOTE I'm not erasing the existing rectangle
         let lm = self.tv.layoutManager as! MyLayoutManager
         lm.wordRange = r
         lm.invalidateDisplay(forCharacterRange:r)

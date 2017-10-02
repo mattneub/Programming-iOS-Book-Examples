@@ -3,7 +3,7 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var textFields : [UITextField]!
-    var fr: UIResponder!
+    var currentField: UITextField!
     var accessoryView : UIView!
     
     override func viewDidLoad() {
@@ -16,19 +16,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func textFieldDidBeginEditing(_ tf: UITextField) {
-        self.fr = tf // keep track of first responder
+        self.currentField = tf // keep track of first responder
         tf.inputAccessoryView = self.accessoryView
         tf.keyboardAppearance = .dark
     }
 
     func textFieldShouldReturn(_ tf: UITextField) -> Bool {
-        self.fr = nil
+        self.currentField = nil
         tf.resignFirstResponder()
         return true
     }
     
     @objc func doNextButton(_ sender: Any) {
-        var ix = self.textFields.index(of:self.fr as! UITextField)!
+        var ix = self.textFields.index(of:self.currentField)!
         ix = (ix + 1) % self.textFields.count
         let v = self.textFields[ix]
         v.becomeFirstResponder()

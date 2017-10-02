@@ -129,15 +129,15 @@ class ViewController : UIViewController {
     
 }
 
-@available(iOS 10.0, *)
 extension ViewController : UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction:UITextItemInteraction) -> Bool {
-        print(interaction.rawValue)
+        print("attachment", interaction.rawValue)
+        if interaction == .preview {return false}
         return true
     }
     
-    func textView(_ textView: UITextView, shouldInteractWith URL: Foundation.URL, in characterRange: NSRange, interaction:UITextItemInteraction) -> Bool {
-        print(URL)
+    func textView(_ textView: UITextView, shouldInteractWith url: Foundation.URL, in characterRange: NSRange, interaction:UITextItemInteraction) -> Bool {
+        print("URL", url)
         print((textView.text as NSString).substring(with:characterRange))
         print(interaction.rawValue)
         return true

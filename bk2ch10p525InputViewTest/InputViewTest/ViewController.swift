@@ -50,12 +50,19 @@ class MyDoneButtonViewController : UIInputViewController {
             b.leadingAnchor.constraint(equalTo: iv.leadingAnchor),
             b.trailingAnchor.constraint(equalTo: iv.trailingAnchor),
         ])
-
-        
     }
     
     @objc func doDone() {
         self.delegate?.view?.endEditing(false)
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print("did2")
+    }
+    
+    override func traitCollectionDidChange(_ prev: UITraitCollection?) {
+        super.traitCollectionDidChange(prev)
+        print("trait2")
     }
 
 
@@ -79,6 +86,17 @@ class MyPickerViewController : UIInputViewController {
             p.trailingAnchor.constraint(equalTo: iv.trailingAnchor),
         ])
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print("did")
+    }
+    
+    override func traitCollectionDidChange(_ prev: UITraitCollection?) {
+        super.traitCollectionDidChange(prev)
+        print("trait")
+    }
+
 }
 
 extension MyPickerViewController : UIPickerViewDelegate, UIPickerViewDataSource {
@@ -129,6 +147,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tf.inputView = self.pvc.inputView
+        // print(self.pvc.view === self.pvc.inputView) // yep
         (self.tf as! MyTextField).inputAccessoryViewController = mdbvc
         self.mdbvc.delegate = self // for dismissal
     }

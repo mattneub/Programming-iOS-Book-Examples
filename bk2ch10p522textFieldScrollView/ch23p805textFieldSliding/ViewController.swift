@@ -85,7 +85,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let (state, _) = keyboardState(for:d, in:self.scrollView)
         if state == .exiting {
             print("really hiding")
-            // store original setup
+            // restore original setup
             self.scrollView.contentOffset = self.oldOffset
             self.scrollView.scrollIndicatorInsets = self.oldIndicatorInset
             self.scrollView.contentInset = self.oldContentInset
