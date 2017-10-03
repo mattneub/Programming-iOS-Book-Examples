@@ -39,6 +39,9 @@ class ViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(self.tv.textContainerInset)
+        print(UITextView(frame:CGRect(0,0,100,100)).textContainerInset)
+        
         let s = "Onions\t$2.34\nPeppers\t$15.2\n"
         let mas = NSMutableAttributedString(string:s, attributes:[
             .font:UIFont(name:"GillSans", size:15)!,
@@ -86,8 +89,12 @@ class ViewController : UIViewController {
         mas.append(NSAttributedString(string: "\n\n", attributes:nil))
         mas.append(NSAttributedString(string: "LINK", attributes: [
             NSAttributedStringKey.link : URL(string: "https://www.apple.com")!,
-            NSAttributedStringKey.foregroundColor : UIColor.orange, // not working
-            ]))
+            NSAttributedStringKey.foregroundColor : UIColor.green,
+            NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue
+        ]))
+        // aha! son of a gun, I finally figured this out!
+        // you have to set the overall `linkTextAttributes` to an empty dictionary
+        
         mas.append(NSAttributedString(string: "\n\n", attributes:nil))
         mas.append(NSAttributedString(string: "(805)-123-4567", attributes: nil))
         mas.append(NSAttributedString(string: "\n\n", attributes:nil))
@@ -99,7 +106,9 @@ class ViewController : UIViewController {
         self.tv.attributedText = mas
         
         // this works but it applies to all links
-        //self.tv.linkTextAttributes = [.foregroundColor : UIColor.orange]
+        print(self.tv.linkTextAttributes)
+        self.tv.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue : UIColor.orange]
+        self.tv.linkTextAttributes = [:]
         
 //        print(NSAttachmentCharacter)
 //        print(0xFFFC)
@@ -107,6 +116,22 @@ class ViewController : UIViewController {
         self.tv.isSelectable = true
         self.tv.isEditable = false
         self.tv.delegate = self
+        
+        do {
+            let mas = NSMutableAttributedString()
+            mas.append(NSAttributedString(string: "LINKNOT", attributes: [
+                NSAttributedStringKey.link : URL(string: "https://www.apple.com")!,
+                NSAttributedStringKey.foregroundColor : UIColor.green,
+                NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue
+            ]))
+            let lab = UILabel()
+            lab.attributedText = mas
+            lab.sizeToFit()
+            lab.isUserInteractionEnabled = true
+            self.view.addSubview(lab)
+            lab.frame.origin.y += 30
+            // just proving that (a) you can set this appearance, and (b) you can't tap it
+        }
     }
     
     func thumbnailOfImage(name:String, extension ext: String) -> UIImage {
@@ -135,7 +160,7 @@ extension ViewController : UITextViewDelegate {
         if interaction == .preview {return false}
         return true
     }
-    
+
     func textView(_ textView: UITextView, shouldInteractWith url: Foundation.URL, in characterRange: NSRange, interaction:UITextItemInteraction) -> Bool {
         print("URL", url)
         print((textView.text as NSString).substring(with:characterRange))

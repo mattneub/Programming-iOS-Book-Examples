@@ -90,8 +90,10 @@ class ViewController: UIViewController {
         let off = self.tv.contentOffset
         // how far down is the top of the text container?
         let top = self.tv.textContainerInset.top
+        // same thing for the left
+        let left = self.tv.textContainerInset.left
         // so here's the top-left point within the text container
-        var tctopleft = CGPoint(0, off.y - top)
+        var tctopleft = CGPoint(off.x - left, off.y - top)
         // so what's the character index for that?
         // this doesn't give quite the right answer
         let ixx = self.tv.layoutManager.characterIndex(for:tctopleft, in:self.tv.textContainer, fractionOfDistanceBetweenInsertionPoints:nil)

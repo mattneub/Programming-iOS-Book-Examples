@@ -53,8 +53,11 @@ class MyDoneButtonViewController : UIInputViewController {
     }
     
     @objc func doDone() {
-        self.delegate?.view?.endEditing(false)
+        if let del = self.delegate {
+            (del as AnyObject).doDone?()
+        }
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         print("did2")
@@ -69,6 +72,9 @@ class MyDoneButtonViewController : UIInputViewController {
 }
 
 class MyPickerViewController : UIInputViewController {
+    var currentPep = "Manny"
+    var pep = ["Manny", "Moe", "Jack"]
+
     override func viewDidLoad() {
         
         let iv = self.inputView!
@@ -96,11 +102,12 @@ class MyPickerViewController : UIInputViewController {
         super.traitCollectionDidChange(prev)
         print("trait")
     }
-
+    
+    // unfortunately, viewWillDisappear is called _twice_ and too late anyway
+    
 }
 
 extension MyPickerViewController : UIPickerViewDelegate, UIPickerViewDataSource {
-    var pep : [String] {return ["Manny", "Moe", "Jack"]}
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -111,6 +118,8 @@ extension MyPickerViewController : UIPickerViewDelegate, UIPickerViewDataSource 
         return self.pep[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.currentPep = self.pep[row]
+        return; // interesting experiment but I think I'll enter it on dismissal
         let doc = self.textDocumentProxy
         if let s = doc.documentContextAfterInput {
             doc.adjustTextPosition(byCharacterOffset: s.count)
@@ -151,7 +160,10 @@ class ViewController: UIViewController {
         (self.tf as! MyTextField).inputAccessoryViewController = mdbvc
         self.mdbvc.delegate = self // for dismissal
     }
-    
+    @objc func doDone() {
+        self.tf.insertText(pvc.currentPep)
+        self.tf.resignFirstResponder()
+    }
 }
 
 

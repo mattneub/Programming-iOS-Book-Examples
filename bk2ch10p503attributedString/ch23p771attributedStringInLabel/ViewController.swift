@@ -105,6 +105,8 @@ class ViewController : UIViewController {
             // need this for a different book example
             var range : NSRange = NSMakeRange(0,0)
             let d = content.attributes(at:content.length-1, effectiveRange:&range)
+            print(range)
+            print(d)
             _ = d
             
             if which > 4 {fallthrough}
