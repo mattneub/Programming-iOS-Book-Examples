@@ -24,7 +24,35 @@ extension CGVector {
     }
 }
 
+class SchemeHandler : NSObject, WKURLSchemeHandler {
+    deinit { print("farewell from scheme handler") }
+    var sch : String?
+    func webView(_ webView: WKWebView, start task: WKURLSchemeTask) {
+        print(task.request) // called twice, I've no idea why
+        if let url = task.request.url,
+            let sch = self.sch,
+            url.scheme == sch,
+            let host = url.host,
+            let theme = NSDataAsset(name:host) {
+            let data = theme.data
+            let resp = URLResponse(url: url, mimeType: "audio/mpeg",
+                                   expectedContentLength: data.count,
+                                   textEncodingName: nil)
+            task.didReceive(resp)
+            task.didReceive(data)
+            task.didFinish()
+            print("supplied data")
+        } else {
+            task.didFailWithError(NSError(domain: "oops", code: 0))
+        }
+    }
+    
+    func webView(_ webView: WKWebView, stop task: WKURLSchemeTask) {
+        print("stop")
+    }
 
+    
+}
 
 class ViewController: UIViewController {
     weak var wv: WKWebView!
@@ -36,7 +64,9 @@ class ViewController: UIViewController {
         
         // this feature works only if you make the configuration _before_ making the web view
         let config = WKWebViewConfiguration()
-        config.setURLSchemeHandler(self, forURLScheme: self.sch)
+        let sh = SchemeHandler()
+        sh.sch = self.sch
+        config.setURLSchemeHandler(sh, forURLScheme: self.sch)
         let wv = WKWebView(frame: CGRect(30,30,200,300), configuration: config)
         self.view.addSubview(wv)
         self.wv = wv
@@ -59,32 +89,5 @@ class ViewController: UIViewController {
     deinit {
         print("farewell")
     }
-}
-
-extension ViewController : WKURLSchemeHandler {
-    func webView(_ webView: WKWebView, start task: WKURLSchemeTask) {
-        print(task.request) // called twice, I've no idea why
-        if let url = task.request.url,
-            url.scheme == sch,
-            let host = url.host,
-            let theme = NSDataAsset(name:host) {
-                let data = theme.data
-                let resp = URLResponse(url: url, mimeType: "audio/mpeg",
-                                       expectedContentLength: data.count,
-                                       textEncodingName: nil)
-                task.didReceive(resp)
-                task.didReceive(data)
-                task.didFinish()
-                print("supplied data")
-        } else {
-            task.didFailWithError(NSError(domain: "oops", code: 0))
-        }
-    }
-    
-    func webView(_ webView: WKWebView, stop urlSchemeTask: WKURLSchemeTask) {
-        print("stop")
-    }
-    
-    
 }
 
