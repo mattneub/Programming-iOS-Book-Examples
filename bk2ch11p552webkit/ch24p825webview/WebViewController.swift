@@ -341,13 +341,13 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
     }
     
     deinit {
-        print("dealloc")
+        print("view controller dealloc")
         // self.obs.removeAll()
         // with webkit, probably no need for this, but no harm done
         // self.wv.stopLoading()
         // break all retains
         let ucc = self.wv.configuration.userContentController
-        ucc.removeAllUserScripts()
+        ucc.removeAllUserScripts() // not really needed, but whatever
         ucc.removeScriptMessageHandler(forName:"playbutton")
     }
     
