@@ -46,7 +46,7 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
         super.loadView()
     }
 
-
+    var obs = Set<NSKeyValueObservation>()
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad")
@@ -76,40 +76,28 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
             act.centerXAnchor.constraint(equalTo:wv.centerXAnchor),
             act.centerYAnchor.constraint(equalTo:wv.centerYAnchor)
             ])
-        // webkit uses KVO
-        wv.addObserver(self, forKeyPath: #keyPath(WKWebView.loading), options: .new, context: nil)
+        obs.insert(wv.observe(\.loading, options: .new) { [unowned self] wv, ch in
+            if let val = ch.newValue {
+                if val {
+                    self.activity.startAnimating()
+                } else {
+                    self.activity.stopAnimating()
+                }
+            }
+        })
         // cool feature, show title
-        wv.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
-        
+        obs.insert(wv.observe(\.title, options: .new) { [unowned self] wv, change in
+            if let val = change.newValue, let title = val {
+                self.navigationItem.title = title
+            }
+        })
         wv.navigationDelegate = self
         
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-            guard let _ = object as? WKWebView else {return}
-            guard let keyPath = keyPath else {return}
-            guard let change = change else {return}
-            switch keyPath {
-            case "loading": // new:1 or 0
-                if let val = change[.newKey] as? Bool {
-                    if val {
-                        self.activity.startAnimating()
-                    } else {
-                        self.activity.stopAnimating()
-                    }
-                }
-            case "title": // not actually showing it in this example
-                if let val = change[.newKey] as? String {
-                    self.navigationItem.title = val
-                }
-            default:break
-            }
-    }
-    
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("view did appear, req: \(self.wv.url)") // no evidence that restoration is being done for us
+        print("view did appear, req: \(self.wv.url as Any)") // no evidence that restoration is being done for us
         
         let b = UIBarButtonItem(title:"Back", style:.plain, target:self, action:#selector(goBack))
         self.navigationItem.rightBarButtonItems = [b]
@@ -125,14 +113,9 @@ class WebViewController: UIViewController, UIViewControllerRestoration {
 
     deinit {
         print("dealloc")
-        // using KVO, always tear down, take no chances
-        self.wv.removeObserver(self, forKeyPath: #keyPath(WKWebView.loading))
-        self.wv.removeObserver(self, forKeyPath: #keyPath(WKWebView.title))
-        // with webkit, probably no need for this, but no harm done
-        self.wv.stopLoading()
     }
         
-    func goBack(_ sender: Any) {
+    @objc func goBack(_ sender: Any) {
         self.wv.goBack()
     }
     

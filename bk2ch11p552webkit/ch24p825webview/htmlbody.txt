@@ -1,4 +1,5 @@
-<p>We already knew quite a bit about what made Mac OS X 10.7 Lion tick from previous, sometimes relatively exhaustive descriptions from Apple (see “<a href="http://tidbits.com/article/11682">Apple Offers a Glimpse of Mac OS X Lion</a>,” 20 October 2010, and “<a href="http://tidbits.com/article/11990">Apple Reveals More about Mac OS X Lion</a>,” 24 February 2011). During its Worldwide Developer Conference keynote, however, Apple provided a bit more information on stage, and posted a list of <a href="http://www.apple.com/macosx/whats-new/features.html">250 features it describes as new to Lion</a>.</p> 
+<a name="ref"></a>
+<p>We already knew quite a bit about what made Mac OS X 10.7 Lion tick from previous, sometimes relatively exhaustive descriptions from Apple (see “<a href="http://tidbits.com/article/11682">Apple Offers a Glimpse of Mac OS X Lion</a>,” 20 October 2010, and “<a href="http://tidbits.com/article/11990">Apple Reveals More about Mac OS X Lion</a>,” 24 February 2011). During its Worldwide Developer Conference keynote, however, Apple provided a bit more information on stage, and posted a list of <a href="http://www.apple.com/macosx/whats-new/features.html">250 features it describes as new to Lion</a>.</p>
 
 <p>Lion isn’t just borrowing from iOS as part of the Mac OS X refresh. It’s also providing a skin that can hide the most confusing parts of a desktop operating system from either users who don’t want to learn one or those who cannot master it. We all know people in both categories.</p> 
 
@@ -51,3 +52,4 @@
 <p class="article_subhead" style="padding-top:10px"><strong>Hear Me Roar</strong> -- There’s a lot to process here, both new and old. Lion presents a number of new ways of thinking about Mac OS X, and the more we learn about it, the more subtlety we see in how new Mac users will approach the platform afresh.</p> 
 
 <p>More interesting will be in seeing how existing Mac users take to Lion’s new features — many people may find that they aren’t in need of new ways of working, even if those new approaches are better for new users or those accustomed only to iOS. But as always, it will be hard to resist the siren song of certain features, even if not all of them are equally compelling.</p>
+<p><a href="#ref">TOP</a></p>

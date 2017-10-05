@@ -23,7 +23,7 @@
 		C9EC6B611819AB4000606A3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9EC6B5F1819AB4000606A3A /* Main.storyboard */; };
 		C9EC6B661819AB4000606A3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9EC6B651819AB4000606A3A /* Assets.xcassets */; };
 		C9EC6B851819AC2800606A3A /* htmlbody.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9EC6B821819AC2800606A3A /* htmlbody.txt */; };
-		C9EC6B861819AC2800606A3A /* htmlTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = C9EC6B831819AC2800606A3A /* htmlTemplate.txt */; };
+		C9EC6B861819AC2800606A3A /* htmlTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = C9EC6B831819AC2800606A3A /* htmlTemplate.html */; };
 		C9EC6B871819AC2800606A3A /* listen.png in Resources */ = {isa = PBXBuildFile; fileRef = C9EC6B841819AC2800606A3A /* listen.png */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +46,7 @@
 		C9EC6B601819AB4000606A3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9EC6B651819AB4000606A3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9EC6B821819AC2800606A3A /* htmlbody.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = htmlbody.txt; sourceTree = "<group>"; };
-		C9EC6B831819AC2800606A3A /* htmlTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = htmlTemplate.txt; sourceTree = "<group>"; };
+		C9EC6B831819AC2800606A3A /* htmlTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = htmlTemplate.html; sourceTree = "<group>"; };
 		C9EC6B841819AC2800606A3A /* listen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listen.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,7 +85,7 @@
 				326041151B9B6B690006348B /* ViewController.swift */,
 				3297F7CB198D7C0300C4BE9B /* WebViewController.swift */,
 				C9EC6B821819AC2800606A3A /* htmlbody.txt */,
-				C9EC6B831819AC2800606A3A /* htmlTemplate.txt */,
+				C9EC6B831819AC2800606A3A /* htmlTemplate.html */,
 				C9EC6B841819AC2800606A3A /* listen.png */,
 				32C426C019EC78CD00AA7DAA /* testing.pdf */,
 				32C426C219EC790700AA7DAA /* test.rtf */,
@@ -174,7 +174,7 @@
 				32C426C119EC78CD00AA7DAA /* testing.pdf in Resources */,
 				32C426C919EC7A7500AA7DAA /* test.pages in Resources */,
 				32C426C719EC79DB00AA7DAA /* test.doc in Resources */,
-				C9EC6B861819AC2800606A3A /* htmlTemplate.txt in Resources */,
+				C9EC6B861819AC2800606A3A /* htmlTemplate.html in Resources */,
 				C9EC6B611819AB4000606A3A /* Main.storyboard in Resources */,
 				32C426C619EC79DB00AA7DAA /* test.docx in Resources */,
 			);
@@ -240,7 +240,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -273,7 +273,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -289,12 +289,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch24p825webview/ch24p825webkit-Prefix.pch";
 				INFOPLIST_FILE = "ch24p825webview/ch24p825webkit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ch24p825webkit;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -309,11 +309,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch24p825webview/ch24p825webkit-Prefix.pch";
 				INFOPLIST_FILE = "ch24p825webview/ch24p825webkit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ch24p825webkit;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -96,7 +96,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         )
     }
     
-    func swiped(_ g:UIGestureRecognizer) {
+    @objc func swiped(_ g:UIGestureRecognizer) {
         print("swiped") // okay, you proved it
     }
     
@@ -105,7 +105,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("view did appear, req: \(self.wv.request)")
+        print("view did appear, req: \(self.wv.request as Any)")
         
         if LOADREQ == 1 {
             self.canNavigate = true
@@ -216,7 +216,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
             if self.canNavigate {
                 return true
             }
-            print("user would like to navigate to \(r.url)")
+            print("user would like to navigate to \(r.url as Any)")
             // this is how you would open in Mobile Safari
             // UIApplication.shared.openURL(r.URL)
             return false
@@ -224,7 +224,7 @@ class WebViewController: UIViewController, UIWebViewDelegate, UIViewControllerRe
         return true
     }
     
-    func goBack(_ sender: Any) {
+    @objc func goBack(_ sender: Any) {
         if self.wv.canGoBack {
             self.wv.goBack()
         }

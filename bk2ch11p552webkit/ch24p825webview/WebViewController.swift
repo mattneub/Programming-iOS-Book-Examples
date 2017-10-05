@@ -29,40 +29,46 @@ class MyMessageHandler : NSObject, WKScriptMessageHandler {
     }
 }
 
-class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler, UIViewControllerRestoration, SFSafariViewControllerDelegate {
+final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler, UIViewControllerRestoration, SFSafariViewControllerDelegate {
     
     var activity = UIActivityIndicatorView()
     var oldOffset : NSValue? // use nil as indicator
     var oldHTMLString : String?
     
+    var obs = Set<NSKeyValueObservation>()
+    
     var fontsize = 18
     var cssrule : String {
-        var s = "var s = document.createElement('style');\n"
-        s += "s.textContent = '"
-        s += "body { font-size: \(self.fontsize)px; }"
-        s += "';\n"
-        s += "document.documentElement.appendChild(s);\n"
-        return s
+        return """
+        var s = document.createElement('style');
+        s.textContent = 'body { font-size: \(self.fontsize)px; }';
+        document.documentElement.appendChild(s);
+        """
     }
-    weak var wv : WKWebView!
+    @IBOutlet weak var wv : WKWebView!
     
-    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.restorationIdentifier = "wvc"
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder:coder)
         self.restorationClass = type(of:self)
         self.edgesForExtendedLayout = [] // none, get accurate offset restoration
     }
-    
-    required init(coder: NSCoder) {
-        fatalError("NSCoding not supported")
-    }
 
-    
     class func viewController(withRestorationIdentifierPath identifierComponents: [Any], coder: NSCoder) -> UIViewController? {
         let id = identifierComponents.last as! String
         if id == "wvc" {
             print("recreating wvc view controller")
-            return self.init(nibName:nil, bundle:nil)
+            return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "wvc")
+        }
+        if id == "sf" {
+            print("recreating safari view controller")
+            if let url = coder.decodeObject(forKey: "safariurl") as? URL {
+                return SFSafariViewController(url:url)
+            }
+            return nil
         }
         return nil
     }
@@ -85,6 +91,8 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         if let oldHTMLString = coder.decodeObject(forKey:"oldHTMLString") as? String {
             self.oldHTMLString = oldHTMLString
         }
+        
+        
     }
     
     override func encodeRestorableState(with coder: NSCoder) {
@@ -96,10 +104,21 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         coder.encode(NSValue(cgPoint:off), forKey:"oldOffset")
         coder.encode(self.fontsize, forKey:"fontsize")
         coder.encode(self.oldHTMLString, forKey:"oldHTMLString")
+        // are we presenting a safari view controller?
+        if let _ = self.presentedViewController as? SFSafariViewController {
+            if let url = self.safariurl {
+                coder.encode(url, forKey:"safariurl") // failed experiment
+            }
+        }
     }
     
     override func applicationFinishedRestoringState() {
         print("finished restoring state") // still too soon to fix offset, not loaded yet
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // self.obs.removeAll()
     }
 
     override func viewDidLoad() {
@@ -108,15 +127,6 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
         // a configuration consists of preferences (e.g. JavaScript behavior),
         // and a user content controller that allows JavaScript messages to be sent/received
         // it is copied, so if we supply one we can't change it later
-        // alternatively, to use a default configuration, use frame alone
-        
-        // here, frame unimportant, we will be sized automatically
-//        let config = WKWebViewConfiguration()
-//        let wv = WKWebView(frame: .zero, configuration:config)
-        
-        let wv = WKWebView(frame: .zero)
-        
-        self.wv = wv
         
         // prepare to receive messages under the "playbutton" name
         // unfortunately there's a bug: the script message handler cannot be self,
@@ -134,15 +144,9 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             config.userContentController.add(handler, name: "playbutton")
         }
         
-        
         wv.restorationIdentifier = "wv"
         wv.scrollView.backgroundColor = .black // web view alone, ineffective
-        self.view.addSubview(wv)
-        wv.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint.constraints(withVisualFormat:"H:|[wv]|", metrics: nil, views: ["wv":wv]),
-            NSLayoutConstraint.constraints(withVisualFormat:"V:|[wv]|", metrics: nil, views: ["wv":wv])
-            ].flatMap{$0})
+
         wv.navigationDelegate = self
         
         // sorry, missing this feature
@@ -166,18 +170,9 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             act.centerYAnchor.constraint(equalTo:wv.centerYAnchor)
             ])
         // webkit uses KVO
-        wv.addObserver(self, forKeyPath: #keyPath(WKWebView.loading), options: .new, context: nil)
-        // cool feature, show title
-        wv.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
-        
-    }
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        guard let wv = object as? WKWebView else {return}
-        guard let keyPath = keyPath else {return}
-        guard let change = change else {return}
-        switch keyPath {
-        case "loading": // new:1 or 0
-            if let val = change[.newKey] as? Bool {
+        // nb leak if we don't watch out for self
+        obs.insert(wv.observe(\.loading, options: .new) { [unowned self] wv, ch in
+            if let val = ch.newValue {
                 if val {
                     print("starting animating")
                     self.activity.startAnimating()
@@ -196,27 +191,29 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                     }
                 }
             }
-        case "title": // not actually showing it in this example
-            if let val = change[.newKey] as? String {
-                print(val)
+        })
+        // cool feature, show title
+        obs.insert(wv.observe(\.title, options: .new) { wv, change in
+            if let val = change.newValue, let title = val {
+                print(title)
             }
-        default:break
-        }
+        })
+        
     }
     
-    func swiped(_ g:UIGestureRecognizer) {
+    @objc func swiped(_ g:UIGestureRecognizer) {
         print("swiped") // okay, you proved it!
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("view did appear, req: \(self.wv.url)")
+        print("view did appear, req: \(self.wv.url as Any)")
 
         if !self.isMovingToParentViewController {
             return // so we don't do this again when a presented view controller is dismissed
         }
         
-        var which : Int { return 1 }
+        var which : Int { return 1 } // 1; also 2-18 to test document types
         switch which {
         case 1:
             let b = UIBarButtonItem(title: "Size", style: .plain, target: self, action: #selector(doDecreaseSize))
@@ -236,7 +233,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             if let oldHTMLString = self.oldHTMLString {
                 print("restoring html")
                 
-                let templatepath = Bundle.main.path(forResource: "htmlTemplate", ofType:"txt")!
+                let templatepath = Bundle.main.path(forResource: "htmlTemplate", ofType:"html")!
                 let oldBase = URL(fileURLWithPath:templatepath)
                 
                 
@@ -248,7 +245,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
             let bodypath = Bundle.main.path(forResource: "htmlbody", ofType:"txt")!
             let ss = try! String(contentsOfFile:bodypath)
             
-            let templatepath = Bundle.main.path(forResource: "htmlTemplate", ofType:"txt")!
+            let templatepath = Bundle.main.path(forResource: "htmlTemplate", ofType:"html")!
             let base = URL(fileURLWithPath:templatepath)
             var s = try! String(contentsOfFile:templatepath)
             
@@ -334,7 +331,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     
     // showing how to inject JavaScript dynamically (as opposed to at page-load time)
     
-    func doDecreaseSize (_ sender: Any) {
+    @objc func doDecreaseSize (_ sender: Any) {
         self.fontsize -= 1
         if self.fontsize < 10 {
             self.fontsize = 20
@@ -345,26 +342,29 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
     
     deinit {
         print("dealloc")
-        // using KVO, always tear down, take no chances
-        self.wv.removeObserver(self, forKeyPath: #keyPath(WKWebView.loading))
-        self.wv.removeObserver(self, forKeyPath: #keyPath(WKWebView.title))
+        // self.obs.removeAll()
         // with webkit, probably no need for this, but no harm done
-        self.wv.stopLoading()
+        // self.wv.stopLoading()
         // break all retains
         let ucc = self.wv.configuration.userContentController
         ucc.removeAllUserScripts()
         ucc.removeScriptMessageHandler(forName:"playbutton")
     }
     
-    let whichNav = 1
     
+    var safariurl : URL?
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void) {
         if navigationAction.navigationType == .linkActivated {
             if let url = navigationAction.request.url {
+                if url.scheme == "file" { // we do not scroll to anchor; bug in iOS 11?
+                    decisionHandler(.allow)
+                    return
+                }
                 print("user would like to navigate to \(url)")
-                // this is how you would open in Mobile Safari
+                var whichNav : Int { return 1 }
                 switch whichNav {
                 case 0:
+                    // this is how you would open in Mobile Safari
                     if #available(iOS 10.0, *) {
                         UIApplication.shared.open(url)
                     } else {
@@ -375,7 +375,9 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                 case 1:
                     // this is how to use the new Safari view controller
                     let svc = SFSafariViewController(url: url)
+                    self.safariurl = url
                     svc.restorationIdentifier = "sf" // doesn't help
+                    svc.restorationClass = type(of:self)
                     // svc.delegate = self
                     self.present(svc, animated: true)
                     decisionHandler(.cancel)
@@ -412,7 +414,6 @@ class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessage
                 }
             }
     }
-
-
 }
+
 

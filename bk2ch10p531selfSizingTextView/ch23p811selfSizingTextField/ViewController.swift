@@ -23,9 +23,10 @@ class ViewController: UIViewController, UITextViewDelegate {
         self.tv.isScrollEnabled = false // *
         self.heightConstraint.isActive = false // *
         
-        let s = "Twas brillig, and the slithy toves did gyre and gimble in the wabe; " +
-            "all mimsy were the borogoves, and the mome raths outgrabe."
-        
+        let s = """
+            Twas brillig, and the slithy toves did gyre and gimble in the wabe; \
+            all mimsy were the borogoves, and the mome raths outgrabe.
+            """
         let mas = NSMutableAttributedString(string:s, attributes:[
             .font: UIFont(name:"GillSans", size:20)!
         ])

@@ -15,9 +15,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let s2 = "Fourscore and seven years ago, our fathers brought forth " +
-            "upon this continent a new nation, conceived in liberty and dedicated " +
-        "to the proposition that all men are created equal."
+		let s2 = """
+			Fourscore and seven years ago, our fathers brought forth \
+			upon this continent a new nation, conceived in liberty and \
+			dedicated to the proposition that all men are created equal.
+			"""
         let content2 = NSMutableAttributedString(string:s2, attributes: [
             .font: UIFont(name:"HoeflerText-Black", size:16)!
             ])

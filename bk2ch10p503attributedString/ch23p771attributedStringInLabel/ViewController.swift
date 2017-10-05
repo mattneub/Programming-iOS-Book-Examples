@@ -22,16 +22,18 @@ class ViewController : UIViewController {
         
         // self.tv.textContainer.lineFragmentPadding = 0 // make it just like the label
         // to show that under identical conditions they do draw identically
-
+        
         self.tv.isScrollEnabled = false // in case setting in the nib doesn't work
         
         var content : NSMutableAttributedString!
         var content2 : NSMutableAttributedString!
-
+        
         switch which {
         case 0, 1, 4, 5:
-            let s1 = "The Gettysburg Address, as delivered on a certain occasion " +
-                "(namely Thursday, November 19, 1863) by A. Lincoln"
+            let s1 = """
+                The Gettysburg Address, as delivered on a certain occasion \
+                (namely Thursday, November 19, 1863) by A. Lincoln
+                """
             content = NSMutableAttributedString(string:s1, attributes:[
                 .font: UIFont(name:"Arial-BoldMT", size:15)!,
                 .foregroundColor: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)
@@ -61,35 +63,37 @@ class ViewController : UIViewController {
             self.tv.textContainerInset = UIEdgeInsetsMake(30,0,0,0)
             if which >= 4 {fallthrough}
         case 2, 3, 4, 5:
-            let s2 = "Fourscore and seven years ago, our fathers brought forth " +
-                "upon this continent a new nation, conceived in liberty and " +
-                "dedicated to the proposition that all men are created equal."
+            let s2 = """
+                Fourscore and seven years ago, our fathers brought forth \
+                upon this continent a new nation, conceived in liberty and \
+                dedicated to the proposition that all men are created equal.
+                """
             content2 = NSMutableAttributedString(string:s2, attributes: [
                 .font: UIFont(name:"HoeflerText-Black", size:16)!
-            ])
+                ])
             content2.addAttributes([
                 .font: UIFont(name:"HoeflerText-Black", size:24)!,
                 .expansion: 0.3,
                 .kern: -4 // negative kerning bug fixed in iOS 8
                 // but they broke it again in iOS 8.3!
                 // but they fixed it again in iOS 9!
-            ], range:NSMakeRange(0,1))
+                ], range:NSMakeRange(0,1))
             self.lab.attributedText = content2
             self.tv.attributedText = content2
             self.tv.textContainerInset = UIEdgeInsetsMake(30,0,0,0)
             if which > 2 {fallthrough}
         case 3, 4, 5:
             content2.addAttribute(.paragraphStyle,
-                value:lend {
-                    (para:NSMutableParagraphStyle) in
-                    para.headIndent = 10
-                    para.firstLineHeadIndent = 10
-                    para.tailIndent = -10
-                    para.lineBreakMode = .byWordWrapping
-                    para.alignment = .justified
-                    para.lineHeightMultiple = 1.2
-                    para.hyphenationFactor = 1.0
-                }, range:NSMakeRange(0,1))
+                                  value:lend {
+                                    (para:NSMutableParagraphStyle) in
+                                    para.headIndent = 10
+                                    para.firstLineHeadIndent = 10
+                                    para.tailIndent = -10
+                                    para.lineBreakMode = .byWordWrapping
+                                    para.alignment = .justified
+                                    para.lineHeightMultiple = 1.2
+                                    para.hyphenationFactor = 1.0
+            }, range:NSMakeRange(0,1))
             self.lab.attributedText = content2
             self.tv.attributedText = content2
             self.tv.textContainerInset = UIEdgeInsetsMake(20,0,0,0)
@@ -114,17 +118,17 @@ class ViewController : UIViewController {
             // demonstrating efficient cycling through style runs
             
             content.enumerateAttribute(.font,
-                in:NSMakeRange(0,content.length),
-                options:.longestEffectiveRangeNotRequired) {
-                    value, range, stop in
-                    print(range)
-                    let font = value as! UIFont
-                    if font.pointSize == 15 {
-                        content.addAttribute(.font,
-                            value:UIFont(name: "Arial-BoldMT", size:20)!,
-                            range:range)
-                    }
-                }
+                                       in:NSMakeRange(0,content.length),
+                                       options:.longestEffectiveRangeNotRequired) {
+                                        value, range, stop in
+                                        print(range)
+                                        let font = value as! UIFont
+                                        if font.pointSize == 15 {
+                                            content.addAttribute(.font,
+                                                                 value:UIFont(name: "Arial-BoldMT", size:20)!,
+                                                                 range:range)
+                                        }
+            }
             self.lab.attributedText = content
             self.tv.attributedText = content
             self.tv.textContainerInset = UIEdgeInsetsMake(0,0,0,0)

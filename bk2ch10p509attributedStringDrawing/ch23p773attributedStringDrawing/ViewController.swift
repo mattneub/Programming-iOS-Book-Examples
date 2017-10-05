@@ -69,8 +69,10 @@ class ViewController : UIViewController {
         var content : NSMutableAttributedString!
         var content2 : NSMutableAttributedString!
         
-        let s1 = "The Gettysburg Address, as delivered on a certain occasion " +
-        "(namely Thursday, November 19, 1863) by A. Lincoln"
+		let s1 = """
+			The Gettysburg Address, as delivered on a certain occasion \
+			(namely Thursday, November 19, 1863) by A. Lincoln
+			"""
         content = NSMutableAttributedString(string:s1, attributes:[
             NSAttributedStringKey.font: UIFont(name:"Arial-BoldMT", size:15)!,
             NSAttributedStringKey.foregroundColor: UIColor(red:0.251, green:0.000, blue:0.502, alpha:1)]
@@ -93,9 +95,11 @@ class ViewController : UIViewController {
             para.paragraphSpacing = 15
         }, range:NSMakeRange(0,1))
         
-        var s2 = "Fourscore and seven years ago, our fathers brought forth " +
-            "upon this continent a new nation, conceived in liberty and dedicated "
-        s2 = s2 + "to the proposition that all men are created equal."
+		let s2 = """
+			Fourscore and seven years ago, our fathers brought forth \
+			upon this continent a new nation, conceived in liberty and \
+			dedicated to the proposition that all men are created equal.
+			"""
         content2 = NSMutableAttributedString(string:s2, attributes: [
             NSAttributedStringKey.font: UIFont(name:"HoeflerText-Black", size:16)!
             ])
