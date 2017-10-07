@@ -22,6 +22,11 @@ extension CGVector {
     }
 }
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
 
 
 class ProgressingOperation {
@@ -39,54 +44,84 @@ class ProgressingOperation {
             print("done")
         }
     }
-    
+}
+
+class MySpyProgressView : UIProgressView {
+    // spy on setProgress
+    // proves that whatever a UIProgressView is doing,
+    // it is _not_ using KVO on its Progress to set its `progress` explicitly
+    override func setProgress(_ progress: Float, animated: Bool) {
+        super.setProgress(progress, animated:animated)
+        print(progress)
+    }
+    override var progress: Float {
+        get {
+            return super.progress
+        }
+        set {
+            super.progress = newValue
+            print(progress)
+        }
+    }
 }
 
 class ViewController: UIViewController {
     
     @IBOutlet var prog1 : UIProgressView!
     @IBOutlet var prog2 : UIProgressView!
+    @IBOutlet var prog2b: UIProgressView!
     @IBOutlet var prog3 : MyProgressView!
     
     var op1 : ProgressingOperation?
     var op2 : ProgressingOperation?
+    var op2b : ProgressingOperation?
     var op3 : ProgressingOperation?
+    
+    var ops = Set<NSKeyValueObservation>()
     
     @IBAction func doButton (_ sender: Any) {
         self.prog1.progress = 0
         self.prog2.progress = 0
+        self.prog2b.progress = 0
         self.prog3.value = 0
         self.prog3.setNeedsDisplay()
         
-        // architecture 1: progress view's observedProgress is a second pointer to a vended NSProgress
+        // architecture 1: progress view's observedProgress is a second pointer to a vended Progress
         
         self.op1 = ProgressingOperation(units:10)
         self.prog1.observedProgress = self.op1!.progress
         self.op1!.start()
+        delay(2) {
+            print(self.prog1.progress)
+        }
 
-        // architecture 2: progress view's observedProgress is parent of distant NSProgress
+        // architecture 2: progress view's observedProgress is implicit parent of distant Progress
         
         self.prog2.observedProgress = Progress.discreteProgress(totalUnitCount: 10)
         self.prog2.observedProgress?.becomeCurrent(withPendingUnitCount: 10)
         self.op2 = ProgressingOperation(units:10) // automatically becomes child!
         self.prog2.observedProgress?.resignCurrent()
         self.op2!.start()
-
         
-        // architecture 3: explicit KVO on an NSProgress, update progress view manually
+        // architecture 2b: progress view's observed Progress is explicit parent of distant Progress
+        
+        self.prog2b.observedProgress = Progress.discreteProgress(totalUnitCount: 10)
+        self.op2b = ProgressingOperation(units:10)
+        self.prog2b.observedProgress?.addChild(self.op2b!.progress, withPendingUnitCount: 10)
+        self.op2b!.start()
+
+        // architecture 3: explicit KVO on a Progress, update progress view manually
         
         self.op3 = ProgressingOperation(units:10)
-        self.op3!.progress.addObserver(self, forKeyPath: #keyPath(Progress.fractionCompleted), options: [.new], context: nil)
-        self.op3!.start()
-
-    }
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if let _ = object as? Progress {
-            if let frac = change?[.newKey] as? CGFloat {
-                self.prog3.value = frac
+        let op = self.op3!.progress.observe(\.fractionCompleted, options: .new) { prog, ch in
+            if let frac = ch.newValue {
+                self.prog3.value = CGFloat(frac)
                 self.prog3.setNeedsDisplay()
             }
         }
+        self.ops.insert(op)
+        self.op3!.start()
+
     }
     
     var didSetUp = false
@@ -110,19 +145,6 @@ class ViewController: UIViewController {
             con.stroke(r)
             con.strokeEllipse(in: r)
         }.resizableImage(withCapInsets:UIEdgeInsetsMake(4, 4, 4, 4), resizingMode:.stretch)
-
-//        UIGraphicsBeginImageContextWithOptions(CGSize(10,10), true, 0)
-//        let con = UIGraphicsGetCurrentContext()!
-//        con.setFillColor(UIColor.yellow().cgColor)
-//        con.fill(CGRect(0, 0, 10, 10))
-//        let r = con.boundingBoxOfClipPath.insetBy(dx: 1,dy: 1)
-//        con.setLineWidth(2)
-//        con.setStrokeColor(UIColor.black().cgColor)
-//        con.stroke(r)
-//        con.strokeEllipse(in: r)
-//        let im =
-//            UIGraphicsGetImageFromCurrentImageContext()!.resizableImage(withCapInsets:UIEdgeInsetsMake(4, 4, 4, 4), resizingMode:.stretch)
-//        UIGraphicsEndImageContext()
         
         self.prog2.progressImage = im
         

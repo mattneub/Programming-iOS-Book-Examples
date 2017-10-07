@@ -43,32 +43,6 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        /*
-        UIGraphicsBeginImageContextWithOptions(CGSize(9,9), NO, 0);
-        CGContextRef con = UIGraphicsGetCurrentContext()!;
-        CGContextSetFillColorWithColor(con, [UIColor blackColor].cgColor);
-        CGContextMoveToPoint(con, 0, 4.5);
-        CGContextAddLineToPoint(con, 4.5, 9);
-        CGContextAddLineToPoint(con, 9, 4.5);
-        CGContextAddLineToPoint(con, 4.5, 0);
-        CGContextClosePath(con);
-        CGPathRef p = CGContextCopyPath(con);
-        CGContextFillPath(con);
-        UIImage* im = UIGraphicsGetImageFromCurrentImageContext()!;
-        CGContextSetFillColorWithColor(con, [UIColor whiteColor].cgColor);
-        CGContextAddPath(con, p);
-        CGContextFillPath(con);
-        UIImage* im2 = UIGraphicsGetImageFromCurrentImageContext()!;
-        CGPathRelease(p);
-        UIGraphicsEndImageContext();
-        im = [im resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)
-        resizingMode:UIImageResizingModeStretch];
-        im2 = [im2 resizableImageWithCapInsets:UIEdgeInsetsMake(4, 4, 4, 4)
-        resizingMode:UIImageResizingModeStretch];
-        self.prog2.trackImage = im;
-        self.prog2.progressImage = im2;
-        */
-
         self.prog2.backgroundColor = .black
         self.prog2.trackTintColor = .black
         
@@ -83,19 +57,6 @@ class ViewController: UIViewController {
             con.stroke(r)
             con.strokeEllipse(in: r)
         }.resizableImage(withCapInsets:UIEdgeInsetsMake(4, 4, 4, 4), resizingMode:.stretch)
-
-//        UIGraphicsBeginImageContextWithOptions(CGSize(10,10), true, 0)
-//        let con = UIGraphicsGetCurrentContext()!
-//        con.setFillColor(UIColor.yellow().cgColor)
-//        con.fill(CGRect(0, 0, 10, 10))
-//        let r = con.boundingBoxOfClipPath.insetBy(dx: 1,dy: 1)
-//        con.setLineWidth(2)
-//        con.setStrokeColor(UIColor.black().cgColor)
-//        con.stroke(r)
-//        con.strokeEllipse(in: r)
-//        let im =
-//            UIGraphicsGetImageFromCurrentImageContext()!.resizableImage(withCapInsets:UIEdgeInsetsMake(4, 4, 4, 4), resizingMode:.stretch)
-//        UIGraphicsEndImageContext()
         
         self.prog2.progressImage = im
         
@@ -110,7 +71,7 @@ class ViewController: UIViewController {
 
     }
     
-    func inc(_ t:Timer) {
+    @objc func inc(_ t:Timer) {
         var val = Float(self.prog3.value)
         val += 0.1
         self.prog1.setProgress(val, animated:true) // bug fixed in iOS 7.1

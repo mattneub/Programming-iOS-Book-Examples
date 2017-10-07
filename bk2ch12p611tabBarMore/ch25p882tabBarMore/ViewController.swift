@@ -27,14 +27,15 @@ class ViewController: UIViewController {
     var lab : UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         let lab = UILabel()
         lab.text = ""
         lab.frame.origin = CGPoint(100,100)
         self.view.addSubview(lab)
         self.lab = lab
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.lab.text = self.tabBarItem.title
         self.lab.sizeToFit()
     }

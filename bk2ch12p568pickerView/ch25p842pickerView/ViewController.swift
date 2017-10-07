@@ -1,23 +1,6 @@
 
 import UIKit
 
-class MyPickerView : UIPickerView {
-    
-    override var intrinsicContentSize : CGSize {
-        return super.intrinsicContentSize
-        
-        // no need for trickery or testing; in iOS 9 you can just set the height constraint
-        print("intrinsic")
-        var sz = super.intrinsicContentSize
-        let h : CGFloat = 140
-        print("trying to set to \(h)")
-        sz.height = h // but it only goes down to 162, maximum 180
-        // sz.width = 250 // just proving this actually does something
-        return sz
-    }
-    
-}
-
 class ViewController: UIViewController {
     @IBOutlet var picker : UIPickerView!
     var states : [String]!

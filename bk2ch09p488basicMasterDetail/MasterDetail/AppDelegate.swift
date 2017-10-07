@@ -32,10 +32,15 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 //        if tc.horizontalSizeClass == .Regular {
 //            self.didExpand = true
 //        }
+        
+        // this line compiles but we'll crash at launch
+        // UIBarButtonItem.appearance().action = #selector(configureAppearance)
+        
+        
         return true
     }
     
-    func configureAppearance() {
+    @objc func configureAppearance() {
         return; // comment out to see bug connected with nav bar background image
         // the bug is that the safe area stops working correctly
         // okay, fixed the bug! the secret is to mess with the initializers of the view controllers, q.v.

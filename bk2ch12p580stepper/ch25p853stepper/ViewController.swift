@@ -50,6 +50,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // return;
+        
         self.stepper.tintColor = UIColor.yellow
         
         let imdis = UIImage(named: "pic2.png")!

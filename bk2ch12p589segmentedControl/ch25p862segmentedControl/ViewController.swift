@@ -81,9 +81,23 @@ class ViewController: UIViewController {
                 UIImage(named:"smiley")!.withRenderingMode(.alwaysOriginal),
                 "Two"
             ])
+        // yay, keys work
+        seg.setTitleTextAttributes([
+            NSAttributedStringKey.foregroundColor: UIColor.black
+        ], for: .normal)
         seg.frame.origin = CGPoint(40,100)
         seg.frame.size.width = 200
+        //seg.setWidth(0, forSegmentAt: 0)
+        seg.apportionsSegmentWidthsByContent = true
+        seg.sizeToFit()
+        seg.tintColor = .red
         self.view.addSubview(seg)
-
+        return;
+        seg.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            seg.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 300),
+            seg.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
+            seg.heightAnchor.constraint(equalToConstant: UIImage(named:"smiley")!.size.height)
+            ])
     }
 }

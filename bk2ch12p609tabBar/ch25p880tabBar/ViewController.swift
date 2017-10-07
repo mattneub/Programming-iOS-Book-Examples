@@ -12,10 +12,25 @@ class ViewController: UIViewController {
     }()
 
     override func viewDidLoad() {
+        let tabbar = UITabBar()
+        self.view.addSubview(tabbar)
+        self.tabbar = tabbar
+        self.tabbar.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.tabbar.bottomAnchor.constraint(equalTo:
+                self.view.safeAreaLayoutGuide.bottomAnchor),
+            self.tabbar.leadingAnchor.constraint(equalTo:
+                self.view.safeAreaLayoutGuide.leadingAnchor),
+            self.tabbar.trailingAnchor.constraint(equalTo:
+                self.view.safeAreaLayoutGuide.trailingAnchor),
+            ])
+        
+        
         super.viewDidLoad()
         self.tabbar.items = Array(self.items[0..<4]) + [UITabBarItem(tabBarSystemItem: .more, tag: 0)]
         self.tabbar.selectedItem = self.tabbar.items![0]
         self.tabbar.delegate = self
+        
     }
 }
 

@@ -23,7 +23,17 @@ extension CGVector {
     }
 }
 
-
+// proving that you can add your own appearance-compliant properties
+class MyView: UIView {
+    @objc dynamic var bc : UIColor? {
+        set {
+            self.backgroundColor = newValue
+        }
+        get {
+            return self.backgroundColor
+        }
+    }
+}
 
 @UIApplicationMain
 class AppDelegate : UIResponder, UIApplicationDelegate {
@@ -66,7 +76,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         
         UITabBar.appearance().selectionIndicatorImage = im
         
-        
+        MyView.appearance().bc = UIColor.green
         
         return true
     }

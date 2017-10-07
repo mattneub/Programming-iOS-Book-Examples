@@ -18,6 +18,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         for t in arr {
             let vc = ViewController()
             vc.tabBarItem.title = t
+            vc.tabBarItem.image = UIImage(named:"trashlittle")
             vcs.append(vc)
         }
         self.tabBarController.viewControllers = vcs
@@ -36,6 +37,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             list.navigationItem.backBarButtonItem = b // so user can navigation back
             more.navigationBar.barTintColor = .red // ooooh
             more.navigationBar.tintColor = .white // oooh oooh
+            more.navigationBar.isTranslucent = true
             
             // break doneCustomizing
             
@@ -43,6 +45,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
             let mds = MyDataSource(originalDataSource: tv.dataSource!)
             self.myDataSource = mds
             tv.dataSource = mds
+            
+            tv.contentInsetAdjustmentBehavior = .always
+            
             
         }
         

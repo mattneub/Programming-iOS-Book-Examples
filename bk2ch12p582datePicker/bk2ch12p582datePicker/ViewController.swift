@@ -4,14 +4,15 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var dp: UIDatePicker!
 
-    
-    let which = 2
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
+        var which : Int { return 1 }
+
         switch which {
         case 1:
             dp.datePickerMode = .date

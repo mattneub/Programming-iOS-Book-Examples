@@ -70,8 +70,10 @@ class ViewController: UIViewController {
         }
         
         // try false - effective only here
-        self.navbar.isTranslucent = true
-        self.toolbar.isTranslucent = true
+        // hmm, unable to figure out what that was about
+        return;
+        self.navbar.isTranslucent = false
+        self.toolbar.isTranslucent = false
 
     }
 }

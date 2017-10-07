@@ -8,15 +8,15 @@ class MyProgressView: UIView {
     override func draw(_ rect: CGRect) {
         let c = UIGraphicsGetCurrentContext()!
         UIColor.white.set()
-        let ins : CGFloat = 2.0
+        let ins : CGFloat = 2
         let r = self.bounds.insetBy(dx: ins, dy: ins)
-        let radius : CGFloat = r.size.height / 2.0
-        let cgpi = CGFloat.pi
+        let radius : CGFloat = r.size.height / 2
+        let d90 = CGFloat.pi/2
         let path = CGMutablePath()
         path.move(to:CGPoint(r.maxX - radius, ins))
         path.addArc(center:CGPoint(
-                    radius+ins, radius+ins), radius: radius, startAngle: -cgpi/2.0, endAngle: cgpi/2.0, clockwise: true)
-        path.addArc(center:CGPoint(r.maxX - radius, radius+ins), radius: radius, startAngle: cgpi/2.0, endAngle: -cgpi/2.0, clockwise: true)
+                    radius+ins, radius+ins), radius: radius, startAngle: -d90, endAngle: d90, clockwise: true)
+        path.addArc(center:CGPoint(r.maxX - radius, radius+ins), radius: radius, startAngle: d90, endAngle: -d90, clockwise: true)
         path.closeSubpath()
         c.addPath(path)
         c.setLineWidth(2)
