@@ -3,7 +3,7 @@
 import UIKit
 
 class MyDataSource: NSObject, UITableViewDataSource {
-    var orig : UITableViewDataSource
+    unowned let orig : UITableViewDataSource
 
     init(originalDataSource:UITableViewDataSource) {
         self.orig = originalDataSource

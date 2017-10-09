@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        self.prog2.backgroundColor = .black
+        // self.prog2.backgroundColor = .black
         self.prog2.trackTintColor = .black
         
         let r = UIGraphicsImageRenderer(size:CGSize(10,10))
