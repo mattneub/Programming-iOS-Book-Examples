@@ -30,6 +30,8 @@
 			<real>0.25</real>
 			<key>UNNotificationExtensionDefaultContentHidden</key>
 			<true/>
+			<key>UNNotificationExtensionOverridesDefaultTitle</key>
+			<false/>
 		</dict>
 		<key>NSExtensionMainStoryboard</key>
 		<string>MainInterface</string>

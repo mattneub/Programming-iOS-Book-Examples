@@ -20,7 +20,7 @@ class ViewController: UIViewController {
 
         avc.completionWithItemsHandler = {
             (type: UIActivityType?, ok: Bool, items: [Any]?, err:Error?) -> Void in
-            print("completed \(type) \(ok) \(items) \(err)")
+            print("completed \(type as Any) \(ok) \(items as Any) \(err as Any)")
         }
         avc.excludedActivityTypes = [
             .postToFacebook,
@@ -59,9 +59,9 @@ extension ViewController : UIActivityItemSource {
     }
     func activityViewController(
         _ activityViewController: UIActivityViewController,
-        itemForActivityType activityType: UIActivityType)
+        itemForActivityType activityType: UIActivityType?)
         -> Any? {
-            print(activityType)
+            print(activityType as Any)
             return "Coolness"
     }
     func activityViewController(

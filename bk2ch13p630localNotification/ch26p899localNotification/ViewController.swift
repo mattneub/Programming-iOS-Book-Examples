@@ -225,6 +225,8 @@ extension MyUserNotificationHelper : UNUserNotificationCenterDelegate {
 
 class ViewController: UIViewController {
     
+    override var prefersStatusBarHidden: Bool { return true }
+    
 
     @IBAction func doButton(_ sender: Any) {
         let del = UIApplication.shared.delegate as! AppDelegate

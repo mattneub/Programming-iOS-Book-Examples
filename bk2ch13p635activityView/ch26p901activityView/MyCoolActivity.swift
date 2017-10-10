@@ -76,7 +76,7 @@ class MyCoolActivity : UIActivity {
     }
     
     override func perform() {
-        print("cool performing \(self.items)")
+        print("cool performing \(self.items as Any)")
         self.activityDidFinish(true)
     }
     

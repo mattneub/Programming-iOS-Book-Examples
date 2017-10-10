@@ -11,6 +11,12 @@ class ShareViewController: SLComposeServiceViewController, SizeDelegate {
             self.config?.value = self.selectedText
         }
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.navigationController?.navigationBar.topItem?
+            .rightBarButtonItem?.title = "Save"
+    }
 
 
     override func isContentValid() -> Bool {
@@ -24,7 +30,9 @@ class ShareViewController: SLComposeServiceViewController, SizeDelegate {
         
         self.extensionContext?.completeRequest(returningItems:[])
         
-        _ = s
+        if let s = s {
+            NSLog("post was: %@", s as NSObject)
+        }
     }
 
     override func configurationItems() -> [Any]! {

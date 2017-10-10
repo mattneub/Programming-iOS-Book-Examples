@@ -32,6 +32,7 @@ extension CGVector {
 // UNNotificationExtensionInitialContentSizeRatio
 
 // optional: UNNotificationExtensionDefaultContentHidden
+// optional: UNNotificationExtensionOverridesDefaultTitle
 
 class NotificationViewController: UIViewController, UNNotificationContentExtension {
 
@@ -55,6 +56,7 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
                 att.url.stopAccessingSecurityScopedResource()
             }
         }
+        self.title = "Time for a cup of coffee!" // works if overrides default title is YES
         self.view.setNeedsLayout() // seems to help things along
     }
 }

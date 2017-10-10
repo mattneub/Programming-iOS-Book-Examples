@@ -53,8 +53,8 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
     func process(item:String?) {
         var result : [NSExtensionItem]? = nil
         if let item = item,
-            let abbrev = self.state(for:item) {
-                result = self.stuffThatEnvelope(abbrev)
+            let state = self.state(for:item) {
+                result = self.stuffThatEnvelope(state)
         }
         self.extensionContext?.completeRequest(returningItems: result)
         self.extensionContext = nil

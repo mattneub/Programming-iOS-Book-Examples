@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         // type is (UIActivityType?, Bool, [Any]?, Error?) -> Swift.Void
         avc.completionWithItemsHandler = {
             type, ok, items, err in
-            print("completed \(type) \(ok) \(items) \(err)")
+            print("completed \(type as Any) \(ok) \(items as Any) \(err as Any)")
         }
         avc.excludedActivityTypes = [
             .postToFacebook,
@@ -31,6 +31,7 @@ class ViewController: UIViewController {
             .postToTencentWeibo,
             .airDrop,
             .openInIBooks,
+            .markupAsPDF,
         ]
         // avc.excludedActivityTypes = nil
         self.present(avc, animated:true)
