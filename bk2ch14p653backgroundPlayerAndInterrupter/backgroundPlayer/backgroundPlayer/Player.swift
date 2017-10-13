@@ -18,6 +18,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
         super.init()
         // interruption notification
         // note (irrelevant for bk 2, but useful for bk 1) how to prevent retain cycle
+        // return; // uncomment to prove that resumption would not have happened automatically
         self.observer = NotificationCenter.default.addObserver(forName:
             .AVAudioSessionInterruption, object: nil, queue: nil) {
                 [weak self] n in
@@ -33,7 +34,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
                         print("should resume")
                         self?.player.prepareToPlay()
                         let ok = self?.player.play()
-                        print("bp tried to resume play: did I? \(ok)")
+                        print("bp tried to resume play: did I? \(ok as Any)")
                     } else {
                         print("not should resume")
                     }
@@ -72,8 +73,6 @@ class Player : NSObject, AVAudioPlayerDelegate {
         try? sess.setActive(true)
         delegate?.soundFinished(self)
     }
-    
-    // to hear about interruptions, in iOS 8, use the session notifications
     
     func stop () {
         self.player?.pause()

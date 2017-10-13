@@ -5,9 +5,7 @@ import AudioToolbox
 
 
 class ViewController: UIViewController {
-    
-    // test on device (doesn't work in simulator)
-    
+        
     // cool new iOS 9 way: pass the sound and the completion handler all in one call
 
     @IBAction func doButton (_ sender: Any!) {

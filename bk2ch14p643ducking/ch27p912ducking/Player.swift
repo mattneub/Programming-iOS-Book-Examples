@@ -10,7 +10,7 @@ protocol PlayerDelegate : class {
 
 class Player : NSObject, AVAudioPlayerDelegate {
     var player : AVAudioPlayer!
-    var forever = false
+    var looping = false
     weak var delegate : PlayerDelegate?
 
     func playFile(atPath path:String) {
@@ -22,7 +22,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
         // error-checking omitted
         self.player.prepareToPlay()
         self.player.delegate = self
-        if self.forever {
+        if self.looping {
             self.player.numberOfLoops = -1
         }
         
@@ -31,12 +31,6 @@ class Player : NSObject, AVAudioPlayerDelegate {
         
         self.player.play()
         
-        // cute little demo
-        let mpic = MPNowPlayingInfoCenter.default()
-        mpic.nowPlayingInfo = [
-            MPMediaItemPropertyTitle:"This Is a Test",
-            MPMediaItemPropertyArtist:"Matt Neuburg"
-        ]
     }
     
     // delegate method
@@ -46,7 +40,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
     }
         
     func stop () {
-        self.player?.pause()
+        self.player?.stop()
     }
 
     deinit {

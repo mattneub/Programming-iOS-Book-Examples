@@ -11,7 +11,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // new in iOS 9, can check beforehand
         let ok = AVAudioSession.sharedInstance().availableCategories.contains(AVAudioSessionCategoryAmbient)
         print(ok)
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+        let cat = AVAudioSession.sharedInstance().category
+        print(cat)
+        // default is solo ambient
         
         // deliberate leak here
         
@@ -33,6 +35,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
                     print("interruption began:\n\(n.userInfo!)")
                 } else {
                     print("interruption ended:\n\(n.userInfo!)")
+                    try? AVAudioSession.sharedInstance().setActive(true)
                     guard let opt = n.userInfo![AVAudioSessionInterruptionOptionKey] as? UInt else {return}
                     if AVAudioSessionInterruptionOptions(rawValue:opt).contains(.shouldResume) {
                         print("should resume")
@@ -61,7 +64,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         print("app became active")
-        try? AVAudioSession.sharedInstance().setActive(true)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -70,5 +72,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         print("app did enter background")
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        print("app will enter foreground")
     }
 }

@@ -8,13 +8,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
         
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-        
         return true
     }
     
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        try? AVAudioSession.sharedInstance().setActive(true)
-    }
     
 }

@@ -17,14 +17,14 @@ class ViewController: UIViewController {
         scc.changePlaybackPositionCommand.isEnabled = false
     }
     
-    func doPlayPause(_ event:MPRemoteCommandEvent) {
+    @objc func doPlayPause(_ event:MPRemoteCommandEvent) {
         print("playpause")
-        let p = self.player.player!
+        guard let p = self.player.player else { return }
         if p.isPlaying { self.doPause(event) } else { self.doPlay(event) }
     }
-    func doPlay(_ event:MPRemoteCommandEvent) {
+    @objc func doPlay(_ event:MPRemoteCommandEvent) {
         print("play")
-        let p = self.player.player!
+        guard let p = self.player.player else { return }
         p.play()
         let mpic = MPNowPlayingInfoCenter.default()
         if var d = mpic.nowPlayingInfo {
@@ -32,9 +32,9 @@ class ViewController: UIViewController {
             mpic.nowPlayingInfo = d
         }
     }
-    func doPause(_ event:MPRemoteCommandEvent) {
+    @objc func doPause(_ event:MPRemoteCommandEvent) {
         print("pause")
-        let p = self.player.player!
+        guard let p = self.player.player else { return }
         p.pause()
         let mpic = MPNowPlayingInfoCenter.default()
         if var d = mpic.nowPlayingInfo {

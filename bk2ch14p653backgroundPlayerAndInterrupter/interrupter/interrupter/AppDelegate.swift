@@ -8,18 +8,18 @@ import AVFoundation
 class AppDelegate : UIResponder, UIApplicationDelegate {
     var window : UIWindow?
     
-    // standard behavior: category is ambient, activate on app activate and after interruption ends
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
         
         try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-        
+        try? AVAudioSession.sharedInstance().setActive(true)
+
         NotificationCenter.default.addObserver(forName:
             .AVAudioSessionInterruption, object: nil, queue: nil) {
                 n in
                 let why = n.userInfo![AVAudioSessionInterruptionTypeKey] as! UInt
                 let type = AVAudioSessionInterruptionType(rawValue: why)!
                 if type == .ended {
+                    print("interruption ended, reactivating audio session")
                     try? AVAudioSession.sharedInstance().setActive(true)
                 }
         }
@@ -30,7 +30,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         print("interrupter in \(#function)")
-        try? AVAudioSession.sharedInstance().setActive(true)
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

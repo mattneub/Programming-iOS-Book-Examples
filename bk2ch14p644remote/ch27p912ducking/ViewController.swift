@@ -14,6 +14,7 @@ class ViewController: UIViewController {
             // must be Playback or SoloAmbient
             // for background audio to work, it must be Playback
             try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try? AVAudioSession.sharedInstance().setActive(true)
             self.player.forever = true
         }
         self.player.playFile(atPath:path)
@@ -61,22 +62,22 @@ class ViewController: UIViewController {
     
     // these are used only in case 0
     
-    func doPlayPause(_ event:MPRemoteCommandEvent) {
+    @objc func doPlayPause(_ event:MPRemoteCommandEvent) {
         print("playpause")
         let p = self.player.player!
         if p.isPlaying { p.pause() } else { p.play() }
     }
-    func doPlay(_ event:MPRemoteCommandEvent) {
+    @objc func doPlay(_ event:MPRemoteCommandEvent) {
         print("play")
         let p = self.player.player!
         p.play()
     }
-    func doPause(_ event:MPRemoteCommandEvent) {
+    @objc func doPause(_ event:MPRemoteCommandEvent) {
         print("pause")
         let p = self.player.player!
         p.pause()
     }
-    func doLike(_ event:MPRemoteCommandEvent) {
+    @objc func doLike(_ event:MPRemoteCommandEvent) {
         print("like")
     }
 
@@ -85,6 +86,7 @@ class ViewController: UIViewController {
     
     deinit {
         print("deinit")
+        // return; // uncomment to test the crash
         let scc = MPRemoteCommandCenter.shared()
         switch which {
         case 0:

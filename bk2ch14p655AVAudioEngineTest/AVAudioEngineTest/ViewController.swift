@@ -3,6 +3,11 @@
 import UIKit
 import AVFoundation
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
 // warning: turn off your "All Exceptions" breakpoint
 
 class ViewController: UIViewController {
@@ -28,7 +33,16 @@ class ViewController: UIViewController {
         self.engine.attach(player)
         self.engine.connect(player, to: mixer, format: f.processingFormat)
         // schedule the file on the player
-        player.scheduleFile(f, at:nil)
+        player.scheduleFile(f, at: nil) {
+            print("stopping")
+            // delay because otherwise we can get exclusive access issues
+            delay(0.1) {
+                if self.engine.isRunning {
+                    print("engine was running, really stopping")
+                    self.engine.stop()
+                }
+            }
+        }
         // start the self.engine
         self.engine.prepare()
         try! self.engine.start()
@@ -44,14 +58,23 @@ class ViewController: UIViewController {
         let url2 = Bundle.main.url(forResource:"Hooded", withExtension: "mp3")!
         let f2 = try! AVAudioFile(forReading: url2)
         let buffer = AVAudioPCMBuffer(pcmFormat: f2.processingFormat, frameCapacity: UInt32(f2.length /* /3 */)) // only need 1/3 of the original recording
-        try! f2.read(into:buffer)
+        try! f2.read(into:buffer!)
         
         let player2 = AVAudioPlayerNode()
         self.engine.attach(player2)
         let mixer = self.engine.mainMixerNode
         self.engine.connect(player2, to: mixer, format: f2.processingFormat)
 
-        player2.scheduleBuffer(buffer)
+        player2.scheduleBuffer(buffer!) {
+            print("stopping")
+            // delay because otherwise we can get exclusive access issues
+            delay(0.1) {
+                if self.engine.isRunning {
+                    print("engine was running, really stopping")
+                    self.engine.stop()
+                }
+            }
+        }
         
         self.engine.prepare()
         
@@ -71,7 +94,16 @@ class ViewController: UIViewController {
         let mixer = self.engine.mainMixerNode
         self.engine.attach(player)
         self.engine.connect(player, to: mixer, format: f.processingFormat)
-        player.scheduleFile(f, at: nil) {print("done")}
+        player.scheduleFile(f, at: nil) {
+            print("stopping")
+            // delay because otherwise we can get exclusive access issues
+            delay(0.1) {
+                if self.engine.isRunning {
+                    print("engine was running, really stopping")
+                    self.engine.stop()
+                }
+            }
+        }
         self.engine.prepare()
         try! self.engine.start()
         player.play()
@@ -79,11 +111,11 @@ class ViewController: UIViewController {
         let url2 = Bundle.main.url(forResource:"Hooded", withExtension: "mp3")!
         let f2 = try! AVAudioFile(forReading: url2)
         let buffer = AVAudioPCMBuffer(pcmFormat: f2.processingFormat, frameCapacity: UInt32(f2.length/3))
-        try! f2.read(into:buffer)
+        try! f2.read(into:buffer!)
         let player2 = AVAudioPlayerNode()
         self.engine.attach(player2)
         self.engine.connect(player2, to: mixer, format: f2.processingFormat)
-        player2.scheduleBuffer(buffer, at: nil, options: .loops)
+        player2.scheduleBuffer(buffer!, at: nil, options: .loops)
         // mix down a little
         player2.volume = 0.5
         player2.play()
@@ -116,7 +148,16 @@ class ViewController: UIViewController {
         // patch last node into self.engine mixer and start playing first sound
         let mixer = self.engine.mainMixerNode
         self.engine.connect(effect2, to: mixer, format: f.processingFormat)
-        player.scheduleFile(f, at: nil)
+        player.scheduleFile(f, at: nil) {
+            print("stopping")
+            // delay because otherwise we can get exclusive access issues
+            delay(0.1) {
+                if self.engine.isRunning {
+                    print("engine was running, really stopping")
+                    self.engine.stop()
+                }
+            }
+        }
         self.engine.prepare()
         try! self.engine.start()
         player.play()
@@ -125,12 +166,12 @@ class ViewController: UIViewController {
         let url2 = Bundle.main.url(forResource:"Hooded", withExtension: "mp3")!
         let f2 = try! AVAudioFile(forReading: url2)
         let buffer = AVAudioPCMBuffer(pcmFormat: f2.processingFormat, frameCapacity: UInt32(f2.length /* /3 */))
-        try! f2.read(into:buffer)
+        try! f2.read(into:buffer!)
         let player2 = AVAudioPlayerNode()
         self.engine.attach(player2)
         self.engine.connect(player2, to: mixer, format: f2.processingFormat)
-        player2.scheduleBuffer(buffer, at: nil, options: .loops)
-        
+        player2.scheduleBuffer(buffer!, at: nil, options: .loops)
+
         // mix down a little, start playing second sound
         player.pan = -0.5
         player2.volume = 0.5
@@ -175,7 +216,16 @@ class ViewController: UIViewController {
         // patch both effect nodes into the mixer
         self.engine.connect(effect, to: mixer, format: f.processingFormat)
         self.engine.connect(effect2, to: mixer, format: f.processingFormat)
-        player.scheduleFile(f, at: nil)
+        player.scheduleFile(f, at: nil) {
+            print("stopping")
+            // delay because otherwise we can get exclusive access issues
+            delay(0.1) {
+                if self.engine.isRunning {
+                    print("engine was running, really stopping")
+                    self.engine.stop()
+                }
+            }
+        }
         self.engine.prepare()
         try! self.engine.start()
         player.play()
@@ -185,77 +235,65 @@ class ViewController: UIViewController {
 
     
     @IBAction func doButton5(_ sender: Any) {
+        // simple minimal file-writing example
+        // not difficult, but you have to form a valid file format or you'll get an error up front
+        // Ooooh news flash! in iOS 11, you can process directly to a file ("offline" rendering)
+        
         self.engine.stop()
         self.engine = AVAudioEngine()
         
-        // simple minimal file-writing example
-        // not difficult, but you have to form a valid file format or you'll get an error up front
-        // also, it's a little disappointing to find that you must _play_ the sound...
-        // you can't just process it directly into a file, which is what I was hoping to do
+        let url = Bundle.main.url(forResource:"Hooded", withExtension: "mp3")!
+        let f = try! AVAudioFile(forReading: url)
         
-        let url2 = Bundle.main.url(forResource:"Hooded", withExtension: "mp3")!
-        let f2 = try! AVAudioFile(forReading: url2)
-        let buffer = AVAudioPCMBuffer(pcmFormat: f2.processingFormat, frameCapacity: UInt32(f2.length /* /3 */)) // only need 1/3 of the original recording
-        try! f2.read(into:buffer)
-        
-        let player2 = AVAudioPlayerNode()
-        self.engine.attach(player2)
+        let player = AVAudioPlayerNode()
+        self.engine.attach(player)
         
         let effect = AVAudioUnitReverb()
         effect.loadFactoryPreset(.cathedral)
         effect.wetDryMix = 40
         self.engine.attach(effect)
         
-        self.engine.connect(player2, to: effect, format: f2.processingFormat)
+        self.engine.connect(player, to: effect, format: f.processingFormat)
         let mixer = self.engine.mainMixerNode
-        self.engine.connect(effect, to: mixer, format: f2.processingFormat)
+        self.engine.connect(effect, to: mixer, format: f.processingFormat)
 
-        // create the output file
-
+        // don't do this until connections are formed?!
+        player.scheduleFile(f, at: nil)
+        
         let fm = FileManager.default
         let doc = try! fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let outurl = doc.appendingPathComponent("myfile.aac", isDirectory:false)
-        
         let outfile = try! AVAudioFile(forWriting: outurl, settings: [
             AVFormatIDKey : kAudioFormatMPEG4AAC,
             AVNumberOfChannelsKey : 1,
             AVSampleRateKey : 22050,
         ])
-        
-        // we'll know when the input buffer is emptied, but the sound will still be going on
-        // because of the reverb; so to detect when the sound has faded away,
-        // we watch for the last output buffer value to become very small
-        
-        // install a tap on the reverb effect node
-        var done = false // flag: don't stop until input buffer is empty!
-        effect.installTap(onBus:0, bufferSize: 4096, format: outfile.processingFormat) {
-            buffer, time in
-            let dataptrptr = buffer.floatChannelData!
-            let dataptr = dataptrptr.pointee
-            let datum = dataptr[Int(buffer.frameLength) - 1]
-            // stop when input is empty and sound is very quiet
-            if done && abs(datum) < 0.000001 {
-                print("stopping")
-                player2.stop()
-                self.engine.stop()
-                self.engine.reset()
-                // let's prove we recorded it!
-                self.playSound(outurl)
-                return
-            }
-            do {
-                try outfile.write(from:buffer)
-            } catch {
-                print(error)
-            }
-        }
-        player2.scheduleBuffer(buffer) {
-            done = true
-        }
+
+        let sz : UInt32 = 4096
+        try! self.engine.enableManualRenderingMode(.offline, format: f.processingFormat, maximumFrameCount: sz)
+        let outbuf = AVAudioPCMBuffer(pcmFormat: f.processingFormat, frameCapacity: sz)!
 
         self.engine.prepare()
         try! self.engine.start()
-        player2.play()
+        player.play()
+        
+        // nothing happens: we have to "pull" the buffer by looping
+        // arbitrarily append two seconds of processing time to allow reverb to fade
+        let sec = Int64(f.processingFormat.sampleRate)
+        var rest : Int64 { return sec*2 + f.length - self.engine.manualRenderingSampleTime }
+        while rest > 0 {
+            let ct = min(outbuf.frameCapacity, UInt32(rest))
+            print(ct)
+            let stat = try! self.engine.renderOffline(ct, to: outbuf)
+            if stat == .success {
+                print("writing")
+                try! outfile.write(from: outbuf)
+            }
+        }
+
+        player.stop()
+        engine.stop()
+
     }
 
     

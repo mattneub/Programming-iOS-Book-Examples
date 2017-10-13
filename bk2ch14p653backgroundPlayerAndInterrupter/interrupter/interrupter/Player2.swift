@@ -42,9 +42,7 @@ class Player : NSObject, AVAudioPlayerDelegate {
         try? sess.setActive(true)
         delegate?.soundFinished(self)
     }
-    
-    // to hear about interruptions, in iOS 8, use the session notifications
-    
+        
     func stop () {
         self.player?.pause()
     }

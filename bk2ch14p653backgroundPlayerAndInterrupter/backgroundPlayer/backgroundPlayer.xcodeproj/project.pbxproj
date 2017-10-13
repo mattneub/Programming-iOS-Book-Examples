@@ -11,6 +11,7 @@
 		3280FA671997EDD500EA8B8B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA661997EDD500EA8B8B /* Player.swift */; };
 		3280FA691998095100EA8B8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA681998095100EA8B8B /* ViewController.swift */; };
 		3280FA6B19980B5700EA8B8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA6A19980B5700EA8B8B /* AppDelegate.swift */; };
+		81FC4D0C1F90FDFE00262535 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81FC4D0B1F90FDFE00262535 /* Images.xcassets */; };
 		A4196FFB14D36B9700D827A7 /* aboutTiagol.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */; };
 		C9A8A9131823E65600E9D48D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A8A9121823E65600E9D48D /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -20,6 +21,7 @@
 		3280FA661997EDD500EA8B8B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		3280FA681998095100EA8B8B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3280FA6A19980B5700EA8B8B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		81FC4D0B1F90FDFE00262535 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A4196FCD14D366D900D827A7 /* backgroundPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = backgroundPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4196FD914D366D900D827A7 /* backgroundPlayer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "backgroundPlayer-Info.plist"; sourceTree = "<group>"; };
 		A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = aboutTiagol.m4a; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				A4196FFA14D36B9700D827A7 /* aboutTiagol.m4a */,
 				A4196FD914D366D900D827A7 /* backgroundPlayer-Info.plist */,
 				3244D72D1BB6225400E9CE06 /* LaunchScreen.storyboard */,
+				81FC4D0B1F90FDFE00262535 /* Images.xcassets */,
 			);
 			path = backgroundPlayer;
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3244D72E1BB6225400E9CE06 /* LaunchScreen.storyboard in Resources */,
+				81FC4D0C1F90FDFE00262535 /* Images.xcassets in Resources */,
 				A4196FFB14D36B9700D827A7 /* aboutTiagol.m4a in Resources */,
 				C9A8A9131823E65600E9D48D /* Main.storyboard in Resources */,
 			);
@@ -197,6 +201,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -206,7 +211,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -216,6 +221,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = W3LHX5RGV2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -224,7 +230,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

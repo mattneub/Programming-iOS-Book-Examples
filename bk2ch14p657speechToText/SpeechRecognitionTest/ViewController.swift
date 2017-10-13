@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         let sess = AVAudioSession.sharedInstance()
         let status = sess.recordPermission()
         switch status { // ??? why is this an option set? I've filed a bug
-        case [.undetermined]:
+        case .undetermined:
             sess.requestRecordPermission {ok in
                 if ok {
 					DispatchQueue.main.async {
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
 					}
                 }
             }
-        case [.granted]:
+        case .granted:
             f?()
         default:
             print("no microphone")
@@ -103,7 +103,7 @@ class ViewController: UIViewController {
             else {print("no recognizer"); return}
         print("rec isAvailable says: \(rec.isAvailable)")
         // tap into microphone thru audio engine!
-        let input = self.engine.inputNode!
+        let input = self.engine.inputNode
         input.installTap(onBus: 0, bufferSize: 4096, format: input.outputFormat(forBus: 0)) {
             buffer, time in
             self.req.append(buffer)
@@ -129,7 +129,7 @@ class ViewController: UIViewController {
     // this is why req is a property: we need a way to stop it
     @IBAction func endLive(_ sender: Any) {
         self.engine.stop()
-        self.engine.inputNode!.removeTap(onBus: 0) // otherwise cannot start again
+        self.engine.inputNode.removeTap(onBus: 0) // otherwise cannot start again
         self.req.endAudio()
     }
 }

@@ -11,6 +11,7 @@
 		3280FA5E1997C57900EA8B8B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA5D1997C57900EA8B8B /* Player.swift */; };
 		3280FA601997C97700EA8B8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA5F1997C97700EA8B8B /* ViewController.swift */; };
 		3280FA621997D07D00EA8B8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3280FA611997D07D00EA8B8B /* AppDelegate.swift */; };
+		81FC4D0A1F90F63700262535 /* test.flac in Resources */ = {isa = PBXBuildFile; fileRef = 81FC4D091F90F63700262535 /* test.flac */; };
 		C9592EC01823107000CE45EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9592EBE1823107000CE45EA /* Main.storyboard */; };
 		C9592EC51823107000CE45EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9592EC41823107000CE45EA /* Assets.xcassets */; };
 		C9592EE51823110800CE45EA /* test.aif in Resources */ = {isa = PBXBuildFile; fileRef = C9592EE41823110800CE45EA /* test.aif */; };
@@ -21,6 +22,7 @@
 		3280FA5D1997C57900EA8B8B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		3280FA5F1997C97700EA8B8B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3280FA611997D07D00EA8B8B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		81FC4D091F90F63700262535 /* test.flac */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.flac; sourceTree = "<group>"; };
 		C9592EA91823107000CE45EA /* ch27p912ducking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch27p912ducking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9592EB41823107000CE45EA /* ch27p912ducking-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch27p912ducking-Info.plist"; sourceTree = "<group>"; };
 		C9592EBF1823107000CE45EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				3280FA5F1997C97700EA8B8B /* ViewController.swift */,
 				3280FA5D1997C57900EA8B8B /* Player.swift */,
 				C9592EE41823110800CE45EA /* test.aif */,
+				81FC4D091F90F63700262535 /* test.flac */,
 				C9592EC41823107000CE45EA /* Assets.xcassets */,
 				3241C22C1BB5C6F300D09188 /* LaunchScreen.storyboard */,
 				C9592EB41823107000CE45EA /* ch27p912ducking-Info.plist */,
@@ -105,7 +108,7 @@
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -134,6 +137,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81FC4D0A1F90F63700262535 /* test.flac in Resources */,
 				C9592EC51823107000CE45EA /* Assets.xcassets in Resources */,
 				3241C22D1BB5C6F300D09188 /* LaunchScreen.storyboard in Resources */,
 				C9592EE51823110800CE45EA /* test.aif in Resources */,
@@ -254,7 +258,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -273,7 +277,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
