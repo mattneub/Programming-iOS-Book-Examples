@@ -6,6 +6,7 @@ import Speech
 import AVFoundation
 
 class ViewController: UIViewController {
+    @IBOutlet weak var recLabel: UILabel!
     
     func checkSpeechAuthorization(andThen f: (() -> ())?) {
         print("checking speech authorization")
@@ -31,7 +32,7 @@ class ViewController: UIViewController {
         print("checking mic authorization")
         let sess = AVAudioSession.sharedInstance()
         let status = sess.recordPermission()
-        switch status { // ??? why is this an option set? I've filed a bug
+        switch status {
         case .undetermined:
             sess.requestRecordPermission {ok in
                 if ok {
@@ -110,6 +111,7 @@ class ViewController: UIViewController {
         }
         self.engine.prepare()
         try! self.engine.start()
+        self.recLabel.isHidden = false
         // same as before
         print("starting live recognition")
         rec.recognitionTask(with: self.req) { result, err in
@@ -122,6 +124,7 @@ class ViewController: UIViewController {
                 }
             } else {
                 print(err!)
+                self.recLabel.isHidden = true
             }
         }
     }
@@ -131,5 +134,6 @@ class ViewController: UIViewController {
         self.engine.stop()
         self.engine.inputNode.removeTap(onBus: 0) // otherwise cannot start again
         self.req.endAudio()
+        self.recLabel.isHidden = true
     }
 }

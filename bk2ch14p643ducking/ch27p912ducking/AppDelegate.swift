@@ -29,11 +29,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(forName:
             .AVAudioSessionInterruption, object: nil, queue: nil) {
                 n in
-                let why = AVAudioSessionInterruptionType(rawValue:
-                    n.userInfo![AVAudioSessionInterruptionTypeKey] as! UInt)!
-                if why == .began {
+                let why = n.userInfo![AVAudioSessionInterruptionTypeKey] as! UInt
+                let type = AVAudioSessionInterruptionType(rawValue: why)!
+                switch type {
+                case .began:
                     print("interruption began:\n\(n.userInfo!)")
-                } else {
+                case .ended:
                     print("interruption ended:\n\(n.userInfo!)")
                     try? AVAudioSession.sharedInstance().setActive(true)
                     guard let opt = n.userInfo![AVAudioSessionInterruptionOptionKey] as? UInt else {return}
@@ -48,12 +49,13 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         // use control center to test, e.g. start and stop a Music song
         
         NotificationCenter.default.addObserver(forName:
-            .AVAudioSessionSilenceSecondaryAudioHint, object: nil, queue: nil) {
-                n in
-                let why = AVAudioSessionSilenceSecondaryAudioHintType(rawValue: n.userInfo![AVAudioSessionSilenceSecondaryAudioHintTypeKey] as! UInt)!
-                if why == .begin {
+            .AVAudioSessionSilenceSecondaryAudioHint, object: nil, queue: nil) { n in
+                let why = n.userInfo![AVAudioSessionSilenceSecondaryAudioHintTypeKey] as! UInt
+                let type = AVAudioSessionSilenceSecondaryAudioHintType(rawValue: why)!
+                switch type {
+                case .begin:
                     print("silence hint begin:\n\(n.userInfo!)")
-                } else {
+                case .end:
                     print("silence hint end:\n\(n.userInfo!)")
                 }
         }

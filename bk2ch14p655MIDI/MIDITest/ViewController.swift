@@ -3,6 +3,12 @@
 import UIKit
 import AVFoundation
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
 class ViewController: UIViewController {
     
     var player : AVMIDIPlayer!
@@ -20,22 +26,24 @@ class ViewController: UIViewController {
         case 1:
             self.player = try! AVMIDIPlayer(contentsOf: midurl, soundBankURL: sndurl)
             self.player.prepareToPlay()
-            self.player.play(nil)
+            self.player.play()
         case 2:
+            // self.engine.isAutoShutdownEnabled = true // doesn't help
             let unit = AVAudioUnitSampler()
-            engine.attach(unit)
-            let mixer = engine.outputNode
-            engine.connect(unit, to: mixer, format: mixer.outputFormat(forBus:0))
+            self.engine.attach(unit)
+            let mixer = self.engine.outputNode
+            self.engine.connect(unit, to: mixer, format: mixer.outputFormat(forBus:0))
             
             try! unit.loadInstrument(at:sndurl) // do this only after configuring engine
             
-            self.seq = AVAudioSequencer(audioEngine: engine)
+            self.seq = AVAudioSequencer(audioEngine: self.engine)
             try! self.seq.load(from:midurl)
             
-            engine.prepare()
+            self.engine.prepare()
             try! engine.start()
             
             try! self.seq.start()
+            
         default: break
         }
         

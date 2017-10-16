@@ -257,42 +257,76 @@ class ViewController: UIViewController {
         let mixer = self.engine.mainMixerNode
         self.engine.connect(effect, to: mixer, format: f.processingFormat)
 
-        // don't do this until connections are formed?!
-        player.scheduleFile(f, at: nil)
         
         let fm = FileManager.default
         let doc = try! fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let outurl = doc.appendingPathComponent("myfile.aac", isDirectory:false)
+        try? fm.removeItem(at: outurl) // just in case
         let outfile = try! AVAudioFile(forWriting: outurl, settings: [
             AVFormatIDKey : kAudioFormatMPEG4AAC,
             AVNumberOfChannelsKey : 1,
             AVSampleRateKey : 22050,
         ])
+        
+        var done = false
+        player.scheduleFile(f, at: nil) {
+            done = true
+        }
+
 
         let sz : UInt32 = 4096
         try! self.engine.enableManualRenderingMode(.offline, format: f.processingFormat, maximumFrameCount: sz)
-        let outbuf = AVAudioPCMBuffer(pcmFormat: f.processingFormat, frameCapacity: sz)!
 
         self.engine.prepare()
         try! self.engine.start()
         player.play()
         
         // nothing happens: we have to "pull" the buffer by looping
-        // arbitrarily append two seconds of processing time to allow reverb to fade
-        let sec = Int64(f.processingFormat.sampleRate)
-        var rest : Int64 { return sec*2 + f.length - self.engine.manualRenderingSampleTime }
-        while rest > 0 {
-            let ct = min(outbuf.frameCapacity, UInt32(rest))
-            print(ct)
-            let stat = try! self.engine.renderOffline(ct, to: outbuf)
-            if stat == .success {
-                print("writing")
-                try! outfile.write(from: outbuf)
+        // how to know when to end? I can think of two ways
+        
+        let outbuf = AVAudioPCMBuffer(pcmFormat: f.processingFormat, frameCapacity: sz)!
+        
+        var which : Int { return 1 }
+        switch which {
+        case 1:
+            // arbitrarily append two seconds of processing time to allow reverb to fade
+            let sec = Int64(f.processingFormat.sampleRate)
+            var rest : Int64 { return sec*2 + f.length - self.engine.manualRenderingSampleTime }
+            while rest > 0 {
+                let ct = min(outbuf.frameCapacity, UInt32(rest))
+                print(ct)
+                let stat = try! self.engine.renderOffline(ct, to: outbuf)
+                if stat == .success {
+                    print("writing")
+                    try! outfile.write(from: outbuf)
+                }
             }
+        case 2:
+            // wait until buffer is very quiet
+            while true {
+                let ct = outbuf.frameCapacity
+                let stat = try! self.engine.renderOffline(ct, to: outbuf)
+                if stat == .success {
+                    print("writing")
+                    try! outfile.write(from: outbuf)
+                    
+                    let dataptrptr = outbuf.floatChannelData!
+                    let dataptr = dataptrptr.pointee
+                    let datum = abs(dataptr[Int(outbuf.frameLength)-1])
+                    print(datum)
+                    if datum < 0.00001 && done {
+                        break
+                    }
+                }
+            }
+        default: break
         }
+        
 
         player.stop()
         engine.stop()
+        // might as well play the resulting file just so we hear what we've got
+        self.playSound(outurl)
 
     }
 
@@ -309,6 +343,7 @@ class ViewController: UIViewController {
             self.audioPlayer.play()
             self.audioPlayer.delegate = self
             print("starting to play?")
+            print(self.audioPlayer.duration)
         } catch { print("failed to create audio player from \(url)") }
     }
 }
