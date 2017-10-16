@@ -31,6 +31,8 @@ extension CGVector {
 class ViewController: UIViewController {
     var synchLayer : AVSynchronizedLayer!
     
+    var obs = Set<NSKeyValueObservation>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +44,6 @@ class ViewController: UIViewController {
         let asset = AVURLAsset(url:m)
         let item = AVPlayerItem(asset:asset)
         let p = AVPlayer(playerItem:item)
-        p.addObserver(self, forKeyPath:#keyPath(AVPlayer.status), context:nil)
         let vc = AVPlayerViewController()
         vc.player = p
         vc.view.frame = CGRect(10,10,300,200)
@@ -50,24 +51,36 @@ class ViewController: UIViewController {
         self.addChildViewController(vc)
         self.view.addSubview(vc.view)
         vc.didMove(toParentViewController: self)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == #keyPath(AVPlayer.status) {
-            DispatchQueue.main.async {
-                self.finishConstructingInterface()
+        
+        var ob : NSKeyValueObservation!
+        ob = p.observe(\.status) { vc, ch in
+            if p.status == .readyToPlay {
+                self.obs.remove(ob)
+                DispatchQueue.main.async {
+                    print("status is ready to play")
+                    self.finishConstructingInterface()
+                }
             }
         }
+        self.obs.insert(ob)
     }
     
     func finishConstructingInterface () {
         let vc = self.childViewControllers[0] as! AVPlayerViewController
-        let p = vc.player! //
-        if p.status != .readyToPlay {
-            return
-        }
-        p.removeObserver(self, forKeyPath:#keyPath(AVPlayer.status))
+        let p = vc.player!
+
         vc.view.isHidden = false
+        
+        self.addSynchLayer()
+    }
+    
+    func addSynchLayer() {
+        // absolutely no reason why we shouldn't have a synch layer if we want one
+        // (of course the one in this example is kind of pointless...
+        // ...because the AVPlayerViewController's view gives us a position interface!)
+        
+        let vc = self.childViewControllers[0] as! AVPlayerViewController
+        let p = vc.player!
         
         // absolutely no reason why we shouldn't have a synch layer if we want one
         // (of course the one in this example is kind of pointless...
@@ -105,13 +118,14 @@ class ViewController: UIViewController {
     // can be a mutable composition
     
     @IBAction func doButton2 (_ sender: Any!) {
+        
         let vc = self.childViewControllers[0] as! AVPlayerViewController
         let p = vc.player! //
         p.pause()
         
         let asset1 = p.currentItem!.asset //
         
-        let type = AVMediaTypeVideo
+        let type = AVMediaType.video
         let arr = asset1.tracks(withMediaType: type)
         let track = arr.last! //
         
@@ -119,27 +133,27 @@ class ViewController: UIViewController {
         
         let comp = AVMutableComposition()
         let comptrack = comp.addMutableTrack(withMediaType: type,
-            preferredTrackID: Int32(kCMPersistentTrackID_Invalid))
+            preferredTrackID: Int32(kCMPersistentTrackID_Invalid))!
         
         try! comptrack.insertTimeRange(CMTimeRange(start: CMTime(seconds:0, preferredTimescale:600), duration: CMTime(seconds:5, preferredTimescale:600)), of:track, at:CMTime(seconds:0, preferredTimescale:600))
         try! comptrack.insertTimeRange(CMTimeRange(start: CMTimeSubtract(duration, CMTime(seconds:5, preferredTimescale:600)), duration: CMTime(seconds:5, preferredTimescale:600)), of:track, at:CMTime(seconds:5, preferredTimescale:600))
         
-        let type2 = AVMediaTypeAudio
+        let type2 = AVMediaType.audio
         let arr2 = asset1.tracks(withMediaType: type2)
         let track2 = arr2.last! //
-        let comptrack2 = comp.addMutableTrack(withMediaType: type2, preferredTrackID:Int32(kCMPersistentTrackID_Invalid))
+        let comptrack2 = comp.addMutableTrack(withMediaType: type2, preferredTrackID:Int32(kCMPersistentTrackID_Invalid))!
         
         try! comptrack2.insertTimeRange(CMTimeRange(start: CMTime(seconds:0, preferredTimescale:600), duration: CMTime(seconds:5, preferredTimescale:600)), of:track2, at:CMTime(seconds:0, preferredTimescale:600))
         try! comptrack2.insertTimeRange(CMTimeRange(start: CMTimeSubtract(duration, CMTime(seconds:5, preferredTimescale:600)), duration: CMTime(seconds:5, preferredTimescale:600)), of:track2, at:CMTime(seconds:5, preferredTimescale:600))
         
         
-        let type3 = AVMediaTypeAudio
+        let type3 = AVMediaType.audio
         let s = Bundle.main.url(forResource:"aboutTiagol", withExtension:"m4a")!
         let asset2 = AVURLAsset(url:s)
         let arr3 = asset2.tracks(withMediaType: type3)
         let track3 = arr3.last! //
         
-        let comptrack3 = comp.addMutableTrack(withMediaType: type3, preferredTrackID:Int32(kCMPersistentTrackID_Invalid))
+        let comptrack3 = comp.addMutableTrack(withMediaType: type3, preferredTrackID:Int32(kCMPersistentTrackID_Invalid))!
         try! comptrack3.insertTimeRange(CMTimeRange(start: CMTime(seconds:0, preferredTimescale:600), duration: CMTime(seconds:10, preferredTimescale:600)), of:track3, at:CMTime(seconds:0, preferredTimescale:600))
         
         let params = AVMutableAudioMixInputParameters(track:comptrack3)
@@ -151,11 +165,24 @@ class ViewController: UIViewController {
         let item = AVPlayerItem(asset:comp)
         item.audioMix = mix
         
-        // note this cool trick! the status won't change, so to trigger a KVO notification,
-        // ...we supply the .Initial option
-        p.addObserver(self, forKeyPath:#keyPath(AVPlayer.status), options:.initial, context:nil)
         p.replaceCurrentItem(with: item)
+        
         (sender as! UIControl).isEnabled = false
+        
+        var ob : NSKeyValueObservation!
+        ob = p.observe(\.status, options:.initial) { vc, ch in
+            if p.status == .readyToPlay {
+                if let ob = ob {
+                    self.obs.remove(ob)
+                }
+                DispatchQueue.main.async {
+                    print("status is ready to play")
+                    self.finishConstructingInterface()
+                }
+            }
+        }
+        self.obs.insert(ob)
+
     }
 
     

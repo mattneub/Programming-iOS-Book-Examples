@@ -4,6 +4,19 @@ import UIKit
 import AVKit
 import AVFoundation
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+extension UILayoutPriority {
+    static func +(lhs: UILayoutPriority, rhs: Float) -> UILayoutPriority {
+        let raw = lhs.rawValue + rhs
+        return UILayoutPriority(rawValue:raw)
+    }
+}
+
+
 class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,21 +42,38 @@ class ViewController: UIViewController {
             av.player = player
             self.present(av, animated: true) {
                 // av.view.backgroundColor = .green
+                // let iv = UIImageView(image:UIImage(named:"smiley")!)
+                return;
+                // new in iOS 11, content overlay view is sized to its contents
+                // so if you want it to fill the view, you must constrain it to do so
+                let iv = UIView()
+                iv.backgroundColor = .white
+                av.contentOverlayView!.addSubview(iv)
+                let v = av.contentOverlayView!
+                iv.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    iv.bottomAnchor.constraint(equalTo:v.bottomAnchor),
+                    iv.topAnchor.constraint(equalTo:v.topAnchor),
+                    iv.leadingAnchor.constraint(equalTo:v.leadingAnchor),
+                    iv.trailingAnchor.constraint(equalTo:v.trailingAnchor),
+//                    iv.widthAnchor.constraint(equalToConstant: 100),
+//                    iv.heightAnchor.constraint(equalToConstant: 100),
+                ])
+                NSLayoutConstraint.activate([
+                    v.bottomAnchor.constraint(equalTo:av.view.bottomAnchor),
+                    v.topAnchor.constraint(equalTo:av.view.topAnchor),
+                    v.leadingAnchor.constraint(equalTo:av.view.leadingAnchor),
+                    v.trailingAnchor.constraint(equalTo:av.view.trailingAnchor),
+                ])
+
             }
-//            let iv = UIImageView(image:UIImage(named:"smiley")!)
-//            av.contentOverlayView!.addSubview(iv)
-//            let v = iv.superview!
-//            iv.translatesAutoresizingMaskIntoConstraints = false
-//            NSLayoutConstraint.activate([
-//                iv.bottomAnchor.constraint(equalTo:v.bottomAnchor),
-//                iv.topAnchor.constraint(equalTo:v.topAnchor),
-//                iv.leadingAnchor.constraint(equalTo:v.leadingAnchor),
-//                iv.trailingAnchor.constraint(equalTo:v.trailingAnchor),
-//                ])
 
             av.delegate = self
             av.allowsPictureInPicturePlayback = true
-            av.updatesNowPlayingInfoCenter = true // what does this do?
+            // av.updatesNowPlayingInfoCenter = true // that's the default
+            delay(2) {
+                print(av.contentOverlayView!.frame)
+            }
         case 2:
             // hmmm... this works so poorly that I can't really recommend it
             // if edgesForExtendedLayout is not set, we see the position slider just peeping down;

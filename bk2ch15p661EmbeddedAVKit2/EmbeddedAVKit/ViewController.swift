@@ -70,6 +70,7 @@ class ViewController: UIViewController {
             let status = asset.statusOfValue(forKey:track, error: nil)
             if status == .loaded {
                 DispatchQueue.main.async {
+                    print("got the tracks")
                     self.getVideoTrack(asset)
                 }
             }
@@ -78,21 +79,25 @@ class ViewController: UIViewController {
     
     func getVideoTrack(_ asset:AVAsset) {
         // we have tracks or we wouldn't be here
-        let visual = AVMediaCharacteristicVisual
+        let visual = AVMediaCharacteristic.visual
         let vtrack = asset.tracks(withMediaCharacteristic: visual)[0]
         let size = #keyPath(AVAssetTrack.naturalSize)
         vtrack.loadValuesAsynchronously(forKeys: [size]) {
             let status = vtrack.statusOfValue(forKey: size, error: nil)
             if status == .loaded {
                 DispatchQueue.main.async {
+                    print("got the natural size")
                     self.getNaturalSize(vtrack, asset)
                 }
             }
         }
     }
     
+    var obs = Set<NSKeyValueObservation>()
+    
     func getNaturalSize(_ vtrack:AVAssetTrack, _ asset:AVAsset) {
         // we have a natural size or we wouldn't be here
+        print("finishing view setup")
         let sz = vtrack.naturalSize
         let item = AVPlayerItem(asset:asset)
         let player = AVPlayer(playerItem:item)
@@ -103,24 +108,24 @@ class ViewController: UIViewController {
         av.view.isHidden = true
         self.view.addSubview(av.view)
         av.didMove(toParentViewController: self)
-        av.addObserver(
-            self, forKeyPath: #keyPath(AVPlayerViewController.readyForDisplay), options: .new, context: nil)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-            let ready = #keyPath(AVPlayerViewController.readyForDisplay)
-            guard keyPath == ready else {return}
-            guard let vc = object as? AVPlayerViewController else {return}
-            guard let ok = change?[.newKey] as? Bool else {return}
-            guard ok else {return}
-            vc.removeObserver(self, forKeyPath:ready)
+        
+        var ob : NSKeyValueObservation!
+        ob = av.observe(\.isReadyForDisplay, options: .new) { vc, ch in
+            guard let ok = ch.newValue, ok else {return}
+            self.obs.remove(ob)
             DispatchQueue.main.async {
-                vc.view.isHidden = false
+                print("ready for display!")
+                vc.view.isHidden = false // hmm, maybe I should be animating the alpha instead
+                // just playing, pay no attention
+                let player = vc.player!
+                let item = player.currentItem!
+                print(CMTimebaseGetRate(item.timebase!))
             }
+        }
+        self.obs.insert(ob)
+
     }
-
     
-
 
 
 }

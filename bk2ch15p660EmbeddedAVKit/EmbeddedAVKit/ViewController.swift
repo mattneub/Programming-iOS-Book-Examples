@@ -34,6 +34,8 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 
 class ViewController: UIViewController {
     
+    var timestamp = Date().timeIntervalSince1970
+    
     var didInitialLayout = false
     
     override var prefersStatusBarHidden : Bool {
@@ -77,15 +79,15 @@ class ViewController: UIViewController {
         self.addChildViewController(av)
         self.view.addSubview(av.view)
         av.didMove(toParentViewController:self)
+        // just testing the syntax
+        // av.videoGravity = AVLayerVideoGravity.resizeAspect.rawValue
+        // just testing the behavior
+        // av.updatesNowPlayingInfoCenter = false
     }
     
-    // is this a bug? We can't use `isReadyForDisplay` here
-    // presumably because that is only the getter
-    let readyForDisplay = #keyPath(AVPlayerViewController.readyForDisplay)
-    
+    var obs = Set<NSKeyValueObservation>()
     func setUpChild() {
 
-        
         let url = Bundle.main.url(forResource:"ElMirage", withExtension:"mp4")!
         let asset = AVURLAsset(url:url)
         let item = AVPlayerItem(asset:asset)
@@ -110,7 +112,20 @@ class ViewController: UIViewController {
         }
         */
         
-        av.addObserver(self, forKeyPath: readyForDisplay, options: .new, context:nil)
+        var ob : NSKeyValueObservation!
+        ob = av.observe(\.isReadyForDisplay, options: .new) { vc, ch in
+            guard let ok = ch.newValue, ok else {return}
+            self.obs.remove(ob)
+            DispatchQueue.main.async {
+                print("finishing")
+                vc.view.isHidden = false // hmm, maybe I should be animating the alpha instead
+                // just playing, pay no attention
+                let player = vc.player!
+                let item = player.currentItem!
+                print(CMTimebaseGetRate(item.timebase!))
+            }
+        }
+        self.obs.insert(ob)
         
         return; // just proving you can swap out the player
         delay(3) {
@@ -120,30 +135,9 @@ class ViewController: UIViewController {
         }
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-            guard keyPath == readyForDisplay
-                else {return}
-            guard let vc = object as? AVPlayerViewController
-                else {return}
-            guard let ok = change?[.newKey] as? Bool
-                else {return}
-            guard ok
-                else {return}
-            vc.removeObserver(
-                self,
-                forKeyPath:keyPath!)
-            DispatchQueue.main.async {
-                print("finishing")
-                vc.view.isHidden = false // hmm, maybe I should be animating the alpha instead
-                // just playing, pay no attention
-                let player = vc.player!
-                let item = player.currentItem!
-                print(CMTimebaseGetRate(item.timebase!))
-            }
-    }
-    
-    
 }
+
+// seems to work only on device, not simulator
 
 extension ViewController : UIVideoEditorControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
     @IBAction func doEditorButton (_ sender: Any!) {
@@ -175,7 +169,12 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
     }
     
     func videoEditorController(_ editor: UIVideoEditorController, didSaveEditedVideoToPath path: String) {
-        print("saved to \(path)")
+        print("called")
+        let ts = Date().timeIntervalSince1970
+        if ts - timestamp < 1 { return } // debounce, work around bug
+        self.timestamp = ts
+        NSLog("saved to %@", path)
+        self.dismiss(animated:true)
         if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path) {
             print("saving to photos album")
             UISaveVideoAtPathToSavedPhotosAlbum(path, self, #selector(savedVideo), nil)
@@ -184,7 +183,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         }
     }
     
-    func savedVideo(at path:String, withError error:Error?, ci:UnsafeMutableRawPointer) {
+    @objc func savedVideo(at path:String, withError error:Error?, ci:UnsafeMutableRawPointer) {
         print(path)
         if let error = error {
             print("error: \(error)")
@@ -197,7 +196,6 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         If that's the case, we will get error like this:
         Error Domain=ALAssetsLibraryErrorDomain Code=-3310 "Data unavailable" UserInfo=0x1d8355d0 {NSLocalizedRecoverySuggestion=Launch the Photos application, NSUnderlyingError=0x1d83d470 "Data unavailable", NSLocalizedDescription=Data unavailable}
         */
-        self.dismiss(animated:true)
     }
     
     func videoEditorControllerDidCancel(_ editor: UIVideoEditorController) {
@@ -214,7 +212,7 @@ extension ViewController : UIVideoEditorControllerDelegate, UINavigationControll
         let vc = viewController as UIViewController
         vc.title = ""
         vc.navigationItem.title = ""
-        // I can suppress the title but I haven't found a way to fix the right bar button
+        // I can suppress the "Choose Video" title but I haven't found a way to fix the right bar button
         // (so that it says Save instead of Use)
     }
     

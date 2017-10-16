@@ -22,6 +22,8 @@
 	<string>1</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app wants to save your edited movie into your photo library.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>This app wants to save your edited movie into your photo library.</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIBackgroundModes</key>

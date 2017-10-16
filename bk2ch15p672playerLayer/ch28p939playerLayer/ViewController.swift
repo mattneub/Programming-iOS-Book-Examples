@@ -36,6 +36,8 @@ class ViewController: UIViewController {
     
     let which = 2
     
+    var obs = Set<NSKeyValueObservation>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,8 +67,6 @@ class ViewController: UIViewController {
         default:break
         }
         
-
-        
         if AVPictureInPictureController.isPictureInPictureSupported() {
             let pic = AVPictureInPictureController(playerLayer: self.playerLayer)
             self.pic = pic
@@ -74,30 +74,21 @@ class ViewController: UIViewController {
             self.picButton.isHidden = true
         }
         
-        self.playerLayer.addObserver(self, forKeyPath:#keyPath(AVPlayerLayer.readyForDisplay), context:nil)
-        
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == #keyPath(AVPlayerLayer.readyForDisplay) {
+        var ob : NSKeyValueObservation!
+        ob = self.playerLayer.observe(\.isReadyForDisplay, options:.new) { lay, ch in
+            guard let ready = ch.newValue, ready else {return}
+            self.obs.remove(ob)
             DispatchQueue.main.async {
-                self.finishConstructingInterface()
+                print("finishing")
+                if lay.superlayer == nil {
+                    self.view.layer.addSublayer(lay)
+                }
             }
         }
+        self.obs.insert(ob)
+
     }
     
-    func finishConstructingInterface () {
-        if (!self.playerLayer.isReadyForDisplay) {
-            return
-        }
-        
-        self.playerLayer.removeObserver(self, forKeyPath:#keyPath(AVPlayerLayer.readyForDisplay))
-        
-        if self.playerLayer.superlayer == nil {
-            self.view.layer.addSublayer(self.playerLayer)
-        }
-        
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
