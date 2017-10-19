@@ -56,7 +56,6 @@ func checkForMusicLibraryAccess(andThen f:(()->())? = nil) {
 
 class ViewController: UIViewController {
     
-    var q : MPMediaItemCollection!
     @IBOutlet var label : UILabel!
     var timer : Timer!
     @IBOutlet var prog : UIProgressView!
@@ -64,8 +63,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+                
         let sz = CGSize(20,20)
         let r = UIGraphicsImageRenderer(size:sz)
         let im1 = r.image {
@@ -118,11 +116,11 @@ class ViewController: UIViewController {
         
     }
     
-    func wirelessChanged(_ n:Notification) {
-        print("wireless change \(n.userInfo)")
+    @objc func wirelessChanged(_ n:Notification) {
+        print("wireless change \(n.userInfo as Any)")
     }
-    func wirelessChanged2(_ n:Notification) {
-        print("wireless active change \(n.userInfo)")
+    @objc func wirelessChanged2(_ n:Notification) {
+        print("wireless active change \(n.userInfo as Any)")
     }
     
     func dummy() {
@@ -133,7 +131,8 @@ class ViewController: UIViewController {
 //        checkForMusicLibraryAccess()
 //        checkForMusicLibraryAccess(andThen:self.dummy)
         checkForMusicLibraryAccess {
-            do {
+            skip: do {
+                break skip
                 let query = MPMediaQuery() // just making sure this is legal
                 let result = query.items
                 _ = result
@@ -148,7 +147,7 @@ class ViewController: UIViewController {
             // cloud item values are 0 and 1, meaning false and true
             for album in result {
                 for song in album.items { //
-                    print("\(song.isCloudItem) \(song.assetURL) \(song.title)")
+                    print("\(song.isCloudItem) \(song.assetURL as Any) \(song.title as Any)")
                 }
             }
         }
@@ -192,6 +191,10 @@ class ViewController: UIViewController {
             }
         }
     }
+    @IBAction func doStop(_ sender: Any) {
+        let player = MPMusicPlayerController.applicationQueuePlayer
+        player.stop()
+    }
     
     @IBAction func doPlayShortSongs (_ sender: Any!) {
         checkForMusicLibraryAccess {
@@ -214,35 +217,46 @@ class ViewController: UIViewController {
             }
             print("got \(shorties.count) short songs")
             let queue = MPMediaItemCollection(items:shorties)
-            let player = MPMusicPlayerController.applicationMusicPlayer()
+            let player = MPMusicPlayerController.applicationQueuePlayer
             player.stop()
             player.setQueue(with:queue)
             player.shuffleMode = .songs
             player.beginGeneratingPlaybackNotifications()
             NotificationCenter.default.addObserver(self, selector: #selector(self.changed), name: .MPMusicPlayerControllerNowPlayingItemDidChange, object: player)
-            self.q = queue // retain a pointer to the queue
-            player.play()
+            // no need to use this elaborate approach here, probably
+            player.prepareToPlay { err in
+                if err == nil {
+                    player.play()
+                    
+                    self.timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(self.timerFired), userInfo: nil, repeats: true)
+                    self.timer.tolerance = 0.1
+
+                }
+            }
             
-            self.timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(self.timerFired), userInfo: nil, repeats: true)
-            self.timer.tolerance = 0.1
         }
     }
     
-    func changed(_ n:Notification) {
+    @objc func changed(_ n:Notification) {
         defer {
             self.timer?.fire() // looks better if we fire timer now
         }
         self.label.text = ""
-        let player = MPMusicPlayerController.applicationMusicPlayer()
+        let player = MPMusicPlayerController.applicationQueuePlayer
         guard let obj = n.object, obj as AnyObject === player else { return } // just playing safe
         guard let title = player.nowPlayingItem?.title else {return}
         let ix = player.indexOfNowPlayingItem
         guard ix != NSNotFound else {return}
-        self.label.text = "\(ix+1) of \(self.q.count): \(title)"
+        // new, we can get the queue!
+        player.perform(queueTransaction: { _ in }) { q,_ in
+            print(q.items.count, q.items.map {$0.title})
+            self.label.text = "\(ix+1) of \(q.items.count): \(title)"
+        }
+        
     }
     
-    func timerFired(_: Any) {
-        let player = MPMusicPlayerController.applicationMusicPlayer()
+    @objc func timerFired(_: Any) {
+        let player = MPMusicPlayerController.applicationQueuePlayer
         guard let item = player.nowPlayingItem, player.playbackState != .stopped else {
             self.prog.isHidden = true
             return

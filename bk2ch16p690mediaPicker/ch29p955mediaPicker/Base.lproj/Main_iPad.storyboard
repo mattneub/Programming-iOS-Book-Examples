@@ -1,17 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ch29p955mediaPicker" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="q6C-Bk-MaU"/>
-                        <viewControllerLayoutGuide type="bottom" id="aZs-kx-a7c"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,24 +32,17 @@
                                 </connections>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Kb0-9X-RRV" firstAttribute="top" secondItem="q6C-Bk-MaU" secondAttribute="bottom" id="0Pf-et-p1A"/>
-                            <constraint firstAttribute="trailing" secondItem="Kb0-9X-RRV" secondAttribute="trailing" id="aX0-Vk-awP"/>
-                            <constraint firstItem="Kb0-9X-RRV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="czv-by-LmO"/>
+                            <constraint firstItem="Kb0-9X-RRV" firstAttribute="top" secondItem="55a-9r-Ehn" secondAttribute="top" id="0Pf-et-p1A"/>
+                            <constraint firstItem="55a-9r-Ehn" firstAttribute="trailing" secondItem="Kb0-9X-RRV" secondAttribute="trailing" id="aX0-Vk-awP"/>
+                            <constraint firstItem="Kb0-9X-RRV" firstAttribute="leading" secondItem="55a-9r-Ehn" secondAttribute="leading" id="czv-by-LmO"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="55a-9r-Ehn"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination">
-            <size key="portraitSize" width="768" height="1024"/>
-            <size key="landscapeSize" width="1024" height="768"/>
-        </simulatedScreenMetrics>
-    </simulatedMetricsContainer>
 </document>
