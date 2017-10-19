@@ -15,7 +15,7 @@ class ViewController : UIViewController, UIToolbarDelegate {
     }
     
 
-    func positionForBar(forBar bar: UIBarPositioning) -> UIBarPosition {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }
     
