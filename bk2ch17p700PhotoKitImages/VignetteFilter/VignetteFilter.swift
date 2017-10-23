@@ -12,8 +12,8 @@ public extension CIColor {
 }
 
 public class VignetteFilter : CIFilter {
-    public var inputImage : CIImage?
-    public var inputPercentage : NSNumber? = 1.0
+    @objc public var inputImage : CIImage?
+    @objc public var inputPercentage : NSNumber? = 1.0
     public override var outputImage : CIImage? {
         return self.makeOutputImage()
     }
@@ -32,7 +32,7 @@ public class VignetteFilter : CIFilter {
         let largerDimension = max(extent.width, extent.height)
         
         grad.setValue(center, forKey:"inputCenter")
-        grad.setValue(smallerDimension/2.0 * CGFloat(inputPercentage), forKey:"inputRadius0")
+        grad.setValue(smallerDimension/2.0 * (inputPercentage as! CGFloat), forKey:"inputRadius0")
         grad.setValue(largerDimension/2.0, forKey:"inputRadius1")
         grad.setValue(CIColor(color: .white), forKey:"inputColor0")
         grad.setValue(CIColor(color: .clear), forKey:"inputColor1")
@@ -41,7 +41,7 @@ public class VignetteFilter : CIFilter {
         let blend = CIFilter(name: "CIBlendWithAlphaMask")!
         blend.setValue(self.inputImage, forKey: "inputImage")
         let background = CIImage(color: CIColor(uicolor: .white))
-        let background2 = background.cropping(to:extent)
+        let background2 = background.cropped(to:extent)
         blend.setValue(background2, forKey:"inputBackgroundImage")
         blend.setValue(gradimage, forKey: "inputMaskImage")
         

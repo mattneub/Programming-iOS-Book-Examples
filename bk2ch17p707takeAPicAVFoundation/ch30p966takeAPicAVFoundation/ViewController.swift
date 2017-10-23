@@ -50,12 +50,12 @@ func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
 }
 
 func checkForMicrophoneCaptureAccess(andThen f:(()->())? = nil) {
-    let status = AVCaptureDevice.authorizationStatus(forMediaType:AVMediaTypeAudio)
+    let status = AVCaptureDevice.authorizationStatus(for:.audio)
     switch status {
     case .authorized:
         f?()
     case .notDetermined:
-        AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeAudio) { granted in
+        AVCaptureDevice.requestAccess(for:.audio) { granted in
             if granted {
                 DispatchQueue.main.async {
                     f?()
@@ -86,12 +86,12 @@ func checkForMicrophoneCaptureAccess(andThen f:(()->())? = nil) {
 
 
 func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
-    let status = AVCaptureDevice.authorizationStatus(forMediaType:AVMediaTypeVideo)
+    let status = AVCaptureDevice.authorizationStatus(for:.video)
     switch status {
     case .authorized:
         f?()
     case .notDetermined:
-        AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeVideo) { granted in
+        AVCaptureDevice.requestAccess(for:.video) { granted in
             if granted {
                 DispatchQueue.main.async {
                     f?()
@@ -157,15 +157,15 @@ class ViewController: UIViewController {
             self.sess = nil
             return
         }
+        self.iv?.removeFromSuperview()
         
         self.sess = AVCaptureSession()
         
         do {
             self.sess.beginConfiguration()
             
-            let preset = AVCaptureSessionPresetPhoto
             guard self.sess.canSetSessionPreset(self.sess.sessionPreset) else {return}
-            self.sess.sessionPreset = preset
+            self.sess.sessionPreset = .photo
             
             let output = AVCapturePhotoOutput()
             guard self.sess.canAddOutput(output) else {return}
@@ -174,11 +174,12 @@ class ViewController: UIViewController {
             self.sess.commitConfiguration()
         }
         
-        let cam = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        guard let input = try? AVCaptureDeviceInput(device:cam) else {return}
+        guard let cam = AVCaptureDevice.default(for: .video),
+            let input = try? AVCaptureDeviceInput(device:cam)
+            else {return}
         self.sess.addInput(input)
         
-        let lay = AVCaptureVideoPreviewLayer(session:self.sess)!
+        let lay = AVCaptureVideoPreviewLayer(session:self.sess)
         lay.frame = self.previewRect
         self.view.layer.addSublayer(lay)
         self.previewLayer = lay // keep a ref so we can remove it later
@@ -201,11 +202,14 @@ class ViewController: UIViewController {
             kCVPixelBufferWidthKey as String : len,
             kCVPixelBufferHeightKey as String : len
         ]
-        
-        
+        // let's also ask for a thumnail image
+        settings.embeddedThumbnailPhotoFormat = [
+            AVVideoCodecKey : AVVideoCodecType.jpeg
+        ]
+
         guard let output = self.sess.outputs[0] as? AVCapturePhotoOutput else {return}
         // how to deal with orientation; stolen from Apple's AVCam example!
-        if let conn = output.connection(withMediaType: AVMediaTypeVideo) {
+        if let conn = output.connection(with: .video) {
             let orientation = UIDevice.current.orientation.videoOrientation!
             conn.videoOrientation = orientation
         }
@@ -216,7 +220,43 @@ class ViewController: UIViewController {
 
 extension ViewController : AVCapturePhotoCaptureDelegate {
     
-    func capture(_ output: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer sampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        print("photo size", photo.resolvedSettings.photoDimensions)
+        print("preview size", photo.resolvedSettings.previewDimensions)
+        print("thumbnail format", photo.embeddedThumbnailPhotoFormat as Any)
+        print("flash usage", photo.resolvedSettings.isFlashEnabled)
+        
+        if let cgim = photo.previewCGImageRepresentation()?.takeUnretainedValue() {
+            // grapple with orientation issue relative to preview
+            var orient : UIImageOrientation {
+                switch UIDevice.current.orientation {
+                case .portrait: return .right
+                case .portraitUpsideDown: return .left
+                case .landscapeLeft: return .up
+                case .landscapeRight: return .down
+                default: return .right
+                }
+            }
+            self.previewImage = UIImage(cgImage: cgim, scale: 1, orientation: orient)
+        }
+        
+        if let data = photo.fileDataRepresentation() {
+            checkForPhotoLibraryAccess {
+                print("saving to library")
+                let lib = PHPhotoLibrary.shared()
+                lib.performChanges({
+                    let req = PHAssetCreationRequest.forAsset()
+                    req.addResource(with: .photo, data: data, options: nil)
+                })
+            }
+
+        }
+
+    }
+    
+    /*
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto sampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
             print("photo", resolvedSettings.photoDimensions)
             print("preview", resolvedSettings.previewDimensions)
             print("flash", resolvedSettings.isFlashEnabled)
@@ -248,8 +288,10 @@ extension ViewController : AVCapturePhotoCaptureDelegate {
                 
             }
     }
+ 
+ */
     
-    func capture(_ captureOutput: AVCapturePhotoOutput, didFinishCaptureForResolvedSettings resolvedSettings: AVCaptureResolvedPhotoSettings, error: Error?) {
+    func photoOutput(_ captureOutput: AVCapturePhotoOutput, didFinishCaptureFor resolvedSettings: AVCaptureResolvedPhotoSettings, error: Error?) {
         
         DispatchQueue.main.async {
             

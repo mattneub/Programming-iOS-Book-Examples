@@ -84,11 +84,11 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
                     self.vig.setValue(val, forKey:"inputPercentage")
                     output = self.vig.outputImage!
                     if !self.seg.isHidden {
-                        output = output.applyingOrientation(orient)
+                        output = output.oriented(forExifOrientation: orient)
                     }
                     
                 } else {
-                    output = output.applyingOrientation(orient)
+                    output = output.oriented(forExifOrientation: orient)
                 }
                 
                 var r = self.glkview.bounds
@@ -139,7 +139,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
 
     }
     
-    func finishContentEditing(completionHandler: @escaping (PHContentEditingOutput?) -> Void) {
+    func finishContentEditing(completionHandler: @escaping ((PHContentEditingOutput?) -> Void)) {
         // Update UI to reflect that editing has finished and output is being rendered.
         
         // Render and provide output on a background queue.
@@ -149,7 +149,7 @@ class PhotoEditingViewController: UIViewController, PHContentEditingController, 
             let inorient = self.input!.fullSizeImageOrientation
             let output = PHContentEditingOutput(contentEditingInput:self.input!)
             let outurl = output.renderedContentURL
-            var ci = CIImage(contentsOf: inurl)!.applyingOrientation(inorient)
+            var ci = CIImage(contentsOf: inurl)!.oriented(forExifOrientation: inorient)
             let space = ci.colorSpace!
             
             if vignette >= 0.0 {

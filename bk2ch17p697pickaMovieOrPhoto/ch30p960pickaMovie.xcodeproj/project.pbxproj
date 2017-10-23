@@ -11,6 +11,7 @@
 		3224812B199FDBBF00382554 /* MyImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224812A199FDBBF00382554 /* MyImagePickerController.swift */; };
 		327D06A01BBE01DB00220EFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 327D069F1BBE01DB00220EFC /* LaunchScreen.storyboard */; };
 		327D06A21BBE01E500220EFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D06A11BBE01E500220EFC /* AppDelegate.swift */; };
+		818B9C8B1F9BAC8F00951EDB /* AnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818B9C8A1F9BAC8F00951EDB /* AnimatedImage.swift */; };
 		C9EE9A221827EE2F004161A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9EE9A201827EE2F004161A0 /* Main.storyboard */; };
 		C9EE9A2A1827EE2F004161A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9EE9A291827EE2F004161A0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -20,6 +21,7 @@
 		3224812A199FDBBF00382554 /* MyImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyImagePickerController.swift; sourceTree = "<group>"; };
 		327D069F1BBE01DB00220EFC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		327D06A11BBE01E500220EFC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		818B9C8A1F9BAC8F00951EDB /* AnimatedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImage.swift; sourceTree = "<group>"; };
 		C9EE9A0B1827EE2F004161A0 /* ch30p960pickaMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ch30p960pickaMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9EE9A161827EE2F004161A0 /* ch30p960pickaMovie-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch30p960pickaMovie-Info.plist"; sourceTree = "<group>"; };
 		C9EE9A211827EE2F004161A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				C9EE9A201827EE2F004161A0 /* Main.storyboard */,
 				32248128199FD49800382554 /* ViewController.swift */,
 				3224812A199FDBBF00382554 /* MyImagePickerController.swift */,
+				818B9C8A1F9BAC8F00951EDB /* AnimatedImage.swift */,
 				C9EE9A291827EE2F004161A0 /* Assets.xcassets */,
 				C9EE9A161827EE2F004161A0 /* ch30p960pickaMovie-Info.plist */,
 				327D069F1BBE01DB00220EFC /* LaunchScreen.storyboard */,
@@ -99,7 +102,7 @@
 				TargetAttributes = {
 					C9EE9A0A1827EE2F004161A0 = {
 						DevelopmentTeam = W3LHX5RGV2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0910;
 					};
 				};
 			};
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				818B9C8B1F9BAC8F00951EDB /* AnimatedImage.swift in Sources */,
 				327D06A21BBE01E500220EFC /* AppDelegate.swift in Sources */,
 				32248129199FD49800382554 /* ViewController.swift in Sources */,
 				3224812B199FDBBF00382554 /* MyImagePickerController.swift in Sources */,
@@ -244,10 +248,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch30p960pickaMovie/ch30p960pickaMovie-Prefix.pch";
 				INFOPLIST_FILE = "ch30p960pickaMovie/ch30p960pickaMovie-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -263,9 +269,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ch30p960pickaMovie/ch30p960pickaMovie-Prefix.pch";
 				INFOPLIST_FILE = "ch30p960pickaMovie/ch30p960pickaMovie-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

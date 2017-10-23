@@ -12,8 +12,13 @@ class ModelController: NSObject {
         self.recentAlbums = PHAssetCollection.fetchAssetCollections(with:
             .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
         guard let rec = self.recentAlbums.firstObject else {return}
-        let options = PHFetchOptions() // photos only, please
-        let pred = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
+        let options = PHFetchOptions() // photos only, please, no HDRs
+        options.fetchLimit = 10 // let's not take all day about it
+        let pred = NSPredicate(
+            format: "mediaType == %d && !((mediaSubtype & %d) == %d)",
+            PHAssetMediaType.image.rawValue,
+            PHAssetMediaSubtype.photoHDR.rawValue,
+            PHAssetMediaSubtype.photoHDR.rawValue)
         options.predicate = pred
         self.photos = PHAsset.fetchAssets(in:rec, options: options)
     }

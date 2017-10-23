@@ -80,11 +80,11 @@ class EditingViewController: UIViewController, GLKViewDelegate {
     }
 
     
-    func doCancel (_ sender: Any?) {
+    @objc func doCancel (_ sender: Any?) {
         self.dismiss(animated:true)
     }
     
-    func doDone (_ sender: Any?) {
+    @objc func doDone (_ sender: Any?) {
         self.dismiss(animated:true) {
             delay(0.1) {
                 self.delegate?.finishEditing(vignette:Double(self.slider.value))
@@ -92,7 +92,7 @@ class EditingViewController: UIViewController, GLKViewDelegate {
         }
     }
     
-    func doUndo (_ sender: Any?) {
+    @objc func doUndo (_ sender: Any?) {
         self.dismiss(animated:true) {
             delay(0.1) {
                 self.delegate?.finishEditing(vignette: -1) // signal for removal

@@ -2,6 +2,9 @@
 
 import UIKit
 
+// not used
+
+/*
 class MyImagePickerController: UIImagePickerController {
     
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
@@ -9,3 +12,4 @@ class MyImagePickerController: UIImagePickerController {
     }
 
 }
+*/

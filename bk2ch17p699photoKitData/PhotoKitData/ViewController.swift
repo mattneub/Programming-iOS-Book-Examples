@@ -62,7 +62,7 @@ class ViewController: UIViewController {
                 let f = DateFormatter()
                 f.dateFormat = "yyyy"
                 print(f.string(from:list.startDate!))
-                // return;
+                // return; // uncomment for first example, years alone
                 if list.collectionListType == .momentList {
                     let result = PHAssetCollection.fetchMoments(inMomentList:list, options: nil)
                     for ix in 0 ..< result.count {
@@ -71,26 +71,38 @@ class ViewController: UIViewController {
                             print("======= \(result.count) clusters")
                         }
                         f.dateFormat = ("yyyy-MM-dd")
-                        print("starting \(f.string(from:coll.startDate!)): " + "\(coll.estimatedAssetCount)")
+                        print("""
+                            starting \(f.string(from:coll.startDate!)): \
+                            \(coll.estimatedAssetCount)
+                            """)
                     }
                 }
                 print("\n")
             }
-            
+        }
+    }
+    
+    var which : Int { return 0 } // or 1
+    var subtype : PHAssetCollectionSubtype {
+        switch which {
+        case 0: return .albumSyncedAlbum
+        case 1: return .albumRegular
+        default: return .albumSyncedAlbum
         }
     }
 
     @IBAction func doButton2(_ sender: Any) {
         
         checkForPhotoLibraryAccess {
-
+            
             let result = PHAssetCollection.fetchAssetCollections(with:
-                // let's examine albums synced onto the device from iPhoto
-                .album, subtype: .albumSyncedAlbum, options: nil)
+                .album, subtype: self.subtype, options: nil)
             for ix in 0 ..< result.count {
                 let album = result[ix]
-                print("\(album.localizedTitle): " +
-                    "approximately \(album.estimatedAssetCount) photos")
+                print("""
+                    \(album.localizedTitle as Any): \
+                    approximately \(album.estimatedAssetCount) photos
+                    """)
             }
             
         }
@@ -99,11 +111,11 @@ class ViewController: UIViewController {
     @IBAction func doButton3(_ sender: Any) {
         
         checkForPhotoLibraryAccess {
-
+            let result = PHAssetCollection.fetchAssetCollections(with:
+                .album, subtype: self.subtype, options: nil)
+            guard result.count > 0 else { print("no albums"); return }
             let alert = UIAlertController(title: "Pick an album:", message: nil, preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-            let result = PHAssetCollection.fetchAssetCollections(with:
-                .album, subtype: .albumSyncedAlbum, options: nil)
             for ix in 0 ..< result.count {
                 let album = result[ix]
                 alert.addAction(UIAlertAction(title: album.localizedTitle, style: .default) {
@@ -126,7 +138,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var newAlbumId : String?
+    var newAlbumId : String!
     @IBAction func doButton4(_ sender: Any) {
         
         checkForPhotoLibraryAccess {
@@ -206,7 +218,7 @@ class ViewController: UIViewController {
             }
             // find our newly created album by its local id
             let result3 = PHAssetCollection.fetchAssetCollections(
-                withLocalIdentifiers: [self.newAlbumId!], options: opts)
+                withLocalIdentifiers: [self.newAlbumId], options: opts)
             guard let alb2 = result3.firstObject else {
                 print("no target album")
                 return

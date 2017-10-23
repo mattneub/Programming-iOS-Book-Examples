@@ -103,6 +103,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             evc.delegate = self
             if let adj = input.adjustmentData, adj.formatIdentifier == self.myidentifier {
                 if let vigAmount = NSKeyedUnarchiver.unarchiveObject(with: adj.data) as? Double {
+                    print("got vigAmount", vigAmount)
                     if vigAmount >= 0.0 {
                         evc.initialVignette = vigAmount
                         evc.canUndo = true
@@ -131,7 +132,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
             let inorient = self.input.fullSizeImageOrientation
             let output = PHContentEditingOutput(contentEditingInput:self.input)
             let outurl = output.renderedContentURL
-            var ci = CIImage(contentsOf: inurl)!.applyingOrientation(inorient)
+            var ci = CIImage(contentsOf: inurl)!.oriented(forExifOrientation: inorient)
             let space = ci.colorSpace!
             if vignette >= 0.0 {
                 let vig = VignetteFilter()
@@ -149,7 +150,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
 
             // now we must tell the photo library to pick up the edited image
             PHPhotoLibrary.shared().performChanges({
-                print("finishing")
+                print("finishing", self.asset)
                 typealias Req = PHAssetChangeRequest
                 let req = Req(for: self.asset)
                 req.contentEditingOutput = output
@@ -164,7 +165,7 @@ class DataViewController: UIViewController, EditingViewControllerDelegate {
                         // ...we should now reload it
                         self.setUpInterface()
                     } else {
-                        print("phasset change request error: \(err)")
+                        print("phasset change request error: \(err as Any)")
                     }
                 }
             }

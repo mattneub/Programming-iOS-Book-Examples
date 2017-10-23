@@ -28,12 +28,12 @@ extension CGVector {
 
 
 func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
-    let status = AVCaptureDevice.authorizationStatus(forMediaType:AVMediaTypeVideo)
+    let status = AVCaptureDevice.authorizationStatus(for:.video)
     switch status {
     case .authorized:
         f?()
     case .notDetermined:
-        AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeVideo) { granted in
+        AVCaptureDevice.requestAccess(for:.video) { granted in
             if granted {
                 DispatchQueue.main.async {
                     f?()
@@ -81,7 +81,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         let src = UIImagePickerControllerSourceType.camera
         guard UIImagePickerController.isSourceTypeAvailable(src) else {return}
 
-        guard let arr = UIImagePickerController.availableMediaTypes(for:src) else {return}
+        guard UIImagePickerController.availableMediaTypes(for:src) != nil else {return}
 
         let picker = UIImagePickerController()
         picker.sourceType = src
@@ -111,7 +111,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             picker.pushViewController(svc, animated: true)
     }
     
-    func tap (_ g:UIGestureRecognizer) {
+    @objc func tap (_ g:UIGestureRecognizer) {
         self.picker.takePicture()
     }
 
@@ -145,7 +145,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         nc.topViewController!.view.addGestureRecognizer(t)
     }
 
-    func doCancel(_ sender: Any) {
+    @objc func doCancel(_ sender: Any) {
         self.dismiss(animated:true)
     }
     

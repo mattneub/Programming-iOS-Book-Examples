@@ -5,6 +5,7 @@ import MobileCoreServices
 import Photos
 import PhotosUI
 import AVKit
+import ImageIO
 
 func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
@@ -36,6 +37,7 @@ func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
 
 class ViewController: UIViewController {
     @IBOutlet var redView : UIView!
+    var looper : AVPlayerLooper!
     
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         if self.traitCollection.userInterfaceIdiom == .pad {
@@ -57,7 +59,7 @@ class ViewController: UIViewController {
         
         checkForPhotoLibraryAccess {
         
-            // horrible
+            // horrible Moments interface
             // let src = UIImagePickerControllerSourceType.savedPhotosAlbum
             let src = UIImagePickerControllerSourceType.photoLibrary
             guard UIImagePickerController.isSourceTypeAvailable(src)
@@ -66,8 +68,14 @@ class ViewController: UIViewController {
                 else { print("no available types"); return }
             let picker = UIImagePickerController()
             picker.sourceType = src
+            // if you don't explicitly include live photos, you won't get any live photos as live photos
             picker.mediaTypes = [kUTTypeLivePhoto as String, kUTTypeImage as String, kUTTypeMovie as String]
+            // picker.mediaTypes = arr
+            print(arr)
             picker.delegate = self
+            
+            // new in iOS 11
+            picker.videoExportPreset = AVAssetExportPreset640x480 // for example
             
             picker.allowsEditing = false // try true
             
@@ -103,33 +111,70 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
     
     
     func imagePickerController(_ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [String : Any]) { //
-            print(info[UIImagePickerControllerReferenceURL] as Any)
-            let url = info[UIImagePickerControllerMediaURL] as? URL
-            var im = info[UIImagePickerControllerOriginalImage] as? UIImage
-            if let ed = info[UIImagePickerControllerEditedImage] as? UIImage {
-                im = ed
-            }
-            let live = info[UIImagePickerControllerLivePhoto] as? PHLivePhoto
-            self.dismiss(animated:true) {
-                if let mediatype = info[UIImagePickerControllerMediaType],
-                    let type = mediatype as? NSString {
-                        switch type {
-                        case kUTTypeLivePhoto:
-                            if live != nil {
-                                self.showLivePhoto(live!)
-                            }
-                        case kUTTypeImage:
-                            if im != nil {
-                                self.showImage(im!)
-                            }
-                        case kUTTypeMovie:
-                            if url != nil {
-                                self.showMovie(url:url!)
-                            }
-                        default:break
+                               didFinishPickingMediaWithInfo info: [String : Any]) { //
+        let asset = info[UIImagePickerControllerPHAsset] as? PHAsset
+        print(asset as Any)
+        print(asset?.playbackStyle.rawValue as Any)
+        // types are 0 for unsupported, then image, imageAnimated, livePhoto, video, videoLooping
+        let url = info[UIImagePickerControllerMediaURL] as? URL
+        print("media url:", url as Any)
+        var im = info[UIImagePickerControllerOriginalImage] as? UIImage
+        if let ed = info[UIImagePickerControllerEditedImage] as? UIImage {
+            im = ed
+        }
+        let live = info[UIImagePickerControllerLivePhoto] as? PHLivePhoto
+        let imurl = info[UIImagePickerControllerImageURL] as? URL
+        self.dismiss(animated:true) {
+            if let style = asset?.playbackStyle {
+                switch style {
+                case .image:
+                    if im != nil {
+                        self.showImage(im!)
+                    }
+                    // how to pick up metadata
+                    if imurl != nil {
+                        self.pickUpMetadata(imurl!)
+                    }
+                case .imageAnimated:
+                    if imurl != nil {
+                        self.showAnimatedImage(imurl!)
+                    }
+                case .livePhoto:
+                    if live != nil {
+                        self.showLivePhoto(live!)
+                    }
+                case .video:
+                    if url != nil {
+                        self.showMovie(url:url!)
+                    }
+                case .videoLooping:
+                    if url != nil {
+                        self.showLoopingMovie(url:url!)
+                    }
+                case .unsupported: break
                 }
             }
+            // old code from when only three types of result were possible
+            /*
+            if let mediatype = info[UIImagePickerControllerMediaType],
+                let type = mediatype as? NSString {
+                switch type as CFString {
+                case kUTTypeLivePhoto:
+                    if live != nil {
+                        self.showLivePhoto(live!)
+                    }
+                case kUTTypeImage:
+                    if im != nil {
+                        self.showImage(im!)
+                    }
+                case kUTTypeMovie:
+                    if url != nil {
+                        self.showMovie(url:url!)
+                    }
+                default:break
+                }
+            }
+ */
         }
     }
     
@@ -141,6 +186,19 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
             av.removeFromParentViewController()
         }
         self.redView.subviews.forEach { $0.removeFromSuperview() }
+    }
+    
+    func showAnimatedImage(_ imurl:URL?) {
+        guard let data = try? Data(contentsOf: imurl!) else { return }
+        guard let anim = AnimatedImage(data: data) else { return }
+        let arr = (0..<anim.frameCount).map { anim.image(at:$0)! }
+        let iv = UIImageView()
+        iv.animationImages = arr.map {UIImage(cgImage:$0)}
+        iv.animationDuration = anim.duration
+        iv.contentMode = .scaleAspectFit
+        iv.frame = self.redView.bounds
+        self.redView.addSubview(iv)
+        iv.startAnimating()
     }
     
     func showImage(_ im:UIImage) {
@@ -161,6 +219,21 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         av.view.backgroundColor = self.redView.backgroundColor
         self.redView.addSubview(av.view)
         av.didMove(toParentViewController: self)
+        player.play()
+    }
+    
+    func showLoopingMovie(url:URL) {
+        self.clearAll()
+        let av = AVPlayerViewController()
+        let player = AVQueuePlayer(url:url)
+        av.player = player
+        self.looper = AVPlayerLooper(player: player, templateItem: player.currentItem!)
+        self.addChildViewController(av)
+        av.view.frame = self.redView.bounds
+        av.view.backgroundColor = self.redView.backgroundColor
+        self.redView.addSubview(av.view)
+        av.didMove(toParentViewController: self)
+        player.play()
     }
     
     func showLivePhoto(_ ph:PHLivePhoto) {
@@ -169,6 +242,13 @@ extension ViewController : UIImagePickerControllerDelegate, UINavigationControll
         v.contentMode = .scaleAspectFit
         v.livePhoto = ph
         self.redView.addSubview(v)
+    }
+    
+    func pickUpMetadata(_ imurl:URL?) {
+        guard let src = CGImageSourceCreateWithURL(imurl! as CFURL, nil) else {return}
+        let result = CGImageSourceCopyPropertiesAtIndex(src,0,nil)! as NSDictionary
+        print(result)
+
     }
     
 }

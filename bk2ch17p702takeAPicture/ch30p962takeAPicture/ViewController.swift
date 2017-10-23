@@ -5,6 +5,7 @@ import AVFoundation
 import AVKit
 import MobileCoreServices
 import Photos
+import ImageIO
 
 func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
     let status = PHPhotoLibrary.authorizationStatus()
@@ -29,12 +30,12 @@ func checkForPhotoLibraryAccess(andThen f:(()->())? = nil) {
 }
 
 func checkForMicrophoneCaptureAccess(andThen f:(()->())? = nil) {
-    let status = AVCaptureDevice.authorizationStatus(forMediaType:AVMediaTypeAudio)
+    let status = AVCaptureDevice.authorizationStatus(for:.audio)
     switch status {
     case .authorized:
         f?()
     case .notDetermined:
-        AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeAudio) { granted in
+        AVCaptureDevice.requestAccess(for:.audio) { granted in
             if granted {
                 DispatchQueue.main.async {
                     f?()
@@ -65,12 +66,12 @@ func checkForMicrophoneCaptureAccess(andThen f:(()->())? = nil) {
 
 
 func checkForMovieCaptureAccess(andThen f:(()->())? = nil) {
-    let status = AVCaptureDevice.authorizationStatus(forMediaType:AVMediaTypeVideo)
+    let status = AVCaptureDevice.authorizationStatus(for:.video)
     switch status {
     case .authorized:
         f?()
     case .notDetermined:
-        AVCaptureDevice.requestAccess(forMediaType:AVMediaTypeVideo) { granted in
+        AVCaptureDevice.requestAccess(for:.video) { granted in
             if granted {
                 DispatchQueue.main.async {
                 	f?()
@@ -119,8 +120,8 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         let src = UIImagePickerControllerSourceType.camera
         guard UIImagePickerController.isSourceTypeAvailable(src) else {return}
         
-        var which : Int {return 0} // 1, 2, 3, 4
-        var desiredTypes : [String] = {
+        var which : Int {return 4} // 1, 2, 3, 4
+        let desiredTypes : [String] = {
             switch which {
             case 1: return [kUTTypeImage as String]
             case 2: return [kUTTypeMovie as String]
@@ -130,16 +131,10 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             }
         }()
         // so I think what this proves is that they are not going to let me take a live photo this way
-        
-        guard let arr = UIImagePickerController.availableMediaTypes(for:src) else {return}
-        desiredTypes = desiredTypes.filter {arr.contains($0)}
-        guard desiredTypes.count > 0 else {return}
-        
-        
         let picker = UIImagePickerController()
         picker.sourceType = src
         picker.mediaTypes = desiredTypes
-        picker.mediaTypes = arr // instead of desiredTypes; that was just for testing
+        print(picker.mediaTypes) // if you include live photo, they throw it away
         picker.allowsEditing = false
         picker.delegate = self
         
@@ -152,7 +147,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [String : Any]) {
-            print(info[UIImagePickerControllerReferenceURL] as Any)
+            print(info[UIImagePickerControllerPHAsset] as Any)
             let url = info[UIImagePickerControllerMediaURL] as? URL
             var im = info[UIImagePickerControllerOriginalImage] as? UIImage
             if let ed = info[UIImagePickerControllerEditedImage] as? UIImage {
@@ -160,22 +155,47 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate {
             }
             if let live = info[UIImagePickerControllerLivePhoto] {
                 print("I got a live photo!") // nope
+                _ = live
             }
+            let imurl = info[UIImagePickerControllerImageURL] as? URL
+            print(imurl as Any)
+            let m = info[UIImagePickerControllerMediaMetadata] as? NSDictionary
+            print(m as Any)
             self.dismiss(animated:true) {
                 let mediatype = info[UIImagePickerControllerMediaType]
                 guard let type = mediatype as? NSString else {return}
-                switch type {
+                switch type as CFString {
                 case kUTTypeImage:
                     if im != nil {
                         self.showImage(im!)
                         // showing how simple it is to save into the Camera Roll
+                        // return;
                         checkForPhotoLibraryAccess {
-                            let lib = PHPhotoLibrary.shared()
-                            lib.performChanges({
-                                typealias Req = PHAssetChangeRequest
-                                let req = Req.creationRequestForAsset(from: im!)
-                                // apply metadata info here, as desired
-                            })
+                            var which : Int { return 0 }
+                            switch which {
+                            case 0: // simply add image to library
+                                let lib = PHPhotoLibrary.shared()
+                                lib.performChanges({
+                                    typealias Req = PHAssetChangeRequest
+                                    let req = Req.creationRequestForAsset(from: im!)
+                                    // apply metadata info here, as desired
+                                })
+                            case 1: // add image while folding in the metadata
+                                let jpeg = UIImageJPEGRepresentation(im!, 1)!
+                                let src = CGImageSourceCreateWithData(jpeg as CFData, nil)!
+                                let data = NSMutableData()
+                                let uti = CGImageSourceGetType(src)!
+                                let dest = CGImageDestinationCreateWithData(data as CFMutableData, uti, 1, nil)!
+                                CGImageDestinationAddImageFromSource(dest, src, 0, m)
+                                CGImageDestinationFinalize(dest)
+                                let lib = PHPhotoLibrary.shared()
+                                lib.performChanges({
+                                    let req = PHAssetCreationRequest.forAsset()
+                                    req.addResource(with: .photo, data: data as Data, options: nil)
+                                })
+                            default: break
+                            }
+                            
                         }
                     }
                 case kUTTypeMovie:
