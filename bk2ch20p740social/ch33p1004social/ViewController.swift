@@ -6,7 +6,7 @@ import Social
 
 class ViewController: UIViewController, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
 
-    @IBAction func doMail (_ sender: Any!) {
+    @IBAction func doMail (_ sender: Any) {
         guard MFMailComposeViewController.canSendMail() else {
             print("no mail")
             return
@@ -23,7 +23,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, MFM
     
     // ================
     
-    @IBAction func doMessage (_ sender: Any!) {
+    @IBAction func doMessage (_ sender: Any) {
         guard MFMessageComposeViewController.canSendText() else {
             print("no messages") // but this won't happen even if messages are not configured
             return
@@ -39,6 +39,8 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, MFM
     }
     
     // ================
+    
+    // deprecated in iOS 11? I think I'll omit it in any case, just to be on the safe side
     
     @IBAction func doTwitter (_ sender: Any!) {
         guard SLComposeViewController.isAvailable(forServiceType:SLServiceTypeTwitter) else {
