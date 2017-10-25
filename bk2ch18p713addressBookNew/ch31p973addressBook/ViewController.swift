@@ -86,21 +86,21 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
                         premoi = moi
                     default:break
                     }
-                    var moi = premoi!
+                    let moi = premoi!
                     print(moi)
                     if moi.isKeyAvailable(CNContactEmailAddressesKey) {
                         print(moi.emailAddresses)
                     } else {
                         print("you haven't fetched emails yet")
                     }
-                    moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor, CNContactEmailAddressesKey as CNKeyDescriptor])
-                    let emails = moi.emailAddresses
+                    let moi2 = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [CNContactFamilyNameKey as CNKeyDescriptor, CNContactGivenNameKey as CNKeyDescriptor, CNContactEmailAddressesKey as CNKeyDescriptor])
+                    let emails = moi2.emailAddresses
                     let workemails = emails.filter{$0.label == CNLabelWork}.map{$0.value}
                     print(workemails)
                     let full = CNContactFormatterStyle.fullName
                     let keys = CNContactFormatter.descriptorForRequiredKeys(for:full)
-                    moi = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [keys, CNContactEmailAddressesKey as CNKeyDescriptor])
-                    if let name = CNContactFormatter.string(from: moi, style: full) {
+                    let moi3 = try CNContactStore().unifiedContact(withIdentifier: moi.identifier, keysToFetch: [keys, CNContactEmailAddressesKey as CNKeyDescriptor])
+                    if let name = CNContactFormatter.string(from: moi3, style: full) {
                         print("\(name): \(workemails[0])") // Matt Neuburg: matt@tidbits.com
                     }
                 } catch {
@@ -156,6 +156,7 @@ class ViewController : UIViewController, CNContactPickerDelegate, CNContactViewC
     func contactPicker(_ picker: CNContactPickerViewController, didSelect prop: CNContactProperty) {
         print("prop")
         print(prop)
+        print(prop.contact) // showing that it is fully populated
     }
 
 
