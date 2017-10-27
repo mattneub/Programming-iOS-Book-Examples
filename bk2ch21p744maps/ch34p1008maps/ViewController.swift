@@ -32,21 +32,27 @@ extension CGVector {
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
-    let which = 6 // 1...10
+    let which = 1 // 1...10
     
     @IBOutlet var map : MKMapView!
     var annloc : CLLocationCoordinate2D!
     
+    let bikeid = "bike"
+    let bikeid2 = "bike2"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.map.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: self.bikeid)
+        self.map.register(MyBikeAnnotationView.self, forAnnotationViewWithReuseIdentifier: self.bikeid2)
+
         self.map.tintColor = .green
         
         let loc = CLLocationCoordinate2DMake(34.927752,-120.217608)
         let span = MKCoordinateSpanMake(0.015, 0.015)
         let reg = MKCoordinateRegionMake(loc, span)
         // or ...
-        //let reg = MKCoordinateRegionMakeWithDistance(loc, 1200, 1200)
+        // let reg = MKCoordinateRegionMakeWithDistance(loc, 1200, 1200)
         self.map.region = reg
         //  or ...
 //        let pt = MKMapPointForCoordinate(loc)
@@ -54,6 +60,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
 //        self.map.visibleMapRect = MKMapRectMake(pt.x - w/2.0, pt.y - w/2.0, w, w)
         
         self.annloc = CLLocationCoordinate2DMake(34.923964,-120.219558)
+        
+        // try new iOS 11 feature
+        self.map.showsCompass = false
+        let compass = MKCompassButton(mapView:self.map)
+        compass.frame.origin = CGPoint(20,400)
+        // compass.compassVisibility = .visible
+        compass.isHidden = true // prevent annoying initial flash
+        self.view.addSubview(compass)
         
         if which == 1 {
             return
@@ -65,7 +79,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             ann.subtitle = "Fun awaits down the road!"
             self.map.addAnnotation(ann)
         } else {
-            let ann = MyAnnotation(location:self.annloc)
+            let ann = MyBikeAnnotation(location:self.annloc)
             ann.title = "Park here"
             ann.subtitle = "Fun awaits down the road!"
             self.map.addAnnotation(ann)
@@ -156,74 +170,61 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if which == 3 {
-            var v : MKAnnotationView! = nil
-            if let t = annotation.title, t == "Park here" {
-                let ident = "greenPin"
-                v = mapView.dequeueReusableAnnotationView(withIdentifier:ident)
-                if v == nil {
-                    v = MKPinAnnotationView(annotation:annotation, reuseIdentifier:ident)
-                    (v as! MKPinAnnotationView).pinTintColor = MKPinAnnotationView.greenPinColor() // or any UIColor
-                    v.canShowCallout = true
-                    (v as! MKPinAnnotationView).animatesDrop = true
-                    
+            let id = MKMapViewDefaultAnnotationViewReuseIdentifier
+            if let v = mapView.dequeueReusableAnnotationView(withIdentifier: id, for: annotation) as? MKMarkerAnnotationView {
+                if let t = annotation.title, t == "Park here" {
+                    v.titleVisibility = .visible
+                    v.subtitleVisibility = .visible
+                    v.markerTintColor = .green
+                    v.glyphText = "!"
+                    // v.glyphImage = UIImage(named:"smileyWithTransparencyTiny")!.withRenderingMode(.alwaysOriginal)
+                    v.glyphTintColor = .black
+                    // v.animatesWhenAdded = true
+                    v.isDraggable = true
+                    print("tried to make it draggable")
+                    return v
                 }
-                v.annotation = annotation
             }
-            return v
+            return nil
         }
         if which == 4 {
-            var v : MKAnnotationView! = nil
+            let v = mapView.dequeueReusableAnnotationView(withIdentifier: self.bikeid, for: annotation)
             if let t = annotation.title, t == "Park here" {
-                let ident = "bike"
-                v = mapView.dequeueReusableAnnotationView(withIdentifier:ident)
-                if v == nil {
-                    v = MKAnnotationView(annotation:annotation, reuseIdentifier:ident)
-                    v.image = UIImage(named:"clipartdirtbike.gif")
-                    v.bounds.size.height /= 3.0
-                    v.bounds.size.width /= 3.0
-                    v.centerOffset = CGPoint(0,-20)
-                    v.canShowCallout = true
-                }
-                v.annotation = annotation
+                v.image = UIImage(named:"clipartdirtbike.gif")
+                v.bounds.size.height /= 3.0
+                v.bounds.size.width /= 3.0
+                v.centerOffset = CGPoint(0,-20)
+                v.canShowCallout = true
+                return v
             }
-            return v
+            return nil
         }
         if which == 5 {
-            var v : MKAnnotationView! = nil
+            let v = mapView.dequeueReusableAnnotationView(withIdentifier: self.bikeid2, for: annotation)
             if let t = annotation.title, t == "Park here" {
-                let ident = "bike"
-                v = mapView.dequeueReusableAnnotationView(withIdentifier:ident)
-                if v == nil {
-                    v = MyAnnotationView(annotation:annotation, reuseIdentifier:ident)
-                    v.canShowCallout = true
-                }
-                v.annotation = annotation
+                // nothing to do!
+                return v
             }
-            return v
+            return nil
         }
         if which >= 6 {
-            var v : MKAnnotationView! = nil
-            if annotation is MyAnnotation {
-                let ident = "bike"
-                v = mapView.dequeueReusableAnnotationView(withIdentifier:ident)
-                if v == nil {
-                    v = MyAnnotationView(annotation:annotation, reuseIdentifier:ident)
-                    v.canShowCallout = true
-                    let im = UIImage(named:"smileyWithTransparencyTiny.png")!
-                        .withRenderingMode(.alwaysTemplate)
-                    let iv = UIImageView(image:im)
-                    v.leftCalloutAccessoryView = iv
-                    v.rightCalloutAccessoryView = UIButton(type:.infoLight)
-                    let lab = UILabel()
-                    lab.text = "With a hey and a ho and a hey nonny no!"
-                    lab.numberOfLines = 0
-                    lab.font = lab.font.withSize(10)
-                    v.detailCalloutAccessoryView = lab
-                }
-                v.annotation = annotation
+            if annotation is MyBikeAnnotation {
+                let v = mapView.dequeueReusableAnnotationView(withIdentifier: self.bikeid2, for: annotation)
+                let im = UIImage(named:"smileyWithTransparencyTiny.png")!
+                    .withRenderingMode(.alwaysTemplate)
+                let iv = UIImageView(image:im)
+                v.leftCalloutAccessoryView = iv
+                v.rightCalloutAccessoryView = UIButton(type:.infoLight)
+                let lab = UILabel()
+                lab.text = "With a hey and a ho and a hey nonny no!"
+                lab.numberOfLines = 0
+                lab.font = lab.font.withSize(10)
+                v.detailCalloutAccessoryView = lab
                 v.isDraggable = true
+                print("tried to make it draggable")
+                return v
             }
-            return v
+            return nil
         }
         return nil
     }
@@ -238,7 +239,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
         if which >= 7 {
             for aView in views {
-                if aView.reuseIdentifier == "bike" {
+                if aView.reuseIdentifier == self.bikeid2 {
                     aView.transform = CGAffineTransform(scaleX: 0, y: 0)
                     aView.alpha = 0
                     UIView.animate(withDuration:0.8) {
@@ -287,6 +288,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let mi = MKMapItem(placemark: p)
         mi.name = "A Great Place to Dirt Bike" // label to appear in Maps app
         // this now works!
+        print(MKMapItemTypeIdentifier)
+        print(MKMapType.standard.rawValue)
         mi.openInMaps(launchOptions:[
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
             MKLaunchOptionsMapCenterKey: self.map.region.center,
@@ -295,7 +298,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
     }
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+    // this is no longer needed! my views are draggable as long as `isDraggable` is true
+    func mapViewNOT(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+        print("here")
         switch newState {
         case .starting:
             view.dragState = .dragging

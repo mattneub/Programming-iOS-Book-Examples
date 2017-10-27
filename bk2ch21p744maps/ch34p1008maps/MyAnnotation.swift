@@ -1,7 +1,7 @@
 import UIKit
 import MapKit
 
-class MyAnnotation : NSObject, MKAnnotation {
+class MyBikeAnnotation : NSObject, MKAnnotation {
     dynamic var coordinate : CLLocationCoordinate2D
     /* dynamic */ var title: String?
     var subtitle: String?

@@ -1,6 +1,7 @@
 
 import UIKit
 import MapKit
+import Contacts
 
 func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
@@ -24,6 +25,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         self.navigationItem.titleView = sb
         
         self.map.delegate = self
+        
     }
     
     @IBAction func doButton (_ sender: Any!) {
@@ -32,7 +34,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         let span = MKCoordinateSpanMake(0.0005, 0.0005)
         mi.openInMaps(launchOptions:[
             MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue,
-            // MKLaunchOptionsMapSpanKey: mkCoordinateSpan:span
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan:span)
         ])
     }
     
@@ -56,12 +58,12 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
         geo.reverseGeocodeLocation(loc) { placemarks, error in
             guard let ps = placemarks, ps.count > 0 else {return}
             let p = ps[0]
-            if let d = p.addressDictionary {
-                if let add = d["FormattedAddressLines"] as? [String] {
-                    for line in add {
-                        print(line)
-                    }
-                }
+            // addressDictionary is now deprecated,
+            // and where are we supposed to get a substitute?
+            // aha! import Contacts and now you can use the `postalAddress`
+            if let addy = p.postalAddress {
+                let f = CNPostalAddressFormatter()
+                print(f.string(from: addy))
             }
         }
     }
@@ -69,7 +71,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         guard let s = searchBar.text else { return }
-        guard s.characters.count > 5 else { return }
+        guard s.count > 5 else { return }
         let geo = CLGeocoder()
         geo.geocodeAddressString(s) { placemarks, error in
             guard let placemarks = placemarks else {
@@ -161,6 +163,21 @@ class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate {
             return r
         }
         return MKOverlayRenderer()
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        print(type(of:annotation))
+        if let annotation = annotation as? MKUserLocation {
+            annotation.title = "You are here, stupid!"
+            return nil
+            let v = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
+            return v
+        }
+        return nil // default
+    }
+    
+    func mapViewNOT(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        userLocation.title = "You are lost!"
     }
     
 }
