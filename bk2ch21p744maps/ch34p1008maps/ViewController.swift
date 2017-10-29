@@ -35,7 +35,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
     let which = 1 // 1...10
     
     @IBOutlet var map : MKMapView!
-    var annloc : CLLocationCoordinate2D!
+    let annloc = CLLocationCoordinate2DMake(34.923964,-120.219558)
+
     
     let bikeid = "bike"
     let bikeid2 = "bike2"
@@ -58,8 +59,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
 //        let pt = MKMapPointForCoordinate(loc)
 //        let w = MKMapPointsPerMeterAtLatitude(loc.latitude) * 1200
 //        self.map.visibleMapRect = MKMapRectMake(pt.x - w/2.0, pt.y - w/2.0, w, w)
-        
-        self.annloc = CLLocationCoordinate2DMake(34.923964,-120.219558)
         
         // try new iOS 11 feature
         self.map.showsCompass = false
@@ -109,10 +108,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
             var p3 = MKMapPointMake(c.x, c.y)
             p3.x += 300/metersPerPoint
             p3.y -= 400/metersPerPoint
-            var pts = [
-                p1, p2, p3
-            ]
-            let tri = MKPolygon(points:&pts, count:3)
+            var points = [p1, p2, p3]
+            let tri = MKPolygon(points:&points, count:3)
             self.map.add(tri)
         }
         if which == 9 {
@@ -133,9 +130,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             let p4 = CGPoint(p2.x, p2.y+unit*3)
             let p5 = CGPoint(p4.x, p4.y-unit)
             let p6 = CGPoint(p5.x-2*unit, p5.y)
-            let points = [
-                start, p1, p2, p3, p4, p5, p6
-            ]
+            let points = [start, p1, p2, p3, p4, p5, p6]
             // rotate the arrow around its center
             let t1 = CGAffineTransform(translationX: unit*2, y: unit*2)
             let t2 = t1.rotated(by:-.pi/3.5)
@@ -143,7 +138,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             p.addLines(between: points, transform: t3)
             p.closeSubpath()
             // create the overlay and give it the path
-            let over = MyOverlay(rect:mr)
+            let over = MyPathOverlay(rect:mr)
             over.path = UIBezierPath(cgPath:p)
             // add the overlay to the map
             self.map.add(over)
@@ -158,7 +153,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             // size and position the overlay bounds on the earth
             let sz = CGSize(4*CGFloat(unit), 4*CGFloat(unit))
             let mr = MKMapRectMake(c.x + 2*unit, c.y - 4.5*unit, Double(sz.width), Double(sz.height))
-            let over = MyOverlay(rect:mr)
+            let over = MyPathOverlay(rect:mr)
             self.map.add(over, level:.aboveRoads)
             
             let annot = MKPointAnnotation()
@@ -265,7 +260,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             }
         }
         if which == 9 {
-            if let overlay = overlay as? MyOverlay {
+            if let overlay = overlay as? MyPathOverlay {
                 let r = MKOverlayPathRenderer(overlay:overlay)
                 r.path = overlay.path.cgPath
                 r.fillColor = UIColor.red.withAlphaComponent(0.2)
@@ -275,8 +270,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
             }
         }
         if which == 10 {
-            if overlay is MyOverlay {
-                let r = MyOverlayRenderer(overlay:overlay, angle: -.pi/3.5)
+            if overlay is MyPathOverlay {
+                let r = MyPathOverlayRenderer(overlay:overlay, angle: -.pi/3.5)
                 return r
             }
         }

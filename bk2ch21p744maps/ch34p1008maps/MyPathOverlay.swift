@@ -3,7 +3,7 @@
 import UIKit
 import MapKit
 
-class MyOverlay : NSObject, MKOverlay {
+class MyPathOverlay : NSObject, MKOverlay {
     
     var coordinate : CLLocationCoordinate2D {
         get {

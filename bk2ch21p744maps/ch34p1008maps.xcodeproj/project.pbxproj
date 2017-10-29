@@ -10,8 +10,8 @@
 		323670441AE561AA005B3793 /* MyAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D93D5819A7BCA600B017D1 /* MyAnnotation.swift */; };
 		32D3D47A1BC6B9EB00DC6CCE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3D4791BC6B9EB00DC6CCE /* AppDelegate.swift */; };
 		32D3D47C1BC6B9F100DC6CCE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D3D47B1BC6B9F100DC6CCE /* LaunchScreen.storyboard */; };
-		32D93D5519A7B10C00B017D1 /* MyOverlayRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D93D5419A7B10C00B017D1 /* MyOverlayRenderer.swift */; };
-		32D93D5719A7BA2E00B017D1 /* MyOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D93D5619A7BA2E00B017D1 /* MyOverlay.swift */; };
+		32D93D5519A7B10C00B017D1 /* MyPathOverlayRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D93D5419A7B10C00B017D1 /* MyPathOverlayRenderer.swift */; };
+		32D93D5719A7BA2E00B017D1 /* MyPathOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D93D5619A7BA2E00B017D1 /* MyPathOverlay.swift */; };
 		32D93D5B19A7BDE400B017D1 /* MyAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D93D5A19A7BDE400B017D1 /* MyAnnotationView.swift */; };
 		32D93D8A19A7CAC900B017D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D93D8919A7CAC900B017D1 /* ViewController.swift */; };
 		C911DAD1182B34D60035F0FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C911DACF182B34D60035F0FD /* Main.storyboard */; };
@@ -24,8 +24,8 @@
 /* Begin PBXFileReference section */
 		32D3D4791BC6B9EB00DC6CCE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32D3D47B1BC6B9F100DC6CCE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		32D93D5419A7B10C00B017D1 /* MyOverlayRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOverlayRenderer.swift; sourceTree = "<group>"; };
-		32D93D5619A7BA2E00B017D1 /* MyOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOverlay.swift; sourceTree = "<group>"; };
+		32D93D5419A7B10C00B017D1 /* MyPathOverlayRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPathOverlayRenderer.swift; sourceTree = "<group>"; };
+		32D93D5619A7BA2E00B017D1 /* MyPathOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPathOverlay.swift; sourceTree = "<group>"; };
 		32D93D5819A7BCA600B017D1 /* MyAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAnnotation.swift; sourceTree = "<group>"; };
 		32D93D5A19A7BDE400B017D1 /* MyAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAnnotationView.swift; sourceTree = "<group>"; };
 		32D93D8919A7CAC900B017D1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,8 +84,8 @@
 				C935A901182BEE9B007F97D1 /* clipartdirtbike.gif */,
 				32D93D5A19A7BDE400B017D1 /* MyAnnotationView.swift */,
 				32D93D5819A7BCA600B017D1 /* MyAnnotation.swift */,
-				32D93D5619A7BA2E00B017D1 /* MyOverlay.swift */,
-				32D93D5419A7B10C00B017D1 /* MyOverlayRenderer.swift */,
+				32D93D5619A7BA2E00B017D1 /* MyPathOverlay.swift */,
+				32D93D5419A7B10C00B017D1 /* MyPathOverlayRenderer.swift */,
 				C935A909182BF453007F97D1 /* smileyWithTransparencyTiny.png */,
 				C911DAD5182B34D60035F0FD /* Assets.xcassets */,
 				32D3D47B1BC6B9F100DC6CCE /* LaunchScreen.storyboard */,
@@ -170,8 +170,8 @@
 			files = (
 				32D3D47A1BC6B9EB00DC6CCE /* AppDelegate.swift in Sources */,
 				323670441AE561AA005B3793 /* MyAnnotation.swift in Sources */,
-				32D93D5519A7B10C00B017D1 /* MyOverlayRenderer.swift in Sources */,
-				32D93D5719A7BA2E00B017D1 /* MyOverlay.swift in Sources */,
+				32D93D5519A7B10C00B017D1 /* MyPathOverlayRenderer.swift in Sources */,
+				32D93D5719A7BA2E00B017D1 /* MyPathOverlay.swift in Sources */,
 				32D93D5B19A7BDE400B017D1 /* MyAnnotationView.swift in Sources */,
 				32D93D8A19A7CAC900B017D1 /* ViewController.swift in Sources */,
 			);
