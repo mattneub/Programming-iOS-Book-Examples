@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         self.oldZ = accel.z - ((accel.z * alpha) + (self.oldZ * (1.0 - alpha)))
     }
     
-    func pollAccel(_: Any!) {
+    @objc func pollAccel(_: Any!) {
         guard let data = self.motman.accelerometerData else {return}
         self.add(acceleration: data.acceleration)
         let x = self.oldX

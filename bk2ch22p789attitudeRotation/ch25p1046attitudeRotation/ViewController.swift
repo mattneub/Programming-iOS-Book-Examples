@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         self.timer = Timer.scheduledTimer(timeInterval:t, target:self, selector:#selector(pollAttitude),userInfo:nil, repeats:true)
     }
     
-    func pollAttitude(_: Any!) {
+    @objc func pollAttitude(_: Any!) {
         guard let mot = self.motman.deviceMotion else {return}
         let att = mot.attitude
         if self.ref == nil {
@@ -54,6 +54,8 @@ class ViewController: UIViewController {
         let lay = self.v.layer.sublayers![0]
         CATransaction.setAnimationDuration(1.0/10.0)
         lay.transform = t
+        
+        
     }
 
 }

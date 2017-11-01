@@ -18,6 +18,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if self.isFirstResponder {
             print("hey, you shook me!")
+            let alert = UIAlertController(title: "Hey", message: "You shook me!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+            self.present(alert, animated: true)
         } else {
             super.motionEnded(motion, with: event)
         }

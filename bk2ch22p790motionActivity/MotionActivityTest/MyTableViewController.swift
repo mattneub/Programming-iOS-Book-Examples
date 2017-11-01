@@ -24,39 +24,34 @@ class MyTableViewController: UITableViewController {
         print("distance: \(ok3)")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.checkAuthorization()
-    }
-    
-    func checkAuthorization() {
+    func checkAuthorization(andThen f:(()->())? = nil) {
         guard CMMotionActivityManager.isActivityAvailable() else {
             print("darn")
             return
         }
-        // there is also CMPedometer and various is...Available in iOS 8 on a subset of devices
-        // there is no direct authorization check
-        // instead, we attempt to "tickle" the activity manager and see if we get an error
-        // this will cause the system authorization dialog to be presented if necessary
-        let now = Date()
-        self.actman.queryActivityStarting(from: now, to:now, to:.main) { arr, err in
-            // such Swift numeric barf you could plotz
-            let notauth = Int(CMErrorMotionActivityNotAuthorized.rawValue)
-            if err != nil && (err! as NSError).code == notauth {
-                print("no authorization")
-                self.isAuthorized = false
-            } else {
-                print("authorized")
-                self.isAuthorized = true
+        // new in iOS 11, we can just ask for the authorization status
+        let status = CMMotionActivityManager.authorizationStatus()
+        switch status {
+        case .notDetermined: // bring up dialog
+            let now = Date()
+            self.actman.queryActivityStarting(from: now, to:now, to:.main) {
+                _,err in
+                print("asked for authorization")
+                if err == nil {
+                    f?()
+                }
             }
+        case .authorized: f?()
+        case .restricted: break // do nothing
+        case .denied: break // could beg for authorization here
         }
     }
     
-    func doStart(_ sender: Any!) {
-        if !self.isAuthorized {
-            self.checkAuthorization()
-            return
-        }
+    @objc func doStart(_ sender: Any!) {
+        self.checkAuthorization(andThen: self.reallyStart)
+    }
+    
+    private func reallyStart() {
         // there are two approaches: live and historical
         // collect historical data
         let now = Date()
@@ -79,18 +74,19 @@ class MyTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
             /*
-            let format = DateFormatter()
-            format.dateFormat = "MMM d, HH:mm:ss"
-            
-            for act in acts {
-                print("=======")
-                print(format.string(from:act.startDate))
-                print("S W R A U")
-                // print(self.overallAct(act))
-            }
-            */
+             let format = DateFormatter()
+             format.dateFormat = "MMM d, HH:mm:ss"
+             
+             for act in acts {
+             print("=======")
+             print(format.string(from:act.startDate))
+             print("S W R A U")
+             // print(self.overallAct(act))
+             }
+             */
             
         }
+
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -128,5 +124,43 @@ class MyTableViewController: UITableViewController {
         return cell
     }
 
+    func ignore() {
+        let rec = CMSensorRecorder()
+        if let list = rec.accelerometerData(from: Date(), to: Date()) {
+            for datum in list {
+                if let accdatum = datum as? CMRecordedAccelerometerData {
+                    let accel = accdatum.acceleration
+                    let t = accdatum.timestamp
+                    // do something with data here
+                }
+            }
+        }
+    }
+    
+    func oldCode() {
+        // before iOS 11, there is no direct authorization check
+        // instead, we attempt to "tickle" the activity manager and see if we get an error
+        // this will cause the system authorization dialog to be presented if necessary
+        let now = Date()
+        self.actman.queryActivityStarting(from: now, to:now, to:.main) { arr, err in
+            // such Swift numeric barf you could plotz
+            let notauth = Int(CMErrorMotionActivityNotAuthorized.rawValue)
+            if err != nil && (err! as NSError).code == notauth {
+                print("no authorization")
+                self.isAuthorized = false
+            } else {
+                print("authorized")
+                self.isAuthorized = true
+            }
+        }
+    }
 
 }
+
+extension CMSensorDataList: Sequence {
+    public typealias Iterator = NSFastEnumerationIterator
+    public func makeIterator() -> NSFastEnumerationIterator {
+        return NSFastEnumerationIterator(self)
+    }
+}
+

@@ -24,7 +24,7 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationAlwaysUsageDescription</key>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>The app would like to send your location info to the NSA.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>The app would like to tell you where you are.</string>

@@ -26,7 +26,14 @@ class ManagerHolder {
         }
         let status = CLLocationManager.authorizationStatus()
         switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
+        case .authorizedWhenInUse:
+            if always { // try to step up
+                self.doThisWhenAuthorized = f
+                self.locman.requestAlwaysAuthorization()
+            } else {
+                f?()
+            }
+        case .authorizedAlways:
             f?()
         case .notDetermined:
             self.doThisWhenAuthorized = f

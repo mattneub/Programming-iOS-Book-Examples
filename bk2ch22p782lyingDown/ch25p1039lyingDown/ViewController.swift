@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func pollAccel (_: Any!) {
+    @objc func pollAccel (_: Any!) {
         guard let data = self.motman.accelerometerData else {return}
         self.receive(acceleration:data)
     }

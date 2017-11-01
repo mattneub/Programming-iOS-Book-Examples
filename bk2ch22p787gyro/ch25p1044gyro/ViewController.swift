@@ -14,22 +14,21 @@ class ViewController: UIViewController {
             return
         }
         // idiot Swift numeric foo (different in iOS 8.3 but still idiotic)
-        let ref = CMAttitudeReferenceFrame.xMagneticNorthZVertical
-        let avail = CMMotionManager.availableAttitudeReferenceFrames()
-        guard avail.contains(ref) else {
+        let r = CMAttitudeReferenceFrame.xMagneticNorthZVertical
+        guard CMMotionManager.availableAttitudeReferenceFrames().contains(r) else {
             print("darn")
             return
         }
         self.motman.showsDeviceMovementDisplay = true
         self.motman.deviceMotionUpdateInterval = 1.0 / 30.0
-        self.motman.startDeviceMotionUpdates(using: ref)
+        self.motman.startDeviceMotionUpdates(using: r)
         let t = self.motman.deviceMotionUpdateInterval * 10
         self.timer = Timer.scheduledTimer(timeInterval:t, target:self, selector:#selector(pollAttitude),userInfo:nil, repeats:true)
         
         print("starting")
     }
     
-    func pollAttitude(_: Any!) {
+    @objc func pollAttitude(_: Any!) {
         guard let mot = self.motman.deviceMotion else {return}
         // more idiotic Swift numeric foo
         let acc = mot.magneticField.accuracy.rawValue
@@ -43,6 +42,12 @@ class ViewController: UIViewController {
         let g = mot.gravity
         let whichway = g.z > 0 ? "forward" : "back"
         print("pitch is tilted \(whichway)")
+        
+        // new in iOS 11, we can also read heading directly
+        if #available(iOS 11.0, *) {
+            print("heading:", mot.heading)
+        }
+
     }
 
 
