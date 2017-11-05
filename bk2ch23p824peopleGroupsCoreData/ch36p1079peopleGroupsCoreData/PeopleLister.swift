@@ -68,7 +68,7 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         return cell
     }
     
-    func doAdd(_:AnyObject) {
+    @objc func doAdd(_:AnyObject) {
         self.tableView.endEditing(true)
         let context = self.frc.managedObjectContext
         let person = Person(context:context)

@@ -38,11 +38,11 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
         // no need to register cell, comes from storyboard
     }
     
-    func doRefresh(_:AnyObject) {
+    @objc func doRefresh(_:AnyObject) {
         // currently a no-op
     }
     
-    func doAdd(_:AnyObject) {
+    @objc func doAdd(_:AnyObject) {
         let av = UIAlertController(title: "New Group", message: "Enter name:", preferredStyle: .alert)
         av.addTextField {$0.autocapitalizationType = .words}
         av.addAction(UIAlertAction(title: "Cancel", style: .cancel))

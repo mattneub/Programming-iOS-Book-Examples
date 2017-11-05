@@ -8,7 +8,7 @@ class PeopleDocument: UIDocument {
     
     override func load(fromContents contents: Any,
         ofType typeName: String?) throws {
-            print("loading \(typeName)")
+            print("loading \(typeName as Any)")
             if let contents = contents as? Data {
                 if let arr = NSKeyedUnarchiver.unarchiveObject(with: contents) as? [Person] {
                     self.people = arr

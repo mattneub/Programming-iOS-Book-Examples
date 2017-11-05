@@ -94,6 +94,12 @@ class ViewController: UIViewController {
             let moidata = NSKeyedArchiver.archivedData(withRootObject: moi)
             let moifile = docsurl.appendingPathComponent("moi.txt")
             
+            let moi2 = Person2(firstName: "Matt", lastName: "Neuburg")
+            let moidata2 = try PropertyListEncoder().encode(moi2)
+            let moifile2 = docsurl.appendingPathComponent("moi2.txt")
+            
+            try moidata2.write(to: moifile2, options: .atomic)
+            
             switch which {
             case 1:
                 try moidata.write(to: moifile, options: .atomic)
@@ -125,6 +131,16 @@ class ViewController: UIViewController {
             let ok = (arr as NSArray).write(to: arrfile, atomically: true)
             print(ok) // false
             
+            // but now let's try the same thing with an Array of Person2 which is Codable
+            // we can't just tell an Array to `write`, but we can write it as a plist
+            let arr2 = [moi2]
+            let arrfile2 = docsurl.appendingPathComponent("arr2.plist")
+            let plister = PropertyListEncoder()
+            plister.outputFormat = .xml // just so we can read it
+            try plister.encode(arr2).write(to: arrfile2, options: .atomic)
+            print("we didn't throw writing array of Person2")
+            let s = try String.init(contentsOf: arrfile2)
+            print(s) // show it as XML
         } catch {
             print(error)
         }
@@ -159,7 +175,16 @@ class ViewController: UIViewController {
 //            let arrfile = docsurl.appendingPathComponent("arr.plist")
 //            let arr = NSArray(contentsOf: arrfile)
 //            print(arr)
-
+            
+            let moifile2 = docsurl.appendingPathComponent("moi2.txt")
+            let persondata = try Data(contentsOf: moifile2)
+            let person = try PropertyListDecoder().decode(Person2.self, from: persondata)
+            print(person)
+            
+            let arrfile2 = docsurl.appendingPathComponent("arr2.plist")
+            let arraydata = try Data(contentsOf: arrfile2)
+            let arr = try PropertyListDecoder().decode(Array<Person2>.self, from:arraydata)
+            print(arr)
         } catch {
             print(error)
         }

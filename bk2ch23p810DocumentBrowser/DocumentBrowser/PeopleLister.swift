@@ -27,6 +27,10 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
             .deletingPathExtension
         let b = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(doAdd))
         self.navigationItem.rightBarButtonItems = [b]
+        // we are now a presented view controller, so we also need a way to dismiss
+        let b2 = UIBarButtonItem(title: "Done", style:.done, target: self, action: #selector(doDone))
+        self.navigationItem.leftBarButtonItems = [b2]
+
         
         self.tableView.register(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "Person")
         
@@ -61,6 +65,12 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         tf.becomeFirstResponder()
         
         self.doc.updateChangeCount(.done)
+    }
+    
+    @objc func doDone (_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true) {
+            self.doc?.close(completionHandler: nil)
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
