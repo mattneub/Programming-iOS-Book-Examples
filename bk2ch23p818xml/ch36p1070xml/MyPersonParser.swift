@@ -14,6 +14,8 @@ class MyPersonParser : MyXMLParserDelegate {
     
     override func finishedChild(_ s: String) {
         self.person.setValue(s, forKey:self.child.name)
+        // I'd like to avoid using KVC, but I don't see how to go from a string...
+        // ...to a Swift key path
     }
     
 }

@@ -106,8 +106,9 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
         let ip = self.tableView.indexPath(for:cell)!
         let row = ip.row
         let p = self.people[row]
-        p.setValue(textField.text!, forKey: textField.tag == 1 ? "firstName" : "lastName")
-        
+        let which = textField.tag == 1 ? \Person.firstName : \.lastName
+        p[keyPath:which] = textField.text!
+
         self.doc.updateChangeCount(.done)
     }
     
