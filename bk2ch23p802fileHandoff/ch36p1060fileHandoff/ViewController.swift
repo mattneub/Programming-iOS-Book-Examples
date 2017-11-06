@@ -60,10 +60,19 @@ class ViewController: UIViewController, UIDocumentInteractionControllerDelegate,
         self.dic.url = url
         let v = sender as! UIView
         self.dic.delegate = self
-        let ok = self.dic.presentOpenInMenu(from:v.bounds, in: v, animated: true)
-        // let ok = self.dic.presentOptionsMenuFromRect(v.bounds, inView: v, animated: true)
-        if !ok {
-            print("That didn't work out")
+        var which : Int { return 1 }
+        switch which {
+        case 1:
+            let ok = self.dic.presentOpenInMenu(from:v.bounds, in: v, animated: true)
+            if !ok {
+                print("That didn't work out")
+            }
+        case 2:
+            let ok = self.dic.presentOptionsMenu(from: v.bounds, in: v, animated: true)
+            if !ok {
+                print("That didn't work out")
+            }
+        default: break
         }
     }
     

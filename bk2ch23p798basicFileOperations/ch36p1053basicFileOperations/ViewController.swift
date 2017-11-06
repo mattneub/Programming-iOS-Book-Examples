@@ -22,6 +22,7 @@ class ViewController: UIViewController {
             let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             print(docsurl)
+            print(docsurl.path)
         } catch {
             print(error)
         }
@@ -39,9 +40,10 @@ class ViewController: UIViewController {
 
     @IBAction func doButton4 (_ sender: Any!) {
         do {
+            let foldername = "MyFolder"
             let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let myfolder = docsurl.appendingPathComponent("MyFolder")
+            let myfolder = docsurl.appendingPathComponent(foldername)
             
             try fm.createDirectory(at:myfolder, withIntermediateDirectories: true)
             
@@ -60,7 +62,7 @@ class ViewController: UIViewController {
             let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let arr = try fm.contentsOfDirectory(at:docsurl, includingPropertiesForKeys: nil)
-            arr.forEach{print($0.lastPathComponent)}
+            arr.forEach{ print($0.lastPathComponent) }
             // ======
     //        self.query.enumerateResultsUsingBlock {
     //            obj, ix, stop in
@@ -87,6 +89,14 @@ class ViewController: UIViewController {
     let which = 1
     
     @IBAction func doButton8 (_ sender: Any!) {
+        do {
+            let arr = ["Manny", "Moe", "Jack"]
+            let temp = FileManager.default.temporaryDirectory
+            let f = temp.appendingPathComponent("pep.plist")
+            try (arr as NSArray).write(to: f) // new in iOS 11
+        } catch {
+            print(error)
+        }
         do {
             let fm = FileManager.default
             let docsurl = try fm.url(for:.documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
