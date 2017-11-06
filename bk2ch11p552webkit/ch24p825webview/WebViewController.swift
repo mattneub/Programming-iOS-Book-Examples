@@ -32,7 +32,7 @@ class MyMessageHandler : NSObject, WKScriptMessageHandler {
 final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler, UIViewControllerRestoration, SFSafariViewControllerDelegate {
     
     var activity = UIActivityIndicatorView()
-    var oldOffset : NSValue? // use nil as indicator
+    var oldOffset : CGPoint? // use nil as indicator
     var oldHTMLString : String?
     
     var obs = Set<NSKeyValueObservation>()
@@ -80,10 +80,9 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
     override func decodeRestorableState(with coder: NSCoder) {
         print("decode")
         super.decodeRestorableState(with:coder)
-        if let oldOffset = coder.decodeObject(forKey:"oldOffset") as? NSValue {
-            print("retrieved old offset as \(oldOffset)")
-            self.oldOffset = oldOffset // for local example
-        }
+        let oldOffset = coder.decodeCGPoint(forKey: "oldOffset")
+        print("retrieved old offset as \(oldOffset)")
+        self.oldOffset = oldOffset // for local example
         
         let fontsize = coder.decodeInteger(forKey:"fontsize")
         self.fontsize = fontsize
@@ -101,7 +100,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
         // we have to manage offset ourselves
         let off = self.wv.scrollView.contentOffset
         print("saving offset \(off)")
-        coder.encode(NSValue(cgPoint:off), forKey:"oldOffset")
+        coder.encode(off, forKey:"oldOffset")
         coder.encode(self.fontsize, forKey:"fontsize")
         coder.encode(self.oldHTMLString, forKey:"oldHTMLString")
         // are we presenting a safari view controller?
@@ -184,7 +183,7 @@ final class WebViewController: UIViewController, WKNavigationDelegate, WKScriptM
                         if wv.estimatedProgress == 1 {
                             delay(0.1) { // had to introduce delay; there's a flash but there's nothing I can do
                                 print("finished loading! restoring offset")
-                                wv.scrollView.contentOffset = self.oldOffset!.cgPointValue
+                                wv.scrollView.contentOffset = self.oldOffset!
                                 self.oldOffset = nil
                             }
                         }
