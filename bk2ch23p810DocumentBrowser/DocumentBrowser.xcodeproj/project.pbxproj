@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81536DE91FB211DF00FDBC59 /* ThumbnailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81536DE81FB211DF00FDBC59 /* ThumbnailProvider.swift */; };
+		81536DED1FB211DF00FDBC59 /* PeopleGroup2Thumbnail.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 81536DE61FB211DF00FDBC59 /* PeopleGroup2Thumbnail.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8199432B1FAE356B001EAFCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8199432A1FAE356B001EAFCD /* AppDelegate.swift */; };
 		8199432D1FAE356B001EAFCD /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8199432C1FAE356B001EAFCD /* DocumentBrowserViewController.swift */; };
 		819943311FAE356B001EAFCD /* PeopleDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819943301FAE356B001EAFCD /* PeopleDocument.swift */; };
@@ -20,7 +22,34 @@
 		819943491FAE4D04001EAFCD /* newdoc.pplgrp2 in Resources */ = {isa = PBXBuildFile; fileRef = 819943481FAE4D04001EAFCD /* newdoc.pplgrp2 */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		81536DEB1FB211DF00FDBC59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8199431F1FAE356B001EAFCD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 81536DE51FB211DF00FDBC59;
+			remoteInfo = PeopleGroup2Thumbnail;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		81536DF11FB211DF00FDBC59 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				81536DED1FB211DF00FDBC59 /* PeopleGroup2Thumbnail.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		81536DE61FB211DF00FDBC59 /* PeopleGroup2Thumbnail.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PeopleGroup2Thumbnail.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		81536DE81FB211DF00FDBC59 /* ThumbnailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailProvider.swift; sourceTree = "<group>"; };
+		81536DEA1FB211DF00FDBC59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		819943271FAE356B001EAFCD /* DocumentBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocumentBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8199432A1FAE356B001EAFCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8199432C1FAE356B001EAFCD /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +66,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		81536DE31FB211DF00FDBC59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		819943241FAE356B001EAFCD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,10 +83,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		81536DE71FB211DF00FDBC59 /* PeopleGroup2Thumbnail */ = {
+			isa = PBXGroup;
+			children = (
+				81536DE81FB211DF00FDBC59 /* ThumbnailProvider.swift */,
+				81536DEA1FB211DF00FDBC59 /* Info.plist */,
+			);
+			path = PeopleGroup2Thumbnail;
+			sourceTree = "<group>";
+		};
 		8199431E1FAE356B001EAFCD = {
 			isa = PBXGroup;
 			children = (
 				819943291FAE356B001EAFCD /* DocumentBrowser */,
+				81536DE71FB211DF00FDBC59 /* PeopleGroup2Thumbnail */,
 				819943281FAE356B001EAFCD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				819943271FAE356B001EAFCD /* DocumentBrowser.app */,
+				81536DE61FB211DF00FDBC59 /* PeopleGroup2Thumbnail.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,6 +132,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		81536DE51FB211DF00FDBC59 /* PeopleGroup2Thumbnail */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81536DF01FB211DF00FDBC59 /* Build configuration list for PBXNativeTarget "PeopleGroup2Thumbnail" */;
+			buildPhases = (
+				81536DE21FB211DF00FDBC59 /* Sources */,
+				81536DE31FB211DF00FDBC59 /* Frameworks */,
+				81536DE41FB211DF00FDBC59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PeopleGroup2Thumbnail;
+			productName = PeopleGroup2Thumbnail;
+			productReference = 81536DE61FB211DF00FDBC59 /* PeopleGroup2Thumbnail.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		819943261FAE356B001EAFCD /* DocumentBrowser */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8199433D1FAE356B001EAFCD /* Build configuration list for PBXNativeTarget "DocumentBrowser" */;
@@ -92,10 +156,12 @@
 				819943231FAE356B001EAFCD /* Sources */,
 				819943241FAE356B001EAFCD /* Frameworks */,
 				819943251FAE356B001EAFCD /* Resources */,
+				81536DF11FB211DF00FDBC59 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				81536DEC1FB211DF00FDBC59 /* PBXTargetDependency */,
 			);
 			name = DocumentBrowser;
 			productName = DocumentBrowser;
@@ -112,6 +178,10 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Matt Neuburg";
 				TargetAttributes = {
+					81536DE51FB211DF00FDBC59 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					819943261FAE356B001EAFCD = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -132,11 +202,19 @@
 			projectRoot = "";
 			targets = (
 				819943261FAE356B001EAFCD /* DocumentBrowser */,
+				81536DE51FB211DF00FDBC59 /* PeopleGroup2Thumbnail */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		81536DE41FB211DF00FDBC59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		819943251FAE356B001EAFCD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -153,6 +231,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		81536DE21FB211DF00FDBC59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81536DE91FB211DF00FDBC59 /* ThumbnailProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		819943231FAE356B001EAFCD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,6 +252,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		81536DEC1FB211DF00FDBC59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 81536DE51FB211DF00FDBC59 /* PeopleGroup2Thumbnail */;
+			targetProxy = 81536DEB1FB211DF00FDBC59 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		819943321FAE356B001EAFCD /* Main.storyboard */ = {
@@ -187,6 +281,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		81536DEE1FB211DF00FDBC59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
+				INFOPLIST_FILE = PeopleGroup2Thumbnail/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.DocumentBrowser.PeopleGroup2Thumbnail;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		81536DEF1FB211DF00FDBC59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W3LHX5RGV2;
+				INFOPLIST_FILE = PeopleGroup2Thumbnail/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuburg.matt.DocumentBrowser.PeopleGroup2Thumbnail;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		8199433B1FAE356B001EAFCD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -297,6 +421,7 @@
 		8199433E1FAE356B001EAFCD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W3LHX5RGV2;
@@ -312,6 +437,7 @@
 		8199433F1FAE356B001EAFCD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W3LHX5RGV2;
@@ -327,6 +453,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		81536DF01FB211DF00FDBC59 /* Build configuration list for PBXNativeTarget "PeopleGroup2Thumbnail" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81536DEE1FB211DF00FDBC59 /* Debug */,
+				81536DEF1FB211DF00FDBC59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		819943221FAE356B001EAFCD /* Build configuration list for PBXProject "DocumentBrowser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
