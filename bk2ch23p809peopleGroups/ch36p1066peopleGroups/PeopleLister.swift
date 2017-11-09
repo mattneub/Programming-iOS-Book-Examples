@@ -39,12 +39,12 @@ class PeopleLister: UITableViewController, UITextFieldDelegate {
                 self.tableView.reloadData()
             }
         }
-        if !fm.fileExists(atPath:self.fileURL.path) {
-            self.doc.save(to:self.doc.fileURL,
-                for: .forCreating,
-                completionHandler: listPeople)
-        } else {
+        if let _ = try? self.fileURL.checkResourceIsReachable() {
             self.doc.open(completionHandler:listPeople)
+        } else {
+            self.doc.save(to:self.doc.fileURL,
+                          for: .forCreating,
+                          completionHandler: listPeople)
         }
     }
     
