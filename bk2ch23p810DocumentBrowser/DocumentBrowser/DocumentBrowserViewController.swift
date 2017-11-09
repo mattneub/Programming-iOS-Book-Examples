@@ -8,6 +8,9 @@ import UIKit
  "The iCloud file provider creates a folder for your app in the user’s iCloud Drive. Users can access documents from this folder, or from anywhere in their iCloud Drive. The system automatically handles access to iCloud for you; you don't need to enable your app’s iCloud capabilities."
  
  So without doing _anything_, we are iCloud-savvy!
+ 
+ I'm not actually sure I like this. If the user turns off iCloud Drive, our app is bricked.
+ 
  */
 
 
@@ -20,6 +23,8 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         
         self.allowsDocumentCreation = true
         self.allowsPickingMultipleItems = false
+        
+        self.title = "People Groups" // failed experiment
         
         // Update the style of the UIDocumentBrowserViewController
         // self.browserUserInterfaceStyle = .dark
@@ -44,10 +49,13 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         alert.addTextField { tf in
             tf.autocapitalizationType = .words
         }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) {_ in
+            importHandler(nil, .none)
+        })
         alert.addAction(UIAlertAction(title: "OK", style: .default) {_ in
-            if let proposedName = alert.textFields?[0].text {
-                if !proposedName.trimmingCharacters(in: .whitespaces).isEmpty {
-                    docname = proposedName
+            if let proposal = alert.textFields?[0].text {
+                if !proposal.trimmingCharacters(in: .whitespaces).isEmpty {
+                    docname = proposal
                 }
             }
             

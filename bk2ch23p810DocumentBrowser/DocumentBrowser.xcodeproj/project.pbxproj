@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8125B5AF1FB212810093A170 /* smiley.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8125B5AE1FB212810093A170 /* smiley.jpg */; };
 		81536DE91FB211DF00FDBC59 /* ThumbnailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81536DE81FB211DF00FDBC59 /* ThumbnailProvider.swift */; };
 		81536DED1FB211DF00FDBC59 /* PeopleGroup2Thumbnail.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 81536DE61FB211DF00FDBC59 /* PeopleGroup2Thumbnail.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8199432B1FAE356B001EAFCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8199432A1FAE356B001EAFCD /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8125B5AE1FB212810093A170 /* smiley.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smiley.jpg; sourceTree = "<group>"; };
 		81536DE61FB211DF00FDBC59 /* PeopleGroup2Thumbnail.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PeopleGroup2Thumbnail.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		81536DE81FB211DF00FDBC59 /* ThumbnailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailProvider.swift; sourceTree = "<group>"; };
 		81536DEA1FB211DF00FDBC59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				81536DE81FB211DF00FDBC59 /* ThumbnailProvider.swift */,
+				8125B5AE1FB212810093A170 /* smiley.jpg */,
 				81536DEA1FB211DF00FDBC59 /* Info.plist */,
 			);
 			path = PeopleGroup2Thumbnail;
@@ -212,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8125B5AF1FB212810093A170 /* smiley.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

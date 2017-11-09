@@ -16,13 +16,17 @@ class PeopleDocument: UIDocument {
                     return // all's well that ends well
                 }
             }
+            // if we get here, there was some kind of problem
             throw NSError(domain: "NoDataDomain", code: -1, userInfo: nil)
     }
     
     override func contents(forType typeName: String) throws -> Any {
         print("archiving \(typeName)")
-        let data = try? PropertyListEncoder().encode(self.people)
-        return data ?? Data()
+        if let data = try? PropertyListEncoder().encode(self.people) {
+            return data
+        }
+        // if we get here, there was some kind of problem
+        throw NSError(domain: "NoDataDomain", code: -2, userInfo: nil)
     }
     
 }

@@ -12,10 +12,12 @@
 - (void)resultSetDidClose:(FMResultSet *)resultSet;
 @end
 
+@interface FMResultSet () {
+    NSMutableDictionary *_columnNameToIndexMap;
+}
+@end
 
 @implementation FMResultSet
-@synthesize query=_query;
-@synthesize statement=_statement;
 
 + (instancetype)resultSetWithStatement:(FMStatement *)statement usingParentDatabase:(FMDatabase*)aDB {
     
@@ -30,10 +32,12 @@
     return FMDBReturnAutoreleased(rs);
 }
 
+#if ! __has_feature(objc_arc)
 - (void)finalize {
     [self close];
     [super finalize];
 }
+#endif
 
 - (void)dealloc {
     [self close];
@@ -57,7 +61,7 @@
     // we don't need this anymore... (i think)
     //[_parentDB setInUse:NO];
     [_parentDB resultSetDidClose:self];
-    _parentDB = nil;
+    [self setParentDB:nil];
 }
 
 - (int)columnCount {
@@ -98,7 +102,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-implementations"
 
-- (NSDictionary*)resultDict {
+- (NSDictionary *)resultDict {
     
     NSUInteger num_cols = (NSUInteger)sqlite3_data_count([_statement statement]);
     
@@ -217,7 +221,7 @@
     
     NSNumber *n = [[self columnNameToIndexMap] objectForKey:columnName];
     
-    if (n) {
+    if (n != nil) {
         return [n intValue];
     }
     
@@ -225,8 +229,6 @@
     
     return -1;
 }
-
-
 
 - (int)intForColumn:(NSString*)columnName {
     return [self intForColumnIndex:[self columnIndexForName:columnName]];
@@ -276,9 +278,9 @@
     return sqlite3_column_double([_statement statement], columnIdx);
 }
 
-- (NSString*)stringForColumnIndex:(int)columnIdx {
+- (NSString *)stringForColumnIndex:(int)columnIdx {
     
-    if (sqlite3_column_type([_statement statement], columnIdx) == SQLITE_NULL || (columnIdx < 0)) {
+    if (sqlite3_column_type([_statement statement], columnIdx) == SQLITE_NULL || (columnIdx < 0) || columnIdx >= sqlite3_column_count([_statement statement])) {
         return nil;
     }
     
@@ -302,7 +304,7 @@
 
 - (NSDate*)dateForColumnIndex:(int)columnIdx {
     
-    if (sqlite3_column_type([_statement statement], columnIdx) == SQLITE_NULL || (columnIdx < 0)) {
+    if (sqlite3_column_type([_statement statement], columnIdx) == SQLITE_NULL || (columnIdx < 0) || columnIdx >= sqlite3_column_count([_statement statement])) {
         return nil;
     }
     
@@ -316,7 +318,7 @@
 
 - (NSData*)dataForColumnIndex:(int)columnIdx {
     
-    if (sqlite3_column_type([_statement statement], columnIdx) == SQLITE_NULL || (columnIdx < 0)) {
+    if (sqlite3_column_type([_statement statement], columnIdx) == SQLITE_NULL || (columnIdx < 0) || columnIdx >= sqlite3_column_count([_statement statement])) {
         return nil;
     }
     
@@ -337,7 +339,7 @@
 
 - (NSData*)dataNoCopyForColumnIndex:(int)columnIdx {
     
-    if (sqlite3_column_type([_statement statement], columnIdx) == SQLITE_NULL || (columnIdx < 0)) {
+    if (sqlite3_column_type([_statement statement], columnIdx) == SQLITE_NULL || (columnIdx < 0) || columnIdx >= sqlite3_column_count([_statement statement])) {
         return nil;
     }
   
@@ -360,18 +362,26 @@
 
 - (const unsigned char *)UTF8StringForColumnIndex:(int)columnIdx {
     
-    if (sqlite3_column_type([_statement statement], columnIdx) == SQLITE_NULL || (columnIdx < 0)) {
+    if (sqlite3_column_type([_statement statement], columnIdx) == SQLITE_NULL || (columnIdx < 0) || columnIdx >= sqlite3_column_count([_statement statement])) {
         return nil;
     }
     
     return sqlite3_column_text([_statement statement], columnIdx);
 }
 
-- (const unsigned char *)UTF8StringForColumnName:(NSString*)columnName {
+- (const unsigned char *)UTF8StringForColumn:(NSString*)columnName {
     return [self UTF8StringForColumnIndex:[self columnIndexForName:columnName]];
 }
 
+- (const unsigned char *)UTF8StringForColumnName:(NSString*)columnName {
+    return [self UTF8StringForColumn:columnName];
+}
+
 - (id)objectForColumnIndex:(int)columnIdx {
+    if (columnIdx < 0 || columnIdx >= sqlite3_column_count([_statement statement])) {
+        return nil;
+    }
+    
     int columnType = sqlite3_column_type([_statement statement], columnIdx);
     
     id returnValue = nil;
@@ -398,6 +408,10 @@
 }
 
 - (id)objectForColumnName:(NSString*)columnName {
+    return [self objectForColumn:columnName];
+}
+
+- (id)objectForColumn:(NSString*)columnName {
     return [self objectForColumnIndex:[self columnIndexForName:columnName]];
 }
 
@@ -406,16 +420,12 @@
     return [NSString stringWithUTF8String: sqlite3_column_name([_statement statement], columnIdx)];
 }
 
-- (void)setParentDB:(FMDatabase *)newDb {
-    _parentDB = newDb;
-}
-
 - (id)objectAtIndexedSubscript:(int)columnIdx {
     return [self objectForColumnIndex:columnIdx];
 }
 
 - (id)objectForKeyedSubscript:(NSString *)columnName {
-    return [self objectForColumnName:columnName];
+    return [self objectForColumn:columnName];
 }
 
 

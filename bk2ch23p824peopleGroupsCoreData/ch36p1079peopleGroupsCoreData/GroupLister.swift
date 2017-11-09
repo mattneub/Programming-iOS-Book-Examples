@@ -12,18 +12,18 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
         let sortDescriptor = NSSortDescriptor(key:"timestamp", ascending:true)
         req.sortDescriptors = [sortDescriptor]
 
-        let afrc = NSFetchedResultsController(
+        let frc = NSFetchedResultsController(
             fetchRequest:req,
             managedObjectContext:self.managedObjectContext,
             sectionNameKeyPath:nil, cacheName:nil)
-        afrc.delegate = self
+        frc.delegate = self
         do {
-            try afrc.performFetch()
+            try frc.performFetch()
         } catch {
             print("Unresolved error \(error)")
             fatalError("Aborting with unresolved error")
         }
-        return afrc
+        return frc
     }()
 
 
@@ -47,12 +47,12 @@ class GroupLister: UITableViewController, NSFetchedResultsControllerDelegate {
         av.addTextField {$0.autocapitalizationType = .words}
         av.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         av.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-            guard let name = av.textFields![0].text, !name.isEmpty else {return}
+            // guard let name = av.textFields![0].text, !name.isEmpty else {return}
             let context = self.frc.managedObjectContext
             let group = Group(context: context)
-            group.name = name
-            group.uuid = NSUUID().uuidString
-            group.timestamp = NSDate()
+            group.name = av.textFields![0].text!
+            group.uuid = UUID()
+            group.timestamp = Date()
             
             // save context
             do {

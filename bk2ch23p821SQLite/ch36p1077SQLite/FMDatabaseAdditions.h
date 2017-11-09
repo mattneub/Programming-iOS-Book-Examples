@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FMDatabase.h"
 
+NS_ASSUME_NONNULL_BEGIN
 
 /** Category of additions for `<FMDatabase>` class.
  
@@ -30,7 +31,7 @@
 
  @return `int` value.
  
- @note To use this method from Swift, you must include `FMDatabaseAdditionsVariadic.swift` in your project.
+ @note This is not available from Swift.
  */
 
 - (int)intForQuery:(NSString*)query, ...;
@@ -42,7 +43,7 @@
 
  @return `long` value.
  
- @note To use this method from Swift, you must include `FMDatabaseAdditionsVariadic.swift` in your project.
+ @note This is not available from Swift.
  */
 
 - (long)longForQuery:(NSString*)query, ...;
@@ -54,7 +55,7 @@
 
  @return `BOOL` value.
  
- @note To use this method from Swift, you must include `FMDatabaseAdditionsVariadic.swift` in your project.
+ @note This is not available from Swift.
  */
 
 - (BOOL)boolForQuery:(NSString*)query, ...;
@@ -66,7 +67,7 @@
 
  @return `double` value.
  
- @note To use this method from Swift, you must include `FMDatabaseAdditionsVariadic.swift` in your project.
+ @note This is not available from Swift.
  */
 
 - (double)doubleForQuery:(NSString*)query, ...;
@@ -78,10 +79,10 @@
 
  @return `NSString` value.
  
- @note To use this method from Swift, you must include `FMDatabaseAdditionsVariadic.swift` in your project.
+ @note This is not available from Swift.
  */
 
-- (NSString*)stringForQuery:(NSString*)query, ...;
+- (NSString * _Nullable)stringForQuery:(NSString*)query, ...;
 
 /** Return `NSData` value for query
 
@@ -90,10 +91,10 @@
 
  @return `NSData` value.
  
- @note To use this method from Swift, you must include `FMDatabaseAdditionsVariadic.swift` in your project.
+ @note This is not available from Swift.
  */
 
-- (NSData*)dataForQuery:(NSString*)query, ...;
+- (NSData * _Nullable)dataForQuery:(NSString*)query, ...;
 
 /** Return `NSDate` value for query
 
@@ -102,10 +103,10 @@
 
  @return `NSDate` value.
  
- @note To use this method from Swift, you must include `FMDatabaseAdditionsVariadic.swift` in your project.
+ @note This is not available from Swift.
  */
 
-- (NSDate*)dateForQuery:(NSString*)query, ...;
+- (NSDate * _Nullable)dateForQuery:(NSString*)query, ...;
 
 
 // Notice that there's no dataNoCopyForQuery:.
@@ -141,7 +142,7 @@
  @see [SQLite File Format](http://www.sqlite.org/fileformat.html)
  */
 
-- (FMResultSet*)getSchema;
+- (FMResultSet *)getSchema;
 
 /** The schema of the database.
 
@@ -191,7 +192,7 @@
  @warning Deprecated - use `<columnExists:inTableWithName:>` instead.
  */
 
-- (BOOL)columnExists:(NSString*)tableName columnName:(NSString*)columnName __attribute__ ((deprecated));
+- (BOOL)columnExists:(NSString*)tableName columnName:(NSString*)columnName __deprecated_msg("Use columnExists:inTableWithName: instead");
 
 
 /** Validate SQL statement
@@ -206,7 +207,7 @@
  
  */
 
-- (BOOL)validateSQL:(NSString*)sql error:(NSError**)error;
+- (BOOL)validateSQL:(NSString*)sql error:(NSError * _Nullable *)error;
 
 
 ///-----------------------------------
@@ -220,36 +221,16 @@
  @see setApplicationID:
  */
 
-- (uint32_t)applicationID;
-
-/** Set the application ID
-
- @param appID The `uint32_t` numeric value of the application ID.
- 
- @see applicationID
- */
-
-- (void)setApplicationID:(uint32_t)appID;
+@property (nonatomic) uint32_t applicationID;
 
 #if TARGET_OS_MAC && !TARGET_OS_IPHONE
-/** Retrieve application ID string
 
- @return The `NSString` value of the application ID.
+/** Retrieve application ID string
 
  @see setApplicationIDString:
  */
 
-
-- (NSString*)applicationIDString;
-
-/** Set the application ID string
-
- @param string The `NSString` value of the application ID.
-
- @see applicationIDString
- */
-
-- (void)setApplicationIDString:(NSString*)string;
+@property (nonatomic, retain) NSString *applicationIDString;
 
 #endif
 
@@ -259,20 +240,11 @@
 
 /** Retrieve user version
  
- @return The `uint32_t` numeric value of the user version.
- 
  @see setUserVersion:
  */
 
-- (uint32_t)userVersion;
-
-/** Set the user-version
- 
- @param version The `uint32_t` numeric value of the user version.
- 
- @see userVersion
- */
-
-- (void)setUserVersion:(uint32_t)version;
+@property (nonatomic) uint32_t userVersion;
 
 @end
+
+NS_ASSUME_NONNULL_END

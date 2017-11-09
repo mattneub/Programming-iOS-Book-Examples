@@ -15,6 +15,12 @@
 #import <sqlite3.h>
 #endif
 
+typedef NS_ENUM(NSInteger, FMDBTransaction) {
+    FMDBTransactionExclusive,
+    FMDBTransactionDeferred,
+    FMDBTransactionImmediate,
+};
+
 /*
  
  Note: we call [self retain]; before using dispatch_sync, just incase 
@@ -29,15 +35,16 @@
  * the queue's dispatch queue, which should not happen and causes a deadlock.
  */
 static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey;
- 
+
+@interface FMDatabaseQueue () {
+    dispatch_queue_t    _queue;
+    FMDatabase          *_db;
+}
+@end
+
 @implementation FMDatabaseQueue
 
-@synthesize path = _path;
-@synthesize openFlags = _openFlags;
-@synthesize vfsName = _vfsName;
-
-+ (instancetype)databaseQueueWithPath:(NSString*)aPath {
-    
++ (instancetype)databaseQueueWithPath:(NSString *)aPath {
     FMDatabaseQueue *q = [[self alloc] initWithPath:aPath];
     
     FMDBAutorelease(q);
@@ -45,8 +52,11 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
     return q;
 }
 
-+ (instancetype)databaseQueueWithPath:(NSString*)aPath flags:(int)openFlags {
-    
++ (instancetype)databaseQueueWithURL:(NSURL *)url {
+    return [self databaseQueueWithPath:url.path];
+}
+
++ (instancetype)databaseQueueWithPath:(NSString *)aPath flags:(int)openFlags {
     FMDatabaseQueue *q = [[self alloc] initWithPath:aPath flags:openFlags];
     
     FMDBAutorelease(q);
@@ -54,12 +64,19 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
     return q;
 }
 
++ (instancetype)databaseQueueWithURL:(NSURL *)url flags:(int)openFlags {
+    return [self databaseQueueWithPath:url.path flags:openFlags];
+}
+
 + (Class)databaseClass {
     return [FMDatabase class];
 }
 
+- (instancetype)initWithURL:(NSURL *)url flags:(int)openFlags vfs:(NSString *)vfsName {
+    return [self initWithPath:url.path flags:openFlags vfs:vfsName];
+}
+
 - (instancetype)initWithPath:(NSString*)aPath flags:(int)openFlags vfs:(NSString *)vfsName {
-    
     self = [super init];
     
     if (self != nil) {
@@ -89,12 +106,19 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
     return self;
 }
 
-- (instancetype)initWithPath:(NSString*)aPath flags:(int)openFlags {
+- (instancetype)initWithPath:(NSString *)aPath flags:(int)openFlags {
     return [self initWithPath:aPath flags:openFlags vfs:nil];
 }
 
-- (instancetype)initWithPath:(NSString*)aPath {
-    
+- (instancetype)initWithURL:(NSURL *)url flags:(int)openFlags {
+    return [self initWithPath:url.path flags:openFlags vfs:nil];
+}
+
+- (instancetype)initWithURL:(NSURL *)url {
+    return [self initWithPath:url.path];
+}
+
+- (instancetype)initWithPath:(NSString *)aPath {
     // default flags for sqlite3_open
     return [self initWithPath:aPath flags:SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE vfs:nil];
 }
@@ -103,11 +127,10 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
     return [self initWithPath:nil];
 }
 
-    
 - (void)dealloc {
-    
     FMDBRelease(_db);
     FMDBRelease(_path);
+    FMDBRelease(_vfsName);
     
     if (_queue) {
         FMDBDispatchQueueRelease(_queue);
@@ -126,6 +149,10 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
         self->_db = 0x00;
     });
     FMDBRelease(self);
+}
+
+- (void)interrupt {
+    [[self database] interrupt];
 }
 
 - (FMDatabase*)database {
@@ -149,16 +176,19 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
 }
 
 - (void)inDatabase:(void (^)(FMDatabase *db))block {
+#ifndef NDEBUG
     /* Get the currently executing queue (which should probably be nil, but in theory could be another DB queue
      * and then check it against self to make sure we're not about to deadlock. */
     FMDatabaseQueue *currentSyncQueue = (__bridge id)dispatch_get_specific(kDispatchQueueSpecificKey);
     assert(currentSyncQueue != self && "inDatabase: was called reentrantly on the same queue, which would lead to a deadlock");
+#endif
     
     FMDBRetain(self);
     
     dispatch_sync(_queue, ^() {
         
         FMDatabase *db = [self database];
+        
         block(db);
         
         if ([db hasOpenResultSets]) {
@@ -177,18 +207,22 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
     FMDBRelease(self);
 }
 
-
-- (void)beginTransaction:(BOOL)useDeferred withBlock:(void (^)(FMDatabase *db, BOOL *rollback))block {
+- (void)beginTransaction:(FMDBTransaction)transaction withBlock:(void (^)(FMDatabase *db, BOOL *rollback))block {
     FMDBRetain(self);
     dispatch_sync(_queue, ^() { 
         
         BOOL shouldRollback = NO;
-        
-        if (useDeferred) {
-            [[self database] beginDeferredTransaction];
-        }
-        else {
-            [[self database] beginTransaction];
+
+        switch (transaction) {
+            case FMDBTransactionExclusive:
+                [[self database] beginTransaction];
+                break;
+            case FMDBTransactionDeferred:
+                [[self database] beginDeferredTransaction];
+                break;
+            case FMDBTransactionImmediate:
+                [[self database] beginImmediateTransaction];
+                break;
         }
         
         block([self database], &shouldRollback);
@@ -204,12 +238,20 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
     FMDBRelease(self);
 }
 
-- (void)inDeferredTransaction:(void (^)(FMDatabase *db, BOOL *rollback))block {
-    [self beginTransaction:YES withBlock:block];
+- (void)inTransaction:(void (^)(FMDatabase *db, BOOL *rollback))block {
+    [self beginTransaction:FMDBTransactionExclusive withBlock:block];
 }
 
-- (void)inTransaction:(void (^)(FMDatabase *db, BOOL *rollback))block {
-    [self beginTransaction:NO withBlock:block];
+- (void)inDeferredTransaction:(void (^)(FMDatabase *db, BOOL *rollback))block {
+    [self beginTransaction:FMDBTransactionDeferred withBlock:block];
+}
+
+- (void)inExclusiveTransaction:(void (^)(FMDatabase *db, BOOL *rollback))block {
+    [self beginTransaction:FMDBTransactionExclusive withBlock:block];
+}
+
+- (void)inImmediateTransaction:(void (^)(FMDatabase * _Nonnull, BOOL * _Nonnull))block {
+    [self beginTransaction:FMDBTransactionImmediate withBlock:block];
 }
 
 - (NSError*)inSavePoint:(void (^)(FMDatabase *db, BOOL *rollback))block {
@@ -242,6 +284,33 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
     if (self.logsErrors) NSLog(@"%@", errorMessage);
     return [NSError errorWithDomain:@"FMDatabase" code:0 userInfo:@{NSLocalizedDescriptionKey : errorMessage}];
 #endif
+}
+
+- (BOOL)checkpoint:(FMDBCheckpointMode)mode error:(NSError * __autoreleasing *)error
+{
+    return [self checkpoint:mode name:nil logFrameCount:NULL checkpointCount:NULL error:error];
+}
+
+- (BOOL)checkpoint:(FMDBCheckpointMode)mode name:(NSString *)name error:(NSError * __autoreleasing *)error
+{
+    return [self checkpoint:mode name:name logFrameCount:NULL checkpointCount:NULL error:error];
+}
+
+- (BOOL)checkpoint:(FMDBCheckpointMode)mode name:(NSString *)name logFrameCount:(int * _Nullable)logFrameCount checkpointCount:(int * _Nullable)checkpointCount error:(NSError * __autoreleasing _Nullable * _Nullable)error
+{
+    __block BOOL result;
+    __block NSError *blockError;
+    
+    FMDBRetain(self);
+    dispatch_sync(_queue, ^() {
+        result = [self.database checkpoint:mode name:name logFrameCount:NULL checkpointCount:NULL error:&blockError];
+    });
+    FMDBRelease(self);
+    
+    if (error) {
+        *error = blockError;
+    }
+    return result;
 }
 
 @end

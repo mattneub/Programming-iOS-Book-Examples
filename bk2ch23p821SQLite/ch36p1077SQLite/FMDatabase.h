@@ -2,6 +2,7 @@
 #import "FMResultSet.h"
 #import "FMDatabasePool.h"
 
+NS_ASSUME_NONNULL_BEGIN
 
 #if ! __has_feature(objc_arc)
     #define FMDBAutorelease(__v) ([__v autorelease]);
@@ -40,6 +41,12 @@
 
 typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary);
 
+typedef NS_ENUM(int, FMDBCheckpointMode) {
+    FMDBCheckpointModePassive  = 0, // SQLITE_CHECKPOINT_PASSIVE,
+    FMDBCheckpointModeFull     = 1, // SQLITE_CHECKPOINT_FULL,
+    FMDBCheckpointModeRestart  = 2, // SQLITE_CHECKPOINT_RESTART,
+    FMDBCheckpointModeTruncate = 3  // SQLITE_CHECKPOINT_TRUNCATE
+};
 
 /** A SQLite ([http://sqlite.org/](http://sqlite.org/)) Objective-C wrapper.
  
@@ -70,26 +77,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
 #pragma clang diagnostic ignored "-Wobjc-interface-ivars"
 
 
-@interface FMDatabase : NSObject  {
-    
-    void*               _db;
-    NSString*           _databasePath;
-    BOOL                _logsErrors;
-    BOOL                _crashOnErrors;
-    BOOL                _traceExecution;
-    BOOL                _checkedOut;
-    BOOL                _shouldCacheStatements;
-    BOOL                _isExecutingStatement;
-    BOOL                _inTransaction;
-    NSTimeInterval      _maxBusyRetryTimeInterval;
-    NSTimeInterval      _startBusyRetryTime;
-    
-    NSMutableDictionary *_cachedStatements;
-    NSMutableSet        *_openResultSets;
-    NSMutableSet        *_openFunctions;
-
-    NSDateFormatter     *_dateFormat;
-}
+@interface FMDatabase : NSObject
 
 ///-----------------
 /// @name Properties
@@ -113,7 +101,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
 
 /** Dictionary of cached statements */
 
-@property (atomic, retain) NSMutableDictionary *cachedStatements;
+@property (atomic, retain, nullable) NSMutableDictionary *cachedStatements;
 
 ///---------------------
 /// @name Initialization
@@ -145,7 +133,34 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
 
  */
 
-+ (instancetype)databaseWithPath:(NSString*)inPath;
++ (instancetype)databaseWithPath:(NSString * _Nullable)inPath;
+
+/** Create a `FMDatabase` object.
+ 
+ An `FMDatabase` is created with a path to a SQLite database file.  This path can be one of these three:
+ 
+ 1. A file system URL.  The file does not have to exist on disk.  If it does not exist, it is created for you.
+ 2. `nil`.  An in-memory database is created.  This database will be destroyed with the `FMDatabase` connection is closed.
+ 
+ For example, to create/open a database in your Mac OS X `tmp` folder:
+ 
+    FMDatabase *db = [FMDatabase databaseWithPath:@"/tmp/tmp.db"];
+ 
+ Or, in iOS, you might open a database in the app's `Documents` directory:
+ 
+    NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *dbPath   = [docsPath stringByAppendingPathComponent:@"test.db"];
+    FMDatabase *db     = [FMDatabase databaseWithPath:dbPath];
+ 
+ (For more information on temporary and in-memory databases, read the sqlite documentation on the subject: [http://www.sqlite.org/inmemorydb.html](http://www.sqlite.org/inmemorydb.html))
+ 
+ @param url The local file URL (not remote URL) of database file
+ 
+ @return `FMDatabase` object if successful; `nil` if failure.
+ 
+ */
+
++ (instancetype)databaseWithURL:(NSURL * _Nullable)url;
 
 /** Initialize a `FMDatabase` object.
  
@@ -167,18 +182,48 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
 
  (For more information on temporary and in-memory databases, read the sqlite documentation on the subject: [http://www.sqlite.org/inmemorydb.html](http://www.sqlite.org/inmemorydb.html))
 
- @param inPath Path of database file
+ @param path Path of database file.
  
  @return `FMDatabase` object if successful; `nil` if failure.
 
  */
 
-- (instancetype)initWithPath:(NSString*)inPath;
+- (instancetype)initWithPath:(NSString * _Nullable)path;
 
+/** Initialize a `FMDatabase` object.
+ 
+ An `FMDatabase` is created with a local file URL to a SQLite database file.  This path can be one of these three:
+ 
+ 1. A file system URL.  The file does not have to exist on disk.  If it does not exist, it is created for you.
+ 2. `nil`.  An in-memory database is created.  This database will be destroyed with the `FMDatabase` connection is closed.
+ 
+ For example, to create/open a database in your Mac OS X `tmp` folder:
+ 
+ FMDatabase *db = [FMDatabase databaseWithPath:@"/tmp/tmp.db"];
+ 
+ Or, in iOS, you might open a database in the app's `Documents` directory:
+ 
+ NSString *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+ NSString *dbPath   = [docsPath stringByAppendingPathComponent:@"test.db"];
+ FMDatabase *db     = [FMDatabase databaseWithPath:dbPath];
+ 
+ (For more information on temporary and in-memory databases, read the sqlite documentation on the subject: [http://www.sqlite.org/inmemorydb.html](http://www.sqlite.org/inmemorydb.html))
+ 
+ @param url The file `NSURL` of database file.
+ 
+ @return `FMDatabase` object if successful; `nil` if failure.
+ 
+ */
+
+- (instancetype)initWithURL:(NSURL * _Nullable)url;
 
 ///-----------------------------------
 /// @name Opening and closing database
 ///-----------------------------------
+
+/// Is the database open or not?
+
+@property (nonatomic) BOOL isOpen;
 
 /** Opening a new database connection
  
@@ -243,7 +288,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @see close
  */
 
-- (BOOL)openWithFlags:(int)flags vfs:(NSString *)vfsName;
+- (BOOL)openWithFlags:(int)flags vfs:(NSString * _Nullable)vfsName;
 
 /** Closing a database connection
  
@@ -266,7 +311,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @return `YES` if everything succeeds, `NO` on failure.
  */
 
-- (BOOL)goodConnection;
+@property (nonatomic, readonly) BOOL goodConnection;
 
 
 ///----------------------
@@ -293,7 +338,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @see [`sqlite3_bind`](http://sqlite.org/c3ref/bind_blob.html)
  */
 
-- (BOOL)executeUpdate:(NSString*)sql withErrorAndBindings:(NSError**)outErr, ...;
+- (BOOL)executeUpdate:(NSString*)sql withErrorAndBindings:(NSError * _Nullable *)outErr, ...;
 
 /** Execute single update statement
  
@@ -302,7 +347,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @warning **Deprecated**: Please use `<executeUpdate:withErrorAndBindings>` instead.
  */
 
-- (BOOL)update:(NSString*)sql withErrorAndBindings:(NSError**)outErr, ... __attribute__ ((deprecated));
+- (BOOL)update:(NSString*)sql withErrorAndBindings:(NSError * _Nullable*)outErr, ...  __deprecated_msg("Use executeUpdate:withErrorAndBindings: instead");;
 
 /** Execute single update statement
 
@@ -323,7 +368,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  
  @note This technique supports the use of `?` placeholders in the SQL, automatically binding any supplied value parameters to those placeholders. This approach is more robust than techniques that entail using `stringWithFormat` to manually build SQL statements, which can be problematic if the values happened to include any characters that needed to be quoted.
  
- @note If you want to use this from Swift, please note that you must include `FMDatabaseVariadic.swift` in your project. Without that, you cannot use this method directly, and instead have to use methods such as `<executeUpdate:withArgumentsInArray:>`.
+ @note You cannot use this method from Swift due to incompatibilities between Swift and Objective-C variadic implementations. Consider using `<executeUpdate:values:>` instead.
  */
 
 - (BOOL)executeUpdate:(NSString*)sql, ...;
@@ -384,9 +429,9 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  
  This is similar to `<executeUpdate:withArgumentsInArray:>`, except that this also accepts a pointer to a `NSError` pointer, so that errors can be returned.
 
- In Swift 2, this throws errors, as if it were defined as follows:
+ In Swift, this throws errors, as if it were defined as follows:
  
- `func executeUpdate(sql: String!, values: [AnyObject]!) throws -> Bool`
+ `func executeUpdate(sql: String, values: [Any]?) throws -> Bool`
  
  @param sql The SQL to be performed, with optional `?` placeholders.
  
@@ -402,7 +447,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  
  */
 
-- (BOOL)executeUpdate:(NSString*)sql values:(NSArray *)values error:(NSError * __autoreleasing *)error;
+- (BOOL)executeUpdate:(NSString*)sql values:(NSArray * _Nullable)values error:(NSError * _Nullable __autoreleasing *)error;
 
 /** Execute single update statement
 
@@ -476,7 +521,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
 
  */
 
-- (BOOL)executeStatements:(NSString *)sql withResultBlock:(FMDBExecuteStatementsCallbackBlock)block;
+- (BOOL)executeStatements:(NSString *)sql withResultBlock:(__attribute__((noescape)) FMDBExecuteStatementsCallbackBlock _Nullable)block;
 
 /** Last insert rowid
  
@@ -490,7 +535,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
 
  */
 
-- (int64_t)lastInsertRowId;
+@property (nonatomic, readonly) int64_t lastInsertRowId;
 
 /** The number of rows changed by prior SQL statement.
  
@@ -502,7 +547,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  
  */
 
-- (int)changes;
+@property (nonatomic, readonly) int changes;
 
 
 ///-------------------------
@@ -527,10 +572,10 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @see [`FMResultSet next`](<[FMResultSet next]>)
  @see [`sqlite3_bind`](http://sqlite.org/c3ref/bind_blob.html)
  
- @note If you want to use this from Swift, please note that you must include `FMDatabaseVariadic.swift` in your project. Without that, you cannot use this method directly, and instead have to use methods such as `<executeQuery:withArgumentsInArray:>`.
+ @note You cannot use this method from Swift due to incompatibilities between Swift and Objective-C variadic implementations. Consider using `<executeQuery:values:>` instead.
  */
 
-- (FMResultSet *)executeQuery:(NSString*)sql, ...;
+- (FMResultSet * _Nullable)executeQuery:(NSString*)sql, ...;
 
 /** Execute select statement
 
@@ -560,7 +605,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  
  */
 
-- (FMResultSet *)executeQueryWithFormat:(NSString*)format, ... NS_FORMAT_FUNCTION(1,2);
+- (FMResultSet * _Nullable)executeQueryWithFormat:(NSString*)format, ... NS_FORMAT_FUNCTION(1,2);
 
 /** Execute select statement
 
@@ -579,7 +624,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @see [`FMResultSet next`](<[FMResultSet next]>)
  */
 
-- (FMResultSet *)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray *)arguments;
+- (FMResultSet * _Nullable)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray *)arguments;
 
 /** Execute select statement
  
@@ -589,9 +634,9 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  
  This is similar to `<executeQuery:withArgumentsInArray:>`, except that this also accepts a pointer to a `NSError` pointer, so that errors can be returned.
  
- In Swift 2, this throws errors, as if it were defined as follows:
+ In Swift, this throws errors, as if it were defined as follows:
  
- `func executeQuery(sql: String!, values: [AnyObject]!) throws  -> FMResultSet!`
+ `func executeQuery(sql: String, values: [Any]?) throws  -> FMResultSet!`
 
  @param sql The SELECT statement to be performed, with optional `?` placeholders.
  
@@ -608,7 +653,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
 
  */
 
-- (FMResultSet *)executeQuery:(NSString *)sql values:(NSArray *)values error:(NSError * __autoreleasing *)error;
+- (FMResultSet * _Nullable)executeQuery:(NSString *)sql values:(NSArray * _Nullable)values error:(NSError * _Nullable __autoreleasing *)error;
 
 /** Execute select statement
 
@@ -626,11 +671,11 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @see [`FMResultSet next`](<[FMResultSet next]>)
  */
 
-- (FMResultSet *)executeQuery:(NSString *)sql withParameterDictionary:(NSDictionary *)arguments;
+- (FMResultSet * _Nullable)executeQuery:(NSString *)sql withParameterDictionary:(NSDictionary * _Nullable)arguments;
 
 
 // Documentation forthcoming.
-- (FMResultSet *)executeQuery:(NSString*)sql withVAList: (va_list)args;
+- (FMResultSet * _Nullable)executeQuery:(NSString *)sql withVAList:(va_list)args;
 
 ///-------------------
 /// @name Transactions
@@ -643,7 +688,16 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @see commit
  @see rollback
  @see beginDeferredTransaction
- @see inTransaction
+ @see isInTransaction
+ 
+ @warning    Unlike SQLite's `BEGIN TRANSACTION`, this method currently performs
+             an exclusive transaction, not a deferred transaction. This behavior
+             is likely to change in future versions of FMDB, whereby this method
+             will likely eventually adopt standard SQLite behavior and perform
+             deferred transactions. If you really need exclusive tranaction, it is
+             recommended that you use `beginExclusiveTransaction`, instead, not
+             only to make your intent explicit, but also to future-proof your code.
+
  */
 
 - (BOOL)beginTransaction;
@@ -655,10 +709,34 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @see commit
  @see rollback
  @see beginTransaction
- @see inTransaction
+ @see isInTransaction
  */
 
 - (BOOL)beginDeferredTransaction;
+
+/** Begin an immediate transaction
+ 
+ @return `YES` on success; `NO` on failure. If failed, you can call `<lastError>`, `<lastErrorCode>`, or `<lastErrorMessage>` for diagnostic information regarding the failure.
+ 
+ @see commit
+ @see rollback
+ @see beginTransaction
+ @see isInTransaction
+ */
+
+- (BOOL)beginImmediateTransaction;
+
+/** Begin an exclusive transaction
+ 
+ @return `YES` on success; `NO` on failure. If failed, you can call `<lastError>`, `<lastErrorCode>`, or `<lastErrorMessage>` for diagnostic information regarding the failure.
+ 
+ @see commit
+ @see rollback
+ @see beginTransaction
+ @see isInTransaction
+ */
+
+- (BOOL)beginExclusiveTransaction;
 
 /** Commit a transaction
 
@@ -669,7 +747,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @see beginTransaction
  @see beginDeferredTransaction
  @see rollback
- @see inTransaction
+ @see isInTransaction
  */
 
 - (BOOL)commit;
@@ -683,22 +761,22 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @see beginTransaction
  @see beginDeferredTransaction
  @see commit
- @see inTransaction
+ @see isInTransaction
  */
 
 - (BOOL)rollback;
 
 /** Identify whether currently in a transaction or not
- 
- @return `YES` if currently within transaction; `NO` if not.
- 
+  
  @see beginTransaction
  @see beginDeferredTransaction
  @see commit
  @see rollback
  */
 
-- (BOOL)inTransaction;
+@property (nonatomic, readonly) BOOL isInTransaction;
+
+- (BOOL)inTransaction __deprecated_msg("Use isInTransaction property instead");
 
 
 ///----------------------------------------
@@ -718,22 +796,22 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @return `YES` if there are open result sets; `NO` if not.
  */
 
-- (BOOL)hasOpenResultSets;
+@property (nonatomic, readonly) BOOL hasOpenResultSets;
 
-/** Return whether should cache statements or not
+/** Whether should cache statements or not
+  */
+
+@property (nonatomic) BOOL shouldCacheStatements;
+
+/** Interupt pending database operation
  
- @return `YES` if should cache statements; `NO` if not.
+ This method causes any pending database operation to abort and return at its earliest opportunity
+ 
+ @return `YES` on success; `NO` on failure. If failed, you can call `<lastError>`, `<lastErrorCode>`, or `<lastErrorMessage>` for diagnostic information regarding the failure.
+ 
  */
 
-- (BOOL)shouldCacheStatements;
-
-/** Set whether should cache statements or not
- 
- @param value `YES` if should cache statements; `NO` if not.
- */
-
-- (void)setShouldCacheStatements:(BOOL)value;
-
+- (BOOL)interrupt;
 
 ///-------------------------
 /// @name Encryption methods
@@ -797,12 +875,14 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
 ///------------------------------
 
 /** The path of the database file
- 
- @return path of database.
- 
  */
 
-- (NSString *)databasePath;
+@property (nonatomic, readonly, nullable) NSString *databasePath;
+
+/** The file URL of the database file.
+ */
+
+@property (nonatomic, readonly, nullable) NSURL *databaseURL;
 
 /** The underlying SQLite handle 
  
@@ -810,7 +890,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  
  */
 
-- (void*)sqliteHandle;
+@property (nonatomic, readonly) void *sqliteHandle;
 
 
 ///-----------------------------
@@ -834,16 +914,32 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
 /** Last error code
  
  Returns the numeric result code or extended result code for the most recent failed SQLite API call associated with a database connection. If a prior API call failed but the most recent API call succeeded, this return value is undefined.
-
+ 
  @return Integer value of the last error code.
-
+ 
  @see [sqlite3_errcode()](http://sqlite.org/c3ref/errcode.html)
  @see lastErrorMessage
  @see lastError
-
+ 
  */
 
 - (int)lastErrorCode;
+
+/** Last extended error code
+ 
+ Returns the numeric extended result code for the most recent failed SQLite API call associated with a database connection. If a prior API call failed but the most recent API call succeeded, this return value is undefined.
+ 
+ @return Integer value of the last extended error code.
+ 
+ @see [sqlite3_errcode()](http://sqlite.org/c3ref/errcode.html)
+ @see [2. Primary Result Codes versus Extended Result Codes](http://sqlite.org/rescode.html#primary_result_codes_versus_extended_result_codes)
+ @see [5. Extended Result Code List](http://sqlite.org/rescode.html#extrc)
+ @see lastErrorMessage
+ @see lastError
+ 
+ */
+
+- (int)lastExtendedErrorCode;
 
 /** Had error
 
@@ -866,12 +962,11 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  
  */
 
-- (NSError*)lastError;
+- (NSError *)lastError;
 
 
 // description forthcoming
-- (void)setMaxBusyRetryTimeInterval:(NSTimeInterval)timeoutInSeconds;
-- (NSTimeInterval)maxBusyRetryTimeInterval;
+@property (nonatomic) NSTimeInterval maxBusyRetryTimeInterval;
 
 
 ///------------------
@@ -890,7 +985,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @see rollbackToSavePointWithName:error:
  */
 
-- (BOOL)startSavePointWithName:(NSString*)name error:(NSError**)outErr;
+- (BOOL)startSavePointWithName:(NSString*)name error:(NSError * _Nullable *)outErr;
 
 /** Release save point
 
@@ -905,7 +1000,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  
  */
 
-- (BOOL)releaseSavePointWithName:(NSString*)name error:(NSError**)outErr;
+- (BOOL)releaseSavePointWithName:(NSString*)name error:(NSError * _Nullable *)outErr;
 
 /** Roll back to save point
 
@@ -919,7 +1014,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  
  */
 
-- (BOOL)rollbackToSavePointWithName:(NSString*)name error:(NSError**)outErr;
+- (BOOL)rollbackToSavePointWithName:(NSString*)name error:(NSError * _Nullable *)outErr;
 
 /** Start save point
 
@@ -933,7 +1028,40 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  
  */
 
-- (NSError*)inSavePoint:(void (^)(BOOL *rollback))block;
+- (NSError * _Nullable)inSavePoint:(__attribute__((noescape)) void (^)(BOOL *rollback))block;
+
+
+///-----------------
+/// @name Checkpoint
+///-----------------
+
+/** Performs a WAL checkpoint
+ 
+ @param checkpointMode The checkpoint mode for sqlite3_wal_checkpoint_v2
+ @param error The NSError corresponding to the error, if any.
+ @return YES on success, otherwise NO.
+ */
+- (BOOL)checkpoint:(FMDBCheckpointMode)checkpointMode error:(NSError * _Nullable *)error;
+
+/** Performs a WAL checkpoint
+ 
+ @param checkpointMode The checkpoint mode for sqlite3_wal_checkpoint_v2
+ @param name The db name for sqlite3_wal_checkpoint_v2
+ @param error The NSError corresponding to the error, if any.
+ @return YES on success, otherwise NO.
+ */
+- (BOOL)checkpoint:(FMDBCheckpointMode)checkpointMode name:(NSString * _Nullable)name error:(NSError * _Nullable *)error;
+
+/** Performs a WAL checkpoint
+ 
+ @param checkpointMode The checkpoint mode for sqlite3_wal_checkpoint_v2
+ @param name The db name for sqlite3_wal_checkpoint_v2
+ @param error The NSError corresponding to the error, if any.
+ @param logFrameCount If not NULL, then this is set to the total number of frames in the log file or to -1 if the checkpoint could not run because of an error or because the database is not in WAL mode.
+ @param checkpointCount If not NULL, then this is set to the total number of checkpointed frames in the log file (including any that were already checkpointed before the function was called) or to -1 if the checkpoint could not run due to an error or because the database is not in WAL mode.
+ @return YES on success, otherwise NO.
+ */
+- (BOOL)checkpoint:(FMDBCheckpointMode)checkpointMode name:(NSString * _Nullable)name logFrameCount:(int * _Nullable)logFrameCount checkpointCount:(int * _Nullable)checkpointCount error:(NSError * _Nullable *)error;
 
 ///----------------------------
 /// @name SQLite library status
@@ -971,48 +1099,193 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  
  For example:
  
-    [queue inDatabase:^(FMDatabase *adb) {
-
-        [adb executeUpdate:@"create table ftest (foo text)"];
-        [adb executeUpdate:@"insert into ftest values ('hello')"];
-        [adb executeUpdate:@"insert into ftest values ('hi')"];
-        [adb executeUpdate:@"insert into ftest values ('not h!')"];
-        [adb executeUpdate:@"insert into ftest values ('definitely not h!')"];
-
-        [adb makeFunctionNamed:@"StringStartsWithH" maximumArguments:1 withBlock:^(sqlite3_context *context, int aargc, sqlite3_value **aargv) {
-            if (sqlite3_value_type(aargv[0]) == SQLITE_TEXT) {
-                @autoreleasepool {
-                    const char *c = (const char *)sqlite3_value_text(aargv[0]);
-                    NSString *s = [NSString stringWithUTF8String:c];
-                    sqlite3_result_int(context, [s hasPrefix:@"h"]);
-                }
-            }
-            else {
-                NSLog(@"Unknown formart for StringStartsWithH (%d) %s:%d", sqlite3_value_type(aargv[0]), __FUNCTION__, __LINE__);
-                sqlite3_result_null(context);
-            }
-        }];
-
-        int rowCount = 0;
-        FMResultSet *ars = [adb executeQuery:@"select * from ftest where StringStartsWithH(foo)"];
-        while ([ars next]) {
-            rowCount++;
-            NSLog(@"Does %@ start with 'h'?", [rs stringForColumnIndex:0]);
+    [db makeFunctionNamed:@"RemoveDiacritics" arguments:1 block:^(void *context, int argc, void **argv) {
+        SqliteValueType type = [self.db valueType:argv[0]];
+        if (type == SqliteValueTypeNull) {
+            [self.db resultNullInContext:context];
+             return;
         }
-        FMDBQuickCheck(rowCount == 2);
+        if (type != SqliteValueTypeText) {
+            [self.db resultError:@"Expected text" context:context];
+            return;
+        }
+        NSString *string = [self.db valueString:argv[0]];
+        NSString *result = [string stringByFoldingWithOptions:NSDiacriticInsensitiveSearch locale:nil];
+        [self.db resultString:result context:context];
     }];
 
- @param name Name of function
+    FMResultSet *rs = [db executeQuery:@"SELECT * FROM employees WHERE RemoveDiacritics(first_name) LIKE 'jose'"];
+    NSAssert(rs, @"Error %@", [db lastErrorMessage]);
+ 
+ @param name Name of function.
 
- @param count Maximum number of parameters
+ @param arguments Maximum number of parameters.
 
- @param block The block of code for the function
+ @param block The block of code for the function.
 
  @see [sqlite3_create_function()](http://sqlite.org/c3ref/create_function.html)
  */
 
-- (void)makeFunctionNamed:(NSString*)name maximumArguments:(int)count withBlock:(void (^)(void *context, int argc, void **argv))block;
+- (void)makeFunctionNamed:(NSString *)name arguments:(int)arguments block:(void (^)(void *context, int argc, void * _Nonnull * _Nonnull argv))block;
 
+- (void)makeFunctionNamed:(NSString *)name maximumArguments:(int)count withBlock:(void (^)(void *context, int argc, void * _Nonnull * _Nonnull argv))block __deprecated_msg("Use makeFunctionNamed:arguments:block:");
+
+typedef NS_ENUM(int, SqliteValueType) {
+    SqliteValueTypeInteger = 1,
+    SqliteValueTypeFloat   = 2,
+    SqliteValueTypeText    = 3,
+    SqliteValueTypeBlob    = 4,
+    SqliteValueTypeNull    = 5
+};
+
+- (SqliteValueType)valueType:(void *)argv;
+
+/**
+ Get integer value of parameter in custom function.
+ 
+ @param value The argument whose value to return.
+ @return The integer value.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (int)valueInt:(void *)value;
+
+/**
+ Get long value of parameter in custom function.
+ 
+ @param value The argument whose value to return.
+ @return The long value.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (long long)valueLong:(void *)value;
+
+/**
+ Get double value of parameter in custom function.
+ 
+ @param value The argument whose value to return.
+ @return The double value.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (double)valueDouble:(void *)value;
+
+/**
+ Get `NSData` value of parameter in custom function.
+ 
+ @param value The argument whose value to return.
+ @return The data object.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (NSData * _Nullable)valueData:(void *)value;
+
+/**
+ Get string value of parameter in custom function.
+ 
+ @param value The argument whose value to return.
+ @return The string value.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (NSString * _Nullable)valueString:(void *)value;
+
+/**
+ Return null value from custom function.
+ 
+ @param context The context to which the null value will be returned.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (void)resultNullInContext:(void *)context NS_SWIFT_NAME(resultNull(context:));
+
+/**
+ Return integer value from custom function.
+ 
+ @param value The integer value to be returned.
+ @param context The context to which the value will be returned.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (void)resultInt:(int) value context:(void *)context;
+
+/**
+ Return long value from custom function.
+ 
+ @param value The long value to be returned.
+ @param context The context to which the value will be returned.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (void)resultLong:(long long)value context:(void *)context;
+
+/**
+ Return double value from custom function.
+ 
+ @param value The double value to be returned.
+ @param context The context to which the value will be returned.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (void)resultDouble:(double)value context:(void *)context;
+
+/**
+ Return `NSData` object from custom function.
+ 
+ @param data The `NSData` object to be returned.
+ @param context The context to which the value will be returned.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (void)resultData:(NSData *)data context:(void *)context;
+
+/**
+ Return string value from custom function.
+ 
+ @param value The string value to be returned.
+ @param context The context to which the value will be returned.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (void)resultString:(NSString *)value context:(void *)context;
+
+/**
+ Return error string from custom function.
+ 
+ @param error The error string to be returned.
+ @param context The context to which the error will be returned.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (void)resultError:(NSString *)error context:(void *)context;
+
+/**
+ Return error code from custom function.
+ 
+ @param errorCode The integer error code to be returned.
+ @param context The context to which the error will be returned.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (void)resultErrorCode:(int)errorCode context:(void *)context;
+
+/**
+ Report memory error in custom function.
+ 
+ @param context The context to which the error will be returned.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (void)resultErrorNoMemoryInContext:(void *)context NS_SWIFT_NAME(resultErrorNoMemory(context:));
+
+/**
+ Report that string or BLOB is too long to represent in custom function.
+ 
+ @param context The context to which the error will be returned.
+ 
+ @see makeFunctionNamed:arguments:block:
+ */
+- (void)resultErrorTooBigInContext:(void *)context NS_SWIFT_NAME(resultErrorTooBig(context:));
 
 ///---------------------
 /// @name Date formatter
@@ -1083,7 +1356,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @see storeableDateFormat:
  */
 
-- (NSDate *)dateFromString:(NSString *)s;
+- (NSDate * _Nullable)dateFromString:(NSString *)s;
 
 /** Convert the supplied NSDate to NSString, using the current database formatter.
  
@@ -1160,3 +1433,4 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
 
 #pragma clang diagnostic pop
 
+NS_ASSUME_NONNULL_END

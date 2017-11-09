@@ -2,7 +2,7 @@
 
 import UIKit
 
-class DocumentLister: UITableViewController {
+class GroupLister: UITableViewController {
     
     var files = [URL]()
     var docsurl : URL {

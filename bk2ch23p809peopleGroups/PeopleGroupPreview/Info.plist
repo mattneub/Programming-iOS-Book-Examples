@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>PeopleGroup2Thumbnail</string>
+	<string>PeopleGroupPreview</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -26,13 +26,15 @@
 		<dict>
 			<key>QLSupportedContentTypes</key>
 			<array>
-				<string>com.neuburg.pplgrp2</string>
+				<string>com.neuburg.pplgrp</string>
 			</array>
+			<key>QLSupportsSearchableItems</key>
+			<false/>
 		</dict>
+		<key>NSExtensionMainStoryboard</key>
+		<string>MainInterface</string>
 		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.quicklook.thumbnail</string>
-		<key>NSExtensionPrincipalClass</key>
-		<string>$(PRODUCT_MODULE_NAME).ThumbnailProvider</string>
+		<string>com.apple.quicklook.preview</string>
 	</dict>
 </dict>
 </plist>

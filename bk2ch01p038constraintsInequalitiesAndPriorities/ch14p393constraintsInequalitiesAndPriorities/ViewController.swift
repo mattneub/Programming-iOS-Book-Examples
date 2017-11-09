@@ -17,6 +17,24 @@ extension UILayoutPriority {
     }
 }
 
+// these are taken from https://stackoverflow.com/a/47163386/341994
+// nice idea, but I don't think they solve any real problem,
+// since I don't mind saying `rawValue:` to set priority
+/*
+extension UILayoutPriority: ExpressibleByFloatLiteral {
+    public typealias FloatLiteralType = Float
+    public init(floatLiteral value: Float) {
+        self.init(value)
+    }
+}
+
+extension UILayoutPriority: ExpressibleByIntegerLiteral {
+    public typealias IntegerLiteralType = Int
+    public init(integerLiteral value: Int) {
+        self.init(Float(value))
+    }
+}
+*/
 
 class ViewController : UIViewController {
     
@@ -82,7 +100,7 @@ class ViewController : UIViewController {
             ].flatMap{$0})
         
         let con = button.centerXAnchor.constraint(equalTo:self.view.centerXAnchor)
-        con.priority = UILayoutPriority(rawValue: 700) // try commenting this out to see the difference in behavior
+        con.priority = UILayoutPriority(rawValue:700) // try commenting this out to see the difference in behavior
         NSLayoutConstraint.activate([con])
 
 

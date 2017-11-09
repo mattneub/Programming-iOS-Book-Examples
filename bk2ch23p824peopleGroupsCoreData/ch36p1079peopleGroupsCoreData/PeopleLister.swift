@@ -75,7 +75,7 @@ class PeopleLister: UITableViewController, NSFetchedResultsControllerDelegate, U
         person.group = self.group
         person.lastName = ""
         person.firstName = ""
-        person.timestamp = NSDate()
+        person.timestamp = Date()
         // save context
         do {
             try context.save()

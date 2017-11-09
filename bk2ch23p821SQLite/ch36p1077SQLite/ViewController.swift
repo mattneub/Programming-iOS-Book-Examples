@@ -1,5 +1,6 @@
 
 import UIKit
+import SQLite3
 
 // recast using pure Objective-C interface to FMDB, so that we are not dependent
 // on any particular incarnation of Swift in FMDB itself
@@ -20,17 +21,23 @@ class ViewController: UIViewController {
             try fm.removeItem(atPath:self.dbpath) // in case we did this once already
         } catch {}
         
-        guard let db = FMDatabase(path:self.dbpath), db.open()
-            else {print("Ooooops"); return}
+        let db = FMDatabase(path:self.dbpath)
+        db.open()
         
-        db.executeUpdate("create table people (lastname text, firstname text)", withArgumentsIn:[])
         
-        db.beginTransaction()
+        do {
+            db.beginTransaction()
+            
+            try db.executeUpdate("create table people (lastname text, firstname text)", values:nil)
+            try db.executeUpdate("insert into people (firstname, lastname) values (?,?)", values:["Matt", "Neuburg"])
+            try db.executeUpdate("insert into people (firstname, lastname) values (?,?)", values:["Snidely", "Whiplash"])
+            try db.executeUpdate("insert into people (firstname, lastname) values (?,?)", values:["Dudley", "Doright"])
         
-        db.executeUpdate("insert into people (firstname, lastname) values (?,?)", withArgumentsIn:["Matt", "Neuburg"])
-        db.executeUpdate("insert into people (firstname, lastname) values (?,?)", withArgumentsIn:["Snidely", "Whiplash"])
-        db.executeUpdate("insert into people (firstname, lastname) values (?,?)", withArgumentsIn:["Dudley", "Doright"])
-        db.commit()
+            db.commit()
+        } catch {
+            db.rollback()
+            print("something went wrong")
+        }
         
         print("I think I created it")
         db.close()
@@ -38,12 +45,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func doButton2 (_ sender: Any!) {
-        guard let db = FMDatabase(path:self.dbpath), db.open()
-            else {print("Ooooops"); return}
-        
-        if let rs = db.executeQuery("select * from people", withArgumentsIn:[]) {
+        let db = FMDatabase(path:self.dbpath)
+        db.open()
+        if let rs = try? db.executeQuery("select * from people", values:nil) {
             while rs.next() {
-                print(rs["firstname"], rs["lastname"])
+                if let firstname = rs["firstname"], let lastname = rs["lastname"] {
+                    print(firstname, lastname)
+                }
             }
         }
         db.close()
