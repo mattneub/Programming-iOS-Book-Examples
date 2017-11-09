@@ -193,7 +193,7 @@ class ViewController: UIViewController {
             
             let arrfile2 = docsurl.appendingPathComponent("arr2.plist")
             let arraydata = try Data(contentsOf: arrfile2)
-            let arr = try PropertyListDecoder().decode(Array<Person2>.self, from:arraydata)
+            let arr = try PropertyListDecoder().decode([Person2].self, from:arraydata)
             print(arr)
         } catch {
             print(error)

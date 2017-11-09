@@ -10,7 +10,7 @@ class PeopleDocument: UIDocument {
                        ofType typeName: String?) throws {
         print("loading \(typeName as Any)")
         if let contents = contents as? Data {
-            if let arr = try? PropertyListDecoder().decode(Array<Person>.self, from: contents) {
+            if let arr = try? PropertyListDecoder().decode([Person].self, from: contents) {
                 self.people = arr
                 print("loaded \(self.people)")
                 return // all's well that ends well
