@@ -2,6 +2,29 @@
 
 import UIKit
 
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
 class PeopleDocument: UIDocument {
     
     var people = [Person]()
@@ -27,6 +50,20 @@ class PeopleDocument: UIDocument {
         }
         // if we get here, there was some kind of problem
         throw NSError(domain: "NoDataDomain", code: -2, userInfo: nil)
+    }
+    
+    // ??? I don't see that this does anything perceptible
+    override func fileAttributesToWrite(to url: URL, for saveOperation: UIDocumentSaveOperation) throws -> [AnyHashable : Any] {
+        let icon = UIImage(named:"smiley.jpg")!
+        let sz = CGSize(1024,1024)
+        let im = UIGraphicsImageRenderer(size:sz).image {_ in
+            icon.draw(at: CGPoint((sz.width-icon.size.width)/2, (sz.height-icon.size.height)/2))
+        }
+        var d = try super.fileAttributesToWrite(to: url, for: saveOperation)
+        let key1 = URLResourceKey.thumbnailDictionaryKey
+        let key2 = URLThumbnailDictionaryItem.NSThumbnail1024x1024SizeKey
+        d[key1] = [key2:im]
+        return d
     }
     
 }

@@ -25,6 +25,7 @@
 		8195BF671FB2B99E00E2B1F1 /* PeopleLister.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32335DA618328FA400B84460 /* PeopleLister.xib */; };
 		8195BF681FB2B99E00E2B1F1 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320D8AC419AF99AF0065F2C5 /* Person.swift */; };
 		8195BF691FB2B99E00E2B1F1 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32335DA218328E6A00B84460 /* PersonCell.xib */; };
+		81D2D6EC1FB60B38007D80C7 /* smiley.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81D2D6EB1FB60B38007D80C7 /* smiley.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		8195BF591FB2B86500E2B1F1 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		8195BF5C1FB2B86500E2B1F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		8195BF5E1FB2B86500E2B1F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81D2D6EB1FB60B38007D80C7 /* smiley.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smiley.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				32335DA618328FA400B84460 /* PeopleLister.xib */,
 				320D8AC419AF99AF0065F2C5 /* Person.swift */,
 				32335DA218328E6A00B84460 /* PersonCell.xib */,
+				81D2D6EB1FB60B38007D80C7 /* smiley.jpg */,
 				32335D7B18328D8100B84460 /* Assets.xcassets */,
 				328BA2A21BCAC810005A17A9 /* LaunchScreen.storyboard */,
 				32335D6B18328D8100B84460 /* ch36p1066peopleGroups-Info.plist */,
@@ -236,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81D2D6EC1FB60B38007D80C7 /* smiley.jpg in Resources */,
 				32335D7C18328D8100B84460 /* Assets.xcassets in Resources */,
 				32335DA718328FA400B84460 /* PeopleLister.xib in Resources */,
 				32335DA518328E6A00B84460 /* PersonCell.xib in Resources */,
