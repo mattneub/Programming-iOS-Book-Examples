@@ -38,7 +38,7 @@ class ViewController: UIViewController, URLSessionDataDelegate {
     
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        print("completed: error: \(error)")
+        print("completed: error: \(error as Any)")
         self.task = nil
         if error == nil {
             DispatchQueue.main.async {

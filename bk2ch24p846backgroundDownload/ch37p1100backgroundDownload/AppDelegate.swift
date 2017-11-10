@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
     }
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        NSLog("%@", "completed; error: \(error)")
+        NSLog("%@", "completed; error: \(error as Any)")
     }
     
     // === this is the Really Interesting Part

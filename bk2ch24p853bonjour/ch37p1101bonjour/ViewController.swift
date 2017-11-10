@@ -26,7 +26,7 @@ class ViewController: UIViewController, NetServiceBrowserDelegate, NetServiceDel
                 service.resolve(withTimeout:10)
             } else {
                 print("service \(service.name) of type \(service.type)," +
-                    "port \(service.port), addresses \(service.addresses)")
+                    "port \(service.port), addresses \(service.addresses as Any)")
             }
         }
     }

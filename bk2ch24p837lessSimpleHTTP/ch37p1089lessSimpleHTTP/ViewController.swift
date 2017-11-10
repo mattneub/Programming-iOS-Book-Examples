@@ -54,7 +54,7 @@ class ViewController: UIViewController, URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         self.task = nil
-        print("completed: error: \(error)")
+        print("completed: error: \(error as Any)")
     }
     
     // this is the only required URLSessionDownloadDelegate method

@@ -36,11 +36,11 @@ class ViewController: UIViewController {
         }
     }
     
-    func gotPicture (_ n : Notification) {
+    @objc func gotPicture (_ n : Notification) {
         self.grabPicture()
     }
     
-    func gotProgress (_ n : Notification) {
+    @objc func gotProgress (_ n : Notification) {
         if let ui = n.userInfo {
             if let prog = ui["progress"] as? NSNumber {
                 self.prog.progress = Float(prog.doubleValue)
