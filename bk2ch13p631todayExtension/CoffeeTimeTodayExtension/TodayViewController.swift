@@ -24,6 +24,10 @@ extension CGVector {
     }
 }
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
 
 
 // NB The widget is automatically used as a home screen shortcut!
@@ -31,10 +35,14 @@ extension CGVector {
 
 class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var iv: UIImageView!
+    let compactSize = CGSize(320,110)
+    let expandedSize = CGSize(320,150)
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.preferredContentSize = CGSize(320,113)
+        self.preferredContentSize = self.compactSize
+        // uncomment next line to engage size-change mechanism
+        // self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         self.iv.image = UIImage(named:"cup.jpg")
     }
         
@@ -63,6 +71,24 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's an update, use NCUpdateResult.NewData
 
         completionHandler(.newData)
+    }
+    
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        print(activeDisplayMode.rawValue)
+        print(maxSize)
+        // maxSize alternates between (304.0, 110.0) and (304.0, 440.0)
+        switch activeDisplayMode {
+        case .compact:
+            self.preferredContentSize = self.compactSize
+            delay(1) {
+                print(self.view.bounds.height)
+            }
+        case .expanded:
+            self.preferredContentSize = self.expandedSize
+            delay(1) {
+                print(self.view.bounds.height)
+            }
+        }
     }
     
 }
