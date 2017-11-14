@@ -1,8 +1,8 @@
 
 import UIKit
+import os.log
 
 extension Notification.Name {
-    static let gotProgress = Notification.Name("gotProgress")
     static let gotPicture = Notification.Name("gotPicture")
 }
 
@@ -22,49 +22,71 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDownloadDelegat
         return sess
     }()
     var ch : (() -> ())!
+    // this really helps filter things in Console
+    let log = OSLog(subsystem: "com.neuburg.matt", category: "testing")
+    // states are active, inactive, background
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
         // Override point for customization after application launch.
-        NSLog("%@", "launching")
+        os_log("launching", log: log)
+        os_log("%{public}@", log: log, #function)
         return true
     }
     
-    func startDownload (_: Any?) {
+    func startDownload (_: Any?) -> Progress {
         let s = "https://www.nasa.gov/sites/default/files/styles/1600x1200_autoletterbox/public/pia17474_1.jpg"
         let task = self.session.downloadTask(with:URL(string:s)!)
+        task.earliestBeginDate = Date(timeIntervalSinceNow: 10)
+        let progress = task.progress
         task.resume()
+        os_log("resuming task", log: log)
+        os_log("%{public}@", log: log, #function)
+        return progress
     }
-
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        let prog = Double(totalBytesWritten)/Double(totalBytesExpectedToWrite)
-        NSLog("%@", "downloaded \(100.0*prog)%")
-        NotificationCenter.default.post(name: .gotProgress, object:self, userInfo:["progress":prog])
+    
+    // new in iOS 11
+    // in real life, do _not_ implement this unless you need it, e.g.
+    // because you might want to cancel the request before it starts,
+    // or in order to substitute a different request
+    // very interesting, but I believe this upsets the order;
+    // this is called and then urlSessionDidFinishEvents, which is too soon
+    func urlSession(_ session: URLSession, task: URLSessionTask, willBeginDelayedRequest request: URLRequest, completionHandler: @escaping (URLSession.DelayedRequestDisposition, URLRequest?) -> Void) {
+        // dispositions are: .cancel, .continueLoading, .useNewRequest
+        // and in the last case you supply a new request as the 2nd parameter
+        os_log("will begin delayed request; now we are really starting %d", log: log, UIApplication.shared.applicationState.rawValue)
+        os_log("%{public}@", log: log, #function)
+        completionHandler(.continueLoading, nil)
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         guard let d = try? Data(contentsOf: location) else {return}
+        os_log("finished; posting notification %d", log: log, UIApplication.shared.applicationState.rawValue)
+        os_log("%{public}@", log: log, #function)
         let im = UIImage(data:d)
         DispatchQueue.main.async {
-            NSLog("%@", "finished; posting notification")
             self.image = im
             NotificationCenter.default.post(name: .gotPicture, object: self)
         }
     }
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        NSLog("%@", "completed; error: \(error as Any)")
+        os_log("did complete %d", log: log, UIApplication.shared.applicationState.rawValue)
+        os_log("%{public}@", log: log, #function)
     }
     
     // === this is the Really Interesting Part
     
     func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
-        NSLog("%@", "hello hello, storing completion handler")
+        os_log("hello hello, storing completion handler %d", log: log, UIApplication.shared.applicationState.rawValue)
+        os_log("%{public}@", log: log, #function)
         self.ch = completionHandler
         _ = self.session // make sure we have one
     }
     
     func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+        os_log("did finish, calling completion handler %d", log: log, UIApplication.shared.applicationState.rawValue)
+        os_log("%{public}@", log: log, #function)
         self.ch?()
     }
 

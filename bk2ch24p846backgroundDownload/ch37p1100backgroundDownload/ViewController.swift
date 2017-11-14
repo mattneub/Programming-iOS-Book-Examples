@@ -10,7 +10,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(gotPicture), name: .gotPicture, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(gotProgress), name: .gotProgress, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -23,7 +22,8 @@ class ViewController: UIViewController {
         self.prog.progress = 0
         self.iv.image = nil
         let del = UIApplication.shared.delegate as! AppDelegate
-        del.startDownload(self)
+        let progress = del.startDownload(self)
+        self.prog.observedProgress = progress
     }
     
     func grabPicture () {
@@ -38,14 +38,6 @@ class ViewController: UIViewController {
     
     @objc func gotPicture (_ n : Notification) {
         self.grabPicture()
-    }
-    
-    @objc func gotProgress (_ n : Notification) {
-        if let ui = n.userInfo {
-            if let prog = ui["progress"] as? NSNumber {
-                self.prog.progress = Float(prog.doubleValue)
-            }
-        }
     }
     
     deinit {

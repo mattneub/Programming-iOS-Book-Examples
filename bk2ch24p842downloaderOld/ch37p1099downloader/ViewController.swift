@@ -17,10 +17,10 @@ class ViewController: UIViewController {
         self.iv.image = nil
         let s = "https://www.nasa.gov/sites/default/files/styles/1600x1200_autoletterbox/public/pia17474_1.jpg"
         let url = URL(string:s)!
-        self.downloader.download(url:url) { [weak self] url in
+        self.downloader.download(url:url) { url in
             if let url = url, let d = try? Data(contentsOf: url) {
                 let im = UIImage(data:d)
-                self?.iv.image = im
+                self.iv.image = im
             }
         }
     }

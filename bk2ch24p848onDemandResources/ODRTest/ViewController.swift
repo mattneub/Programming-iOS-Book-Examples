@@ -5,6 +5,8 @@ class ViewController: UIViewController {
     
     var tubbyRequest : NSBundleResourceRequest?
     @IBOutlet var iv : UIImageView!
+    
+    var obs = Set<NSKeyValueObservation>()
 
     @IBAction func testForTubby() {
         let im = UIImage(named:"tubby")
@@ -19,7 +21,10 @@ class ViewController: UIViewController {
     @IBAction func startUsingTubby() {
         guard self.tubbyRequest == nil else {return}
         self.tubbyRequest = NSBundleResourceRequest(tags: ["tubby"])
-        self.tubbyRequest!.addObserver(self, forKeyPath: #keyPath(NSBundleResourceRequest.progress.fractionCompleted), options:[.new], context: nil)
+        let ob = self.tubbyRequest!.observe(\.progress.fractionCompleted, options: .new) { req, ch in
+            print(ch)
+        }
+        self.obs.insert(ob)
         self.tubbyRequest!.beginAccessingResources { err in
             guard err == nil else {print(err as Any); return}
             DispatchQueue.main.async {
@@ -37,9 +42,6 @@ class ViewController: UIViewController {
         self.tubbyRequest = nil
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        print(change as Any)
-    }
     
 
 }

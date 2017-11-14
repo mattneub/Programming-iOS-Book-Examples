@@ -5,13 +5,14 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet var iv : UIImageView!
+    @IBOutlet weak var prog: UIProgressView!
     
     @IBAction func doSimpleHTTP (_ sender: Any!) {
         self.iv.image = nil
         let s = "https://www.apeth.net/matt/images/phoenixnewest.jpg"
         let url = URL(string:s)!
         let session = URLSession.shared
-        let task = session.downloadTask(with:url) { loc, resp, err in
+        let task = session.downloadTask(with:url) { fileURL, resp, err in
             print("here")
             guard err == nil else {
                 print(err as Any)
@@ -23,7 +24,7 @@ class ViewController: UIViewController {
                 print(status)
                 return
             }
-            if let loc = loc, let d = try? Data(contentsOf:loc) {
+            if let url = fileURL, let d = try? Data(contentsOf:url) {
                 let im = UIImage(data:d)
                 DispatchQueue.main.async {
                     self.iv.image = im
@@ -33,6 +34,10 @@ class ViewController: UIViewController {
         }
         // just demonstrating syntax
         task.priority = URLSessionTask.defaultPriority
+        // new iOS 11 feature
+        if #available(iOS 11.0, *) {
+            self.prog.observedProgress = task.progress
+        }
         task.resume()
     }
     
