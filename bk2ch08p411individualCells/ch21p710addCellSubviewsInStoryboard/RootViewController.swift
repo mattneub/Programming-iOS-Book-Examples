@@ -22,6 +22,10 @@ extension CGVector {
     }
 }
 
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
 
 
 class RootViewController : UITableViewController {
@@ -36,6 +40,13 @@ class RootViewController : UITableViewController {
         self.tableView.rowHeight = 58 // *
         
         self.tableView.prefetchDataSource = self
+        
+        // test to see whether this causes cellForRowAt to be called if offscreen
+        delay(2) {
+            print("test reload")
+            self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
+            self.tableView.reloadRows(at: [IndexPath(row: 100, section: 0)], with: .none)
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
