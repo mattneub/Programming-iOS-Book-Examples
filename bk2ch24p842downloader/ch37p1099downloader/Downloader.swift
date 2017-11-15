@@ -4,9 +4,9 @@ import UIKit
 
 let isMain = false // try false to move delegate methods onto a background thread
 
-typealias MyDownloaderCH = (URL?) -> ()
+typealias DownloaderCH = (URL?) -> ()
 
-class MyDownloader: NSObject {
+class Downloader: NSObject {
     let config : URLSessionConfiguration
     let dispatchq = DispatchQueue.global(qos:.background)
     let q : OperationQueue = {
@@ -16,7 +16,7 @@ class MyDownloader: NSObject {
     }()
     lazy var session : URLSession = {
         let queue = (isMain ? .main : self.q)
-        return URLSession(configuration:self.config, delegate:MyDownloaderDelegate(), delegateQueue:queue)
+        return URLSession(configuration:self.config, delegate:DownloaderDelegate(), delegateQueue:queue)
     }()
     init(configuration config:URLSessionConfiguration) {
         self.config = config
@@ -25,17 +25,17 @@ class MyDownloader: NSObject {
     }
     
     @discardableResult
-    func download(url:URL, completionHandler ch : @escaping MyDownloaderCH) -> URLSessionTask {
+    func download(url:URL, completionHandler ch : @escaping DownloaderCH) -> URLSessionTask {
         let task = self.session.downloadTask(with:url)
-        let del = self.session.delegate as! MyDownloaderDelegate
+        let del = self.session.delegate as! DownloaderDelegate
         del.appendHandler(ch, task: task, queue: isMain ? .main : self.q)
         task.resume()
         return task
     }
     
-    private class MyDownloaderDelegate : NSObject, URLSessionDownloadDelegate {
-        private var handlers = [Int:MyDownloaderCH]()
-        func appendHandler(_ ch:@escaping MyDownloaderCH, task:URLSessionTask, queue:OperationQueue = .main) {
+    private class DownloaderDelegate : NSObject, URLSessionDownloadDelegate {
+        private var handlers = [Int:DownloaderCH]()
+        func appendHandler(_ ch:@escaping DownloaderCH, task:URLSessionTask, queue:OperationQueue = .main) {
             queue.addOperation {
                 print("adding completion for task \(task.taskIdentifier)")
                 self.handlers[task.taskIdentifier] = ch
@@ -67,7 +67,7 @@ class MyDownloader: NSObject {
 //    }
     
     deinit {
-        print("farewell from MyDownloader")
+        print("farewell from Downloader")
         self.session.invalidateAndCancel()
     }
     

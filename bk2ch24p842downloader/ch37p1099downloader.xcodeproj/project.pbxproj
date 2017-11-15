@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		321310761835486E0091B292 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 321310741835486E0091B292 /* Main.storyboard */; };
 		3213107B1835486E0091B292 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3213107A1835486E0091B292 /* Assets.xcassets */; };
-		32625B4619B37D48005B6531 /* MyDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32625B4519B37D48005B6531 /* MyDownloader.swift */; };
+		32625B4619B37D48005B6531 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32625B4519B37D48005B6531 /* Downloader.swift */; };
 		32625BA119B394FE005B6531 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32625BA019B394FE005B6531 /* ViewController.swift */; };
 		32625BA319B397C6005B6531 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32625BA219B397C6005B6531 /* MyTableViewController.swift */; };
 		3294B62F1BCC44DD00AF7E0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3294B62E1BCC44DD00AF7E0F /* LaunchScreen.storyboard */; };
@@ -21,7 +21,7 @@
 		3213106A1835486E0091B292 /* ch37p1099downloader-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ch37p1099downloader-Info.plist"; sourceTree = "<group>"; };
 		321310751835486E0091B292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3213107A1835486E0091B292 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		32625B4519B37D48005B6531 /* MyDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDownloader.swift; sourceTree = "<group>"; };
+		32625B4519B37D48005B6531 /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		32625BA019B394FE005B6531 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32625BA219B397C6005B6531 /* MyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
 		3294B62E1BCC44DD00AF7E0F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 				3294B6301BCC44EA00AF7E0F /* AppDelegate.swift */,
 				321310741835486E0091B292 /* Main.storyboard */,
 				32625BA019B394FE005B6531 /* ViewController.swift */,
-				32625B4519B37D48005B6531 /* MyDownloader.swift */,
+				32625B4519B37D48005B6531 /* Downloader.swift */,
 				32625BA219B397C6005B6531 /* MyTableViewController.swift */,
 				3213107A1835486E0091B292 /* Assets.xcassets */,
 				3294B62E1BCC44DD00AF7E0F /* LaunchScreen.storyboard */,
@@ -145,7 +145,7 @@
 				3294B6311BCC44EA00AF7E0F /* AppDelegate.swift in Sources */,
 				32625BA119B394FE005B6531 /* ViewController.swift in Sources */,
 				32625BA319B397C6005B6531 /* MyTableViewController.swift in Sources */,
-				32625B4619B37D48005B6531 /* MyDownloader.swift in Sources */,
+				32625B4619B37D48005B6531 /* Downloader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

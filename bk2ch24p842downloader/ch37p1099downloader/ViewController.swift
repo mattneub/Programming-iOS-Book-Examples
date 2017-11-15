@@ -6,11 +6,11 @@ class ViewController: UIViewController {
     
     @IBOutlet var iv : UIImageView!
     
-    let downloader : MyDownloader = {
+    let downloader : Downloader = {
         let config = URLSessionConfiguration.ephemeral
         config.allowsCellularAccess = false
         config.urlCache = nil
-        return MyDownloader(configuration:config)
+        return Downloader(configuration:config)
     }()
     
     @IBAction func doDownload (_ sender: Any!) {

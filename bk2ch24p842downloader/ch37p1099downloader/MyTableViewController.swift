@@ -11,8 +11,8 @@ class MyTableViewController: UITableViewController, UITableViewDataSourcePrefetc
         return config
         }()
     
-    lazy var downloader : MyDownloader = {
-        return MyDownloader(configuration:self.configuration)
+    lazy var downloader : Downloader = {
+        return Downloader(configuration:self.configuration)
     }()
 
     var model : [Model] = {
