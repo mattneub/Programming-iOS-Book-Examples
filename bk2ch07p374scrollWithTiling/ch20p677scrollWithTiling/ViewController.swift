@@ -69,7 +69,7 @@ class TiledView : UIView {
     override func draw(_ r: CGRect) {
         NSLog("%@", "outside sync: \(r)")
 
-        drawQueue.sync { // work around nasty thread issue...
+        self.drawQueue.sync { // work around nasty thread issue...
             // we are called twice simultaneously on two different background threads!
             // logging to prove we have in fact worked around it
             NSLog("%@", "starting drawRect: \(r)")

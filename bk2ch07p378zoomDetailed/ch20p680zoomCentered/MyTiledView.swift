@@ -28,7 +28,7 @@ class MyTiledView : UIView {
 //        NSLog("%@", NSStringFromCGAffineTransform(UIGraphicsGetCurrentContext()!.ctm));
 //        NSLog("%@", NSStringFromCGRect(UIGraphicsGetCurrentContext()!.boundingBoxOfClipPath));
         
-        drawQueue.sync { // work around nasty thread issue...
+        self.drawQueue.sync { // work around nasty thread issue...
             // we are called twice simultaneously on two different background threads!
             
             // gather needed info on main thread
