@@ -9,13 +9,13 @@ typealias DownloaderCH = (URL?) -> ()
 class Downloader: NSObject {
     let config : URLSessionConfiguration
     let dispatchq = DispatchQueue.global(qos:.background)
-    let q : OperationQueue = {
-        let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 1
-        return queue
+    let queue : OperationQueue = {
+        let q = OperationQueue()
+        q.maxConcurrentOperationCount = 1
+        return q
     }()
     lazy var session : URLSession = {
-        let queue = (isMain ? .main : self.q)
+        let queue = (isMain ? .main : self.queue)
         return URLSession(configuration:self.config, delegate:DownloaderDelegate(), delegateQueue:queue)
     }()
     init(configuration config:URLSessionConfiguration) {
@@ -28,18 +28,22 @@ class Downloader: NSObject {
     func download(url:URL, completionHandler ch : @escaping DownloaderCH) -> URLSessionTask {
         let task = self.session.downloadTask(with:url)
         let del = self.session.delegate as! DownloaderDelegate
-        del.appendHandler(ch, task: task, queue: isMain ? .main : self.q)
+        // make sure we never speak to DownloaderDelegate except on its own queue
+        self.session.delegateQueue.addOperation {
+            del.appendHandler(ch, task: task)
+        }
+        // is it safe to resume and return task immediately?
+        // yes! the queue is a serial queue;
+        // therefore no delegate messages can arrive until after appendHandler executes
         task.resume()
         return task
     }
     
     private class DownloaderDelegate : NSObject, URLSessionDownloadDelegate {
         private var handlers = [Int:DownloaderCH]()
-        func appendHandler(_ ch:@escaping DownloaderCH, task:URLSessionTask, queue:OperationQueue = .main) {
-            queue.addOperation {
-                print("adding completion for task \(task.taskIdentifier)")
-                self.handlers[task.taskIdentifier] = ch
-            }
+        func appendHandler(_ ch:@escaping DownloaderCH, task:URLSessionTask) {
+            print("adding completion for task \(task.taskIdentifier)")
+            self.handlers[task.taskIdentifier] = ch
         }
         func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo url: URL) {
             print("finished download for task \(downloadTask.taskIdentifier)")
