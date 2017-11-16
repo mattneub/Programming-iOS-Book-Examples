@@ -46,9 +46,10 @@ class MyMandelbrotView : UIView {
         }
         guard bti != UIBackgroundTaskInvalid else { return }
         let center = CGPoint(self.bounds.midX, self.bounds.midY)
+        let bounds = self.bounds
         self.draw_queue.async {
-            let bitmap = self.makeBitmapContext(size: self.bounds.size)
-            self.draw(center: center, zoom:1, context:bitmap)
+            let bitmap = self.makeBitmapContext(size: bounds.size)
+            self.draw(center: center, bounds: bounds, zoom: 1, context: bitmap)
             DispatchQueue.main.async {
                 // testing crash
                 // self.assertOnBackgroundThread() // crash! :)
@@ -85,7 +86,7 @@ class MyMandelbrotView : UIView {
     }
     
     // NB do NOT refer to self.bitmapContext here!
-    func draw(center:CGPoint, zoom:CGFloat, context:CGContext) {
+    func draw(center:CGPoint, bounds:CGRect, zoom:CGFloat, context:CGContext) {
         
         func isInMandelbrotSet(_ re:Float, _ im:Float) -> Bool {
             var fl = true
@@ -110,8 +111,8 @@ class MyMandelbrotView : UIView {
         context.setFillColor(red: 0, green: 0, blue: 0, alpha: 1)
         var re : CGFloat
         var im : CGFloat
-        let maxi = Int(self.bounds.size.width) // really shouldn't be doing these...
-        let maxj = Int(self.bounds.size.height) // ...on background thread?
+        let maxi = Int(bounds.size.width)
+        let maxj = Int(bounds.size.height)
         for i in 0 ..< maxi {
             for j in 0 ..< maxj {
                 re = (CGFloat(i) - 1.33 * center.x) / 160

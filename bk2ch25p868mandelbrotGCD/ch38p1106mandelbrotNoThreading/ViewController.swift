@@ -11,7 +11,7 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 
 struct Oncer2 {
     private static var once : Void = {
-        print("I did it too!")
+        print("I did it once too!")
     }()
     func doThisOnce() {
         _ = type(of:self).once
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     struct Oncer {
         private static var once : Void = {
-            print("I did it!")
+            print("I did it once!")
         }()
         func doThisOnce() {
             _ = type(of:self).once

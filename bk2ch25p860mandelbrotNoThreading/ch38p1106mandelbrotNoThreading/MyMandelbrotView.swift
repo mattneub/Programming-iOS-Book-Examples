@@ -41,7 +41,7 @@ class MyMandelbrotView : UIView {
     func drawThatPuppy () {
         self.makeBitmapContext(size: self.bounds.size)
         let center = CGPoint(self.bounds.midX, self.bounds.midY)
-        self.draw(center: center, zoom:1)
+        self.draw(center: center, bounds: self.bounds, zoom: 1)
         self.setNeedsDisplay()
     }
     
@@ -56,7 +56,7 @@ class MyMandelbrotView : UIView {
     }
     
     // draw pixels of bitmap context
-    func draw(center:CGPoint, zoom:CGFloat) {
+    func draw(center:CGPoint, bounds:CGRect, zoom:CGFloat) {
         func isInMandelbrotSet(_ re:Float, _ im:Float) -> Bool {
             var fl = true
             var (x, y, nx, ny) : (Float,Float,Float,Float) = (0,0,0,0)
@@ -76,8 +76,8 @@ class MyMandelbrotView : UIView {
         self.bitmapContext.setFillColor(red: 0, green: 0, blue: 0, alpha: 1)
         var re : CGFloat
         var im : CGFloat
-        let maxi = Int(self.bounds.size.width)
-        let maxj = Int(self.bounds.size.height)
+        let maxi = Int(bounds.size.width)
+        let maxj = Int(bounds.size.height)
         for i in 0 ..< maxi {
             for j in 0 ..< maxj {
                 re = (CGFloat(i) - 1.33 * center.x) / 160

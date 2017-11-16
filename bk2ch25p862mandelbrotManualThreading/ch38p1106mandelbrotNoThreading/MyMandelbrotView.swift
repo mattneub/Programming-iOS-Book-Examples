@@ -56,20 +56,24 @@ class MyMandelbrotView : UIView {
         UIApplication.shared.beginIgnoringInteractionEvents()
         self.makeBitmapContext(size:self.bounds.size)
         let center = CGPoint(self.bounds.midX, self.bounds.midY)
-        let d : [AnyHashable:Any] = ["center":center, "zoom":CGFloat(1)]
+        let d : [AnyHashable:Any] = ["center":center, "bounds":self.bounds, "zoom":CGFloat(1)]
         self.performSelector(inBackground: #selector(reallyDraw), with: d)
     }
     
     // trampoline, background thread entry point
-    func reallyDraw(_ d: [AnyHashable:Any]) {
+    @objc func reallyDraw(_ d: [AnyHashable:Any]) {
         autoreleasepool {
-            self.draw(center:d["center"] as! CGPoint, zoom: d["zoom"] as! CGFloat)
+            self.draw(
+                center:d["center"] as! CGPoint,
+                bounds:d["bounds"] as! CGRect,
+                zoom: d["zoom"] as! CGFloat
+            )
             self.performSelector(onMainThread: #selector(allDone), with: nil, waitUntilDone: false)
         }
     }
     
     // called on main thread! background thread exit point
-    func allDone() {
+    @objc func allDone() {
         self.setNeedsDisplay()
         UIApplication.shared.endIgnoringInteractionEvents()
     }
@@ -89,7 +93,7 @@ class MyMandelbrotView : UIView {
     }
     
     // draw pixels of bitmap context
-    func draw(center:CGPoint, zoom:CGFloat) {
+    func draw(center:CGPoint, bounds:CGRect, zoom:CGFloat) {
         func isInMandelbrotSet(_ re:Float, _ im:Float) -> Bool {
             var fl = true
             var (x, y, nx, ny) : (Float,Float,Float,Float) = (0,0,0,0)
@@ -109,8 +113,8 @@ class MyMandelbrotView : UIView {
         self.bitmapContext.setFillColor(red: 0, green: 0, blue: 0, alpha: 1)
         var re : CGFloat
         var im : CGFloat
-        let maxi = Int(self.bounds.size.width)
-        let maxj = Int(self.bounds.size.height)
+        let maxi = Int(bounds.size.width)
+        let maxj = Int(bounds.size.height)
         for i in 0 ..< maxi {
             for j in 0 ..< maxj {
                 re = (CGFloat(i) - 1.33 * center.x) / 160

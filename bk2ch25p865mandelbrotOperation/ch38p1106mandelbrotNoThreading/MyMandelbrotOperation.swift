@@ -3,14 +3,14 @@
 import UIKit
 
 class MyMandelbrotOperation : Operation {
-    private let size : CGSize
     private let center : CGPoint
+    private let bounds : CGRect
     private let zoom : CGFloat
     private(set) var bitmapContext : CGContext! = nil
     
-    init(size sz:CGSize, center c:CGPoint, zoom z:CGFloat) {
-        self.size = sz
+    init(center c:CGPoint, bounds b:CGRect, zoom z:CGFloat) {
         self.center = c
+        self.bounds = b
         self.zoom = z
         super.init()
     }
@@ -27,7 +27,7 @@ class MyMandelbrotOperation : Operation {
         self.bitmapContext = context
     }
     
-    func draw(center:CGPoint, zoom:CGFloat) {
+    func draw(center:CGPoint, bounds:CGRect, zoom:CGFloat) {
         func isInMandelbrotSet(_ re:Float, _ im:Float) -> Bool {
             var fl = true
             var (x, y, nx, ny) : (Float,Float,Float,Float) = (0,0,0,0)
@@ -47,8 +47,8 @@ class MyMandelbrotOperation : Operation {
         self.bitmapContext.setFillColor(red: 0, green: 0, blue: 0, alpha: 1)
         var re : CGFloat
         var im : CGFloat
-        let maxi = Int(self.size.width) // *
-        let maxj = Int(self.size.height) // *
+        let maxi = Int(bounds.size.width)
+        let maxj = Int(bounds.size.height)
         for i in 0 ..< maxi {
             for j in 0 ..< maxj {
                 re = (CGFloat(i) - 1.33 * center.x) / 160
@@ -66,8 +66,8 @@ class MyMandelbrotOperation : Operation {
     
     override func main() {
         guard !self.isCancelled else {return}
-        self.makeBitmapContext(size:self.size)
-        self.draw(center: self.center, zoom: self.zoom)
+        self.makeBitmapContext(size:self.bounds.size)
+        self.draw(center: self.center, bounds: self.bounds, zoom: self.zoom)
         if !self.isCancelled {
             NotificationCenter.default.post(name: .mandelOpFinished, object: self)
         }
