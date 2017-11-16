@@ -1,10 +1,4 @@
-//
-//  ViewController.swift
-//  AVPlayerVCStoryboard
-//
-//  Created by Matt Neuburg on 10/16/17.
-//  Copyright © 2017 Matt Neuburg. All rights reserved.
-//
+
 
 import UIKit
 import AVKit
