@@ -29,10 +29,7 @@ class MyMandelbrotView : UIView {
     let MANDELBROT_STEPS = 1000
     
     var bitmapContext: CGContext!
-    let draw_queue : DispatchQueue = {
-        let q = DispatchQueue(label: "com.neuburg.mandeldraw")
-        return q
-    }()
+    let draw_queue = DispatchQueue(label: "com.neuburg.mandeldraw")
     
     var odd = false
     
