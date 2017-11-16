@@ -37,8 +37,8 @@ class MyView : UIView {
             var c = self.center
             c.x += delta.x; c.y += delta.y
             func registerForUndo() {
-                let oldCenter = self.center
-                self.undoer.registerUndo(withTarget: self) { myself in
+                self.undoer.registerUndo(withTarget: self) {
+                    [oldCenter = self.center] myself in
                     UIView.animate(withDuration:0.4, delay: 0.1, animations: {
                         myself.center = oldCenter
                     })
