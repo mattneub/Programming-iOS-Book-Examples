@@ -25,7 +25,7 @@ class MyView : UIView {
         return true
     }
     
-    func setCenterUndoably (_ newCenter:Any) {
+    @objc func setCenterUndoably (_ newCenter:Any) {
         self.undoer.registerUndo(withTarget: self,
             selector: #selector(setCenterUndoably),
             object: self.center)
@@ -39,12 +39,12 @@ class MyView : UIView {
         }
     }
     
-    func dragging (_ p : UIPanGestureRecognizer) {
+    @objc func dragging (_ p : UIPanGestureRecognizer) {
         switch p.state {
         case .began:
             self.undoer.beginUndoGrouping()
             fallthrough
-        case .began, .changed:
+        case .changed:
             let delta = p.translation(in:self.superview!)
             var c = self.center
             c.x += delta.x; c.y += delta.y
@@ -60,7 +60,7 @@ class MyView : UIView {
     
     // ===== press-and-hold, menu
 
-    func longPress (_ g : UIGestureRecognizer) {
+    @objc func longPress (_ g : UIGestureRecognizer) {
         if g.state == .began {
             let m = UIMenuController.shared
             m.setTargetRect(self.bounds, in: self)
@@ -81,11 +81,11 @@ class MyView : UIView {
         return super.canPerformAction(action, withSender: sender)
     }
     
-    func undo(_: Any?) {
+    @objc func undo(_: Any?) {
         self.undoer.undo()
     }
     
-    func redo(_: Any?) {
+    @objc func redo(_: Any?) {
         self.undoer.redo()
     }
 }
