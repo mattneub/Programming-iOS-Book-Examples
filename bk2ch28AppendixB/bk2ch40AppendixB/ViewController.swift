@@ -41,6 +41,19 @@ extension CGSize {
     }
 }
 
+extension String {
+    func range(_ start:Int, _ count:Int) -> Range<String.Index> {
+        let i = self.index(start >= 0 ?
+            self.startIndex :
+            self.endIndex, offsetBy: start)
+        let j = self.index(i, offsetBy: count)
+        return i..<j
+    }
+    func nsRange(_ start:Int, _ count:Int) -> NSRange {
+        return NSRange(self.range(start,count), in:self)
+    }
+}
+
 func dictionaryOfNames(_ arr:UIView...) -> [String:UIView] {
     var d = [String:UIView]()
     for (ix,v) in arr.enumerated() {
@@ -133,7 +146,7 @@ extension UIView {
 
 extension Array {
     mutating func remove(at ixs:Set<Int>) -> () {
-        for i in Array<Int>(ixs).sorted(by:>) {
+        for i in Array<Int>(ixs).sorted(by:>) { // odd that it can't infer <Int>
             self.remove(at:i)
         }
     }
@@ -165,6 +178,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("%@", #function)
+        
+        do {
+            let s = "abcdefg"
+            let r1 = s.range(2,2)
+            let r2 = s.range(-3,2)
+            let r3 = s.nsRange(2,2)
+            let r4 = s.nsRange(-3,2)
+            
+            print(s[r1]) // cd
+            print(s[r2]) // ef
+            print((s as NSString).substring(with:r3)) // cd
+            print((s as NSString).substring(with:r4)) // ef
+
+        }
         
         delay(0.4) {
             // do something here
