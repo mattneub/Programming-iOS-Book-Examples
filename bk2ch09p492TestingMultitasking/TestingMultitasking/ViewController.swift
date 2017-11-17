@@ -1,5 +1,6 @@
 
 import UIKit
+import os.log
 
 func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
@@ -11,12 +12,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("%@", #function)
+        os_log("%{public}@", log: log, #function)
     }
     
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
-        NSLog("%@", #function)
+        os_log("%{public}@", log: log, #function)
         if self.presentingViewController != nil {
             self.view.backgroundColor = .yellow
         }
@@ -24,7 +25,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NSLog("%@", #function)
+        os_log("%{public}@", log: log, #function)
     }
     
     @IBAction func doButton(_ sender: Any) {

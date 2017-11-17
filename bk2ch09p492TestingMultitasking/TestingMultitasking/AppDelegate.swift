@@ -1,37 +1,40 @@
 
 
 import UIKit
+import os.log
+
+let log = OSLog(subsystem: "com.neuburg.matt", category: "TestingMultitasking")
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    // use NSLog so we can read from the device console
+    // use os_log so we can read from the device console
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
-        NSLog("%@", #function)
+        os_log("%{public}@", log: log, #function)
         return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-        NSLog("%@", #function)
+        os_log("%{public}@", log: log, #function)
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        NSLog("%@", #function)
+        os_log("%{public}@", log: log, #function)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        NSLog("%@", #function)
+        os_log("%{public}@", log: log, #function)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        NSLog("%@", #function)
+        os_log("%{public}@", log: log, #function)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        NSLog("%@", #function)
+        os_log("%{public}@", log: log, #function)
     }
 
 
