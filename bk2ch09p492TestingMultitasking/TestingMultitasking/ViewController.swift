@@ -69,6 +69,7 @@ class ViewController: UIViewController {
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        os_log("SIZE %{public}@ %d", log: log, #function, UIApplication.shared.applicationState.rawValue)
         let larger = max(size.width, size.height)
         let smaller = min(size.width, size.height)
         print(#function, size, larger/smaller, terminator:"\n\n")
@@ -80,6 +81,7 @@ class ViewController: UIViewController {
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        os_log("TRAIT %{public}@ %d", log: log, #function, UIApplication.shared.applicationState.rawValue)
         print(#function, newCollection, terminator:"\n\n")
         super.willTransition(to: newCollection, with: coordinator)
         delay(1) {
