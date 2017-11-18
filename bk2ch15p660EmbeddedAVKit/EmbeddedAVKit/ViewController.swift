@@ -79,7 +79,7 @@ class ViewController: UIViewController {
         self.addChildViewController(av)
         self.view.addSubview(av.view)
         av.didMove(toParentViewController:self)
-        // just testing the syntax
+        // just testing the syntax; this feels like a bug
         // av.videoGravity = AVLayerVideoGravity.resizeAspect.rawValue
         // just testing the behavior
         // av.updatesNowPlayingInfoCenter = false
