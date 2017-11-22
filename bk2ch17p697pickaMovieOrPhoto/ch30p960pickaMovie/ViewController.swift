@@ -57,6 +57,12 @@ class ViewController: UIViewController {
     
     @IBAction func doPick (_ sender: Any!) {
         
+        // according to the video, in iOS 11 no authorization is required,
+        // because everything is happening out-of-process
+        // but they haven't stated this accurately;
+        // it works to get the photo, but if you want important stuff like the PHAsset and the media URL,
+        // you still need authorization
+        
         checkForPhotoLibraryAccess {
         
             // horrible Moments interface
