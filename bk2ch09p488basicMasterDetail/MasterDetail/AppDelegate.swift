@@ -33,7 +33,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 //            self.didExpand = true
 //        }
         
-        // this line compiles but we'll crash at launch
+        // this line compiles but we'll crash at launch (if we have any bar button items)
         // UIBarButtonItem.appearance().action = #selector(configureAppearance)
         
         
