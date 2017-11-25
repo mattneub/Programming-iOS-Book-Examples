@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch20p688dragInScrollView2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fwf-1B-B61"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cvo-WJ-DAV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBa-TU-DHM">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" contentMode="center" image="map.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="nUk-8I-FX2" userLabel="map">
+                                        <rect key="frame" x="0.0" y="0.0" width="814" height="727"/>
+                                    </imageView>
+                                    <imageView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="center" image="redflag.png" translatesAutoresizingMaskIntoConstraints="NO" id="0eN-fw-bHp" userLabel="flag" customClass="MyFlagView" customModule="ch20p688dragInScrollView2" customModuleProvider="target">
+                                        <rect key="frame" x="-200" y="0.0" width="113" height="113"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="hku-5e-tQf" appends="YES" id="KZ3-gd-nQq"/>
+                                        </connections>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="0eN-fw-bHp" firstAttribute="top" secondItem="zBa-TU-DHM" secondAttribute="top" placeholder="YES" id="7qF-jg-JOA"/>
+                                    <constraint firstItem="nUk-8I-FX2" firstAttribute="top" secondItem="zBa-TU-DHM" secondAttribute="top" id="8gt-ij-G5w"/>
+                                    <constraint firstAttribute="trailing" secondItem="nUk-8I-FX2" secondAttribute="trailing" id="9FA-aa-mMm"/>
+                                    <constraint firstItem="0eN-fw-bHp" firstAttribute="leading" secondItem="zBa-TU-DHM" secondAttribute="leading" constant="-200" placeholder="YES" id="VdJ-5H-NfN"/>
+                                    <constraint firstAttribute="bottom" secondItem="nUk-8I-FX2" secondAttribute="bottom" id="jJJ-uC-JfC"/>
+                                    <constraint firstItem="nUk-8I-FX2" firstAttribute="leading" secondItem="zBa-TU-DHM" secondAttribute="leading" id="wYe-Ji-26l"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="aJg-CI-kPm" appends="YES" id="cIi-5d-CWJ"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zBa-TU-DHM" firstAttribute="top" secondItem="Fwf-1B-B61" secondAttribute="bottom" id="829-6U-v6f"/>
+                            <constraint firstItem="Cvo-WJ-DAV" firstAttribute="top" secondItem="zBa-TU-DHM" secondAttribute="bottom" id="Msh-iI-ccR"/>
+                            <constraint firstItem="zBa-TU-DHM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="OlV-YL-40y"/>
+                            <constraint firstAttribute="trailing" secondItem="zBa-TU-DHM" secondAttribute="trailing" id="yd4-RH-oub"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="flag" destination="0eN-fw-bHp" id="5bh-rq-jA3"/>
+                        <outlet property="sv" destination="zBa-TU-DHM" id="KEx-bI-1Lb"/>
+                        <outlet property="swipe" destination="aJg-CI-kPm" id="NmH-t8-Nj5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="hku-5e-tQf">
+                    <connections>
+                        <action selector="dragging:" destination="vXZ-lx-hvc" id="Bte-ss-j1H"/>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="fZ0-dU-4Ri"/>
+                    </connections>
+                </panGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="aJg-CI-kPm">
+                    <connections>
+                        <action selector="swiped:" destination="vXZ-lx-hvc" id="Omb-8K-rw8"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="map.jpg" width="814" height="727"/>
+        <image name="redflag.png" width="113" height="113"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
+</document>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="cN7-Cs-eg3">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="cjF-Jq-oCr">
+            <objects>
+                <viewController id="cN7-Cs-eg3" customClass="ViewController" customModule="ch15p412imageDrawing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ujQ-iI-yz8"/>
+                        <viewControllerLayoutGuide type="bottom" id="1eO-s6-CG9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iD4-co-Hgm">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eRF-aM-oLf">
+                                <rect key="frame" x="20" y="20" width="218" height="109"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iJA-jK-QYS">
+                                <rect key="frame" x="20" y="147" width="218" height="109"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8U5-Ci-fDP">
+                                <rect key="frame" x="20" y="271" width="218" height="109"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rdy-jz-Vvd">
+                                <rect key="frame" x="20" y="395" width="218" height="109"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vYZ-dN-mev">
+                                <rect key="frame" x="20" y="519" width="218" height="109"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C4O-Qg-xjX">
+                                <rect key="frame" x="20" y="642" width="218" height="109"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YJR-xd-fit">
+                                <rect key="frame" x="267" y="20" width="258" height="265"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="iv1" destination="eRF-aM-oLf" id="eYK-pd-nFO"/>
+                        <outlet property="iv2" destination="YJR-xd-fit" id="tZz-ks-umx"/>
+                        <outlet property="iv3" destination="iJA-jK-QYS" id="8rR-T8-eTX"/>
+                        <outlet property="iv4" destination="8U5-Ci-fDP" id="Jwa-iR-5FZ"/>
+                        <outlet property="iv5" destination="Rdy-jz-Vvd" id="0Nr-j8-9xm"/>
+                        <outlet property="iv6" destination="vYZ-dN-mev" id="cEB-MW-CLj"/>
+                        <outlet property="iv7" destination="C4O-Qg-xjX" id="xvC-G5-cta"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DOy-8J-S0Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="33" y="-52"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination">
+            <size key="portraitSize" width="768" height="1024"/>
+            <size key="landscapeSize" width="1024" height="768"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
+</document>

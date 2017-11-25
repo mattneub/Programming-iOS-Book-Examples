@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ch14p400transformsAndConstraints2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="leg-GU-N5y"/>
+                        <viewControllerLayoutGuide type="bottom" id="U21-oW-0E2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KFP-6b-0ig">
+                                <rect key="frame" x="32" y="60" width="201" height="122"/>
+                                <color key="backgroundColor" red="1" green="0.21931261690000001" blue="0.45882864099999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="201" id="0I1-Qf-3Cm"/>
+                                    <constraint firstAttribute="height" constant="122" id="pct-RE-SmP"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Da-3C-L2e">
+                                <rect key="frame" x="32" y="224" width="201" height="122"/>
+                                <color key="backgroundColor" red="1" green="0.21931261690000001" blue="0.45882864099999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="201" id="T26-Fr-DXR"/>
+                                    <constraint firstAttribute="height" constant="122" id="poL-oc-NoQ"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMk-Mu-U2u">
+                                <rect key="frame" x="137" y="489" width="30" height="30"/>
+                                <state key="normal" title="Test">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doTest:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="YvC-w6-BXv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="U21-oW-0E2" firstAttribute="top" secondItem="AMk-Mu-U2u" secondAttribute="bottom" constant="49" id="2OX-kb-aZH"/>
+                            <constraint firstItem="KFP-6b-0ig" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="32" id="MCq-ax-mjl"/>
+                            <constraint firstItem="KFP-6b-0ig" firstAttribute="top" secondItem="leg-GU-N5y" secondAttribute="bottom" constant="40" id="MMD-aO-6SC"/>
+                            <constraint firstItem="8Da-3C-L2e" firstAttribute="top" secondItem="leg-GU-N5y" secondAttribute="bottom" constant="204" id="qOA-HC-geA"/>
+                            <constraint firstItem="8Da-3C-L2e" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="32" id="sCW-Ta-ECu"/>
+                            <constraint firstAttribute="centerX" secondItem="AMk-Mu-U2u" secondAttribute="centerX" constant="8" id="sqc-YD-esE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="v1" destination="KFP-6b-0ig" id="FmD-OM-bCQ"/>
+                        <outlet property="v2" destination="8Da-3C-L2e" id="eCa-IN-y8y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

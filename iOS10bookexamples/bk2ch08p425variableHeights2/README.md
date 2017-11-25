@@ -1,0 +1,1 @@
+Showing how to change a cell's custom subview's internal height so as to get variable row heights in an iOS UITableView.

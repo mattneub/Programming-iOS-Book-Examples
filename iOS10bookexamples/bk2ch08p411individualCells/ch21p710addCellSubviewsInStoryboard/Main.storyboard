@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="7Yo-0I-mVs">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Root View Controller-->
+        <scene sceneID="QOB-kb-F8a">
+            <objects>
+                <tableViewController id="7Yo-0I-mVs" customClass="RootViewController" customModule="ch21p715individualCells" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nyx-5s-Oig">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Ccj-6g-mfB" customClass="MyCell" customModule="ch21p715individualCells" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ccj-6g-mfB" id="7FJ-UK-ZPu">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I1t-bX-Pco">
+                                            <rect key="frame" x="262" y="0.0" width="43" height="43"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="I1t-bX-Pco" secondAttribute="height" id="Z7e-KT-VOM"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="232" translatesAutoresizingMaskIntoConstraints="NO" id="ywb-cf-wVZ">
+                                            <rect key="frame" x="15" y="0.0" width="232" height="43"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="I1t-bX-Pco" secondAttribute="bottom" priority="999" id="2NZ-m2-BI2"/>
+                                        <constraint firstItem="ywb-cf-wVZ" firstAttribute="leading" secondItem="7FJ-UK-ZPu" secondAttribute="leading" constant="15" id="4RJ-7a-e9c"/>
+                                        <constraint firstAttribute="trailing" secondItem="I1t-bX-Pco" secondAttribute="trailing" constant="15" id="9Dm-ZD-T71"/>
+                                        <constraint firstAttribute="centerY" secondItem="I1t-bX-Pco" secondAttribute="centerY" id="Llk-Gq-eOj"/>
+                                        <constraint firstItem="I1t-bX-Pco" firstAttribute="leading" secondItem="ywb-cf-wVZ" secondAttribute="trailing" constant="15" id="gRe-9J-6fT"/>
+                                        <constraint firstItem="I1t-bX-Pco" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7FJ-UK-ZPu" secondAttribute="top" priority="999" id="lVd-2M-wML"/>
+                                        <constraint firstItem="ywb-cf-wVZ" firstAttribute="top" secondItem="7FJ-UK-ZPu" secondAttribute="top" id="nhg-FP-8yG"/>
+                                        <constraint firstAttribute="bottom" secondItem="ywb-cf-wVZ" secondAttribute="bottom" id="v1B-i9-YGY"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="theImageView" destination="I1t-bX-Pco" id="NhC-d9-VDK"/>
+                                    <outlet property="theLabel" destination="ywb-cf-wVZ" id="9Vm-H5-cK4"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7Yo-0I-mVs" id="Dbg-G6-aez"/>
+                            <outlet property="delegate" destination="7Yo-0I-mVs" id="xIi-fZ-xFe"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wox-zf-lXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="91" y="61"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
+</document>

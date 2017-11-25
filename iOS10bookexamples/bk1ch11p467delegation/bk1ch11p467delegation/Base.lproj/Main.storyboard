@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DlH-Qj-a3Y">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="YJP-fw-m5W">
+            <objects>
+                <navigationController id="DlH-Qj-a3Y" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IYS-5N-hcP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dFb-jj-cEC" kind="relationship" relationship="rootViewController" id="bUh-iZ-ZOT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mZq-uA-xrX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-458" y="451"/>
+        </scene>
+        <!--Settings Controller-->
+        <scene sceneID="x8g-rJ-ZWH">
+            <objects>
+                <viewController id="dFb-jj-cEC" customClass="SettingsController" customModule="bk1ch11p467delegation" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Keg-4y-dOB"/>
+                        <viewControllerLayoutGuide type="bottom" id="GHW-M9-olo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="prD-pp-qwq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9t-me-S4R">
+                                <rect key="frame" x="59" y="115" width="85" height="30"/>
+                                <state key="normal" title="Color Picker">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doButton:" destination="dFb-jj-cEC" eventType="touchUpInside" id="SSf-9n-85q"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ohn-A2-GFi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V7S-8X-GXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="273" y="445"/>
+        </scene>
+    </scenes>
+</document>

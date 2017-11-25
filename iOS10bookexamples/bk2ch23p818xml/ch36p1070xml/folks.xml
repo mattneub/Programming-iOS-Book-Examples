@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<people>
+	<person>
+		<firstName>Matt</firstName>
+		<lastName>Neuburg</lastName>
+	</person>
+	<person>
+		<firstName>Snidely</firstName>
+		<lastName>Whiplash</lastName>
+	</person>
+	<person>
+		<firstName>Dudley</firstName>
+		<lastName>Doright</lastName>
+	</person>
+</people>
