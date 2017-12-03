@@ -19,7 +19,7 @@ class MyView: UIView {
     @IBInspectable var mySize : CGSize = .zero
     @IBInspectable var myColor : UIColor? = .red
     @IBInspectable var myImage : UIImage?
-//    @IBInspectable var myRange : Range<Int> = 1...3 // nope
+    @IBInspectable var myRange : NSRange = NSMakeRange(0,10)
     // Apple _claims_ that ranges work, but the above doesn't compile
     @IBInspectable var someView : UIView? // compiles but doesn't work
     

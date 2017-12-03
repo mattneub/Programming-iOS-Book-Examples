@@ -7,6 +7,8 @@ let log = OSLog(subsystem: "com.neuburg.matt", category: "TestingMultitasking")
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var timer : Timer!
 
     var window: UIWindow?
 
@@ -14,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
         os_log("%{public}@", log: log, #function)
+        
+//        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+//            os_log("%d", application.applicationState.rawValue)
+//        }
+        
         return true
     }
     
