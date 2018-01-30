@@ -18,10 +18,21 @@ func optionalStringMaker() -> String! {
     return Optional("Howdy")
 }
 
+// new in Swift 4.1:
+// Using '!' in this location is deprecated and will be removed in a future release; consider changing this to '?' instead
+// But the previous example is _not_ deprecated, which is a bit weird
+/*
 func doThis2(_ f:()->String!) {
     let s = f()
     print(s as Any)
 }
+ */
+
+func doThis2(_ f:()->String?) {
+    let s = f()
+    print(s as Any)
+}
+
 
 func optionalStringMaker2() -> String? {
     return Optional("Howdy")

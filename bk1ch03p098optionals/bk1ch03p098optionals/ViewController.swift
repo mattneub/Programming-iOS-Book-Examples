@@ -47,8 +47,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
         // let upperr = stringMaybe.uppercased() // compile error
         let upper = stringMaybe!.uppercased()
 
-        let stringMaybe3 : ImplicitlyUnwrappedOptional<String> = "howdy"
-        realStringExpecter(stringMaybe3) // no problem
+        // New in Swift 4.1:
+        // "The spelling 'ImplicitlyUnwrappedOptional' is deprecated; use '!' after the type name"
+        // therefore I'm just removing the example altogether
+        // let stringMaybe3 : ImplicitlyUnwrappedOptional<String> = "howdy"
+        // realStringExpecter(stringMaybe3) // no problem
         let stringMaybe4 : String! = "howdy"
         realStringExpecter(stringMaybe4)
 
@@ -105,12 +108,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 
 
         // shut the compiler up
-        _ = stringMaybe
-        _ = stringMaybe2
-        _ = stringMaybe3
-        _ = stringMaybe4
-        _ = stringMaybe5
-        _ = upper
+        // _ = stringMaybe
+        // _ = stringMaybe2
+        // _ = stringMaybe3
+        // _ = stringMaybe4
+        // _ = stringMaybe5
+        // _ = upper
         stringMaybe7 = "howdy"
         _ = stringMaybe7
         

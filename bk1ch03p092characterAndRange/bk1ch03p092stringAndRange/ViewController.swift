@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         }
         
         // the old way
-        
+        /*
         do {
             let moi = "Matt Neuburg"
             let moichars = moi.characters
@@ -73,6 +73,7 @@ class ViewController: UIViewController {
             let s2 = String(s2chars)
             print(s2)
         }
+ */
         
         // the new way to do that
         
@@ -102,21 +103,23 @@ class ViewController: UIViewController {
         do {
             let s = "hello"
             let firstSmall = s.index {$0 < "f"}
-            print(firstSmall) // bug in Swift 4????
+            print(firstSmall) // 9223372036854775807! bug in Swift 4????
+            // there's a bug where if you don't say `where` explicitly...
+            // ...the compiler thinks this is `index(ofAccessibilityElement:)` and you get a weird answer
         }
         
         // workaround
+        /*
         do {
             let s = "hello"
             let firstSmall = s.characters.index {$0 < "f"}
             print(firstSmall as Any)
         }
+ */
         
         // another workaround
         do {
             let s = "hello"
-            // there's a bug where if you don't say `where` explicitly...
-            // ...the compiler thinks this is `index(ofAccessibilityElement:)` and you get a weird answer
             let firstSmall = s.index(where: {$0 < "f"})
             print(firstSmall as Any)
         }
@@ -255,7 +258,8 @@ class ViewController: UIViewController {
         
         do {
             let s = "hello"
-            let arr = Array(s.characters) // need this one :)
+            // let arr = Array(s.characters) // need this one :)
+            let arr = Array(s) // in Swift 4.1 this is the array of characters!
             let result = arr[1...3]
             let s2 = String(result)
             print(s2)
@@ -342,6 +346,13 @@ class ViewController: UIViewController {
             let nsr2 = NSRange(location: 2, length: 2)
             let r2 = Range.init(nsr2) // NB this change! toRange is deprecated
             print(r2 as Any) // Optional(Range(2..<4))
+        }
+        
+        do {
+            // this is actually from later in the book, just testing
+            var s = "hello"
+            s.append(contentsOf: Array(" world")) // "hello world"
+            s.append(contentsOf: ["!" as Character, "?" as Character])
         }
  
         

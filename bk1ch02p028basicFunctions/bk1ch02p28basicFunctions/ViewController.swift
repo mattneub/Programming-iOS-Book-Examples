@@ -30,10 +30,12 @@ typealias VoidVoid1 = () -> ()
 typealias VoidVoid1b = ((Void)) -> Void // but this is legal
 typealias VoidVoid2 = () -> Void
 typealias VoidVoid3 = ((Void)) -> Void
+typealias VoidVoid4 = (()) -> ()
 
 func testReturnVoid() {
     func f() {}
-    let f2 : VoidVoid3 = f
+    // let f2 : VoidVoid3 = f // Swift 4.1, no longer compiles; (()) is not the same as ()
+    // let f3 : VoidVoid4 = f // ditto
     return ()
     // return Void // no, not the same
     return Void() // okay
