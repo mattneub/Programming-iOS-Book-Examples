@@ -11,7 +11,8 @@ struct Sword : Wieldable {
 struct Bow : Wieldable {
 }
 protocol Fighter {
-    associatedtype Enemy where Enemy : Fighter
+    // associatedtype Enemy where Enemy : Fighter // in Swift 4.1, we can recurse directly
+    associatedtype Enemy : Fighter
     associatedtype Weapon : Wieldable
     func steal(weapon:Self.Enemy.Weapon, from:Self.Enemy)
 }

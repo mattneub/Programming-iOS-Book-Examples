@@ -87,7 +87,7 @@ class ViewController: UIViewController {
             
             let rs = Array(1...3)
             print(rs)
-            let chars = Array("howdy".characters)
+            let chars = Array("howdy")
             print(chars)
             let kvs = Array(["hey":"ho", "nonny":"nonny no"])
             print(kvs)
@@ -192,8 +192,8 @@ class ViewController: UIViewController {
             print(arr)
             _ = i
             let arr2 = [[1,2]]
-            // let ok = arr == arr2 // compile error
-            let ok = arr.elementsEqual(arr2, by:==)
+            let ok = arr == arr2 // compile error before Swift 4.1, but not any more!
+            // let ok = arr.elementsEqual(arr2, by:==) // no need for this trick
             print(ok)
         }
         
@@ -258,9 +258,9 @@ class ViewController: UIViewController {
             
             let aviary = [Bird(name:"Tweety"), Bird(name:"Flappy"), Bird(name:"Lady")]
             // let ixxxx = aviary.index(of:Bird(name:"Tweety"))
-            // let ix2 = aviary.index {$0.name.characters.count < 5} // index(where:) works here,
+            // let ix2 = aviary.index {$0.name.count < 5} // index(where:) works here,
             // but I think for consistency I'd better say "where" explicitly
-            let ix2 = aviary.index(where: {$0.name.characters.count < 5})
+            let ix2 = aviary.index(where: {$0.name.count < 5})
             print(ix2 as Any)
             
             do {
@@ -491,14 +491,21 @@ class ViewController: UIViewController {
 
         }
         
+        // these are legal uses of flatMap in Swift 4.1, plus another way to flatten
+        
+        do {
+            let arr = [[1],[2]].flatMap{$0}
+            print(arr)
+        }
+        
         do {
             let arr = [[1,2], [3,4], [5,6]]
             let flat = arr.reduce([], +) // [1, 2, 3, 4, 5, 6]
-            _ = flat
+            print(flat)
             
-            let arr2 : [Any] = [[1,2], [3,4], [5,6], 7] // must be explicit [Any]
-            let arr3 = arr2.flatMap {$0}
-            print(arr3)
+//            let arr2 : [Any] = [[1,2], [3,4], [5,6], 7] // must be explicit [Any]
+//            let arr3 = arr2.flatMap {$0}
+//            print(arr3)
         }
         
         do {
@@ -507,17 +514,17 @@ class ViewController: UIViewController {
             print(arr2)
         }
         
-        // flatMap has another use that I really should talk about:
+        // flatMap second use has been changed to compactMap in Swift 4.1
         // it unwraps Optionals safely while eliminating nils
         do {
             let arr : [String?] = ["Manny", nil, nil, "Moe", nil, "Jack", nil]
-            let arr2 = arr.flatMap{$0}
+            let arr2 = arr.compactMap{$0}
             print(arr2)
         }
         
         do {
             let arr : [Any] = [1, "hey", 2, "ho"] // NOT AnyObject! No automatic bridge-crossing
-            let arr2 = arr.flatMap{$0 as? String} // ["hey", "ho"]
+            let arr2 = arr.compactMap{$0 as? String} // ["hey", "ho"]
             print(arr2)
             
             // let arrr : [AnyObject] = ["howdy"] // illegal

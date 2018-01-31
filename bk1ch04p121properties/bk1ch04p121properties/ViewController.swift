@@ -13,6 +13,8 @@ class Moi2 {
     let first = "Matt"
     let last = "Neuburg"
     var whole : String {
+        let temp = first + " " + last // can omit self here
+        _ = temp
         return self.first + " " + self.last
     }
 }
@@ -21,6 +23,7 @@ class Moi3 {
     let first = "Matt"
     let last = "Neuburg"
     lazy var whole = self.first + " " + self.last // can omit self here
+    lazy var whole2 = first + " " + last
 }
 
 class Moi4 {

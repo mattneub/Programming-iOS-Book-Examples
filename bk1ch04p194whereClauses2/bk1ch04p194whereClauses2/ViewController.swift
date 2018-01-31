@@ -88,7 +88,7 @@ class ViewController: UIViewController {
         // flockTwoTogether(Bird4(), Insect4()) // nope
         
         var s = "hello"
-        s.append(contentsOf: " world".characters) // "hello world"
+        s.append(contentsOf: " world") // "hello world"; character array
         print(s)
         s.append(contentsOf: ["!" as Character, "?" as Character])
         print(s) // "hello world!?"

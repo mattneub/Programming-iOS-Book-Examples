@@ -292,7 +292,7 @@ class ViewController: UIViewController {
         
         let m = [4,1,5,7,2].myMin() // 1
         print(m)
-        // let d = [Digit(12), Digit(42)].min() // compile error
+        // let dd = [Digit(number:12), Digit(number:42)].min() // compile error
         print([4,1,5].myMin())
         
         

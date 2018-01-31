@@ -2,13 +2,22 @@
 import UIKit
 import Swift
 
-struct Vial {
+struct Vial : Equatable {
     var numberOfBacteria : Int
     init(_ n:Int) {
         self.numberOfBacteria = n
     }
 }
+// New in Swift 4.1, just declaring conformance to Equatable (_not_ in an extension)
+// is sufficient to generate exactly the implementation of `==` that we want!
+/*
 extension Vial : Equatable {
+    static func ==(lhs:Vial, rhs:Vial) -> Bool {
+        return lhs.numberOfBacteria == rhs.numberOfBacteria
+    }
+}
+ */
+extension Vial {
     static func +(lhs:Vial, rhs:Vial) -> Vial {
         let total = lhs.numberOfBacteria + rhs.numberOfBacteria
         return Vial(total)
@@ -16,10 +25,6 @@ extension Vial : Equatable {
     static func +=(lhs: inout Vial, rhs:Vial) {
         let total = lhs.numberOfBacteria + rhs.numberOfBacteria
         lhs.numberOfBacteria = total
-    }
-
-    static func ==(lhs:Vial, rhs:Vial) -> Bool {
-        return lhs.numberOfBacteria == rhs.numberOfBacteria
     }
 }
 
@@ -34,7 +39,7 @@ extension Int {
 
 infix operator >>> : RangeFormationPrecedence
 func >>><Bound>(maximum: Bound, minimum: Bound)
-    -> ReversedRandomAccessCollection<CountableRange<Bound>>
+    -> ReversedCollection<CountableRange<Bound>>
     where Bound : Comparable & Strideable { // NB! Integer conformance no longer needed
         // in fact, Integer no longer exists
         return (minimum..<maximum).reversed()
@@ -69,10 +74,35 @@ class ViewController: UIViewController {
         let r2 = 10>>>1
 //        for i in r1 {print(i)}
         for i in r2 {print(i)}
+        
+        // showing that the same injection works for enums
+        // this solves the problem where (without Equatable)
+        // an enum with associated values can't be compared at all
+        enum MyError : Equatable {
+            case number(Int)
+            case message(String)
+            case fatal
+        }
+        do {
+            let err1 = MyError.number(1)
+            let err2 = MyError.number(1)
+            if err1 == err2 {
+                print("yep")
+            }
+        }
+        
+        do {
+            let err1 = MyError.fatal
+            let err2 = MyError.fatal
+            if err1 == err2 {
+                print("yep")
+            }
+        }
+
+
+
     
     }
-
-
 
 }
 

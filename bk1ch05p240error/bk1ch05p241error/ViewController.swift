@@ -201,7 +201,7 @@ class ViewController: UIViewController {
     }
 
     func giveMeALongString(_ s:String) throws {
-        if s.characters.count < 5 {
+        if s.count < 5 {
             throw NotLongEnough.iSaidLongIMeantLong
         }
         print("thanks for the string")
@@ -209,16 +209,16 @@ class ViewController: UIViewController {
         
         // ignore the rest; I'm just testing legality of guard syntax
         
-        test: if s.characters.count < 5 {
-            guard s.characters.count >= 10 else {
+        test: if s.count < 5 {
+            guard s.count >= 10 else {
                 break test // guard is legal with shortcircuiting
             }
             throw NotLongEnough.iSaidLongIMeantLong
         }
-        guard s.characters.count >= 5 else {
+        guard s.count >= 5 else {
             throw NotLongEnough.iSaidLongIMeantLong // guard is legal with throwing
         }
-        guard s.characters.count >= 5 else {
+        guard s.count >= 5 else {
             print("I'm out of here")
             fatalError("this is nuts") // guard is legal with fatalError
         }
@@ -259,7 +259,7 @@ class ViewController: UIViewController {
     func callReceiveThrowerr() {
         receiveThrower {
             s in // can say "s throws in" but no need
-            if s.characters.count < 5 {
+            if s.count < 5 {
                 throw NotLongEnough.iSaidLongIMeantLong
             }
             print("thanks for the string")
@@ -284,7 +284,7 @@ class ViewController: UIViewController {
     func callReceiveThrowerr2() throws {
         try receiveThrower2 {
             s in
-            if s.characters.count < 5 {
+            if s.count < 5 {
                 throw NotLongEnough.iSaidLongIMeantLong
             }
             print("thanks for the string")
