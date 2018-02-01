@@ -330,10 +330,11 @@ class ViewController: UIViewController, Proto { // Objective-C can see this beca
         do {
             UIGraphicsBeginImageContext(CGSize(width:200,height:200))
             let c = UIGraphicsGetCurrentContext()!
+            // see https://github.com/apple/swift-evolution/blob/master/proposals/0184-unsafe-pointers-add-missing.md
             let arr = UnsafeMutablePointer<CGPoint>.allocate(capacity:4)
             defer {
-                arr.deinitialize()
-                arr.deallocate(capacity:4)
+                arr.deinitialize(count:4)
+                arr.deallocate()
             }
             arr[0] = CGPoint(x:0,y:0)
             arr[1] = CGPoint(x:50,y:50)
