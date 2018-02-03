@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14087.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14075.4"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,10 +15,6 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="bk2ch01p040sizeClasses" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,18 +41,19 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="MMS-N9-FHE" secondAttribute="trailing" constant="50" id="EEo-T0-upq"/>
+                            <constraint firstItem="pdd-ZA-INM" firstAttribute="trailing" secondItem="MMS-N9-FHE" secondAttribute="trailing" constant="50" id="EEo-T0-upq"/>
                             <constraint firstItem="ziP-Qf-b6D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="SUA-5W-9en"/>
-                            <constraint firstItem="MMS-N9-FHE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="Sio-5U-kdV"/>
-                            <constraint firstItem="ziP-Qf-b6D" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lMU-Ml-rKf"/>
-                            <constraint firstItem="MMS-N9-FHE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="qDW-rf-jCf"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="MMS-N9-FHE" secondAttribute="bottom" constant="50" id="qLe-R9-6Y0"/>
+                            <constraint firstItem="MMS-N9-FHE" firstAttribute="top" secondItem="pdd-ZA-INM" secondAttribute="top" constant="50" id="Sio-5U-kdV"/>
+                            <constraint firstItem="ziP-Qf-b6D" firstAttribute="top" secondItem="pdd-ZA-INM" secondAttribute="top" id="lMU-Ml-rKf"/>
+                            <constraint firstItem="MMS-N9-FHE" firstAttribute="leading" secondItem="pdd-ZA-INM" secondAttribute="leading" constant="50" id="qDW-rf-jCf"/>
+                            <constraint firstItem="pdd-ZA-INM" firstAttribute="bottom" secondItem="MMS-N9-FHE" secondAttribute="bottom" constant="50" id="qLe-R9-6Y0"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="pdd-ZA-INM"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="141" y="83"/>
+            <point key="canvasLocation" x="264.375" y="103.75"/>
         </scene>
     </scenes>
 </document>

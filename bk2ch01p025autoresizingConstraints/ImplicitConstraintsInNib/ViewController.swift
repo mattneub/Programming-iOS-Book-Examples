@@ -2,6 +2,7 @@
 
 import UIKit
 
+
 func delay(_ delay:Double, closure:@escaping ()->()) {
     let when = DispatchTime.now() + delay
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
@@ -50,7 +51,9 @@ extension NSLayoutConstraint {
         for vv in v!.subviews {
             let arr1 = vv.constraintsAffectingLayout(for:.horizontal)
             let arr2 = vv.constraintsAffectingLayout(for:.vertical)
-            NSLog("\n\n%@\nH: %@\nV:%@", vv, arr1, arr2);
+            // abandon use of NSLog here, because it now truncates; not even sure why I was using it
+            let s = String(format: "\n\n%@\nH: %@\nV:%@", vv, arr1, arr2)
+            print(s)
             if vv.subviews.count > 0 {
                 self.listConstraints(vv)
             }
@@ -77,15 +80,15 @@ class ViewController: UIViewController {
         lab1.text = "Hello"
         self.view.addSubview(lab1)
         self.lab1 = lab1
-        print(button, button.translatesAutoresizingMaskIntoConstraints)
-        print(lab1, lab1.translatesAutoresizingMaskIntoConstraints)
+        print(button, button.translatesAutoresizingMaskIntoConstraints, terminator:"\n\n")
+        print(lab1, lab1.translatesAutoresizingMaskIntoConstraints, terminator:"\n\n")
         
         let lab2 = UILabel()
         lab2.translatesAutoresizingMaskIntoConstraints = false
         lab2.text = "Howdy"
         self.view.addSubview(lab2)
         self.lab2 = lab2
-        print(lab2, lab2.translatesAutoresizingMaskIntoConstraints)
+        print(lab2, lab2.translatesAutoresizingMaskIntoConstraints, terminator:"\n\n")
 
         
         // pin second label to first one
@@ -102,6 +105,9 @@ class ViewController: UIViewController {
 
 
         delay(2) {
+            // show lab2 info again after layout
+            print(lab2, lab2.translatesAutoresizingMaskIntoConstraints, terminator:"\n\n")
+
             NSLayoutConstraint.listConstraints(nil)
             
         }
