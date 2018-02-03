@@ -80,7 +80,7 @@ class CompassLayer : CALayer, CALayerDelegate {
         
         // the four cardinal points
         let pts = "NESW"
-        for (ix,c) in pts.characters.enumerated() {
+        for (ix,c) in pts.enumerated() {
             let t = CATextLayer()
             t.contentsScale = UIScreen.main.scale
             t.string = String(c)
