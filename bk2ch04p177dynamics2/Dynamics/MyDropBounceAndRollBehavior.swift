@@ -29,7 +29,7 @@ extension UIDynamicAnimator {
     // in fact, we can't even fetch items(in:) as a Swift array at all
     func views(in rect: CGRect) -> [UIView] {
         let nsitems = self.items(in: rect) as NSArray
-        return nsitems.flatMap{$0 as? UIView}
+        return nsitems.compactMap {$0 as? UIView}
     }
 }
 
@@ -55,7 +55,8 @@ class MyDropBounceAndRollBehavior : UIDynamicBehavior, UICollisionBehaviorDelega
             // because "self" incorporates all the behaviors at once
             // * changed from weak to unowned here
             
-            
+            // let items = anim.items(in: sup.bounds) as! [UIView]
+            // crash because it contains, wrongly, a collision behavior object
             let items = anim.views(in: sup.bounds)
             if items.index(of:self.v) == nil {
                 anim.removeBehavior(self)

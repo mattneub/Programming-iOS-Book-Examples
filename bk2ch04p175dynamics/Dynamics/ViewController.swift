@@ -56,7 +56,7 @@ extension UIDynamicAnimator {
     // in fact, we can't even fetch items(in:) as a Swift array at all
     func views(in rect: CGRect) -> [UIView] {
         let nsitems = self.items(in: rect) as NSArray
-        return nsitems.flatMap{$0 as? UIView}
+        return nsitems.compactMap {$0 as? UIView}
     }
 }
 
@@ -89,7 +89,9 @@ class ViewController : UIViewController {
         case 1:
             // leak! neither the image view nor the gravity behavior is released
             grav.action = {
-                let items = self.anim.views(in:self.view.bounds)
+                // let items = self.anim.items(in: self.view.bounds) as! [UIView]
+                // crash because it contains, wrongly, a collision behavior object
+                let items = self.anim.views(in: self.view.bounds)
                 let ix = items.index(of:self.iv)
                 if ix == nil {
                     self.anim.removeAllBehaviors()
