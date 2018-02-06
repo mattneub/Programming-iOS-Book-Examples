@@ -29,7 +29,7 @@ class ViewController : UIViewController {
         print("supported, device \(orientation.rawValue)")
         
         if orientation != .unknown {
-            print("self \(self.interfaceOrientation.rawValue)")
+            // print("self \(self.interfaceOrientation.rawValue)")
             // but the above is deprecated in iOS 8
             print("status bar \(UIApplication.shared.statusBarOrientation.rawValue)")
         }
@@ -43,7 +43,7 @@ class ViewController : UIViewController {
         print("should, device \(orientation.rawValue)")
         
         if orientation != .unknown {
-            print("self \(self.interfaceOrientation.rawValue)")
+            // print("self \(self.interfaceOrientation.rawValue)")
             // but the above is deprecated in iOS 8
             print("status bar \(UIApplication.shared.statusBarOrientation.rawValue)")
         }

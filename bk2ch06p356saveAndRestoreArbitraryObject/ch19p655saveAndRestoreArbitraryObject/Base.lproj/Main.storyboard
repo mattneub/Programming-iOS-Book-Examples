@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pHz-gq-NGy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14087.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pHz-gq-NGy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14075.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vyk-1j-Eee" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-161" y="120"/>
+            <point key="canvasLocation" x="-257.60000000000002" y="107.94602698650675"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="9jd-4T-B7x">
@@ -39,14 +39,14 @@
                     <navigationItem key="navigationItem" id="w58-KL-aGI">
                         <barButtonItem key="rightBarButtonItem" title="Push" id="ILG-Mm-dfD">
                             <connections>
-                                <segue destination="tyY-id-5VW" kind="push" id="ZKX-ph-MK7"/>
+                                <segue destination="tyY-id-5VW" kind="show" id="ZKX-ph-MK7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhV-xQ-ymJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="291" y="126"/>
+            <point key="canvasLocation" x="465.60000000000002" y="113.3433283358321"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="W7m-vE-hDm">
@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVW-iX-Toe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734" y="131"/>
+            <point key="canvasLocation" x="1174.4000000000001" y="117.84107946026988"/>
         </scene>
     </scenes>
 </document>

@@ -85,7 +85,7 @@ class ViewController: UIViewController {
                 } else {
                     coordinator.animate(alongsideTransition: { _ in
                         fatalError("I'm betting this can never happen")
-                        self.greenView.frame = CGRect(-sz.width/3,0,sz.width/3,sz.height)
+                        // self.greenView.frame = CGRect(-sz.width/3,0,sz.width/3,sz.height)
                     })
                 }
             } else {
