@@ -47,7 +47,7 @@ class MyFlagView : UIImageView {
         let pixel = UnsafeMutablePointer<UInt8>.allocate(capacity:1)
         defer {
             pixel.deinitialize(count: 1)
-            pixel.deallocate(capacity:1)
+            pixel.deallocate()
         }
         pixel[0] = 0
         let sp = CGColorSpaceCreateDeviceGray()
