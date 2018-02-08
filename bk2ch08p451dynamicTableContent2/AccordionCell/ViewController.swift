@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         case 1:
             if cell.contentView.subviews.count == 0 {
-                let dp = UIDatePicker(frame:CGRect(x: 0,y: 0,width: 300,height: 200))
+                let dp = UIDatePicker(frame:CGRect(x: 0,y: 0,width: cell.contentView.bounds.width,height: 200))
                 cell.contentView.addSubview(dp)
                 cell.clipsToBounds = true
             }

@@ -1,17 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14F27" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ch22p751popovers" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="49y-sW-BfN"/>
-                        <viewControllerLayoutGuide type="bottom" id="yJi-5R-2ky"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,9 +39,9 @@
                             </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOh-kr-saG">
                                 <rect key="frame" x="702" y="974" width="46" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="doButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q7J-rK-kjy"/>
@@ -47,32 +49,34 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Va-K4-jZz">
                                 <rect key="frame" x="33" y="974" width="46" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fv2-b5-CpA">
                                 <rect key="frame" x="33" y="91" width="46" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="doButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1QT-df-lyc"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="5Gg-LG-4eB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9Jd-DH-adc"/>
-                            <constraint firstAttribute="trailing" secondItem="DOh-kr-saG" secondAttribute="trailing" constant="20" id="FcW-Zf-1f4"/>
-                            <constraint firstAttribute="trailing" secondItem="5Gg-LG-4eB" secondAttribute="trailing" id="I2f-eS-sZm"/>
-                            <constraint firstItem="7Va-K4-jZz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="33" id="cRz-RV-OOG"/>
-                            <constraint firstItem="yJi-5R-2ky" firstAttribute="top" secondItem="7Va-K4-jZz" secondAttribute="bottom" constant="20" id="f1t-z7-BPy"/>
-                            <constraint firstItem="5Gg-LG-4eB" firstAttribute="top" secondItem="49y-sW-BfN" secondAttribute="bottom" id="fck-kK-aI2"/>
-                            <constraint firstItem="yJi-5R-2ky" firstAttribute="top" secondItem="DOh-kr-saG" secondAttribute="bottom" constant="20" id="gfR-dK-DfS"/>
+                            <constraint firstItem="5Gg-LG-4eB" firstAttribute="leading" secondItem="83z-uQ-fMh" secondAttribute="leading" id="9Jd-DH-adc"/>
+                            <constraint firstItem="83z-uQ-fMh" firstAttribute="trailing" secondItem="DOh-kr-saG" secondAttribute="trailing" constant="20" id="FcW-Zf-1f4"/>
+                            <constraint firstItem="83z-uQ-fMh" firstAttribute="trailing" secondItem="5Gg-LG-4eB" secondAttribute="trailing" id="I2f-eS-sZm"/>
+                            <constraint firstItem="7Va-K4-jZz" firstAttribute="leading" secondItem="83z-uQ-fMh" secondAttribute="leading" constant="33" id="cRz-RV-OOG"/>
+                            <constraint firstItem="83z-uQ-fMh" firstAttribute="bottom" secondItem="7Va-K4-jZz" secondAttribute="bottom" constant="20" id="f1t-z7-BPy"/>
+                            <constraint firstItem="5Gg-LG-4eB" firstAttribute="top" secondItem="83z-uQ-fMh" secondAttribute="top" id="fck-kK-aI2"/>
+                            <constraint firstItem="83z-uQ-fMh" firstAttribute="bottom" secondItem="DOh-kr-saG" secondAttribute="bottom" constant="20" id="gfR-dK-DfS"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="83z-uQ-fMh"/>
                     </view>
                     <connections>
                         <outlet property="button" destination="DOh-kr-saG" id="kj1-aM-X0h"/>
@@ -81,11 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="20.3125" y="16.9921875"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
-    </simulatedMetricsContainer>
 </document>
