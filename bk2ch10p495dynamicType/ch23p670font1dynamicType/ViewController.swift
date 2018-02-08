@@ -27,9 +27,12 @@ class ViewController : UIViewController {
         // but this you can't do in IB (hold my margarita this time):
         
         self.lab2.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(for: self.lab2.font)
+        self.lab2.adjustsFontForContentSizeCategory = true
+
         
         // and presto, it is now dynamic! wow!!!!!
         
+        // similarly for a button...
         // adjustsFontForContentSizeCategory applies only to UILabel, UITextField, UITextView
         // but a button's title _is_ a label:
         

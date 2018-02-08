@@ -58,6 +58,7 @@ class MasterViewController: UITableViewController {
     */
     
     // in iOS 11 this feature seems badly behaved
+    // we do not adopt the correct size on creation / launch, only later when the user changes size
 
 	let cellID = "Cell"
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

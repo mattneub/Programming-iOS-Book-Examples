@@ -28,7 +28,7 @@ class ViewController : UIViewController {
         var content : NSMutableAttributedString!
         var content2 : NSMutableAttributedString!
         
-        switch which {
+        switch which { // ignore incredibly annoying warnings from compiler
         case 0, 1, 4, 5:
             let s1 = """
                 The Gettysburg Address, as delivered on a certain occasion \
