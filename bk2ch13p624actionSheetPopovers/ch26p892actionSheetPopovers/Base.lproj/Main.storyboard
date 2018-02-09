@@ -1,17 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ch26p892actionSheetPopovers" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Mtp-Ho-IFJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="Fa1-55-1K6"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,12 +38,13 @@
                                 </connections>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8lQ-h5-cM0" firstAttribute="top" secondItem="Mtp-Ho-IFJ" secondAttribute="bottom" id="P8x-1c-YK9"/>
-                            <constraint firstItem="8lQ-h5-cM0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Xmh-gY-LyY"/>
-                            <constraint firstAttribute="trailing" secondItem="8lQ-h5-cM0" secondAttribute="trailing" id="g4T-bo-7dI"/>
+                            <constraint firstItem="8lQ-h5-cM0" firstAttribute="top" secondItem="uxQ-hZ-Fgt" secondAttribute="top" id="P8x-1c-YK9"/>
+                            <constraint firstItem="8lQ-h5-cM0" firstAttribute="leading" secondItem="uxQ-hZ-Fgt" secondAttribute="leading" id="Xmh-gY-LyY"/>
+                            <constraint firstItem="uxQ-hZ-Fgt" firstAttribute="trailing" secondItem="8lQ-h5-cM0" secondAttribute="trailing" id="g4T-bo-7dI"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="uxQ-hZ-Fgt"/>
                     </view>
                     <connections>
                         <outlet property="toolbar" destination="8lQ-h5-cM0" id="Mva-h6-LfU"/>
@@ -49,11 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="19.53125" y="16.9921875"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
-    </simulatedMetricsContainer>
 </document>
